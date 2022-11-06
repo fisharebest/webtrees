@@ -57,7 +57,7 @@ class ChartSex
             ],
         ];
 
-        if ($tot_m || $tot_f || $tot_u) {
+        if ($tot_m > 0 || $tot_f > 0 || $tot_u > 0) {
             $data[] = [
                 I18N::translate('Males'),
                 $tot_m

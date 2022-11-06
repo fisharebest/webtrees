@@ -44,7 +44,7 @@ class Source extends GedcomRecord
         preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
             $repo = Registry::repositoryFactory()->make($match, $this->tree);
-            if ($repo && !$repo->canShow($access_level)) {
+            if ($repo instanceof Repository && !$repo->canShow($access_level)) {
                 return false;
             }
         }

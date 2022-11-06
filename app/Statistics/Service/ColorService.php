@@ -41,7 +41,7 @@ class ColorService
      */
     public function interpolateRgb(string $startColor, string $endColor, int $steps): array
     {
-        if (!$steps) {
+        if ($steps === 0) {
             return [];
         }
 

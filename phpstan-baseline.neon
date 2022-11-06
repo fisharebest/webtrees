@@ -76,6 +76,16 @@ parameters:
 			path: app/Encodings/AbstractEncoding.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:value\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Fact.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of method Fisharebest\\\\Webtrees\\\\Contracts\\\\ElementInterface\\:\\:canonical\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Fact.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 1
 			path: app/Factories/FamilyFactory.php
@@ -391,11 +401,6 @@ parameters:
 			path: app/GedcomFilters/GedcomEncodingFilter.php
 
 		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 2
-			path: app/GedcomRecord.php
-
-		-
 			message: "#^Cannot call method attribute\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/GedcomRecord.php
@@ -437,11 +442,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 2
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 2
 			path: app/GedcomRecord.php
 
@@ -896,7 +896,7 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
-			message: "#^Offset 0 does not exist on array\\|null\\.$#"
+			message: "#^Offset 0 does not exist on array\\<int, string\\|null\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
@@ -908,6 +908,11 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
 			count: 1
+			path: app/Http/RequestHandlers/MapDataImportAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|null given\\.$#"
+			count: 2
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
@@ -1186,7 +1191,7 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Binary operation \"\\.\" between non\\-falsy\\-string and array\\|string results in an error\\.$#"
+			message: "#^Binary operation \"\\.\" between non\\-falsy\\-string and array\\<int, string\\>\\|string results in an error\\.$#"
 			count: 1
 			path: app/Individual.php
 
@@ -1197,11 +1202,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Parameter \\#1 \\$numerator of function intdiv expects int, float\\|int given\\.$#"
 			count: 1
 			path: app/Individual.php
 
@@ -1956,6 +1956,11 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Note\\:\\:getNote\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Note.php
+
+		-
 			message: "#^Parameter \\#1 \\$xref of method Fisharebest\\\\Webtrees\\\\Contracts\\\\GedcomRecordFactoryInterface\\:\\:make\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Note.php
@@ -2241,6 +2246,11 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^Parameter \\#1 \\$expression of method Symfony\\\\Component\\\\ExpressionLanguage\\\\ExpressionLanguage\\:\\:evaluate\\(\\) expects string\\|Symfony\\\\Component\\\\ExpressionLanguage\\\\Expression, string\\|null given\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\{\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), non\\-falsy\\-string\\} given\\.$#"
 			count: 2
 			path: app/Report/ReportParserGenerate.php
@@ -2272,6 +2282,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#"
+			count: 5
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -2328,6 +2343,11 @@ parameters:
 		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$repeats \\(array\\<string\\>\\) does not accept array\\<string\\>\\|int\\.$#"
 			count: 4
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$vars \\(array\\<array\\<string\\>\\>\\) does not accept array\\<array\\<string\\|null\\>\\>\\.$#"
+			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -2411,7 +2431,7 @@ parameters:
 			path: app/Report/ReportPdfTextBox.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\RightToLeftSupport\\:\\:spanLtrRtl\\(\\) should return string but returns array\\|string\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\RightToLeftSupport\\:\\:spanLtrRtl\\(\\) should return string but returns array\\<int, string\\>\\|string\\.$#"
 			count: 1
 			path: app/Report/RightToLeftSupport.php
 
@@ -2596,7 +2616,27 @@ parameters:
 			path: app/Services/GedcomImportService.php
 
 		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Services/GedcomImportService.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Services/GedcomImportService.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Services/GedcomImportService.php
+
+		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Services/GedcomImportService.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false\\|null given\\.$#"
 			count: 1
 			path: app/Services/GedcomImportService.php
 

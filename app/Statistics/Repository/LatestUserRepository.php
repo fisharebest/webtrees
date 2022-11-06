@@ -151,6 +151,6 @@ class LatestUserRepository implements LatestUserRepositoryInterface
             ->where('user_id', '=', $user->id())
             ->first();
 
-        return $is_logged_in ? $yes : $no;
+        return $is_logged_in !== null ? $yes : $no;
     }
 }

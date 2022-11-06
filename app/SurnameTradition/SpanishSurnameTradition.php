@@ -74,13 +74,13 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
      */
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
-        if (preg_match(self::REGEX_SURNS, $this->extractName($father), $match_father)) {
+        if (preg_match(self::REGEX_SURNS, $this->extractName($father), $match_father) === 1) {
             $father_surname = $match_father['SURN1'];
         } else {
             $father_surname = '';
         }
 
-        if (preg_match(self::REGEX_SURNS, $this->extractName($mother), $match_mother)) {
+        if (preg_match(self::REGEX_SURNS, $this->extractName($mother), $match_mother) === 1) {
             $mother_surname = $match_mother['SURN1'];
         } else {
             $mother_surname = '';
@@ -104,7 +104,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
      */
     public function newParentNames(Individual $child, string $sex): array
     {
-        if (preg_match(self::REGEX_SURNS, $this->extractName($child), $match)) {
+        if (preg_match(self::REGEX_SURNS, $this->extractName($child), $match) === 1) {
             switch ($sex) {
                 case 'M':
                     return [

@@ -157,12 +157,18 @@ class GedcomImportService
                     // Consistent commas
                     $data = preg_replace('/ *[,，،] */u', ', ', $data);
                     // The Master Genealogist stores LAT/LONG data in the PLAC field, e.g. Pennsylvania, USA, 395945N0751013W
-                    if (preg_match('/(.*), (\d\d)(\d\d)(\d\d)([NS])(\d\d\d)(\d\d)(\d\d)([EW])$/', $data, $match)) {
+                    if (preg_match('/(.*), (\d\d)(\d\d)(\d\d)([NS])(\d\d\d)(\d\d)(\d\d)([EW])$/', $data, $match) === 1) {
+                        $degns = (int) $match[2];
+                        $minns = (int) $match[3];
+                        $secns = (int) $match[4];
+                        $degew = (int) $match[6];
+                        $minew = (int) $match[7];
+                        $secew = (int) $match[8];
                         $data =
                             $match[1] . "\n" .
-                            ($level + 1) . " MAP\n" .
-                            ($level + 2) . ' LATI ' . ($match[5] . round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4)) . "\n" .
-                            ($level + 2) . ' LONG ' . ($match[9] . round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4));
+                            (1 + (int) $level) . " MAP\n" .
+                            (2 + (int) $level) . ' LATI ' . ($match[5] . round($degns + $minns / 60 + $secns / 3600, 4)) . "\n" .
+                            (2 + (int) $level) . ' LONG ' . ($match[9] . round($degew + $minew / 60 + $secew / 3600, 4));
                     }
                     break;
                 case 'SEX':

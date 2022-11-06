@@ -135,7 +135,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             // Split “John Thomas” into “John” and “Thomas” and count against both totals
             foreach (explode(' ', (string) $n_givn) as $given) {
                 // Exclude initials and particles.
-                if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
+                if (preg_match('/^([A-Z]|[a-z]{1,3})$/', $given) !== 1) {
                     if (array_key_exists($given, $nameList)) {
                         $nameList[$given] += (int) $count;
                     } else {

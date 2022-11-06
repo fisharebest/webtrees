@@ -362,7 +362,7 @@ class Tree
      */
     public function createRecord(string $gedcom): GedcomRecord
     {
-        if (!preg_match('/^0 @@ ([_A-Z]+)/', $gedcom, $match)) {
+        if (preg_match('/^0 @@ ([_A-Z]+)/', $gedcom, $match) !== 1) {
             throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
         }
 

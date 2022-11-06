@@ -91,7 +91,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $placelist = [];
 
         foreach ($rows as $row) {
-            if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->tree, $match)) {
+            if (preg_match('/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC (.+)/', $row->tree, $match) === 1) {
                 $place = $match[1];
 
                 $placelist[$place] = ($placelist[$place] ?? 0) + 1;

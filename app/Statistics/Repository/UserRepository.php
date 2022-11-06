@@ -86,7 +86,7 @@ class UserRepository implements UserRepositoryInterface
         }
 
         if ($count_logged_in > 0) {
-            if ($anonymous) {
+            if ($anonymous !== 0) {
                 if ($type === 'list') {
                     $content .= '<br><br>';
                 } else {

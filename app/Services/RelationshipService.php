@@ -333,9 +333,9 @@ class RelationshipService
 
         // The sex of the last person in the relationship determines the name in
         // many cases. e.g. great-aunt / great-uncle
-        if (preg_match('/(fat|hus|son|bro)$/', $path)) {
+        if (preg_match('/(fat|hus|son|bro)$/', $path) === 1) {
             $sex2 = 'M';
-        } elseif (preg_match('/(mot|wif|dau|sis)$/', $path)) {
+        } elseif (preg_match('/(mot|wif|dau|sis)$/', $path) === 1) {
             $sex2 = 'F';
         } else {
             $sex2 = 'U';
@@ -1198,116 +1198,116 @@ class RelationshipService
         }
 
         // Some “special case” level five relationships that have specific names in certain languages
-        if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandfather’s brother’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandfather’s brother’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatbro(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandfather’s brother’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandfather’s sister’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandfather’s sister’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatsis(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandfather’s sister’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandfather’s sibling’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandfather’s sibling’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)fatsib(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandfather’s sibling’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandmother’s brother’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandmother’s brother’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motbro(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandmother’s brother’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandmother’s sister’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandmother’s sister’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motsis(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandmother’s sister’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandmother’s sibling’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandmother’s sibling’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)motsib(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandmother’s sibling’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandparent’s brother’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandparent’s brother’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parbro(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandparent’s brother’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandparent’s sister’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandparent’s sister’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parsis(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandparent’s sister’s grandchild', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)dau$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)dau$/', $path) === 1) {
             return I18N::translateContext('grandparent’s sibling’s granddaughter', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)son$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)son$/', $path) === 1) {
             return I18N::translateContext('grandparent’s sibling’s grandson', 'second cousin');
         }
 
-        if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)chi$/', $path)) {
+        if (preg_match('/^(mot|fat|par)parsib(son|dau|chi)chi$/', $path) === 1) {
             return I18N::translateContext('grandparent’s sibling’s grandchild', 'second cousin');
         }
 
         // Look for generic/pattern relationships.
-        if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
+        if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match) === 1) {
             // siblings of direct ancestors
             $up       = intdiv(strlen($match[1]), 3);
             $bef_last = substr($path, -6, 3);
@@ -1515,7 +1515,7 @@ class RelationshipService
                     }
             }
         }
-        if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
+        if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match) === 1) {
             // direct descendants of siblings
             $down  = intdiv(strlen($match[1]), 3) + 1; // Add one, as we count generations from the common ancestor
             $first = substr($path, 0, 3);
@@ -1808,7 +1808,7 @@ class RelationshipService
                     }
             }
         }
-        if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
+        if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match) === 1) {
             // direct ancestors
             $up = intdiv(strlen($match[1]), 3);
             switch ($up) {
@@ -1965,7 +1965,7 @@ class RelationshipService
                     }
             }
         }
-        if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match)) {
+        if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match) === 1) {
             // direct descendants
             $up = intdiv(strlen($match[1]), 3);
             switch ($up) {
@@ -2099,7 +2099,7 @@ class RelationshipService
                     }
             }
         }
-        if (preg_match('/^((?:mot|fat|par)+)(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
+        if (preg_match('/^((?:mot|fat|par)+)(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match) === 1) {
             // cousins in English
             $ascent  = $match[1];
             $descent = $match[2];

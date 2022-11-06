@@ -66,7 +66,7 @@ class ChartIndividualWithSources
             ],
         ];
 
-        if ($tot_indi || $tot_indi_source) {
+        if ($tot_indi > 0 || $tot_indi_source > 0) {
             $data[] = [
                 I18N::translate('Without sources'),
                 $tot_indi - $tot_indi_source

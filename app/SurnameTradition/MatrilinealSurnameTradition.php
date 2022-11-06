@@ -61,7 +61,7 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
      */
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
-        if (preg_match(self::REGEX_SPFX_SURN, $this->extractName($mother), $match)) {
+        if (preg_match(self::REGEX_SPFX_SURN, $this->extractName($mother), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];
@@ -84,7 +84,7 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
      */
     public function newParentNames(Individual $child, string $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match)) {
+        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];

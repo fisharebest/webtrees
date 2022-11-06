@@ -956,7 +956,7 @@ class GedcomRecord
             } elseif (preg_match_all('/\n(\d) ' . Gedcom::REGEX_TAG . ' ' . $value . '/', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 $gedcom = $fact->gedcom();
                 foreach ($matches as $match) {
-                    $next_level  = $match[1] + 1;
+                    $next_level  = 1 + (int) $match[1];
                     $next_levels = '[' . $next_level . '-9]';
                     $gedcom      = preg_replace('/' . $match[0] . '(\n' . $next_levels . '.*)*/', '', $gedcom);
                 }
