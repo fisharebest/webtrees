@@ -21,10 +21,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\Contracts\CustomTagInterface;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\CountOfChildren;
 use Fisharebest\Webtrees\Elements\Creation;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\DateValueExact;
 use Fisharebest\Webtrees\Elements\DateValueToday;
+use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\ExternalIdentifier;
 use Fisharebest\Webtrees\Elements\ExternalIdentifierType;
 use Fisharebest\Webtrees\Elements\FamilyFact;
@@ -91,6 +93,7 @@ class Gedcom7 implements CustomTagInterface
             'FAM:EXID'                   => new ExternalIdentifier(I18N::translate('External identifier')),
             'FAM:EXID:TYPE'              => new ExternalIdentifierType(I18N::translate('Type')),
             'FAM:FACT'                   => new FamilyFact(I18N::translate('Fact')),
+            'FAM:FACT:TYPE'               => new EventOrFactClassification(I18N::translate('Type of fact')),
             'FAM:REFN'                   => new UserReferenceNumber(I18N::translate('Reference number')),
             'FAM:REFN:TYPE'              => new UserReferenceType(I18N::translate('Type')),
             'FAM:SNOTE'                  => new XrefSharedNote(I18N::translate('Shared note')),

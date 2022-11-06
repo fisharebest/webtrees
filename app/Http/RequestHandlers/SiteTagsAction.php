@@ -53,11 +53,15 @@ class SiteTagsAction implements RequestHandlerInterface
         $custom_family_tags     = Validator::parsedBody($request)->array('custom_family_tags');
         $custom_individual_tags = Validator::parsedBody($request)->array('custom_individual_tags');
         $custom_gedcom_l_tags   = Validator::parsedBody($request)->boolean('custom_gedcom_l_tags', false);
+        $custom_fam_fact        = Validator::parsedBody($request)->boolean('custom_fam_fact', false);
+        $custom_fam_nchi        = Validator::parsedBody($request)->boolean('custom_fam_nchi', false);
         $custom_time_tags       = Validator::parsedBody($request)->boolean('custom_time_tags', false);
 
         Site::setPreference('CUSTOM_FAMILY_TAGS', implode(',', $custom_family_tags));
         Site::setPreference('CUSTOM_INDIVIDUAL_TAGS', implode(',', $custom_individual_tags));
         Site::setPreference('CUSTOM_GEDCOM_L_TAGS', (string) $custom_gedcom_l_tags);
+        Site::setPreference('CUSTOM_FAM_FACT', (string) $custom_fam_fact);
+        Site::setPreference('CUSTOM_FAM_NCHI', (string) $custom_fam_nchi);
         Site::setPreference('CUSTOM_TIME_TAGS', (string) $custom_time_tags);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');

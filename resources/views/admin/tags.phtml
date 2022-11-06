@@ -14,7 +14,9 @@ use Fisharebest\Webtrees\Site;
  * @var array<string>           $custom_family_tags
  * @var bool                    $custom_gedcom_l_tags
  * @var array<string>           $custom_individual_tags
- * @var array<string>           $custom_time_tags
+ * @var bool                    $custom_fam_fact
+ * @var bool                    $custom_fam_nchi
+ * @var bool                    $custom_time_tags
  * @var ElementFactoryInterface $element_factory
  * @var string                  $title
  */
@@ -930,6 +932,74 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
+    <h2><?= I18N::translate('GEDCOM 7') ?></h2>
+
+    <p>
+        <?= I18N::translate('The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now.'); ?>
+    </p>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+        <tr>
+            <th><?= I18N::translate('Description') ?></th>
+            <th><?= I18N::translate('GEDCOM tag') ?></th>
+            <th><?= I18N::translate('Hide GEDCOM tags') ?></th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= I18N::translate('Time of birth and time of death') ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:BIRT:DATE:TIME</code>
+                    <br>
+                    <code dir="ltr">INDI:DEAT:DATE:TIME</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox', ['id' => 'custom_time_tags', 'name' => 'custom_time_tags', 'label' => I18N::translate('show'), 'checked' => $custom_time_tags]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= I18N::translate('Family fact') ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:FACT</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox', ['id' => 'custom_time_tags', 'name' => 'custom_fam_fact', 'label' => I18N::translate('show'), 'checked' => $custom_fam_fact]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= I18N::translate('Number of children') ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:NCHI:*</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox', ['id' => 'custom_time_tags', 'name' => 'custom_fam_nchi', 'label' => I18N::translate('show'), 'checked' => $custom_fam_nchi]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <h2><?= I18N::translate('Custom GEDCOM tags') ?></h2>
 
     <p>
@@ -947,16 +1017,6 @@ use Fisharebest\Webtrees\Site;
 
         <div class="col-sm-9">
             <?= view('components/select', ['class' => 'tom-select', 'id' => 'custom_individual_tags', 'name' => 'custom_individual_tags[]', 'options' => $all_individual_tags, 'selected' => $custom_individual_tags]) ?>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <label class="col-sm-3" for="custom_time_tags">
-            <?= I18N::translate('Time of birth and time of death') ?>
-        </label>
-
-        <div class="col-sm-9">
-            <?= view('components/checkbox', ['id' => 'custom_time_tags', 'name' => 'custom_time_tags', 'label' => I18N::translate('show'), 'checked' => $custom_time_tags]) ?>
         </div>
     </div>
 
