@@ -974,8 +974,8 @@ class Individual extends GedcomRecord
         ////////////////////////////////////////////////////////////////////////////
 
         $sublevel = 1 + (int) substr($gedcom, 0, 1);
-        $GIVN     = preg_match('/\n' . $sublevel . ' GIVN (.+)/', $gedcom, $match) ? $match[1] : '';
-        $SURN     = preg_match('/\n' . $sublevel . ' SURN (.+)/', $gedcom, $match) ? $match[1] : '';
+        $GIVN     = preg_match('/\n' . $sublevel . ' GIVN (.+)/', $gedcom, $match) === 1 ? $match[1] : '';
+        $SURN     = preg_match('/\n' . $sublevel . ' SURN (.+)/', $gedcom, $match) === 1 ? $match[1] : '';
 
         // SURN is an comma-separated list of surnames...
         if ($SURN !== '') {

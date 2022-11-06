@@ -79,7 +79,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
      */
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
-        if (preg_match(self::REGEX_SURN, $this->extractName($father), $match)) {
+        if (preg_match(self::REGEX_SURN, $this->extractName($father), $match) === 1) {
             if ($sex === 'F') {
                 $name = $this->inflect($match['NAME'], self::INFLECT_FEMALE);
             } else {
@@ -104,7 +104,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
      */
     public function newParentNames(Individual $child, string $sex): array
     {
-        if ($sex === 'M' && preg_match(self::REGEX_SURN, $this->extractName($child), $match)) {
+        if ($sex === 'M' && preg_match(self::REGEX_SURN, $this->extractName($child), $match) === 1) {
             $name = $this->inflect($match['NAME'], self::INFLECT_MALE);
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
@@ -126,7 +126,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SURN, $this->extractName($spouse), $match)) {
+        if ($sex === 'F' && preg_match(self::REGEX_SURN, $this->extractName($spouse), $match) === 1) {
             $name = $this->inflect($match['NAME'], self::INFLECT_FEMALE);
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 

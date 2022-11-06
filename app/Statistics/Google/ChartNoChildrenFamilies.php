@@ -109,7 +109,7 @@ class ChartNoChildrenFamilies
             ];
         }
 
-        if ($total) {
+        if ($total > 0) {
             $data[] = [
                 I18N::translateContext('unknown century', 'Unknown'),
                 $no_child_fam - $total,

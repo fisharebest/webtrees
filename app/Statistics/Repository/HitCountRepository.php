@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
@@ -63,7 +64,7 @@ class HitCountRepository implements HitCountRepositoryInterface
         } elseif ($page_name === 'index.php') {
             // index.php?context=user
             $user           = $this->user_service->findByIdentifier($page_parameter);
-            $page_parameter = 'user:' . ($user ? $user->id() : Auth::id());
+            $page_parameter = 'user:' . ($user instanceof UserInterface ? $user->id() : Auth::id());
         }
 
         $count = (int) DB::table('hit_counter')

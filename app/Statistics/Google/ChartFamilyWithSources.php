@@ -66,7 +66,7 @@ class ChartFamilyWithSources
             ],
         ];
 
-        if ($tot_fam || $tot_fam_source) {
+        if ($tot_fam > 0 || $tot_fam_source > 0) {
             $data[] = [
                 I18N::translate('Without sources'),
                 $tot_fam - $tot_fam_source

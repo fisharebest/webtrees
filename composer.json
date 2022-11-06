@@ -134,7 +134,7 @@
             "@composer global require --quiet phpstan/phpstan-strict-rules=*",
             "@composer global require --quiet phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --level=max index.php app",
+            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --xdebug --level=max index.php app",
             "@composer install --no-dev --quiet"
         ],
         "webtrees:phpstan-baseline": [

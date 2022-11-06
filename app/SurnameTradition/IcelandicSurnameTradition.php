@@ -73,7 +73,7 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition
      */
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
-        if (preg_match(self::REGEX_GIVN, $this->extractName($father), $match)) {
+        if (preg_match(self::REGEX_GIVN, $this->extractName($father), $match) === 1) {
             switch ($sex) {
                 case 'M':
                     $givn = $match['GIVN'] . 'sson';
@@ -106,13 +106,13 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition
      */
     public function newParentNames(Individual $child, string $sex): array
     {
-        if ($sex === 'M' && preg_match('~(?<GIVN>[^ /]+)(:?sson)$~', $this->extractName($child), $match)) {
+        if ($sex === 'M' && preg_match('~(?<GIVN>[^ /]+)(:?sson)$~', $this->extractName($child), $match) === 1) {
             return [
                 $this->buildName($match['GIVN'], ['TYPE' => NameType::VALUE_BIRTH, 'GIVN' => $match['GIVN']]),
             ];
         }
 
-        if ($sex === 'F' && preg_match('~(?<GIVN>[^ /]+)(:?sdottir)$~', $this->extractName($child), $match)) {
+        if ($sex === 'F' && preg_match('~(?<GIVN>[^ /]+)(:?sdottir)$~', $this->extractName($child), $match) === 1) {
             return [
                 $this->buildName($match['GIVN'], ['TYPE' => NameType::VALUE_BIRTH, 'GIVN' => $match['GIVN']]),
             ];

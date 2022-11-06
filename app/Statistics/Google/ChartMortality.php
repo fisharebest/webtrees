@@ -66,7 +66,7 @@ class ChartMortality
             ]
         ];
 
-        if ($tot_l || $tot_d) {
+        if ($tot_l > 0 || $tot_d > 0) {
             $data[] = [
                 I18N::translate('Living'),
                 $tot_l
