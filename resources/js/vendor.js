@@ -76,6 +76,7 @@ import 'jquery-colorbox';
 import 'pinch-zoom-element';
 
 import 'leaflet';
+import 'leaflet.fullscreen';
 import 'leaflet.markercluster';
 import 'beautifymarker';
 import 'leaflet-control-geocoder';

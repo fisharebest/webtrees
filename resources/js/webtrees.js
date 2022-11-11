@@ -681,6 +681,12 @@
       zoomoutTitle: config.i18n.zoomOut,
     });
 
+    const fullScreenControl = L.control.fullscreen({
+      title: config.i18n.fullScreen,
+      titleCancel: config.i18n.fullScreenOff,
+      forcePseudoFullscreen: false, // if set to true, firefox hides map controls
+    });
+
     const resetControl = L.Control.extend({
       options: {
         position: 'topleft',
@@ -722,19 +728,18 @@
       let defaultLayer = config.mapProviders[0].children[0].layer;
     }
 
-
     // Create the map with all controls and layers
     return L.map(id, {
       zoomControl: false,
     })
       .addControl(zoomControl)
+      .addControl(fullScreenControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
       .addControl(L.control.layers.tree(config.mapProviders, null, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
       }));
-
   };
 
   /**

@@ -29,6 +29,7 @@ mix
   .js('resources/js/vendor.js', 'public/js/vendor.min.js')
   .babel(['resources/js/webtrees.js', 'resources/js/statistics.js', 'resources/js/treeview.js'], 'public/js/webtrees.min.js')
   .copy('node_modules/leaflet/dist/images/*', 'public/css/images/')
+  .copy('node_modules/leaflet.fullscreen/icon-fullscreen.svg', 'public/css/')
   .copy('node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf', 'resources/fonts/')
   .options({
     processCssUrls: false,
