@@ -36,6 +36,7 @@
     "leaflet-control-geocoder": "2.4.0",
     "leaflet.control.layers.tree": "1.1.0",
     "leaflet.markercluster": "1.5.3",
+    "fscreen": "1.2.0",
     "moment": "2.29.4",
     "pinch-zoom-element": "1.1.1",
     "sortablejs": "1.15.0",

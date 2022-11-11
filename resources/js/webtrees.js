@@ -681,6 +681,39 @@
       zoomoutTitle: config.i18n.zoomOut,
     });
 
+    const fullScreenControl = L.Control.extend({
+      options: {
+        position: 'topleft',
+      },
+      onAdd: function (map) {
+        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        container.onclick = function(){
+          const map_el = document.querySelector("#" + map.getContainer().id);
+
+          if (fscreen.fullscreenEnabled) {
+            if (!fscreen.fullscreenElement) {
+              map_el.requestFullscreen();
+            } else if (fscreen.exitFullscreen) {
+              fscreen.exitFullscreen();
+            }
+          } else {
+            console.log('Your browser cannot use fullscreen at this time');
+          }
+        };
+        let fullScreen = config.i18n.fullScreen;
+        let anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
+        anchor.setAttribute('aria-label', fullScreen);
+        anchor.href = '#';
+        anchor.title = fullScreen;
+        anchor.role = 'button';
+        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
+        let image = L.DomUtil.create('i', 'fas fa-expand', anchor);
+        image.alt = fullScreen;
+
+        return container;
+      },
+    });
+
     const resetControl = L.Control.extend({
       options: {
         position: 'topleft',
@@ -722,19 +755,18 @@
       let defaultLayer = config.mapProviders[0].children[0].layer;
     }
 
-
     // Create the map with all controls and layers
     return L.map(id, {
       zoomControl: false,
     })
       .addControl(zoomControl)
+      .addControl(new fullScreenControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
       .addControl(L.control.layers.tree(config.mapProviders, null, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
       }));
-
   };
 
   /**
