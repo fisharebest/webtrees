@@ -68,7 +68,6 @@ class PhpGedView implements CustomTagInterface
             'INDI:COMM'             => new CustomElement(I18N::translate('Comment')),
             'INDI:NAME:_HEB'        => new NamePersonal(I18N::translate('Name in Hebrew'), []),
             'INDI:_HOL'             => new CustomIndividualEvent(I18N::translate('Holocaust')),
-            'INDI:_MILI'            => new CustomIndividualEvent(I18N::translate('Military')),
             'INDI:_PGV_OBJS'        => new XrefMedia(I18N::translate('Re-order media')),
             'NOTE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
             'OBJE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
