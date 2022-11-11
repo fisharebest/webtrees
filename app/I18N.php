@@ -569,8 +569,10 @@ class I18N
      */
     public static function comparator(): Closure
     {
-        if (self::$collator instanceof Collator) {
-            return static fn (string $x, string $y): int => (int) self::$collator->compare($x, $y);
+        $collator = self::$collator;
+
+        if ($collator instanceof Collator) {
+            return static fn (string $x, string $y): int => (int) $collator->compare($x, $y);
         }
 
         return static fn (string $x, string $y): int => strcmp(self::strtolower($x), self::strtolower($y));
