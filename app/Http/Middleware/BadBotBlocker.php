@@ -81,12 +81,14 @@ class BadBotBlocker implements MiddlewareInterface
     /**
      * Some search engines use reverse/forward DNS to verify the IP address.
      *
+     * @see https://developer.amazon.com/support/amazonbot
      * @see https://support.google.com/webmasters/answer/80553?hl=en
      * @see https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0
      * @see https://www.bing.com/webmaster/help/how-to-verify-bingbot-3905dc26
      * @see https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.html
      */
     private const ROBOT_REV_FWD_DNS = [
+        'Amazonbot'   => ['.crawl.amazon.com'],
         'bingbot'     => ['.search.msn.com'],
         'BingPreview' => ['.search.msn.com'],
         'Google'      => ['.google.com', '.googlebot.com'],
