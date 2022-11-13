@@ -9,14 +9,14 @@
     "autoprefixer": "10.4.13",
     "cross-env": "7.0.3",
     "laravel-mix": "6.0.49",
-    "postcss": "8.4.18",
+    "postcss": "8.4.19",
     "postcss-custom-properties": "12.1.10",
     "postcss-image-inliner": "6.0.1",
     "postcss-import": "15.0.0",
     "postcss-rtlcss": "4.0.1",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.56.0",
-    "sass-loader": "13.1.0"
+    "sass": "1.56.1",
+    "sass-loader": "13.2.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.2.0",
@@ -26,7 +26,7 @@
     "beautifymarker": "1.0.9",
     "bootstrap": "5.2.2",
     "corejs-typeahead": "1.3.1",
-    "datatables.net-bs5": "1.12.1",
+    "datatables.net-bs5": "1.13.1",
     "dejavu-fonts-ttf": "2.37.3",
     "hideshowpassword": "2.2.0",
     "jquery": "3.6.1",
