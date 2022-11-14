@@ -69,10 +69,13 @@ class BadBotBlocker implements MiddlewareInterface
         'ia_archiver',
         'Linguee',
         'MJ12bot',
+        'netEstate NE',
         'panscient',
         'PetalBot',
         'proximic',
         'SemrushBot',
+        'SEOkicks',
+        'SiteKiosk',
         'Turnitin',
         'XoviBot',
         'ZoominfoBot',
@@ -92,7 +95,7 @@ class BadBotBlocker implements MiddlewareInterface
         'bingbot'     => ['.search.msn.com'],
         'BingPreview' => ['.search.msn.com'],
         'Google'      => ['.google.com', '.googlebot.com'],
-        'Mail.RU_Bot' => ['mail.ru'],
+        'Mail.RU_Bot' => ['.mail.ru'],
         'msnbot'      => ['.search.msn.com'],
         'Qwantify'    => ['.search.qwant.com'],
         'Sogou'       => ['.crawl.sogou.com'],
@@ -111,6 +114,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Baiduspider' => ['.baidu.com', '.baidu.jp'],
         'FreshBot'    => ['.seznam.cz'],
         'IonCrawl'    => ['.1und1.org'],
+        'Neevabot'    => ['.neeva.com'],
     ];
 
     /**
