@@ -57,9 +57,8 @@ class ReportSetupAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
+        $tree   = Validator::attributes($request)->tree();
+        $user   = Validator::attributes($request)->user();
         $report = Validator::attributes($request)->string('report');
         $module = $this->module_service->findByName($report);
 
@@ -69,11 +68,13 @@ class ReportSetupAction implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $params = (array) $request->getParsedBody();
-
-        $params['tree']   = $tree->name();
-        $params['report'] = $report;
-
-        return redirect(route(ReportGenerate::class, $params));
+        return redirect(route(ReportGenerate::class, [
+            'tree'        => $tree->name(),
+            'report'      => $report,
+            'destination' => Validator::parsedBody($request)->string('destination'),
+            'format'      => Validator::parsedBody($request)->string('format'),
+            'varnames'    => Validator::parsedBody($request)->array('varnames'),
+            'vars'        => Validator::parsedBody($request)->array('vars'),
+        ]));
     }
 }

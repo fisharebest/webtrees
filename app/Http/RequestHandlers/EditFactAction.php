@@ -67,7 +67,6 @@ class EditFactAction implements RequestHandlerInterface
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
-        $params    = (array) $request->getParsedBody();
         $keep_chan = Validator::parsedBody($request)->boolean('keep_chan', false);
         $levels    = Validator::parsedBody($request)->array('levels');
         $tags      = Validator::parsedBody($request)->array('tags');
@@ -77,7 +76,7 @@ class EditFactAction implements RequestHandlerInterface
         $census_assistant = $this->module_service->findByInterface(CensusAssistantModule::class)->first();
 
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
-            $ca_individuals = $params['ca_individuals']['xref'] ?? [];
+            $ca_individuals = Validator::parsedBody($request)->array('ca_individuals')['xref'] ?? [];
 
             if ($ca_individuals !== []) {
                 $gedcom = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $gedcom, $keep_chan);

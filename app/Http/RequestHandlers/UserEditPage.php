@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -77,7 +78,7 @@ class UserEditPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $user_id = (int) $request->getQueryParams()['user_id'];
+        $user_id = Validator::queryParams($request)->integer('user_id');
         $user    = $this->user_service->find($user_id);
 
         if ($user === null) {

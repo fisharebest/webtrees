@@ -38,10 +38,9 @@ class LinkMediaToRecordAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $params = (array) $request->getParsedBody();
-        $link   = $params['link'] ?? '';
+        $tree = Validator::attributes($request)->tree();
+        $xref = Validator::attributes($request)->isXref()->string('xref');
+        $link = Validator::parsedBody($request)->isXref()->string('link');
 
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);

@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -223,14 +224,19 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $days       = Validator::parsedBody($request)->integer('days');
+        $info_style = Validator::parsedBody($request)->string('infoStyle');
+        $sort_style = Validator::parsedBody($request)->string('sortStyle');
+        $show_date  = Validator::parsedBody($request)->boolean('show_date');
+        $show_user  = Validator::parsedBody($request)->boolean('show_user');
+        $source     = Validator::parsedBody($request)->string('source');
 
-        $this->setBlockSetting($block_id, 'days', $params['days']);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
-        $this->setBlockSetting($block_id, 'sortStyle', $params['sortStyle']);
-        $this->setBlockSetting($block_id, 'show_date', $params['show_date']);
-        $this->setBlockSetting($block_id, 'show_user', $params['show_user']);
-        $this->setBlockSetting($block_id, 'source', $params['source']);
+        $this->setBlockSetting($block_id, 'days', (string) $days);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
+        $this->setBlockSetting($block_id, 'sortStyle', $sort_style);
+        $this->setBlockSetting($block_id, 'show_date', (string) $show_date);
+        $this->setBlockSetting($block_id, 'show_user', (string) $show_user);
+        $this->setBlockSetting($block_id, 'source', $source);
     }
 
     /**

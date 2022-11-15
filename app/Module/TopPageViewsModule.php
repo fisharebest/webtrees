@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
@@ -157,9 +158,9 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $num = Validator::parsedBody($request)->integer('num');
 
-        $this->setBlockSetting($block_id, 'num', $params['num']);
+        $this->setBlockSetting($block_id, 'num', (string) $num);
     }
 
     /**

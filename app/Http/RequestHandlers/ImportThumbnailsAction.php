@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\UnableToMoveFile;
@@ -72,12 +73,10 @@ class ImportThumbnailsAction implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $params = (array) $request->getParsedBody();
-
-        $thumbnail = $params['thumbnail'];
-        $action    = $params['action'];
-        $xrefs     = $params['xref'];
-        $geds      = $params['ged'];
+        $thumbnail = Validator::parsedBody($request)->string('thumbnail');
+        $action    = Validator::parsedBody($request)->string('action');
+        $xrefs     = Validator::parsedBody($request)->array('xref');
+        $geds      = Validator::parsedBody($request)->array('ged');
 
         try {
             $file_exists = $data_filesystem->fileExists($thumbnail);

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -54,9 +55,7 @@ class UsersCleanupAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
-        $delete = $params['delete'] ?? [];
+        $delete = Validator::parsedBody($request)->array('delete');
 
         foreach ($delete as $user_id) {
             $user = $this->user_service->find((int) $user_id);

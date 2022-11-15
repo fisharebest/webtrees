@@ -60,7 +60,7 @@ class DataFixUpdate implements RequestHandlerInterface
         $module   = $this->module_service->findByName($data_fix);
         assert($module instanceof ModuleDataFixInterface);
 
-        $xref   = $request->getQueryParams()['xref'] ?? '';
+        $xref   = Validator::queryParams($request)->isXref()->string('xref');
         $params = $request->getQueryParams();
 
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);

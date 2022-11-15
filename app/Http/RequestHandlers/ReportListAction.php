@@ -56,12 +56,9 @@ class ReportListAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
-        $params = (array) $request->getParsedBody();
-
-        $report = $params['report'] ?? '';
+        $tree   = Validator::attributes($request)->tree();
+        $user   = Validator::attributes($request)->user();
+        $report = Validator::parsedBody($request)->string('report');
         $module = $this->module_service->findByName($report);
 
         if ($module instanceof ModuleReportInterface) {

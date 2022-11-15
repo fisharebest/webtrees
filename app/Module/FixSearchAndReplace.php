@@ -137,7 +137,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function familiesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Family::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Family::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -158,7 +158,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Individual::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Individual::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -181,7 +181,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function locationsToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Location::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Location::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -205,7 +205,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function mediaToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Media::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Media::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -228,7 +228,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function notesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Note::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Note::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -252,7 +252,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function repositoriesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Repository::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Repository::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -276,7 +276,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function sourcesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Source::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Source::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -298,7 +298,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function submittersToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Submitter::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Submitter::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -361,7 +361,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     {
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.
-        $replace = strtr($params['replace'], ['\n' => "\n"]);
+        $replace = strtr($params['replace-with'], ['\n' => "\n"]);
 
         $regex = $this->createRegex($params);
 
@@ -377,7 +377,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     private function createRegex(array $params): string
     {
-        $search = $params['search'];
+        $search = $params['search-for'];
         $method = $params['method'];
         $case   = $params['case'];
 
@@ -419,7 +419,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     private function recordQuery(Builder $query, string $column, array $params): void
     {
-        $search = $params['search'];
+        $search = $params['search-for'];
         $method = $params['method'];
         $like   = '%' . addcslashes($search, '\\%_') . '%';
 

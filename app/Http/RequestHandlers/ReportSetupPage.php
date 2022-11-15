@@ -73,7 +73,7 @@ class ReportSetupPage implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $xref = $request->getQueryParams()['xref'] ?? '';
+        $xref = Validator::queryParams($request)->isXref()->string('xref', '');
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 

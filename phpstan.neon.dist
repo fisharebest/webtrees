@@ -2,8 +2,5 @@ includes:
 	- phpstan-baseline.neon
 
 parameters:
-    dynamicConstantNames:
-        - Webtrees::DEBUG
-        - Webtrees::ERROR_REPORTING
     ignoreErrors:
         - '#^Access to an undefined property object::\$[A-Za-z0-9_]+\.$#'

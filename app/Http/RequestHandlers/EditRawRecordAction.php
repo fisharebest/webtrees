@@ -46,15 +46,13 @@ class EditRawRecordAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
-        $params = (array) $request->getParsedBody();
-
-        $level0   = $params['level0'];
-        $facts    = $params['fact'] ?? [];
-        $fact_ids = $params['fact_id'] ?? [];
+        $tree     = Validator::attributes($request)->tree();
+        $xref     = Validator::attributes($request)->isXref()->string('xref');
+        $record   = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record   = Auth::checkRecordAccess($record, true);
+        $level0   = Validator::parsedBody($request)->string('level0');
+        $facts    = Validator::parsedBody($request)->array('fact');
+        $fact_ids = Validator::parsedBody($request)->array('fact_id');
 
         // Generate the level-0 line for the record.
         switch ($record->tag()) {

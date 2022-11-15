@@ -46,8 +46,8 @@ class MediaFileThumbnail implements RequestHandlerInterface
         $user = Validator::attributes($request)->user();
 
         $params  = $request->getQueryParams();
-        $xref    = $params['xref'] ?? '';
-        $fact_id = $params['fact_id'] ?? '';
+        $xref    = Validator::queryParams($request)->isXref()->string('xref');
+        $fact_id = Validator::queryParams($request)->string('fact_id');
         $media   = Registry::mediaFactory()->make($xref, $tree);
 
         if ($media === null) {

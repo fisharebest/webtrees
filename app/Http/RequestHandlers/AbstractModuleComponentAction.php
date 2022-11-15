@@ -91,15 +91,12 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     protected function updateAccessLevel(string $interface, ServerRequestInterface $request): void
     {
         $modules = $this->module_service->findByInterface($interface, true);
-
-        $params = (array) $request->getParsedBody();
-
-        $trees = $this->tree_service->all();
+        $trees   = $this->tree_service->all();
 
         foreach ($modules as $module) {
             foreach ($trees as $tree) {
                 $key          = 'access-' . $module->name() . '-' . $tree->id();
-                $access_level = (int) ($params[$key] ?? 0);
+                $access_level = Validator::parsedBody($request)->integer($key);
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
                     DB::table('module_privacy')->updateOrInsert([
@@ -126,11 +123,8 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     protected function updateOrder(string $interface, string $column, ServerRequestInterface $request): void
     {
         $modules = $this->module_service->findByInterface($interface, true);
-
-        $params = (array) $request->getParsedBody();
-
-        $order = (array) ($params['order'] ?? []);
-        $order = array_flip($order);
+        $order   = Validator::parsedBody($request)->array('order');
+        $order   = array_flip($order);
 
         foreach ($modules as $module) {
             DB::table('module')

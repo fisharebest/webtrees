@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -55,12 +56,10 @@ class UserAddAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
-        $username  = $params['username'] ?? '';
-        $real_name = $params['real_name'] ?? '';
-        $email     = $params['email'] ?? '';
-        $password  = $params['password'] ?? '';
+        $username  = Validator::parsedBody($request)->string('username');
+        $real_name = Validator::parsedBody($request)->string('real_name');
+        $email     = Validator::parsedBody($request)->string('email');
+        $password  = Validator::parsedBody($request)->string('password');
 
         $errors = false;
         if ($this->user_service->findByUserName($username)) {

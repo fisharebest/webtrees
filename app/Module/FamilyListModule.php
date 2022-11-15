@@ -76,6 +76,16 @@ class FamilyListModule extends IndividualListModule
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        return $this->createResponse($tree, $user, $request->getQueryParams(), true);
+        $params = [
+            'alpha'               => Validator::queryParams($request)->string('alpha', ''),
+            'falpha'              => Validator::queryParams($request)->string('falpha', ''),
+            'show'                => Validator::queryParams($request)->string('show', 'surn'),
+            'show_all'            => Validator::queryParams($request)->string('show_all', 'no'),
+            'show_all_firstnames' => Validator::queryParams($request)->string('show_all_firstnames', 'no'),
+            'show_marnm'          => Validator::queryParams($request)->string('show_marnm', ''),
+            'surname'             => Validator::queryParams($request)->string('surname', ''),
+        ];
+
+        return $this->createResponse($tree, $user, $params, true);
     }
 }

@@ -51,7 +51,7 @@ class AccountUpdateTest extends TestCase
                 [UserInterface::PREF_CONTACT_METHOD, 'a'],
                 [UserInterface::PREF_LANGUAGE, 'c'],
                 [UserInterface::PREF_TIME_ZONE, 'g'],
-                [UserInterface::PREF_IS_VISIBLE_ONLINE, 'i']
+                [UserInterface::PREF_IS_VISIBLE_ONLINE, '']
             );
 
         $tree = $this->createMock(Tree::class);

@@ -30,28 +30,22 @@ use Psr\Http\Server\RequestHandlerInterface;
 class SearchGeneralAction implements RequestHandlerInterface
 {
     /**
-     * The standard search.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
         return redirect(route(SearchGeneralPage::class, [
-            'query'               => $params['query'] ?? '',
-            'search_families'     => (bool) ($params['search_families'] ?? false),
-            'search_individuals'  => (bool) ($params['search_individuals'] ?? false),
-            'search_locations'    => (bool) ($params['search_locations'] ?? false),
-            'search_notes'        => (bool) ($params['search_notes'] ?? false),
-            'search_repositories' => (bool) ($params['search_repositories'] ?? false),
-            'search_sources'      => (bool) ($params['search_sources'] ?? false),
-            'search_trees'        => $params['search_trees'] ?? [],
-            'tree'                => $tree->name(),
+            'query'               => Validator::parsedBody($request)->string('query'),
+            'search_families'     => Validator::parsedBody($request)->boolean('search_families', false),
+            'search_individuals'  => Validator::parsedBody($request)->boolean('search_individuals', false),
+            'search_locations'    => Validator::parsedBody($request)->boolean('search_locations', false),
+            'search_notes'        => Validator::parsedBody($request)->boolean('search_notes', false),
+            'search_repositories' => Validator::parsedBody($request)->boolean('search_repositories', false),
+            'search_sources'      => Validator::parsedBody($request)->boolean('search_sources', false),
+            'search_trees'        => Validator::parsedBody($request)->array('search_trees'),
+            'tree'                => Validator::attributes($request)->tree()->name(),
         ]));
     }
 }

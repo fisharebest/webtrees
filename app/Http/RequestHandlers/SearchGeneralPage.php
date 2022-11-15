@@ -36,6 +36,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function in_array;
 use function preg_replace;
 use function redirect;
 use function trim;
@@ -76,16 +77,18 @@ class SearchGeneralPage implements RequestHandlerInterface
     {
         $tree = Validator::attributes($request)->tree();
 
-        $params = $request->getQueryParams();
-        $query  = $params['query'] ?? '';
+        $query = Validator::queryParams($request)->string('query', '');
 
         // What type of records to search?
-        $search_individuals  = (bool) ($params['search_individuals'] ?? false);
-        $search_families     = (bool) ($params['search_families'] ?? false);
-        $search_locations    = (bool) ($params['search_locations'] ?? false);
-        $search_repositories = (bool) ($params['search_repositories'] ?? false);
-        $search_sources      = (bool) ($params['search_sources'] ?? false);
-        $search_notes        = (bool) ($params['search_notes'] ?? false);
+        $search_individuals  = Validator::queryParams($request)->boolean('search_individuals', false);
+        $search_families     = Validator::queryParams($request)->boolean('search_families', false);
+        $search_locations    = Validator::queryParams($request)->boolean('search_locations', false);
+        $search_repositories = Validator::queryParams($request)->boolean('search_repositories', false);
+        $search_sources      = Validator::queryParams($request)->boolean('search_sources', false);
+        $search_notes        = Validator::queryParams($request)->boolean('search_notes', false);
+
+        // Where to search
+        $search_tree_names = Validator::queryParams($request)->array('search_trees');
 
         $exist_notes = DB::table('other')
             ->where('o_file', '=', $tree->id())
@@ -122,12 +125,8 @@ class SearchGeneralPage implements RequestHandlerInterface
             $all_trees = new Collection([$tree]);
         }
 
-        $search_tree_names = new Collection($params['search_trees'] ?? []);
-
         $search_trees = $all_trees
-            ->filter(static function (Tree $tree) use ($search_tree_names): bool {
-                return $search_tree_names->containsStrict($tree->name());
-            });
+            ->filter(static fn (Tree $tree): bool => in_array($tree->name(), $search_tree_names, true));
 
         if ($search_trees->isEmpty()) {
             $search_trees->add($tree);

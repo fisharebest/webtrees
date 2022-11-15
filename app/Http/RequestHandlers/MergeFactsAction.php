@@ -61,15 +61,11 @@ class MergeFactsAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $xref1 = $params['xref1'] ?? '';
-        $xref2 = $params['xref2'] ?? '';
-
-        $keep1 = $params['keep1'] ?? [];
-        $keep2 = $params['keep2'] ?? [];
+        $tree  = Validator::attributes($request)->tree();
+        $xref1 = Validator::parsedBody($request)->isXref()->string('xref1');
+        $xref2 = Validator::parsedBody($request)->isXref()->string('xref2');
+        $keep1 = Validator::parsedBody($request)->array('keep1');
+        $keep2 = Validator::parsedBody($request)->array('keep2');
 
         // Merge record2 into record1
         $record1 = Registry::gedcomRecordFactory()->make($xref1, $tree);

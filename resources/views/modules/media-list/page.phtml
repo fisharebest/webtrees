@@ -81,7 +81,8 @@ use League\Flysystem\FilesystemOperator;
         <div class="col-sm-3 col-form-label wt-page-options-label"></div>
 
         <div class="col-sm-3 wt-page-options-value">
-            <button type="submit" name="go" value="1" class="btn btn-primary">
+            <input type="hidden" name="page" value="1">
+            <button type="submit" class="btn btn-primary">
                 <?= /* I18N: A button label. */ I18N::translate('search') ?>
             </button>
             <a class="btn btn-secondary" href="<?= e($module->listUrl($tree)) ?>">

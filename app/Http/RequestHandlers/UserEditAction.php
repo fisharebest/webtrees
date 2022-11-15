@@ -71,25 +71,22 @@ class UserEditAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user = Validator::attributes($request)->user();
-
-        $params = (array) $request->getParsedBody();
-
-        $user_id        = (int) $params['user_id'];
-        $username       = $params['username'] ?? '';
-        $real_name      = $params['real_name'] ?? '';
-        $email          = $params['email'] ?? '';
-        $password       = $params['password'] ?? '';
-        $theme          = $params['theme'] ?? '';
-        $language       = $params['language'] ?? '';
-        $timezone       = $params['timezone'] ?? '';
-        $contact_method = $params['contact-method'] ?? '';
-        $comment        = $params['comment'] ?? '';
-        $auto_accept    = (bool) ($params[UserInterface::PREF_AUTO_ACCEPT_EDITS] ?? '');
-        $canadmin       = (bool) ($params[UserInterface::PREF_IS_ADMINISTRATOR] ?? '');
-        $visible_online = (bool) ($params['visible-online'] ?? '');
-        $verified       = (bool) ($params[UserInterface::PREF_IS_EMAIL_VERIFIED] ?? '');
-        $approved       = (bool) ($params['approved'] ?? '');
+        $user           = Validator::attributes($request)->user();
+        $user_id        = Validator::parsedBody($request)->integer('user_id');
+        $username       = Validator::parsedBody($request)->string('username');
+        $real_name      = Validator::parsedBody($request)->string('real_name');
+        $email          = Validator::parsedBody($request)->string('email');
+        $password       = Validator::parsedBody($request)->string('password');
+        $theme          = Validator::parsedBody($request)->string('theme');
+        $language       = Validator::parsedBody($request)->string('language');
+        $timezone       = Validator::parsedBody($request)->string('timezone');
+        $contact_method = Validator::parsedBody($request)->string('contact-method');
+        $comment        = Validator::parsedBody($request)->string('comment');
+        $auto_accept    = Validator::parsedBody($request)->boolean('auto_accept', false);
+        $canadmin       = Validator::parsedBody($request)->boolean('canadmin', false);
+        $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
+        $verified       = Validator::parsedBody($request)->boolean('verified', false);
+        $approved       = Validator::parsedBody($request)->boolean('approved', false);
 
         $edit_user = $this->user_service->find($user_id);
 
@@ -135,9 +132,9 @@ class UserEditAction implements RequestHandlerInterface
         }
 
         foreach ($this->tree_service->all() as $tree) {
-            $path_length = (int) $params['RELATIONSHIP_PATH_LENGTH' . $tree->id()];
-            $gedcom_id   = $params['gedcomid' . $tree->id()] ?? '';
-            $can_edit    = $params['canedit' . $tree->id()] ?? '';
+            $path_length = Validator::parsedBody($request)->integer('RELATIONSHIP_PATH_LENGTH' . $tree->id(), 0);
+            $gedcom_id   = Validator::parsedBody($request)->string('gedcomid' . $tree->id(), '');
+            $can_edit    = Validator::parsedBody($request)->string('canedit' . $tree->id(), '');
 
             // Do not allow a path length to be set if the individual ID is not
             if ($gedcom_id === '') {

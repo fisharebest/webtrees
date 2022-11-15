@@ -40,17 +40,15 @@ class CreateSourceAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params       = (array) $request->getParsedBody();
-        $title        = $params['source-title'];
-        $abbreviation = $params['source-abbreviation'];
-        $author       = $params['source-author'];
-        $publication  = $params['source-publication'];
-        $repository   = $params['source-repository'];
-        $call_number  = $params['source-call-number'];
-        $text         = $params['source-text'];
-        $restriction  = $params['restriction'];
+        $tree         = Validator::attributes($request)->tree();
+        $title        = Validator::parsedBody($request)->string('source-title');
+        $abbreviation = Validator::parsedBody($request)->string('source-abbreviation');
+        $author       = Validator::parsedBody($request)->string('source-author');
+        $publication  = Validator::parsedBody($request)->string('source-publication');
+        $repository   = Validator::parsedBody($request)->string('source-repository');
+        $call_number  = Validator::parsedBody($request)->string('source-call-number');
+        $text         = Validator::parsedBody($request)->string('source-text');
+        $restriction  = Validator::parsedBody($request)->string('restriction');
 
         // Fix non-printing characters
         $title        = trim(preg_replace('/\s+/', ' ', $title));

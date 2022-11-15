@@ -41,12 +41,11 @@ class CreateSubmitterAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $params      = (array) $request->getParsedBody();
-        $name        = $params['submitter_name'];
-        $address     = $params['submitter_address'];
-        $email       = $params['submitter_email'];
-        $phone       = $params['submitter_phone'];
-        $restriction = $params['restriction'];
+        $name        = Validator::parsedBody($request)->string('submitter_name');
+        $address     = Validator::parsedBody($request)->string('submitter_address');
+        $email       = Validator::parsedBody($request)->string('submitter_email');
+        $phone       = Validator::parsedBody($request)->string('submitter_phone');
+        $restriction = Validator::parsedBody($request)->string('restriction');
 
         // Fix non-printing characters
         $name = trim(preg_replace('/\s+/', ' ', $name));

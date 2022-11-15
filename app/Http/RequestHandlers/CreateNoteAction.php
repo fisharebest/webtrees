@@ -41,9 +41,8 @@ class CreateNoteAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $params      = (array) $request->getParsedBody();
-        $note        = $params['note'];
-        $restriction = $params['restriction'];
+        $note        = Validator::parsedBody($request)->string('note');
+        $restriction = Validator::parsedBody($request)->isInArray(['none', 'privacy', 'confidential', 'locked'])->string('restriction');
 
         // Convert HTML line endings to GEDCOM continuations
         $note = strtr($note, ["\r\n" => "\n1 CONT "]);

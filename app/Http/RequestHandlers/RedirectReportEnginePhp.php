@@ -57,14 +57,18 @@ class RedirectReportEnginePhp implements RequestHandlerInterface
     {
         $ged    = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
         $action = Validator::queryParams($request)->string('action', '');
+        $report = Validator::queryParams($request)->string('report');
         $tree   = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree && $action === 'run') {
-            $query  = $request->getQueryParams();
-            $query['report'] = basename(dirname($query['report'] ?? ''));
-            $query['tree']   = $tree->name();
+            $params = [
+                'report'   => basename(dirname($report)),
+                'tree'     => $tree->name(),
+                'varnames' => Validator::queryParams($request)->array('varnames'),
+                'vars'     => Validator::queryParams($request)->array('vars'),
+            ];
 
-            $url = route(ReportGenerate::class, $query);
+            $url = route(ReportGenerate::class, $params);
 
             return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }

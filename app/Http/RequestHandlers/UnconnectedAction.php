@@ -38,17 +38,10 @@ class UnconnectedAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $aliases    = $params['aliases'] ?? '';
-        $associates = $params['associates'] ?? '';
-
         return redirect(route(UnconnectedPage::class, [
-            'aliases'    => $aliases,
-            'associates' => $associates,
-            'tree'       => $tree->name(),
+            'aliases'    => Validator::parsedBody($request)->boolean('aliases', false),
+            'associates' => Validator::parsedBody($request)->boolean('associates', false),
+            'tree'       => Validator::attributes($request)->tree()->name(),
         ]));
     }
 }

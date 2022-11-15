@@ -71,17 +71,14 @@ class EditMediaFileAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = Validator::attributes($request)->tree();
-        $xref    = Validator::attributes($request)->isXref()->string('xref');
-        $fact_id = Validator::attributes($request)->string('fact_id');
-        $data_filesystem = Registry::filesystem()->data();
-
-        $params   = (array) $request->getParsedBody();
-        $folder   = $params['folder'] ?? '';
-        $new_file = $params['new_file'] ?? '';
-        $remote   = $params['remote'] ?? '';
-        $title    = $params['title'] ?? '';
-        $type     = $params['type'] ?? '';
+        $tree     = Validator::attributes($request)->tree();
+        $xref     = Validator::attributes($request)->isXref()->string('xref');
+        $fact_id  = Validator::attributes($request)->string('fact_id');
+        $folder   = Validator::parsedBody($request)->string('folder');
+        $new_file = Validator::parsedBody($request)->string('new_file');
+        $remote   = Validator::parsedBody($request)->string('remote');
+        $title    = Validator::parsedBody($request)->string('title');
+        $type     = Validator::parsedBody($request)->string('type');
         $media    = Registry::mediaFactory()->make($xref, $tree);
         $media    = Auth::checkMediaAccess($media, true);
 
@@ -119,6 +116,8 @@ class EditMediaFileAction implements RequestHandlerInterface
         if ($new_file === '') {
             $file = $media_file->filename();
         }
+
+        $data_filesystem = Registry::filesystem()->data();
 
         $filesystem = $media->tree()->mediaFilesystem($data_filesystem);
         $old        = $media_file->filename();

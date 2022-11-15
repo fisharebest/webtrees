@@ -46,8 +46,8 @@ class FixLevel0MediaActionTest extends TestCase
         $request               = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'tree_id'   => $tree->id(),
             'fact_id'   => '',
-            'indi_xref' => '',
-            'obje_xref' => '',
+            'indi_xref' => 'X1',
+            'obje_xref' => 'X2',
         ]);
         $response              = $handler->handle($request);
 

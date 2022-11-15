@@ -47,8 +47,7 @@ class EditRawFactAction implements RequestHandlerInterface
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record, true);
         $fact_id = Validator::attributes($request)->string('fact_id');
-        $params  = (array) $request->getParsedBody();
-        $gedcom  = $params['gedcom'];
+        $gedcom  = Validator::parsedBody($request)->string('gedcom');
 
         // Cleanup the client’s bad editing?
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines

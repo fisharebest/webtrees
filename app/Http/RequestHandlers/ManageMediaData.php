@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -94,13 +95,13 @@ class ManageMediaData implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $files = $request->getQueryParams()['files']; // local|external|unused
+        $files = Validator::queryParams($request)->isInArray(['local', 'external', 'unused'])->string('files');
 
         // Files within this folder
-        $media_folder = $request->getQueryParams()['media_folder'];
+        $media_folder = Validator::queryParams($request)->string('media_folder');
 
         // Show sub-folders within $media_folder
-        $subfolders = $request->getQueryParams()['subfolders']; // include|exclude
+        $subfolders = Validator::queryParams($request)->isInArray(['include', 'exclude'])->string('subfolders');
 
         $search_columns = ['multimedia_file_refn', 'descriptive_title'];
 

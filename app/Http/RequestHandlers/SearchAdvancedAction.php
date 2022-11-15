@@ -30,8 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 class SearchAdvancedAction implements RequestHandlerInterface
 {
     /**
-     * The standard search.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
@@ -39,11 +37,10 @@ class SearchAdvancedAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $params      = (array) $request->getParsedBody();
-        $fields      = $params['fields'] ?? [];
-        $modifiers   = $params['modifiers'] ?? [];
-        $other_field = $params['other_field'] ?? '';
-        $other_value = $params['other_value'] ?? '';
+        $fields      = Validator::parsedBody($request)->array('fields');
+        $modifiers   = Validator::parsedBody($request)->array('modifiers');
+        $other_field = Validator::parsedBody($request)->string('other_field');
+        $other_value = Validator::parsedBody($request)->string('other_value');
 
         if ($other_field !== '' && $other_value !== '') {
             $fields[$other_field] = $other_value;

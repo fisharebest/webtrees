@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
@@ -37,6 +38,7 @@ use function uksort;
 use function view;
 
 use const EXTR_OVERWRITE;
+use const PHP_INT_MAX;
 
 /**
  * Class TopSurnamesModule
@@ -243,10 +245,11 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $num        = Validator::parsedBody($request)->integer('num');
+        $info_style = Validator::parsedBody($request)->string('infoStyle');
 
-        $this->setBlockSetting($block_id, 'num', $params['num']);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
+        $this->setBlockSetting($block_id, 'num', (string) $num);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
     }
 
     /**

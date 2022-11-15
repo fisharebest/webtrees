@@ -69,11 +69,9 @@ class CensusAssistantModule extends AbstractModule
      */
     public function postCensusHeaderAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $census_class = Validator::parsedBody($request)->string('census');
 
-        $census = $params['census'];
-
-        $html = $this->censusTableHeader(new $census());
+        $html = $this->censusTableHeader(new $census_class());
 
         return response($html);
     }
@@ -85,12 +83,12 @@ class CensusAssistantModule extends AbstractModule
      */
     public function postCensusIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params       = (array) $request->getParsedBody();
-        $individual   = Registry::individualFactory()->make($params['xref'], $tree);
-        $head         = Registry::individualFactory()->make($params['head'], $tree);
-        $census_class = $params['census'];
+        $tree         = Validator::attributes($request)->tree();
+        $indi_xref    = Validator::parsedBody($request)->isXref()->string('xref');
+        $head_xref    = Validator::parsedBody($request)->isXref()->string('head');
+        $individual   = Registry::individualFactory()->make($indi_xref, $tree);
+        $head         = Registry::individualFactory()->make($head_xref, $tree);
+        $census_class = Validator::parsedBody($request)->string('census');
         $census       = new $census_class();
 
         // No head of household?  Create a fake one.
@@ -131,14 +129,12 @@ class CensusAssistantModule extends AbstractModule
      */
     public function updateCensusAssistant(ServerRequestInterface $request, Individual $individual, string $fact_id, string $newged, bool $keep_chan): string
     {
-        $params = (array) $request->getParsedBody();
-
-        $ca_title       = $params['ca_title'] ?? '';
-        $ca_place       = $params['ca_place'] ?? '';
-        $ca_citation    = $params['ca_citation'] ?? '';
-        $ca_individuals = $params['ca_individuals'] ?? [];
-        $ca_notes       = $params['ca_notes'] ?? '';
-        $ca_census      = $params['ca_census'] ?? '';
+        $ca_title       = Validator::parsedBody($request)->string('ca_title');
+        $ca_place       = Validator::parsedBody($request)->string('ca_place');
+        $ca_citation    = Validator::parsedBody($request)->string('ca_citation');
+        $ca_individuals = Validator::parsedBody($request)->array('ca_individuals');
+        $ca_notes       = Validator::parsedBody($request)->string('ca_notes');
+        $ca_census      = Validator::parsedBody($request)->string('ca_census');
 
         if ($ca_census !== '' && $ca_individuals !== []) {
             $census = new $ca_census();

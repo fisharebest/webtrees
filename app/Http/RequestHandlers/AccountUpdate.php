@@ -64,16 +64,14 @@ class AccountUpdate implements RequestHandlerInterface
 
         assert($user instanceof User);
 
-        $params = (array) $request->getParsedBody();
-
-        $contact_method = $params['contact-method'];
-        $email          = $params['email'];
-        $language       = $params['language'];
-        $real_name      = $params['real_name'];
-        $password       = $params['password'];
-        $time_zone      = $params['timezone'];
-        $user_name      = $params['user_name'];
-        $visible_online = $params['visible-online'] ?? '';
+        $contact_method = Validator::parsedBody($request)->string('contact-method');
+        $email          = Validator::parsedBody($request)->string('email');
+        $language       = Validator::parsedBody($request)->string('language');
+        $real_name      = Validator::parsedBody($request)->string('real_name');
+        $password       = Validator::parsedBody($request)->string('password');
+        $time_zone      = Validator::parsedBody($request)->string('timezone');
+        $user_name      = Validator::parsedBody($request)->string('user_name');
+        $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
 
         // Change the password
         if ($password !== '') {
@@ -102,10 +100,10 @@ class AccountUpdate implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);
         $user->setPreference(UserInterface::PREF_LANGUAGE, $language);
         $user->setPreference(UserInterface::PREF_TIME_ZONE, $time_zone);
-        $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, $visible_online);
+        $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
 
         if ($tree instanceof Tree) {
-            $default_xref = $params['default-xref'];
+            $default_xref = Validator::parsedBody($request)->string('default-xref');
             $tree->setUserPreference($user, UserInterface::PREF_TREE_DEFAULT_XREF, $default_xref);
         }
 

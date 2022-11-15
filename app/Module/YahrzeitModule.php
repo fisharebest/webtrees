@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
@@ -231,11 +232,13 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $days       = Validator::parsedBody($request)->string('days', self::DEFAULT_DAYS);
+        $info_style = Validator::parsedBody($request)->string('infoStyle', self::DEFAULT_STYLE);
+        $calendar   = Validator::parsedBody($request)->string('calendar', self::DEFAULT_CALENDAR);
 
-        $this->setBlockSetting($block_id, 'days', $params['days'] ?? self::DEFAULT_DAYS);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle'] ?? self::DEFAULT_STYLE);
-        $this->setBlockSetting($block_id, 'calendar', $params['calendar'] ?? self::DEFAULT_CALENDAR);
+        $this->setBlockSetting($block_id, 'days', $days);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
+        $this->setBlockSetting($block_id, 'calendar', $calendar);
     }
 
     /**

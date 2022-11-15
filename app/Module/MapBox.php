@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -89,9 +90,9 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $api_key = Validator::parsedBody($request)->string('api_key');
 
-        $this->setPreference('api_key', $params['api_key'] ?? '');
+        $this->setPreference('api_key', $api_key);
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 

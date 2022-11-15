@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -81,6 +82,8 @@ class FixLevel0MediaData implements RequestHandlerInterface
 
         $prefix = DB::connection()->getTablePrefix();
 
+        $search = Validator::queryParams($request)->array('search')['value'] ?? '';
+
         $query = DB::table('media')
             ->join('media_file', static function (JoinClause $join): void {
                 $join
@@ -102,7 +105,7 @@ class FixLevel0MediaData implements RequestHandlerInterface
             ->orderBy('individuals.i_file')
             ->orderBy('individuals.i_id')
             ->orderBy('media.m_id')
-            ->where('descriptive_title', 'LIKE', '%' . addcslashes($request->getQueryParams()['search']['value'] ?? '', '\\%_') . '%')
+            ->where('descriptive_title', 'LIKE', '%' . addcslashes($search, '\\%_') . '%')
             ->select(['media.m_file', 'media.m_id', 'media.m_gedcom', 'individuals.i_id', 'individuals.i_gedcom']);
 
         return $this->datatables_service->handleQuery($request, $query, [], [], function (object $datum) use ($ignore_facts): array {

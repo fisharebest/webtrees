@@ -47,11 +47,9 @@ class MergeFactsPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = Validator::attributes($request)->tree();
-
-        $xref1 = $request->getQueryParams()['xref1'] ?? '';
-        $xref2 = $request->getQueryParams()['xref2'] ?? '';
-
+        $tree  = Validator::attributes($request)->tree();
+        $xref1 = Validator::queryParams($request)->isXref()->string('xref1');
+        $xref2 = Validator::queryParams($request)->isXref()->string('xref2');
         $title = I18N::translate('Merge records') . ' — ' . e($tree->title());
 
         $record1 = Registry::gedcomRecordFactory()->make($xref1, $tree);

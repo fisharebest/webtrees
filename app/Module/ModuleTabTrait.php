@@ -130,8 +130,7 @@ trait ModuleTabTrait
     {
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
-
-        $xref = $request->getQueryParams()['xref'];
+        $xref = Validator::queryParams($request)->isXref()->string('xref');
 
         $record = Registry::individualFactory()->make($xref, $tree);
         $record = Auth::checkIndividualAccess($record);

@@ -67,7 +67,7 @@ class AddNewFact implements RequestHandlerInterface
             throw new HttpAccessDeniedException();
         }
 
-        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
+        $include_hidden = Validator::queryParams($request)->boolean('include_hidden', false);
 
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record, true);

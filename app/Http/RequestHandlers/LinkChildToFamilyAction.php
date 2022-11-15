@@ -45,15 +45,11 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
         $xref       = Validator::attributes($request)->isXref()->string('xref');
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
-
-        $params = (array) $request->getParsedBody();
-
-        $famid = $params['famid'];
+        $famid      = Validator::parsedBody($request)->isXref()->string('famid');
+        $PEDI       = Validator::parsedBody($request)->string('PEDI');
 
         $family = Registry::familyFactory()->make($famid, $tree);
         $family = Auth::checkFamilyAccess($family, true);
-
-        $PEDI = $params['PEDI'];
 
         // Replace any existing child->family link (we may be changing the PEDI);
         $fact_id = '';

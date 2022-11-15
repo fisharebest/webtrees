@@ -38,15 +38,10 @@ class SelectNewFact implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $params = (array) $request->getParsedBody();
-        $fact   = $params['fact'];
-
         return redirect(route(AddNewFact::class, [
-            'tree' => $tree->name(),
-            'xref' => $xref,
-            'fact' => $fact,
+            'tree' => Validator::attributes($request)->tree()->name(),
+            'xref' => Validator::attributes($request)->isXref()->string('xref'),
+            'fact' => Validator::parsedBody($request)->string('fact'),
         ]));
     }
 }

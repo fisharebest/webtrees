@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Closure;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
@@ -49,11 +50,11 @@ class DatatablesService
      */
     public function handleCollection(ServerRequestInterface $request, Collection $collection, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
-        $search = $request->getQueryParams()['search']['value'] ?? '';
-        $start  = (int) ($request->getQueryParams()['start'] ?? 0);
-        $length = (int) ($request->getQueryParams()['length'] ?? 0);
-        $order  = $request->getQueryParams()['order'] ?? [];
-        $draw   = (int) ($request->getQueryParams()['draw'] ?? 0);
+        $search = Validator::queryParams($request)->array('search')['value'] ?? '';
+        $start  = Validator::queryParams($request)->integer('start', 0);
+        $length = Validator::queryParams($request)->integer('length', 0);
+        $order  = Validator::queryParams($request)->array('order');
+        $draw   = Validator::queryParams($request)->integer('draw', 0);
 
         // Count unfiltered records
         $recordsTotal = $collection->count();
@@ -125,11 +126,11 @@ class DatatablesService
      */
     public function handleQuery(ServerRequestInterface $request, Builder $query, array $search_columns, array $sort_columns, Closure $callback): ResponseInterface
     {
-        $search = $request->getQueryParams()['search']['value'] ?? '';
-        $start  = (int) ($request->getQueryParams()['start'] ?? 0);
-        $length = (int) ($request->getQueryParams()['length'] ?? 0);
-        $order  = $request->getQueryParams()['order'] ?? [];
-        $draw   = (int) ($request->getQueryParams()['draw'] ?? 0);
+        $search = Validator::queryParams($request)->array('search')['value'] ?? '';
+        $start  = Validator::queryParams($request)->integer('start', 0);
+        $length = Validator::queryParams($request)->integer('length', 0);
+        $order  = Validator::queryParams($request)->array('order');
+        $draw   = Validator::queryParams($request)->integer('draw', 0);
 
         // Count unfiltered records
         $recordsTotal = (clone $query)->count();

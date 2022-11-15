@@ -369,9 +369,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function postRemoveAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $xref = Validator::queryParams($request)->isXref()->string('xref');
         $cart = Session::get('cart');
         $cart = is_array($cart) ? $cart : [];
 
@@ -442,10 +440,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::queryParams($request)->isXref()->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family);
         $name   = $family->fullName();
@@ -475,12 +471,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $xref   = $params['xref'] ?? '';
-        $option = $params['option'] ?? '';
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::parsedBody($request)->isXref()->string('xref');
+        $option = Validator::parsedBody($request)->string('option');
 
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family);
@@ -540,10 +533,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree       = Validator::attributes($request)->tree();
+        $xref       = Validator::queryParams($request)->isXref()->string('xref');
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual);
         $name       = $individual->fullName();
@@ -585,12 +576,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $xref   = $params['xref'] ?? '';
-        $option = $params['option'] ?? '';
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::parsedBody($request)->isXref()->string('xref');
+        $option = Validator::parsedBody($request)->string('option');
 
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual);
@@ -671,10 +659,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddLocationAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree     = Validator::attributes($request)->tree();
+        $xref     = Validator::queryParams($request)->isXref()->string('xref');
         $location = Registry::locationFactory()->make($xref, $tree);
         $location = Auth::checkLocationAccess($location);
         $name     = $location->fullName();
@@ -700,10 +686,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddLocationAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree     = Validator::attributes($request)->tree();
+        $xref     = Validator::queryParams($request)->isXref()->string('xref');
         $location = Registry::locationFactory()->make($xref, $tree);
         $location = Auth::checkLocationAccess($location);
 
@@ -719,10 +703,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddMediaAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree  = Validator::attributes($request)->tree();
+        $xref  = Validator::queryParams($request)->isXref()->string('xref');
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);
         $name  = $media->fullName();
@@ -748,10 +730,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddMediaAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree  = Validator::attributes($request)->tree();
+        $xref  = Validator::queryParams($request)->isXref()->string('xref');
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);
 
@@ -768,9 +748,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function getAddNoteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $xref = Validator::queryParams($request)->isXref()->string('xref');
         $note = Registry::noteFactory()->make($xref, $tree);
         $note = Auth::checkNoteAccess($note);
         $name = $note->fullName();
@@ -797,9 +775,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     public function postAddNoteAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $xref = Validator::queryParams($request)->isXref()->string('xref');
         $note = Registry::noteFactory()->make($xref, $tree);
         $note = Auth::checkNoteAccess($note);
 
@@ -815,10 +791,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree       = Validator::attributes($request)->tree();
+        $xref       = Validator::queryParams($request)->isXref()->string('xref');
         $repository = Registry::repositoryFactory()->make($xref, $tree);
         $repository = Auth::checkRepositoryAccess($repository);
         $name       = $repository->fullName();
@@ -844,10 +818,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree       = Validator::attributes($request)->tree();
+        $xref       = Validator::queryParams($request)->isXref()->string('xref');
         $repository = Registry::repositoryFactory()->make($xref, $tree);
         $repository = Auth::checkRepositoryAccess($repository);
 
@@ -867,10 +839,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddSourceAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::queryParams($request)->isXref()->string('xref');
         $source = Registry::sourceFactory()->make($xref, $tree);
         $source = Auth::checkSourceAccess($source);
         $name   = $source->fullName();
@@ -897,12 +867,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddSourceAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $xref   = $params['xref'] ?? '';
-        $option = $params['option'] ?? '';
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::parsedBody($request)->isXref()->string('xref');
+        $option = Validator::parsedBody($request)->string('option');
 
         $source = Registry::sourceFactory()->make($xref, $tree);
         $source = Auth::checkSourceAccess($source);
@@ -928,10 +895,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddSubmitterAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree      = Validator::attributes($request)->tree();
+        $xref      = Validator::queryParams($request)->isXref()->string('xref');
         $submitter = Registry::submitterFactory()->make($xref, $tree);
         $submitter = Auth::checkSubmitterAccess($submitter);
         $name      = $submitter->fullName();
@@ -957,10 +922,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddSubmitterAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree      = Validator::attributes($request)->tree();
+        $xref      = Validator::queryParams($request)->isXref()->string('xref');
         $submitter = Registry::submitterFactory()->make($xref, $tree);
         $submitter = Auth::checkSubmitterAccess($submitter);
 

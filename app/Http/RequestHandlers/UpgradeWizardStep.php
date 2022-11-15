@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -119,8 +120,7 @@ class UpgradeWizardStep implements RequestHandlerInterface
         $zip_file   = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
         $zip_folder = Webtrees::ROOT_DIR . self::UPGRADE_FOLDER;
 
-
-        $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
+        $step = Validator::queryParams($request)->string('step', self::STEP_CHECK);
 
         switch ($step) {
             case self::STEP_CHECK:
@@ -133,7 +133,7 @@ class UpgradeWizardStep implements RequestHandlerInterface
                 return $this->wizardStepPending();
 
             case self::STEP_EXPORT:
-                $tree_name = $request->getQueryParams()['tree'] ?? '';
+                $tree_name = Validator::queryParams($request)->string('tree_name');
                 $tree      = $this->tree_service->all()[$tree_name];
                 assert($tree instanceof Tree);
 

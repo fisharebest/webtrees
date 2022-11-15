@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -39,8 +40,7 @@ class AdminMediaFileThumbnail implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $filesystem = Registry::filesystem()->data();
-        $params     = $request->getQueryParams();
-        $path       = $params['path'] ?? '';
+        $path       = Validator::queryParams($request)->string('path');
 
         return Registry::imageFactory()->thumbnailResponse($filesystem, $path, 120, 120, 'contain');
     }

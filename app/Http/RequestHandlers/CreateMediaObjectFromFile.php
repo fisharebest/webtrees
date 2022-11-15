@@ -36,7 +36,7 @@ class CreateMediaObjectFromFile implements RequestHandlerInterface
     private PendingChangesService $pending_changes_service;
 
     /**
-     * CreateMediaObjectFromFileAction constructor.
+     * CreateMediaObjectFromFile constructor.
      *
      * @param MediaFileService      $media_file_service
      * @param PendingChangesService $pending_changes_service
@@ -55,11 +55,10 @@ class CreateMediaObjectFromFile implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
-        $params = (array) $request->getParsedBody();
-        $file   = $params['file'] ?? '';
-        $type   = $params['type'] ?? '';
-        $title  = $params['title'] ?? '';
-        $note   = $params['note'] ?? '';
+        $file   = Validator::parsedBody($request)->string('file');
+        $type   = Validator::parsedBody($request)->string('type');
+        $title  = Validator::parsedBody($request)->string('title');
+        $note   = Validator::parsedBody($request)->string('note');
 
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
 

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -51,10 +52,8 @@ class UserPageDefaultUpdate implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
-        $main_blocks = new Collection($params[ModuleBlockInterface::MAIN_BLOCKS] ?? []);
-        $side_blocks = new Collection($params[ModuleBlockInterface::SIDE_BLOCKS] ?? []);
+        $main_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::MAIN_BLOCKS));
+        $side_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::SIDE_BLOCKS));
 
         $this->home_page_service->updateUserBlocks(-1, $main_blocks, $side_blocks);
 

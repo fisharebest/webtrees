@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -158,10 +159,11 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $num        = Validator::parsedBody($request)->integer('num');
+        $info_style = Validator::parsedBody($request)->string('infoStyle');
 
-        $this->setBlockSetting($block_id, 'num', $params['num']);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
+        $this->setBlockSetting($block_id, 'num', (string) $num);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
     }
 
     /**
@@ -174,7 +176,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
-        $num        = $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+        $num        = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
         $info_style = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         $info_styles = [

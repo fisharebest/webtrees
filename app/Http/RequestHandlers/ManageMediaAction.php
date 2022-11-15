@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -38,12 +39,10 @@ class ManageMediaAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         return redirect(route(ManageMediaPage::class, [
-            'files'        => $params['files'],
-            'media_folder' => $params['media_folder'] ?? '',
-            'subfolders'   => $params['subfolders'] ?? 'include',
+            'files'        => Validator::parsedBody($request)->string('files'),
+            'media_folder' => Validator::parsedBody($request)->string('media_folder'),
+            'subfolders'   => Validator::parsedBody($request)->string('subfolders'),
         ]));
     }
 }

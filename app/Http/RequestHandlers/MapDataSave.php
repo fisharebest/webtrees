@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,14 +44,13 @@ class MapDataSave implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $parent_id = Validator::parsedBody($request)->string('parent_id');
+        $place_id  = Validator::parsedBody($request)->string('place_id');
+        $latitude  = Validator::parsedBody($request)->string('new_place_lati');
+        $longitude = Validator::parsedBody($request)->string('new_place_long');
+        $name      = Validator::parsedBody($request)->string('new_place_name');
 
-        $parent_id = $params['parent_id'] ?? '';
-        $place_id  = $params['place_id'] ?? '';
-        $latitude  = $params['new_place_lati'] ?? '';
-        $longitude = $params['new_place_long'] ?? '';
-        $name      = mb_substr($params['new_place_name'] ?? '', 0, 120);
-
+        $name      = mb_substr($name, 0, 120);
         $place_id  = $place_id === '' ? null : $place_id;
         $parent_id = $parent_id === '' ? null : $parent_id;
 

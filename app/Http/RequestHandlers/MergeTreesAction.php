@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -63,9 +64,8 @@ class MergeTreesAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params     = (array) $request->getParsedBody();
-        $tree1_name = $params['tree1_name'] ?? '';
-        $tree2_name = $params['tree2_name'] ?? '';
+        $tree1_name = Validator::parsedBody($request)->string('tree1_name');
+        $tree2_name = Validator::parsedBody($request)->string('tree2_name');
 
         $tree1 = $this->tree_service->all()->get($tree1_name);
         $tree2 = $this->tree_service->all()->get($tree2_name);

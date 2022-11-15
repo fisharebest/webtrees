@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -59,9 +60,8 @@ class MergeTreesPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $params     = $request->getQueryParams();
-        $tree1_name = $params['tree1_name'] ?? '';
-        $tree2_name = $params['tree2_name'] ?? '';
+        $tree1_name = Validator::queryParams($request)->string('tree1_name', '');
+        $tree2_name = Validator::queryParams($request)->string('tree2_name', '');
 
         $tree1 = $this->tree_service->all()->get($tree1_name);
         $tree2 = $this->tree_service->all()->get($tree2_name);
