@@ -53,7 +53,7 @@ class TreePageBlock implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
-        $block_id = $request->getQueryParams()['block_id'];
+        $block_id = Validator::queryParams($request)->integer('block_id');
 
         $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)

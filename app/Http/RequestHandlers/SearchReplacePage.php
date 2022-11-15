@@ -42,14 +42,16 @@ class SearchReplacePage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $params = $request->getQueryParams();
-        $title  = I18N::translate('Search and replace');
+        $tree    = Validator::attributes($request)->tree();
+        $context = Validator::queryParams($request)->string('context', 'all');
+        $replace = Validator::queryParams($request)->string('replace', '');
+        $search  = Validator::queryParams($request)->string('search', '');
+        $title   = I18N::translate('Search and replace');
 
         return $this->viewResponse('search-replace-page', [
-            'context' => $params['context'] ?? 'all',
-            'replace' => $params['replace'] ?? '',
-            'search'  => $params['search'] ?? '',
+            'context' => $context,
+            'replace' => $replace,
+            'search'  => $search,
             'title'   => $title,
             'tree'    => $tree,
         ]);

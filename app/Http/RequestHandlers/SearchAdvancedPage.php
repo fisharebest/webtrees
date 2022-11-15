@@ -123,8 +123,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
     private SearchService $search_service;
 
     /**
-     * SearchController constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(SearchService $search_service)
@@ -133,26 +131,19 @@ class SearchAdvancedPage implements RequestHandlerInterface
     }
 
     /**
-     * A structured search.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
+        $tree           = Validator::attributes($request)->tree();
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
-
-        $params = $request->getQueryParams();
-
-        $fields    = $params['fields'] ?? $default_fields;
-        $modifiers = $params['modifiers'] ?? [];
-
-        $other_fields = $this->otherFields($fields);
-        $date_options = $this->dateOptions();
-        $name_options = $this->nameOptions();
+        $fields         = Validator::queryParams($request)->array('fields') ?: $default_fields;
+        $modifiers      = Validator::queryParams($request)->array('modifiers');
+        $other_fields   = $this->otherFields($fields);
+        $date_options   = $this->dateOptions();
+        $name_options   = $this->nameOptions();
 
         if (array_filter($fields) !== []) {
             $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $fields, $modifiers);

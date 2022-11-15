@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -58,10 +59,10 @@ class ManageMediaPage implements RequestHandlerInterface
         $data_filesystem      = Registry::filesystem()->data();
         $data_filesystem_name = Registry::filesystem()->dataName();
 
-        $files         = $request->getQueryParams()['files'] ?? 'local'; // local|unused|external
-        $subfolders    = $request->getQueryParams()['subfolders'] ?? 'include'; // include|exclude
+        $files         = Validator::queryParams($request)->isInArray(['local', 'external', 'unused'])->string('files', 'local');
+        $subfolders    = Validator::queryParams($request)->isInArray(['include', 'exclude'])->string('subfolders', 'exclude');
         $media_folders = $this->media_file_service->allMediaFolders($data_filesystem);
-        $media_folder  = $request->getQueryParams()['media_folder'] ?? $media_folders->first() ?? '';
+        $media_folder  = Validator::queryParams($request)->string('media_folder', $media_folders->first() ?? '');
         $media_types   = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
 
         $title = I18N::translate('Manage media');

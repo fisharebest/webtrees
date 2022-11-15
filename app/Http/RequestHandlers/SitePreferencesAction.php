@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -41,24 +42,26 @@ class SitePreferencesAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $index_directory     = Validator::parsedBody($request)->string('INDEX_DIRECTORY');
+        $allow_change_gedcom = Validator::parsedBody($request)->boolean('ALLOW_CHANGE_GEDCOM');
+        $language            = Validator::parsedBody($request)->string('LANGUAGE');
+        $theme_dir           = Validator::parsedBody($request)->string('THEME_DIR');
+        $timezone            = Validator::parsedBody($request)->string('TIMEZONE');
 
-        $INDEX_DIRECTORY = $params['INDEX_DIRECTORY'];
-
-        if (!str_ends_with($INDEX_DIRECTORY, '/')) {
-            $INDEX_DIRECTORY .= '/';
+        if (!str_ends_with($index_directory, '/')) {
+            $index_directory .= '/';
         }
 
-        if (is_dir($INDEX_DIRECTORY)) {
-            Site::setPreference('INDEX_DIRECTORY', $INDEX_DIRECTORY);
+        if (is_dir($index_directory)) {
+            Site::setPreference('INDEX_DIRECTORY', $index_directory);
         } else {
-            FlashMessages::addMessage(I18N::translate('The folder “%s” does not exist.', e($INDEX_DIRECTORY)), 'danger');
+            FlashMessages::addMessage(I18N::translate('The folder “%s” does not exist.', e($index_directory)), 'danger');
         }
 
-        Site::setPreference('ALLOW_CHANGE_GEDCOM', $params['ALLOW_CHANGE_GEDCOM']);
-        Site::setPreference('LANGUAGE', $params['LANGUAGE']);
-        Site::setPreference('THEME_DIR', $params['THEME_DIR']);
-        Site::setPreference('TIMEZONE', $params['TIMEZONE']);
+        Site::setPreference('ALLOW_CHANGE_GEDCOM', (string) $allow_change_gedcom);
+        Site::setPreference('LANGUAGE', $language);
+        Site::setPreference('THEME_DIR', $theme_dir);
+        Site::setPreference('TIMEZONE', $timezone);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
         $url = route(ControlPanel::class);

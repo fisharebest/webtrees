@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -221,18 +222,21 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      * Update the configuration for a block.
      *
      * @param ServerRequestInterface $request
-     * @param int     $block_id
+     * @param int                    $block_id
      *
      * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $filter     = Validator::parsedBody($request)->string('filter');
+        $info_style = Validator::parsedBody($request)->string('infoStyle');
+        $sort_style = Validator::parsedBody($request)->string('sortStyle');
+        $events     = Validator::parsedBody($request)->array('events');
 
-        $this->setBlockSetting($block_id, 'filter', $params['filter']);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
-        $this->setBlockSetting($block_id, 'sortStyle', $params['sortStyle']);
-        $this->setBlockSetting($block_id, 'events', implode(',', $params['events'] ?? []));
+        $this->setBlockSetting($block_id, 'filter', $filter);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
+        $this->setBlockSetting($block_id, 'sortStyle', $sort_style);
+        $this->setBlockSetting($block_id, 'events', implode(',', $events));
     }
 
     /**

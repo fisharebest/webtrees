@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToWriteFile;
@@ -69,10 +70,7 @@ class UploadMediaAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
-
-        $params = (array) $request->getParsedBody();
-
-        $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
+        $all_folders     = $this->media_file_service->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
             if ($uploaded_file->getError() === UPLOAD_ERR_NO_FILE) {
@@ -83,10 +81,9 @@ class UploadMediaAction implements RequestHandlerInterface
                 throw new FileUploadException($uploaded_file);
             }
 
-            $key = substr($key, 9);
-
-            $folder   = $params['folder' . $key];
-            $filename = $params['filename' . $key];
+            $key      = substr($key, 9);
+            $folder   = Validator::parsedBody($request)->string('folder' . $key);
+            $filename = Validator::parsedBody($request)->string('filename' . $key);
 
             // If no filename specified, use the original filename.
             if ($filename === '') {

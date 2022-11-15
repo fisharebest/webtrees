@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -228,10 +229,11 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $type = Validator::parsedBody($request)->string('type');
+        $xref = Validator::parsedBody($request)->isXref()->string('xref');
 
-        $this->setBlockSetting($block_id, 'type', $params['type'] ?? 'pedigree');
-        $this->setBlockSetting($block_id, 'pid', $params['xref'] ?? '');
+        $this->setBlockSetting($block_id, 'type', $type);
+        $this->setBlockSetting($block_id, 'pid', $xref);
     }
 
     /**

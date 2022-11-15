@@ -163,10 +163,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         foreach ($this->tree_service->all() as $tree) {
-            $include_in_sitemap = (bool) ($params['sitemap' . $tree->id()] ?? false);
+            $include_in_sitemap = Validator::parsedBody($request)->boolean('sitemap' . $tree->id(), false);
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
 

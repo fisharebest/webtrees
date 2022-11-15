@@ -60,10 +60,9 @@ class SearchReplaceAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();
-        $params  = (array) $request->getParsedBody();
-        $search  = $params['search'] ?? '';
-        $replace = $params['replace'] ?? '';
-        $context = $params['context'] ?? 'all';
+        $search  = Validator::parsedBody($request)->string('search');
+        $replace = Validator::parsedBody($request)->string('replace');
+        $context = Validator::parsedBody($request)->string('context');
 
         switch ($context) {
             case 'all':

@@ -192,7 +192,7 @@ class UpgradeWizardStepTest extends TestCase
             new UpgradeService(new TimeoutService())
         );
 
-        $request  = self::createRequest()->withQueryParams(['step' => 'Export', 'tree' => $tree->name()]);
+        $request  = self::createRequest()->withQueryParams(['step' => 'Export', 'tree_name' => $tree->name()]);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

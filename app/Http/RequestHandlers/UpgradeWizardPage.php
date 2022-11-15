@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -74,7 +75,7 @@ class UpgradeWizardPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $continue = $request->getQueryParams()['continue'] ?? '';
+        $continue = Validator::queryParams($request)->string('continue', '');
 
         $title = I18N::translate('Upgrade wizard');
 

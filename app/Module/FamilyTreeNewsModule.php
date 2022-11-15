@@ -162,9 +162,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             throw new HttpAccessDeniedException();
         }
 
-        $news_id = $request->getQueryParams()['news_id'] ?? '';
+        $news_id = Validator::queryParams($request)->integer('news_id', 0);
 
-        if ($news_id !== '') {
+        if ($news_id !== 0) {
             $row = DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id())
@@ -205,17 +205,14 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             throw new HttpAccessDeniedException();
         }
 
-        $news_id = $request->getQueryParams()['news_id'] ?? '';
-
-        $params = (array) $request->getParsedBody();
-
-        $subject = $params['subject'];
-        $body    = $params['body'];
+        $news_id = Validator::queryParams($request)->integer('news_id', 0);
+        $subject = Validator::parsedBody($request)->string('subject');
+        $body    = Validator::parsedBody($request)->string('body');
 
         $subject = $this->html_service->sanitize($subject);
         $body    = $this->html_service->sanitize($body);
 
-        if ($news_id > 0) {
+        if ($news_id !== 0) {
             DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id())
@@ -244,9 +241,8 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function postDeleteNewsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $news_id = $request->getQueryParams()['news_id'];
+        $tree    = Validator::attributes($request)->tree();
+        $news_id = Validator::queryParams($request)->integer('news_id');
 
         if (!Auth::isManager($tree)) {
             throw new HttpAccessDeniedException();

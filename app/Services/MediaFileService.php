@@ -168,13 +168,11 @@ class MediaFileService
         $tree = Validator::attributes($request)->tree();
 
         $data_filesystem = Registry::filesystem()->data();
-
-        $params        = (array) $request->getParsedBody();
-        $file_location = $params['file_location'];
+        $file_location   = Validator::parsedBody($request)->string('file_location');
 
         switch ($file_location) {
             case 'url':
-                $remote = $params['remote'];
+                $remote = Validator::parsedBody($request)->string('remote');
 
                 if (str_contains($remote, '://')) {
                     return $remote;
@@ -183,7 +181,7 @@ class MediaFileService
                 return '';
 
             case 'unused':
-                $unused = $params['unused'];
+                $unused = Validator::parsedBody($request)->string('unused');
 
                 if ($tree->mediaFilesystem($data_filesystem)->fileExists($unused)) {
                     return $unused;
@@ -192,10 +190,9 @@ class MediaFileService
                 return '';
 
             case 'upload':
-            default:
-                $folder   = $params['folder'];
-                $auto     = $params['auto'];
-                $new_file = $params['new_file'];
+                $folder   = Validator::parsedBody($request)->string('folder');
+                $auto     = Validator::parsedBody($request)->string('auto');
+                $new_file = Validator::parsedBody($request)->string('new_file');
 
                 $uploaded_file = $request->getUploadedFiles()['file'] ?? null;
 
@@ -235,6 +232,8 @@ class MediaFileService
                     return '';
                 }
         }
+
+        return '';
     }
 
     /**

@@ -83,8 +83,8 @@ class ReportGenerate implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $varnames  = $request->getQueryParams()['varnames'] ?? [];
-        $vars      = $request->getQueryParams()['vars'] ?? [];
+        $varnames  = Validator::queryParams($request)->array('varnames');
+        $vars      = Validator::queryParams($request)->array('vars');
         $variables = [];
 
         foreach ($varnames as $name) {
@@ -92,9 +92,8 @@ class ReportGenerate implements RequestHandlerInterface
         }
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
-
-        $format      = $request->getQueryParams()['format'] ?? '';
-        $destination = $request->getQueryParams()['destination'] ?? '';
+        $format       = Validator::queryParams($request)->string('format');
+        $destination  = Validator::queryParams($request)->string('destination');
 
         $user->setPreference('default-report-destination', $destination);
         $user->setPreference('default-report-format', $format);

@@ -43,11 +43,8 @@ class SearchQuickAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $query = $params['query'] ?? '';
+        $tree  = Validator::attributes($request)->tree();
+        $query = Validator::parsedBody($request)->string('query');
 
         // Was the search query an XREF in the current tree?
         // If so, go straight to it.

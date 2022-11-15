@@ -166,8 +166,15 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
-        return redirect($this->listUrl($tree, $request->getQueryParams()));
+        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
+
+        return redirect($this->listUrl($tree, [
+            'soundex_dm'  => Validator::queryParams($request)->boolean('soundex_dm'),
+            'soundex_std' => Validator::queryParams($request)->boolean('soundex_std'),
+            'surname'     => 'x' . Validator::queryParams($request)->string('surname'),
+        ]));
     }
 
     /**
@@ -184,15 +191,17 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect($this->listUrl($tree, (array) $request->getParsedBody()));
+            return redirect($this->listUrl($tree, [
+                'soundex_dm'  => Validator::parsedBody($request)->boolean('soundex_dm', false),
+                'soundex_std' => Validator::parsedBody($request)->boolean('soundex_std', false),
+                'surname'     => Validator::parsedBody($request)->string('surname'),
+            ]));
         }
 
-        $surname = (string) $request->getAttribute('surname');
-
-        $params      = $request->getQueryParams();
+        $surname     = Validator::attributes($request)->string('surname', '');
+        $soundex_std = Validator::queryParams($request)->boolean('soundex_std', false);
+        $soundex_dm  = Validator::queryParams($request)->boolean('soundex_dm', false);
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
-        $soundex_std = (bool) ($params['soundex_std'] ?? false);
-        $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         if ($ajax) {
             $this->layout = 'layouts/ajax';
@@ -222,7 +231,12 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             /* I18N: %s is a surname */
             $title = I18N::translate('Branches of the %s family', e($surname));
 
-            $ajax_url = $this->listUrl($tree, $params + ['ajax' => true, 'surname' => $surname]);
+            $ajax_url = $this->listUrl($tree, [
+                'ajax'        => true,
+                'soundex_dm'  => $soundex_dm,
+                'soundex_std' => $soundex_std,
+                'surname'     => $surname,
+            ]);
         } else {
             /* I18N: Branches of a family tree */
             $title = I18N::translate('Branches');

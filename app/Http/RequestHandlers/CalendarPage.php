@@ -58,13 +58,13 @@ class CalendarPage implements RequestHandlerInterface
     {
         $tree     = Validator::attributes($request)->tree();
         $view     = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
-        $cal      = $request->getQueryParams()['cal'] ?? '';
-        $day      = $request->getQueryParams()['day'] ?? '';
-        $month    = $request->getQueryParams()['month'] ?? '';
-        $year     = $request->getQueryParams()['year'] ?? '';
-        $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
-        $filterof = $request->getQueryParams()['filterof'] ?? 'all';
-        $filtersx = $request->getQueryParams()['filtersx'] ?? '';
+        $cal      = Validator::queryParams($request)->string('cal', '');
+        $day      = Validator::queryParams($request)->string('day', '');
+        $month    = Validator::queryParams($request)->string('month', '');
+        $year     = Validator::queryParams($request)->string('year', '');
+        $filterev = Validator::queryParams($request)->string('filterev', 'BIRT-MARR-DEAT');
+        $filterof = Validator::queryParams($request)->string('filterof', 'all');
+        $filtersx = Validator::queryParams($request)->string('filtersx', '');
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar

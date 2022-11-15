@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,9 +44,7 @@ class ModuleDeleteSettings implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
-        $module_name = $params['module_name'] ?? '';
+        $module_name = Validator::parsedBody($request)->string('module_name');
 
         DB::table('block_setting')
             ->join('block', 'block_setting.block_id', '=', 'block.block_id')

@@ -66,9 +66,8 @@ class AddMediaFileAction implements RequestHandlerInterface
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $media  = Registry::mediaFactory()->make($xref, $tree);
         $media  = Auth::checkMediaAccess($media, true);
-        $params = (array) $request->getParsedBody();
-        $title  = $params['title'] ?? '';
-        $type   = $params['type'] ?? '';
+        $title  = Validator::parsedBody($request)->string('title');
+        $type   = Validator::parsedBody($request)->string('type');
 
         $file = $this->media_file_service->uploadFile($request);
 

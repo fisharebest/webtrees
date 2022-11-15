@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -35,16 +36,14 @@ class SiteLogsAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         return redirect(route(SiteLogsPage::class, [
-            'tree'     => $params['tree'],
-            'from'     => $params['from'] ?? '',
-            'to'       => $params['to'] ?? '',
-            'type'     => $params['type'] ?? '',
-            'text'     => $params['text'] ?? '',
-            'ip'       => $params['ip'] ?? '',
-            'username' => $params['username'] ?? '',
+            'tree'     => Validator::parsedBody($request)->string('tree'),
+            'from'     => Validator::parsedBody($request)->string('from'),
+            'to'       => Validator::parsedBody($request)->string('to'),
+            'type'     => Validator::parsedBody($request)->string('type'),
+            'text'     => Validator::parsedBody($request)->string('text'),
+            'ip'       => Validator::parsedBody($request)->string('ip'),
+            'username' => Validator::parsedBody($request)->string('username'),
         ]));
     }
 }

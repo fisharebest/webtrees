@@ -44,8 +44,6 @@ class ModulesThemesAction extends AbstractModuleComponentAction
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
-
-
         return redirect(route(ModulesThemesPage::class));
     }
 }

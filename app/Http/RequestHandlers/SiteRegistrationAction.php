@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -41,16 +42,18 @@ class SiteRegistrationAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $mode               = Validator::parsedBody($request)->string('WELCOME_TEXT_AUTH_MODE');
+        $text               = Validator::parsedBody($request)->string('WELCOME_TEXT_AUTH_MODE_4');
+        $allow_registration = Validator::parsedBody($request)->boolean('USE_REGISTRATION_MODULE');
+        $show_caution       = Validator::parsedBody($request)->boolean('SHOW_REGISTER_CAUTION');
 
-        Site::setPreference('WELCOME_TEXT_AUTH_MODE', $params['WELCOME_TEXT_AUTH_MODE']);
-        Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . I18N::languageTag(), $params['WELCOME_TEXT_AUTH_MODE_4']);
-        Site::setPreference('USE_REGISTRATION_MODULE', $params['USE_REGISTRATION_MODULE']);
-        Site::setPreference('SHOW_REGISTER_CAUTION', $params['SHOW_REGISTER_CAUTION']);
+        Site::setPreference('WELCOME_TEXT_AUTH_MODE', $mode);
+        Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . I18N::languageTag(), $text);
+        Site::setPreference('USE_REGISTRATION_MODULE', (string) $allow_registration);
+        Site::setPreference('SHOW_REGISTER_CAUTION', (string) $show_caution);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
-        $url = route(ControlPanel::class);
 
-        return redirect($url);
+        return redirect(route(ControlPanel::class));
     }
 }

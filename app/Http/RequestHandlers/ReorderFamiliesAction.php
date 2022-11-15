@@ -46,15 +46,12 @@ class ReorderFamiliesAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree       = Validator::attributes($request)->tree();
-        $xref       = Validator::attributes($request)->isXref()->string('xref');
+        $tree  = Validator::attributes($request)->tree();
+        $xref  = Validator::attributes($request)->isXref()->string('xref');
+        $order = Validator::parsedBody($request)->array('order');
+
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
-
-        $params = (array) $request->getParsedBody();
-
-        $order = $params['order'];
-        assert(is_array($order));
 
         $fake_facts = ['0 @' . $individual->xref() . '@ INDI'];
         $sort_facts = [];

@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -242,10 +243,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $days     = Validator::parsedBody($request)->integer('days');
+        $sendmail = Validator::parsedBody($request)->string('sendmail');
 
-        $this->setBlockSetting($block_id, 'days', $params['days']);
-        $this->setBlockSetting($block_id, 'sendmail', $params['sendmail']);
+        $this->setBlockSetting($block_id, 'days', (string) $days);
+        $this->setBlockSetting($block_id, 'sendmail', $sendmail);
     }
 
     /**

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
 use League\Flysystem\FilesystemException;
@@ -85,9 +86,10 @@ class ImportThumbnailsData implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $start  = (int) $request->getQueryParams()['start'];
-        $length = (int) $request->getQueryParams()['length'];
-        $search = $request->getQueryParams()['search']['value'];
+        $start  = Validator::queryParams($request)->integer('start');
+        $length = Validator::queryParams($request)->integer('length');
+        $draw   = Validator::queryParams($request)->integer('draw');
+        $search = Validator::queryParams($request)->array('search')['value'];
 
         // Fetch all thumbnails
         try {
@@ -147,7 +149,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
             });
 
         return response([
-            'draw'            => (int) $request->getQueryParams()['draw'],
+            'draw'            => $draw,
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data->values()->all(),

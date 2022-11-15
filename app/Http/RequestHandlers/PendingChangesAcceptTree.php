@@ -30,8 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function e;
 use function response;
 
-use const PHP_INT_MAX;
-
 /**
  * Accept pending changes for a tree.
  */
@@ -55,12 +53,12 @@ class PendingChangesAcceptTree implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-
-        $n = (int) ($request->getQueryParams()['n'] ?? PHP_INT_MAX);
+        $n    = Validator::queryParams($request)->integer('n');
 
         $this->pending_changes_service->acceptTree($tree, $n);
 
         FlashMessages::addMessage(I18N::translate('The changes to “%s” have been accepted.', e($tree->title())));
+
         return response();
     }
 }

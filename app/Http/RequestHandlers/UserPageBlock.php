@@ -55,7 +55,7 @@ class UserPageBlock implements RequestHandlerInterface
     {
         $tree     = Validator::attributes($request)->tree();
         $user     = Validator::attributes($request)->user();
-        $block_id = $request->getQueryParams()['block_id'];
+        $block_id = Validator::queryParams($request)->integer('block_id');
 
         $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)

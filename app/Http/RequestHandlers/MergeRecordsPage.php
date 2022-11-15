@@ -56,8 +56,8 @@ class MergeRecordsPage implements RequestHandlerInterface
         $this->layout = 'layouts/administration';
 
         $tree  = Validator::attributes($request)->tree();
-        $xref1 = $request->getQueryParams()['xref1'] ?? '';
-        $xref2 = $request->getQueryParams()['xref2'] ?? '';
+        $xref1 = Validator::queryParams($request)->isXref()->string('xref1', '');
+        $xref2 = Validator::queryParams($request)->isXref()->string('xref2', '');
 
         $record1 = Registry::gedcomRecordFactory()->make($xref1, $tree);
         $record2 = Registry::gedcomRecordFactory()->make($xref2, $tree);

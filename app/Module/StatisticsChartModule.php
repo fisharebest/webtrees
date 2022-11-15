@@ -240,36 +240,34 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $statistics = app(Statistics::class);
         assert($statistics instanceof Statistics);
 
-        $params = (array) $request->getParsedBody();
-
-        $x_axis_type = (int) $params['x-as'];
-        $y_axis_type = (int) $params['y-as'];
-        $z_axis_type = (int) $params['z-as'];
+        $x_axis_type = Validator::parsedBody($request)->integer('x-as');
+        $y_axis_type = Validator::parsedBody($request)->integer('y-as');
+        $z_axis_type = Validator::parsedBody($request)->integer('z-as');
         $ydata       = [];
 
         switch ($x_axis_type) {
             case self::X_AXIS_INDIVIDUAL_MAP:
                 return response($statistics->chartDistribution(
-                    $params['chart_shows'],
-                    $params['chart_type'],
-                    $params['SURN']
+                    Validator::parsedBody($request)->string('chart_shows'),
+                    Validator::parsedBody($request)->string('chart_type'),
+                    Validator::parsedBody($request)->string('SURN')
                 ));
 
             case self::X_AXIS_BIRTH_MAP:
                 return response($statistics->chartDistribution(
-                    $params['chart_shows'],
+                    Validator::parsedBody($request)->string('chart_shows'),
                     'birth_distribution_chart'
                 ));
 
             case self::X_AXIS_DEATH_MAP:
                 return response($statistics->chartDistribution(
-                    $params['chart_shows'],
+                    Validator::parsedBody($request)->string('chart_shows'),
                     'death_distribution_chart'
                 ));
 
             case self::X_AXIS_MARRIAGE_MAP:
                 return response($statistics->chartDistribution(
-                    $params['chart_shows'],
+                    Validator::parsedBody($request)->string('chart_shows'),
                     'marriage_distribution_chart'
                 ));
 
@@ -305,7 +303,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -354,7 +352,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -396,7 +394,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -445,7 +443,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -492,7 +490,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         $indi           = [];
@@ -517,7 +515,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             case self::X_AXIS_AGE_AT_DEATH:
                 $chart_title    = I18N::translate('Average age at death');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $params['x-axis-boundaries-ages'];
+                $boundaries_csv = Validator::parsedBody($request)->string('x-axis-boundaries-ages');
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -555,7 +553,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
@@ -579,7 +577,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             case self::X_AXIS_AGE_AT_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $params['x-axis-boundaries-ages_m'];
+                $boundaries_csv = Validator::parsedBody($request)->string('x-axis-boundaries-ages_m');
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -616,7 +614,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F separately
                         foreach (['M', 'F'] as $sex) {
@@ -640,7 +638,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             case self::X_AXIS_AGE_AT_FIRST_MARRIAGE:
                 $chart_title    = I18N::translate('Age in year of first marriage');
                 $x_axis_title   = I18N::translate('age');
-                $boundaries_csv = $params['x-axis-boundaries-ages_m'];
+                $boundaries_csv = Validator::parsedBody($request)->string('x-axis-boundaries-ages_m');
                 $x_axis         = $this->axisNumbers($boundaries_csv);
 
                 switch ($y_axis_type) {
@@ -685,7 +683,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         // The stats query doesn't have an "all" function, so query M/F separately
                         foreach (['M', 'F'] as $sex) {
@@ -735,7 +733,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         }
                         break;
                     case self::Z_AXIS_TIME:
-                        $boundaries_csv = $params['z-axis-boundaries-periods'];
+                        $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {

@@ -29,8 +29,6 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function array_key_exists;
-use function assert;
 use function asset;
 use function is_string;
 use function response;
@@ -84,10 +82,8 @@ class ColorsTheme extends CloudsTheme
      */
     public function postPaletteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $user = Validator::attributes($request)->user();
-
-        $palette = $request->getQueryParams()['palette'];
-        assert(array_key_exists($palette, $this->palettes()));
+        $user    = Validator::attributes($request)->user();
+        $palette = Validator::queryParams($request)->isInArrayKeys($this->palettes())->string('palette');
 
         $user->setPreference('themecolor', $palette);
 

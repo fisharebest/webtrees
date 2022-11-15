@@ -40,13 +40,11 @@ class EditNoteAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $note   = Registry::noteFactory()->make($xref, $tree);
-        $note   = Auth::checkNoteAccess($note, true);
-        $params = (array) $request->getParsedBody();
-
-        $NOTE = $params['NOTE'];
+        $tree = Validator::attributes($request)->tree();
+        $xref = Validator::attributes($request)->isXref()->string('xref');
+        $note = Registry::noteFactory()->make($xref, $tree);
+        $note = Auth::checkNoteAccess($note, true);
+        $NOTE = Validator::parsedBody($request)->string('NOTE');
 
         // Convert HTML line endings to GEDCOM continuations
         $NOTE = strtr($NOTE, ["\r\n" => "\n1 CONT "]);

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
@@ -237,28 +238,47 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $show_last_update     = Validator::parsedBody($request)->boolean('show_last_update', false);
+        $show_common_surnames = Validator::parsedBody($request)->boolean('show_common_surnames', false);
+        $number_of_surnames   = Validator::parsedBody($request)->integer('number_of_surnames');
+        $stat_indi            = Validator::parsedBody($request)->boolean('stat_indi', false);
+        $stat_fam             = Validator::parsedBody($request)->boolean('stat_fam', false);
+        $stat_sour            = Validator::parsedBody($request)->boolean('stat_sour', false);
+        $stat_other           = Validator::parsedBody($request)->boolean('stat_other', false);
+        $stat_media           = Validator::parsedBody($request)->boolean('stat_media', false);
+        $stat_repo            = Validator::parsedBody($request)->boolean('stat_repo', false);
+        $stat_surname         = Validator::parsedBody($request)->boolean('stat_surname', false);
+        $stat_events          = Validator::parsedBody($request)->boolean('stat_events', false);
+        $stat_users           = Validator::parsedBody($request)->boolean('stat_users', false);
+        $stat_first_birth     = Validator::parsedBody($request)->boolean('stat_first_birth', false);
+        $stat_last_birth      = Validator::parsedBody($request)->boolean('stat_last_birth', false);
+        $stat_first_death     = Validator::parsedBody($request)->boolean('stat_first_death', false);
+        $stat_last_death      = Validator::parsedBody($request)->boolean('stat_last_death', false);
+        $stat_long_life       = Validator::parsedBody($request)->boolean('stat_long_life', false);
+        $stat_avg_life        = Validator::parsedBody($request)->boolean('stat_avg_life', false);
+        $stat_most_chil       = Validator::parsedBody($request)->boolean('stat_most_chil', false);
+        $stat_avg_chil        = Validator::parsedBody($request)->boolean('stat_avg_chil', false);
 
-        $this->setBlockSetting($block_id, 'show_last_update', $params['show_last_update'] ?? '');
-        $this->setBlockSetting($block_id, 'show_common_surnames', $params['show_common_surnames'] ?? '');
-        $this->setBlockSetting($block_id, 'number_of_surnames', $params['number_of_surnames']);
-        $this->setBlockSetting($block_id, 'stat_indi', $params['stat_indi'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_fam', $params['stat_fam'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_sour', $params['stat_sour'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_other', $params['stat_other'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_media', $params['stat_media'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_repo', $params['stat_repo'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_surname', $params['stat_surname'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_events', $params['stat_events'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_users', $params['stat_users'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_first_birth', $params['stat_first_birth'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_last_birth', $params['stat_last_birth'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_first_death', $params['stat_first_death'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_last_death', $params['stat_last_death'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_long_life', $params['stat_long_life'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_avg_life', $params['stat_avg_life'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_most_chil', $params['stat_most_chil'] ?? '');
-        $this->setBlockSetting($block_id, 'stat_avg_chil', $params['stat_avg_chil'] ?? '');
+        $this->setBlockSetting($block_id, 'show_last_update', (string) $show_last_update);
+        $this->setBlockSetting($block_id, 'show_common_surnames', (string) $show_common_surnames);
+        $this->setBlockSetting($block_id, 'number_of_surnames', (string) $number_of_surnames);
+        $this->setBlockSetting($block_id, 'stat_indi', (string) $stat_indi);
+        $this->setBlockSetting($block_id, 'stat_fam', (string) $stat_fam);
+        $this->setBlockSetting($block_id, 'stat_sour', (string) $stat_sour);
+        $this->setBlockSetting($block_id, 'stat_other', (string) $stat_other);
+        $this->setBlockSetting($block_id, 'stat_media', (string) $stat_media);
+        $this->setBlockSetting($block_id, 'stat_repo', (string) $stat_repo);
+        $this->setBlockSetting($block_id, 'stat_surname', (string) $stat_surname);
+        $this->setBlockSetting($block_id, 'stat_events', (string) $stat_events);
+        $this->setBlockSetting($block_id, 'stat_users', (string) $stat_users);
+        $this->setBlockSetting($block_id, 'stat_first_birth', (string) $stat_first_birth);
+        $this->setBlockSetting($block_id, 'stat_last_birth', (string) $stat_last_birth);
+        $this->setBlockSetting($block_id, 'stat_first_death', (string) $stat_first_death);
+        $this->setBlockSetting($block_id, 'stat_last_death', (string) $stat_last_death);
+        $this->setBlockSetting($block_id, 'stat_long_life', (string) $stat_long_life);
+        $this->setBlockSetting($block_id, 'stat_avg_life', (string) $stat_avg_life);
+        $this->setBlockSetting($block_id, 'stat_most_chil', (string) $stat_most_chil);
+        $this->setBlockSetting($block_id, 'stat_avg_chil', (string) $stat_avg_chil);
     }
 
     /**

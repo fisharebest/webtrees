@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -249,11 +250,13 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $show_other      = Validator::parsedBody($request)->boolean('show_other', false);
+        $show_unassigned = Validator::parsedBody($request)->boolean('show_unassigned', false);
+        $show_future     = Validator::parsedBody($request)->boolean('show_future', false);
 
-        $this->setBlockSetting($block_id, 'show_other', $params['show_other']);
-        $this->setBlockSetting($block_id, 'show_unassigned', $params['show_unassigned']);
-        $this->setBlockSetting($block_id, 'show_future', $params['show_future']);
+        $this->setBlockSetting($block_id, 'show_other', (string) $show_other);
+        $this->setBlockSetting($block_id, 'show_unassigned', (string) $show_unassigned);
+        $this->setBlockSetting($block_id, 'show_future', (string) $show_future);
     }
 
     /**

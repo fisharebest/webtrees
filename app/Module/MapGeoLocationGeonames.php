@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -79,9 +80,9 @@ class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInter
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $api_key = Validator::parsedBody($request)->string('username');
 
-        $this->setPreference('username', $params['username' ?? '']);
+        $this->setPreference('username', $api_key);
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 

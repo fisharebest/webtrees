@@ -39,14 +39,16 @@ class CalendarAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $view = Validator::attributes($request)->string('view');
-
-        $params = (array) $request->getParsedBody();
-
-        $params['tree'] = $tree->name();
-        $params['view'] = $view;
-
-        return redirect(route(CalendarPage::class, $params));
+        return redirect(route(CalendarPage::class, [
+            'tree'     => Validator::attributes($request)->tree()->name(),
+            'view'     => Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view'),
+            'cal'      => Validator::parsedBody($request)->string('cal'),
+            'day'      => Validator::parsedBody($request)->integer('day'),
+            'month'    => Validator::parsedBody($request)->string('month'),
+            'year'     => Validator::parsedBody($request)->integer('year'),
+            'filterev' => Validator::parsedBody($request)->string('filterev'),
+            'filterof' => Validator::parsedBody($request)->string('filterof'),
+            'filtersx' => Validator::parsedBody($request)->string('filtersx'),
+        ]));
     }
 }

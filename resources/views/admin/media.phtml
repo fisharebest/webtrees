@@ -76,7 +76,7 @@ use Illuminate\Support\Collection;
                     <?php elseif ($files === 'external') : ?>
                         <?= I18N::translate('External media files have a URL instead of a filename.') ?>
                         <input type="hidden" name="media_folder" value="<?= e($media_folder) ?>">
-
+                        <input type="hidden" name="subfolders" value="<?= e($subfolders) ?>">
                     <?php endif ?>
                 </td>
             </tr>

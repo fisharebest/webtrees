@@ -70,9 +70,7 @@ class ExportGedcomServer implements RequestHandlerInterface
 
         $data_filesystem = Registry::filesystem()->data();
 
-        $params = (array) $request->getParsedBody();
-
-        $filename = $params['filename'] ?? $tree->name();
+        $filename = Validator::parsedBody($request)->string('filename');
 
         // Force a ".ged" suffix
         if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {

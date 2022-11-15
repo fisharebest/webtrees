@@ -65,7 +65,7 @@ class RedirectPlaceListPhp implements RequestHandlerInterface
         $module   = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->first();
 
         if ($tree instanceof Tree && $module instanceof PlaceHierarchyListModule) {
-            $url = $module->listUrl($tree, ['action2' => $action2, 'place-id' => $place_id]);
+            $url = $module->listUrl($tree, ['action2' => $action2, 'place_id' => $place_id]);
 
             return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }

@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -55,9 +56,8 @@ class CreateTreeAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-        $name   = $params['name'];
-        $title  = $params['title'];
+        $name  = Validator::parsedBody($request)->string('name');
+        $title = Validator::parsedBody($request)->string('title');
 
         if ($this->tree_service->all()->get($name) instanceof Tree) {
             FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($name)), 'danger');

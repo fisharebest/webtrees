@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
@@ -171,7 +172,7 @@ trait ModuleCustomTrait
     public function getAssetAction(ServerRequestInterface $request): ResponseInterface
     {
         // The file being requested.  e.g. "css/theme.css"
-        $asset = $request->getQueryParams()['asset'];
+        $asset = Validator::queryParams($request)->string('asset');
 
         // Do not allow requests that try to access parent folders.
         if (str_contains($asset, '..')) {

@@ -39,8 +39,7 @@ class CreateSubmissionAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = Validator::attributes($request)->tree();
-        $params    = (array) $request->getParsedBody();
-        $submitter = $params['submitter'];
+        $submitter = Validator::parsedBody($request)->string('submitter');
 
         $gedcom = "0 @@ SUBN\n1 SUBM @" . $submitter . '@';
 

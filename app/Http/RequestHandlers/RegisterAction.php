@@ -90,17 +90,14 @@ class RegisterAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->treeOptional();
-
         $this->checkRegistrationAllowed();
 
-        $params = (array) $request->getParsedBody();
-
-        $comments = $params['comments'] ?? '';
-        $email    = $params['email'] ?? '';
-        $password = $params['password'] ?? '';
-        $realname = $params['realname'] ?? '';
-        $username = $params['username'] ?? '';
+        $tree     = Validator::attributes($request)->treeOptional();
+        $comments = Validator::parsedBody($request)->string('comments');
+        $email    = Validator::parsedBody($request)->string('email');
+        $password = Validator::parsedBody($request)->string('password');
+        $realname = Validator::parsedBody($request)->string('realname');
+        $username = Validator::parsedBody($request)->string('username');
 
         try {
             if ($this->captcha_service->isRobot($request)) {

@@ -53,26 +53,26 @@ class UserPageUpdate implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
-        $params   = (array) $request->getParsedBody();
-        $defaults = (bool) ($params['defaults'] ?? false);
+        $tree     = Validator::attributes($request)->tree();
+        $user     = Validator::attributes($request)->user();
+        $defaults = Validator::parsedBody($request)->boolean('defaults', false);
 
         if ($defaults) {
             $default_tree = new Tree(-1, 'DEFAULT', 'DEFAULT');
 
-            $main_blocks = $this->home_page_service->userBlocks($default_tree, $user, ModuleBlockInterface::MAIN_BLOCKS)
+            $main_blocks = $this->home_page_service
+                ->userBlocks($default_tree, $user, ModuleBlockInterface::MAIN_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 });
-            $side_blocks = $this->home_page_service->userBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS)
+            $side_blocks = $this->home_page_service
+                ->userBlocks($default_tree, $user, ModuleBlockInterface::SIDE_BLOCKS)
                 ->map(static function (ModuleBlockInterface $block) {
                     return $block->name();
                 });
         } else {
-            $main_blocks = new Collection($params[ModuleBlockInterface::MAIN_BLOCKS] ?? []);
-            $side_blocks = new Collection($params[ModuleBlockInterface::SIDE_BLOCKS] ?? []);
+            $main_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::MAIN_BLOCKS));
+            $side_blocks = new Collection(Validator::parsedBody($request)->array(ModuleBlockInterface::SIDE_BLOCKS));
         }
 
         $this->home_page_service->updateUserBlocks($user->id(), $main_blocks, $side_blocks);

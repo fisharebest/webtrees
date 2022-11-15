@@ -49,14 +49,11 @@ class MediaFileDownload implements RequestHandlerInterface
 
         $image_factory = Registry::imageFactory();
 
-        $disposition = $request->getQueryParams()['disposition'] ?? 'inline';
-        assert($disposition === 'inline' || $disposition === 'attachment');
-
-        $params  = $request->getQueryParams();
-        $xref    = $params['xref'] ?? '';
-        $fact_id = $params['fact_id'] ?? '';
-        $media   = Registry::mediaFactory()->make($xref, $tree);
-        $media   = Auth::checkMediaAccess($media);
+        $disposition = Validator::queryParams($request)->isInArray(['inline', 'attachment'])->string('disposition');
+        $xref        = Validator::queryParams($request)->isXref()->string('xref');
+        $fact_id     = Validator::queryParams($request)->string('fact_id');
+        $media       = Registry::mediaFactory()->make($xref, $tree);
+        $media       = Auth::checkMediaAccess($media);
 
         foreach ($media->mediaFiles() as $media_file) {
             if ($media_file->factId() === $fact_id) {

@@ -42,10 +42,8 @@ class UserListPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $user = Validator::attributes($request)->user();
-
-        $params = $request->getQueryParams();
-        $filter = $params['filter'] ?? '';
+        $user   = Validator::attributes($request)->user();
+        $filter = Validator::queryParams($request)->string('filter', '');
 
         $page_size = (int) $user->getPreference(' admin_users_page_size', '10');
 

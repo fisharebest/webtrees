@@ -52,7 +52,7 @@ class RedirectReportEnginePhpTest extends TestCase
 
         $request = self::createRequest(
             RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'action' => 'run'],
+            ['ged' => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml'],
             [],
             [],
             ['base_url' => 'https://www.example.com']
@@ -62,7 +62,7 @@ class RedirectReportEnginePhpTest extends TestCase
 
         self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
         self::assertSame(
-            'https://www.example.com/index.php?route=%2Ftree1%2Freport-run%2F&ged=tree1&action=run',
+            'https://www.example.com/index.php?route=%2Ftree1%2Freport-run%2Ffoo',
             $response->getHeaderLine('Location')
         );
     }
@@ -80,7 +80,10 @@ class RedirectReportEnginePhpTest extends TestCase
 
         $handler = new RedirectReportEnginePhp($tree_service);
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1']);
+        $request = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            ['ged'    => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml']
+        );
 
         $this->expectException(HttpNotFoundException::class);
 

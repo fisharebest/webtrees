@@ -75,17 +75,15 @@ class CalendarEvents implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree            = Validator::attributes($request)->tree();
-        $view            = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
-        $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
-
-        $cal      = $request->getQueryParams()['cal'] ?? '';
-        $day      = $request->getQueryParams()['day'] ?? '';
-        $month    = $request->getQueryParams()['month'] ?? '';
-        $year     = $request->getQueryParams()['year'] ?? '';
-        $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
-        $filterof = $request->getQueryParams()['filterof'] ?? 'all';
-        $filtersx = $request->getQueryParams()['filtersx'] ?? '';
+        $tree     = Validator::attributes($request)->tree();
+        $view     = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
+        $cal      = Validator::queryParams($request)->string('cal');
+        $day      = Validator::queryParams($request)->string('day');
+        $month    = Validator::queryParams($request)->string('month');
+        $year     = Validator::queryParams($request)->string('year');
+        $filterev = Validator::queryParams($request)->string('filterev');
+        $filterof = Validator::queryParams($request)->string('filterof');
+        $filtersx = Validator::queryParams($request)->string('filtersx');
 
         $ged_date = new Date($cal . ' ' . $day . ' ' . $month . ' ' . $year);
         $cal_date = $ged_date->minimumDate();
@@ -93,6 +91,8 @@ class CalendarEvents implements RequestHandlerInterface
 
         $days_in_month = $cal_date->daysInMonth();
         $days_in_week  = $cal_date->daysInWeek();
+
+        $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         // Day and year share the same layout.
         if ($view !== 'month') {

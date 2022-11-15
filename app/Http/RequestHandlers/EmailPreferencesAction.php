@@ -57,31 +57,43 @@ class EmailPreferencesAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user   = Validator::attributes($request)->user();
-        $params = (array) $request->getParsedBody();
+        $user          = Validator::attributes($request)->user();
+        $active        = Validator::parsedBody($request)->string('SMTP_ACTIVE');
+        $disp_name     = Validator::parsedBody($request)->string('SMTP_DISP_NAME');
+        $from_name     = Validator::parsedBody($request)->string('SMTP_FROM_NAME');
+        $host          = Validator::parsedBody($request)->string('SMTP_HOST');
+        $port          = Validator::parsedBody($request)->string('SMTP_PORT');
+        $auth          = Validator::parsedBody($request)->string('SMTP_AUTH');
+        $auth_user     = Validator::parsedBody($request)->string('SMTP_AUTH_USER');
+        $auth_pass     = Validator::parsedBody($request)->string('SMTP_AUTH_PASS');
+        $ssl           = Validator::parsedBody($request)->string('SMTP_SSL');
+        $helo          = Validator::parsedBody($request)->string('SMTP_HELO');
+        $dkim_domain   = Validator::parsedBody($request)->string('DKIM_DOMAIN');
+        $dkim_selector = Validator::parsedBody($request)->string('DKIM_SELECTOR');
+        $dkim_key      = Validator::parsedBody($request)->string('DKIM_KEY');
+        $test          = Validator::parsedBody($request)->boolean('test', false);
 
-        Site::setPreference('SMTP_ACTIVE', $params['SMTP_ACTIVE']);
-        Site::setPreference('SMTP_DISP_NAME', $params['SMTP_DISP_NAME']);
-        Site::setPreference('SMTP_FROM_NAME', $params['SMTP_FROM_NAME']);
-        Site::setPreference('SMTP_HOST', $params['SMTP_HOST']);
-        Site::setPreference('SMTP_PORT', $params['SMTP_PORT']);
-        Site::setPreference('SMTP_AUTH', $params['SMTP_AUTH']);
-        Site::setPreference('SMTP_AUTH_USER', $params['SMTP_AUTH_USER']);
-        Site::setPreference('SMTP_SSL', $params['SMTP_SSL']);
-        Site::setPreference('SMTP_HELO', $params['SMTP_HELO']);
-        Site::setPreference('DKIM_DOMAIN', $params['DKIM_DOMAIN']);
-        Site::setPreference('DKIM_SELECTOR', $params['DKIM_SELECTOR']);
-        Site::setPreference('DKIM_KEY', $params['DKIM_KEY']);
 
-        if ($params['SMTP_AUTH_PASS'] !== '') {
-            Site::setPreference('SMTP_AUTH_PASS', $params['SMTP_AUTH_PASS']);
+        Site::setPreference('SMTP_ACTIVE', $active);
+        Site::setPreference('SMTP_DISP_NAME', $disp_name);
+        Site::setPreference('SMTP_FROM_NAME', $from_name);
+        Site::setPreference('SMTP_HOST', $host);
+        Site::setPreference('SMTP_PORT', $port);
+        Site::setPreference('SMTP_AUTH', $auth);
+        Site::setPreference('SMTP_AUTH_USER', $auth_user);
+        Site::setPreference('SMTP_SSL', $ssl);
+        Site::setPreference('SMTP_HELO', $helo);
+        Site::setPreference('DKIM_DOMAIN', $dkim_domain);
+        Site::setPreference('DKIM_SELECTOR', $dkim_selector);
+        Site::setPreference('DKIM_KEY', $dkim_key);
+
+        if ($auth_pass !== '') {
+            Site::setPreference('SMTP_AUTH_PASS', $auth_pass);
         }
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
-        $test = $params['test'] ?? '';
-
-        if ($test === 'on') {
+        if ($test) {
             $success = $this->email_service->send(new SiteUser(), $user, $user, 'test', 'test', 'test');
 
             if ($success) {

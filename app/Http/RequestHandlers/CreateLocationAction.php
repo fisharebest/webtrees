@@ -39,9 +39,7 @@ class CreateLocationAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-        $name   = $params['location_name'];
+        $name = Validator::parsedBody($request)->string('name');
 
         $gedcom = "0 @@ _LOC\n1 NAME " . $name;
 

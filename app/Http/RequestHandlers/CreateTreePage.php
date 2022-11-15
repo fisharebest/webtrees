@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -55,8 +56,8 @@ class CreateTreePage implements RequestHandlerInterface
         $this->layout = 'layouts/administration';
 
         $title      = I18N::translate('Create a family tree');
-        $tree_name  = $request->getQueryParams()['name'] ?? $this->tree_service->uniqueTreeName();
-        $tree_title = $request->getQueryParams()['title'] ?? I18N::translate('My family tree');
+        $tree_name  = Validator::queryParams($request)->string('name', $this->tree_service->uniqueTreeName());
+        $tree_title = Validator::queryParams($request)->string('title', I18N::translate('My family tree'));
 
         return $this->viewResponse('admin/trees-create', [
             'title'      => $title,

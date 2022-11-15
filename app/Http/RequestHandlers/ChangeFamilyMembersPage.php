@@ -43,11 +43,10 @@ class ChangeFamilyMembersPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
-        $xref   = $request->getQueryParams()['xref'];
+        $xref   = Validator::queryParams($request)->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
-
-        $title = I18N::translate('Change family members') . ' – ' . $family->fullName();
+        $title  = I18N::translate('Change family members') . ' – ' . $family->fullName();
 
         return $this->viewResponse('edit/change-family-members', [
             'tree'     => $tree,

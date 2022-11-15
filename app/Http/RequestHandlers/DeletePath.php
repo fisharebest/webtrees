@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
@@ -65,7 +66,7 @@ class DeletePath implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $path = $request->getQueryParams()['path'] ?? '';
+        $path = Validator::queryParams($request)->string('path');
 
         $normalized_path = $this->whitespace_path_normalizer->normalizePath($path);
 

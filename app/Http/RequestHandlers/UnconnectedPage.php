@@ -51,8 +51,8 @@ class UnconnectedPage implements RequestHandlerInterface
     {
         $tree       = Validator::attributes($request)->tree();
         $user       = Validator::attributes($request)->user();
-        $aliases    = (bool) ($request->getQueryParams()['aliases'] ?? false);
-        $associates = (bool) ($request->getQueryParams()['associates'] ?? false);
+        $aliases    = Validator::queryParams($request)->boolean('aliases', false);
+        $associates = Validator::queryParams($request)->boolean('associates', false);
 
         // Connect individuals using these links.
         $links = ['FAMS', 'FAMC'];

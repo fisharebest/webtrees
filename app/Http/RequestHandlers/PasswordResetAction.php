@@ -58,13 +58,10 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
     {
         $tree  = Validator::attributes($request)->treeOptional();
         $token = $request->getAttribute('token');
-
-        $user = $this->user_service->findByToken($token);
+        $user  = $this->user_service->findByToken($token);
 
         if ($user instanceof User) {
-            $params = (array) $request->getParsedBody();
-
-            $password = $params['password'] ?? '';
+            $password = Validator::parsedBody($request)->string('password');
 
             $user->setPreference('password-token', '');
             $user->setPreference('password-token-expire', '');

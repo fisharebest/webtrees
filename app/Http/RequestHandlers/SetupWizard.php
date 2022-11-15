@@ -201,12 +201,10 @@ class SetupWizard implements RequestHandlerInterface
      */
     private function userData(ServerRequestInterface $request): array
     {
-        $params = (array) $request->getParsedBody();
-
         $data = [];
 
         foreach (self::DEFAULT_DATA as $key => $default) {
-            $data[$key] = $params[$key] ?? $default;
+            $data[$key] = Validator::parsedBody($request)->string($key, $default);
         }
 
         return $data;

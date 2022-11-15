@@ -57,16 +57,13 @@ class EditRecordPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
-
-        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
-
-        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD') === '1';
-
-        $subtags = Registry::elementFactory()->make($record->tag())->subtags();
+        $tree           = Validator::attributes($request)->tree();
+        $xref           = Validator::attributes($request)->isXref()->string('xref');
+        $record         = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record         = Auth::checkRecordAccess($record, true);
+        $include_hidden = Validator::queryParams($request)->boolean('include_hidden', false);
+        $can_edit_raw   = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD') === '1';
+        $subtags        = Registry::elementFactory()->make($record->tag())->subtags();
 
         $gedcom = $this->gedcom_edit_service->insertMissingRecordSubtags($record, $include_hidden);
         $hidden = $this->gedcom_edit_service->insertMissingRecordSubtags($record, true);

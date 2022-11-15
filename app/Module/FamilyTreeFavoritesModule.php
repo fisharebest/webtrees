@@ -194,7 +194,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     {
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
-        $favorite_id = $request->getQueryParams()['favorite_id'];
+        $favorite_id = Validator::queryParams($request)->integer('favorite_id');
 
         if (Auth::isManager($tree, $user)) {
             DB::table('favorite')

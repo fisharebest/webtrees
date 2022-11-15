@@ -42,19 +42,14 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $xref   = $params['xref'];
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::parsedBody($request)->isXref()->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
-        $params = (array) $request->getParsedBody();
-
-        $HUSB = $params['HUSB'] ?? '';
-        $WIFE = $params['WIFE'] ?? '';
-        $CHIL = $params['CHIL'] ?? [];
+        $HUSB = Validator::parsedBody($request)->isXref()->string('HUSB', '');
+        $WIFE = Validator::parsedBody($request)->isXref()->string('WIFE', '');
+        $CHIL = Validator::parsedBody($request)->isXref()->array('CHIL');
 
         // Current family members
         $old_father   = $family->husband();
