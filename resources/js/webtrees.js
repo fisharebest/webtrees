@@ -686,29 +686,34 @@
         position: 'topleft',
       },
       onAdd: function (map) {
-        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        container.onclick = function(){
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        const fullScreen = config.i18n.fullScreen;
+        const cancelFullScreen = config.i18n.cancelFullScreen;
+        const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
+        const image = L.DomUtil.create('i', 'fas fa-expand', anchor);
+
+        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
+        anchor.setAttribute('aria-label', fullScreen);
+        anchor.href = '#';
+        anchor.title = fullScreen;
+        anchor.role = 'button';
+        image.alt = fullScreen;
+
+        container.onclick = function() {
           const map_el = document.querySelector("#" + map.getContainer().id);
 
           if (fscreen.fullscreenEnabled) {
             if (!fscreen.fullscreenElement) {
+              anchor.title = cancelFullScreen;
               map_el.requestFullscreen();
             } else if (fscreen.exitFullscreen) {
+              anchor.title = fullScreen;
               fscreen.exitFullscreen();
             }
           } else {
             console.log('Your browser cannot use fullscreen at this time');
           }
         };
-        let fullScreen = config.i18n.fullScreen;
-        let anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
-        anchor.setAttribute('aria-label', fullScreen);
-        anchor.href = '#';
-        anchor.title = fullScreen;
-        anchor.role = 'button';
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        let image = L.DomUtil.create('i', 'fas fa-expand', anchor);
-        image.alt = fullScreen;
 
         return container;
       },
