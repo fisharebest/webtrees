@@ -719,6 +719,11 @@
       },
     });
 
+    fscreen.onfullscreenerror = (event) => {
+      console.error(event);
+      console.log('An error occurred changing into fullscreen');
+    }
+
     const resetControl = L.Control.extend({
       options: {
         position: 'topleft',
