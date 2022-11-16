@@ -685,7 +685,7 @@
       options: {
         position: 'topleft',
       },
-      onAdd: function (map) {
+      onAdd: (map) => {
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         const fullScreen = config.i18n.fullScreen;
         const cancelFullScreen = config.i18n.cancelFullScreen;
@@ -699,7 +699,7 @@
         anchor.role = 'button';
         image.alt = fullScreen;
 
-        container.onclick = function() {
+        container.onclick = () => {
           const map_el = document.querySelector("#" + map.getContainer().id);
 
           if (fscreen.fullscreenEnabled) {
@@ -723,18 +723,20 @@
       options: {
         position: 'topleft',
       },
-      onAdd: function (map) {
-        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        container.onclick = resetCallback;
-        let reset = config.i18n.reset;
-        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+      onAdd: (map) => {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        const reset = config.i18n.reset;
+        const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+        const image = L.DomUtil.create('i', 'fas fa-redo', anchor);
+
+        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
         anchor.setAttribute('aria-label', reset);
         anchor.href = '#';
         anchor.title = reset;
         anchor.role = 'button';
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
         image.alt = reset;
+
+        container.onclick = resetCallback;
 
         return container;
       },
