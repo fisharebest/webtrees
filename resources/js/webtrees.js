@@ -700,29 +700,12 @@
         image.alt = fullScreen;
 
         container.onclick = () => {
-          const map_el = document.querySelector("#" + map.getContainer().id);
-
-          if (fscreen.fullscreenEnabled) {
-            if (!fscreen.fullscreenElement) {
-              anchor.title = cancelFullScreen;
-              map_el.requestFullscreen();
-            } else if (fscreen.exitFullscreen) {
-              anchor.title = fullScreen;
-              fscreen.exitFullscreen();
-            }
-          } else {
-            console.log('Your browser cannot use fullscreen at this time');
-          }
+          webtrees.fullScreen(document.querySelector("#" + map.getContainer().id));
         };
 
         return container;
       },
     });
-
-    fscreen.onfullscreenerror = (event) => {
-      console.error(event);
-      console.log('An error occurred changing into fullscreen');
-    }
 
     const resetControl = L.Control.extend({
       options: {
@@ -780,6 +763,32 @@
         openedSymbol: config.icons.collapse,
       }));
   };
+
+  /**
+   * General purpose fullscreen function
+   * @param {Element} element
+   * @returns
+   */
+  webtrees.fullScreen = function (element) {
+    if (fscreen.fullscreenEnabled) {
+      if (!fscreen.fullscreenElement) {
+        element.requestFullscreen();
+      } else if (fscreen.exitFullscreen) {
+        fscreen.exitFullscreen();
+      }
+    } else {
+      console.log('Your browser cannot use fullscreen at this time');
+    }
+  }
+
+  /**
+   * Catch error generated when going to fullscreen
+   * @param {Event} event
+   */
+  fscreen.onfullscreenerror = (event) => {
+    console.error(event);
+    console.log('An error occurred changing into fullscreen');
+  }
 
   /**
    * Initialize a tom-select input

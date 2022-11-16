@@ -74,11 +74,10 @@ class LeafletJsService
 
         return (object) [
             'i18n'         => [
-                'reset'            => I18N::translate('Reload map'),
-                'zoomIn'           => I18N::translate('Zoom in'),
-                'zoomOut'          => I18N::translate('Zoom out'),
-                'fullScreen'       => I18N::translate('Full screen'),
-                'cancelFullScreen' => I18N::translate('Cancel full screen'),
+                'reset'      => I18N::translate('Reload map'),
+                'zoomIn'     => I18N::translate('Zoom in'),
+                'zoomOut'    => I18N::translate('Zoom out'),
+                'fullScreen' => I18N::translate('Full screen'),
             ],
             'icons'        => [
                 'collapse' => view('icons/collapse'),
