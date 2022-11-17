@@ -687,20 +687,17 @@
       },
       onAdd: (map) => {
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        const fullScreen = config.i18n.fullScreen;
-        const cancelFullScreen = config.i18n.cancelFullScreen;
         const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
-        const image = L.DomUtil.create('i', 'fas fa-expand', anchor);
 
+        L.DomUtil.create('i', 'fas fa-expand', anchor);
         L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        anchor.setAttribute('aria-label', fullScreen);
+        anchor.setAttribute('aria-label', config.i18n.fullScreen);
         anchor.href = '#';
-        anchor.title = fullScreen;
+        anchor.title = config.i18n.fullScreen;
         anchor.role = 'button';
-        image.alt = fullScreen;
 
         container.onclick = () => {
-          webtrees.fullScreen(document.querySelector("#" + map.getContainer().id));
+          webtrees.fullScreen(document.getElementById(id));
         };
 
         return container;
@@ -713,16 +710,14 @@
       },
       onAdd: (map) => {
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        const reset = config.i18n.reset;
         const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-        const image = L.DomUtil.create('i', 'fas fa-redo', anchor);
 
+        L.DomUtil.create('i', 'fas fa-redo', anchor);
         L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        anchor.setAttribute('aria-label', reset);
+        anchor.setAttribute('aria-label', config.i18n.reset);
         anchor.href = '#';
-        anchor.title = reset;
+        anchor.title = config.i18n.reset;
         anchor.role = 'button';
-        image.alt = reset;
 
         container.onclick = resetCallback;
 
