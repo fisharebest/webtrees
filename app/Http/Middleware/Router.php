@@ -38,7 +38,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function implode;
 use function str_contains;
-use function var_dump;
 
 /**
  * Simple class to help migrate to a third-party routing library.
