@@ -82,68 +82,6 @@ $("#<?= e($table_id) ?>")
 </script>
 <?php View::endpush() ?>
 
-<?php
-$max_age = (int) $tree->getPreference('MAX_ALIVE_AGE');
-
-// init chart data
-$marr_by_age = [];
-for ($age = 0; $age <= $max_age; $age++) {
-    $marr_by_age[$age]['M'] = 0;
-    $marr_by_age[$age]['F'] = 0;
-    $marr_by_age[$age]['U'] = 0;
-}
-$birt_by_decade = [];
-$marr_by_decade = [];
-for ($year = 1400; $year < 2050; $year += 10) {
-    $birt_by_decade[$year]['M'] = 0;
-    $birt_by_decade[$year]['F'] = 0;
-    $birt_by_decade[$year]['U'] = 0;
-    $marr_by_decade[$year]['M'] = 0;
-    $marr_by_decade[$year]['F'] = 0;
-    $marr_by_decade[$year]['U'] = 0;
-}
-
-$birthData = [
-    [
-        [
-            'label' => I18N::translate('Century'),
-            'type'  => 'date',
-        ], [
-            'label' => I18N::translate('Males'),
-            'type'  => 'number',
-        ], [
-            'label' => I18N::translate('Females'),
-            'type'  => 'number',
-        ],
-    ]
-];
-
-$marriageData = [
-    [
-        [
-            'label' => I18N::translate('Century'),
-            'type'  => 'date',
-        ], [
-            'label' => I18N::translate('Males'),
-            'type'  => 'number',
-        ], [
-            'label' => I18N::translate('Females'),
-            'type'  => 'number',
-        ],
-    ]
-];
-
-$marriageAgeData = [
-    [
-        I18N::translate('Age'),
-        I18N::translate('Males'),
-        I18N::translate('Females'),
-        I18N::translate('Average age'),
-    ]
-];
-
-?>
-
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-family"
         <?= view('lists/datatables-attributes') ?>
@@ -262,18 +200,7 @@ $marriageAgeData = [
                 <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $husb->sortName())) ?>"></td>
 
                 <!-- Husband age -->
-                <?php
-                $age  = new Age($husb->getBirthDate(), $family->getMarriageDate());
-                $year = $wife->getBirthDate()->gregorianYear();
-
-                if ($year >= 1550 && $year < 2030) {
-                    ++$birt_by_decade[(int) ($year / 10) * 10][$husb->sex()];
-                }
-
-                if ($age->ageYears() >= 0 && $age->ageYears() <= $max_age) {
-                    ++$marr_by_age[$age->ageYears()][$husb->sex()];
-                }
-                ?>
+                <?php $age  = new Age($husb->getBirthDate(), $family->getMarriageDate()) ?>
                 <td class="text-center" data-sort="<?= $age->ageDays() ?>">
                     <?= $age->ageYearsString() ?>
                 </td>
@@ -297,18 +224,7 @@ $marriageAgeData = [
                 <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $wife->sortName())) ?>"></td>
 
                 <!-- Wife age -->
-                <?php
-                $age  = new Age($wife->getBirthDate(), $family->getMarriageDate());
-                $year = $wife->getBirthDate()->gregorianYear();
-
-                if ($year >= 1550 && $year < 2030) {
-                    ++$birt_by_decade[(int) ($year / 10) * 10][$wife->sex()];
-                }
-
-                if ($age->ageYears() >= 0 && $age->ageYears() <= $max_age) {
-                    ++$marr_by_age[$age->ageYears()][$wife->sex()];
-                }
-                ?>
+                <?php $age = new Age($wife->getBirthDate(), $family->getMarriageDate()) ?>
                 <td class="text-center" data-sort="<?= $age->ageDays() ?>">
                     <?= $age->ageYearsString() ?>
                 </td>
@@ -319,12 +235,6 @@ $marriageAgeData = [
                         <?php foreach ($marriage_dates as $n => $marriage_date) : ?>
                             <div><?= $marriage_date->display($tree, null, true) ?></div>
                         <?php endforeach ?>
-                        <?php if ($marriage_dates[0]->gregorianYear() >= 1550 && $marriage_dates[0]->gregorianYear() < 2030) : ?>
-                            <?php
-                                ++$marr_by_decade[(int) ($marriage_dates[0]->gregorianYear() / 10) * 10][$husb->sex()];
-                                ++$marr_by_decade[(int) ($marriage_dates[0]->gregorianYear() / 10) * 10][$wife->sex()];
-                            ?>
-                        <?php endif ?>
                     <?php elseif ($family->facts(['_NMR'])->isNotEmpty()) : ?>
                         <?= I18N::translate('no') ?>
                     <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
@@ -419,107 +329,9 @@ $marriageAgeData = [
                         <label class="btn btn-secondary" for="btn-toggle-parents">
                             <?= I18N::translate('Show parents') ?>
                         </label>
-                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" aria-expanded="false" autocomplete="off">
-                        <label class="btn btn-secondary" for="btn-toggle-statistics">
-                            <?= I18N::translate('Show statistics charts') ?>
-                        </label>
                     </div>
                 </th>
             </tr>
         </tfoot>
     </table>
-</div>
-
-<div id="family-charts-<?= e($table_id) ?>" style="display: none;">
-    <div class="d-grid gap-3 my-3">
-        <div class="card">
-            <div class="card-header">
-                <?= I18N::translate('Decade of birth') ?>
-            </div><div class="card-body">
-                <?php
-                foreach ($birt_by_decade as $century => $values) {
-                    if ($values['M'] + $values['F'] > 0) {
-                        $birthData[] = [
-                            [
-                                'v' => 'Date(' . $century . ', 0, 1)',
-                                'f' => $century,
-                            ],
-                            $values['M'],
-                            $values['F'],
-                        ];
-                    }
-                }
-                ?>
-                <?= view('lists/chart-by-decade', ['data' => $birthData, 'title' => I18N::translate('Decade of birth')]) ?>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <?= I18N::translate('Decade of marriage') ?>
-            </div><div class="card-body">
-                <?php
-                foreach ($marr_by_decade as $century => $values) {
-                    if ($values['M'] + $values['F'] > 0) {
-                        $marriageData[] = [
-                            [
-                                'v' => 'Date(' . $century . ', 0, 1)',
-                                'f' => $century,
-                            ],
-                            $values['M'],
-                            $values['F'],
-                        ];
-                    }
-                }
-                ?>
-                <?= view('lists/chart-by-decade', ['data' => $marriageData, 'title' => I18N::translate('Decade of marriage')]) ?>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <?= I18N::translate('Age in year of marriage') ?>
-            </div>
-            <div class="card-body">
-                <?php
-                    $totalAge = 0;
-                    $totalSum = 0;
-                    $max      = 0;
-
-                foreach ($marr_by_age as $age => $values) {
-                    if ($values['M'] + $values['F'] > 0) {
-                        if ($values['M'] + $values['F'] > $max) {
-                            $max = $values['M'] + $values['F'];
-                        }
-
-                        $totalAge += $age * ($values['M'] + $values['F']);
-                        $totalSum += $values['M'] + $values['F'];
-
-                        $marriageAgeData[] = [
-                            $age,
-                            $values['M'],
-                            $values['F'],
-                            null,
-                        ];
-                    }
-                }
-
-                if ($totalSum > 0) {
-                    $marriageAgeData[] = [
-                        round($totalAge / $totalSum, 1),
-                        null,
-                        null,
-                        0,
-                    ];
-
-                    $marriageAgeData[] = [
-                        round($totalAge / $totalSum, 1),
-                        null,
-                        null,
-                        $max,
-                    ];
-                }
-                ?>
-                <?= view('lists/chart-by-age', ['data' => $marriageAgeData, 'title' => I18N::translate('Age in year of marriage')]) ?>
-            </div>
-        </div>
-    </div>
 </div>
