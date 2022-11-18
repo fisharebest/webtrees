@@ -44,7 +44,7 @@ class TreePrivacyAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
+        $tree = Validator::attributes($request)->tree();
 
         $delete_default_resn_id = Validator::parsedBody($request)->array('delete');
 
