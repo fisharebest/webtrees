@@ -55,7 +55,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
     // New data is normalized.  Old data may contain jpg/jpeg, tif/tiff.
     private const SUPPORTED_FORMATS = ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'tif', 'tiff', 'webp'];
-    
+
     private LinkedRecordService $linked_record_service;
 
     /**
