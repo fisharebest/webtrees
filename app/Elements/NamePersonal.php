@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Tree;
 
 use function e;
 use function in_array;
+use function trim;
 use function view;
 
 /**
@@ -98,6 +99,26 @@ class NamePersonal extends AbstractElement
         }
         parent::__construct($label, $subtags);
     }
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        $value = parent::canonical($value);
+
+        if ($value === '//') {
+            return '';
+        }
+
+        return $value;
+    }
+
+
 
     /**
      * Create a default value for this element.
