@@ -21,16 +21,6 @@ parameters:
 			path: app/Date.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AbstractElement\\:\\:canonicalText\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Elements/AbstractElement.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: app/Elements/AbstractElement.php
-
-		-
 			message: "#^Cannot call method make\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Elements/AbstractXrefElement.php
