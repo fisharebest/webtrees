@@ -12,8 +12,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
-$table_id = Registry::idFactory()->id(); // lists requires a unique ID in case there are multiple lists per page
-
+// lists require a unique ID in case there are multiple lists per page
+$table_id          = Registry::idFactory()->id();
 $today             = new Date(strtoupper(date('d M Y')));
 $today_jd          = Registry::timestampFactory()->now()->julianDay();
 $hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();
@@ -176,149 +176,150 @@ $("#<?= e($table_id) ?>")
         </thead>
 
         <tbody>
-        <?php foreach ($families as $family) : ?>
-            <?php $husb = $family->husband() ?? Registry::individualFactory()->new('H', '0 @H@ INDI', null, $family->tree()) ?>
-            <?php $wife = $family->wife() ?? Registry::individualFactory()->new('W', '0 @W@ INDI', null, $family->tree()) ?>
+            <?php foreach ($families as $family) : ?>
+                <?php $husb = $family->husband() ?? Registry::individualFactory()->new('H', '0 @H@ INDI', null, $family->tree()) ?>
+                <?php $wife = $family->wife() ?? Registry::individualFactory()->new('W', '0 @W@ INDI', null, $family->tree()) ?>
 
-            <tr class="<?= $family->isPendingAddition() ? 'wt-new' : '' ?> <?= $family->isPendingDeletion() ? 'wt-old' : '' ?>">
-                <!-- Husband name -->
-                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
-                    <?php foreach ($husb->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] !== '_MARNM' || $num === $husb->getPrimaryName()) : ?>
-                        <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? '' : 'text-muted' ?>">
-                            <?= $name['full'] ?>
-                        </a>
-                            <?php if ($num === $husb->getPrimaryName()) : ?>
-                                <small><?= view('icons/sex', ['sex' => $husb->sex()]) ?></small>
+                <tr class="<?= $family->isPendingAddition() ? 'wt-new' : '' ?> <?= $family->isPendingDeletion() ? 'wt-old' : '' ?>">
+                    <!-- Husband name -->
+                    <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
+                        <?php foreach ($husb->getAllNames() as $num => $name) : ?>
+                            <?php if ($name['type'] !== '_MARNM' || $num === $husb->getPrimaryName()) : ?>
+                                <div>
+                                    <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? '' : 'text-muted' ?>">
+                                        <?= $name['full'] ?>
+                                    </a>
+                                    <?php if ($num === $husb->getPrimaryName()) : ?>
+                                        <small><?= view('icons/sex', ['sex' => $husb->sex()]) ?></small>
+                                    <?php endif ?>
+                                </div>
                             <?php endif ?>
-                        <br>
-                        <?php endif ?>
-                    <?php endforeach ?>
-                    <?= view('lists/individual-table-parents', ['individual' => $husb]) ?>
-                </td>
-
-                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $husb->sortName())) ?>"></td>
-
-                <!-- Husband age -->
-                <?php $age  = new Age($husb->getBirthDate(), $family->getMarriageDate()) ?>
-                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
-                    <?= $age->ageYearsString() ?>
-                </td>
-
-                <!-- Wife name -->
-                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
-                    <?php foreach ($wife->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] !== '_MARNM' || $num === $wife->getPrimaryName()) : ?>
-                            <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? '' : 'text-muted' ?>">
-                                <?= $name['full'] ?>
-                            </a>
-                            <?php if ($num === $wife->getPrimaryName()) : ?>
-                                <small><?= view('icons/sex', ['sex' => $wife->sex()]) ?></small>
-                            <?php endif ?>
-                            <br>
-                        <?php endif ?>
-                    <?php endforeach ?>
-                    <?= view('lists/individual-table-parents', ['individual' => $wife]) ?>
-                </td>
-
-                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $wife->sortName())) ?>"></td>
-
-                <!-- Wife age -->
-                <?php $age = new Age($wife->getBirthDate(), $family->getMarriageDate()) ?>
-                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
-                    <?= $age->ageYearsString() ?>
-                </td>
-
-                <!-- Marriage date -->
-                <td data-sort="<?= $family->getMarriageDate()->julianDay() ?>">
-                    <?php if ($marriage_dates = $family->getAllMarriageDates()) : ?>
-                        <?php foreach ($marriage_dates as $n => $marriage_date) : ?>
-                            <div><?= $marriage_date->display($tree, null, true) ?></div>
                         <?php endforeach ?>
-                    <?php elseif ($family->facts(['_NMR'])->isNotEmpty()) : ?>
-                        <?= I18N::translate('no') ?>
-                    <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
+                        <?= view('lists/individual-table-parents', ['individual' => $husb]) ?>
+                    </td>
+
+                    <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $husb->sortName())) ?>"></td>
+
+                    <!-- Husband age -->
+                    <?php $age  = new Age($husb->getBirthDate(), $family->getMarriageDate()) ?>
+                    <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                        <?= $age->ageYearsString() ?>
+                    </td>
+
+                    <!-- Wife name -->
+                    <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
+                        <?php foreach ($wife->getAllNames() as $num => $name) : ?>
+                            <?php if ($name['type'] !== '_MARNM' || $num === $wife->getPrimaryName()) : ?>
+                                <div>
+                                    <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? '' : 'text-muted' ?>">
+                                        <?= $name['full'] ?>
+                                    </a>
+                                    <?php if ($num === $wife->getPrimaryName()) : ?>
+                                        <small><?= view('icons/sex', ['sex' => $wife->sex()]) ?></small>
+                                    <?php endif ?>
+                                </div>
+                            <?php endif ?>
+                        <?php endforeach ?>
+                        <?= view('lists/individual-table-parents', ['individual' => $wife]) ?>
+                    </td>
+
+                    <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $wife->sortName())) ?>"></td>
+
+                    <!-- Wife age -->
+                    <?php $age = new Age($wife->getBirthDate(), $family->getMarriageDate()) ?>
+                    <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                        <?= $age->ageYearsString() ?>
+                    </td>
+
+                    <!-- Marriage date -->
+                    <td data-sort="<?= $family->getMarriageDate()->julianDay() ?>">
+                        <?php if ($marriage_dates = $family->getAllMarriageDates()) : ?>
+                            <?php foreach ($marriage_dates as $marriage_date) : ?>
+                                <div><?= $marriage_date->display($tree, null, true) ?></div>
+                            <?php endforeach ?>
+                        <?php elseif ($family->facts(['MARR'])->isEmpty()) : ?>
+                            <?= I18N::translate('no') ?>
+                        <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
                             <?= I18N::translate('yes') ?>
-                    <?php endif ?>
-                </td>
-
-                <!-- Marriage anniversary -->
-                <?php $age = new Age($family->getMarriageDate(), $today) ?>
-                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
-                    <?= $age->ageYearsString() ?>
-                </td>
-
-                <!-- Marriage place -->
-                <td data-sort="<?= e($family->getMarriagePlace()->gedcomName()) ?>">
-                    <?php foreach ($family->getAllMarriagePlaces() as $n => $marriage_place) : ?>
-                        <?= $marriage_place->shortName(true) ?>
-                        <br>
-                    <?php endforeach ?>
-                </td>
-
-                <!-- Number of children -->
-                <td class="text-center" data-sort="<?= $family->numberOfChildren() ?>">
-                    <?= I18N::number($family->numberOfChildren()) ?>
-                </td>
-
-                <!-- Last change -->
-                <td data-sort="<?= $family->lastChangeTimestamp()->timestamp() ?>">
-                    <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
-                </td>
-
-                <!-- Filter by marriage date -->
-                <td hidden>
-                    <?php if ($family->getMarriageDate()->maximumJulianDay() > $hundred_years_ago && $family->getMarriageDate()->maximumJulianDay() <= $today_jd) : ?>
-                        Y100
-                    <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
-                        YES
-                    <?php else : ?>
-                        U
-                    <?php endif ?>
-                    <?php if ($family->facts(['DIV'])->isNotEmpty()) : ?>
-                        D
-                    <?php endif ?>
-                    <?php if (count($husb->spouseFamilies()) > 1 || count($wife->spouseFamilies()) > 1) : ?>
-                        M
-                    <?php endif ?>
-                </td>
-
-                <!-- Filter by alive/dead -->
-                <td hidden>
-                    <?php if ($husb->isDead() && $wife->isDead()) : ?>
-                        Y
-                    <?php endif ?>
-                    <?php if ($husb->isDead() && !$wife->isDead()) : ?>
-                        <?php if ($wife->sex() === 'F') : ?>
-                            H
                         <?php endif ?>
-                        <?php if ($wife->sex() === 'M') : ?>
-                            W
-                        <?php endif ?>
-                    <?php endif ?>
-                    <?php if (!$husb->isDead() && $wife->isDead()) : ?>
-                        <?php if ($husb->sex() === 'M') : ?>
-                            W
-                        <?php endif ?>
-                        <?php if ($husb->sex() === 'F') : ?>
-                            H
-                        <?php endif ?>
-                    <?php endif ?>
-                    <?php if (!$husb->isDead() && !$wife->isDead()) : ?>
-                        N
-                    <?php endif ?>
-                </td>
+                    </td>
 
-                <!-- Filter by roots/leaves -->
-                <td hidden>
-                    <?php if ($husb->childFamilies()->isEmpty() && $wife->childFamilies()->isEmpty()) : ?>
-                        R
-                    <?php elseif (!$husb->isDead() && !$wife->isDead() && $family->numberOfChildren() === 0) : ?>
-                        L
-                    <?php endif ?>
-                </td>
-            </tr>
-        <?php endforeach ?>
+                    <!-- Marriage anniversary -->
+                    <?php $age = new Age($family->getMarriageDate(), $today) ?>
+                    <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                        <?= $age->ageYearsString() ?>
+                    </td>
+
+                    <!-- Marriage place -->
+                    <td data-sort="<?= e($family->getMarriagePlace()->gedcomName()) ?>">
+                        <?php foreach ($family->getAllMarriagePlaces() as $marriage_place) : ?>
+                            <div><?= $marriage_place->shortName(true) ?></div>
+                        <?php endforeach ?>
+                    </td>
+
+                    <!-- Number of children -->
+                    <td class="text-center" data-sort="<?= $family->numberOfChildren() ?>">
+                        <?= I18N::number($family->numberOfChildren()) ?>
+                    </td>
+
+                    <!-- Last change -->
+                    <td data-sort="<?= $family->lastChangeTimestamp()->timestamp() ?>">
+                        <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
+                    </td>
+
+                    <!-- Filter by marriage date -->
+                    <td hidden>
+                        <?php if ($family->getMarriageDate()->maximumJulianDay() > $hundred_years_ago && $family->getMarriageDate()->maximumJulianDay() <= $today_jd) : ?>
+                            Y100
+                        <?php elseif ($family->facts(['MARR'])->isNotEmpty()) : ?>
+                            YES
+                        <?php else : ?>
+                            U
+                        <?php endif ?>
+                        <?php if ($family->facts(['DIV'])->isNotEmpty()) : ?>
+                            D
+                        <?php endif ?>
+                        <?php if (count($husb->spouseFamilies()) > 1 || count($wife->spouseFamilies()) > 1) : ?>
+                            M
+                        <?php endif ?>
+                    </td>
+
+                    <!-- Filter by alive/dead -->
+                    <td hidden>
+                        <?php if ($husb->isDead() && $wife->isDead()) : ?>
+                            Y
+                        <?php endif ?>
+                        <?php if ($husb->isDead() && !$wife->isDead()) : ?>
+                            <?php if ($wife->sex() === 'F') : ?>
+                                H
+                            <?php endif ?>
+                            <?php if ($wife->sex() === 'M') : ?>
+                                W
+                            <?php endif ?>
+                        <?php endif ?>
+                        <?php if (!$husb->isDead() && $wife->isDead()) : ?>
+                            <?php if ($husb->sex() === 'M') : ?>
+                                W
+                            <?php endif ?>
+                            <?php if ($husb->sex() === 'F') : ?>
+                                H
+                            <?php endif ?>
+                        <?php endif ?>
+                        <?php if (!$husb->isDead() && !$wife->isDead()) : ?>
+                            N
+                        <?php endif ?>
+                    </td>
+
+                    <!-- Filter by roots/leaves -->
+                    <td hidden>
+                        <?php if ($husb->childFamilies()->isEmpty() && $wife->childFamilies()->isEmpty()) : ?>
+                            R
+                        <?php elseif (!$husb->isDead() && !$wife->isDead() && $family->numberOfChildren() === 0) : ?>
+                            L
+                        <?php endif ?>
+                    </td>
+                </tr>
+            <?php endforeach ?>
         </tbody>
 
         <tfoot>

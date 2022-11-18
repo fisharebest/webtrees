@@ -22,17 +22,12 @@ use Illuminate\Support\Collection;
  * @var Tree                       $tree
  */
 
-// lists requires a unique ID in case there are multiple lists per page
-$table_id = Registry::idFactory()->id();
-
-$today_jd          = Registry::timestampFactory()->now()->julianDay();
-$hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();
-
-$unique_indis = []; // Don't double-count indis with multiple names.
-
+// lists require a unique ID in case there are multiple lists per page
+$table_id             = Registry::idFactory()->id();
+$today_jd             = Registry::timestampFactory()->now()->julianDay();
+$hundred_years_ago    = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();
 $show_estimated_dates = (bool) $tree->getPreference('SHOW_EST_LIST_DATES');
-
-$today = new Date(strtoupper(date('d M Y')));
+$today                = new Date(strtoupper(date('d M Y')));
 
 $module = app(ModuleService::class)
     ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
@@ -206,141 +201,136 @@ $("#<?= e($table_id) ?>")
 
         <tbody>
             <?php foreach ($individuals as $key => $individual) : ?>
-            <tr class="<?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?>">
-                <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
-                    <?php foreach ($individual->getAllNames() as $num => $name) : ?>
-                        <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? '' : 'text-muted' ?>">
-                            <?= $name['full'] ?>
-                        </a>
-                        <?php if ($num === $individual->getPrimaryName()) : ?>
-                            <small><?= view('icons/sex', ['sex' => $individual->sex()]) ?></small>
-                        <?php endif ?>
-                        <br>
-                    <?php endforeach ?>
-                    <?= view('lists/individual-table-parents', ['individual' => $individual]) ?>
-                </td>
+                <tr class="<?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?>">
+                    <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $individual->sortName()))))) ?>">
+                        <?php foreach ($individual->getAllNames() as $num => $name) : ?>
+                            <div>
+                                <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($individual->url()) ?>" class="<?= $num === $individual->getPrimaryName() ? '' : 'text-muted' ?>">
+                                    <?= $name['full'] ?>
+                                </a>
+                                <?php if ($num === $individual->getPrimaryName()) : ?>
+                                    <small><?= view('icons/sex', ['sex' => $individual->sex()]) ?></small>
+                                <?php endif ?>
+                            </div>
+                        <?php endforeach ?>
+                        <?= view('lists/individual-table-parents', ['individual' => $individual]) ?>
+                    </td>
 
-                <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $individual->sortName())) ?>"></td>
+                    <td hidden data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', $individual->sortName())) ?>"></td>
 
-                <td class="text-center" data-sort="<?= $key ?>">
-                    <?php if ($sosa) : ?>
-                        <?php if ($module instanceof RelationshipsChartModule) : ?>
-                            <a href="<?= e($module->chartUrl($individuals[1], ['xref2' => $individual->xref()])) ?>" rel="nofollow" title="<?= I18N::translate('Relationships') ?>" rel="nofollow">
+                    <td class="text-center" data-sort="<?= $key ?>">
+                        <?php if ($sosa) : ?>
+                            <?php if ($module instanceof RelationshipsChartModule) : ?>
+                                <a href="<?= e($module->chartUrl($individuals[1], ['xref2' => $individual->xref()])) ?>" rel="nofollow" title="<?= I18N::translate('Relationships') ?>" rel="nofollow">
+                                    <?= I18N::number($key) ?>
+                                </a>
+                            <?php else : ?>
                                 <?= I18N::number($key) ?>
-                            </a>
-                        <?php else : ?>
-                            <?= I18N::number($key) ?>
+                            <?php endif ?>
                         <?php endif ?>
-                    <?php endif ?>
-                </td>
+                    </td>
 
-                <!-- Birth date -->
-                <?php $estimated_birth_date = $individual->getEstimatedBirthDate(); ?>
+                    <!-- Birthdate -->
+                    <?php $estimated_birth_date = $individual->getEstimatedBirthDate(); ?>
 
-                <td data-sort="<?= $estimated_birth_date->julianDay() ?>">
-                    <?php $birth_dates = $individual->getAllBirthDates(); ?>
+                    <td data-sort="<?= $estimated_birth_date->julianDay() ?>">
+                        <?php $birth_dates = $individual->getAllBirthDates(); ?>
 
-                    <?php foreach ($birth_dates as $n => $birth_date) : ?>
-                        <?= $birth_date->display($tree, null, true) ?>
-                        <br>
-                    <?php endforeach ?>
+                        <?php foreach ($birth_dates as $birth_date) : ?>
+                            <div><?= $birth_date->display($tree, null, true) ?></div>
+                        <?php endforeach ?>
 
-                    <?php if (empty($birth_dates) && $show_estimated_dates) : ?>
-                        <?= $estimated_birth_date->display($tree, null, true) ?>
-                    <?php endif ?>
-                </td>
+                        <?php if ($birth_dates === [] && $show_estimated_dates) : ?>
+                            <?= $estimated_birth_date->display($tree, null, true) ?>
+                        <?php endif ?>
+                    </td>
 
-                <!-- Birth anniversary -->
-                <td class="text-center" data-sort="<?= - $estimated_birth_date->julianDay() ?>">
-                    <?= (new Age($birth_dates[0] ?? new Date(''), $today))->ageYearsString() ?>
-                </td>
+                    <!-- Birth anniversary -->
+                    <td class="text-center" data-sort="<?= - $estimated_birth_date->julianDay() ?>">
+                        <?= (new Age($birth_dates[0] ?? new Date(''), $today))->ageYearsString() ?>
+                    </td>
 
-                <!-- birthplace -->
-                <td data-sort="<?= e($individual->getBirthPlace()->gedcomName()) ?>">
-                    <?php foreach ($individual->getAllBirthPlaces() as $n => $birth_place) : ?>
-                        <?= $birth_place->shortName(true) ?>
-                        <br>
-                    <?php endforeach ?>
-                </td>
+                    <!-- birthplace -->
+                    <td data-sort="<?= e($individual->getBirthPlace()->gedcomName()) ?>">
+                        <?php foreach ($individual->getAllBirthPlaces() as $birth_place) : ?>
+                            <div><?= $birth_place->shortName(true) ?></div>
+                        <?php endforeach ?>
+                    </td>
 
-                <!-- Number of children -->
-                <td class="text-center" data-sort="<?= $individual->numberOfChildren() ?>">
-                    <?= I18N::number($individual->numberOfChildren()) ?>
-                </td>
+                    <!-- Number of children -->
+                    <td class="text-center" data-sort="<?= $individual->numberOfChildren() ?>">
+                        <?= I18N::number($individual->numberOfChildren()) ?>
+                    </td>
 
-                <!--    Death date -->
-                <?php $death_dates = $individual->getAllDeathDates() ?>
-                <td data-sort="<?= $individual->getEstimatedDeathDate()->julianDay() ?>">
-                    <?php foreach ($death_dates as $num => $death_date) : ?>
-                        <?= $death_date->display($tree, null, true) ?>
-                    <br>
-                    <?php endforeach ?>
+                    <!-- Death date -->
+                    <?php $death_dates = $individual->getAllDeathDates() ?>
+                    <td data-sort="<?= $individual->getEstimatedDeathDate()->julianDay() ?>">
+                        <?php foreach ($death_dates as $num => $death_date) : ?>
+                            <div><?= $death_date->display($tree, null, true) ?></div>
+                        <?php endforeach ?>
 
-                    <?php if (empty($death_dates) && $show_estimated_dates && $individual->getEstimatedDeathDate()->minimumDate()->minimumJulianDay() < $today_jd) : ?>
-                        <?= $individual->getEstimatedDeathDate()->display($tree, null, true) ?>
-                    <?php endif ?>
-                </td>
+                        <?php if ($death_dates === [] && $show_estimated_dates && $individual->getEstimatedDeathDate()->minimumDate()->minimumJulianDay() < $today_jd) : ?>
+                            <?= $individual->getEstimatedDeathDate()->display($tree, null, true) ?>
+                        <?php endif ?>
+                    </td>
 
-                <!-- Death anniversary -->
-                <td class="text-center" data-sort="<?= - $individual->getEstimatedDeathDate()->julianDay() ?>">
-                    <?= (new Age($death_dates[0] ?? new Date(''), $today))->ageYearsString() ?>
-                </td>
+                    <!-- Death anniversary -->
+                    <td class="text-center" data-sort="<?= - $individual->getEstimatedDeathDate()->julianDay() ?>">
+                        <?= (new Age($death_dates[0] ?? new Date(''), $today))->ageYearsString() ?>
+                    </td>
 
-                <!-- Age at death -->
-                <?php $age = new Age($birth_dates[0] ?? new Date(''), $death_dates[0] ?? new Date('')) ?>
-                <td class="text-center" data-sort="<?= $age->ageDays() ?>">
-                    <?= $age->ageYearsString() ?>
-                </td>
+                    <!-- Age at death -->
+                    <?php $age = new Age($birth_dates[0] ?? new Date(''), $death_dates[0] ?? new Date('')) ?>
+                    <td class="text-center" data-sort="<?= $age->ageDays() ?>">
+                        <?= $age->ageYearsString() ?>
+                    </td>
 
-                <!-- Death place -->
-                <td data-sort="<?= e($individual->getDeathPlace()->gedcomName()) ?>">
-                    <?php foreach ($individual->getAllDeathPlaces() as $n => $death_place) : ?>
-                        <?= $death_place->shortName(true) ?>
-                        <br>
-                    <?php endforeach ?>
-                </td>
+                    <!-- Death place -->
+                    <td data-sort="<?= e($individual->getDeathPlace()->gedcomName()) ?>">
+                        <?php foreach ($individual->getAllDeathPlaces() as $death_place) : ?>
+                            <div><?= $death_place->shortName(true) ?></div>
+                        <?php endforeach ?>
+                    </td>
 
-                <!-- Last change -->
-                <td data-sort="<?= $individual->lastChangeTimestamp()->timestamp() ?>">
-                    <?= view('components/datetime', ['timestamp' => $individual->lastChangeTimestamp()]) ?>
-                </td>
+                    <!-- Last change -->
+                    <td data-sort="<?= $individual->lastChangeTimestamp()->timestamp() ?>">
+                        <?= view('components/datetime', ['timestamp' => $individual->lastChangeTimestamp()]) ?>
+                    </td>
 
-                <!-- Filter by sex -->
-                <td hidden>
-                    <?= $individual->sex() ?>
-                </td>
+                    <!-- Filter by sex -->
+                    <td hidden>
+                        <?= $individual->sex() ?>
+                    </td>
 
-                <!-- Filter by birth date -->
-                <td hidden>
-                    <?php if ($estimated_birth_date->maximumJulianDay() > $hundred_years_ago && $estimated_birth_date->maximumJulianDay() <= $today_jd) : ?>
-                        Y100
-                    <?php else : ?>
-                        YES
-                    <?php endif ?>
-                </td>
+                    <!-- Filter by birthdate -->
+                    <td hidden>
+                        <?php if ($estimated_birth_date->maximumJulianDay() > $hundred_years_ago && $estimated_birth_date->maximumJulianDay() <= $today_jd) : ?>
+                            Y100
+                        <?php else : ?>
+                            YES
+                        <?php endif ?>
+                    </td>
 
-                <!-- Filter by death date -->
-                <td hidden>
-                    <?php if ($individual->getEstimatedDeathDate()->maximumJulianDay() > $hundred_years_ago && $individual->getEstimatedDeathDate()->maximumJulianDay() <= $today_jd) : ?>
-                        Y100
-                    <?php elseif ($individual->isDead()) : ?>
-                        YES
-                    <?php else : ?>
-                        N
-                    <?php endif ?>
-                </td>
+                    <!-- Filter by death date -->
+                    <td hidden>
+                        <?php if ($individual->getEstimatedDeathDate()->maximumJulianDay() > $hundred_years_ago && $individual->getEstimatedDeathDate()->maximumJulianDay() <= $today_jd) : ?>
+                            Y100
+                        <?php elseif ($individual->isDead()) : ?>
+                            YES
+                        <?php else : ?>
+                            N
+                        <?php endif ?>
+                    </td>
 
-                <!-- Filter by roots/leaves -->
-                <td hidden>
-                    <?php if ($individual->childFamilies()->isEmpty()) : ?>
-                        R
-                    <?php elseif (!$individual->isDead() && $individual->numberOfChildren() < 1) : ?>
-                        L
-                    <?php endif ?>
-                </td>
-            </tr>
-
-                <?php $unique_indis[$individual->xref()] = true ?>
+                    <!-- Filter by roots/leaves -->
+                    <td hidden>
+                        <?php if ($individual->childFamilies()->isEmpty()) : ?>
+                            R
+                        <?php elseif (!$individual->isDead() && $individual->numberOfChildren() < 1) : ?>
+                            L
+                        <?php endif ?>
+                    </td>
+                </tr>
             <?php endforeach ?>
         </tbody>
 
