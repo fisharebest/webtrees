@@ -56,15 +56,6 @@ $("#<?= e($table_id) ?>")
     .on("click", "#btn-toggle-parents", function() {
         $(".wt-individual-list-parents").slideToggle();
     })
-    /* Hide/show statistics */
-    .on("click", "#btn-toggle-statistics", function() {
-        $("#family-charts-<?= e($table_id) ?>").slideToggle({
-            complete: function () {
-                // Trigger resize to redraw the chart
-                $('div[id^="google-chart-"]').resize();
-            }
-        });
-    })
     /* Filter buttons in table header */
     .on("click", "input[data-filter-column]", function() {
         let checkbox = $(this);
