@@ -153,7 +153,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $data_filesystem = Registry::filesystem()->data();
+        $formats = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
@@ -164,33 +164,25 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
                 'folder'  => Validator::parsedBody($request)->string('folder'),
                 'filter'  => Validator::parsedBody($request)->string('filter'),
                 'subdirs' => Validator::parsedBody($request)->boolean('subdirs', false),
-                'format'  => Validator::parsedBody($request)->string('format'),
+                'format'  => Validator::parsedBody($request)->isInArrayKeys($formats)->string('format'),
             ];
 
             return redirect($this->listUrl($tree, $params));
         }
 
-        $params  = $request->getQueryParams();
-        $formats = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
-        $go      = $params['go'] ?? '';
-        $page    = (int) ($params['page'] ?? 1);
-        $max     = (int) ($params['max'] ?? 20);
-        $folder  = $params['folder'] ?? '';
-        $filter  = $params['filter'] ?? '';
-        $subdirs = $params['subdirs'] ?? '';
-        $format  = $params['format'] ?? '';
+        $data_filesystem = Registry::filesystem()->data();
+        $folders         = $this->allFolders($tree);
 
-        $folders = $this->allFolders($tree);
+        $go      = Validator::queryParams($request)->boolean('go', false);
+        $page    = Validator::queryParams($request)->integer('page', 1);
+        $max     = Validator::queryParams($request)->integer('page', 20);
+        $folder  = Validator::queryParams($request)->string('folder', '');
+        $filter  = Validator::queryParams($request)->string('filter', '');
+        $subdirs = Validator::queryParams($request)->boolean('subdirs', false);
+        $format  = Validator::queryParams($request)->isInArrayKeys($formats)->string('format', '');
 
-        if ($go === '1') {
-            $media_objects = $this->allMedia(
-                $tree,
-                $folder,
-                $subdirs === '1' ? 'include' : 'exclude',
-                'title',
-                $filter,
-                $format
-            );
+        if ($go) {
+            $media_objects = $this->allMedia($tree, $folder, $subdirs, 'title', $filter, $format);
         } else {
             $media_objects = new Collection();
         }
@@ -255,14 +247,14 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      *
      * @param Tree   $tree       find media in this tree
      * @param string $folder     folder to search
-     * @param string $subfolders either "include" or "exclude"
+     * @param bool   $subfolders
      * @param string $sort       either "file" or "title"
      * @param string $filter     optional search string
      * @param string $format     option OBJE/FILE/FORM/TYPE
      *
      * @return Collection<int,Media>
      */
-    private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $format): Collection
+    private function allMedia(Tree $tree, string $folder, bool $subfolders, string $sort, string $filter, string $format): Collection
     {
         $query = DB::table('media')
             ->join('media_file', static function (JoinClause $join): void {
@@ -274,7 +266,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 
         if ($folder === '') {
             // Include external URLs in the root folder.
-            if ($subfolders === 'exclude') {
+            if (!$subfolders) {
                 $query->where(static function (Builder $query): void {
                     $query
                         ->where('multimedia_file_refn', 'NOT LIKE', '%/%')
@@ -289,7 +281,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
                 ->where('multimedia_file_refn', 'NOT LIKE', 'http:%')
                 ->where('multimedia_file_refn', 'NOT LIKE', 'https:%');
 
-            if ($subfolders === 'exclude') {
+            if (!$subfolders) {
                 $query->where('multimedia_file_refn', 'NOT LIKE', $folder . '/%/%');
             }
         }
