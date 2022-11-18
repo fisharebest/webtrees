@@ -31,7 +31,7 @@ class GovIdentifier extends AbstractElement
 {
     protected const EXTERNAL_URL = 'https://gov.genealogy.net/item/show/';
 
-    protected const MAXIMUM_LENGTH = 12;
+    protected const MAXIMUM_LENGTH = 14;
 
     /**
      * Display the value of this type of element.
