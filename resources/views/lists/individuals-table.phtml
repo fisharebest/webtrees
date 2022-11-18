@@ -98,71 +98,6 @@ $("#<?= e($table_id) ?>")
 </script>
 <?php View::endpush() ?>
 
-<?php
-$max_age = (int) $tree->getPreference('MAX_ALIVE_AGE');
-
-// Initialise chart data
-$deat_by_age = [];
-for ($age = 0; $age <= $max_age; $age++) {
-    $deat_by_age[$age]['M'] = 0;
-    $deat_by_age[$age]['F'] = 0;
-    $deat_by_age[$age]['U'] = 0;
-    $deat_by_age[$age]['X'] = 0;
-}
-$birt_by_decade = [];
-$deat_by_decade = [];
-for ($year = 1400; $year < 2050; $year += 10) {
-    $birt_by_decade[$year]['M'] = 0;
-    $birt_by_decade[$year]['F'] = 0;
-    $birt_by_decade[$year]['U'] = 0;
-    $birt_by_decade[$year]['X'] = 0;
-    $deat_by_decade[$year]['M'] = 0;
-    $deat_by_decade[$year]['F'] = 0;
-    $deat_by_decade[$year]['U'] = 0;
-    $deat_by_decade[$year]['X'] = 0;
-}
-
-$birthData = [
-    [
-        [
-            'label' => I18N::translate('Century'),
-            'type'  => 'date',
-        ], [
-            'label' => I18N::translate('Males'),
-            'type'  => 'number',
-        ], [
-            'label' => I18N::translate('Females'),
-            'type'  => 'number',
-        ],
-    ]
-];
-
-$deathData = [
-    [
-        [
-            'label' => I18N::translate('Century'),
-            'type'  => 'date',
-        ], [
-            'label' => I18N::translate('Males'),
-            'type'  => 'number',
-        ], [
-            'label' => I18N::translate('Females'),
-            'type'  => 'number',
-        ],
-    ]
-];
-
-$deathAgeData = [
-    [
-        I18N::translate('Age'),
-        I18N::translate('Males'),
-        I18N::translate('Females'),
-        I18N::translate('Average age'),
-    ]
-];
-
-?>
-
 <div id="<?= e($table_id) ?>">
     <table class="table table-bordered table-sm wt-table-individual"
         <?= view('lists/datatables-attributes') ?>
@@ -316,16 +251,11 @@ $deathAgeData = [
                 </td>
 
                 <!-- Birth anniversary -->
-                <?php if (isset($birth_dates[0]) && $birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->xref()])) : ?>
-                    <?php
-                    ++$birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10][$individual->sex()];
-                    ?>
-                <?php endif ?>
                 <td class="text-center" data-sort="<?= - $estimated_birth_date->julianDay() ?>">
                     <?= (new Age($birth_dates[0] ?? new Date(''), $today))->ageYearsString() ?>
                 </td>
 
-                <!-- Birth place -->
+                <!-- birthplace -->
                 <td data-sort="<?= e($individual->getBirthPlace()->gedcomName()) ?>">
                     <?php foreach ($individual->getAllBirthPlaces() as $n => $birth_place) : ?>
                         <?= $birth_place->shortName(true) ?>
@@ -352,20 +282,12 @@ $deathAgeData = [
                 </td>
 
                 <!-- Death anniversary -->
-                <?php if (isset($death_dates[0]) && $death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$individual->xref()])) : ?>
-                    <?php
-                    ++$deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10][$individual->sex()];
-                    ?>
-                <?php endif ?>
                 <td class="text-center" data-sort="<?= - $individual->getEstimatedDeathDate()->julianDay() ?>">
                     <?= (new Age($death_dates[0] ?? new Date(''), $today))->ageYearsString() ?>
                 </td>
 
                 <!-- Age at death -->
                 <?php $age = new Age($birth_dates[0] ?? new Date(''), $death_dates[0] ?? new Date('')) ?>
-                <?php if (!isset($unique_indis[$individual->xref()]) && $age->ageYears() >= 0 && $age->ageYears() <= $max_age) : ?>
-                    <?php ++$deat_by_age[$age->ageYears()][$individual->sex()] ?>
-                <?php endif ?>
                 <td class="text-center" data-sort="<?= $age->ageDays() ?>">
                     <?= $age->ageYearsString() ?>
                 </td>
@@ -430,10 +352,6 @@ $deathAgeData = [
                         <label class="btn btn-secondary" for="btn-toggle-parents">
                             <?= I18N::translate('Show parents') ?>
                         </label>
-                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" data-wt-persist="individuals-statistics" autocomplete="off">
-                        <label class="btn btn-secondary" for="btn-toggle-statistics">
-                            <?= I18N::translate('Show statistics charts') ?>
-                        </label>
                     </div>
                 </th>
             </tr>
@@ -441,98 +359,3 @@ $deathAgeData = [
     </table>
 </div>
 
-<div id="individual-charts-<?= e($table_id) ?>" style="display: none;">
-    <div class="d-grid gap-3 my-3">
-        <div class="card">
-            <div class="card-header">
-                <?= I18N::translate('Decade of birth') ?>
-            </div>
-            <div class="card-body">
-                <?php
-                foreach ($birt_by_decade as $century => $values) {
-                    if ($values['M'] + $values['F'] > 0) {
-                        $birthData[] = [
-                            [
-                                'v' => 'Date(' . $century . ', 0, 1)',
-                                'f' => $century,
-                            ],
-                            $values['M'],
-                            $values['F'],
-                        ];
-                    }
-                }
-                ?>
-                <?= view('lists/chart-by-decade', ['data' => $birthData, 'title' => I18N::translate('Decade of birth')]) ?>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <?= I18N::translate('Decade of death') ?>
-            </div>
-            <div class="card-body">
-                <?php
-                foreach ($deat_by_decade as $century => $values) {
-                    if ($values['M'] + $values['F'] > 0) {
-                        $deathData[] = [
-                            [
-                                'v' => 'Date(' . $century . ', 0, 1)',
-                                'f' => $century,
-                            ],
-                            $values['M'],
-                            $values['F'],
-                        ];
-                    }
-                }
-                ?>
-                <?= view('lists/chart-by-decade', ['data' => $deathData, 'title' => I18N::translate('Decade of death')]) ?>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <?= I18N::translate('Age related to death year') ?>
-            </div>
-            <div class="card-body">
-                <?php
-                    $totalAge = 0;
-                    $totalSum = 0;
-                    $max      = 0;
-
-                foreach ($deat_by_age as $age => $values) {
-                    if ($values['M'] + $values['F'] > 0) {
-                        if ($values['M'] + $values['F'] > $max) {
-                            $max = $values['M'] + $values['F'];
-                        }
-
-                        $totalAge += $age * ($values['M'] + $values['F']);
-                        $totalSum += $values['M'] + $values['F'];
-
-                        $deathAgeData[] = [
-                            $age,
-                            $values['M'],
-                            $values['F'],
-                            null,
-                        ];
-                    }
-                }
-
-                if ($totalSum > 0) {
-                    $deathAgeData[] = [
-                        round($totalAge / $totalSum, 1),
-                        null,
-                        null,
-                        0,
-                    ];
-
-                    $deathAgeData[] = [
-                        round($totalAge / $totalSum, 1),
-                        null,
-                        null,
-                        $max,
-                    ];
-                }
-                ?>
-                <?= view('lists/chart-by-age', ['data' => $deathAgeData, 'title' => I18N::translate('Age related to death year')]) ?>
-            </div>
-        </div>
-    </div>
-</div>
