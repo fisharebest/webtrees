@@ -53,6 +53,9 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     // How long to show each slide (seconds)
     private const DELAY = 6;
 
+    // New data is normalized.  Old data may contain jpg/jpeg, tif/tiff.
+    private const SUPPORTED_FORMATS = ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'tif', 'tiff', 'webp'];
+    
     private LinkedRecordService $linked_record_service;
 
     /**
@@ -128,7 +131,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->where('media.m_file', '=', $tree->id())
-            ->whereIn('media_file.multimedia_format', ImageFactory::SUPPORTED_FORMATS)
+            ->whereIn('media_file.multimedia_format', self::SUPPORTED_FORMATS)
             ->whereIn('media_file.source_media_type', $filter_types)
             ->select('media.*')
             ->get()
