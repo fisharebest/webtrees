@@ -42,24 +42,6 @@ class NamePhoneticVariation extends NamePersonal
     ];
 
     /**
-     * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    public function canonical(string $value): string
-    {
-        $value = parent::canonical($value);
-
-        if ($value === '//') {
-            return '';
-        }
-
-        return $value;
-    }
-
-    /**
      * Should we collapse the children of this element when editing?
      *
      * @return bool
