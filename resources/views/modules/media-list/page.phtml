@@ -27,7 +27,7 @@ use League\Flysystem\FilesystemOperator;
  * @var ModuleListInterface   $module
  * @var int                   $page
  * @var int                   $pages
- * @var string                $subdirs
+ * @var bool                  $subdirs
  * @var string                $title
  * @var Tree                  $tree
  */
@@ -45,7 +45,7 @@ use League\Flysystem\FilesystemOperator;
         </label>
         <div class="col-sm-3 wt-page-options-value">
             <?= view('components/select', ['name' => 'folder', 'selected' => $folder, 'options' => $folders]) ?>
-            <?= view('components/checkbox-inline', ['label' => /* I18N: Label for check-box */ I18N::translate('Include subfolders'), 'name' => 'subdirs', 'checked' => $subdirs === '1']) ?>
+            <?= view('components/checkbox-inline', ['label' => /* I18N: Label for check-box */ I18N::translate('Include subfolders'), 'name' => 'subdirs', 'checked' => $subdirs]) ?>
         </div>
 
         <label class="col-sm-3 col-form-label wt-page-options-label" for="max">
