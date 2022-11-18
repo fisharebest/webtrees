@@ -38,6 +38,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function implode;
 use function str_contains;
+use function var_dump;
 
 /**
  * Simple class to help migrate to a third-party routing library.
@@ -95,7 +96,7 @@ class Router implements MiddlewareInterface
 
             if ($failed_route instanceof Route) {
                 if ($failed_route->failedRule === Allows::class) {
-                    Registry::responseFactory()->response('', StatusCodeInterface::STATUS_METHOD_NOT_ALLOWED, [
+                    return Registry::responseFactory()->response('', StatusCodeInterface::STATUS_METHOD_NOT_ALLOWED, [
                         'Allow' => implode(', ', $failed_route->allows),
                     ]);
                 }
