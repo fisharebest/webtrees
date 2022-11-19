@@ -60,6 +60,7 @@ class BadBotBlocker implements MiddlewareInterface
         'admantx',
         'Adsbot',
         'AhrefsBot',
+        'Amazonbot', // Until it understands crawl-delay and noindex / nofollow
         'AspiegelBot',
         'Barkrowler',
         'BLEXBot',
