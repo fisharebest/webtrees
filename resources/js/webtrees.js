@@ -689,9 +689,9 @@
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
 
-        L.DomUtil.create('i', 'fas fa-expand', anchor);
         L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
         anchor.setAttribute('aria-label', config.i18n.fullScreen);
+        anchor.innerHTML = config.icons.fullscreen;
         anchor.href = '#';
         anchor.title = config.i18n.fullScreen;
         anchor.role = 'button';
@@ -712,9 +712,9 @@
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
 
-        L.DomUtil.create('i', 'fas fa-redo', anchor);
         L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
         anchor.setAttribute('aria-label', config.i18n.reset);
+        anchor.innerHTML = config.icons.reset;
         anchor.href = '#';
         anchor.title = config.i18n.reset;
         anchor.role = 'button';

@@ -80,8 +80,10 @@ class LeafletJsService
                 'fullScreen' => I18N::translate('Toggle full screen'),
             ],
             'icons'        => [
-                'collapse' => view('icons/collapse'),
-                'expand'   => view('icons/expand'),
+                'collapse'   => view('icons/collapse'),
+                'expand'     => view('icons/expand'),
+                'fullscreen' => view('icons/fullscreen'),
+                'reset'      => view('icons/reset'),
             ],
             'mapProviders' => $map_providers,
         ];
