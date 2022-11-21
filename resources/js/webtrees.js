@@ -681,29 +681,6 @@
       zoomoutTitle: config.i18n.zoomOut,
     });
 
-    const fullScreenControl = L.Control.extend({
-      options: {
-        position: 'topleft',
-      },
-      onAdd: (map) => {
-        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
-
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        anchor.setAttribute('aria-label', config.i18n.fullScreen);
-        anchor.innerHTML = config.icons.fullscreen;
-        anchor.href = '#';
-        anchor.title = config.i18n.fullScreen;
-        anchor.role = 'button';
-
-        container.onclick = () => {
-          webtrees.fullScreen(document.getElementById(id));
-        };
-
-        return container;
-      },
-    });
-
     const resetControl = L.Control.extend({
       options: {
         position: 'topleft',
@@ -720,6 +697,29 @@
         anchor.role = 'button';
 
         container.onclick = resetCallback;
+
+        return container;
+      },
+    });
+
+    const fullScreenControl = L.Control.extend({
+      options: {
+        position: 'topleft',
+      },
+      onAdd: (map) => {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
+
+        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
+        anchor.setAttribute('aria-label', config.i18n.fullScreen);
+        anchor.innerHTML = config.icons.fullscreen;
+        anchor.href = '#';
+        anchor.title = config.i18n.fullScreen;
+        anchor.role = 'button';
+
+        container.onclick = () => {
+          webtrees.fullScreen(id);
+        };
 
         return container;
       },
@@ -761,10 +761,11 @@
 
   /**
    * General purpose fullscreen function
-   * @param {Element} element
+   * @param {string} id of the element to be fullscreened
    * @returns
    */
-  webtrees.fullScreen = function (element) {
+  webtrees.fullScreen = function (id) {
+    const element = document.getElementById(id);
     if (fscreen.fullscreenEnabled) {
       if (!fscreen.fullscreenElement) {
         element.requestFullscreen();
