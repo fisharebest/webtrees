@@ -689,12 +689,11 @@
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
 
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
         anchor.setAttribute('aria-label', config.i18n.reset);
+        anchor.setAttribute('title', config.i18n.reset);
+        anchor.setAttribute('aria-disabled', 'false');
+        anchor.setAttribute('role', 'button');
         anchor.innerHTML = config.icons.reset;
-        anchor.href = '#';
-        anchor.title = config.i18n.reset;
-        anchor.role = 'button';
 
         container.onclick = resetCallback;
 
@@ -710,12 +709,11 @@
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
 
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
         anchor.setAttribute('aria-label', config.i18n.fullScreen);
+        anchor.setAttribute('title', config.i18n.fullScreen);
+        anchor.setAttribute('aria-disabled', 'false');
+        anchor.setAttribute('role', 'button');
         anchor.innerHTML = config.icons.fullscreen;
-        anchor.href = '#';
-        anchor.title = config.i18n.fullScreen;
-        anchor.role = 'button';
 
         container.onclick = () => {
           webtrees.fullScreen(id);
@@ -762,13 +760,12 @@
   /**
    * General purpose fullscreen function
    * @param {string} id of the element to be fullscreened
-   * @returns
+   *
    */
   webtrees.fullScreen = function (id) {
-    const element = document.getElementById(id);
     if (fscreen.fullscreenEnabled) {
       if (!fscreen.fullscreenElement) {
-        element.requestFullscreen();
+        document.getElementById(id).requestFullscreen();
       } else if (fscreen.exitFullscreen) {
         fscreen.exitFullscreen();
       }
