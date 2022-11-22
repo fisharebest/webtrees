@@ -700,6 +700,28 @@
       },
     });
 
+    const fullScreenControl = L.Control.extend({
+      options: {
+        position: 'topleft',
+      },
+      onAdd: (map) => {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
+
+        anchor.setAttribute('aria-label', config.i18n.fullScreen);
+        anchor.setAttribute('title', config.i18n.fullScreen);
+        anchor.setAttribute('aria-disabled', 'false');
+        anchor.setAttribute('role', 'button');
+        anchor.innerHTML = config.icons.fullscreen;
+
+        anchor.onclick = () => {
+          webtrees.fullScreen('wt-fullscreen-wrapper');
+        };
+
+        return container;
+      },
+    });
+
     let defaultLayer = null;
 
     for (let [, provider] of Object.entries(config.mapProviders)) {
@@ -726,6 +748,7 @@
       zoomControl: false,
     })
       .addControl(zoomControl)
+      .addControl(new fullScreenControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
       .addControl(L.control.layers.tree(config.mapProviders, null, {
@@ -734,6 +757,33 @@
       }));
 
   };
+
+    /**
+   * General purpose fullscreen function
+   * @param {string} id of the element to be fullscreened
+   *
+   */
+     webtrees.fullScreen = function (id) {
+      const element = document.getElementById(id);
+      if (fscreen.fullscreenEnabled) {
+        if (!fscreen.fullscreenElement) {
+          element.requestFullscreen();
+        } else if (fscreen.exitFullscreen) {
+          fscreen.exitFullscreen();
+        }
+      } else {
+        console.log('Your browser cannot use fullscreen at this time');
+      }
+    }
+
+    /**
+     * Catch error generated when going to fullscreen
+     * @param {Event} event
+     */
+    fscreen.onfullscreenerror = (event) => {
+      console.error(event);
+      console.log('An error occurred changing into fullscreen');
+    }
 
   /**
    * Initialize a tom-select input
