@@ -695,7 +695,7 @@
         anchor.setAttribute('role', 'button');
         anchor.innerHTML = config.icons.reset;
 
-        container.onclick = resetCallback;
+        anchor.onclick = resetCallback;
 
         return container;
       },
