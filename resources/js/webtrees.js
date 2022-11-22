@@ -685,18 +685,17 @@
       options: {
         position: 'topleft',
       },
-      onAdd: function (map) {
-        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+      onAdd: (map) => {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+
+        anchor.setAttribute('aria-label', config.i18n.reset);
+        anchor.setAttribute('title', config.i18n.reset);
+        anchor.setAttribute('aria-disabled', 'false');
+        anchor.setAttribute('role', 'button');
+        anchor.innerHTML = config.icons.reset;
+
         container.onclick = resetCallback;
-        let reset = config.i18n.reset;
-        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-        anchor.setAttribute('aria-label', reset);
-        anchor.href = '#';
-        anchor.title = reset;
-        anchor.role = 'button';
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-        image.alt = reset;
 
         return container;
       },
