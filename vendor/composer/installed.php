@@ -3,7 +3,7 @@
         'name' => 'fisharebest/webtrees',
         'pretty_version' => '2.0.x-dev',
         'version' => '2.0.9999999.9999999-dev',
-        'reference' => '48207df9741a53b44b4227d8652c08fafed15716',
+        'reference' => '938962732f20dbaf97704ec9d9a9bc08df1efbef',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -139,7 +139,7 @@
         'fisharebest/webtrees' => array(
             'pretty_version' => '2.0.x-dev',
             'version' => '2.0.9999999.9999999-dev',
-            'reference' => '48207df9741a53b44b4227d8652c08fafed15716',
+            'reference' => '938962732f20dbaf97704ec9d9a9bc08df1efbef',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

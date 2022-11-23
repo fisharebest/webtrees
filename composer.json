@@ -82,7 +82,6 @@
         "ext-sqlite3": "*",
         "composer/composer": "2.2.18",
         "league/flysystem-memory": "1.0.2",
-        "php-coveralls/php-coveralls": "2.5.3",
         "phpunit/phpunit": "7.5.20"
     },
     "suggest": {
