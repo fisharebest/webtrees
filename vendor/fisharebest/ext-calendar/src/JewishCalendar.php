@@ -1,7 +1,4 @@
 <?php
-namespace Fisharebest\ExtCalendar;
-
-use InvalidArgumentException;
 
 /**
  * Class JewishCalendar - calculations for the Jewish calendar.
@@ -9,8 +6,8 @@ use InvalidArgumentException;
  * Hebrew characters in the code have either ISO-8859-8 or UTF_8 encoding.
  * Hebrew characters in the comments have UTF-8 encoding.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2017 Greg Roach
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2014-2021 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +21,11 @@ use InvalidArgumentException;
  *            You should have received a copy of the GNU General Public License
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+namespace Fisharebest\ExtCalendar;
+
+use InvalidArgumentException;
+
 class JewishCalendar implements CalendarInterface
 {
     /** Optional behaviour for this calendar. */
@@ -187,17 +189,25 @@ class JewishCalendar implements CalendarInterface
     {
         if ($year < 1) {
             throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
-        } elseif ($month < 1 || $month > 13) {
-            throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
-        } elseif ($month == 2) {
-            return $this->daysInMonthHeshvan($year);
-        } elseif ($month == 3) {
-            return $this->daysInMonthKislev($year);
-        } elseif ($month == 6) {
-            return $this->daysInMonthAdarI($year);
-        } else {
-            return self::$FIXED_MONTH_LENGTHS[$month];
         }
+
+        if ($month < 1 || $month > 13) {
+            throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+        }
+
+        if ($month == 2) {
+            return $this->daysInMonthHeshvan($year);
+        }
+
+        if ($month == 3) {
+            return $this->daysInMonthKislev($year);
+        }
+
+        if ($month == 6) {
+            return $this->daysInMonthAdarI($year);
+        }
+
+        return self::$FIXED_MONTH_LENGTHS[$month];
     }
 
     /**
@@ -332,7 +342,8 @@ class JewishCalendar implements CalendarInterface
         $conjunction = 1080 * ($hours % 24) + ($parts % 1080);
         $julian_day  = 1 + 29 * $months + (int) ($hours / 24);
 
-        if ($conjunction >= 19440 ||
+        if (
+            $conjunction >= 19440 ||
             $julian_day % 7 === 2 && $conjunction >= 9924 && !$this->isLeapYear($year) ||
             $julian_day % 7 === 1 && $conjunction >= 16789 && $this->isLeapYear($year - 1)
         ) {
@@ -373,11 +384,13 @@ class JewishCalendar implements CalendarInterface
 
         if ($year_length === 353 || $year_length === 383) {
             return self::DEFECTIVE_YEAR;
-        } elseif ($year_length === 355 || $year_length === 385) {
-            return self::COMPLETE_YEAR;
-        } else {
-            return self::REGULAR_YEAR;
         }
+
+        if ($year_length === 355 || $year_length === 385) {
+            return self::COMPLETE_YEAR;
+        }
+
+        return self::REGULAR_YEAR;
     }
 
     /**
@@ -391,9 +404,9 @@ class JewishCalendar implements CalendarInterface
     {
         if ($this->yearType($year) === self::COMPLETE_YEAR) {
             return 30;
-        } else {
-            return 29;
         }
+
+        return 29;
     }
 
     /**
@@ -407,9 +420,9 @@ class JewishCalendar implements CalendarInterface
     {
         if ($this->yearType($year) === self::DEFECTIVE_YEAR) {
             return 29;
-        } else {
-            return 30;
         }
+
+        return 30;
     }
 
     /**
@@ -423,9 +436,9 @@ class JewishCalendar implements CalendarInterface
     {
         if ($this->isLeapYear($year)) {
             return 30;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     /**
@@ -580,9 +593,9 @@ class JewishCalendar implements CalendarInterface
         // Hebrew numerals are letters.  Add punctuation to prevent confusion with actual words.
         if ($gereshayim) {
             return $this->addGereshayim($hebrew);
-        } else {
-            return $hebrew;
         }
+
+        return $hebrew;
     }
 
     /**
@@ -599,17 +612,17 @@ class JewishCalendar implements CalendarInterface
     {
         if ($year < 1000) {
             return $this->numberToHebrewNumeralsIso8859($year, $gereshayim);
-        } else {
-            $thousands = $this->numberToHebrewNumeralsIso8859((int) ($year / 1000), false);
-            if ($alafim_geresh) {
-                $thousands .= self::GERESH_ISO8859;
-            }
-            if ($alafim) {
-                $thousands .= ' ' . self::ALAFIM_ISO8859 . ' ';
-            }
-
-            return $thousands . $this->numberToHebrewNumeralsIso8859($year % 1000, $gereshayim);
         }
+
+        $thousands = $this->numberToHebrewNumeralsIso8859((int) ($year / 1000), false);
+        if ($alafim_geresh) {
+            $thousands .= self::GERESH_ISO8859;
+        }
+        if ($alafim) {
+            $thousands .= ' ' . self::ALAFIM_ISO8859 . ' ';
+        }
+
+        return $thousands . $this->numberToHebrewNumeralsIso8859($year % 1000, $gereshayim);
     }
 
     /**

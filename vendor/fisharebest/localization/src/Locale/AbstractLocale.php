@@ -11,9 +11,9 @@ use Fisharebest\Localization\Variant\VariantInterface;
 /**
  * Class AbstractLocale - The “root” locale, from which all others are derived.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 abstract class AbstractLocale
 {
@@ -23,11 +23,11 @@ abstract class AbstractLocale
     const NEGATIVE = '-'; // Negative numbers
 
     // "Target" strings, when translating numbers
+    const ADLM_GROUP   = '⹁';
     const ALM          = "\xD8\x9C"; // Arabic Letter Mark
     const APOSTROPHE   = '’';
     const ARAB_DECIMAL = "\xD9\xAB";
     const ARAB_GROUP   = "\xD9\xAC";
-    const ARAB_MINUS   = "\xE2\x88\x92";
     const ARAB_PERCENT = "\xD9\xAA";
     const COMMA        = ',';
     const DOT          = '.';
@@ -36,7 +36,6 @@ abstract class AbstractLocale
     const MINUS_SIGN   = "\xE2\x88\x92";
     const NARROW_NBSP  = "\xE2\x80\xAF"; // Narrow non-breaking space
     const NBSP         = "\xC2\xA0"; // Non-breaking space
-    const PRIME        = '\'';
     const RTL_MARK     = "\xE2\x80\x8F"; // Right-to-left marker
 
     // For formatting percentages
@@ -51,10 +50,11 @@ abstract class AbstractLocale
      */
     public function code()
     {
-        $code = $this->language()->code() . '_' . $this->territory()->code();
+        $code   = $this->language()->code() . '_' . $this->territory()->code();
+        $script = $this->script()->unicodeName();
 
-        if ($this->script() != $this->language()->defaultScript()) {
-            $code .= '@' . strtolower($this->script()->unicodeName());
+        if ($this->script()->code() !== $this->language()->defaultScript()->code() && $script !== null) {
+            $code .= '@' . strtolower($script);
         }
 
         if ($this->variant() !== null) {
@@ -177,10 +177,10 @@ abstract class AbstractLocale
     public function languageTag()
     {
         $language_tag = $this->language()->code();
-        if ($this->script() != $this->language()->defaultScript()) {
+        if ($this->script()->code() !== $this->language()->defaultScript()->code()) {
             $language_tag .= '-' . $this->script()->code();
         }
-        if ($this->territory() != $this->language()->defaultTerritory()) {
+        if ($this->territory()->code() !== $this->language()->defaultTerritory()->code()) {
             $language_tag .= '-' . $this->territory()->code();
         }
         if ($this->variant()) {

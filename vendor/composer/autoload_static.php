@@ -355,7 +355,7 @@ class ComposerStaticInit894fe75d16c3adcf748f715fa5f1ed8a
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
+            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Carbon\\' => 
         array (

@@ -8,9 +8,9 @@ use Fisharebest\Localization\Territory\TerritoryMa;
 /**
  * Class LanguageTzm - Representation of the Central Atlas Tamazight language.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LanguageTzm extends AbstractLanguage implements LanguageInterface
 {

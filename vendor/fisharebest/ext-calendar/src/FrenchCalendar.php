@@ -1,4 +1,24 @@
 <?php
+
+/**
+ * Class FrenchCalendar - calculations for the French Republican calendar.
+ *
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2014-2021 Greg Roach
+ * @license   This program is free software: you can redistribute it and/or modify
+ *            it under the terms of the GNU General Public License as published by
+ *            the Free Software Foundation, either version 3 of the License, or
+ *            (at your option) any later version.
+ *
+ *            This program is distributed in the hope that it will be useful,
+ *            but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *            MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *            GNU General Public License for more details.
+ *
+ *            You should have received a copy of the GNU General Public License
+ *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 namespace Fisharebest\ExtCalendar;
 
 use InvalidArgumentException;
@@ -6,8 +26,8 @@ use InvalidArgumentException;
 /**
  * Class FrenchCalendar - calculations for the French Republican calendar.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2017 Greg Roach
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2014-2021 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -35,15 +55,21 @@ class FrenchCalendar implements CalendarInterface
     {
         if ($year <= 0) {
             throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
-        } elseif ($month < 1 || $month > 13) {
-            throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
-        } elseif ($month !== 13) {
-            return 30;
-        } elseif ($this->isLeapYear($year)) {
-            return 6;
-        } else {
-            return 5;
         }
+
+        if ($month < 1 || $month > 13) {
+            throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+        }
+
+        if ($month !== 13) {
+            return 30;
+        }
+
+        if ($this->isLeapYear($year)) {
+            return 6;
+        }
+
+        return 5;
     }
 
     /**

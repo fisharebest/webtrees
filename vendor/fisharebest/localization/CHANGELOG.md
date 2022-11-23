@@ -1,6 +1,29 @@
 CHANGE LOG
 ==========
 
+## 1.17.0 (2022-10-24)
+ - Fix: wrong locale code for scripts with no unicode name
+ - Update to CLDR-41
+ - Update to CLDR-39
+ - Update to CLDR-38.1
+ - Update to CLDR-38
+ - Update to CLDR-37
+ - Update to CLDR-36.1
+ - Update to CLDR-36
+ - Update to CLDR-35.1
+ - Update to CLDR-35
+ - Add PHP 8.2 to the test matrix
+ - Update to 2022-08-08 version of iana-subtag-registry
+
+## 1.16.1 (2022-08-10)
+ - Fix: plural rules for Farsi
+
+## 1.16.0 (2022-07-07)
+ - Fix: plural rules for Turkish
+ - Add PHP 8.0 and PHP 8.1 to the test matrix
+ - Update to the latest version of ISO-15924
+ - Update to the latest version of iana-subtag-registry
+
 ## 1.15.1 (2019-07-02)
  - Fix: escaped characters in PO files.
 

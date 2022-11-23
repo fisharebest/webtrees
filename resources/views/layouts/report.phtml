@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -18,12 +17,8 @@ use Fisharebest\Webtrees\I18N;
         <title><?= $title ?></title>
 
         <link rel="icon" href="<?= e(asset('favicon.ico')) ?>" type="image/x-icon">
-
-        <?= DebugBar::renderHead() ?>
     </head>
     <body class="container-lg wt-global wt-report-page">
         <?= $content ?>
-
-        <?= DebugBar::render() ?>
     </body>
 </html>

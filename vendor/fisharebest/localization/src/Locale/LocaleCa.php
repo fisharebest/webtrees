@@ -7,9 +7,9 @@ use Fisharebest\Localization\Language\LanguageCa;
 /**
  * Class LocaleCa - Catalan
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LocaleCa extends AbstractLocale implements LocaleInterface
 {
@@ -34,5 +34,10 @@ class LocaleCa extends AbstractLocale implements LocaleInterface
             self::GROUP   => self::DOT,
             self::DECIMAL => self::COMMA,
         );
+    }
+
+    public function percentFormat()
+    {
+        return self::PLACEHOLDER . self::NBSP . self::PERCENT;
     }
 }

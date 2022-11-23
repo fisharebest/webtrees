@@ -5,9 +5,9 @@ namespace Fisharebest\Localization\Script;
 /**
  * Class ScriptKits - Representation of the Khitan small script.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class ScriptKits extends AbstractScript implements ScriptInterface
 {
@@ -19,5 +19,10 @@ class ScriptKits extends AbstractScript implements ScriptInterface
     public function number()
     {
         return '288';
+    }
+
+    public function unicodeName()
+    {
+        return 'Khitan_Small_Script';
     }
 }

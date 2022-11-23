@@ -89,7 +89,7 @@ EOF;
                     $isStaticValue = false;
                 }
                 $value = var_export($value, true);
-            } elseif (!is_scalar($value)) {
+            } elseif (!\is_scalar($value)) {
                 throw new InvalidArgumentException(sprintf('Cache key "%s" has non-serializable "%s" value.', $key, \gettype($value)));
             } else {
                 $value = var_export($value, true);
@@ -130,7 +130,7 @@ EOF;
      *
      * @return bool
      */
-    public function clear(/*string $prefix = ''*/)
+    public function clear(/* string $prefix = '' */)
     {
         $prefix = 0 < \func_num_args() ? (string) func_get_arg(0) : '';
         $this->keys = $this->values = [];

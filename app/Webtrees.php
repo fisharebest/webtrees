@@ -55,7 +55,6 @@ use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
-use Fisharebest\Webtrees\Http\Middleware\UseDebugbar;
 use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
@@ -147,7 +146,6 @@ class Webtrees
         CompressResponse::class,
         BadBotBlocker::class,
         UseDatabase::class,
-        UseDebugbar::class,
         UpdateDatabaseSchema::class,
         UseSession::class,
         UseLanguage::class,

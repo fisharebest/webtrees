@@ -1,15 +1,12 @@
 <?php
-namespace Fisharebest\ExtCalendar;
-
-use InvalidArgumentException;
 
 /**
  * Class PersianCalendar - calculations for the Persian (Jalali) calendar.
  *
  * Algorithms for Julian days based on https://www.fourmilab.ch/documents/calendar/
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2017 Greg Roach
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2014-2021 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +20,11 @@ use InvalidArgumentException;
  *            You should have received a copy of the GNU General Public License
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+namespace Fisharebest\ExtCalendar;
+
+use InvalidArgumentException;
+
 class PersianCalendar implements CalendarInterface
 {
     /**
@@ -46,11 +48,13 @@ class PersianCalendar implements CalendarInterface
     {
         if ($month <= 6) {
             return 31;
-        } elseif ($month <= 11 || $this->isLeapYear($year)) {
-            return 30;
-        } else {
-            return 29;
         }
+
+        if ($month <= 11 || $this->isLeapYear($year)) {
+            return 30;
+        }
+
+        return 29;
     }
 
     /**

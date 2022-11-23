@@ -109,7 +109,7 @@ trait AbstractTrait
      *
      * @return bool
      */
-    public function clear(/*string $prefix = ''*/)
+    public function clear(/* string $prefix = '' */)
     {
         $this->deferred = [];
         if ($cleared = $this->versioningIsEnabled) {
@@ -290,7 +290,7 @@ trait AbstractTrait
         $this->ids[$key] = $key;
 
         if (\count($this->ids) > 1000) {
-            array_splice($this->ids, 0, 500); // stop memory leak if there are many keys
+            $this->ids = \array_slice($this->ids, 500, null, true); // stop memory leak if there are many keys
         }
 
         if (null === $this->maxIdLength) {

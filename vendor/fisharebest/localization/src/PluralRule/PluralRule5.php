@@ -8,9 +8,9 @@ namespace Fisharebest\Localization\PluralRule;
  * Romanic (Romanian)
  * nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class PluralRule5 implements PluralRuleInterface
 {

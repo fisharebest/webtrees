@@ -1,13 +1,10 @@
 <?php
-namespace Fisharebest\ExtCalendar;
-
-use InvalidArgumentException;
 
 /**
  * Class JulianCalendar - calculations for the Julian calendar.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014-2017 Greg Roach
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2014-2021 Greg Roach
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +18,11 @@ use InvalidArgumentException;
  *            You should have received a copy of the GNU General Public License
  *            along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+namespace Fisharebest\ExtCalendar;
+
+use InvalidArgumentException;
+
 class JulianCalendar implements CalendarInterface
 {
     /**
@@ -35,17 +37,25 @@ class JulianCalendar implements CalendarInterface
     {
         if ($year === 0) {
             throw new InvalidArgumentException('Year ' . $year . ' is invalid for this calendar');
-        } elseif ($month < 1 || $month > 12) {
-            throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
-        } elseif ($month === 1 || $month === 3 || $month === 5 || $month === 7 || $month === 8 || $month === 10 || $month === 12) {
-            return 31;
-        } elseif ($month === 4 || $month === 6 || $month === 9 || $month === 11) {
-            return 30;
-        } elseif ($this->isLeapYear($year)) {
-            return 29;
-        } else {
-            return 28;
         }
+
+        if ($month < 1 || $month > 12) {
+            throw new InvalidArgumentException('Month ' . $month . ' is invalid for this calendar');
+        }
+
+        if ($month === 1 || $month === 3 || $month === 5 || $month === 7 || $month === 8 || $month === 10 || $month === 12) {
+            return 31;
+        }
+
+        if ($month === 4 || $month === 6 || $month === 9 || $month === 11) {
+            return 30;
+        }
+
+        if ($this->isLeapYear($year)) {
+            return 29;
+        }
+
+        return 28;
     }
 
     /**

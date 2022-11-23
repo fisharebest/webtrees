@@ -73,7 +73,7 @@ trait ArrayTrait
      *
      * @return bool
      */
-    public function clear(/*string $prefix = ''*/)
+    public function clear(/* string $prefix = '' */)
     {
         $prefix = 0 < \func_num_args() ? (string) func_get_arg(0) : '';
 
@@ -141,7 +141,7 @@ trait ArrayTrait
             if ('N;' === $value || (isset($value[2]) && ':' === $value[1])) {
                 return serialize($value);
             }
-        } elseif (!is_scalar($value)) {
+        } elseif (!\is_scalar($value)) {
             try {
                 $serialized = serialize($value);
             } catch (\Exception $e) {

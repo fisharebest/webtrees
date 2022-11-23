@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/fisharebest/localization.svg?branch=master)](https://travis-ci.org/fisharebest/localization)
-[![Coverage Status](https://coveralls.io/repos/fisharebest/localization/badge.svg?branch=master&service=github)](https://coveralls.io/github/fisharebest/localization?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a252b4b3-62c1-40bd-be44-43a7dc6e4a9b/mini.png)](https://insight.sensiolabs.com/projects/a252b4b3-62c1-40bd-be44-43a7dc6e4a9b)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/localization/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/localization/?branch=master)
-[![StyleCI](https://github.styleci.io/repos/23638409/shield)](https://github.styleci.io/repos/23638409)
+![phpunit](https://github.com/fisharebest/localization/actions/workflows/phpunit.yaml/badge.svg)
+![phpstan](https://github.com/fisharebest/localization/actions/workflows/phpstan.yaml/badge.svg)
+![phpcs](https://github.com/fisharebest/localization/actions/workflows/phpcs.yaml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/fisharebest/localization/badge.svg?branch=main&service=github)](https://coveralls.io/github/fisharebest/localization?branch=main)
+[![StyleCI](https://github.styleci.io/repos/25974036/shield)](https://github.styleci.io/repos/25974036)
 [![Code Climate](https://codeclimate.com/github/fisharebest/localization/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/localization)
 
 Localization standards and data
@@ -89,7 +89,7 @@ $locale->number('12345678.9');  // "12'345'678.9"
 $locale->percent(0.123);        // "12.3%"
 
 // To sort data properly in MySQL, you need to specify a collation sequence.
-// See http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-sets.html
+// See https://dev.mysql.com/doc/refman/8.0/en/charset-unicode-sets.html
 $locale->collation();           // "unicode_ci", "swedish_ci", etc.
 ```
 
@@ -98,7 +98,7 @@ Translation
 
 Plural rules are defined for each locale.  This example shows that although
 English and French both have two plural forms, English considers zero as plural,
-while french considers it to be singular.
+while French considers it to be singular.
 
 ``` php
 $locale = new LocaleEn;
@@ -109,8 +109,8 @@ $locale->pluralRule()->plurals(); // 2 (French also has two plural forms)
 $locale->pluralRule()->plural(0); // 0 (zero is singular in French "zero apple")
 ```
 
-Note that some of the plural definitions in CLDR differ to those traditionally used by
-`gettext`.  We use the gettext versions for br, fa, fil, he, lv, mk, pt, tr and se.
+Note that some plural definitions in CLDR differ to those traditionally used by
+`gettext`.  We use the gettext versions for br, fa, fil, he, lv, mk, pt and se.
 
 Translation functions work the same as `gettext`.
 
@@ -122,10 +122,10 @@ $translation = new Translation('/path/to/fr.mo');  // Can use .CSV, .PHP, .PO an
 // Create the translator
 $translator = new Translator($translation->asArray(), $locale->pluralRule());
 // Use the translator
-$translator->translate('the fish');                // "le poisson" 
-$translator->translateContext('noun', 'fish');     // "poisson" 
-$translator->translateContext('verb', 'fish');     // "pêcher" 
-$translator->plural('%d fish', '%d fishes', 4);    // "%d poissons" 
+$translator->translate('the fish');                // "le poisson"
+$translator->translateContext('noun', 'fish');     // "poisson"
+$translator->translateContext('verb', 'fish');     // "pêcher"
+$translator->plural('%d fish', '%d fishes', 4);    // "%d poissons"
 ```
 
 TIP: If your translations are stored in more than one file, you can merge them easily.
@@ -146,12 +146,11 @@ $translation = new Translation('/path/to/fr.mo');
 file_put_contents('/path/to/fr.php', '<?php return ' . var_export($translations->asArray(), true) . ';');
 ```
 
-
 Updates welcome
 ===============
 
 Please provide references to sources, such as:
 
-* [CLDR](http://localization.unicode.org)
+* [Unicode CLDR](https://cldr.unicode.org/)
 * [Ethnologue](https://www.ethnologue.com)
 * [ScriptSource](https://www.scriptsource.org)

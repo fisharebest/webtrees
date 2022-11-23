@@ -8,16 +8,16 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 /**
  * Class Locale - Static functions to generate and compare locales.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class Locale
 {
     /**
      * Some browsers let the user choose "Chinese, Traditional", but add headers for "zh-HK"...
      *
-     * @var array
+     * @var array<string,string>
      */
     private static $http_accept_chinese = array(
         'zh-cn' => 'zh-hans-cn',
@@ -56,7 +56,11 @@ class Locale
         }, preg_split('/[^a-zA-Z0-9]+/', $code)));
 
         if (class_exists($class)) {
-            return new $class();
+            $locale = new $class();
+
+            if ($locale instanceof LocaleInterface) {
+                return $locale;
+            }
         }
 
         throw new DomainException($code);
@@ -113,9 +117,9 @@ class Locale
     /**
      * If a client requests "de-DE" (but not "de"), then add "de" as a lower-priority fallback.
      *
-     * @param $preferences
+     * @param array<array-key,float> $preferences
      *
-     * @return int[]
+     * @return array<array-key,float>
      */
     private static function httpAcceptDowngrade($preferences)
     {
@@ -142,9 +146,9 @@ class Locale
      * Some browsers allow the user to select "Chinese (simplified)", but then use zh-CN instead of zh-Hans.
      * This goes against the advice of w3.org.
      *
-     * @param int[] $preferences
+     * @param array<array-key,float> $preferences
      *
-     * @return int[]
+     * @return array<array-key,float>
      */
     private static function httpAcceptChinese($preferences)
     {
