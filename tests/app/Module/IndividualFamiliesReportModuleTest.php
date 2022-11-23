@@ -28,8 +28,6 @@ use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
-use League\Flysystem\Filesystem;
-use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
 
 use function ob_get_clean;
 use function ob_start;
@@ -76,8 +74,7 @@ class IndividualFamiliesReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
-        $data_filesystem = new Filesystem(new InMemoryFilesystemAdapter());
-        $module_service  = new ModuleService();
+        $module_service = new ModuleService();
 
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
@@ -102,13 +99,13 @@ class IndividualFamiliesReportModuleTest extends TestCase
         self::assertIsArray($report->reportProperties());
 
         ob_start();
-        new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree, $data_filesystem);
+        new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);
         $html = ob_get_clean();
         self::assertStringStartsWith('<', $html);
         self::assertStringEndsWith('>', $html);
 
         ob_start();
-        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
+        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree);
         $pdf = ob_get_clean();
 
         self::assertStringStartsWith('%PDF', $pdf);

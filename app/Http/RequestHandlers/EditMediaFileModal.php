@@ -63,9 +63,7 @@ class EditMediaFileModal implements RequestHandlerInterface
         $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');
         $fact_id = Validator::attributes($request)->string('fact_id');
-        $data_filesystem = Registry::filesystem()->data();
-
-        $media = Registry::mediaFactory()->make($xref, $tree);
+        $media   = Registry::mediaFactory()->make($xref, $tree);
 
         try {
             $media = Auth::checkMediaAccess($media);
@@ -85,7 +83,7 @@ class EditMediaFileModal implements RequestHandlerInterface
                     'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
                     'media'           => $media,
                     'media_types'     => $media_types,
-                    'unused_files'    => $this->media_file_service->unusedFiles($tree, $data_filesystem),
+                    'unused_files'    => $this->media_file_service->unusedFiles($tree),
                     'tree'            => $tree,
                 ]));
             }

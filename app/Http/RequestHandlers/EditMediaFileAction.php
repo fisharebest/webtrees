@@ -117,9 +117,7 @@ class EditMediaFileAction implements RequestHandlerInterface
             $file = $media_file->filename();
         }
 
-        $data_filesystem = Registry::filesystem()->data();
-
-        $filesystem = $media->tree()->mediaFilesystem($data_filesystem);
+        $filesystem = $media->tree()->mediaFilesystem();
         $old        = $media_file->filename();
         $new        = $file;
 

@@ -156,7 +156,7 @@ class ImageFactory implements ImageFactoryInterface
      */
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
-        $filesystem = Registry::filesystem()->media($media_file->media()->tree());
+        $filesystem = $media_file->media()->tree()->mediaFilesystem();
         $path       = $media_file->filename();
 
         if (!$add_watermark || !$media_file->isImage()) {
@@ -205,7 +205,7 @@ class ImageFactory implements ImageFactoryInterface
         bool $add_watermark
     ): ResponseInterface {
         // Where are the images stored.
-        $filesystem = Registry::filesystem()->media($media_file->media()->tree());
+        $filesystem = $media_file->media()->tree()->mediaFilesystem();
 
         // Where is the image stored in the filesystem.
         $path = $media_file->filename();

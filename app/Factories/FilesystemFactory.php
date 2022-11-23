@@ -39,13 +39,21 @@ class FilesystemFactory implements FilesystemFactoryInterface
     /**
      * Create a filesystem for the user's data folder.
      *
+     * @param string $path_prefix
+     *
      * @return FilesystemOperator
      */
-    public function data(): FilesystemOperator
+    public function data(string $path_prefix = ''): FilesystemOperator
     {
-        $data_dir = Site::getPreference('INDEX_DIRECTORY');
+        $folder     = Site::getPreference('INDEX_DIRECTORY');
+        $adapter    = new LocalFilesystemAdapter($folder);
+        $filesystem = new Filesystem($adapter);
 
-        return new Filesystem(new LocalFilesystemAdapter($data_dir));
+        if ($path_prefix === '') {
+            return $filesystem;
+        }
+
+        return new Filesystem(new ChrootAdapter($filesystem, $path_prefix));
     }
 
     /**
@@ -64,23 +72,32 @@ class FilesystemFactory implements FilesystemFactoryInterface
      * @param Tree $tree
      *
      * @return FilesystemOperator
+     *
+     * @deprecated - Will be removed in webtrees 2.2.  Use mediaFilesystem() directly.
      */
     public function media(Tree $tree): FilesystemOperator
     {
-        $media_dir = $tree->getPreference('MEDIA_DIRECTORY');
-        $adapter   = new ChrootAdapter($this->data(), $media_dir);
-
-        return new Filesystem($adapter);
+        return $tree->mediaFilesystem();
     }
 
     /**
      * Create a filesystem for the application's root folder.
      *
+     * @param string $path_prefix
+     *
      * @return FilesystemOperator
      */
-    public function root(): FilesystemOperator
+    public function root(string $path_prefix = ''): FilesystemOperator
     {
-        return new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
+        $folder     = self::ROOT_DIR;
+        $adapter    = new LocalFilesystemAdapter($folder);
+        $filesystem = new Filesystem($adapter);
+
+        if ($path_prefix === '') {
+            return $filesystem;
+        }
+
+        return new Filesystem(new ChrootAdapter($filesystem, $path_prefix));
     }
 
     /**

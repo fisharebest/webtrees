@@ -227,7 +227,7 @@ class GedcomExportService
             ];
         }
 
-        $media_filesystem = Registry::filesystem()->media($tree);
+        $media_filesystem = $tree->mediaFilesystem();
 
         foreach ($data as $rows) {
             foreach ($rows as $datum) {

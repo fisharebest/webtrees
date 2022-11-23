@@ -131,12 +131,11 @@ class MediaFileService
     /**
      * A list of media files not already linked to a media object.
      *
-     * @param Tree               $tree
-     * @param FilesystemOperator $data_filesystem
+     * @param Tree $tree
      *
      * @return array<string>
      */
-    public function unusedFiles(Tree $tree, FilesystemOperator $data_filesystem): array
+    public function unusedFiles(Tree $tree): array
     {
         $used_files = DB::table('media_file')
             ->where('m_file', '=', $tree->id())
@@ -145,7 +144,7 @@ class MediaFileService
             ->pluck('multimedia_file_refn')
             ->all();
 
-        $media_filesystem = $tree->mediaFilesystem($data_filesystem);
+        $media_filesystem = $tree->mediaFilesystem();
         $disk_files       = $this->allFilesOnDisk($media_filesystem, '', FilesystemReader::LIST_DEEP)->all();
         $unused_files     = array_diff($disk_files, $used_files);
 
@@ -165,10 +164,8 @@ class MediaFileService
      */
     public function uploadFile(ServerRequestInterface $request): string
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $data_filesystem = Registry::filesystem()->data();
-        $file_location   = Validator::parsedBody($request)->string('file_location');
+        $tree          = Validator::attributes($request)->tree();
+        $file_location = Validator::parsedBody($request)->string('file_location');
 
         switch ($file_location) {
             case 'url':
@@ -183,7 +180,7 @@ class MediaFileService
             case 'unused':
                 $unused = Validator::parsedBody($request)->string('unused');
 
-                if ($tree->mediaFilesystem($data_filesystem)->fileExists($unused)) {
+                if ($tree->mediaFilesystem()->fileExists($unused)) {
                     return $unused;
                 }
 
@@ -216,14 +213,14 @@ class MediaFileService
                 }
 
                 // Generate a unique name for the file?
-                if ($auto === '1' || $tree->mediaFilesystem($data_filesystem)->fileExists($folder . $file)) {
+                if ($auto === '1' || $tree->mediaFilesystem()->fileExists($folder . $file)) {
                     $folder    = '';
                     $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
                     $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
                 }
 
                 try {
-                    $tree->mediaFilesystem($data_filesystem)->writeStream($folder . $file, $uploaded_file->getStream()->detach());
+                    $tree->mediaFilesystem()->writeStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
                 } catch (RuntimeException | InvalidArgumentException $ex) {
@@ -341,7 +338,7 @@ class MediaFileService
      */
     public function mediaFolders(Tree $tree): Collection
     {
-        $folders = Registry::filesystem()->media($tree)
+        $folders = $tree->mediaFilesystem()
             ->listContents('', FilesystemReader::LIST_DEEP)
             ->filter(fn (StorageAttributes $attributes): bool => $attributes->isDir())
             ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))

@@ -59,11 +59,8 @@ class AddMediaFileModal implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $xref = Validator::attributes($request)->isXref()->string('xref');
-
-        $data_filesystem = Registry::filesystem()->data();
-
+        $tree  = Validator::attributes($request)->tree();
+        $xref  = Validator::attributes($request)->isXref()->string('xref');
         $media = Registry::mediaFactory()->make($xref, $tree);
 
         try {
@@ -77,7 +74,7 @@ class AddMediaFileModal implements RequestHandlerInterface
 
         $max_upload_size = $this->media_file_service->maxUploadFilesize();
         $media_types     = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
-        $unused_files    = $this->media_file_service->unusedFiles($tree, $data_filesystem);
+        $unused_files    = $this->media_file_service->unusedFiles($tree);
 
         return response(view('modals/add-media-file', [
             'max_upload_size' => $max_upload_size,

@@ -53,8 +53,7 @@ class CreateMediaObjectModal implements RequestHandlerInterface
         $tree            = Validator::attributes($request)->tree();
         $max_upload_size = $this->media_file_service->maxUploadFilesize();
         $media_types     = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
-        $data_filesystem = Registry::filesystem()->data();
-        $unused_files    = $this->media_file_service->unusedFiles($tree, $data_filesystem);
+        $unused_files    = $this->media_file_service->unusedFiles($tree);
 
         return response(view('modals/create-media-object', [
             'max_upload_size' => $max_upload_size,
