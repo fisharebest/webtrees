@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
@@ -69,11 +68,8 @@ class ReportGenerate implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
-        $data_filesystem = Registry::filesystem()->data();
-
+        $tree   = Validator::attributes($request)->tree();
+        $user   = Validator::attributes($request)->user();
         $report = Validator::attributes($request)->string('report');
         $module = $this->module_service->findByName($report);
 
@@ -102,7 +98,7 @@ class ReportGenerate implements RequestHandlerInterface
             default:
             case 'HTML':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $variables, $tree, $data_filesystem);
+                new ReportParserGenerate($xml_filename, new HtmlRenderer(), $variables, $tree);
                 $html = ob_get_clean();
 
                 $this->layout = 'layouts/report';
@@ -120,7 +116,7 @@ class ReportGenerate implements RequestHandlerInterface
 
             case 'PDF':
                 ob_start();
-                new ReportParserGenerate($xml_filename, new PdfRenderer(), $variables, $tree, $data_filesystem);
+                new ReportParserGenerate($xml_filename, new PdfRenderer(), $variables, $tree);
                 $pdf = ob_get_clean();
 
                 $headers = ['content-type' => 'application/pdf'];

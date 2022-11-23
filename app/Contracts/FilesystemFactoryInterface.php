@@ -37,25 +37,20 @@ interface FilesystemFactoryInterface
     /**
      * Create a filesystem for the user's data folder.
      *
-     * @return FilesystemOperator
-     */
-    public function data(): FilesystemOperator;
-
-    /**
-     * Create a filesystem for a tree's media folder.
-     *
-     * @param Tree $tree
+     * @param string $path_prefix
      *
      * @return FilesystemOperator
      */
-    public function media(Tree $tree): FilesystemOperator;
+    public function data(string $path_prefix = ''): FilesystemOperator;
 
     /**
      * Create a filesystem for the application's root folder.
      *
+     * @param string $path_prefix
+     *
      * @return FilesystemOperator
      */
-    public function root(): FilesystemOperator;
+    public function root(string $path_prefix = ''): FilesystemOperator;
 
     /**
      * Describe a filesystem for the application's root folder.
