@@ -112,9 +112,7 @@
             "### PHP-CODE-SNIFFER",
             "@composer webtrees:phpcs",
             "### PHPSTAN",
-            "@composer webtrees:phpstan",
-            "### PSALM",
-            "@composer webtrees:psalm"
+            "@composer webtrees:phpstan"
         ],
         "webtrees:phpcs": [
             "@composer global require squizlabs/php_codesniffer=* --quiet",
@@ -139,12 +137,6 @@
             "@composer global require --quiet phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
             "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.neon index.php app",
-            "@composer install --no-dev --quiet"
-        ],
-        "webtrees:psalm": [
-            "@composer global require --quiet vimeo/psalm",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/psalm",
             "@composer install --no-dev --quiet"
         ],
         "webtrees:test": [
