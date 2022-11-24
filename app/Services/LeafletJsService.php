@@ -72,18 +72,20 @@ class LeafletJsService
             throw new HttpServiceUnavailableException($message);
         }
 
+        $enter_fullscreen_icon = '<span title="' . I18N::translate('Enter fullscreen') . '">' . view('icons/enter-fullscreen') . '</span>';
+        $exit_fullscreen_icon  = '<span title="' . I18N::translate('Exit fullscreen') . '">' . view('icons/exit-fullscreen') . '</span>';
+
         return (object) [
             'i18n'         => [
-                'reset'      => I18N::translate('Reload map'),
-                'zoomIn'     => I18N::translate('Zoom in'),
-                'zoomOut'    => I18N::translate('Zoom out'),
-                'fullScreen' => I18N::translate('Toggle full screen'),
+                'reset'   => I18N::translate('Reload map'),
+                'zoomIn'  => I18N::translate('Zoom in'),
+                'zoomOut' => I18N::translate('Zoom out'),
             ],
             'icons'        => [
                 'collapse'   => view('icons/collapse'),
                 'expand'     => view('icons/expand'),
                 'reset'      => view('icons/undo'),
-                'fullscreen' => view('icons/fullscreen'),
+                'fullScreen' => $enter_fullscreen_icon . $exit_fullscreen_icon,
             ],
             'mapProviders' => $map_providers,
         ];

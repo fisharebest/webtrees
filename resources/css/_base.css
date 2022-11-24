@@ -135,3 +135,16 @@ a:hover, .btn-link:hover, .nav-link:hover {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* Enter/exit fullscreen mode */
+.wt-icon-exit-fullscreen {
+    display: none;
+}
+.wt-icon-enter-fullscreen {
+    display: inline;
+}
+:fullscreen .wt-icon-exit-fullscreen {
+    display: inline;
+}
+:fullscreen .wt-icon-enter-fullscreen {
+    display: none;

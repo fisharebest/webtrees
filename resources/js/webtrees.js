@@ -700,7 +700,7 @@
       },
     });
 
-    const fullScreenControl = L.Control.extend({
+    const fullscreenControl = L.Control.extend({
       options: {
         position: 'topleft',
       },
@@ -708,15 +708,9 @@
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
 
-        anchor.setAttribute('aria-label', config.i18n.fullScreen);
-        anchor.setAttribute('title', config.i18n.fullScreen);
-        anchor.setAttribute('aria-disabled', 'false');
         anchor.setAttribute('role', 'button');
-        anchor.innerHTML = config.icons.fullscreen;
-
-        anchor.onclick = () => {
-          webtrees.fullScreen('wt-fullscreen-wrapper');
-        };
+        anchor.dataset.wtFullscreen = '.wt-fullscreen-container';
+        anchor.innerHTML = config.icons.fullScreen;
 
         return container;
       },
@@ -748,7 +742,7 @@
       zoomControl: false,
     })
       .addControl(zoomControl)
-      .addControl(new fullScreenControl)
+      .addControl(new fullscreenControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
       .addControl(L.control.layers.tree(config.mapProviders, null, {
@@ -757,33 +751,6 @@
       }));
 
   };
-
-    /**
-   * General purpose fullscreen function
-   * @param {string} id of the element to be fullscreened
-   *
-   */
-     webtrees.fullScreen = function (id) {
-      const element = document.getElementById(id);
-      if (fscreen.fullscreenEnabled) {
-        if (!fscreen.fullscreenElement) {
-          element.requestFullscreen();
-        } else if (fscreen.exitFullscreen) {
-          fscreen.exitFullscreen();
-        }
-      } else {
-        console.log('Your browser cannot use fullscreen at this time');
-      }
-    }
-
-    /**
-     * Catch error generated when going to fullscreen
-     * @param {Event} event
-     */
-    fscreen.onfullscreenerror = (event) => {
-      console.error(event);
-      console.log('An error occurred changing into fullscreen');
-    }
 
   /**
    * Initialize a tom-select input
@@ -1056,7 +1023,7 @@ document.addEventListener('submit', function (event) {
   }
 });
 
-// Convert data-wt-confirm and data-wt-post-url/data-wt-reload-url attributes into useful behavior.
+// Convert data-wt-* attributes into useful behavior.
 document.addEventListener('click', (event) => {
   const target = event.target.closest('a,button');
 
@@ -1081,5 +1048,19 @@ document.addEventListener('click', (event) => {
     }).catch((error) => {
       alert(error);
     });
+  }
+
+  if (('wtFullscreen' in target.dataset)) {
+    event.stopPropagation();
+
+    const element = target.closest('.wt-fullscreen-container');
+
+    if (document.fullscreenElement === element) {
+      document.exitFullscreen()
+        .catch((error) => alert(error));
+    } else {
+      element.requestFullscreen()
+        .catch((error) => alert(error));
+    }
   }
 });
