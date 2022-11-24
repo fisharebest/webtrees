@@ -170,9 +170,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             return redirect($this->listUrl($tree, $params));
         }
 
-        $data_filesystem = Registry::filesystem()->data();
-        $folders         = $this->allFolders($tree);
-
+        $folders = $this->allFolders($tree);
         $go      = Validator::queryParams($request)->boolean('go', false);
         $page    = Validator::queryParams($request)->integer('page', 1);
         $max     = Validator::queryParams($request)->integer('page', 20);
@@ -207,7 +205,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             'page'                  => $page,
             'pages'                 => $pages,
             'subdirs'               => $subdirs,
-            'data_filesystem'       => $data_filesystem,
             'module'                => $this,
             'title'                 => I18N::translate('Media'),
             'tree'                  => $tree,

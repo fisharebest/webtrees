@@ -11,11 +11,9 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemOperator;
 
 /**
  * @var int                   $count
- * @var FilesystemOperator    $data_filesystem
  * @var string                $filter
  * @var string                $folder
  * @var array<string>         $folders
@@ -134,11 +132,11 @@ use League\Flysystem\FilesystemOperator;
 
                                     if ($media_file->isExternal()) {
                                         echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
-                                    } elseif ($media_file->fileExists($data_filesystem)) {
+                                    } elseif ($media_file->fileExists()) {
                                         if (Auth::isEditor($tree)) {
                                             echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
 
-                                            foreach ($media_file->attributes($data_filesystem) as $label => $value) {
+                                            foreach ($media_file->attributes() as $label => $value) {
                                                 $label = '<span class="label">' . $label . '</span>';
                                                 $value = '<span class="value">' . $value . '</span>';
 

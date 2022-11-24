@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 
 use function app;
@@ -591,15 +589,10 @@ class Tree
     /**
      * Where do we store our media files.
      *
-     * @param FilesystemOperator $data_filesystem
-     *
      * @return FilesystemOperator
      */
-    public function mediaFilesystem(FilesystemOperator $data_filesystem): FilesystemOperator
+    public function mediaFilesystem(): FilesystemOperator
     {
-        $media_dir = $this->getPreference('MEDIA_DIRECTORY');
-        $adapter   = new ChrootAdapter($data_filesystem, $media_dir);
-
-        return new Filesystem($adapter);
+        return Registry::filesystem()->data($this->getPreference('MEDIA_DIRECTORY'));
     }
 }

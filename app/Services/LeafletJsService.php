@@ -82,6 +82,7 @@ class LeafletJsService
             'icons'        => [
                 'collapse'   => view('icons/collapse'),
                 'expand'     => view('icons/expand'),
+                'reset'      => view('icons/undo'),
                 'fullscreen' => view('icons/fullscreen'),
             ],
             'mapProviders' => $map_providers,

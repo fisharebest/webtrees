@@ -181,8 +181,6 @@ class ReportParserGenerate extends ReportParserBase
 
     private Tree $tree;
 
-    private FilesystemOperator $data_filesystem;
-
     /**
      * Create a parser for a report
      *
@@ -190,22 +188,15 @@ class ReportParserGenerate extends ReportParserBase
      * @param AbstractRenderer     $report_root
      * @param array<array<string>> $vars
      * @param Tree                 $tree
-     * @param FilesystemOperator   $data_filesystem
      */
-    public function __construct(
-        string $report,
-        AbstractRenderer $report_root,
-        array $vars,
-        Tree $tree,
-        FilesystemOperator $data_filesystem
-    ) {
+    public function __construct(string $report, AbstractRenderer $report_root, array $vars, Tree $tree)
+    {
         $this->report          = $report;
         $this->report_root     = $report_root;
         $this->wt_report       = $report_root;
         $this->current_element = new ReportBaseElement();
         $this->vars            = $vars;
         $this->tree            = $tree;
-        $this->data_filesystem = $data_filesystem;
 
         parent::__construct($report);
     }
@@ -1738,8 +1729,8 @@ class ReportParserGenerate extends ReportParserBase
         $person     = Registry::individualFactory()->make($id, $this->tree);
         $media_file = $person->findHighlightedMediaFile();
 
-        if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
-            $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
+        if ($media_file instanceof MediaFile && $media_file->fileExists()) {
+            $image      = imagecreatefromstring($media_file->fileContents());
             $attributes = [imagesx($image), imagesy($image)];
 
             if ($width > 0 && $height == 0) {
@@ -1752,7 +1743,7 @@ class ReportParserGenerate extends ReportParserBase
                 $width  = (float) $attributes[0];
                 $height = (float) $attributes[1];
             }
-            $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
+            $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
             $this->wt_report->addElement($image);
         }
     }
@@ -1790,8 +1781,8 @@ class ReportParserGenerate extends ReportParserBase
                 $mediaobject = Registry::mediaFactory()->make($match[1], $this->tree);
                 $media_file  = $mediaobject->firstImageFile();
 
-                if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
-                    $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
+                if ($media_file instanceof MediaFile && $media_file->fileExists()) {
+                    $image      = imagecreatefromstring($media_file->fileContents());
                     $attributes = [imagesx($image), imagesy($image)];
 
                     if ($width > 0 && $height == 0) {
@@ -1804,7 +1795,7 @@ class ReportParserGenerate extends ReportParserBase
                         $width  = (float) $attributes[0];
                         $height = (float) $attributes[1];
                     }
-                    $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
+                    $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
                     $this->wt_report->addElement($image);
                 }
             }
