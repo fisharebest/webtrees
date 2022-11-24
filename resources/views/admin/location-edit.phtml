@@ -107,8 +107,11 @@ use Fisharebest\Webtrees\View;
     /**
      * Passed to resetControl to
      * perform necessary reset actions on map
+     *
+     * @param {Event} event
      */
-     let resetCallback = function () {
+    let resetCallback = function (event) {
+      event.preventDefault();
       map.fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]});
       marker.setLatLng(<?= json_encode($marker_position, JSON_THROW_ON_ERROR) ?>);
       document.querySelector('form').reset();

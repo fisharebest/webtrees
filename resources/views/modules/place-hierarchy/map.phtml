@@ -40,11 +40,14 @@ use Fisharebest\Webtrees\View;
     /**
      * Passed to resetControl to
      * perform necessary reset actions on map
+     *
+     * @param {Event} event
      */
-     let resetCallback = function () {
-      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
+    let resetCallback = function (event) {
+      event.preventDefault();
+      map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
-    }
+    };
 
     /**
      * @private
