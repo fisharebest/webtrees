@@ -13,7 +13,7 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <?php if ($fact->target() === null) : ?>
-    <a class="btn btn-link btn-sm" href="#" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($fact->summary())) ?>" data-wt-post-url="<?= e(route(DeleteFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Delete') ?>">
+    <a class="btn btn-link btn-sm" href="#" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($fact->name())) ?>" data-wt-post-url="<?= e(route(DeleteFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Delete') ?>">
         <?= view('icons/delete') ?>
         <span class="visually-hidden"><?= I18N::translate('Delete') ?></span>
     </a>
