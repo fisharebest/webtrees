@@ -19,10 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
@@ -141,6 +143,11 @@ class SearchGeneralPage implements RequestHandlerInterface
         $notes        = new Collection();
 
         if ($search_terms !== []) {
+            // Log search requests for visitors
+            if (Auth::id() === null) {
+                Log::addSearchLog('General: ' . $query, $search_trees->all());
+            }
+
             if ($search_individuals) {
                 $individuals = $this->search_service->searchIndividuals($search_trees->all(), $search_terms);
             }

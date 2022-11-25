@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Validator;
@@ -32,7 +34,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_fill_keys;
 use function array_filter;
 use function array_key_exists;
+use function array_keys;
+use function array_map;
 use function array_merge;
+use function implode;
 use function strtr;
 
 /**
@@ -145,8 +150,16 @@ class SearchAdvancedPage implements RequestHandlerInterface
         $date_options   = $this->dateOptions();
         $name_options   = $this->nameOptions();
 
-        if (array_filter($fields) !== []) {
-            $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $fields, $modifiers);
+        $search_fields = array_filter($fields, static fn (string $x): bool => $x !== '');
+
+        if ($search_fields !== []) {
+            // Log search requests for visitors
+            if (Auth::id() === null) {
+                $fn      = static fn(string $x, string $y): string => $x . '=' . $y;
+                $message = 'Advanced: ' . implode(', ', array_map($fn, array_keys($search_fields), $search_fields));
+                Log::addSearchLog($message, [$tree]);
+            }
+            $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $search_fields, $modifiers);
         } else {
             $individuals = new Collection();
         }

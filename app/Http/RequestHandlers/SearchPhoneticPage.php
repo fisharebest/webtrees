@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -91,6 +93,12 @@ class SearchPhoneticPage implements RequestHandlerInterface
         $individuals = new Collection();
 
         if ($lastname !== '' || $firstname !== '' || $place !== '') {
+            // Log search requests for visitors
+            if (Auth::id() === null) {
+                $message = 'Phonetic: first=' . $firstname . ', last=' . $lastname . ', place=' . $place;
+                Log::addSearchLog($message, $search_trees->all());
+            }
+
             $individuals = $this->search_service->searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, $search_trees->all());
         }
 
