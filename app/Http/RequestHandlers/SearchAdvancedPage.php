@@ -155,7 +155,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         if ($search_fields !== []) {
             // Log search requests for visitors
             if (Auth::id() === null) {
-                $fn      = static fn(string $x, string $y): string => $x . '=' . $y;
+                $fn      = static fn (string $x, string $y): string => $x . '=' . $y;
                 $message = 'Advanced: ' . implode(', ', array_map($fn, array_keys($search_fields), $search_fields));
                 Log::addSearchLog($message, [$tree]);
             }
