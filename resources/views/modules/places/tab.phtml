@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\I18N;
 
     const scrollOptions = {
       behavior: "smooth",
-      block: "start",
+      block: "nearest",
       inline: "start"
     };
 
@@ -47,7 +47,6 @@ use Fisharebest\Webtrees\I18N;
     let resetCallback = function (event) {
       event.preventDefault();
       map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
-      sidebar.firstElementChild.scrollIntoView(scrollOptions);
     }
 
     /**
@@ -90,7 +89,6 @@ use Fisharebest\Webtrees\I18N;
             })
             .on("popupclose", function() {
               sidebar.childNodes.forEach(e => e.classList.remove('messagebox'));
-              sidebar.firstElementChild.scrollIntoView(scrollOptions);
             });
           },
           onEachFeature: function(feature, layer) {
