@@ -1053,7 +1053,7 @@ document.addEventListener('click', (event) => {
   if (('wtFullscreen' in target.dataset)) {
     event.stopPropagation();
 
-    const element = target.closest('.wt-fullscreen-container');
+    const element = target.closest(target.dataset.wtFullscreen);
 
     if (document.fullscreenElement === element) {
       document.exitFullscreen()
