@@ -856,11 +856,6 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataDelete.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataEdit.php
-
-		-
 			message: "#^Cannot access property \\$id on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
