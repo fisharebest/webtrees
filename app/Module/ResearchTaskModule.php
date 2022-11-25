@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Elements\DateValueToday;
+use Fisharebest\Webtrees\Elements\NoteStructure;
 use Fisharebest\Webtrees\Elements\ResearchTask;
 use Fisharebest\Webtrees\Elements\WebtreesUser;
 use Fisharebest\Webtrees\Family;
@@ -62,9 +63,11 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
         Registry::elementFactory()->registerTags([
             'FAM:_TODO'           => new ResearchTask(I18N::translate('Research task')),
             'FAM:_TODO:DATE'      => new DateValueToday(I18N::translate('Date')),
+            'FAM:_TODO:NOTE'      => new NoteStructure(I18N::translate('Note')),
             'FAM:_TODO:_WT_USER'  => new WebtreesUser(I18N::translate('User')),
             'INDI:_TODO'          => new ResearchTask(I18N::translate('Research task')),
             'INDI:_TODO:DATE'     => new DateValueToday(I18N::translate('Date')),
+            'INDI:_TODO:NOTE'     => new NoteStructure(I18N::translate('Note')),
             'INDI:_TODO:_WT_USER' => new WebtreesUser(I18N::translate('User')),
         ]);
 
@@ -110,7 +113,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
         $tasks = new Collection();
 
         foreach ($records as $record) {
-            foreach ($record->facts(['_TODO']) as $task) {
+            foreach ($record->facts(['_TODO'], false, null, true) as $task) {
                 $user_name = $task->attribute('_WT_USER');
 
                 if ($user_name === Auth::user()->userName()) {
