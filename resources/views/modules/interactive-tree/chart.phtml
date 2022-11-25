@@ -20,6 +20,12 @@ use Fisharebest\Webtrees\Tree;
         <ul>
             <li id="tvbCompact" class="tv_button" title="<?= I18N::translate('Use compact layout') ?>">
             </li>
+            <li id="tvbFullscreen" class="tv_button">
+                <a href="#" data-wt-fullscreen=".tv_out">
+                    <span title="<?= I18N::translate('Enter fullscreen') ?>"><?= view('icons/enter-fullscreen') ?></span>
+                    <span title="<?= I18N::translate('Exit fullscreen') ?>"><?= view('icons/exit-fullscreen') ?></span>
+                </a>
+            </li>
             <li class="tv_button" id="<?= $name ?>_loading">
                 <i class="icon-loading-small"></i>
             </li>
