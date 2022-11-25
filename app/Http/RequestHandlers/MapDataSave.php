@@ -49,6 +49,7 @@ class MapDataSave implements RequestHandlerInterface
         $latitude  = Validator::parsedBody($request)->string('new_place_lati');
         $longitude = Validator::parsedBody($request)->string('new_place_long');
         $name      = Validator::parsedBody($request)->string('new_place_name');
+        $url       = Validator::parsedBody($request)->isLocalUrl()->string('url');
 
         $name      = mb_substr($name, 0, 120);
         $place_id  = $place_id === '' ? null : $place_id;
@@ -101,8 +102,6 @@ class MapDataSave implements RequestHandlerInterface
             $message = I18N::translate('The details for “%s” have been updated.', e($name));
             FlashMessages::addMessage($message, 'success');
         }
-
-        $url = route(MapDataList::class, ['parent_id' => $parent_id]);
 
         return redirect($url);
     }

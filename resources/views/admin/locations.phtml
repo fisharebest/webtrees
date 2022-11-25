@@ -91,7 +91,7 @@ use Illuminate\Support\Collection;
             </td>
 
             <td>
-                <a class="btn btn-primary" href="<?= e(route(MapDataEdit::class, ['place_id'  => $place->id])) ?>" title="<?= I18N::translate('Edit') ?>">
+                <a class="btn btn-primary" href="<?= e(route(MapDataEdit::class, ['location_id'  => $place->id])) ?>" title="<?= I18N::translate('Edit') ?>">
                     <?= view('icons/edit') ?>
                     <span class="visually-hidden">
                         <?= I18N::translate('Edit') ?>

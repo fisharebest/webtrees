@@ -385,9 +385,9 @@ class WebRoutes
                 $router->get(UsersCleanupPage::class, '/users-cleanup');
                 $router->post(UsersCleanupAction::class, '/users-cleanup');
                 $router->get(MapDataAdd::class, '/map-data-add{/parent_id}');
-                $router->post(MapDataDelete::class, '/map-data-delete/{place_id}');
+                $router->post(MapDataDelete::class, '/map-data-delete/{location_id}');
                 $router->post(MapDataDeleteUnused::class, '/map-data-delete-unused');
-                $router->get(MapDataEdit::class, '/map-data-edit/{place_id}');
+                $router->get(MapDataEdit::class, '/map-data-edit/{location_id}');
                 $router->get(MapDataExportCSV::class, '/map-data-csv{/parent_id}');
                 $router->get(MapDataExportGeoJson::class, '/map-data-geojson{/parent_id}');
                 $router->get(MapDataImportPage::class, '/locations-import');

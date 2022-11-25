@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -55,7 +56,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/place-list';
+    protected const ROUTE_URL = '/tree/{tree}/place-list{/place_id}';
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected int $access_level = Auth::PRIV_USER;
@@ -163,13 +164,13 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
+        $tree     = Validator::attributes($request)->tree();
+        $user     = Validator::attributes($request)->user();
+        $place_id = Validator::attributes($request)->integer('place_id', 0);
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
         $action2  = Validator::queryParams($request)->string('action2', 'hierarchy');
-        $place_id = Validator::queryParams($request)->integer('place_id', 0);
         $place    = Place::find($place_id, $tree);
 
         // Request for a non-existent place?
@@ -235,24 +236,32 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Place $placeObj
+     * @param Place $place
      *
      * @return array<mixed>
      */
-    protected function mapData(Place $placeObj): array
+    protected function mapData(Place $place): array
     {
-        $places    = $placeObj->getChildPlaces();
+        $children  = $place->getChildPlaces();
         $features  = [];
         $sidebar   = '';
         $show_link = true;
 
-        if ($places === []) {
-            $places[]  = $placeObj;
-            $show_link = false;
+        // No children?  Show ourself on the map instead.
+        if ($children === []) {
+            $children[] = $place;
+            $show_link  = false;
         }
 
-        foreach ($places as $id => $place) {
-            $location = new PlaceLocation($place->gedcomName());
+        foreach ($children as $id => $child) {
+            $location = new PlaceLocation($child->gedcomName());
+
+            if (Auth::isAdmin()) {
+                $this_url = route(self::class, ['tree' => $child->tree()->name(), 'place_id' => $place->id()]);
+                $edit_url = route(MapDataEdit::class, ['location_id' => $location->id(), 'url' => $this_url]);
+            } else {
+                $edit_url = '';
+            }
 
             if ($location->latitude() === null || $location->longitude() === null) {
                 $sidebar_class = 'unmapped';
@@ -266,34 +275,36 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                         'coordinates' => [$location->longitude(), $location->latitude()],
                     ],
                     'properties' => [
-                        'tooltip' => $place->gedcomName(),
+                        'tooltip' => $child->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
-                            'showlink'  => $show_link,
-                            'place'     => $place,
+                            'edit_url'  => $edit_url,
+                            'place'     => $child,
                             'latitude'  => $location->latitude(),
                             'longitude' => $location->longitude(),
+                            'showlink'  => $show_link,
                         ]),
                     ],
                 ];
             }
 
             $stats = [
-                Family::RECORD_TYPE     => $this->familyPlaceLinks($place)->count(),
-                Individual::RECORD_TYPE => $this->individualPlaceLinks($place)->count(),
-                Location::RECORD_TYPE   => $this->locationPlaceLinks($place)->count(),
+                Family::RECORD_TYPE     => $this->familyPlaceLinks($child)->count(),
+                Individual::RECORD_TYPE => $this->individualPlaceLinks($child)->count(),
+                Location::RECORD_TYPE   => $this->locationPlaceLinks($child)->count(),
             ];
 
             $sidebar .= view('modules/place-hierarchy/sidebar', [
-                'showlink'      => $show_link,
+                'edit_url'      => $edit_url,
                 'id'            => $id,
-                'place'         => $place,
+                'place'         => $child,
+                'showlink'      => $show_link,
                 'sidebar_class' => $sidebar_class,
                 'stats'         => $stats,
             ]);
         }
 
         return [
-            'bounds'  => (new PlaceLocation($placeObj->gedcomName()))->boundingRectangle(),
+            'bounds'  => (new PlaceLocation($place->gedcomName()))->boundingRectangle(),
             'sidebar' => $sidebar,
             'markers' => [
                 'type'     => 'FeatureCollection',
