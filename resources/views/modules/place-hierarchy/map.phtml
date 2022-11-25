@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\View;
 
     const scrollOptions = {
       behavior: "smooth",
-      block: "start",
+      block: "nearest",
       inline: "start"
     };
 
@@ -46,7 +46,6 @@ use Fisharebest\Webtrees\View;
     let resetCallback = function (event) {
       event.preventDefault();
       map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
-      sidebar.firstElementChild.scrollIntoView(scrollOptions);
     };
 
     /**
@@ -82,7 +81,6 @@ use Fisharebest\Webtrees\View;
             })
             .on('popupclose', function () {
               sidebar.querySelectorAll('.mapped').forEach(e => e.classList.remove('messagebox'));
-              sidebar.firstElementChild.scrollIntoView(scrollOptions);
             });
         },
         onEachFeature: function (feature, layer) {
