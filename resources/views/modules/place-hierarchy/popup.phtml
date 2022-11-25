@@ -6,10 +6,11 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var bool   $showlink
+ * @var string $edit_url
  * @var Place  $place
  * @var string $latitude
  * @var string $longitude
+ * @var bool   $showlink
  */
 ?>
 <div dir="auto" class="label">
@@ -20,6 +21,11 @@ use Fisharebest\Webtrees\I18N;
     <?php else : ?>
         <?= $place->placeName() ?>
     <?php endif ?>
+
+    <?php if ($edit_url !== '') : ?>
+        <a href="<?= e($edit_url) ?>"><?= view('icons/edit') ?></a>
+    <?php endif ?>
+
     <table class="table table-borderless">
         <tr>
             <th scope="row" class="p-0"><?= I18N::translate('Latitude') ?></th>

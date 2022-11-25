@@ -9,9 +9,10 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 
 /**
- * @var bool                 $showlink
- * @var Place                $place
+ * @var string               $edit_url
  * @var int                  $id
+ * @var Place                $place
+ * @var bool                 $showlink
  * @var string               $sidebar_class
  * @var array<string,string> $stats
  */
@@ -33,7 +34,11 @@ use Fisharebest\Webtrees\Place;
     <?php if ($sidebar_class === 'unmapped') : ?>
         <div class="row">
             <div class="col-sm-9"><i><?= I18N::translate('The location of this place is not known.') ?></i></div>
-            <div class="col-sm-3 align-digits"><?= view('icons/warning') ?></div>
+            <?php if ($edit_url === '') : ?>
+                <div class="col-sm-3 align-digits"><?= view('icons/warning') ?></div>
+            <?php else : ?>
+                <div class="col-sm-3 align-digits"><a class="col-sm-3 align-digits"><a href="<?= e($edit_url) ?>"><?= view('icons/edit') ?></a></div>
+            <?php endif ?>
         </div>
     <?php endif ?>
 

@@ -51,11 +51,11 @@ class MapDataDelete implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $place_id = (int) $request->getAttribute('place_id');
+        $location_id = (int) $request->getAttribute('location_id');
 
-        $place = $this->map_data_service->findById($place_id);
+        $place = $this->map_data_service->findById($location_id);
 
-        $this->map_data_service->deleteRecursively($place_id);
+        $this->map_data_service->deleteRecursively($location_id);
 
         $url = route(MapDataList::class, ['parent_id' => $place->parent()->id()]);
 

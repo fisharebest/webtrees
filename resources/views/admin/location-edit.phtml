@@ -18,6 +18,7 @@ use Fisharebest\Webtrees\View;
  * @var array<float>         $marker_position
  * @var PlaceLocation        $parent
  * @var string               $title
+ * @var string               $url
  */
 
 ?>
@@ -29,8 +30,9 @@ use Fisharebest\Webtrees\View;
 <div id="wt-map" class="wt-ajax-load mb-3 border wt-location-edit-map" dir="ltr"></div>
 
 <form method="post" action="<?= e(route(MapDataSave::class)) ?>">
-    <input type="hidden" name="parent_id" value="<?= e($parent->id()) ?>">
-    <input type="hidden" name="place_id" value="<?= e($location->id()) ?>">
+    <input type="hidden" name="parent_id" value="<?= $parent->id() ?>">
+    <input type="hidden" name="place_id" value="<?= $location->id() ?>">
+    <input type="hidden" name="url" value="<?= e($url) ?>">
 
     <div class="row mb-3">
         <label class="col-form-label col-sm-1" for="new_place_name">
@@ -70,7 +72,7 @@ use Fisharebest\Webtrees\View;
                 I18N::translate('save')
                 ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e(route(MapDataList::class, ['parent_id' => $parent->id()])) ?>">
+            <a class="btn btn-secondary" href="<?= e($url) ?>">
                 <?= I18N::translate('cancel') ?>
             </a>
         </div>
