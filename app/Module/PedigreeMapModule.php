@@ -63,13 +63,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     public const MAXIMUM_GENERATIONS = 10;
 
     // CSS colors for each generation
-    private const COUNT_CSS_COLORS = 12;
+    protected const COUNT_CSS_COLORS = 12;
 
-    private ChartService $chart_service;
+    protected ChartService $chart_service;
 
-    private LeafletJsService $leaflet_js_service;
+    protected LeafletJsService $leaflet_js_service;
 
-    private RelationshipService $relationship_service;
+    protected RelationshipService $relationship_service;
 
     /**
      * PedigreeMapModule constructor.
@@ -221,7 +221,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      *
      * @return array<mixed> $geojson
      */
-    private function getMapData(ServerRequestInterface $request): array
+    protected function getMapData(ServerRequestInterface $request): array
     {
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
 
@@ -298,7 +298,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      *
      * @return array<Fact>
      */
-    private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
+    protected function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {
         $tree        = Validator::attributes($request)->tree();
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
@@ -331,7 +331,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      *
      * @return string
      */
-    private function getSosaName(int $sosa): string
+    protected function getSosaName(int $sosa): string
     {
         $path = '';
 
