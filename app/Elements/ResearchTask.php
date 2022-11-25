@@ -28,6 +28,7 @@ class ResearchTask extends AbstractElement
 {
     protected const SUBTAGS = [
         'DATE'     => '0:1',
+        'NOTE'     => '0:M',
         '_WT_USER' => '0:1',
     ];
 
