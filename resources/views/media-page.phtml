@@ -10,11 +10,9 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemOperator;
 
 /**
  * @var Collection             $clipboard_facts
- * @var FilesystemOperator     $data_filesystem
  * @var Collection<Family>     $linked_families
  * @var Collection<Individual> $linked_individuals
  * @var Collection<Location>   $linked_locations
@@ -39,7 +37,7 @@ use League\Flysystem\FilesystemOperator;
 
 <div class="wt-page-content">
         <?= view('record-page-links', [
-            'details'              => view('media-page-details', ['clipboard_facts' => $clipboard_facts, 'data_filesystem' => $data_filesystem, 'record' => $record]),
+            'details'              => view('media-page-details', ['clipboard_facts' => $clipboard_facts, 'record' => $record]),
             'linked_families'      => $linked_families,
             'linked_individuals'   => $linked_individuals,
             'linked_locations'     => $linked_locations,

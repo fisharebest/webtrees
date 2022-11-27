@@ -60,8 +60,6 @@ class MediaPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Registry::filesystem()->data();
-
         $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $slug   = Validator::attributes($request)->string('slug', '');
@@ -81,7 +79,6 @@ class MediaPage implements RequestHandlerInterface
 
         return $this->viewResponse('media-page', [
             'clipboard_facts'    => $this->clipboard_service->pastableFacts($record),
-            'data_filesystem'    => $data_filesystem,
             'linked_families'    => $linked_families,
             'linked_individuals' => $linked_individuals,
             'linked_locations'   => $linked_locations->isEmpty() ? null : $linked_locations,
