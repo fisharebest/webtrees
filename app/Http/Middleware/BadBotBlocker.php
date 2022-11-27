@@ -90,12 +90,16 @@ class BadBotBlocker implements MiddlewareInterface
      * @see https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0
      * @see https://www.bing.com/webmaster/help/how-to-verify-bingbot-3905dc26
      * @see https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.html
+     * @see https://www.mojeek.com/bot.html
+     * @see https://support.apple.com/en-gb/HT204683
      */
     private const ROBOT_REV_FWD_DNS = [
         'Amazonbot'   => ['.crawl.amazon.com'],
+        'Applebot'    => ['.applebot.apple.com'],
         'bingbot'     => ['.search.msn.com'],
         'BingPreview' => ['.search.msn.com'],
         'Google'      => ['.google.com', '.googlebot.com'],
+        'MojeekBot'   => ['.mojeek.com'],
         'Mail.RU_Bot' => ['.mail.ru'],
         'msnbot'      => ['.search.msn.com'],
         'Qwantify'    => ['.search.qwant.com'],
