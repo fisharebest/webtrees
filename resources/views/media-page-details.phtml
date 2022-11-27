@@ -11,13 +11,11 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemOperator;
 
 /**
- * @var Collection           $clipboard_facts
- * @var FilesystemOperator   $data_filesystem
- * @var Media                $record
- * @var Tree                 $tree
+ * @var Collection $clipboard_facts
+ * @var Media      $record
+ * @var Tree       $tree
  */
 
 ?>
@@ -53,7 +51,7 @@ use League\Flysystem\FilesystemOperator;
                     <?php if ($media_file->isExternal()) : ?>
                         <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $record->tree()) ?>
                     <?php elseif (Auth::isEditor($record->tree())) :?>
-                        <?php if (!$media_file->fileExists($data_filesystem)) : ?>
+                        <?php if (!$media_file->fileExists()) : ?>
                             <p class="alert alert-danger">
                                 <?= I18N::translate('The file “%s” does not exist.', e($media_file->filename())) ?>
                             </p>
@@ -79,7 +77,7 @@ use League\Flysystem\FilesystemOperator;
                         <?php else : ?>
                             <?= $media_file->displayImage(200, 150, 'contain', []) ?>
                         <?php endif ?>
-                        <?php if ($record->tree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($record->tree()) && $media_file->fileExists($data_filesystem)) : ?>
+                        <?php if ($record->tree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($record->tree()) && $media_file->fileExists()) : ?>
                             <br>
                             <a href="<?= e($media_file->downloadUrl('attachment')) ?>">
                                 <?= I18N::translate('Download file') ?>
