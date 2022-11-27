@@ -80,12 +80,12 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Redirect to a URL.
      *
-     * @param string|UriInterface $url
+     * @param UriInterface|string $url
      * @param int                 $code
      *
      * @return ResponseInterface
      */
-    public function redirectUrl($url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+    public function redirectUrl(UriInterface|string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
     {
         return $this->response_factory
             ->createResponse($code)
@@ -99,7 +99,7 @@ class ResponseFactory implements ResponseFactoryInterface
      *
      * @return ResponseInterface
      */
-    public function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
+    public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
     {
         if ($content === '' && $code === StatusCodeInterface::STATUS_OK) {
             $code = StatusCodeInterface::STATUS_NO_CONTENT;
