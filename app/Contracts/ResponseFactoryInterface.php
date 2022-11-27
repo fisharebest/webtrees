@@ -48,12 +48,12 @@ interface ResponseFactoryInterface
     /**
      * Redirect to a URL.
      *
-     * @param string|UriInterface $url
+     * @param UriInterface|string $url
      * @param int                 $code
      *
      * @return ResponseInterface
      */
-    public function redirectUrl($url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface;
+    public function redirectUrl(UriInterface|string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface;
 
     /**
      * @param string|array<mixed>|object $content
@@ -62,7 +62,7 @@ interface ResponseFactoryInterface
      *
      * @return ResponseInterface
      */
-    public function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface;
+    public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface;
 
     /**
      * Create and render a view, and embed it in an HTML page.
