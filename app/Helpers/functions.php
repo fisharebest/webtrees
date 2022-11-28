@@ -95,7 +95,7 @@ function csrf_token(): string
  *
  * @return ResponseInterface
  */
-function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+function redirect(string $url, int $code = StatusCodeInterface::STATUS_MOVED_PERMANENTLY): ResponseInterface
 {
     /** @var ResponseFactoryInterface $response_factory */
     $response_factory = app(ResponseFactoryInterface::class);
