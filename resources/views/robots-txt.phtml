@@ -27,7 +27,27 @@ Disallow: <?= $base_path ?>/admin
 Disallow: <?= $base_path ?>/manager
 Disallow: <?= $base_path ?>/editor
 Disallow: <?= $base_path ?>/account
-Crawl-delay: 10
+Crawl-delay: 1
+
+Disallow: <?= $base_path ?>/login   
+Disallow: <?= $base_path ?>/module 
+
+Disallow: /*/*-list
+Disallow: /*/*-map
+Disallow: /*/*-tree
+Disallow: /*/branches/
+Disallow: /*/calendar/
+Disallow: /*/Chart/
+Disallow: /*/compact/
+Disallow: /*/contact
+Disallow: /*/family-book 
+Disallow: /*/fan-chart-
+Disallow: /*/hourglass
+Disallow: /*/media-thumbnail
+Disallow: /*/pedigree-
+Disallow: /*/relationships-
+Disallow: /*/report/
+Disallow: /*/timeline-
 
 <?php if ($sitemap_url !== '') : ?>
 Sitemap: <?= $sitemap_url ?>
