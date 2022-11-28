@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -54,6 +55,6 @@ class NoRouteFound implements MiddlewareInterface
             throw new HttpNotFoundException();
         }
 
-        return redirect(route(HomePage::class));
+        return redirect(route(HomePage::class),StatusCodeInterface::STATUS_GONE);
     }
 }
