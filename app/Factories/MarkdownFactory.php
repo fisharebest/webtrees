@@ -27,7 +27,7 @@ use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Autolink\AutolinkExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
-use League\CommonMark\Extension\CommonMark\Renderer\Inline\LinkRenderer;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\MarkdownConverter;
 use League\CommonMark\Node\Block\Document;
@@ -40,6 +40,11 @@ use League\CommonMark\Renderer\Block\ParagraphRenderer;
 use League\CommonMark\Renderer\Inline\NewlineRenderer;
 use League\CommonMark\Renderer\Inline\TextRenderer;
 use League\CommonMark\Util\HtmlFilter;
+use League\CommonMark\Node\Node;
+use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use League\CommonMark\Renderer\NodeRendererInterface;
+use League\CommonMark\Util\HtmlElement;
+use League\CommonMark\Util\RegexHelper;
 
 use function strip_tags;
 use function strtr;
@@ -57,6 +62,12 @@ class MarkdownFactory implements MarkdownFactoryInterface
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
             'soft_break' => self::BREAK,
+        ],
+        'external_link' => [
+            'open_in_new_window' => true,
+            'nofollow' => 'external',
+            'noopener' => 'external',
+            'noreferrer' => 'external',
         ],
     ];
 
@@ -91,9 +102,10 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $environment->addRenderer(Document::class, new DocumentRenderer());
         $environment->addRenderer(Paragraph::class, new ParagraphRenderer());
         $environment->addRenderer(Text::class, new TextRenderer());
-        $environment->addRenderer(Link::class, new LinkRenderer());
+        $environment->addRenderer(Link::class, new ExternalLinkRenderer());
         $environment->addRenderer(Newline::class, new NewlineRenderer());
         $environment->addExtension(new AutolinkExtension());
+        $environment->addExtension(new ExternalLinkExtension);
 
         // Optionally create links to other records.
         if ($tree instanceof Tree) {
@@ -137,5 +149,44 @@ class MarkdownFactory implements MarkdownFactoryInterface
 
         // The markdown convert adds newlines, but not in a documented way.  Safest to ignore them.
         return strtr($html, ["\n"   => '']);
+    }
+}
+
+final class ExternalLinkRenderer implements NodeRendererInterface
+{
+    /**
+     * @param Link $node
+     *
+     * {@inheritDoc}
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
+     */
+    function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    {
+        Link::assertInstanceOf($node);
+
+        $attrs = $node->data->get('attributes');
+
+        if (!(RegexHelper::isLinkPotentiallyUnsafe($node->getUrl()))) {
+            $attrs['href'] = $node->getUrl();
+        }
+
+        if (($title = $node->getTitle()) !== null) {
+            $attrs['title'] = $title;
+        }
+
+        if (isset($attrs['target']) && $attrs['target'] === '_blank' && !isset($attrs['rel'])) {
+            $attrs['rel'] = 'noopener noreferrer';
+        }
+
+        if (preg_match('/\s?(http.?:\/\/.*\..*)(\/|\?).*/', $node->getUrl(), $matches) == 1) {
+            if ($matches[2] == '/')
+                $match  = $matches[1] . '/';
+            else
+                $match = $matches[1];
+        } else
+            $match =  $node->getUrl();
+
+        return new HtmlElement('a', $attrs, $match);
     }
 }
