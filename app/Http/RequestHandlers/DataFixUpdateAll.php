@@ -82,8 +82,8 @@ class DataFixUpdateAll implements RequestHandlerInterface
             return response([]);
         }
 
-        $start = Validator::queryParams($request)->string('start');
-        $end   = Validator::queryParams($request)->string('end');
+        $start = Validator::queryParams($request)->string('start', '');
+        $end   = Validator::queryParams($request)->string('end', '');
 
         if ($start === '' || $end === '') {
             return $this->createUpdateRanges($tree, $module, $rows, $params);
