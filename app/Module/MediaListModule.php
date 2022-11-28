@@ -173,7 +173,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         $folders = $this->allFolders($tree);
         $go      = Validator::queryParams($request)->boolean('go', false);
         $page    = Validator::queryParams($request)->integer('page', 1);
-        $max     = Validator::queryParams($request)->integer('page', 20);
+        $max     = Validator::queryParams($request)->integer('max', 20);
         $folder  = Validator::queryParams($request)->string('folder', '');
         $filter  = Validator::queryParams($request)->string('filter', '');
         $subdirs = Validator::queryParams($request)->boolean('subdirs', false);
