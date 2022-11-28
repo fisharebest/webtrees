@@ -1,0 +1,306 @@
+:root {
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.05;
+  --bs-body-color: #212529;
+  --bs-body-bg: rgb(73, 72, 72);
+
+  --chart-line-radius: 1rem;
+  --chart-line: solid gray thin;
+  --link-color-hover: black;
+  --link-color: black;
+  --link-decoration-hover: underline;
+  --link-decoration: none;
+}
+.h1,
+h1 {
+  font-size: 160%;
+}
+.h2,
+h2 {
+  font-size: 140%;
+}
+.h3,
+h3 {
+  font-size: 130%;
+}
+.h4,
+h4 {
+  font-size: 120%;
+}
+.h5,
+h5 {
+  font-size: 110%;
+}
+.h6,
+h6 {
+  font-size: 100%;
+}
+.alert {
+  --bs-alert-padding-x: 0.75rem;
+  --bs-alert-padding-y: 0.75rem;
+  --bs-alert-margin-bottom: 0.5rem;
+  --bs-alert-margin-top: 0.5rem;
+  --bs-alert-border-radius: 0.375rem;
+}
+[dir] .alert {
+  margin-top: var(--bs-alert-margin-top);
+  margin-bottom: var(--bs-alert-margin-bottom);
+}
+[dir] .alert-dismissible .btn-close {
+  padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+}
+[dir] p {
+  margin-top: 0.1rem;
+  margin-bottom: 0.4rem;
+}
+[dir] .markdown p {
+  margin: 0;
+}
+.markdown {
+  overflow-wrap: break-word;
+  white-space: inherit;
+}
+[dir] .card-header {
+  padding: 0.25rem 0.5rem;
+}
+[dir] .card-body {
+  padding: 0.1rem 0.5rem;
+}
+[dir] .btn {
+  padding: 0.25rem;
+  line-height: inherit;
+  vertical-align: baseline;
+}
+[dir] .btn-primary {
+  margin-top: 0.375rem;
+  margin-bottom: 0.375rem;
+}
+[dir] .accordion-button,
+[dir] .accordion-body {
+  padding: 0.25rem 1.25rem;
+}
+[dir] .table {
+  margin-bottom: 0.5rem;
+}
+[dir] .wt-tab-facts {
+  padding-bottom: 0.5rem !important;
+}
+.wt-chart-box {
+  line-height: 1.02;
+}
+.wt-site-title {
+  order: 4;
+  flex: 0 0 calc(100%);
+  font-size: x-large;
+  font-weight: bold;
+  color: black;
+}
+[dir] .wt-site-title {
+  padding: 0.5rem 0.5rem 0 0.5rem !important;
+}
+.wt-header-search {
+  order: 3;
+}
+.wt-secondary-navigation {
+  order: 2;
+  flex-grow: 1;
+  flex-direction: column;
+  flex-wrap: wrap-reverse;
+}
+.wt-header-search .wt-secondary-navigation {
+  align-items: flex-end;
+}
+.wt-header-search-field,
+.wt-header-search-button {
+  font-size: small;
+}
+.wt-page-title {
+  font-weight: 650;
+}
+.wt-main-blocks,
+.wt-side-blocks {
+  padding: 0.5rem 0.5rem;
+}
+.wt-page-options-value {
+  max-width: 25rem;
+}
+[dir] .wt-facts-table th {
+  padding: 0.2rem 0.2rem;
+}
+[dir] .wt-facts-table td {
+  padding: 0.2rem 0.2rem;
+}
+.wt-fact-date-age {
+  display: inline;
+}
+.wt-family-navigator-family th {
+  width: 35%;
+}
+.wt-footers {
+  padding-bottom: 0.5rem;
+}
+[dir] .py-2 {
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
+}
+[dir] .col {
+  padding-left: 0rem;
+  padding-right: 0.2rem;
+}
+[dir="ltr"] .col-1,
+[dir="ltr"] .col-2,
+[dir="ltr"] .col-3,
+[dir="ltr"] .col-4,
+[dir="ltr"] .col-5,
+[dir="ltr"] .col-6,
+[dir="ltr"] .col-7,
+[dir="ltr"] .col-8,
+[dir="ltr"] .col-9,
+[dir="ltr"] .col-10,
+[dir="ltr"] .col-11,
+[dir="ltr"] .col-12,
+[dir="ltr"] .col-auto,
+[dir="ltr"] .col-lg,
+[dir="ltr"] .col-lg-1,
+[dir="ltr"] .col-lg-2,
+[dir="ltr"] .col-lg-3,
+[dir="ltr"] .col-lg-4,
+[dir="ltr"] .col-lg-5,
+[dir="ltr"] .col-lg-6,
+[dir="ltr"] .col-lg-7,
+[dir="ltr"] .col-lg-8,
+[dir="ltr"] .col-lg-9,
+[dir="ltr"] .col-lg-10,
+[dir="ltr"] .col-lg-11,
+[dir="ltr"] .col-lg-12,
+[dir="ltr"] .col-lg-auto,
+[dir="ltr"] .col-md,
+[dir="ltr"] .col-md-1,
+[dir="ltr"] .col-md-2,
+[dir="ltr"] .col-md-3,
+[dir="ltr"] .col-md-4,
+[dir="ltr"] .col-md-5,
+[dir="ltr"] .col-md-6,
+[dir="ltr"] .col-md-7,
+[dir="ltr"] .col-md-8,
+[dir="ltr"] .col-md-9,
+[dir="ltr"] .col-md-10,
+[dir="ltr"] .col-md-11,
+[dir="ltr"] .col-md-12,
+[dir="ltr"] .col-md-auto,
+[dir="ltr"] .col-sm,
+[dir="ltr"] .col-sm-1,
+[dir="ltr"] .col-sm-2,
+[dir="ltr"] .col-sm-3,
+[dir="ltr"] .col-sm-4,
+[dir="ltr"] .col-sm-5,
+[dir="ltr"] .col-sm-6,
+[dir="ltr"] .col-sm-7,
+[dir="ltr"] .col-sm-8,
+[dir="ltr"] .col-sm-9,
+[dir="ltr"] .col-sm-10,
+[dir="ltr"] .col-sm-11,
+[dir="ltr"] .col-sm-12,
+[dir="ltr"] .col-sm-auto,
+[dir="ltr"] .col-xl,
+[dir="ltr"] .col-xl-1,
+[dir="ltr"] .col-xl-2,
+[dir="ltr"] .col-xl-3,
+[dir="ltr"] .col-xl-4,
+[dir="ltr"] .col-xl-5,
+[dir="ltr"] .col-xl-6,
+[dir="ltr"] .col-xl-7,
+[dir="ltr"] .col-xl-8,
+[dir="ltr"] .col-xl-9,
+[dir="ltr"] .col-xl-10,
+[dir="ltr"] .col-xl-11,
+[dir="ltr"] .col-xl-12,
+[dir="ltr"] .col-xl-auto,
+[dir="rtl"] .col,
+[dir="rtl"] .col-1,
+[dir="rtl"] .col-2,
+[dir="rtl"] .col-3,
+[dir="rtl"] .col-4,
+[dir="rtl"] .col-5,
+[dir="rtl"] .col-6,
+[dir="rtl"] .col-7,
+[dir="rtl"] .col-8,
+[dir="rtl"] .col-9,
+[dir="rtl"] .col-10,
+[dir="rtl"] .col-11,
+[dir="rtl"] .col-12,
+[dir="rtl"] .col-auto,
+[dir="rtl"] .col-lg,
+[dir="rtl"] .col-lg-1,
+[dir="rtl"] .col-lg-2,
+[dir="rtl"] .col-lg-3,
+[dir="rtl"] .col-lg-4,
+[dir="rtl"] .col-lg-5,
+[dir="rtl"] .col-lg-6,
+[dir="rtl"] .col-lg-7,
+[dir="rtl"] .col-lg-8,
+[dir="rtl"] .col-lg-9,
+[dir="rtl"] .col-lg-10,
+[dir="rtl"] .col-lg-11,
+[dir="rtl"] .col-lg-12,
+[dir="rtl"] .col-lg-auto,
+[dir="rtl"] .col-md,
+[dir="rtl"] .col-md-1,
+[dir="rtl"] .col-md-2,
+[dir="rtl"] .col-md-3,
+[dir="rtl"] .col-md-4,
+[dir="rtl"] .col-md-5,
+[dir="rtl"] .col-md-6,
+[dir="rtl"] .col-md-7,
+[dir="rtl"] .col-md-8,
+[dir="rtl"] .col-md-9,
+[dir="rtl"] .col-md-10,
+[dir="rtl"] .col-md-11,
+[dir="rtl"] .col-md-12,
+[dir="rtl"] .col-md-auto,
+[dir="rtl"] .col-sm,
+[dir="rtl"] .col-sm-1,
+[dir="rtl"] .col-sm-2,
+[dir="rtl"] .col-sm-3,
+[dir="rtl"] .col-sm-4,
+[dir="rtl"] .col-sm-5,
+[dir="rtl"] .col-sm-6,
+[dir="rtl"] .col-sm-7,
+[dir="rtl"] .col-sm-8,
+[dir="rtl"] .col-sm-9,
+[dir="rtl"] .col-sm-10,
+[dir="rtl"] .col-sm-11,
+[dir="rtl"] .col-sm-12,
+[dir="rtl"] .col-sm-auto,
+[dir="rtl"] .col-xl,
+[dir="rtl"] .col-xl-1,
+[dir="rtl"] .col-xl-2,
+[dir="rtl"] .col-xl-3,
+[dir="rtl"] .col-xl-4,
+[dir="rtl"] .col-xl-5,
+[dir="rtl"] .col-xl-6,
+[dir="rtl"] .col-xl-7,
+[dir="rtl"] .col-xl-8,
+[dir="rtl"] .col-xl-9,
+[dir="rtl"] .col-xl-10,
+[dir="rtl"] .col-xl-11,
+[dir="rtl"] .col-xl-12,
+[dir="rtl"] .col-xl-auto {
+  padding-left: 0rem;
+  padding-right: 0.2rem;
+}
+[dir] .row {
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+.table-responsive {
+  word-wrap: break-word;
+}
+.indent {
+  margin-left: 1.5rem;
+}
+[dir] .form-group {
+  margin-bottom: 0.5rem;
+}
