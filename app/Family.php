@@ -151,7 +151,7 @@ class Family extends GedcomRecord
     protected function canShowByType(int $access_level): bool
     {
         // Hide a family if any member is private
-        preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
+        preg_match_all('/\n1 (?:HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches);
         foreach ($matches[1] as $match) {
             $person = Registry::individualFactory()->make($match, $this->tree);
             if ($person && !$person->canShow($access_level)) {
