@@ -94,12 +94,14 @@ class GedcomExportService
     }
 
     /**
-     * @param Tree                        $tree           - Export data from this tree
-     * @param bool                        $sort_by_xref   - Write GEDCOM records in XREF order
-     * @param string                      $encoding       - Convert from UTF-8 to other encoding
-     * @param string                      $privacy        - Filter records by role
-     * @param string                      $filename       - Name of download file, without an extension
-     * @param string                      $format         - One of: gedcom, zip, zipmedia, gedzip
+     * @param Tree            $tree         - Export data from this tree
+     * @param bool            $sort_by_xref - Write GEDCOM records in XREF order
+     * @param string          $encoding     - Convert from UTF-8 to other encoding
+     * @param string          $privacy      - Filter records by role
+     * @param string          $line_endings
+     * @param string          $filename     - Name of download file, without an extension
+     * @param string          $format       - One of: gedcom, zip, zipmedia, gedzip
+     * @param Collection|null $records
      *
      * @return ResponseInterface
      */

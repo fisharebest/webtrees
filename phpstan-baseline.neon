@@ -101,6 +101,16 @@ parameters:
 			path: app/Factories/FamilyFactory.php
 
 		-
+			message: "#^Call to method mediaFilesystem\\(\\) on an unknown class Fisharebest\\\\Webtrees\\\\Factories\\\\Tree\\.$#"
+			count: 1
+			path: app/Factories/FilesystemFactory.php
+
+		-
+			message: "#^Parameter \\$tree of method Fisharebest\\\\Webtrees\\\\Factories\\\\FilesystemFactory\\:\\:media\\(\\) has invalid type Fisharebest\\\\Webtrees\\\\Factories\\\\Tree\\.$#"
+			count: 2
+			path: app/Factories/FilesystemFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
@@ -446,7 +456,7 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between '\\-dev' and '' will always evaluate to false\\.$#"
+			message: "#^Else branch is unreachable because previous condition is always true\\.$#"
 			count: 1
 			path: app/Helpers/functions.php
 
@@ -3351,7 +3361,12 @@ parameters:
 			path: app/Validator.php
 
 		-
-			message: "#^Ternary operator condition is always true\\.$#"
+			message: "#^Strict comparison using \\!\\=\\= between '' and '' will always evaluate to false\\.$#"
+			count: 1
+			path: app/Webtrees.php
+
+		-
+			message: "#^Ternary operator condition is always false\\.$#"
 			count: 1
 			path: app/Webtrees.php
 

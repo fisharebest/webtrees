@@ -38,7 +38,6 @@ use function uksort;
 use function view;
 
 use const EXTR_OVERWRITE;
-use const PHP_INT_MAX;
 
 /**
  * Class TopSurnamesModule
