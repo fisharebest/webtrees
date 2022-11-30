@@ -37,7 +37,7 @@ class RouteFactoryTest extends TestCase
 
         $url = $route_factory->route(HomePage::class, ['foo' => null, 'bar' => '']);
 
-        $this->assertStringNotContainsString('foo=', $url);
-        $this->assertStringContainsString('bar=', $url);
+        static::assertStringNotContainsString('foo=', $url);
+        static::assertStringContainsString('bar=', $url);
     }
 }
