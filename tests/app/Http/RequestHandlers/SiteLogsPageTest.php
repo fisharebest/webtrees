@@ -46,6 +46,6 @@ class SiteLogsPageTest extends TestCase
         $handler  = new SiteLogsPage($tree_service, $user_service);
         $response = $handler->handle($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        static::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 }
