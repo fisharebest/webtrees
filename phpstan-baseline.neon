@@ -101,6 +101,16 @@ parameters:
 			path: app/Factories/FamilyFactory.php
 
 		-
+			message: "#^Call to method mediaFilesystem\\(\\) on an unknown class Fisharebest\\\\Webtrees\\\\Factories\\\\Tree\\.$#"
+			count: 1
+			path: app/Factories/FilesystemFactory.php
+
+		-
+			message: "#^Parameter \\$tree of method Fisharebest\\\\Webtrees\\\\Factories\\\\FilesystemFactory\\:\\:media\\(\\) has invalid type Fisharebest\\\\Webtrees\\\\Factories\\\\Tree\\.$#"
+			count: 2
+			path: app/Factories/FilesystemFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php

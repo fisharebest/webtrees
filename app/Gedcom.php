@@ -98,7 +98,6 @@ use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
 use Fisharebest\Webtrees\Elements\FamilyCensus;
 use Fisharebest\Webtrees\Elements\FamilyEvent;
-use Fisharebest\Webtrees\Elements\FamilyFact;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
 use Fisharebest\Webtrees\Elements\FamilyResidence;
 use Fisharebest\Webtrees\Elements\FileName;

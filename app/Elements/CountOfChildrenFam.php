@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Tree;
-
 /**
  * COUNT_OF_CHILDREN := {Size=1:3}
  * The known number of children of this individual from all marriages or, if
