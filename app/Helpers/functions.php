@@ -108,13 +108,13 @@ function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): R
 /**
  * Create a response.
  *
- * @param string|array<mixed>|object $content
+ * @param array<mixed>|object|string $content
  * @param int                        $code
  * @param array<string>              $headers
  *
  * @return ResponseInterface
  */
-function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
+function response(array|object|string $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
 {
     return Registry::responseFactory()->response($content, $code, $headers);
 }

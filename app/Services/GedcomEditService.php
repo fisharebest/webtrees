@@ -231,7 +231,7 @@ class GedcomEditService
      *
      * @return array<string>
      */
-    public function factsToAdd(GedcomRecord $record, bool $include_hidden): array
+    public function factsToAdd(Family|Individual $record, bool $include_hidden): array
     {
         $subtags = Registry::elementFactory()->make($record->tag())->subtags();
 
