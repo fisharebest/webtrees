@@ -125,7 +125,7 @@ use Illuminate\Support\Collection;
 
             <td>
                 <?php if (!array_key_exists($place->key, $active)) : ?>
-                    <form method="post" action="<?= e(route(MapDataDelete::class, ['place_id' => $place->id])) ?>">
+                    <form method="post" action="<?= e(route(MapDataDelete::class, ['location_id' => $place->id])) ?>">
                         <button type="submit" class="btn btn-danger" aria-label="<?= I18N::translate('delete') ?>" data-wt-confirm="<?= I18N::translate('Remove this location?') ?>">
                             <?= view('icons/delete') ?>
                         </button>
