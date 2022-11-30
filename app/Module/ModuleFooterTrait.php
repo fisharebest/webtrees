@@ -68,7 +68,7 @@ trait ModuleFooterTrait
      *
      * @return string
      */
-    public function getFooter(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): string
+    public function getFooter(ServerRequestInterface $request): string
     {
         return '';
     }

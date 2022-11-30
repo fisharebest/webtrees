@@ -44,7 +44,7 @@ trait ModuleSidebarTrait
      *
      * @return string
      */
-    public function sidebarTitle(/** @scrutinizer ignore-unused */ Individual $individual): string
+    public function sidebarTitle(Individual $individual): string
     {
         return $this->title();
     }
