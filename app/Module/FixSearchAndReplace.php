@@ -398,7 +398,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
                     // A valid regex on an empty string returns zero.
                     // An invalid regex on an empty string returns false and throws a warning.
                     preg_match($regex, '');
-                } catch (Throwable $ex) {
+                } catch (Throwable) {
                     $regex = self::INVALID_REGEX;
                 }
 

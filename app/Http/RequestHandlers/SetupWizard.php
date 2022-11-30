@@ -261,7 +261,7 @@ class SetupWizard implements RequestHandlerInterface
             file_put_contents($data_dir . 'test.txt', $text1);
             $text2 = file_get_contents(Webtrees::DATA_DIR . 'test.txt');
             unlink(Webtrees::DATA_DIR . 'test.txt');
-        } catch (Exception $ex) {
+        } catch (Exception) {
             return false;
         }
 

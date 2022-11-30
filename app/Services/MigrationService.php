@@ -46,7 +46,7 @@ class MigrationService
     {
         try {
             $current_version = (int) Site::getPreference($schema_name);
-        } catch (PDOException $ex) {
+        } catch (PDOException) {
             // During initial installation, the site_preference table won’t exist.
             $current_version = 0;
         }
@@ -54,7 +54,7 @@ class MigrationService
         if ($current_version < $target_version) {
             try {
                 $this->transactionalTables();
-            } catch (PDOException $ex) {
+            } catch (PDOException) {
                 // There is probably nothing we can do.
             }
         }

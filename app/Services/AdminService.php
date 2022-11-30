@@ -267,7 +267,7 @@ class AdminService
                     return $attributes->path();
                 })
                 ->toArray();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $files = [];
         }
 

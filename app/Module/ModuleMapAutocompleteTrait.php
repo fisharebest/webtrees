@@ -72,7 +72,7 @@ trait ModuleMapAutocompleteTrait
 
                 return [];
             }, $ttl);
-        } catch (GuzzleException $ex) {
+        } catch (GuzzleException) {
             // Service down?  Quota exceeded?
             // Don't try for another hour.
             $cache->remember($key, fn () => [], 3600);

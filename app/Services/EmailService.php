@@ -183,7 +183,7 @@ class EmailService
     {
         try {
             $address = new Address($email);
-        } catch (RfcComplianceException $ex) {
+        } catch (RfcComplianceException) {
             return false;
         }
 

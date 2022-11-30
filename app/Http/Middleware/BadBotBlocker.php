@@ -291,7 +291,7 @@ class BadBotBlocker implements MiddlewareInterface
                 $ranges = array_map($mapper, $routes);
 
                 return array_filter($ranges);
-            } catch (Throwable $ex) {
+            } catch (Throwable) {
                 return [];
             }
         }, random_int(self::WHOIS_TTL_MIN, self::WHOIS_TTL_MAX));

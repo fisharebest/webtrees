@@ -116,7 +116,7 @@ trait ModuleMapGeoLocationTrait
 
         try {
             return json_decode($body, false, 512, JSON_THROW_ON_ERROR);
-        } catch (JsonException $ex) {
+        } catch (JsonException) {
             return [];
         }
     }

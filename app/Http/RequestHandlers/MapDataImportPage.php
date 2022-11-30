@@ -64,7 +64,7 @@ class MapDataImportPage implements RequestHandlerInterface
                     return pathinfo($attributes->path(), PATHINFO_BASENAME);
                 })
                 ->toArray();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $files = [];
         }
 

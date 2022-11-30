@@ -80,14 +80,14 @@ class DeletePath implements RequestHandlerInterface
             try {
                 $data_filesystem->deleteDirectory($normalized_path);
                 FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
-            } catch (FilesystemException | UnableToDeleteDirectory $ex) {
+            } catch (FilesystemException | UnableToDeleteDirectory) {
                 FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
             }
         } else {
             try {
                 $data_filesystem->delete($normalized_path);
                 FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
-            } catch (FilesystemException | UnableToDeleteFile $ex) {
+            } catch (FilesystemException | UnableToDeleteFile) {
                 FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
             }
         }

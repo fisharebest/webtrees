@@ -433,7 +433,7 @@ abstract class AbstractCalendarDate
     {
         try {
             return $this->calendar->daysInMonth($this->year, $this->month);
-        } catch (InvalidArgumentException $ex) {
+        } catch (InvalidArgumentException) {
             // calendar.php calls this with "DD MMM" dates, for which we cannot calculate
             // the length of a month. Should we validate this before calling this function?
             return 0;

@@ -302,7 +302,7 @@ class I18N
         try {
             $translation  = new Translation($translation_file);
             $translations = $translation->asArray();
-        } catch (Exception $ex) {
+        } catch (Exception) {
             // The translations files are created during the build process, and are
             // not included in the source code.
             // Assuming we are using dev code, and build (or rebuild) the files.
@@ -346,7 +346,7 @@ class I18N
                 // Ignore upper/lower case differences
                 self::$collator->setStrength(Collator::SECONDARY);
             }
-        } catch (Exception $ex) {
+        } catch (Exception) {
             // PHP-INTL is not installed?  We'll use a fallback later.
         }
     }

@@ -100,7 +100,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
                 ->map(static function (StorageAttributes $attributes): string {
                     return $attributes->path();
                 });
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $thumbnails = new Collection();
         }
 
@@ -196,7 +196,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
         // It may not actually exist.
         try {
             $file_exists = $data_filesystem->fileExists($original);
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $file_exists = false;
         }
 
@@ -206,13 +206,13 @@ class ImportThumbnailsData implements RequestHandlerInterface
 
         try {
             $thumbnail_type = $data_filesystem->mimeType($thumbnail) ?: Mime::DEFAULT_TYPE;
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $thumbnail_type = Mime::DEFAULT_TYPE;
         }
 
         try {
             $original_type = $data_filesystem->mimeType($original) ?: Mime::DEFAULT_TYPE;
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $original_type = Mime::DEFAULT_TYPE;
         }
 

@@ -101,7 +101,7 @@ class SynchronizeTrees implements RequestHandlerInterface
                         return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
                     }
                 }
-            } catch (FilesystemException | UnableToRetrieveMetadata | UnableToReadFile $ex) {
+            } catch (FilesystemException | UnableToRetrieveMetadata | UnableToReadFile) {
                 // Can't read the file - skip it.
             }
         }
