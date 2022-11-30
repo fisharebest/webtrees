@@ -30,7 +30,6 @@ use function array_map;
 use function e;
 use function is_numeric;
 use function nl2br;
-use function preg_replace;
 use function str_contains;
 use function str_starts_with;
 use function strip_tags;

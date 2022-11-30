@@ -28,9 +28,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_merge;
 use function array_search;
-use function assert;
 use function implode;
-use function is_array;
 use function redirect;
 use function uksort;
 
