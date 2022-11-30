@@ -33,7 +33,7 @@ trait ModuleShareTrait
      *
      * @return string
      */
-    public function share(/** @scrutinizer ignore-unused */ GedcomRecord $record): string
+    public function share(GedcomRecord $record): string
     {
         return '';
     }
