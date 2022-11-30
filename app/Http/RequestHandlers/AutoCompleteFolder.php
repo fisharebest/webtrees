@@ -59,7 +59,7 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
                 ->filter(fn (string $path): bool => stripos($path, $query) !== false)
                 ->sort(I18N::comparator())
                 ->values();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             return new Collection();
         }
     }

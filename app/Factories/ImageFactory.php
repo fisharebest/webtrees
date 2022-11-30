@@ -91,7 +91,7 @@ class ImageFactory implements ImageFactoryInterface
         try {
             try {
                 $mime_type = $filesystem->mimeType($path);
-            } catch (UnableToRetrieveMetadata $ex) {
+            } catch (UnableToRetrieveMetadata) {
                 $mime_type = Mime::DEFAULT_TYPE;
             }
 
@@ -387,7 +387,7 @@ class ImageFactory implements ImageFactoryInterface
         try {
             // Auto-rotate using EXIF information.
             return $image->orientate();
-        } catch (NotSupportedException $ex) {
+        } catch (NotSupportedException) {
             // If we can't auto-rotate the image, then don't.
             return $image;
         }

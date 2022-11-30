@@ -115,7 +115,7 @@ class UploadMediaAction implements RequestHandlerInterface
 
             try {
                 $file_exists = $data_filesystem->fileExists($path);
-            } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+            } catch (FilesystemException | UnableToCheckFileExistence ) {
                 $file_exists = false;
             }
 

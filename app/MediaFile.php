@@ -312,7 +312,7 @@ class MediaFile
                 $text  = I18N::translate('%s KB', I18N::number($kb));
 
                 $attributes[I18N::translate('File size')] = $text;
-            } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+            } catch (FilesystemException | UnableToRetrieveMetadata) {
                 // External/missing files have no size.
             }
 
@@ -327,7 +327,7 @@ class MediaFile
 
                     $attributes[I18N::translate('Image dimensions')] = $text;
                 }
-            } catch (FilesystemException | UnableToReadFile $ex) {
+            } catch (FilesystemException | UnableToReadFile) {
                 // Cannot read the file.
             }
         }
@@ -344,7 +344,7 @@ class MediaFile
     {
         try {
             return $this->media->tree()->mediaFilesystem()->read($this->multimedia_file_refn);
-        } catch (FilesystemException | UnableToReadFile $ex) {
+        } catch (FilesystemException | UnableToReadFile) {
             return '';
         }
     }
@@ -358,7 +358,7 @@ class MediaFile
     {
         try {
             return $this->media->tree()->mediaFilesystem()->fileExists($this->multimedia_file_refn);
-        } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+        } catch (FilesystemException | UnableToCheckFileExistence) {
             return false;
         }
     }

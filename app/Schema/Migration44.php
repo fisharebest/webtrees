@@ -105,7 +105,7 @@ class Migration44 implements MigrationInterface
                 DB::schema()->table('placelocation', static function (Blueprint $table): void {
                     $table->dropUnique(['pl_parent_id', 'pl_place']);
                 });
-            } catch (PDOException $ex) {
+            } catch (PDOException) {
                 // Already deleted, or does not exist;
             }
 
@@ -181,7 +181,7 @@ class Migration44 implements MigrationInterface
             try {
                 DB::table('place_location')
                     ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
-            } catch (PDOException $ex) {
+            } catch (PDOException) {
                 DB::table('place_location')
                     ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
             }

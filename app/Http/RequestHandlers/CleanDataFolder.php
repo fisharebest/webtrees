@@ -93,7 +93,7 @@ class CleanDataFolder implements RequestHandlerInterface
                     return $attributes->path();
                 })
                 ->toArray();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $entries = [];
         }
 

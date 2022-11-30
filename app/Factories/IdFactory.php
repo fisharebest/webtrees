@@ -43,7 +43,7 @@ class IdFactory implements IdFactoryInterface
     {
         try {
             return strtolower(strtr(Uuid::uuid4()->toString(), ['-' => '']));
-        } catch (RandomSourceException $ex) {
+        } catch (RandomSourceException) {
             // uuid4() can fail if there is insufficient entropy in the system.
             return '';
         }

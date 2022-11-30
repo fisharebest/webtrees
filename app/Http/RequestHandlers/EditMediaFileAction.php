@@ -130,13 +130,13 @@ class EditMediaFileAction implements RequestHandlerInterface
                     try {
                         $filesystem->move($old, $new);
                         FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                    } catch (FilesystemException | UnableToMoveFile $ex) {
+                    } catch (FilesystemException | UnableToMoveFile) {
                         // Don't overwrite existing file
                         FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
                         $file = $old;
                     }
                 }
-            } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+            } catch (FilesystemException | UnableToRetrieveMetadata) {
                 // File does not exist?
             }
         }
