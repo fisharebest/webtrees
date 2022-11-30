@@ -32,6 +32,8 @@ interface IdFactoryInterface
     /**
      * An identifier for use in CSS/HTML
      *
+     * @param string $prefix
+     *
      * @return string
      */
     public function id(string $prefix = 'id-'): string;

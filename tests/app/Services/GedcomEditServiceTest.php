@@ -127,7 +127,6 @@ class GedcomEditServiceTest extends TestCase
         $new_facts = $gedcom_edit_service->newFamilyFacts($tree);
         self::assertSameSize($expected_new_facts, $new_facts);
         for ($i = 0; $i < count($expected_new_facts); $i++) {
-            /** @var \Fisharebest\Webtrees\Fact $new_fact */
             $new_fact = $new_facts->get($i);
             self::assertSame($expected_new_facts[$i], $new_fact->tag());
         }
@@ -155,7 +154,6 @@ class GedcomEditServiceTest extends TestCase
         $new_facts = $gedcom_edit_service->newIndividualFacts($tree, $sex, $names);
         self::assertSameSize($expected_new_facts, $new_facts);
         for ($i = 0; $i < count($expected_new_facts); $i++) {
-            /** @var \Fisharebest\Webtrees\Fact $new_fact */
             $new_fact = $new_facts->get($i);
             self::assertSame($expected_new_facts[$i], $new_fact->tag());
         }
