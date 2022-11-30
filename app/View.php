@@ -58,14 +58,14 @@ class View
     /**
      * @var array<string> Where do the templates live, for each namespace.
      */
-    private static $namespaces = [
+    private static array $namespaces = [
         '' => Webtrees::ROOT_DIR . 'resources/views/',
     ];
 
     /**
      * @var array<string> Modules can replace core views with their own.
      */
-    private static $replacements = [];
+    private static array $replacements = [];
 
     /**
      * @var string Implementation of Blade "stacks".
