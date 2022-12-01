@@ -275,7 +275,7 @@ class UpgradeWizardStep implements RequestHandlerInterface
      */
     private function wizardStepCopyAndCleanUp(string $zip_file): ResponseInterface
     {
-        $source_filesystem = Registry::filesystem()->data(self::UPGRADE_FOLDER . self::ZIP_FILE_PREFIX);
+        $source_filesystem = Registry::filesystem()->root(self::UPGRADE_FOLDER . self::ZIP_FILE_PREFIX);
         $root_filesystem   = Registry::filesystem()->root();
 
         $this->upgrade_service->startMaintenanceMode();
