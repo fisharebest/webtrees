@@ -317,7 +317,8 @@ class Fact
         $access_level = $access_level ?? Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit restriction notice?
-        $restriction = $this->attribute('RESN');
+        $element     = new RestrictionNotice('');
+        $restriction = $element->canonical($this->attribute('RESN'));
 
         if (str_ends_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
             return Auth::PRIV_NONE >= $access_level;
