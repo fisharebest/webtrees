@@ -109,6 +109,7 @@ class MapDataAdd implements RequestHandlerInterface
             'marker_position' => $marker_position,
             'parent'          => $parent,
             'leaflet_config'  => $this->leaflet_js_service->config(),
+            'url'             => route(MapDataList::class, ['parent_id' => $parent->id()])
         ]);
     }
 }
