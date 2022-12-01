@@ -26,8 +26,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function in_array;
-
 /**
  * Process a form to create a new note object.
  */
@@ -42,14 +40,14 @@ class CreateNoteAction implements RequestHandlerInterface
     {
         $tree        = Validator::attributes($request)->tree();
         $note        = Validator::parsedBody($request)->string('note');
-        $restriction = Validator::parsedBody($request)->isInArray(['none', 'privacy', 'confidential', 'locked'])->string('restriction');
+        $restriction = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
 
         // Convert HTML line endings to GEDCOM continuations
         $note = strtr($note, ["\r\n" => "\n1 CONT "]);
 
         $gedcom = '0 @@ NOTE ' . $note;
 
-        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+        if ($restriction !== '') {
             $gedcom .= "\n1 RESN " . $restriction;
         }
 
