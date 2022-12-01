@@ -13,16 +13,16 @@ use Fisharebest\Webtrees\I18N;
     <div class="col-sm-10">
         <select class="form-select" id="restriction" name="restriction">
             <option value="">&nbsp;</option>
-            <option value="none">
+            <option value="NONE">
                 <?= I18N::translate('Show to visitors') ?>
             </option>
-            <option value="privacy">
+            <option value="PRIVACY">
                 <?= I18N::translate('Show to members') ?>
             </option>
-            <option value="confidential">
+            <option value="CONFIDENTIAL">
                 <?= I18N::translate('Show to managers') ?>
             </option>
-            <option value="locked">
+            <option value="LOCKED">
                 <?= I18N::translate('Only managers can edit') ?>
             </option>
         </select>
