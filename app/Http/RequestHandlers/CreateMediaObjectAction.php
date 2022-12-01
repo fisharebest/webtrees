@@ -29,7 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function in_array;
 use function response;
 
 /**
@@ -66,7 +65,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $note        = Validator::parsedBody($request)->string('media-note');
         $title       = Validator::parsedBody($request)->string('title');
         $type        = Validator::parsedBody($request)->string('type');
-        $restriction = Validator::parsedBody($request)->string('restriction');
+        $restriction = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
 
         $file = $this->media_file_service->uploadFile($request);
 
@@ -76,7 +75,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
 
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
 
-        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+        if ($restriction !== '') {
             $gedcom .= "\n1 RESN " . $restriction;
         }
 

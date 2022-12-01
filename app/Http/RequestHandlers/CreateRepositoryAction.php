@@ -26,7 +26,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function in_array;
 use function preg_replace;
 use function response;
 use function trim;
@@ -48,7 +47,7 @@ class CreateRepositoryAction implements RequestHandlerInterface
         $name        = Validator::parsedBody($request)->string('name');
         $address     = Validator::parsedBody($request)->string('address');
         $url         = Validator::parsedBody($request)->string('url');
-        $restriction = Validator::parsedBody($request)->string('restriction');
+        $restriction = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
 
         // Fix non-printing characters
         $name = trim(preg_replace('/\s+/', ' ', $name));
@@ -63,7 +62,7 @@ class CreateRepositoryAction implements RequestHandlerInterface
             $gedcom .= "\n1 WWW " . $url;
         }
 
-        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+        if ($restriction !== '') {
             $gedcom .= "\n1 RESN " . $restriction;
         }
 

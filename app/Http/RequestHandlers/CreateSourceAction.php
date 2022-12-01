@@ -26,8 +26,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function in_array;
-
 /**
  * Process a form to create a new source.
  */
@@ -48,7 +46,7 @@ class CreateSourceAction implements RequestHandlerInterface
         $repository   = Validator::parsedBody($request)->string('source-repository');
         $call_number  = Validator::parsedBody($request)->string('source-call-number');
         $text         = Validator::parsedBody($request)->string('source-text');
-        $restriction  = Validator::parsedBody($request)->string('restriction');
+        $restriction  = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
 
         // Fix non-printing characters
         $title        = trim(preg_replace('/\s+/', ' ', $title));
@@ -87,7 +85,7 @@ class CreateSourceAction implements RequestHandlerInterface
             }
         }
 
-        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+        if ($restriction !== '') {
             $gedcom .= "\n1 RESN " . $restriction;
         }
 
