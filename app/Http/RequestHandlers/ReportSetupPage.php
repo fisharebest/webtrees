@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -43,19 +42,15 @@ class ReportSetupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private LocalizationService $localization_service;
-
     private ModuleService $module_service;
 
     /**
      * ReportEngineController constructor.
      *
-     * @param LocalizationService $localization_service
-     * @param ModuleService       $module_service
+     * @param ModuleService $module_service
      */
-    public function __construct(LocalizationService $localization_service, ModuleService $module_service)
+    public function __construct(ModuleService $module_service)
     {
-        $this->localization_service = $localization_service;
         $this->module_service = $module_service;
     }
 
@@ -78,7 +73,7 @@ class ReportSetupPage implements RequestHandlerInterface
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-        $xref = $request->getQueryParams()['xref'] ?? '';
+        $xref = Validator::queryParams($request)->isXref()->string('xref', '');
 
         $xml_filename = $module->resourcesFolder() . $module->xmlFilename();
 
@@ -135,7 +130,7 @@ class ReportSetupPage implements RequestHandlerInterface
 
                 case 'DATE':
                     // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
-                    $dmy = $this->localization_service->dateFormatToOrder(I18N::dateFormat());
+                    $dmy = I18N::language()->dateOrder();
 
                     $attributes += [
                         'type'     => 'text',

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
@@ -50,7 +52,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <!--IE11/Edge-->
         <meta name="msapplication-config" content="<?= e(route(BrowserconfigXml::class)) ?>">
 
-        <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>">
+        <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>" crossorigin="use-credentials">
 
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
         <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
@@ -64,7 +66,7 @@ use Psr\Http\Message\ServerRequestInterface;
         })->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($route = Validator::attributes($request)->route()->name ?? 'no-route', '\\'),1)) ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name ?? '/', ['\\' => '/']))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
@@ -80,18 +82,18 @@ use Psr\Http\Message\ServerRequestInterface;
                         <h1 class="col wt-site-title"><?= e($tree->title()) ?></h1>
 
                         <div class="col wt-header-search">
-                            <form method="post"
-                                  action="<?= e(route(SearchQuickAction::class, ['tree' => $tree->name()])) ?>"
-                                  class="wt-header-search-form" role="search">
-                                <?= csrf_field() ?>
+                            <form method="post" action="<?= e(route(SearchQuickAction::class, ['tree' => $tree->name()])) ?>" class="wt-header-search-form" role="search">
                                 <div class="input-group">
                                     <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
-                                    <input type="search" class="form-control wt-header-search-field" id="quick-search"
-                                           name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
+
+                                    <input type="search" class="form-control wt-header-search-field" id="quick-search" name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
+
                                     <button type="submit" class="btn btn-primary wt-header-search-button" aria-label="<?= I18N::translate('Search') ?>">
                                         <?= view('icons/search') ?>
                                     </button>
                                 </div>
+
+                                <?= csrf_field() ?>
                             </form>
                         </div>
                     <?php endif ?>
@@ -164,6 +166,7 @@ use Psr\Http\Message\ServerRequestInterface;
                     rel: "gallery", // Turn all images on the page into a slideshow
                     slideshow: true,
                     slideshowAuto: false,
+                    slideshowSpeed: 4000,
                     // Add wheelzoom to the displayed image
                     onComplete: function () {
                         // Disable click on image triggering next image

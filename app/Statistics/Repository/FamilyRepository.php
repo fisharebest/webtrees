@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -848,7 +848,7 @@ class FamilyRepository
             ->first();
 
         if ($row === null) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         $person = Registry::individualFactory()->make($row->id, $this->tree);
@@ -1128,7 +1128,12 @@ class FamilyRepository
             $husb = $family->husband();
             $wife = $family->wife();
 
-            if ($husb && ($husb->getAllDeathDates() || !$husb->isDead()) && $wife && ($wife->getAllDeathDates() || !$wife->isDead())) {
+            if (
+                $husb instanceof Individual &&
+                $wife instanceof Individual &&
+                ($husb->getAllDeathDates() || !$husb->isDead()) &&
+                ($wife->getAllDeathDates() || !$wife->isDead())
+            ) {
                 if ($family->canShow()) {
                     if ($type === 'list') {
                         $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->fullName() . '</a> (' . $age . ')' . '</li>';
@@ -1498,7 +1503,7 @@ class FamilyRepository
             ->first();
 
         if ($row === null) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         $family = Registry::familyFactory()->make($row->famid, $this->tree);

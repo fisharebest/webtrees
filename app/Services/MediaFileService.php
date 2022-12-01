@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -44,17 +43,20 @@ use function dirname;
 use function explode;
 use function ini_get;
 use function intdiv;
+use function is_float;
 use function min;
 use function pathinfo;
 use function sha1;
 use function sort;
 use function str_contains;
-use function strtolower;
+use function strlen;
+use function strtoupper;
 use function strtr;
 use function substr;
 use function trim;
 
 use const PATHINFO_EXTENSION;
+use const PHP_INT_MAX;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -63,8 +65,8 @@ use const UPLOAD_ERR_OK;
 class MediaFileService
 {
     public const EXTENSION_TO_FORM = [
-        'jpeg' => 'jpg',
-        'tiff' => 'tif',
+        'JPEG' => 'JPG',
+        'TIFF' => 'TIF',
     ];
 
     private const IGNORE_FOLDERS = [
@@ -77,6 +79,8 @@ class MediaFileService
         '@eaDir',
         // QNAP,
         '.@__thumb',
+        // WebDAV,
+        '_DAV',
     ];
 
     /**
@@ -104,30 +108,33 @@ class MediaFileService
     {
         $number = (int) $size;
 
-        switch (substr($size, -1)) {
-            case 'g':
-            case 'G':
-                return $number * 1073741824;
-            case 'm':
-            case 'M':
-                return $number * 1048576;
-            case 'k':
-            case 'K':
-                return $number * 1024;
-            default:
-                return $number;
+        $units = [
+            'g' => 1073741824,
+            'G' => 1073741824,
+            'm' => 1048576,
+            'M' => 1048576,
+            'k' => 1024,
+            'K' => 1024,
+        ];
+
+        $number *= $units[substr($size, -1)] ?? 1;
+
+        if (is_float($number)) {
+            // Probably a 32bit version of PHP, with an INI setting >= 2GB
+            return PHP_INT_MAX;
         }
+
+        return $number;
     }
 
     /**
      * A list of media files not already linked to a media object.
      *
-     * @param Tree               $tree
-     * @param FilesystemOperator $data_filesystem
+     * @param Tree $tree
      *
      * @return array<string>
      */
-    public function unusedFiles(Tree $tree, FilesystemOperator $data_filesystem): array
+    public function unusedFiles(Tree $tree): array
     {
         $used_files = DB::table('media_file')
             ->where('m_file', '=', $tree->id())
@@ -136,7 +143,7 @@ class MediaFileService
             ->pluck('multimedia_file_refn')
             ->all();
 
-        $media_filesystem = $tree->mediaFilesystem($data_filesystem);
+        $media_filesystem = $tree->mediaFilesystem();
         $disk_files       = $this->allFilesOnDisk($media_filesystem, '', FilesystemReader::LIST_DEEP)->all();
         $unused_files     = array_diff($disk_files, $used_files);
 
@@ -156,16 +163,12 @@ class MediaFileService
      */
     public function uploadFile(ServerRequestInterface $request): string
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $data_filesystem = Registry::filesystem()->data();
-
-        $params        = (array) $request->getParsedBody();
-        $file_location = $params['file_location'];
+        $tree          = Validator::attributes($request)->tree();
+        $file_location = Validator::parsedBody($request)->string('file_location');
 
         switch ($file_location) {
             case 'url':
-                $remote = $params['remote'];
+                $remote = Validator::parsedBody($request)->string('remote');
 
                 if (str_contains($remote, '://')) {
                     return $remote;
@@ -174,19 +177,18 @@ class MediaFileService
                 return '';
 
             case 'unused':
-                $unused = $params['unused'];
+                $unused = Validator::parsedBody($request)->string('unused');
 
-                if ($tree->mediaFilesystem($data_filesystem)->fileExists($unused)) {
+                if ($tree->mediaFilesystem()->fileExists($unused)) {
                     return $unused;
                 }
 
                 return '';
 
             case 'upload':
-            default:
-                $folder   = $params['folder'];
-                $auto     = $params['auto'];
-                $new_file = $params['new_file'];
+                $folder   = Validator::parsedBody($request)->string('folder');
+                $auto     = Validator::parsedBody($request)->string('auto');
+                $new_file = Validator::parsedBody($request)->string('new_file');
 
                 $uploaded_file = $request->getUploadedFiles()['file'] ?? null;
 
@@ -210,22 +212,24 @@ class MediaFileService
                 }
 
                 // Generate a unique name for the file?
-                if ($auto === '1' || $tree->mediaFilesystem($data_filesystem)->fileExists($folder . $file)) {
+                if ($auto === '1' || $tree->mediaFilesystem()->fileExists($folder . $file)) {
                     $folder    = '';
                     $extension = pathinfo($uploaded_file->getClientFilename(), PATHINFO_EXTENSION);
                     $file      = sha1((string) $uploaded_file->getStream()) . '.' . $extension;
                 }
 
                 try {
-                    $tree->mediaFilesystem($data_filesystem)->writeStream($folder . $file, $uploaded_file->getStream()->detach());
+                    $tree->mediaFilesystem()->writeStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
-                } catch (RuntimeException | InvalidArgumentException $ex) {
+                } catch (RuntimeException | InvalidArgumentException) {
                     FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
 
                     return '';
                 }
         }
+
+        return '';
     }
 
     /**
@@ -242,10 +246,14 @@ class MediaFileService
     {
         $gedcom = '1 FILE ' . $file;
 
-        $format = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-        $format = self::EXTENSION_TO_FORM[$format] ?? $format;
+        if (str_contains($file, '://')) {
+            $format = '';
+        } else {
+            $format = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
+            $format = self::EXTENSION_TO_FORM[$format] ?? $format;
+        }
 
-        if ($format !== '') {
+        if ($format !== '' && strlen($format) <= 4) {
             $gedcom .= "\n2 FORM " . $format;
         } elseif ($type !== '') {
             $gedcom .= "\n2 FORM";
@@ -285,7 +293,7 @@ class MediaFileService
                 ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
                 ->map(fn (StorageAttributes $attributes): string => $attributes->path())
                 ->toArray();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $files = [];
         }
 
@@ -329,7 +337,7 @@ class MediaFileService
      */
     public function mediaFolders(Tree $tree): Collection
     {
-        $folders = Registry::filesystem()->media($tree)
+        $folders = $tree->mediaFilesystem()
             ->listContents('', FilesystemReader::LIST_DEEP)
             ->filter(fn (StorageAttributes $attributes): bool => $attributes->isDir())
             ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
@@ -388,6 +396,7 @@ class MediaFileService
 
         return $disk_folders->concat($db_folders)
             ->uniqueStrict()
+            ->sort(I18N::comparator())
             ->mapWithKeys(static function (string $folder): array {
                 return [$folder => $folder];
             });

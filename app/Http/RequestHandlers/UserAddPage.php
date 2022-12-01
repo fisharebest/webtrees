@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -41,10 +42,9 @@ class UserAddPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $params    = $request->getQueryParams();
-        $email     = $params['email'] ?? '';
-        $real_name = $params['real_name'] ?? '';
-        $username  = $params['username'] ?? '';
+        $email     = Validator::queryParams($request)->string('email', '');
+        $real_name = Validator::queryParams($request)->string('real_name', '');
+        $username  = Validator::queryParams($request)->string('username', '');
         $title     = I18N::translate('Add a user');
 
         return $this->viewResponse('admin/users-create', [

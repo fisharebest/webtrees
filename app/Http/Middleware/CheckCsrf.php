@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -66,7 +66,11 @@ class CheckCsrf implements MiddlewareInterface
                 $request = $request->withParsedBody($params);
 
                 if ($client_token !== $session_token) {
-                    FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
+                    if ($client_token === '') {
+                        FlashMessages::addMessage(I18N::translate('The form data is incomplete. Perhaps you need to increase max_input_vars on your server?'));
+                    } else {
+                        FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
+                    }
 
                     return redirect((string) $request->getUri());
                 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Encodings\CP850;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use PHPUnit\Framework\TestCase;
 
+use function chr;
 use function iconv;
 
 /**
@@ -45,7 +46,7 @@ class CP850Test extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(CP850::NAME, UTF8::NAME, $character);
 
-            $this->assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+            static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
         }
     }
 }

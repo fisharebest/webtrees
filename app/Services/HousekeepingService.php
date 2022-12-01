@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Registry;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
@@ -27,6 +26,7 @@ use League\Flysystem\FilesystemReader;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
 
+use function date;
 use function time;
 
 /**
@@ -279,11 +279,9 @@ class HousekeepingService
      */
     public function deleteOldLogs(int $max_age_in_seconds): void
     {
-        $timestamp = Registry::timestampFactory()->now()->subtractSeconds($max_age_in_seconds);
-
         DB::table('log')
             ->whereIn('log_type', ['error', 'media'])
-            ->where('log_time', '<', $timestamp->toDateTimeString())
+            ->where('log_time', '<', date('Y-m-d H:i:s', time() - $max_age_in_seconds))
             ->delete();
     }
 
@@ -295,7 +293,7 @@ class HousekeepingService
     public function deleteOldSessions(int $max_age_in_seconds): void
     {
         DB::table('session')
-            ->where('session_time', '<', time() - $max_age_in_seconds)
+            ->where('session_time', '<', date('Y-m-d H:i:s', time() - $max_age_in_seconds))
             ->delete();
     }
 
@@ -311,10 +309,10 @@ class HousekeepingService
     {
         try {
             $filesystem->delete($path);
-        } catch (FilesystemException | UnableToDeleteFile $ex) {
+        } catch (FilesystemException | UnableToDeleteFile) {
             try {
                 $filesystem->deleteDirectory($path);
-            } catch (FilesystemException | UnableToDeleteDirectory $ex) {
+            } catch (FilesystemException | UnableToDeleteDirectory) {
                 return false;
             }
         }

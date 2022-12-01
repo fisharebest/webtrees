@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use InvalidArgumentException;
+use Nyholm\Psr7\Factory\Psr17Factory;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 
 use function fclose;
@@ -40,7 +41,10 @@ class TreeTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function setUp(): void
+    /**
+     * Things to run before every test.
+     */
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -310,7 +314,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\TreeService::importGedcomFile
-     * @covers \Fisharebest\Webtrees\Services\TreeService::deleteGenealogyData
      * @return void
      */
     public function testImportAndDeleteGedcomFile(): void
@@ -356,7 +359,7 @@ class TreeTest extends TestCase
     {
         $tree = $this->importTree('demo.ged');
 
-        $gedcom_export_service = new GedcomExportService();
+        $gedcom_export_service = new GedcomExportService(new Psr17Factory(), new Psr17Factory());
 
         $resource = $gedcom_export_service->export($tree, true);
         $original = file_get_contents(__DIR__ . '/../data/demo.ged');

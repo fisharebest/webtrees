@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -102,9 +103,9 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $username = Validator::parsedBody($request)->string('username');
 
-        $this->setPreference('username', $params['username' ?? '']);
+        $this->setPreference('username', $username);
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -64,16 +64,15 @@ class AddUnlinkedPage implements RequestHandlerInterface
             'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, ['1 NAME ' . $name]),
         ];
 
-        $cancel_url = route(ManageTrees::class, ['tree' => $tree->name()]);
+        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url'          => $cancel_url,
             'facts'               => $facts,
             'gedcom_edit_service' => $this->gedcom_edit_service,
             'post_url'            => route(AddUnlinkedAction::class, ['tree' => $tree->name()]),
             'tree'                => $tree,
             'title'               => I18N::translate('Create an individual'),
-            'url'                 => $request->getQueryParams()['url'] ?? $cancel_url,
+            'url'                 => Validator::queryParams($request)->isLocalUrl()->string('url', $url),
         ]);
     }
 }

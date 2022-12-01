@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,17 +38,10 @@ class UnconnectedAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $aliases    = $params['aliases'] ?? '';
-        $associates = $params['associates'] ?? '';
-
         return redirect(route(UnconnectedPage::class, [
-            'aliases'    => $aliases,
-            'associates' => $associates,
-            'tree'       => $tree->name(),
+            'aliases'    => Validator::parsedBody($request)->boolean('aliases', false),
+            'associates' => Validator::parsedBody($request)->boolean('associates', false),
+            'tree'       => Validator::attributes($request)->tree()->name(),
         ]));
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\FilesystemFactory;
 use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
 use Fisharebest\Webtrees\Factories\HeaderFactory;
+use Fisharebest\Webtrees\Factories\IdFactory;
 use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Factories\LocationFactory;
@@ -38,10 +39,13 @@ use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Factories\RepositoryFactory;
 use Fisharebest\Webtrees\Factories\ResponseFactory;
 use Fisharebest\Webtrees\Factories\RouteFactory;
+use Fisharebest\Webtrees\Factories\SharedNoteFactory;
 use Fisharebest\Webtrees\Factories\SlugFactory;
 use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
+use Fisharebest\Webtrees\Factories\TimeFactory;
 use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
@@ -49,6 +53,7 @@ use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
 use Fisharebest\Webtrees\Http\Middleware\CompressResponse;
 use Fisharebest\Webtrees\Http\Middleware\ContentLength;
@@ -58,6 +63,7 @@ use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
+use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
@@ -134,18 +140,18 @@ class Webtrees
     public const SCHEMA_VERSION = 45;
 
     // e.g. "-dev", "-alpha", "-beta", etc.
-    public const STABILITY = '-alpha.2';
+    public const STABILITY = '-dev';
 
-    // Version number
-    public const VERSION = '2.1.0' . self::STABILITY;
+    // Version number.
+    public const VERSION = '2.2.0' . self::STABILITY;
 
     // Project website.
     public const URL = 'https://webtrees.net/';
 
-    // FAQ links
+    // FAQ links.
     public const URL_FAQ_EMAIL = 'https://webtrees.net/faq/email';
 
-    // Project website.
+    // GEDCOM specification.
     public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-5-5-1.pdf';
 
     private const MIDDLEWARE = [
@@ -166,7 +172,9 @@ class Webtrees
         UseTheme::class,
         DoHousekeeping::class,
         UseTransaction::class,
+        CheckForNewVersion::class,
         LoadRoutes::class,
+        RegisterGedcomTags::class,
         BootModules::class,
         Router::class,
         NoRouteFound::class,
@@ -198,6 +206,7 @@ class Webtrees
         Registry::filesystem(new FilesystemFactory());
         Registry::gedcomRecordFactory(new GedcomRecordFactory());
         Registry::headerFactory(new HeaderFactory());
+        Registry::idFactory(new IdFactory());
         Registry::imageFactory(new ImageFactory());
         Registry::individualFactory(new IndividualFactory());
         Registry::locationFactory(new LocationFactory());
@@ -207,10 +216,13 @@ class Webtrees
         Registry::repositoryFactory(new RepositoryFactory());
         Registry::responseFactory(new ResponseFactory(new Psr17Factory(), new Psr17Factory()));
         Registry::routeFactory(new RouteFactory());
+        Registry::sharedNoteFactory(new SharedNoteFactory());
         Registry::slugFactory(new SlugFactory());
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());
+        Registry::surnameTraditionFactory(new SurnameTraditionFactory());
+        Registry::timeFactory(new TimeFactory());
         Registry::timestampFactory(new TimestampFactory());
         Registry::xrefFactory(new XrefFactory());
 
@@ -306,7 +318,7 @@ class Webtrees
      * @param string        $abstract
      * @param string|object $concrete
      */
-    public static function set(string $abstract, $concrete): void
+    public static function set(string $abstract, string|object $concrete): void
     {
         if (is_string($concrete)) {
             Container::getInstance()->bind($abstract, $concrete);

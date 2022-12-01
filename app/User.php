@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -255,8 +255,6 @@ class User implements UserInterface
      */
     public static function rowMapper(): Closure
     {
-        return static function (object $row): User {
-            return new self((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
-        };
+        return static fn (object $row): User => new self((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
     }
 }

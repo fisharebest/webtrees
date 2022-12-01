@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Tree;
@@ -24,11 +26,9 @@ use Fisharebest\Webtrees\Tree;
 </p>
 
 <form method="post" action="<?= e($save_url) ?>">
-    <?= csrf_field() ?>
-
     <?= $block->editBlockConfiguration($tree, $block_id) ?>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>
@@ -40,4 +40,6 @@ use Fisharebest\Webtrees\Tree;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

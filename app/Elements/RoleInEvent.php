@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
+
+use function array_key_exists;
+use function str_ends_with;
+use function str_starts_with;
+use function strtoupper;
+
 /**
  * ROLE_IN_EVENT := {Size=1:15}
  * [ CHIL | HUSB | WIFE | MOTH | FATH | SPOU | (<ROLE_DESCRIPTOR>) ]
@@ -31,4 +38,49 @@ namespace Fisharebest\Webtrees\Elements;
 class RoleInEvent extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 15;
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        $value = parent::canonical($value);
+        $upper = strtoupper($value);
+
+        if (array_key_exists($upper, $this->values())) {
+            return $upper;
+        }
+
+        if (!str_starts_with($value, '(')) {
+            $value = '(' . $value;
+        }
+
+        if (!str_ends_with($value, ')')) {
+            return $value . ')';
+        }
+
+        return $value;
+    }
+
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        return [
+            ''     => '',
+            'CHIL' => I18N::translate('child'),
+            'HUSB' => I18N::translate('husband'),
+            'WIFE' => I18N::translate('wife'),
+            'MOTH' => I18N::translate('mother'),
+            'FATH' => I18N::translate('father'),
+            'SPOU' => I18N::translate('spouse'),
+        ];
+    }
 }

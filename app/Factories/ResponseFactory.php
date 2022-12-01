@@ -80,16 +80,16 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Redirect to a URL.
      *
-     * @param string|UriInterface $url
+     * @param UriInterface|string $url
      * @param int                 $code
      *
      * @return ResponseInterface
      */
-    public function redirectUrl($url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+    public function redirectUrl(UriInterface|string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
     {
         return $this->response_factory
             ->createResponse($code)
-            ->withHeader('Location', (string) $url);
+            ->withHeader('location', (string) $url);
     }
 
     /**
@@ -99,17 +99,17 @@ class ResponseFactory implements ResponseFactoryInterface
      *
      * @return ResponseInterface
      */
-    public function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
+    public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
     {
         if ($content === '' && $code === StatusCodeInterface::STATUS_OK) {
             $code = StatusCodeInterface::STATUS_NO_CONTENT;
         }
 
         if (is_string($content)) {
-            $headers['Content-Type'] ??= 'text/html; charset=UTF-8';
+            $headers['content-type'] ??= 'text/html; charset=UTF-8';
         } else {
             $content                 = json_encode($content, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-            $headers['Content-Type'] ??= 'application/json';
+            $headers['content-type'] ??= 'application/json';
         }
 
         $stream = $this->stream_factory->createStream($content);
@@ -152,7 +152,7 @@ class ResponseFactory implements ResponseFactoryInterface
             'title'   => $view_data['title'] ?? Webtrees::NAME,
         ];
 
-        // Embde the content in the layout.
+        // Embed the content in the layout.
         $html = view($layout_name, $layout_data);
 
         return $this->response($html, $status);

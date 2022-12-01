@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,11 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -149,7 +151,12 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
         if ($facts->isEmpty()) {
-            $content = view('modules/todays_events/empty');
+            if ($filter && Auth::check()) {
+                $message = I18N::translate('No events for living individuals exist for today.');
+            } else {
+                $message = I18N::translate('No events exist for today.');
+            }
+            $content = view('modules/todays_events/empty', ['message' => $message]);
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
                 'id'         => $block_id,
@@ -215,18 +222,21 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
      * Update the configuration for a block.
      *
      * @param ServerRequestInterface $request
-     * @param int     $block_id
+     * @param int                    $block_id
      *
      * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $filter     = Validator::parsedBody($request)->string('filter');
+        $info_style = Validator::parsedBody($request)->string('infoStyle');
+        $sort_style = Validator::parsedBody($request)->string('sortStyle');
+        $events     = Validator::parsedBody($request)->array('events');
 
-        $this->setBlockSetting($block_id, 'filter', $params['filter']);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
-        $this->setBlockSetting($block_id, 'sortStyle', $params['sortStyle']);
-        $this->setBlockSetting($block_id, 'events', implode(',', $params['events'] ?? []));
+        $this->setBlockSetting($block_id, 'filter', $filter);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
+        $this->setBlockSetting($block_id, 'sortStyle', $sort_style);
+        $this->setBlockSetting($block_id, 'events', implode(',', $events));
     }
 
     /**

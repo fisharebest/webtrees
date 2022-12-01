@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,10 +27,8 @@ namespace Fisharebest\Webtrees\Elements;
  * for example if hiragana was used to provide a reading of a name written in
  * kanji, then the <PHONETIC_TYPE> value would indicate ‘kana’. See page 57.
  */
-class NamePhoneticVariation extends AbstractElement
+class NamePhoneticVariation extends NamePersonal
 {
-    protected const MAXIMUM_LENGTH = 120;
-
     protected const SUBTAGS = [
         'TYPE' => '1:1',
         'NPFX' => '0:1',
@@ -39,5 +37,17 @@ class NamePhoneticVariation extends AbstractElement
         'SURN' => '0:1',
         'NSFX' => '0:1',
         'NICK' => '0:1',
+        'NOTE' => '0:M',
+        'SOUR' => '0:M',
     ];
+
+    /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return true;
+    }
 }

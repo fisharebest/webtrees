@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
@@ -65,7 +66,7 @@ class DeletePath implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $path = $request->getQueryParams()['path'] ?? '';
+        $path = Validator::queryParams($request)->string('path');
 
         $normalized_path = $this->whitespace_path_normalizer->normalizePath($path);
 
@@ -79,14 +80,14 @@ class DeletePath implements RequestHandlerInterface
             try {
                 $data_filesystem->deleteDirectory($normalized_path);
                 FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
-            } catch (FilesystemException | UnableToDeleteDirectory $ex) {
+            } catch (FilesystemException | UnableToDeleteDirectory) {
                 FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
             }
         } else {
             try {
                 $data_filesystem->delete($normalized_path);
                 FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
-            } catch (FilesystemException | UnableToDeleteFile $ex) {
+            } catch (FilesystemException | UnableToDeleteFile) {
                 FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
             }
         }

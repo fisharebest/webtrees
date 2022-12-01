@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,8 +36,8 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory  = new MarkdownFactory();
 
-        $this->assertSame(
-            "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
+        static::assertSame(
+            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->autolink('FOO https://example.com BAR')
         );
     }
@@ -51,8 +51,8 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
         $tree    = $this->createStub(Tree::class);
 
-        $this->assertSame(
-            "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
+        static::assertSame(
+            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->autolink('FOO https://example.com BAR', $tree)
         );
     }
@@ -65,8 +65,8 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory  = new MarkdownFactory();
 
-        $this->assertSame(
-            "<p>&lt;b&gt; <a href=\"https://example.com\">https://example.com</a> &lt;/b&gt;</p>\n",
+        static::assertSame(
+            '<p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p>',
             $factory->autolink('<b> https://example.com </b>')
         );
     }
@@ -78,19 +78,18 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory = new MarkdownFactory();
 
-        $this->assertSame(
-            "<p>FOO https://example.com BAR</p>\n",
+        static::assertSame(
+            '<p>FOO https://example.com BAR</p>',
             $factory->markdown('FOO https://example.com BAR')
         );
 
-        $this->assertSame(
-            "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
+        static::assertSame(
+            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->markdown('FOO <https://example.com> BAR')
         );
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\CommonMark\XrefExtension
      * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
      */
     public function testMarkdownWithTree(): void
@@ -98,28 +97,63 @@ class MarkdownFactoryTest extends TestCase
         $tree    = $this->createStub(Tree::class);
         $factory = new MarkdownFactory();
 
-        $this->assertSame(
-            "<p>FOO https://example.com BAR</p>\n",
+        static::assertSame(
+            '<p>FOO https://example.com BAR</p>',
             $factory->markdown('FOO https://example.com BAR', $tree)
         );
 
-        $this->assertSame(
-            "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
+        static::assertSame(
+            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->markdown('FOO <https://example.com> BAR', $tree)
         );
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\CommonMark\XrefExtension
      * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
      */
     public function testMarkdownWithHtml(): void
     {
         $factory = new MarkdownFactory();
 
-        $this->assertSame(
-            "<p>&lt;b&gt; <a href=\"https://example.com\">https://example.com</a> &lt;/b&gt;</p>\n",
+        static::assertSame(
+            '<p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p>',
             $factory->markdown('<b> <https://example.com> </b>')
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
+     */
+    public function testSoftLineBreaks(): void
+    {
+        $factory = new MarkdownFactory();
+
+        static::assertSame(
+            '<p>alpha<br />beta<br />gamma<br />delta</p>',
+            $factory->autolink("alpha\nbeta\ngamma  \ndelta")
+        );
+
+        static::assertSame(
+            '<p>alpha<br />beta<br />gamma<br />delta</p>',
+            $factory->markdown("alpha\nbeta\ngamma  \ndelta")
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
+     */
+    public function testMultipleParagraphs(): void
+    {
+        $factory = new MarkdownFactory();
+
+        static::assertSame(
+            '<p>alpha<br />beta</p><p>gamma<br />delta</p>',
+            $factory->autolink("alpha\nbeta\n\n\n\ngamma\ndelta")
+        );
+
+        static::assertSame(
+            '<p>alpha<br />beta</p><p>gamma<br />delta</p>',
+            $factory->markdown("alpha\nbeta\n\n\n\ngamma\ndelta")
         );
     }
 }

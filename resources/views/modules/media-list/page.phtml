@@ -1,29 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemOperator;
 
 /**
  * @var int                   $count
- * @var FilesystemOperator    $data_filesystem
  * @var string                $filter
  * @var string                $folder
  * @var array<string>         $folders
  * @var string                $format
  * @var array<string>         $formats
+ * @var LinkedRecordService   $linked_record_service
  * @var int                   $max
  * @var Collection<int,Media> $media_objects
  * @var ModuleListInterface   $module
  * @var int                   $page
  * @var int                   $pages
- * @var string                $subdirs
+ * @var bool                  $subdirs
  * @var string                $title
  * @var Tree                  $tree
  */
@@ -35,15 +37,13 @@ use League\Flysystem\FilesystemOperator;
 </h2>
 
 <form method="post" class="wt-page-options wt-page-options-media-list d-print-none">
-    <?= csrf_field() ?>
-
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="folder">
             <?= I18N::translate('Folder') ?>
         </label>
         <div class="col-sm-3 wt-page-options-value">
             <?= view('components/select', ['name' => 'folder', 'selected' => $folder, 'options' => $folders]) ?>
-            <?= view('components/checkbox-inline', ['label' => /* I18N: Label for check-box */ I18N::translate('Include subfolders'), 'name' => 'subdirs', 'checked' => $subdirs === '1']) ?>
+            <?= view('components/checkbox-inline', ['label' => /* I18N: Label for check-box */ I18N::translate('Include subfolders'), 'name' => 'subdirs', 'checked' => $subdirs]) ?>
         </div>
 
         <label class="col-sm-3 col-form-label wt-page-options-label" for="max">
@@ -54,7 +54,7 @@ use League\Flysystem\FilesystemOperator;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="format">
             <?= I18N::translate('Type') ?>
         </label>
@@ -68,7 +68,7 @@ use League\Flysystem\FilesystemOperator;
         <div class="col-sm-3 wt-page-options-value"></div>
     </div>
 
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="filter">
             <?= I18N::translate('Search filters') ?>
         </label>
@@ -79,7 +79,8 @@ use League\Flysystem\FilesystemOperator;
         <div class="col-sm-3 col-form-label wt-page-options-label"></div>
 
         <div class="col-sm-3 wt-page-options-value">
-            <button type="submit" name="go" value="1" class="btn btn-primary">
+            <input type="hidden" name="page" value="1">
+            <button type="submit" class="btn btn-primary">
                 <?= /* I18N: A button label. */ I18N::translate('search') ?>
             </button>
             <a class="btn btn-secondary" href="<?= e($module->listUrl($tree)) ?>">
@@ -87,12 +88,13 @@ use League\Flysystem\FilesystemOperator;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <div class="wt-page-content">
     <p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
     <?php if ($media_objects->isNotEmpty()) : ?>
-
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
@@ -110,7 +112,7 @@ use League\Flysystem\FilesystemOperator;
                             <?php endforeach ?>
 
                             <?php $media_file = $media_object->mediaFiles()->first() ?>
-                            <?php if ($media_file instanceof MediaFile): ?>
+                            <?php if ($media_file instanceof MediaFile) : ?>
                                 <p class="card-text">
                                     <?php
                                     // Show file details
@@ -130,13 +132,11 @@ use League\Flysystem\FilesystemOperator;
 
                                     if ($media_file->isExternal()) {
                                         echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
-                                    } elseif ($media_file->fileExists($data_filesystem)) {
-                                        echo Registry::elementFactory()->make('OBJE:FILE:FORM')->labelValue($media_file->mimeType(), $media_object->tree());
+                                    } elseif ($media_file->fileExists()) {
                                         if (Auth::isEditor($tree)) {
                                             echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
-                                        }
-                                        if (Auth::isEditor($tree)) {
-                                            foreach ($media_file->attributes($data_filesystem) as $label => $value) {
+
+                                            foreach ($media_file->attributes() as $label => $value) {
                                                 $label = '<span class="label">' . $label . '</span>';
                                                 $value = '<span class="value">' . $value . '</span>';
 
@@ -151,20 +151,26 @@ use League\Flysystem\FilesystemOperator;
                             <?php endif ?>
                         </div>
                         <div class="card-footer">
-                            <?php foreach ($media_object->linkedIndividuals('OBJE') as $record) : ?>
+                            <?php foreach ($linked_record_service->linkedIndividuals($media_object) as $record) : ?>
                                 <?= view('icons/individual') ?>
                                 <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>
 
-                            <?php foreach ($media_object->linkedFamilies('OBJE') as $record) : ?>
+                            <?php foreach ($linked_record_service->linkedFamilies($media_object) as $record) : ?>
                                 <?= view('icons/family') ?>
                                 <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>
 
-                            <?php foreach ($media_object->linkedSources('OBJE') as $record) : ?>
+                            <?php foreach ($linked_record_service->linkedSources($media_object) as $record) : ?>
                                 <?= view('icons/source') ?>
+                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                                <br>
+                            <?php endforeach ?>
+                                
+                            <?php foreach ($linked_record_service->linkedLocations($media_object) as $record) : ?>
+                                <?= view('icons/location') ?>
                                 <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>

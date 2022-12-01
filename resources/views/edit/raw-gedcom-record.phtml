@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordAction;
 use Fisharebest\Webtrees\I18N;
@@ -18,9 +21,7 @@ use Fisharebest\Webtrees\Webtrees;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditRawRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
-
+<form method="post" id="edit-raw-gedcom" action="<?= e(route(EditRawRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
     <div class="form-text">
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
         <br>
@@ -43,7 +44,14 @@ use Fisharebest\Webtrees\Webtrees;
                 </div>
                 <label class="visually-hidden" for="fact-<?= e($fact->id()) ?>"><?= $fact->summary() ?></label>
 
-                <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
+                <?php if ($fact->tag() === 'OBJE:FILE') : ?>
+                    <div class="alert alert-warning mb-0">
+                        <?= view('icons/warning') ?>
+                        <?= I18N::translate('If you modify the filename, you should also rename the file.') ?>
+                    </div>
+                <?php endif ?>
+
+                <textarea class="card-body form-control py-1 px-2" data-wt-pattern="<?= e(Gedcom::REGEX_FACT) ?>" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
             </div>
         <?php endforeach ?>
 
@@ -56,7 +64,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-sm-9 offset-sm-3">
             <button class="btn btn-primary" type="submit">
                 <?= view('icons/save') ?>
@@ -68,12 +76,16 @@ use Fisharebest\Webtrees\Webtrees;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>
 <script>
-    new Sortable(document.querySelector(".wt-sortable-list"), {
-        handle: ".card-header",
-    });
+  new Sortable(document.querySelector('.wt-sortable-list'), {
+    handle: '.card-header',
+  });
+
+  webtrees.textareaPatterns(document.getElementById('edit-raw-gedcom'));
 </script>
 <?php View::endpush() ?>

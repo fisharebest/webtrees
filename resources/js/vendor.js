@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -16,7 +16,22 @@
 import $ from 'jquery';
 
 import '@popperjs/core';
-import 'bootstrap';
+import { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip } from 'bootstrap';
+window.bootstrap = {
+  Alert: Alert,
+  Button: Button,
+  Carousel: Carousel,
+  Collapse: Collapse,
+  Dropdown: Dropdown,
+  Modal: Modal,
+  Offcanvas: Offcanvas,
+  Popover: Popover,
+  ScrollSpy: ScrollSpy,
+  Tab: Tab,
+  Toast: Toast,
+  Tooltip: Tooltip,
+};
+
 import 'datatables.net';
 
 // Just import the subset of icons that we use in resources/views/icons/
@@ -28,13 +43,14 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import {
   // For resources/views/icons/*
-  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
-  faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
-  faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
-  faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchLocation, faSearchMinus, faSearchPlus, faShareAlt,
-  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faTags, faThList, faThumbtack,
-  faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
+  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars, faCalendar,
+  faCaretDown, faCaretUp, faCheck, faCodeBranch, faCompress, faDownload, faExclamationTriangle,
+  faExpand, faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage,
+  faLink, faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause,
+  faPencilAlt, faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchLocation,
+  faSearchMinus, faSearchPlus, faShareAlt, faSitemap, faSortAmountDown, faStepForward, faStop,
+  faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender, faTree, faUndo, faUniversity,
+  faUnlink, faUpload, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 } from '@fortawesome/free-solid-svg-icons';
@@ -45,6 +61,7 @@ import 'datatables.net-bs5';
 import Sortable from 'sortablejs';
 
 import TomSelect from 'tom-select/dist/js/tom-select.base.js';
+TomSelect.define('caret_position', require('tom-select/dist/js/plugins/caret_position.js'));
 TomSelect.define('clear_button', require('tom-select/dist/js/plugins/clear_button.js'));
 TomSelect.define('dropdown_input', require('tom-select/dist/js/plugins/dropdown_input.js'));
 TomSelect.define('remove_button', require('tom-select/dist/js/plugins/remove_button.js'));
@@ -75,13 +92,14 @@ library.add(
 );
 library.add(
   // For resources/views/icons/*
-  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
-  faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
-  faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
-  faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchLocation, faSearchMinus, faSearchPlus, faShareAlt,
-  faSitemap, faSortAmountDown, faStepForward, faStop, faSyncAlt, faThList, faThumbtack,
-  faTimes, faTransgender, faTree, faUniversity, faUnlink, faUpload, faUsers, faVenus, faWrench,
+  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars, faCalendar,
+  faCaretDown, faCaretUp, faCheck, faCodeBranch, faCompress, faDownload, faExclamationTriangle,
+  faExpand, faGenderless, faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage,
+  faLink, faList, faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause,
+  faPencilAlt, faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchLocation,
+  faSearchMinus, faSearchPlus, faShareAlt, faSitemap, faSortAmountDown, faStepForward, faStop,
+  faSyncAlt, faTags, faThList, faThumbtack, faTimes, faTransgender, faTree, faUndo, faUniversity,
+  faUnlink, faUpload, faUsers, faVenus, faWrench,
   // For the BeautifyMarker library
   faBabyCarriage, faBullseye, faHome, faIndustry, faInfinity, faStarOfDavid, faWater
 );

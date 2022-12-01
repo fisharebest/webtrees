@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @var string $text
  * @var string $title
@@ -9,7 +11,7 @@
 <?= view('modals/header', ['title' => $title]) ?>
 
 <div class="modal-body">
-	<?= $text ?>
+    <?= $text ?>
 </div>
 
 <?= view('modals/footer-close') ?>

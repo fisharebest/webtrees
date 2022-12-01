@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -137,13 +137,13 @@ class ServerCheckService
      */
     private function checkPhpIni(string $varname, bool $expected): string
     {
-        $ini_get = (bool) ini_get($varname);
+        $actual = (bool) ini_get($varname);
 
-        if ($expected && $ini_get !== $expected) {
+        if ($expected && !$actual) {
             return I18N::translate('The PHP.INI setting “%1$s” is disabled.', $varname);
         }
 
-        if (!$expected && $ini_get !== $expected) {
+        if (!$expected && $actual) {
             return I18N::translate('The PHP.INI setting “%1$s” is enabled.', $varname);
         }
 
@@ -299,7 +299,7 @@ class ServerCheckService
                     $this->checkPhpExtension('pdo_pgsql'),
                 ]);
 
-            case 'sqlsvr':
+            case 'sqlsrv':
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_odbc'),
@@ -328,7 +328,7 @@ class ServerCheckService
                     I18N::translate('Support for PostgreSQL is experimental.'),
                 ]);
 
-            case 'sqlsvr':
+            case 'sqlsrv':
                 return new Collection([
                     I18N::translate('Support for SQL Server is experimental.'),
                 ]);

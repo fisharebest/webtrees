@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Closure;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Algorithm\Dijkstra;
@@ -43,8 +42,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
-use function assert;
+use function count;
+use function in_array;
 use function redirect;
 use function route;
 use function view;
@@ -347,7 +346,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'bro':
                         case 'sis':
                         case 'sib':
-                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
+                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div style="height: 32px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
                             $x += 2;
                             break;
                         case 'son':
@@ -357,7 +356,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                                 $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
                                 $x += 2;
                             } else {
-                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div style="display: inline-block; width:50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
                             }
                             $y -= 2;
                             break;
@@ -368,7 +367,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                                 $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
                                 $x += 2;
                             } else {
-                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
+                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div style="display: inline-block; width: 50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
                             }
                             $y += 2;
                             break;
@@ -433,13 +432,11 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         foreach ($this->tree_service->all() as $tree) {
-            $recursion = $params['relationship-recursion-' . $tree->id()] ?? '';
-            $ancestors = $params['relationship-ancestors-' . $tree->id()] ?? '';
+            $recursion = Validator::parsedBody($request)->integer('relationship-recursion-' . $tree->id());
+            $ancestors = Validator::parsedBody($request)->string('relationship-ancestors-' . $tree->id());
 
-            $tree->setPreference('RELATIONSHIP_RECURSION', $recursion);
+            $tree->setPreference('RELATIONSHIP_RECURSION', (string) $recursion);
             $tree->setPreference('RELATIONSHIP_ANCESTORS', $ancestors);
         }
 
@@ -705,13 +702,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                 return [];
             }
             if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $spouse_codes[$next->sex()];
+                $relationships[$i] = $spouse_codes[$next->sex()] ?? $spouse_codes['U'];
             } elseif (($rel1 === 'HUSB' || $rel1 === 'WIFE') && $rel2 === 'CHIL') {
-                $relationships[$i] = $child_codes[$next->sex()];
+                $relationships[$i] = $child_codes[$next->sex()] ?? $child_codes['U'];
             } elseif ($rel1 === 'CHIL' && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $parent_codes[$next->sex()];
+                $relationships[$i] = $parent_codes[$next->sex()] ?? $parent_codes['U'];
             } elseif ($rel1 === 'CHIL' && $rel2 === 'CHIL') {
-                $relationships[$i] = $sibling_codes[$next->sex()];
+                $relationships[$i] = $sibling_codes[$next->sex()] ?? $sibling_codes['U'];
             }
         }
 

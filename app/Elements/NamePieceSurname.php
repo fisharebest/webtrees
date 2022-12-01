@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,7 +50,7 @@ class NamePieceSurname extends AbstractElement
             '<div class="input-group">' .
             '<input data-wt-autocomplete-url="' . e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) . '" autocomplete="off" class="form-control" dir="auto" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
             view('edit/input-addon-keyboard', ['id' => $id]) .
-            view('edit/input-addon-help', ['fact' => 'SURN']) .
+            view('edit/input-addon-help', ['topic' => 'SURN']) .
             '</div>';
     }
 }

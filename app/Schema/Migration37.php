@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ use Illuminate\Database\Schema\Blueprint;
 class Migration37 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to the next version
      *
      * @return void
      */
@@ -70,17 +70,20 @@ class Migration37 implements MigrationInterface
                 'source_media_type',
                 'descriptive_title',
             ], function (Builder $query): void {
+                // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
+                $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+
                 $query->select([
                     'm_id',
                     'm_file',
-                    $this->substring('m_filename', 1, 248),
-                    $this->substring('m_ext', 1, 4),
-                    $this->substring('m_type', 1, 15),
-                    $this->substring('m_titl', 1, 248),
+                    new Expression($substring_function . '(m_filename, 1, 248)'),
+                    new Expression($substring_function . '(m_ext, 1, 4)'),
+                    new Expression($substring_function . '(m_type, 1, 15)'),
+                    new Expression($substring_function . '(m_titl, 1, 248)'),
                 ])->from('media');
             });
 
-            // SQLite can only drop one column at a time.
+            // The Laravel database library for SQLite can only drop one column at a time.
             DB::schema()->table('media', static function (Blueprint $table): void {
                 $table->dropColumn('m_filename');
             });
@@ -94,23 +97,5 @@ class Migration37 implements MigrationInterface
                 $table->dropColumn('m_titl');
             });
         }
-    }
-
-    /**
-     * @param string $expression
-     * @param int    $start
-     * @param int    $length
-     *
-     * @return Expression
-     */
-    private function substring(string $expression, int $start, int $length): Expression
-    {
-        // Non-standard
-        if (DB::connection()->getDriverName() === 'sqlite') {
-            return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ')');
-        }
-
-        // SQL-92 standard
-        return new Expression('SUBSTRING(' . $expression . ' FROM ' . $start . ' FOR ' . $length . ')');
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Test harness for the class GedcomEditService
@@ -28,6 +29,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class GedcomEditServiceTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     /**
      * @covers \Fisharebest\Webtrees\Services\GedcomEditService::editLinesToGedcom
      */
@@ -35,18 +38,19 @@ class GedcomEditServiceTest extends TestCase
     {
         $gedcom_edit_service = new GedcomEditService();
 
-        $this->assertSame(
-            "1 BIRT Y",
+        static::assertSame(
+            '1 BIRT Y',
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1'],
                 ['BIRT'],
-                ['Y']
+                ['Y'],
+                false
             )
         );
 
-        $this->assertSame(
-            "1 BIRT Y\n2 ADDR England",
+        static::assertSame(
+            "\n1 BIRT Y\n2 ADDR England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2'],
@@ -55,8 +59,8 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
-            "1 BIRT\n2 PLAC England",
+        static::assertSame(
+            "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2'],
@@ -65,8 +69,8 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
-            "1 BIRT\n2 PLAC England\n2 SOUR @S1@\n3 PAGE 123",
+        static::assertSame(
+            "\n1 BIRT\n2 PLAC England\n2 SOUR @S1@\n3 PAGE 123",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3'],
@@ -76,8 +80,8 @@ class GedcomEditServiceTest extends TestCase
         );
 
         // Missing SOUR, so ignore PAGE
-        $this->assertSame(
-            "1 BIRT\n2 PLAC England",
+        static::assertSame(
+            "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3'],
@@ -86,8 +90,8 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
-            "1 BIRT\n2 PLAC England",
+        static::assertSame(
+            "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3'],
@@ -96,8 +100,8 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
-            "1 BIRT\n2 PLAC England\n1 DEAT\n2 PLAC Scotland",
+        static::assertSame(
+            "\n1 BIRT\n2 PLAC England\n1 DEAT\n2 PLAC Scotland",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3', '1', '2', '2', '3'],
@@ -105,15 +109,81 @@ class GedcomEditServiceTest extends TestCase
                 ['Y', 'England', '', '123', 'Y', 'Scotland', '', '123']
             )
         );
+    }
 
-        $this->assertSame(
-            "0 NOTE @N1@\n1 CONC foo\n1 CONT bar\n1 RESN locked",
-            $gedcom_edit_service->editLinesToGedcom(
-                'NOTE',
-                ['0', '1', '1'],
-                ['NOTE', 'CONC', 'RESN'],
-                ['@N1@', "foo\nbar", 'locked']
-            )
-        );
+    /**
+     * @dataProvider newFamilyFactsData
+     *
+     * @param string $required_famfacts
+     * @param array<string> $expected_new_facts
+     */
+    public function testNewFamilyFacts(string $required_famfacts, array $expected_new_facts): void
+    {
+        $gedcom_edit_service = new GedcomEditService();
+
+        $tree = $this->createMock(Tree::class);
+        $tree->method('getPreference')->with('QUICK_REQUIRED_FAMFACTS')->willReturn($required_famfacts);
+
+        $new_facts = $gedcom_edit_service->newFamilyFacts($tree);
+        self::assertSameSize($expected_new_facts, $new_facts);
+        for ($i = 0; $i < count($expected_new_facts); $i++) {
+            $new_fact = $new_facts->get($i);
+            self::assertSame($expected_new_facts[$i], $new_fact->tag());
+        }
+    }
+
+    /**
+     * @dataProvider newIndividualFactsData
+     *
+     * @param string $required_facts
+     * @param string $sex
+     * @param array<string> $names
+     * @param array<string> $expected_new_facts
+     */
+    public function testNewIndividualFactsWithNoFacts(
+        string $required_facts,
+        string $sex,
+        array $names,
+        array $expected_new_facts
+    ): void {
+        $gedcom_edit_service = new GedcomEditService();
+
+        $tree = $this->createMock(Tree::class);
+        $tree->method('getPreference')->with('QUICK_REQUIRED_FACTS')->willReturn($required_facts);
+
+        $new_facts = $gedcom_edit_service->newIndividualFacts($tree, $sex, $names);
+        self::assertSameSize($expected_new_facts, $new_facts);
+        for ($i = 0; $i < count($expected_new_facts); $i++) {
+            $new_fact = $new_facts->get($i);
+            self::assertSame($expected_new_facts[$i], $new_fact->tag());
+        }
+    }
+
+    /**
+     * Data provider for new family facts tests
+     * @return array<array<string|array<string>>>
+     */
+    public function newFamilyFactsData(): array
+    {
+        return [
+            ['', []],
+            ['MARR', ['FAM:MARR']],
+            ['FOOTAG', ['FAM:FOOTAG']],
+            ['MARR,DIV', ['FAM:MARR', 'FAM:DIV']],
+        ];
+    }
+
+    /**
+     * Data provider for new inidvidual facts tests
+     * @return array<array<string|array<string>>>
+     */
+    public function newIndividualFactsData(): array
+    {
+        return [
+            ['', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME']],
+            ['BIRT', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT']],
+            ['FOOTAG', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:FOOTAG']],
+            ['BIRT,DEAT', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT', 'INDI:DEAT']],
+        ];
     }
 }

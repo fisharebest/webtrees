@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
@@ -15,8 +19,7 @@ use Fisharebest\Webtrees\Webtrees;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditRawFactAction::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
+<form method="post" id="edit-raw-gedcom" action="<?= e(route(EditRawFactAction::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
     <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 
     <div class="form-text">
@@ -30,10 +33,10 @@ use Fisharebest\Webtrees\Webtrees;
         <label class="card-header py-1 px-2 d-flex" for="gedcom">
             <?= $fact->summary() ?>
         </label>
-        <textarea class="card-body form-control py-1 px-2" id="gedcom" name="gedcom" rows="<?= 5 + preg_match_all('/\n/', $fact->gedcom()) ?>" dir="ltr"><?= e($fact->gedcom()) ?></textarea>
+        <textarea class="card-body form-control py-1 px-2" data-wt-pattern="<?= e(Gedcom::REGEX_FACT) ?>" id="gedcom" name="gedcom" rows="<?= 5 + preg_match_all('/\n/', $fact->gedcom()) ?>" dir="ltr"><?= e($fact->gedcom()) ?></textarea>
     </div>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-sm-9 offset-sm-3">
             <button class="btn btn-primary" type="submit">
                 <?= view('icons/save') ?>
@@ -45,5 +48,13 @@ use Fisharebest\Webtrees\Webtrees;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
+
+<?php View::push('javascript') ?>
+<script>
+  webtrees.textareaPatterns(document.getElementById('edit-raw-gedcom'));
+</script>
+<?php View::endpush() ?>
 

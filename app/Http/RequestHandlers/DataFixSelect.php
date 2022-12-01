@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,9 +55,8 @@ class DataFixSelect implements RequestHandlerInterface
     {
         $tree       = Validator::attributes($request)->tree();
         $data_fixes = $this->module_service->findByInterface(ModuleDataFixInterface::class);
-        $data_fix   = $request->getParsedBody()['data_fix'] ?? '';
-
-        $module = $data_fixes->get($data_fix);
+        $data_fix   = Validator::parsedBody($request)->string('data_fix');
+        $module     = $data_fixes->get($data_fix);
 
         if ($module instanceof ModuleDataFixInterface) {
             return redirect(route(DataFixPage::class, ['tree' => $tree->name(), 'data_fix' => $module->name()]));

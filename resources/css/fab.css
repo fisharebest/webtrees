@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -190,10 +190,6 @@ table {
     text-align: center;
 }
 
-.wt-page-options .form-group {
-    margin-bottom: 0;
-}
-
 .wt-page-options-label {
     background-color: #ccc;
     border-left: 2px solid transparent;
@@ -328,7 +324,7 @@ table {
     height: 5rem;
     padding: 2px;
     line-height: 1.1;
-    border: none;
+    border: solid gray thin;
     border-radius: 4px;
 }
 
@@ -371,7 +367,6 @@ table {
 .person3,
 .person4,
 .person5,
-#indi_main_blocks,
 #tabs {
     margin: 4px;
     padding: 4px;
@@ -828,23 +823,6 @@ div.faq_body {
     white-space: nowrap;
 }
 
-/* Stories module */
-.story_title {
-    padding-top: 12px;
-    font-size: 13px;
-    height: 32px;
-    font-weight: bold;
-}
-
-.story_body {
-    padding: 20px;
-    white-space: normal;
-}
-
-.story_edit {
-    padding: 12px;
-}
-
 /*-- Fan chart ---- */
 .fan_chart_menu {
     background: #fff;
@@ -900,12 +878,6 @@ div.faq_body {
     position: relative;
     top: 0;
     left: 0;
-}
-
-/*-- Relationship ---- */
-.wt-relationship-chart .hline-text,
-.wt-relationship-chart .vline-text {
-    font-size: 12px;
 }
 
 /*
@@ -1169,12 +1141,6 @@ a > .wt-icon-arrow-up:hover {
 .wt-chart {
     overflow-x: auto;
     overflow-y: hidden;
-}
-
-/* Some menus (e.g. languages) can be longer than a page */
-.dropdown-menu {
-    max-height: 30rem;
-    overflow-x: hidden;
 }
 
 /* Forms */

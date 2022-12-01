@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
@@ -37,9 +39,9 @@ $html = '';
 // For each ASSO record
 foreach ($amatches as $amatch) {
     $person = Registry::individualFactory()->make($amatch[2], $fact->record()->tree());
-    if ($person && $person->canShowName()) {
+    if ($person instanceof Individual && $person->canShowName()) {
         // Is there a "RELA" tag
-        if (preg_match('/\n([23]) RELA (.+)/', $amatch[3], $rmatch)) {
+        if (preg_match('/\n([23]) RELA (.+)/', $amatch[3], $rmatch) === 1) {
             if ($rmatch[1] === '2') {
                 $rela_tag = $fact->record()->tag() . ':' . $amatch[1] . ':RELA';
             } else {
@@ -47,7 +49,7 @@ foreach ($amatches as $amatch) {
             }
             // Use the supplied relationship as a label
             $label = Registry::elementFactory()->make($rela_tag)->value($rmatch[2], $parent->tree());
-        } elseif (preg_match('/^1 _?ASSO/', $fact->gedcom())) {
+        } elseif (preg_match('/^1 _?ASSO/', $fact->gedcom()) === 1) {
             // Use a default label
             $label = Registry::elementFactory()->make($fact->tag())->label();
         } else {
@@ -55,7 +57,7 @@ foreach ($amatches as $amatch) {
             $label = Registry::elementFactory()->make($fact->tag() . ':_ASSO')->label();
         }
 
-        if ($person->getBirthDate()->isOK() && $fact->date()->isOK()) {
+        if ($person !== $parent && $person->getBirthDate()->isOK() && $fact->date()->isOK()) {
             $age = new Age($person->getBirthDate(), $fact->date());
             switch ($person->sex()) {
                 case 'M':
@@ -93,11 +95,18 @@ foreach ($amatches as $amatch) {
                 $values[] = '<a href="' . $module->chartUrl($associate, ['xref2' => $person->xref()]) . '" rel="nofollow">' . $relationship_name . '</a>';
             }
         }
-        $value = implode(' — ', $values);
-        $asso  = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
-    } elseif (!$person && Auth::isEditor($fact->record()->tree())) {
-        $value = '<span class="error">' . $amatch[2] . '</span>';
-        $asso  = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Associate'), $value);
+        $label = '<span class="label">' . $label . '</span>';
+        $value = '<span class="field" dir="auto">' . implode(' — ', $values) . '</span>';
+
+        $asso  = I18N::translate('%1$s: %2$s', $label, $value);
+    } elseif ($amatch[2] === 'VOID') {
+        $label = '<span class="label">' . I18N::translate('Associate') . '</span>';
+        $value = I18N::translate('Not recorded');
+        $asso  = I18N::translate('%1$s: %2$s', $label, $value);
+    } elseif (Auth::isEditor($fact->record()->tree())) {
+        $label = '<span class="label">' . I18N::translate('Associate') . '</span>';
+        $value = '<span class="error">@' . e($amatch[2]) . '@</span>';
+        $asso  = I18N::translate('%1$s: %2$s', $label, $value);
     } else {
         $asso = '';
     }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,6 +28,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_key_exists;
 use function route;
 
 /**
@@ -56,16 +57,13 @@ class EditRecordPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
-
-        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
-
-        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
-
-        $subtags = Registry::elementFactory()->make($record->tag())->subtags();
+        $tree           = Validator::attributes($request)->tree();
+        $xref           = Validator::attributes($request)->isXref()->string('xref');
+        $record         = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record         = Auth::checkRecordAccess($record, true);
+        $include_hidden = Validator::queryParams($request)->boolean('include_hidden', false);
+        $can_edit_raw   = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD') === '1';
+        $subtags        = Registry::elementFactory()->make($record->tag())->subtags();
 
         $gedcom = $this->gedcom_edit_service->insertMissingRecordSubtags($record, $include_hidden);
         $hidden = $this->gedcom_edit_service->insertMissingRecordSubtags($record, true);

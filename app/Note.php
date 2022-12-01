@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
@@ -28,7 +29,6 @@ use function htmlspecialchars_decode;
 use function preg_match;
 use function preg_replace;
 use function strip_tags;
-use function trim;
 
 use const ENT_QUOTES;
 
@@ -48,7 +48,7 @@ class Note extends GedcomRecord
      */
     public function getNote(): string
     {
-        if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
+        if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ ' . static::RECORD_TYPE . ' ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
             return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
         }
 
@@ -90,19 +90,47 @@ class Note extends GedcomRecord
     public function extractNames(): void
     {
         if ($this->tree->getPreference('FORMAT_TEXT') === 'markdown') {
-            $text = Registry::markdownFactory()->markdown($this->getNote());
+            $html = Registry::markdownFactory()->markdown($this->getNote());
         } else {
-            $text = Registry::markdownFactory()->autolink($this->getNote());
+            $html = Registry::markdownFactory()->autolink($this->getNote());
         }
 
+        $first_line = self::firstLineOfTextFromHtml($html);
 
-        // Take the first line
-        [$text] = explode("\n", strip_tags(trim($text)));
-
-
-        if ($text !== '') {
-            $text = htmlspecialchars_decode($text, ENT_QUOTES);
-            $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());
+        if ($first_line !== '') {
+            $this->addName(static::RECORD_TYPE, Str::limit($first_line, 100, I18N::translate('…')), $this->gedcom());
         }
+    }
+
+    /**
+     * Notes are converted to HTML for display.  We want the first line
+     *
+     * @param string $html
+     *
+     * @return string
+     */
+    public static function firstLineOfTextFromHtml(string $html): string
+    {
+        $html = strtr($html, [
+            '</blockquote>' => MarkdownFactory::BREAK,
+            '</h1>'         => MarkdownFactory::BREAK,
+            '</h2>'         => MarkdownFactory::BREAK,
+            '</h3>'         => MarkdownFactory::BREAK,
+            '</h4>'         => MarkdownFactory::BREAK,
+            '</h5>'         => MarkdownFactory::BREAK,
+            '</h6>'         => MarkdownFactory::BREAK,
+            '</li>'         => MarkdownFactory::BREAK,
+            '</p>'          => MarkdownFactory::BREAK,
+            '</pre>'        => MarkdownFactory::BREAK,
+            '</td>'         => ' ',
+            '</th>'         => ' ',
+            '<hr>'          => MarkdownFactory::BREAK,
+        ]);
+
+        $html = strip_tags($html, ['br']);
+
+        [$first] = explode(MarkdownFactory::BREAK, $html, 2);
+
+        return htmlspecialchars_decode($first, ENT_QUOTES);
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,9 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
-
 /**
  * Reorder the children in a family.
  */
@@ -49,6 +46,7 @@ class ReorderChildrenPage implements RequestHandlerInterface
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
+        $url    = Validator::queryParams($request)->isLocalUrl()->string('url', $family->url());
 
         $title = $family->fullName() . ' — ' . I18N::translate('Re-order children');
 
@@ -56,6 +54,7 @@ class ReorderChildrenPage implements RequestHandlerInterface
             'family' => $family,
             'title'  => $title,
             'tree'   => $tree,
+            'url'    => $url,
         ]);
     }
 }

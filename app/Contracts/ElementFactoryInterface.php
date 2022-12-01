@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,11 +33,17 @@ interface ElementFactoryInterface
      */
     public function make(string $tag): ElementInterface;
 
-
     /**
-     * Register more elements.
+     * Register GEDCOM tags.
      *
      * @param array<string,ElementInterface> $elements
      */
-    public function register(array $elements): void;
+    public function registerTags(array $elements): void;
+
+    /**
+     * Register more subtags.
+     *
+     * @param array<string,array<int,array<int,string>>> $subtags
+     */
+    public function registerSubTags(array $subtags): void;
 }

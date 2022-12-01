@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,6 +43,8 @@ use function array_reverse;
  */
 class RelationshipNamesTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     /**
      * @return void
      */
@@ -121,47 +123,47 @@ class RelationshipNamesTest extends TestCase
         $i38f = new Individual('i38f', "0 @i38f@ INDI\n1 SEX F\n1 FAMC @f7@", null, $tree);
         $i39mo = new Individual('i39mo', "0 @i39o@ INDI\n1 SEX M\n1 FAMC @f14d@\n2 PEDI foster", null, $tree);
 
-        $individual_factory->method('make')->will($this->returnValueMap([
-            'i1m'  => $i1m,
-            'i2f'  => $i2f,
-            'i3m'  => $i3m,
-            'i4f'  => $i4f,
-            'i5u'  => $i5u,
-            'i6m'  => $i6m,
-            'i7ma' => $i7ma,
-            'i8f'  => $i8f,
-            'i9u'  => $i9u,
-            'i10f' => $i10f,
-            'i11m' => $i11m,
-            'i12f' => $i12f,
-            'i13m' => $i13m,
-            'i14f' => $i14f,
-            'i15u' => $i15u,
-            'i16m' => $i16m,
-            'i17f' => $i17f,
-            'i18m' => $i18m,
-            'i19f' => $i19f,
-            'i20m' => $i20m,
-            'i21f' => $i21f,
-            'i22m' => $i22m,
-            'i23f' => $i23f,
-            'i24m' => $i24m,
-            'i25f' => $i25f,
-            'i26f' => $i26f,
-            'i27m' => $i27m,
-            'i28u' => $i28u,
-            'i29m' => $i29m,
-            'i30m' => $i30m,
-            'i31m' => $i31m,
-            'i32f' => $i32f,
-            'i33f' => $i33f,
-            'i34f' => $i34f,
-            'i35m' => $i35m,
-            'i36f' => $i36f,
-            'i37f' => $i37f,
-            'i38f' => $i38f,
+        $individual_factory->method('make')->willReturnMap([
+            'i1m'   => $i1m,
+            'i2f'   => $i2f,
+            'i3m'   => $i3m,
+            'i4f'   => $i4f,
+            'i5u'   => $i5u,
+            'i6m'   => $i6m,
+            'i7ma'  => $i7ma,
+            'i8f'   => $i8f,
+            'i9u'   => $i9u,
+            'i10f'  => $i10f,
+            'i11m'  => $i11m,
+            'i12f'  => $i12f,
+            'i13m'  => $i13m,
+            'i14f'  => $i14f,
+            'i15u'  => $i15u,
+            'i16m'  => $i16m,
+            'i17f'  => $i17f,
+            'i18m'  => $i18m,
+            'i19f'  => $i19f,
+            'i20m'  => $i20m,
+            'i21f'  => $i21f,
+            'i22m'  => $i22m,
+            'i23f'  => $i23f,
+            'i24m'  => $i24m,
+            'i25f'  => $i25f,
+            'i26f'  => $i26f,
+            'i27m'  => $i27m,
+            'i28u'  => $i28u,
+            'i29m'  => $i29m,
+            'i30m'  => $i30m,
+            'i31m'  => $i31m,
+            'i32f'  => $i32f,
+            'i33f'  => $i33f,
+            'i34f'  => $i34f,
+            'i35m'  => $i35m,
+            'i36f'  => $i36f,
+            'i37f'  => $i37f,
+            'i38f'  => $i38f,
             'i39mo' => $i39mo
-        ]));
+        ]);
 
         $f1m  = new Family('f1m', "0 @f1m@ FAM\n1 MARR Y\n1 HUSB @i1m@\n1 WIFE @i2f@\n1 CHIL @i3m@\n1 CHIL @i4f@\n1 CHIL @i5u@", null, $tree);
         $f2d  = new Family('f2d', "0 @f2d@ FAM\n1 DIV Y\n1 HUSB @i6m@\n1 WIFE @i2f@\n1 CHIL @i7ma@\n1 CHIL @i8f@\n1 CHIL @i9u@", null, $tree);
@@ -181,7 +183,7 @@ class RelationshipNamesTest extends TestCase
         $f16  = new Family('f16', "0 @f16@ FAM\n1 WIFE @i34f@\n1 CHIL @i35m@", null, $tree);
         $f17  = new Family('f17', "0 @f17@ FAM\n1 HUSB @i35m@\n1 CHIL @i36f@", null, $tree);
 
-        $family_factory->method('make')->will($this->returnValueMap([
+        $family_factory->method('make')->willReturnMap([
             'f1m'  => $f1m,
             'f2d'  => $f2d,
             'f3e'  => $f3e,
@@ -199,7 +201,7 @@ class RelationshipNamesTest extends TestCase
             'f15'  => $f15,
             'f16'  => $f16,
             'f17'  => $f17
-        ]));
+        ]);
 
         ///////////////////////////////////////////////////////////////////////
         // ENGLISH

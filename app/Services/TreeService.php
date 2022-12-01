@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
@@ -32,9 +33,7 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\StreamInterface;
-use RuntimeException;
 
-use function assert;
 use function fclose;
 use function feof;
 use function fread;
@@ -153,9 +152,11 @@ class TreeService
             return $tree->id() === $id;
         });
 
-        assert($tree instanceof Tree, new RuntimeException());
+        if ($tree instanceof Tree) {
+            return $tree;
+        }
 
-        return $tree;
+        throw new DomainException('Call to find() with an invalid id: ' . $id);
     }
 
     /**
@@ -218,7 +219,7 @@ class TreeService
         $tree->setPreference('SURNAME_TRADITION', self::DEFAULT_SURNAME_TRADITIONS[I18N::languageTag()] ?? 'paternal');
 
         // A tree needs at least one record.
-        $head = "0 HEAD\n1 SOUR webtrees\n2 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8";
+        $head = "0 HEAD\n1 SOUR webtrees\n1 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8";
         $this->gedcom_import_service->importRecord($head, $tree, true);
 
         // I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname.
@@ -292,9 +293,18 @@ class TreeService
         }
 
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
-
-        $this->deleteGenealogyData($tree, false);
-
+        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
+        DB::table('families')->where('f_file', '=', $tree->id())->delete();
+        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
+        DB::table('other')->where('o_file', '=', $tree->id())->delete();
+        DB::table('places')->where('p_file', '=', $tree->id())->delete();
+        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
+        DB::table('name')->where('n_file', '=', $tree->id())->delete();
+        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
+        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::table('link')->where('l_file', '=', $tree->id())->delete();
+        DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
+        DB::table('media')->where('m_file', '=', $tree->id())->delete();
         DB::table('block_setting')
             ->join('block', 'block.block_id', '=', 'block_setting.block_id')
             ->where('gedcom_id', '=', $tree->id())
@@ -308,40 +318,6 @@ class TreeService
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('log')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->delete();
-    }
-
-    /**
-     * Delete all the genealogy data from a tree - in preparation for importing
-     * new data. Optionally retain the media data, for when the user has been
-     * editing their data offline using an application which deletes (or does not
-     * support) media data.
-     *
-     * @param Tree $tree
-     * @param bool $keep_media
-     *
-     * @return void
-     */
-    public function deleteGenealogyData(Tree $tree, bool $keep_media): void
-    {
-        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
-        DB::table('families')->where('f_file', '=', $tree->id())->delete();
-        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
-        DB::table('other')->where('o_file', '=', $tree->id())->delete();
-        DB::table('places')->where('p_file', '=', $tree->id())->delete();
-        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
-        DB::table('name')->where('n_file', '=', $tree->id())->delete();
-        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
-        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
-
-        if ($keep_media) {
-            DB::table('link')->where('l_file', '=', $tree->id())
-                ->where('l_type', '<>', 'OBJE')
-                ->delete();
-        } else {
-            DB::table('link')->where('l_file', '=', $tree->id())->delete();
-            DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
-            DB::table('media')->where('m_file', '=', $tree->id())->delete();
-        }
     }
 
     /**

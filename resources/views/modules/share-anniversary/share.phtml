@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -16,7 +18,7 @@ use Illuminate\Support\Collection;
     <span class="input-group-text" dir="ltr">iCalendar</span>
 
     <select class="custom-select" id="share-anniversary-select" aria-label=" <?= I18N::translate('Anniversary') ?>" name="fact_id">
-        <?php foreach ($facts as $url => $label): ?>
+        <?php foreach ($facts as $url => $label) : ?>
             <option value="<?= e($url) ?>"><?= $label ?></option>
         <?php endforeach ?>
     </select>

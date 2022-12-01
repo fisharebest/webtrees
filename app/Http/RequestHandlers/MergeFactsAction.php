@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -43,6 +44,16 @@ use function str_replace;
  */
 class MergeFactsAction implements RequestHandlerInterface
 {
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -50,15 +61,11 @@ class MergeFactsAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
-        $xref1 = $params['xref1'] ?? '';
-        $xref2 = $params['xref2'] ?? '';
-
-        $keep1 = $params['keep1'] ?? [];
-        $keep2 = $params['keep2'] ?? [];
+        $tree  = Validator::attributes($request)->tree();
+        $xref1 = Validator::parsedBody($request)->isXref()->string('xref1');
+        $xref2 = Validator::parsedBody($request)->isXref()->string('xref2');
+        $keep1 = Validator::parsedBody($request)->array('keep1');
+        $keep2 = Validator::parsedBody($request)->array('keep2');
 
         // Merge record2 into record1
         $record1 = Registry::gedcomRecordFactory()->make($xref1, $tree);
@@ -87,7 +94,7 @@ class MergeFactsAction implements RequestHandlerInterface
         }
 
         // Update records that link to the one we will be removing.
-        $linking_records = $record2->linkingRecords();
+        $linking_records = $this->linked_record_service->allLinkedRecords($record2);
 
         foreach ($linking_records as $record) {
             if (!$record->isPendingDeletion()) {

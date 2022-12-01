@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -26,6 +28,29 @@ use Fisharebest\Webtrees\Individual;
  */
 class PaternalSurnameTradition extends PatrilinealSurnameTradition
 {
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'paternal');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: In the paternal surname tradition, ... */
+        return
+            I18N::translate('Children take their father’s surname.') . ' ' .
+            I18N::translate('Wives take their husband’s surname.');
+    }
+
     /**
      * What name is given to a new parent
      *
@@ -36,14 +61,14 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
      */
     public function newParentNames(Individual $child, string $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match)) {
+        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($child), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];
 
             return [
-                $this->buildName('//', ['TYPE' => 'birth']),
-                $this->buildName($name, ['TYPE' => 'married', 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_MARRIED, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 
@@ -60,14 +85,14 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
-        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($spouse), $match)) {
+        if ($sex === 'F' && preg_match(self::REGEX_SPFX_SURN, $this->extractName($spouse), $match) === 1) {
             $name = $match['NAME'];
             $spfx = $match['SPFX'];
             $surn = $match['SURN'];
 
             return [
-                $this->buildName('//', ['TYPE' => 'birth']),
-                $this->buildName($name, ['TYPE' => 'married', 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_MARRIED, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 

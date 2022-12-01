@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -43,10 +45,11 @@ use Fisharebest\Webtrees\Tree;
                     </td>
                     <td>
                         <form method="post" action="<?= e(route('module', ['module' => $module, 'action' => 'Remove', 'tree' => $tree->name(), 'xref' => $record->xref()])) ?>">
-                            <?= csrf_field() ?>
                             <button type="submit" class="btn btn-link" title="<?= I18N::translate('Remove') ?>">
                                 <?= view('icons/delete') ?>
                             </button>
+
+                            <?= csrf_field() ?>
                         </form>
                     </td>
                 </tr>

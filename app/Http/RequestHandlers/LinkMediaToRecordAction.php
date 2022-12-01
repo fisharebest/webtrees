@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,9 +26,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
-
 /**
  * Link a media object to a record.
  */
@@ -41,10 +38,9 @@ class LinkMediaToRecordAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $params = (array) $request->getParsedBody();
-        $link   = $params['link'] ?? '';
+        $tree = Validator::attributes($request)->tree();
+        $xref = Validator::attributes($request)->isXref()->string('xref');
+        $link = Validator::parsedBody($request)->isXref()->string('link');
 
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);

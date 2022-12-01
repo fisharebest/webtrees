@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
+use function in_array;
 use function preg_replace_callback_array;
 use function strtolower;
 use function strtoupper;
@@ -52,16 +53,24 @@ class AgeAtEvent extends AbstractElement
 
     protected const KEYWORDS = ['CHILD', 'INFANT', 'STILLBORN'];
 
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
     public function canonical(string $value): string
     {
-        $value = parent::canonical($value);
-        $upper = strtoupper($value);
+        // Keywords are upper case.  Ages are lower case
+        $canonical = parent::canonical($value);
+        $upper     = strtoupper($canonical);
 
-        if (in_array($upper, static::KEYWORDS, true)) {
+        if (in_array($upper, self::KEYWORDS)) {
             return $upper;
         }
 
-        return strtolower($value);
+        return strtolower($canonical);
     }
 
     /**
@@ -78,13 +87,13 @@ class AgeAtEvent extends AbstractElement
 
         switch ($canonical) {
             case 'CHILD':
-                return I18N::translate('Child');
+                return I18N::translate('child');
 
             case 'INFANT':
-                return I18N::translate('Infant');
+                return I18N::translate('infant');
 
             case 'STILLBORN':
-                return I18N::translate('Stillborn');
+                return I18N::translate('stillborn');
         }
 
         return preg_replace_callback_array([

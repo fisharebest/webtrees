@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
-use Fisharebest\Webtrees\Tree;
 use League\Flysystem\FilesystemOperator;
 
 /**
@@ -37,25 +36,20 @@ interface FilesystemFactoryInterface
     /**
      * Create a filesystem for the user's data folder.
      *
-     * @return FilesystemOperator
-     */
-    public function data(): FilesystemOperator;
-
-    /**
-     * Create a filesystem for a tree's media folder.
-     *
-     * @param Tree $tree
+     * @param string $path_prefix
      *
      * @return FilesystemOperator
      */
-    public function media(Tree $tree): FilesystemOperator;
+    public function data(string $path_prefix = ''): FilesystemOperator;
 
     /**
      * Create a filesystem for the application's root folder.
      *
+     * @param string $path_prefix
+     *
      * @return FilesystemOperator
      */
-    public function root(): FilesystemOperator;
+    public function root(string $path_prefix = ''): FilesystemOperator;
 
     /**
      * Describe a filesystem for the application's root folder.

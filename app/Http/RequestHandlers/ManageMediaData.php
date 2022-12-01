@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,8 +25,10 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -58,6 +60,8 @@ class ManageMediaData implements RequestHandlerInterface
 {
     private DatatablesService $datatables_service;
 
+    private LinkedRecordService $linked_record_service;
+
     private MediaFileService $media_file_service;
 
     private TreeService $tree_service;
@@ -65,18 +69,21 @@ class ManageMediaData implements RequestHandlerInterface
     /**
      * MediaController constructor.
      *
-     * @param DatatablesService $datatables_service
-     * @param MediaFileService  $media_file_service
-     * @param TreeService       $tree_service
+     * @param DatatablesService   $datatables_service
+     * @param LinkedRecordService $linked_record_service
+     * @param MediaFileService    $media_file_service
+     * @param TreeService         $tree_service
      */
     public function __construct(
         DatatablesService $datatables_service,
+        LinkedRecordService $linked_record_service,
         MediaFileService $media_file_service,
         TreeService $tree_service
     ) {
-        $this->datatables_service = $datatables_service;
-        $this->media_file_service = $media_file_service;
-        $this->tree_service       = $tree_service;
+        $this->datatables_service    = $datatables_service;
+        $this->linked_record_service = $linked_record_service;
+        $this->media_file_service    = $media_file_service;
+        $this->tree_service          = $tree_service;
     }
 
     /**
@@ -88,13 +95,13 @@ class ManageMediaData implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $files = $request->getQueryParams()['files']; // local|external|unused
+        $files = Validator::queryParams($request)->isInArray(['local', 'external', 'unused'])->string('files');
 
         // Files within this folder
-        $media_folder = $request->getQueryParams()['media_folder'];
+        $media_folder = Validator::queryParams($request)->string('media_folder');
 
         // Show sub-folders within $media_folder
-        $subfolders = $request->getQueryParams()['subfolders']; // include|exclude
+        $subfolders = Validator::queryParams($request)->isInArray(['include', 'exclude'])->string('subfolders');
 
         $search_columns = ['multimedia_file_refn', 'descriptive_title'];
 
@@ -125,7 +132,7 @@ class ManageMediaData implements RequestHandlerInterface
 
                 try {
                     $mime_type = Registry::filesystem()->data()->mimeType($path);
-                } catch (UnableToRetrieveMetadata $ex) {
+                } catch (UnableToRetrieveMetadata) {
                     $mime_type = Mime::DEFAULT_TYPE;
                 }
 
@@ -138,7 +145,7 @@ class ManageMediaData implements RequestHandlerInterface
 
                 $url = route(AdminMediaFileDownload::class, ['path' => $path]);
                 $img = '<a href="' . e($url) . '" type="' . $mime_type . '" class="gallery">' . $img . '</a>';
-            } catch (UnableToReadFile $ex) {
+            } catch (UnableToReadFile) {
                 $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
                 $img = '<img src="' . e($url) . '">';
             }
@@ -224,7 +231,7 @@ class ManageMediaData implements RequestHandlerInterface
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     try {
                         $mime_type = $data_filesystem->mimeType($row[0]) ?: Mime::DEFAULT_TYPE;
-                    } catch (FileSystemException | UnableToRetrieveMetadata $ex) {
+                    } catch (FilesystemException | UnableToRetrieveMetadata) {
                         $mime_type = Mime::DEFAULT_TYPE;
                     }
 
@@ -286,23 +293,28 @@ class ManageMediaData implements RequestHandlerInterface
         $html .= $element->value($media->getNote(), $media->tree());
 
         $linked = [];
-        foreach ($media->linkedIndividuals('OBJE') as $link) {
+
+        foreach ($this->linked_record_service->linkedIndividuals($media) as $link) {
             $linked[] = view('icons/individual') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
-        foreach ($media->linkedFamilies('OBJE') as $link) {
+
+        foreach ($this->linked_record_service->linkedFamilies($media) as $link) {
             $linked[] = view('icons/family') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
-        foreach ($media->linkedSources('OBJE') as $link) {
+
+        foreach ($this->linked_record_service->linkedSources($media) as $link) {
             $linked[] = view('icons/source') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
-        foreach ($media->linkedNotes('OBJE') as $link) {
+
+        foreach ($this->linked_record_service->linkedNotes($media) as $link) {
             $linked[] = view('icons/note') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
-        foreach ($media->linkedRepositories('OBJE') as $link) {
-            // Invalid GEDCOM - you cannot link a REPO to an OBJE
+
+        foreach ($this->linked_record_service->linkedRepositories($media) as $link) {
             $linked[] = view('icons/media') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
-        foreach ($media->linkedLocations('OBJE') as $link) {
+
+        foreach ($this->linked_record_service->linkedMedia($media) as $link) {
             $linked[] = view('icons/location') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
 
@@ -335,14 +347,14 @@ class ManageMediaData implements RequestHandlerInterface
 
         try {
             $file_exists = $data_filesystem->fileExists($file);
-        } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+        } catch (FilesystemException | UnableToCheckFileExistence) {
             $file_exists = false;
         }
 
         if ($file_exists) {
             try {
                 $size = $data_filesystem->fileSize($file);
-            } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+            } catch (FilesystemException | UnableToRetrieveMetadata) {
                 $size = 0;
             }
             $size = intdiv($size + 1023, 1024); // Round up to next KB
@@ -358,7 +370,7 @@ class ManageMediaData implements RequestHandlerInterface
                 $html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
                 $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
-            } catch (FilesystemException | UnableToReadFile | Throwable $ex) {
+            } catch (FilesystemException | UnableToReadFile | Throwable) {
                 // Not an image, or not a valid image?
             }
         }

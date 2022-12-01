@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,15 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function strlen;
 use function view;
 
 /**
@@ -89,7 +90,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     public function getSearchAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
-        $search = $request->getQueryParams()['search'];
+        $search = Validator::queryParams($request)->string('search');
 
         $html = '';
 
@@ -117,7 +118,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-        $xref = $request->getQueryParams()['xref'] ?? '';
+        $xref = Validator::queryParams($request)->isXref()->string('xref');
 
         $individual = Registry::individualFactory()->make($xref, $tree);
 

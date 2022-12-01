@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -28,11 +27,10 @@ use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -43,7 +41,6 @@ use function date;
 use function e;
 use function fclose;
 use function intdiv;
-use function microtime;
 use function response;
 use function route;
 use function version_compare;
@@ -111,43 +108,36 @@ class UpgradeWizardStep implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $root_filesystem = Registry::filesystem()->root();
-        $data_filesystem = Registry::filesystem()->data();
-
-        // Somewhere to unpack a .ZIP file
-        $temporary_filesystem = new Filesystem(new ChrootAdapter($root_filesystem, self::UPGRADE_FOLDER));
-
         $zip_file   = Webtrees::ROOT_DIR . self::ZIP_FILENAME;
         $zip_folder = Webtrees::ROOT_DIR . self::UPGRADE_FOLDER;
 
-
-        $step = $request->getQueryParams()['step'] ?? self::STEP_CHECK;
+        $step = Validator::queryParams($request)->string('step', self::STEP_CHECK);
 
         switch ($step) {
             case self::STEP_CHECK:
                 return $this->wizardStepCheck();
 
             case self::STEP_PREPARE:
-                return $this->wizardStepPrepare($root_filesystem);
+                return $this->wizardStepPrepare();
 
             case self::STEP_PENDING:
                 return $this->wizardStepPending();
 
             case self::STEP_EXPORT:
-                $tree_name = $request->getQueryParams()['tree'] ?? '';
+                $tree_name = Validator::queryParams($request)->string('tree');
                 $tree      = $this->tree_service->all()[$tree_name];
                 assert($tree instanceof Tree);
 
-                return $this->wizardStepExport($tree, $data_filesystem);
+                return $this->wizardStepExport($tree);
 
             case self::STEP_DOWNLOAD:
-                return $this->wizardStepDownload($root_filesystem);
+                return $this->wizardStepDownload();
 
             case self::STEP_UNZIP:
                 return $this->wizardStepUnzip($zip_file, $zip_folder);
 
             case self::STEP_COPY:
-                return $this->wizardStepCopyAndCleanUp($zip_file, $root_filesystem, $temporary_filesystem);
+                return $this->wizardStepCopyAndCleanUp($zip_file);
 
             default:
                 return response('', StatusCodeInterface::STATUS_NO_CONTENT);
@@ -181,12 +171,11 @@ class UpgradeWizardStep implements RequestHandlerInterface
     /**
      * Make sure the temporary folder exists.
      *
-     * @param FilesystemOperator $root_filesystem
-     *
      * @return ResponseInterface
      */
-    private function wizardStepPrepare(FilesystemOperator $root_filesystem): ResponseInterface
+    private function wizardStepPrepare(): ResponseInterface
     {
+        $root_filesystem = Registry::filesystem()->root();
         $root_filesystem->deleteDirectory(self::UPGRADE_FOLDER);
         $root_filesystem->createDirectory(self::UPGRADE_FOLDER);
 
@@ -214,18 +203,16 @@ class UpgradeWizardStep implements RequestHandlerInterface
     }
 
     /**
-     * @param Tree               $tree
-     * @param FilesystemOperator $data_filesystem
+     * @param Tree $tree
      *
      * @return ResponseInterface
      */
-    private function wizardStepExport(Tree $tree, FilesystemOperator $data_filesystem): ResponseInterface
+    private function wizardStepExport(Tree $tree): ResponseInterface
     {
-        $filename = $tree->name() . date('-Y-m-d') . '.ged';
-
-        $stream = $this->gedcom_export_service->export($tree);
-
-        $data_filesystem->writeStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
+        $data_filesystem = Registry::filesystem()->data();
+        $filename        = $tree->name() . date('-Y-m-d') . '.ged';
+        $stream          = $this->gedcom_export_service->export($tree);
+        $data_filesystem->writeStream($filename, $stream);
         fclose($stream);
 
         return response(view('components/alert-success', [
@@ -234,14 +221,13 @@ class UpgradeWizardStep implements RequestHandlerInterface
     }
 
     /**
-     * @param FilesystemOperator $root_filesystem
-     *
      * @return ResponseInterface
      */
-    private function wizardStepDownload(FilesystemOperator $root_filesystem): ResponseInterface
+    private function wizardStepDownload(): ResponseInterface
     {
-        $start_time   = microtime(true);
-        $download_url = $this->upgrade_service->downloadUrl();
+        $root_filesystem = Registry::filesystem()->root();
+        $start_time      = Registry::timeFactory()->now();
+        $download_url    = $this->upgrade_service->downloadUrl();
 
         try {
             $bytes = $this->upgrade_service->downloadFile($download_url, $root_filesystem, self::ZIP_FILENAME);
@@ -250,7 +236,7 @@ class UpgradeWizardStep implements RequestHandlerInterface
         }
 
         $kb       = I18N::number(intdiv($bytes + 1023, 1024));
-        $end_time = microtime(true);
+        $end_time = Registry::timeFactory()->now();
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         return response(view('components/alert-success', [
@@ -268,10 +254,10 @@ class UpgradeWizardStep implements RequestHandlerInterface
      */
     private function wizardStepUnzip(string $zip_file, string $zip_folder): ResponseInterface
     {
-        $start_time = microtime(true);
+        $start_time = Registry::timeFactory()->now();
         $this->upgrade_service->extractWebtreesZip($zip_file, $zip_folder);
         $count    = $this->upgrade_service->webtreesZipContents($zip_file)->count();
-        $end_time = microtime(true);
+        $end_time = Registry::timeFactory()->now();
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */
@@ -283,18 +269,14 @@ class UpgradeWizardStep implements RequestHandlerInterface
     }
 
     /**
-     * @param string             $zip_file
-     * @param FilesystemOperator $root_filesystem
-     * @param FilesystemOperator $temporary_filesystem
+     * @param string $zip_file
      *
      * @return ResponseInterface
      */
-    private function wizardStepCopyAndCleanUp(
-        string $zip_file,
-        FilesystemOperator $root_filesystem,
-        FilesystemOperator $temporary_filesystem
-    ): ResponseInterface {
-        $source_filesystem = new Filesystem(new ChrootAdapter($temporary_filesystem, self::ZIP_FILE_PREFIX));
+    private function wizardStepCopyAndCleanUp(string $zip_file): ResponseInterface
+    {
+        $source_filesystem = Registry::filesystem()->data(self::UPGRADE_FOLDER . self::ZIP_FILE_PREFIX);
+        $root_filesystem   = Registry::filesystem()->root();
 
         $this->upgrade_service->startMaintenanceMode();
         $this->upgrade_service->moveFiles($source_filesystem, $root_filesystem);

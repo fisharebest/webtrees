@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\View;
 
 /**
@@ -9,7 +11,7 @@ use Fisharebest\Webtrees\View;
 
 ?>
 
-<div class="row gchart wt-place-hierarchy-wrapper">
+<div class="row gchart wt-place-hierarchy-wrapper wt-fullscreen-container">
     <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-place-hierarchy-map" dir="ltr"></div>
     <ul class="col-sm-3 wt-place-hierarchy-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
 </div>
@@ -26,7 +28,7 @@ use Fisharebest\Webtrees\View;
 
     const scrollOptions = {
       behavior: "smooth",
-      block: "start",
+      block: "nearest",
       inline: "start"
     };
 
@@ -38,11 +40,13 @@ use Fisharebest\Webtrees\View;
     /**
      * Passed to resetControl to
      * perform necessary reset actions on map
+     *
+     * @param {Event} event
      */
-     let resetCallback = function () {
-      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
-      sidebar.firstElementChild.scrollIntoView(scrollOptions);
-    }
+    let resetCallback = function (event) {
+      event.preventDefault();
+      map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
+    };
 
     /**
      * @private
@@ -68,7 +72,6 @@ use Fisharebest\Webtrees\View;
               textColor: 'white',
             }),
             title: feature.properties.tooltip,
-            alt: feature.properties.tooltip,
             id: feature.id,
           })
             .on('popupopen', function (e) {
@@ -78,7 +81,6 @@ use Fisharebest\Webtrees\View;
             })
             .on('popupclose', function () {
               sidebar.querySelectorAll('.mapped').forEach(e => e.classList.remove('messagebox'));
-              sidebar.firstElementChild.scrollIntoView(scrollOptions);
             });
         },
         onEachFeature: function (feature, layer) {

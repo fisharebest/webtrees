@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -12,8 +14,9 @@ use Fisharebest\Webtrees\View;
 ?>
 
 <form method="post" action="<?= e(route('module', ['module' => 'descendancy', 'action' => 'Descendants', 'tree' => $tree->name()])) ?>" onsubmit="return false;">
-    <?= csrf_field() ?>
     <input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="<?= I18N::translate('Search') ?>">
+
+    <?= csrf_field() ?>
 </form>
 
 <div id="sb_desc_content">

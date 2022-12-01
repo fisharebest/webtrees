@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -66,9 +66,8 @@ class AddMediaFileAction implements RequestHandlerInterface
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $media  = Registry::mediaFactory()->make($xref, $tree);
         $media  = Auth::checkMediaAccess($media, true);
-        $params = (array) $request->getParsedBody();
-        $title  = $params['title'] ?? '';
-        $type   = $params['type'] ?? '';
+        $title  = Validator::parsedBody($request)->string('title');
+        $type   = Validator::parsedBody($request)->string('type');
 
         $file = $this->media_file_service->uploadFile($request);
 

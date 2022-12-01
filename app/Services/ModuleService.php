@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
 use Fisharebest\Webtrees\Module\AustrianHistoricEvents;
 use Fisharebest\Webtrees\Module\AustrianPresidents;
+use Fisharebest\Webtrees\Module\BingMaps;
 use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule;
 use Fisharebest\Webtrees\Module\BirthReportModule;
@@ -42,6 +43,7 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Module\ChangeReportModule;
 use Fisharebest\Webtrees\Module\ChartsBlockModule;
 use Fisharebest\Webtrees\Module\ChartsMenuModule;
+use Fisharebest\Webtrees\Module\CheckForNewVersion;
 use Fisharebest\Webtrees\Module\CkeditorModule;
 use Fisharebest\Webtrees\Module\ClippingsCartModule;
 use Fisharebest\Webtrees\Module\CloudsTheme;
@@ -49,20 +51,6 @@ use Fisharebest\Webtrees\Module\ColorsTheme;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
-use Fisharebest\Webtrees\Module\CustomTagsAldfaer;
-use Fisharebest\Webtrees\Module\CustomTagsBrothersKeeper;
-use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeBuilder;
-use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeMaker;
-use Fisharebest\Webtrees\Module\CustomTagsGedcom53;
-use Fisharebest\Webtrees\Module\CustomTagsGedcomL;
-use Fisharebest\Webtrees\Module\CustomTagsGenPluswin;
-use Fisharebest\Webtrees\Module\CustomTagsLegacy;
-use Fisharebest\Webtrees\Module\CustomTagsPersonalAncestralFile;
-use Fisharebest\Webtrees\Module\CustomTagsPhpGedView;
-use Fisharebest\Webtrees\Module\CustomTagsReunion;
-use Fisharebest\Webtrees\Module\CustomTagsRootsMagic;
-use Fisharebest\Webtrees\Module\CustomTagsTheMasterGenealogist;
-use Fisharebest\Webtrees\Module\CustomTagsWebtrees;
 use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
@@ -89,10 +77,12 @@ use Fisharebest\Webtrees\Module\FixNameTags;
 use Fisharebest\Webtrees\Module\FixPlaceNames;
 use Fisharebest\Webtrees\Module\FixPrimaryTag;
 use Fisharebest\Webtrees\Module\FixSearchAndReplace;
+use Fisharebest\Webtrees\Module\FixWtObjeSortTag;
 use Fisharebest\Webtrees\Module\FrenchHistory;
 use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GeonamesAutocomplete;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
+use Fisharebest\Webtrees\Module\GoogleMaps;
 use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\HereMaps;
 use Fisharebest\Webtrees\Module\HitCountFooterModule;
@@ -181,17 +171,12 @@ use Fisharebest\Webtrees\Module\LoggedInUsersModule;
 use Fisharebest\Webtrees\Module\LoginBlockModule;
 use Fisharebest\Webtrees\Module\LowCountriesRulers;
 use Fisharebest\Webtrees\Module\MapBox;
-use Fisharebest\Webtrees\Module\MapLinkBing;
-use Fisharebest\Webtrees\Module\MapLinkGoogle;
-use Fisharebest\Webtrees\Module\MapLinkOpenStreetMap;
 use Fisharebest\Webtrees\Module\MapGeoLocationGeonames;
 use Fisharebest\Webtrees\Module\MapGeoLocationNominatim;
 use Fisharebest\Webtrees\Module\MapGeoLocationOpenRouteService;
-use Fisharebest\Webtrees\Module\BingMaps;
-use Fisharebest\Webtrees\Module\GoogleMaps;
-use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
-use Fisharebest\Webtrees\Module\OpenRouteServiceAutocomplete;
-use Fisharebest\Webtrees\Module\OpenStreetMap;
+use Fisharebest\Webtrees\Module\MapLinkBing;
+use Fisharebest\Webtrees\Module\MapLinkGoogle;
+use Fisharebest\Webtrees\Module\MapLinkOpenStreetMap;
 use Fisharebest\Webtrees\Module\MarriageReportModule;
 use Fisharebest\Webtrees\Module\MatomoAnalyticsModule;
 use Fisharebest\Webtrees\Module\MediaListModule;
@@ -202,15 +187,15 @@ use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
-use Fisharebest\Webtrees\Module\ModuleCustomTagsInterface;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
-use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
+use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
 use Fisharebest\Webtrees\Module\ModuleMapGeoLocationInterface;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
@@ -222,6 +207,8 @@ use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\NotesTabModule;
 use Fisharebest\Webtrees\Module\OccupationReportModule;
 use Fisharebest\Webtrees\Module\OnThisDayModule;
+use Fisharebest\Webtrees\Module\OpenRouteServiceAutocomplete;
+use Fisharebest\Webtrees\Module\OpenStreetMap;
 use Fisharebest\Webtrees\Module\OrdnanceSurveyHistoricMaps;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
@@ -274,6 +261,7 @@ use Illuminate\Support\Collection;
 use Throwable;
 
 use function app;
+use function assert;
 use function basename;
 use function dirname;
 use function glob;
@@ -293,7 +281,6 @@ class ModuleService
         ModuleAnalyticsInterface::class,
         ModuleBlockInterface::class,
         ModuleChartInterface::class,
-        ModuleCustomTagsInterface::class,
         ModuleDataFixInterface::class,
         ModuleFooterInterface::class,
         ModuleHistoricEventsInterface::class,
@@ -350,6 +337,7 @@ class ModuleService
         'change_report'           => ChangeReportModule::class,
         'charts'                  => ChartsBlockModule::class,
         'charts-menu'             => ChartsMenuModule::class,
+        'check-for-new-version'   => CheckForNewVersion::class,
         'ckeditor'                => CkeditorModule::class,
         'clippings'               => ClippingsCartModule::class,
         'clouds'                  => CloudsTheme::class,
@@ -358,20 +346,6 @@ class ModuleService
         'contact-links'           => ContactsFooterModule::class,
         'czech-leaders'           => CzechMonarchsAndPresidents::class,
         'custom-css-js'           => CustomCssJsModule::class,
-        'custom-tags-aldfaer'     => CustomTagsAldfaer::class,
-        'custom-tags-bk'          => CustomTagsBrothersKeeper::class,
-        'custom-tags-gedcom-53'   => CustomTagsGedcom53::class,
-        'custom-tags-gedcom-l'    => CustomTagsGedcomL::class,
-        'custom-tags-genpluswin'  => CustomTagsGenPluswin::class,
-        'custom-tags-legacy'      => CustomTagsLegacy::class,
-        'custom-tags-ftb'         => CustomTagsFamilyTreeBuilder::class,
-        'custom-tags-ftm'         => CustomTagsFamilyTreeMaker::class,
-        'custom-tags-paf'         => CustomTagsPersonalAncestralFile::class,
-        'custom-tags-phpgedview'  => CustomTagsPhpGedView::class,
-        'custom-tags-reunion'     => CustomTagsReunion::class,
-        'custom-tags-roots-magic' => CustomTagsRootsMagic::class,
-        'custom-tags-tmg'         => CustomTagsTheMasterGenealogist::class,
-        'custom-tags-webtrees'    => CustomTagsWebtrees::class,
         'death_report'            => DeathReportModule::class,
         'descendancy'             => DescendancyModule::class,
         'descendancy_chart'       => DescendancyChartModule::class,
@@ -397,6 +371,7 @@ class ModuleService
         'fix-place-names'         => FixPlaceNames::class,
         'fix-prim-tag'            => FixPrimaryTag::class,
         'fix-search-and-replace'  => FixSearchAndReplace::class,
+        'fix-wt-obje-sort'        => FixWtObjeSortTag::class,
         'gedcom_block'            => WelcomeBlockModule::class,
         'gedcom_favorites'        => FamilyTreeFavoritesModule::class,
         'gedcom_news'             => FamilyTreeNewsModule::class,

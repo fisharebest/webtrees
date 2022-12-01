@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
@@ -37,9 +36,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_key_exists;
-use function assert;
 use function intdiv;
 use function redirect;
 use function route;
@@ -65,23 +62,30 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     public const MINIMUM_GENERATIONS = 1;
     public const MAXIMUM_GENERATIONS = 10;
 
-    // CSS colors defined for each generation
-    private const GENERATION_COLORS = 12;
+    // CSS colors for each generation
+    protected const COUNT_CSS_COLORS = 12;
 
-    private ChartService $chart_service;
+    protected ChartService $chart_service;
 
-    private LeafletJsService $leaflet_js_service;
+    protected LeafletJsService $leaflet_js_service;
+
+    protected RelationshipService $relationship_service;
 
     /**
      * PedigreeMapModule constructor.
      *
-     * @param ChartService     $chart_service
-     * @param LeafletJsService $leaflet_js_service
+     * @param ChartService        $chart_service
+     * @param LeafletJsService    $leaflet_js_service
+     * @param RelationshipService $relationship_service
      */
-    public function __construct(ChartService $chart_service, LeafletJsService $leaflet_js_service)
-    {
+    public function __construct(
+        ChartService $chart_service,
+        LeafletJsService $leaflet_js_service,
+        RelationshipService $relationship_service
+    ) {
         $this->chart_service      = $chart_service;
         $this->leaflet_js_service = $leaflet_js_service;
+        $this->relationship_service = $relationship_service;
     }
 
     /**
@@ -217,7 +221,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      *
      * @return array<mixed> $geojson
      */
-    private function getMapData(ServerRequestInterface $request): array
+    protected function getMapData(ServerRequestInterface $request): array
     {
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
 
@@ -245,7 +249,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 $polyline           = null;
                 $sosa_points[$sosa] = [$latitude, $longitude];
                 $sosa_child         = intdiv($sosa, 2);
-                $color              = 'var(--wt-pedigree-map-gen-' . $sosa_child % self::GENERATION_COLORS . ')';
+                $generation         = (int) log($sosa, 2);
+                $color              = 'var(--wt-pedigree-map-gen-' . $generation % self::COUNT_CSS_COLORS . ')';
+                $class              = 'wt-pedigree-map-gen-' . $generation % self::COUNT_CSS_COLORS;
 
                 if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
@@ -271,10 +277,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                     'properties' => [
                         'polyline'  => $polyline,
                         'iconcolor' => $color,
-                        'tooltip'   => $fact->place()->gedcomName(),
+                        'tooltip'   => null,
                         'summary'   => view('modules/pedigree-map/events', [
+                            'class'        => $class,
                             'fact'         => $fact,
-                            'relationship' => ucfirst($this->getSosaName($sosa)),
+                            'relationship' => $this->getSosaName($sosa),
                             'sosa'         => $sosa,
                         ]),
                     ],
@@ -291,7 +298,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      *
      * @return array<Fact>
      */
-    private function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
+    protected function getPedigreeMapFacts(ServerRequestInterface $request, ChartService $chart_service): array
     {
         $tree        = Validator::attributes($request)->tree();
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
@@ -324,7 +331,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      *
      * @return string
      */
-    private function getSosaName(int $sosa): string
+    protected function getSosaName(int $sosa): string
     {
         $path = '';
 
@@ -337,9 +344,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             $sosa = intdiv($sosa, 2);
         }
 
-        $relationship_service = app(RelationshipService::class);
-        assert($relationship_service instanceof RelationshipService);
-
-        return $relationship_service->legacyNameAlgorithm($path);
+        return ucfirst($this->relationship_service->legacyNameAlgorithm($path));
     }
 }

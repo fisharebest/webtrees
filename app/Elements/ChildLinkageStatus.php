@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
+use function strtoupper;
 
 /**
  * CHILD_LINKAGE_STATUS := {Size=1:15}
@@ -37,6 +37,10 @@ use function strtolower;
  */
 class ChildLinkageStatus extends AbstractElement
 {
+    public const VALUE_CHALLENGED = 'CHALLENGED';
+    public const VALUE_DISPROVEN  = 'DISPROVEN';
+    public const VALUE_PROVEN     = 'PROVEN';
+
     /**
      * Convert a value to a canonical form.
      *
@@ -46,7 +50,7 @@ class ChildLinkageStatus extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtolower(parent::canonical($value));
+        return strtoupper(parent::canonical($value));
     }
 
     /**
@@ -57,10 +61,10 @@ class ChildLinkageStatus extends AbstractElement
     public function values(): array
     {
         return [
-            ''           => '',
-            'challenged' => /* I18N: Status of child-parent link */ I18N::translate('challenged'),
-            'disproven'  => /* I18N: Status of child-parent link */ I18N::translate('disproven'),
-            'proven'     => /* I18N: Status of child-parent link */ I18N::translate('proven'),
+            ''                     => '',
+            self::VALUE_CHALLENGED => /* I18N: Status of child-parent link */ I18N::translate('challenged'),
+            self::VALUE_DISPROVEN  => /* I18N: Status of child-parent link */ I18N::translate('disproven'),
+            self::VALUE_PROVEN     => /* I18N: Status of child-parent link */ I18N::translate('proven'),
         ];
     }
 }

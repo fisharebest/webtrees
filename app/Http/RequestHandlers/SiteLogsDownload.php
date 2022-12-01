@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
 use function str_replace;
 
 /**
@@ -50,7 +50,7 @@ class SiteLogsDownload implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $content = $this->site_logs_service->logsQuery($request->getQueryParams())
+        $content = $this->site_logs_service->logsQuery($request)
             ->orderBy('log_id')
             ->get()
             ->map(static function (object $row): string {
@@ -65,9 +65,9 @@ class SiteLogsDownload implements RequestHandlerInterface
             })
             ->implode('');
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type'        => 'text/csv; charset=UTF-8',
-            'Content-Disposition' => 'attachment; filename="webtrees-logs.csv"',
+        return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [
+            'content-type'        => 'text/csv; charset=UTF-8',
+            'content-disposition' => 'attachment; filename="webtrees-logs.csv"',
         ]);
     }
 }

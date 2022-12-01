@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,8 +21,9 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -97,10 +98,10 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
         $row    = $this->eventQuery($type, $operation);
         $result = I18N::translate('This information is not available.');
 
-        if ($row) {
+        if ($row !== null) {
             $record = Registry::gedcomRecordFactory()->make($row->id, $this->tree);
 
-            if ($record && $record->canShow()) {
+            if ($record instanceof GedcomRecord && $record->canShow()) {
                 $result = $record->formatList();
             } else {
                 $result = I18N::translate('This information is private and cannot be shown.');
@@ -186,7 +187,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     {
         $row = $this->eventQuery($type, $operation);
 
-        if (!$row) {
+        if ($row === null) {
             return '';
         }
 
@@ -274,10 +275,10 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     {
         $row = $this->eventQuery($type, $operation);
 
-        if ($row) {
+        if ($row !== null) {
             $record = Registry::gedcomRecordFactory()->make($row->id, $this->tree);
 
-            if ($record) {
+            if ($record instanceof GedcomRecord) {
                 return '<a href="' . e($record->url()) . '">' . $record->fullName() . '</a>';
             }
         }
@@ -361,11 +362,11 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     {
         $row = $this->eventQuery($type, $operation);
 
-        if ($row) {
+        if ($row != null) {
             $record = Registry::gedcomRecordFactory()->make($row->id, $this->tree);
             $fact   = null;
 
-            if ($record) {
+            if ($record instanceof GedcomRecord) {
                 $fact = $record->facts([$row->fact])->first();
             }
 

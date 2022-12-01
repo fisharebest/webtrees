@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,15 +21,14 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 
 use function e;
-use function explode;
 use function preg_match;
 use function strip_tags;
+use function substr_count;
 use function view;
 
 /**
@@ -89,6 +88,7 @@ class NoteStructure extends SubmitterText
             ' const shared = document.getElementById("' . e($id) . '-shared").querySelector("select");' .
             ' inline.disabled = !inline.disabled;' .
             ' shared.disabled = !shared.disabled;' .
+            ' if (shared.disabled) { shared.tomselect.disable(); } else { shared.tomselect.enable(); }' .
             '})' .
             '</script>';
     }
@@ -103,6 +103,9 @@ class NoteStructure extends SubmitterText
      */
     public function labelValue(string $value, Tree $tree): string
     {
+        $id       = Registry::idFactory()->id();
+        $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
+
         // A note structure can contain an inline note or a linked to a shared note.
         if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match) === 1) {
             $note = Registry::noteFactory()->make($match[1], $tree);
@@ -111,40 +114,80 @@ class NoteStructure extends SubmitterText
                 return parent::labelValue($value, $tree);
             }
 
+            if (!$note->canShow()) {
+                return '';
+            }
+
+            $label         = '<span class="label">' . I18N::translate('Shared note') . '</span>';
             $value         = $note->getNote();
-            $element       = Registry::elementFactory()->make('NOTE');
-            $label         = $element->label();
             $html          = $this->valueFormatted($value, $tree);
             $first_line    = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
-            $one_line_only = strip_tags($note->fullName()) === strip_tags($value);
-        } else {
-            $label         = I18N::translate('Note');
-            $html          = $this->valueFormatted($value, $tree);
-            [$first_line]  = explode("\n", strip_tags($html));
-            $first_line    = Str::limit($first_line, 100, I18N::translate('…'));
-            $one_line_only = !str_contains($value, "\n") && mb_strlen($value) <= 100;
-        }
 
-        $id       = 'collapse-' . Uuid::uuid4()->toString();
-        $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
+            // Shared note where the title is the same as the text
+            if ($html === '<p>' . strip_tags($note->fullName()) . '</p>') {
+                $value = '<a href="' . e($note->url()) . '">' . strip_tags($html) . '</a>';
 
-        if ($one_line_only) {
+                return '<div>' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
+            }
+
             return
-                 '<div class="fact_NOTE">' .
-                 I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $html) .
-                 '</div>';
+                '<div class="wt-text-overflow-elipsis">' .
+                '<button type="button" class="btn btn-text p-0" href="#' . e($id) . '" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+                view('icons/expand') .
+                view('icons/collapse') .
+                '</button> ' .
+                '<span class="label">' . $label . ':</span> ' . $first_line .
+                '</div>' .
+                '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
+                $html .
+                '</div>';
         }
+
+        $label = '<span class="label">' . I18N::translate('Note') . '</span>';
+        $html  = $this->valueFormatted($value, $tree);
+
+        // Inline note with only one paragraph and inline markup?
+        if ($html === strip_tags($html, ['a', 'em', 'p', 'strong']) && substr_count($html, '<p>') === 1) {
+            $html  = strip_tags($html, ['a', 'em', 'strong']);
+            $value = '<span class="ut">' . $html . '</span>';
+
+            return '<div>' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
+        }
+
+        $value = e(Note::firstLineOfTextFromHtml($html));
+        $value = '<span class="ut collapse ' . ($expanded ? '' : 'show') . ' ' . e($id) . '">' . $value . '</span>';
 
         return
-            '<div class="fact_NOTE">' .
-            '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+            '<div class="wt-text-overflow-elipsis">' .
+            '<button type="button" class="btn btn-text p-0" href="#" data-bs-target=".' . e($id) . '" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
             view('icons/expand') .
             view('icons/collapse') .
-            '</a>' .
-            '<span class="label">' . $label . ':</span> ' . $first_line .
+            '</button> ' .
+            I18N::translate('%1$s: %2$s', $label, $value) .
             '</div>' .
-            '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
+            '<div class="ps-4 collapse ' . ($expanded ? 'show' : '') . ' ' . e($id) . '">' .
             $html .
             '</div>';
+    }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match) === 1) {
+            $note = Registry::noteFactory()->make($match[1], $tree);
+
+            if ($note instanceof Note) {
+                $value = $note->getNote();
+            }
+        }
+
+        return parent::value($value, $tree);
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,14 +42,16 @@ class SearchReplacePage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $params = $request->getQueryParams();
-        $title  = I18N::translate('Search and replace');
+        $tree    = Validator::attributes($request)->tree();
+        $context = Validator::queryParams($request)->string('context', 'all');
+        $replace = Validator::queryParams($request)->string('replace', '');
+        $search  = Validator::queryParams($request)->string('search', '');
+        $title   = I18N::translate('Search and replace');
 
         return $this->viewResponse('search-replace-page', [
-            'context' => $params['context'] ?? 'all',
-            'replace' => $params['replace'] ?? '',
-            'search'  => $params['search'] ?? '',
+            'context' => $context,
+            'replace' => $replace,
+            'search'  => $search,
             'title'   => $title,
             'tree'    => $tree,
         ]);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -65,11 +65,12 @@ class ChartMedia
             ],
         ];
 
-        $values = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
+        $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
+        $values  = $element->values();
 
         foreach ($media as $type => $count) {
             $data[] = [
-                $values[$type] ?? $type,
+                $values[$element->canonical($type)] ?? $type,
                 $count
             ];
         }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,11 +26,10 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
-use function assert;
 use function preg_match;
 
 /**
- * Make a Individual object.
+ * Make an Individual object.
  */
 class IndividualFactory extends AbstractGedcomRecordFactory implements IndividualFactoryInterface
 {
@@ -69,12 +68,7 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (object $row) use ($tree): Individual {
-            $individual = $this->make($row->i_id, $tree, $row->i_gedcom);
-            assert($individual instanceof Individual);
-
-            return $individual;
-        };
+        return fn (object $row): Individual => $this->make($row->i_id, $tree, $row->i_gedcom);
     }
 
     /**

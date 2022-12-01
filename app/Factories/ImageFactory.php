@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -68,7 +68,7 @@ class ImageFactory implements ImageFactoryInterface
 
     protected const INTERVENTION_DRIVERS = ['imagick', 'gd'];
 
-    protected const INTERVENTION_FORMATS = [
+    public const SUPPORTED_FORMATS = [
         'image/jpeg' => 'jpg',
         'image/png'  => 'png',
         'image/gif'  => 'gif',
@@ -91,7 +91,7 @@ class ImageFactory implements ImageFactoryInterface
         try {
             try {
                 $mime_type = $filesystem->mimeType($path);
-            } catch (UnableToRetrieveMetadata $ex) {
+            } catch (UnableToRetrieveMetadata) {
                 $mime_type = Mime::DEFAULT_TYPE;
             }
 
@@ -99,7 +99,8 @@ class ImageFactory implements ImageFactoryInterface
 
             return $this->imageResponse($filesystem->read($path), $mime_type, $filename);
         } catch (UnableToReadFile | FilesystemException $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -127,19 +128,20 @@ class ImageFactory implements ImageFactoryInterface
             $image = $this->autorotateImage($image);
             $image = $this->resizeImage($image, $width, $height, $fit);
 
-            $format  = static::INTERVENTION_FORMATS[$image->mime()] ?? 'jpg';
+            $format  = static::SUPPORTED_FORMATS[$image->mime()] ?? 'jpg';
             $quality = $this->extractImageQuality($image, static::GD_DEFAULT_THUMBNAIL_QUALITY);
             $data    = (string) $image->encode($format, $quality);
 
             return $this->imageResponse($data, $image->mime(), '');
         } catch (NotReadableException $ex) {
             return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -154,7 +156,7 @@ class ImageFactory implements ImageFactoryInterface
      */
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
-        $filesystem = Registry::filesystem()->media($media_file->media()->tree());
+        $filesystem = $media_file->media()->tree()->mediaFilesystem();
         $path       = $media_file->filename();
 
         if (!$add_watermark || !$media_file->isImage()) {
@@ -167,19 +169,20 @@ class ImageFactory implements ImageFactoryInterface
             $watermark = $this->createWatermark($image->width(), $image->height(), $media_file);
             $image     = $this->addWatermark($image, $watermark);
             $filename  = $download ? basename($path) : '';
-            $format    = static::INTERVENTION_FORMATS[$image->mime()] ?? 'jpg';
+            $format    = static::SUPPORTED_FORMATS[$image->mime()] ?? 'jpg';
             $quality   = $this->extractImageQuality($image, static::GD_DEFAULT_IMAGE_QUALITY);
             $data      = (string) $image->encode($format, $quality);
 
             return $this->imageResponse($data, $image->mime(), $filename);
         } catch (NotReadableException $ex) {
             return $this->replacementImageResponse(pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('X-Image-Exception', $ex->getMessage());
+                ->withHeader('x-image-exception', $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Image-Exception', $ex->getMessage());
+                ->withHeader('x-image-exception', $ex->getMessage());
         }
     }
 
@@ -202,7 +205,7 @@ class ImageFactory implements ImageFactoryInterface
         bool $add_watermark
     ): ResponseInterface {
         // Where are the images stored.
-        $filesystem = Registry::filesystem()->media($media_file->media()->tree());
+        $filesystem = $media_file->media()->tree()->mediaFilesystem();
 
         // Where is the image stored in the filesystem.
         $path = $media_file->filename();
@@ -230,7 +233,7 @@ class ImageFactory implements ImageFactoryInterface
                     $image     = $this->addWatermark($image, $watermark);
                 }
 
-                $format  = static::INTERVENTION_FORMATS[$image->mime()] ?? 'jpg';
+                $format  = static::SUPPORTED_FORMATS[$image->mime()] ?? 'jpg';
                 $quality = $this->extractImageQuality($image, static::GD_DEFAULT_THUMBNAIL_QUALITY);
 
                 return (string) $image->encode($format, $quality);
@@ -243,12 +246,13 @@ class ImageFactory implements ImageFactoryInterface
             return $this->imageResponse($data, $mime_type, '');
         } catch (NotReadableException $ex) {
             return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -340,7 +344,7 @@ class ImageFactory implements ImageFactoryInterface
     {
         if ($mime_type === 'image/svg+xml' && str_contains($data, '<script')) {
             return $this->replacementImageResponse('XSS')
-                ->withHeader('X-Image-Exception', 'SVG image blocked due to XSS.');
+                ->withHeader('x-image-exception', 'SVG image blocked due to XSS.');
         }
 
         // HTML files may contain javascript and iframes, so use content-security-policy to disable them.
@@ -383,7 +387,7 @@ class ImageFactory implements ImageFactoryInterface
         try {
             // Auto-rotate using EXIF information.
             return $image->orientate();
-        } catch (NotSupportedException $ex) {
+        } catch (NotSupportedException) {
             // If we can't auto-rotate the image, then don't.
             return $image;
         }

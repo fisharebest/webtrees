@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,9 @@ use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+
+use function array_filter;
+use function array_unique;
 
 /**
  * A GEDCOM media (OBJE) object.
@@ -119,11 +122,20 @@ class Media extends GedcomRecord
         foreach ($this->mediaFiles() as $media_file) {
             $names[] = $media_file->title();
         }
-        foreach ($this->mediaFiles() as $media_file) {
-            $names[] = $media_file->filename();
-        }
-        $names = array_filter(array_unique($names));
 
+        // Titles may be empty.
+        $names = array_filter($names);
+
+        if ($names === []) {
+            foreach ($this->mediaFiles() as $media_file) {
+                $names[] = $media_file->filename();
+            }
+        }
+
+        // Name and title may be the same.
+        $names = array_unique($names);
+
+        // No media files in this media object?
         if ($names === []) {
             $names[] = $this->getFallBackName();
         }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,6 @@ use DomainException;
 use Exception;
 use XMLParser;
 
-use function call_user_func;
 use function fclose;
 use function feof;
 use function fread;
@@ -46,8 +45,8 @@ use const XML_OPTION_CASE_FOLDING;
  */
 class ReportParserBase
 {
-    /** @var XMLParser (resource before PHP 8.0) The XML parser */
-    protected $xml_parser;
+    // The XML parser
+    protected XMLParser $xml_parser;
 
     /** @var string Text contents of tags */
     protected string $text = '';
@@ -113,7 +112,7 @@ class ReportParserBase
         $method = $name . 'StartHandler';
 
         if (method_exists($this, $method)) {
-            call_user_func([$this, $method], $attrs);
+            $this->$method($attrs);
         }
     }
 
@@ -130,7 +129,7 @@ class ReportParserBase
         $method = $name . 'EndHandler';
 
         if (method_exists($this, $method)) {
-            call_user_func([$this, $method]);
+            $this->$method();
         }
     }
 

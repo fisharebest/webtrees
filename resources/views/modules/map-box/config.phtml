@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\I18N;
@@ -16,9 +18,7 @@ use Fisharebest\Webtrees\I18N;
 <h1><?= $title ?></h1>
 
 <form method="post">
-    <?= csrf_field() ?>
-
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="api_key">
             <?= I18N::translate('API key') ?>
         </label>
@@ -35,7 +35,7 @@ use Fisharebest\Webtrees\I18N;
             <div class="form-text">
                 <?= I18N::translate('To use this service, you need an API key.') ?>
                 <br>
-                <?= I18N::translate('For more information, see %s.', '<a href="https://openrouteservice.org/dev">openrouteservice.org/dev</a>') ?>
+                <?= I18N::translate('For more information, see %s.', '<a href="https://account.mapbox.com/access-tokens/">Mapbox access tokens</a>') ?>
             </div>
         </div>
     </div>
@@ -48,4 +48,6 @@ use Fisharebest\Webtrees\I18N;
         <?= view('icons/cancel') ?>
         <?= I18N::translate('cancel') ?>
     </a>
+
+    <?= csrf_field() ?>
 </form>

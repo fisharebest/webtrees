@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Validator;
@@ -27,8 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -57,21 +56,20 @@ class AddChildToIndividualAction implements RequestHandlerInterface
     {
         $tree       = Validator::attributes($request)->tree();
         $xref       = Validator::attributes($request)->isXref()->string('xref');
-        $params     = (array) $request->getParsedBody();
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $levels = $params['ilevels'] ?? [];
-        $tags   = $params['itags'] ?? [];
-        $values = $params['ivalues'] ?? [];
+        $levels = Validator::parsedBody($request)->array('ilevels');
+        $tags   = Validator::parsedBody($request)->array('itags');
+        $values = Validator::parsedBody($request)->array('ivalues');
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
 
         // Create the new child
-        $gedcom = "0 @@ INDI\n" . $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
-        $child  = $tree->createIndividual($gedcom);
+        $child  = $tree->createIndividual('0 @@ INDI' . $gedcom);
 
         // Create a new family
-        $link   = $child->sex() === 'F' ? 'WIFE' : 'HUSB';
-        $gedcom = "0 @@ FAM\n1 " . $link . " @" . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
+        $link   = $individual->sex() === 'F' ? 'WIFE' : 'HUSB';
+        $gedcom = "0 @@ FAM\n1 " . $link . ' @' . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
         $family = $tree->createFamily($gedcom);
 
         // Link the individual to the family
@@ -80,8 +78,7 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         // Link the child to the family
         $child->createFact('1 FAMC @' . $family->xref() . '@', false);
 
-        $base_url = Validator::attributes($request)->string('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $child->url());
+        $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $child->url());
 
         return redirect($url);
     }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Validator;
@@ -32,7 +34,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_fill_keys;
 use function array_filter;
 use function array_key_exists;
+use function array_keys;
+use function array_map;
 use function array_merge;
+use function implode;
 use function strtr;
 
 /**
@@ -123,8 +128,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
     private SearchService $search_service;
 
     /**
-     * SearchController constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(SearchService $search_service)
@@ -133,29 +136,30 @@ class SearchAdvancedPage implements RequestHandlerInterface
     }
 
     /**
-     * A structured search.
-     *
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
+        $tree           = Validator::attributes($request)->tree();
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
+        $fields         = Validator::queryParams($request)->array('fields') ?: $default_fields;
+        $modifiers      = Validator::queryParams($request)->array('modifiers');
+        $other_fields   = $this->otherFields($fields);
+        $date_options   = $this->dateOptions();
+        $name_options   = $this->nameOptions();
 
-        $params = $request->getQueryParams();
+        $search_fields = array_filter($fields, static fn (string $x): bool => $x !== '');
 
-        $fields    = $params['fields'] ?? $default_fields;
-        $modifiers = $params['modifiers'] ?? [];
-
-        $other_fields = $this->otherFields($fields);
-        $date_options = $this->dateOptions();
-        $name_options = $this->nameOptions();
-
-        if (array_filter($fields) !== []) {
-            $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $fields, $modifiers);
+        if ($search_fields !== []) {
+            // Log search requests for visitors
+            if (Auth::id() === null) {
+                $fn      = static fn (string $x, string $y): string => $x . '=' . $y;
+                $message = 'Advanced: ' . implode(', ', array_map($fn, array_keys($search_fields), $search_fields));
+                Log::addSearchLog($message, [$tree]);
+            }
+            $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $search_fields, $modifiers);
         } else {
             $individuals = new Collection();
         }

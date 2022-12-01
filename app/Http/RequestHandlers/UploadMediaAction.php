@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToWriteFile;
@@ -41,6 +42,7 @@ use function str_replace;
 use function substr;
 use function trim;
 
+use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -68,20 +70,20 @@ class UploadMediaAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data_filesystem = Registry::filesystem()->data();
-
-        $params = (array) $request->getParsedBody();
-
-        $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
+        $all_folders     = $this->media_file_service->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
+            if ($uploaded_file->getError() === UPLOAD_ERR_NO_FILE) {
+                continue;
+            }
+
             if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
                 throw new FileUploadException($uploaded_file);
             }
 
-            $key = substr($key, 9);
-
-            $folder   = $params['folder' . $key];
-            $filename = $params['filename' . $key];
+            $key      = substr($key, 9);
+            $folder   = Validator::parsedBody($request)->string('folder' . $key);
+            $filename = Validator::parsedBody($request)->string('filename' . $key);
 
             // If no filename specified, use the original filename.
             if ($filename === '') {
@@ -113,7 +115,7 @@ class UploadMediaAction implements RequestHandlerInterface
 
             try {
                 $file_exists = $data_filesystem->fileExists($path);
-            } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+            } catch (FilesystemException | UnableToCheckFileExistence) {
                 $file_exists = false;
             }
 

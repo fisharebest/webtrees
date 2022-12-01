@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Illuminate\Support\Collection;
@@ -16,13 +18,12 @@ use Illuminate\Support\Collection;
 </h2>
 
 <form method="post" class="wt-page-options wt-page-options-report-select">
-    <?= csrf_field() ?>
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="report">
             <?= I18N::translate('Report') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <select class="form-control" id="report" name="report">
+            <select class="form-select" id="report" name="report">
                 <?php foreach ($reports as $report) : ?>
                     <option value="<?= e($report->name()) ?>">
                         <?= e($report->title()) ?>
@@ -32,7 +33,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row">
         <div class="col-sm-3 col-form-label wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
             <button type="submit" class="btn btn-primary">
@@ -40,4 +41,6 @@ use Illuminate\Support\Collection;
             </button>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

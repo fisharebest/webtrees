@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 
 use function app;
@@ -57,7 +55,6 @@ class Tree
         'EXPAND_SOURCES'               => '0',
         'FAM_FACTS_QUICK'              => 'ENGA,MARR,DIV',
         'FORMAT_TEXT'                  => 'markdown',
-        'FULL_SOURCES'                 => '0',
         'GEDCOM_MEDIA_PATH'            => '',
         'GENERATE_UIDS'                => '0',
         'HIDE_GEDCOM_ERRORS'           => '1',
@@ -73,7 +70,6 @@ class Tree
         'META_TITLE'                   => Webtrees::NAME,
         'NO_UPDATE_CHAN'               => '0',
         'PEDIGREE_ROOT_ID'             => '',
-        'PREFER_LEVEL2_SOURCES'        => '1',
         'QUICK_REQUIRED_FACTS'         => 'BIRT,DEAT',
         'QUICK_REQUIRED_FAMFACTS'      => 'MARR',
         'REQUIRE_AUTHENTICATION'       => '0',
@@ -117,7 +113,7 @@ class Tree
     private array $individual_fact_privacy;
 
     /** @var array<string> Cached copy of the wt_gedcom_setting table. */
-    private $preferences = [];
+    private array $preferences = [];
 
     /** @var array<array<string>> Cached copy of the wt_user_gedcom_setting table. */
     private array $user_preferences = [];
@@ -166,9 +162,7 @@ class Tree
      */
     public static function rowMapper(): Closure
     {
-        return static function (object $row): Tree {
-            return new Tree((int) $row->tree_id, $row->tree_name, $row->tree_title);
-        };
+        return static fn (object $row): Tree => new Tree((int) $row->tree_id, $row->tree_name, $row->tree_title);
     }
 
     /**
@@ -344,7 +338,7 @@ class Tree
     }
 
     /**
-     * Are there any pending edits for this tree, than need reviewing by a moderator.
+     * Are there any pending edits for this tree, that need reviewing by a moderator.
      *
      * @return bool
      */
@@ -366,7 +360,7 @@ class Tree
      */
     public function createRecord(string $gedcom): GedcomRecord
     {
-        if (!preg_match('/^0 @@ ([_A-Z]+)/', $gedcom, $match)) {
+        if (preg_match('/^0 @@ ([_A-Z]+)/', $gedcom, $match) !== 1) {
             throw new InvalidArgumentException('GedcomRecord::createRecord(' . $gedcom . ') does not begin 0 @@');
         }
 
@@ -595,15 +589,10 @@ class Tree
     /**
      * Where do we store our media files.
      *
-     * @param FilesystemOperator $data_filesystem
-     *
      * @return FilesystemOperator
      */
-    public function mediaFilesystem(FilesystemOperator $data_filesystem): FilesystemOperator
+    public function mediaFilesystem(): FilesystemOperator
     {
-        $media_dir = $this->getPreference('MEDIA_DIRECTORY');
-        $adapter   = new ChrootAdapter($data_filesystem, $media_dir);
-
-        return new Filesystem($adapter);
+        return Registry::filesystem()->data($this->getPreference('MEDIA_DIRECTORY'));
     }
 }

@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Sources') ?>
+</h4>
+
+<div class="row row-cols-1 row-cols-lg-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Individuals with sources') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#totalIndisWithSources#</span>
+            </h5>
+            <div class="card-body">
+                #chartIndisWithSources#
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Families with sources') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#totalFamsWithSources#</span>
+            </h5>
+            <div class="card-body">
+                #chartFamsWithSources#
+            </div>
+        </div>
+    </div>
+</div>

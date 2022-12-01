@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,23 +36,35 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
+use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemOperator;
+use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
+use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use RuntimeException;
 
+use function addcslashes;
 use function date;
 use function explode;
+use function fclose;
 use function fopen;
 use function fwrite;
+use function is_string;
 use function pathinfo;
+use function preg_match_all;
 use function rewind;
-use function str_contains;
-use function str_starts_with;
 use function stream_filter_append;
+use function stream_get_meta_data;
 use function strlen;
 use function strpos;
 use function strtolower;
 use function strtoupper;
+use function tmpfile;
 
 use const PATHINFO_EXTENSION;
+use const PREG_SET_ORDER;
 use const STREAM_FILTER_WRITE;
 
 /**
@@ -60,16 +72,107 @@ use const STREAM_FILTER_WRITE;
  */
 class GedcomExportService
 {
+    private const ACCESS_LEVELS = [
+        'gedadmin' => Auth::PRIV_NONE,
+        'user'     => Auth::PRIV_USER,
+        'visitor'  => Auth::PRIV_PRIVATE,
+        'none'     => Auth::PRIV_HIDE,
+    ];
+
+    private ResponseFactoryInterface $response_factory;
+
+    private StreamFactoryInterface $stream_factory;
+
+    /**
+     * @param ResponseFactoryInterface $response_factory
+     * @param StreamFactoryInterface   $stream_factory
+     */
+    public function __construct(ResponseFactoryInterface $response_factory, StreamFactoryInterface $stream_factory)
+    {
+        $this->response_factory = $response_factory;
+        $this->stream_factory   = $stream_factory;
+    }
+
+    /**
+     * @param Tree            $tree         - Export data from this tree
+     * @param bool            $sort_by_xref - Write GEDCOM records in XREF order
+     * @param string          $encoding     - Convert from UTF-8 to other encoding
+     * @param string          $privacy      - Filter records by role
+     * @param string          $line_endings
+     * @param string          $filename     - Name of download file, without an extension
+     * @param string          $format       - One of: gedcom, zip, zipmedia, gedzip
+     * @param Collection|null $records
+     *
+     * @return ResponseInterface
+     */
+    public function downloadResponse(
+        Tree $tree,
+        bool $sort_by_xref,
+        string $encoding,
+        string $privacy,
+        string $line_endings,
+        string $filename,
+        string $format,
+        Collection $records = null
+    ): ResponseInterface {
+        $access_level = self::ACCESS_LEVELS[$privacy];
+
+        if ($format === 'gedcom') {
+            $resource = $this->export($tree, $sort_by_xref, $encoding, $access_level, $line_endings, $records);
+            $stream   = $this->stream_factory->createStreamFromResource($resource);
+
+            return $this->response_factory->createResponse()
+                ->withBody($stream)
+                ->withHeader('content-type', 'text/x-gedcom; charset=' . UTF8::NAME)
+                ->withHeader('content-disposition', 'attachment; filename="' . addcslashes($filename, '"') . '.ged"');
+        }
+
+        // Create a new/empty .ZIP file
+        $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
+        $zip_provider   = new FilesystemZipArchiveProvider($temp_zip_file, 0755);
+        $zip_adapter    = new ZipArchiveAdapter($zip_provider);
+        $zip_filesystem = new Filesystem($zip_adapter);
+
+        if ($format === 'zipmedia') {
+            $media_path = $tree->getPreference('MEDIA_DIRECTORY');
+        } elseif ($format === 'gedzip') {
+            $media_path = '';
+        } else {
+            // Don't add media
+            $media_path = null;
+        }
+
+        $resource = $this->export($tree, $sort_by_xref, $encoding, $access_level, $line_endings, $records, $zip_filesystem, $media_path);
+
+        if ($format === 'gedzip') {
+            $zip_filesystem->writeStream('gedcom.ged', $resource);
+            $extension = '.gdz';
+        } else {
+            $zip_filesystem->writeStream($filename . '.ged', $resource);
+            $extension = '.zip';
+        }
+
+        fclose($resource);
+
+        $stream = $this->stream_factory->createStreamFromFile($temp_zip_file);
+
+        return $this->response_factory->createResponse()
+            ->withBody($stream)
+            ->withHeader('content-type', 'application/zip')
+            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes($filename, '"') . $extension . '"');
+    }
+
     /**
      * Write GEDCOM data to a stream.
      *
-     * @param Tree                        $tree         - Export data from this tree
-     * @param bool                        $sort_by_xref - Write GEDCOM records in XREF order
-     * @param string                      $encoding     - Convert from UTF-8 to other encoding
-     * @param int                         $access_level - Apply privacy filtering
-     * @param string                      $media_path   - Prepend path to media filenames
-     * @param string                      $line_endings - CRLF or LF
-     * @param Collection<int,string>|null $records      - Just export these records
+     * @param Tree                        $tree           - Export data from this tree
+     * @param bool                        $sort_by_xref   - Write GEDCOM records in XREF order
+     * @param string                      $encoding       - Convert from UTF-8 to other encoding
+     * @param int                         $access_level   - Apply privacy filtering
+     * @param string                      $line_endings   - CRLF or LF
+     * @param Collection<int,string>|null $records        - Just export these records
+     * @param FilesystemOperator|null     $zip_filesystem - Write media files to this filesystem
+     * @param string|null                 $media_path     - Location within the zip filesystem
      *
      * @return resource
      */
@@ -78,9 +181,10 @@ class GedcomExportService
         bool $sort_by_xref = false,
         string $encoding = UTF8::NAME,
         int $access_level = Auth::PRIV_HIDE,
-        string $media_path = '',
         string $line_endings = 'CRLF',
-        Collection $records = null
+        Collection $records = null,
+        FilesystemOperator $zip_filesystem = null,
+        string $media_path = null
     ) {
         $stream = fopen('php://memory', 'wb+');
 
@@ -125,6 +229,8 @@ class GedcomExportService
             ];
         }
 
+        $media_filesystem = $tree->mediaFilesystem();
+
         foreach ($data as $rows) {
             foreach ($rows as $datum) {
                 if (is_string($datum)) {
@@ -140,8 +246,16 @@ class GedcomExportService
                         $datum->o_gedcom;
                 }
 
-                if ($media_path !== '') {
-                    $gedcom = $this->convertMediaPath($gedcom, $media_path);
+                if ($media_path !== null && $zip_filesystem !== null && preg_match('/0 @' . Gedcom::REGEX_XREF . '@ OBJE/', $gedcom) === 1) {
+                    preg_match_all('/\n1 FILE (.+)/', $gedcom, $matches, PREG_SET_ORDER);
+
+                    foreach ($matches as $match) {
+                        $media_file = $match[1];
+
+                        if ($media_filesystem->fileExists($media_file)) {
+                            $zip_filesystem->writeStream($media_path . $media_file, $media_filesystem->readStream($media_file));
+                        }
+                    }
                 }
 
                 $gedcom = $this->wrapLongLines($gedcom, Gedcom::LINE_LENGTH) . "\n";
@@ -214,39 +328,6 @@ class GedcomExportService
             foreach ($header->facts(['SUBM', 'SUBN']) as $fact) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
-        }
-
-        return $gedcom;
-    }
-
-    /**
-     * Prepend a media path, such as might have been removed during import.
-     *
-     * @param string $gedcom
-     * @param string $media_path
-     *
-     * @return string
-     */
-    private function convertMediaPath(string $gedcom, string $media_path): string
-    {
-        if (preg_match('/^0 @[^@]+@ OBJE/', $gedcom)) {
-            return preg_replace_callback('/\n1 FILE (.+)/', static function (array $match) use ($media_path): string {
-                $filename = $match[1];
-
-                // Don’t modify external links
-                if (!str_contains($filename, '://')) {
-                    // Convert separators to match new path.
-                    if (str_contains($media_path, '\\')) {
-                        $filename = strtr($filename, ['/' => '\\']);
-                    }
-
-                    if (!str_starts_with($filename, $media_path)) {
-                        $filename = $media_path . $filename;
-                    }
-                }
-
-                return "\n1 FILE " . $filename;
-            }, $gedcom);
         }
 
         return $gedcom;

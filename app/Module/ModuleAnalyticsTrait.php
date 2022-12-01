@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -112,7 +112,7 @@ trait ModuleAnalyticsTrait
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -141,7 +141,7 @@ trait ModuleAnalyticsTrait
      *
      * @return string
      */
-    public function analyticsSnippet(/** @scrutinizer ignore-unused */ array $parameters): string
+    public function analyticsSnippet(array $parameters): string
     {
         return '';
     }
@@ -163,10 +163,8 @@ trait ModuleAnalyticsTrait
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         foreach (array_keys($this->analyticsParameters()) as $parameter) {
-            $new_value = $params[$parameter];
+            $new_value = Validator::parsedBody($request)->string($parameter);
 
             $this->setPreference($parameter, $new_value);
         }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,17 +38,13 @@ class SearchPhoneticAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params = (array) $request->getParsedBody();
-
         return redirect(route(SearchPhoneticPage::class, [
-            'firstname'    => $params['firstname'] ?? '',
-            'lastname'     => $params['lastname'] ?? '',
-            'place'        => $params['place'] ?? '',
-            'search_trees' => $params['search_trees'] ?? [],
-            'soundex'      => $params['soundex'] ?? 'Russell',
-            'tree'         => $tree->name(),
+            'firstname'    => Validator::parsedBody($request)->string('firstname'),
+            'lastname'     => Validator::parsedBody($request)->string('lastname'),
+            'place'        => Validator::parsedBody($request)->string('place'),
+            'search_trees' => Validator::parsedBody($request)->array('search_trees'),
+            'soundex'      => Validator::parsedBody($request)->string('soundex'),
+            'tree'         => Validator::attributes($request)->tree()->name(),
         ]));
     }
 }

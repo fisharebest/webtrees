@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,11 +29,10 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -61,11 +60,10 @@ class RedirectModulePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query      = $request->getQueryParams();
-        $ged        = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $mod        = $query['mod'] ?? '';
-        $mod_action = $query['mod_action'] ?? '';
-        $rootid     = $query['rootid'] ?? '';
+        $ged        = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $mod        = Validator::queryParams($request)->string('mod', '');
+        $mod_action = Validator::queryParams($request)->string('mod_action', '');
+        $rootid     = Validator::queryParams($request)->string('rootid', '');
         $tree       = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
@@ -77,10 +75,10 @@ class RedirectModulePhp implements RequestHandlerInterface
                         $module = $this->module_service->findByInterface(PedigreeMapModule::class)->first();
 
                         if ($module instanceof PedigreeMapModule) {
-                            $generations = $query['PEDIGREE_GENERATIONS'] ?? PedigreeMapModule::DEFAULT_GENERATIONS;
+                            $generations = Validator::queryParams($request)->string('PEDIGREE_GENERATIONS', PedigreeMapModule::DEFAULT_GENERATIONS);
                             $url         = $module->chartUrl($individual, ['generations' => $generations]);
 
-                            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
                         }
 
                         break;
@@ -91,7 +89,7 @@ class RedirectModulePhp implements RequestHandlerInterface
                         if ($module instanceof InteractiveTreeModule) {
                             $url = $module->chartUrl($individual, []);
 
-                            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
                         }
 
                         break;

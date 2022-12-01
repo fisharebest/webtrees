@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,6 +30,7 @@
 }
 
 /* Allow font-awesome icon lists to work on RTL pages */
+/* rtl:ignore */
 [dir=rtl] .fa-li {
     right: -2rem;
 }
@@ -40,6 +41,7 @@
 }
 
 /* Bootstrap carousel icons should mirror on RTL  pages */
+/* rtl:ignore */
 [dir=rtl] .carousel-control-next-icon,
 [dir=rtl] .carousel-control-prev-icon  {
     transform: scale(-1, 1);

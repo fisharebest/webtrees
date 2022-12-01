@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
@@ -89,17 +90,14 @@ class RegisterAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->treeOptional();
-
         $this->checkRegistrationAllowed();
 
-        $params = (array) $request->getParsedBody();
-
-        $comments = $params['comments'] ?? '';
-        $email    = $params['email'] ?? '';
-        $password = $params['password'] ?? '';
-        $realname = $params['realname'] ?? '';
-        $username = $params['username'] ?? '';
+        $tree     = Validator::attributes($request)->treeOptional();
+        $comments = Validator::parsedBody($request)->string('comments');
+        $email    = Validator::parsedBody($request)->string('email');
+        $password = Validator::parsedBody($request)->string('password');
+        $realname = Validator::parsedBody($request)->string('realname');
+        $username = Validator::parsedBody($request)->string('username');
 
         try {
             if ($this->captcha_service->isRobot($request)) {
@@ -136,7 +134,7 @@ class RegisterAction implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED, '');
         $user->setPreference(UserInterface::PREF_TIMESTAMP_REGISTERED, date('U'));
         $user->setPreference(UserInterface::PREF_VERIFICATION_TOKEN, $token);
-        $user->setPreference(UserInterface::PREF_CONTACT_METHOD, 'messaging2');
+        $user->setPreference(UserInterface::PREF_CONTACT_METHOD, MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL);
         $user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comments);
         $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
         $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
@@ -155,7 +153,7 @@ class RegisterAction implements RequestHandlerInterface
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         $this->email_service->send(
-            new Siteuser(),
+            new SiteUser(),
             $user,
             $reply_to,
             I18N::translate('Your registration at %s', $base_url),
@@ -196,7 +194,11 @@ class RegisterAction implements RequestHandlerInterface
             );
 
             $mail1_method = $administrator->getPreference(UserInterface::PREF_CONTACT_METHOD);
-            if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+            if (
+                $mail1_method !== MessageService::CONTACT_METHOD_EMAIL &&
+                $mail1_method !== MessageService::CONTACT_METHOD_MAILTO &&
+                $mail1_method !== MessageService::CONTACT_METHOD_NONE
+            ) {
                 DB::table('message')->insert([
                     'sender'     => $user->email(),
                     'ip_address' => $request->getAttribute('client-ip'),

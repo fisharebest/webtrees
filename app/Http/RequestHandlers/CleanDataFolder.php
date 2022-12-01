@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -70,7 +70,7 @@ class CleanDataFolder implements RequestHandlerInterface
             'config.ini.php',
         ];
 
-        if (Validator::attributes($request)->string('dbtype') === 'sqlite') {
+        if (Validator::attributes($request)->string('dbtype', 'mysql') === 'sqlite') {
             $protected[] = Validator::attributes($request)->string('dbname') . '.sqlite';
         }
 
@@ -93,7 +93,7 @@ class CleanDataFolder implements RequestHandlerInterface
                     return $attributes->path();
                 })
                 ->toArray();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $entries = [];
         }
 

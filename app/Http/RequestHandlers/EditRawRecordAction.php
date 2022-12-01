@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,9 +28,11 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function explode;
-use function is_string;
+use function in_array;
+use function preg_replace;
+use function redirect;
+use function trim;
 
 /**
  * Edit the raw GEDCOM of a record.
@@ -44,15 +46,13 @@ class EditRawRecordAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
-        $params = (array) $request->getParsedBody();
-
-        $level0   = $params['level0'];
-        $facts    = $params['fact'] ?? [];
-        $fact_ids = $params['fact_id'] ?? [];
+        $tree     = Validator::attributes($request)->tree();
+        $xref     = Validator::attributes($request)->isXref()->string('xref');
+        $record   = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record   = Auth::checkRecordAccess($record, true);
+        $level0   = Validator::parsedBody($request)->string('level0');
+        $facts    = Validator::parsedBody($request)->array('fact');
+        $fact_ids = Validator::parsedBody($request)->array('fact_id');
 
         // Generate the level-0 line for the record.
         switch ($record->tag()) {
@@ -79,7 +79,7 @@ class EditRawRecordAction implements RequestHandlerInterface
         }
         // Append the updated facts
         foreach ($facts as $fact) {
-            $gedcom .= "\n" . $fact;
+            $gedcom .= "\n" . trim($fact);
         }
 
         // Empty lines and MSDOS line endings.

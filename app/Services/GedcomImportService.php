@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -59,7 +59,6 @@ use function str_contains;
 use function str_replace;
 use function str_starts_with;
 use function strlen;
-use function strtolower;
 use function strtoupper;
 use function strtr;
 use function substr;
@@ -99,10 +98,6 @@ class GedcomImportService
             $tag = $gedcom_service->canonicalTag($tag);
 
             switch ($tag) {
-                case 'AFN':
-                    // AFN values are upper case
-                    $data = strtoupper($data);
-                    break;
                 case 'DATE':
                     // Preserve text from INT dates
                     if (str_contains($data, '(')) {
@@ -146,15 +141,9 @@ class GedcomImportService
                     // Append the "INT" text
                     $data = $date . $text;
                     break;
-                case '_FILE':
-                    $tag = 'FILE';
-                    break;
-                case 'FORM':
-                    // Consistent commas
-                    $data = preg_replace('/ *, */', ', ', $data);
-                    break;
                 case 'HEAD':
-                    // HEAD records don't have an XREF or DATA
+                case 'TRLR':
+                    // HEAD and TRLR records do not have an XREF or DATA
                     if ($level === '0') {
                         $xref = '';
                         $data = '';
@@ -164,48 +153,26 @@ class GedcomImportService
                     // Tidy up non-printing characters
                     $data = preg_replace('/  +/', ' ', trim($data));
                     break;
-                case 'PEDI':
-                    // PEDI values are lower case
-                    $data = strtolower($data);
-                    break;
                 case 'PLAC':
                     // Consistent commas
                     $data = preg_replace('/ *[,，،] */u', ', ', $data);
                     // The Master Genealogist stores LAT/LONG data in the PLAC field, e.g. Pennsylvania, USA, 395945N0751013W
-                    if (preg_match('/(.*), (\d\d)(\d\d)(\d\d)([NS])(\d\d\d)(\d\d)(\d\d)([EW])$/', $data, $match)) {
+                    if (preg_match('/(.*), (\d\d)(\d\d)(\d\d)([NS])(\d\d\d)(\d\d)(\d\d)([EW])$/', $data, $match) === 1) {
+                        $degns = (int) $match[2];
+                        $minns = (int) $match[3];
+                        $secns = (int) $match[4];
+                        $degew = (int) $match[6];
+                        $minew = (int) $match[7];
+                        $secew = (int) $match[8];
                         $data =
                             $match[1] . "\n" .
-                            ($level + 1) . " MAP\n" .
-                            ($level + 2) . ' LATI ' . ($match[5] . round($match[2] + ($match[3] / 60) + ($match[4] / 3600), 4)) . "\n" .
-                            ($level + 2) . ' LONG ' . ($match[9] . round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4));
-                    }
-                    break;
-                case 'RESN':
-                    // RESN values are lower case (confidential, privacy, locked, none)
-                    $data = strtolower($data);
-                    if ($data === 'invisible') {
-                        $data = 'confidential'; // From old versions of Legacy.
+                            (1 + (int) $level) . " MAP\n" .
+                            (2 + (int) $level) . ' LATI ' . ($match[5] . round($degns + $minns / 60 + $secns / 3600, 4)) . "\n" .
+                            (2 + (int) $level) . ' LONG ' . ($match[9] . round($degew + $minew / 60 + $secew / 3600, 4));
                     }
                     break;
                 case 'SEX':
                     $data = strtoupper($data);
-                    break;
-                case 'STAT':
-                    if ($data === 'CANCELLED') {
-                        // PhpGedView mis-spells this tag - correct it.
-                        $data = 'CANCELED';
-                    }
-                    break;
-                case 'TEMP':
-                    // Temple codes are upper case
-                    $data = strtoupper($data);
-                    break;
-                case 'TRLR':
-                    // TRLR records don't have an XREF or DATA
-                    if ($level === '0') {
-                        $xref = '';
-                        $data = '';
-                    }
                     break;
             }
             // Suppress "Y", for facts/events with a DATE or PLAC
@@ -284,10 +251,28 @@ class GedcomImportService
         // import different types of records
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $xref, $type] = $match;
-        } elseif (preg_match('/0 (HEAD|TRLR|_PLAC |_PLAC_DEFN)/', $gedrec, $match)) {
-            $type = $match[1];
-            $xref = $type; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (str_starts_with($gedrec, '0 HEAD')) {
+            $type = 'HEAD';
+            $xref = 'HEAD'; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (str_starts_with($gedrec, '0 TRLR')) {
+            $tree->setPreference('imported', '1');
+            $type = 'TRLR';
+            $xref = 'TRLR'; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (str_starts_with($gedrec, '0 _PLAC_DEFN')) {
+            $this->importLegacyPlacDefn($gedrec);
+
+            return;
+        } elseif (str_starts_with($gedrec, '0 _PLAC ')) {
+            $this->importTNGPlac($gedrec);
+
+            return;
         } else {
+            foreach (Gedcom::CUSTOM_RECORDS_WITHOUT_XREFS as $record_type) {
+                if (preg_match('/^0 ' . $record_type . '\b/', $gedrec) === 1) {
+                    return;
+                }
+            }
+
             throw new GedcomErrorException($gedrec);
         }
 
@@ -334,11 +319,15 @@ class GedcomImportService
                     $rin = $xref;
                 }
 
+                // The database can only store MFU, and many of the stats queries assume this.
+                $sex = $record->sex();
+                $sex = $sex === 'M' || $sex === 'F' ? $sex : 'U';
+
                 DB::table('individuals')->insert([
                     'i_id'     => $xref,
                     'i_file'   => $tree_id,
                     'i_rin'    => $rin,
-                    'i_sex'    => $record->sex(),
+                    'i_sex'    => $sex,
                     'i_gedcom' => $gedrec,
                 ]);
 
@@ -444,14 +433,6 @@ class GedcomImportService
                     ]);
                 }
                 break;
-
-            case '_PLAC ':
-                $this->importTNGPlac($gedrec);
-                return;
-
-            case '_PLAC_DEFN':
-                $this->importLegacyPlacDefn($gedrec);
-                return;
 
             default: // Custom record types.
                 DB::table('other')->insert([
@@ -654,11 +635,14 @@ class GedcomImportService
         preg_match_all('/\n\d+ (' . Gedcom::REGEX_TAG . ') @(' . Gedcom::REGEX_XREF . ')@/', $gedrec, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $match) {
+            // Some applications (e.g. GenoPro) create links longer than 15 characters.
+            $link = mb_substr($match[1], 0, 15);
+
             // Take care of "duplicates" that differ on case/collation, e.g. "SOUR @S1@" and "SOUR @s1@"
-            $rows[$match[1] . strtoupper($match[2])] = [
+            $rows[$link . strtoupper($match[2])] = [
                 'l_from' => $xref,
                 'l_to'   => $match[2],
-                'l_type' => $match[1],
+                'l_type' => $link,
                 'l_file' => $ged_id,
             ];
         }
@@ -812,7 +796,7 @@ class GedcomImportService
             }
 
             if ($title !== '') {
-                $gedcom .= "\n3 TITL " . $title;
+                $gedcom .= "\n2 TITL " . $title;
             }
 
             if ($scrapbook !== '') {

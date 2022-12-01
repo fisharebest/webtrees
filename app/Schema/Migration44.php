@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ use PDOException;
 class Migration44 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to the next version
      *
      * @return void
      */
@@ -53,12 +53,21 @@ class Migration44 implements MigrationInterface
                 $table->index(['longitude']);
             });
 
-            DB::schema()->table('place_location', static function (Blueprint $table): void {
+            // SQL-server cannot cascade-delete/update on self-relations.
+            // Users will need to delete all child locations before deleting the parent.
+            if (DB::connection()->getDriverName() === 'sqlsrv') {
+                // SQL-Server doesn't support 'RESTRICT'
+                $action = 'NO ACTION';
+            } else {
+                $action = 'CASCADE';
+            }
+
+            DB::schema()->table('place_location', static function (Blueprint $table) use ($action): void {
                 $table->foreign(['parent_id'])
                     ->references(['id'])
                     ->on('place_location')
-                    ->onDelete('CASCADE')
-                    ->onUpdate('CASCADE');
+                    ->onDelete($action)
+                    ->onUpdate($action);
             });
         }
 
@@ -96,13 +105,15 @@ class Migration44 implements MigrationInterface
                 DB::schema()->table('placelocation', static function (Blueprint $table): void {
                     $table->dropUnique(['pl_parent_id', 'pl_place']);
                 });
-            } catch (PDOException $ex) {
+            } catch (PDOException) {
                 // Already deleted, or does not exist;
             }
 
+            $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+
             DB::table('placelocation')
                 ->update([
-                    'pl_place' => new Expression('SUBSTR(pl_place, 1, 120)'),
+                    'pl_place' => new Expression($substring_function . '(pl_place, 1, 120)'),
                 ]);
 
             // The lack of unique key constraints means that there may be duplicates...
@@ -160,10 +171,17 @@ class Migration44 implements MigrationInterface
                     new Expression("REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '')"),
                 ]);
 
+            // SQL-server needs to be told to insert values into auto-generated columns.
+            if (DB::connection()->getDriverName() === 'sqlsrv') {
+                $prefix    = DB::connection()->getTablePrefix();
+                $statement = 'SET IDENTITY_INSERT [' . $prefix . 'place_location] ON';
+                DB::connection()->statement($statement);
+            }
+
             try {
                 DB::table('place_location')
                     ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
-            } catch (PDOException $ex) {
+            } catch (PDOException) {
                 DB::table('place_location')
                     ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
             }

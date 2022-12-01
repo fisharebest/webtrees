@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<div class="row form-group mb-3">
+<div class="row mb-3">
     <label class="col-form-label col-sm-2" for="restriction">
         <?= /* I18N: a restriction on viewing data */ I18N::translate('Restriction') ?>
     </label>
     <div class="col-sm-10">
-        <select class="form-control" id="restriction" name="restriction">
+        <select class="form-select" id="restriction" name="restriction">
             <option value="">&nbsp;</option>
             <option value="none">
                 <?= I18N::translate('Show to visitors') ?>

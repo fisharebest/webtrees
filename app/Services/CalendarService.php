@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,10 +29,10 @@ use Fisharebest\Webtrees\Date\JalaliDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -40,6 +40,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 use function array_merge;
+use function assert;
 use function in_array;
 use function preg_match_all;
 use function range;

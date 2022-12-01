@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,8 +39,7 @@ class CreateSubmissionAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = Validator::attributes($request)->tree();
-        $params    = (array) $request->getParsedBody();
-        $submitter = $params['submitter'];
+        $submitter = Validator::parsedBody($request)->string('submitter');
 
         $gedcom = "0 @@ SUBN\n1 SUBM @" . $submitter . '@';
 

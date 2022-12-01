@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\UnableToMoveFile;
@@ -72,16 +73,14 @@ class ImportThumbnailsAction implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $params = (array) $request->getParsedBody();
-
-        $thumbnail = $params['thumbnail'];
-        $action    = $params['action'];
-        $xrefs     = $params['xref'];
-        $geds      = $params['ged'];
+        $thumbnail = Validator::parsedBody($request)->string('thumbnail');
+        $action    = Validator::parsedBody($request)->string('action');
+        $xrefs     = Validator::parsedBody($request)->array('xref');
+        $geds      = Validator::parsedBody($request)->array('ged');
 
         try {
             $file_exists = $data_filesystem->fileExists($thumbnail);
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $file_exists = false;
         }
 
@@ -100,7 +99,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
             case 'delete':
                 try {
                     $data_filesystem->delete($thumbnail);
-                } catch (FilesystemException | UnableToDeleteFile $ex) {
+                } catch (FilesystemException | UnableToDeleteFile) {
                     // Cannot delete the file.  Leave it there.
                 }
                 break;
@@ -108,7 +107,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
             case 'add':
                 try {
                     $mime_type = $data_filesystem->mimeType($thumbnail) ?: Mime::DEFAULT_TYPE;
-                } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+                } catch (FilesystemException | UnableToRetrieveMetadata) {
                     $mime_type = Mime::DEFAULT_TYPE;
                 }
 
@@ -139,7 +138,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
                         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
                         $this->pending_changes_service->acceptRecord($media_object);
                     }
-                } catch (FilesystemException | UnableToReadFile | UnableToMoveFile $ex) {
+                } catch (FilesystemException | UnableToReadFile | UnableToMoveFile) {
                     // Cannot import the file?
                 }
 

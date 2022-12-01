@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,7 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function e;
 use function redirect;
 use function round;
-use function route;
 
 /**
  * Controller for maintaining geographic data.
@@ -43,14 +43,14 @@ class MapDataSave implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $parent_id = Validator::parsedBody($request)->string('parent_id');
+        $place_id  = Validator::parsedBody($request)->string('place_id');
+        $latitude  = Validator::parsedBody($request)->string('new_place_lati');
+        $longitude = Validator::parsedBody($request)->string('new_place_long');
+        $name      = Validator::parsedBody($request)->string('new_place_name');
+        $url       = Validator::parsedBody($request)->isLocalUrl()->string('url');
 
-        $parent_id = $params['parent_id'] ?? '';
-        $place_id  = $params['place_id'] ?? '';
-        $latitude  = $params['new_place_lati'] ?? '';
-        $longitude = $params['new_place_long'] ?? '';
-        $name      = mb_substr($params['new_place_name'] ?? '', 0, 120);
-
+        $name      = mb_substr($name, 0, 120);
         $place_id  = $place_id === '' ? null : $place_id;
         $parent_id = $parent_id === '' ? null : $parent_id;
 
@@ -101,8 +101,6 @@ class MapDataSave implements RequestHandlerInterface
             $message = I18N::translate('The details for “%s” have been updated.', e($name));
             FlashMessages::addMessage($message, 'success');
         }
-
-        $url = route(MapDataList::class, ['parent_id' => $parent_id]);
 
         return redirect($url);
     }

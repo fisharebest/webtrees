@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
+use function strtoupper;
 
 /**
  * RESTRICTION_NOTICE := {Size=6:7}
@@ -48,6 +48,25 @@ use function strtolower;
  */
 class RestrictionNotice extends AbstractElement
 {
+    public const VALUE_NONE         = 'NONE';
+    public const VALUE_PRIVACY      = 'PRIVACY';
+    public const VALUE_CONFIDENTIAL = 'CONFIDENTIAL';
+    public const VALUE_LOCKED       = 'LOCKED';
+
+    private const CANONICAL = [
+        // Store the locked value after the privacy value.
+        self::VALUE_LOCKED . ', ' . self::VALUE_NONE         => self::VALUE_NONE . ', ' . self::VALUE_LOCKED,
+        self::VALUE_LOCKED . ', ' . self::VALUE_PRIVACY      => self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED,
+        self::VALUE_LOCKED . ', ' . self::VALUE_CONFIDENTIAL => self::VALUE_CONFIDENTIAL . ', ' . self::VALUE_LOCKED,
+        // Old versions of Legacy
+        'invisible'                                          => self::VALUE_PRIVACY,
+    ];
+
+    private const ICON_CONFIDENTIAL = '<i class="icon-resn-confidential"></i>';
+    private const ICON_LOCKED       = '<i class="icon-resn-locked"></i> ';
+    private const ICON_NONE         = '<i class="icon-resn-none"></i>';
+    private const ICON_PRIVACY      = '<i class="icon-resn-privacy"></i>';
+
     /**
      * Convert a value to a canonical form.
      *
@@ -57,7 +76,11 @@ class RestrictionNotice extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtolower(parent::canonical($value));
+        $value = strtoupper(parent::canonical($value));
+        $value = trim($value, ', ');
+        $value = preg_replace('/[, ]+/', ', ', $value);
+
+        return self::CANONICAL[$value] ?? $value;
     }
 
     /**
@@ -70,12 +93,20 @@ class RestrictionNotice extends AbstractElement
         // Note: "1 RESN none" is not valid gedcom.
         // However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
 
+        $confidential = I18N::translate('Show to managers');
+        $locked       = I18N::translate('Only managers can edit');
+        $none         = I18N::translate('Show to visitors');
+        $privacy      = I18N::translate('Show to members');
+
         return [
-            ''             => '',
-            'none'         => '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'),
-            'privacy'      => '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'),
-            'confidential' => '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'),
-            'locked'       => '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'),
+            ''                                                   => '',
+            self::VALUE_NONE                                     => self::ICON_NONE . ' ' . $none,
+            self::VALUE_NONE . ', ' . self::VALUE_LOCKED         => self::ICON_NONE . self::ICON_LOCKED . ' ' . $none . ' — ' . $locked,
+            self::VALUE_PRIVACY                                  => self::ICON_PRIVACY . ' ' . $privacy,
+            self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED      => self::ICON_PRIVACY . self::ICON_LOCKED . ' ' . $privacy . ' — ' . $locked,
+            self::VALUE_CONFIDENTIAL                             => self::ICON_CONFIDENTIAL . ' ' . $confidential,
+            self::VALUE_CONFIDENTIAL . ', ' . self::VALUE_LOCKED => self::ICON_CONFIDENTIAL . ' ' . self::ICON_LOCKED . ' ' . $confidential . ' — ' . $locked,
+            self::VALUE_LOCKED                                   => self::ICON_LOCKED . ' ' . $locked,
         ];
     }
 }

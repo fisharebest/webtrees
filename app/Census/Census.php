@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,6 +42,7 @@ class Census
                     new CensusOfFrance(),
                     new CensusOfScotland(),
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfWales(),
                     new CensusOfCanada(),
                 ];
@@ -56,6 +57,7 @@ class Census
                     new CensusOfScotland(),
                     new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfWales(),
                     new CensusOfCanada(),
                 ];
@@ -70,6 +72,7 @@ class Census
                     new CensusOfScotland(),
                     new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfWales(),
                     new CensusOfCanada(),
                 ];
@@ -82,6 +85,7 @@ class Census
                     new CensusOfWales(),
                     new CensusOfCanada(),
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
                     new CensusOfDeutschland(),
@@ -92,6 +96,7 @@ class Census
             case 'en-US':
                 return [
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfCanada(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
@@ -114,6 +119,7 @@ class Census
                     new CensusOfScotland(),
                     new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfWales(),
                 ];
 
@@ -128,6 +134,7 @@ class Census
                     new CensusOfScotland(),
                     new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfWales(),
                 ];
 
@@ -141,6 +148,7 @@ class Census
                     new CensusOfFrance(),
                     new CensusOfScotland(),
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfWales(),
                     new CensusOfCanada(),
                 ];
@@ -148,6 +156,7 @@ class Census
             default:
                 return [
                     new CensusOfUnitedStates(),
+                    new CensusOfRhodeIsland(),
                     new CensusOfEngland(),
                     new CensusOfScotland(),
                     new CensusOfWales(),

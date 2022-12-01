@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,13 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -167,7 +167,7 @@ class AdminService
             ->where('m_file', '=', $tree->id())
             ->where('descriptive_title', '<>', '')
             ->groupBy(['descriptive_title'])
-            ->having(new Expression('COUNT(m_id)'), '>', '1')
+            ->having(new Expression('COUNT(DISTINCT m_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(m_id) AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
@@ -267,7 +267,7 @@ class AdminService
                     return $attributes->path();
                 })
                 ->toArray();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $files = [];
         }
 

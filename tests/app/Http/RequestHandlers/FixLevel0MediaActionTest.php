@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,8 +46,8 @@ class FixLevel0MediaActionTest extends TestCase
         $request               = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
             'tree_id'   => $tree->id(),
             'fact_id'   => '',
-            'indi_xref' => '',
-            'obje_xref' => '',
+            'indi_xref' => 'X1',
+            'obje_xref' => 'X2',
         ]);
         $response              = $handler->handle($request);
 

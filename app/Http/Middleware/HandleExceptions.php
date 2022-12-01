@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -117,7 +117,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             // Show the exception in a standard webtrees page (if we can).
             try {
                 return $this->unhandledExceptionResponse($request, $exception);
-            } catch (Throwable $ignore) {
+            } catch (Throwable) {
                 // That didn't work.  Try something else.
             }
 
@@ -126,7 +126,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 $request = $request->withAttribute('tree', null);
 
                 return $this->unhandledExceptionResponse($request, $exception);
-            } catch (Throwable $ignore) {
+            } catch (Throwable) {
                 // That didn't work.  Try something else.
             }
 
@@ -135,7 +135,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 $this->layout = 'layouts/error';
 
                 return $this->unhandledExceptionResponse($request, $exception);
-            } catch (Throwable $ignore) {
+            } catch (Throwable) {
                 // That didn't work.  Try something else.
             }
 
@@ -220,7 +220,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 
         try {
             Log::addErrorLog($trace);
-        } catch (Throwable $ignore) {
+        } catch (Throwable) {
             // Must have been a problem with the database.  Nothing we can do here.
         }
 
@@ -244,7 +244,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 'request' => $request,
                 'tree'    => Validator::attributes($request)->treeOptional(),
             ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
-        } catch (Throwable $ignore) {
+        } catch (Throwable) {
             // Try with a minimal header/menu
             return $this->viewResponse('errors/unhandled-exception', [
                 'title'   => 'Error',

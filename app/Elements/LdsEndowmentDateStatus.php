@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -62,20 +62,20 @@ class LdsEndowmentDateStatus extends AbstractElement
     {
         return [
             ''          => '',
-            'CHILD'     => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Died as a child: exempt'),
-            'COMPLETED' => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Completed; date unknown'),
-            'EXCLUDED'  => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Excluded from this submission'),
-            'PRE-1970'  => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Completed before 1970; date not available'),
-            'STILLBORN' => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Stillborn: exempt'),
-            'SUBMITTED' => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Submitted but not yet cleared'),
-            'UNCLEARED' => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Uncleared: insufficient data'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'CHILD'     => I18N::translate('Died as a child: exempt'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'COMPLETED' => I18N::translate('Completed; date unknown'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'EXCLUDED'  => I18N::translate('Excluded from this submission'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'PRE-1970'  => I18N::translate('Completed before 1970; date not available'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'STILLBORN' => I18N::translate('Stillborn: exempt'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'SUBMITTED' => I18N::translate('Submitted but not yet cleared'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'UNCLEARED' => I18N::translate('Uncleared: insufficient data'),
         ];
     }
 }

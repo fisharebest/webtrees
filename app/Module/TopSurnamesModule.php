@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
@@ -116,7 +117,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             $variants = DB::table('name')
                 ->where('n_file', '=', $tree->id())
                 ->where(new Expression('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
-                ->groupBy(['surname'])
+                ->groupBy([new Expression('n_surname /*! COLLATE utf8_bin */')])
                 ->select([new Expression('n_surname /*! COLLATE utf8_bin */ AS surname'), new Expression('count(*) AS total')])
                 ->pluck('total', 'surname')
                 ->map(static fn (string $n): int => (int) $n)
@@ -168,6 +169,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
             case 'table':
             default:
+                uksort($all_surnames, I18N::comparator());
                 $content = view('lists/surnames-table', [
                     'families' => false,
                     'module'   => $module,
@@ -242,10 +244,11 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $num        = Validator::parsedBody($request)->integer('num');
+        $info_style = Validator::parsedBody($request)->string('infoStyle');
 
-        $this->setBlockSetting($block_id, 'num', $params['num']);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
+        $this->setBlockSetting($block_id, 'num', (string) $num);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
     }
 
     /**

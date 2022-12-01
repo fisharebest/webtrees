@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,6 +32,7 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function in_array;
 use function redirect;
 use function route;
 
@@ -134,7 +135,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         $faqs = $this->faqsForTree($tree);
 
-        $min_block_order = DB::table('block')
+        $min_block_order = (int) DB::table('block')
             ->where('module_name', '=', $this->name())
             ->where(static function (Builder $query) use ($tree): void {
                 $query
@@ -143,7 +144,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             })
             ->min('block_order');
 
-        $max_block_order = DB::table('block')
+        $max_block_order = (int) DB::table('block')
             ->where('module_name', '=', $this->name())
             ->where(static function (Builder $query) use ($tree): void {
                 $query
@@ -173,12 +174,10 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         return redirect(route('module', [
             'module' => $this->name(),
             'action' => 'Admin',
-            'tree'   => $params['tree'] ?? '',
+            'tree'   => Validator::parsedBody($request)->string('tree'),
         ]));
     }
 
@@ -189,7 +188,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $block_id = (int) $request->getQueryParams()['block_id'];
+        $block_id = Validator::queryParams($request)->integer('block_id');
 
         DB::table('block_setting')->where('block_id', '=', $block_id)->delete();
 
@@ -210,7 +209,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminMoveDownAction(ServerRequestInterface $request): ResponseInterface
     {
-        $block_id = (int) $request->getQueryParams()['block_id'];
+        $block_id = Validator::queryParams($request)->integer('block_id');
 
         $block_order = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -246,7 +245,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminMoveUpAction(ServerRequestInterface $request): ResponseInterface
     {
-        $block_id = (int) $request->getQueryParams()['block_id'];
+        $block_id = Validator::queryParams($request)->integer('block_id');
 
         $block_order = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -284,7 +283,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     {
         $this->layout = 'layouts/administration';
 
-        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
+        $block_id = Validator::queryParams($request)->integer('block_id', 0);
 
         if ($block_id === 0) {
             // Creating a new faq
@@ -335,15 +334,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
-        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
-
-        $params = (array) $request->getParsedBody();
-
-        $body        = $params['body'];
-        $header      = $params['header'];
-        $languages   = $params['languages'] ?? [];
-        $gedcom_id   = $params['gedcom_id'];
-        $block_order = (int) $params['block_order'];
+        $block_id    = Validator::queryParams($request)->integer('block_id', 0);
+        $body        = Validator::parsedBody($request)->string('body');
+        $header      = Validator::parsedBody($request)->string('header');
+        $languages   = Validator::parsedBody($request)->array('languages');
+        $gedcom_id   = Validator::parsedBody($request)->string('gedcom_id');
+        $block_order = Validator::parsedBody($request)->integer('block_order');
 
         if ($gedcom_id === '') {
             $gedcom_id = null;
@@ -425,7 +421,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             })
             ->orderBy('block_order')
             ->select(['block.block_id', 'block_order', 'gedcom_id', 'bs1.setting_value AS header', 'bs2.setting_value AS faqbody', 'bs3.setting_value AS languages'])
-            ->get();
+            ->get()
+            ->map(static function (object $row): object {
+                $row->block_id    = (int) $row->block_id;
+                $row->block_order = (int) $row->block_order;
+                $row->gedcom_id   = (int) $row->gedcom_id;
+
+                return $row;
+            });
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,17 +23,19 @@ use Aura\Router\Route;
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
-use LogicException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;
+use function array_walk_recursive;
 use function ctype_digit;
+use function in_array;
 use function is_array;
 use function is_int;
 use function is_string;
 use function parse_url;
 use function preg_match;
 use function str_starts_with;
+use function substr;
 
 /**
  * Validate a parameter from an HTTP request
@@ -43,15 +45,31 @@ class Validator
     /** @var array<int|string|Tree|UserInterface|array<int|string>> */
     private array $parameters;
 
+    private ServerRequestInterface $request;
+
     /** @var array<Closure> */
     private array $rules = [];
 
     /**
      * @param array<int|string|Tree|UserInterface|array<int|string>> $parameters
+     * @param ServerRequestInterface                                 $request
      */
-    public function __construct(array $parameters)
+    public function __construct(array $parameters, ServerRequestInterface $request)
     {
+        // All keys and values must be valid UTF-8
+        $check_utf8 = static function ($value, $key): void {
+            if (is_string($key) && preg_match('//u', $key) !== 1) {
+                throw new HttpBadRequestException('Invalid UTF-8 characters in request');
+            }
+            if (is_string($value) && preg_match('//u', $value) !== 1) {
+                throw new HttpBadRequestException('Invalid UTF-8 characters in request');
+            }
+        };
+
+        array_walk_recursive($parameters, $check_utf8);
+
         $this->parameters = $parameters;
+        $this->request    = $request;
     }
 
     /**
@@ -61,7 +79,7 @@ class Validator
      */
     public static function attributes(ServerRequestInterface $request): self
     {
-        return new self($request->getAttributes());
+        return new self($request->getAttributes(), $request);
     }
 
     /**
@@ -71,7 +89,7 @@ class Validator
      */
     public static function parsedBody(ServerRequestInterface $request): self
     {
-        return new self((array) $request->getParsedBody());
+        return new self((array) $request->getParsedBody(), $request);
     }
 
     /**
@@ -81,7 +99,7 @@ class Validator
      */
     public static function queryParams(ServerRequestInterface $request): self
     {
-        return new self($request->getQueryParams());
+        return new self($request->getQueryParams(), $request);
     }
 
     /**
@@ -91,7 +109,7 @@ class Validator
      */
     public static function serverParams(ServerRequestInterface $request): self
     {
-        return new self($request->getServerParams());
+        return new self($request->getServerParams(), $request);
     }
 
     /**
@@ -120,7 +138,7 @@ class Validator
      */
     public function isInArray(array $values): self
     {
-        $this->rules[] = static fn (?string $value): ?string => $value !== null && in_array($value, $values, true) ? $value : null;
+        $this->rules[] = static fn (/*int|string|null*/ $value)/*: int|string|null*/ => $value !== null && in_array($value, $values, true) ? $value : null;
 
         return $this;
     }
@@ -146,22 +164,18 @@ class Validator
     }
 
     /**
-     * @param string $base_url
-     *
      * @return self
      */
-    public function isLocalUrl(string $base_url): self
+    public function isLocalUrl(): self
     {
+        $base_url = $this->request->getAttribute('base_url', '');
+
         $this->rules[] = static function (?string $value) use ($base_url): ?string {
             if ($value !== null) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
 
-                if (!is_array($base_url_info)) {
-                    throw new LogicException(__METHOD__ . ' needs a valid URL');
-                }
-
-                if (is_array($value_info)) {
+                if (is_array($value_info) && is_array($base_url_info)) {
                     $scheme_ok = ($value_info['scheme'] ?? 'http') === ($base_url_info['scheme'] ?? 'http');
                     $host_ok   = ($value_info['host'] ?? '') === ($base_url_info['host'] ?? '');
                     $port_ok   = ($value_info['port'] ?? '') === ($base_url_info['port'] ?? '');
@@ -201,9 +215,13 @@ class Validator
      */
     public function isXref(): self
     {
-        $this->rules[] = static function (?string $value): ?string {
-            if ($value !== null && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
+        $this->rules[] = static function ($value) {
+            if (is_string($value) && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
                 return $value;
+            }
+
+            if (is_array($value)) {
+                return array_filter($value, static fn ($x): bool => is_string($x) && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $x) === 1);
             }
 
             return null;
@@ -222,7 +240,7 @@ class Validator
     {
         $value = $this->parameters[$parameter] ?? null;
 
-        if (in_array($value, ['1', true], true)) {
+        if (in_array($value, ['1', 'on', true], true)) {
             return true;
         }
 
@@ -252,18 +270,7 @@ class Validator
 
         $callback = static fn (?array $value, Closure $rule): ?array => $rule($value);
 
-        $value = array_reduce($this->rules, $callback, $value);
-        $value ??= [];
-
-        $check_utf8 = static function ($v, $k) use ($parameter) {
-            if (is_string($k) && !preg_match('//u', $k) || is_string($v) && !preg_match('//u', $v)) {
-                throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
-            }
-        };
-
-        array_walk_recursive($value, $check_utf8);
-
-        return $value;
+        return array_reduce($this->rules, $callback, $value) ?? [];
     }
 
     /**
@@ -276,17 +283,21 @@ class Validator
     {
         $value = $this->parameters[$parameter] ?? null;
 
-        if (is_string($value) && ctype_digit($value)) {
-            $value = (int) $value;
-        } elseif (!is_int($value)) {
+        if (is_string($value)) {
+            if (ctype_digit($value)) {
+                $value = (int) $value;
+            } elseif (str_starts_with($value, '-') && ctype_digit(substr($value, 1))) {
+                $value = (int) $value;
+            }
+        }
+
+        if (!is_int($value)) {
             $value = null;
         }
 
         $callback = static fn (?int $value, Closure $rule): ?int => $rule($value);
 
-        $value = array_reduce($this->rules, $callback, $value);
-
-        $value ??= $default;
+        $value = array_reduce($this->rules, $callback, $value) ?? $default;
 
         if ($value === null) {
             throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
@@ -327,10 +338,9 @@ class Validator
 
         $callback = static fn (?string $value, Closure $rule): ?string => $rule($value);
 
-        $value =  array_reduce($this->rules, $callback, $value);
-        $value ??= $default;
+        $value =  array_reduce($this->rules, $callback, $value) ?? $default;
 
-        if ($value === null || preg_match('//u', $value) !== 1) {
+        if ($value === null) {
             throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
         }
 

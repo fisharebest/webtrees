@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
@@ -16,10 +18,12 @@ $items = [];
 
 foreach ($surnames as $surn => $surns) {
     foreach ($surns as $spfxsurn => $count) {
+        $label = $spfxsurn ? e($spfxsurn) : I18N::translate('No surname');
+
         if ($totals) {
-            $item = I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count));
+            $item = I18N::translate('%1$s (%2$s)', '<bdi>' . $label . '</bdi>', I18N::number($count));
         } else {
-            $item = '<bdi>' . e($spfxsurn) . '</bdi>';
+            $item = '<bdi>' . $label . '</bdi>';
         }
 
         if ($module instanceof ModuleListInterface) {

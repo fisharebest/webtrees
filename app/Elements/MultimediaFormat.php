@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use function strtolower;
+use Fisharebest\Webtrees\Services\MediaFileService;
+
+use function strtoupper;
 
 /**
  * MULTIMEDIA_FORMAT := {Size=3:4}
@@ -35,12 +37,6 @@ class MultimediaFormat extends AbstractElement
         'TYPE' => '0:1',
     ];
 
-    // GEDCOM uses the abbreviated versions of these extensions
-    protected const EXTENSIONS = [
-        'jpeg' => 'jpg',
-        'tiff' => 'tif',
-    ];
-
     /**
      * Convert a value to a canonical form.
      *
@@ -50,9 +46,8 @@ class MultimediaFormat extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        $value = parent::canonical($value);
-        $value = strtolower($value);
+        $value = strtoupper(parent::canonical($value));
 
-        return self::EXTENSIONS[$value] ?? $value;
+        return MediaFileService::EXTENSION_TO_FORM[$value] ?? $value;
     }
 }

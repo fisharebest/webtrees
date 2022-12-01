@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,6 +31,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function assert;
 use function redirect;
 use function route;
 
@@ -63,16 +64,14 @@ class AccountUpdate implements RequestHandlerInterface
 
         assert($user instanceof User);
 
-        $params = (array) $request->getParsedBody();
-
-        $contact_method = $params['contact-method'];
-        $email          = $params['email'];
-        $language       = $params['language'];
-        $real_name      = $params['real_name'];
-        $password       = $params['password'];
-        $time_zone      = $params['timezone'];
-        $user_name      = $params['user_name'];
-        $visible_online = $params['visible-online'] ?? '';
+        $contact_method = Validator::parsedBody($request)->string('contact-method');
+        $email          = Validator::parsedBody($request)->string('email');
+        $language       = Validator::parsedBody($request)->string('language');
+        $real_name      = Validator::parsedBody($request)->string('real_name');
+        $password       = Validator::parsedBody($request)->string('password');
+        $time_zone      = Validator::parsedBody($request)->string('timezone');
+        $user_name      = Validator::parsedBody($request)->string('user_name');
+        $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
 
         // Change the password
         if ($password !== '') {
@@ -101,17 +100,17 @@ class AccountUpdate implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_CONTACT_METHOD, $contact_method);
         $user->setPreference(UserInterface::PREF_LANGUAGE, $language);
         $user->setPreference(UserInterface::PREF_TIME_ZONE, $time_zone);
-        $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, $visible_online);
+        $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
 
         if ($tree instanceof Tree) {
-            $default_xref = $params['default-xref'];
+            $default_xref = Validator::parsedBody($request)->string('default-xref');
             $tree->setUserPreference($user, UserInterface::PREF_TREE_DEFAULT_XREF, $default_xref);
         }
 
         // Switch to the new language now
         Session::put('language', $language);
 
-        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->username())), 'success');
+        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->userName())), 'success');
 
         return redirect(route(HomePage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }

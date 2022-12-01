@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string $module
- * @var string $title
- * @var Tree   $tree
+ * @var array<string> $download_filenames
+ * @var string        $module
+ * @var string        $title
+ * @var Tree          $tree
+ * @var bool          $zip_available
  */
 
 ?>
@@ -14,18 +18,16 @@ use Fisharebest\Webtrees\Tree;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route('module', ['module' => $module, 'action' => 'Download', 'tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-clippings-download hidden-print">
-    <?= csrf_field() ?>
-
-    <div class="row form-group">
+    <div class="row">
         <div class="col-sm-3 col-form-label wt-page-options-label">
             <?= I18N::translate('Export preferences') ?>
         </div>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('admin/gedcom-export-options', ['tree' => $tree]) ?>
+            <?= view('admin/gedcom-export-options', ['download_filenames' => $download_filenames, 'tree' => $tree, 'zip_available' => $zip_available]) ?>
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row">
         <div class="col-sm-3 col-form-label wt-page-options-label">
         </div>
         <div class="col-sm-9 wt-page-options-value">
@@ -39,4 +41,6 @@ use Fisharebest\Webtrees\Tree;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

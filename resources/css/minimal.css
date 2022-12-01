@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -287,6 +287,7 @@ table {
     height: 5rem;
     padding: 2px;
     line-height: 1.1;
+    border: solid gray thin;
 }
 
 .wt-chart-box-f,
@@ -546,40 +547,6 @@ div.faq_body {
     margin: 0;
     padding: 0;
     white-space: nowrap;
-}
-
-/* Stories module */
-.story_title {
-    padding-top: 12px;
-    font-size: 13px;
-    height: 32px;
-    font-weight: bold;
-}
-
-.story_body {
-    padding: 20px;
-    white-space: normal;
-}
-
-.story_edit {
-    padding: 12px;
-}
-
-/* Stories module */
-.story_title {
-    padding-top: 12px;
-    font-size: 13px;
-    height: 32px;
-    font-weight: bold;
-}
-
-.story_body {
-    padding: 20px;
-    white-space: normal;
-}
-
-.story_edit {
-    padding: 12px;
 }
 
 /* ====== Charts Styles ======== */
@@ -941,57 +908,6 @@ a > .wt-icon-arrow-up:hover {
     overflow-y: hidden;
 }
 
-/*
- *  These selectors control how the short horizontal lines are positioned in the Charts
- *  Optimized for Win10 and FF, Chrome and Edge browsers
- *  	Ancestors
- *  	Descendants
- *  	amily book
- *
- */
-
-/* Ascentors */
-.wt-chart-ancestors .linea1 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-ancestors .linea2 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-ancestors .linea3 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-ancestors .linea4 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-ancestors .linea5 {
-    vertical-align: top;
-}
-
-/* Descendants */
-.wt-chart-descendants .lined1 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-descendants .lined2 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-descendants .lined3 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-descendants .lined4 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-descendants .linea5 {
-    vertical-align: top;
-}
-
 .wt-calendar-month {
     border-collapse: collapse;
 }
@@ -1000,12 +916,6 @@ a > .wt-icon-arrow-up:hover {
 .wt-calendar-month .wt-page-options-value {
     border: solid grey thin;
     padding: 0.2rem;
-}
-
-/* Some menus (e.g. languages) can be longer than a page */
-.dropdown-menu {
-    max-height: 30rem;
-    overflow-x: hidden;
 }
 
 /* Forms */

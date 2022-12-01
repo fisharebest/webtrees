@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,11 +25,13 @@ use Normalizer;
 use PHPUnit\Framework\TestCase;
 
 use function bin2hex;
+use function count;
 use function ctype_alpha;
 use function dechex;
 use function in_array;
 use function preg_split;
 use function range;
+use function strlen;
 
 use const PREG_SPLIT_NO_EMPTY;
 
@@ -158,7 +160,7 @@ class AnselTest extends TestCase
                         continue;
                     }
 
-                    $this->assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
+                    static::assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
                 }
             }
         }

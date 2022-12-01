@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -52,12 +53,10 @@ class ModulesAllAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         $modules = $this->module_service->all(true);
 
         foreach ($modules as $module) {
-            $new_status = (bool) ($params['status-' . $module->name()] ?? false);
+            $new_status = Validator::parsedBody($request)->boolean('status-' . $module->name(), false);
             $old_status = $module->isEnabled();
 
             if ($new_status !== $old_status) {
@@ -66,10 +65,12 @@ class ModulesAllAction implements RequestHandlerInterface
                     ->update(['status' => $new_status ? 'enabled' : 'disabled']);
 
                 if ($new_status) {
-                    FlashMessages::addMessage(I18N::translate('The module “%s” has been enabled.', $module->title()), 'success');
+                    $message = I18N::translate('The module “%s” has been enabled.', $module->title());
                 } else {
-                    FlashMessages::addMessage(I18N::translate('The module “%s” has been disabled.', $module->title()), 'success');
+                    $message = I18N::translate('The module “%s” has been disabled.', $module->title());
                 }
+
+                FlashMessages::addMessage($message, 'success');
             }
         }
 

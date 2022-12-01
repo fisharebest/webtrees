@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
-use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\Flysystem\PathPrefixing\PathPrefixedAdapter;
 
 use function realpath;
 
@@ -39,13 +38,19 @@ class FilesystemFactory implements FilesystemFactoryInterface
     /**
      * Create a filesystem for the user's data folder.
      *
+     * @param string $path_prefix
+     *
      * @return FilesystemOperator
      */
-    public function data(): FilesystemOperator
+    public function data(string $path_prefix = ''): FilesystemOperator
     {
-        $data_dir = Site::getPreference('INDEX_DIRECTORY');
+        $adapter = new LocalFilesystemAdapter(Site::getPreference('INDEX_DIRECTORY'));
 
-        return new Filesystem(new LocalFilesystemAdapter($data_dir));
+        if ($path_prefix !== '') {
+            $adapter = new PathPrefixedAdapter($adapter, $path_prefix);
+        }
+
+        return new Filesystem($adapter);
     }
 
     /**
@@ -59,28 +64,21 @@ class FilesystemFactory implements FilesystemFactoryInterface
     }
 
     /**
-     * Create a filesystem for a tree's media folder.
-     *
-     * @param Tree $tree
-     *
-     * @return FilesystemOperator
-     */
-    public function media(Tree $tree): FilesystemOperator
-    {
-        $media_dir = $tree->getPreference('MEDIA_DIRECTORY');
-        $adapter   = new ChrootAdapter($this->data(), $media_dir);
-
-        return new Filesystem($adapter);
-    }
-
-    /**
      * Create a filesystem for the application's root folder.
      *
+     * @param string $path_prefix
+     *
      * @return FilesystemOperator
      */
-    public function root(): FilesystemOperator
+    public function root(string $path_prefix = ''): FilesystemOperator
     {
-        return new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
+        $adapter = new LocalFilesystemAdapter(self::ROOT_DIR);
+
+        if ($path_prefix !== '') {
+            $adapter = new PathPrefixedAdapter($adapter, $path_prefix);
+        }
+
+        return new Filesystem($adapter);
     }
 
     /**

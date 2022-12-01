@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Module\IndividualListModule;
-use Fisharebest\Webtrees\Services\LocalizationService;
 
 /**
  * Test the individual lists.
@@ -40,7 +39,7 @@ class IndividualListTest extends TestCase
     public function testIndividualList(): void
     {
         $tree        = $this->importTree('demo.ged');
-        $list_module = new IndividualListModule(new LocalizationService());
+        $list_module = new IndividualListModule();
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree]);
         $response = $list_module->handle($request);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -113,6 +113,7 @@ class RelationIsDescriptor extends AbstractElement
                 'guardian'         => I18N::translate('Guardian'),
                 'informant'        => I18N::translate('Informant'),
                 'lodger'           => I18N::translate('Lodger'),
+                'multiple'         => /* I18N: twin, triplet, etc. */ I18N::translate('Multiple birth'),
                 'nanny'            => I18N::translate('Nanny'),
                 'nurse'            => I18N::translate('Nurse'),
                 'owner'            => I18N::translate('Owner'),

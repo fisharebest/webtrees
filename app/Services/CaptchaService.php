@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,11 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
-use Ramsey\Uuid\Uuid;
 
+use function assert;
+use function is_float;
+use function is_string;
 use function view;
 
 /**
@@ -41,11 +44,11 @@ class CaptchaService
      */
     public function createCaptcha(): string
     {
-        $x = Uuid::uuid4()->toString();
-        $y = Uuid::uuid4()->toString();
-        $z = Uuid::uuid4()->toString();
+        $x = Registry::idFactory()->uuid();
+        $y = Registry::idFactory()->uuid();
+        $z = Registry::idFactory()->uuid();
 
-        Session::put('captcha-t', microtime(true));
+        Session::put('captcha-t', Registry::timeFactory()->now());
         Session::put('captcha-x', $x);
         Session::put('captcha-y', $y);
         Session::put('captcha-z', $z);
@@ -71,7 +74,7 @@ class CaptchaService
         $y = Session::pull('captcha-y');
         $z = Session::pull('captcha-z');
 
-        assert(is_int($t));
+        assert(is_float($t));
         assert(is_string($x));
         assert(is_string($y));
         assert(is_string($z));
@@ -85,7 +88,7 @@ class CaptchaService
             return true;
         }
 
-        // If the form was returned too quickly, the probably a robot.
-        return microtime(true) < $t + self::MINIMUM_FORM_TIME;
+        // If the form was returned too quickly, then probably a robot.
+        return Registry::timeFactory()->now() < $t + self::MINIMUM_FORM_TIME;
     }
 }

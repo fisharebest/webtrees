@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -84,11 +84,8 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->treeOptional();
-
-        $params = (array) $request->getParsedBody();
-
-        $email = $params['email'] ?? '';
+        $tree  = Validator::attributes($request)->treeOptional();
+        $email = Validator::parsedBody($request)->string('email');
         $user  = $this->user_service->findByEmail($email);
 
         if ($user instanceof User) {

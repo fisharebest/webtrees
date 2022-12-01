@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserEditPage;
@@ -26,8 +28,6 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(UsersCleanupAction::class)) ?>">
-    <?= csrf_field() ?>
-
     <table class="table table-bordered">
         <?php foreach ($inactive_users as $user) : ?>
             <tr>
@@ -79,4 +79,6 @@ use Illuminate\Support\Collection;
             </button>
         <?php endif ?>
     </p>
+
+    <?= csrf_field() ?>
 </form>

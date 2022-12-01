@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -60,10 +61,8 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     {
         $modules = $this->module_service->findByInterface($interface, true);
 
-        $params = (array) $request->getParsedBody();
-
         foreach ($modules as $module) {
-            $enabled = (bool) ($params['status-' . $module->name()] ?? false);
+            $enabled = Validator::parsedBody($request)->boolean('status-' . $module->name(), false);
 
             if ($enabled !== $module->isEnabled()) {
                 DB::table('module')
@@ -92,15 +91,12 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     protected function updateAccessLevel(string $interface, ServerRequestInterface $request): void
     {
         $modules = $this->module_service->findByInterface($interface, true);
-
-        $params = (array) $request->getParsedBody();
-
-        $trees = $this->tree_service->all();
+        $trees   = $this->tree_service->all();
 
         foreach ($modules as $module) {
             foreach ($trees as $tree) {
                 $key          = 'access-' . $module->name() . '-' . $tree->id();
-                $access_level = (int) ($params[$key] ?? 0);
+                $access_level = Validator::parsedBody($request)->integer($key);
 
                 if ($access_level !== $module->accessLevel($tree, $interface)) {
                     DB::table('module_privacy')->updateOrInsert([
@@ -127,11 +123,8 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     protected function updateOrder(string $interface, string $column, ServerRequestInterface $request): void
     {
         $modules = $this->module_service->findByInterface($interface, true);
-
-        $params = (array) $request->getParsedBody();
-
-        $order = (array) ($params['order'] ?? []);
-        $order = array_flip($order);
+        $order   = Validator::parsedBody($request)->array('order');
+        $order   = array_flip($order);
 
         foreach ($modules as $module) {
             DB::table('module')

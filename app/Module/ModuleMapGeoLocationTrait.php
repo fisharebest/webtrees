@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,6 +30,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 use function json_decode;
+use function strlen;
 
 use const JSON_THROW_ON_ERROR;
 
@@ -115,7 +116,7 @@ trait ModuleMapGeoLocationTrait
 
         try {
             return json_decode($body, false, 512, JSON_THROW_ON_ERROR);
-        } catch (JsonException $ex) {
+        } catch (JsonException) {
             return [];
         }
     }

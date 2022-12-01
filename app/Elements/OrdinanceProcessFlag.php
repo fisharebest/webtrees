@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
+use function strtoupper;
 
 /**
  * ORDINANCE_PROCESS_FLAG := {Size=2:3}
@@ -40,7 +40,7 @@ class OrdinanceProcessFlag extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtolower(parent::canonical($value));
+        return strtoupper(parent::canonical($value));
     }
 
     /**
@@ -52,8 +52,8 @@ class OrdinanceProcessFlag extends AbstractElement
     {
         return [
             '' => '',
-            'no' => I18N::translate('no'),
-            'yes' => I18N::translate('yes'),
+            'NO' => I18N::translate('no'),
+            'YES' => I18N::translate('yes'),
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
+use function assert;
 use function is_int;
 
 /**
@@ -394,6 +395,35 @@ class Auth
     }
 
     /**
+     * @param SharedNote|null $shared_note
+     * @param bool            $edit
+     *
+     * @return SharedNote
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
+     */
+    public static function checkSharedNoteAccess(?SharedNote $shared_note, bool $edit = false): SharedNote
+    {
+        $message = I18N::translate('This note does not exist or you do not have permission to view it.');
+
+        if ($shared_note === null) {
+            throw new HttpNotFoundException($message);
+        }
+
+        if ($edit && $shared_note->canEdit()) {
+            $shared_note->lock();
+
+            return $shared_note;
+        }
+
+        if ($shared_note->canShow()) {
+            return $shared_note;
+        }
+
+        throw new HttpAccessDeniedException($message);
+    }
+
+    /**
      * @param GedcomRecord|null $record
      * @param bool              $edit
      *
@@ -480,13 +510,13 @@ class Auth
         throw new HttpAccessDeniedException($message);
     }
 
-    /*
+    /**
      * @param Submitter|null $submitter
      * @param bool           $edit
      *
      * @return Submitter
-     * @throws HttpFoundException
-     * @throws HttpDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkSubmitterAccess(?Submitter $submitter, bool $edit = false): Submitter
     {
@@ -509,7 +539,7 @@ class Auth
         throw new HttpAccessDeniedException($message);
     }
 
-    /*
+    /**
      * @param Submission|null $submission
      * @param bool            $edit
      *

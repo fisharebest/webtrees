@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -72,7 +72,7 @@ class TomSelectNote extends AbstractTomSelectHandler
 
         return $results->map(static function (Note $note) use ($at): array {
             return [
-                'text'  => view('selects/note', ['note' => $note]),
+                'text'  => view('selects/shared-note', ['note' => $note]),
                 'value' => $at . $note->xref() . $at,
             ];
         });

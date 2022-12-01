@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,8 +45,10 @@ use function implode;
 use function max;
 use function preg_replace;
 use function preg_split;
+use function str_ends_with;
 use function str_repeat;
 use function str_replace;
+use function str_starts_with;
 use function substr_count;
 use function trim;
 
@@ -67,7 +69,8 @@ class GedcomEditService
     public function newFamilyFacts(Tree $tree): Collection
     {
         $dummy = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
-        $tags  = new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')));
+        $tags  = (new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'))))
+            ->filter(static fn (string $tag): bool => $tag !== '');
         $facts = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
 
         return Fact::sortFacts($facts);
@@ -83,7 +86,8 @@ class GedcomEditService
     public function newIndividualFacts(Tree $tree, string $sex, array $names): Collection
     {
         $dummy      = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
-        $tags       = new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')));
+        $tags       = (new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'))))
+            ->filter(static fn (string $tag): bool => $tag !== '');
         $facts      = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
         $sex_fact   = new Collection([new Fact('1 SEX ' . $sex, $dummy, '')]);
         $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
@@ -113,10 +117,11 @@ class GedcomEditService
      * @param array<string> $levels
      * @param array<string> $tags
      * @param array<string> $values
+     * @param bool          $append - Are we appending to a level 0 record, or replacing a level 1 record?
      *
      * @return string
      */
-    public function editLinesToGedcom(string $record_type, array $levels, array $tags, array $values): string
+    public function editLinesToGedcom(string $record_type, array $levels, array $tags, array $values, bool $append = true): string
     {
         // Assert all arrays are the same size.
         $count = count($levels);
@@ -170,7 +175,13 @@ class GedcomEditService
             }
         }
 
-        return implode("\n", $gedcom_lines);
+        $gedcom = implode("\n", $gedcom_lines);
+
+        if ($append && $gedcom !== '') {
+            $gedcom = "\n" . $gedcom;
+        }
+
+        return $gedcom;
     }
 
     /**
@@ -183,7 +194,10 @@ class GedcomEditService
      */
     public function insertMissingFactSubtags(Fact $fact, bool $include_hidden): string
     {
-        return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $fact->gedcom(), $include_hidden);
+        // Merge CONT records onto their parent line.
+        $gedcom = preg_replace('/\n\d CONT ?/', "\r", $fact->gedcom());
+
+        return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $gedcom, $include_hidden);
     }
 
     /**
@@ -196,7 +210,10 @@ class GedcomEditService
      */
     public function insertMissingRecordSubtags(GedcomRecord $record, bool $include_hidden): string
     {
-        $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $record->gedcom(), $include_hidden);
+        // Merge CONT records onto their parent line.
+        $gedcom = preg_replace('/\n\d CONT ?/', "\r", $record->gedcom());
+
+        $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $gedcom, $include_hidden);
 
         // NOTE records have data at level 0.  Move it to 1 CONC.
         if ($record instanceof Note) {
@@ -214,7 +231,7 @@ class GedcomEditService
      *
      * @return array<string>
      */
-    public function factsToAdd(GedcomRecord $record, bool $include_hidden): array
+    public function factsToAdd(Family|Individual $record, bool $include_hidden): array
     {
         $subtags = Registry::elementFactory()->make($record->tag())->subtags();
 
@@ -247,18 +264,14 @@ class GedcomEditService
         $factory    = Registry::elementFactory();
         $subtags    = $factory->make($tag)->subtags();
 
-        // Merge CONT records onto their parent line.
-        $gedcom = strtr($gedcom, [
-            "\n" . $next_level . ' CONT ' => "\r",
-            "\n" . $next_level . ' CONT' => "\r",
-        ]);
-
         // The first part is level N.  The remainder are level N+1.
         $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
         $return = array_shift($parts) ?? '';
 
         foreach ($subtags as $subtag => $occurrences) {
-            if (!$include_hidden && $this->isHiddenTag($tag . ':' . $subtag)) {
+            $hidden = str_ends_with($occurrences, ':?') || $this->isHiddenTag($tag . ':' . $subtag);
+
+            if (!$include_hidden && $hidden) {
                 continue;
             }
 

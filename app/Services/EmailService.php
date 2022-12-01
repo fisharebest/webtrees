@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -70,8 +70,12 @@ class EmailService
             $transport = $this->transport();
             $mailer    = new Mailer($transport);
             $mailer->send($message);
+        } catch (RfcComplianceException $ex) {
+            Log::addErrorLog('Cannot create email  ' . $ex->getMessage());
+
+            return false;
         } catch (TransportExceptionInterface $ex) {
-            Log::addErrorLog('MailService: ' . $ex->getMessage());
+            Log::addErrorLog('Cannot send email: ' . $ex->getMessage());
 
             return false;
         }
@@ -179,7 +183,7 @@ class EmailService
     {
         try {
             $address = new Address($email);
-        } catch (RfcComplianceException $ex) {
+        } catch (RfcComplianceException) {
             return false;
         }
 

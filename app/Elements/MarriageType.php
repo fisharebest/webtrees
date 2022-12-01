@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,14 +21,17 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
-use function ucfirst;
+use function strtoupper;
 
 /**
  * MARR:TYPE
  */
 class MarriageType extends AbstractElement
 {
+    public const VALUE_CIVIL     = 'CIVIL';
+    public const VALUE_PARTNERS  = 'PARTNERS';
+    public const VALUE_RELIGIOUS = 'RELIGIOUS';
+
     /**
      * Convert a value to a canonical form.
      * GEDCOM 5.5EL uses 'RELI' and 'CIVIL'
@@ -39,10 +42,10 @@ class MarriageType extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        $value = ucfirst(strtolower(parent::canonical($value)));
+        $value = strtoupper(parent::canonical($value));
 
         $canonical = [
-            'Reli' => 'Religious'
+            'RELI' => 'RELIGIOUS'
         ];
 
         return $canonical[$value] ?? $value;
@@ -56,10 +59,10 @@ class MarriageType extends AbstractElement
     public function values(): array
     {
         return [
-            ''          => '',
-            'Civil'     => I18N::translate('Civil marriage'),
-            'Partners'  => I18N::translate('Registered partnership'),
-            'Religious' => I18N::translate('Religious marriage'),
+            ''                    => '',
+            self::VALUE_CIVIL     => I18N::translate('Civil marriage'),
+            self::VALUE_PARTNERS  => I18N::translate('Registered partnership'),
+            self::VALUE_RELIGIOUS => I18N::translate('Religious marriage'),
 
         ];
     }

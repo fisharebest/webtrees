@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\SharedNote;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
@@ -296,6 +297,27 @@ class SearchService
     }
 
     /**
+     * Search for notes.
+     *
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
+     *
+     * @return Collection<int,SharedNote>
+     */
+    public function searchSharedNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', SharedNote::RECORD_TYPE);
+
+        $this->whereTrees($query, 'o_file', $trees);
+        $this->whereSearch($query, 'o_gedcom', $search);
+
+        return $this->paginateQuery($query, $this->sharedNoteRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+    }
+
+    /**
      * Search for repositories.
      *
      * @param array<Tree>   $trees
@@ -494,7 +516,7 @@ class SearchService
      */
     public function searchIndividualsAdvanced(array $trees, array $fields, array $modifiers): Collection
     {
-        $fields = array_filter($fields);
+        $fields = array_filter($fields, static fn (string $x): bool => $x !== '');
 
         $query = DB::table('individuals')
             ->select(['individuals.*'])
@@ -513,28 +535,26 @@ class SearchService
         $fam_plac      = false;
 
         foreach ($fields as $field_name => $field_value) {
-            if ($field_value !== '') {
-                if (str_starts_with($field_name, 'FATHER:NAME')) {
-                    $father_name = true;
-                } elseif (str_starts_with($field_name, 'MOTHER:NAME')) {
-                    $mother_name = true;
-                } elseif (str_starts_with($field_name, 'INDI:NAME:GIVN')) {
-                    $indi_name = true;
-                } elseif (str_starts_with($field_name, 'INDI:NAME:SURN')) {
-                    $indi_name = true;
-                } elseif (str_starts_with($field_name, 'FAM:')) {
-                    $spouse_family = true;
-                    if (str_ends_with($field_name, ':DATE')) {
-                        $fam_dates[] = explode(':', $field_name)[1];
-                    } elseif (str_ends_with($field_name, ':PLAC')) {
-                        $fam_plac = true;
-                    }
-                } elseif (str_starts_with($field_name, 'INDI:')) {
-                    if (str_ends_with($field_name, ':DATE')) {
-                        $indi_dates[] = explode(':', $field_name)[1];
-                    } elseif (str_ends_with($field_name, ':PLAC')) {
-                        $indi_plac = true;
-                    }
+            if (str_starts_with($field_name, 'FATHER:NAME')) {
+                $father_name = true;
+            } elseif (str_starts_with($field_name, 'MOTHER:NAME')) {
+                $mother_name = true;
+            } elseif (str_starts_with($field_name, 'INDI:NAME:GIVN')) {
+                $indi_name = true;
+            } elseif (str_starts_with($field_name, 'INDI:NAME:SURN')) {
+                $indi_name = true;
+            } elseif (str_starts_with($field_name, 'FAM:')) {
+                $spouse_family = true;
+                if (str_ends_with($field_name, ':DATE')) {
+                    $fam_dates[] = explode(':', $field_name)[1];
+                } elseif (str_ends_with($field_name, ':PLAC')) {
+                    $fam_plac = true;
+                }
+            } elseif (str_starts_with($field_name, 'INDI:')) {
+                if (str_ends_with($field_name, ':DATE')) {
+                    $indi_dates[] = explode(':', $field_name)[1];
+                } elseif (str_ends_with($field_name, ':PLAC')) {
+                    $indi_plac = true;
                 }
             }
         }
@@ -860,7 +880,7 @@ class SearchService
                     if (str_starts_with($field_name, 'INDI:NAME:') && $field_name !== 'INDI:NAME:GIVN' && $field_name !== 'INDI:NAME:SURN') {
                         $regex = '/\n1 NAME.*(?:\n2.*)*\n2 ' . $parts[2] . ' .*' . preg_quote($field_value, '/') . '/i';
 
-                        if (preg_match($regex, $individual->gedcom())) {
+                        if (preg_match($regex, $individual->gedcom()) === 1) {
                             continue;
                         }
 
@@ -871,7 +891,7 @@ class SearchService
 
                     if (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':PLAC')) {
                         foreach ($individual->facts([$parts[1]]) as $fact) {
-                            if (preg_match($regex, $fact->place()->gedcomName())) {
+                            if (preg_match($regex, $fact->place()->gedcomName()) === 1) {
                                 continue 2;
                             }
                         }
@@ -881,7 +901,7 @@ class SearchService
                     if (str_starts_with($field_name, 'FAM:') && str_ends_with($field_name, ':PLAC')) {
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
-                                if (preg_match($regex, $fact->place()->gedcomName())) {
+                                if (preg_match($regex, $fact->place()->gedcomName()) === 1) {
                                     continue 3;
                                 }
                             }
@@ -891,7 +911,7 @@ class SearchService
 
                     if ($field_name === 'INDI:FACT:TYPE' || $field_name === 'INDI:EVEN:TYPE' || $field_name === 'INDI:CHAN:_WT_USER') {
                         foreach ($individual->facts([$parts[1]]) as $fact) {
-                            if (preg_match($regex, $fact->attribute($parts[2]))) {
+                            if (preg_match($regex, $fact->attribute($parts[2])) === 1) {
                                 continue 2;
                             }
                         }
@@ -901,7 +921,7 @@ class SearchService
 
                     if (str_starts_with($field_name, 'INDI:')) {
                         foreach ($individual->facts([$parts[1]]) as $fact) {
-                            if (preg_match($regex, $fact->value())) {
+                            if (preg_match($regex, $fact->value()) === 1) {
                                 continue 2;
                             }
                         }
@@ -912,7 +932,7 @@ class SearchService
                     if (str_starts_with($field_name, 'FAM:')) {
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
-                                if (preg_match($regex, $fact->value())) {
+                                if (preg_match($regex, $fact->value()) === 1) {
                                     continue 3;
                                 }
                             }
@@ -1246,6 +1266,20 @@ class SearchService
             $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::repositoryFactory()->mapper($tree)($row);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the other table into a note object.
+     *
+     * @return Closure
+     */
+    private function sharedNoteRowMapper(): Closure
+    {
+        return function (object $row): Note {
+            $tree = $this->tree_service->find((int) $row->o_file);
+
+            return Registry::sharedNoteFactory()->mapper($tree)($row);
         };
     }
 

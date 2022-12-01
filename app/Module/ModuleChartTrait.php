@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -48,7 +48,7 @@ trait ModuleChartTrait
      *
      * @return Menu|null
      */
-    public function chartBoxMenu(/** @scrutinizer ignore-unused */ Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): ?Menu
     {
         return null;
     }
@@ -60,7 +60,7 @@ trait ModuleChartTrait
      *
      * @return Menu
      */
-    public function chartMenu(/** @scrutinizer ignore-unused */ Individual $individual): Menu
+    public function chartMenu(Individual $individual): Menu
     {
         return new Menu(
             $this->title(),
@@ -87,7 +87,7 @@ trait ModuleChartTrait
      *
      * @return string
      */
-    public function chartTitle(/** @scrutinizer ignore-unused */ Individual $individual): string
+    public function chartTitle(Individual $individual): string
     {
         return $this->title();
     }

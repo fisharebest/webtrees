@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModuleDeleteSettings;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllAction;
@@ -9,6 +11,7 @@ use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
@@ -38,19 +41,20 @@ use Illuminate\Support\Collection;
 <?php foreach ($deleted_modules as $module_name) : ?>
     <div class="alert alert-warning" role="alert">
         <form method="post" action="<?= e(route(ModuleDeleteSettings::class)) ?>">
-            <?= csrf_field() ?>
             <input type="hidden" name="module_name" value="<?= $module_name ?>">
+
             <?= I18N::translate('Preferences exist for the module “%s”, but this module no longer exists.', $module_name) ?>
+
             <button type="submit" class="btn btn-secondary">
                 <?= I18N::translate('Delete the preferences for this module.') ?>
             </button>
+
+            <?= csrf_field() ?>
         </form>
     </div>
 <?php endforeach ?>
 
 <form method="post" action="<?= e(route(ModulesAllAction::class)) ?>">
-    <?= csrf_field() ?>
-
     <table class="table table-bordered table-hover table-sm table-module-administration"
         <?= view('lists/datatables-attributes') ?>
         data-info="false"
@@ -90,6 +94,10 @@ use Illuminate\Support\Collection;
                 <th title="<?= I18N::translate('Blocks') ?>">
                     <?= view('icons/block') ?>
                     <span class="visually-hidden"><?= I18N::translate('Blocks') ?></span>
+                </th>
+                <th title="<?= I18N::translate('Data fixes') ?>">
+                    <?= view('icons/data-fix') ?>
+                    <span class="visually-hidden"><?= I18N::translate('Data fixes') ?></span>
                 </th>
                 <th title="<?= I18N::translate('Charts') ?>">
                     <?= view('icons/chart') ?>
@@ -205,6 +213,14 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Data fix') ?>">
+                        <?php if ($module instanceof ModuleDataFixInterface) : ?>
+                            <?= view('icons/data-fix') ?>
+                            <span class="visually-hidden"><?= I18N::translate('Data fix') ?></span>
+                        <?php else : ?>
+                            -
+                        <?php endif ?>
+                    </td>
                     <td class="text-center text-muted" title="<?= I18N::translate('Chart') ?>">
                         <?php if ($module instanceof ModuleChartInterface) : ?>
                             <?= view('icons/chart') ?>
@@ -273,9 +289,13 @@ use Illuminate\Support\Collection;
             <?php endforeach ?>
         </tbody>
     </table>
+
     <button class="btn btn-primary" type="submit">
         <?= view('icons/save') ?>
-        <?= I18N::translate('save') ?></button>
+        <?= I18N::translate('save') ?>
+    </button>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

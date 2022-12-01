@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,11 +43,10 @@ class ChangeFamilyMembersPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
-        $xref   = $request->getQueryParams()['xref'];
+        $xref   = Validator::queryParams($request)->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
-
-        $title = I18N::translate('Change family members') . ' – ' . $family->fullName();
+        $title  = I18N::translate('Change family members') . ' – ' . $family->fullName();
 
         return $this->viewResponse('edit/change-family-members', [
             'tree'     => $tree,

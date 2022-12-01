@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * EVENT_OR_FACT_CLASSIFICA TION := {Size=1:90}
+ * EVENT_OR_FACT_CLASSIFICATION := {Size=1:90}
  * A descriptive word or phrase used to further classify the parent event or
  * attribute tag. This should be used whenever either of the generic EVEN or
  * FACT tags are used. The value of this primative is responsible for

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogData;
@@ -33,31 +35,29 @@ use Fisharebest\Webtrees\Tree;
 <h1><?= $title ?></h1>
 
 <form method="post" class="form" name="logs">
-    <?= csrf_field() ?>
-
     <div class="row">
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="from">
                 <?= I18N::translateContext('Start of date range', 'From') ?>
             </label>
             <input type="date" class="form-control" id="from" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="from" value="<?= e($from) ?>" required="required">
         </div>
 
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="to">
                 <?= I18N::translateContext('End of date range', 'To') ?>
             </label>
             <input type="date" class="form-control" id="to" max="<?= e($latest) ?>" min="<?= e($earliest) ?>"  name="to" value="<?= e($to) ?>" required="required">
         </div>
 
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="type">
                 <?= I18N::translate('Status') ?>
             </label>
             <?= view('components/select', ['name' => 'type', 'selected' => $type, 'options' => $statuses]) ?>
         </div>
 
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="xref">
                 <?= I18N::translate('Record') ?>
             </label>
@@ -66,28 +66,28 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <div class="row">
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="oldged">
                 <?= I18N::translate('Old data') ?>
             </label>
             <input class="form-control" type="text" id="oldged" name="oldged" value="<?= e($oldged) ?>">
         </div>
 
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="newged">
                 <?= I18N::translate('New data') ?>
             </label>
             <input class="form-control" type="text" id="newged" name="newged" value="<?= e($newged) ?>">
         </div>
 
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="username">
                 <?= I18N::translate('User') ?>
             </label>
             <?= view('components/select', ['name' => 'username', 'selected' => $username, 'options' => $users]) ?>
         </div>
 
-        <div class="form-group col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3">
             <label for="tree">
                 <?= I18N::translate('Family tree') ?>
             </label>
@@ -115,6 +115,8 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('delete') ?>
         </a>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <table

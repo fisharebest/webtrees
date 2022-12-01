@@ -1,19 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 /**
- * @var string         $title
- * @var bool           $aliases
- * @var bool           $associates
- * @var Individual[][] $individual_groups
- * @var Individual     $root
- * @var Tree           $tree
+ * @var string                            $title
+ * @var bool                              $aliases
+ * @var bool                              $associates
+ * @var array<Collection<int,Individual>> $individual_groups
+ * @var Individual                        $root
+ * @var Tree                              $tree
  */
 
 ?>
@@ -23,13 +26,14 @@ use Fisharebest\Webtrees\Tree;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(UnconnectedAction::class, ['tree' => $tree->name()])) ?>">
-    <?= csrf_field() ?>
-
     <?= view('components/checkbox-inline', ['label' => I18N::translate('Include associates'), 'checked' => $associates, 'name' => 'associates']) ?>
     <?= view('components/checkbox-inline', ['label' => I18N::translate('Include aliases'), 'checked' => $aliases, 'name' => 'aliases']) ?>
+
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('update') ?>
     </button>
+
+    <?= csrf_field() ?>
 </form>
 
 <p><?= I18N::translate('These groups of individuals are not related to %s.', $root->fullName()) ?></p>

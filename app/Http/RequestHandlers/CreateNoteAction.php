@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function in_array;
+
 /**
  * Process a form to create a new note object.
  */
@@ -39,9 +41,8 @@ class CreateNoteAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $params      = (array) $request->getParsedBody();
-        $note        = $params['note'];
-        $restriction = $params['restriction'];
+        $note        = Validator::parsedBody($request)->string('note');
+        $restriction = Validator::parsedBody($request)->isInArray(['none', 'privacy', 'confidential', 'locked'])->string('restriction');
 
         // Convert HTML line endings to GEDCOM continuations
         $note = strtr($note, ["\r\n" => "\n1 CONT "]);

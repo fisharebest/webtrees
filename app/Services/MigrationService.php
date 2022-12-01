@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,7 +46,7 @@ class MigrationService
     {
         try {
             $current_version = (int) Site::getPreference($schema_name);
-        } catch (PDOException $ex) {
+        } catch (PDOException) {
             // During initial installation, the site_preference table won’t exist.
             $current_version = 0;
         }
@@ -54,7 +54,7 @@ class MigrationService
         if ($current_version < $target_version) {
             try {
                 $this->transactionalTables();
-            } catch (PDOException $ex) {
+            } catch (PDOException) {
                 // There is probably nothing we can do.
             }
         }

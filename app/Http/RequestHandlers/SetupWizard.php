@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -85,7 +85,7 @@ class SetupWizard implements RequestHandlerInterface
         'mysql'  => '3306',
         'pgsql'  => '5432',
         'sqlite' => '',
-        'sqlsvr' => '1433',
+        'sqlsrv' => '', // Do not use default, as it is valid to have no port number.
     ];
 
     private MigrationService $migration_service;
@@ -201,12 +201,10 @@ class SetupWizard implements RequestHandlerInterface
      */
     private function userData(ServerRequestInterface $request): array
     {
-        $params = (array) $request->getParsedBody();
-
         $data = [];
 
         foreach (self::DEFAULT_DATA as $key => $default) {
-            $data[$key] = $params[$key] ?? $default;
+            $data[$key] = Validator::parsedBody($request)->string($key, $default);
         }
 
         return $data;
@@ -263,7 +261,7 @@ class SetupWizard implements RequestHandlerInterface
             file_put_contents($data_dir . 'test.txt', $text1);
             $text2 = file_get_contents(Webtrees::DATA_DIR . 'test.txt');
             unlink(Webtrees::DATA_DIR . 'test.txt');
-        } catch (Exception $ex) {
+        } catch (Exception) {
             return false;
         }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -81,7 +83,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Delete') ?>
         </a>
 
-        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
+        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD') === '1') : ?>
             <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>

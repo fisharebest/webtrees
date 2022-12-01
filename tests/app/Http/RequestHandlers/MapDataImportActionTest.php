@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
+use Nyholm\Psr7\Factory\Psr17Factory;
 
 use function dirname;
 
@@ -40,8 +41,8 @@ class MapDataImportActionTest extends TestCase
     public function testImportAction(): void
     {
         $csv              = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
-        $handler          = new MapDataImportAction();
-        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['localfile' => $csv]);
+        $handler          = new MapDataImportAction(new Psr17Factory());
+        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['options' => 'add', 'source' => 'client'], ['localfile' => $csv]);
         $response         = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());

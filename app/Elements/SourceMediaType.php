@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
+use function strtoupper;
 use function uasort;
 
 /**
@@ -33,6 +33,25 @@ use function uasort;
  */
 class SourceMediaType extends AbstractElement
 {
+    public const VALUE_AUDIO       = 'AUDIO';
+    public const VALUE_BOOK        = 'BOOK';
+    public const VALUE_CARD        = 'CARD';
+    public const VALUE_CERTIFICATE = 'CERTIFICATE';
+    public const VALUE_COAT        = 'COAT';
+    public const VALUE_DOCUMENT    = 'DOCUMENT';
+    public const VALUE_ELECTRONIC  = 'ELECTRONIC';
+    public const VALUE_FICHE       = 'FICHE';
+    public const VALUE_FILM        = 'FILM';
+    public const VALUE_MAGAZINE    = 'MAGAZINE';
+    public const VALUE_MANUSCRIPT  = 'MANUSCRIPT';
+    public const VALUE_MAP         = 'MAP';
+    public const VALUE_NEWSPAPER   = 'NEWSPAPER';
+    public const VALUE_OTHER       = 'OTHER';
+    public const VALUE_PAINTING    = 'PAINTING';
+    public const VALUE_PHOTO       = 'PHOTO';
+    public const VALUE_TOMBSTONE   = 'TOMBSTONE';
+    public const VALUE_VIDEO       = 'VIDEO';
+
     protected const MAXIMUM_LENGTH = 15;
 
     /**
@@ -44,7 +63,7 @@ class SourceMediaType extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtolower(parent::canonical($value));
+        return strtoupper(parent::canonical($value));
     }
 
     /**
@@ -56,25 +75,25 @@ class SourceMediaType extends AbstractElement
     {
         // *** indicates custom values
         $values = [
-            ''            => '',
-            'audio'       => /* I18N: Type of media object */ I18N::translate('Audio'),
-            'book'        => /* I18N: Type of media object */ I18N::translate('Book'),
-            'card'        => /* I18N: Type of media object */ I18N::translate('Card'),
-            'certificate' => /* I18N: Type of media object */ I18N::translate('Certificate'),
-            'coat'        => /* I18N: Type of media object */ I18N::translate('Coat of arms'),
-            'document'    => /* I18N: Type of media object */ I18N::translate('Document'),
-            'electronic'  => /* I18N: Type of media object */ I18N::translate('Electronic'),
-            'fiche'       => /* I18N: Type of media object */ I18N::translate('Microfiche'),
-            'film'        => /* I18N: Type of media object */ I18N::translate('Microfilm'),
-            'magazine'    => /* I18N: Type of media object */ I18N::translate('Magazine'),
-            'manuscript'  => /* I18N: Type of media object */ I18N::translate('Manuscript'),
-            'map'         => /* I18N: Type of media object */ I18N::translate('Map'),
-            'newspaper'   => /* I18N: Type of media object */ I18N::translate('Newspaper'),
-            'other'       => /* I18N: Type of media object */ I18N::translate('Other'),
-            'photo'       => /* I18N: Type of media object */ I18N::translate('Photo'),
-            'painting'    => /* I18N: Type of media object */ I18N::translate('Painting'),
-            'tombstone'   => /* I18N: Type of media object */ I18N::translate('Tombstone'),
-            'video'       => /* I18N: Type of media object */ I18N::translate('Video'),
+            ''                      => '',
+            self::VALUE_AUDIO       => /* I18N: Type of media object */ I18N::translate('Audio'),
+            self::VALUE_BOOK        => /* I18N: Type of media object */ I18N::translate('Book'),
+            self::VALUE_CARD        => /* I18N: Type of media object */ I18N::translate('Card'),
+            self::VALUE_CERTIFICATE => /* I18N: Type of media object */ I18N::translate('Certificate'),
+            self::VALUE_COAT       => /* I18N: Type of media object */ I18N::translate('Coat of arms'),
+            self::VALUE_DOCUMENT   => /* I18N: Type of media object */ I18N::translate('Document'),
+            self::VALUE_ELECTRONIC => /* I18N: Type of media object */ I18N::translate('Electronic'),
+            self::VALUE_FICHE      => /* I18N: Type of media object */ I18N::translate('Microfiche'),
+            self::VALUE_FILM       => /* I18N: Type of media object */ I18N::translate('Microfilm'),
+            self::VALUE_MAGAZINE   => /* I18N: Type of media object */ I18N::translate('Magazine'),
+            self::VALUE_MANUSCRIPT => /* I18N: Type of media object */ I18N::translate('Manuscript'),
+            self::VALUE_MAP        => /* I18N: Type of media object */ I18N::translate('Map'),
+            self::VALUE_NEWSPAPER  => /* I18N: Type of media object */ I18N::translate('Newspaper'),
+            self::VALUE_OTHER      => /* I18N: Type of media object */ I18N::translate('Other'),
+            self::VALUE_PAINTING   => /* I18N: Type of media object */ I18N::translate('Painting'),
+            self::VALUE_PHOTO      => /* I18N: Type of media object */ I18N::translate('Photo'),
+            self::VALUE_TOMBSTONE  => /* I18N: Type of media object */ I18N::translate('Tombstone'),
+            self::VALUE_VIDEO      => /* I18N: Type of media object */ I18N::translate('Video'),
         ];
 
         uasort($values, I18N::comparator());

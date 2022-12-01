@@ -2,7 +2,7 @@
 ![Licence](https://img.shields.io/github/license/fisharebest/webtrees)
 [![Unit tests](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml/badge.svg)](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml)
 [![codecov](https://codecov.io/gh/fisharebest/webtrees/branch/main/graph/badge.svg?token=zREQBP4GBs)](https://codecov.io/gh/fisharebest/webtrees)
-[![Translation status](https://weblate.iet.open.ac.uk/widgets/webtrees/-/svg-badge.svg)](https://weblate.iet.open.ac.uk/projects/webtrees/webtrees/)
+[![Translation status](https://translate.webtrees.net/widgets/webtrees/-/svg-badge.svg)](https://weblate.iet.open.ac.uk/projects/webtrees/webtrees/)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=main)
 [![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 [![StyleCI](https://github.styleci.io/repos/11836349/shield?branch=main)](https://github.styleci.io/repos/11836349?branch=main)
@@ -26,7 +26,7 @@
 ## License
 
 * **webtrees: online genealogy**
-* Copyright 2021 webtrees development team
+* Copyright 2022 webtrees development team
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

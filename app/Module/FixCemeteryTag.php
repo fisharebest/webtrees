@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -57,7 +57,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
     public function title(): string
     {
         /* I18N: Name of a module */
-        return I18N::translate('Convert CEME tags to GEDCOM 5.5.1');
+        return I18N::translate('Convert %s tags to GEDCOM 5.5.1', 'INDI:BURI:CEME');
     }
 
     /**

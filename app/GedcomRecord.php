@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,15 +23,12 @@ use Closure;
 use Exception;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
-use function addcslashes;
 use function app;
 use function array_combine;
 use function array_keys;
@@ -43,6 +40,7 @@ use function count;
 use function date;
 use function e;
 use function explode;
+use function implode;
 use function in_array;
 use function md5;
 use function preg_match;
@@ -55,7 +53,9 @@ use function route;
 use function str_contains;
 use function str_ends_with;
 use function str_pad;
+use function str_starts_with;
 use function strtoupper;
+use function strtr;
 use function trim;
 use function view;
 
@@ -290,7 +290,10 @@ class GedcomRecord
             return true;
         }
 
-        return Auth::isEditor($this->tree) && !str_contains($this->gedcom, "\n1 RESN locked");
+        $fact   = $this->facts(['RESN'])->first();
+        $locked = $fact instanceof Fact && str_ends_with($fact->attribute('RESN'), RestrictionNotice::VALUE_LOCKED);
+
+        return Auth::isEditor($this->tree) && !$locked;
     }
 
     /**
@@ -386,7 +389,7 @@ class GedcomRecord
             $this->getPrimaryName = 0;
             // ...except when the language/name use different character sets
             foreach ($this->getAllNames() as $n => $name) {
-                if (I18N::textScript($name['sort']) === $language_script) {
+                if ($name['type'] !== '_MARNM' && I18N::textScript($name['sort']) === $language_script) {
                     $this->getPrimaryName = $n;
                     break;
                 }
@@ -498,10 +501,10 @@ class GedcomRecord
      */
     public function formatList(): string
     {
-        $html = '<a href="' . e($this->url()) . '" class="list_item">';
+        $html = '<a href="' . e($this->url()) . '">';
         $html .= '<b>' . $this->fullName() . '</b>';
-        $html .= $this->formatListDetails();
         $html .= '</a>';
+        $html .= $this->formatListDetails();
 
         return $html;
     }
@@ -527,195 +530,28 @@ class GedcomRecord
      */
     public function formatFirstMajorFact(array $facts, int $style): string
     {
-        foreach ($this->facts($facts, true) as $event) {
-            // Only display if it has a date or place (or both)
-            if ($event->date()->isOK() && $event->place()->gedcomName() !== '') {
-                $joiner = ' — ';
-            } else {
-                $joiner = '';
-            }
-            if ($event->date()->isOK() || $event->place()->gedcomName() !== '') {
-                switch ($style) {
-                    case 1:
-                        return '<br><em>' . $event->label() . ' ' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false]) . '</em>';
-                    case 2:
-                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false]) . $joiner . $event->place()->shortName() . '</dd></dl>';
-                }
-            }
+        $fact = $this->facts($facts, true)->first();
+
+        if ($fact === null) {
+            return '';
         }
 
-        return '';
-    }
+        // Only display if it has a date or place (or both)
+        $attributes = [];
 
-    /**
-     * Find individuals linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Individual>
-     */
-    public function linkedIndividuals(string $link): Collection
-    {
-        return DB::table('individuals')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'i_file')
-                    ->on('l_from', '=', 'i_id');
-            })
-            ->where('i_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['individuals.*'])
-            ->get()
-            ->map(Registry::individualFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
+        if ($fact->date()->isOK()) {
+            $attributes[] = view('fact-date', ['cal_link' => 'false', 'fact' => $fact, 'record' => $fact->record(), 'time' => false]);
+        }
 
-    /**
-     * Find families linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Family>
-     */
-    public function linkedFamilies(string $link): Collection
-    {
-        return DB::table('families')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'f_file')
-                    ->on('l_from', '=', 'f_id');
-            })
-            ->where('f_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['families.*'])
-            ->get()
-            ->map(Registry::familyFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
+        if ($fact->place()->gedcomName() !== '' && $style === 2) {
+            $attributes[] = $fact->place()->shortName();
+        }
 
-    /**
-     * Find sources linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Source>
-     */
-    public function linkedSources(string $link): Collection
-    {
-        return DB::table('sources')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 's_file')
-                    ->on('l_from', '=', 's_id');
-            })
-            ->where('s_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['sources.*'])
-            ->get()
-            ->map(Registry::sourceFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
+        if ($attributes === []) {
+            return '';
+        }
 
-    /**
-     * Find media objects linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Media>
-     */
-    public function linkedMedia(string $link): Collection
-    {
-        return DB::table('media')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'm_file')
-                    ->on('l_from', '=', 'm_id');
-            })
-            ->where('m_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['media.*'])
-            ->get()
-            ->map(Registry::mediaFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find notes linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Note>
-     */
-    public function linkedNotes(string $link): Collection
-    {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['other.*'])
-            ->get()
-            ->map(Registry::noteFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find repositories linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Repository>
-     */
-    public function linkedRepositories(string $link): Collection
-    {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['other.*'])
-            ->get()
-            ->map(Registry::repositoryFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find locations linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Location>
-     */
-    public function linkedLocations(string $link): Collection
-    {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', Location::RECORD_TYPE)
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['other.*'])
-            ->get()
-            ->map(Registry::locationFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
+        return '<div><em>' . I18N::translate('%1$s: %2$s', $fact->label(), implode(' — ', $attributes)) . '</em></div>';
     }
 
     /**
@@ -802,7 +638,12 @@ class GedcomRecord
                 default:
                     $subtags = Registry::elementFactory()->make($this->tag())->subtags();
                     $subtags = array_map(fn (string $tag): string => $this->tag() . ':' . $tag, array_keys($subtags));
-                    $subtags = array_combine(range(1, count($subtags)), $subtags);
+
+                    if ($subtags !== []) {
+                        // Renumber keys from 1.
+                        $subtags = array_combine(range(1, count($subtags)), $subtags);
+                    }
+
 
                     $facts = $facts
                         ->sort(static function (Fact $x, Fact $y) use ($subtags): int {
@@ -860,22 +701,25 @@ class GedcomRecord
      */
     public function lastChangeTimestamp(): TimestampInterface
     {
-        /** @var Fact|null $chan */
         $chan = $this->facts(['CHAN'])->first();
 
         if ($chan instanceof Fact) {
-            // The record does have a CHAN event
-            $d = $chan->date()->minimumDate()->format('%Y-%m-%d');
+            // The record has a CHAN event.
+            $date = $chan->date()->minimumDate();
+            $ymd = sprintf('%04d-%02d-%02d', $date->year(), $date->month(), $date->day());
 
-            if (preg_match('/\n3 TIME( (\d\d):(\d\d):(\d\d))/', $chan->gedcom(), $match)) {
-                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
+            if ($ymd !== '') {
+                // The CHAN event has a valid DATE.
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d):([0-5]\d))/', $chan->gedcom(), $match) === 1) {
+                    return Registry::timestampFactory()->fromString($ymd . $match[1], 'Y-m-d H:i:s');
+                }
+
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d))/', $chan->gedcom(), $match) === 1) {
+                    return Registry::timestampFactory()->fromString($ymd . $match[1], 'Y-m-d H:i');
+                }
+
+                return Registry::timestampFactory()->fromString($ymd, 'Y-m-d');
             }
-
-            if (preg_match('/\n3 TIME ((\d\d):(\d\d))/', $chan->gedcom(), $match)) {
-                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
-            }
-
-            return Registry::timestampFactory()->fromString($d, 'Y-m-d');
         }
 
         // The record does not have a CHAN event
@@ -971,7 +815,9 @@ class GedcomRecord
                     $new_gedcom .= "\n" . $gedcom;
                 }
                 $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
-            } elseif (!str_ends_with($fact->tag(), ':CHAN') || !$update_chan) {
+            } elseif ($update_chan && str_ends_with($fact->tag(), ':CHAN')) {
+                $new_gedcom .= "\n" . $this->updateChange($fact->gedcom());
+            } else {
                 $new_gedcom .= "\n" . $fact->gedcom();
             }
         }
@@ -982,9 +828,7 @@ class GedcomRecord
         }
 
         if ($update_chan && !str_contains($new_gedcom, "\n1 CHAN")) {
-            $today = strtoupper(date('d M Y'));
-            $now   = date('H:i:s');
-            $new_gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
+            $new_gedcom .= $this->updateChange("\n1 CHAN");
         }
 
         if ($new_gedcom !== $old_gedcom) {
@@ -1031,10 +875,11 @@ class GedcomRecord
 
         // Update the CHAN record
         if ($update_chan) {
-            $gedcom = preg_replace('/\n1 CHAN(\n[2-9].*)*/', '', $gedcom);
-            $today = strtoupper(date('d M Y'));
-            $now   = date('H:i:s');
-            $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
+            if (preg_match('/\n1 CHAN(\n[2-9].*)*/', $gedcom, $match)) {
+                $gedcom = strtr($gedcom, [$match[0] => $this->updateChange($match[0])]);
+            } else {
+                $gedcom .= $this->updateChange("\n1 CHAN");
+            }
         }
 
         // Create a pending change
@@ -1111,51 +956,13 @@ class GedcomRecord
             } elseif (preg_match_all('/\n(\d) ' . Gedcom::REGEX_TAG . ' ' . $value . '/', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 $gedcom = $fact->gedcom();
                 foreach ($matches as $match) {
-                    $next_level  = $match[1] + 1;
+                    $next_level  = 1 + (int) $match[1];
                     $next_levels = '[' . $next_level . '-9]';
                     $gedcom      = preg_replace('/' . $match[0] . '(\n' . $next_levels . '.*)*/', '', $gedcom);
                 }
                 $this->updateFact($fact->id(), $gedcom, $update_chan);
             }
         }
-    }
-
-    /**
-     * Fetch XREFs of all records linked to a record - when deleting an object, we must
-     * also delete all links to it.
-     *
-     * @return array<GedcomRecord>
-     */
-    public function linkingRecords(): array
-    {
-        $like = addcslashes($this->xref(), '\\%_');
-
-        $union = DB::table('change')
-            ->where('gedcom_id', '=', $this->tree()->id())
-            ->where('new_gedcom', 'LIKE', '%@' . $like . '@%')
-            ->where('new_gedcom', 'NOT LIKE', '0 @' . $like . '@%')
-            ->whereIn('change_id', function (Builder $query): void {
-                $query->select(new Expression('MAX(change_id)'))
-                    ->from('change')
-                    ->where('gedcom_id', '=', $this->tree->id())
-                    ->where('status', '=', 'pending')
-                    ->groupBy(['xref']);
-            })
-            ->select(['xref']);
-
-        $xrefs = DB::table('link')
-            ->where('l_file', '=', $this->tree()->id())
-            ->where('l_to', '=', $this->xref())
-            ->select(['l_from'])
-            ->union($union)
-            ->pluck('l_from');
-
-        return $xrefs->map(function (string $xref): GedcomRecord {
-            $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
-            assert($record instanceof GedcomRecord);
-
-            return $record;
-        })->all();
     }
 
     /**
@@ -1237,14 +1044,16 @@ class GedcomRecord
             if (preg_match_all('/^' . $level . ' (' . $fact_type . ') (.+)((\n[' . $sublevel . '-9].+)*)/m', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     // Treat 1 NAME / 2 TYPE married the same as _MARNM
-                    if ($match[1] === 'NAME' && str_contains($match[3], "\n2 TYPE married")) {
+                    if ($match[1] === 'NAME' && str_contains(strtoupper($match[3]), "\n2 TYPE MARRIED")) {
                         $this->addName('_MARNM', $match[2], $fact->gedcom());
                     } else {
                         $this->addName($match[1], $match[2], $fact->gedcom());
                     }
                     if ($match[3] && preg_match_all('/^' . $sublevel . ' (ROMN|FONE|_\w+) (.+)((\n[' . $subsublevel . '-9].+)*)/m', $match[3], $submatches, PREG_SET_ORDER)) {
                         foreach ($submatches as $submatch) {
-                            $this->addName($submatch[1], $submatch[2], $match[3]);
+                            if ($submatch[1] !== '_RUFNAME') {
+                                $this->addName($submatch[1], $submatch[2], $match[3]);
+                            }
                         }
                     }
                 }
@@ -1312,15 +1121,21 @@ class GedcomRecord
             return true;
         }
 
-        // Does this record have a RESN?
-        if (str_contains($this->gedcom, "\n1 RESN confidential")) {
-            return Auth::PRIV_NONE >= $access_level;
-        }
-        if (str_contains($this->gedcom, "\n1 RESN privacy")) {
-            return Auth::PRIV_USER >= $access_level;
-        }
-        if (str_contains($this->gedcom, "\n1 RESN none")) {
-            return true;
+        // Does this record have a restriction notice?
+        // Cannot use $this->>fact(), as that function calls this one.
+        if (preg_match('/\n1 RESN (.+)/', $this->gedcom(), $match)) {
+            $element     = new RestrictionNotice('');
+            $restriction = $element->canonical($match[1]);
+
+            if (str_starts_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
+                return Auth::PRIV_NONE >= $access_level;
+            }
+            if (str_starts_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
+                return Auth::PRIV_USER >= $access_level;
+            }
+            if (str_starts_with($restriction, RestrictionNotice::VALUE_NONE)) {
+                return true;
+            }
         }
 
         // Does this record have a default RESN?
@@ -1348,5 +1163,22 @@ class GedcomRecord
             ->where('o_id', '=', $this->xref())
             ->lockForUpdate()
             ->get();
+    }
+
+    /**
+     * Change records may contain notes and other fields.  Just update the date/time/author.
+     *
+     * @param string $gedcom
+     *
+     * @return string
+     */
+    private function updateChange(string $gedcom): string
+    {
+        $gedcom = preg_replace('/\n2 (DATE|_WT_USER).*(\n[3-9].*)*/', '', $gedcom);
+        $today  = strtoupper(date('d M Y'));
+        $now    = date('H:i:s');
+        $author = Auth::user()->userName();
+
+        return $gedcom . "\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . $author;
     }
 }

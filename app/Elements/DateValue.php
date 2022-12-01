@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,11 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 
-use function app;
 use function e;
 use function preg_replace_callback;
 use function view;
@@ -57,16 +56,25 @@ class DateValue extends AbstractElement
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
         // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
-        $localization_service = app(LocalizationService::class);
-        assert($localization_service instanceof LocalizationService);
+        $dmy = I18N::language()->dateOrder();
 
-        $dmy = $localization_service->dateFormatToOrder(I18N::dateFormat());
+        $attributes = [
+            'class'     => 'form-control',
+            'dir'       => 'ltr',
+            'type'      => 'text',
+            'id'        => $id,
+            'name'      => $name,
+            'value'     => $value,
+            'onchange'  => 'webtrees.reformatDate(this, \'' . e($dmy) . '\')',
+            'maxlength' => static::MAXIMUM_LENGTH,
+            'pattern'   => static::PATTERN,
+        ];
 
         return
             '<div class="input-group">' .
-            '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="webtrees.reformatDate(this, \'' . e($dmy) . '\')" dir="ltr" />' .
+            '<input ' . Html::attributes($attributes) . ' />' .
             view('edit/input-addon-calendar', ['id' => $id]) .
-            view('edit/input-addon-help', ['fact' => 'DATE']) .
+            view('edit/input-addon-help', ['topic' => 'DATE']) .
             '</div>' .
             '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>' .
             '<div class="form-text">' . (new Date($value))->display() . '</div>';

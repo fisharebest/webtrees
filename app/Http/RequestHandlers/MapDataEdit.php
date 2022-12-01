@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\MapDataService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -63,8 +64,10 @@ class MapDataEdit implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $place_id = (int) $request->getAttribute('place_id');
-        $location = $this->map_data_service->findById($place_id);
+        $location_id = Validator::attributes($request)->integer('location_id');
+        $location    = $this->map_data_service->findById($location_id);
+        $default_url = route(MapDataList::class, ['parent_id' => $location->parent()->id()]);
+        $url         = Validator::queryParams($request)->isLocalUrl()->string('url', $default_url);
 
         if ($location->id() === null) {
             return redirect(route(MapDataList::class));
@@ -113,6 +116,7 @@ class MapDataEdit implements RequestHandlerInterface
             'marker_position' => $marker_position,
             'parent'          => $location->parent(),
             'leaflet_config'  => $this->leaflet_js_service->config(),
+            'url'             => $url,
         ]);
     }
 }

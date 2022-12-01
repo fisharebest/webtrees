@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -76,6 +76,16 @@ class FamilyListModule extends IndividualListModule
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        return $this->createResponse($tree, $user, $request->getQueryParams(), true);
+        $params = [
+            'alpha'               => Validator::queryParams($request)->string('alpha', ''),
+            'falpha'              => Validator::queryParams($request)->string('falpha', ''),
+            'show'                => Validator::queryParams($request)->string('show', 'surn'),
+            'show_all'            => Validator::queryParams($request)->string('show_all', 'no'),
+            'show_all_firstnames' => Validator::queryParams($request)->string('show_all_firstnames', 'no'),
+            'show_marnm'          => Validator::queryParams($request)->string('show_marnm', ''),
+            'surname'             => Validator::queryParams($request)->string('surname', ''),
+        ];
+
+        return $this->createResponse($tree, $user, $params, true);
     }
 }

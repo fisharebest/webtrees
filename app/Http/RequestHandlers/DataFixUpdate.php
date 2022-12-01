@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,7 +60,7 @@ class DataFixUpdate implements RequestHandlerInterface
         $module   = $this->module_service->findByName($data_fix);
         assert($module instanceof ModuleDataFixInterface);
 
-        $xref   = $request->getQueryParams()['xref'] ?? '';
+        $xref   = Validator::queryParams($request)->isXref()->string('xref');
         $params = $request->getQueryParams();
 
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);

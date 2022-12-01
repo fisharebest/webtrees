@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,8 +35,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function preg_replace;
 use function redirect;
 use function route;
@@ -73,17 +71,14 @@ class EditMediaFileAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = Validator::attributes($request)->tree();
-        $xref    = Validator::attributes($request)->isXref()->string('xref');
-        $fact_id = Validator::attributes($request)->string('fact_id');
-        $data_filesystem = Registry::filesystem()->data();
-
-        $params   = (array) $request->getParsedBody();
-        $folder   = $params['folder'] ?? '';
-        $new_file = $params['new_file'] ?? '';
-        $remote   = $params['remote'] ?? '';
-        $title    = $params['title'] ?? '';
-        $type     = $params['type'] ?? '';
+        $tree     = Validator::attributes($request)->tree();
+        $xref     = Validator::attributes($request)->isXref()->string('xref');
+        $fact_id  = Validator::attributes($request)->string('fact_id');
+        $folder   = Validator::parsedBody($request)->string('folder');
+        $new_file = Validator::parsedBody($request)->string('new_file');
+        $remote   = Validator::parsedBody($request)->string('remote');
+        $title    = Validator::parsedBody($request)->string('title');
+        $type     = Validator::parsedBody($request)->string('type');
         $media    = Registry::mediaFactory()->make($xref, $tree);
         $media    = Auth::checkMediaAccess($media, true);
 
@@ -122,7 +117,7 @@ class EditMediaFileAction implements RequestHandlerInterface
             $file = $media_file->filename();
         }
 
-        $filesystem = $media->tree()->mediaFilesystem($data_filesystem);
+        $filesystem = $media->tree()->mediaFilesystem();
         $old        = $media_file->filename();
         $new        = $file;
 
@@ -135,13 +130,13 @@ class EditMediaFileAction implements RequestHandlerInterface
                     try {
                         $filesystem->move($old, $new);
                         FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                    } catch (FilesystemException | UnableToMoveFile $ex) {
+                    } catch (FilesystemException | UnableToMoveFile) {
                         // Don't overwrite existing file
                         FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
                         $file = $old;
                     }
                 }
-            } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+            } catch (FilesystemException | UnableToRetrieveMetadata) {
                 // File does not exist?
             }
         }

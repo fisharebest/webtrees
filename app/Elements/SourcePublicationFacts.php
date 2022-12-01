@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,6 +31,33 @@ use Fisharebest\Webtrees\Tree;
  */
 class SourcePublicationFacts extends AbstractElement
 {
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        return $this->canonicalText($value);
+    }
+
+    /**
+     * An edit control for this data.
+     *
+     * @param string $id
+     * @param string $name
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function edit(string $id, string $name, string $value, Tree $tree): string
+    {
+        return $this->editTextArea($id, $name, $value);
+    }
+
     /**
      * Display the value of this type of element.
      *

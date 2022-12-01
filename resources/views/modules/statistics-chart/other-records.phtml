@@ -1,0 +1,50 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Records') ?>
+    <span class="badge bg-secondary rounded-pill float-end">#totalRecords#</span>
+</h4>
+
+<div class="row row-cols-1 row-cols-lg-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header border-bottom-0">
+                <?= I18N::translate('Media objects') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#totalMedia#</span>
+            </h5>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header border-bottom-0">
+                <?= I18N::translate('Sources') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#totalSources#</span>
+            </h5>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header border-bottom-0">
+                <?= I18N::translate('Notes') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#totalNotes#</span>
+            </h5>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header border-bottom-0">
+                <?= I18N::translate('Repositories') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#totalRepositories#</span>
+            </h5>
+        </div>
+    </div>
+</div>

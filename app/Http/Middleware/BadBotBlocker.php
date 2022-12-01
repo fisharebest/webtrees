@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,18 +60,23 @@ class BadBotBlocker implements MiddlewareInterface
         'admantx',
         'Adsbot',
         'AhrefsBot',
+        'Amazonbot', // Until it understands crawl-delay and noindex / nofollow
         'AspiegelBot',
         'Barkrowler',
         'BLEXBot',
+        'DataForSEO',
         'DotBot',
         'Grapeshot',
         'ia_archiver',
         'Linguee',
         'MJ12bot',
+        'netEstate NE',
         'panscient',
         'PetalBot',
         'proximic',
         'SemrushBot',
+        'SEOkicks',
+        'SiteKiosk',
         'Turnitin',
         'XoviBot',
         'ZoominfoBot',
@@ -80,16 +85,22 @@ class BadBotBlocker implements MiddlewareInterface
     /**
      * Some search engines use reverse/forward DNS to verify the IP address.
      *
+     * @see https://developer.amazon.com/support/amazonbot
      * @see https://support.google.com/webmasters/answer/80553?hl=en
      * @see https://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0
      * @see https://www.bing.com/webmaster/help/how-to-verify-bingbot-3905dc26
      * @see https://yandex.com/support/webmaster/robot-workings/check-yandex-robots.html
+     * @see https://www.mojeek.com/bot.html
+     * @see https://support.apple.com/en-gb/HT204683
      */
     private const ROBOT_REV_FWD_DNS = [
+        'Amazonbot'   => ['.crawl.amazon.com'],
+        'Applebot'    => ['.applebot.apple.com'],
         'bingbot'     => ['.search.msn.com'],
         'BingPreview' => ['.search.msn.com'],
         'Google'      => ['.google.com', '.googlebot.com'],
-        'Mail.RU_Bot' => ['mail.ru'],
+        'MojeekBot'   => ['.mojeek.com'],
+        'Mail.RU_Bot' => ['.mail.ru'],
         'msnbot'      => ['.search.msn.com'],
         'Qwantify'    => ['.search.qwant.com'],
         'Sogou'       => ['.crawl.sogou.com'],
@@ -102,11 +113,13 @@ class BadBotBlocker implements MiddlewareInterface
      *
      * @see https://help.baidu.com/question?prod_id=99&class=0&id=3001
      * @see https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler
+     * @see https://www.ionos.de/terms-gtc/faq-crawler
      */
     private const ROBOT_REV_ONLY_DNS = [
         'Baiduspider' => ['.baidu.com', '.baidu.jp'],
         'FreshBot'    => ['.seznam.cz'],
-        'Seznam'      => ['.seznam.cz'],
+        'IonCrawl'    => ['.1und1.org'],
+        'Neevabot'    => ['.neeva.com'],
     ];
 
     /**
@@ -278,7 +291,7 @@ class BadBotBlocker implements MiddlewareInterface
                 $ranges = array_map($mapper, $routes);
 
                 return array_filter($ranges);
-            } catch (Throwable $ex) {
+            } catch (Throwable) {
                 return [];
             }
         }, random_int(self::WHOIS_TTL_MIN, self::WHOIS_TTL_MAX));

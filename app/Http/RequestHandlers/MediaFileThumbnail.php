@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,8 +46,8 @@ class MediaFileThumbnail implements RequestHandlerInterface
         $user = Validator::attributes($request)->user();
 
         $params  = $request->getQueryParams();
-        $xref    = $params['xref'] ?? '';
-        $fact_id = $params['fact_id'] ?? '';
+        $xref    = Validator::queryParams($request)->isXref()->string('xref');
+        $fact_id = Validator::queryParams($request)->string('fact_id');
         $media   = Registry::mediaFactory()->make($xref, $tree);
 
         if ($media === null) {
@@ -70,7 +70,7 @@ class MediaFileThumbnail implements RequestHandlerInterface
 
                 if ($media_file->signature($params) !== $params['s']) {
                     return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN)
-                        ->withHeader('X-Signature-Exception', 'Signature mismatch');
+                        ->withHeader('x-signature-exception', 'Signature mismatch');
                 }
 
                 $image_factory = Registry::imageFactory();
@@ -83,7 +83,7 @@ class MediaFileThumbnail implements RequestHandlerInterface
                     $image_factory->fileNeedsWatermark($media_file, $user)
                 );
 
-                return $response->withHeader('Cache-Control', 'public,max-age=31536000');
+                return $response->withHeader('cache-control', 'public,max-age=31536000');
             }
         }
 

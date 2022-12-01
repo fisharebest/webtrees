@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
@@ -64,6 +65,11 @@ class AbstractXrefElement extends AbstractElement
      */
     protected function valueXrefLink(string $value, Tree $tree, $factory): string
     {
+        if ($value === '@VOID@') {
+            // I18N: The record was not recorded in this GEDCOM file.
+            return I18N::translate('Not recorded');
+        }
+
         if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match)) {
             $record = $factory->make($match[1], $tree);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -22,12 +24,11 @@ use Fisharebest\Webtrees\Tree;
 <h2><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(ContactAction::class, ['tree' => $tree->name()])) ?>">
-    <?= csrf_field() ?>
     <?= $captcha ?>
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="to">
             <?= I18N::translateContext('Email recipient', 'To') ?>
         </label>
@@ -37,7 +38,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="from-name">
             <?= I18N::translate('Your name') ?>
         </label>
@@ -45,7 +46,7 @@ use Fisharebest\Webtrees\Tree;
             <input class="form-control" id="from-name" type="text" name="from_name" value="<?= e($from_name) ?>" required="required">
         </div>
     </div>
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="from-email">
             <?= I18N::translate('Email address') ?>
         </label>
@@ -54,7 +55,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="subject">
             <?= I18N::translate('Subject') ?>
         </label>
@@ -63,7 +64,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="body">
             <?= I18N::translate('Message') ?>
         </label>
@@ -72,7 +73,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-sm-3 col-form-label"></div>
         <div class="col-sm-9">
             <button type="submit" class="btn btn-primary">
@@ -83,4 +84,6 @@ use Fisharebest\Webtrees\Tree;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @var string $error
  * @var string $title
@@ -9,9 +11,9 @@
 <?= view('modals/header', ['title' => $title]) ?>
 
 <div class="modal-body">
-	<div class="alert alert-danger">
-		<?= $error ?>
-	</div>
+    <div class="alert alert-danger">
+        <?= $error ?>
+    </div>
 </div>
 
 <?= view('modals/footer-close') ?>

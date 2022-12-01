@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Elements\XrefAssociate;
@@ -71,22 +73,24 @@ if ($tag === 'MARR') {
 ?>
 <tr class="<?= implode(' ', $styles) ?>">
     <th scope="row">
-        <div class="wt-fact-label"><?= $label?></div>
+        <div class="wt-fact-label ut"><?= $label?></div>
 
         <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
             <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
         <?php endif ?>
 
-        <?php if ($tree->getPreference('SHOW_FACT_ICONS')) : ?>
+        <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
             <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>"></span>
         <?php endif ?>
     </th>
 
     <td>
         <?php if ($fact->target() instanceof Media) : ?>
-            <div class="d-flex">
+            <div class="d-flex flex-wrap">
                 <?php foreach ($fact->target()->mediaFiles() as $media_file) : ?>
-                    <?= $media_file->displayImage(100, 100, 'contain', []) ?>
+                    <div class="me-1 mb-1">
+                        <?= $media_file->displayImage(100, 100, 'contain', []) ?>
+                    </div>
                 <?php endforeach ?>
             </div>
 
@@ -100,7 +104,7 @@ if ($tag === 'MARR') {
                 <?php if ($parent !== $record) : ?>
                     <div class="wt-fact-record">
                         <?php if ($parent instanceof Family) : ?>
-                            <?php foreach ($parent->spouses()->filter(static fn($individual): bool => $individual !== $record) as $spouse) : ?>
+                            <?php foreach ($parent->spouses()->filter(static fn ($individual): bool => $individual !== $record) as $spouse) : ?>
                                 <a href="<?= e($spouse->url()) ?>"><?= $spouse->fullName() ?></a> —
                             <?php endforeach ?>
                             <a href="<?= e($parent->url()) ?>"><?= I18N::translate('View this family') ?></a>
@@ -115,10 +119,10 @@ if ($tag === 'MARR') {
                     <?php if ($element instanceof XrefAssociate && $fact->target() instanceof Individual) : ?>
                         <?php
                         $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-                            ->first(static fn (ModuleInterface $module):bool => $module instanceof RelationshipsChartModule)
+                            ->first(static fn (ModuleInterface $module): bool => $module instanceof RelationshipsChartModule)
                         ?>
 
-                        <?php if ($module instanceof RelationshipsChartModule) : ?>
+                        <?php if ($module instanceof RelationshipsChartModule && $record instanceof Individual) : ?>
                             — <a href="<?= $module->chartUrl($fact->target(), ['xref2' => $record->xref()]) ?>" rel="nofollow">
                                 <?= app(RelationshipService::class)->getCloseRelationshipName($fact->target(), $record) ?>
                             </a>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -102,19 +102,19 @@ function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): R
 
     return $response_factory
         ->createResponse($code)
-        ->withHeader('Location', $url);
+        ->withHeader('location', $url);
 }
 
 /**
  * Create a response.
  *
- * @param string|array<mixed>|object $content
+ * @param array<mixed>|object|string $content
  * @param int                        $code
  * @param array<string>              $headers
  *
  * @return ResponseInterface
  */
-function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
+function response(array|object|string $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
 {
     return Registry::responseFactory()->response($content, $code, $headers);
 }

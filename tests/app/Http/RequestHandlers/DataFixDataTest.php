@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,10 +55,10 @@ class DataFixDataTest extends TestCase
         $handler = new DataFixData($data_fix_service, $datatables_service, $module_service);
 
         $request = self::createRequest(RequestMethodInterface::METHOD_GET, [
-                'type' => Individual::RECORD_TYPE,
-                'search' => 'DOE',
-                'method' => 'exact',
-                'case'  =>  ''
+                'type'       => Individual::RECORD_TYPE,
+                'search-for' => 'DOE',
+                'method'     => 'exact',
+                'case'       =>  ''
             ])
             ->withAttribute('tree', $tree)
             ->withAttribute('data_fix', 'fix-search-and-replace');

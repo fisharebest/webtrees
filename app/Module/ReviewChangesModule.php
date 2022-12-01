@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,12 +25,14 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -122,7 +124,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             if ($next_email_timestamp < time()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
-                    if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== 'none') {
+                    if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE) {
                         foreach ($this->tree_service->all() as $tmp_tree) {
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
                                 I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE));
@@ -241,10 +243,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $days     = Validator::parsedBody($request)->integer('days');
+        $sendmail = Validator::parsedBody($request)->string('sendmail');
 
-        $this->setBlockSetting($block_id, 'days', $params['days']);
-        $this->setBlockSetting($block_id, 'sendmail', $params['sendmail']);
+        $this->setBlockSetting($block_id, 'days', (string) $days);
+        $this->setBlockSetting($block_id, 'sendmail', $sendmail);
     }
 
     /**

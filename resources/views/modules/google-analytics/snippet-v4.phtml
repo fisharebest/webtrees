@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @var string $access_level
+ * @var string $tree_name
+ * @var string $GOOGLE_ANALYTICS_ID
+ */
+?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?=  e($GOOGLE_ANALYTICS_ID ?? '') ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', <?= json_encode($GOOGLE_ANALYTICS_ID, JSON_THROW_ON_ERROR) ?>, {
+    'custom_map': {'dimension1': 'tree_name', 'dimension2': 'access_level'},
+    'tree_name': <?= json_encode($tree_name, JSON_THROW_ON_ERROR) ?>,
+    'access_level': <?= json_encode($access_level, JSON_THROW_ON_ERROR) ?>,
+  });
+</script>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,6 +18,9 @@
 declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
+
+use function preg_replace;
+use function trim;
 
 /**
  * PLACE_HIERARCHY := {Size=1:120}
@@ -36,4 +39,19 @@ namespace Fisharebest\Webtrees\Elements;
 class PlaceHierarchy extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 120;
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        $value = parent::canonical($value);
+        $value = preg_replace('/[, ]+/', ', ', $value);
+
+        return trim($value, ', ');
+    }
 }

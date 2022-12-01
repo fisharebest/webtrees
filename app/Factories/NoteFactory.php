@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
-use function assert;
 use function preg_match;
 
 /**
@@ -70,12 +69,7 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (object $row) use ($tree): Note {
-            $note = $this->make($row->o_id, $tree, $row->o_gedcom);
-            assert($note instanceof Note);
-
-            return $note;
-        };
+        return fn (object $row): Note => $this->make($row->o_id, $tree, $row->o_gedcom);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -72,6 +72,9 @@ class LeafletJsService
             throw new HttpServiceUnavailableException($message);
         }
 
+        $enter_fullscreen_icon = '<span title="' . I18N::translate('Enter fullscreen') . '">' . view('icons/enter-fullscreen') . '</span>';
+        $exit_fullscreen_icon  = '<span title="' . I18N::translate('Exit fullscreen') . '">' . view('icons/exit-fullscreen') . '</span>';
+
         return (object) [
             'i18n'         => [
                 'reset'   => I18N::translate('Reload map'),
@@ -79,8 +82,10 @@ class LeafletJsService
                 'zoomOut' => I18N::translate('Zoom out'),
             ],
             'icons'        => [
-                'collapse' => view('icons/collapse'),
-                'expand'   => view('icons/expand'),
+                'collapse'   => view('icons/collapse'),
+                'expand'     => view('icons/expand'),
+                'reset'      => view('icons/undo'),
+                'fullScreen' => $enter_fullscreen_icon . $exit_fullscreen_icon,
             ],
             'mapProviders' => $map_providers,
         ];

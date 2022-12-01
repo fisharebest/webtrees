@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,8 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function response;
 use function view;
 
@@ -61,11 +59,8 @@ class AddMediaFileModal implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $xref = Validator::attributes($request)->isXref()->string('xref');
-
-        $data_filesystem = Registry::filesystem()->data();
-
+        $tree  = Validator::attributes($request)->tree();
+        $xref  = Validator::attributes($request)->isXref()->string('xref');
         $media = Registry::mediaFactory()->make($xref, $tree);
 
         try {
@@ -79,7 +74,7 @@ class AddMediaFileModal implements RequestHandlerInterface
 
         $max_upload_size = $this->media_file_service->maxUploadFilesize();
         $media_types     = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
-        $unused_files    = $this->media_file_service->unusedFiles($tree, $data_filesystem);
+        $unused_files    = $this->media_file_service->unusedFiles($tree);
 
         return response(view('modals/add-media-file', [
             'max_upload_size' => $max_upload_size,

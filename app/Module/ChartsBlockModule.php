@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -228,10 +229,11 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $type = Validator::parsedBody($request)->string('type');
+        $xref = Validator::parsedBody($request)->isXref()->string('xref');
 
-        $this->setBlockSetting($block_id, 'type', $params['type'] ?? 'pedigree');
-        $this->setBlockSetting($block_id, 'pid', $params['xref'] ?? '');
+        $this->setBlockSetting($block_id, 'type', $type);
+        $this->setBlockSetting($block_id, 'pid', $xref);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
-use League\Flysystem\FilesystemOperator;
 
 /**
  * Class AbstractRenderer - base for PDF and HTML reports
@@ -295,7 +294,6 @@ abstract class AbstractRenderer
      * @param float              $h     Image height
      * @param string             $align L:left, C:center, R:right or empty to use x/y
      * @param string             $ln    T:same line, N:next line
-     * @param FilesystemOperator $data_filesystem
      *
      * @return ReportBaseImage
      */
@@ -306,8 +304,7 @@ abstract class AbstractRenderer
         float $w,
         float $h,
         string $align,
-        string $ln,
-        FilesystemOperator $data_filesystem
+        string $ln
     ): ReportBaseImage;
 
     /**

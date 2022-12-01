@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
+use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
-use League\Flysystem\Filesystem;
-use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
 
 use function ob_get_clean;
 use function ob_start;
@@ -76,8 +74,7 @@ class DescendancyReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
-        $data_filesystem = new Filesystem(new InMemoryFilesystemAdapter());
-        $module_service  = new ModuleService();
+        $module_service = new ModuleService();
 
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
@@ -97,13 +94,13 @@ class DescendancyReportModuleTest extends TestCase
         self::assertIsArray($report->reportProperties());
 
         ob_start();
-        new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree, $data_filesystem);
+        new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);
         $html = ob_get_clean();
         self::assertStringStartsWith('<', $html);
         self::assertStringEndsWith('>', $html);
 
         ob_start();
-        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree, $data_filesystem);
+        new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree);
         $pdf = ob_get_clean();
 
         self::assertStringStartsWith('%PDF', $pdf);

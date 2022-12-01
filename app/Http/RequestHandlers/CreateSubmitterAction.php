@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function in_array;
+
 /**
  * Process a form to create a new submitter.
  */
@@ -39,12 +41,11 @@ class CreateSubmitterAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $params      = (array) $request->getParsedBody();
-        $name        = $params['submitter_name'];
-        $address     = $params['submitter_address'];
-        $email       = $params['submitter_email'];
-        $phone       = $params['submitter_phone'];
-        $restriction = $params['restriction'];
+        $name        = Validator::parsedBody($request)->string('submitter_name');
+        $address     = Validator::parsedBody($request)->string('submitter_address');
+        $email       = Validator::parsedBody($request)->string('submitter_email');
+        $phone       = Validator::parsedBody($request)->string('submitter_phone');
+        $restriction = Validator::parsedBody($request)->string('restriction');
 
         // Fix non-printing characters
         $name = trim(preg_replace('/\s+/', ' ', $name));

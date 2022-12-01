@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -63,11 +63,10 @@ class CreateMediaObjectAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $params      = (array) $request->getParsedBody();
-        $note        = $params['media-note'] ?? '';
-        $title       = $params['title'] ?? '';
-        $type        = $params['type'] ?? '';
-        $restriction = $params['restriction'] ?? '';
+        $note        = Validator::parsedBody($request)->string('media-note');
+        $title       = Validator::parsedBody($request)->string('title');
+        $type        = Validator::parsedBody($request)->string('type');
+        $restriction = Validator::parsedBody($request)->string('restriction');
 
         $file = $this->media_file_service->uploadFile($request);
 

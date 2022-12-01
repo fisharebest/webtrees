@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -52,7 +52,7 @@ class RedirectReportEnginePhpTest extends TestCase
 
         $request = self::createRequest(
             RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'action' => 'run'],
+            ['ged' => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml'],
             [],
             [],
             ['base_url' => 'https://www.example.com']
@@ -62,7 +62,7 @@ class RedirectReportEnginePhpTest extends TestCase
 
         self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
         self::assertSame(
-            'https://www.example.com/index.php?route=%2Ftree1%2Freport-run%2F&ged=tree1&action=run',
+            'https://www.example.com/index.php?route=%2Ftree1%2Freport-run%2Ffoo',
             $response->getHeaderLine('Location')
         );
     }
@@ -80,7 +80,10 @@ class RedirectReportEnginePhpTest extends TestCase
 
         $handler = new RedirectReportEnginePhp($tree_service);
 
-        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1']);
+        $request = self::createRequest(
+            RequestMethodInterface::METHOD_GET,
+            ['ged'    => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml']
+        );
 
         $this->expectException(HttpNotFoundException::class);
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,8 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -69,18 +67,16 @@ class EditFactAction implements RequestHandlerInterface
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
-        $params    = (array) $request->getParsedBody();
-        $keep_chan = (bool) ($params['keep_chan'] ?? false);
-        $levels    = $params['levels'];
-        $tags      = $params['tags'];
-        $values    = $params['values'];
-
-        $gedcom = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values);
+        $keep_chan = Validator::parsedBody($request)->boolean('keep_chan', false);
+        $levels    = Validator::parsedBody($request)->array('levels');
+        $tags      = Validator::parsedBody($request)->array('tags');
+        $values    = Validator::parsedBody($request)->array('values');
+        $gedcom    = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values, false);
 
         $census_assistant = $this->module_service->findByInterface(CensusAssistantModule::class)->first();
 
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
-            $ca_individuals = $params['ca_individuals']['xref'] ?? [];
+            $ca_individuals = Validator::parsedBody($request)->array('ca_individuals')['xref'] ?? [];
 
             if ($ca_individuals !== []) {
                 $gedcom = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $gedcom, $keep_chan);
@@ -112,8 +108,7 @@ class EditFactAction implements RequestHandlerInterface
             }
         }
 
-        $base_url = Validator::attributes($request)->string('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $record->url());
+        $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $record->url());
 
         return redirect($url);
     }

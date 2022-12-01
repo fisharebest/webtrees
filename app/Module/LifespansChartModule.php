@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
@@ -37,20 +36,17 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_filter;
 use function array_intersect;
 use function array_map;
 use function array_merge;
 use function array_reduce;
 use function array_unique;
-use function assert;
 use function count;
 use function date;
 use function explode;
 use function implode;
 use function intdiv;
-use function is_array;
 use function max;
 use function md5;
 use function min;
@@ -427,7 +423,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     private function layoutIndividuals(array $individuals): array
     {
-        $colors = [
+        $color_generators = [
             'M' => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
             'F' => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
             'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
@@ -467,8 +463,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             // Fill the row up to the year (leaving a small gap)
             $rows[$next_row] = $death_year;
 
+            $color_generator = $color_generators[$individual->sex()] ?? $color_generators['U'];
+
             $lifespans[] = (object) [
-                'background' => $colors[$individual->sex()]->getNextColor(),
+                'background' => $color_generator->getNextColor(),
                 'birth_year' => $birth_year,
                 'death_year' => $death_year,
                 'id'         => 'individual-' . md5($individual->xref()),

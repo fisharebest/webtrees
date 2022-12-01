@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToIndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualPage;
@@ -38,27 +40,6 @@ use Illuminate\Support\Collection;
         </tr>
     </tbody>
 </table>
-
-<?php if ($can_edit && $parent_families->isEmpty()) : ?>
-    <table class="table table-sm wt-facts-table" role="presentation">
-        <tbody>
-            <tr>
-                <td>
-                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= I18N::translate('Add a father') ?>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= I18N::translate('Add a mother') ?>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<?php endif ?>
 
 <!-- Parents -->
 <?php foreach ($parent_families as $family) : ?>
@@ -118,6 +99,24 @@ use Illuminate\Support\Collection;
                     </td>
                 </tr>
             <?php endif ?>
+
+            <?php if ($parent_families->isEmpty()) : ?>
+                <tr>
+                    <td>
+                        <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                            <?= I18N::translate('Add a father') ?>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                            <?= I18N::translate('Add a mother') ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endif ?>
+
             <tr>
                 <td>
                     <a href="<?= e(route(LinkChildToFamilyPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">

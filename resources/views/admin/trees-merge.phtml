@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\RenumberTreePage;
@@ -32,19 +34,17 @@ use Fisharebest\Webtrees\Tree;
     </p>
     <p>
         <a class="current" href="<?= e(route(RenumberTreePage::class, ['tree' => $tree1->name()])) ?>">
-            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree1->title()) ?>
+            <?= I18N::translate('Renumber XREFs') ?> — <?= e($tree1->title()) ?>
         </a>
     </p>
     <p>
         <a class="current" href="<?= e(route(RenumberTreePage::class, ['tree' => $tree2->name()])) ?>">
-            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree2->title()) ?>
+            <?= I18N::translate('Renumber XREFs') ?> — <?= e($tree2->title()) ?>
         </a>
     </p>
 <?php endif ?>
 
 <form method="post" action="<?= e(route(MergeTreesAction::class)) ?>">
-    <?= csrf_field() ?>
-
     <div>
         <?= I18N::translate(/* I18N: Copy all the records from [family tree 1] into [family tree 2] */
             'Copy all the records from %1$s into %2$s.',
@@ -59,6 +59,8 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('continue') ?>
         </button>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?= I18N::translate('Caution! This may take a long time. Be patient.') ?>

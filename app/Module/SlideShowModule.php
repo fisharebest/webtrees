@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Elements\SourceMediaType;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
@@ -30,9 +33,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function array_filter;
-use function assert;
 use function in_array;
 use function str_contains;
+use function strtolower;
 
 /**
  * Class SlideShowModule
@@ -48,6 +51,19 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
     // How long to show each slide (seconds)
     private const DELAY = 6;
+
+    // New data is normalized.  Old data may contain jpg/jpeg, tif/tiff.
+    private const SUPPORTED_FORMATS = ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'tif', 'tiff', 'webp'];
+
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
 
     /**
      * A sentence describing what this module does.
@@ -73,36 +89,36 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
         $request       = app(ServerRequestInterface::class);
-        $default_start = $this->getBlockSetting($block_id, 'start');
+        $default_start = (bool) $this->getBlockSetting($block_id, 'start');
         $filter_links  = $this->getBlockSetting($block_id, 'filter', self::LINK_ALL);
         $controls      = $this->getBlockSetting($block_id, 'controls', '1');
-        $start         = (bool) ($request->getQueryParams()['start'] ?? $default_start);
+        $start         = Validator::queryParams($request)->boolean('start', $default_start);
 
         $filter_types = [
-            $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
-            $this->getBlockSetting($block_id, 'filter_book', '1') ? 'book' : null,
-            $this->getBlockSetting($block_id, 'filter_card', '1') ? 'card' : null,
-            $this->getBlockSetting($block_id, 'filter_certificate', '1') ? 'certificate' : null,
-            $this->getBlockSetting($block_id, 'filter_coat', '1') ? 'coat' : null,
-            $this->getBlockSetting($block_id, 'filter_document', '1') ? 'document' : null,
-            $this->getBlockSetting($block_id, 'filter_electronic', '1') ? 'electronic' : null,
-            $this->getBlockSetting($block_id, 'filter_fiche', '1') ? 'fiche' : null,
-            $this->getBlockSetting($block_id, 'filter_film', '1') ? 'film' : null,
-            $this->getBlockSetting($block_id, 'filter_magazine', '1') ? 'magazine' : null,
-            $this->getBlockSetting($block_id, 'filter_manuscript', '1') ? 'manuscript' : null,
-            $this->getBlockSetting($block_id, 'filter_map', '1') ? 'map' : null,
-            $this->getBlockSetting($block_id, 'filter_newspaper', '1') ? 'newspaper' : null,
-            $this->getBlockSetting($block_id, 'filter_other', '1') ? 'other' : null,
-            $this->getBlockSetting($block_id, 'filter_painting', '1') ? 'painting' : null,
-            $this->getBlockSetting($block_id, 'filter_photo', '1') ? 'photo' : null,
-            $this->getBlockSetting($block_id, 'filter_tombstone', '1') ? 'tombstone' : null,
-            $this->getBlockSetting($block_id, 'filter_video', '0') ? 'video' : null,
+            $this->getBlockSetting($block_id, 'filter_audio', '0') ? SourceMediaType::VALUE_AUDIO : null,
+            $this->getBlockSetting($block_id, 'filter_book', '1') ? SourceMediaType::VALUE_BOOK : null,
+            $this->getBlockSetting($block_id, 'filter_card', '1') ? SourceMediaType::VALUE_CARD : null,
+            $this->getBlockSetting($block_id, 'filter_certificate', '1') ? SourceMediaType::VALUE_CERTIFICATE : null,
+            $this->getBlockSetting($block_id, 'filter_coat', '1') ? SourceMediaType::VALUE_COAT : null,
+            $this->getBlockSetting($block_id, 'filter_document', '1') ? SourceMediaType::VALUE_DOCUMENT : null,
+            $this->getBlockSetting($block_id, 'filter_electronic', '1') ? SourceMediaType::VALUE_ELECTRONIC : null,
+            $this->getBlockSetting($block_id, 'filter_fiche', '1') ? SourceMediaType::VALUE_FICHE : null,
+            $this->getBlockSetting($block_id, 'filter_film', '1') ? SourceMediaType::VALUE_FILM : null,
+            $this->getBlockSetting($block_id, 'filter_magazine', '1') ? SourceMediaType::VALUE_MAGAZINE : null,
+            $this->getBlockSetting($block_id, 'filter_manuscript', '1') ? SourceMediaType::VALUE_MANUSCRIPT : null,
+            $this->getBlockSetting($block_id, 'filter_map', '1') ? SourceMediaType::VALUE_MAP : null,
+            $this->getBlockSetting($block_id, 'filter_newspaper', '1') ? SourceMediaType::VALUE_NEWSPAPER : null,
+            $this->getBlockSetting($block_id, 'filter_other', '1') ? SourceMediaType::VALUE_OTHER : null,
+            $this->getBlockSetting($block_id, 'filter_painting', '1') ? SourceMediaType::VALUE_PAINTING : null,
+            $this->getBlockSetting($block_id, 'filter_photo', '1') ? SourceMediaType::VALUE_PHOTO : null,
+            $this->getBlockSetting($block_id, 'filter_tombstone', '1') ? SourceMediaType::VALUE_TOMBSTONE : null,
+            $this->getBlockSetting($block_id, 'filter_video', '0') ? SourceMediaType::VALUE_VIDEO : null,
         ];
 
         $filter_types = array_filter($filter_types);
 
         // The type "other" includes media without a type.
-        if (in_array('other', $filter_types, true)) {
+        if (in_array(SourceMediaType::VALUE_OTHER, $filter_types, true)) {
             $filter_types[] = '';
         }
 
@@ -114,20 +130,19 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->where('media.m_file', '=', $tree->id())
-            ->whereIn('media_file.multimedia_format', ['jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp'])
+            ->whereIn('media_file.multimedia_format', self::SUPPORTED_FORMATS)
             ->whereIn('media_file.source_media_type', $filter_types)
             ->select('media.*')
             ->get()
             ->shuffle()
-            ->first(static function (object $row) use ($filter_links, $tree): bool {
+            ->first(function (object $row) use ($filter_links, $tree): bool {
                 $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
-                assert($media instanceof Media);
 
-                if (!$media->canShow() || $media->firstImageFile() === null) {
+                if ($media === null || !$media->canShow() || $media->firstImageFile() === null) {
                     return false;
                 }
 
-                foreach ($media->linkedIndividuals('OBJE') as $individual) {
+                foreach ($this->linked_record_service->linkedIndividuals($media) as $individual) {
                     switch ($filter_links) {
                         case self::LINK_ALL:
                             return true;
@@ -153,6 +168,9 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $content = view('modules/random_media/slide-show', [
                 'block_id'            => $block_id,
                 'delay'               => self::DELAY,
+                'linked_families'     => $this->linked_record_service->linkedFamilies($random_media),
+                'linked_individuals'  => $this->linked_record_service->linkedIndividuals($random_media),
+                'linked_sources'      => $this->linked_record_service->linkedSources($random_media),
                 'media'               => $random_media,
                 'media_file'          => $random_media->firstImageFile(),
                 'show_controls'       => $controls,
@@ -229,29 +247,27 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
-
-        $this->setBlockSetting($block_id, 'filter', $params['filter']);
-        $this->setBlockSetting($block_id, 'controls', $params['controls']);
-        $this->setBlockSetting($block_id, 'start', $params['start']);
-        $this->setBlockSetting($block_id, 'filter_audio', $params['filter_audio'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_book', $params['filter_book'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_card', $params['filter_card'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_certificate', $params['filter_certificate'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_coat', $params['filter_coat'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_document', $params['filter_document'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_electronic', $params['filter_electronic'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_fiche', $params['filter_fiche'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_film', $params['filter_film'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_magazine', $params['filter_magazine'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_manuscript', $params['filter_manuscript'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_map', $params['filter_map'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_newspaper', $params['filter_newspaper'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_other', $params['filter_other'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_painting', $params['filter_painting'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_photo', $params['filter_photo'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_tombstone', $params['filter_tombstone'] ?? '');
-        $this->setBlockSetting($block_id, 'filter_video', $params['filter_video'] ?? '');
+        $this->setBlockSetting($block_id, 'filter', Validator::parsedBody($request)->string('filter'));
+        $this->setBlockSetting($block_id, 'controls', Validator::parsedBody($request)->string('controls'));
+        $this->setBlockSetting($block_id, 'start', Validator::parsedBody($request)->string('start'));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_AUDIO), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_AUDIO, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_BOOK), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_BOOK, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_CARD), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_CARD, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_CERTIFICATE), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_CERTIFICATE, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_COAT), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_COAT, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_DOCUMENT), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_DOCUMENT, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_ELECTRONIC), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_ELECTRONIC, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_FICHE), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_FICHE, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_FILM), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_FILM, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_MAGAZINE), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_MAGAZINE, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_MANUSCRIPT), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_MANUSCRIPT, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_MAP), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_MAP, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_NEWSPAPER), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_NEWSPAPER, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_OTHER), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_OTHER, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_PAINTING), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_PAINTING, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_PHOTO), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_PHOTO, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_TOMBSTONE), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_TOMBSTONE, false));
+        $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::VALUE_VIDEO), (string) Validator::parsedBody($request)->boolean(SourceMediaType::VALUE_VIDEO, false));
     }
 
     /**
@@ -269,24 +285,24 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $start    = $this->getBlockSetting($block_id, 'start', '0');
 
         $filters = [
-            'audio'       => $this->getBlockSetting($block_id, 'filter_audio', '0'),
-            'book'        => $this->getBlockSetting($block_id, 'filter_book', '1'),
-            'card'        => $this->getBlockSetting($block_id, 'filter_card', '1'),
-            'certificate' => $this->getBlockSetting($block_id, 'filter_certificate', '1'),
-            'coat'        => $this->getBlockSetting($block_id, 'filter_coat', '1'),
-            'document'    => $this->getBlockSetting($block_id, 'filter_document', '1'),
-            'electronic'  => $this->getBlockSetting($block_id, 'filter_electronic', '1'),
-            'fiche'       => $this->getBlockSetting($block_id, 'filter_fiche', '1'),
-            'film'        => $this->getBlockSetting($block_id, 'filter_film', '1'),
-            'magazine'    => $this->getBlockSetting($block_id, 'filter_magazine', '1'),
-            'manuscript'  => $this->getBlockSetting($block_id, 'filter_manuscript', '1'),
-            'map'         => $this->getBlockSetting($block_id, 'filter_map', '1'),
-            'newspaper'   => $this->getBlockSetting($block_id, 'filter_newspaper', '1'),
-            'other'       => $this->getBlockSetting($block_id, 'filter_other', '1'),
-            'painting'    => $this->getBlockSetting($block_id, 'filter_painting', '1'),
-            'photo'       => $this->getBlockSetting($block_id, 'filter_photo', '1'),
-            'tombstone'   => $this->getBlockSetting($block_id, 'filter_tombstone', '1'),
-            'video'       => $this->getBlockSetting($block_id, 'filter_video', '0'),
+            SourceMediaType::VALUE_AUDIO       => $this->getBlockSetting($block_id, 'filter_audio', '0'),
+            SourceMediaType::VALUE_BOOK        => $this->getBlockSetting($block_id, 'filter_book', '1'),
+            SourceMediaType::VALUE_CARD        => $this->getBlockSetting($block_id, 'filter_card', '1'),
+            SourceMediaType::VALUE_CERTIFICATE => $this->getBlockSetting($block_id, 'filter_certificate', '1'),
+            SourceMediaType::VALUE_COAT       => $this->getBlockSetting($block_id, 'filter_coat', '1'),
+            SourceMediaType::VALUE_DOCUMENT   => $this->getBlockSetting($block_id, 'filter_document', '1'),
+            SourceMediaType::VALUE_ELECTRONIC => $this->getBlockSetting($block_id, 'filter_electronic', '1'),
+            SourceMediaType::VALUE_FICHE      => $this->getBlockSetting($block_id, 'filter_fiche', '1'),
+            SourceMediaType::VALUE_FILM       => $this->getBlockSetting($block_id, 'filter_film', '1'),
+            SourceMediaType::VALUE_MAGAZINE   => $this->getBlockSetting($block_id, 'filter_magazine', '1'),
+            SourceMediaType::VALUE_MANUSCRIPT => $this->getBlockSetting($block_id, 'filter_manuscript', '1'),
+            SourceMediaType::VALUE_MAP        => $this->getBlockSetting($block_id, 'filter_map', '1'),
+            SourceMediaType::VALUE_NEWSPAPER  => $this->getBlockSetting($block_id, 'filter_newspaper', '1'),
+            SourceMediaType::VALUE_OTHER      => $this->getBlockSetting($block_id, 'filter_other', '1'),
+            SourceMediaType::VALUE_PAINTING   => $this->getBlockSetting($block_id, 'filter_painting', '1'),
+            SourceMediaType::VALUE_PHOTO      => $this->getBlockSetting($block_id, 'filter_photo', '1'),
+            SourceMediaType::VALUE_TOMBSTONE  => $this->getBlockSetting($block_id, 'filter_tombstone', '1'),
+            SourceMediaType::VALUE_VIDEO      => $this->getBlockSetting($block_id, 'filter_video', '0'),
         ];
 
         $formats = array_filter(Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values());

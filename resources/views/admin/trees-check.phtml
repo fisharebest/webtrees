@@ -1,15 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
 
 /**
- * @var array<string> $errors
+ * @var array<object> $errors
+ * @var array<object> $infos
+ * @var string        $more_url
  * @var string        $title
  * @var Tree          $tree
- * @var array<string> $warnings
+ * @var array<object> $warnings
  */
 
 ?>
@@ -18,20 +23,87 @@ use Fisharebest\Webtrees\Tree;
 
 <h1><?= $title ?></h1>
 
-<ul class="list-group">
-    <li class="list-group-item">
-        <strong><?= I18N::translate('GEDCOM errors') ?></strong>
-    </li>
+<h2>
+    <?= I18N::translate('GEDCOM errors') ?>
+</h2>
 
+<ul class="list-group">
     <?php foreach ($errors as $error) : ?>
-        <li class="list-group-item list-group-item-danger"><?= $error ?></li>
+        <li class="list-group-item list-group-item-danger" data-wt-tag="<?= e($error->tag) ?>">
+            <div class="row">
+                <div class="col-auto"><?= $error->message ?></div>
+
+                <?php if ($error->tag !== '') : ?>
+                    <div class="col-auto ms-auto">
+                        <button type="button" class="btn btn-link p-0 border-0">
+                            <?= I18N::translate('Hide these errors') ?> — <?= e($error->tag) ?>
+                        </button>
+                    </div>
+                <?php endif ?>
+            </div>
+        </li>
     <?php endforeach ?>
 
     <?php foreach ($warnings as $warning) : ?>
-        <li class="list-group-item list-group-item-warning"><?= $warning ?></li>
+        <li class="list-group-item list-group-item-warning" data-wt-tag="<?= e($warning->tag) ?>">
+            <div class="row">
+                <div class="col-auto"><?= $warning->message ?></div>
+
+                <?php if ($warning->tag !== '') : ?>
+                    <div class="col-auto ms-auto">
+                        <button type="button" class="btn btn-link p-0 border-0">
+                            <?= I18N::translate('Hide these errors') ?> — <?= e($warning->tag) ?>
+                        </button>
+                    </div>
+                <?php endif ?>
+            </div>
+        </li>
+    <?php endforeach ?>
+
+    <?php foreach ($infos as $info) : ?>
+        <li class="list-group-item list-group-item-info" data-wt-tag="<?= e($info->tag) ?>">
+            <div class="row">
+                <div class="col-auto"><?= $info->message ?></div>
+
+                <?php if ($info->tag !== '') : ?>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-link p-0 border-0">
+                            <?= I18N::translate('Hide these errors') ?> — <?= e($info->tag) ?>
+                        </button>
+                    </div>
+                <?php endif ?>
+            </div>
+        </li>
     <?php endforeach ?>
 
     <?php if ($errors === [] && $warnings === []) : ?>
         <li class="list-group-item"><?= I18N::translate('No errors have been found.') ?></li>
     <?php endif ?>
 </ul>
+
+<?php if ($more_url !== '') : ?>
+    <p>
+        <?= I18N::translate('The server’s time limit has been reached.') ?>
+        <a class="btn btn-primary" href="<?= e($more_url) ?>">
+            <?= I18N::translate('show more') ?>
+        </a>
+    </p>
+<?php endif ?>
+
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  document.querySelector('ul.list-group').addEventListener('click', (event) => {
+    if (event.target.matches('button')) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Much quicker to hide elements than remove them.
+      document
+        .querySelectorAll('[data-wt-tag=' + CSS.escape(event.target.closest('li').dataset.wtTag) + ']')
+        .forEach((element) => { element.style.display = 'none'; });
+    }
+  });
+</script>
+<?php View::endpush() ?>

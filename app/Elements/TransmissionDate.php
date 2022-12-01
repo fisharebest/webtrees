@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,22 @@ namespace Fisharebest\Webtrees\Elements;
  * <DATE_EXACT>
  * The date that this transmission was created.
  */
-class TransmissionDate extends AbstractElement
+class TransmissionDate extends DateValueToday
 {
+    protected const SUBTAGS = [
+        'TIME' => '1:1',
+    ];
+
+    /**
+     * Escape @ signs in a GEDCOM export.
+     * This value should not include calendar escapes, so override special logic for date fields.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function escape(string $value): string
+    {
+        return strtr($value, ['@' => '@@']);
+    }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -56,12 +56,9 @@ class ReportListAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
-        $params = (array) $request->getParsedBody();
-
-        $report = $params['report'] ?? '';
+        $tree   = Validator::attributes($request)->tree();
+        $user   = Validator::attributes($request)->user();
+        $report = Validator::parsedBody($request)->string('report');
         $module = $this->module_service->findByName($report);
 
         if ($module instanceof ModuleReportInterface) {

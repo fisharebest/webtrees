@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,13 +24,14 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function str_contains;
-use function strtolower;
+use function strtoupper;
 
 /**
  * Trait ModuleCustomTrait - default implementation of ModuleCustomInterface
@@ -109,7 +110,7 @@ trait ModuleCustomTrait
                         return $version;
                     }
                 }
-            } catch (GuzzleException $ex) {
+            } catch (GuzzleException) {
                 // Can't connect to the server?
             }
 
@@ -171,7 +172,7 @@ trait ModuleCustomTrait
     public function getAssetAction(ServerRequestInterface $request): ResponseInterface
     {
         // The file being requested.  e.g. "css/theme.css"
-        $asset = $request->getQueryParams()['asset'];
+        $asset = Validator::queryParams($request)->string('asset');
 
         // Do not allow requests that try to access parent folders.
         if (str_contains($asset, '..')) {
@@ -188,12 +189,12 @@ trait ModuleCustomTrait
         }
 
         $content   = file_get_contents($file);
-        $extension = strtolower(pathinfo($asset, PATHINFO_EXTENSION));
+        $extension = strtoupper(pathinfo($asset, PATHINFO_EXTENSION));
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Cache-Control'  => 'public,max-age=31536000',
-            'Content-Type'   => $mime_type,
+            'cache-control'  => 'public,max-age=31536000',
+            'content-type'   => $mime_type,
         ]);
     }
 }

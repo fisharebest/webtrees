@@ -24,14 +24,13 @@ use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
 use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function array_filter;
+use function array_map;
 use function assert;
-use function intval;
 use function is_bool;
 use function parse_url;
 use function strlen;
@@ -70,7 +69,10 @@ class RouteFactory implements RouteFactoryInterface
         // Aura uses rawurlencode(), which maps false onto "" - which does not work as an aura URL parameter.
         $parameters = array_map(static fn ($var) => is_bool($var) ? (int) $var : $var, $parameters);
 
-        $url = $router_container->getGenerator()->generate($route_name, $parameters);
+        // Aura doesn't work with empty/optional URL parameters - but we need empty ones for query parameters.
+        $url_parameters = array_map(static fn ($var) => $var === '' ? null : $var, $parameters);
+
+        $url = $router_container->getGenerator()->generate($route_name, $url_parameters);
 
         // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
         $parameters = array_filter($parameters, static function (string $key) use ($route): bool {

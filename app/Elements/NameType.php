@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
+use function strtoupper;
+
 /**
  * NAME_TYPE := {Size=5:30}
  * [ aka | birth | immigrant | maiden | married | <user defined>]
@@ -34,6 +36,28 @@ use Fisharebest\Webtrees\I18N;
  */
 class NameType extends AbstractElement
 {
+    public const VALUE_ADOPTED   = 'ADOPTED';
+    public const VALUE_AKA       = 'AKA';
+    public const VALUE_BIRTH     = 'BIRTH';
+    public const VALUE_CHANGE    = 'CHANGE';
+    public const VALUE_ESTATE    = 'ESTATE';
+    public const VALUE_IMMIGRANT = 'IMMIGRANT';
+    public const VALUE_MAIDEN    = 'MAIDEN';
+    public const VALUE_MARRIED   = 'MARRIED';
+    public const VALUE_RELIGIOUS = 'RELIGIOUS';
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        return strtoupper(parent::canonical($value));
+    }
+
     /**
      * A list of controlled values for this element
      *
@@ -42,25 +66,25 @@ class NameType extends AbstractElement
     public function values(): array
     {
         return [
-            ''          => '',
-            'adopted'   => /* I18N: The name given to a child by its adoptive parents */
-                I18N::translate('adopted name'),
-            'aka'       => /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
-                I18N::translate('also known as'),
-            'birth'     => /* I18N: The name given to an individual at their birth */
-                I18N::translate('birth name'),
-            'change'    => /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-                I18N::translate('change of name'),
-            'estate'    => /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-                I18N::translate('estate name'),
-            'immigrant' => /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-                I18N::translate('immigration name'),
-            'maiden'    => /* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
-                I18N::translate('maiden name'),
-            'married'   => /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-                I18N::translate('married name'),
-            'religious' => /* I18N: A name taken when entering a religion or a religious order */
-                I18N::translate('religious name'),
+            ''                   => '',
+            /* I18N: The name given to a child by its adoptive parents */
+            self::VALUE_ADOPTED   => I18N::translate('adopted name'),
+            /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
+            self::VALUE_AKA       => I18N::translate('also known as'),
+            /* I18N: The name given to an individual at their birth */
+            self::VALUE_BIRTH     => I18N::translate('birth name'),
+            /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
+            self::VALUE_CHANGE    => I18N::translate('change of name'),
+            /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+            self::VALUE_ESTATE    => I18N::translate('estate name'),
+            /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
+            self::VALUE_IMMIGRANT => I18N::translate('immigration name'),
+            /* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
+            self::VALUE_MAIDEN    => I18N::translate('maiden name'),
+            /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
+            self::VALUE_MARRIED   => I18N::translate('married name'),
+            /* I18N: A name taken when entering a religion or a religious order */
+            self::VALUE_RELIGIOUS => I18N::translate('religious name'),
         ];
     }
 }

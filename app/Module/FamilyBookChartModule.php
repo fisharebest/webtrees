@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -154,7 +154,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
         $xref        = Validator::attributes($request)->isXref()->string('xref');
         $book_size   = Validator::attributes($request)->isBetween(self::MINIMUM_BOOK_SIZE, self::MAXIMUM_BOOK_SIZE)->integer('book_size');
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
-        $spouses     = Validator::attributes($request)->boolean('spouses');
+        $spouses     = Validator::attributes($request)->boolean('spouses', false);
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
         // Convert POST requests into GET requests for pretty URLs.
@@ -164,7 +164,7 @@ class FamilyBookChartModule extends AbstractModule implements ModuleChartInterfa
                 'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
                 'book_size'   => Validator::parsedBody($request)->isBetween(self::MINIMUM_BOOK_SIZE, self::MAXIMUM_BOOK_SIZE)->integer('book_size'),
                 'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
-                'spouses'     => Validator::parsedBody($request)->boolean('spouses'),
+                'spouses'     => Validator::parsedBody($request)->boolean('spouses', false),
             ]));
         }
 

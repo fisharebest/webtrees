@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -53,7 +53,7 @@ class TreePageBlock implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree     = Validator::attributes($request)->tree();
-        $block_id = $request->getQueryParams()['block_id'];
+        $block_id = Validator::queryParams($request)->integer('block_id');
 
         $block_id = (int) DB::table('block')
             ->where('block_id', '=', $block_id)

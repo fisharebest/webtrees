@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function in_array;
+
 /**
  * Process a form to create a new source.
  */
@@ -38,17 +40,15 @@ class CreateSourceAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $params       = (array) $request->getParsedBody();
-        $title        = $params['source-title'];
-        $abbreviation = $params['source-abbreviation'];
-        $author       = $params['source-author'];
-        $publication  = $params['source-publication'];
-        $repository   = $params['source-repository'];
-        $call_number  = $params['source-call-number'];
-        $text         = $params['source-text'];
-        $restriction  = $params['restriction'];
+        $tree         = Validator::attributes($request)->tree();
+        $title        = Validator::parsedBody($request)->string('source-title');
+        $abbreviation = Validator::parsedBody($request)->string('source-abbreviation');
+        $author       = Validator::parsedBody($request)->string('source-author');
+        $publication  = Validator::parsedBody($request)->string('source-publication');
+        $repository   = Validator::parsedBody($request)->string('source-repository');
+        $call_number  = Validator::parsedBody($request)->string('source-call-number');
+        $text         = Validator::parsedBody($request)->string('source-text');
+        $restriction  = Validator::parsedBody($request)->string('restriction');
 
         // Fix non-printing characters
         $title        = trim(preg_replace('/\s+/', ' ', $title));

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
@@ -23,16 +25,15 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<?php if ($users->isNotEmpty()): ?>
+<?php if ($users->isNotEmpty()) : ?>
     <form method="post" action="<?= e(route(MessageSelect::class, ['tree' => $tree->name()])) ?>">
-        <?= csrf_field() ?>
         <input type="hidden" name="url" value="<?= e(route(UserPage::class, ['tree' => $tree->name()])) ?>">
         <label for="to"><?= I18N::translate('Send a message') ?></label>
 
         <div class="input-group">
-            <select class="form-control" id="to" name="to" required="required">
+            <select class="form-select" id="to" name="to" required="required">
                 <option value=""><?= I18N::translate('&lt;select&gt;') ?></option>
-                <?php foreach ($users as $user): ?>
+                <?php foreach ($users as $user) : ?>
                     <option value="<?= e($user->userName()) ?>">
                         <?= e($user->realName()) ?> - <?= e($user->userName()) ?>
                     </option>
@@ -41,8 +42,9 @@ use Illuminate\Support\Collection;
 
             <button type="submit" class="btn btn-primary"><?= I18N::translate('Send') ?></button>
         </div>
-        <br><br>
+        <?= csrf_field() ?>
     </form>
+    <br><br>
 <?php endif ?>
 
 <form
@@ -53,9 +55,7 @@ use Illuminate\Support\Collection;
     id="messageform"
     name="messageform"
 >
-    <?= csrf_field() ?>
-
-    <?php if ($messages->isNotEmpty()): ?>
+    <?php if ($messages->isNotEmpty()) : ?>
         <div class="table-responsive">
             <table class="table-sm w-100">
                 <tr>
@@ -72,7 +72,7 @@ use Illuminate\Support\Collection;
                     <th class="wt-page-options-label"><?= I18N::translate('Email address') ?></th>
                 </tr>
 
-                <?php foreach ($messages as $message): ?>
+                <?php foreach ($messages as $message) : ?>
                     <tr>
                         <td class="wt-page-options-value center">
                             <input type="checkbox" name="message_id[]" value="<?= $message->message_id ?>" id="cb_message<?= $message->message_id ?>">
@@ -94,9 +94,9 @@ use Illuminate\Support\Collection;
                         <td class="wt-page-options-value">
                             <?php $user = $user_service->findByIdentifier($message->sender) ?>
 
-                            <?php if ($user instanceof User): ?>
+                            <?php if ($user instanceof User) : ?>
                                 <bdi><?= e($user->realName()) ?></bdi> - <bdi><?= $user->email() ?></bdi>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <a href="mailto:<?= e($message->sender) ?>"><?= e($message->sender) ?></a>
                             <?php endif ?>
                         </td>
@@ -143,7 +143,9 @@ use Illuminate\Support\Collection;
             </table>
         </div>
         <p>
-            <button type="submit"><?= I18N::translate('Delete selected messages') ?></button>
+            <button type="submit" class="btn btn-primary"><?= I18N::translate('Delete selected messages') ?></button>
         </p>
     <?php endif ?>
+
+    <?= csrf_field() ?>
 </form>

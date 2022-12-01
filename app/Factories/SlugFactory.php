@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Transliterator;
 
 use function extension_loaded;
+use function in_array;
 use function preg_replace;
 use function strip_tags;
 use function trim;
@@ -49,9 +50,9 @@ class SlugFactory implements SlugFactoryInterface
     /**
      * @param GedcomRecord $record
      *
-     * @return string|null
+     * @return string
      */
-    public function make(GedcomRecord $record): ?string
+    public function make(GedcomRecord $record): string
     {
         $slug = strip_tags($record->fullName());
 
@@ -59,17 +60,12 @@ class SlugFactory implements SlugFactoryInterface
             $slug = $this->transliterator->transliterate($slug);
 
             if ($slug === false) {
-                return null;
+                return '';
             }
         }
 
         $slug = preg_replace('/[^A-Za-z0-9]+/', '-', $slug);
-        $slug = trim($slug, '-');
 
-        if ($slug !== '') {
-            return $slug;
-        }
-
-        return null;
+        return trim($slug, '-');
     }
 }

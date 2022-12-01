@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,34 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Tree;
-
 /**
  * CHANGE_DATE := {Size=10:11}
  * <DATE_EXACT>
  * The date that this data was changed.
  */
-class ChangeDate extends AbstractElement
+class ChangeDate extends DateValueToday
 {
     protected const SUBTAGS = [
         'TIME' => '1:1',
     ];
 
     /**
-     * Display the value of this type of element.
+     * Escape @ signs in a GEDCOM export.
+     * This value should not include calendar escapes, so override special logic for date fields.
      *
      * @param string $value
-     * @param Tree   $tree
      *
      * @return string
      */
-    public function value(string $value, Tree $tree): string
+    public function escape(string $value): string
     {
-        $canonical = $this->canonical($value);
-
-        $date = new Date($canonical);
-
-        return $date->display();
+        return strtr($value, ['@' => '@@']);
     }
 }

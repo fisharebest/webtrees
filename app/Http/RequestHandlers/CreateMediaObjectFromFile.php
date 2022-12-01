@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,7 +36,7 @@ class CreateMediaObjectFromFile implements RequestHandlerInterface
     private PendingChangesService $pending_changes_service;
 
     /**
-     * CreateMediaObjectFromFileAction constructor.
+     * CreateMediaObjectFromFile constructor.
      *
      * @param MediaFileService      $media_file_service
      * @param PendingChangesService $pending_changes_service
@@ -55,11 +55,10 @@ class CreateMediaObjectFromFile implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
-        $params = (array) $request->getParsedBody();
-        $file   = $params['file'] ?? '';
-        $type   = $params['type'] ?? '';
-        $title  = $params['title'] ?? '';
-        $note   = $params['note'] ?? '';
+        $file   = Validator::parsedBody($request)->string('file');
+        $type   = Validator::parsedBody($request)->string('type');
+        $title  = Validator::parsedBody($request)->string('title');
+        $note   = Validator::parsedBody($request)->string('note');
 
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
 

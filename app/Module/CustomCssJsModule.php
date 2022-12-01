@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -60,7 +61,7 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -91,10 +92,11 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
+        $body = Validator::parsedBody($request)->string('body');
+        $head = Validator::parsedBody($request)->string('head');
 
-        $this->setPreference('body', $params['body']);
-        $this->setPreference('head', $params['head']);
+        $this->setPreference('body', $body);
+        $this->setPreference('head', $head);
 
         $message = I18N::translate('The preferences for the module “%s” have been updated.', $this->title());
         FlashMessages::addMessage($message, 'success');

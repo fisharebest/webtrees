@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,8 +30,6 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -64,7 +62,7 @@ class RedirectRepositoryPhp implements RequestHandlerInterface
             $repository = Registry::repositoryFactory()->make($rid, $tree);
 
             if ($repository instanceof Repository) {
-                return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                return Registry::responseFactory()->redirectUrl($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
             }
         }
 

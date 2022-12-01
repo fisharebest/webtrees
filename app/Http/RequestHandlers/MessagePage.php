@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -59,13 +60,13 @@ class MessagePage implements RequestHandlerInterface
     {
         $tree    = Validator::attributes($request)->tree();
         $user    = Validator::attributes($request)->user();
-        $body    = $request->getQueryParams()['body'] ?? '';
-        $subject = $request->getQueryParams()['subject'] ?? '';
-        $to      = $request->getQueryParams()['to'] ?? '';
-        $url     = $request->getQueryParams()['url'] ?? route(HomePage::class);
+        $body    = Validator::queryParams($request)->string('body', '');
+        $subject = Validator::queryParams($request)->string('subject', '');
+        $to      = Validator::queryParams($request)->string('to', '');
+        $url     = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
         $to_user = $this->user_service->findByUserName($to);
 
-        if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'none') {
+        if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_NONE) {
             throw new HttpAccessDeniedException('Invalid contact user id');
         }
 

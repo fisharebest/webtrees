@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
@@ -19,10 +21,9 @@ use Fisharebest\Webtrees\I18N;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e($action) ?>" class="form-horizontal">
-    <?= csrf_field() ?>
     <?= $form_fields ?>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3" for="preview">
             <?= I18N::translate('Preview') ?>
         </label>
@@ -33,7 +34,7 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>
@@ -46,4 +47,6 @@ use Fisharebest\Webtrees\I18N;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

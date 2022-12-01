@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,10 +22,10 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -395,7 +395,7 @@ class UserService
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
 
-        if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'mailto') {
+        if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_MAILTO) {
             $url = 'mailto:' . $contact_user->email();
         } elseif ($user instanceof User) {
             // Logged-in users send direct messages

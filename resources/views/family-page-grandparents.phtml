@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
@@ -7,14 +9,14 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * @var Family      $family
- * @var Individual  $individual
- * @var Family|null $parent_family
+ * @var Family          $family
+ * @var Individual|null $individual
+ * @var Family|null     $parent_family
  */
 
 ?>
 
-<div class="d-flex">
+<div class="d-flex my-2">
     <div class="wt-chart-horizontal-spacer">
         <div class="wt-chart-horizontal-line"></div>
     </div>

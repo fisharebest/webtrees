@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
@@ -15,26 +17,26 @@ use Fisharebest\Webtrees\Tree;
 
 <div class="wt-tab-stories py-4">
     <?php foreach ($stories as $story) : ?>
-        <div class="story_title descriptionbox text-center rela">
-            <?= e($story->title) ?>
+        <div class="wt-story-title text-center">
+            <h3><?= e($story->title) ?></h3>
         </div>
-        <div class="story_body optionbox">
-            <?= $story->story_body ?>
+        <div class="wt-story-body">
+            <p><?= $story->story_body ?></p>
         </div>
         <?php if ($is_admin) : ?>
-            <div class="story_edit">
+            <p class="wt-story-edit-link">
                 <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'block_id' => $story->block_id, 'tree' => $tree->name(), 'url' => $individual->url()])) ?>">
                     <?= I18N::translate('Edit the story') ?>
                 </a>
-            </div>
+            </p>
         <?php endif ?>
     <?php endforeach ?>
 
     <?php if ($is_admin && $stories === []) : ?>
-        <div>
+        <p class="wt-story-add-link">
             <a href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'xref' => $individual->xref(), 'tree' => $tree->name(), 'url' => $individual->url()])) ?>">
                 <?= I18N::translate('Add a story') ?>
             </a>
-        </div>
+        </p>
     <?php endif ?>
 </div>

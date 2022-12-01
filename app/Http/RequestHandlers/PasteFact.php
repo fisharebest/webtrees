@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,8 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -59,8 +57,7 @@ class PasteFact implements RequestHandlerInterface
     {
         $tree    = Validator::attributes($request)->tree();
         $xref    = Validator::attributes($request)->isXref()->string('xref');
-        $params  = (array) $request->getParsedBody();
-        $fact_id = $params['fact_id'];
+        $fact_id = Validator::parsedBody($request)->string('fact_id');
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record, true);
 

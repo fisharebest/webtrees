@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -164,9 +164,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             throw new HttpAccessDeniedException();
         }
 
-        $news_id = $request->getQueryParams()['news_id'] ?? '';
+        $news_id = Validator::queryParams($request)->integer('news_id', 0);
 
-        if ($news_id !== '') {
+        if ($news_id !== 0) {
             $row = DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id())
@@ -204,16 +204,14 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             throw new HttpAccessDeniedException();
         }
 
-        $params = (array) $request->getParsedBody();
-
-        $news_id = $request->getQueryParams()['news_id'] ?? '';
-        $subject = $params['subject'];
-        $body    = $params['body'];
+        $news_id = Validator::queryParams($request)->integer('news_id', 0);
+        $subject = Validator::parsedBody($request)->string('subject');
+        $body    = Validator::parsedBody($request)->string('body');
 
         $subject = $this->html_service->sanitize($subject);
         $body    = $this->html_service->sanitize($body);
 
-        if ($news_id !== '') {
+        if ($news_id !== 0) {
             DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id())
@@ -243,7 +241,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     public function postDeleteJournalAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();
-        $news_id = $request->getQueryParams()['news_id'];
+        $news_id = Validator::queryParams($request)->integer('news_id');
 
         DB::table('news')
             ->where('news_id', '=', $news_id)

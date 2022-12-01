@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,9 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
+use Psr\Http\Message\ServerRequestInterface;
 
 use function addcslashes;
 
@@ -34,19 +36,19 @@ class SiteLogsService
     /**
      * Generate a query for filtering the changes log.
      *
-     * @param array<string> $params
+     * @param ServerRequestInterface $request
      *
      * @return Builder
      */
-    public function logsQuery(array $params): Builder
+    public function logsQuery(ServerRequestInterface $request): Builder
     {
-        $tree     = $params['tree'];
-        $from     = $params['from'];
-        $to       = $params['to'];
-        $type     = $params['type'];
-        $text     = $params['text'];
-        $ip       = $params['ip'];
-        $username = $params['username'];
+        $tree     = Validator::queryParams($request)->string('tree');
+        $from     = Validator::queryParams($request)->string('from');
+        $to       = Validator::queryParams($request)->string('to');
+        $type     = Validator::queryParams($request)->string('type');
+        $text     = Validator::queryParams($request)->string('text');
+        $ip       = Validator::queryParams($request)->string('ip');
+        $username = Validator::queryParams($request)->string('username');
 
         $query = DB::table('log')
             ->leftJoin('user', 'user.user_id', '=', 'log.user_id')

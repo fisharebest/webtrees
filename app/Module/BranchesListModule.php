@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -166,8 +166,15 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
-        return redirect($this->listUrl($tree, $request->getQueryParams()));
+        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
+
+        return redirect($this->listUrl($tree, [
+            'soundex_dm'  => Validator::queryParams($request)->boolean('soundex_dm'),
+            'soundex_std' => Validator::queryParams($request)->boolean('soundex_std'),
+            'surname'     => 'x' . Validator::queryParams($request)->string('surname'),
+        ]));
     }
 
     /**
@@ -184,15 +191,17 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect($this->listUrl($tree, (array) $request->getParsedBody()));
+            return redirect($this->listUrl($tree, [
+                'soundex_dm'  => Validator::parsedBody($request)->boolean('soundex_dm', false),
+                'soundex_std' => Validator::parsedBody($request)->boolean('soundex_std', false),
+                'surname'     => Validator::parsedBody($request)->string('surname'),
+            ]));
         }
 
-        $surname = (string) $request->getAttribute('surname');
-
-        $params      = $request->getQueryParams();
+        $surname     = Validator::attributes($request)->string('surname', '');
+        $soundex_std = Validator::queryParams($request)->boolean('soundex_std', false);
+        $soundex_dm  = Validator::queryParams($request)->boolean('soundex_dm', false);
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
-        $soundex_std = (bool) ($params['soundex_std'] ?? false);
-        $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
         if ($ajax) {
             $this->layout = 'layouts/ajax';
@@ -222,7 +231,12 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             /* I18N: %s is a surname */
             $title = I18N::translate('Branches of the %s family', e($surname));
 
-            $ajax_url = $this->listUrl($tree, $params + ['ajax' => true, 'surname' => $surname]);
+            $ajax_url = $this->listUrl($tree, [
+                'ajax'        => true,
+                'soundex_dm'  => $soundex_dm,
+                'soundex_std' => $soundex_std,
+                'surname'     => $surname,
+            ]);
         } else {
             /* I18N: Branches of a family tree */
             $title = I18N::translate('Branches');
@@ -410,7 +424,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                 if ($fact->target() === $parents) {
                     $pedi = $fact->attribute('PEDI');
 
-                    if ($pedi !== '' && $pedi !== 'birth') {
+                    if ($pedi !== '' && $pedi !== PedigreeLinkageType::VALUE_BIRTH) {
                         $pedigree  = Registry::elementFactory()->make('INDI:FAMC:PEDI')->value($pedi, $tree);
                         $indi_html = '<span class="red">' . $pedigree . '</span> ' . $indi_html;
                     }

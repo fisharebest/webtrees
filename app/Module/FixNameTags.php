@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -41,23 +42,23 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
 
     // https://legacyfamilytree.se/WEB_US/user_defined_gedcom_tags.htm
     private const CONVERT = [
-        '_ADPN'  => 'adopted', // Adopted name
-        '_AKA'   => 'aka', // Also known as
-        '_AKAN'  => 'aka', // Also known as
-        '_BIRN'  => 'birth', // Birth name
+        '_ADPN'  => NameType::VALUE_ADOPTED,
+        '_AKA'   => NameType::VALUE_AKA,
+        '_AKAN'  => NameType::VALUE_AKA,
+        '_BIRN'  => NameType::VALUE_BIRTH,
         '_CENN'  => '', // Census name
         '_CURN'  => '', // Currently known as
-        '_FARN'  => 'estate', // Farm name
-        '_FKAN'  => 'aka', // Formerly known as
+        '_FARN'  => NameType::VALUE_ESTATE,
+        '_FKAN'  => NameType::VALUE_AKA, // Formerly known as
         '_GERN'  => '', // German name
         '_HEB'   => '', // Hebrew name
         '_HEBN'  => '', // Hebrew name
         '_INDN'  => '', // Indian name
-        '_MARNM' => 'married', // Married name
-        '_OTHN'  => 'aka', // Other name
-        '_RELN'  => 'religious', // Religious name
-        '_SHON'  => 'aka', // Short name
-        '_SLDN'  => 'aka', // Soldier name
+        '_MARNM' => NameType::VALUE_MARRIED,
+        '_OTHN'  => NameType::VALUE_AKA, // Other name
+        '_RELN'  => NameType::VALUE_RELIGIOUS,
+        '_SHON'  => NameType::VALUE_AKA, // Short name
+        '_SLDN'  => NameType::VALUE_AKA, // Soldier name
     ];
 
     private DataFixService $data_fix_service;
@@ -80,7 +81,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
     public function title(): string
     {
         /* I18N: Name of a module */
-        return I18N::translate('Convert NAME:_XXX tags to GEDCOM 5.5.1');
+        return I18N::translate('Convert %s tags to GEDCOM 5.5.1', 'INDI:NAME:_XXX');
     }
 
     /**
@@ -107,7 +108,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
         return $this->individualsToFixQuery($tree, $params)
             ->where(static function (Builder $query): void {
                 foreach (array_keys(self::CONVERT) as $tag) {
-                    $query->orWhere('i_gedcom', 'LIKE', "%\n2 " . $tag . " %");
+                    $query->orWhere('i_gedcom', 'LIKE', "%\n2 " . $tag . ' %');
                 }
             })
             ->pluck('i_id');

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -66,7 +66,7 @@ class ChartMortality
             ]
         ];
 
-        if ($tot_l || $tot_d) {
+        if ($tot_l > 0 || $tot_d > 0) {
             $data[] = [
                 I18N::translate('Living'),
                 $tot_l

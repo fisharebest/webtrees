@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -137,7 +137,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function familiesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Family::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Family::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -158,7 +158,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Individual::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Individual::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -181,7 +181,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function locationsToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Note::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Location::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -205,7 +205,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function mediaToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Media::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Media::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -228,7 +228,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function notesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Note::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Note::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -252,7 +252,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function repositoriesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Repository::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Repository::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -276,7 +276,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function sourcesToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Source::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Source::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -298,7 +298,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function submittersToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Submitter::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Submitter::RECORD_TYPE || $params['search-for'] === '') {
             return null;
         }
 
@@ -361,7 +361,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     {
         // Allow "\n" to indicate a line-feed in replacement text.
         // Back-references such as $1, $2 are handled automatically.
-        $replace = strtr($params['replace'], ['\n' => "\n"]);
+        $replace = strtr($params['replace-with'], ['\n' => "\n"]);
 
         $regex = $this->createRegex($params);
 
@@ -377,7 +377,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     private function createRegex(array $params): string
     {
-        $search = $params['search'];
+        $search = $params['search-for'];
         $method = $params['method'];
         $case   = $params['case'];
 
@@ -398,7 +398,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
                     // A valid regex on an empty string returns zero.
                     // An invalid regex on an empty string returns false and throws a warning.
                     preg_match($regex, '');
-                } catch (Throwable $ex) {
+                } catch (Throwable) {
                     $regex = self::INVALID_REGEX;
                 }
 
@@ -419,7 +419,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     private function recordQuery(Builder $query, string $column, array $params): void
     {
-        $search = $params['search'];
+        $search = $params['search-for'];
         $method = $params['method'];
         $like   = '%' . addcslashes($search, '\\%_') . '%';
 
@@ -436,7 +436,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
 
             case 'regex':
                 // Substituting newlines seems to be necessary on *some* versions
-                //.of MySQL (e.g. 5.7), and harmless on others (e.g. 8.0).
+                // of MySQL (e.g. 5.7), and harmless on others (e.g. 8.0).
                 $search = strtr($search, ['\n' => "\n"]);
 
                 switch (DB::connection()->getDriverName()) {
@@ -449,7 +449,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
                         $query->where($column, '~', $search);
                         break;
 
-                    case 'sqlsvr':
+                    case 'sqlsrv':
                         // Not available
                         break;
                 }

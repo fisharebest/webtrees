@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,8 +42,12 @@ class RestrictionNoticeTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('foo bar baz', self::$element->canonical("Foo  bAr  baZ"));
-        self::assertSame('foo bar baz', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
-        self::assertSame('foo bar baz', self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
+        self::assertSame('PRIVACY', self::$element->canonical('pRiVacy'));
+        self::assertSame('NONE', self::$element->canonical('NONE'));
+        self::assertSame('CONFIDENTIAL', self::$element->canonical('Confidential'));
+        self::assertSame('LOCKED', self::$element->canonical(', locked ,'));
+        self::assertSame('CONFIDENTIAL, LOCKED', self::$element->canonical('locked confidential'));
+        self::assertSame('PRIVACY, LOCKED', self::$element->canonical('locked, privacy'));
+        self::assertSame('NONE, LOCKED', self::$element->canonical('locked,, none'));
     }
 }

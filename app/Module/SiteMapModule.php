@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\Route;
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
@@ -46,8 +44,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
-use function assert;
 use function date;
 use function redirect;
 use function response;
@@ -129,7 +125,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -167,10 +163,8 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     public function postAdminAction(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         foreach ($this->tree_service->all() as $tree) {
-            $include_in_sitemap = (bool) ($params['sitemap' . $tree->id()] ?? false);
+            $include_in_sitemap = Validator::parsedBody($request)->boolean('sitemap' . $tree->id(), false);
             $tree->setPreference('include_in_sitemap', (string) $include_in_sitemap);
         }
 
@@ -192,7 +186,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             $content = view('modules/sitemap/sitemap-xsl');
 
             return response($content, StatusCodeInterface::STATUS_OK, [
-                'Content-Type' => 'application/xml',
+                'content-type' => 'application/xml',
             ]);
         }
 
@@ -208,7 +202,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      *
      * @return ResponseInterface
      */
-    private function siteMapIndex(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
+    private function siteMapIndex(ServerRequestInterface $request): ResponseInterface
     {
         $content = Registry::cache()->file()->remember('sitemap.xml', function (): string {
             // Which trees have sitemaps enabled?
@@ -291,7 +285,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         }, self::CACHE_LIFE);
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'application/xml',
+            'content-type' => 'application/xml',
         ]);
     }
 
@@ -324,7 +318,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         }, self::CACHE_LIFE);
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'application/xml',
+            'content-type' => 'application/xml',
         ]);
     }
 

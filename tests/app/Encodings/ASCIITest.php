@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -47,7 +47,7 @@ class ASCIITest extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(ASCII::NAME, UTF8::NAME, $character);
 
-            $this->assertSame($expected, $actual);
+            static::assertSame($expected, $actual);
         }
 
         foreach (range(128, 255) as $code_point) {
@@ -55,7 +55,7 @@ class ASCIITest extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = UTF8::REPLACEMENT_CHARACTER;
 
-            $this->assertSame($expected, $actual);
+            static::assertSame($expected, $actual);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,6 +45,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
         'RIN',
         'SSN',
         '_UID',
+        '_FSFTID',
         '_WEBTAG',
     ];
 
@@ -101,9 +102,9 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
     {
         $html = $individual->facts(static::HANDLED_FACTS)
             ->map(static fn (Fact $fact): string =>view('fact', ['fact' => $fact, 'record' => $individual]))
-            ->implode('');
+            ->implode('<hr>');
 
-        return strip_tags($html, '<a><div><span><i>');
+        return strip_tags($html, ['a', 'div', 'span', 'i', 'hr', 'br']);
     }
 
     /**

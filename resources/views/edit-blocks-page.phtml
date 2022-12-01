@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\View;
@@ -24,7 +26,6 @@ use Illuminate\Support\Collection;
 </p>
 
 <form method="post" action="<?= e($url_save) ?>" id="edit-blocks">
-    <?= csrf_field() ?>
     <div class="row row-cols-1 row-cols-sm-2 g-3" id="current-blocks">
         <div class="col">
             <div class="card h-100">
@@ -75,6 +76,8 @@ use Illuminate\Support\Collection;
             </button>
         <?php endif ?>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('styles') ?>
@@ -116,13 +119,16 @@ use Illuminate\Support\Collection;
         sort:      false,
     });
 
-    $("#current-blocks").on("click", ".wt-icon-delete", function () {
-        $(this).closest(".wt-block").remove();
+    document.getElementById('current-blocks').addEventListener('click', function (event) {
+      if (event.target.closest('.wt-icon-delete')) {
+        const wtBlock = event.target.closest('.wt-block');
+        wtBlock.parentNode.removeChild(wtBlock);
+      }
     });
 
-    $('#edit-blocks').submit(function () {
-        $('#main-blocks input').attr('name', 'main[]');
-        $('#side-blocks input').attr('name', 'side[]');
+    document.getElementById('edit-blocks').addEventListener('submit', function (event) {
+      document.querySelectorAll('#main-blocks input').forEach((element) => { element.setAttribute('name', 'main[]'); })
+      document.querySelectorAll('#side-blocks input').forEach((element) => { element.setAttribute('name', 'side[]'); })
     });
 </script>
 <?php View::endpush() ?>

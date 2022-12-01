@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,14 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -46,15 +45,11 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
         $xref       = Validator::attributes($request)->isXref()->string('xref');
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
-
-        $params = (array) $request->getParsedBody();
-
-        $famid = $params['famid'];
+        $famid      = Validator::parsedBody($request)->isXref()->string('famid');
+        $PEDI       = Validator::parsedBody($request)->string('PEDI');
 
         $family = Registry::familyFactory()->make($famid, $tree);
         $family = Auth::checkFamilyAccess($family, true);
-
-        $PEDI = $params['PEDI'];
 
         // Replace any existing child->family link (we may be changing the PEDI);
         $fact_id = '';
@@ -69,13 +64,13 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
             case '':
                 $gedcom = "1 FAMC @$famid@";
                 break;
-            case 'adopted':
+            case PedigreeLinkageType::VALUE_ADOPTED:
                 $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$famid@\n3 ADOP BOTH";
                 break;
-            case 'sealing':
+            case PedigreeLinkageType::VALUE_SEALING:
                 $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$famid@";
                 break;
-            case 'foster':
+            case PedigreeLinkageType::VALUE_FOSTER:
                 $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
                 break;
             default:

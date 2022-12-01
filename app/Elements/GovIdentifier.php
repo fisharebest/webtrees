@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Tree;
 
 use function e;
 use function rawurlencode;
-use function strtoupper;
 
 /**
  * A custom field used in _LOC records
@@ -32,19 +31,7 @@ class GovIdentifier extends AbstractElement
 {
     protected const EXTERNAL_URL = 'https://gov.genealogy.net/item/show/';
 
-    protected const MAXIMUM_LENGTH = 12;
-
-    /**
-     * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    public function canonical(string $value): string
-    {
-        return strtoupper(parent::canonical($value));
-    }
+    protected const MAXIMUM_LENGTH = 14;
 
     /**
      * Display the value of this type of element.

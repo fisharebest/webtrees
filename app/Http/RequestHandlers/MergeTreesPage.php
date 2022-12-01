@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -59,9 +60,8 @@ class MergeTreesPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $params     = $request->getQueryParams();
-        $tree1_name = $params['tree1_name'] ?? '';
-        $tree2_name = $params['tree2_name'] ?? '';
+        $tree1_name = Validator::queryParams($request)->string('tree1_name', '');
+        $tree2_name = Validator::queryParams($request)->string('tree2_name', '');
 
         $tree1 = $this->tree_service->all()->get($tree1_name);
         $tree2 = $this->tree_service->all()->get($tree2_name);

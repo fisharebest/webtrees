@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\I18N;
@@ -8,8 +10,8 @@ use Illuminate\Support\Collection;
 
 /**
  * @var Collection<int,object> $faqs
- * @var string                 $max_block_order
- * @var string                 $min_block_order
+ * @var int                    $max_block_order
+ * @var int                    $min_block_order
  * @var string                 $title
  * @var Tree                   $tree
  * @var array<string,string>   $tree_names
@@ -28,14 +30,14 @@ use Illuminate\Support\Collection;
 </p>
 
 <form method="post" class="row">
-    <?= csrf_field() ?>
-
     <div class="col-auto">
         <div class="input-group">
             <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names, 'aria_label' => I18N::translate('Family tree')]) ?>
             <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <p>

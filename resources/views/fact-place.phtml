@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -22,7 +24,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
         <?php $placerec = $match[1]; ?>
         <?= $fact->place()->fullName($fact->id() !== 'histo') ?>
 
-        <?php if (preg_match_all('/\n3 (?:_HEB|ROMN|FONE) (.+)/', $placerec, $matches)) : ?>
+        <?php if (preg_match_all('/\n3 (?:_HEB|ROMN|FONE) (.+)/', $placerec, $matches) === 1) : ?>
             <?php foreach ($matches[1] as $match) : ?>
                 — <?= (new Place($match, $record->tree()))->fullName() ?>
             <?php endforeach ?>
@@ -32,7 +34,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
             <div class="wt-fact-coordinates">
                 <span class="label"><?= I18N::translate('Latitude') ?>: </span><?= $fact->latitude() ?>
                 <span class="label"><?= I18N::translate('Longitude') ?>: </span><?= $fact->longitude()?>
-                <?= app(ModuleService::class)->findByInterface(ModuleMapLinkInterface::class)->map(fn(ModuleMapLinkInterface $module): string => ' ' . $module->mapLink($fact))->implode('') ?>
+                <?= app(ModuleService::class)->findByInterface(ModuleMapLinkInterface::class)->map(fn (ModuleMapLinkInterface $module): string => ' ' . $module->mapLink($fact))->implode('') ?>
             </div>
         <?php endif ?>
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
@@ -21,16 +23,15 @@ use Fisharebest\Webtrees\Tree;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
     <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom, 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => '']) ?>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-sm-3 wt-page-options-label">
         </div>
         <div class="col-sm-9 wt-page-options-value">
-            <div class="form-group">
+            <div class="mb-3">
                 <?= view('components/checkbox', ['label' => I18N::translate('Keep the existing “last change” information'), 'name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
             </div>
 
@@ -59,6 +60,8 @@ use Fisharebest\Webtrees\Tree;
             <?php endif; ?>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?= view('modals/on-screen-keyboard') ?>

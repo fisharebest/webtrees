@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Tree;
 
+use function e;
 use function view;
 
 /**
@@ -32,10 +33,8 @@ use function view;
  * name written in kanji, then the ROMANIZED_TYPE subordinate to the ROMN tag
  * would indicate romaji. See page 61.
  */
-class NameRomanizedVariation extends AbstractElement
+class NameRomanizedVariation extends NamePersonal
 {
-    protected const MAXIMUM_LENGTH = 120;
-
     protected const SUBTAGS = [
         'TYPE' => '1:1',
         'NPFX' => '0:1',
@@ -44,7 +43,19 @@ class NameRomanizedVariation extends AbstractElement
         'SURN' => '0:1',
         'NSFX' => '0:1',
         'NICK' => '0:1',
+        'NOTE' => '0:M',
+        'SOUR' => '0:M',
     ];
+
+    /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return true;
+    }
 
     /**
      * An edit control for this data.
@@ -60,8 +71,10 @@ class NameRomanizedVariation extends AbstractElement
     {
         return
             '<div class="input-group">' .
-            parent::edit($id, $name, $value, $tree) .
-            view('help/link', ['topic' => 'ROMN']) .
+            view('edit/input-addon-edit-name', ['id' => $id]) .
+            '<input class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" readonly="readonly" />' .
+            view('edit/input-addon-keyboard', ['id' => $id]) .
+            view('edit/input-addon-help', ['topic' => 'ROMN']) .
             '</div>';
     }
 }

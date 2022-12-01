@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,18 +37,14 @@ class CalendarPage implements RequestHandlerInterface
 
     private CalendarService $calendar_service;
 
-    private LocalizationService $localization_service;
-
     /**
      * CalendarPage constructor.
      *
-     * @param CalendarService     $calendar_service
-     * @param LocalizationService $localization_service
+     * @param CalendarService $calendar_service
      */
-    public function __construct(CalendarService $calendar_service, LocalizationService $localization_service)
+    public function __construct(CalendarService $calendar_service)
     {
-        $this->calendar_service     = $calendar_service;
-        $this->localization_service = $localization_service;
+        $this->calendar_service = $calendar_service;
     }
 
     /**
@@ -63,17 +58,17 @@ class CalendarPage implements RequestHandlerInterface
     {
         $tree     = Validator::attributes($request)->tree();
         $view     = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
-        $cal      = $request->getQueryParams()['cal'] ?? '';
-        $day      = $request->getQueryParams()['day'] ?? '';
-        $month    = $request->getQueryParams()['month'] ?? '';
-        $year     = $request->getQueryParams()['year'] ?? '';
-        $filterev = $request->getQueryParams()['filterev'] ?? 'BIRT-MARR-DEAT';
-        $filterof = $request->getQueryParams()['filterof'] ?? 'all';
-        $filtersx = $request->getQueryParams()['filtersx'] ?? '';
+        $cal      = Validator::queryParams($request)->string('cal', '');
+        $day      = Validator::queryParams($request)->string('day', '');
+        $month    = Validator::queryParams($request)->string('month', '');
+        $year     = Validator::queryParams($request)->string('year', '');
+        $filterev = Validator::queryParams($request)->string('filterev', 'BIRT-MARR-DEAT');
+        $filterof = Validator::queryParams($request)->string('filterof', 'all');
+        $filtersx = Validator::queryParams($request)->string('filtersx', '');
 
         if ($cal . $day . $month . $year === '') {
             // No date specified? Use the most likely calendar
-            $cal = $this->localization_service->calendar(I18N::locale())->gedcomCalendarEscape();
+            $cal = I18N::language()->calendar()->gedcomCalendarEscape();
         }
 
         // need BC to parse date

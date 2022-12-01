@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,12 +23,10 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use Ramsey\Uuid\Uuid;
 
 use function array_map;
 use function explode;
 use function implode;
-use function strpos;
 use function strtoupper;
 use function trim;
 use function view;
@@ -105,7 +103,7 @@ class EventsRecorded extends AbstractElement
     {
         $value = strtoupper(strtr(parent::canonical($value), [' ' => ',']));
 
-        while (strpos($value, ',,') !== false) {
+        while (str_contains($value, ',,')) {
             $value = strtr($value, [',,' => ',']);
         }
 
@@ -133,7 +131,7 @@ class EventsRecorded extends AbstractElement
             ->sort()
             ->all();
 
-        $id2 = Uuid::uuid4()->toString();
+        $id2 = Registry::idFactory()->id();
 
         // Our form element name contains "[]", and multiple selections would create multiple values.
         $hidden = '<input type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';

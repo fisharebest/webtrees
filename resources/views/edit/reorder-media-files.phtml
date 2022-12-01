@@ -1,0 +1,57 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaFilesAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var Media  $media
+ * @var string $title
+ */
+
+?>
+
+<h2 class="wt-page-title"><?= $title ?></h2>
+
+<form method="post" action="<?= e(route(ReorderMediaFilesAction::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) ?>" class="wt-page-content">
+    <div class="wt-sortable-list">
+        <?php foreach ($media->mediaFiles() as $media_file) : ?>
+            <div class="card my-2 wt-sortable-item">
+                <input type="hidden" name="order[]" value="<?= $media_file->factId() ?>">
+                <div class="card-header">
+                    <?= view('edit/reorder-card-header', ['title' => e($media_file->filename())]) ?>
+                </div>
+
+                <div class="card-body d-flex">
+                    <?= $media_file->displayImage(100, 100, 'contain') ?>
+                    <?= e($media_file->title()) ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+
+    <p>
+        <button class="btn btn-primary" type="submit">
+            <?= view('icons/save') ?>
+            <?= /* I18N: A button label. */ I18N::translate('save') ?>
+        </button>
+
+        <a class="btn btn-secondary" href="<?= e($media->url()) ?>">
+            <?= view('icons/cancel') ?>
+            <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+        </a>
+    </p>
+
+    <?= csrf_field() ?>
+</form>
+
+<?php View::push('javascript') ?>
+<script>
+    new Sortable(document.querySelector(".wt-sortable-list"), {
+        handle: ".card-header",
+    });
+</script>
+<?php View::endpush() ?>

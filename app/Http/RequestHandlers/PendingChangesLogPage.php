@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -73,19 +73,16 @@ class PendingChangesLogPage implements RequestHandlerInterface
         $earliest = DB::table('change')->min('change_time');
         $latest   = DB::table('change')->max('change_time');
 
-        $earliest = Registry::timestampFactory()->fromString($earliest);
-        $latest   = Registry::timestampFactory()->fromString($latest);
+        $earliest = Registry::timestampFactory()->fromString($earliest)->toDateString();
+        $latest   = Registry::timestampFactory()->fromString($latest)->toDateString();
 
-        $earliest = $earliest->toDateString();
-        $latest   = $latest->toDateString();
-
-        $from     = $request->getQueryParams()['from'] ?? $earliest;
-        $to       = $request->getQueryParams()['to'] ?? $latest;
-        $type     = $request->getQueryParams()['type'] ?? '';
-        $oldged   = $request->getQueryParams()['oldged'] ?? '';
-        $newged   = $request->getQueryParams()['newged'] ?? '';
-        $xref     = $request->getQueryParams()['xref'] ?? '';
-        $username = $request->getQueryParams()['username'] ?? '';
+        $from     = Validator::queryParams($request)->string('from', $earliest);
+        $to       = Validator::queryParams($request)->string('to', $latest);
+        $type     = Validator::queryParams($request)->string('type', '');
+        $oldged   = Validator::queryParams($request)->string('oldged', '');
+        $newged   = Validator::queryParams($request)->string('newged', '');
+        $xref     = Validator::queryParams($request)->string('xref', '');
+        $username = Validator::queryParams($request)->string('username', '');
 
         return $this->viewResponse('admin/changes-log', [
             'earliest' => $earliest,

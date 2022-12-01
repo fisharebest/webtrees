@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchReplaceAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
@@ -19,9 +21,7 @@ use Fisharebest\Webtrees\Tree;
 </h2>
 
 <form method="post" action="<?= e(route(SearchReplaceAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-ancestors-chart hidden-print">
-    <?= csrf_field() ?>
-
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="search">
             <?= I18N::translate('Search for') ?>
         </label>
@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="replace">
             <?= I18N::translate('Replace with') ?>
         </label>
@@ -39,7 +39,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label">
             <?= /* I18N: A button label. */ I18N::translate('Search') ?>
         </label>
@@ -47,10 +47,12 @@ use Fisharebest\Webtrees\Tree;
             <?= view('components/radios-inline', ['name' => 'context', 'options' => ['all' => I18N::translate('Entire record'), 'name' => I18N::translate('Names'), 'place' => I18N::translate('Places')], 'selected' => $context]) ?>
         </div>
     </div>
-    <div class="row form-group">
+    <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label"></label>
         <div class="col-sm-9 wt-page-options-value">
             <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('replace') ?>">
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

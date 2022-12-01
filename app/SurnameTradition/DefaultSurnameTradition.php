@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 use function array_filter;
@@ -46,6 +48,26 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     protected const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
 
     /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'none');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        return '';
+    }
+
+    /**
      * A default/empty name
      *
      * @return string
@@ -67,7 +89,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -82,7 +104,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newParentNames(Individual $child, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -97,7 +119,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -138,7 +160,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
         if ($individual instanceof Individual) {
             $fact = $individual
                 ->facts(['NAME'])
-                ->first(fn (Fact $fact): bool => in_array($fact->attribute('TYPE'), ['', 'birth', 'change'], true));
+                ->first(fn (Fact $fact): bool => in_array($fact->attribute('TYPE'), ['', NameType::VALUE_BIRTH, NameType::VALUE_CHANGE], true));
 
             if ($fact instanceof Fact) {
                 return $fact->value();

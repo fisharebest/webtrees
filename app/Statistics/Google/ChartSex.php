@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -57,7 +57,7 @@ class ChartSex
             ],
         ];
 
-        if ($tot_m || $tot_f || $tot_u) {
+        if ($tot_m > 0 || $tot_f > 0 || $tot_u > 0) {
             $data[] = [
                 I18N::translate('Males'),
                 $tot_m

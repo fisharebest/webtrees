@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,6 +34,49 @@
    */
   function trim (str) {
     return str.replace(/\s+/g, ' ').trim();
+  }
+
+  /**
+   * Simple wrapper around fetch() with our preferred headers
+   *
+   * @param {string} url
+   * @returns {Promise}
+   */
+  webtrees.httpGet = function (url) {
+    const options = {
+      method: 'GET',
+      credentials: 'same-origin',
+      referrerPolicy: 'same-origin',
+      headers: new Headers({
+        'x-requested-with': 'XMLHttpRequest',
+      })
+    };
+
+    return fetch(url, options);
+  }
+
+  /**
+   * Simple wrapper around fetch() with our preferred headers
+   *
+   * @param {string} url
+   * @param {string|FormData} body
+   * @returns {Promise}
+   */
+  webtrees.httpPost= function (url, body = '') {
+    const csrfToken = document.head.querySelector('meta[name=csrf]').getAttribute('content');
+
+    const options = {
+      body: body,
+      method: 'POST',
+      credentials: 'same-origin',
+      referrerPolicy:  'same-origin',
+      headers: new Headers({
+        'X-CSRF-TOKEN': csrfToken,
+        'x-requested-with': 'XMLHttpRequest',
+      })
+    };
+
+    return fetch(url, options, body);
   }
 
   /**
@@ -372,7 +415,7 @@
   function calGenerateSelectorContent (dateFieldId, dateDivId, date) {
     let i, j;
     let content = '<table border="1"><tr>';
-    content += '<td><select class="form-control" id="' + dateFieldId + '_daySelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+    content += '<td><select class="form-select" id="' + dateFieldId + '_daySelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
     for (i = 1; i < 32; i++) {
       content += '<option value="' + i + '"';
       if (date.getDate() === i) {
@@ -381,7 +424,7 @@
       content += '>' + i + '</option>';
     }
     content += '</select></td>';
-    content += '<td><select class="form-control" id="' + dateFieldId + '_monSelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+    content += '<td><select class="form-select" id="' + dateFieldId + '_monSelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
     for (i = 1; i < 13; i++) {
       content += '<option value="' + i + '"';
       if (date.getMonth() + 1 === i) {
@@ -506,24 +549,31 @@
   };
 
   /**
-   * Persistent checkbox options to hide/show extra data.
-   * @param {HTMLInputElement} element
+   * Make bootstrap "collapse" elements persistent.
+   *
+   * @param {HTMLElement} element
    */
   webtrees.persistentToggle = function (element) {
-    if (element instanceof HTMLInputElement && element.type === 'checkbox') {
-      const key = 'state-of-' + element.dataset.wtPersist;
-      const state = localStorage.getItem(key);
+    const key = 'state-of-' + element.dataset.wtPersist;
+    const previous_state = localStorage.getItem(key);
 
-      // Previously selected? Select again now.
-      if (state === 'true') {
-        element.click();
-      }
+    // Accordion buttons have aria-expanded.  Checkboxes are checked/unchecked
+    const current_state = element.getAttribute('aria-expanded') ?? element.checked.toString();
 
-      // Remember state for the next page load.
-      element.addEventListener('change', function () {
-        localStorage.setItem(key, element.checked.toString());
-      });
+    // Previously selected? Select again now.
+    if (previous_state !== null && previous_state !== current_state) {
+      element.click();
     }
+
+    // Remember state for the next page load.
+    element.addEventListener('click', function () {
+      if (element.type === 'checkbox') {
+        localStorage.setItem(key, element.checked.toString());
+      }
+      if (element.type === 'button') {
+        localStorage.setItem(key, element.getAttribute('aria-expanded'));
+      }
+    });
   };
 
   /**
@@ -602,7 +652,7 @@
             replace: function (url, uriEncodedQuery) {
               const symbol = (url.indexOf("?") > 0) ? '&' : '?';
               if (that.dataset.wtAutocompleteExtra === 'SOUR') {
-                let row_group = that.closest('.form-group').previousElementSibling;
+                let row_group = that.closest('.wt-nested-edit-fields').previousElementSibling;
                 while (row_group.querySelector('select') === null) {
                   row_group = row_group.previousElementSibling;
                 }
@@ -635,18 +685,32 @@
       options: {
         position: 'topleft',
       },
-      onAdd: function (map) {
-        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        container.onclick = resetCallback;
-        let reset = config.i18n.reset;
-        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-        anchor.setAttribute('aria-label', reset);
+      onAdd: () => {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        const anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+
         anchor.href = '#';
-        anchor.title = reset;
+        anchor.setAttribute('aria-label', config.i18n.reset); /* Firefox doesn't yet support element.ariaLabel */
+        anchor.title = config.i18n.reset;
         anchor.role = 'button';
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-        image.alt = reset;
+        anchor.innerHTML = config.icons.reset;
+        anchor.onclick = resetCallback;
+
+        return container;
+      },
+    });
+
+    const fullscreenControl = L.Control.extend({
+      options: {
+        position: 'topleft',
+      },
+      onAdd: (map) => {
+        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
+
+        anchor.setAttribute('role', 'button');
+        anchor.dataset.wtFullscreen = '.wt-fullscreen-container';
+        anchor.innerHTML = config.icons.fullScreen;
 
         return container;
       },
@@ -678,6 +742,7 @@
       zoomControl: false,
     })
       .addControl(zoomControl)
+      .addControl(new fullscreenControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
       .addControl(L.control.layers.tree(config.mapProviders, null, {
@@ -697,27 +762,18 @@
       return element.tomselect;
     }
 
-    let options = {};
-
     if (element.dataset.url) {
-      let plugins = ['dropdown_input', 'virtual_scroll'];
-
-      if (element.multiple) {
-        plugins.push('remove_button');
-      } else if (!element.required) {
-        plugins.push('clear_button');
-      }
-
-      options = {
-        plugins: plugins,
+      let options = {
+        plugins: ['dropdown_input', 'virtual_scroll'],
         maxOptions: false,
+        searchField: [], // We filter on the server, so don't filter on the client.
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
         },
         firstUrl: query => element.dataset.url + '&query=' + encodeURIComponent(query),
         load: function (query, callback) {
-          fetch(this.getUrl(query))
+          webtrees.httpGet(this.getUrl(query))
             .then(response => response.json())
             .then(json => {
               if (json.nextUrl !== null) {
@@ -728,9 +784,23 @@
             .catch(callback);
         },
       };
+
+      if (!element.required) {
+        options.plugins.push('clear_button');
+      }
+
+      return new TomSelect(element, options);
     }
 
-    return new TomSelect(element, options);
+    if (element.multiple) {
+      return new TomSelect(element, { plugins: ['caret_position', 'remove_button'] });
+    }
+
+    if (!element.required) {
+      return new TomSelect(element, { plugins: ['clear_button'] });
+    }
+
+    return new TomSelect(element, { });
   }
 
   /**
@@ -757,20 +827,76 @@
   webtrees.initializeIFSRO = function(select, container) {
     select.addEventListener('change', function () {
       // Show only the selected selector.
-      console.log(select.value);
       container.querySelectorAll('.select-record').forEach(element => element.classList.add('d-none'));
       container.querySelectorAll('.select-' + select.value).forEach(element => element.classList.remove('d-none'));
+
       // Enable only the selected selector (so that disabled ones do not get submitted).
       container.querySelectorAll('.select-record select').forEach(element => {
         element.disabled = true;
-        element.tomselect.disable();
+        if (element.matches('.tom-select')) {
+          element.tomselect.disable();
+        }
       });
       container.querySelectorAll('.select-' + select.value + ' select').forEach(element => {
         element.disabled = false;
-        element.tomselect.enable();
+        if (element.matches('.tom-select')) {
+          element.tomselect.enable();
+        }
       });
     });
-  }
+  };
+
+  /**
+   * Save a form using ajax, for use in modals
+   *
+   * @param {Event} event
+   */
+  webtrees.createRecordModalSubmit = function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const modal = document.getElementById('wt-ajax-modal')
+    const modal_content = modal.querySelector('.modal-content');
+    const select = document.getElementById(modal_content.dataset.wtSelectId);
+
+    webtrees.httpPost(form.action, new FormData(form))
+      .then(response => response.json())
+      .then(json => {
+        if (select) {
+          // This modal was activated by the "create new" button in a select edit control.
+          webtrees.resetTomSelect(select.tomselect, json.value, json.text);
+
+          bootstrap.Modal.getInstance(modal).hide();
+        } else {
+          // Show the success message in the existing modal.
+          modal_content.innerHTML = json.html;
+        }
+      })
+      .catch(error => {
+        modal_content.innerHTML = error;
+      });
+  };
+
+  /**
+   * Text areas don't support the pattern attribute, so apply it manually via data-wt-pattern.
+   *
+   * @param {HTMLFormElement} form
+   */
+  webtrees.textareaPatterns = function (form) {
+    form.addEventListener('submit', function (event) {
+      event.target.querySelectorAll('textarea[data-wt-pattern]').forEach(function (element) {
+        const pattern = new RegExp('^' + element.dataset.wtPattern + '$');
+
+        if (!element.readOnly && element.value !== '' && !pattern.test(element.value)) {
+          event.preventDefault();
+          event.stopPropagation();
+          element.classList.add('is-invalid');
+          element.scrollIntoView();
+        } else {
+          element.classList.remove('is-invalid');
+        }
+      });
+    });
+  };
 }(window.webtrees = window.webtrees || {}));
 
 // Send the CSRF token on all AJAX requests
@@ -897,7 +1023,7 @@ document.addEventListener('submit', function (event) {
   }
 });
 
-// Convert data-wt-confirm and data-wt-post-url/data-wt-reload-url attributes into useful behavior.
+// Convert data-wt-* attributes into useful behavior.
 document.addEventListener('click', (event) => {
   const target = event.target.closest('a,button');
 
@@ -907,18 +1033,11 @@ document.addEventListener('click', (event) => {
 
   if ('wtConfirm' in target.dataset && !confirm(target.dataset.wtConfirm)) {
     event.preventDefault();
+    return;
   }
 
   if ('wtPostUrl' in target.dataset) {
-    const token = document.querySelector('meta[name=csrf]').content;
-
-    fetch(target.dataset.wtPostUrl, {
-      method: 'POST',
-      headers: {
-        'X-CSRF-TOKEN': token,
-        'X-Requested-with': 'XMLHttpRequest',
-      },
-    }).then(() => {
+    webtrees.httpPost(target.dataset.wtPostUrl).then(() => {
       if ('wtReloadUrl' in target.dataset) {
         // Go somewhere else. e.g. the home page after logout.
         document.location = target.dataset.wtReloadUrl;
@@ -929,5 +1048,19 @@ document.addEventListener('click', (event) => {
     }).catch((error) => {
       alert(error);
     });
+  }
+
+  if (('wtFullscreen' in target.dataset)) {
+    event.stopPropagation();
+
+    const element = target.closest(target.dataset.wtFullscreen);
+
+    if (document.fullscreenElement === element) {
+      document.exitFullscreen()
+        .catch((error) => alert(error));
+    } else {
+      element.requestFullscreen()
+        .catch((error) => alert(error));
+    }
   }
 });

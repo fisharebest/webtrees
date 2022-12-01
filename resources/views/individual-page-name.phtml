@@ -1,0 +1,100 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Http\RequestHandlers\CopyFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var Fact $fact
+ */
+
+$individual = $fact->record();
+$tree       = $individual->tree();
+
+// Create a fake record, so we can extract the formatted NAME value from it.
+$fake_individual = Registry::individualFactory()->new(
+    'xref',
+    "0 @xref@ INDI\n1 DEAT Y\n" . $fact->gedcom(),
+    null,
+    $tree
+);
+$fake_individual->setPrimaryName(0); // Make sure we use the name from "1 NAME"
+
+$container_class = '';
+
+if ($fact->isPendingDeletion()) {
+    $container_class = 'wt-old';
+} elseif ($fact->isPendingAddition()) {
+    $container_class = 'wt-new';
+}
+
+?>
+<div class="accordion-item <?= $container_class ?>">
+    <div class="accordion-header" id="name-header-<?= $fact->id() ?>">
+        <button class="accordion-button collapsed gap-1" type="button" data-bs-toggle="collapse" data-bs-target="#name-content-<?= $fact->id() ?>" aria-expanded="false" aria-controls="name-content-<?= $fact->id() ?>">
+            <?= view('icons/expand') ?>
+            <?= view('icons/collapse') ?>
+            <span class="label"><?= I18N::translate('Name') ?></span>
+            <div>
+                <?= $fake_individual->fullName() ?>
+                <?php if ($fact->attribute('TYPE') !== '') : ?>
+                    —
+                    <?= Registry::elementFactory()->make($fact->tag() . ':TYPE')->value($fact->attribute('TYPE'), $tree) ?>
+                <?php endif ?>
+            </div>
+        </button>
+    </div>
+
+    <div id="name-content-<?= $fact->id() ?>" class="accordion-collapse collapse" data-bs-parent="#individual-names" aria-labelledby="name-header-<?= $fact->id() ?>">
+        <div class="accordion-body">
+            <dl class="row mb-0">
+                <dt class="col-md-4 col-lg-3"><?= I18N::translate('Name') ?></dt>
+                <dd class="col-md-8 col-lg-9"><bdi><?= e($fact->value()) ?></bdi></dd>
+    
+                <?php preg_match_all('/\n2 (\w+) (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
+                <?php foreach ($matches as $key => $match) : ?>
+                    <?php [, $tag, $value] = $match ?>
+                    <?php $element = Registry::elementFactory()->make($fact->tag() . ':' . $tag) ?>
+                    <?php if ($tag !== 'SOUR' && $tag !== 'NOTE') : ?>
+                        <dt class="col-md-4 col-lg-3">
+                            <?= $element->label() ?>
+                        </dt>
+                        <dd class="col-md-8 col-lg-9">
+                            <?= $element->value($value, $fact->record()->tree()) ?>
+                        </dd>
+                    <?php endif ?>
+                <?php endforeach ?>
+            </dl>
+    
+            <?= view('fact-sources', ['fact' => $fact]) ?>
+            <?= view('fact-notes', ['fact' => $fact]) ?>
+
+            <?php if ($fact->canEdit()) : ?>
+                <div class="d-flex">
+                    <a class="btn btn-link ms-auto" href="<?= e(route(EditFactPage::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Edit the name') ?>">
+                        <?= view('icons/edit') ?>
+                        <span class="visually-hidden"><?= I18N::translate('Edit the name') ?></span>
+                    </a>
+    
+                <a class="btn btn-link" href="#" data-wt-post-url="<?= e(route(CopyFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Copy') ?>">
+                        <?= view('icons/copy') ?>
+                        <span class="visually-hidden"><?= I18N::translate('Copy') ?></span>
+                    </a>
+    
+                    <a class="btn btn-link" href="#"
+                   data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>"
+                   data-wt-post-url="<?= e(route(DeleteFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact_id' => $fact->id()])) ?>"
+                       title="<?= I18N::translate('Delete this name') ?>">
+                        <?= view('icons/delete') ?>
+                        <span class="visually-hidden"><?= I18N::translate('Delete this name') ?></span>
+                    </a>
+                </div>
+            <?php endif ?>
+        </div>
+    </div>
+</div>

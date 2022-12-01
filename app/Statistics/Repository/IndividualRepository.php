@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,7 +41,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartSex;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -57,6 +56,7 @@ use function array_shift;
 use function array_slice;
 use function array_walk;
 use function arsort;
+use function assert;
 use function e;
 use function explode;
 use function implode;
@@ -135,7 +135,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             // Split “John Thomas” into “John” and “Thomas” and count against both totals
             foreach (explode(' ', (string) $n_givn) as $given) {
                 // Exclude initials and particles.
-                if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
+                if (preg_match('/^([A-Z]|[a-z]{1,3})$/', $given) !== 1) {
                     if (array_key_exists($given, $nameList)) {
                         $nameList[$given] += (int) $count;
                     } else {
@@ -532,6 +532,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                 ->orderBy('n_surn')
                 ->get()
                 ->pluck('count', 'n_surn')
+                ->map(static fn (string $count): int => (int) $count)
                 ->all();
         }
 
@@ -1834,7 +1835,8 @@ class IndividualRepository implements IndividualRepositoryInterface
             return I18N::translate('This information is not available.');
         }
 
-        $surname_tradition = SurnameTradition::create($this->tree->getPreference('SURNAME_TRADITION'));
+        $surname_tradition = Registry::surnameTraditionFactory()
+            ->make($this->tree->getPreference('SURNAME_TRADITION'));
 
         return (new ChartCommonSurname($this->color_service, $surname_tradition))
             ->chartCommonSurnames($tot_indi, $all_surnames, $color_from, $color_to);

@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,6 +32,7 @@
 @import "_tab-relatives.css";
 
 /* Some icons need to be reversed on right-to-left pages */
+/* rtl:ignore */
 [dir=rtl] .wt-icon-flip-rtl
 {
     transform: scale(-1, 1);
@@ -44,13 +45,13 @@ th.align-digits {
 }
 
 /* Keep the page as tall as the window, so the footer can remain at the bottom. */
-.wt-global {
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-.wt-main-container {
+main {
     flex: 1;
 }
 
@@ -104,4 +105,46 @@ a, .btn-link, .nav-link {
 a:hover, .btn-link:hover, .nav-link:hover {
     color: var(--link-color-hover);
     text-decoration: var(--link-decoration-hover);
+}
+
+/* Some menus (e.g. languages) can be longer than a page */
+.dropdown-menu {
+    max-height: 90vh;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+}
+
+/* User-generated text */
+.ut {
+    /* RTL text on LTR pages (or vice-versa) */
+    unicode-bidi: isolate;
+
+    /* Long words without spaces can break the page layout */
+    overflow-wrap: break-word;
+}
+
+.wt-nested-edit-fields {
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left: solid 4px grey;
+}
+
+.wt-text-overflow-elipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Enter/exit fullscreen mode */
+.wt-icon-exit-fullscreen {
+    display: none;
+}
+.wt-icon-enter-fullscreen {
+    display: inline;
+}
+:fullscreen .wt-icon-exit-fullscreen {
+    display: inline;
+}
+:fullscreen .wt-icon-enter-fullscreen {
+    display: none;
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -94,7 +94,10 @@ class XrefMedia extends AbstractXrefElement
             $label = $media_file->displayImage(100, 100, 'contain', []);
             $value = '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
 
-            return '<div class="d-flex"><div class="pe-1 pb-1">' . $label . '</div>' . $value . '</div>';
+            $label_html = '<div class="pe-1 pb-1 wt-media-link-image">' . $label . '</div>';
+            $value_html = '<div class="wt-media-link-title">' . $value . '</div>';
+
+            return '<div class="d-flex align-items-center wt-media-link">' . $label_html . $value_html . '</div>';
         }
 
         return parent::labelValue($value, $tree);

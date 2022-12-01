@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @var string $areas
  * @var int    $fanh
@@ -13,11 +15,11 @@
 <?= $html ?>
 
 <map id="fan-chart-map" name="fan-chart-map">
-	<?= $areas ?>
+    <?= $areas ?>
 </map>
 
 <div class="text-center">
-	<img class="wt-chart-fan-img" src="data:image/png;base64,<?= base64_encode($png) ?>" width="<?= $fanw ?>" height="<?= $fanh ?>" alt="<?= strip_tags($title) ?>" usemap="#fan-chart-map">
+    <img class="wt-chart-fan-img" src="data:image/png;base64,<?= base64_encode($png) ?>" width="<?= $fanw ?>" height="<?= $fanh ?>" alt="<?= strip_tags($title) ?>" usemap="#fan-chart-map">
 </div>
 
 <script>

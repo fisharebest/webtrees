@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,15 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Exception\RandomSourceException;
-use Ramsey\Uuid\Uuid;
-
-use function dechex;
-use function hexdec;
-use function strtoupper;
-use function strtr;
-use function substr;
 
 /**
  * _UID fields, as created by PAF and other applications
@@ -45,25 +38,10 @@ class PafUid extends AbstractElement
      */
     public function default(Tree $tree): string
     {
-        try {
-            $uid = strtr(Uuid::uuid4()->toString(), ['-' => '']);
-        } catch (RandomSourceException $ex) {
-            // uuid4() can fail if there is insufficient entropy in the system.
-            return '';
+        if ($tree->getPreference('GENERATE_UIDS') === '1') {
+            return Registry::idFactory()->pafUid();
         }
 
-        $checksum_a = 0; // a sum of the bytes
-        $checksum_b = 0; // a sum of the incremental values of $checksum_a
-
-        // Compute checksums
-        for ($i = 0; $i < 32; $i += 2) {
-            $checksum_a += hexdec(substr($uid, $i, 2));
-            $checksum_b += $checksum_a & 0xff;
-        }
-
-        $uid .= substr('0' . dechex($checksum_a), -2);
-        $uid .= substr('0' . dechex($checksum_b), -2);
-
-        return strtoupper($uid);
+        return '';
     }
 }

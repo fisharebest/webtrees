@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
-use League\Flysystem\FilesystemOperator;
 
 use function count;
 
@@ -200,7 +199,7 @@ class PdfRenderer extends AbstractRenderer
     {
         $this->currentStyle = $s;
         $style              = $this->getStyle($s);
-        $this->tcpdf->SetFont($style['font'], $style['style'], $style['size']);
+        $this->tcpdf->setFont($style['font'], $style['style'], $style['size']);
     }
 
     /**
@@ -236,7 +235,7 @@ class PdfRenderer extends AbstractRenderer
         } else {
             $x += $m['left'];
         }
-        $this->tcpdf->SetX($x);
+        $this->tcpdf->setX($x);
 
         return $x;
     }
@@ -370,19 +369,19 @@ class PdfRenderer extends AbstractRenderer
             self::DISK_CACHE
         );
 
-        $this->tcpdf->SetMargins($this->left_margin, $this->top_margin, $this->right_margin);
+        $this->tcpdf->setMargins($this->left_margin, $this->top_margin, $this->right_margin);
         $this->tcpdf->setHeaderMargin($this->header_margin);
         $this->tcpdf->setFooterMargin($this->footer_margin);
-        $this->tcpdf->SetAutoPageBreak(true, $this->bottom_margin);
+        $this->tcpdf->setAutoPageBreak(true, $this->bottom_margin);
         $this->tcpdf->setFontSubsetting(self::SUBSETTING);
-        $this->tcpdf->SetCompression(self::COMPRESSION);
+        $this->tcpdf->setCompression(self::COMPRESSION);
         $this->tcpdf->setRTL($this->rtl);
-        $this->tcpdf->SetCreator(Webtrees::NAME . ' ' . Webtrees::VERSION);
-        $this->tcpdf->SetAuthor($this->rauthor);
-        $this->tcpdf->SetTitle($this->title);
-        $this->tcpdf->SetSubject($this->rsubject);
-        $this->tcpdf->SetKeywords($this->rkeywords);
-        $this->tcpdf->SetHeaderData('', 0, $this->title);
+        $this->tcpdf->setCreator(Webtrees::NAME . ' ' . Webtrees::VERSION);
+        $this->tcpdf->setAuthor($this->rauthor);
+        $this->tcpdf->setTitle($this->title);
+        $this->tcpdf->setSubject($this->rsubject);
+        $this->tcpdf->setKeywords($this->rkeywords);
+        $this->tcpdf->setHeaderData('', 0, $this->title);
         $this->tcpdf->setHeaderFont([$this->default_font, '', $this->default_font_size]);
 
         if ($this->show_generated_by) {
@@ -511,14 +510,13 @@ class PdfRenderer extends AbstractRenderer
     /**
      * Create a new image object from Media Object.
      *
-     * @param MediaFile          $media_file
-     * @param float              $x
-     * @param float              $y
-     * @param float              $w     Image width
-     * @param float              $h     Image height
-     * @param string             $align L:left, C:center, R:right or empty to use x/y
-     * @param string             $ln    T:same line, N:next line
-     * @param FilesystemOperator $data_filesystem
+     * @param MediaFile $media_file
+     * @param float     $x
+     * @param float     $y
+     * @param float     $w     Image width
+     * @param float     $h     Image height
+     * @param string    $align L:left, C:center, R:right or empty to use x/y
+     * @param string    $ln    T:same line, N:next line
      *
      * @return ReportBaseImage
      */
@@ -529,10 +527,9 @@ class PdfRenderer extends AbstractRenderer
         float $w,
         float $h,
         string $align,
-        string $ln,
-        FilesystemOperator $data_filesystem
+        string $ln
     ): ReportBaseImage {
-        return new ReportPdfImage('@' . $media_file->fileContents($data_filesystem), $x, $y, $w, $h, $align, $ln);
+        return new ReportPdfImage('@' . $media_file->fileContents(), $x, $y, $w, $h, $align, $ln);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
+use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -127,8 +128,8 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array<AbstractRenderer> Nested repeating data */
     private array $wt_report_stack = [];
 
-    /** @var XMLParser (resource before PHP 8.0) Nested repeating data */
-    private $parser;
+    // Nested repeating data
+    private XMLParser $parser;
 
     /** @var XMLParser[] (resource[] before PHP 8.0) Nested repeating data */
     private array $parser_stack = [];
@@ -180,8 +181,6 @@ class ReportParserGenerate extends ReportParserBase
 
     private Tree $tree;
 
-    private FilesystemOperator $data_filesystem;
-
     /**
      * Create a parser for a report
      *
@@ -189,22 +188,15 @@ class ReportParserGenerate extends ReportParserBase
      * @param AbstractRenderer     $report_root
      * @param array<array<string>> $vars
      * @param Tree                 $tree
-     * @param FilesystemOperator   $data_filesystem
      */
-    public function __construct(
-        string $report,
-        AbstractRenderer $report_root,
-        array $vars,
-        Tree $tree,
-        FilesystemOperator $data_filesystem
-    ) {
+    public function __construct(string $report, AbstractRenderer $report_root, array $vars, Tree $tree)
+    {
         $this->report          = $report;
         $this->report_root     = $report_root;
         $this->wt_report       = $report_root;
         $this->current_element = new ReportBaseElement();
         $this->vars            = $vars;
         $this->tree            = $tree;
-        $this->data_filesystem = $data_filesystem;
 
         parent::__construct($report);
     }
@@ -1085,10 +1077,11 @@ class ReportParserGenerate extends ReportParserBase
                 $tmp = explode(':', $tag);
                 if (in_array(end($tmp), ['NOTE', 'TEXT'], true)) {
                     if ($this->tree->getPreference('FORMAT_TEXT') === 'markdown') {
-                        $value = strip_tags(Registry::markdownFactory()->markdown($value, $this->tree));
+                        $value = strip_tags(Registry::markdownFactory()->markdown($value, $this->tree), ['br']);
                     } else {
-                        $value = strip_tags(Registry::markdownFactory()->autolink($value, $this->tree));
+                        $value = strip_tags(Registry::markdownFactory()->autolink($value, $this->tree), ['br']);
                     }
+                    $value = strtr($value, [MarkdownFactory::BREAK => ' ']);
                 }
 
                 if (!empty($attrs['truncate'])) {
@@ -1736,8 +1729,8 @@ class ReportParserGenerate extends ReportParserBase
         $person     = Registry::individualFactory()->make($id, $this->tree);
         $media_file = $person->findHighlightedMediaFile();
 
-        if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
-            $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
+        if ($media_file instanceof MediaFile && $media_file->fileExists()) {
+            $image      = imagecreatefromstring($media_file->fileContents());
             $attributes = [imagesx($image), imagesy($image)];
 
             if ($width > 0 && $height == 0) {
@@ -1747,10 +1740,10 @@ class ReportParserGenerate extends ReportParserBase
                 $perc  = $height / $attributes[1];
                 $width = round($attributes[0] * $perc);
             } else {
-                $width  = $attributes[0];
-                $height = $attributes[1];
+                $width  = (float) $attributes[0];
+                $height = (float) $attributes[1];
             }
-            $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
+            $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
             $this->wt_report->addElement($image);
         }
     }
@@ -1788,8 +1781,8 @@ class ReportParserGenerate extends ReportParserBase
                 $mediaobject = Registry::mediaFactory()->make($match[1], $this->tree);
                 $media_file  = $mediaobject->firstImageFile();
 
-                if ($media_file instanceof MediaFile && $media_file->fileExists($this->data_filesystem)) {
-                    $image      = imagecreatefromstring($media_file->fileContents($this->data_filesystem));
+                if ($media_file instanceof MediaFile && $media_file->fileExists()) {
+                    $image      = imagecreatefromstring($media_file->fileContents());
                     $attributes = [imagesx($image), imagesy($image)];
 
                     if ($width > 0 && $height == 0) {
@@ -1799,10 +1792,10 @@ class ReportParserGenerate extends ReportParserBase
                         $perc  = $height / $attributes[1];
                         $width = round($attributes[0] * $perc);
                     } else {
-                        $width  = $attributes[0];
-                        $height = $attributes[1];
+                        $width  = (float) $attributes[0];
+                        $height = (float) $attributes[1];
                     }
-                    $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
+                    $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln);
                     $this->wt_report->addElement($image);
                 }
             }

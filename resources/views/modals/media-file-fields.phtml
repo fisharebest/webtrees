@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\Elements\SourceMediaType;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
@@ -15,12 +18,12 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<div class="row form-group <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
+<div class="row <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
     <label class="col-form-label col-sm-2" for="file-location">
         <?= I18N::translate('Media file') ?>
     </label>
     <div class="col-sm-10">
-        <select class="form-control" id="file-location" name="file_location">
+        <select class="form-select" id="file-location" name="file_location">
             <option value="upload">
                 <?= I18N::translate('A file on your computer') ?>
             </option>
@@ -36,12 +39,12 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group file-location file-location-upload <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
+<div class="row file-location file-location-upload <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
     <label class="col-form-label col-sm-2" for="file">
         <?= I18N::translate('A file on your computer') ?>
     </label>
     <div class="col-sm-10">
-        <input class="form-control-file" id="file" name="file" type="file">
+        <input class="form-control" id="file" name="file" type="file">
         <small class="text-muted">
             <?= I18N::translate('Maximum upload size: ') ?>
             <?= $max_upload_size ?>
@@ -49,7 +52,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group file-location file-location-upload <?= $media_file instanceof MediaFile && $media_file->isExternal() ? 'd-none' : '' ?>">
+<div class="row file-location file-location-upload <?= $media_file instanceof MediaFile && $media_file->isExternal() ? 'd-none' : '' ?>">
     <label class="col-form-label col-sm-2" for="folder">
         <?= I18N::translate('Filename on server') ?>
     </label>
@@ -57,12 +60,10 @@ use Fisharebest\Webtrees\Tree;
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-check">
-                    <label class="form-check-label">
-                        <span class="input-group">
-                            <input class="form-check-input" type="radio" name="auto" value="0" checked>
-                            <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file instanceof MediaFile ? $media_file->filename() : '') === '.' ? '' : dirname($media_file instanceof MediaFile ? $media_file->filename() : '')) ?>" data-wt-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
-                            <span class="input-group-text">/</span>
-                        </span>
+                    <input class="form-check-input" type="radio" name="auto" id="filename-manual" value="0" checked>
+                    <label class="form-check-label input-group" for="filename-manual">
+                        <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file instanceof MediaFile ? $media_file->filename() : '') === '.' ? '' : dirname($media_file instanceof MediaFile ? $media_file->filename() : '')) ?>" data-wt-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
+                        <span class="input-group-text">/</span>
                     </label>
                 </div>
             </div>
@@ -74,15 +75,15 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.') ?>
         </div>
         <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="auto" value="1">
+            <input class="form-check-input" type="radio" name="auto" id="filename-auto" value="1">
+            <label class="form-check-label" for="filename-auto">
                 <?= I18N::translate('Create a unique filename') ?>
             </label>
         </div>
     </div>
 </div>
 
-<div class="row form-group file-location file-location-unused d-none">
+<div class="row file-location file-location-unused d-none">
     <label class="col-form-label col-sm-2" for="unused">
         <?= I18N::translate('A file on the server') ?>
     </label>
@@ -93,7 +94,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group file-location file-location-url <?= $media_file && $media_file->isExternal() ? '' : 'd-none' ?>">
+<div class="row file-location file-location-url <?= $media_file && $media_file->isExternal() ? '' : 'd-none' ?>">
     <label class="col-form-label col-sm-2" for="remote">
         <?= I18N::translate('URL') ?>
     </label>
@@ -102,7 +103,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group mb-3">
+<div class="row mb-3">
     <label class="col-form-label col-sm-2" for="title">
         <?= I18N::translate('Title') ?>
     </label>
@@ -111,12 +112,12 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group mb-3">
+<div class="row mb-3">
     <label class="col-form-label col-sm-2" for="type">
         <?= I18N::translate('Media type') ?>
     </label>
     <div class="col-sm-10">
-        <?= view('components/select', ['name' => 'type', 'selected' => $media_file ? $media_file->type() : '', 'options' => $media_types]) ?>
+        <?= (new SourceMediaType(''))->edit('type', 'type', $media_file ? $media_file->type() : '', $tree) ?>
     </div>
 </div>
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -30,6 +32,8 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function in_array;
 
 /**
  * Search for (and optionally replace) genealogy data
@@ -63,13 +67,14 @@ class SearchPhoneticPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
+        $tree      = Validator::attributes($request)->tree();
+        $firstname = Validator::queryParams($request)->string('firstname', '');
+        $lastname  = Validator::queryParams($request)->string('lastname', '');
+        $place     = Validator::queryParams($request)->string('place', '');
+        $soundex   = Validator::queryParams($request)->isInArray(['DaitchM', 'Russell'])->string('soundex', 'Russell');
 
-        $params    = $request->getQueryParams();
-        $firstname = $params['firstname'] ?? '';
-        $lastname  = $params['lastname'] ?? '';
-        $place     = $params['place'] ?? '';
-        $soundex   = $params['soundex'] ?? 'Russell';
+        // Where to search
+        $search_tree_names = Validator::queryParams($request)->array('search_trees');
 
         // What trees to search?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
@@ -78,12 +83,8 @@ class SearchPhoneticPage implements RequestHandlerInterface
             $all_trees = new Collection([$tree]);
         }
 
-        $search_tree_names = new Collection($params['search_trees'] ?? []);
-
         $search_trees = $all_trees
-            ->filter(static function (Tree $tree) use ($search_tree_names): bool {
-                return $search_tree_names->containsStrict($tree->name());
-            });
+            ->filter(static fn (Tree $tree): bool => in_array($tree->name(), $search_tree_names, true));
 
         if ($search_trees->isEmpty()) {
             $search_trees->add($tree);
@@ -92,6 +93,12 @@ class SearchPhoneticPage implements RequestHandlerInterface
         $individuals = new Collection();
 
         if ($lastname !== '' || $firstname !== '' || $place !== '') {
+            // Log search requests for visitors
+            if (Auth::id() === null) {
+                $message = 'Phonetic: first=' . $firstname . ', last=' . $lastname . ', place=' . $place;
+                Log::addSearchLog($message, $search_trees->all());
+            }
+
             $individuals = $this->search_service->searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, $search_trees->all());
         }
 

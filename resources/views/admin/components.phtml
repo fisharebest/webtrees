@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
@@ -32,7 +34,6 @@ use Illuminate\Support\Collection;
 <p><?= $description ?></p>
 
 <form method="post">
-    <?= csrf_field() ?>
     <table class="table table-bordered wt-table-components">
         <thead>
             <tr>
@@ -123,7 +124,9 @@ use Illuminate\Support\Collection;
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                                <?= view('icons/cancel') ?>
+                                                <?= I18N::translate('close') ?>
                                             </button>
                                         </div>
                                     </div>
@@ -167,6 +170,8 @@ use Illuminate\Support\Collection;
         <?= view('icons/cancel') ?>
         <?= I18N::translate('cancel') ?>
     </a>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

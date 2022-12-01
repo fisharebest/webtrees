@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\DataFixSelect;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
@@ -22,14 +24,12 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(DataFixSelect::class, ['tree' => $tree->name()])) ?>">
-    <?= csrf_field() ?>
-
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="data_fix">
             <?= I18N::translate('Data fix') ?>
         </label>
         <div class="col-sm-9">
-            <select class="form-control" id="data_fix" name="data_fix" type="text" required="required">
+            <select class="form-select" id="data_fix" name="data_fix" type="text" required="required">
                 <option value=""><?= I18N::translate('&lt;select&gt;') ?></option>
                 <?php foreach ($data_fixes as $data_fix) : ?>
                     <option value="<?= $data_fix->name() ?>">
@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-sm-3">
         </div>
 
@@ -51,4 +51,6 @@ use Illuminate\Support\Collection;
             </button>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

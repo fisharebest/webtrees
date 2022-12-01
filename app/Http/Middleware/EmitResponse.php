@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,8 +60,8 @@ class EmitResponse implements MiddlewareInterface
         $this->removeDefaultPhpHeaders();
 
         // Unless webtrees set a cache-control header, assume the page cannot be cached
-        if (!$response->hasHeader('Cache-Control')) {
-            $response = $response->withHeader('Cache-Control', 'no-store');
+        if (!$response->hasHeader('cache-control')) {
+            $response = $response->withHeader('cache-control', 'no-store');
         }
 
         $this->assertBodyNotEmitted();
@@ -81,7 +81,7 @@ class EmitResponse implements MiddlewareInterface
     private function removeDefaultPhpHeaders(): void
     {
         header_remove('X-Powered-By');
-        header_remove('Cache-control');
+        header_remove('cache-control');
         header_remove('Expires');
         header_remove('Pragma');
     }

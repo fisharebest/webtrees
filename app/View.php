@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,14 +58,14 @@ class View
     /**
      * @var array<string> Where do the templates live, for each namespace.
      */
-    private static $namespaces = [
+    private static array $namespaces = [
         '' => Webtrees::ROOT_DIR . 'resources/views/',
     ];
 
     /**
      * @var array<string> Modules can replace core views with their own.
      */
-    private static $replacements = [];
+    private static array $replacements = [];
 
     /**
      * @var string Implementation of Blade "stacks".

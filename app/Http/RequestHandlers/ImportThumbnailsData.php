@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
 use League\Flysystem\FilesystemException;
@@ -85,9 +86,10 @@ class ImportThumbnailsData implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $start  = (int) $request->getQueryParams()['start'];
-        $length = (int) $request->getQueryParams()['length'];
-        $search = $request->getQueryParams()['search']['value'];
+        $start  = Validator::queryParams($request)->integer('start');
+        $length = Validator::queryParams($request)->integer('length');
+        $draw   = Validator::queryParams($request)->integer('draw');
+        $search = Validator::queryParams($request)->array('search')['value'];
 
         // Fetch all thumbnails
         try {
@@ -98,7 +100,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
                 ->map(static function (StorageAttributes $attributes): string {
                     return $attributes->path();
                 });
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $thumbnails = new Collection();
         }
 
@@ -147,7 +149,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
             });
 
         return response([
-            'draw'            => (int) $request->getQueryParams()['draw'],
+            'draw'            => $draw,
             'recordsTotal'    => $recordsTotal,
             'recordsFiltered' => $recordsFiltered,
             'data'            => $data->values()->all(),
@@ -194,7 +196,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
         // It may not actually exist.
         try {
             $file_exists = $data_filesystem->fileExists($original);
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $file_exists = false;
         }
 
@@ -204,13 +206,13 @@ class ImportThumbnailsData implements RequestHandlerInterface
 
         try {
             $thumbnail_type = $data_filesystem->mimeType($thumbnail) ?: Mime::DEFAULT_TYPE;
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $thumbnail_type = Mime::DEFAULT_TYPE;
         }
 
         try {
             $original_type = $data_filesystem->mimeType($original) ?: Mime::DEFAULT_TYPE;
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $original_type = Mime::DEFAULT_TYPE;
         }
 

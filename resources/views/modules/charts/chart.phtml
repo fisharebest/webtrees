@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @var int $block_id
  * @var string $chart_url
@@ -9,5 +11,5 @@
 <div id="chart-block-<?= e($block_id) ?>"></div>
 
 <script>
-	$(<?= json_encode('#chart-block-' . $block_id, JSON_THROW_ON_ERROR) ?>).load(<?= json_encode($chart_url, JSON_THROW_ON_ERROR) ?>);
+    $(<?= json_encode('#chart-block-' . $block_id, JSON_THROW_ON_ERROR) ?>).load(<?= json_encode($chart_url, JSON_THROW_ON_ERROR) ?>);
 </script>

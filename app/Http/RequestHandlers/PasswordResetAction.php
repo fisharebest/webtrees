@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,13 +58,10 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
     {
         $tree  = Validator::attributes($request)->treeOptional();
         $token = $request->getAttribute('token');
-
-        $user = $this->user_service->findByToken($token);
+        $user  = $this->user_service->findByToken($token);
 
         if ($user instanceof User) {
-            $params = (array) $request->getParsedBody();
-
-            $password = $params['password'] ?? '';
+            $password = Validator::parsedBody($request)->string('password');
 
             $user->setPreference('password-token', '');
             $user->setPreference('password-token-expire', '');

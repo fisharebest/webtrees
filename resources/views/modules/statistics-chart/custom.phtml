@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
@@ -8,7 +10,7 @@ use Fisharebest\Webtrees\View;
 
 /**
  * @var StatisticsChartModule $module
- * @var Tree            $tree
+ * @var Tree                  $tree
  */
 
 ?>
@@ -19,9 +21,7 @@ use Fisharebest\Webtrees\View;
     </h4>
 
     <form method="post" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
-        <?= csrf_field() ?>
-
-        <div class="row form-group mb-3">
+        <div class="row mb-3">
             <div class="col-sm-2 wt-page-options-label">
                 <?= I18N::translate('Chart type') ?>
             </div>
@@ -95,7 +95,7 @@ use Fisharebest\Webtrees\View;
                     <label for="z-axis-boundaries-periods" class="visually-hidden">
                         <?= I18N::translate('Date range') ?>
                     </label>
-                    <select id="z-axis-boundaries-periods" class="form-control" name="z-axis-boundaries-periods">
+                    <select id="z-axis-boundaries-periods" class="form-select" name="z-axis-boundaries-periods">
                         <option value="1700,1750,1800,1850,1900,1950,2000" selected>
                             <?= /* I18N: from 1700 interval 50 years */
                             I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1700), I18N::number(50)) ?>
@@ -155,7 +155,7 @@ use Fisharebest\Webtrees\View;
                         <legend><?= I18N::translate('Chart type') ?></legend>
 
                         <label for="chart_type" class="visually-hidden"><?= I18N::translate('Chart type') ?></label>
-                        <select name="chart_type" class="form-control" onchange="statusShowSurname(this);">
+                        <select name="chart_type" class="form-select" onchange="statusShowSurname(this);">
                             <option value="indi_distribution_chart" selected>
                                 <?= I18N::translate('Individuals') ?>
                             </option>
@@ -164,7 +164,7 @@ use Fisharebest\Webtrees\View;
                             </option>
                         </select>
 
-                        <div id="surname_opt" class="form-group" style="display:none;">
+                        <div id="surname_opt" class="mb-3 d-none;">
                             <label for="SURN"><?= I18N::translate('Surname') ?></label>
                             <input data-wt-autocomplete-url="<?= e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) ?>" autocomplete="off" class="form-control" type="text" id="SURN" name="SURN">
                         </div>
@@ -174,7 +174,7 @@ use Fisharebest\Webtrees\View;
                         <legend id="label-area"><?= I18N::translate('Geographic area') ?></legend>
 
                         <label for="chart_shows" class="visually-hidden"><?= I18N::translate('Geographic area') ?></label>
-                        <select id="chart_shows" class="form-control" name="chart_shows">
+                        <select id="chart_shows" class="form-select" name="chart_shows">
                             <option value="world" selected>
                                 <?= I18N::translate('World') ?>
                             </option>
@@ -208,6 +208,8 @@ use Fisharebest\Webtrees\View;
                 <?= I18N::translate('show the chart') ?>
             </button>
         </p>
+
+        <?= csrf_field() ?>
     </form>
 
     <div id="custom-chart" class="wt-ajax-load">

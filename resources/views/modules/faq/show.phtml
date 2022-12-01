@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -31,6 +33,6 @@ use Illuminate\Support\Collection;
         </div>
     </div>
     <div class="faq_body">
-        <?= substr($faq->faqbody, 0, 1) === '<' ? $faq->faqbody : nl2br(e($faq->faqbody), false) ?>
+        <?= str_starts_with($faq->faqbody, '<') ? $faq->faqbody : nl2br(e($faq->faqbody), false) ?>
     </div>
 <?php endforeach ?>
