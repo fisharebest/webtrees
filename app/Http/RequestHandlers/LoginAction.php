@@ -103,7 +103,7 @@ class LoginAction implements RequestHandlerInterface
      * @return void
      * @throws Exception
      */
-    private function doLogin(string $username, string $password): void
+    private function doLogin(string $username, #[\SensitiveParameter] string $password): void
     {
         if ($_COOKIE === []) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
