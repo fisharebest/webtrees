@@ -287,7 +287,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $story_title = '';
             $story_body  = '';
             $languages   = [];
-            $xref        = '';
+            $xref        = Validator::queryParams($request)->isXref()->string('xref', '');
             $title       = I18N::translate('Add a story') . ' — ' . e($tree->title());
         } else {
             // Editing an existing story
