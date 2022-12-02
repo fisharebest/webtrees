@@ -246,8 +246,10 @@ class RegisterAction implements RequestHandlerInterface
      */
     private function doValidateRegistration(
         ServerRequestInterface $request,
-        string $username, string $email,
-        string $realname, string $comments,
+        string $username,
+        string $email,
+        string $realname,
+        string $comments,
         #[\SensitiveParameter] string $password
     ): void {
         // All fields are required
