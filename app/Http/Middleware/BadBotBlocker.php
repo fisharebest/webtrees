@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Iodev\Whois\Loaders\CurlLoader;
 use Iodev\Whois\Modules\Asn\AsnRouteInfo;
 use Iodev\Whois\Whois;
@@ -50,6 +52,9 @@ use function str_ends_with;
  */
 class BadBotBlocker implements MiddlewareInterface
 {
+    private const REGEX_OCTET = '(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)';
+    private const REGEX_IPV4  = '/\\b' . self::REGEX_OCTET . '(?:\\.' . self::REGEX_OCTET . '){3}\\b/';
+
     // Cache whois requests.  Try to avoid all caches expiring at the same time.
     private const WHOIS_TTL_MIN = 28 * 86400;
     private const WHOIS_TTL_MAX = 35 * 86400;
@@ -161,6 +166,15 @@ class BadBotBlocker implements MiddlewareInterface
     ];
 
     /**
+     * Some search engines operate from designated IP addresses.
+     *
+     * @see https://bot.seekport.com/
+     */
+    private const ROBOT_IP_FILES = [
+        'SeekportBot' => 'https://bot.seekport.com/seekportbot_ips.txt',
+    ];
+
+    /**
      * Some search engines operate from within a designated autonomous system.
      *
      * @see https://developers.facebook.com/docs/sharing/webmasters/crawler
@@ -202,10 +216,26 @@ class BadBotBlocker implements MiddlewareInterface
             }
         }
 
-        foreach (self::ROBOT_IPS as $robot => $valid_ips) {
+        foreach (self::ROBOT_IPS as $robot => $valid_ip_ranges) {
             if (str_contains($ua, $robot)) {
-                foreach ($valid_ips as $ip) {
-                    $range = IPFactory::parseRangeString($ip);
+                foreach ($valid_ip_ranges as $ip_range) {
+                    $range = IPFactory::parseRangeString($ip_range);
+
+                    if ($range instanceof RangeInterface && $range->contains($address)) {
+                        continue 2;
+                    }
+                }
+
+                return $this->response();
+            }
+        }
+
+        foreach (self::ROBOT_IP_FILES as $robot => $url) {
+            if (str_contains($ua, $robot)) {
+                $valid_ip_ranges = $this->fetchIpRangesForUrl($robot, $url);
+
+                foreach ($valid_ip_ranges as $ip_range) {
+                    $range = IPFactory::parseRangeString($ip_range);
 
                     if ($range instanceof RangeInterface && $range->contains($address)) {
                         continue 2;
@@ -292,6 +322,31 @@ class BadBotBlocker implements MiddlewareInterface
 
                 return array_filter($ranges);
             } catch (Throwable) {
+                return [];
+            }
+        }, random_int(self::WHOIS_TTL_MIN, self::WHOIS_TTL_MAX));
+    }
+
+    /**
+     * Fetch a list of IP addresses from a remote file.
+     *
+     * @param string $ua
+     * @param string $url
+     *
+     * @return array<string>
+     */
+    private function fetchIpRangesForUrl(string $ua, string $url): array
+    {
+        return Registry::cache()->file()->remember('url-ip-list-' . $ua, static function () use ($url): array {
+            try {
+                $client   = new Client();
+                $response = $client->get($url, ['timeout' => 5]);
+                $contents = $response->getBody()->getContents();
+
+                preg_match_all(self::REGEX_IPV4, $contents, $matches);
+
+                return $matches[0];
+            } catch (GuzzleException) {
                 return [];
             }
         }, random_int(self::WHOIS_TTL_MIN, self::WHOIS_TTL_MAX));
