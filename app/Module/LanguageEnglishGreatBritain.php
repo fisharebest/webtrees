@@ -62,6 +62,16 @@ class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
     ];
 
     /**
+     * One of: 'DMY', 'MDY', 'YMD'.
+     *
+     * @return string
+     */
+    public function dateOrder(): string
+    {
+        return 'DMY';
+    }
+
+    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface
