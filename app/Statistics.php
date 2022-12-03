@@ -1361,7 +1361,7 @@ class Statistics implements
      */
     public function lastEventPlace(): string
     {
-        return $this->event_repository->lastEventType();
+        return $this->event_repository->lastEventPlace();
     }
 
     /**
