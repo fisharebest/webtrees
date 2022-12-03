@@ -1056,11 +1056,6 @@ parameters:
 			path: app/I18N.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\I18N\\:\\:language\\(\\) should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface but returns Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\|null\\.$#"
-			count: 1
-			path: app/I18N.php
-
-		-
 			message: "#^Binary operation \"\\*\" between string and 365 results in an error\\.$#"
 			count: 1
 			path: app/Individual.php
