@@ -203,7 +203,7 @@ class I18N
     // Punctuation used to separate list items, typically a comma
     public static string $list_separator;
 
-    private static ?ModuleLanguageInterface $language;
+    private static ModuleLanguageInterface $language;
 
     private static LocaleInterface $locale;
 
@@ -323,7 +323,7 @@ class I18N
                 }, $translations);
 
             self::$language = $module_service
-                ->findByInterface(ModuleLanguageInterface::class)
+                ->findByInterface(ModuleLanguageInterface::class, true)
                 ->first(fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === $code);
         }
 
