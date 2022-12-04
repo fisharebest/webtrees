@@ -93,7 +93,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ->get('sitemap-style', '/sitemap.xsl', $this);
 
         Registry::routeFactory()->routeMap()
-            ->get('sitemap-index', '/sitemap.xml', $this);
+            ->get('sitemap-index', '/newsitemap.xml', $this);
 
         Registry::routeFactory()->routeMap()
             ->get('sitemap-file', '/sitemap-{tree}-{type}-{page}.xml', $this);
