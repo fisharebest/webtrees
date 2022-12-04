@@ -72,6 +72,7 @@ class BadBotBlocker implements MiddlewareInterface
         'DataForSEO',
         'DotBot',
         'Grapeshot',
+        'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
         'Linguee',
         'MJ12bot',
