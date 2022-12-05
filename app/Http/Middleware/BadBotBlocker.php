@@ -81,6 +81,7 @@ class BadBotBlocker implements MiddlewareInterface
         'PetalBot',
         'proximic',
         'SemrushBot',
+        'serpstatbot',
         'SEOkicks',
         'SiteKiosk',
         'Turnitin',
@@ -347,7 +348,7 @@ class BadBotBlocker implements MiddlewareInterface
                 preg_match_all(self::REGEX_IPV4, $contents, $matches);
 
                 return $matches[0];
-            } catch (GuzzleException) {
+            } catch (GuzzleException $ex) {
                 return [];
             }
         }, random_int(self::WHOIS_TTL_MIN, self::WHOIS_TTL_MAX));
