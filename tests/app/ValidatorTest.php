@@ -29,7 +29,6 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class ValidatorTest extends TestCase
 {
-
     /**
      * @covers \Fisharebest\Webtrees\Validator::attributes
      * @covers \Fisharebest\Webtrees\Validator::__construct
