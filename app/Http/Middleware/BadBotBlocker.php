@@ -82,6 +82,7 @@ class BadBotBlocker implements MiddlewareInterface
         'PetalBot',
         'proximic',
         'SemrushBot',
+        'serpstatbot',
         'SEOkicks',
         'SiteKiosk',
         'Turnitin',
