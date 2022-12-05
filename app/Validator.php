@@ -53,20 +53,23 @@ class Validator
     /**
      * @param array<int|string|Tree|UserInterface|array<int|string>> $parameters
      * @param ServerRequestInterface                                 $request
+     * @param string                                                 $encoding
      */
-    public function __construct(array $parameters, ServerRequestInterface $request)
+    private function __construct(array $parameters, ServerRequestInterface $request, string $encoding)
     {
-        // All keys and values must be valid UTF-8
-        $check_utf8 = static function ($value, $key): void {
-            if (is_string($key) && preg_match('//u', $key) !== 1) {
-                throw new HttpBadRequestException('Invalid UTF-8 characters in request');
-            }
-            if (is_string($value) && preg_match('//u', $value) !== 1) {
-                throw new HttpBadRequestException('Invalid UTF-8 characters in request');
-            }
-        };
+        if ($encoding === 'UTF-8') {
+            // All keys and values must be valid UTF-8
+            $check_utf8 = static function ($value, $key): void {
+                if (is_string($key) && preg_match('//u', $key) !== 1) {
+                    throw new HttpBadRequestException('Invalid UTF-8 characters in request');
+                }
+                if (is_string($value) && preg_match('//u', $value) !== 1) {
+                    throw new HttpBadRequestException('Invalid UTF-8 characters in request');
+                }
+            };
 
-        array_walk_recursive($parameters, $check_utf8);
+            array_walk_recursive($parameters, $check_utf8);
+        }
 
         $this->parameters = $parameters;
         $this->request    = $request;
@@ -79,7 +82,7 @@ class Validator
      */
     public static function attributes(ServerRequestInterface $request): self
     {
-        return new self($request->getAttributes(), $request);
+        return new self($request->getAttributes(), $request, 'UTF-8');
     }
 
     /**
@@ -89,7 +92,7 @@ class Validator
      */
     public static function parsedBody(ServerRequestInterface $request): self
     {
-        return new self((array) $request->getParsedBody(), $request);
+        return new self((array) $request->getParsedBody(), $request, 'UTF-8');
     }
 
     /**
@@ -99,7 +102,7 @@ class Validator
      */
     public static function queryParams(ServerRequestInterface $request): self
     {
-        return new self($request->getQueryParams(), $request);
+        return new self($request->getQueryParams(), $request, 'UTF-8');
     }
 
     /**
@@ -109,7 +112,9 @@ class Validator
      */
     public static function serverParams(ServerRequestInterface $request): self
     {
-        return new self($request->getServerParams(), $request);
+        // Headers should be ASCII.
+        // However, we cannot enforce this as some servers add GEOIP headers with non-ASCII placenames.
+        return new self($request->getServerParams(), $request, 'ASCII');
     }
 
     /**
@@ -221,7 +226,13 @@ class Validator
             }
 
             if (is_array($value)) {
-                return array_filter($value, static fn ($x): bool => is_string($x) && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $x) === 1);
+                foreach ($value as $v) {
+                    if (!is_string($v) || preg_match('/^' . Gedcom::REGEX_XREF . '$/', $v) !== 1) {
+                        return null;
+                    }
+                }
+
+                return $value;
             }
 
             return null;
