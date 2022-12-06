@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$str of function strtr expects string, mixed given\\.$#"
-			count: 2
-			path: app/Console/ComposerScripts.php
-
-		-
 			message: "#^Cannot call method calendarUrl\\(\\) on Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\|null\\.$#"
 			count: 1
 			path: app/Date.php
@@ -3744,4 +3739,3 @@ parameters:
 			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
-
