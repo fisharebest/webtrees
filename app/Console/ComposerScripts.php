@@ -21,18 +21,12 @@ namespace Fisharebest\Webtrees\Console;
 
 use Composer\Script\Event;
 use Fisharebest\Localization\Translation;
-use League\Flysystem\Filesystem;
-use League\Flysystem\FilesystemException;
-use League\Flysystem\FilesystemReader;
-use League\Flysystem\Local\LocalFilesystemAdapter;
-use League\Flysystem\StorageAttributes;
 
 use function basename;
 use function count;
 use function dirname;
 use function file_put_contents;
 use function glob;
-use function str_contains;
 use function var_export;
 
 /**
@@ -42,9 +36,6 @@ class ComposerScripts
 {
     // Location of our translation files.
     private const PO_FILE_PATTERN = 'resources/lang/*/*.po';
-
-    // Path to the root folder.
-    private const ROOT_DIR = __DIR__ . '/../../';
 
     /**
      * Rebuild the .POT, .PO and .PHP file.
@@ -68,91 +59,5 @@ class ComposerScripts
 
             file_put_contents($php_file, $php_code);
         }
-    }
-
-    /**
-     * Ensure every class has a corresponding test script.
-     *
-     * @param Event $event
-     *
-     * @throws FilesystemException
-     */
-    public static function missingTests(Event $event): void
-    {
-        require $event->getComposer()->getConfig()->get('vendor-dir') . '/autoload.php';
-
-        $io = $event->getIO();
-
-        $filesystem = new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
-
-        $scripts = $filesystem->listContents('app', FilesystemReader::LIST_DEEP)
-            ->filter(static fn (StorageAttributes $file): bool => $file->isFile())
-            ->map(static fn (StorageAttributes $file): string => $file->path())
-            ->filter(static fn (string $script): bool => !str_contains($script, 'Interface.php') && !str_contains($script, 'Abstract'));
-
-        foreach ($scripts as $script) {
-            $class = strtr($script, ['app/' => '', '.php' => '', '/' => '\\']);
-            $test  = strtr($script, ['app/' => 'tests/app/', '.php' => 'Test.php']);
-
-            if (!$filesystem->fileExists($test)) {
-                $io->write('Creating test script for: ' . $class);
-                $filesystem->write($test, self::testStub($class));
-            }
-        }
-    }
-
-    /**
-     * Create an empty test script.
-     *
-     * @param string $class
-     *
-     * @return string
-     */
-    private static function testStub(string $class): string
-    {
-        $year       = date('Y');
-        $namespace  = strtr(dirname(strtr($class, ['\\' => '/'])), ['/' => '\\']);
-        $base_class = basename(strtr($class, ['\\' => '/']));
-
-        if ($namespace === '.') {
-            $namespace = 'Fisharebest\\Webtrees';
-        } else {
-            $namespace = 'Fisharebest\\Webtrees\\' . $namespace;
-        }
-
-        return <<<"end_of_file"
-<?php
-
-/**
- * webtrees: online genealogy
- * Copyright (C) {$year} webtrees development team
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
- */
-
-declare(strict_types=1);
-
-namespace {$namespace};
-
-use Fisharebest\\Webtrees\\TestCase;
-
-/**
- * Test harness for the class {$base_class}
- *
- * @covers {$namespace}\\{$base_class}
- */
-class {$base_class}Test extends TestCase
-{
-}
-
-end_of_file;
     }
 }
