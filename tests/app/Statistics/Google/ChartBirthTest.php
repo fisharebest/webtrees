@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class ChartBirthTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Statistics\Google\ChartBirth::class));
     }
 }

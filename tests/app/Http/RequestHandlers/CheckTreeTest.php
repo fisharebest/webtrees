@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class CheckTreeTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CheckTree::class));
     }
 }

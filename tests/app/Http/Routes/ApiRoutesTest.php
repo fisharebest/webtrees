@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class ApiRoutesTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Routes\ApiRoutes::class));
     }
 }

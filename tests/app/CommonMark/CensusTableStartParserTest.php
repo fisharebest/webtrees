@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class CensusTableStartParserTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\CommonMark\CensusTableStartParser::class));
     }
 }

@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class ExternalIdentifierTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\ExternalIdentifier::class));
     }
 }

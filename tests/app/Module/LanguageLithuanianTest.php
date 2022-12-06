@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class LanguageLithuanianTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LanguageLithuanian::class));
     }
 }

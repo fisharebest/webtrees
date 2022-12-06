@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class Migration28Test extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Schema\Migration28::class));
     }
 }

@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class NoteFactoryTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Factories\NoteFactory::class));
     }
 }

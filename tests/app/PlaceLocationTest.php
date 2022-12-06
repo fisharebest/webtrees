@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class PlaceLocationTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\PlaceLocation::class));
     }
 }

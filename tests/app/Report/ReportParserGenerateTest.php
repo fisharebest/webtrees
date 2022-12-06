@@ -28,7 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class ReportParserGenerateTest extends TestCase
 {
-    public function testClass(): void {
+    public function testClass(): void
+    {
         $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportParserGenerate::class));
     }
 }
