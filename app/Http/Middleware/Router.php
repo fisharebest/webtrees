@@ -90,7 +90,7 @@ class Router implements MiddlewareInterface
             }
         } else {
             // Turn the ugly URL into a pretty one, so the router can parse it.
-            $uri    = $request->getUri()->withPath($url_route);
+            $uri     = $request->getUri()->withPath($url_route);
             $request = $request->withUri($uri);
         }
 
