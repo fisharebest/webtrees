@@ -36,6 +36,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function explode;
 use function implode;
 use function str_contains;
 
@@ -75,19 +76,27 @@ class Router implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Turn the ugly URL into a pretty one, so the router can parse it.
-        $pretty = $request;
+        // Ugly URLs store the path in a query parameter.
+        $url_route = Validator::queryParams($request)->string('route', '');
 
-        if (!Validator::attributes($request)->boolean('rewrite_urls', false)) {
-            // Ugly URLs store the path in a query parameter.
-            $url_route = Validator::queryParams($request)->string('route', '');
-            $uri       = $request->getUri()->withPath($url_route);
-            $pretty    = $request->withUri($uri);
+        if (Validator::attributes($request)->boolean('rewrite_urls', false)) {
+            // We are creating pretty URLs, but received an ugly one. Probably a search-engine. Redirect it.
+            if ($url_route !== '') {
+                $uri = $request->getUri()
+                    ->withPath($url_route)
+                    ->withQuery(explode('&', $request->getUri()->getQuery(), 2)[1] ?? '');
+
+                return Registry::responseFactory()->redirectUrl($uri, StatusCodeInterface::STATUS_PERMANENT_REDIRECT);
+            }
+        } else {
+            // Turn the ugly URL into a pretty one, so the router can parse it.
+            $uri    = $request->getUri()->withPath($url_route);
+            $request = $request->withUri($uri);
         }
 
         // Match the request to a route.
         $matcher = $this->router_container->getMatcher();
-        $route   = $matcher->match($pretty);
+        $route   = $matcher->match($request);
 
         // No route matched?
         if ($route === false) {
