@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -125,7 +126,10 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $tree = Validator::attributes($request)->treeOptional();
 
         if (!$tree instanceof Tree) {
-            $tree = $this->tree_service->all()->first();
+            $trees = $this->tree_service->all();
+
+            $tree = $trees->get(Site::getPreference('DEFAULT_GEDCOM')) ?? $trees->first();
+
             if ($tree instanceof Tree) {
                 return redirect(route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]));
             }
