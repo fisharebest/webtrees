@@ -147,7 +147,7 @@ class RegisterAction implements RequestHandlerInterface
         $verify_url = route(VerifyEmail::class, [
             'username' => $user->userName(),
             'token'    => $token,
-            'tree'     => $tree instanceof Tree ? $tree->name() : null,
+            'tree'     => $tree?->name(),
         ]);
 
         // Send a verification message to the user.

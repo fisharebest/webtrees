@@ -87,7 +87,7 @@ class LoginAction implements RequestHandlerInterface
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
             return redirect(route(LoginPage::class, [
-                'tree'     => $tree instanceof Tree ? $tree->name() : null,
+                'tree'     => $tree?->name(),
                 'username' => $username,
                 'url'      => $url,
             ]));

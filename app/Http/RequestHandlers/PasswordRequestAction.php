@@ -95,7 +95,7 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
             $expire = (string) (time() + self::TOKEN_VALIDITY_SECONDS);
             $url    = route(PasswordResetPage::class, [
                 'token' => $token,
-                'tree'  => $tree instanceof Tree ? $tree->name() : null,
+                'tree'  => $tree?->name(),
             ]);
 
             $user->setPreference('password-token', $token);
@@ -122,6 +122,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
         $message2 = I18N::translate('This link is valid for one hour.');
         FlashMessages::addMessage($message1 . '<br>' . $message2, 'success');
 
-        return redirect(route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return redirect(route(LoginPage::class, ['tree' => $tree?->name()]));
     }
 }

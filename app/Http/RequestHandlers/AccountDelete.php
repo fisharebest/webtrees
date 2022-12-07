@@ -65,6 +65,6 @@ class AccountDelete implements RequestHandlerInterface
             Auth::logout();
         }
 
-        return redirect(route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return redirect(route(AccountEdit::class, ['tree' => $tree?->name()]));
     }
 }

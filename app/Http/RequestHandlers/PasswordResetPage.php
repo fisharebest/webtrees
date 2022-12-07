@@ -79,6 +79,6 @@ class PasswordResetPage implements RequestHandlerInterface, StatusCodeInterface
 
         FlashMessages::addMessage($message, 'danger');
 
-        return redirect(route(PasswordRequestPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return redirect(route(PasswordRequestPage::class, ['tree' => $tree?->name()]));
     }
 }

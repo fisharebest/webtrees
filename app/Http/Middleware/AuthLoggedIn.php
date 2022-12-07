@@ -53,7 +53,7 @@ class AuthLoggedIn implements MiddlewareInterface
 
         // Not logged in.
         return redirect(route(LoginPage::class, [
-            'tree' => $tree instanceof Tree ? $tree->name() : null,
+            'tree' => $tree?->name(),
             'url'  => (string) $request->getUri(),
         ]));
     }
