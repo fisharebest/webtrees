@@ -50,7 +50,7 @@ class PasswordRequestPage implements RequestHandlerInterface
 
         // Already logged in?
         if ($user instanceof User) {
-            return redirect(route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+            return redirect(route(AccountEdit::class, ['tree' => $tree?->name()]));
         }
 
         $title = I18N::translate('Request a new password');

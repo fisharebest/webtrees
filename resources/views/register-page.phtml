@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\View;
     </div>
 <?php endif ?>
 
-<form method="post" action="<?= e(route(RegisterAction::class, ['tree' => $tree instanceof Tree ? $tree->name() : null])) ?>" autocomplete="off" class="wt-page-options wt-page-options-register">
+<form method="post" action="<?= e(route(RegisterAction::class, ['tree' => $tree?->name()])) ?>" autocomplete="off" class="wt-page-options wt-page-options-register">
     <?= $captcha ?>
 
     <div class="row">
