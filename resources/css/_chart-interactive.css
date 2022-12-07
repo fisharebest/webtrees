@@ -334,3 +334,7 @@ table#tvTreeBorder td,
 .tvF {background-color: #FDD !important;}
 
 .dashed {border-top: thin dashed #81A9CB !important;}
+
+.wt-tab-tree:fullscreen .tv_out{
+    height: 100%!important;
+}
