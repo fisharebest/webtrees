@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-10 12:45+0000\n"
+"PO-Revision-Date: 2022-12-11 12:33+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: English (Australia) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/en_AU/>\n"
@@ -14492,6 +14492,8 @@ msgstr "The new user will be asked to confirm their e-mail address before the ac
 #: resources/views/admin/tags.phtml:938
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"The next version of the GEDCOM standard will add new tags and remove old "
+"ones. You can use some of the new tags now."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
