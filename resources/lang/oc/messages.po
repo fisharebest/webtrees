@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
-"Language-Team: Occitan <https://translate.webtrees.net/projects/webtrees/webtrees/oc/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Occitan <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -6672,9 +6673,9 @@ msgid "For example, we can quickly find individuals that do not have a death eve
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:147
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "Per questions genealogicas adreçatz-vos a %s"
+msgstr "Per questions genealogicas adreçatz-vos a %s."
 
 #: resources/views/admin/control-panel.phtml:208
 #: resources/views/admin/tags.phtml:1041
@@ -6689,14 +6690,14 @@ msgid "For more information, see %s."
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:160
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Per questions administrativas e tecnicas adreçatz-vos a %s"
+msgstr "Per questions administrativas e tecnicas adreçatz-vos a %s."
 
 #: app/Module/ContactsFooterModule.php:134
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Per questions tecnicas e genealogicas adreçatz-vos a %s"
+msgstr "Per questions tecnicas e genealogicas adreçatz-vos a %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
@@ -16873,9 +16874,10 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr ""
 
 #: app/Module/ChartsBlockModule.php:184
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Vos cal seleccionar una persona e un tipe de grafic als paramètres de configuracion del blòc."
+msgstr ""
+"Vos cal seleccionar una persona e un tipe de grafic als paramètres de "
+"configuracion del blòc"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
