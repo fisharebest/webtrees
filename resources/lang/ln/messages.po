@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Lingala <http://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Lingala <http://translate.webtrees.net/projects/webtrees/"
+"webtrees/ln/>\n"
 "Language: ln\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -64,7 +65,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:271
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "KB %1$s  ezwamakí na segonde %2$s."
+msgstr "KB %1$s ezwamakí na segonde %2$s."
 
 #: app/Http/RequestHandlers/UserEditAction.php:99
 #, php-format
@@ -1874,7 +1875,7 @@ msgstr "Kopésa basáleli ndingisa ya komɔ́nɔ bokɔ́tisi bwa péto ya GEDCOM
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:52
 msgid "Allow visitors to request a new user account"
-msgstr "Kondima batáli  basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
+msgstr "Kondima batáli basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
 
 #. I18N: gedcom tag _AKA
 #: app/Factories/ElementFactory.php:276 app/Factories/ElementFactory.php:329
@@ -3555,8 +3556,8 @@ msgstr "Mabóngoli"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Bobóngoli  bwa mokɔlɔ %s mwa nsúka molandí"
-msgstr[1] "Bobóngoli  bwa mikɔlɔ %s mya nsúka milandí"
+msgstr[0] "Bobóngoli bwa mokɔlɔ %s mwa nsúka molandí"
+msgstr[1] "Bobóngoli bwa mikɔlɔ %s mya nsúka milandí"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:207
@@ -7831,7 +7832,9 @@ msgstr "Koyéisa malúli"
 #: resources/views/admin/trees-merge.phtml:25
 #: resources/views/admin/trees-renumber.phtml:22
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "O káti ya nzeté ya libótá, bokɔ́tisi bɔ́nsɔ bozalí na etatoli ya motángo mwa káti (babêngí XREF”) lokóla “F123”  tǒ “R14”."
+msgstr ""
+"O káti ya nzeté ya libótá, bokɔ́tisi bɔ́nsɔ bozalí na etatoli ya motángo mwa "
+"káti (babêngí XREF”) lokóla “F123” tǒ “R14”."
 
 #: resources/views/help/romanized.phtml:8
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -8735,7 +8738,7 @@ msgstr "Kokangisa kɔ́nti ya mosáleli na moto."
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:56
 #: resources/views/modules/relatives/tab.phtml:125
 msgid "Link this individual to an existing family as a child"
-msgstr "Kosangisa moto óyo lokola mwǎna o káti ya  libótá liyébaní"
+msgstr "Kosangisa moto óyo lokola mwǎna o káti ya libótá liyébaní"
 
 #: resources/views/media-page-menu.phtml:32
 #: resources/views/modals/link-media-to-family.phtml:18
@@ -15000,8 +15003,12 @@ msgstr "Libótá liye lizalí na bilílí bya kotálisa tɛ́."
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
-"Nzeté ya libótá liye etíyamákí mbala ya nsúka na #gedcomUpdated#. Nkómbó #totalSurnames# izalí na nzeté ya libótá liye. Molúlu mwa yambo mokɔ́tisamákí ezalí #firstEventType# ya #firstEventName# na káti ya #firstEventYear#. Molúlu mwa nsúka \n"
-" ezalí #lastEventType# ya #lastEventName# na kátí ya #lastEventYear#.<br><br> Sɔ́kí ozalí na ndimbola tǒ bozóngisi túná #contactWebmaster#."
+"Nzeté ya libótá liye etíyamákí mbala ya nsúka na #gedcomUpdated#. Nkómbó "
+"#totalSurnames# izalí na nzeté ya libótá liye. Molúlu mwa yambo mokɔ́"
+"tisamákí ezalí #firstEventType# ya #firstEventName# na káti ya "
+"#firstEventYear#. Molúlu mwa nsúka ezalí #lastEventType# ya #lastEventName# "
+"na kátí ya #lastEventYear#.<br><br> Sɔ́kí ozalí na ndimbola tǒ bozóngisi "
+"túná #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:18
@@ -17893,7 +17900,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa yambo na bolongoli mɔ̌kɔ́ o likoló"
 #: app/Functions/Functions.php:1446
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "mwǎna-nɔ́kɔ́  wa yambo na bolongoli mɔ̌kɔ́ o likoló"
+msgstr "mwǎna-nɔ́kɔ́ wa yambo na bolongoli mɔ̌kɔ́ o likoló"
 
 #: app/Functions/Functions.php:1448
 msgctxt "mother’s father’s brother’s son"
@@ -18005,8 +18012,8 @@ msgstr "mwǎna-nɔ́kɔ́ wa mínei"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "útá %1$s ntáká  mobú %2$s"
-msgstr[1] "útá %1$s ntáká  mibú %2$s"
+msgstr[0] "útá %1$s ntáká mobú %2$s"
+msgstr[1] "útá %1$s ntáká mibú %2$s"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:366
@@ -18148,14 +18155,14 @@ msgstr "nkóló ×%s tatá-mwǎsi/nɔ́kɔ́"
 #: app/Functions/Functions.php:2296
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "mwǎna ×%s  nkɔ́kɔ-mwǎna"
+msgstr "mwǎna ×%s nkɔ́kɔ-mwǎna"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2262 app/Functions/Functions.php:2273
 #: app/Functions/Functions.php:2292
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "mwǎna ×%s  nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna ×%s nkɔ́kɔ mwǎna mwǎsí"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2110 app/Functions/Functions.php:2124
