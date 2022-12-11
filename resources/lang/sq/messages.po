@@ -2030,7 +2030,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Graf orëqelqi i paraardhësve dhe pasardhësve të personit."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 # I18N: Description of the “Interactive tree” module
@@ -6311,7 +6311,7 @@ msgid "Export preferences"
 msgstr "Mundësitë e eksportimit"
 
 # I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Zgjero privatësinë për personat e vdekur"
@@ -8343,7 +8343,7 @@ msgstr "Në këtë muaj…"
 msgid "In this year…"
 msgstr "Në këtë vit…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
@@ -11551,7 +11551,7 @@ msgstr ""
 
 #: resources/views/errors/database-connection.phtml:15
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Upps! Ueb serveri nuk është në gjendje të lidhet me serverin e databazës. Mund të jetë e zënë, në mirëmbajtje, ose thjeshtë e prishur.  Ju mund të <a href=\"index.php\">provoni përsëri</a>pas pak ose të kontaktoni administratorin e ueb faqes."
+msgstr "Upps! Ueb serveri nuk është në gjendje të lidhet me serverin e databazës. Mund të jetë e zënë, në mirëmbajtje, ose thjeshtë e prishur. Ju mund të <a href=\"index.php\">provoni përsëri</a>pas pak ose të kontaktoni administratorin e ueb faqes."
 
 #: app/Http/RequestHandlers/SetupWizard.php:175
 msgid "Oops! webtrees was unable to create files in this folder."
@@ -12037,7 +12037,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Emrat e vendeve shpeshherë janë tepër të gjatë që t'i zë grafi, lista, etj. Ata mund të shkurtohen duke shfaqur vetëm disa pjesë të para të emrit, si <i>fshati, krahina</i>, ose pjesët e fundit të saj, si <i>regjioni, shteti</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
 
 #: resources/views/help/place.phtml:10
@@ -15548,7 +15548,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Përdoruesi i ri do të pyetet për të konfirmuar email adresën para se të krijohet llogaria."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -15938,7 +15938,7 @@ msgstr "Trungu familjar nuk ka imazhe për të shfaqur."
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:9
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Trungu familjar së fundi është përditësuar më  #gedcomUpdated#. Ekzistojnë #totalSurnames# mbiemra në trungun familjar. Ngjarja më e hershme e regjistruar është #firstEventType# nga #firstEventName# në #firstEventYear#. Ngjarja më e re është #lastEventType# nga #lastEventName# në #lastEventYear#.<br><br>Nëse keni ndonjë koment ose sygjerim ju lutem kontaktoni #contactWebmaster#."
+msgstr "Trungu familjar së fundi është përditësuar më #gedcomUpdated#. Ekzistojnë #totalSurnames# mbiemra në trungun familjar. Ngjarja më e hershme e regjistruar është #firstEventType# nga #firstEventName# në #firstEventYear#. Ngjarja më e re është #lastEventType# nga #lastEventName# në #lastEventYear#.<br><br>Nëse keni ndonjë koment ose sygjerim ju lutem kontaktoni #contactWebmaster#."
 
 # I18N: %s is a date
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
@@ -22333,7 +22333,7 @@ msgstr "…"
 #~ msgstr "(lindur i vdekur)"
 
 #~ msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates. The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-#~ msgstr "<b>GUID</b> në këtë kontekst është shkurtesë e \"Globally Unique ID\".<br><br>GUID ka për detyrë të ndihmoj në identifikimin e secilit individ në kuptimin e përsëritjes, ashtuqë organizatat qëndrore si Qendra e Historisë së Familjes e kishës  LDS në Salt Lake City, ose ndonjë programi kompatibil i aktivizuar në serverin tuaj, mund të përcaktoj se a bëhet fjalë për të njëjtin individ pa marrë parasysh në shënimet e GEDCOM. Qëllimi i Qendrës së Historisë së Familjes është që të ketë bazën qëndrore të shënimeve gjenealogjike dhe që t’i ofrojë ato përmes web shërbimeve të veta.  Kjo do të mundësojë që secili aplikacion të ketë çasje në këto shënime dhe të azhurnohet me to.<br><br>Nëse nuk dëshironi të ndani shënimet e databazës suaj GEDCOM, atëherë webtrees nuk ka nevojë t’i krijoj ata GUID numra; edhepse, nëse e bëni këtë, nuk do të bëhet ndonjë dëm, vetëmse do të rritet pak databaza e juaj GEDCOM."
+#~ msgstr "<b>GUID</b> në këtë kontekst është shkurtesë e \"Globally Unique ID\".<br><br>GUID ka për detyrë të ndihmoj në identifikimin e secilit individ në kuptimin e përsëritjes, ashtuqë organizatat qëndrore si Qendra e Historisë së Familjes e kishës LDS në Salt Lake City, ose ndonjë programi kompatibil i aktivizuar në serverin tuaj, mund të përcaktoj se a bëhet fjalë për të njëjtin individ pa marrë parasysh në shënimet e GEDCOM. Qëllimi i Qendrës së Historisë së Familjes është që të ketë bazën qëndrore të shënimeve gjenealogjike dhe që t’i ofrojë ato përmes web shërbimeve të veta. Kjo do të mundësojë që secili aplikacion të ketë çasje në këto shënime dhe të azhurnohet me to.<br><br>Nëse nuk dëshironi të ndani shënimet e databazës suaj GEDCOM, atëherë webtrees nuk ka nevojë t’i krijoj ata GUID numra; edhepse, nëse e bëni këtë, nuk do të bëhet ndonjë dëm, vetëmse do të rritet pak databaza e juaj GEDCOM."
 
 #~ msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 #~ msgstr "<b>Njoftim i rëndësishëm:</b> Magjistari i transferimit nuk mund të asistojë në lëvizjen e media artikujve. Ju duhet të organizoni dhe lëvizni ose kopjoni konfigurimin tuaj medial dhe objektet veç e veç pasi që magjistari i transferimit të ketë përfunduar."
@@ -23639,7 +23639,7 @@ msgstr "…"
 #~ msgstr "Lista e PBSH është e zbrazët."
 
 #~ msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-#~ msgstr "Magjistari PhpGedView në wetrees është një proces i automatizuar që t'i asistojë administratorët që të lëvizin nga instalimi PhpGedView në atë të wetrees. Ai do transferojë të gjitha GEDCOM dhe informatat  tjera të databazës drejtpërdrejt në databazën e re të webtrees. Kërkesat në vijim janë të domosdoshme:"
+#~ msgstr "Magjistari PhpGedView në wetrees është një proces i automatizuar që t'i asistojë administratorët që të lëvizin nga instalimi PhpGedView në atë të wetrees. Ai do transferojë të gjitha GEDCOM dhe informatat tjera të databazës drejtpërdrejt në databazën e re të webtrees. Kërkesat në vijim janë të domosdoshme:"
 
 #~ msgid "The database reported the following error message:"
 #~ msgstr "Databaza raportoi mesazhin e gabimit si në vijim:"

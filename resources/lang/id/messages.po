@@ -1864,7 +1864,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Grafik pasir dari leluhur dan keturunan seseorang."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 #. I18N: Description of the “Interactive tree” module
@@ -5857,7 +5857,7 @@ msgstr "Ekspor semua silsilah keluarga ke file GEDCOM …"
 msgid "Export preferences"
 msgstr "Preferensi ekspor"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Perpanjang privasi kepada orang yang meninggal"
@@ -7735,7 +7735,7 @@ msgstr "Pada bulan ini …"
 msgid "In this year…"
 msgstr "Pada tahun ini …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "Dalam webtrees versi 1, Anda bisa menambahkan thumbnail kustom ke objek media dengan membuat file di folder \"thumbs\"."
@@ -11181,7 +11181,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Nama tempat sering terlalu panjang untuk dimasukkan dalam bagan, daftar, dll. Mereka dapat disingkat dengan hanya menampilkan beberapa bagian pertama dari nama, seperti <i>desa, daerah</i>, atau beberapa bagian terakhir dari itu , seperti <i>wilayah, negara</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
 
 #: resources/views/help/place.phtml:10
@@ -14473,7 +14473,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Pengguna baru akan diminta untuk mengkonfirmasi alamat email mereka sebelum akun dibuat."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21374,7 +21374,7 @@ msgstr "…"
 #~ msgid "Historical facts"
 #~ msgstr "Fakta sejarah"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Jika gambar thumbnail sama dengan gambar asli, itu tidak lagi diperlukan dan Anda harus menghapusnya. Jika itu adalah gambar kustom, Anda harus menambahkannya ke objek media."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

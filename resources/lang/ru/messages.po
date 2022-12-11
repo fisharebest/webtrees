@@ -1904,7 +1904,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Песочный график предков и потомков персоны."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "У человека может быть несколько родителей. Например, родные и приемные."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5900,7 +5900,7 @@ msgstr "Экспорт всех семейных деревьев в файл GE
 msgid "Export preferences"
 msgstr "Параметры экспорта"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Скрывать мертвых людей которые"
@@ -7779,7 +7779,7 @@ msgstr "В этом месяце, в прошлом …"
 msgid "In this year…"
 msgstr "В этом году, в прошлом …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "В Webtrees версии 1, Вы можете добавить пользовательские миниатюры к медиаобъектам путем создания файлов в папках \"превью\"."
@@ -8993,7 +8993,7 @@ msgstr ""
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Многие программы генеалогии создают файлы GEDCOM с пользовательскими тегами, и Webtrees понимает большинство из них. Когда будут найдены неизвестные теги,  этот параметр позволит Вам выбрать, следует ли игнорировать их или вывести предупреждающее сообщение."
+msgstr "Многие программы генеалогии создают файлы GEDCOM с пользовательскими тегами, и Webtrees понимает большинство из них. Когда будут найдены неизвестные теги, этот параметр позволит Вам выбрать, следует ли игнорировать их или вывести предупреждающее сообщение."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:90
@@ -11229,7 +11229,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Топонимы часто слишком длинное и не помещается на графиках, в списках и т.д. Они могут быть сокращены, показывая только первые несколько частей названия, такие как <i>деревня, графство</i> или последние части, такие как, <i>регион, страны</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Названия мест могут со временем меняться. В генеалогии принято использовать нынешнее название города или страны. Историческое название может быть указано в источниках, примечаниях и т. д."
 
 #: resources/views/help/place.phtml:10
@@ -14522,7 +14522,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Новому пользователю будет предложено подтвердить адрес электронной почты, прежде чем учетная запись будет создана."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21743,8 +21743,8 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Если определенная фамилия встречается некоторое количество раз, т.е. ниже порогового значения, то оно не появится в списке. Поэтому оно может быть добавлено здесь вручную. Если вводится более одной фамилии, то они должны быть разделены запятыми. <b>Фамилии чувствительны к регистру.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-#~ msgstr "Если уменьшенное изображение является таким же, как исходное изображение, он больше не нужен, и Вы должны удалить его.  Если это пользовательское изображение, Вы должны добавить его в медиаобъект."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
+#~ msgstr "Если уменьшенное изображение является таким же, как исходное изображение, он больше не нужен, и Вы должны удалить его. Если это пользовательское изображение, Вы должны добавить его в медиаобъект."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 #~ msgstr "Если посетители не смогут видеть семейное дерево, они не смогут зарегистрировать свою учетную запись. Вам придется добавлять их учетную запись вручную."

@@ -1881,7 +1881,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "תרשים שעון חול המציג אב-אבות וצאצאים של אדם."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "לאדם יכול להיות יותר ממערכת הורים אחת. למשל, לידה ואומצה."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5875,7 +5875,7 @@ msgstr "ייצא את כל עצי המשפחה לקבצי GEDCOM…"
 msgid "Export preferences"
 msgstr "העדפות יצוא"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "הרחב פרטיות לאנשים מתים"
@@ -7753,7 +7753,7 @@ msgstr "בחודש הזה …"
 msgid "In this year…"
 msgstr "בשנה הזו …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "בגרסה 1 של webtrees, תוכל להוסיף תמונות ממוזערות מותאמות אישית לאובייקטים של מדיה על-ידי יצירת קבצים בתיקיות \"thumbs\"."
@@ -11201,7 +11201,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "שמות מקומות הם לעתים קרובות ארוכים מדי כדי להתאים לתרשימים, לרשימות, וכו׳. ניתן לקצר אותם על ידי הצגת החלקים הראשונים של השם, כגון <i>כפר, מחוז</i>, או החלקים האחרונים שלו, כגון <i>אזור, ארץ</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "שמות המקומות יכולים להשתנות עם הזמן. בחקר משפחה נהוג להשתמש בשם הנוכחי עבור עיר או מדינה. ניתן להציג את השם ההיסטורי במקורות, הערות וכו'."
 
 #: resources/views/help/place.phtml:10
@@ -14493,7 +14493,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "המשתמש החדש יתבקש לאשר את כתובת הדוא״ל שלו לפני שהחשבון נוצר."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21745,7 +21745,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "אם מספר הפעמים ששם משפחה קיים קטן מסף, הוא לא יופיע ברשימה. ניתן להוסיף אותו כאן ידנית. אם מוסיפים יותר משם משפחה אחד, יש להפריד ביניהם ע״י פסיק. <b>אותיות לועזיות גדולות וקטנות בשמות המשפחה הן משמעותיות.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "אם התמונה הממוזערת זהה לתמונה המקורית, היא כבר לא נחוצה ועליך למחוק אותה. אם זוהי תמונה מותאמת אישית, עליך להוסיף אותה לאובייקט המדיה."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

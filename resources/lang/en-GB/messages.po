@@ -1878,8 +1878,8 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "An hourglass chart of an individual’s ancestors and descendants."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
+msgstr "An individual can have more than one set of parents. For example, birth and adopted."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -5872,7 +5872,7 @@ msgstr "Export all the family trees to GEDCOM files…"
 msgid "Export preferences"
 msgstr "Export preferences"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Extend privacy to dead individuals"
@@ -7750,7 +7750,7 @@ msgstr "In this month…"
 msgid "In this year…"
 msgstr "In this year…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the ‘thumbs’ folders."
@@ -11198,8 +11198,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -14490,7 +14490,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "The new user will be asked to confirm their e-mail address before the account is created."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -16575,7 +16575,7 @@ msgstr "You can renumber this family tree."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "You can set the access for a specific record, fact or event by adding a restriction to it.  If a record, fact or event does not have a restriction, the following default restrictions will be used."
+msgstr "You can set the access for a specific record, fact or event by adding a restriction to it. If a record, fact or event does not have a restriction, the following default restrictions will be used."
 
 #: resources/views/admin/tags.phtml:38
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
@@ -21743,8 +21743,8 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-#~ msgstr "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
+#~ msgstr "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 #~ msgstr "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

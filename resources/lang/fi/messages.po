@@ -866,7 +866,7 @@ msgstr "Uusi webtrees versio on käytettävissä."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:121
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "Salasanan palautuslinkki on lähetetty  ”%s”:lle."
+msgstr "Salasanan palautuslinkki on lähetetty ”%s”:lle."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -1877,8 +1877,8 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Tiimalasikaavio henkilön esi-isistä ja jälkeläisistä."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr "Henkilöllä voi olla useat vanhemmat.  Esimerkiksi syntymä ja adoptio."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
+msgstr "Henkilöllä voi olla useat vanhemmat. Esimerkiksi syntymä ja adoptio."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -5871,7 +5871,7 @@ msgstr "Siirrä kaikki sukupuut GEDCOM-tiedostoihin…"
 msgid "Export preferences"
 msgstr "Siirtoasetukset"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Yksityisyyssäännöt kattavat kuolleet"
@@ -7749,7 +7749,7 @@ msgstr "Tässä kuussa, historiassa…"
 msgid "In this year…"
 msgstr "Historialliset tapahtumat vuonna…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "webtrees-versiossa 1 voit lisätä omia pikkukuvia mediakohteisiin luomalla tiedostoja \"thumbs\"-kansioissa."
@@ -11197,7 +11197,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Usein paikan nimet ovat liian pitkiä sovitettavaksi kaavioihin, listoihin jne. Niitä voi lyhentää jolloin näytetään nimen ensimmäisiä osia kuten <i>kylä, lääni</i>, tai jälkimmäiset osat <i>alue, maa</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää lähteissä, huomautuksissa, jne."
 
 #: resources/views/help/place.phtml:10
@@ -13365,7 +13365,7 @@ msgstr "Allekirjoitus"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Yksinkertaisten  päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden muoto tekee päivämäärästä yksiselitteisen."
+msgstr "Yksinkertaisten päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden muoto tekee päivämäärästä yksiselitteisen."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:437
@@ -14489,7 +14489,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Uutta käyttäjää pyydetään vahvistamaan sähköpostiosoite ennen kuin tili luodaan."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21741,7 +21741,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Kun sukunimen esiintymislukumäärä alittaa asetetun arvon, niin sukunimi ei näy Yleinen sukunimi luettelossa. Se voidaan tässä manuaalisesti kirjata lisättäväksi luetteloon. Jos useampia sukunimiä halutaan mukaan, niin erottele ne pilkkumerkillä. <b>Isoilla ja pienillä kirjaimilla on suuri merkitys sukunimien käsittelyssä.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Jos pikkukuva on sama kuin alkuperäinen kuva, sitä ei enää tarvita ja voit poistaa sen. Jos se on oma kuva, lisää se mediakohteeseen."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
