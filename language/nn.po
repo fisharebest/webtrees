@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 15:27+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
 "Language: nn\n"
@@ -6869,7 +6869,9 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:311
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-msgstr "Google tillet berre eit fåtal anonyme kartspørringar per dag.  Om du treng meir enn dette, må du ha ein Google-konto og ein API-kode."
+msgstr ""
+"Google tillet berre eit fåtal anonyme kartspørringar per dag. Om du treng "
+"meir enn dette, må du ha ein Google-konto og ein API-kode."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -16016,7 +16018,10 @@ msgstr "Du kan be om ei høgre eller lågare grense, sjølv om serveren kan igno
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:500
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Du kan setje tilgjenge for ein spesifikk post, fakta, eller hending ved å legge til ein restriksjon.  Om ein post, fakta, eller hending ikkje har ein restriksjon, vil følgjande standard restriksjon nyttast."
+msgstr ""
+"Du kan setje tilgjenge for ein spesifikk post, fakta, eller hending ved å "
+"legge til ein restriksjon. Om ein post, fakta, eller hending ikkje har ein "
+"restriksjon, vil følgjande standard restriksjon nyttast."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
