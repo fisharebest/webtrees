@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Romanian <http://translate.webtrees.net/projects/webtrees/webtrees/ro/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Romanian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -352,9 +354,10 @@ msgstr[2] ""
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
 #: resources/views/emails/message-user-text.phtml:18
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "Următorul mesaj a fost trimis către contul dumneavoastră webtrees de la %s"
+msgstr ""
+"Următorul mesaj a fost trimis către contul dumneavoastră webtrees de la %s."
 
 #: app/Statistics/Repository/UserRepository.php:96
 #, php-format
@@ -6621,9 +6624,9 @@ msgid "For example, we can quickly find individuals that do not have a death eve
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:147
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "Contact pentru ajutor cu întrebările legate de genealogie %s"
+msgstr "Contact pentru ajutor cu întrebările legate de genealogie %s."
 
 #: resources/views/admin/control-panel.phtml:208
 #: resources/views/admin/tags.phtml:1041
@@ -6638,14 +6641,15 @@ msgid "For more information, see %s."
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:160
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Contact pentru informaţii şi suport tehnic %s"
+msgstr "Contact pentru informaţii şi suport tehnic %s."
 
 #: app/Module/ContactsFooterModule.php:134
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pentru suport tehnic sau întrebări de genealogie, vă rugăm contactaţi %s"
+msgstr ""
+"Pentru suport tehnic sau întrebări de genealogie, vă rugăm contactaţi %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
@@ -13304,9 +13308,8 @@ msgid "Show this block for which languages"
 msgstr "Afişează acest bloc pentru ce limbi"
 
 #: resources/views/admin/trees-preferences.phtml:298
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Arată imaginile evidenţiate în căsuţele persoanelor"
+msgstr "Arată imaginile evidenţiate în căsuţele persoanelor."
 
 #: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -16665,9 +16668,10 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr ""
 
 #: app/Module/ChartsBlockModule.php:184
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Trebuie să selectezi un individ şi un tip diagramă în setările de configurare ale blocului."
+msgstr ""
+"Trebuie să selectezi un individ şi un tip diagramă în setările de "
+"configurare ale blocului"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
