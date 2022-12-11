@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: Albanian (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2018-08-27 22:13+0000\n"
-"Last-Translator: Astrit Bokshi <astritbokshi@gmail.com>\n"
-"Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/sq/>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-1-7/sq/>\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -11146,7 +11147,11 @@ msgstr "Vetëm udhëheqësit mund të editojnë"
 
 #: site-unavailable.php:79
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Upps! Ueb serveri nuk është në gjendje të lidhet me serverin e databazës. Mund të jetë e zënë, në mirëmbajtje, ose thjeshtë e prishur.  Ju mund të <a href=\"index.php\">provoni përsëri</a>pas pak ose të kontaktoni administratorin e ueb faqes."
+msgstr ""
+"Upps! Ueb serveri nuk është në gjendje të lidhet me serverin e databazës. "
+"Mund të jetë e zënë, në mirëmbajtje, ose thjeshtë e prishur. Ju mund të <a "
+"href=\"index.php\">provoni përsëri</a>pas pak ose të kontaktoni "
+"administratorin e ueb faqes."
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
@@ -14671,7 +14676,12 @@ msgstr "Folderi i përkohshëm PHP mungon."
 
 #: admin_trees_manage.php:714
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
-msgstr "Magjistari PhpGedView në wetrees është një proces i automatizuar që t'i asistojë administratorët që të lëvizin nga instalimi PhpGedView në atë të wetrees. Ai do transferojë të gjitha GEDCOM dhe informatat  tjera të databazës drejtpërdrejt në databazën e re të webtrees. Kërkesat në vijim janë të domosdoshme:"
+msgstr ""
+"Magjistari PhpGedView në wetrees është një proces i automatizuar që t'i "
+"asistojë administratorët që të lëvizin nga instalimi PhpGedView në atë të "
+"wetrees. Ai do transferojë të gjitha GEDCOM dhe informatat tjera të "
+"databazës drejtpërdrejt në databazën e re të webtrees. Kërkesat në vijim "
+"janë të domosdoshme:"
 
 #: admin_users.php:101
 #, php-format
@@ -15372,7 +15382,13 @@ msgstr "Trungu familjar nuk ka imazhe për të shfaqur."
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Trungu familjar së fundi është përditësuar më  #gedcomUpdated#. Ekzistojnë #totalSurnames# mbiemra në trungun familjar. Ngjarja më e hershme e regjistruar është #firstEventType# nga #firstEventName# në #firstEventYear#. Ngjarja më e re është #lastEventType# nga #lastEventName# në #lastEventYear#.<br><br>Nëse keni ndonjë koment ose sygjerim ju lutem kontaktoni #contactWebmaster#."
+msgstr ""
+"Trungu familjar së fundi është përditësuar më #gedcomUpdated#. Ekzistojnë "
+"#totalSurnames# mbiemra në trungun familjar. Ngjarja më e hershme e "
+"regjistruar është #firstEventType# nga #firstEventName# në #firstEventYear#. "
+"Ngjarja më e re është #lastEventType# nga #lastEventName# në #lastEventYear#"
+".<br><br>Nëse keni ndonjë koment ose sygjerim ju lutem kontaktoni "
+"#contactWebmaster#."
 
 # I18N: %s is a date
 #. I18N: %s is a date
