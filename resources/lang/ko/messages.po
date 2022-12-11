@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-02-07 16:13+0000\n"
-"Last-Translator: Jeongwan Nam <jeongwann@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ko/>\n"
 "Language: ko\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -49,7 +49,7 @@ msgstr "%1$s %2$s 에 %4$s 에 대한 %3$s 링크가 있습니다."
 #: app/Functions/Functions.php:2374
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s  오름차순 제거"
+msgstr "%1$s %2$s 오름차순 제거"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2378
@@ -102,7 +102,7 @@ msgstr[0] "%1$s 파일들이 %2$s 초 안에 압축이 풀렸습니다."
 #: app/Http/RequestHandlers/CheckTree.php:247
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s 은(는)  %2$s 이지만 %3$s 이(가) 예상됩니다."
+msgstr "%1$s 은(는) %2$s 이지만 %3$s 이(가) 예상됩니다."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:577
@@ -768,7 +768,7 @@ msgstr "저장소 목록."
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr "공유 노트  목록."
+msgstr "공유 노트 목록."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
@@ -2097,7 +2097,7 @@ msgstr "이 정보를 삭제 하시겠습니까?"
 #: resources/views/modules/user-messages/user-messages.phtml:51
 #: resources/views/modules/user-messages/user-messages.phtml:136
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "이 메시지를 삭제하시겠습니까?  나중에 검색할 수 없습니다."
+msgstr "이 메시지를 삭제하시겠습니까? 나중에 검색할 수 없습니다."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:231
 #: resources/views/admin/clean-data.phtml:41
@@ -2309,7 +2309,7 @@ msgstr "이 사용자가 변경한 사항을 자동으로 수락"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:551
 msgid "Automatically expand notes"
-msgstr "노트 자동  확장"
+msgstr "노트 자동 확장"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:567
@@ -2385,7 +2385,7 @@ msgstr "가족당 평균 자녀 수"
 #: resources/views/admin/trees-create.phtml:49
 #: resources/views/admin/trees-preferences.phtml:89
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr "공백과 구두점을 피하십시오.  성은 좋은 선택일 수 있습니다."
+msgstr "공백과 구두점을 피하십시오. 성은 좋은 선택일 수 있습니다."
 
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3388,7 +3388,7 @@ msgstr "사망 원인"
 #: resources/views/admin/trees-merge.phtml:60
 #: resources/views/admin/trees-renumber.phtml:46
 msgid "Caution! This may take a long time. Be patient."
-msgstr "주의!  시간이 오래 걸릴 수 있습니다.  인내심을 가지세요."
+msgstr "주의! 시간이 오래 걸릴 수 있습니다. 인내심을 가지세요."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
@@ -6718,7 +6718,8 @@ msgstr ""
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "예를 들어 사망 데이터가 없는 인물을 빠르게 찾을 수 있지만,  인물이 사망했는지 여부를 계산하는 것은 훨씬 느립니다."
+msgstr "예를 들어 사망 데이터가 없는 인물을 빠르게 찾을 수 있지만, 인물이 사망했는지 "
+"여부를 계산하는 것은 훨씬 느립니다."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -12889,8 +12890,8 @@ msgstr "상태를 \"승인\"으로 설정하십시오.."
 #: resources/views/admin/trees-preferences.phtml:638
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr ""
-"<b> 네 </ b>로 설정하면 개인, 소스 및 가족이사용자가 취한 원시 데이터가 포함 된 다른 창을 가져올 수 있도록Gedcom "
-"파일에서 바로 밖으로 나옵니다."
+"<b> 네 </b>로 설정하면 개인, 소스 및 가족이사용자가 취한 원시 데이터가 포함 "
+"된 다른 창을 가져올 수 있도록Gedcom 파일에서 바로 밖으로 나옵니다."
 
 #: resources/views/layouts/setup.phtml:16
 #: resources/views/layouts/setup.phtml:24
@@ -14791,7 +14792,8 @@ msgstr "웹 사이트 www.geonames.org는 큰 장소 이름 데이터베이스�
 #: resources/views/errors/database-error.phtml:20
 #: resources/views/setup/step-6-failed.phtml:20
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "webtrees 개발자는  오류에 대해 매우 관심이 있습니다. 연락하면 문제 해결에 도움이됩니다."
+msgstr "webtrees 개발자는 오류에 대해 매우 관심이 있습니다. 연락하면 문제 해결에 "
+"도움이됩니다."
 
 #: app/Module/ModuleThemeTrait.php:65 app/Module/ModuleThemeTrait.php:451
 #: resources/views/admin/modules.phtml:256
@@ -19598,7 +19600,7 @@ msgstr "인라인 노트"
 #: app/Date.php:354
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr "설명  %s(%s)"
+msgstr "설명 %s(%s)"
 
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:53
@@ -20828,7 +20830,8 @@ msgstr "￦\"/data/config.ini.php￦\" 파일의 데이터베이스 연결 설�
 #: resources/views/errors/database-connection.phtml:27
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
-"￦\"/data￦\" 폴더와  ￦\"/data/config.ini.php￦\" 파일에는 웹 서버가 읽을 수 있는 액세스 권한이 있습니다"
+"￦\"/data￦\" 폴더와 ￦\"/data/config.ini.php￦\" 파일에는 웹 서버가 읽을 수 "
+"있는 액세스 권한이 있습니다"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:194
@@ -21052,8 +21055,9 @@ msgstr "webtrees는 저장 공간 없이 이메일을 보냅니다"
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
-"webtrees는 악센트가 있는 문자, 특수 문자 및 비 라틴 문자에 UTF-8 인코딩을 사용합니다.  UTF-8을 지원하지 않는 계보 "
-"소프트웨어에서 이 GEDCOM 파일을 사용하려는 경우 ISO-8859-1 인코딩을 사용하여 생성할 수 있습니다."
+"webtrees는 악센트가 있는 문자, 특수 문자 및 비 라틴 문자에 UTF-8 인코딩을 "
+"사용합니다. UTF-8을 지원하지 않는 계보 소프트웨어에서 이 GEDCOM 파일을 "
+"사용하려는 경우 ISO-8859-1 인코딩을 사용하여 생성할 수 있습니다."
 
 #: app/Functions/Functions.php:662
 msgid "wife"
@@ -21145,8 +21149,9 @@ msgstr "\"%s\"가 삭제되었습니다."
 #: app/Module/FixPrimaryTag.php:59
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
-"\"강조된 이미지\"(_PRIM) 태그는 개인이 선호하는 이미지를 나타내기 위해 일부 계보 응용 프로그램에서 사용됩니다.  대안은 "
-"선호하는 이미지가 먼저 나열되도록 이미지를 재정렬하는 것입니다."
+"\"강조된 이미지\"(_PRIM) 태그는 개인이 선호하는 이미지를 나타내기 위해 일부 "
+"계보 응용 프로그램에서 사용됩니다. 대안은 선호하는 이미지가 먼저 나열되도록 "
+"이미지를 재정렬하는 것입니다."
 
 #: app/Functions/FunctionsPrint.php:111 app/Note.php:121
 #: app/Report/ReportParserGenerate.php:972
