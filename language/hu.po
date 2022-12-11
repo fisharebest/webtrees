@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-15 20:29+0000\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hu/>\n"
 "Language: hu\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -990,7 +990,13 @@ msgstr "Jelentés egy adott idővel vagy hellyel kapcsolatos lényeges bejegyzé
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "A szerepkör jogosultságok gyűjteménye, amely feljogosít adatok megtekintésére, beállítások módosítására stb. A hozzáférési jogok szerepkörökhöz tartoznak, a szerepkörök pedig engedélyt nyújtanak a felhasználóknak. Minden családfában eltérő hozzáférési jogok  tartozhatnak az egyesszerepkörökhöz, és a felhasználók különböző szerepkörrel rendelkezhetnek az egyes családfákban."
+msgstr ""
+"A szerepkör jogosultságok gyűjteménye, amely feljogosít adatok "
+"megtekintésére, beállítások módosítására stb. A hozzáférési jogok "
+"szerepkörökhöz tartoznak, a szerepkörök pedig engedélyt nyújtanak a "
+"felhasználóknak. Minden családfában eltérő hozzáférési jogok tartozhatnak az "
+"egyesszerepkörökhöz, és a felhasználók különböző szerepkörrel "
+"rendelkezhetnek az egyes családfákban."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -14127,7 +14133,9 @@ msgstr "E GEDCOM-fájl karakterkódolása %1$s. Feltételezés szerint ennek jel
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr "A fiók jóváhagyása még nem történt meg. Kérjük várjon, amíg egy rendszergazda  jóváhagyja."
+msgstr ""
+"A fiók jóváhagyása még nem történt meg. Kérjük várjon, amíg egy "
+"rendszergazda jóváhagyja."
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
@@ -14694,7 +14702,7 @@ msgstr "Csütörtök"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:369
 msgid "Tijuana, Mexico"
-msgstr "Tijuana,  Mexikó"
+msgstr "Tijuana, Mexikó"
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
