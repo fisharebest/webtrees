@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Serbian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sr/>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Serbian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -257,12 +257,12 @@ msgstr[2] "%s децe"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:314
-#, fuzzy, php-format
+#, php-format
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s дан"
-msgstr[1] "%s дани"
-msgstr[2] "%s дани"
+msgstr[1] "%s дана"
+msgstr[2] "%s дана"
 
 #: app/I18N.php:802
 #, php-format
@@ -1757,7 +1757,7 @@ msgstr ""
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr ""
+msgstr "Разлика у годинама браће или сестара"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
@@ -5531,7 +5531,7 @@ msgstr ""
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:386
 msgid "Education"
-msgstr "Završene škole"
+msgstr "Завршене школе"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
@@ -12012,7 +12012,7 @@ msgstr ""
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "Одабери"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
@@ -12046,7 +12046,7 @@ msgstr ""
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Одаберите жељени старосни интервал"
 
 #: statistics.php:635
 msgid "Select the desired count interval"
@@ -13313,7 +13313,7 @@ msgstr ""
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
-msgstr ""
+msgstr "Нед"
 
 #: app/Date/CalendarDate.php:357
 msgid "Sunday"
@@ -13738,7 +13738,7 @@ msgstr ""
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "Листа која следи приказује типичне захтеве."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
@@ -13877,7 +13877,7 @@ msgstr ""
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Подешавање за ново породично стабло је ажурирано."
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
@@ -14184,6 +14184,9 @@ msgstr ""
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
+"Ова е-мејл адреса ће се користити за слање подсетника за лозинку, обавештења "
+"веб странице и порука других чланова породице који су регистровани на нашој "
+"веб страници."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -16995,7 +16998,7 @@ msgstr ""
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "теткић"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
@@ -17289,7 +17292,7 @@ msgstr ""
 #: app/Functions/Functions.php:896
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "деда"
 
 #: app/Functions/Functions.php:898
 msgctxt "parent’s mother"
