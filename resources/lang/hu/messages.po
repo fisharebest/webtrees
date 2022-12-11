@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-04-06 05:20+0000\n"
-"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
-"Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/webtrees-20/hu/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Hungarian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Hungarian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -323,7 +324,7 @@ msgstr "%s elsőfokú unokatestvére"
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
 msgstr[0] "%s adattár frissítése megtörtént."
-msgstr[1] "%s  adattár frissítése megtörtént."
+msgstr[1] "%s adattár frissítése megtörtént."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:21
@@ -975,7 +976,13 @@ msgstr "Jelentés egy adott idővel vagy hellyel kapcsolatos lényeges bejegyzé
 
 #: resources/views/admin/users-edit.phtml:233
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "A szerepkör jogosultságok gyűjteménye, amely feljogosít adatok megtekintésére, beállítások módosítására stb. A hozzáférési jogok szerepkörökhöz tartoznak, a szerepkörök pedig engedélyt nyújtanak a felhasználóknak. Minden családfában eltérő hozzáférési jogok  tartozhatnak az egyesszerepkörökhöz, és a felhasználók különböző szerepkörrel rendelkezhetnek az egyes családfákban."
+msgstr ""
+"A szerepkör jogosultságok gyűjteménye, amely feljogosít adatok "
+"megtekintésére, beállítások módosítására stb. A hozzáférési jogok "
+"szerepkörökhöz tartoznak, a szerepkörök pedig engedélyt nyújtanak a "
+"felhasználóknak. Minden családfában eltérő hozzáférési jogok tartozhatnak az "
+"egyesszerepkörökhöz, és a felhasználók különböző szerepkörrel "
+"rendelkezhetnek az egyes családfákban."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -4074,7 +4081,7 @@ msgstr "CEME TAG átalakítása GEDCOM 5.5.1-re"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:84
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr "_XXX címke GEDCOM 5.5.1 szerinti  formázás"
+msgstr "_XXX címke GEDCOM 5.5.1 szerinti formázás"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
@@ -6725,7 +6732,9 @@ msgstr "Például, ha Ön 2 útvonalhosszat határoz meg, a személy láthatja a
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "Például gyorsan megtalálhatjuk a haláleset nélküli személyeket,  de sokkal időigényesebb kiszámolni, hogy az egyén feltehetőleg elhunyt."
+msgstr ""
+"Például gyorsan megtalálhatjuk a haláleset nélküli személyeket, de sokkal "
+"időigényesebb kiszámolni, hogy az egyén feltehetőleg elhunyt."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -14844,7 +14853,9 @@ msgstr "Ezek a szolgáltatások sütiket vagy más nyomkövető technológiát h
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr "A fiók jóváhagyása még nem történt meg. Kérjük várjon, amíg egy rendszergazda  jóváhagyja."
+msgstr ""
+"A fiók jóváhagyása még nem történt meg. Kérjük várjon, amíg egy "
+"rendszergazda jóváhagyja."
 
 #: app/Http/RequestHandlers/LoginAction.php:129
 msgid "This account has not been verified. Please check your email for a verification message."
@@ -14858,7 +14869,7 @@ msgstr "Ez a blokk mutatja a szerkesztőknek a webhelykezelő felülvizsgálatá
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr "A hiba okának eredete itt kereshető:  %s"
+msgstr "A hiba okának eredete itt kereshető: %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -15427,7 +15438,7 @@ msgstr "Csütörtök"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:197 app/GedcomCode/GedcomCodeTemp.php:657
 msgid "Tijuana, Mexico"
-msgstr "Tijuana,  Mexikó"
+msgstr "Tijuana, Mexikó"
 
 #. I18N: gedcom tag TIME
 #: app/Factories/ElementFactory.php:660 app/Factories/ElementFactory.php:827
@@ -16545,7 +16556,8 @@ msgstr "Új közeli rokon felvételekor forrásidézetek is felvehetők a (szem�
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr "Egynél több házastárs esetén a családokat időrendi sorrendbe  kell rakni."
+msgstr ""
+"Egynél több házastárs esetén a családokat időrendi sorrendbe kell rakni."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:905
