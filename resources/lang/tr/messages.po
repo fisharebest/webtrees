@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-08-10 12:48+0000\n"
-"Last-Translator: Ekrem Parlak <ekrem@parlak.org>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/tr/>\n"
 "Language: tr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -8033,7 +8033,7 @@ msgstr "Etkileşimli ağaç"
 #: app/Module/InteractiveTreeModule.php:163
 #, php-format
 msgid "Interactive tree of %s"
-msgstr "%s  etkileşimli ağacı"
+msgstr "%s etkileşimli ağacı"
 
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:306 app/GedcomTag.php:1140
@@ -12038,7 +12038,7 @@ msgstr "Dinî kurum"
 #: app/Functions/FunctionsEdit.php:594 app/GedcomTag.php:796
 #: resources/xml/reports/fact_sources.xml:199
 msgid "Religious marriage"
-msgstr "Dinî  evlilik"
+msgstr "Dinî evlilik"
 
 #: app/Factories/ElementFactory.php:508 app/GedcomTag.php:1207
 msgid "Religious name"
