@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ka/>\n"
 "Language: ka\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -370,9 +370,9 @@ msgstr[0] "%s წამის წინ"
 
 #. I18N: %s is a person's name
 #: message.php:300 message.php:303 message.php:305
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "ახალი შეტყობინება %s"
+msgstr "ახალი შეტყობინება %s."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
@@ -2110,7 +2110,7 @@ msgstr "დარწმუნებული ხართ რომ გინდ
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "ნამდვილად გსურთ ამ ისტორიის წაშლა?"
+msgstr "ნამდვილად გსურთ ამ ისტორიის წაშლა."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:417 admin_trees_manage.php:428 admin_users.php:210
@@ -6425,19 +6425,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s"
+msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s"
+msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s"
+msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
