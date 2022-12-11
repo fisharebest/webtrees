@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-09-05 12:36+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -15049,7 +15050,8 @@ msgstr "Tätä nimeä käytetään ”Keneltä (From)”-kentässä, kun tältä
 #: app/Auth.php:378 app/Auth.php:407
 #: app/Http/RequestHandlers/RedirectNotePhp.php:69
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "Tämä huomautus ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
+msgstr ""
+"Tämä huomautus ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
 #: resources/views/note-page-pending.phtml:21
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
