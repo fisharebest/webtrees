@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-09-05 19:50+0000\n"
+"PO-Revision-Date: 2022-12-12 07:56+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -749,7 +749,7 @@ msgstr "Een link naar de webtrees homepage."
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:115
 msgid "A list of branches of a family."
-msgstr "Een lijst met met familietakken."
+msgstr "Een lijst met familietakken."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
@@ -986,7 +986,12 @@ msgstr "Een rapport van de vitale records in een bepaalde periode of plaats."
 
 #: resources/views/admin/users-edit.phtml:233
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Een rol is een verzameling van toegangsrechten om gegevens te bekijken, instellingen te wijzigen, enz.. Toegangsrechten worden toegekend aan rollen, rollen worden verleend aan gebruikers. Elke stamboom kan andere rechten toekennen aan elke rol en gebruikers kunnen een andere rol hebben in elke stamboom."
+msgstr ""
+"Een rol is een verzameling van toegangsrechten om gegevens te bekijken, "
+"instellingen te wijzigen, enz. Toegangsrechten worden toegekend aan rollen, "
+"en rollen worden verleend aan gebruikers. Elke stamboom kan andere rechten "
+"toekennen aan elke rol en gebruikers kunnen een andere rol hebben in elke "
+"stamboom."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -16606,7 +16611,7 @@ msgstr "Website"
 #: app/Http/RequestHandlers/SiteLogsPage.php:102
 #: resources/views/admin/control-panel.phtml:211
 msgid "Website logs"
-msgstr "Website logs"
+msgstr "Website-logboekbestanden"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:65
 #: resources/views/admin/control-panel.phtml:189
@@ -17443,12 +17448,12 @@ msgstr "sluiten"
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr "clouds"
+msgstr "wolken"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr "colors"
+msgstr "kleuren"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:245
@@ -19818,7 +19823,7 @@ msgstr "leden"
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr "minimal"
+msgstr "minimaal"
 
 #: app/Functions/Functions.php:620
 msgid "mother"
