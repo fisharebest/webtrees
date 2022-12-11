@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-10-29 15:57+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ur/>\n"
 "Language: ur\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3952,7 +3952,7 @@ msgstr "موازنہ"
 #: app/Elements/LdsSpouseSealingDateStatus.php:73
 #: app/GedcomCode/GedcomCodeStat.php:133
 msgid "Completed before 1970; date not available"
-msgstr "١٩٧٠ سے پہلے مکمل؛  تاریخ موجود نہیں"
+msgstr "١٩٧٠ سے پہلے مکمل؛ تاریخ موجود نہیں"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -3961,7 +3961,7 @@ msgstr "١٩٧٠ سے پہلے مکمل؛  تاریخ موجود نہیں"
 #: app/Elements/LdsSpouseSealingDateStatus.php:65
 #: app/GedcomCode/GedcomCodeStat.php:118
 msgid "Completed; date unknown"
-msgstr "مکمل؛  تاریخ نامعلوم"
+msgstr "مکمل؛ تاریخ نامعلوم"
 
 #: app/Factories/ElementFactory.php:602 app/Factories/ElementFactory.php:644
 msgid "Completion date"
@@ -4167,7 +4167,9 @@ msgstr "کوٹ ڈیئوار"
 
 #: resources/views/verify-failure-page.phtml:17
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr "آپ نے جو معلومات درج کی ہے اس کی تصدیق نہیں ہوسکی۔  براہ کرم دوبارہ کوشش کریں یا مزید معلومات کے لئے سائٹ ایڈمنسٹریٹر سے رابطہ کریں۔"
+msgstr ""
+"آپ نے جو معلومات درج کی ہے اس کی تصدیق نہیں ہوسکی۔ براہ کرم دوبارہ کوشش کریں "
+"یا مزید معلومات کے لئے سائٹ ایڈمنسٹریٹر سے رابطہ کریں۔"
 
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:86
@@ -10338,7 +10340,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
 msgid "No file was received. Please try again."
-msgstr "کوئی فائل موصول نہیں ہوئی۔  دوبارہ کوشش کریں."
+msgstr "کوئی فائل موصول نہیں ہوئی۔ دوبارہ کوشش کریں."
 
 #: app/Module/RelationshipsChartModule.php:388
 msgid "No link between the two individuals could be found."
@@ -14367,7 +14369,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:52
 msgid "The file was only partially uploaded. Please try again."
-msgstr "فائل صرف جزوی طور پر اپ لوڈ کی گئی تھی۔  دوبارہ کوشش کریں."
+msgstr "فائل صرف جزوی طور پر اپ لوڈ کی گئی تھی۔ دوبارہ کوشش کریں."
 
 #. I18N: %s is a filename
 #: resources/views/media-page.phtml:132
