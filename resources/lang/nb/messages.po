@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-11 15:27+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nb_NO/>\n"
 "Language: nb\n"
@@ -7849,7 +7849,7 @@ msgstr "Inkluder undermapper"
 
 #: resources/views/modules/custom-css-js/edit.phtml:39
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr "Inkluder  <code>&lt;script&gt;&lt;/script&gt;</code> kodene."
+msgstr "Inkluder <code>&lt;script&gt;&lt;/script&gt;</code> kodene."
 
 #: resources/views/modules/custom-css-js/edit.phtml:27
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
@@ -13532,7 +13532,10 @@ msgstr "Somalia"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr "Noen slektsprogrammer lagrer alle navn under en enkelt post, ved å benytte egendefinerte underposter som  _MARNM og  _AKA. Et alternativ er å opprette nye poster for hvert navn."
+msgstr ""
+"Noen slektsprogrammer lagrer alle navn under en enkelt post, ved å benytte "
+"egendefinerte underposter som _MARNM og _AKA. Et alternativ er å opprette "
+"nye poster for hvert navn."
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
@@ -16742,7 +16745,10 @@ msgstr "Du kan nummerere postene i dette slektstreet på nytt."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:172
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Du kan velge tilgjengeligheten for en gitt post, fakta, eller hendelse ved å legge til en restriksjon.  Dersom en post, fakta, eller hendelse ikke har en restriksjon, vil følgende standard restriksjon brukes."
+msgstr ""
+"Du kan velge tilgjengeligheten for en gitt post, fakta, eller hendelse ved å "
+"legge til en restriksjon. Dersom en post, fakta, eller hendelse ikke har en "
+"restriksjon, vil følgende standard restriksjon brukes."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
