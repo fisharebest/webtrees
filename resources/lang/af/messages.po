@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-02-07 16:13+0000\n"
-"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:40+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/af/>\n"
 "Language: af\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -842,7 +842,12 @@ msgstr "’n Lys van gebruikers en besoekers wat tans aanlyn is."
 
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "’n Mediavoorwerp is ’n rekord in die stamboom wat inligting bevat oor ’n medialêer. Hierdie inligting kan ’n titel,  ’n kopieregkennisgewing, ’n afskrif, privaatheidsbeperkinge ens insluit. Die medialêer, byv. ’n foto of video, kan plaaslik (op hierdie webbediener) of elders (op ’n ander webbediener) geberg word."
+msgstr ""
+"’n Mediavoorwerp is ’n rekord in die stamboom wat inligting bevat oor ’n "
+"medialêer. Hierdie inligting kan ’n titel, ’n kopieregkennisgewing, ’n "
+"afskrif, privaatheidsbeperkinge ens insluit. Die medialêer, byv. ’n foto of "
+"video, kan plaaslik (op hierdie webbediener) of elders (op ’n ander "
+"webbediener) geberg word."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:20
@@ -21074,7 +21079,11 @@ msgstr "“%s” is geskrap."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:59
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "“Verligte beelde” (_PRIM) etikette word deur sommige genealogiese toepassings gebruik om die voorkeur beeld van ’n persoon aan te dui. Alternatiewelik kan die die beelde herrangskik word sodat die  voorkeur beeld eerste is."
+msgstr ""
+"“Verligte beelde” (_PRIM) etikette word deur sommige genealogiese "
+"toepassings gebruik om die voorkeur beeld van ’n persoon aan te dui. "
+"Alternatiewelik kan die die beelde herrangskik word sodat die voorkeur beeld "
+"eerste is."
 
 #: app/Functions/FunctionsPrint.php:111 app/Note.php:121
 #: app/Report/ReportParserGenerate.php:972
