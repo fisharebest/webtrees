@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2016-05-18 18:38+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -6450,9 +6451,9 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "פֿאַר הילף מיט ייחוס שאלות באַריר %s"
+msgstr "פֿאַר הילף מיט ייחוס שאלות באַריר %s."
 
 #: app/Theme/AbstractTheme.php:307
 #, fuzzy, php-format
@@ -6460,9 +6461,9 @@ msgid "For technical support and information contact %s."
 msgstr "פֿאַר טעכניש שטיצן און אינפֿאָרמאַציע באַריר %s"
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "פֿאַר טעכניש שטיצן אָדער ייחוס שאלות, ביטע באַריר %s"
+msgstr "פֿאַר טעכניש שטיצן אָדער ייחוס שאלות, ביטע באַריר %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
