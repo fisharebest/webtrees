@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2017-08-01 18:39+0000\n"
-"Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
-"Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/sw/>\n"
 "Language: sw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -42,7 +43,7 @@ msgstr " katika "
 #: app/Http/RequestHandlers/CheckTree.php:301
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s ina %3$s moja  kiungo kwa %4$s."
+msgstr "%1$s %2$s ina %3$s moja kiungo kwa %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2374
@@ -3533,7 +3534,7 @@ msgstr "Mabadiliko"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Mabadiliko katika siku %s  ya mwisho"
+msgstr[0] "Mabadiliko katika siku %s ya mwisho"
 msgstr[1] "Mabadiliko katika siku %s za mwisho"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
@@ -15785,7 +15786,7 @@ msgstr "Jumla ya majina ya familia"
 
 #: resources/views/modules/gedcom_stats/config.phtml:53
 msgid "Total users"
-msgstr "Jumla  ya watumiaji"
+msgstr "Jumla ya watumiaji"
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php:41
 #: app/Module/ModuleAnalyticsTrait.php:79
