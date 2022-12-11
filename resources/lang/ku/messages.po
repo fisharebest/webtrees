@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2021-07-01 09:22+0000\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\n"
+"Language-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ku/>\n"
 "Language: ku\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -16876,9 +16877,7 @@ msgstr "xatî/xal"
 #: app/Services/RelationshipService.php:593
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
-"xatî/xalo\n"
-"ap/met"
+msgstr "xatî/xalo ap/met"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
@@ -20291,9 +20290,7 @@ msgstr "jinbir/bûk/amojin/xalojin"
 #: app/Services/RelationshipService.php:1023
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
-"xwîşka bûkê\n"
-"\t"
+msgstr "xwîşka bûkê"
 
 #: app/Services/RelationshipService.php:635
 msgctxt "spouse’s sister"
@@ -20487,9 +20484,7 @@ msgstr "zirbav/damarî"
 #: app/Services/RelationshipService.php:827
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
-"xwîşk/brayên jinbavê\n"
-"xwîşk/brayên zirbêv"
+msgstr "xwîşk/brayên jinbavê xwîşk/brayên zirbêv"
 
 #: app/Services/RelationshipService.php:875
 msgctxt "mother’s husband’s child"
