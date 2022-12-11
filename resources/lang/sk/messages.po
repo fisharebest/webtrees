@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-09-05 12:36+0000\n"
-"Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
 "Language: sk\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1058,7 +1058,9 @@ msgstr "Časová os zobrazujúca udalosti osoby."
 
 #: resources/views/admin/users-edit.phtml:117
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Užívateľ sa nebude môcť prihlásiť, pokiaľ nebudú zaškrtnuté voľby  „E-mail overený“ a „Schválené administrátorom“."
+msgstr ""
+"Užívateľ sa nebude môcť prihlásiť, pokiaľ nebudú zaškrtnuté voľby „E-mail "
+"overený“ a „Schválené administrátorom“."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1911,7 +1913,7 @@ msgstr "Umožniť užívateľom prezerať neupravené GEDCOM záznamy"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:52
 msgid "Allow visitors to request a new user account"
-msgstr "Povoliť  návštevníkom žiadať o nový užívateľský účet"
+msgstr "Povoliť návštevníkom žiadať o nový užívateľský účet"
 
 #. I18N: gedcom tag _AKA
 #: app/Factories/ElementFactory.php:276 app/Factories/ElementFactory.php:329
@@ -6098,7 +6100,12 @@ msgstr "Často kladené otázky"
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:26
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "Často kladené otázky (FAQ) sú zoznamom otázok a odpovedí, ktoré vám umožňujú vysvetliť vašim návštevníkom a užívateľom pravidlá, politiky a postupy na  tejto stránke. Otázky sa spravidla týkajú ochrany osobných údajov, autorských práv, užívateľských účtov, nevhodného obsahu, požiadaviek a dokladanie zdrojov, a pod."
+msgstr ""
+"Často kladené otázky (FAQ) sú zoznamom otázok a odpovedí, ktoré vám umožňujú "
+"vysvetliť vašim návštevníkom a užívateľom pravidlá, politiky a postupy na "
+"tejto stránke. Otázky sa spravidla týkajú ochrany osobných údajov, "
+"autorských práv, užívateľských účtov, nevhodného obsahu, požiadaviek a "
+"dokladanie zdrojov, a pod."
 
 #. I18N: gedcom tag FACT
 #: app/Factories/ElementFactory.php:1198 app/GedcomTag.php:691
@@ -6786,7 +6793,8 @@ msgstr "Ak máte otázky technického charakteru, kontaktujte, prosím, %s."
 #: app/Module/ContactsFooterModule.php:136
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Pre technickú podporu, alebo genealogické otázky, kontaktujte, prosím,  %s."
+msgstr ""
+"Pre technickú podporu, alebo genealogické otázky, kontaktujte, prosím, %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:105
@@ -7455,7 +7463,7 @@ msgstr "Dobrý deň %s …"
 #: resources/views/register-success-page.phtml:19
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Dobrý deň  %s …<br>Ďakujeme, že ste sa zaregistrovali."
+msgstr "Dobrý deň %s …<br>Ďakujeme, že ste sa zaregistrovali."
 
 #: resources/views/emails/register-notify-html.phtml:17
 #: resources/views/emails/register-notify-text.phtml:15
@@ -7899,7 +7907,7 @@ msgstr "Zahrnúť podpriečinky"
 
 #: resources/views/modules/custom-css-js/edit.phtml:39
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr "Zadajte tagy  <code>&lt;script&gt;&lt;/script&gt;</code> ."
+msgstr "Zadajte tagy <code>&lt;script&gt;&lt;/script&gt;</code> ."
 
 #: resources/views/modules/custom-css-js/edit.phtml:27
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
@@ -11488,7 +11496,7 @@ msgstr "PSČ"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr "Beží na  webtrees™"
+msgstr "Beží na webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -11619,7 +11627,9 @@ msgstr "Obmedzenia prístupu"
 
 #: resources/views/admin/trees-privacy.phtml:232
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Obmedzenia prístupu  - uplatnia sa v záznamoch a faktoch, ktoré neobsahujú GEDCOM tag RESN"
+msgstr ""
+"Obmedzenia prístupu - uplatnia sa v záznamoch a faktoch, ktoré neobsahujú "
+"GEDCOM tag RESN"
 
 #: app/GedcomRecord.php:412 app/GedcomRecord.php:520
 #: app/Report/ReportParserGenerate.php:967
@@ -12280,7 +12290,7 @@ msgstr "Sídlo"
 #: resources/views/edit-blocks-page.phtml:69
 #: resources/views/edit-blocks-page.phtml:70
 msgid "Restore the default block layout"
-msgstr "Obnoviť  východzie nastavenie blokov"
+msgstr "Obnoviť východzie nastavenie blokov"
 
 #: app/Http/RequestHandlers/HelpText.php:274
 #: resources/views/admin/users-edit.phtml:294
@@ -12395,7 +12405,7 @@ msgstr "SQLite je vhodný len pre malé stránky, testovanie a hodnotenie."
 #: app/Services/ServerCheckService.php:216
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr "Je nainštalovaná SQLite  verzia %s. Vyžadovaná je verzia %s alebo vyšia."
+msgstr "Je nainštalovaná SQLite verzia %s. Vyžadovaná je verzia %s alebo vyšia."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173 app/GedcomCode/GedcomCodeTemp.php:585
@@ -12885,7 +12895,7 @@ msgstr "Nastaviť stupeň obmedzenia prístupu pre všetky zomrelé osoby."
 #: resources/views/emails/verify-notify-html.phtml:37
 #: resources/views/emails/verify-notify-text.phtml:25
 msgid "Set the status to “approved”."
-msgstr "Nastaviť  status na „schválené“."
+msgstr "Nastaviť status na „schválené“."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:638
@@ -14636,7 +14646,9 @@ msgstr "Nastavenia modulu „%s“ boli aktualizované."
 #: resources/views/setup/step-4-database-sqlite.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr "Prefix je voliteľný, ale odporúčaný. Keď priradíte každej aplikácii jedinečný prefix, tak môžu rôzne aplikácie zdieľať  tú istú databázu."
+msgstr ""
+"Prefix je voliteľný, ale odporúčaný. Keď priradíte každej aplikácii "
+"jedinečný prefix, tak môžu rôzne aplikácie zdieľať tú istú databázu."
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
@@ -15006,7 +15018,9 @@ msgstr "Táto osoba bola upravená. Úpravu musí potvrdiť moderátor."
 #: resources/views/individual-page.phtml:43
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Táto osoba bola upravená. Teraz by ste mali skontrolovať zmeny  a potom ich %1$s alebo %2$s."
+msgstr ""
+"Táto osoba bola upravená. Teraz by ste mali skontrolovať zmeny a potom ich "
+"%1$s alebo %2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml:102
@@ -15134,7 +15148,11 @@ msgstr "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridať k
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:848
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridať k archívom práve raz. Napríklad ak je v tomto zozname NAME, užívatelia nebudú môcť pridať tento záznam k archívu viac než  raz. Názvy faktov, ktoré sú v tomto zozname, nesmú byť uvedené v zozname „Všetky fakty archívov“."
+msgstr ""
+"Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridať k archívom "
+"práve raz. Napríklad ak je v tomto zozname NAME, užívatelia nebudú môcť "
+"pridať tento záznam k archívu viac než raz. Názvy faktov, ktoré sú v tomto "
+"zozname, nesmú byť uvedené v zozname „Všetky fakty archívov“."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:807
@@ -15185,7 +15203,9 @@ msgstr "Tento multimediálny objekt bol upravený. Zmeny musí skontrolovať mod
 #: resources/views/media-page.phtml:45
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Tento multimediálny objekt bol upravený. Teraz by ste mali skontrolovať zmeny  a potom ich %1$s alebo %2$s."
+msgstr ""
+"Tento multimediálny objekt bol upravený. Teraz by ste mali skontrolovať "
+"zmeny a potom ich %1$s alebo %2$s."
 
 #: resources/views/emails/message-copy-html.phtml:33
 #: resources/views/emails/message-copy-text.phtml:23
@@ -15226,7 +15246,9 @@ msgstr "Táto poznámka bola upravená. Zmenu musí potvrdiť moderátor."
 #: resources/views/note-page.phtml:41
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Táto poznámka bola upravená. Teraz by ste mali skontrolovať zmeny  a potom ich %1$s alebo %2$s."
+msgstr ""
+"Táto poznámka bola upravená. Teraz by ste mali skontrolovať zmeny a potom "
+"ich %1$s alebo %2$s."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:557
@@ -15299,7 +15321,9 @@ msgstr "Tento záznam bol zmazaný. Jeho zmazanie musí potvrdiť moderátor."
 #: resources/views/submitter-page.phtml:27
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Tento záznam bol zmazaný. Musíte skontrolovať jeho zmazanie a následne ho %1$s  alebo %2$s."
+msgstr ""
+"Tento záznam bol zmazaný. Musíte skontrolovať jeho zmazanie a následne ho %1$"
+"s alebo %2$s."
 
 #: resources/views/gedcom-record-page.phtml:41
 #: resources/views/submitter-page.phtml:35
@@ -15311,7 +15335,9 @@ msgstr "Tento záznam bol upravený. Zmeny musí potvrdiť moderátor."
 #: resources/views/submitter-page.phtml:33
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Tento záznam bol upravený. Musíte skontrolovať zmeny  a následne ich %1$s alebo %2$s."
+msgstr ""
+"Tento záznam bol upravený. Musíte skontrolovať zmeny a následne ich %1$s "
+"alebo %2$s."
 
 #: app/Exceptions/RepositoryAccessDeniedException.php:35
 #: app/Exceptions/RepositoryNotFoundException.php:35
@@ -15344,7 +15370,9 @@ msgstr "Tento výskum je „oprávnený záujem“ v zmysle článku 6, písm. f
 
 #: resources/views/admin/users-edit.phtml:262
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "Táto rola má všetky práva role „editor“, plus  právo schvaľovať/zamietať zmeny vykonané inými užívateľmi."
+msgstr ""
+"Táto rola má všetky práva role „editor“, plus právo schvaľovať/zamietať "
+"zmeny vykonané inými užívateľmi."
 
 #: resources/views/admin/users-edit.phtml:276
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
@@ -16142,7 +16170,7 @@ msgstr "Aktualizovať názvy miest"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:73
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr "Zmeniť  vyššiu úroveň názvov miest, pri zachovaní nižšej úrovne."
+msgstr "Zmeniť vyššiu úroveň názvov miest, pri zachovaní nižšej úrovne."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16948,7 +16976,10 @@ msgstr "Váš uživatelský účet nemá povolené „Automaticky schváliť zme
 #: app/Services/ServerCheckService.php:198
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "Váš webový server používa PHP verziu %s, pre ktorú sa už dlhšiu dobu nevydávajú bezpečnostné aktualizácie. Mali by ste  čím skôr spraviť upgrade na vyššiu verziu."
+msgstr ""
+"Váš webový server používa PHP verziu %s, pre ktorú sa už dlhšiu dobu "
+"nevydávajú bezpečnostné aktualizácie. Mali by ste čím skôr spraviť upgrade "
+"na vyššiu verziu."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
