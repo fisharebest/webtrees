@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-01 08:24+0000\n"
-"Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
 "Language: sk\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -343,9 +343,9 @@ msgstr[2] "%s osôb je utajených."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] "%s osoba s udalosťami medzi  %s a %s"
-msgstr[1] "%s osoby s udalosťami medzi  %s a %s"
-msgstr[2] "%s osôb s udalosťami medzi  %s a %s"
+msgstr[0] "%s osoba s udalosťami medzi %s a %s"
+msgstr[1] "%s osoby s udalosťami medzi %s a %s"
+msgstr[2] "%s osôb s udalosťami medzi %s a %s"
 
 #: app/Controller/LifespanController.php:248
 #, php-format
@@ -1110,7 +1110,7 @@ msgstr "Časová os zobrazujúca udalosti osoby."
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
-"Užívateľ sa nebude môcť prihlásiť, pokiaľ nebudú zaškrtnuté voľby  „E-mail "
+"Užívateľ sa nebude môcť prihlásiť, pokiaľ nebudú zaškrtnuté voľby „E-mail "
 "overený“ a „Schválené administrátorom“."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
@@ -1947,7 +1947,7 @@ msgstr "Umožniť uživateľom vybrať si vlastný motív"
 #. I18N: A configuration setting
 #: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
-msgstr "Povoliť  návštevníkom žiadať o nový užívateľský účet"
+msgstr "Povoliť návštevníkom žiadať o nový užívateľský účet"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
@@ -5959,7 +5959,7 @@ msgstr "Často kladené otázky"
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
 "Často kladené otázky (FAQ) sú zoznamom otázok a odpovedí, ktoré vám umožňujú "
-"vysvetliť vašim návštevníkom a užívateľom pravidlá, politiky a postupy na  "
+"vysvetliť vašim návštevníkom a užívateľom pravidlá, politiky a postupy na "
 "tejto stránke. Otázky sa spravidla týkajú ochrany osobných údajov, "
 "autorských práv, užívateľských účtov, nevhodného obsahu, požiadaviek a "
 "dokladanie zdrojov, a pod."
@@ -6591,7 +6591,7 @@ msgstr "Ak máte otázky technického charakteru, kontaktujte, prosím, %s."
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
 msgstr ""
-"Pre technickú podporu, alebo genealogické otázky, kontaktujte, prosím,  %s."
+"Pre technickú podporu, alebo genealogické otázky, kontaktujte, prosím, %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -7209,7 +7209,7 @@ msgstr "Dobrý deň %s …"
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Dobrý deň  %s …<br>Ďakujeme, že ste sa zaregistrovali."
+msgstr "Dobrý deň %s …<br>Ďakujeme, že ste sa zaregistrovali."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
@@ -11308,7 +11308,7 @@ msgstr "Obmedzenia prístupu"
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr ""
-"Obmedzenia prístupu  - uplatnia sa v záznamoch a faktoch, ktoré neobsahujú "
+"Obmedzenia prístupu - uplatnia sa v záznamoch a faktoch, ktoré neobsahujú "
 "GEDCOM tag RESN"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
@@ -11863,7 +11863,7 @@ msgstr "Sídlo"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr "Obnoviť  východzie nastavenie blokov"
+msgstr "Obnoviť východzie nastavenie blokov"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -12456,7 +12456,7 @@ msgstr "Nastaviť stupeň obmedzenia prístupu pre všetky zomrelé osoby."
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr "Nastaviť  status na „schválené“."
+msgstr "Nastaviť status na „schválené“."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -14281,7 +14281,7 @@ msgstr "Užívateľské meno potrebné pre prihlásenie k SMTP serveru."
 #: admin_trees_config.php:951
 msgid "The value to place in the “meta description” tag in the HTML page header. Leave this field empty to use the name of the family tree."
 msgstr ""
-"Údaj, ktorý sa uvedie v tagu  „meta description“ v hlavičke HTML-stránky. Ak "
+"Údaj, ktorý sa uvedie v tagu „meta description“ v hlavičke HTML-stránky. Ak "
 "necháte pole voľné, použije sa názov rodokmeňa."
 
 #: admin_pgv_to_wt.php:104
@@ -14356,8 +14356,8 @@ msgid "Themes can be selected at three levels: user, family tree, and website. U
 msgstr ""
 "Motíva sa môžu vybrať na troch úrovniach: užívateľ, rodokmeň a webová "
 "stránka. Užívateľské nastavenie má prednosť pred nastavením rodokmeňa, ktoré "
-"zas má prednosť pred nastavením webovej stránky.  Voľba „prednastavený motív“"
-" na niektorej úrovni použije voľbu z nasledujúcej."
+"zas má prednosť pred nastavením webovej stránky. Voľba „prednastavený motív“ "
+"na niektorej úrovni použije voľbu z nasledujúcej."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
@@ -14592,7 +14592,7 @@ msgstr "Táto osoba bola upravená. Úpravu musí potvrdiť moderátor."
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Táto osoba bola upravená. Teraz by ste mali skontrolovať zmeny  a potom ich "
+"Táto osoba bola upravená. Teraz by ste mali skontrolovať zmeny a potom ich "
 "%1$s alebo %2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
@@ -14651,8 +14651,8 @@ msgstr ""
 #: admin_trees_config.php:1329
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
 msgstr ""
-"Toto je zhrnutie  <abbr title=\"Cirkev Ježiša Krista svätých neskorších dní "
-"\">LDS</abbr> obradov pre osobu. „B“ označuje LDS krst, „E“ označuje LDS "
+"Toto je zhrnutie <abbr title=\"Cirkev Ježiša Krista svätých neskorších dní \""
+">LDS</abbr> obradov pre osobu. „B“ označuje LDS krst, „E“ označuje LDS "
 "obdarovanie, „S“ označuje LDS pečatenie, „P“ označuje LDS pečatenie dieťaťa "
 "k rodičom."
 
@@ -14733,7 +14733,7 @@ msgid "This is the list of GEDCOM facts that your users can only add once to rep
 msgstr ""
 "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridať k archívom "
 "práve raz. Napríklad ak je v tomto zozname NAME, užívatelia nebudú môcť "
-"pridať tento záznam k archívu viac než  raz. Názvy faktov, ktoré sú v tomto "
+"pridať tento záznam k archívu viac než raz. Názvy faktov, ktoré sú v tomto "
 "zozname, nesmú byť uvedené v zozname „Všetky fakty archívov“."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
@@ -14812,7 +14812,7 @@ msgstr ""
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
 "Tento multimediálny objekt bol upravený. Teraz by ste mali skontrolovať "
-"zmeny  a potom ich %1$s alebo %2$s."
+"zmeny a potom ich %1$s alebo %2$s."
 
 #: admin_media.php:570 find.php:634
 msgid "This media object is not linked to any other record."
@@ -14863,7 +14863,7 @@ msgstr "Táto poznámka bola upravená. Zmenu musí potvrdiť moderátor."
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Táto poznámka bola upravená. Teraz by ste mali skontrolovať zmeny  a potom "
+"Táto poznámka bola upravená. Teraz by ste mali skontrolovať zmeny a potom "
 "ich %1$s alebo %2$s."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
@@ -14961,7 +14961,7 @@ msgstr "Tento záznam bol zmazaný. Jeho zmazanie musí potvrdiť moderátor."
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
 "Tento záznam bol zmazaný. Musíte skontrolovať jeho zmazanie a následne ho %1$"
-"s  alebo %2$s."
+"s alebo %2$s."
 
 #: gedrecord.php:67
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
@@ -14972,7 +14972,7 @@ msgstr "Tento záznam bol upravený. Zmeny musí potvrdiť moderátor."
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Tento záznam bol upravený. Musíte skontrolovať zmeny  a následne ich %1$s "
+"Tento záznam bol upravený. Musíte skontrolovať zmeny a následne ich %1$s "
 "alebo %2$s."
 
 #: repo.php:60
@@ -15002,7 +15002,7 @@ msgstr "Tento archív bol upravený. Mali by ste úpravu zrevidovať a potom %1$
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr ""
-"Táto rola má všetky práva role „editor“, plus  právo schvaľovať/zamietať "
+"Táto rola má všetky práva role „editor“, plus právo schvaľovať/zamietať "
 "zmeny vykonané inými užívateľmi."
 
 #: admin_users.php:566
@@ -16170,9 +16170,9 @@ msgstr "Vodoznak je voliteľný a bežne sa zobrazuje len návštevníkom."
 #: admin_trees_config.php:1118
 msgid "Watermarks can be slow to generate for large images. Busy websites may prefer to generate them once and store the watermarked image on the server."
 msgstr ""
-"Pri veľkých obrázkoch môže byť  generovanie vodoznaku veľmi pomalé. Pri "
-"často navštevovaných webových stránkach mže byť vhodnejšie ich vygenerovať "
-"raz a uložiť obrázok s vodoznakom na serveri."
+"Pri veľkých obrázkoch môže byť generovanie vodoznaku veľmi pomalé. Pri často "
+"navštevovaných webových stránkach mže byť vhodnejšie ich vygenerovať raz a "
+"uložiť obrázok s vodoznakom na serveri."
 
 #: login.php:390
 #, php-format
@@ -16737,7 +16737,7 @@ msgstr ""
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
 "Váš webový server používa PHP verziu %s, pre ktorú sa už dlhšiu dobu "
-"nevydávajú bezpečnostné aktualizácie. Mali by ste  čím skôr spraviť upgrade "
+"nevydávajú bezpečnostné aktualizácie. Mali by ste čím skôr spraviť upgrade "
 "na vyššiu verziu."
 
 #. I18N: Name of a country or state
