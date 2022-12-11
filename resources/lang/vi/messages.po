@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2021-09-26 07:38+0000\n"
-"Last-Translator: nguyen duc toan <mmductoan@gmail.com>\n"
-"Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -13262,9 +13263,8 @@ msgid "Show this block for which languages"
 msgstr "Hiện khối này cho ngôn ngữ nào"
 
 #: resources/views/admin/trees-preferences.phtml:298
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Hiện hình chiếu nổi trong hộp người"
+msgstr "Hiện hình chiếu nổi trong hộp người."
 
 #: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -14235,9 +14235,11 @@ msgid "The charts menu."
 msgstr ""
 
 #: resources/views/modules/clippings/show.phtml:21
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Xe chứa đoạn chép cho phép bạn rút ra (“các đoạn chép”) từ cây gia đình này và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM.<br><ul><li>Làm cách nào chép đoạn cần?<br>Điều này thật đơn giản. Khi nào bạn thấy tên nhấp được (cá nhân, gia đình hay nguồn) bạn có thể chuyển đến mục xem trang chi tiết của tên đó. Tại đây có mục <b>Cho vào xe đoạn chép</b>. Khi bạn nhấp vào liên kết này bạn sẽ có được vài tùy chọn về tải về.</li><li>Làm thế nào tải về?<br>Khi bạn đã có mục chép trong xe, bạn có thể tải về bằng cách nhấp vào liên kết <b>Tải về</b>. Theo hướng dẫn và liên kết.</li></ul>"
+msgstr ""
+"Xe chứa đoạn chép cho phép bạn rút ra (“các đoạn chép”) từ cây gia đình này "
+"và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương "
+"trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml:382
 msgid "The date and time of the last update"
@@ -16622,9 +16624,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Bạn phải đánh số các bản ghi lại ở một trong các cây gia đình trước khi hợp nhất chúng."
 
 #: app/Module/ChartsBlockModule.php:184
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Bạn phải chọn một cá nhân và loại biểu đồ trong khối thiết đặt cấu hình."
+msgstr "Bạn phải chọn một cá nhân và loại biểu đồ trong khối thiết đặt cấu hình"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
