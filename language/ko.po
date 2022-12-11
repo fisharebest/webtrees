@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-01 09:22+0000\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ko/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -72,7 +72,7 @@ msgstr "%1$s %2$s 에 %4$s 에 대한 %3$s 링크가 있습니다."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s  오름차순으로 삭제 된 횟수"
+msgstr "%1$s %2$s 오름차순 제거"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
@@ -134,7 +134,7 @@ msgstr[0] "%1$s 개인의 출생지 지도 좌표가 없습니다 : %2$s."
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s 은(는)  %2$s 이지만 %3$s 이(가) 예상됩니다."
+msgstr "%1$s 은(는) %2$s 이지만 %3$s 이(가) 예상됩니다."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
@@ -1707,7 +1707,7 @@ msgstr "남편과 아내 사이의 나이 차이"
 
 #: statistics.php:330
 msgid "Age between siblings"
-msgstr "형제 사이의 나이 차이"
+msgstr "형제자매 사이의 나이 차이"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
@@ -2116,7 +2116,7 @@ msgstr "이 정보를 삭제 하시겠습니까?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr ""
+msgstr "이 메시지를 삭제하시겠습니까? 나중에 검색할 수 없습니다."
 
 #: admin_media.php:318 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_manage.php:417 admin_trees_manage.php:428 admin_users.php:210
@@ -2257,7 +2257,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
 msgid "Audio"
-msgstr ""
+msgstr "오디오"
 
 #: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
@@ -2306,12 +2306,12 @@ msgstr ""
 
 #: admin_users.php:441
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "이 사용자가 변경한 사항을 자동으로 수락"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1474
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "노트 자동 확장"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1489
@@ -2374,7 +2374,7 @@ msgstr "가족당 평균 자녀 수"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:627 admin_trees_manage.php:680
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr ""
+msgstr "공백과 구두점을 피하십시오. 성은 좋은 선택일 수 있습니다."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3362,7 +3362,7 @@ msgstr ""
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "주의! 시간이 오래 걸릴 수 있습니다. 인내심을 가지세요."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3911,7 +3911,7 @@ msgstr ""
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "견진성사"
 
 #: setup.php:275
 msgid "Connection to database server"
@@ -5071,7 +5071,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:939
 msgid "Description META tag"
-msgstr ""
+msgstr "META 태그 설명"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
@@ -5482,7 +5482,7 @@ msgstr ""
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:386
 msgid "Education"
-msgstr ""
+msgstr "교육"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
@@ -5617,7 +5617,7 @@ msgstr ""
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Endowment House"
-msgstr ""
+msgstr "Endowment House"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
@@ -5703,7 +5703,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6744
 msgid "Ethiopia"
-msgstr ""
+msgstr "Ethiopia"
 
 #: statistics.php:682
 msgid "Europe"
@@ -6296,7 +6296,7 @@ msgstr "출처 찾기"
 
 #: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
-msgstr ""
+msgstr "특별한 캐릭터 찾기"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
@@ -10258,7 +10258,7 @@ msgstr ""
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "앗! webtrees는 이 폴더에 파일을 생성할 수 없습니다."
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
@@ -10490,7 +10490,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6853
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papua New Guinea"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6858
@@ -11386,7 +11386,7 @@ msgstr ""
 
 #: edit_changes.php:216 edit_changes.php:236
 msgid "Reject all changes"
-msgstr ""
+msgstr "모든 변경사항 거부"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -11493,7 +11493,7 @@ msgstr ""
 
 #: timeline.php:277 timeline.php:292
 msgid "Remove individual"
-msgstr ""
+msgstr "인물 제거"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
@@ -11963,7 +11963,7 @@ msgstr ""
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "선택"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
@@ -11997,7 +11997,7 @@ msgstr ""
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "원하는 나이 간격을 선택하십시오"
 
 #: statistics.php:635
 msgid "Select the desired count interval"
@@ -12203,6 +12203,8 @@ msgstr ""
 #: admin_trees_config.php:1580
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr ""
+"<b> 네 </b>로 설정하면 개인, 소스 및 가족이사용자가 취한 원시 데이터가 포함 "
+"된 다른 창을 가져올 수 있도록Gedcom 파일에서 바로 밖으로 나옵니다."
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
@@ -13273,7 +13275,7 @@ msgstr ""
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
-msgstr ""
+msgstr "Sun"
 
 #: app/Date/CalendarDate.php:357
 msgid "Sunday"
@@ -13706,7 +13708,7 @@ msgstr "다음 정보와 이벤트는 %s의 레코드에서만 발견되었습�
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
-msgstr "다음 목록은 일반적인 요구 사항을 보여줍니다."
+msgstr "다음 목록은 일반적인 요구 사항을 표시합니다."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
@@ -14013,7 +14015,8 @@ msgstr ""
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "webtrees 개발자는  오류에 대해 매우 관심이 있습니다. 연락하면 문제 해결에 도움이됩니다."
+msgstr "webtrees 개발자는 오류에 대해 매우 관심이 있습니다. 연락하면 문제 해결에 "
+"도움이됩니다."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
@@ -17036,7 +17039,7 @@ msgstr "첫번째 사촌"
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "첫번째 사촌"
+msgstr "고종형제자매(고종사촌)"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
@@ -17086,7 +17089,7 @@ msgstr ""
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "당고모"
 
 #: app/Functions/Functions.php:1428
 msgctxt "father’s father’s brother’s son"
@@ -17328,7 +17331,7 @@ msgstr ""
 #: app/Functions/Functions.php:896
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "조부/외조부"
 
 #: app/Functions/Functions.php:898
 msgctxt "parent’s mother"
@@ -18165,7 +18168,7 @@ msgstr ""
 #: app/Functions/Functions.php:1124
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "증조부모/진증조부모"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s father’s parent"
@@ -18679,7 +18682,7 @@ msgstr ""
 #: app/Functions/Functions.php:1388
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "대고모부/진외존이모부"
 
 #: app/Functions/Functions.php:1156
 msgctxt "mother’s father’s brother"
@@ -18845,7 +18848,7 @@ msgstr ""
 #: app/Date.php:307
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "설명 %s(%s)"
 
 #: statistics.php:586 statistics.php:589 statistics.php:592 statistics.php:604
 #: statistics.php:607
@@ -19425,7 +19428,7 @@ msgstr ""
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "재종형제"
 
 #: app/Functions/Functions.php:1481
 msgctxt "grandfather’s brother’s grandchild"
@@ -19934,6 +19937,8 @@ msgstr ""
 #: site-unavailable.php:88
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
+"￦\"/data￦\" 폴더와 ￦\"/data/config.ini.php￦\" 파일에는 웹 서버가 읽을 수 "
+"있는 액세스 권한이 있습니다"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:281
@@ -20161,6 +20166,9 @@ msgstr ""
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees는 악센트가 있는 문자, 특수 문자 및 비 라틴 문자에 UTF-8 인코딩을 "
+"사용합니다. UTF-8을 지원하지 않는 계보 소프트웨어에서 이 GEDCOM 파일을 "
+"사용하려는 경우 ISO-8859-1 인코딩을 사용하여 생성할 수 있습니다."
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
