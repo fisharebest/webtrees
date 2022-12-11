@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-10-29 15:57+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Urdu <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ur/>\n"
 "Language: ur\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -3905,12 +3905,12 @@ msgstr "%s کا ٹھوس شجرہ"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
 msgid "Completed before 1970; date not available"
-msgstr "١٩٧٠ سے پہلے مکمل؛  تاریخ موجود نہیں"
+msgstr "١٩٧٠ سے پہلے مکمل؛ تاریخ موجود نہیں"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr "مکمل؛  تاریخ نامعلوم"
+msgstr "مکمل؛ تاریخ نامعلوم"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
@@ -4057,8 +4057,8 @@ msgstr "کوٹ ڈیئوار"
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr ""
-"آپ نے جو معلومات درج کی ہے اس کی تصدیق نہیں ہوسکی۔  براہ کرم دوبارہ کوشش "
-"کریں یا مزید معلومات کے لئے سائٹ ایڈمنسٹریٹر سے رابطہ کریں۔"
+"آپ نے جو معلومات درج کی ہے اس کی تصدیق نہیں ہوسکی۔ براہ کرم دوبارہ کوشش کریں "
+"یا مزید معلومات کے لئے سائٹ ایڈمنسٹریٹر سے رابطہ کریں۔"
 
 #: app/Stats.php:5579
 msgid "Count"
@@ -9859,7 +9859,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
 msgid "No file was received. Please try again."
-msgstr "کوئی فائل موصول نہیں ہوئی۔  دوبارہ کوشش کریں."
+msgstr "کوئی فائل موصول نہیں ہوئی۔ دوبارہ کوشش کریں."
 
 #: relationship.php:242
 msgid "No link between the two individuals could be found."
@@ -13659,7 +13659,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr "فائل صرف جزوی طور پر اپ لوڈ کی گئی تھی۔  دوبارہ کوشش کریں."
+msgstr "فائل صرف جزوی طور پر اپ لوڈ کی گئی تھی۔ دوبارہ کوشش کریں."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:146
