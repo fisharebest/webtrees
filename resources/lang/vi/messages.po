@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-09-26 07:38+0000\n"
-"Last-Translator: nguyen duc toan <mmductoan@gmail.com>\n"
-"Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees-20/vi/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -1376,7 +1377,7 @@ msgstr "Thêm nội dung ở cuối của yếu tố <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:22
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "Thêm nội dung vào cuối  yếu tố <code>&lt;head&gt;</code>."
+msgstr "Thêm nội dung vào cuối yếu tố <code>&lt;head&gt;</code>."
 
 #: resources/views/edit/paste-fact-row.phtml:20
 msgid "Add from clipboard"
@@ -2652,7 +2653,7 @@ msgstr "Bing Maps™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr "Công cụ Bing™  của webmaster"
+msgstr "Công cụ Bing™ của webmaster"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:65 app/GedcomCode/GedcomCodeTemp.php:261
@@ -7172,7 +7173,7 @@ msgstr "Phân tích của Google™"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr "Công cụ quản trị web của  Google™"
+msgstr "Công cụ quản trị web của Google™"
 
 #. I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:1207 app/GedcomTag.php:733
@@ -11420,7 +11421,7 @@ msgstr "Mã bưu điện"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr "Được vận hành bởi  webtrees™"
+msgstr "Được vận hành bởi webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -12824,7 +12825,7 @@ msgstr "Đặt mức truy cập riêng tư ở biểu đồ gia phả."
 #: resources/views/emails/verify-notify-html.phtml:37
 #: resources/views/emails/verify-notify-text.phtml:25
 msgid "Set the status to “approved”."
-msgstr "Đặt trạng thái  “được chấp thuận”."
+msgstr "Đặt trạng thái “được chấp thuận”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:638
@@ -13284,9 +13285,8 @@ msgid "Show this block for which languages"
 msgstr "Hiện khối này cho ngôn ngữ nào"
 
 #: resources/views/admin/trees-preferences.phtml:305
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Hiện hình chiếu nổi trong hộp người"
+msgstr "Hiện hình chiếu nổi trong hộp người."
 
 #: app/Auth.php:533 app/Auth.php:546 app/Elements/RestrictionNotice.php:77
 #: app/Functions/FunctionsEdit.php:221
@@ -14269,9 +14269,11 @@ msgid "The charts menu."
 msgstr ""
 
 #: resources/views/modules/clippings/show.phtml:19
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Xe chứa đoạn chép cho phép bạn rút ra (“các đoạn chép”) từ cây gia đình này và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM.<br><ul><li>Làm cách nào chép đoạn cần?<br>Điều này thật đơn giản. Khi nào bạn thấy tên nhấp được (cá nhân, gia đình hay nguồn) bạn có thể chuyển đến mục xem trang chi tiết của tên đó. Tại đây có mục <b>Cho vào xe đoạn chép</b>. Khi bạn nhấp vào liên kết này bạn sẽ có được vài tùy chọn về tải về.</li><li>Làm thế nào tải về?<br>Khi bạn đã có mục chép trong xe, bạn có thể tải về bằng cách nhấp vào liên kết <b>Tải về</b>. Theo hướng dẫn và liên kết.</li></ul>"
+msgstr ""
+"Xe chứa đoạn chép cho phép bạn rút ra (“các đoạn chép”) từ cây gia đình này "
+"và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương "
+"trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml:395
 msgid "The date and time of the last update"
@@ -16786,9 +16788,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Bạn phải đánh số các bản ghi lại ở một trong các cây gia đình trước khi hợp nhất chúng."
 
 #: app/Module/ChartsBlockModule.php:186
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Bạn phải chọn một cá nhân và loại biểu đồ trong khối thiết đặt cấu hình."
+msgstr "Bạn phải chọn một cá nhân và loại biểu đồ trong khối thiết đặt cấu hình"
 
 #: resources/views/admin/users-edit.phtml:363
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
