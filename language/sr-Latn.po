@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2019-07-08 11:51+0000\n"
-"Last-Translator: Enes <enes_s@yahoo.com>\n"
-"Language-Team: Serbian (latin) <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17/sr_Latn/>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Serbian (latin) <http://weblate.iet.open.ac.uk/projects/"
+"webtrees/webtrees-17/sr_Latn/>\n"
 "Language: sr-Latn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Serbian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -5664,7 +5666,7 @@ msgstr "Do datuma promene"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Endowment House"
-msgstr ""
+msgstr "Kuća zadužbina"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
@@ -11540,7 +11542,7 @@ msgstr ""
 
 #: timeline.php:277 timeline.php:292
 msgid "Remove individual"
-msgstr ""
+msgstr "Obriši osobu"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
@@ -12010,7 +12012,7 @@ msgstr ""
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "Odaberi"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
@@ -12044,7 +12046,7 @@ msgstr "Odaberite zapise iz porodičnog stabla i snimite ih kao GEDCOM file."
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Odaberite željeni starosni interval"
 
 #: statistics.php:635
 msgid "Select the desired count interval"
@@ -13311,7 +13313,7 @@ msgstr "Sufiksi"
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
-msgstr "ned"
+msgstr "Ned"
 
 #: app/Date/CalendarDate.php:357
 msgid "Sunday"
@@ -13540,6 +13542,9 @@ msgstr "Tajland"
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
+"Polje <b>ime</b> sadrži puno ime i prezime osobe, onako kako se izgovara ili "
+"kako je zapisano. Tako će se prikazati na ekranu. Koristi standardne "
+"genealoške beleške za identifikaciju različitih delova imena."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -13736,7 +13741,7 @@ msgstr "Sledeće činjenice i događaji su pronađeni samo u zapisu %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "Lista koja sledi prikazuje tipične zahteve."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
@@ -13875,7 +13880,7 @@ msgstr ""
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Podešavanje za novo porodično stablo je ažurirano."
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
@@ -14468,7 +14473,7 @@ msgstr ""
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ova beleška ne postoji ili nemate dozvolu da je vidite."
 
 #: note.php:46
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14651,6 +14656,8 @@ msgstr ""
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ovaj izvor je obrisan. Trebalo bi da pregledate brisanje, a zatim %1$s ili "
+"%2$s ga."
 
 #: source.php:55
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
@@ -14827,6 +14834,10 @@ msgstr "Do"
 #: app/Module/HtmlBlockModule.php:291
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
+"Da bismo vam pomogli da počnete sa ovim blokom, napravili smo nekoliko "
+"standardnih šablona. Kada izaberete jedan od ovih šablona, tekst polje će "
+"sadržati primer koji možete da izmenite u skladu sa zahtevima vaše web "
+"stranice."
 
 #: admin_site_upgrade.php:337
 msgid "To complete the upgrade, you should install the files manually."
@@ -15809,6 +15820,10 @@ msgstr ""
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr ""
+"Kada dodajete nove bliže rođake, možete dodati izvore citata u zapis (za "
+"osobu i porodicu) ili činjenicu i događaj (rođenje, venčanje, smrt). Ova "
+"opcija kontroliše da li će zapis ili činjenica biti odabrani kao "
+"podrazumevano."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -16993,7 +17008,7 @@ msgstr ""
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "tetkić"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
@@ -17043,7 +17058,7 @@ msgstr ""
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata ćerka"
 
 #: app/Functions/Functions.php:1428
 msgctxt "father’s father’s brother’s son"
@@ -18124,7 +18139,7 @@ msgstr ""
 #: app/Functions/Functions.php:1124
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s father’s parent"
@@ -18638,7 +18653,7 @@ msgstr ""
 #: app/Functions/Functions.php:1388
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "očevih roditelja sestrin muž"
 
 #: app/Functions/Functions.php:1156
 msgctxt "mother’s father’s brother"
@@ -19388,7 +19403,7 @@ msgstr ""
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak u drugom kolenu"
 
 #: app/Functions/Functions.php:1481
 msgctxt "grandfather’s brother’s grandchild"
@@ -20124,8 +20139,10 @@ msgstr "webtrees šalje e-poštu bez čuvanja kopije"
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
-"webtrees koristi UTF-8 kodiranje za akcentirana slova, specijalne znakove i skripte.\n"
-"Ako želite koristiti ovu GEDCOM datoteku sa genealoškim programom koji ne podržava UTF-8, tada je možete kreirati koristeći ISO-8859-1 kodiranje."
+"webtrees koristi UTF-8 kodiranje za akcentirana slova, specijalne znakove i "
+"skripte. Ako želite koristiti ovu GEDCOM datoteku sa genealoškim programom "
+"koji ne podržava UTF-8, tada je možete kreirati koristeći ISO-8859-1 "
+"kodiranje."
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
