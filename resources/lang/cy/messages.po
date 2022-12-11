@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-20 11:59+0000\n"
-"Last-Translator: Jeongwan Nam <jeongwann@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cy/>\n"
 "Language: cy\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
 "(n==3) ? 3 :(n==6) ? 4 : 5;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1466,11 +1466,11 @@ msgstr ""
 
 #: resources/views/modules/custom-css-js/edit.phtml:34
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr "Ychwanegwch gynnwys at ddiwedd yr elfen <code>&lt;body&gt;</code>"
+msgstr "Ychwanegwch gynnwys at ddiwedd yr elfen <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:22
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "Ychwanegu cynnwys at ddiwedd yr elfen <code>&lt;head&gt;</code>"
+msgstr "Ychwanegu cynnwys at ddiwedd yr elfen <code>&lt;head&gt;</code>."
 
 #: resources/views/edit/paste-fact-row.phtml:20
 msgid "Add from clipboard"
@@ -7932,11 +7932,11 @@ msgstr "Yn cynnwys is-ffolderi"
 
 #: resources/views/modules/custom-css-js/edit.phtml:39
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr "Cynhwyswch y tagiau <code>&lt;script&gt;&lt;/script&gt;</code>"
+msgstr "Cynhwyswch y tagiau <code>&lt;script&gt;&lt;/script&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:27
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr "Cynhwyswch y tagiau <code>&lt;style&gt;&lt;/style&gt;</code>"
+msgstr "Cynhwyswch y tagiau <code>&lt;style&gt;&lt;/style&gt;</code>."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
@@ -13039,7 +13039,7 @@ msgstr "Sha’aban"
 
 #: resources/xml/reports/descendancy_report.xml:358
 msgid "She "
-msgstr "Hi"
+msgstr "Hi "
 
 #: resources/xml/reports/ahnentafel_report.xml:289
 msgid "She died"
@@ -14495,7 +14495,7 @@ msgstr "Mae'r ffeithiau a'r digwyddiadau canlynol yn y ddau gofnod."
 #: resources/views/admin/merge-records-step-2.phtml:132
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Dim ond yng nghofnod  %s y cafwyd y ffeithiau a'r digwyddiadau canlynol."
+msgstr "Dim ond yng nghofnod %s y cafwyd y ffeithiau a'r digwyddiadau canlynol."
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
