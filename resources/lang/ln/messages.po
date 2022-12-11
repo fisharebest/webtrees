@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2021-07-01 09:22+0000\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
+"Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ln/>\n"
 "Language: ln\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -14963,8 +14964,12 @@ msgstr "Libótá liye lizalí na bilílí bya kotálisa tɛ́."
 #: resources/views/modules/html/template-narrative.phtml:9
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
-"Nzeté ya libótá liye etíyamákí mbala ya nsúka na #gedcomUpdated#. Nkómbó #totalSurnames# izalí na nzeté ya libótá liye. Molúlu mwa yambo mokɔ́tisamákí ezalí #firstEventType# ya #firstEventName# na káti ya #firstEventYear#. Molúlu mwa nsúka \n"
-" ezalí #lastEventType# ya #lastEventName# na kátí ya #lastEventYear#.<br><br> Sɔ́kí ozalí na ndimbola tǒ bozóngisi túná #contactWebmaster#."
+"Nzeté ya libótá liye etíyamákí mbala ya nsúka na #gedcomUpdated#. Nkómbó "
+"#totalSurnames# izalí na nzeté ya libótá liye. Molúlu mwa yambo mokɔ́"
+"tisamákí ezalí #firstEventType# ya #firstEventName# na káti ya "
+"#firstEventYear#. Molúlu mwa nsúka ezalí #lastEventType# ya #lastEventName# "
+"na kátí ya #lastEventYear#.<br><br> Sɔ́kí ozalí na ndimbola tǒ bozóngisi "
+"túná #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:20
