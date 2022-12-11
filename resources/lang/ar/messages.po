@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2019-11-27 20:16+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -216,9 +218,9 @@ msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s مستخدم مجهولا مسجل دخولاً"
 msgstr[1] "%s مستخدما مجهولا مسجل دخولاً"
 msgstr[2] "%s مستخدمان مجهولان مسجلان دخولاً"
-msgstr[3] "%s مستخدمين  مجهولين مسجلين دخولاً"
-msgstr[4] "%s مستخدما  مجهولا مسجلين دخولاً"
-msgstr[5] "%s مستخدما  مجهولا مسجل دخولاً"
+msgstr[3] "%s مستخدمين مجهولين مسجلين دخولاً"
+msgstr[4] "%s مستخدما مجهولا مسجلين دخولاً"
+msgstr[5] "%s مستخدما مجهولا مسجل دخولاً"
 
 #: resources/views/family-page-children.phtml:19
 #: resources/views/modules/ancestors-chart/tree.phtml:39
@@ -278,10 +280,10 @@ msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "هناك %s مشجر للعائلة"
 msgstr[1] "هناك %s مشجر للعائلة"
-msgstr[2] "هناك %s مشجرات  للعائلة"
+msgstr[2] "هناك %s مشجرات للعائلة"
 msgstr[3] "هناك %s مشجرات للعائلة"
 msgstr[4] "هناك %s مشجر للعوائل"
-msgstr[5] "هناك %s مشجراً  للعوائل"
+msgstr[5] "هناك %s مشجراً للعوائل"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -1966,7 +1968,7 @@ msgstr "ساموا الأمريكية"
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/edit.phtml:80
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "بالإمكان عرض نص أي سؤال شائع  في مشجر عائلة محددة، أو في جميعها."
+msgstr "بالإمكان عرض نص أي سؤال شائع في مشجر عائلة محددة، أو في جميعها."
 
 #: resources/views/admin/site-registration.phtml:59
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -4529,7 +4531,7 @@ msgstr "صبغات وراثية"
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:43
 #: resources/views/search-phonetic-page.phtml:78
 msgid "Daitch-Mokotoff"
-msgstr "الشخص  Daitch-Mokotoff"
+msgstr "الشخص Daitch-Mokotoff"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:88 app/GedcomCode/GedcomCodeTemp.php:330
@@ -5334,7 +5336,7 @@ msgstr "دنفر، كولورادو"
 
 #: resources/views/admin/upgrade/wizard.phtml:33
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr "اعتمادا على إعدادات الخادم الخاص بك،  قد تكون الترقية تلقائيا ممكنة."
+msgstr "اعتمادا على إعدادات الخادم الخاص بك، قد تكون الترقية تلقائيا ممكنة."
 
 #: resources/views/modules/family-book-chart/page.phtml:48
 msgid "Descendant generations"
@@ -6793,7 +6795,9 @@ msgstr "هوامش سفلية"
 #: resources/views/admin/trees-import.phtml:119
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "على سبيل المثال، إذا كان ملف GEDCOM يحتوي على %1$s وكان webtrees يتوقع أن يجد %2$s  في المجلد، في هذه الحالة عليك حذف %3$s ."
+msgstr ""
+"على سبيل المثال، إذا كان ملف GEDCOM يحتوي على %1$s وكان webtrees يتوقع أن "
+"يجد %2$s في المجلد، في هذه الحالة عليك حذف %3$s ."
 
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -11981,7 +11985,7 @@ msgstr "رقم ملف سجل"
 #: resources/views/search-general-page.phtml:49
 #: resources/views/statistics/other/total-records.phtml:12
 msgid "Records"
-msgstr "سجــــلات"
+msgstr "سجلات"
 
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
@@ -12635,7 +12639,9 @@ msgstr "بحث وإستبدال"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixSearchAndReplace.php:89
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr "البحث واستبدال النص، وذلك باستخدام عمليات البحث البسيطة أو  نمط المطابقة المتقدمة."
+msgstr ""
+"البحث واستبدال النص، وذلك باستخدام عمليات البحث البسيطة أو نمط المطابقة "
+"المتقدمة."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:235
@@ -13621,7 +13627,11 @@ msgstr ""
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "تقوم بعض برامج الأنساب بإنشاء ملفات GEDCOM  تحتوي على أسماء الملفات مع مساراتها في تلك البرامج. ولكن هذه المسارات لن تكون موجودة على خادم الويب عند توريد بيانات ملف GEDCOM . على سبيل المثال “C:\\Documents\\Genealogy\\Photos\\John_Smith.jpeg”."
+msgstr ""
+"تقوم بعض برامج الأنساب بإنشاء ملفات GEDCOM تحتوي على أسماء الملفات مع "
+"مساراتها في تلك البرامج. ولكن هذه المسارات لن تكون موجودة على خادم الويب عند "
+"توريد بيانات ملف GEDCOM . على سبيل المثال “C:\\Documents\\Genealogy\\Photos"
+"\\John_Smith.jpeg”."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:668
@@ -14291,7 +14301,7 @@ msgstr "حقل <b>إسم العائلة</b> يحتوي على إسم يستخد�
 #: app/Http/RequestHandlers/SynchronizeTrees.php:93
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "تم توريد ملف  الجيدكوم %s."
+msgstr "تم توريد ملف الجيدكوم %s."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104 app/GedcomCode/GedcomCodeTemp.php:378
@@ -14359,7 +14369,13 @@ msgstr ""
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "تتيح سلة المقتطفات  للمستخدم أخذ مقتطفات (\"قصاصات\") من المشجر ووضعها في ملف واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل بصيغة GEDCOM.<br><ul><li>كيفية الإقتطاف؟<br>كلما يظهر اسم ممكن النقر عليه (فرد، أسرة أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة خيارات للتنزيل."
+msgstr ""
+"تتيح سلة المقتطفات للمستخدم أخذ مقتطفات (\"قصاصات\") من المشجر ووضعها في ملف "
+"واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل "
+"بصيغة GEDCOM.<br><ul><li>كيفية الإقتطاف؟<br>كلما يظهر اسم ممكن النقر عليه "
+"(فرد، أسرة أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر "
+"الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة "
+"خيارات للتنزيل."
 
 #: resources/views/admin/trees-preferences.phtml:395
 msgid "The date and time of the last update"
@@ -14814,7 +14830,10 @@ msgstr "تم تحديث تفضيلات الموقع."
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: resources/views/admin/map-provider.phtml:51
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "يوفر الموقع www.geonames.org  قاعدة بيانات كبيرة لأسماء الأماكن . بالإمكان البحث فيه عند إدخال أماكن جديدة. يجب التسجيل للحصول على حساب مستخدم مجاني في www.geonames.org للتمكن من استخدام هذه الميزة."
+msgstr ""
+"يوفر الموقع www.geonames.org قاعدة بيانات كبيرة لأسماء الأماكن . بالإمكان "
+"البحث فيه عند إدخال أماكن جديدة. يجب التسجيل للحصول على حساب مستخدم مجاني في "
+"www.geonames.org للتمكن من استخدام هذه الميزة."
 
 #: resources/views/errors/database-error.phtml:20
 #: resources/views/setup/step-6-failed.phtml:20
@@ -14992,7 +15011,7 @@ msgid_plural "This family tree has %s records which use the same “XREF” as a
 msgstr[0] "هناك %s سجلا في مشجر العائلة هذه يحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[1] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[2] "هناك %s سجلان في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
-msgstr[3] "هناك %s سجلات  في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
+msgstr[3] "هناك %s سجلات في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[4] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[5] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 
@@ -15293,7 +15312,7 @@ msgstr "إختيار إظهار التواريخ التقديرية في حال 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:288
 msgid "This option will make it easier for users to download images."
-msgstr "سيتيح هذا الخيار للمستخدمين إمكانية تحميل الصور  بشكل أسهل."
+msgstr "سيتيح هذا الخيار للمستخدمين إمكانية تحميل الصور بشكل أسهل."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:166
@@ -15328,7 +15347,7 @@ msgstr "هذا الخيار يتيح لمالك الموقع من ملائمة �
 #: app/Exceptions/RecordAccessDeniedException.php:35
 #: app/Exceptions/RecordNotFoundException.php:35
 msgid "This record does not exist or you do not have permission to view it."
-msgstr "هذا السجل غير موجود أو  ليست لديك صلاحية الاطلاع عليه ."
+msgstr "هذا السجل غير موجود أو ليست لديك صلاحية الاطلاع عليه ."
 
 #: resources/views/admin/trees-privacy.phtml:261
 msgid "This record does not exist."
@@ -15663,7 +15682,9 @@ msgstr "لإنشاء مهام بحث جديدة، يلزم إضافة ”مها�
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "يجب تسجيل الملاحظات والمحاضر بشكل  بسيط ، باستخدام نص غير منسق لضمان التوافق مع التطبيقات  الانساب الأخرى."
+msgstr ""
+"يجب تسجيل الملاحظات والمحاضر بشكل بسيط ، باستخدام نص غير منسق لضمان التوافق "
+"مع التطبيقات الانساب الأخرى."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
@@ -15884,7 +15905,7 @@ msgstr "مجموع المستخدمين"
 #: resources/views/admin/modules.phtml:243
 #: resources/views/modules/privacy-policy/page.phtml:41
 msgid "Tracking and analytics"
-msgstr "التتبع  والتحليلات"
+msgstr "التتبع والتحليلات"
 
 #. I18N: gedcom tag TRLR
 #: app/Factories/ElementFactory.php:1412 app/GedcomTag.php:1005
@@ -16854,7 +16875,10 @@ msgstr "بإمكانك إعادة ترقيم مشجر العائلة التال�
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:172
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "يمكنك تعيين صلاحية الوصول لسجل معين ، معلومة ، أو حدث بإضافة قيود عليها. في حال عدم وجود قيود للسجل، المعلومة ، أو الحدث  ، سيتم استخدام القيود الافتراضية التالية ."
+msgstr ""
+"يمكنك تعيين صلاحية الوصول لسجل معين ، معلومة ، أو حدث بإضافة قيود عليها. في "
+"حال عدم وجود قيود للسجل، المعلومة ، أو الحدث ، سيتم استخدام القيود "
+"الافتراضية التالية ."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -21100,7 +21124,10 @@ msgstr "الموقع يرسل الرسائل دون حفظ"
 
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "تستخدم  webtrees ترميز UTF-8 للرسائل المعلمة، الأحرف الخاصة والكتابات غير اللاتينية . إذا كنت تريد استخدام هذا الملف GEDCOM مع برنامج أنساب لا يدعم UTF- 8، ثم يمكنك إنشاء باستخدام الترميز ISO- 8859-1 ."
+msgstr ""
+"تستخدم webtrees ترميز UTF-8 للرسائل المعلمة، الأحرف الخاصة والكتابات غير "
+"اللاتينية . إذا كنت تريد استخدام هذا الملف GEDCOM مع برنامج أنساب لا يدعم "
+"UTF- 8، ثم يمكنك إنشاء باستخدام الترميز ISO- 8859-1 ."
 
 #: app/Functions/Functions.php:662
 msgid "wife"
