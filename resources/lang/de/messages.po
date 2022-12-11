@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-27 11:54+0000\n"
-"Last-Translator: Bernd Schwendinger <b0ernie@gmx.net>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -16585,7 +16585,11 @@ msgstr "Sobald ein Besucher ein Benutzerkonto anfragt, wird eine E-Mail mit eine
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:935
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Beim Hinzufügen von neuen nahen Verwandten, können Quellangaben zu den Personen- und Familendatensätzen oder zu Ereignissen wie Geburt, Heirat und Tod erfolgen. Diese Auswahl steuert, ob standardmäßig Datensätze oder Ereignisse  ausgewählt werden sollen."
+msgstr ""
+"Beim Hinzufügen von neuen nahen Verwandten, können Quellangaben zu den "
+"Personen- und Familendatensätzen oder zu Ereignissen wie Geburt, Heirat und "
+"Tod erfolgen. Diese Auswahl steuert, ob standardmäßig Datensätze oder "
+"Ereignisse ausgewählt werden sollen."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
