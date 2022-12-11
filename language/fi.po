@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-11 08:30+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fi/>\n"
 "Language: fi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -12844,7 +12844,7 @@ msgstr "Sisään kirjautuminen ja rekisteröinti"
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
 msgstr ""
-"Yksinkertaisten  päivämäärien oletetaan noudattavan gregoriaanista "
+"Yksinkertaisten päivämäärien oletetaan noudattavan gregoriaanista "
 "kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan "
 "päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden "
 "muoto tekee päivämäärästä yksiselitteisen."
@@ -14485,11 +14485,12 @@ msgstr "Tätä nimeä käytetään ”Keneltä (From)”-kentässä, kun tältä
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "Tämä lisätieto ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
+msgstr ""
+"Tämä huomautus ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
 #: note.php:46
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Tämä lisätieto on poistettu. Valvojan on tarkastettava poisto."
+msgstr "Tämä huomautus on poistettu. Valvojan on tarkastettava poisto."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:41
@@ -14499,7 +14500,7 @@ msgstr "Tämä huomautus on poistettu. Tarkistaa poisto ja %1$s tai %2$s se."
 
 #: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "Tämä lisätieto on muokattu. Valvojan on tarkastettava muutokset."
+msgstr "Tämä huomautus on muokattu. Valvojan on tarkastettava muutokset."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:51
