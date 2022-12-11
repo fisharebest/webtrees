@@ -149,7 +149,7 @@ msgstr "%1$s – %2$s"
 #: app/Services/RelationshipService.php:2204
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%2$s        %1$s"
+msgstr "%2$s %1$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:623
@@ -405,20 +405,20 @@ msgstr "%s سالگرد"
 #: app/Services/RelationshipService.php:2354
 #, php-format
 msgid "%s × cousin"
-msgstr "%s  × عموزاده"
+msgstr "%s × عموزاده"
 
 #: app/Services/RelationshipService.php:2318
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr "%s  × عموزاده"
+msgstr "%s × عموزاده"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2281
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr "%s  × عموزاده"
+msgstr "%s × عموزاده"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -707,7 +707,7 @@ msgstr "یک خطای رایج این است که چندین پیوند به ی�
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:149
 msgid "A fan chart of an individual’s ancestors."
-msgstr "نمودار پنکه ای  اجداد یک فرد."
+msgstr "نمودار پنکه ای اجداد یک فرد."
 
 #: resources/views/admin/map-import-form.phtml:37
 #: resources/views/admin/trees-export.phtml:30
@@ -748,22 +748,22 @@ msgstr "پیوند به صفحه اصلی سایت."
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
 msgid "A list of branches of a family."
-msgstr "فهرست  شاخه های یک خانواده."
+msgstr "فهرست شاخه های یک خانواده."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:93
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "فهرست  تغییراتی که باید توسط ناظر بررسی شود و اعلان‌های ایمیل."
+msgstr "فهرست تغییراتی که باید توسط ناظر بررسی شود و اعلان‌های ایمیل."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:54
 msgid "A list of families."
-msgstr "فهرست  خانواده ها."
+msgstr "فهرست خانواده ها."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:82
 msgid "A list of frequently asked questions and answers."
-msgstr "فهرست  پرسش ها و پاسخ های متداول."
+msgstr "فهرست پرسش ها و پاسخ های متداول."
 
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:92
@@ -783,7 +783,7 @@ msgstr "فهرست موضوعات رسانه ای."
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:98
 msgid "A list of records that have been updated recently."
-msgstr "فهرست  رکوردهایی که اخیراً به روز شده اند."
+msgstr "فهرست رکوردهایی که اخیراً به روز شده اند."
 
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:78
@@ -808,27 +808,27 @@ msgstr "فهرست ارسال کنندگان."
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "فهرست  وظایف و فعالیت هایی که با شجره نامه مرتبط هستند."
+msgstr "فهرست وظایف و فعالیت هایی که با شجره نامه مرتبط هستند."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "فهرست  سالگرد مرگ عبری که در آینده نزدیک رخ خواهد داد."
+msgstr "فهرست سالگرد مرگ عبری که در آینده نزدیک رخ خواهد داد."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
 msgid "A list of the anniversaries that occur today."
-msgstr "فهرست  سالگردهایی که امروز رخ می دهد."
+msgstr "فهرست سالگردهایی که امروز رخ می دهد."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:133
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "فهرست  سالگردهایی که در آینده نزدیک اتفاق می افتد."
+msgstr "فهرست سالگردهایی که در آینده نزدیک اتفاق می افتد."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:59
 msgid "A list of the most popular given names."
-msgstr "فهرست  محبوب ترین نام های کوچک ."
+msgstr "فهرست محبوب ترین نام های کوچک ."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:85
@@ -1246,7 +1246,7 @@ msgstr "افزودن"
 #: app/Module/ClippingsCartModule.php:908
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "%s را به سبد گزیده ها  اضافه کنید"
+msgstr "%s را به سبد گزیده ها اضافه کنید"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
@@ -1280,7 +1280,7 @@ msgstr "افزودن واقعه"
 #: resources/views/family-page-grandparents.phtml:44
 #: resources/views/modules/relatives/tab.phtml:107
 msgid "Add a father"
-msgstr "افزودن  پدر"
+msgstr "افزودن پدر"
 
 #: resources/views/modules/favorites/favorites.phtml:47
 #: resources/views/modules/favorites/favorites.phtml:56
@@ -1816,7 +1816,7 @@ msgstr "به ماژول های دیگر اجازه دهید به جای استف
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:600
 msgid "Allow users to see raw GEDCOM records"
-msgstr "اجازه دادن به کاربران جهت دیدن اطلاعات خام سوابق فایلGEDCOM  شجره‌نامه"
+msgstr "اجازه دادن به کاربران جهت دیدن اطلاعات خام سوابق فایلGEDCOM شجره‌نامه"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:51
@@ -1879,7 +1879,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "نمودار پروانه ای از اجداد و فرزندان یک فرد."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "یک فرد می تواند بیش از یک مجموعه از والدین داشته باشد. مثلا تولد و فرزندخواندگی."
 
 #. I18N: Description of the “Interactive tree” module
@@ -2008,13 +2008,13 @@ msgstr "اجرای تنظیمات خصوصی"
 #: resources/views/admin/trees-preferences.phtml:731
 #: resources/views/admin/trees-privacy.phtml:298
 msgid "Apply these preferences to all family trees"
-msgstr "این تنظیمات برگزیده  را برای همه شجره نامه ها اعمال کنید"
+msgstr "این تنظیمات برگزیده را برای همه شجره نامه ها اعمال کنید"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:738
 #: resources/views/admin/trees-privacy.phtml:305
 msgid "Apply these preferences to new family trees"
-msgstr "این تنظیمات برگزیده  را برای شجره نامه های جدید اعمال کنید"
+msgstr "این تنظیمات برگزیده را برای شجره نامه های جدید اعمال کنید"
 
 #: resources/views/admin/users.phtml:37
 msgid "Approved"
@@ -3495,7 +3495,7 @@ msgstr "بررسی تغییرات در انتظار…"
 
 #: resources/views/setup/step-2-server-checks.phtml:61
 msgid "Checking server capacity"
-msgstr "بررسی ظرفیت  سرور"
+msgstr "بررسی ظرفیت سرور"
 
 #: resources/views/setup/step-2-server-checks.phtml:44
 msgid "Checking server configuration"
@@ -3521,7 +3521,7 @@ msgstr "فرزند ِ "
 #: app/Module/InteractiveTree/TreeView.php:371
 #, php-format
 msgid "Child of %s"
-msgstr "فرزند ِ  %s"
+msgstr "فرزند ِ %s"
 
 #: app/Http/RequestHandlers/FamilyPage.php:155
 #: app/Http/RequestHandlers/IndividualPage.php:227
@@ -3955,7 +3955,7 @@ msgstr "صفحه کنترل"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:61
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr "تبدیل تگ های %s  به GEDCOM 5.5.1"
+msgstr "تبدیل تگ های %s به GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4001,7 +4001,7 @@ msgstr "کپی فایل ها…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr "URLکپی  رکورد در کلیپ بورد"
+msgstr "URLکپی رکورد در کلیپ بورد"
 
 #: app/Gedcom.php:500 app/Gedcom.php:527
 msgid "Copyright"
@@ -4082,7 +4082,7 @@ msgstr "ایجاد یک یادداشت مشترک"
 
 #: resources/views/modules/census-assistant.phtml:17
 msgid "Create a shared note using the census assistant"
-msgstr "ایجاد یاداشت مشترک  با استفاده از دستیار سرشماری"
+msgstr "ایجاد یاداشت مشترک با استفاده از دستیار سرشماری"
 
 #: app/Elements/XrefSource.php:74 resources/views/modals/create-source.phtml:16
 msgid "Create a source"
@@ -4117,7 +4117,7 @@ msgstr "ایجاد یک فرد"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr "ایجاد نقشه با استفاده از  %s."
+msgstr "ایجاد نقشه با استفاده از %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
@@ -4125,7 +4125,7 @@ msgstr "نمودار خود را بسازید"
 
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "ایجاد, بروزآوری  و حذف یک شجرنامه برای هر فایل GEDCOM که در پوشه داده وجود دارد."
+msgstr "ایجاد, بروزآوری و حذف یک شجرنامه برای هر فایل GEDCOM که در پوشه داده وجود دارد."
 
 #. I18N: GEDCOM tag _CREA
 #: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:90
@@ -4467,7 +4467,7 @@ msgstr "تاریخ غسل تعمید LDS"
 
 #: app/Gedcom.php:740
 msgid "Date of LDS child sealing"
-msgstr "تاریخ  مهر وموم کودک LDS"
+msgstr "تاریخ مهر وموم کودک LDS"
 
 #: app/Gedcom.php:628
 msgid "Date of LDS confirmation"
@@ -4491,7 +4491,7 @@ msgstr "تاریخ غسل تعمید"
 
 #: app/Gedcom.php:595 resources/xml/reports/missing_facts_report.xml:212
 msgid "Date of bar mitzvah"
-msgstr "تاریخ  bar mitzvah"
+msgstr "تاریخ bar mitzvah"
 
 #: app/Gedcom.php:598 resources/xml/reports/missing_facts_report.xml:253
 msgid "Date of bat mitzvah"
@@ -5161,7 +5161,7 @@ msgstr "نوادگانِ ِ "
 #: app/Module/DescendancyChartModule.php:140
 #, php-format
 msgid "Descendants of %s"
-msgstr "نوادگانِ ِ  %s"
+msgstr "نوادگانِ ِ %s"
 
 #: app/CustomTags/GedcomL.php:139 app/CustomTags/GedcomL.php:195
 #: app/CustomTags/Legacy.php:84 app/CustomTags/MyHeritage.php:62
@@ -5523,7 +5523,7 @@ msgstr "ویرایش نام"
 #: resources/views/family-page-menu.phtml:89
 #: resources/views/individual-page-menu.phtml:129
 msgid "Edit the raw GEDCOM"
-msgstr "ویرایش فرمت GEDCOM  خام"
+msgstr "ویرایش فرمت GEDCOM خام"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
@@ -5540,7 +5540,7 @@ msgstr "ویرایش کاربر"
 
 #: app/Services/TreeService.php:227
 msgid "Edit this individual and replace their details with your own."
-msgstr "این فرد را ویرایش کرده و مشخصاتش  را با مشخصات خود جایگزین کنید."
+msgstr "این فرد را ویرایش کرده و مشخصاتش را با مشخصات خود جایگزین کنید."
 
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
@@ -5873,7 +5873,7 @@ msgstr "ارسال کلیه شجرنامه ها بصورت فایل های GEDCO
 msgid "Export preferences"
 msgstr "ارسال الویت ها"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "تعمیم افراد تنظیمات حریم خصوصی به افراد متوفی"
@@ -6188,7 +6188,7 @@ msgstr "شجره نامه ها"
 #: app/Individual.php:923
 #, php-format
 msgid "Family with %s"
-msgstr "خانواده  %s"
+msgstr "خانواده %s"
 
 #: app/Individual.php:853
 msgid "Family with adoptive parents"
@@ -6621,7 +6621,7 @@ msgstr "برای پشتیبانی فنی و اطلاعات با %s تماس بگ
 #: app/Module/ContactsFooterModule.php:134
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "برای پشتیبانی فنی یا سؤالات تبارشناسی  با %s تماس بگیرید."
+msgstr "برای پشتیبانی فنی یا سؤالات تبارشناسی با %s تماس بگیرید."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
@@ -7751,7 +7751,7 @@ msgstr "در این ماه…"
 msgid "In this year…"
 msgstr "در این سال…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "در webtrees نسخه 1، می‌توانید تصاویر ریزعکس سفارشی را با ایجاد فایل‌ها در پوشه‌های thumbs به اشیاء رسانه اضافه کنید."
@@ -8657,13 +8657,13 @@ msgstr "شماره خط"
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:800
 msgid "Link media objects to facts and events"
-msgstr "پیوند موضوعات رسانه ای را به وقایع  و رویدادها"
+msgstr "پیوند موضوعات رسانه ای را به وقایع و رویدادها"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:43
 #: resources/views/emails/verify-notify-text.phtml:29
 msgid "Link the user account to an individual."
-msgstr "پیوند  حساب کاربری را به یک فرد."
+msgstr "پیوند حساب کاربری را به یک فرد."
 
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:49
 #: resources/views/modules/relatives/tab.phtml:123
@@ -10502,7 +10502,7 @@ msgstr "توجه داشته باشید که اگر یک حساب کاربری ب
 
 #: resources/views/help/relationship-privacy.phtml:18
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "توجه: مسیرهای طولانی تر نیاز به محاسبات زیادی دارد، که می تواند باعث کندی وب سایت شما  این کاربران شود."
+msgstr "توجه: مسیرهای طولانی تر نیاز به محاسبات زیادی دارد، که می تواند باعث کندی وب سایت شما این کاربران شود."
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:113 app/Module/NoteListModule.php:143
@@ -11199,7 +11199,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "نام محل ها اغلب طولانی‌تر از آن هستند که در نمودارها، فهرست‌ها، و غیره قرار بگیرند. آنها را می‌توان با نشان دادن تنها چند قسمت اول نام، مانند <i>روستا، شهرستان</i> یا چند قسمت آخر آن، مخفف کرد. ، مانند <i>منطقه، کشور</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "نام محل ها می تواند در طول زمان تغییر کند. در شجره نامه، مرسوم است که از نام فعلی برای یک شهر یا کشور استفاده می شود. نام تاریخی را می توان در منابع، یادداشت ها و غیره نشان داد."
 
 #: resources/views/help/place.phtml:10
@@ -12454,7 +12454,7 @@ msgstr "سیلینگ"
 #: app/Elements/LdsOrdinanceStatus.php:63
 #: app/Elements/LdsSpouseSealingDateStatus.php:64
 msgid "Sealing canceled (divorce)"
-msgstr "لغو سیلینگ  (طلاق)"
+msgstr "لغو سیلینگ (طلاق)"
 
 #. I18N: Name of a module
 #. I18N: A button label.
@@ -13186,7 +13186,7 @@ msgstr "نمایش وظایف پژوهشی که به سایر کاربران ا�
 
 #: resources/views/modules/todo/config.phtml:33
 msgid "Show research tasks that are not assigned to any user"
-msgstr "نمایش وظایف پژوهشی که به  کاربری اختصاص داده نشده است"
+msgstr "نمایش وظایف پژوهشی که به کاربری اختصاص داده نشده است"
 
 #: resources/views/modules/todo/config.phtml:42
 msgid "Show research tasks that have a date in the future"
@@ -13275,7 +13275,7 @@ msgstr "نمایش این بلوک برای کدام زبان"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
-msgstr "نمایش ریزعکسهای  افراد در نمودارها و گروه های خانواده."
+msgstr "نمایش ریزعکسهای افراد در نمودارها و گروه های خانواده."
 
 #: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -14196,12 +14196,12 @@ msgstr "پوشه موقت PHP از دست رفته است."
 #: app/Services/ServerCheckService.php:143
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "تنظیم  PHP “%1$s” غیر فعال است."
+msgstr "تنظیم PHP “%1$s” غیر فعال است."
 
 #: app/Services/ServerCheckService.php:147
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "تنظیم  PHP.INI “%1$s” فعال است."
+msgstr "تنظیم PHP.INI “%1$s” فعال است."
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
@@ -14260,7 +14260,7 @@ msgstr "جزئیات برای “%s” بروزآوری شده است."
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:219
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "شجره نامه به  %s ارسال شده است."
+msgstr "شجره نامه به %s ارسال شده است."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:63
 #, php-format
@@ -14428,7 +14428,7 @@ msgstr "موقعیت این محل مشخص نیست."
 #: app/Http/RequestHandlers/EditMediaFileAction.php:135
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr "فایل رسانه ای %1$s  را نمی توان به %2$ss تغییر نام داد."
+msgstr "فایل رسانه ای %1$s را نمی توان به %2$ss تغییر نام داد."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:132
 #, php-format
@@ -14491,7 +14491,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "از کاربر جدید خواسته می شود قبل از ایجاد حساب ، آدرس ایمیل خود را تأیید کند."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -14532,7 +14532,7 @@ msgstr "تنظیمات برگزیده مربوط به همه شجره نامه �
 #: app/Http/RequestHandlers/TreePreferencesAction.php:171
 #: app/Http/RequestHandlers/TreePrivacyAction.php:136
 msgid "The preferences for new family trees have been updated."
-msgstr "تنظیمات برگزیده  مربوط به شجره نامه های جدید به روز شده است."
+msgstr "تنظیمات برگزیده مربوط به شجره نامه های جدید به روز شده است."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:160
 #: app/Http/RequestHandlers/TreePrivacyAction.php:126
@@ -14696,7 +14696,7 @@ msgstr "نام کاربری مورد نیاز برای احراز هویت با 
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:55
 #: app/Http/RequestHandlers/SiteTagsAction.php:67
 msgid "The website preferences have been updated."
-msgstr "تنظیمات برگزیده  وب سایت به روز شده است."
+msgstr "تنظیمات برگزیده وب سایت به روز شده است."
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
@@ -15497,8 +15497,8 @@ msgstr[1] "نام کوچک %s پرتکرار"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "نام خانوادگی  %s پرتکرار"
-msgstr[1] "نام خانوادگی  %s پرتکرار"
+msgstr[0] "نام خانوادگی %s پرتکرار"
+msgstr[1] "نام خانوادگی %s پرتکرار"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:102
@@ -15625,7 +15625,7 @@ msgstr "تعداد کل تغییرات در انتظار: "
 #: resources/views/modules/html/template-statistics.phtml:38
 #: resources/views/modules/statistics-chart/names.phtml:18
 msgid "Total surnames"
-msgstr "تعداد کل  نام های خانوادگی"
+msgstr "تعداد کل نام های خانوادگی"
 
 #: resources/views/modules/gedcom_stats/config.phtml:54
 msgid "Total users"
@@ -15860,7 +15860,7 @@ msgstr "شناسه یکتا"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "شناسه‌های یکتا  اجازه می‌دهند که یک رکورد در شجره نامه های مختلف و در سیستم‌های مختلف یافت شود. هر زمان که رکوردها ایجاد یا به روز شوند، آنها اضافه خواهند شد. اگر نمی خواهید شناسه های یکتا نمایش داده شوند، می توانید آنها را با استفاده از قوانین حفظ حریم خصوصی پنهان کنید."
+msgstr "شناسه‌های یکتا اجازه می‌دهند که یک رکورد در شجره نامه های مختلف و در سیستم‌های مختلف یافت شود. هر زمان که رکوردها ایجاد یا به روز شوند، آنها اضافه خواهند شد. اگر نمی خواهید شناسه های یکتا نمایش داده شوند، می توانید آنها را با استفاده از قوانین حفظ حریم خصوصی پنهان کنید."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
@@ -15985,7 +15985,7 @@ msgstr "از سرویس SMTP برای ارسال پیام استفاده شود"
 
 #: app/Module/FixSearchAndReplace.php:103
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "استفاده از یک  \"؟\"  برای مطابقت با یک کاراکتر،استفاده از یک از \"*\" برای مطابقت با صفر یا چند کاراکتر."
+msgstr "استفاده از یک \"؟\" برای مطابقت با یک کاراکتر،استفاده از یک از \"*\" برای مطابقت با صفر یا چند کاراکتر."
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
@@ -17613,33 +17613,33 @@ msgstr "عمو/دایی/عمه/خاله زاده نَسَب چهاردهم"
 #: app/Services/RelationshipService.php:2314
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr "دختر عمو/دایی/عمه/خاله  نَسَب چهاردهم"
+msgstr "دختر عمو/دایی/عمه/خاله نَسَب چهاردهم"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2275
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr "پسر عمو/دایی/عمه/خاله  نَسَب چهاردهم"
+msgstr "پسر عمو/دایی/عمه/خاله نَسَب چهاردهم"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2430
 #, php-format
 msgid "fourth %s"
-msgstr "چهارمین  %s"
+msgstr "چهارمین %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2408
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr "چهارمین  %s"
+msgstr "چهارمین %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2385
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr "چهارمین  %s"
+msgstr "چهارمین %s"
 
 #: app/Services/RelationshipService.php:2330
 msgid "fourth cousin"
@@ -17837,7 +17837,7 @@ msgstr "نواده(نسل %s)"
 #: app/Services/RelationshipService.php:1955
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "پدر×%s  پدربزرگ"
+msgstr "پدر×%s پدربزرگ"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1893
@@ -17848,7 +17848,7 @@ msgstr "پدر×%s  پدربزرگ"
 #: app/Services/RelationshipService.php:1960
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "مادر×%s  مادربزرگ"
+msgstr "مادر×%s مادربزرگ"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1896
@@ -17859,7 +17859,7 @@ msgstr "مادر×%s  مادربزرگ"
 #: app/Services/RelationshipService.php:1964
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "والدین×%s  پدر بزرگ/مادر بزرگ"
+msgstr "والدین×%s پدر بزرگ/مادر بزرگ"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2048
@@ -17884,7 +17884,7 @@ msgstr "پسر برادر/پسر خواهر (نسل %s)"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "پسر برادر  (نسل %s)"
+msgstr "پسر برادر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1676
 #: app/Services/RelationshipService.php:1711
@@ -17892,7 +17892,7 @@ msgstr "پسر برادر  (نسل %s)"
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "پسر خواهر  (نسل %s)"
+msgstr "پسر خواهر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1679
 #: app/Services/RelationshipService.php:1714
@@ -17900,14 +17900,14 @@ msgstr "پسر خواهر  (نسل %s)"
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr "پسر برادر/پسر خواهر  (نسل %s)"
+msgstr "پسر برادر/پسر خواهر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1779
 #: app/Services/RelationshipService.php:1791
 #: app/Services/RelationshipService.php:1807
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "پسریا دختر برادر/پسریا دختر خواهر  (نسل %s)"
+msgstr "پسریا دختر برادر/پسریا دختر خواهر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1695
 #: app/Services/RelationshipService.php:1730
@@ -17915,7 +17915,7 @@ msgstr "پسریا دختر برادر/پسریا دختر خواهر  (نسل %
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "پسریا دختر برادر  (نسل %s)"
+msgstr "پسریا دختر برادر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1699
 #: app/Services/RelationshipService.php:1734
@@ -17923,7 +17923,7 @@ msgstr "پسریا دختر برادر  (نسل %s)"
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "پسریا دختر خواهر  (نسل %s)"
+msgstr "پسریا دختر خواهر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1702
 #: app/Services/RelationshipService.php:1737
@@ -17931,14 +17931,14 @@ msgstr "پسریا دختر خواهر  (نسل %s)"
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "پسریا دختر برادر/پسریا دختر خواهر  (نسل %s)"
+msgstr "پسریا دختر برادر/پسریا دختر خواهر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1776
 #: app/Services/RelationshipService.php:1788
 #: app/Services/RelationshipService.php:1804
 #, php-format
 msgid "great ×%s niece"
-msgstr "دختر برادر/دختر خواهر  (نسل %s)"
+msgstr "دختر برادر/دختر خواهر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1684
 #: app/Services/RelationshipService.php:1719
@@ -17946,7 +17946,7 @@ msgstr "دختر برادر/دختر خواهر  (نسل %s)"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "دختر برادر  (نسل %s)"
+msgstr "دختر برادر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1688
 #: app/Services/RelationshipService.php:1723
@@ -17954,7 +17954,7 @@ msgstr "دختر برادر  (نسل %s)"
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "دختر خواهر  (نسل %s)"
+msgstr "دختر خواهر (نسل %s)"
 
 #: app/Services/RelationshipService.php:1691
 #: app/Services/RelationshipService.php:1726
@@ -17962,7 +17962,7 @@ msgstr "دختر خواهر  (نسل %s)"
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr "دختر برادر/دختر خواهر  (نسل %s)"
+msgstr "دختر برادر/دختر خواهر (نسل %s)"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1437
@@ -18002,27 +18002,27 @@ msgstr "خواهر/برادر جد چهارم"
 
 #: app/Services/RelationshipService.php:2003
 msgid "great ×4 grandchild"
-msgstr "فرزند×4  نوه"
+msgstr "فرزند×4 نوه"
 
 #: app/Services/RelationshipService.php:2000
 msgid "great ×4 granddaughter"
-msgstr "فرزند×4  نوه"
+msgstr "فرزند×4 نوه"
 
 #: app/Services/RelationshipService.php:1839
 msgid "great ×4 grandfather"
-msgstr "پدر×4  پدربزرگ"
+msgstr "پدر×4 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1843
 msgid "great ×4 grandmother"
-msgstr "مادر×4  مادربزرگ"
+msgstr "مادر×4 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1846
 msgid "great ×4 grandparent"
-msgstr "والدین×4  پدر بزرگ/مادر بزرگ"
+msgstr "والدین×4 پدر بزرگ/مادر بزرگ"
 
 #: app/Services/RelationshipService.php:1996
 msgid "great ×4 grandson"
-msgstr "فرزند×4  نوه"
+msgstr "فرزند×4 نوه"
 
 #: app/Services/RelationshipService.php:1596
 msgctxt "(a man’s) brother’s great-great-great-grandson"
@@ -18072,17 +18072,17 @@ msgstr "ندیده"
 #: app/Services/RelationshipService.php:1356
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr "عموی×4  پدربزرگ"
+msgstr "عموی×4 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1360
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr "دایی×4  مادربزرگ"
+msgstr "دایی×4 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1363
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr "دایی/عموی×4  پدربزرگ/مادربزرگ"
+msgstr "دایی/عموی×4 پدربزرگ/مادربزرگ"
 
 #: app/Services/RelationshipService.php:1386
 msgid "great ×5 aunt"
@@ -18094,87 +18094,87 @@ msgstr "خواهر/برادر جد پنجم"
 
 #: app/Services/RelationshipService.php:2014
 msgid "great ×5 grandchild"
-msgstr "فرزند×5  نوه"
+msgstr "فرزند×5 نوه"
 
 #: app/Services/RelationshipService.php:2011
 msgid "great ×5 granddaughter"
-msgstr "فرزند×5  نوه"
+msgstr "فرزند×5 نوه"
 
 #: app/Services/RelationshipService.php:1850
 msgid "great ×5 grandfather"
-msgstr "پدر×5  پدربزرگ"
+msgstr "پدر×5 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1854
 msgid "great ×5 grandmother"
-msgstr "مادر×5  مادربزرگ"
+msgstr "مادر×5 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1857
 msgid "great ×5 grandparent"
-msgstr "والدین×5  پدر بزرگ/مادر بزرگ"
+msgstr "والدین×5 پدر بزرگ/مادر بزرگ"
 
 #: app/Services/RelationshipService.php:2007
 msgid "great ×5 grandson"
-msgstr "فرزند×5  نوه"
+msgstr "فرزند×5 نوه"
 
 #: app/Services/RelationshipService.php:1631
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "فرزند×5  نوه برادر"
+msgstr "فرزند×5 نوه برادر"
 
 #: app/Services/RelationshipService.php:1635
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "فرزند×5  نوهخواهر"
+msgstr "فرزند×5 نوهخواهر"
 
 #: app/Services/RelationshipService.php:1638
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr "فرزند×5  نوه"
+msgstr "فرزند×5 نوه"
 
 #: app/Services/RelationshipService.php:1654
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "فرزند×5  نوه برادر"
+msgstr "فرزند×5 نوه برادر"
 
 #: app/Services/RelationshipService.php:1658
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "فرزند×5  نوه خواهر"
+msgstr "فرزند×5 نوه خواهر"
 
 #: app/Services/RelationshipService.php:1661
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr "فرزند×5  نوه"
+msgstr "فرزند×5 نوه"
 
 #: app/Services/RelationshipService.php:1643
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "فرزند×5  نوه برادر"
+msgstr "فرزند×5 نوه برادر"
 
 #: app/Services/RelationshipService.php:1647
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "فرزند×5  نوه خواهر"
+msgstr "فرزند×5 نوه خواهر"
 
 #: app/Services/RelationshipService.php:1650
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr "فرزند×5  نوه"
+msgstr "فرزند×5 نوه"
 
 #: app/Services/RelationshipService.php:1375
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr "عموی×5  پدربزرگ"
+msgstr "عموی×5 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1379
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr "دایی×5  مادربزرگ"
+msgstr "دایی×5 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1382
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr "دایی/عموی×5  پدربزرگ/مادربزرگ"
+msgstr "دایی/عموی×5 پدربزرگ/مادربزرگ"
 
 #: app/Services/RelationshipService.php:1405
 msgid "great ×6 aunt"
@@ -18186,42 +18186,42 @@ msgstr "خواهر/برادر جد ششم"
 
 #: app/Services/RelationshipService.php:2025
 msgid "great ×6 grandchild"
-msgstr "فرزند×6  نوه"
+msgstr "فرزند×6 نوه"
 
 #: app/Services/RelationshipService.php:2022
 msgid "great ×6 granddaughter"
-msgstr "فرزند×6  نوه"
+msgstr "فرزند×6 نوه"
 
 #: app/Services/RelationshipService.php:1861
 msgid "great ×6 grandfather"
-msgstr "پدر×6  پدربزرگ"
+msgstr "پدر×6 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1865
 msgid "great ×6 grandmother"
-msgstr "مادر×6  مادربزرگ"
+msgstr "مادر×6 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1868
 msgid "great ×6 grandparent"
-msgstr "والدین×6  پدر بزرگ/مادر بزرگ"
+msgstr "والدین×6 پدر بزرگ/مادر بزرگ"
 
 #: app/Services/RelationshipService.php:2018
 msgid "great ×6 grandson"
-msgstr "فرزند×6  نوه"
+msgstr "فرزند×6 نوه"
 
 #: app/Services/RelationshipService.php:1394
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr "عموی×6  پدربزرگ"
+msgstr "عموی×6 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1398
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr "دایی×6  مادربزرگ"
+msgstr "دایی×6 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1401
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr "دایی/عموی×6  پدربزرگ/مادربزرگ"
+msgstr "دایی/عموی×6 پدربزرگ/مادربزرگ"
 
 #: app/Services/RelationshipService.php:1424
 msgid "great ×7 aunt"
@@ -18233,42 +18233,42 @@ msgstr "خواهر/برادر جد هفتم"
 
 #: app/Services/RelationshipService.php:2036
 msgid "great ×7 grandchild"
-msgstr "فرزند×7  نوه"
+msgstr "فرزند×7 نوه"
 
 #: app/Services/RelationshipService.php:2033
 msgid "great ×7 granddaughter"
-msgstr "فرزند×7  نوه"
+msgstr "فرزند×7 نوه"
 
 #: app/Services/RelationshipService.php:1872
 msgid "great ×7 grandfather"
-msgstr "پدر×7  پدربزرگ"
+msgstr "پدر×7 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1876
 msgid "great ×7 grandmother"
-msgstr "مادر×7  مادربزرگ"
+msgstr "مادر×7 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1879
 msgid "great ×7 grandparent"
-msgstr "والدین×7  پدر بزرگ/مادر بزرگ"
+msgstr "والدین×7 پدر بزرگ/مادر بزرگ"
 
 #: app/Services/RelationshipService.php:2029
 msgid "great ×7 grandson"
-msgstr "فرزند×7  نوه"
+msgstr "فرزند×7 نوه"
 
 #: app/Services/RelationshipService.php:1413
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr "عموی×7  پدربزرگ"
+msgstr "عموی×7 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1417
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr "دایی×7  مادربزرگ"
+msgstr "دایی×7 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1420
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr "والدین×7  پدر بزرگ/مادر بزرگ"
+msgstr "والدین×7 پدر بزرگ/مادر بزرگ"
 
 #: app/Services/RelationshipService.php:1097
 msgctxt "father’s father’s brother’s wife"
@@ -18633,27 +18633,27 @@ msgstr "مادر پدربزرگ/مادربزرگ"
 #: app/Services/RelationshipService.php:789
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr "والدین  پدربزرگ"
+msgstr "والدین پدربزرگ"
 
 #: app/Services/RelationshipService.php:801
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr "والدین  مادربزرگ"
+msgstr "والدین مادربزرگ"
 
 #: app/Services/RelationshipService.php:813
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr "والدین  پدربزرگ/مادربزرگ"
+msgstr "والدین پدربزرگ/مادربزرگ"
 
 #: app/Services/RelationshipService.php:869
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr "والدین  پدربزرگ"
+msgstr "والدین پدربزرگ"
 
 #: app/Services/RelationshipService.php:887
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr "والدین  مادربزرگ"
+msgstr "والدین مادربزرگ"
 
 #: app/Services/RelationshipService.php:899
 msgctxt "mother’s parent’s parent"
@@ -18742,11 +18742,11 @@ msgstr "پدر×2 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1821
 msgid "great-great-grandmother"
-msgstr "مادر×2  مادربزرگ"
+msgstr "مادر×2 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1824
 msgid "great-great-grandparent"
-msgstr "پدر×2 پدربزرگ/مادر×2  مادربزرگ"
+msgstr "پدر×2 پدربزرگ/مادر×2 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1974
 msgid "great-great-grandson"
@@ -18774,11 +18774,11 @@ msgstr "پدر×3 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1832
 msgid "great-great-great-grandmother"
-msgstr "مادر×3  مادربزرگ"
+msgstr "مادر×3 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1835
 msgid "great-great-great-grandparent"
-msgstr "پدر×3 پدربزرگ/مادر×3  مادربزرگ"
+msgstr "پدر×3 پدربزرگ/مادر×3 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1985
 msgid "great-great-great-grandson"
@@ -18832,17 +18832,17 @@ msgstr "ندیده"
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "برادر پدر×2  پدربزرگ"
+msgstr "برادر پدر×2 پدربزرگ"
 
 #: app/Services/RelationshipService.php:1341
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "برادر مادر×2  مادربزرگ"
+msgstr "برادر مادر×2 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1344
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr "برادر پدر×2  پدربزرگ/مادر×2  مادربزرگ"
+msgstr "برادر پدر×2 پدربزرگ/مادر×2 مادربزرگ"
 
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
@@ -20018,7 +20018,7 @@ msgstr "عمو/دایی/عمه/خاله زاده نَسَب دوم"
 #: app/Services/RelationshipService.php:2290
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr "دختر عمو/دایی/عمه/خاله  نَسَب دوم"
+msgstr "دختر عمو/دایی/عمه/خاله نَسَب دوم"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2239

@@ -1881,8 +1881,8 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Gràfic de rellotge de sorra dels ascendents i descendents d'una persona."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr "Una persona pot tenir més d’una parella de pares.  Per exemple de naixement i d'adopció."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
+msgstr "Una persona pot tenir més d’una parella de pares. Per exemple de naixement i d'adopció."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -5875,7 +5875,7 @@ msgstr "S’està exportant tots els arbres genealògics a fitxers GEDCOM…"
 msgid "Export preferences"
 msgstr "Opcions d'exportació"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Estén la privadesa per a persones difuntes"
@@ -7753,7 +7753,7 @@ msgstr "Aquest mes…"
 msgid "In this year…"
 msgstr "Enguany…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "A la versió 1 de webtrees, podeu afegir miniatures personalitzades a objectes multimèdia creant fitxers a les carpetes \"thumbs\"."
@@ -11201,8 +11201,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Sovint els noms d’indrets solen ésser massa llargs per a cabre als gràfics, llistes, etc. Podeu abreujar-los mostrant només la primera part del nom, com <i>poble, comtat</i>, o l’última part com <i>regió, país</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Els noms d'indret poden canviar amb el pas del temps.  En genealogia, és habitual utilitzar el nom actual per a un poble o país. El nom històric es pot mostrar en fonts, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "Els noms d'indret poden canviar amb el pas del temps. En genealogia, és habitual utilitzar el nom actual per a un poble o país. El nom històric es pot mostrar en fonts, notes, etc."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -14493,7 +14493,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Abans de crear el compte se li demanarà al nou usuari que confirmi la seva adreça de correu electrònic."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21737,7 +21737,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Si el nombre de vegades que un cognom es repeteix és inferior al prefixat, no sortirà a la llista. Però podeu afegir-n’hi manualment. Si hi entreu més d’un cognom, cal que els separeu entre si amb una coma. <b>Cal respectar les majúscules i minúscules.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Si la imatge en miniatura és la mateixa que la imatge original, ja no és necessaria i hauríeu de suprimir-la. Si és una imatge personalitzada, heu d'afegir-la a l'objecte multimèdia."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

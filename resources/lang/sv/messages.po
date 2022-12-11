@@ -1881,7 +1881,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Ett timglasdiagram av en persons förfäder och ättlingar."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "En individ kan ha mer än en uppsättning föräldrar. Till exempel födelse och adoption."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5875,7 +5875,7 @@ msgstr "Exportera alla släktträd till GEDCOM-filer…"
 msgid "Export preferences"
 msgstr "Exportalternativ"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Integritetsregler gäller även döda"
@@ -7753,7 +7753,7 @@ msgstr "Historiska händelser denna månad…"
 msgid "In this year…"
 msgstr "Historiska händelser detta år…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "I webtrees version 1 kan du lägga till egna miniatyrbilder till medieobjekt genom att skapa filer i \"thumbs\" mapparna."
@@ -11201,7 +11201,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Fullständiga ortnamn är ofta alltför långa för att få plats i diagram, listor, osv. De kan förkortas genom att visa endast de allra första delarna av namnet, t.ex. <i>by, socken</i>, eller de allra sista, t.ex. <i>län, land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Ortnamn kan ändras över tid. I släktforskning är det vanligt att använda det aktuella namnet för en stad eller land. Det historiska namnet kan visas i källor, anteckningar, osv."
 
 #: resources/views/help/place.phtml:10
@@ -14486,14 +14486,14 @@ msgstr "De vanligaste familje fakta och händelser listas separat, så att de ka
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:658
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "De vanligaste  personfakta och -händelser listas separat, så att de kan tillsättas lättare."
+msgstr "De vanligaste personfakta och -händelser listas separat, så att de kan tillsättas lättare."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr "Den nya användaren ombeds att bekräfta sin e-postadress innan kontot skapas."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -15862,7 +15862,7 @@ msgstr "Unik identifierare"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "Unika identifierare tillåter samma post i olika familjeträd och i olika system. De kommer att läggas till när poster skapas eller uppdateras. Om du inte vill att unika  identifierare skall visas, kan du dölja dem med hjälp av privatskyd."
+msgstr "Unika identifierare tillåter samma post i olika familjeträd och i olika system. De kommer att läggas till när poster skapas eller uppdateras. Om du inte vill att unika identifierare skall visas, kan du dölja dem med hjälp av privatskyd."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
@@ -21745,7 +21745,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Om antalet gånger ett efternamn förekommer är mindre än tröskeln, så kommer det inte med i listan. Det kan här läggas till manuellt. Om mer än ett efternamn skrivs in, måste de vara separerad med kommatecken. <b>Efternamn är skiftlägeskänsliga.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Om miniatyrbilden är densamma som originalbilden är den inte längre nödvändig och du bör ta bort den. Om den är en anpassad bild, bör du lägga till den i medieobjektet."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

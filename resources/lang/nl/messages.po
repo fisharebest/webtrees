@@ -1881,7 +1881,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Een zandloper diagram met de voorouders en afstammelingen van een persoon."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Een persoon kan meerdere ouders hebben. Bijvoorbeeld biologische en adoptie ouders."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5875,7 +5875,7 @@ msgstr "Exporteer alle stambomen naar GEDCOM-bestanden…"
 msgid "Export preferences"
 msgstr "Opties voor exporteren"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Breid privacy uit met overleden personen"
@@ -7753,7 +7753,7 @@ msgstr "In deze maand…"
 msgid "In this year…"
 msgstr "In dit jaar…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "In webtrees versie 1 kon u aangepaste miniatuurafbeeldingen toevoegen aan het mediaobject door bestanden aan te maken in de “thumbs”-mappen."
@@ -11201,8 +11201,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Plaatsnamen zijn vaak te lang om op diagrammen, lijsten etc. te tonen. Ze kunnen worden afgekort door alleen de eerste delen van de naam te tonen, zoals <i>plaats, gemeente</i>, of het laatste gedeelte er van zoals <i>provincie. land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Plaatsnamen wijzigen in de tijd.  In genealogie is het gebruikelijk om de huidige naam voor een plaats of land te gebruiken. De historische naam kan aan de bron, notities, enz. worden toegevoegd."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "Plaatsnamen wijzigen in de tijd. In genealogie is het gebruikelijk om de huidige naam voor een plaats of land te gebruiken. De historische naam kan aan de bron, notities, enz. worden toegevoegd."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -14493,7 +14493,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "De nieuwe gebruiker zal worden gevraagd om zijn/haar e-mailadres te bevestigen voordat het account wordt aangemaakt."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21746,7 +21746,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Als het aantal malen dat een achternaam in de genealogie voorkomt lager is dan de drempelwaarde, verschijnt de naam niet op de lijst. De achternaam kan dan hier handmatig worden toegevoegd. Als er meer namen worden opgegeven, moeten ze met een komma worden gescheiden.<b>Achternamen zijn hoofdlettergevoelig.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Als de miniatuur afbeelding hetzelfde is als de originele afbeelding, is deze niet langer nodig en kun je deze verwijderen. Als het een aangepaste afbeelding betreft, zal je deze aan het media object moeten toevoegen."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

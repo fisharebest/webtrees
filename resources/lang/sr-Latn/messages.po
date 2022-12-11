@@ -1900,7 +1900,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Prikaz predaka i potomaka pojedinca u grafikonu \"peščani sat\"."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Osoba može imati više od jednog skupa roditelja. Na primer, biološke i usvojiteǉe."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5895,7 +5895,7 @@ msgstr "Izvezi sva porodična stabla u GEDCOM datoteke…"
 msgid "Export preferences"
 msgstr "Izvezi podešavanja"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Proširi nivo privatnosti na mrtve osobe"
@@ -7773,7 +7773,7 @@ msgstr "U ovom mesecu…"
 msgid "In this year…"
 msgstr "U ovoj godini…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "U webtrees verziji 1, možete dodati prilagođene sličice medijskim objektima kreiranjem datoteka u fascikli „thumbs“."
@@ -7803,7 +7803,7 @@ msgstr "Uključi podfoldere"
 
 #: resources/views/modules/custom-css-js/edit.phtml:40
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr "Uključi  <code>&lt;script&gt;&lt;/script&gt;</code> oznake."
+msgstr "Uključi <code>&lt;script&gt;&lt;/script&gt;</code> oznake."
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
@@ -11223,7 +11223,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Ime mesta je često predugačko da stane na grafikone, liste, itd. Ono može biti skraćeno da prikazuje samo prvih nekoliko delova imena, kao na primer <i>selo, država</i>, ili poslednjih nekoliko delova imena, kao na primer <i>regija, država</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Imena mesta se mogu vremenom promeniti. Uobičajeno je u genealogiji koristiti sadašnji naziv za grad ili državu. Istorijsko ime se može napisati u izvorima, beleškama itd."
 
 #: resources/views/help/place.phtml:10
@@ -14182,7 +14182,7 @@ msgstr "Tajland"
 
 #: resources/views/help/name.phtml:10
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "Polje <b>ime</b> sadrži puno ime i prezime osobe,  onako kako se izgovara ili kako je zapisano. Tako će se prikazati na ekranu. Koristi standardne genealoške beleške za identifikaciju različitih delova imena."
+msgstr "Polje <b>ime</b> sadrži puno ime i prezime osobe, onako kako se izgovara ili kako je zapisano. Tako će se prikazati na ekranu. Koristi standardne genealoške beleške za identifikaciju različitih delova imena."
 
 #: resources/views/help/surname.phtml:10
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -14515,7 +14515,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Od novog korisnika će biti zatražena potvrda email adrese pre nego što se korisnički nalog kreira."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -15433,7 +15433,7 @@ msgstr "Do"
 
 #: resources/views/modules/html/config.phtml:34
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
-msgstr "Da bismo vam pomogli da počnete sa ovim blokom, napravili smo nekoliko standardnih šablona. Kada izaberete jedan od ovih šablona,  tekst polje će sadržati primer koji možete da izmenite u skladu sa zahtevima vaše web stranice."
+msgstr "Da bismo vam pomogli da počnete sa ovim blokom, napravili smo nekoliko standardnih šablona. Kada izaberete jedan od ovih šablona, tekst polje će sadržati primer koji možete da izmenite u skladu sa zahtevima vaše web stranice."
 
 #: resources/views/admin/tags.phtml:1010
 msgid "To create new data using custom tags, you need to enable them."

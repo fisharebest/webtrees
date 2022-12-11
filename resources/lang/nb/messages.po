@@ -1877,8 +1877,8 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Et timeglassdiagram over en persons aner og etterkommere."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr "En person kan ha mer enn ett sett foreldre.  For eksempel ved adopsjon."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
+msgstr "En person kan ha mer enn ett sett foreldre. For eksempel ved adopsjon."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -5871,7 +5871,7 @@ msgstr "Eksportere alle slektstrærne til GEDCOM-filer…"
 msgid "Export preferences"
 msgstr "Eksportinnstillinger"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Utvid personvernsinnstillinger til avdøde personer"
@@ -7749,7 +7749,7 @@ msgstr "I denne måned…"
 msgid "In this year…"
 msgstr "Familiehendelser i år…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "I webtrees version 1 kunne tilpassede miniatyrbilder føyes til medieobjekter ved å opprette egne filer i mappene “thumbs”."
@@ -7779,7 +7779,7 @@ msgstr "Inkluder undermapper"
 
 #: resources/views/modules/custom-css-js/edit.phtml:40
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr "Inkluder  <code>&lt;script&gt;&lt;/script&gt;</code> kodene."
+msgstr "Inkluder <code>&lt;script&gt;&lt;/script&gt;</code> kodene."
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
@@ -11197,8 +11197,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Stedsnavn er ofte for lange til å passe i skjemaer, lister osv. Disse kan forkortes ved bare å vise de første delene av navnet, som for eksempel <i>by, kommune</i>, eller siste deler av navnet, som for eksempel <i>fylke, land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Stednavn kan endre seg over tid.  I genealogi er det vanlig å bruke nåværende navn på by eller land. Historiske navn kan vises i kilder, notater, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "Stednavn kan endre seg over tid. I genealogi er det vanlig å bruke nåværende navn på by eller land. Historiske navn kan vises i kilder, notater, etc."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -13502,7 +13502,7 @@ msgstr "Noen slektsprogrammer oppretter GEDCOM-filer som inneholder filnavn med 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr "Noen slektsprogrammer lagrer alle navn under en enkelt post, ved å benytte egendefinerte underposter som  _MARNM og  _AKA. Et alternativ er å opprette nye poster for hvert navn."
+msgstr "Noen slektsprogrammer lagrer alle navn under en enkelt post, ved å benytte egendefinerte underposter som _MARNM og _AKA. Et alternativ er å opprette nye poster for hvert navn."
 
 #: resources/views/admin/tags.phtml:36
 msgid "Some of these GEDCOM tags are used infrequently or never used."
@@ -14489,7 +14489,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Den nye brukeren vil bli bedt om å bekrefte sin e-postadresse før brukerkontoen opprettes."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -16574,7 +16574,7 @@ msgstr "Du kan nummerere postene i dette slektstreet på nytt."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Du kan velge tilgjengeligheten for en gitt post, fakta, eller hendelse ved å legge til en restriksjon.  Dersom en post, fakta, eller hendelse ikke har en restriksjon, vil følgende standard restriksjon brukes."
+msgstr "Du kan velge tilgjengeligheten for en gitt post, fakta, eller hendelse ved å legge til en restriksjon. Dersom en post, fakta, eller hendelse ikke har en restriksjon, vil følgende standard restriksjon brukes."
 
 #: resources/views/admin/tags.phtml:38
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
@@ -21692,7 +21692,7 @@ msgstr "…"
 #~ msgstr "Google Street View™"
 
 #~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-#~ msgstr "Google tillater bare et fåtall anonyme kartspørringer per dag.  Om du behøver flere enn dette, må du ha en Google-konto og en API-kode."
+#~ msgstr "Google tillater bare et fåtall anonyme kartspørringer per dag. Om du behøver flere enn dette, må du ha en Google-konto og en API-kode."
 
 #~ msgid "Google™ maps preferences"
 #~ msgstr "Innstillinger for Google™ maps"
@@ -21739,7 +21739,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Dersom et bestemt etternavn ikke finnes mange nok ganger til å kunne bli vist i listen over de vanligste etternavnene, kan det her bli lagt til manuelt. Dersom det legges inn flere navn, må de skilles med et komma. <b>Det skilles mellom store og små bokstaver.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Hvis miniatyrbildet er det samme som det opprinnelige bildet, trengs det ikke lenger men bør slettes. Hvis det er et tilpasset miniatyrbilde, må det legges til i medieobjektet."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -22522,7 +22522,7 @@ msgstr "…"
 #~ msgstr "Passordene stemmer ikke overens."
 
 #~ msgid "The preferences for the chart “%s” have been updated."
-#~ msgstr "Forhåndsinnstillingen for diagrammet  “%s 1” har blitt oppdatert."
+#~ msgstr "Forhåndsinnstillingen for diagrammet “%s 1” har blitt oppdatert."
 
 #~ msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
 #~ msgstr "Det er valgfritt å bruke prefiks, men anbefalt. Ved å gi tabellen et unikt prefiks, kan flere applikasjoner dele samme database. «wt_» er foreslått, men du står fritt til å velge."

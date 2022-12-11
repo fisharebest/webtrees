@@ -333,7 +333,7 @@ msgstr "%s elsőfokú unokatestvére"
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
 msgstr[0] "%s adattár frissítése megtörtént."
-msgstr[1] "%s  adattár frissítése megtörtént."
+msgstr[1] "%s adattár frissítése megtörtént."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -984,7 +984,7 @@ msgstr "Jelentés egy adott idővel vagy hellyel kapcsolatos lényeges bejegyzé
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "A szerepkör jogosultságok gyűjteménye, amely feljogosít adatok megtekintésére, beállítások módosítására stb. A hozzáférési jogok szerepkörökhöz tartoznak, a szerepkörök pedig engedélyt nyújtanak a felhasználóknak. Minden családfában eltérő hozzáférési jogok  tartozhatnak az egyesszerepkörökhöz, és a felhasználók különböző szerepkörrel rendelkezhetnek az egyes családfákban."
+msgstr "A szerepkör jogosultságok gyűjteménye, amely feljogosít adatok megtekintésére, beállítások módosítására stb. A hozzáférési jogok szerepkörökhöz tartoznak, a szerepkörök pedig engedélyt nyújtanak a felhasználóknak. Minden családfában eltérő hozzáférési jogok tartozhatnak az egyesszerepkörökhöz, és a felhasználók különböző szerepkörrel rendelkezhetnek az egyes családfákban."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -1882,7 +1882,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Egy személy őseinek és utódainak homokóraábrája."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Az egyénnek több szülőpárja is lehet. Például vér szerinti és nevelőszülő."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5876,7 +5876,7 @@ msgstr "Az összes családfa mentése GEDCOM-fájlba…"
 msgid "Export preferences"
 msgstr "Kimentési beállítások"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Adatvédelem kiterjesztése halott személyekre"
@@ -6597,7 +6597,7 @@ msgstr "Például, ha Ön 2 útvonalhosszat határoz meg, a személy láthatja a
 
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "Például gyorsan megtalálhatjuk a haláleset nélküli személyeket,  de sokkal időigényesebb kiszámolni, hogy az egyén feltehetőleg elhunyt."
+msgstr "Például gyorsan megtalálhatjuk a haláleset nélküli személyeket, de sokkal időigényesebb kiszámolni, hogy az egyén feltehetőleg elhunyt."
 
 #: app/Module/ContactsFooterModule.php:147
 #, php-format
@@ -7754,7 +7754,7 @@ msgstr "Ebben a hónapban…"
 msgid "In this year…"
 msgstr "Ebben az évben…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "A webtrees 1 verzióban a médiaobjektumokhoz egyéni bélyegképet lehetett adni egy fájl létrehozásával a “thumbs” mappában."
@@ -11202,8 +11202,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "A helynevek gyakran túl hosszúak, és nem férnek el az ábrákon, listákon stb. Lerövidíthetők csak a név első, pl.: <i>település, megye</i> vagy csak az utolsó néhány szavának mutatásával, pl.: <i>régió, ország</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "A helynevek idővel változhatnak. A genealógiában a város vagy ország jelenlegi nevét szokás használni. A történelmi név forrásokban, jegyzetekben, stb.  jeleníthető meg."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "A helynevek idővel változhatnak. A genealógiában a város vagy ország jelenlegi nevét szokás használni. A történelmi név forrásokban, jegyzetekben, stb. jeleníthető meg."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -14494,7 +14494,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "A fiók létrehozása előtt az új felhasználót felkérjük az e-mail címe megerősítésére."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -14814,7 +14814,7 @@ msgstr "Ezek a szolgáltatások sütiket vagy más nyomkövető technológiát h
 
 #: app/Http/RequestHandlers/LoginAction.php:132
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr "A fiók jóváhagyása még nem történt meg. Kérjük várjon, amíg egy rendszergazda  jóváhagyja."
+msgstr "A fiók jóváhagyása még nem történt meg. Kérjük várjon, amíg egy rendszergazda jóváhagyja."
 
 #: app/Http/RequestHandlers/LoginAction.php:127
 msgid "This account has not been verified. Please check your email for a verification message."
@@ -15269,7 +15269,7 @@ msgstr "Csütörtök"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:197
 msgid "Tijuana, Mexico"
-msgstr "Tijuana,  Mexikó"
+msgstr "Tijuana, Mexikó"
 
 #: app/CustomTags/Gedcom7.php:78 app/CustomTags/Gedcom7.php:105
 #: app/Gedcom.php:502
@@ -16399,7 +16399,7 @@ msgstr "Amikor egy látogató felhasználói fiókot igényel, egy ellenőrző h
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr "Egynél több házastárs esetén a családokat időrendi sorrendbe  kell rakni."
+msgstr "Egynél több házastárs esetén a családokat időrendi sorrendbe kell rakni."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:698
@@ -20990,7 +20990,7 @@ msgstr "…"
 #~ msgid "%s location has been imported."
 #~ msgid_plural "%s locations have been imported."
 #~ msgstr[0] "%s hely betöltődött."
-#~ msgstr[1] "%s  hely betöltődött."
+#~ msgstr[1] "%s hely betöltődött."
 
 #~ msgid "%s minute ago"
 #~ msgid_plural "%s minutes ago"
@@ -21426,7 +21426,7 @@ msgstr "…"
 #~ msgstr "CEME TAG átalakítása GEDCOM 5.5.1-re"
 
 #~ msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-#~ msgstr "_XXX címke GEDCOM 5.5.1 szerinti  formázás"
+#~ msgstr "_XXX címke GEDCOM 5.5.1 szerinti formázás"
 
 #~ msgid "Convert _PRIM tags to GEDCOM 5.5.1"
 #~ msgstr "_PRIM TAG átalakítása GEDCOM 5.5.1-re"
@@ -21711,7 +21711,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Ha egy vezetéknév előfordulása nem éri el a küszöbértéket, nem jelenik meg a listában, azonban itt felvehető kézileg. Egynél több nevet vesszővel kell elválasztani. <b>A vezetéknevek érzékenyek a kis- és nagybetűk közötti különbségre.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Ha bélyegkép megegyezik az eredeti képpel, akkor többé már szükségtelen és törölni kell. Ha ez egy egyéni kép, akkor a médiaobjektumhoz kell adni."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -21727,7 +21727,7 @@ msgstr "…"
 #~ msgstr "Egy üres blokk elrejtése után nem változtatható meg a beállítása, amíg újra láthatóvá nem válik azzal, hogy többé nem üres."
 
 #~ msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-#~ msgstr "Kéttényezős hitelesítés esetén hozzon létre egy  <a href=\"https://myaccount.google.com/apppasswords\">alkalmazásjelszót</a>."
+#~ msgstr "Kéttényezős hitelesítés esetén hozzon létre egy <a href=\"https://myaccount.google.com/apppasswords\">alkalmazásjelszót</a>."
 
 #~ msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 #~ msgstr "Egy vezetéknév a küszöbérték növelése nélkül úgy is eltávolítható a „Gyakori vezetéknevek” listájáról, ha ide beírja. Egynél több vezetéknevet vesszővel kell elválasztani. <b>A vezetéknevek érzékenyek a kis- és nagybetűk közötti különbségre</b>. Az itt megadott vezetéknevek a „Honlap” „Leggyakoribb vezetéknevek” listájáról is lekerülnek."
@@ -22557,7 +22557,7 @@ msgstr "…"
 
 #, php-format
 #~ msgid "This could be caused by an error at %s"
-#~ msgstr "A hiba okának eredete itt kereshető:  %s"
+#~ msgstr "A hiba okának eredete itt kereshető: %s"
 
 #~ msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
 #~ msgstr "Úgy tűnik, ezt az adatbázis- és táblaelőtagot egy másik alkalmazás használja. Ha van egy létező PhpGedView-rendszere, létre kell hoznia egy új webtrees-rendszert. A PhpGedView-adatokat és -beállításokat később betöltheti."

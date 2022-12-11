@@ -1877,7 +1877,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Адамның ата-бабаларының және ұрпақтарының сағаттары."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 #. I18N: Description of the “Interactive tree” module
@@ -5871,7 +5871,7 @@ msgstr "Барлық отбасылық ағаштарды GEDCOM файлдар
 msgid "Export preferences"
 msgstr "Экспорттау теңшелімдері"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Жеке тұлғаларға жеке өмірін кеңейтіңіз"
@@ -7749,7 +7749,7 @@ msgstr "Осы айда…"
 msgid "In this year…"
 msgstr "Биылғы жылы …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "В webtrees 1-нұсқасында, «бас бармайды» қалталарда файлдарды жасау арқылы пайдаланушылық бейнелерді медиа нысандарына қосуға болады."
@@ -11197,7 +11197,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Орналасқан жерлердің атауы кестелерге, тізімдерге және басқаларға жиі тым ұзын болады. Олар <i> village, county</i> немесе соңғы бірнеше бөлігі сияқты аттың алғашқы бірнеше бөлігін көрсету арқылы қысқартылуы мүмкін , мысалы <i> аймақ, ел</i> сияқты."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
 
 #: resources/views/help/place.phtml:10
@@ -14489,7 +14489,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Жаңа пайдаланушыдан тіркелгі жасалмас бұрын электрондық поштасын растау сұралады."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21407,7 +21407,7 @@ msgstr "…"
 #~ msgid "Icon"
 #~ msgstr "Белгіше"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Егер нобай кескіні бастапқы суретмен бірдей болса, онда ол қажет емес және оны жою керек. Егер бұл пайдаланушы сурет болса, оны медиа нысанына қосыңыз."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

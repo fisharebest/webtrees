@@ -852,7 +852,7 @@ msgstr ""
 #: resources/views/emails/verify-notify-text.phtml:17
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Un novèl utilizaire  (%1$s) a demandat un compte (%2$s) e a verificat son adreça de corrièr electrònic (%3$s)."
+msgstr "Un novèl utilizaire (%1$s) a demandat un compte (%2$s) e a verificat son adreça de corrièr electrònic (%3$s)."
 
 #: app/Http/RequestHandlers/LoginAction.php:80
 #: app/Module/CheckForNewVersion.php:99
@@ -1896,7 +1896,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 #. I18N: Description of the “Interactive tree” module
@@ -5126,7 +5126,7 @@ msgstr "Suprimir los messatges seleccionats"
 
 #: resources/views/admin/modules.phtml:49
 msgid "Delete the preferences for this module."
-msgstr "Suprimir las  preferéncias per aquel mòdul."
+msgstr "Suprimir las preferéncias per aquel mòdul."
 
 #: resources/views/individual-page-name.phtml:92
 #: resources/views/individual-page-name.phtml:94
@@ -5837,7 +5837,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:369
 msgid "Estimated dates for birth and death"
-msgstr "Datas suposadas per la  naissença e lo decès"
+msgstr "Datas suposadas per la naissença e lo decès"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:181
@@ -5939,7 +5939,7 @@ msgstr "Expòrtar totes los arbres genealogics a fichièrs GEDCOM…"
 msgid "Export preferences"
 msgstr ""
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr ""
@@ -7846,7 +7846,7 @@ msgstr "Aquel mes…"
 msgid "In this year…"
 msgstr "Aquela annada…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
@@ -11350,7 +11350,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr ""
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
 
 #: resources/views/help/place.phtml:10
@@ -14712,7 +14712,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr ""
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21878,7 +21878,7 @@ msgstr "…"
 #~ msgstr "Utilizar PHP per enviar messatges"
 
 #~ msgid "Use the GeoNames database for autocomplete on places"
-#~ msgstr "Utiizar la basa de donadas  GeoNames per autocompletar los luòcs"
+#~ msgstr "Utiizar la basa de donadas GeoNames per autocompletar los luòcs"
 
 #~ msgid "Use this image for charts and on the individual’s page."
 #~ msgstr "Utilizar aquela image pels grafics e a la pagina de la persona."

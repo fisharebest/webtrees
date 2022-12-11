@@ -2013,7 +2013,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "同时显示个人祖先和后代的类似沙漏形状的图表。"
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "一个人可以具有不止一对父母：例如，出生和过继。"
 
 # I18N: Description of the “Interactive tree” module
@@ -6290,8 +6290,8 @@ msgstr "导出所有的家族树到GEDCOM文件…"
 msgid "Export preferences"
 msgstr "导出选项"
 
-# I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+# I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "扩展隐私到死人"
@@ -8321,8 +8321,8 @@ msgstr "在这个月…"
 msgid "In this year…"
 msgstr "在这一年…"
 
-# I18N: "thumbs" is fixed text.  Do not change it.
-#. I18N: "thumbs" is fixed text.  Do not change it.
+# I18N: "thumbs" is fixed text. Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "在webtrees版本1中，您可以在“thumbs”文件夹中为多媒体文件添加自定义缩略图。"
@@ -12075,7 +12075,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "地名往往太长,为适应图、列表等，它们可能被缩写展示只是第一几部分的名称,如<i>village, county</i>,或最后几部分,如<i>region, country</i>。"
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "地名会随着时间的推移而改变。在族谱中，习惯上用现在的地名来称呼一个城镇或国家。历史名称可以在资料、笔记等中显示。"
 
 #: resources/views/help/place.phtml:10
@@ -15652,7 +15652,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "新用户在创建账户之前，要验证他们的电子邮件地址。"
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -22679,7 +22679,7 @@ msgstr "…"
 #~ msgid "Historical facts"
 #~ msgstr "历史事实"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "如果缩略图图像与原始图像相同，则不再需要它，您应该将其删除。如果是自定义缩略图，则应将其添加到媒体对象中。"
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

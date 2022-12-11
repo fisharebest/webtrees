@@ -845,7 +845,7 @@ msgstr "’n Lys van gebruikers en besoekers wat tans aanlyn is."
 
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "’n Mediavoorwerp is ’n rekord in die stamboom wat inligting bevat oor ’n medialêer. Hierdie inligting kan ’n titel,  ’n kopieregkennisgewing, ’n afskrif, privaatheidsbeperkinge ens insluit. Die medialêer, byv. ’n foto of video, kan plaaslik (op hierdie webbediener) of elders (op ’n ander webbediener) geberg word."
+msgstr "’n Mediavoorwerp is ’n rekord in die stamboom wat inligting bevat oor ’n medialêer. Hierdie inligting kan ’n titel, ’n kopieregkennisgewing, ’n afskrif, privaatheidsbeperkinge ens insluit. Die medialêer, byv. ’n foto of video, kan plaaslik (op hierdie webbediener) of elders (op ’n ander webbediener) geberg word."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -1877,8 +1877,8 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "'n Uurglasdiagram van 'n persoon se voor- en nageslagte."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr "’n Persoon kan meer as een stel ouers hê.  Byvoorbeeld, geboorte of aangenome."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
+msgstr "’n Persoon kan meer as een stel ouers hê. Byvoorbeeld, geboorte of aangenome."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -5871,7 +5871,7 @@ msgstr "Voer al die stambome uit na GEDCOM lêers…"
 msgid "Export preferences"
 msgstr "Voer die voorkeure uit"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Brei privaatheid uit na oorlede persone"
@@ -7749,7 +7749,7 @@ msgstr "In hierdie maand…"
 msgid "In this year…"
 msgstr "In hierdie jaar…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "In die eerste weergawe van webtrees, kon jy miniatuurbeelde aan media-objekte voeg deur lêers in die “thumbs” lêergids te skep."
@@ -8388,7 +8388,7 @@ msgstr "LDS skenking"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:126
 msgid "LDS initiatory"
-msgstr "LDS  was en salwing"
+msgstr "LDS was en salwing"
 
 #: app/Gedcom.php:479
 msgid "LDS spouse sealing"
@@ -11197,8 +11197,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Plekname is baie keer te lank om op diagramme, lyste, ens, te pas. Hulle kan afgekort word deur slegs die eerste dele van die naam te wys, soos <i>plek, streek</i>, of die laatste gedeeltes daarvan soos <i>provinsie, land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Plekname  kan mettertyd verander.  In genealogie is dit die gebruik om die huidige naam vir ’n dorp of land te gebruik. Die historiese name kan in die bronne, notas, ens. gewys word."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "Plekname kan mettertyd verander. In genealogie is dit die gebruik om die huidige naam vir ’n dorp of land te gebruik. Die historiese name kan in die bronne, notas, ens. gewys word."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -14489,7 +14489,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Die nuwe gebruiker sal gevra word om sy/haar eposadres te bevestig voordat die rekening geskep word."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -20893,7 +20893,7 @@ msgstr "“%s” is geskrap."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "“Verligte beelde” (_PRIM) etikette word deur sommige genealogiese toepassings gebruik om die voorkeur beeld van ’n persoon aan te dui. Alternatiewelik kan die die beelde herrangskik word sodat die  voorkeur beeld eerste is."
+msgstr "“Verligte beelde” (_PRIM) etikette word deur sommige genealogiese toepassings gebruik om die voorkeur beeld van ’n persoon aan te dui. Alternatiewelik kan die die beelde herrangskik word sodat die voorkeur beeld eerste is."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
@@ -21738,7 +21738,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "As die aantal kere wat 'n van in die genealogie voorkom minder is as die drempelwaarde, sal die naam nie op de lys verskyn nie. Dit kan hier met die hand bygevoeg word. As meer as een van ingevoer word, moet hulle deur 'n komma geskei word.<b>Vanne is hooflettergevoelig.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "As die miniatuurbeeld dieselfde as die oorspronklike is, word dit nie meer benodig nie en behoort jy dit te verwyder. Indien dit 'n aangepaste beeld is, moet jy dit by die media-objek byvoeg."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

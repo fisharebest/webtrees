@@ -1950,7 +1950,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Siart awrwydr o hynafiaid a disgynyddion unigolyn."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Gall unigolyn gael mwy nag un set o rieni. Er enghraifft, genedigaeth a mabwysiadwyd."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5948,7 +5948,7 @@ msgstr "Allforio'r cart achau cyfan i ffeiliau GEDCOM…"
 msgid "Export preferences"
 msgstr "Dewisiadau allforio"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Estyn preifatrwydd i unigolion marw"
@@ -7826,7 +7826,7 @@ msgstr "Yn y mis hwn…"
 msgid "In this year…"
 msgstr "Eleni…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "Yn fersiwn 1 webtrees, roeddech chi'n gallu ychwanegu lluniau bach wedi'u haddasu at wrthrychau cyfryngau trwy greu ffeiliau yn y ffolderi “thumbs”."
@@ -11282,7 +11282,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Mae enwau lleoedd yn aml yn rhy hir i ffitio ar siartiau, rhestrau, ac ati. Mae modd eu talfyrru trwy ddangos dim ond ychydig rannau cyntaf yr enw, fel <i>pentref, sir</i> , neu'r ychydig ran olaf ohono, fel <i>rhanbarth, gwlad</i> ."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Gall enwau lleoedd newid dros amser. Mewn achau, mae'n arferol defnyddio'r enw cyfredol ar gyfer tref neu wlad. Mae modd dangos yr enw hanesyddol mewn ffynonellau, nodiadau, ac ati."
 
 #: resources/views/help/place.phtml:10
@@ -14458,7 +14458,7 @@ msgstr "Mae'r ffeithiau a'r digwyddiadau canlynol yn y ddau gofnod."
 #: resources/views/admin/merge-records-step-2.phtml:132
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Dim ond yng nghofnod  %s y cafwyd y ffeithiau a'r digwyddiadau canlynol."
+msgstr "Dim ond yng nghofnod %s y cafwyd y ffeithiau a'r digwyddiadau canlynol."
 
 #: resources/views/setup/step-2-server-checks.phtml:67
 msgid "The following list shows typical requirements."
@@ -14574,7 +14574,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Bydd gofyn i'r defnyddiwr newydd gadarnhau ei gyfeiriad e-bost cyn i'r cyfrif gael ei greu."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65

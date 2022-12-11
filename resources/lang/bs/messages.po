@@ -1895,7 +1895,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Grafikon \"pješčani sat\" predaka i potomaka pojedinca."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Pojedinac može imati više roditelja. Na primjer, rođenje i usvojenje."
 
 #. I18N: Description of the “Interactive tree” module
@@ -4484,7 +4484,7 @@ msgstr "Datum LDS krštenja"
 
 #: app/Gedcom.php:740
 msgid "Date of LDS child sealing"
-msgstr "Datum LDS  zapečaćivanja deteta"
+msgstr "Datum LDS zapečaćivanja deteta"
 
 #: app/Gedcom.php:628
 msgid "Date of LDS confirmation"
@@ -5211,7 +5211,7 @@ msgstr "Detalji"
 
 #: resources/views/admin/site-registration.phtml:57
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr "Detalji o novom korisniku poslat će se  kontaktu za genealogiju za odgovarajuće porodično stablo."
+msgstr "Detalji o novom korisniku poslat će se kontaktu za genealogiju za odgovarajuće porodično stablo."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:90
@@ -5890,7 +5890,7 @@ msgstr "Izvezi sva porodična stabla u GEDCOM datoteke…"
 msgid "Export preferences"
 msgstr "Izvezi podešavanja"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Proširi nivo privatnosti na mrtve osobe"
@@ -6444,7 +6444,7 @@ msgstr "Ime datoteka ne smije imati ekstenziju„%s”."
 
 #: resources/views/admin/control-panel.phtml:846
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
-msgstr "Pronađene su datoteke  iz prethodne verzije webtrees. Stare datoteke ponekad mogu predstavljati sigurnosni rizik. Trebali biste ih izbrisati."
+msgstr "Pronađene su datoteke iz prethodne verzije webtrees. Stare datoteke ponekad mogu predstavljati sigurnosni rizik. Trebali biste ih izbrisati."
 
 #: resources/views/admin/clean-data.phtml:22
 #, php-format
@@ -6603,7 +6603,7 @@ msgstr "Podnožja"
 #: resources/views/admin/trees-import.phtml:129
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "Na primjer, ako GEDCOM datoteka sadrži %1$s , a webtrees  očekuje da će pronaći %2$s u mapi medija, tada ćete morati ukloniti %3$s."
+msgstr "Na primjer, ako GEDCOM datoteka sadrži %1$s , a webtrees očekuje da će pronaći %2$s u mapi medija, tada ćete morati ukloniti %3$s."
 
 #: resources/views/help/relationship-privacy.phtml:14
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7320,7 +7320,7 @@ msgstr "Zdravo %s …"
 #: resources/views/register-success-page.phtml:21
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Pozdrav %s…<br>Hvala  za vašu registraciju."
+msgstr "Pozdrav %s…<br>Hvala za vašu registraciju."
 
 #: resources/views/emails/register-notify-html.phtml:19
 #: resources/views/emails/register-notify-text.phtml:17
@@ -7597,7 +7597,7 @@ msgstr "Ako administrator kreira korisnički račun, e-mail za potvrdu se ne ša
 #: resources/views/help/name.phtml:24
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr "Ako pojedinac nema prezime,  tada nisu potrebne kose crte:  <%s>Jón Einarsson<%s>"
+msgstr "Ako pojedinac nema prezime, tada nisu potrebne kose crte: <%s>Jón Einarsson<%s>"
 
 #: resources/views/help/name.phtml:21
 #, php-format
@@ -7612,12 +7612,12 @@ msgstr "Ako je pojedinac poznat po nadimku koje nije dio njegovog službenig ime
 #: resources/views/help/name.phtml:27
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
-msgstr "Ako pojedinac nije bio poznat po prvom imenu, preferirano ime treba biti naznačeno sa zvezdicom:  <%s>John Paul* /Smith/<%s>"
+msgstr "Ako pojedinac nije bio poznat po prvom imenu, preferirano ime treba biti naznačeno sa zvezdicom: <%s>John Paul* /Smith/<%s>"
 
 #: resources/views/help/name.phtml:18
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "Ako je prezime nepoznato, upotrijebite prazne kose crte:  <%s>Mary //<%s>"
+msgstr "Ako je prezime nepoznato, upotrijebite prazne kose crte: <%s>Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:26
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
@@ -7744,7 +7744,7 @@ msgstr "U porodičnom stablu, svaki zapis ima interni referentni broj (koji se n
 
 #: resources/views/help/romanized.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "U mnogim kulturama uobičajeno je da se tradicionalno ime piše tradicionalnim znakovima, a takođe i romanizirana verzija imena, jer bi ono bilo napisano ili izgovarano na jezicima na osnovu latiničnog pisma, kao što je engleski. <br> <br> Ako želite da koristite ne-latiničnu abecedu kao što su hebrejski, grčki, ruski, kineski ili arapski da biste unijeli ime u standardna polja za imena, onda možete da koristite ovo polje da unesete isto ime koristeći latiničnu abecedu. Obje verzije imena će se pojavit  na listama i grafikonima. <br> <br> Iako je ovo polje označeno kao \"romanizirano\", nije ograničeno samo  na sadržaje sa znakova na osnovu latinične abecede. Ovo bi moglo biti od koristi sa japanskim imenima, gde se mogu pojaviti tri različita znaka."
+msgstr "U mnogim kulturama uobičajeno je da se tradicionalno ime piše tradicionalnim znakovima, a takođe i romanizirana verzija imena, jer bi ono bilo napisano ili izgovarano na jezicima na osnovu latiničnog pisma, kao što je engleski. <br> <br> Ako želite da koristite ne-latiničnu abecedu kao što su hebrejski, grčki, ruski, kineski ili arapski da biste unijeli ime u standardna polja za imena, onda možete da koristite ovo polje da unesete isto ime koristeći latiničnu abecedu. Obje verzije imena će se pojavit na listama i grafikonima. <br> <br> Iako je ovo polje označeno kao \"romanizirano\", nije ograničeno samo na sadržaje sa znakova na osnovu latinične abecede. Ovo bi moglo biti od koristi sa japanskim imenima, gde se mogu pojaviti tri različita znaka."
 
 #: resources/views/help/hebrew.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
@@ -7768,10 +7768,10 @@ msgstr "U ovom mjesecu …"
 msgid "In this year…"
 msgstr "U ovoj godini …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "U webtrees  verziji 1, možete dodati prilagođene sličice medijskim objektima kreiranjem datoteka u mapama „thumbs“."
+msgstr "U webtrees verziji 1, možete dodati prilagođene sličice medijskim objektima kreiranjem datoteka u mapama „thumbs“."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -7798,11 +7798,11 @@ msgstr "Uključi podmape"
 
 #: resources/views/modules/custom-css-js/edit.phtml:40
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr "Uključi oznake  <code>&lt;script&gt;&lt;/script&gt;</code>."
+msgstr "Uključi oznake <code>&lt;script&gt;&lt;/script&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr "Uključi oznake  <code>&lt;style&gt;&lt;/style&gt;</code>."
+msgstr "Uključi oznake <code>&lt;style&gt;&lt;/style&gt;</code>."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
@@ -8690,7 +8690,7 @@ msgstr "Dodaj ovu osobu kao dijete već upisanoj porodici"
 #: resources/views/media-page-menu.phtml:65
 #: resources/views/modals/link-media-to-family.phtml:18
 msgid "Link this media object to a family"
-msgstr "Poveži ovaj medijski objekt sa  porodicom"
+msgstr "Poveži ovaj medijski objekt sa porodicom"
 
 #: resources/views/media-page-menu.phtml:70
 #: resources/views/modals/link-media-to-source.phtml:18
@@ -9815,7 +9815,7 @@ msgstr "Većina e-mail servera zahtijeva validno ime domene."
 
 #: resources/views/admin/site-mail.phtml:82
 msgid "Most mail servers require a valid email address."
-msgstr "Većina e-mail  servera zahtijeva validnu adresu e-pošte."
+msgstr "Većina e-mail servera zahtijeva validnu adresu e-pošte."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:183
@@ -11215,10 +11215,10 @@ msgstr "Popis mjesta"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:573
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Imena mjesta često su predugačka da stanu na  grafikon, liste itd. Mogu se skratiti prikazivanjem samo prvih nekoliko dijelova imena, poput <i> sela, okruga </i> ili posljednjih nekoliko njegovih dijelova , kao što je <i> regija, država </i>."
+msgstr "Imena mjesta često su predugačka da stanu na grafikon, liste itd. Mogu se skratiti prikazivanjem samo prvih nekoliko dijelova imena, poput <i> sela, okruga </i> ili posljednjih nekoliko njegovih dijelova , kao što je <i> regija, država </i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Imena mjesta se mogu promijeniti vremenom. Uobičajeno je u genealogiji koristiti današnji naziv za grad ili državu. Istorijsko ime se može prikazati u izvorima, bilješkama itd."
 
 #: resources/views/help/place.phtml:10
@@ -14510,7 +14510,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr ""
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65

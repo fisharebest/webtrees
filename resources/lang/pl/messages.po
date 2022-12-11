@@ -1900,7 +1900,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Diagram klepsydrowy przedstawiający przodków i potomków danej osoby."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Osoba może mieć więcej niż dwoje rodziców. Na przykład rodzice biologiczni i adoptujący."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5895,7 +5895,7 @@ msgstr "Eksportowanie wszystkich drzew genealogicznych do plików GEDCOM…"
 msgid "Export preferences"
 msgstr "Ustawienia eksportu"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Rozszerzone ustawienia prywatności osób zmarłych"
@@ -7773,7 +7773,7 @@ msgstr "W tym miesiącu…"
 msgid "In this year…"
 msgstr "W tym roku…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "W webtrees w wersji 1, można było dodawać zmienione miniaturki tworząc odpowiednie pliki w folderze „thumbs”."
@@ -11223,7 +11223,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Nazwy miejsc są często zbyt długie by zmieścić się na diagramach, listach, itp. Mogą one być skrócone przez pokazanie tylko kilku początkowych części nazwy takich jak <i>miejscowość, powiat</i>, lub kilku końcowych części takich jak <i>województwo, kraj</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Nazwy miejsc mogą się zmieniać z czasem. W genealogii zwyczajowo używa się bieżącej nazwy miasta lub kraju. Historyczną nazwę można podać w źródłach, notatkach itp."
 
 #: resources/views/help/place.phtml:10
@@ -14515,7 +14515,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Nowy użytkownik zostanie poproszony o potwierdzenie jego adresu email zanim konto będzie utworzone."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -16782,7 +16782,7 @@ msgstr "Pomniejsz"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "Tagi _WT_OBJE_SORT były używane w starych wersjach webtrees  do wskazywania preferowanego zdjęcia dla danej osoby. Alternatywą jest zmiana kolejności obrazów, tak aby preferowany był wymieniony jako pierwszy."
+msgstr "Tagi _WT_OBJE_SORT były używane w starych wersjach webtrees do wskazywania preferowanego zdjęcia dla danej osoby. Alternatywą jest zmiana kolejności obrazów, tak aby preferowany był wymieniony jako pierwszy."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -21795,7 +21795,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Jeśli dane nazwisko nie występuje na tyle często, aby mogło pojawić się na liście najczęściej występujących nazwisk może zostać dodane ręcznie. Jeśli jest potrzeba wprowadzenia więcej niż jednego nazwiska, należy rozdzielić kolejne nazwiska przecinkami. <b>Wielkie i małe litery w nazwiskach mają znaczenie.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Jeśli miniaturka jest identyczna z obrazem oryginalnym, nie będzie używana i można ją usunąć. Jeśli miniaturka jest zmieniona powinna być dodana do obiektu multimedialnego."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

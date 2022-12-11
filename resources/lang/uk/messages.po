@@ -1895,7 +1895,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Діаграма - пісочний годинник предків та нащадків персони."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Людина може мати кількох батьків. Наприклад, народження і всиновлення."
 
 #. I18N: Description of the “Interactive tree” module
@@ -3673,7 +3673,7 @@ msgstr "Хрещення зведеного брата (церемонія)"
 
 #: app/Services/IndividualFactsService.php:247
 msgid "Christening of a half-sibling"
-msgstr "Хрещення зведеного брата або сестри  (церемонія)"
+msgstr "Хрещення зведеного брата або сестри (церемонія)"
 
 #: app/Services/IndividualFactsService.php:246
 msgid "Christening of a half-sister"
@@ -5890,7 +5890,7 @@ msgstr "Експорт всіх сімейних дерев у GEDCOM-файли
 msgid "Export preferences"
 msgstr "Налаштування експорту"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Приховувати мертвих людей які"
@@ -7768,7 +7768,7 @@ msgstr "В цьому місяці, в минулому …"
 msgid "In this year…"
 msgstr "В цьому році, в минулому …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "У Webtrees версії 1, Ви можете додати користувальницькі мініатюри до мультимедійних об'єктів шляхом створення файлів в папках 'превью'."
@@ -9042,7 +9042,7 @@ msgstr "Березень"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:590
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown  - це проста система форматування тексту, що використовується такими сайтами як Вікіпедія. Вона використовує ненав'язливі знаки пунктуації, щоб створювати заголовки і підзаголовки, жирний і курсивний текст, списки, таблиці і т. п."
+msgstr "Markdown - це проста система форматування тексту, що використовується такими сайтами як Вікіпедія. Вона використовує ненав'язливі знаки пунктуації, щоб створювати заголовки і підзаголовки, жирний і курсивний текст, списки, таблиці і т. п."
 
 #: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:466
 #: app/Module/BranchesListModule.php:459
@@ -11218,7 +11218,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Назви місць часто занадто довгі, щоб поміщатися на діаграмах, у списках і т. д. Вони можуть бути скорочені шляхом відображення лише декількох перших частин назви, таких як <i>село, район</i>, чи останніх частин назви, таких як <i>регіон, країна</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Назва місця може змінюватися з часом. У генеалогії прийнято використовувати сучасну назву міста чи країни. Історичну назву можна вказати у джерелах, примітках тощо."
 
 #: resources/views/help/place.phtml:10
@@ -11870,7 +11870,7 @@ msgstr "Записів"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr "Перенаправити старі URL-адреси з  webtrees версії 1."
+msgstr "Перенаправити старі URL-адреси з webtrees версії 1."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169
@@ -14510,7 +14510,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Новому користувачу буде запропоновано підтвердити адресу електронної пошти перед тим, як обліковий запис буде створено."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21078,7 +21078,7 @@ msgstr "…"
 #~ msgstr "<b>Зверніть увагу:</b> Приватна інформація про живих персон буде надаватися лише родичам і близьким друзям. Вам буде запропоновано перевірити ваші відносини перед тим, як отримати будь-які приватні дані. Інколи інформація про мертвих персон теж може бути приватною. Якщо це так, то це тому, що немає достаньо інформації про персону, щоб визначити, жива вона чи ні, і ми, ймовірно, не маємо більше інформації про цю персону.<br><br>Перед тим, як задавати питання, будь ласка, переконайтеся, що ви робите запит про правильну персону, перевіривши дати, місця і близьких родичів. Якщо ви робите зміни до генеалогічних даних, будь ласка, додайте джерела, де ви отримали ці дані."
 
 #~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<p>Примітка:  Заповнивши та надіславши цей формуляр, ви погоджуєтесь:<ul><li>захищати приватну інформацію живих персон, перерахованих на нашому сайті;</li><li>в текстовому полі «Коментар» вказати детальну інформацію кому ви доводитеся родичем або інформацію про кого хотіли б повідомити.</li></ul></div>"
+#~ msgstr "<p>Примітка: Заповнивши та надіславши цей формуляр, ви погоджуєтесь:<ul><li>захищати приватну інформацію живих персон, перерахованих на нашому сайті;</li><li>в текстовому полі «Коментар» вказати детальну інформацію кому ви доводитеся родичем або інформацію про кого хотіли б повідомити.</li></ul></div>"
 
 #, php-format
 #~ msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
@@ -21760,7 +21760,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Якщо кількість разів, які зустрічається фамілія, менше порогового значення, то вона не буде відображатися у списку. Вона може бути додана туди вручну. Якщо вводиться більше, ніж одне прізвище, то вони мають бути розділені комами. <b>Фамілії чутливі до регістру.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Якщо зменшене зображення є таким же, як вихідне зображення, він більше не потрібен, і Ви повинні видалити його. Якщо це користувацького зображення, Ви повинні додати його до медіаоб'єкта."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -22625,7 +22625,7 @@ msgstr "…"
 #~ msgstr "Цей файл пов'язаний з іншим генеалогічним деревом на цьому сервері. Він не може бути видалений, переміщений чи перейменований доти, доки ці зв'язки не будуть видалені."
 
 #~ msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-#~ msgstr "Це поле введення дозволяє вам змінити календарний рік. Введіть рік у поле і натисність <b>Enter</b>, щоб змінити календарний рік на вказаний.<br><br><b>Додаткові функції</b> для <b>Переглянути рік</b><dl><dt><b>Більше ніж один рік</b></dt><dd>Ви можете шукати дати в діапазоні років.<br><br>Діапазони років <u>включні</u>. Це значить, що один діапазон захоплює період з 1 січня першого року по 31 грудня останнього року. Ось декілька прикладів діапазонів років:<br><br><b>1992-5</b> - для всіх подій з 1992 по 1995.<br><b>1972-89</b> - для всіх подій з 1972 по 1989.<br><b>1610-759</b> - для всіх подій з 1610 по 1759.<br><b>1880-1905</b> - для всіх подій з 1880 по 1905.<br><b>880-1105</b> - для всіх подій з 880 по 1105.<br><br>Щоб побачити всі події у даного десятиліття або століття, ви можете вокористати <b>?</b> на місці останніх цифр. Наприклад, <b>197?</b> - для всіх подій з 1970 по 1979 чи <b>16??</b>  - для всіх подій з 1600 по 1699.<br><br>Вибір діапазону років змінить календар до режиму відображення років.</dd></dl>"
+#~ msgstr "Це поле введення дозволяє вам змінити календарний рік. Введіть рік у поле і натисність <b>Enter</b>, щоб змінити календарний рік на вказаний.<br><br><b>Додаткові функції</b> для <b>Переглянути рік</b><dl><dt><b>Більше ніж один рік</b></dt><dd>Ви можете шукати дати в діапазоні років.<br><br>Діапазони років <u>включні</u>. Це значить, що один діапазон захоплює період з 1 січня першого року по 31 грудня останнього року. Ось декілька прикладів діапазонів років:<br><br><b>1992-5</b> - для всіх подій з 1992 по 1995.<br><b>1972-89</b> - для всіх подій з 1972 по 1989.<br><b>1610-759</b> - для всіх подій з 1610 по 1759.<br><b>1880-1905</b> - для всіх подій з 1880 по 1905.<br><b>880-1105</b> - для всіх подій з 880 по 1105.<br><br>Щоб побачити всі події у даного десятиліття або століття, ви можете вокористати <b>?</b> на місці останніх цифр. Наприклад, <b>197?</b> - для всіх подій з 1970 по 1979 чи <b>16??</b> - для всіх подій з 1600 по 1699.<br><br>Вибір діапазону років змінить календар до режиму відображення років.</dd></dl>"
 
 #~ msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 #~ msgstr "Це - розділений комами список тегів GEDCOM фактів, які буде відображено при додаванні нової сім'ї. Якщо ви використовуєте нелатинські алфавіти, такі як іврит, грецький, кирилиця чи арабський, ви, можливо, захочете додати такі теги, як _HEB, ROMN, FONE і т. п., щоб дозволити зберігати імена в декількох різних алфавітах."
