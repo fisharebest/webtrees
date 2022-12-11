@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
 "Language: nb\n"
@@ -6863,7 +6863,9 @@ msgstr "Google Street View™"
 
 #: app/Module/GoogleMapsModule.php:311
 msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-msgstr "Google tillater bare et fåtall anonyme kartspørringer per dag.  Om du behøver flere enn dette, må du ha en Google-konto og en API-kode."
+msgstr ""
+"Google tillater bare et fåtall anonyme kartspørringer per dag. Om du behøver "
+"flere enn dette, må du ha en Google-konto og en API-kode."
 
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508
@@ -13856,7 +13858,7 @@ msgstr "Innstillingene for nye slektstrær er blitt oppdatert."
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
 msgid "The preferences for the chart “%s” have been updated."
-msgstr "Forhåndsinnstillingen for diagrammet  “%s 1” har blitt oppdatert."
+msgstr "Forhåndsinnstillingen for diagrammet “%s 1” har blitt oppdatert."
 
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
@@ -16020,7 +16022,10 @@ msgstr "Du kan be om en høyere eller lavere grense, selv om serveren kan ignore
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:500
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Du kan velge tilgjengeligheten for en gitt post, fakta, eller hendelse ved å legge til en restriksjon.  Dersom en post, fakta, eller hendelse ikke har en restriksjon, vil følgende standard restriksjon brukes."
+msgstr ""
+"Du kan velge tilgjengeligheten for en gitt post, fakta, eller hendelse ved å "
+"legge til en restriksjon. Dersom en post, fakta, eller hendelse ikke har en "
+"restriksjon, vil følgende standard restriksjon brukes."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
