@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-08-15 08:31+0000\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -5607,7 +5607,18 @@ msgstr "Adresse courriel"
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
 msgid "Email address to be used in the “From:” field of emails that webtrees creates automatically.<br><br>webtrees can automatically create emails to notify administrators of changes that need to be reviewed. webtrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "Adresse courriel à utiliser dans le champ «&nbsp;De:&nbsp;» pour un courriel que webtrees crée automatiquement.<br><br>webtrees peut créer automatiquement des courriels pour informer les administrateurs des changements survenus. webtrees envoie également des notifications par courriel aux utilisateurs qui ont demandé un compte.<br><br>Habituellement, le champ «&nbsp;De:&nbsp;» des créations automatiquement des courriels est quelque chose comme<i>De: webtrees-noreply@yoursite</i> montre qu’il n’y a pas de réponse nécessaire à faire pour ce courriel. Pour se prémunir contre le spam ou autres abus de courriel, certains systèmes de courrier électronique exige que tous les champs d’adresse de message doit être celui d’un compte courriel valide et les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
+msgstr ""
+"Adresse courriel à utiliser dans le champ « De : » pour un courriel que "
+"webtrees crée automatiquement.<br><br>webtrees peut créer automatiquement "
+"des courriels pour informer les administrateurs des changements survenus. "
+"webtrees envoie également des notifications par courriel aux utilisateurs "
+"qui ont demandé un compte.<br><br>Habituellement, le champ « De : » des "
+"créations automatiquement des courriels est quelque chose comme<i>De : "
+"webtrees-noreply@yoursite</i> montre qu’il n’y a pas de réponse nécessaire à "
+"faire pour ce courriel. Pour se prémunir contre le spam ou autres abus de "
+"courriel, certains systèmes de courrier électronique exige que tous les "
+"champs d’adresse de message doit être celui d’un compte courriel valide et "
+"les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
 
 #: admin_users.php:381
 msgid "Email verified"
@@ -7428,7 +7439,10 @@ msgstr "Si vous cachez un bloc vide, vous ne le pourrez le reconfigurer que lors
 
 #: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Si vous sélectionnez un dossier différent, vous devez aussi déplacer tous les fichiers (sauf config.ini.php, index.php  et .htaccess) du dossier actuel dans le nouveau dossier."
+msgstr ""
+"Si vous sélectionnez un dossier différent, vous devez aussi déplacer tous "
+"les fichiers (sauf config.ini.php, index.php et .htaccess) du dossier actuel "
+"dans le nouveau dossier."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
@@ -10593,7 +10607,7 @@ msgstr "Panamá"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr "Panama, Panama"
+msgstr "Panama (ville), Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
