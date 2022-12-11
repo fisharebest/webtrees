@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-01 13:27+0000\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Latvian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/lv/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -295,8 +295,8 @@ msgstr[2] "%s mazbērnu"
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "pirms %s stundas"
-msgstr[1] "pirms  %s stundām"
-msgstr[2] "pirms %s  stundām"
+msgstr[1] "pirms %s stundām"
+msgstr[2] "pirms %s stundām"
 
 #: admin_trees_unconnected.php:83 app/Controller/LifespanController.php:262
 #, php-format
@@ -20103,7 +20103,7 @@ msgstr "webtress ziņojums"
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees nepieciešama MySQL datubāze, versija %s vai  jaunākas."
+msgstr "webtrees nepieciešama MySQL datubāze, versija %s vai jaunākas."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:327
