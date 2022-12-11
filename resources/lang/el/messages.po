@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-14 22:09+0000\n"
-"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/el/>\n"
 "Language: el\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -851,7 +851,9 @@ msgstr "Ένα αντικείμενο πολυμέσων είναι μια εγ�
 #: resources/views/emails/verify-notify-text.phtml:15
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Ένας νέος χρήστης (%1$s) ζήτησε έναν λογαριασμό (%2$s)  και επαλήθευσε μια διεύθυνση email (%3$s)."
+msgstr ""
+"Ένας νέος χρήστης (%1$s) ζήτησε έναν λογαριασμό (%2$s) και επαλήθευσε μια "
+"διεύθυνση email (%3$s)."
 
 #: app/Http/RequestHandlers/LoginAction.php:82
 #: resources/views/admin/control-panel.phtml:163
@@ -3505,7 +3507,7 @@ msgstr "Αλλάξτε τα μπλοκ \"Η σελίδα μου\""
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr "Άλλαξε από  %1$s"
+msgstr "Άλλαξε από %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
@@ -12349,7 +12351,8 @@ msgstr "Το SQLite είναι κατάλληλο μόνο για μικρές �
 #: app/Services/ServerCheckService.php:216
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
-msgstr "Έχει εγκατασταθεί η έκδοση SQLite  %s . Η έκδοση %s ή νεότερη απαιτείται."
+msgstr ""
+"Έχει εγκατασταθεί η έκδοση SQLite %s . Η έκδοση %s ή νεότερη απαιτείται."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173 app/GedcomCode/GedcomCodeTemp.php:585
@@ -14912,7 +14915,13 @@ msgstr "Αυτή η οικογένεια δεν εχει να παρουσίασ
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Τελευταία ενημέρωση αυτού του οικογενειακού δέντρου στις #gedcomUpdated#. Υπάρχουν #totalSurnames# επώνυμα σε αυτό το οικογενειακό δέντρο. Το πρώτο ηχογραφημένο συμβάν είναι το #firstEventType# του #firstEventName# στο #firstEventYear#. Το πιο πρόσφατο συμβάν είναι το #lastEventType# του #lastEventName#  στο #lastEventYear#. <br> <br> Εάν έχετε παρατηρήσεις ή σχόλια, επικοινωνήστε με το #contactWebmaster#."
+msgstr ""
+"Τελευταία ενημέρωση αυτού του οικογενειακού δέντρου στις #gedcomUpdated#. "
+"Υπάρχουν #totalSurnames# επώνυμα σε αυτό το οικογενειακό δέντρο. Το πρώτο "
+"ηχογραφημένο συμβάν είναι το #firstEventType# του #firstEventName# στο "
+"#firstEventYear#. Το πιο πρόσφατο συμβάν είναι το #lastEventType# του "
+"#lastEventName# στο #lastEventYear#. <br> <br> Εάν έχετε παρατηρήσεις ή "
+"σχόλια, επικοινωνήστε με το #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:18
@@ -14957,7 +14966,9 @@ msgstr "Αυτό το άτομο έχει επεξεργαστεί. Οι αλλ�
 #: resources/views/individual-page.phtml:43
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Αυτό το άτομο έχει επεξεργαστεί. Θα πρέπει να ελέγξετε τις αλλαγές και, στη συνέχεια,  na epil;ejete %1$s ή %2$s τους."
+msgstr ""
+"Αυτό το άτομο έχει επεξεργαστεί. Θα πρέπει να ελέγξετε τις αλλαγές και, στη "
+"συνέχεια, na epil;ejete %1$s ή %2$s τους."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml:102
