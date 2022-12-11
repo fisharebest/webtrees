@@ -1,8 +1,7 @@
 [![Latest Stable Version](https://poser.pugx.org/fisharebest/webtrees/v/stable.svg)](https://packagist.org/packages/fisharebest/webtrees)
 [![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=master)](https://travis-ci.org/fisharebest/webtrees)
 [![Coverage Status](https://coveralls.io/repos/github/fisharebest/webtrees/badge.svg?branch=master)](https://coveralls.io/github/fisharebest/webtrees?branch=master)
-[![Translation status](https://translate.webtrees.net/widgets/webtrees/-/svg-badge.svg)](https://translate.webtrees.net/engage/webtrees/?utm_source=widget)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de/mini.png)](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de)
+[![Translation status](https://translate.webtrees.net/widgets/webtrees/-/webtrees-17/svg-badge.svg)](https://weblate.iet.open.ac.uk/projects/webtrees/webtrees-17)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=master)
 [![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 
