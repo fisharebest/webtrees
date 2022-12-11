@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fi/>\n"
 "Language: fi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -858,7 +858,7 @@ msgstr "Uusi webtrees versio on käytettävissä."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:121
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "Salasanan palautuslinkki on lähetetty  ”%s”:lle."
+msgstr "Salasanan palautuslinkki on lähetetty ”%s”:lle."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -13400,7 +13400,11 @@ msgstr "Sisään kirjautuminen ja rekisteröinti"
 
 #: resources/views/help/date.phtml:135
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Yksinkertaisten  päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden muoto tekee päivämäärästä yksiselitteisen."
+msgstr ""
+"Yksinkertaisten päivämäärien oletetaan noudattavan gregoriaanista "
+"kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan "
+"päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden "
+"muoto tekee päivämäärästä yksiselitteisen."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:437
