@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-05-16 14:55+0000\n"
-"Last-Translator: ELVEDIN ZLATARAC <elvedin@zlatarac.name>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/bs/>\n"
 "Language: bs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -1808,7 +1808,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:89
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque, Novi Meksiko, S.A.D."
+msgstr "Albuquerque, Novi Meksiko, SAD"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6736
@@ -4445,7 +4445,7 @@ msgstr "Datum LDS krštenja"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr "Datum LDS  zapečaćivanja deteta"
+msgstr "Datum LDS zapečaćivanja deteta"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
@@ -5168,7 +5168,7 @@ msgstr "Detalji"
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
-"Detalji o novom korisniku poslat će se  kontaktu za genealogiju za "
+"Detalji o novom korisniku poslat će se kontaktu za genealogiju za "
 "odgovarajuće porodično stablo."
 
 #. I18N: Location of an LDS church temple
@@ -6358,7 +6358,7 @@ msgstr "Ime datoteka ne smije imati ekstenziju„%s”."
 #: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
 msgstr ""
-"Pronađene su datoteke  iz prethodne verzije webtrees. Stare datoteke ponekad "
+"Pronađene su datoteke iz prethodne verzije webtrees. Stare datoteke ponekad "
 "mogu predstavljati sigurnosni rizik. Trebali biste ih izbrisati."
 
 #: admin_site_clean.php:88
@@ -6533,7 +6533,7 @@ msgstr "Font"
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
-"Na primjer, ako GEDCOM datoteka sadrži %1$s , a webtrees  očekuje da će "
+"Na primjer, ako GEDCOM datoteka sadrži %1$s , a webtrees očekuje da će "
 "pronaći %2$s u mapi medija, tada ćete morati ukloniti %3$s."
 
 #: admin_users.php:600
@@ -7175,7 +7175,7 @@ msgstr "Zdravo %s …"
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Pozdrav %s…<br>Hvala  za vašu registraciju."
+msgstr "Pozdrav %s…<br>Hvala za vašu registraciju."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
@@ -7397,7 +7397,7 @@ msgstr ""
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
 msgstr ""
-"Ako pojedinac nema prezime,  tada nisu potrebne kose crte:  <%s>Jón "
+"Ako pojedinac nema prezime, tada nisu potrebne kose crte: <%s>Jón "
 "Einarsson<%s>"
 
 #: help_text.php:226
@@ -7420,13 +7420,13 @@ msgstr ""
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
 "Ako pojedinac nije bio poznat po prvom imenu, preferirano ime treba biti "
-"naznačeno sa zvezdicom:  <%s>John Paul* /Smith/<%s>"
+"naznačeno sa zvezdicom: <%s>John Paul* /Smith/<%s>"
 
 #: help_text.php:224
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
 msgstr ""
-"Ako je prezime nepoznato, upotrijebite prazne kose crte:  <%s>Mary //<%s>"
+"Ako je prezime nepoznato, upotrijebite prazne kose crte: <%s>Mary //<%s>"
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
@@ -7586,9 +7586,9 @@ msgstr ""
 "<br> <br> Ako želite da koristite ne-latiničnu abecedu kao što su hebrejski, "
 "grčki, ruski, kineski ili arapski da biste unijeli ime u standardna polja za "
 "imena, onda možete da koristite ovo polje da unesete isto ime koristeći "
-"latiničnu abecedu. Obje verzije imena će se pojavit  na listama i "
+"latiničnu abecedu. Obje verzije imena će se pojavit na listama i "
 "grafikonima. <br> <br> Iako je ovo polje označeno kao \"romanizirano\", nije "
-"ograničeno samo  na sadržaje sa znakova na osnovu latinične abecede. Ovo bi "
+"ograničeno samo na sadržaje sa znakova na osnovu latinične abecede. Ovo bi "
 "moglo biti od koristi sa japanskim imenima, gde se mogu pojaviti tri "
 "različita znaka."
 
@@ -8441,7 +8441,7 @@ msgstr "Dodaj ovu osobu kao dijete već upisanoj porodici"
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
 msgid "Link this media object to a family"
-msgstr "Poveži ovaj medijski objekt sa  porodicom"
+msgstr "Poveži ovaj medijski objekt sa porodicom"
 
 #: admin_media.php:532 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:130 app/Module/AlbumModule.php:184
@@ -10942,7 +10942,7 @@ msgstr "Popis mjesta"
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
-"Imena mjesta često su predugačka da stanu na  grafikon, liste itd. Mogu se "
+"Imena mjesta često su predugačka da stanu na grafikon, liste itd. Mogu se "
 "skratiti prikazivanjem samo prvih nekoliko dijelova imena, poput <i> sela, "
 "okruga </i> ili posljednjih nekoliko njegovih dijelova , kao što je <i> "
 "regija, država </i>."
