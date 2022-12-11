@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-09-05 12:36+0000\n"
-"Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 15:27+0000\n"
+"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nn/>\n"
 "Language: nn\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -261,7 +261,7 @@ msgstr[1] "%s slektstre"
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s barnebarn"
-msgstr[1] "%s barnebarn"
+msgstr[1] "%s barneborn"
 
 #: app/Module/LifespansChartModule.php:276
 #: resources/views/admin/trees-unconnected.phtml:38
@@ -1962,7 +1962,7 @@ msgstr "Ei oppdatering er tilgjengeleg."
 #: app/Module/AncestorsChartModule.php:108
 #: resources/xml/reports/ahnentafel_report.xml:4
 msgid "Ancestors"
-msgstr "Forfedre"
+msgstr "Anar"
 
 #. I18N: gedcom tag ANCI
 #: app/Factories/ElementFactory.php:1125 app/GedcomTag.php:461
@@ -1971,13 +1971,13 @@ msgstr "Interesse for ane"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
-msgstr "Forfedrar til "
+msgstr "Anar til "
 
 #. I18N: %s is an individual’s name
 #: app/Module/AncestorsChartModule.php:154
 #, php-format
 msgid "Ancestors of %s"
-msgstr "Forfedrar til %s"
+msgstr "Anar til %s"
 
 #. I18N: gedcom tag AFN
 #: app/Factories/ElementFactory.php:1123 app/GedcomTag.php:446
@@ -6600,7 +6600,7 @@ msgstr "Finn andre slektskap"
 #: app/Module/RelationshipsChartModule.php:446
 #: resources/views/modules/relationships-chart/page.phtml:56
 msgid "Find relationships via ancestors"
-msgstr "Finn slektskap via aner"
+msgstr "Finn slektskap via anar"
 
 #: app/Module/RelationshipsChartModule.php:723
 #: resources/views/modules/relationships-chart/page.phtml:70
@@ -7053,7 +7053,7 @@ msgstr "Generasjonar"
 #. I18N: gedcom tag ANCE
 #: app/Factories/ElementFactory.php:1400 app/GedcomTag.php:458
 msgid "Generations of ancestors"
-msgstr "Generasjonar av forfedre"
+msgstr "Generasjonar av anar"
 
 #: app/Factories/ElementFactory.php:1405
 msgid "Generations of descendants"
@@ -7273,7 +7273,7 @@ msgstr "Guatemala"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:102 app/GedcomCode/GedcomCodeTemp.php:372
 msgid "Guatemala City, Guatemala"
-msgstr "Guatemala, Guatemala"
+msgstr "Guatemala City, Guatemala"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:103 app/GedcomCode/GedcomCodeTemp.php:375
@@ -13069,7 +13069,7 @@ msgstr "Syn ein aldersmarkør"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Syn born til forfedrar"
+msgstr "Syn born til anar"
 
 #: resources/views/lists/families-table.phtml:205
 msgid "Show couples where either partner married more than once."
@@ -15217,7 +15217,11 @@ msgstr "Dette alternativet syner namnet (men ingen andre detaljar) til private p
 #: resources/views/edit/raw-gedcom-fact.phtml:24
 #: resources/views/edit/raw-gedcom-record.phtml:25
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Denne sida let deg gjere endringar direkte i GEDCOM-fila, utan å gå gjennom dei vanlege redigeringsskjema. Dette er eit avansert alternativ, og du bør ikkje nytte dette med mindre du er kjend med GEDCOM-formatet er fortruleg med det du gjer. Om du gjer feil her, kan kan verte særs vanskelg å rette oppatt feilen."
+msgstr ""
+"Denne sida let deg gjere endringar direkte i GEDCOM-fila, utan å gå gjennom "
+"dei vanlege redigeringsskjema. Dette er eit avansert alternativ, og du bør "
+"ikkje nytte dette med mindre du er kjend med GEDCOM-formatet. Om du gjer "
+"feil her, kan det verte særs vanskelg å rette oppatt feilen."
 
 #: app/Module/HitCountFooterModule.php:115
 #, php-format
