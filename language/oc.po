@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Occitan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/oc/>\n"
 "Language: oc\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -870,7 +870,9 @@ msgstr "Un novèl mot de Santa-Clara a estat demandat per lo vòstre compte."
 #: login.php:561
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Un novèl utilizaire  (%1$s) a demandat un compte (%2$s) e a verificat son adreça de corrièr electrònic (%3$s)."
+msgstr ""
+"Un novèl utilizaire (%1$s) a demandat un compte (%2$s) e a verificat son "
+"adreça de corrièr electrònic (%3$s)."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -5052,7 +5054,7 @@ msgstr "Suprimir los fichièrs temporaris…"
 
 #: admin_modules.php:103
 msgid "Delete the preferences for this module."
-msgstr "Suprimir las  preferéncias per aquel mòdul."
+msgstr "Suprimir las preferéncias per aquel mòdul."
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
@@ -5775,7 +5777,7 @@ msgstr "Esfand"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1184
 msgid "Estimated dates for birth and death"
-msgstr "Datas suposadas per la  naissença e lo decès"
+msgstr "Datas suposadas per la naissença e lo decès"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6743
@@ -6523,19 +6525,19 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 
 #: app/Theme/AbstractTheme.php:296
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "Per questions genealogicas adreçatz-vos a %s"
+msgstr "Per questions genealogicas adreçatz-vos a %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Per questions administrativas e tecnicas adreçatz-vos a %s"
+msgstr "Per questions administrativas e tecnicas adreçatz-vos a %s."
 
 #: app/Theme/AbstractTheme.php:285
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Per questions tecnicas e genealogicas adreçatz-vos a %s"
+msgstr "Per questions tecnicas e genealogicas adreçatz-vos a %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -15614,7 +15616,7 @@ msgstr ""
 
 #: admin_trees_config.php:1534
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "Utiizar la basa de donadas  GeoNames per autocompletar los luòcs"
+msgstr "Utiizar la basa de donadas GeoNames per autocompletar los luòcs"
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16329,9 +16331,10 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr ""
 
 #: app/Module/ChartsBlockModule.php:138
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Vos cal seleccionar una persona e un tipe de grafic als paramètres de configuracion del blòc."
+msgstr ""
+"Vos cal seleccionar una persona e un tipe de grafic als paramètres de "
+"configuracion del blòc"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
