@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2016-05-18 18:38+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -6601,9 +6602,9 @@ msgid "For example, we can quickly find individuals that do not have a death eve
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:147
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "פֿאַר הילף מיט ייחוס שאלות באַריר %s"
+msgstr "פֿאַר הילף מיט ייחוס שאלות באַריר %s."
 
 #: resources/views/admin/control-panel.phtml:208
 #: resources/views/admin/tags.phtml:1041
@@ -6623,9 +6624,9 @@ msgid "For technical support and information contact %s."
 msgstr "פֿאַר טעכניש שטיצן און אינפֿאָרמאַציע באַריר %s"
 
 #: app/Module/ContactsFooterModule.php:134
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "פֿאַר טעכניש שטיצן אָדער ייחוס שאלות, ביטע באַריר %s"
+msgstr "פֿאַר טעכניש שטיצן אָדער ייחוס שאלות, ביטע באַריר %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
