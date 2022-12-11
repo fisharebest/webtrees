@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-06 13:51+0000\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ku/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -16941,9 +16941,7 @@ msgstr "xatî/xal"
 #: app/Functions/Functions.php:902
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
-"xatî/xalo\n"
-"ap/met"
+msgstr "xatî/xalo ap/met"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:387
 msgid "back to top"
@@ -16963,7 +16961,7 @@ msgstr "Berya/berê %s"
 #: app/Date.php:322
 #, php-format
 msgid "between %s and %s"
-msgstr "Navbera %s  û %s"
+msgstr "Navbera %s û %s"
 
 #: app/Stats.php:2910
 msgid "birth"
@@ -17731,7 +17729,7 @@ msgstr "ji %s"
 #: app/Date.php:325
 #, php-format
 msgid "from %s to %s"
-msgstr "Ji %s  heya %s"
+msgstr "Ji %s heya %s"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
@@ -19011,7 +19009,7 @@ msgstr "nevoyê bira"
 #: app/Functions/Functions.php:1013
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "nevoya  bira"
+msgstr "nevoya bira"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a woman’s) sister’s child’s child"
@@ -20115,9 +20113,7 @@ msgstr "jinbir/bûk/amojin/xalojin"
 #: app/Functions/Functions.php:1316
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
-"xwîşka bûkê\n"
-"\t"
+msgstr "xwîşka bûkê"
 
 #: app/Functions/Functions.php:944
 msgctxt "spouse’s sister"
@@ -20325,9 +20321,7 @@ msgstr "zirbav/damarî"
 #: app/Functions/Functions.php:1138
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
-"xwîşk/brayên jinbavê\n"
-"xwîşk/brayên zirbêv"
+msgstr "xwîşk/brayên jinbavê xwîşk/brayên zirbêv"
 
 #: app/Functions/Functions.php:1168
 msgctxt "mother’s husband’s child"
