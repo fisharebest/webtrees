@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-04-06 13:49+0000\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees-20/ku/>\n"
+"Language-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/ku/>\n"
 "Language: ku\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -17071,9 +17072,7 @@ msgstr "xatî/xal"
 #: app/Functions/Functions.php:864
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
-"xatî/xalo\n"
-"ap/met"
+msgstr "xatî/xalo ap/met"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -17089,7 +17088,7 @@ msgstr "Berya/berê %s"
 #: app/Date.php:374
 #, php-format
 msgid "between %s and %s"
-msgstr "Navbera %s  û %s"
+msgstr "Navbera %s û %s"
 
 #: app/Statistics/Repository/EventRepository.php:325
 msgid "birth"
@@ -17919,7 +17918,7 @@ msgstr "ji %s"
 #: app/Date.php:378
 #, php-format
 msgid "from %s to %s"
-msgstr "Ji %s  heya %s"
+msgstr "Ji %s heya %s"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:586
@@ -19217,7 +19216,7 @@ msgstr "nevoyê bira"
 #: app/Functions/Functions.php:974
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "nevoya  bira"
+msgstr "nevoya bira"
 
 #: app/Functions/Functions.php:1256
 msgctxt "(a woman’s) sister’s child’s child"
@@ -20477,9 +20476,7 @@ msgstr "jinbir/bûk/amojin/xalojin"
 #: app/Functions/Functions.php:1294
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
-"xwîşka bûkê\n"
-"\t"
+msgstr "xwîşka bûkê"
 
 #: app/Functions/Functions.php:906
 msgctxt "spouse’s sister"
@@ -20678,9 +20675,7 @@ msgstr "zirbav/damarî"
 #: app/Functions/Functions.php:1098
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
-"xwîşk/brayên jinbavê\n"
-"xwîşk/brayên zirbêv"
+msgstr "xwîşk/brayên jinbavê xwîşk/brayên zirbêv"
 
 #: app/Functions/Functions.php:1146
 msgctxt "mother’s husband’s child"
