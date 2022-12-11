@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-09-26 07:38+0000\n"
-"Last-Translator: nguyen duc toan <mmductoan@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/vi/>\n"
 "Language: vi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -12220,7 +12220,7 @@ msgstr "Đặt mức truy cập riêng tư ở biểu đồ gia phả."
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr "Đặt trạng thái  “được chấp thuận”."
+msgstr "Đặt trạng thái “được chấp thuận”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12718,9 +12718,8 @@ msgid "Show this block for which languages"
 msgstr "Hiện khối này cho ngôn ngữ nào"
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Hiện hình chiếu nổi trong hộp người"
+msgstr "Hiện hình chiếu nổi trong hộp người."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -13568,9 +13567,11 @@ msgid "The changes to “%s” have been rejected."
 msgstr "Thay đổi sang “%s” đã bị từ chối."
 
 #: app/Module/ClippingsCartModule.php:324
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Xe chứa đoạn chép cho phép bạn rút ra (“các đoạn chép”) từ cây gia đình này và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM.<br><ul><li>Làm cách nào chép đoạn cần?<br>Điều này thật đơn giản. Khi nào bạn thấy tên nhấp được (cá nhân, gia đình hay nguồn) bạn có thể chuyển đến mục xem trang chi tiết của tên đó. Tại đây có mục <b>Cho vào xe đoạn chép</b>. Khi bạn nhấp vào liên kết này bạn sẽ có được vài tùy chọn về tải về.</li><li>Làm thế nào tải về?<br>Khi bạn đã có mục chép trong xe, bạn có thể tải về bằng cách nhấp vào liên kết <b>Tải về</b>. Theo hướng dẫn và liên kết.</li></ul>"
+msgstr ""
+"Xe chứa đoạn chép cho phép bạn rút ra (“các đoạn chép”) từ cây gia đình này "
+"và kết hợp chúng lại thành một file để tải về cũng như nhập chúng vào chương "
+"trình gia phả của bạn. File tải về được ở dạng fiel GEDCOM."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -16114,9 +16115,8 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr "Bạn phải đánh số các bản ghi lại ở một trong các cây gia đình trước khi hợp nhất chúng."
 
 #: app/Module/ChartsBlockModule.php:138
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Bạn phải chọn một cá nhân và loại biểu đồ trong khối thiết đặt cấu hình."
+msgstr "Bạn phải chọn một cá nhân và loại biểu đồ trong khối thiết đặt cấu hình"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
