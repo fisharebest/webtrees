@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2022-12-12 07:56+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -751,7 +751,7 @@ msgstr "Een link naar de webtrees homepage."
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
 msgid "A list of branches of a family."
-msgstr "Een lijst met met familietakken."
+msgstr "Een lijst met familietakken."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:93
@@ -984,7 +984,12 @@ msgstr "Een rapport van de vitale records in een bepaalde periode of plaats."
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Een rol is een verzameling van toegangsrechten om gegevens te bekijken, instellingen te wijzigen, enz.. Toegangsrechten worden toegekend aan rollen, rollen worden verleend aan gebruikers. Elke stamboom kan andere rechten toekennen aan elke rol en gebruikers kunnen een andere rol hebben in elke stamboom."
+msgstr ""
+"Een rol is een verzameling van toegangsrechten om gegevens te bekijken, "
+"instellingen te wijzigen, enz. Toegangsrechten worden toegekend aan rollen, "
+"en rollen worden verleend aan gebruikers. Elke stamboom kan andere rechten "
+"toekennen aan elke rol en gebruikers kunnen een andere rol hebben in elke "
+"stamboom."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -5712,7 +5717,7 @@ msgstr "Voeg een optionele notitie toe aan deze favoriet"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Volledig scherm weergeven"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5852,7 +5857,7 @@ msgstr "Uitgesloten van onderwerping"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Volledig scherm afsluiten"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6120,7 +6125,7 @@ msgstr "Gezinstelling"
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "Gezinsfeit"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
@@ -6830,7 +6835,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:935
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -10291,7 +10296,7 @@ msgstr "Geen feiten voor dit gezin."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Er is geen bestand ontvangen."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -14496,6 +14501,8 @@ msgstr "De nieuwe gebruiker zal worden gevraagd om zijn/haar e-mailadres te beve
 #: resources/views/admin/tags.phtml:938
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"De volgende versie van de GEDCOM-standaard zal nieuwe labels toevoegen en "
+"oude verwijderen. U kunt sommige van de nieuwe labels nu al gebruiken."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
@@ -16347,7 +16354,7 @@ msgstr "Website"
 #: app/Http/RequestHandlers/SiteLogsPage.php:96
 #: resources/views/admin/control-panel.phtml:241
 msgid "Website logs"
-msgstr "Website logs"
+msgstr "Website-logboekbestanden"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:66
 #: resources/views/admin/control-panel.phtml:219
@@ -17085,12 +17092,12 @@ msgstr "sluiten"
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr "clouds"
+msgstr "wolken"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr "colors"
+msgstr "kleuren"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:272
@@ -19492,7 +19499,7 @@ msgstr "leden"
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr "minimal"
+msgstr "minimaal"
 
 #: app/Elements/RoleInEvent.php:81 app/Services/RelationshipService.php:349
 msgid "mother"
