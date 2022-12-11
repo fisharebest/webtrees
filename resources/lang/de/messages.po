@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
 "PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -751,7 +751,9 @@ msgstr "Eine Liste der Zweige einer Familie."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Eine Liste der Änderungen, die die Zustimmung des Moderators brauchen, sowie E-Mail-Benachrichtigungen."
+msgstr ""
+"Eine Liste der Änderungen, die von einem Moderator geprüft werden müssen, "
+"sowie E-Mail-Benachrichtigungen."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:57
@@ -6562,7 +6564,9 @@ msgstr "Es wurden alte Dateien einer Vorgängerversion von webtrees gefunden. Al
 #: resources/views/admin/clean-data.phtml:20
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr "Dateien, die mit %s gekennzeichnet sind, sind notwendig für die ordnungsgemäße Funktion und können nicht entfernt werden."
+msgstr ""
+"Die mit %s gekennzeichneten Dateien sind für den ordnungsgemäßen Betrieb "
+"erforderlich und können nicht entfernt werden."
 
 #: resources/views/calendar-page.phtml:119
 #: resources/views/lists/datatables-attributes.phtml:32
