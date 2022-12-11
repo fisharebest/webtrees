@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-01 13:26+0000\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ar/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -255,9 +255,9 @@ msgid_plural "%s anonymous signed-in users"
 msgstr[0] "%s مستخدم مجهولا مسجل دخولاً"
 msgstr[1] "%s مستخدما مجهولا مسجل دخولاً"
 msgstr[2] "%s مستخدمان مجهولان مسجلان دخولاً"
-msgstr[3] "%s مستخدمين  مجهولين مسجلين دخولاً"
-msgstr[4] "%s مستخدما  مجهولا مسجلين دخولاً"
-msgstr[5] "%s مستخدما  مجهولا مسجل دخولاً"
+msgstr[3] "%s مستخدمين مجهولين مسجلين دخولاً"
+msgstr[4] "%s مستخدما مجهولا مسجلين دخولاً"
+msgstr[5] "%s مستخدما مجهولا مسجل دخولاً"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -310,10 +310,10 @@ msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "هناك %s مشجر للعائلة"
 msgstr[1] "هناك %s مشجر للعائلة"
-msgstr[2] "هناك %s مشجرات  للعائلة"
+msgstr[2] "هناك %s مشجرات للعائلة"
 msgstr[3] "هناك %s مشجرات للعائلة"
 msgstr[4] "هناك %s مشجر للعوائل"
-msgstr[5] "هناك %s مشجراً  للعوائل"
+msgstr[5] "هناك %s مشجراً للعوائل"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
@@ -2023,7 +2023,7 @@ msgstr "ساموا الأمريكية"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
-msgstr "بالإمكان عرض نص أي سؤال شائع  في مشجر عائلة محددة، أو في جميعها."
+msgstr "بالإمكان عرض نص أي سؤال شائع في مشجر عائلة محددة، أو في جميعها."
 
 #: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
@@ -2276,7 +2276,7 @@ msgstr "هل تريد رفض جميع التعديلات المقترحة لهذ
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
-msgstr "هل  تريد إزالة الروابط؟"
+msgstr "هل تريد إزالة الروابط؟"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
@@ -3502,11 +3502,11 @@ msgstr "إنتباه! قد تستغرق العملية وقت طويل يستل�
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
-msgstr "احذر:  قد لا تعمل الوحدات القديمة، أو أنها قد تمنع webtrees من العمل ."
+msgstr "احذر: قد لا تعمل الوحدات القديمة، أو أنها قد تمنع webtrees من العمل ."
 
 #: admin_site_upgrade.php:202
 msgid "Caution: old themes may not work, or they may prevent webtrees from working."
-msgstr "احذر :  قد لا تعمل الأنماط القديمة ، أو أنها قد تمنع webtrees من العمل ."
+msgstr "احذر : قد لا تعمل الأنماط القديمة ، أو أنها قد تمنع webtrees من العمل ."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6728
@@ -4455,7 +4455,7 @@ msgstr "صبغات وراثية"
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:262
 msgid "Daitch-Mokotoff"
-msgstr "الشخص  Daitch-Mokotoff"
+msgstr "الشخص Daitch-Mokotoff"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:151
@@ -5164,7 +5164,7 @@ msgstr "دنفر، كولورادو"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr "اعتمادا على إعدادات الخادم الخاص بك،  قد تكون الترقية تلقائيا ممكنة."
+msgstr "اعتمادا على إعدادات الخادم الخاص بك، قد تكون الترقية تلقائيا ممكنة."
 
 #: familybook.php:90
 msgid "Descendant generations"
@@ -6564,7 +6564,9 @@ msgstr "بنط الخط"
 #: admin_trees_manage.php:301
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "على سبيل المثال، إذا كان ملف GEDCOM يحتوي على %1$s وكان webtrees يتوقع أن يجد %2$s  في المجلد، في هذه الحالة عليك حذف %3$s ."
+msgstr ""
+"على سبيل المثال، إذا كان ملف GEDCOM يحتوي على %1$s وكان webtrees يتوقع أن "
+"يجد %2$s في المجلد، في هذه الحالة عليك حذف %3$s ."
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -10792,7 +10794,7 @@ msgstr "صورة"
 
 #: admin_pgv_to_wt.php:151
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr "قد تكون  PhpGedView مثبتة في احدى هذه المجلدات :"
+msgstr "قد تكون PhpGedView مثبتة في احدى هذه المجلدات :"
 
 #. I18N: %s is a number
 #: admin_trees_manage.php:721
@@ -11477,7 +11479,7 @@ msgstr "رقم ملف سجل"
 
 #: search.php:83 statistics.php:350
 msgid "Records"
-msgstr "سجــــلات"
+msgstr "سجلات"
 
 #: admin_site_merge.php:59
 msgid "Records are not the same type. Cannot merge records that are not the same type."
@@ -12046,7 +12048,9 @@ msgstr "بحث وإستبدال"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr "البحث واستبدال النص، وذلك باستخدام عمليات البحث البسيطة أو  نمط المطابقة المتقدمة."
+msgstr ""
+"البحث واستبدال النص، وذلك باستخدام عمليات البحث البسيطة أو نمط المطابقة "
+"المتقدمة."
 
 #: includes/session.php:491
 msgid "Search engine"
@@ -13071,7 +13075,11 @@ msgstr "الصومال"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "تقوم بعض برامج الأنساب بإنشاء ملفات GEDCOM  تحتوي على أسماء الملفات مع مساراتها في تلك البرامج. ولكن هذه المسارات لن تكون موجودة على خادم الويب عند توريد بيانات ملف GEDCOM . على سبيل المثال “C:\\Documents\\Genealogy\\Photos\\John_Smith.jpeg”."
+msgstr ""
+"تقوم بعض برامج الأنساب بإنشاء ملفات GEDCOM تحتوي على أسماء الملفات مع "
+"مساراتها في تلك البرامج. ولكن هذه المسارات لن تكون موجودة على خادم الويب عند "
+"توريد بيانات ملف GEDCOM . على سبيل المثال “C:\\Documents\\Genealogy\\Photos"
+"\\John_Smith.jpeg”."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
@@ -13646,7 +13654,7 @@ msgstr "حقل <b>إسم العائلة</b> يحتوي على إسم يستخد�
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "تم توريد ملف  الجيدكوم %s."
+msgstr "تم توريد ملف الجيدكوم %s."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13685,7 +13693,13 @@ msgstr "لقد تم رفض التعديلات على ”%s“."
 
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "تتيح سلة المقتطفات  للمستخدم أخذ مقتطفات (\"قصاصات\") من المشجر ووضعها في ملف واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل بصيغة GEDCOM.<br><ul><li>كيفية الإقتطاف؟<br>كلما يظهر اسم ممكن النقر عليه (فرد، أسرة أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة خيارات للتنزيل."
+msgstr ""
+"تتيح سلة المقتطفات للمستخدم أخذ مقتطفات (\"قصاصات\") من المشجر ووضعها في ملف "
+"واحد للتنزيل والتوريد لاحقاً في برنامج أنساب آخر. يتم تسجيل ملف التنزيل "
+"بصيغة GEDCOM.<br><ul><li>كيفية الإقتطاف؟<br>كلما يظهر اسم ممكن النقر عليه "
+"(فرد، أسرة أو مصدر) يمكن الإنتقال إلى صفحة تفاصيل هذا الاسم. هناك سيظهر "
+"الخيار <b>إضافة إلى سلة المقتطفات.</b> وعند النقر فوق الرابط سيتم إظهار عدة "
+"خيارات للتنزيل."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -14140,7 +14154,10 @@ msgstr "تم تحديث تفضيلات الموقع."
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1547
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "يوفر الموقع www.geonames.org  قاعدة بيانات كبيرة لأسماء الأماكن . بالإمكان البحث فيه عند إدخال أماكن جديدة. يجب التسجيل للحصول على حساب مستخدم مجاني في www.geonames.org للتمكن من استخدام هذه الميزة."
+msgstr ""
+"يوفر الموقع www.geonames.org قاعدة بيانات كبيرة لأسماء الأماكن . بالإمكان "
+"البحث فيه عند إدخال أماكن جديدة. يجب التسجيل للحصول على حساب مستخدم مجاني في "
+"www.geonames.org للتمكن من استخدام هذه الميزة."
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
@@ -14326,7 +14343,7 @@ msgid_plural "This family tree has %s records which use the same “XREF” as a
 msgstr[0] "هناك %s سجلا في مشجر العائلة هذه يحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[1] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[2] "هناك %s سجلان في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
-msgstr[3] "هناك %s سجلات  في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
+msgstr[3] "هناك %s سجلات في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[4] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 msgstr[5] "هناك %s سجلا في مشجر العائلة هذه تحتوي علي “XREF” مطابق لمشجر آخر."
 
@@ -14401,7 +14418,20 @@ msgstr "هذه المعلومات لها خصوصية ولا يمكن إظهار
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "يتيح لك مربع الإدخال هذا إمكانية تغيير السنة في التقويم. قم بإدخال السنة في المربع ثم اضغط على <b>إدخال</b> لتغيير التقويم لتلك السنة. <br><br><b> الميزات المتقدمة<b>عرض السنة</b><dl><dt><b>أكثر من سنة</b></dt><dd> يمكنك البحث عن التواريخ في مجموعة من السنوات. <br><br> نطاق السنوات <u>شامل</u>. بمعنى أن نطاق التاريخ يمتد من 1 يناير من السنة الأولى للمجموعة إلى 31 ديسمبر لآخر سنة مذكورة. وفيما يلي بعض الأمثلة: <br><br><b>1992-5</b> يعرض جميع الأحداث من عام 1992 إلى عام 1995. <br><b>1972-89</b> يعرض جميع الأحداث من 1972 إلى 1989. <br><b>1610-759</b> يعرض جميع الأحداث من 1610 إلى 1759. <br><br> لعرض جميع الأحداث الحاصلة في عقد أو قرن معين، بإمكانك استخدام <b>?</b> في مكان الأرقام النهائية. على سبيل المثال، <b>197?</b> يعرض جميع الأحداث الحاصلة فيما بين 1970-1979 أو <b>16??</b>  يعرض جميع الأحداث الحاصلة فيما بين 1600 الى 1699. <br><br> اذا قمت باختيار نطاق من السنوات سيتم تغييرالتقوييم تلقائياً للعرض السنوي. </dd></dl>"
+msgstr ""
+"يتيح لك مربع الإدخال هذا إمكانية تغيير السنة في التقويم. قم بإدخال السنة في "
+"المربع ثم اضغط على <b>إدخال</b> لتغيير التقويم لتلك السنة. <br><br><b> "
+"الميزات المتقدمة<b>عرض السنة</b><dl><dt><b>أكثر من سنة</b></dt><dd> يمكنك "
+"البحث عن التواريخ في مجموعة من السنوات. <br><br> نطاق السنوات <u>شامل</u>. "
+"بمعنى أن نطاق التاريخ يمتد من 1 يناير من السنة الأولى للمجموعة إلى 31 ديسمبر "
+"لآخر سنة مذكورة. وفيما يلي بعض الأمثلة: <br><br><b>1992-5</b> يعرض جميع "
+"الأحداث من عام 1992 إلى عام 1995. <br><b>1972-89</b> يعرض جميع الأحداث من "
+"1972 إلى 1989. <br><b>1610-759</b> يعرض جميع الأحداث من 1610 إلى 1759. "
+"<br><br> لعرض جميع الأحداث الحاصلة في عقد أو قرن معين، بإمكانك استخدام <b>?</"
+"b> في مكان الأرقام النهائية. على سبيل المثال، <b>197?</b> يعرض جميع الأحداث "
+"الحاصلة فيما بين 1970-1979 أو <b>16??</b> يعرض جميع الأحداث الحاصلة فيما بين "
+"1600 الى 1699. <br><br> اذا قمت باختيار نطاق من السنوات سيتم تغييرالتقوييم "
+"تلقائياً للعرض السنوي. </dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
@@ -14630,7 +14660,7 @@ msgstr "هذا الخيار لتحديد إتجاه المخطط طولياً أ
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
 msgid "This option will make it easier for users to download images."
-msgstr "سيتيح هذا الخيار للمستخدمين إمكانية تحميل الصور  بشكل أسهل."
+msgstr "سيتيح هذا الخيار للمستخدمين إمكانية تحميل الصور بشكل أسهل."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
@@ -14667,7 +14697,7 @@ msgstr "هذا الخيار يتيح لمالك الموقع من ملائمة �
 
 #: gedrecord.php:72
 msgid "This record does not exist or you do not have permission to view it."
-msgstr "هذا السجل غير موجود أو  ليست لديك صلاحية الاطلاع عليه ."
+msgstr "هذا السجل غير موجود أو ليست لديك صلاحية الاطلاع عليه ."
 
 #: gedrecord.php:57
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14949,7 +14979,9 @@ msgstr "لإنشاء مهام بحث جديدة، يلزم إضافة ”مها�
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "يجب تسجيل الملاحظات والمحاضر بشكل  بسيط ، باستخدام نص غير منسق لضمان التوافق مع التطبيقات  الانساب الأخرى."
+msgstr ""
+"يجب تسجيل الملاحظات والمحاضر بشكل بسيط ، باستخدام نص غير منسق لضمان التوافق "
+"مع التطبيقات الانساب الأخرى."
 
 #: admin_site_upgrade.php:340
 #, php-format
@@ -15178,7 +15210,7 @@ msgstr "مجموع المستخدمين"
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
-msgstr "التتبع  والتحليلات"
+msgstr "التتبع والتحليلات"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
@@ -16151,7 +16183,10 @@ msgstr "بالإمكان طلب حد أكبر أو أصغر، ولكن يمكن 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: admin_trees_config.php:500
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "يمكنك تعيين صلاحية الوصول لسجل معين ، معلومة ، أو حدث بإضافة قيود عليها. في حال عدم وجود قيود للسجل، المعلومة ، أو الحدث  ، سيتم استخدام القيود الافتراضية التالية ."
+msgstr ""
+"يمكنك تعيين صلاحية الوصول لسجل معين ، معلومة ، أو حدث بإضافة قيود عليها. في "
+"حال عدم وجود قيود للسجل، المعلومة ، أو الحدث ، سيتم استخدام القيود "
+"الافتراضية التالية ."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
@@ -20251,7 +20286,10 @@ msgstr "الموقع يرسل الرسائل دون حفظ"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "تستخدم  webtrees ترميز UTF-8 للرسائل المعلمة، الأحرف الخاصة والكتابات غير اللاتينية . إذا كنت تريد استخدام هذا الملف GEDCOM مع برنامج أنساب لا يدعم UTF- 8، ثم يمكنك إنشاء باستخدام الترميز ISO- 8859-1 ."
+msgstr ""
+"تستخدم webtrees ترميز UTF-8 للرسائل المعلمة، الأحرف الخاصة والكتابات غير "
+"اللاتينية . إذا كنت تريد استخدام هذا الملف GEDCOM مع برنامج أنساب لا يدعم "
+"UTF- 8، ثم يمكنك إنشاء باستخدام الترميز ISO- 8859-1 ."
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
