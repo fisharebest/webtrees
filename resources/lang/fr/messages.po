@@ -1881,7 +1881,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Un diagramme de type sablier des ancêtres et des descendants d’un individu."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Un individu peut avoir plusieurs parents. Par exemple, par naissance et par adoption."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5875,7 +5875,7 @@ msgstr "Exporte tous les arbres vers des fichiers GEDCOM…"
 msgid "Export preferences"
 msgstr "Exporter les préférences"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Élargir la confidentialité aux personnes décédées"
@@ -7668,7 +7668,7 @@ msgstr "Si vouz modifiez le nom de fichier, vous devriez aussi renommer le fichi
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Si vous sélectionnez un dossier différent, vous devez aussi déplacer tous les fichiers (sauf config.ini.php, index.php  et .htaccess) du dossier actuel dans le nouveau dossier."
+msgstr "Si vous sélectionnez un dossier différent, vous devez aussi déplacer tous les fichiers (sauf config.ini.php, index.php et .htaccess) du dossier actuel dans le nouveau dossier."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:253
@@ -7753,7 +7753,7 @@ msgstr "Ce mois-là…"
 msgid "In this year…"
 msgstr "Cette année-là…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "Dans webtrees version 1, vous pouviez ajouter des vignettes personnalisées aux objets médias en créant des fichiers dans le dossier « thumbs »."
@@ -7947,7 +7947,7 @@ msgstr "Déclarant"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr "L'usage des sources « en ligne »  est déconseillé."
+msgstr "L'usage des sources « en ligne » est déconseillé."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:177 app/Module/ChartsBlockModule.php:260
@@ -11201,7 +11201,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Les noms de lieux sont fréquemment trop longs pour un affichage adéquat dans les graphiques, les listes, etc. Ils peuvent être abrégés en affichant seulement les premières parties du nom telles que <i>village, département</i>, ou les dernières parties telles que <i>région, pays</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Les noms de lieux peuvent changer au cours du temps. En généalogie, il est d’usage d’utiliser le nom actuel d’une ville ou d’un pays. Le nom historique peut être indiqué dans les sources, les notes, etc.."
 
 #: resources/views/help/place.phtml:10
@@ -14493,7 +14493,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Le nouvel utilisateur sera invité à confirmer son adresse de courriel avant que le compte ne soit ouvert."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21751,7 +21751,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Si un nom de famille n’atteint pas le seuil pour être affiché dans la liste, il peut être ajouté manuellement ici. Pour ajouter plusieurs noms, les séparer par une virgule. <b>Le système distingue majuscules et minuscules.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Si la vignette est identique à l'image d'origine, elle n'est plus utile et vous devriez la supprimer. Si c'est une image personnalisée, vous devriez l'ajouter à l'objet média."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

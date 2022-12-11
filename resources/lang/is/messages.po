@@ -1877,8 +1877,8 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Tímaglasagraf yfir forfeður og afkomendur einstaklings."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr "Einstaklingur getur átt fleiri en eina foreldra.  Til dæmis, fæðing og ættleidd."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
+msgstr "Einstaklingur getur átt fleiri en eina foreldra. Til dæmis, fæðing og ættleidd."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -5871,7 +5871,7 @@ msgstr "Flytja út allar ættartölur í GEDCOM skrár…"
 msgid "Export preferences"
 msgstr "Útflutningsstillingar"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Framlengja friðhelgi fyrir látið fólk"
@@ -7749,7 +7749,7 @@ msgstr "Í þessum mánuði …"
 msgid "In this year…"
 msgstr "Á þessu ári …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "Í webtrees útgáfu 1, gastu bætt sérsniðnum smámyndum við gagnasafnið með því að búa til skrár í „thumbs“ möppunum."
@@ -11007,7 +11007,7 @@ msgstr "Lykilorð"
 #: resources/views/password-reset-page.phtml:39
 #: resources/views/register-page.phtml:78
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
-msgstr "Lykilorð verða að vera að lágmarki 8 stafir og gerður er greinarmunur á  há- og lágstöfum, þannig að „secret“ er frábrugðið frá „SECRET“."
+msgstr "Lykilorð verða að vera að lágmarki 8 stafir og gerður er greinarmunur á há- og lágstöfum, þannig að „secret“ er frábrugðið frá „SECRET“."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:158
@@ -11197,7 +11197,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Staðarheiti eru oft of löng til að passa í gröf, lista o.s.frv. Hægt er að stytta þau með því að birta eingöngu fyrstu hlutina af heitinu, t.d. <i>bær, sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Staðarheiti geta breyst með tímanum. Í ættfræði er venja að nota núverandi nafn fyrir bæ eða land. Sögulegt nafn er hægt að sýna í heimildum, skýringum o.s.frv."
 
 #: resources/views/help/place.phtml:10
@@ -13167,7 +13167,7 @@ msgstr "Sýna fyrirhugaðar breytingar"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "Birta  myndir"
+msgstr "Birta myndir"
 
 #: app/Module/PlaceHierarchyListModule.php:197
 msgid "Show place hierarchy"
@@ -14489,7 +14489,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Nýi notandinn verður beðinn um að staðfesta netfang sitt áður en reikningurinn er stofnaður."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65

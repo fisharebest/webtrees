@@ -740,7 +740,7 @@ msgstr "En velkomsthilsen til de besøgende."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr "Viser en link til  administrator nederst på siden."
+msgstr "Viser en link til administrator nederst på siden."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
@@ -1881,7 +1881,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Et timeglas diagram for et individs forfædre og efterkommere."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "En person kan have flere forældre - fx ved fødsel og derefter adoption."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5875,7 +5875,7 @@ msgstr "Eksporter alle træer til GEDCOM filer…"
 msgid "Export preferences"
 msgstr "Eksport muligheder"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Udvid privatlivindstillinger for afdøde personer"
@@ -7753,7 +7753,7 @@ msgstr "I denne måned…"
 msgid "In this year…"
 msgstr "I dette år…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "I webtrees version 1 kunne du tilføje tilpassede miniaturebilleder til medieobjekter, ved at oprette filer i \"thumbs\" mapperne."
@@ -11201,7 +11201,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Stednavne er ofte for lange til den plads der er til dem i lister og oversigter. De kan forkortes til at vise de første dele af navnet som fx <i>by, herred</i> eller de sidste dele som fx <i>amt, land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Stednavne kan ændres over tid. I slægtsforskning er det sædvanligt at bruge det aktuelle navn til en by eller et land. Det historiske navn kan vises i kilder, noter osv."
 
 #: resources/views/help/place.phtml:10
@@ -14493,7 +14493,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Den nye bruger vil blive bedt om at bekræfte deres email adresse før oprettelse af kontoen."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -16666,7 +16666,7 @@ msgstr "Du bør gennemgå afventende godkendelser inden opgradering (godkend ell
 #: app/Http/RequestHandlers/RegisterAction.php:268
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Du bør slette “%1$s” fra  “%2$s” og prøve igen."
+msgstr "Du bør slette “%1$s” fra “%2$s” og prøve igen."
 
 #: resources/views/admin/users-edit.phtml:115
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -21710,7 +21710,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Hvis et bestemt efternavn ikke findes tilstrækkelig mange gange til at kunne blive vist i listen over “Oftest forekommende efternavne”, kan den her tilføjes manuelt. Hvis der tilføjes flere navne skal de adskilles med et komma. <b>Efternavne er versalfølsomme.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Hvis ikonet er det samme som originalbilledet, er der ikke længere behov for det, og du bør slette det. Hvis det er et redigeret billede, bør du tilføje det til medieobjektet."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

@@ -1895,7 +1895,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 #. I18N: Description of the “Interactive tree” module
@@ -5891,7 +5891,7 @@ msgstr ""
 msgid "Export preferences"
 msgstr ""
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr ""
@@ -7769,7 +7769,7 @@ msgstr "Šajā mēnesī…"
 msgid "In this year…"
 msgstr "Šajā gadā…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
@@ -11219,7 +11219,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr ""
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
 
 #: resources/views/help/place.phtml:10
@@ -14511,7 +14511,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr ""
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -20988,8 +20988,8 @@ msgstr ""
 #~ msgid "%s hour ago"
 #~ msgid_plural "%s hours ago"
 #~ msgstr[0] "pirms %s stundas"
-#~ msgstr[1] "pirms  %s stundām"
-#~ msgstr[2] "pirms %s  stundām"
+#~ msgstr[1] "pirms %s stundām"
+#~ msgstr[2] "pirms %s stundām"
 
 #~ msgid "%s individual is private."
 #~ msgid_plural "%s individuals are private."
@@ -21303,7 +21303,7 @@ msgstr ""
 #~ msgstr "webtress nesavienojas ar PhpGedView datubāzi: %s."
 
 #~ msgid "webtrees needs a MySQL database, version %s or later."
-#~ msgstr "webtrees nepieciešama MySQL datubāze, versija %s vai  jaunākas."
+#~ msgstr "webtrees nepieciešama MySQL datubāze, versija %s vai jaunākas."
 
 #~ msgid "webtrees needs to send emails, such as password reminders and website notifications. To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
 #~ msgstr "webtrees nepieciešams nosūtīt e-pastus, piemēram, paroļu atgādinājumus un paziņojumiem. Lai to izpildītu, var izmantot serveri iebūvēto PHP pasta iekārtu (kas ne vienmēr ir pieejama) vai ārējā SMTP (pasta releja) pakalpojumu, kura dati jums būs jānorāda, lai nodrošinātu savienojumu."

@@ -66,7 +66,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:243
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "KB %1$s  ezwamakí na segonde %2$s."
+msgstr "KB %1$s ezwamakí na segonde %2$s."
 
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
@@ -1821,7 +1821,7 @@ msgstr "Kopésa basáleli ndingisa ya komɔ́nɔ bokɔ́tisi bwa péto ya GEDCOM
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:51
 msgid "Allow visitors to request a new user account"
-msgstr "Kondima batáli  basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
+msgstr "Kondima batáli basɛ́ngɛ kɔ́nti mpɔ̂ na mosáleli mwa nsika"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
 #: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
@@ -1880,7 +1880,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Liyémi \"hourglass\" lya bankɔ́kɔ na bakitani ba moto."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 #. I18N: Description of the “Interactive tree” module
@@ -3460,8 +3460,8 @@ msgstr "Mabóngoli"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Bobóngoli  bwa mokɔlɔ %s mwa nsúka molandí"
-msgstr[1] "Bobóngoli  bwa mikɔlɔ %s mya nsúka milandí"
+msgstr[0] "Bobóngoli bwa mokɔlɔ %s mwa nsúka molandí"
+msgstr[1] "Bobóngoli bwa mikɔlɔ %s mya nsúka milandí"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:94
 #: resources/views/admin/trees.phtml:211
@@ -5908,7 +5908,7 @@ msgstr "Komɛmɛ nzeté ya mabótá mánsɔ epái na kásá-kásá ya GEDCOM…"
 msgid "Export preferences"
 msgstr "Komɛmɛ malúli"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr ""
@@ -7766,7 +7766,7 @@ msgstr "Koyéisa malúli"
 #: resources/views/admin/trees-merge.phtml:27
 #: resources/views/admin/trees-renumber.phtml:24
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "O káti ya nzeté ya libótá, bokɔ́tisi bɔ́nsɔ bozalí na etatoli ya motángo mwa káti (babêngí XREF”) lokóla “F123”  tǒ “R14”."
+msgstr "O káti ya nzeté ya libótá, bokɔ́tisi bɔ́nsɔ bozalí na etatoli ya motángo mwa káti (babêngí XREF”) lokóla “F123” tǒ “R14”."
 
 #: resources/views/help/romanized.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -7794,7 +7794,7 @@ msgstr "Na sánzá eye…"
 msgid "In this year…"
 msgstr "Na mobú moye…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
@@ -8715,7 +8715,7 @@ msgstr "Kokangisa kɔ́nti ya mosáleli na moto."
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:49
 #: resources/views/modules/relatives/tab.phtml:123
 msgid "Link this individual to an existing family as a child"
-msgstr "Kosangisa moto óyo lokola mwǎna o káti ya  libótá liyébaní"
+msgstr "Kosangisa moto óyo lokola mwǎna o káti ya libótá liyébaní"
 
 #: resources/views/media-page-menu.phtml:65
 #: resources/views/modals/link-media-to-family.phtml:18
@@ -11273,7 +11273,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr ""
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
 
 #: resources/views/help/place.phtml:10
@@ -14582,7 +14582,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr ""
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -17653,7 +17653,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa yambo na bolongoli mɔ̌kɔ́ o likoló"
 #: app/Services/RelationshipService.php:1175
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "mwǎna-nɔ́kɔ́  wa yambo na bolongoli mɔ̌kɔ́ o likoló"
+msgstr "mwǎna-nɔ́kɔ́ wa yambo na bolongoli mɔ̌kɔ́ o likoló"
 
 #: app/Services/RelationshipService.php:1177
 msgctxt "mother’s father’s brother’s son"
@@ -17765,8 +17765,8 @@ msgstr "mwǎna-nɔ́kɔ́ wa mínei"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "útá %1$s ntáká  mobú %2$s"
-msgstr[1] "útá %1$s ntáká  mibú %2$s"
+msgstr[0] "útá %1$s ntáká mobú %2$s"
+msgstr[1] "útá %1$s ntáká mibú %2$s"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:209
@@ -17916,7 +17916,7 @@ msgstr "nkóló ×%s tatá-mwǎsi/nɔ́kɔ́"
 #: app/Services/RelationshipService.php:2098
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "mwǎna ×%s  nkɔ́kɔ-mwǎna"
+msgstr "mwǎna ×%s nkɔ́kɔ-mwǎna"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2052
@@ -17925,7 +17925,7 @@ msgstr "mwǎna ×%s  nkɔ́kɔ-mwǎna"
 #: app/Services/RelationshipService.php:2094
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "mwǎna ×%s  nkɔ́kɔ mwǎna mwǎsí"
+msgstr "mwǎna ×%s nkɔ́kɔ mwǎna mwǎsí"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1889
@@ -21038,8 +21038,8 @@ msgstr "…"
 
 #~ msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 #~ msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
-#~ msgstr[0] "moto %1$s atálisámí, káti ya motángo %2$s, útá  milɔngɔ́ mya mabótá %3$s."
-#~ msgstr[1] "bato %1$s batálisámí, káti ya mitángo %2$s, útá  milɔngɔ́ mya mabótá %3$s."
+#~ msgstr[0] "moto %1$s atálisámí, káti ya motángo %2$s, útá milɔngɔ́ mya mabótá %3$s."
+#~ msgstr[1] "bato %1$s batálisámí, káti ya mitángo %2$s, útá milɔngɔ́ mya mabótá %3$s."
 
 #~ msgid "%s day ago"
 #~ msgid_plural "%s days ago"
@@ -21680,7 +21680,7 @@ msgstr "…"
 #~ msgstr "Óyo ezalí molɔngɔ́ mwa bwéta ya bikelá ya GEDCOM ekabolamí na bakóma moye mokolakisama na bobakisi tǒ bobɔngisi nkómbó ya bisiká . Sɔ́kí ozalí kosálela afabɛ́ non-Latin lokóla Hebrew, Greek, Cyrillic tǒ Arabic, osengélí kobakisa bwéta lokóla _HEB, ROMN, FONE, etc. mpɔ̂ na kopésa yɔ̌ ndingisa ya kobómba nkómbó ya bisiká na afabɛ́ ikɛsɛ́ní."
 
 #~ msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual. “B” indicates an LDS baptism. “E” indicates an LDS endowment. “S” indicates an LDS spouse sealing. “P” indicates an LDS child-to-parent sealing."
-#~ msgstr "Óyo ezalí ekákoli ya bokúli bwa bato <abbr title=\"Eklézya ya Yésu Kristu ya baSántu ya Mikɔlɔ mya Nsúka\">SMN</abbr>. “&nbsp;B&nbsp;” batisimo. “&nbsp;L&nbsp;”  likabo. “&nbsp;B&nbsp;” bolóngani. “&nbsp;B&nbsp;” bondimi mwǎna na babóti."
+#~ msgstr "Óyo ezalí ekákoli ya bokúli bwa bato <abbr title=\"Eklézya ya Yésu Kristu ya baSántu ya Mikɔlɔ mya Nsúka\">SMN</abbr>. “&nbsp;B&nbsp;” batisimo. “&nbsp;L&nbsp;” likabo. “&nbsp;B&nbsp;” bolóngani. “&nbsp;B&nbsp;” bondimi mwǎna na babóti."
 
 #~ msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
 #~ msgstr "Óyo ezalí molɔngɔ́ mwa bikelá bya GEDCOM basáleli ba yɔ̌ bakokí kobakisa na mabótá. Okokí kobóngola molɔngɔ́ moye na bolongoli tǒ bobakisi nkómbó ya bikelá, atâ ya moto-méi, sɔ́kí esengélí. Nkómbó ya bikelá ikomɔ́nana na molɔngɔ́ moye ikokí komɔ́nana tɛ́ na molɔngɔ́ \"Bikelá mɔ̌kɔ́káka bya libótá\"."
@@ -21841,7 +21841,7 @@ msgstr "…"
 #~ msgstr "Osengéli koyíngela lisúsu, na bosáleli nkómbó ya mosáleli mpé loloba lwa bolekisi ya PhpGedView."
 
 #~ msgid "You only need to enter a Sign-in URL if you want to redirect to a different website or location when your users sign in. This is very useful if you need to switch from http to https when your users sign in. Include the full URL to <i>login.php</i>. For example, https://www.yourserver.com/webtrees/login.php ."
-#~ msgstr "Osengélí kokɔ́tisa sé  URL ya bokangisi sɔ́kí olingí kokɛndɛ na website tǒ na esíká ekɛsɛ́ní ntángo basáleli ba yɔ̌ bazalí koyíngela. Óyo ezalí na ntína míngi sɔ́kí osengélí koleka útá http kín’o https ntángo basáleli ba yɔ̌ bazalí koyíngela. Tiyá URL mobimba tíí <i>login.php</i>. Na ndakisa, https://www.yourserver.com/webtrees/login.php."
+#~ msgstr "Osengélí kokɔ́tisa sé URL ya bokangisi sɔ́kí olingí kokɛndɛ na website tǒ na esíká ekɛsɛ́ní ntángo basáleli ba yɔ̌ bazalí koyíngela. Óyo ezalí na ntína míngi sɔ́kí osengélí koleka útá http kín’o https ntángo basáleli ba yɔ̌ bazalí koyíngela. Tiyá URL mobimba tíí <i>login.php</i>. Na ndakisa, https://www.yourserver.com/webtrees/login.php."
 
 #~ msgid "Zip file(s)"
 #~ msgstr "Bakásá-kásá ya Zip"

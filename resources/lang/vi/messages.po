@@ -1379,7 +1379,7 @@ msgstr "Thêm nội dung ở cuối của yếu tố <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "Thêm nội dung vào cuối  yếu tố <code>&lt;head&gt;</code>."
+msgstr "Thêm nội dung vào cuối yếu tố <code>&lt;head&gt;</code>."
 
 #: resources/views/record-page-menu-clipboard.phtml:20
 msgid "Add from clipboard"
@@ -1863,7 +1863,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Biểu đồ đồng hồ cát."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Một cá nhân có thể có nhiêu ơn một bố mẹ. Thí dụ, bố mẹ đẻ và bố mẹ nuôi."
 
 #. I18N: Description of the “Interactive tree” module
@@ -2582,7 +2582,7 @@ msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr "Công cụ Bing™  của webmaster"
+msgstr "Công cụ Bing™ của webmaster"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:65
@@ -5856,7 +5856,7 @@ msgstr "Xuất tất cả cây gia đình sang tập tin GEDCOM…"
 msgid "Export preferences"
 msgstr "Các tùy chọn xuất"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Đặt chế độ riêng tư cho cả người mất"
@@ -7078,7 +7078,7 @@ msgstr "Google™ maps"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr "Công cụ quản trị web của  Google™"
+msgstr "Công cụ quản trị web của Google™"
 
 #: app/Gedcom.php:666
 msgid "Graduation"
@@ -7734,7 +7734,7 @@ msgstr "Vào tháng này…"
 msgid "In this year…"
 msgstr "Vào năm này…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "Ở webtrees phiên bản 1, bạn có thể thêm hình thu nhỏ mình tạo ra cho đối tượng đa phương tiện ở thư mục \"thumbs\"."
@@ -11180,7 +11180,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Tên địa điểm thường quá dài để đưa vào biểu đồ, danh sách v.v… Chúng có thể được viết tắt chỉ hiện vài phần đầu của tên như <i>làng, nước</i>, hay vài phần cuối, như <i>vùng, nước</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Tên địa điểm có thể thay đổi qua thời gian. Trong gia phả học, người ta thường dùng tên hiện tại cho thành phố hay nước. Tên lịch sử thường hiện ra ở nguổn, ghi chú v.v..."
 
 #: resources/views/help/place.phtml:10
@@ -11404,7 +11404,7 @@ msgstr "Mã bưu điện"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr "Được vận hành bởi  webtrees™"
+msgstr "Được vận hành bởi webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:165
@@ -12767,7 +12767,7 @@ msgstr "Đặt mức truy cập riêng tư ở biểu đồ gia phả."
 #: resources/views/emails/verify-notify-html.phtml:39
 #: resources/views/emails/verify-notify-text.phtml:27
 msgid "Set the status to “approved”."
-msgstr "Đặt trạng thái  “được chấp thuận”."
+msgstr "Đặt trạng thái “được chấp thuận”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:605
@@ -14485,7 +14485,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Người dùng mới sẽ được yêu cầu xác nhận bằng địa chỉ email trước khi tài khoản được tạo ra."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65

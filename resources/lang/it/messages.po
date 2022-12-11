@@ -367,7 +367,7 @@ msgstr "%s volta/volte rimosso ascendente"
 #: app/Services/RelationshipService.php:2174
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s  tre volte rimosso discendente"
+msgstr "%s tre volte rimosso discendente"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2160
@@ -1883,7 +1883,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Un grafico a clessidra contenente antenati e discendenti di una persona."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Un individuo può avere più coppie di genitori. Per esempio, naturali e adottivi."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5877,7 +5877,7 @@ msgstr "Esporta tutti gli alberi genealogici in file GEDCOM…"
 msgid "Export preferences"
 msgstr "Esporta impostazioni"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Estendi la privacy ai defunti"
@@ -7755,7 +7755,7 @@ msgstr "In questo mese…"
 msgid "In this year…"
 msgstr "In quest’anno…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "In webtrees versione 1, si potevano aggiungere miniature personalizzate agli oggetti multimediali creando il rispettivo file nella cartella <i>thumbs</i>."
@@ -11203,7 +11203,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "I nomi di luogo sono spesso troppo lunghi per rientrare nei grafici, negli elenchi, … È possibile abbreviarli, mostrando solo le prime parti del nome (ad esempio <i>città, nazione</i>) o le ultime parti di esso (come ad esempio <i>regione, nazione</i>)."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Il nome dei luoghi può cambiare nel tempo. In genealogia, è prassi usare il nome attuale di città e paesi. Il nome storico piò essere indicato nelle fonti, annotazione, ..."
 
 #: resources/views/help/place.phtml:10
@@ -14495,7 +14495,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Ai nuovi utenti sarà richiesto di confermare i loro indirizzi email prima di creare l'account."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21685,7 +21685,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Se il numero di volte che un certo cognome si presenta è inferiore al valore di soglia, non verrà visualizzato nell’elenco; lo si può tuttavia aggiungere manualmente qui. Per inserire più cognomi basta scriverli separati da una virgola. <b>Nei cognomi maiuscole e minuscole sono considerate differenti.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Se la miniatura è identica all'immagine originale, non è più necessaria e andrebbe rimossa. Se si tratta un'immagine personalizzata, andrebbe aggiunta all'oggetto multimediale."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -21701,7 +21701,7 @@ msgstr "…"
 #~ msgstr "Se si nasconde un riquadro vuoto, non sarà possibile modificarne la configurazione finché non diventerà nuovamente visibile (ovvero finché non conterrà qualcosa)."
 
 #~ msgid "If you use two-factor authentication, create an <a href=\"https://myaccount.google.com/apppasswords\">app password</a>."
-#~ msgstr "Se usi l'autenticazione a due fattori,  crea una  <a href=\"https://myaccount.google.com/apppasswords\">password per le app</a>."
+#~ msgstr "Se usi l'autenticazione a due fattori, crea una <a href=\"https://myaccount.google.com/apppasswords\">password per le app</a>."
 
 #~ msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>. Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
 #~ msgstr "Per rimuovere un cognome dall’elenco dei cognomi comuni senza aumentare il valore di soglia basta inserire il cognome in questo campo. Per inserire più cognomi basta scriverli separati da una virgola. <b>Nei cognomi maiuscole e minuscole sono considerate differenti.</b> I cognomi inseriti qui saranno rimossi anche dall’elenco dei 10 cognomi più diffusi mostrati della pagina di benvenuto."

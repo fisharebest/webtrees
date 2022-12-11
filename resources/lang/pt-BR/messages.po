@@ -1881,7 +1881,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Um gráfico de ampulheta dos antepassados e descendentes de um indivíduo."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Um indivíduo pode possuir mais de um conjunto de pais. Por exemplo, biológico e adotivo."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5875,7 +5875,7 @@ msgstr "Exportar todas as árvores genealógicas para arquivos GEDCOM…"
 msgid "Export preferences"
 msgstr "Opções de exportação"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Estender privacidade para pessoas falecidas"
@@ -7753,10 +7753,10 @@ msgstr "Este Mês em nossa História …"
 msgid "In this year…"
 msgstr "Este Ano em nossa História …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "Na versão 1 do webtrees, você podia adicionar miniaturas de imagens personalizadas à objetos de mídia criando arquivos nas pastas  “thumbs”."
+msgstr "Na versão 1 do webtrees, você podia adicionar miniaturas de imagens personalizadas à objetos de mídia criando arquivos nas pastas “thumbs”."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -11201,7 +11201,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Nomes de locais são frequentemente muito longos para estarem em gráficos, listas, etc. Eles podem ser abreviados exibindo somente a primeira parte do nome, como <i>vila, departamento</i>, ou a última parte dele, como <i>região, país</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Nomes de lugares podem mudar com o tempo. Em genealogia, é comum usar o nome atual da cidade ou país. O nome histórico pode ser mostrado nas fontes, notas, etc."
 
 #: resources/views/help/place.phtml:10
@@ -14493,7 +14493,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "O novo usuário será perguntado para confirmar seu endereço de e-mail antes que sua conta seja criada."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65

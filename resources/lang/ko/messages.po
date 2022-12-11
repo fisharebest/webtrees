@@ -43,7 +43,7 @@ msgstr " 안에 "
 #: app/Services/RelationshipService.php:2178
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s  오름차순 제거"
+msgstr "%1$s %2$s 오름차순 제거"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2183
@@ -91,7 +91,7 @@ msgstr[0] "%1$s 파일들이 %2$s 초 안에 압축이 풀렸습니다."
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s 은(는)  %2$s 이지만 %3$s 이(가) 예상됩니다."
+msgstr "%1$s 은(는) %2$s 이지만 %3$s 이(가) 예상됩니다."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2436
@@ -633,7 +633,7 @@ msgstr "<기본 테마>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr "<p>알림: 이 양식을 작성하여 제출함으로써 귀하는 다음 사항에 동의하게 됩니다.</p><ul><li>당사 사이트 및 아래 텍스트 상자에 나열된 살아있는 개인의 개인정보 보호에 동의합니다.  , 귀하가 누구와 관련이 있는지 설명하거나 당사 웹사이트에 등재되어야 하는 사람에 대한 정보를 제공합니다.</li></ul>"
+msgstr "<p>알림: 이 양식을 작성하여 제출함으로써 귀하는 다음 사항에 동의하게 됩니다.</p><ul><li>당사 사이트 및 아래 텍스트 상자에 나열된 살아있는 개인의 개인정보 보호에 동의합니다. , 귀하가 누구와 관련이 있는지 설명하거나 당사 웹사이트에 등재되어야 하는 사람에 대한 정보를 제공합니다.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -773,7 +773,7 @@ msgstr "저장소 목록."
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:75
 msgid "A list of shared notes."
-msgstr "공유 노트  목록."
+msgstr "공유 노트 목록."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:77
@@ -1859,7 +1859,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "인물의 조상과 후손의 양방향 차트."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "인물은 둘 이상의 부모 세트를 가질 수 있습니다. 예를 들어, 출생 및 입양."
 
 #. I18N: Description of the “Interactive tree” module
@@ -2049,7 +2049,7 @@ msgstr "이 정보를 삭제 하시겠습니까?"
 #: resources/views/modules/user-messages/user-messages.phtml:53
 #: resources/views/modules/user-messages/user-messages.phtml:135
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "이 메시지를 삭제하시겠습니까?  나중에 검색할 수 없습니다."
+msgstr "이 메시지를 삭제하시겠습니까? 나중에 검색할 수 없습니다."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:259
 #: resources/views/admin/clean-data.phtml:42
@@ -2253,7 +2253,7 @@ msgstr "이 사용자가 변경한 사항을 자동으로 수락"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:527
 msgid "Automatically expand notes"
-msgstr "노트 자동  확장"
+msgstr "노트 자동 확장"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:541
@@ -2327,7 +2327,7 @@ msgstr "가족당 평균 자녀 수"
 #: resources/views/admin/trees-create.phtml:48
 #: resources/views/admin/trees-preferences.phtml:86
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr "공백과 구두점을 피하십시오.  성은 좋은 선택일 수 있습니다."
+msgstr "공백과 구두점을 피하십시오. 성은 좋은 선택일 수 있습니다."
 
 #: app/Date/JalaliDate.php:281
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3296,7 +3296,7 @@ msgstr "사망 원인"
 #: resources/views/admin/trees-merge.phtml:66
 #: resources/views/admin/trees-renumber.phtml:47
 msgid "Caution! This may take a long time. Be patient."
-msgstr "주의!  시간이 오래 걸릴 수 있습니다.  인내심을 가지세요."
+msgstr "주의! 시간이 오래 걸릴 수 있습니다. 인내심을 가지세요."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
@@ -5852,7 +5852,7 @@ msgstr "모든 가계도를 GEDCOM 파일로 내보내기…"
 msgid "Export preferences"
 msgstr "환경설정 내보내기"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "사생활 보호를 죽은 인물까지 확대"
@@ -6573,7 +6573,7 @@ msgstr "예를 들어 경로 길이를 2로 지정하면 개인은 손자(자녀
 
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "예를 들어 사망 데이터가 없는 인물을 빠르게 찾을 수 있지만,  인물이 사망했는지 여부를 계산하는 것은 훨씬 느립니다."
+msgstr "예를 들어 사망 데이터가 없는 인물을 빠르게 찾을 수 있지만, 인물이 사망했는지 여부를 계산하는 것은 훨씬 느립니다."
 
 #: app/Module/ContactsFooterModule.php:147
 #, php-format
@@ -7730,7 +7730,7 @@ msgstr "이 달…"
 msgid "In this year…"
 msgstr "올 해…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "웹트리 버전 1에서는 \"thumbs\" 폴더에 파일을 만들어 미디어 개체에 사용자 정의 축소판을 추가할 수 있습니다."
@@ -11176,7 +11176,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "장소 이름은 종종 너무 길어 차트, 목록 등에 표시되지 않습니다. <i>마을, 카운티</i>와 같이 이름의 처음 몇 부분만 표시하거나 이름의 마지막 몇 부분만 표시하여 축약할 수 있습니다. (예: <i>지역, 국가</i>)."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "장소 이름은 시간이 지남에 따라 변경될 수 있습니다. 족보에서는 마을이나 국가의 현재 이름을 사용하는 것이 관례입니다. 역사적 이름은 출처, 메모 등에 표시할 수 있습니다."
 
 #: resources/views/help/place.phtml:10
@@ -14468,7 +14468,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "계정을 만들기 전에 새 사용자에게 전자 메일 주소를 확인하라는 메시지가 표시됩니다."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -14677,7 +14677,7 @@ msgstr "웹 사이트 환경 설정이 업데이트되었습니다."
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "webtrees 개발자는  오류에 대해 매우 관심이 있습니다. 연락하면 문제 해결에 도움이됩니다."
+msgstr "webtrees 개발자는 오류에 대해 매우 관심이 있습니다. 연락하면 문제 해결에 도움이됩니다."
 
 #: app/Module/ModuleThemeTrait.php:74 app/Module/ModuleThemeTrait.php:471
 #: resources/views/admin/modules.phtml:272
@@ -19325,7 +19325,7 @@ msgstr "인라인 노트"
 #: app/Date.php:197
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr "설명  %s(%s)"
+msgstr "설명 %s(%s)"
 
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:54
@@ -20539,7 +20539,7 @@ msgstr "￦\"/data/config.ini.php￦\" 파일의 데이터베이스 연결 설�
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:29
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "￦\"/data￦\" 폴더와  ￦\"/data/config.ini.php￦\" 파일에는 웹 서버가 읽을 수 있는 액세스 권한이 있습니다"
+msgstr "￦\"/data￦\" 폴더와 ￦\"/data/config.ini.php￦\" 파일에는 웹 서버가 읽을 수 있는 액세스 권한이 있습니다"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php:247
@@ -20862,7 +20862,7 @@ msgstr "\"%s\"가 삭제되었습니다."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"강조된 이미지\"(_PRIM) 태그는 개인이 선호하는 이미지를 나타내기 위해 일부 계보 응용 프로그램에서 사용됩니다.  대안은 선호하는 이미지가 먼저 나열되도록 이미지를 재정렬하는 것입니다."
+msgstr "\"강조된 이미지\"(_PRIM) 태그는 개인이 선호하는 이미지를 나타내기 위해 일부 계보 응용 프로그램에서 사용됩니다. 대안은 선호하는 이미지가 먼저 나열되도록 이미지를 재정렬하는 것입니다."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
@@ -21332,4 +21332,4 @@ msgstr "…"
 #~ msgstr "tls"
 
 #~ msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-#~ msgstr "webtrees는 악센트가 있는 문자, 특수 문자 및 비 라틴 문자에 UTF-8 인코딩을 사용합니다.  UTF-8을 지원하지 않는 계보 소프트웨어에서 이 GEDCOM 파일을 사용하려는 경우 ISO-8859-1 인코딩을 사용하여 생성할 수 있습니다."
+#~ msgstr "webtrees는 악센트가 있는 문자, 특수 문자 및 비 라틴 문자에 UTF-8 인코딩을 사용합니다. UTF-8을 지원하지 않는 계보 소프트웨어에서 이 GEDCOM 파일을 사용하려는 경우 ISO-8859-1 인코딩을 사용하여 생성할 수 있습니다."
