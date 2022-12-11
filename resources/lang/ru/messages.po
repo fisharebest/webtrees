@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-08-15 09:37+0000\n"
-"Last-Translator: Александр Бойко <aurbo@bk.ru>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -3332,7 +3332,7 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:82
 msgid "CSS and JS"
-msgstr "CSS и JS "
+msgstr "CSS и JS"
 
 #: resources/views/admin/trees.phtml:71
 #: resources/views/lists/datatables-attributes.phtml:31
@@ -9028,7 +9028,11 @@ msgstr "Рукопись"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:653
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Многие программы генеалогии создают файлы GEDCOM с пользовательскими тегами, и Webtrees понимает большинство из них. Когда будут найдены неизвестные теги,  этот параметр позволит Вам выбрать, следует ли игнорировать их или вывести предупреждающее сообщение."
+msgstr ""
+"Многие программы генеалогии создают файлы GEDCOM с пользовательскими тегами, "
+"и Webtrees понимает большинство из них. Когда будут найдены неизвестные "
+"теги, этот параметр позволит Вам выбрать, следует ли игнорировать их или "
+"вывести предупреждающее сообщение."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:71
@@ -13578,7 +13582,10 @@ msgstr "Сомали"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr "Некоторые генеалогические программы хранят все имена в одной записи  с использованием настраиваемых тегов, таких как _MARNM и _AKA. Альтернативой является создание новой записи имени для каждого имени."
+msgstr ""
+"Некоторые генеалогические программы хранят все имена в одной записи с "
+"использованием настраиваемых тегов, таких как _MARNM и _AKA. Альтернативой "
+"является создание новой записи имени для каждого имени."
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
@@ -14322,7 +14329,11 @@ msgstr "Меню графиков."
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Корзина вырезок позволяет извлекать вырезки (выдержки) из этого генеалогического дерева и соединить их в один файл для загрузки и последующего импорта в Вашу собственную генеалогически программу. Загружаемый файл записывается в формате GEDCOM.<br><ul><li>Как сделать вырезку?<br> Это очень просто. Каждый раз, когда Вы видите имя (персон, семьи или источники), на которое можно нажать, перейдите на страницу с подробностями для этого имени. Там Вы увидите ссылки <b>Добавить в корзину вырезок</b>. Когда Вы перейдете по этой ссылке, Вам будет предложено несколько вариантов для загрузки.</li <li>Как загружать?<br>Когда в корзине будут все нужные Вам вырезки, Вы можете скачать их просто нажав на ссылку \"Скачать\". Затем следуйте инструкциям и ссылкам.</li></ul>"
+msgstr ""
+"Корзина вырезок позволяет извлекать вырезки (выдержки) из этого "
+"генеалогического дерева и соединить их в один файл для загрузки и "
+"последующего импорта в Вашу собственную генеалогически программу. "
+"Загружаемый файл записывается в формате GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml:395
 msgid "The date and time of the last update"
