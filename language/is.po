@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-11-29 17:24+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
 "Language: is\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -2312,7 +2312,7 @@ msgstr "Mætir"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
 msgid "Audio"
-msgstr "Hljóð"
+msgstr "Hljóðskrá"
 
 #: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
@@ -12807,7 +12807,7 @@ msgstr "Sýna fyrirhugaðar breytingar"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Sýna myndir"
+msgstr "Birta myndir"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -17409,7 +17409,7 @@ msgstr "frændi"
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændsystkini í annan ættlið"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
@@ -17459,7 +17459,7 @@ msgstr "bróðurbarn afa"
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir afa"
+msgstr "bróðurdóttir föðurafa"
 
 #: app/Functions/Functions.php:1428
 msgctxt "father’s father’s brother’s son"
@@ -19801,7 +19801,7 @@ msgstr "önnur frænka"
 #: app/Functions/Functions.php:473
 msgctxt "MALE"
 msgid "second cousin"
-msgstr "annar frændi"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Functions/Functions.php:1481
 msgctxt "grandfather’s brother’s grandchild"
