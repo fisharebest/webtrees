@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-08-15 08:31+0000\n"
-"Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
+"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -3756,7 +3756,7 @@ msgstr "Хрещення зведеного брата (церемонія)"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr "Хрещення зведеного брата або сестри  (церемонія)"
+msgstr "Хрещення зведеного брата або сестри (церемонія)"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
@@ -8643,7 +8643,11 @@ msgstr "Березень"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown  - це проста система форматування тексту, що використовується такими сайтами як Вікіпедія. Вона використовує ненав'язливі знаки пунктуації, щоб створювати заголовки і підзаголовки, жирний і курсивний текст, списки, таблиці і т. п."
+msgstr ""
+"Markdown - це проста система форматування тексту, що використовується такими "
+"сайтами як Вікіпедія. Вона використовує ненав'язливі знаки пунктуації, щоб "
+"створювати заголовки і підзаголовки, жирний і курсивний текст, списки, "
+"таблиці і т. п."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:449
@@ -14369,7 +14373,22 @@ msgstr "Детальні відомості про цю персону є осо
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Це поле введення дозволяє вам змінити календарний рік. Введіть рік у поле і натисність <b>Enter</b>, щоб змінити календарний рік на вказаний.<br><br><b>Додаткові функції</b> для <b>Переглянути рік</b><dl><dt><b>Більше ніж один рік</b></dt><dd>Ви можете шукати дати в діапазоні років.<br><br>Діапазони років <u>включні</u>. Це значить, що один діапазон захоплює період з 1 січня першого року по 31 грудня останнього року. Ось декілька прикладів діапазонів років:<br><br><b>1992-5</b> - для всіх подій з 1992 по 1995.<br><b>1972-89</b> - для всіх подій з 1972 по 1989.<br><b>1610-759</b> - для всіх подій з 1610 по 1759.<br><b>1880-1905</b> - для всіх подій з 1880 по 1905.<br><b>880-1105</b> - для всіх подій з 880 по 1105.<br><br>Щоб побачити всі події у даного десятиліття або століття, ви можете вокористати <b>?</b> на місці останніх цифр. Наприклад, <b>197?</b> - для всіх подій з 1970 по 1979 чи <b>16??</b>  - для всіх подій з 1600 по 1699.<br><br>Вибір діапазону років змінить календар до режиму відображення років.</dd></dl>"
+msgstr ""
+"Це поле введення дозволяє вам змінити календарний рік. Введіть рік у поле і "
+"натисність <b>Enter</b>, щоб змінити календарний рік на "
+"вказаний.<br><br><b>Додаткові функції</b> для <b>Переглянути рік</"
+"b><dl><dt><b>Більше ніж один рік</b></dt><dd>Ви можете шукати дати в "
+"діапазоні років.<br><br>Діапазони років <u>включні</u>. Це значить, що один "
+"діапазон захоплює період з 1 січня першого року по 31 грудня останнього "
+"року. Ось декілька прикладів діапазонів років:<br><br><b>1992-5</b> - для "
+"всіх подій з 1992 по 1995.<br><b>1972-89</b> - для всіх подій з 1972 по "
+"1989.<br><b>1610-759</b> - для всіх подій з 1610 по 1759.<br><b>1880-1905</"
+"b> - для всіх подій з 1880 по 1905.<br><b>880-1105</b> - для всіх подій з "
+"880 по 1105.<br><br>Щоб побачити всі події у даного десятиліття або "
+"століття, ви можете вокористати <b>?</b> на місці останніх цифр. Наприклад, "
+"<b>197?</b> - для всіх подій з 1970 по 1979 чи <b>16??</b> - для всіх подій "
+"з 1600 по 1699.<br><br>Вибір діапазону років змінить календар до режиму "
+"відображення років.</dd></dl>"
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
