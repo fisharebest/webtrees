@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-08-15 08:31+0000\n"
-"Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
-"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees-20/uk/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3765,7 +3767,7 @@ msgstr "Хрещення зведеного брата (церемонія)"
 
 #: app/Module/IndividualFactsTabModule.php:358
 msgid "Christening of a half-sibling"
-msgstr "Хрещення зведеного брата або сестри  (церемонія)"
+msgstr "Хрещення зведеного брата або сестри (церемонія)"
 
 #: app/Module/IndividualFactsTabModule.php:357
 msgid "Christening of a half-sister"
@@ -9053,7 +9055,11 @@ msgstr "Березень"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown  - це проста система форматування тексту, що використовується такими сайтами як Вікіпедія. Вона використовує ненав'язливі знаки пунктуації, щоб створювати заголовки і підзаголовки, жирний і курсивний текст, списки, таблиці і т. п."
+msgstr ""
+"Markdown - це проста система форматування тексту, що використовується такими "
+"сайтами як Вікіпедія. Вона використовує ненав'язливі знаки пунктуації, щоб "
+"створювати заголовки і підзаголовки, жирний і курсивний текст, списки, "
+"таблиці і т. п."
 
 #. I18N: gedcom tag MARR
 #: app/Factories/ElementFactory.php:1009 app/GedcomTag.php:786
@@ -11921,7 +11927,7 @@ msgstr "Записів"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr "Перенаправити старі URL-адреси з  webtrees версії 1."
+msgstr "Перенаправити старі URL-адреси з webtrees версії 1."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169 app/GedcomCode/GedcomCodeTemp.php:573
