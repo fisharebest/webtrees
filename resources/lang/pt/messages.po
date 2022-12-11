@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2021-04-07 19:59+0000\n"
-"Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
-"Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/webtrees/pt/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -3436,10 +3437,10 @@ msgid "Changes"
 msgstr "Alterações"
 
 #: app/Module/RecentChangesModule.php:177
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Alterações no último dia"
+msgstr[0] "Alterações no último %s dia"
 msgstr[1] "Alterações nos últimos %s dias"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:94
@@ -6604,9 +6605,9 @@ msgid "For example, we can quickly find individuals that do not have a death eve
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:147
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "Para ajuda sobre questões genealógicas entre em contato com %s"
+msgstr "Para ajuda sobre questões genealógicas entre em contato com %s."
 
 #: resources/views/admin/control-panel.phtml:208
 #: resources/views/admin/tags.phtml:1041
@@ -6621,14 +6622,16 @@ msgid "For more information, see %s."
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:160
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "Para suporte técnico e informações entre em contato com %s"
+msgstr "Para suporte técnico e informações entre em contato com %s."
 
 #: app/Module/ContactsFooterModule.php:134
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Para suporte técnico ou questões genealógicas, por favor entre em contato com %s"
+msgstr ""
+"Para suporte técnico ou questões genealógicas, por favor entre em contato "
+"com %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
@@ -13287,9 +13290,8 @@ msgid "Show this block for which languages"
 msgstr "Exibir este bloco para quais idiomas"
 
 #: resources/views/admin/trees-preferences.phtml:298
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Exibir imagens de destaque na página de pessoas"
+msgstr "Exibir imagens de destaque na página de pessoas."
 
 #: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -14258,9 +14260,12 @@ msgid "The charts menu."
 msgstr ""
 
 #: resources/views/modules/clippings/show.phtml:21
-#, fuzzy
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "O Carrinho de Recortes permite tirar extratos (\"recortes\") a partir desta árvore genealógica e empacotá-los em um único arquivo para baixar e posterior importação para o seu programa de genealogia. O arquivo é gravado em formato GEDCOM.<br><ul><li>Como fazer recortes?<br>Isto é realmente simples. Sempre que você vir um nome \"clicável\" (pessoa, família ou fonte), você pode ir para a página Detalhes do mesmo nome. Lá você vai ver o <b>Adicionar ao Carrinho de Recortes</b>. Quando você clica nesse link, você terá várias opções para download.</li><li>Como fazer o download?<br>Depois de ter colocado itens no seu carrinho, você pode baixá-los apenas clicando no link <b>Baixar Agora</b>. Siga as instruções e links.</li></ul>"
+msgstr ""
+"O Carrinho de Recortes permite tirar extratos (\"recortes\") a partir desta "
+"árvore genealógica e empacotá-los em um único arquivo para baixar e "
+"posterior importação para o seu programa de genealogia. O arquivo é gravado "
+"em formato GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml:382
 msgid "The date and time of the last update"
@@ -16648,9 +16653,9 @@ msgid "You must renumber the records in one of the trees before you can merge th
 msgstr ""
 
 #: app/Module/ChartsBlockModule.php:184
-#, fuzzy
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Você deve selecionar uma pessoa e o tipo de gráfico no bloco de configuração."
+msgstr ""
+"Você deve selecionar uma pessoa e o tipo de gráfico no bloco de configuração"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
