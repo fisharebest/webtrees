@@ -52,12 +52,12 @@
         "fisharebest/flysystem-chroot-adapter": "3.0.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.5.0",
-        "illuminate/container": "9.42.2",
-        "illuminate/database": "9.42.2",
-        "illuminate/support": "9.42.2",
+        "illuminate/container": "9.43.0",
+        "illuminate/database": "9.43.0",
+        "illuminate/support": "9.43.0",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.7",
-        "league/commonmark": "2.3.7",
+        "league/commonmark": "2.3.8",
         "league/flysystem": "3.11.0",
         "league/flysystem-ziparchive": "3.10.3",
         "league/flysystem-path-prefixing": "3.10.4",
@@ -87,7 +87,7 @@
         "composer/composer": "2.4.4",
         "league/flysystem-memory": "3.10.3",
         "php-coveralls/php-coveralls": "2.5.3",
-        "phpunit/phpunit": "9.5.26"
+        "phpunit/phpunit": "9.5.27"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
