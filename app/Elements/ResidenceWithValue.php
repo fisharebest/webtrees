@@ -20,15 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * FamilyResidence
+ * ResidenceWithValue
  */
-class FamilyResidence extends AbstractElement
+class ResidenceWithValue extends AbstractElement
 {
     protected const SUBTAGS = [
         'TYPE'  => '0:1:?',
         'DATE'  => '0:1',
-        'HUSB'  => '0:1',
-        'WIFE'  => '0:1',
         'PLAC'  => '0:1',
         'ADDR'  => '0:1',
         'EMAIL' => '0:1:?',

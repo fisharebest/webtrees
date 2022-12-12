@@ -21,31 +21,11 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Tree;
 
-use function e;
-
 /**
  * Residence
  */
-class Residence extends AbstractElement
+class Residence extends ResidenceWithValue
 {
-    protected const SUBTAGS = [
-        'TYPE'  => '0:1:?',
-        'DATE'  => '0:1',
-        'PLAC'  => '0:1',
-        'ADDR'  => '0:1',
-        'EMAIL' => '0:1',
-        'WWW'   => '0:1',
-        'PHON'  => '0:1',
-        'FAX'   => '0:1:?',
-        'CAUS'  => '0:1:?',
-        'AGNC'  => '0:1:?',
-        'RELI'  => '0:1:?',
-        'NOTE'  => '0:M',
-        'OBJE'  => '0:M',
-        'SOUR'  => '0:M',
-        'RESN'  => '0:1',
-    ];
-
     /**
      * An edit control for this data.
      *
@@ -58,6 +38,11 @@ class Residence extends AbstractElement
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
-        return '<input class="form-control" type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
+        if ($value === '') {
+            return $this->editHidden($id, $name, $value);
+        }
+
+        // Value not allowed in GEDCOM 5.5.1, but if a value is present, then edit it.
+        return parent::edit($id, $name, $value, $tree);
     }
 }

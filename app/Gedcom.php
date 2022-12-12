@@ -99,7 +99,6 @@ use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
 use Fisharebest\Webtrees\Elements\FamilyCensus;
 use Fisharebest\Webtrees\Elements\FamilyEvent;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
-use Fisharebest\Webtrees\Elements\FamilyResidence;
 use Fisharebest\Webtrees\Elements\FileName;
 use Fisharebest\Webtrees\Elements\FirstCommunion;
 use Fisharebest\Webtrees\Elements\Form;
@@ -175,6 +174,7 @@ use Fisharebest\Webtrees\Elements\RelationIsDescriptor;
 use Fisharebest\Webtrees\Elements\ReligiousAffiliation;
 use Fisharebest\Webtrees\Elements\RepositoryRecord;
 use Fisharebest\Webtrees\Elements\Residence;
+use Fisharebest\Webtrees\Elements\ResidenceWithValue;
 use Fisharebest\Webtrees\Elements\ResponsibleAgency;
 use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Elements\Retirement;
@@ -472,7 +472,7 @@ class Gedcom
             'FAM:OBJE'                   => new XrefMedia(I18N::translate('Media object')),
             'FAM:REFN'                   => new UserReferenceNumber(I18N::translate('Reference number')),
             'FAM:REFN:TYPE'              => new UserReferenceType(I18N::translate('Type of reference number')),
-            'FAM:RESI'                   => new FamilyResidence(I18N::translate('Family residence')),
+            'FAM:RESI'                   => new Residence(I18N::translate('Family residence')),
             'FAM:RESN'                   => new RestrictionNotice(I18N::translate('Restriction')),
             'FAM:RIN'                    => new AutomatedRecordId(I18N::translate('Record ID number')),
             'FAM:SLGS'                   => new LdsSpouseSealing(I18N::translate('LDS spouse sealing')),
@@ -1045,6 +1045,7 @@ class Gedcom
                 ['RESN', '0:1'],
             ];
         }
+
         if (Site::getPreference('CUSTOM_TIME_TAGS') === '1') {
             $subtags['INDI:BIRT:DATE'][] = ['TIME', '0:1'];
             $subtags['INDI:DEAT:DATE'][] = ['TIME', '0:1'];

@@ -66,6 +66,7 @@ class SiteTagsPage implements RequestHandlerInterface
         // GEDCOM 7 extensions
         $custom_fam_fact      = (bool) Site::getPreference('CUSTOM_FAM_FACT');
         $custom_fam_nchi      = (bool) Site::getPreference('CUSTOM_FAM_NCHI');
+        $custom_resi_value    = (bool) Site::getPreference('CUSTOM_RESI_VALUE');
         $custom_time_tags     = (bool) Site::getPreference('CUSTOM_TIME_TAGS');
 
         return $this->viewResponse('admin/tags', [
@@ -76,6 +77,7 @@ class SiteTagsPage implements RequestHandlerInterface
             'custom_individual_tags' => $custom_individual_tags,
             'custom_fam_fact'        => $custom_fam_fact,
             'custom_fam_nchi'        => $custom_fam_nchi,
+            'custom_resi_value'      => $custom_resi_value,
             'custom_time_tags'       => $custom_time_tags,
             'element_factory'        => Registry::elementFactory(),
             'title'                  => I18N::translate('GEDCOM tags'),
