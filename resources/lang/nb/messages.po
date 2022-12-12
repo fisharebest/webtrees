@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"PO-Revision-Date: 2022-12-12 19:58+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nb_NO/>\n"
@@ -1958,7 +1958,7 @@ msgstr "En oppdatering er tilgjengelig."
 #: app/Module/AncestorsChartModule.php:108
 #: resources/xml/reports/ahnentafel_report.xml:4
 msgid "Ancestors"
-msgstr "Forfedre"
+msgstr "Aner"
 
 #. I18N: gedcom tag ANCI
 #: app/Factories/ElementFactory.php:1125 app/GedcomTag.php:461
@@ -1973,7 +1973,7 @@ msgstr "Aner til "
 #: app/Module/AncestorsChartModule.php:154
 #, php-format
 msgid "Ancestors of %s"
-msgstr "%ss aner"
+msgstr "Aner til %s"
 
 #. I18N: gedcom tag AFN
 #: app/Factories/ElementFactory.php:1123 app/GedcomTag.php:446
@@ -5444,7 +5444,7 @@ msgstr "Aner i direkte linje"
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:44
 msgid "Direct line ancestors and their families"
-msgstr "Forfedre i direkte linje og deres familier"
+msgstr "Aner i direkte linje og deres familier"
 
 #. I18N: %s is a number of records per page
 #: resources/views/lists/datatables-attributes.phtml:29
@@ -7048,7 +7048,7 @@ msgstr "Generasjoner"
 #. I18N: gedcom tag ANCE
 #: app/Factories/ElementFactory.php:1400 app/GedcomTag.php:458
 msgid "Generations of ancestors"
-msgstr "Generasjoner af forfedre"
+msgstr "Generasjoner av aner"
 
 #: app/Factories/ElementFactory.php:1405
 msgid "Generations of descendants"
