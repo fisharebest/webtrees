@@ -175,7 +175,10 @@ class Gedcom7 implements CustomTagInterface
         ];
 
         if (Site::getPreference('CUSTOM_RESI_VALUE') === '1') {
-            $tags['FAM:RESI']  = new ResidenceWithValue('Family residence');
+            if (Site::getPreference('HIDE_FAM_RESI') !== '1') {
+                $tags['FAM:RESI'] = new ResidenceWithValue('Family residence');
+            }
+
             $tags['INDI:RESI'] = new ResidenceWithValue('Residence');
         }
 

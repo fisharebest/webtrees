@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Site;
+
 /**
  * A level 0 family record
  */
@@ -51,4 +53,22 @@ class FamilyRecord extends AbstractElement
         'SUBM' => '0:M',
         'WIFE' => '0:1',
     ];
+
+    /**
+     * @return array<string,string>
+     */
+    public function subtags(): array
+    {
+        $subtags = parent::subtags();
+
+        if (Site::getPreference('HIDE_FAM_RESI') === '1') {
+            unset($subtags['RESI']);
+        }
+
+        if (Site::getPreference('HIDE_FAM_CENS') === '1') {
+            unset($subtags['CENS']);
+        }
+
+        return $subtags;
+    }
 }
