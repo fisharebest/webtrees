@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"PO-Revision-Date: 2022-12-12 19:58+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
@@ -1901,7 +1901,7 @@ msgstr "En oppdatering er tilgjengelig."
 #: app/Module/AncestorsChartModule.php:98
 #: resources/xml/reports/ahnentafel_report.xml:4
 msgid "Ancestors"
-msgstr "Forfedre"
+msgstr "Aner"
 
 #: app/Gedcom.php:582
 msgid "Ancestors interest"
@@ -1915,7 +1915,7 @@ msgstr "Aner til "
 #: app/Module/AncestorsChartModule.php:144
 #, php-format
 msgid "Ancestors of %s"
-msgstr "%ss aner"
+msgstr "Aner til %s"
 
 #: app/Gedcom.php:580
 msgid "Ancestral file number"
@@ -5312,7 +5312,7 @@ msgstr "Aner i direkte linje"
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:44
 msgid "Direct line ancestors and their families"
-msgstr "Forfedre i direkte linje og deres familier"
+msgstr "Aner i direkte linje og deres familier"
 
 #. I18N: %s is a number of records per page
 #: resources/views/lists/datatables-attributes.phtml:31
@@ -6951,7 +6951,7 @@ msgstr "Generasjoner"
 
 #: app/Gedcom.php:875
 msgid "Generations of ancestors"
-msgstr "Generasjoner af forfedre"
+msgstr "Generasjoner av aner"
 
 #: app/Gedcom.php:880
 msgid "Generations of descendants"
