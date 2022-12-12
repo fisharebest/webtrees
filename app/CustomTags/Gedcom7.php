@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Elements\FamilyFact;
 use Fisharebest\Webtrees\Elements\LdsInitiatory;
 use Fisharebest\Webtrees\Elements\LdsOrdinanceStatus;
 use Fisharebest\Webtrees\Elements\NonEvent;
+use Fisharebest\Webtrees\Elements\ResidenceWithValue;
 use Fisharebest\Webtrees\Elements\RoleInEvent;
 use Fisharebest\Webtrees\Elements\TempleCode;
 use Fisharebest\Webtrees\Elements\TimeValue;
@@ -42,6 +43,7 @@ use Fisharebest\Webtrees\Elements\UserReferenceType;
 use Fisharebest\Webtrees\Elements\XrefAssociate;
 use Fisharebest\Webtrees\Elements\XrefSharedNote;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
 
 /**
  * GEDCOM files created by Gedcom7
@@ -67,9 +69,9 @@ class Gedcom7 implements CustomTagInterface
      */
     public function tags(): array
     {
-        return [
-            'FAM:NO' => new NonEvent('Event did not happen'),
-            'INDI:NO' => new NonEvent('Event did not happen'),
+        $tags = [
+            'FAM:NO'                     => new NonEvent('Event did not happen'),
+            'INDI:NO'                    => new NonEvent('Event did not happen'),
             'FAM:*:ASSO'                 => new XrefAssociate(I18N::translate('Associate')),
             'FAM:*:ASSO:PHRASE'          => new CustomElement(I18N::translate('Phrase')),
             'FAM:*:ASSO:ROLE'            => new RoleInEvent(I18N::translate('Role')),
@@ -92,7 +94,7 @@ class Gedcom7 implements CustomTagInterface
             'FAM:EXID'                   => new ExternalIdentifier(I18N::translate('External identifier')),
             'FAM:EXID:TYPE'              => new ExternalIdentifierType(I18N::translate('Type')),
             'FAM:FACT'                   => new FamilyFact(I18N::translate('Fact')),
-            'FAM:FACT:TYPE'               => new EventOrFactClassification(I18N::translate('Type of fact')),
+            'FAM:FACT:TYPE'              => new EventOrFactClassification(I18N::translate('Type of fact')),
             'FAM:REFN'                   => new UserReferenceNumber(I18N::translate('Reference number')),
             'FAM:REFN:TYPE'              => new UserReferenceType(I18N::translate('Type')),
             'FAM:SNOTE'                  => new XrefSharedNote(I18N::translate('Shared note')),
@@ -171,5 +173,12 @@ class Gedcom7 implements CustomTagInterface
             'SUBM:SNOTE'                 => new XrefSharedNote(I18N::translate('Shared note')),
             'SUBM:UID'                   => new Uid(I18N::translate('Unique identifier')),
         ];
+
+        if (Site::getPreference('CUSTOM_RESI_VALUE') === '1') {
+            $tags['FAM:RESI']  = new ResidenceWithValue('Family residence');
+            $tags['INDI:RESI'] = new ResidenceWithValue('Residence');
+        }
+
+        return $tags;
     }
 }
