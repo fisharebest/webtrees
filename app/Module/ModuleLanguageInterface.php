@@ -51,14 +51,6 @@ interface ModuleLanguageInterface extends ModuleInterface
     public function dateOrder(): string;
 
     /**
-     * Some languages treat certain letter-combinations as equivalent.
-     *
-     * @return array<string,string>
-     */
-    public function equivalentLetters(): array;
-
-
-    /**
      * Some languages use digraphs and trigraphs.
      *
      * @param string $string
@@ -68,18 +60,18 @@ interface ModuleLanguageInterface extends ModuleInterface
     public function initialLetter(string $string): string;
 
     /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void;
-
-    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface;
+
+    /**
+     * Ignore diacritics on letters - unless the language considers them a different letter.
+     *
+     * @param string $text
+     *
+     * @return string
+     */
+    public function normalize(string $text): string;
 
     /**
      * @return array<Relationship>

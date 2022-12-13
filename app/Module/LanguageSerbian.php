@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleSr;
+use Fisharebest\Webtrees\Encodings\UTF8;
 
 /**
  * Class LanguageSerbian (Cyrillic).
@@ -36,7 +37,38 @@ class LanguageSerbian extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'];
+        return [
+            UTF8::CYRILLIC_CAPITAL_LETTER_A,
+            UTF8::CYRILLIC_CAPITAL_LETTER_BE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_VE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_GHE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_DE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_DJE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_IE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_ZHE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_ZE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_I,
+            UTF8::CYRILLIC_CAPITAL_LETTER_JE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_KA,
+            UTF8::CYRILLIC_CAPITAL_LETTER_EL,
+            UTF8::CYRILLIC_CAPITAL_LETTER_LJE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_EM,
+            UTF8::CYRILLIC_CAPITAL_LETTER_EN,
+            UTF8::CYRILLIC_CAPITAL_LETTER_NJE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_O,
+            UTF8::CYRILLIC_CAPITAL_LETTER_PE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_ER,
+            UTF8::CYRILLIC_CAPITAL_LETTER_ES,
+            UTF8::CYRILLIC_CAPITAL_LETTER_TE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_TSHE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_U,
+            UTF8::CYRILLIC_CAPITAL_LETTER_EF,
+            UTF8::CYRILLIC_CAPITAL_LETTER_HA,
+            UTF8::CYRILLIC_CAPITAL_LETTER_TSE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_CHE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_DZHE,
+            UTF8::CYRILLIC_CAPITAL_LETTER_SHA,
+        ];
     }
 
     /**

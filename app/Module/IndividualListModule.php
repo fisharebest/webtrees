@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
@@ -39,15 +38,21 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function array_filter;
+use function array_key_exists;
 use function array_keys;
+use function array_sum;
 use function assert;
 use function e;
 use function implode;
-use function in_array;
 use function ob_get_clean;
 use function ob_start;
 use function route;
+use function uksort;
+use function var_dump;
 use function view;
+
+use const ARRAY_FILTER_USE_KEY;
 
 /**
  * Class IndividualListModule
@@ -149,6 +154,9 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
+        $surname_param = Validator::queryParams($request)->string('surname', '');
+        $surname       = I18N::strtoupper(I18N::language()->normalize($surname_param));
+
         $params = [
             'alpha'               => Validator::queryParams($request)->string('alpha', ''),
             'falpha'              => Validator::queryParams($request)->string('falpha', ''),
@@ -156,8 +164,12 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             'show_all'            => Validator::queryParams($request)->string('show_all', 'no'),
             'show_all_firstnames' => Validator::queryParams($request)->string('show_all_firstnames', 'no'),
             'show_marnm'          => Validator::queryParams($request)->string('show_marnm', ''),
-            'surname'             => Validator::queryParams($request)->string('surname', ''),
+            'surname'             => $surname,
         ];
+
+        if ($surname_param !== $surname) {
+            return Registry::responseFactory()->redirectUrl($this->listUrl($tree, $params));
+        }
 
         return $this->createResponse($tree, $user, $params, false);
     }
@@ -172,29 +184,46 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     protected function createResponse(Tree $tree, UserInterface $user, array $params, bool $families): ResponseInterface
     {
-        ob_start();
-
         // We show three different lists: initials, surnames and individuals
 
-        // All surnames beginning with this letter where "@"=unknown and ","=none
+        // All surnames beginning with this letter, where "@" is unknown and "," is none
         $alpha = $params['alpha'];
 
         // All individuals with this surname
         $surname = $params['surname'];
 
         // All individuals
-        $show_all = $params['show_all'];
+        $show_all = $params['show_all'] === 'yes';
 
-        // Long lists can be broken down by given name
-        $show_all_firstnames = $params['show_all_firstnames'];
-        if ($show_all_firstnames === 'yes') {
+        // Include/exclude married names
+        $show_marnm = $params['show_marnm'];
+
+        // What type of list to display, if any
+        $show = $params['show'];
+
+        // Break long lists down by given name
+        $show_all_firstnames = $params['show_all_firstnames'] === 'yes';
+
+        // All first names beginning with this letter where "@" is unknown
+        $falpha = $params['falpha'];
+
+        // Make sure parameters are consistent with each other.
+        if ($show_all_firstnames) {
             $falpha = '';
-        } else {
-            // All first names beginning with this letter
-            $falpha = $params['falpha'];
         }
 
-        $show_marnm = $params['show_marnm'];
+        if ($show_all) {
+            $alpha   = '';
+            $surname = '';
+        }
+
+        if ($surname !== '') {
+            $alpha = I18N::language()->initialLetter($surname);
+        }
+
+        $all_surnames     = $this->allSurnames($tree, $show_marnm === 'yes', $families);
+        $surname_initials = $this->surnameInitials($all_surnames);
+
         switch ($show_marnm) {
             case 'no':
             case 'yes':
@@ -206,47 +235,33 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         // Make sure selections are consistent.
         // i.e. can’t specify show_all and surname at the same time.
-        if ($show_all === 'yes') {
-            $alpha   = '';
-            $surname = '';
-
-            if ($show_all_firstnames === 'yes') {
+        if ($show_all) {
+            if ($show_all_firstnames) {
                 $legend  = I18N::translate('All');
-                $params  = [
-                    'tree'     => $tree->name(),
-                    'show_all' => 'yes',
-                ];
+                $params = ['tree' => $tree->name(), 'show_all' => 'yes'];
                 $show    = 'indi';
             } elseif ($falpha !== '') {
                 $legend  = I18N::translate('All') . ', ' . e($falpha) . '…';
-                $params  = [
-                    'tree'     => $tree->name(),
-                    'show_all' => 'yes',
-                ];
+                $params = ['tree' => $tree->name(), 'show_all' => 'yes'];
                 $show    = 'indi';
             } else {
                 $legend  = I18N::translate('All');
-                $show    = $params['show'];
-                $params  = [
-                    'tree'     => $tree->name(),
-                    'show_all' => 'yes',
-                ];
+                $params = ['tree' => $tree->name(), 'show_all' => 'yes'];
             }
         } elseif ($surname !== '') {
-            $alpha    = I18N::language()->initialLetter($surname); // so we can highlight the initial letter
-            $show_all = 'no';
+            $show_all = false;
             if ($surname === Individual::NOMEN_NESCIO) {
                 $legend = I18N::translateContext('Unknown surname', '…');
+                $show   = 'indi'; // The surname list makes no sense with only one surname.
             } else {
-                // The surname parameter is a root/canonical form.
-                // Display it as the actual surname
-                $legend = implode('/', array_keys($this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families, I18N::locale())));
+                // The surname parameter is a root/canonical form. Display the actual surnames found.
+                $variants = array_keys($all_surnames[$surname] ?? [$surname => $surname]);
+                usort($variants, I18N::comparator());
+                $variants = array_map(static fn (string $x): string => $x === '' ? I18N::translate('No surname') : $x, $variants);
+                $legend   = implode('/', $variants);
+                $show     = 'indi'; // The surname list makes no sense with only one surname.
             }
-            $params = [
-                'tree'    => $tree->name(),
-                'surname' => $surname,
-                'falpha'  => $falpha,
-            ];
+            $params = ['tree' => $tree->name(), 'surname' => $surname, 'falpha' => $falpha];
             switch ($falpha) {
                 case '':
                     break;
@@ -257,37 +272,25 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     $legend .= ', ' . e($falpha) . '…';
                     break;
             }
-            $show = 'indi'; // SURN list makes no sense here
         } elseif ($alpha === '@') {
-            $show_all = 'no';
+            $show_all = false;
             $legend   = I18N::translateContext('Unknown surname', '…');
-            $params   = [
-                'alpha' => $alpha,
-                'tree'  => $tree->name(),
-            ];
+            $params   = ['alpha' => $alpha, 'tree' => $tree->name()];
+            $surname  = Individual::NOMEN_NESCIO;
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha === ',') {
-            $show_all = 'no';
+            $show_all = false;
             $legend   = I18N::translate('No surname');
-            $params   = [
-                'alpha' => $alpha,
-                'tree'  => $tree->name(),
-            ];
+            $params = ['alpha' => $alpha, 'tree' => $tree->name()];
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha !== '') {
-            $show_all = 'no';
+            $show_all = false;
             $legend   = e($alpha) . '…';
-            $show     = $params['show'];
-            $params   = [
-                'alpha' => $alpha,
-                'tree'  => $tree->name(),
-            ];
+            $params = ['alpha' => $alpha, 'tree' => $tree->name()];
         } else {
-            $show_all = 'no';
+            $show_all = false;
             $legend   = '…';
-            $params   = [
-                'tree' => $tree->name(),
-            ];
+            $params   = ['tree' => $tree->name()];
             $show     = 'none'; // Don't show lists until something is chosen
         }
         $legend = '<bdi>' . $legend . '</bdi>';
@@ -296,16 +299,19 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $title = I18N::translate('Families') . ' — ' . $legend;
         } else {
             $title = I18N::translate('Individuals') . ' — ' . $legend;
-        } ?>
+        }
+
+        ob_start();
+        ?>
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
             <ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-surname">
 
-                <?php foreach ($this->surnameAlpha($tree, $show_marnm === 'yes', $families, I18N::locale()) as $letter => $count) : ?>
+                <?php foreach ($surname_initials as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0) : ?>
-                            <a href="<?= e($this->listUrl($tree, ['alpha' => $letter, 'tree' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->surnameInitial((string) $letter) ?></a>
+                            <a href="<?= e($this->listUrl($tree, ['alpha' => $letter, 'tree' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->displaySurnameInitial((string) $letter) ?></a>
                         <?php else : ?>
-                            <span class="wt-initial px-1 text-muted"><?= $this->surnameInitial((string) $letter) ?></span>
+                            <span class="wt-initial px-1 text-muted"><?= $this->displaySurnameInitial((string) $letter) ?></span>
 
                         <?php endif ?>
                     </li>
@@ -314,7 +320,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 <?php if (Session::has('initiated')) : ?>
                     <!-- Search spiders don't get the "show all" option as the other links give them everything. -->
                     <li class="wt-initials-list-item d-flex">
-                        <a class="wt-initial px-1<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e($this->listUrl($tree, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
+                        <a class="wt-initial px-1<?= $show_all ? ' active' : '' ?>" href="<?= e($this->listUrl($tree, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -355,9 +361,30 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         <div class="wt-page-content">
             <?php
-
             if ($show === 'indi' || $show === 'surn') {
-                $surns = $this->surnames($tree, $surname, $alpha, $show_marnm === 'yes', $families, I18N::locale());
+                switch ($alpha) {
+                    case '@':
+                        $surns = array_filter($all_surnames, static fn (string $x): bool => $x === Individual::NOMEN_NESCIO, ARRAY_FILTER_USE_KEY);
+                        break;
+                    case ',':
+                        $surns = array_filter($all_surnames, static fn (string $x): bool => $x === '', ARRAY_FILTER_USE_KEY);
+                        break;
+                    case '':
+                        if ($show_all) {
+                            $surns = array_filter($all_surnames, static fn (string $x): bool => $x !== '' && $x !== Individual::NOMEN_NESCIO, ARRAY_FILTER_USE_KEY);
+                        } else {
+                            $surns = array_filter($all_surnames, static fn (string $x): bool => $x === $surname, ARRAY_FILTER_USE_KEY);
+                        }
+                        break;
+                    default:
+                        if ($surname === '') {
+                            $surns = array_filter($all_surnames, static fn (string $x): bool => I18N::language()->initialLetter($x) === $alpha, ARRAY_FILTER_USE_KEY);
+                        } else {
+                            $surns = array_filter($all_surnames, static fn (string $x): bool => $x === $surname, ARRAY_FILTER_USE_KEY);
+                        }
+                        break;
+                }
+
                 if ($show === 'surn') {
                     // Show the surname list
                     switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
@@ -390,43 +417,38 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     }
                 } else {
                     // Show the list
-                    $count = 0;
-                    foreach ($surns as $surnames) {
-                        foreach ($surnames as $total) {
-                            $count += $total;
-                        }
-                    }
+                    $count = array_sum(array_map(static fn (array $x): int => array_sum($x), $surns));
+
                     // Don't sublist short lists.
                     if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
                         $falpha = '';
                     } else {
-                        $givn_initials = $this->givenAlpha($tree, $surname, $alpha, $show_marnm === 'yes', $families, I18N::locale());
+                        $givn_initials = $this->givenNameInitials($tree, array_keys($surns), $show_marnm === 'yes', $families);
                         // Break long lists by initial letter of given name
-                        if ($surname !== '' || $show_all === 'yes') {
-                            if ($show_all === 'no') {
+                        if ($surname !== '' || $show_all) {
+                            if (!$show_all) {
                                 echo '<h2 class="wt-page-title">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
                             }
                             // Don't show the list until we have some filter criteria
-                            $show = $falpha !== '' || $show_all_firstnames === 'yes' ? 'indi' : 'none';
-                            $list = [];
+                            $show = $falpha !== '' || $show_all_firstnames ? 'indi' : 'none';
                             echo '<ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-given-names">';
                             foreach ($givn_initials as $givn_initial => $given_count) {
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($given_count > 0) {
-                                    if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-                                        echo '<a class="wt-initial px-1 active" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                    if ($show === 'indi' && $givn_initial === $falpha && !$show_all_firstnames) {
+                                        echo '<a class="wt-initial px-1 active" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
                                     } else {
-                                        echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->givenNameInitial((string) $givn_initial) . '</a>';
+                                        echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
                                     }
                                 } else {
-                                    echo '<span class="wt-initial px-1 text-muted">' . $this->givenNameInitial((string) $givn_initial) . '</span>';
+                                    echo '<span class="wt-initial px-1 text-muted">' . $this->displayGivenNameInitial((string) $givn_initial) . '</span>';
                                 }
                                 echo '</li>';
                             }
                             // Search spiders don't get the "show all" option as the other links give them everything.
                             if (Session::has('initiated')) {
                                 echo '<li class="wt-initials-list-item d-flex">';
-                                if ($show_all_firstnames === 'yes') {
+                                if ($show_all_firstnames) {
                                     echo '<span class="wt-initial px-1 active">' . I18N::translate('All') . '</span>';
                                 } else {
                                     echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
@@ -434,18 +456,17 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                                 echo '</li>';
                             }
                             echo '</ul>';
-                            echo '<p class="text-center alpha_index">', implode(' | ', $list), '</p>';
                         }
                     }
                     if ($show === 'indi') {
                         if ($families) {
                             echo view('lists/families-table', [
-                                'families' => $this->families($tree, $surname, $alpha, $falpha, $show_marnm === 'yes', I18N::locale()),
+                                'families' => $this->families($tree, $surname, array_keys($all_surnames[$surname] ?? []), $falpha, $show_marnm === 'yes'),
                                 'tree'     => $tree,
                             ]);
                         } else {
                             echo view('lists/individuals-table', [
-                                'individuals' => $this->individuals($tree, $surname, $alpha, $falpha, $show_marnm === 'yes', false, I18N::locale()),
+                                'individuals' => $this->individuals($tree, $surname, array_keys($all_surnames[$surname] ?? []), $falpha, $show_marnm === 'yes', false),
                                 'sosa'        => false,
                                 'tree'        => $tree,
                             ]);
@@ -472,7 +493,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      *
      * @return string
      */
-    protected function givenNameInitial(string $initial): string
+    protected function displayGivenNameInitial(string $initial): string
     {
         if ($initial === '@') {
             return I18N::translateContext('Unknown given name', '…');
@@ -488,7 +509,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      *
      * @return string
      */
-    protected function surnameInitial(string $initial): string
+    protected function displaySurnameInitial(string $initial): string
     {
         if ($initial === '@') {
             return I18N::translateContext('Unknown surname', '…');
@@ -533,82 +554,23 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * Get a list of initial surname letters.
+     * Get a count of individuals with each initial letter
      *
-     * @param Tree            $tree
-     * @param bool            $marnm if set, include married names
-     * @param bool            $fams  if set, only consider individuals with FAMS records
-     * @param LocaleInterface $locale
-     *
-     * @return array<int>
-     */
-    public function surnameAlpha(Tree $tree, bool $marnm, bool $fams, LocaleInterface $locale): array
-    {
-        $n_surn = $this->fieldWithCollation('n_surn');
-        $alphas = [];
-
-        $query = DB::table('name')->where('n_file', '=', $tree->id());
-
-        $this->whereFamily($fams, $query);
-        $this->whereMarriedName($marnm, $query);
-
-        // Fetch all the letters in our alphabet, whether or not there
-        // are any names beginning with that letter. It looks better to
-        // show the full alphabet, rather than omitting rare letters such as X.
-        foreach (I18N::language()->alphabet() as $letter) {
-            $query2 = clone $query;
-
-            $this->whereInitial($query2, 'n_surn', $letter, $locale);
-
-            $alphas[$letter] = $query2->count();
-        }
-
-        // Now fetch initial letters that are not in our alphabet,
-        // including "@" (for "@N.N.") and "" for no surname.
-        foreach (I18N::language()->alphabet() as $letter) {
-            $query->where($n_surn, 'NOT LIKE', $letter . '%');
-        }
-
-        $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
-
-        $rows = $query
-            ->groupBy(['initial'])
-            ->orderBy('initial')
-            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression($substring_function . '(n_surn, 1, 1) AS initial'));
-
-        $specials = ['@', ''];
-
-        foreach ($rows as $alpha => $count) {
-            if (!in_array($alpha, $specials, true)) {
-                $alphas[$alpha] = (int) $count;
-            }
-        }
-
-        // Empty surnames have a special code ',' - as we search for SURN,GIVN
-        foreach ($specials as $special) {
-            if ($rows->has($special)) {
-                $alphas[$special ?: ','] = (int) $rows[$special];
-            }
-        }
-
-        return $alphas;
-    }
-
-    /**
-     * Get a list of initial given name letters for indilist.php and famlist.php
-     *
-     * @param Tree            $tree
-     * @param string          $surn   if set, only consider people with this surname
-     * @param string          $salpha if set, only consider surnames starting with this letter
-     * @param bool            $marnm  if set, include married names
-     * @param bool            $fams   if set, only consider individuals with FAMS records
-     * @param LocaleInterface $locale
+     * @param Tree          $tree
+     * @param array<string> $surns if set, only consider people with this surname
+     * @param bool          $marnm if set, include married names
+     * @param bool          $fams  if set, only consider individuals with FAMS records
      *
      * @return array<int>
      */
-    public function givenAlpha(Tree $tree, string $surn, string $salpha, bool $marnm, bool $fams, LocaleInterface $locale): array
+    public function givenNameInitials(Tree $tree, array $surns, bool $marnm, bool $fams): array
     {
-        $alphas = [];
+        $initials = [];
+
+        // Ensure our own language comes before others.
+        foreach (I18N::language()->alphabet() as $initial) {
+            $initials[$initial] = 0;
+        }
 
         $query = DB::table('name')
             ->where('n_file', '=', $tree->id());
@@ -616,106 +578,69 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $this->whereFamily($fams, $query);
         $this->whereMarriedName($marnm, $query);
 
-        if ($surn !== '') {
-            $n_surn = $this->fieldWithCollation('n_surn');
-            $query->where($n_surn, '=', $surn);
-        } elseif ($salpha === ',') {
-            $query->where('n_surn', '=', '');
-        } elseif ($salpha === '@') {
-            $query->where('n_surn', '=', Individual::NOMEN_NESCIO);
-        } elseif ($salpha !== '') {
-            $this->whereInitial($query, 'n_surn', $salpha, $locale);
-        } else {
-            // All surnames
-            $query->whereNotIn('n_surn', ['', Individual::NOMEN_NESCIO]);
+        if ($surns !== []) {
+            $query->whereIn('n_surn', $surns);
         }
 
-        // Fetch all the letters in our alphabet, whether or not there
-        // are any names beginning with that letter. It looks better to
-        // show the full alphabet, rather than omitting rare letters such as X
-        foreach (I18N::language()->alphabet() as $letter) {
-            $query2 = clone $query;
+        $query
+            ->select($this->binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count'))
+            ->groupBy([$this->binaryColumn('n_givn')]);
 
-            $this->whereInitial($query2, 'n_givn', $letter, $locale);
-
-            $alphas[$letter] = $query2->distinct()->count('n_id');
+        foreach ($query->get() as $row) {
+            $initial = I18N::strtoupper(I18N::language()->initialLetter($row->n_givn));
+            $initials[$initial] ??= 0;
+            $initials[$initial] += (int) $row->count;
         }
 
-        $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+        $count_unknown = $initials['@'] ?? 0;
 
-        $rows = $query
-            ->groupBy(['initial'])
-            ->orderBy('initial')
-            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('' . $substring_function . '(n_givn, 1, 1) AS initial'));
-
-        foreach ($rows as $alpha => $count) {
-            if ($alpha !== '@') {
-                $alphas[$alpha] = (int) $count;
-            }
+        if ($count_unknown > 0) {
+            unset($initials['@']);
+            $initials['@'] = $count_unknown;
         }
 
-        if ($rows->has('@')) {
-            $alphas['@'] = (int) $rows['@'];
-        }
-
-        return $alphas;
+        return $initials;
     }
 
     /**
-     * Get a count of actual surnames and variants, based on a "root" surname.
+     * Get a count of all surnames and variants.
      *
-     * @param Tree            $tree
-     * @param string          $surn   if set, only count people with this surname
-     * @param string          $salpha if set, only consider surnames starting with this letter
-     * @param bool            $marnm  if set, include married names
-     * @param bool            $fams   if set, only consider individuals with FAMS records
-     * @param LocaleInterface $locale
+     * @param Tree $tree
+     * @param bool $marnm if set, include married names
+     * @param bool $fams  if set, only consider individuals with FAMS records
      *
      * @return array<array<int>>
      */
-    protected function surnames(
-        Tree $tree,
-        string $surn,
-        string $salpha,
-        bool $marnm,
-        bool $fams,
-        LocaleInterface $locale
-    ): array {
+    protected function allSurnames(Tree $tree, bool $marnm, bool $fams): array
+    {
         $query = DB::table('name')
             ->where('n_file', '=', $tree->id())
             ->select([
-                new Expression('n_surn /*! COLLATE utf8_bin */ AS n_surn'),
-                new Expression('n_surname /*! COLLATE utf8_bin */ AS n_surname'),
+                $this->binaryColumn('n_surn', 'n_surn'),
+                $this->binaryColumn('n_surname', 'n_surname'),
                 new Expression('COUNT(*) AS total'),
             ]);
 
         $this->whereFamily($fams, $query);
         $this->whereMarriedName($marnm, $query);
 
-        if ($surn !== '') {
-            $query->where('n_surn', '=', $surn);
-        } elseif ($salpha === ',') {
-            $query->where('n_surn', '=', '');
-        } elseif ($salpha === '@') {
-            $query->where('n_surn', '=', Individual::NOMEN_NESCIO);
-        } elseif ($salpha !== '') {
-            $this->whereInitial($query, 'n_surn', $salpha, $locale);
-        } else {
-            // All surnames
-            $query->whereNotIn('n_surn', ['', Individual::NOMEN_NESCIO]);
-        }
         $query->groupBy([
-            new Expression('n_surn /*! COLLATE utf8_bin */'),
-            new Expression('n_surname /*! COLLATE utf8_bin */'),
+            $this->binaryColumn('n_surn'),
+            $this->binaryColumn('n_surname'),
         ]);
 
+        /** @var array<array<int>> $list */
         $list = [];
 
         foreach ($query->get() as $row) {
-            $row->n_surn = strtr(I18N::strtoupper($row->n_surn), I18N::language()->equivalentLetters());
-            $row->total += $list[$row->n_surn][$row->n_surname] ?? 0;
+            // Some users wrongly set SURN without a surname in NAME.
+            $row->n_surn = $row->n_surn === '' ? $row->n_surname : $row->n_surn;
 
-            $list[$row->n_surn][$row->n_surname] = (int) $row->total;
+            // Ignore upper/lower case and most diacritics when grouping names.
+            $row->n_surn = I18N::strtoupper(I18N::language()->normalize($row->n_surn));
+
+            $list[$row->n_surn][$row->n_surname] ??= 0;
+            $list[$row->n_surn][$row->n_surname] += (int) $row->total;
         }
 
         uksort($list, I18N::comparator());
@@ -724,33 +649,62 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
+     * Extract initial letters and counts for all surnames.
+     *
+     * @param array<array<int>> $all_surnames
+     *
+     * @return array<int>
+     */
+    protected function surnameInitials(array $all_surnames): array
+    {
+        $initials    = [];
+
+        // Ensure our own language comes before others.
+        foreach (I18N::language()->alphabet() as $initial) {
+            $initials[$initial]    = 0;
+        }
+
+        foreach ($all_surnames as $surn => $surnames) {
+            $initial = I18N::language()->initialLetter($surn);
+
+            $initials[$initial] ??= 0;
+            $initials[$initial] += array_sum($surnames);
+        }
+
+        // Move specials to the end
+        $count_none = $initials[''] ?? 0;
+
+        if ($count_none > 0) {
+            unset($initials['']);
+            $initials[','] = $count_none;
+        }
+
+        $count_unknown = $initials['@'] ?? 0;
+
+        if ($count_unknown > 0) {
+            unset($initials['@']);
+            $initials['@'] = $count_unknown;
+        }
+
+        return $initials;
+    }
+
+    /**
      * Fetch a list of individuals with specified names
      * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
      * To search for names with no surnames, use $salpha=","
      *
      * @param Tree            $tree
-     * @param string          $surn   if set, only fetch people with this surname
-     * @param string          $salpha if set, only fetch surnames starting with this letter
-     * @param string          $galpha if set, only fetch given names starting with this letter
-     * @param bool            $marnm  if set, include married names
-     * @param bool            $fams   if set, only fetch individuals with FAMS records
-     * @param LocaleInterface $locale
+     * @param string          $surname  if set, only fetch people with this n_surn
+     * @param array<string>   $surnames if set, only fetch people with this n_surname
+     * @param string          $galpha   if set, only fetch given names starting with this letter
+     * @param bool            $marnm    if set, include married names
+     * @param bool            $fams     if set, only fetch individuals with FAMS records
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
-    protected function individuals(
-        Tree $tree,
-        string $surn,
-        string $salpha,
-        string $galpha,
-        bool $marnm,
-        bool $fams,
-        LocaleInterface $locale
-    ): Collection {
-        // Use specific collation for name fields.
-        $n_givn = $this->fieldWithCollation('n_givn');
-        $n_surn = $this->fieldWithCollation('n_surn');
-
+    protected function individuals(Tree $tree, string $surname, array $surnames, string $galpha, bool $marnm, bool $fams): Collection
+    {
         $query = DB::table('individuals')
             ->join('name', static function (JoinClause $join): void {
                 $join
@@ -758,34 +712,24 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     ->on('n_file', '=', 'i_file');
             })
             ->where('i_file', '=', $tree->id())
+            ->where('n_surn', '=', $surname)
             ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'n_givn', 'n_surn']);
 
         $this->whereFamily($fams, $query);
         $this->whereMarriedName($marnm, $query);
 
-        if ($surn) {
-            $query->where($n_surn, '=', $surn);
-        } elseif ($salpha === ',') {
-            $query->where($n_surn, '=', '');
-        } elseif ($salpha === '@') {
-            $query->where($n_surn, '=', Individual::NOMEN_NESCIO);
-        } elseif ($salpha) {
-            $this->whereInitial($query, 'n_surn', $salpha, $locale);
-        } else {
-            // All surnames
-            $query->whereNotIn($n_surn, ['', Individual::NOMEN_NESCIO]);
-        }
-        if ($galpha) {
-            $this->whereInitial($query, 'n_givn', $galpha, $locale);
+        if ($surnames !== []) {
+            $query->whereIn($this->binaryColumn('n_surname'), $surnames);
         }
 
         $query
             ->orderBy(new Expression("CASE n_surn WHEN '" . Individual::NOMEN_NESCIO . "' THEN 1 ELSE 0 END"))
-            ->orderBy($n_surn)
+            ->orderBy('n_surn')
             ->orderBy(new Expression("CASE n_givn WHEN '" . Individual::NOMEN_NESCIO . "' THEN 1 ELSE 0 END"))
-            ->orderBy($n_givn);
+            ->orderBy('n_givn');
 
         $individuals = new Collection();
+
         $rows = $query->get();
 
         foreach ($rows as $row) {
@@ -795,12 +739,14 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             // The name from the database may be private - check the filtered list...
             foreach ($individual->getAllNames() as $n => $name) {
                 if ($name['givn'] === $row->n_givn && $name['surn'] === $row->n_surn) {
-                    $individual->setPrimaryName($n);
-                    // We need to clone $individual, as we may have multiple references to the
-                    // same individual in this list, and the "primary name" would otherwise
-                    // be shared amongst all of them.
-                    $individuals->push(clone $individual);
-                    break;
+                    if ($galpha === '' || I18N::strtoupper(I18N::language()->initialLetter($row->n_givn)) === $galpha) {
+                        $individual->setPrimaryName($n);
+                        // We need to clone $individual, as we may have multiple references to the
+                        // same individual in this list, and the "primary name" would otherwise
+                        // be shared amongst all of them.
+                        $individuals->push(clone $individual);
+                        break;
+                    }
                 }
             }
         }
@@ -813,20 +759,19 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
      * To search for names with no surnames, use $salpha=","
      *
-     * @param Tree            $tree
-     * @param string          $surn   if set, only fetch people with this surname
-     * @param string          $salpha if set, only fetch surnames starting with this letter
-     * @param string          $galpha if set, only fetch given names starting with this letter
-     * @param bool            $marnm  if set, include married names
-     * @param LocaleInterface $locale
+     * @param Tree          $tree
+     * @param string        $surname  if set, only fetch people with this n_surn
+     * @param array<string> $surnames if set, only fetch people with this n_surname
+     * @param string        $galpha   if set, only fetch given names starting with this letter
+     * @param bool          $marnm    if set, include married names
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
-    protected function families(Tree $tree, string $surn, string $salpha, string $galpha, bool $marnm, LocaleInterface $locale): Collection
+    protected function families(Tree $tree, string $surname, array $surnames, string $galpha, bool $marnm): Collection
     {
         $families = new Collection();
 
-        foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true, $locale) as $indi) {
+        foreach ($this->individuals($tree, $surname, $surnames, $galpha, $marnm, true) as $indi) {
             foreach ($indi->spouseFamilies() as $family) {
                 $families->push($family);
             }
@@ -836,187 +781,26 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * Use MySQL-specific comments so we can run these queries on other RDBMS.
+     * This module assumes the database will use binary collation on the name columns.
+     * Until we convert MySQL databases to use utf8_bin, we need to do this at run-time.
      *
-     * @param string $field
+     * @param string      $column
+     * @param string|null $alias
      *
      * @return Expression
      */
-    protected function fieldWithCollation(string $field): Expression
+    private function binaryColumn(string $column, string $alias = null): Expression
     {
-        return new Expression($field . ' /*! COLLATE ' . I18N::collation() . ' */');
-    }
-
-    /**
-     * Modify a query to restrict a field to a given initial letter.
-     * Take account of digraphs, equialent letters, etc.
-     *
-     * @param Builder         $query
-     * @param string          $field
-     * @param string          $letter
-     * @param LocaleInterface $locale
-     *
-     * @return void
-     */
-    protected function whereInitial(
-        Builder $query,
-        string $field,
-        string $letter,
-        LocaleInterface $locale
-    ): void {
-        // Use MySQL-specific comments so we can run these queries on other RDBMS.
-        $field_with_collation = $this->fieldWithCollation($field);
-
-        switch ($locale->languageTag()) {
-            case 'cs':
-                $this->whereInitialCzech($query, $field_with_collation, $letter);
-                break;
-
-            case 'da':
-            case 'nb':
-            case 'nn':
-                $this->whereInitialNorwegian($query, $field_with_collation, $letter);
-                break;
-
-            case 'sv':
-            case 'fi':
-                $this->whereInitialSwedish($query, $field_with_collation, $letter);
-                break;
-
-            case 'hu':
-                $this->whereInitialHungarian($query, $field_with_collation, $letter);
-                break;
-
-            case 'nl':
-                $this->whereInitialDutch($query, $field_with_collation, $letter);
-                break;
-
-            default:
-                $query->where($field_with_collation, 'LIKE', '\\' . $letter . '%');
-        }
-    }
-
-    /**
-     * @param Builder    $query
-     * @param Expression $field
-     * @param string     $letter
-     */
-    protected function whereInitialCzech(Builder $query, Expression $field, string $letter): void
-    {
-        if ($letter === 'C') {
-            $query->where($field, 'LIKE', 'C%')->where($field, 'NOT LIKE', 'CH%');
+        if (DB::connection()->getDriverName() === 'mysql') {
+            $sql = 'CAST(' . $column . ' AS binary)';
         } else {
-            $query->where($field, 'LIKE', '\\' . $letter . '%');
+            $sql = $column;
         }
-    }
 
-    /**
-     * @param Builder    $query
-     * @param Expression $field
-     * @param string     $letter
-     */
-    protected function whereInitialDutch(Builder $query, Expression $field, string $letter): void
-    {
-        if ($letter === 'I') {
-            $query->where($field, 'LIKE', 'I%')->where($field, 'NOT LIKE', 'IJ%');
-        } else {
-            $query->where($field, 'LIKE', '\\' . $letter . '%');
+        if ($alias !== null) {
+            $sql .= ' AS ' . $alias;
         }
-    }
 
-    /**
-     * Hungarian has many digraphs and trigraphs, so exclude these from prefixes.
-     *
-     * @param Builder    $query
-     * @param Expression $field
-     * @param string     $letter
-     */
-    protected function whereInitialHungarian(Builder $query, Expression $field, string $letter): void
-    {
-        switch ($letter) {
-            case 'C':
-                $query->where($field, 'LIKE', 'C%')->where($field, 'NOT LIKE', 'CS%');
-                break;
-
-            case 'D':
-                $query->where($field, 'LIKE', 'D%')->where($field, 'NOT LIKE', 'DZ%');
-                break;
-
-            case 'DZ':
-                $query->where($field, 'LIKE', 'DZ%')->where($field, 'NOT LIKE', 'DZS%');
-                break;
-
-            case 'G':
-                $query->where($field, 'LIKE', 'G%')->where($field, 'NOT LIKE', 'GY%');
-                break;
-
-            case 'L':
-                $query->where($field, 'LIKE', 'L%')->where($field, 'NOT LIKE', 'LY%');
-                break;
-
-            case 'N':
-                $query->where($field, 'LIKE', 'N%')->where($field, 'NOT LIKE', 'NY%');
-                break;
-
-            case 'S':
-                $query->where($field, 'LIKE', 'S%')->where($field, 'NOT LIKE', 'SZ%');
-                break;
-
-            case 'T':
-                $query->where($field, 'LIKE', 'T%')->where($field, 'NOT LIKE', 'TY%');
-                break;
-
-            case 'Z':
-                $query->where($field, 'LIKE', 'Z%')->where($field, 'NOT LIKE', 'ZS%');
-                break;
-
-            default:
-                $query->where($field, 'LIKE', '\\' . $letter . '%');
-                break;
-        }
-    }
-
-    /**
-     * In Norwegian and Danish, AA gets listed under Å, NOT A
-     *
-     * @param Builder    $query
-     * @param Expression $field
-     * @param string     $letter
-     */
-    protected function whereInitialNorwegian(Builder $query, Expression $field, string $letter): void
-    {
-        switch ($letter) {
-            case 'A':
-                $query->where($field, 'LIKE', 'A%')->where($field, 'NOT LIKE', 'AA%');
-                break;
-
-            case 'Å':
-                $query->where(static function (Builder $query) use ($field): void {
-                    $query
-                        ->where($field, 'LIKE', 'Å%')
-                        ->orWhere($field, 'LIKE', 'AA%');
-                });
-                break;
-
-            default:
-                $query->where($field, 'LIKE', '\\' . $letter . '%');
-                break;
-        }
-    }
-
-    /**
-     * In Swedish and Finnish, AA gets listed under A, NOT Å (even though Swedish collation says they should).
-     *
-     * @param Builder    $query
-     * @param Expression $field
-     * @param string     $letter
-     */
-    protected function whereInitialSwedish(Builder $query, Expression $field, string $letter): void
-    {
-        if ($letter === 'Å') {
-            $query->where($field, 'LIKE', 'Å%')->where($field, 'NOT LIKE', 'AA%');
-        } else {
-            $query->where($field, 'LIKE', '\\' . $letter . '%');
-        }
+        return new Expression($sql);
     }
 }

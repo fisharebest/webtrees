@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleCs;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
 use function mb_substr;
@@ -40,7 +41,50 @@ class LanguageCzech extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['A', 'Á', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'Ě', 'F', 'G', 'H', 'CH', 'I', 'Í', 'J', 'K', 'L', 'M', 'N', 'Ň', 'O', 'Ó', 'P', 'Q', 'R', 'Ř', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'Ů', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'];
+        return [
+            'A',
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
+            'B',
+            'C',
+            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
+            'D',
+            UTF8::LATIN_CAPITAL_LETTER_D_WITH_CARON,
+            'E',
+            UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
+            UTF8::LATIN_CAPITAL_LETTER_E_WITH_CARON,
+            'F',
+            'G',
+            'H',
+            'CH',
+            'I',
+            UTF8::LATIN_CAPITAL_LETTER_I_WITH_ACUTE,
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            UTF8::LATIN_CAPITAL_LETTER_N_WITH_CARON,
+            'O',
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
+            'P',
+            'Q',
+            'R',
+            UTF8::LATIN_CAPITAL_LETTER_R_WITH_CARON,
+            'S',
+            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
+            'T',
+            UTF8::LATIN_CAPITAL_LETTER_T_WITH_CARON,
+            'U',
+            UTF8::LATIN_CAPITAL_LETTER_U_WITH_ACUTE,
+            UTF8::LATIN_CAPITAL_LETTER_U_WITH_RING_ABOVE,
+            'V',
+            'W',
+            'X',
+            'Y',
+            UTF8::LATIN_CAPITAL_LETTER_Y_WITH_ACUTE,
+            'Z',
+            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
+        ];
     }
 
     /**
@@ -60,26 +104,51 @@ class LanguageCzech extends AbstractModule implements ModuleLanguageInterface
     }
 
     /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_czech_ci */', 'LIKE', '\\' . $letter . '%');
-
-        if ($letter === 'C') {
-            $query->where($column . ' /*! COLLATE utf8_czech_ci */', 'NOT LIKE', 'CS%');
-        }
-    }
-
-    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface
     {
         return new LocaleCs();
+    }
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'A' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
+            'C' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
+            'D' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_D_WITH_CARON,
+            'E' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
+            'E' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_E_WITH_CARON,
+            'I' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_CAPITAL_LETTER_I_WITH_ACUTE,
+            'N' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_N_WITH_CARON,
+            'O' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
+            'R' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_R_WITH_CARON,
+            'S' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
+            'T' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_T_WITH_CARON,
+            'U' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_CAPITAL_LETTER_U_WITH_ACUTE,
+            'U' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_U_WITH_RING_ABOVE,
+            'Y' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_CAPITAL_LETTER_Y_WITH_ACUTE,
+            'Z' . UTF8::COMBINING_CARON        => UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
+            'a' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_A_WITH_ACUTE,
+            'c' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_C_WITH_CARON,
+            'd' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_D_WITH_CARON,
+            'e' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_SMALL_LETTER_E_WITH_ACUTE,
+            'e' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_E_WITH_CARON,
+            'i' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_SMALL_LETTER_I_WITH_ACUTE,
+            'n' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_N_WITH_CARON,
+            'o' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_SMALL_LETTER_O_WITH_ACUTE,
+            'r' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_R_WITH_CARON,
+            's' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_S_WITH_CARON,
+            't' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_T_WITH_CARON,
+            'u' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_SMALL_LETTER_U_WITH_ACUTE,
+            'u' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_U_WITH_RING_ABOVE,
+            'y' . UTF8::COMBINING_ACUTE_ACCENT => UTF8::LATIN_SMALL_LETTER_Y_WITH_ACUTE,
+            'z' . UTF8::COMBINING_CARON        => UTF8::LATIN_SMALL_LETTER_Z_WITH_CARON,
+        ];
     }
 }

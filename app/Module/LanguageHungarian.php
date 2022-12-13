@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleHu;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
 use function mb_substr;
@@ -40,7 +41,52 @@ class LanguageHungarian extends AbstractModule implements ModuleLanguageInterfac
      */
     public function alphabet(): array
     {
-        return ['A', 'Á', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'É', 'F', 'G', 'GY', 'H', 'I', 'Í', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ó', 'Ö', 'Ő', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ú', 'Ü', 'Ű', 'V', 'W', 'X', 'Y', 'Z', 'ZS'];
+        return [
+            'A',
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
+            'B',
+            'C',
+            'CS',
+            'D',
+            'DZ',
+            'DZS',
+            'E',
+            UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
+            'F',
+            'G',
+            'GY',
+            'H',
+            'I',
+            UTF8::LATIN_CAPITAL_LETTER_I_WITH_ACUTE,
+            'J',
+            'K',
+            'L',
+            'LY',
+            'M',
+            'N',
+            'NY',
+            'O',
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DOUBLE_ACUTE,
+            'P',
+            'Q',
+            'R',
+            'S',
+            'SZ',
+            'T',
+            'TY',
+            'U',
+            UTF8::LATIN_CAPITAL_LETTER_U_WITH_ACUTE,
+            UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+            UTF8::LATIN_CAPITAL_LETTER_U_WITH_DOUBLE_ACUTE,
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+            'ZS',
+        ];
     }
 
     /**
@@ -72,22 +118,40 @@ class LanguageHungarian extends AbstractModule implements ModuleLanguageInterfac
     }
 
     /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_hungarian_ci */', 'LIKE', '\\' . $letter . '%');
-    }
-
-    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface
     {
         return new LocaleHu();
+    }
+
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'A' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
+            'E' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
+            'I' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_CAPITAL_LETTER_I_WITH_ACUTE,
+            'O' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
+            'O' . UTF8::COMBINING_DIAERESIS           => UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+            'O' . UTF8::COMBINING_DOUBLE_ACUTE_ACCENT => UTF8::LATIN_CAPITAL_LETTER_O_WITH_DOUBLE_ACUTE,
+            'U' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_CAPITAL_LETTER_U_WITH_ACUTE,
+            'U' . UTF8::COMBINING_DIAERESIS           => UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+            'U' . UTF8::COMBINING_DOUBLE_ACUTE_ACCENT => UTF8::LATIN_CAPITAL_LETTER_U_WITH_DOUBLE_ACUTE,
+            'a' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_SMALL_LETTER_A_WITH_ACUTE,
+            'e' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_SMALL_LETTER_E_WITH_ACUTE,
+            'i' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_SMALL_LETTER_I_WITH_ACUTE,
+            'o' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_SMALL_LETTER_O_WITH_ACUTE,
+            'o' . UTF8::COMBINING_DIAERESIS           => UTF8::LATIN_SMALL_LETTER_O_WITH_DIAERESIS,
+            'o' . UTF8::COMBINING_DOUBLE_ACUTE_ACCENT => UTF8::LATIN_SMALL_LETTER_O_WITH_DOUBLE_ACUTE,
+            'u' . UTF8::COMBINING_ACUTE_ACCENT        => UTF8::LATIN_SMALL_LETTER_U_WITH_ACUTE,
+            'u' . UTF8::COMBINING_DIAERESIS           => UTF8::LATIN_SMALL_LETTER_U_WITH_DIAERESIS,
+            'u' . UTF8::COMBINING_DOUBLE_ACUTE_ACCENT => UTF8::LATIN_SMALL_LETTER_U_WITH_DOUBLE_ACUTE,
+        ];
     }
 }

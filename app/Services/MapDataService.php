@@ -252,7 +252,7 @@ class MapDataService
 
         return $query
             ->groupBy(['p0.id'])
-            ->orderBy(new Expression($prefix . 'p0.place /*! COLLATE ' . I18N::collation() . ' */'))
+            ->orderBy('p0.place')
             ->select([
                 'p0.*',
                 new Expression('COUNT(' . $prefix . 'p1.id) AS child_count'),

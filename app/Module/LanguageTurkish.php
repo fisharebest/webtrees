@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleTr;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -37,19 +38,37 @@ class LanguageTurkish extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z'];
-    }
-
-    /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_turkish_ci */', 'LIKE', '\\' . $letter . '%');
+        return [
+            'A',
+            'B',
+            'C',
+            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,
+            'D',
+            'E',
+            'F',
+            'G',
+            UTF8::LATIN_CAPITAL_LETTER_G_WITH_BREVE,
+            'H',
+            'I',
+            UTF8::LATIN_CAPITAL_LETTER_I_WITH_DOT_ABOVE,
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+            'P',
+            'R',
+            'S',
+            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CEDILLA,
+            'T',
+            'U',
+            UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+            'V',
+            'Y',
+            'Z',
+        ];
     }
 
     /**
@@ -58,5 +77,28 @@ class LanguageTurkish extends AbstractModule implements ModuleLanguageInterface
     public function locale(): LocaleInterface
     {
         return new LocaleTr();
+    }
+
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'C' . UTF8::COMBINING_CEDILLA   => UTF8::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,
+            'G' . UTF8::COMBINING_BREVE     => UTF8::LATIN_CAPITAL_LETTER_G_WITH_BREVE,
+            'I' . UTF8::COMBINING_DOT_ABOVE => UTF8::LATIN_CAPITAL_LETTER_I_WITH_DOT_ABOVE,
+            'O' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+            'S' . UTF8::COMBINING_CEDILLA   => UTF8::LATIN_CAPITAL_LETTER_S_WITH_CEDILLA,
+            'U' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+            'c' . UTF8::COMBINING_CEDILLA   => UTF8::LATIN_SMALL_LETTER_C_WITH_CEDILLA,
+            'g' . UTF8::COMBINING_BREVE     => UTF8::LATIN_SMALL_LETTER_G_WITH_BREVE,
+            'o' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_SMALL_LETTER_O_WITH_DIAERESIS,
+            's' . UTF8::COMBINING_CEDILLA   => UTF8::LATIN_SMALL_LETTER_S_WITH_CEDILLA,
+            'u' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_SMALL_LETTER_U_WITH_DIAERESIS,
+        ];
     }
 }

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleFi;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
 
 /**
  * Class LanguageFinnish.
@@ -36,7 +37,37 @@ class LanguageFinnish extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö'];
+        return [
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            'T',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+        ];
     }
 
     /**
@@ -45,5 +76,22 @@ class LanguageFinnish extends AbstractModule implements ModuleLanguageInterface
     public function locale(): LocaleInterface
     {
         return new LocaleFi();
+    }
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'A' . UTF8::COMBINING_RING_ABOVE => UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+            'A' . UTF8::COMBINING_DIAERESIS  => UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
+            'O' . UTF8::COMBINING_DIAERESIS  => UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+            'a' . UTF8::COMBINING_RING_ABOVE => UTF8::LATIN_SMALL_LETTER_A_WITH_RING_ABOVE,
+            'a' . UTF8::COMBINING_DIAERESIS  => UTF8::LATIN_SMALL_LETTER_A_WITH_DIAERESIS,
+            'o' . UTF8::COMBINING_DIAERESIS  => UTF8::LATIN_SMALL_LETTER_O_WITH_DIAERESIS,
+        ];
     }
 }

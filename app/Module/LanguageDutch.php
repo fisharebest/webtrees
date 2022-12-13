@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleNl;
+use Fisharebest\Webtrees\Encodings\UTF8;
 
 use function mb_substr;
 use function str_starts_with;
@@ -39,7 +40,35 @@ class LanguageDutch extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'IJ'];
+        return [
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            'T',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+            'IJ',
+        ];
     }
 
     /**
@@ -64,5 +93,20 @@ class LanguageDutch extends AbstractModule implements ModuleLanguageInterface
     public function locale(): LocaleInterface
     {
         return new LocaleNl();
+    }
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'IJ' => UTF8::LATIN_CAPITAL_LIGATURE_IJ,
+            'Ij' => UTF8::LATIN_CAPITAL_LIGATURE_IJ,
+            'ij' => UTF8::LATIN_SMALL_LIGATURE_IJ,
+            'iJ' => UTF8::LATIN_SMALL_LIGATURE_IJ,
+        ];
     }
 }

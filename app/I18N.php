@@ -232,25 +232,6 @@ class I18N
     }
 
     /**
-     * Which MySQL collation should be used for this locale?
-     *
-     * @return string
-     */
-    public static function collation(): string
-    {
-        $collation = self::$locale->collation();
-        switch ($collation) {
-            case 'croatian_ci':
-            case 'german2_ci':
-            case 'vietnamese_ci':
-                // Only available in MySQL 5.6
-                return 'utf8_unicode_ci';
-            default:
-                return 'utf8_' . $collation;
-        }
-    }
-
-    /**
      * What format is used to display dates in the current locale?
      *
      * @return string

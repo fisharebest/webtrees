@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocalePl;
-use Illuminate\Database\Query\Builder;
+use Fisharebest\Webtrees\Encodings\UTF8;
 
 /**
  * Class LanguagePolish.
@@ -37,19 +37,40 @@ class LanguagePolish extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż'];
-    }
-
-    /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_polish_ci */', 'LIKE', '\\' . $letter . '%');
+        return [
+            'A',
+            'B',
+            'C',
+            UTF8::LATIN_CAPITAL_LETTER_C_WITH_ACUTE,
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            UTF8::LATIN_CAPITAL_LETTER_L_WITH_STROKE,
+            'M',
+            'N',
+            'O',
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
+            'P',
+            'Q',
+            'R',
+            'S',
+            UTF8::LATIN_CAPITAL_LETTER_S_WITH_ACUTE,
+            'T',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_ACUTE,
+            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_DOT_ABOVE,
+        ];
     }
 
     /**
@@ -58,5 +79,29 @@ class LanguagePolish extends AbstractModule implements ModuleLanguageInterface
     public function locale(): LocaleInterface
     {
         return new LocalePl();
+    }
+
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'C' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_CAPITAL_LETTER_C_WITH_ACUTE,
+            'L' . UTF8::COMBINING_SHORT_STROKE_OVERLAY => UTF8::LATIN_CAPITAL_LETTER_L_WITH_STROKE,
+            'O' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
+            'S' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_CAPITAL_LETTER_S_WITH_ACUTE,
+            'Z' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_CAPITAL_LETTER_Z_WITH_ACUTE,
+            'Z' . UTF8::COMBINING_DOT_ABOVE            => UTF8::LATIN_CAPITAL_LETTER_Z_WITH_DOT_ABOVE,
+            'c' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_SMALL_LETTER_C_WITH_ACUTE,
+            'l' . UTF8::COMBINING_SHORT_STROKE_OVERLAY => UTF8::LATIN_SMALL_LETTER_L_WITH_STROKE,
+            'o' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_SMALL_LETTER_O_WITH_ACUTE,
+            's' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_SMALL_LETTER_S_WITH_ACUTE,
+            'z' . UTF8::COMBINING_ACUTE_ACCENT         => UTF8::LATIN_SMALL_LETTER_Z_WITH_ACUTE,
+            'z' . UTF8::COMBINING_DOT_ABOVE            => UTF8::LATIN_SMALL_LETTER_Z_WITH_DOT_ABOVE,
+        ];
     }
 }

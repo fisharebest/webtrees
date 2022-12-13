@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleDe;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -31,32 +32,29 @@ class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
     use ModuleLanguageTrait;
 
     /**
-     * Some languages treat certain letter-combinations as equivalent.
-     *
-     * @return array<string,string>
-     */
-    public function equivalentLetters(): array
-    {
-        return ['ä' => 'ae', 'ö' => 'oe',  'ü' => 'ue', 'ẞ' => 'ss', 'Ä' => 'AE', 'Ö' => 'OE',  'Ü' => 'UE', 'ß' => 'SS'];
-    }
-
-    /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_german2_ci */', 'LIKE', '\\' . $letter . '%');
-    }
-
-    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface
     {
         return new LocaleDe();
+    }
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'A' . UTF8::COMBINING_DIAERESIS    => 'AE',
+            'O' . UTF8::COMBINING_DIAERESIS    => 'OE',
+            'U' . UTF8::COMBINING_DIAERESIS    => 'UE',
+            UTF8::LATIN_CAPITAL_LETTER_SHARP_S => 'SS',
+            'a' . UTF8::COMBINING_DIAERESIS    => 'ae',
+            'o' . UTF8::COMBINING_DIAERESIS    => 'oe',
+            'u' . UTF8::COMBINING_DIAERESIS    => 'ue',
+            UTF8::LATIN_SMALL_LETTER_SHARP_S   => 'ss',
+        ];
     }
 }

@@ -182,7 +182,7 @@ class ChartDistribution
                         ->on('n_file', '=', 'pl_file')
                         ->on('n_id', '=', 'pl_gid');
                 })
-                ->where(new Expression('n_surn /*! COLLATE ' . I18N::collation() . ' */'), '=', $surname)
+                ->where('n_surn', '=', $surname)
                 ->groupBy('p_place')
                 ->pluck(new Expression('COUNT(*)'), 'p_place');
 

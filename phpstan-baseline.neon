@@ -1476,28 +1476,33 @@ parameters:
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
+			message: "#^Cannot access property \\$count on mixed\\.$#"
+			count: 1
+			path: app/Module/IndividualListModule.php
+
+		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
 			count: 1
 			path: app/Module/IndividualListModule.php
 
 		-
 			message: "#^Cannot access property \\$n_givn on mixed\\.$#"
-			count: 1
+			count: 3
 			path: app/Module/IndividualListModule.php
 
 		-
 			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
-			count: 5
+			count: 8
 			path: app/Module/IndividualListModule.php
 
 		-
 			message: "#^Cannot access property \\$n_surname on mixed\\.$#"
-			count: 2
+			count: 3
 			path: app/Module/IndividualListModule.php
 
 		-
 			message: "#^Cannot access property \\$total on mixed\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/IndividualListModule.php
 
 		-
@@ -1506,43 +1511,8 @@ parameters:
 			path: app/Module/IndividualListModule.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 4
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualListModule\\:\\:families\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:whereIn\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualListModule\\:\\:individuals\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orWhere\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 38
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:whereNotIn\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$key of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string\\|null, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
 			path: app/Module/IndividualListModule.php
 
 		-
@@ -1559,6 +1529,341 @@ parameters:
 			message: "#^Parameter \\#1 \\$familyList of method Fisharebest\\\\Webtrees\\\\Module\\\\InteractiveTree\\\\TreeView\\:\\:drawChildren\\(\\) expects Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Family\\>, Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Family\\|null\\> given\\.$#"
 			count: 1
 			path: app/Module/InteractiveTree/TreeView.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageAfrikaans.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageAlbanian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageArabic.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageBosnian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageBulgarian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageCatalan.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageChineseSimplified.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageChineseTraditional.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageCroatian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageCzech.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageDanish.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageDivehi.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageDutch.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageEnglishUnitedStates.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageEstonian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageFaroese.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageFarsi.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageFinnish.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageFrench.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageGalician.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageGeorgian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageGerman.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageGreek.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageHebrew.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageHindi.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageHungarian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageIcelandic.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageIndonesian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageItalian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageJapanese.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageJavanese.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageKazhak.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageKorean.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageKurdish.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageLatvian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageLingala.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageLithuanian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageMalay.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageMaori.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageMarathi.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageNepalese.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageNorwegianBokmal.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageNorwegianNynorsk.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageOccitan.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguagePolish.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguagePortuguese.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguagePortugueseBrazil.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageRomanian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageRussian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSerbian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSerbianLatin.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSlovakian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSlovenian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSpanish.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSundanese.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSwahili.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageSwedish.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageTagalog.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageTamil.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageTatar.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageThai.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageTurkish.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageUkranian.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageUrdu.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageVietnamese.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageWelsh.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Module/LanguageYiddish.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\LifespansChartModule\\:\\:findIndividualsByDate\\(\\) should return array\\<string\\> but returns array\\.$#"
@@ -3368,11 +3673,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 2
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
 			path: app/Statistics/Google/ChartDistribution.php
 
 		-

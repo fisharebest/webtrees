@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleSl;
+use Fisharebest\Webtrees\Encodings\UTF8;
 
 /**
  * Class LanguageSlovenian.
@@ -36,7 +37,39 @@ class LanguageSlovenian extends AbstractModule implements ModuleLanguageInterfac
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'];
+        return [
+            'A',
+            'B',
+            'C',
+            UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
+            UTF8::LATIN_CAPITAL_LETTER_C_WITH_ACUTE,
+            'D',
+            UTF8::LATIN_CAPITAL_LETTER_D_WITH_STROKE,
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
+            'T',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
+        ];
     }
 
     /**
@@ -55,5 +88,26 @@ class LanguageSlovenian extends AbstractModule implements ModuleLanguageInterfac
     public function locale(): LocaleInterface
     {
         return new LocaleSl();
+    }
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'C' . UTF8::COMBINING_CARON                => UTF8::LATIN_CAPITAL_LETTER_C_WITH_CARON,
+            'C' . UTF8::COMBINING_CEDILLA              => UTF8::LATIN_CAPITAL_LETTER_C_WITH_ACUTE,
+            'D' . UTF8::COMBINING_SHORT_STROKE_OVERLAY => UTF8::LATIN_CAPITAL_LETTER_D_WITH_STROKE,
+            'S' . UTF8::COMBINING_CARON                => UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
+            'Z' . UTF8::COMBINING_CARON                => UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
+            'c' . UTF8::COMBINING_CARON                => UTF8::LATIN_SMALL_LETTER_C_WITH_CARON,
+            'c' . UTF8::COMBINING_CEDILLA              => UTF8::LATIN_SMALL_LETTER_C_WITH_ACUTE,
+            'd' . UTF8::COMBINING_SHORT_STROKE_OVERLAY => UTF8::LATIN_SMALL_LETTER_D_WITH_STROKE,
+            's' . UTF8::COMBINING_CARON                => UTF8::LATIN_SMALL_LETTER_S_WITH_CARON,
+            'z' . UTF8::COMBINING_CARON                => UTF8::LATIN_SMALL_LETTER_Z_WITH_CARON,
+        ];
     }
 }
