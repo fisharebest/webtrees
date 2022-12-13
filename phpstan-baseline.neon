@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot call method calendarUrl\\(\\) on Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\|null\\.$#"
-			count: 1
-			path: app/Date.php
-
-		-
 			message: "#^Cannot call method make\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Elements/AbstractXrefElement.php
@@ -72,11 +67,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/GedcomRecordFactory.php
-
-		-
-			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:extractType\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
 
