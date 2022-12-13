@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleNb;
+use Fisharebest\Webtrees\Encodings\UTF8;
 
 use function mb_substr;
 use function str_starts_with;
@@ -39,17 +40,37 @@ class LanguageNorwegianBokmal extends AbstractModule implements ModuleLanguageIn
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å'];
-    }
-
-    /**
-     * Some languages treat certain letter-combinations as equivalent.
-     *
-     * @return array<string,string>
-     */
-    public function equivalentLetters(): array
-    {
-        return ['aa' => 'å', 'aA' => 'å', 'Aa' => 'Å', 'AA' => 'Å'];
+        return [
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            'T',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+            UTF8::LATIN_CAPITAL_LETTER_AE,
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_STROKE,
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+        ];
     }
 
     /**
@@ -84,5 +105,24 @@ class LanguageNorwegianBokmal extends AbstractModule implements ModuleLanguageIn
     public function locale(): LocaleInterface
     {
         return new LocaleNb();
+    }
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'O' . UTF8::COMBINING_LONG_SOLIDUS_OVERLAY => UTF8::LATIN_CAPITAL_LETTER_O_WITH_STROKE,
+            'A' . UTF8::COMBINING_RING_ABOVE           => UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+            'AA'                                       => UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+            'Aa'                                       => UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+            'o' . UTF8::COMBINING_LONG_SOLIDUS_OVERLAY => UTF8::LATIN_SMALL_LETTER_O_WITH_STROKE,
+            'a' . UTF8::COMBINING_RING_ABOVE           => UTF8::LATIN_SMALL_LETTER_A_WITH_RING_ABOVE,
+            'aa'                                       => UTF8::LATIN_SMALL_LETTER_A_WITH_RING_ABOVE,
+            'aA'                                       => UTF8::LATIN_SMALL_LETTER_A_WITH_RING_ABOVE,
+        ];
     }
 }

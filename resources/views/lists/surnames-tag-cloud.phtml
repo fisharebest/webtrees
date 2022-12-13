@@ -3,15 +3,16 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var IndividualListModule|null          $module
- * @var array<string,array<string,string>> $surnames
- * @var bool                               $totals
- * @var Tree                               $tree
+ * @var IndividualListModule|null $module
+ * @var array<array<string>>      $surnames
+ * @var bool                      $totals
+ * @var Tree                      $tree
  */
 
 $maximum = max(array_map(static fn (array $x): int => max($x), $surnames));
@@ -23,16 +24,24 @@ $minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
     <?php foreach ($surnames as $surn => $surns) : ?>
         <?php foreach ($surns as $spfxsurn => $count) : ?>
             <?php
-                $size = $maximum === $minimum ? 1.0 : 1.0 + 1.5 * ($count - $minimum) / ($maximum - $minimum);
-                $tag_item = $totals ? I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count)) : e($spfxsurn);
+            $size = $maximum === $minimum ? 1.0 : 1.0 + 1.5 * ($count - $minimum) / ($maximum - $minimum);
+
+            if ($spfxsurn !== '') {
+                $label = e($spfxsurn);
+            } elseif ($surn !== Individual::NOMEN_NESCIO) {
+                $label = e($surn);
+            } else {
+                $label = I18N::translate('No surname');
+            }
+
             ?>
             <?php if ($module instanceof ModuleListInterface) : ?>
-                <a style="font-size:<?= $size ?>rem" href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>">
-                    <?= $tag_item ?>
+                <a class="ut" style="font-size:<?= $size ?>rem" href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>">
+                    <?= $label ?>
                 </a>
             <?php else : ?>
-                <span class="text-nowrap" style="font-size:<?= $size ?>rem" dir="auto">
-                    <?= $tag_item ?>
+                <span class="text-nowrap ut" style="font-size:<?= $size ?>rem" dir="auto">
+                    <?= $label ?>
                 </span>
             <?php endif ?>
         <?php endforeach ?>

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleRo;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -37,19 +38,39 @@ class LanguageRomanian extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    }
-
-    /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_romanian_ci */', 'LIKE', '\\' . $letter . '%');
+        return [
+            'A',
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_BREVE,
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_CIRCUMFLEX,
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            UTF8::LATIN_CAPITAL_LETTER_I_WITH_CIRCUMFLEX,
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CEDILLA,
+            'T',
+            'Ţ',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+        ];
     }
 
     /**
@@ -68,5 +89,25 @@ class LanguageRomanian extends AbstractModule implements ModuleLanguageInterface
     public function locale(): LocaleInterface
     {
         return new LocaleRo();
+    }
+
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'A' . UTF8::COMBINING_BREVE             => UTF8::LATIN_CAPITAL_LETTER_A_WITH_BREVE,
+            'A' . UTF8::COMBINING_CIRCUMFLEX_ACCENT => UTF8::LATIN_CAPITAL_LETTER_A_WITH_CIRCUMFLEX,
+            'I' . UTF8::COMBINING_CIRCUMFLEX_ACCENT => UTF8::LATIN_CAPITAL_LETTER_I_WITH_CIRCUMFLEX,
+            'S' . UTF8::COMBINING_CEDILLA           => UTF8::LATIN_CAPITAL_LETTER_S_WITH_CEDILLA,
+            'a' . UTF8::COMBINING_BREVE             => UTF8::LATIN_SMALL_LETTER_A_WITH_BREVE,
+            'a' . UTF8::COMBINING_CIRCUMFLEX_ACCENT => UTF8::LATIN_SMALL_LETTER_A_WITH_CIRCUMFLEX,
+            'i' . UTF8::COMBINING_CIRCUMFLEX_ACCENT => UTF8::LATIN_SMALL_LETTER_I_WITH_CIRCUMFLEX,
+            's' . UTF8::COMBINING_CEDILLA           => UTF8::LATIN_SMALL_LETTER_S_WITH_CEDILLA,
+        ];
     }
 }

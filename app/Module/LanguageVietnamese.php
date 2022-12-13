@@ -31,18 +31,6 @@ class LanguageVietnamese extends AbstractModule implements ModuleLanguageInterfa
     use ModuleLanguageTrait;
 
     /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_vietnamese_ci */', 'LIKE', '\\' . $letter . '%');
-    }
-
-    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface

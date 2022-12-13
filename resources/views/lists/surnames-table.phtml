@@ -3,15 +3,16 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var bool                               $families
- * @var IndividualListModule|null          $module
- * @var array<array<int,string>>           $order
- * @var array<string,array<string,string>> $surnames
- * @var Tree                               $tree
+ * @var bool                      $families
+ * @var IndividualListModule|null $module
+ * @var array<array<int,string>>  $order
+ * @var array<array<int>>         $surnames
+ * @var Tree                      $tree
  */
 
 ?>
@@ -47,37 +48,39 @@ use Fisharebest\Webtrees\Tree;
             <tr>
                 <td data-sort="<?= $n = 1 + ($n ?? 0) ?>">
                     <!-- Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc. -->
-                    <?php foreach ($surns as $spfxsurn => $indis) : ?>
+                    <?php foreach ($surns as $surname => $count) : ?>
                         <?php if ($module instanceof IndividualListModule) : ?>
-                            <?php if ($spfxsurn) : ?>
-                                <?php if ($surn !== '') : ?>
-                                    <a href="<?= $module->listUrl($tree, ['surname' => $surn]) ?>" dir="auto">
-                                        <?= e($spfxsurn) ?>
-                                    </a>
+                            <?php if ($surname === Individual::NOMEN_NESCIO) : ?>
+                                <a href="<?= e($module->listUrl($tree, ['alpha' => '@'])) ?>"><?= I18N::translateContext('Unknown surname', '…') ?></a>
+                            <?php elseif ($surname === '') : ?>
+                                <?php if ($surn === '') : ?>
+                                    <a href="<?= e($module->listUrl($tree, ['alpha' => ','])) ?>"><?= I18N::translate('No surname') ?></a>
                                 <?php else : ?>
-                                    <a href="<?= $module->listUrl($tree, ['alpha' => ',']) ?>" dir="auto">
-                                        <?= e($spfxsurn) ?>
-                                    </a>
+                                    <a href="<?= e($module->listUrl($tree, ['alpha' => ','])) ?>" class="ut"><?= e($surn) ?></a>
                                 <?php endif ?>
                             <?php else : ?>
-                                <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
-                                <a href="<?= $module->listUrl($tree, ['surname' => $surn]) ?>" dir="auto"><?= I18N::translate('No surname') ?></a>
+                                <a href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>" class="ut"><?= e($surname) ?></a>
                             <?php endif ?>
                         <?php else : ?>
-                            <?php if ($spfxsurn) : ?>
-                                <bdi><?= e($spfxsurn) ?></bdi>
+                            <?php if ($surname === Individual::NOMEN_NESCIO) : ?>
+                                <span class="ut"><?= I18N::translateContext('Unknown surname', '…') ?></span>
+                            <?php elseif ($surname === '') : ?>
+                                <?php if ($surn === '') : ?>
+                                    <?= I18N::translate('No surname') ?>
+                                <?php else : ?>
+                                    <span class="ut"><?= e($surn) ?></span>
+                                <?php endif ?>
                             <?php else : ?>
-                                <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
-                                <bdi><?= e($surn) ?></bdi>
-                            <?php endif ?>    
+                                <span class="ut"><?= e($surname) ?></span>
+                            <?php endif ?>
                         <?php endif ?>
                         <br>
                     <?php endforeach ?>
                 </td>
 
                 <td class="text-center" data-sort="<?= array_sum($surns) ?>">
-                    <?php foreach ($surns as $indis) : ?>
-                        <?= I18N::number($indis) ?>
+                    <?php foreach ($surns as $count) : ?>
+                        <?= I18N::number($count) ?>
                         <br>
                     <?php endforeach ?>
 

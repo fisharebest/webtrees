@@ -368,6 +368,9 @@ class UTF8 extends AbstractEncoding
     public const COMBINING_BREVE_BELOW                                 = "\u{032E}";
     public const COMBINING_LOW_LINE                                    = "\u{0332}";
     public const COMBINING_DOUBLE_LOW_LINE                             = "\u{0333}";
+    public const COMBINING_SHORT_STROKE_OVERLAY                        = "\u{0335}";
+    public const COMBINING_LONG_STROKE_OVERLAY                         = "\u{0336}";
+    public const COMBINING_SHORT_SOLIDUS_OVERLAY                       = "\u{0338}";
     public const COMBINING_LONG_SOLIDUS_OVERLAY                        = "\u{0338}";
     public const COMBINING_DOUBLE_TILDE                                = "\u{0360}";
     public const COMBINING_DOUBLE_INVERTED_BREVE                       = "\u{0361}";
@@ -477,6 +480,37 @@ class UTF8 extends AbstractEncoding
     public const CYRILLIC_SMALL_LETTER_DZHE                            = "\u{045F}";
     public const CYRILLIC_CAPITAL_LETTER_GHE_WITH_UPTURN               = "\u{0490}";
     public const CYRILLIC_SMALL_LETTER_GHE_WITH_UPTURN                 = "\u{0491}";
+    public const ARABIC_LETTER_HAMZA                                   = "\u{0621}";
+    public const ARABIC_LETTER_ALEF                                    = "\u{0627}";
+    public const ARABIC_LETTER_BEH                                     = "\u{0628}";
+    public const ARABIC_LETTER_TEH_MARBUTA                             = "\u{0629}";
+    public const ARABIC_LETTER_TEH                                     = "\u{062A}";
+    public const ARABIC_LETTER_THEH                                    = "\u{062B}";
+    public const ARABIC_LETTER_JEEM                                    = "\u{062C}";
+    public const ARABIC_LETTER_HAH                                     = "\u{062D}";
+    public const ARABIC_LETTER_KHAH                                    = "\u{062E}";
+    public const ARABIC_LETTER_DAL                                     = "\u{062F}";
+    public const ARABIC_LETTER_THAL                                    = "\u{0630}";
+    public const ARABIC_LETTER_REH                                     = "\u{0631}";
+    public const ARABIC_LETTER_ZAIN                                    = "\u{0632}";
+    public const ARABIC_LETTER_SEEN                                    = "\u{0633}";
+    public const ARABIC_LETTER_SHEEN                                   = "\u{0634}";
+    public const ARABIC_LETTER_SAD                                     = "\u{0635}";
+    public const ARABIC_LETTER_DAD                                     = "\u{0636}";
+    public const ARABIC_LETTER_TAH                                     = "\u{0637}";
+    public const ARABIC_LETTER_ZAH                                     = "\u{0638}";
+    public const ARABIC_LETTER_AIN                                     = "\u{0639}";
+    public const ARABIC_LETTER_GHAIN                                   = "\u{063A}";
+    public const ARABIC_LETTER_FEH                                     = "\u{0641}";
+    public const ARABIC_LETTER_QAF                                     = "\u{0642}";
+    public const ARABIC_LETTER_KAF                                     = "\u{0643}";
+    public const ARABIC_LETTER_LAM                                     = "\u{0644}";
+    public const ARABIC_LETTER_MEEM                                    = "\u{0645}";
+    public const ARABIC_LETTER_NOON                                    = "\u{0646}";
+    public const ARABIC_LETTER_HEH                                     = "\u{0647}";
+    public const ARABIC_LETTER_WAW                                     = "\u{0648}";
+    public const ARABIC_LETTER_ALEF_MAKSURA                            = "\u{0649}";
+    public const ARABIC_LETTER_YEH                                     = "\u{064A}";
     public const LATIN_CAPITAL_LETTER_A_WITH_RING_BELOW                = "\u{1E00}";
     public const LATIN_SMALL_LETTER_A_WITH_RING_BELOW                  = "\u{1E01}";
     public const LATIN_CAPITAL_LETTER_B_WITH_DOT_ABOVE                 = "\u{1E02}";
@@ -767,24 +801,6 @@ class UTF8 extends AbstractEncoding
     public const LATIN_SMALL_LIGATURE_FL                               = "\u{FB02}";
     public const BYTE_ORDER_MARK                                       = "\u{FEFF}";
     public const REPLACEMENT_CHARACTER                                 = "\u{FFFD}";
-
-    public const COMPOSED_CHARACTERS = [
-        'A' . self::COMBINING_ACUTE_ACCENT      => self::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
-        'A' . self::COMBINING_CIRCUMFLEX_ACCENT => self::LATIN_CAPITAL_LETTER_A_WITH_CIRCUMFLEX,
-        'A' . self::COMBINING_DIAERESIS         => self::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
-        'A' . self::COMBINING_GRAVE_ACCENT      => self::LATIN_CAPITAL_LETTER_A_WITH_GRAVE,
-        'A' . self::COMBINING_RING_ABOVE        => self::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
-        'A' . self::COMBINING_TILDE             => self::LATIN_CAPITAL_LETTER_A_WITH_TILDE,
-        'C' . self::COMBINING_CEDILLA           => self::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,
-        'E' . self::COMBINING_ACUTE_ACCENT      => self::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
-        'E' . self::COMBINING_DIAERESIS         => self::LATIN_CAPITAL_LETTER_E_WITH_DIAERESIS,
-        'E' . self::COMBINING_CIRCUMFLEX_ACCENT => self::LATIN_CAPITAL_LETTER_E_WITH_CIRCUMFLEX,
-        'E' . self::COMBINING_GRAVE_ACCENT      => self::LATIN_CAPITAL_LETTER_E_WITH_GRAVE,
-        'a' . self::COMBINING_CIRCUMFLEX_ACCENT => self::LATIN_SMALL_LETTER_A_WITH_CIRCUMFLEX,
-        'a' . self::COMBINING_DIAERESIS         => self::LATIN_SMALL_LETTER_A_WITH_DIAERESIS,
-        'e' . self::COMBINING_ACUTE_ACCENT      => self::LATIN_SMALL_LETTER_E_WITH_ACUTE,
-        'u' . self::COMBINING_DIAERESIS         => self::LATIN_SMALL_LETTER_U_WITH_DIAERESIS,
-    ];
 
     /**
      * Convert text from (potentially invalid) UTF-8 to UTF-8.
