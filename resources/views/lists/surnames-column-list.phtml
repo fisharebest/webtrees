@@ -3,15 +3,16 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var IndividualListModule|null          $module
- * @var array<string,array<string,string>> $surnames
- * @var bool                               $totals
- * @var Tree                               $tree
+ * @var IndividualListModule|null $module
+ * @var array<array<int>>         $surnames
+ * @var bool                      $totals
+ * @var Tree                      $tree
  */
 
 $maximum = max(array_map(static fn (array $x): int => max($x), $surnames));
@@ -21,22 +22,34 @@ $minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
 
 <div class="wt-surnames-column-list px-3" style="columns: 15rem; column-rule: solid thin gray; border: solid thin gray;">
     <?php foreach ($surnames as $surn => $surns) : ?>
-        <?php foreach ($surns as $spfxsurn => $count) : ?>
+        <?php foreach ($surns as $surname => $count) : ?>
             <?php
             $size     = 1.0 + ($maximum === $minimum ? 0 : 1.5 * ($count - $minimum) / ($maximum - $minimum));
-            $label    = $spfxsurn ? e($spfxsurn) : I18N::translate('No surname');
+
+            if ($surn === Individual::NOMEN_NESCIO) {
+                $label = I18N::translateContext('Unknown surname', '…');
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['alpha' => '@']) : '';
+            } elseif ($surname === '') {
+                if ($surn === '') {
+                    $label = I18N::translate('No surname');
+                } else {
+                    $label = e($surn);
+                }
+                $url = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['alpha' => ',']) : '';
+            } else {
+                $label = e($surname);
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn]) : '';
+            }
 
             if ($totals) {
-                $item = I18N::translate('%1$s (%2$s)', '<bdi>' . $label . '</bdi>', I18N::number($count));
+                $item = I18N::translate('%1$s (%2$s)', '<span class="ut">' . $label . '</span>', I18N::number($count));
             } else {
-                $item = '<bdi>' . $label . '</bdi>';
+                $item = '<span class="ut">' . $label . '</span>';
             }
             ?>
-            <div class="wt-surnames-column-list-item">
-                <?php if ($module instanceof ModuleListInterface) : ?>
-                    <a href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>">
-                        <?= $item ?>
-                    </a>
+            <div class="wt-surnames-column-list-item ut">
+                <?php if ($url !== '') : ?>
+                    <a href="<?= e($url) ?>"><?= $item ?></a>
                 <?php else : ?>
                     <?= $item ?>
                 <?php endif ?>

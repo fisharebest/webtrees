@@ -31,18 +31,6 @@ class LanguageIcelandic extends AbstractModule implements ModuleLanguageInterfac
     use ModuleLanguageTrait;
 
     /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_icelandic_ci */', 'LIKE', '\\' . $letter . '%');
-    }
-
-    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface

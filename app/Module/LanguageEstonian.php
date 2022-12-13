@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleEt;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -37,19 +38,40 @@ class LanguageEstonian extends AbstractModule implements ModuleLanguageInterface
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y'];
-    }
-
-    /**
-     * @param string  $column
-     * @param string  $letter
-     * @param Builder $query
-     *
-     * @return void
-     */
-    public function initialLetterSQL(string $column, string $letter, Builder $query): void
-    {
-        $query->where($column . ' /*! COLLATE utf8_estonian_ci */', 'LIKE', '\\' . $letter . '%');
+        return [
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
+            'Z',
+            UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
+            'T',
+            'U',
+            'V',
+            'W',
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_TILDE,
+            UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
+            UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+            UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+            'X',
+            'Y',
+        ];
     }
 
     /**
@@ -58,5 +80,28 @@ class LanguageEstonian extends AbstractModule implements ModuleLanguageInterface
     public function locale(): LocaleInterface
     {
         return new LocaleEt();
+    }
+
+    /**
+     * Letters with diacritics that are considered distinct letters in this language.
+     *
+     * @return array<string,string>
+     */
+    protected function normalizeExceptions(): array
+    {
+        return [
+            'S' . UTF8::COMBINING_CARON     => UTF8::LATIN_CAPITAL_LETTER_S_WITH_CARON,
+            'Z' . UTF8::COMBINING_CARON     => UTF8::LATIN_CAPITAL_LETTER_Z_WITH_CARON,
+            'O' . UTF8::COMBINING_TILDE     => UTF8::LATIN_CAPITAL_LETTER_O_WITH_TILDE,
+            'A' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
+            'O' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+            'U' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+            's' . UTF8::COMBINING_CARON     => UTF8::LATIN_SMALL_LETTER_S_WITH_CARON,
+            'z' . UTF8::COMBINING_CARON     => UTF8::LATIN_SMALL_LETTER_Z_WITH_CARON,
+            'o' . UTF8::COMBINING_TILDE     => UTF8::LATIN_SMALL_LETTER_O_WITH_TILDE,
+            'a' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_SMALL_LETTER_A_WITH_DIAERESIS,
+            'o' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_SMALL_LETTER_O_WITH_DIAERESIS,
+            'u' . UTF8::COMBINING_DIAERESIS => UTF8::LATIN_SMALL_LETTER_U_WITH_DIAERESIS,
+        ];
     }
 }

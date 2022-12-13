@@ -225,8 +225,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
-        $tree         = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
-        $stream       = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
+        $tree                  = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
+        $stream                = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
