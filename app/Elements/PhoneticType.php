@@ -45,4 +45,18 @@ class PhoneticType extends AbstractElement
     {
         return strtoupper(parent::canonical($value));
     }
+
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        return [
+            ''       => '',
+            'HANGUL' => 'hangul',
+            'KANA'   => 'kana',
+        ];
+    }
 }

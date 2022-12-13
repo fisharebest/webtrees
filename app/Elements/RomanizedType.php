@@ -41,4 +41,20 @@ class RomanizedType extends AbstractElement
     {
         return strtoupper(parent::canonical($value));
     }
+
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        return [
+            ''          => '',
+            'ELOT 743'  => 'ELOT 743',
+            'PINYIN'    => 'pinyin',
+            'ROMAJI'    => 'romaji',
+            'WADEGILES' => 'wadegiles',
+        ];
+    }
 }
