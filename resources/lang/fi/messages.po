@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2022-12-15 11:53+0000\n"
+"Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/fi/>\n"
 "Language: fi\n"
@@ -12150,7 +12150,11 @@ msgstr "Tutkimustehtävät"
 
 #: resources/views/modules/todo/config.phtml:16
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Tutkimus tehtävät ovat erityisiä tapahtumia, jotka lisätään sukupuusi henkilöille ja jotka tunnistavat tarpeen lisätutkimuksiin. Voit käyttää niitä muistutuksena tarkistaa faktat luotettavammista lähteistä, saada asiakirjoja tai valokuvia, ratkaista ristiriitaisia tietoja jne."
+msgstr ""
+"Tutkimustehtävät ovat erityisiä tapahtumia, jotka lisätään sukupuusi "
+"henkilöille ja jotka tunnistavat tarpeen lisätutkimuksiin. Voit käyttää "
+"niitä muistutuksena tarkistaa faktat luotettavammista lähteistä, saada "
+"asiakirjoja tai valokuvia, ratkaista ristiriitaisia tietoja, jne."
 
 #: resources/views/modules/todo/config.phtml:18
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
