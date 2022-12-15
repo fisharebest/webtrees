@@ -633,10 +633,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $list = [];
 
         foreach ($query->get() as $row) {
-            // Some users wrongly set SURN without a surname in NAME.
             $row->n_surn = $row->n_surn === '' ? $row->n_surname : $row->n_surn;
-
-            // Ignore upper/lower case and most diacritics when grouping names.
             $row->n_surn = I18N::strtoupper(I18N::language()->normalize($row->n_surn));
 
             $list[$row->n_surn][$row->n_surname] ??= 0;

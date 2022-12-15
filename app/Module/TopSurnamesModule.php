@@ -30,6 +30,7 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_slice;
 use function array_sum;
 use function count;
 use function extract;
@@ -96,35 +97,40 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $num       = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
-        $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
+        $num        = (int) $this->getBlockSetting($block_id, 'num', self::DEFAULT_NUMBER);
+        $info_style = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
 
         extract($config, EXTR_OVERWRITE);
 
-        // Use the count of base surnames.
-        $top_surnames = DB::table('name')
+        $query = DB::table('name')
             ->where('n_file', '=', $tree->id())
             ->where('n_type', '<>', '_MARNM')
-            ->whereNotIn('n_surn', [Individual::NOMEN_NESCIO, ''])
-            ->groupBy(['n_surn'])
-            ->orderByDesc(new Expression('COUNT(n_surn)'))
-            ->take($num)
-            ->pluck('n_surn');
+            ->where('n_surn', '<>', '')
+            ->where('n_surn', '<>', Individual::NOMEN_NESCIO)
+            ->select([
+                $this->binaryColumn('n_surn', 'n_surn'),
+                $this->binaryColumn('n_surname', 'n_surname'),
+                new Expression('COUNT(*) AS total'),
+            ])
+            ->groupBy([
+                $this->binaryColumn('n_surn'),
+                $this->binaryColumn('n_surname'),
+            ]);
 
-        $all_surnames = [];
+        /** @var array<array<int>> $top_surnames */
+        $top_surnames = [];
 
-        foreach ($top_surnames as $top_surname) {
-            $variants = DB::table('name')
-                ->where('n_file', '=', $tree->id())
-                ->where(new Expression('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
-                ->groupBy([new Expression('n_surname /*! COLLATE utf8_bin */')])
-                ->select([new Expression('n_surname /*! COLLATE utf8_bin */ AS surname'), new Expression('count(*) AS total')])
-                ->pluck('total', 'surname')
-                ->map(static fn (string $n): int => (int) $n)
-                ->all();
+        foreach ($query->get() as $row) {
+            $row->n_surn = $row->n_surn === '' ? $row->n_surname : $row->n_surn;
+            $row->n_surn = I18N::strtoupper(I18N::language()->normalize($row->n_surn));
 
-            $all_surnames[$top_surname] = $variants;
+            $top_surnames[$row->n_surn][$row->n_surname] ??= 0;
+            $top_surnames[$row->n_surn][$row->n_surname] += (int) $row->total;
         }
+
+        uasort($top_surnames, static fn (array $x, array $y): int => array_sum($y) <=> array_sum($x));
+
+        $top_surnames = array_slice($top_surnames, 0, $num, true);
 
         // Find a module providing individual lists.
         $module = $this->module_service
@@ -136,32 +142,30 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                     !$module instanceof FamilyListModule;
             });
 
-        switch ($infoStyle) {
+        switch ($info_style) {
             case 'tagcloud':
-                uksort($all_surnames, I18N::comparator());
+                uksort($top_surnames, I18N::comparator());
                 $content = view('lists/surnames-tag-cloud', [
                     'module'   => $module,
-                    'surnames' => $all_surnames,
+                    'surnames' => $top_surnames,
                     'totals'   => true,
                     'tree'     => $tree,
                 ]);
                 break;
 
             case 'list':
-                uasort($all_surnames, static fn (array $a, array $b): int => array_sum($b) <=> array_sum($a));
                 $content = view('lists/surnames-bullet-list', [
                     'module'   => $module,
-                    'surnames' => $all_surnames,
+                    'surnames' => $top_surnames,
                     'totals'   => true,
                     'tree'     => $tree,
                 ]);
                 break;
 
             case 'array':
-                uasort($all_surnames, static fn (array $a, array $b): int => array_sum($b) <=> array_sum($a));
                 $content = view('lists/surnames-compact-list', [
                     'module'   => $module,
-                    'surnames' => $all_surnames,
+                    'surnames' => $top_surnames,
                     'totals'   => true,
                     'tree'     => $tree,
                 ]);
@@ -169,12 +173,12 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
             case 'table':
             default:
-                uksort($all_surnames, I18N::comparator());
+                uksort($top_surnames, I18N::comparator());
                 $content = view('lists/surnames-table', [
                     'families' => false,
                     'module'   => $module,
                     'order'    => [[1, 'desc']],
-                    'surnames' => $all_surnames,
+                    'surnames' => $top_surnames,
                     'tree'     => $tree,
                 ]);
                 break;
@@ -280,5 +284,29 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             'info_style'  => $info_style,
             'info_styles' => $info_styles,
         ]);
+    }
+
+    /**
+     * This module assumes the database will use binary collation on the name columns.
+     * Until we convert MySQL databases to use utf8_bin, we need to do this at run-time.
+     *
+     * @param string      $column
+     * @param string|null $alias
+     *
+     * @return Expression
+     */
+    private function binaryColumn(string $column, string $alias = null): Expression
+    {
+        if (DB::connection()->getDriverName() === 'mysql') {
+            $sql = 'CAST(' . $column . ' AS binary)';
+        } else {
+            $sql = $column;
+        }
+
+        if ($alias !== null) {
+            $sql .= ' AS ' . $alias;
+        }
+
+        return new Expression($sql);
     }
 }
