@@ -3,7 +3,7 @@
 	<Title><var var="I18N::translate('Burials')" /></Title>
 	<Description><var var="I18N::translate('A report of individuals who were buried in a given place.')" /></Description>
 	<Input name="deathplace" lookup="PLAC" type="text"><var var="I18N::translate('Burial place contains')" /> </Input>
-	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|DEAT:DATE=>I18N::translate('sort by date of death')"><var var="I18N::translate('Sort order')" /></Input>
+	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|DEAT:DATE=>I18N::translate('sort by date of death')|BURI:PLAC=>I18N::translate('Sort by place of Burial')"><var var="I18N::translate('Sort order')" /></Input>
 	<Input name="adlist" type="select" default="none" options="none=>I18N::translate('None')|_MARNM=>I18N::translate('Married name')|HUSB=>I18N::translate('Husband')"><var var="I18N::translate('Names')" /></Input>
 	<Input name="pageSize" type="select" options="A4=>I18N::translateContext('paper size','A4')|A3=>I18N::translateContext('paper size', 'A3')|US-Letter=>I18N::translateContext('paper size','Letter')|US-Tabloid=>I18N::translateContext('paper size','Tabloid')"><var var="I18N::translate('Page size')" /></Input>
 	<!--
