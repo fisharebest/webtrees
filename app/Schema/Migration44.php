@@ -71,25 +71,27 @@ class Migration44 implements MigrationInterface
             });
         }
 
+        // This table should only exist if we are upgrading an old installation, which would have been
+        // created with MySQL.  Therefore we can safely use MySQL-specific SQL.
         if (DB::schema()->hasTable('placelocation')) {
-            DB::table('placelocation')
-                ->where('pl_lati', '=', '')
-                ->orWhere('pl_long', '=', '')
-                ->update([
-                    'pl_lati' => null,
-                    'pl_long' => null,
-                ]);
-
-            // Missing/invalid parents?  Move them to the top level
-            DB::table('placelocation AS pl1')
-                ->leftJoin('placelocation AS pl2', 'pl1.pl_parent_id', '=', 'pl2.pl_id')
-                ->whereNull('pl2.pl_id')
-                ->update([
-                    'pl1.pl_parent_id' => 0,
-                ]);
-
-            // Remove invalid values.
             if (DB::connection()->getDriverName() === 'mysql') {
+                DB::table('placelocation')
+                    ->where('pl_lati', '=', '')
+                    ->orWhere('pl_long', '=', '')
+                    ->update([
+                        'pl_lati' => null,
+                        'pl_long' => null,
+                    ]);
+
+                // Missing/invalid parents?  Move them to the top level
+                DB::table('placelocation AS pl1')
+                    ->leftJoin('placelocation AS pl2', 'pl1.pl_parent_id', '=', 'pl2.pl_id')
+                    ->whereNull('pl2.pl_id')
+                    ->update([
+                        'pl1.pl_parent_id' => 0,
+                    ]);
+
+                // Remove invalid values.
                 DB::table('placelocation')
                     ->where('pl_lati', 'NOT REGEXP', '^[NS][0-9]+[.]?[0-9]*$')
                     ->orWhere('pl_long', 'NOT REGEXP', '^[EW][0-9]+[.]?[0-9]*$')
@@ -97,93 +99,84 @@ class Migration44 implements MigrationInterface
                         'pl_lati' => null,
                         'pl_long' => null,
                     ]);
-            }
 
-            // The existing data may have placenames that only differ after the first 120 chars.
-            // Need to remove the constraint before we truncate/merge them.
-            try {
-                DB::schema()->table('placelocation', static function (Blueprint $table): void {
-                    $table->dropUnique(['pl_parent_id', 'pl_place']);
-                });
-            } catch (PDOException) {
-                // Already deleted, or does not exist;
-            }
-
-            $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
-
-            DB::table('placelocation')
-                ->update([
-                    'pl_place' => new Expression($substring_function . '(pl_place, 1, 120)'),
-                ]);
-
-            // The lack of unique key constraints means that there may be duplicates...
-            while (true) {
-                // Two places with the same name and parent...
-                $row = DB::table('placelocation')
-                    ->select([
-                        new Expression('MIN(pl_id) AS min'),
-                        new Expression('MAX(pl_id) AS max'),
-                    ])
-                    ->groupBy(['pl_parent_id', 'pl_place'])
-                    ->having(new Expression('COUNT(*)'), '>', '1')
-                    ->first();
-
-                if ($row === null) {
-                    break;
+                // The existing data may have placenames that only differ after the first 120 chars.
+                // Need to remove the constraint before we truncate/merge them.
+                try {
+                    DB::schema()->table('placelocation', static function (Blueprint $table): void {
+                        $table->dropUnique(['pl_parent_id', 'pl_place']);
+                    });
+                } catch (PDOException) {
+                    // Already deleted, or does not exist;
                 }
 
-                // ...move children to the first
                 DB::table('placelocation')
-                    ->where('pl_parent_id', '=', $row->max)
-                    ->update(['pl_parent_id' => $row->min]);
+                    ->update([
+                        'pl_place' => new Expression('SUBSTRING(pl_place, 1, 120)'),
+                    ]);
 
-                // ...delete the second
-                DB::table('placelocation')
-                    ->where('pl_id', '=', $row->max)
-                    ->delete();
-            }
+                // The lack of unique key constraints means that there may be duplicates...
+                while (true) {
+                    // Two places with the same name and parent...
+                    $row = DB::table('placelocation')
+                        ->select([
+                            new Expression('MIN(pl_id) AS min'),
+                            new Expression('MAX(pl_id) AS max'),
+                        ])
+                        ->groupBy(['pl_parent_id', 'pl_place'])
+                        ->having(new Expression('COUNT(*)'), '>', '1')
+                        ->first();
 
-            // This is the SQL standard.  It works with Postgres, Sqlite and MySQL 8
-            $select1 = DB::table('placelocation')
-                ->leftJoin('place_location', 'id', '=', 'pl_id')
-                ->whereNull('id')
-                ->orderBy('pl_level')
-                ->orderBy('pl_id')
-                ->select([
-                    'pl_id',
-                    new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
-                    'pl_place',
-                    new Expression("CAST(REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '') AS FLOAT)"),
-                    new Expression("CAST(REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '') AS FLOAT)"),
-                ]);
+                    if ($row === null) {
+                        break;
+                    }
 
-            // This works for MySQL 5.7 and lower, which cannot cast to FLOAT
-            $select2 = DB::table('placelocation')
-                ->leftJoin('place_location', 'id', '=', 'pl_id')
-                ->whereNull('id')
-                ->orderBy('pl_level')
-                ->orderBy('pl_id')
-                ->select([
-                    'pl_id',
-                    new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
-                    'pl_place',
-                    new Expression("REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '')"),
-                    new Expression("REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '')"),
-                ]);
+                    // ...move children to the first
+                    DB::table('placelocation')
+                        ->where('pl_parent_id', '=', $row->max)
+                        ->update(['pl_parent_id' => $row->min]);
 
-            // SQL-server needs to be told to insert values into auto-generated columns.
-            if (DB::connection()->getDriverName() === 'sqlsrv') {
-                $prefix    = DB::connection()->getTablePrefix();
-                $statement = 'SET IDENTITY_INSERT [' . $prefix . 'place_location] ON';
-                DB::connection()->statement($statement);
-            }
+                    // ...delete the second
+                    DB::table('placelocation')
+                        ->where('pl_id', '=', $row->max)
+                        ->delete();
+                }
 
-            try {
-                DB::table('place_location')
-                    ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
-            } catch (PDOException) {
-                DB::table('place_location')
-                    ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
+                // This is the SQL standard.  It works with MySQL 8.0 and higher
+                $select1 = DB::table('placelocation')
+                    ->leftJoin('place_location', 'id', '=', 'pl_id')
+                    ->whereNull('id')
+                    ->orderBy('pl_level')
+                    ->orderBy('pl_id')
+                    ->select([
+                        'pl_id',
+                        new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
+                        'pl_place',
+                        new Expression("CAST(REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '') AS FLOAT)"),
+                        new Expression("CAST(REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '') AS FLOAT)"),
+                    ]);
+
+                // This works for MySQL 5.7 and lower, which cannot cast to FLOAT
+                $select2 = DB::table('placelocation')
+                    ->leftJoin('place_location', 'id', '=', 'pl_id')
+                    ->whereNull('id')
+                    ->orderBy('pl_level')
+                    ->orderBy('pl_id')
+                    ->select([
+                        'pl_id',
+                        new Expression('CASE pl_parent_id WHEN 0 THEN NULL ELSE pl_parent_id END'),
+                        'pl_place',
+                        new Expression("REPLACE(REPLACE(pl_lati, 'S', '-'), 'N', '')"),
+                        new Expression("REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '')"),
+                    ]);
+
+                try {
+                    DB::table('place_location')
+                        ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
+                } catch (PDOException) {
+                    DB::table('place_location')
+                        ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
+                }
             }
 
             DB::schema()->drop('placelocation');
