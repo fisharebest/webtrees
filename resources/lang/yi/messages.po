@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2022-12-15 15:12+0000\n"
+"Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
 "Language: yi\n"
@@ -481,7 +481,7 @@ msgstr ""
 #: resources/views/edit/add-fact-row.phtml:30
 #: resources/views/modules/user-messages/user-messages.phtml:35
 msgid "&lt;select&gt;"
-msgstr "&gt;אויסקלייַבן&lt;"
+msgstr "&lt;אויסקלייַבן&gt;"
 
 #: resources/views/fact-date.phtml:122
 #, php-format
