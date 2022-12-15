@@ -1366,12 +1366,22 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
-			message: "#^Cannot call method embedTags\\(\\) on mixed\\.$#"
+			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
+			count: 7
+			path: app/Module/FamilyTreeStatisticsModule.php
+
+		-
+			message: "#^Cannot access property \\$n_surname on mixed\\.$#"
+			count: 3
+			path: app/Module/FamilyTreeStatisticsModule.php
+
+		-
+			message: "#^Cannot access property \\$total on mixed\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeStatisticsModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			message: "#^Cannot call method embedTags\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeStatisticsModule.php
 
@@ -2241,7 +2251,17 @@ parameters:
 			path: app/Module/TopGivenNamesModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
+			count: 7
+			path: app/Module/TopSurnamesModule.php
+
+		-
+			message: "#^Cannot access property \\$n_surname on mixed\\.$#"
+			count: 3
+			path: app/Module/TopSurnamesModule.php
+
+		-
+			message: "#^Cannot access property \\$total on mixed\\.$#"
 			count: 1
 			path: app/Module/TopSurnamesModule.php
 
