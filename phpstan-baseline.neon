@@ -1236,12 +1236,22 @@ parameters:
 			path: app/Module/FamilyTreeNewsModule.php
 
 		-
-			message: "#^Cannot call method embedTags\\(\\) on mixed\\.$#"
+			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
+			count: 7
+			path: app/Module/FamilyTreeStatisticsModule.php
+
+		-
+			message: "#^Cannot access property \\$n_surname on mixed\\.$#"
+			count: 3
+			path: app/Module/FamilyTreeStatisticsModule.php
+
+		-
+			message: "#^Cannot access property \\$total on mixed\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeStatisticsModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			message: "#^Cannot call method embedTags\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeStatisticsModule.php
 
@@ -2261,12 +2271,17 @@ parameters:
 			path: app/Module/TopPageViewsModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: int, Closure\\(string\\)\\: int given\\.$#"
-			count: 1
+			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
+			count: 7
 			path: app/Module/TopSurnamesModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			message: "#^Cannot access property \\$n_surname on mixed\\.$#"
+			count: 3
+			path: app/Module/TopSurnamesModule.php
+
+		-
+			message: "#^Cannot access property \\$total on mixed\\.$#"
 			count: 1
 			path: app/Module/TopSurnamesModule.php
 
