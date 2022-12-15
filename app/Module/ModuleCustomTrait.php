@@ -110,7 +110,7 @@ trait ModuleCustomTrait
                         return $version;
                     }
                 }
-            } catch (GuzzleException $ex) {
+            } catch (GuzzleException) {
                 // Can't connect to the server?
             }
 

@@ -112,6 +112,6 @@ class AccountUpdate implements RequestHandlerInterface
 
         FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->userName())), 'success');
 
-        return redirect(route(HomePage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return redirect(route(HomePage::class, ['tree' => $tree?->name()]));
     }
 }

@@ -147,7 +147,7 @@ class RegisterAction implements RequestHandlerInterface
         $verify_url = route(VerifyEmail::class, [
             'username' => $user->userName(),
             'token'    => $token,
-            'tree'     => $tree instanceof Tree ? $tree->name() : null,
+            'tree'     => $tree?->name(),
         ]);
 
         // Send a verification message to the user.
@@ -244,8 +244,14 @@ class RegisterAction implements RequestHandlerInterface
      * @return void
      * @throws Exception
      */
-    private function doValidateRegistration(ServerRequestInterface $request, string $username, string $email, string $realname, string $comments, string $password): void
-    {
+    private function doValidateRegistration(
+        ServerRequestInterface $request,
+        string $username,
+        string $email,
+        string $realname,
+        string $comments,
+        #[\SensitiveParameter] string $password
+    ): void {
         // All fields are required
         if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {
             throw new Exception(I18N::translate('All fields must be completed.'));

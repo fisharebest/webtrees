@@ -205,8 +205,8 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
         }
 
         $news_id = Validator::queryParams($request)->integer('news_id', 0);
-        $subject = Validator::queryParams($request)->string('subject');
-        $body    = Validator::queryParams($request)->string('body');
+        $subject = Validator::parsedBody($request)->string('subject');
+        $body    = Validator::parsedBody($request)->string('body');
 
         $subject = $this->html_service->sanitize($subject);
         $body    = $this->html_service->sanitize($body);

@@ -309,10 +309,10 @@ class HousekeepingService
     {
         try {
             $filesystem->delete($path);
-        } catch (FilesystemException | UnableToDeleteFile $ex) {
+        } catch (FilesystemException | UnableToDeleteFile) {
             try {
                 $filesystem->deleteDirectory($path);
-            } catch (FilesystemException | UnableToDeleteDirectory $ex) {
+            } catch (FilesystemException | UnableToDeleteDirectory) {
                 return false;
             }
         }

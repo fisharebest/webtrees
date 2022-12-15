@@ -35,7 +35,8 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
     private MediaFileService $media_file_service;
 
     /**
-     * @param SearchService $search_service
+     * @param MediaFileService $media_file_service
+     * @param SearchService    $search_service
      */
     public function __construct(MediaFileService $media_file_service, SearchService $search_service)
     {
@@ -59,7 +60,7 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
                 ->filter(fn (string $path): bool => stripos($path, $query) !== false)
                 ->sort(I18N::comparator())
                 ->values();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             return new Collection();
         }
     }

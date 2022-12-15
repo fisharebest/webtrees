@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/webtrees/ka/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -319,9 +320,9 @@ msgstr[0] ""
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
 #: resources/views/emails/message-user-text.phtml:18
-#, fuzzy, php-format
+#, php-format
 msgid "%s sent you the following message."
-msgstr "ახალი შეტყობინება %s"
+msgstr "ახალი შეტყობინება %s."
 
 #: app/Statistics/Repository/UserRepository.php:96
 #, php-format
@@ -1864,7 +1865,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 #. I18N: Description of the “Interactive tree” module
@@ -2054,7 +2055,7 @@ msgstr "დარწმუნებული ხართ რომ გინდ
 #: resources/views/modules/user-messages/user-messages.phtml:53
 #: resources/views/modules/user-messages/user-messages.phtml:135
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "ნამდვილად გსურთ ამ ისტორიის წაშლა?"
+msgstr "ნამდვილად გსურთ ამ ისტორიის წაშლა."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:259
 #: resources/views/admin/clean-data.phtml:42
@@ -5861,7 +5862,7 @@ msgstr "ოჯახის გენეალოგიური ხის ექ
 msgid "Export preferences"
 msgstr ""
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "დავმალოთ გარდაცვლილი პერსონები რომლებიც"
@@ -6585,9 +6586,9 @@ msgid "For example, we can quickly find individuals that do not have a death eve
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:147
-#, fuzzy, php-format
+#, php-format
 msgid "For help with genealogy questions contact %s."
-msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s"
+msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s."
 
 #: resources/views/admin/control-panel.phtml:208
 #: resources/views/admin/tags.phtml:1041
@@ -6602,14 +6603,14 @@ msgid "For more information, see %s."
 msgstr ""
 
 #: app/Module/ContactsFooterModule.php:160
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s"
+msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s."
 
 #: app/Module/ContactsFooterModule.php:134
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s"
+msgstr "ბაზის მუშაობის შესახებ თუ გაქვთ კითხვები დაუკავშირდით %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
@@ -7739,7 +7740,7 @@ msgstr "ამ თვეში, წარსულში…"
 msgid "In this year…"
 msgstr "ამ წელს, თქვენს ისტორიებში…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
@@ -11186,7 +11187,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr ""
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
 
 #: resources/views/help/place.phtml:10
@@ -14484,7 +14485,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr ""
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65

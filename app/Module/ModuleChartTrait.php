@@ -48,7 +48,7 @@ trait ModuleChartTrait
      *
      * @return Menu|null
      */
-    public function chartBoxMenu(/** @scrutinizer ignore-unused */ Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): ?Menu
     {
         return null;
     }
@@ -60,7 +60,7 @@ trait ModuleChartTrait
      *
      * @return Menu
      */
-    public function chartMenu(/** @scrutinizer ignore-unused */ Individual $individual): Menu
+    public function chartMenu(Individual $individual): Menu
     {
         return new Menu(
             $this->title(),
@@ -87,7 +87,7 @@ trait ModuleChartTrait
      *
      * @return string
      */
-    public function chartTitle(/** @scrutinizer ignore-unused */ Individual $individual): string
+    public function chartTitle(Individual $individual): string
     {
         return $this->title();
     }

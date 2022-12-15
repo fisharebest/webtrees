@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -223,7 +222,7 @@ class MediaFileService
                     $tree->mediaFilesystem()->writeStream($folder . $file, $uploaded_file->getStream()->detach());
 
                     return $folder . $file;
-                } catch (RuntimeException | InvalidArgumentException $ex) {
+                } catch (RuntimeException | InvalidArgumentException) {
                     FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
 
                     return '';
@@ -294,7 +293,7 @@ class MediaFileService
                 ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
                 ->map(fn (StorageAttributes $attributes): string => $attributes->path())
                 ->toArray();
-        } catch (FilesystemException $ex) {
+        } catch (FilesystemException) {
             $files = [];
         }
 

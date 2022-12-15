@@ -100,7 +100,7 @@ trait ModuleMapLinkTrait
      *
      * @return string
      */
-    protected function mapUrl(/** @scrutinizer ignore-unused */ Fact $fact): string
+    protected function mapUrl(Fact $fact): string
     {
         return 'https://example.com';
     }

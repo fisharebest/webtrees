@@ -32,13 +32,10 @@ use function e;
 use function implode;
 use function in_array;
 use function preg_match;
-use function preg_match_all;
 use function preg_replace;
 use function str_contains;
 use function str_ends_with;
 use function usort;
-
-use const PREG_SET_ORDER;
 
 /**
  * A GEDCOM fact or event object.
@@ -320,7 +317,8 @@ class Fact
         $access_level = $access_level ?? Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit restriction notice?
-        $restriction = $this->attribute('RESN');
+        $element     = new RestrictionNotice('');
+        $restriction = $element->canonical($this->attribute('RESN'));
 
         if (str_ends_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
             return Auth::PRIV_NONE >= $access_level;

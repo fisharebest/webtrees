@@ -87,7 +87,7 @@ class LoginAction implements RequestHandlerInterface
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
             return redirect(route(LoginPage::class, [
-                'tree'     => $tree instanceof Tree ? $tree->name() : null,
+                'tree'     => $tree?->name(),
                 'username' => $username,
                 'url'      => $url,
             ]));
@@ -103,7 +103,7 @@ class LoginAction implements RequestHandlerInterface
      * @return void
      * @throws Exception
      */
-    private function doLogin(string $username, string $password): void
+    private function doLogin(string $username, #[\SensitiveParameter] string $password): void
     {
         if ($_COOKIE === []) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);

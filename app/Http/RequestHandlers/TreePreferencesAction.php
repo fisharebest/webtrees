@@ -152,7 +152,7 @@ class TreePreferencesAction implements RequestHandlerInterface
                     ->update(['setting_value' => $gedcom]);
 
                 $url = route(ManageTrees::class, ['tree' => $gedcom]);
-            } catch (PDOException $ex) {
+            } catch (PDOException) {
                 // Probably a duplicate name.
             }
         }

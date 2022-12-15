@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Tree;
 
 use function e;
 use function in_array;
-use function trim;
 use function view;
 
 /**

@@ -80,7 +80,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
 
         try {
             $file_exists = $data_filesystem->fileExists($thumbnail);
-        } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+        } catch (FilesystemException | UnableToRetrieveMetadata) {
             $file_exists = false;
         }
 
@@ -99,7 +99,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
             case 'delete':
                 try {
                     $data_filesystem->delete($thumbnail);
-                } catch (FilesystemException | UnableToDeleteFile $ex) {
+                } catch (FilesystemException | UnableToDeleteFile) {
                     // Cannot delete the file.  Leave it there.
                 }
                 break;
@@ -107,7 +107,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
             case 'add':
                 try {
                     $mime_type = $data_filesystem->mimeType($thumbnail) ?: Mime::DEFAULT_TYPE;
-                } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+                } catch (FilesystemException | UnableToRetrieveMetadata) {
                     $mime_type = Mime::DEFAULT_TYPE;
                 }
 
@@ -138,7 +138,7 @@ class ImportThumbnailsAction implements RequestHandlerInterface
                         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
                         $this->pending_changes_service->acceptRecord($media_object);
                     }
-                } catch (FilesystemException | UnableToReadFile | UnableToMoveFile $ex) {
+                } catch (FilesystemException | UnableToReadFile | UnableToMoveFile) {
                     // Cannot import the file?
                 }
 

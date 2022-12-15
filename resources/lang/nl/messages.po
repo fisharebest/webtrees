@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-09-05 19:50+0000\n"
+"PO-Revision-Date: 2022-12-12 07:56+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -750,7 +751,7 @@ msgstr "Een link naar de webtrees homepage."
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
 msgid "A list of branches of a family."
-msgstr "Een lijst met met familietakken."
+msgstr "Een lijst met familietakken."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:93
@@ -983,7 +984,12 @@ msgstr "Een rapport van de vitale records in een bepaalde periode of plaats."
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Een rol is een verzameling van toegangsrechten om gegevens te bekijken, instellingen te wijzigen, enz.. Toegangsrechten worden toegekend aan rollen, rollen worden verleend aan gebruikers. Elke stamboom kan andere rechten toekennen aan elke rol en gebruikers kunnen een andere rol hebben in elke stamboom."
+msgstr ""
+"Een rol is een verzameling van toegangsrechten om gegevens te bekijken, "
+"instellingen te wijzigen, enz. Toegangsrechten worden toegekend aan rollen, "
+"en rollen worden verleend aan gebruikers. Elke stamboom kan andere rechten "
+"toekennen aan elke rol en gebruikers kunnen een andere rol hebben in elke "
+"stamboom."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -1881,7 +1887,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Een zandloper diagram met de voorouders en afstammelingen van een persoon."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "Een persoon kan meerdere ouders hebben. Bijvoorbeeld biologische en adoptie ouders."
 
 #. I18N: Description of the “Interactive tree” module
@@ -5711,7 +5717,7 @@ msgstr "Voeg een optionele notitie toe aan deze favoriet"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Volledig scherm weergeven"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5851,7 +5857,7 @@ msgstr "Uitgesloten van onderwerping"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Volledig scherm afsluiten"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5875,7 +5881,7 @@ msgstr "Exporteer alle stambomen naar GEDCOM-bestanden…"
 msgid "Export preferences"
 msgstr "Opties voor exporteren"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Breid privacy uit met overleden personen"
@@ -6119,7 +6125,7 @@ msgstr "Gezinstelling"
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "Gezinsfeit"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
@@ -6829,7 +6835,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:935
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -7753,7 +7759,7 @@ msgstr "In deze maand…"
 msgid "In this year…"
 msgstr "In dit jaar…"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "In webtrees versie 1 kon u aangepaste miniatuurafbeeldingen toevoegen aan het mediaobject door bestanden aan te maken in de “thumbs”-mappen."
@@ -10290,7 +10296,7 @@ msgstr "Geen feiten voor dit gezin."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Er is geen bestand ontvangen."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -11201,8 +11207,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Plaatsnamen zijn vaak te lang om op diagrammen, lijsten etc. te tonen. Ze kunnen worden afgekort door alleen de eerste delen van de naam te tonen, zoals <i>plaats, gemeente</i>, of het laatste gedeelte er van zoals <i>provincie. land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Plaatsnamen wijzigen in de tijd.  In genealogie is het gebruikelijk om de huidige naam voor een plaats of land te gebruiken. De historische naam kan aan de bron, notities, enz. worden toegevoegd."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "Plaatsnamen wijzigen in de tijd. In genealogie is het gebruikelijk om de huidige naam voor een plaats of land te gebruiken. De historische naam kan aan de bron, notities, enz. worden toegevoegd."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -14493,8 +14499,10 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "De nieuwe gebruiker zal worden gevraagd om zijn/haar e-mailadres te bevestigen voordat het account wordt aangemaakt."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"De volgende versie van de GEDCOM-standaard zal nieuwe labels toevoegen en "
+"oude verwijderen. U kunt sommige van de nieuwe labels nu al gebruiken."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
@@ -16346,7 +16354,7 @@ msgstr "Website"
 #: app/Http/RequestHandlers/SiteLogsPage.php:96
 #: resources/views/admin/control-panel.phtml:241
 msgid "Website logs"
-msgstr "Website logs"
+msgstr "Website-logboekbestanden"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:66
 #: resources/views/admin/control-panel.phtml:219
@@ -17084,12 +17092,12 @@ msgstr "sluiten"
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr "clouds"
+msgstr "wolken"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr "colors"
+msgstr "kleuren"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:272
@@ -19491,7 +19499,7 @@ msgstr "leden"
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr "minimal"
+msgstr "minimaal"
 
 #: app/Elements/RoleInEvent.php:81 app/Services/RelationshipService.php:349
 msgid "mother"
@@ -21746,7 +21754,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Als het aantal malen dat een achternaam in de genealogie voorkomt lager is dan de drempelwaarde, verschijnt de naam niet op de lijst. De achternaam kan dan hier handmatig worden toegevoegd. Als er meer namen worden opgegeven, moeten ze met een komma worden gescheiden.<b>Achternamen zijn hoofdlettergevoelig.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Als de miniatuur afbeelding hetzelfde is als de originele afbeelding, is deze niet langer nodig en kun je deze verwijderen. Als het een aangepaste afbeelding betreft, zal je deze aan het media object moeten toevoegen."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

@@ -212,7 +212,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setPassword(string $password): User
+    public function setPassword(#[\SensitiveParameter] string $password): User
     {
         DB::table('user')
             ->where('user_id', '=', $this->user_id)
@@ -231,7 +231,7 @@ class User implements UserInterface
      *
      * @return bool
      */
-    public function checkPassword(string $password): bool
+    public function checkPassword(#[\SensitiveParameter] string $password): bool
     {
         $password_hash = DB::table('user')
             ->where('user_id', '=', $this->id())

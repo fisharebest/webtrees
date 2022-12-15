@@ -113,7 +113,7 @@ class Tree
     private array $individual_fact_privacy;
 
     /** @var array<string> Cached copy of the wt_gedcom_setting table. */
-    private $preferences = [];
+    private array $preferences = [];
 
     /** @var array<array<string>> Cached copy of the wt_user_gedcom_setting table. */
     private array $user_preferences = [];

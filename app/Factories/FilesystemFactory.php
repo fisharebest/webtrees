@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\Local\LocalFilesystemAdapter;
@@ -45,8 +44,7 @@ class FilesystemFactory implements FilesystemFactoryInterface
      */
     public function data(string $path_prefix = ''): FilesystemOperator
     {
-        $folder  = Site::getPreference('INDEX_DIRECTORY');
-        $adapter = new LocalFilesystemAdapter($folder);
+        $adapter = new LocalFilesystemAdapter(Site::getPreference('INDEX_DIRECTORY'));
 
         if ($path_prefix !== '') {
             $adapter = new PathPrefixedAdapter($adapter, $path_prefix);
@@ -66,20 +64,6 @@ class FilesystemFactory implements FilesystemFactoryInterface
     }
 
     /**
-     * Create a filesystem for a tree's media folder.
-     *
-     * @param Tree $tree
-     *
-     * @return FilesystemOperator
-     *
-     * @deprecated - Will be removed in webtrees 2.2.  Use mediaFilesystem() directly.
-     */
-    public function media(Tree $tree): FilesystemOperator
-    {
-        return $tree->mediaFilesystem();
-    }
-
-    /**
      * Create a filesystem for the application's root folder.
      *
      * @param string $path_prefix
@@ -88,8 +72,7 @@ class FilesystemFactory implements FilesystemFactoryInterface
      */
     public function root(string $path_prefix = ''): FilesystemOperator
     {
-        $folder     = self::ROOT_DIR;
-        $adapter    = new LocalFilesystemAdapter($folder);
+        $adapter = new LocalFilesystemAdapter(self::ROOT_DIR);
 
         if ($path_prefix !== '') {
             $adapter = new PathPrefixedAdapter($adapter, $path_prefix);

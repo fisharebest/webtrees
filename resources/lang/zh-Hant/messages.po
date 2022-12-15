@@ -2013,7 +2013,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "同時顯示個人祖先和後代的類似沙漏形狀的圖表。"
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
 
 # I18N: Description of the “Interactive tree” module
@@ -6286,7 +6286,7 @@ msgid "Export preferences"
 msgstr "導出選項"
 
 # I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "擴展隱私到死人"
@@ -8317,7 +8317,7 @@ msgid "In this year…"
 msgstr "在這一年…"
 
 # I18N: "thumbs" is fixed text. Do not change it.
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "在webtrees版本1中，您可以在“thumbs”文件夾中為多媒體文件添加自定義縮略圖。"
@@ -12064,7 +12064,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "地名往往太長,為適應圖、列表等，它們可能被縮寫展示只是第一幾部分的名稱,如<i>village, county</i>,或最後幾部分,如<i>region, country</i>。"
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "地名可能會隨著時間改變。 在家譜中，習慣上對於城鎮或國家則使用目前名稱。 歷史名稱可以顯示在來源或註釋資料內。"
 
 #: resources/views/help/place.phtml:10
@@ -15637,7 +15637,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "新用戶在創建賬戶之前，要驗証他們的電子郵件地址。"
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -22664,7 +22664,7 @@ msgstr "…"
 #~ msgid "Historical facts"
 #~ msgstr "歷史事實"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "如果縮略圖圖像與原始圖像相同，則不再需要它，您應該將其刪除。如果是自定義縮略圖，則應將其添加到媒體對像中。"
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

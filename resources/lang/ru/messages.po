@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-08-15 09:37+0000\n"
-"Last-Translator: Александр Бойко <aurbo@bk.ru>\n"
-"Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
+"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1904,7 +1906,7 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Песочный график предков и потомков персоны."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr "У человека может быть несколько родителей. Например, родные и приемные."
 
 #. I18N: Description of the “Interactive tree” module
@@ -3248,7 +3250,7 @@ msgstr "CKEditor™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:83
 msgid "CSS and JS"
-msgstr "CSS и JS "
+msgstr "CSS и JS"
 
 #: resources/views/admin/trees.phtml:74
 #: resources/views/lists/datatables-attributes.phtml:33
@@ -5900,7 +5902,7 @@ msgstr "Экспорт всех семейных деревьев в файл GE
 msgid "Export preferences"
 msgstr "Параметры экспорта"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Скрывать мертвых людей которые"
@@ -7779,7 +7781,7 @@ msgstr "В этом месяце, в прошлом …"
 msgid "In this year…"
 msgstr "В этом году, в прошлом …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "В Webtrees версии 1, Вы можете добавить пользовательские миниатюры к медиаобъектам путем создания файлов в папках \"превью\"."
@@ -8993,7 +8995,7 @@ msgstr ""
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Многие программы генеалогии создают файлы GEDCOM с пользовательскими тегами, и Webtrees понимает большинство из них. Когда будут найдены неизвестные теги,  этот параметр позволит Вам выбрать, следует ли игнорировать их или вывести предупреждающее сообщение."
+msgstr "Многие программы генеалогии создают файлы GEDCOM с пользовательскими тегами, и Webtrees понимает большинство из них. Когда будут найдены неизвестные теги, этот параметр позволит Вам выбрать, следует ли игнорировать их или вывести предупреждающее сообщение."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:90
@@ -11229,7 +11231,7 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Топонимы часто слишком длинное и не помещается на графиках, в списках и т.д. Они могут быть сокращены, показывая только первые несколько частей названия, такие как <i>деревня, графство</i> или последние части, такие как, <i>регион, страны</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr "Названия мест могут со временем меняться. В генеалогии принято использовать нынешнее название города или страны. Историческое название может быть указано в источниках, примечаниях и т. д."
 
 #: resources/views/help/place.phtml:10
@@ -14274,7 +14276,11 @@ msgstr "Меню графиков."
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Корзина вырезок позволяет извлекать вырезки (выдержки) из этого генеалогического дерева и соединить их в один файл для загрузки и последующего импорта в Вашу собственную генеалогически программу. Загружаемый файл записывается в формате GEDCOM.<br><ul><li>Как сделать вырезку?<br> Это очень просто. Каждый раз, когда Вы видите имя (персон, семьи или источники), на которое можно нажать, перейдите на страницу с подробностями для этого имени. Там Вы увидите ссылки <b>Добавить в корзину вырезок</b>. Когда Вы перейдете по этой ссылке, Вам будет предложено несколько вариантов для загрузки.</li <li>Как загружать?<br>Когда в корзине будут все нужные Вам вырезки, Вы можете скачать их просто нажав на ссылку \"Скачать\". Затем следуйте инструкциям и ссылкам.</li></ul>"
+msgstr ""
+"Корзина вырезок позволяет извлекать вырезки (выдержки) из этого "
+"генеалогического дерева и соединить их в один файл для загрузки и "
+"последующего импорта в Вашу собственную генеалогически программу. "
+"Загружаемый файл записывается в формате GEDCOM."
 
 #: resources/views/admin/trees-preferences.phtml:382
 msgid "The date and time of the last update"
@@ -14522,7 +14528,7 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Новому пользователю будет предложено подтвердить адрес электронной почты, прежде чем учетная запись будет создана."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
@@ -21743,8 +21749,8 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Если определенная фамилия встречается некоторое количество раз, т.е. ниже порогового значения, то оно не появится в списке. Поэтому оно может быть добавлено здесь вручную. Если вводится более одной фамилии, то они должны быть разделены запятыми. <b>Фамилии чувствительны к регистру.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
-#~ msgstr "Если уменьшенное изображение является таким же, как исходное изображение, он больше не нужен, и Вы должны удалить его.  Если это пользовательское изображение, Вы должны добавить его в медиаобъект."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
+#~ msgstr "Если уменьшенное изображение является таким же, как исходное изображение, он больше не нужен, и Вы должны удалить его. Если это пользовательское изображение, Вы должны добавить его в медиаобъект."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
 #~ msgstr "Если посетители не смогут видеть семейное дерево, они не смогут зарегистрировать свою учетную запись. Вам придется добавлять их учетную запись вручную."

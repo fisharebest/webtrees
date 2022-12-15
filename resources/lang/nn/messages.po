@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-09-05 12:36+0000\n"
-"Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
-"Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
+"PO-Revision-Date: 2022-12-11 15:27+0000\n"
+"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -265,7 +266,7 @@ msgstr[1] "%s slektstre"
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s barnebarn"
-msgstr[1] "%s barnebarn"
+msgstr[1] "%s barneborn"
 
 #: app/Module/LifespansChartModule.php:266
 #: resources/views/admin/trees-unconnected.phtml:42
@@ -745,7 +746,7 @@ msgstr "Ei lenke til kontaktpersonar for nettstaden."
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr "Ei lenke til webtrees  si startside."
+msgstr "Ei lenke til webtrees si startside."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
@@ -1881,8 +1882,8 @@ msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Eit timeglasdiagram over ein person sine anar og etterkomarar."
 
 #: resources/views/edit/reorder-families.phtml:75
-msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr "Ein person kan ha fleire sett foreldre.  Tildømes biologisk og adoptert."
+msgid "An individual can have more than one set of parents. For example, birth and adopted."
+msgstr "Ein person kan ha fleire sett foreldre. Tildømes biologisk og adoptert."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -1904,7 +1905,7 @@ msgstr "Ei oppdatering er tilgjengeleg."
 #: app/Module/AncestorsChartModule.php:98
 #: resources/xml/reports/ahnentafel_report.xml:4
 msgid "Ancestors"
-msgstr "Forfedre"
+msgstr "Anar"
 
 #: app/Gedcom.php:582
 msgid "Ancestors interest"
@@ -1912,13 +1913,13 @@ msgstr "Interesse for ane"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
-msgstr "Forfedrar til "
+msgstr "Anar til "
 
 #. I18N: %s is an individual’s name
 #: app/Module/AncestorsChartModule.php:144
 #, php-format
 msgid "Ancestors of %s"
-msgstr "Forfedrar til %s"
+msgstr "Anar til %s"
 
 #: app/Gedcom.php:580
 msgid "Ancestral file number"
@@ -5711,7 +5712,7 @@ msgstr "Kort skildring av denne favoritten (valfritt)"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Opne i full skjerm"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5851,7 +5852,7 @@ msgstr "Utelat frå denne innsendinga"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Gå ut av full skjerm"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5875,7 +5876,7 @@ msgstr "Eksporterer alle slektstre til GEDCOM-filer…"
 msgid "Export preferences"
 msgstr "Val for eksport"
 
-#. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
+#. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
 msgstr "Utvid personvernsinnstillingar til avlidne personar"
@@ -6119,7 +6120,7 @@ msgstr "Folketeljing for familie"
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "Familiefakta"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
@@ -6376,19 +6377,19 @@ msgstr "Kvinner"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Felt"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Feltnamn"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Feltverdi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
@@ -6472,7 +6473,7 @@ msgstr "Finn andre slektskap"
 #: app/Module/RelationshipsChartModule.php:457
 #: resources/views/modules/relationships-chart/page.phtml:55
 msgid "Find relationships via ancestors"
-msgstr "Finn slektskap via aner"
+msgstr "Finn slektskap via anar"
 
 #: app/Module/RelationshipsChartModule.php:734
 #: resources/views/modules/relationships-chart/page.phtml:67
@@ -6829,7 +6830,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:935
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -6954,7 +6955,7 @@ msgstr "Generasjonar"
 
 #: app/Gedcom.php:875
 msgid "Generations of ancestors"
-msgstr "Generasjonar av forfedre"
+msgstr "Generasjonar av anar"
 
 #: app/Gedcom.php:880
 msgid "Generations of descendants"
@@ -7173,7 +7174,7 @@ msgstr "Guatemala"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:102
 msgid "Guatemala City, Guatemala"
-msgstr "Guatemala, Guatemala"
+msgstr "Guatemala City, Guatemala"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:103
@@ -7753,7 +7754,7 @@ msgstr "I denne månad …"
 msgid "In this year…"
 msgstr "I dette år …"
 
-#. I18N: "thumbs" is fixed text.  Do not change it.
+#. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr "I webtrees versjon 1 kunne du legge til eigendefinerte miniatyrbileter til medieobjekt ved å opprette eigne filer i mappa “thumbs”."
@@ -10290,7 +10291,7 @@ msgstr "Ingen faktopplysningar for denne familien."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Ingen fil vart motteken."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -11134,7 +11135,7 @@ msgstr "Fotografi"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Fotografi"
 
 #: app/CustomTags/Gedcom7.php:75 app/CustomTags/Gedcom7.php:77
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:87
@@ -11201,8 +11202,8 @@ msgid "Place names are frequently too long to fit on charts, lists, etc. They ca
 msgstr "Stadnamn er ofte for lange til å passe i skjema, lister osb. Desse kan kortast ved kun å vise dei første ledda i namnet, som til dømes <i>by, kommune</i>, eller siste ledd av namnet, som til dømes <i>fylke, land</i>."
 
 #: resources/views/help/place.phtml:14
-msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Stadnamn kan endre seg over tid.  I genealogi er det tradisjon for å bruke noverande namn for by eller kommune. Historiske namn kan synast i kjelder, notat el."
+msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
+msgstr "Stadnamn kan endre seg over tid. I genealogi er det tradisjon for å bruke noverande namn for by eller kommune. Historiske namn kan synast i kjelder, notat el."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -13031,7 +13032,7 @@ msgstr "Syn ein aldersmarkør"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Syn born til forfedrar"
+msgstr "Syn born til anar"
 
 #: resources/views/lists/families-table.phtml:140
 msgid "Show couples where either partner married more than once."
@@ -14102,7 +14103,7 @@ msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Mal"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14493,8 +14494,10 @@ msgid "The new user will be asked to confirm their email address before the acco
 msgstr "Nye brukarar vil verte bedne om å stadfeste e-postadresse før brukarkonto vert oppretta."
 
 #: resources/views/admin/tags.phtml:938
-msgid "The next version of the GEDCOM standard will add new tags and remove old ones.  You can use some of the new tags now."
+msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Neste versjon av GEDCOM-standard vil legge til nye kodar, og fjerne gamle. "
+"Du kan bruke enkelte av dei nye kodane no."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
@@ -15113,7 +15116,11 @@ msgstr "Dette alternativet syner namnet (men ingen andre detaljar) til private p
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Denne sida let deg gjere endringar direkte i GEDCOM-fila, utan å gå gjennom dei vanlege redigeringsskjema. Dette er eit avansert alternativ, og du bør ikkje nytte dette med mindre du er kjend med GEDCOM-formatet er fortruleg med det du gjer. Om du gjer feil her, kan kan verte særs vanskelg å rette oppatt feilen."
+msgstr ""
+"Denne sida let deg gjere endringar direkte i GEDCOM-fila, utan å gå gjennom "
+"dei vanlege redigeringsskjema. Dette er eit avansert alternativ, og du bør "
+"ikkje nytte dette med mindre du er kjend med GEDCOM-formatet. Om du gjer "
+"feil her, kan det verte særs vanskelg å rette oppatt feilen."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -16578,7 +16585,7 @@ msgstr "Du kan nummerere postane i dette slektstreet på ny."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Du kan setje tilgjenge for ein spesifikk post, fakta, eller hending ved å legge til ein restriksjon.  Om ein post, fakta, eller hending ikkje har ein restriksjon, vil følgjande standard restriksjon nyttast."
+msgstr "Du kan setje tilgjenge for ein spesifikk post, fakta, eller hending ved å legge til ein restriksjon. Om ein post, fakta, eller hending ikkje har ein restriksjon, vil følgjande standard restriksjon nyttast."
 
 #: resources/views/admin/tags.phtml:38
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
@@ -21697,7 +21704,7 @@ msgstr "…"
 #~ msgstr "Google Street View™"
 
 #~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
-#~ msgstr "Google tillet berre eit fåtal anonyme kartspørringar per dag.  Om du treng meir enn dette, må du ha ein Google-konto og ein API-kode."
+#~ msgstr "Google tillet berre eit fåtal anonyme kartspørringar per dag. Om du treng meir enn dette, må du ha ein Google-konto og ein API-kode."
 
 #~ msgid "Google™ maps preferences"
 #~ msgstr "Innstillingar for Google™ maps"
@@ -21744,7 +21751,7 @@ msgstr "…"
 #~ msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
 #~ msgstr "Dersom eit særskilt etternamn ikkje førekjem nok gonger til å verte synt i lista over dei mest nytta etternamna, kan det her leggjast til manuelt. Om det vert lagt inn fleire namn, må desse skiljast med komma. <b>Det skiljast mellom store og små bokstavar.</b>"
 
-#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it.  If it is a custom image, you should add it to the media object."
+#~ msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it. If it is a custom image, you should add it to the media object."
 #~ msgstr "Om miniatyrbiletet er det same som det originale biletet, er det ikkje lenger behov for å behalde dette, og du bør slette det. Om det er eit tilpassa miniatyrbilete, må du legge det til i medieobjektet."
 
 #~ msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."

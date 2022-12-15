@@ -30,7 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function e;
 use function redirect;
 use function round;
-use function route;
 
 /**
  * Controller for maintaining geographic data.

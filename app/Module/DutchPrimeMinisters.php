@@ -127,7 +127,8 @@ class DutchPrimeMinisters extends AbstractModule implements ModuleHistoricEvents
                     "1 EVEN Jan Pieter (Jan Peter) Balkenende\n2 TYPE Minister-President\n2 DATE FROM 22 FEB 2007 TO 26 OCT 2010\n2 kabinet-Balkenende IV",
                     "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 26 OCT 2010 TO 05 NOV 2012\n2 kabinet-Rutte I",
                     "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 05 NOV 2012 TO 26 OCT 2017\n2 kabinet-Rutte II",
-                    "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 26 OCT 2017\n2 kabinet-Rutte III",
+                    "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 26 OCT 2017 TO 10 JAN 2022\n2 kabinet-Rutte III",
+                    "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 10 JAN 2022\n2 kabinet-Rutte IV",
                 ]);
 
             default:
