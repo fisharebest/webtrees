@@ -34,34 +34,6 @@ class Migration38 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // This table was previously created by the googlemap module in 1.7.9.
-        // These migrations are now part of the core code.
-
-        if (!DB::schema()->hasTable('placelocation')) {
-            DB::schema()->create('placelocation', static function (Blueprint $table): void {
-                $table->integer('pl_id')->primary();
-                $table->integer('pl_parent_id');
-                $table->integer('pl_level');
-                $table->string('pl_place', 255);
-                $table->string('pl_long', 30)->nullable();
-                $table->string('pl_lati', 30)->nullable();
-                $table->integer('pl_zoom')->nullable();
-                $table->string('pl_icon', 255)->nullable();
-
-                $table->index('pl_place');
-                $table->unique(['pl_parent_id', 'pl_place']);
-            });
-        }
-
-        if (DB::schema()->hasColumn('placelocation', 'pl_media')) {
-            DB::schema()->table('placelocation', static function (Blueprint $table): void {
-                $table->dropColumn('pl_media');
-                $table->dropColumn('sv_long');
-                $table->dropColumn('sv_lati');
-                $table->dropColumn('sv_bearing');
-                $table->dropColumn('sv_elevation');
-                $table->dropColumn('sv_zoom');
-            });
-        }
+        // This module previously created the table placelocation - which is now deleted in migration 44.
     }
 }
