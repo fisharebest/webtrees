@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-15 15:12+0000\n"
+"PO-Revision-Date: 2022-12-15 16:09+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -44,13 +44,13 @@ msgstr " אין "
 #: app/Services/RelationshipService.php:2178
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s מאָל אַוועקגענומען אַרויפֿשטיַיג"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2183
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s מאָל אַוועקגענומען אַראָפּגאַנג"
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -67,7 +67,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:243
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KBזענעןדאַונלאָודיד אין %2$s סעקונדעס."
 
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
@@ -87,8 +87,8 @@ msgstr "%1$s האָט נישט אַ לינק צוריק צו %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s טעקע איז יקסטראַקטיד אין %2$s סעקונדעס."
+msgstr[1] "%1$s טעקע זענען יקסטראַקטיד אין %2$s סעקונדעס."
 
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
@@ -137,7 +137,7 @@ msgstr "%1$s × %2$s בילדצעלן"
 #: resources/views/modules/media-list/page.phtml:143
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:483 app/Module/StatisticsChartModule.php:855
@@ -203,8 +203,8 @@ msgstr "%s און זייער קינדסקינדער"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s אַנאָנימע באַנוצערס איינגעשריבן באַניצער"
+msgstr[1] "%s אַנאָנימע באַנוצערס איינגעשריבן באַניצערס"
 
 #: resources/views/family-page-children.phtml:21
 #: resources/views/modules/ancestors-chart/tree.phtml:44
@@ -232,14 +232,14 @@ msgstr[1] "%s טעג"
 #: app/Module/FamilyTreeNewsModule.php:175 app/Module/UserJournalModule.php:177
 #, php-format
 msgid "%s does not exist."
-msgstr ""
+msgstr "%s עקזיסטירט נישט."
 
 #: resources/views/calendar-list.phtml:25
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s משפּחה"
+msgstr[1] "%s משפחות"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:107
@@ -310,71 +310,71 @@ msgstr[1] "%s צעטאלעך געווען דערהייַנטיקט."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s געשען צו פֿילע מאָל."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
 #, php-format
 msgid "%s once removed ascending"
-msgstr ""
+msgstr "%s אַיין מאָל אַוועקגענומען אַרויפֿשטיַיג"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2156
 #, php-format
 msgid "%s once removed descending"
-msgstr ""
+msgstr "%s אַיין מאָל אַוועקגענומען אַראָפּגאַנג"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ריפּאַזאַטאָרי איז דערהייַנטיקט."
+msgstr[1] "%s ריפּאַזאַטאָריז זענען דערהייַנטיקט."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
 #: resources/views/emails/message-user-text.phtml:18
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s געשיקט איר די פאלגענדע אָנזאָג."
 
 #: app/Statistics/Repository/UserRepository.php:96
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s איינגעשריבן באַניצער"
+msgstr[1] "%s איינגעשריבן ניצערס"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:83
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s מקור איז דערהייַנטיקט."
+msgstr[1] "%s קוואלן זענען דערהייַנטיקט."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2169
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s דריי מאָל אַוועקגענומען אַרויף"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2174
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s דריי מאָל אַוועקגענומען אַראָפּגיין"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2160
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s צוויי מאָל אַוועקגענומען אַרויף"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2165
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s צוויי מאָל אַוועקגענומען אַראָפּגיין"
 
 #: app/Elements/AgeAtEvent.php:102
 #, php-format
@@ -435,47 +435,47 @@ msgstr ""
 #: app/Module/StatisticsChartModule.php:860
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "+%s"
 
 #: app/Module/ClippingsCartModule.php:548
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, אירע אָבֿות און זייערע משפּחות"
 
 #: app/Module/ClippingsCartModule.php:545
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, אירע עלטערן און זייערע געשוויסטער"
 
 #: app/Module/ClippingsCartModule.php:546
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, אירע מאַן און קינדער"
 
 #: app/Module/ClippingsCartModule.php:549
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, איר מאַן און קינדסקינדער"
 
 #: app/Module/ClippingsCartModule.php:557
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, זיינע עלטערן און זייערע משפּחות"
 
 #: app/Module/ClippingsCartModule.php:554
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, זיינע עלטערן און געשוויסטער"
 
 #: app/Module/ClippingsCartModule.php:555
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, זײנע װײבער און קינדער"
 
 #: app/Module/ClippingsCartModule.php:558
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, זײנע װײבער און קינדסקינדער"
 
 #: resources/views/admin/data-fix-select.phtml:33
 #: resources/views/edit/add-fact-row.phtml:30
@@ -509,7 +509,7 @@ msgstr "(%s אַלט)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s אַלט)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:162
@@ -518,7 +518,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s אַלט)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:29
@@ -653,41 +653,46 @@ msgstr ""
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>באַמערקונג: דורך ענדיקן און פאָרלייגן דעם פאָרעם, איר שטימען:</"
+"p><ul><li>צו באַשיצן די פּריוואַטקייט פון לעבעדיק מענטשן ליסטעד אויף אונדזער "
+"פּלאַץ;</li><li>און אין די טעקסט קעסטל אונטן, צו דערקלערן צו וועמען איר זענט "
+"שייַכות, אָדער צו צושטעלן אונדז אינפֿאָרמאַציע וועגן עמעצער וואס זאָל זיין "
+"ליסטעד אויף אונדזער וועבזייטל.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
 msgid "A URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:116
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "א טשאַרט ווייַזנדיק באַציונגען צווישן צוויי מענטשן."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:91
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "א טשאַרט פון די אבות און קינדסקינדער פון אַ יחיד, ווי אַ משפּחה בוך."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:88
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "א טשאַרט פון די אבות און קינדסקינדער פון אַ יחיד, ווי אַ בוים."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:115
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "א טשאַרט פון די אבות און קינדסקינדער פון אַ יחיד, ווי אַ בוים."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:109
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "א טשאַרט פון די אבות פון אַ יחיד."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:105
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "א טשאַרט פון אַ יחיד ס קינדסקינדער."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:114
@@ -697,6 +702,10 @@ msgstr ""
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"א קינד קען האָבן מער ווי איין גאַנג פון עלטערן. די שייכות צווישן דעם קינד "
+"און די עלטערן קענען זיין בייאַלאַדזשיקאַל, לעגאַל אָדער באזירט אויף היגע "
+"קולטור און טראַדיציע. אויב קיין יחוס איז ספּעסיפיעד, אַ בייאַלאַדזשיקאַל "
+"שייכות וועט זיין אנגענומען."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:69
