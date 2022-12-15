@@ -31,11 +31,6 @@ parameters:
 			path: app/Console/ComposerScripts.php
 
 		-
-			message: "#^Cannot call method calendarUrl\\(\\) on Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\|null\\.$#"
-			count: 1
-			path: app/Date.php
-
-		-
 			message: "#^Cannot call method getPreference\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Date.php
@@ -47,7 +42,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$tree of method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:calendarUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
-			count: 4
+			count: 5
 			path: app/Date.php
 
 		-
