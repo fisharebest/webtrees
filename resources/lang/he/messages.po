@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-08-10 12:48+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"PO-Revision-Date: 2022-12-15 15:12+0000\n"
+"Last-Translator: melizaa <meliza@amitys.com>\n"
+"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -5711,7 +5712,7 @@ msgstr "הכנס הערת בחירה על המועדף הזה"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "היכנס למסך מלא"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5851,7 +5852,7 @@ msgstr "מחוץ להגשה הזו"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "צא ממסך מלא"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6119,7 +6120,7 @@ msgstr "מפקד משפחה"
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "עובדה משפחתית"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
@@ -6376,19 +6377,19 @@ msgstr "נקבות"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "שדה"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "שם שדה"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "ערך שדה"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
@@ -6829,7 +6830,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:935
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -10290,7 +10291,7 @@ msgstr "אין עובדות למשפחה זו."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "שום קובץ לא התקבל."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -11134,7 +11135,7 @@ msgstr "תצלום"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "תַצלוּם"
 
 #: app/CustomTags/Gedcom7.php:75 app/CustomTags/Gedcom7.php:77
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:87
@@ -14102,7 +14103,7 @@ msgstr "טגוסיגאלפה, הונדורס"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "תבנית"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14495,6 +14496,8 @@ msgstr "המשתמש החדש יתבקש לאשר את כתובת הדוא״ל �
 #: resources/views/admin/tags.phtml:938
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"הגרסה הבאה של תקן GEDCOM תוסיף תגים חדשים ותסיר ישנים. ניתן כעת להשתמש בחלק "
+"מהתגים החדשים."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
