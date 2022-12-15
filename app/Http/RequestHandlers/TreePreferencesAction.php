@@ -57,7 +57,7 @@ class TreePreferencesAction implements RequestHandlerInterface
         $calendar_format_1           = Validator::parsedBody($request)->string('CALENDAR_FORMAT1');
         $calendar_format             = implode('_and_', array_unique([$calendar_format_0, $calendar_format_1]));
         $chart_box_tags              = Validator::parsedBody($request)->array('CHART_BOX_TAGS');
-        $contact_user_id             = Validator::parsedBody($request)->string('CONTACT_USER_ID');
+        $contact_user_id             = Validator::parsedBody($request)->integer('CONTACT_USER_ID', 0);
         $expand_notes                = Validator::parsedBody($request)->boolean('EXPAND_NOTES');
         $expand_sources              = Validator::parsedBody($request)->boolean('EXPAND_SOURCES');
         $fam_facts_quick             = Validator::parsedBody($request)->array('FAM_FACTS_QUICK');
@@ -88,8 +88,11 @@ class TreePreferencesAction implements RequestHandlerInterface
         $surname_list_style          = Validator::parsedBody($request)->string('SURNAME_LIST_STYLE');
         $surname_tradition           = Validator::parsedBody($request)->string('SURNAME_TRADITION');
         $use_silhouette              = Validator::parsedBody($request)->boolean('USE_SILHOUETTE');
-        $webmaster_user_id           = Validator::parsedBody($request)->integer('WEBMASTER_USER_ID');
+        $webmaster_user_id           = Validator::parsedBody($request)->integer('WEBMASTER_USER_ID', 0);
         $title                       = Validator::parsedBody($request)->string('title');
+
+        $contact_user_id   = $contact_user_id === 0 ? '' : (string) $contact_user_id;
+        $webmaster_user_id = $webmaster_user_id === 0 ? '' : (string) $webmaster_user_id;
 
         $tree->setPreference('CALENDAR_FORMAT', $calendar_format);
         $tree->setPreference('CHART_BOX_TAGS', implode(',', $chart_box_tags));
