@@ -709,13 +709,15 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     ->on('n_file', '=', 'i_file');
             })
             ->where('i_file', '=', $tree->id())
-            ->where('n_surn', '=', $surname)
             ->select(['i_id AS xref', 'i_gedcom AS gedcom', 'n_givn', 'n_surn']);
 
         $this->whereFamily($fams, $query);
         $this->whereMarriedName($marnm, $query);
 
-        if ($surnames !== []) {
+        if ($surnames === []) {
+            // SURN, with no surname
+            $query->where('n_surn', '=', $surname);
+        } else {
             $query->whereIn($this->binaryColumn('n_surname'), $surnames);
         }
 
@@ -727,9 +729,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         $individuals = new Collection();
 
-        $rows = $query->get();
-
-        foreach ($rows as $row) {
+        foreach ($query->get() as $row) {
             $individual = Registry::individualFactory()->make($row->xref, $tree, $row->gedcom);
             assert($individual instanceof Individual);
 
