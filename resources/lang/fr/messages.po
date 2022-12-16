@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2022-12-16 22:38+0000\n"
+"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/fr/>\n"
 "Language: fr\n"
@@ -5712,7 +5712,7 @@ msgstr "Saisir un commentaire pour ce favori"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Activer le mode plein écran"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5852,7 +5852,7 @@ msgstr "Exclure de cette requête"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Quitter le mode plein écran"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6120,7 +6120,7 @@ msgstr "Recensement familial"
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "Fait familial"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
@@ -6830,7 +6830,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:935
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -10291,7 +10291,7 @@ msgstr "Aucun événement pour cette famille."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Aucun fichier n’a été reçu."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -14498,6 +14498,9 @@ msgstr "Le nouvel utilisateur sera invité à confirmer son adresse de courriel 
 #: resources/views/admin/tags.phtml:938
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"La prochaine version de la norme GEDCOM ajoutera de nouvelles balises, et en "
+"supprimera d'autres. Certaines de ces nouvelles balises peuvent d'ores et "
+"déjà être utilisées."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
