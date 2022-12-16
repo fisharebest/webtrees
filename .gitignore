@@ -18,8 +18,3 @@
 /tests/clover.xml
 /tests/coverage
 /vendor/
-/.vs
-/webtrees.phpproj
-/webtrees.phpproj.user
-/webtrees.sln
-/.gitignore

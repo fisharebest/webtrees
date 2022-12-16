@@ -303,7 +303,6 @@ class ServerCheckService
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_odbc'),
-                    $this->checkPhpExtension('pdo_sqlsrv'),
                 ]);
 
             default:
