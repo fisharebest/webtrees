@@ -105,8 +105,7 @@ class Migration44 implements MigrationInterface
                 DB::schema()->table('placelocation', static function (Blueprint $table): void {
                     $table->dropUnique(['pl_parent_id', 'pl_place']);
                 });
-            }
-            catch (PDOException) {
+            } catch (PDOException) {
                 // Already deleted, or does not exist;
             }
 
@@ -172,23 +171,21 @@ class Migration44 implements MigrationInterface
                     new Expression("REPLACE(REPLACE(pl_long, 'W', '-'), 'E', '')"),
                 ]);
 
-            if (!(empty($select1->get()->all())))             {
-                // SQL-server needs to be told to insert values into auto-generated columns.
-                if (DB::connection()->getDriverName() === 'sqlsrv') {
-                    $prefix    = DB::connection()->getTablePrefix();
-                    $statement = 'SET IDENTITY_INSERT [' . $prefix . 'place_location] ON';
-                    DB::connection()->statement($statement);
-                }
-
-                try {
-                    DB::table('place_location')
-                        ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
-                }
-                catch (PDOException) {
-                    DB::table('place_location')
-                        ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
-                }
+            // SQL-server needs to be told to insert values into auto-generated columns.
+            if (DB::connection()->getDriverName() === 'sqlsrv') {
+                $prefix    = DB::connection()->getTablePrefix();
+                $statement = 'SET IDENTITY_INSERT [' . $prefix . 'place_location] ON';
+                DB::connection()->statement($statement);
             }
+
+            try {
+                DB::table('place_location')
+                    ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select1);
+            } catch (PDOException) {
+                DB::table('place_location')
+                    ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
+            }
+
             DB::schema()->drop('placelocation');
         }
 
