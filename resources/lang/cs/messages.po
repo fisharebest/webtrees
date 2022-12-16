@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2022-12-16 22:38+0000\n"
+"Last-Translator: jprause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/cs/>\n"
 "Language: cs\n"
@@ -5734,7 +5734,7 @@ msgstr "Zadejte volitelnou poznámku o tomto oblíbeném"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Přejít na celou obrazovku"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5874,7 +5874,7 @@ msgstr "Vyňatý z tohoto podání"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Opustit celou obrazovku"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6142,7 +6142,7 @@ msgstr "Sčítání rodiny"
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "Rodinný fakt"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
@@ -6399,19 +6399,19 @@ msgstr "Ženy"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Pole"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Název pole"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Hodnota pole"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
@@ -6852,7 +6852,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:935
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -10315,7 +10315,7 @@ msgstr "K této rodině nejsou fakta."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Nebyl přijat žádný soubor."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -11159,7 +11159,7 @@ msgstr "Fotografie"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Fotografie"
 
 #: app/CustomTags/Gedcom7.php:75 app/CustomTags/Gedcom7.php:77
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:87
@@ -14127,7 +14127,7 @@ msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Šablona"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14522,6 +14522,8 @@ msgstr "Nový uživatel bude požádán, aby před vytvořením jeho účtu potv
 #: resources/views/admin/tags.phtml:938
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Příští verse standardu GEDCOM přidá nové tagy a odstraní staré. Některé nové "
+"tagy už můžete použít."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
