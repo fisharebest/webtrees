@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-16 16:15+0000\n"
+"PO-Revision-Date: 2022-12-19 10:29+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nn/>\n"
@@ -12019,7 +12019,7 @@ msgstr "Forhold: %s"
 #: resources/views/lists/individuals-table.phtml:283
 #: resources/views/modules/relationships-chart/config.phtml:34
 msgid "Relationships"
-msgstr "Slektskapsband"
+msgstr "Slektskap"
 
 #. I18N: %s are individual’s names
 #: app/Module/RelationshipsChartModule.php:251
