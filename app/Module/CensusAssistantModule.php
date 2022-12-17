@@ -84,8 +84,8 @@ class CensusAssistantModule extends AbstractModule
     public function postCensusIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree         = Validator::attributes($request)->tree();
-        $indi_xref    = Validator::parsedBody($request)->isXref()->string('xref');
-        $head_xref    = Validator::parsedBody($request)->isXref()->string('head');
+        $indi_xref    = Validator::parsedBody($request)->isXref()->string('xref', '');
+        $head_xref    = Validator::parsedBody($request)->isXref()->string('head', '');
         $individual   = Registry::individualFactory()->make($indi_xref, $tree);
         $head         = Registry::individualFactory()->make($head_xref, $tree);
         $census_class = Validator::parsedBody($request)->string('census');

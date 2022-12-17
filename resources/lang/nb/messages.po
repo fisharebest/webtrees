@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-12 19:58+0000\n"
+"PO-Revision-Date: 2022-12-16 22:38+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
@@ -11958,13 +11958,13 @@ msgstr "Forhold: %s"
 #: resources/views/lists/individuals-table.phtml:215
 #: resources/views/modules/relationships-chart/config.phtml:35
 msgid "Relationships"
-msgstr "Slektskapsforhold"
+msgstr "Slektskap"
 
 #. I18N: %s are individual’s names
 #: app/Module/RelationshipsChartModule.php:250
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "Slektskapsforhold mellom %1$s og %2$s"
+msgstr "Slektskap mellom %1$s og %2$s"
 
 #: app/CustomTags/GedcomL.php:252 app/CustomTags/GedcomL.php:268
 #: app/Gedcom.php:429 app/Gedcom.php:561 app/Gedcom.php:729
@@ -13177,7 +13177,7 @@ msgstr "Vis stedhierarki"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:142
 msgid "Show private relationships"
-msgstr "Vis private slektskapsforhold"
+msgstr "Vis private slektskap"
 
 #: resources/views/modules/todo/config.phtml:23
 msgid "Show research tasks that are assigned to other users"
