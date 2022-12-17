@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2022-12-19 10:29+0000\n"
+"Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
 "Language: da\n"
@@ -5919,7 +5919,7 @@ msgstr "Fakta for familieposter"
 
 #: admin_trees_config.php:1613
 msgid "Facts for individual records"
-msgstr "Fakta for Individ-poster"
+msgstr "Fakta for individ-poster"
 
 #: admin_trees_config.php:1794
 msgid "Facts for new families"
@@ -8521,7 +8521,7 @@ msgstr "Bestyrer"
 
 #: admin.php:679
 msgid "Managers"
-msgstr "Bestyrerer"
+msgstr "Bestyrere"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
@@ -8551,7 +8551,10 @@ msgstr "Manuskript"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1593
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Mange slægtsforskningsprogrammer opretter GEDCOM-filer med brugerdefinerede koder, og webtrees forstår de fleste af dem. Denne indstillinger bestemmer om ukendte koder skal ignoreres, eller der skal vises en fejlmeddelelse."
+msgstr ""
+"Mange slægtsforskningsprogrammer opretter GEDCOM-filer med brugerdefinerede "
+"koder, og webtrees forstår de fleste af dem. Denne indstilling bestemmer, om "
+"ukendte koder skal ignoreres, eller der skal vises en fejlmeddelelse."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:433
@@ -8967,7 +8970,7 @@ msgstr "Mediemapper"
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
 #: app/Controller/FamilyController.php:160 app/GedcomTag.php:650
 msgid "Media object"
-msgstr "Medie objekt"
+msgstr "Medieobjekt"
 
 #: admin.php:839 admin_trees_duplicates.php:144
 #: app/Functions/FunctionsPrintLists.php:1044
@@ -8983,7 +8986,7 @@ msgstr "Medieobjekter"
 
 #: medialist.php:233
 msgid "Media objects found"
-msgstr "Mdiefiler fundet"
+msgstr "Mediefiler fundet"
 
 #: medialist.php:129
 msgid "Media objects per page"
@@ -9914,7 +9917,7 @@ msgstr "Ingen Tempel-Living tilordning"
 
 #: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr "Ingen opgraderins-information er tilgængelig."
+msgstr "Ingen opgraderings-information er tilgængelig."
 
 #: app/Stats.php:1739
 msgid "Nobody at all"
