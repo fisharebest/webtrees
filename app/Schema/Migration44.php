@@ -178,7 +178,6 @@ class Migration44 implements MigrationInterface
                         ->insertUsing(['id', 'parent_id', 'place', 'latitude', 'longitude'], $select2);
                 }
             }
-
             DB::schema()->drop('placelocation');
         }
 
