@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-16 16:15+0000\n"
+"PO-Revision-Date: 2022-12-19 10:29+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -651,7 +651,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:33
 msgid "A URL"
-msgstr "URL"
+msgstr "אַ URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:110
@@ -700,11 +700,14 @@ msgstr ""
 #: app/Module/FixDuplicateLinks.php:70
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"אַ פּראָסט טעות איז צו האָבן טאָפּלקייט פֿאַרבינדונגען צו דער זעלביקער רעקאָ"
+"רד, פֿאַר בייַשפּיל ליסטינג די זעלבע קינד מער ווי אַמאָל אין אַ משפּחה "
+"רעקאָרד."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "א פאָכער טשאַרט פון אַ יחיד ס עלטערן."
 
 #: resources/views/admin/map-import-form.phtml:27
 #: resources/views/admin/trees-export.phtml:26
@@ -735,17 +738,17 @@ msgstr "א גרוס אָנזאָג פֿאַר זייַטל געסט."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "א לינק צו די פּלאַץ קאָנטאַקטן."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "א לינק צו די וועבטריס היים בלאַט."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:115
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "אַ רשימה פון משפחות."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
@@ -766,7 +769,7 @@ msgstr "א רשימה פון אָפט געפרעגט פראגעס און ענט�
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:111
 msgid "A list of individuals."
-msgstr ""
+msgstr "אַ רשימה פון מידיאַ סובסטאַנצן."
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
@@ -791,12 +794,12 @@ msgstr ""
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr ""
+msgstr "אַ רשימה פון בשותפדיקע באַַמערקונגען."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
 msgid "A list of sources."
-msgstr ""
+msgstr "אַ רשימה פון קוואַלן."
 
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:84
@@ -841,7 +844,7 @@ msgstr "א רשימה פון די בלעטער וואס האָבן שוין וו
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "אַ רשימה פון יוזערז און וויזאַטערז וואָס זענען דערווייַל אָנליין."
 
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -1257,7 +1260,7 @@ msgstr "לייג אַ קינד צו שאַפֿן אַ איין-עלטערן מש
 #: resources/views/family-page-children.phtml:45
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr ""
+msgstr "לייג אַ טאָכטער"
 
 #: resources/views/edit/raw-gedcom-record.phtml:53
 msgid "Add a fact"
@@ -1273,7 +1276,7 @@ msgstr "שטעל אַ נייַ פאָטער"
 #: resources/views/modules/favorites/favorites.phtml:44
 #: resources/views/modules/favorites/favorites.phtml:54
 msgid "Add a favorite"
-msgstr ""
+msgstr "לייג אַ באַליבסטע"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:59
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:56
@@ -1349,7 +1352,7 @@ msgstr ""
 #: resources/views/family-page-children.phtml:41
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a son"
-msgstr ""
+msgstr "לייג אַ זון"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:180
 #: resources/views/modules/sources_tab/tab.phtml:53
@@ -1579,7 +1582,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1118 app/Factories/ElementFactory.php:1121
 #: app/GedcomTag.php:439
 msgid "Adoption"
-msgstr ""
+msgstr "אַדאָפּטירונג"
 
 #: app/Module/IndividualFactsTabModule.php:343
 msgid "Adoption of a brother"
@@ -1658,7 +1661,7 @@ msgstr ""
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:1164 app/GedcomTag.php:569
 msgid "Adult christening"
-msgstr ""
+msgstr "דערוואַקסן קריסטן"
 
 #: resources/views/admin/trees-preferences.phtml:866
 msgid "Advanced fact preferences"
@@ -1739,7 +1742,7 @@ msgstr "יאָרן אין יאָר פון ערשטער חתונה"
 #: resources/views/modules/statistics-chart/custom.phtml:39
 #: resources/views/statistics/families/marriage-age.phtml:12
 msgid "Age in year of marriage"
-msgstr ""
+msgstr "יאָרן אין יאָר פון  חתונה"
 
 #: resources/views/modules/statistics-chart/custom.phtml:136
 #: resources/views/modules/statistics-chart/custom.phtml:139
@@ -2026,7 +2029,7 @@ msgstr "יאָרטאָג קאלענדאר"
 #. I18N: gedcom tag ANUL
 #: app/Factories/ElementFactory.php:989 app/GedcomTag.php:464
 msgid "Annulment"
-msgstr ""
+msgstr "אַנולירונג"
 
 #: resources/views/modules/faq/edit.phtml:42
 msgid "Answer"
@@ -2940,7 +2943,7 @@ msgstr "געבורטן"
 #: app/Statistics/Google/ChartBirth.php:129
 #: resources/views/statistics/individuals/total-events.phtml:31
 msgid "Births by century"
-msgstr ""
+msgstr "געבורטס פּער הונדערט"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:66 app/GedcomCode/GedcomCodeTemp.php:264
@@ -3268,7 +3271,7 @@ msgstr "קבורה אָרט כּולל"
 #: resources/xml/reports/cemetery_report.xml:3
 #: resources/xml/reports/cemetery_report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "קבורה"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
@@ -3388,11 +3391,11 @@ msgstr ""
 #. I18N: gedcom tag CAST
 #: app/Factories/ElementFactory.php:1153 app/GedcomTag.php:530
 msgid "Caste"
-msgstr ""
+msgstr "קאַסט"
 
 #: resources/views/modules/statistics-chart/custom.phtml:79
 msgid "Categories"
-msgstr ""
+msgstr "קאַטעגאָריעס"
 
 #: app/Factories/ElementFactory.php:601 app/Factories/ElementFactory.php:643
 msgid "Category"
@@ -3479,7 +3482,7 @@ msgstr "הויפט אפריקאנער רעפובליק"
 #: resources/views/lists/individuals-table.phtml:127
 #: resources/views/lists/individuals-table.phtml:142
 msgid "Century"
-msgstr ""
+msgstr "יאָרהונדערט"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:63
@@ -3575,7 +3578,7 @@ msgstr "סאָרט טשאַרט"
 #: resources/views/admin/modules.phtml:96
 #: resources/views/admin/trees-preferences.phtml:405
 msgid "Charts"
-msgstr ""
+msgstr "סקיצן"
 
 #: app/Http/RequestHandlers/CheckTree.php:261
 #: resources/views/admin/trees.phtml:181
@@ -3796,7 +3799,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "ציטירן דעטאַלן"
 
 #. I18N: gedcom tag CITN
 #: app/Factories/ElementFactory.php:857 app/GedcomTag.php:572
