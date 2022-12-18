@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-16 16:15+0000\n"
+"PO-Revision-Date: 2022-12-19 10:29+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -772,6 +772,9 @@ msgstr ""
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"אַ פּראָסט טעות איז צו האָבן טאָפּלקייט פֿאַרבינדונגען צו דער זעלביקער רעקאָ"
+"רד, פֿאַר בייַשפּיל ליסטינג די זעלבע קינד מער ווי אַמאָל אין אַ משפּחה "
+"רעקאָרד."
 
 #: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -780,7 +783,7 @@ msgstr ""
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "א פאָכער טשאַרט פון אַ יחיד ס עלטערן."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
@@ -856,7 +859,7 @@ msgstr "א רשימה פון די בלעטער וואס האָבן שוין וו
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "אַ רשימה פון יוזערז און וויזאַטערז וואָס זענען דערווייַל אָנליין."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -1296,7 +1299,7 @@ msgstr "שטעל אַ נייַ פאָטער"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr ""
+msgstr "לייג אַ באַליבסטע"
 
 #: app/Module/GoogleMapsModule.php:4016
 msgid "Add a geographic location"
@@ -1598,7 +1601,7 @@ msgstr "אנגענומען דורך מוטער"
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
 msgid "Adoption"
-msgstr ""
+msgstr "אַדאָפּטירונג"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a brother"
@@ -1671,7 +1674,7 @@ msgstr ""
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr ""
+msgstr "דערוואַקסן קריסטן"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -1747,7 +1750,7 @@ msgstr "יאָרן אין יאָר פון ערשטער חתונה"
 #: app/Functions/FunctionsPrintLists.php:972 statistics.php:260
 #: statistics.php:545 statisticsplot.php:1232
 msgid "Age in year of marriage"
-msgstr ""
+msgstr "יאָרן אין יאָר פון  חתונה"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
@@ -2039,7 +2042,7 @@ msgstr "יאָרטאָג קאלענדאר"
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
 msgid "Annulment"
-msgstr ""
+msgstr "אַנולירונג"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:186
 msgid "Answer"
@@ -2890,7 +2893,7 @@ msgstr "געבורטן"
 
 #: app/Stats.php:1953 statistics.php:121
 msgid "Births by century"
-msgstr ""
+msgstr "געבורטס פּער הונדערט"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
@@ -3366,11 +3369,11 @@ msgstr ""
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:238
 msgid "Caste"
-msgstr ""
+msgstr "קאַסט"
 
 #: statistics.php:703
 msgid "Categories"
-msgstr ""
+msgstr "קאַטעגאָריעס"
 
 #. I18N: gedcom tag CAUS
 #: app/GedcomTag.php:242
@@ -3534,7 +3537,7 @@ msgstr "סאָרט טשאַרט"
 #: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
 #: app/Theme/AdministrationTheme.php:195
 msgid "Charts"
-msgstr ""
+msgstr "סקיצן"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:327
@@ -3765,7 +3768,7 @@ msgstr "מוהל"
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "ציטירן דעטאַלן"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
