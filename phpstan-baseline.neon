@@ -26,6 +26,11 @@ parameters:
 			path: app/Elements/DateValue.php
 
 		-
+			message: "#^Access to undefined constant Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:EXTENSION_TO_FORM\\.$#"
+			count: 1
+			path: app/Elements/MultimediaFormat_BASE_60757.php
+
+		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Elements/PlaceHierarchy.php
@@ -611,21 +616,6 @@ parameters:
 			path: app/Http/RequestHandlers/ControlPanel.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
-			count: 6
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSubmitterAction.php
-
-		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
@@ -678,11 +668,6 @@ parameters:
 		-
 			message: "#^If condition is always true\\.$#"
 			count: 1
-			path: app/Http/RequestHandlers/EditMediaFileAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
-			count: 2
 			path: app/Http/RequestHandlers/EditMediaFileAction.php
 
 		-

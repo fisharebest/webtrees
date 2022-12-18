@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Validator;
@@ -54,19 +55,24 @@ class CreateMediaObjectFromFile implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $file   = Validator::parsedBody($request)->string('file');
-        $type   = Validator::parsedBody($request)->string('type');
-        $title  = Validator::parsedBody($request)->string('title');
-        $note   = Validator::parsedBody($request)->string('note');
+        $tree  = Validator::attributes($request)->tree();
+        $file  = Validator::parsedBody($request)->string('file');
+        $type  = Validator::parsedBody($request)->string('type');
+        $title = Validator::parsedBody($request)->string('title');
+        $note  = Validator::parsedBody($request)->string('note');
+
+        $file  = Registry::elementFactory()->make('OBJE:NOTE')->canonical($file);
+        $note  = Registry::elementFactory()->make('OBJE:NOTE')->canonical($note);
+        $type  = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->canonical($type);
+        $title = Registry::elementFactory()->make('OBJE:FILE:TITL')->canonical($title);
 
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
 
-        $media_object = $tree->createRecord($gedcom);
+        $record = $tree->createRecord($gedcom);
 
         // Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
-        $this->pending_changes_service->acceptRecord($media_object);
+        $this->pending_changes_service->acceptRecord($record);
 
-        return redirect($media_object->url());
+        return redirect($record->url());
     }
 }

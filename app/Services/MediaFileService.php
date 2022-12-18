@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -64,11 +65,6 @@ use const UPLOAD_ERR_OK;
  */
 class MediaFileService
 {
-    public const EXTENSION_TO_FORM = [
-        'JPEG' => 'JPG',
-        'TIFF' => 'TIF',
-    ];
-
     private const IGNORE_FOLDERS = [
         // Old versions of webtrees
         'thumbs',
@@ -250,26 +246,26 @@ class MediaFileService
             $format = '';
         } else {
             $format = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
-            $format = self::EXTENSION_TO_FORM[$format] ?? $format;
+            $format = Registry::elementFactory()->make('OBJE:FILE:FORM')->canonical($format);
         }
 
-        if ($format !== '' && strlen($format) <= 4) {
-            $gedcom .= "\n2 FORM " . $format;
+        if ($format !== '') {
+            $gedcom .= "\n2 FORM " . strtr($format, ["\n" => "\n3 CONT "]);
         } elseif ($type !== '') {
             $gedcom .= "\n2 FORM";
         }
 
         if ($type !== '') {
-            $gedcom .= "\n3 TYPE " . $type;
+            $gedcom .= "\n3 TYPE " . strtr($type, ["\n" => "\n4 CONT "]);
         }
 
         if ($title !== '') {
-            $gedcom .= "\n2 TITL " . $title;
+            $gedcom .= "\n2 TITL " . strtr($title, ["\n" => "\n3 CONT "]);
         }
 
         if ($note !== '') {
             // Convert HTML line endings to GEDCOM continuations
-            $gedcom .= "\n1 NOTE " . strtr($note, ["\r\n" => "\n2 CONT "]);
+            $gedcom .= "\n1 NOTE " . strtr($note, ["\n" => "\n2 CONT "]);
         }
 
         return $gedcom;

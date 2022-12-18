@@ -39,20 +39,19 @@ class CreateNoteAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $note        = Validator::parsedBody($request)->string('note');
-        $restriction = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
+        $note        = Validator::parsedBody($request)->isNotEmpty()->string('note');
+        $restriction = Validator::parsedBody($request)->string('restriction');
 
-        // Convert HTML line endings to GEDCOM continuations
-        $note = strtr($note, ["\r\n" => "\n1 CONT "]);
+        $note        = Registry::elementFactory()->make('NOTE:CONT')->canonical($note);
+        $restriction = Registry::elementFactory()->make('NOTE:RESN')->canonical($restriction);
 
-        $gedcom = '0 @@ NOTE ' . $note;
+        $gedcom = '0 @@ NOTE ' . strtr($note, ["\n" => "\n1 CONT "]);
 
         if ($restriction !== '') {
-            $gedcom .= "\n1 RESN " . $restriction;
+            $gedcom .= "\n1 RESN " . strtr($restriction, ["\n" => "\n2 CONT "]);
         }
 
         $record = $tree->createRecord($gedcom);
-        $record = Registry::noteFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // value and text are for autocomplete
         // html is for interactive modals
