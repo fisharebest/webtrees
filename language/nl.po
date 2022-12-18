@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-12 07:56+0000\n"
+"PO-Revision-Date: 2022-12-19 10:29+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -3341,7 +3341,7 @@ msgstr "Calgary, Alberta, Canada"
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
 msgid "Call number"
-msgstr "Inventarisnummer"
+msgstr "Oproepnummer"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6793
@@ -4394,15 +4394,15 @@ msgstr "Databaseverbinding"
 
 #: setup.php:373 setup.php:375
 msgid "Database name"
-msgstr "Naam van de database"
+msgstr "Databasenaam"
 
 #: setup.php:292
 msgid "Database password"
-msgstr "Database wachtwoord"
+msgstr "Databasewachtwoord"
 
 #: setup.php:288
 msgid "Database user account"
-msgstr "Database gebruikersaccount"
+msgstr "Databasegebruikersaccount"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:348 edit_changes.php:184 help_text.php:136
@@ -4417,7 +4417,7 @@ msgstr "Datum"
 
 #: app/Module/RelativesTabModule.php:315
 msgid "Date differences"
-msgstr "Datum verschillen"
+msgstr "Datumverschillen"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
@@ -4464,7 +4464,7 @@ msgstr "Geboortedatum"
 
 #: app/GedcomTag.php:216
 msgid "Date of blessing"
-msgstr "Datum zegening"
+msgstr "Zegeningsdatum"
 
 #: app/GedcomTag.php:1090
 msgid "Date of brit milah"
@@ -4541,15 +4541,15 @@ msgstr "Naturalisatiedatum"
 
 #: app/GedcomTag.php:668
 msgid "Date of ordination"
-msgstr "Datum van wijding"
+msgstr "Wijdingsdatum"
 
 #: app/GedcomTag.php:734
 msgid "Date of residence"
-msgstr "Datum bewoning"
+msgstr "Bewoningsdatum"
 
 #: help_text.php:159
 msgid "Date period"
-msgstr "Datum periode"
+msgstr "Datumperiode"
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
@@ -4557,7 +4557,7 @@ msgstr "Datumperiodes worden gebruikt om aan te geven dat een feit, zoals een be
 
 #: help_text.php:148 statistics.php:723
 msgid "Date range"
-msgstr "Datum bereik"
+msgstr "Datumbereik"
 
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
@@ -4565,11 +4565,11 @@ msgstr "Datumbereiken worden gebruikt om aan te geven dat een gebeurtenis, zoals
 
 #: admin_users.php:850
 msgid "Date registered"
-msgstr "Datum geregistreerd"
+msgstr "Registratiedatum"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "Datum verzonden"
+msgstr "Verzenddatum"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:709
@@ -9058,7 +9058,7 @@ msgstr "Mediaobjecten per pagina"
 #. I18N: gedcom tag _TYPE
 #: app/GedcomTag.php:596 app/GedcomTag.php:1747
 msgid "Media type"
-msgstr "Soort media"
+msgstr "Mediatype"
 
 #. I18N: gedcom tag _MDCL
 #: app/GedcomTag.php:1647
@@ -16791,7 +16791,7 @@ msgstr "Bezig met maken van miniatuurafbeeldingen"
 
 #: statistics.php:718
 msgid "date periods"
-msgstr "datum perioden"
+msgstr "datumperiodes"
 
 #: app/Functions/Functions.php:749 app/Functions/FunctionsCharts.php:312
 #: edit_interface.php:1980
