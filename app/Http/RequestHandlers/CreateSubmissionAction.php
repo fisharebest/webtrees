@@ -39,12 +39,13 @@ class CreateSubmissionAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree      = Validator::attributes($request)->tree();
-        $submitter = Validator::parsedBody($request)->string('submitter');
+        $submitter = Validator::parsedBody($request)->isXref()->string('submitter');
+
+        $submitter = Registry::elementFactory()->make('SUBN:SUBM')->canonical($submitter);
 
         $gedcom = "0 @@ SUBN\n1 SUBM @" . $submitter . '@';
 
         $record = $tree->createRecord($gedcom);
-        $record = Registry::submissionFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // value and text are for autocomplete
         // html is for interactive modals
