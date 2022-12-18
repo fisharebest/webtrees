@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-12 07:56+0000\n"
+"PO-Revision-Date: 2022-12-19 10:29+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -3360,7 +3360,7 @@ msgstr "Calgary, Alberta, Canada"
 #: app/Factories/ElementFactory.php:1370 app/GedcomTag.php:527
 #: resources/views/modals/source-fields.phtml:50
 msgid "Call number"
-msgstr "Inventarisnummer"
+msgstr "Oproepnummer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
@@ -4539,14 +4539,14 @@ msgstr "Databaseverbinding"
 #: resources/views/setup/step-4-database-sqlite.phtml:52
 #: resources/views/setup/step-4-database-sqlsvr.phtml:95
 msgid "Database name"
-msgstr "Naam van de database"
+msgstr "Databasenaam"
 
 #: app/Factories/ElementFactory.php:849
 #: resources/views/setup/step-4-database-mysql.phtml:95
 #: resources/views/setup/step-4-database-pgsql.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:83
 msgid "Database password"
-msgstr "Database wachtwoord"
+msgstr "Databasewachtwoord"
 
 #: resources/views/setup/step-3-database-type.phtml:52
 msgid "Database type"
@@ -4557,7 +4557,7 @@ msgstr "Databasetype"
 #: resources/views/setup/step-4-database-pgsql.phtml:71
 #: resources/views/setup/step-4-database-sqlsvr.phtml:71
 msgid "Database user account"
-msgstr "Database gebruikersaccount"
+msgstr "Databasegebruikersaccount"
 
 #. I18N: gedcom tag DATE
 #: app/Factories/ElementFactory.php:331 app/Factories/ElementFactory.php:582
@@ -4587,7 +4587,7 @@ msgstr "Datum"
 
 #: resources/views/modules/relatives/tab.phtml:36
 msgid "Date differences"
-msgstr "Datum verschillen"
+msgstr "Datumverschillen"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1129 app/GedcomTag.php:476
@@ -4642,7 +4642,7 @@ msgstr "Geboortedatum"
 
 #: app/Factories/ElementFactory.php:1148 app/GedcomTag.php:512
 msgid "Date of blessing"
-msgstr "Datum zegening"
+msgstr "Zegeningsdatum"
 
 #: app/Factories/ElementFactory.php:299 app/GedcomTag.php:1054
 msgid "Date of brit milah"
@@ -4736,15 +4736,15 @@ msgstr "Naturalisatiedatum"
 
 #: app/Factories/ElementFactory.php:1250 app/GedcomTag.php:857
 msgid "Date of ordination"
-msgstr "Datum van wijding"
+msgstr "Wijdingsdatum"
 
 #: app/Factories/ElementFactory.php:1258 app/GedcomTag.php:912
 msgid "Date of residence"
-msgstr "Datum bewoning"
+msgstr "Bewoningsdatum"
 
 #: resources/views/help/date.phtml:104
 msgid "Date period"
-msgstr "Datum periode"
+msgstr "Datumperiode"
 
 #: resources/views/help/date.phtml:97
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
@@ -4753,7 +4753,7 @@ msgstr "Datumperiodes worden gebruikt om aan te geven dat een feit, zoals een be
 #: app/Factories/ElementFactory.php:1361 resources/views/help/date.phtml:66
 #: resources/views/modules/statistics-chart/custom.phtml:96
 msgid "Date range"
-msgstr "Datum bereik"
+msgstr "Datumbereik"
 
 #: resources/views/help/date.phtml:59
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
@@ -4761,11 +4761,11 @@ msgstr "Datumbereiken worden gebruikt om aan te geven dat een gebeurtenis, zoals
 
 #: resources/views/admin/users.phtml:31
 msgid "Date registered"
-msgstr "Datum geregistreerd"
+msgstr "Registratiedatum"
 
 #: resources/views/modules/user-messages/user-messages.phtml:71
 msgid "Date sent"
-msgstr "Datum verzonden"
+msgstr "Verzenddatum"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
@@ -9552,7 +9552,7 @@ msgstr "Mediaobjecten per pagina"
 #: resources/views/modals/create-media-from-file.phtml:43
 #: resources/views/modals/media-file-fields.phtml:118
 msgid "Media type"
-msgstr "Soort media"
+msgstr "Mediatype"
 
 #. I18N: gedcom tag _MDCL
 #: app/Factories/ElementFactory.php:307 app/Factories/ElementFactory.php:859
@@ -17495,7 +17495,7 @@ msgstr "cultureel"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
-msgstr "datum perioden"
+msgstr "datumperiodes"
 
 #: app/Functions/Functions.php:699
 msgid "daughter"
