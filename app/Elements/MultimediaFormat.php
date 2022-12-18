@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Services\MediaFileService;
-
 use function strtoupper;
 
 /**
@@ -33,6 +31,11 @@ use function strtoupper;
  */
 class MultimediaFormat extends AbstractElement
 {
+    protected const EXTENSION_TO_FORM = [
+        'JPEG' => 'JPG',
+        'TIFF' => 'TIF',
+    ];
+
     protected const SUBTAGS = [
         'TYPE' => '0:1',
     ];
@@ -48,6 +51,6 @@ class MultimediaFormat extends AbstractElement
     {
         $value = strtoupper(parent::canonical($value));
 
-        return MediaFileService::EXTENSION_TO_FORM[$value] ?? $value;
+        return static::EXTENSION_TO_FORM[$value] ?? $value;
     }
 }

@@ -82,9 +82,8 @@ class EditMediaFileAction implements RequestHandlerInterface
         $media    = Registry::mediaFactory()->make($xref, $tree);
         $media    = Auth::checkMediaAccess($media, true);
 
-        // Tidy non-printing characters
-        $type  = trim(preg_replace('/\s+/', ' ', $type));
-        $title = trim(preg_replace('/\s+/', ' ', $title));
+        $type  = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->canonical($type);
+        $title = Registry::elementFactory()->make('OBJE:FILE:TITL')->canonical($title);
 
         // Find the fact to edit
         $media_file = $media->mediaFiles()

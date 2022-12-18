@@ -391,21 +391,6 @@ parameters:
 			path: app/Http/RequestHandlers/ControlPanel.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateRepositoryAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
-			count: 6
-			path: app/Http/RequestHandlers/CreateSourceAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CreateSubmitterAction.php
-
-		-
 			message: "#^Parameter \\#2 \\$collection of method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleCollection\\(\\) expects Illuminate\\\\Support\\\\Collection\\<int, mixed\\>, Illuminate\\\\Support\\\\Collection\\<int, object\\> given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DataFixData.php
@@ -443,11 +428,6 @@ parameters:
 		-
 			message: "#^If condition is always true\\.$#"
 			count: 1
-			path: app/Http/RequestHandlers/EditMediaFileAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
-			count: 2
 			path: app/Http/RequestHandlers/EditMediaFileAction.php
 
 		-

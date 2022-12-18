@@ -26,9 +26,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function preg_replace;
 use function response;
-use function trim;
 use function view;
 
 /**
@@ -44,30 +42,31 @@ class CreateRepositoryAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $name        = Validator::parsedBody($request)->string('name');
+        $name        = Validator::parsedBody($request)->isNotEmpty()->string('name');
         $address     = Validator::parsedBody($request)->string('address');
         $url         = Validator::parsedBody($request)->string('url');
-        $restriction = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
+        $restriction = Validator::parsedBody($request)->string('restriction');
 
-        // Fix non-printing characters
-        $name = trim(preg_replace('/\s+/', ' ', $name));
+        $name        = Registry::elementFactory()->make('REPO:NAME')->canonical($name);
+        $address     = Registry::elementFactory()->make('REPO:ADDR')->canonical($address);
+        $url         = Registry::elementFactory()->make('REPO:WWW')->canonical($url);
+        $restriction = Registry::elementFactory()->make('REPO:RESN')->canonical($restriction);
 
-        $gedcom = "0 @@ REPO\n1 NAME " . $name;
+        $gedcom = "0 @@ REPO\n1 NAME " . strtr($name, ["\n" => "\n2 CONT "]);
 
         if ($address !== '') {
-            $gedcom .= "\n1 ADDR " . strtr($address, ["\r\n" => "\n2 CONT "]);
+            $gedcom .= "\n1 ADDR " . strtr($address, ["\n" => "\n2 CONT "]);
         }
 
         if ($url !== '') {
-            $gedcom .= "\n1 WWW " . $url;
+            $gedcom .= "\n1 WWW " . strtr($url, ["\n" => "\n2 CONT "]);
         }
 
         if ($restriction !== '') {
-            $gedcom .= "\n1 RESN " . $restriction;
+            $gedcom .= "\n1 RESN " . strtr($restriction, ["\n" => "\n2 CONT "]);
         }
 
         $record = $tree->createRecord($gedcom);
-        $record = Registry::repositoryFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // value and text are for autocomplete
         // html is for interactive modals
