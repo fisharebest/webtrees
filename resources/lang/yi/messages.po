@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-15 16:09+0000\n"
+"PO-Revision-Date: 2022-12-19 10:29+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -662,7 +662,7 @@ msgstr ""
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
 msgid "A URL"
-msgstr "URL"
+msgstr "אַ URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:116
@@ -711,11 +711,14 @@ msgstr ""
 #: app/Module/FixDuplicateLinks.php:69
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"אַ פּראָסט טעות איז צו האָבן טאָפּלקייט פֿאַרבינדונגען צו דער זעלביקער רעקאָ"
+"רד, פֿאַר בייַשפּיל ליסטינג די זעלבע קינד מער ווי אַמאָל אין אַ משפּחה "
+"רעקאָרד."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:149
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "א פאָכער טשאַרט פון אַ יחיד ס עלטערן."
 
 #: resources/views/admin/map-import-form.phtml:37
 #: resources/views/admin/trees-export.phtml:30
@@ -746,17 +749,17 @@ msgstr "א גרוס אָנזאָג פֿאַר זייַטל געסט."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "א לינק צו די פּלאַץ קאָנטאַקטן."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "א לינק צו די וועבטריס היים בלאַט."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "אַ רשימה פון משפחות."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:93
@@ -777,7 +780,7 @@ msgstr "א רשימה פון אָפט געפרעגט פראגעס און ענט�
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:92
 msgid "A list of individuals."
-msgstr ""
+msgstr "אַ רשימה פון מידיאַ סובסטאַנצן."
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:78
@@ -802,12 +805,12 @@ msgstr ""
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:75
 msgid "A list of shared notes."
-msgstr ""
+msgstr "אַ רשימה פון בשותפדיקע באַַמערקונגען."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:77
 msgid "A list of sources."
-msgstr ""
+msgstr "אַ רשימה פון קוואַלן."
 
 #. I18N: Description of the “Submitters” module
 #: app/Module/SubmitterListModule.php:78
@@ -852,7 +855,7 @@ msgstr "א רשימה פון די בלעטער וואס האָבן שוין וו
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "אַ רשימה פון יוזערז און וויזאַטערז וואָס זענען דערווייַל אָנליין."
 
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -1277,7 +1280,7 @@ msgstr "לייג אַ קינד צו שאַפֿן אַ איין-עלטערן מש
 #: resources/views/family-page-children.phtml:47
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr ""
+msgstr "לייג אַ טאָכטער"
 
 #: resources/views/edit/add-fact-row.phtml:21
 #: resources/views/edit/raw-gedcom-record.phtml:60
@@ -1295,7 +1298,7 @@ msgstr "שטעל אַ נייַ פאָטער"
 #: resources/views/modules/favorites/favorites.phtml:47
 #: resources/views/modules/favorites/favorites.phtml:56
 msgid "Add a favorite"
-msgstr ""
+msgstr "לייג אַ באַליבסטע"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:87
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:88
@@ -1358,7 +1361,7 @@ msgstr ""
 #: resources/views/family-page-children.phtml:43
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a son"
-msgstr ""
+msgstr "לייג אַ זון"
 
 #: resources/views/modules/sources_tab/tab.phtml:77
 msgid "Add a source citation"
@@ -1576,7 +1579,7 @@ msgstr ""
 #: app/Gedcom.php:575 app/Gedcom.php:578
 #: app/Module/IndividualFactsTabModule.php:155
 msgid "Adoption"
-msgstr ""
+msgstr "אַדאָפּטירונג"
 
 #: app/Services/IndividualFactsService.php:232
 msgid "Adoption of a brother"
@@ -1654,7 +1657,7 @@ msgstr ""
 
 #: app/Gedcom.php:622
 msgid "Adult christening"
-msgstr ""
+msgstr "דערוואַקסן קריסטן"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:167
 #: app/Module/SearchMenuModule.php:125
@@ -1717,7 +1720,7 @@ msgstr "יאָרן אין יאָר פון ערשטער חתונה"
 #: resources/views/modules/statistics-chart/custom.phtml:39
 #: resources/views/modules/statistics-chart/marriage-age.phtml:10
 msgid "Age in year of marriage"
-msgstr ""
+msgstr "יאָרן אין יאָר פון  חתונה"
 
 #: resources/views/modules/statistics-chart/custom.phtml:136
 #: resources/views/modules/statistics-chart/custom.phtml:139
@@ -1978,7 +1981,7 @@ msgstr "יאָרטאָג קאלענדאר"
 
 #: app/Gedcom.php:445
 msgid "Annulment"
-msgstr ""
+msgstr "אַנולירונג"
 
 #: resources/views/modules/faq/edit.phtml:43
 msgid "Answer"
@@ -2873,7 +2876,7 @@ msgstr "געבורטן"
 #: app/Statistics/Google/ChartBirth.php:111
 #: resources/views/modules/statistics-chart/individual-events.phtml:25
 msgid "Births by century"
-msgstr ""
+msgstr "געבורטס פּער הונדערט"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:66
@@ -3194,7 +3197,7 @@ msgstr "קבורה אָרט כּולל"
 #: resources/xml/reports/cemetery_report.xml:3
 #: resources/xml/reports/cemetery_report.xml:34
 msgid "Burials"
-msgstr ""
+msgstr "קבורה"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
@@ -3304,11 +3307,11 @@ msgstr "קרדסטון, אלברטה, קנדה"
 
 #: app/Gedcom.php:610
 msgid "Caste"
-msgstr ""
+msgstr "קאַסט"
 
 #: resources/views/modules/statistics-chart/custom.phtml:79
 msgid "Categories"
-msgstr ""
+msgstr "קאַטעגאָריעס"
 
 #: app/CustomTags/GedcomL.php:144 app/CustomTags/GedcomL.php:200
 #: app/CustomTags/Legacy.php:138
@@ -3389,7 +3392,7 @@ msgstr "הויפט אפריקאנער רעפובליק"
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:96
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:132
 msgid "Century"
-msgstr ""
+msgstr "יאָרהונדערט"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:82
@@ -3489,7 +3492,7 @@ msgstr "סאָרט טשאַרט"
 #: resources/views/admin/modules.phtml:104
 #: resources/views/admin/trees-preferences.phtml:391
 msgid "Charts"
-msgstr ""
+msgstr "סקיצן"
 
 #: app/Http/RequestHandlers/CheckTree.php:324
 #: resources/views/admin/trees.phtml:185
@@ -3711,7 +3714,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "ציטירן דעטאַלן"
 
 #: app/CustomTags/Reunion.php:55
 msgid "Citizenship"
