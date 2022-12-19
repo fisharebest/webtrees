@@ -26,11 +26,6 @@ parameters:
 			path: app/Elements/DateValue.php
 
 		-
-			message: "#^Access to undefined constant Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:EXTENSION_TO_FORM\\.$#"
-			count: 1
-			path: app/Elements/MultimediaFormat_BASE_60757.php
-
-		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Elements/PlaceHierarchy.php
