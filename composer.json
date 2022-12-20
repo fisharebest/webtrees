@@ -22,13 +22,13 @@
     },
     "config": {
         "platform": {
-            "php": "8.0.2"
+            "php": "8.1.0"
         },
         "sort-packages": true,
         "process-timeout": 3600
     },
     "require": {
-        "php": "8.0 - 8.2",
+        "php": "8.1 - 8.2",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-exif": "*",
@@ -44,7 +44,7 @@
         "ext-simplexml": "*",
         "ext-xml": "*",
         "aura/router": "3.2.0",
-        "doctrine/dbal": "3.5.1",
+        "doctrine/dbal": "3.5.2",
         "ezyang/htmlpurifier": "4.16.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
@@ -52,9 +52,9 @@
         "fisharebest/flysystem-chroot-adapter": "3.0.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.5.0",
-        "illuminate/container": "9.43.0",
-        "illuminate/database": "9.43.0",
-        "illuminate/support": "9.43.0",
+        "illuminate/container": "9.44.0",
+        "illuminate/database": "9.44.0",
+        "illuminate/support": "9.44.0",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.7",
         "league/commonmark": "2.3.8",
@@ -71,20 +71,20 @@
         "psr/http-message": "1.0.1",
         "psr/http-server-handler": "1.0.1",
         "psr/http-server-middleware": "1.0.1",
-        "ramsey/uuid": "4.6.0",
+        "ramsey/uuid": "4.7.0",
         "sabre/vobject": "4.5.1",
-        "symfony/cache": "6.0.16",
-        "symfony/expression-language": "6.0.14",
-        "symfony/mailer": "6.0.16",
+        "symfony/cache": "6.2.2",
+        "symfony/expression-language": "6.2.2",
+        "symfony/mailer": "6.2.2",
         "symfony/polyfill-mbstring": "1.27.0",
-        "tecnickcom/tcpdf": "6.6.0"
+        "tecnickcom/tcpdf": "6.6.2"
     },
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.4.4",
+        "composer/composer": "2.5.0",
         "league/flysystem-memory": "3.10.3",
         "php-coveralls/php-coveralls": "2.5.3",
         "phpunit/phpunit": "9.5.27"
