@@ -39,7 +39,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function array_filter;
-use function array_key_exists;
 use function array_keys;
 use function array_sum;
 use function assert;
@@ -49,7 +48,6 @@ use function ob_get_clean;
 use function ob_start;
 use function route;
 use function uksort;
-use function var_dump;
 use function view;
 
 use const ARRAY_FILTER_USE_KEY;
