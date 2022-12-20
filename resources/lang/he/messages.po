@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-08-10 12:48+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"PO-Revision-Date: 2022-12-21 12:27+0000\n"
+"Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/he/>\n"
 "Language: he\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -4447,7 +4447,7 @@ msgstr "חתימה דיגיטלית של DKIM"
 #: app/Factories/ElementFactory.php:404 app/Factories/ElementFactory.php:866
 #: app/GedcomTag.php:1074
 msgid "DNA markers"
-msgstr "סימני DNA"
+msgstr "סמני DNA"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:43
