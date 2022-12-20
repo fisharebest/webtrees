@@ -44,7 +44,7 @@
         "ext-simplexml": "*",
         "ext-xml": "*",
         "aura/router": "3.2.0",
-        "doctrine/dbal": "3.5.1",
+        "doctrine/dbal": "3.5.2",
         "ezyang/htmlpurifier": "4.16.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
@@ -77,14 +77,14 @@
         "symfony/mailer": "5.4.16",
         "symfony/polyfill-mbstring": "1.27.0",
         "symfony/polyfill-php80": "1.27.0",
-        "tecnickcom/tcpdf": "6.6.0"
+        "tecnickcom/tcpdf": "6.6.2"
     },
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.4.4",
+        "composer/composer": "2.5.0",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.5.3",
         "phpunit/phpunit": "9.5.27"
