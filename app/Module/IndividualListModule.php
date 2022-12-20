@@ -299,8 +299,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $title = I18N::translate('Individuals') . ' — ' . $legend;
         }
 
-        ob_start();
-        ?>
+        ob_start(); ?>
         <div class="d-flex flex-column wt-page-options wt-page-options-individual-list d-print-none">
             <ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-surname">
 
