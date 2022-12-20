@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-19 10:29+0000\n"
+"PO-Revision-Date: 2022-12-21 12:27+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -1742,7 +1742,7 @@ msgstr "יאָרן אין יאָר פון ערשטער חתונה"
 #: resources/views/modules/statistics-chart/custom.phtml:39
 #: resources/views/statistics/families/marriage-age.phtml:12
 msgid "Age in year of marriage"
-msgstr "יאָרן אין יאָר פון  חתונה"
+msgstr "יאָרן אין יאָר פון חתונה"
 
 #: resources/views/modules/statistics-chart/custom.phtml:136
 #: resources/views/modules/statistics-chart/custom.phtml:139
@@ -3854,7 +3854,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:217
 msgid "Clippings cart"
-msgstr ""
+msgstr "קליפּינג וואָגן"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:64
@@ -4123,7 +4123,7 @@ msgstr "קאפנהאגן, דענמארק"
 #: resources/views/individual-name.phtml:86
 #: resources/views/individual-name.phtml:88
 msgid "Copy"
-msgstr "צייכענען"
+msgstr "קאָפּיע"
 
 #. I18N: Copy all the records from [family tree 1] into [family tree 2]
 #: resources/views/admin/trees-merge.phtml:49
@@ -4269,7 +4269,7 @@ msgstr ""
 #: resources/xml/reports/family_group_report.xml:1013
 #: resources/xml/reports/family_group_report.xml:1040
 msgid "Cremation"
-msgstr ""
+msgstr "קרעמירונג"
 
 #: app/Module/IndividualFactsTabModule.php:471
 msgid "Cremation of a brother"
@@ -4410,7 +4410,7 @@ msgstr ""
 
 #: app/Module/HtmlBlockModule.php:191 app/Module/StatisticsChartModule.php:161
 msgid "Custom"
-msgstr ""
+msgstr "פֿירונג"
 
 #: resources/views/calendar-page.phtml:203
 #: resources/views/edit/add-fact-row.phtml:42
@@ -4453,7 +4453,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:404 app/Factories/ElementFactory.php:866
 #: app/GedcomTag.php:1074
 msgid "DNA markers"
-msgstr ""
+msgstr "DNA מאַרקערס"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:43
@@ -4565,7 +4565,7 @@ msgstr "דאטום"
 
 #: resources/views/modules/relatives/tab.phtml:36
 msgid "Date differences"
-msgstr ""
+msgstr "דאַטע דיפעראַנסיז"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1129 app/GedcomTag.php:476
@@ -5454,7 +5454,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:44
 msgid "Direct line ancestors and their families"
-msgstr ""
+msgstr "דירעקט ליניע אבות און זייער משפּחה"
 
 #. I18N: %s is a number of records per page
 #: resources/views/lists/datatables-attributes.phtml:29
@@ -5673,7 +5673,7 @@ msgstr "רעדאַגירן נאָמען"
 #: resources/views/repository-page-menu.phtml:30
 #: resources/views/source-page-menu.phtml:30
 msgid "Edit the raw GEDCOM"
-msgstr ""
+msgstr "רעדאַגירן די רוי GEDCOM"
 
 #: app/Http/RequestHandlers/EditNotePage.php:59
 msgid "Edit the shared note"
@@ -5757,7 +5757,7 @@ msgstr "אלול"
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "בליצפּאָסט"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -6219,7 +6219,7 @@ msgstr "פאמיליעס"
 #: app/Statistics/Google/ChartFamilyWithSources.php:96
 #: resources/views/statistics/other/chart-sources.phtml:32
 msgid "Families with sources"
-msgstr ""
+msgstr "משפחות מיט מקורים"
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
@@ -6314,7 +6314,7 @@ msgstr "פאמיליע בוים"
 #: app/Module/ClippingsCartModule.php:244
 #: app/Module/ClippingsCartModule.php:449
 msgid "Family tree clippings cart"
-msgstr ""
+msgstr "משפּחה בוים קליפּינג וואָגן"
 
 #: resources/views/admin/trees-create.phtml:24
 #: resources/views/admin/trees-preferences.phtml:53
@@ -6594,7 +6594,7 @@ msgstr "געפֿינען אַלע מעגלעך באציונגען"
 
 #: app/Module/RelationshipsChartModule.php:445
 msgid "Find any relationship"
-msgstr ""
+msgstr "געפֿינען קיין שייכות"
 
 #: app/Http/RequestHandlers/FindDuplicateRecords.php:64
 #: resources/views/admin/trees.phtml:165
@@ -6608,7 +6608,7 @@ msgstr ""
 #: app/Module/RelationshipsChartModule.php:446
 #: resources/views/modules/relationships-chart/page.phtml:56
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "געפֿינען פֿאַרבינדונגען דורך אבות"
 
 #: app/Module/RelationshipsChartModule.php:723
 #: resources/views/modules/relationships-chart/page.phtml:70
@@ -6759,7 +6759,7 @@ msgstr ""
 #: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:42
 msgid "Forgot password?"
-msgstr ""
+msgstr "פארגעסן פּאַראָל?"
 
 #. I18N: gedcom tag FORM
 #: app/Factories/ElementFactory.php:966 app/Factories/ElementFactory.php:1049
@@ -7206,7 +7206,7 @@ msgstr ""
 #. I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:1207 app/GedcomTag.php:733
 msgid "Graduation"
-msgstr ""
+msgstr "גראַדואַציע"
 
 #: resources/views/statistics/individuals/greatest-age.phtml:12
 msgid "Greatest age at death"
@@ -7935,7 +7935,7 @@ msgstr "מענטש 2"
 
 #: app/Statistics/Google/ChartDistribution.php:354
 msgid "Individual distribution chart"
-msgstr ""
+msgstr "יחיד פֿאַרשפּרייטונג טשאַרט"
 
 #: resources/views/admin/control-panel.phtml:635
 msgid "Individual page"
@@ -8337,7 +8337,7 @@ msgstr ""
 #: resources/views/edit/edit-fact.phtml:113
 #: resources/views/edit/edit-record.phtml:32
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "האַלטן די עקזיסטירט \"לעצטע ענדערונג\" אינפֿאָרמאַציע"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -8656,7 +8656,7 @@ msgstr "לעסאטא"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "בריוו"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:294
@@ -8823,7 +8823,7 @@ msgstr ""
 
 #: resources/views/statistics/families/marriage-length.phtml:22
 msgid "Longest marriage"
-msgstr ""
+msgstr "לענגסטע חתונה"
 
 #. I18N: gedcom tag LONG
 #: app/Factories/ElementFactory.php:666 app/Factories/ElementFactory.php:969
@@ -9115,7 +9115,7 @@ msgstr "חתונה"
 #: app/Factories/ElementFactory.php:1004 app/GedcomTag.php:773
 #: resources/xml/reports/missing_facts_report.xml:22
 msgid "Marriage banns"
-msgstr ""
+msgstr "חתונה באַנס"
 
 #. I18N: gedcom tag _MSTAT
 #: app/Factories/ElementFactory.php:358 app/Factories/ElementFactory.php:378
@@ -9654,12 +9654,12 @@ msgstr "מעקסיקא שטאט, מעקסיקא"
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:67
 msgid "Microfiche"
-msgstr ""
+msgstr "מיקראָפיטשע"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:68 app/Factories/ElementFactory.php:530
 msgid "Microfilm"
-msgstr ""
+msgstr "מיקראָפילם"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:197
@@ -10113,7 +10113,7 @@ msgstr "נאַציאָנאַליטעט"
 #. I18N: gedcom tag NATU
 #: app/Factories/ElementFactory.php:1239 app/GedcomTag.php:817
 msgid "Naturalization"
-msgstr ""
+msgstr "נאַטוראַליזירונג"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:381
@@ -10383,7 +10383,7 @@ msgstr "קיין רעזולטאַטן געפֿונען."
 
 #: app/Statistics/Repository/UserRepository.php:84
 msgid "No signed-in and no anonymous users"
-msgstr ""
+msgstr "קיין איינגעשריבן און קיין אַנאָנימע באַנוצערס"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10819,7 +10819,7 @@ msgstr "הסמכה"
 #. I18N: gedcom tag ORDN
 #: app/Factories/ElementFactory.php:1248 app/GedcomTag.php:853
 msgid "Ordination"
-msgstr ""
+msgstr "אָרדאַניישאַן"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -11568,7 +11568,7 @@ msgstr "אַליינקייַט"
 #: app/Module/PrivacyPolicy.php:67 app/Module/PrivacyPolicy.php:128
 #: resources/views/modules/privacy-policy/footer.phtml:16
 msgid "Privacy policy"
-msgstr ""
+msgstr "פּריוואַטקייט פּאָליטיק"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.phtml:9
@@ -11850,7 +11850,7 @@ msgstr "אָרדענונג מידיאַ נאכאמאל"
 #: resources/views/individual-page-menu.phtml:37
 #: resources/views/individual-page-menu.phtml:42
 msgid "Re-order names"
-msgstr ""
+msgstr "שייַעך-סדר נעמען"
 
 #: resources/views/admin/users-create.phtml:32
 #: resources/views/admin/users-edit.phtml:42
@@ -11911,7 +11911,7 @@ msgstr "רעקאָרד טעקע נומער"
 #: resources/views/search-general-page.phtml:49
 #: resources/views/statistics/other/total-records.phtml:12
 msgid "Records"
-msgstr ""
+msgstr "רעקאָרדס"
 
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
@@ -11983,7 +11983,7 @@ msgstr "ופמאַכן אַלע ענדערונגען"
 #: app/Module/IndividualFamiliesReportModule.php:44
 #: resources/xml/reports/individual_ext_report.xml:3
 msgid "Related families"
-msgstr ""
+msgstr "שייכותדיקע משפחות"
 
 #. I18N: Name of a report
 #: app/Module/RelatedIndividualsReportModule.php:40
@@ -14291,7 +14291,7 @@ msgstr ""
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr ""
+msgstr "משפּחה בוים קליפּינג וואָגן"
 
 #: resources/views/admin/trees-preferences.phtml:395
 msgid "The date and time of the last update"
@@ -17454,7 +17454,7 @@ msgstr ""
 #: resources/views/report-setup-page.phtml:83
 #: resources/views/report-setup-page.phtml:96
 msgid "download"
-msgstr ""
+msgstr "אַראָפּקאָפיע"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
@@ -19489,7 +19489,7 @@ msgstr "האַלב-שוועסטער"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:191
 msgid "herself"
-msgstr ""
+msgstr "זיך"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:560
@@ -19509,7 +19509,7 @@ msgstr "באַהאַלטן"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:188
 msgid "himself"
-msgstr ""
+msgstr "זיך"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
@@ -19544,7 +19544,7 @@ msgstr ""
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "ינלינע באַמערקונג"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -19597,7 +19597,7 @@ msgstr "לעצט"
 #: app/Module/PedigreeChartModule.php:387
 #: app/Module/PedigreeChartModule.php:395
 msgid "left"
-msgstr ""
+msgstr "לינק"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -20079,7 +20079,7 @@ msgstr "פרייַערדיק"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52 app/GedcomCode/GedcomCodeQuay.php:49
 msgid "primary evidence"
-msgstr ""
+msgstr "ערשטיק זאָגן"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
@@ -20094,7 +20094,7 @@ msgstr "פּראָבלעמאַטיש זאָגן"
 #: app/Http/RequestHandlers/TreePreferencesPage.php:117
 #: resources/xml/reports/fact_sources.xml:6
 msgid "records"
-msgstr ""
+msgstr "רעקאָרדס"
 
 #: resources/views/family-page.phtml:30
 #: resources/views/gedcom-record-page.phtml:39
