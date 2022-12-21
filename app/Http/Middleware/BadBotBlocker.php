@@ -70,6 +70,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Barkrowler',
         'BLEXBot',
         'DataForSEO',
+        'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
