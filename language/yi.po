@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-21 12:27+0000\n"
+"PO-Revision-Date: 2022-12-23 18:15+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -11571,7 +11571,7 @@ msgstr "מעלדונג"
 #: admin_module_reports.php:28 admin_modules.php:164
 #: app/Theme/AbstractTheme.php:1698 app/Theme/AdministrationTheme.php:196
 msgid "Reports"
-msgstr ""
+msgstr "מעלדעט"
 
 #: admin.php:771 admin.php:829 admin_trees_duplicates.php:140
 #: app/Module/FamilyTreeStatisticsModule.php:124
@@ -11589,7 +11589,7 @@ msgstr "רעפּאָסיטאָריעס געפונען"
 #: admin_trees_config.php:792 admin_trees_manage.php:567 app/GedcomTag.php:728
 #: inverselink.php:130
 msgid "Repository"
-msgstr ""
+msgstr "ריפּאַזאַטאָרי"
 
 #. I18N: Label for search field
 #: find.php:220
@@ -11653,7 +11653,7 @@ msgstr "באַגרענעצן צו באַלדיק פאמיליע"
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:740
 msgid "Restriction"
-msgstr ""
+msgstr "באַגרענעצונג"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -11665,12 +11665,12 @@ msgstr ""
 
 #: statistics.php:748
 msgid "Results"
-msgstr ""
+msgstr "רעזולטאַטן"
 
 #. I18N: gedcom tag RETI
 #: app/GedcomTag.php:744
 msgid "Retirement"
-msgstr ""
+msgstr "פּענסיע"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6862
@@ -12015,7 +12015,7 @@ msgstr "אויסקלייַבן פאָן"
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "אויסקלייַבן מענטשן לויט אָרט אָדער טאָג"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:44
@@ -12415,7 +12415,7 @@ msgstr "דורכוועג"
 
 #: statistics.php:252
 msgid "Shortest marriage"
-msgstr ""
+msgstr "קורצער חתונה"
 
 #: app/Module/RecentChangesModule.php:181
 msgid "Should this block be hidden when it is empty"
@@ -12458,7 +12458,7 @@ msgstr "ווייַזן אַלע טאַגס"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr ""
+msgstr "ווייַזן אַן עלטער מאַרקער"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12619,7 +12619,7 @@ msgstr "ווייַזן עלטערן"
 
 #: modules_v3/change_report/report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "ווייַז ענדערונגען וואַרטן פֿאַר באַשטעטיקונג"
 
 #: modules_v3/family_group_report/report.xml:9
 #: modules_v3/individual_ext_report/report.xml:11
@@ -12659,7 +12659,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr ""
+msgstr "סלידעשאָוו"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -13328,7 +13328,7 @@ msgstr ""
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:792
 msgid "Surname prefix"
-msgstr ""
+msgstr "פאַמיליע פּרעפיקס"
 
 #: admin_trees_config.php:2092
 msgid "Surname tradition"
@@ -13357,7 +13357,7 @@ msgstr "סוואַלבאַרד און יאן מייַען אינזלען"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
 msgid "Swap individuals"
-msgstr ""
+msgstr "ויסבייַטן מענטשן"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
@@ -13567,7 +13567,9 @@ msgstr ""
 
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "משפּחה בוים קליפּינג וואָגן"
+msgstr ""
+"די קליפּינג וואָגן דערלויבנדיק איר צו נעמען אויסצוגן פון דעם משפּחה בוים און "
+"אראפקאפיע זיי ווי אַ GEDCOM טעקע."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -14036,7 +14038,7 @@ msgstr "טעמע"
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
 msgid "Theme change"
-msgstr ""
+msgstr "טעמע טוישן"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:960
@@ -14086,8 +14088,8 @@ msgstr ""
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "עס זענען געווען קיין ענדערונגען אין די לעצטע טעג."
+msgstr[1] "עס זענען געווען קיין ענדערונגען אין די לעצטע  %s טעג."
 
 #: login.php:266
 #, php-format
@@ -14517,13 +14519,17 @@ msgstr ""
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"דער בלאַט אַלאַוז איר צו בייפּאַס די געוויינטלעך פארמען און רעדאַגירן די אַ"
+"נדערלייינג דאַטן גלייַך. עס איז אַן אַוואַנסירטע אָפּציע, און איר זאָל נישט "
+"נוצן עס אויב איר פֿאַרשטיין די GEDCOM פֿאָרמאַט. אויב איר מאַכן אַ גרייַז דאָ"
+", עס קען זיין שווער צו פאַרריכטן."
 
 #: app/Theme/AbstractTheme.php:482
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "דעם בלאַט איז געווען וויוד איין מאָל."
+msgstr[1] "דעם בלאַט איז געווען וויוד %s מאל."
 
 #: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
@@ -14723,7 +14729,7 @@ msgstr ""
 #: app/Controller/TimelineController.php:74
 #: app/Module/TimelineChartModule.php:33 timeline.php:246
 msgid "Timeline"
-msgstr ""
+msgstr "טיימליין"
 
 #: admin_site_change.php:387 admin_site_logs.php:327
 msgid "Timestamp"
@@ -14880,16 +14886,16 @@ msgstr "טונגא"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "די מערסט פּראָסט געגעבן נאָמען"
+msgstr[1] "די %s מערסט פּראָסט געגעבן נעמען"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "די  מערסט פּראָסט לעצטע נעמען"
+msgstr[1] "די %s מערסט פּראָסט לעצטע נעמען"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:71
@@ -14899,7 +14905,7 @@ msgstr "די מערסט פּאָפּולאַר געגעבן נאָמען"
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:31 statistics.php:201
 msgid "Top given names"
-msgstr ""
+msgstr "די מערסט פּראָסט געגעבן נעמען"
 
 #: app/Module/GoogleMapsModule.php:3944 app/Module/GoogleMapsModule.php:4020
 #: placelist.php:107
@@ -14914,7 +14920,7 @@ msgstr ""
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:37 statistics.php:200
 msgid "Top surnames"
-msgstr ""
+msgstr "די מערסט פּראָסט לעצטע נעמען"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:373
@@ -14931,7 +14937,7 @@ msgstr ""
 
 #: statistics.php:113
 msgid "Total births"
-msgstr ""
+msgstr "גאַנץ געבורטס"
 
 #: statistics.php:96
 msgid "Total dead"
@@ -14958,7 +14964,7 @@ msgstr "גאַנץ געשעענישן"
 #: modules_v3/fact_sources/report.xml:354
 #: modules_v3/marriage_report/report.xml:111
 msgid "Total families"
-msgstr ""
+msgstr "גאַנץ משפחות"
 
 #: calendar.php:441 find.php:582 statistics.php:211
 #, php-format
@@ -15197,7 +15203,7 @@ msgstr ""
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
 msgid "Unique identifier"
-msgstr ""
+msgstr "יינציק ידענטיפיער"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
@@ -15768,7 +15774,7 @@ msgstr ""
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "ברוכים הבאים צו דעם גענעאַלאָגיע וועבזייטל"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -15827,7 +15833,7 @@ msgstr ""
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr ""
+msgstr "ווער איז אָנליין"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
 msgid "Whole words only"
@@ -15961,11 +15967,11 @@ msgstr "איר זענען נישט ערלויבט צו שיקן אַרטיקלע
 #: app/Module/LoginBlockModule.php:64
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "איר זענט לאָגד אין ווי %s."
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "איר קענט אָנווענדן פֿאַר אַ חשבון מיט די לינק אונטן."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -16193,7 +16199,7 @@ msgstr "ייִנגסטער מוטער"
 #: app/Module/ClippingsCartModule.php:357
 #: app/Module/ClippingsCartModule.php:691
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "דיין קליפּינג וואָגן איז ליידיק."
 
 #: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
@@ -19512,7 +19518,7 @@ msgstr "צווייטן שוועסטערקינד"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/GedcomCode/GedcomCodeQuay.php:43
 msgid "secondary evidence"
-msgstr ""
+msgstr "צווייטיק באַווייַזן"
 
 #. I18N: select all (of the family trees)
 #: search.php:119 search.php:276
@@ -19550,7 +19556,7 @@ msgstr "ווייַזן"
 
 #: statistics.php:765
 msgid "show the chart"
-msgstr ""
+msgstr "ווייַזן די טשאַרט"
 
 #: app/Functions/Functions.php:802
 msgid "sibling"
