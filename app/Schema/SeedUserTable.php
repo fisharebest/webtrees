@@ -34,9 +34,9 @@ class SeedUserTable implements SeedInterface
     public function run(): void
     {
         // Add a "default" user, to store default settings
+        $setIdentityCmd = 'SET IDENTITY_INSERT [' . DB::connection()->getTablePrefix() . 'user] ';
         if (DB::connection()->getDriverName() === 'sqlsrv') {
-            $prefix = DB::connection()->getTablePrefix();
-            DB::unprepared('SET IDENTITY_INSERT ' . $prefix . 'user ON');
+            DB::unprepared($setIdentityCmd . 'ON');
         }
         DB::table('user')->updateOrInsert([
             'user_id'   => -1,
@@ -47,7 +47,7 @@ class SeedUserTable implements SeedInterface
             'password'  => 'DEFAULT_USER',
         ]);
         if (DB::connection()->getDriverName() === 'sqlsrv') {
-            DB::unprepared('SET IDENTITY_INSERT ' . $prefix . 'user OFF');
+            DB::unprepared($setIdentityCmd . 'OFF');
         }
     }
 }
