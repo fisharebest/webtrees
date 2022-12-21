@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-21 12:27+0000\n"
+"PO-Revision-Date: 2022-12-22 09:20+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -12100,7 +12100,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:110
 #: resources/views/admin/modules.phtml:112
 msgid "Reports"
-msgstr ""
+msgstr "מעלדעט"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:114
@@ -12128,7 +12128,7 @@ msgstr "רעפּאָסיטאָריעס"
 #: resources/views/modules/favorites/favorites.phtml:123
 #: resources/views/modules/recent_changes/changes-table.phtml:79
 msgid "Repository"
-msgstr ""
+msgstr "ריפּאַזאַטאָרי"
 
 #: resources/views/lists/repositories-table.phtml:53
 msgid "Repository name"
@@ -12199,7 +12199,7 @@ msgstr "באַגרענעצן צו באַלדיק פאמיליע"
 #: app/Http/RequestHandlers/HelpText.php:243
 #: resources/views/modals/restriction-fields.phtml:11
 msgid "Restriction"
-msgstr ""
+msgstr "באַגרענעצונג"
 
 #: resources/views/help/restriction.phtml:10
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -12207,11 +12207,11 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:122
 msgid "Results"
-msgstr ""
+msgstr "רעזולטאַטן"
 
 #: app/Gedcom.php:734
 msgid "Retirement"
-msgstr ""
+msgstr "פּענסיע"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
@@ -12244,7 +12244,7 @@ msgstr ""
 
 #: app/Gedcom.php:698
 msgid "Romanized name"
-msgstr ""
+msgstr "נאָמען אין לאַטייַן טראַנסקריפּציע"
 
 #: app/CustomTags/GedcomL.php:249 app/Gedcom.php:427 app/Gedcom.php:559
 msgid "Romanized place"
@@ -12252,7 +12252,7 @@ msgstr "לאטיין אָרט נאָמען"
 
 #: app/Gedcom.php:707
 msgid "Romanized type"
-msgstr ""
+msgstr "נאָמען אין לאַטייַן טראַנסקריפּציע"
 
 #: resources/views/lists/families-table.phtml:109
 #: resources/views/lists/individuals-table.phtml:151
@@ -12587,7 +12587,7 @@ msgstr "אויסקלייַבן אַ דאטום"
 
 #: resources/views/modules/lifespans-chart/page.phtml:39
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "אויסקלייַבן מענטשן לויט אָרט אָדער טאָג"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:137
@@ -12705,7 +12705,7 @@ msgstr "אפגעשיידט"
 
 #: app/CustomTags/FamilyTreeMaker.php:71
 msgid "Separation"
-msgstr ""
+msgstr "צעשיידונג"
 
 #: app/Date/AbstractGregorianJulianDate.php:136
 msgctxt "GENITIVE"
@@ -12853,7 +12853,7 @@ msgstr "שאהריבאר"
 #: resources/views/individual-page-menu.phtml:37
 #: resources/views/individual-page.phtml:68
 msgid "Share"
-msgstr ""
+msgstr "טיילן"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
@@ -13005,7 +13005,7 @@ msgstr "דורכוועג"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:28
 msgid "Shortest marriage"
-msgstr ""
+msgstr "קורצער חתונה"
 
 #: resources/views/calendar-page.phtml:109
 msgid "Show"
@@ -13028,7 +13028,7 @@ msgstr ""
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
-msgstr ""
+msgstr "ווייַזן אַלע מידיאַ"
 
 #: resources/views/modules/notes/tab.phtml:30
 msgid "Show all notes"
@@ -13045,7 +13045,7 @@ msgstr "ווייַזן אַלע מקורות"
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:83
 msgid "Show an age cursor"
-msgstr ""
+msgstr "ווייַזן אַן עלטער מאַרקער"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
@@ -13183,7 +13183,7 @@ msgstr ""
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
-msgstr ""
+msgstr "ווייַז ענדערונגען וואַרטן פֿאַר באַשטעטיקונג"
 
 #: resources/xml/reports/family_group_report.xml:9
 #: resources/xml/reports/individual_ext_report.xml:11
@@ -13218,7 +13218,7 @@ msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
-msgstr ""
+msgstr "סלידעשאָוו"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -13951,7 +13951,7 @@ msgstr ""
 
 #: app/Gedcom.php:691 app/Gedcom.php:705 app/Gedcom.php:708
 msgid "Surname prefix"
-msgstr ""
+msgstr "פאַמיליע פּרעפיקס"
 
 #: resources/views/admin/trees-preferences.phtml:693
 msgid "Surname tradition"
@@ -13985,7 +13985,7 @@ msgstr "סוואַלבאַרד און יאן מייַען אינזלען"
 #. I18N: Reverse the order of two individuals
 #: resources/views/modules/relationships-chart/page.phtml:84
 msgid "Swap individuals"
-msgstr ""
+msgstr "ויסבייַטן מענטשן"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:469
@@ -14045,7 +14045,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "טאַבלויד"
 
 #: app/Http/RequestHandlers/ModulesTabsPage.php:43
 #: resources/views/admin/control-panel.phtml:708
@@ -14263,7 +14263,9 @@ msgstr ""
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "משפּחה בוים קליפּינג וואָגן"
+msgstr ""
+"די קליפּינג וואָגן דערלויבנדיק איר צו נעמען אויסצוגן פון דעם משפּחה בוים און "
+"אראפקאפיע זיי ווי אַ GEDCOM טעקע."
 
 #: resources/views/admin/trees-preferences.phtml:382
 msgid "The date and time of the last update"
@@ -19955,7 +19957,7 @@ msgstr "באַשטעטיק"
 #: app/Module/PedigreeChartModule.php:365
 #: app/Module/PedigreeChartModule.php:373
 msgid "right"
-msgstr ""
+msgstr "רעכט"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:41
@@ -20191,7 +20193,7 @@ msgstr "צווייטן שוועסטערקינד"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php:51
 msgid "secondary evidence"
-msgstr ""
+msgstr "צווייטיק באַווייַזן"
 
 #. I18N: select all (of a list of options)
 #: resources/views/search-trees.phtml:47
@@ -20270,11 +20272,11 @@ msgstr ""
 #: resources/views/modules/user_blog/list.phtml:28
 #: resources/views/modules/yahrzeit/list.phtml:23
 msgid "show more"
-msgstr ""
+msgstr "ווייז מער"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
-msgstr ""
+msgstr "ווייַזן די טשאַרט"
 
 #: app/Services/RelationshipService.php:493
 msgid "sibling"
