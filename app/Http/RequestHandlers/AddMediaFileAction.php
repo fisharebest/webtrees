@@ -69,6 +69,9 @@ class AddMediaFileAction implements RequestHandlerInterface
         $title  = Validator::parsedBody($request)->string('title');
         $type   = Validator::parsedBody($request)->string('type');
 
+        $type  = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->canonical($type);
+        $title = Registry::elementFactory()->make('OBJE:FILE:TITL')->canonical($title);
+
         $file = $this->media_file_service->uploadFile($request);
 
         if ($file === '') {

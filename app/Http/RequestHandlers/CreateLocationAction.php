@@ -39,12 +39,13 @@ class CreateLocationAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-        $name = Validator::parsedBody($request)->string('name');
+        $name = Validator::parsedBody($request)->isNotEmpty()->string('name');
 
-        $gedcom = "0 @@ _LOC\n1 NAME " . $name;
+        $name = Registry::elementFactory()->make('_LOC:NAME')->canonical($name);
+
+        $gedcom = "0 @@ _LOC\n1 NAME " . strtr($name, ["\n" => "\n2 CONT "]);
 
         $record = $tree->createRecord($gedcom);
-        $record = Registry::locationFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // value and text are for autocomplete
         // html is for interactive modals

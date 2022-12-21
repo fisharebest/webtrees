@@ -65,7 +65,12 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $note        = Validator::parsedBody($request)->string('media-note');
         $title       = Validator::parsedBody($request)->string('title');
         $type        = Validator::parsedBody($request)->string('type');
-        $restriction = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
+        $restriction = Validator::parsedBody($request)->string('restriction');
+
+        $note        = Registry::elementFactory()->make('OBJE:NOTE')->canonical($note);
+        $type        = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->canonical($type);
+        $title       = Registry::elementFactory()->make('OBJE:FILE:TITL')->canonical($title);
+        $restriction = Registry::elementFactory()->make('OBJE:RESN')->canonical($restriction);
 
         $file = $this->media_file_service->uploadFile($request);
 
@@ -76,11 +81,10 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
 
         if ($restriction !== '') {
-            $gedcom .= "\n1 RESN " . $restriction;
+            $gedcom .= "\n1 RESN " . strtr($restriction, ["\n" => "\n2 CONT "]);
         }
 
         $record = $tree->createMediaObject($gedcom);
-        $record = Registry::mediaFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // Accept the new record to keep the filesystem synchronized with the genealogy.
         $this->pending_changes_service->acceptRecord($record);

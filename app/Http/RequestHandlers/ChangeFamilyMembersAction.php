@@ -49,7 +49,7 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
 
         $HUSB = Validator::parsedBody($request)->isXref()->string('HUSB', '');
         $WIFE = Validator::parsedBody($request)->isXref()->string('WIFE', '');
-        $CHIL = Validator::parsedBody($request)->isXref()->array('CHIL');
+        $CHIL = Validator::parsedBody($request)->array('CHIL');
 
         // Current family members
         $old_father   = $family->husband();

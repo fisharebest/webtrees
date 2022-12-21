@@ -39,35 +39,37 @@ class CreateSubmitterAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $name        = Validator::parsedBody($request)->string('submitter_name');
+        $name        = Validator::parsedBody($request)->isNotEmpty()->string('submitter_name');
         $address     = Validator::parsedBody($request)->string('submitter_address');
         $email       = Validator::parsedBody($request)->string('submitter_email');
         $phone       = Validator::parsedBody($request)->string('submitter_phone');
-        $restriction = Validator::parsedBody($request)->isInArray(['', 'NONE', 'PRIVACY', 'CONFIDENTIAL', 'LOCKED'])->string('restriction');
+        $restriction = Validator::parsedBody($request)->string('restriction');
 
-        // Fix non-printing characters
-        $name = trim(preg_replace('/\s+/', ' ', $name));
+        $name        = Registry::elementFactory()->make('SUBM:NAME')->canonical($name);
+        $address     = Registry::elementFactory()->make('SUBM:ADDR')->canonical($address);
+        $email       = Registry::elementFactory()->make('SUBM:EMAIL')->canonical($email);
+        $phone       = Registry::elementFactory()->make('SUBM:PHON')->canonical($phone);
+        $restriction = Registry::elementFactory()->make('SUBM:RESN')->canonical($restriction);
 
-        $gedcom = "0 @@ SUBM\n1 NAME " . $name;
+        $gedcom = "0 @@ SUBM\n1 NAME " . strtr($name, ["\n" => "\n2 CONT "]);
 
         if ($address !== '') {
-            $gedcom .= "\n1 ADDR " . $address;
+            $gedcom .= "\n1 ADDR " . strtr($address, ["\n" => "\n2 CONT "]);
         }
 
         if ($email !== '') {
-            $gedcom .= "\n1 EMAIL " . $email;
+            $gedcom .= "\n1 EMAIL " . strtr($email, ["\n" => "\n2 CONT "]);
         }
 
         if ($phone !== '') {
-            $gedcom .= "\n1 PHON " . $phone;
+            $gedcom .= "\n1 PHON " . strtr($phone, ["\n" => "\n2 CONT "]);
         }
 
         if ($restriction !== '') {
-            $gedcom .= "\n1 RESN " . $restriction;
+            $gedcom .= "\n1 RESN " . strtr($restriction, ["\n" => "\n2 CONT "]);
         }
 
         $record = $tree->createRecord($gedcom);
-        $record = Registry::submitterFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         // value and text are for autocomplete
         // html is for interactive modals
