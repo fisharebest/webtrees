@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-19 10:29+0000\n"
+"PO-Revision-Date: 2022-12-23 18:15+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -141,7 +141,7 @@ msgstr "%1$s × %2$s pixler"
 #: resources/views/edit/edit-fact.phtml:118
 #: resources/views/edit/edit-record.phtml:34
 #: resources/views/edit/edit-record.phtml:37
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
@@ -1985,7 +1985,6 @@ msgid "Ancestral file number"
 msgstr "Anens filnummer"
 
 #: app/Factories/ElementFactory.php:258
-#, fuzzy
 msgid "Ancestry PID"
 msgstr "Ancestry PID"
 
@@ -2042,7 +2041,7 @@ msgstr "Antigua og Barbuda"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
-msgstr "Alle med en bruger konto har adgang til denne side."
+msgstr "Alle med en brugerkonto har adgang til denne side."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59 app/GedcomCode/GedcomCodeTemp.php:243
@@ -2110,17 +2109,19 @@ msgstr "Havblå"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Er du sikker på, at du ønsker at slette linket til “%s”?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
 msgid "Are you sure you want to delete this fact?"
-msgstr "Er du sikker på at du vil slette disse data?"
+msgstr "Er du sikker på, at du vil slette disse data?"
 
 #: resources/views/modules/user-messages/user-messages.phtml:51
 #: resources/views/modules/user-messages/user-messages.phtml:136
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "Er du sikker på du vil slette denne besked? Når den er slettet, kan den ikke genskabes."
+msgstr ""
+"Er du sikker på, du vil slette denne besked? Når den er slettet, kan den "
+"ikke genskabes."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:231
 #: resources/views/admin/clean-data.phtml:41
@@ -2141,15 +2142,16 @@ msgstr "Er du sikker på du vil slette denne besked? Når den er slettet, kan de
 #: resources/views/submitter-page-menu.phtml:26
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Er du sikker på at du ønsker at slette “%s”?"
+msgstr "Er du sikker på, at du ønsker at slette “%s”?"
 
 #: resources/views/pending-changes-page.phtml:104
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Er du sikker på du ønsker at fortryde alle ændringer?"
+msgstr "Er du sikker på, at du ønsker at fortryde alle ændringer?"
 
 #: resources/views/modules/favorites/favorites.phtml:35
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Er du sikker på at du vil fjerne denne person fra din liste med favoritter?"
+msgstr ""
+"Er du sikker på, at du vil fjerne denne person fra din liste med favoritter?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
@@ -4075,7 +4077,7 @@ msgstr "Konvertér CEME tags til GEDCOM 5.5.1"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:84
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Konverter NAME:_XXX koder til GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
@@ -5157,7 +5159,6 @@ msgstr "Standardtema"
 #: app/Factories/ElementFactory.php:614 app/Factories/ElementFactory.php:615
 #: app/Factories/ElementFactory.php:616 app/Factories/ElementFactory.php:617
 #: app/Factories/ElementFactory.php:618
-#, fuzzy
 msgid "Definition"
 msgstr "Definition"
 
@@ -5241,7 +5242,9 @@ msgstr "Slet din konto"
 
 #: resources/views/family-page-menu.phtml:59
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Slettes familien vil alle links mellem personer fjernes, men personerne vil ikke blive slettet. Er du sikker på at du ønsker at slette denne familie?"
+msgstr ""
+"Slettes familien vil alle links mellem personer fjernes, men personerne vil "
+"ikke blive slettet. Er du sikker på, at du ønsker at slette denne familie?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -6282,7 +6285,7 @@ msgstr "%s's familie"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Familieresidens"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -8614,7 +8617,7 @@ msgstr "Libanon"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:120
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Ældre webadresser"
 
 #. I18N: gedcom tag LEGA
 #: app/Factories/ElementFactory.php:858 app/GedcomTag.php:764
@@ -10969,7 +10972,7 @@ msgstr "Paraguay"
 
 #: app/Factories/ElementFactory.php:699
 msgid "Parent"
-msgstr ""
+msgstr "Forælder"
 
 #: app/Factories/ElementFactory.php:1268
 #: app/Http/RequestHandlers/IndividualPage.php:223
@@ -11750,7 +11753,6 @@ msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
-#, fuzzy
 msgctxt "Male pedigree"
 msgid "Rada"
 msgstr "Rada"
@@ -11912,7 +11914,7 @@ msgstr "Poster"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Omdirigér webadresser fra webtrees version 1."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169 app/GedcomCode/GedcomCodeTemp.php:573
@@ -13265,7 +13267,7 @@ msgstr "Vis forfædres fødested på et kort."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Vis dato og tid"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -13318,7 +13320,7 @@ msgstr "Vis miniature ud for personen i diagrammer og familiegrupper."
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:21
 msgid "Show to managers"
-msgstr "Vis til bestyrerer"
+msgstr "Vis til bestyrere"
 
 #: app/Auth.php:532 app/Auth.php:545 app/Elements/RestrictionNotice.php:76
 #: app/Functions/FunctionsEdit.php:220
@@ -13545,6 +13547,9 @@ msgstr "Somalia"
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"Nogle slægtsprogrammer lagrer alle navne under en enkelt post med "
+"egendefinerede underposter såsom _MARNM og _AKA. Et alternativ er at oprette "
+"nye poster for hver navnetype."
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
@@ -13652,7 +13657,7 @@ msgstr "Kilde"
 #: app/Factories/ElementFactory.php:1273 app/Factories/ElementFactory.php:1296
 #: app/Factories/ElementFactory.php:1319
 msgid "Source citation"
-msgstr ""
+msgstr "Kildecitat"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:920
@@ -13796,7 +13801,7 @@ msgstr "Første ændringsdato"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/Factories/ElementFactory.php:952 app/Factories/ElementFactory.php:1064
@@ -14460,7 +14465,7 @@ msgstr "Menuen til slægtslister."
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "Stednavnet er oprettet"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
@@ -14544,7 +14549,7 @@ msgstr "Notatet er oprettet"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Parameteren “%s” mangler."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -14601,7 +14606,7 @@ msgstr "Præfikset er valgfrit, men anbefales. Ved at give tabelnavne et unikt p
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
-msgstr ""
+msgstr "Problemet"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14636,7 +14641,7 @@ msgstr "Serverens konfiguraion er OK."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Serveren forstod ikke denne forespørgsel."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
@@ -14654,7 +14659,7 @@ msgstr "Størrelse af familietræet, tidligste og seneste begivenheder, almindel
 
 #: app/Factories/ElementFactory.php:594 app/Factories/ElementFactory.php:636
 msgid "The solution"
-msgstr ""
+msgstr "Løsningen"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -14662,7 +14667,7 @@ msgstr "Kilden er oprettet"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Bidraget er oprettet"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -14878,7 +14883,7 @@ msgstr "Denne email adresse vil blive brugt til at sende dine adgangskode påmin
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Hændelsen er forekommet, men detaljerne er ukendte."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15449,7 +15454,7 @@ msgstr "Klokkeslæt"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Tidspunkt for sidste ændring"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15627,7 +15632,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "For mange forespørgsler. Prøv igen senere."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15882,15 +15887,15 @@ msgstr "Type"
 
 #: app/Factories/ElementFactory.php:669
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Forkortelsestype"
 
 #: app/Factories/ElementFactory.php:693
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Type af administrativ ID"
 
 #: app/Factories/ElementFactory.php:697
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Demografisk datatype"
 
 #: app/Factories/ElementFactory.php:663 app/Factories/ElementFactory.php:1002
 #: app/Factories/ElementFactory.php:1197 app/GedcomTag.php:688
@@ -15903,29 +15908,29 @@ msgstr "Hændelsestype"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Type af identifikationsnummer"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
-msgstr ""
+msgstr "Stedkodetype"
 
 #: app/Factories/ElementFactory.php:1012
 msgid "Type of marriage"
-msgstr ""
+msgstr "Ægteskabstype"
 
 #: app/Factories/ElementFactory.php:1237
 msgid "Type of name"
-msgstr ""
+msgstr "Navneart"
 
 #: app/Factories/ElementFactory.php:1018 app/Factories/ElementFactory.php:1255
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Referencenummertype"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
-msgstr ""
+msgstr "Forskningsopgavetype"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -16058,7 +16063,7 @@ msgstr "Ukendt"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Fjern link"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -17271,7 +17276,7 @@ msgstr "folketælling tilføjet"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "ubekræftet"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
@@ -17297,7 +17302,7 @@ msgstr "barn"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "statsborger"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17356,7 +17361,7 @@ msgstr "opret"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulturel"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17428,7 +17433,7 @@ msgstr "døde"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "modbevist"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -17569,15 +17574,15 @@ msgstr "svigerfar"
 
 #: app/Functions/Functions.php:640
 msgid "fiancé"
-msgstr ""
+msgstr "forlovede"
 
 #: app/Functions/Functions.php:687
 msgid "fiancé(e)"
-msgstr ""
+msgstr "forlovede"
 
 #: app/Functions/Functions.php:664
 msgid "fiancée"
-msgstr ""
+msgstr "forlovede"
 
 #: app/Functions/Functions.php:495
 msgid "fifteenth cousin"
@@ -17944,7 +17949,7 @@ msgstr "mand/kvinde"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geografisk"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -19503,7 +19508,7 @@ msgstr "ham selv"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "husstand"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -19533,7 +19538,7 @@ msgstr "importfil"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "inline-notat"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20046,7 +20051,7 @@ msgstr "procent"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "politisk"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20073,7 +20078,7 @@ msgstr "primært bevis"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "påvist"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
@@ -20111,7 +20116,7 @@ msgstr "afvist"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "religiøst"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
@@ -20409,7 +20414,7 @@ msgstr "fætter af 7. led"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "delt note"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
@@ -20426,12 +20431,12 @@ msgstr "vis"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "vis ændringer foretaget i webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "vis foretagne ændringer i slægtsdataene"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
