@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-19 10:29+0000\n"
+"PO-Revision-Date: 2022-12-24 13:24+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -139,7 +139,7 @@ msgstr "%1$s × %2$s pixler"
 #: resources/views/fact-association-structure.phtml:109
 #: resources/views/fact-gedcom-fields.phtml:68
 #: resources/views/modules/media-list/page.phtml:143
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
@@ -1932,7 +1932,6 @@ msgstr "Anens filnummer"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/Ancestry.php:64
-#, fuzzy
 msgid "Ancestry PID"
 msgstr "Ancestry PID"
 
@@ -1994,7 +1993,7 @@ msgstr "Antigua og Barbuda"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
-msgstr "Alle med en bruger konto har adgang til denne side."
+msgstr "Alle med en brugerkonto har adgang til denne side."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59
@@ -2068,17 +2067,19 @@ msgstr "Havblå"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Er du sikker på at du ønsker at slette linket til “%s”?"
+msgstr "Er du sikker på, at du ønsker at slette linket til “%s”?"
 
 #: resources/views/individual-page-name.phtml:90
 #: resources/views/media-page-details.phtml:40
 msgid "Are you sure you want to delete this fact?"
-msgstr "Er du sikker på at du vil slette disse data?"
+msgstr "Er du sikker på, at du vil slette disse data?"
 
 #: resources/views/modules/user-messages/user-messages.phtml:53
 #: resources/views/modules/user-messages/user-messages.phtml:135
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "Er du sikker på du vil slette denne besked? Når den er slettet, kan den ikke genskabes."
+msgstr ""
+"Er du sikker på, du vil slette denne besked? Når den er slettet, kan den "
+"ikke genskabes."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:259
 #: resources/views/admin/clean-data.phtml:42
@@ -2095,15 +2096,16 @@ msgstr "Er du sikker på du vil slette denne besked? Når den er slettet, kan de
 #: resources/views/record-page-menu.phtml:47
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Er du sikker på at du ønsker at slette “%s”?"
+msgstr "Er du sikker på, at du ønsker at slette “%s”?"
 
 #: resources/views/pending-changes-page.phtml:106
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Er du sikker på du ønsker at fortryde alle ændringer?"
+msgstr "Er du sikker på, at du ønsker at fortryde alle ændringer?"
 
 #: resources/views/modules/favorites/favorites.phtml:36
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Er du sikker på at du vil fjerne denne person fra din liste med favoritter?"
+msgstr ""
+"Er du sikker på, at du vil fjerne denne person fra din liste med favoritter?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
@@ -5031,7 +5033,6 @@ msgstr "Standardtema"
 #: app/CustomTags/GedcomL.php:160 app/CustomTags/GedcomL.php:161
 #: app/CustomTags/GedcomL.php:162 app/CustomTags/GedcomL.php:163
 #: app/CustomTags/GedcomL.php:164
-#, fuzzy
 msgid "Definition"
 msgstr "Definition"
 
@@ -5113,7 +5114,9 @@ msgstr "Slet din konto"
 
 #: resources/views/family-page-menu.phtml:81
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Slettes familien vil alle links mellem personer fjernes, men personerne vil ikke blive slettet. Er du sikker på at du ønsker at slette denne familie?"
+msgstr ""
+"Slettes familien vil alle links mellem personer fjernes, men personerne vil "
+"ikke blive slettet. Er du sikker på, at du ønsker at slette denne familie?"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
@@ -5773,7 +5776,6 @@ msgstr "Esfand (Persisk kalender)"
 
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
-#, fuzzy
 msgid "Esri/ArcGIS"
 msgstr "Esri/ArcGIS"
 
@@ -6157,7 +6159,7 @@ msgstr "%s's familie"
 
 #: app/Gedcom.php:476
 msgid "Family residence"
-msgstr ""
+msgstr "Familieresidens"
 
 #: app/CustomTags/GedcomL.php:135
 msgid "Family status"
@@ -7958,7 +7960,7 @@ msgstr "Hjemmelsmand"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Inline-kildeposter frarådes."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:177 app/Module/ChartsBlockModule.php:260
@@ -8432,12 +8434,12 @@ msgstr "Laie, Hawaii, USA"
 #. I18N: GEDCOM tag _PURC
 #: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
-msgstr ""
+msgstr "Jordkøb"
 
 #. I18N: GEDCOM tag _SALE
 #: app/CustomTags/Reunion.php:60
 msgid "Land sale"
-msgstr ""
+msgstr "Jordsalg"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:101
@@ -8593,7 +8595,7 @@ msgstr "Libanon"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:125
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Ældre webadresser"
 
 #: app/CustomTags/Reunion.php:57
 msgid "Legatee"
@@ -11714,7 +11716,6 @@ msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
-#, fuzzy
 msgctxt "Male pedigree"
 msgid "Rada"
 msgstr "Rada"
@@ -11873,7 +11874,7 @@ msgstr "Poster"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Omdirigér webadresser fra webtrees version 1."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169
@@ -13253,7 +13254,7 @@ msgstr "Vis forfædres fødested på et kort."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:69
 msgid "Show the date and time"
-msgstr ""
+msgstr "Vis dato og tid"
 
 #: resources/views/modules/html/config.phtml:53
 msgid "Show the date and time of update"
@@ -13279,7 +13280,7 @@ msgstr "Vis efternavnsliste"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Vis en begivenheds sted på et eksternt kort."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
@@ -13307,7 +13308,7 @@ msgstr "Vis miniature ud for personen i diagrammer og familiegrupper."
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:23
 msgid "Show to managers"
-msgstr "Vis til bestyrerer"
+msgstr "Vis til bestyrere"
 
 #: app/Auth.php:592 app/Auth.php:605 app/Elements/RestrictionNotice.php:99
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
@@ -13388,7 +13389,7 @@ msgstr "Registrering og login"
 
 #: app/CustomTags/Heredis.php:52
 msgid "Signature"
-msgstr ""
+msgstr "Underskrift"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13530,10 +13531,13 @@ msgstr "Nogle slægtsprogrammer opretter GEDCOM filer som indeholder medie filna
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"I nogle slægtsprogrammer registeres alle navne i én navnepost ved brug af "
+"brugerdefinerede koder såsom _MARNM og _AKA. Alternativt kan man oprette "
+"særskilte navneposter for hvert navn."
 
 #: resources/views/admin/tags.phtml:36
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Nogle af disse GEDCOM-koder er sjældent eller aldrig brugt."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:631
@@ -13561,7 +13565,7 @@ msgstr "Søn af %s"
 #: app/CustomTags/Gedcom7.php:81 app/CustomTags/Gedcom7.php:108
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "Sorteringsdato"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13584,7 +13588,7 @@ msgstr "Sortering"
 
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:110
 msgid "Sort time"
-msgstr ""
+msgstr "Sorteringstidspunkt"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13643,11 +13647,11 @@ msgstr "Kilde"
 #: app/Gedcom.php:746 app/Gedcom.php:770 app/Gedcom.php:794 app/Gedcom.php:903
 #: app/Gedcom.php:917
 msgid "Source citation"
-msgstr ""
+msgstr "Kildecitat"
 
 #: resources/views/admin/tags.phtml:325
 msgid "Source citations"
-msgstr ""
+msgstr "Kildecitater"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -13767,7 +13771,7 @@ msgstr "St. Paul, Minnesota, USA"
 
 #: resources/views/admin/tags.phtml:31
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standard GEDCOM-koder"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -13783,7 +13787,7 @@ msgstr "Første ændringsdato"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #: app/CustomTags/GedcomL.php:232 app/CustomTags/PersonalAncestralFile.php:72
 #: app/Gedcom.php:408 app/Gedcom.php:521 app/Gedcom.php:541 app/Gedcom.php:812
@@ -14125,7 +14129,7 @@ msgstr "Tegucigalpa , Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Skabelon"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14174,7 +14178,7 @@ msgstr "Tekst"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "Tekstretning"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -14197,6 +14201,8 @@ msgstr "GEDCOM filen “%s” er blevet importeret."
 #: resources/views/admin/tags.phtml:34
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
 msgstr ""
+"GEDCOM-standarden omfatter et stort antal indtastningskoder; kendt som "
+"GEDCOM-koder."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14230,7 +14236,7 @@ msgstr "PHP.INI funktionen “%1$s” er aktiveret."
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "Webadressen blev kopieret til udklipsholderen"
 
 #: resources/views/emails/approve-user-html.phtml:22
 #: resources/views/emails/approve-user-text.phtml:16
@@ -14409,6 +14415,8 @@ msgstr "Følgende liste viser de typiske krav."
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"Formulardata er ikke komplet. Muligvis skal du forøge max_input_vars på din "
+"server?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -14444,7 +14452,7 @@ msgstr "Menuen til slægtslister."
 #: app/Http/RequestHandlers/CreateLocationAction.php:55
 #: app/Http/RequestHandlers/MapDataSave.php:90
 msgid "The location has been created"
-msgstr ""
+msgstr "Stednavnet er oprettet"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:36
 msgid "The location of this place is not known."
@@ -14471,7 +14479,7 @@ msgstr "Hukommelses- og CPU-tidsgrænserne afhænger af antallet af individer i 
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Beskeden blev ikke sendt til %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:102
@@ -14518,6 +14526,8 @@ msgstr "Den nye bruger vil blive bedt om at bekræfte deres email adresse før o
 #: resources/views/admin/tags.phtml:938
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Den næste GEDCOM-standard vil indeholde nye koder, og gamle koder vil udgå. "
+"Du kan benytte nogle af de nye koder allerede."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
@@ -14528,7 +14538,7 @@ msgstr "Notatet er oprettet"
 #: app/Validator.php:379 app/Validator.php:395
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Parameteren “%s” mangler."
 
 #: app/Http/RequestHandlers/SetupWizard.php:381
 msgid "The password needs to be at least six characters long."
@@ -14617,7 +14627,7 @@ msgstr "Serverens konfiguraion er OK."
 
 #: app/Http/Exceptions/HttpBadRequestException.php:35
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Serveren forstod ikke denne forespørgsel."
 
 #: app/Services/ServerCheckService.php:245
 msgid "The server’s temporary folder cannot be accessed."
@@ -14636,7 +14646,7 @@ msgstr "Størrelse af familietræet, tidligste og seneste begivenheder, almindel
 
 #: app/CustomTags/GedcomL.php:137 app/CustomTags/GedcomL.php:193
 msgid "The solution"
-msgstr ""
+msgstr "Løsningen"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:103
 msgid "The source has been created"
@@ -14644,7 +14654,7 @@ msgstr "Kilden er oprettet"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:55
 msgid "The submission has been created"
-msgstr ""
+msgstr "Bidraget er oprettet"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:80
 msgid "The submitter has been created"
@@ -14856,7 +14866,7 @@ msgstr "Denne email adresse vil blive brugt til at sende dine adgangskode påmin
 
 #: app/Elements/AbstractEventElement.php:67
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Hændelsen er forekommet, men detaljerne er ukendte."
 
 #: app/Auth.php:228 app/Http/RequestHandlers/RedirectFamilyPhp.php:69
 msgid "This family does not exist or you do not have permission to view it."
@@ -14906,7 +14916,7 @@ msgstr "Dette stamtræ blev sidst opdateret %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Filnavnet er uforeneligt med GEDZIP's filformat."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15301,26 +15311,26 @@ msgstr "Klokkeslæt"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:119
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "Tidspunkt for fødsel"
 
 #: resources/views/admin/tags.phtml:959
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Tidspunkter for fødsel og død"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:123
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr ""
+msgstr "Tidspunkt for død"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:449 app/Gedcom.php:616
 #: app/Gedcom.php:763 app/Gedcom.php:784 app/Gedcom.php:815 app/Gedcom.php:831
 #: app/Gedcom.php:862 app/Gedcom.php:878
 msgid "Time of last change"
-msgstr ""
+msgstr "Tidspunkt for sidste ændring"
 
 #: app/CustomTags/Gedcom7.php:129
 msgid "Time of status change"
-msgstr ""
+msgstr "Tidspunkt for statusændring"
 
 #. I18N: A configuration setting
 #: app/CustomTags/MyHeritage.php:56
@@ -15435,6 +15445,8 @@ msgstr "For at hjælpe dig med at komme igang med denne ramme, har vi oprettet a
 #: resources/views/admin/tags.phtml:1010
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
+"For at kunne registrere data med brugerdefinerede GEDCOM-koder skal disse "
+"koder først aktiveres."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15443,6 +15455,7 @@ msgstr "For at oprette en ny forskningsopgave skal du først tilføje “forskni
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"For at kunne vise kort skal kortudbyderen først aktiveres i kontrolpanelet."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:588
@@ -15474,11 +15487,11 @@ msgstr "Du kan bruge følgende links for at oplyse søgemaskinerne om at der fin
 #: resources/views/modules/map-box/config.phtml:36
 #: resources/views/modules/openrouteservice/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Du skal bruge en API-kode for at bruge denne tjeneste."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Du skal bruge en konto for at bruge denne tjeneste."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15507,7 +15520,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "For mange forespørgsler. Prøv igen senere."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:105
@@ -15765,15 +15778,15 @@ msgstr "Type"
 
 #: app/CustomTags/GedcomL.php:262
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Forkortelsestype"
 
 #: app/CustomTags/GedcomL.php:286
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Type af administrativ ID"
 
 #: app/CustomTags/GedcomL.php:290
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Demografisk datatype"
 
 #: app/CustomTags/GedcomL.php:255 app/Gedcom.php:459 app/Gedcom.php:656
 msgid "Type of event"
@@ -15785,28 +15798,28 @@ msgstr "Hændelsestype"
 
 #: app/Gedcom.php:669
 msgid "Type of identification number"
-msgstr ""
+msgstr "Type af identifikationsnummer"
 
 #: app/CustomTags/GedcomL.php:279
 msgid "Type of location"
-msgstr ""
+msgstr "Stedkodetype"
 
 #: app/Gedcom.php:469
 msgid "Type of marriage"
-msgstr ""
+msgstr "Ægteskabstype"
 
 #: app/Gedcom.php:710
 msgid "Type of name"
-msgstr ""
+msgstr "Navneart"
 
 #: app/Gedcom.php:475 app/Gedcom.php:728 app/Gedcom.php:768 app/Gedcom.php:792
 #: app/Gedcom.php:823 app/Gedcom.php:843
 msgid "Type of reference number"
-msgstr ""
+msgstr "Referencenummertype"
 
 #: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
-msgstr ""
+msgstr "Forskningsopgavetype"
 
 #. I18N: A configuration setting
 #: app/CustomTags/Aldfaer.php:70 app/CustomTags/Ancestry.php:76
@@ -15933,7 +15946,7 @@ msgstr "Ukendt"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
 msgid "Unlink"
-msgstr ""
+msgstr "Fjern link"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15974,7 +15987,7 @@ msgstr "Opdater de højere niveau af stednavne, mens du holder de lavere niveaue
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
-msgstr ""
+msgstr "Ajourført"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16014,7 +16027,7 @@ msgstr "Brug et “?” for at matche et enkelt tegn. Brug “*” for at matche
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Anvend en ekstern tjeneste til at finde stednavne."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -16046,7 +16059,7 @@ msgstr "Brug bogstaverne A-Z, a-z, cifrene 0-9 eller understregning"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Brug kort i webtrees."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:121
@@ -16070,7 +16083,7 @@ msgstr "Brug silhouetter"
 
 #: app/Http/RequestHandlers/CopyFact.php:73
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Brug “Rediger“-menuen for at indsætte dette i en anden post."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16273,7 +16286,7 @@ msgstr "Vis familie"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Se dette sted med %s"
 
 #: resources/views/calendar-page.phtml:225
 msgid "View this month"
@@ -16509,7 +16522,7 @@ msgstr "Vidne"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "Vidner"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
@@ -16606,6 +16619,8 @@ msgstr "Du kan opsætte adgangsregler til en bestemt post, hændelse eller begiv
 #: resources/views/admin/tags.phtml:38
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
 msgstr ""
+"Du kan forenkle redigeringsvinduerne ved at skjule GEDCOM-koder, som du "
+"aldrig bruger."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
@@ -16747,7 +16762,7 @@ msgstr "Din server bruger PHP versionen %s og denne bliver ikke længere sikkerh
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16777,6 +16792,9 @@ msgstr "Zoom ud"
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"_WT_OBJE_SORT-koder blev brugt af ældre versioner af webtrees til at markere "
+"det foretrukne billede. Som et alternativ kan billederne sorteres, så det "
+"foretrukne står først."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -16907,7 +16925,7 @@ msgstr "forælders søskende"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr ""
+msgstr "automatisk"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
@@ -17073,7 +17091,7 @@ msgstr "fortryd"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:65
 msgid "challenged"
-msgstr ""
+msgstr "ubekræftet"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:77
@@ -17088,7 +17106,7 @@ msgstr "barn"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "statsborger"
 
 #: resources/views/admin/components.phtml:108
 #: resources/views/admin/components.phtml:129
@@ -17148,7 +17166,7 @@ msgstr "opret"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulturel"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17217,7 +17235,7 @@ msgstr "døde"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:66
 msgid "disproven"
-msgstr ""
+msgstr "modbevist"
 
 #: app/Module/PedigreeChartModule.php:367
 #: app/Module/PedigreeChartModule.php:375
@@ -17343,15 +17361,15 @@ msgstr "svigerfar"
 
 #: app/Services/RelationshipService.php:369
 msgid "fiancé"
-msgstr ""
+msgstr "forlovede"
 
 #: app/Services/RelationshipService.php:416
 msgid "fiancé(e)"
-msgstr ""
+msgstr "forlovede"
 
 #: app/Services/RelationshipService.php:393
 msgid "fiancée"
-msgstr ""
+msgstr "forlovede"
 
 #: app/Services/RelationshipService.php:2352
 msgid "fifteenth cousin"
@@ -17718,7 +17736,7 @@ msgstr "mand/kvinde"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geografisk"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
@@ -19353,7 +19371,7 @@ msgstr "ham selv"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "husstand"
 
 #: app/Elements/RoleInEvent.php:79 app/Services/RelationshipService.php:367
 msgid "husband"
@@ -19375,7 +19393,7 @@ msgstr "Spædbarn"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
-msgstr ""
+msgstr "inline-notat"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:197
@@ -19861,12 +19879,12 @@ msgstr "procent"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr ""
+msgstr "uformateret tekst"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "politisk"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page-images.phtml:49
@@ -19891,7 +19909,7 @@ msgstr "primært bevis"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:67
 msgid "proven"
-msgstr ""
+msgstr "påvist"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50
@@ -19929,7 +19947,7 @@ msgstr "afvist"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "religiøst"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:87
@@ -20222,7 +20240,7 @@ msgstr "fætter af 7. led"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
-msgstr ""
+msgstr "delt note"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/tags.phtml:969 resources/views/admin/tags.phtml:983
@@ -20253,12 +20271,12 @@ msgstr "vis"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:277
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "vis ændringer foretaget i webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:279
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "vis foretagne ændringer i slægtsdataene"
 
 #. I18N: button label
 #: resources/views/admin/trees-check.phtml:88
@@ -20797,7 +20815,7 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees kan ikke danne miniaturebilleder med dette filformat."
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
