@@ -46,14 +46,19 @@ use Fisharebest\Webtrees\I18N;
     let SURN = container.querySelector('[id$=":SURN"]');
     let NSFX = container.querySelector('[id$=":NSFX"]');
 
-    if (NAME.value !== webtrees.buildNameFromParts(
+    let generated_name = webtrees.buildNameFromParts(
       NPFX ? NPFX.value : '',
       GIVN ? GIVN.value : '',
       SPFX ? SPFX.value : '',
       SURN ? SURN.value : '',
       NSFX ? NSFX.value : '',
       'U',
-    )) {
+    );
+
+    if (NAME.value === '') {
+      NAME.value = generated_name;
+    }
+    if (NAME.value !== generated_name) {
       document.getElementById('<?= e($id) ?>-edit').click();
     } else {
       let fn = function () {
