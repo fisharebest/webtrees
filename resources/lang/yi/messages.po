@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-22 09:20+0000\n"
+"PO-Revision-Date: 2022-12-24 13:24+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -14735,7 +14735,7 @@ msgstr "טעמע"
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:46
 msgid "Theme change"
-msgstr ""
+msgstr "טעמע טוישן"
 
 #: app/Http/RequestHandlers/ModulesThemesPage.php:43
 #: resources/views/admin/control-panel.phtml:594
@@ -14784,8 +14784,8 @@ msgstr ""
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "עס זענען געווען קיין ענדערונגען אין די לעצטע טעג."
+msgstr[1] "עס זענען געווען קיין ענדערונגען אין די לעצטע  %s טעג."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:75
@@ -14971,7 +14971,7 @@ msgstr ""
 #: resources/views/statistics/other/charts/pie.phtml:19
 #: resources/views/statistics/other/top10-list.phtml:25
 msgid "This information is not available."
-msgstr ""
+msgstr "די אינפֿאָרמאַציע איז ניט בנימצא."
 
 #: app/Statistics/Repository/EventRepository.php:253
 #: app/Statistics/Repository/FamilyDatesRepository.php:107
@@ -15136,13 +15136,17 @@ msgstr ""
 #: resources/views/edit/raw-gedcom-record.phtml:26
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"דער בלאַט אַלאַוז איר צו בייפּאַס די געוויינטלעך פארמען און רעדאַגירן די אַ"
+"נדערלייינג דאַטן גלייַך. עס איז אַן אַוואַנסירטע אָפּציע, און איר זאָל נישט "
+"נוצן עס אויב איר פֿאַרשטיין די GEDCOM פֿאָרמאַט. אויב איר מאַכן אַ גרייַז דאָ"
+", עס קען זיין שווער צו פאַרריכטן."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "דעם בלאַט איז געווען וויוד איין מאָל."
+msgstr[1] "דעם בלאַט איז געווען וויוד %s מאל."
 
 #: resources/views/help/pending-changes.phtml:18
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -15332,7 +15336,7 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Module/TimelineChartModule.php:93
 msgid "Timeline"
-msgstr ""
+msgstr "טיימליין"
 
 #: resources/views/admin/changes-log.phtml:136
 #: resources/views/admin/site-logs.phtml:124
@@ -15513,16 +15517,16 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "די מערסט פּראָסט געגעבן נאָמען"
+msgstr[1] "די %s מערסט פּראָסט געגעבן נעמען"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:191
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "די  מערסט פּראָסט לעצטע נעמען"
+msgstr[1] "די %s מערסט פּראָסט לעצטע נעמען"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:102
@@ -15533,7 +15537,7 @@ msgstr "די מערסט פּאָפּולאַר געגעבן נאָמען"
 #: app/Module/TopGivenNamesModule.php:48
 #: resources/views/modules/statistics-chart/names.phtml:45
 msgid "Top given names"
-msgstr ""
+msgstr "די מערסט פּראָסט געגעבן נעמען"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:188
@@ -15544,7 +15548,7 @@ msgstr ""
 #: app/Module/TopSurnamesModule.php:74
 #: resources/views/modules/statistics-chart/names.phtml:25
 msgid "Top surnames"
-msgstr ""
+msgstr "די מערסט פּראָסט לעצטע נעמען"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:199
@@ -15576,7 +15580,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/individual-events.phtml:18
 msgid "Total births"
-msgstr ""
+msgstr "גאַנץ געבורטס"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:59
 msgid "Total dead"
@@ -15604,7 +15608,7 @@ msgstr "גאַנץ געשעענישן"
 #: resources/xml/reports/fact_sources.xml:354
 #: resources/xml/reports/marriage_report.xml:111
 msgid "Total families"
-msgstr ""
+msgstr "גאַנץ משפחות"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:30
 msgid "Total females"
@@ -15676,7 +15680,7 @@ msgstr ""
 #: resources/views/emails/register-notify-html.phtml:36
 #: resources/views/emails/register-notify-text.phtml:30
 msgid "Tree"
-msgstr ""
+msgstr "בוים"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:305
@@ -15879,7 +15883,7 @@ msgstr ""
 #: app/CustomTags/RootsMagic.php:77 app/CustomTags/RootsMagic.php:78
 #: app/CustomTags/RootsMagic.php:81
 msgid "Unique identifier"
-msgstr ""
+msgstr "יינציק ידענטיפיער"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
@@ -16406,7 +16410,7 @@ msgstr ""
 
 #: resources/views/login-page.phtml:23
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "ברוכים הבאים צו דעם גענעאַלאָגיע וועבזייטל"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
@@ -16452,7 +16456,7 @@ msgstr ""
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr ""
+msgstr "ווער איז אָנליין"
 
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
@@ -16566,11 +16570,11 @@ msgstr "איר זענען נישט ערלויבט צו שיקן אַרטיקלע
 #: resources/views/modules/login_block/sign-out.phtml:17
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "איר זענט לאָגד אין ווי %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:99
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "איר קענט אָנווענדן פֿאַר אַ חשבון מיט די לינק אונטן."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
@@ -16725,7 +16729,7 @@ msgstr "ייִנגסטער מוטער"
 
 #: resources/views/modules/clippings/show.phtml:26
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "דיין קליפּינג וואָגן איז ליידיק."
 
 #: resources/views/contact-page.phtml:43
 #: resources/views/setup/step-5-administrator.phtml:56
@@ -20747,7 +20751,7 @@ msgstr "נישט פאַרלאָזלעך זאָגן"
 #: app/Module/PedigreeChartModule.php:374
 #: resources/views/edit/reorder-card-header.phtml:28
 msgid "up"
-msgstr ""
+msgstr "אויבן"
 
 #: resources/views/admin/trees-unconnected.phtml:33
 msgid "update"
