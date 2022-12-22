@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-22 09:20+0000\n"
+"PO-Revision-Date: 2022-12-24 13:24+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -1993,7 +1993,7 @@ msgstr "Antigua og Barbuda"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
-msgstr "Alle med en bruger konto har adgang til denne side."
+msgstr "Alle med en brugerkonto har adgang til denne side."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59
@@ -2072,12 +2072,14 @@ msgstr "Er du sikker på, at du ønsker at slette linket til “%s”?"
 #: resources/views/individual-page-name.phtml:90
 #: resources/views/media-page-details.phtml:40
 msgid "Are you sure you want to delete this fact?"
-msgstr "Er du sikker på at du vil slette disse data?"
+msgstr "Er du sikker på, at du vil slette disse data?"
 
 #: resources/views/modules/user-messages/user-messages.phtml:53
 #: resources/views/modules/user-messages/user-messages.phtml:135
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
-msgstr "Er du sikker på du vil slette denne besked? Når den er slettet, kan den ikke genskabes."
+msgstr ""
+"Er du sikker på, du vil slette denne besked? Når den er slettet, kan den "
+"ikke genskabes."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:259
 #: resources/views/admin/clean-data.phtml:42
@@ -2094,15 +2096,16 @@ msgstr "Er du sikker på du vil slette denne besked? Når den er slettet, kan de
 #: resources/views/record-page-menu.phtml:47
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Er du sikker på at du ønsker at slette “%s”?"
+msgstr "Er du sikker på, at du ønsker at slette “%s”?"
 
 #: resources/views/pending-changes-page.phtml:106
 msgid "Are you sure you want to reject all the changes to this family tree?"
-msgstr "Er du sikker på du ønsker at fortryde alle ændringer?"
+msgstr "Er du sikker på, at du ønsker at fortryde alle ændringer?"
 
 #: resources/views/modules/favorites/favorites.phtml:36
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Er du sikker på at du vil fjerne denne person fra din liste med favoritter?"
+msgstr ""
+"Er du sikker på, at du vil fjerne denne person fra din liste med favoritter?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
@@ -5111,7 +5114,9 @@ msgstr "Slet din konto"
 
 #: resources/views/family-page-menu.phtml:81
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Slettes familien vil alle links mellem personer fjernes, men personerne vil ikke blive slettet. Er du sikker på at du ønsker at slette denne familie?"
+msgstr ""
+"Slettes familien vil alle links mellem personer fjernes, men personerne vil "
+"ikke blive slettet. Er du sikker på, at du ønsker at slette denne familie?"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
@@ -13303,7 +13308,7 @@ msgstr "Vis miniature ud for personen i diagrammer og familiegrupper."
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:23
 msgid "Show to managers"
-msgstr "Vis til bestyrerer"
+msgstr "Vis til bestyrere"
 
 #: app/Auth.php:592 app/Auth.php:605 app/Elements/RestrictionNotice.php:99
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
