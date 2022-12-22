@@ -36,7 +36,7 @@ class SeedUserTable implements SeedInterface
         // Add a "default" user, to store default settings
 
         if (DB::connection()->getDriverName() === 'sqlsrv') {
-            DB::statement('SET IDENTITY_INSERT [' . DB::connection()->getTablePrefix() . 'user] ON');
+            DB::connection()->statement('SET IDENTITY_INSERT [' . DB::connection()->getTablePrefix() . 'user] ON');
         }
 
         DB::table('user')->updateOrInsert([
@@ -49,7 +49,7 @@ class SeedUserTable implements SeedInterface
         ]);
 
         if (DB::connection()->getDriverName() === 'sqlsrv') {
-            DB::statement('SET IDENTITY_INSERT [' . DB::connection()->getTablePrefix() . 'user] OFF');
+            DB::connection()->statement('SET IDENTITY_INSERT [' . DB::connection()->getTablePrefix() . 'user] OFF');
         }
     }
 }
