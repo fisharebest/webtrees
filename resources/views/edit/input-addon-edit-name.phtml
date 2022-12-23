@@ -24,10 +24,10 @@ use Fisharebest\Webtrees\I18N;
     event.preventDefault();
     let element = document.getElementById('<?= e($id) ?>');
     element.readOnly = false;
+    element.style.backgroundColor = null; // Initially set to #e9ecef to match input-group-addon
     element.focus();
 
-    let input_addon = this.parentNode;
-    input_addon.removeChild(input_addon);
+    this.parentNode.removeChild(this);
   });
   document.addEventListener('DOMContentLoaded', function () {
     let NAME = document.getElementById('<?= e($id) ?>');
