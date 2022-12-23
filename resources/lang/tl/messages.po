@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-04-06 13:49+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/webtrees-20/tl/>\n"
+"PO-Revision-Date: 2022-12-24 13:24+0000\n"
+"Last-Translator: sskehan <shaun_skehan@hotmail.com>\n"
+"Language-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/tl/>\n"
 "Language: tl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 "
+"|| n % 10 == 6 || n % 10 == 9);\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -25,7 +27,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr ""
+msgstr " ngunit ang mga detalye ay hindi alam"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -42,7 +44,7 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
 msgid " in "
-msgstr ""
+msgstr " sa "
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 #, php-format
@@ -64,7 +66,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:70
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:271
 #, php-format
@@ -133,7 +135,7 @@ msgstr ""
 #: app/Http/RequestHandlers/ManageMediaData.php:322 app/MediaFile.php:333
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "mga pixel"
 
 #. I18N: e.g. "Occupation: farmer"
 #: app/Elements/AbstractElement.php:212
@@ -220,8 +222,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s anak"
+msgstr[1] "%s anak"
 
 #: app/Age.php:120 app/Elements/AgeAtEvent.php:97
 #: app/Functions/FunctionsDate.php:72 app/Functions/FunctionsPrint.php:272
@@ -237,8 +239,8 @@ msgstr[1] "%s araw"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "pamilyang %s"
+msgstr[1] "mga pamilyang %s"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -275,18 +277,18 @@ msgstr[1] ""
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:109
 #: app/Http/RequestHandlers/SearchReplaceAction.php:115
-#, php-format
+#, fuzzy, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s indibidwal ay nabago"
 msgstr[1] ""
 
 #: app/Module/UserMessagesModule.php:170
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s mensahe"
+msgstr[1] "%s mensahe"
 
 #: app/Age.php:116 app/Elements/AgeAtEvent.php:91
 #: app/Functions/FunctionsDate.php:68 app/Functions/FunctionsPrint.php:268
@@ -496,7 +498,7 @@ msgstr "edad %s"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(edad %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:359
@@ -505,7 +507,7 @@ msgstr ""
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(edad %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -514,7 +516,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(edad %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -524,122 +526,122 @@ msgstr ""
 
 #: app/Age.php:213 app/Functions/FunctionsPrint.php:376
 msgid "(on the date of death)"
-msgstr ""
+msgstr "(kamatayan)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:325
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Statistics/Service/CenturyService.php:67
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "ika-10"
 
 #: app/Statistics/Service/CenturyService.php:65
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "ika-11"
 
 #: app/Statistics/Service/CenturyService.php:63
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "ika-12"
 
 #: app/Statistics/Service/CenturyService.php:61
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "ika-13"
 
 #: app/Statistics/Service/CenturyService.php:59
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "ika-14"
 
 #: app/Statistics/Service/CenturyService.php:57
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "ika-15"
 
 #: app/Statistics/Service/CenturyService.php:55
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "ika-16"
 
 #: app/Statistics/Service/CenturyService.php:53
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "ika-17"
 
 #: app/Statistics/Service/CenturyService.php:51
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "ika-18"
 
 #: app/Statistics/Service/CenturyService.php:49
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "ika-19"
 
 #: app/Statistics/Service/CenturyService.php:85
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "ika-1"
 
 #: app/Statistics/Service/CenturyService.php:47
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "ika-20"
 
 #: app/Statistics/Service/CenturyService.php:45
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "ika-21"
 
 #: app/Statistics/Service/CenturyService.php:83
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "ika-2"
 
 #: app/Statistics/Service/CenturyService.php:81
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "ika-3"
 
 #: app/Statistics/Service/CenturyService.php:79
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "ika-4"
 
 #: app/Statistics/Service/CenturyService.php:77
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "ika-5"
 
 #: app/Statistics/Service/CenturyService.php:75
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "ika-6"
 
 #: app/Statistics/Service/CenturyService.php:73
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "ika-7"
 
 #: app/Statistics/Service/CenturyService.php:71
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "ika-8"
 
 #: app/Statistics/Service/CenturyService.php:69
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "ika-9"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
 #: app/Http/RequestHandlers/UserEditPage.php:114
 msgid "<default theme>"
-msgstr ""
+msgstr "<default na tema>"
 
 #: resources/views/register-page.phtml:26
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -655,12 +657,12 @@ msgstr ""
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:33
 msgid "A URL"
-msgstr ""
+msgstr "A URL"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:110
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Tsart na nagpapakita ng mga relasyon sa pagitan ng dalawang indibidwal."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
@@ -712,7 +714,7 @@ msgstr ""
 #: resources/views/modals/media-file-fields.phtml:29
 #: resources/views/modals/media-file-fields.phtml:89
 msgid "A file on the server"
-msgstr ""
+msgstr "Isang file sa server"
 
 #: resources/views/admin/map-import-form.phtml:51
 #: resources/views/admin/trees-export.phtml:51
@@ -720,7 +722,7 @@ msgstr ""
 #: resources/views/modals/media-file-fields.phtml:25
 #: resources/views/modals/media-file-fields.phtml:41
 msgid "A file on your computer"
-msgstr ""
+msgstr "Isang file sa iyong computer"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:73
@@ -735,17 +737,17 @@ msgstr ""
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Isang link sa mga contact sa site."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Isang link sa home page ng webtrees."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:115
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Listahan ng mga akan ng isang pamilya."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
@@ -755,27 +757,27 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:57
 msgid "A list of families."
-msgstr ""
+msgstr "Listahan ng mga pamilya."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:84
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "Listahan ng mga madalas na tanong at sagot."
 
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:111
 msgid "A list of individuals."
-msgstr ""
+msgstr "Listahan ng mga indibidwal."
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Listahan ng mga lokasyon."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
 msgid "A list of media objects."
-msgstr ""
+msgstr "Listahan ng mga media."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:99
