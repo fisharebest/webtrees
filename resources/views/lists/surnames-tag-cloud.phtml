@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var IndividualListModule|null $module
- * @var array<array<string>>      $surnames
+ * @var array<array<int>>         $surnames
  * @var bool                      $totals
  * @var Tree                      $tree
  */
@@ -32,6 +32,10 @@ $minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
                 $label = e($surn);
             } else {
                 $label = I18N::translate('No surname');
+            }
+
+            if ($totals) {
+                $label = I18N::translate('%1$s (%2$s)', $label, I18N::number($count));
             }
 
             ?>
