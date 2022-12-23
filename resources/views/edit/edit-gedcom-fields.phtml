@@ -24,9 +24,8 @@ $collapse = [];
 
 foreach ($keys as $num => $key) {
     $hierarchy[$levels[$key]] = $tags[$key];
-    $full_tag                 = implode(':', array_slice($hierarchy, 0, 1 + $levels[$key]));
-    $elements[$key]           = Registry::elementFactory()->make($full_tag);
-    $ids[$key]                = Registry::idFactory()->id() . '-' . $full_tag;
+    $elements[$key]           = Registry::elementFactory()->make(implode(':', array_slice($hierarchy, 0, 1 + $levels[$key])));
+    $ids[$key]                = Registry::idFactory()->id() . '-' . implode('-', array_slice($hierarchy, 0, 1 + $levels[$key]));
 
     // Does this element have any children?
     $has_subtags = ($levels[$key + 1] ?? 0) > $levels[$key];
@@ -49,7 +48,7 @@ foreach ($keys as $num => $key) {
 <?php foreach ($keys as $key) : ?>
     <?php if ($indent[$key - 1] ?? false) : ?>
         <?php if ($collapse[$key - 1] ?? false) : ?>
-            <div id="collapse-<?= $key ?>" class="collapse wt-nested-edit-fields">
+            <div id="collapse-<?= $ids[$key] ?>" class="collapse wt-nested-edit-fields">
         <?php else : ?>
                 <div class="wt-nested-edit-fields">
         <?php endif ?>
@@ -64,7 +63,7 @@ foreach ($keys as $num => $key) {
             <label class="col-sm-3 col-form-label" for="<?= e($ids[$key]) ?>">
                 <?= $elements[$key]->label() ?>
                 <?php if ($collapse[$key]) : ?>
-                    <button class="btn btn-link" data-bs-target="#collapse-<?= $key + 1 ?>" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-<?= $key + 1 ?>" type="button">
+                    <button class="btn btn-link" data-bs-target="#collapse-<?= $ids[$key + 1] ?>" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-<?= $ids[$key + 1] ?>" type="button">
                         <?= view('icons/expand') ?>
                         <?= view('icons/collapse') ?>
                     </button>
