@@ -612,6 +612,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     {
         $query = DB::table('name')
             ->where('n_file', '=', $tree->id())
+            ->whereNotNull('n_surn') // Filters old records for sources, repositories, etc.
+            ->whereNotNull('n_surname')
             ->select([
                 $this->binaryColumn('n_surn', 'n_surn'),
                 $this->binaryColumn('n_surname', 'n_surname'),
