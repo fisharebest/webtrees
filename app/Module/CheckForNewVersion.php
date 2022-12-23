@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -91,7 +92,11 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
             if ($latest_version !== $latest_version_email) {
                 Site::setPreference('LATEST_WT_VERSION_EMAIL', $latest_version);
 
+                $old_language = I18N::languageTag();
+
                 foreach ($this->user_service->administrators() as $administrator) {
+                    I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE));
+
                     $this->email_service->send(
                         new SiteUser(),
                         $administrator,
@@ -109,6 +114,8 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
                         ])
                     );
                 }
+
+                I18N::init($old_language);
             }
         }
 
