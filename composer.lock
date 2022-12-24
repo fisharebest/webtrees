@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3340cfa9c5d7570edbb5fc33c07dcb25",
+    "content-hash": "53e1c3467b5114a7b75bd8a826d4a7d1",
     "packages": [
         {
             "name": "aura/router",
@@ -6141,16 +6141,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "09ef0e3acbb377f28927fa6a527c251da713ebac"
+                "reference": "923278ad13e1621946eb76ab2882655d2cc396a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/09ef0e3acbb377f28927fa6a527c251da713ebac",
-                "reference": "09ef0e3acbb377f28927fa6a527c251da713ebac",
+                "url": "https://api.github.com/repos/composer/composer/zipball/923278ad13e1621946eb76ab2882655d2cc396a4",
+                "reference": "923278ad13e1621946eb76ab2882655d2cc396a4",
                 "shasum": ""
             },
             "require": {
@@ -6234,7 +6234,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.5.0"
+                "source": "https://github.com/composer/composer/tree/2.5.1"
             },
             "funding": [
                 {
@@ -6250,7 +6250,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-20T09:44:08+00:00"
+            "time": "2022-12-22T14:33:54+00:00"
         },
         {
             "name": "composer/metadata-minifier",
