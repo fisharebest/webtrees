@@ -108,6 +108,10 @@ class UseDatabase implements MiddlewareInterface
 
         $capsule->setAsGlobal();
 
+        if ($driver === 'sqlsrv') {
+            DB::connection()->unprepared('SET language us_english'); // For timestamp columns
+        }
+
         try {
             // Eager-load the connection, to prevent database credentials appearing in error logs.
             DB::connection()->getPdo();
