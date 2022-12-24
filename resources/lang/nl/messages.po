@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-19 10:29+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2022-12-24 13:24+0000\n"
+"Last-Translator: Lars van Ravenzwaaij <larsvr1963@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -2739,7 +2739,7 @@ msgstr "Birmingham, Alabama, Verenigde Staten"
 #: resources/xml/reports/pedigree_report.xml:1379
 #: resources/xml/reports/relative_ext_report.xml:63
 msgid "Birth"
-msgstr "Geboren"
+msgstr "Geboorte"
 
 #: app/Elements/PedigreeLinkageType.php:80
 msgctxt "Female pedigree"
@@ -14881,7 +14881,13 @@ msgstr "Deze stamboom heeft geen afbeeldingen om te laten zien."
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:9
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Deze Stamboom is op #gedcomUpdated# voor het laatst bijgewerkt. Er zijn #totalSurnames# achternamen in deze stamboom. De eerst vastgelegde gebeurtenis is de #firstEventType# van #firstEventName# in het jaar #firstEventYear#. De meest recente gebeurtenis is de #lastEventType# van #lastEventName# in het jaar #lastEventYear#.<br><br>Als u commentaar of opmerkingen heeft neem dan a.u.b. contact op met #contactWebmaster#."
+msgstr ""
+"Deze stamboom is op #gedcomUpdated# voor het laatst bijgewerkt. Er zijn "
+"#totalSurnames# achternamen in deze stamboom. De eerst vastgelegde "
+"gebeurtenis is de #firstEventType# van #firstEventName# in het jaar "
+"#firstEventYear#. De meest recente gebeurtenis is de #lastEventType# van "
+"#lastEventName# in het jaar #lastEventYear#.<br><br>Als u commentaar of "
+"opmerkingen heeft neem dan a.u.b. contact op met #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:20
