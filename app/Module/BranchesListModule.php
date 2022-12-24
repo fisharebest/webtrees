@@ -328,8 +328,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                     }
                 }
             })
-            ->select(['individuals.*'])
             ->distinct()
+            ->select(['individuals.*'])
             ->get()
             ->map(Registry::individualFactory()->mapper($tree))
             ->filter(GedcomRecord::accessFilter())
