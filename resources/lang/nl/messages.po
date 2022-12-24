@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-24 13:24+0000\n"
+"PO-Revision-Date: 2022-12-25 07:55+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
@@ -2443,7 +2443,7 @@ msgstr "Bangladesh"
 #: app/Gedcom.php:591 resources/views/calendar-page.phtml:189
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
-msgstr "Gedoopt"
+msgstr "Doop"
 
 #: app/Services/IndividualFactsService.php:227
 msgid "Baptism of a brother"
@@ -2739,7 +2739,7 @@ msgstr "Birmingham, Alabama, Verenigde Staten"
 #: resources/xml/reports/pedigree_report.xml:1379
 #: resources/xml/reports/relative_ext_report.xml:63
 msgid "Birth"
-msgstr "Geboren"
+msgstr "Geboorte"
 
 #: app/Elements/PedigreeLinkageType.php:80
 msgctxt "Female pedigree"
@@ -3056,7 +3056,7 @@ msgstr "Bulgarije"
 #: resources/xml/reports/family_group_report.xml:1049
 #: resources/xml/reports/missing_facts_report.xml:25
 msgid "Burial"
-msgstr "Begraven"
+msgstr "Begrafenis"
 
 #: app/Services/IndividualFactsService.php:355
 msgid "Burial of a brother"
@@ -3191,7 +3191,7 @@ msgstr "Plaats begrafenis bevat"
 #: resources/xml/reports/cemetery_report.xml:3
 #: resources/xml/reports/cemetery_report.xml:34
 msgid "Burials"
-msgstr "Begraven"
+msgstr "Begrafenissen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
@@ -3610,7 +3610,7 @@ msgstr "Kies de hieronder aangemaakte zelfgedefinieerde welkomstekst"
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Christening"
-msgstr "Gedoopt"
+msgstr "Doop"
 
 #: app/Services/IndividualFactsService.php:222
 msgid "Christening of a brother"
@@ -4799,11 +4799,11 @@ msgstr "Overleden"
 #: resources/xml/reports/pedigree_report.xml:1381
 #: resources/xml/reports/relative_ext_report.xml:69
 msgid "Death"
-msgstr "Overleden"
+msgstr "Overlijden"
 
 #: app/Statistics/Google/ChartDistribution.php:306
 msgid "Death by country"
-msgstr "Overledenen per land"
+msgstr "Overlijden per land"
 
 #: resources/xml/reports/bdm_report.xml:10
 #: resources/xml/reports/death_report.xml:8
@@ -14882,12 +14882,12 @@ msgstr "Deze stamboom heeft geen afbeeldingen om te laten zien."
 #: resources/views/modules/html/template-narrative.phtml:9
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
-"Deze stamboom is op #gedcomUpdated# voor het laatst bijgewerkt. Er zijn "
-"#totalSurnames# achternamen in deze stamboom. De eerst vastgelegde "
+"Deze stamboom is voor het laatst bijgewerkt op #gedcomUpdated#. Er zijn "
+"#totalSurnames# achternamen in deze stamboom. De vroegst geregistreerde "
 "gebeurtenis is de #firstEventType# van #firstEventName# in het jaar "
 "#firstEventYear#. De meest recente gebeurtenis is de #lastEventType# van "
 "#lastEventName# in het jaar #lastEventYear#.<br><br>Als u commentaar of "
-"opmerkingen heeft neem dan a.u.b. contact op met #contactWebmaster#."
+"opmerkingen heeft neem dan contact op met #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:20
