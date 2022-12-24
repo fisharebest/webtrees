@@ -228,8 +228,8 @@ class UserService
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
             ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MANAGER)
             ->where('user.user_id', '>', 0)
-            ->groupBy(['user.user_id'])
             ->orderBy('real_name')
+            ->distinct()
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
@@ -247,8 +247,8 @@ class UserService
             ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE)
             ->where('user_gedcom_setting.setting_value', '=', UserInterface::ROLE_MODERATOR)
             ->where('user.user_id', '>', 0)
-            ->groupBy(['user.user_id'])
             ->orderBy('real_name')
+            ->distinct()
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
@@ -315,8 +315,8 @@ class UserService
             ->join('session', 'session.user_id', '=', 'user.user_id')
             ->where('user.user_id', '>', 0)
             ->orderBy('real_name')
-            ->select(['user.*'])
             ->distinct()
+            ->select(['user.*'])
             ->get()
             ->map(User::rowMapper());
     }
