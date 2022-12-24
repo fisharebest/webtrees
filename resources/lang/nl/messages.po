@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
 "PO-Revision-Date: 2022-12-24 13:24+0000\n"
-"Last-Translator: Lars van Ravenzwaaij <larsvr1963@gmail.com>\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -2739,7 +2739,7 @@ msgstr "Birmingham, Alabama, Verenigde Staten"
 #: resources/xml/reports/pedigree_report.xml:1379
 #: resources/xml/reports/relative_ext_report.xml:63
 msgid "Birth"
-msgstr "Geboorte"
+msgstr "Geboren"
 
 #: app/Elements/PedigreeLinkageType.php:80
 msgctxt "Female pedigree"
