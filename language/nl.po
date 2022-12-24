@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-24 13:24+0000\n"
-"Last-Translator: Lars van Ravenzwaaij <larsvr1963@gmail.com>\n"
+"PO-Revision-Date: 2022-12-25 07:55+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
 "Language: nl\n"
@@ -2506,7 +2506,7 @@ msgstr "Bangladesh"
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
 msgid "Baptism"
-msgstr "Gedoopt"
+msgstr "Doop"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a brother"
@@ -3133,7 +3133,7 @@ msgstr "Bulgarije"
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr "Begraven"
+msgstr "Begrafenis"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a brother"
@@ -3704,7 +3704,7 @@ msgstr "Kies: "
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr "Gedoopt"
+msgstr "Doop"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
@@ -4731,11 +4731,11 @@ msgstr "Overleden"
 #: modules_v3/pedigree_report/report.xml:1370
 #: modules_v3/relative_ext_report/report.xml:62
 msgid "Death"
-msgstr "Overleden"
+msgstr "Overlijden"
 
 #: app/Stats.php:1674 statistics.php:575
 msgid "Death by country"
-msgstr "Overledenen per land"
+msgstr "Overlijden per land"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
@@ -14290,12 +14290,12 @@ msgstr "Deze stamboom heeft geen afbeeldingen om te laten zien."
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
-"Deze stamboom is op #gedcomUpdated# voor het laatst bijgewerkt. Er zijn "
-"#totalSurnames# achternamen in deze stamboom. De eerst vastgelegde "
+"Deze stamboom is voor het laatst bijgewerkt op #gedcomUpdated#. Er zijn "
+"#totalSurnames# achternamen in deze stamboom. De vroegst geregistreerde "
 "gebeurtenis is de #firstEventType# van #firstEventName# in het jaar "
 "#firstEventYear#. De meest recente gebeurtenis is de #lastEventType# van "
 "#lastEventName# in het jaar #lastEventYear#.<br><br>Als u commentaar of "
-"opmerkingen heeft neem dan a.u.b. contact op met #contactWebmaster#."
+"opmerkingen heeft neem dan contact op met #contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:101
