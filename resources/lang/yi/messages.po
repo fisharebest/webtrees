@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-23 18:15+0000\n"
+"PO-Revision-Date: 2022-12-26 09:08+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -65,7 +65,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:271
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s KBזענעןדאַונלאָודיד אין %2$s סעקונדעס."
+msgstr "%1$s KBזענען דאַונלאָודיד אין %2$s סעקונדעס."
 
 #: app/Http/RequestHandlers/UserEditAction.php:99
 #, php-format
@@ -686,7 +686,7 @@ msgstr "א טשאַרט פון אַ יחיד ס קינדסקינדער."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:121
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "א טשאַרט פון די לעבן פון מענטשן."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -794,7 +794,7 @@ msgstr ""
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr "אַ רשימה פון בשותפדיקע באַַמערקונגען."
+msgstr "אַ רשימה פון בשותפדיקע געטיילט הערות."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
@@ -1342,7 +1342,7 @@ msgstr ""
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr ""
+msgstr "לייג אַ סיבלינג"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
@@ -1357,7 +1357,7 @@ msgstr "לייג אַ זון"
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:180
 #: resources/views/modules/sources_tab/tab.phtml:53
 msgid "Add a source citation"
-msgstr ""
+msgstr "לייג אַ מקור ציטירן"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/config.phtml:38
@@ -1748,7 +1748,7 @@ msgstr "יאָרן אין יאָר פון חתונה"
 #: resources/views/modules/statistics-chart/custom.phtml:139
 #: resources/views/modules/statistics-chart/custom.phtml:145
 msgid "Age interval"
-msgstr ""
+msgstr "עלטער מעהאַלעך"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:411
@@ -5534,12 +5534,12 @@ msgstr "דאמיניקאנישע רעפובליק"
 #: app/Module/ClippingsCartModule.php:199
 #: app/Module/ClippingsCartModule.php:244
 msgid "Download"
-msgstr ""
+msgstr "דאַונלאָודיר"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:125
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "דאַונלאַודיר %s…"
 
 #: resources/views/media-page.phtml:159
 msgid "Download file"
@@ -6603,7 +6603,7 @@ msgstr ""
 
 #: app/Module/RelationshipsChartModule.php:719
 msgid "Find other relationships"
-msgstr ""
+msgstr "געפֿינען אַנדערע באַציונגען"
 
 #: app/Module/RelationshipsChartModule.php:446
 #: resources/views/modules/relationships-chart/page.phtml:56
@@ -8631,7 +8631,7 @@ msgstr "יורש"
 
 #: resources/views/statistics/families/marriage-length.phtml:12
 msgid "Length of marriage"
-msgstr ""
+msgstr "לענג פון חתונה לעבן"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:304
@@ -8680,7 +8680,7 @@ msgstr "לעבן-שפּאַן"
 #. I18N: Name of a module/chart
 #: app/Module/LifespansChartModule.php:110
 msgid "Lifespans"
-msgstr ""
+msgstr "לאנג לעבן"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:120 app/GedcomCode/GedcomCodeTemp.php:426
@@ -10008,7 +10008,7 @@ msgstr "מיין בלאַט"
 
 #: app/Module/ModuleThemeTrait.php:363
 msgid "My pages"
-msgstr ""
+msgstr "מיינע בלעטער"
 
 #: app/Module/ModuleThemeTrait.php:397
 msgid "My pedigree"
@@ -12646,7 +12646,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:148
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "אויסקלייַבן די געבעטן עלטער מעהאַלעך"
 
 #: resources/views/admin/merge-records-step-2.phtml:34
 msgid "Select the facts and events to keep from both records."
@@ -13234,7 +13234,7 @@ msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
-msgstr "סלידעשאָוו"
+msgstr "ווייַזן סלידעשאָוו קאָנטראָלס"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -13509,7 +13509,7 @@ msgstr "שקלאַף"
 #: app/Factories/ElementFactory.php:818 app/GedcomTag.php:1217
 #: app/Module/SlideShowModule.php:189
 msgid "Slide show"
-msgstr ""
+msgstr "סלידעשאָוו"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
@@ -13788,7 +13788,7 @@ msgstr "סיינט פול, מינעסאטע"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
-msgstr ""
+msgstr "אָנהייב סלידעשאָוו אויף בלאַט לאָדן"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
@@ -14798,7 +14798,7 @@ msgstr "עס זענען קיין פאָרשונג אַרבעט אין דעם פ�
 
 #: resources/views/modules/sources_tab/tab.phtml:39
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "עס זענען קיין מקורןת ציטירן פֿאַר דעם יחיד."
 
 #: app/Module/ReviewChangesModule.php:155
 #: resources/views/emails/pending-changes-html.phtml:20
@@ -17451,7 +17451,7 @@ msgstr ""
 #: app/Module/PedigreeChartModule.php:398
 #: resources/views/edit/reorder-card-header.phtml:30
 msgid "down"
-msgstr ""
+msgstr "אַראָפּ"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -17934,8 +17934,8 @@ msgstr "פערטן שוועסטערקינד"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "פון %1$s מעהאַלעך %2$s יאָר"
+msgstr[1] "פון %1$s מעהאַלעך %2$s יאָר"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:366
