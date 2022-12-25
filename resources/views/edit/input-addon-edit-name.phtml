@@ -33,18 +33,18 @@ use Fisharebest\Webtrees\I18N;
     let NAME = document.getElementById('<?= e($id) ?>');
     let container = NAME.parentNode.parentNode.parentNode;
 
-    if (NAME.id.endsWith('-INDI:NAME')) {
+    if (NAME.id.endsWith('-INDI-NAME')) {
       // NAME has children at the same level.
       container = container.parentNode;
     } else {
       // ROMN/FONE have children in a collapsable panel
       container = container.nextSibling.nextSibling;
     }
-    let NPFX = container.querySelector('[id$=":NPFX"]');
-    let GIVN = container.querySelector('[id$=":GIVN"]');
-    let SPFX = container.querySelector('[id$=":SPFX"]');
-    let SURN = container.querySelector('[id$=":SURN"]');
-    let NSFX = container.querySelector('[id$=":NSFX"]');
+    let NPFX = container.querySelector('[id$="-NPFX"]');
+    let GIVN = container.querySelector('[id$="-GIVN"]');
+    let SPFX = container.querySelector('[id$="-SPFX"]');
+    let SURN = container.querySelector('[id$="-SURN"]');
+    let NSFX = container.querySelector('[id$="-NSFX"]');
 
     let generated_name = webtrees.buildNameFromParts(
       NPFX ? NPFX.value : '',
