@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-24 13:24+0000\n"
+"PO-Revision-Date: 2022-12-26 09:08+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -67,7 +67,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:243
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s KBזענעןדאַונלאָודיד אין %2$s סעקונדעס."
+msgstr "%1$s KBזענען דאַונלאָודיד אין %2$s סעקונדעס."
 
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
@@ -697,7 +697,7 @@ msgstr "א טשאַרט פון אַ יחיד ס קינדסקינדער."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:114
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "א טשאַרט פון די לעבן פון מענטשן."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -805,7 +805,7 @@ msgstr ""
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:75
 msgid "A list of shared notes."
-msgstr "אַ רשימה פון בשותפדיקע באַַמערקונגען."
+msgstr "אַ רשימה פון בשותפדיקע געטיילט הערות."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:77
@@ -1090,7 +1090,7 @@ msgstr "A4"
 #: resources/views/modules/map-box/config.phtml:23
 #: resources/views/modules/openrouteservice/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "API שליסל"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
@@ -1351,7 +1351,7 @@ msgstr "לייגן אַ נייַ קוויטל"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr ""
+msgstr "לייג אַ סיבלינג"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
@@ -1365,7 +1365,7 @@ msgstr "לייג אַ זון"
 
 #: resources/views/modules/sources_tab/tab.phtml:77
 msgid "Add a source citation"
-msgstr ""
+msgstr "לייג אַ מקור ציטירן"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:89
 msgid "Add a spouse"
@@ -1726,7 +1726,7 @@ msgstr "יאָרן אין יאָר פון חתונה"
 #: resources/views/modules/statistics-chart/custom.phtml:139
 #: resources/views/modules/statistics-chart/custom.phtml:145
 msgid "Age interval"
-msgstr ""
+msgstr "עלטער מעהאַלעך"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:396
@@ -5399,12 +5399,12 @@ msgstr "דאמיניקאנישע רעפובליק"
 #: app/Module/ClippingsCartModule.php:242
 #: resources/views/modules/share-anniversary/share.phtml:27
 msgid "Download"
-msgstr ""
+msgstr "דאַונלאָודיר"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:124
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "דאַונלאַודיר %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
@@ -6482,7 +6482,7 @@ msgstr ""
 
 #: app/Module/RelationshipsChartModule.php:730
 msgid "Find other relationships"
-msgstr ""
+msgstr "געפֿינען אַנדערע באַציונגען"
 
 #: app/Module/RelationshipsChartModule.php:457
 #: resources/views/modules/relationships-chart/page.phtml:55
@@ -8608,7 +8608,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
-msgstr ""
+msgstr "לענג פון חתונה לעבן"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:304
@@ -8657,7 +8657,7 @@ msgstr "לעבן-שפּאַן"
 #. I18N: Name of a module/chart
 #: app/Module/LifespansChartModule.php:103
 msgid "Lifespans"
-msgstr ""
+msgstr "לאנג לעבן"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:120
@@ -9963,7 +9963,7 @@ msgstr "מיין בלאַט"
 
 #: app/Module/ModuleThemeTrait.php:374
 msgid "My pages"
-msgstr ""
+msgstr "מיינע בלעטער"
 
 #: app/Module/ModuleThemeTrait.php:413
 msgid "My pedigree"
@@ -12596,7 +12596,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:148
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "אויסקלייַבן די געבעטן עלטער מעהאַלעך"
 
 #: resources/views/admin/merge-records-step-2.phtml:34
 msgid "Select the facts and events to keep from both records."
@@ -13218,7 +13218,7 @@ msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
-msgstr "סלידעשאָוו"
+msgstr "ווייַזן סלידעשאָוו קאָנטראָלס"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -13481,7 +13481,7 @@ msgstr "שקלאַף"
 #. I18N: Name of a module
 #: app/Module/SlideShowModule.php:206
 msgid "Slide show"
-msgstr ""
+msgstr "סלידעשאָוו"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
@@ -13642,7 +13642,7 @@ msgstr ""
 
 #: resources/views/admin/tags.phtml:325
 msgid "Source citations"
-msgstr ""
+msgstr "מקורות ציטירן"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -13766,7 +13766,7 @@ msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
-msgstr ""
+msgstr "אָנהייב סלידעשאָוו אויף בלאַט לאָדן"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
@@ -14772,7 +14772,7 @@ msgstr "עס זענען קיין פאָרשונג אַרבעט אין דעם פ�
 
 #: resources/views/modules/sources_tab/tab.phtml:65
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "עס זענען קיין מקורןת ציטירן פֿאַר דעם יחיד."
 
 #: app/Module/ReviewChangesModule.php:157
 #: resources/views/emails/pending-changes-html.phtml:22
@@ -15477,11 +15477,11 @@ msgstr ""
 #: resources/views/modules/map-box/config.phtml:36
 #: resources/views/modules/openrouteservice/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "צו נוצן דעם דינסט, איר דאַרפֿן אַ API שליסל."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "צו נוצן דעם דינסט, איר דאַרפֿן אַ חשבון."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -17231,7 +17231,7 @@ msgstr ""
 #: app/Module/PedigreeChartModule.php:375
 #: resources/views/edit/reorder-card-header.phtml:32
 msgid "down"
-msgstr ""
+msgstr "אַראָפּ"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -17699,8 +17699,8 @@ msgstr "פערטן שוועסטערקינד"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "פון %1$s מעהאַלעך %2$s יאָר"
+msgstr[1] "פון %1$s מעהאַלעך %2$s יאָר"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:209
