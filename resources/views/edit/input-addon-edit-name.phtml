@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\I18N;
     let NAME = document.getElementById('<?= e($id) ?>');
     let container = NAME.parentNode.parentNode.parentNode;
 
-    if (NAME.id.endsWith('-INDI:NAME')) {
+    if (NAME.id.endsWith('-INDI-NAME')) {
       // NAME has children at the same level.
       container = container.parentNode;
     } else {
