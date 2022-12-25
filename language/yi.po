@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-23 18:15+0000\n"
+"PO-Revision-Date: 2022-12-26 09:08+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -90,7 +90,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s KBזענעןדאַונלאָודיד אין %2$s סעקונדעס."
+msgstr "%1$s KBזענען דאַונלאָודיד אין %2$s סעקונדעס."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -759,7 +759,7 @@ msgstr "א טשאַרט פון אַ יחיד ס קינדסקינדער."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "א טשאַרט פון די לעבן פון מענטשן."
 
 #: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -1111,7 +1111,7 @@ msgstr "ALPHABET_upper=אבגדהוזחטיכךלמםנןסעפףצץקרשת"
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "API שליסל"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -1371,7 +1371,7 @@ msgstr "לייג אַ נייַ זון אָדער טאָכטער"
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
-msgstr ""
+msgstr "לייג אַ מקור ציטירן"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
@@ -5310,13 +5310,13 @@ msgstr "דאמיניקאנישע רעפובליק"
 #: app/Module/ClippingsCartModule.php:732
 #: app/Module/ClippingsCartModule.php:767
 msgid "Download"
-msgstr ""
+msgstr "דאַונלאָודיר"
 
 #. I18N: The system is about to…; %s is a URL.
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "דאַונלאַודיר %s…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -6345,7 +6345,7 @@ msgstr ""
 
 #: relationship.php:134
 msgid "Find other relationships"
-msgstr ""
+msgstr "געפֿינען אַנדערע באַציונגען"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
@@ -8199,7 +8199,7 @@ msgstr "יורש"
 
 #: statistics.php:248
 msgid "Length of marriage"
-msgstr ""
+msgstr "לענג פון חתונה לעבן"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6805
@@ -8252,7 +8252,7 @@ msgstr "לעבן-שפּאַן"
 #: app/Controller/LifespanController.php:120
 #: app/Module/LifespansChartModule.php:33 lifespan.php:34
 msgid "Lifespans"
-msgstr ""
+msgstr "לאנג לעבן"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:215
@@ -9496,7 +9496,7 @@ msgstr "מיין בלאַט"
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
-msgstr ""
+msgstr "מיינע בלעטער"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
@@ -12024,7 +12024,7 @@ msgstr ""
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "אויסקלייַבן די געבעטן עלטער מעהאַלעך"
 
 #: statistics.php:635
 msgid "Select the desired count interval"
@@ -12659,7 +12659,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "סלידעשאָוו"
+msgstr "ווייַזן סלידעשאָוו קאָנטראָלס"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12914,7 +12914,7 @@ msgstr "שקלאַף"
 #. I18N: Name of a module
 #: app/GedcomTag.php:1731 app/Module/SlideShowModule.php:34
 msgid "Slide show"
-msgstr ""
+msgstr "סלידעשאָוו"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
@@ -13172,7 +13172,7 @@ msgstr "אָנהייבן בייַ עלטערן"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr ""
+msgstr "אָנהייב סלידעשאָוו אויף בלאַט לאָדן"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -14077,7 +14077,7 @@ msgstr "עס זענען קיין פאָרשונג אַרבעט אין דעם פ�
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "עס זענען קיין מקורןת ציטירן פֿאַר דעם יחיד."
 
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
@@ -17200,8 +17200,8 @@ msgstr "פערטן שוועסטערקינד"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "פון %1$s מעהאַלעך %2$s יאָר"
+msgstr[1] "פון %1$s מעהאַלעך %2$s יאָר"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
