@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
@@ -245,13 +245,15 @@ class UpgradeService
     }
 
     /**
+     * @param bool $force
+     *
      * @return bool
      */
-    public function isUpgradeAvailable(): bool
+    public function isUpgradeAvailable(bool $force = false): bool
     {
         // If the latest version is unavailable, we will have an empty string which equates to version 0.
 
-        return version_compare(Webtrees::VERSION, $this->fetchLatestVersion()) < 0;
+        return version_compare(Webtrees::VERSION, $this->fetchLatestVersion($force)) < 0;
     }
 
     /**
@@ -261,11 +263,33 @@ class UpgradeService
      */
     public function latestVersion(): string
     {
-        $latest_version = $this->fetchLatestVersion();
+        $latest_version = $this->fetchLatestVersion(false);
 
         [$version] = explode('|', $latest_version);
 
         return $version;
+    }
+
+    /**
+     * What, if any, error did we have when fetching the latest version of webtrees.
+     *
+     * @return string
+     */
+    public function latestVersionError(): string
+    {
+        return Site::getPreference('LATEST_WT_VERSION_ERROR');
+    }
+
+    /**
+     * When did we last try to fetch the latest version of webtrees.
+     *
+     * @return TimestampInterface
+     */
+    public function latestVersionTimestamp(): TimestampInterface
+    {
+        $latest_version_wt_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
+
+        return Registry::timestampFactory()->make($latest_version_wt_timestamp);
     }
 
     /**
@@ -275,7 +299,7 @@ class UpgradeService
      */
     public function downloadUrl(): string
     {
-        $latest_version = $this->fetchLatestVersion();
+        $latest_version = $this->fetchLatestVersion(false);
 
         [, , $url] = explode('|', $latest_version . '||');
 
@@ -305,19 +329,21 @@ class UpgradeService
     /**
      * Check with the webtrees.net server for the latest version of webtrees.
      * Fetching the remote file can be slow, so check infrequently, and cache the result.
-     * Pass the current versions of webtrees, PHP and MySQL, as the response
+     * Pass the current versions of webtrees, PHP and database, as the response
      * may be different for each. The server logs are used to generate
      * installation statistics which can be found at https://dev.webtrees.net/statistics.html
      *
+     * @param bool $force
+     *
      * @return string
      */
-    private function fetchLatestVersion(): string
+    private function fetchLatestVersion(bool $force): string
     {
         $last_update_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
         $current_timestamp = time();
 
-        if ($last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
+        if ($force || $last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
             try {
                 $client = new Client([
                     'timeout' => self::HTTP_TIMEOUT,
@@ -330,11 +356,14 @@ class UpgradeService
                 if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
+                    Site::setPreference('LATEST_WT_VERSION_ERROR', '');
+                } else {
+                    Site::setPreference('LATEST_WT_VERSION_ERROR', 'HTTP' . $response->getStatusCode());
                 }
             } catch (GuzzleException $ex) {
                 // Can't connect to the server?
                 // Use the existing information about latest versions.
-                Log::addErrorLog('Cannot fetch latest webtrees version. ' . $ex->getMessage());
+                Site::setPreference('LATEST_WT_VERSION_ERROR', $ex->getMessage());
             }
         }
 
