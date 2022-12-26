@@ -62,6 +62,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CalendarEvents;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\CheckForNewVersionNow;
 use Fisharebest\Webtrees\Http\RequestHandlers\CheckTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactAction;
@@ -352,6 +353,7 @@ class WebRoutes
                 ]);
 
                 $router->get(ControlPanel::class, '');
+                $router->post(CheckForNewVersionNow::class, '/check-now');
                 $router->get(BroadcastPage::class, '/broadcast/{to}');
                 $router->post(BroadcastAction::class, '/broadcast/{to}');
                 $router->get(CleanDataFolder::class, '/clean');
