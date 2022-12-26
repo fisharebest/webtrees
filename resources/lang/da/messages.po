@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-23 18:15+0000\n"
+"PO-Revision-Date: 2022-12-26 21:21+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -14544,7 +14544,7 @@ msgstr "Den nye bruger vil blive bedt om at bekræfte deres email adresse før o
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:75
 msgid "The note has been created"
-msgstr "Notatet er oprettet"
+msgstr "Noten er oprettet"
 
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
@@ -19538,7 +19538,7 @@ msgstr "importfil"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr "inline-notat"
+msgstr "inline-note"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
