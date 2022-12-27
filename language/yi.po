@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-26 09:08+0000\n"
+"PO-Revision-Date: 2022-12-28 11:18+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -905,7 +905,7 @@ msgstr ""
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "א באַריכט פֿון אַ יחיד ס אבות, אין אַ דערציילונג נוסח."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
@@ -989,7 +989,7 @@ msgstr "א באַריכט פון די אינפֿאָרמאַציע אַז איז
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "א באַריכט פון וויטאַל רעקאָרדס פֿאַר אַ געגעבן דאַטע אָדער אָרט."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1502,7 +1502,6 @@ msgstr ""
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
-#, fuzzy
 msgid "Address"
 msgstr "אַדרעס"
 
@@ -6463,9 +6462,9 @@ msgid "For help with genealogy questions contact %s."
 msgstr "פֿאַר הילף מיט ייחוס שאלות באַריר %s."
 
 #: app/Theme/AbstractTheme.php:307
-#, fuzzy, php-format
+#, php-format
 msgid "For technical support and information contact %s."
-msgstr "פֿאַר טעכניש שטיצן און אינפֿאָרמאַציע באַריר %s"
+msgstr "פֿאַר טעכניש שטיצן און אינפֿאָרמאַציע באַריר %s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
@@ -11406,9 +11405,8 @@ msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #: edit_changes.php:186 edit_changes.php:206
-#, fuzzy
 msgid "Reject"
-msgstr "פֿאַרקער"
+msgstr "אָפּוואַרפן"
 
 #: edit_changes.php:216 edit_changes.php:236
 #, fuzzy
@@ -11598,7 +11596,7 @@ msgstr "רעפּאָסיטאָרי איז כּולל"
 
 #: app/Functions/FunctionsPrintLists.php:1260 edit_interface.php:1517
 msgid "Repository name"
-msgstr ""
+msgstr "ריפּאַזאַטאָרי נאָמען"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6719
@@ -12654,7 +12652,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr ""
+msgstr "ווייַזן אַדרעסן"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
@@ -14055,7 +14053,6 @@ msgstr ""
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
-#, fuzzy
 msgid "There are no facts for this individual."
 msgstr "עס זענען קיין פאקטן פֿאַר דעם יחיד."
 
@@ -14089,7 +14086,7 @@ msgstr ""
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
 msgstr[0] "עס זענען געווען קיין ענדערונגען אין די לעצטע טעג."
-msgstr[1] "עס זענען געווען קיין ענדערונגען אין די לעצטע  %s טעג."
+msgstr[1] "עס זענען געווען קיין ענדערונגען אין די לעצטע %s טעג."
 
 #: login.php:266
 #, php-format
@@ -14894,7 +14891,7 @@ msgstr[1] "די %s מערסט פּראָסט געגעבן נעמען"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "די  מערסט פּראָסט לעצטע נעמען"
+msgstr[0] "די מערסט פּראָסט לעצטע נעמען"
 msgstr[1] "די %s מערסט פּראָסט לעצטע נעמען"
 
 #. I18N: i.e. most popular given name.
