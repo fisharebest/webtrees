@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-26 09:08+0000\n"
-"Last-Translator: mpwt <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2022-12-28 11:18+0000\n"
+"Last-Translator: marku5 <markusl@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -880,8 +880,8 @@ msgstr "Für Ihren Benutzernamen wurde ein neues Passwort angefordert."
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
-"Ein neuer Benutzer (%1$s) hat ein Benutzerkonto (%2$s) angefragt und und "
-"dies mit der E-Mail-Adresse (%3$s) bestätigt."
+"Ein neuer Benutzer (%1$s) hat ein Benutzerkonto (%2$s) angefragt und dies "
+"mit der E-Mail-Adresse (%3$s) bestätigt."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -7090,7 +7090,7 @@ msgstr "Höhe"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr "Hallo %s!"
+msgstr "Hallo %s…"
 
 #: login.php:389
 #, php-format
@@ -7099,7 +7099,7 @@ msgstr "Hallo %s!<br>Danke für Ihre Anfrage."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr "Hallo Administrator!"
+msgstr "Hallo Administrator…"
 
 #: help_text.php:320
 msgid "Help"
@@ -16069,7 +16069,7 @@ msgstr "Welt"
 #. I18N: A configuration setting. The first letter(s) in a GEDCOM identifier.
 #: admin_trees_config.php:733
 msgid "XREF prefixes"
-msgstr "Präfix Querverweisnummern (xref_ID's)"
+msgstr "Präfix Querverweisnummern (xref_IDs)"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
@@ -16129,7 +16129,9 @@ msgstr "Sie können das Aussehen von webtrees mit vorgefertigten Layoutvorlagen 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
 msgid "You can choose the prefix that will be used whenever new XREFs are created."
-msgstr "Sie können den zu verwendenden Präfix wählen, wenn neue Querverweisnummern (xref_ID's) erstellt werden."
+msgstr ""
+"Sie können den zu verwendenden Präfix wählen, wenn neue Querverweisnummern "
+"(xref_IDs) erstellt werden."
 
 #: admin_users.php:462 edituser.php:312
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
