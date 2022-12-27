@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-26 09:08+0000\n"
-"Last-Translator: mpwt <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2022-12-28 11:18+0000\n"
+"Last-Translator: marku5 <markusl@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -855,7 +855,9 @@ msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen üb
 #: resources/views/emails/verify-notify-text.phtml:17
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Ein neuer Benutzer (%1$s) hat ein Benutzerkonto (%2$s) angefragt und und dies mit der E-Mail-Adresse (%3$s) bestätigt."
+msgstr ""
+"Ein neuer Benutzer (%1$s) hat ein Benutzerkonto (%2$s) angefragt und dies "
+"mit der E-Mail-Adresse (%3$s) bestätigt."
 
 #: app/Http/RequestHandlers/LoginAction.php:80
 #: app/Module/CheckForNewVersion.php:99
@@ -7301,7 +7303,7 @@ msgstr "Höhe"
 #: resources/views/emails/register-user-text.phtml:16
 #, php-format
 msgid "Hello %s…"
-msgstr "Hallo %s!"
+msgstr "Hallo %s…"
 
 #: resources/views/register-success-page.phtml:21
 #, php-format
@@ -7313,7 +7315,7 @@ msgstr "Hallo %s!<br>Danke für Ihre Anfrage."
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:14
 msgid "Hello administrator…"
-msgstr "Hallo Administrator!"
+msgstr "Hallo Administrator…"
 
 #: app/Http/RequestHandlers/HelpText.php:280 resources/views/help/link.phtml:13
 #: resources/views/help/link.phtml:15
@@ -12040,7 +12042,7 @@ msgstr "Reno, Nevada, Vereinigte Staaten"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr "xref_ID’s neu nummerieren"
+msgstr "xref_IDs neu nummerieren"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
