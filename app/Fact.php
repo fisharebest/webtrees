@@ -653,8 +653,9 @@ class Fact
                 return $a->sortOrder <=> $b->sortOrder;
             }
 
-            $atag = $a->tag;
-            $btag = $b->tag;
+            // NO events sort as the non-event itself.
+            $atag = $a->tag === 'NO' ? $a->value() : $a->tag;
+            $btag = $b->tag === 'NO' ? $b->value() : $b->tag;
 
             // Events not in the above list get mapped onto one that is.
             if (!array_key_exists($atag, $factsort)) {
