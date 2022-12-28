@@ -64,7 +64,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
             $html .= view('fact-parents-age', ['individual' => $record, 'birth_date' => $date]);
         }
 
-        if ($tag !== 'BIRT' && $tag !== 'CHAN' && $tag !== '_TODO') {
+        if ($tag !== 'BIRT' && $tag !== 'CHAN' && $tag !== 'NO' && $tag !== '_TODO') {
             // age at event
             $birth_date = $record->getBirthDate();
             // Can't use getDeathDate(), as this also gives BURI/CREM events, which
