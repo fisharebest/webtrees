@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-28 11:18+0000\n"
+"PO-Revision-Date: 2022-12-29 10:01+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -807,9 +807,10 @@ msgstr "א גרוס אָנזאָג פֿאַר זייַטל געסט."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
-#, fuzzy
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "א רשימה פון ענדערונגען וואָס דאַרפֿן מאָדעראַטאָר האַסקאָמע, און בליצפּאָסט נאָטיפיקאַטיאָנס."
+msgstr ""
+"אַ רשימה פון ענדערונגען וואָס דאַרפֿן מאָדעראַטאָר הסכמה, און בליצפּאָסט "
+"נאָטיפיקאַטיאָנס."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -1174,7 +1175,6 @@ msgid "Access level"
 msgstr "מדרגה פון צוטריט"
 
 #: admin_users.php:520
-#, fuzzy
 msgid "Access to family trees"
 msgstr "משפּחה בוים צוטריט און אָפּציעס"
 
@@ -3262,12 +3262,12 @@ msgstr "קוינע"
 #: app/GedcomCode/GedcomCodeRela.php:84
 msgctxt "FEMALE"
 msgid "Buyer"
-msgstr "קוינע"
+msgstr "קונה"
 
 #: app/GedcomCode/GedcomCodeRela.php:82
 msgctxt "MALE"
 msgid "Buyer"
-msgstr "קוינע"
+msgstr "קונה"
 
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:368
@@ -3294,7 +3294,7 @@ msgstr ""
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr "CKEditor™"
+msgstr ""
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
@@ -4965,7 +4965,7 @@ msgstr "דיפלאמע"
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr "DejaVu"
+msgstr ""
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_config.php:572 admin_trees_manage.php:418
@@ -5421,13 +5421,11 @@ msgstr ""
 
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
-#, fuzzy
 msgid "Edit preferences"
 msgstr "רעדאַגירן אָפּציעס"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
-#, fuzzy
 msgid "Edit the FAQ"
 msgstr "רעדאַגירן FAQ פֿראַגע"
 
@@ -5603,7 +5601,7 @@ msgstr "באַלעבאָס"
 #: app/GedcomCode/GedcomCodeRela.php:114
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr "באַלעבאָס"
+msgstr "באַלעבאָסטע"
 
 #: app/GedcomCode/GedcomCodeRela.php:112
 msgctxt "MALE"
@@ -5802,7 +5800,6 @@ msgid "Export all the family trees to GEDCOM files…"
 msgstr "אַרויספיר אַלע די משפּחה ביימער צו GEDCOM טעקעס…"
 
 #: admin_trees_download.php:134
-#, fuzzy
 msgid "Export preferences"
 msgstr "אַרויספיר אָפּציעס"
 
@@ -5844,6 +5841,10 @@ msgstr "FAQ"
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
+"FAQs זענען רשימות פון פֿראגן און ענטפֿערס, וואָס לאָזן איר צו דערקלערן די כּ"
+"ללים, פּאַלאַסיז און פּראָוסידזשערז פון דעם פּלאַץ צו דיין וויזאַטערז. פֿ"
+"ראגן זענען טיפּיקלי זארגן וועגן פּריוואַטקייט, קאַפּירייט, באַניצער אַקאַ"
+"ונץ, ומפּאַסיק אינהאַלט, פאָדערונג פֿאַר מקור-סייטיישאַנז, אאז\"ו ו."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
@@ -6232,7 +6233,7 @@ msgstr "פעברואַר"
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
 #: statisticsplot.php:1359
 msgid "Female"
-msgstr "נעקייווע"
+msgstr "נקבה"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:109
@@ -7429,7 +7430,6 @@ msgid "Import all places from a family tree"
 msgstr "אַרייַנפיר אַלע ערטער פון אַ פאמיליע בוים"
 
 #: admin_trees_manage.php:270
-#, fuzzy
 msgid "Import preferences"
 msgstr "אַרייַנפיר אָפּציעס"
 
@@ -8476,7 +8476,7 @@ msgstr "מאלדיוון"
 #: statisticsplot.php:1208 statisticsplot.php:1258 statisticsplot.php:1308
 #: statisticsplot.php:1358
 msgid "Male"
-msgstr "זאָכער"
+msgstr "זכר"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:108
@@ -11409,9 +11409,8 @@ msgid "Reject"
 msgstr "אָפּוואַרפן"
 
 #: edit_changes.php:216 edit_changes.php:236
-#, fuzzy
 msgid "Reject all changes"
-msgstr "ופמאַכן אַלע ענדערונגען"
+msgstr "אָפּוואַרפן אַלע ענדערונגען"
 
 #. I18N: Name of a module/report
 #: app/Module/IndividualFamiliesReportModule.php:29
@@ -12482,7 +12481,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the male partner is dead."
-msgstr ""
+msgstr "ווייַזן קאַפּאַלז ווו בלויז די זכר שוטעף איז טויט."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples who married more than 100 years ago."
@@ -12591,7 +12590,7 @@ msgstr "ווייַזן בלויז געשעענישן פון לעבעדיק מע�
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
-msgstr ""
+msgstr "ווייַזן בלויז נקבות."
 
 #: app/Functions/FunctionsPrintLists.php:195
 msgid "Show only individuals for whom the gender is not known."
@@ -12604,7 +12603,7 @@ msgstr "ווייַזן בלויז מענטשן, געשעענישן, אָדער �
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
-msgstr ""
+msgstr "ווייַזן בלויז זכרים."
 
 #: find.php:527
 msgid "Show only the selected tags"
@@ -14370,7 +14369,6 @@ msgid "This is the width (in pixels) that the program will use when automaticall
 msgstr ""
 
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
-#, fuzzy
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "דאס איז דיין פאַקטיש נאָמען, ווי איר וואָלט ווי עס געוויזן אויף עקראַן."
 
@@ -15605,9 +15603,8 @@ msgid "View the notes"
 msgstr "זען הערות"
 
 #: calendar.php:292
-#, fuzzy
 msgid "View this day"
-msgstr "זען טאָג"
+msgstr "זען דעם טאָג"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15616,9 +15613,8 @@ msgstr "זען טאָג"
 #: app/Module/RelativesTabModule.php:118 app/Module/SlideShowModule.php:180
 #: app/Stats.php:4535 app/Stats.php:4562 app/Stats.php:4573 app/Stats.php:4582
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
-#, fuzzy
 msgid "View this family"
-msgstr "זע פאמיליע"
+msgstr "זען דעם משפּחה"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
 #, fuzzy
@@ -15626,9 +15622,8 @@ msgid "View this individual"
 msgstr "זע פּערזאָן"
 
 #: calendar.php:296
-#, fuzzy
 msgid "View this month"
-msgstr "זען מאָנאַט"
+msgstr "זען דעם חודש"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 #, fuzzy
@@ -15636,9 +15631,8 @@ msgid "View this source"
 msgstr "זע מקור"
 
 #: calendar.php:300
-#, fuzzy
 msgid "View this year"
-msgstr "זען יאָר"
+msgstr "זען דעם יאָר"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -16564,9 +16558,8 @@ msgstr ""
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:809
-#, fuzzy
 msgid "cancel"
-msgstr "רוף אָפּ"
+msgstr "אַנולירן"
 
 #: app/Stats.php:2915
 msgid "census added"
@@ -20047,15 +20040,13 @@ msgstr "דערהײַנטיק"
 
 #. I18N: A button label.
 #: admin_media_upload.php:263 app/Module/GoogleMapsModule.php:4062
-#, fuzzy
 msgid "upload"
-msgstr "צופֿעליקער"
+msgstr "אַרויפֿלאַדן"
 
 #. I18N: A button label.
 #: ancestry.php:92 app/Module/GoogleMapsModule.php:738 branches.php:49
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:87
-#, fuzzy
 msgid "view"
 msgstr "זע"
 
