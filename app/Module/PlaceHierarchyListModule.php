@@ -322,7 +322,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     {
         $places = $this->search_service->searchPlaces($tree, '')
             ->sort(static function (Place $x, Place $y): int {
-                return $x->gedcomName() <=> $y->gedcomName();
+                return I18N::comparator()($x->gedcomName(), $y->gedcomName());
             })
             ->all();
 
