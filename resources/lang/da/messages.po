@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-26 21:21+0000\n"
+"PO-Revision-Date: 2022-12-30 17:15+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -488,7 +488,7 @@ msgstr "(%s efter dødsfald)"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr "(%s gammel)"
+msgstr "(%s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:363
@@ -496,7 +496,7 @@ msgstr "(%s gammel)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s gammel)"
+msgstr "(%s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:359
@@ -505,7 +505,7 @@ msgstr "(%s gammel)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s gammel)"
+msgstr "(%s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -514,7 +514,7 @@ msgstr "(%s gammel)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s gammel)"
+msgstr "(%s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -14871,7 +14871,7 @@ msgstr "Denne blok vil viser en liste over poster med ventende ændringer, der s
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Dette kan skyldes en fejl i %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
