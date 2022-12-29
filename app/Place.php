@@ -196,7 +196,7 @@ class Place
             ->where('p_file', '=', $this->tree->id())
             ->where('p_parent_id', '=', $this->id())
             ->pluck('p_place')
-            ->sortBy(I18N::comparator())
+            ->sort(I18N::comparator())
             ->map(function (string $place) use ($parent_text): Place {
                 return new self($place . $parent_text, $this->tree);
             })
