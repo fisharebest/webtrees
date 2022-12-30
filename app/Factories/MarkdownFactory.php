@@ -65,9 +65,9 @@ class MarkdownFactory implements MarkdownFactoryInterface
         ],
         'external_link' => [
             'open_in_new_window' => true,
-            'nofollow' => 'external',
+            'nofollow' => '',
             'noopener' => 'external',
-            'noreferrer' => 'external',
+            'noreferrer' => '',
         ],
     ];
 
