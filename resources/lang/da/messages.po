@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-30 17:15+0000\n"
+"PO-Revision-Date: 2023-01-05 14:51+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -751,7 +751,7 @@ msgstr "Viser en link til administrator nederst på siden."
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr "Viser en link til webtrees hjemmeside."
+msgstr "Viser et link til webtrees' hjemmeside."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
@@ -3251,7 +3251,7 @@ msgstr "Kalender"
 #: resources/views/admin/trees-preferences.phtml:110
 #: resources/views/admin/trees-preferences.phtml:113
 msgid "Calendar conversion"
-msgstr "Kalender konvertering"
+msgstr "Kalenderkonvertering"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:74
@@ -4402,7 +4402,9 @@ msgstr "Datarettelse"
 
 #: resources/views/help/data-fixes.phtml:10
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr "Data fix kan kræve mange beregninger. Derfor er det ikke muligt at oprette en nøjagtig liste over optegnelser der skal opdateres."
+msgstr ""
+"Data fix kan kræve mange beregninger. Derfor er det ikke muligt at oprette "
+"en nøjagtig liste over optegnelser, der skal opdateres."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
@@ -5023,7 +5025,7 @@ msgstr "Standard familietræ"
 #: resources/views/admin/trees-preferences.phtml:95
 #: resources/views/edit-account-page.phtml:75
 msgid "Default individual"
-msgstr "Standard person"
+msgstr "Standardperson"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:64
@@ -5312,7 +5314,14 @@ msgstr "Forskelle"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:126
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Der anvendes forskellige kalendersystemer i forskellige dele af verden, og mange andre kalendersystemer er blevet anvendt i tidligere tid. Hvor det er muligt, skal du indtaste datoer i det kalendersystem der var gældende, dengang begivenheden fandt sted. Du kan derefter angive en konvertering, for at vise disse datoer i et mere velkendt kalendersystem. Hvis du jævnligt bruger to kalendersystemer, kan du angive to konverteringer, og datoer vil blive konverteret til begge de valgte kalendersystemer."
+msgstr ""
+"Der anvendes forskellige kalendersystemer i forskellige dele af verden, og "
+"mange andre kalendersystemer er blevet anvendt i tidligere tid. Hvor det er "
+"muligt, skal du indtaste datoer i det kalendersystem, der var gældende, "
+"dengang begivenheden fandt sted. Du kan derefter angive en konvertering, for "
+"at vise disse datoer i et mere velkendt kalendersystem. Hvis du jævnligt "
+"bruger to kalendersystemer, kan du angive to konverteringer, og datoer vil "
+"blive konverteret til begge de valgte kalendersystemer."
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:91
@@ -6848,7 +6857,7 @@ msgstr "GEDCOM 7"
 #: resources/views/admin/trees-check.phtml:27
 #: resources/views/admin/trees-preferences.phtml:613
 msgid "GEDCOM errors"
-msgstr "GEDCOM fejl"
+msgstr "GEDCOM-fejl"
 
 #: resources/views/admin/trees.phtml:275
 msgid "GEDCOM file"
@@ -7691,7 +7700,9 @@ msgstr "Hvis du vælger en anden mappe skal du også flytte alle mediefiler fra 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:94
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr "Hvis du viser nulevende til besøgende, alle andre privat indstillinger vil blive ignoreret. Brug kunne denne indstilling hvis alle data er officielle."
+msgstr ""
+"Hvis du viser nulevende til besøgende, alle andre privat indstillinger vil "
+"blive ignoreret. Brug kunne denne indstilling, hvis alle data er officielle."
 
 #: resources/views/setup/step-2-server-checks.phtml:82
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7707,7 +7718,7 @@ msgstr "Billeddimensioner"
 
 #: resources/views/admin/trees-preferences.phtml:321
 msgid "Images without watermarks"
-msgstr "Billder uden vandmærker"
+msgstr "Billeder uden vandmærker"
 
 #: app/Gedcom.php:670
 msgid "Immigration"
@@ -7746,12 +7757,25 @@ msgstr "I mange kulturer er det almindeligt at få sit navn skrevet med denne ku
 
 #: resources/views/help/hebrew.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "I mange kulturer er det almindeligt at få sit navn skrevet med denne kulturs alfabet, og samtidig have en romaniseret version af navnet hvor det er stavet eller udtalt på et sprog der er baseret på det latinske alfabet, såsom engelsk.<br><br>Hvis du foretrækker at bruge det latinske alfabet til at indtaste navnet i standard navnefelter, så kan du bruge dette felt til at angive det samme navn ved hjælp af et ikke-latinsk alfabet som fx . hebraisk, græsk, russisk, kinesisk eller arabisk. Begge udgaver af navnet vises i lister og slægtstræer.<br><br>Selvom dette felt er markeret “Hebraisk” er det ikke begrænset til at indeholde karakterer baseret på dette alfabet."
+msgstr ""
+"I mange kulturer er det almindeligt at få sit navn skrevet med denne kulturs "
+"alfabet, og samtidig have en romaniseret version af navnet hvor det er "
+"stavet eller udtalt på et sprog der er baseret på det latinske alfabet, "
+"såsom engelsk.<br><br>Hvis du foretrækker at bruge det latinske alfabet til "
+"at indtaste navnet i standard navnefelter, så kan du bruge dette felt til at "
+"angive det samme navn ved hjælp af et ikke-latinsk alfabet som fx hebraisk, "
+"græsk, russisk, kinesisk eller arabisk. Begge udgaver af navnet vises i "
+"lister og slægtstræer.<br><br>Selvom dette felt er markeret “Hebraisk” er "
+"det ikke begrænset til at indeholde karakterer baseret på dette alfabet."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "I nogle kalendersystemer begynder dagen ved midnat og i andre ved solopgang. Konverteringen tager ikke højde for tiden. Så for begivenheder der sker mellem midnat og solopgang vil konvertering mellem sådanne to kalendersystemer have en forskel på 1 dag."
+msgstr ""
+"I nogle kalendersystemer begynder dagen ved midnat og i andre ved solopgang. "
+"Konverteringen tager ikke højde for tiden. Så for begivenheder, der sker "
+"mellem midnat og solopgang, vil konvertering mellem sådanne to "
+"kalendersystemer have en forskel på 1 dag."
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:113
@@ -8800,7 +8824,11 @@ msgstr "London, England"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:361
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Lange personlister hvor det samme navn forekommer mange gange kan opdeles i mindre underlister efter det første bogstav i fornavnet.<br><br>Denne indstilling bestemmer om der vil ske en opdeling. For at deaktivere underlister helt, skal denne indstilling sættes til nul."
+msgstr ""
+"Lange personlister, hvor det samme navn forekommer mange gange, kan opdeles "
+"i mindre underlister efter det første bogstav i fornavnet.<br><br>Denne "
+"indstilling styrer, om der vil ske en opdeling. For at deaktivere "
+"underlister helt, skal denne indstilling sættes til nul."
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:17
 msgid "Longest marriage"
@@ -8979,7 +9007,7 @@ msgstr "Manuskript"
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
 msgstr ""
 "Mange slægtsforskningsprogrammer opretter egne brugerdefinerede GEDCOM-"
-"koder, og webtrees forstår de fleste af dem. Denne indstilling bestemmer, om "
+"koder, og webtrees forstår de fleste af dem. Denne indstilling styrer, om "
 "ukendte koder skal ignoreres, eller der skal vises en fejlmeddelelse."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
@@ -8987,7 +9015,7 @@ msgstr ""
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr ""
 "Mange slægtsforskningsprogrammer opretter GEDCOM-filer med brugerdefinerede "
-"koder, og webtrees forstår de fleste af dem. Denne indstilling bestemmer, om "
+"koder, og webtrees forstår de fleste af dem. Denne indstilling styrer, om "
 "ukendte koder skal ignoreres, eller der skal vises en fejlmeddelelse."
 
 #. I18N: Type of media object
@@ -10501,7 +10529,7 @@ msgstr "Note til arkivreference"
 
 #: app/Gedcom.php:701
 msgid "Note on romanized name"
-msgstr "Note om translitterering af navn til latinsk skrift"
+msgstr "Note om translitterering af navn til latinsk alfabet"
 
 #: app/Gedcom.php:839
 msgid "Note on source"
@@ -12247,7 +12275,7 @@ msgstr "Latinsk alfabet"
 
 #: app/Gedcom.php:698
 msgid "Romanized name"
-msgstr "Navn med latinsk skrift"
+msgstr "Navn med latinsk alfabet"
 
 #: app/CustomTags/GedcomL.php:249 app/Gedcom.php:427 app/Gedcom.php:559
 msgid "Romanized place"
@@ -12605,7 +12633,7 @@ msgstr "Vælg det ønskede aldersinterval"
 
 #: resources/views/admin/merge-records-step-2.phtml:34
 msgid "Select the facts and events to keep from both records."
-msgstr "Udvælg fakta og begivenheder som skal bibeholdes i begge poster."
+msgstr "Udvælg de fakta og begivenheder, som skal bibeholdes fra hver post."
 
 #: resources/views/admin/merge-records-step-1.phtml:50
 msgid "Select two records to merge."
@@ -12810,7 +12838,10 @@ msgstr "Sæt status til “Godkendt”."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:605
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Vælges <b>Ja</b>, bliver der oprettet en link til personer, kilder, og familier, som gør det muligt for brugere at åbne et separat vindue med GEDCOM-koden hentet direkte fra GEDCOM-filen."
+msgstr ""
+"Vælges <b>ja</b>, bliver der oprettet en link til personer, kilder, og "
+"familier, som gør det muligt for brugere at åbne et separat vindue med "
+"GEDCOM-koden hentet direkte fra GEDCOM-filen."
 
 #: resources/views/layouts/setup.phtml:18
 #: resources/views/layouts/setup.phtml:26
@@ -13975,7 +14006,7 @@ msgstr "Efternavne"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr "Efternavn ændres til at indikere et individs køb og ægteskabsstatus."
+msgstr "Efternavn ændres til at indikere et individs køn og ægteskabsstatus."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
 msgid "Surnames are inflected to indicate an individual’s gender."
@@ -14314,7 +14345,9 @@ msgstr "Famlietræet “%s” blev slettet."
 #: app/Http/RequestHandlers/SelectDefaultTree.php:52
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr "Vælg det familietræ “%s” du ønsker at besøgende skal se, når de besøger siden for første gang."
+msgstr ""
+"Vælg det familietræ “%s”, du ønsker at besøgende skal se, når de besøger "
+"siden for første gang."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:249
 msgid "The family trees have been merged successfully."
@@ -14425,12 +14458,15 @@ msgstr "Hjælpeteksten for dette emne er ikke skrevet."
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:187
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr "Den bruger, som kan kontaktes ved tekniske spørgsmål eller fejl, som de er stødt på under besøget på siden."
+msgstr ""
+"Den bruger, som kan kontaktes ved tekniske spørgsmål eller fejl på din "
+"hjemmeside."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:167
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "Den bruger som kan kontaktes vedrørende slægtsmateriale på din hjemmeside."
+msgstr ""
+"Den bruger, som kan kontaktes vedrørende slægtsmateriale på din hjemmeside."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:92
@@ -14862,7 +14898,10 @@ msgstr "Denne blok vil viser en liste over poster med ventende ændringer, der s
 #: resources/views/register-page.phtml:54
 #: resources/views/setup/step-5-administrator.phtml:97
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Denne email adresse vil blive brugt til at sende dine adgangskode påmindelser, websteds-beskeder og beskeder fra andre familiemedlemmer der er registreret på dette websted."
+msgstr ""
+"Denne e-mailadresse vil blive brugt til at sende dine "
+"adgangskodepåmindelser, websteds-beskeder og beskeder fra andre "
+"familiemedlemmer, der er registreret på dette websted."
 
 #: app/Elements/AbstractEventElement.php:67
 msgid "This event occurred, but the details are unknown."
@@ -15111,7 +15150,9 @@ msgstr "Denne note er blevet rettet. Du bør kontrollere rettelsen og derefter %
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:533
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Denne indstilling bestemmer om indhold af <i>note-poster</i> skal vises automatisk på individers sider."
+msgstr ""
+"Denne indstilling styrer, om indhold af <i>note-poster</i> skal vises "
+"automatisk på individers sider."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:547
@@ -15121,7 +15162,9 @@ msgstr "Ved hjælp af denne valgmulighed kan man bestemme om indholdet under fan
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:401
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Dette valg bestemmer om alderen af barnets far og mor skal vises ved siden af barnets fødselsdato i slægtstræer."
+msgstr ""
+"Dette valg styrer, om alderen af barnets far og mor skal vises ved siden af "
+"barnets fødselsdato i slægtstræer."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:374
@@ -15146,7 +15189,11 @@ msgstr "Denne indstilling vil vise navnet (men ingen andre oplysninger) for priv
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Dette vindue tillader dig at springe over de normale formularer og redigere direkte i data. Det er en mulighed du kun bør benytte hvis du forstår GEDCOM koderne. Hvis du laver en fejltagelse her, kan det være vanskeligt at rette op på din fejl."
+msgstr ""
+"Dette vindue tillader dig at springe over de normale formularer og redigere "
+"direkte i data. Det er en mulighed du kun bør benytte, hvis du forstår "
+"GEDCOM-koderne. Hvis du laver en fejltagelse her, kan det være vanskeligt at "
+"rette op på din fejl."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -15898,7 +15945,11 @@ msgstr "Entydig ID"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "En entydig ID (\"postnr.\") tillader, at den samme registrering kan bruges i flere familier og i flere systemer. Den tilføjes når nye data tilføjes eller ændres. Ønsker du ikke den entydig ID vist, kan de skjules ved brug af de personlige regler."
+msgstr ""
+"En entydig ID (postnummer) tillader, at den samme registrering kan bruges i "
+"flere familier og i flere systemer. Den tilføjes, når nye data tilføjes "
+"eller ændres. Ønsker du ikke den entydig ID vist, kan de skjules ved brug af "
+"de personlige regler."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
@@ -16371,7 +16422,15 @@ msgstr "Brug af vandmærker er valgfrie og bliver normalt kun vist til besøgend
 #: resources/views/register-success-page.phtml:25
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Der vil nu blive sendt en bekræftelse via e-mail til adressen <b>%s</b>.<br><br>Du skal bekræfte din ansøgning om en konto ved at følge vejledningen i e-mailen. Hvis du ikke bekræfter din tilmelding inden for 7 dage, vil ansøgningen automatisk blive afvist, og du skal derefter ansøge igen.<br><br>Efter du har fulgt vejledningen i e-mailen, skal en administrator også godkende din ansøgning før din konto kan bruges.<br><br>For at logge ind på denne hjemmeside skal du huske dit brugernavn og adgangskode."
+msgstr ""
+"Der vil nu blive sendt en bekræftelse via e-mail til adressen <b>%s</"
+"b>.<br><br>Du skal bekræfte din ansøgning om en konto ved at følge "
+"vejledningen i e-mailen. Hvis du ikke bekræfter din tilmelding inden for 7 "
+"dage, vil ansøgningen automatisk blive afvist, og du skal derefter ansøge "
+"igen.<br><br>Efter du har fulgt vejledningen i e-mailen, skal en "
+"administrator også godkende din ansøgning før din konto kan "
+"bruges.<br><br>For at logge ind på denne hjemmeside, skal du huske dit "
+"brugernavn og adgangskode."
 
 #: resources/views/admin/control-panel.phtml:162
 #: resources/views/admin/control-panel.phtml:573
@@ -16426,7 +16485,12 @@ msgstr "Vestsahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:711
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Når en post redigeres, vil brugernavn og tidsstempel blive registreret i posten. Nogle gange er det ønskeligt at bibeholde den eksisterende “sidste ændring” information, for eksempel når der foretages mindre rettelser til andres data. Denne indstilling kontrollerer, om denne funktion er valgt som standard."
+msgstr ""
+"Når en post redigeres, vil brugernavn og tidsstempel blive registreret i "
+"posten. Nogle gange er det ønskeligt at bevare den eksisterende “sidste "
+"ændring” information, for eksempel når der foretages mindre rettelser til "
+"andres data. Denne indstilling styrer, om denne funktion er valgt som "
+"standard."
 
 #: resources/views/admin/users-edit.phtml:109
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -16439,7 +16503,9 @@ msgstr "Når en person har mere end en ægtefælle, skal du sortere familierne i
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:698
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr "Når du tilføjer et nyt familiemedlem kan der automatisk blive tilføjet et efternavn. Efternavnet afhænger af hvilken skik der er i landet."
+msgstr ""
+"Når du tilføjer et nyt familiemedlem, kan der automatisk blive tilføjet et "
+"efternavn. Efternavnet afhænger af hvilken skik, der er i landet."
 
 #: resources/views/help/pending-changes.phtml:14
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
@@ -16457,7 +16523,7 @@ msgstr "Hvilke familietræer skal inkluderes i sitemaps"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:265
 msgid "Who can upload new media files"
-msgstr "Hvem kan uploade nye medie-filer"
+msgstr "Hvem kan uploade nye mediefiler"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
@@ -19470,7 +19536,7 @@ msgstr "pigenavn"
 
 #: resources/views/admin/trees-privacy.phtml:127
 msgid "managers"
-msgstr "bestyrerer"
+msgstr "bestyrere"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:108
