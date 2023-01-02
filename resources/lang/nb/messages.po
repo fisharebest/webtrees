@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-16 22:38+0000\n"
+"PO-Revision-Date: 2023-01-05 14:51+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nb_NO/>\n"
@@ -811,7 +811,7 @@ msgstr "En liste over dødsdager (hebraisk) i nærmeste fremtid."
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:112
 msgid "A list of the anniversaries that occur today."
-msgstr "En liste med dagens jubileer."
+msgstr "En liste med hendinger på denne dagen."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:116
@@ -14910,7 +14910,12 @@ msgstr "Dette slektstreet inneholder ingen bilder."
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Dette slektstreet ble sist oppdatert #gedcomUpdated#. Det er til sammen #totalSurnames# etternavn i slektstreet. Den eldste opptegnelse er #firstEventName#s #firstEventType# i #firstEventYear#. Den nyeste hendelse er #lastEventName#s #lastEventType# i #lastEventYear#.<br><br>HVis du har kommentarer eller spørsmål, kontakt #contactWebmaster#."
+msgstr ""
+"Dette slektstreet ble sist oppdatert #gedcomUpdated#. Det er til sammen "
+"#totalSurnames# etternavn i slektstreet. Den eldste opptegnelse er "
+"#firstEventName#s #firstEventType# i #firstEventYear#. Den nyeste hendelse "
+"er #lastEventName#s #lastEventType# i #lastEventYear#.<br><br>Hvis du har "
+"kommentarer eller spørsmål, kontakt #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:18
@@ -15557,7 +15562,10 @@ msgstr "Til"
 
 #: resources/views/modules/html/config.phtml:32
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
-msgstr "For å hjelpe deg igang med denne blokken, har vi laget noen standard-maller. Når du velger en av disse, fylles tekstfeltet med en tekst du kan ta som utgangspunkt for dine egne endringer."
+msgstr ""
+"For å hjelpe deg igang med denne blokken, har vi laget noen standard-maler. "
+"Når du velger en av disse, fylles tekstfeltet med en tekst du kan ta som "
+"utgangspunkt for dine egne endringer."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
