@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-28 07:05+0000\n"
-"Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
+"PO-Revision-Date: 2023-01-05 14:51+0000\n"
+"Last-Translator: fzamin <fabio.zamin@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/pt_BR/>\n"
 "Language: pt-BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -939,7 +939,7 @@ msgstr "Um relatório de pessoas que têm uma dada ocupação."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Um relatório de pessoas que nasceram um um dado tempo ou local."
+msgstr "Um relatório de pessoas que nasceram em um dado tempo ou local."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
@@ -10209,7 +10209,7 @@ msgstr "Ogden, Utah, Estados Unidos"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Cidade de Oklahoma, Oklahoma"
+msgstr "Cidade de Oklahoma, Oklahoma, Estados Unidos da América"
 
 #: admin_site_change.php:337
 msgid "Old data"
@@ -10502,7 +10502,7 @@ msgstr "Panamá"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr "Cidade de Panamá, Panamá"
+msgstr "Cidade do Panamá, Panamá"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -11826,7 +11826,7 @@ msgstr "San Marino"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr "São Salvador, Salvador"
+msgstr "São Salvador, El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
