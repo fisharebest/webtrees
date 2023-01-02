@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-01-05 14:51+0000\n"
+"Last-Translator: fzamin <fabio.zamin@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/pt_BR/>\n"
 "Language: pt-BR\n"
@@ -924,7 +924,7 @@ msgstr "Um relatório de pessoas que têm uma dada ocupação."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Um relatório de pessoas que nasceram um um dado tempo ou local."
+msgstr "Um relatório de pessoas que nasceram em um dado tempo ou local."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
@@ -2109,7 +2109,7 @@ msgstr "Aqua Marinho"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Tem certeza de que deseja excluir o link para “%s”?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -4978,7 +4978,7 @@ msgstr "Falecimento de uma avó"
 #: app/Module/IndividualFactsTabModule.php:795
 #: resources/views/admin/trees-preferences.phtml:525
 msgid "Death of a grandparent"
-msgstr "Falecimento de um um avô"
+msgstr "Falecimento de um avô"
 
 #: app/Module/IndividualFactsTabModule.php:497
 msgid "Death of a grandson"
@@ -6256,7 +6256,7 @@ msgstr "Livro de família de %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Censo familiar"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6280,7 +6280,7 @@ msgstr "Família de %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Residência familiar"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6374,7 +6374,7 @@ msgstr "Família com esposa"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "Identificação do FamilySearch"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -10691,7 +10691,7 @@ msgstr "Ogden, Utah, Estados Unidos"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:151 app/GedcomCode/GedcomCodeTemp.php:519
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Cidade de Oklahoma, Oklahoma"
+msgstr "Cidade de Oklahoma, Oklahoma, Estados Unidos da América"
 
 #: resources/views/admin/changes-log.phtml:71
 msgid "Old data"
@@ -10947,7 +10947,7 @@ msgstr "Panamá"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:156 app/GedcomCode/GedcomCodeTemp.php:534
 msgid "Panama City, Panama"
-msgstr "Cidade de Panamá, Panamá"
+msgstr "Cidade do Panamá, Panamá"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:157 app/GedcomCode/GedcomCodeTemp.php:537
@@ -12448,7 +12448,7 @@ msgstr "San Marino"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:174 app/GedcomCode/GedcomCodeTemp.php:588
 msgid "San Salvador, El Salvador"
-msgstr "São Salvador, Salvador"
+msgstr "São Salvador, El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:175 app/GedcomCode/GedcomCodeTemp.php:591
