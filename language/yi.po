@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-29 10:01+0000\n"
+"PO-Revision-Date: 2023-01-05 14:51+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -713,7 +713,7 @@ msgstr "<b>ביטע באַמערקונג:</b> פּריוואַט אינפֿאָ�
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
 msgid "<default theme>"
-msgstr ""
+msgstr "<פעליקייַט טעמע>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -865,6 +865,11 @@ msgstr "אַ רשימה פון יוזערז און וויזאַטערז וואָ
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"א מידיאַ כייפעץ איז אַ רעקאָרד אין די משפּחה בוים וואָס כּולל אינפֿאָרמאַציע "
+"וועגן אַ מידיאַ טעקע. די אינפֿאָרמאַציע קען אַרייַננעמען אַ טיטל, אַ קאַפּ"
+"ירייט באַמערקן, אַ טראַנסקריפּט, פּריוואַטקייט ריסטריקשאַנז, אאז\"ו ו. די "
+"מידיאַ טעקע, אַזאַ ווי די פאָטאָ אָדער ווידעא, קענען זיין סטאָרד לאָוקאַלי ("
+"אויף דעם וועב סערווער) אָדער רימאָוטלי (אויף אַ אַנדערש וועב סערווער)."
 
 #: login.php:264
 #, php-format
@@ -880,10 +885,12 @@ msgstr "אַ נייַ פּאַראָל איז געבעטן פֿאַר דיין �
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"א נייע באנוצער (%1$s) האט געבעטן אן אקאונט (%2$s) און וועריפיצירט אן אימעיל "
+"אדרעס (%3$s)."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "א נייַע ווערסיע פון webtrees איז בארעכטיגט."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
@@ -900,7 +907,7 @@ msgstr "א פּראָספּעקטיוו באַניצער האט רעגיסטרי
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "אַ באַריכט פֿון אַ יחיד ס אָוועס, פֿאָרמאַטטעד ווי אַ בוים."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
@@ -995,6 +1002,10 @@ msgstr "א באַריכט פון וויטאַל רעקאָרדס פֿאַר אַ
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
+"א ראלע איז א סכום צוטריט רעכטן, וועלכע געבן דערלויבעניש צו זען דאטא, טוישן פּ"
+"רעפערענצן, אאז\"ו ו. אַקסעס רעכטן ווערן צוגעשטעלט צו ראלעס, און ראלעס ווערן "
+"געגעבן פאר באנוצער. יעדער משפּחה בוים קענען באַשטימען פאַרשידענע אַקסעס צו "
+"יעדער ראָלע, און יוזערז קענען האָבן אַ אַנדערש ראָלע אין יעדער משפּחה בוים."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1009,17 +1020,17 @@ msgstr ""
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "א סיידבאַר וואָס ווייַזן די נאָענט משפחות און קרובים פון אַ יחיד."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr ""
+msgstr "א סיידבאַר וואָס ווייזן ניט-גענעאַלאָגיק אינפֿאָרמאַציע וועגן אַ יחיד."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "א סיידבאַר וואָס ווייזט די קינדסקינדער פון אַ יחיד."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
@@ -1049,11 +1060,13 @@ msgstr "א קוויטל ווייזונג די מקורות פארבונדן צו
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "א טיימליין מיט יחיד געשעענישן."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"א באַניצער וועט נישט קענען צו צייכן אין ביז ביידע \"עמאַיל וועראַפייד\" און "
+"\"באוויליקט דורך אַדמיניסטראַטאָר\" זענען אויסגעקליבן."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1165,7 +1178,7 @@ msgstr "אָננעמען"
 
 #: edit_changes.php:214 edit_changes.php:225
 msgid "Accept all changes"
-msgstr ""
+msgstr "אָננעמען אַלע ענדערונגען"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
@@ -1267,7 +1280,7 @@ msgstr "שטעלן"
 #: app/Module/ClippingsCartModule.php:737
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "לייג %s צו וואָגן"
+msgstr "לייג %s צו קליפּינג וואָגן"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:120
 msgid "Add a blank row"
@@ -1405,7 +1418,7 @@ msgstr "לייג אַ פרוי ניצן אַן שאַפֿן פערזאן"
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ"
-msgstr ""
+msgstr "לייג אַ FAQ"
 
 #: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
@@ -1441,16 +1454,16 @@ msgstr "שטעלן פעלנדיק באהעפט נעמען"
 
 #: search_advanced.php:280
 msgid "Add more fields"
-msgstr ""
+msgstr "לייגן מער פֿעלדער"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "לייג דערציילונגען צו מענטשן אין די משפּחה בוים."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "לייג ספּייסאַז ווו לאַנג שורות זענען אלנגעוויקלט"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
@@ -1461,7 +1474,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "לייג צו דעם טיטל קוויטל TITLE"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -1475,16 +1488,16 @@ msgstr "לייג צו באַליבט רשימה"
 #: app/Module/ClippingsCartModule.php:459
 #: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "לייג צו קליפּינג וואָגן"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "לייג יינציק ידענטיפיערס"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
-msgstr ""
+msgstr "לייג אַנלינקעד רעקאָרדס"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1100
@@ -1494,11 +1507,11 @@ msgstr ""
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:41
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "לייג דיין אייגענע טעקסט און גראַפיקס."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr ""
+msgstr "לייג / רעדאַגירן אַ זשורנאַל / נייַעס פּאָזיציע"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -1604,71 +1617,71 @@ msgstr "אַדאָפּטירונג"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a brother"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ ברודער"
 
 #: app/GedcomTag.php:876
 msgid "Adoption of a child"
-msgstr ""
+msgstr "אַדאָפּטיאָן פÏון אַ קינד"
 
 #: app/GedcomTag.php:874
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ טאָכטער"
 
 #: app/GedcomTag.php:885 app/GedcomTag.php:894 app/GedcomTag.php:903
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ אייניקל"
 
 #: app/GedcomTag.php:883
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ גראַנדאָטער"
 
 #: app/GedcomTag.php:892
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ גראַנדאָטער"
 
 #: app/GedcomTag.php:901
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ גראַנדאָטער"
 
 #: app/GedcomTag.php:881
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "אַדאָפּטיאָן פֿון אַ אייניקל"
 
 #: app/GedcomTag.php:890
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ אייניקל"
 
 #: app/GedcomTag.php:899
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "אַדאָפּטיאָן פון אַ אייניקל"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "אַדאָפּטיאָן פֿון אַ האַלב-ברודער"
 
 #: app/GedcomTag.php:912
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "אַדאָפּטיאָן פֿון אַ האַלב-ברודער/שוועסטער"
 
 #: app/GedcomTag.php:910
 msgid "Adoption of a half-sister"
-msgstr ""
+msgstr "אַדאָפּטיאָן פֿון אַ האַלב-שוועסטער"
 
 #: app/GedcomTag.php:921
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "אַדאָפּטיאָן פֿון אַ ברודער/שוועסטער"
 
 #: app/GedcomTag.php:919
 msgid "Adoption of a sister"
-msgstr ""
+msgstr "אַדאָפּטיאָן פֿון אַ שוועסטער"
 
 #: app/GedcomTag.php:872
 msgid "Adoption of a son"
-msgstr ""
+msgstr "אַדאָפּטיאָן פֿון אַ זון"
 
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
@@ -1704,6 +1717,7 @@ msgstr "אפריקע"
 #: admin_trees_manage.php:691
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"נאָך שאַפֿן די משפּחה בוים, איר קענען אַרייַנפיר דאַטן פֿון אַ GEDCOM טעקע."
 
 #: login.php:260
 msgid "After you have signed in, select the “My account” link under the “My pages” menu and fill in the password fields to change your password."
@@ -1754,7 +1768,7 @@ msgstr "יאָרן אין יאָר פון חתונה"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "ווייַזן די עלטער פון די עלטערן ווייַטער צו די געבורט טאָג פון דעם קינד"
 
 #: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
@@ -1843,7 +1857,7 @@ msgstr ""
 
 #: login.php:415
 msgid "All fields must be completed."
-msgstr ""
+msgstr "אַלע פֿעלדער מוזן זיין געענדיקט."
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
@@ -1859,7 +1873,7 @@ msgstr "אַלע מענטשן"
 
 #: admin_trees_config.php:554
 msgid "All records"
-msgstr ""
+msgstr "אַלע רעקאָרדס"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
@@ -1873,11 +1887,13 @@ msgstr ""
 #: app/Module/CkeditorModule.php:32
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr ""
+"לאָזן אנדערע מאַדזשולז צו רעדאַגירן טעקסט ניצן אַ \"WYSIWYG\" רעדאַקטאָר, "
+"אַנשטאָט פון ניצן HTML קאָודז."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1575
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "לאָזן ניצערס צו זען GEDCOM טעקע דאַטן"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:266
@@ -1887,7 +1903,7 @@ msgstr "אָזן ניצערס צו אויסקלייַבן זייער אייגן 
 #. I18N: A configuration setting
 #: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "לאָזן וויזיטערז צו בעטן אַ נייַע באַניצער חשבון"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
@@ -1915,30 +1931,37 @@ msgstr "אמעריקאנישער סאמאא"
 #: app/Module/FrequentlyAskedQuestionsModule.php:223
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr ""
+"אַן FAQ קענען זיין געוויזן אויף בלויז איינער פון די משפּחה ביימער, אָדער "
+"אויף אַלע די משפּחה ביימער."
 
 #: admin_site_config.php:498
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
+"אַן אַדמיניסטראַטאָר מוזן אַפּרווו די נייַע באַניצער חשבון און אויסקלייַבן אַ"
+" אַקסעס מדרגה איידער דער באַניצער קענען צייכן אין."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:49
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
 msgstr ""
+"אַן אָלטערנאַטיוו צו די \"מעדיע\" קוויטל און אַ פֿאַרבעסערט בילד צוקוקער."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr ""
+msgstr "אַן אַנדער ברירה וועג צו ווייַזן טשאַרץ."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
 msgid "An alternative way to enter census transcripts and link them to individuals."
 msgstr ""
+"אַן אַנדערע וועג צו אַרייַן צענזוס טראַנסקריפּץ און פֿאַרבינדונג זיי צו "
+"מענטשן."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "אַן אַנדערע וועג צו אויסקלייַבן אַ נייַע טעמע."
 
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
@@ -1966,12 +1989,13 @@ msgstr ""
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "אַ זאַמד-זייגער טשאַרט פון אַ יחיד ס אבות און קינדסקינדער."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr ""
+"אַן ינטעראַקטיוו בוים, ווייַזונג אַלע די אבות און קינדסקינדער פון אַ יחיד."
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -2059,7 +2083,7 @@ msgstr "אַנטיגואַ און באַרבודאַ"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "ווער עס יז מיט אַ באַניצער חשבון קענען אַקסעס דעם וועבזייטל."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2076,17 +2100,17 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:777
 #: app/Module/ClippingsCartModule.php:786
 msgid "Apply privacy settings"
-msgstr ""
+msgstr "צולייגן פּריוואַטקייט סעטטינגס"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2154
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "צולייגן די פּרעפֿערענצן צו אַלע משפּחה ביימער"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2161
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "צולייגן די פּרעפֿערענצן צו נייַע משפּחה ביימער"
 
 #: admin_users.php:100
 #, php-format
@@ -2164,6 +2188,7 @@ msgstr "זענט איר זיכער איר ווילן צו אויסמעקן “%s
 #: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr ""
+"זענט איר זיכער אַז איר ווילט אָפּוואַרפן אַלע ענדערונגען צו דעם משפּחה בוים?"
 
 #: app/Module/AlbumModule.php:191
 msgid "Are you sure you want to remove links to this media object?"
@@ -2172,6 +2197,8 @@ msgstr ""
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr ""
+"זענט איר זיכער אַז איר ווילט צונעמען דעם נומער פון דיין רשימה פון "
+"פאַוואָריטעס?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
@@ -2209,6 +2236,12 @@ msgstr "אַרובאַ"
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr ""
+"אין אַדישאַן צו נוצן די מכשיר צו צולייגן HTML פאָרמאַטטינג, איר קענען לייגן "
+"דייטאַבייס פעלדער וואָס דערהייַנטיקן אויטאָמאַטיש. די ספּעציעלע פעלדער זענען "
+"אנגעצייכנט מיט <b>#</b> אותיות. צום ביישפּיל, <b>#totalFamilies#</b> וועט "
+"זיין ריפּלייסט דורך די פאַקטיש נומער פון פאַמיליעס אין די דאַטאַבייס. אַוואַ"
+"נסירטע יוזערז זאל וועלן צו צולייגן CSS קלאסן צו זייער טעקסט אַזוי אַז די "
+"פּלאַן גלייַכן די אויסגעקליבן טעמע."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
@@ -2223,7 +2256,7 @@ msgstr "אזיע"
 #. I18N: gedcom tag _ASSO
 #: app/GedcomTag.php:166 app/GedcomTag.php:972
 msgid "Associate"
-msgstr ""
+msgstr "נאָענטר"
 
 #: edit_interface.php:1221 help_text.php:292
 msgid "Associate events with this source"
@@ -2264,22 +2297,22 @@ msgstr "באַגלייטער"
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
-msgstr ""
+msgstr "פאַראַנטוואָרטלעך"
 
 #: app/GedcomCode/GedcomCodeRela.php:69
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr ""
+msgstr "פאַראַנטוואָרטלעכע"
 
 #: app/GedcomCode/GedcomCodeRela.php:67
 msgctxt "MALE"
 msgid "Attending"
-msgstr ""
+msgstr "פאַראַנטוואָרטלעך"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1910
 msgid "Audio"
-msgstr ""
+msgstr "אַודיאָ"
 
 #: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
@@ -2328,17 +2361,17 @@ msgstr "מחבר פון לעצטע ענדערונג"
 
 #: admin_users.php:441
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "אָטאַמאַטיק אָננעמען ענדערונגען געמאכט דורך דעם באַניצער"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1474
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "אָטאַמאַטיק אויסברייטערן הערות"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1489
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "אָטאַמאַטיק אויסברייטערן מקורים"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -2397,6 +2430,7 @@ msgstr "דורכשניטלעך נומער פון קינדער פּער משפּ�
 #: admin_trees_config.php:627 admin_trees_manage.php:680
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr ""
+"ויסמיידן ספּייסאַז און פּונקטואַציע. א משפּחה נאָמען קען זיין אַ גוט ברירה."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2488,19 +2522,19 @@ msgstr "טבילה"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "טבילה פון אַ ברודער"
 
 #: app/GedcomTag.php:980
 msgid "Baptism of a child"
-msgstr ""
+msgstr "באַפּטיזאַם פון אַ קינד"
 
 #: app/GedcomTag.php:978
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "באפט פון א טאכטער"
 
 #: app/GedcomTag.php:989 app/GedcomTag.php:998 app/GedcomTag.php:1007
 msgid "Baptism of a grandchild"
-msgstr ""
+msgstr "טבילה פון אַ אייניקל"
 
 #: app/GedcomTag.php:987
 msgid "Baptism of a granddaughter"
@@ -2509,50 +2543,50 @@ msgstr ""
 #: app/GedcomTag.php:996
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "טבילה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1005
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "טבילה פון אַ אייניקל"
 
 #: app/GedcomTag.php:985
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "טבילה פון אן אייניקל"
 
 #: app/GedcomTag.php:994
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "טבילה פון אן אייניקל"
 
 #: app/GedcomTag.php:1003
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "טבילה פון אן אייניקל"
 
 #: app/GedcomTag.php:1012
 msgid "Baptism of a half-brother"
-msgstr ""
+msgstr "באַפּטיזשאַן פון אַ האַלב-ברודער"
 
 #: app/GedcomTag.php:1016
 msgid "Baptism of a half-sibling"
-msgstr ""
+msgstr "באַפּטיזאַם פון אַ האַלב-ברודער/שוועסטער"
 
 #: app/GedcomTag.php:1014
 msgid "Baptism of a half-sister"
-msgstr ""
+msgstr "באפט פון א האלבע שוועסטער"
 
 #: app/GedcomTag.php:1025
 msgid "Baptism of a sibling"
-msgstr ""
+msgstr "באַפּטיזאַם פון אַ ברודער/שוועסטער"
 
 #: app/GedcomTag.php:1023
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "באַפּטיזאַם פון אַ שוועסטער"
 
 #: app/GedcomTag.php:976
 msgid "Baptism of a son"
-msgstr ""
+msgstr "באַפּטיזאַם פון אַ זון"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
@@ -4398,7 +4432,7 @@ msgstr "דאַטע דיפעראַנסיז"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
-msgstr ""
+msgstr "טאָג פון מאָרמאָן טבילה"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
@@ -5221,7 +5255,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors"
-msgstr ""
+msgstr "דירעקט ליניע אבות"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -8016,7 +8050,7 @@ msgstr "קירגיזסטאן"
 #. I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:174
 msgid "LDS baptism"
-msgstr ""
+msgstr "מאָרמאָן טבילה"
 
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:776
@@ -10644,7 +10678,7 @@ msgstr ""
 
 #: search.php:253
 msgid "Phonetic algorithm"
-msgstr ""
+msgstr "פאָנעטיק אַלגערידאַם"
 
 #: app/GedcomTag.php:608
 msgid "Phonetic name"
@@ -10746,7 +10780,7 @@ msgstr ""
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
-msgstr ""
+msgstr "אָרט פֿון מאָרמאָן טבילה"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
@@ -14441,6 +14475,8 @@ msgstr "דאס מוזן צו זייַן בייַ מינדסטער זעקס או�
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
+"דער נאָמען איז געניצט אין די \"פֿון\" פֿעלד, ווען שיקט אָטאַמאַטיק ימיילז פֿ"
+"ון דעם סערווער."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -15327,6 +15363,8 @@ msgstr ""
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr ""
+"צופֿעליקער איינער אָדער מער מידיאַ טעקעס פון דיין היגע קאָמפּיוטער. מעדיע "
+"טעקעס קענען זיין בילדער, ווידעא, אַודיאָ אָדער אנדערע פֿאָרמאַטירונגען."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6910
@@ -15399,6 +15437,10 @@ msgstr ""
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
+"ניצן דעם פֿעלד צו זאָגן דעם פּלאַץ אַדמיניסטראַטאָר וואָס איר בעטן אַ חשבון "
+"און ווי איר זענט שייך צו די גענעאַלאָגיע געוויזן אויף דעם פּלאַץ. איר קענט "
+"אויך נוצן דעם צו אַרייַן קיין אַנדערע באַמערקונגען איר קען האָבן פֿאַר דעם "
+"פּלאַץ אַדמיניסטראַטאָר."
 
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
@@ -15806,6 +15848,10 @@ msgstr "ווען איר שיקן דעם אָנזאָג איר וועט באַק�
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
+"ווען אַ באַניצער איז פֿאַרבונדן מיט אַ יחיד רעקאָרד אין אַ משפּחה בוים און "
+"האט אַ ראָלע פון מיטגליד, רעדאַקטאָר אָדער מאָדעראַטאָר, איר קענען פאַרמייַ"
+"דן זיי פון אַקסעס די דעטאַילס פון ווייַט לעבעדיק באַציונגען. איר ספּ"
+"עציפיצירן די נומער פון שייכות סטעפּס אַז דער באַניצער איז ערלויבט צו זען."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
@@ -16554,7 +16600,7 @@ msgstr "דורך"
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "אויסגערעכנט %s"
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:809
