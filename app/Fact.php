@@ -374,7 +374,7 @@ class Fact
     }
 
     /**
-     * The place where the event occured.
+     * The place where the event occurred.
      *
      * @return Place
      */

@@ -210,7 +210,7 @@ class MapDataService
 
     /**
      * Find a list of child places.
-     * How many children does each child place have?  How many have co-ordinates?
+     * How many children does each child place have?  How many have coordinates?
      *
      * @param int|null $parent_id
      *

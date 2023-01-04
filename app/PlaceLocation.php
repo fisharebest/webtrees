@@ -207,7 +207,7 @@ class PlaceLocation
             return [[-180.0, -90.0], [180.0, 90.0]];
         }
 
-        // Find our own co-ordinates and those of any child places
+        // Find our own coordinates and those of any child places
         $latitudes = DB::table('place_location')
             ->whereNotNull('latitude')
             ->where(function (Builder $query): void {
@@ -234,17 +234,17 @@ class PlaceLocation
                 return (float) $x;
             });
 
-        // No co-ordinates?  Use the parent place instead.
+        // No coordinates?  Use the parent place instead.
         if ($latitudes->isEmpty() || $longitudes->isEmpty()) {
             return $this->parent()->boundingRectangle();
         }
 
-        // Many co-ordinates?  Generate a bounding rectangle that includes them.
+        // Many coordinates?  Generate a bounding rectangle that includes them.
         if ($latitudes->count() > 1 || $longitudes->count() > 1) {
             return [[$latitudes->min(), $longitudes->min()], [$latitudes->max(), $longitudes->max()]];
         }
 
-        // Just one co-ordinate?  Draw a box around it.
+        // Just one coordinate?  Draw a box around it.
         switch ($this->parts->count()) {
             case 1:
                 // Countries

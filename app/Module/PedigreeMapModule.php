@@ -235,11 +235,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         foreach ($facts as $sosa => $fact) {
             $location = new PlaceLocation($fact->place()->gedcomName());
 
-            // Use the co-ordinates from the fact (if they exist).
+            // Use the coordinates from the fact (if they exist).
             $latitude  = $fact->latitude();
             $longitude = $fact->longitude();
 
-            // Use the co-ordinates from the location otherwise.
+            // Use the coordinates from the location otherwise.
             if ($latitude === null || $longitude === null) {
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();

@@ -92,7 +92,7 @@ class MapDataEdit implements RequestHandlerInterface
         $longitude  = $location->longitude();
         $map_bounds = $location->boundingRectangle();
 
-        // If the current co-ordinates are unknown, leave the input fields empty,
+        // If the current coordinates are unknown, leave the input fields empty,
         // and show a marker in the middle of the map.
         if ($latitude === null || $longitude === null) {
             $latitude  = '';
