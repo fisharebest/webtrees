@@ -90,36 +90,47 @@ use Illuminate\Support\Collection;
 </div>
 
 <script>
-    var play = <?= json_encode($start_automatically, JSON_THROW_ON_ERROR) ?>;
+  (function () {
+    let block = document.getElementById('block-<?= $block_id ?>');
+
+    let play = <?= json_encode($start_automatically, JSON_THROW_ON_ERROR) ?>;
+
+    function slideShowReload () {
+      clearTimeout(timeout);
+
+      if (document.hidden) {
+        // No point loading images when nobody is looking.
+        timeout = setTimeout(slideShowReload, 1000);
+      } else {
+        $(block.parentNode).load($(block).parent().data('wtAjaxUrl') + '&start=' + (play ? '1' : '0'));
+      }
+    }
+
+    let timeout = null;
 
     if (play) {
-        var timeout = setTimeout(slideShowReload, <?= json_encode($delay * 1000, JSON_THROW_ON_ERROR) ?>);
+      timeout = setTimeout(slideShowReload, <?= json_encode($delay * 1000, JSON_THROW_ON_ERROR) ?>);
     }
 
-    function slideShowReload() {
-        var block = $("#block-<?= $block_id ?>").parent();
-        clearTimeout(timeout);
-        block.load(block.data("wtAjaxUrl") + "&start=" + (play ? "1" : "0"));
-
-        return false;
-    }
-
-    $(".wt-icon-media-play").on("click", function () {
-        $(".wt-icon-media-play").parent().attr("hidden", true);
-        $(".wt-icon-media-stop").parent().attr("hidden", false);
-        play = true;
-        return slideShowReload();
+    block.querySelector('.wt-icon-media-play').addEventListener('click', (event) => {
+      event.preventDefault();
+      block.querySelector('.wt-icon-media-play').parentNode.hidden = true;
+      block.querySelector('.wt-icon-media-stop').parentNode.hidden = false;
+      play = true;
+      slideShowReload();
     });
 
-    $(".wt-icon-media-stop").on("click", function () {
-        $(".wt-icon-media-stop").parent().attr("hidden", true);
-        $(".wt-icon-media-play").parent().attr("hidden", false);
-        play = false;
-        clearTimeout(timeout);
-        return false;
+    block.querySelector('.wt-icon-media-stop').addEventListener('click', (event) => {
+      event.preventDefault();
+      block.querySelector('.wt-icon-media-stop').parentNode.hidden = true;
+      block.querySelector('.wt-icon-media-play').parentNode.hidden = false;
+      play = false;
+      clearTimeout(timeout);
     });
 
-    $(".wt-icon-media-next").on("click", function () {
-        return slideShowReload();
+    block.querySelector('.wt-icon-media-next').addEventListener('click', (event) => {
+      event.preventDefault();
+      slideShowReload();
     });
+  })();
 </script>
