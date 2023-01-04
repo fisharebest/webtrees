@@ -137,9 +137,10 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
             ->filter(GedcomRecord::accessFilter());
 
         return $this->viewResponse('modules/source-list/page', [
-            'sources'   => $sources,
-            'title'     => I18N::translate('Sources'),
-            'tree'      => $tree,
+            'sources'       => $sources,
+            'meta_robots'   => 'index,follow',
+            'title'         => I18N::translate('Sources'),
+            'tree'          => $tree,
         ]);
     }
 }
