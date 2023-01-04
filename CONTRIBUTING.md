@@ -55,7 +55,7 @@ Use `git clone --depth 1 https://github.com/fisharebest/webtrees`.
 The instructions below assume you have created an alias/shortcut for `composer`.
 If not, you'll need to replace `composer` with `php /path/to/your/copy/of/composer.phar`.
 
-* You would usually run `composer install` before starting any develoment.  This loads all the development tools, including the PHP debug bar, the build scripts, the analysis and testing tools.  You would then run `composer install --no-dev` before committing any changes.
+* You would usually run `composer install` before starting any development.  This loads all the development tools, including the PHP debug bar, the build scripts, the analysis and testing tools.  You would then run `composer install --no-dev` before committing any changes.
 
 * You can use a "pre-commit hook" to run checks on your code before you commit them to your local repository.  To do this, rename the file `.git/hooks/pre-commit.sample` to `.git/hooks/pre-commit` and then add this line at the end of the file: `composer webtrees:pre-commit-hook`. 
 
