@@ -220,7 +220,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         if ($cH < $renderer->lastCellHeight) {
             $cH = $renderer->lastCellHeight;
         }
-        // Update max Y incase of a pagebreak
+        // Update max Y in case of a pagebreak
         // We don't want to over write any images or other stuff
         $renderer->addMaxY($this->top + $cH);
 

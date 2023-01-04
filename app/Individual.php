@@ -266,7 +266,7 @@ class Individual extends GedcomRecord
             return true;
         }
 
-        // If any event occured more than $MAX_ALIVE_AGE years ago, then assume the individual is dead
+        // If any event occurred more than $MAX_ALIVE_AGE years ago, then assume the individual is dead
         if (preg_match_all('/\n2 DATE (.+)/', $this->gedcom, $date_matches)) {
             foreach ($date_matches[1] as $date_match) {
                 $date = new Date($date_match);

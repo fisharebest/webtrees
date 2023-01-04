@@ -183,14 +183,14 @@ abstract class AbstractRenderer
      * @param float  $width   cell width (expressed in points)
      * @param float  $height  cell height (expressed in points)
      * @param string $border  Border style
-     * @param string $align   Text alignement
+     * @param string $align   Text alignment
      * @param string $bgcolor Background color code
      * @param string $style   The name of the text style
      * @param int    $ln      Indicates where the current position should go after the call
      * @param mixed  $top     Y-position
      * @param mixed  $left    X-position
      * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-     * @param int    $stretch Stretch carachter mode
+     * @param int    $stretch Stretch character mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
      * @param bool   $reseth
