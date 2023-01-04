@@ -137,11 +137,11 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         foreach ($facts as $id => $fact) {
             $location = new PlaceLocation($fact->place()->gedcomName());
 
-            // Use the coordinates from the fact (if they exist).
+            // Use the co-ordinates from the fact (if they exist).
             $latitude  = $fact->latitude();
             $longitude = $fact->longitude();
 
-            // Use the coordinates from the location otherwise.
+            // Use the co-ordinates from the location otherwise.
             if ($latitude === null || $longitude === null) {
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();
