@@ -313,7 +313,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             'U' => $this->imageColor($image, 'eeeeee'),
         ];
 
-        // Coordinates are measured from the top-left corner.
+        // Co-ordinates are measured from the top-left corner.
         $center_x  = intdiv($width, 2);
         $center_y  = $center_x;
         $arc_width = $width / $generations / 2.0;
