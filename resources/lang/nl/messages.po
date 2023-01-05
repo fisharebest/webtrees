@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-25 07:55+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2023-01-06 09:18+0000\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -3257,7 +3257,7 @@ msgstr "Calgary, Alberta, Canada"
 
 #: app/Gedcom.php:845 resources/views/modals/source-fields.phtml:52
 msgid "Call number"
-msgstr "Oproepnummer"
+msgstr "Inventarisnummer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
