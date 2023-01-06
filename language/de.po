@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-28 11:18+0000\n"
-"Last-Translator: marku5 <markusl@gmx.de>\n"
+"PO-Revision-Date: 2023-01-06 19:15+0000\n"
+"Last-Translator: Heiner Kerler <heiner.kerler@arcor.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -10373,7 +10373,7 @@ msgstr "Orlando, Florida, Vereinigte Staaten"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
 msgid "Other"
-msgstr "Sonstige"
+msgstr "divers"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
