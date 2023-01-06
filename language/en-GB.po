@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 15:27+0000\n"
+"PO-Revision-Date: 2023-01-06 19:15+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/"
 "projects/webtrees/webtrees-17/en_GB/>\n"
@@ -15068,7 +15068,7 @@ msgstr "Tunisia"
 #. I18N: Name of a country or state
 #: app/Stats.php:6903
 msgid "Turkey"
-msgstr "Turkey"
+msgstr "Türkiye"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6898
