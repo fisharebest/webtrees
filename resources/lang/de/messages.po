@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
 "PO-Revision-Date: 2023-01-07 18:26+0000\n"
-"Last-Translator: Heiner Kerler <heiner.kerler@arcor.de>\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -6372,7 +6372,7 @@ msgstr "weiblich"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:26
 #: resources/views/modules/top10_givnnames/block.phtml:20
 msgid "Females"
-msgstr "weibliche"
+msgstr "Weibliche Personen"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
@@ -8891,7 +8891,7 @@ msgstr "männlich"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:17
 #: resources/views/modules/top10_givnnames/block.phtml:16
 msgid "Males"
-msgstr "männliche"
+msgstr "Männliche Personen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:331
@@ -10842,7 +10842,7 @@ msgstr "Orlando, Florida, Vereinigte Staaten"
 #: app/Statistics/Google/ChartCommonSurname.php:137
 #: resources/views/admin/control-panel.phtml:739
 msgid "Other"
-msgstr "divers"
+msgstr "Andere"
 
 #: resources/views/admin/trees-preferences.phtml:409
 msgid "Other facts to show in charts"
@@ -11841,7 +11841,7 @@ msgstr "Datensatz"
 #: app/Gedcom.php:769 app/Gedcom.php:793 app/Gedcom.php:824 app/Gedcom.php:848
 #: app/Gedcom.php:872 app/Gedcom.php:884
 msgid "Record ID number"
-msgstr "Datensatz-ID"
+msgstr "Datensatz-ID-Nummer"
 
 #: app/Gedcom.php:736 app/Gedcom.php:871
 msgid "Record file number"
@@ -15905,7 +15905,7 @@ msgstr "Unbekannt"
 #: resources/xml/reports/individual_report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr "unbekannt"
 
 #: resources/views/edit-account-page.phtml:64
 msgctxt "unknown people"
