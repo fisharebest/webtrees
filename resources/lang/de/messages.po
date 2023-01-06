@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-06 14:30+0000\n"
+"PO-Revision-Date: 2023-01-08 21:59+0000\n"
 "Last-Translator: Heiner Kerler <heiner.kerler@arcor.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
@@ -15915,7 +15915,7 @@ msgstr "Unbekannt"
 #: resources/views/edit-account-page.phtml:64
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr "unbekannt"
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
@@ -15984,7 +15984,9 @@ msgstr "Mediendateien hochladen"
 
 #: resources/views/admin/media-upload.phtml:25
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Ein oder mehrere Mediendateien von Ihrem lokalen Rechner hochladen. Mediendateien können Bilder, Videos, Tonaufnahmen oder andere Formate sein."
+msgstr ""
+"Eine oder mehrere Mediendateien von ihrem lokalen Rechner hochladen. "
+"Mediendateien können Bilder, Videos, Tonaufnahmen oder andere Formate sein."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
