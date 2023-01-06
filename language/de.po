@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2023-01-08 21:59+0000\n"
-"Last-Translator: Heiner Kerler <heiner.kerler@arcor.de>\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -6252,7 +6252,7 @@ msgstr "weiblich"
 #: app/Stats.php:2599 app/Stats.php:3942 calendar.php:248 calendar.php:436
 #: statistics.php:151 statistics.php:167 statistics.php:180
 msgid "Females"
-msgstr "weibliche"
+msgstr "Weibliche Personen"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6746
@@ -8499,7 +8499,7 @@ msgstr "männlich"
 #: app/Stats.php:2599 app/Stats.php:3942 calendar.php:244 calendar.php:435
 #: statistics.php:150 statistics.php:166 statistics.php:179
 msgid "Males"
-msgstr "männliche"
+msgstr "Männliche Personen"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6819
@@ -10373,7 +10373,7 @@ msgstr "Orlando, Florida, Vereinigte Staaten"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
 msgid "Other"
-msgstr "divers"
+msgstr "Andere"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
@@ -11368,7 +11368,7 @@ msgstr "Datensatz"
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
 msgid "Record ID number"
-msgstr "Datensatzidentnummer"
+msgstr "Datensatz-ID-Nummer"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
@@ -15393,7 +15393,7 @@ msgstr "Unbekannt"
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr "unbekannt"
 
 #: app/Stats.php:941 app/Stats.php:947 edituser.php:187
 msgctxt "unknown people"
