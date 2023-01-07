@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-06 09:18+0000\n"
-"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
+"PO-Revision-Date: 2023-01-08 21:59+0000\n"
+"Last-Translator: Joppla <joppla@gmx.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -1258,13 +1258,13 @@ msgstr "%s toevoegen aan de knipselverzameling"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
-msgstr "Een broer toevoegen"
+msgstr "Voeg een broer toe"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:79
 #: resources/views/family-page-menu.phtml:54
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a child"
-msgstr "Voeg een nieuw kind toe"
+msgstr "Voeg een kind toe"
 
 #: app/Http/RequestHandlers/AddChildToIndividualPage.php:87
 #: resources/views/modules/relatives/tab.phtml:155
@@ -1275,7 +1275,7 @@ msgstr "Voeg een kind toe om een eenoudergezin te creëren"
 #: resources/views/family-page-children.phtml:47
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr "Een dochter toevoegen"
+msgstr "Voeg een dochter toe"
 
 #: resources/views/edit/add-fact-row.phtml:21
 #: resources/views/edit/raw-gedcom-record.phtml:60
@@ -1288,7 +1288,7 @@ msgstr "Voeg een feit/gebeurtenis toe"
 #: resources/views/family-page-grandparents.phtml:44
 #: resources/views/modules/relatives/tab.phtml:107
 msgid "Add a father"
-msgstr "Voeg een nieuwe vader toe"
+msgstr "Voeg een vader toe"
 
 #: resources/views/modules/favorites/favorites.phtml:47
 #: resources/views/modules/favorites/favorites.phtml:56
@@ -1302,12 +1302,12 @@ msgstr "Voeg een nieuwe favoriet toe"
 #: resources/views/modules/relatives/family.phtml:63
 #: resources/views/modules/relatives/tab.phtml:134
 msgid "Add a husband"
-msgstr "Voeg een nieuwe echtgenoot toe"
+msgstr "Voeg een echtgenoot toe"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:73
 #: resources/views/modules/relatives/tab.phtml:146
 msgid "Add a husband using an existing individual"
-msgstr "Een bestaand persoon als echtgenoot toevoegen"
+msgstr "Voeg een bestaand persoon als echtgenoot toe"
 
 #: resources/views/modules/user_blog/list.phtml:62
 msgid "Add a journal entry"
@@ -1323,18 +1323,18 @@ msgstr "Voeg een mediabestand toe"
 #: resources/views/individual-page-images.phtml:61
 #: resources/views/individual-page-menu.phtml:97
 msgid "Add a media object"
-msgstr "Voeg een nieuw mediaobject toe"
+msgstr "Voeg een mediaobject toe"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:77
 #: resources/views/family-page-grandparents.phtml:66
 #: resources/views/family-page-grandparents.phtml:74
 #: resources/views/modules/relatives/tab.phtml:114
 msgid "Add a mother"
-msgstr "Voeg een nieuwe moeder toe"
+msgstr "Voeg een moeder toe"
 
 #: resources/views/individual-page-menu.phtml:45
 msgid "Add a name"
-msgstr "Voeg nieuwe naam toe"
+msgstr "Voeg naam toe"
 
 #: resources/views/modules/gedcom_news/list.phtml:63
 msgid "Add a news article"
@@ -1342,7 +1342,7 @@ msgstr "Voeg een nieuwsartikel toe"
 
 #: resources/views/modules/notes/tab.phtml:98
 msgid "Add a note"
-msgstr "Voeg een nieuwe notitie toe"
+msgstr "Voeg een notitie toe"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
@@ -1360,11 +1360,11 @@ msgstr "Voeg een zoon toe"
 
 #: resources/views/modules/sources_tab/tab.phtml:77
 msgid "Add a source citation"
-msgstr "Voeg een nieuwe bronvermelding toe"
+msgstr "Voeg een bronvermelding toe"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:89
 msgid "Add a spouse"
-msgstr "Voeg een nieuwe huwelijkspartner toe"
+msgstr "Voeg een huwelijkspartner toe"
 
 #: app/Module/StoriesModule.php:291
 #: resources/views/modules/stories/config.phtml:38
@@ -1375,7 +1375,7 @@ msgstr "Voeg een verhaal toe"
 #: app/Http/RequestHandlers/UserAddPage.php:48
 #: resources/views/admin/control-panel.phtml:517
 msgid "Add a user"
-msgstr "Voeg een nieuwe gebruiker toe"
+msgstr "Voeg een gebruiker toe"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:85
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:87
@@ -1384,18 +1384,18 @@ msgstr "Voeg een nieuwe gebruiker toe"
 #: resources/views/modules/relatives/family.phtml:100
 #: resources/views/modules/relatives/tab.phtml:132
 msgid "Add a wife"
-msgstr "Voeg een nieuwe echtgenote toe"
+msgstr "Voeg een echtgenote toe"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:76
 #: resources/views/modules/relatives/tab.phtml:144
 msgid "Add a wife using an existing individual"
-msgstr "Een bestaand persoon als echtgenote toevoegen"
+msgstr "Voeg en bestaand persoon als echtgenote toe"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:297
 #: resources/views/modules/faq/config.phtml:47
 msgid "Add an FAQ"
-msgstr "FAQ toevoegen"
+msgstr "Voeg een FAQ toe"
 
 #: resources/views/modules/custom-css-js/edit.phtml:35
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
@@ -1465,7 +1465,7 @@ msgstr "Toevoegen aan knipselverzameling"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:140
 msgid "Add unique identifiers"
-msgstr "Unieke identificatienummers toevoegen"
+msgstr "Voeg unieke identificatienummers toe"
 
 #: resources/views/admin/trees.phtml:219
 msgid "Add unlinked records"
