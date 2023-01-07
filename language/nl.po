@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-06 09:18+0000\n"
-"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
+"PO-Revision-Date: 2023-01-08 21:59+0000\n"
+"Last-Translator: Joppla <joppla@gmx.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
 "Language: nl\n"
@@ -1293,7 +1293,7 @@ msgstr "Voeg een nieuwe broer of zus toe"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr "Voeg een nieuw kind toe"
+msgstr "Voeg een kind toe"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
@@ -1309,7 +1309,7 @@ msgstr "Voeg een feit/gebeurtenis toe"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
-msgstr "Voeg een nieuwe vader toe"
+msgstr "Voeg een vader toe"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
@@ -1322,7 +1322,7 @@ msgstr "Voeg een nieuwe geografische locatie toe"
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:790
 #: edit_interface.php:880
 msgid "Add a husband"
-msgstr "Voeg een nieuwe echtgenoot toe"
+msgstr "Voeg een echtgenoot toe"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1331,7 +1331,7 @@ msgstr "Voeg een echtgenoot toe aan dit gezin"
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
 #: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
-msgstr "Een bestaand persoon als echtgenoot toevoegen"
+msgstr "Voeg een bestaand persoon als echtgenoot toe"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1341,15 +1341,15 @@ msgstr "Voeg een nieuw logboek toe"
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
-msgstr "Voeg een nieuw mediaobject toe"
+msgstr "Voeg een mediaobject toe"
 
 #: app/Module/RelativesTabModule.php:329 edit_interface.php:652 family.php:96
 msgid "Add a mother"
-msgstr "Voeg een nieuwe moeder toe"
+msgstr "Voeg een moeder toe"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1635
 msgid "Add a name"
-msgstr "Voeg nieuwe naam toe"
+msgstr "Voeg naam toe"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
@@ -1358,7 +1358,7 @@ msgstr "Voeg een nieuwsartikel toe"
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr "Voeg een nieuwe notitie toe"
+msgstr "Voeg een notitie toe"
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
@@ -1385,11 +1385,11 @@ msgstr "Voeg een nieuwe zoon of dochter toe"
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
-msgstr "Voeg een nieuwe bronvermelding toe"
+msgstr "Voeg een bronvermelding toe"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
-msgstr "Voeg een nieuwe huwelijkspartner toe"
+msgstr "Voeg een huwelijkspartner toe"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
@@ -1399,12 +1399,12 @@ msgstr "Voeg een verhaal toe"
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Voeg een nieuwe gebruiker toe"
+msgstr "Voeg een gebruiker toe"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:787
 #: edit_interface.php:877
 msgid "Add a wife"
-msgstr "Voeg een nieuwe echtgenote toe"
+msgstr "Voeg een echtgenote toe"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1413,13 +1413,13 @@ msgstr "Voeg echtgenote toe aan dit gezin"
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
 #: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
-msgstr "Een bestaand persoon als echtgenote toevoegen"
+msgstr "Voeg en bestaand persoon als echtgenote toe"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ"
-msgstr "FAQ toevoegen"
+msgstr "Voeg een FAQ toe"
 
 #: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
@@ -1475,7 +1475,7 @@ msgstr "Voeg het GEDCOM-mediapad toe aan bestandsnamen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr "Voeg toe aan TITLE header tag"
+msgstr "Voeg toe aan TITEL-koptekstlabel"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -1494,7 +1494,7 @@ msgstr "Toevoegen aan knipselverzameling"
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr "Unieke identificatienummers toevoegen"
+msgstr "Voeg unieke identificatienummers toe"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
