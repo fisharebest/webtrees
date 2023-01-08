@@ -27,7 +27,7 @@ class Divorce extends AbstractEventElement
     protected const SUBTAGS = [
         'TYPE'  => '0:1:?',
         'DATE'  => '0:1',
-        'HUSB'  => '0:?',
+        'HUSB'  => '0:1',
         'WIFE'  => '0:1',
         'PLAC'  => '0:1',
         'ADDR'  => '0:1',
