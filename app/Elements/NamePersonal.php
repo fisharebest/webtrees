@@ -47,7 +47,7 @@ use function view;
  * /Parry/ (surname only)
  * William Lee /Parry/
  * William Lee /Mac Parry/ (both parts (Mac and Parry) are surname parts
- * William /Lee/ Parry (surname imbedded in the name string)
+ * William /Lee/ Parry (surname embedded in the name string)
  * William Lee /Pa.../
  */
 class NamePersonal extends AbstractElement

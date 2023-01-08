@@ -244,8 +244,14 @@ class RegisterAction implements RequestHandlerInterface
      * @return void
      * @throws Exception
      */
-    private function doValidateRegistration(ServerRequestInterface $request, string $username, string $email, string $realname, string $comments, string $password): void
-    {
+    private function doValidateRegistration(
+        ServerRequestInterface $request,
+        string $username,
+        string $email,
+        string $realname,
+        string $comments,
+        string $password
+    ): void {
         // All fields are required
         if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {
             throw new Exception(I18N::translate('All fields must be completed.'));

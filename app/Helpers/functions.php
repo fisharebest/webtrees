@@ -108,7 +108,7 @@ function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): R
 /**
  * Create a response.
  *
- * @param string|array<mixed>|object $content
+ * @param array<mixed>|object|string $content
  * @param int                        $code
  * @param array<string>              $headers
  *

@@ -69,14 +69,12 @@ class Log
             $ip_address = '127.0.0.1';
         }
 
-        $tree_id = $tree ? $tree->id() : null;
-
         DB::table('log')->insert([
             'log_type'    => $log_type,
             'log_message' => $message,
             'ip_address'  => $ip_address,
             'user_id'     => Auth::id(),
-            'gedcom_id'   => $tree_id,
+            'gedcom_id'   => $tree ? $tree->id() : null,
         ]);
     }
 

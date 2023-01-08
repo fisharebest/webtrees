@@ -59,7 +59,7 @@ class MapLinkOpenStreetMap extends AbstractModule implements ModuleMapLinkInterf
         $latitude  = $fact->latitude();
         $longitude = $fact->longitude();
 
-        // mlat/mlon is the marker postion
+        // mlat/mlon is the marker position
         return 'https://www.openstreetmap.org/?mlat=' . $latitude . '&mlon=' . $longitude . '#map=10/' . $latitude . '/' . $longitude;
     }
 }

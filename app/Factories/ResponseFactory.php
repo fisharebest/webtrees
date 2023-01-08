@@ -80,7 +80,7 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Redirect to a URL.
      *
-     * @param string|UriInterface $url
+     * @param UriInterface|string $url
      * @param int                 $code
      *
      * @return ResponseInterface
