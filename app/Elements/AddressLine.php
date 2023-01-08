@@ -38,9 +38,9 @@ class AddressLine extends AbstractElement
         'ADR2' => '0:1:?',
         'ADR3' => '0:1:?',
         'CITY' => '0:1:?',
-        'CTRY' => '0:1:?',
-        'POST' => '0:1:?',
         'STAE' => '0:1:?',
+        'POST' => '0:1:?',
+        'CTRY' => '0:1:?',
     ];
 
     /**
