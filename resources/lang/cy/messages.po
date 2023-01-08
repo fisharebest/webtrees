@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Welsh (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"PO-Revision-Date: 2023-01-08 21:59+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/cy/>\n"
@@ -157,7 +157,6 @@ msgstr ""
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:623
-#, fuzzy
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
 
@@ -14569,7 +14568,9 @@ msgstr "Mae'r ffeithiau a'r digwyddiadau teuluol mwyaf cyffredin yn cael eu rhes
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:658
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Mae'r ffeithiau a'r digwyddiadau unigol mwyaf cyffredin yn cael eu rhestru ar wahân, fel y mae modd eu hychwanegu'n haws."
+msgstr ""
+"Mae'r ffeithiau a'r digwyddiadau unigol mwyaf cyffredin yn cael eu rhestru "
+"ar wahân, fel y mae modd eu hychwanegu'n haws."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -15514,7 +15515,9 @@ msgstr ""
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "I greu tasgau ymchwil newydd, yn gyntaf rhaid i chi ychwanegu “tasg ymchwil” at y rhestr o ffeithiau a digwyddiadau yn newisiadau'r cart achau."
+msgstr ""
+"I greu tasgau ymchwil newydd, yn gyntaf rhaid i chi ychwanegu “tasg ymchwil” "
+"at y rhestr o ffeithiau a digwyddiadau yn newisiadau'r cart achau."
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
