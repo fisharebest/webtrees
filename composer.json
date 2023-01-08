@@ -62,7 +62,7 @@
         "league/flysystem-ziparchive": "2.3.1",
         "middlewares/client-ip": "2.0.1",
         "mlocati/ip-lib": "1.18.0",
-        "nesbot/carbon": "2.64.0",
+        "nesbot/carbon": "2.65.0",
         "nyholm/psr7": "1.5.1",
         "nyholm/psr7-server": "1.0.2",
         "oscarotero/middleland": "1.0.1",
