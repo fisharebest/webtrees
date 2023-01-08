@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-24 13:24+0000\n"
-"Last-Translator: sskehan <shaun_skehan@hotmail.com>\n"
+"PO-Revision-Date: 2023-01-08 21:59+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tl/>\n"
 "Language: tl\n"
@@ -164,7 +164,7 @@ msgstr ""
 #: admin_media.php:497 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr "mga pixel"
+msgstr "%1$s × %2$s mga pixel"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
