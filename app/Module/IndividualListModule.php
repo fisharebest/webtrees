@@ -661,7 +661,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         }
 
         foreach ($all_surnames as $surn => $surnames) {
-            $initial = I18N::language()->initialLetter($surn);
+            $initial = I18N::language()->initialLetter((string) $surn);
 
             $initials[$initial] ??= 0;
             $initials[$initial] += array_sum($surnames);
