@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"PO-Revision-Date: 2023-01-08 21:59+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
@@ -193,7 +193,6 @@ msgstr ""
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:822
-#, fuzzy
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
 
@@ -1671,7 +1670,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "Mabwysiadwyd"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
@@ -1972,7 +1971,7 @@ msgstr ""
 
 #: login.php:415
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Rhaid cwblhau pob maes."
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
@@ -2228,7 +2227,7 @@ msgstr "Cymeradwywyd"
 
 #: admin_users.php:385
 msgid "Approved by administrator"
-msgstr ""
+msgstr "Cymeradwywyd gan weinyddwr"
 
 #: app/Date/CalendarDate.php:324
 msgctxt "Abbreviation for April"
@@ -2939,7 +2938,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a brother"
-msgstr ""
+msgstr "Geni brawd"
 
 #: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a child"
@@ -3963,7 +3962,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Cochabamba, Bolivia"
-msgstr ""
+msgstr "Cochabamba, Bolifia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
@@ -6451,7 +6450,7 @@ msgstr ""
 #: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
-msgstr ""
+msgstr "Canfod ffynhonnell"
 
 #: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
@@ -7297,7 +7296,7 @@ msgstr ""
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr ""
+msgstr "Delwedd wedi'i hamlygu"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
@@ -8242,7 +8241,7 @@ msgstr ""
 
 #: admin_users.php:852
 msgid "Last signed in"
-msgstr ""
+msgstr "Mewngofnodwyd diwethaf"
 
 #: statistics.php:137
 msgid "Latest birth"
@@ -8532,7 +8531,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Louisville, Kentucky, United States"
-msgstr ""
+msgstr "Louisville, Kentucky, Unol Daleithiau"
 
 #: app/Stats.php:1738
 msgid "Lowest population"
@@ -11488,7 +11487,7 @@ msgstr "Recordio"
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
 msgid "Record ID number"
-msgstr ""
+msgstr "Cofnodi rhif ID"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
@@ -12596,7 +12595,7 @@ msgstr ""
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr ""
+msgstr "Dangos cyrchwr oed"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12841,7 +12840,7 @@ msgstr ""
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Dangos rhestr o gyfenwau"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -13951,6 +13950,8 @@ msgstr ""
 #: admin_trees_config.php:1726
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"Mae'r ffeithiau a'r digwyddiadau unigol mwyaf cyffredin yn cael eu rhestru "
+"ar wahân, fel y mae modd eu hychwanegu'n haws."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
@@ -14124,7 +14125,7 @@ msgstr ""
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "Yr enw defnyddiwr sy'n ofynnol i'w ddilysu gyda'r gweinydd SMTP."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:951
@@ -14966,6 +14967,8 @@ msgstr ""
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
+"I greu tasgau ymchwil newydd, yn gyntaf rhaid i chi ychwanegu “tasg ymchwil” "
+"at y rhestr o ffeithiau a digwyddiadau yn newisiadau'r cart achau."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
@@ -15974,7 +15977,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "Pa goed teulu y dylid eu cynnwys yn y mapiau gwefannau"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
@@ -16040,7 +16043,7 @@ msgstr ""
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:864
 msgid "Will"
-msgstr ""
+msgstr "Ewyllys"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:389
@@ -16559,7 +16562,7 @@ msgstr ""
 #: app/Functions/Functions.php:904
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "modryb"
 
 #: app/Functions/Functions.php:846
 msgctxt "father’s sibling"
@@ -18032,7 +18035,7 @@ msgstr ""
 #: app/Functions/Functions.php:1398
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "hen fodryb/hen ewythr"
 
 #: app/Functions/Functions.php:1194
 msgctxt "mother’s parent’s sibling"
@@ -18227,7 +18230,7 @@ msgstr ""
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "hen fam-gu/hen nain"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s mother’s mother"
@@ -19228,7 +19231,7 @@ msgstr ""
 #: app/Functions/Functions.php:920
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nith"
 
 #: app/Functions/Functions.php:1028
 msgctxt "brother’s son’s wife"
@@ -19834,7 +19837,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "trefnu yn ôl dyddiad"
 
 #: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -20223,7 +20226,7 @@ msgstr ""
 #: admin_trees_config.php:427 admin_trees_config.php:467
 #: admin_trees_config.php:487
 msgid "visitors"
-msgstr ""
+msgstr "ymwelwyr"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:105
