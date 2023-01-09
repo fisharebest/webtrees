@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-05 14:51+0000\n"
+"PO-Revision-Date: 2023-01-10 01:39+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -2538,7 +2538,7 @@ msgstr "טבילה פון אַ אייניקל"
 
 #: app/GedcomTag.php:987
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "טבילה פון אַ אייניקל"
 
 #: app/GedcomTag.php:996
 msgctxt "daughter’s daughter"
@@ -2661,7 +2661,7 @@ msgstr "בערן, שווייץ"
 
 #: app/GedcomCode/GedcomCodeRela.php:75
 msgid "Best man"
-msgstr ""
+msgstr "בעסטע מאן"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6707
@@ -2681,7 +2681,7 @@ msgstr "בילינגס, מונטנה"
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
 msgid "Binary data object"
-msgstr ""
+msgstr "ביינערי דאַטן חפֿץ"
 
 #: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
@@ -2832,7 +2832,7 @@ msgstr "געבורט"
 
 #: app/Stats.php:1658 statistics.php:565
 msgid "Birth by country"
-msgstr ""
+msgstr "געבורט דורך לאַנד"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
@@ -2946,17 +2946,17 @@ msgstr "בלאָק"
 #: admin_module_blocks.php:35 admin_modules.php:162
 #: app/Theme/AdministrationTheme.php:193
 msgid "Blocks"
-msgstr ""
+msgstr "בלאַקס"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
 msgid "Blue Lagoon"
-msgstr ""
+msgstr "בלוי לאַגאָאָן"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:80
 msgid "Blue Marine"
-msgstr ""
+msgstr "בלוי מאַרינע"
 
 #: message.php:127
 msgid "Body"
@@ -2989,7 +2989,7 @@ msgstr "ביכל"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:63
 msgid "Born in the covenant"
-msgstr ""
+msgstr "געבוירן אין דער בונד"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6698
@@ -3042,12 +3042,12 @@ msgstr "בראזיל"
 
 #: app/GedcomCode/GedcomCodeRela.php:78
 msgid "Bridesmaid"
-msgstr ""
+msgstr "שושבינקעס"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "בריגהאַם סיטי, יוטאָ, פאַרייניקטע שטאַטן"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3145,91 +3145,91 @@ msgstr "בולגאריע"
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr "קבורה"
+msgstr "קבֿורה"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a brother"
-msgstr "קווורע פון אַ ברודער"
+msgstr "קבֿורה פון אַ ברודער"
 
 #: app/GedcomTag.php:1100
 msgid "Burial of a child"
-msgstr "קווורע פון אַ קינד"
+msgstr "קבֿורה פון אַ קינד"
 
 #: app/GedcomTag.php:1098
 msgid "Burial of a daughter"
-msgstr "קווורע פון אַ טאָכטער"
+msgstr "קבֿורה פון אַ טאָכטער"
 
 #: app/GedcomTag.php:1168
 msgid "Burial of a father"
-msgstr "קווורע פון אַ פאטער"
+msgstr "קבֿורה פון אַ פאטער"
 
 #: app/GedcomTag.php:1109 app/GedcomTag.php:1118 app/GedcomTag.php:1127
 msgid "Burial of a grandchild"
-msgstr "קווורע פון אַ אייניקל"
+msgstr "קבֿורה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1107
 msgid "Burial of a granddaughter"
-msgstr "קווורע פון אַ אייניקל"
+msgstr "קבֿורה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1116
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "קווורע פון אַ אייניקל"
+msgstr "קבֿורה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1125
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "קווורע פון אַ אייניקל"
+msgstr "קבֿורה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1132
 msgid "Burial of a grandfather"
-msgstr "קווורע פון אַ זיידע"
+msgstr "קבֿורה פון אַ זיידע"
 
 #: app/GedcomTag.php:1134
 msgid "Burial of a grandmother"
-msgstr "קווורע פון אַ באָבע"
+msgstr "קבֿורה פון אַ באָבע"
 
 #: app/GedcomTag.php:1136
 msgid "Burial of a grandparent"
-msgstr "קווורע פון אַ זיידע אָדער באָבע"
+msgstr "קבֿורה פון אַ זיידע אָדער באָבע"
 
 #: app/GedcomTag.php:1105
 msgid "Burial of a grandson"
-msgstr "קווורע פון אַ אייניקל"
+msgstr "קבֿורה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1114
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "קווורע פון אַ אייניקל"
+msgstr "קבֿורה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1123
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "קווורע פון אַ אייניקל"
+msgstr "קבֿורה פון אַ אייניקל"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-brother"
-msgstr "קווורע פון אַ האַלב-ברודער"
+msgstr "קבֿורה פון אַ האַלב-ברודער"
 
 #: app/GedcomTag.php:1163
 msgid "Burial of a half-sibling"
-msgstr "קווורע פון אַ האַלב ברודער אָדער שוועסטער"
+msgstr "קבֿורה פון אַ האַלב ברודער אָדער שוועסטער"
 
 #: app/GedcomTag.php:1161
 msgid "Burial of a half-sister"
-msgstr "קווורע פון אַ האַלב-שוועסטער"
+msgstr "קבֿורה פון אַ האַלב-שוועסטער"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a husband"
-msgstr "קווורע פון אַ מאַן"
+msgstr "קבֿורה פון אַ מאַן"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandfather"
-msgstr "קווורע פון אַ מוטערלעך זיידע"
+msgstr "קבֿורה פון אַ מוטערלעך זיידע"
 
 #: app/GedcomTag.php:1152
 msgid "Burial of a maternal grandmother"
-msgstr "קווורע פון אַ מוטערלעך באָבע"
+msgstr "קבֿורה פון אַ מוטערלעך באָבע"
 
 #: app/GedcomTag.php:1154
 msgid "Burial of a maternal grandparent"
@@ -3237,19 +3237,19 @@ msgstr "קווורע פון אַ מוטערלעך זיידע אָדער באָב
 
 #: app/GedcomTag.php:1170
 msgid "Burial of a mother"
-msgstr "קווורע פון אַ מוטער"
+msgstr "קבֿורה פון אַ מוטער"
 
 #: app/GedcomTag.php:1172
 msgid "Burial of a parent"
-msgstr "קווורע פון אַ עלטערן"
+msgstr "קבֿורה פון אַ עלטערן"
 
 #: app/GedcomTag.php:1141
 msgid "Burial of a paternal grandfather"
-msgstr "קווורע פון אַ פאָטערלעך זיידע"
+msgstr "קבֿורה פון אַ פאָטערלעך זיידע"
 
 #: app/GedcomTag.php:1143
 msgid "Burial of a paternal grandmother"
-msgstr "קווורע פון אַ פאָטערלעך באָבע"
+msgstr "קבֿורה פון אַ פאָטערלעך באָבע"
 
 #: app/GedcomTag.php:1145
 msgid "Burial of a paternal grandparent"
@@ -3257,15 +3257,15 @@ msgstr "קווורע פון אַ פאָטערלעך זיידע אָדער באָ
 
 #: app/GedcomTag.php:1181
 msgid "Burial of a sibling"
-msgstr "קווורע פון אַ ברודער אָדער שוועסטער"
+msgstr "קבֿורה פון אַ ברודער אָדער שוועסטער"
 
 #: app/GedcomTag.php:1179
 msgid "Burial of a sister"
-msgstr "קווורע פון אַ שוועסטער"
+msgstr "קבֿורה פון אַ שוועסטער"
 
 #: app/GedcomTag.php:1096
 msgid "Burial of a son"
-msgstr "קווורע פון אַ זון"
+msgstr "קבֿורה פון אַ זון"
 
 #: app/GedcomTag.php:1190
 msgid "Burial of a spouse"
@@ -3273,7 +3273,7 @@ msgstr "קבורה פון אַ מאַן / פרוי"
 
 #: app/GedcomTag.php:1188
 msgid "Burial of a wife"
-msgstr "קווורע פון אַ פרוי"
+msgstr "קבֿורה פון אַ פרוי"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -3328,11 +3328,11 @@ msgstr ""
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™‎"
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
-msgstr ""
+msgstr "אויסרעכענונג…"
 
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
@@ -3343,12 +3343,12 @@ msgstr "קאלענדאר"
 #: admin_trees_config.php:688 admin_trees_config.php:690
 #: admin_trees_config.php:693
 msgid "Calendar conversion"
-msgstr ""
+msgstr "קאַלענדאַר פֿאַרוואַנדלונג"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "קאַלגאַרי, אַלבערטאַ, קאַנאַדע"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
@@ -3437,7 +3437,7 @@ msgstr "קיימאַן אינזלען"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "סעבו סיטי, פיליפינען"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -3459,11 +3459,11 @@ msgstr "צענזוס"
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:39
 msgid "Census assistant"
-msgstr ""
+msgstr "הילף דעם צענזוס"
 
 #: app/Functions/FunctionsEdit.php:1028 app/GedcomTag.php:252
 msgid "Census date"
-msgstr ""
+msgstr "צענזוס דאַטע"
 
 #: app/GedcomTag.php:254
 msgid "Census place"
@@ -3471,7 +3471,7 @@ msgstr "צענזוס אָרט"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Census transcript"
-msgstr ""
+msgstr "צענזוס טראַנסקריפּט"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6710
@@ -3510,23 +3510,23 @@ msgstr ""
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "טוישן די \"היים בלאַט\" בלאַקס"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "טוישן די \"מייַן בלאַט\" בלאַקס"
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:261
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "געענדערט אויף %1$s"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: app/Module/RecentChangesModule.php:258
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr ""
+msgstr "פארענדערט אויף %1$s דורך %2$s"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:36 admin_users.php:435
@@ -3545,12 +3545,12 @@ msgstr[1] "ענדערונגען אין די לעצטע %s טעג"
 
 #: admin_trees_manage.php:529
 msgid "Changes log"
-msgstr ""
+msgstr "ענדערונגען רעגיסטער"
 
 #. I18N: gedcom tag CHAR
 #: app/GedcomTag.php:270
 msgid "Character set"
-msgstr ""
+msgstr "כאַראַקטער שטעלן"
 
 #: admin_module_charts.php:66 admin_modules.php:237
 msgid "Chart"
@@ -3558,7 +3558,7 @@ msgstr "טשאַרט"
 
 #: app/Module/RelationshipsChartModule.php:159
 msgid "Chart preferences"
-msgstr ""
+msgstr "טשאַרט פּרעפֿערענצן"
 
 #: app/Module/ChartsBlockModule.php:198 statistics.php:505 statistics.php:651
 msgid "Chart type"
@@ -3594,7 +3594,7 @@ msgstr "זוכן פֿאַר ערראָרס"
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "קוק פֿאַר הענגענדינג ענדערונגען…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -3610,7 +3610,7 @@ msgstr "זוכן סערווער קאַפּאַציטעט"
 
 #: setup.php:114
 msgid "Checking server configuration"
-msgstr ""
+msgstr "קאָנטראָלירונג די סערווער קאַנפיגיעריישאַן"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
@@ -3652,17 +3652,19 @@ msgstr "קינדער פון "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "קינדער נעמען אַ פּֿאַטראָן אַנשטאָט פֿון אַ פֿאַמיליע."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
 msgid "Children take one surname from the father and one surname from the mother."
 msgstr ""
+"קינדער נעמען איין פֿאַמיליע פֿון דעם פֿאטער און איין פֿאַמיליע פֿון די מוטער."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:85
 msgid "Children take one surname from the mother and one surname from the father."
 msgstr ""
+"קינדער נעמען איין פֿאַמיליע פון די מוטער און איין פֿאַמיליע פון דעם פֿאטער."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3671,12 +3673,12 @@ msgstr ""
 #: app/SurnameTradition.php:72 app/SurnameTradition.php:76
 #: app/SurnameTradition.php:91 app/SurnameTradition.php:96
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "קינדער נעמען זייער פֿאטער 'ס פֿאַמיליע."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition.php:79
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "קינדער נעמען זייער מוטער 'ס פֿאַמיליע."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6714
@@ -3704,7 +3706,7 @@ msgstr ""
 
 #: admin_site_config.php:131
 msgid "Choose user defined welcome text typed below"
-msgstr ""
+msgstr "קלייַבן באַניצער דיפיינד באַגריסונג טעקסט טייפּט אונטן"
 
 #: addmedia.php:522
 msgid "Choose: "
@@ -3716,11 +3718,11 @@ msgstr "קלייַבן "
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr ""
+msgstr "טובלונג"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
-msgstr ""
+msgstr "טובלונג פון אַ ברודער"
 
 #: app/GedcomTag.php:1199
 msgid "Christening of a child"
@@ -7360,6 +7362,9 @@ msgstr ""
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
+"אויב דער יחיד האט קיין געשעענישן אנדערע ווי טויט, קבֿורה אָדער קרעמאַטיאָן "
+"מער פריש ווי די נומער פון יאָרן, זיי זענען גערעכנט ווי \"לעבעדיק\". קינדער "
+"'ס געבורט דאַטעס זענען גערעכנט ווי אַזאַ געשעענישן פֿאַר דעם צוועק."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
@@ -10069,6 +10074,8 @@ msgstr ""
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
 msgstr ""
+"באַמערקונג: מער וועג לענגטס דאַרפן אַ פּלאַץ פון חשבונות, וואָס קענען מאַכן "
+"דיין וועבזייטל לאַנגזאַם לויפן פֿאַר די באַניצערס."
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:528 app/Module/NotesTabModule.php:34
@@ -12225,12 +12232,12 @@ msgstr ""
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr ""
+msgstr "שטעלן די פעליקייַט בלאַקס פֿאַר נייַע משפּחה ביימער"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr ""
+msgstr "שטעלן די פעליקייַט בלאַקס פֿאַר נייַע ניצערס"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
@@ -13980,6 +13987,8 @@ msgstr ""
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"די צייט זאָנע איז פארלאנגט פֿאַר דאַטע חשבונות, אַזאַ ווי וויסן הייַנט ס "
+"טאָג."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14865,6 +14874,10 @@ msgstr ""
 #: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr ""
+"צו באַשיצן די פּריוואַט דאַטן, webtrees ניצט אַן Apache קאַנפיגיעריישאַן "
+"טעקע (.htaccess) וואָס בלאַקס אַלע אַקסעס צו דעם טעקע. אויב דיין וועב "
+"סערווער שטיצט נישט .htaccess טעקעס און איר קענט נישט באַגרענעצן אַקסעס צו "
+"דעם טעקע, איר קענט אויסקלייַבן אן אנדער טעקע אַוועק פון דיין וועב דאָקומענטן."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -16064,6 +16077,9 @@ msgstr ""
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
 msgstr ""
+"איר קענען פאַרגיכערן די פּריוואַטקייט חשבונות דורך אַדינג אַ טויט רעקאָרד צו "
+"מענטשן וועמענס טויט קענען זיין ינפערד פון אנדערע דאַטעס, אָבער וואָס טאָן "
+"ניט האָבן אַ רעקאָרד פון טויט, קבֿורה, קרעמאַטיאָן, אאז\"ו ו."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
