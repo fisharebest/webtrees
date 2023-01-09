@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-08 21:59+0000\n"
+"PO-Revision-Date: 2023-01-10 01:39+0000\n"
 "Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -16719,12 +16719,12 @@ msgstr "Welt"
 #: app/Factories/ElementFactory.php:314 app/GedcomTag.php:1247
 #: resources/views/modules/yahrzeit/table.phtml:34
 msgid "Yahrzeit"
-msgstr "Yartzeit"
+msgstr "Jahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:66
 msgid "Yahrzeiten"
-msgstr "Yahrzeiten"
+msgstr "Jahrzeiten"
 
 #: app/Module/CalendarMenuModule.php:117 resources/views/calendar-page.phtml:75
 msgid "Year"
