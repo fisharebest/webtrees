@@ -179,7 +179,7 @@ class Gedcom7 implements CustomTagInterface
                 $tags['FAM:RESI'] = new ResidenceWithValue('Family residence');
             }
 
-            $tags['INDI:RESI'] = new ResidenceWithValue('Residence');
+            $tags['INDI:RESI'] = new ResidenceWithValue(I18N::translate('Residence'));
         }
 
         return $tags;
