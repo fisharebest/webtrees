@@ -62,7 +62,7 @@ class ChartAge
         return DB::table('individuals')
             ->select([
                 new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25 AS age'),
-                new Expression('ROUND((' . $prefix . 'death.d_year + 49) / 100) AS century'),
+                new Expression('ROUND((' . $prefix . 'death.d_year + 49) / 100, 0) AS century'),
                 'i_sex AS sex'
             ])
             ->join('dates AS birth', static function (JoinClause $join): void {
