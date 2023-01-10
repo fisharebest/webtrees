@@ -61,10 +61,10 @@ class Validator
             // All keys and values must be valid UTF-8
             $check_utf8 = static function ($value, $key): void {
                 if (is_string($key) && preg_match('//u', $key) !== 1) {
-                    throw new HttpBadRequestException('Invalid UTF-8 characters in request');
+                    throw new HttpBadRequestException('Invalid UTF-8 characters in  request key (' .$key . ')');
                 }
                 if (is_string($value) && preg_match('//u', $value) !== 1) {
-                    throw new HttpBadRequestException('Invalid UTF-8 characters in request');
+                    throw new HttpBadRequestException('Invalid UTF-8 characters in request value (' . $key . ' : ' . $value . ')');
                 }
             };
 
