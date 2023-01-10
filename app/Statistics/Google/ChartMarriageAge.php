@@ -62,7 +62,7 @@ class ChartMarriageAge
         $male = DB::table('dates as married')
             ->select([
                 new Expression('AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25 AS age'),
-                new Expression('ROUND((' . $prefix . 'married.d_year + 49) / 100) AS century'),
+                new Expression('ROUND((' . $prefix . 'married.d_year + 49) / 100, 0) AS century'),
                 new Expression("'M' as sex")
             ])
             ->join('families as fam', static function (JoinClause $join): void {
@@ -85,7 +85,7 @@ class ChartMarriageAge
         $female = DB::table('dates as married')
             ->select([
                 new Expression('ROUND(AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25, 1) AS age'),
-                new Expression('ROUND((' . $prefix . 'married.d_year + 49) / 100) AS century'),
+                new Expression('ROUND((' . $prefix . 'married.d_year + 49) / 100, 0) AS century'),
                 new Expression("'F' as sex")
             ])
             ->join('families as fam', static function (JoinClause $join): void {
