@@ -97,7 +97,7 @@ class PlaceLocation
                     ->value('id');
             }
 
-            $location_id = $location_id ?? DB::table('place_location')->insertGetId([
+            $location_id ??= DB::table('place_location')->insertGetId([
                     'parent_id' => $parent_id,
                     'place'     => $place,
                 ]);

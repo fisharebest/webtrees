@@ -46,9 +46,9 @@ class ChartSex
         string $color_male = null,
         string $color_unknown = null
     ): string {
-        $color_female  = $color_female  ?? '#ffd1dc';
-        $color_male    = $color_male    ?? '#84beff';
-        $color_unknown = $color_unknown ?? '#777777';
+        $color_female ??= '#ffd1dc';
+        $color_male ??= '#84beff';
+        $color_unknown ??= '#777777';
 
         $data = [
             [

@@ -314,7 +314,7 @@ class Fact
      */
     public function canShow(int $access_level = null): bool
     {
-        $access_level = $access_level ?? Auth::accessLevel($this->record->tree());
+        $access_level ??= Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit restriction notice?
         $element     = new RestrictionNotice('');
