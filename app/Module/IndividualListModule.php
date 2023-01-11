@@ -123,7 +123,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             if ($individual instanceof Individual && $individual->canShow()) {
                 $primary_name = $individual->getPrimaryName();
 
-                $parameters['surname'] = $parameters['surname'] ?? $individual->getAllNames()[$primary_name]['surn'] ?? null;
+                $parameters['surname'] ??= $individual->getAllNames()[$primary_name]['surn'] ?? null;
             }
         }
 

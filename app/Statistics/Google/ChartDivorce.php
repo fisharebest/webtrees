@@ -88,8 +88,8 @@ class ChartDivorce
      */
     public function chartDivorce(string $color_from = null, string $color_to = null): string
     {
-        $color_from = $color_from ?? 'ffffff';
-        $color_to   = $color_to ?? '84beff';
+        $color_from ??= 'ffffff';
+        $color_to ??= '84beff';
 
         $data = [
             [

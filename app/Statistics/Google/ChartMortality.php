@@ -56,8 +56,8 @@ class ChartMortality
         string $color_living = null,
         string $color_dead = null
     ): string {
-        $color_living = $color_living ?? '#ffffff';
-        $color_dead   = $color_dead   ?? '#cccccc';
+        $color_living ??= '#ffffff';
+        $color_dead ??= '#cccccc';
 
         $data = [
             [

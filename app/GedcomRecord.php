@@ -248,7 +248,7 @@ class GedcomRecord
      */
     public function canShow(int $access_level = null): bool
     {
-        $access_level = $access_level ?? Auth::accessLevel($this->tree);
+        $access_level ??= Auth::accessLevel($this->tree);
 
         // We use this value to bypass privacy checks. For example,
         // when downloading data or when calculating privacy itself.
@@ -614,7 +614,7 @@ class GedcomRecord
         int $access_level = null,
         bool $ignore_deleted = false
     ): Collection {
-        $access_level = $access_level ?? Auth::accessLevel($this->tree);
+        $access_level ??= Auth::accessLevel($this->tree);
 
         // Convert BIRT into INDI:BIRT, etc.
         $filter = array_map(fn (string $tag): string => $this->tag() . ':' . $tag, $filter);
