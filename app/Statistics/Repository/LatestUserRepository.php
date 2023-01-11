@@ -129,7 +129,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     public function latestUserRegTime(string $format = null): string
     {
         $format ??= str_replace('%', '', I18N::timeFormat());
-        $user   = $this->latestUserQuery();
+        $user = $this->latestUserQuery();
 
         return date($format, (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED));
     }
