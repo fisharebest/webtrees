@@ -83,7 +83,7 @@ class MapDataList implements RequestHandlerInterface
 
         // Request for a non-existent location?
         if ($parent_id !== null && $parent->id() === null) {
-            return redirect(route(__CLASS__));
+            return redirect(route(self::class));
         }
 
         // Automatically import any new/missing places.
@@ -98,14 +98,14 @@ class MapDataList implements RequestHandlerInterface
         $tmp = $parent->parent();
 
         while ($tmp->id() !== null) {
-            $breadcrumbs[route(__CLASS__, ['parent_id' => $tmp->id()])] = $tmp->locationName();
+            $breadcrumbs[route(self::class, ['parent_id' => $tmp->id()])] = $tmp->locationName();
 
             $tmp = $tmp->parent();
         }
 
         $title = I18N::translate('Geographic data');
 
-        $breadcrumbs[route(__CLASS__)] = $title;
+        $breadcrumbs[route(self::class)] = $title;
 
         $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
 
