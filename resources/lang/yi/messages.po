@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-10 01:39+0000\n"
+"PO-Revision-Date: 2023-01-13 18:42+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -1933,7 +1933,7 @@ msgstr "אַ אומגעריכט דייטאַבייס טעות פארגעקומע
 
 #: resources/views/admin/control-panel.phtml:203
 msgid "An upgrade is available."
-msgstr ""
+msgstr "אַן אַפּגרייד איז בנימצא."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -3661,69 +3661,69 @@ msgstr "טובלונג פון אַ ברודער"
 
 #: app/Services/IndividualFactsService.php:201
 msgid "Christening of a child"
-msgstr ""
+msgstr "טובלונג פֿון אַ קינד"
 
 #: app/Services/IndividualFactsService.php:200
 msgid "Christening of a daughter"
-msgstr ""
+msgstr "טובלונג פֿון אַ טאָכטער"
 
 #: app/Services/IndividualFactsService.php:270
 #: app/Services/IndividualFactsService.php:293
 #: app/Services/IndividualFactsService.php:316
 msgid "Christening of a grandchild"
-msgstr ""
+msgstr "טובלונג פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:269
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "טובלונג פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:292
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "טובלונג פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:315
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr ""
+msgstr "טובלונג פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:268
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "טובלונג פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:291
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "טובלונג פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:314
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr ""
+msgstr "טובלונג פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:245
 msgid "Christening of a half-brother"
-msgstr ""
+msgstr "טובלונג פֿון אַ האַלב-ברודער"
 
 #: app/Services/IndividualFactsService.php:247
 msgid "Christening of a half-sibling"
-msgstr ""
+msgstr "טובלונג פֿון אַ האַלב-ברודער/שוועסטער"
 
 #: app/Services/IndividualFactsService.php:246
 msgid "Christening of a half-sister"
-msgstr ""
+msgstr "טובלונג פֿון אַ האַלב-שוועסטער"
 
 #: app/Services/IndividualFactsService.php:224
 msgid "Christening of a sibling"
-msgstr ""
+msgstr "טובלונג פֿון אַ ברודער/שוועסטער"
 
 #: app/Services/IndividualFactsService.php:223
 msgid "Christening of a sister"
-msgstr ""
+msgstr "טובלונג פֿון אַ שוועסטער"
 
 #: app/Services/IndividualFactsService.php:199
 msgid "Christening of a son"
-msgstr ""
+msgstr "טובלונג פֿון אַ זון"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
@@ -3736,11 +3736,11 @@ msgstr "מוהל"
 
 #: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
-msgstr ""
+msgstr "ברית מילה"
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
-msgstr ""
+msgstr "ציטירן"
 
 #: app/CustomTags/GedcomL.php:130 app/CustomTags/GedcomL.php:184
 #: app/CustomTags/GedcomL.php:277 app/CustomTags/GedcomL.php:310
@@ -3771,21 +3771,21 @@ msgstr "סיודאד חוארס, מקסיקו"
 #: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:63
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
-msgstr ""
+msgstr "יידל חתונה"
 
 #: app/Elements/RelationIsDescriptor.php:100
 msgid "Civil registrar"
-msgstr ""
+msgstr "יידל רעגיסטרירן"
 
 #: app/Elements/RelationIsDescriptor.php:76
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "יידל רעגיסטרירן"
 
 #: app/Elements/RelationIsDescriptor.php:55
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "יידל רעגיסטרירן"
 
 #: app/Http/RequestHandlers/CleanDataFolder.php:102
 #: resources/views/admin/control-panel.phtml:247
@@ -3856,7 +3856,7 @@ msgstr "באַמערקונג"
 #: resources/views/modules/census-assistant.phtml:79
 #: resources/views/register-page.phtml:85
 msgid "Comments"
-msgstr ""
+msgstr "באַמערקונגען"
 
 #: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
@@ -3885,7 +3885,7 @@ msgstr "קאמפאקטע בוים פון %s"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:44
 msgid "Comparison"
-msgstr ""
+msgstr "פֿאַרגלייַך"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:71
@@ -3894,7 +3894,7 @@ msgstr ""
 #: app/Elements/LdsOrdinanceStatus.php:77
 #: app/Elements/LdsSpouseSealingDateStatus.php:74
 msgid "Completed before 1970; date not available"
-msgstr ""
+msgstr "פֿאַרענדיקט פֿאַר 1970; דאַטע ניט בנימצא"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:67
@@ -3902,20 +3902,20 @@ msgstr ""
 #: app/Elements/LdsOrdinanceStatus.php:67
 #: app/Elements/LdsSpouseSealingDateStatus.php:66
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "געענדיקט; דאַטע אומבאַקאַנט"
 
 #: app/CustomTags/GedcomL.php:145 app/CustomTags/GedcomL.php:201
 #: app/CustomTags/Legacy.php:139
 msgid "Completion date"
-msgstr ""
+msgstr "ענדיקונג טאָג"
 
 #: app/Gedcom.php:624 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "קאָנפֿירמאַציע"
 
 #: resources/views/setup/step-3-database-type.phtml:37
 msgid "Connection to database server"
-msgstr ""
+msgstr "קשר צו דייטאַבייס סערווער"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -3925,21 +3925,21 @@ msgstr "קאָנטאַקט אינפארמאציע"
 
 #: resources/views/edit-account-page.phtml:135
 msgid "Contact method"
-msgstr ""
+msgstr "קאָמוניקאַציע אופֿן"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:255
 msgid "Contains"
-msgstr ""
+msgstr "כּולל"
 
 #: resources/views/modules/gedcom_news/edit.phtml:37
 #: resources/views/modules/html/config.phtml:41
 #: resources/views/modules/user_blog/edit.phtml:37
 msgid "Content"
-msgstr ""
+msgstr "אינהאַלט"
 
 #: app/Gedcom.php:766
 msgid "Continuation"
-msgstr ""
+msgstr "המשך"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3999,19 +3999,19 @@ msgstr ""
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Control panel"
-msgstr ""
+msgstr "קאָנטראָל פּאַנעל"
 
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:60 app/Module/FixNameTags.php:84
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:61
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "גער %s טאַגס צו-GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "גער צו"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4020,12 +4020,12 @@ msgstr "קוק אינזלען"
 
 #: resources/views/modules/privacy-policy/page.phtml:31
 msgid "Cookies"
-msgstr ""
+msgstr "קוקיס"
 
 #: app/CustomTags/GedcomL.php:245 app/CustomTags/GedcomL.php:257
 #: app/Gedcom.php:423 app/Gedcom.php:555
 msgid "Coordinates"
-msgstr ""
+msgstr "קאָאָרדינאַטעס"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84
@@ -4044,15 +4044,15 @@ msgstr "קאָפּיע"
 #: resources/views/admin/trees-merge.phtml:50
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "קאָפּיר אַלע רעקאָרדס פון %1$s אין %2$s."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:126
 msgid "Copy files…"
-msgstr ""
+msgstr "קאָפּי טעקעס …"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "קאָפּיר די URL פון די רעקאָרד צו די קליפּבאָרד"
 
 #: app/Gedcom.php:500 app/Gedcom.php:527
 msgid "Copyright"
@@ -4061,7 +4061,7 @@ msgstr "קאפירעכט"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:85
 msgid "Cordoba, Argentina"
-msgstr ""
+msgstr "קאָרדאָבאַ, אַרגענטינע"
 
 #: app/Gedcom.php:513
 msgid "Corporation"
@@ -4071,10 +4071,12 @@ msgstr "קארפאראציע"
 #: app/Module/FixNameSlashesAndSpaces.php:69
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
 msgstr ""
+"ריכטיק נאָמען רעקאָרדס פון די פֿאָרעם \"John / DOE /\" אָדער \"John / DOE\", "
+"ווי געשאפן דורך עלטערע גענעאָלאָגיע פּראָגראַמען."
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "דורכֿשרייבּ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4089,11 +4091,14 @@ msgstr "בארטן פון העלפאנדביין"
 #: resources/views/verify-failure-page.phtml:19
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr ""
+"קען נישט באַשטעטיקן די אינפֿאָרמאַציע וואָס איר האָט אריין. ביטע פּרובירן "
+"ווידער אָדער קאָנטאַקט די וועבּזייט אַדמיניסטראַטאָר פֿאַר מער "
+"אינפֿאָרמאַציע."
 
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:84
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "ציילן די וויזיטן צו יעדער בלאַט"
 
 #: app/CustomTags/GedcomL.php:230 app/CustomTags/PersonalAncestralFile.php:70
 #: app/Gedcom.php:406 app/Gedcom.php:519 app/Gedcom.php:539 app/Gedcom.php:810
@@ -4113,18 +4118,18 @@ msgstr "שאַפֿן אַ נייַ פאמיליע בוים"
 #: app/Elements/XrefLocation.php:60
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "שאַפֿן אַן אָרט"
 
 #: app/Elements/XrefMedia.php:62
 #: resources/views/modals/create-media-from-file.phtml:20
 #: resources/views/modals/create-media-object.phtml:19
 msgid "Create a media object"
-msgstr ""
+msgstr "שאַפֿן אַ מידיאַ חפֿץ"
 
 #: app/Elements/XrefRepository.php:65
 #: resources/views/modals/create-repository.phtml:18
 msgid "Create a repository"
-msgstr ""
+msgstr "שאַפֿן אַ ריפּאַזאַטאָרי"
 
 #: app/Elements/XrefNote.php:60 app/Elements/XrefSharedNote.php:60
 #: resources/views/modals/create-note-object.phtml:16
@@ -4142,24 +4147,24 @@ msgstr "שאַפֿן אַ נייַ מקור"
 #: app/Elements/XrefSubmission.php:60
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "שאַפֿן אַ דערלאַנגונג"
 
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
 msgid "Create a submitter"
-msgstr ""
+msgstr "שאַפֿן אַ דערלאַנגער"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "שאַפֿן אַ צייַטווייַליק טעקע…"
 
 #: resources/views/modals/media-file-fields.phtml:80
 msgid "Create a unique filename"
-msgstr ""
+msgstr "שאַפֿן אַיינציקער טעקע נאָמען"
 
 #: app/Http/RequestHandlers/AddUnlinkedPage.php:74
 msgid "Create an individual"
-msgstr ""
+msgstr "שאַפֿן אַ מענטש"
 
 #. I18N: %s is a link/URL
 #: app/Module/BingMaps.php:48 app/Module/EsriMaps.php:51
@@ -4168,15 +4173,17 @@ msgstr ""
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "שאַפֿן מאַפּעס ניצן %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
-msgstr ""
+msgstr "שאַפֿן דיין אייגענע טשאַרט"
 
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"שאַפֿן, דערהייַנטיקן און ויסמעקן אַ משפּחה בוים פֿאַר יעדער GEDCOM טעקע אין "
+"די דאַטן טעקע."
 
 #. I18N: GEDCOM tag _CREA
 #: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:90
@@ -4184,7 +4191,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:139 app/CustomTags/Gedcom7.php:148
 #: app/CustomTags/Gedcom7.php:156 app/CustomTags/Gedcom7.php:165
 msgid "Created at"
-msgstr ""
+msgstr "בּאַשאַפֿן אין"
 
 #: app/CustomTags/Gedcom7.php:91 app/CustomTags/Gedcom7.php:121
 #: app/CustomTags/Gedcom7.php:136 app/CustomTags/Gedcom7.php:140
@@ -4192,14 +4199,14 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:166 app/CustomTags/GedcomL.php:138
 #: app/CustomTags/GedcomL.php:194
 msgid "Creation date"
-msgstr ""
+msgstr "שאַפונג טאָג"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
 #: app/CustomTags/Gedcom7.php:150 app/CustomTags/Gedcom7.php:158
 #: app/CustomTags/Gedcom7.php:167
 msgid "Creation time"
-msgstr ""
+msgstr "שאַפונג צייַט"
 
 #: app/Gedcom.php:633 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4212,125 +4219,125 @@ msgstr "קרעמירונג"
 
 #: app/Services/IndividualFactsService.php:360
 msgid "Cremation of a brother"
-msgstr ""
+msgstr "קרעמאַטיאָן פון אַ ברודער"
 
 #: app/Services/IndividualFactsService.php:344
 msgid "Cremation of a child"
-msgstr ""
+msgstr "קרעמאַטיאָן פון אַ קינד"
 
 #: app/Services/IndividualFactsService.php:343
 msgid "Cremation of a daughter"
-msgstr ""
+msgstr "קרעמאַטיאָן פון אַ טאָכטער"
 
 #: app/Services/IndividualFactsService.php:636
 msgid "Cremation of a father"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ פאָטער"
 
 #: app/Services/IndividualFactsService.php:434
 msgid "Cremation of a grandchild"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:397
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:415
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:433
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:654
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ זיידע"
 
 #: app/Services/IndividualFactsService.php:655
 msgid "Cremation of a grandmother"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ בּאָבּע"
 
 #: app/Services/IndividualFactsService.php:656
 #: app/Services/IndividualFactsService.php:674
 #: app/Services/IndividualFactsService.php:692
 msgid "Cremation of a grandparent"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ זיידע"
 
 #: app/Services/IndividualFactsService.php:396
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:414
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:432
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַן אייניקל"
 
 #: app/Services/IndividualFactsService.php:378
 msgid "Cremation of a half-brother"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ האַלב-ברודער"
 
 #: app/Services/IndividualFactsService.php:380
 msgid "Cremation of a half-sibling"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ האַלב-ברודער"
 
 #: app/Services/IndividualFactsService.php:379
 msgid "Cremation of a half-sister"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ האַלב-שוועסטער"
 
 #: app/Services/IndividualFactsService.php:806
 msgid "Cremation of a husband"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ מאַן"
 
 #: app/Services/IndividualFactsService.php:672
 msgid "Cremation of a maternal grandfather"
-msgstr ""
+msgstr "קרעמאַטיאָן פון אַ מוטערלעך זיידע"
 
 #: app/Services/IndividualFactsService.php:673
 msgid "Cremation of a maternal grandmother"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ מוטערלעך באָבע"
 
 #: app/Services/IndividualFactsService.php:637
 msgid "Cremation of a mother"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ מוטער"
 
 #: app/Services/IndividualFactsService.php:638
 msgid "Cremation of a parent"
-msgstr ""
+msgstr "קרעמאַטיאָן פון אַ פאָטער"
 
 #: app/Services/IndividualFactsService.php:690
 msgid "Cremation of a paternal grandfather"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ זיידע"
 
 #: app/Services/IndividualFactsService.php:691
 msgid "Cremation of a paternal grandmother"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ פֿאָטער בּאָבּע"
 
 #: app/Services/IndividualFactsService.php:362
 msgid "Cremation of a sibling"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ בּרודער"
 
 #: app/Services/IndividualFactsService.php:361
 msgid "Cremation of a sister"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ שוועסטער"
 
 #: app/Services/IndividualFactsService.php:342
 msgid "Cremation of a son"
-msgstr ""
+msgstr "קרעמאַטיאָן פון אַ זון"
 
 #: app/Services/IndividualFactsService.php:808
 msgid "Cremation of a spouse"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ מאַן/ווייַבּ"
 
 #: app/Services/IndividualFactsService.php:807
 msgid "Cremation of a wife"
-msgstr ""
+msgstr "קרעמאַטיאָן פֿון אַ פֿרוי"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:241
@@ -4345,7 +4352,7 @@ msgstr "קובא"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "קוריטיבּאַַ, בּראַזיל"
 
 #: app/Module/HtmlBlockModule.php:192 app/Module/StatisticsChartModule.php:158
 msgid "Custom"
@@ -4353,28 +4360,30 @@ msgstr "פֿירונג"
 
 #: resources/views/admin/tags.phtml:1003
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "פערזענלאכער צופאסונג GEDCOM טאַגס"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
+"פּערזענלאַכֿער צופּאַסונג GEDCOM טאַגס זענען דיסקערידזשד. פּרוּווט צו נוצן "
+"בלויז נאָרמאַל GEDCOM טאַגס."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
-msgstr ""
+msgstr "פּערזענלאַכֿער געשעעניש"
 
 #: resources/views/admin/custom-module-info.phtml:14
 msgid "Custom module"
-msgstr ""
+msgstr "פֿערזענלאַכֿער מאָדולע"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
 msgid "Custom welcome text"
-msgstr ""
+msgstr "פּערזענלאַכֿער באַגריסונג טעקסט"
 
 #: app/Module/ModuleThemeTrait.php:216 app/Module/ModuleThemeTrait.php:220
 msgid "Customize this page"
-msgstr ""
+msgstr "קאַסטאַמייז דעם בלאַט"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
