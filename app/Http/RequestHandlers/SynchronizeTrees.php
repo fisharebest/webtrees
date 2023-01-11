@@ -98,7 +98,7 @@ class SynchronizeTrees implements RequestHandlerInterface
                     FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
 
                     if ($this->timeout_service->isTimeNearlyUp(10.0)) {
-                        return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                        return redirect(route(self::class), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
                     }
                 }
             } catch (FilesystemException | UnableToRetrieveMetadata | UnableToReadFile) {
@@ -112,7 +112,7 @@ class SynchronizeTrees implements RequestHandlerInterface
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
 
                 if ($this->timeout_service->isTimeNearlyUp(10.0)) {
-                    return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                    return redirect(route(self::class), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
                 }
             }
         }
