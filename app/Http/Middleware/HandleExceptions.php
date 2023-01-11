@@ -186,7 +186,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
         $tree = Validator::attributes($request)->treeOptional();
 
         $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree = $tree ?? $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
+        $tree ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
 
         if ($request->getHeaderLine('X-Requested-With') !== '') {
             $this->layout = 'layouts/ajax';

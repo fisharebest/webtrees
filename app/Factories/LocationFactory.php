@@ -47,7 +47,7 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
     public function make(string $xref, Tree $tree, string $gedcom = null): ?Location
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
-            $gedcom  = $gedcom ?? $this->gedcom($xref, $tree);
+            $gedcom ??= $this->gedcom($xref, $tree);
             $pending = $this->pendingChanges($tree)->get($xref);
 
             if ($gedcom === null && ($pending === null || !preg_match(self::TYPE_CHECK_REGEX, $pending))) {
