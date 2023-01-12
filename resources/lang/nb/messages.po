@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-05 14:51+0000\n"
+"PO-Revision-Date: 2023-01-13 18:42+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
@@ -15418,7 +15418,9 @@ msgstr ""
 
 #: resources/views/admin/tags.phtml:1010
 msgid "To create new data using custom tags, you need to enable them."
-msgstr "Får å opprette data ved bruk av egendefinerte GEDCOM-koder, må disse kodene aktiveres."
+msgstr ""
+"For å opprette data ved bruk av egendefinerte GEDCOM-koder, må disse kodene "
+"aktiveres."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -16499,7 +16501,7 @@ msgstr "Vitner"
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
 #: app/SurnameTradition/PolishSurnameTradition.php:67
 msgid "Wives take their husband’s surname."
-msgstr "Koner får ektemannens etternavn."
+msgstr "Gifte kvinner tar ektemannens etternavn."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:75
 #: resources/views/modules/place-hierarchy/page.phtml:30
