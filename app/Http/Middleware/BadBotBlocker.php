@@ -76,11 +76,13 @@ class BadBotBlocker implements MiddlewareInterface
         'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
         'Linguee',
+        'MegaIndex.ru',
         'MJ12bot',
         'netEstate NE',
         'panscient',
         'PetalBot',
         'proximic',
+        'SeekportBot', // Pretends to be a search engine - but isn't
         'SemrushBot',
         'serpstatbot',
         'SEOkicks',
