@@ -55,8 +55,10 @@ class XrefFactory implements XrefFactoryInterface
             ->get();
 
         $increment = 1.0;
+        $num       = (int) Site::getPreference('next_xref');
+
         do {
-            $num = (int) Site::getPreference('next_xref') + (int) $increment;
+            $num += (int) $increment;
 
             // This exponential increment allows us to scan over large blocks of
             // existing data in a reasonable time.
