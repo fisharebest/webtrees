@@ -16,7 +16,7 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <div class="wt-chart wt-chart-interactive">
-    <div id="<?= $name ?>_out" class="tv_out h-100" data-url-details="<?= e(route('module', ['module' => $module, 'action' => 'Details', 'tree' => $tree->name(), 'dummy' => 'dummy'])) ?>" data-url-individuals="<?= e(route('module', ['module' => $module, 'action' => 'Individuals', 'tree' => $tree->name(), 'dummy' => 'dummy'])) ?>">
+    <div id="<?= $name ?>_out" class="tv_out" data-url-details="<?= e(route('module', ['module' => $module, 'action' => 'Details', 'tree' => $tree->name(), 'dummy' => 'dummy'])) ?>" data-url-individuals="<?= e(route('module', ['module' => $module, 'action' => 'Individuals', 'tree' => $tree->name(), 'dummy' => 'dummy'])) ?>">
         <div id="tv_tools">
             <ul>
                 <li id="tvbCompact" class="tv_button" title="<?= I18N::translate('Use compact layout') ?>">
