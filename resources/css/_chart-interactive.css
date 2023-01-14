@@ -38,6 +38,9 @@
 .tv_out img {
     border: 0;
 }
+:fullscreen .tv_out {
+    height: 100% !important;
+}
 
 .tv_in {
     clear: both;
