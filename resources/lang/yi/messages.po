@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-13 18:42+0000\n"
+"PO-Revision-Date: 2023-01-16 12:53+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -1669,7 +1669,7 @@ msgstr "אַדאָפּטיווע עלטערן"
 
 #: app/Gedcom.php:622
 msgid "Adult christening"
-msgstr "דערוואַקסן קריסטן"
+msgstr "דערוואַקסן טובלונג"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:167
 #: app/Module/SearchMenuModule.php:125
@@ -3915,7 +3915,7 @@ msgstr "קאָנפֿירמאַציע"
 
 #: resources/views/setup/step-3-database-type.phtml:37
 msgid "Connection to database server"
-msgstr "קשר צו דייטאַבייס סערווער"
+msgstr "קשר צו דאַטאַבאַסע סערווער"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -4199,7 +4199,7 @@ msgstr "בּאַשאַפֿן אין"
 #: app/CustomTags/Gedcom7.php:166 app/CustomTags/GedcomL.php:138
 #: app/CustomTags/GedcomL.php:194
 msgid "Creation date"
-msgstr "שאַפונג טאָג"
+msgstr "שאַפונג דאַטע"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
@@ -4398,7 +4398,7 @@ msgstr "טשעכיי"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:196
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM דיגיטאַל אונטערשריפֿט"
 
 #: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
@@ -4426,14 +4426,14 @@ msgstr "דאטן"
 
 #: resources/views/modules/privacy-policy/page.phtml:68
 msgid "Data controller"
-msgstr ""
+msgstr "דאַטאַ קאָנטראָלער"
 
 #: resources/views/admin/data-fix-page.phtml:72
 #: resources/views/admin/data-fix-select.phtml:29
 #: resources/views/admin/modules.phtml:216
 #: resources/views/admin/modules.phtml:219
 msgid "Data fix"
-msgstr ""
+msgstr "דאַטאַ פֿאַרריכטן"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:65
 #: app/Http/RequestHandlers/DataFixPage.php:87
@@ -4445,14 +4445,14 @@ msgstr ""
 #: resources/views/admin/modules.phtml:100
 #: resources/views/admin/trees.phtml:153
 msgid "Data fixes"
-msgstr ""
+msgstr "דאַטאַ פֿאַרריכטונגען"
 
 #: resources/views/help/data-fixes.phtml:10
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
 msgstr ""
-"דאַטאַ פיקסיז קענען דאַרפן אַ פּלאַץ פון פּאַמעלעך חשבונות, אַזוי עס איז ניט "
-"מעגלעך צו שאַפֿן אַ פּינטלעך רשימה פון רעקאָרדס וואָס דאַרפֿן צו זיין "
-"דערהייַנטיקט."
+"דאַטאַ פֿארריכטונגען קענען דאַרפן אַ פּלאַץ פון פּאַמעלעך חשבונות, אַזוי עס "
+"איז ניט מעגלעך צו שאַפֿן אַ פּינטלעך רשימה פון רעקאָרדס וואָס דאַרפֿן צו "
+"זיין דערהייַנטיקט."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
@@ -4464,7 +4464,7 @@ msgstr "דאַטע טעקע"
 #: resources/views/setup/step-4-database-sqlite.phtml:41
 #: resources/views/setup/step-4-database-sqlsrv.phtml:36
 msgid "Database connection"
-msgstr ""
+msgstr "דאַטאַבייע פֿאַרבינדונג"
 
 #: app/CustomTags/PhpGedView.php:81
 #: resources/views/setup/step-4-database-mysql.phtml:111
@@ -4472,25 +4472,25 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:54
 #: resources/views/setup/step-4-database-sqlsrv.phtml:97
 msgid "Database name"
-msgstr ""
+msgstr "דאַטאַבייע נאָמען"
 
 #: app/CustomTags/PhpGedView.php:82
 #: resources/views/setup/step-4-database-mysql.phtml:97
 #: resources/views/setup/step-4-database-pgsql.phtml:85
 #: resources/views/setup/step-4-database-sqlsrv.phtml:85
 msgid "Database password"
-msgstr ""
+msgstr "דאַטאַבייע פּאַראָל"
 
 #: resources/views/setup/step-3-database-type.phtml:54
 msgid "Database type"
-msgstr ""
+msgstr "דאַטאַבייע טיפּ"
 
 #: app/CustomTags/PhpGedView.php:84
 #: resources/views/setup/step-4-database-mysql.phtml:83
 #: resources/views/setup/step-4-database-pgsql.phtml:73
 #: resources/views/setup/step-4-database-sqlsrv.phtml:73
 msgid "Database user account"
-msgstr ""
+msgstr "דאַטאַבייע באַניצער חשבון"
 
 #: app/CustomTags/Aldfaer.php:80 app/CustomTags/Ancestry.php:72
 #: app/CustomTags/FamilyTreeBuilder.php:58 app/CustomTags/GedcomL.php:118
@@ -4526,27 +4526,27 @@ msgstr "דאַטע דיפעראַנסיז"
 
 #: app/Gedcom.php:586
 msgid "Date of LDS baptism"
-msgstr "טאָג פון מאָרמאָן טבילה"
+msgstr "דאַטע פון מאָרמאָן טבילה"
 
 #: app/Gedcom.php:740
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "דאַטע פון LDS קינד פּלאָמבירונג"
 
 #: app/Gedcom.php:628
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "דאַטע פון LDS קאָנפֿירמאַציע"
 
 #: app/Gedcom.php:648
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "דאַטע פֿון LDS געבונג"
 
 #: app/Gedcom.php:480
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "דאַטע פון LDS מאַן/ווייַב פלאָמבירונג"
 
 #: app/Gedcom.php:576
 msgid "Date of adoption"
-msgstr ""
+msgstr "דאַטע פון אַדאַפּטאַציע"
 
 #: app/Gedcom.php:592 resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
@@ -4581,15 +4581,15 @@ msgstr "דאַטע פון קבורה"
 
 #: app/Gedcom.php:619 resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr ""
+msgstr "דאַטע פון טובלונג"
 
 #: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr ""
+msgstr "דאַטע פון קאָנפֿירמאַציע"
 
 #: app/Gedcom.php:634
 msgid "Date of cremation"
-msgstr ""
+msgstr "דאַטע פֿון קרעמירונג"
 
 #: app/Gedcom.php:638 resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
@@ -4623,7 +4623,7 @@ msgstr "דאַטע פון געשעעניש"
 
 #: app/Gedcom.php:664 resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
-msgstr ""
+msgstr "דאַטע פֿון ערשטער קאַמיוניאַן"
 
 #: app/Gedcom.php:671
 msgid "Date of immigration"
@@ -4642,7 +4642,7 @@ msgstr "דאַטע פון חתונה"
 
 #: app/Gedcom.php:462 resources/xml/reports/missing_facts_report.xml:420
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "די טאָג פֿון די חתונה מעלדן"
 
 #: app/Gedcom.php:713
 msgid "Date of naturalization"
@@ -5754,7 +5754,7 @@ msgstr "סאָף קייט פון טוישן דאַטעס"
 #. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
 msgid "Endowment House"
-msgstr ""
+msgstr "געבונג הויז"
 
 #: app/Gedcom.php:455 resources/xml/reports/missing_facts_report.xml:20
 msgid "Engagement"
@@ -8453,11 +8453,11 @@ msgstr ""
 
 #: app/Gedcom.php:627
 msgid "LDS confirmation"
-msgstr ""
+msgstr "LDS קאָנפֿירמאַציע"
 
 #: app/Gedcom.php:647
 msgid "LDS endowment"
-msgstr ""
+msgstr "LDS געבונג"
 
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:126
@@ -9098,6 +9098,9 @@ msgstr "מאַרץ"
 #: resources/views/admin/trees-preferences.phtml:590
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown איז אַ פּשוט פֿאָרמאַטטינג סיסטעם, געניצט אויף וועבסיטעס אַזאַ ווי "
+"וויקיפּעדיע. עס ניצט נישט דורכשטעכנדיק פּונקטואַציע אותיות צו שאַפֿן טיטלען "
+"און סאַב-טיטלען, דרייסט און ייטאַליק טעקסט, רשימות, טאַבּעלעס, אאַז\"וו ."
 
 #: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:466
 #: app/Module/BranchesListModule.php:459
@@ -11290,11 +11293,11 @@ msgstr ""
 
 #: app/Gedcom.php:629
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "אָרט פון LDS קאָנפֿירמאַציע"
 
 #: app/Gedcom.php:649
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "אָרט פֿון LDS געבונג"
 
 #: app/Gedcom.php:481
 msgid "Place of LDS spouse sealing"
@@ -11336,15 +11339,15 @@ msgstr "אָרט פון קבורה"
 #: app/Gedcom.php:621 app/Gedcom.php:623
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
-msgstr ""
+msgstr "אָרט פֿון טובלונג"
 
 #: app/Gedcom.php:626 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "אָרט פון קאָנפֿירמאַציע"
 
 #: app/Gedcom.php:635
 msgid "Place of cremation"
-msgstr ""
+msgstr "אָרט פֿון קרעמירונג"
 
 #: app/Gedcom.php:639 resources/xml/reports/fact_sources.xml:275
 #: resources/xml/reports/missing_facts_report.xml:516
@@ -12339,7 +12342,7 @@ msgstr "SMTP בליצפאסט דינער"
 
 #: app/Services/ServerCheckService.php:323
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite איז בלויז פּאַסיק פֿאַר קליין זייטלעך, עקזאַמען און אפשאצונג."
 
 #: app/Services/ServerCheckService.php:213
 #, php-format
@@ -12577,7 +12580,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "זוכן אָרט נעמען אין אַ פונדרויסנדיק דאַטאַבייס."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:57
@@ -13079,6 +13082,7 @@ msgstr ""
 #: resources/views/admin/site-registration.phtml:66
 msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr ""
+"ווייַזן אַ פּאַסיק נוצן הסכם אויף \"בעטן אַ נייַע באַניצער חשבון\" בלאַט"
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
@@ -14080,7 +14084,7 @@ msgstr "קוויטל"
 #: resources/views/setup/step-4-database-sqlite.phtml:74
 #: resources/views/setup/step-4-database-sqlsrv.phtml:106
 msgid "Table prefix"
-msgstr ""
+msgstr "טאַבלע פּרעפיקס"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -14640,6 +14644,9 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:111
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"די פּרעפיקס איז אַפּשאַנאַל, אָבער רעקאַמענדיד. דורך געבן די טאַבּעלע נעמען "
+"אַ יינציק פּרעפיקס איר קענען לאָזן עטלעכע פאַרשידענע אַפּלאַקיישאַנז טיילן "
+"די זעלבע דאַטאַבייס."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:174
 #, php-format
@@ -16328,7 +16335,7 @@ msgstr "וויעטנאם"
 #: resources/views/modules/place-hierarchy/page.phtml:51
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "זען טאַבעלע פון געשעענישן וואָס פּאַסירן אין %s"
 
 #: resources/views/calendar-page.phtml:221
 msgid "View this day"
@@ -20670,6 +20677,8 @@ msgstr "צענטער שוועסטערקינד"
 #: resources/views/errors/database-connection.phtml:26
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
+"די דאַטאַבייס פֿאַרבינדונג דעפֿיניציעס אין דער טעקע \"/data/config.ini.php\" "
+"זענען נאָך ריכטיק"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:29
