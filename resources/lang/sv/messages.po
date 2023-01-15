@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-13 18:42+0000\n"
+"PO-Revision-Date: 2023-01-16 12:53+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -656,7 +656,12 @@ msgstr "<standardtema>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr "<p>Meddelande: Genom att fylla i och skicka det här formuläret godkänner du:</p><ul><li>att skydda integritetet för levande individer som anges på vår webbplats;</li><li>och i textrutan nedan, att förklara till vem du är släkt, eller att ge oss information om någon som bör listas på vår webbplats.</li></ul>\""
+msgstr ""
+"<p>Meddelande: Genom att fylla i och skicka det här formuläret godkänner "
+"du:</p><ul><li>att skydda integritetet för levande personer som anges på vår "
+"webbplats;</li><li>och i textrutan nedan, att förklara till vem du är släkt, "
+"eller att ge oss information om någon som bör listas på vår "
+"webbplats.</li></ul>\""
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -771,7 +776,7 @@ msgstr "En lista över Vanliga frågor och svar."
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:92
 msgid "A list of individuals."
-msgstr "En lista över individer."
+msgstr "En lista över personer."
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:78
@@ -1406,7 +1411,7 @@ msgstr "Lägg till ur klippskorgen"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr "Lägg till historiska händelser på en individs sida."
+msgstr "Lägg till historiska händelser på en persons sida."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
 msgid "Add individuals"
@@ -1883,7 +1888,9 @@ msgstr "Ett timglasdiagram av en persons förfäder och ättlingar."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
-msgstr "En individ kan ha mer än en uppsättning föräldrar. Till exempel födelse och adoption."
+msgstr ""
+"En person kan ha mer än en uppsättning föräldrar. Till exempel födelse och "
+"adoption."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -2155,7 +2162,7 @@ msgstr "Asien"
 #: resources/views/fact-association-structure.phtml:103
 #: resources/views/fact-association-structure.phtml:107
 msgid "Associate"
-msgstr "Kompanjoner"
+msgstr "Associerad person"
 
 #: app/Http/RequestHandlers/HelpText.php:263
 msgid "Associate events with this source"
@@ -5104,7 +5111,9 @@ msgstr "Ta bort ditt konto"
 
 #: resources/views/family-page-menu.phtml:81
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Att ta bort familjen kommer att ta bort alla individer från varandra men lämnar individerna på plats. Är du säker på att du vill ta bort den här familjen?"
+msgstr ""
+"Att ta bort familjen kommer att koppla isär personerna från varandra men "
+"lämnar personerna kvar. Är du säker på att du vill ta bort den här familjen?"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
@@ -6483,7 +6492,7 @@ msgstr "Hitta de närmaste relationerna"
 #: app/Http/RequestHandlers/UnconnectedPage.php:112
 #: resources/views/admin/trees.phtml:193
 msgid "Find unrelated individuals"
-msgstr "Finn obesläktade individer"
+msgstr "Hitta obesläktade personer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:185
@@ -6597,7 +6606,9 @@ msgstr "Till exempel, om du anger en sökväg längd 2, kommer personen att kunn
 
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "Till exempel kan vi snabbt hitta individer som inte har en dödshändelse, men det är mycket långsammare att beräkna om individen är död."
+msgstr ""
+"Till exempel kan vi snabbt hitta personer som inte har en dödshändelse, men "
+"det är mycket långsammare att beräkna om individen är död."
 
 #: app/Module/ContactsFooterModule.php:147
 #, php-format
@@ -7769,7 +7780,7 @@ msgstr "Inkludera alias"
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include associates"
-msgstr "Inkludera kompanjoner"
+msgstr "Inkludera associerade personer"
 
 #: app/Module/IndividualListModule.php:334
 #, php-format
@@ -7858,11 +7869,11 @@ msgstr "Fördelning av personer (diagram)"
 
 #: resources/views/admin/tags.phtml:1015
 msgid "Individual facts and events"
-msgstr "Individfakta och -händelser"
+msgstr "Personfakta och -händelser"
 
 #: resources/views/admin/control-panel.phtml:701
 msgid "Individual page"
-msgstr "Individuell sida"
+msgstr "Personsida"
 
 #: resources/views/admin/trees-preferences.phtml:418
 msgid "Individual pages"
@@ -11211,7 +11222,7 @@ msgstr "Ortnamn ska anges som en kommaseparerad lista, som börjar med den minst
 
 #: app/Gedcom.php:587
 msgid "Place of LDS baptism"
-msgstr "Dop ort (mormonkyrkan)"
+msgstr "Doport (mormonkyrkan)"
 
 #: app/Gedcom.php:742
 msgid "Place of LDS child sealing"
@@ -11235,7 +11246,7 @@ msgstr "Adoptionsort"
 
 #: app/Gedcom.php:593 resources/xml/reports/missing_facts_report.xml:140
 msgid "Place of baptism"
-msgstr "Dop ort"
+msgstr "Doport"
 
 #: app/Gedcom.php:596 resources/xml/reports/missing_facts_report.xml:223
 msgid "Place of bar mitzvah"
@@ -11265,7 +11276,7 @@ msgstr "Begravningsort"
 #: app/Gedcom.php:621 app/Gedcom.php:623
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
-msgstr "Dop ort"
+msgstr "Doport"
 
 #: app/Gedcom.php:626 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
@@ -12570,7 +12581,7 @@ msgstr "Välj ett datum"
 
 #: resources/views/modules/lifespans-chart/page.phtml:39
 msgid "Select individuals by place or date"
-msgstr "Välj individer efter ort eller datum"
+msgstr "Välj personer efter ort eller datum"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:137
@@ -14808,7 +14819,7 @@ msgstr "Dessa kakor är \"väsentliga\" och kräver inte samtycke."
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr "Dessa grupper av individer är inte släkt med %s."
+msgstr "Dessa grupper av personer är inte släkt med %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:59
 msgid "These services may use cookies or other tracking technology."
@@ -15111,7 +15122,11 @@ msgstr "Detta val kommer att behålla familjelänkar i privata poster. Detta inn
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Detta val visar namnen (men inga andra detaljer) för privatpersoner. Personer är privata om de fortfarande lever eller om integritet begränsning har lagts till deras individuella rekord. Om du vill dölja ett visst namn, lägg till en integritets begränsning till namn-dataposten."
+msgstr ""
+"Detta val visar namnen (men inga andra detaljer) för privata personer. "
+"Personer är privata om de fortfarande lever eller om integritetsbegränsning "
+"har lagts till deras individpost. Om du vill dölja ett visst namn, lägg till "
+"en integritetsbegränsning till namnposten."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
@@ -16631,7 +16646,9 @@ msgstr "Du måste välja en person och en diagramtyp i blockinställningarna"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr "Du måste specificera en individuell post innan du kan begränsa användaren till dess närmsta familj."
+msgstr ""
+"Du måste specificera en individpost innan du kan begränsa användaren till "
+"dess närmsta familj."
 
 #: app/Http/RequestHandlers/LoginPage.php:91
 msgid "You need to be a family member to access this website."
@@ -16756,7 +16773,10 @@ msgstr "Zooma ut"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "_WT_OBJE_SORT-taggar användes av gamla versioner av webbtrees för att indikera den föredragna bilden för en individ. Ett alternativ är att ordna om bilderna så att den föredragna listas först."
+msgstr ""
+"_WT_OBJE_SORT-taggar användes av gamla versioner av webbtrees för att "
+"indikera den föredragna bilden för en person. Ett alternativ är att ordna om "
+"bilderna så att den föredragna listas först."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -20900,7 +20920,10 @@ msgstr "”%s” har tagits bort."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "“Markerad bild” (_PRIM) taggar används av vissa släktforskningsprogram för att indikera den föredragna bilden för en individ. Ett alternativ är att ordna om bilderna så att den föredragna listas först."
+msgstr ""
+"“Markerad bild” (_PRIM) taggar används av vissa släktforskningsprogram för "
+"att indikera den föredragna bilden för en person. Ett alternativ är att "
+"ordna om bilderna så att den föredragna listas först."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
