@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-13 18:42+0000\n"
+"PO-Revision-Date: 2023-01-16 12:53+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -1686,7 +1686,7 @@ msgstr "אַדאָפּטיאָן פֿון אַ זון"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr "דערוואַקסן קריסטן"
+msgstr "דערוואַקסן טובלונג"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -3975,7 +3975,7 @@ msgstr "קאָנפֿירמאַציע"
 
 #: setup.php:275
 msgid "Connection to database server"
-msgstr "קשר צו דייטאַבייס סערווער"
+msgstr "קשר צו דאַטאַבאַסע סערווער"
 
 #: admin_trees_config.php:847
 msgid "Contact information"
@@ -4409,19 +4409,19 @@ msgstr ""
 
 #: setup.php:278
 msgid "Database connection"
-msgstr ""
+msgstr "דאַטאַבייע פֿאַרבינדונג"
 
 #: setup.php:373 setup.php:375
 msgid "Database name"
-msgstr ""
+msgstr "דאַטאַבייע נאָמען"
 
 #: setup.php:292
 msgid "Database password"
-msgstr ""
+msgstr "דאַטאַבייע פּאַראָל"
 
 #: setup.php:288
 msgid "Database user account"
-msgstr ""
+msgstr "דאַטאַבייע באַניצער חשבון"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:348 edit_changes.php:184 help_text.php:136
@@ -4441,26 +4441,26 @@ msgstr "דאַטע דיפעראַנסיז"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
-msgstr "טאָג פון מאָרמאָן טבילה"
+msgstr "דאַטע פון מאָרמאָן טבילה"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "דאַטע פון LDS קינד פּלאָמבירונג"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "דאַטע פֿון LDS געבונג"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "דאַטע פון LDS מאַן/ווייַב פלאָמבירונג"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
-msgstr ""
+msgstr "דאַטע פון אַדאַפּטאַציע"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
@@ -4495,15 +4495,15 @@ msgstr "דאַטע פון קבורה"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr ""
+msgstr "דאַטע פון טובלונג"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
-msgstr ""
+msgstr "דאַטע פון קאָנפֿירמאַציע"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr ""
+msgstr "דאַטע פֿון קרעמירונג"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
@@ -4533,7 +4533,7 @@ msgstr "דאַטע פון געשעעניש"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
-msgstr ""
+msgstr "דאַטע פֿון ערשטער קאַמיוניאַן"
 
 #: app/GedcomTag.php:526
 msgid "Date of immigration"
@@ -4552,7 +4552,7 @@ msgstr "דאַטע פון חתונה"
 
 #: app/GedcomTag.php:562 modules_v3/missing_facts_report/report.xml:420
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "די טאָג פֿון די חתונה מעלדן"
 
 #: app/GedcomTag.php:620
 msgid "Date of naturalization"
@@ -5682,7 +5682,7 @@ msgstr "סאָף קייט פון טוישן דאַטעס"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Endowment House"
-msgstr ""
+msgstr "געבונג הויז"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
@@ -8072,12 +8072,12 @@ msgstr ""
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:318
 msgid "LDS confirmation"
-msgstr ""
+msgstr "LDS קאָנפֿירמאַציע"
 
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:412
 msgid "LDS endowment"
-msgstr ""
+msgstr "LDS געבונג"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1324
@@ -8647,6 +8647,9 @@ msgstr "מאַרץ"
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown איז אַ פּשוט פֿאָרמאַטטינג סיסטעם, געניצט אויף וועבסיטעס אַזאַ ווי "
+"וויקיפּעדיע. עס ניצט נישט דורכשטעכנדיק פּונקטואַציע אותיות צו שאַפֿן טיטלען "
+"און סאַב-טיטלען, דרייסט און ייטאַליק טעקסט, רשימות, טאַבּעלעס, אאַז\"וו ."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:449
@@ -10804,7 +10807,7 @@ msgstr ""
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "אָרט פֿון LDS געבונג"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
@@ -10846,15 +10849,15 @@ msgstr "אָרט פון קבורה"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr ""
+msgstr "אָרט פֿון טובלונג"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "אָרט פון קאָנפֿירמאַציע"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
-msgstr ""
+msgstr "אָרט פֿון קרעמירונג"
 
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
@@ -12479,6 +12482,7 @@ msgstr ""
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr ""
+"ווייַזן אַ פּאַסיק נוצן הסכם אויף \"בעטן אַ נייַע באַניצער חשבון\" בלאַט"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -13439,7 +13443,7 @@ msgstr "קוויטל"
 
 #: setup.php:379
 msgid "Table prefix"
-msgstr ""
+msgstr "טאַבלע פּרעפיקס"
 
 #. I18N: Menu entry
 #: admin_module_tabs.php:28 admin_modules.php:160
@@ -19941,6 +19945,8 @@ msgstr "צענטער שוועסטערקינד"
 #: site-unavailable.php:85
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
+"די דאַטאַבייס פֿאַרבינדונג דעפֿיניציעס אין דער טעקע \"/data/config.ini.php\" "
+"זענען נאָך ריכטיק"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:88
