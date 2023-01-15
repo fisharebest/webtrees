@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-13 18:42+0000\n"
+"PO-Revision-Date: 2023-01-16 12:53+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -1673,7 +1673,7 @@ msgstr "אַדאָפּטיווע עלטערן"
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:1164 app/GedcomTag.php:569
 msgid "Adult christening"
-msgstr "דערוואַקסן קריסטן"
+msgstr "דערוואַקסן טובלונג"
 
 #: resources/views/admin/trees-preferences.phtml:866
 msgid "Advanced fact preferences"
@@ -4025,7 +4025,7 @@ msgstr "קאָנפֿירמאַציע"
 
 #: resources/views/setup/step-3-database-type.phtml:35
 msgid "Connection to database server"
-msgstr "קשר צו דייטאַבייס סערווער"
+msgstr "קשר צו דאַטאַבאַסע סערווער"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:57
@@ -4300,7 +4300,7 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:595 app/Factories/ElementFactory.php:637
 msgid "Creation date"
-msgstr "שאַפונג טאָג"
+msgstr "שאַפונג דאַטע"
 
 #. I18N: gedcom tag CREM
 #: app/Factories/ElementFactory.php:1174 app/GedcomTag.php:603
@@ -4489,7 +4489,7 @@ msgstr "טשעכיי"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:184
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM דיגיטאַל אונטערשריפֿט"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/Factories/ElementFactory.php:404 app/Factories/ElementFactory.php:866
@@ -4520,12 +4520,12 @@ msgstr "דאטן"
 
 #: resources/views/modules/privacy-policy/page.phtml:66
 msgid "Data controller"
-msgstr ""
+msgstr "דאַטאַ קאָנטראָלער"
 
 #: resources/views/admin/data-fix-page.phtml:70
 #: resources/views/admin/data-fix-select.phtml:29
 msgid "Data fix"
-msgstr ""
+msgstr "דאַטאַ פֿאַרריכטן"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
@@ -4535,14 +4535,14 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:24
 #: resources/views/admin/trees.phtml:149
 msgid "Data fixes"
-msgstr ""
+msgstr "דאַטאַ פֿאַרריכטונגען"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
 msgstr ""
-"דאַטאַ פיקסיז קענען דאַרפן אַ פּלאַץ פון פּאַמעלעך חשבונות, אַזוי עס איז ניט "
-"מעגלעך צו שאַפֿן אַ פּינטלעך רשימה פון רעקאָרדס וואָס דאַרפֿן צו זיין "
-"דערהייַנטיקט."
+"דאַטאַ פֿארריכטונגען קענען דאַרפן אַ פּלאַץ פון פּאַמעלעך חשבונות, אַזוי עס "
+"איז ניט מעגלעך צו שאַפֿן אַ פּינטלעך רשימה פון רעקאָרדס וואָס דאַרפֿן צו "
+"זיין דערהייַנטיקט."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
@@ -4554,7 +4554,7 @@ msgstr "דאַטע טעקע"
 #: resources/views/setup/step-4-database-sqlite.phtml:39
 #: resources/views/setup/step-4-database-sqlsvr.phtml:34
 msgid "Database connection"
-msgstr ""
+msgstr "דאַטאַבייע פֿאַרבינדונג"
 
 #: app/Factories/ElementFactory.php:848
 #: resources/views/setup/step-4-database-mysql.phtml:109
@@ -4562,25 +4562,25 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:52
 #: resources/views/setup/step-4-database-sqlsvr.phtml:95
 msgid "Database name"
-msgstr ""
+msgstr "דאַטאַבייע נאָמען"
 
 #: app/Factories/ElementFactory.php:849
 #: resources/views/setup/step-4-database-mysql.phtml:95
 #: resources/views/setup/step-4-database-pgsql.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:83
 msgid "Database password"
-msgstr ""
+msgstr "דאַטאַבייע פּאַראָל"
 
 #: resources/views/setup/step-3-database-type.phtml:52
 msgid "Database type"
-msgstr ""
+msgstr "דאַטאַבייע טיפּ"
 
 #: app/Factories/ElementFactory.php:851
 #: resources/views/setup/step-4-database-mysql.phtml:81
 #: resources/views/setup/step-4-database-pgsql.phtml:71
 #: resources/views/setup/step-4-database-sqlsvr.phtml:71
 msgid "Database user account"
-msgstr ""
+msgstr "דאַטאַבייע באַניצער חשבון"
 
 #. I18N: gedcom tag DATE
 #: app/Factories/ElementFactory.php:331 app/Factories/ElementFactory.php:582
@@ -4615,30 +4615,30 @@ msgstr "דאַטע דיפעראַנסיז"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1129 app/GedcomTag.php:476
 msgid "Date of LDS baptism"
-msgstr "טאָג פון מאָרמאָן טבילה"
+msgstr "דאַטע פון מאָרמאָן טבילה"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1267 app/GedcomTag.php:952
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "דאַטע פון LDS קינד פּלאָמבירונג"
 
 #: app/Factories/ElementFactory.php:1169
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "דאַטע פון LDS קאָנפֿירמאַציע"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1189 app/GedcomTag.php:669
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "דאַטע פֿון LDS געבונג"
 
 #: app/Factories/ElementFactory.php:1023
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "דאַטע פון LDS מאַן/ווייַב פלאָמבירונג"
 
 #: app/Factories/ElementFactory.php:1119 app/GedcomTag.php:441
 msgid "Date of adoption"
-msgstr ""
+msgstr "דאַטע פון אַדאַפּטאַציע"
 
 #: app/Factories/ElementFactory.php:1135 app/GedcomTag.php:484
 #: resources/xml/reports/missing_facts_report.xml:129
@@ -4679,16 +4679,16 @@ msgstr "דאַטע פון קבורה"
 #: app/Factories/ElementFactory.php:1161 app/GedcomTag.php:564
 #: resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr ""
+msgstr "דאַטע פון טובלונג"
 
 #: app/Factories/ElementFactory.php:1166 app/GedcomTag.php:589
 #: resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr ""
+msgstr "דאַטע פון קאָנפֿירמאַציע"
 
 #: app/Factories/ElementFactory.php:1175 app/GedcomTag.php:605
 msgid "Date of cremation"
-msgstr ""
+msgstr "דאַטע פֿון קרעמירונג"
 
 #: app/Factories/ElementFactory.php:1179 app/GedcomTag.php:626
 #: resources/xml/reports/cemetery_report.xml:46
@@ -4726,7 +4726,7 @@ msgstr "דאַטע פון געשעעניש"
 #: app/Factories/ElementFactory.php:1205 app/GedcomTag.php:713
 #: resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
-msgstr ""
+msgstr "דאַטע פֿון ערשטער קאַמיוניאַן"
 
 #: app/Factories/ElementFactory.php:1212 app/GedcomTag.php:747
 msgid "Date of immigration"
@@ -4751,7 +4751,7 @@ msgstr "דאַטע פון חתונה"
 #: app/Factories/ElementFactory.php:1005 app/GedcomTag.php:775
 #: resources/xml/reports/missing_facts_report.xml:420
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "די טאָג פֿון די חתונה מעלדן"
 
 #: app/Factories/ElementFactory.php:1240 app/GedcomTag.php:819
 msgid "Date of naturalization"
@@ -5894,7 +5894,7 @@ msgstr "סאָף קייט פון טוישן דאַטעס"
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93 app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Endowment House"
-msgstr ""
+msgstr "געבונג הויז"
 
 #. I18N: gedcom tag ENGA
 #: app/Factories/ElementFactory.php:998 app/GedcomTag.php:675
@@ -8494,12 +8494,12 @@ msgstr ""
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1168 app/GedcomTag.php:594
 msgid "LDS confirmation"
-msgstr ""
+msgstr "LDS קאָנפֿירמאַציע"
 
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1188 app/GedcomTag.php:666
 msgid "LDS endowment"
-msgstr ""
+msgstr "LDS געבונג"
 
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1022 app/GedcomTag.php:958
@@ -9100,6 +9100,9 @@ msgstr "מאַרץ"
 #: resources/views/admin/trees-preferences.phtml:621
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown איז אַ פּשוט פֿאָרמאַטטינג סיסטעם, געניצט אויף וועבסיטעס אַזאַ ווי "
+"וויקיפּעדיע. עס ניצט נישט דורכשטעכנדיק פּונקטואַציע אותיות צו שאַפֿן טיטלען "
+"און סאַב-טיטלען, דרייסט און ייטאַליק טעקסט, רשימות, טאַבּעלעס, אאַז\"וו ."
 
 #. I18N: gedcom tag MARR
 #: app/Factories/ElementFactory.php:1009 app/GedcomTag.php:786
@@ -11282,12 +11285,12 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "אָרט פון LDS קאָנפֿירמאַציע"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1190 app/GedcomTag.php:672
 msgid "Place of LDS endowment"
-msgstr ""
+msgstr "אָרט פֿון LDS געבונג"
 
 #: app/Factories/ElementFactory.php:1024
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
@@ -11335,16 +11338,16 @@ msgstr "אָרט פון קבורה"
 #: app/Factories/ElementFactory.php:1163 app/GedcomTag.php:566
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
-msgstr ""
+msgstr "אָרט פֿון טובלונג"
 
 #: app/Factories/ElementFactory.php:1167 app/GedcomTag.php:591
 #: resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
-msgstr ""
+msgstr "אָרט פון קאָנפֿירמאַציע"
 
 #: app/Factories/ElementFactory.php:1176 app/GedcomTag.php:607
 msgid "Place of cremation"
-msgstr ""
+msgstr "אָרט פֿון קרעמירונג"
 
 #: app/Factories/ElementFactory.php:1180 app/GedcomTag.php:628
 #: resources/xml/reports/fact_sources.xml:275
@@ -12405,7 +12408,7 @@ msgstr "SMTP בליצפאסט דינער"
 
 #: app/Services/ServerCheckService.php:326
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite איז בלויז פּאַסיק פֿאַר קליין זייטלעך, עקזאַמען און אפשאצונג."
 
 #: app/Services/ServerCheckService.php:216
 #, php-format
@@ -13110,6 +13113,7 @@ msgstr ""
 #: resources/views/admin/site-registration.phtml:69
 msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr ""
+"ווייַזן אַ פּאַסיק נוצן הסכם אויף \"בעטן אַ נייַע באַניצער חשבון\" בלאַט"
 
 #: resources/views/modules/notes/tab.phtml:26
 msgid "Show all notes"
@@ -14116,7 +14120,7 @@ msgstr "קוויטל"
 #: resources/views/setup/step-4-database-sqlite.phtml:76
 #: resources/views/setup/step-4-database-sqlsvr.phtml:104
 msgid "Table prefix"
-msgstr ""
+msgstr "טאַבלע פּרעפיקס"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -14654,6 +14658,9 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"די פּרעפיקס איז אַפּשאַנאַל, אָבער רעקאַמענדיד. דורך געבן די טאַבּעלע נעמען "
+"אַ יינציק פּרעפיקס איר קענען לאָזן עטלעכע פאַרשידענע אַפּלאַקיישאַנז טיילן "
+"די זעלבע דאַטאַבייס."
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
@@ -16459,7 +16466,7 @@ msgstr "זע"
 #: resources/views/modules/place-hierarchy/page.phtml:49
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "זען טאַבעלע פון געשעענישן וואָס פּאַסירן אין %s"
 
 #: resources/views/calendar-page.phtml:215
 msgid "View this day"
@@ -20846,6 +20853,8 @@ msgstr "צענטער שוועסטערקינד"
 #: resources/views/errors/database-connection.phtml:24
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
+"די דאַטאַבייס פֿאַרבינדונג דעפֿיניציעס אין דער טעקע \"/data/config.ini.php\" "
+"זענען נאָך ריכטיק"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:27
