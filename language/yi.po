@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-16 12:53+0000\n"
+"PO-Revision-Date: 2023-01-17 11:07+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -4556,11 +4556,11 @@ msgstr "די טאָג פֿון די חתונה מעלדן"
 
 #: app/GedcomTag.php:620
 msgid "Date of naturalization"
-msgstr ""
+msgstr "דאַטע פÏון נאַטוראַליזיישאַן"
 
 #: app/GedcomTag.php:668
 msgid "Date of ordination"
-msgstr ""
+msgstr "טאַג פֿו סמיכה צו די כהונה"
 
 #: app/GedcomTag.php:734
 msgid "Date of residence"
@@ -4568,11 +4568,13 @@ msgstr "דאַטע פון וווינאָרט"
 
 #: help_text.php:159
 msgid "Date period"
-msgstr ""
+msgstr "דאַטע צייַט"
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr ""
+"דאַטע פּיריאַדז זענען געניצט צו אָנווייַזן אַז אַ פֿאַקט, אַזאַ ווי אַ פאַך, "
+"פארבליבן פֿאַר אַ צייַט פֿון צייַט."
 
 #: help_text.php:148 statistics.php:723
 msgid "Date range"
@@ -4581,6 +4583,8 @@ msgstr "דאטום צווישן"
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
+"א דאַטע קייט איז געניצט צו אָנווייַזן אַז אַ געשעעניש, למשל אַ געבורט, איז "
+"פארגעקומען אויף אַן אומבאַקאַנט דאַטע אין אַ מעגלעך קייט."
 
 #: admin_users.php:850
 msgid "Date registered"
@@ -4595,10 +4599,16 @@ msgstr "דאטום געשיקט"
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
 msgstr ""
+"דאַטעס זענען אויסטוישן בלויז אויב זיי זענען גילטיק פֿאַר די קאַלענדאַר. פֿאַ"
+"ר בייַשפּיל, בלויז דאַטעס צווישן %1$s און %2$s וועט זיין אויסטוישן צו די "
+"פראנצויזיש קאַלענדאַר און בלויז דאַטעס נאָך %3$s וועט זיין אויסטוישן צו די "
+"גרעגאָריאַן קאַלענדאַר."
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr ""
+"דאַטעס זענען געראטעוועט דורך אַבריווייישאַנז און טערמינען אין ענגליש. "
+"שאָרטקאַץ עקסיסטירן ווי אַלטערנאַטיוועס צו אַבריווייישאַנז און טערמינען."
 
 #: modules_v3/family_group_report/report.xml:809
 #: modules_v3/individual_ext_report/report.xml:562
@@ -4966,7 +4976,7 @@ msgstr "פעליקייַט פאמיליע בוים"
 #: admin_trees_config.php:654 app/Module/WelcomeBlockModule.php:58
 #: edituser.php:196
 msgid "Default individual"
-msgstr ""
+msgstr "פעליקייַט מענטש"
 
 #: app/Module/GoogleMapsModule.php:321
 msgid "Default map type"
@@ -5008,7 +5018,7 @@ msgstr "דיפלאמע"
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "Deja Vu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_config.php:572 admin_trees_manage.php:418
@@ -5059,7 +5069,7 @@ msgstr ""
 
 #: admin_modules.php:103
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "אויסמעקן די פּרעפֿערענצן פֿאַר דעם מאָדולע."
 
 #: app/Controller/IndividualController.php:167
 msgid "Delete this name"
@@ -5067,7 +5077,7 @@ msgstr "אויסמעקן נאָמען"
 
 #: edituser.php:321
 msgid "Delete your account"
-msgstr ""
+msgstr "אויסמעקן דיין חשבון"
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
@@ -5091,6 +5101,8 @@ msgstr "דנוור, קולורדו"
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr ""
+"לויט אויף דיין סערווירער קאַנפיגיעריישאַן, איר קען זיין ביכולת צו אַפּגרייד "
+"אויטאָמאַטיש."
 
 #: familybook.php:90
 msgid "Descendant generations"
@@ -5138,7 +5150,7 @@ msgstr "באַשרײַבונג"
 #. I18N: A configuration setting
 #: admin_trees_config.php:939
 msgid "Description META tag"
-msgstr ""
+msgstr "באַשרייַבונג META עטיקעט"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
@@ -5147,7 +5159,7 @@ msgstr ""
 #. I18N: gedcom tag DEST
 #: app/GedcomTag.php:370
 msgid "Destination"
-msgstr ""
+msgstr "באַשטימען"
 
 #: admin_site_merge.php:217 admin_site_merge.php:264 admin_site_merge.php:310
 #: gedrecord.php:105 mediaviewer.php:94 note.php:106 repo.php:114
@@ -5158,6 +5170,8 @@ msgstr "פרטים"
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"דעטאַילס פון די נייַע באַניצער וועט זיין געשיקט צו די גענעאלאגיע קאָנטאַקט "
+"פֿאַר די קאָראַספּאַנדינג משפּחה בוים."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
@@ -5244,7 +5258,7 @@ msgstr "ז'ו אל-קעדה"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
 msgid "Died as a child: exempt"
-msgstr ""
+msgstr "געשטארבן אלס קינד: פטור"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:96
@@ -5259,6 +5273,13 @@ msgstr "ונטערשיידען"
 #: admin_trees_config.php:706
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr ""
+"פאַרשידענע קאַלענדאַר סיסטעמען זענען געניצט אין פאַרשידענע טיילן פון דער "
+"וועלט, און פילע אנדערע קאַלענדאַר סיסטעמען זענען געניצט אין דער פאַרגאַ"
+"נגענהייט. אויב מעגלעך, איר זאָל אַרייַן דאַטעס ניצן די קאַלענדאַר אין וואָס "
+"די געשעעניש איז געווען אָריגינאַלי רעקאָרדעד. איר קענט דערנאָך ספּעציפיצירן "
+"אַ בייַטונג צו ווייַזן די דאַטעס אין אַ מער באַקאַנט קאַלענדאַר. אויב איר באַ"
+"שטענדיגער נוצן צוויי קאַלענדאַרס, איר קענען ספּעציפיצירן צוויי בייַטונגען "
+"און דאַטעס וועט זיין אויסבייַטן צו ביידע די אויסגעקליבן קאַלענדאַרס."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5289,12 +5310,12 @@ msgstr "אַרויסווייַזן %s"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
 msgid "Display and manage a family tree’s favorite pages."
-msgstr ""
+msgstr "ווייַזן און פירן די באַליבסטע בלעטער פון אַ משפּחה בוים."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "ווייַז און פירן די באַליבסטע בלעטער פֿון אַ באַניצער."
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5326,12 +5347,12 @@ msgstr ""
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
 msgid "Do not seal, previous sealing canceled"
-msgstr ""
+msgstr "צי ניט אונטערשרייבן, איידער די פריערדיקע שטעמפּל איז אומגילטיקן"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:84
 msgid "Do not seal: unauthorized"
-msgstr ""
+msgstr "צי ניט אונטערשרייַבן: אָן דערלויבעניש"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1920
@@ -5362,7 +5383,7 @@ msgstr "דאַונלאַודיר %s…"
 
 #: mediaviewer.php:143
 msgid "Download file"
-msgstr ""
+msgstr "אראפקאפיע טעקע"
 
 #: app/Module/GoogleMapsModule.php:4075
 msgid "Download geographic data"
@@ -5371,7 +5392,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:157
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "דראַפּער, יוטאָ, פֿאַרייניקטע שטאַטן"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
