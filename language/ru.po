@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-01-16 12:53+0000\n"
+"Last-Translator: aslanukva <iulon77@gmail.com>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ru/>\n"
 "Language: ru\n"
@@ -1916,7 +1916,7 @@ msgstr "Позволить пользователям выбирать тему"
 #. I18N: A configuration setting
 #: admin_site_config.php:491
 msgid "Allow visitors to request a new user account"
-msgstr "Посетитель должен подтвердить свой адрес электронной почты"
+msgstr "Отключить регистрацию на сайте"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
