@@ -19,28 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\TestCase;
+
 /**
- * Divorce
+ * Test harness for the class NonEvent
+ *
+ * @covers Fisharebest\Webtrees\Elements\IndividualNonEvent
  */
-class Divorce extends AbstractEventElement
+class IndividualNonEventTest extends TestCase
 {
-    protected const SUBTAGS = [
-        'TYPE'  => '0:1:?',
-        'DATE'  => '0:1',
-        'HUSB'  => '0:1',
-        'WIFE'  => '0:1',
-        'PLAC'  => '0:1',
-        'ADDR'  => '0:1',
-        'EMAIL' => '0:1:?',
-        'WWW'   => '0:1:?',
-        'PHON'  => '0:1:?',
-        'FAX'   => '0:1:?',
-        'CAUS'  => '0:1:?',
-        'AGNC'  => '0:1:?',
-        'RELI'  => '0:1:?',
-        'NOTE'  => '0:M',
-        'OBJE'  => '0:M',
-        'SOUR'  => '0:M',
-        'RESN'  => '0:1',
-    ];
+    public function testClass(): void
+    {
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\IndividualNonEvent::class));
+    }
 }

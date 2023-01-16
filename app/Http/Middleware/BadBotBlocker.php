@@ -75,6 +75,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
+        'linabot', // Aggressive crawer, no info available
         'Linguee',
         'MegaIndex.ru',
         'MJ12bot',

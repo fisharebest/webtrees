@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\CheckForNewVersionNow;
 use Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
@@ -107,6 +109,8 @@ use Illuminate\Support\Collection;
  * @var Collection<int,ModuleLanguageInterface>        $language_modules_disabled
  * @var Collection<int,ModuleLanguageInterface>        $language_modules_enabled
  * @var string                                         $latest_version
+ * @var string                                         $latest_version_error
+ * @var TimestampInterface                             $latest_version_timestamp
  * @var Collection<int,ModuleListInterface>            $list_modules_disabled
  * @var Collection<int,ModuleListInterface>            $list_modules_enabled
  * @var Collection<int,ModuleMapLinkInterface>         $map_link_modules_disabled
@@ -179,7 +183,18 @@ use Illuminate\Support\Collection;
             I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
         </p>
 
-        <?php if ($latest_version === '') : ?>
+        <?php if ($latest_version_error !== '') : ?>
+            <p class="alert alert-danger">
+                <?= I18N::translate('There was an error checking for a new version.') ?>
+                <br>
+                <?= $latest_version_error ?>
+                <br>
+                <?= /* I18N: Last checked X hours ago. */ I18N::translate('Last checked %s.', $latest_version_timestamp->diffForHumans()) ?>
+                <a href="#" class="btn btn-primary" data-wt-post-url="<?= e(route(CheckForNewVersionNow::class)) ?>">
+                    <?= /* I18N: button label */ I18N::translate('check now') ?>
+                </a>
+            </p>
+        <?php elseif ($latest_version === '') : ?>
             <p class="card-text">
                 <?= I18N::translate('No upgrade information is available.') ?>
             </p>
@@ -194,6 +209,12 @@ use Illuminate\Support\Collection;
         <?php else : ?>
             <p class="card-text">
                 <?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
+                <?= /* I18N: Last checked X hours ago. */ I18N::translate('Last checked %s.', $latest_version_timestamp->diffForHumans()) ?>
+                <?php if ($latest_version_timestamp->timestamp() + 60 < time()) : ?>
+                    <a href="#" class="btn btn-primary" data-wt-post-url="<?= e(route(CheckForNewVersionNow::class)) ?>">
+                        <?= /* I18N: button label */ I18N::translate('check now') ?>
+                    </a>
+                <?php endif ?>
             </p>
         <?php endif ?>
 

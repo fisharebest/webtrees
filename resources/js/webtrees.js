@@ -733,7 +733,7 @@
 
     if (defaultLayer === null) {
       console.log('No default map layer defined - using the first one.');
-      let defaultLayer = config.mapProviders[0].children[0].layer;
+      defaultLayer = config.mapProviders[0].children[0].layer;
     }
 
 

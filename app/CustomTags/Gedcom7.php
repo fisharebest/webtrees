@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Elements\ExternalIdentifierType;
 use Fisharebest\Webtrees\Elements\FamilyFact;
 use Fisharebest\Webtrees\Elements\LdsInitiatory;
 use Fisharebest\Webtrees\Elements\LdsOrdinanceStatus;
-use Fisharebest\Webtrees\Elements\NonEvent;
+use Fisharebest\Webtrees\Elements\IndividualNonEvent;
 use Fisharebest\Webtrees\Elements\ResidenceWithValue;
 use Fisharebest\Webtrees\Elements\RoleInEvent;
 use Fisharebest\Webtrees\Elements\TempleCode;
@@ -70,8 +70,8 @@ class Gedcom7 implements CustomTagInterface
     public function tags(): array
     {
         $tags = [
-            'FAM:NO'                     => new NonEvent('Event did not happen'),
-            'INDI:NO'                    => new NonEvent('Event did not happen'),
+            'FAM:NO'                     => new IndividualNonEvent(I18N::translate('Event did not occur')),
+            'INDI:NO'                    => new IndividualNonEvent(I18N::translate('Event did not occur')),
             'FAM:*:ASSO'                 => new XrefAssociate(I18N::translate('Associate')),
             'FAM:*:ASSO:PHRASE'          => new CustomElement(I18N::translate('Phrase')),
             'FAM:*:ASSO:ROLE'            => new RoleInEvent(I18N::translate('Role')),
@@ -176,10 +176,10 @@ class Gedcom7 implements CustomTagInterface
 
         if (Site::getPreference('CUSTOM_RESI_VALUE') === '1') {
             if (Site::getPreference('HIDE_FAM_RESI') !== '1') {
-                $tags['FAM:RESI'] = new ResidenceWithValue('Family residence');
+                $tags['FAM:RESI'] = new ResidenceWithValue(I18N::translate('Family residence'));
             }
 
-            $tags['INDI:RESI'] = new ResidenceWithValue('Residence');
+            $tags['INDI:RESI'] = new ResidenceWithValue(I18N::translate('Residence'));
         }
 
         return $tags;

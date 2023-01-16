@@ -17,16 +17,19 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Elements;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
+use Fisharebest\Webtrees\TestCase;
 
 /**
- * An event which never happened.
+ * Test harness for the class CheckForNewVersionNow
+ *
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CheckForNewVersionNow
  */
-class NonEvent extends AbstractElement
+class CheckForNewVersionNowTest extends TestCase
 {
-    protected const SUBTAGS = [
-        'DATE' => '0:1',
-        'NOTE' => '0:1',
-        'SOUR' => '0:1',
-    ];
+    public function testClass(): void
+    {
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CheckForNewVersionNow::class));
+    }
 }

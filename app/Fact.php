@@ -314,7 +314,7 @@ class Fact
      */
     public function canShow(int $access_level = null): bool
     {
-        $access_level = $access_level ?? Auth::accessLevel($this->record->tree());
+        $access_level ??= Auth::accessLevel($this->record->tree());
 
         // Does this record have an explicit restriction notice?
         $element     = new RestrictionNotice('');
@@ -374,7 +374,7 @@ class Fact
     }
 
     /**
-     * The place where the event occured.
+     * The place where the event occurred.
      *
      * @return Place
      */
@@ -653,8 +653,9 @@ class Fact
                 return $a->sortOrder <=> $b->sortOrder;
             }
 
-            $atag = $a->tag;
-            $btag = $b->tag;
+            // NO events sort as the non-event itself.
+            $atag = $a->tag === 'NO' ? $a->value() : $a->tag;
+            $btag = $b->tag === 'NO' ? $b->value() : $b->tag;
 
             // Events not in the above list get mapped onto one that is.
             if (!array_key_exists($atag, $factsort)) {

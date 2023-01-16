@@ -131,7 +131,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      */
     protected function getFactsWithMedia(Individual $individual): Collection
     {
-        return Registry::cache()->array()->remember(__CLASS__ . ':' . __METHOD__, static function () use ($individual): Collection {
+        return Registry::cache()->array()->remember(self::class . ':' . __METHOD__, static function () use ($individual): Collection {
             $facts = $individual->facts();
 
             foreach ($individual->spouseFamilies() as $family) {

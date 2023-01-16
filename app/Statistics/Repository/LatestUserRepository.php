@@ -114,7 +114,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      */
     public function latestUserRegDate(string $format = null): string
     {
-        $format    = $format ?? I18N::dateFormat();
+        $format ??= I18N::dateFormat();
         $user      = $this->latestUserQuery();
         $timestamp = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED);
 
@@ -128,8 +128,8 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      */
     public function latestUserRegTime(string $format = null): string
     {
-        $format = $format ?? str_replace('%', '', I18N::timeFormat());
-        $user   = $this->latestUserQuery();
+        $format ??= str_replace('%', '', I18N::timeFormat());
+        $user = $this->latestUserQuery();
 
         return date($format, (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED));
     }
@@ -142,8 +142,8 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      */
     public function latestUserLoggedin(string $yes = null, string $no = null): string
     {
-        $yes  = $yes ?? I18N::translate('yes');
-        $no   = $no ?? I18N::translate('no');
+        $yes ??= I18N::translate('yes');
+        $no ??= I18N::translate('no');
         $user = $this->latestUserQuery();
 
         $is_logged_in = DB::table('session')

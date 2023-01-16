@@ -381,6 +381,11 @@ parameters:
 			path: app/Factories/SubmitterFactory.php
 
 		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: app/Factories/XrefFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Family\\:\\:getMarriage\\(\\) should return Fisharebest\\\\Webtrees\\\\Fact\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Family.php

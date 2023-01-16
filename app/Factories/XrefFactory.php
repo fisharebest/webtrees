@@ -49,14 +49,15 @@ class XrefFactory implements XrefFactoryInterface
     protected function generate(string $prefix, string $suffix): string
     {
         // Lock the row, so that only one new XREF may be generated at a time.
-        DB::table('site_setting')
+        $num = (int) DB::table('site_setting')
             ->where('setting_name', '=', 'next_xref')
             ->lockForUpdate()
-            ->get();
+            ->value('setting_value');
 
         $increment = 1.0;
+
         do {
-            $num = (int) Site::getPreference('next_xref') + (int) $increment;
+            $num += (int) $increment;
 
             // This exponential increment allows us to scan over large blocks of
             // existing data in a reasonable time.

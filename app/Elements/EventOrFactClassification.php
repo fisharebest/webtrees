@@ -23,7 +23,7 @@ namespace Fisharebest\Webtrees\Elements;
  * EVENT_OR_FACT_CLASSIFICATION := {Size=1:90}
  * A descriptive word or phrase used to further classify the parent event or
  * attribute tag. This should be used whenever either of the generic EVEN or
- * FACT tags are used. The value of this primative is responsible for
+ * FACT tags are used. The value of this primitive is responsible for
  * classifying the generic event or fact being cited. For example, if the
  * attribute being defined was one of the persons skills, such as woodworking,
  * the FACT tag would have the value of `Woodworking', followed by a

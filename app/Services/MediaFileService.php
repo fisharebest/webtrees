@@ -374,7 +374,7 @@ class MediaFileService
                     ->where('setting_name', '=', 'MEDIA_DIRECTORY');
             })
             ->where('gedcom.gedcom_id', '>', '0')
-            ->pluck(new Expression("COALESCE(setting_value, 'media/')"))
+            ->pluck(new Expression("COALESCE(setting_value, 'media/') AS path"))
             ->uniqueStrict();
 
         $disk_folders = new Collection($media_roots);

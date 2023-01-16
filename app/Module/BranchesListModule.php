@@ -139,7 +139,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
             $individual = Registry::individualFactory()->make($xref, $tree);
 
             if ($individual instanceof Individual && $individual->canShow()) {
-                $parameters['surname'] = $parameters['surname'] ?? $individual->getAllNames()[0]['surn'] ?? null;
+                $parameters['surname'] ??= $individual->getAllNames()[0]['surn'] ?? null;
             }
         }
 

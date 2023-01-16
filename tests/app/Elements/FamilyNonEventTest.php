@@ -24,12 +24,12 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class NonEvent
  *
- * @covers Fisharebest\Webtrees\Elements\NonEvent
+ * @covers Fisharebest\Webtrees\Elements\FamilyNonEvent
  */
-class NonEventTest extends TestCase
+class FamilyNonEventTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\NonEvent::class));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\FamilyNonEvent::class));
     }
 }

@@ -123,7 +123,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             if ($individual instanceof Individual && $individual->canShow()) {
                 $primary_name = $individual->getPrimaryName();
 
-                $parameters['surname'] = $parameters['surname'] ?? $individual->getAllNames()[$primary_name]['surn'] ?? null;
+                $parameters['surname'] ??= $individual->getAllNames()[$primary_name]['surn'] ?? null;
             }
         }
 
@@ -661,7 +661,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         }
 
         foreach ($all_surnames as $surn => $surnames) {
-            $initial = I18N::language()->initialLetter($surn);
+            $initial = I18N::language()->initialLetter((string) $surn);
 
             $initials[$initial] ??= 0;
             $initials[$initial] += array_sum($surnames);

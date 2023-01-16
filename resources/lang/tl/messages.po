@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-24 13:24+0000\n"
-"Last-Translator: sskehan <shaun_skehan@hotmail.com>\n"
+"PO-Revision-Date: 2023-01-08 21:59+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/tl/>\n"
 "Language: tl\n"
@@ -125,7 +125,7 @@ msgstr ""
 #: app/Http/RequestHandlers/ManageMediaData.php:372 app/MediaFile.php:326
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr "mga pixel"
+msgstr "%1$s × %2$s mga pixel"
 
 #. I18N: e.g. "Occupation: farmer"
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.

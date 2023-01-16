@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-25 07:55+0000\n"
-"Last-Translator: Heiner Kerler <heiner.kerler@arcor.de>\n"
+"PO-Revision-Date: 2023-01-10 01:39+0000\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -423,13 +423,13 @@ msgstr "Cousin %s. Grades"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;v. Chr."
+msgstr "%s&nbsp;v. u. Z."
 
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;n. Chr."
+msgstr "%s&nbsp;n. u. Z."
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:860
@@ -855,7 +855,9 @@ msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen üb
 #: resources/views/emails/verify-notify-text.phtml:17
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Ein neuer Benutzer (%1$s) hat ein Benutzerkonto (%2$s) angefragt und und dies mit der E-Mail-Adresse (%3$s) bestätigt."
+msgstr ""
+"Ein neuer Benutzer (%1$s) hat ein Benutzerkonto (%2$s) angefragt und dies "
+"mit der E-Mail-Adresse (%3$s) bestätigt."
 
 #: app/Http/RequestHandlers/LoginAction.php:80
 #: app/Module/CheckForNewVersion.php:99
@@ -3844,7 +3846,7 @@ msgstr "Vergleich"
 #: app/Elements/LdsOrdinanceStatus.php:77
 #: app/Elements/LdsSpouseSealingDateStatus.php:74
 msgid "Completed before 1970; date not available"
-msgstr "Vor 1970 fertiggestellt; Datum nicht verfügbar"
+msgstr "Fertiggestellt vor 1970; Datum nicht verfügbar"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:67
@@ -3852,7 +3854,7 @@ msgstr "Vor 1970 fertiggestellt; Datum nicht verfügbar"
 #: app/Elements/LdsOrdinanceStatus.php:67
 #: app/Elements/LdsSpouseSealingDateStatus.php:66
 msgid "Completed; date unknown"
-msgstr "fertiggestellt; Datum unbekannt"
+msgstr "Fertiggestellt; Datum unbekannt"
 
 #: app/CustomTags/GedcomL.php:145 app/CustomTags/GedcomL.php:201
 #: app/CustomTags/Legacy.php:139
@@ -6370,7 +6372,7 @@ msgstr "weiblich"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:26
 #: resources/views/modules/top10_givnnames/block.phtml:20
 msgid "Females"
-msgstr "weibliche"
+msgstr "Weibliche Personen"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
@@ -7301,7 +7303,7 @@ msgstr "Höhe"
 #: resources/views/emails/register-user-text.phtml:16
 #, php-format
 msgid "Hello %s…"
-msgstr "Hallo %s!"
+msgstr "Hallo %s…"
 
 #: resources/views/register-success-page.phtml:21
 #, php-format
@@ -7313,7 +7315,7 @@ msgstr "Hallo %s!<br>Danke für Ihre Anfrage."
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:14
 msgid "Hello administrator…"
-msgstr "Hallo Administrator!"
+msgstr "Hallo Administrator…"
 
 #: app/Http/RequestHandlers/HelpText.php:280 resources/views/help/link.phtml:13
 #: resources/views/help/link.phtml:15
@@ -8889,7 +8891,7 @@ msgstr "männlich"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:17
 #: resources/views/modules/top10_givnnames/block.phtml:16
 msgid "Males"
-msgstr "männliche"
+msgstr "Männliche Personen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:331
@@ -10839,9 +10841,8 @@ msgstr "Orlando, Florida, Vereinigte Staaten"
 #: app/Statistics/Google/ChartCommonGiven.php:79
 #: app/Statistics/Google/ChartCommonSurname.php:137
 #: resources/views/admin/control-panel.phtml:739
-#, fuzzy
 msgid "Other"
-msgstr "sonstiges"
+msgstr "Andere"
 
 #: resources/views/admin/trees-preferences.phtml:409
 msgid "Other facts to show in charts"
@@ -11840,7 +11841,7 @@ msgstr "Datensatz"
 #: app/Gedcom.php:769 app/Gedcom.php:793 app/Gedcom.php:824 app/Gedcom.php:848
 #: app/Gedcom.php:872 app/Gedcom.php:884
 msgid "Record ID number"
-msgstr "Datensatz-ID"
+msgstr "Datensatz-ID-Nummer"
 
 #: app/Gedcom.php:736 app/Gedcom.php:871
 msgid "Record file number"
@@ -12041,7 +12042,7 @@ msgstr "Reno, Nevada, Vereinigte Staaten"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr "xref_ID’s neu nummerieren"
+msgstr "xref_IDs neu nummerieren"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -15909,12 +15910,12 @@ msgstr "Unbekannt"
 #: resources/xml/reports/individual_report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr "unbekannt"
 
 #: resources/views/edit-account-page.phtml:64
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr "Unbekannt"
+msgstr "unbekannt"
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
@@ -15983,7 +15984,9 @@ msgstr "Mediendateien hochladen"
 
 #: resources/views/admin/media-upload.phtml:25
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Ein oder mehrere Mediendateien von Ihrem lokalen Rechner hochladen. Mediendateien können Bilder, Videos, Tonaufnahmen oder andere Formate sein."
+msgstr ""
+"Eine oder mehrere Mediendateien von ihrem lokalen Rechner hochladen. "
+"Mediendateien können Bilder, Videos, Tonaufnahmen oder andere Formate sein."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
@@ -16513,12 +16516,12 @@ msgstr "Welt"
 #: app/CustomTags/BrothersKeeper.php:111
 #: resources/views/modules/yahrzeit/table.phtml:36
 msgid "Yahrzeit"
-msgstr "Yartzeit"
+msgstr "Jahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:67
 msgid "Yahrzeiten"
-msgstr "Yahrzeiten"
+msgstr "Jahrzeiten"
 
 #: app/Module/CalendarMenuModule.php:117 resources/views/calendar-page.phtml:78
 msgid "Year"

@@ -54,6 +54,7 @@ class ServerCheckService
         '7.4' => '2022-11-28',
         '8.0' => '2023-11-26',
         '8.1' => '2024-11-25',
+        '8.2' => '2025-12-08',
     ];
 
     // As required by illuminate/database 8.x
