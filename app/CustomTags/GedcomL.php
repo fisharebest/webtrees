@@ -258,7 +258,7 @@ class GedcomL implements CustomTagInterface
             '_LOC:MAP:LATI'                   => new PlaceLatitude(I18N::translate('Latitude')),
             '_LOC:MAP:LONG'                   => new PlaceLongtitude(I18N::translate('Longitude')),
             '_LOC:NAME'                       => new PlaceName(I18N::translate('Place'), ['ABBR' => '0:1', 'DATE' => '0:1', 'LANG' => '0:1', 'SOUR' => '0:M']),
-            '_LOC:NAME:ABBR'                  => new CustomElement(I18N::translate('Abbreviation')), ['TYPE' => '0:1']),
+            '_LOC:NAME:ABBR'                  => new CustomElement(I18N::translate('Abbreviation'), ['TYPE' => '0:1']),
             '_LOC:NAME:ABBR:TYPE'             => new CustomElement(I18N::translate('Type of abbreviation')),
             '_LOC:NAME:DATE'                  => new DateValue(I18N::translate('Date')),
             '_LOC:NAME:LANG'                  => new LanguageId(I18N::translate('Language')),
