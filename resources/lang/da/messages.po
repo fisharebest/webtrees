@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-05 14:51+0000\n"
+"PO-Revision-Date: 2023-01-17 22:04+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -4318,7 +4318,7 @@ msgstr "Egentilpassede GEDCOM-koder"
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
-"Brugerpassede GEDCOM-koder frarådes. Stræb efter kun at anvende "
+"Brugertilpassede GEDCOM-koder frarådes. Stræb efter kun at anvende "
 "standardkoder."
 
 #: resources/views/calendar-page.phtml:207
