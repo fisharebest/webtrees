@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-07 18:26+0000\n"
+"PO-Revision-Date: 2023-01-17 22:04+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -1642,7 +1642,7 @@ msgstr "Kjörforeldrar"
 
 #: app/Gedcom.php:622
 msgid "Adult christening"
-msgstr "Fullorðins skírnarathöfn"
+msgstr "Skírn fullorðinna"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:167
 #: app/Module/SearchMenuModule.php:125
@@ -3601,7 +3601,7 @@ msgstr "Velja notanda skilgreindan móttökutexta sem skráður er hér að neð
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Christening"
-msgstr "Skírnarathöfn"
+msgstr "Skírn"
 
 #: app/Services/IndividualFactsService.php:222
 msgid "Christening of a brother"
