@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2023-01-08 21:59+0000\n"
+"PO-Revision-Date: 2023-01-17 22:04+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -1673,7 +1673,7 @@ msgstr "Kjörforeldrar"
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:1164 app/GedcomTag.php:569
 msgid "Adult christening"
-msgstr "Fullorðins skírnarathöfn"
+msgstr "Skírn fullorðinna"
 
 #: resources/views/admin/trees-preferences.phtml:866
 msgid "Advanced fact preferences"
@@ -3729,7 +3729,7 @@ msgstr "Velja notanda skilgreindan móttökutexta sem skráður er hér að neð
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Christening"
-msgstr "Skírnarathöfn"
+msgstr "Skírn"
 
 #: app/Module/IndividualFactsTabModule.php:333
 msgid "Christening of a brother"
