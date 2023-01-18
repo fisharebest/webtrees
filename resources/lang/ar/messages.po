@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-01-18 02:36+0000\n"
+"Last-Translator: beedoinfosec <bader.alrowaiei@gmail.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
 "Language: ar\n"
@@ -260,12 +260,12 @@ msgstr "%s غير موجود."
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "عائلة"
+msgstr[1] "عائلة"
+msgstr[2] "عائلتان"
+msgstr[3] "عوائل"
+msgstr[4] "عوائل"
+msgstr[5] "عوائل"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:107
@@ -283,12 +283,12 @@ msgstr[5] "تم تحديث بيانات %s أسر."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "هناك %s مشجر للعائلة"
-msgstr[1] "هناك %s مشجر للعائلة"
-msgstr[2] "هناك %s مشجرات للعائلة"
-msgstr[3] "هناك %s مشجرات للعائلة"
-msgstr[4] "هناك %s مشجر للعوائل"
-msgstr[5] "هناك %s مشجراً للعوائل"
+msgstr[0] "هناك %s شجرة للعائلة"
+msgstr[1] "هناك %s شجرة للعائلة"
+msgstr[2] "هناك %s شجرتان للعائلة"
+msgstr[3] "هناك %s أشجار للعائلة"
+msgstr[4] "هناك %s أشجار للعوائل"
+msgstr[5] "هناك %s شجرة للعوائل"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -368,7 +368,7 @@ msgstr[5] "توجد %s ملاحظات تم تحديثها."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s حدث مرات متكررة."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -564,13 +564,13 @@ msgstr "&lt;إختيار&gt;"
 #: resources/views/fact-date.phtml:122
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s بعد الوفاة)"
 
 #. I18N: The current age of a living individual
 #: app/Http/RequestHandlers/IndividualPage.php:181
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(عمر  %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:168
@@ -750,12 +750,12 @@ msgstr "مخطط يظهر أسلاف وأحفاد الفرد على شكل كت�
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:88
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "مخطط لأسلاف الفرد علي شكل مشجر مضغوط."
+msgstr "مخطط لأسلاف الفرد علي شكل شجرة مضغوطة."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:115
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "مخطط لأسلاف الفرد، منسق بشكل مشجر."
+msgstr "مخطط لأسلاف الفرد، منسق بشكل شجرة."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:109
@@ -880,12 +880,12 @@ msgstr "قائمة مصادر."
 #. I18N: Description of the “Submitters” module
 #: app/Module/SubmitterListModule.php:78
 msgid "A list of submitters."
-msgstr ""
+msgstr "قائمة بالمرسلين."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "قائمة مهام وأنشطة مرتبطة بمشجرالأسرة."
+msgstr "قائمة مهام وأنشطة مرتبطة بشجرة الأسرة."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
@@ -924,7 +924,11 @@ msgstr "قائمة بالمستخدمين والزائرين المتواجدي�
 
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "كائن الوسائط هو سجل في المشجر يحتوي على معلومات عن ملف الوسائط. هذه المعلومات قد تحتوي على عنوان، تنويه بحقوق النشر، نص، قيود للخصوصية وغير ذلك. ملف الوسائط مثل الصور أو الأفلام يمكن تخزينه في نفس خادم الموقع هذا أو أي خادم آخر نائي."
+msgstr ""
+"كائن الوسائط هو سجل في الشجرة يحتوي على معلومات عن ملف الوسائط. هذه "
+"المعلومات قد تحتوي على عنوان، تنويه بحقوق النشر، نص، قيود للخصوصية وغير ذلك. "
+"ملف الوسائط مثل الصور أو الأفلام يمكن تخزينه في نفس خادم الموقع هذا أو أي "
+"خادم آخر نائي."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -3937,7 +3941,7 @@ msgstr "مكتمل؛ التأريخ غير معروف"
 #: app/CustomTags/GedcomL.php:145 app/CustomTags/GedcomL.php:201
 #: app/CustomTags/Legacy.php:139
 msgid "Completion date"
-msgstr ""
+msgstr "تاريخ الإكمال"
 
 #: app/Gedcom.php:624 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
@@ -4041,7 +4045,7 @@ msgstr ""
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "حول إلى"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4055,7 +4059,7 @@ msgstr "ملفات تعريف الارتباط أو سجل الكوكيز"
 #: app/CustomTags/GedcomL.php:245 app/CustomTags/GedcomL.php:257
 #: app/Gedcom.php:423 app/Gedcom.php:555
 msgid "Coordinates"
-msgstr ""
+msgstr "إحداثيات"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84
@@ -15218,9 +15222,9 @@ msgstr "هذا خيار متقدم لإدخال البيانات مباشرة ب
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "تمت مشاهدة هذه الصفحة %s مرات."
-msgstr[1] "تمت مشاهدة هذه الصفحة %s مرات."
-msgstr[2] "تمت مشاهدة هذه الصفحة %s مرات."
+msgstr[0] "تمت مشاهدة هذه الصفحة %s مره."
+msgstr[1] "تمت مشاهدة هذه الصفحة %s مره."
+msgstr[2] "تمت مشاهدة هذه الصفحة %s مرتان."
 msgstr[3] "تمت مشاهدة هذه الصفحة %s مرات."
 msgstr[4] "تمت مشاهدة هذه الصفحة %s مرات."
 msgstr[5] "تمت مشاهدة هذه الصفحة %s مرات."
