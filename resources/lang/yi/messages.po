@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-17 22:04+0000\n"
+"PO-Revision-Date: 2023-01-19 08:38+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -415,13 +415,13 @@ msgstr "%s מדרגה שוועסטערקינד"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;פֿ\"ק"
 
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;נ\"ק"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:866
@@ -780,7 +780,7 @@ msgstr "א רשימה פון לאָוקיישאַנז."
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
 msgid "A list of media objects."
-msgstr "א רשימה פון מידיאַ אַבדזשעקץ."
+msgstr "א רשימה פון מידיאַ חפֿצים."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:99
@@ -850,7 +850,7 @@ msgstr "אַ רשימה פון יוזערז און וויזאַטערז וואָ
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
-"א מידיאַ כייפעץ איז אַ רעקאָרד אין די משפּחה בוים וואָס כּולל אינפֿאָרמאַציע "
+"א מידיאַ חפֿץ איז אַ רעקאָרד אין די משפּחה בוים וואָס כּולל אינפֿאָרמאַציע "
 "וועגן אַ מידיאַ טעקע. די אינפֿאָרמאַציע קען אַרייַננעמען אַ טיטל, אַ קאַפּ"
 "ירייט באַמערקן, אַ טראַנסקריפּט, פּריוואַטקייט ריסטריקשאַנז, אאז\"ו ו. די "
 "מידיאַ טעקע, אַזאַ ווי די פאָטאָ אָדער ווידעא, קענען זיין סטאָרד לאָוקאַלי ("
@@ -7464,7 +7464,7 @@ msgstr "ער איז באַגראָבן"
 
 #: resources/xml/reports/ahnentafel_report.xml:167
 msgid "He was christened"
-msgstr ""
+msgstr "ער איז באַפּטייזד"
 
 #: resources/xml/reports/ahnentafel_report.xml:313
 msgid "He was cremated"
@@ -7598,11 +7598,11 @@ msgstr "באַהאַלטן פון אַלעמען"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
-msgstr ""
+msgstr "באַהאַלטן ניט בּאַנוצן  לאָקאַציעס"
 
 #: app/Factories/ElementFactory.php:702
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "העראַרכיעש שייכות"
 
 #. I18N: gedcom tag _PRIM
 #: app/Factories/ElementFactory.php:336 app/Factories/ElementFactory.php:633
@@ -7629,14 +7629,14 @@ msgstr "זיין פּראָפעסיע איז געווען"
 #: resources/views/admin/modules.phtml:251
 #: resources/views/modules/personal_facts/tab.phtml:33
 msgid "Historic events"
-msgstr ""
+msgstr "היסטארישע געשעענישן"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
 #: app/Module/HitCountFooterModule.php:75
 #: resources/views/admin/trees-preferences.phtml:663
 msgid "Hit counters"
-msgstr ""
+msgstr "טרעפֿונג ציילערס"
 
 #. I18N: gedcom tag _HOL
 #: app/Factories/ElementFactory.php:835 app/GedcomTag.php:1136
@@ -7687,7 +7687,7 @@ msgstr "היוסטן, טעקסעס"
 #. I18N: Configuration option
 #: resources/views/modules/relationships-chart/config.phtml:45
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "ווי פֿיל רעקורסיאָן צו נוצן ווען איר זוכט פֿאַר באציונגען"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:245
@@ -7747,48 +7747,69 @@ msgstr "לעגיטימאַציע נומער"
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
 msgstr ""
+"אויב אַ מידיאַ חפֿץ איז לינגקט צו אַ יחיד, ווען עס זאָל זיין לינגקט צו אַ "
+"פֿאַקט אָדער געשעעניש, איר קענען מאַך עס צו די ריכטיק אָרט."
 
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/site-preferences.phtml:89
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
 msgstr ""
+"אויב אַ גאַסט צו דעם וועבזייטל האט נישט אויסגעקליבן אַ בילכער שפּראַך אין "
+"זייער בלעטערער פּרעפֿערענצן, אָדער זיי האָבן אויסגעקליבן אַ ניט-געשטיצט "
+"שפּראַך, די שפּראַך וועט זיין געוויינט. טיפּיקאַללי דאָס אַפּלייז צו זוכן "
+"ענדזשאַנז."
 
 #: resources/views/admin/users-edit.phtml:111
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr ""
+"אויב אַ אַדמיניסטראַטאָר שעפֿער אַ באַניצער חשבון, די וועראַפאַקיישאַן E- "
+"בריוו איז נישט געשיקט, און די E- בריוו מוזן זיין וועריפֿיצירן מאַניואַלי."
 
 #: resources/views/help/name.phtml:22
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
 msgstr ""
+"אויב אַ יחיד טוט נישט האָבן אַ פאַמיליע, קיין סלאַשיז זענען דארף: <%s>ג׳ון "
+"איינרסון<%s>"
 
 #: resources/views/help/name.phtml:19
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 msgstr ""
+"אויב אַ יחיד האט צוויי באַזונדער פאַמיליעס, ביידע זאָל זיין ענקלאָוזד דורך "
+"סלאַשיז: <%s>חוזה אנטוניו /גומז/ /איגלסיאס/<%s>"
 
 #: resources/views/help/name.phtml:28
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 msgstr ""
+"אויב אַ יחיד איז געווען באקאנט מיט אַ ניקקנאַמע וואָס איז נישט טייל פון "
+"זייער פאָרמאַל נאָמען, עס זאָל זיין ענקלאָוזד דורך ציטאַט מאַרקס. פֿאַר "
+"בייַשפּיל, <%s>יוחנן &quot;נאָבי&quot; /קלארק/<%s>."
 
 #: resources/views/help/name.phtml:25
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
+"אויב אַ יחיד איז נישט באקאנט מיט זייער ערשטער נאָמען, די בילכער נאָמען זאָל "
+"זיין אנגעוויזן מיט אַן אַסטעריסק: <%s>יוחנן פאולוס* /סמיט/<%s>"
 
 #: resources/views/help/name.phtml:16
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr ""
+msgstr "אויב די פאַמיליע איז אומבאַקאַנט, נוצן ליידיק צעהאַקן: <%s>מרים //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
 msgstr ""
+"אויב די טאַמנייל בילד איז אַ צוגעפּאַסט בילד, איר זאָל לייגן עס צו די מידיאַ "
+"חפֿץ."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
 msgstr ""
+"אויב די טאַמנייל בילד איז די זעלבע ווי דער אָריגינעל בילד, עס איז ניט מער "
+"דארף און איר זאָל ויסמעקן עס."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
@@ -7841,6 +7862,9 @@ msgstr ""
 #: resources/views/admin/trees-import.phtml:96
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr ""
+"אויב איר האָט באשאפן מעדיע חפֿצים אין וועבטריעס און דערנאָך אָרדענען דעם "
+"GEDCOM טעקע מיט גענעאלאגיע ווייכווארג וואָס דיליץ מעדיע חפֿצים, סעלעקטירן "
+"דעם אָפּציע צו צונויפגיסן די קראַנט מידיאַ חפֿצים מיט די נייַע GEDCOM טעקע."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7934,10 +7958,14 @@ msgstr "אין דעם יאָר …"
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
+"אין וועבטריעס ווערסיע 1, איר קען לייגן מנהג טהומבנאַילס צו מידיאַ חפֿים דורך "
+"קריייטינג טעקעס אין די \"טהומבס\" פאָלדערס."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
 msgstr ""
+"אין וועבטריעס ווערסיע 2, מנהג טהומבנאַילס זענען אויסגעהאַלטן ווי אַ צווייט "
+"מידיאַ טעקע אין דער זעלביקער מידיאַ חפֿץ."
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
@@ -8791,7 +8819,7 @@ msgstr "לימא, פערו"
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:729
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "לינק מידיאַ חפֿצים צו פאקטן און געשעענישן"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
@@ -9557,7 +9585,7 @@ msgstr ""
 #: resources/views/modules/favorites/favorites.phtml:94
 #: resources/views/source-page.phtml:107
 msgid "Media object"
-msgstr "מידיאַ כייפעץ"
+msgstr "מידיאַ חפֿץ"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:113 app/Module/MediaListModule.php:82
@@ -10048,7 +10076,7 @@ msgstr "רירן אַראָפּ"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:17
 msgid "Move the media object?"
-msgstr ""
+msgstr "מאַך די מידיאַ חפֿץ?"
 
 #: resources/views/admin/components.phtml:45
 #: resources/views/admin/components.phtml:140
@@ -14589,7 +14617,7 @@ msgstr "די מידיאַ טעקע %1$s איז מיט הצלחה געגעבן ד
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:108
 msgid "The media object has been created"
-msgstr ""
+msgstr "די מידיאַ חפֿץ איז באשאפן"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14886,7 +14914,7 @@ msgstr "עס זענען קיין פאקטן פֿאַר דעם יחיד."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:288
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "עס זענען קיין לינקס צו דעם מידיאַ חפֿץ."
 
 #: resources/views/modules/media/tab.phtml:29
 msgid "There are no media objects for this individual."
@@ -15239,27 +15267,37 @@ msgstr ""
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "דעם מידיאַ כייפעץ טוט נישט עקסיסטירן אָדער איר טאָן ניט האָבן דערלויבעניש צו זע עס."
+msgstr ""
+"דעם מידיאַ חפֿץ טוט נישט עקסיסטירן אָדער איר טאָן ניט האָבן דערלויבעניש צו "
+"זע עס."
 
 #: resources/views/media-page.phtml:41
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
+"די מעדיע חפֿץ איז אויסגעמעקט. די דילישאַן וועט זיין ריוויוד דורך אַ "
+"מאָדעראַטאָר."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:39
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"די מעדיע חפֿץ איז אויסגעמעקט. איר זאָל אָפּשאַצן די אויסמעק און דעמאָלט %1$s "
+"אָדער %2$s עס."
 
 #: resources/views/media-page.phtml:47
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "דעם מידיאַ כייפעץ איז עדיטיד. דער ענדערונגען דאַרפֿן צו זיין ריוויוד דורך אַ מאָדעראַטאָר."
+msgstr ""
+"דעם מידיאַ חפֿץ איז עדיטיד. דער ענדערונגען דאַרפֿן צו זיין ריוויוד דורך אַ "
+"מאָדעראַטאָר."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page.phtml:45
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"דער מעדיע חפֿץ איז רעדאַגירט געוואָרן. איר זאָל אָפּשאַצן די ענדערונגען און "
+"דעמאָלט %1$s אָדער %2$s זיי."
 
 #: resources/views/emails/message-copy-html.phtml:33
 #: resources/views/emails/message-copy-text.phtml:23
