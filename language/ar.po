@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-01-18 02:36+0000\n"
+"Last-Translator: beedoinfosec <bader.alrowaiei@gmail.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ar/>\n"
 "Language: ar\n"
@@ -308,12 +308,12 @@ msgstr[5] "تم تحديث بيانات %s أسر."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "هناك %s مشجر للعائلة"
-msgstr[1] "هناك %s مشجر للعائلة"
-msgstr[2] "هناك %s مشجرات للعائلة"
-msgstr[3] "هناك %s مشجرات للعائلة"
-msgstr[4] "هناك %s مشجر للعوائل"
-msgstr[5] "هناك %s مشجراً للعوائل"
+msgstr[0] "هناك %s شجرة للعائلة"
+msgstr[1] "هناك %s شجرة للعائلة"
+msgstr[2] "هناك %s شجرتان للعائلة"
+msgstr[3] "هناك %s أشجار للعائلة"
+msgstr[4] "هناك %s أشجار للعوائل"
+msgstr[5] "هناك %s شجرة للعوائل"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
@@ -857,12 +857,12 @@ msgstr "مخطط يظهر أسلاف وأحفاد الفرد على شكل كت�
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "مخطط لأسلاف الفرد علي شكل مشجر مضغوط."
+msgstr "مخطط لأسلاف الفرد علي شكل شجرة مضغوطة."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "مخطط لأسلاف الفرد، منسق بشكل مشجر."
+msgstr "مخطط لأسلاف الفرد، منسق بشكل شجرة."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
@@ -934,7 +934,7 @@ msgstr "قائمة سجلات محدثة مؤخراً."
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "قائمة مهام وأنشطة مرتبطة بمشجرالأسرة."
+msgstr "قائمة مهام وأنشطة مرتبطة بشجرة الأسرة."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
@@ -973,7 +973,11 @@ msgstr "قائمة بالمستخدمين والزائرين المتواجدي�
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "كائن الوسائط هو سجل في المشجر يحتوي على معلومات عن ملف الوسائط. هذه المعلومات قد تحتوي على عنوان، تنويه بحقوق النشر، نص، قيود للخصوصية وغير ذلك. ملف الوسائط مثل الصور أو الأفلام يمكن تخزينه في نفس خادم الموقع هذا أو أي خادم آخر نائي."
+msgstr ""
+"كائن الوسائط هو سجل في الشجرة يحتوي على معلومات عن ملف الوسائط. هذه "
+"المعلومات قد تحتوي على عنوان، تنويه بحقوق النشر، نص، قيود للخصوصية وغير ذلك. "
+"ملف الوسائط مثل الصور أو الأفلام يمكن تخزينه في نفس خادم الموقع هذا أو أي "
+"خادم آخر نائي."
 
 #: login.php:264
 #, php-format
@@ -14680,9 +14684,9 @@ msgstr "هذا خيار متقدم لإدخال البيانات مباشرة ب
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "تمت مشاهدة هذه الصفحة %s مرات."
-msgstr[1] "تمت مشاهدة هذه الصفحة %s مرات."
-msgstr[2] "تمت مشاهدة هذه الصفحة %s مرات."
+msgstr[0] "تمت مشاهدة هذه الصفحة %s مره."
+msgstr[1] "تمت مشاهدة هذه الصفحة %s مره."
+msgstr[2] "تمت مشاهدة هذه الصفحة %s مرتان."
 msgstr[3] "تمت مشاهدة هذه الصفحة %s مرات."
 msgstr[4] "تمت مشاهدة هذه الصفحة %s مرات."
 msgstr[5] "تمت مشاهدة هذه الصفحة %s مرات."
