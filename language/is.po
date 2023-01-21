@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-17 22:04+0000\n"
+"PO-Revision-Date: 2023-01-21 19:50+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -14859,7 +14859,11 @@ msgstr "Þessi valkostur mun sýna nöfn (án annarra upplýsinga) á einstaklin
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Þessi síða gerir þér kleift að fara fram hjá venjulegu eyðublöðunum og ritstýra undirliggjandi gögnum beint. Það er þróaður valkostur og þú ættir ekki að nota hann nema þú skiljir GEDCOM sniðið. Ef þú gerir mistök hér, þá getur reynst erfitt að lagfæra það."
+msgstr ""
+"Þessi síða gerir þér kleift að fara fram hjá venjulegu eyðublöðunum og "
+"ritstýra undirliggjandi gögnum beint. Þetta er þróaður valkostur og þú ættir "
+"ekki að nota hann nema þú skiljir GEDCOM sniðið. Ef þú gerir mistök hér, þá "
+"getur reynst erfitt að lagfæra það."
 
 #: app/Theme/AbstractTheme.php:482
 #, php-format
