@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-13 18:42+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2023-01-21 19:50+0000\n"
+"Last-Translator: eyolf <eyolf@oestrem.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
 "Language: nb\n"
@@ -246,8 +246,8 @@ msgstr[1] "%s familier"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s familie har blitt oppdatert."
-msgstr[1] "%s familier har blitt oppdaterte."
+msgstr[0] "%s familie er blitt oppdatert."
+msgstr[1] "%s familier er blitt oppdatert."
 
 #: resources/views/admin/locations.phtml:111
 #, php-format
@@ -279,8 +279,8 @@ msgstr[1] "%s personer"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s person har blitt oppdatert."
-msgstr[1] "%s personer har blitt oppdaterte."
+msgstr[0] "%s person er blitt oppdatert."
+msgstr[1] "%s personer er blitt oppdatert."
 
 #: app/Module/UserMessagesModule.php:158
 #, php-format
@@ -303,8 +303,8 @@ msgstr[1] "%s måneder"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s notat har blitt oppdatert."
-msgstr[1] "%s notater har blitt oppdaterte."
+msgstr[0] "%s notat er blitt oppdatert."
+msgstr[1] "%s notater er blitt oppdatert."
 
 #: app/Http/RequestHandlers/CheckTree.php:314
 #: app/Http/RequestHandlers/CheckTree.php:318
@@ -349,8 +349,8 @@ msgstr[1] "%s innloggede brukere"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s kilde har blitt oppdatert."
-msgstr[1] "%s kilder har blitt oppdaterte."
+msgstr[0] "%s kilde er blitt oppdatert."
+msgstr[1] "%s kilder er blitt oppdatert."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2169
@@ -14539,7 +14539,7 @@ msgstr "Innstillingene for nye slektstrær er blitt oppdatert."
 #: app/Http/RequestHandlers/TreePrivacyAction.php:126
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Innstillingene for slektstreet “%s” har blitt oppdaterte."
+msgstr "Innstillingene for slektstreet “%s” er blitt oppdatert."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:72
 #, php-format
@@ -14555,7 +14555,7 @@ msgstr "Innstillingene for modulen «%s» har blitt slettet."
 #: app/Module/RelationshipsChartModule.php:443 app/Module/SiteMapModule.php:171
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Innstillingene for modulen “%s” har blitt oppdaterte."
+msgstr "Innstillingene for modulen “%s” er blitt oppdatert."
 
 #: resources/views/setup/step-4-database-mysql.phtml:126
 #: resources/views/setup/step-4-database-pgsql.phtml:111
@@ -14697,7 +14697,7 @@ msgstr "Brukernavnet som kreves for autentisering på SMTP-tjeneren."
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:55
 #: app/Http/RequestHandlers/SiteTagsAction.php:67
 msgid "The website preferences have been updated."
-msgstr "Innstillingene for nettstedet har blitt oppdaterte."
+msgstr "Innstillingene for nettstedet er blitt oppdatert."
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
