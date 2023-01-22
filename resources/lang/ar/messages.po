@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-19 08:38+0000\n"
+"PO-Revision-Date: 2023-01-23 06:25+0000\n"
 "Last-Translator: beedoinfosec <bader@toposint.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
@@ -1652,7 +1652,7 @@ msgstr "تبنته أم"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:810
 msgid "Adopted name"
-msgstr ""
+msgstr "إسم التبني"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:1118 app/Factories/ElementFactory.php:1121
@@ -1732,7 +1732,7 @@ msgstr "تبني إبن"
 
 #: app/Factories/ElementFactory.php:1120
 msgid "Adoptive parents"
-msgstr ""
+msgstr "الوالدين بالتبني"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:1164 app/GedcomTag.php:569
@@ -2070,7 +2070,7 @@ msgstr "رقم ملف الأسلاف"
 
 #: app/Factories/ElementFactory.php:258
 msgid "Ancestry PID"
-msgstr ""
+msgstr "النسب PID"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -2672,7 +2672,7 @@ msgstr "باربادوس"
 
 #: app/Factories/ElementFactory.php:608
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "وسم جدكوم (GEDCOM) الأساسي"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:496
@@ -5607,7 +5607,7 @@ msgstr "وثيقة"
 
 #: resources/views/admin/site-mail.phtml:189
 msgid "Domain name"
-msgstr ""
+msgstr "اسم النطاق"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -5843,7 +5843,7 @@ msgstr "إيلول"
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "بريد إلكتروني"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -20169,12 +20169,12 @@ msgstr "خليل"
 #: app/Functions/Functions.php:671
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "زوجة"
+msgstr "خليلة"
 
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr "زوج"
+msgstr "خليل"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
