@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-01-23 06:25+0000\n"
+"Last-Translator: jomimota <jomimota@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
 "Language: pt\n"
@@ -521,19 +521,19 @@ msgstr "%s, seus pais e irmãos"
 #: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, as suas esposas e filhos"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, as suas esposas e descendentes"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, os seus antepassados e suas famílias"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:187
