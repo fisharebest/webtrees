@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-19 08:38+0000\n"
+"PO-Revision-Date: 2023-01-23 06:25+0000\n"
 "Last-Translator: beedoinfosec <bader@toposint.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
@@ -731,6 +731,10 @@ msgstr "<المظهر الإفتراضي>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>ملاحظة: عند إكمال هذا النموذج وتسلميه فأنك توافق على:</p><ul><li>أن لا "
+"تفشي المعلومات الخاصة بالأفراد الأحياء المدرجين في الموقع;</li><li>وفي صندوق "
+"النص أدناه، توضح علاقتك بمن ترتبط بهم وتزودنا بمعلومات عن الأشخاص الذين يجب "
+"إدراجهم في موقعنا.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -1594,7 +1598,7 @@ msgstr "أديلايد، استراليا"
 
 #: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
-msgstr ""
+msgstr "الهوية الإدارية"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1645,7 +1649,7 @@ msgstr "تبنته أم"
 #: app/CustomTags/BrothersKeeper.php:71
 #: app/CustomTags/PersonalAncestralFile.php:63
 msgid "Adopted name"
-msgstr ""
+msgstr "إسم التبني"
 
 #: app/Gedcom.php:575 app/Gedcom.php:578
 #: app/Module/IndividualFactsTabModule.php:155
@@ -1724,7 +1728,7 @@ msgstr "تبني إبن"
 
 #: app/Gedcom.php:577 app/Module/IndividualFactsTabModule.php:154
 msgid "Adoptive parents"
-msgstr ""
+msgstr "الوالدين بالتبني"
 
 #: app/Gedcom.php:622
 msgid "Adult christening"
@@ -2012,7 +2016,7 @@ msgstr "رقم ملف الأسلاف"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/Ancestry.php:64
 msgid "Ancestry PID"
-msgstr ""
+msgstr "النسب PID"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
@@ -2081,7 +2085,7 @@ msgstr "أبيا، ساموا"
 
 #: app/Gedcom.php:512
 msgid "Application ID"
-msgstr ""
+msgstr "رقم ‏الطلب"
 
 #: app/Gedcom.php:529
 msgid "Application name"
@@ -2251,7 +2255,7 @@ msgstr "ربط أحداث بهذا المصدر"
 
 #: resources/views/modules/personal_facts/tab.phtml:34
 msgid "Associated events"
-msgstr ""
+msgstr "الأحداث المرتبطة"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2355,7 +2359,7 @@ msgstr "إسم من قام بآخر تغيير"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:629
 msgid "Autocomplete"
-msgstr ""
+msgstr "الإكمال التلقائي"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
@@ -2611,7 +2615,7 @@ msgstr "باربادوس"
 
 #: app/CustomTags/GedcomL.php:154
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "وسم جدكوم (GEDCOM) الأساسي"
 
 #: app/Gedcom.php:597 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
@@ -3983,7 +3987,7 @@ msgstr "المحتوى"
 
 #: app/Gedcom.php:766
 msgid "Continuation"
-msgstr ""
+msgstr "استمرار"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -4096,7 +4100,7 @@ msgstr "نسخ الملفات…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "إنسخ رابط عنوان الموقع (URL) للسجل إلى الحافظة"
 
 #: app/Gedcom.php:500 app/Gedcom.php:527
 msgid "Copyright"
@@ -5203,7 +5207,7 @@ msgstr "حذف الأسرة يفك الربط بين أفرادها فقط دو�
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "جاري الحذف…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5467,7 +5471,7 @@ msgstr "وثيقة"
 
 #: resources/views/admin/site-mail.phtml:201
 msgid "Domain name"
-msgstr ""
+msgstr "اسم النطاق"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -5705,7 +5709,7 @@ msgstr "إيلول"
 #: resources/views/modals/submitter-fields.phtml:19
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "بريد إلكتروني"
 
 #: app/CustomTags/BrothersKeeper.php:97 app/CustomTags/GedcomL.php:236
 #: app/CustomTags/PersonalAncestralFile.php:74 app/CustomTags/Reunion.php:56
@@ -5761,7 +5765,7 @@ msgstr "رب العمل"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "إفراغ الحافظة"
 
 #: app/Module/ClippingsCartModule.php:192
 msgid "Empty the clippings cart"
@@ -5809,7 +5813,7 @@ msgstr "أدخل ملاحظات إضافية عن هذه المفضلة"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "كامل الشاشة"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5949,7 +5953,7 @@ msgstr "إستبعاد من هذا الخضوع"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "الخروج من وضع كامل الشاشة"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5992,7 +5996,7 @@ msgstr ""
 
 #: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
-msgstr ""
+msgstr "رابط خارجي"
 
 #: resources/views/admin/media.phtml:77
 msgid "External media files have a URL instead of a filename."
@@ -6217,11 +6221,11 @@ msgstr ""
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "حقيقة عن العائلة"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
-msgstr ""
+msgstr "حقائق وأحداث الأسرة"
 
 #: app/Gedcom.php:881
 msgid "Family file"
@@ -19955,12 +19959,12 @@ msgstr "خليل"
 #: app/Services/RelationshipService.php:400
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "زوجة"
+msgstr "خليلة"
 
 #: app/Services/RelationshipService.php:376
 msgctxt "MALE"
 msgid "partner"
-msgstr "زوج"
+msgstr "خليل"
 
 #: app/SurnameTradition/PaternalSurnameTradition.php:38
 msgctxt "Surname tradition"
