@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-01-23 06:25+0000\n"
+"Last-Translator: jomimota <jomimota@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
 "Language: pt\n"
@@ -315,7 +315,7 @@ msgstr[1] "%s notas foram atualizadas."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s ocorre demasiadas vezes."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -455,17 +455,17 @@ msgstr "%s, seus pais e irmãos"
 #: app/Module/ClippingsCartModule.php:546
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, as suas esposas e filhos"
 
 #: app/Module/ClippingsCartModule.php:549
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, as suas esposas e descendentes"
 
 #: app/Module/ClippingsCartModule.php:557
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, os seus antepassados e suas famílias"
 
 #: app/Module/ClippingsCartModule.php:554
 #, php-format
@@ -514,7 +514,7 @@ msgstr "(idade de %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(idade de %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:162
@@ -523,7 +523,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(idade de %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:29
