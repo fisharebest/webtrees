@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-21 19:50+0000\n"
-"Last-Translator: eyolf <eyolf@oestrem.com>\n"
+"PO-Revision-Date: 2023-01-24 19:30+0000\n"
+"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
 "Language: nb\n"
@@ -247,7 +247,7 @@ msgstr[1] "%s familier"
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s familie er blitt oppdatert."
-msgstr[1] "%s familier er blitt oppdatert."
+msgstr[1] "%s familier er blitt oppdaterte."
 
 #: resources/views/admin/locations.phtml:111
 #, php-format
@@ -280,7 +280,7 @@ msgstr[1] "%s personer"
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s person er blitt oppdatert."
-msgstr[1] "%s personer er blitt oppdatert."
+msgstr[1] "%s personer er blitt oppdaterte."
 
 #: app/Module/UserMessagesModule.php:158
 #, php-format
@@ -304,7 +304,7 @@ msgstr[1] "%s måneder"
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
 msgstr[0] "%s notat er blitt oppdatert."
-msgstr[1] "%s notater er blitt oppdatert."
+msgstr[1] "%s notater er blitt oppdaterte."
 
 #: app/Http/RequestHandlers/CheckTree.php:314
 #: app/Http/RequestHandlers/CheckTree.php:318
@@ -329,7 +329,7 @@ msgstr "%s en generasjon frem"
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
 msgstr[0] "%s arkiv har blitt oppdatert."
-msgstr[1] "%s arkiver har blitt oppdatert."
+msgstr[1] "%s arkiver har blitt oppdaterte."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -350,7 +350,7 @@ msgstr[1] "%s innloggede brukere"
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
 msgstr[0] "%s kilde er blitt oppdatert."
-msgstr[1] "%s kilder er blitt oppdatert."
+msgstr[1] "%s kilder er blitt oppdaterte."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2169
@@ -14252,7 +14252,7 @@ msgstr "Dato og tidspunkt for siste oppdatering"
 #: app/Http/RequestHandlers/MapDataSave.php:102
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "Detaljene for %s har blitt oppdatert."
+msgstr "Detaljene for %s har blitt oppdaterte."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php:86
@@ -14533,13 +14533,13 @@ msgstr "Innstillingene er oppdatert for alle familietrær."
 #: app/Http/RequestHandlers/TreePreferencesAction.php:171
 #: app/Http/RequestHandlers/TreePrivacyAction.php:136
 msgid "The preferences for new family trees have been updated."
-msgstr "Innstillingene for nye slektstrær er blitt oppdatert."
+msgstr "Innstillingene for nye slektstrær er blitt oppdaterte."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:160
 #: app/Http/RequestHandlers/TreePrivacyAction.php:126
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Innstillingene for slektstreet “%s” er blitt oppdatert."
+msgstr "Innstillingene for slektstreet “%s” er blitt oppdaterte."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:72
 #, php-format
@@ -14555,7 +14555,7 @@ msgstr "Innstillingene for modulen «%s» har blitt slettet."
 #: app/Module/RelationshipsChartModule.php:443 app/Module/SiteMapModule.php:171
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Innstillingene for modulen “%s” er blitt oppdatert."
+msgstr "Innstillingene for modulen “%s” er blitt oppdaterte."
 
 #: resources/views/setup/step-4-database-mysql.phtml:126
 #: resources/views/setup/step-4-database-pgsql.phtml:111
@@ -14697,7 +14697,7 @@ msgstr "Brukernavnet som kreves for autentisering på SMTP-tjeneren."
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:55
 #: app/Http/RequestHandlers/SiteTagsAction.php:67
 msgid "The website preferences have been updated."
-msgstr "Innstillingene for nettstedet er blitt oppdatert."
+msgstr "Innstillingene for nettstedet er blitt oppdaterte."
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
