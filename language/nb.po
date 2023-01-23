@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-21 19:50+0000\n"
-"Last-Translator: eyolf <eyolf@oestrem.com>\n"
+"PO-Revision-Date: 2023-01-24 19:30+0000\n"
+"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
 "Language: nb\n"
@@ -264,7 +264,7 @@ msgstr[1] "%s dager siden"
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s familie er blitt oppdatert."
-msgstr[1] "%s familier er blitt oppdatert."
+msgstr[1] "%s familier er blitt oppdaterte."
 
 #: admin.php:853
 #, php-format
@@ -299,7 +299,7 @@ msgstr[1] "%s personer"
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s person er blitt oppdatert."
-msgstr[1] "%s personer er blitt oppdatert."
+msgstr[1] "%s personer er blitt oppdaterte."
 
 #: app/Module/GoogleMapsModule.php:845
 #, php-format
@@ -370,7 +370,7 @@ msgstr[1] "%s måneder siden"
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
 msgstr[0] "%s notat er blitt oppdatert."
-msgstr[1] "%s notater er blitt oppdatert."
+msgstr[1] "%s notater er blitt oppdaterte."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -409,7 +409,7 @@ msgstr[1] "%s innloggede brukere"
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
 msgstr[0] "%s kilde er blitt oppdatert."
-msgstr[1] "%s kilder er blitt oppdatert."
+msgstr[1] "%s kilder er blitt oppdaterte."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
@@ -13853,7 +13853,7 @@ msgstr "Innstillingene er oppdatert for alle familietrær."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr "Innstillingene for nye slektstrær er blitt oppdatert."
+msgstr "Innstillingene for nye slektstrær er blitt oppdaterte."
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
@@ -13863,7 +13863,7 @@ msgstr "Forhåndsinnstillingen for diagrammet “%s 1” har blitt oppdatert."
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Innstillingene for slektstreet “%s” er blitt oppdatert."
+msgstr "Innstillingene for slektstreet “%s” er blitt oppdaterte."
 
 #: admin_modules.php:86
 #, php-format
@@ -13873,7 +13873,7 @@ msgstr "Innstillingene for modulen «%s» har blitt slettet."
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Innstillingene for modulen “%s” er blitt oppdatert."
+msgstr "Innstillingene for modulen “%s” er blitt oppdaterte."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -14011,7 +14011,7 @@ msgstr "Adgangsregelen har blitt oppdatert."
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr "Innstillingene for nettstedet er blitt oppdatert."
+msgstr "Innstillingene for nettstedet er blitt oppdaterte."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1547
