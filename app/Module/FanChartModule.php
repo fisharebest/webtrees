@@ -552,6 +552,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      */
     protected function textWidthInPixels(string $text): int
     {
+        // If PHP is compiled with --enable-gd-jis-conv, then the function
+        // imagettftext() is modified to expect EUC-JP encoding instead of UTF-8.
+        // Attempt to detect and convert...
+        if (gd_info()['JIS-mapped Japanese Font Support'] ?? false) {
+            $text = mb_convert_encoding($text, 'EUC-JP', 'UTF-8');
+        }
+
         $bounding_box = imagettfbbox(self::TEXT_SIZE_POINTS, 0, self::FONT, $text);
 
         return $bounding_box[4] - $bounding_box[0];
