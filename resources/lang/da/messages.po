@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-17 22:04+0000\n"
-"Last-Translator: stc4000 <sofie54@icloud.com>\n"
+"PO-Revision-Date: 2023-01-26 10:31+0000\n"
+"Last-Translator: mapsen <map@mapsen.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
 "Language: da\n"
@@ -403,7 +403,7 @@ msgstr[1] "%s år"
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s. årsdag"
+msgstr "%s årsdag"
 
 #: app/Services/RelationshipService.php:2354
 #, php-format
@@ -16611,7 +16611,7 @@ msgstr "Yartzeit (Jødisk fødselsdag)"
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:67
 msgid "Yahrzeiten"
-msgstr "Yahrzeiten"
+msgstr "Mindedag"
 
 #: app/Module/CalendarMenuModule.php:117 resources/views/calendar-page.phtml:78
 msgid "Year"
@@ -16632,7 +16632,9 @@ msgstr "Yemen"
 #: resources/views/emails/register-user-text.phtml:18
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Du (eller nogen, der hævder at være dig) har anmodet om en brugerkonto hos %1$s ved brug af af e-mail adressen %2$s."
+msgstr ""
+"Du (eller nogen, der hævder at være dig) har anmodet om en brugerkonto hos "
+"%1$s ved brug af e-mail adressen %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:124
 #: app/Http/RequestHandlers/RegisterAction.php:268
@@ -19584,7 +19586,7 @@ msgstr "metronym"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "maksimalt %s day"
+msgstr[0] "maksimal %s dag"
 msgstr[1] "maksimalt %s dage"
 
 #: resources/views/admin/trees-privacy.phtml:37
@@ -19896,17 +19898,17 @@ msgstr "forælder"
 
 #: app/Services/RelationshipService.php:423
 msgid "partner"
-msgstr "partner"
+msgstr "samlever"
 
 #: app/Services/RelationshipService.php:400
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "partner"
+msgstr "samlever"
 
 #: app/Services/RelationshipService.php:376
 msgctxt "MALE"
 msgid "partner"
-msgstr "partner"
+msgstr "samlever"
 
 #: app/SurnameTradition/PaternalSurnameTradition.php:38
 msgctxt "Surname tradition"
