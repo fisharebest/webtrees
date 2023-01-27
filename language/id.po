@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-01 13:26+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-01-28 23:35+0000\n"
+"Last-Translator: sadja1024 <bancak@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/id/>\n"
 "Language: id\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Indonesian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -5013,7 +5013,9 @@ msgstr "Denver, Colorado, Amerika"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr "Tergantung pada konfigurasi server Anda, Anda mungkin dapat melakukan upgrade secara otomatis."
+msgstr ""
+"Tergantung pada konfigurasi server, memungkinkan Anda untuk melakukan "
+"upgrade secara otomatis."
 
 #: familybook.php:90
 msgid "Descendant generations"
@@ -7243,7 +7245,7 @@ msgstr "Ikon"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Idaho Falls, Idaho, United States"
-msgstr "Air terjun Idaho, Idaho, Amerika"
+msgstr "Air terjun Idaho, Idaho, Amerika Serikat"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
