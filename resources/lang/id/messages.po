@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Indonesian <http://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
+"PO-Revision-Date: 2023-01-28 23:35+0000\n"
+"Last-Translator: sadja1024 <bancak@gmail.com>\n"
+"Language-Team: Indonesian <http://translate.webtrees.net/projects/webtrees/"
+"webtrees/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Indonesian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -142,7 +143,7 @@ msgstr "%1$s × %2$s pixel"
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:558 app/Module/StatisticsChartModule.php:861
@@ -233,7 +234,7 @@ msgstr[0] "%s hari"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
+msgstr[0] "%s keluarga"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -470,7 +471,7 @@ msgstr "(%s setelah wafat)"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(usia %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:363
@@ -487,7 +488,7 @@ msgstr "(umur %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(umur %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -496,7 +497,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(umur %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -717,7 +718,7 @@ msgstr "Pesan ucapan untuk pengunjung situs."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Tautan ke kontak situs."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
@@ -5239,7 +5240,9 @@ msgstr "Denver, Colorado, Amerika"
 
 #: resources/views/admin/upgrade/wizard.phtml:33
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr "Tergantung pada konfigurasi server Anda, Anda mungkin dapat melakukan upgrade secara otomatis."
+msgstr ""
+"Tergantung pada konfigurasi server, memungkinkan Anda untuk melakukan "
+"upgrade secara otomatis."
 
 #: resources/views/modules/family-book-chart/page.phtml:48
 msgid "Descendant generations"
@@ -7610,7 +7613,7 @@ msgstr "Islandia"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:112 app/GedcomCode/GedcomCodeTemp.php:402
 msgid "Idaho Falls, Idaho, United States"
-msgstr "Air terjun Idaho, Idaho, Amerika"
+msgstr "Air terjun Idaho, Idaho, Amerika Serikat"
 
 #. I18N: gedcom tag IDNO
 #: app/Factories/ElementFactory.php:1209 app/GedcomTag.php:742
