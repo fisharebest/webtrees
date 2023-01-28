@@ -1543,6 +1543,18 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
+     * Count the total media.
+     *
+     * @return int
+     */
+    private function totalMediaQuery(): int
+    {
+        return DB::table('media')
+            ->where('f_file', '=', $this->tree->id())
+            ->count();
+    }
+
+    /**
      * Returns the total number of records.
      *
      * @return int
@@ -1551,6 +1563,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         return $this->totalIndividualsQuery()
             + $this->totalFamiliesQuery()
+            + $this->totalMediaQuery()
             + $this->totalNotesQuery()
             + $this->totalRepositoriesQuery()
             + $this->totalSourcesQuery();
