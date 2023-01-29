@@ -545,11 +545,12 @@ class ModuleService
     /**
      * Modules which (a) provide a specific function and (b) we have permission to see.
      *
-     * @param string        $interface
+     * @template T
+     * @param class-string<T> $interface
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<string,T&ModuleInterface>
      */
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
@@ -562,32 +563,39 @@ class ModuleService
     /**
      * All modules which provide a specific function.
      *
-     * @param string $interface
+     * @template T
+     * @param class-string<T> $interface
      * @param bool   $include_disabled
      * @param bool   $sort
      *
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<string,T&ModuleInterface>
      */
     public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
+        /** @var Collection<string, T&ModuleInterface> $modules */
         $modules = $this->all($include_disabled)
             ->filter($this->interfaceFilter($interface));
 
         switch ($interface) {
             case ModuleFooterInterface::class:
+                /** @var Collection<string, T&ModuleInterface> */
                 return $modules->sort($this->footerComparator());
 
             case ModuleMenuInterface::class:
+                /** @var Collection<string, T&ModuleInterface> */
                 return $modules->sort($this->menuComparator());
 
             case ModuleSidebarInterface::class:
+                /** @var Collection<string, T&ModuleInterface> */
                 return $modules->sort($this->sidebarComparator());
 
             case ModuleTabInterface::class:
+                /** @var Collection<string, T&ModuleInterface> */
                 return $modules->sort($this->tabComparator());
 
             default:
                 if ($sort) {
+                    /** @var Collection<string, T&ModuleInterface> */
                     return $modules->sort($this->moduleComparator());
                 }
 
@@ -734,7 +742,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Closure
+     * @return Closure(ModuleInterface): bool
      */
     private function enabledFilter(bool $include_disabled): Closure
     {
@@ -746,9 +754,9 @@ class ModuleService
     /**
      * A function filter modules by type
      *
-     * @param string $interface
+     * @param class-string $interface
      *
-     * @return Closure
+     * @return Closure(ModuleInterface): bool
      */
     private function interfaceFilter(string $interface): Closure
     {
@@ -760,7 +768,7 @@ class ModuleService
     /**
      * A function to sort footers
      *
-     * @return Closure
+     * @return Closure(ModuleFooterInterface, ModuleFooterInterface): int
      */
     private function footerComparator(): Closure
     {
@@ -772,7 +780,7 @@ class ModuleService
     /**
      * A function to sort menus
      *
-     * @return Closure
+     * @return Closure(ModuleMenuInterface, ModuleMenuInterface): int
      */
     private function menuComparator(): Closure
     {
@@ -784,7 +792,7 @@ class ModuleService
     /**
      * A function to sort menus
      *
-     * @return Closure
+     * @return Closure(ModuleSidebarInterface, ModuleSidebarInterface): int
      */
     private function sidebarComparator(): Closure
     {
@@ -796,7 +804,7 @@ class ModuleService
     /**
      * A function to sort menus
      *
-     * @return Closure
+     * @return Closure(ModuleTabInterface, ModuleTabInterface): int
      */
     private function tabComparator(): Closure
     {
@@ -811,7 +819,7 @@ class ModuleService
      * Languages have a "sortable" name, so that "British English" sorts as "English, British".
      * This provides a more natural order in the language menu.
      *
-     * @return Closure
+     * @return Closure(ModuleInterface, ModuleInterface): int
      */
     private function moduleComparator(): Closure
     {

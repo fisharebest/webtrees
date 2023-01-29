@@ -323,6 +323,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $language = $this->module_service
                 ->findByInterface(ModuleLanguageInterface::class, true)
                 ->first(fn (ModuleLanguageInterface $language): bool => $language->locale()->languageTag() === I18N::languageTag());
+            assert($language instanceof ModuleLanguageInterface, 'The application guarantees this, but static code analysis cannot infer it');
 
             echo '<h3>', I18N::translate('Relationship: %s', $this->relationship_service->nameFromPath($nodes->all(), $language)), '</h3>';
             $num_paths++;

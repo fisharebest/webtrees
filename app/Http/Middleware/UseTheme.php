@@ -79,7 +79,10 @@ class UseTheme implements MiddlewareInterface
         $themes = $this->module_service->findByInterface(ModuleThemeInterface::class);
 
         // Last theme used
-        yield $themes->get(Session::get('theme'));
+        $session_theme = Session::get('theme');
+        if (is_string($session_theme)) {
+            yield $themes->get($session_theme);
+        }
 
         // Default for site
         yield $themes->get(Site::getPreference('THEME_DIR'));
