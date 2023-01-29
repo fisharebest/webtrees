@@ -1550,7 +1550,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     private function totalMediaQuery(): int
     {
         return DB::table('media')
-            ->where('f_file', '=', $this->tree->id())
+            ->where('m_file', '=', $this->tree->id())
             ->count();
     }
 
