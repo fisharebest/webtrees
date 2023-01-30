@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
@@ -166,7 +167,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         ];
 
         if ($surname_param !== $surname) {
-            return Registry::responseFactory()->redirectUrl($this->listUrl($tree, $params));
+            return Registry::responseFactory()->redirectUrl($this->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->createResponse($tree, $user, $params, false);
