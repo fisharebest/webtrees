@@ -70,7 +70,7 @@ class ResponseFactory implements ResponseFactoryInterface
     public function redirect(
         string $route_name,
         array $parameters = [],
-        int $status = StatusCodeInterface::STATUS_FOUND
+        int $status = StatusCodeInterface::STATUS_MOVED_PERMANENTLY
     ): ResponseInterface {
         $url = Registry::routeFactory()->route($route_name, $parameters);
 
@@ -85,7 +85,7 @@ class ResponseFactory implements ResponseFactoryInterface
      *
      * @return ResponseInterface
      */
-    public function redirectUrl($url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+    public function redirectUrl($url, int $code = StatusCodeInterface::STATUS_MOVED_PERMANENTLY): ResponseInterface
     {
         return $this->response_factory
             ->createResponse($code)
