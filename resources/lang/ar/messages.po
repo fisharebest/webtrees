@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-23 06:25+0000\n"
+"PO-Revision-Date: 2023-01-31 08:35+0000\n"
 "Last-Translator: beedoinfosec <bader@toposint.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
@@ -16635,10 +16635,11 @@ msgstr "العلامات المائية اختيارية ويظهر عادة ل�
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr ""
-"سيتم إرسال رسالة تأكيد إلى <b>%s</b>. يجب المصادقة عل طلب للحساب بإتباع "
-"للتعليمات في رسالة النأكيد خلال سبعة أيام، وإلا سيعتبر الطلب لاغ تلقائياً "
-"ويجب التقدم بطلب جديد.<br><br>بعد المصادقة على الطلب سيقوم المدير بالإطلاع "
-"والموافقة عليه قبل أن تتمكن من إستخدام الحساب."
+"سيتم إرسال رسالة تأكيد إلى <b>%s</b>. يجب المصادقة عل طلب الحساب بإتباع "
+"التعليمات في رسالة البريد الإلكتروني و التأكيد خلال سبعة أيام، وإلا سيعتبر "
+"الطلب لاغ تلقائياً ويجب التقدم بطلب حساب جديد.<br><br>بعد المصادقة على الطلب "
+"ستقوم الإدارة بالإطلاع والموافقة عليه قبل أن تتمكن من إستخدام الحساب. لتسجيل "
+"الدخول للموقع ستحتاج إلى إسم المستخدم وكلمة المرور."
 
 #: resources/views/admin/control-panel.phtml:139
 #: resources/views/admin/control-panel.phtml:582
