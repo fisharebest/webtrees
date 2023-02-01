@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-28 23:35+0000\n"
+"PO-Revision-Date: 2023-02-01 02:19+0000\n"
 "Last-Translator: sadja1024 <bancak@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/id/>\n"
@@ -640,6 +640,11 @@ msgstr "<tema sederhana>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>Perhatian: Dengan melengkapi dan mengirimkan formulir ini, Anda setuju:</"
+"p><ul><li>untuk melindungi privasi seseorang yang hidup yang tercantum di "
+"situs kami;</li><li>dan dalam kotak teks di bawah , untuk menjelaskan kepada "
+"siapa Anda terkait, atau untuk memberi kami informasi tentang seseorang yang "
+"harus dicantumkan di situs web kami.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -729,7 +734,7 @@ msgstr "Tautan ke kontak situs."
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Tautan ke situs webtrees."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
@@ -10668,7 +10673,7 @@ msgstr "Oden, Muntah, Amerika"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:151
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Kota Oklahoma, Oklahoma, Amerika"
+msgstr "Kota Oklahoma, Oklahoma, Amerika Serikat"
 
 #: resources/views/admin/changes-log.phtml:71
 msgid "Old data"
@@ -11751,7 +11756,7 @@ msgstr "Gambar acak dari silsilah keluarga."
 #: resources/views/family-page-menu.phtml:60
 #: resources/views/modules/relatives/family.phtml:234
 msgid "Re-order children"
-msgstr "susun anak"
+msgstr "Susun anak"
 
 #: app/Http/RequestHandlers/ReorderFamiliesPage.php:49
 #: resources/views/individual-page-menu.phtml:83
@@ -14685,7 +14690,9 @@ msgstr "Preferensi situs telah diperbarui."
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "Pengembang situs akan sangat tertarik untuk belajar tentang kesalahan ini. jika anda menghubungi mereka, mereka akan membantu anda menyelesaikan masalah."
+msgstr ""
+"Pengembang situs akan sangat tertarik untuk belajar tentang kesalahan ini. "
+"Jika anda menghubunginya, mereka akan membantu anda menyelesaikan masalah."
 
 #: app/Module/ModuleThemeTrait.php:74 app/Module/ModuleThemeTrait.php:471
 #: resources/views/admin/modules.phtml:272
@@ -16651,7 +16658,11 @@ msgstr "Anda tidak boleh menyetujui akun kecuali Anda tahu bahwa alamat email su
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Anda akan diberitahu melalui email ketika calon pengguna ini telah mengkonfirmasi permintaan tersebut. anda kemudian dapat menyelesaikan proses dengan mengaktifkan nama pengguna. pengguna baru tidak akan dapat masuk sampai anda mengaktifkan akun."
+msgstr ""
+"Anda akan diberitahu melalui email ketika calon pengguna ini telah "
+"mengkonfirmasi permintaan tersebut. Kemudian anda dapat menyelesaikan proses "
+"dengan mengaktifkannya. Pengguna baru tidak akan dapat masuk sampai anda "
+"mengaktifkan akun."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
