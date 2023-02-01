@@ -547,8 +547,8 @@ class ModuleService
      *
      * @template T
      * @param class-string<T> $interface
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @param Tree            $tree
+     * @param UserInterface   $user
      *
      * @return Collection<string,T&ModuleInterface>
      */
@@ -565,37 +565,37 @@ class ModuleService
      *
      * @template T
      * @param class-string<T> $interface
-     * @param bool   $include_disabled
-     * @param bool   $sort
+     * @param bool            $include_disabled
+     * @param bool            $sort
      *
      * @return Collection<string,T&ModuleInterface>
      */
     public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
-        /** @var Collection<string, T&ModuleInterface> $modules */
+        /** @var Collection<string,T&ModuleInterface> $modules */
         $modules = $this->all($include_disabled)
             ->filter($this->interfaceFilter($interface));
 
         switch ($interface) {
             case ModuleFooterInterface::class:
-                /** @var Collection<string, T&ModuleInterface> */
+                /** @var Collection<string,T&ModuleInterface> */
                 return $modules->sort($this->footerComparator());
 
             case ModuleMenuInterface::class:
-                /** @var Collection<string, T&ModuleInterface> */
+                /** @var Collection<string,T&ModuleInterface> */
                 return $modules->sort($this->menuComparator());
 
             case ModuleSidebarInterface::class:
-                /** @var Collection<string, T&ModuleInterface> */
+                /** @var Collection<string,T&ModuleInterface> */
                 return $modules->sort($this->sidebarComparator());
 
             case ModuleTabInterface::class:
-                /** @var Collection<string, T&ModuleInterface> */
+                /** @var Collection<string,T&ModuleInterface> */
                 return $modules->sort($this->tabComparator());
 
             default:
                 if ($sort) {
-                    /** @var Collection<string, T&ModuleInterface> */
+                    /** @var Collection<string,T&ModuleInterface> */
                     return $modules->sort($this->moduleComparator());
                 }
 
