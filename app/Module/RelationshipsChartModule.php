@@ -582,7 +582,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Convert numeric values to strings
      *
-     * @return Closure
+     * @return Closure(int|string):string
      */
     private function stringMapper(): Closure
     {

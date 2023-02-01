@@ -65,7 +65,7 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Note
      */
     public function mapper(Tree $tree): Closure
     {

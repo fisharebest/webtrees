@@ -546,7 +546,7 @@ class I18N
     /**
      * A closure which will compare strings using local collation rules.
      *
-     * @return Closure
+     * @return Closure(string,string):int
      */
     public static function comparator(): Closure
     {

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -65,7 +66,7 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Location
      */
     public function mapper(Tree $tree): Closure
     {

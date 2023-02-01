@@ -605,7 +605,7 @@ class Fact
     /**
      * Helper functions to sort facts
      *
-     * @return Closure
+     * @return Closure(Fact,Fact):int
      */
     private static function dateComparator(): Closure
     {
@@ -635,7 +635,7 @@ class Fact
     /**
      * Helper functions to sort facts.
      *
-     * @return Closure
+     * @return Closure(Fact,Fact):int
      */
     public static function typeComparator(): Closure
     {
