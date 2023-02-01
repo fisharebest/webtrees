@@ -42,10 +42,23 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_map;
+use function asset;
 use function count;
+use function current;
+use function e;
+use function implode;
 use function in_array;
+use function max;
+use function min;
+use function next;
+use function ob_get_clean;
+use function ob_start;
+use function preg_match;
 use function redirect;
+use function response;
 use function route;
+use function sort;
 use function view;
 
 /**
@@ -71,20 +84,16 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         'recursion' => self::DEFAULT_RECURSION,
     ];
 
-    private ModuleService $module_service;
-
     private TreeService $tree_service;
 
     private RelationshipService $relationship_service;
 
     /**
-     * @param ModuleService       $module_service
      * @param RelationshipService $relationship_service
      * @param TreeService         $tree_service
      */
-    public function __construct(ModuleService $module_service, RelationshipService $relationship_service, TreeService $tree_service)
+    public function __construct(RelationshipService $relationship_service, TreeService $tree_service)
     {
-        $this->module_service       = $module_service;
         $this->relationship_service = $relationship_service;
         $this->tree_service         = $tree_service;
     }
@@ -320,11 +329,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     return  Registry::familyFactory()->make($xref, $tree);
                 });
 
-            $language = $this->module_service
-                ->findByInterface(ModuleLanguageInterface::class, true)
-                ->first(fn (ModuleLanguageInterface $language): bool => $language->locale()->languageTag() === I18N::languageTag());
+            $relationship = $this->relationship_service->nameFromPath($nodes->all(), I18N::language());
 
-            echo '<h3>', I18N::translate('Relationship: %s', $this->relationship_service->nameFromPath($nodes->all(), $language)), '</h3>';
+            echo '<h3>', I18N::translate('Relationship: %s', $relationship), '</h3>';
+
             $num_paths++;
 
             // Use a table/grid for layout.
