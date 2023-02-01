@@ -44,7 +44,7 @@ interface SubmitterFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Submitter
      */
     public function mapper(Tree $tree): Closure;
 

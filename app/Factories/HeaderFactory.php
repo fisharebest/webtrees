@@ -65,7 +65,7 @@ class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactory
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Header
      */
     public function mapper(Tree $tree): Closure
     {

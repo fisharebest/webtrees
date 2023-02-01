@@ -533,7 +533,7 @@ class ModuleService
     /**
      * A function to convert modules into their titles - to create option lists, etc.
      *
-     * @return Closure
+     * @return Closure(ModuleInterface):string
      */
     public function titleMapper(): Closure
     {
@@ -790,7 +790,7 @@ class ModuleService
     }
 
     /**
-     * A function to sort menus
+     * A function to sort sidebars
      *
      * @return Closure(ModuleSidebarInterface,ModuleSidebarInterface):int
      */
@@ -802,7 +802,7 @@ class ModuleService
     }
 
     /**
-     * A function to sort menus
+     * A function to sort tabs
      *
      * @return Closure(ModuleTabInterface,ModuleTabInterface):int
      */

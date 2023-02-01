@@ -44,7 +44,7 @@ interface MediaFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Media
      */
     public function mapper(Tree $tree): Closure;
 

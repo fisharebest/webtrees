@@ -65,7 +65,7 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Media
      */
     public function mapper(Tree $tree): Closure
     {

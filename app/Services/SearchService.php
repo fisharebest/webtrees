@@ -1143,7 +1143,7 @@ class SearchService
      *
      * @param array<string> $search_terms
      *
-     * @return Closure
+     * @return Closure(GedcomRecord):bool
      */
     private function rawGedcomFilter(array $search_terms): Closure
     {
@@ -1170,7 +1170,7 @@ class SearchService
      *
      * @param int $limit
      *
-     * @return Closure
+     * @return Closure():void
      */
     private function rowLimiter(int $limit = self::MAX_SEARCH_RESULTS): Closure
     {
@@ -1188,7 +1188,7 @@ class SearchService
     /**
      * Convert a row from any tree in the families table into a family object.
      *
-     * @return Closure
+     * @return Closure(object):Family
      */
     private function familyRowMapper(): Closure
     {
@@ -1202,7 +1202,7 @@ class SearchService
     /**
      * Convert a row from any tree in the individuals table into an individual object.
      *
-     * @return Closure
+     * @return Closure(object):Individual
      */
     private function individualRowMapper(): Closure
     {
@@ -1216,7 +1216,7 @@ class SearchService
     /**
      * Convert a row from any tree in the media table into a location object.
      *
-     * @return Closure
+     * @return Closure(object):Location
      */
     private function locationRowMapper(): Closure
     {
@@ -1230,7 +1230,7 @@ class SearchService
     /**
      * Convert a row from any tree in the media table into an media object.
      *
-     * @return Closure
+     * @return Closure(object):Media
      */
     private function mediaRowMapper(): Closure
     {
@@ -1244,7 +1244,7 @@ class SearchService
     /**
      * Convert a row from any tree in the other table into a note object.
      *
-     * @return Closure
+     * @return Closure:Note
      */
     private function noteRowMapper(): Closure
     {
@@ -1258,7 +1258,7 @@ class SearchService
     /**
      * Convert a row from any tree in the other table into a repository object.
      *
-     * @return Closure
+     * @return Closure:Repository
      */
     private function repositoryRowMapper(): Closure
     {
@@ -1272,7 +1272,7 @@ class SearchService
     /**
      * Convert a row from any tree in the other table into a note object.
      *
-     * @return Closure
+     * @return Closure(object):SharedNote
      */
     private function sharedNoteRowMapper(): Closure
     {
@@ -1286,7 +1286,7 @@ class SearchService
     /**
      * Convert a row from any tree in the sources table into a source object.
      *
-     * @return Closure
+     * @return Closure:Source
      */
     private function sourceRowMapper(): Closure
     {
@@ -1300,7 +1300,7 @@ class SearchService
     /**
      * Convert a row from any tree in the other table into a submission object.
      *
-     * @return Closure
+     * @return Closure(object):Submission
      */
     private function submissionRowMapper(): Closure
     {
@@ -1314,7 +1314,7 @@ class SearchService
     /**
      * Convert a row from any tree in the other table into a submitter object.
      *
-     * @return Closure
+     * @return Closure(object):Submitter
      */
     private function submitterRowMapper(): Closure
     {

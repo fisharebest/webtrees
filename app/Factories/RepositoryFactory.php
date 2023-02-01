@@ -66,7 +66,7 @@ class RepositoryFactory extends AbstractGedcomRecordFactory implements Repositor
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Repository
      */
     public function mapper(Tree $tree): Closure
     {
