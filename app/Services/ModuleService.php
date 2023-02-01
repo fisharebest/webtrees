@@ -533,7 +533,7 @@ class ModuleService
     /**
      * A function to convert modules into their titles - to create option lists, etc.
      *
-     * @return Closure
+     * @return Closure(ModuleInterface):string
      */
     public function titleMapper(): Closure
     {
@@ -734,7 +734,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Closure
+     * @return Closure(ModuleInterface):bool
      */
     private function enabledFilter(bool $include_disabled): Closure
     {
@@ -748,7 +748,7 @@ class ModuleService
      *
      * @param class-string $interface
      *
-     * @return Closure
+     * @return Closure(ModuleInterface):bool
      */
     private function interfaceFilter(string $interface): Closure
     {
@@ -760,7 +760,7 @@ class ModuleService
     /**
      * A function to sort footers
      *
-     * @return Closure
+     * @return Closure(ModuleFooterInterface,ModuleFooterInterface):int
      */
     private function footerComparator(): Closure
     {
@@ -772,7 +772,7 @@ class ModuleService
     /**
      * A function to sort menus
      *
-     * @return Closure
+     * @return Closure(ModuleMenuInterface,ModuleMenuInterface):int
      */
     private function menuComparator(): Closure
     {
@@ -782,9 +782,9 @@ class ModuleService
     }
 
     /**
-     * A function to sort menus
+     * A function to sort sidebars
      *
-     * @return Closure
+     * @return Closure(ModuleSidebarInterface,ModuleSidebarInterface):int
      */
     private function sidebarComparator(): Closure
     {
@@ -794,9 +794,9 @@ class ModuleService
     }
 
     /**
-     * A function to sort menus
+     * A function to sort tabs
      *
-     * @return Closure
+     * @return Closure(ModuleTabInterface,ModuleTabInterface):int
      */
     private function tabComparator(): Closure
     {
@@ -811,7 +811,7 @@ class ModuleService
      * Languages have a "sortable" name, so that "British English" sorts as "English, British".
      * This provides a more natural order in the language menu.
      *
-     * @return Closure
+     * @return Closure(ModuleInterface,ModuleInterface):int
      */
     private function moduleComparator(): Closure
     {

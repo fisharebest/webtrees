@@ -251,7 +251,7 @@ class User implements UserInterface
     /**
      * A closure which will create an object from a database row.
      *
-     * @return Closure
+     * @return Closure(object):User
      */
     public static function rowMapper(): Closure
     {

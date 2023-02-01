@@ -66,7 +66,7 @@ class Family extends GedcomRecord
     /**
      * A closure which will compare families by marriage date.
      *
-     * @return Closure
+     * @return Closure(Family,Family):int
      */
     public static function marriageDateComparator(): Closure
     {

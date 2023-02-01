@@ -153,7 +153,7 @@ class UserService
     /**
      * Callback to sort users by their last-login (or registration) time.
      *
-     * @return Closure
+     * @return Closure(UserInterface,UserInterface):int
      */
     public function sortByLastLogin(): Closure
     {
@@ -172,7 +172,7 @@ class UserService
      *
      * @param int $timestamp
      *
-     * @return Closure
+     * @return Closure(UserInterface):bool
      */
     public function filterInactive(int $timestamp): Closure
     {

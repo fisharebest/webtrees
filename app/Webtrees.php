@@ -278,7 +278,7 @@ class Webtrees
     /**
      * An error handler that can be passed to set_error_handler().
      *
-     * @return Closure
+     * @return Closure(int,string,string,int):bool
      */
     private function phpErrorHandler(): Closure
     {

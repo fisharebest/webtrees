@@ -65,7 +65,7 @@ class SubmissionFactory extends AbstractGedcomRecordFactory implements Submissio
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Submission
      */
     public function mapper(Tree $tree): Closure
     {

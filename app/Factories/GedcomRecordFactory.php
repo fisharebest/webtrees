@@ -129,7 +129,7 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):GedcomRecord
      */
     public function mapper(Tree $tree): Closure
     {
