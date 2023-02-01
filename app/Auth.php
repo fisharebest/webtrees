@@ -202,7 +202,7 @@ class Auth
 
     /**
      * @param ModuleInterface $module
-     * @param string          $interface
+     * @param class-string    $interface
      * @param Tree            $tree
      * @param UserInterface   $user
      *

@@ -50,9 +50,9 @@ abstract class AbstractModuleComponentPage implements RequestHandlerInterface
     }
 
     /**
-     * @param string $interface
-     * @param string $title
-     * @param string $description
+     * @param class-string $interface
+     * @param string       $title
+     * @param string       $description
      *
      * @return ResponseInterface
      */

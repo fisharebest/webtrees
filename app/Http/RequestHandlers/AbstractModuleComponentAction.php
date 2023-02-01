@@ -52,7 +52,7 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     /**
      * Update the access levels of the modules.
      *
-     * @param string                 $interface
+     * @param class-string           $interface
      * @param ServerRequestInterface $request
      *
      * @return void
@@ -83,7 +83,7 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     /**
      * Update the access levels of the modules.
      *
-     * @param string                 $interface
+     * @param class-string           $interface
      * @param ServerRequestInterface $request
      *
      * @return void
@@ -114,7 +114,7 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     /**
      * Update the access levels of the modules.
      *
-     * @param string                 $interface
+     * @param class-string           $interface
      * @param string                 $column
      * @param ServerRequestInterface $request
      *
