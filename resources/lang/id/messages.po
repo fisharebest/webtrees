@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-28 23:35+0000\n"
+"PO-Revision-Date: 2023-02-02 14:03+0000\n"
 "Last-Translator: sadja1024 <bancak@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/id/>\n"
@@ -487,7 +487,7 @@ msgstr "(usia %s)"
 #: resources/views/fact-date.phtml:104
 #, php-format
 msgid "(aged %s)"
-msgstr "(umur %s)"
+msgstr "(berumur %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:165
@@ -496,7 +496,7 @@ msgstr "(umur %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(umur %s)"
+msgstr "(berumur %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:162
@@ -505,7 +505,7 @@ msgstr "(umur %s)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(umur %s)"
+msgstr "(berumur %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:29
@@ -640,6 +640,11 @@ msgstr "<tema sederhana>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>Perhatian: Dengan melengkapi dan mengirimkan formulir ini, Anda setuju:</"
+"p><ul><li>untuk melindungi privasi seseorang yang hidup yang tercantum di "
+"situs kami;</li><li>dan dalam kotak teks di bawah , untuk menjelaskan kepada "
+"siapa Anda terkait, atau untuk memberi kami informasi tentang seseorang yang "
+"harus dicantumkan di situs web kami.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -729,22 +734,23 @@ msgstr "Tautan ke kontak situs."
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Tautan ke situs webtrees."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Daftar ranting keluarga."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:93
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Daftar perubahan yang perlu ditinjau oleh moderator, dan pemberitahuan email."
+msgstr ""
+"Daftar perubahan yang perlu ditinjau oleh moderator, dan pemberitahuan surel."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:54
 msgid "A list of families."
-msgstr ""
+msgstr "Daftar keluarga."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:82
@@ -754,17 +760,17 @@ msgstr "Daftar pertanyaan dan jawaban yang sering diajukan."
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:92
 msgid "A list of individuals."
-msgstr ""
+msgstr "Daftar perseorangan."
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:78
 msgid "A list of locations."
-msgstr ""
+msgstr "Daftar lokasi."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:98
 msgid "A list of media objects."
-msgstr ""
+msgstr "Daftar obyek media."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:98
@@ -774,22 +780,22 @@ msgstr "Daftar catatan yang telah diperbarui baru-baru ini."
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:78
 msgid "A list of repositories."
-msgstr ""
+msgstr "Daftar perpustakaan."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:75
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Daftar catatan bersama."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:77
 msgid "A list of sources."
-msgstr ""
+msgstr "Daftar sumber."
 
 #. I18N: Description of the “Submitters” module
 #: app/Module/SubmitterListModule.php:78
 msgid "A list of submitters."
-msgstr ""
+msgstr "Daftar pengirim."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
@@ -840,7 +846,9 @@ msgstr "Media adalah catatan di silsilah keluarga yang berisi informasi tentang 
 #: resources/views/emails/verify-notify-text.phtml:17
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Pengguna baru (%1$s) telah meminta akun (%2$s) dan memverifikasi alamat email (%3$s)."
+msgstr ""
+"Pengguna baru (%1$s) telah meminta akun (%2$s) dan memeriksa alamat surel "
+"(%3$s)."
 
 #: app/Http/RequestHandlers/LoginAction.php:80
 #: app/Module/CheckForNewVersion.php:99
@@ -854,7 +862,7 @@ msgstr "Versi WEBTREES Terbaru Sudah Tersedia."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:121
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "Tautan pengaturan ulang kata sandi telah dikirim ke “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -1016,7 +1024,9 @@ msgstr "Garis waktu yang menampilkan peristiwa seseorang."
 
 #: resources/views/admin/users-edit.phtml:118
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Akun pendaftar tidak akan dapat masuk ke situs ini sampai \"Email Diverifikasi\" dan kemudian \"Disetujui Oleh Pengurus\"."
+msgstr ""
+"Pengguna tidak akan dapat masuk sampai \"surel terperiksa\" dan \"disetujui "
+"oleh pengelola\" terpilih."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1134,7 +1144,7 @@ msgstr "Akses Ke Silsilah Keluarga"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "Account approval and email verification"
-msgstr "Persetujuan Akun"
+msgstr "Persetujuan akun dan pemeriksaan surel"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54
@@ -1236,7 +1246,7 @@ msgstr "Tambah %s Ke Kliping"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
-msgstr ""
+msgstr "Tambah saudara laki-laki"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:79
 #: resources/views/family-page-menu.phtml:54
@@ -1253,7 +1263,7 @@ msgstr "Tambahkan anak untuk membuat keluarga dengan satu orangtua"
 #: resources/views/family-page-children.phtml:47
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr ""
+msgstr "Tambahkan putri"
 
 #: resources/views/edit/add-fact-row.phtml:21
 #: resources/views/edit/raw-gedcom-record.phtml:60
@@ -1324,17 +1334,17 @@ msgstr "Tambahkan catatan"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr ""
+msgstr "Tambah saudara"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
-msgstr ""
+msgstr "Tambah saudara perempuan"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:77
 #: resources/views/family-page-children.phtml:43
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a son"
-msgstr ""
+msgstr "Tambah putra"
 
 #: resources/views/modules/sources_tab/tab.phtml:77
 msgid "Add a source citation"
@@ -1377,11 +1387,11 @@ msgstr "Tambahkan sebuah FAQ"
 
 #: resources/views/modules/custom-css-js/edit.phtml:35
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Tambahkan isinya ke akhir dari elemen <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Tambahkan isinya ke akhir dari elemen <code>&lt;head&gt;</code>."
 
 #: resources/views/record-page-menu-clipboard.phtml:20
 msgid "Add from clipboard"
@@ -1389,7 +1399,7 @@ msgstr "Tambahkan dari Papanklip"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Tambahkan peristiwa bersejarah ke halaman perseorangan."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
 msgid "Add individuals"
@@ -1406,7 +1416,7 @@ msgstr "Tambahkan catatan kematian yang hilang"
 
 #: resources/views/edit-blocks-page.phtml:51
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Tambahkan lebih banyak blok dari daftar berikut."
 
 #: resources/views/search-advanced-page.phtml:44
 msgid "Add more fields"
@@ -1428,7 +1438,7 @@ msgstr "Tambahkan spasi di mana garis panjang dibungkus"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:44
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Tambahkan gaya dan skrip ke setiap halaman."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:197
@@ -1482,11 +1492,11 @@ msgstr "Baris alamat 2"
 #: app/CustomTags/GedcomL.php:228 app/Gedcom.php:404 app/Gedcom.php:517
 #: app/Gedcom.php:537 app/Gedcom.php:808 app/Gedcom.php:855
 msgid "Address line 3"
-msgstr ""
+msgstr "Baris alamat ke-3"
 
 #: resources/views/admin/tags.phtml:263
 msgid "Addresses"
-msgstr ""
+msgstr "Alamat"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1495,7 +1505,7 @@ msgstr "Adelaide, Australian"
 
 #: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
-msgstr ""
+msgstr "Pengenal Administratif"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1546,7 +1556,7 @@ msgstr "Diadopsi Ibu"
 #: app/CustomTags/BrothersKeeper.php:71
 #: app/CustomTags/PersonalAncestralFile.php:63
 msgid "Adopted name"
-msgstr ""
+msgstr "Nama angkat"
 
 #: app/Gedcom.php:575 app/Gedcom.php:578
 #: app/Module/IndividualFactsTabModule.php:155
@@ -1625,7 +1635,7 @@ msgstr "Adopsi seorang putra"
 
 #: app/Gedcom.php:577 app/Module/IndividualFactsTabModule.php:154
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Orang tua angkat"
 
 #: app/Gedcom.php:622
 msgid "Adult christening"
@@ -1787,7 +1797,7 @@ msgstr "Semua Orang"
 #: resources/views/admin/components.phtml:30
 #: resources/views/admin/control-panel.phtml:564
 msgid "All modules"
-msgstr ""
+msgstr "Semua modul"
 
 #: resources/views/admin/trees-privacy.phtml:165
 #: resources/views/admin/trees-privacy.phtml:255
@@ -1818,7 +1828,7 @@ msgstr "Juga dikenal sebagai"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Ejaan lain dari nama keluarga"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1867,6 +1877,8 @@ msgstr "Grafik pasir dari leluhur dan keturunan seseorang."
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
 msgstr ""
+"Seseorang dapat memiliki lebih dari satu pasang orang tua. Misalnya, lahir "
+"dan angkat."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:60
@@ -1880,7 +1892,7 @@ msgstr "Terjadi kesalahan basis data yang tidak terduga."
 
 #: resources/views/admin/control-panel.phtml:203
 msgid "An upgrade is available."
-msgstr ""
+msgstr "Pembaharuan telah tersedia."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -1911,12 +1923,12 @@ msgstr "Nomor file leluhur"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/Ancestry.php:64
 msgid "Ancestry PID"
-msgstr ""
+msgstr "PID keturunan"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Pengidentifikasi sumber Ancestry.com"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1980,11 +1992,11 @@ msgstr "Apia, Samoas"
 
 #: app/Gedcom.php:512
 msgid "Application ID"
-msgstr ""
+msgstr "Pengenal Aplikasi"
 
 #: app/Gedcom.php:529
 msgid "Application name"
-msgstr ""
+msgstr "Nama aplikasi"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -2045,7 +2057,7 @@ msgstr "Aqua Marines"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Anda yakin akan menghapus tautan ke “%s”?"
 
 #: resources/views/individual-page-name.phtml:90
 #: resources/views/media-page-details.phtml:40
@@ -2146,7 +2158,7 @@ msgstr "Kaitkan peristiwa dengan sumber ini"
 
 #: resources/views/modules/personal_facts/tab.phtml:34
 msgid "Associated events"
-msgstr ""
+msgstr "Peristiwa yang terhubung"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2250,7 +2262,7 @@ msgstr "Penulis perubahan terakhir"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:629
 msgid "Autocomplete"
-msgstr ""
+msgstr "Otomatis melengkapi"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
@@ -2307,7 +2319,7 @@ msgstr "Usia rata-rata wafat"
 
 #: app/Statistics/Google/ChartMarriageAge.php:158
 msgid "Average age at marriage"
-msgstr ""
+msgstr "Usia rata-rata saat menikah"
 
 #: app/Statistics/Google/ChartMarriageAge.php:155
 msgid "Average age in century of marriage"
@@ -2319,7 +2331,7 @@ msgstr "Usia rata-rata terkait dengan masa kematian"
 
 #: app/Statistics/Google/ChartChildren.php:88
 msgid "Average number"
-msgstr ""
+msgstr "Angka rata-rata"
 
 #: app/Statistics/Google/ChartChildren.php:99
 #: resources/views/modules/gedcom_stats/config.phtml:62
@@ -2506,7 +2518,7 @@ msgstr "Barbadosa"
 
 #: app/CustomTags/GedcomL.php:154
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Penanda dasar GEDCOM"
 
 #: app/Gedcom.php:597 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
@@ -2584,7 +2596,7 @@ msgstr "Peta Bing™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Alat webmaster Bing™"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:65
@@ -2750,7 +2762,7 @@ msgstr "Rentang tanggal lahir dimulai"
 
 #: app/CustomTags/BrothersKeeper.php:73
 msgid "Birth name"
-msgstr ""
+msgstr "Nama Lahir"
 
 #: app/Services/IndividualFactsService.php:217
 msgid "Birth of a brother"
@@ -2827,7 +2839,7 @@ msgstr "Kelahiran Anak"
 
 #: app/Gedcom.php:602
 msgid "Birth parents"
-msgstr ""
+msgstr "Orang tua kandung"
 
 #: resources/views/modules/statistics-chart/places.phtml:18
 msgid "Birth places"
@@ -3208,7 +3220,7 @@ msgstr "CKPengubah™"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:83
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS dan JS"
 
 #: resources/views/admin/trees.phtml:74
 #: resources/views/lists/datatables-attributes.phtml:33
@@ -3288,7 +3300,7 @@ msgstr "Kategori"
 #: app/CustomTags/GedcomL.php:144 app/CustomTags/GedcomL.php:200
 #: app/CustomTags/Legacy.php:138
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
 #: app/CustomTags/GedcomL.php:234 app/Gedcom.php:410 app/Gedcom.php:544
 msgid "Cause"
@@ -3296,7 +3308,7 @@ msgstr "Sebab"
 
 #: app/CustomTags/FamilyTreeMaker.php:114 app/Gedcom.php:637
 msgid "Cause of death"
-msgstr "Penyebab wafat"
+msgstr "Penyebab kematian"
 
 #: resources/views/admin/synchronize-trees.phtml:30
 #: resources/views/admin/trees-merge.phtml:66
@@ -3334,7 +3346,7 @@ msgstr "Waktu Pendataan"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:15
 msgid "Census date and place"
-msgstr ""
+msgstr "Tanggal dan tempat sensus"
 
 #: app/Gedcom.php:613
 msgid "Census place"
@@ -3364,7 +3376,7 @@ msgstr "Republik Afrika Tengah"
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:96
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:132
 msgid "Century"
-msgstr ""
+msgstr "Abad"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:82
@@ -3393,7 +3405,7 @@ msgstr "Ubah blok \"Halaman Saya\""
 #: resources/views/modules/recent_changes/changes-list.phtml:52
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Berubah %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:50
@@ -3431,7 +3443,7 @@ msgstr "Log perubahan"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "Pengkodean aksara"
 
 #: app/Gedcom.php:498
 msgid "Character set"
@@ -3472,7 +3484,7 @@ msgstr "Periksa kesalahan"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Periksa versi terbaru"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Check for pending changes…"
@@ -3670,7 +3682,7 @@ msgstr "Sunat"
 
 #: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
-msgstr ""
+msgstr "Sunat"
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
@@ -3841,11 +3853,11 @@ msgstr "Lengkap; tanggal tidak diketahui"
 #: app/CustomTags/GedcomL.php:145 app/CustomTags/GedcomL.php:201
 #: app/CustomTags/Legacy.php:139
 msgid "Completion date"
-msgstr ""
+msgstr "Tanggal selesai"
 
 #: app/Gedcom.php:624 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr "Konfirmasi"
+msgstr "Penegasan"
 
 #: resources/views/setup/step-3-database-type.phtml:37
 msgid "Connection to database server"
@@ -3873,7 +3885,7 @@ msgstr "Daftar Isi"
 
 #: app/Gedcom.php:766
 msgid "Continuation"
-msgstr ""
+msgstr "Kelanjutan"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3940,12 +3952,12 @@ msgstr "Panel Pengaturan"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:61
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Mengubah %s penanda ke GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Diubah ke"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -3959,7 +3971,7 @@ msgstr "Pelacak"
 #: app/CustomTags/GedcomL.php:245 app/CustomTags/GedcomL.php:257
 #: app/Gedcom.php:423 app/Gedcom.php:555
 msgid "Coordinates"
-msgstr ""
+msgstr "Koordinat"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84
@@ -3986,7 +3998,7 @@ msgstr "Salin file …"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Salin URL dari rekaman ke papanklip"
 
 #: app/Gedcom.php:500 app/Gedcom.php:527
 msgid "Copyright"
@@ -4008,7 +4020,7 @@ msgstr "Perbaiki NAMA yang benar dari kolom \"Andi/Ahmad/\" atau \"Andi/AHMAD\",
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Surat menyurat"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4022,12 +4034,14 @@ msgstr "Kote D’Ivoire"
 
 #: resources/views/verify-failure-page.phtml:19
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr "Tidak dapat memverifikasi informasi yang anda masukkan. silakan coba lagi atau hubungi pengurus situs untuk informasi lebih lanjut."
+msgstr ""
+"Tidak dapat memeriksa informasi yang anda masukkan. Silahkan coba lagi atau "
+"hubungi pengelola situs untuk informasi lebih lanjut."
 
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:84
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "Menghitung kunjungan ke setiap halaman"
 
 #: app/CustomTags/GedcomL.php:230 app/CustomTags/PersonalAncestralFile.php:70
 #: app/Gedcom.php:406 app/Gedcom.php:519 app/Gedcom.php:539 app/Gedcom.php:810
@@ -4047,7 +4061,7 @@ msgstr "Buat Silsilah Keluarga"
 #: app/Elements/XrefLocation.php:60
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Membuat suatu lokasi"
 
 #: app/Elements/XrefMedia.php:62
 #: resources/views/modals/create-media-from-file.phtml:20
@@ -4076,7 +4090,7 @@ msgstr "Buat sumber baru"
 #: app/Elements/XrefSubmission.php:60
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Buat pengiriman"
 
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
@@ -4085,7 +4099,7 @@ msgstr "Buat pengirim"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Membikin folder sementara…"
 
 #: resources/views/modals/media-file-fields.phtml:80
 msgid "Create a unique filename"
@@ -4102,7 +4116,7 @@ msgstr "Buat seseorang"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Membuat peta menggunakan %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
@@ -4118,7 +4132,7 @@ msgstr "Buat, perbarui, dan hapus silsilah keluarga untuk setiap file GEDCOM di 
 #: app/CustomTags/Gedcom7.php:139 app/CustomTags/Gedcom7.php:148
 #: app/CustomTags/Gedcom7.php:156 app/CustomTags/Gedcom7.php:165
 msgid "Created at"
-msgstr ""
+msgstr "Dibuat di"
 
 #: app/CustomTags/Gedcom7.php:91 app/CustomTags/Gedcom7.php:121
 #: app/CustomTags/Gedcom7.php:136 app/CustomTags/Gedcom7.php:140
@@ -4126,14 +4140,14 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:166 app/CustomTags/GedcomL.php:138
 #: app/CustomTags/GedcomL.php:194
 msgid "Creation date"
-msgstr ""
+msgstr "Tanggal dibuat"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
 #: app/CustomTags/Gedcom7.php:150 app/CustomTags/Gedcom7.php:158
 #: app/CustomTags/Gedcom7.php:167
 msgid "Creation time"
-msgstr ""
+msgstr "Waktu pembuatan"
 
 #: app/Gedcom.php:633 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4287,11 +4301,12 @@ msgstr "Pilihan"
 
 #: resources/views/admin/tags.phtml:1003
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Penanda GEDCOM khusus"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
+"Penanda GEDCOM khusus tidak disarankan. Coba gunakan penanda GEDCOM dasar."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
@@ -4323,7 +4338,7 @@ msgstr "Republik Cechnya"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:196
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "Tanda tangan digital DKIM"
 
 #: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
@@ -4351,14 +4366,14 @@ msgstr "Data"
 
 #: resources/views/modules/privacy-policy/page.phtml:68
 msgid "Data controller"
-msgstr ""
+msgstr "Pengendali data"
 
 #: resources/views/admin/data-fix-page.phtml:72
 #: resources/views/admin/data-fix-select.phtml:29
 #: resources/views/admin/modules.phtml:216
 #: resources/views/admin/modules.phtml:219
 msgid "Data fix"
-msgstr ""
+msgstr "Perbaikan data"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:65
 #: app/Http/RequestHandlers/DataFixPage.php:87
@@ -4370,11 +4385,13 @@ msgstr ""
 #: resources/views/admin/modules.phtml:100
 #: resources/views/admin/trees.phtml:153
 msgid "Data fixes"
-msgstr ""
+msgstr "Perbaikan data"
 
 #: resources/views/help/data-fixes.phtml:10
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
 msgstr ""
+"Perbaikan data memerlukan banyak perhitungan yang lambat, sehingga mustahil "
+"membuat daftar rekaman yang tepat yang perlu diperbarui."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
@@ -4405,7 +4422,7 @@ msgstr "Kata sandi basisdata"
 
 #: resources/views/setup/step-3-database-type.phtml:54
 msgid "Database type"
-msgstr ""
+msgstr "Jenis basisdata"
 
 #: app/CustomTags/PhpGedView.php:84
 #: resources/views/setup/step-4-database-mysql.phtml:83
@@ -4456,7 +4473,7 @@ msgstr "Tanggal penyegelan anak LDS"
 
 #: app/Gedcom.php:628
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Penegasan tanggal LDS"
 
 #: app/Gedcom.php:648
 msgid "Date of LDS endowment"
@@ -4507,7 +4524,7 @@ msgstr "Tanggal pembaptisan"
 
 #: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr "Tanggal konfirmasi"
+msgstr "Tanggal penegasan"
 
 #: app/Gedcom.php:634
 msgid "Date of cremation"
@@ -4580,7 +4597,7 @@ msgstr "Tanggal tinggal"
 
 #: app/CustomTags/Gedcom7.php:128
 msgid "Date of status change"
-msgstr ""
+msgstr "Tanggal perubahan status"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
@@ -4780,7 +4797,7 @@ msgstr "Wafat"
 
 #: app/Statistics/Google/ChartDistribution.php:306
 msgid "Death by country"
-msgstr "Kematian di negara"
+msgstr "Kematian menurut negara"
 
 #: resources/xml/reports/bdm_report.xml:10
 #: resources/xml/reports/death_report.xml:8
@@ -5006,7 +5023,7 @@ msgstr "Tema Sederhana"
 #: app/CustomTags/GedcomL.php:162 app/CustomTags/GedcomL.php:163
 #: app/CustomTags/GedcomL.php:164
 msgid "Definition"
-msgstr ""
+msgstr "Penjelasan"
 
 #: app/CustomTags/FamilyTreeMaker.php:115
 msgid "Degree"
@@ -5078,7 +5095,7 @@ msgstr "Hapus Nama"
 
 #: resources/views/admin/locations.phtml:174
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Hapus lokasi tidak terpakai"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
@@ -5090,7 +5107,7 @@ msgstr "Penghapusan keluarga akan menghapus keterkaitan dengan semua orang satu 
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Menghapus…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5099,7 +5116,7 @@ msgstr "Republik Demokrasi Kongo"
 
 #: app/CustomTags/GedcomL.php:287
 msgid "Demographic data"
-msgstr ""
+msgstr "Data kependudukan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -5275,7 +5292,7 @@ msgstr "Mati saat masih kecil: dibebaskan"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Wafat kurang dari 1 tahun, penyegelan tidak diperlukan."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5356,7 +5373,7 @@ msgstr "Dokumen"
 
 #: resources/views/admin/site-mail.phtml:201
 msgid "Domain name"
-msgstr ""
+msgstr "Nama domain"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -5381,7 +5398,7 @@ msgstr "Unduh %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Unduh berkas .ICS yang berisi hari jadi"
 
 #: resources/views/media-page-details.phtml:85
 msgid "Download file"
@@ -5389,7 +5406,7 @@ msgstr "Unduh Berkas"
 
 #: resources/views/edit-blocks-page.phtml:25
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Seret blok untuk mengubah posisinya."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:91
@@ -5406,14 +5423,16 @@ msgstr "Duodie"
 #: app/Http/RequestHandlers/UserAddAction.php:71
 #: app/Http/RequestHandlers/UserEditAction.php:150
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Duplikat alamat email. pengguna dengan email tersebut sudah pernah ada."
+msgstr "Alamat surel ganda. Pengguna dengan surel tersebut sudah pernah ada."
 
 #: app/Http/RequestHandlers/AccountUpdate.php:86
 #: app/Http/RequestHandlers/RegisterAction.php:256
 #: app/Http/RequestHandlers/UserAddAction.php:66
 #: app/Http/RequestHandlers/UserEditAction.php:156
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr "Duplikat nama pengguna. seorang pengguna lain dengan nama pengguna itu sudah ada. silakan pilih nama pengguna lain."
+msgstr ""
+"Duplikat nama pengguna. seorang pengguna lain dengan nama pengguna itu sudah "
+"ada. Silahkan pilih nama pengguna lain."
 
 #: resources/views/help/source-events.phtml:10
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5532,7 +5551,7 @@ msgstr "Ubah orang ini dan ganti rinciannya dengan milik anda."
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Sunting dengan semua penanda GEDCOM"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:101
@@ -5594,7 +5613,7 @@ msgstr "Eluls"
 #: resources/views/modals/submitter-fields.phtml:19
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "SurEl"
 
 #: app/CustomTags/BrothersKeeper.php:97 app/CustomTags/GedcomL.php:236
 #: app/CustomTags/PersonalAncestralFile.php:74 app/CustomTags/Reunion.php:56
@@ -5609,11 +5628,11 @@ msgstr ""
 #: resources/views/register-page.phtml:49
 #: resources/views/setup/step-5-administrator.phtml:92
 msgid "Email address"
-msgstr "Alamat Email"
+msgstr "Alamat Surel"
 
 #: resources/views/admin/users-edit.phtml:102
 msgid "Email verified"
-msgstr "Email Diverifikasi"
+msgstr "Surel telah diperiksa"
 
 #: app/Gedcom.php:644 resources/views/calendar-page.phtml:204
 msgid "Emigration"
@@ -5650,7 +5669,7 @@ msgstr "Majikan"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Kosongkan papan klip"
 
 #: app/Module/ClippingsCartModule.php:192
 msgid "Empty the clippings cart"
@@ -5696,7 +5715,7 @@ msgstr "Buat catatan tentang favorit ini"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:25
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Memasuki layar penuh"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5749,11 +5768,11 @@ msgstr "Espan"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri-ArcGIS"
 
 #: app/CustomTags/BrothersKeeper.php:77
 msgid "Estate name"
-msgstr ""
+msgstr "Nama perumahan"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:369
@@ -5836,7 +5855,7 @@ msgstr "Dikecualikan dari pengiriman ini"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Keluar dari layar penuh"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5875,11 +5894,11 @@ msgstr "File eksternal"
 #: app/CustomTags/Gedcom7.php:142 app/CustomTags/Gedcom7.php:151
 #: app/CustomTags/Gedcom7.php:159 app/CustomTags/Gedcom7.php:168
 msgid "External identifier"
-msgstr ""
+msgstr "Pengenal luar"
 
 #: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
-msgstr ""
+msgstr "Tautan luar"
 
 #: resources/views/admin/media.phtml:77
 msgid "External media files have a URL instead of a filename."
@@ -6100,15 +6119,15 @@ msgstr "Buku Keluarga %s"
 
 #: app/Gedcom.php:446
 msgid "Family census"
-msgstr ""
+msgstr "Sensus keluarga"
 
 #: resources/views/admin/tags.phtml:975
 msgid "Family fact"
-msgstr ""
+msgstr "Fakta keluarga"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "Family facts and events"
-msgstr ""
+msgstr "Fakta dan peristiwa keluarga"
 
 #: app/Gedcom.php:881
 msgid "Family file"
@@ -6131,11 +6150,11 @@ msgstr "Keluarga Dari %s"
 
 #: app/Gedcom.php:476
 msgid "Family residence"
-msgstr ""
+msgstr "Tempat tinggal keluarga"
 
 #: app/CustomTags/GedcomL.php:135
 msgid "Family status"
-msgstr ""
+msgstr "Keadaan keluarga"
 
 #: app/CustomTags/Ancestry.php:61 app/Module/TreesMenuModule.php:95
 #: resources/views/admin/changes-log.phtml:92
@@ -6199,7 +6218,7 @@ msgstr "Keluarga dengan Orangtua"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Individual.php:858
 msgid "Family with rada parents"
-msgstr "Keluarga dengan orang tua rada"
+msgstr "Keluarga dengan orang tua sepersusuan"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/Individual.php:856
@@ -6224,7 +6243,7 @@ msgstr "Keluarga dengan istri"
 #. I18N: familysearch.org
 #: app/CustomTags/FamilySearch.php:52 app/CustomTags/GenPlusWin.php:52
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "Pengenal pencarian keluarga"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:138
@@ -6361,19 +6380,19 @@ msgstr "Perempuan"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Bidang"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Nama bidang"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Nilai bidang"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
@@ -6536,7 +6555,7 @@ msgstr "Nama folder di server"
 #: resources/views/emails/register-user-html.phtml:26
 #: resources/views/emails/register-user-text.phtml:20
 msgid "Follow this link to verify your email address."
-msgstr "Silakan klik pada pranala berikut dan isilah data yang diminta untuk mengonfirmasikan permintaan dan alamat email Anda."
+msgstr "Klik pranala berikut untuk memeriksa alamat surel anda."
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -6560,14 +6579,14 @@ msgstr "Gaya"
 #: resources/views/admin/modules.phtml:248
 #: resources/views/admin/modules.phtml:251
 msgid "Footer"
-msgstr ""
+msgstr "Catatan kaki"
 
 #: app/Http/RequestHandlers/ModulesFootersPage.php:43
 #: resources/views/admin/control-panel.phtml:580
 #: resources/views/admin/modules.phtml:114
 #: resources/views/admin/modules.phtml:116
 msgid "Footers"
-msgstr ""
+msgstr "Catatan kaki"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:129
@@ -6582,6 +6601,9 @@ msgstr "Misalnya, jika anda menentukan panjang jalur 2, orang tersebut akan dapa
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
 msgstr ""
+"Sebagai contoh, kita dapat dengan cepat menemukan orang yang tidak mengalami "
+"peristiwa kematian, tetapi jauh lebih lambat untuk menghitung jika orang "
+"tersebut meninggal."
 
 #: app/Module/ContactsFooterModule.php:147
 #, php-format
@@ -6598,7 +6620,7 @@ msgstr "Untuk bantuan tentang pertanyaan genealogi hubungi %s."
 #: resources/views/modules/openrouteservice/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Untuk lebih jelasnya, lihat %s."
 
 #: app/Module/ContactsFooterModule.php:160
 #, php-format
@@ -6608,7 +6630,7 @@ msgstr "Untuk dukungan dan informasi teknis hubungi %s."
 #: app/Module/ContactsFooterModule.php:134
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Untuk dukungan teknis dan masalah genealogi, silakan hubungi %s."
+msgstr "Untuk dukungan teknis dan masalah genealogi, silahkan hubungi %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
@@ -6767,13 +6789,13 @@ msgstr "Maret"
 #: resources/views/message-page.phtml:29
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 #: resources/views/admin/changes-log.phtml:41
 #: resources/views/admin/site-logs.phtml:39
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:171
@@ -6810,11 +6832,11 @@ msgstr "Pemakaman"
 
 #: app/Gedcom.php:505 resources/views/admin/gedcom-export-options.phtml:32
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:935
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -6832,32 +6854,32 @@ msgstr "File GEDCOM"
 #: resources/views/admin/tags.phtml:735 resources/views/admin/tags.phtml:789
 #: resources/views/admin/tags.phtml:893 resources/views/admin/tags.phtml:951
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "Penanda GEDCOM"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:81
 #: resources/views/admin/control-panel.phtml:263
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "Penanda GEDCOM"
 
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1035
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:57
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/CustomTags/GedcomL.php:113 app/CustomTags/GedcomL.php:167
 #: app/CustomTags/GedcomL.php:292
 msgid "GOV identifier"
-msgstr ""
+msgstr "Pengenal GOV"
 
 #: app/CustomTags/GedcomL.php:282
 msgid "GOV identifier type"
-msgstr ""
+msgstr "Jenis pengenal GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -6881,7 +6903,7 @@ msgstr "Kelamin"
 
 #: resources/views/admin/control-panel.phtml:659
 msgid "Genealogy"
-msgstr ""
+msgstr "Silsilah"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:155
@@ -6943,13 +6965,13 @@ msgstr "Generasi leluhur"
 
 #: app/Gedcom.php:880
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Generasi keturunan"
 
 #. I18N: https://www.geonames.org
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:46
 msgid "GeoNames"
-msgstr ""
+msgstr "Basis data geografi"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -6969,7 +6991,7 @@ msgstr "Data geografis"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:636
 msgid "Geolocation"
-msgstr ""
+msgstr "Posisi geografi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
@@ -7065,7 +7087,7 @@ msgstr "Orangtua baptis"
 #: app/CustomTags/GedcomL.php:187 app/CustomTags/GedcomL.php:188
 #: app/Gedcom.php:620
 msgid "Godparents"
-msgstr ""
+msgstr "Wali baptis"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
@@ -7074,7 +7096,7 @@ msgstr "Anak baptis lelaki"
 
 #: app/Module/GoogleAnalyticsModule.php:48
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Penganalisa Google™"
 
 #: app/Module/GoogleMaps.php:83 app/Module/MapLinkGoogle.php:41
 msgid "Google™ maps"
@@ -7082,7 +7104,7 @@ msgstr "Peta Google™"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Alat pengembang web Google™"
 
 #: app/Gedcom.php:666
 msgid "Graduation"
@@ -7336,7 +7358,7 @@ msgstr "Pekerjaan sebelumnya"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:83
 msgid "Here maps"
-msgstr ""
+msgstr "Peta HERE"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -7373,7 +7395,7 @@ msgstr "Heshvana"
 #: resources/views/admin/tags.phtml:736 resources/views/admin/tags.phtml:790
 #: resources/views/admin/tags.phtml:894 resources/views/admin/tags.phtml:952
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Sembunyikan penanda GEDCOM"
 
 #: app/Auth.php:594 app/Auth.php:607
 #: app/Http/RequestHandlers/TreePreferencesPage.php:125
@@ -7395,21 +7417,21 @@ msgstr "Sembunyikan dari semua orang"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Hide password"
-msgstr ""
+msgstr "Sembunyikan kata sandi"
 
 #: resources/views/admin/trees-check.phtml:39
 #: resources/views/admin/trees-check.phtml:55
 #: resources/views/admin/trees-check.phtml:71
 msgid "Hide these errors"
-msgstr ""
+msgstr "Sembunyikan kesalahan ini"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Sembunyikan lokasi tak terpakai"
 
 #: app/CustomTags/GedcomL.php:296
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Hubungan hierarkis"
 
 #: app/CustomTags/FamilyTreeBuilder.php:63 app/CustomTags/GedcomL.php:190
 #: app/CustomTags/GedcomL.php:206 app/CustomTags/Legacy.php:145
@@ -7436,7 +7458,7 @@ msgstr "Pekerjaan sebelumnya"
 #: resources/views/admin/modules.phtml:267
 #: resources/views/modules/personal_facts/tab.phtml:48
 msgid "Historic events"
-msgstr ""
+msgstr "Peristiwa bersejarah"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
@@ -7549,7 +7571,7 @@ msgstr "Nomor Identifikasi"
 
 #: resources/views/admin/tags.phtml:777
 msgid "Identifiers"
-msgstr ""
+msgstr "Pengenal"
 
 #: resources/views/admin/fix-level-0-media.phtml:22
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -7562,7 +7584,9 @@ msgstr "Jika pengunjung ke situs belum memilih bahasa yang disukai dalam prefere
 
 #: resources/views/admin/users-edit.phtml:112
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Jika administrator membuat akun pengguna, email verifikasi tidak dikirim, dan email harus diverifikasi secara manual."
+msgstr ""
+"Jika pengelola membuat akun pengguna, surel pemeriksaan tidak dikirim, dan "
+"surel harus diperiksa secara manual."
 
 #: resources/views/help/name.phtml:24
 #, php-format
@@ -7592,10 +7616,14 @@ msgstr "Jika nama keluarga tidak diketahui, gunakan garis miring kosong: <%s>And
 #: resources/views/admin/webtrees1-thumbnails.phtml:26
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
 msgstr ""
+"Jika gambar mini adalah gambar khusus, anda harus menambahkannya ke obyek "
+"media."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:25
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
 msgstr ""
+"Jika gambar mini sama dengan gambar aslinya, tidak diperlukan lagi dan "
+"sebaiknya dihapus."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
@@ -7623,6 +7651,8 @@ msgstr "Jika anda tidak dapat menyelesaikan masalah sendiri, anda dapat meminta 
 #: resources/views/setup/step-4-database-mysql.phtml:61
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
 msgstr ""
+"Jika terhubung ke basisdata menggunakan soket UNIX, masukkan jalur di sini "
+"dan kosongkan nomor port."
 
 #: resources/views/admin/trees-import.phtml:114
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7631,7 +7661,7 @@ msgstr "Jika Anda membuat file GEDCOM ini menggunakan perangkat lunak genealogi 
 #: resources/views/emails/password-request-html.phtml:28
 #: resources/views/emails/password-request-text.phtml:20
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "Jika anda tidak meminta kata sandi baru, harap abaikan pesan ini."
 
 #: resources/views/emails/register-user-html.phtml:36
 #: resources/views/emails/register-user-text.phtml:24
@@ -7649,7 +7679,7 @@ msgstr "Jika anda telah membuat media di situs ini, dan kemudian mengubah file G
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Jika anda memodifikasi berkas, anda juga harus mengganti nama berkas."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7749,7 +7779,7 @@ msgstr "Dalam webtrees versi 2, thumbnail khusus disimpan sebagai file media ked
 
 #: resources/views/admin/trees-unconnected.phtml:30
 msgid "Include aliases"
-msgstr ""
+msgstr "Termasuk alias"
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include associates"
@@ -7768,11 +7798,11 @@ msgstr "Sertakan subfolder"
 
 #: resources/views/modules/custom-css-js/edit.phtml:40
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "Termasuk penanda <code>&lt;script&gt;&lt;/script&gt;</code> ."
 
 #: resources/views/modules/custom-css-js/edit.phtml:28
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "Termasuk penanda <code>&lt;style&gt;&lt;/style&gt;</code>."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
@@ -7842,11 +7872,11 @@ msgstr "Grafik distribusi seseorang"
 
 #: resources/views/admin/tags.phtml:1015
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Fakta dan peristiwa perseorangan"
 
 #: resources/views/admin/control-panel.phtml:701
 msgid "Individual page"
-msgstr ""
+msgstr "Halaman perseorangan"
 
 #: resources/views/admin/trees-preferences.phtml:418
 msgid "Individual pages"
@@ -7932,7 +7962,7 @@ msgstr "Pelapor"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Rekaman sebaris tidak disarankan."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:177 app/Module/ChartsBlockModule.php:260
@@ -7950,7 +7980,7 @@ msgstr "Silsilah Interaktif Keluarga %s"
 
 #: app/CustomTags/BrothersKeeper.php:102
 msgid "Interment"
-msgstr ""
+msgstr "Pemakaman"
 
 #: app/Services/MessageService.php:231
 msgid "Internal messaging"
@@ -7958,7 +7988,7 @@ msgstr "Pesan internal"
 
 #: app/Services/MessageService.php:232
 msgid "Internal messaging with emails"
-msgstr "Pesan internal dengan email"
+msgstr "Pesan internal dengan surel"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:186
 msgid "Invalid GEDCOM file - no header record found."
@@ -7966,27 +7996,27 @@ msgstr "File GEDCOM tidak sesuai - tidak ditemukan judul rekaman."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Berkas GEDCOM tidak sah - tidak ada rekaman cuplikan yang ditemukan."
 
 #: app/Http/RequestHandlers/CheckTree.php:198
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Nomor peringkat GEDCOM tidak sah."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Rekaman GEDCOM tidak sah"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Rekaman GEDCOM tidak sah."
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Penanda GEDCOM tidak sah."
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Nilai GEDCOM tidak sah."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8024,6 +8054,8 @@ msgstr "Diperlukan beberapa menit untuk mengunduh dan memasang peningkatan. Saba
 #: resources/views/admin/tags.phtml:1008
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
+"Tidak disarankan menggunakan penanda GEDCOM khusus. Data ini bisa hilang "
+"saat anda mentransfernya ke aplikasi lain."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8364,11 +8396,11 @@ msgstr "Pengukuhan Anak LDS"
 
 #: resources/views/admin/tags.phtml:723
 msgid "LDS church"
-msgstr ""
+msgstr "Gereja LDS"
 
 #: app/Gedcom.php:627
 msgid "LDS confirmation"
-msgstr "Konfirmasi LDS"
+msgstr "Penegasan LDS"
 
 #: app/Gedcom.php:647
 msgid "LDS endowment"
@@ -8377,7 +8409,7 @@ msgstr "Gereja LDS"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:126
 msgid "LDS initiatory"
-msgstr ""
+msgstr "Peresmian LDS"
 
 #: app/Gedcom.php:479
 msgid "LDS spouse sealing"
@@ -8386,15 +8418,15 @@ msgstr "Pengukuhan Pasangan LDS"
 #: app/CustomTags/FamilyTreeMaker.php:74 app/CustomTags/FamilyTreeMaker.php:88
 #: app/CustomTags/FamilyTreeMaker.php:92 app/CustomTags/FamilyTreeMaker.php:107
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr ""
+msgstr "Label untuk suami"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr ""
+msgstr "Label untuk istri"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8404,12 +8436,12 @@ msgstr "Laie, Hawaii, Amerika"
 #. I18N: GEDCOM tag _PURC
 #: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
-msgstr ""
+msgstr "Pembelian tanah"
 
 #. I18N: GEDCOM tag _SALE
 #: app/CustomTags/Reunion.php:60
 msgid "Land sale"
-msgstr ""
+msgstr "Penjualan tanah"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:101
@@ -8482,7 +8514,7 @@ msgstr "Perubahan terakhir"
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
-msgstr "Pengingat email terakhir telah terkirim "
+msgstr "Surel pengingat terakhir telah terkirim "
 
 #: resources/views/modules/statistics-chart/other-events.phtml:29
 msgid "Last event"
@@ -8555,7 +8587,7 @@ msgstr "Biarkan entri ini kosong untuk menjaga nama file asli"
 #: resources/views/lists/families-table.phtml:114
 #: resources/views/lists/individuals-table.phtml:156
 msgid "Leaves"
-msgstr "Ranting"
+msgstr "Pasangan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:292
@@ -8565,7 +8597,7 @@ msgstr "Libanon"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:125
 msgid "Legacy URLs"
-msgstr ""
+msgstr "URL lama"
 
 #: app/CustomTags/Reunion.php:57
 msgid "Legatee"
@@ -8573,7 +8605,7 @@ msgstr "Waris"
 
 #: app/CustomTags/Aldfaer.php:72
 msgid "Length"
-msgstr ""
+msgstr "Panjang"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -8635,11 +8667,11 @@ msgstr "Gangsal, Feru"
 
 #: resources/views/admin/gedcom-export-options.phtml:89
 msgid "Line endings"
-msgstr ""
+msgstr "Akhir baris"
 
 #: app/Http/RequestHandlers/CheckTree.php:420
 msgid "Line number"
-msgstr ""
+msgstr "Nomor baris"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:800
@@ -8741,7 +8773,7 @@ msgstr "Lokasi"
 #: resources/views/search-general-page.phtml:115
 #: resources/views/search-results.phtml:94
 msgid "Locations"
-msgstr ""
+msgstr "Lokasi"
 
 #: app/Elements/RelationIsDescriptor.php:115
 msgid "Lodger"
@@ -8836,11 +8868,11 @@ msgstr "Majalah"
 #: app/CustomTags/GedcomL.php:116 app/CustomTags/GedcomL.php:170
 #: app/CustomTags/GedcomL.php:213 app/CustomTags/GedcomL.php:298
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "Kode lokasi masa gadis"
 
 #: app/Services/MessageService.php:234
 msgid "Mailto link"
-msgstr "Email ke tautan"
+msgstr "Tautan surel"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:353
@@ -8948,6 +8980,8 @@ msgstr "Manuskrip"
 #: resources/views/admin/tags.phtml:1006
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
 msgstr ""
+"Banyak aplikasi silsilah menentukan penanda GEDCOM khusus mereka sendiri dan "
+"webtrees akan dapat menampilkan sebagian besar darinya."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
@@ -8963,24 +8997,24 @@ msgstr "Peta"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "Tautan peta"
 
 #. I18N: Links to maps
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:643
 msgid "Map links"
-msgstr ""
+msgstr "Tautan peta"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: app/Services/LeafletJsService.php:69
 #: resources/views/admin/control-panel.phtml:650
 msgid "Map providers"
-msgstr ""
+msgstr "Penyedia peta"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:83
 msgid "Mapbox"
-msgstr ""
+msgstr "MAPBOX"
 
 #: app/Date/AbstractGregorianJulianDate.php:233
 msgctxt "Abbreviation for March"
@@ -9266,7 +9300,7 @@ msgstr "Cocokkan teks persisnya, kecuali jika itu terjadi di tengah-tengah kata.
 
 #: app/Module/MatomoAnalyticsModule.php:44
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Penganalisa Matomo™ / Piwik™"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -9781,16 +9815,18 @@ msgstr "Marga yang paling umum"
 
 #: resources/views/admin/site-mail.phtml:188
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Sebagian besar server surel memerlukan nama domain yang sah."
 
 #: resources/views/admin/site-mail.phtml:82
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "Sebagian besar server surel memerlukan nama surel yang sah."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:183
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
+"Sebagian besar server surel mengharuskan server pengirim mengidentifikasi "
+"dirinya dengan benar, menggunakan nama domain yang sah."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:169
@@ -9805,7 +9841,7 @@ msgstr "Sebagian besar situs dikonfigurasi untuk menggunakan localhost. Ini bera
 
 #: resources/views/setup/step-4-database-sqlsrv.phtml:66
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "Sebagian besar situs terkonfigurasi untuk menggunakan nilai dasar 1433."
 
 #: resources/views/setup/step-4-database-mysql.phtml:76
 msgid "Most sites are configured to use the default value of 3306."
@@ -9813,7 +9849,7 @@ msgstr "Sebagian besar situs dikonfigurasikan untuk menggunakan nilai default 33
 
 #: resources/views/setup/step-4-database-pgsql.phtml:66
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "Sebagian besar situs terkonfigurasi untuk menggunakan nilai dasar 5432."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:52
@@ -9903,7 +9939,7 @@ msgstr "Muharam"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Kelahiran kembar"
 
 #: resources/views/lists/families-table.phtml:141
 msgid "Multiple marriages"
@@ -9987,7 +10023,7 @@ msgstr "Nama yahudi"
 #: app/CustomTags/GedcomL.php:216 app/CustomTags/Legacy.php:116
 #: app/CustomTags/PersonalAncestralFile.php:73
 msgid "Name of addressee"
-msgstr ""
+msgstr "Nama penerima"
 
 #: app/Gedcom.php:688 app/Gedcom.php:696 app/Gedcom.php:702
 msgid "Name prefix"
@@ -10078,7 +10114,7 @@ msgstr "Kaledonia baru"
 #: app/CustomTags/GedcomL.php:157 app/CustomTags/GedcomL.php:158
 #: app/CustomTags/GedcomL.php:159
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "Penenda GEDCOM baru"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146
@@ -10124,7 +10160,7 @@ msgstr "Koran"
 
 #: app/Module/ReviewChangesModule.php:164
 msgid "Next email reminder will be sent after "
-msgstr "Pengingat email berikutnya akan dikirim setelah "
+msgstr "Surel pengingat berikutnya akan dikirim setelah "
 
 #: resources/views/modules/random_media/slide-show.phtml:40
 #: resources/views/modules/random_media/slide-show.phtml:42
@@ -10264,7 +10300,7 @@ msgstr "Tidak ada peristiwa orang-hidup untuk besok."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
+msgstr[0] "Tiada peristiwa untuk orang hidup selama %s hari ke depan."
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
@@ -10273,13 +10309,13 @@ msgstr "Tidak ada fakta untuk keluarga ini."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Tiada berkas yang diterima."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
 #: app/Exceptions/FileUploadException.php:73
 msgid "No file was received. Please try again."
-msgstr "Tidak ada berkas yang diterima. silakan unggah lagi."
+msgstr "Tidak ada berkas yang diterima. silahkan unggah lagi."
 
 #: app/Module/RelationshipsChartModule.php:401
 msgid "No link between the two individuals could be found."
@@ -10323,7 +10359,7 @@ msgstr "Tidak ada pengguna situs yang masuk dan tidak ada anonim"
 #: resources/views/lists/surnames-compact-list.phtml:21
 #: resources/views/lists/surnames-table.phtml:64
 msgid "No surname"
-msgstr ""
+msgstr "Tanpa nama keluarga"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10343,7 +10379,7 @@ msgstr "Nokturnal"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "NOMINATIM"
 
 #: resources/views/admin/gedcom-export-options.phtml:104
 #: resources/xml/reports/cemetery_report.xml:7
@@ -10374,7 +10410,7 @@ msgstr "Korea Utara"
 
 #: resources/views/modules/statistics-chart/custom.phtml:185
 msgid "Northern America"
-msgstr ""
+msgstr "Amerika Utara"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
@@ -10409,11 +10445,11 @@ msgstr "Tidak Menikah"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:104
 msgid "Not recorded"
-msgstr ""
+msgstr "Tidak terekam"
 
 #: resources/views/admin/control-panel.phtml:485
 msgid "Not verified by the user"
-msgstr "Tidak diverifikasi oleh pengguna"
+msgstr "Tidak diperiksa oleh pengguna"
 
 #: app/CustomTags/Ancestry.php:62 app/CustomTags/Ancestry.php:65
 #: app/CustomTags/GedcomL.php:140 app/CustomTags/GedcomL.php:196
@@ -10441,33 +10477,33 @@ msgstr "Catatan"
 #: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
 #: app/Gedcom.php:901 app/Gedcom.php:915
 msgid "Note on association"
-msgstr ""
+msgstr "Catatan asosiasi"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:450 app/Gedcom.php:617
 #: app/Gedcom.php:764 app/Gedcom.php:785 app/Gedcom.php:816 app/Gedcom.php:832
 #: app/Gedcom.php:863 app/Gedcom.php:879
 msgid "Note on last change"
-msgstr ""
+msgstr "Catatan perubahan terakhir"
 
 #: app/Gedcom.php:687
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Catatan nama fonetik"
 
 #: app/CustomTags/GedcomL.php:248 app/Gedcom.php:426 app/Gedcom.php:558
 msgid "Note on place"
-msgstr ""
+msgstr "Catatan tempat"
 
 #: app/Gedcom.php:847
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Catatan referensi repositori"
 
 #: app/Gedcom.php:701
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Catatan nama romanisasi"
 
 #: app/Gedcom.php:839
 msgid "Note on source"
-msgstr ""
+msgstr "Catatan sumber"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
@@ -10475,11 +10511,11 @@ msgstr ""
 #: app/Gedcom.php:752 app/Gedcom.php:776 app/Gedcom.php:800 app/Gedcom.php:909
 #: app/Gedcom.php:923
 msgid "Note on source citation"
-msgstr ""
+msgstr "Catatan kutipan sumber"
 
 #: app/Gedcom.php:838
 msgid "Note on source data"
-msgstr ""
+msgstr "Catatan sumber data"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10513,7 +10549,7 @@ msgstr "Tidak ditemukan."
 #: resources/views/modules/pedigree-map/chart.phtml:68
 #: resources/views/modules/places/tab.phtml:69
 msgid "Nothing to show"
-msgstr ""
+msgstr "Tidak ada yang bisa ditampilkan"
 
 #: app/Date/AbstractGregorianJulianDate.php:241
 msgctxt "Abbreviation for November"
@@ -10668,7 +10704,7 @@ msgstr "Oden, Muntah, Amerika"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:151
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Kota Oklahoma, Oklahoma, Amerika"
+msgstr "Kota Oklahoma, Oklahoma, Amerika Serikat"
 
 #: resources/views/admin/changes-log.phtml:71
 msgid "Old data"
@@ -10742,7 +10778,7 @@ msgstr "Waduh! situs tidak dapat membuat file di folder ini."
 #: app/Module/MapGeoLocationOpenRouteService.php:45
 #: app/Module/OpenRouteServiceAutocomplete.php:82
 msgid "OpenRouteService"
-msgstr ""
+msgstr "Layanan OpenRoute"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:51
 msgid "OpenStreetMap™"
@@ -10793,7 +10829,7 @@ msgstr "Ordinasi"
 #. I18N: Ordnance Survey is the UK government mapping service.
 #: app/Module/OrdnanceSurveyHistoricMaps.php:39
 msgid "Ordnance Survey historic maps"
-msgstr ""
+msgstr "Peta bersejarah Surve Ordnance"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -10802,12 +10838,12 @@ msgstr "Orientasi"
 
 #: app/CustomTags/Ancestry.php:70
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/CustomTags/Ancestry.php:75
 msgid "Original text"
-msgstr ""
+msgstr "Tulisan asli"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -10954,7 +10990,7 @@ msgstr "Paraguai"
 
 #: app/CustomTags/GedcomL.php:293
 msgid "Parent location"
-msgstr ""
+msgstr "Lokasi orang tua"
 
 #: app/Gedcom.php:741 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:72
@@ -11059,7 +11095,7 @@ msgstr "Hapus catatan ini secara permanen?"
 
 #: resources/views/modules/privacy-policy/page.phtml:20
 msgid "Personal data"
-msgstr ""
+msgstr "Data perseorangan"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:159
@@ -11108,7 +11144,7 @@ msgstr "Pencarian Fonetik"
 
 #: app/Gedcom.php:693
 msgid "Phonetic type"
-msgstr ""
+msgstr "Jenis Fonetik"
 
 #. I18N: Type of media object
 #: app/CustomTags/FamilyTreeBuilder.php:62 app/Elements/SourceMediaType.php:94
@@ -11117,7 +11153,7 @@ msgstr "Foto"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Foto"
 
 #: app/CustomTags/Gedcom7.php:75 app/CustomTags/Gedcom7.php:77
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:87
@@ -11126,7 +11162,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:113 app/CustomTags/Gedcom7.php:114
 #: app/CustomTags/Gedcom7.php:116 app/CustomTags/Gedcom7.php:118
 msgid "Phrase"
-msgstr ""
+msgstr "Ungkapan"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:174
@@ -11186,10 +11222,16 @@ msgstr "Nama tempat sering terlalu panjang untuk dimasukkan dalam bagan, daftar,
 #: resources/views/help/place.phtml:14
 msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
+"Nama tempat dapat diubah setiap saat. Dalam silsilah, biasanya menggunakan "
+"nama kota atau negara saat ini. Nama bersejarah dapat ditampilkan di sumber, "
+"catatan, dll."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
 msgstr ""
+"Nama tempat harus dimasukkan sebagai daftar yang dipisahkan koma, dimulai "
+"dengan tempat terkecil dan diakhiri dengan negara. Misalnya, \"Desa, Kota, "
+"Negara\"."
 
 #: app/Gedcom.php:587
 msgid "Place of LDS baptism"
@@ -11201,7 +11243,7 @@ msgstr "Tempat penyegelan anak LDS"
 
 #: app/Gedcom.php:629
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "Penegasan tempat LDS"
 
 #: app/Gedcom.php:649
 msgid "Place of LDS endowment"
@@ -11251,7 +11293,7 @@ msgstr "Tempat pembaptisan"
 
 #: app/Gedcom.php:626 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
-msgstr "Tempat konfirmasi"
+msgstr "Tempat penegasan"
 
 #: app/Gedcom.php:635
 msgid "Place of cremation"
@@ -11319,14 +11361,14 @@ msgstr "Mainkan"
 
 #: app/Http/RequestHandlers/ContactAction.php:119
 msgid "Please enter a valid email address."
-msgstr "Silakan masukkan alamat email yang benar."
+msgstr "Silahkan masukkan alamat surel yang benar."
 
 #: app/Http/RequestHandlers/ContactAction.php:114
 #: app/Http/RequestHandlers/PasswordResetAction.php:82
 #: app/Http/RequestHandlers/PasswordResetPage.php:77
 #: app/Http/RequestHandlers/RegisterAction.php:104
 msgid "Please try again."
-msgstr ""
+msgstr "Silahkan coba lagi."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -11408,7 +11450,7 @@ msgstr "Kode Pos"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Didukung oleh webtrees™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:165
@@ -11486,7 +11528,7 @@ msgstr "Preston, Inggris"
 #: app/Http/RequestHandlers/DataFixPreview.php:81
 #: resources/views/admin/analytics-edit.phtml:28
 msgid "Preview"
-msgstr ""
+msgstr "Pratinjau"
 
 #: app/Elements/RelationIsDescriptor.php:121
 msgid "Priest"
@@ -11504,7 +11546,7 @@ msgstr "Cetak acara dasar ketika kosong"
 #: app/CustomTags/GedcomL.php:146 app/CustomTags/GedcomL.php:202
 #: app/CustomTags/Legacy.php:137
 msgid "Priority"
-msgstr ""
+msgstr "Prioritas"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:110
@@ -11536,7 +11578,7 @@ msgstr "Pribadi"
 
 #: resources/views/admin/site-mail.phtml:219
 msgid "Private key"
-msgstr ""
+msgstr "Kunci pribadi"
 
 #: app/Gedcom.php:725
 msgid "Probate"
@@ -11559,7 +11601,7 @@ msgstr "Provor, Utah, Amerika"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:120
 msgid "Proxy"
-msgstr ""
+msgstr "Wakil"
 
 #: app/Gedcom.php:841 resources/views/lists/sources-table.phtml:103
 #: resources/views/modals/source-fields.phtml:38
@@ -11674,19 +11716,19 @@ msgstr "Rabiul Tsani"
 #: app/Elements/PedigreeLinkageType.php:86
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Putri sepersusuan"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Putra sepersusuan"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:96
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Sepersusuan"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:154
@@ -11751,7 +11793,7 @@ msgstr "Gambar acak dari silsilah keluarga."
 #: resources/views/family-page-menu.phtml:60
 #: resources/views/modules/relatives/family.phtml:234
 msgid "Re-order children"
-msgstr "susun anak"
+msgstr "Susun anak"
 
 #: app/Http/RequestHandlers/ReorderFamiliesPage.php:49
 #: resources/views/individual-page-menu.phtml:83
@@ -11771,7 +11813,7 @@ msgstr "Susun media"
 
 #: resources/views/media-page-menu.phtml:40
 msgid "Re-order media files"
-msgstr ""
+msgstr "Susun ulang berkas media"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:51
@@ -11836,7 +11878,7 @@ msgstr "Rekaman"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Mengarahkan URL lama dari webtrees versi 1."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169
@@ -11970,16 +12012,16 @@ msgstr "Pernikahan Agama"
 
 #: app/Services/LeafletJsService.php:80
 msgid "Reload map"
-msgstr ""
+msgstr "Muat ulang peta"
 
 #: app/CustomTags/GedcomL.php:147 app/CustomTags/GedcomL.php:203
 #: app/CustomTags/Legacy.php:141
 msgid "Reminder date"
-msgstr ""
+msgstr "Tanggal pengingat"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
-msgstr "Frekuensi email pengingat (hari)"
+msgstr "Seringnya surel pengingat (hari)"
 
 #: app/CustomTags/PhpGedView.php:77
 msgid "Remote server"
@@ -12022,16 +12064,16 @@ msgstr "Reno, Nepada, Amerika"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Penomoran XREFs"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
-msgstr ""
+msgstr "Ganti"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:71
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Ganti penanda pemakaman dengan tempat pemakaman."
 
 #: resources/views/search-replace-page.phtml:35
 msgid "Replace with"
@@ -12056,7 +12098,7 @@ msgstr "Laporkan"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
 msgid "Report phrase"
-msgstr ""
+msgstr "Laporan ungkapan"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12119,7 +12161,7 @@ msgstr "Daftar Baru"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Penelitian"
 
 #: app/CustomTags/BrothersKeeper.php:69 app/CustomTags/BrothersKeeper.php:109
 #: app/CustomTags/GedcomL.php:136 app/CustomTags/GedcomL.php:192
@@ -12209,7 +12251,7 @@ msgstr "Latinisasi"
 
 #: app/Gedcom.php:698
 msgid "Romanized name"
-msgstr ""
+msgstr "Nama Roman"
 
 #: app/CustomTags/GedcomL.php:249 app/Gedcom.php:427 app/Gedcom.php:559
 msgid "Romanized place"
@@ -12217,7 +12259,7 @@ msgstr "Tempat di roma"
 
 #: app/Gedcom.php:707
 msgid "Romanized type"
-msgstr ""
+msgstr "Jenis Roman"
 
 #: resources/views/lists/families-table.phtml:109
 #: resources/views/lists/individuals-table.phtml:151
@@ -12226,7 +12268,7 @@ msgstr "Akar"
 
 #: app/CustomTags/GedcomL.php:189
 msgid "Rufname"
-msgstr ""
+msgstr "Panggilan"
 
 #. I18N: https://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:606 resources/views/branches-page.phtml:41
@@ -12246,26 +12288,28 @@ msgstr "Ruanda"
 
 #: resources/views/admin/site-mail.phtml:88
 msgid "SMTP mail server"
-msgstr "Server email SMTP"
+msgstr "Server surel SMTP"
 
 #: app/Services/ServerCheckService.php:323
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite hanya cocok untuk situs kecil, pengujian dan evaluasi."
 
 #: app/Services/ServerCheckService.php:213
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr ""
+"Yang terpasang SQLite versi %s . Diperlukan SQLite versi %s atau yang "
+"terbaru."
 
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:211
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12402,7 +12446,7 @@ msgstr "Arab Saudi"
 
 #: app/CustomTags/FamilyTreeMaker.php:72 app/CustomTags/GedcomL.php:153
 msgid "Schema"
-msgstr ""
+msgstr "Skema"
 
 #: app/Gedcom.php:643 app/Gedcom.php:667
 msgid "School or college"
@@ -12472,6 +12516,7 @@ msgstr "Cari dan ganti teks, menggunakan pencarian sederhana atau pencocokan pol
 #: resources/views/admin/trees-preferences.phtml:229
 msgid "Search engines may use this description of your site in their search results."
 msgstr ""
+"Mesin pencari menggunakan penjelasan situs ini dalam hasil pencarian mereka."
 
 #: resources/views/modules/media-list/page.phtml:73
 msgid "Search filters"
@@ -12484,17 +12529,17 @@ msgstr "Cari untuk"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "Mencari lokasi di basisdata eksternal."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "Mencari nama tempat di basisdata eksternal."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:57
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Mencari nama tempat dengan %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12573,7 +12618,7 @@ msgstr "Pilih dua rekaman untuk digabungkan."
 
 #: resources/views/admin/site-mail.phtml:210
 msgid "Selector"
-msgstr ""
+msgstr "Pemilih"
 
 #: app/Elements/RelationIsDescriptor.php:124
 msgid "Seller"
@@ -12618,21 +12663,21 @@ msgstr "Kirim pesan kepada para pengguna situs yang tidak masuk ke situs selama 
 
 #: resources/views/admin/site-mail.phtml:233
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Mengirim surel percobaan dengan setelan ini"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Mengirim surel ke semua pengelola ketika pembaruan tersedia."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:20
 msgid "Send out reminder emails"
-msgstr "Kirim email pengingat"
+msgstr "Kirim surel pengingat"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:71
 msgid "Sender email"
-msgstr ""
+msgstr "Pengirim surel"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
@@ -12642,7 +12687,7 @@ msgstr "Nama pengirim"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:67
 #: resources/views/admin/control-panel.phtml:225
 msgid "Sending email"
-msgstr "Mengirim Pesan"
+msgstr "Mengirim surel"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:177
@@ -12670,7 +12715,7 @@ msgstr "Terpisah"
 
 #: app/CustomTags/FamilyTreeMaker.php:71
 msgid "Separation"
-msgstr ""
+msgstr "Pemisahan"
 
 #: app/Date/AbstractGregorianJulianDate.php:136
 msgctxt "GENITIVE"
@@ -12733,7 +12778,7 @@ msgstr "Nama server"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Tetapkan kata sandi baru"
 
 #: resources/views/admin/trees.phtml:132 resources/views/admin/trees.phtml:138
 msgid "Set as default"
@@ -12818,15 +12863,15 @@ msgstr "Sahrivar"
 #: resources/views/individual-page-menu.phtml:37
 #: resources/views/individual-page.phtml:68
 msgid "Share"
-msgstr ""
+msgstr "Berbagi"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Bagikan URL"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Bagikan peringatan suatu acara"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:99
 #: app/CustomTags/Gedcom7.php:111 app/CustomTags/Gedcom7.php:133
@@ -12851,7 +12896,7 @@ msgstr "Catatan umum"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:729
 msgid "Shares"
-msgstr ""
+msgstr "Berbagi"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
@@ -12984,7 +13029,7 @@ msgstr "Tampilkan tautan unduhan di penampil media"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:76
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Tampilkan kebijakan privasi."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:66
@@ -12993,7 +13038,7 @@ msgstr "Tampilkan persetujuan penggunaan yang dapat diterima di halaman \"Daftar
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
-msgstr ""
+msgstr "Tampilkan semua media"
 
 #: resources/views/modules/notes/tab.phtml:30
 msgid "Show all notes"
@@ -13144,7 +13189,7 @@ msgstr "Perlihatkan orangtua"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Show password"
-msgstr ""
+msgstr "Tampilkan kata sandi"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13213,7 +13258,7 @@ msgstr "Tunjukkan tempat kelahiran leluhur di peta."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:69
 msgid "Show the date and time"
-msgstr ""
+msgstr "Tunjukkan tanggal dan waktu"
 
 #: resources/views/modules/html/config.phtml:53
 msgid "Show the date and time of update"
@@ -13239,7 +13284,7 @@ msgstr "Tampilkan daftar nama keluarga"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Menampilkan lokasi peristiwa di peta eksternal."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
@@ -13290,7 +13335,9 @@ msgstr "Tunjukkan kepada pengunjung"
 #: resources/views/lists/families-table.phtml:113
 #: resources/views/lists/individuals-table.phtml:155
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Perlihatkan pasangan atau seseorang «ranting». mereka adalah orang yang hidup, namun tidak mempunyai anak yang terekam dalam basis data silsilah kami."
+msgstr ""
+"Perlihatkan pasangan atau seseorang. Adalah orang yang hidup, namun tidak "
+"mempunyai anak yang terekam dalam basis data kami."
 
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/individuals-table.phtml:150
@@ -13348,7 +13395,7 @@ msgstr "Masuk & Pendaftaran"
 
 #: app/CustomTags/Heredis.php:52
 msgid "Signature"
-msgstr ""
+msgstr "Tanda tangan"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13382,12 +13429,13 @@ msgstr "Anggota situs dapat saling mengirim pesan lain. Anda dapat memilih bagai
 #: resources/views/modules/bing-webmaster-tools/form.phtml:11
 #: resources/views/modules/google-webmaster-tools/form.phtml:11
 msgid "Site verification code"
-msgstr "Kode verifikasi situs"
+msgstr "Kode pemeriksaan situs"
 
 #: resources/views/modules/bing-webmaster-tools/form.phtml:20
 #: resources/views/modules/google-webmaster-tools/form.phtml:20
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "Kode verifikasi situs tidak berfungsi saat situs dipasang di subfolder."
+msgstr ""
+"Kode pemeriksaan situs tidak berfungsi saat situs dipasang di subfolder."
 
 #. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:156
@@ -13490,10 +13538,15 @@ msgstr "Beberapa perangkat lunak genealogi menciptakan file GEDCOM yang berisi n
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"Beberapa perangkat lunak silsilah menyimpan semua nama dalam nama rekaman "
+"tunggal, menggunakan penanda khusus seperti _MARNM dan _AKA. Alternatifnya "
+"adalah membuat rekaman nama baru untuk setiap nama."
 
 #: resources/views/admin/tags.phtml:36
 msgid "Some of these GEDCOM tags are used infrequently or never used."
 msgstr ""
+"Beberapa dari penanda GEDCOM ini jarang digunakan atau tidak pernah "
+"digunakan."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:631
@@ -13521,7 +13574,7 @@ msgstr "Putra dari %s"
 #: app/CustomTags/Gedcom7.php:81 app/CustomTags/Gedcom7.php:108
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "Urutkan tanggal"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13544,7 +13597,7 @@ msgstr "Urutan sortir"
 
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:110
 msgid "Sort time"
-msgstr ""
+msgstr "Urutkan waktu"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13553,7 +13606,7 @@ msgstr "Sosis"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:20
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Nomor Sosa-Stradonitz"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:256
 msgid "Sounds like"
@@ -13603,11 +13656,11 @@ msgstr "Sumber"
 #: app/Gedcom.php:746 app/Gedcom.php:770 app/Gedcom.php:794 app/Gedcom.php:903
 #: app/Gedcom.php:917
 msgid "Source citation"
-msgstr ""
+msgstr "Sumber kutipan"
 
 #: resources/views/admin/tags.phtml:325
 msgid "Source citations"
-msgstr ""
+msgstr "Sumber Kutipan"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -13727,7 +13780,7 @@ msgstr "Santo paul, Minesota, Amerika"
 
 #: resources/views/admin/tags.phtml:31
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Penanda GEDCOM dasar"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -13743,7 +13796,7 @@ msgstr "Mulai rentang tanggal perubahan"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #: app/CustomTags/GedcomL.php:232 app/CustomTags/PersonalAncestralFile.php:72
 #: app/Gedcom.php:408 app/Gedcom.php:521 app/Gedcom.php:541 app/Gedcom.php:812
@@ -13843,7 +13896,7 @@ msgstr "Pengirim"
 
 #: resources/views/lists/submitters-table.phtml:71
 msgid "Submitter name"
-msgstr ""
+msgstr "Nama pengirim"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:116 app/Module/SubmitterListModule.php:67
@@ -13854,7 +13907,7 @@ msgstr ""
 #: resources/views/lists/submitters-table.phtml:66
 #: resources/views/record-page-links.phtml:96
 msgid "Submitters"
-msgstr ""
+msgstr "Pengirim"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13879,11 +13932,11 @@ msgstr "Dukungan dan dokumentasi dapat ditemukan di %s."
 
 #: app/Services/ServerCheckService.php:328
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Dukungan untuk PostgreSQL masih percobaan."
 
 #: app/Services/ServerCheckService.php:333
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Dukungan untuk SQL Server masih percobaan."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14010,7 +14063,7 @@ msgstr "Panel prefik"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Koran"
 
 #: app/Http/RequestHandlers/ModulesTabsPage.php:43
 #: resources/views/admin/control-panel.phtml:708
@@ -14085,7 +14138,7 @@ msgstr "Tegal, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Model"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14134,7 +14187,7 @@ msgstr "Teks"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "Arah tulisan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -14157,6 +14210,8 @@ msgstr "File GEDCOM \"%s\" telah diimpor."
 #: resources/views/admin/tags.phtml:34
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
 msgstr ""
+"GEDCOM secara baku menyediakan sejumlah besar bidang entri data, yang "
+"disebut tags (penanda)."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14166,12 +14221,12 @@ msgstr "Sihagu, Belanda"
 #: app/Services/ServerCheckService.php:124
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "Ektensi PHP “%s” tidak terpasang."
 
 #: app/Services/ServerCheckService.php:180
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "Fungsi PHP “%1$s” dilumpuhkan."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:78
@@ -14181,16 +14236,16 @@ msgstr "Kehilangan direktori sementara PHP."
 #: app/Services/ServerCheckService.php:143
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "Pengaturan PHP.INI “%1$s” dilumpuhkan."
 
 #: app/Services/ServerCheckService.php:147
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "Pengaturan PHP.INI “%1$s” dimungkinkan."
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "URL telah disalin ke papan klip"
 
 #: resources/views/emails/approve-user-html.phtml:22
 #: resources/views/emails/approve-user-text.phtml:16
@@ -14205,7 +14260,7 @@ msgstr "Pengurus telah di beri tahu. setelah ia memberi anda izin untuk masuk, a
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
 msgid "The calendar menu."
-msgstr ""
+msgstr "Menu kalender."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
@@ -14224,7 +14279,7 @@ msgstr "Perubahan ke \"%s\" telah ditolak."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:70
 msgid "The charts menu."
-msgstr ""
+msgstr "Menu bagan."
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -14277,7 +14332,7 @@ msgstr "Silsilah keluarga telah berhasil digabung."
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:70
 msgid "The family trees menu."
-msgstr ""
+msgstr "Menu silsilah keluarga."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:84
@@ -14314,7 +14369,7 @@ msgstr "File %s telah berhasil diupload."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:68
 msgid "The file was only partially uploaded. Please try again."
-msgstr "File hanya diunggah sebagian. silakan coba lagi."
+msgstr "Berkas hanya diunggah sebagian. Silahkan coba lagi."
 
 #. I18N: %s is a filename
 #: resources/views/media-page-details.phtml:58
@@ -14326,6 +14381,8 @@ msgstr "File \"%s\" tidak ada."
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
+"Keluarga pertama dalam daftar akan digunakan dalam bagan, daftar, laporan, "
+"dll."
 
 #: app/Http/RequestHandlers/DeletePath.php:84
 #, php-format
@@ -14349,7 +14406,7 @@ msgstr "Folder dapat ditentukan secara lengkap (mis. / Home / user_name / webtre
 #: app/Http/RequestHandlers/SitePreferencesAction.php:58
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Folder “%s” tidak ada."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
@@ -14369,6 +14426,8 @@ msgstr "Daftar berikut menunjukkan persyaratan umum."
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"Data formulir tidak lengkap. Mungkin anda perlu meningkatkan “max_input_vars”"
+" di server anda?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -14399,16 +14458,16 @@ msgstr "Tautan dari “%1$s” ke “%2$s” telah diperbarui."
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:66
 msgid "The lists menu."
-msgstr ""
+msgstr "Menu daftar."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:55
 #: app/Http/RequestHandlers/MapDataSave.php:90
 msgid "The location has been created"
-msgstr ""
+msgstr "Lokasi telah dibuat"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:36
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Lokasi tempat ini tidak diketahui."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:135
 #, php-format
@@ -14431,7 +14490,7 @@ msgstr "Persyaratan waktu memori dan CPU tergantung pada jumlah orang di silsila
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Pesan tidak tersampaikan ke %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:102
@@ -14473,11 +14532,15 @@ msgstr "Fakta dan peristiwa seseorang paling umum tercantum secara terpisah, seh
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "Pengguna baru akan diminta untuk mengkonfirmasi alamat email mereka sebelum akun dibuat."
+msgstr ""
+"Pengguna baru akan diminta untuk memastikan alamat surel-nya sebelum akun "
+"dibuat."
 
 #: resources/views/admin/tags.phtml:938
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Versi standar GEDCOM berikutnya akan menambahkan penanda baru dan menghapus "
+"yang lama. Anda dapat menggunakan beberapa penanda baru sekarang."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:65
 msgid "The note has been created"
@@ -14488,7 +14551,7 @@ msgstr "Catatan telah dibuat"
 #: app/Validator.php:379 app/Validator.php:395
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Parameter “%s” hilang."
 
 #: app/Http/RequestHandlers/SetupWizard.php:381
 msgid "The password needs to be at least six characters long."
@@ -14502,12 +14565,12 @@ msgstr "Kata sandi diperlukan untuk otentikasi dengan server SMTP."
 #: app/Http/RequestHandlers/PasswordResetAction.php:81
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Tautan pengaturan ulang kata sandi telah kedaluwarsa."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:114
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Hirarki tempat."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:167
 #: app/Http/RequestHandlers/TreePrivacyAction.php:133
@@ -14547,6 +14610,8 @@ msgstr "Preferensi untuk modul \"%s\" telah diperbarui."
 #: resources/views/setup/step-4-database-sqlsrv.phtml:111
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"Awalan bersifat opsional, tetapi disarankan. Dengan memberi awalan unik pada "
+"nama tabel, beberapa aplikasi berbeda dapat berbagi basisdata yang sama."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:174
 #, php-format
@@ -14556,7 +14621,7 @@ msgstr "Rekaman \"%1$s\" dan \"%2$s\" telah digabung."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "Menu laporan."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:79
 msgid "The repository has been created"
@@ -14565,11 +14630,11 @@ msgstr "Repositori telah dibuat"
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Menu pencarian."
 
 #: app/Services/SearchService.php:1181
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Pencarian menghasilkan terlalu banyak hasil."
 
 #: resources/views/setup/step-2-server-checks.phtml:57
 msgid "The server configuration is OK."
@@ -14577,11 +14642,11 @@ msgstr "Konfigurasi server OK."
 
 #: app/Http/Exceptions/HttpBadRequestException.php:35
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Server tidak dapat memahami permintaan ini."
 
 #: app/Services/ServerCheckService.php:245
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Folder sementara server tidak dapat diakses."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:551
 #: app/Services/UpgradeService.php:176 app/Services/UpgradeService.php:208
@@ -14596,7 +14661,7 @@ msgstr "Ukuran silsilah keluarga, peristiwa terawal dan terbaru, nama umum, dll.
 
 #: app/CustomTags/GedcomL.php:137 app/CustomTags/GedcomL.php:193
 msgid "The solution"
-msgstr ""
+msgstr "Solusinya"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:103
 msgid "The source has been created"
@@ -14604,7 +14669,7 @@ msgstr "Repositori telah dibuat"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:55
 msgid "The submission has been created"
-msgstr ""
+msgstr "Pengajuan telah dibuat"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:80
 msgid "The submitter has been created"
@@ -14645,7 +14710,9 @@ msgstr "Anggota %s telah dihapus."
 #: resources/views/emails/register-notify-html.phtml:41
 #: resources/views/emails/register-notify-text.phtml:32
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "Pengguna telah mengirim pesan dengan informasi yang diperlukan untuk mengkonfirmasi permintaan akses."
+msgstr ""
+"Pengguna telah mengirim surel dengan informasi yang diperlukan untuk "
+"memastikan permintaan akses."
 
 #: app/Http/RequestHandlers/LoginAction.php:117
 #: app/Http/RequestHandlers/LoginAction.php:122
@@ -14685,7 +14752,9 @@ msgstr "Preferensi situs telah diperbarui."
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "Pengembang situs akan sangat tertarik untuk belajar tentang kesalahan ini. jika anda menghubungi mereka, mereka akan membantu anda menyelesaikan masalah."
+msgstr ""
+"Pengembang situs akan sangat tertarik untuk belajar tentang kesalahan ini. "
+"Jika anda menghubunginya, mereka akan membantu anda menyelesaikan masalah."
 
 #: app/Module/ModuleThemeTrait.php:74 app/Module/ModuleThemeTrait.php:471
 #: resources/views/admin/modules.phtml:272
@@ -14781,7 +14850,7 @@ msgstr "Termidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:38
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Cookie ini “penting”, dan tidak memerlukan persetujuan."
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
@@ -14791,6 +14860,7 @@ msgstr "Kelompok dari orang ini tidak terkait dengan %s."
 #: resources/views/modules/privacy-policy/page.phtml:59
 msgid "These services may use cookies or other tracking technology."
 msgstr ""
+"Layanan ini mungkin menggunakan cookie atau teknologi pelacakan lainnya."
 
 #: app/Http/RequestHandlers/LoginAction.php:132
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14798,11 +14868,15 @@ msgstr "Akun ini belum disetujui. harap tunggu pengurus situs untuk menyetujuiny
 
 #: app/Http/RequestHandlers/LoginAction.php:127
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Akun ini belum diverifikasi. silakan periksa email anda untuk pesan verifikasi."
+msgstr ""
+"Akun ini belum diperiksa. Silahkan periksa surel anda untuk melihat pesannya."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang menunggu keputusan yang perlu ditinjau oleh moderator. ini juga menghasilkan email setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
+msgstr ""
+"Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang "
+"menunggu keputusan yang perlu ditinjau oleh moderator. Ini juga menghasilkan "
+"surel setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:87
@@ -14810,11 +14884,14 @@ msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan 
 #: resources/views/register-page.phtml:54
 #: resources/views/setup/step-5-administrator.phtml:97
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Alamat email ini akan digunakan untuk mengirim pengingat kata sandi, pemberitahuan situs, dan pesan dari anggota keluarga lain yang terdaftar di situs."
+msgstr ""
+"Alamat surel ini akan digunakan untuk mengirim pengingat kata sandi, "
+"pemberitahuan situs, dan pesan dari anggota keluarga lain yang terdaftar di "
+"situs."
 
 #: app/Elements/AbstractEventElement.php:67
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Peristiwa ini terjadi, tetapi detailnya tidak diketahui."
 
 #: app/Auth.php:228 app/Http/RequestHandlers/RedirectFamilyPhp.php:69
 msgid "This family does not exist or you do not have permission to view it."
@@ -14853,7 +14930,13 @@ msgstr "Silsilah keluarga ini tidak memiliki gambar untuk ditampilkan."
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:9
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Silsilah keluarga ini terakhir diperbarui pada #gedcomUpdated#. Ada #totalSurnames# nama keluarga di silsilah keluarga ini. Peristiwa yang tercatat terawal adalah #firstEventType# dari #firstEventName# pada #firstEventYear#. Peristiwa terbaru adalah #lastEventType# dari #lastEventName# pada #lastEventYear#.<br><br>Jika Anda memiliki komentar atau saran, silakan hubungi #contactWebmaster#."
+msgstr ""
+"Silsilah keluarga ini terakhir diperbarui pada #gedcomUpdated#. Ada "
+"#totalSurnames# nama keluarga di silsilah keluarga ini. Peristiwa yang "
+"tercatat terawal adalah #firstEventType# dari #firstEventName# pada "
+"#firstEventYear#. Peristiwa terbaru adalah #lastEventType# dari "
+"#lastEventName# pada #lastEventYear#.<br><br>Jika Anda memiliki komentar "
+"atau saran, silahkan hubungi #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:20
@@ -14863,7 +14946,7 @@ msgstr "Silsilah Keluarga ini terakhir diperbarui pada %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Nama berkas ini tidak cocok dengan format GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -14930,7 +15013,7 @@ msgstr "Orang ini akan dipilih secara otomatis saat melihat grafik dan laporan."
 #: resources/views/statistics/other/charts/pie.phtml:19
 #: resources/views/statistics/other/top10-list.phtml:25
 msgid "This information is not available."
-msgstr ""
+msgstr "Informasi ini tidak tersedia."
 
 #: app/Statistics/Repository/EventRepository.php:253
 #: app/Statistics/Repository/FamilyDatesRepository.php:107
@@ -14971,7 +15054,9 @@ msgstr "Ini adalah versi situs terbaru. tidak ada peningkatan versi."
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:99
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Ini adalah nama server SMTP. “Localhost” berarti bahwa layanan email berjalan pada komputer yang sama dengan server web Anda."
+msgstr ""
+"Ini adalah nama server SMTP. “localhost” berarti bahwa layanan email "
+"berjalan pada komputer yang sama dengan server web anda."
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:48
@@ -14983,11 +15068,13 @@ msgstr "Kolom ini di isi dengan nama asli anda, seperti yang ingin anda ditampil
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:122
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Tautan ini berlaku selama satu jam."
 
 #: resources/views/help/data-fixes.phtml:18
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
 msgstr ""
+"Daftar ini dibuat menggunakan pencarian sederhana (namun cepat), dan karena "
+"itu menyertakan catatan yang tidak akan diperbarui."
 
 #: app/Auth.php:349 app/Http/RequestHandlers/RedirectMediaViewerPhp.php:69
 msgid "This media object does not exist or you do not have permission to view it."
@@ -15028,7 +15115,9 @@ msgstr "Panjangnya harus setidaknya enam karakter. Ini adalah case-sensitive."
 #: resources/views/admin/site-mail.phtml:63
 #: resources/views/admin/site-mail.phtml:77
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Nama ini digunakan di bidang \"Dari\", saat mengirim pesan otomatis dari server ini."
+msgstr ""
+"Nama ini digunakan di bidang \"Dari\", saat mengirim surel otomatis dari "
+"server ini."
 
 #: app/Auth.php:378 app/Auth.php:407
 #: app/Http/RequestHandlers/RedirectNotePhp.php:69
@@ -15141,6 +15230,8 @@ msgstr "Repositori ini tidak ada atau Anda tidak memiliki izin untuk melihatnya.
 #: resources/views/modules/privacy-policy/page.phtml:27
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
 msgstr ""
+"Penelitian ini adalah “kepentingan yang sah” berdasarkan pasal 6(f) "
+"Peraturan Perlindungan Data Umum Uni Eropa."
 
 #: resources/views/admin/users-edit.phtml:263
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15194,7 +15285,7 @@ msgstr "Situs ini sedang dalam perbaikan. anda harus sabar dan <a href=\"index.p
 
 #: resources/views/modules/privacy-policy/page.phtml:72
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Situs web ini dioperasikan oleh orang-orang berikut."
 
 #: resources/views/layouts/error.phtml:19
 #: resources/views/layouts/error.phtml:36
@@ -15205,10 +15296,14 @@ msgstr "Situs ini sementara tidak tersedia untuk umum"
 #: resources/views/modules/privacy-policy/page.phtml:24
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr ""
+"Situs web ini memproses data pribadi untuk tujuan penelitian sejarah dan "
+"silsilah."
 
 #: resources/views/modules/privacy-policy/page.phtml:35
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
 msgstr ""
+"Situs web ini menggunakan cookie untuk mengaktifkan sesi login, dan untuk "
+"mengingat preferensi seperti bahasa yang Anda pilih."
 
 #: resources/views/modules/privacy-policy/footer.phtml:23
 msgid "This website uses cookies to learn about visitor behavior."
@@ -15217,6 +15312,8 @@ msgstr "Situs ini menggunakan pelacak untuk mempelajari perilaku pengunjung."
 #: resources/views/modules/privacy-policy/page.phtml:47
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
+"Situs web ini menggunakan layanan pihak ketiga untuk mempelajari perilaku "
+"pengunjung."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:30
@@ -15257,26 +15354,26 @@ msgstr "Waktu"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:119
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "Waktu kelahiran"
 
 #: resources/views/admin/tags.phtml:959
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Waktu kelahiran dan kematian"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:123
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr ""
+msgstr "Waktu kematian"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:449 app/Gedcom.php:616
 #: app/Gedcom.php:763 app/Gedcom.php:784 app/Gedcom.php:815 app/Gedcom.php:831
 #: app/Gedcom.php:862 app/Gedcom.php:878
 msgid "Time of last change"
-msgstr ""
+msgstr "Waktu perubahan terakhir"
 
 #: app/CustomTags/Gedcom7.php:129
 msgid "Time of status change"
-msgstr ""
+msgstr "Waktu perubahan status"
 
 #. I18N: A configuration setting
 #: app/CustomTags/MyHeritage.php:56
@@ -15376,13 +15473,13 @@ msgstr "Judul"
 #: resources/views/contact-page.phtml:33 resources/views/message-page.phtml:38
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Ke"
 
 #: resources/views/admin/changes-log.phtml:48
 #: resources/views/admin/site-logs.phtml:46
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "Ke"
 
 #: resources/views/modules/html/config.phtml:34
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15391,6 +15488,8 @@ msgstr "Untuk membantu anda memulai dengan blok ini, kami telah membuat beberapa
 #: resources/views/admin/tags.phtml:1010
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
+"Untuk membuat data baru menggunakan penanda khusus, anda harus "
+"mengaktifkannya."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15399,6 +15498,8 @@ msgstr "Untuk membuat tugas penelitian baru, Anda harus terlebih dahulu menambah
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"Untuk menampilkan peta, anda perlu mengaktifkan penyedia peta di panel "
+"kontrol."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:588
@@ -15413,7 +15514,7 @@ msgstr "Untuk melindungi data pribadi ini, situs menggunakan file konfigurasi Ap
 #: resources/views/emails/password-request-html.phtml:20
 #: resources/views/emails/password-request-text.phtml:16
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Untuk mengatur kata sandi baru, ikuti tautan ini."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:43
@@ -15430,11 +15531,11 @@ msgstr "Untuk memberi tahu mesin telusur bahwa peta situs tersedia, Anda dapat m
 #: resources/views/modules/map-box/config.phtml:36
 #: resources/views/modules/openrouteservice/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Untuk menggunakan layanan ini, anda memerlukan kunci API."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Untuk menggunakan layanan ini, anda memerlukan sebuah akun."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15463,7 +15564,7 @@ msgstr "Tongoh"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Terlalu banyak permintaan. Coba lagi nanti."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:105
@@ -15631,7 +15732,7 @@ msgstr "Karavan"
 #: resources/views/emails/register-notify-html.phtml:36
 #: resources/views/emails/register-notify-text.phtml:30
 msgid "Tree"
-msgstr ""
+msgstr "Pohon"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:305
@@ -15719,15 +15820,15 @@ msgstr "Jenis"
 
 #: app/CustomTags/GedcomL.php:262
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Jenis singkatan"
 
 #: app/CustomTags/GedcomL.php:286
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Jenis ID administratif"
 
 #: app/CustomTags/GedcomL.php:290
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Jenis data demografis"
 
 #: app/CustomTags/GedcomL.php:255 app/Gedcom.php:459 app/Gedcom.php:656
 msgid "Type of event"
@@ -15739,28 +15840,28 @@ msgstr "Jenis fakta"
 
 #: app/Gedcom.php:669
 msgid "Type of identification number"
-msgstr ""
+msgstr "Jenis nomor pengenal"
 
 #: app/CustomTags/GedcomL.php:279
 msgid "Type of location"
-msgstr ""
+msgstr "Jenis lokasi"
 
 #: app/Gedcom.php:469
 msgid "Type of marriage"
-msgstr ""
+msgstr "Jenis pernikahan"
 
 #: app/Gedcom.php:710
 msgid "Type of name"
-msgstr ""
+msgstr "Jenis nama"
 
 #: app/Gedcom.php:475 app/Gedcom.php:728 app/Gedcom.php:768 app/Gedcom.php:792
 #: app/Gedcom.php:823 app/Gedcom.php:843
 msgid "Type of reference number"
-msgstr ""
+msgstr "Jenis nomor referensi"
 
 #: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
-msgstr ""
+msgstr "Jenis tugas penelitian"
 
 #. I18N: A configuration setting
 #: app/CustomTags/Aldfaer.php:70 app/CustomTags/Ancestry.php:76
@@ -15887,7 +15988,7 @@ msgstr "Tidak diketahui"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
 msgid "Unlink"
-msgstr ""
+msgstr "Batalkan tautan"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15924,11 +16025,13 @@ msgstr "Perbarui nama tempat"
 #: app/Module/FixPlaceNames.php:72
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
 msgstr ""
+"Perbarui bagian tingkat yang lebih tinggi dari nama tempat, sambil "
+"mempertahankan bagian tingkat yang lebih rendah."
 
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
-msgstr ""
+msgstr "Terbarukan pada"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15968,7 +16071,7 @@ msgstr "Gunakan \"?\" Untuk mencocokkan karakter tunggal, gunakan \"*\" untuk me
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Gunakan layanan eksternal untuk menemukan lokasi."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -15995,11 +16098,11 @@ msgstr "Gunakan tampilan yang ringkas"
 #: resources/views/setup/step-4-database-sqlite.phtml:82
 #: resources/views/setup/step-4-database-sqlsrv.phtml:112
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Gunakan huruf A-Z, a-z, angka 0-9, atau garis bawah"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Gunakan peta di webtrees."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:121
@@ -16023,7 +16126,7 @@ msgstr "Gunakan siluet"
 
 #: app/Http/RequestHandlers/CopyFact.php:73
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Gunakan menu \"edit\" untuk menempelkannya ke rekaman lain."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16048,15 +16151,15 @@ msgstr "Administrasi Pengguna"
 
 #: resources/views/admin/users-cleanup.phtml:64
 msgid "User didn’t verify within 7 days."
-msgstr "Pengguna tidak memverifikasi dalam 7 hari."
+msgstr "Pengguna tidak memeriksa dalam 7 hari."
 
 #: resources/views/admin/users-cleanup.phtml:66
 msgid "User not verified by administrator."
-msgstr "Pengguna tidak diverifikasi oleh pengurus situs."
+msgstr "Pengguna tidak diperiksa oleh pengelola."
 
 #: app/Http/RequestHandlers/VerifyEmail.php:74
 msgid "User verification"
-msgstr "Verifikasi pengguna"
+msgstr "Pemeriksaan pengguna"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:135
@@ -16079,7 +16182,7 @@ msgstr "Nama Pengguna"
 #: resources/views/forgot-password-page.phtml:23
 #: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
-msgstr "Nama Pengguna atau Alamat Email"
+msgstr "Nama pengguna atau alamat surel"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:61
@@ -16185,7 +16288,7 @@ msgstr "Perakrus, Meksiko"
 #: app/CustomTags/Legacy.php:121 app/CustomTags/Legacy.php:123
 #: app/CustomTags/Legacy.php:126 resources/views/admin/users.phtml:36
 msgid "Verified"
-msgstr "Diverifikasi"
+msgstr "Telah diperiksa"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:204
@@ -16226,7 +16329,7 @@ msgstr "Tampilkan keluarga"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Tampikan lokasi ini menggunakan %s"
 
 #: resources/views/calendar-page.phtml:225
 msgid "View this month"
@@ -16311,7 +16414,15 @@ msgstr "Tanda melayang bersifat opsional dan biasanya ditampilkan hanya untuk pe
 #: resources/views/register-success-page.phtml:25
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Sekarang kami akan mengirim pesan konfirmasi ke alamat <b>%s</b>. anda harus memverifikasi permintaan akun anda dengan mengikuti petunjuk pada pesan konfirmasi. jika anda tidak mengonfirmasi permintaan akun anda selama tujuh hari, pengajuan anda otomatis akan ditolak. anda harus mengajukan ulang.<br><br>setelah anda mengikuti petunjuk di pesan konfirmasi, pengurus masih harus menyetujui permintaan anda sebelum akun anda benar-benar dapat digunakan.<br><br>untuk bisa masuk ke situs ini, anda harus mengetahui nama pengguna dan kata sandi anda."
+msgstr ""
+"Sekarang kami akan mengirim surel penegasan ke alamat <b>%s</b>. Anda harus "
+"memeriksa permintaan akun anda dengan mengikuti petunjuk pada surel "
+"penegasan. Jika anda tidak menegaskan permintaan akun anda selama tujuh "
+"hari, pengajuan anda otomatis akan ditolak. Anda harus mengajukan "
+"ulang.<br><br>Setelah anda mengikuti petunjuk di surel penegasan, pengelola "
+"masih harus menyetujui permintaan anda sebelum akun benar-benar dapat "
+"digunakan.<br><br>Untuk bisa masuk ke situs ini, anda harus mengetahui nama "
+"pengguna dan kata sandi anda."
 
 #: resources/views/admin/control-panel.phtml:162
 #: resources/views/admin/control-panel.phtml:573
@@ -16370,11 +16481,17 @@ msgstr "Ketika rekaman diubah, pengguna dan cap waktu direkam. Kadang-kadang dii
 
 #: resources/views/admin/users-edit.phtml:109
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Ketika seorang pengguna mendaftar untuk sebuah akun, sebuah email dikirim ke alamat email mereka dengan tautan verifikasi. Ketika mereka mengikuti tautan ini, kami tahu alamat email sudah benar, dan opsi \"email diverifikasi\" dipilih secara otomatis."
+msgstr ""
+"Ketika seorang pengguna mendaftar untuk sebuah akun, sebuah surel dikirim ke "
+"alamat surel mereka dengan tautan pemeriksaan. Ketika mereka mengikuti "
+"tautan ini, kami tahu alamat surel sudah benar, dan opsi \"surel telah "
+"diperiksa\" dipilih secara otomatis."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
 msgstr ""
+"Ketika seseorang memiliki lebih dari satu pasangan, anda harus mengurutkan "
+"keluarga dalam urutan tanggal."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:698
@@ -16406,7 +16523,7 @@ msgstr "Sedang Online"
 
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Mengapa daftar ini menyertakan rekaman yang tidak perlu diperbarui?"
 
 #: resources/views/lists/families-table.phtml:97
 msgid "Widow"
@@ -16462,7 +16579,7 @@ msgstr "Saksi"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "Saksi"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
@@ -16506,7 +16623,9 @@ msgstr "Yamen"
 #: resources/views/emails/register-user-text.phtml:18
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Anda (atau seseorang yang mengaku sebagai diri anda) telah mendaftarkan diri di %1$s menggunakan alamat email %2$s."
+msgstr ""
+"Anda (atau seseorang yang mengaku sebagai diri anda) telah mendaftarkan diri "
+"di %1$s menggunakan alamat surel %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:124
 #: app/Http/RequestHandlers/RegisterAction.php:268
@@ -16542,6 +16661,8 @@ msgstr "Anda dapat mengunduh salinan spesifikasi GEDCOM dari %s."
 #: resources/views/modules/privacy-policy/page.phtml:63
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
+"Anda dapat menghindari pelacakan dengan mengatur \"Jangan Lacak\" di "
+"preferensi browser anda."
 
 #: resources/views/admin/trees-renumber.phtml:28
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16559,6 +16680,8 @@ msgstr "Anda dapat mengatur akses untuk catatan, fakta, atau kejadian tertentu d
 #: resources/views/admin/tags.phtml:38
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
 msgstr ""
+"Anda dapat menyederhanakan formulir edit dengan menyembunyikan penanda "
+"GEDCOM yang tidak Anda gunakan."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
@@ -16576,7 +16699,7 @@ msgstr "Anda tidak memiliki izin untuk melihat halaman ini."
 
 #: resources/views/verify-success-page.phtml:19
 msgid "You have confirmed your request to become a registered user."
-msgstr "Anda telah mengkonfirmasikan permintaan Anda menjadi pengguna terdaftar."
+msgstr "Anda telah menegaskan permintaan untuk menjadi pengguna terdaftar."
 
 #: resources/views/admin/trees-import.phtml:33
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
@@ -16626,7 +16749,9 @@ msgstr "Anda perlu meninjau detail akun."
 
 #: resources/views/setup/step-5-administrator.phtml:51
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Anda perlu mengatur akun pengurus. akun ini dapat mengontrol semua aspek dari instalasi situs ini. silakan pilih kata sandi yang kuat."
+msgstr ""
+"Anda perlu mengatur akun pengurus. Akun ini dapat mengendalikan semua aspek "
+"dari instalasi situs ini. Silahkan pilih kata sandi yang kuat."
 
 #: resources/views/emails/message-copy-html.phtml:22
 #: resources/views/emails/message-copy-text.phtml:18
@@ -16646,12 +16771,18 @@ msgstr "Anda harus menghapus “%1$s” dari “%2$s” dan coba lagi."
 
 #: resources/views/admin/users-edit.phtml:115
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Anda tidak boleh menyetujui akun kecuali Anda tahu bahwa alamat email sudah benar."
+msgstr ""
+"Anda tidak boleh menyetujui akun kecuali anda tahu bahwa alamat surel sudah "
+"benar."
 
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Anda akan diberitahu melalui email ketika calon pengguna ini telah mengkonfirmasi permintaan tersebut. anda kemudian dapat menyelesaikan proses dengan mengaktifkan nama pengguna. pengguna baru tidak akan dapat masuk sampai anda mengaktifkan akun."
+msgstr ""
+"Anda akan diberitahu melalui surel ketika calon pengguna ini telah "
+"menegaskan permintaan tersebut. Kemudian anda dapat menyelesaikan proses "
+"dengan mengaktifkannya. Pengguna baru tidak akan dapat masuk sampai anda "
+"mengaktifkan akun."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
@@ -16684,7 +16815,7 @@ msgstr "Nama Anda"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:74
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Kata sandi anda telah diperbarui."
 
 #: app/Http/RequestHandlers/RegisterAction.php:159
 #, php-format
@@ -16700,7 +16831,7 @@ msgstr "Server web anda menggunakan PHP versi %s, yang tidak lagi menerima pemba
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16730,6 +16861,9 @@ msgstr "Perkecil"
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"Penanda _WT_OBJE_SORT digunakan oleh webtrees versi lama untuk menunjukkan "
+"gambar yang disukai seseorang. Alternatifnya adalah mengurutkan ulang gambar "
+"sehingga yang disukai dicantumkan terlebih dahulu."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -16860,7 +16994,7 @@ msgstr "bibi/paman"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr ""
+msgstr "otomatis"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
@@ -17026,7 +17160,7 @@ msgstr "batal"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:65
 msgid "challenged"
-msgstr ""
+msgstr "ditantang"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:77
@@ -17041,7 +17175,7 @@ msgstr "anak"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "Penduduk"
 
 #: resources/views/admin/components.phtml:108
 #: resources/views/admin/components.phtml:129
@@ -17101,7 +17235,7 @@ msgstr "buat"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "budaya"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17170,13 +17304,13 @@ msgstr "wafat"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:66
 msgid "disproven"
-msgstr ""
+msgstr "membantah"
 
 #: app/Module/PedigreeChartModule.php:367
 #: app/Module/PedigreeChartModule.php:375
 #: resources/views/edit/reorder-card-header.phtml:32
 msgid "down"
-msgstr ""
+msgstr "turun"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -17190,7 +17324,7 @@ msgstr "unduh"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:19
 msgid "d’Aboville number"
-msgstr ""
+msgstr "nomor d'Aboville"
 
 #: resources/views/admin/components.phtml:141
 #: resources/views/family-page-menu.phtml:29
@@ -17217,7 +17351,7 @@ msgstr "sepupu kedelapan"
 
 #: app/Services/RelationshipService.php:446
 msgid "elder brother"
-msgstr "kakak"
+msgstr "abang"
 
 #: app/Services/RelationshipService.php:488
 msgid "elder sibling"
@@ -17296,15 +17430,15 @@ msgstr "ayah mertua"
 
 #: app/Services/RelationshipService.php:369
 msgid "fiancé"
-msgstr ""
+msgstr "tunangan"
 
 #: app/Services/RelationshipService.php:416
 msgid "fiancé(e)"
-msgstr ""
+msgstr "tunangan"
 
 #: app/Services/RelationshipService.php:393
 msgid "fiancée"
-msgstr ""
+msgstr "tunangan"
 
 #: app/Services/RelationshipService.php:2352
 msgid "fifteenth cousin"
@@ -17670,7 +17804,7 @@ msgstr "Kelamin"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geografis"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
@@ -19204,17 +19338,17 @@ msgstr "setengah lingkaran"
 #: app/Services/RelationshipService.php:541
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr "Kakak tiri"
+msgstr "saudara tiri"
 
 #: app/Services/RelationshipService.php:579
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr "Kakak tiri"
+msgstr "saudara tiri"
 
 #: app/Services/RelationshipService.php:597
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr "Kakak tiri"
+msgstr "saudara tiri"
 
 #: app/Services/RelationshipService.php:527
 msgctxt "father’s child"
@@ -19305,7 +19439,7 @@ msgstr "diri sendiri"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "rumah tangga"
 
 #: app/Elements/RoleInEvent.php:79 app/Services/RelationshipService.php:367
 msgid "husband"
@@ -19327,7 +19461,7 @@ msgstr "Bayi"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
-msgstr ""
+msgstr "catatan sebaris"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:197
@@ -19380,7 +19514,7 @@ msgstr "akhir"
 #: app/Module/PedigreeChartModule.php:364
 #: app/Module/PedigreeChartModule.php:372
 msgid "left"
-msgstr ""
+msgstr "kiri"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19812,12 +19946,12 @@ msgstr "Persentase"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr ""
+msgstr "tuliskan sederhana"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "politik"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page-images.phtml:49
@@ -19842,7 +19976,7 @@ msgstr "bukti utama"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:67
 msgid "proven"
-msgstr ""
+msgstr "terbukti"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50
@@ -19880,7 +20014,7 @@ msgstr "ditolak"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "agama"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:87
@@ -19904,7 +20038,7 @@ msgstr "kembalikan"
 #: app/Module/PedigreeChartModule.php:365
 #: app/Module/PedigreeChartModule.php:373
 msgid "right"
-msgstr ""
+msgstr "kanan"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:41
@@ -20173,7 +20307,7 @@ msgstr "sepupu ketujuh"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
-msgstr ""
+msgstr "catatan terbagi"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/tags.phtml:969 resources/views/admin/tags.phtml:983
@@ -20204,12 +20338,12 @@ msgstr "perlihatkan"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:277
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "menunjukkan perubahan yang dibuat di webtree"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:279
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "menunjukkan perubahan rekaman dalam data silsilah"
 
 #. I18N: button label
 #: resources/views/admin/trees-check.phtml:88
@@ -20219,7 +20353,7 @@ msgstr ""
 #: resources/views/modules/user_blog/list.phtml:28
 #: resources/views/modules/yahrzeit/list.phtml:23
 msgid "show more"
-msgstr ""
+msgstr "Selengkapnya"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
@@ -20694,7 +20828,7 @@ msgstr "bukti yang tidak dapat diandalkan"
 #: app/Module/PedigreeChartModule.php:374
 #: resources/views/edit/reorder-card-header.phtml:28
 msgid "up"
-msgstr ""
+msgstr "naik"
 
 #: resources/views/admin/trees-unconnected.phtml:33
 msgid "update"
@@ -20748,11 +20882,11 @@ msgstr "situs"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees tidak dapat membuat gambar mini untuk format berkas ini."
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees tidak mengenali format berkas ini."
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -20760,12 +20894,14 @@ msgstr "Kirim Pesan"
 
 #: resources/views/setup/step-3-database-type.phtml:49
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees membutuhkan basis data untuk menyimpan data silsilah anda."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
+"situs butuh untuk mengirimkan surel, seperti pengingat kata sandi dan "
+"pemberitahuan situs."
 
 #: app/Services/MessageService.php:233
 msgid "webtrees sends emails with no storage"
@@ -20853,12 +20989,12 @@ msgstr[0] "±%s tahun"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” seharusnya “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s“ telah disalin ke papan klip."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
@@ -20871,6 +21007,10 @@ msgstr "“%s” sudah terhapus."
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"Penanda “Gambar yang disorot” (_PRIM) digunakan oleh beberapa aplikasi "
+"silsilah untuk menunjukkan gambar yang disukai seseorang. Alternatifnya "
+"adalah mengurutkan ulang gambar sehingga yang disukai dicantumkan terlebih "
+"dahulu."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
