@@ -44,7 +44,7 @@ interface SourceFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Source
      */
     public function mapper(Tree $tree): Closure;
 

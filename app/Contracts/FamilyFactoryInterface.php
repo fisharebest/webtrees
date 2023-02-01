@@ -44,7 +44,7 @@ interface FamilyFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Family
      */
     public function mapper(Tree $tree): Closure;
 

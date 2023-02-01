@@ -158,7 +158,7 @@ class Tree
     /**
      * A closure which will create a record from a database row.
      *
-     * @return Closure
+     * @return Closure(object):Tree
      */
     public static function rowMapper(): Closure
     {

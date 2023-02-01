@@ -55,7 +55,7 @@ class Individual extends GedcomRecord
     /**
      * A closure which will compare individuals by birth date.
      *
-     * @return Closure
+     * @return Closure(Individual,Individual):int
      */
     public static function birthDateComparator(): Closure
     {
@@ -67,7 +67,7 @@ class Individual extends GedcomRecord
     /**
      * A closure which will compare individuals by death date.
      *
-     * @return Closure
+     * @return Closure(Individual,Individual):int
      */
     public static function deathDateComparator(): Closure
     {

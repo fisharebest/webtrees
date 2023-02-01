@@ -44,7 +44,7 @@ interface LocationFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Location
      */
     public function mapper(Tree $tree): Closure;
 

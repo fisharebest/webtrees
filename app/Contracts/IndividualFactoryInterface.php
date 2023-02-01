@@ -44,7 +44,7 @@ interface IndividualFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):Individual
      */
     public function mapper(Tree $tree): Closure;
 

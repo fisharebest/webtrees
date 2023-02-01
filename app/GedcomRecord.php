@@ -115,7 +115,7 @@ class GedcomRecord
     /**
      * A closure which will filter out private records.
      *
-     * @return Closure
+     * @return Closure(GedcomRecord):bool
      */
     public static function accessFilter(): Closure
     {
@@ -127,7 +127,7 @@ class GedcomRecord
     /**
      * A closure which will compare records by name.
      *
-     * @return Closure
+     * @return Closure(GedcomRecord,GedcomRecord):int
      */
     public static function nameComparator(): Closure
     {
@@ -153,7 +153,7 @@ class GedcomRecord
      *
      * @param int $direction +1 to sort ascending, -1 to sort descending
      *
-     * @return Closure
+     * @return Closure(GedcomRecord,GedcomRecord):int
      */
     public static function lastChangeComparator(int $direction = 1): Closure
     {

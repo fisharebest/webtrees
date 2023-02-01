@@ -44,7 +44,7 @@ interface SharedNoteFactoryInterface
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):SharedNote
      */
     public function mapper(Tree $tree): Closure;
 

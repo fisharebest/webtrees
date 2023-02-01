@@ -65,7 +65,7 @@ class SharedNoteFactory extends AbstractGedcomRecordFactory implements SharedNot
      *
      * @param Tree $tree
      *
-     * @return Closure
+     * @return Closure(object):SharedNote
      */
     public function mapper(Tree $tree): Closure
     {
