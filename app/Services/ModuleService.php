@@ -545,7 +545,7 @@ class ModuleService
     /**
      * Modules which (a) provide a specific function and (b) we have permission to see.
      *
-     * @param string        $interface
+     * @param class-string  $interface
      * @param Tree          $tree
      * @param UserInterface $user
      *
@@ -562,9 +562,9 @@ class ModuleService
     /**
      * All modules which provide a specific function.
      *
-     * @param string $interface
-     * @param bool   $include_disabled
-     * @param bool   $sort
+     * @param class-string $interface
+     * @param bool         $include_disabled
+     * @param bool         $sort
      *
      * @return Collection<string,ModuleInterface>
      */
@@ -746,7 +746,7 @@ class ModuleService
     /**
      * A function filter modules by type
      *
-     * @param string $interface
+     * @param class-string $interface
      *
      * @return Closure
      */
