@@ -201,8 +201,10 @@ class Auth
     }
 
     /**
+     * @template T of ModuleInterface
+     *
      * @param ModuleInterface $module
-     * @param class-string    $interface
+     * @param class-string<T> $interface
      * @param Tree            $tree
      * @param UserInterface   $user
      *
