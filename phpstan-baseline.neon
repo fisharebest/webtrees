@@ -552,7 +552,7 @@ parameters:
 
 		-
 			message: "#^Generator expects value type Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\|null, mixed given\\.$#"
-			count: 3
+			count: 2
 			path: app/Http/Middleware/UseTheme.php
 
 		-

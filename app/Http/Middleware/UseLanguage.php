@@ -84,11 +84,9 @@ class UseLanguage implements MiddlewareInterface
         $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true);
 
         // Last language used
-        $language = Session::get('language');
-
-        if (is_string($language)) {
-            yield $languages->get('language-' . $language);
-        }
+        yield $languages
+            ->filter(static fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === Session::get('language'))
+            ->first();
 
         // Browser negotiation
         $locales = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)
@@ -99,7 +97,9 @@ class UseLanguage implements MiddlewareInterface
         $default = Locale::create(Site::getPreference('LANGUAGE'));
         $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
 
-        yield $languages->get('language-' . $locale->languageTag());
+        yield $languages
+            ->filter(static fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === $locale->languageTag())
+            ->first();
 
         // No languages enabled?  Use en-US
         yield new LanguageEnglishUnitedStates();
