@@ -79,15 +79,16 @@ class UseTheme implements MiddlewareInterface
         $themes = $this->module_service->findByInterface(ModuleThemeInterface::class);
 
         // Last theme used
-        $session_theme = Session::get('theme');
-        if (is_string($session_theme)) {
-            yield $themes->get($session_theme);
-        }
+        yield $themes
+            ->filter(static fn (ModuleThemeInterface $module): bool => $module->name() === Session::get('theme'))
+            ->first();
 
         // Default for site
-        yield $themes->get(Site::getPreference('THEME_DIR'));
+        yield $themes
+            ->filter(static fn (ModuleThemeInterface $module): bool => $module->name() === Site::getPreference('THEME_DIR'))
+            ->first();
 
         // Default for application
-        yield app(WebtreesTheme::class);
+        yield new WebtreesTheme();
     }
 }
