@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-28 23:35+0000\n"
+"PO-Revision-Date: 2023-02-02 14:09+0000\n"
 "Last-Translator: sadja1024 <bancak@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/id/>\n"
@@ -534,7 +534,7 @@ msgstr "&lt;pilih&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(umur %s)"
+msgstr "(berumur %s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -778,7 +778,8 @@ msgstr "Pesan ucapan untuk pengunjung situs."
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr "Daftar perubahan yang perlu ditinjau oleh moderator, dan pemberitahuan email."
+msgstr ""
+"Daftar perubahan yang perlu ditinjau oleh moderator, dan pemberitahuan surel."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -847,7 +848,9 @@ msgstr "Kata sandi baru telah diminta untuk nama pengguna anda."
 #: login.php:561
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Pengguna baru (%1$s) telah meminta akun (%2$s) dan memverifikasi alamat email (%3$s)."
+msgstr ""
+"Pengguna baru (%1$s) telah meminta akun (%2$s) dan memeriksa alamat surel "
+"(%3$s)."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -1021,7 +1024,9 @@ msgstr "Garis waktu yang menampilkan peristiwa seseorang."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Akun pendaftar tidak akan dapat masuk ke situs ini sampai \"Email Diverifikasi\" dan kemudian \"Disetujui Oleh Pengurus\"."
+msgstr ""
+"Pengguna tidak akan dapat masuk sampai \"surel terperiksa\" dan \"disetujui "
+"oleh pengelola\" terpilih."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1148,7 +1153,7 @@ msgstr "Akses Ke Silsilah Keluarga"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
-msgstr "Persetujuan Akun"
+msgstr "Persetujuan akun dan pemeriksaan surel"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
@@ -3348,7 +3353,7 @@ msgstr "Sebab"
 
 #: app/GedcomTag.php:354
 msgid "Cause of death"
-msgstr "Penyebab wafat"
+msgstr "Penyebab kematian"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
@@ -3901,7 +3906,7 @@ msgstr "Konfirmasi Sandi"
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr "Konfirmasi"
+msgstr "Penegasan"
 
 #: setup.php:275
 msgid "Connection to database server"
@@ -4027,7 +4032,9 @@ msgstr "Kote D’Ivoire"
 
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
-msgstr "Tidak dapat memverifikasi informasi yang anda masukkan. silakan coba lagi atau hubungi pengurus situs untuk informasi lebih lanjut."
+msgstr ""
+"Tidak dapat memeriksa informasi yang anda masukkan. Silahkan coba lagi atau "
+"hubungi pengelola situs untuk informasi lebih lanjut."
 
 #: app/Stats.php:5579
 msgid "Count"
@@ -4422,7 +4429,7 @@ msgstr "Tanggal pembaptisan"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
-msgstr "Tanggal konfirmasi"
+msgstr "Tanggal penegasan"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
@@ -4677,7 +4684,7 @@ msgstr "Wafat"
 
 #: app/Stats.php:1674 statistics.php:575
 msgid "Death by country"
-msgstr "Kematian di negara"
+msgstr "Kematian menurut negara"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
@@ -5305,11 +5312,13 @@ msgstr "Duodie"
 
 #: admin_users.php:73 edituser.php:60 login.php:289
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Duplikat alamat email. pengguna dengan email tersebut sudah pernah ada."
+msgstr "Alamat surel ganda. Pengguna dengan surel tersebut sudah pernah ada."
 
 #: admin_users.php:71 edituser.php:58 login.php:287
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr "Duplikat nama pengguna. seorang pengguna lain dengan nama pengguna itu sudah ada. silakan pilih nama pengguna lain."
+msgstr ""
+"Duplikat nama pengguna. seorang pengguna lain dengan nama pengguna itu sudah "
+"ada. Silahkan pilih nama pengguna lain."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5527,7 +5536,7 @@ msgstr "Eluls"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr "Alamat Email"
+msgstr "Alamat Surel"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -5536,7 +5545,7 @@ msgstr "Alamat email yang akan digunakan dalam bidang \"Dari:\" dari email yang 
 
 #: admin_users.php:381
 msgid "Email verified"
-msgstr "Email Diverifikasi"
+msgstr "Surel telah diperiksa"
 
 #: app/Stats.php:84
 msgid "Embedded variable"
@@ -6057,7 +6066,7 @@ msgstr "Keluarga dengan Orangtua"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
 msgid "Family with rada parents"
-msgstr "Keluarga dengan orang tua rada"
+msgstr "Keluarga dengan orang tua sepersusuan"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
@@ -6392,7 +6401,7 @@ msgstr "Nama folder di server"
 
 #: login.php:342
 msgid "Follow this link to verify your email address."
-msgstr "Silakan klik pada pranala berikut dan isilah data yang diminta untuk mengonfirmasikan permintaan dan alamat email Anda."
+msgstr "Klik pranala berikut untuk memeriksa alamat surel anda."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -6434,7 +6443,7 @@ msgstr "Untuk dukungan dan informasi teknis hubungi %s."
 #: app/Theme/AbstractTheme.php:285
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Untuk dukungan teknis dan masalah genealogi, silakan hubungi %s."
+msgstr "Untuk dukungan teknis dan masalah genealogi, silahkan hubungi %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
@@ -7259,7 +7268,9 @@ msgstr "Jika pengunjung ke situs belum memilih bahasa yang disukai dalam prefere
 
 #: admin_users.php:391
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Jika administrator membuat akun pengguna, email verifikasi tidak dikirim, dan email harus diverifikasi secara manual."
+msgstr ""
+"Jika pengelola membuat akun pengguna, surel pemeriksaan tidak dikirim, dan "
+"surel harus diperiksa secara manual."
 
 #: help_text.php:228
 #, php-format
@@ -7593,7 +7604,7 @@ msgstr "Pesan internal"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "Internal messaging with emails"
-msgstr "Pesan internal dengan email"
+msgstr "Pesan internal dengan surel"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1547
@@ -7990,7 +8001,7 @@ msgstr "Pengukuhan Anak LDS"
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:318
 msgid "LDS confirmation"
-msgstr "Konfirmasi LDS"
+msgstr "Penegasan LDS"
 
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:412
@@ -8065,7 +8076,7 @@ msgstr "Perubahan terakhir"
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr "Pengingat email terakhir telah terkirim "
+msgstr "Surel pengingat terakhir telah terkirim "
 
 #: statistics.php:371
 msgid "Last event"
@@ -8130,7 +8141,7 @@ msgstr "Kosongkan ini untuk menggunakan nilai default."
 #: app/Functions/FunctionsPrintLists.php:276
 #: app/Functions/FunctionsPrintLists.php:666
 msgid "Leaves"
-msgstr "Ranting"
+msgstr "Pasangan"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6799
@@ -8411,7 +8422,7 @@ msgstr "Nama Mailing List"
 
 #: app/Functions/FunctionsEdit.php:250
 msgid "Mailto link"
-msgstr "Email ke tautan"
+msgstr "Tautan surel"
 
 #: index_edit.php:298
 msgid "Main section blocks"
@@ -9659,7 +9670,7 @@ msgstr "Koran"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr "Pengingat email berikutnya akan dikirim setelah "
+msgstr "Surel pengingat berikutnya akan dikirim setelah "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -9817,7 +9828,7 @@ msgstr "Tidak ada peristiwa seseorang untuk besok."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Tidak ada peristiwa bagi orang yang masih hidup selama %s hari berikutnya."
+msgstr[0] "Tiada peristiwa untuk orang hidup selama %s hari ke depan."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -9826,7 +9837,7 @@ msgstr "Tidak ada fakta untuk keluarga ini."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
 msgid "No file was received. Please try again."
-msgstr "Tidak ada berkas yang diterima. silakan unggah lagi."
+msgstr "Tidak ada berkas yang diterima. silahkan unggah lagi."
 
 #: relationship.php:242
 msgid "No link between the two individuals could be found."
@@ -9977,7 +9988,7 @@ msgstr "Tidak Menikah"
 
 #: admin.php:705
 msgid "Not verified by the user"
-msgstr "Tidak diverifikasi oleh pengguna"
+msgstr "Tidak diperiksa oleh pengguna"
 
 #. I18N: gedcom tag NOTE
 #: admin_trees_config.php:826 app/Controller/FamilyController.php:147
@@ -10173,7 +10184,7 @@ msgstr "Oden, Muntah, Amerika"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Kota Oklahoma, Oklahoma, Amerika"
+msgstr "Kota Oklahoma, Oklahoma, Amerika Serikat"
 
 #: admin_site_change.php:337
 msgid "Old data"
@@ -10764,7 +10775,7 @@ msgstr "Tempat pembaptisan"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr "Tempat konfirmasi"
+msgstr "Tempat penegasan"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
@@ -10860,7 +10871,7 @@ msgstr "Silakan masukkan perihal pesan."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr "Silakan masukkan alamat email yang benar."
+msgstr "Silahkan masukkan alamat surel yang benar."
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
@@ -11263,7 +11274,7 @@ msgstr "Gambar acak dari silsilah keluarga."
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
 #: edit_interface.php:1779 edit_interface.php:1849
 msgid "Re-order children"
-msgstr "susun anak"
+msgstr "Susun anak"
 
 #: app/Controller/IndividualController.php:297
 #: app/Module/RelativesTabModule.php:363 edit_interface.php:2154
@@ -11448,7 +11459,7 @@ msgstr "Pernikahan Agama"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
-msgstr "Frekuensi email pengingat (hari)"
+msgstr "Seringnya surel pengingat (hari)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:766
@@ -11696,7 +11707,7 @@ msgstr "Ruanda"
 
 #: admin_site_config.php:345
 msgid "SMTP mail server"
-msgstr "Server email SMTP"
+msgstr "Server surel SMTP"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:321
@@ -12045,7 +12056,7 @@ msgstr "Kirim Pesan Siaran"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Kirim email pengingat"
+msgstr "Kirim surel pengingat"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
@@ -12055,7 +12066,7 @@ msgstr "Nama pengirim"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr "Mengirim Pesan"
+msgstr "Mengirim surel"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
@@ -12719,7 +12730,9 @@ msgstr "Tunjukkan kepada pengunjung"
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Perlihatkan pasangan atau seseorang «ranting». mereka adalah orang yang hidup, namun tidak mempunyai anak yang terekam dalam basis data silsilah kami."
+msgstr ""
+"Perlihatkan pasangan atau seseorang. Adalah orang yang hidup, namun tidak "
+"mempunyai anak yang terekam dalam basis data kami."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
@@ -12805,12 +12818,13 @@ msgstr "Anggota situs dapat saling mengirim pesan lain. Anda dapat memilih bagai
 #. I18N: A configuration setting
 #: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
-msgstr "Kode verifikasi situs"
+msgstr "Kode pemeriksaan situs"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "Kode verifikasi situs tidak berfungsi saat situs dipasang di subfolder."
+msgstr ""
+"Kode pemeriksaan situs tidak berfungsi saat situs dipasang di subfolder."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -13626,7 +13640,7 @@ msgstr "File %s telah berhasil diupload."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr "File hanya diunggah sebagian. silakan coba lagi."
+msgstr "Berkas hanya diunggah sebagian. Silahkan coba lagi."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:146
@@ -13789,7 +13803,9 @@ msgstr "File-file baru saat ini terletak di folder %s."
 
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "Pengguna baru akan diminta untuk mengkonfirmasi alamat email mereka sebelum akun dibuat."
+msgstr ""
+"Pengguna baru akan diminta untuk memastikan alamat surel-nya sebelum akun "
+"dibuat."
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13930,7 +13946,9 @@ msgstr "Anggota %s telah dihapus."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "Pengguna telah mengirim pesan dengan informasi yang diperlukan untuk mengkonfirmasi permintaan akses."
+msgstr ""
+"Pengguna telah mengirim surel dengan informasi yang diperlukan untuk "
+"memastikan permintaan akses."
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
@@ -13980,7 +13998,9 @@ msgstr "Situs geonames.org menyediakan basis data besar untuk nama tempat. ini d
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "Pengembang situs akan sangat tertarik untuk belajar tentang kesalahan ini. jika anda menghubungi mereka, mereka akan membantu anda menyelesaikan masalah."
+msgstr ""
+"Pengembang situs akan sangat tertarik untuk belajar tentang kesalahan ini. "
+"Jika anda menghubunginya, mereka akan membantu anda menyelesaikan masalah."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
@@ -14099,11 +14119,15 @@ msgstr "Akun ini belum disetujui. harap tunggu pengurus situs untuk menyetujuiny
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Akun ini belum diverifikasi. silakan periksa email anda untuk pesan verifikasi."
+msgstr ""
+"Akun ini belum diperiksa. Silahkan periksa surel anda untuk melihat pesannya."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang menunggu keputusan yang perlu ditinjau oleh moderator. ini juga menghasilkan email setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
+msgstr ""
+"Blok ini akan menunjukkan kepada editor daftar rekaman dengan perubahan yang "
+"menunggu keputusan yang perlu ditinjau oleh moderator. Ini juga menghasilkan "
+"surel setiap hari untuk moderator setiap kali ada perubahan yang tertunda."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14116,7 +14140,10 @@ msgstr "Database ini hanya menjalankan MySQL versi %s. anda tidak dapat menginst
 
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Alamat email ini akan digunakan untuk mengirim pengingat kata sandi, pemberitahuan situs, dan pesan dari anggota keluarga lain yang terdaftar di situs."
+msgstr ""
+"Alamat surel ini akan digunakan untuk mengirim pengingat kata sandi, "
+"pemberitahuan situs, dan pesan dari anggota keluarga lain yang terdaftar di "
+"situs."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14163,7 +14190,13 @@ msgstr "Silsilah keluarga ini tidak memiliki gambar untuk ditampilkan."
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Silsilah keluarga ini terakhir diperbarui pada #gedcomUpdated#. Ada #totalSurnames# nama keluarga di silsilah keluarga ini. Peristiwa yang tercatat terawal adalah #firstEventType# dari #firstEventName# pada #firstEventYear#. Peristiwa terbaru adalah #lastEventType# dari #lastEventName# pada #lastEventYear#.<br><br>Jika Anda memiliki komentar atau saran, silakan hubungi #contactWebmaster#."
+msgstr ""
+"Silsilah keluarga ini terakhir diperbarui pada #gedcomUpdated#. Ada "
+"#totalSurnames# nama keluarga di silsilah keluarga ini. Peristiwa yang "
+"tercatat terawal adalah #firstEventType# dari #firstEventName# pada "
+"#firstEventYear#. Peristiwa terbaru adalah #lastEventType# dari "
+"#lastEventName# pada #lastEventYear#.<br><br>Jika Anda memiliki komentar "
+"atau saran, silahkan hubungi #contactWebmaster#."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:101
@@ -14318,7 +14351,9 @@ msgstr "Ini adalah daftar fakta GEDCOM bahwa pengguna situs hanya dapat menambah
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Ini adalah nama server SMTP. “Localhost” berarti bahwa layanan email berjalan pada komputer yang sama dengan server web Anda."
+msgstr ""
+"Ini adalah nama server SMTP. “localhost” berarti bahwa layanan email "
+"berjalan pada komputer yang sama dengan server web anda."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -14397,7 +14432,9 @@ msgstr "Panjangnya harus setidaknya enam karakter. Ini adalah case-sensitive."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Nama ini digunakan di bidang \"Dari\", saat mengirim pesan otomatis dari server ini."
+msgstr ""
+"Nama ini digunakan di bidang \"Dari\", saat mengirim surel otomatis dari "
+"server ini."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -15369,11 +15406,11 @@ msgstr "Administrasi Pengguna"
 
 #: admin_users.php:735
 msgid "User didn’t verify within 7 days."
-msgstr "Pengguna tidak memverifikasi dalam 7 hari."
+msgstr "Pengguna tidak memeriksa dalam 7 hari."
 
 #: admin_users.php:759
 msgid "User not verified by administrator."
-msgstr "Pengguna tidak diverifikasi oleh pengurus situs."
+msgstr "Pengguna tidak diperiksa oleh pengelola."
 
 #: admin_trees_config.php:956
 msgid "User preferences"
@@ -15381,7 +15418,7 @@ msgstr "Preferensi pengguna"
 
 #: login.php:518 login.php:524 login.php:582 login.php:586
 msgid "User verification"
-msgstr "Verifikasi pengguna"
+msgstr "Pemeriksaan pengguna"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:274 admin_site_access.php:364
@@ -15398,7 +15435,7 @@ msgstr "Nama Pengguna"
 
 #: app/Module/LoginBlockModule.php:101 login.php:224
 msgid "Username or email address"
-msgstr "Nama Pengguna atau Alamat Email"
+msgstr "Nama pengguna atau alamat surel"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -15510,7 +15547,7 @@ msgstr "Kode verifikasi"
 
 #: admin_users.php:853
 msgid "Verified"
-msgstr "Diverifikasi"
+msgstr "Telah diperiksa"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:383
@@ -15655,7 +15692,15 @@ msgstr "Tanda melayang bisa lambat untuk menghasilkan gambar besar. situs sibuk 
 #: login.php:390
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Sekarang kami akan mengirim pesan konfirmasi ke alamat <b>%s</b>. anda harus memverifikasi permintaan akun anda dengan mengikuti petunjuk pada pesan konfirmasi. jika anda tidak mengonfirmasi permintaan akun anda selama tujuh hari, pengajuan anda otomatis akan ditolak. anda harus mengajukan ulang.<br><br>setelah anda mengikuti petunjuk di pesan konfirmasi, pengurus masih harus menyetujui permintaan anda sebelum akun anda benar-benar dapat digunakan.<br><br>untuk bisa masuk ke situs ini, anda harus mengetahui nama pengguna dan kata sandi anda."
+msgstr ""
+"Sekarang kami akan mengirim surel penegasan ke alamat <b>%s</b>. Anda harus "
+"memeriksa permintaan akun anda dengan mengikuti petunjuk pada surel "
+"penegasan. Jika anda tidak menegaskan permintaan akun anda selama tujuh "
+"hari, pengajuan anda otomatis akan ditolak. Anda harus mengajukan "
+"ulang.<br><br>Setelah anda mengikuti petunjuk di surel penegasan, pengelola "
+"masih harus menyetujui permintaan anda sebelum akun benar-benar dapat "
+"digunakan.<br><br>Untuk bisa masuk ke situs ini, anda harus mengetahui nama "
+"pengguna dan kata sandi anda."
 
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
@@ -15724,7 +15769,11 @@ msgstr "Ketika rekaman diubah, pengguna dan cap waktu direkam. Kadang-kadang dii
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Ketika seorang pengguna mendaftar untuk sebuah akun, sebuah email dikirim ke alamat email mereka dengan tautan verifikasi. Ketika mereka mengikuti tautan ini, kami tahu alamat email sudah benar, dan opsi \"email diverifikasi\" dipilih secara otomatis."
+msgstr ""
+"Ketika seorang pengguna mendaftar untuk sebuah akun, sebuah surel dikirim ke "
+"alamat surel mereka dengan tautan pemeriksaan. Ketika mereka mengikuti "
+"tautan ini, kami tahu alamat surel sudah benar, dan opsi \"surel telah "
+"diperiksa\" dipilih secara otomatis."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15893,7 +15942,9 @@ msgstr "Yamen"
 #: login.php:340
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Anda (atau seseorang yang mengaku sebagai diri anda) telah mendaftarkan diri di %1$s menggunakan alamat email %2$s."
+msgstr ""
+"Anda (atau seseorang yang mengaku sebagai diri anda) telah mendaftarkan diri "
+"di %1$s menggunakan alamat surel %2$s."
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
@@ -15981,7 +16032,7 @@ msgstr "Anda memasukkan ID yang sama. Anda tidak dapat menggabungkan rekaman yan
 
 #: login.php:615
 msgid "You have confirmed your request to become a registered user."
-msgstr "Anda telah mengkonfirmasikan permintaan Anda menjadi pengguna terdaftar."
+msgstr "Anda telah menegaskan permintaan untuk menjadi pengguna terdaftar."
 
 #: app/Module/UserJournalModule.php:93
 msgid "You have not created any journal items."
@@ -16066,7 +16117,9 @@ msgstr "Anda perlu meninjau detail akun."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Anda perlu mengatur akun pengurus. akun ini dapat mengontrol semua aspek dari instalasi situs ini. silakan pilih kata sandi yang kuat."
+msgstr ""
+"Anda perlu mengatur akun pengurus. Akun ini dapat mengendalikan semua aspek "
+"dari instalasi situs ini. Silahkan pilih kata sandi yang kuat."
 
 #: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
@@ -16105,11 +16158,17 @@ msgstr "Anda harus menghapus “%1$s” dari “%2$s” dan coba lagi."
 
 #: admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Anda tidak boleh menyetujui akun kecuali Anda tahu bahwa alamat email sudah benar."
+msgstr ""
+"Anda tidak boleh menyetujui akun kecuali anda tahu bahwa alamat surel sudah "
+"benar."
 
 #: login.php:328
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Anda akan diberitahu melalui email ketika calon pengguna ini telah mengkonfirmasi permintaan tersebut. anda kemudian dapat menyelesaikan proses dengan mengaktifkan nama pengguna. pengguna baru tidak akan dapat masuk sampai anda mengaktifkan akun."
+msgstr ""
+"Anda akan diberitahu melalui surel ketika calon pengguna ini telah "
+"menegaskan permintaan tersebut. Kemudian anda dapat menyelesaikan proses "
+"dengan mengaktifkannya. Pengguna baru tidak akan dapat masuk sampai anda "
+"mengaktifkan akun."
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
@@ -16705,7 +16764,7 @@ msgstr "sepupu kedelapan"
 
 #: app/Functions/Functions.php:763
 msgid "elder brother"
-msgstr "kakak"
+msgstr "abang"
 
 #: app/Functions/Functions.php:797
 msgid "elder sibling"
@@ -18631,17 +18690,17 @@ msgstr "setengah lingkaran"
 #: app/Functions/Functions.php:850
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr "Kakak tiri"
+msgstr "saudara tiri"
 
 #: app/Functions/Functions.php:888
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr "Kakak tiri"
+msgstr "saudara tiri"
 
 #: app/Functions/Functions.php:906
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr "Kakak tiri"
+msgstr "saudara tiri"
 
 #: app/Functions/Functions.php:836
 msgctxt "father’s child"
