@@ -311,33 +311,8 @@ parameters:
 			path: app/Http/Middleware/Router.php
 
 		-
-			message: "#^Generator expects value type Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\|null, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\|null given\\.$#"
-			count: 2
-			path: app/Http/Middleware/UseLanguage.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: bool given\\.$#"
-			count: 2
-			path: app/Http/Middleware/UseLanguage.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Localization\\\\Locale\\\\LocaleInterface, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: Fisharebest\\\\Localization\\\\Locale\\\\LocaleInterface given\\.$#"
-			count: 1
-			path: app/Http/Middleware/UseLanguage.php
-
-		-
 			message: "#^Cannot call method instance\\(\\) on mixed\\.$#"
 			count: 1
-			path: app/Http/Middleware/UseTheme.php
-
-		-
-			message: "#^Generator expects value type Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\|null, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\|null given\\.$#"
-			count: 2
-			path: app/Http/Middleware/UseTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\)\\: bool given\\.$#"
-			count: 2
 			path: app/Http/Middleware/UseTheme.php
 
 		-
@@ -346,9 +321,9 @@ parameters:
 			path: app/Http/Middleware/UseTransaction.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: array\\<string, string\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: non\\-empty\\-array\\<string, string\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,object\\>\\:\\:mapWithKeys\\(\\) expects callable\\(object, int\\)\\: array\\<string, array\\<int, string\\>\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: non\\-empty\\-array\\<string, array\\<int, string\\>\\> given\\.$#"
 			count: 1
-			path: app/Http/RequestHandlers/AccountEdit.php
+			path: app/Http/RequestHandlers/AbstractModuleComponentPage.php
 
 		-
 			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
@@ -369,11 +344,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Fisharebest\\\\Webtrees\\\\Individual\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>\\|iterable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>, Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/AutoCompleteCitation.php
-
-		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:searchPlaceNames\\(\\)\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AutoCompletePlace.php
 
 		-
 			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
@@ -406,11 +376,6 @@ parameters:
 			path: app/Http/RequestHandlers/ControlPanel.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleCustomInterface\\)\\: bool given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 8
 			path: app/Http/RequestHandlers/ControlPanel.php
@@ -419,6 +384,11 @@ parameters:
 			message: "#^Parameter \\#2 \\$collection of method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleCollection\\(\\) expects Illuminate\\\\Support\\\\Collection\\<int, mixed\\>, Illuminate\\\\Support\\\\Collection\\<int, object\\> given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DataFixData.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleDataFixInterface\\>\\:\\:get\\(\\) expects int, string given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/DataFixSelect.php
 
 		-
 			message: "#^Cannot access property \\$xref on object\\|null\\.$#"
@@ -579,31 +549,6 @@ parameters:
 			message: "#^Unable to resolve the template type TMakeKey in call to method static method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:make\\(\\)$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportThumbnailsData.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getSidebars\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/IndividualPage.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getTabs\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/IndividualPage.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\)\\: bool given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/IndividualPage.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\)\\: bool given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/IndividualPage.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: string, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleShareInterface\\)\\: string given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/IndividualPage.php
 
 		-
 			message: "#^Cannot access offset '0' on array\\|false\\.$#"
@@ -1021,16 +966,6 @@ parameters:
 			path: app/Http/RequestHandlers/UnconnectedPage.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: array\\<string, string\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: non\\-empty\\-array\\<string, string\\> given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/UserEditPage.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: array\\<string, string\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: non\\-empty\\-array\\<string, string\\> given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/UserListData.php
-
-		-
 			message: "#^Unable to resolve the template type TGetDefault in call to method Illuminate\\\\Support\\\\Collection\\<string,string\\>\\:\\:get\\(\\)$#"
 			count: 1
 			path: app/Http/RequestHandlers/UserListData.php
@@ -1176,27 +1111,7 @@ parameters:
 			path: app/Module/CensusAssistantModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleChartInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu given\\.$#"
-			count: 1
-			path: app/Module/ChartsMenuModule.php
-
-		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu given\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(mixed, mixed\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\Menu, Fisharebest\\\\Webtrees\\\\Menu\\)\\: int given\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
 
@@ -1206,32 +1121,12 @@ parameters:
 			path: app/Module/CloudsTheme.php
 
 		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FabTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<string, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu given\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null given\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(mixed, mixed\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\Menu, Fisharebest\\\\Webtrees\\\\Menu\\)\\: int given\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FabTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
 
@@ -1484,16 +1379,6 @@ parameters:
 			message: "#^Cannot call method embedTags\\(\\) on mixed\\.$#"
 			count: 2
 			path: app/Module/HtmlBlockModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Illuminate\\\\Support\\\\Collection\\<int, string\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\)\\: Illuminate\\\\Support\\\\Collection\\<int, string\\> given\\.$#"
-			count: 1
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Illuminate\\\\Support\\\\Collection\\<int, string\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\)\\: Illuminate\\\\Support\\\\Collection\\<int, string\\> given\\.$#"
-			count: 1
-			path: app/Module/IndividualFactsTabModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,string\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, string\\>\\|iterable\\<int, string\\>, Illuminate\\\\Support\\\\Collection\\<int, mixed\\> given\\.$#"
@@ -1901,17 +1786,12 @@ parameters:
 			path: app/Module/LifespansChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Menu\\|null, Fisharebest\\\\Webtrees\\\\Menu\\|null\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Menu, Fisharebest\\\\Webtrees\\\\Menu\\)\\: int\\<\\-1, 1\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Menu\\|null, Fisharebest\\\\Webtrees\\\\Menu\\|null\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Menu, Fisharebest\\\\Webtrees\\\\Menu\\)\\: int\\<\\-1, 1\\> given\\.$#"
 			count: 1
 			path: app/Module/ListsMenuModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleListInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null given\\.$#"
-			count: 1
-			path: app/Module/ListsMenuModule.php
-
-		-
-			message: "#^Parameter \\#5 \\$submenus of class Fisharebest\\\\Webtrees\\\\Menu constructor expects array\\<Fisharebest\\\\Webtrees\\\\Menu\\>, array\\<string, Fisharebest\\\\Webtrees\\\\Menu\\|null\\> given\\.$#"
+			message: "#^Parameter \\#5 \\$submenus of class Fisharebest\\\\Webtrees\\\\Menu constructor expects array\\<Fisharebest\\\\Webtrees\\\\Menu\\>, array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\> given\\.$#"
 			count: 1
 			path: app/Module/ListsMenuModule.php
 
@@ -1946,32 +1826,12 @@ parameters:
 			path: app/Module/MediaListModule.php
 
 		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MinimalTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<string, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu given\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null given\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(mixed, mixed\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\Menu, Fisharebest\\\\Webtrees\\\\Menu\\)\\: int given\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MinimalTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
 
@@ -1999,16 +1859,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$length of function array_chunk expects int\\<1, max\\>, int given\\.$#"
 			count: 2
 			path: app/Module/PlaceHierarchyListModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PrivacyPolicy\\:\\:analyticsModules\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleAnalyticsInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Module/PrivacyPolicy.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleAnalyticsInterface\\)\\: bool given\\.$#"
-			count: 1
-			path: app/Module/PrivacyPolicy.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Family, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Family given\\.$#"
@@ -2089,11 +1939,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$nodes of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:nameFromPath\\(\\) expects array\\<Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\>, array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\> given\\.$#"
 			count: 1
 			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleReportInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu given\\.$#"
-			count: 1
-			path: app/Module/ReportsMenuModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Repository, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Repository given\\.$#"
@@ -2401,32 +2246,12 @@ parameters:
 			path: app/Module/UserMessagesModule.php
 
 		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\WebtreesTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<string, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu given\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null given\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(mixed, mixed\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\Menu, Fisharebest\\\\Webtrees\\\\Menu\\)\\: int given\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\WebtreesTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
 
@@ -2436,32 +2261,12 @@ parameters:
 			path: app/Module/WebtreesTheme.php
 
 		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/XeneaTheme.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\XeneaTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<string, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu given\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface\\)\\: Fisharebest\\\\Webtrees\\\\Menu\\|null given\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(mixed, mixed\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\Menu, Fisharebest\\\\Webtrees\\\\Menu\\)\\: int given\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\XeneaTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#"
 			count: 1
 			path: app/Module/XeneaTheme.php
 
@@ -3321,16 +3126,6 @@ parameters:
 			path: app/Services/HomePageService.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\)\\: bool given\\.$#"
-			count: 2
-			path: app/Services/HomePageService.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:mapWithKeys\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: array\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\)\\: non\\-empty\\-array\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> given\\.$#"
-			count: 2
-			path: app/Services/HomePageService.php
-
-		-
 			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<int,string\\>\\:\\:contains\\(\\) expects \\(callable\\(string, int\\)\\: bool\\)\\|string, mixed given\\.$#"
 			count: 4
 			path: app/Services/HomePageService.php
@@ -3386,11 +3181,6 @@ parameters:
 			path: app/Services/IndividualFactsService.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Fact\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleHistoricEventsInterface\\)\\: Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Fact\\> given\\.$#"
-			count: 1
-			path: app/Services/IndividualFactsService.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of class Fisharebest\\\\Webtrees\\\\Fact constructor expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Services/IndividualFactsService.php
@@ -3414,11 +3204,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/Services/IndividualFactsService.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: stdClass, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMapProviderInterface\\)\\: stdClass given\\.$#"
-			count: 1
-			path: app/Services/LeafletJsService.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\LinkedRecordService\\:\\:allLinkedRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Family\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\>\\.$#"
@@ -3551,7 +3336,42 @@ parameters:
 			path: app/Services/MediaFileService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) should return Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:coreModules\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:customModules\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleCustomInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleCustomInterface\\>\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleFooterInterface\\>\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface\\>\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\>\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\>\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
 
@@ -3566,27 +3386,12 @@ parameters:
 			path: app/Services/ModuleService.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleFooterInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleFooterInterface\\)\\: int given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: int\\<\\-1, 1\\> given\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: int\\<\\-1, 1\\> given\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface\\)\\: int given\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\)\\: int given\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\)\\: int given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,T\\>\\:\\:filter\\(\\) expects \\(callable\\(T, int\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: bool given\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
 
