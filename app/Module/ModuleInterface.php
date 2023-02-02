@@ -85,10 +85,12 @@ interface ModuleInterface
     public function description(): string;
 
     /**
-     * Get a the current access level for a module
+     * Get the current access level for a module
      *
-     * @param Tree         $tree
-     * @param class-string $interface
+     * @template T of ModuleInterface
+     *
+     * @param Tree            $tree
+     * @param class-string<T> $interface
      *
      * @return int
      */
