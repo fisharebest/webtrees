@@ -316,6 +316,11 @@ parameters:
 			path: app/Http/Middleware/UseLanguage.php
 
 		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: bool given\\.$#"
+			count: 2
+			path: app/Http/Middleware/UseLanguage.php
+
+		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:map\\(\\) expects callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: Fisharebest\\\\Localization\\\\Locale\\\\LocaleInterface, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: Fisharebest\\\\Localization\\\\Locale\\\\LocaleInterface given\\.$#"
 			count: 1
 			path: app/Http/Middleware/UseLanguage.php
@@ -331,13 +336,8 @@ parameters:
 			path: app/Http/Middleware/UseTheme.php
 
 		-
-			message: "#^Generator expects value type Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\|null, mixed given\\.$#"
-			count: 1
-			path: app/Http/Middleware/UseTheme.php
-
-		-
-			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:get\\(\\) expects string, mixed given\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:filter\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, string\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\)\\: bool given\\.$#"
+			count: 2
 			path: app/Http/Middleware/UseTheme.php
 
 		-
