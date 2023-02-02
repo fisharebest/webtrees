@@ -545,11 +545,13 @@ class ModuleService
     /**
      * Modules which (a) provide a specific function and (b) we have permission to see.
      *
-     * @param class-string  $interface
-     * @param Tree          $tree
-     * @param UserInterface $user
+     * @template T
      *
-     * @return Collection<string,ModuleInterface>
+     * @param class-string<T> $interface
+     * @param Tree            $tree
+     * @param UserInterface   $user
+     *
+     * @return Collection<int,T>
      */
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
@@ -562,14 +564,17 @@ class ModuleService
     /**
      * All modules which provide a specific function.
      *
-     * @param class-string $interface
-     * @param bool         $include_disabled
-     * @param bool         $sort
+     * @template T
      *
-     * @return Collection<string,ModuleInterface>
+     * @param class-string<T> $interface
+     * @param bool            $include_disabled
+     * @param bool            $sort
+     *
+     * @return Collection<int,T>
      */
     public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
+        /** @var Collection<int,T> $modules */
         $modules = $this->all($include_disabled)
             ->filter($this->interfaceFilter($interface));
 
@@ -600,7 +605,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -653,7 +658,7 @@ class ModuleService
     /**
      * All core modules in the system.
      *
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     private function coreModules(): Collection
     {
@@ -671,7 +676,7 @@ class ModuleService
     /**
      * All custom modules in the system.  Custom modules are defined in modules_v4/
      *
-     * @return Collection<string,ModuleCustomInterface>
+     * @return Collection<int,ModuleCustomInterface>
      */
     private function customModules(): Collection
     {
@@ -826,7 +831,7 @@ class ModuleService
     /**
      * During setup, we'll need access to some languages.
      *
-     * @return Collection<string,ModuleLanguageInterface>
+     * @return Collection<int,ModuleLanguageInterface>
      */
     public function setupLanguages(): Collection
     {
@@ -861,7 +866,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Collection<string,ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     public function otherModules(bool $include_disabled = false): Collection
     {
