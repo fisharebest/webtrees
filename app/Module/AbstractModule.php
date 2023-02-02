@@ -209,10 +209,12 @@ abstract class AbstractModule implements ModuleInterface
     }
 
     /**
-     * Get a the current access level for a module
+     * Get the current access level for a module
      *
-     * @param Tree         $tree
-     * @param class-string $interface
+     * @template T
+     *
+     * @param Tree            $tree
+     * @param class-string<T> $interface
      *
      * @return int
      */

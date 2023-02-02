@@ -3341,31 +3341,6 @@ parameters:
 			path: app/Services/ModuleService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleFooterInterface\\>\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleMenuInterface\\>\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\>\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, T\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\>\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
@@ -3382,11 +3357,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\:\\:sort\\(\\) expects \\(callable\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: int\\)\\|int\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\)\\: int\\<\\-1, 1\\> given\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,T\\>\\:\\:filter\\(\\) expects \\(callable\\(T, int\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\)\\: bool given\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
 

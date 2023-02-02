@@ -258,6 +258,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use Psr\Http\Server\MiddlewareInterface;
 use Throwable;
 
 use function app;
@@ -545,7 +546,7 @@ class ModuleService
     /**
      * Modules which (a) provide a specific function and (b) we have permission to see.
      *
-     * @template T
+     * @template T of ModuleInterface
      *
      * @param class-string<T> $interface
      * @param Tree            $tree
@@ -564,40 +565,40 @@ class ModuleService
     /**
      * All modules which provide a specific function.
      *
-     * @template T
+     * @template T of ModuleInterface|MiddlewareInterface
      *
      * @param class-string<T> $interface
      * @param bool            $include_disabled
      * @param bool            $sort
      *
-     * @return Collection<string,T&ModuleInterface>
+     * @return Collection<int,T&ModuleInterface>
      */
     public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
-        /** @var Collection<string,T&ModuleInterface> $modules */
+        /** @var Collection<int,T&ModuleInterface> $modules */
         $modules = $this->all($include_disabled)
             ->filter($this->interfaceFilter($interface));
 
         switch ($interface) {
             case ModuleFooterInterface::class:
-                /** @var Collection<string,T&ModuleInterface> */
+                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->footerComparator());
 
             case ModuleMenuInterface::class:
-                /** @var Collection<string,T&ModuleInterface> */
+                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->menuComparator());
 
             case ModuleSidebarInterface::class:
-                /** @var Collection<string,T&ModuleInterface> */
+                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->sidebarComparator());
 
             case ModuleTabInterface::class:
-                /** @var Collection<string,T&ModuleInterface> */
+                /** @var Collection<int,T&ModuleInterface> */
                 return $modules->sort($this->tabComparator());
 
             default:
                 if ($sort) {
-                    /** @var Collection<string,T&ModuleInterface> */
+                    /** @var Collection<int,T&ModuleInterface> */
                     return $modules->sort($this->moduleComparator());
                 }
 
@@ -756,7 +757,9 @@ class ModuleService
     /**
      * A function filter modules by type
      *
-     * @param class-string $interface
+     * @template T of ModuleInterface|MiddlewareInterface
+     *
+     * @param class-string<T> $interface
      *
      * @return Closure(ModuleInterface):bool
      */
