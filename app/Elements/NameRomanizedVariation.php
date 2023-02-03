@@ -72,7 +72,8 @@ class NameRomanizedVariation extends NamePersonal
         return
             '<div class="input-group">' .
             view('edit/input-addon-edit-name', ['id' => $id]) .
-            '<input class="form-control" style="background-color:#e9ecef" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" readonly="readonly" />' .
+            '<input class="form-control" type="text" id="' . e($id) . '-disabled" name="' . e($name) . '" value="' . e($value) . '" readonly="readonly" disabled="disabled" />' .
+            '<input class="form-control d-none" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
             view('edit/input-addon-keyboard', ['id' => $id]) .
             view('edit/input-addon-help', ['topic' => 'ROMN']) .
             '</div>';

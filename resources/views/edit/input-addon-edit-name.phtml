@@ -22,16 +22,26 @@ use Fisharebest\Webtrees\I18N;
 <script>
   document.getElementById('<?= e($id) ?>-edit').addEventListener('click', function (event) {
     event.preventDefault();
-    let element = document.getElementById('<?= e($id) ?>');
-    element.readOnly = false;
-    element.style.backgroundColor = null; // Initially set to #e9ecef to match input-group-addon
-    element.focus();
+    // Toggle the visibility of the full name inputs
+    // Hide the disable input - does not send any value when posting the form
+    let disabledElement = document.getElementById('<?= e($id) ?>-disabled');
+    disabledElement.classList.add('d-none');
+    // Show the editable input - send value when posting the form
+    let editElement = document.getElementById('<?= e($id) ?>');
+    editElement.classList.remove('d-none');
+    editElement.focus();
 
     this.parentNode.removeChild(this);
   });
   document.addEventListener('DOMContentLoaded', function () {
     let NAME = document.getElementById('<?= e($id) ?>');
+    let NAME_DISABLED = document.getElementById('<?= e($id) ?>-disabled');
     let container = NAME.parentNode.parentNode.parentNode;
+
+    let setNameValue = function(name_value) {
+      NAME.value = name_value;
+      NAME_DISABLED.value = name_value;
+    }
 
     if (NAME.id.endsWith('-INDI-NAME')) {
       // NAME has children at the same level.
@@ -56,21 +66,21 @@ use Fisharebest\Webtrees\I18N;
     );
 
     if (NAME.value === '') {
-      NAME.value = generated_name;
+      setNameValue(generated_name);
     }
     if (NAME.value !== generated_name) {
       document.getElementById('<?= e($id) ?>-edit').click();
     } else {
       let fn = function () {
-        if (NAME.readOnly === true) {
-          NAME.value = webtrees.buildNameFromParts(
+        if (NAME.classList.contains("d-none") === true) {
+          setNameValue(webtrees.buildNameFromParts(
             NPFX ? NPFX.value : '',
             GIVN ? GIVN.value : '',
             SPFX ? SPFX.value : '',
             SURN ? SURN.value : '',
             NSFX ? NSFX.value : '',
             'U',
-          );
+          ));
         }
       };
       NPFX && NPFX.addEventListener('input', fn);
