@@ -306,6 +306,14 @@ class Statistics implements
     }
 
     /**
+     * @return string
+     */
+    public function totalIndisWithSourcesPercentage(): string
+    {
+        return $this->individual_repository->totalIndisWithSourcesPercentage();
+    }
+
+    /**
      * @param string|null $color_from
      * @param string|null $color_to
      *
@@ -348,6 +356,14 @@ class Statistics implements
     public function totalFamsWithSources(): string
     {
         return $this->individual_repository->totalFamsWithSources();
+    }
+
+    /**
+     * @return string
+     */
+    public function totalFamsWithSourcesPercentage(): string
+    {
+        return $this->individual_repository->totalFamsWithSourcesPercentage();
     }
 
     /**
