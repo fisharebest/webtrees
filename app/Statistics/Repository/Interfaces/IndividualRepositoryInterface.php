@@ -95,11 +95,25 @@ interface IndividualRepositoryInterface
     public function totalIndividualsPercentage(): string;
 
     /**
+     * Show the total individuals with sources as a percentage.
+     *
+     * @return string
+     */
+    public function totalIndisWithSourcesPercentage(): string;
+
+    /**
      * Show the total families as a percentage.
      *
      * @return string
      */
     public function totalFamiliesPercentage(): string;
+
+    /**
+     * Show the total families with sources as a percentage.
+     *
+     * @return string
+     */
+    public function totalFamsWithSourcesPercentage(): string;
 
     /**
      * Show the total number of repositories as a percentage.
