@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-31 08:35+0000\n"
+"PO-Revision-Date: 2023-02-04 06:35+0000\n"
 "Last-Translator: beedoinfosec <bader@toposint.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
@@ -14332,7 +14332,9 @@ msgstr ""
 #: resources/views/emails/approve-user-text.phtml:16
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "لقد تمت الموافقة على طلب حساب مستخدم في موقع webtrees %s. بالإمكان الآن الدخول بإستخدام الربط التالي: %s"
+msgstr ""
+"لقد تمت الموافقة على طلب حساب مستخدم في موقع webtrees %s. بإمكانك تسجيل "
+"الدخول الآن بإستخدام الربط التالي: %s"
 
 #: resources/views/verify-success-page.phtml:22
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
