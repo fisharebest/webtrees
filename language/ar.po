@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-02-04 06:35+0000\n"
+"PO-Revision-Date: 2023-02-05 14:06+0000\n"
 "Last-Translator: beedoinfosec <bader@toposint.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ar/>\n"
@@ -1742,7 +1742,7 @@ msgstr "تبني حفيدة"
 #: app/GedcomTag.php:892
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "تبني بنت بنت"
+msgstr "تبني حفيدة"
 
 #: app/GedcomTag.php:901
 msgctxt "son’s daughter"
@@ -1761,7 +1761,7 @@ msgstr "تبني إبن بنت"
 #: app/GedcomTag.php:899
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "تبني إبن إبن"
+msgstr "تبني حفيد"
 
 #: app/GedcomTag.php:908
 msgid "Adoption of a half-brother"
@@ -2632,7 +2632,7 @@ msgstr "معمودية حفيدة"
 #: app/GedcomTag.php:996
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "معمودية بنت بنت"
+msgstr "معمودية حفيدة"
 
 #: app/GedcomTag.php:1005
 msgctxt "son’s daughter"
@@ -2954,7 +2954,7 @@ msgstr "ولادة حفيدة"
 #: app/GedcomTag.php:1054
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "ولادة بنت بنت"
+msgstr "ولادة حفيدة"
 
 #: app/GedcomTag.php:1063
 msgctxt "son’s daughter"
@@ -2973,7 +2973,7 @@ msgstr "ولادة إبن بنت"
 #: app/GedcomTag.php:1061
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr "ولادة إبن إبن"
+msgstr "ولادة حفيد"
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-brother"
@@ -3263,7 +3263,7 @@ msgstr "دفن حفيدة"
 #: app/GedcomTag.php:1116
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "دفن بنت بنت"
+msgstr "دفن حفيدة"
 
 #: app/GedcomTag.php:1125
 msgctxt "son’s daughter"
@@ -3294,7 +3294,7 @@ msgstr "دفن إبن بنت"
 #: app/GedcomTag.php:1123
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "دفن إبن إبن"
+msgstr "دفن حفيد"
 
 #: app/GedcomTag.php:1159
 msgid "Burial of a half-brother"
@@ -3857,7 +3857,7 @@ msgstr "تعميد إبن بنت"
 #: app/GedcomTag.php:1222
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "تعميد إبن إبن"
+msgstr "تعميد حفيد"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-brother"
@@ -4312,7 +4312,7 @@ msgstr "إحراق حفيدة"
 #: app/GedcomTag.php:1273
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr "إحراق بنت بنت"
+msgstr "حرق جثة حفيدة"
 
 #: app/GedcomTag.php:1282
 msgctxt "son’s daughter"
@@ -4339,7 +4339,7 @@ msgstr "إحراق إبن بنت"
 #: app/GedcomTag.php:1280
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr "إحراق إبن إبن"
+msgstr "حرق جثة حفيد"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-brother"
@@ -4885,7 +4885,7 @@ msgstr "وفاة حفيدة"
 #: app/GedcomTag.php:1376
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "وفاة بنت بنت"
+msgstr "وفاة حفيدة"
 
 #: app/GedcomTag.php:1385
 msgctxt "son’s daughter"
@@ -8870,7 +8870,7 @@ msgstr "زواج حفيدة"
 #: app/GedcomTag.php:1594
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "زواج بنت بنت"
+msgstr "زواج حفيدة"
 
 #: app/GedcomTag.php:1603
 msgctxt "son’s daughter"
@@ -8889,7 +8889,7 @@ msgstr "زواج إبن بنت"
 #: app/GedcomTag.php:1601
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "زواج إبن إبن"
+msgstr "زواج حفيد"
 
 #: app/GedcomTag.php:1610
 msgid "Marriage of a half-brother"
@@ -9795,7 +9795,7 @@ msgstr "كاليدونيا الجديدة"
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
-msgstr "نيويورك، نيويورك"
+msgstr "نيويورك، نيويورك، الولايات المتحدة الأمريكية"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -16374,7 +16374,9 @@ msgstr "يجب عدم الموافقة على إنشاء حساب مستخدم �
 
 #: login.php:328
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "ستم إعلامك برسالة إلكترونية عندما يؤكد المستخدم المحتمل طلبه. وعليك إكمال الإجراء بتفعيل إسم المستخدم وإلا فلن يستطيع تسجيل الدخول قبل ذلك."
+msgstr ""
+"سيتم إعلامك برسالة إلكترونية عندما يؤكد المستخدم الجديد طلبه. وعليك إكمال "
+"الإجراء بتفعيل إسم المستخدم وإلا فلن يستطيع العضو تسجيل الدخول قبل ذلك."
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
@@ -17435,7 +17437,7 @@ msgstr "ذهاب إلى فرد جديد"
 #: app/Functions/Functions.php:814
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr "ولد ولد"
+msgstr "حفيد"
 
 #: app/Functions/Functions.php:826
 msgctxt "daughter’s child"
@@ -17455,7 +17457,7 @@ msgstr "بنت ولد"
 #: app/Functions/Functions.php:828
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr "بنت بنت"
+msgstr "حفيدة"
 
 #: app/Functions/Functions.php:928
 msgctxt "son’s daughter"
@@ -17470,7 +17472,7 @@ msgstr "زوج بنت ولد"
 #: app/Functions/Functions.php:1068
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "زوج بنت بنت"
+msgstr "زوج حفيدة"
 
 #: app/Functions/Functions.php:1348
 msgctxt "son’s daughter’s husband"
@@ -17505,7 +17507,7 @@ msgstr "إبن بنت"
 #: app/Functions/Functions.php:930
 msgctxt "son’s son"
 msgid "grandson"
-msgstr "إبن إبن"
+msgstr "حفيد"
 
 #: app/Functions/Functions.php:1056
 msgctxt "child’s son’s wife"
@@ -17520,7 +17522,7 @@ msgstr "زوجة إبن بنت"
 #: app/Functions/Functions.php:1358
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "زوجة إبن إبن"
+msgstr "زوجة حفيد"
 
 #: app/Functions/Functions.php:1639 app/Functions/Functions.php:1654
 #: app/Functions/Functions.php:1667
@@ -18142,12 +18144,12 @@ msgstr "ولد إبن ولد"
 #: app/Functions/Functions.php:1058
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr "ولد ولد بنت"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:1064
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "ولد بنت بنت"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:1078
 msgctxt "daughter’s son’s child"
@@ -18157,7 +18159,7 @@ msgstr "ولد إبن بنت"
 #: app/Functions/Functions.php:1338
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr "ولد ولد إبن"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:1344
 msgctxt "son’s daughter’s child"
@@ -18167,7 +18169,7 @@ msgstr "ولد بنت إبن"
 #: app/Functions/Functions.php:1352
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr "ولد إبن إبن"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:1038
 msgctxt "child’s child’s daughter"
