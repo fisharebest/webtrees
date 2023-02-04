@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-02-04 06:35+0000\n"
+"PO-Revision-Date: 2023-02-05 14:06+0000\n"
 "Last-Translator: beedoinfosec <bader@toposint.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
@@ -255,12 +255,12 @@ msgstr[5] "%s يوماً"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] "عائلة"
-msgstr[1] "عائلة"
-msgstr[2] "عائلتان"
-msgstr[3] "عوائل"
-msgstr[4] "عوائل"
-msgstr[5] "عوائل"
+msgstr[0] "%s عائلة"
+msgstr[1] "%s عائلة"
+msgstr[2] "%s عائلتان"
+msgstr[3] "%s عوائل"
+msgstr[4] "%s عوائل"
+msgstr[5] "%s عوائل"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -1685,7 +1685,7 @@ msgstr "تبني حفيدة"
 #: app/Module/IndividualFactsTabModule.php:413
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "تبني بنت بنت"
+msgstr "تبني حفيدة"
 
 #: app/Module/IndividualFactsTabModule.php:436
 msgctxt "son’s daughter"
@@ -1704,7 +1704,7 @@ msgstr "تبني إبن بنت"
 #: app/Module/IndividualFactsTabModule.php:435
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "تبني إبن إبن"
+msgstr "تبني حفيد"
 
 #: app/Module/IndividualFactsTabModule.php:366
 msgid "Adoption of a half-brother"
@@ -2614,7 +2614,7 @@ msgstr "معمودية حفيدة"
 #: app/Module/IndividualFactsTabModule.php:408
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "معمودية بنت بنت"
+msgstr "معمودية حفيدة"
 
 #: app/Module/IndividualFactsTabModule.php:431
 msgctxt "son’s daughter"
@@ -2956,7 +2956,7 @@ msgstr "ولادة حفيدة"
 #: app/Module/IndividualFactsTabModule.php:398
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "ولادة بنت بنت"
+msgstr "ولادة حفيدة"
 
 #: app/Module/IndividualFactsTabModule.php:421
 msgctxt "son’s daughter"
@@ -2975,7 +2975,7 @@ msgstr "ولادة إبن بنت"
 #: app/Module/IndividualFactsTabModule.php:420
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr "ولادة إبن إبن"
+msgstr "ولادة حفيد"
 
 #: app/Module/IndividualFactsTabModule.php:351
 msgid "Birth of a half-brother"
@@ -3249,7 +3249,7 @@ msgstr "دفن حفيدة"
 #: app/Module/IndividualFactsTabModule.php:521
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "دفن بنت بنت"
+msgstr "دفن حفيدة"
 
 #: app/Module/IndividualFactsTabModule.php:539
 msgctxt "son’s daughter"
@@ -3282,7 +3282,7 @@ msgstr "دفن إبن بنت"
 #: app/Module/IndividualFactsTabModule.php:538
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "دفن إبن إبن"
+msgstr "دفن حفيد"
 
 #: app/Module/IndividualFactsTabModule.php:484
 msgid "Burial of a half-brother"
@@ -3395,7 +3395,7 @@ msgstr "محرر نصوص مطور"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:82
 msgid "CSS and JS"
-msgstr "سي أس أس و جاي أس"
+msgstr "CSS and JS"
 
 #: resources/views/admin/trees.phtml:71
 #: resources/views/lists/datatables-attributes.phtml:31
@@ -3835,7 +3835,7 @@ msgstr "تعميد إبن بنت"
 #: app/Module/IndividualFactsTabModule.php:425
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "تعميد إبن إبن"
+msgstr "تعميد حفيد"
 
 #: app/Module/IndividualFactsTabModule.php:356
 msgid "Christening of a half-brother"
@@ -4386,7 +4386,7 @@ msgstr "إحراق حفيدة"
 #: app/Module/IndividualFactsTabModule.php:526
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr "إحراق بنت بنت"
+msgstr "حرق جثة حفيدة"
 
 #: app/Module/IndividualFactsTabModule.php:544
 msgctxt "son’s daughter"
@@ -4419,7 +4419,7 @@ msgstr "إحراق إبن بنت"
 #: app/Module/IndividualFactsTabModule.php:543
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr "إحراق إبن إبن"
+msgstr "حرق جثة حفيد"
 
 #: app/Module/IndividualFactsTabModule.php:489
 msgid "Cremation of a half-brother"
@@ -5052,7 +5052,7 @@ msgstr "وفاة حفيدة"
 #: app/Module/IndividualFactsTabModule.php:516
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "وفاة بنت بنت"
+msgstr "وفاة حفيدة"
 
 #: app/Module/IndividualFactsTabModule.php:534
 msgctxt "son’s daughter"
@@ -9287,7 +9287,7 @@ msgstr "زواج حفيدة"
 #: app/Module/IndividualFactsTabModule.php:563
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "زواج بنت بنت"
+msgstr "زواج حفيدة"
 
 #: app/Module/IndividualFactsTabModule.php:569
 msgctxt "son’s daughter"
@@ -9306,7 +9306,7 @@ msgstr "زواج إبن بنت"
 #: app/Module/IndividualFactsTabModule.php:568
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "زواج إبن إبن"
+msgstr "زواج حفيد"
 
 #: app/Module/IndividualFactsTabModule.php:580
 msgid "Marriage of a half-brother"
@@ -10260,7 +10260,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
 msgid "New York, New York, United States"
-msgstr "نيويورك، نيويورك"
+msgstr "نيويورك، نيويورك، الولايات المتحدة الأمريكية"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
@@ -17009,7 +17009,9 @@ msgstr "يجب عدم الموافقة على إنشاء حساب مستخدم �
 #: resources/views/emails/register-notify-html.phtml:43
 #: resources/views/emails/register-notify-text.phtml:32
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "ستم إعلامك برسالة إلكترونية عندما يؤكد المستخدم المحتمل طلبه. وعليك إكمال الإجراء بتفعيل إسم المستخدم وإلا فلن يستطيع تسجيل الدخول قبل ذلك."
+msgstr ""
+"سيتم إعلامك برسالة إلكترونية عندما يؤكد المستخدم الجديد طلبه. وعليك إكمال "
+"الإجراء بتفعيل إسم المستخدم وإلا فلن يستطيع العضو تسجيل الدخول قبل ذلك."
 
 #: resources/views/setup/step-5-administrator.phtml:71
 msgid "You will use this to sign in to webtrees."
@@ -18120,7 +18122,7 @@ msgstr "ذهاب إلى فرد جديد"
 #: app/Functions/Functions.php:776
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr "ولد ولد"
+msgstr "حفيد"
 
 #: app/Functions/Functions.php:788
 msgctxt "daughter’s child"
@@ -18140,7 +18142,7 @@ msgstr "بنت ولد"
 #: app/Functions/Functions.php:790
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr "بنت بنت"
+msgstr "حفيدة"
 
 #: app/Functions/Functions.php:890
 msgctxt "son’s daughter"
@@ -18155,7 +18157,7 @@ msgstr "زوج بنت ولد"
 #: app/Functions/Functions.php:1028
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "زوج بنت بنت"
+msgstr "زوج حفيدة"
 
 #: app/Functions/Functions.php:1326
 msgctxt "son’s daughter’s husband"
@@ -18190,7 +18192,7 @@ msgstr "إبن بنت"
 #: app/Functions/Functions.php:892
 msgctxt "son’s son"
 msgid "grandson"
-msgstr "إبن إبن"
+msgstr "حفيد"
 
 #: app/Functions/Functions.php:1016
 msgctxt "child’s son’s wife"
@@ -18205,7 +18207,7 @@ msgstr "زوجة إبن بنت"
 #: app/Functions/Functions.php:1336
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "زوجة إبن إبن"
+msgstr "زوجة حفيد"
 
 #: app/Functions/Functions.php:1712 app/Functions/Functions.php:1731
 #: app/Functions/Functions.php:1743 app/Functions/Functions.php:1754
@@ -18840,12 +18842,12 @@ msgstr "ولد إبن ولد"
 #: app/Functions/Functions.php:1018
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr "ولد ولد بنت"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:1024
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "ولد بنت بنت"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:1038
 msgctxt "daughter’s son’s child"
@@ -18855,7 +18857,7 @@ msgstr "ولد إبن بنت"
 #: app/Functions/Functions.php:1316
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr "ولد ولد إبن"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:1322
 msgctxt "son’s daughter’s child"
@@ -18865,7 +18867,7 @@ msgstr "ولد بنت إبن"
 #: app/Functions/Functions.php:1330
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr "ولد إبن إبن"
+msgstr "ابن الحفيد"
 
 #: app/Functions/Functions.php:998
 msgctxt "child’s child’s daughter"
