@@ -80,13 +80,11 @@ class UseTheme implements MiddlewareInterface
 
         // Last theme used
         yield $themes
-            ->filter(static fn (ModuleThemeInterface $module): bool => $module->name() === Session::get('theme'))
-            ->first();
+            ->first(static fn (ModuleThemeInterface $module): bool => $module->name() === Session::get('theme'));
 
         // Default for site
         yield $themes
-            ->filter(static fn (ModuleThemeInterface $module): bool => $module->name() === Site::getPreference('THEME_DIR'))
-            ->first();
+            ->first(static fn (ModuleThemeInterface $module): bool => $module->name() === Site::getPreference('THEME_DIR'));
 
         // Default for application
         yield new WebtreesTheme();

@@ -139,9 +139,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record);
 
-        $fact = $record->facts()
-            ->filter(fn (Fact $fact): bool => $fact->id() === $fact_id)
-            ->first();
+        $fact = $record->facts()->first(fn (Fact $fact): bool => $fact->id() === $fact_id);
 
         if ($fact instanceof Fact) {
             $date             = $fact->date()->minimumDate()->format('%Y%m%d');
