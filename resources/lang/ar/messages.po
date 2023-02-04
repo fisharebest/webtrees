@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-02-04 06:35+0000\n"
+"PO-Revision-Date: 2023-02-05 14:06+0000\n"
 "Last-Translator: beedoinfosec <bader@toposint.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ar/>\n"
@@ -260,12 +260,12 @@ msgstr "%s غير موجود."
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] "عائلة"
-msgstr[1] "عائلة"
-msgstr[2] "عائلتان"
-msgstr[3] "عوائل"
-msgstr[4] "عوائل"
-msgstr[5] "عوائل"
+msgstr[0] "%s عائلة"
+msgstr[1] "%s عائلة"
+msgstr[2] "%s عائلتان"
+msgstr[3] "%s عوائل"
+msgstr[4] "%s عوائل"
+msgstr[5] "%s عوائل"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:107
@@ -1681,7 +1681,7 @@ msgstr "تبني حفيدة"
 #: app/Services/IndividualFactsService.php:302
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "تبني بنت بنت"
+msgstr "تبني حفيدة"
 
 #: app/Services/IndividualFactsService.php:325
 msgctxt "son’s daughter"
@@ -1700,7 +1700,7 @@ msgstr "تبني إبن بنت"
 #: app/Services/IndividualFactsService.php:324
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "تبني إبن إبن"
+msgstr "تبني حفيد"
 
 #: app/Services/IndividualFactsService.php:255
 msgid "Adoption of a half-brother"
@@ -2559,7 +2559,7 @@ msgstr "معمودية حفيدة"
 #: app/Services/IndividualFactsService.php:297
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "معمودية بنت بنت"
+msgstr "معمودية حفيدة"
 
 #: app/Services/IndividualFactsService.php:320
 msgctxt "son’s daughter"
@@ -2888,7 +2888,7 @@ msgstr "ولادة حفيدة"
 #: app/Services/IndividualFactsService.php:287
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "ولادة بنت بنت"
+msgstr "ولادة حفيدة"
 
 #: app/Services/IndividualFactsService.php:310
 msgctxt "son’s daughter"
@@ -2907,7 +2907,7 @@ msgstr "ولادة إبن بنت"
 #: app/Services/IndividualFactsService.php:309
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr "ولادة إبن إبن"
+msgstr "ولادة حفيد"
 
 #: app/Services/IndividualFactsService.php:240
 msgid "Birth of a half-brother"
@@ -3174,7 +3174,7 @@ msgstr "دفن حفيدة"
 #: app/Services/IndividualFactsService.php:410
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "دفن بنت بنت"
+msgstr "دفن حفيدة"
 
 #: app/Services/IndividualFactsService.php:428
 msgctxt "son’s daughter"
@@ -3207,7 +3207,7 @@ msgstr "دفن إبن بنت"
 #: app/Services/IndividualFactsService.php:427
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "دفن إبن إبن"
+msgstr "دفن حفيد"
 
 #: app/Services/IndividualFactsService.php:373
 msgid "Burial of a half-brother"
@@ -3317,7 +3317,7 @@ msgstr "محرر نصوص مطور"
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:83
 msgid "CSS and JS"
-msgstr "سي أس أس و جاي أس"
+msgstr "CSS and JS"
 
 #: resources/views/admin/trees.phtml:74
 #: resources/views/lists/datatables-attributes.phtml:33
@@ -3747,7 +3747,7 @@ msgstr "تعميد إبن بنت"
 #: app/Services/IndividualFactsService.php:314
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "تعميد إبن إبن"
+msgstr "تعميد حفيد"
 
 #: app/Services/IndividualFactsService.php:245
 msgid "Christening of a half-brother"
@@ -4287,7 +4287,7 @@ msgstr "إحراق حفيدة"
 #: app/Services/IndividualFactsService.php:415
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr "إحراق بنت بنت"
+msgstr "حرق جثة حفيدة"
 
 #: app/Services/IndividualFactsService.php:433
 msgctxt "son’s daughter"
@@ -4320,7 +4320,7 @@ msgstr "إحراق إبن بنت"
 #: app/Services/IndividualFactsService.php:432
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr "إحراق إبن إبن"
+msgstr "حرق جثة حفيد"
 
 #: app/Services/IndividualFactsService.php:378
 msgid "Cremation of a half-brother"
@@ -4941,7 +4941,7 @@ msgstr "وفاة حفيدة"
 #: app/Services/IndividualFactsService.php:405
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "وفاة بنت بنت"
+msgstr "وفاة حفيدة"
 
 #: app/Services/IndividualFactsService.php:423
 msgctxt "son’s daughter"
@@ -9269,7 +9269,7 @@ msgstr "زواج حفيدة"
 #: app/Services/IndividualFactsService.php:452
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "زواج بنت بنت"
+msgstr "زواج حفيدة"
 
 #: app/Services/IndividualFactsService.php:458
 msgctxt "son’s daughter"
@@ -9288,7 +9288,7 @@ msgstr "زواج إبن بنت"
 #: app/Services/IndividualFactsService.php:457
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "زواج إبن إبن"
+msgstr "زواج حفيد"
 
 #: app/Services/IndividualFactsService.php:469
 msgid "Marriage of a half-brother"
@@ -10207,7 +10207,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146
 msgid "New York, New York, United States"
-msgstr "نيويورك، نيويورك"
+msgstr "نيويورك، نيويورك، الولايات المتحدة الأمريكية"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
@@ -16835,7 +16835,9 @@ msgstr "يجب عدم الموافقة على إنشاء حساب مستخدم �
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "ستم إعلامك برسالة إلكترونية عندما يؤكد المستخدم المحتمل طلبه. وعليك إكمال الإجراء بتفعيل إسم المستخدم وإلا فلن يستطيع تسجيل الدخول قبل ذلك."
+msgstr ""
+"سيتم إعلامك برسالة إلكترونية عندما يؤكد المستخدم الجديد طلبه. وعليك إكمال "
+"الإجراء بتفعيل إسم المستخدم وإلا فلن يستطيع العضو تسجيل الدخول قبل ذلك."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
@@ -17869,7 +17871,7 @@ msgstr "ذهاب إلى فرد جديد"
 #: app/Services/RelationshipService.php:505
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr "ولد ولد"
+msgstr "حفيد"
 
 #: app/Services/RelationshipService.php:517
 msgctxt "daughter’s child"
@@ -17889,7 +17891,7 @@ msgstr "بنت ولد"
 #: app/Services/RelationshipService.php:519
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr "بنت بنت"
+msgstr "حفيدة"
 
 #: app/Services/RelationshipService.php:619
 msgctxt "son’s daughter"
@@ -17904,7 +17906,7 @@ msgstr "زوج بنت ولد"
 #: app/Services/RelationshipService.php:757
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "زوج بنت بنت"
+msgstr "زوج حفيدة"
 
 #: app/Services/RelationshipService.php:1055
 msgctxt "son’s daughter’s husband"
@@ -17939,7 +17941,7 @@ msgstr "إبن بنت"
 #: app/Services/RelationshipService.php:621
 msgctxt "son’s son"
 msgid "grandson"
-msgstr "إبن إبن"
+msgstr "حفيد"
 
 #: app/Services/RelationshipService.php:745
 msgctxt "child’s son’s wife"
@@ -17954,7 +17956,7 @@ msgstr "زوجة إبن بنت"
 #: app/Services/RelationshipService.php:1065
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "زوجة إبن إبن"
+msgstr "زوجة حفيد"
 
 #: app/Services/RelationshipService.php:1441
 #: app/Services/RelationshipService.php:1460
@@ -18634,12 +18636,12 @@ msgstr "ولد إبن ولد"
 #: app/Services/RelationshipService.php:747
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr "ولد ولد بنت"
+msgstr "ابن الحفيد"
 
 #: app/Services/RelationshipService.php:753
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr "ولد بنت بنت"
+msgstr "ابن الحفيد"
 
 #: app/Services/RelationshipService.php:767
 msgctxt "daughter’s son’s child"
@@ -18649,7 +18651,7 @@ msgstr "ولد إبن بنت"
 #: app/Services/RelationshipService.php:1045
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr "ولد ولد إبن"
+msgstr "ابن الحفيد"
 
 #: app/Services/RelationshipService.php:1051
 msgctxt "son’s daughter’s child"
@@ -18659,7 +18661,7 @@ msgstr "ولد بنت إبن"
 #: app/Services/RelationshipService.php:1059
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr "ولد إبن إبن"
+msgstr "ابن الحفيد"
 
 #: app/Services/RelationshipService.php:727
 msgctxt "child’s child’s daughter"
