@@ -83,7 +83,7 @@ U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ
      *
      * @return array<array<bool|string>>
      */
-    public function emailProvider(): array
+    public static function emailProvider(): array
     {
         return [
             // Valid emails

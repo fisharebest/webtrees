@@ -40,7 +40,7 @@ class CensusColumnReligionTest extends TestCase
         $individual
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive([['RELI']], [])
+            ->with(self::withConsecutive([['RELI'], []]))
             ->willReturnOnConsecutiveCalls(new Collection(), new Collection());
 
         $census = $this->createMock(CensusInterface::class);
@@ -82,10 +82,7 @@ class CensusColumnReligionTest extends TestCase
         $individual
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['RELI']],
-                []
-            )
+            ->with(self::withConsecutive([['RELI'], []]))
             ->willReturnOnConsecutiveCalls(
                 new Collection(),
                 new Collection([$fact])

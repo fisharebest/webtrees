@@ -140,10 +140,7 @@ class CensusColumnConditionCanadaWidowedMaleTest extends TestCase
         $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
         $family->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
@@ -180,10 +177,7 @@ class CensusColumnConditionCanadaWidowedMaleTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
@@ -317,10 +311,8 @@ class CensusColumnConditionCanadaWidowedMaleTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )->willReturnOnConsecutiveCalls(
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
+            ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection([$fact])
             );
@@ -352,10 +344,8 @@ class CensusColumnConditionCanadaWidowedMaleTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )->willReturnOnConsecutiveCalls(
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
+            ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection([$fact])
             );
@@ -387,10 +377,8 @@ class CensusColumnConditionCanadaWidowedMaleTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )->willReturnOnConsecutiveCalls(
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
+            ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
             );
@@ -422,10 +410,8 @@ class CensusColumnConditionCanadaWidowedMaleTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )->willReturnOnConsecutiveCalls(
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
+            ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
             );
