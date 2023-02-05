@@ -544,7 +544,7 @@ use Illuminate\Support\Collection;
             <?= view('components/radios-inline', ['name' => 'EXPAND_SOURCES', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('EXPAND_SOURCES')]) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Automatically expand sources” configuration setting */
-                I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.') ?>
+                I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page. A yes setting may be overriden by tree privacy settings regarding the display of source details and titles.') ?>
             </div>
         </div>
     </fieldset>
