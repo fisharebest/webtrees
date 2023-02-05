@@ -163,7 +163,7 @@ class GedcomEditServiceTest extends TestCase
      * Data provider for new family facts tests
      * @return array<array<string|array<string>>>
      */
-    public function newFamilyFactsData(): array
+    public static function newFamilyFactsData(): array
     {
         return [
             ['', []],
@@ -177,7 +177,7 @@ class GedcomEditServiceTest extends TestCase
      * Data provider for new inidvidual facts tests
      * @return array<array<string|array<string>>>
      */
-    public function newIndividualFactsData(): array
+    public static function newIndividualFactsData(): array
     {
         return [
             ['', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME']],

@@ -140,10 +140,7 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
@@ -179,10 +176,7 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
@@ -315,10 +309,7 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])
@@ -350,10 +341,7 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])

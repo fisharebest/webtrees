@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use PHPUnit\Framework\Constraint\Callback;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -44,6 +45,7 @@ use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriFactoryInterface;
 
 use function app;
+use function array_shift;
 use function basename;
 use function filesize;
 use function http_build_query;
@@ -342,5 +344,23 @@ class TestCase extends \PHPUnit\Framework\TestCase
         } while ($html !== '');
 
         static::assertSame([], $stack);
+    }
+
+    /**
+     * Workaround for removal of withConsecutive in phpunit 10.
+     *
+     * @param array<int,mixed> $parameters
+     *
+     * @return Callback
+     */
+    protected static function withConsecutive(array $parameters): Callback
+    {
+        return self::callback(static function (mixed $parameter) use ($parameters): bool {
+            static $array = null;
+
+            $array ??= $parameters;
+
+            return $parameter === array_shift($array);
+        });
     }
 }
