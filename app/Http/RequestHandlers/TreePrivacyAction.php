@@ -113,8 +113,8 @@ class TreePrivacyAction implements RequestHandlerInterface
         $show_dead_people           = Validator::parsedBody($request)->string('SHOW_DEAD_PEOPLE');
         $show_living_names          = Validator::parsedBody($request)->string('SHOW_LIVING_NAMES');
         $show_private_relationships = Validator::parsedBody($request)->string('SHOW_PRIVATE_RELATIONSHIPS');
-		$show_source_detail_toggles = Validator::parsedBody($request)->string('SHOW_SOURCE_DETAIL_TOGGLES');
-		$show_source_titles         = Validator::parsedBody($request)->string('SHOW_SOURCE_TITLES');
+	$show_source_detail_toggles = Validator::parsedBody($request)->string('SHOW_SOURCE_DETAIL_TOGGLES');
+	$show_source_titles         = Validator::parsedBody($request)->string('SHOW_SOURCE_TITLES');
 		
         $tree->setPreference('HIDE_LIVE_PEOPLE', $hide_live_people);
         $tree->setPreference('KEEP_ALIVE_YEARS_BIRTH', (string) $keep_alive_years_birth);
@@ -124,8 +124,8 @@ class TreePrivacyAction implements RequestHandlerInterface
         $tree->setPreference('SHOW_DEAD_PEOPLE', $show_dead_people);
         $tree->setPreference('SHOW_LIVING_NAMES', $show_living_names);
         $tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', $show_private_relationships);
-		$tree->setPreference('SHOW_SOURCE_DETAIL_TOGGLES', $show_source_detail_toggles);
-		$tree->setPreference('SHOW_SOURCE_TITLES', $show_source_titles);
+	$tree->setPreference('SHOW_SOURCE_DETAIL_TOGGLES', $show_source_detail_toggles);
+	$tree->setPreference('SHOW_SOURCE_TITLES', $show_source_titles);
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
 
