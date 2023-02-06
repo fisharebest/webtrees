@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PhoneticType
  */
-class PhoneticTypeTest extends AbstractElementTest
+class PhoneticTypeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Death
  */
-class DeathTest extends AbstractElementTest
+class DeathTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

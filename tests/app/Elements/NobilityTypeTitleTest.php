@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\NobilityTypeTitle
  */
-class NobilityTypeTitleTest extends AbstractElementTest
+class NobilityTypeTitleTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

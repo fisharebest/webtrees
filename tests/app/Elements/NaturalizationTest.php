@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Naturalization
  */
-class NaturalizationTest extends AbstractElementTest
+class NaturalizationTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

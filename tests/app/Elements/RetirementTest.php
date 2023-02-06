@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Retirement
  */
-class RetirementTest extends AbstractElementTest
+class RetirementTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

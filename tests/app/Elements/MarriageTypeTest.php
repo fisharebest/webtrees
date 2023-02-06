@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\MarriageType
  */
-class MarriageTypeTest extends AbstractElementTest
+class MarriageTypeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

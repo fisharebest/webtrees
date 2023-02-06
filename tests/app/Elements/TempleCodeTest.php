@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\TempleCode
  */
-class TempleCodeTest extends AbstractElementTest
+class TempleCodeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\ResearchTaskStatus
  */
-class ResearchTaskStatusTest extends AbstractElementTest
+class ResearchTaskStatusTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

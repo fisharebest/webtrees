@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\DemographicDataType
  */
-class DemographicDataTypeTest extends AbstractElementTest
+class DemographicDataTypeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\TimeValue
  */
-class TimeValueTest extends AbstractElementTest
+class TimeValueTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

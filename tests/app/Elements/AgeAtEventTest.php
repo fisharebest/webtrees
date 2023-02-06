@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AgeAtEvent
  */
-class AgeAtEventTest extends AbstractElementTest
+class AgeAtEventTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

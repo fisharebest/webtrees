@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\ReligiousAffiliation
  */
-class ReligiousAffiliationTest extends AbstractElementTest
+class ReligiousAffiliationTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

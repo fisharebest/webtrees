@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\NameOfProduct
  */
-class NameOfProductTest extends AbstractElementTest
+class NameOfProductTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

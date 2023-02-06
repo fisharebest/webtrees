@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Possessions
  */
-class PossessionsTest extends AbstractElementTest
+class PossessionsTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
