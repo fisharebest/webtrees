@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\NationalIdNumber
  */
-class NationalIdNumberTest extends AbstractElementTest
+class NationalIdNumberTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

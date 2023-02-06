@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\OrdinanceProcessFlag
  */
-class OrdinanceProcessFlagTest extends AbstractElementTest
+class OrdinanceProcessFlagTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

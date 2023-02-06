@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\LocationRecord
  */
-class LocationRecordTest extends AbstractElementTest
+class LocationRecordTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

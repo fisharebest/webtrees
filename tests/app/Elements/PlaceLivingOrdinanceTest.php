@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PlaceLivingOrdinance
  */
-class PlaceLivingOrdinanceTest extends AbstractElementTest
+class PlaceLivingOrdinanceTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

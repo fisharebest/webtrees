@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AddressPostalCode
  */
-class AddressPostalCodeTest extends AbstractElementTest
+class AddressPostalCodeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

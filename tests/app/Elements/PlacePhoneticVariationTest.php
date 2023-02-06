@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PlacePhoneticVariation
  */
-class PlacePhoneticVariationTest extends AbstractElementTest
+class PlacePhoneticVariationTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

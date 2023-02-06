@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\CustomFact
  */
-class CustomFactTest extends AbstractElementTest
+class CustomFactTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

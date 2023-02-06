@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
  * @covers \Fisharebest\Webtrees\Elements\AncestralFileNumber
  */
-class AncestralFileNumberTest extends AbstractElementTest
+class AncestralFileNumberTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

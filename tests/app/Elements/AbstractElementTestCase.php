@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Common tests for ElementInterface
  */
-abstract class AbstractElementTest extends TestCase
+abstract class AbstractElementTestCase extends TestCase
 {
     private const EVIL_VALUE = '<script>evil()</script>';
     private const TEST_VALUE = '01 JAN 1970';

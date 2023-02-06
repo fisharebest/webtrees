@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\ScholasticAchievement
  */
-class ScholasticAchievementTest extends AbstractElementTest
+class ScholasticAchievementTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

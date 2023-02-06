@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PhysicalDescription
  */
-class PhysicalDescriptionTest extends AbstractElementTest
+class PhysicalDescriptionTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Burial
  */
-class BurialTest extends AbstractElementTest
+class BurialTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

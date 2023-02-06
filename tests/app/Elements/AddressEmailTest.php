@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AddressEmail
  */
-class AddressEmailTest extends AbstractElementTest
+class AddressEmailTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

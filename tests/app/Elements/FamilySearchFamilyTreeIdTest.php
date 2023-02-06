@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
  * @covers \Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId
  */
-class FamilySearchFamilyTreeIdTest extends AbstractElementTest
+class FamilySearchFamilyTreeIdTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

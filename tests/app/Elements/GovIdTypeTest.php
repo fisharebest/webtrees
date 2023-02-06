@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\GovIdType
  */
-class GovIdTypeTest extends AbstractElementTest
+class GovIdTypeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

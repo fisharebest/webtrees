@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\SexValue
  */
-class SexValueTest extends AbstractElementTest
+class SexValueTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

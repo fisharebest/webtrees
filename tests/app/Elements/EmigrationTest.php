@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Emigration
  */
-class EmigrationTest extends AbstractElementTest
+class EmigrationTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

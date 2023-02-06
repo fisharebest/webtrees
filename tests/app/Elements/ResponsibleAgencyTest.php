@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\ResponsibleAgency
  */
-class ResponsibleAgencyTest extends AbstractElementTest
+class ResponsibleAgencyTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

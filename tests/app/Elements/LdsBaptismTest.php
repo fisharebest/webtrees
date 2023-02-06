@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\LdsBaptism
  */
-class LdsBaptismTest extends AbstractElementTest
+class LdsBaptismTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

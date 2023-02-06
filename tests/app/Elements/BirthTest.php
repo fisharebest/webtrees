@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Birth
  */
-class BirthTest extends AbstractElementTest
+class BirthTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

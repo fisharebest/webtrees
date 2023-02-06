@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\MediaRecord
  */
-class MediaRecordTest extends AbstractElementTest
+class MediaRecordTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
