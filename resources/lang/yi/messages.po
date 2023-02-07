@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-19 08:38+0000\n"
+"PO-Revision-Date: 2023-02-08 18:35+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -6627,7 +6627,7 @@ msgstr "טעקע גרייס"
 
 #: app/Functions/Functions.php:45
 msgid "File successfully uploaded"
-msgstr "טעקע צופֿעליקערט מיט הצלחה"
+msgstr "טעקע ופּלאָאַדעד מיט הצלחה"
 
 #. I18N: gedcom tag FILE
 #: app/Factories/ElementFactory.php:1047 app/Factories/ElementFactory.php:1311
@@ -7823,41 +7823,57 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:259
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
 msgstr ""
+"אויב צוויי משפּחה ביימער נוצן די זעלבע מידיאַ טעקע, זיי וועלן קענען צו טיילן "
+"מידיאַ טעקעס. אויב זיי נוצן פאַרשידענע מידיאַ פאָלדערס, זייער מידיאַ טעקעס "
+"וועט זיין געהאלטן באַזונדער."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:274
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr ""
+"אויב איר זענט זארגן אַז יוזערז זאלן ופּלאָאַד ניט פאַסיק בילדער, איר קענען "
+"באַגרענעצן מעדיע ופּלאָאַדס בלויז צו פֿאַרוואַלטערס."
 
 #: resources/views/errors/database-connection.phtml:20
 msgid "If you are the website administrator, you should check that:"
 msgstr ""
+"אויב איר זענט דער וועבזייטל אַדמיניסטראַטאָר, איר זאָל קאָנטראָלירן אַז:"
 
 #: resources/views/errors/database-connection.phtml:35
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
 msgstr ""
+"אויב איר קענען נישט סאָלווע די פּראָבלעם זיך, איר קענען פרעגן פֿאַר הילף אין "
+"די גרופּעס אין <a href=\"https://webtrees.net\">webtrees.net</a>."
 
 #: resources/views/setup/step-4-database-mysql.phtml:59
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
 msgstr ""
+"אויב איר פאַרבינדן צו די דאַטאַבייס מיט אַ UNIX קאָנטאַקט, אַרייַן דעם דרך "
+"דאָ און לאָזן די פּאָרט נומער ליידיק."
 
 #: resources/views/admin/trees-import.phtml:103
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"אויב איר האָט באשאפן דעם GEDCOM טעקע מיט גענעאלאגיע ווייכווארג וואָס אָמיט "
+"ספּייסאַז ווען ספּליטינג לאַנג שורות, סעלעקטירן דעם אָפּציע צו ריינסערט די "
+"פעלנדיק ספּייסאַז."
 
 #: resources/views/emails/password-request-html.phtml:26
 #: resources/views/emails/password-request-text.phtml:18
 msgid "If you did not request a new password, please ignore this message."
 msgstr ""
+"אויב איר האָט נישט געבעטן אַ נייַ פּאַראָל, ביטע איגנאָרירן דעם אָנזאָג."
 
 #: resources/views/emails/register-user-html.phtml:34
 #: resources/views/emails/register-user-text.phtml:22
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr ""
+msgstr "אויב איר האָט נישט געבעטן אַ חשבון, איר קענען נאָר ויסמעקן דעם אָנזאָג."
 
 #: resources/views/modals/media-file-fields.phtml:76
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
 msgstr ""
+"אויב איר האָבן אַ גרויס נומער פון מידיאַ טעקעס, איר קענען אָרגאַניזירן זיי "
+"אין פאָלדערס און סובפאָלדערס."
 
 #: resources/views/admin/trees-import.phtml:96
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -7869,24 +7885,36 @@ msgstr ""
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
+"אויב איר אויסקלייַבן אַ אַנדערש טעקע, איר מוזן אויך מאַך אַלע טעקעס (אַחוץ "
+"config.ini.php, index.php און .htaccess) פון די יגזיסטינג טעקע צו די נייַע "
+"טעקע."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:258
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
 msgstr ""
+"אויב איר אויסקלייַבן אַ אַנדערש טעקע, איר מוזן אויך מאַך קיין מידיאַ טעקעס "
+"פון די יגזיסטינג טעקע צו די נייַע."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:105
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr ""
+"אויב איר ווייַזן לעבעדיק מענטשן צו וויזאַטערז, אַלע אנדערע פּריוואַטקייט "
+"ריסטריקשאַנז זענען איגנאָרירט. טאָן דאָס בלויז אויב אַלע די דאַטן אין דיין "
+"בוים זענען עפנטלעך."
 
 #: resources/views/setup/step-2-server-checks.phtml:80
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
 msgstr ""
+"אויב איר פּרובירן צו זייַן העכער פֿ די גבֿולן, איר קען דערפאַרונג סערווער "
+"צייט און ליידיק בלעטער."
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php:42
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"אויב איר נוצן איינער פון די פאלגענדע טראַקינג און אַנאַליטיקס באַדינונגס, "
+"וועבטריעס קענען אויטאָמאַטיש לייגן די טראַקינג קאָודז."
 
 #: app/GedcomTag.php:1254 app/Http/RequestHandlers/ManageMediaData.php:320
 msgid "Image dimensions"
@@ -7894,7 +7922,7 @@ msgstr "בילד ויסמעסטונג"
 
 #: resources/views/admin/trees-preferences.phtml:331
 msgid "Images without watermarks"
-msgstr ""
+msgstr "בילדער אָן וואָטערמאַרקס"
 
 #. I18N: gedcom tag IMMI
 #: app/Factories/ElementFactory.php:1211 app/GedcomTag.php:745
@@ -7913,11 +7941,11 @@ msgstr "אַרייַנפיר אַ GEDCOM טעקע"
 #: app/Http/RequestHandlers/ImportThumbnailsPage.php:47
 #: resources/views/admin/control-panel.phtml:735
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "ימפּאָרט פערזענלעך צוגעפאַסט טהומבנאַילס פֿון וועבטריעס ווערסיע 1"
 
 #: app/Http/RequestHandlers/MapDataImportPage.php:65
 msgid "Import geographic data"
-msgstr ""
+msgstr "אַרייַנפיר דזשיאַגראַפיק דאַטן"
 
 #: resources/views/admin/trees-import.phtml:88
 msgid "Import preferences"
@@ -7927,24 +7955,57 @@ msgstr "אַרייַנפיר אָפּציעס"
 #: resources/views/admin/trees-renumber.phtml:22
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
+"אין אַ משפּחה בוים, יעדער רעקאָרד האט אַן ינערלעך רעפֿערענץ נומער (גערופן אַ "
+"\"XREF\") אַזאַ ווי \"F123\" אָדער \"ר14\"."
 
 #: resources/views/help/romanized.phtml:8
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"אין פילע קאַלטשערז, עס איז געוויינטלעך צו האָבן אַ טראדיציאנעלן נאָמען "
+"אויסלייגט אין די טראדיציאנעלן אותיות און אַ ראָמאַנייזד ווערסיע פון דעם נאָ"
+"מען ווי עס וואָלט זיין אויסלייגט אָדער פּראַנאַונסט אין שפּראַכן באזירט אויף "
+"די לאַטייַן אלפאבעט, אַזאַ ווי ענגליש.<br><br>אויב איר בעסער וועלן צו נוצן אַ"
+" ניט-לאַטייַן אלפאבעט אַזאַ ווי העברעיש, גריכיש, רוסיש, כינעזיש אָדער אַראַ"
+"ביש צו אַרייַן דעם נאָמען אין די נאָרמאַל נאָמען פעלדער, דעמאָלט איר קענען "
+"נוצן דעם פעלד צו אַרייַן די זעלבע נאָמען ניצן די לאַטייַן אלפאבעט. ביידע "
+"ווערסיעס פון דעם נאָמען וועלן דערשייַנען אין רשימות און טשאַרץ.<br><br>כאָטש "
+"דאָס פעלד איז מיטן נאָמען \"ראָמאַניזעד\", עס איז נישט באגרענעצט צו אַנטהאַ"
+"לטן בלויז אותיות באזירט אויף די לאַטייַן אלפאבעט. דאָס קען זיין געוויינט מיט "
+"יאַפּאַניש נעמען, ווו דריי פאַרשידענע אַלפאַבעץ קען פּאַסירן."
 
 #: resources/views/help/hebrew.phtml:8
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
+"אין פילע קאַלטשערז, עס איז געוועיינטלעך צו האָבן אַ טראדיציאנעלן נאָמען ספּ"
+"עלד אין די טראדיציאנעלן אותיות און אַ ראָמאַנייזד ווערסיע פון דעם נאָמען ווי "
+"עס וואָלט זיין אויסלייגט אָדער פּראַנאַונסט אין שפּראַכן באזירט אויף די "
+"לאַטייַן אלפאבעט, אַזאַ ווי ענגליש.<br><br>אויב איר בעסער וועלן צו נוצן די "
+"לאַטייַן אלפאבעט צו אַרייַן דעם נאָמען אין די נאָרמאַל נאָמען פעלדער, איר "
+"קענט נוצן דעם פעלד צו אַרייַן די זעלבע נאָמען אין די ניט-לאַטייַן אלפאבעט "
+"אַזאַ ווי גריכיש, העברעיש, רוסיש, אַראַביש אָדער כינעזיש. ביידע ווערסיעס פון "
+"דעם נאָמען וועלן דערשייַנען אין רשימות און טשאַרץ.<br><br>כאָטש דאָס פעלד "
+"איז מיטן נאָמען \"עברעיש\", איז עס נישט באגרענעצט צו אַנטהאַלטן בלויז "
+"העברעיש אותיות."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:135
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
 msgstr ""
+"אין עטלעכע קאַלענדאַרס, טעג אָנהייבן בייַ האַלבנאַכט. אין אנדערע קאַלענדאַ"
+"רס, טעג אָנהייבן בייַ זונ - ונטערגאַנג. דער קאַנווערזשאַן פּראָצעס טוט נישט "
+"נעמען אין חשבון די צייט, אַזוי פֿאַר קיין געשעעניש וואָס אַקערז צווישן זונ - "
+"ונטערגאַנג און האַלבנאַכט, די קאַנווערזשאַן צווישן די טייפּס פון קאַלענדאַרס "
+"וועט זיין איין טאָג אויס."
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:126
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr ""
+"אין עטלעכע לענדער, פּריוואַטקייט געזעצן אָנוועווענדט ניט בלויז צו לעבעדיק "
+"מענטשן אָבער אויך צו יענע וואָס זענען לעצטנס געשטארבן. די אָפּציע וועט לאָזן "
+"איר צו פאַרברייטערן די פּריוואַטקייט כּללים פֿאַר לעבעדיק מענטשן צו יענע וואָ"
+"ס זענען געבוירן אָדער געשטארבן אין אַ ספּעציפֿיש נומער פון יאָרן. לאָזן די "
+"וואַלועס ליידיק צו דיסייבאַל דעם שטריך."
 
 #: app/Http/RequestHandlers/CalendarPage.php:129
 msgid "In this month…"
@@ -7969,7 +8030,7 @@ msgstr ""
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr ""
+msgstr "אַרייַננעמען אַליאַסן (דעקנאָמען)"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
@@ -7992,11 +8053,11 @@ msgstr "אַרייַננעמען אונטער טעקען"
 
 #: resources/views/modules/custom-css-js/edit.phtml:39
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "אַרייַננעמען די <code>&lt;script&gt;&lt;/script&gt;</code> טאַגס."
 
 #: resources/views/modules/custom-css-js/edit.phtml:27
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "אַרייַננעמען די <code>&lt;style&gt;&lt;/style&gt;</code> טאַגס."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
@@ -8011,7 +8072,7 @@ msgstr "אינדיע"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:113 app/GedcomCode/GedcomCodeTemp.php:405
 msgid "Indianapolis, Indiana, United States"
-msgstr ""
+msgstr "אינדיאנאפאליס, אינדיאנא, פאראייניגטע שטאטן"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -8068,7 +8129,7 @@ msgstr "יחיד פֿאַרשפּרייטונג טשאַרט"
 
 #: resources/views/admin/control-panel.phtml:635
 msgid "Individual page"
-msgstr ""
+msgstr "יחיד בלאַט"
 
 #: resources/views/admin/trees-preferences.phtml:437
 msgid "Individual pages"
@@ -8077,7 +8138,7 @@ msgstr "פּערזענלעך בלעטער"
 #: resources/views/admin/users-edit.phtml:291
 #: resources/views/edit-account-page.phtml:58
 msgid "Individual record"
-msgstr ""
+msgstr "יחיד רעקאָרד"
 
 #: resources/views/modules/gedcom_stats/config.phtml:58
 #: resources/views/modules/gedcom_stats/statistics.phtml:211
@@ -8150,19 +8211,19 @@ msgstr "וויקלקינד"
 #: app/Elements/RelationIsDescriptor.php:114
 #: app/GedcomCode/GedcomCodeRela.php:246
 msgid "Informant"
-msgstr ""
+msgstr "אינפאָרמאַנט"
 
 #: app/Elements/RelationIsDescriptor.php:83
 #: app/GedcomCode/GedcomCodeRela.php:243
 msgctxt "FEMALE"
 msgid "Informant"
-msgstr ""
+msgstr "אינפאָרמאַנטין"
 
 #: app/Elements/RelationIsDescriptor.php:62
 #: app/GedcomCode/GedcomCodeRela.php:239
 msgctxt "MALE"
 msgid "Informant"
-msgstr ""
+msgstr "אינפאָרמאַנט"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:179 app/Module/ChartsBlockModule.php:271
@@ -8181,23 +8242,23 @@ msgstr "ינטעראַקטיוו בוים פון %s"
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:306 app/GedcomTag.php:1140
 msgid "Interment"
-msgstr ""
+msgstr "קבורה"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
-msgstr ""
+msgstr "אינערלעכער אָנזאַגן"
 
 #: app/Services/MessageService.php:227
 msgid "Internal messaging with emails"
-msgstr ""
+msgstr "אינערלעכער אָנזאַגן מיט אימייל"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:158
 msgid "Invalid GEDCOM file - no header record found."
-msgstr ""
+msgstr "פאַרקריפּלט GEDCOM טעקע - קיין טיטל רעקאָרד געפונען."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "אומגילטיק GEDCOM רעקאָרד"
 
 #: app/Date.php:381
 msgid "Invalid date"
@@ -8444,7 +8505,7 @@ msgstr "יוני"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:116 app/GedcomCode/GedcomCodeTemp.php:414
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "קאַנסאַס סיטי, מאַזעראַ, פאַרייניקטע שטאַטן"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:274
@@ -8458,7 +8519,7 @@ msgstr "האַלטן בילדער"
 
 #: resources/views/modals/on-screen-keyboard.phtml:51
 msgid "Keep open"
-msgstr ""
+msgstr "האַלטן אָפֿן"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:945
@@ -8475,7 +8536,7 @@ msgstr "קעניע"
 
 #: app/Module/HtmlBlockModule.php:192
 msgid "Keyword examples"
-msgstr ""
+msgstr "קיווערד טערמינען"
 
 #: app/Date/JalaliDate.php:261
 msgctxt "Abbreviation for Persian month: Khordad"
@@ -8568,7 +8629,7 @@ msgstr "מאָרמאָן טבילה"
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1266 app/GedcomTag.php:949
 msgid "LDS child sealing"
-msgstr ""
+msgstr "מאָרמאָן קינד פלאָמבע"
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1168 app/GedcomTag.php:594
@@ -8583,12 +8644,12 @@ msgstr "LDS געבונג"
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1022 app/GedcomTag.php:958
 msgid "LDS spouse sealing"
-msgstr ""
+msgstr "מאָרמאָן מאַנ/ווייב שטעמפל"
 
 #: app/Factories/ElementFactory.php:362 app/Factories/ElementFactory.php:376
 #: app/Factories/ElementFactory.php:380 app/Factories/ElementFactory.php:395
 msgid "Label"
-msgstr ""
+msgstr "עטיקעט"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -8736,7 +8797,7 @@ msgstr "לאָזן פּאַראָל פּוסט אויב איר ווילן צו �
 
 #: resources/views/admin/media-upload.phtml:51
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "לאָזן דעם פּאָזיציע ליידיק צו האַלטן די אָריגינעל טעקע נאָמען"
 
 #: resources/views/lists/families-table.phtml:184
 #: resources/views/lists/individuals-table.phtml:225
@@ -8751,7 +8812,7 @@ msgstr "לבנון"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:120
 msgid "Legacy URLs"
-msgstr ""
+msgstr "לעגאַט URL ס"
 
 #. I18N: gedcom tag LEGA
 #: app/Factories/ElementFactory.php:858 app/GedcomTag.php:764
@@ -8825,7 +8886,7 @@ msgstr "לינק מידיאַ חפֿצים צו פאקטן און געשעעני
 #: resources/views/emails/verify-notify-html.phtml:41
 #: resources/views/emails/verify-notify-text.phtml:27
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "לינק דעם באַניצער חשבון צו אַ יחיד."
 
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:56
 #: resources/views/modules/relatives/tab.phtml:125
@@ -8916,24 +8977,24 @@ msgstr "אָרט"
 #: resources/views/admin/merge-records-step-1.phtml:61
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "פלעצער"
 
 #: app/Elements/RelationIsDescriptor.php:115
 #: app/GedcomCode/GedcomCodeRela.php:257
 msgid "Lodger"
-msgstr ""
+msgstr "קוואַרטיראַנט"
 
 #: app/Elements/RelationIsDescriptor.php:84
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgctxt "FEMALE"
 msgid "Lodger"
-msgstr ""
+msgstr "קוואַרטיראַנטקע"
 
 #: app/Elements/RelationIsDescriptor.php:63
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Lodger"
-msgstr ""
+msgstr "קוואַרטיראַנט"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:121 app/GedcomCode/GedcomCodeTemp.php:429
@@ -8949,6 +9010,9 @@ msgstr "לאנדאן, ענגלאנד"
 #: resources/views/admin/trees-preferences.phtml:371
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
 msgstr ""
+"לאנגע רשימות פון מענטשן מיט דעם זעלבן פאַמיליע קענען זיין צעבראכן אין "
+"קלענערער סאַב-רשימות לויט דער ערשטער בריוו פון דעם יחיד ס געגעבן נאָמען. צו "
+"פֿאַרהאַלטן סאַב-ליסטינג גאָר, שטעלן דעם אָפּציע צו נול."
 
 #: resources/views/statistics/families/marriage-length.phtml:22
 msgid "Longest marriage"
@@ -9085,13 +9149,13 @@ msgstr "מאלטא"
 #: resources/views/admin/trees-renumber.phtml:17
 #: resources/views/admin/trees-unconnected.phtml:21
 msgid "Manage family trees"
-msgstr ""
+msgstr "פירן משפּחה ביימער"
 
 #: app/Http/RequestHandlers/ManageMediaPage.php:68
 #: resources/views/admin/control-panel.phtml:717
 #: resources/views/admin/media-upload.phtml:18
 msgid "Manage media"
-msgstr ""
+msgstr "פירן מידיאַ"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:108
@@ -9103,17 +9167,17 @@ msgstr "פאַרוואַלטער"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Managers"
-msgstr ""
+msgstr "אַנפֿירערס"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:127 app/GedcomCode/GedcomCodeTemp.php:447
 msgid "Manaus, Brazil"
-msgstr ""
+msgstr "מאנאוס, בראזיל"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:128 app/GedcomCode/GedcomCodeTemp.php:450
 msgid "Manhattan, New York, United States"
-msgstr ""
+msgstr "מאנהעטן, ניו יארק, פאראייניגטע שטאטן"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:129 app/GedcomCode/GedcomCodeTemp.php:453
@@ -9134,6 +9198,9 @@ msgstr "קסאַוו יאַד"
 #: resources/views/admin/trees-preferences.phtml:653
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr ""
+"פילע גענעאלאגיע מגילה שאַפֿן GEDCOM טעקעס מיט צוגעפאַסטער טאַגס, און "
+"Webtrees פֿאַרשטיין רובֿ פון זיי. ווען ניט דערקענן טאַגס זענען געפֿונען, דעם "
+"אָפּציע דערלויבט איר צו איגנאָרירן זיי אָדער ווייַזן אַ ווארנונג אָנזאָג."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:71
@@ -9258,7 +9325,7 @@ msgstr "חתונה אָנהייב סטאַטוס"
 #. I18N: gedcom tag _MBON
 #: app/Factories/ElementFactory.php:269 app/GedcomTag.php:1159
 msgid "Marriage bond"
-msgstr ""
+msgstr "חתונה בונד"
 
 #: app/Statistics/Google/ChartDistribution.php:348
 msgid "Marriage by country"
@@ -9542,7 +9609,7 @@ msgstr "מעדיע טעקע"
 
 #: resources/views/admin/media-upload.phtml:35
 msgid "Media file to upload"
-msgstr "מעדיע טעקע צו צופֿעליקער"
+msgstr "מעדיע טעקע צו ופּלאָאַדירן"
 
 #. I18N: %s is the name of a folder.
 #: resources/views/admin/trees-export.phtml:94
@@ -14508,12 +14575,12 @@ msgstr ""
 #: app/Http/RequestHandlers/UploadMediaAction.php:127
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr "דער טעקע %s איז צופֿעליקערט."
+msgstr "דער טעקע %s איז ופּלאָאַדעד."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:52
 msgid "The file was only partially uploaded. Please try again."
-msgstr "די טעקע איז געווען בלויז טייל צופֿעליקערט. ביטע פּרובירן ווידער."
+msgstr "די טעקע איז געווען בלויז טייל ופּלאָאַדעד. ביטע פּרובירן ווידער."
 
 #. I18N: %s is a filename
 #: resources/views/media-page.phtml:132
@@ -16290,7 +16357,7 @@ msgstr ""
 #: resources/views/admin/media-upload.phtml:23
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr ""
-"צופֿעליקער איינער אָדער מער מידיאַ טעקעס פון דיין היגע קאָמפּיוטער. מעדיע "
+"ופּלאָאַד איינער אָדער מער מידיאַ טעקעס פון דיין היגע קאָמפּיוטער. מעדיע "
 "טעקעס קענען זיין בילדער, ווידעא, אַודיאָ אָדער אנדערע פֿאָרמאַטירונגען."
 
 #. I18N: Name of a country or state
@@ -21114,7 +21181,7 @@ msgstr "דערהײַנטיק"
 #. I18N: A button label.
 #: resources/views/admin/media-upload.phtml:74
 msgid "upload"
-msgstr "אַרויפֿלאַדן"
+msgstr "ופּלאָאַד"
 
 #. I18N: A button label.
 #: resources/views/branches-page.phtml:53
