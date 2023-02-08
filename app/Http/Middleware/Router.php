@@ -88,15 +88,17 @@ class Router implements MiddlewareInterface
 
                 return Registry::responseFactory()->redirectUrl($uri, StatusCodeInterface::STATUS_PERMANENT_REDIRECT);
             }
+
+            $pretty = $request;
         } else {
             // Turn the ugly URL into a pretty one, so the router can parse it.
-            $uri     = $request->getUri()->withPath($url_route);
-            $request = $request->withUri($uri);
+            $uri    = $request->getUri()->withPath($url_route);
+            $pretty = $request->withUri($uri);
         }
 
         // Match the request to a route.
         $matcher = $this->router_container->getMatcher();
-        $route   = $matcher->match($request);
+        $route   = $matcher->match($pretty);
 
         // No route matched?
         if ($route === false) {
