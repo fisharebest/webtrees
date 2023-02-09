@@ -67,6 +67,7 @@ class BadBotBlocker implements MiddlewareInterface
         'AhrefsBot',
         'Amazonbot', // Until it understands crawl-delay and noindex / nofollow
         'AspiegelBot',
+        'Awario', // Brand management
         'Barkrowler',
         'BLEXBot',
         'DataForSEO',
