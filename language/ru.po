@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-16 12:53+0000\n"
-"Last-Translator: aslanukva <iulon77@gmail.com>\n"
+"PO-Revision-Date: 2023-02-11 14:35+0000\n"
+"Last-Translator: ol810 <uolega@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ru/>\n"
 "Language: ru\n"
@@ -9686,7 +9686,7 @@ msgstr "Новая Каледония"
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
-msgstr "Нью-Йорк, Нью-Йорк"
+msgstr "Нью-Йорк, Нью-Йорк, США"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
