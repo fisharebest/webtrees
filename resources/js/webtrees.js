@@ -692,7 +692,7 @@
         anchor.href = '#';
         anchor.setAttribute('aria-label', config.i18n.reset); /* Firefox doesn't yet support element.ariaLabel */
         anchor.title = config.i18n.reset;
-        anchor.role = 'button';
+        anchor.setAttribute('role', 'button');
         anchor.innerHTML = config.icons.reset;
         anchor.onclick = resetCallback;
 
@@ -708,6 +708,7 @@
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         const anchor = L.DomUtil.create('a', 'leaflet-control-fullscreen', container);
 
+        anchor.href = '#';
         anchor.setAttribute('role', 'button');
         anchor.dataset.wtFullscreen = '.wt-fullscreen-container';
         anchor.innerHTML = config.icons.fullScreen;
