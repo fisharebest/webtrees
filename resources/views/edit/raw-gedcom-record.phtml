@@ -60,7 +60,7 @@ use Fisharebest\Webtrees\Webtrees;
                 <?= I18N::translate('Add a fact') ?>
             </label>
             <input type="hidden" name="fact_id[]" value="">
-            <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-add" name="fact[]" rows="5"></textarea>
+            <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-add" name="fact[]" rows="5" data-wt-pattern="<?= e(Gedcom::REGEX_FACT) ?>"></textarea>
         </div>
     </div>
 
