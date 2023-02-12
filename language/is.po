@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-21 19:50+0000\n"
+"PO-Revision-Date: 2023-02-13 16:35+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -3656,7 +3656,9 @@ msgstr "Börn þeirra "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr "Börn taka fornafn í stað eftirnafns."
+msgstr ""
+"Börn taka fornafn föðurs (+ son ef sonur en + dóttir ef dóttir) í "
+"eignarfalli í stað eftirnafns."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
@@ -6899,7 +6901,7 @@ msgstr "Skírnarnafn"
 #. I18N: gedcom tag GIVN
 #: app/GedcomTag.php:504
 msgid "Given names"
-msgstr "Skírnarnafn/-nöfn"
+msgstr "Eiginnöfn"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
@@ -7717,7 +7719,7 @@ msgstr "Einstaklingar með heimildir"
 #: famlist.php:255 indilist.php:255
 #, php-format
 msgid "Individuals with surname %s"
-msgstr "Einstaklingar með eftirnöfn %s"
+msgstr "Einstaklingar með eftirnafn %s"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6776
@@ -13510,7 +13512,7 @@ msgstr "Eftirnafn"
 
 #: app/Stats.php:1638 statistics.php:658
 msgid "Surname distribution chart"
-msgstr "Eftirnafna dreifingargraf"
+msgstr "Dreifingargraf eftirnafna"
 
 #: admin_trees_config.php:1151
 msgid "Surname list style"
@@ -13523,11 +13525,11 @@ msgstr "Valmöguleiki eftirnafns"
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:792
 msgid "Surname prefix"
-msgstr "Forskeyti fornafns"
+msgstr "Forskeyti eftirnafns"
 
 #: admin_trees_config.php:2092
 msgid "Surname tradition"
-msgstr "Eftirnafna venja"
+msgstr "Eftirnafnavenja"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -13728,7 +13730,7 @@ msgstr ""
 "sem er alltaf tekið úr reitnum <b> nafn </b>. Hægt er að nota þennan reit "
 "til að raða eftirnöfnum með eða án forskeytis (Gogh / van Gogh) og til að "
 "flokka stafsetningarafbrigði eða beygingu (Kowalski / Kowalska). Ef "
-"einstaklingur þarf að vera skráður undir fleiri en einu ættarnafni ætti "
+"einstaklingur þarf að vera skráður undir fleiri en einu eftirnafni ætti "
 "hvert nafn að vera aðgreint með kommu."
 
 #: admin_trees_manage.php:148
