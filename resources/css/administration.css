@@ -57,11 +57,14 @@ h4 {
 }
 
 /* Location edit maps */
-.wt-location-edit-map {
-    height: 55vh;
+.wt-location-page {
+    height: 75vh;
+}
+:fullscreen .wt-location-page {
+    height: 100%;
 }
 
-:fullscreen .wt-location-edit-map {
+.wt-location-edit-map {
     height: 100%;
 }
 
