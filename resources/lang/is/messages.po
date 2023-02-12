@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-21 19:50+0000\n"
+"PO-Revision-Date: 2023-02-13 16:35+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -3547,7 +3547,9 @@ msgstr "Börn þeirra "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition/IcelandicSurnameTradition.php:52
 msgid "Children take a patronym instead of a surname."
-msgstr "Börn taka fornafn föðurs (+ son) eða móðurs (+ dóttir) í eignarfalli í stað fjölskyldunafns."
+msgstr ""
+"Börn taka fornafn föðurs (+ son ef sonur en + dóttir ef dóttir) í "
+"eignarfalli í stað eftirnafns."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition/SpanishSurnameTradition.php:53
@@ -7049,7 +7051,7 @@ msgstr "Eiginnafn"
 #: resources/views/lists/given-names-table.phtml:23
 #: resources/views/lists/individuals-table.phtml:163
 msgid "Given names"
-msgstr "Eiginnafn/-nöfn"
+msgstr "Eiginnöfn"
 
 #: app/Elements/RelationIsDescriptor.php:112
 msgid "Godchild"
@@ -7921,7 +7923,7 @@ msgstr "Einstaklingar með heimildir"
 #: app/Module/IndividualListModule.php:408
 #, php-format
 msgid "Individuals with surname %s"
-msgstr "Einstaklingar með eftirnöfn %s"
+msgstr "Einstaklingar með eftirnafn %s"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:247
@@ -13918,7 +13920,7 @@ msgstr "Eftirnafn"
 
 #: app/Statistics/Google/ChartDistribution.php:295
 msgid "Surname distribution chart"
-msgstr "Eftirnafna dreifingargraf"
+msgstr "Dreifingargraf eftirnafna"
 
 #: resources/views/admin/trees-preferences.phtml:336
 msgid "Surname list style"
@@ -13930,18 +13932,18 @@ msgstr "Valmöguleiki eftirnafns"
 
 #: app/Gedcom.php:691 app/Gedcom.php:705 app/Gedcom.php:708
 msgid "Surname prefix"
-msgstr "Forskeyti eiginnafns"
+msgstr "Forskeyti eftirnafns"
 
 #: resources/views/admin/trees-preferences.phtml:693
 msgid "Surname tradition"
-msgstr "Eftirnafna venja"
+msgstr "Eftirnafnavenja"
 
 #: resources/views/lists/surnames-table.phtml:28
 #: resources/views/modules/gedcom_stats/config.phtml:70
 #: resources/views/modules/gedcom_stats/statistics.phtml:79
 #: resources/views/modules/statistics-chart/custom.phtml:163
 msgid "Surnames"
-msgstr "Eftirnafn"
+msgstr "Eftirnöfn"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
@@ -14161,7 +14163,14 @@ msgstr "Reiturinn <b> nafn </b> inniheldur fullt nafn einstaklingsins, eins og �
 
 #: resources/views/help/surname.phtml:10
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "Reiturinn <b> eftirnafn </b> inniheldur nafn sem er notað til að raða og flokka. Það getur verið frábrugðið raunverulegu eftirnafni einstaklingsins sem er alltaf tekið úr reitnum <b> nafn </b>. Hægt er að nota þennan reit til að raða eftirnöfnum með eða án forskeytis (Gogh / van Gogh) og til að flokka stafsetningarafbrigði eða beygingu (Kowalski / Kowalska). Ef einstaklingur þarf að vera skráður undir fleiri en einu ættarnafni ætti hvert nafn að vera aðgreint með kommu."
+msgstr ""
+"Reiturinn <b> eftirnafn </b> inniheldur nafn sem er notað til að raða og "
+"flokka. Það getur verið frábrugðið raunverulegu eftirnafni einstaklingsins "
+"sem er alltaf tekið úr reitnum <b> nafn </b>. Hægt er að nota þennan reit "
+"til að raða eftirnöfnum með eða án forskeytis (Gogh / van Gogh) og til að "
+"flokka stafsetningarafbrigði eða beygingu (Kowalski / Kowalska). Ef "
+"einstaklingur þarf að vera skráður undir fleiri en einu eftirnafni ætti "
+"hvert nafn að vera aðgreint með kommu."
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:98
 #, php-format
