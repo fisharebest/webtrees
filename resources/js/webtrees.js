@@ -743,7 +743,7 @@
       zoomControl: false,
     })
       .addControl(zoomControl)
-      .addControl(new fullscreenControl)
+      .addControl(new fullscreenControl())
       .addControl(new resetControl())
       .addLayer(defaultLayer)
       .addControl(L.control.layers.tree(config.mapProviders, null, {
