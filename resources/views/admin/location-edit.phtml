@@ -37,19 +37,19 @@ use Fisharebest\Webtrees\View;
 
       <div class="form-floating mb-2">
         <input type="text" class="form-control" id="new_place_name" name="new_place_name" required="required"
-          maxlength="120" pattern="[^,]+" dir="auto" value="<?= e($location->locationName()) ?>" placeholder="<?= I18N::translate('Place') ?>">
+          maxlength="120" pattern="[^,]+" dir="auto" value="<?= e($location->locationName()) ?>" placeholder="<?= I18N::translate('New placename') ?>">
         <label for="new_place_name"><?= I18N::translate('Place') ?></label>
       </div>
 
       <div class="form-floating mb-2">
         <input type="text" class="form-control" dir="ltr" id="new_place_lati" name="new_place_lati"
-          value="<?= e($latitude) ?>" placeholder="<?= I18N::translate('Latitude') ?>">
+          value="<?= e($latitude) ?>" placeholder="<?= I18N::translate('New latitude') ?>">
         <label for="new_place_lati"><?= I18N::translate('Latitude') ?></label>
       </div>
 
       <div class="form-floating">
         <input type="text" class="form-control" dir="ltr" id="new_place_long" name="new_place_long"
-          value="<?= e($longitude) ?>" placeholder="<?= I18N::translate('Longitude') ?>">
+          value="<?= e($longitude) ?>" placeholder="<?= I18N::translate('New longitude') ?>">
         <label for="new_place_long"><?= I18N::translate('Longitude') ?></label>
       </div>
 

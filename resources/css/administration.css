@@ -121,3 +121,15 @@ tr:first-child > td.move.up > a,
 tr:last-child > td.move.down > a {
     display: none;
 }
+
+/* Fix for bootstrap 5 floating forms placeholder visibility
+   (Apparently due to be fixed in bootstrap 5.3)
+*/
+
+.form-floating > .form-control::placeholder {
+    color: revert;
+}
+
+.form-floating > .form-control:not(:focus)::placeholder {
+    color: transparent;
+}
