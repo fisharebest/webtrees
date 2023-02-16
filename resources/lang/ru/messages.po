@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-02-15 13:58+0000\n"
+"PO-Revision-Date: 2023-02-16 13:06+0000\n"
 "Last-Translator: ol810 <uolega@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ru/>\n"
@@ -2599,7 +2599,7 @@ msgstr "Берн, Швейцария"
 
 #: app/Elements/RelationIsDescriptor.php:96
 msgid "Best man"
-msgstr "Свидетель жениха"
+msgstr "Поручители со стороны жениха"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:110
@@ -2999,7 +2999,7 @@ msgstr "Бразилия"
 
 #: app/Elements/RelationIsDescriptor.php:97
 msgid "Bridesmaid"
-msgstr "Свидетельница невесты"
+msgstr "Поручители со стороны невесты"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:71
