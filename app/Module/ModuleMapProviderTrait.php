@@ -19,11 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\I18N;
+
+use function e;
+
 /**
  * Trait ModuleMapProviderTrait - default implementation of ModuleMapProviderInterface
  */
 trait ModuleMapProviderTrait
 {
+    use ModuleConfigTrait;
+
     /**
      * Parameters to create a TileLayer in LeafletJs.
      *
@@ -32,5 +40,24 @@ trait ModuleMapProviderTrait
     public function leafletJsTileLayers(): array
     {
         return [];
+    }
+
+    /**
+     *  If module requires an api key then return false if not valid
+     *
+     * @return bool
+     * @throws HttpServerErrorException
+     */
+    public function hasApiKey(): bool
+    {
+        $api_key = $this->getPreference('api_key', 'not-needed');
+
+        if ($api_key !== 'not-needed' && $api_key === '' && Auth::isAdmin()) {
+            $message = I18N::translate('<a href="%s">The %s service requires an API key.', e($this->getConfigLink()), $this->title());
+
+            throw new HttpServerErrorException($message);
+        }
+
+        return $api_key !== '';
     }
 }
