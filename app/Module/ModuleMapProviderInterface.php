@@ -30,4 +30,11 @@ interface ModuleMapProviderInterface extends ModuleInterface
      * @return array<object>
      */
     public function leafletJsTileLayers(): array;
+
+    /**
+     * Check if provider has valid api key
+     *
+     * @return bool
+     */
+    public function hasApiKey(): bool;
 }

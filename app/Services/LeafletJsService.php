@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapProvidersPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 
 /**
@@ -49,12 +50,22 @@ class LeafletJsService
 
         $map_providers = $this->module_service
             ->findByInterface(ModuleMapProviderInterface::class)
-            ->map(static fn (ModuleMapProviderInterface $map_provider): object => (object) [
-                'children'  => $map_provider->leafletJsTileLayers(),
-                'collapsed' => true,
-                'default'   => $map_provider->name() === $default,
-                'label'     => $map_provider->title(),
-            ])
+            ->filter(function ($item) {
+                $hasApiKey = $item->hasApiKey();
+                if (!$hasApiKey) {
+                    Log::addErrorLog('Map provider "' . $item->title() . '" does not have a valid api key');
+                }
+
+                return $hasApiKey;
+            })
+            ->map(static function (ModuleMapProviderInterface $map_provider) use ($default): object {
+                return (object) [
+                    'children'  => $map_provider->leafletJsTileLayers(),
+                    'collapsed' => true,
+                    'default'   => $map_provider->name() === $default,
+                    'label'     => $map_provider->title(),
+                ];
+            })
             ->values();
 
         if ($map_providers->isEmpty()) {
