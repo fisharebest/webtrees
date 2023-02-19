@@ -412,6 +412,9 @@ table {
 .wt-facts-table th {
     border: 1px solid #000;
     font-weight: normal;
+}
+
+.wt-facts-table > tbody > tr > th {
     min-width: 20%;
 }
 
