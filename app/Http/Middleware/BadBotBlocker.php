@@ -107,18 +107,19 @@ class BadBotBlocker implements MiddlewareInterface
      * @see https://support.apple.com/en-gb/HT204683
      */
     private const ROBOT_REV_FWD_DNS = [
-        'Amazonbot'   => ['.crawl.amazon.com'],
-        'Applebot'    => ['.applebot.apple.com'],
-        'bingbot'     => ['.search.msn.com'],
-        'BingPreview' => ['.search.msn.com'],
-        'Google'      => ['.google.com', '.googlebot.com'],
-        'MojeekBot'   => ['.mojeek.com'],
-        'Mail.RU_Bot' => ['.mail.ru'],
-        'msnbot'      => ['.search.msn.com'],
-        'Qwantify'    => ['.search.qwant.com'],
-        'Sogou'       => ['.crawl.sogou.com'],
-        'Yahoo'       => ['.crawl.yahoo.net'],
-        'Yandex'      => ['.yandex.ru', '.yandex.net', '.yandex.com'],
+        'Amazonbot'        => ['.crawl.amazon.com'],
+        'Applebot'         => ['.applebot.apple.com'],
+        'BingPreview'      => ['.search.msn.com'],
+        'Google'           => ['.google.com', '.googlebot.com'],
+        'Mail.RU_Bot'      => ['.mail.ru'],
+        'MicrosoftPreview' => ['.search.msn.com'],
+        'MojeekBot'        => ['.mojeek.com'],
+        'Qwantify'         => ['.search.qwant.com'],
+        'Sogou'            => ['.crawl.sogou.com'],
+        'Yahoo'            => ['.crawl.yahoo.net'],
+        'Yandex'           => ['.yandex.ru', '.yandex.net', '.yandex.com'],
+        'bingbot'          => ['.search.msn.com'],
+        'msnbot'           => ['.search.msn.com'],
     ];
 
     /**
