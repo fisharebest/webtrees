@@ -644,6 +644,9 @@ div.fact_SHARED_NOTE {
     border: solid #81a9cb 1px;
     text-align: center;
     font-weight: normal;
+}
+
+.wt-facts-table > tbody > tr > th {
     min-width: 20%;
 }
 
