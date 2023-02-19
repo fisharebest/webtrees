@@ -209,7 +209,6 @@ use Fisharebest\Webtrees\Module\OccupationReportModule;
 use Fisharebest\Webtrees\Module\OnThisDayModule;
 use Fisharebest\Webtrees\Module\OpenRouteServiceAutocomplete;
 use Fisharebest\Webtrees\Module\OpenStreetMap;
-use Fisharebest\Webtrees\Module\OrdnanceSurveyHistoricMaps;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
 use Fisharebest\Webtrees\Module\PedigreeReportModule;
@@ -484,7 +483,6 @@ class ModuleService
         'occupation_report'       => OccupationReportModule::class,
         'openrouteservice'        => OpenRouteServiceAutocomplete::class,
         'openstreetmap'           => OpenStreetMap::class,
-        'osgb-historic'           => OrdnanceSurveyHistoricMaps::class,
         'pedigree-map'            => PedigreeMapModule::class,
         'pedigree_chart'          => PedigreeChartModule::class,
         'pedigree_report'         => PedigreeReportModule::class,
