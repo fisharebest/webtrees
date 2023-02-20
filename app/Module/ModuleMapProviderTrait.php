@@ -50,14 +50,18 @@ trait ModuleMapProviderTrait
      */
     public function hasApiKey(): bool
     {
-        $api_key = $this->getPreference('api_key', 'not-needed');
+        $api_key = $this->getPreference('api_key');
 
-        if ($api_key !== 'not-needed' && $api_key === '' && Auth::isAdmin()) {
+        // Do the functions to manage the config page exist in the provider module?
+        $function_diff = array_diff(get_class_methods(get_class($this)), get_class_methods((string) get_parent_class($this)));
+
+        $error = in_array("getAdminAction", $function_diff) && $api_key === '';
+        if ($error && Auth::isAdmin()) {
             $message = I18N::translate('<a href="%s">The %s service requires an API key.', e($this->getConfigLink()), $this->title());
 
             throw new HttpServerErrorException($message);
         }
 
-        return $api_key !== '';
+        return !$error;
     }
 }
