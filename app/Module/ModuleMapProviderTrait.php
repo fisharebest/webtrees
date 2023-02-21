@@ -43,21 +43,18 @@ trait ModuleMapProviderTrait
     }
 
     /**
-     *  Check if Module contains the functions for a config page,
-     *  If so then an api key is required so check if it is empty
+     *  If module requires an api key then return false if not valid
      *
      * @return bool
      * @throws HttpServerErrorException
      */
     public function hasApiKey(): bool
     {
-        $error = in_array("getAdminAction", get_class_methods($this)) && $this->getPreference('api_key') === '';
-        if ($error && Auth::isAdmin()) {
+        $api_key = $this->getPreference('api_key', 'not-needed');
+        if ($api_key !== 'not-needed' && $api_key === '' && Auth::isAdmin()) {
             $message = I18N::translate('<a href="%s">The %s service requires an API key.', e($this->getConfigLink()), $this->title());
-
             throw new HttpServerErrorException($message);
         }
-
-        return !$error;
+        return $api_key !== '';
     }
 }

@@ -53,7 +53,7 @@ class LeafletJsService
             ->filter(function ($item) {
                 $hasApiKey = $item->hasApiKey();
                 if (!$hasApiKey) {
-                    Log::addErrorLog('Map provider "' . $item->title() . '" does not have a valid api key');
+                    Log::addErrorLog('Map provider "' . $item->title() . '" does not have an api key');
                 }
 
                 return $hasApiKey;
