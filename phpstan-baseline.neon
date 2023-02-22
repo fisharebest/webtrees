@@ -2786,11 +2786,6 @@ parameters:
 			path: app/Report/ReportPdfTextBox.php
 
 		-
-			message: "#^Result of \\|\\| is always true\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\RightToLeftSupport\\:\\:spanLtrRtl\\(\\) should return string but returns array\\<int, string\\>\\|string\\.$#"
 			count: 1
 			path: app/Report/RightToLeftSupport.php
