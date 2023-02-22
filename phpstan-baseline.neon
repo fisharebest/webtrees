@@ -371,11 +371,6 @@ parameters:
 			path: app/Http/RequestHandlers/ControlPanel.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 8
-			path: app/Http/RequestHandlers/ControlPanel.php
-
-		-
 			message: "#^Parameter \\#2 \\$collection of method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleCollection\\(\\) expects Illuminate\\\\Support\\\\Collection\\<int, mixed\\>, Illuminate\\\\Support\\\\Collection\\<int, object\\> given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DataFixData.php
@@ -659,11 +654,6 @@ parameters:
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataList.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MergeFactsAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
@@ -3311,11 +3301,6 @@ parameters:
 			path: app/Services/MediaFileService.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 2
 			path: app/Services/MediaFileService.php
@@ -3522,7 +3507,12 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression\\|string given\\.$#"
+			count: 1
 			path: app/Services/SearchService.php
 
 		-
@@ -3682,11 +3672,6 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$place on mixed\\.$#"
-			count: 2
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 2
 			path: app/Statistics/Google/ChartDistribution.php
 
@@ -3986,22 +3971,12 @@ parameters:
 			path: app/Statistics/Repository/MediaRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/MediaRepository.php
-
-		-
 			message: "#^Cannot access property \\$tree on mixed\\.$#"
 			count: 1
 			path: app/Statistics/Repository/PlaceRepository.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: int, Closure\\(string\\)\\: int given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/PlaceRepository.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Statistics/Repository/PlaceRepository.php
 
