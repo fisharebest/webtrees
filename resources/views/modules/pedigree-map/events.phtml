@@ -21,11 +21,11 @@ use Fisharebest\Webtrees\Fact;
             </a>
         </div>
 
-        <?php if ($sosa !== 1) : ?>
+        <div>
             <a href="<?= e($fact->record()->url()) ?>">
                 <?= $fact->record()->fullName() ?>
             </a>
-        <?php endif ?>
+        </div>
 
         <div>
             <?= $fact->label() ?>: <?= $fact->date()->display($fact->record()->tree()) ?>
