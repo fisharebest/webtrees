@@ -145,7 +145,7 @@
             "@composer global require --quiet phpstan/phpstan-strict-rules=*",
             "@composer global require --quiet phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.neon index.php app",
+            "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.php index.php app",
             "@composer install --no-dev --quiet"
         ],
         "webtrees:psalm": [
