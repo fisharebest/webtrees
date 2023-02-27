@@ -124,3 +124,7 @@
 .wt-chart-box-name {
     font-weight: bold;
 }
+
+.leaflet-popup-content .wt-popup {
+    pointer-events: none;
+}
