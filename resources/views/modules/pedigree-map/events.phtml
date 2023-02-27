@@ -15,17 +15,15 @@ use Fisharebest\Webtrees\Fact;
 <div class="d-flex justify-content-between">
     <div>
         <div>
-            <a href="#" data-wt-sosa="<?= $sosa ?>">
+            <a href="#" data-wt-sosa="<?= $sosa ?>" onclick="return false;">
                 <span class="<?= $class ?>"><?= view('icons/location') ?></span>
                 <?= $relationship ?>
             </a>
         </div>
 
-        <?php if ($sosa !== 1) : ?>
-            <a href="<?= e($fact->record()->url()) ?>">
-                <?= $fact->record()->fullName() ?>
-            </a>
-        <?php endif ?>
+        <a href="<?= e($fact->record()->url()) ?>">
+            <?= $fact->record()->fullName() ?>
+        </a>
 
         <div>
             <?= $fact->label() ?>: <?= $fact->date()->display($fact->record()->tree()) ?>
