@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-02-08 18:35+0000\n"
+"PO-Revision-Date: 2023-03-01 18:35+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -3822,7 +3822,7 @@ msgstr "סיודאד חוארס, מקסיקו"
 
 #: app/GedcomTag.php:582 modules_v3/fact_sources/report.xml:202
 msgid "Civil marriage"
-msgstr "יידל חתונה"
+msgstr "ציווילע חתונה"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
@@ -3920,7 +3920,7 @@ msgstr "באַמערקונגען"
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1249
 msgid "Common law marriage"
-msgstr ""
+msgstr "פּראָסט געזעץ חתונה"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
@@ -8854,7 +8854,7 @@ msgstr "חתונה בונד"
 
 #: app/Stats.php:1690 statistics.php:570
 msgid "Marriage by country"
-msgstr ""
+msgstr "חתונה דורך לאַנד"
 
 #. I18N: gedcom tag MARC
 #: app/GedcomTag.php:568
@@ -8877,7 +8877,7 @@ msgstr "חתונה סאָף סטאַטוס"
 #. I18N: gedcom tag _MARI
 #: app/GedcomTag.php:1556
 msgid "Marriage intention"
-msgstr ""
+msgstr "חתונה כוונה"
 
 #. I18N: gedcom tag MARL
 #: app/GedcomTag.php:572
@@ -9028,12 +9028,12 @@ msgstr "מאַרטיניק"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:210
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "מאַסקערייד ווי דעם באַניצער"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
 msgid "Match both upper and lower case letters."
-msgstr ""
+msgstr "גלייַכֿן ביידע אויבערשטער און נידעריקער פֿאַל אותיות."
 
 #: lifespan.php:104
 msgid "Match calendar"
@@ -9141,16 +9141,16 @@ msgstr ""
 
 #: admin_media.php:623 admin_trees_config.php:1013
 msgid "Media files"
-msgstr ""
+msgstr "מידיאַ פֿייַלן"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:988
 msgid "Media folder"
-msgstr ""
+msgstr "מידיאַ טעקע"
 
 #: admin_media.php:624 admin_trees_config.php:983
 msgid "Media folders"
-msgstr ""
+msgstr "מידיאַ טעקעס"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
@@ -9197,11 +9197,11 @@ msgstr "מעדיקאַל צושטאַנד"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:84
 msgid "Mediterranio"
-msgstr ""
+msgstr "מעדיטערראַנעאַן"
 
 #: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr ""
+msgstr "מיטל סיסטעמען (5,000 מענטשן): 32-64 מעגאבייטן, 20-40 סעקונדעס"
 
 #: app/Date/JalaliDate.php:189
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -9264,7 +9264,7 @@ msgstr "מעניו"
 #: admin_module_menus.php:28 admin_modules.php:159
 #: app/Theme/AdministrationTheme.php:191
 msgid "Menus"
-msgstr ""
+msgstr "מעניוס"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:85
@@ -9273,12 +9273,12 @@ msgstr "קוועקזילבער"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "צוזאמענמישן"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
 msgid "Merge family trees"
-msgstr ""
+msgstr "צוזאמענמישן משפּחה ביימער"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
@@ -9390,15 +9390,15 @@ msgstr "מעסיק פּענדינג ענדערונגען"
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 admin_users.php:549
 msgid "Moderator"
-msgstr ""
+msgstr "מאָדעראַטאָר"
 
 #: admin.php:692
 msgid "Moderators"
-msgstr ""
+msgstr "מאָדעראַטאָרס"
 
 #: admin_modules.php:157
 msgid "Module"
-msgstr ""
+msgstr "מאָדולע"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:61 admin_module_charts.php:54
@@ -9413,12 +9413,12 @@ msgstr ""
 #: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
 #: app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
-msgstr ""
+msgstr "מאָדולע אַדמיניסטראַציע"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:189
 msgid "Modules"
-msgstr ""
+msgstr "מאָדולעס"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6813
@@ -9559,6 +9559,8 @@ msgstr "רובֿ דינערס טאָן ניט נוצן באשיצטע פארבי
 #: setup.php:282
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
 msgstr ""
+"רובֿ זייטלעך זענען קאַנפיגיערד צו נוצן localhost. דעם מיטל אַז דיין דאַטאַ"
+"בייס לויפט אויף דער זעלביקער קאָמפּיוטער ווי דיין וועב סערווער."
 
 #: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
@@ -9653,7 +9655,7 @@ msgstr "מוחראם"
 
 #: app/Functions/FunctionsPrintLists.php:713
 msgid "Multiple marriages"
-msgstr ""
+msgstr "עטלעכע חתונות"
 
 #: app/Module/UserWelcomeModule.php:53 app/Theme/AbstractTheme.php:1599
 #: edituser.php:111
@@ -9753,7 +9755,7 @@ msgstr "נעמען"
 #. I18N: gedcom tag _NAMS
 #: app/GedcomTag.php:1679
 msgid "Namesake"
-msgstr ""
+msgstr "הייסט נאך"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6833
@@ -9762,11 +9764,11 @@ msgstr "נאמיביע"
 
 #: app/GedcomCode/GedcomCodeRela.php:195
 msgid "Nanny"
-msgstr ""
+msgstr "נאַני"
 
 #: app/Module/HtmlBlockModule.php:159
 msgid "Narrative description"
-msgstr ""
+msgstr "דערציילונג"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:257
@@ -9852,13 +9854,13 @@ msgstr "נייַ דאַטן"
 #: login.php:330
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "נייַ רעגיסטראַציע ביי %s"
 
 #. I18N: %s is a server name/URL
 #: login.php:577
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "נייַ באַניצער ביי %s"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:263
@@ -9877,7 +9879,7 @@ msgstr "צייַטונג"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr ""
+msgstr "ווייַטער בליצפּאָסט דערמאָנונג וועט זיין געשיקט נאָך "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -9962,11 +9964,11 @@ msgstr "נײן"
 
 #: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "קיין GEDCOM טעקע איז נישט באקומען."
 
 #: admin_trees_manage.php:256
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "קיין GEDCOM טעקעס געפֿונען."
 
 #: app/Module/GoogleMapsModule.php:849
 msgid "No ancestors in the database."
@@ -9974,7 +9976,7 @@ msgstr "קיין אבות אין די דייטאַבייס."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
-msgstr ""
+msgstr "קיין קאַלענדאַר אויסבייַטונג"
 
 #: app/Controller/DescendancyController.php:213
 #: app/Functions/FunctionsCharts.php:302 app/Module/DescendancyModule.php:273
@@ -9995,7 +9997,7 @@ msgstr ""
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "קיין דופּליקאַטן זענען געפֿונען."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
@@ -10007,8 +10009,8 @@ msgstr "קיין טעות זענען געפונען."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "קיין געשעענישן עקסיסטירן פֿאַר די ווייַטער %s טאָג."
+msgstr[1] "קיין געשעענישן עקסיסטירן פֿאַר די ווייַטער %s טעג."
 
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
@@ -10037,7 +10039,8 @@ msgstr "קיין געשעענישן פֿאַר לעבעדיק מענטשן עק�
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
-msgstr[1] ""
+"קיין געשעענישן פֿאַר לעבעדיק מענטשן עקסיסטירן פֿאַר די ווייַטער %s טאָג."
+msgstr[1] "קיין געשעענישן פֿאַר לעבעדיק מענטשן עקסיסטירן פֿאַר די ווייַטער %s טעג."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -10078,7 +10081,7 @@ msgstr ""
 
 #: admin_site_config.php:127
 msgid "No predefined text"
-msgstr ""
+msgstr "קיין פאַרדעפינירט טעקסט"
 
 #: app/I18N.php:227 app/I18N.php:237
 msgid "No records to display"
@@ -10099,11 +10102,11 @@ msgstr "קיין איינגעשריבן און קיין אַנאָנימע בא�
 
 #: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
-msgstr ""
+msgstr "קיין בית המקדש - לעבעדיק אָרדענונג"
 
 #: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "קיין אַפּגרייד אינפֿאָרמאַציע איז בנימצא."
 
 #: app/Stats.php:1739
 msgid "Nobody at all"
@@ -10112,7 +10115,7 @@ msgstr "קיינער"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:86
 msgid "Nocturnal"
-msgstr ""
+msgstr "נאכטמאל"
 
 #: admin_trees_download.php:178 app/Module/ClippingsCartModule.php:400
 #: app/Module/ClippingsCartModule.php:779
@@ -10144,6 +10147,9 @@ msgstr "נאָרפאָלק אינזל"
 #: admin_users.php:444
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr ""
+"געווענליך, אַלע ענדערונגען געמאכט צו אַ משפּחה בוים דאַרפֿן צו באַקומען "
+"דערלויבעניש דורך אַ מאָדעראַטאָר. דער אָפּציע דערלויבט אַ באַניצער צו מאַכן "
+"ענדערונגען אָן אַ מאָדעראַטאָר."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
@@ -10171,7 +10177,7 @@ msgstr ""
 
 #: admin.php:718
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "ניט באוויליקט דורך אַ אַדמיניסטראַטאָר"
 
 #. I18N: gedcom tag _NLIV
 #: app/GedcomTag.php:1683
@@ -10197,7 +10203,7 @@ msgstr "נישט חתונה געהאט"
 
 #: admin.php:705
 msgid "Not verified by the user"
-msgstr ""
+msgstr "ניט באַשטעטיקן דורך דער באַניצער"
 
 #. I18N: gedcom tag NOTE
 #: admin_trees_config.php:826 app/Controller/FamilyController.php:147
@@ -10213,6 +10219,8 @@ msgstr "צעטל"
 #: help_text.php:261
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
 msgstr ""
+"באַמערקונג אַז אויב אַ באַניצער חשבון איז לינגקט צו אַ רעקאָרד, דער באַניצער "
+"וועט שטענדיק קענען צו זען די רעקאָרד."
 
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -10293,12 +10301,12 @@ msgstr "נומער פון דורות"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr ""
+msgstr "נומער פֿון געגעבן נעמען"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
 msgid "Number of marriages"
-msgstr ""
+msgstr "נומער פֿון חתונות"
 
 #: admin_users.php:680
 msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
@@ -10307,13 +10315,13 @@ msgstr "נומער פון חדשים זינט די לעצטע לאָגין פֿ�
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:159
 msgid "Number of pages"
-msgstr ""
+msgstr "נומער פֿון בלעטער"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "נומער פֿון פֿאַמיליעס"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -10355,7 +10363,7 @@ msgstr "פאַך ס"
 #. I18N: Name of a country or state
 #: app/Stats.php:6859
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "פאַרנומען פּאַלעסטינער טעריטאָריע"
 
 #: app/Date/CalendarDate.php:330
 msgctxt "Abbreviation for October"
