@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-02-08 18:35+0000\n"
+"PO-Revision-Date: 2023-03-01 18:35+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -3857,7 +3857,7 @@ msgstr "סיודאד חוארס, מקסיקו"
 #: app/Functions/FunctionsEdit.php:593 app/GedcomTag.php:792
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
-msgstr "יידל חתונה"
+msgstr "ציווילע חתונה"
 
 #: app/Elements/RelationIsDescriptor.php:100
 #: app/GedcomCode/GedcomCodeRela.php:141
@@ -3957,7 +3957,7 @@ msgstr "באַמערקונגען"
 #. I18N: gedcom tag _COML
 #: app/Factories/ElementFactory.php:267 app/GedcomTag.php:1060
 msgid "Common law marriage"
-msgstr ""
+msgstr "פּראָסט געזעץ חתונה"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:87
@@ -9329,7 +9329,7 @@ msgstr "חתונה בונד"
 
 #: app/Statistics/Google/ChartDistribution.php:348
 msgid "Marriage by country"
-msgstr ""
+msgstr "חתונה דורך לאַנד"
 
 #. I18N: gedcom tag MARC
 #: app/Factories/ElementFactory.php:1007 app/GedcomTag.php:780
@@ -9353,7 +9353,7 @@ msgstr "חתונה סאָף סטאַטוס"
 #. I18N: gedcom tag _MARI
 #: app/Factories/ElementFactory.php:268 app/GedcomTag.php:1147
 msgid "Marriage intention"
-msgstr ""
+msgstr "חתונה כוונה"
 
 #. I18N: gedcom tag MARL
 #: app/Factories/ElementFactory.php:1008 app/GedcomTag.php:783
@@ -9511,12 +9511,12 @@ msgstr "מאַרטיניק"
 
 #: resources/views/admin/users-table-options.phtml:37
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "מאַסקערייד ווי דעם באַניצער"
 
 #. I18N: Help text for "Case insensitive" searches
 #: resources/views/modules/fix-search-and-replace/options.phtml:58
 msgid "Match both upper and lower case letters."
-msgstr ""
+msgstr "גלייַכֿן ביידע אויבערשטער און נידעריקער פֿאַל אותיות."
 
 #: app/Module/FixSearchAndReplace.php:102
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -9528,7 +9528,7 @@ msgstr "גלייַכן די פּינטלעך טעקסט, סייַדן עס אַ�
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "אַנאַליז פון ™Matomo™ / Piwik"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -9620,18 +9620,18 @@ msgstr ""
 #: resources/views/admin/media.phtml:31
 #: resources/views/admin/trees-preferences.phtml:264
 msgid "Media files"
-msgstr ""
+msgstr "מידיאַ פֿייַלן"
 
 #. I18N: A configuration setting
 #: resources/views/admin/media.phtml:63
 #: resources/views/admin/trees-preferences.phtml:245
 msgid "Media folder"
-msgstr ""
+msgstr "מידיאַ טעקע"
 
 #: resources/views/admin/media.phtml:32
 #: resources/views/admin/trees-preferences.phtml:240
 msgid "Media folders"
-msgstr ""
+msgstr "מידיאַ טעקעס"
 
 #. I18N: gedcom tag OBJE
 #: app/Factories/ElementFactory.php:683 app/Factories/ElementFactory.php:714
@@ -9705,11 +9705,11 @@ msgstr "מעדיקאַל צושטאַנד"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:169
 msgid "Mediterranio"
-msgstr ""
+msgstr "מעדיטערראַנעאַן"
 
 #: resources/views/setup/step-2-server-checks.phtml:70
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr ""
+msgstr "מיטל סיסטעמען (5,000 מענטשן): 32-64 מעגאבייטן, 20-40 סעקונדעס"
 
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -9769,7 +9769,7 @@ msgstr "מעניו"
 #: resources/views/admin/modules.phtml:78
 #: resources/views/admin/modules.phtml:80
 msgid "Menus"
-msgstr ""
+msgstr "מעניוס"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:171
@@ -9778,12 +9778,12 @@ msgstr "קוועקזילבער"
 
 #: resources/views/admin/trees-duplicates.phtml:39
 msgid "Merge"
-msgstr ""
+msgstr "צוזאמענמישן"
 
 #: app/Http/RequestHandlers/MergeTreesPage.php:77
 #: resources/views/admin/control-panel.phtml:267
 msgid "Merge family trees"
-msgstr ""
+msgstr "צוזאמענמישן משפּחה ביימער"
 
 #: app/Http/RequestHandlers/MergeFactsPage.php:57
 #: app/Http/RequestHandlers/MergeRecordsPage.php:68
@@ -9891,21 +9891,21 @@ msgstr "פעלנדיק דאַטע"
 #: app/Http/RequestHandlers/UserEditPage.php:106
 #: resources/views/admin/users-edit.phtml:259
 msgid "Moderator"
-msgstr ""
+msgstr "מאָדעראַטאָר"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Moderators"
-msgstr ""
+msgstr "מאָדעראַטאָרס"
 
 #: resources/views/admin/components.phtml:39
 #: resources/views/admin/modules.phtml:66
 msgid "Module"
-msgstr ""
+msgstr "מאָדולע"
 
 #: resources/views/admin/modules.phtml:61
 #: resources/views/modules/batch_update/admin.phtml:10
 msgid "Module administration"
-msgstr ""
+msgstr "מאָדולע אַדמיניסטראַציע"
 
 #: resources/views/admin/analytics-edit.phtml:17
 #: resources/views/admin/control-panel.phtml:521
@@ -9916,7 +9916,7 @@ msgstr ""
 #: resources/views/modules/stories/config.phtml:18
 #: resources/views/modules/stories/edit.phtml:22
 msgid "Modules"
-msgstr ""
+msgstr "מאָדולעס"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:319
@@ -10061,16 +10061,18 @@ msgstr "מערסט קאָממאָן פאַמיליע נאָמען"
 
 #: resources/views/admin/site-mail.phtml:176
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "רובֿ פּאָסט סערווערס דאַרפֿן אַ גילטיק פֿעלד נאָמען."
 
 #: resources/views/admin/site-mail.phtml:68
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "רובֿ פּאָסט סערווערס דאַרפֿן אַ גילטיק בליצפּאָסט אַדרעס."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:171
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
+"רובֿ פּאָסט סערווערס דאַרפֿן אַז די שיקט סערווער אידענטיפֿיצירט זיך ריכטיק, "
+"ניצן אַ גילטיק פֿעלד נאָמען."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:157
@@ -10082,10 +10084,12 @@ msgstr "רובֿ דינערס טאָן ניט נוצן באשיצטע פארבי
 #: resources/views/setup/step-4-database-sqlsvr.phtml:52
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
 msgstr ""
+"רובֿ זייטלעך זענען קאַנפיגיערד צו נוצן localhost. דעם מיטל אַז דיין דאַטאַ"
+"בייס לויפט אויף דער זעלביקער קאָמפּיוטער ווי דיין וועב סערווער."
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:64
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "רובֿ זייטלעך זענען קאַנפֿיגיערד צו נוצן די פֿעליקייַט ווערט פֿון 1433."
 
 #: resources/views/setup/step-4-database-mysql.phtml:74
 msgid "Most sites are configured to use the default value of 3306."
@@ -10093,7 +10097,7 @@ msgstr "רובֿ זייטלעך זענען קאַנפיגיערד צו נוצן 
 
 #: resources/views/setup/step-4-database-pgsql.phtml:64
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "רובֿ זייטלעך זענען קאַנפֿיגיערד צו נוצן די פֿעליקייַט ווערט פֿון 5432."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:47
@@ -10182,7 +10186,7 @@ msgstr "מוחראם"
 
 #: resources/views/lists/families-table.phtml:207
 msgid "Multiple marriages"
-msgstr ""
+msgstr "עטלעכע חתונות"
 
 #: app/Http/RequestHandlers/AccountEdit.php:94
 #: app/Module/ModuleThemeTrait.php:319 app/Module/UserWelcomeModule.php:115
@@ -10283,7 +10287,7 @@ msgstr "נעמען"
 #: app/Factories/ElementFactory.php:425 app/Factories/ElementFactory.php:509
 #: app/GedcomTag.php:1186
 msgid "Namesake"
-msgstr ""
+msgstr "הייסט נאך"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:359
@@ -10293,11 +10297,11 @@ msgstr "נאמיביע"
 #: app/Elements/RelationIsDescriptor.php:116
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgid "Nanny"
-msgstr ""
+msgstr "נאַני"
 
 #: app/Module/HtmlBlockModule.php:193
 msgid "Narrative description"
-msgstr ""
+msgstr "דערציילונג"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:141 app/GedcomCode/GedcomCodeTemp.php:489
@@ -10359,7 +10363,7 @@ msgstr "ניו קאַלעדאָניאַ"
 #: app/Factories/ElementFactory.php:611 app/Factories/ElementFactory.php:612
 #: app/Factories/ElementFactory.php:613
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "נייַ GEDCOM קוויטל"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
@@ -10379,14 +10383,14 @@ msgstr "נייַ דאַטן"
 #: app/Http/RequestHandlers/RegisterAction.php:174
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "נייַ רעגיסטראַציע ביי %s"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/UserEditAction.php:113
 #: app/Http/RequestHandlers/VerifyEmail.php:88
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "נייַ באַניצער ביי %s"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:144 app/GedcomCode/GedcomCodeTemp.php:498
@@ -10405,7 +10409,7 @@ msgstr "צייַטונג"
 
 #: app/Module/ReviewChangesModule.php:162
 msgid "Next email reminder will be sent after "
-msgstr ""
+msgstr "ווייַטער בליצפּאָסט דערמאָנונג וועט זיין געשיקט נאָך "
 
 #: resources/views/modules/random_media/slide-show.phtml:32
 #: resources/views/modules/random_media/slide-show.phtml:34
@@ -10494,17 +10498,17 @@ msgstr "נײן"
 #: app/Http/RequestHandlers/ImportGedcomAction.php:88
 #: app/Http/RequestHandlers/ImportGedcomAction.php:100
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "קיין GEDCOM טעקע איז נישט באקומען."
 
 #: resources/views/admin/trees-import.phtml:72
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "קיין GEDCOM טעקעס געפֿונען."
 
 #: app/Functions/FunctionsEdit.php:131
 #: resources/views/admin/trees-preferences.phtml:122
 #: resources/views/admin/trees-preferences.phtml:125
 msgid "No calendar conversion"
-msgstr ""
+msgstr "קיין קאַלענדאַר אויסבייַטונג"
 
 #: app/Module/DescendancyModule.php:273
 #: resources/views/family-page-children.phtml:17
@@ -10517,7 +10521,7 @@ msgstr "קיין באַריר"
 
 #: resources/views/admin/trees-duplicates.phtml:46
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "קיין דופּליקאַטן זענען געפֿונען."
 
 #: resources/views/admin/trees-check.phtml:35
 msgid "No errors have been found."
@@ -10528,8 +10532,8 @@ msgstr "קיין טעות זענען געפונען."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "קיין געשעענישן עקסיסטירן פֿאַר די ווייַטער %s טאָג."
+msgstr[1] "קיין געשעענישן עקסיסטירן פֿאַר די ווייַטער %s טעג."
 
 #: resources/views/modules/todays_events/empty.phtml:8
 msgid "No events exist for today."
@@ -10565,7 +10569,7 @@ msgstr "קיין נייַעס אַרטיקלען האָבן שוין דערלא�
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:47
 msgid "No predefined text"
-msgstr ""
+msgstr "קיין פאַרדעפינירט טעקסט"
 
 #: resources/views/lists/datatables-attributes.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:33
@@ -10586,18 +10590,18 @@ msgstr "קיין איינגעשריבן און קיין אַנאָנימע בא�
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
-msgstr ""
+msgstr "קיין בית המקדש - לעבעדיק אָרדענונג"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:171
 #: resources/views/admin/control-panel.phtml:160
 #: resources/views/admin/upgrade/wizard.phtml:21
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "קיין אַפּגרייד אינפֿאָרמאַציע איז בנימצא."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:173
 msgid "Nocturnal"
-msgstr ""
+msgstr "נאכטמאל"
 
 #: app/Module/IndividualListModule.php:296
 #: app/Module/IndividualListModule.php:512
@@ -10623,6 +10627,9 @@ msgstr "נאָרפאָלק אינזל"
 #: resources/views/admin/users-edit.phtml:158
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr ""
+"געווענליך, אַלע ענדערונגען געמאכט צו אַ משפּחה בוים דאַרפֿן צו באַקומען "
+"דערלויבעניש דורך אַ מאָדעראַטאָר. דער אָפּציע דערלויבט אַ באַניצער צו מאַכן "
+"ענדערונגען אָן אַ מאָדעראַטאָר."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:405
@@ -10631,7 +10638,7 @@ msgstr "צפון קארעע"
 
 #: resources/views/modules/statistics-chart/custom.phtml:185
 msgid "Northern America"
-msgstr ""
+msgstr "צפון אַמעריקע"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
@@ -10650,7 +10657,7 @@ msgstr "נאָרוועגיע"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "ניט באוויליקט דורך אַ אַדמיניסטראַטאָר"
 
 #. I18N: gedcom tag _NLIV
 #: app/Factories/ElementFactory.php:309 app/GedcomTag.php:1189
@@ -10666,7 +10673,7 @@ msgstr "נישט חתונה געהאט"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Not verified by the user"
-msgstr ""
+msgstr "ניט באַשטעטיקן דורך דער באַניצער"
 
 #. I18N: gedcom tag NOTE
 #: app/Factories/ElementFactory.php:555 app/Factories/ElementFactory.php:584
@@ -10707,6 +10714,8 @@ msgstr "צעטל"
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
 msgstr ""
+"באַמערקונג אַז אויב אַ באַניצער חשבון איז לינגקט צו אַ רעקאָרד, דער באַניצער "
+"וועט שטענדיק קענען צו זען די רעקאָרד."
 
 #: resources/views/help/relationship-privacy.phtml:16
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -10740,7 +10749,7 @@ msgstr "גאָרנישט געפונען."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:107
 msgid "Nothing to show"
-msgstr ""
+msgstr "גאָרנישט צו ווייַזן"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -10796,23 +10805,23 @@ msgstr "נומער פון פאַמיליעס אָן קינדער"
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_givnnames/config.phtml:15
 msgid "Number of given names"
-msgstr ""
+msgstr "נומער פֿון געגעבן נעמען"
 
 #. I18N: gedcom tag NMR
 #: app/Factories/ElementFactory.php:1243 app/GedcomTag.php:830
 msgid "Number of marriages"
-msgstr ""
+msgstr "נומער פֿון חתונות"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:13
 msgid "Number of pages"
-msgstr ""
+msgstr "נומער פֿון בלעטער"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/gedcom_stats/config.phtml:82
 #: resources/views/modules/top10_surnames/config.phtml:15
 msgid "Number of surnames"
-msgstr ""
+msgstr "נומער פֿון פֿאַמיליעס"
 
 #: app/Elements/RelationIsDescriptor.php:117
 #: app/GedcomCode/GedcomCodeRela.php:272
@@ -10858,7 +10867,7 @@ msgstr "פאַך ס"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:411
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "פאַרנומען פּאַלעסטינער טעריטאָריע"
 
 #: app/Date/AbstractGregorianJulianDate.php:210
 msgctxt "Abbreviation for October"
