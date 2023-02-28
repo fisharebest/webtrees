@@ -134,6 +134,7 @@ class BadBotBlocker implements MiddlewareInterface
         'FreshBot'    => ['.seznam.cz'],
         'IonCrawl'    => ['.1und1.org'],
         'Neevabot'    => ['.neeva.com'],
+        'SeznamBot'   => ['.seznam.cz'],
     ];
 
     /**
