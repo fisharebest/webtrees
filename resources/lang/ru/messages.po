@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-02-17 13:35+0000\n"
+"PO-Revision-Date: 2023-03-04 07:35+0000\n"
 "Last-Translator: ol810 <uolega@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ru/>\n"
@@ -12905,7 +12905,7 @@ msgstr "Общие примечания"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:729
 msgid "Shares"
-msgstr "Доли"
+msgstr "Поделиться"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
