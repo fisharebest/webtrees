@@ -2,22 +2,12 @@
   "private": true,
   "scripts": {
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
-  "devDependencies": {
-    "autoprefixer": "10.4.13",
-    "cross-env": "7.0.3",
-    "laravel-mix": "6.0.49",
-    "postcss": "8.4.21",
-    "postcss-custom-properties": "13.1.3",
-    "postcss-image-inliner": "6.1.0",
-    "postcss-import": "15.1.0",
-    "postcss-rtlcss": "4.0.2",
-    "resolve-url-loader": "5.0.0",
-    "sass": "1.58.3",
-    "sass-loader": "13.2.0"
-  },
+  "browserslist": [
+    ">0.1% and not dead"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.3.0",
     "@fortawesome/free-regular-svg-icons": "6.3.0",
@@ -42,7 +32,17 @@
     "tom-select": "2.2.2",
     "typeahead.js-bootstrap4-css": "1.0.0"
   },
-  "browserslist": [
-    ">0.1% and not dead"
-  ]
+  "devDependencies": {
+    "autoprefixer": "10.4.13",
+    "cross-env": "7.0.3",
+    "laravel-mix": "6.0.49",
+    "postcss": "8.4.21",
+    "postcss-custom-properties": "13.1.3",
+    "postcss-image-inliner": "6.1.0",
+    "postcss-import": "15.1.0",
+    "postcss-rtlcss": "4.0.2",
+    "resolve-url-loader": "5.0.0",
+    "sass": "1.58.3",
+    "sass-loader": "13.2.0"
+  }
 }
