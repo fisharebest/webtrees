@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-01 18:35+0000\n"
+"PO-Revision-Date: 2023-03-05 08:12+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -8214,7 +8214,7 @@ msgstr ""
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:784
 msgid "LDS spouse sealing"
-msgstr "מאָרמאָן מאַנ/ווייב שטעמפל"
+msgstr "מאָרמאָן מאַנ/ווייב פלאָמבע"
 
 #: app/Functions/FunctionsPrint.php:480
 msgid "LDS temple"
@@ -8505,7 +8505,7 @@ msgstr "לעבעדיקע מענטשן"
 
 #: app/I18N.php:233 app/I18N.php:234
 msgid "Loading…"
-msgstr ""
+msgstr "לאָדן…"
 
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:632
@@ -10444,7 +10444,7 @@ msgstr "עלטסטע מוטער"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr ""
+msgstr "מאַסלינע"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
@@ -10466,19 +10466,23 @@ msgstr "אויף דעם טאָג …"
 #: app/Functions/FunctionsPrintFacts.php:839
 #: app/Functions/FunctionsPrintFacts.php:1105
 msgid "Only managers can edit"
-msgstr ""
+msgstr "בלויז דירעקטאָר קענען רעדאַגירן"
 
 #: site-unavailable.php:79
 msgid "Oops! The webserver is unable to connect to the database server. It could be busy, undergoing maintenance, or simply broken. You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
 msgstr ""
+"אופס! דער וועב סערווער איז נישט ביכולת צו פאַרבינדן צו די דאַטאַבייס "
+"סערווער. עס קען זיין פאַרנומען, פֿאַרגייט אויסהאַלט אָדער פשוט צעבראכן. איר "
+"זאָל <a href=\"index.php\">פּרובירן ווידער</a> אין עטלעכע מינוט אָדער קאָנטאַ"
+"קט די וועבזייטל אַדמיניסטראַטאָר."
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "אופס! webtrees קען נישט שאַפֿן טעקעס אין דעם טעקע."
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:373
 msgid "Optional prefixes and suffixes"
@@ -10487,7 +10491,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
+msgstr "אָקוויר באַרג, יוטאָ, פאַרייניקטע שטאַטן"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10550,7 +10554,7 @@ msgstr "אנדערע"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
-msgstr ""
+msgstr "אנדערע פאקטן צו ווייַזן אין טשאַרץ"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
@@ -10558,7 +10562,7 @@ msgstr "אנדערע טעקע … ביטע אַרײַנקלאַפּן אין"
 
 #: admin_trees_config.php:2087
 msgid "Other preferences"
-msgstr ""
+msgstr "אנדערע פּרעפֿערענצן"
 
 #: statistics.php:73
 msgid "Others"
@@ -10681,7 +10685,7 @@ msgstr "פּאַלאַו"
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:149
 msgid "Palette"
-msgstr ""
+msgstr "פּאַליטרע"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
@@ -10696,7 +10700,7 @@ msgstr "פאנאמא"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr ""
+msgstr "פּאַנאַמאַ סיטי, פּאַנאַמאַ"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -10746,7 +10750,7 @@ msgstr "פּאַססוואָרדס מוזן אַנטהאַלטן לפּחות 6 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Payson, Utah, United States"
-msgstr ""
+msgstr "פייסאָן, יוטאָ, פֿאַרייניקטע שטאַטן"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10789,11 +10793,16 @@ msgstr "פאמיליע בוים פון %s"
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr ""
+msgstr "ענדערונגען זענען וואַרטן פֿאַר באַשטעטיקונג"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 msgstr ""
+"ענדערונגען זענען פּענדינג הסכמה זענען בלויז געוויזן ווען דיין חשבון האט "
+"דערלויבעניש צו רעדאַגירן. ווען איר צייכן אויס, איר וועט ניט מער קענען צו זען "
+"זיי. אויך, ענדערונגען זענען פּענדינג הסכמה זענען בלויז געוויזן אויף זיכער "
+"בלעטער. פֿאַר בייַשפּיל, זיי זענען נישט געוויזן אין רשימות, ראַפארטן אָדער "
+"זוכן רעזולטאַטן."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -10822,7 +10831,7 @@ msgstr "פיליפינען"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "Phoenix, Arizona, United States"
-msgstr ""
+msgstr "פיניקס, אַריזאָנאַ, פאַרייניקטע שטאַטן"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
@@ -10840,11 +10849,11 @@ msgstr "פאָנעטיק אַלגערידאַם"
 
 #: app/GedcomTag.php:608
 msgid "Phonetic name"
-msgstr ""
+msgstr "פאָנעטיש נאָמען"
 
 #: app/GedcomTag.php:688
 msgid "Phonetic place"
-msgstr ""
+msgstr "פאָנעטיש אָרט"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1733
@@ -10934,6 +10943,10 @@ msgstr "פּלאַץ רעשימע"
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
+"אָרט נעמען זענען אָפט צו לאַנג צו פּאַסיק אין טשאַרץ, רשימות, אאז\"ו ו. זיי "
+"קענען זיין פאַרקירצט דורך ווייַזונג די ערשטער טיילן פון דעם נאָמען, אַזאַ "
+"ווי <i>דאָרף, דיסטריקט</i>, אָדער זייַן לעצטע טיילן, אַזאַ ווי <i>געגנט, "
+"לאַנד</i>."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
@@ -10943,7 +10956,7 @@ msgstr "אָרט פֿון מאָרמאָן טבילה"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr ""
+msgstr "אָרט פון מאָרמאָן קינד פלאָמבע"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
@@ -10953,11 +10966,11 @@ msgstr "אָרט פֿון LDS געבונג"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr ""
+msgstr "אָרט פון מאָרמאָן ספּאַוס פלאָמבע"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
-msgstr ""
+msgstr "אָרט פון אַדאַפּטירונג"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
@@ -11019,7 +11032,7 @@ msgstr "פּלאַץ פון געשעעניש"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
-msgstr ""
+msgstr "אָרט פון ערשטער קאַמיוניאַן"
 
 #: app/GedcomTag.php:528
 msgid "Place of immigration"
@@ -11033,15 +11046,15 @@ msgstr "פּלאַץ פון חתונה"
 
 #: app/GedcomTag.php:564 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "אָרט פֿון חתונה מעלדן"
 
 #: app/GedcomTag.php:622
 msgid "Place of naturalization"
-msgstr ""
+msgstr "אָרט פֿון נאַטוראַליזאַטיאָן"
 
 #: app/GedcomTag.php:670
 msgid "Place of ordination"
-msgstr ""
+msgstr "אָרט פון אָרדאַניישאַן"
 
 #: app/GedcomTag.php:736
 msgid "Place of residence"
@@ -11173,7 +11186,7 @@ msgstr "פארטוגעזיש"
 #. I18N: gedcom tag POST
 #: app/GedcomTag.php:696
 msgid "Postal code"
-msgstr ""
+msgstr "פּאָסטאַל קאָד"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:96
@@ -11202,14 +11215,19 @@ msgstr "פריריאל"
 #: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
 msgstr ""
+"פּרעדעפֿינירט טעקסט וואָס זאגט אַז אַדמין וועט באַשליסן אויף יעדער בקשה פֿאַ"
+"ר אַ באַניצער חשבון"
 
 #: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
 msgstr ""
+"פּרעדעפֿינירט טעקסט וואָס זאגט אַז אַלע יוזערז קענען בעטן אַ באַניצער חשבון"
 
 #: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
 msgstr ""
+"פּרעדעפֿינירט טעקסט וואָס זאגט אַז בלויז משפּחה מיטגלידער קענען בעטן אַ באַ"
+"ניצער חשבון"
 
 #: admin_trees_config.php:325 admin_trees_manage.php:388
 #: app/Module/ChartsBlockModule.php:77
@@ -11222,12 +11240,14 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:78
 #: app/Module/YahrzeitModule.php:74 block_edit.php:64
 msgid "Preferences"
-msgstr ""
+msgstr "פּרעפֿערענצן"
 
 #: admin_modules.php:98
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
 msgstr ""
+"פּרעפֿערענצן עקסיסטירן פֿאַר די מאָדולע \"%s\", אָבער דער מאָדולע איז ניט "
+"מער."
 
 #. I18N: A configuration setting
 #: admin_users.php:471
@@ -11249,7 +11269,7 @@ msgstr "פּרעזענטירונג מאָדע"
 #. I18N: I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
 #: app/GedcomCode/GedcomCodeTemp.php:297
 msgid "President’s Office"
-msgstr ""
+msgstr "פרעזידענט ס אָפיס"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:301
@@ -11276,11 +11296,13 @@ msgstr "אַליינקייַט"
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: admin_trees_config.php:498
 msgid "Privacy restrictions"
-msgstr ""
+msgstr "פּריוואַטקייט ריסטריקשאַנז"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr ""
+"פּריוואַטקייט ריסטריקשאַנז - די אַפּלייז צו רעקאָרדס און פאקטן וואָס טאָן "
+"ניט אַנטהאַלטן אַ GEDCOM RESN קוויטל"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -11303,7 +11325,7 @@ msgstr "פאַרמאָג"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "פּראָוואָ סיטי צענטער, יוטאָ, פֿאַרייניקטע שטאַטן"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
@@ -11342,7 +11364,7 @@ msgstr "פֿראַגע"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "קוועלטצאַלטענאַגאָ, גואַטעמאַלאַ"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
@@ -12078,19 +12100,19 @@ msgstr "אַלבאָם"
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "פלאָמבע"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "פלאָמבע"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr ""
+msgstr "פלאָמבע"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
