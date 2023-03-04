@@ -732,7 +732,7 @@ class CountryService
             'POL' => 'PL',
             'PRI' => 'PR',
             'PRK' => 'KP',
-            'PRT' => 'PO',
+            'PRT' => 'PT',
             'PRY' => 'PY',
             'PSE' => 'PS',
             'PYF' => 'PF',
