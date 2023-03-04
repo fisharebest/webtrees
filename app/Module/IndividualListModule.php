@@ -41,7 +41,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function app;
 use function array_filter;
 use function array_keys;
+use function array_map;
+use function array_merge;
 use function array_sum;
+use function array_values;
 use function assert;
 use function e;
 use function implode;
@@ -49,6 +52,7 @@ use function ob_get_clean;
 use function ob_start;
 use function route;
 use function uksort;
+use function usort;
 use function view;
 
 use const ARRAY_FILTER_USE_KEY;
@@ -421,8 +425,11 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
                         $falpha = '';
                     } else {
-                        $givn_initials = $this->givenNameInitials($tree, array_keys($surns), $show_marnm === 'yes', $families);
                         // Break long lists by initial letter of given name
+                        $surns         = array_values(array_map(static fn($x): array => array_keys($x), $surns));
+                        $surns         = array_merge(...$surns);
+                        $givn_initials = $this->givenNameInitials($tree, $surns, $show_marnm === 'yes', $families);
+
                         if ($surname !== '' || $show_all) {
                             if (!$show_all) {
                                 echo '<h2 class="wt-page-title">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
