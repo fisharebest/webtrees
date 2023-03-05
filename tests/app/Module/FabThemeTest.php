@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FabTheme
  *
- * @covers Fisharebest\Webtrees\Module\FabTheme
+ * @covers \Fisharebest\Webtrees\Module\FabTheme
  */
 class FabThemeTest extends TestCase
 {

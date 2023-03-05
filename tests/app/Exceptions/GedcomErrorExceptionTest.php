@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GedcomErrorException
  *
- * @covers Fisharebest\Webtrees\Exceptions\GedcomErrorException
+ * @covers \Fisharebest\Webtrees\Exceptions\GedcomErrorException
  */
 class GedcomErrorExceptionTest extends TestCase
 {

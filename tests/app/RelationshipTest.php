@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Relationship
  *
- * @covers Fisharebest\Webtrees\Relationship
+ * @covers \Fisharebest\Webtrees\Relationship
  */
 class RelationshipTest extends TestCase
 {

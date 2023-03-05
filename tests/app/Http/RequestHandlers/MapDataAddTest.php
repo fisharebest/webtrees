@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MapDataAdd
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd
  */
 class MapDataAddTest extends TestCase
 {

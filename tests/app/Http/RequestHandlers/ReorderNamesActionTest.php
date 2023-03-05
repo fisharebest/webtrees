@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReorderNamesAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesAction
  */
 class ReorderNamesActionTest extends TestCase
 {

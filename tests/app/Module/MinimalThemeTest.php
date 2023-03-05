@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MinimalTheme
  *
- * @covers Fisharebest\Webtrees\Module\MinimalTheme
+ * @covers \Fisharebest\Webtrees\Module\MinimalTheme
  */
 class MinimalThemeTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartNoChildrenFamilies
  *
- * @covers Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies
  */
 class ChartNoChildrenFamiliesTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartSex
  *
- * @covers Fisharebest\Webtrees\Statistics\Google\ChartSex
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartSex
  */
 class ChartSexTest extends TestCase
 {

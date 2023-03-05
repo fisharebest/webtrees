@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class View
  *
- * @covers Fisharebest\Webtrees\View
+ * @covers \Fisharebest\Webtrees\View
  */
 class ViewTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MapGeoLocationNominatim
  *
- * @covers Fisharebest\Webtrees\Module\MapGeoLocationNominatim
+ * @covers \Fisharebest\Webtrees\Module\MapGeoLocationNominatim
  */
 class MapGeoLocationNominatimTest extends TestCase
 {

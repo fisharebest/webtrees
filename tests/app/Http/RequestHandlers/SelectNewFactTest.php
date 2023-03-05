@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SelectNewFact
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\SelectNewFact
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SelectNewFact
  */
 class SelectNewFactTest extends TestCase
 {

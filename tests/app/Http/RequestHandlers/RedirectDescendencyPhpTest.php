@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RedirectDescendencyPhp
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\RedirectDescendencyPhp
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RedirectDescendencyPhp
  */
 class RedirectDescendencyPhpTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SearchPhoneticAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticAction
  */
 class SearchPhoneticActionTest extends TestCase
 {

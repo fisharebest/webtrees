@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DateValueToday
  *
- * @covers Fisharebest\Webtrees\Elements\DateValueToday
+ * @covers \Fisharebest\Webtrees\Elements\DateValueToday
  */
 class DateValueTodayTest extends TestCase
 {

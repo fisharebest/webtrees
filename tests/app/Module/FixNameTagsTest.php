@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FixNameTags
  *
- * @covers Fisharebest\Webtrees\Module\FixNameTags
+ * @covers \Fisharebest\Webtrees\Module\FixNameTags
  */
 class FixNameTagsTest extends TestCase
 {

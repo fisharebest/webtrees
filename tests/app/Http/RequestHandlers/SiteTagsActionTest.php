@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SiteTagsAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsAction
  */
 class SiteTagsActionTest extends TestCase
 {

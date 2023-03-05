@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HttpBadRequestException
  *
- * @covers Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException
+ * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException
  */
 class HttpBadRequestExceptionTest extends TestCase
 {

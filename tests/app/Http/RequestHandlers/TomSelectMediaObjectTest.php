@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TomSelectMediaObject
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\TomSelectMediaObject
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TomSelectMediaObject
  */
 class TomSelectMediaObjectTest extends TestCase
 {

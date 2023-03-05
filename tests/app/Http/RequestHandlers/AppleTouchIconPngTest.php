@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AppleTouchIconPng
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng
  */
 class AppleTouchIconPngTest extends TestCase
 {

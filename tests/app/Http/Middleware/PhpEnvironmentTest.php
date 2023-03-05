@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PhpEnvironment
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\PhpEnvironment
+ * @covers \Fisharebest\Webtrees\Http\Middleware\PhpEnvironment
  */
 class PhpEnvironmentTest extends TestCase
 {

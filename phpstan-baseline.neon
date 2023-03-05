@@ -2696,11 +2696,6 @@ parameters:
 			path: app/Report/ReportPdfTextBox.php
 
 		-
-			message: "#^Comparison operation \"\\<\" between 0 and 7 is always true\\.$#"
-			count: 1
-			path: app/Report/RightToLeftSupport.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\RightToLeftSupport\\:\\:spanLtrRtl\\(\\) should return string but returns array\\<int, string\\>\\|string\\.$#"
 			count: 1
 			path: app/Report/RightToLeftSupport.php

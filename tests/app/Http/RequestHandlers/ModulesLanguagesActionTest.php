@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModulesLanguagesAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesAction
  */
 class ModulesLanguagesActionTest extends TestCase
 {

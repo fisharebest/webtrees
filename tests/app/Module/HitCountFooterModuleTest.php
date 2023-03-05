@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HitCountFooterModule
  *
- * @covers Fisharebest\Webtrees\Module\HitCountFooterModule
+ * @covers \Fisharebest\Webtrees\Module\HitCountFooterModule
  */
 class HitCountFooterModuleTest extends TestCase
 {

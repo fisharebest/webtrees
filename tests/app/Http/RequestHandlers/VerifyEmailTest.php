@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class VerifyEmail
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail
  */
 class VerifyEmailTest extends TestCase
 {

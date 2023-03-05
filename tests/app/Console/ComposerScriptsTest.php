@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ComposerScripts
  *
- * @covers Fisharebest\Webtrees\Console\ComposerScripts
+ * @covers \Fisharebest\Webtrees\Console\ComposerScripts
  */
 class ComposerScriptsTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Heredis
  *
- * @covers Fisharebest\Webtrees\CustomTags\Heredis
+ * @covers \Fisharebest\Webtrees\CustomTags\Heredis
  */
 class HeredisTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CheckForNewVersion
  *
- * @covers Fisharebest\Webtrees\Module\CheckForNewVersion
+ * @covers \Fisharebest\Webtrees\Module\CheckForNewVersion
  */
 class CheckForNewVersionTest extends TestCase
 {

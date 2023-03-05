@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModulesMapAutocompleteAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapAutocompleteAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapAutocompleteAction
  */
 class ModulesMapAutocompleteActionTest extends TestCase
 {

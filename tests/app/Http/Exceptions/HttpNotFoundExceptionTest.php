@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HttpNotFoundException
  *
- * @covers Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException
+ * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException
  */
 class HttpNotFoundExceptionTest extends TestCase
 {

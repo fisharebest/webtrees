@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PlaceHierarchyListModule
  *
- * @covers Fisharebest\Webtrees\Module\PlaceHierarchyListModule
+ * @covers \Fisharebest\Webtrees\Module\PlaceHierarchyListModule
  */
 class PlaceHierarchyListModuleTest extends TestCase
 {

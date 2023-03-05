@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModulesHistoricEventsPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModulesHistoricEventsPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesHistoricEventsPage
  */
 class ModulesHistoricEventsPageTest extends TestCase
 {

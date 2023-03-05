@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MapGeoLocationOpenRouteService
  *
- * @covers Fisharebest\Webtrees\Module\MapGeoLocationOpenRouteService
+ * @covers \Fisharebest\Webtrees\Module\MapGeoLocationOpenRouteService
  */
 class MapGeoLocationOpenRouteServiceTest extends TestCase
 {

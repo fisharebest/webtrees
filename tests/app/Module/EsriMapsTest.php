@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EsriMaps
  *
- * @covers Fisharebest\Webtrees\Module\EsriMaps
+ * @covers \Fisharebest\Webtrees\Module\EsriMaps
  */
 class EsriMapsTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CensusOfCanada
  *
- * @covers Fisharebest\Webtrees\Census\CensusOfCanada
+ * @covers \Fisharebest\Webtrees\Census\CensusOfCanada
  */
 class CensusOfCanadaTest extends TestCase
 {

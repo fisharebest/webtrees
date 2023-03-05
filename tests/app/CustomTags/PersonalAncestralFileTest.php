@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PersonalAncestralFile
  *
- * @covers Fisharebest\Webtrees\CustomTags\PersonalAncestralFile
+ * @covers \Fisharebest\Webtrees\CustomTags\PersonalAncestralFile
  */
 class PersonalAncestralFileTest extends TestCase
 {

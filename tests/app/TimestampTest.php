@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Timestamp
  *
- * @covers Fisharebest\Webtrees\Timestamp
+ * @covers \Fisharebest\Webtrees\Timestamp
  */
 class TimestampTest extends TestCase
 {

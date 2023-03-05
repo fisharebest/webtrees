@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PendingChangesLogPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesLogPage
  */
 class PendingChangesLogPageTest extends TestCase
 {

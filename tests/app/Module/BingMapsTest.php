@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class BingMaps
  *
- * @covers Fisharebest\Webtrees\Module\BingMaps
+ * @covers \Fisharebest\Webtrees\Module\BingMaps
  */
 class BingMapsTest extends TestCase
 {

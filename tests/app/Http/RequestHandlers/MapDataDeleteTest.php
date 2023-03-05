@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MapDataDelete
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete
  */
 class MapDataDeleteTest extends TestCase
 {

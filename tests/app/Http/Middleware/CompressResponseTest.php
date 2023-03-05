@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CompressResponse
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\CompressResponse
+ * @covers \Fisharebest\Webtrees\Http\Middleware\CompressResponse
  */
 class CompressResponseTest extends TestCase
 {

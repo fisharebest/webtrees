@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RedirectLegacyUrlsModule
  *
- * @covers Fisharebest\Webtrees\Module\RedirectLegacyUrlsModule
+ * @covers \Fisharebest\Webtrees\Module\RedirectLegacyUrlsModule
  */
 class RedirectLegacyUrlsModuleTest extends TestCase
 {

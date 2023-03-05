@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EditMediaFileAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\EditMediaFileAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EditMediaFileAction
  */
 class EditMediaFileActionTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ImportGedcomPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomPage
  */
 class ImportGedcomPageTest extends TestCase
 {

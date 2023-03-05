@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartService
  *
- * @covers Fisharebest\Webtrees\Services\ChartService
+ * @covers \Fisharebest\Webtrees\Services\ChartService
  */
 class ChartServiceTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SlugFactory
  *
- * @covers Fisharebest\Webtrees\Factories\SlugFactory
+ * @covers \Fisharebest\Webtrees\Factories\SlugFactory
  */
 class SlugFactoryTest extends TestCase
 {

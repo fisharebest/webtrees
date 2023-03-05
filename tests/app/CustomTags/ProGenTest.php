@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ProGen
  *
- * @covers Fisharebest\Webtrees\CustomTags\ProGen
+ * @covers \Fisharebest\Webtrees\CustomTags\ProGen
  */
 class ProGenTest extends TestCase
 {
