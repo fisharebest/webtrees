@@ -44,7 +44,6 @@ use function hexdec;
 use function imagecolorallocate;
 use function imagecolortransparent;
 use function imagecreate;
-use function imagedestroy;
 use function imagefilledarc;
 use function imagefilledrectangle;
 use function imagepng;
@@ -474,7 +473,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
 
         ob_start();
         imagepng($image);
-        imagedestroy($image);
         $png = ob_get_clean();
 
         return response(view('modules/fanchart/chart', [
