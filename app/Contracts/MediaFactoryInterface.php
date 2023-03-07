@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Media object.
  */
-interface MediaFactoryInterface
+interface MediaFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a media object.

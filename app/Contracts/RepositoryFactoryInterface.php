@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Repository object.
  */
-interface RepositoryFactoryInterface
+interface RepositoryFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a repository.

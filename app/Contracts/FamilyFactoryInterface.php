@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Family object.
  */
-interface FamilyFactoryInterface
+interface FamilyFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a family.

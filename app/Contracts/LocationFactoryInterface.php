@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Location object.
  */
-interface LocationFactoryInterface
+interface LocationFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a Location.
