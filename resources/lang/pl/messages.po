@@ -3,15 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2022-09-05 12:36+0000\n"
-"Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"PO-Revision-Date: 2023-03-11 13:35+0000\n"
+"Last-Translator: Łukasz <lukas.the.best@poczta.fm>\n"
+"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -25,7 +27,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr ", ale szczegóły są nieznane"
+msgstr " , ale szczegóły są nieznane"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -4305,7 +4307,7 @@ msgstr "Kuba"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "Curaçao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -5730,7 +5732,7 @@ msgstr "Dodatkowy komentarz do tego elementu"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Pełny ekran"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5822,7 +5824,7 @@ msgstr "Wydarzenie"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Zdarzenie nie wystąpiło"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5874,7 +5876,7 @@ msgstr "Wyłączone z tego przedstawienia"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Wyłącz tryb pełnoekranowy"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6142,7 +6144,7 @@ msgstr "Spis rodzin"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "Fakt rodzinny"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
@@ -6399,19 +6401,19 @@ msgstr "Kobiety"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Pole"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Nazwa pola"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Wartość pola"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6852,7 +6854,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -8523,7 +8525,7 @@ msgstr "Ostatnia zmiana"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Ostatnio sprawdzone %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -10322,7 +10324,7 @@ msgstr "Brak faktów dla tej rodziny."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Nie otrzymano żadnego pliku."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -11164,7 +11166,7 @@ msgstr "Fotografia"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Fotograf"
 
 #: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:78
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:88
@@ -12351,7 +12353,7 @@ msgstr "Sage"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Saint Barthélemy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -14137,7 +14139,7 @@ msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Szablon"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14530,6 +14532,8 @@ msgstr "Nowy użytkownik zostanie poproszony o potwierdzenie jego adresu email z
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Kolejna wersja standardu GEDCOM doda nowe znaczniki i usunie stare. Można "
+"już korzystać z niektórych nowych znaczników."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -14805,7 +14809,7 @@ msgstr[2] "Brak zmian w ciągu ostatnich %s dni."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Podczas sprawdzania nowej wersji wystąpił błąd."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -14904,9 +14908,15 @@ msgstr "Ta rodzina została zmieniona. Należy przejrzeć zmiany, a następnie %
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Dane drzewo genealogiczne posiada %s wpis, który używa tego samego numeru numeru „XREF” co drugie drzewo."
-msgstr[1] "Dane drzewo genealogiczne posiada %s wpisy, które używają tego samego numeru numeru „XREF” co drugie drzewo."
-msgstr[2] "Dane drzewo genealogiczne posiada %s wpisów, które używają tego samego numeru numeru „XREF” co drugie drzewo."
+msgstr[0] ""
+"Dane drzewo genealogiczne posiada %s wpis, który używa tego samego numeru "
+"„XREF” co drugie drzewo."
+msgstr[1] ""
+"Dane drzewo genealogiczne posiada %s wpisy, które używają tego samego numeru "
+"„XREF” co drugie drzewo."
+msgstr[2] ""
+"Dane drzewo genealogiczne posiada %s wpisów, które używają tego samego "
+"numeru „XREF” co drugie drzewo."
 
 #: app/Module/SlideShowModule.php:181
 msgid "This family tree has no images to display."
@@ -15234,7 +15244,7 @@ msgstr "Limit pamięci tego serwera wynosi %sMB, a limit czasu procesora wynosi 
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Ta usługa wymaga klucza API."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -17112,7 +17122,7 @@ msgstr "zmienione"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "Sprawdź teraz"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
