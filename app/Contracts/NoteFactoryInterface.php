@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Note object.
  */
-interface NoteFactoryInterface
+interface NoteFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a note.

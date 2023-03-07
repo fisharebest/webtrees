@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Submitter object.
  */
-interface SubmitterFactoryInterface
+interface SubmitterFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a submitter.

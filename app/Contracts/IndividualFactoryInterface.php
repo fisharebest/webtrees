@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Individual object.
  */
-interface IndividualFactoryInterface
+interface IndividualFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create an individual.

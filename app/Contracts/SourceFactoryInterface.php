@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a Source object.
  */
-interface SourceFactoryInterface
+interface SourceFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a source.
