@@ -426,7 +426,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         $falpha = '';
                     } else {
                         // Break long lists by initial letter of given name
-                        $surns         = array_values(array_map(static fn($x): array => array_keys($x), $surns));
+                        $surns         = array_values(array_map(static fn ($x): array => array_keys($x), $surns));
                         $surns         = array_merge(...$surns);
                         $givn_initials = $this->givenNameInitials($tree, $surns, $show_marnm === 'yes', $families);
 
