@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
 "PO-Revision-Date: 2023-03-11 13:35+0000\n"
-"Last-Translator: mpwt <der@bauschaffen.de>\n"
+"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -7431,7 +7431,7 @@ msgstr "Hierarchische Beziehung"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Highlighted image"
-msgstr "Hervorgehobenes Bild"
+msgstr "Bevorzugtes Bild"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Factories/CalendarDateFactory.php:154
@@ -16057,7 +16057,9 @@ msgstr "Zum Nachrichtenversand sendmail verwenden"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr "Silhouetten werden angezeigt, wenn zu einer Person kein hervorgehobenes Bild eingestellt wurde. Die Silhouetten sind geschlechtsspezifisch."
+msgstr ""
+"Silhouetten werden angezeigt, wenn zu einer Person kein bevorzugtes Bild "
+"eingestellt wurde. Die Silhouetten sind geschlechtsspezifisch."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:306
@@ -20928,7 +20930,11 @@ msgstr "„%s” wurde gelöscht."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"Hervorgehobenes Bild\" (_PRIM)-Kennzeichen werden von einigen Genealogie-Programmen verwendet, um das bevorzugte Bild für eine Person anzuzeigen. Eine Alternative besteht darin, die Bilder so anzuordnen, dass das bevorzugte Bild zuerst aufgeführt wird."
+msgstr ""
+"\"Bevorzugtes Bild\" (_PRIM)-Kennzeichen werden von einigen Genealogie-"
+"Programmen verwendet, um das bevorzugte Bild für eine Person anzuzeigen. "
+"Eine Alternative besteht darin, die Bilder so anzuordnen, dass das "
+"bevorzugte Bild zuerst aufgeführt wird."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
