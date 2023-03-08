@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-05 08:12+0000\n"
+"PO-Revision-Date: 2023-03-11 13:35+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
-"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +80,7 @@ msgstr "%1$s נישט עקזיסטירן. האט איר מיינען %2$s?"
 #: app/Http/RequestHandlers/CheckTree.php:275
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s האָט נישט אַ לינק צוריק צו %2$s."
+msgstr "%1$s האָט נישט אַ פֿאַרבינדונג צוריק צו %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:264
@@ -736,12 +737,12 @@ msgstr "א גרוס אָנזאָג פֿאַר זייַטל געסט."
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr "א לינק צו די פּלאַץ קאָנטאַקטן."
+msgstr "אַ פֿאַרבינדונג צו די פּלאַץ קאָנטאַקטן."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr "א לינק צו די וועבטריס היים בלאַט."
+msgstr "אַ פֿאַרבינדונג צו די וועבטריס היים בלאַט."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
@@ -866,7 +867,7 @@ msgstr "א נייַע ווערסיע פון webtrees איז בארעכטיגט."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:121
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "א פּאַראָל באַשטעטיק לינק איז געשיקט צו “%s“."
+msgstr "א פּאַראָל באַשטעטיק פֿאַרבינדונג איז געשיקט צו “%s“."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -4281,7 +4282,7 @@ msgstr "קובא"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "קוראסאו"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -5285,7 +5286,7 @@ msgstr "געשטארבן אלס קינד: פטור"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr "געשטאָרבן ווייניקער ווי 1 יאָר אַלט, אונטערשרייַבן ניט פֿאַרלאַנגט."
+msgstr "געשטאָרבן ווייניקער ווי 1 יאָר אַלט, פלאָמבע ניט פֿאַרלאַנגט."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5351,7 +5352,7 @@ msgstr "דזשיבוטי"
 #: app/Elements/LdsOrdinanceStatus.php:71
 #: app/Elements/LdsSpouseSealingDateStatus.php:70
 msgid "Do not seal, previous sealing canceled"
-msgstr "צי ניט אונטערשרייבן, איידער די פריערדיקע שטעמפּל איז אומגילטיקן"
+msgstr "צי ניט אונטערשרייבן, איידער די פריערדיקע פלאָמבע איז אומגילטיקן"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:69
@@ -5798,7 +5799,7 @@ msgstr "געשעעניש"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "דער געשעעניש איז נישט געשען"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -6001,7 +6002,7 @@ msgstr "פאַקט 9"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:514
 msgid "Fact icons"
-msgstr "פאַקט נוליקע"
+msgstr "פאַקט בילדלעך"
 
 #: resources/views/admin/trees-privacy.phtml:230
 msgid "Fact or event"
@@ -6218,7 +6219,7 @@ msgstr "משפּחה מיט ראַדאַ עלטערן"
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/Individual.php:856
 msgid "Family with sealing parents"
-msgstr "משפּחה מיט סילינג עלטערן"
+msgstr "משפּחה מיט פלאָמבע עלטערן"
 
 #: app/Module/ModuleThemeTrait.php:186 resources/views/chart-box.phtml:35
 msgid "Family with spouse"
@@ -7419,7 +7420,7 @@ msgstr "באַהאַלטן דאָזיק פֿעלערס"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
-msgstr "באַהאַלטן ניט בּאַנוצן  לאָקאַציעס"
+msgstr "באַהאַלטן ניט בּאַנוצן לאָקאַציעס"
 
 #: app/CustomTags/GedcomL.php:296
 msgid "Hierarchical relationship"
@@ -8499,7 +8500,7 @@ msgstr "לעצטע ענדערונג"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "לעצטע אָפּגעשטעלט %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -10647,7 +10648,7 @@ msgstr "פאַך"
 #: resources/xml/reports/occupation_report.xml:3
 #: resources/xml/reports/occupation_report.xml:37
 msgid "Occupations"
-msgstr "פאַך ס"
+msgstr "פֿאַכֿן"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:413
@@ -11525,7 +11526,7 @@ msgstr "דרוק גרונט געשעענישן ווען פּוסט"
 #: app/CustomTags/GedcomL.php:146 app/CustomTags/GedcomL.php:202
 #: app/CustomTags/Legacy.php:137
 msgid "Priority"
-msgstr ""
+msgstr "בילכערקייַט"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:110
@@ -11622,11 +11623,11 @@ msgstr "קוועלטצאַלטענאַגאָ, גואַטעמאַלאַ"
 
 #: resources/views/admin/trees-preferences.phtml:678
 msgid "Quick family facts"
-msgstr ""
+msgstr "שנעל משפּחה פֿאַקטן"
 
 #: resources/views/admin/trees-preferences.phtml:653
 msgid "Quick individual facts"
-msgstr ""
+msgstr "שנעל יחיד פֿאַקטן"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:309
@@ -11637,7 +11638,7 @@ msgstr "קוינטידי"
 #: resources/views/modules/user-messages/user-messages.phtml:115
 #: resources/views/modules/user-messages/user-messages.phtml:116
 msgid "RE: "
-msgstr ""
+msgstr "באַמערקונג: "
 
 #: app/Elements/RelationIsDescriptor.php:122
 msgid "Rabbi"
@@ -11695,19 +11696,19 @@ msgstr "רביע א-ת'אני"
 #: app/Elements/PedigreeLinkageType.php:86
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "ראַדהאַ - בשותּפֿותדיקע זייגערין נאָענטקייט"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "ראַדהאַ - בשותּפֿותדיקע זייגערין נאָענטקייט"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:96
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "ראַדהאַ - בשותּפֿותדיקע זייגערין נאָענטקייט"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:154
@@ -11765,7 +11766,7 @@ msgstr "ראמדאן"
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:76
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "צופֿעליק בילדער פון דער יעצטיגע משפּחה בוים."
 
 #: app/Http/RequestHandlers/ReorderChildrenPage.php:51
 #: resources/views/family-page-children.phtml:52
@@ -11792,7 +11793,7 @@ msgstr "אָרדענונג מידיאַ נאכאמאל"
 
 #: resources/views/media-page-menu.phtml:40
 msgid "Re-order media files"
-msgstr ""
+msgstr "שייַעך-סדר מידיאַ טעקעס"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:51
@@ -11857,7 +11858,7 @@ msgstr "רעקאָרדס"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "אָפּשיקן נאָך איין מאָל אַלט URL ס פֿון webtrees ווערסיע 1."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169
@@ -11885,26 +11886,26 @@ msgstr "רעגיסטרירט שוטפעס"
 
 #: app/Elements/RelationIsDescriptor.php:123
 msgid "Registry officer"
-msgstr ""
+msgstr "רעגיסטראַציע אָפֿיציר"
 
 #: app/Elements/RelationIsDescriptor.php:87
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "רעגיסטראַציע אָפיצירקע"
 
 #: app/Elements/RelationIsDescriptor.php:66
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr ""
+msgstr "רעגיסטראַציע אָפֿיציר"
 
 #. I18N: https://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:105
 msgid "Regular expression"
-msgstr ""
+msgstr "רעגולער אויסדרוק"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:44
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "רעגולער אויסדרוקן זענען אַן אַוואַנסירטע מוסטער וואָס ריכטן טעכניק."
 
 #: resources/views/pending-changes-page.phtml:53
 #: resources/views/pending-changes-page.phtml:91
@@ -11982,29 +11983,29 @@ msgstr "רעליגיע"
 
 #: app/Gedcom.php:721
 msgid "Religious institution"
-msgstr ""
+msgstr "רעליגיעזע ינסטיטוציע"
 
 #: app/CustomTags/Aldfaer.php:63 app/Elements/MarriageType.php:65
 #: resources/xml/reports/fact_sources.xml:199
 msgid "Religious marriage"
-msgstr ""
+msgstr "רעליגיעזע חתונה"
 
 #: app/Services/LeafletJsService.php:80
 msgid "Reload map"
-msgstr ""
+msgstr "לאָדן די מאַפּע נאָך איין מאָל"
 
 #: app/CustomTags/GedcomL.php:147 app/CustomTags/GedcomL.php:203
 #: app/CustomTags/Legacy.php:141
 msgid "Reminder date"
-msgstr ""
+msgstr "דערמאָנונג טאָג"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
-msgstr ""
+msgstr "דערמאָנונג בליצפּאָסט אָפטקייַט (טעג)"
 
 #: app/CustomTags/PhpGedView.php:77
 msgid "Remote server"
-msgstr ""
+msgstr "ווייַט סערווער"
 
 #: app/Module/CensusAssistantModule.php:241
 #: app/Module/CensusAssistantModule.php:265
@@ -12017,7 +12018,7 @@ msgstr "נעם אַװעק"
 #. I18N: Name of a module
 #: app/Module/FixDuplicateLinks.php:58
 msgid "Remove duplicate links"
-msgstr ""
+msgstr "אַראָפּנעמען דופּליקאַן לינקס"
 
 #: resources/views/modules/timeline-chart/page.phtml:76
 msgid "Remove individual"
@@ -12026,7 +12027,7 @@ msgstr "אַראָפּנעמען פּערזאָן"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: resources/views/admin/trees-import.phtml:122
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "אַראָפּנעמען די GEDCOM מידיאַ דרך פון פילענאַמעס"
 
 #: resources/views/admin/locations.phtml:129
 msgid "Remove this location?"
@@ -12043,11 +12044,11 @@ msgstr "רינא, נעוואדא"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "רינומער XREFs"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
-msgstr ""
+msgstr "פֿאַרבייַטן"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:71
@@ -12077,7 +12078,7 @@ msgstr "מעלדונג"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
 msgid "Report phrase"
-msgstr ""
+msgstr "מעלדונג פראַזע"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12140,7 +12141,7 @@ msgstr "ביטע ניי באַניצער חשבון"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "פאָרשונג"
 
 #: app/CustomTags/BrothersKeeper.php:69 app/CustomTags/BrothersKeeper.php:109
 #: app/CustomTags/GedcomL.php:136 app/CustomTags/GedcomL.php:192
@@ -12158,10 +12159,17 @@ msgstr "פאָרשונג אַרבעט"
 #: resources/views/modules/todo/config.phtml:16
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
 msgstr ""
+"פאָרשונג אויפֿגאָבן זענען ספּעציעל געשעענישן, צוגעגעבן צו מענטשן אין דיין "
+"משפּחה בוים, וואָס ידענטיפיצירן די נויט פֿאַר ווייַטער פאָרשונג. איר קענט "
+"נוצן זיי ווי אַ דערמאָנונג צו אויספּרווון פֿאקטן קעגן מער פאַרלאָזלעך "
+"מקורים, צו קריגן דאָקומענטן אָדער פאָוטאַגראַפס, צו באַשליסן קאַנפליקטינג "
+"אינפֿאָרמאַציע, אאז\"ו ו."
 
 #: resources/views/modules/todo/config.phtml:18
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
 msgstr ""
+"פאָרשונג טאַסקס זענען מאַגאַזינירט מיט די מנהג GEDCOM קוויטל \"_TODO\". "
+"אנדערע גענעאלאגיע אַפּלאַקיישאַנז קען נישט דערקענען דעם קוויטל."
 
 #: app/CustomTags/Gedcom7.php:182 app/Gedcom.php:729
 #: resources/views/admin/tags.phtml:1004
@@ -12171,7 +12179,7 @@ msgstr "וווינאָרט"
 #: resources/views/edit-blocks-page.phtml:74
 #: resources/views/edit-blocks-page.phtml:75
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "ומקערן די פעליקייַט בלאָק אויסלייג"
 
 #: app/Http/RequestHandlers/HelpText.php:275
 #: resources/views/admin/users-edit.phtml:295
@@ -12191,6 +12199,8 @@ msgstr "באַגרענעצונג"
 #: resources/views/help/restriction.phtml:10
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
 msgstr ""
+"באַגרענעצונגען קענען זיין מוסיף צו רעקאָרדס און / אָדער פאקטן. זיי באַ"
+"גרענעצן ווער קענען זען די דאַטן און ווער קענען רעדאַגירן עס."
 
 #: resources/views/modules/statistics-chart/custom.phtml:122
 msgid "Results"
@@ -12203,7 +12213,7 @@ msgstr "פּענסיע"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:172
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "רעקסבורג, אידאהא, פאראייניגטע שטאטן"
 
 #: app/CustomTags/Gedcom7.php:77 app/CustomTags/Gedcom7.php:89
 #: app/CustomTags/Gedcom7.php:104 app/CustomTags/Gedcom7.php:118
@@ -12222,7 +12232,7 @@ msgstr "רומעניע"
 
 #: app/Http/RequestHandlers/HelpText.php:248
 msgid "Romanized"
-msgstr ""
+msgstr "לאַטייַניש"
 
 #: app/Gedcom.php:697
 msgid "Romanized name"
@@ -12243,7 +12253,7 @@ msgstr "ווארצלען"
 
 #: app/CustomTags/GedcomL.php:189
 msgid "Rufname"
-msgstr ""
+msgstr "צונעמעניש"
 
 #. I18N: https://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:606 resources/views/branches-page.phtml:41
@@ -12278,16 +12288,18 @@ msgstr "SQLite איז בלויז פּאַסיק פֿאַר קליין זייטל
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr ""
+"SQLite ווערסיע %s איז אינסטאַלירן. SQLite ווערסיע %s אָדער שפּעטער איז "
+"פארלאנגט."
 
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:211
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12321,11 +12333,11 @@ msgstr "צאפר"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:176
 msgid "Sage"
-msgstr ""
+msgstr "סאַלוויאַ"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "הייליקער באַרטעלעמי"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -12359,7 +12371,7 @@ msgstr "סולט לייק סיטי, יוטא"
 
 #: resources/views/modals/media-file-fields.phtml:71
 msgid "Same as uploaded file"
-msgstr ""
+msgstr "דער זעלביקער ווי ופּלאָאַדעד טעקע"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:538
@@ -12389,7 +12401,7 @@ msgstr "סאן מארינא"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:174
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "סאַן סאַלוואַדאָר, על סאַלוואַדאָר"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:175
@@ -12428,7 +12440,7 @@ msgstr "סאודי אראביע"
 
 #: app/CustomTags/FamilyTreeMaker.php:72 app/CustomTags/GedcomL.php:153
 msgid "Schema"
-msgstr ""
+msgstr "סכעמע"
 
 #: app/Gedcom.php:642 app/Gedcom.php:666
 msgid "School or college"
@@ -12465,7 +12477,7 @@ msgstr "פלאָמבע"
 #: app/Elements/LdsOrdinanceStatus.php:63
 #: app/Elements/LdsSpouseSealingDateStatus.php:64
 msgid "Sealing canceled (divorce)"
-msgstr ""
+msgstr "פלאָמבע נעגירונג (גט)"
 
 #. I18N: Name of a module
 #. I18N: A button label.
@@ -12493,11 +12505,15 @@ msgstr "זוכן און פאַרבייַטן"
 #: app/Module/FixSearchAndReplace.php:88
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"זוכן און פאַרבייַטן טעקסט, ניצן פּשוט אָנפֿרעגן אָדער אַוואַנסירטע מוסטער "
+"וואָס ריכטן זיך."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:229
 msgid "Search engines may use this description of your site in their search results."
 msgstr ""
+"זוכן מאָטאָרן קען נוצן דעם באַשרייַבונג פון דיין פּלאַץ אין זייער זוכן "
+"רעזולטאַטן."
 
 #: resources/views/modules/media-list/page.phtml:73
 msgid "Search filters"
@@ -12510,7 +12526,7 @@ msgstr "זוכן פֿאַר"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "זוכן פֿאַר ערטער אין אַ פונדרויסנדיק דאַטאַבייס."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
@@ -12520,7 +12536,7 @@ msgstr "זוכן אָרט נעמען אין אַ פונדרויסנדיק דאַ
 #: app/Module/OpenRouteServiceAutocomplete.php:57
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "זוכן אָרט נעמען ניצן %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12533,6 +12549,8 @@ msgstr "זוכן טעקסט / מוסטער"
 #: resources/views/modules/relationships-chart/config.phtml:26
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
 msgstr ""
+"זוכן פֿאַר אַלע מעגלעך באציונגען קענען נעמען אַ פּלאַץ פון צייט אין קאָמפּ"
+"לעקס ביימער."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:179
@@ -12541,17 +12559,17 @@ msgstr "סיאטל, וואשינגטאן"
 
 #: resources/views/admin/merge-records-step-1.phtml:106
 msgid "Second record"
-msgstr ""
+msgstr "צווייטע רעקאָרד"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:163
 msgid "Secure connection"
-msgstr ""
+msgstr "זיכער קשר"
 
 #. I18N: A configuration setting
 #: resources/views/modules/statcounter/form.phtml:20
 msgid "Security code"
-msgstr ""
+msgstr "זיכערהייַט קאָד"
 
 #: resources/views/admin/site-mail.phtml:36
 #: resources/views/emails/new-version-html.phtml:26
@@ -12559,17 +12577,17 @@ msgstr ""
 #: resources/views/modules/fix-search-and-replace/options.phtml:45
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "זען %s פֿאַר מער אינפֿאָרמאַציע."
 
 #: resources/views/admin/merge-records-step-2.phtml:48
 #: resources/views/admin/merge-records-step-2.phtml:95
 #: resources/views/admin/merge-records-step-2.phtml:141
 msgid "Select"
-msgstr ""
+msgstr "אויסקלייַבן"
 
 #: resources/views/admin/trees-import.phtml:36
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "אױסקלײַבּן אַ GEDCOM טעקע צו אַרייַנפיר"
 
 #: resources/views/edit/input-addon-calendar.phtml:14
 #: resources/views/edit/input-addon-calendar.phtml:17
@@ -12584,6 +12602,8 @@ msgstr "אויסקלייַבן מענטשן לויט אָרט אָדער טאָ�
 #: app/Module/ClippingsCartModule.php:137
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr ""
+"אױסקלײַבּן רעקאָרדס פון דיין משפּחה בוים און ראַטעווען זיי ווי אַ GEDCOM "
+"טעקע."
 
 #: resources/views/modules/statistics-chart/custom.phtml:148
 msgid "Select the desired age interval"
@@ -12591,15 +12611,15 @@ msgstr "אויסקלייַבן די געבעטן עלטער מעהאַלעך"
 
 #: resources/views/admin/merge-records-step-2.phtml:34
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "אויסקלייַבן די פאקטן און געשעענישן צו האַלטן פֿון ביידע רעקאָרדס."
 
 #: resources/views/admin/merge-records-step-1.phtml:50
 msgid "Select two records to merge."
-msgstr ""
+msgstr "אויסקלייַבן צוויי רעקאָרדס צו צונויפגיסן."
 
 #: resources/views/admin/site-mail.phtml:210
 msgid "Selector"
-msgstr ""
+msgstr "אױסקלײַבער"
 
 #: app/Elements/RelationIsDescriptor.php:124
 msgid "Seller"
@@ -12644,21 +12664,22 @@ msgstr "שיקן אָנזאָג צו ניצערס, וואס האָבן ניט א
 
 #: resources/views/admin/site-mail.phtml:233
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "שיקן אַ פּראָבע בליצפּאָסט ניצן די דעפֿיניציעס"
 
 #: app/Module/CheckForNewVersion.php:76
 msgid "Send an email to all administrators when an upgrade is available."
 msgstr ""
+"שיקן אַן בליצפּאָסט צו אַלע אַדמיניסטראַטאָרס ווען אַן אַפּגרייד איז בנימצא."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:20
 msgid "Send out reminder emails"
-msgstr ""
+msgstr "שיקן דערמאָנונג בליצפּאָסט"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:71
 msgid "Sender email"
-msgstr ""
+msgstr "שיקן בליצפּאָסט"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
@@ -12668,7 +12689,7 @@ msgstr "אָפּשיקער נאָמען"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:67
 #: resources/views/admin/control-panel.phtml:246
 msgid "Sending email"
-msgstr ""
+msgstr "שיקט בליצפּאָסט"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:177
@@ -12747,7 +12768,7 @@ msgstr "טרעגער"
 #: app/Http/RequestHandlers/PhpInformation.php:60
 #: resources/views/admin/control-panel.phtml:274
 msgid "Server information"
-msgstr ""
+msgstr "סערווירער אינפֿאָרמאַציע"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:93
@@ -12759,17 +12780,17 @@ msgstr "דינער נאָמען"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "שטעלן אַ נייַ פּאַראָל"
 
 #: resources/views/admin/trees.phtml:132 resources/views/admin/trees.phtml:138
 msgid "Set as default"
-msgstr ""
+msgstr "באַשטעטיקט ווי פעליקייַט"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
 #: resources/views/emails/verify-notify-text.phtml:28
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "שטעלן די אַקסעס מדרגה פֿאַר יעדער בוים."
 
 #: app/Http/RequestHandlers/TreePageDefaultEdit.php:69
 #: resources/views/admin/control-panel.phtml:321
@@ -12784,23 +12805,26 @@ msgstr "שטעלן די פעליקייַט בלאַקס פֿאַר נייַע נ
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:62
 msgid "Set the privacy access level for all dead individuals."
-msgstr ""
+msgstr "שטעלן די פּריוואַטקייט אַקסעס מדרגה פֿאַר אַלע טויט מענטשן."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:39
 #: resources/views/emails/verify-notify-text.phtml:27
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "שטעלן די סטאַטוס צו \"באוויליקט\"."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:605
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr ""
+"באַשטעטיקן דעם צו <b>יא</b> וועט שטעלן פֿאַרבינדונגען אויף יחידים, קוואלן, "
+"און פאַמיליעס צו לאָזן וסערס ברענגען אַרויף אן אנדער פֿענצטער מיט די רוי דאַ"
+"טן גענומען רעכט אויס פון די GEDCOM טעקע."
 
 #: resources/views/layouts/setup.phtml:18
 #: resources/views/layouts/setup.phtml:26
 msgid "Setup wizard for webtrees"
-msgstr ""
+msgstr "אינסטאַלירונג צויבערער פֿאַר webtrees"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -12848,11 +12872,11 @@ msgstr "טיילן"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "ייַנטיילן די URL"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "ייַנטיילן דעם יאָרטאָג פון אַ געשעעניש"
 
 #: app/CustomTags/Gedcom7.php:85 app/CustomTags/Gedcom7.php:100
 #: app/CustomTags/Gedcom7.php:112 app/CustomTags/Gedcom7.php:134
@@ -12877,7 +12901,7 @@ msgstr "געטיילט הערות"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:750
 msgid "Shares"
-msgstr ""
+msgstr "מיטבאַטייליקונגען"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
@@ -12954,7 +12978,7 @@ msgstr "זי איז באַגראָבן"
 
 #: resources/xml/reports/ahnentafel_report.xml:168
 msgid "She was christened"
-msgstr ""
+msgstr "זי איז באַפטייזד"
 
 #: resources/xml/reports/ahnentafel_report.xml:314
 msgid "She was cremated"
@@ -13005,12 +13029,12 @@ msgstr "װײַז"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:278
 msgid "Show a download link in the media viewer"
-msgstr ""
+msgstr "ווייַזן אַ אראפקאפיע בינדונג אין די מידיאַ צוקוקער"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:76
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "ווייַזן אַ פּריוואַטקייט פּאָליטיק."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:66
@@ -13044,11 +13068,11 @@ msgstr "ווייַזן קינדער פון אבות"
 
 #: resources/views/lists/families-table.phtml:140
 msgid "Show couples where either partner married more than once."
-msgstr ""
+msgstr "ווייַזן פּאָרפֿעלקער ווו יעדער שותף באַהעפט מער ווי אַמאָל."
 
 #: resources/views/lists/families-table.phtml:91
 msgid "Show couples where only the female partner is dead."
-msgstr ""
+msgstr "ווייַזן פּאָרפֿעלקער ווו בלויז די ווייַבלעך שותף איז טויט."
 
 #: resources/views/lists/families-table.phtml:96
 msgid "Show couples where only the male partner is dead."
@@ -13056,15 +13080,15 @@ msgstr "ווייַזן קאַפּאַלז ווו בלויז די זכר שוטע
 
 #: resources/views/lists/families-table.phtml:125
 msgid "Show couples who married more than 100 years ago."
-msgstr ""
+msgstr "ווייַזן פּאָרפֿעלקער וואָס האָבן באהעפט מיט מער ווי 100 יאר צוריק."
 
 #: resources/views/lists/families-table.phtml:130
 msgid "Show couples who married within the last 100 years."
-msgstr ""
+msgstr "ווייַזן פּאָרפֿעלקער וואָס האָבן באהעפט אין די לעצטע 100 יאָר."
 
 #: resources/views/lists/families-table.phtml:120
 msgid "Show couples with an unknown marriage date."
-msgstr ""
+msgstr "ווייַזן פּאָרפֿעלקער מיט אַן אומבאַקאַנט חתונה טאָג."
 
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:37
@@ -13078,7 +13102,7 @@ msgstr "ווייַזן טויטע מענטשן"
 
 #: resources/views/lists/families-table.phtml:135
 msgid "Show divorced couples."
-msgstr ""
+msgstr "ווייַזן אָפּגעגעטן פּאָרפֿעלקער."
 
 #: resources/views/lists/individuals-table.phtml:137
 msgid "Show individuals born more than 100 years ago."
@@ -13091,11 +13115,15 @@ msgstr "ווייַזן מענטשן געבוירן אין די לעצטע 100 י
 #: resources/views/lists/individuals-table.phtml:114
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr ""
+"ווייַזן מענטשן וואָס זענען לעבעדיק אָדער פּאָרפֿעלקער ווו ביידע פּאַרטנערס "
+"זענען לעבעדיק."
 
 #: resources/views/lists/families-table.phtml:101
 #: resources/views/lists/individuals-table.phtml:119
 msgid "Show individuals who are dead or couples where both partners are dead."
 msgstr ""
+"ווייַזן מענטשן וואָס זענען טויט אָדער פּאָרפֿעלקער ווו ביידע פּאַרטנערס "
+"זענען טויט."
 
 #: resources/views/lists/individuals-table.phtml:124
 msgid "Show individuals who died more than 100 years ago."
@@ -13108,17 +13136,17 @@ msgstr "ווייַזן מענטשן וואס זענען געשטארבן אין 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:98
 msgid "Show list of family trees"
-msgstr ""
+msgstr "ווייַזן רשימה פון משפּחה ביימער"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:84
 msgid "Show living individuals"
-msgstr ""
+msgstr "ווייַזן לעבעדיק מענטשן"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:122
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "ווייַזן נעמען פון פּריוואַט מענטשן"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
@@ -13142,7 +13170,7 @@ msgstr "ווייַזן בלויז נקבות."
 
 #: resources/views/lists/individuals-table.phtml:107
 msgid "Show only individuals for whom the gender is not known."
-msgstr ""
+msgstr "ווייַזן בלויז מענטשן פֿאַר וועמען די געשלעכט איז נישט באקאנט."
 
 #: resources/views/modules/random_media/config.phtml:19
 msgid "Show only individuals, events, or all"
@@ -13170,7 +13198,7 @@ msgstr "ווייַזן עלטערן"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Show password"
-msgstr ""
+msgstr "ווייַזן פּאַראָל"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13184,7 +13212,7 @@ msgstr "ווייַזן בילדער"
 
 #: app/Module/PlaceHierarchyListModule.php:197
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "ווייַזן אָרט היעראַרכיע"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:142
@@ -13193,15 +13221,15 @@ msgstr "ווייַזן פריוואטע באציונגען"
 
 #: resources/views/modules/todo/config.phtml:23
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "ווייַזן פאָרשונג טאַסקס וואָס זענען צוגעטיילט צו אנדערע ניצערס"
 
 #: resources/views/modules/todo/config.phtml:33
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
+msgstr "ווייַזן פאָרשונג טאַסקס וואָס זענען נישט צוגעטיילט צו קיין באַניצער"
 
 #: resources/views/modules/todo/config.phtml:42
 msgid "Show research tasks that have a date in the future"
-msgstr ""
+msgstr "ווייַזן פאָרשונג טאַסקס וואָס האָבן אַ דאַטע אין דער צוקונפֿט"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
@@ -13229,30 +13257,30 @@ msgstr "ווייַז מענער / פרויען"
 #: resources/views/admin/trees-preferences.phtml:568
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "ווייַזן די %1$s %2$s טיילן פון אַ אָרט נאָמען."
 
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:122
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "ווייַזן די געבורטס-אָרט פון אבות אויף אַ מאַפּע."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:69
 msgid "Show the date and time"
-msgstr ""
+msgstr "ווייַזן די טאָג און צייט"
 
 #: resources/views/modules/html/config.phtml:53
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "ווייַזן די טאָג און צייט פון דערהייַנטיקן"
 
 #: resources/views/admin/trees-preferences.phtml:423
 msgid "Show the events of close relatives on the individual page"
-msgstr ""
+msgstr "ווייַזן די געשעענישן פון נאָענט קרובים אויף די יחיד בלאַט"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Show the family tree"
-msgstr ""
+msgstr "ווייַזן די משפּחה בוים"
 
 #: app/Module/IndividualListModule.php:350
 msgid "Show the list of individuals"
@@ -13260,33 +13288,33 @@ msgstr "ווייַזן די רשימה פון מענטשן"
 
 #: app/Module/IndividualListModule.php:356
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "ווייַזן די רשימה פון פאַמיליעס"
 
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "ווייַזן דעם אָרט פון אַ געשעעניש אויף אַ פונדרויסנדיק מאַפּע."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "ווייַזן די אָרט פון געשעענישן אויף אַ מאַפּע."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:60
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "ווייַזן דעם באַניצער וואס האט געמאכט די ענדערונג"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.phtml:54
 #: resources/views/modules/html/config.phtml:62
 #: resources/views/modules/stories/edit.phtml:60
 msgid "Show this block for which languages"
-msgstr ""
+msgstr "ווייַזן דעם בלאָק פֿאַר וואָס שפּראַכן"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
-msgstr ""
+msgstr "ווייַזן טאַמנייל בילדער אין טשאַרץ און משפּחה גרופּעס."
 
 #: app/Auth.php:595 app/Auth.php:608 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -13317,11 +13345,16 @@ msgstr "ווייַזן צו גאַסטן"
 #: resources/views/lists/individuals-table.phtml:155
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
 msgstr ""
+"ווייַזן \"בלעטער\" פּאָרפֿעלקער אָדער מענטשן. דאָס זענען מענטשן וואָס זענען "
+"לעבעדיק אָבער האָבן קיין קינדער רעקאָרדעד אין די דאַטאַבייס."
 
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/individuals-table.phtml:150
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
 msgstr ""
+"ווייַזן \"שורשים\" פּאָרפֿעלקער אָדער מענטשן. די מענטשן קענען אויך זיין "
+"גערופן \"פּאַטריאַכן\". זיי זענען מענטשן וואָס האָבן קיין עלטערן רעקאָרדעד "
+"אין די דאַטאַבייס."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml:26
@@ -13342,14 +13375,14 @@ msgstr "ברידער/שוועסטער"
 #: resources/views/admin/modules.phtml:185
 #: resources/views/admin/modules.phtml:188
 msgid "Sidebar"
-msgstr ""
+msgstr "נאַוויגאַציע ווירע"
 
 #: app/Http/RequestHandlers/ModulesSidebarsPage.php:43
 #: resources/views/admin/control-panel.phtml:736
 #: resources/views/admin/modules.phtml:90
 #: resources/views/admin/modules.phtml:92
 msgid "Sidebars"
-msgstr ""
+msgstr "נאַוויגאַציע ווירעס"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:449
@@ -13370,15 +13403,19 @@ msgstr "אַרויסלאָגירן"
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:44
 #: resources/views/admin/control-panel.phtml:252
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "צייכן אין און רעגיסטראַציע"
 
 #: app/CustomTags/Heredis.php:52
 msgid "Signature"
-msgstr ""
+msgstr "אונטערשריפֿט"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
 msgstr ""
+"פּשוט דאַטעס זענען אנגענומען צו זיין אין די גרעגאָריאַן קאַלענדאַר. צו ספּ"
+"עציפיצירן אַ דאַטע אין אן אנדער קאַלענדאַר, לייגן אַ שליסלוואָרט איידער די "
+"דאַטע. דעם שליסלוואָרט איז נישט מאַנדאַטאָרי אויב די חודש אָדער יאָר פֿאָרמאַ"
+"ט מאכט די דאַטע זיין איינציקער באדייטונג."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:439
@@ -13396,24 +13433,28 @@ msgstr "שוועסטער"
 #: resources/views/modules/matomo-analytics/form.phtml:11
 #: resources/views/modules/statcounter/form.phtml:11
 msgid "Site identification code"
-msgstr ""
+msgstr "פּלאַץ אידענטיפֿיקאַציע קאָד"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: resources/views/admin/users-edit.phtml:192
 #: resources/views/edit-account-page.phtml:140
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"פּלאַץ מיטגלידער קענען שיקן אַרטיקלען צו יעדער אנדערער. איר קענט קלייַבן ווי "
+"די אַרטיקלען זענען געשיקט צו איר, אָדער קלייַבן זיי נישט באַקומען."
 
 #. I18N: A configuration setting
 #: resources/views/modules/bing-webmaster-tools/form.phtml:11
 #: resources/views/modules/google-webmaster-tools/form.phtml:11
 msgid "Site verification code"
-msgstr ""
+msgstr "פּלאַץ באַשטעטיקונג קאָד"
 
 #: resources/views/modules/bing-webmaster-tools/form.phtml:20
 #: resources/views/modules/google-webmaster-tools/form.phtml:20
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"פּלאַץ באַשטעטיקונג קאָדן טאָן ניט אַרבעט ווען webtrees איז אינסטאַלירן אין "
+"אַן אונטער-טעקע."
 
 #. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:156
@@ -13424,6 +13465,10 @@ msgstr "סיטעמאַפּס"
 #: resources/views/modules/sitemap/config.phtml:25
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
+"סיטעמאַפּס זענען אַ וועג פֿאַר וועבמאַסטערס צו דערציילן זוכן ענדזשאַנז וועגן "
+"די בלעטער אויף אַ וועבזייטל וואָס זענען בארעכטיגט פֿאַר קריכונגען. אַלע הויפּ"
+"ט זוכן ענדזשאַנז שטיצן סיטעמאַפּס. פֿאַר מער אינפֿאָרמאַציע, זען <a href="
+"\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
@@ -13453,7 +13498,7 @@ msgstr "סיון"
 #: resources/views/layouts/administration.phtml:48
 #: resources/views/layouts/default.phtml:76
 msgid "Skip to content"
-msgstr ""
+msgstr "האָפּקען צו אינהאַלט"
 
 #: app/Elements/RelationIsDescriptor.php:126
 msgid "Slave"
@@ -13486,7 +13531,7 @@ msgstr "סלאוועניע"
 
 #: resources/views/setup/step-2-server-checks.phtml:70
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr ""
+msgstr "קליין סיסטעמען (500 מענטשן): 16-32 מעגאבייטן, 10-20 סעקונדעס"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:185
@@ -13495,7 +13540,7 @@ msgstr "סנואופלייק, אריזאנע"
 
 #: app/Gedcom.php:755
 msgid "Social security number"
-msgstr ""
+msgstr "אידענטיפיקאציע נומער"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
@@ -13511,25 +13556,32 @@ msgstr "סאמאליע"
 #: resources/views/admin/trees-import.phtml:128
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"עטלעכע גענעאלאגיע ווייכווארג פּראָדוצירט GEDCOM טעקעס וואָס אַנטהאַלטן מעדיע "
+"פילענאַמעס מיט פול פּאַטס. די שטעג וועט נישט עקסיסטירן אויף די וועב סערווער. "
+"צו לאָזן וועבטריעס געפֿינען די טעקע, דער ערשטער טייל פון דעם דרך מוזן זיין "
+"אַוועקגענומען."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"עטלעכע גענעאלאגיע ווייכווארג אייַנקוואַרטירן אַלע נעמען אין אַ איין נאָמען "
+"רעקאָרד, ניצן ספּעציעלע טאַגס אַזאַ ווי _MARNM און _AKA. אַן אָלטערנאַטיוו "
+"איז צו שאַפֿן אַ נייַע נאָמען רעקאָרד פֿאַר יעדער נאָמען."
 
 #: resources/views/admin/tags.phtml:37
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "עטלעכע פון די GEDCOM טאַגס זענען זעלטן אָדער קיינמאָל געוויינט."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:631
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "עטלעכע בלעטער קענען ווייַזן די נומער פון מאל זיי האָבן שוין באזוכט."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:519
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "עטלעכע טעמעס קענען ווייַזן בילדלעך אויף די קוויטל \"Facts and events\"."
 
 #: resources/views/edit/change-family-members.phtml:63
 #: resources/xml/reports/family_group_report.xml:774
@@ -13547,7 +13599,7 @@ msgstr "זון פון %s"
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:109
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "סאָרט דאַטע"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13570,7 +13622,7 @@ msgstr "סאָרטירונג־סדר"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:111
 msgid "Sort time"
-msgstr ""
+msgstr "סאָרט צייט"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13579,11 +13631,11 @@ msgstr "סאָסאַ"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:20
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "סאָסאַ-סטראַדאָניץ נומער"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:256
 msgid "Sounds like"
-msgstr ""
+msgstr "הערט זיך ווי"
 
 #. I18N: Name of a module/report
 #: app/CustomTags/GedcomL.php:265 app/CustomTags/GedcomL.php:269
@@ -13753,7 +13805,7 @@ msgstr "סיינט פול, מינעסאטע"
 
 #: resources/views/admin/tags.phtml:32
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "נאָרמאַל GEDCOM טאַגס"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -13769,7 +13821,7 @@ msgstr "סטאַרטינג קייט פון טוישן דאַטעס"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™ ‎"
 
 #: app/CustomTags/GedcomL.php:232 app/CustomTags/PersonalAncestralFile.php:72
 #: app/Gedcom.php:407 app/Gedcom.php:520 app/Gedcom.php:540 app/Gedcom.php:811
@@ -13807,7 +13859,7 @@ msgstr "סטאַטוס טוישן דאַטע"
 #: app/Elements/LdsEndowmentDateStatus.php:74
 #: app/Elements/LdsOrdinanceStatus.php:79
 msgid "Stillborn: exempt"
-msgstr ""
+msgstr "טויט געבוירן: פטור"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:189
@@ -13848,7 +13900,7 @@ msgstr "‫ענין"
 #: app/Http/RequestHandlers/CheckTree.php:358 app/Submission.php:44
 #: app/Submission.php:45 app/Submission.php:46
 msgid "Submission"
-msgstr ""
+msgstr "דערלאַנגונג"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:75
@@ -13857,7 +13909,7 @@ msgstr ""
 #: app/Elements/LdsOrdinanceStatus.php:81
 #: app/Elements/LdsSpouseSealingDateStatus.php:76
 msgid "Submitted but not yet cleared"
-msgstr ""
+msgstr "דערלאנגט אָבער נישט נאָך קלירד"
 
 #: app/Gedcom.php:494 app/Gedcom.php:530 app/Gedcom.php:756 app/Gedcom.php:850
 #: app/Gedcom.php:884 app/Http/RequestHandlers/CheckTree.php:359
@@ -13865,11 +13917,11 @@ msgstr ""
 #: resources/views/modals/submission-fields.phtml:16
 #: resources/views/modules/recent_changes/changes-table.phtml:76
 msgid "Submitter"
-msgstr ""
+msgstr "דערלאַנגער"
 
 #: resources/views/lists/submitters-table.phtml:71
 msgid "Submitter name"
-msgstr ""
+msgstr "דערלאַנגער נאָמען"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:116 app/Module/SubmitterListModule.php:65
@@ -13880,7 +13932,7 @@ msgstr ""
 #: resources/views/lists/submitters-table.phtml:66
 #: resources/views/record-page-links.phtml:96
 msgid "Submitters"
-msgstr ""
+msgstr "דערלאַנגערס"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:431
@@ -13905,11 +13957,11 @@ msgstr "שטיצן און אינפֿאָרמאַציע קענען זייַן ג�
 
 #: app/Services/ServerCheckService.php:327
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "שטיצן פֿאַר PostgreSQL איז עקספּערימענטאַל."
 
 #: app/Services/ServerCheckService.php:332
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "שטיצן פֿאַר SQL סערווער איז עקספּערימענטאַל."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
@@ -13930,7 +13982,7 @@ msgstr "פאַמיליע נאָמען"
 
 #: app/Statistics/Google/ChartDistribution.php:295
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "פאַמיליע פאַרשפּרייטונג טשאַרט"
 
 #: resources/views/admin/trees-preferences.phtml:336
 msgid "Surname list style"
@@ -13938,7 +13990,7 @@ msgstr "משפּחה נאָמען רשימה סטיל"
 
 #: resources/views/modules/fix-add-marr-names/options.phtml:16
 msgid "Surname option"
-msgstr ""
+msgstr "פאַמיליע אָפּציע"
 
 #: app/Gedcom.php:690 app/Gedcom.php:704 app/Gedcom.php:707
 msgid "Surname prefix"
@@ -13946,22 +13998,24 @@ msgstr "פאַמיליע פּרעפיקס"
 
 #: resources/views/admin/trees-preferences.phtml:693
 msgid "Surname tradition"
-msgstr ""
+msgstr "פאַמיליע טראַדיציע"
 
 #: resources/views/lists/surnames-table.phtml:29
 #: resources/views/modules/gedcom_stats/config.phtml:70
 #: resources/views/modules/gedcom_stats/statistics.phtml:79
 #: resources/views/modules/statistics-chart/custom.phtml:163
 msgid "Surnames"
-msgstr ""
+msgstr "פאַמיליעס"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr ""
+"פאַמיליעס זענען דעקלינירטן צו אָנווייַזן די מין און מעראַטאַל סטאַטוס פון אַ "
+"יחיד."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "פאַמיליעס זענען דעקלינירטן צו אָנווייַזן די מין."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:190
@@ -14000,7 +14054,7 @@ msgstr "סידני, אויסטראליע"
 
 #: resources/views/admin/synchronize-trees.phtml:14
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "שטימען משפּחה ביימער מיט GEDCOM טעקעס"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
@@ -17693,7 +17747,7 @@ msgstr "פערטן שוועסטערקינד"
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
 msgstr[0] "פון %1$s מעהאַלעך %2$s יאָר"
-msgstr[1] "פון %1$s מעהאַלעך %2$s יאָר"
+msgstr[1] "פון %1$s מעהאַלעך %2$s יאָרן"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:209
