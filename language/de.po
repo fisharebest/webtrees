@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-02-04 06:35+0000\n"
-"Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
+"PO-Revision-Date: 2023-03-11 13:35+0000\n"
+"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -7175,7 +7175,7 @@ msgstr "Höchste Personenzahl"
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr "Hervorgehobenes Bild"
+msgstr "Bevorzugtes Bild"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
@@ -15528,7 +15528,9 @@ msgstr "Zum Nachrichtenversand sendmail verwenden"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr "Silhouetten werden angezeigt, wenn zu einer Person kein hervorgehobenes Bild eingestellt wurde. Die Silhouetten sind geschlechtsspezifisch."
+msgstr ""
+"Silhouetten werden angezeigt, wenn zu einer Person kein bevorzugtes Bild "
+"eingestellt wurde. Die Silhouetten sind geschlechtsspezifisch."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1059
