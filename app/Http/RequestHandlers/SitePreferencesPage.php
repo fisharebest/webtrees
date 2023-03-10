@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -67,6 +68,7 @@ class SitePreferencesPage implements RequestHandlerInterface
 
         return $this->viewResponse('admin/site-preferences', [
             'all_themes'         => $all_themes,
+            'data_folder'        => Registry::filesystem()->dataName(),
             'max_execution_time' => $max_execution_time,
             'title'              => $title,
         ]);

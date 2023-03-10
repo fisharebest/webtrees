@@ -28,6 +28,8 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 
 use function realpath;
 
+use const DIRECTORY_SEPARATOR;
+
 /**
  * Make a filesystem.
  */
@@ -62,7 +64,7 @@ class FilesystemFactory implements FilesystemFactoryInterface
      */
     public function dataName(): string
     {
-        return Site::getPreference('INDEX_DIRECTORY');
+        return realpath(Site::getPreference('INDEX_DIRECTORY')) . DIRECTORY_SEPARATOR;
     }
 
     /**
