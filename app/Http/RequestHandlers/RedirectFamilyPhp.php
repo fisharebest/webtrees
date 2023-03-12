@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -54,7 +55,7 @@ class RedirectFamilyPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged   = Validator::queryParams($request)->string('ged');
+        $ged   = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
         $famid = Validator::queryParams($request)->isXref()->string('famid');
         $tree  = $this->tree_service->all()->get($ged);
 
