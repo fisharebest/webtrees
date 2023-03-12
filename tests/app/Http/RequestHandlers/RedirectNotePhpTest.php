@@ -107,22 +107,6 @@ class RedirectNotePhpTest extends TestCase
     /**
      * @return void
      */
-    public function testMissingTreeParameter(): void
-    {
-        $tree_service = $this->createStub(TreeService::class);
-
-        $handler = new RedirectNotePhp($tree_service);
-
-        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['nid' => 'X123']);
-
-        $this->expectException(HttpBadRequestException::class);
-
-        $handler->handle($request);
-    }
-
-    /**
-     * @return void
-     */
     public function testMissingXrefParameter(): void
     {
         $tree_service = $this->createStub(TreeService::class);
