@@ -3966,11 +3966,6 @@ parameters:
 			path: app/Report/ReportPdfTextBox.php
 
 		-
-			message: "#^Result of \\|\\| is always true\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
 			message: "#^Variable \\$lastelement in empty\\(\\) always exists and is not falsy\\.$#"
 			count: 1
 			path: app/Report/ReportPdfTextBox.php
