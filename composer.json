@@ -44,7 +44,7 @@
         "ext-simplexml": "*",
         "ext-xml": "*",
         "aura/router": "3.2.0",
-        "doctrine/dbal": "3.6.0",
+        "doctrine/dbal": "3.6.1",
         "ezyang/htmlpurifier": "4.16.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
@@ -72,9 +72,9 @@
         "psr/http-server-middleware": "1.0.1",
         "ramsey/uuid": "4.2.3",
         "sabre/vobject": "4.5.3",
-        "symfony/cache": "5.4.19",
-        "symfony/expression-language": "5.4.19",
-        "symfony/mailer": "5.4.19",
+        "symfony/cache": "5.4.21",
+        "symfony/expression-language": "5.4.21",
+        "symfony/mailer": "5.4.21",
         "symfony/polyfill-mbstring": "1.27.0",
         "symfony/polyfill-php80": "1.27.0",
         "tecnickcom/tcpdf": "6.6.2"
@@ -87,7 +87,7 @@
         "composer/composer": "2.5.4",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.5.3",
-        "phpunit/phpunit": "9.6.3"
+        "phpunit/phpunit": "9.6.5"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
