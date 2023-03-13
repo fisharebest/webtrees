@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-03-11 13:35+0000\n"
+"PO-Revision-Date: 2023-03-14 09:23+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -5659,7 +5659,7 @@ msgstr ""
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
 msgstr ""
 "יעדער באַניצער חשבון האט אַן אָפּציע צו \"אויטאמאטיש אָננעמען ענדערונגען\". "
-"ווען דאָס איז ענייבאַלד, אַלע ענדערונגען געמאכט דורך דעם באַניצער זענען "
+"ווען דאָס איז ערמעגליכט, אַלע ענדערונגען געמאכט דורך דעם באַניצער זענען "
 "געראטעוועט מיד. פילע אַדמיניסטראַטאָרס געבן דעם פֿאַר זייער אייגן באַניצער "
 "חשבון."
 
@@ -5912,7 +5912,7 @@ msgstr "ליידיק וואָגן"
 #: resources/views/admin/components.phtml:80
 #: resources/views/admin/modules.phtml:69
 msgid "Enabled"
-msgstr "ינייבאַלד"
+msgstr "ערמעגליכט"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
@@ -14427,7 +14427,7 @@ msgstr "טאנזאניע"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:183
 msgid "Teal Top"
-msgstr ""
+msgstr "טורקוווייז"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:181
@@ -14437,11 +14437,11 @@ msgstr "טעכנישע הילף באַריר"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:195 app/GedcomCode/GedcomCodeTemp.php:651
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "טעגוסיגאַלפאַ, האָנדוראַס"
 
 #: resources/views/modules/html/config.phtml:27
 msgid "Templates"
-msgstr ""
+msgstr "מוסטערן"
 
 #. I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)
 #. I18N: gedcom tag TEMP
@@ -14450,7 +14450,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1272 app/Factories/ElementFactory.php:1411
 #: app/GedcomTag.php:987 resources/xml/reports/individual_report.xml:208
 msgid "Temple"
-msgstr ""
+msgstr "טעמפל"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:184
@@ -14496,15 +14496,26 @@ msgstr "טיילאנד"
 #: resources/views/help/name.phtml:8
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
+"די <b>נאָמען</b> פעלד כּולל די פול נאָמען פון דעם יחיד, ווי זיי וואָלט האָבן "
+"אויסגעלייגן עס אָדער ווי עס איז רעקאָרדעד. דאָס איז ווי עס וועט זיין געוויזן "
+"אויף דעם עקראַן. עס ניצט נאָרמאַל גענעאלאגיע אַנאַטיישאַנז צו אידענטיפיצירן "
+"פאַרשידענע פּאַרציעס פון דעם נאָמען."
 
 #: resources/views/help/surname.phtml:8
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
+"די <b>פאַמיליע</b> פעלד כּולל אַ נאָמען וואָס איז געניצט פֿאַר סאָרטירונג "
+"און אייַנזאַמלונג. עס קען זיין אַנדערש פון די פאַקטיש פאַמיליע פון דעם יחיד "
+"וואָס איז שטענדיק גענומען פון די <b>נאָמען</b> פעלד. דאָס פעלד קענען ווערן "
+"גענוצט צו אױססאָרטירן פאַמיליעס מיט אָדער אָן אַ פּרעפיקס (Gogh / van Gogh) "
+"און צו גרופּע אויסלייג ווערייישאַנז אָדער אינפלעקשאַנז (Kowalski / Kowalska)"
+". אויב אַ יחיד דאַרף זיין איף א ליסטע אונטער מער ווי איין פאַמיליע, יעדער נאָ"
+"מען זאָל זיין אפגעשיידט מיט אַ קאָמע."
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:93
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "די GEDCOM טעקע \"%s\" איז אימפּאָרטירט געווערן."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104 app/GedcomCode/GedcomCodeTemp.php:378
@@ -14514,12 +14525,12 @@ msgstr "דען האג, האלאנד"
 #: app/Services/ServerCheckService.php:125
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "די PHP געשפּרייט \"%s\" איז נישט אינסטאַלירן."
 
 #: app/Services/ServerCheckService.php:183
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "די פפּ פֿונקציע \"%1$s\" איז פאַרקריפּלט."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:58
@@ -14529,46 +14540,50 @@ msgstr "פעלנדיק PHP צייַטווייַליק טעקע."
 #: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "די PHP.INI באַשטעטיקן \"%1$s\" איז פאַרקריפּלט."
 
 #: app/Services/ServerCheckService.php:148
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "די PHP.INI באַשטעטיקן \"%1$s\" איז ערמעגליכט."
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
 msgstr ""
+"דער אַדמיניסטראַטאָר בייַ די webtrees פּלאַץ %s האט באוויליקט דיין אַפּליקאַ"
+"ציע פֿאַר אַ חשבון. איצט איר קענט זיך איינשרייבן דורך די פאלגענדע לינק: %s"
 
 #: resources/views/verify-success-page.phtml:20
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 msgstr ""
+"דער אַדמיניסטראַטאָר איז ינפאָרמד. ווי באַלד ווי זיי געבן איר דערלויבעניש צו "
+"צייכן אין, איר קענען צייכן אין מיט דיין נאמען און פּאַראָל."
 
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
 msgid "The calendar menu."
-msgstr ""
+msgstr "די קאַלענדאַר מעניו."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:69
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php:66
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "די ענדערונגען צו \"%s\" זענען אנגענומען."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php:68
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php:62
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "די ענדערונגען צו \"%s\" זענען פארווארפן."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:70
 msgid "The charts menu."
-msgstr ""
+msgstr "די קאַרטעס מעניו."
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -14584,52 +14599,54 @@ msgstr "די דאַטע און צייַט פון די לעצטע דערהייַ�
 #: app/Http/RequestHandlers/MapDataSave.php:101
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "די פרטים פֿאַר \"%s\" זענען דערהייַנטיקט."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php:100
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:246
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "דער פאמיליע בוים איז עקספארטירט געווארן צו %s."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:64
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "דער משפּחה בוים \"%s\" עקסיסטירט שוין."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:71
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "דער משפּחה בוים \"%s\" איז באשאפן געווארן."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php:65
 #: app/Http/RequestHandlers/SynchronizeTrees.php:104
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "דער משפּחה בוים \"%s\" איז אויסגעמעקט."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:54
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"דער משפּחה בוים \"%s\" וועט זיין געוויזן צו וויזאַטערז ווען זיי ערשטער אָ"
+"נקומען צו דעם וועבזייטל."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:251
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "ד י פאמיליע־בוימער האבן זיך דערפאלגט צוזאמענגעגאסן ."
 
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:71
 msgid "The family trees menu."
-msgstr ""
+msgstr "די משפּחה ביימער מעניו."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:75
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "די משפּחה \"%s\" איז אויסגעמעקט ווייַל עס האט בלויז איין מיטגליד."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:120
 #, php-format
@@ -14639,19 +14656,19 @@ msgstr "דער טעקע %s שוין יגזיסץ. ניצן אן אנדער טע�
 #: app/Http/RequestHandlers/ExportGedcomServer.php:103
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "דער טעקע %s קען נישט זיין באשאפן."
 
 #: app/Http/RequestHandlers/DeletePath.php:60
 #: app/Http/RequestHandlers/DeletePath.php:74
 #: app/Http/RequestHandlers/DeletePath.php:88
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "דער טעקע %s קען נישט ווערן אויסגעמעקט."
 
 #: app/Http/RequestHandlers/DeletePath.php:72
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "די טעקע %s איז אויסגעמעקט."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:127
 #, php-format
@@ -14668,16 +14685,18 @@ msgstr "די טעקע איז געווען בלויז טייל ופּלאָאַד
 #: resources/views/modules/media-list/page.phtml:140
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "די טעקע %s איז אויסגעמעקט."
 
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
+"דער ערשטער משפּחה אין דער רשימה וועט זיין געוויינט אין קאַרטעס, רשימות, ראַ"
+"פורטן, אאַז\"וו."
 
 #: app/Http/RequestHandlers/DeletePath.php:83
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "דער טעקע %s קען נישט ווערן אויסגעמעקט."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:200
 #, php-format
@@ -14687,20 +14706,23 @@ msgstr "דער טעקע %s איז געווען באשאפן."
 #: app/Http/RequestHandlers/DeletePath.php:81
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "דער טעקע %s איז אויסגעמעקט געווארן."
 
 #: resources/views/admin/site-preferences.phtml:42
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"דער טעקע קענען זיין ספּעסיפיעד אין פול (למשל /home/user_name/webtrees_data/) "
+"אָדער אייַנשטעל צו די אינסטאַלירונג טעקע (למשל <span dir=\"ltr\">../../"
+"webtrees_data/</span>)."
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:55
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "דער טעקע \"%s\" איז נישט עקסיסטירט."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "די פאלגענדע פאקטן און געשעענישן זענען געפונען אין ביידע רעקאָרדס."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.phtml:86
@@ -14708,6 +14730,7 @@ msgstr ""
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
 msgstr ""
+"די פאלגענדע פאקטן און געשעענישן זענען בלויז געפֿונען אין די רעקאָרד פון %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
@@ -14721,37 +14744,40 @@ msgstr "די הילף טעקסט האט ניט געווען געשריבן פֿ�
 #: resources/views/admin/trees-preferences.phtml:193
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr ""
+"דער יחיד צו זיין קאָמוניקירן זיך וועגן טעכניש פֿראגן אָדער פֿעלערן געפּלאָ"
+"נטערט אויף דיין וועבזייטל."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:173
 msgid "The individual to contact about the genealogy data on this website."
 msgstr ""
+"דער יחיד צו קאָמוניקירן זיך וועגן די גענעאלאגיע דאַטן אויף דעם וועבזייטל."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:83
 #: app/Http/RequestHandlers/DeleteRecord.php:88
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "דער לינק פון \"%1$s\" צו \"%2$s\" איז אויסגעמעקט געווארן."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:98
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "דער לינק פֿון \"%1$s\" צו \"%2$s\" איז דערהייַנטיקט געווארן."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "די רשימות מעניו."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "דער אָרט איז באשאפן"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "דער אָרט פון דעם אָרט איז נישט באקאנט."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:151
 #, php-format
@@ -14776,7 +14802,7 @@ msgstr "דער זכּרון און פראצעסאר צייַט באדערפענ�
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:92
 #: app/Http/RequestHandlers/MessageAction.php:105
 msgid "The message was not sent."
-msgstr ""
+msgstr "דער אָנזאָג איז נישט געשיקט."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:82
 #: app/Http/RequestHandlers/ContactAction.php:154
@@ -14792,23 +14818,27 @@ msgstr "אָנזאָג מיט הצלחה געשיקט צו %s."
 #: app/Module/ChartsBlockModule.php:166 app/Module/ChartsBlockModule.php:180
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "דער מאָדולע \"%s\" איז פאַרקריפּלט."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:76
 #: app/Http/RequestHandlers/ModulesAllAction.php:70
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "דער מאָדולע \"%s\" איז ערמעגליכט."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:779
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"די מערסט פּראָסט משפּחה פאקטן און געשעענישן זענען ליסטעד באַזונדערן, אַזוי "
+"זיי קענען זיין מוסיף גרינגער."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:725
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"די מערסט פּראָסט יחיד פאקטן און געשעענישן זענען ליסטעד באַזונדער, אַזוי זיי "
+"קענען זיין צוגעגעבן גרינגער."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:861
@@ -14823,15 +14853,17 @@ msgstr ""
 #: resources/views/admin/site-registration.phtml:57
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"דער נייַע באַניצער וועט זיין געבעטן צו באַשטעטיקן זייער בליצפּאָסט אַדרעס "
+"איידער די חשבון איז באשאפן."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:75
 msgid "The note has been created"
-msgstr ""
+msgstr "די נאָטיץ איז באשאפן"
 
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "דער פּאַראַמעטער \"%s\" איז פעלנדיק."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -14840,44 +14872,44 @@ msgstr "די פעסווארד דאַרף צו זייַן אין מינדסטער
 #. I18N: Help text for the "Password" site configuration setting
 #: resources/views/admin/site-mail.phtml:143
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "‬די פּאַראָל פארלאנגט פֿאַר אָטענטאַקיישאַן מיט די SMTP סערווער."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:84
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "די פּאַראָל באַשטעטיק לינק איז אויסגעגאנגען."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:109
 msgid "The place hierarchy."
-msgstr ""
+msgstr "די אָרט העראַרכיע."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:143
 #: app/Http/RequestHandlers/TreePrivacyAction.php:118
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "די פּרעפֿערענצן פֿאַר אַלע משפּחה ביימער זענען דערהייַנטיקט."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:147
 #: app/Http/RequestHandlers/TreePrivacyAction.php:121
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "די פּרעפֿערענצן פֿאַר נייַע משפּחה ביימער זענען דערהייַנטיקט."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:136
 #: app/Http/RequestHandlers/TreePrivacyAction.php:111
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "די פּרעפֿערענצן פֿאַר די משפּחה בוים \"%s\" זענען דערהייַנטיקט."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:73
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "די פּרעפֿערענצן פֿאַר די מאָדולע \"%s\" זענען אויסגעמעקט."
 
 #: app/Module/CustomCssJsModule.php:99
 #: app/Module/RelationshipsChartModule.php:432 app/Module/SiteMapModule.php:180
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "די פּרעפֿערענצן פֿאַר די מאָדולע \"%s\" זענען דערהייַנטיקט."
 
 #: resources/views/setup/step-4-database-mysql.phtml:124
 #: resources/views/setup/step-4-database-pgsql.phtml:109
@@ -14900,25 +14932,25 @@ msgstr ""
 #: app/Http/RequestHandlers/MergeFactsAction.php:163
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "די רעקאָרדס \"%1$s\" און \"%2$s\" זענען צונויפגיסן."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:72
 msgid "The reports menu."
-msgstr ""
+msgstr "די ריפּאָרטן מעניו."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:80
 msgid "The repository has been created"
-msgstr ""
+msgstr "די ריפּאַזאַטאָרי איז באשאפן"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "דער זוכן מעניו."
 
 #: app/Services/SearchService.php:1171
 msgid "The search returned too many results."
-msgstr ""
+msgstr "די זוך האט געברענגט צופיל רעזולטאטן."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
@@ -14926,16 +14958,16 @@ msgstr "די סערווער קאַנפיגיעריישאַן איז גוט."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "דער סערווער קען נישט פֿאַרשטיין דעם בקשה."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "די צייטווייליגע טעקע פון די סערווער קענען ניט זיין אַקסעסט."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:556
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "די צייט לימיט פון די סערווער איז אָנגעקומט."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:63
