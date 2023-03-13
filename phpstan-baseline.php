@@ -547,11 +547,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
-	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
-];
-$ignoreErrors[] = [
 	'message' => '#^Parameter \\#1 \\$string of function strlen expects string, mixed given\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
@@ -1393,11 +1388,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'message' => '#^Cannot access property \\$xref on mixed\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:whereIn\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/app/Module/IndividualListModule.php',
 ];
@@ -3292,11 +3282,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/app/Services/MediaFileService.php',
 ];
 $ignoreErrors[] = [
-	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
-	'count' => 2,
-	'path' => __DIR__ . '/app/Services/MediaFileService.php',
-];
-$ignoreErrors[] = [
 	'message' => '#^Parameter \\#1 \\$location of method League\\\\Flysystem\\\\FilesystemReader\\:\\:listContents\\(\\) expects string, mixed given\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/app/Services/MediaFileService.php',
@@ -3488,21 +3473,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Media, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Media given\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/app/Services/SearchService.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orWhere\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression\\|string given\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/app/Services/SearchService.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/app/Services/SearchService.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression\\|string given\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/app/Services/SearchService.php',
 ];
@@ -3933,11 +3903,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
 	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
 ];
