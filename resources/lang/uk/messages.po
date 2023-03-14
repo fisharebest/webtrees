@@ -1,7 +1,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
 "PO-Revision-Date: 2021-08-15 08:31+0000\n"
 "Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"

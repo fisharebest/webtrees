@@ -168,7 +168,7 @@
         ],
         "webtrees:po": [
             "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' resources/xml/reports/*.xml",
-            "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.phtml' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=resources/lang/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
+            "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.phtml' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --output=resources/lang/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
             "find resources/xml/reports/ -name '*.xml' -exec mv {}.bak {} \\;",
             "find resources/lang -name '*.po' -exec msgmerge --no-wrap --sort-output --no-fuzzy-matching --quiet --output={} {} resources/lang/webtrees.pot \\;"
         ],
