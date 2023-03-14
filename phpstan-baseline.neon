@@ -1923,6 +1923,11 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
 			count: 1
+			path: app/Module/LanguageUzbek.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#"
+			count: 1
 			path: app/Module/LanguageVietnamese.php
 
 		-
