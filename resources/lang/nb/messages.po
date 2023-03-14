@@ -2,9 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-01-24 19:30+0000\n"
+"PO-Revision-Date: 2023-03-15 12:41+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
-"Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/nb_NO/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4280,7 +4281,7 @@ msgstr "Cuba"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "Curaçao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -5797,7 +5798,7 @@ msgstr "Hendelse"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Hendelsen har ikke skjedd"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -8498,7 +8499,7 @@ msgstr "Siste endring"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Sist sjekket %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -12324,7 +12325,7 @@ msgstr "Salvie"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Saint Barthélemy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -14776,7 +14777,7 @@ msgstr[1] "Det har ikke vært endringer innen de %s dagene."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Det oppsto en feil ved sjekking av ny versjon."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15203,7 +15204,7 @@ msgstr "Serverens minnegrense er på %sMB og CPU-tidsgrensen er på %s sekunder.
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Denne tjenesten krever en API nøkkel."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -17078,7 +17079,7 @@ msgstr "navn ved navneforandring"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "sjekk nå"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
