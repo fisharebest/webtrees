@@ -108,16 +108,16 @@ use Fisharebest\Webtrees\View;
 
     window.onload = function() {
       // Activate marker popup when sidebar entry clicked
-      sidebar.addEventListener('click', (e) => {
-        if (e.target.matches('[data-wt-sosa]')) {
-          e.preventDefault();
-          map.closePopup();
-
-          let marker = markers.getLayers().filter(function (v) {
-            return v.feature !== undefined && v.feature.id === parseInt(e.target.dataset.wtSosa);
-          }).pop();
-
-          markers.zoomToShowLayer(marker, () => marker.openPopup());
+      sidebar.addEventListener('click', (evt) => {
+        // Only perform map action if evt was not initiated from an anchor element
+        if (!evt.target.closest('a')) {
+          //find the marker corresponding to the clicked event
+          const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
+          let mkrLayer = markers.getLayers().filter(function (v) {
+            return v.feature !== undefined && v.feature.id === eventId;
+          });
+          const mkr = mkrLayer.pop();
+          markers.zoomToShowLayer(mkr, () => mkr.openPopup());
 
           return false;
         }
