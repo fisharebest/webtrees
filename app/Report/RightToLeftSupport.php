@@ -203,7 +203,7 @@ class RightToLeftSupport
                         self::$waitingText = '';
                         break;
                     }
-                // no break
+                    // no break
                 default:
                     // Look for strings of numbers with optional leading or trailing + or -
                     // and with optional embedded numeric punctuation
