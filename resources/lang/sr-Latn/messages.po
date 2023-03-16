@@ -2,14 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\n"
+"PO-Revision-Date: 2023-03-17 12:05+0000\n"
+"Last-Translator: Enes Sadikovic <enes_s@yahoo.com>\n"
+"Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/sr_Latn/>\n"
 "Language: sr-Latn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Serbian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -2553,7 +2555,7 @@ msgstr "Počinje sa"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:97
 msgid "Belarus"
-msgstr "Bielorusko"
+msgstr "Belorusija"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:154
@@ -2578,7 +2580,7 @@ msgstr "Benin"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:101
 msgid "Bermuda"
-msgstr "Bermudy"
+msgstr "Bermudi"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:191
@@ -2592,7 +2594,7 @@ msgstr "Kum (venčani)"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:111
 msgid "Bhutan"
-msgstr "Bhután"
+msgstr "Butan"
 
 #: app/CustomTags/RootsMagic.php:79
 msgid "Bibliography"
@@ -2609,7 +2611,7 @@ msgstr "Binarni data objekat"
 
 #: app/Module/BingMaps.php:86 app/Module/MapLinkBing.php:42
 msgid "Bing™ maps"
-msgstr "Bing™ maps"
+msgstr "Bing™ mape"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -3279,7 +3281,7 @@ msgstr "Kamerun"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:75
 msgid "Campinas, Brazil"
-msgstr "Campinas, Brazil"
+msgstr "Kampinas, Brazil"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:119
@@ -3770,7 +3772,7 @@ msgstr "Grb"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:80
 msgid "Cochabamba, Bolivia"
-msgstr "Cochabamba, Bolivija"
+msgstr "Kočabamba, Bolivija"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:121
@@ -4304,12 +4306,12 @@ msgstr "Kuba"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "Kurasao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
 msgid "Curitiba, Brazil"
-msgstr "Curitiba, Brazil"
+msgstr "Kuritiba, Brazil"
 
 #: app/Module/HtmlBlockModule.php:192 app/Module/StatisticsChartModule.php:158
 msgid "Custom"
@@ -5729,7 +5731,7 @@ msgstr "Eventualno napravi belešku o ovoj stranici"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Prikaži preko celog ekrana"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5821,7 +5823,7 @@ msgstr "Događaj"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Događaj se nije dogodio"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5873,7 +5875,7 @@ msgstr "Isključi iz ovog podneska"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Izađite iz prikaza preko celog ekrana"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6141,7 +6143,7 @@ msgstr "Popis porodice"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "Porodična činjenica"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
@@ -6398,19 +6400,19 @@ msgstr "Žene"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Polje"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Ime polja"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Vrednost polja"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6851,7 +6853,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -8522,7 +8524,7 @@ msgstr "Poslednja izmena"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Poslednja provera %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -10321,7 +10323,7 @@ msgstr "Nema činjenica za ovu porodicu."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Nije primljen nijedan fajl."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -10596,7 +10598,7 @@ msgstr "Novembar"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:145
 msgid "Nuku’Alofa, Tonga"
-msgstr "Nuku’Alofa, Tonga"
+msgstr "Nukualofa, Tonga"
 
 #: app/Gedcom.php:470 app/Gedcom.php:714
 #: app/Module/StatisticsChartModule.php:712
@@ -10986,7 +10988,7 @@ msgstr "Panama City, Panama"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:157
 msgid "Papeete, Tahiti"
-msgstr "Papeete, Tahiti"
+msgstr "Papete, Tahiti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:401
@@ -11163,7 +11165,7 @@ msgstr "Fotografija"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Fotografija"
 
 #: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:78
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:88
@@ -11848,7 +11850,7 @@ msgstr "Poslednjih godina (&lt; 100 god.)"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:168
 msgid "Recife, Brazil"
-msgstr "Recife, Brazil"
+msgstr "Resife, Brazil"
 
 #: resources/views/admin/changes-log.phtml:62
 #: resources/views/admin/changes-log.phtml:138
@@ -12350,7 +12352,7 @@ msgstr "Sage"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Sent Bartelemi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -14132,11 +14134,11 @@ msgstr "Kontakt za tehničku podršku"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:195
 msgid "Tegucigalpa, Honduras"
-msgstr "Tegucigalpa, Honduras"
+msgstr "Tegusigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Šablon"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14520,7 +14522,9 @@ msgstr "Najčešće porodične činjenice i događaji navedeni su odvojeno, tako
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:658
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Najčešće činjenice i događaji osoba su prikazani odvojeno, tako da se mogu lako dodavati."
+msgstr ""
+"Najčešće činjenice i događaji osoba su prikazani odvojeno, tako da se mogu "
+"lako dodavati."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -14529,6 +14533,8 @@ msgstr "Od novog korisnika će biti zatražena potvrda email adrese pre nego št
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Sledeća verzija GEDCOM standarda će dodati nove oznake i ukloniti stare. "
+"Sada možete koristiti neke od novih oznaka."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -14804,7 +14810,7 @@ msgstr[2] "Nije bilo promena u prethodnih %s dana."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Došlo je do greške pri proveri nove verzije."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15233,7 +15239,7 @@ msgstr "Memorija na serveru je ograničena na %sMB i CPU vreme na %s sekundi."
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Ova usluga zahteva API ključ."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -17111,7 +17117,7 @@ msgstr "promena imena"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "proveri sada"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
@@ -18467,7 +18473,7 @@ msgstr "bakini brat/sestra"
 #: app/Services/RelationshipService.php:1123
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "baginog brata/sestre supružnik"
+msgstr "bakinog brata/sestre supružnik"
 
 #: app/Services/RelationshipService.php:901
 msgctxt "mother’s parent’s sibling"
