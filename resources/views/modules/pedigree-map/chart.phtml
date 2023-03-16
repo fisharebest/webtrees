@@ -109,8 +109,8 @@ use Fisharebest\Webtrees\View;
     window.onload = function() {
       // Activate marker popup when sidebar entry clicked
       sidebar.addEventListener('click', (e) => {
-        e.preventDefault();
         if (e.target.matches('[data-wt-sosa]')) {
+          e.preventDefault();
           map.closePopup();
 
           let marker = markers.getLayers().filter(function (v) {
