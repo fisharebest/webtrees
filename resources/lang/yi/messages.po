@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-03-15 17:28+0000\n"
+"PO-Revision-Date: 2023-03-17 11:26+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -869,7 +869,7 @@ msgstr "א רשימה פון די בלעטער וואס האָבן שוין וו
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr "אַ רשימה פון יוזערז און וויזאַטערז וואָס זענען דערווייַל אָנליין."
+msgstr "אַ רשימה פון יוזערז און געסט וואָס זענען דערווייַל אָנליין."
 
 #: resources/views/help/media-object.phtml:10
 msgid ""
@@ -893,8 +893,8 @@ msgid ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
 "address (%3$s)."
 msgstr ""
-"א נייע באנוצער (%1$s) האט געבעטן אן אקאונט (%2$s) און וועריפיצירט אן אימעיל "
-"אדרעס (%3$s)."
+"א נייע באנוצער (%1$s) האט געבעטן אן אקאונט (%2$s) און וועריפיצירט אן בליצפאָ"
+"סט אדרעס (%3$s)."
 
 #: app/Http/RequestHandlers/LoginAction.php:80
 #: app/Module/CheckForNewVersion.php:99
@@ -1084,8 +1084,8 @@ msgid ""
 "A user will not be able to sign in until both “email verified” and “approved "
 "by administrator” are selected."
 msgstr ""
-"א באַניצער וועט נישט קענען צו צייכן אין ביז ביידע \"עמאַיל וועראַפייד\" און "
-"\"באוויליקט דורך אַדמיניסטראַטאָר\" זענען אויסגעקליבן."
+"א באַניצער וועט נישט קענען צו צייכן אין ביז ביידע \"בליצפאָסט באַשטעטיקן\" "
+"און \"באוויליקט דורך אַדמיניסטראַטאָר\" זענען אויסגעקליבן."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1882,7 +1882,7 @@ msgstr "לאָזן ניצערס צו זען GEDCOM טעקע דאַטן"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:51
 msgid "Allow visitors to request a new user account"
-msgstr "לאָזן וויזיטערז צו בעטן אַ נייַע באַניצער חשבון"
+msgstr "לאָזן געסט צו בעטן אַ נייַע באַניצער חשבון"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
 #: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
@@ -5875,7 +5875,7 @@ msgid ""
 "Enabling this option will force all visitors to sign in before they can view "
 "any data on the website."
 msgstr ""
-"געבן דעם אָפּציע וועט צווינגען אַלע וויזאַטערז צו צייכן אין איידער זיי קענען זען "
+"געבן דעם אָפּציע וועט צווינגען אַלע געסט צו צייכן אין איידער זיי קענען זען "
 "קיין דאַטן אויף דעם וועבזייטל."
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
@@ -6023,7 +6023,7 @@ msgid ""
 "Everybody has this role, including visitors to the website and search "
 "engines."
 msgstr ""
-"אַלעמען האט דעם ראָלע, אַרייַנגערעכנט גאַסט צו די וועבזייטל און זוכן מאָטאָרן."
+"אַלעמען האט דעם ראָלע, אַרייַנגערעכנט געסט צו די וועבזייטל און זוכן מאָטאָרן."
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:253
 msgid "Exact"
@@ -6130,10 +6130,10 @@ msgid ""
 "typically concerned with privacy, copyright, user-accounts, unsuitable "
 "content, requirement for source-citations, etc."
 msgstr ""
-"FAQs זענען רשימות פון פֿראגן און ענטפֿערס, וואָס לאָזן איר צו דערקלערן די כּללים, "
-"פּאַלאַסיז און פּראָוסידזשערז פון דעם פּלאַץ צו דיין וויזאַטערז. פֿראגן זענען טיפּיקלי "
-"זארגן וועגן פּריוואַטקייט, קאַפּירייט, באַניצער אַקאַונץ, ומפּאַסיק אינהאַלט, פאָדערונג "
-"פֿאַר מקור-סייטיישאַנז, אאז\"ו ו."
+"FAQs זענען רשימות פון פֿראגן און ענטפֿערס, וואָס לאָזן איר צו דערקלערן די כּ"
+"ללים, פּאַלאַסיז און פּראָוסידזשערז פון דעם פּלאַץ צו דיין געסט. פֿראגן "
+"זענען טיפּיקלי זארגן וועגן פּריוואַטקייט, קאַפּירייט, באַניצער אַקאַונץ, "
+"ומפּאַסיק אינהאַלט, פאָדערונג פֿאַר מקור-סייטיישאַנז, אאז\"ו ו."
 
 #: app/CustomTags/Gedcom7.php:95 app/Gedcom.php:657
 msgid "Fact"
@@ -7828,8 +7828,8 @@ msgid ""
 "If an administrator creates a user account, the verification email is not "
 "sent, and the email must be verified manually."
 msgstr ""
-"אויב אַ אַדמיניסטראַטאָר שעפֿער אַ באַניצער חשבון, די וועראַפאַקיישאַן E- בריוו איז "
-"נישט געשיקט, און די E- בריוו מוזן זיין וועריפֿיצירן מאַניואַלי."
+"אויב אַ אַדמיניסטראַטאָר שעפֿער אַ באַניצער חשבון, די בליצפּאָסט באַשטעטיקן "
+"איז נישט געשיקט, און דיבליצפאָסט מוזן זיין באַשטעטיקן מאַניואַלי."
 
 #: resources/views/help/name.phtml:24
 #, php-format
@@ -8008,9 +8008,9 @@ msgid ""
 "If you show living individuals to visitors, all other privacy restrictions "
 "are ignored. Do this only if all the data in your tree is public."
 msgstr ""
-"אויב איר ווייַזן לעבעדיק מענטשן צו וויזאַטערז, אַלע אנדערע פּריוואַטקייט "
-"ריסטריקשאַנז זענען איגנאָרירט. טאָן דאָס בלויז אויב אַלע די דאַטן אין דיין בוים "
-"זענען עפנטלעך."
+"אויב איר ווייַזן לעבעדיק מענטשן צו געסט, אַלע אנדערע פּריוואַטקייט ריסטריקשאַ"
+"נז זענען איגנאָרירט. טאָן דאָס בלויז אויב אַלע די דאַטן אין דיין בוים זענען "
+"עפנטלעך."
 
 #: resources/views/setup/step-2-server-checks.phtml:82
 msgid ""
@@ -8383,7 +8383,7 @@ msgstr "אינערלעכער אָנזאַגן"
 
 #: app/Services/MessageService.php:232
 msgid "Internal messaging with emails"
-msgstr "אינערלעכער אָנזאַגן מיט אימייל"
+msgstr "אינערלעכער אָנזאַגן מיט בליצפאָסט"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:186
 msgid "Invalid GEDCOM file - no header record found."
@@ -13852,7 +13852,7 @@ msgstr "ווייַזן צו מיטגלידער"
 #: resources/views/admin/trees-privacy.phtml:150
 #: resources/views/modals/restriction-fields.phtml:17
 msgid "Show to visitors"
-msgstr "ווייַזן צו גאַסטן"
+msgstr "ווייַזן צו געסט"
 
 #: resources/views/lists/families-table.phtml:113
 #: resources/views/lists/individuals-table.phtml:155
@@ -14923,8 +14923,8 @@ msgid ""
 "The family tree “%s” will be shown to visitors when they first arrive at "
 "this website."
 msgstr ""
-"דער משפּחה בוים \"%s\" וועט זיין געוויזן צו וויזאַטערז ווען זיי ערשטער אָנקומען "
-"צו דעם וועבזייטל."
+"דער משפּחה בוים \"%s\" וועט זיין געוויזן צו געסט ווען זיי ערשטער אָנקומען צו "
+"דעם וועבזייטל."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:249
 msgid "The family trees have been merged successfully."
@@ -15521,8 +15521,8 @@ msgid ""
 "This account has not been verified. Please check your email for a "
 "verification message."
 msgstr ""
-"דער חשבון איז נישט וועראַפייד. ביטע טשעק דיין E- בריוו פֿאַר אַ "
-"וועראַפאַקיישאַן אָנזאָג."
+"דער חשבון איז נישט וועראַפייד. ביטע טשעק דיין בליצפאָסט פֿאַר אַ באַשטעטיקון "
+"אָנזאָג."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid ""
@@ -15532,7 +15532,7 @@ msgid ""
 msgstr ""
 "דער בלאָק וועט ווייַזן רעדאַקטאָס אַ רשימה פון רעקאָרדס מיט פּענדינג "
 "ענדערונגען וואָס דאַרפֿן צו זיין באַשטעטיקן דורך אַ מאָדעראַטאָר. עס אויך "
-"פֿאַבּריצירן טעגלעך בליץ פאָסט צו מאָדעראַטאָרס ווען פּענדינג ענדערונגען "
+"פֿאַבּריצירן טעגלעך בליצפאָסט צו מאָדעראַטאָרס ווען פּענדינג ענדערונגען "
 "עקסיסטירן."
 
 #: resources/views/admin/users-create.phtml:76
@@ -15861,8 +15861,8 @@ msgid ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server."
 msgstr ""
-"דער נאָמען איז געניצט אין די \"פֿון\" פֿעלד, ווען שיקט אָטאַמאַטיק ימיילז פֿון דעם "
-"סערווער."
+"דער נאָמען איז געניצט אין די \"פֿון\" פֿעלד, ווען שיקט אָטאַמאַטיק בליצפאָסט "
+"פֿון דעם סערווער."
 
 #: app/Auth.php:378 app/Auth.php:407
 #: app/Http/RequestHandlers/RedirectNotePhp.php:69
@@ -17124,7 +17124,7 @@ msgstr "באַניצער נאָמען"
 #: resources/views/forgot-password-page.phtml:23
 #: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
-msgstr "באניצער נאמען אָדער בליצבריװ"
+msgstr "באניצער נאמען אָדער בליצפאָסט"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:61
@@ -17355,7 +17355,7 @@ msgstr "וואָטערמאַרקס"
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.phtml:326
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "וואָטערמאַרקס זענען אַפּשאַנאַל און געווענליך געוויזן בלויז צו געסט."
 
 #: resources/views/register-success-page.phtml:25
 #, php-format
@@ -17369,22 +17369,30 @@ msgid ""
 "be used.<br><br>To sign in to this website, you will need to know your "
 "username and password."
 msgstr ""
+"מיר וועלן איצט שיקן אַ באַשטעטיקונג בליצפּאָסט צו די אַדרעס <b>%s</b>. איר "
+"מוזן באַשטעטיקן דיין חשבון בעטן דורך ווייַטערדיק ינסטראַקשאַנז אין די באַ"
+"שטעטיקונג בליצפּאָסט. אויב איר טאָן ניט באַשטעטיקן דיין חשבון בעטן אין זיבן "
+"טעג, דיין אַפּלאַקיישאַן וועט זיין פארווארפן אויטאָמאַטיש. איר וועט האָבן צו "
+"צולייגן ווידער.<br><br>נאָך איר האָבן נאכגעגאנגען די אינסטרוקציעס אין די באַ"
+"שטעטיקונג בליצפּאָסט, דער אַדמיניסטראַטאָר נאָך האט צו באַשטעטיקט דיין בקשה "
+"איידער דיין חשבון קענען זיין געוויינט.<br><br>צו קלאָץ אין צו דעם וועבזייַ"
+"טל, איר וועט דאַרפֿן צו וויסן דיין נאמען און פּאַראָל."
 
 #: resources/views/admin/control-panel.phtml:162
 #: resources/views/admin/control-panel.phtml:573
 #: resources/views/admin/trees-preferences.phtml:192
 msgid "Website"
-msgstr ""
+msgstr "וועבזייַטל"
 
 #: app/Http/RequestHandlers/SiteLogsPage.php:96
 #: resources/views/admin/control-panel.phtml:241
 msgid "Website logs"
-msgstr ""
+msgstr "וועבסייט רעגיסטערס"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:66
 #: resources/views/admin/control-panel.phtml:219
 msgid "Website preferences"
-msgstr ""
+msgstr "וועבזייַטל פּרעפֿערענצן"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:277
@@ -17409,7 +17417,7 @@ msgstr "באַגריסן %s"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:26
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "ברוכים הבאים טעקסט אויף צייכן אין בלאַט"
 
 #: resources/views/login-page.phtml:23
 msgid "Welcome to this genealogy website"
@@ -17428,6 +17436,11 @@ msgid ""
 "when making minor corrections to someone else’s data. This option controls "
 "whether this feature is selected by default."
 msgstr ""
+"ווען אַ רעקאָרד ווערט רעדאַקטירן, דער באַניצער און צייַט-שטעמפל זענען רעקאָ"
+"רדעד. מאל עס איז אומגעבעטען צו האַלטן די עקזיסטירט \"לעצטע ענדערונג\" "
+"אינפֿאָרמאַציע, פֿאַר בייַשפּיל ווען איר מאַכן מינערווערטיק פֿאַרריכטונגען "
+"צו עמעצער אַנדערש ס דאַטן. דער אָפּציע קאָנטראָלירט צי דעם שטריך איז "
+"אויסגעקליבן דורך פעליקייַט."
 
 #: resources/views/admin/users-edit.phtml:109
 msgid ""
@@ -17436,12 +17449,18 @@ msgid ""
 "email address is correct, and the “email verified” option is selected "
 "automatically."
 msgstr ""
+"ווען אַ באַניצער רעגיסטרירט פֿאַר אַ חשבון, אַ בליצפאָסט איז געשיקט צו זיין "
+"בליצפאָסט אַדרעס מיט אַ באַשטעטיקן לינק. ווען זיי נאָכגיין דעם לינק, מיר "
+"וויסן אַז די בליצפאָסט אַדרעס איז ריכטיק, און די \"בליצפאָסט וועריפֿיצירט\" "
+"אָפּציע איז אויטאָמאַטיש אויסגעקליבן."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid ""
 "When an individual has more than one spouse, you should sort the families in "
 "date order."
 msgstr ""
+"ווען אַ יחיד האט מער ווי איין ספּאַוס, איר זאָל סאָרטירן די משפחות אין דאַטע "
+"סדר."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:698
@@ -17449,6 +17468,8 @@ msgid ""
 "When you add a new family member, a default surname can be provided. This "
 "surname will depend on the local tradition."
 msgstr ""
+"ווען איר לייגן אַ נייַע משפּחה מיטגליד, אַ פעליקייַט פאַמיליע קענען זיין "
+"צוגעשטעלט. דעם פאַמיליע וועט אָפענגען אויף די היגע טראַדיציע."
 
 #: resources/views/help/pending-changes.phtml:14
 msgid ""
@@ -17456,6 +17477,10 @@ msgid ""
 "immediately. Instead, they are kept in a “pending” area. These pending "
 "changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"ווען איר לייגן, רעדאַגירן אָדער ויסמעקן אינפֿאָרמאַציע, די ענדערונגען זענען "
+"נישט געראטעוועט מיד. אַנשטאָט, זיי זענען געהאלטן אין אַ \"פּענדינג\" געגנט. "
+"די פּענדינג ענדערונגען דאַרפֿן צו זיין ריוויוד דורך אַ מאָדעראַטאָר איידער "
+"זיי זענען אנגענומען."
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid ""
@@ -17472,7 +17497,7 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:29
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "וועלכע משפּחה ביימער זאָל זיין אַרייַנגערעכנט אין די וועבזייַטל קאַרטעס"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:265
@@ -17487,6 +17512,7 @@ msgstr "ווער איז אָנליין"
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
 msgstr ""
+"פארוואס כולל די רשימה רעקאָרדס וואָס טאָן ניט דאַרפֿן צו זיין דערהייַנטיקט?"
 
 #: resources/views/lists/families-table.phtml:97
 msgid "Widow"
@@ -17542,13 +17568,13 @@ msgstr "יידעס"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "עדות"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
 #: app/SurnameTradition/PolishSurnameTradition.php:67
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "ווייבער נעמען זייער מאַן 'ס פאַמיליע."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:75
 #: resources/views/modules/place-hierarchy/page.phtml:30
@@ -17589,6 +17615,8 @@ msgid ""
 "You (or someone claiming to be you) has requested an account at %1$s using "
 "the email address %2$s."
 msgstr ""
+"איר (אָדער עמעצער וואָס קליימז צו זיין איר) האט געבעטן אַ חשבון בייַ %1$s "
+"ניצן די בליצפּאָסט אַדרעס %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:124
 #: app/Http/RequestHandlers/RegisterAction.php:268
@@ -17611,6 +17639,8 @@ msgid ""
 "You can change the appearance of webtrees using “themes”. Each theme has a "
 "different style, layout, color scheme, etc."
 msgstr ""
+"איר קענען טוישן די אויסזען פון webtrees ניצן \"טעמעס\". יעדער טעמע האט אַ אַ"
+"נדערש נוסח, אויסלייג, קאָליר סכעמע, אאז\"ו ו."
 
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
@@ -17618,29 +17648,35 @@ msgid ""
 "You can choose whether to appear in the list of users who are currently "
 "signed-in."
 msgstr ""
+"איר קענט קלייַבן צו זיין געוויזן אין דער רשימה פון יוזערז וואָס זענען איצט "
+"לאָגד אין."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:29
 #: resources/views/edit/raw-gedcom-record.phtml:28
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "איר קענט אראפקאפיע אַ קאָפּיע פון די GEDCOM ספּעסאַפאַקיישאַן פון %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:63
 msgid ""
 "You can opt out of tracking by setting the “Do Not Track” header in your "
 "browser preferences."
 msgstr ""
+"איר קענען אַפּט אויס פון טראַקינג דורך באַשטעטיקן די \"טאָן ניט שפּור\" קעפּ"
+"ל אין דיין בלעטערער פּרעפֿערענצן."
 
 #: resources/views/admin/trees-renumber.phtml:28
 msgid ""
 "You can renumber the records in a family tree, so that these internal "
 "reference numbers are not duplicated in any other family tree."
 msgstr ""
+"איר קענען רינומער די רעקאָרדס אין אַ משפּחה בוים, אַזוי אַז די אינערלעך רעפֿ"
+"ערענץ נומערן זענען נישט דופּליקייטיד אין קיין אנדערע משפּחה בוים."
 
 #: resources/views/admin/trees-renumber.phtml:37
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "איר קענען רינומערן דעם משפּחה בוים."
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
@@ -17649,6 +17685,10 @@ msgid ""
 "restriction to it. If a record, fact, or event does not have a restriction, "
 "the following default restrictions will be used."
 msgstr ""
+"איר קענען שטעלן די אַקצעס פֿאַר אַ ספּעציפיש רעקאָרד, פאַקט אָדער געשעעניש "
+"דורך אַדינג אַ באַגרענעצונג. אויב אַ רעקאָרד, פאַקט אָדער געשעעניש טוט נישט "
+"האָבן אַ באַגרענעצונג, די פאלגענדע פעליקייַט באַגרענעצונגען וועט זיין "
+"געוויינט."
 
 #: resources/views/admin/tags.phtml:38
 msgid ""
@@ -17670,29 +17710,32 @@ msgstr ""
 
 #: app/Http/RequestHandlers/LoginAction.php:110
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "איר קענען נישט צייכן אין ווייַל דיין בלעטערער טוט נישט אָננעמען קיכלעך."
 
 #: app/Http/Exceptions/HttpAccessDeniedException.php:35
 #: app/Http/Exceptions/HttpNotFoundException.php:35
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "איר טאָן ניט האָבן דערלויבעניש צו זען דעם בלאַט."
 
 #: resources/views/verify-success-page.phtml:19
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "איר האָט באשטעטיקט דיין בקשה צו ווערן אַ רעגיסטרירט באַניצער."
 
 #: resources/views/admin/trees-import.phtml:33
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
 msgstr ""
+"איר האָט אויסגעקליבן אַ GEDCOM טעקע מיט אַ אַנדערש נאָמען. איז דאס ריכטיג?"
 
 #: app/Http/RequestHandlers/Logout.php:52
 msgid "You have signed out."
-msgstr ""
+msgstr "איר האט זיך אויסגעלאשן."
 
 #: resources/views/modules/faq/config.phtml:29
 msgid ""
 "You may use HTML to format the answer and to add links to other websites."
 msgstr ""
+"איר קענט נוצן HTML צו פֿאָרמאַט די ענטפער און צו לייגן לינקס צו אנדערע "
+"וועבסיטעס."
 
 #: app/Http/RequestHandlers/SetupWizard.php:377
 msgid "You must enter all the administrator account fields."
@@ -17702,34 +17745,39 @@ msgstr "איר מוזן אַרייַן אַלע דעם אַדמיניסטראַ�
 msgid ""
 "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"איר מוזן רינומער די רעקאָרדס אין איינער פון די ביימער איידער איר קענען "
+"צונויפגיסן זיי."
 
 #: app/Module/ChartsBlockModule.php:184
 msgid "You must select an individual and a chart type in the block preferences"
 msgstr ""
+"איר מוזן אויסקלייַבן אַ יחיד און אַ טשאַרט טיפּ אין די בלאָק פּרעפֿערענצן"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid ""
 "You must specify an individual record before you can restrict the user to "
 "their immediate family."
 msgstr ""
+"איר מוזן ספּעציפיצירן אַ יחיד רעקאָרד איידער איר קענען באַגרענעצן די באַ"
+"ניצער צו זייער באַלדיק משפּחה."
 
 #: app/Http/RequestHandlers/LoginPage.php:91
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "איר דאַרפֿן צו זיין אַ משפּחה מיטגליד צו אַקסעס דעם וועבזייטל."
 
 #: app/Http/RequestHandlers/LoginPage.php:88
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "איר דאַרפֿן צו זיין אַ אָטערייזד באַניצער צו אַקסעס דעם וועבזייטל."
 
 #: resources/views/admin/control-panel.phtml:286
 #: resources/views/admin/trees.phtml:50
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "איר דאַרפֿן צו מאַכן אַ משפּחה בוים."
 
 #: resources/views/emails/verify-notify-html.phtml:30
 #: resources/views/emails/verify-notify-text.phtml:23
 msgid "You need to review the account details."
-msgstr ""
+msgstr "איר דאַרפֿן צו קאָנטראָלירן די חשבון פרטים."
 
 #: resources/views/setup/step-5-administrator.phtml:51
 msgid ""
@@ -17742,11 +17790,13 @@ msgstr ""
 #: resources/views/emails/message-copy-html.phtml:22
 #: resources/views/emails/message-copy-text.phtml:18
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "איר האָט געשיקט די פאלגענדע אָנזאָג צו אַ webtrees באַניצער:"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:196
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
+"איר זאָל אָננעמען אָדער אָפּוואַרפן אַלע פּענדינג ענדערונגען איידער "
+"אַפּגריידינג."
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:125
@@ -17760,6 +17810,8 @@ msgid ""
 "You should not approve an account unless you know that the email address is "
 "correct."
 msgstr ""
+"איר זאָל נישט באַשטעטיקן אַ חשבון אויב איר וויסן אַז די בליצפּאָסט אַדרעס "
+"איז ריכטיק."
 
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
@@ -17768,10 +17820,14 @@ msgid ""
 "request. You can then complete the process by activating the username. The "
 "new user will not be able to sign in until you activate the account."
 msgstr ""
+"איר וועט זיין אינפֿאָרמירט דורך בליצפאָסט ווען דער פּראָספּעקטיוו באַניצער "
+"האט באשטעטיקט די בקשה. איר קענען דעריבער פאַרענדיקן דעם פּראָצעס דורך אַ"
+"קטיוויזירן די נאמען. דער נייַע באַניצער וועט נישט קענען צו קלאָץ אין ביז איר "
+"אַקטיוויזירט דעם חשבון."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
-msgstr ""
+msgstr "איר וועט נוצן דעם צו צייכן אין webtrees."
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:17
 msgid "Youngest father"
@@ -17800,12 +17856,12 @@ msgstr "דיין נאָמען"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:74
 msgid "Your password has been updated."
-msgstr ""
+msgstr "דיין פּאַראָל איז דערהייַנטיקט."
 
 #: app/Http/RequestHandlers/RegisterAction.php:159
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "דיין רעגיסטראַציע ביי %s"
 
 #: app/Services/ServerCheckService.php:195
 #, php-format
@@ -17813,12 +17869,15 @@ msgid ""
 "Your web server is using PHP version %s, which is no longer receiving "
 "security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
+"דיין וועב סערווער ניצט PHP ווערסיע %s, וואָס איז ניט מער ריסיווינג זיכערהייט "
+"דערהייַנטיקונגען. איר זאָל אַפּגרייד צו אַ שפּעטער ווערסיע ווי באַלד ווי "
+"מעגלעך."
 
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -17851,6 +17910,9 @@ msgid ""
 "preferred image for an individual. An alternative is to re-order the images "
 "so that the preferred one is listed first."
 msgstr ""
+"_WT_OBJE_SORT טאַגס זענען געניצט דורך אַלט ווערסיעס פון webtrees צו אָנווייַ"
+"זן די בילכער בילד פֿאַר אַ יחיד. אַן אַנדערע געלעגנהייט איז צו סאָרטירט נאָך "
+"איין מאָל די בילדער אַזוי אַז די בילכער איינער איז ליסטעד ערשטער."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -17896,7 +17958,7 @@ msgstr "שטעלן"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:147
 msgid "add place"
-msgstr ""
+msgstr "לייגן אָרט"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:71
@@ -17981,7 +18043,7 @@ msgstr "טאַנטע/פעטער"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr ""
+msgstr "אויטאָמאַטיש"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
@@ -18087,7 +18149,7 @@ msgstr "שוואָגער/שוועגערין"
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:270
 msgid "bullet list"
-msgstr ""
+msgstr "קויל רשימה"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:189
@@ -18147,7 +18209,7 @@ msgstr "אַנולירן"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:65
 msgid "challenged"
-msgstr ""
+msgstr "טשאַלאַדזשד"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:77
@@ -18162,7 +18224,7 @@ msgstr "קינד"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "בירגער"
 
 #: resources/views/admin/components.phtml:108
 #: resources/views/admin/components.phtml:129
@@ -18222,7 +18284,7 @@ msgstr "שאַפֿן"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "קולטור"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -18291,7 +18353,7 @@ msgstr "געשטארבן"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:66
 msgid "disproven"
-msgstr ""
+msgstr "דיספּראָווען"
 
 #: app/Module/PedigreeChartModule.php:367
 #: app/Module/PedigreeChartModule.php:375
@@ -18311,7 +18373,7 @@ msgstr "אַראָפּקאָפיע"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:19
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d'Aboville נומער"
 
 #: resources/views/admin/components.phtml:141
 #: resources/views/family-page-menu.phtml:29
@@ -18366,13 +18428,13 @@ msgstr "עלפט שוועסטערקינד"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:79
 msgid "estate name"
-msgstr ""
+msgstr "נחלה נאָמען"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:193
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "ווערט שאַצט %s"
 
 #: app/Services/RelationshipService.php:365
 msgid "ex-husband"
@@ -18389,7 +18451,7 @@ msgstr "פרייַערדיק פרוי"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
-msgstr ""
+msgstr "אַרויספירן טעקע"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -18417,30 +18479,30 @@ msgstr "שווער"
 
 #: app/Services/RelationshipService.php:369
 msgid "fiancé"
-msgstr ""
+msgstr "פֿאַרלויבטער"
 
 #: app/Services/RelationshipService.php:416
 msgid "fiancé(e)"
-msgstr ""
+msgstr "פֿאַרלויבטער(טע)"
 
 #: app/Services/RelationshipService.php:393
 msgid "fiancée"
-msgstr ""
+msgstr "פֿאַרלויבטערטע"
 
 #: app/Services/RelationshipService.php:2352
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "פופצנטער קוזין"
 
 #: app/Services/RelationshipService.php:2316
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "פופצנטער קוזין"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2278
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "פופצנטער קוזין"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2433
@@ -18453,7 +18515,7 @@ msgstr "פינפטער %s"
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "פינפטע %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2388
@@ -18588,122 +18650,122 @@ msgstr "ערשטער שוועסטערקינד"
 #: app/Services/RelationshipService.php:1155
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1151
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1153
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1161
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1157
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1159
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1167
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1163
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1165
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1173
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1169
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1171
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1179
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1175
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1177
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1185
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1181
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1183
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1191
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1187
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1189
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1197
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1193
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשטע קוזינע אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:1195
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "ערשט קוזין אַיין מאָל אַוועקגענומען גיין אויבן"
 
 #: app/Services/RelationshipService.php:2350
 msgid "fourteenth cousin"
@@ -18792,12 +18854,12 @@ msgstr "מין"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "געאָגראַפֿיש"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
 msgid "go to new individual"
-msgstr ""
+msgstr "גיין צו אַ נייַע יחיד"
 
 #: app/Services/RelationshipService.php:505
 msgctxt "child’s child"
@@ -18897,7 +18959,7 @@ msgstr "ייניקלס ווייַב"
 #: app/Services/RelationshipService.php:1511
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "%s גרויס מומע"
 
 #: app/Services/RelationshipService.php:1444
 #: app/Services/RelationshipService.php:1463
@@ -18907,7 +18969,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1514
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "%s גראַד פעטער/מומע"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2055
@@ -18916,7 +18978,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2098
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "נכד/נכדה מדרגה %s"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2052
@@ -18925,7 +18987,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2094
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr ""
+msgstr "גרויס אייניקל פון %s"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1889
@@ -18936,7 +18998,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1955
 #, php-format
 msgid "great ×%s grandfather"
-msgstr ""
+msgstr "זיידע פון די %s גראַד"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1893
@@ -18947,7 +19009,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1960
 #, php-format
 msgid "great ×%s grandmother"
-msgstr ""
+msgstr "באָבע פון די %s גראַד"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1896
@@ -18958,7 +19020,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1964
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "זיידע/באָבע פון די %s גראַד"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2048
@@ -18967,7 +19029,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2089
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "גרויס אייניקל פון %s"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1772
@@ -18975,7 +19037,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1800
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "פּלימעניק %s גראַד"
 
 #: app/Services/RelationshipService.php:1672
 #: app/Services/RelationshipService.php:1707
@@ -18983,7 +19045,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "פּלימעניק %s גראַד"
 
 #: app/Services/RelationshipService.php:1676
 #: app/Services/RelationshipService.php:1711
@@ -18991,7 +19053,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "פּלימעניק %s גראַד"
 
 #: app/Services/RelationshipService.php:1679
 #: app/Services/RelationshipService.php:1714
@@ -18999,14 +19061,14 @@ msgstr ""
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "פּלימעניצע %s גראַד"
 
 #: app/Services/RelationshipService.php:1779
 #: app/Services/RelationshipService.php:1791
 #: app/Services/RelationshipService.php:1807
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "פּלימעניק/פלימעניצע פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1695
 #: app/Services/RelationshipService.php:1730
@@ -19014,7 +19076,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "פּלימעניק/פלימעניצע פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1699
 #: app/Services/RelationshipService.php:1734
@@ -19022,7 +19084,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "פּלימעניק/פלימעניצע פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1702
 #: app/Services/RelationshipService.php:1737
@@ -19030,14 +19092,14 @@ msgstr ""
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "פּלימעניק/פלימעניצע פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1776
 #: app/Services/RelationshipService.php:1788
 #: app/Services/RelationshipService.php:1804
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "פלימעניצע פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1684
 #: app/Services/RelationshipService.php:1719
@@ -19045,7 +19107,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "פלימעניצע פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1688
 #: app/Services/RelationshipService.php:1723
@@ -19053,7 +19115,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "פלימעניצע פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1691
 #: app/Services/RelationshipService.php:1726
@@ -19061,7 +19123,7 @@ msgstr ""
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "פלימעניצע פון די %s גראַד"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1437
@@ -19071,303 +19133,303 @@ msgstr ""
 #: app/Services/RelationshipService.php:1507
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "אָנקל פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1449
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "אָנקל פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1453
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "אָנקל פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1456
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "אָנקל פון די %s גראַד"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt"
-msgstr ""
+msgstr "4טע גראַד מומע"
 
 #: app/Services/RelationshipService.php:1370
 msgid "great ×4 aunt/uncle"
-msgstr ""
+msgstr "4טע גראַד מומע/אָנקל"
 
 #: app/Services/RelationshipService.php:2003
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "4טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:2000
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "4טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1839
 msgid "great ×4 grandfather"
-msgstr ""
+msgstr "4טע גראַד זיידע"
 
 #: app/Services/RelationshipService.php:1843
 msgid "great ×4 grandmother"
-msgstr ""
+msgstr "4טע גראַד באָבע"
 
 #: app/Services/RelationshipService.php:1846
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "4טע גראַד זיידע/באָבע"
 
 #: app/Services/RelationshipService.php:1996
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "4טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1596
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4טע גראַד פּלימעניק"
 
 #: app/Services/RelationshipService.php:1600
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4טע גראַד פּלימעניק"
 
 #: app/Services/RelationshipService.php:1603
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4טע גראַד פּלימעניק"
 
 #: app/Services/RelationshipService.php:1619
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4טע גראַד פּלימעניצע"
 
 #: app/Services/RelationshipService.php:1623
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4טע גראַד פּלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1626
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4טע גראַד פּלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1608
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4טע גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1612
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4טע גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1615
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4טע גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1356
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1360
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1363
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1386
 msgid "great ×5 aunt"
-msgstr ""
+msgstr "5 גראַד מומע"
 
 #: app/Services/RelationshipService.php:1389
 msgid "great ×5 aunt/uncle"
-msgstr ""
+msgstr "5 גראַד אָנקל/מומע"
 
 #: app/Services/RelationshipService.php:2014
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "5 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:2011
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "5 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1850
 msgid "great ×5 grandfather"
-msgstr ""
+msgstr "5 גראַד זיידע"
 
 #: app/Services/RelationshipService.php:1854
 msgid "great ×5 grandmother"
-msgstr ""
+msgstr "5 גראַד באָבע"
 
 #: app/Services/RelationshipService.php:1857
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "5 גראַד זיידע/באָבע"
 
 #: app/Services/RelationshipService.php:2007
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "5 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1631
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1635
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1638
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "5 גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1654
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1658
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1661
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "5 גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1643
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1647
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1650
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "5 גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1375
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1379
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1382
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "5 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1405
 msgid "great ×6 aunt"
-msgstr ""
+msgstr "6 גראַד מומע"
 
 #: app/Services/RelationshipService.php:1408
 msgid "great ×6 aunt/uncle"
-msgstr ""
+msgstr "6 גראַד מומע/אָנקל"
 
 #: app/Services/RelationshipService.php:2025
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "6 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:2022
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "6 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1861
 msgid "great ×6 grandfather"
-msgstr ""
+msgstr "6 גראַד זיידע"
 
 #: app/Services/RelationshipService.php:1865
 msgid "great ×6 grandmother"
-msgstr ""
+msgstr "6 גראַד באָבע"
 
 #: app/Services/RelationshipService.php:1868
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "6 גראַד זיידע/באָבע"
 
 #: app/Services/RelationshipService.php:2018
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "6 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1394
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1398
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1401
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "6 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1424
 msgid "great ×7 aunt"
-msgstr ""
+msgstr "7 גראַד מומע"
 
 #: app/Services/RelationshipService.php:1427
 msgid "great ×7 aunt/uncle"
-msgstr ""
+msgstr "7 גראַד אָנקל/מומע"
 
 #: app/Services/RelationshipService.php:2036
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "7 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:2033
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "7 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1872
 msgid "great ×7 grandfather"
-msgstr ""
+msgstr "7 גראַד זיידע"
 
 #: app/Services/RelationshipService.php:1876
 msgid "great ×7 grandmother"
-msgstr ""
+msgstr "7 גראַד באָבע"
 
 #: app/Services/RelationshipService.php:1879
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "7 גראַד זיידע/באָבע"
 
 #: app/Services/RelationshipService.php:2029
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "7 גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1413
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1417
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1420
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "7 גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1097
 msgctxt "father’s father’s brother’s wife"
@@ -19821,187 +19883,187 @@ msgstr "גרויס-ייניקל"
 
 #: app/Services/RelationshipService.php:1329
 msgid "great-great-aunt"
-msgstr ""
+msgstr "גרויס מומע"
 
 #: app/Services/RelationshipService.php:1332
 msgid "great-great-aunt/uncle"
-msgstr ""
+msgstr "גרויס מומע/אָנקל"
 
 #: app/Services/RelationshipService.php:1981
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "גרויס אייניקל"
 
 #: app/Services/RelationshipService.php:1978
 msgid "great-great-granddaughter"
-msgstr ""
+msgstr "גרויס אייניקל"
 
 #: app/Services/RelationshipService.php:1817
 msgid "great-great-grandfather"
-msgstr ""
+msgstr "גרויס זיידע"
 
 #: app/Services/RelationshipService.php:1821
 msgid "great-great-grandmother"
-msgstr ""
+msgstr "גרויס באָבע"
 
 #: app/Services/RelationshipService.php:1824
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "גרויס זיידע/באָבע"
 
 #: app/Services/RelationshipService.php:1974
 msgid "great-great-grandson"
-msgstr ""
+msgstr "גרויס אייניקל"
 
 #: app/Services/RelationshipService.php:1348
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "3טע גראַד מומע"
 
 #: app/Services/RelationshipService.php:1351
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "3טע גראַד מומע/אָנקל"
 
 #: app/Services/RelationshipService.php:1992
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "3טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1989
 msgid "great-great-great-granddaughter"
-msgstr ""
+msgstr "3טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1828
 msgid "great-great-great-grandfather"
-msgstr ""
+msgstr "3טע גראַד זיידע"
 
 #: app/Services/RelationshipService.php:1832
 msgid "great-great-great-grandmother"
-msgstr ""
+msgstr "3טע גראַד באָבע"
 
 #: app/Services/RelationshipService.php:1835
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "3טע גראַד זיידע/באָבע"
 
 #: app/Services/RelationshipService.php:1985
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "3טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "3טע גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1565
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "3טע גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1568
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "3טע גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1584
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "3טע גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1588
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "3טע גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1591
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "3טע גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1573
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "3טע גראַד /פלימעניצע"
 
 #: app/Services/RelationshipService.php:1577
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "3טע גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1580
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "3טע גראַד פלימעניצע"
 
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "3טע גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1341
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "3טע גראַד פלימעניק"
 
 #: app/Services/RelationshipService.php:1344
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "3טע גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "2טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1530
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "2טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1533
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "2טע גראַד אייניקל"
 
 #: app/Services/RelationshipService.php:1549
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "2טע גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1553
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "2טע גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1556
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "2טע גראַד פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1538
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "2טע גראַד קוזינע"
 
 #: app/Services/RelationshipService.php:1542
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "2טע גראַד קוזינע"
 
 #: app/Services/RelationshipService.php:1545
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "2טע גראַד קוזינע"
 
 #: app/Services/RelationshipService.php:1318
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "2טע גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1322
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "2טע גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:1325
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "2טע גראַד אָנקל"
 
 #: app/Services/RelationshipService.php:674
 msgctxt "(a man’s) brother’s child’s son"
@@ -20427,7 +20489,7 @@ msgstr "זיך"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "הויזגעזינד"
 
 #: app/Elements/RoleInEvent.php:79 app/Services/RelationshipService.php:367
 msgid "husband"
@@ -20441,7 +20503,7 @@ msgstr "אימיגראַציע נאָמען"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:166
 msgid "import file"
-msgstr ""
+msgstr "אַרייַנפיר טעקע"
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
@@ -20455,7 +20517,7 @@ msgstr "ינלינע באַמערקונג"
 #: app/Date.php:197
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "אינטערפּרעטאַציע %s (%s)"
 
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:54
@@ -20517,7 +20579,7 @@ msgstr "רשימה"
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "לאָקאַציעס דערהייַנטיקט: %s, לאָקאַציעס צוגעגעבן: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:83
@@ -20566,7 +20628,7 @@ msgstr "מאַמעס פאטער/מוטער"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition/MatrilinealSurnameTradition.php:39
 msgid "matrilineal"
-msgstr ""
+msgstr "פֿון מאַמע זייט"
 
 #: resources/views/modules/recent_changes/config.phtml:27
 #: resources/views/modules/upcoming_events/config.phtml:27
@@ -20622,17 +20684,17 @@ msgstr "פּלימעניק"
 #: app/Services/RelationshipService.php:853
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "פלימעניק"
 
 #: app/Services/RelationshipService.php:849
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "פלימעניק"
 
 #: app/Services/RelationshipService.php:851
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "פלימעניק"
 
 #: app/Services/RelationshipService.php:605
 msgctxt "sibling’s son"
@@ -20647,17 +20709,17 @@ msgstr "פּלימעניק"
 #: app/Services/RelationshipService.php:1093
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "פלימעניק"
 
 #: app/Services/RelationshipService.php:1089
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "פלימעניק"
 
 #: app/Services/RelationshipService.php:1091
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "פלימעניק"
 
 #: app/Services/RelationshipService.php:691
 msgctxt "brother’s daughter’s husband"
@@ -20682,17 +20744,17 @@ msgstr "פּלימעניק/פּלימעניצע"
 #: app/Services/RelationshipService.php:841
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:837
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:839
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:601
 msgctxt "sibling’s child"
@@ -20707,17 +20769,17 @@ msgstr "פּלימעניק/פּלימעניצע"
 #: app/Services/RelationshipService.php:1081
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1077
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "פלימעניק/פלימעניצע"
 
 #: app/Services/RelationshipService.php:1079
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "פלימעניק/פלימעניצע"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -20744,17 +20806,17 @@ msgstr "פּלימעניצע"
 #: app/Services/RelationshipService.php:847
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "פלימעניצע"
 
 #: app/Services/RelationshipService.php:843
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "פלימעניצע"
 
 #: app/Services/RelationshipService.php:845
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "פלימעניצע"
 
 #: app/Services/RelationshipService.php:603
 msgctxt "sibling’s daughter"
@@ -20769,17 +20831,17 @@ msgstr "פּלימעניצע"
 #: app/Services/RelationshipService.php:1087
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "פלימעניצע"
 
 #: app/Services/RelationshipService.php:1083
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "פלימעניצע"
 
 #: app/Services/RelationshipService.php:1085
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "פלימעניצע"
 
 #: app/Services/RelationshipService.php:717
 msgctxt "brother’s son’s wife"
@@ -20901,7 +20963,7 @@ msgstr "שותף"
 #: app/SurnameTradition/PaternalSurnameTradition.php:38
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "פאָטערלעך"
 
 #: app/Services/RelationshipService.php:531
 msgctxt "father’s father"
@@ -20921,7 +20983,7 @@ msgstr "פאָטערלעך זיידע/באָבע"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition/PatrilinealSurnameTradition.php:39
 msgid "patrilineal"
-msgstr ""
+msgstr "פאָטערלעך"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:119
@@ -20935,12 +20997,12 @@ msgstr "פראָצענט"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr ""
+msgstr "פשוטע טעקסט"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "פּאָליטיש"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page-images.phtml:49
@@ -20965,7 +21027,7 @@ msgstr "ערשטיק זאָגן"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:67
 msgid "proven"
-msgstr ""
+msgstr "איבערצייגט"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50
@@ -21003,7 +21065,7 @@ msgstr "פארווארפן"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "רעליגיעז"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:87
@@ -21013,7 +21075,7 @@ msgstr "רעליגיעז נאָמען"
 #. I18N: A button label.
 #: resources/views/search-replace-page.phtml:53
 msgid "replace"
-msgstr ""
+msgstr "פאַרבייַטן"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:106
@@ -21094,7 +21156,7 @@ msgstr "זוך"
 #: app/Services/RelationshipService.php:2424
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "צווייטע %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2402
@@ -21296,7 +21358,7 @@ msgstr "זיבעט שוועסטערקינד"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
-msgstr ""
+msgstr "בשותּפֿותדיק באַמערקונג"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/tags.phtml:969 resources/views/admin/tags.phtml:983
@@ -21327,12 +21389,12 @@ msgstr "ווייַזן"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:277
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "ווייַזן ענדערונגען געמאכט אין webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:279
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "ווייַזן ענדערונגען רעקאָרדעד אין די גענעאלאגיע דאַטן"
 
 #. I18N: button label
 #: resources/views/admin/trees-check.phtml:88
@@ -21524,17 +21586,17 @@ msgstr "מאַן / פרוי"
 #: app/Services/RelationshipService.php:831
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "שטיף ברודער"
 
 #: app/Services/RelationshipService.php:879
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "שטיף ברודער"
 
 #: app/Services/RelationshipService.php:957
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr ""
+msgstr "שטיף ברודער"
 
 #: app/Services/RelationshipService.php:547
 msgctxt "husband’s child"
@@ -21579,37 +21641,37 @@ msgstr "שטיפמאַמע"
 #: app/Services/RelationshipService.php:599
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "שטיף עלטערן"
 
 #: app/Services/RelationshipService.php:827
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "שטיף-ברודער/שוועסטער"
 
 #: app/Services/RelationshipService.php:875
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "שטיף-ברודער/שוועסטער"
 
 #: app/Services/RelationshipService.php:953
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "שטיף-ברודער/שוועסטער"
 
 #: app/Services/RelationshipService.php:829
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "שטיף-שוועסטער"
 
 #: app/Services/RelationshipService.php:877
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "שטיף-שוועסטער"
 
 #: app/Services/RelationshipService.php:955
 msgctxt "parent’s spouse’s daughter"
 msgid "step-sister"
-msgstr ""
+msgstr "שטיפֿ-שוועסטער"
 
 #: app/Services/RelationshipService.php:559
 msgctxt "husband’s son"
@@ -21628,7 +21690,7 @@ msgstr "שטיפזון"
 
 #: app/Elements/AgeAtEvent.php:96
 msgid "stillborn"
-msgstr ""
+msgstr "טויט געבוירן"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -21645,7 +21707,7 @@ msgstr "טאַבעלע"
 #: app/Http/RequestHandlers/TreePreferencesPage.php:94
 #: app/Module/TopSurnamesModule.php:276
 msgid "tag cloud"
-msgstr ""
+msgstr "קוויטל וואָלקן"
 
 #: app/Services/RelationshipService.php:2342
 msgid "tenth cousin"
@@ -21677,11 +21739,13 @@ msgid ""
 "the folder “/data” and the file “/data/config.ini.php” have access "
 "permissions that allow the webserver to read them"
 msgstr ""
+"דער טעקע \"/data\" און די טעקע \"/data/config.ini.php\" האָבן אַקצעס "
+"דערלויבעניש וואָס לאָזן די וועבסערווער צו לייענען זיי"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php:247
 msgid "themself"
-msgstr ""
+msgstr "זיך"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2427
@@ -21812,7 +21876,7 @@ msgstr "אומבאַקאַנט"
 
 #: app/Module/RelationshipsChartModule.php:473
 msgid "unlimited"
-msgstr ""
+msgstr "אומבאַגרענעצט"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/Elements/CertaintyAssessment.php:49
@@ -21857,7 +21921,7 @@ msgstr "זע"
 #: resources/views/admin/trees-privacy.phtml:125
 #: resources/views/admin/trees-privacy.phtml:145
 msgid "visitors"
-msgstr ""
+msgstr "געסט"
 
 #: resources/xml/reports/ahnentafel_report.xml:142
 #: resources/xml/reports/descendancy_report.xml:105
@@ -21877,11 +21941,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees קענען נישט שאַפֿן טהומבנאַילס פֿאַר דעם טעקע פֿאָרמאַט."
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees קען נישט דערקענען דעם טעקע פֿאָרמאַט."
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -21889,7 +21953,7 @@ msgstr "webtrees אָנזאָג"
 
 #: resources/views/setup/step-3-database-type.phtml:49
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees דאַרף אַ דאַטאַבייס צו קראָם דיין גענעאלאגיע דאַטן."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
@@ -21897,10 +21961,12 @@ msgid ""
 "webtrees needs to send emails, such as password reminders and website "
 "notifications."
 msgstr ""
+"webtrees דאַרף שיקן בליצפאָסט, אַזאַ ווי פּאַראָל רימיינדערז און וועבזייטל "
+"מעלדונגען."
 
 #: app/Services/MessageService.php:233
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "webtrees שיקט בליצפאָסט קיין מאַגאַזינירונג"
 
 #: app/Elements/RoleInEvent.php:80 app/Services/RelationshipService.php:391
 msgid "wife"
@@ -21959,6 +22025,8 @@ msgstr "יאָ"
 msgid ""
 "you can connect to the database using other applications, such as phpmyadmin"
 msgstr ""
+"איר קענען פאַרבינדן צו די דאַטאַבייס מיט אנדערע אַפּלאַקיישאַנז, אַזאַ ווי "
+"phpmyadmin"
 
 #: app/Services/RelationshipService.php:442
 msgid "younger brother"
@@ -21986,19 +22054,19 @@ msgstr[1] "±%s יאָר"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "\"%1$s\" זאָל זיין \"%2$s\"."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "\"%s\" איז איבערגעשריבט צו די קליפּבאָרד."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
 #: app/Services/MapDataService.php:199
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "\"%s\" איז אויסגעמעקט."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
@@ -22007,6 +22075,9 @@ msgid ""
 "indicate the preferred image for an individual. An alternative is to re-"
 "order the images so that the preferred one is listed first."
 msgstr ""
+"\"אונטערשטראָכט בילד\" (_PRIM) טאַגס זענען געניצט דורך עטלעכע גענעאלאגיע "
+"אַפּלאַקיישאַנז צו אָנווייַזן די בילכער בילד פֿאַר אַ יחיד. אַן אַנדער וועג "
+"איז צו שייַעך-סדר די בילדער אַזוי אַז די בילכער איינער איז ליסטעד ערשטער."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
