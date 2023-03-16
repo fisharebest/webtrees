@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-03-17 11:26+0000\n"
+"Last-Translator: Enes Sadikovic <enes_s@yahoo.com>\n"
 "Language-Team: Serbian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sr/>\n"
 "Language: sr\n"
@@ -253,7 +253,7 @@ msgstr[2] "%s породица"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:107
-#, fuzzy, php-format
+#, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s породица је ажурирана."
@@ -2560,7 +2560,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:96
 msgid "Belarus"
-msgstr "Bielorusko"
+msgstr "Белорусија"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:154
@@ -2570,7 +2570,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
 msgid "Belgium"
-msgstr "Belgija"
+msgstr "Белгија"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:98
@@ -2585,7 +2585,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:100
 msgid "Bermuda"
-msgstr "Bermudy"
+msgstr "Бермуди"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:191
@@ -2599,7 +2599,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:110
 msgid "Bhutan"
-msgstr "Bhután"
+msgstr "Бутан"
 
 #: app/CustomTags/RootsMagic.php:79
 msgid "Bibliography"
