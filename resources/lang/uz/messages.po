@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-17 11:27+0000\n"
+"PO-Revision-Date: 2023-03-18 22:07+0000\n"
 "Last-Translator: rabbimovj <rabbimov@gmail.com>\n"
 "Language-Team: Uzbek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/uz/>\n"
@@ -20383,67 +20383,67 @@ msgstr "ikkinchi amakivachcha"
 #: app/Services/RelationshipService.php:1266
 msgctxt "grandmothers siblings grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1258
 msgctxt "grandmothers sisters grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1250
 msgctxt "grandmothers sisters granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1254
 msgctxt "grandmothers sisters grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1282
 msgctxt "grandparents brothers grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1274
 msgctxt "grandparents brothers granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1278
 msgctxt "grandparents brothers grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1306
 msgctxt "grandparents siblings grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1298
 msgctxt "grandparents siblings granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1302
 msgctxt "grandparents siblings grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1294
 msgctxt "grandparents sisters grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1286
 msgctxt "grandparents sisters granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1290
 msgctxt "grandparents sisters grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php:51
@@ -20466,7 +20466,7 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2336
 msgid "seventh cousin"
-msgstr ""
+msgstr "yettinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2300
 msgctxt "FEMALE"
@@ -20941,35 +20941,35 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:438
 msgid "twin brother"
-msgstr ""
+msgstr "Egiz aka"
 
 #: app/Services/RelationshipService.php:480
 msgid "twin sibling"
-msgstr ""
+msgstr "egiz uka"
 
 #: app/Services/RelationshipService.php:459
 msgid "twin sister"
-msgstr ""
+msgstr "egiz singil"
 
 #: app/Services/RelationshipService.php:525
 msgctxt "fathers brother"
 msgid "uncle"
-msgstr ""
+msgstr "amaki"
 
 #: app/Services/RelationshipService.php:823
 msgctxt "fathers sisters husband"
 msgid "uncle"
-msgstr ""
+msgstr "jezda"
 
 #: app/Services/RelationshipService.php:561
 msgctxt "mothers brother"
 msgid "uncle"
-msgstr ""
+msgstr "tog'a"
 
 #: app/Services/RelationshipService.php:909
 msgctxt "mothers sisters husband"
 msgid "uncle"
-msgstr ""
+msgstr "pochcha"
 
 #: app/Services/RelationshipService.php:581
 msgctxt "parents brother"
@@ -20992,27 +20992,27 @@ msgstr "noma'lum"
 
 #: app/Module/RelationshipsChartModule.php:481
 msgid "unlimited"
-msgstr ""
+msgstr "cheksiz"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/Elements/CertaintyAssessment.php:49
 msgid "unreliable evidence"
-msgstr ""
+msgstr "ishonchsiz dalillar"
 
 #: app/Module/PedigreeChartModule.php:366
 #: app/Module/PedigreeChartModule.php:374
 #: resources/views/edit/reorder-card-header.phtml:28
 msgid "up"
-msgstr ""
+msgstr "yuqoriga"
 
 #: resources/views/admin/trees-unconnected.phtml:33
 msgid "update"
-msgstr ""
+msgstr "yangilash"
 
 #. I18N: A button label.
 #: resources/views/admin/media-upload.phtml:74
 msgid "upload"
-msgstr ""
+msgstr "yuklash"
 
 #. I18N: A button label.
 #: resources/views/branches-page.phtml:51
@@ -21037,23 +21037,23 @@ msgstr "ko'rish"
 #: resources/views/admin/trees-privacy.phtml:125
 #: resources/views/admin/trees-privacy.phtml:145
 msgid "visitors"
-msgstr ""
+msgstr "tashrif buyuruvchilar"
 
 #: resources/xml/reports/ahnentafel_report.xml:142
 #: resources/xml/reports/descendancy_report.xml:105
 msgctxt "FEMALE"
 msgid "was born"
-msgstr ""
+msgstr "Tug'ilgan"
 
 #: resources/xml/reports/ahnentafel_report.xml:141
 #: resources/xml/reports/descendancy_report.xml:102
 msgctxt "MALE"
 msgid "was born"
-msgstr ""
+msgstr "Tug'ilgan"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr ""
+msgstr "veb-shajara"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
@@ -21065,20 +21065,24 @@ msgstr "webshajara ushbu fayl formatini tanimaydi."
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
-msgstr ""
+msgstr "veb-shajara xabari"
 
 #: resources/views/setup/step-3-database-type.phtml:49
 msgid "webtrees needs a database to store your genealogy data."
 msgstr ""
+"veb-shajaraga sizning nasabnomangiz ma'lumotlarini saqlash uchun ma'lumotlar "
+"bazasiga muhtoj."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
+"veb-shajara parolni eslatish va veb-sayt bildirishnomalari kabi elektron "
+"pochta xabarlarini yuborishi kerak."
 
 #: app/Services/MessageService.php:233
 msgid "webtrees sends emails with no storage"
-msgstr ""
+msgstr "veb-shajara xotirasiz elektron pochta xabarlarini yuboradi"
 
 #: app/Elements/RoleInEvent.php:80 app/Services/RelationshipService.php:391
 msgid "wife"
@@ -21087,7 +21091,7 @@ msgstr "xotini"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:145
 msgid "years"
@@ -21130,24 +21134,26 @@ msgstr "yillar"
 #: resources/xml/reports/individual_ext_report.xml:187
 #: resources/xml/reports/individual_report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "ha"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:32
 msgid "you can connect to the database using other applications, such as phpmyadmin"
 msgstr ""
+"phpmyadmin kabi boshqa ilovalar yordamida ma'lumotlar bazasiga ulanishingiz "
+"mumkin"
 
 #: app/Services/RelationshipService.php:442
 msgid "younger brother"
-msgstr ""
+msgstr "uka"
 
 #: app/Services/RelationshipService.php:484
 msgid "younger sibling"
-msgstr ""
+msgstr "kenja uka"
 
 #: app/Services/RelationshipService.php:463
 msgid "younger sister"
-msgstr ""
+msgstr "kenja singil"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:237
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:238
@@ -21163,24 +21169,24 @@ msgstr[1] "%s yillar"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
 msgid "land Islands"
-msgstr ""
+msgstr "quruqlik orollari"
 
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "%1$s should be %2$s."
-msgstr ""
+msgstr "%1$s %2$s boʻlishi kerak."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "%s has been copied to the clipboard."
-msgstr ""
+msgstr "%s vaqtinchalik xotiraga nusxalandi."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
 #: app/Services/MapDataService.php:199
 #, php-format
 msgid "%s has been deleted."
-msgstr ""
+msgstr "%s o‘chirildi."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
