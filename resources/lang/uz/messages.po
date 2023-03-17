@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-17 11:26+0000\n"
+"PO-Revision-Date: 2023-03-17 11:27+0000\n"
 "Last-Translator: rabbimovj <rabbimov@gmail.com>\n"
 "Language-Team: Uzbek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/uz/>\n"
@@ -20358,27 +20358,27 @@ msgstr "ikkinchi amakivachcha"
 #: app/Services/RelationshipService.php:1246
 msgctxt "grandmothers brothers grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1238
 msgctxt "grandmothers brothers granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1242
 msgctxt "grandmothers brothers grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1270
 msgctxt "grandmothers siblings grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1262
 msgctxt "grandmothers siblings granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1266
 msgctxt "grandmothers siblings grandson"
