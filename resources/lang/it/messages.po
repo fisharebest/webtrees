@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-08 21:59+0000\n"
-"Last-Translator: Alex Camilleri <camilleri.alex@gmail.com>\n"
+"PO-Revision-Date: 2023-03-18 22:07+0000\n"
+"Last-Translator: McGrelio <mcgrelio@gmail.com>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/it/>\n"
 "Language: it\n"
@@ -2456,7 +2456,7 @@ msgstr "Battesimo di un figlio"
 
 #: app/Services/IndividualFactsService.php:205
 msgid "Baptism of a daughter"
-msgstr "Battesimo di una sorella"
+msgstr "Battesimo di una figlia"
 
 #: app/Services/IndividualFactsService.php:275
 #: app/Services/IndividualFactsService.php:298
@@ -5773,7 +5773,7 @@ msgstr "esfand"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/CustomTags/BrothersKeeper.php:77
 msgid "Estate name"
@@ -6866,12 +6866,12 @@ msgstr "Tag GEDCOM"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1035
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:57
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/CustomTags/GedcomL.php:113 app/CustomTags/GedcomL.php:167
@@ -6973,7 +6973,7 @@ msgstr "Generazioni di discendenti"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:46
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7181,6 +7181,7 @@ msgstr "Guatemala"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:102
+#, fuzzy
 msgid "Guatemala City, Guatemala"
 msgstr "Città del Guatemala, Guatemala"
 
@@ -9594,6 +9595,7 @@ msgstr "Messico"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:135
+#, fuzzy
 msgid "Mexico City, Mexico"
 msgstr "Città del Messico, Messico"
 
@@ -10284,18 +10286,18 @@ msgstr "Non esistono eventi per domani."
 
 #: app/Module/OnThisDayModule.php:155
 msgid "No events for living individuals exist for today."
-msgstr ""
+msgstr "Nessun evento per individui in vita oggi."
 
 #: app/Module/UpcomingAnniversariesModule.php:175
 msgid "No events for living individuals exist for tomorrow."
-msgstr ""
+msgstr "Nessun evento per individui in vita domani."
 
 #: app/Module/UpcomingAnniversariesModule.php:181
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nessun evento per individui in vita per il prossimo %s giorno."
+msgstr[1] "Nessun evento per individui in vita per il prossimi %s giorni."
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
@@ -10304,7 +10306,7 @@ msgstr "Nessun evento per questa famiglia."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Nessun file ricevuto."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -10354,7 +10356,7 @@ msgstr "Nessun utente autenticato e anonimo"
 #: resources/views/lists/surnames-compact-list.phtml:21
 #: resources/views/lists/surnames-table.phtml:64
 msgid "No surname"
-msgstr ""
+msgstr "Nessun cognome"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10440,7 +10442,7 @@ msgstr "Non sposato"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:104
 msgid "Not recorded"
-msgstr ""
+msgstr "Non registrato"
 
 #: resources/views/admin/control-panel.phtml:485
 msgid "Not verified by the user"
@@ -10472,33 +10474,33 @@ msgstr "Nota"
 #: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
 #: app/Gedcom.php:901 app/Gedcom.php:915
 msgid "Note on association"
-msgstr ""
+msgstr "Nota di associazione"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:450 app/Gedcom.php:617
 #: app/Gedcom.php:764 app/Gedcom.php:785 app/Gedcom.php:816 app/Gedcom.php:832
 #: app/Gedcom.php:863 app/Gedcom.php:879
 msgid "Note on last change"
-msgstr ""
+msgstr "Nota di ultima modifica"
 
 #: app/Gedcom.php:687
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Nota sul nome fonetico"
 
 #: app/CustomTags/GedcomL.php:248 app/Gedcom.php:426 app/Gedcom.php:558
 msgid "Note on place"
-msgstr ""
+msgstr "Nota sul luogo"
 
 #: app/Gedcom.php:847
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Nota sul riferimento dell'archivio"
 
 #: app/Gedcom.php:701
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Nota sul nome romanizzato"
 
 #: app/Gedcom.php:839
 msgid "Note on source"
-msgstr ""
+msgstr "Nota sulla sorgente"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
@@ -10506,11 +10508,11 @@ msgstr ""
 #: app/Gedcom.php:752 app/Gedcom.php:776 app/Gedcom.php:800 app/Gedcom.php:909
 #: app/Gedcom.php:923
 msgid "Note on source citation"
-msgstr ""
+msgstr "Nota sulla fonte di citazione"
 
 #: app/Gedcom.php:838
 msgid "Note on source data"
-msgstr ""
+msgstr "Nota sui dati di origine"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10833,12 +10835,12 @@ msgstr "Orientamento"
 
 #: app/CustomTags/Ancestry.php:70
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/CustomTags/Ancestry.php:75
 msgid "Original text"
-msgstr ""
+msgstr "Testo originale"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -10965,8 +10967,9 @@ msgstr "Panamá"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:156
+#, fuzzy
 msgid "Panama City, Panama"
-msgstr "Panama, Panama"
+msgstr "Città di Panama, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:157
@@ -10985,7 +10988,7 @@ msgstr "Paraguay"
 
 #: app/CustomTags/GedcomL.php:293
 msgid "Parent location"
-msgstr ""
+msgstr "Posizione del genitore"
 
 #: app/Gedcom.php:741 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:72
@@ -11148,7 +11151,7 @@ msgstr "Foto"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Fotografia"
 
 #: app/CustomTags/Gedcom7.php:75 app/CustomTags/Gedcom7.php:77
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:87
@@ -11157,7 +11160,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:113 app/CustomTags/Gedcom7.php:114
 #: app/CustomTags/Gedcom7.php:116 app/CustomTags/Gedcom7.php:118
 msgid "Phrase"
-msgstr ""
+msgstr "Frase"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:174
@@ -11802,7 +11805,7 @@ msgstr "Riordina oggetti multimediali"
 
 #: resources/views/media-page-menu.phtml:40
 msgid "Re-order media files"
-msgstr ""
+msgstr "Riorganizza i file mumtimediali"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:51
@@ -12053,7 +12056,7 @@ msgstr "Reno, Nevada, Stati Uniti d'America"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Rinumera gli XREF"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12087,7 +12090,7 @@ msgstr "Report"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
 msgid "Report phrase"
-msgstr ""
+msgstr "Riporta una frase"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12515,17 +12518,17 @@ msgstr "Cerca"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "Cerca i luoghi in una base dati esterna."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "Cerca i nomi dei luoghi in una base dati esterna."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:57
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Cerca i nomi dei luoghi usando %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12654,6 +12657,8 @@ msgstr "Invia una email di prova con queste impostazioni"
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
 msgstr ""
+"Invia un'email a tutti gli amministratori quando è disponibile un "
+"aggiornamento."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:20
@@ -12663,7 +12668,7 @@ msgstr "Inviare email di promemoria"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:71
 msgid "Sender email"
-msgstr ""
+msgstr "Email del mittente"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
@@ -12849,11 +12854,11 @@ msgstr "shahrivar"
 #: resources/views/individual-page-menu.phtml:37
 #: resources/views/individual-page.phtml:68
 msgid "Share"
-msgstr ""
+msgstr "Condividi"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Condividi l'URL"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
@@ -20894,12 +20899,12 @@ msgstr[1] "±%s anni"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” dovrebbe essere “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s“ è stato copiato nella clipboard."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
