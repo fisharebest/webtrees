@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-16 11:26+0000\n"
+"PO-Revision-Date: 2023-03-17 11:26+0000\n"
 "Last-Translator: rabbimovj <rabbimov@gmail.com>\n"
 "Language-Team: Uzbek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/uz/>\n"
@@ -407,20 +407,20 @@ msgstr "%s yilligi"
 #: app/Services/RelationshipService.php:2354
 #, php-format
 msgid "%s  cousin"
-msgstr ""
+msgstr "%s amakivachchasi"
 
 #: app/Services/RelationshipService.php:2318
 #, php-format
 msgctxt "FEMALE"
 msgid "%s  cousin"
-msgstr ""
+msgstr "%s amakivachchasi"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2281
 #, php-format
 msgctxt "MALE"
 msgid "%s  cousin"
-msgstr ""
+msgstr "%s amakivachchasi"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -6663,6 +6663,10 @@ msgstr ""
 #: resources/views/help/relationship-privacy.phtml:14
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
+"Masalan, agar siz 2 ta yoʻl uzunligini belgilasangiz, shaxs oʻzining "
+"birinchi amakivachchasi emas, balki oʻzining nabirasi (bola, bola), xolasi "
+"(ota-onasi, aka-uka), oʻgay qizini (turmush oʻrtogʻi, bolasi) koʻra oladi. "
+"(ota-ona, aka-uka, bola)."
 
 #: resources/views/help/data-fixes.phtml:14
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
@@ -17504,18 +17508,18 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2338
 msgid "eighth cousin"
-msgstr ""
+msgstr "sakkizinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2302
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "sakkizinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2257
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "sakkizinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:446
 msgid "elder brother"
@@ -17531,18 +17535,18 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2344
 msgid "eleventh cousin"
-msgstr ""
+msgstr "o'n birinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2308
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "o'n birinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2266
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "o'n birinchi amakivachcha"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:79
@@ -17610,18 +17614,18 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2352
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "o'n beshinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2316
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "o'n beshinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2278
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "o'n beshinchi amakivachcha"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2433
@@ -17645,18 +17649,18 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2332
 msgid "fifth cousin"
-msgstr ""
+msgstr "beshinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2296
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "beshinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2248
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "beshinchi amakivachcha"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:560
@@ -17693,213 +17697,213 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2324
 msgid "first cousin"
-msgstr ""
+msgstr "amakivachcha"
 
 #: app/Services/RelationshipService.php:2288
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2236
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "amakivachcha"
 
 #: app/Services/RelationshipService.php:775
 msgctxt "fathers brothers child"
 msgid "first cousin"
-msgstr ""
+msgstr "amakivachcha"
 
 #: app/Services/RelationshipService.php:777
 msgctxt "fathers brothers daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "amakivachcha"
 
 #: app/Services/RelationshipService.php:779
 msgctxt "fathers brothers son"
 msgid "first cousin"
-msgstr ""
+msgstr "amakivachcha"
 
 #: app/Services/RelationshipService.php:819
 msgctxt "fathers sisters child"
 msgid "first cousin"
-msgstr ""
+msgstr "jiyan"
 
 #: app/Services/RelationshipService.php:821
 msgctxt "fathers sisters daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "jiyan"
 
 #: app/Services/RelationshipService.php:825
 msgctxt "fathers sisters son"
 msgid "first cousin"
-msgstr ""
+msgstr "jiyan"
 
 #: app/Services/RelationshipService.php:855
 msgctxt "mothers brothers child"
 msgid "first cousin"
-msgstr ""
+msgstr "tog'avachcha"
 
 #: app/Services/RelationshipService.php:857
 msgctxt "mothers brothers daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "holavachcha"
 
 #: app/Services/RelationshipService.php:859
 msgctxt "mothers brothers son"
 msgid "first cousin"
-msgstr ""
+msgstr "tog'avachcha"
 
 #: app/Services/RelationshipService.php:905
 msgctxt "mothers sisters child"
 msgid "first cousin"
-msgstr ""
+msgstr "bo'la"
 
 #: app/Services/RelationshipService.php:907
 msgctxt "mothers sisters daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "bo'la"
 
 #: app/Services/RelationshipService.php:911
 msgctxt "mothers sisters son"
 msgid "first cousin"
-msgstr ""
+msgstr "bo'la"
 
 #: app/Services/RelationshipService.php:1155
 msgctxt "fathers fathers brothers child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1151
 msgctxt "fathers fathers brothers daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1153
 msgctxt "fathers fathers brothers son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1161
 msgctxt "fathers fathers sisters child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1157
 msgctxt "fathers fathers sisters daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1159
 msgctxt "fathers fathers sisters son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1167
 msgctxt "fathers mothers brothers child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1163
 msgctxt "fathers mothers brothers daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1165
 msgctxt "fathers mothers brothers son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1173
 msgctxt "fathers mothers sisters child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1169
 msgctxt "fathers mothers sisters daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1171
 msgctxt "fathers mothers sisters son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1179
 msgctxt "mothers fathers brothers child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1175
 msgctxt "mothers fathers brothers daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1177
 msgctxt "mothers fathers brothers son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1185
 msgctxt "mothers fathers sisters child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1181
 msgctxt "mothers fathers sisters daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1183
 msgctxt "mothers fathers sisters son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1191
 msgctxt "mothers mothers brothers child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1187
 msgctxt "mothers mothers brothers daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1189
 msgctxt "mothers mothers brothers son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1197
 msgctxt "mothers mothers sisters child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1193
 msgctxt "mothers mothers sisters daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:1195
 msgctxt "mothers mothers sisters son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "birinchi amakivachcha bir marta ko'tarilgan olib tashlandi"
 
 #: app/Services/RelationshipService.php:2350
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "o'n to'rtinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2314
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "o'n to'rtinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2275
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "o'n to'rtinchi amakivachcha"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2430
@@ -17923,18 +17927,18 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2330
 msgid "fourth cousin"
-msgstr ""
+msgstr "to'rtinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2294
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "to'rtinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2245
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "to'rtinchi amakivachcha"
 
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml:101
@@ -19979,18 +19983,18 @@ msgstr "jiyan"
 
 #: app/Services/RelationshipService.php:2340
 msgid "ninth cousin"
-msgstr ""
+msgstr "to'qqizinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2304
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "to'qqizinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2260
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "to'qqizinchi amakivachcha"
 
 #: app/Elements/OrdinanceProcessFlag.php:55
 #: app/Http/RequestHandlers/UserListData.php:140
@@ -20293,63 +20297,63 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:2326
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:2290
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2239
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1210
 msgctxt "grandfathers brothers grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1202
 msgctxt "grandfathers brothers granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1206
 msgctxt "grandfathers brothers grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1234
 msgctxt "grandfathers siblings grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1226
 msgctxt "grandfathers siblings granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1230
 msgctxt "grandfathers siblings grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1222
 msgctxt "grandfathers sisters grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1214
 msgctxt "grandfathers sisters granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1218
 msgctxt "grandfathers sisters grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "ikkinchi amakivachcha"
 
 #: app/Services/RelationshipService.php:1246
 msgctxt "grandmothers brothers grandchild"
@@ -20970,21 +20974,21 @@ msgstr ""
 #: app/Services/RelationshipService.php:581
 msgctxt "parents brother"
 msgid "uncle"
-msgstr ""
+msgstr "amaki"
 
 #: app/Services/RelationshipService.php:951
 msgctxt "parents sisters husband"
 msgid "uncle"
-msgstr "amaki"
+msgstr "jezda"
 
 #: app/Place.php:248
 msgid "unknown"
-msgstr ""
+msgstr "noma'lum"
 
 #: app/Module/InteractiveTree/TreeView.php:358
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "noma'lum"
 
 #: app/Module/RelationshipsChartModule.php:481
 msgid "unlimited"
