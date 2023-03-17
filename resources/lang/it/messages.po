@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-03-18 22:07+0000\n"
+"Last-Translator: McGrelio <mcgrelio@gmail.com>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/it/>\n"
 "Language: it\n"
@@ -2511,7 +2511,7 @@ msgstr "Battesimo di un figlio"
 
 #: app/Module/IndividualFactsTabModule.php:316
 msgid "Baptism of a daughter"
-msgstr "Battesimo di una sorella"
+msgstr "Battesimo di una figlia"
 
 #: app/Module/IndividualFactsTabModule.php:386
 #: app/Module/IndividualFactsTabModule.php:409
@@ -7273,6 +7273,7 @@ msgstr "Guatemala"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:102 app/GedcomCode/GedcomCodeTemp.php:372
+#, fuzzy
 msgid "Guatemala City, Guatemala"
 msgstr "Città del Guatemala, Guatemala"
 
@@ -9640,6 +9641,7 @@ msgstr "Messico"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:135 app/GedcomCode/GedcomCodeTemp.php:471
+#, fuzzy
 msgid "Mexico City, Mexico"
 msgstr "Città del Messico, Messico"
 
@@ -10946,8 +10948,9 @@ msgstr "Panamá"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:156 app/GedcomCode/GedcomCodeTemp.php:534
+#, fuzzy
 msgid "Panama City, Panama"
-msgstr "Panama, Panama"
+msgstr "Città di Panama, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:157 app/GedcomCode/GedcomCodeTemp.php:537
