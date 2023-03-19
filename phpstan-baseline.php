@@ -2339,16 +2339,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/PlaceLocation.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Binary operation "/" between string and 2 results in an error\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/HtmlRenderer.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\:\\:getStyle\\(\\) should return array\\<string, string\\> but returns array\\<string, string\\>\\|string\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/PdfRenderer.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$fm of method TCPDF\\:\\:setFooterMargin\\(\\) expects int, float given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/PdfRenderer.php',
@@ -2357,46 +2347,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$hm of method TCPDF\\:\\:setHeaderMargin\\(\\) expects int, float given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/PdfRenderer.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#3 \\$size of method TCPDF\\:\\:setFont\\(\\) expects float\\|null, string given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/PdfRenderer.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:\\$styles \\(array\\<array\\<string, string\\>\\>\\) does not accept array\\<array\\<string, string\\>\\|string\\>\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/PdfRenderer.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$x of method Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\:\\:setX\\(\\) expects float, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportHtmlCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$y of method Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\:\\:setY\\(\\) expects float, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportHtmlCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#2 \\$y of method Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\:\\:setXy\\(\\) expects float, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportHtmlCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#3 \\(mixed\\) of echo cannot be converted to string\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportHtmlCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#4 \\(mixed\\) of echo cannot be converted to string\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportHtmlCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Binary operation "\\*" between string and 0\\|int\\<2, max\\> results in an error\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportHtmlText.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$stream of function fclose expects resource, resource\\|false given\\.$#',
@@ -2410,11 +2360,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$stream of function fread expects resource, resource\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserBase.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#3 \\$value of function xml_parser_set_option expects int\\|string, false given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserBase.php',
 ];
@@ -2529,7 +2474,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot use array destructuring on string\\|null\\.$#',
+    'message' => '#^Cannot use array destructuring on array\\<int, string\\>\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
@@ -2551,11 +2496,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$array of function end expects array\\|object, array\\<int, string\\>\\|false given\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\{\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), non\\-falsy\\-string\\} given\\.$#',
-    'count' => 2,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
@@ -2585,11 +2525,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$string of function addslashes expects string, string\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$style of method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:addStyle\\(\\) expects array\\<string\\>, array\\<string, float\\|string\\> given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
@@ -2629,17 +2564,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#3 \\$value of function xml_parser_set_option expects int\\|string, false given\\.$#',
-    'count' => 4,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$current_element \\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\) does not accept Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$gedrec_stack \\(array\\<string\\>\\) does not accept array\\<array\\<int, string\\>\\|string\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
@@ -2709,31 +2634,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserSetup.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$x of method Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\:\\:addMarginX\\(\\) expects float, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$y of method TCPDF\\:\\:setY\\(\\) expects float, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#2 \\$y of method TCPDF\\:\\:Link\\(\\) expects float, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#6 \\$fill of method TCPDF\\:\\:MultiCell\\(\\) expects bool, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfCell.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#9 \\$y of method TCPDF\\:\\:MultiCell\\(\\) expects float\\|null, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfCell.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\}\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportPdfFootnote.php',
@@ -2792,16 +2692,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/RightToLeftSupport.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$h of method TCPDF\\:\\:checkPageBreak\\(\\) expects float, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/TcpdfWrapper.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#2 \\$y of method TCPDF\\:\\:checkPageBreak\\(\\) expects float\\|null, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/TcpdfWrapper.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$access_level on mixed\\.$#',
