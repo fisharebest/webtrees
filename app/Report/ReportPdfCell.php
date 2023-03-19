@@ -56,7 +56,7 @@ class ReportPdfCell extends ReportBaseCell
         // Background color
         $match = [];
         // Indicates if the cell background must be painted (1) or transparent (0)
-        if ($this->fill === 1) {
+        if ($this->fill) {
             if (!empty($this->bgcolor)) {
                 // HTML color to RGB
                 if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
@@ -67,7 +67,7 @@ class ReportPdfCell extends ReportBaseCell
                 }
             } else {
                 // If no color set then don't fill
-                $this->fill = 0;
+                $this->fill = false;
             }
         }
 
