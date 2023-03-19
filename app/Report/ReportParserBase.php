@@ -62,7 +62,7 @@ class ReportParserBase
     {
         $this->xml_parser = xml_parser_create();
 
-        xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);
+        xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, 0);
 
         xml_set_element_handler(
             $this->xml_parser,

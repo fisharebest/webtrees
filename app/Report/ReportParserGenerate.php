@@ -51,7 +51,6 @@ use function addslashes;
 use function array_pop;
 use function array_shift;
 use function assert;
-use function call_user_func;
 use function count;
 use function end;
 use function explode;
@@ -98,26 +97,26 @@ use const XML_OPTION_CASE_FOLDING;
  */
 class ReportParserGenerate extends ReportParserBase
 {
-    /** @var bool Are we collecting data from <Footnote> elements */
-    private $process_footnote = true;
+    /** Are we collecting data from <Footnote> elements */
+    private bool $process_footnote = true;
 
-    /** @var bool Are we currently outputing data? */
-    private $print_data = false;
+    /** Are we currently outputing data? */
+    private bool $print_data = false;
 
-    /** @var bool[] Push-down stack of $print_data */
-    private $print_data_stack = [];
+    /** @var array<int,bool> Push-down stack of $print_data */
+    private array $print_data_stack = [];
 
-    /** @var int Are we processing GEDCOM data */
-    private $process_gedcoms = 0;
+    /** Are we processing GEDCOM data */
+    private int $process_gedcoms = 0;
 
-    /** @var int Are we processing conditionals */
-    private $process_ifs = 0;
+    /** Are we processing conditionals */
+    private int $process_ifs = 0;
 
-    /** @var int Are we processing repeats */
-    private $process_repeats = 0;
+    /** Are we processing repeats */
+    private int $process_repeats = 0;
 
-    /** @var int Quantity of data to repeat during loops */
-    private $repeat_bytes = 0;
+    /** Quantity of data to repeat during loops */
+    private int $repeat_bytes = 0;
 
     /** @var array<string> Repeated data when iterating over loops */
     private array $repeats = [];
@@ -134,10 +133,10 @@ class ReportParserGenerate extends ReportParserBase
     /** @var XMLParser[] (resource[] before PHP 8.0) Nested repeating data */
     private array $parser_stack = [];
 
-    /** @var string The current GEDCOM record */
-    private $gedrec = '';
+    /** The current GEDCOM record */
+    private string $gedrec = '';
 
-    /** @var array<string> Nested GEDCOM records */
+    /** @var array<int,array<int,string>> Nested GEDCOM records */
     private array $gedrec_stack = [];
 
     /** @var ReportBaseElement The currently processed element */
@@ -146,26 +145,26 @@ class ReportParserGenerate extends ReportParserBase
     /** @var ReportBaseElement The currently processed element */
     private $footnote_element;
 
-    /** @var string The GEDCOM fact currently being processed */
-    private $fact = '';
+    /** The GEDCOM fact currently being processed */
+    private string $fact = '';
 
-    /** @var string The GEDCOM value currently being processed */
-    private $desc = '';
+    /** The GEDCOM value currently being processed */
+    private string $desc = '';
 
-    /** @var string The GEDCOM type currently being processed */
-    private $type = '';
+    /** The GEDCOM type currently being processed */
+    private string $type = '';
 
-    /** @var int The current generational level */
-    private $generation = 1;
+    /** The current generational level */
+    private int $generation = 1;
 
     /** @var array<static|GedcomRecord> Source data for processing lists */
     private array $list = [];
 
-    /** @var int Number of items in lists */
-    private $list_total = 0;
+    /** Number of items in lists */
+    private int $list_total = 0;
 
-    /** @var int Number of items filtered from lists */
-    private $list_private = 0;
+    /** Number of items filtered from lists */
+    private int $list_private = 0;
 
     /** @var string The filename of the XML report */
     protected $report;
@@ -311,7 +310,7 @@ class ReportParserGenerate extends ReportParserBase
             $method = $name . 'StartHandler';
 
             if (method_exists($this, $method)) {
-                call_user_func([$this, $method], $attrs);
+                $this->{$method}($attrs);
             }
         }
     }
@@ -332,7 +331,7 @@ class ReportParserGenerate extends ReportParserBase
             $method = $name . 'EndHandler';
 
             if (method_exists($this, $method)) {
-                call_user_func([$this, $method]);
+                $this->{$method}();
             }
         }
     }
@@ -365,32 +364,14 @@ class ReportParserGenerate extends ReportParserBase
             throw new DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
         }
 
-        // array Style that will be passed on
-        $s = [];
+        $style = [
+            'name'  => $attrs['name'],
+            'font'  => $attrs['font'] ?? $this->wt_report->default_font,
+            'size'  => (float) ($attrs['size'] ?? $this->wt_report->default_font_size),
+            'style' => $attrs['style'] ?? '',
+        ];
 
-        // string Name af the style
-        $s['name'] = $attrs['name'];
-
-        // string Name of the DEFAULT font
-        $s['font'] = $this->wt_report->default_font;
-        if (!empty($attrs['font'])) {
-            $s['font'] = $attrs['font'];
-        }
-
-        // int The size of the font in points
-        $s['size'] = $this->wt_report->default_font_size;
-        if (!empty($attrs['size'])) {
-            // Get it as int to ignore all decimal points or text (if no text then 0)
-            $s['size'] = (string) (int) $attrs['size'];
-        }
-
-        // string B: bold, I: italic, U: underline, D: line trough, The default value is regular.
-        $s['style'] = '';
-        if (!empty($attrs['style'])) {
-            $s['style'] = $attrs['style'];
-        }
-
-        $this->wt_report->addStyle($s);
+        $this->wt_report->addStyle($style);
     }
 
     /**
@@ -407,19 +388,19 @@ class ReportParserGenerate extends ReportParserBase
 
         // Custom page width
         if (!empty($attrs['customwidth'])) {
-            $this->wt_report->page_width = (int) $attrs['customwidth'];
-        } // Get it as int to ignore all decimal points or text (if any text then int(0))
+            $this->wt_report->page_width = (float) $attrs['customwidth'];
+        }
         // Custom Page height
         if (!empty($attrs['customheight'])) {
-            $this->wt_report->page_height = (int) $attrs['customheight'];
-        } // Get it as int to ignore all decimal points or text (if any text then int(0))
+            $this->wt_report->page_height = (float) $attrs['customheight'];
+        }
 
         // Left Margin
         if (isset($attrs['leftmargin'])) {
             if ($attrs['leftmargin'] === '0') {
                 $this->wt_report->left_margin = 0;
             } elseif (!empty($attrs['leftmargin'])) {
-                $this->wt_report->left_margin = (int) $attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->left_margin = (float) $attrs['leftmargin'];
             }
         }
         // Right Margin
@@ -427,7 +408,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['rightmargin'] === '0') {
                 $this->wt_report->right_margin = 0;
             } elseif (!empty($attrs['rightmargin'])) {
-                $this->wt_report->right_margin = (int) $attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->right_margin = (float) $attrs['rightmargin'];
             }
         }
         // Top Margin
@@ -435,7 +416,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['topmargin'] === '0') {
                 $this->wt_report->top_margin = 0;
             } elseif (!empty($attrs['topmargin'])) {
-                $this->wt_report->top_margin = (int) $attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->top_margin = (float) $attrs['topmargin'];
             }
         }
         // Bottom Margin
@@ -443,7 +424,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['bottommargin'] === '0') {
                 $this->wt_report->bottom_margin = 0;
             } elseif (!empty($attrs['bottommargin'])) {
-                $this->wt_report->bottom_margin = (int) $attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->bottom_margin = (float) $attrs['bottommargin'];
             }
         }
         // Header Margin
@@ -451,7 +432,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['headermargin'] === '0') {
                 $this->wt_report->header_margin = 0;
             } elseif (!empty($attrs['headermargin'])) {
-                $this->wt_report->header_margin = (int) $attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->header_margin = (float) $attrs['headermargin'];
             }
         }
         // Footer Margin
@@ -459,7 +440,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['footermargin'] === '0') {
                 $this->wt_report->footer_margin = 0;
             } elseif (!empty($attrs['footermargin'])) {
-                $this->wt_report->footer_margin = (int) $attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+                $this->wt_report->footer_margin = (float) $attrs['footermargin'];
             }
         }
 
@@ -560,7 +541,7 @@ class ReportParserGenerate extends ReportParserBase
         $bgcolor = $attrs['bgcolor'] ?? '';
 
         // Whether the background should be painted
-        $fill = (int) ($attrs['fill'] ?? '0');
+        $fill = (bool) ($attrs['fill'] ?? '0');
 
         // If true reset the last cell height
         $reseth = (bool) ($attrs['reseth'] ?? '1');
@@ -586,9 +567,9 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['left'] === '.') {
                 $left = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['left'])) {
-                $left = (int) $attrs['left'];
+                $left = (float) $attrs['left'];
             } elseif ($attrs['left'] === '0') {
-                $left = 0;
+                $left = 0.0;
             }
         }
         // mixed Position the top corner of this box on the page. the default is the current position
@@ -597,9 +578,9 @@ class ReportParserGenerate extends ReportParserBase
             if ($attrs['top'] === '.') {
                 $top = ReportBaseElement::CURRENT_POSITION;
             } elseif (!empty($attrs['top'])) {
-                $top = (int) $attrs['top'];
+                $top = (float) $attrs['top'];
             } elseif ($attrs['top'] === '0') {
-                $top = 0;
+                $top = 0.0;
             }
         }
 
@@ -1214,7 +1195,7 @@ class ReportParserGenerate extends ReportParserBase
                 $this->gedrec  = $gedrec;
                 $repeat_parser = xml_parser_create();
                 $this->parser  = $repeat_parser;
-                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
+                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
 
                 xml_set_element_handler(
                     $repeat_parser,
@@ -1422,7 +1403,7 @@ class ReportParserGenerate extends ReportParserBase
                 }
                 $repeat_parser = xml_parser_create();
                 $this->parser  = $repeat_parser;
-                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
+                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
 
                 xml_set_element_handler(
                     $repeat_parser,
@@ -2335,7 +2316,7 @@ class ReportParserGenerate extends ReportParserBase
                     //-- start the sax parser
                     $repeat_parser = xml_parser_create();
                     $this->parser  = $repeat_parser;
-                    xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
+                    xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
 
                     xml_set_element_handler(
                         $repeat_parser,
@@ -2564,7 +2545,7 @@ class ReportParserGenerate extends ReportParserBase
 
                 $repeat_parser = xml_parser_create();
                 $this->parser  = $repeat_parser;
-                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
+                xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, 0);
 
                 xml_set_element_handler(
                     $repeat_parser,
