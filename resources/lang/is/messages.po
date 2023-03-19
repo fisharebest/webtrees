@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-02-13 16:35+0000\n"
+"PO-Revision-Date: 2023-03-20 13:07+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -3547,7 +3547,7 @@ msgstr "Börn þeirra "
 #: app/SurnameTradition/IcelandicSurnameTradition.php:52
 msgid "Children take a patronym instead of a surname."
 msgstr ""
-"Börn taka fornafn föðurs (+ son ef sonur en + dóttir ef dóttir) í "
+"Börn taka fornafn föðurs eða móðurs (+ son ef sonur en + dóttir ef dóttir) í "
 "eignarfalli í stað eftirnafns."
 
 #. I18N: In the Spanish surname tradition, ...
@@ -12481,7 +12481,8 @@ msgstr "Leita og skipta út"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixSearchAndReplace.php:88
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr "Leitaðu og skiptu um texta með einfaldri leit eða ítarlegri mynstursamsvörun."
+msgstr ""
+"Leitaðu og skiptu út texta með einfaldri leit eða ítarlegri mynstursamsvörun."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:229
