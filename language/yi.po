@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-17 21:07+0000\n"
+"PO-Revision-Date: 2023-03-22 07:07+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -718,6 +718,12 @@ msgstr "<פעליקייַט טעמע>"
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
 msgstr ""
+"<div class=\"largeError\">באַמערקונג:</div><div class=\"error\">דורך קאַמפּ"
+"ליטינג און פאָרלייגן דעם פאָרעם, איר שטימען:<ul><li>צו באַשיצן די פּריוואַ"
+"טקייט פון לעבעדיק מענטשן ליסטעד אויף אונדזער פּלאַץ; </li><li>און אין דעם "
+"טעקסט קעסטל אונטן, צו דערקלערן צו וועמען איר זענט שייַכות, אָדער צו צושטעלן "
+"אונדז אינפֿאָרמאַציע וועגן עמעצער וואס זאָל זיין ליסטעד אויף אונדזער "
+"וועבזייטל.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
@@ -1375,7 +1381,7 @@ msgstr ""
 #: app/Controller/FamilyController.php:155 app/Functions/FunctionsEdit.php:1118
 #: app/Module/NotesTabModule.php:112
 msgid "Add a shared note"
-msgstr ""
+msgstr "לייג אַ בשותּפֿותדיקע מעלדונג"
 
 #: app/Module/RelativesTabModule.php:271
 msgid "Add a son or daughter"
@@ -1469,7 +1475,7 @@ msgstr "לייג ספּייסאַז ווו לאַנג שורות זענען אל
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
 #: app/Module/ClippingsCartModule.php:798
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "לייג די GEDCOM מעדיע דרך צו פילענאַמעס"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
@@ -1690,15 +1696,15 @@ msgstr "דערוואַקסן טובלונג"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
-msgstr ""
+msgstr "אַוואַנסירטע פאַקט פּרעפֿערענצן"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
-msgstr ""
+msgstr "אַוואַנסירטע נאָמען פאקטן"
 
 #: admin_trees_config.php:2061
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "אַוואַנסירטע אָרט נאָמען פאקטן"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1742
@@ -1777,7 +1783,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:502 statistics.php:540
 #: statisticsplot.php:1182
 msgid "Age related to death year"
-msgstr ""
+msgstr "עלטער שייַכות צו טויט יאָר"
 
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
@@ -1853,7 +1859,7 @@ msgstr "אַלע פאקטן און געשעענישן"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
-msgstr ""
+msgstr "אַלע משפּחה פאקטן"
 
 #: login.php:415
 msgid "All fields must be completed."
@@ -1865,7 +1871,7 @@ msgstr ""
 
 #: admin_trees_config.php:1618
 msgid "All individual facts"
-msgstr ""
+msgstr "אַלע יחיד פאקטן"
 
 #: calendar.php:228 calendar.php:239 calendar.php:438
 msgid "All individuals"
@@ -1877,11 +1883,11 @@ msgstr "אַלע רעקאָרדס"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr ""
+msgstr "אַלע ריפּאַזאַטאָרי פאקטן"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
-msgstr ""
+msgstr "אַלע מקור פאקטן"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1971,10 +1977,14 @@ msgstr "אַ בייַטנ לויט דער ריי צוארײַנלאָגירן א
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 msgstr ""
+"אַ מיטאַרבעטער איז אן אנדער יחיד וואָס איז געווען אויסגעמישט מיט דעם פאַקט אָ"
+"דער געשעעניש, אַזאַ ווי אַ עדות אָדער אַ גאַלעך."
 
 #: app/Functions/FunctionsEdit.php:908
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
 msgstr ""
+"אַ מיטאַרבעטער איז אן אנדער יחיד וואָס איז געווען \tאויסגעמישט מיט דעם יחיד, "
+"אַזאַ ווי אַ פרייַנד אָדער אַ באַלעבאָס."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
@@ -2685,7 +2695,7 @@ msgstr "ביינערי דאַטן חפֿץ"
 
 #: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
-msgstr ""
+msgstr "Bing Maps™"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
@@ -3397,7 +3407,7 @@ msgstr "קרדסטון, אלברטה, קנדה"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:170
 msgid "Case insensitive"
-msgstr ""
+msgstr "עס איז אַפּאַטיש צו די קליין און גרויס לאטין אותיות"
 
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:238
@@ -3847,7 +3857,7 @@ msgstr "ריין אַרויף דאַטן טעקע"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
 msgid "Cleared but not yet completed"
-msgstr ""
+msgstr "בּאַשטעטיקן אָבער נישט נאָך געענדיקט"
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:38
@@ -3957,7 +3967,7 @@ msgstr "געענדיקט; דאַטע אומבאַקאַנט"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "קאָמפּרעס די GEDCOM טעקע"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
@@ -4340,7 +4350,7 @@ msgstr "פּערזענלאַכֿער געשעעניש"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
-msgstr ""
+msgstr "קאָראַלייטאַד פאַקט"
 
 #: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
@@ -5051,7 +5061,7 @@ msgstr "ויסמעקן"
 
 #: app/Module/GoogleMapsModule.php:3677
 msgid "Delete all existing geographic data before importing the file."
-msgstr ""
+msgstr "ויסמעקן אַלע עקזיסטירט דזשיאַגראַפיק דאַטן איידער אימפּאָרטירן די טעקע."
 
 #. I18N: Menu entry
 #: admin_users.php:664 app/Theme/AdministrationTheme.php:166
@@ -5263,7 +5273,7 @@ msgstr "געשטארבן אלס קינד: פטור"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:96
 msgid "Died as an infant: exempt"
-msgstr ""
+msgstr "געשטאָרבן ווי אַ קינד: פטור"
 
 #: modules_v3/change_report/report.xml:60
 msgid "Differences"
@@ -6023,11 +6033,11 @@ msgstr "פאקטן פֿאַר נייַ מענטשן"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
-msgstr ""
+msgstr "פֿאַקטן פֿאַר ריפּאַזאַטאָרי רעקאָרדס"
 
 #: admin_trees_config.php:1849
 msgid "Facts for source records"
-msgstr ""
+msgstr "פֿאַקטן פֿאַר מקור רעקאָרדס"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6748
@@ -7648,7 +7658,7 @@ msgstr "אַרייַננעמען מענטשן מיט “%s” ווי אַ חתו
 #: app/Module/ClippingsCartModule.php:386
 #: app/Module/ClippingsCartModule.php:771
 msgid "Include media (automatically zips files)"
-msgstr ""
+msgstr "אַרייַננעמען מעדיע (זיפּס טעקעס אויטאָמאַטיש)"
 
 #. I18N: Label for check-box
 #: admin_media.php:666 medialist.php:121
@@ -8470,7 +8480,7 @@ msgstr "פאַרבינדן צו אַ שאַפֿן בילד"
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1352
 msgid "Linked database ID"
-msgstr ""
+msgstr "לעגיטימאַציע קאָד פון אַ געקניפט דאַטאַבייס"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:97
 msgid "Links"
@@ -9136,7 +9146,7 @@ msgstr "מעדיע טעקע צו אויפֿגעלאָדן"
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "מעדיע פילענאַמעס וועט זיין פּריפיקסט דורך %s."
 
 #: admin_media.php:623 admin_trees_config.php:1013
 msgid "Media files"
@@ -10840,7 +10850,7 @@ msgstr "טעלעפאן"
 #. I18N: gedcom tag FONE
 #: app/GedcomTag.php:492
 msgid "Phonetic"
-msgstr ""
+msgstr "פאָנעטיק"
 
 #: search.php:253
 msgid "Phonetic algorithm"
@@ -10862,7 +10872,7 @@ msgstr "פאנעטיק זוכן"
 
 #: app/GedcomTag.php:836
 msgid "Phonetic title"
-msgstr ""
+msgstr "פאָנעטיש טיטל"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1936
@@ -11375,11 +11385,11 @@ msgstr "שנעל יחיד פֿאַקטן"
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
-msgstr ""
+msgstr "שנעל ריפּאַזאַטאָרי פאקטן"
 
 #: admin_trees_config.php:1912
 msgid "Quick source facts"
-msgstr ""
+msgstr "שנעל מקור פאקטן"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -11451,7 +11461,7 @@ msgstr "רביע א-ת'אני"
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
@@ -11752,13 +11762,13 @@ msgstr "רינא, נעוואדא"
 
 #: admin_trees_manage.php:519
 msgid "Renumber"
-msgstr ""
+msgstr "רינומער"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "רינומער משפּחה בוים"
 
 #: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
@@ -11926,7 +11936,7 @@ msgstr "לאטיין אָרט נאָמען"
 
 #: app/GedcomTag.php:838
 msgid "Romanized title"
-msgstr ""
+msgstr "ראָמאַניזעד טיטל"
 
 #: app/Functions/FunctionsPrintLists.php:267
 #: app/Functions/FunctionsPrintLists.php:657
@@ -12909,7 +12919,7 @@ msgstr "ווייַז מענער / פרויען"
 #: app/Functions/FunctionsPrintLists.php:310
 #: app/Functions/FunctionsPrintLists.php:745
 msgid "Show statistics charts"
-msgstr ""
+msgstr "ווייַזן סטאַטיסטיק טשאַרץ"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:1516
