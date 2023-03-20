@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-19 18:35+0000\n"
+"PO-Revision-Date: 2023-03-22 10:07+0000\n"
 "Last-Translator: McGrelio <mcgrelio@gmail.com>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/it/>\n"
@@ -7177,7 +7177,6 @@ msgstr "Guatemala"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:102
-#, fuzzy
 msgid "Guatemala City, Guatemala"
 msgstr "Città del Guatemala, Guatemala"
 
@@ -9008,7 +9007,7 @@ msgstr "Fornitore mappa"
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:96
 msgid "Mapbox"
-msgstr ""
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:233
 msgctxt "Abbreviation for March"
@@ -10776,7 +10775,7 @@ msgstr "Ops! webrees non è riuscito a creare file in questa cartella."
 #: app/Module/MapGeoLocationOpenRouteService.php:45
 #: app/Module/OpenRouteServiceAutocomplete.php:82
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:51
 msgid "OpenStreetMap™"
