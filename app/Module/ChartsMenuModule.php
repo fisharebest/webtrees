@@ -99,7 +99,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
                 return $module->chartMenu($individual);
             })
             ->sort(static function (Menu $x, Menu $y): int {
-                return $x->getLabel() <=> $y->getLabel();
+                return I18N::comparator()($x->getLabel(), $y->getLabel());
             });
 
         if ($submenus->isEmpty()) {
