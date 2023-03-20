@@ -112,8 +112,18 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         $title     = $module->chartTitle($individual);
                         $chart_url = $module->chartUrl($individual, [
                             'ajax'        => true,
-                            'generations' => 3,
-                            'layout'      => PedigreeChartModule::STYLE_RIGHT,
+                            'generations' => $this->getBlockSetting($block_id, 'pedigree_generations', '3'),
+                            'layout'      => $this->getBlockSetting(
+                                $block_id,
+                                'pedigree_style',
+                                PedigreeChartModule::DEFAULT_STYLE
+                            ),
+                            'style'       => $this->getBlockSetting(
+                                $block_id,
+                                'pedigree_style',
+                                PedigreeChartModule::DEFAULT_STYLE
+                            ),
+                            // Note: some modules use 'layout', others 'style'
                         ]);
                         $content   = view('modules/charts/chart', [
                             'block_id'  => $block_id,
@@ -132,7 +142,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         $title     = $module->chartTitle($individual);
                         $chart_url = $module->chartUrl($individual, [
                             'ajax'        => true,
-                            'generations' => 2,
+                            'generations' => $this->getBlockSetting($block_id, 'descendants_generations', '2'),
                             'chart_style' => DescendancyChartModule::CHART_STYLE_TREE,
                         ]);
                         $content   = view('modules/charts/chart', [
@@ -153,7 +163,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                         $title     = $module->chartTitle($individual);
                         $chart_url = $module->chartUrl($individual, [
                             'ajax'        => true,
-                            'generations' => 2,
+                            'generations' => $this->getBlockSetting($block_id, 'hourglass_generations', '2'),
                         ]);
                         $content   = view('modules/charts/chart', [
                             'block_id'  => $block_id,
@@ -231,9 +241,17 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     {
         $type = Validator::parsedBody($request)->string('type');
         $xref = Validator::parsedBody($request)->isXref()->string('xref');
+        $pedigree_generations = Validator::parsedBody($request)->integer('pedigree_generations');
+        $pedigree_style = Validator::parsedBody($request)->string('pedigree_style');
+        $descendants_generations = Validator::parsedBody($request)->integer('descendants_generations');
+        $hourglass_generations = Validator::parsedBody($request)->integer('hourglass_generations');
 
         $this->setBlockSetting($block_id, 'type', $type);
         $this->setBlockSetting($block_id, 'pid', $xref);
+        $this->setBlockSetting($block_id, 'pedigree_generations', (string) $pedigree_generations);
+        $this->setBlockSetting($block_id, 'pedigree_style', $pedigree_style);
+        $this->setBlockSetting($block_id, 'descendants_generations', (string) $descendants_generations);
+        $this->setBlockSetting($block_id, 'hourglass_generations', (string) $hourglass_generations);
     }
 
     /**
@@ -253,21 +271,56 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
         $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
 
-        $charts = [
-            'pedigree'    => I18N::translate('Pedigree'),
-            'descendants' => I18N::translate('Descendants'),
-            'hourglass'   => I18N::translate('Hourglass chart'),
-            'treenav'     => I18N::translate('Interactive tree'),
-        ];
+        $charts = [];
+        // Only add charts that are available
+        $pedigreeModule = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
+        if ($pedigreeModule instanceof PedigreeChartModule) {
+            $charts['pedigree'] = I18N::translate('Pedigree');
+            $pedigree_max_generations = $pedigreeModule::MAXIMUM_GENERATIONS;
+            $pedigree_min_generations = $pedigreeModule::MINIMUM_GENERATIONS;
+            $pedigree_styles = $pedigreeModule->styles(I18N::direction());
+        }
+        $descendantsModule = $this->module_service->findByInterface(DescendancyChartModule::class)->first();
+        if ($descendantsModule instanceof DescendancyChartModule) {
+            $charts['descendants'] = I18N::translate('Descendants');
+            $descendants_max_generations = $descendantsModule::MAXIMUM_GENERATIONS;
+            $descendants_min_generations = $descendantsModule::MINIMUM_GENERATIONS;
+        }
+        $hourglassModule = $this->module_service->findByInterface(HourglassChartModule::class)->first();
+        if ($hourglassModule instanceof HourglassChartModule) {
+            $charts['hourglass'] = I18N::translate('Hourglass chart');
+            $hourglass_max_generations = $hourglassModule::MAXIMUM_GENERATIONS;
+            $hourglass_min_generations = $hourglassModule::MINIMUM_GENERATIONS;
+        }
+        $treeModule = $this->module_service->findByInterface(InteractiveTreeModule::class)->first();
+        if ($treeModule instanceof InteractiveTreeModule) {
+            $charts['treenav'] = I18N::translate('Interactive tree');
+        }
         uasort($charts, I18N::comparator());
+
+        $pedigree_generations = $this->getBlockSetting($block_id, 'pedigree_generations', '3');
+        $pedigree_style = $this->getBlockSetting($block_id, 'pedigree_style', $pedigreeModule::DEFAULT_STYLE);
+        $descendants_generations = $this->getBlockSetting($block_id, 'descendants_generations', '2');
+        $hourglass_generations = $this->getBlockSetting($block_id, 'hourglass_generations', '2');
 
         $individual = Registry::individualFactory()->make($xref, $tree);
 
         return view('modules/charts/config', [
-            'charts'     => $charts,
-            'individual' => $individual,
-            'tree'       => $tree,
-            'type'       => $type,
+            'charts'                      => $charts,
+            'individual'                  => $individual,
+            'tree'                        => $tree,
+            'type'                        => $type,
+            'pedigree_generations'        => $pedigree_generations ?? null,
+            'pedigree_max_generations'    => $pedigree_max_generations ?? null,
+            'pedigree_min_generations'    => $pedigree_min_generations ?? null,
+            'pedigree_style'              => $pedigree_style ?? null,
+            'pedigree_styles'             => $pedigree_styles ?? null,
+            'descendants_generations'     => $descendants_generations ?? null,
+            'descendants_max_generations' => $descendants_max_generations ?? null,
+            'descendants_min_generations' => $descendants_min_generations ?? null,
+            'hourglass_generations'       => $hourglass_generations ?? null,
+            'hourglass_max_generations'   => $hourglass_max_generations ?? null,
+            'hourglass_min_generations'   => $hourglass_min_generations ?? null,
         ]);
     }
 }

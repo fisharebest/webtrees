@@ -58,8 +58,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     ];
 
     // Limits
-    protected const MINIMUM_GENERATIONS = 2;
-    protected const MAXIMUM_GENERATIONS = 12;
+    public const MINIMUM_GENERATIONS = 2;
+    public const MAXIMUM_GENERATIONS = 12;
 
     // For RTL languages
     protected const MIRROR_STYLE = [
@@ -356,7 +356,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      *
      * @return array<string>
      */
-    protected function styles(string $direction): array
+    public function styles(string $direction): array
     {
         // On right-to-left pages, the CSS will mirror the chart, so we need to mirror the label.
         if ($direction === 'rtl') {
