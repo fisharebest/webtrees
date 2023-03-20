@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-18 22:07+0000\n"
+"PO-Revision-Date: 2023-03-22 07:07+0000\n"
 "Last-Translator: McGrelio <mcgrelio@gmail.com>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/it/>\n"
@@ -6950,7 +6950,6 @@ msgstr "Guatemala"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:179
-#, fuzzy
 msgid "Guatemala City, Guatemala"
 msgstr "Città del Guatemala, Guatemala"
 
