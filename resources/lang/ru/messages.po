@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-03-04 07:35+0000\n"
-"Last-Translator: ol810 <uolega@yandex.ru>\n"
+"PO-Revision-Date: 2023-03-22 07:07+0000\n"
+"Last-Translator: ShinePhantom <shinephantom@mail.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ru/>\n"
 "Language: ru\n"
@@ -14008,7 +14008,7 @@ msgstr "Острова Свалбард и Ян Мэйен"
 #. I18N: Reverse the order of two individuals
 #: resources/views/modules/relationships-chart/page.phtml:84
 msgid "Swap individuals"
-msgstr "Замена персон"
+msgstr "поменять персон местами"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:469
@@ -20253,18 +20253,18 @@ msgstr " "
 
 #: app/Services/RelationshipService.php:2336
 msgid "seventh cousin"
-msgstr "8-миюродный брат/сестра"
+msgstr "8-ми юродный брат/сестра"
 
 #: app/Services/RelationshipService.php:2300
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr "8-миюродная сестра"
+msgstr "8-ми юродная сестра"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2254
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr "8-миюродный брат"
+msgstr "8-ми юродный брат"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
@@ -20367,7 +20367,7 @@ msgstr "золовка"
 #: app/Services/RelationshipService.php:635
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr "своячница"
+msgstr "свояченица"
 
 #: app/Services/RelationshipService.php:1073
 msgctxt "wife’s brother’s wife"
