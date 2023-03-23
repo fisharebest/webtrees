@@ -19,15 +19,15 @@
  * wt-tabs-individual
  * +--- wt-tab-places
  */
-.wt-places-tab-wrapper {
-    height: 70vh
-}
 
+:root {
+    --wt-places-tab-map-height: 70vh;
+}
 .wt-places-tab-map {
-    height: 100%
+    height: var(--wt-places-tab-map-height);
 }
 
 .wt-places-tab-sidebar {
-    height: 100%;
+    height: var(--wt-places-tab-map-height);
     overflow-y: auto;
 }
