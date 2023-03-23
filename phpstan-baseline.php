@@ -2904,11 +2904,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/GedcomExportService.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomExportService\\:\\:downloadResponse\\(\\) has parameter \\$records with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/GedcomExportService.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Family, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Family given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/GedcomExportService.php',

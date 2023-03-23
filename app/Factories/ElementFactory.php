@@ -38,7 +38,7 @@ class ElementFactory implements ElementFactoryInterface
      * Finds the correct element for all valid tags.
      * Finds a likely element for custom tags.
      *
-     * @param string $tag - Colon delimited hierarchy, e.g. 'INDI:BIRT:PLAC'
+     * @param string $tag Colon delimited hierarchy, e.g. 'INDI:BIRT:PLAC'
      *
      * @return ElementInterface
      */

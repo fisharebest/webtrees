@@ -251,7 +251,7 @@ class RelationshipService
     /**
      * Convert a relationship path into its component pieces; brother, wife, mother, daughter, etc.
      *
-     * @param array<Individual|Family> $nodes - Alternating list of Individual and Family objects
+     * @param array<Individual|Family> $nodes Alternating list of Individual and Family objects
      *
      * @return array<string>
      */

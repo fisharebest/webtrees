@@ -78,7 +78,7 @@ class IdFactory implements IdFactoryInterface
     }
 
     /**
-     * @param string $uid - exactly 32 hex characters
+     * @param string $uid exactly 32 hex characters
      *
      * @return string
      */

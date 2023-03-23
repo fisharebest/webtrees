@@ -46,7 +46,7 @@ interface IdFactoryInterface
     public function pafUid(): string;
 
     /**
-     * @param string $uid - exactly 32 hex characters
+     * @param string $uid exactly 32 hex characters
      *
      * @return string
      */

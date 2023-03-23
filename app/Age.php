@@ -41,8 +41,8 @@ class Age
     /**
      * Age constructor.
      *
-     * @param Date $x - The first date
-     * @param Date $y - The second date
+     * @param Date $x The first date
+     * @param Date $y The second date
      */
     public function __construct(Date $x, Date $y)
     {
