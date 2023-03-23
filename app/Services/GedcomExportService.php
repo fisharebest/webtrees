@@ -94,14 +94,14 @@ class GedcomExportService
     }
 
     /**
-     * @param Tree            $tree         - Export data from this tree
-     * @param bool            $sort_by_xref - Write GEDCOM records in XREF order
-     * @param string          $encoding     - Convert from UTF-8 to other encoding
-     * @param string          $privacy      - Filter records by role
-     * @param string          $line_endings
-     * @param string          $filename     - Name of download file, without an extension
-     * @param string          $format       - One of: gedcom, zip, zipmedia, gedzip
-     * @param Collection|null $records
+     * @param Tree                        $tree         Export data from this tree
+     * @param bool                        $sort_by_xref Write GEDCOM records in XREF order
+     * @param string                      $encoding     Convert from UTF-8 to other encoding
+     * @param string                      $privacy      Filter records by role
+     * @param string                      $line_endings
+     * @param string                      $filename     Name of download file, without an extension
+     * @param string                      $format       One of: gedcom, zip, zipmedia, gedzip
+     * @param Collection<int,string|object|GedcomRecord>|null $records
      *
      * @return ResponseInterface
      */
@@ -165,14 +165,14 @@ class GedcomExportService
     /**
      * Write GEDCOM data to a stream.
      *
-     * @param Tree                        $tree           - Export data from this tree
-     * @param bool                        $sort_by_xref   - Write GEDCOM records in XREF order
-     * @param string                      $encoding       - Convert from UTF-8 to other encoding
-     * @param int                         $access_level   - Apply privacy filtering
-     * @param string                      $line_endings   - CRLF or LF
-     * @param Collection<int,string>|null $records        - Just export these records
-     * @param FilesystemOperator|null     $zip_filesystem - Write media files to this filesystem
-     * @param string|null                 $media_path     - Location within the zip filesystem
+     * @param Tree                                            $tree           Export data from this tree
+     * @param bool                                            $sort_by_xref   Write GEDCOM records in XREF order
+     * @param string                                          $encoding       Convert from UTF-8 to other encoding
+     * @param int                                             $access_level   Apply privacy filtering
+     * @param string                                          $line_endings   CRLF or LF
+     * @param Collection<int,string|object|GedcomRecord>|null $records        Just export these records
+     * @param FilesystemOperator|null                         $zip_filesystem Write media files to this filesystem
+     * @param string|null                                     $media_path     Location within the zip filesystem
      *
      * @return resource
      */

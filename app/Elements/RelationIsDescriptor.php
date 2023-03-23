@@ -40,7 +40,7 @@ class RelationIsDescriptor extends AbstractElement
     /**
      * A list of controlled values for this element
      *
-     * @param string $sex - the text depends on the sex of the *linked* individual
+     * @param string $sex the text depends on the sex of the *linked* individual
      *
      * @return array<int|string,string>
      */

@@ -314,7 +314,7 @@ class BadBotBlocker implements MiddlewareInterface
     /**
      * Perform a whois search for an ASN.
      *
-     * @param string $asn - The autonomous system number to query
+     * @param string $asn The autonomous system number to query
      *
      * @return array<RangeInterface>
      */

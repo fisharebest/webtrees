@@ -280,7 +280,7 @@ class MediaFile
     /**
      * Generate a URL to download a media file.
      *
-     * @param string $disposition How should the image be returned - "attachment" or "inline"
+     * @param string $disposition How should the image be returned: "attachment" or "inline"
      *
      * @return string
      */

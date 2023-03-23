@@ -117,7 +117,7 @@ class GedcomEditService
      * @param array<string> $levels
      * @param array<string> $tags
      * @param array<string> $values
-     * @param bool          $append - Are we appending to a level 0 record, or replacing a level 1 record?
+     * @param bool          $append Are we appending to a level 0 record, or replacing a level 1 record?
      *
      * @return string
      */
