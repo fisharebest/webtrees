@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2022-11-27 17:22+0000\n"
-"PO-Revision-Date: 2023-01-26 10:31+0000\n"
-"Last-Translator: mapsen <map@mapsen.dk>\n"
+"PO-Revision-Date: 2023-03-27 16:07+0000\n"
+"Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
 "Language: da\n"
@@ -1253,7 +1253,7 @@ msgstr "Tilføj"
 #: app/Module/ClippingsCartModule.php:908
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Tilføj %s til udkliipskurv"
+msgstr "Føj %s til udklipsholder"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
