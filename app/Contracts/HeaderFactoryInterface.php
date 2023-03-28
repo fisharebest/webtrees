@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a header object.
  */
-interface HeaderFactoryInterface
+interface HeaderFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a header.

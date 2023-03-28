@@ -1068,17 +1068,13 @@ class SearchService
      * Apply search filters to a SQL query column.  Apply collation rules to MySQL.
      *
      * @param Builder           $query
-     * @param Expression|string $field
+     * @param Expression|string $column
      * @param array<string>     $search_terms
      */
-    private function whereSearch(Builder $query, $field, array $search_terms): void
+    private function whereSearch(Builder $query, $column, array $search_terms): void
     {
-        if ($field instanceof Expression) {
-            $field = $field->getValue();
-        }
-
         foreach ($search_terms as $search_term) {
-            $query->where(new Expression($field), 'LIKE', '%' . addcslashes($search_term, '\\%_') . '%');
+            $query->where($column, 'LIKE', '%' . addcslashes($search_term, '\\%_') . '%');
         }
     }
 

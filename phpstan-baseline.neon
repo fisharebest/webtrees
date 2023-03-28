@@ -11,11 +11,6 @@ parameters:
 			path: app/Census/CensusColumnBornForeignParts.php
 
 		-
-			message: "#^Cannot call method make\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Elements/AbstractXrefElement.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AgeAtEvent\\:\\:value\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Elements/AgeAtEvent.php
@@ -3097,7 +3092,12 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression\\|string given\\.$#"
+			count: 1
 			path: app/Services/SearchService.php
 
 		-

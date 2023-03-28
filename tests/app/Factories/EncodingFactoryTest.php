@@ -103,7 +103,7 @@ class EncodingFactoryTest extends TestCase
         $factory = new EncodingFactory();
 
         static::assertInstanceOf(
-            ASCII::class,
+            UTF8::class,
             $factory->detect("0 HEAD\n0 TRLR")
         );
     }

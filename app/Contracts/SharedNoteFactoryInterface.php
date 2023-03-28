@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Make a SharedNote object.
  */
-interface SharedNoteFactoryInterface
+interface SharedNoteFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a note.

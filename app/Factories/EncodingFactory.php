@@ -151,7 +151,7 @@ class EncodingFactory implements EncodingFactoryInterface
             throw new InvalidGedcomEncodingException($match[1]);
         }
 
-        return $this->make(ASCII::NAME);
+        return $this->make(UTF8::NAME);
     }
 
     /**
