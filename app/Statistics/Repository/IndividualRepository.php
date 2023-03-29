@@ -126,8 +126,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $rows = $query
             ->groupBy(['n_givn'])
-            ->select(['n_givn', new Expression('COUNT(distinct n_id) AS count')])
-            ->pluck('count', 'n_givn');
+            ->pluck(new Expression('COUNT(distinct n_id) AS count'), 'n_givn');
 
         $nameList = [];
 
@@ -821,7 +820,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         }
 
         return $query
-            ->select(new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days'))
+            ->select([new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
             ->orderBy('days', 'desc')
             ->get()
             ->all();
@@ -1299,7 +1298,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $prefix = DB::connection()->getTablePrefix();
 
         $days = (int) $this->birthAndDeathQuery($sex)
-            ->select(new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days'))
+            ->select([new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
             ->value('days');
 
         if ($show_years) {

@@ -29,8 +29,7 @@ $count_sources = DB::table('sources')
     ->where('l_type', '=', 'REPO')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->select(['l_to', new Expression('COUNT(*) AS total')])
-    ->pluck('total', 'l_to')
+    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
     ->map(static fn ($n) => (int) $n)
     ->all();
 ?>

@@ -588,7 +588,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         }
 
         $query
-            ->select($this->binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count'))
+            ->select([$this->binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count')])
             ->groupBy([$this->binaryColumn('n_givn')]);
 
         foreach ($query->get() as $row) {

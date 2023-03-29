@@ -309,7 +309,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->where('new_gedcom', '<>', '')
             ->where('change_time', '>', Registry::timestampFactory()->now()->subtractDays($days)->toDateTimeString())
             ->groupBy(['xref'])
-            ->select(new Expression('MAX(change_id) AS recent_change_id'));
+            ->select([new Expression('MAX(change_id) AS recent_change_id')]);
 
         $query = DB::table('change')
             ->joinSub($subquery, 'recent', 'recent_change_id', '=', 'change_id')
