@@ -220,7 +220,7 @@ class ChartDistribution
                     ->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');
             })
-            ->select('p_place AS place', 'f_gedcom AS gedcom');
+            ->select(['p_place AS place', 'f_gedcom AS gedcom']);
 
         return $this->filterEventPlaces($query, $fact);
     }
@@ -246,7 +246,7 @@ class ChartDistribution
                     ->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
             })
-            ->select('p_place AS place', 'i_gedcom AS gedcom');
+            ->select(['p_place AS place', 'i_gedcom AS gedcom']);
 
         return $this->filterEventPlaces($query, $fact);
     }

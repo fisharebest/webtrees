@@ -59,7 +59,7 @@ class LinkedRecordService
             ->where('new_gedcom', 'NOT LIKE', '0 @' . $like . '@%')
             ->whereIn('change_id', function (Builder $query) use ($record): void {
                 $query
-                    ->select(new Expression('MAX(change_id)'))
+                    ->select([new Expression('MAX(change_id)')])
                     ->from('change')
                     ->where('gedcom_id', '=', $record->tree()->id())
                     ->where('status', '=', 'pending')

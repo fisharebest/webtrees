@@ -1889,7 +1889,7 @@ class ReportParserGenerate extends ReportParserBase
             case 'pending':
                 $this->list = DB::table('change')
                     ->whereIn('change_id', function (Builder $query): void {
-                        $query->select(new Expression('MAX(change_id)'))
+                        $query->select([new Expression('MAX(change_id)')])
                             ->from('change')
                             ->where('gedcom_id', '=', $this->tree->id())
                             ->where('status', '=', 'pending')
