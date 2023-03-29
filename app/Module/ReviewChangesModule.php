@@ -168,13 +168,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             $changes = DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())
                 ->whereIn('change_id', static function (Builder $query) use ($tree): void {
-                    $query->select(new Expression('MAX(change_id)'))
+                    $query->select([new Expression('MAX(change_id)')])
                         ->from('change')
                         ->where('gedcom_id', '=', $tree->id())
                         ->where('status', '=', 'pending')
                         ->groupBy(['xref']);
                 })
-                //->select(['xref'])
                 ->get();
 
             foreach ($changes as $change) {

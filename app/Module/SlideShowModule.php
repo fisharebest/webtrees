@@ -132,7 +132,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             ->where('media.m_file', '=', $tree->id())
             ->whereIn('media_file.multimedia_format', self::SUPPORTED_FORMATS)
             ->whereIn('media_file.source_media_type', $filter_types)
-            ->select('media.*')
+            ->select(['media.*'])
             ->get()
             ->shuffle()
             ->first(function (object $row) use ($filter_links, $tree): bool {
