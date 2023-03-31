@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
-use function assert;
-
 /**
  * Census
  */
@@ -74,13 +71,11 @@ class Census extends AbstractEventElement
             'census_places' => Censuses::censusPlaces(I18N::languageTag()),
         ]);
 
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
+        $request = Registry::container()->get(ServerRequestInterface::class);
 
         $xref = Validator::attributes($request)->isXref()->string('xref', '');
 
-        $module_service = app(ModuleService::class);
-        assert($module_service instanceof ModuleService);
+        $module_service = Registry::container()->get(ModuleService::class);
 
         $census_assistant = $module_service->findByInterface(CensusAssistantModule::class)->first();
         $record           = Registry::individualFactory()->make($xref, $tree);

@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Relationship;
 
 use function abs;
@@ -74,7 +75,7 @@ class RelationshipService
      */
     public function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
     {
-        $language = app(ModuleService::class)
+        $language = Registry::container()->get(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, true)
             ->first(fn (ModuleLanguageInterface $language): bool => $language->locale()->languageTag() === I18N::languageTag());
 

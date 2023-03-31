@@ -26,7 +26,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function is_string;
 
 /**
@@ -49,8 +48,6 @@ class RequestHandler implements MiddlewareInterface
         if (is_string($request_handler)) {
             $request_handler = Container::getInstance()->get($request_handler);
         }
-
-        assert($request_handler instanceof RequestHandlerInterface);
 
         return $request_handler->handle($request);
     }

@@ -261,8 +261,6 @@ use Illuminate\Support\Collection;
 use Psr\Http\Server\MiddlewareInterface;
 use Throwable;
 
-use function app;
-use function assert;
 use function basename;
 use function dirname;
 use function glob;
@@ -670,8 +668,7 @@ class ModuleService
     {
         return Collection::make(self::CORE_MODULES)
             ->map(static function (string $class, string $name): ModuleInterface {
-                $module = app($class);
-                assert($module instanceof ModuleInterface);
+                $module = Registry::container()->get($class);
 
                 $module->setName($name);
 

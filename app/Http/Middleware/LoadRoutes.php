@@ -22,13 +22,13 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function parse_url;
 
 use const PHP_URL_PATH;
@@ -70,7 +70,7 @@ class LoadRoutes implements MiddlewareInterface
         $this->web_routes->load($map);
 
         // Save the router in the container, as we'll need it to generate URLs.
-        app()->instance(RouterContainer::class, $router_container);
+        Registry::container()->set(RouterContainer::class, $router_container);
 
         return $handler->handle($request);
     }

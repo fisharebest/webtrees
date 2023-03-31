@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
@@ -71,7 +72,7 @@ class UseSession implements MiddlewareInterface
         }
 
         // Allow request handlers, modules, etc. to have a dependency on the current user.
-        Webtrees::set(UserInterface::class, $user);
+        Registry::container()->set(UserInterface::class, $user);
 
         $request = $request->withAttribute('user', $user);
 

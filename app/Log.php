@@ -22,8 +22,6 @@ namespace Fisharebest\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
-
 /**
  * Record webtrees events in the database
  */
@@ -60,10 +58,8 @@ class Log
      */
     private static function addLog(string $message, string $log_type, Tree $tree = null): void
     {
-        if (app()->has(ServerRequestInterface::class)) {
-            $request = app(ServerRequestInterface::class);
-            assert($request instanceof ServerRequestInterface);
-
+        if (Registry::container()->has(ServerRequestInterface::class)) {
+            $request    = Registry::container()->get(ServerRequestInterface::class);
             $ip_address = Validator::attributes($request)->string('client-ip');
         } else {
             $ip_address = '127.0.0.1';

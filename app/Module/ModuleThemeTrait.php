@@ -45,8 +45,6 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
-use function assert;
 use function count;
 use function in_array;
 use function route;
@@ -154,8 +152,7 @@ trait ModuleThemeTrait
     {
         $menus = [];
 
-        $module_service = app(ModuleService::class);
-        assert($module_service instanceof ModuleService);
+        $module_service = Registry::container()->get(ModuleService::class);
 
         foreach ($module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user()) as $chart) {
             $menu = $chart->chartBoxMenu($individual);
@@ -207,10 +204,8 @@ trait ModuleThemeTrait
      */
     public function menuChangeBlocks(Tree $tree): ?Menu
     {
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
-
-        $route = Validator::attributes($request)->route();
+        $request = Registry::container()->get(ServerRequestInterface::class);
+        $route   = Validator::attributes($request)->route();
 
         if (Auth::check() && $route->name === UserPage::class) {
             return new Menu(I18N::translate('Customize this page'), route(UserPageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
@@ -278,8 +273,7 @@ trait ModuleThemeTrait
             return null;
         }
 
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
+        $request = Registry::container()->get(ServerRequestInterface::class);
 
         // Return to this page after login...
         $redirect = Validator::queryParams($request)->string('url', (string) $request->getUri());
@@ -398,9 +392,7 @@ trait ModuleThemeTrait
     {
         $my_xref = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
 
-        $module_service = app(ModuleService::class);
-        assert($module_service instanceof ModuleService);
-
+        $module_service = Registry::container()->get(ModuleService::class);
         $pedigree_chart = $module_service
             ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
             ->first(static fn (ModuleInterface $module): bool => $module instanceof PedigreeChartModule);
@@ -430,8 +422,7 @@ trait ModuleThemeTrait
     public function menuPendingChanges(?Tree $tree): ?Menu
     {
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
-            $request = app(ServerRequestInterface::class);
-            assert($request instanceof ServerRequestInterface);
+            $request = Registry::container()->get(ServerRequestInterface::class);
 
             $url = route(PendingChanges::class, [
                 'tree' => $tree->name(),
@@ -451,12 +442,9 @@ trait ModuleThemeTrait
      */
     public function menuThemes(): ?Menu
     {
-        $module_service = app(ModuleService::class);
-        assert($module_service instanceof ModuleService);
-
-        $themes = $module_service->findByInterface(ModuleThemeInterface::class, false, true);
-
-        $current_theme = app(ModuleThemeInterface::class);
+        $module_service = Registry::container()->get(ModuleService::class);
+        $themes         = $module_service->findByInterface(ModuleThemeInterface::class, false, true);
+        $current_theme  = Registry::container()->get(ModuleThemeInterface::class);
 
         if ($themes->count() > 1) {
             $submenus = $themes->map(static function (ModuleThemeInterface $theme) use ($current_theme): Menu {
@@ -487,8 +475,7 @@ trait ModuleThemeTrait
             return [];
         }
 
-        $module_service = app(ModuleService::class);
-        assert($module_service instanceof ModuleService);
+        $module_service = Registry::container()->get(ModuleService::class);
 
         return $module_service
             ->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())

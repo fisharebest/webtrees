@@ -76,13 +76,15 @@ foreach ($amatches as $amatch) {
 
         $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>' . $age_text];
 
-        $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(static function (ModuleInterface $module) {
-            return $module instanceof RelationshipsChartModule;
-        });
+        $module = Registry::container()->get(ModuleService::class)
+            ->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())
+            ->first(static function (ModuleInterface $module) {
+                return $module instanceof RelationshipsChartModule;
+            });
 
         if ($module instanceof RelationshipsChartModule) {
             foreach ($associates as $associate) {
-                $relationship_name = app(RelationshipService::class)->getCloseRelationshipName($associate, $person);
+                $relationship_name = Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($associate, $person);
                 if ($relationship_name === '') {
                     $relationship_name = I18N::translate('Relationship');
                 }

@@ -10,6 +10,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\View;
 
@@ -36,7 +37,7 @@ use Fisharebest\Webtrees\View;
 
         <?= View::stack('styles') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
     return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent();
         })->implode('') ?>
     </head>
@@ -87,7 +88,7 @@ use Fisharebest\Webtrees\View;
 
         <?= View::stack('javascript') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
     return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent();
         })->implode('') ?>
     </body>

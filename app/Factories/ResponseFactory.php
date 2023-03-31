@@ -30,7 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-use function app;
 use function is_string;
 use function json_encode;
 use function view;
@@ -147,8 +146,8 @@ class ResponseFactory implements ResponseFactoryInterface
         // Make the view's data available to the layout.
         $layout_data = [
             'content' => $content,
-            'request' => app(ServerRequestInterface::class),
-            'theme'   => app(ModuleThemeInterface::class),
+            'request' => Registry::container()->get(ServerRequestInterface::class),
+            'theme'   => Registry::container()->get(ModuleThemeInterface::class),
             'title'   => $view_data['title'] ?? Webtrees::NAME,
         ];
 

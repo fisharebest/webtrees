@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,7 +39,6 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Exception\RfcComplianceException;
 use Symfony\Component\Mime\Message;
 
-use function assert;
 use function checkdnsrr;
 use function function_exists;
 use function str_replace;
@@ -137,9 +137,7 @@ class EmailService
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'sendmail':
                 // Local sendmail (requires PHP proc_* functions)
-                $request = app(ServerRequestInterface::class);
-                assert($request instanceof ServerRequestInterface);
-
+                $request          = Registry::container()->get(ServerRequestInterface::class);
                 $sendmail_command = Validator::attributes($request)->string('sendmail_command', '/usr/sbin/sendmail -bs');
 
                 return new SendmailTransport($sendmail_command);

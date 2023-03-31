@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
-
 /**
  * Test harness for the class XrefSource
  *
@@ -57,7 +55,7 @@ class XrefSourceTest extends TestCase
 
         $request = self::createRequest();
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
         $html = $element->edit('some-id', 'some-name', '@X123@', $tree);
         $dom  = new DOMDocument();
@@ -81,7 +79,7 @@ class XrefSourceTest extends TestCase
 
         $request = self::createRequest();
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
         $html = $element->edit('some-id', 'some-name', 'An inline source', $tree);
         $dom  = new DOMDocument();

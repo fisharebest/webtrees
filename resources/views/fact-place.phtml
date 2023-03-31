@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
             <div class="wt-fact-coordinates">
                 <span class="label"><?= I18N::translate('Latitude') ?>: </span><?= $fact->latitude() ?>
                 <span class="label"><?= I18N::translate('Longitude') ?>: </span><?= $fact->longitude()?>
-                <?= app(ModuleService::class)->findByInterface(ModuleMapLinkInterface::class)->map(fn (ModuleMapLinkInterface $module): string => ' ' . $module->mapLink($fact))->implode('') ?>
+                <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleMapLinkInterface::class)->map(fn (ModuleMapLinkInterface $module): string => ' ' . $module->mapLink($fact))->implode('') ?>
             </div>
         <?php endif ?>
 
