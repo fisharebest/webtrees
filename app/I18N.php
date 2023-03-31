@@ -218,7 +218,7 @@ class I18N
      */
     public static function activeLocales(): array
     {
-        $locales = app(ModuleService::class)
+        $locales = Registry::container()->get(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, false, true)
             ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
@@ -295,7 +295,7 @@ class I18N
 
         // Add translations from custom modules (but not during setup, as we have no database/modules)
         if (!$setup) {
-            $module_service = app(ModuleService::class);
+            $module_service = Registry::container()->get(ModuleService::class);
 
             $translations = $module_service
                 ->findByInterface(ModuleCustomInterface::class)

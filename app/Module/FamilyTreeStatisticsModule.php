@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
@@ -31,7 +32,6 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function array_slice;
 use function extract;
 use function var_dump;
@@ -93,7 +93,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $statistics = app(Statistics::class);
+        $statistics = Registry::container()->get(Statistics::class);
 
         $show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
         $show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');

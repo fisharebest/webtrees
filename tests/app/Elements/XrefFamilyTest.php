@@ -55,7 +55,7 @@ class XrefFamilyTest extends TestCase
 
         $request = self::createRequest();
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
         $html = $element->edit('some-id', 'some-name', '@X123@', $tree);
         $dom  = new DOMDocument();

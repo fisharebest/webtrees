@@ -39,9 +39,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_search;
-use function assert;
 use function e;
 use function explode;
 use function in_array;
@@ -130,10 +128,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
-
-        $xref = Validator::attributes($request)->isXref()->string('xref', '');
+        $request = Registry::container()->get(ServerRequestInterface::class);
+        $xref    = Validator::attributes($request)->isXref()->string('xref', '');
 
         if ($xref !== '') {
             $individual = Registry::individualFactory()->make($xref, $tree);

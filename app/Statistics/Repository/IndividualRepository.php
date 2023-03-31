@@ -48,7 +48,6 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
-use function app;
 use function array_key_exists;
 use function array_keys;
 use function array_reverse;
@@ -56,7 +55,6 @@ use function array_shift;
 use function array_slice;
 use function array_walk;
 use function arsort;
-use function assert;
 use function e;
 use function explode;
 use function implode;
@@ -583,8 +581,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         }
 
         // find a module providing individual lists
-        $module_service = app(ModuleService::class);
-        assert($module_service instanceof ModuleService);
+        $module_service = Registry::container()->get(ModuleService::class);
 
         $module = $module_service
             ->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())

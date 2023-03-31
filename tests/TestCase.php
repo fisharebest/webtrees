@@ -33,18 +33,14 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
-use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\Constraint\Callback;
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
-use Psr\Http\Message\UriFactoryInterface;
 
-use function app;
 use function array_shift;
 use function basename;
 use function filesize;
@@ -78,20 +74,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $webtrees = new Webtrees();
         $webtrees->bootstrap();
 
-        // PSR7 messages and PSR17 message-factories
-        Webtrees::set(ResponseFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(ServerRequestFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(StreamFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(UploadedFileFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(UriFactoryInterface::class, Psr17Factory::class);
-
         // This is normally set in middleware.
-        Webtrees::set(ModuleThemeInterface::class, WebtreesTheme::class);
+        Registry::container()->set(ModuleThemeInterface::class, new WebtreesTheme());
 
         // Need the routing table, to generate URLs.
         $router_container = new RouterContainer('/');
         (new WebRoutes())->load($router_container->getMap());
-        Webtrees::set(RouterContainer::class, $router_container);
+        Registry::container()->set(RouterContainer::class, $router_container);
 
         if (static::$uses_database) {
             static::createTestDatabase();
@@ -106,6 +95,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         } else {
             I18N::init('en-US', true);
         }
+
+        self::createRequest();
     }
 
     /**
@@ -133,9 +124,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         ]);
         $capsule->setAsGlobal();
 
-        // Migrations create logs, which requires an IP address, which requires a request
-        self::createRequest();
-
         // Create tables
         $migration_service = new MigrationService();
         $migration_service->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
@@ -162,8 +150,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         array $files = [],
         array $attributes = []
     ): ServerRequestInterface {
-        /** @var ServerRequestFactoryInterface */
-        $server_request_factory = app(ServerRequestFactoryInterface::class);
+        $server_request_factory = Registry::container()->get(ServerRequestFactoryInterface::class);
 
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
 
@@ -181,11 +168,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $request = $request->withAttribute($key, $value);
 
             if ($key === 'tree') {
-                app()->instance(Tree::class, $value);
+                Registry::container()->set(Tree::class, $value);
             }
         }
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
         return $request;
     }
@@ -228,7 +215,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
-        $stream                = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
+        $stream                = Registry::container()->get(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
@@ -255,11 +242,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function createUploadedFile(string $filename, string $mime_type): UploadedFileInterface
     {
-        /** @var StreamFactoryInterface */
-        $stream_factory = app(StreamFactoryInterface::class);
-
-        /** @var UploadedFileFactoryInterface */
-        $uploaded_file_factory = app(UploadedFileFactoryInterface::class);
+        $stream_factory        = Registry::container()->get(StreamFactoryInterface::class);
+        $uploaded_file_factory = Registry::container()->get(UploadedFileFactoryInterface::class);
 
         $stream      = $stream_factory->createStreamFromFile($filename);
         $size        = filesize($filename);

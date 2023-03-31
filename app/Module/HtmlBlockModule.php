@@ -84,7 +84,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $statistics = app(Statistics::class);
+        $statistics = Registry::container()->get(Statistics::class);
 
         $title          = $this->getBlockSetting($block_id, 'title');
         $content        = $this->getBlockSetting($block_id, 'html');

@@ -35,7 +35,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function explode;
 use function implode;
 use function str_contains;
@@ -146,7 +145,10 @@ class Router implements MiddlewareInterface
         foreach ($route->attributes as $key => $value) {
             if ($key === 'tree') {
                 $value = $this->tree_service->all()->get($value);
-                app()->instance(Tree::class, $value);
+
+                if ($value instanceof Tree) {
+                    Registry::container()->set(Tree::class, $value);
+                }
 
                 // Missing mandatory parameter? Let the default handler take care of it.
                 if ($value === null && str_contains($route->path, '{tree}')) {
@@ -158,7 +160,7 @@ class Router implements MiddlewareInterface
         }
 
         // Bind the updated request into the container
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
         return Webtrees::dispatch($request, $middleware);
     }

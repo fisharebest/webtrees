@@ -31,7 +31,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function array_filter;
 use function in_array;
 use function str_contains;
@@ -88,7 +87,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $request       = app(ServerRequestInterface::class);
+        $request       = Registry::container()->get(ServerRequestInterface::class);
         $default_start = (bool) $this->getBlockSetting($block_id, 'start');
         $filter_links  = $this->getBlockSetting($block_id, 'filter', self::LINK_ALL);
         $controls      = $this->getBlockSetting($block_id, 'controls', '1');

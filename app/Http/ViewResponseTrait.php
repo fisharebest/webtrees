@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -48,7 +49,7 @@ trait ViewResponseTrait
 
         // Render the view
         $layout_data['content'] = view($view_name, $view_data);
-        $layout_data['request'] = app(ServerRequestInterface::class);
+        $layout_data['request'] = Registry::container()->get(ServerRequestInterface::class);
 
         // Insert the view into the layout
         $html = view($this->layout, $layout_data);

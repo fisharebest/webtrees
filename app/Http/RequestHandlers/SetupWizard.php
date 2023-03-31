@@ -43,7 +43,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
-use function app;
 use function e;
 use function file_get_contents;
 use function file_put_contents;
@@ -134,7 +133,7 @@ class SetupWizard implements RequestHandlerInterface
         $ip_address = Validator::serverParams($request)->string('REMOTE_ADDR', '127.0.0.1');
         $request    = $request->withAttribute('client-ip', $ip_address);
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
         $data = $this->userData($request);
 
@@ -422,7 +421,7 @@ class SetupWizard implements RequestHandlerInterface
         file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
 
         // Login as the new user
-        $request = app(ServerRequestInterface::class)
+        $request = Registry::container()->get(ServerRequestInterface::class)
             ->withAttribute('base_url', $data['baseurl']);
 
         Session::start($request);

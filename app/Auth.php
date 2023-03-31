@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
-use function assert;
 use function is_int;
 
 /**
@@ -171,8 +170,7 @@ class Auth
      */
     public static function user(): UserInterface
     {
-        $user_service = app(UserService::class);
-        assert($user_service instanceof UserService);
+        $user_service = Registry::container()->get(UserService::class);
 
         return $user_service->find(self::id()) ?? new GuestUser();
     }

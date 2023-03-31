@@ -4,9 +4,34 @@ declare(strict_types=1);
 
 $ignoreErrors = [];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method find\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Auth.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Census/CensusColumnRelationToHead.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$id of method Fisharebest\\\\Webtrees\\\\Container\\<T of object\\>\\:\\:get\\(\\) expects class\\-string\\<T of object\\>, string given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Container.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AgeAtEvent\\:\\:value\\(\\) should return string but returns string\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Elements/AgeAtEvent.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Elements/Census.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Elements/Census.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\DateValue\\:\\:escape\\(\\) should return string but returns string\\|null\\.$#',
@@ -134,6 +159,21 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/RepositoryFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method getGenerator\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/RouteFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getMap\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/RouteFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Factories/RouteFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\SharedNote but returns Fisharebest\\\\Webtrees\\\\SharedNote\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/SharedNoteFactory.php',
@@ -194,6 +234,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/GedcomFilters/GedcomEncodingFilter.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method acceptRecord\\(\\) on mixed\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/GedcomRecord.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$array of function array_shift expects array, array\\<int, string\\>\\|false given\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/GedcomRecord.php',
@@ -217,6 +262,16 @@ $ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:\\$getAllNames \\(array\\<array\\<string\\>\\>\\) does not accept array\\<array\\<string\\|null\\>\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/GedcomRecord.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method createResponse\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Helpers/functions.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Helpers/functions.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Strict comparison using \\=\\=\\= between \'\\-dev\' and \'\' will always evaluate to false\\.$#',
@@ -249,16 +304,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/Middleware/ClientIp.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method has\\(\\) on mixed\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/app/Http/Middleware/HandleExceptions.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot call method instance\\(\\) on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/Middleware/HandleExceptions.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Cannot call method withAttribute\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/Middleware/HandleExceptions.php',
@@ -284,19 +329,9 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/Middleware/HandleExceptions.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method instance\\(\\) on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/Middleware/LoadRoutes.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$basepath of class Aura\\\\Router\\\\RouterContainer constructor expects string\\|null, string\\|false\\|null given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/Middleware/LoadRoutes.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot call method instance\\(\\) on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/Middleware/NoRouteFound.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Argument of an invalid type array\\|false supplied for foreach, only iterables are supported\\.$#',
@@ -304,14 +339,9 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/Middleware/ReadConfigIni.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method instance\\(\\) on mixed\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/app/Http/Middleware/Router.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot call method instance\\(\\) on mixed\\.$#',
+    'message' => '#^Cannot call method handle\\(\\) on mixed\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Http/Middleware/UseTheme.php',
+    'path' => __DIR__ . '/app/Http/Middleware/RequestHandler.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\UseTransaction\\:\\:process\\(\\) should return Psr\\\\Http\\\\Message\\\\ResponseInterface but returns Psr\\\\Http\\\\Message\\\\ResponseInterface\\|null\\.$#',
@@ -789,11 +819,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/SearchReplaceAction.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method instance\\(\\) on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Cannot call method isNotEmpty\\(\\) on mixed\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
@@ -1009,7 +1034,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Individual.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method has\\(\\) on mixed\\.$#',
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Log.php',
 ];
@@ -1039,7 +1064,17 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/AbstractModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:serverParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/BingWebmasterToolsModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Individual, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Individual given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/BranchesListModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/BranchesListModule.php',
 ];
@@ -1089,7 +1124,42 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/CensusAssistantModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/ChartsMenuModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/ClippingsCartModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/CloudsTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/CloudsTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getUri\\(\\) on mixed\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/CloudsTheme.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method name\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/CloudsTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/CloudsTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:queryParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/CloudsTheme.php',
 ];
@@ -1099,12 +1169,32 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/CloudsTheme.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/FabTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FabTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getUri\\(\\) on mixed\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FabTheme.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method name\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FabTheme.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FabTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#',
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/FabTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:queryParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FabTheme.php',
 ];
@@ -1161,6 +1251,11 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
     'count' => 4,
+    'path' => __DIR__ . '/app/Module/FanChartModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method individualBoxMenu\\(\\) on mixed\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
 $ignoreErrors[] = [
@@ -1225,11 +1320,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:chartTitle\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\:\\:individualBoxMenu\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
@@ -1344,6 +1434,21 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/GeonamesAutocomplete.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/GoogleAnalyticsModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:serverParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/GoogleAnalyticsModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:serverParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/GoogleWebmasterToolsModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to int\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Module/HitCountFooterModule.php',
@@ -1390,6 +1495,11 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$xref on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/IndividualListModule.php',
 ];
@@ -1774,6 +1884,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/LocationListModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method usersLoggedInList\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/LoggedInUsersModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MapGeoLocationGeonames\\:\\:extractLocationsFromResponse\\(\\) should return array\\<string\\> but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/MapGeoLocationGeonames.php',
@@ -1789,6 +1904,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/MapGeoLocationOpenRouteService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:serverParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/MatomoAnalyticsModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Media, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Media given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/MediaListModule.php',
@@ -1799,12 +1919,32 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/MediaListModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/MinimalTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/MinimalTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getUri\\(\\) on mixed\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/MinimalTheme.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method name\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/MinimalTheme.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MinimalTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#',
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/MinimalTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:queryParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/MinimalTheme.php',
 ];
@@ -1852,6 +1992,11 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Fisharebest\\\\Webtrees\\\\Individual\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>\\|iterable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>, Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getMap\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/RedirectLegacyUrlsModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
@@ -1912,6 +2057,11 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$nodes of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:nameFromPath\\(\\) expects array\\<Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\>, array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\> given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/RelationshipsChartModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/ReportsMenuModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Repository, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Repository given\\.$#',
@@ -2049,6 +2199,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/SourceListModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:serverParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/StatcounterModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Binary operation "\\+" between int and int\\|string results in an error\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/StatisticsChartModule.php',
@@ -2139,6 +2294,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/SubmitterListModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method menuThemes\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/ThemeSelectModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method xref\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Module/TimelineChartModule.php',
@@ -2219,12 +2379,32 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/UserMessagesModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/WebtreesTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/WebtreesTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getUri\\(\\) on mixed\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/WebtreesTheme.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method name\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/WebtreesTheme.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\WebtreesTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#',
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/WebtreesTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:queryParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/WebtreesTheme.php',
 ];
@@ -2234,12 +2414,32 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/WebtreesTheme.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/XeneaTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/XeneaTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method getUri\\(\\) on mixed\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/XeneaTheme.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method name\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/XeneaTheme.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\XeneaTheme\\:\\:genealogyMenu\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Menu\\> but returns array\\<int, Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\.$#',
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/XeneaTheme.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:queryParams\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/XeneaTheme.php',
 ];
@@ -2864,6 +3064,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/DatatablesService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/EmailService.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomEditService\\:\\:insertMissingRecordSubtags\\(\\) should return string but returns string\\|null\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Services/GedcomEditService.php',
@@ -2932,6 +3137,11 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$stream of function stream_get_meta_data expects resource, resource\\|false given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/GedcomExportService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method canonicalTag\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/GedcomImportService.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomImportService\\:\\:createMediaObject\\(\\) should return string but returns mixed\\.$#',
@@ -3177,6 +3387,16 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$location of method League\\\\Flysystem\\\\FilesystemReader\\:\\:listContents\\(\\) expects string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/MediaFileService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface but returns mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method setName\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:coreModules\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#',
@@ -3559,6 +3779,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartNoChildrenFamilies.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#2 \\$request of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:contactLink\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Statistics/Repository/ContactRepository.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot access property \\$age on mixed\\.$#',
     'count' => 9,
     'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
@@ -3665,6 +3890,11 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$days on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
 ];
@@ -3854,6 +4084,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Tree.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method acceptRecord\\(\\) on mixed\\.$#',
+    'count' => 4,
+    'path' => __DIR__ . '/app/Tree.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Tree\\:\\:getPreference\\(\\) should return string but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Tree.php',
@@ -3869,6 +4104,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Tree.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method find\\(\\) on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/TreeUser.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\User\\:\\:\\$preferences \\(array\\<string, string\\>\\) does not accept array\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/User.php',
@@ -3877,6 +4117,31 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$url of function parse_url expects string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Validator.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^PHPDoc tag @return with type static\\(Fisharebest\\\\Webtrees\\\\Webtrees\\) is incompatible with native type void\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Webtrees.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$serverRequestFactory of class Nyholm\\\\Psr7Server\\\\ServerRequestCreator constructor expects Psr\\\\Http\\\\Message\\\\ServerRequestFactoryInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Webtrees.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#2 \\$uriFactory of class Nyholm\\\\Psr7Server\\\\ServerRequestCreator constructor expects Psr\\\\Http\\\\Message\\\\UriFactoryInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Webtrees.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#3 \\$uploadedFileFactory of class Nyholm\\\\Psr7Server\\\\ServerRequestCreator constructor expects Psr\\\\Http\\\\Message\\\\UploadedFileFactoryInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Webtrees.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#4 \\$streamFactory of class Nyholm\\\\Psr7Server\\\\ServerRequestCreator constructor expects Psr\\\\Http\\\\Message\\\\StreamFactoryInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Webtrees.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Ternary operator condition is always true\\.$#',

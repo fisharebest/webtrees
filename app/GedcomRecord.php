@@ -29,13 +29,11 @@ use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
-use function app;
 use function array_combine;
 use function array_keys;
 use function array_map;
 use function array_search;
 use function array_shift;
-use function assert;
 use function count;
 use function date;
 use function e;
@@ -844,8 +842,7 @@ class GedcomRecord
             $this->pending = $new_gedcom;
 
             if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-                $pending_changes_service = app(PendingChangesService::class);
-                assert($pending_changes_service instanceof PendingChangesService);
+                $pending_changes_service = Registry::container()->get(PendingChangesService::class);
 
                 $pending_changes_service->acceptRecord($this);
                 $this->gedcom  = $new_gedcom;
@@ -896,8 +893,7 @@ class GedcomRecord
 
         // Accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
 
             $pending_changes_service->acceptRecord($this);
             $this->gedcom  = $gedcom;
@@ -929,9 +925,7 @@ class GedcomRecord
 
         // Auto-accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($this);
         }
 

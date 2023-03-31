@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -29,8 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function app;
 
 /**
  * Middleware to select a theme.
@@ -59,7 +58,7 @@ class UseTheme implements MiddlewareInterface
     {
         foreach ($this->themes() as $theme) {
             if ($theme instanceof ModuleThemeInterface) {
-                app()->instance(ModuleThemeInterface::class, $theme);
+                Registry::container()->set(ModuleThemeInterface::class, $theme);
                 $request = $request->withAttribute('theme', $theme);
                 Session::put('theme', $theme->name());
                 break;

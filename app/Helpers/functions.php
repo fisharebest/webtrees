@@ -28,22 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Get the IoC container, or fetch something from it.
- *
- * @param string|null $abstract
- *
- * @return mixed
- */
-function app(string $abstract = null)
-{
-    if ($abstract === null) {
-        return Webtrees::container();
-    }
-
-    return Webtrees::make($abstract);
-}
-
-/**
  * Generate a URL to an asset file in the public folder.
  * Add a version parameter for cache-busting.
  *
@@ -61,9 +45,7 @@ function asset(string $path): string
         $version = '?v=' . filemtime(Webtrees::ROOT_DIR . 'public/' . $path);
     }
 
-    $request = app(ServerRequestInterface::class);
-    assert($request instanceof ServerRequestInterface);
-
+    $request  = Registry::container()->get(ServerRequestInterface::class);
     $base_url = Validator::attributes($request)->string('base_url');
 
     return $base_url . '/public/' . $path . $version;
@@ -97,8 +79,7 @@ function csrf_token(): string
  */
 function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
 {
-    /** @var ResponseFactoryInterface $response_factory */
-    $response_factory = app(ResponseFactoryInterface::class);
+    $response_factory = Registry::container()->get(ResponseFactoryInterface::class);
 
     return $response_factory
         ->createResponse($code)

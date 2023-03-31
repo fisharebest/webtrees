@@ -33,7 +33,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_filter;
 use function array_map;
 use function cos;
@@ -303,8 +302,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         imagefilledrectangle($image, 0, 0, $width, $height, $transparent);
 
         // Use theme-specified colors.
-        /** @var ModuleThemeInterface $theme */
-        $theme       = app(ModuleThemeInterface::class);
+        $theme       = Registry::container()->get(ModuleThemeInterface::class);
         $text_color  = $this->imageColor($image, '000000');
         $backgrounds = [
             'M' => $this->imageColor($image, 'b1cff0'),

@@ -22,8 +22,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
-use function assert;
-
 /**
  * A tree can act as a user, for example to send email.
  */
@@ -58,9 +56,7 @@ class TreeUser implements UserInterface
      */
     public function email(): string
     {
-        $user_service = app(UserService::class);
-        assert($user_service instanceof UserService);
-
+        $user_service = Registry::container()->get(UserService::class);
         $contact_id   = (int) $this->getPreference('CONTACT_USER_ID');
 
         if ($contact_id !== 0) {

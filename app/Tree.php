@@ -26,9 +26,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemOperator;
 
-use function app;
 use function array_key_exists;
-use function assert;
 use function date;
 use function is_string;
 use function str_starts_with;
@@ -385,9 +383,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::gedcomRecordFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;
@@ -431,9 +427,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::familyFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;
@@ -477,9 +471,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::individualFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;
@@ -523,9 +515,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::mediaFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;
