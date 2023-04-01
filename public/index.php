@@ -19,14 +19,4 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-require __DIR__ . '/vendor/autoload.php';
-
-// @see https://github.com/briannesbitt/Carbon/issues/2536
-$file = '/vendor/symfony/translation/TranslatorInterface.php';
-if (file_exists(__DIR__ . $file) && !unlink(__DIR__ . $file)) {
-    echo 'Please delete the file ' . $file;
-    return;
-}
-
-$webtrees = new Webtrees();
-$webtrees->bootstrap()->run();
+require __DIR__ . '/../index.php';

@@ -334,6 +334,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/Middleware/LoadRoutes.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/Middleware/PublicFiles.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Argument of an invalid type array\\|false supplied for foreach, only iterables are supported\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/Middleware/ReadConfigIni.php',
@@ -4117,11 +4122,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$url of function parse_url expects string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Validator.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @return with type static\\(Fisharebest\\\\Webtrees\\\\Webtrees\\) is incompatible with native type void\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Webtrees.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$serverRequestFactory of class Nyholm\\\\Psr7Server\\\\ServerRequestCreator constructor expects Psr\\\\Http\\\\Message\\\\ServerRequestFactoryInterface, mixed given\\.$#',

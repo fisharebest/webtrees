@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
+use Middleland\Dispatcher;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -162,6 +163,8 @@ class Router implements MiddlewareInterface
         // Bind the updated request into the container
         Registry::container()->set(ServerRequestInterface::class, $request);
 
-        return Webtrees::dispatch($request, $middleware);
+        $dispatcher = new Dispatcher($middleware, Registry::container());
+
+        return $dispatcher->dispatch($request);
     }
 }
