@@ -17,16 +17,19 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Http\Middleware;
 
-require __DIR__ . '/vendor/autoload.php';
+use Fisharebest\Webtrees\TestCase;
 
-// @see https://github.com/briannesbitt/Carbon/issues/2536
-$file = '/vendor/symfony/translation/TranslatorInterface.php';
-if (file_exists(__DIR__ . $file) && !unlink(__DIR__ . $file)) {
-    echo 'Please delete the file ' . $file;
-    return;
+/**
+ * Test harness for the class ClientIp
+ *
+ * @covers Fisharebest\Webtrees\Http\Middleware\PublicFiles
+ */
+class PublicFilesTest extends TestCase
+{
+    public function testClass(): void
+    {
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\PublicFiles::class));
+    }
 }
-
-$webtrees = new Webtrees();
-$webtrees->bootstrap()->run();

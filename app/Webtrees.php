@@ -63,6 +63,7 @@ use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
+use Fisharebest\Webtrees\Http\Middleware\PublicFiles;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
 use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
 use Fisharebest\Webtrees\Http\Middleware\Router;
@@ -79,15 +80,12 @@ use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
-use Psr\Http\Server\MiddlewareInterface;
 
 use function date_default_timezone_set;
 use function error_reporting;
-use function is_string;
 use function mb_internal_encoding;
 use function set_error_handler;
 use function stream_filter_register;
@@ -95,6 +93,7 @@ use function stream_filter_register;
 use const E_ALL;
 use const E_DEPRECATED;
 use const E_USER_DEPRECATED;
+use const PHP_SAPI;
 
 /**
  * Definitions for the webtrees application.
@@ -159,6 +158,7 @@ class Webtrees
         ReadConfigIni::class,
         BaseUrl::class,
         HandleExceptions::class,
+        PublicFiles::class,
         ClientIp::class,
         ContentLength::class,
         CompressResponse::class,
@@ -184,7 +184,7 @@ class Webtrees
      *
      * @return static
      */
-    public function bootstrap(): void
+    public function bootstrap(): static
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
@@ -235,6 +235,22 @@ class Webtrees
             ->set(UriFactoryInterface::class, new Psr17Factory());
 
         stream_filter_register(GedcomEncodingFilter::class, GedcomEncodingFilter::class);
+
+        return $this;
+    }
+
+    /**
+     * Run the application.
+     *
+     * @return void
+     */
+    public function run(): void
+    {
+        if (PHP_SAPI === 'cli') {
+            $this->cliRequest();
+        } else {
+            $this->httpRequest();
+        };
     }
 
     /**
@@ -263,18 +279,7 @@ class Webtrees
 
         $request = $server_request_creator->fromGlobals();
 
-        return self::dispatch($request, self::MIDDLEWARE);
-    }
-
-    /**
-     * @param ServerRequestInterface            $request
-     * @param array<string|MiddlewareInterface> $middleware
-     *
-     * @return ResponseInterface
-     */
-    public static function dispatch(ServerRequestInterface $request, array $middleware): ResponseInterface
-    {
-        $dispatcher = new Dispatcher($middleware, Registry::container());
+        $dispatcher = new Dispatcher(self::MIDDLEWARE, Registry::container());
 
         return $dispatcher->dispatch($request);
     }
