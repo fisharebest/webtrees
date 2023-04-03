@@ -18,15 +18,16 @@
  *
  * wt-route-place-list
  */
- .wt-place-hierarchy-wrapper {
-    height: 70vh;
+
+ :root {
+    --wt-place-hierarchy-map-height: 70vh;
 }
 
 .wt-place-hierarchy-map {
-    height: 100%;
+    height: var(--wt-place-hierarchy-map-height);
 }
 
 .wt-place-hierarchy-sidebar {
-    height: 100%;
+    height: var(--wt-place-hierarchy-map-height);
     overflow-y: auto;
 }
