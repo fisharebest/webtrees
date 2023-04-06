@@ -31,3 +31,11 @@
     height: var(--wt-places-tab-map-height);
     overflow-y: auto;
 }
+
+:fullscreen .wt-places-tab-map {
+    height:100%;
+}
+
+:fullscreen .wt-places-tab-sidebar {
+    height:100%;
+}

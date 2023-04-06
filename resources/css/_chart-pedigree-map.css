@@ -90,3 +90,11 @@
     height: var(--wt-pedigree-map-height);
     overflow-y: auto;
 }
+
+:fullscreen .wt-pedigree-map-map {
+    height:100%;
+}
+
+:fullscreen .wt-pedigree-map-sidebar {
+    height:100%;
+}

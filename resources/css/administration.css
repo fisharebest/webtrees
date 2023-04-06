@@ -23,6 +23,7 @@
     --link-color: #0d6efd;
     --link-decoration-hover: underline;
     --link-decoration: none;
+    --location-edit-map: 70vh;
 }
 
 /* Heading sizes */
@@ -58,10 +59,18 @@ h4 {
 
 /* Location edit maps */
 .wt-location-edit-map {
-    height: 55vh;
+    height: var(--location-edit-map);
+}
+
+.wt-location-edit-sidebar {
+    height: var(--location-edit-map);
 }
 
 :fullscreen .wt-location-edit-map {
+    height: 100%;
+}
+
+:fullscreen .wt-location-edit-sidebar {
     height: 100%;
 }
 

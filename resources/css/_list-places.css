@@ -31,3 +31,11 @@
     height: var(--wt-place-hierarchy-map-height);
     overflow-y: auto;
 }
+
+:fullscreen .wt-place-hierarchy-map {
+    height:100%;
+}
+
+:fullscreen .wt-place-hierarchy-sidebar {
+    height:100%;
+}
