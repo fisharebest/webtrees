@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-22 07:07+0000\n"
-"Last-Translator: ShinePhantom <shinephantom@mail.ru>\n"
+"PO-Revision-Date: 2023-04-17 09:07+0000\n"
+"Last-Translator: ol810 <uolega@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ru/>\n"
 "Language: ru\n"
@@ -3398,7 +3398,7 @@ msgstr "Без учёта регистра"
 #. I18N: gedcom tag CAST
 #: app/GedcomTag.php:238
 msgid "Caste"
-msgstr "Каста"
+msgstr "Социальный класс"
 
 #: statistics.php:703
 msgid "Categories"
