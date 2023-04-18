@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-03-11 13:35+0000\n"
+"PO-Revision-Date: 2023-04-19 10:07+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -1908,7 +1908,7 @@ msgstr "Ein Administrator muss das neue Benutzerkonto genehmigen und ein Zugriff
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Erweiterter Bild-Betrachter als Alternative zum „Medien“-Reiter."
+msgstr "Erweiterter Bild-Betrachter als Alternative zum „Multimedia“-Reiter."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:80
