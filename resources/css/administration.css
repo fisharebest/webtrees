@@ -39,7 +39,7 @@ h4 {
     font-size: 1.25rem;
 }
 
-.wt-global {
+::backdrop, .wt-global {
     background: url(administration/paper_fibers.png); /* http://www.subtlepatterns.com */
 }
 
@@ -51,7 +51,7 @@ h4 {
 }
 
 @media (min-device-pixel-ratio: 2) {
-    .wt-global {
+    ::backdrop, .wt-global {
         background: url(administration/paper_fibers_@2X.png);
     }
 }
