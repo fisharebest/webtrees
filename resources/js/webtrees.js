@@ -1011,16 +1011,12 @@ $(function () {
 
 // Prevent form re-submission via accidental double-click.
 document.addEventListener('submit', function (event) {
-  const form = event.target;
-
-  if (form.reportValidity()) {
-    form.addEventListener('submit', (event) => {
-      if (form.classList.contains('form-is-submitting')) {
-        event.preventDefault();
-      }
-
-      form.classList.add('form-is-submitting');
-    });
+  if (event.target.method === 'POST') {
+    if (event.target.classList.contains('form-is-submitting')) {
+      event.preventDefault();
+    } else {
+      event.target.classList.add('form-is-submitting');
+    }
   }
 });
 
