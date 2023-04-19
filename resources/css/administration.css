@@ -56,15 +56,6 @@ h4 {
     }
 }
 
-/* Location edit maps */
-.wt-location-edit-map {
-    height: 55vh;
-}
-
-:fullscreen .wt-location-edit-map {
-    height: 100%;
-}
-
 /* Raw GEDCOM data */
 .gedcom-data {
     white-space: pre-wrap;
