@@ -47,11 +47,11 @@
     height: 100%;
 }
 
-.wt-sidebar {
+.wt-map-sidebar {
     height: var(--wt-map-height);
     overflow-y: auto;
 }
 
-:fullscreen .wt-sidebar {
+:fullscreen .wt-map-sidebar {
     height: 100%;
 }
