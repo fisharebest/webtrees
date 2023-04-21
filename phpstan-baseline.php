@@ -1344,12 +1344,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixCemeteryTag.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
 ];
@@ -1364,12 +1364,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixMissingDeaths.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
 ];
@@ -1384,12 +1384,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameTags\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameTags\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixNameTags.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
 ];
@@ -1399,12 +1399,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixPrimaryTag.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
 ];
@@ -1414,7 +1414,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixWtObjeSortTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, stdClass\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixWtObjeSortTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection\\<int, object\\{xref\\: string, type\\: string\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixWtObjeSortTag.php',
 ];
@@ -1979,6 +1979,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/PlaceHierarchyListModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\RecentChangesModule\\:\\:getRecentChangesFromDatabase\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{record\\: Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null, time\\: Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampInterface, user\\: Fisharebest\\\\Webtrees\\\\User\\|null\\}&stdClass\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\RecentChangesModule\\:\\:getRecentChangesFromGenealogy\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{record\\: Fisharebest\\\\Webtrees\\\\GedcomRecord, time\\: Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampInterface, user\\: Fisharebest\\\\Webtrees\\\\User\\}&stdClass\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: Fisharebest\\\\Webtrees\\\\Family, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Family given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
@@ -1989,7 +1999,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{record\\: Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null, time\\: Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampInterface, user\\: Fisharebest\\\\Webtrees\\\\User\\|null\\}&stdClass, Closure\\(object\\)\\: object\\{record\\: Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null, time\\: Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampInterface, user\\: Fisharebest\\\\Webtrees\\\\User\\|null\\}&stdClass given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
 ];
@@ -2574,7 +2584,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Access to private property Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\:\\:\\$generation\\.$#',
+    'message' => '#^Access to protected property Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\:\\:\\$generation\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
@@ -2774,6 +2784,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<\\(object\\{generation\\: int\\}&stdClass\\)\\|\\(object\\{generation\\: int\\}&stdClass\\)\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
@@ -2781,11 +2796,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\|null\\>\\.$#',
     'count' => 2,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<stdClass\\>\\.$#',
-    'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
@@ -2945,11 +2955,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Call to an undefined static method Illuminate\\\\Database\\\\Capsule\\\\Manager\\:\\:query\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/AdminService.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\AdminService\\:\\:gedcomFiles\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
@@ -3364,16 +3369,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/MediaFileService.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:allFilesOnDisk\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/MediaFileService.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:mediaFolders\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/MediaFileService.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: string, Closure\\(string\\)\\: non\\-falsy\\-string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/MediaFileService.php',
@@ -3654,11 +3649,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/UpgradeService.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UpgradeService\\:\\:webtreesZipContents\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/UpgradeService.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<int,string\\>\\:\\:contains\\(\\) expects \\(callable\\(string, int\\)\\: bool\\)\\|string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/UpgradeService.php',
@@ -3719,7 +3709,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartAge\\:\\:queryRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass, Closure\\(object\\)\\: object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
 ];
@@ -3729,17 +3724,37 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartBirth\\:\\:queryRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{century\\: int, total\\: float\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartBirth.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{century\\: int, total\\: float\\}&stdClass, Closure\\(object\\)\\: object\\{century\\: int, total\\: float\\}&stdClass given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartBirth.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartChildren\\:\\:queryRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{century\\: int, total\\: float\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartChildren.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{century\\: int, total\\: float\\}&stdClass, Closure\\(object\\)\\: object\\{century\\: int, total\\: float\\}&stdClass given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartChildren.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartDeath\\:\\:queryRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{century\\: int, total\\: float\\}&stdClass\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartDeath.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{century\\: int, total\\: float\\}&stdClass, Closure\\(object\\)\\: object\\{century\\: int, total\\: float\\}&stdClass given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartDeath.php',
 ];
@@ -3754,7 +3769,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartDistribution.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartDivorce\\:\\:queryRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{century\\: int, total\\: float\\}&stdClass\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartDivorce.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{century\\: int, total\\: float\\}&stdClass, Closure\\(object\\)\\: object\\{century\\: int, total\\: float\\}&stdClass given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartDivorce.php',
 ];
@@ -3764,17 +3784,32 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartFamilyLargest.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartMarriage\\:\\:queryRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{century\\: int, total\\: float\\}&stdClass\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartMarriage.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: stdClass, Closure\\(object\\)\\: stdClass given\\.$#',
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{century\\: int, total\\: float\\}&stdClass, Closure\\(object\\)\\: object\\{century\\: int, total\\: float\\}&stdClass given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartMarriageAge\\:\\:queryRecords\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), stdClass\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, \\(int\\|string\\)\\)\\: object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass, Closure\\(object\\)\\: object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$century of method Fisharebest\\\\Webtrees\\\\Statistics\\\\Service\\\\CenturyService\\:\\:centuryName\\(\\) expects int, int\\|string given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
 ];
