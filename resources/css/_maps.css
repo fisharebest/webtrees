@@ -13,6 +13,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+ :root {
+    --wt-map-height: 70vh;
+ }
+
 /*
  * Formatting for LeafletJS based maps.
  */
@@ -33,4 +37,21 @@
 
 .leaflet-layerstree-node .leaflet-layerstree-node .leaflet-layerstree-header-name {
     font-weight: normal;
+}
+
+.wt-map {
+    height: var(--wt-map-height);
+}
+
+:fullscreen .wt-map {
+    height: 100%;
+}
+
+.wt-map-sidebar {
+    height: var(--wt-map-height);
+    overflow-y: auto;
+}
+
+:fullscreen .wt-map-sidebar {
+    height: 100%;
 }
