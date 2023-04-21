@@ -81,7 +81,7 @@ table {
  *     +---wt-footer wt-footer-xxxxx
  */
 
-.wt-global {
+::backdrop, .wt-global {
     /* Avoid extremes of black and white.  It is better for users with dyslexia. */
     color: #0a0a0a;
     background-color: #f9f9f9;

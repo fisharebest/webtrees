@@ -85,7 +85,7 @@ table {
  *     +---wt-footer wt-footer-xxxxx
  */
 
-.wt-global {
+::backdrop, .wt-global {
     background: #c8e7ff url(clouds/images/background.png) repeat-x fixed top left;
     color: #006;
 }
