@@ -31,7 +31,6 @@
     --wt-pedigree-map-gen-9: pink;
     --wt-pedigree-map-gen-10: magenta;
     --wt-pedigree-map-gen-11: maroon;
-    --wt-pedigree-map-height: 70vh;
 }
 
 .wt-pedigree-map-gen-0 {
@@ -80,13 +79,4 @@
 
 .wt-pedigree-map-gen-11 {
     color: var(--wt-pedigree-map-gen-11);
-}
-
-.wt-pedigree-map-map {
-    height: var(--wt-pedigree-map-height);
-}
-
-.wt-pedigree-map-sidebar {
-    height: var(--wt-pedigree-map-height);
-    overflow-y: auto;
 }

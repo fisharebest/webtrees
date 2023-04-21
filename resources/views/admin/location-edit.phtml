@@ -27,9 +27,9 @@ use Fisharebest\Webtrees\View;
 <h1><?= $title ?></h1>
 
 <div class="row wt-location-edit-wrapper wt-fullscreen-container">
-    <div id="wt-map" class="col-sm-9 wt-ajax-load wt-location-edit-map" dir="ltr"></div>
+    <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map" dir="ltr"></div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-3 wt-map-sidebar">
         <form method="post" action="<?= e(route(MapDataSave::class)) ?>">
             <input type="hidden" name="parent_id" value="<?= $parent->id() ?>">
             <input type="hidden" name="place_id" value="<?= $location->id() ?>">

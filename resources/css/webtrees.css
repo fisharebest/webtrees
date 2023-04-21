@@ -81,7 +81,7 @@ table {
  *     +---wt-footer wt-footer-xxxxx
  */
 
-.wt-global {
+::backdrop, .wt-global {
     color: #555;
 }
 

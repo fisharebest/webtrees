@@ -90,7 +90,7 @@
  *     +---wt-footer wt-footer-xxxxx
  */
 
-.wt-global {
+::backdrop, .wt-global {
     background: #fff;
     color: #333;
 }
