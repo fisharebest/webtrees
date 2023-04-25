@@ -2,9 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-02-02 14:03+0000\n"
-"Last-Translator: sadja1024 <bancak@gmail.com>\n"
-"Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
+"PO-Revision-Date: 2023-04-26 08:38+0000\n"
+"Last-Translator: kaitou1412 <github.com@bangetz.com>\n"
+"Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4266,7 +4267,7 @@ msgstr "Kuba"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "Pulau Curaçao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -5783,7 +5784,7 @@ msgstr "Peristiwa"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Peristiwa tidak terjadi"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -8484,7 +8485,7 @@ msgstr "Perubahan terakhir"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Terakhir dicek %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -12308,7 +12309,7 @@ msgstr "Sagu"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Département Saint-Barthélemy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -14758,7 +14759,7 @@ msgstr[0] "Tidak ada perubahan dalam hari %s terakhir."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Ada kendala mengecek versi baru."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15183,7 +15184,7 @@ msgstr "Batas memori server ini adalah %s MB dan batas waktu CPU nya adalah %s d
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Layanan ini memerlukan API key."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -17055,7 +17056,7 @@ msgstr "nama julukan"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "cek sekarang"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
