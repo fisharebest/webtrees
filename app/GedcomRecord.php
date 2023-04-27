@@ -644,13 +644,16 @@ class GedcomRecord
                         $subtags = array_combine(range(1, count($subtags)), $subtags);
                     }
 
-
                     $facts = $facts
-                        ->sort(static function (Fact $x, Fact $y) use ($subtags): int {
-                            $sort_x = array_search($x->tag(), $subtags, true) ?: PHP_INT_MAX;
-                            $sort_y = array_search($y->tag(), $subtags, true) ?: PHP_INT_MAX;
+                        ->sort(static function (Fact $x, Fact $y) use ($facts, $subtags): int {
+                            $sort_x1 = array_search($x->tag(), $subtags, true) ?: PHP_INT_MAX;
+                            $sort_y1 = array_search($y->tag(), $subtags, true) ?: PHP_INT_MAX;
 
-                            return $sort_x <=> $sort_y;
+                            // For PHP < 8.0, sorting is unstable, so add original position as a second sort key.
+                            $sort_x2 = $facts->search($x, true);
+                            $sort_y2 = $facts->search($x, true);
+
+                            return $sort_x1 <=> $sort_y1 ?: $sort_x2 <=> $sort_y2;
                         });
                     break;
             }
