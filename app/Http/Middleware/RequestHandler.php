@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Container\Container;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -46,7 +46,7 @@ class RequestHandler implements MiddlewareInterface
         $request_handler = $route->handler;
 
         if (is_string($request_handler)) {
-            $request_handler = Container::getInstance()->get($request_handler);
+            $request_handler = Registry::container()->get($request_handler);
         }
 
         return $request_handler->handle($request);
