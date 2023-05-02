@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
-"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
+"PO-Revision-Date: 2023-05-02 15:47+0000\n"
+"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
+"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -505,7 +506,7 @@ msgstr "(%s de edad)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s de edad)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -514,7 +515,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s de edad)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
