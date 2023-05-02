@@ -106,7 +106,7 @@ parameters:
 			path: app/Fact.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int, array\\<int, string\\>\\|Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int\\<0, max\\>, array\\<int, string\\>\\|Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
 			count: 1
 			path: app/Fact.php
 
@@ -596,7 +596,7 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Cannot assign new offset to array\\<int, string\\|null\\>\\|string\\|null\\.$#"
+			message: "#^Cannot assign new offset to array\\<int\\<0, max\\>, string\\|null\\>\\|string\\|null\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
 
@@ -4741,7 +4741,7 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:ageBetweenSiblingsList\\(\\) should return array\\<int, array\\<string, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\Individual\\|string\\>\\> but returns array\\<int, array\\<string, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\|string\\>\\>\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:ageBetweenSiblingsList\\(\\) should return array\\<int, array\\<string, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\Individual\\|string\\>\\> but returns array\\<int\\<0, max\\>, array\\<string, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\|string\\>\\>\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
