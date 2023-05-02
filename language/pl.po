@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-11 13:35+0000\n"
-"Last-Translator: Łukasz <lukas.the.best@poczta.fm>\n"
+"PO-Revision-Date: 2023-05-02 15:47+0000\n"
+"Last-Translator: Maciej Bator <maciej@bator.com.pl>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pl/>\n"
 "Language: pl\n"
@@ -2410,7 +2410,7 @@ msgstr "Średnia liczba lat podczas ślubu"
 
 #: app/Stats.php:2586 app/Stats.php:2599
 msgid "Average age related to death century"
-msgstr "Średnia długość życia względem wieku śmierci"
+msgstr "Średnia długość życia wg stulecia, w którym nastąpił zgon"
 
 #: app/Module/FamilyTreeStatisticsModule.php:193
 #: app/Module/FamilyTreeStatisticsModule.php:418
@@ -2917,7 +2917,7 @@ msgstr "Urodziny"
 
 #: app/Stats.php:1953 statistics.php:121
 msgid "Births by century"
-msgstr "Liczba urodzeń według wieku"
+msgstr "Liczba urodzeń według stulecia"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
@@ -4889,7 +4889,7 @@ msgstr "Zgony"
 
 #: app/Stats.php:2046 statistics.php:122
 msgid "Deaths by century"
-msgstr "Liczba zgonów według wieku"
+msgstr "Liczba zgonów według stulecia"
 
 #: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for December"
@@ -5292,7 +5292,7 @@ msgstr "Uzyskanie rozwodu"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
-msgstr "Liczba rozwodów według wieku"
+msgstr "Liczba rozwodów według stulecia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
@@ -8844,7 +8844,7 @@ msgstr "Śluby"
 
 #: app/Stats.php:3540 statistics.php:223
 msgid "Marriages by century"
-msgstr "Liczba ślubów według wieku"
+msgstr "Liczba ślubów według stulecia"
 
 #. I18N: gedcom tag _MARNM
 #: app/GedcomTag.php:1560 modules_v3/cemetery_report/report.xml:7
