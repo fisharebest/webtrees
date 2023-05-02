@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-02-17 13:35+0000\n"
+"PO-Revision-Date: 2023-05-02 15:47+0000\n"
 "Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -6137,7 +6137,7 @@ msgstr "Farvardin"
 #: app/Date/JalaliDate.php:151
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Farvardín"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:119
@@ -6149,7 +6149,7 @@ msgstr "Farvardin"
 #: app/Date/JalaliDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr "Farvardin"
+msgstr "Farvardín"
 
 #: modules_v3/bdm_report/report.xml:118
 #: modules_v3/family_group_report/report.xml:467
