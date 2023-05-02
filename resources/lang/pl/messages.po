@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-11 13:35+0000\n"
-"Last-Translator: Łukasz <lukas.the.best@poczta.fm>\n"
+"PO-Revision-Date: 2023-05-02 15:47+0000\n"
+"Last-Translator: Maciej Bator <maciej@bator.com.pl>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pl/>\n"
 "Language: pl\n"
@@ -2346,7 +2346,7 @@ msgstr "Średnia liczba lat podczas ślubu"
 
 #: app/Statistics/Google/ChartAge.php:132
 msgid "Average age related to death century"
-msgstr "Średnia długość życia względem wieku śmierci"
+msgstr "Średnia długość życia wg stulecia, w którym nastąpił zgon"
 
 #: app/Statistics/Google/ChartChildren.php:88
 msgid "Average number"
@@ -2879,7 +2879,7 @@ msgstr "Urodziny"
 #: app/Statistics/Google/ChartBirth.php:111
 #: resources/views/modules/statistics-chart/individual-events.phtml:25
 msgid "Births by century"
-msgstr "Liczba urodzeń według wieku"
+msgstr "Liczba urodzeń według stulecia"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:66
@@ -4985,7 +4985,7 @@ msgstr "Zgony"
 #: app/Statistics/Google/ChartDeath.php:111
 #: resources/views/modules/statistics-chart/individual-events.phtml:69
 msgid "Deaths by century"
-msgstr "Liczba zgonów według wieku"
+msgstr "Liczba zgonów według stulecia"
 
 #: app/Date/AbstractGregorianJulianDate.php:242
 msgctxt "Abbreviation for December"
@@ -5365,7 +5365,7 @@ msgstr "Uzyskanie rozwodu"
 #: app/Statistics/Google/ChartDivorce.php:111
 #: resources/views/modules/statistics-chart/family-totals.phtml:70
 msgid "Divorces by century"
-msgstr "Liczba rozwodów według wieku"
+msgstr "Liczba rozwodów według stulecia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -9273,7 +9273,7 @@ msgstr "Śluby"
 #: app/Statistics/Google/ChartMarriage.php:111
 #: resources/views/modules/statistics-chart/family-totals.phtml:26
 msgid "Marriages by century"
-msgstr "Liczba ślubów według wieku"
+msgstr "Liczba ślubów według stulecia"
 
 #: app/CustomTags/FamilyTreeMaker.php:112
 #: resources/views/lists/families-table.phtml:180
