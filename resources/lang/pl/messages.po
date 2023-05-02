@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-03-11 13:35+0000\n"
-"Last-Translator: Łukasz <lukas.the.best@poczta.fm>\n"
+"PO-Revision-Date: 2023-05-02 15:47+0000\n"
+"Last-Translator: Maciej Bator <maciej@bator.com.pl>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pl/>\n"
 "Language: pl\n"
@@ -2409,7 +2409,7 @@ msgstr "Średnia liczba lat podczas ślubu"
 
 #: app/Statistics/Google/ChartAge.php:136
 msgid "Average age related to death century"
-msgstr "Średnia długość życia względem wieku śmierci"
+msgstr "Średnia długość życia wg stulecia, w którym nastąpił zgon"
 
 #: app/Statistics/Google/ChartChildren.php:95
 msgid "Average number"
@@ -2957,7 +2957,7 @@ msgstr "Urodziny"
 #: app/Statistics/Google/ChartBirth.php:129
 #: resources/views/statistics/individuals/total-events.phtml:31
 msgid "Births by century"
-msgstr "Liczba urodzeń według wieku"
+msgstr "Liczba urodzeń według stulecia"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:66 app/GedcomCode/GedcomCodeTemp.php:264
@@ -5103,7 +5103,7 @@ msgstr "Zgony"
 #: app/Statistics/Google/ChartDeath.php:129
 #: resources/views/statistics/individuals/total-events.phtml:79
 msgid "Deaths by century"
-msgstr "Liczba zgonów według wieku"
+msgstr "Liczba zgonów według stulecia"
 
 #: app/Date/AbstractGregorianJulianDate.php:212
 msgctxt "Abbreviation for December"
@@ -5502,7 +5502,7 @@ msgstr "Uzyskanie rozwodu"
 #: app/Statistics/Google/ChartDivorce.php:129
 #: resources/views/statistics/families/total-records.phtml:81
 msgid "Divorces by century"
-msgstr "Liczba rozwodów według wieku"
+msgstr "Liczba rozwodów według stulecia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:159
@@ -9295,7 +9295,7 @@ msgstr "Śluby"
 #: app/Statistics/Google/ChartMarriage.php:129
 #: resources/views/statistics/families/total-records.phtml:33
 msgid "Marriages by century"
-msgstr "Liczba ślubów według wieku"
+msgstr "Liczba ślubów według stulecia"
 
 #. I18N: gedcom tag _MARNM
 #: app/Factories/ElementFactory.php:400 app/GedcomTag.php:1150
