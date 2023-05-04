@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-05-02 15:47+0000\n"
+"PO-Revision-Date: 2023-05-06 08:06+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -144,7 +144,7 @@ msgstr "%1$s × %2$s pixels"
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:558 app/Module/StatisticsChartModule.php:861
@@ -483,13 +483,13 @@ msgstr "&lt;selecciona&gt;"
 #: app/Age.php:219 app/Functions/FunctionsPrint.php:380
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s después de la muerte)"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(Edad %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:363
@@ -497,7 +497,7 @@ msgstr ""
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s de edad)"
+msgstr "(a los %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:359
@@ -506,7 +506,7 @@ msgstr "(%s de edad)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s de edad)"
+msgstr "(a los %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -515,7 +515,7 @@ msgstr "(%s de edad)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s de edad)"
+msgstr "(a los %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -771,7 +771,7 @@ msgstr "Una lista de individuos."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Una lista de ubicaciones."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -1511,7 +1511,7 @@ msgstr "Dirección línea 2"
 #: app/Factories/ElementFactory.php:1080 app/Factories/ElementFactory.php:1333
 #: app/Factories/ElementFactory.php:1380 app/GedcomTag.php:436
 msgid "Address line 3"
-msgstr ""
+msgstr "Línea de dirección 3"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55 app/GedcomCode/GedcomCodeTemp.php:231
@@ -1571,7 +1571,7 @@ msgstr "Adoptado por la madre"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:810
 msgid "Adopted name"
-msgstr ""
+msgstr "Nombre adoptado"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:1118 app/Factories/ElementFactory.php:1121
@@ -1651,7 +1651,7 @@ msgstr "Adopción de un hijo"
 
 #: app/Factories/ElementFactory.php:1120
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Padres adoptivos"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:1164 app/GedcomTag.php:569
@@ -1955,7 +1955,7 @@ msgstr "Error inesperado de la base de datos."
 
 #: resources/views/admin/control-panel.phtml:177
 msgid "An upgrade is available."
-msgstr ""
+msgstr "Hay una actualización disponible."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -1987,7 +1987,7 @@ msgstr "Número ID en Ancestral File"
 
 #: app/Factories/ElementFactory.php:258
 msgid "Ancestry PID"
-msgstr ""
+msgstr "Ancestry PID"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -2110,7 +2110,7 @@ msgstr "Aguamarina"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "¿Está seguro de que desea eliminar el enlace a \"%s\"?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -2585,7 +2585,7 @@ msgstr "Barbados"
 
 #: app/Factories/ElementFactory.php:608
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Etiqueta base GEDCOM"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:496
@@ -2672,7 +2672,7 @@ msgstr "Mapas Bing™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Herramientas para webmasters de Bing™"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:65 app/GedcomCode/GedcomCodeTemp.php:261
@@ -2840,7 +2840,7 @@ msgstr "Comienzo del rango de fechas de nacimiento"
 
 #: app/Factories/ElementFactory.php:277
 msgid "Birth name"
-msgstr ""
+msgstr "Nombre de nacimiento"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -2917,7 +2917,7 @@ msgstr "Nacimiento de un hijo"
 
 #: app/Factories/ElementFactory.php:1145
 msgid "Birth parents"
-msgstr ""
+msgstr "Padres biológicos"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3394,7 +3394,7 @@ msgstr "Categorías"
 
 #: app/Factories/ElementFactory.php:601 app/Factories/ElementFactory.php:643
 msgid "Category"
-msgstr ""
+msgstr "Categoría"
 
 #. I18N: gedcom tag CAUS
 #: app/Factories/ElementFactory.php:954 app/Factories/ElementFactory.php:1087
@@ -3506,7 +3506,7 @@ msgstr "Cambie los bloques de \"Mi página\""
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Cambiado por %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
@@ -3965,7 +3965,7 @@ msgstr "Completado; fecha desconocida"
 
 #: app/Factories/ElementFactory.php:602 app/Factories/ElementFactory.php:644
 msgid "Completion date"
-msgstr ""
+msgstr "Fecha de terminación"
 
 #: app/Http/RequestHandlers/HelpText.php:284
 #: resources/views/admin/trees-export.phtml:64
@@ -4075,7 +4075,7 @@ msgstr "Convertir etiquetas CEME a GEDCOM 5.5.1"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:84
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Convierta las etiquetas NAME:_XXX a GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
@@ -4106,7 +4106,7 @@ msgstr "Cookies"
 #: app/Factories/ElementFactory.php:664 app/Factories/ElementFactory.php:967
 #: app/Factories/ElementFactory.php:1098 app/GedcomTag.php:770
 msgid "Coordinates"
-msgstr ""
+msgstr "Coordenadas"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84 app/GedcomCode/GedcomCodeTemp.php:318
@@ -4153,7 +4153,7 @@ msgstr "Corregir los registro NAME del tipo 'John/DOE/' o 'John /DOE' producidos
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Correspondencia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4194,7 +4194,7 @@ msgstr "Crear un nuevo árbol genealógico"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Crear una ubicación"
 
 #: app/Elements/XrefMedia.php:61 app/Functions/FunctionsEdit.php:490
 #: resources/views/modals/create-media-from-file.phtml:19
@@ -4224,7 +4224,7 @@ msgstr "Crear una nueva fuente"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Crear una submisión"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:553
 #: resources/views/modals/create-submitter.phtml:16
@@ -4253,7 +4253,7 @@ msgstr "Crear, actualizar y eliminar un árbol genealógico para cada archivo GE
 
 #: app/Factories/ElementFactory.php:595 app/Factories/ElementFactory.php:637
 msgid "Creation date"
-msgstr ""
+msgstr "Fecha de creación"
 
 #. I18N: gedcom tag CREM
 #: app/Factories/ElementFactory.php:1174 app/GedcomTag.php:603
@@ -4574,7 +4574,7 @@ msgstr "Fecha del sellamiento SUD con hijo"
 
 #: app/Factories/ElementFactory.php:1169
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Fecha de confirmación LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1189 app/GedcomTag.php:669
@@ -5158,7 +5158,7 @@ msgstr "Tema por defecto"
 #: app/Factories/ElementFactory.php:616 app/Factories/ElementFactory.php:617
 #: app/Factories/ElementFactory.php:618
 msgid "Definition"
-msgstr ""
+msgstr "Definición"
 
 #. I18N: gedcom tag _DEG
 #: app/Factories/ElementFactory.php:403 app/GedcomTag.php:1068
@@ -5911,7 +5911,7 @@ msgstr "Esfand"
 
 #: app/Factories/ElementFactory.php:281
 msgid "Estate name"
-msgstr ""
+msgstr "Nombre de la propiedad"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
@@ -6257,7 +6257,7 @@ msgstr "Libro genealógico de %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Censo familiar"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6281,11 +6281,11 @@ msgstr "Familia de %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Residencia de la familia"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
-msgstr ""
+msgstr "Estado familiar"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
@@ -6375,7 +6375,7 @@ msgstr "Familia con esposa"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "Identificación de FamilySearch"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6950,7 +6950,7 @@ msgstr "Funeral"
 
 #: app/Factories/ElementFactory.php:1048
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:23
@@ -6969,7 +6969,7 @@ msgstr "Archivo"
 #: app/Factories/ElementFactory.php:578 app/Factories/ElementFactory.php:620
 #: app/Factories/ElementFactory.php:698 app/GedcomTag.php:1121
 msgid "GOV identifier"
-msgstr ""
+msgstr "Identificador GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7057,7 +7057,7 @@ msgstr "Generaciones de antecesores"
 
 #: app/Factories/ElementFactory.php:1405
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Generaciones de descendientes"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7175,7 +7175,7 @@ msgstr "Padrino o madrina"
 
 #: app/Factories/ElementFactory.php:1162
 msgid "Godparents"
-msgstr ""
+msgstr "Padrinos"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
@@ -7189,11 +7189,11 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Análisis de Google™"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Herramientas para webmasters de Google™"
 
 #. I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:1207 app/GedcomTag.php:733
@@ -7491,11 +7491,11 @@ msgstr "Esconder a todos"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Ocultar ubicaciones no utilizadas"
 
 #: app/Factories/ElementFactory.php:702
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Relación jerárquica"
 
 #. I18N: gedcom tag _PRIM
 #: app/Factories/ElementFactory.php:336 app/Factories/ElementFactory.php:633
@@ -7831,7 +7831,7 @@ msgstr "En webtrees versión 2, las miniaturas personalizadas se almacenan como 
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr ""
+msgstr "Incluir alias"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
@@ -8043,7 +8043,7 @@ msgstr "Árbol interactivo de %s"
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:306 app/GedcomTag.php:1140
 msgid "Interment"
-msgstr ""
+msgstr "Entierro"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
@@ -8450,7 +8450,7 @@ msgstr "Sellamiento SUD con el cónyuge"
 #: app/Factories/ElementFactory.php:362 app/Factories/ElementFactory.php:376
 #: app/Factories/ElementFactory.php:380 app/Factories/ElementFactory.php:395
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -8613,7 +8613,7 @@ msgstr "Líbano"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:120
 msgid "Legacy URLs"
-msgstr ""
+msgstr "URL heredadas"
 
 #. I18N: gedcom tag LEGA
 #: app/Factories/ElementFactory.php:858 app/GedcomTag.php:764
@@ -8778,7 +8778,7 @@ msgstr "Ubicación"
 #: resources/views/admin/merge-records-step-1.phtml:61
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "Ubicaciones"
 
 #: app/Elements/RelationIsDescriptor.php:115
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -9320,7 +9320,7 @@ msgstr "Coincidir con el texto exacto, salvo que ocurra en mitad de una palabra.
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ analytics"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -10151,7 +10151,7 @@ msgstr "Nueva Caledonia"
 #: app/Factories/ElementFactory.php:611 app/Factories/ElementFactory.php:612
 #: app/Factories/ElementFactory.php:613
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "Nueva etiqueta GEDCOM"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
@@ -10530,7 +10530,7 @@ msgstr "No se encontró nada."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:107
 msgid "Nothing to show"
-msgstr ""
+msgstr "Nada que mostrar"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -10723,7 +10723,7 @@ msgstr "Madre más anciana"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:175
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Verde oliva"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:385
@@ -10965,7 +10965,7 @@ msgstr "Paraguay"
 
 #: app/Factories/ElementFactory.php:699
 msgid "Parent"
-msgstr ""
+msgstr "Padres"
 
 #: app/Factories/ElementFactory.php:1268
 #: app/Http/RequestHandlers/IndividualPage.php:223
@@ -11133,7 +11133,7 @@ msgstr "Título fonético"
 
 #: app/Factories/ElementFactory.php:1222
 msgid "Phonetic type"
-msgstr ""
+msgstr "Tipo fonético"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:74 app/Factories/ElementFactory.php:333
@@ -11221,7 +11221,7 @@ msgstr "Lugar del sellamiento SUD con hijo"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "Lugar de confirmación SUD"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1190 app/GedcomTag.php:672
@@ -11548,7 +11548,7 @@ msgstr "Imprimir sucesos básicos cuando en blanco"
 
 #: app/Factories/ElementFactory.php:603 app/Factories/ElementFactory.php:645
 msgid "Priority"
-msgstr ""
+msgstr "Prioridad"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
@@ -11608,7 +11608,7 @@ msgstr "Provo, Utah, Estados Unidos"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Representante"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -11742,19 +11742,19 @@ msgstr "Rada"
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
@@ -11907,7 +11907,7 @@ msgstr "Registros"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Redirigir URL antiguas de webtrees versión 1."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169 app/GedcomCode/GedcomCodeTemp.php:573
@@ -12053,11 +12053,11 @@ msgstr "Nombre religioso"
 #: resources/views/modules/place-hierarchy/map.phtml:76
 #: resources/views/modules/places/tab.phtml:63
 msgid "Reload map"
-msgstr ""
+msgstr "Recargar mapa"
 
 #: app/Factories/ElementFactory.php:604 app/Factories/ElementFactory.php:646
 msgid "Reminder date"
-msgstr ""
+msgstr "Fecha de recordatorio"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
@@ -12198,7 +12198,7 @@ msgstr "Solicitar una nueva cuenta de usuario"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Investigación"
 
 #. I18N: gedcom tag _TODO
 #: app/Factories/ElementFactory.php:273 app/Factories/ElementFactory.php:312
@@ -12298,7 +12298,7 @@ msgstr "Romanizado"
 
 #: app/Factories/ElementFactory.php:1227
 msgid "Romanized name"
-msgstr ""
+msgstr "Nombre romanizado"
 
 #: app/Factories/ElementFactory.php:971 app/Factories/ElementFactory.php:1102
 #: app/GedcomTag.php:876
@@ -12311,7 +12311,7 @@ msgstr "Título romanizado"
 
 #: app/Factories/ElementFactory.php:1234
 msgid "Romanized type"
-msgstr ""
+msgstr "Tipo romanizado"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:221
@@ -12320,7 +12320,7 @@ msgstr "Raíces"
 
 #: app/Factories/ElementFactory.php:632
 msgid "Rufname"
-msgstr ""
+msgstr "Nombres de llamadas"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
@@ -12486,7 +12486,7 @@ msgstr "Arabia Saudí"
 
 #: app/Factories/ElementFactory.php:607
 msgid "Schema"
-msgstr ""
+msgstr "Esquema"
 
 #: app/Factories/ElementFactory.php:1184 app/Factories/ElementFactory.php:1208
 #: app/GedcomTag.php:651
@@ -12562,6 +12562,8 @@ msgstr "Buscar y reemplazar texto, utilizando búsquedas simples o coincidencia 
 #: resources/views/admin/trees-preferences.phtml:235
 msgid "Search engines may use this description of your site in their search results."
 msgstr ""
+"Las máquinas de búsqueda pueden usar esta descripción de su sitio en sus "
+"resultados de búsqueda."
 
 #: resources/views/modules/media-list/page.phtml:76
 msgid "Search filters"
@@ -12742,7 +12744,7 @@ msgstr "Separado"
 #. I18N: gedcom tag _SEPR
 #: app/Factories/ElementFactory.php:359 app/GedcomTag.php:1214
 msgid "Separation"
-msgstr ""
+msgstr "Separación"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -13258,7 +13260,7 @@ msgstr "Mostrar el lugar de nacimiento de los ancestros en un mapa."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Mostrar la fecha y la hora"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -13538,6 +13540,9 @@ msgstr "Somalia"
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"Algunas aplicaciones de genealogía almacenan todos los nombres en un solo "
+"registro de nombre, utilizando etiquetas personalizadas como _MARNM y _AKA. "
+"Una alternativa es crear un nuevo registro de nombre para cada nombre."
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
@@ -13645,7 +13650,7 @@ msgstr "Fuente"
 #: app/Factories/ElementFactory.php:1273 app/Factories/ElementFactory.php:1296
 #: app/Factories/ElementFactory.php:1319
 msgid "Source citation"
-msgstr ""
+msgstr "Cita de origen"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:920
@@ -13789,7 +13794,7 @@ msgstr "Fechas de cambio desde"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/Factories/ElementFactory.php:952 app/Factories/ElementFactory.php:1064
@@ -14453,7 +14458,7 @@ msgstr "El menú de listas."
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "La ubicación ha sido creada"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
@@ -14537,7 +14542,7 @@ msgstr "La nota ha sido creada"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Falta el parámetro \"%s\"."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -14594,7 +14599,7 @@ msgstr "El prefijo es opcional, pero recomendable. Darle a las tablas un prefijo
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
-msgstr ""
+msgstr "El problema"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14629,7 +14634,7 @@ msgstr "La configuración del servidor es correcta."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "El servidor no pudo entender esta solicitud."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
@@ -14647,7 +14652,7 @@ msgstr "El tamaño del árbol genealógico, eventos primeros y últimos, los nom
 
 #: app/Factories/ElementFactory.php:594 app/Factories/ElementFactory.php:636
 msgid "The solution"
-msgstr ""
+msgstr "La solución"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -14655,7 +14660,7 @@ msgstr "La fuente ha sido creada"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "El submisión ha sido creado"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -14859,7 +14864,7 @@ msgstr "Este bloque muestra a los editores una lista de registros con cambios pe
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Esto podría deberse a un error en %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -14871,7 +14876,7 @@ msgstr "Esta dirección de correo se usará para enviar recordatorios de contras
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Este evento ocurrió, pero se desconocen los detalles."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15442,7 +15447,7 @@ msgstr "Hora"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Hora del último cambio"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15620,7 +15625,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Demasiadas solicitudes. Vuelva a intentarlo más tarde."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15875,15 +15880,15 @@ msgstr "Tipo"
 
 #: app/Factories/ElementFactory.php:669
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Tipo de abreviatura"
 
 #: app/Factories/ElementFactory.php:693
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Tipo de identificación administrativa"
 
 #: app/Factories/ElementFactory.php:697
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Tipo de datos demográficos"
 
 #: app/Factories/ElementFactory.php:663 app/Factories/ElementFactory.php:1002
 #: app/Factories/ElementFactory.php:1197 app/GedcomTag.php:688
@@ -15896,29 +15901,29 @@ msgstr "Tipo de hecho"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Tipo de datos demográficos"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
-msgstr ""
+msgstr "Tipo de ubicación"
 
 #: app/Factories/ElementFactory.php:1012
 msgid "Type of marriage"
-msgstr ""
+msgstr "Tipo de matrimonio"
 
 #: app/Factories/ElementFactory.php:1237
 msgid "Type of name"
-msgstr ""
+msgstr "Tipo de nombre"
 
 #: app/Factories/ElementFactory.php:1018 app/Factories/ElementFactory.php:1255
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Tipo de número de referencia"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
-msgstr ""
+msgstr "Tipo de tarea de investigación"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -16051,7 +16056,7 @@ msgstr "Desconocidos"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Eliminar enlace"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -16664,12 +16669,12 @@ msgstr "Mundo"
 #: app/Factories/ElementFactory.php:314 app/GedcomTag.php:1247
 #: resources/views/modules/yahrzeit/table.phtml:34
 msgid "Yahrzeit"
-msgstr "Yahrzeit"
+msgstr "Yahrzeit (Yiddish: aniversario de la muerte de una persona)"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:66
 msgid "Yahrzeiten"
-msgstr "Yahrzeiten"
+msgstr "Yahrzeiten (Yiddish: aniversario de la muerte de una persona)"
 
 #: app/Module/CalendarMenuModule.php:117 resources/views/calendar-page.phtml:75
 msgid "Year"
@@ -17264,7 +17269,7 @@ msgstr "añadido al censo"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "inexplicable"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
@@ -17290,7 +17295,7 @@ msgstr "niño/a"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "Ciudadanos"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17349,7 +17354,7 @@ msgstr "crear"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "cultural"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17421,7 +17426,7 @@ msgstr "falleció"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "refutado"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -17562,15 +17567,15 @@ msgstr "suegro"
 
 #: app/Functions/Functions.php:640
 msgid "fiancé"
-msgstr ""
+msgstr "Prometido"
 
 #: app/Functions/Functions.php:687
 msgid "fiancé(e)"
-msgstr ""
+msgstr "Prometida"
 
 #: app/Functions/Functions.php:664
 msgid "fiancée"
-msgstr ""
+msgstr "Prometida"
 
 #: app/Functions/Functions.php:495
 msgid "fifteenth cousin"
@@ -17937,7 +17942,7 @@ msgstr "sexo"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geográficamente"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -19496,7 +19501,7 @@ msgstr "él mismo"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "Hogar"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -19526,7 +19531,7 @@ msgstr "importar archivo"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "nota en línea"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20039,7 +20044,7 @@ msgstr "porcentaje"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "político"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20066,7 +20071,7 @@ msgstr "fuente primaria"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "probado"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
@@ -20104,7 +20109,7 @@ msgstr "rechazado"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "religioso"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
@@ -20402,7 +20407,7 @@ msgstr "primo séptimo"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "nota compartida"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
@@ -20419,12 +20424,12 @@ msgstr "mostrar"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "mostrar los cambios realizados en WEBTREES"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "mostrar los cambios registrados en los datos genealógicos"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
@@ -20994,7 +20999,7 @@ msgstr "esposa"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr "xenea"
+msgstr "Xenea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:141
 msgid "years"
