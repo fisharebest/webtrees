@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-05-04 09:06+0000\n"
+"PO-Revision-Date: 2023-05-06 08:06+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/es/>\n"
@@ -10246,7 +10246,7 @@ msgstr "Madre más anciana"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Verde oliva"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
@@ -15904,12 +15904,12 @@ msgstr "prefijos XREF"
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
 msgid "Yahrzeit"
-msgstr "Yahrzeit"
+msgstr "Yahrzeit (Yiddish: aniversario de la muerte de una persona)"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr "Yahrzeiten"
+msgstr "Yahrzeiten (Yiddish: aniversario de la muerte de una persona)"
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:203 search.php:248
 msgid "Year"
@@ -20106,7 +20106,7 @@ msgstr "esposa"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr "xenea"
+msgstr "Xenea"
 
 #: timeline.php:130
 msgid "years"
