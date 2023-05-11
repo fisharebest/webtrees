@@ -809,11 +809,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$string of function substr expects string, string\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$url of function redirect expects string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
