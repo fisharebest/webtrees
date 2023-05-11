@@ -63,7 +63,7 @@
         "middlewares/client-ip": "2.0.1",
         "mlocati/ip-lib": "1.18.0",
         "nesbot/carbon": "2.66.0",
-        "nyholm/psr7": "1.7.0",
+        "nyholm/psr7": "1.8.0",
         "nyholm/psr7-server": "1.0.2",
         "oscarotero/middleland": "1.0.1",
         "psr/cache": "1.0.1",
@@ -72,7 +72,7 @@
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.2.3",
         "sabre/vobject": "4.5.3",
-        "symfony/cache": "5.4.22",
+        "symfony/cache": "5.4.23",
         "symfony/expression-language": "5.4.21",
         "symfony/mailer": "5.4.22",
         "symfony/polyfill-mbstring": "1.27.0",
@@ -87,7 +87,7 @@
         "composer/composer": "2.5.5",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.5.3",
-        "phpunit/phpunit": "9.6.7"
+        "phpunit/phpunit": "9.6.8"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
