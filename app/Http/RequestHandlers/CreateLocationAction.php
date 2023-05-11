@@ -39,7 +39,7 @@ class CreateLocationAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
-        $name = Validator::parsedBody($request)->isNotEmpty()->string('name');
+        $name = Validator::parsedBody($request)->isNotEmpty()->string('location_name');
 
         $name = Registry::elementFactory()->make('_LOC:NAME')->canonical($name);
 
