@@ -70,6 +70,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Awario', // Brand management
         'Barkrowler',
         'BLEXBot',
+        'Bytespider',
         'DataForSEO',
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
