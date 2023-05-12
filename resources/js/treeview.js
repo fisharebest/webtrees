@@ -39,23 +39,24 @@ function TreeViewHandler (treeview_instance, ged) {
   // Drag handlers for the treeview canvas
   (function () {
     let dragging = false;
+	let isDown = false;
     let drag_start_x;
     let drag_start_y;
 
     tv.treeview.on('mousedown touchstart', function (event) {
-      event.preventDefault();
-
+	
       let pageX = (event.type === 'touchstart') ? event.touches[0].pageX : event.pageX;
       let pageY = (event.type === 'touchstart') ? event.touches[0].pageY : event.pageY;
 
       drag_start_x = tv.treeview.offset().left - pageX;
       drag_start_y = tv.treeview.offset().top - pageY;
-      dragging = true;
+      isDown = true;
     });
 
     $(document).on('mousemove touchmove', function (event) {
-      if (dragging) {
+      if (isDown) {
         event.preventDefault();
+		dragging = true;
 
         let pageX = (event.type === 'touchmove') ? event.touches[0].pageX : event.pageX;
         let pageY = (event.type === 'touchmove') ? event.touches[0].pageY : event.pageY;
@@ -68,6 +69,7 @@ function TreeViewHandler (treeview_instance, ged) {
     });
 
     $(document).on('mouseup touchend', function (event) {
+	  isDown = false;
       if (dragging) {
         event.preventDefault();
         dragging = false;
