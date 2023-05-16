@@ -12,10 +12,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.14.2\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -101,27 +97,27 @@ msgstr ""
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2436
 #, php-format
-msgid "%1$s  %2$s"
-msgstr ""
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2414
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$s  %2$s"
-msgstr ""
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2391
 #, php-format
 msgctxt "MALE"
-msgid "%1$s  %2$s"
-msgstr ""
+msgid "%1$s × %2$s"
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/RequestHandlers/ManageMediaData.php:372 app/MediaFile.php:326
 #, php-format
-msgid "%1$s  %2$s pixels"
+msgid "%1$s × %2$s pixels"
 msgstr ""
 
 #. I18N: e.g. "Occupation: farmer"
@@ -140,17 +136,17 @@ msgstr ""
 #: resources/views/modules/media-list/page.phtml:143
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:483 app/Module/StatisticsChartModule.php:855
 #, php-format
-msgid "%1$s%2$s"
-msgstr ""
+msgid "%1$s–%2$s"
+msgstr "%1$s–%2$s"
 
 #: app/Services/RelationshipService.php:2204
 #, php-format
-msgid "%1$ss %2$s"
+msgid "%1$s’s %2$s"
 msgstr ""
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
@@ -406,21 +402,21 @@ msgstr "%s yilligi"
 
 #: app/Services/RelationshipService.php:2354
 #, php-format
-msgid "%s  cousin"
-msgstr "%s amakivachchasi"
+msgid "%s × cousin"
+msgstr "%s × amakivachchasi"
 
 #: app/Services/RelationshipService.php:2318
 #, php-format
 msgctxt "FEMALE"
-msgid "%s  cousin"
-msgstr "%s amakivachchasi"
+msgid "%s × cousin"
+msgstr "%s × amakivachchasi"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2281
 #, php-format
 msgctxt "MALE"
-msgid "%s  cousin"
-msgstr "%s amakivachchasi"
+msgid "%s × cousin"
+msgstr "%s × amakivachchasi"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -675,32 +671,32 @@ msgstr "Ikki shaxs o'rtasidagi rishtalarni ko'rsatadigan diagramma."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:91
-msgid "A chart of an individuals ancestors and descendants, as a family book."
+msgid "A chart of an individual’s ancestors and descendants, as a family book."
 msgstr "Oilaviy kitob sifatida shaxsiy ajdodlari va avlodlari jadvali."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:88
-msgid "A chart of an individuals ancestors, as a compact tree."
+msgid "A chart of an individual’s ancestors, as a compact tree."
 msgstr "Individual ajdodlar jadvali, ixcham shajara sifatida."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:115
-msgid "A chart of an individuals ancestors, formatted as a tree."
+msgid "A chart of an individual’s ancestors, formatted as a tree."
 msgstr "Shajara shaklida shakllangan shaxslarning ajdodlari jadvali."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:109
-msgid "A chart of an individuals ancestors."
+msgid "A chart of an individual’s ancestors."
 msgstr "Shaxsning ajdodlari jadvali."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:105
-msgid "A chart of an individuals descendants."
+msgid "A chart of an individual’s descendants."
 msgstr "Biror kishining avlodlari jadvali."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:114
-msgid "A chart of individuals lifespans."
+msgid "A chart of individuals’ lifespans."
 msgstr "Odamlarning umr ko'rish jadvali."
 
 #: resources/views/edit/link-child-to-family.phtml:39
@@ -720,7 +716,7 @@ msgstr ""
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:149
-msgid "A fan chart of an individuals ancestors."
+msgid "A fan chart of an individual’s ancestors."
 msgstr "Ajdodlarning fan jadvali."
 
 #: resources/views/admin/map-import-form.phtml:37
@@ -887,7 +883,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:121
 #, php-format
-msgid "A password reset link has been sent to %s."
+msgid "A password reset link has been sent to “%s”."
 msgstr "Parolni tiklash havolasi %s manziliga yuborildi."
 
 #. I18N: Description of the “Journal” module
@@ -905,25 +901,25 @@ msgstr ""
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
 #: resources/xml/reports/pedigree_report.xml:4
-msgid "A report of an individuals ancestors, formatted as a tree."
+msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "Shajara shaklida shakllangan shaxslarning ajdodlari haqidagi hisobot."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
-msgid "A report of an individuals ancestors, in a narrative style."
+msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "Ayrimlarning ajdodlari haqidagi hisobot, hikoya uslubida."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
 #: resources/xml/reports/descendancy_report.xml:4
-msgid "A report of an individuals descendants, in a narrative style."
+msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "Biror kishining avlodlari haqidagi hisobot, hikoya uslubida."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:52
 #: resources/xml/reports/individual_report.xml:4
-msgid "A report of an individuals details."
+msgid "A report of an individual’s details."
 msgstr "Shaxslarning tafsilotlari to'g'risidagi hisobot."
 
 #: resources/xml/reports/fact_sources.xml:4
@@ -1007,7 +1003,7 @@ msgstr ""
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
-msgid "A sidebar showing an individuals close families and relatives."
+msgid "A sidebar showing an individual’s close families and relatives."
 msgstr "Yon panelda shaxslarning yaqin oilalari va qarindoshlari ko'rsatilgan."
 
 #. I18N: Description of the “Extra information” module
@@ -1051,7 +1047,7 @@ msgid "A timeline displaying individual events."
 msgstr "Ayrim voqealarni ko'rsatadigan vaqt jadvali."
 
 #: resources/views/admin/users-edit.phtml:118
-msgid "A user will not be able to sign in until both email verified and approved by administrator are selected."
+msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
 
 #: resources/xml/reports/ahnentafel_report.xml:13
@@ -1072,7 +1068,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1092,7 +1088,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: resources/views/modules/bing-maps/config.phtml:23
 #: resources/views/modules/google-maps/config.phtml:23
@@ -1424,7 +1420,7 @@ msgid "Add from clipboard"
 msgstr ""
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
-msgid "Add historic events to an individuals page."
+msgid "Add historic events to an individual’s page."
 msgstr "Shaxsiy sahifaga tarixiy voqealarni qo'shing."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
@@ -1738,7 +1734,7 @@ msgstr ""
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:396
-msgid "Age of parents next to childs birthdate"
+msgid "Age of parents next to child’s birthdate"
 msgstr "Bolaning tug'ilgan sanasi yonida ota-onalarning yoshi"
 
 #: app/CustomTags/GedcomL.php:233 app/Gedcom.php:408 app/Gedcom.php:542
@@ -1827,7 +1823,7 @@ msgstr "Barcha yozuvlar"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:54
-msgid "Allow other modules to edit text using a WYSIWYG editor, instead of using HTML codes."
+msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
 msgstr ""
 "Boshqa modullarga HTML kodlaridan foydalanish o‘rniga WYSIWYG muharriri "
 "yordamida matnni tahrirlashiga ruxsat bering."
@@ -1869,7 +1865,7 @@ msgstr ""
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
-msgid "An alternative to the media tab, and an enhanced image viewer."
+msgid "An alternative to the “media” tab, and an enhanced image viewer."
 msgstr ""
 
 #. I18N: Description of the “Charts” module
@@ -1896,7 +1892,7 @@ msgstr "Tizimga kirish va chiqishning muqobil usuli."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:90
-msgid "An hourglass chart of an individuals ancestors and descendants."
+msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr "Bir kishining ajdodlari va avlodlarining qum soat shaklida jadvali."
 
 #: resources/views/edit/reorder-families.phtml:75
@@ -2082,7 +2078,7 @@ msgstr ""
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
-msgid "Are you sure you want to delete the link to %s?"
+msgid "Are you sure you want to delete the link to “%s”?"
 msgstr ""
 
 #: resources/views/individual-page-name.phtml:90
@@ -2109,7 +2105,7 @@ msgstr ""
 #: resources/views/modules/user_blog/list.phtml:46
 #: resources/views/record-page-menu.phtml:47
 #, php-format
-msgid "Are you sure you want to delete %s?"
+msgid "Are you sure you want to delete “%s”?"
 msgstr ""
 
 #: resources/views/pending-changes-page.phtml:106
@@ -2196,7 +2192,7 @@ msgstr "Bog'langan voqealar"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
-msgid "Asuncin, Paraguay"
+msgid "Asunción, Paraguay"
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -2625,11 +2621,11 @@ msgid "Binary data object"
 msgstr ""
 
 #: app/Module/BingMaps.php:86 app/Module/MapLinkBing.php:42
-msgid "Bing maps"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
-msgid "Bing webmaster tools"
+msgid "Bing™ webmaster tools"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -2928,7 +2924,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:67
-msgid "Bogot, Colombia"
+msgid "Bogotá, Colombia"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -3248,8 +3244,8 @@ msgstr ""
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
 #: app/Module/CkeditorModule.php:43
-msgid "CKEditor"
-msgstr ""
+msgid "CKEditor™"
+msgstr "CKEditor™"
 
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:83
@@ -3258,7 +3254,7 @@ msgstr ""
 
 #: resources/views/admin/trees.phtml:74
 #: resources/views/lists/datatables-attributes.phtml:33
-msgid "Calculating"
+msgid "Calculating…"
 msgstr ""
 
 #. I18N: Name of a module
@@ -3428,12 +3424,12 @@ msgid "Change family members"
 msgstr ""
 
 #: app/Http/RequestHandlers/TreePageEdit.php:64
-msgid "Change the Home page blocks"
+msgid "Change the “Home page” blocks"
 msgstr ""
 
 #: app/Http/RequestHandlers/UserPageEdit.php:62
-msgid "Change the My page blocks"
-msgstr "Mening sahifamdagi bloklarni o'zgartiring"
+msgid "Change the “My page” blocks"
+msgstr ""
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:52
@@ -3522,7 +3518,7 @@ msgid "Check for new version"
 msgstr ""
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
-msgid "Check for pending changes"
+msgid "Check for pending changes…"
 msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:61
@@ -3597,12 +3593,12 @@ msgstr ""
 #: app/SurnameTradition/PaternalSurnameTradition.php:50
 #: app/SurnameTradition/PatrilinealSurnameTradition.php:50
 #: app/SurnameTradition/PolishSurnameTradition.php:66
-msgid "Children take their fathers surname."
+msgid "Children take their father’s surname."
 msgstr ""
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition/MatrilinealSurnameTradition.php:50
-msgid "Children take their mothers surname."
+msgid "Children take their mother’s surname."
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -3747,7 +3743,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:79
-msgid "Ciudad Jurez, Mexico"
+msgid "Ciudad Juárez, Mexico"
 msgstr ""
 
 #: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:63
@@ -3811,7 +3807,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:81
-msgid "Colonia Jurez, Mexico"
+msgid "Colonia Juárez, Mexico"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -4031,7 +4027,7 @@ msgid "Copy all the records from %1$s into %2$s."
 msgstr ""
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:126
-msgid "Copy files"
+msgid "Copy files…"
 msgstr ""
 
 #: app/Module/ShareUrlModule.php:51
@@ -4040,6 +4036,11 @@ msgstr ""
 
 #: app/Gedcom.php:499 app/Gedcom.php:526
 msgid "Copyright"
+msgstr "Copyright"
+
+#. I18N: Location of an LDS church temple
+#: app/Elements/TempleCode.php:85
+msgid "Córdoba, Argentina"
 msgstr ""
 
 #: app/Gedcom.php:512
@@ -4048,7 +4049,7 @@ msgstr ""
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameSlashesAndSpaces.php:69
-msgid "Correct NAME records of the form John/DOE/ or John /DOE, as produced by older genealogy programs."
+msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
 msgstr ""
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
@@ -4126,7 +4127,7 @@ msgid "Create a submitter"
 msgstr ""
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
-msgid "Create a temporary folder"
+msgid "Create a temporary folder…"
 msgstr ""
 
 #: resources/views/modals/media-file-fields.phtml:80
@@ -4319,7 +4320,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
-msgid "Curaao"
+msgid "Curaçao"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -4373,7 +4374,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:129
-msgid "Cte dIvoire"
+msgid "Côte d’Ivoire"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
@@ -5150,7 +5151,7 @@ msgstr ""
 "odamlarni joyida qoldiradi. Bu oilani oʻchirib tashlamoqchimisiz?"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
-msgid "Deleting"
+msgid "Deleting…"
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -5303,25 +5304,25 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:162
 msgctxt "GENITIVE"
-msgid "Dhu al-Qidah"
+msgid "Dhu al-Qi’dah"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:252
 msgctxt "INSTRUMENTAL"
-msgid "Dhu al-Qidah"
+msgid "Dhu al-Qi’dah"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:207
 msgctxt "LOCATIVE"
-msgid "Dhu al-Qidah"
+msgid "Dhu al-Qi’dah"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:117
 msgctxt "NOMINATIVE"
-msgid "Dhu al-Qidah"
+msgid "Dhu al-Qi’dah"
 msgstr ""
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
@@ -5369,12 +5370,12 @@ msgstr ""
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:60
-msgid "Display and manage a family trees favorite pages."
+msgid "Display and manage a family tree’s favorite pages."
 msgstr ""
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:61
-msgid "Display and manage a users favorite pages."
+msgid "Display and manage a user’s favorite pages."
 msgstr "Foydalanuvchilarning sevimli sahifalarini ko'rsatish va boshqarish."
 
 #: app/Gedcom.php:451 resources/views/calendar-page.phtml:195
@@ -5435,8 +5436,8 @@ msgstr "Yuklab olish"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:124
 #, php-format
-msgid "Download %s"
-msgstr "%s yuklab oling"
+msgid "Download %s…"
+msgstr "%s yuklab oling…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
@@ -5479,7 +5480,7 @@ msgstr ""
 "allaqachon mavjud. Boshqa foydalanuvchi nomini tanlang."
 
 #: resources/views/help/source-events.phtml:10
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, Oneida, Idaho, USA would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. Idaho, USA would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
 "Har bir manba, odatda, ma'lum bir sana oralig'i va joy yurisdiktsiyasi uchun "
 "muayyan voqealarni qayd qiladi. Masalan, aholini ro'yxatga olish ro'yxatga "
@@ -5495,7 +5496,7 @@ msgstr ""
 "yurisdiktsiya joyi bo'lar edi."
 
 #: resources/views/help/pending-changes.phtml:27
-msgid "Each user account has an option to automatically accept changes. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
+msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
 msgstr ""
 "Har bir foydalanuvchi hisobida o'zgarishlarni avtomatik ravishda qabul "
 "qilish imkoniyati mavjud. Bu yoqilganda, foydalanuvchi tomonidan kiritilgan "
@@ -5902,7 +5903,7 @@ msgstr ""
 
 #: app/Module/IndividualListModule.php:335
 #, php-format
-msgid "Exclude individuals with %s as a married name"
+msgid "Exclude individuals with “%s” as a married name"
 msgstr "Nikohda %s boʻlgan shaxslar bundan mustasno"
 
 #: resources/views/admin/media.phtml:73
@@ -5937,7 +5938,7 @@ msgid "Export a GEDCOM file"
 msgstr ""
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:116
-msgid "Export all the family trees to GEDCOM files"
+msgid "Export all the family trees to GEDCOM files…"
 msgstr ""
 
 #: resources/views/admin/trees-export.phtml:60
@@ -5991,7 +5992,7 @@ msgstr ""
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:28
-msgid "FAQs are lists of questions and answers, which allow you to explain the sites rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
+msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
 
 #: app/CustomTags/Gedcom7.php:96 app/Gedcom.php:656
@@ -6372,18 +6373,18 @@ msgid "Father: %s"
 msgstr ""
 
 #: resources/views/fact-parent-age.phtml:32
-msgid "Fathers age"
+msgid "Father’s age"
 msgstr ""
 
 #. I18N: A step-family. %s is an individual’s name
 #: app/Individual.php:884
 #, php-format
-msgid "Fathers family with %s"
+msgid "Father’s family with %s"
 msgstr ""
 
 #. I18N: A step-family.
 #: app/Individual.php:888
-msgid "Fathers family with an unknown individual"
+msgid "Father’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Name of a module
@@ -6489,12 +6490,12 @@ msgstr ""
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:104
 #, php-format
-msgid "Filenames are not allowed to contain the character %s."
+msgid "Filenames are not allowed to contain the character “%s”."
 msgstr ""
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:110
 #, php-format
-msgid "Filenames are not allowed to have the extension %s."
+msgid "Filenames are not allowed to have the extension “%s”."
 msgstr ""
 
 #: resources/views/admin/control-panel.phtml:867
@@ -7164,15 +7165,15 @@ msgid "Godson"
 msgstr ""
 
 #: app/Module/GoogleAnalyticsModule.php:48
-msgid "Google analytics"
+msgid "Google™ analytics"
 msgstr ""
 
 #: app/Module/GoogleMaps.php:86 app/Module/MapLinkGoogle.php:41
-msgid "Google maps"
+msgid "Google™ maps"
 msgstr ""
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
-msgid "Google webmaster tools"
+msgid "Google™ webmaster tools"
 msgstr ""
 
 #: app/Gedcom.php:665
@@ -7375,19 +7376,19 @@ msgstr ""
 #: resources/views/emails/register-user-html.phtml:17
 #: resources/views/emails/register-user-text.phtml:16
 #, php-format
-msgid "Hello %s"
+msgid "Hello %s…"
 msgstr ""
 
 #: resources/views/register-success-page.phtml:21
 #, php-format
-msgid "Hello %s<br>Thank you for your registration."
+msgid "Hello %s…<br>Thank you for your registration."
 msgstr ""
 
 #: resources/views/emails/register-notify-html.phtml:19
 #: resources/views/emails/register-notify-text.phtml:17
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:14
-msgid "Hello administrator"
+msgid "Hello administrator…"
 msgstr ""
 
 #: app/Http/RequestHandlers/HelpText.php:280 resources/views/help/link.phtml:13
@@ -7611,7 +7612,7 @@ msgid "Husband"
 msgstr "Er"
 
 #: app/Gedcom.php:414 resources/views/modules/timeline-chart/chart.phtml:357
-msgid "Husbands age"
+msgid "Husband’s age"
 msgstr "Erining yoshi"
 
 #: resources/views/admin/site-logs.phtml:60
@@ -7660,12 +7661,12 @@ msgstr ""
 
 #: resources/views/help/name.phtml:24
 #, php-format
-msgid "If an individual does not have a surname, no slashes are needed: <%s>Jn Einarsson<%s>"
+msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
 msgstr ""
 
 #: resources/views/help/name.phtml:21
 #, php-format
-msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>Jos Antonio /Gmez/ /Iglesias/<%s>"
+msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 msgstr ""
 
 #: resources/views/help/name.phtml:30
@@ -7693,7 +7694,7 @@ msgstr ""
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be alive. Childrens birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
 "Agar bu shaxsning o'limi, dafn etilishidan tashqari boshqa hodisalari bu "
 "yillardan ko'ra yaqinroq bo'lsa, ular tirik hisoblanadi. Shu maqsadda "
@@ -7735,7 +7736,7 @@ msgstr ""
 
 #: resources/views/emails/register-user-html.phtml:36
 #: resources/views/emails/register-user-text.phtml:24
-msgid "If you didnt request an account, you can just delete this message."
+msgid "If you didn’t request an account, you can just delete this message."
 msgstr ""
 
 #: resources/views/modals/media-file-fields.phtml:75
@@ -7812,11 +7813,11 @@ msgstr ""
 
 #: resources/views/admin/trees-merge.phtml:27
 #: resources/views/admin/trees-renumber.phtml:24
-msgid "In a family tree, each record has an internal reference number (called an XREF) such as F123 or R14."
+msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
 
 #: resources/views/help/romanized.phtml:10
-msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled Romanized, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
+msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
 "Ko'pgina madaniyatlarda an'anaviy ismni an'anaviy belgilar bilan yozish odat "
 "tusiga kiradi, shuningdek, ismning lotin alifbosiga asoslangan tillarda, "
@@ -7832,7 +7833,7 @@ msgstr ""
 "yapon nomlari uchun ishlatilishi mumkin."
 
 #: resources/views/help/hebrew.phtml:10
-msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled Hebrew, it is not restricted to containing only Hebrew characters."
+msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
 "Ko'pgina madaniyatlarda an'anaviy ismni an'anaviy belgilar bilan yozish odat "
 "tusiga kiradi, shuningdek, ismning lotin alifbosiga asoslangan tillarda, "
@@ -7862,16 +7863,16 @@ msgstr ""
 "ushbu qiymatlarni bo'sh qoldiring."
 
 #: app/Http/RequestHandlers/CalendarPage.php:118
-msgid "In this month"
+msgid "In this month…"
 msgstr ""
 
 #: app/Http/RequestHandlers/CalendarPage.php:121
-msgid "In this year"
+msgid "In this year…"
 msgstr "Bu yilda"
 
 #. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
-msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the thumbs folders."
+msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
@@ -7888,7 +7889,7 @@ msgstr ""
 
 #: app/Module/IndividualListModule.php:341
 #, php-format
-msgid "Include individuals with %s as a married name"
+msgid "Include individuals with “%s” as a married name"
 msgstr "Nikohda %s boʻlgan shaxslarni qoʻshing"
 
 #. I18N: Label for check-box
@@ -7907,7 +7908,7 @@ msgstr ""
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
-msgid "Include the individuals immediate family"
+msgid "Include the individual’s immediate family"
 msgstr "Shaxsiy oila a'zolarini ham qo'shing"
 
 #. I18N: Name of a country or state
@@ -8392,7 +8393,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:706
 #: resources/views/edit/edit-fact.phtml:35
 #: resources/views/edit/edit-record.phtml:34
-msgid "Keep the existing last change information"
+msgid "Keep the existing “last change” information"
 msgstr "Mavjud oxirgi o'zgartirish ma'lumotlarini saqlang"
 
 #. I18N: Name of a country or state
@@ -8578,7 +8579,7 @@ msgid "Laos"
 msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:74
-msgid "Large systems (50,000 individuals): 64128 MB, 4080 seconds"
+msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
 msgstr "Katta tizimlar (50 000 kishi): 64128 MB, 4080 soniya"
 
 #: app/Statistics/Google/ChartFamilyLargest.php:109
@@ -8855,7 +8856,7 @@ msgid "Living individuals"
 msgstr "Tirik shaxslar"
 
 #: resources/views/lists/datatables-attributes.phtml:32
-msgid "Loading"
+msgid "Loading…"
 msgstr ""
 
 #. I18N: “Local files” are stored on this computer
@@ -8909,7 +8910,7 @@ msgstr ""
 
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:361
-msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individuals given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
+msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
 msgstr ""
 "Bir xil familiyaga ega bo'lgan shaxslarning uzun ro'yxatlari ko'rsatilgan "
 "shaxslarning birinchi harfiga ko'ra kichikroq pastki ro'yxatlarga bo'linishi "
@@ -9414,7 +9415,7 @@ msgid "Match the exact text, unless it occurs in the middle of a word."
 msgstr ""
 
 #: app/Module/MatomoAnalyticsModule.php:44
-msgid "Matomo / Piwik analytics"
+msgid "Matomo™ / Piwik™ analytics"
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -9575,7 +9576,7 @@ msgid "Mediterranio"
 msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:72
-msgid "Medium systems (5,000 individuals): 3264 MB, 2040 seconds"
+msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
 msgstr ""
 
 #: app/Date/JalaliDate.php:279
@@ -9985,18 +9986,18 @@ msgid "Mother: %s"
 msgstr ""
 
 #: resources/views/fact-parent-age.phtml:22
-msgid "Mothers age"
+msgid "Mother’s age"
 msgstr ""
 
 #. I18N: A step-family. %s is an individual’s name
 #: app/Individual.php:894
 #, php-format
-msgid "Mothers family with %s"
+msgid "Mother’s family with %s"
 msgstr ""
 
 #. I18N: A step-family.
 #: app/Individual.php:898
-msgid "Mothers family with an unknown individual"
+msgid "Mother’s family with an unknown individual"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -10702,7 +10703,7 @@ msgstr "Noyabr"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:145
-msgid "NukuAlofa, Tonga"
+msgid "Nuku’Alofa, Tonga"
 msgstr ""
 
 #: app/Gedcom.php:470 app/Gedcom.php:714
@@ -10872,8 +10873,8 @@ msgid "On this day"
 msgstr ""
 
 #: app/Http/RequestHandlers/CalendarPage.php:115
-msgid "On this day"
-msgstr "Shu kuni"
+msgid "On this day…"
+msgstr "Shu kuni…"
 
 #: resources/views/admin/map-import-form.phtml:63
 msgid "Only add new records"
@@ -10903,7 +10904,7 @@ msgid "OpenRouteService"
 msgstr ""
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:51
-msgid "OpenStreetMap"
+msgid "OpenStreetMap™"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -11125,7 +11126,7 @@ msgid "Parents and siblings"
 msgstr ""
 
 #: resources/views/fact-parent-age.phtml:42
-msgid "Parents age"
+msgid "Parent’s age"
 msgstr ""
 
 #. I18N: A configuration setting
@@ -11146,7 +11147,7 @@ msgstr "Parol"
 #: resources/views/edit-account-page.phtml:93
 #: resources/views/password-reset-page.phtml:39
 #: resources/views/register-page.phtml:78
-msgid "Passwords must be at least 8 characters long and are case-sensitive, so that secret is different from SECRET."
+msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr ""
 "Parollar kamida 8 ta belgidan iborat bo'lishi va katta-kichik harflarga "
 "sezgir bo'lishi kerak, shuning uchun sir SECRETdan farq qiladi."
@@ -11351,7 +11352,7 @@ msgstr ""
 "manbalarda, eslatmalarda va hokazolarda ko'rsatilishi mumkin."
 
 #: resources/views/help/place.phtml:10
-msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, Westminster, London, England."
+msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
 msgstr ""
 
 #: app/Gedcom.php:586
@@ -11570,7 +11571,7 @@ msgstr ""
 
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
-msgid "Powered by webtrees"
+msgid "Powered by webtrees™"
 msgstr ""
 
 #. I18N: a month in the French republican calendar
@@ -11627,7 +11628,7 @@ msgstr ""
 
 #: resources/views/admin/modules.phtml:46
 #, php-format
-msgid "Preferences exist for the module %s, but this module no longer exists."
+msgid "Preferences exist for the module “%s”, but this module no longer exists."
 msgstr "%s moduli uchun imtiyozlar mavjud, ammo bu modul endi mavjud emas."
 
 #. I18N: A configuration setting
@@ -11637,7 +11638,7 @@ msgstr ""
 
 #. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/President_of_the_Church
 #: app/Elements/TempleCode.php:161
-msgid "Presidents Office"
+msgid "President’s Office"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -11788,49 +11789,49 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:146
 msgctxt "GENITIVE"
-msgid "Rabi al-awwal"
+msgid "Rabi’ al-awwal"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:236
 msgctxt "INSTRUMENTAL"
-msgid "Rabi al-awwal"
+msgid "Rabi’ al-awwal"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:191
 msgctxt "LOCATIVE"
-msgid "Rabi al-awwal"
+msgid "Rabi’ al-awwal"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:101
 msgctxt "NOMINATIVE"
-msgid "Rabi al-awwal"
+msgid "Rabi’ al-awwal"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:148
 msgctxt "GENITIVE"
-msgid "Rabi al-thani"
+msgid "Rabi’ al-thani"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:238
 msgctxt "INSTRUMENTAL"
-msgid "Rabi al-thani"
+msgid "Rabi’ al-thani"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:193
 msgctxt "LOCATIVE"
-msgid "Rabi al-thani"
+msgid "Rabi’ al-thani"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:103
 msgctxt "NOMINATIVE"
-msgid "Rabi al-thani"
+msgid "Rabi’ al-thani"
 msgstr ""
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
@@ -12307,7 +12308,7 @@ msgstr ""
 "eslatma sifatida foydalanishingiz mumkin."
 
 #: resources/views/modules/todo/config.phtml:18
-msgid "Research tasks are stored using the custom GEDCOM tag _TODO. Other genealogy applications may not recognize this tag."
+msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
 msgstr ""
 
 #: app/CustomTags/Gedcom7.php:182 app/Gedcom.php:729
@@ -12410,7 +12411,7 @@ msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:419
-msgid "Runion"
+msgid "Réunion"
 msgstr ""
 
 #: resources/views/admin/site-mail.phtml:88
@@ -12471,7 +12472,7 @@ msgid "Sage"
 msgstr ""
 
 #: app/Statistics/Service/CountryService.php:95
-msgid "Saint Barthlemy"
+msgid "Saint Barthélemy"
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -12525,7 +12526,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:182
-msgid "San Jos, Costa Rica"
+msgid "San José, Costa Rica"
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -12546,6 +12547,11 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:178
 msgid "Santo Domingo, Dominican Republic"
+msgstr ""
+
+#. I18N: Location of an LDS church temple
+#: app/Elements/TempleCode.php:186
+msgid "São Paulo, Brazil"
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -12937,7 +12943,7 @@ msgstr "Barcha o'lgan shaxslar uchun maxfiylik kirish darajasini o'rnating."
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:39
 #: resources/views/emails/verify-notify-text.phtml:27
-msgid "Set the status to approved."
+msgid "Set the status to “approved”."
 msgstr ""
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
@@ -13054,25 +13060,25 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:156
 msgctxt "GENITIVE"
-msgid "Shaaban"
+msgid "Sha’aban"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:246
 msgctxt "INSTRUMENTAL"
-msgid "Shaaban"
+msgid "Sha’aban"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:201
 msgctxt "LOCATIVE"
-msgid "Shaaban"
+msgid "Sha’aban"
 msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:111
 msgctxt "NOMINATIVE"
-msgid "Shaaban"
+msgid "Sha’aban"
 msgstr ""
 
 #: resources/xml/reports/descendancy_report.xml:358
@@ -13162,7 +13168,7 @@ msgstr ""
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:66
-msgid "Show acceptable use agreement on Request a new user account page"
+msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr ""
 
 #: resources/views/modules/media/tab.phtml:24
@@ -13465,12 +13471,12 @@ msgstr ""
 
 #: resources/views/lists/families-table.phtml:113
 #: resources/views/lists/individuals-table.phtml:155
-msgid "Show leaves couples or individuals. These are individuals who are alive but have no children recorded in the database."
+msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
 msgstr ""
 
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/individuals-table.phtml:150
-msgid "Show roots couples or individuals. These individuals may also be called patriarchs. They are individuals who have no parents recorded in the database."
+msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
 msgstr ""
 "Er-xotinlar yoki shaxslarning ildizlarini ko'rsating. Bu shaxslarni "
 "patriarxlar deb ham atash mumkin. Ular ma'lumotlar bazasida qayd etilgan ota-"
@@ -13646,7 +13652,7 @@ msgid "Slovenia"
 msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:70
-msgid "Small systems (500 individuals): 1632 MB, 1020 seconds"
+msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -13689,7 +13695,7 @@ msgstr ""
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:519
-msgid "Some themes can display icons on the Facts and events tab."
+msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
 
 #: resources/views/edit/change-family-members.phtml:63
@@ -13929,7 +13935,7 @@ msgid "Starting range of change dates"
 msgstr ""
 
 #: app/Module/StatcounterModule.php:41
-msgid "Statcounter"
+msgid "Statcounter™"
 msgstr ""
 
 #: app/CustomTags/GedcomL.php:232 app/CustomTags/PersonalAncestralFile.php:72
@@ -14117,12 +14123,12 @@ msgid "Surnames"
 msgstr "Familiyalar"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individuals gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr ""
 "Familiyalar shaxsning jinsi va oilaviy holatini ko'rsatish uchun qo'yiladi."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individuals gender."
+msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr "Familiyalar shaxsning jinsini ko'rsatish uchun qo'yiladi."
 
 #. I18N: Location of an LDS church temple
@@ -14335,11 +14341,11 @@ msgid "Thailand"
 msgstr ""
 
 #: resources/views/help/name.phtml:10
-msgid "The <b>name</b> field contains the individuals full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
+msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
 
 #: resources/views/help/surname.phtml:10
-msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individuals actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
+msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
 "<b>familiya</b> maydonida saralash va guruhlash uchun foydalaniladigan nom "
 "mavjud. U har doim <b>ism</b> maydonidan olinadigan shaxslarning haqiqiy "
@@ -14351,7 +14357,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:98
 #, php-format
-msgid "The GEDCOM file %s has been imported."
+msgid "The GEDCOM file “%s” has been imported."
 msgstr ""
 
 #: resources/views/admin/tags.phtml:35
@@ -14365,12 +14371,12 @@ msgstr ""
 
 #: app/Services/ServerCheckService.php:123
 #, php-format
-msgid "The PHP extension %s is not installed."
+msgid "The PHP extension “%s” is not installed."
 msgstr ""
 
 #: app/Services/ServerCheckService.php:179
 #, php-format
-msgid "The PHP function %1$s is disabled."
+msgid "The PHP function “%1$s” is disabled."
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -14380,12 +14386,12 @@ msgstr ""
 
 #: app/Services/ServerCheckService.php:142
 #, php-format
-msgid "The PHP.INI setting %1$s is disabled."
+msgid "The PHP.INI setting “%1$s” is disabled."
 msgstr ""
 
 #: app/Services/ServerCheckService.php:146
 #, php-format
-msgid "The PHP.INI setting %1$s is enabled."
+msgid "The PHP.INI setting “%1$s” is enabled."
 msgstr "PHP.INI sozlamasi %1$s yoqilgan."
 
 #: resources/views/modules/share-url/share.phtml:31
@@ -14413,14 +14419,14 @@ msgstr "Kalendar menyusi."
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php:60
 #, php-format
-msgid "The changes to %s have been accepted."
+msgid "The changes to “%s” have been accepted."
 msgstr ""
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php:64
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php:59
 #, php-format
-msgid "The changes to %s have been rejected."
+msgid "The changes to “%s” have been rejected."
 msgstr ""
 
 #. I18N: Description of the “Charts” module
@@ -14441,7 +14447,7 @@ msgstr ""
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #: app/Http/RequestHandlers/MapDataSave.php:101
 #, php-format
-msgid "The details for %s have been updated."
+msgid "The details for “%s” have been updated."
 msgstr ""
 
 #. I18N: %s is a filename
@@ -14453,25 +14459,25 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:63
 #, php-format
-msgid "The family tree %s already exists."
+msgid "The family tree “%s” already exists."
 msgstr ""
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:70
 #, php-format
-msgid "The family tree %s has been created."
+msgid "The family tree “%s” has been created."
 msgstr ""
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php:62
 #: app/Http/RequestHandlers/SynchronizeTrees.php:112
 #, php-format
-msgid "The family tree %s has been deleted."
+msgid "The family tree “%s” has been deleted."
 msgstr ""
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:52
 #, php-format
-msgid "The family tree %s will be shown to visitors when they first arrive at this website."
+msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:249
@@ -14486,7 +14492,7 @@ msgstr ""
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:84
 #, php-format
-msgid "The family %s has been deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr ""
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:123
@@ -14524,7 +14530,7 @@ msgstr ""
 #: resources/views/media-page-details.phtml:56
 #: resources/views/modules/media-list/page.phtml:147
 #, php-format
-msgid "The file %s does not exist."
+msgid "The file “%s” does not exist."
 msgstr ""
 
 #: resources/views/edit/reorder-families.phtml:77
@@ -14554,7 +14560,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:58
 #, php-format
-msgid "The folder %s does not exist."
+msgid "The folder “%s” does not exist."
 msgstr ""
 
 #: resources/views/admin/merge-records-step-2.phtml:39
@@ -14594,12 +14600,12 @@ msgstr ""
 #: app/Http/RequestHandlers/DeleteRecord.php:92
 #: app/Http/RequestHandlers/DeleteRecord.php:97
 #, php-format
-msgid "The link from %1$s to %2$s has been deleted."
+msgid "The link from “%1$s” to “%2$s” has been deleted."
 msgstr ""
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:103
 #, php-format
-msgid "The link from %1$s to %2$s has been updated."
+msgid "The link from “%1$s” to “%2$s” has been updated."
 msgstr ""
 
 #. I18N: Description of the “Lists” module
@@ -14658,13 +14664,13 @@ msgstr ""
 #: app/Module/ChartsBlockModule.php:124 app/Module/ChartsBlockModule.php:144
 #: app/Module/ChartsBlockModule.php:164 app/Module/ChartsBlockModule.php:178
 #, php-format
-msgid "The module %s has been disabled."
+msgid "The module “%s” has been disabled."
 msgstr "%s moduli o‘chirilgan."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:77
 #: app/Http/RequestHandlers/ModulesAllAction.php:68
 #, php-format
-msgid "The module %s has been enabled."
+msgid "The module “%s” has been enabled."
 msgstr "%s moduli yoqilgan."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
@@ -14693,7 +14699,7 @@ msgstr ""
 #: app/Validator.php:333 app/Validator.php:355 app/Validator.php:374
 #: app/Validator.php:390 app/Validator.php:406
 #, php-format
-msgid "The parameter %s is missing."
+msgid "The parameter “%s” is missing."
 msgstr ""
 
 #: app/Http/RequestHandlers/SetupWizard.php:381
@@ -14728,12 +14734,12 @@ msgstr ""
 #: app/Http/RequestHandlers/TreePreferencesAction.php:163
 #: app/Http/RequestHandlers/TreePrivacyAction.php:126
 #, php-format
-msgid "The preferences for the family tree %s have been updated."
+msgid "The preferences for the family tree “%s” have been updated."
 msgstr ""
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:72
 #, php-format
-msgid "The preferences for the module %s have been deleted."
+msgid "The preferences for the module “%s” have been deleted."
 msgstr "%s moduli uchun afzalliklar oʻchirib tashlandi."
 
 #: app/Module/BingMaps.php:100 app/Module/CustomCssJsModule.php:101
@@ -14744,7 +14750,7 @@ msgstr "%s moduli uchun afzalliklar oʻchirib tashlandi."
 #: app/Module/OpenRouteServiceAutocomplete.php:106
 #: app/Module/RelationshipsChartModule.php:451 app/Module/SiteMapModule.php:171
 #, php-format
-msgid "The preferences for the module %s have been updated."
+msgid "The preferences for the module “%s” have been updated."
 msgstr "%s moduli uchun sozlamalar yangilandi."
 
 #: resources/views/setup/step-4-database-mysql.phtml:126
@@ -14756,7 +14762,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:174
 #, php-format
-msgid "The records %1$s and %2$s have been merged."
+msgid "The records “%1$s” and “%2$s” have been merged."
 msgstr ""
 
 #. I18N: Description of the “Reports” module
@@ -14786,13 +14792,13 @@ msgid "The server could not understand this request."
 msgstr ""
 
 #: app/Services/ServerCheckService.php:244
-msgid "The servers temporary folder cannot be accessed."
+msgid "The server’s temporary folder cannot be accessed."
 msgstr ""
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:551
 #: app/Services/UpgradeService.php:176 app/Services/UpgradeService.php:208
 #: resources/views/admin/trees-check.phtml:86
-msgid "The servers time limit has been reached."
+msgid "The server’s time limit has been reached."
 msgstr ""
 
 #. I18N: Description of “Statistics” module
@@ -14824,13 +14830,13 @@ msgstr ""
 #: resources/views/admin/site-preferences.phtml:56
 #: resources/views/admin/users-edit.phtml:142
 #: resources/views/edit-account-page.phtml:116
-msgid "The time zone is required for date calculations, such as knowing todays date."
+msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:30
 #, php-format
-msgid "The two family trees have %1$s record which uses the same XREF."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same XREF."
 msgstr[0] ""
 msgstr[1] ""
@@ -14996,7 +15002,7 @@ msgid "Thermidor"
 msgstr ""
 
 #: resources/views/modules/privacy-policy/page.phtml:38
-msgid "These cookies are essential, and do not require consent."
+msgid "These cookies are “essential”, and do not require consent."
 msgstr ""
 
 #: resources/views/admin/trees-unconnected.phtml:39
@@ -15062,8 +15068,8 @@ msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:32
 #, php-format
-msgid "This family tree has %s record which uses the same XREF as another family tree."
-msgid_plural "This family tree has %s records which use the same XREF as another family tree."
+msgid "This family tree has %s record which uses the same “XREF” as another family tree."
+msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -15195,7 +15201,7 @@ msgstr ""
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:99
-msgid "This is the name of the SMTP server. localhost means that the mail service is running on the same computer as your web server."
+msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr ""
 
 #: resources/views/admin/users-create.phtml:37
@@ -15257,7 +15263,7 @@ msgstr ""
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml:63
 #: resources/views/admin/site-mail.phtml:77
-msgid "This name is used in the From field, when sending automatic emails from this server."
+msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
 
 #: app/Auth.php:380 app/Auth.php:409
@@ -15298,7 +15304,7 @@ msgstr ""
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:401
-msgid "This option controls whether or not to show age of father and mother next to childs birthdate on charts."
+msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
 "Ushbu parametr diagrammalarda bolaning tug'ilgan sanasi yonida ota va "
 "onaning yoshini ko'rsatish yoki ko'rsatmaslikni nazorat qiladi."
@@ -15316,7 +15322,7 @@ msgstr ""
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
-msgid "This option will retain family links in private records. This means that you will see empty private boxes on the pedigree chart and on other charts with private individuals."
+msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
@@ -15341,7 +15347,7 @@ msgstr[0] "Bu sahifa %s marta koʻrilgan."
 msgstr[1] "Bu sahifalar %s marta koʻrilgan."
 
 #: resources/views/help/pending-changes.phtml:18
-msgid "This process allows the sites owner to ensure that the new information follows the sites standards and conventions, has proper source attributions, etc."
+msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
 "Ushbu jarayon sayt egasiga yangi ma'lumotlar sayt standartlari va "
 "konventsiyalariga mos kelishini, tegishli manba atributlariga ega bo'lishini "
@@ -15384,7 +15390,7 @@ msgid "This repository does not exist or you do not have permission to view it."
 msgstr "Bu ombor mavjud emas yoki uni koʻrish uchun ruxsatingiz yoʻq."
 
 #: resources/views/modules/privacy-policy/page.phtml:27
-msgid "This research is a legitimate interest under article 6(f) of the EU General Data Protection Regulations."
+msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
 msgstr ""
 
 #: resources/views/admin/users-edit.phtml:263
@@ -15399,7 +15405,7 @@ msgstr ""
 "konfiguratsiyasini o'zgartirishga ruxsat beradi."
 
 #: resources/views/admin/users-edit.phtml:257
-msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the automatically accept changes option enabled."
+msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
 "Bu rolda aʼzo rolining barcha ruxsatnomalari hamda maʼlumotlarni qoʻshish/oʻ"
 "zgartirish/oʻchirish ruxsati bor. Har qanday o'zgarishlar moderator "
@@ -15416,7 +15422,7 @@ msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:78
 #, php-format
-msgid "This servers memory limit is %s MB and its CPU time limit is %s seconds."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
 msgstr ""
 
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
@@ -15430,7 +15436,7 @@ msgstr "Bu manba mavjud emas yoki uni koʻrish uchun ruxsatingiz yoʻq."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:209
-msgid "This text will be appended to each page title. It will be shown in the browsers title bar, bookmarks, etc."
+msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr ""
 
 #: resources/views/errors/no-tree-access.phtml:10
@@ -15482,7 +15488,7 @@ msgstr ""
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:30
 #, php-format
-msgid "This will delete all the genealogy data from %s and replace it with data from a GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr ""
 "Bu %s dan barcha nasl-nasab maʼlumotlarini oʻchirib tashlaydi va uni GEDCOM "
 "faylidagi maʼlumotlar bilan almashtiradi."
@@ -15648,7 +15654,7 @@ msgid "To"
 msgstr ""
 
 #: resources/views/modules/html/config.phtml:34
-msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your sites requirements."
+msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
 
 #: resources/views/admin/tags.phtml:1027
@@ -15656,7 +15662,7 @@ msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
 
 #: resources/views/modules/todo/config.phtml:17
-msgid "To create new research tasks, you must first add research task to the list of facts and events in the family trees preferences."
+msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
 
 #: app/Services/LeafletJsService.php:65
@@ -15956,7 +15962,7 @@ msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:196
-msgid "Tuxtla Gutirrez, Mexico"
+msgid "Tuxtla Gutiérrez, Mexico"
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -16174,7 +16180,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:125
 #, php-format
-msgid "Unzip %s to a temporary folder"
+msgid "Unzip %s to a temporary folder…"
 msgstr ""
 
 #. I18N: Name of a module
@@ -16240,7 +16246,7 @@ msgid "Use SMTP to send messages"
 msgstr ""
 
 #: app/Module/FixSearchAndReplace.php:103
-msgid "Use a ? to match a single character, use * to match zero or more characters."
+msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
 msgstr ""
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
@@ -16300,7 +16306,7 @@ msgid "Use silhouettes"
 msgstr ""
 
 #: app/Http/RequestHandlers/CopyFact.php:73
-msgid "Use the edit menu to paste this into another record."
+msgid "Use the “edit“ menu to paste this into another record."
 msgstr ""
 
 #: resources/views/register-page.phtml:91
@@ -16325,7 +16331,7 @@ msgid "User administration"
 msgstr ""
 
 #: resources/views/admin/users-cleanup.phtml:64
-msgid "User didnt verify within 7 days."
+msgid "User didn’t verify within 7 days."
 msgstr ""
 
 #: resources/views/admin/users-cleanup.phtml:66
@@ -16363,7 +16369,7 @@ msgstr "Foydalanuvchi nomi yoki elektron pochta manzili"
 #: resources/views/admin/users-edit.phtml:61
 #: resources/views/edit-account-page.phtml:37
 #: resources/views/register-page.phtml:66
-msgid "Usernames are case-insensitive and ignore accented letters, so that chloe, chlo, and Chloe are considered to be the same."
+msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr ""
 "Foydalanuvchi nomlari katta-kichik harflarni sezmaydi va urg'uli harflarga "
 "e'tibor bermaydi, shuning uchun chloe, chlo va Chloe bir xil deb hisoblanadi."
@@ -16375,7 +16381,7 @@ msgid "Users"
 msgstr "Foydalanuvchilar"
 
 #: resources/views/admin/users-cleanup.phtml:45
-msgid "Users account has been inactive too long: "
+msgid "User’s account has been inactive too long: "
 msgstr ""
 
 #. I18N: Name of a country or state
@@ -16645,7 +16651,7 @@ msgstr ""
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:711
-msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing last change information, for example when making minor corrections to someone elses data. This option controls whether this feature is selected by default."
+msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr ""
 "Yozuv tahrirlanganda foydalanuvchi va vaqt tamg'asi yozib olinadi. Ba'zan "
 "mavjud oxirgi o'zgarishlar ma'lumotlarini saqlash tavsiya etiladi, masalan, "
@@ -16653,7 +16659,7 @@ msgstr ""
 "parametr ushbu xususiyat sukut bo'yicha tanlangan yoki yo'qligini boshqaradi."
 
 #: resources/views/admin/users-edit.phtml:109
-msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the email verified option is selected automatically."
+msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
 
 #: resources/views/edit/reorder-families.phtml:36
@@ -16668,7 +16674,7 @@ msgid "When you add a new family member, a default surname can be provided. This
 msgstr ""
 
 #: resources/views/help/pending-changes.phtml:14
-msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a pending area. These pending changes need to be reviewed by a moderator before they are accepted."
+msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
 "Ma'lumotni qo'shsangiz, tahrir qilsangiz yoki o'chirsangiz, o'zgarishlar "
 "darhol saqlanmaydi. Buning o'rniga ular kutilayotgan hududda saqlanadi. "
@@ -16724,7 +16730,7 @@ msgid "Wife"
 msgstr "Xotin"
 
 #: app/Gedcom.php:442 resources/views/modules/timeline-chart/chart.phtml:355
-msgid "Wifes age"
+msgid "Wife’s age"
 msgstr "Xotinlarning yoshi"
 
 #: app/Gedcom.php:758
@@ -16757,7 +16763,7 @@ msgstr ""
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
 #: app/SurnameTradition/PolishSurnameTradition.php:67
-msgid "Wives take their husbands surname."
+msgid "Wives take their husband’s surname."
 msgstr "Erining familiyasiga o'tgan hotinlar."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:75
@@ -16814,7 +16820,7 @@ msgstr ""
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:71
-msgid "You can change the appearance of webtrees using themes. Each theme has a different style, layout, color scheme, etc."
+msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr ""
 "Mavzular yordamida veb-shajara ko'rinishini o'zgartirishingiz mumkin. Har "
 "bir mavzuda turli uslub, tartib, rang sxemasi va boshqalar mavjud."
@@ -16834,7 +16840,7 @@ msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "GEDCOM spetsifikatsiyasining nusxasini %s dan yuklab olishingiz mumkin."
 
 #: resources/views/modules/privacy-policy/page.phtml:63
-msgid "You can opt out of tracking by setting the Do Not Track header in your browser preferences."
+msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
 
 #: resources/views/admin/trees-renumber.phtml:28
@@ -16937,7 +16943,7 @@ msgstr ""
 #: app/Http/RequestHandlers/ContactAction.php:125
 #: app/Http/RequestHandlers/RegisterAction.php:274
 #, php-format
-msgid "You should delete the %1$s from %2$s and try again."
+msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr ""
 
 #: resources/views/admin/users-edit.phtml:115
@@ -17433,17 +17439,17 @@ msgstr "kelin"
 
 #: app/Services/RelationshipService.php:1067
 msgctxt "sons wifes father"
-msgid "daughter-in-laws father"
+msgid "daughter-in-law’s father"
 msgstr "kelinning otasi"
 
 #: app/Services/RelationshipService.php:1069
 msgctxt "sons wifes mother"
-msgid "daughter-in-laws mother"
+msgid "daughter-in-law’s mother"
 msgstr "kelinning onasi"
 
 #: app/Services/RelationshipService.php:1071
 msgctxt "sons wifes parent"
-msgid "daughter-in-laws parent"
+msgid "daughter-in-law’s parent"
 msgstr "kelinning ota-onasi"
 
 #: resources/views/admin/location-edit.phtml:54
@@ -17495,7 +17501,7 @@ msgid "download"
 msgstr "yuklab oling"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:19
-msgid "dAboville number"
+msgid "d’Aboville number"
 msgstr ""
 
 #: resources/views/admin/components.phtml:141
@@ -17601,15 +17607,15 @@ msgid "father-in-law"
 msgstr "qaynota"
 
 #: app/Services/RelationshipService.php:369
-msgid "fianc"
+msgid "fiancé"
 msgstr ""
 
 #: app/Services/RelationshipService.php:416
-msgid "fianc(e)"
+msgid "fiancé(e)"
 msgstr ""
 
 #: app/Services/RelationshipService.php:393
-msgid "fiance"
+msgid "fiancée"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2352
@@ -18016,17 +18022,17 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:735
 msgctxt "childs daughters husband"
-msgid "granddaughters husband"
+msgid "granddaughter’s husband"
 msgstr "nevaralarining eri"
 
 #: app/Services/RelationshipService.php:757
 msgctxt "daughters daughters husband"
-msgid "granddaughters husband"
+msgid "granddaughter’s husband"
 msgstr "nevaralarining eri"
 
 #: app/Services/RelationshipService.php:1055
 msgctxt "sons daughters husband"
-msgid "granddaughters husband"
+msgid "granddaughter’s husband"
 msgstr "nevaralarining eri"
 
 #: app/Services/RelationshipService.php:587
@@ -18061,17 +18067,17 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:745
 msgctxt "childs sons wife"
-msgid "grandsons wife"
+msgid "grandson’s wife"
 msgstr "nabiralarining xotini"
 
 #: app/Services/RelationshipService.php:773
 msgctxt "daughters sons wife"
-msgid "grandsons wife"
+msgid "grandson’s wife"
 msgstr "nabiralarining xotini"
 
 #: app/Services/RelationshipService.php:1065
 msgctxt "sons sons wife"
-msgid "grandsons wife"
+msgid "grandson’s wife"
 msgstr "nabiralarining xotini"
 
 #: app/Services/RelationshipService.php:1441
@@ -18081,7 +18087,7 @@ msgstr "nabiralarining xotini"
 #: app/Services/RelationshipService.php:1495
 #: app/Services/RelationshipService.php:1511
 #, php-format
-msgid "great %s aunt"
+msgid "great ×%s aunt"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1444
@@ -18091,7 +18097,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1498
 #: app/Services/RelationshipService.php:1514
 #, php-format
-msgid "great %s aunt/uncle"
+msgid "great ×%s aunt/uncle"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18100,7 +18106,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2077
 #: app/Services/RelationshipService.php:2098
 #, php-format
-msgid "great %s grandchild"
+msgid "great ×%s grandchild"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18109,7 +18115,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2074
 #: app/Services/RelationshipService.php:2094
 #, php-format
-msgid "great %s granddaughter"
+msgid "great ×%s granddaughter"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18120,7 +18126,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1939
 #: app/Services/RelationshipService.php:1955
 #, php-format
-msgid "great %s grandfather"
+msgid "great ×%s grandfather"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18131,7 +18137,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1944
 #: app/Services/RelationshipService.php:1960
 #, php-format
-msgid "great %s grandmother"
+msgid "great ×%s grandmother"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18142,7 +18148,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1948
 #: app/Services/RelationshipService.php:1964
 #, php-format
-msgid "great %s grandparent"
+msgid "great ×%s grandparent"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18151,7 +18157,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2071
 #: app/Services/RelationshipService.php:2089
 #, php-format
-msgid "great %s grandson"
+msgid "great ×%s grandson"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18159,7 +18165,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1784
 #: app/Services/RelationshipService.php:1800
 #, php-format
-msgid "great %s nephew"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1672
@@ -18167,7 +18173,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1743
 #, php-format
 msgctxt "(a mans) brothers great (%s-1) grandson"
-msgid "great %s nephew"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1676
@@ -18175,7 +18181,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1746
 #, php-format
 msgctxt "(a mans) sisters great (%s-1) grandson"
-msgid "great %s nephew"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1679
@@ -18183,14 +18189,14 @@ msgstr ""
 #: app/Services/RelationshipService.php:1749
 #, php-format
 msgctxt "(a womans) great %s nephew"
-msgid "great %s nephew"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1779
 #: app/Services/RelationshipService.php:1791
 #: app/Services/RelationshipService.php:1807
 #, php-format
-msgid "great %s nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1695
@@ -18198,7 +18204,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1762
 #, php-format
 msgctxt "(a mans) brothers great (%s-1) grandchild"
-msgid "great %s nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1699
@@ -18206,7 +18212,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1765
 #, php-format
 msgctxt "(a mans) sisters great (%s-1) grandchild"
-msgid "great %s nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1702
@@ -18214,14 +18220,14 @@ msgstr ""
 #: app/Services/RelationshipService.php:1768
 #, php-format
 msgctxt "(a womans) great %s nephew/niece"
-msgid "great %s nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1776
 #: app/Services/RelationshipService.php:1788
 #: app/Services/RelationshipService.php:1804
 #, php-format
-msgid "great %s niece"
+msgid "great ×%s niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1684
@@ -18229,7 +18235,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1753
 #, php-format
 msgctxt "(a mans) brothers great (%s-1) granddaughter"
-msgid "great %s niece"
+msgid "great ×%s niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1688
@@ -18237,7 +18243,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1756
 #, php-format
 msgctxt "(a mans) sisters great (%s-1) granddaughter"
-msgid "great %s niece"
+msgid "great ×%s niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1691
@@ -18245,7 +18251,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1759
 #, php-format
 msgctxt "(a womans) great %s niece"
-msgid "great %s niece"
+msgid "great ×%s niece"
 msgstr ""
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -18255,303 +18261,303 @@ msgstr ""
 #: app/Services/RelationshipService.php:1492
 #: app/Services/RelationshipService.php:1507
 #, php-format
-msgid "great %s uncle"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1449
 #, php-format
 msgctxt "great (%s-1) grandfathers brother"
-msgid "great %s uncle"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1453
 #, php-format
 msgctxt "great (%s-1) grandmothers brother"
-msgid "great %s uncle"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1456
 #, php-format
 msgctxt "great (%s-1) grandparents brother"
-msgid "great %s uncle"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1367
-msgid "great 4 aunt"
+msgid "great ×4 aunt"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1370
-msgid "great 4 aunt/uncle"
+msgid "great ×4 aunt/uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2003
-msgid "great 4 grandchild"
+msgid "great ×4 grandchild"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2000
-msgid "great 4 granddaughter"
+msgid "great ×4 granddaughter"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1839
-msgid "great 4 grandfather"
+msgid "great ×4 grandfather"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1843
-msgid "great 4 grandmother"
+msgid "great ×4 grandmother"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1846
-msgid "great 4 grandparent"
+msgid "great ×4 grandparent"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1996
-msgid "great 4 grandson"
+msgid "great ×4 grandson"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1596
 msgctxt "(a mans) brothers great-great-great-grandson"
-msgid "great 4 nephew"
+msgid "great ×4 nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1600
 msgctxt "(a mans) sisters great-great-great-grandson"
-msgid "great 4 nephew"
+msgid "great ×4 nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1603
 msgctxt "(a womans) great 4 nephew"
-msgid "great 4 nephew"
+msgid "great ×4 nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1619
 msgctxt "(a mans) brothers great-great-great-grandchild"
-msgid "great 4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1623
 msgctxt "(a mans) sisters great-great-great-grandchild"
-msgid "great 4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1626
 msgctxt "(a womans) great 4 nephew/niece"
-msgid "great 4 nephew/niece"
+msgid "great ×4 nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1608
 msgctxt "(a mans) brothers great-great-great-granddaughter"
-msgid "great 4 niece"
+msgid "great ×4 niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1612
 msgctxt "(a mans) sisters great-great-great-granddaughter"
-msgid "great 4 niece"
+msgid "great ×4 niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1615
 msgctxt "(a womans) great 4 niece"
-msgid "great 4 niece"
+msgid "great ×4 niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1356
 msgctxt "great-great-great-grandfathers brother"
-msgid "great 4 uncle"
+msgid "great ×4 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1360
 msgctxt "great-great-great-grandmothers brother"
-msgid "great 4 uncle"
+msgid "great ×4 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1363
 msgctxt "great-great-great-grandparents brother"
-msgid "great 4 uncle"
+msgid "great ×4 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1386
-msgid "great 5 aunt"
+msgid "great ×5 aunt"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1389
-msgid "great 5 aunt/uncle"
+msgid "great ×5 aunt/uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2014
-msgid "great 5 grandchild"
+msgid "great ×5 grandchild"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2011
-msgid "great 5 granddaughter"
+msgid "great ×5 granddaughter"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1850
-msgid "great 5 grandfather"
+msgid "great ×5 grandfather"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1854
-msgid "great 5 grandmother"
+msgid "great ×5 grandmother"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1857
-msgid "great 5 grandparent"
+msgid "great ×5 grandparent"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2007
-msgid "great 5 grandson"
+msgid "great ×5 grandson"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1631
 msgctxt "(a mans) brothers great 4 grandson"
-msgid "great 5 nephew"
+msgid "great ×5 nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1635
 msgctxt "(a mans) sisters great 4 grandson"
-msgid "great 5 nephew"
+msgid "great ×5 nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1638
 msgctxt "(a womans) great 5 nephew"
-msgid "great 5 nephew"
+msgid "great ×5 nephew"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1654
 msgctxt "(a mans) brothers great 4 grandchild"
-msgid "great 5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1658
 msgctxt "(a mans) sisters great 4 grandchild"
-msgid "great 5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1661
 msgctxt "(a womans) great 5 nephew/niece"
-msgid "great 5 nephew/niece"
+msgid "great ×5 nephew/niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1643
 msgctxt "(a mans) brothers great 4 granddaughter"
-msgid "great 5 niece"
+msgid "great ×5 niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1647
 msgctxt "(a mans) sisters great 4 granddaughter"
-msgid "great 5 niece"
+msgid "great ×5 niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1650
 msgctxt "(a womans) great 5 niece"
-msgid "great 5 niece"
+msgid "great ×5 niece"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1375
 msgctxt "great 4 grandfathers brother"
-msgid "great 5 uncle"
+msgid "great ×5 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1379
 msgctxt "great 4 grandmothers brother"
-msgid "great 5 uncle"
+msgid "great ×5 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1382
 msgctxt "great 4 grandparents brother"
-msgid "great 5 uncle"
+msgid "great ×5 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1405
-msgid "great 6 aunt"
+msgid "great ×6 aunt"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1408
-msgid "great 6 aunt/uncle"
+msgid "great ×6 aunt/uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2025
-msgid "great 6 grandchild"
+msgid "great ×6 grandchild"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2022
-msgid "great 6 granddaughter"
+msgid "great ×6 granddaughter"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1861
-msgid "great 6 grandfather"
+msgid "great ×6 grandfather"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1865
-msgid "great 6 grandmother"
+msgid "great ×6 grandmother"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1868
-msgid "great 6 grandparent"
+msgid "great ×6 grandparent"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2018
-msgid "great 6 grandson"
+msgid "great ×6 grandson"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1394
 msgctxt "great 5 grandfathers brother"
-msgid "great 6 uncle"
+msgid "great ×6 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1398
 msgctxt "great 5 grandmothers brother"
-msgid "great 6 uncle"
+msgid "great ×6 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1401
 msgctxt "great 5 grandparents brother"
-msgid "great 6 uncle"
+msgid "great ×6 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1424
-msgid "great 7 aunt"
+msgid "great ×7 aunt"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1427
-msgid "great 7 aunt/uncle"
+msgid "great ×7 aunt/uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2036
-msgid "great 7 grandchild"
+msgid "great ×7 grandchild"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2033
-msgid "great 7 granddaughter"
+msgid "great ×7 granddaughter"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1872
-msgid "great 7 grandfather"
+msgid "great ×7 grandfather"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1876
-msgid "great 7 grandmother"
+msgid "great ×7 grandmother"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1879
-msgid "great 7 grandparent"
+msgid "great ×7 grandparent"
 msgstr ""
 
 #: app/Services/RelationshipService.php:2029
-msgid "great 7 grandson"
+msgid "great ×7 grandson"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1413
 msgctxt "great 6 grandfathers brother"
-msgid "great 7 uncle"
+msgid "great ×7 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1417
 msgctxt "great 6 grandmothers brother"
-msgid "great 7 uncle"
+msgid "great ×7 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1420
 msgctxt "great 6 grandparents brother"
-msgid "great 7 uncle"
+msgid "great ×7 uncle"
 msgstr ""
 
 #: app/Services/RelationshipService.php:1097
@@ -20628,17 +20634,17 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:761
 msgctxt "daughters husbands father"
-msgid "son-in-laws father"
+msgid "son-in-law’s father"
 msgstr ""
 
 #: app/Services/RelationshipService.php:763
 msgctxt "daughters husbands mother"
-msgid "son-in-laws mother"
+msgid "son-in-law’s mother"
 msgstr ""
 
 #: app/Services/RelationshipService.php:765
 msgctxt "daughters husbands parent"
-msgid "son-in-laws parent"
+msgid "son-in-law’s parent"
 msgstr ""
 
 #: app/Services/RelationshipService.php:513
@@ -20850,12 +20856,12 @@ msgstr ""
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26
-msgid "the database connection settings in the file /data/config.ini.php are still correct"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:29
-msgid "the folder /data and the file /data/config.ini.php have access permissions that allow the webserver to read them"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
@@ -21161,50 +21167,50 @@ msgstr "kenja singil"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 #, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] "%s yil"
-msgstr[1] "%s yillar"
+msgid "±%s year"
+msgid_plural "±%s years"
+msgstr[0] "±%s yil"
+msgstr[1] "±%s yillar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
-msgid "land Islands"
+msgid "Åland Islands"
 msgstr "quruqlik orollari"
 
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
-msgid "%1$s should be %2$s."
+msgid "“%1$s” should be “%2$s”."
 msgstr "%1$s %2$s boʻlishi kerak."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
-msgid "%s has been copied to the clipboard."
+msgid "“%s“ has been copied to the clipboard."
 msgstr "%s vaqtinchalik xotiraga nusxalandi."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
 #: app/Services/MapDataService.php:199
 #, php-format
-msgid "%s has been deleted."
+msgid "“%s” has been deleted."
 msgstr "%s o‘chirildi."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
-msgid "Highlighted image (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
+msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
-msgid ""
-msgstr ""
+msgid "…"
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:363
 #: app/Family.php:381 app/Individual.php:1051
 #: app/Module/IndividualListModule.php:272
 #: app/Module/IndividualListModule.php:504
 msgctxt "Unknown given name"
-msgid ""
-msgstr ""
+msgid "…"
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:363
 #: app/Family.php:381 app/Individual.php:1050
@@ -21216,5 +21222,5 @@ msgstr ""
 #: resources/views/lists/surnames-table.phtml:54
 #: resources/views/lists/surnames-table.phtml:66
 msgctxt "Unknown surname"
-msgid ""
-msgstr ""
+msgid "…"
+msgstr "…"
