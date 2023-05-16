@@ -85,8 +85,8 @@ msgstr ""
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
@@ -201,8 +201,8 @@ msgstr ""
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/views/family-page-children.phtml:21
 #: resources/views/modules/ancestors-chart/tree.phtml:44
@@ -212,8 +212,8 @@ msgstr ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Age.php:100 app/Elements/AgeAtEvent.php:103
 #: app/Statistics/Repository/FamilyRepository.php:353
@@ -221,8 +221,8 @@ msgstr ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/CheckTree.php:228
 #: app/Http/RequestHandlers/UserEditAction.php:94
@@ -236,31 +236,31 @@ msgstr ""
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:107
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/views/admin/locations.phtml:111
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Module/LifespansChartModule.php:266
 #: resources/views/admin/trees-unconnected.phtml:42
@@ -268,8 +268,8 @@ msgstr ""
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:71
 #: app/Http/RequestHandlers/SearchReplaceAction.php:97
@@ -277,15 +277,15 @@ msgstr ""
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Module/UserMessagesModule.php:158
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Age.php:96 app/Elements/AgeAtEvent.php:101
 #: app/Statistics/Repository/FamilyRepository.php:359
@@ -294,15 +294,15 @@ msgstr ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:87
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/CheckTree.php:314
 #: app/Http/RequestHandlers/CheckTree.php:318
@@ -326,8 +326,8 @@ msgstr ""
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -340,15 +340,15 @@ msgstr ""
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:83
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2169
@@ -378,8 +378,8 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Age.php:92 app/Elements/AgeAtEvent.php:100
 #: app/Statistics/Repository/FamilyRepository.php:364
@@ -390,8 +390,8 @@ msgstr ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/CalendarEvents.php:159
 #: resources/views/modules/yahrzeit/list.phtml:47
@@ -3427,8 +3427,8 @@ msgstr ""
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:94
 #: resources/views/admin/trees.phtml:211
@@ -10262,8 +10262,8 @@ msgstr ""
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Module/OnThisDayModule.php:157
 msgid "No events exist for today."
@@ -10285,8 +10285,8 @@ msgstr ""
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
@@ -14651,8 +14651,8 @@ msgstr ""
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:292
 msgid "The upgrade is complete."
@@ -14771,8 +14771,8 @@ msgstr ""
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
@@ -14875,8 +14875,8 @@ msgstr ""
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/Module/SlideShowModule.php:181
 msgid "This family tree has no images to display."
@@ -15131,8 +15131,8 @@ msgstr ""
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/views/help/pending-changes.phtml:18
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -15508,16 +15508,16 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:194
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:102
@@ -16017,8 +16017,8 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/xml/reports/family_group_report.xml:12
 #: resources/xml/reports/individual_ext_report.xml:13
@@ -17691,8 +17691,8 @@ msgstr ""
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:209
@@ -19500,8 +19500,8 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #: resources/views/admin/trees-privacy.phtml:37
 #: resources/views/admin/trees-privacy.phtml:56
@@ -20898,8 +20898,8 @@ msgstr ""
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr ""
-msgstr ""
+msgstr[0] ""
+msgstr[1] ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
