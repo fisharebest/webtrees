@@ -1441,6 +1441,11 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#',
     'count' => 1,
+    'path' => __DIR__ . '/app/Module/LanguageBasque.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$str of function strtr expects string, string\\|false given\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/LanguageBosnian.php',
 ];
 $ignoreErrors[] = [
