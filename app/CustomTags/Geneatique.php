@@ -56,7 +56,7 @@ class Geneatique implements CustomTagInterface
             'OBJE:FORM'           => new MultimediaFormat(I18N::translate('Format')),
             'OBJE:TITL'           => new DescriptiveTitle(I18N::translate('Title')),
             'INDI:NAME:_AKA'      => new NamePersonal(I18N::translate('Also known as'), []),
-            'INDI:NAME:_MARNM'    => new NamePersonal(I18N::translate('Also known as'), []),
+            'INDI:NAME:_MARNM'    => new NamePersonal(I18N::translate('Married name'), []),
 
             /*
             Pour déclarer les témoins dans les actes de naissance
