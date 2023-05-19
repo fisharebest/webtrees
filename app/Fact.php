@@ -35,6 +35,7 @@ use function preg_match;
 use function preg_replace;
 use function str_contains;
 use function str_ends_with;
+use function str_starts_with;
 use function usort;
 
 /**
@@ -320,14 +321,14 @@ class Fact
         $element     = new RestrictionNotice('');
         $restriction = $element->canonical($this->attribute('RESN'));
 
-        if (str_ends_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
+        if (str_starts_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
             return Auth::PRIV_NONE >= $access_level;
         }
 
-        if (str_ends_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
+        if (str_starts_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
             return Auth::PRIV_USER >= $access_level;
         }
-        if (str_ends_with($restriction, RestrictionNotice::VALUE_NONE)) {
+        if (str_starts_with($restriction, RestrictionNotice::VALUE_NONE)) {
             return true;
         }
 
