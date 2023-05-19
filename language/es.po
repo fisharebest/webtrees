@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-05-06 08:06+0000\n"
-"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
+"PO-Revision-Date: 2023-05-20 10:39+0000\n"
+"Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/es/>\n"
 "Language: es\n"
@@ -107,7 +107,7 @@ msgstr "%1$s no existe."
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s no existe. ¿Quiso decir %2$s?"
+msgstr "%1$s ez da existitzen. %2$s erran nahi zenuen?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
