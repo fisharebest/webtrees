@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-05-20 15:39+0000\n"
-"Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
+"PO-Revision-Date: 2023-05-22 08:05+0000\n"
+"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
 "Language: es\n"
@@ -76,7 +76,7 @@ msgstr "%1$s KB fueron descargados en %2$s segundos."
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s ez da existitzen. %2$s erran nahi zenuen?"
+msgstr "%1$s no existe. ¿Quiso decir %2$s?"
 
 #: app/Http/RequestHandlers/CheckTree.php:260
 #: app/Http/RequestHandlers/CheckTree.php:265
