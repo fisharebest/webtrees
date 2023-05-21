@@ -461,14 +461,21 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         }
                     }
                     if ($show === 'indi') {
+                        /** @var array<string> $surnames */
+                        $surnames = collect($surns)
+                            ->map(static fn (array $surn_variants, string $surn_norm): array => array_keys($surn_variants))
+                            ->flatten()
+                            ->filter(static fn ($surn_variant): bool => is_string($surn_variant) && $surn_variant !== '')
+                            ->toArray();
+
                         if ($families) {
                             echo view('lists/families-table', [
-                                'families' => $this->families($tree, $surname, array_keys($all_surnames[$surname] ?? []), $falpha, $show_marnm === 'yes'),
+                                'families' => $this->families($tree, $surname, $surnames, $falpha, $show_marnm === 'yes'),
                                 'tree'     => $tree,
                             ]);
                         } else {
                             echo view('lists/individuals-table', [
-                                'individuals' => $this->individuals($tree, $surname, array_keys($all_surnames[$surname] ?? []), $falpha, $show_marnm === 'yes', false),
+                                'individuals' => $this->individuals($tree, $surname, $surnames, $falpha, $show_marnm === 'yes', false),
                                 'sosa'        => false,
                                 'tree'        => $tree,
                             ]);
