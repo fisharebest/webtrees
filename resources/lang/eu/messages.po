@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-05-20 15:40+0000\n"
+"PO-Revision-Date: 2023-05-22 08:05+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -92,7 +92,7 @@ msgstr[1] "%1$s artxiboak %2$s segundutan atera dira ."
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s  %2$s da, baina %3$s beharrezkoa da."
+msgstr "%1$s %2$s da, baina %3$s beharrezkoa da."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2436
@@ -3394,52 +3394,52 @@ msgstr "Heriotzaren arrazoia"
 #: resources/views/admin/trees-merge.phtml:66
 #: resources/views/admin/trees-renumber.phtml:47
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Kontuz! Lan honek luze iraunen dezake. Izan pazientzia pixka bat."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Cayman Uharteak"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:77
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Cebu City, Filipinak"
 
 #: app/CustomTags/PhpGedView.php:66
 msgid "Cemetery"
-msgstr ""
+msgstr "Kanposantua"
 
 #: app/Gedcom.php:610
 msgid "Census"
-msgstr ""
+msgstr "Errolda"
 
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:51
 msgid "Census assistant"
-msgstr ""
+msgstr "Errolda-laguntzailea"
 
 #: app/Gedcom.php:611
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:16
 msgid "Census date"
-msgstr ""
+msgstr "Erroldaren data"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:15
 msgid "Census date and place"
-msgstr ""
+msgstr "Erroldaren data eta lekua"
 
 #: app/Gedcom.php:612
 msgid "Census place"
-msgstr ""
+msgstr "Erroldaren lekua"
 
 #: resources/views/modules/census-assistant.phtml:112
 msgid "Census transcript"
-msgstr ""
+msgstr "Erroldaren transkripzioa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:117
 msgid "Central African Republic"
-msgstr ""
+msgstr "Central African Errepublika"
 
 #: app/Module/StatisticsChartModule.php:979
 #: app/Statistics/Google/ChartAge.php:112
@@ -3456,26 +3456,27 @@ msgstr ""
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:96
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:132
 msgid "Century"
-msgstr ""
+msgstr "Mendea"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
-msgstr ""
+msgstr "Ziurtagiria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
+#, fuzzy
 msgid "Chad"
-msgstr ""
+msgstr "Chad"
 
 #: app/Http/RequestHandlers/ChangeFamilyMembersPage.php:49
 #: resources/views/family-page-menu.phtml:35
 msgid "Change family members"
-msgstr ""
+msgstr "Familiko kideak aldatu"
 
 #: app/Http/RequestHandlers/TreePageEdit.php:64
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Hasierako orriaren blokeak aldatu"
 
 #: app/Http/RequestHandlers/UserPageEdit.php:62
 msgid "Change the “My page” blocks"
@@ -4135,53 +4136,53 @@ msgstr ""
 #: app/Elements/XrefLocation.php:60
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Kokapena sortu"
 
 #: app/Elements/XrefMedia.php:62
 #: resources/views/modals/create-media-from-file.phtml:20
 #: resources/views/modals/create-media-object.phtml:19
 msgid "Create a media object"
-msgstr ""
+msgstr "Multimedia-objektu bat sortu"
 
 #: app/Elements/XrefRepository.php:65
 #: resources/views/modals/create-repository.phtml:18
 msgid "Create a repository"
-msgstr ""
+msgstr "Gordailua sortu"
 
 #: app/Elements/XrefNote.php:60 app/Elements/XrefSharedNote.php:60
 #: resources/views/modals/create-note-object.phtml:16
 msgid "Create a shared note"
-msgstr ""
+msgstr "Ohar partekatu bat sortu"
 
 #: resources/views/modules/census-assistant.phtml:17
 msgid "Create a shared note using the census assistant"
-msgstr ""
+msgstr "Ohar partekatu bat sortu zentsuaren laguntzailea erabiliz"
 
 #: app/Elements/XrefSource.php:74 resources/views/modals/create-source.phtml:16
 msgid "Create a source"
-msgstr ""
+msgstr "Iturria berria sortu"
 
 #: app/Elements/XrefSubmission.php:60
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Aurkezpena sortu"
 
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
 msgid "Create a submitter"
-msgstr ""
+msgstr "Bidaltzaile bat sortu"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Behin behineko artxiboa sortu…"
 
 #: resources/views/modals/media-file-fields.phtml:80
 msgid "Create a unique filename"
-msgstr ""
+msgstr "Berdingabeko artxibo-izen bat sortu"
 
 #: app/Http/RequestHandlers/AddUnlinkedPage.php:74
 msgid "Create an individual"
-msgstr ""
+msgstr "Gizabanako bat sortu"
 
 #. I18N: %s is a link/URL
 #: app/Module/BingMaps.php:51 app/Module/EsriMaps.php:51
@@ -4189,15 +4190,17 @@ msgstr ""
 #: app/Module/MapBox.php:51 app/Module/OpenStreetMap.php:41
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Mapa sortu %s erabiliz."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
-msgstr ""
+msgstr "Sortu zeure grafikoa"
 
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Datuen karpetako GEDCOM fitxategi bakoitzerako zuhaitz genealogiko bat "
+"sortu, eguneratu eta ezabatu."
 
 #. I18N: GEDCOM tag _CREA
 #: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:91
@@ -4205,7 +4208,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:140 app/CustomTags/Gedcom7.php:149
 #: app/CustomTags/Gedcom7.php:157 app/CustomTags/Gedcom7.php:166
 msgid "Created at"
-msgstr ""
+msgstr "Non sortua"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
@@ -4213,14 +4216,14 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:167 app/CustomTags/GedcomL.php:138
 #: app/CustomTags/GedcomL.php:194
 msgid "Creation date"
-msgstr ""
+msgstr "Sortu zeneko data"
 
 #: app/CustomTags/Gedcom7.php:93 app/CustomTags/Gedcom7.php:123
 #: app/CustomTags/Gedcom7.php:138 app/CustomTags/Gedcom7.php:142
 #: app/CustomTags/Gedcom7.php:151 app/CustomTags/Gedcom7.php:159
 #: app/CustomTags/Gedcom7.php:168
 msgid "Creation time"
-msgstr ""
+msgstr "Sortzeko denbora"
 
 #: app/Gedcom.php:632 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4229,213 +4232,218 @@ msgstr ""
 #: resources/xml/reports/family_group_report.xml:1013
 #: resources/xml/reports/family_group_report.xml:1040
 msgid "Cremation"
-msgstr ""
+msgstr "Errausketa"
 
 #: app/Services/IndividualFactsService.php:360
 msgid "Cremation of a brother"
-msgstr ""
+msgstr "Anaiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:344
 msgid "Cremation of a child"
-msgstr ""
+msgstr "Seme-alabaren errausketa"
 
 #: app/Services/IndividualFactsService.php:343
 msgid "Cremation of a daughter"
-msgstr ""
+msgstr "Alabaren errausketa"
 
 #: app/Services/IndividualFactsService.php:636
 msgid "Cremation of a father"
-msgstr ""
+msgstr "Aitaren errausketa"
 
 #: app/Services/IndividualFactsService.php:434
 msgid "Cremation of a grandchild"
-msgstr ""
+msgstr "Bilobaren errausketa"
 
 #: app/Services/IndividualFactsService.php:397
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Bilobaren errausketa (emakumezkoa)"
 
 #: app/Services/IndividualFactsService.php:415
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Bilobaren errausketa (emakumezkoa)"
 
 #: app/Services/IndividualFactsService.php:433
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "Bilobaren errausketa (emakumezkoa)"
 
 #: app/Services/IndividualFactsService.php:654
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "Aitonaren errausketa"
 
 #: app/Services/IndividualFactsService.php:655
 msgid "Cremation of a grandmother"
-msgstr ""
+msgstr "Amonaren errausketa"
 
 #: app/Services/IndividualFactsService.php:656
 #: app/Services/IndividualFactsService.php:674
 #: app/Services/IndividualFactsService.php:692
 msgid "Cremation of a grandparent"
-msgstr ""
+msgstr "Aiton-amonaren errausketa"
 
 #: app/Services/IndividualFactsService.php:396
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Bilobaren errausketa"
 
 #: app/Services/IndividualFactsService.php:414
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Bilobaren errausketa (alabaren semea)"
 
 #: app/Services/IndividualFactsService.php:432
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "Bilobaren errausketa (semearen semea)"
 
 #: app/Services/IndividualFactsService.php:378
 msgid "Cremation of a half-brother"
-msgstr ""
+msgstr "Erdi anaiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:380
 msgid "Cremation of a half-sibling"
-msgstr ""
+msgstr "Erdi anai-arrebaren errausketa"
 
 #: app/Services/IndividualFactsService.php:379
 msgid "Cremation of a half-sister"
-msgstr ""
+msgstr "Erdi anaiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:806
 msgid "Cremation of a husband"
-msgstr ""
+msgstr "Senarraren errausketa"
 
 #: app/Services/IndividualFactsService.php:672
 msgid "Cremation of a maternal grandfather"
-msgstr ""
+msgstr "Amaren aldeko aitonaren errausketa"
 
 #: app/Services/IndividualFactsService.php:673
 msgid "Cremation of a maternal grandmother"
-msgstr ""
+msgstr "Amaren aldeko amonaren errausketa"
 
 #: app/Services/IndividualFactsService.php:637
 msgid "Cremation of a mother"
-msgstr ""
+msgstr "Amaren errausketa"
 
 #: app/Services/IndividualFactsService.php:638
 msgid "Cremation of a parent"
-msgstr ""
+msgstr "Guraso baten errausketa"
 
 #: app/Services/IndividualFactsService.php:690
 msgid "Cremation of a paternal grandfather"
-msgstr ""
+msgstr "Aitaren aldeko aitonaren errausketa"
 
 #: app/Services/IndividualFactsService.php:691
 msgid "Cremation of a paternal grandmother"
-msgstr ""
+msgstr "Aitaren aldeko amonaren errausketa"
 
 #: app/Services/IndividualFactsService.php:362
 msgid "Cremation of a sibling"
-msgstr ""
+msgstr "Anai-arrebaren errausketa"
 
 #: app/Services/IndividualFactsService.php:361
 msgid "Cremation of a sister"
-msgstr ""
+msgstr "Arreba/ahizparen errausketa"
 
 #: app/Services/IndividualFactsService.php:342
 msgid "Cremation of a son"
-msgstr ""
+msgstr "Semearen errausketa"
 
 #: app/Services/IndividualFactsService.php:808
 msgid "Cremation of a spouse"
-msgstr ""
+msgstr "Ezkontidearen errausketa"
 
 #: app/Services/IndividualFactsService.php:807
 msgid "Cremation of a wife"
-msgstr ""
+msgstr "Emaztearen errausketa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:243
 msgid "Croatia"
-msgstr ""
+msgstr "Kroazia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:147
+#, fuzzy
 msgid "Cuba"
-msgstr ""
+msgstr "Cuba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
+#, fuzzy
 msgid "Curaçao"
-msgstr ""
+msgstr "Curaçao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "Curitiba, Brasil"
 
 #: app/Module/HtmlBlockModule.php:192 app/Module/StatisticsChartModule.php:158
 msgid "Custom"
-msgstr ""
+msgstr "Pertsonalizatu"
 
 #: resources/views/admin/tags.phtml:1020
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM etiketak pertsonalizatu"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
+"GEDCOM etiketa pertsonalizatuak ez dira gomendatzen. Saiatu GEDCOM etiketa "
+"estandarrak soilik erabiltzen."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
-msgstr ""
+msgstr "Pertsonalizatutako gertakizuna"
 
 #: resources/views/admin/custom-module-info.phtml:14
 msgid "Custom module"
-msgstr ""
+msgstr "Pertsonalizatutako moduloa"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
 msgid "Custom welcome text"
-msgstr ""
+msgstr "Ongietorri-mezua pertsonalizatua"
 
 #: app/Module/ModuleThemeTrait.php:216 app/Module/ModuleThemeTrait.php:220
 msgid "Customize this page"
-msgstr ""
+msgstr "Orri hau pertsonalizatu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:155
 msgid "Cyprus"
-msgstr ""
+msgstr "Chipre"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:157
 msgid "Czech Republic"
-msgstr ""
+msgstr "Txekia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:129
 msgid "Côte d’Ivoire"
-msgstr ""
+msgstr "Boli Kosta"
 
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:196
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM sinadura digitala"
 
 #: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
-msgstr ""
+msgstr "DNA markagailuak"
 
 #. I18N: https://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:608 resources/views/branches-page.phtml:42
 #: resources/views/search-phonetic-page.phtml:77
+#, fuzzy
 msgid "Daitch-Mokotoff"
-msgstr ""
+msgstr "Daitch-Mokotoff"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:88
 msgid "Dallas, Texas, United States"
-msgstr ""
+msgstr "Dallas, Texas, Estatu Batuak"
 
 #: app/CustomTags/GedcomL.php:123 app/CustomTags/GedcomL.php:177
 #: app/CustomTags/GedcomL.php:270 app/CustomTags/GedcomL.php:303
@@ -4444,18 +4452,18 @@ msgstr ""
 #: app/Gedcom.php:832 app/Gedcom.php:903 app/Gedcom.php:917
 #: resources/views/admin/changes-log.phtml:139
 msgid "Data"
-msgstr ""
+msgstr "Datuak"
 
 #: resources/views/modules/privacy-policy/page.phtml:68
 msgid "Data controller"
-msgstr ""
+msgstr "Datuen arduraduna"
 
 #: resources/views/admin/data-fix-page.phtml:72
 #: resources/views/admin/data-fix-select.phtml:29
 #: resources/views/admin/modules.phtml:216
 #: resources/views/admin/modules.phtml:219
 msgid "Data fix"
-msgstr ""
+msgstr "Datuak moldatu"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:65
 #: app/Http/RequestHandlers/DataFixPage.php:87
@@ -4467,23 +4475,25 @@ msgstr ""
 #: resources/views/admin/modules.phtml:100
 #: resources/views/admin/trees.phtml:153
 msgid "Data fixes"
-msgstr ""
+msgstr "Datuen moldaketak"
 
 #: resources/views/help/data-fixes.phtml:10
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
 msgstr ""
+"Datuen moldaketak kalkulu aunitz behar dituenez, ez dago moldatu beharreko "
+"erregistroen zerrendarik egiterik."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
 msgid "Data folder"
-msgstr ""
+msgstr "Datuen artxiboa"
 
 #: resources/views/setup/step-4-database-mysql.phtml:36
 #: resources/views/setup/step-4-database-pgsql.phtml:36
 #: resources/views/setup/step-4-database-sqlite.phtml:41
 #: resources/views/setup/step-4-database-sqlsrv.phtml:36
 msgid "Database connection"
-msgstr ""
+msgstr "Lotura datu-baseekin"
 
 #: app/CustomTags/PhpGedView.php:81
 #: resources/views/setup/step-4-database-mysql.phtml:111
@@ -4491,25 +4501,25 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:54
 #: resources/views/setup/step-4-database-sqlsrv.phtml:97
 msgid "Database name"
-msgstr ""
+msgstr "Datu-basearen izena"
 
 #: app/CustomTags/PhpGedView.php:82
 #: resources/views/setup/step-4-database-mysql.phtml:97
 #: resources/views/setup/step-4-database-pgsql.phtml:85
 #: resources/views/setup/step-4-database-sqlsrv.phtml:85
 msgid "Database password"
-msgstr ""
+msgstr "Datu-basearen pasahitza"
 
 #: resources/views/setup/step-3-database-type.phtml:54
 msgid "Database type"
-msgstr ""
+msgstr "Datu-basearen mota"
 
 #: app/CustomTags/PhpGedView.php:84
 #: resources/views/setup/step-4-database-mysql.phtml:83
 #: resources/views/setup/step-4-database-pgsql.phtml:73
 #: resources/views/setup/step-4-database-sqlsrv.phtml:73
 msgid "Database user account"
-msgstr ""
+msgstr "Datu-basearen erabiltzailearen izena"
 
 #: app/CustomTags/Aldfaer.php:80 app/CustomTags/Ancestry.php:72
 #: app/CustomTags/FamilyTreeBuilder.php:58 app/CustomTags/GedcomL.php:118
@@ -4537,96 +4547,96 @@ msgstr ""
 #: resources/xml/reports/marriage_report.xml:46
 #: resources/xml/reports/occupation_report.xml:57
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: resources/views/modules/relatives/tab.phtml:37
 msgid "Date differences"
-msgstr ""
+msgstr "Adinen diferentziak"
 
 #: app/Gedcom.php:585
 msgid "Date of LDS baptism"
-msgstr ""
+msgstr "LDS bataioaren data"
 
 #: app/Gedcom.php:739
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "Bataioaren LDS markaketaren data"
 
 #: app/Gedcom.php:627
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "LDS konfirmazioaren data"
 
 #: app/Gedcom.php:647
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "LDS inbestiduraren data"
 
 #: app/Gedcom.php:479
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "LDS markaketaren data ezkontiarekin"
 
 #: app/Gedcom.php:575
 msgid "Date of adoption"
-msgstr ""
+msgstr "Adopzioaren data"
 
 #: app/Gedcom.php:591 resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
-msgstr ""
+msgstr "Bataioaren data"
 
 #: app/Gedcom.php:594 resources/xml/reports/missing_facts_report.xml:212
 msgid "Date of bar mitzvah"
-msgstr ""
+msgstr "Bar mitzvah-aren data"
 
 #: app/Gedcom.php:597 resources/xml/reports/missing_facts_report.xml:253
 msgid "Date of bat mitzvah"
-msgstr ""
+msgstr "Bat mitzvah-aren data"
 
 #: app/Gedcom.php:600 resources/xml/reports/fact_sources.xml:68
 #: resources/xml/reports/fact_sources.xml:272
 #: resources/xml/reports/missing_facts_report.xml:81
 #: resources/xml/reports/occupation_report.xml:49
 msgid "Date of birth"
-msgstr ""
+msgstr "Jaiotzaren data"
 
 #: app/Gedcom.php:604
 msgid "Date of blessing"
-msgstr ""
+msgstr "Bedeinkazioaren data"
 
 #: app/CustomTags/BrothersKeeper.php:95
 msgid "Date of brit milah"
-msgstr ""
+msgstr "Brit milah-aren data"
 
 #: app/Gedcom.php:607 resources/xml/reports/missing_facts_report.xml:546
 msgid "Date of burial"
-msgstr ""
+msgstr "Ehozketaren data"
 
 #: app/Gedcom.php:618 resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr ""
+msgstr "Bataioaren data"
 
 #: app/Gedcom.php:624 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr ""
+msgstr "Konfirmazioaren data"
 
 #: app/Gedcom.php:633
 msgid "Date of cremation"
-msgstr ""
+msgstr "Errausketaren data"
 
 #: app/Gedcom.php:637 resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
 #: resources/xml/reports/missing_facts_report.xml:505
 msgid "Date of death"
-msgstr ""
+msgstr "Heriotzaren data"
 
 #: app/Gedcom.php:452
 msgid "Date of divorce"
-msgstr ""
+msgstr "Dibortzioaren data"
 
 #: app/Gedcom.php:644
 msgid "Date of emigration"
-msgstr ""
+msgstr "Emigrazioaren data"
 
 #: app/Gedcom.php:455 resources/xml/reports/missing_facts_report.xml:336
 msgid "Date of engagement"
-msgstr ""
+msgstr "Hitzematearen data"
 
 #: app/CustomTags/GedcomL.php:124 app/CustomTags/GedcomL.php:178
 #: app/CustomTags/GedcomL.php:271 app/CustomTags/GedcomL.php:304
@@ -4634,112 +4644,120 @@ msgstr ""
 #: app/Gedcom.php:747 app/Gedcom.php:771 app/Gedcom.php:795 app/Gedcom.php:904
 #: app/Gedcom.php:918
 msgid "Date of entry in original source"
-msgstr ""
+msgstr "Iturria originalaren sarrera data"
 
 #: app/CustomTags/GedcomL.php:235 app/Gedcom.php:653
 msgid "Date of event"
-msgstr ""
+msgstr "Gertaeraren data"
 
 #: app/Gedcom.php:663 resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
-msgstr ""
+msgstr "Lehenbiziko komunioaren data"
 
 #: app/Gedcom.php:670
 msgid "Date of immigration"
-msgstr ""
+msgstr "Inmigrazioaren data"
 
 #: app/CustomTags/GedcomL.php:221 app/Gedcom.php:447 app/Gedcom.php:614
 #: app/Gedcom.php:761 app/Gedcom.php:782 app/Gedcom.php:813 app/Gedcom.php:829
 #: app/Gedcom.php:860 app/Gedcom.php:876
 msgid "Date of last change"
-msgstr ""
+msgstr "Azken aldaketaren data"
 
 #: app/Gedcom.php:466 resources/xml/reports/fact_sources.xml:319
 #: resources/xml/reports/missing_facts_report.xml:463
 msgid "Date of marriage"
-msgstr ""
+msgstr "Ezkontzaren data"
 
 #: app/Gedcom.php:461 resources/xml/reports/missing_facts_report.xml:420
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "Amonestazioen data"
 
 #: app/Gedcom.php:712
 msgid "Date of naturalization"
-msgstr ""
+msgstr "Naturalizazioaren data"
 
 #: app/Gedcom.php:722
 msgid "Date of ordination"
-msgstr ""
+msgstr "Ordenazioaren data"
 
 #: app/Gedcom.php:730
 msgid "Date of residence"
-msgstr ""
+msgstr "Bizileku baimenaren data"
 
 #: app/CustomTags/Gedcom7.php:129
 msgid "Date of status change"
-msgstr ""
+msgstr "Egoera-aldaketaren data"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
-msgstr ""
+msgstr "Daten arteko denbora-tartea"
 
 #: resources/views/help/date.phtml:100
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr ""
+"Denbora-tarteak gertaera batek jarraitzen duela baieztatzeko erabiltzen dira."
 
 #: app/Gedcom.php:835 resources/views/help/date.phtml:69
 #: resources/views/modules/statistics-chart/custom.phtml:96
 msgid "Date range"
-msgstr ""
+msgstr "Daten arteko data-rangoa"
 
 #: resources/views/help/date.phtml:62
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
+"Denbora-tarteak gertaera bat, bataio bat errate baterako, aurkitzeko balio "
+"dute, data zehatzik ezagutzen ez dugunean."
 
 #: resources/views/admin/users.phtml:33
 msgid "Date registered"
-msgstr ""
+msgstr "Erregistroaren data"
 
 #: resources/views/modules/user-messages/user-messages.phtml:71
 msgid "Date sent"
-msgstr ""
+msgstr "Bidalketaren data"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:129
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
 msgstr ""
+"Datak egutegi motarako balio dutenean bakarrik itzultzen dira. Errate "
+"baterako sistema frantziarrera %1$s eta %2$s-ren arteko datak itzuliko dira, "
+"eta %3$s-aren ondoko datak itzuliko dira sistema Gregoriarrera."
 
 #: resources/views/help/date.phtml:24
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
 msgstr ""
+"Datak laburdurak eta gako-hitzak ingelesa erabiliz gordetzen dira. "
+"Lasterbideak, laburdura eta gako-hitz horien ordezko gisa erabil daitezke."
 
 #: resources/views/edit/change-family-members.phtml:65
 #: resources/xml/reports/family_group_report.xml:809
 #: resources/xml/reports/individual_ext_report.xml:570
 #: resources/xml/reports/individual_report.xml:566
 msgid "Daughter"
-msgstr ""
+msgstr "Alaba"
 
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:367
 #, php-format
 msgid "Daughter of %s"
-msgstr ""
+msgstr "%s-ren alaba"
 
 #: app/Module/CalendarMenuModule.php:91 resources/views/calendar-page.phtml:43
 msgid "Day"
-msgstr ""
+msgstr "Eguna"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:209
 msgid "Day not set"
-msgstr ""
+msgstr "Zehaztu gabeko eguna"
 
 #: resources/views/modules/timeline-chart/chart.phtml:143
 #: resources/views/modules/timeline-chart/chart.phtml:145
 #: resources/views/modules/timeline-chart/chart.phtml:147
 msgid "Day:"
-msgstr ""
+msgstr "Eguna:"
 
 #: app/Statistics/Google/ChartMortality.php:76
 #: resources/views/lists/individuals-table.phtml:120
@@ -5196,9 +5214,8 @@ msgstr "Deuseztatzen…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:133
-#, fuzzy
 msgid "Democratic Republic of the Congo"
-msgstr "Democratic Republic of the Congo"
+msgstr "Kongo"
 
 #: app/CustomTags/GedcomL.php:287
 msgid "Demographic data"
@@ -5457,9 +5474,8 @@ msgstr "Mende honetako dibortzioa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
-#, fuzzy
 msgid "Djibouti"
-msgstr "Djibouti"
+msgstr "Djibuti"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:71
@@ -5484,15 +5500,13 @@ msgstr "Domeinuaren izena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
-#, fuzzy
 msgid "Dominica"
-msgstr "Dominica"
+msgstr "Dominika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:167
-#, fuzzy
 msgid "Dominican Republic"
-msgstr "Dominican Republic"
+msgstr "Dominikar Errepublika"
 
 #: app/Module/ClippingsCartModule.php:198
 #: app/Module/ClippingsCartModule.php:242
@@ -5547,6 +5561,19 @@ msgstr ""
 #: resources/views/help/source-events.phtml:10
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"Iturri bakoitzak gertaera espezifikoak erregistratzen ditu, normalean data-"
+"sorta jakin baterako eta leku-jurisdikzio baterako. Adibidez, errolda batek "
+"errolda-gertaerak eta elizako erregistroak erregistratzen ditu, jaiotza, "
+"ezkontza eta heriotza-gertaeren erregistroak.<br><br>Hautatu iturri honek "
+"erregistratutako gertaerak hornitutako gertaeren zerrendatik. Data GEDCOM-en "
+"denbora-tarte rangoko formatoan agertuko behar litzateke, errate baterako, "
+"<i>FROM 1900 TO 1910</i>. Tokiaren jurisdikzioa jurisdikziorik baxuenaren "
+"izena da, eta iturri horretan izendatutako behe-mailako leku guztiak hartzen "
+"ditu. Adibidez, “Oneida, Idaho, AEB” jurisdikzio-leku iturri gisa erabiliko "
+"litzateke Oneidako konderriko hirietan gertatzen diren ekitaldietarako. “"
+"Idaho, AEB” izango litzateke jatorrizko jurisdikzio-lekua, erregistratutako "
+"gertakariak Oneidako konderrian ez ezik, Idahoko beste konderri batzuetan "
+"ere gertatuko balira."
 
 #: resources/views/help/pending-changes.phtml:27
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5579,9 +5606,8 @@ msgstr "Ezkontzarik goiztiarrena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:171
-#, fuzzy
 msgid "Ecuador"
-msgstr "Ecuador"
+msgstr "Ekuador"
 
 #: app/Http/RequestHandlers/MapDataEdit.php:76
 #: app/Http/RequestHandlers/MapDataEdit.php:79
@@ -5673,61 +5699,66 @@ msgstr "GEDCOM etiketa guziekin editatu"
 #: resources/views/modules/recent_changes/changes-table.phtml:51
 #: resources/views/pending-changes-page.phtml:51
 msgid "Editor"
-msgstr ""
+msgstr "Editatzailea"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:92
 msgid "Edmonton, Alberta, Canada"
-msgstr ""
+msgstr "Edmonton, Alberta, Kanada"
 
 #: app/Gedcom.php:641
 msgid "Education"
-msgstr ""
+msgstr "Hezkuntza"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:173
 msgid "Egypt"
-msgstr ""
+msgstr "Egipto"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:451
+#, fuzzy
 msgid "El Salvador"
-msgstr ""
+msgstr "El Salvador"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:85
 msgid "Electronic"
-msgstr ""
+msgstr "Elektronikoa"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
+#, fuzzy
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:321
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:269
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:165
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #: app/CustomTags/Aldfaer.php:68 app/CustomTags/Legacy.php:109
 #: resources/views/modals/submitter-fields.phtml:19
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "Mezu elektronikoa"
 
 #: app/CustomTags/BrothersKeeper.php:97 app/CustomTags/GedcomL.php:236
 #: app/CustomTags/PersonalAncestralFile.php:74 app/CustomTags/Reunion.php:56
@@ -5742,170 +5773,177 @@ msgstr ""
 #: resources/views/register-page.phtml:49
 #: resources/views/setup/step-5-administrator.phtml:92
 msgid "Email address"
-msgstr ""
+msgstr "Helbide elektronikoa"
 
 #: resources/views/admin/users-edit.phtml:102
 msgid "Email verified"
-msgstr ""
+msgstr "Egiaztatutako helbide elektronikoa"
 
 #: app/Gedcom.php:643 resources/views/calendar-page.phtml:204
 msgid "Emigration"
-msgstr ""
+msgstr "Emigrazioa"
 
 #: app/Elements/RelationIsDescriptor.php:101
 msgid "Employee"
-msgstr ""
+msgstr "Langilea"
 
 #: app/Elements/RelationIsDescriptor.php:77
 msgctxt "FEMALE"
 msgid "Employee"
-msgstr ""
+msgstr "Langilea"
 
 #: app/Elements/RelationIsDescriptor.php:56
 msgctxt "MALE"
 msgid "Employee"
-msgstr ""
+msgstr "Langilea"
 
 #: app/Elements/RelationIsDescriptor.php:102 app/Gedcom.php:719
 #: app/Gedcom.php:734
 msgid "Employer"
-msgstr ""
+msgstr "Enpresaburua"
 
 #: app/Elements/RelationIsDescriptor.php:78
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr ""
+msgstr "Enpresaburua"
 
 #: app/Elements/RelationIsDescriptor.php:57
 msgctxt "MALE"
 msgid "Employer"
-msgstr ""
+msgstr "Enpresaburua"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Hustu zakarrontzia"
 
 #: app/Module/ClippingsCartModule.php:192
 msgid "Empty the clippings cart"
-msgstr ""
+msgstr "Hustu karritoa"
 
 #: resources/views/admin/components.phtml:41
 #: resources/views/admin/components.phtml:87
 #: resources/views/admin/modules.phtml:73
 msgid "Enabled"
-msgstr ""
+msgstr "Aktibatua"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr ""
+"Aukera hau aktibatuz bisitari guztiak erregistratuta sartu beharko dute "
+"orriko edozein datu ikusteko."
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
-msgstr ""
+msgstr "Azken urtea"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
-msgstr ""
+msgstr "Aldaketa-daten azken denbora-tartea"
 
 #. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
 msgid "Endowment House"
-msgstr ""
+msgstr "Endowment House"
 
 #: app/Gedcom.php:454 resources/xml/reports/missing_facts_report.xml:20
 msgid "Engagement"
-msgstr ""
+msgstr "Ezkongai-harremana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:175
 msgid "England"
-msgstr ""
+msgstr "Ingalaterra"
 
 #: resources/views/modules/favorites/favorites.phtml:164
 msgid "Enter an optional note about this favorite"
-msgstr ""
+msgstr "Nahi izanez gero sar ezazu ohar bat lehenetsitako honentzat"
 
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Pantalla osoan ikusteko"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
-msgstr ""
+msgstr "Erregistro osoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:221
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Ekuatore Ginea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 #: app/Exceptions/InvalidGedcomEncodingException.php:39
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr ""
+"Akatsa!: GEDCOM artxiboen aldaketa %s-tik UTF-8-ra ez dago oraingoz onartua."
 
 #: app/Date/JalaliDate.php:284
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf."
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:161
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:251
+#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:206
+#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:116
+#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
+#, fuzzy
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/CustomTags/BrothersKeeper.php:77
 msgid "Estate name"
-msgstr ""
+msgstr "Izen komertziala"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:369
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "Jaiotza eta heriotzerako gutzi gora beherako datak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:183
 msgid "Estonia"
-msgstr ""
+msgstr "Estonia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:185
 msgid "Ethiopia"
-msgstr ""
+msgstr "Etiopia"
 
 #: resources/views/modules/statistics-chart/custom.phtml:182
 msgid "Europe"
-msgstr ""
+msgstr "Europa"
 
 #: app/CustomTags/GedcomL.php:126 app/CustomTags/GedcomL.php:180
 #: app/CustomTags/GedcomL.php:224 app/CustomTags/GedcomL.php:273
@@ -5917,11 +5955,11 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
 msgid "Event"
-msgstr ""
+msgstr "Gertaera"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Ez da gertaerarik izan"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5930,19 +5968,21 @@ msgstr ""
 #: resources/views/modules/todays_events/config.phtml:30
 #: resources/views/modules/upcoming_events/config.phtml:42
 msgid "Events"
-msgstr ""
+msgstr "Gertaera"
 
 #: resources/views/modules/statistics-chart/places.phtml:45
 msgid "Events in countries"
-msgstr ""
+msgstr "Gertaerak herrialdeka"
 
 #: resources/views/modules/personal_facts/tab.phtml:41
 msgid "Events of close relatives"
-msgstr ""
+msgstr "Hurbileko senideen gertaerak"
 
 #: resources/views/admin/users-edit.phtml:243
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr ""
+"Denek dute zeregin hori, baita webguneko bisitariak eta bilaketa-motorrak "
+"ere."
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:253
 msgid "Exact"
