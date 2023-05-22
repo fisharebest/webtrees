@@ -124,7 +124,7 @@ if ($tag === 'MARR') {
 
                         <?php if ($module instanceof RelationshipsChartModule && $record instanceof Individual) : ?>
                             — <a href="<?= $module->chartUrl($fact->target(), ['xref2' => $record->xref()]) ?>" rel="nofollow">
-                                <?= app(RelationshipService::class)->getCloseRelationshipName($fact->target(), $record) ?>
+                                <?= app(RelationshipService::class)->getCloseRelationshipName($record, $fact->target()) ?>
                             </a>
                         <?php endif ?>
                     <?php endif ?>
