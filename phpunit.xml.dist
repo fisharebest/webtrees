@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <phpunit
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
   bootstrap="vendor/autoload.php"
   colors="true"
   cacheDirectory=".phpunit.cache"
@@ -15,9 +15,9 @@
       <directory>tests/feature</directory>
     </testsuite>
   </testsuites>
-  <coverage>
+  <source>
     <include>
       <directory suffix=".php">app</directory>
     </include>
-  </coverage>
+  </source>
 </phpunit>
