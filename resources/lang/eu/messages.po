@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-05-27 09:37+0000\n"
+"PO-Revision-Date: 2023-05-28 10:39+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -213,8 +213,8 @@ msgstr[1] "%s erregistratutako erabiltzaile anonimoak"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "%s haurra"
-msgstr[1] "%s haurrak"
+msgstr[0] "haur %s"
+msgstr[1] "%s seme-alaba"
 
 #: app/Age.php:100 app/Elements/AgeAtEvent.php:103
 #: app/Statistics/Repository/FamilyRepository.php:353
@@ -16554,7 +16554,7 @@ msgstr ""
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
 msgid "View this family"
-msgstr ""
+msgstr "Familia ikusi nahi?"
 
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
@@ -21070,7 +21070,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:125
 #: resources/views/admin/trees-privacy.phtml:145
 msgid "visitors"
-msgstr ""
+msgstr "bisitariak"
 
 #: resources/xml/reports/ahnentafel_report.xml:142
 #: resources/xml/reports/descendancy_report.xml:105
@@ -21086,7 +21086,7 @@ msgstr ""
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
@@ -21120,7 +21120,7 @@ msgstr ""
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:145
 msgid "years"
@@ -21180,7 +21180,7 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:463
 msgid "younger sister"
-msgstr ""
+msgstr "Arreba/ahizpa gazteena"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:237
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:238
