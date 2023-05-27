@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-05-26 11:39+0000\n"
+"PO-Revision-Date: 2023-05-28 10:39+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -213,8 +213,8 @@ msgstr[1] "%s erregistratutako erabiltzaile anonimoak"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "%s haurra"
-msgstr[1] "%s haurrak"
+msgstr[0] "haur %s"
+msgstr[1] "%s seme-alaba"
 
 #: app/Age.php:100 app/Elements/AgeAtEvent.php:103
 #: app/Statistics/Repository/FamilyRepository.php:353
@@ -9294,34 +9294,37 @@ msgstr "Mapbox"
 #: app/Date/AbstractGregorianJulianDate.php:233
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "Mar"
 
 #: app/Date/AbstractGregorianJulianDate.php:130
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "Martxoaren"
 
 #: app/Date/AbstractGregorianJulianDate.php:200
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr ""
+msgstr "Martxoa"
 
 #: app/Date/AbstractGregorianJulianDate.php:165
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr ""
+msgstr "Martxoko"
 
 #: app/Date/AbstractGregorianJulianDate.php:95
 #: app/Module/StatisticsChartModule.php:789
 #: resources/views/edit/initialize-calendar-popup.phtml:15
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "Martxoa"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:590
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Formato sistema xinplea da Markdown, Wikipedian erabilitakoa errate "
+"baterako. Puntuazio-karaktere diskretoak erabiltzen ditu titulu eta "
+"azpitituluak sortzeko, letra lodia edo kurtsiboa, zerrendak, taulak, etabar."
 
 #: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:465
 #: app/Module/BranchesListModule.php:459
@@ -9381,149 +9384,149 @@ msgstr ""
 #: resources/xml/reports/pedigree_report.xml:1327
 #: resources/xml/reports/pedigree_report.xml:1365
 msgid "Marriage"
-msgstr ""
+msgstr "Ezkontza"
 
 #: app/Gedcom.php:460 resources/xml/reports/missing_facts_report.xml:22
 msgid "Marriage banns"
-msgstr ""
+msgstr "Amonestazioak"
 
 #: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
 msgid "Marriage beginning status"
-msgstr ""
+msgstr "Matrimonioaren hasierako egoera"
 
 #: app/CustomTags/BrothersKeeper.php:65
 msgid "Marriage bond"
-msgstr ""
+msgstr "Ezkontza konpromisoa"
 
 #: app/Statistics/Google/ChartDistribution.php:311
 msgid "Marriage by country"
-msgstr ""
+msgstr "Ezkontzak herrialdeka"
 
 #: app/Gedcom.php:463
 msgid "Marriage contract"
-msgstr ""
+msgstr "Ezkontza kontratua"
 
 #: resources/xml/reports/marriage_report.xml:8
 msgid "Marriage date range end"
-msgstr ""
+msgstr "Ezkontzaren adin-rangoaren bukaera"
 
 #: resources/xml/reports/marriage_report.xml:7
 msgid "Marriage date range start"
-msgstr ""
+msgstr "Ezkontzaren adin-rangoaren hasiera"
 
 #: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:89
 msgid "Marriage ending status"
-msgstr ""
+msgstr "Matrimonioaren bukaerako egoera"
 
 #: app/CustomTags/BrothersKeeper.php:64
 msgid "Marriage intention"
-msgstr ""
+msgstr "Ezkontza proposamena"
 
 #: app/Gedcom.php:464
 msgid "Marriage license"
-msgstr ""
+msgstr "Ezkontzarako baimena"
 
 #: app/Services/IndividualFactsService.php:463
 msgid "Marriage of a brother"
-msgstr ""
+msgstr "Anaiaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:441
 #: resources/views/admin/trees-preferences.phtml:455
 msgid "Marriage of a child"
-msgstr ""
+msgstr "Seme-alabaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:440
 msgid "Marriage of a daughter"
-msgstr ""
+msgstr "Alabaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:697
 msgid "Marriage of a father"
-msgstr ""
+msgstr "Aitaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:447
 #: app/Services/IndividualFactsService.php:453
 #: app/Services/IndividualFactsService.php:459
 #: resources/views/admin/trees-preferences.phtml:449
 msgid "Marriage of a grandchild"
-msgstr ""
+msgstr "Bilobaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:446
 msgid "Marriage of a granddaughter"
-msgstr ""
+msgstr "Bilobaren ezkontza (emakumezkoa)"
 
 #: app/Services/IndividualFactsService.php:452
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr ""
+msgstr "Bilobaren ezkontza (alabaren alaba)"
 
 #: app/Services/IndividualFactsService.php:458
 msgctxt "son’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr ""
+msgstr "Bilobaren ezkontza (semearen alaba)"
 
 #: app/Services/IndividualFactsService.php:445
 msgid "Marriage of a grandson"
-msgstr ""
+msgstr "Bilobaren ezkontza (gizonezkoa)"
 
 #: app/Services/IndividualFactsService.php:451
 msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
-msgstr ""
+msgstr "Bilobaren ezkontza (alabaren semea)"
 
 #: app/Services/IndividualFactsService.php:457
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr ""
+msgstr "Bilobaren ezkontza (semearen semea)"
 
 #: app/Services/IndividualFactsService.php:469
 msgid "Marriage of a half-brother"
-msgstr ""
+msgstr "Erdi anaiaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:471
 msgid "Marriage of a half-sibling"
-msgstr ""
+msgstr "Erdi anai-arrebaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:470
 msgid "Marriage of a half-sister"
-msgstr ""
+msgstr "Erdi arreba/ahizpa-ren ezkontza"
 
 #: app/Services/IndividualFactsService.php:698
 msgid "Marriage of a mother"
-msgstr ""
+msgstr "Amaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:699
 #: resources/views/admin/trees-preferences.phtml:467
 msgid "Marriage of a parent"
-msgstr ""
+msgstr "Gurasoetako baten ezkontza"
 
 #: app/Services/IndividualFactsService.php:465
 #: resources/views/admin/trees-preferences.phtml:461
 msgid "Marriage of a sibling"
-msgstr ""
+msgstr "Anai-arrebaren ezkontza"
 
 #: app/Services/IndividualFactsService.php:464
 msgid "Marriage of a sister"
-msgstr ""
+msgstr "Arreba-ahizpa-ren ezkontza"
 
 #: app/Services/IndividualFactsService.php:439
 msgid "Marriage of a son"
-msgstr ""
+msgstr "Semearen ezkontza"
 
 #: app/Services/IndividualFactsService.php:732
 msgid "Marriage of parents"
-msgstr ""
+msgstr "Gurasoen ezkontza"
 
 #: resources/xml/reports/marriage_report.xml:6
 msgid "Marriage place contains"
-msgstr ""
+msgstr "Ezkontzaren lekuak dauka"
 
 #: resources/views/modules/statistics-chart/places.phtml:36
 msgid "Marriage places"
-msgstr ""
+msgstr "Ezkontzen lekuak"
 
 #: app/Gedcom.php:469
 msgid "Marriage settlement"
-msgstr ""
+msgstr "Ezkontzaren zigilatzea"
 
 #. I18N: Name of a module/report
 #: app/Module/MarriageReportModule.php:40
@@ -9531,12 +9534,12 @@ msgstr ""
 #: resources/xml/reports/marriage_report.xml:3
 #: resources/xml/reports/marriage_report.xml:30
 msgid "Marriages"
-msgstr ""
+msgstr "Ezkontzak"
 
 #: app/Statistics/Google/ChartMarriage.php:111
 #: resources/views/modules/statistics-chart/family-totals.phtml:26
 msgid "Marriages by century"
-msgstr ""
+msgstr "Ezkontzak mendeka"
 
 #: app/CustomTags/FamilyTreeMaker.php:112
 #: resources/views/lists/families-table.phtml:180
@@ -9545,94 +9548,94 @@ msgstr ""
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Married name"
-msgstr ""
+msgstr "Ezkondutako izena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:329
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Marshall Uharteak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:351
 msgid "Martinique"
-msgstr ""
+msgstr "Martinika"
 
 #: resources/views/admin/users-table-options.phtml:39
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Erabiltzaile honen lekua hartu nahirik"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:52
 msgid "Match both upper and lower case letters."
-msgstr ""
+msgstr "Maiuskulak eta minuskulak dauden bezala paratu behar dira."
 
 #: app/Module/FixSearchAndReplace.php:101
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr ""
+msgstr "Testoa zehatz-mehatz berdina izan behar du, hitzen erdian ere."
 
 #: app/Module/FixSearchAndReplace.php:102
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr ""
+msgstr "Testoa zehatz-mehatz berdina izan behar du, hitzen erdian ez bada."
 
 #: app/Module/MatomoAnalyticsModule.php:44
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ analytics"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:347
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:353
 msgid "Mauritius"
-msgstr ""
+msgstr "Maurizio"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:348
 msgid "Maximum number of surnames on individual list"
-msgstr ""
+msgstr "Abizenen gehienezko kopurua perstsonen zerrendetan"
 
 #: resources/views/admin/media-upload.phtml:26
 #: resources/views/modals/media-file-fields.phtml:49
 msgid "Maximum upload size: "
-msgstr ""
+msgstr "Kargatzeko gehienezko tamaina "
 
 #: app/Date/AbstractGregorianJulianDate.php:235
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/AbstractGregorianJulianDate.php:132
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "Maiatzaren"
 
 #: app/Date/AbstractGregorianJulianDate.php:202
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr ""
+msgstr "Maiatza"
 
 #: app/Date/AbstractGregorianJulianDate.php:167
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr ""
+msgstr "Maiatzeko"
 
 #: app/Date/AbstractGregorianJulianDate.php:97
 #: app/Module/StatisticsChartModule.php:791
 #: resources/views/edit/initialize-calendar-popup.phtml:17
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr ""
+msgstr "Maiatza"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:359
 msgid "Mayotte"
-msgstr ""
+msgstr "Mayotte"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:131
 msgid "Medford, Oregon, United States"
-msgstr ""
+msgstr "Medford, Oregon, Estatu Batuak"
 
 #. I18N: Name of a module
 #: app/CustomTags/GedcomL.php:267 app/Media.php:156
@@ -9643,7 +9646,7 @@ msgstr ""
 #: resources/views/lists/media-table.phtml:82
 #: resources/views/modules/recent_changes/changes-table.phtml:67
 msgid "Media"
-msgstr ""
+msgstr "Multimedia"
 
 #: resources/views/admin/media-upload.phtml:31
 #: resources/views/admin/media.phtml:100
@@ -9652,27 +9655,27 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml:27
 #: resources/views/modals/media-file-fields.phtml:23
 msgid "Media file"
-msgstr ""
+msgstr "Multimedia artxiboa"
 
 #: resources/views/admin/media-upload.phtml:35
 msgid "Media file to upload"
-msgstr ""
+msgstr "Kargatu beharreko multimedia artxiboa"
 
 #: resources/views/admin/media.phtml:31
 #: resources/views/admin/trees-preferences.phtml:260
 msgid "Media files"
-msgstr ""
+msgstr "Multimedia artxiboak"
 
 #. I18N: A configuration setting
 #: resources/views/admin/media.phtml:61
 #: resources/views/admin/trees-preferences.phtml:240
 msgid "Media folder"
-msgstr ""
+msgstr "Multimedia karpeta"
 
 #: resources/views/admin/media.phtml:32
 #: resources/views/admin/trees-preferences.phtml:235
 msgid "Media folders"
-msgstr ""
+msgstr "Multimedia karpetak"
 
 #: app/CustomTags/GedcomL.php:129 app/CustomTags/GedcomL.php:183
 #: app/CustomTags/GedcomL.php:239 app/CustomTags/GedcomL.php:276
@@ -9690,7 +9693,7 @@ msgstr ""
 #: resources/views/admin/webtrees1-thumbnails.phtml:43
 #: resources/views/modules/favorites/favorites.phtml:95
 msgid "Media object"
-msgstr ""
+msgstr "Multimedia objektua"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:112 app/Module/MediaListModule.php:87
@@ -9708,69 +9711,69 @@ msgstr ""
 #: resources/views/modules/statistics-chart/other-records.phtml:18
 #: resources/views/record-page-links.phtml:60
 msgid "Media objects"
-msgstr ""
+msgstr "Multimedia objektuak"
 
 #: resources/views/modules/media-list/page.phtml:96
 msgid "Media objects found"
-msgstr ""
+msgstr "Multimedia objektuak"
 
 #: resources/views/modules/media-list/page.phtml:50
 msgid "Media objects per page"
-msgstr ""
+msgstr "Multimedia objektuak orriko"
 
 #: app/Gedcom.php:787 app/Gedcom.php:845
 #: resources/views/modals/create-media-from-file.phtml:43
 #: resources/views/modals/media-file-fields.phtml:117
 msgid "Media type"
-msgstr ""
+msgstr "Multimedia mota"
 
 #: app/CustomTags/BrothersKeeper.php:103 app/CustomTags/FamilyTreeMaker.php:133
 #: app/CustomTags/Reunion.php:58
 msgid "Medical"
-msgstr ""
+msgstr "Medikua"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:166
 msgid "Mediterranio"
-msgstr ""
+msgstr "Mediterraneo"
 
 #: resources/views/setup/step-2-server-checks.phtml:72
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr ""
+msgstr "Sistema ertainak (5.000 pertsona): 32-64 MB, 20-40 segundo"
 
 #: app/Date/JalaliDate.php:279
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:151
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:241
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:196
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:106
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:132
 msgid "Melbourne, Australia"
-msgstr ""
+msgstr "Melbourne, Australia"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:99
@@ -9779,54 +9782,54 @@ msgstr ""
 #: resources/views/admin/gedcom-export-options.phtml:108
 #: resources/views/admin/users-edit.phtml:246
 msgid "Member"
-msgstr ""
+msgstr "Kidea"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:133
 msgid "Memphis, Tennessee, United States"
-msgstr ""
+msgstr "Memphis, Tennessee, Estatu Batuak"
 
 #: resources/views/admin/modules.phtml:169
 #: resources/views/admin/modules.phtml:172
 msgid "Menu"
-msgstr ""
+msgstr "Menua"
 
 #: app/Http/RequestHandlers/ModulesMenusPage.php:43
 #: resources/views/admin/control-panel.phtml:687
 #: resources/views/admin/modules.phtml:82
 #: resources/views/admin/modules.phtml:84
 msgid "Menus"
-msgstr ""
+msgstr "Menuak"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:168
 msgid "Mercury"
-msgstr ""
+msgstr "Merkurio"
 
 #: resources/views/admin/trees-duplicates.phtml:41
 msgid "Merge"
-msgstr ""
+msgstr "Elkartu"
 
 #: app/Http/RequestHandlers/MergeTreesPage.php:75
 #: resources/views/admin/control-panel.phtml:328
 msgid "Merge family trees"
-msgstr ""
+msgstr "Famili zuhaitzak elkartu"
 
 #: app/Http/RequestHandlers/MergeFactsPage.php:53
 #: app/Http/RequestHandlers/MergeRecordsPage.php:65
 #: resources/views/admin/trees.phtml:177
 msgid "Merge records"
-msgstr ""
+msgstr "Erregistroak elkartu"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:134
 msgid "Merida, Mexico"
-msgstr ""
+msgstr "Merida, Mexiko"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:60
 msgid "Mesa, Arizona, United States"
-msgstr ""
+msgstr "Mesa, Arizona, Estatu Batuak"
 
 #: resources/views/admin/broadcast.phtml:54
 #: resources/views/admin/email-page.phtml:59
@@ -9834,101 +9837,101 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:126
 #: resources/views/contact-page.phtml:69 resources/views/message-page.phtml:57
 msgid "Message"
-msgstr ""
+msgstr "Mezua"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
 #: app/Module/UserMessagesModule.php:67
 #: resources/views/admin/site-mail.phtml:43
 msgid "Messages"
-msgstr ""
+msgstr "Mezuak"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:167
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:261
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:214
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:120
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:327
 msgid "Mexico"
-msgstr ""
+msgstr "Mexiko"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:135
 msgid "Mexico City, Mexico"
-msgstr ""
+msgstr "Mexico Hiria, Mexiko"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:86
 msgid "Microfiche"
-msgstr ""
+msgstr "Mikrofitxa"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:87
 msgid "Microfilm"
-msgstr ""
+msgstr "Mikrofilma"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
 msgid "Micronesia"
-msgstr ""
+msgstr "Mikronesia"
 
 #: resources/views/modules/statistics-chart/custom.phtml:194
 msgid "Middle East"
-msgstr ""
+msgstr "Ekialde Hurbila"
 
 #: app/CustomTags/BrothersKeeper.php:104
 msgid "Military"
-msgstr ""
+msgstr "Militarra"
 
 #: app/CustomTags/BrothersKeeper.php:105 app/CustomTags/FamilyTreeMaker.php:134
 msgid "Military service"
-msgstr ""
+msgstr "Soldaduxka"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:44
 #: resources/xml/reports/missing_facts_report.xml:3
 #: resources/xml/reports/missing_facts_report.xml:52
 msgid "Missing data"
-msgstr ""
+msgstr "Falta diren datuak"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:103
 #: resources/views/admin/users-edit.phtml:260
 msgid "Moderator"
-msgstr ""
+msgstr "Moderatzailea"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Moderators"
-msgstr ""
+msgstr "Moderatzaileak"
 
 #: resources/views/admin/components.phtml:40
 #: resources/views/admin/modules.phtml:70
 msgid "Module"
-msgstr ""
+msgstr "Moduloa"
 
 #: resources/views/admin/modules.phtml:65
 msgid "Module administration"
-msgstr ""
+msgstr "Moduluaren administratzailea"
 
 #: resources/views/admin/analytics-edit.phtml:19
 #: resources/views/admin/control-panel.phtml:575
@@ -9945,47 +9948,47 @@ msgstr ""
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Modules"
-msgstr ""
+msgstr "Moduluak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:321
 msgid "Moldova"
-msgstr ""
+msgstr "Moldavia"
 
 #. I18N: abbreviation for Monday
 #: app/Date/AbstractCalendarDate.php:273
 #: resources/views/edit/initialize-calendar-popup.phtml:26
 msgid "Mon"
-msgstr ""
+msgstr "Ast"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:319
 msgid "Monaco"
-msgstr ""
+msgstr "Monako"
 
 #: app/Date/AbstractCalendarDate.php:246
 msgid "Monday"
-msgstr ""
+msgstr "Astelehena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:339
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:343
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegro"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:137
 msgid "Monterrey, Mexico"
-msgstr ""
+msgstr "Monterrey, Mexiko"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:136
 msgid "Montevideo, Uruguay"
-msgstr ""
+msgstr "Montevideo, Uruguai"
 
 #: app/Module/CalendarMenuModule.php:104
 #: app/Module/StatisticsChartModule.php:276
@@ -9995,139 +9998,149 @@ msgstr ""
 #: app/Module/StatisticsChartModule.php:465
 #: resources/views/calendar-page.phtml:59
 msgid "Month"
-msgstr ""
+msgstr "Hilabetea"
 
 #: app/Module/StatisticsChartModule.php:275
 #: resources/views/modules/statistics-chart/custom.phtml:35
 msgid "Month of birth"
-msgstr ""
+msgstr "Jaiotzaren hiabetea"
 
 #: app/Module/StatisticsChartModule.php:415
 #: resources/views/modules/statistics-chart/custom.phtml:37
 msgid "Month of birth of first child in a relation"
-msgstr ""
+msgstr "Erlazioaren lehenbiziko semearen jaiotzaren hilabetea"
 
 #: app/Module/StatisticsChartModule.php:324
 #: resources/views/modules/statistics-chart/custom.phtml:36
 msgid "Month of death"
-msgstr ""
+msgstr "Heriotzaren hilabetea"
 
 #: app/Module/StatisticsChartModule.php:464
 #: resources/views/modules/statistics-chart/custom.phtml:52
 msgid "Month of first marriage"
-msgstr ""
+msgstr "Lehenbiziko ezkontzaren hilabetea"
 
 #: app/Module/StatisticsChartModule.php:373
 #: resources/views/modules/statistics-chart/custom.phtml:51
 msgid "Month of marriage"
-msgstr ""
+msgstr "Ezkontzaren hilabetea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:143
 #: resources/views/modules/timeline-chart/chart.phtml:145
 #: resources/views/modules/timeline-chart/chart.phtml:147
 msgid "Month:"
-msgstr ""
+msgstr "Hilabetea:"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:138
 msgid "Monticello, Utah, United States"
-msgstr ""
+msgstr "Monticello, Utah, Estatu Batuak"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:139
 msgid "Montreal, Quebec, Canada"
-msgstr ""
+msgstr "Montreal, Quebec, Kanada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:349
 msgid "Montserrat"
-msgstr ""
+msgstr "Montserrat"
 
 #: app/Date/JalaliDate.php:277
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "Mor"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:147
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:237
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:192
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:317
 msgid "Morocco"
-msgstr ""
+msgstr "Maroko"
 
 #. I18N: Help text for the “Use password” site configuration setting
 #: resources/views/admin/site-mail.phtml:127
 msgid "Most SMTP servers require a password."
-msgstr ""
+msgstr "SMTP zerbitzari gehienek pasahitza eskatzen dute."
 
 #: resources/views/modules/gedcom_stats/config.phtml:75
 #: resources/views/modules/gedcom_stats/statistics.phtml:266
 #: resources/views/modules/html/template-statistics.phtml:107
 msgid "Most common surnames"
-msgstr ""
+msgstr "Gehien erabilitako abizenak"
 
 #: resources/views/admin/site-mail.phtml:188
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Korreo-zerbitzari anitzek baliozko domeinu baten izena eskatzen dute."
 
 #: resources/views/admin/site-mail.phtml:82
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "Korreo-zerbitzari anitzek baiozko helbide elektroniko eskatzen dute."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:183
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
+"Korreo-zerbitzari anitzek zerbitzari-bidaltzailearen identifikazio zuzena "
+"eskatzen dute, domeinu zuzena erabiliz."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:169
 msgid "Most servers do not use secure connections."
-msgstr ""
+msgstr "Zerbitzari gehienek ez dituzte konexio seguruak erbiltzen."
 
 #: resources/views/setup/step-4-database-mysql.phtml:56
 #: resources/views/setup/step-4-database-pgsql.phtml:54
 #: resources/views/setup/step-4-database-sqlsrv.phtml:54
 msgid "Most sites are configured to use localhost. This means that your database runs on the same computer as your web server."
 msgstr ""
+"Orri gehienak localhost erabiltzeko konfiguratuak daude, eta horrek erran "
+"nahi du ordenagailuan bertan edo web-zerbitzarian exekutatu daitezkeela."
 
 #: resources/views/setup/step-4-database-sqlsrv.phtml:66
 msgid "Most sites are configured to use the default value of 1433."
 msgstr ""
+"Orri gehienak aurrez zehaztutako 1433 balorea erabiltzeko konfiguratuak "
+"daude."
 
 #: resources/views/setup/step-4-database-mysql.phtml:76
 msgid "Most sites are configured to use the default value of 3306."
 msgstr ""
+"Orri gehienak aurrez zehaztutako 3306 balorea erabiltzeko konfiguratuak "
+"daude."
 
 #: resources/views/setup/step-4-database-pgsql.phtml:66
 msgid "Most sites are configured to use the default value of 5432."
 msgstr ""
+"Orri gehienak aurrez zehaztutako 5432 balorea erabiltzeko konfiguratuak "
+"daude."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:52
 msgid "Most viewed pages"
-msgstr ""
+msgstr "Gehien ikusitako orriak"
 
 #: resources/views/search-advanced-page.phtml:77
 #: resources/xml/reports/bdm_report.xml:120
@@ -10137,99 +10150,99 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:276
 #: resources/xml/reports/relative_ext_report.xml:72
 msgid "Mother"
-msgstr ""
+msgstr "Ama"
 
 #: resources/views/lists/individual-table-parents.phtml:21
 #, php-format
 msgid "Mother: %s"
-msgstr ""
+msgstr "Ama: %s"
 
 #: resources/views/fact-parent-age.phtml:22
 msgid "Mother’s age"
-msgstr ""
+msgstr "Amaren adina"
 
 #. I18N: A step-family. %s is an individual’s name
 #: app/Individual.php:894
 #, php-format
 msgid "Mother’s family with %s"
-msgstr ""
+msgstr "Amaren familia %s-rekin"
 
 #. I18N: A step-family.
 #: app/Individual.php:898
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Pertsona ezezagun baten amaren familia"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:140
 msgid "Mount Timpanogos, Utah, United States"
-msgstr ""
+msgstr "Mount Timpanogos, Utah, Estatu Batuak"
 
 #: resources/views/admin/components.phtml:47
 #: resources/views/admin/components.phtml:154
 #: resources/views/modules/faq/config.phtml:62
 msgid "Move down"
-msgstr ""
+msgstr "Beherantz mugitu"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:19
 msgid "Move the media object?"
-msgstr ""
+msgstr "Multimedia objektua mugitu?"
 
 #: resources/views/admin/components.phtml:46
 #: resources/views/admin/components.phtml:148
 #: resources/views/modules/faq/config.phtml:61
 msgid "Move up"
-msgstr ""
+msgstr "Gorantz mugitu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambike"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:142
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:232
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:187
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Jaiotza anitza"
 
 #: resources/views/lists/families-table.phtml:141
 msgid "Multiple marriages"
-msgstr ""
+msgstr "Ezkontza anitza"
 
 #: app/Http/RequestHandlers/AccountEdit.php:90
 #: app/Module/ModuleThemeTrait.php:330 app/Module/UserWelcomeModule.php:112
 msgid "My account"
-msgstr ""
+msgstr "Nere kontua"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:60
 msgid "My family tree"
-msgstr ""
+msgstr "Nere zuhaitz genealokikoa"
 
 #: app/Module/ModuleThemeTrait.php:345 app/Module/UserWelcomeModule.php:105
 msgid "My individual record"
-msgstr ""
+msgstr "Nere erregistro pertsonala"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/UserPage.php:83 app/Module/ModuleThemeTrait.php:360
@@ -10237,20 +10250,20 @@ msgstr ""
 #: resources/views/admin/modules.phtml:200
 #: resources/views/layouts/administration.phtml:54
 msgid "My page"
-msgstr ""
+msgstr "Nere orria"
 
 #: app/Module/ModuleThemeTrait.php:374
 msgid "My pages"
-msgstr ""
+msgstr "Nere orriak"
 
 #: app/Module/ModuleThemeTrait.php:413
 msgid "My pedigree"
-msgstr ""
+msgstr "Nere arbasoen haria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:337
 msgid "Myanmar"
-msgstr ""
+msgstr "Myanmar/Birmania"
 
 #: app/Gedcom.php:672 app/Gedcom.php:866
 #: app/Http/RequestHandlers/HelpText.php:223
@@ -10280,31 +10293,31 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:43
 #: resources/xml/reports/relative_ext_report.xml:57
 msgid "Name"
-msgstr ""
+msgstr "Izena"
 
 #: app/Gedcom.php:818 app/Http/RequestHandlers/CreateRepositoryModal.php:49
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "Izena"
 
 #: app/CustomTags/PhpGedView.php:69
 msgid "Name in Hebrew"
-msgstr ""
+msgstr "Izena hebreeraz"
 
 #: app/CustomTags/GedcomL.php:111 app/CustomTags/GedcomL.php:152
 #: app/CustomTags/GedcomL.php:165 app/CustomTags/GedcomL.php:208
 #: app/CustomTags/GedcomL.php:216 app/CustomTags/Legacy.php:116
 #: app/CustomTags/PersonalAncestralFile.php:73
 msgid "Name of addressee"
-msgstr ""
+msgstr "Jasotazilearen izena"
 
 #: app/Gedcom.php:687 app/Gedcom.php:695 app/Gedcom.php:701
 msgid "Name prefix"
-msgstr ""
+msgstr "Izenaren aurrizkia"
 
 #: app/Gedcom.php:688 app/Gedcom.php:696 app/Gedcom.php:702
 msgid "Name suffix"
-msgstr ""
+msgstr "Izenaren atzizkia"
 
 #: resources/views/admin/tags.phtml:42
 #: resources/views/modules/statistics-chart/names.phtml:10
@@ -10312,11 +10325,11 @@ msgstr ""
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Names"
-msgstr ""
+msgstr "Izenak"
 
 #: app/CustomTags/FamilyTreeMaker.php:137
 msgid "Namesake"
-msgstr ""
+msgstr "Homonimoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:361
@@ -10514,7 +10527,7 @@ msgstr "Nivose"
 
 #: resources/views/admin/users-edit.phtml:336
 msgid "No"
-msgstr ""
+msgstr "Ez"
 
 #: app/Http/RequestHandlers/ImportGedcomAction.php:87
 #: app/Http/RequestHandlers/ImportGedcomAction.php:103
@@ -12891,24 +12904,24 @@ msgstr ""
 
 #: app/Elements/RelationIsDescriptor.php:124
 msgid "Seller"
-msgstr ""
+msgstr "Saltzailea"
 
 #: app/Elements/RelationIsDescriptor.php:88
 msgctxt "FEMALE"
 msgid "Seller"
-msgstr ""
+msgstr "Saltzailea"
 
 #: app/Elements/RelationIsDescriptor.php:67
 msgctxt "MALE"
 msgid "Seller"
-msgstr ""
+msgstr "Saltzailea"
 
 #: resources/views/admin/broadcast.phtml:65
 #: resources/views/admin/email-page.phtml:70
 #: resources/views/contact-page.phtml:80 resources/views/message-page.phtml:68
 #: resources/views/modules/user-messages/user-messages.phtml:43
 msgid "Send"
-msgstr ""
+msgstr "Bidali"
 
 #: app/Http/RequestHandlers/ContactPage.php:89
 #: app/Http/RequestHandlers/MessagePage.php:73
@@ -12916,11 +12929,11 @@ msgstr ""
 #: resources/views/modules/user-messages/user-messages.phtml:31
 #: resources/views/pending-changes-page.phtml:80
 msgid "Send a message"
-msgstr ""
+msgstr "Mezua bidali"
 
 #: app/Services/MessageService.php:217
 msgid "Send a message to all users"
-msgstr ""
+msgstr "Mezua erabiltzaile guztiei bidali"
 
 #: app/Services/MessageService.php:218
 msgid "Send a message to users who have never signed in"
@@ -16552,7 +16565,7 @@ msgstr ""
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
 msgid "View this family"
-msgstr ""
+msgstr "Familia ikusi nahi?"
 
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
@@ -21083,7 +21096,6 @@ msgid "was born"
 msgstr "jaioa"
 
 #: app/Module/WebtreesTheme.php:38
-#, fuzzy
 msgid "webtrees"
 msgstr "webtrees"
 
@@ -21120,7 +21132,6 @@ msgstr "emaztea"
 
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
-#, fuzzy
 msgid "xenea"
 msgstr "xenea"
 
@@ -21184,7 +21195,7 @@ msgstr "anai-arreba gazteena"
 
 #: app/Services/RelationshipService.php:463
 msgid "younger sister"
-msgstr ""
+msgstr "Arreba/ahizpa gazteena"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:237
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:238
