@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-05-28 10:39+0000\n"
+"PO-Revision-Date: 2023-05-28 19:52+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -9959,7 +9959,7 @@ msgstr "Moldavia"
 #: app/Date/AbstractCalendarDate.php:273
 #: resources/views/edit/initialize-calendar-popup.phtml:26
 msgid "Mon"
-msgstr "Ast"
+msgstr "Al."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:319
@@ -10532,102 +10532,102 @@ msgstr "Ez"
 #: app/Http/RequestHandlers/ImportGedcomAction.php:87
 #: app/Http/RequestHandlers/ImportGedcomAction.php:103
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Ez da GEDCOM artxiborik hartu."
 
 #: resources/views/admin/trees-import.phtml:68
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Ez da GEDCOM artxiborik aurkitu."
 
 #: resources/views/admin/trees-preferences.phtml:119
 #: resources/views/admin/trees-preferences.phtml:122
 msgid "No calendar conversion"
-msgstr ""
+msgstr "Egutegia ez da konbertitu"
 
 #: app/CustomTags/Legacy.php:70 app/Module/DescendancyModule.php:268
 #: resources/views/family-page-children.phtml:19
 msgid "No children"
-msgstr ""
+msgstr "Seme-alabarik ez"
 
 #: app/Services/MessageService.php:235
 msgid "No contact"
-msgstr ""
+msgstr "Ez dago kontaktatzerik"
 
 #: resources/views/admin/trees-duplicates.phtml:48
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Ez da duplikaturik aurkitu."
 
 #: resources/views/admin/trees-check.phtml:80
 msgid "No errors have been found."
-msgstr ""
+msgstr "Ez da akatsik aurkitu."
 
 #: app/Module/UpcomingAnniversariesModule.php:183
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ez da gertaerarik hurrengo %s egunerako."
+msgstr[1] "Ez da gertaerarik hurrengo %s egunetarako."
 
 #: app/Module/OnThisDayModule.php:157
 msgid "No events exist for today."
-msgstr ""
+msgstr "Ez da gertaerarik gaurko."
 
 #: app/Module/UpcomingAnniversariesModule.php:177
 msgid "No events exist for tomorrow."
-msgstr ""
+msgstr "Ez da gertaerarik biharko."
 
 #: app/Module/OnThisDayModule.php:155
 msgid "No events for living individuals exist for today."
-msgstr ""
+msgstr "Ez da gertaerarik bizirik dauden pertsonentzat."
 
 #: app/Module/UpcomingAnniversariesModule.php:175
 msgid "No events for living individuals exist for tomorrow."
-msgstr ""
+msgstr "Ez da gertaerarik bizirik dauden pertsonentzat biharko."
 
 #: app/Module/UpcomingAnniversariesModule.php:181
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ez da gertaerarik bizirik dauden pertsonentzat %s egunerako."
+msgstr[1] "Ez da gertaerarik bizirik dauden pertsonentzat %s egunetarako."
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
-msgstr ""
+msgstr "Ez da gertaerarik famili honentzat."
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Ez da artxiborik hartu."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
 #: app/Exceptions/FileUploadException.php:73
 msgid "No file was received. Please try again."
-msgstr ""
+msgstr "Artxiboa ez da hartu. Bidali berriz mesedez."
 
 #: app/Module/RelationshipsChartModule.php:409
 msgid "No link between the two individuals could be found."
-msgstr ""
+msgstr "Ez da bi pertsona hauen arteko harremanik aurkitu."
 
 #: resources/views/admin/merge-records-step-2.phtml:75
 #: resources/views/admin/merge-records-step-2.phtml:122
 #: resources/views/admin/merge-records-step-2.phtml:168
 msgid "No matching facts found"
-msgstr ""
+msgstr "Ez da gertaera berdinik aurkitu"
 
 #: resources/views/modules/gedcom_news/list.phtml:20
 #: resources/views/modules/user_blog/list.phtml:20
 msgid "No news articles have been submitted."
-msgstr ""
+msgstr "Ez da artikulurik bidali \"Berriak\" sailera."
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:47
 msgid "No predefined text"
-msgstr ""
+msgstr "Ez dago aurretik aukeratutako testurik"
 
 #: resources/views/lists/datatables-attributes.phtml:24
 #: resources/views/lists/datatables-attributes.phtml:35
 msgid "No records to display"
-msgstr ""
+msgstr "Ez dago erregistrorik erakusteko"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
@@ -10635,11 +10635,11 @@ msgstr ""
 #: resources/views/search-general-page.phtml:138
 #: resources/views/search-phonetic-page.phtml:98
 msgid "No results found."
-msgstr ""
+msgstr "Ez da emaitzik aurkitu."
 
 #: app/Statistics/Repository/UserRepository.php:81
 msgid "No signed-in and no anonymous users"
-msgstr ""
+msgstr "Ez da identifikatutako adminitratzailerik ezta anonimorik ere"
 
 #: app/Module/IndividualListModule.php:263
 #: app/Module/IndividualListModule.php:286
@@ -10650,27 +10650,27 @@ msgstr ""
 #: resources/views/lists/surnames-table.phtml:69
 #: resources/views/lists/surnames-tag-cloud.phtml:34
 msgid "No surname"
-msgstr ""
+msgstr "Abizenik gabe"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
-msgstr ""
+msgstr "Ez bortxatu bizitakoen ordenantza"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:155
 #: resources/views/admin/control-panel.phtml:199
 #: resources/views/admin/upgrade/wizard.phtml:23
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Ez dago eguneratzeko informaziorik eskura."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:170
 msgid "Nocturnal"
-msgstr ""
+msgstr "Gauekoa"
 
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Nominatim"
 
 #: resources/views/admin/gedcom-export-options.phtml:104
 #: resources/xml/reports/cemetery_report.xml:7
@@ -10678,69 +10678,72 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "None"
-msgstr ""
+msgstr "Bakar bat ere"
 
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:317
 msgid "Nonidi"
-msgstr ""
+msgstr "Nonidi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:367
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk Uhartea"
 
 #: resources/views/admin/users-edit.phtml:159
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr ""
+"Normalki moderatzaile batek onartu behar izaten ditu zuhaitzean egindako "
+"aldaketak. Aukera honekin erabiltzaileek aldaketak egin ahal izanen ditu "
+"moderatzailerik gabe."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:407
 msgid "North Korea"
-msgstr ""
+msgstr "Ipar Korea"
 
 #: resources/views/modules/statistics-chart/custom.phtml:185
 msgid "Northern America"
-msgstr ""
+msgstr "Ipar Amerika"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:373
 msgid "Northern Ireland"
-msgstr ""
+msgstr "Ipar Irlanda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:341
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Iparraldeko Mariana Uharteak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:379
 msgid "Norway"
-msgstr ""
+msgstr "Norvegia"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Not approved by an administrator"
-msgstr ""
+msgstr "Administradoreak begiaztatu gabekoak"
 
 #: app/CustomTags/BrothersKeeper.php:106
 msgid "Not living"
-msgstr ""
+msgstr "Hila"
 
 #: app/CustomTags/BrothersKeeper.php:66 app/Elements/FamilyStatusText.php:71
 #: app/Module/BranchesListModule.php:461
 #: resources/views/lists/families-table.phtml:121
 msgid "Not married"
-msgstr ""
+msgstr "Ezkondu gabeak"
 
 #. I18N: The record was not recorded in this GEDCOM file.
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:104
 msgid "Not recorded"
-msgstr ""
+msgstr "Erregistratu gabea"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Not verified by the user"
-msgstr ""
+msgstr "Erabiltzaileak egiaztatu gabeak"
 
 #: app/CustomTags/Ancestry.php:62 app/CustomTags/Ancestry.php:65
 #: app/CustomTags/GedcomL.php:140 app/CustomTags/GedcomL.php:196
@@ -10763,38 +10766,38 @@ msgstr ""
 #: resources/xml/reports/family_group_report.xml:1101
 #: resources/xml/reports/occupation_report.xml:64
 msgid "Note"
-msgstr ""
+msgstr "Oharra"
 
 #: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
 #: app/Gedcom.php:900 app/Gedcom.php:914
 msgid "Note on association"
-msgstr ""
+msgstr "Asoziazioari buruzko oharra"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:449 app/Gedcom.php:616
 #: app/Gedcom.php:763 app/Gedcom.php:784 app/Gedcom.php:815 app/Gedcom.php:831
 #: app/Gedcom.php:862 app/Gedcom.php:878
 msgid "Note on last change"
-msgstr ""
+msgstr "Azkeneko aldaketari buruzko oharra"
 
 #: app/Gedcom.php:686
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Izen fonetikoari buruzko oharra"
 
 #: app/CustomTags/GedcomL.php:248 app/Gedcom.php:425 app/Gedcom.php:557
 msgid "Note on place"
-msgstr ""
+msgstr "Oharra lekuaz"
 
 #: app/Gedcom.php:846
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Gordailuari buruzko erreferentziaren oharra"
 
 #: app/Gedcom.php:700
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Erromanizatutako izenari buruzko oharra"
 
 #: app/Gedcom.php:838
 msgid "Note on source"
-msgstr ""
+msgstr "Iturriari buruzko oharra"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
@@ -10802,19 +10805,23 @@ msgstr ""
 #: app/Gedcom.php:751 app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:908
 #: app/Gedcom.php:922
 msgid "Note on source citation"
-msgstr ""
+msgstr "Iturriaren aipamenari buruzko oharra"
 
 #: app/Gedcom.php:837
 msgid "Note on source data"
-msgstr ""
+msgstr "Datuen iturriari buruzko oharra"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
 msgstr ""
+"Kontuan izan erabiltzaile bat erregistro bati elkartua baldin badago, "
+"erregistro hori ikusi ahal izanen duela."
 
 #: resources/views/help/relationship-privacy.phtml:18
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
 msgstr ""
+"Oharra: Kalkulu luzeak denbora anitz behar dute egiteko. Ondorioz orria "
+"mantsotu eginen da erabiltzaile hauentzako."
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:113 app/Module/NoteListModule.php:141
@@ -10827,52 +10834,52 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:237
 #: resources/xml/reports/individual_report.xml:226
 msgid "Notes"
-msgstr ""
+msgstr "Oharrak"
 
 #: resources/views/admin/users-cleanup.phtml:75
 msgid "Nothing found to cleanup"
-msgstr ""
+msgstr "Ez da garbitzeko beharrik izan"
 
 #: resources/views/admin/location-edit.phtml:132
 msgid "Nothing found."
-msgstr ""
+msgstr "Ez da deus aurkitu."
 
 #: resources/views/modules/pedigree-map/chart.phtml:68
 #: resources/views/modules/places/tab.phtml:69
 msgid "Nothing to show"
-msgstr ""
+msgstr "Ez da erakustekorik"
 
 #: app/Date/AbstractGregorianJulianDate.php:241
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Aza"
 
 #: app/Date/AbstractGregorianJulianDate.php:138
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "Azaroaren"
 
 #: app/Date/AbstractGregorianJulianDate.php:208
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "Azaroa"
 
 #: app/Date/AbstractGregorianJulianDate.php:173
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "Azaroko"
 
 #: app/Date/AbstractGregorianJulianDate.php:103
 #: app/Module/StatisticsChartModule.php:797
 #: resources/views/edit/initialize-calendar-popup.phtml:23
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "Azaroa"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:145
 msgid "Nuku’Alofa, Tonga"
-msgstr ""
+msgstr "Nuku’Alofa, Tonga"
 
 #: app/Gedcom.php:470 app/Gedcom.php:714
 #: app/Module/StatisticsChartModule.php:712
@@ -10880,117 +10887,117 @@ msgstr ""
 #: resources/views/admin/tags.phtml:990
 #: resources/views/modules/statistics-chart/custom.phtml:53
 msgid "Number of children"
-msgstr ""
+msgstr "Seme-alaben kopurua"
 
 #: resources/views/modules/recent_changes/config.phtml:23
 #: resources/views/modules/upcoming_events/config.phtml:23
 #: resources/views/modules/yahrzeit/config.phtml:20
 msgid "Number of days to show"
-msgstr ""
+msgstr "Egun kopurua erakusteko"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:119
 #: resources/views/modules/statistics-chart/children.phtml:29
 msgid "Number of families without children"
-msgstr ""
+msgstr "Zenbat familia seme-alabarik gabe"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_givnnames/config.phtml:17
 msgid "Number of given names"
-msgstr ""
+msgstr "Izen kopurua"
 
 #: app/Gedcom.php:715
 msgid "Number of marriages"
-msgstr ""
+msgstr "Ezkontzen kopurua"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:15
 msgid "Number of pages"
-msgstr ""
+msgstr "Orri kopurua"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/gedcom_stats/config.phtml:82
 #: resources/views/modules/top10_surnames/config.phtml:17
 msgid "Number of surnames"
-msgstr ""
+msgstr "Abizenen kopurua"
 
 #: app/Elements/RelationIsDescriptor.php:118
 msgid "Nurse"
-msgstr ""
+msgstr "Erizaina"
 
 #: app/Elements/RelationIsDescriptor.php:85
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr ""
+msgstr "Erizaina"
 
 #: app/Elements/RelationIsDescriptor.php:64
 msgctxt "MALE"
 msgid "Nurse"
-msgstr ""
+msgstr "Erizaina"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:148
 msgid "Oakland, California, United States"
-msgstr ""
+msgstr "Oakland, California, Estatu Batuak"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:149
 msgid "Oaxaca, Mexico"
-msgstr ""
+msgstr "Oaxaca, Mexiko"
 
 #: app/CustomTags/Ancestry.php:66 app/Gedcom.php:718
 #: resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
-msgstr ""
+msgstr "Lanbidea"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:44
 #: resources/xml/reports/occupation_report.xml:3
 #: resources/xml/reports/occupation_report.xml:37
 msgid "Occupations"
-msgstr ""
+msgstr "Lanbideak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:413
 msgid "Occupied Palestinian Territory"
-msgstr ""
+msgstr "Okupatutako Palestina Lurraldea"
 
 #: app/Date/AbstractGregorianJulianDate.php:240
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Urr"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:315
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #: app/Date/AbstractGregorianJulianDate.php:137
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "Urriaren"
 
 #: app/Date/AbstractGregorianJulianDate.php:207
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "Urria"
 
 #: app/Date/AbstractGregorianJulianDate.php:172
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "Urriko"
 
 #: app/Date/AbstractGregorianJulianDate.php:102
 #: app/Module/StatisticsChartModule.php:796
 #: resources/views/edit/initialize-calendar-popup.phtml:22
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "Urria"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:150
 msgid "Ogden, Utah, United States"
-msgstr ""
+msgstr "Ogden, Utah, Estatu Batuak"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:151
