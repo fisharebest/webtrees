@@ -641,11 +641,11 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     protected function surnameInitials(array $all_surnames): array
     {
-        $initials    = [];
+        $initials = [];
 
         // Ensure our own language comes before others.
         foreach (I18N::language()->alphabet() as $initial) {
-            $initials[$initial]    = 0;
+            $initials[$initial] = 0;
         }
 
         foreach ($all_surnames as $surn => $surnames) {
