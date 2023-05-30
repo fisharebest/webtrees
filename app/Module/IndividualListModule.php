@@ -197,7 +197,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
 
         // Make sure parameters are consistent with each other.
-        if ($show_all_firstnames ==='yes') {
+        if ($show_all_firstnames === 'yes') {
             $falpha = '';
         }
 
