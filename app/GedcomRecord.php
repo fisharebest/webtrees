@@ -841,6 +841,7 @@ class GedcomRecord
                 'xref'       => $this->xref,
                 'old_gedcom' => $old_gedcom,
                 'new_gedcom' => $new_gedcom,
+                'status'     => 'pending',
                 'user_id'    => Auth::id(),
             ]);
 
