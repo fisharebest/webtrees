@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-01 07:56+0000\n"
+"PO-Revision-Date: 2023-06-05 09:32+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -14450,84 +14450,84 @@ msgstr "Tampico, Mexiko"
 #: app/Date/JewishDate.php:213
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:317
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:265
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:161
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:506
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzania"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:180
 msgid "Teal Top"
-msgstr ""
+msgstr "Urdin berdexka"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:175
 msgid "Technical help contact"
-msgstr ""
+msgstr "Kontaktatu laguntza teknikorako"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:195
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Plantilla"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
-msgstr ""
+msgstr "Plantillak"
 
 #. I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)
 #: app/CustomTags/Gedcom7.php:131 app/Gedcom.php:483 app/Gedcom.php:589
 #: app/Gedcom.php:631 app/Gedcom.php:651 app/Gedcom.php:744 app/Gedcom.php:885
 #: resources/xml/reports/individual_report.xml:208
 msgid "Temple"
-msgstr ""
+msgstr "Eliza"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:199
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:303
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:251
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #: app/CustomTags/GedcomL.php:125 app/CustomTags/GedcomL.php:179
 #: app/CustomTags/GedcomL.php:272 app/CustomTags/GedcomL.php:305
@@ -14537,314 +14537,345 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:578
 #: resources/views/modals/source-fields.phtml:60
 msgid "Text"
-msgstr ""
+msgstr "Testua"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "Testuaren helbidea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:484
 msgid "Thailand"
-msgstr ""
+msgstr "Thailandia"
 
 #: resources/views/help/name.phtml:10
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
+"<b>izena</b> eremuak pertsonaren izen osoa dauka, idatzi edo erregistratu "
+"zuten bezala. Hori erakutsiko da pantailan. Izenen zati ezberdinak "
+"erakusteko ohiko ohar genealogikoak erabiltzen dira."
 
 #: resources/views/help/surname.phtml:10
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
+"<b>abizena</b> eremuak sailkatzeko erabiltzen den izen bat dauka barrenean. "
+"Benetako abizenetik ezberdina izan daiteke, Benetakoa beti <b>izena</b> "
+"eremuan izaten baita. \"Abizena\" eremua abizenak sailkatzeko erabil "
+"daiteke, aurrizkiarekin edo gabe (Gogh / van Gogh), edo aldaera "
+"ortografikoak moldatzeko (Kowalski / Kowalska). Pertsona bat abizen bat "
+"baino gehiagotan agertzekotan, abizenak koma artean paratu beharko dira."
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:98
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "%s GEDCOM artxiboa inportatua izan da."
 
 #: resources/views/admin/tags.phtml:35
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
 msgstr ""
+"GEDCOM estandarrak datuak sartzeko eremu anitz eskaintzen ditu, etikekak "
+"deiturikoak."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
 msgid "The Hague, Netherlands"
-msgstr ""
+msgstr "The Hague, Herbereak"
 
 #: app/Services/ServerCheckService.php:123
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "\"%s\" PHP estensioa ez dago instalatua."
 
 #: app/Services/ServerCheckService.php:179
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "“%1$s” PHP funtzioa ez dago martxan."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:78
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "PHP-ren behin behineko artxiborik ez dago."
 
 #: app/Services/ServerCheckService.php:142
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "PHP.INI-ren \"%1$s\" parametroa ez dago martxan."
 
 #: app/Services/ServerCheckService.php:146
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "PHP.INI-ren \"%1$s\" parametroa ez martxan dago."
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "URL lotura arbelean kopiatu da"
 
 #: resources/views/emails/approve-user-html.phtml:22
 #: resources/views/emails/approve-user-text.phtml:16
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
 msgstr ""
+"Webtrees-eko %s adiministratzaileak zure kontu eskaera onartu du. Dagoeneko "
+"sartzen ahal zara %s lotura erabilita"
 
 #: resources/views/verify-success-page.phtml:22
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
 msgstr ""
+"Administratzaileari informatu zaio. Onartu bezain abudo sartzeko modua "
+"izanen duzu, zure identifikatzaile eta pasahitzarekin."
 
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
 msgid "The calendar menu."
-msgstr ""
+msgstr "Egutegiaren menua."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php:60
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "\"%s\"eko aldaketak onartu dira."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php:64
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php:59
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "\"%s\"eko aldaketak ez dira onartu."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:70
 msgid "The charts menu."
-msgstr ""
+msgstr "Grafikoen menua."
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr ""
+"Errekorteen saskiak zuhaitzaren zatiak ateratzeko balio du, GEDCOM artxibo "
+"batean deskargatzeko."
 
 #: resources/views/admin/trees-preferences.phtml:382
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "Azken eguneratzearen data eta ordua"
 
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #: app/Http/RequestHandlers/MapDataSave.php:101
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "“%s”rentzako xehetasunak eguneratu dira."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php:86
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:219
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "%sra esportatutako zuhaitz genealogikoa."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:63
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "\"%s\" zuhaitza bada dagoeneko."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:70
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "“%s” zuhaitza sortu da."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php:62
 #: app/Http/RequestHandlers/SynchronizeTrees.php:112
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "“%s” zuhaitza deuseztatua izan da."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:52
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"“%s” zuhaitza bisitatzaileei erakustiko zaie lehenbiziko aldiz sartzen "
+"direnean orri honetan."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:249
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Zuhaitz genealogikoak ongi konbinatu dira."
 
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:70
 msgid "The family trees menu."
-msgstr ""
+msgstr "Zuhaitz genealogikoen menua."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:84
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "“%s” familia ezabatua izan da, pertsona bakarra duelako orain."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:123
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "%s atxiboa badago dagoeneko. Bertze izen bat erabili beharko duzu."
 
 #: app/Http/RequestHandlers/ExportGedcomServer.php:89
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "%s artxiboa ezin izan da sortu."
 
 #: app/Http/RequestHandlers/DeletePath.php:74
 #: app/Http/RequestHandlers/DeletePath.php:91
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "%s artxiboa ezin da ezabatu."
 
 #: app/Http/RequestHandlers/DeletePath.php:89
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "%s artxiboa ezabatu da."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:130
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "%s artxiboa igo da."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:68
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "Artxiboaren zati bat igo da bakarrik, saiatu berriz faborez."
 
 #. I18N: %s is a filename
 #: resources/views/media-page-details.phtml:56
 #: resources/views/modules/media-list/page.phtml:147
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "“%s” artxiborik ez dago."
 
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
+"Zerrendaren lehenbiziko familia erabiliko da grafikoetarako, zerrendetarako, "
+"etabar."
 
 #: app/Http/RequestHandlers/DeletePath.php:84
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "%s karpeta ezin izan da ezabatu."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:183
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "%s karpeta sortu da."
 
 #: app/Http/RequestHandlers/DeletePath.php:82
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "%s karpeta ezabatu da."
 
 #: resources/views/admin/site-preferences.phtml:42
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"Karpetaren bidea osorik agertzen ahal da (errate baterako: /home/user_name/"
+"webtrees_data/) edo instalazioaren datuekin bakarrik (errate baterako: ../../"
+"webtrees_data/)."
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:58
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "“%s” karpetarik ez dago."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Gertaera hauek bi erregistroetan aurkitu dira."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.phtml:86
 #: resources/views/admin/merge-records-step-2.phtml:132
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Gertaera hauek %s erregistroan bakarrik aurkitu dira."
 
 #: resources/views/setup/step-2-server-checks.phtml:67
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "Ondotik agertzen den zerrendak ohiko baldintzak erakusten ditu."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"Formularioaren datuak osatuak gabeak daude. Akaso zerbitzarian "
+"\"max_input_vars\"-a handitzeko beharra duzu?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "Elementu honentzako laguntza-testoa ez da idatzi."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:187
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr ""
+"Gai tekniko eta orrian aurkitutako akatsei buruz kontaktatu beharreko "
+"pertsona."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:167
 msgid "The individual to contact about the genealogy data on this website."
-msgstr ""
+msgstr "Zuhaitz genealogikoei buruz kontaktatu beharreko pertsona."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:92
 #: app/Http/RequestHandlers/DeleteRecord.php:97
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "%1$stik %2$sera bitarteko lotura ezabatua izan da."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:103
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "%1$stik %2$sera bitarteko lotura eguneratua izan da."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:66
 msgid "The lists menu."
-msgstr ""
+msgstr "Zerrenden menua."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:56
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "Ubikazioa sortu da"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:36
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Leku honen ubikazioa ez da ezagutzen."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:134
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
 msgstr ""
+"%1$stik %2$sra bitarteko multimedia artxiboaren izena ezin izan da aldatu."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:131
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "%1$s multimedia artxiboaren izena %2$sra aldatu da."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:98
 msgid "The media object has been created"
-msgstr ""
+msgstr "Multimedia objektua sortu da"
 
 #: resources/views/setup/step-2-server-checks.phtml:64
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr ""
+"Memoriak eta CPUak bete beharreko baldintzak zuhaitzean dauden pertsonen "
+"araberakoak izan beharko dute."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Mezua ez zaio bidali %sri."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:102
 #: app/Http/RequestHandlers/MessageAction.php:98
 msgid "The message was not sent."
-msgstr ""
+msgstr "Mezua ez da bidali."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:80
 #: app/Http/RequestHandlers/ContactAction.php:146
@@ -14852,7 +14883,7 @@ msgstr ""
 #: app/Http/RequestHandlers/MessageAction.php:93
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "%sri bidali beharreko mezua ongi atera da."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:79
 #: app/Http/RequestHandlers/ModulesAllAction.php:70
@@ -14860,82 +14891,90 @@ msgstr ""
 #: app/Module/ChartsBlockModule.php:164 app/Module/ChartsBlockModule.php:178
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "“%s” modulua desgaitu da."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:77
 #: app/Http/RequestHandlers/ModulesAllAction.php:68
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "“%s” modulua berriz ere martxan dago."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:683
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"Familien gertaera ohikoenak alde batetik zerrendatzen dira, modu errazagoan "
+"sartu ahal izateko."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:658
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"Pertsonen gertaera ohikoenak alde batetik zerrendatzen dira, modu errazagoan "
+"sartu ahal izateko."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Erabiltzaile berriari bere helbide elektronikoa konfirmatzeko eskatuko zaio "
+"kontua sortu baino lehen."
 
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"GEDCOMeko bertsioa berriak etiketa berriak gehituko ditu eta zaharrak "
+"ezabatu. Zenbait etiketa berri erabiltzen ahal dituzu dagoeneko."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
-msgstr ""
+msgstr "Oharra sortu da"
 
 #: app/Validator.php:263 app/Validator.php:279 app/Validator.php:314
 #: app/Validator.php:333 app/Validator.php:355 app/Validator.php:374
 #: app/Validator.php:390 app/Validator.php:406
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "“%s” parametroa ez da aurkitzen."
 
 #: app/Http/RequestHandlers/SetupWizard.php:381
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "Pasahitzak sei karaktere izan beharko ditu gutienez."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: resources/views/admin/site-mail.phtml:155
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP zerbitzarirako identifikatzeko pasahitza."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:81
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Pasahitza berreskuratzeko lotura kadukatu da."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:114
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Lekuen ierarkia."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:170
 #: app/Http/RequestHandlers/TreePrivacyAction.php:133
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Zuhaitz guztiendako lehentasunak eguneratu dira."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:174
 #: app/Http/RequestHandlers/TreePrivacyAction.php:136
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Zuhaitz berriendako lehentasunak eguneratu dira."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:163
 #: app/Http/RequestHandlers/TreePrivacyAction.php:126
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "“%s” familiaren zuhaitzarendako lehentasunak eguneratu dira."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:72
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "“%s” moduluarendako lehetasunak ezabatu dira."
 
 #: app/Module/BingMaps.php:100 app/Module/CustomCssJsModule.php:101
 #: app/Module/GeonamesAutocomplete.php:110 app/Module/GoogleMaps.php:100
@@ -14946,7 +14985,7 @@ msgstr ""
 #: app/Module/RelationshipsChartModule.php:451 app/Module/SiteMapModule.php:171
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "“%s” moduluarendako lehetasunak eguneratu dira."
 
 #: resources/views/setup/step-4-database-mysql.phtml:126
 #: resources/views/setup/step-4-database-pgsql.phtml:111
@@ -14954,79 +14993,85 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:111
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"Aurrizkia aukerakoa da, baina gomendagarria. Tablei aurrizki bakarra "
+"paratzeak suposatsen du aplikazio ezberdinek datu-baseak erabili ahal izatea."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:174
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "%1$s eta %2$s erregistroak konbinatu dira."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "Txostenen menua."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:77
 msgid "The repository has been created"
-msgstr ""
+msgstr "Gordailua sortu da"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Bilaketa menua."
 
 #: app/Services/SearchService.php:1178
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Bilaketak emaitza gehiegi eman ditu."
 
 #: resources/views/setup/step-2-server-checks.phtml:57
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "Zerbitzarieran konfigurazioa zuena da."
 
 #: app/Http/Exceptions/HttpBadRequestException.php:35
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Zerbitzariak ez du eskaria ulertu."
 
 #: app/Services/ServerCheckService.php:244
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Ezin izan sartu zerbitzariaren behin behineko karpetara."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:551
 #: app/Services/UpgradeService.php:176 app/Services/UpgradeService.php:208
 #: resources/views/admin/trees-check.phtml:86
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Zerbitzariaren denbora mugara iritsi da."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:81
 msgid "The size of the family tree, earliest and latest events, common names, etc."
 msgstr ""
+"Zuhaitz genealogikoaren tamaina, lehenengo eta azkeneko gertaerak, gehien "
+"erabilitako izenak, etabar."
 
 #: app/CustomTags/GedcomL.php:137 app/CustomTags/GedcomL.php:193
 msgid "The solution"
-msgstr ""
+msgstr "Irtenbidea"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:98
 msgid "The source has been created"
-msgstr ""
+msgstr "Iturria sortu da"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:56
 msgid "The submission has been created"
-msgstr ""
+msgstr "Datuen bidalketa sortu da"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:80
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Bidaltzailea sortu da"
 
 #: resources/views/help/name.phtml:15
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Abizenak barren bitartez sortzen dira: <%s>Maialen/Txoperena/<%s>"
 
 #: resources/views/admin/site-preferences.phtml:55
 #: resources/views/admin/users-edit.phtml:142
 #: resources/views/edit-account-page.phtml:116
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Ordu-eremua nahitaezkoa da datak kalkulatzeko, gaurko data jakiteko errate "
+"baterako."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:30
@@ -15034,36 +15079,42 @@ msgstr ""
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] ""
+"Bi familien zuhaitzek erregistro %1$s dute \"XREF\" erreferentzia bera "
+"erabiltzen dutena."
 msgstr[1] ""
+"Bi familien zuhaitzek %1$s erregistro dituzte \"XREF\" erreferentzia bera "
+"erabiltzen dutenak."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:292
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Eguneratzea osorik egin da."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:63
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "Igo beharreko artxiboak gehienezko tamaina gainditzen du."
 
 #: app/Http/RequestHandlers/UsersCleanupAction.php:67
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "%s erabiltzailea ezabatu da."
 
 #: resources/views/emails/register-notify-html.phtml:41
 #: resources/views/emails/register-notify-text.phtml:32
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr ""
+"Erabitzalieak mezu elektronikoa bidali du, sarrera eskaera konfirmatzeko "
+"beharrezko den informazioarekin."
 
 #: app/Http/RequestHandlers/LoginAction.php:117
 #: app/Http/RequestHandlers/LoginAction.php:122
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Erabiltzailearen izena edo pasahitza ez da zuzena."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: resources/views/admin/site-mail.phtml:141
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP zerbitzarian identifikatzeko beharrezkoa den erabiltzaile-izena."
 
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:94
 #: app/Http/RequestHandlers/ModulesAnalyticsAction.php:45
@@ -15088,77 +15139,80 @@ msgstr ""
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:55
 #: app/Http/RequestHandlers/SiteTagsAction.php:69
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Web-orriko lehentasunak eguneratu dira."
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr ""
+"Webtrees-en garatzaileek akats honi buruzko informazioa ezagutu nahiko "
+"lukete. Eurekin harremanetan jarriz gero, arazoa moldatzen lagunduko "
+"lizukete."
 
 #: app/Module/ModuleThemeTrait.php:74 app/Module/ModuleThemeTrait.php:471
 #: resources/views/admin/modules.phtml:272
 #: resources/views/admin/modules.phtml:275
 #: resources/views/admin/users-edit.phtml:200
 msgid "Theme"
-msgstr ""
+msgstr "Itxura/Gaia"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:46
 msgid "Theme change"
-msgstr ""
+msgstr "Itxura aldaketa"
 
 #: app/Http/RequestHandlers/ModulesThemesPage.php:43
 #: resources/views/admin/control-panel.phtml:615
 #: resources/views/admin/modules.phtml:126
 #: resources/views/admin/modules.phtml:128
 msgid "Themes"
-msgstr ""
+msgstr "Itxurak/Gaiak"
 
 #: resources/views/modules/personal_facts/tab.phtml:61
 msgid "There are no facts for this individual."
-msgstr ""
+msgstr "Ez dago gertaerarik pertsona honentzat."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:328
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Ez dago loturarik multimedia objektu honentzat."
 
 #: resources/views/modules/media/tab.phtml:63
 msgid "There are no media objects for this individual."
-msgstr ""
+msgstr "Ez dago multimedia objekturik pertsona honentzat."
 
 #: resources/views/modules/notes/tab.phtml:86
 msgid "There are no notes for this individual."
-msgstr ""
+msgstr "Ez dago oharrik pertsona honentzat."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:201
 #: resources/views/pending-changes-page.phtml:32
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Ez dago gorde gabeko aldaketarik."
 
 #: app/Module/ResearchTaskModule.php:133
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "Ez dago ikerketa lanik zuhaitz honentzat."
 
 #: resources/views/modules/sources_tab/tab.phtml:65
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "Ez dago iturri-oharrik pertsona honentzat."
 
 #: app/Module/ReviewChangesModule.php:157
 #: resources/views/emails/pending-changes-html.phtml:22
 #: resources/views/emails/pending-changes-text.phtml:19
 msgid "There are pending changes for you to moderate."
-msgstr ""
+msgstr "Ez dago behin behineko aldaketarik moderatzeke."
 
 #: app/Module/RecentChangesModule.php:151
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Azken %s egunean ez da aldaketarik egin."
+msgstr[1] "Azken %s egunetan ez da aldaketarik egin."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Akatsa izan da azkeneko bertsioa bilatzerakoan."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15166,56 +15220,66 @@ msgstr ""
 #: app/Http/RequestHandlers/UploadMediaAction.php:133
 #: app/Services/MediaFileService.php:222
 msgid "There was an error uploading your file."
-msgstr ""
+msgstr "Akatsa izan da artxiboa igotzerakoan."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:169
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Termidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:263
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Termidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:216
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Termidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Termidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:38
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Cookie hauek nahitaezkoak dira eta ez dute baimenik behar."
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Pertsona talde hau ez dago %srekin erlazionatua."
 
 #: resources/views/modules/privacy-policy/page.phtml:59
 msgid "These services may use cookies or other tracking technology."
 msgstr ""
+"Zerbitzau haurk cookie-ak erabil ditzakete edo segimendurako bertze "
+"teknologia batzuk."
 
 #: app/Http/RequestHandlers/LoginAction.php:132
 msgid "This account has not been approved. Please wait for an administrator to approve it."
 msgstr ""
+"Kontu hau ez da oraindik onartu. Itxoin faborez administratzaile batek "
+"onartu bitartean."
 
 #: app/Http/RequestHandlers/LoginAction.php:127
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
+"Kontu hau ez da egiaztatu. Begiratu faborez zure mezu elektronikoak, "
+"berifikazio mezurik ote duzun jakiteko."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Bloke honek erakusten dio editatzaileei onartu gabe dauden aldaketak "
+"dituzten erregistroen zerrenda, moderatzaileren batek onartu beharrak "
+"dituenak. Aldi berean, mezu bat bidaltzen die egunero moderatzaileei, behin "
+"behineko aldaketak oraindik onartzeke daudenean."
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:87
@@ -15224,104 +15288,135 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml:97
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
+"Email helbide hau erabiliko da pasahitzen, notifikazioen eta bertze "
+"erregistratutako bertze erabiltzaileen oroigarrriak bidaltzeko."
 
 #: app/Elements/AbstractEventElement.php:67
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Gertaera hau benetazkoa da, baina ez dira xetehasunak ezagutzen."
 
 #: app/Auth.php:230 app/Http/RequestHandlers/RedirectFamilyPhp.php:69
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Familia hau ez dago zuhaitzean edo ez duzu ikusteko baimenik."
 
 #: resources/views/family-page-pending.phtml:21
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Familia hau ezabatu da. Deuseztapena moderatzaile batek onartu beharko du."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Familia hau ezabatu da. Deuseztapena errebisatu beharko duzu eta gero %1$s "
+"edo %2$s."
 
 #: resources/views/family-page-pending.phtml:27
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
+"Familia hau editatu da. Aldaketak moderatzaileren batek onartu beharko ditu."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Familia hau editatu da. Aldaketak errebisatu beharko dituzu eta gero %1$s "
+"edo %2$s."
 
 #: resources/views/admin/trees-renumber.phtml:32
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] ""
+"Familia honek erregistro %s dauka bertze zuhaitz batek erabiltzen duen \"XREF"
+"\" berarekin."
 msgstr[1] ""
+"Familia honek %s erregistro dauzka bertze zuhaitz batek erabiltzen duen "
+"\"XREF\" berarekin."
 
 #: app/Module/SlideShowModule.php:181
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Zuhaitz honek ez dauka irudirik erakutesko."
 
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:9
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
+"Familia hau #gedcomUpdated#-ean eguneratu da azkenezkoz. Denetara "
+"#totalSurnames# abizen dauzka zuhaitzak. Lehenbiziko gertaera "
+"#firstEventName#-en  #firstEventType# da, #firstEventYear#-(e)an. "
+"Gertaerarik berantiarrena, berriz, #firstEventName#-en  #firstEventType# da, "
+"#firstEventYear#-(e)an. <br><br>Komentario edo iradokizunik baldin baduzu, "
+"jar zaitez faborez harremanetan #contactWebmaster#-(r)ekin."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:20
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "Zuhaitz genealogiko hau %s-ean eguneratu zen azkenekoz."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Artxibo honen izena ez da GEDZIP formatoarekin bateragarria."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr ""
+"Artxibo hau erabiliko du webtrees-ek multimedia artxiboak, GEDCOM artxiboak "
+"eta behin behineko artxiboak gordetzeko, Artxibo hauetan datu pribatuak izan "
+"daitezke eta ezin dira interneten eskuratzeko moduan paratu."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:252
 msgid "This folder will be used to store the media files for this family tree."
 msgstr ""
+"Karpeta hau zuhaitz honetako multimedia artxiboak gordetzeko erabitzen da."
 
 #: app/Http/Middleware/CheckCsrf.php:72
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Formulario hau iraungirik dago. Saiatu berriz."
 
 #: app/Auth.php:289 app/Http/RequestHandlers/RedirectIndividualPhp.php:69
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Pertsona hau ez dago zuhaitzean, edo ez duzu baimenik ikusteko."
 
 #: resources/views/individual-page-pending.phtml:23
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Pertsona hau ezabatu da. Deusestatzea moderatzaile batek errebisatu beharko "
+"du."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page-pending.phtml:20
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Pertsona hau ezabatu da. Deuseztatzea errebisatu behar da eta %1$s edo %2$s."
 
 #: resources/views/individual-page-pending.phtml:32
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
+"Pertsona honen informazioa editatu da. Aldaketak moderatzaile batek "
+"errebisatu beharrak dira."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page-pending.phtml:29
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Pertsona honen informazioa editatu da. Aldaketak errebisatu beharrak dira "
+"eta %1$s edo %2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml:100
 #: resources/views/edit-account-page.phtml:80
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
+"Bertzerik ez bada aukeratzen, pertsona hau agertuko da grafikoak eta "
+"txostenak erakusterakoan."
 
 #: app/Module/StatisticsChartModule.php:946
 #: app/Statistics/Repository/EventRepository.php:245
@@ -15344,7 +15439,7 @@ msgstr ""
 #: resources/views/statistics/other/charts/pie.phtml:19
 #: resources/views/statistics/other/top10-list.phtml:25
 msgid "This information is not available."
-msgstr ""
+msgstr "Informazio hori ez dago eskuragarri."
 
 #: app/Statistics/Repository/EventRepository.php:253
 #: app/Statistics/Repository/FamilyDatesRepository.php:107
@@ -15361,11 +15456,13 @@ msgstr ""
 #: app/Statistics/Repository/IndividualRepository.php:1259
 #: app/Statistics/Repository/IndividualRepository.php:1279
 msgid "This information is private and cannot be shown."
-msgstr ""
+msgstr "Informazio hori pribatua da eta ezin da erakutsi."
 
 #: resources/views/edit-account-page.phtml:68
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
 msgstr ""
+"Datu-basean dauden zure datuei lotzen zaituen identifikazio zenbakia da. "
+"Zenbakia ez bada zuzena, administratzailearekin jar zaitez harremanetan."
 
 #: resources/views/setup/step-4-database-mysql.phtml:90
 #: resources/views/setup/step-4-database-mysql.phtml:104
@@ -15374,18 +15471,22 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:78
 #: resources/views/setup/step-4-database-sqlsrv.phtml:90
 msgid "This is case sensitive."
-msgstr ""
+msgstr "Maiuskulak eta miniskulak bereizi behar dira."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:159
 #: resources/views/admin/control-panel.phtml:211
 #: resources/views/admin/upgrade/wizard.phtml:27
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr ""
+"Webtrees-en azken bertsioa erabiltzen ari zara. Ez dago eguneratzerik eskura."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:99
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr ""
+"Hau da SMTP zerbitzariaren izena. “localhost” hitzak erran nahi du mezu "
+"elektronikoen zerbitzaria eta web zerbitzaria ordenagailuan bertan ari "
+"direla lanean."
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:48
@@ -15393,310 +15494,390 @@ msgstr ""
 #: resources/views/register-page.phtml:42
 #: resources/views/setup/step-5-administrator.phtml:61
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Hau zure egiazko izena da, pantailan erakustea nahi duzuna."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:122
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Lotura honek ordu baterako balio du."
 
 #: resources/views/help/data-fixes.phtml:18
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
 msgstr ""
+"Zerrenda hau bilaketa xinple eta azkar baten bitartez sortzen da. Beraz, "
+"eguneratuko ez diren erregistroak daramatza."
 
 #: app/Auth.php:351 app/Http/RequestHandlers/RedirectMediaViewerPhp.php:69
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Multimedia objektu hau ez dago zuhaitzean edo ez ikusteko baimenik."
 
 #: resources/views/media-page-pending.phtml:20
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Multimedia objektu hau ezabatu da. Deuseztapena moderatzaile batek "
+"errebisatu beharko du."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page-pending.phtml:18
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Multimedia objektu hau ezabatu da. Deuseztapena errebisatu beharko duzu eta "
+"%1$s edo %2$s."
 
 #: resources/views/media-page-pending.phtml:26
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
+"Multimedia objektu hau editatu da. Aldaketak moderatzaile batek errebisatu "
+"beharko ditu."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page-pending.phtml:24
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Multimedia objektu hau aldatu da. Aldaketak errebisatu beharko dituzu eta %1$"
+"s edo %2$s."
 
 #: resources/views/emails/message-copy-html.phtml:35
 #: resources/views/emails/message-copy-text.phtml:25
 #: resources/views/emails/message-user-html.phtml:36
 #: resources/views/emails/message-user-text.phtml:26
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "Mezu hau URL hau ikusterakoan bidali zen: "
 
 #: resources/views/setup/step-5-administrator.phtml:85
 msgid "This must be at least six characters long. It is case-sensitive."
 msgstr ""
+"Sei karaktere izan beharko ditu gutienez. Maiuskulak eta minuskulak "
+"bereizten dituela kontuan hartu."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml:63
 #: resources/views/admin/site-mail.phtml:77
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
+"Izen hau erabiltzen da \"Nork\" eremuan, zerbitzari honen mezu elektroniko "
+"automatikoak bidaltzerakon."
 
 #: app/Auth.php:380 app/Auth.php:409
 #: app/Http/RequestHandlers/RedirectNotePhp.php:69
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ohar hau ez dago zuhaitzean edo ez duzu baimenik ikusteko."
 
 #: resources/views/note-page-pending.phtml:21
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Ohar hau ezabatu da. Bere deuseztatzea moderatzaileak errebisatu beharko du."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page-pending.phtml:19
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ohar hau ezabatu da. Bere deuseztatzea errebisatu beharko duzu eta %1$s edo "
+"%2$s."
 
 #: resources/views/note-page-pending.phtml:27
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ohar hau editatu da. Aldaketak moderatzaileak errebisatu beharko ditu."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page-pending.phtml:25
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ohar hau editatu da. Aldaketak errebisatu beharko dituzu eta zer egin "
+"aukeratu: %1$s edo %2$s."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:533
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
 msgstr ""
+"Pertsona baten orriko <i>ohar</i> baten edukia automatikoki erakusten den "
+"edo ez aukeratzen duzu hemen."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:547
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
 msgstr ""
+"Pertsona baten orriko <i>iturri</i> baten edukia automatikoki erakusten den "
+"edo ez aukeratzen duzu hemen."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:401
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
+"Hemen aukeratzen ahal duzu grafikoen pertsonaren jaiotze-dataren ondoan "
+"gurasoen adina erakusten den edo ez."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:374
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
 msgstr ""
+"Hemen aukeratzen ahal duzu pertsonen zerrendetan eta grafikoetan guti gora "
+"beherako jaiotza eta heriotzaren datak erakutsi nahi dituzun, ez badituzu "
+"ezagutzen eta hutsik ez uzteko."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "Aukera honek irudien deskarga erraztuko die erabiltzaileei."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
+"Aukera honek familiko loturak/harremanak erregistro pribatuetan gordetzen "
+"ditu.Horrek erran nahi du \"kutxa pribatuak\" ikusiko dituzula arbasoen "
+"grafikoetan eta bertze batzuk pertsona pribatuak direnean."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
+"Aukera honek pertsona pribatuen izenak soilik erakutsiko ditu (xetetasunik "
+"gabe). Biririk daudenak dira pertsona pribatuak eta pribatutasun "
+"murrizketaren bat daukaten pertsona hilak ere bai. Izena gordetzeko "
+"pribatutasun murrizketa gehitzen ahal diozu erregistroaren izenari."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"Orri honek, betiko prozedurak saiestu eta datuak zuzenean editatzea "
+"ahalbidetuko dizu. GEDCOM formatoa ez baduzu ezagutzen ez zenuke erabili "
+"beharko aukera hau, jakin behar baita nola egin. Akatsen bat egiten baduzu, "
+"baliteke zaila izatea zuzenketa."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Orri hau %s aldiz ikusia izan da."
+msgstr[1] "Orri hau %s aldiz ikusia izan da."
 
 #: resources/views/help/pending-changes.phtml:18
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
+"Prozedura honek hauxe bermatzen dio jabeari: Informazio berriak orriaren "
+"kalitatea eta arauak jarraitzen dituela, iturrien jarraipen zihurrak "
+"dituela, etabar."
 
 #: app/Auth.php:259 app/Auth.php:322 app/Auth.php:438 app/Auth.php:525
 #: app/Auth.php:554 app/Http/RequestHandlers/RedirectGedRecordPhp.php:69
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Erregistro hau ez dago zuhaitzean edo ez duzu baimenik ikusteko."
 
 #: resources/views/admin/trees-privacy.phtml:251
 msgid "This record does not exist."
-msgstr ""
+msgstr "Erregistro hau ez dago orrian."
 
 #: resources/views/record-page-pending.phtml:21
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
+"Erregistro hori ezabatu da. Deuseztatzea moderatzaile batek errebisatu "
+"beharko du."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/record-page-pending.phtml:19
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Erregistro hori ezabatu da. Deuseztatzea errebisatu beharko duzu eta gero %1$"
+"s edo %2$s."
 
 #: resources/views/record-page-pending.phtml:27
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
+"Erregistro hori editatu da. Aldaketak moderatzaile batek errebisatu beharko "
+"ditu."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/record-page-pending.phtml:25
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Erregistro hori editatu da. Aldaketak moderatzaile batek errebisatu beharko "
+"ditu eta gero %1$s edo %2$s."
 
 #: app/Auth.php:467 app/Http/RequestHandlers/RedirectRepositoryPhp.php:69
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Gordailua ez dago zuhaitzean edo ez duzu ikusteko baimenik."
 
 #: resources/views/modules/privacy-policy/page.phtml:27
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
 msgstr ""
+"Ikerketa hau \"bidezko interesa\" da, Europar Batasuneko Datuen Babeserako "
+"Erreglamentu Orokorraren 6(f) artikuluak dioenaren arabera."
 
 #: resources/views/admin/users-edit.phtml:263
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr ""
+"Rol honek editatzeko baimen guztiak ditu, eta bertze erabiltzaileek egindako "
+"aldaketak onartzeko edo ez onartzeko ere bai."
 
 #: resources/views/admin/users-edit.phtml:277
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr ""
+"Rol honek gainbegiralearen baimen guztiak izanen ditu zuhaitz guztietan, eta "
+"orriaren konfigurazioak, erabiltzaileak eta moduluak aldatzeko ere bai."
 
 #: resources/views/admin/users-edit.phtml:257
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
+"Rol honek partaidearen baimen guztiak ditu, eta datuak gehitu, aldatu edo "
+"ezabatzeko ere bai. Aldaketa bakoitza moderatzaile batek onartu beharko du, "
+"\"aldaketak automatikoki onartu\" aukera gaitua ez badu behinipein."
 
 #: resources/views/admin/users-edit.phtml:271
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 msgstr ""
+"Administratzailearen rolak moderatzeko baimen guztiak ditu, eta bertze "
+"edozein baimen zuhaitzaren konfigurazioa eta parametroak aldatzeko."
 
 #: resources/views/admin/users-edit.phtml:249
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
 msgstr ""
+"Erabiltzaile batek bisitariaren baimen guztiak ditu, eta horretaz gain "
+"zuhaitzaren konfigurazioak ematen dizkion baimen gehigarriak ere."
 
 #: resources/views/setup/step-2-server-checks.phtml:78
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
 msgstr ""
+"Zerbitzariaren memoriaren muga %s MBetan dago eta CPUren denbora-muga %s "
+"segundutan."
 
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Zerbitzu honek API klabearen beharra dauka."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Iturri hori ez dago zuhaitzean edo ez duzu ikusteko baimenik."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:209
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr ""
+"Testu hau orriaren titulu bakoitzari gehituko zaio. Nabigatzailearen "
+"tituluaren barran erakutsiko da, \"gogoko lekuetan\", etabar."
 
 #: resources/views/errors/no-tree-access.phtml:10
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Erabiltzaile kontu honek ez du sarrerarik zuhaitz bakar batean."
 
 #: app/Http/RequestHandlers/SetupWizard.php:176
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr ""
+msgstr "Normalean erran nahi du karpetaren baimenak 777-ra aldatu behar direla."
 
 #: app/Services/UpgradeService.php:314
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "Orria eguneratzen ari da. Saia zaitez geroxeago faborez."
 
 #: resources/views/layouts/offline.phtml:72
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr ""
+"Orria mantenimendu lanetan ari da. <a href=\"index.php\"> saia zaitez berriz "
+"</a> minutu gutxitara."
 
 #: resources/views/modules/privacy-policy/page.phtml:72
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Pertsona hauek lantzen dute orri hau."
 
 #: resources/views/layouts/error.phtml:19
 #: resources/views/layouts/error.phtml:36
 #: resources/views/layouts/offline.phtml:69
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "Orri hau ez dago erabilgarria momentu honetan"
 
 #: resources/views/modules/privacy-policy/page.phtml:24
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr ""
+"Orri honek datu pertsonalak lantzen ditu ikerketa historiko eta "
+"genealogikoak gauzatzeko."
 
 #: resources/views/modules/privacy-policy/page.phtml:35
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
 msgstr ""
+"Orri honek cookie-ak erabiltzen ditu saioa-hasierak errazteko eta "
+"erabiltzaile bakoitzaren aukeraketak gogoratzeko, hizkuntzaren aukeraketa, "
+"errate baterako."
 
 #: resources/views/modules/privacy-policy/footer.phtml:23
 msgid "This website uses cookies to learn about visitor behavior."
 msgstr ""
+"Orri honek cookie-ak erabiltzen ditu bisitarien ohituretatik ikasita "
+"programazioa hobetzeko."
 
 #: resources/views/modules/privacy-policy/page.phtml:47
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
+"Orri honek hirugarrenen zerbitzuak erabiltzen ditu bisitarien ohituretatik "
+"ikasteko."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:30
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr ""
+"“%s”-ren datu genealogiko guztiak ezabatuko dira eta bertze GEDCOM artxibo "
+"baten datuekin ordeztu."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:279
 #: resources/views/edit/initialize-calendar-popup.phtml:29
 msgid "Thu"
-msgstr ""
+msgstr "Or."
 
 #: app/CustomTags/PhpGedView.php:74
 #: resources/views/admin/webtrees1-thumbnails.phtml:41
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Irudi txikia"
 
 #: resources/views/admin/trees-preferences.phtml:288
 #: resources/views/admin/trees-preferences.phtml:293
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Irudien miniaturak"
 
 #: app/Date/AbstractCalendarDate.php:249
 msgid "Thursday"
-msgstr ""
+msgstr "Ortzeguna"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:197
 msgid "Tijuana, Mexico"
-msgstr ""
+msgstr "Tijuana, Mexiko"
 
 #: app/CustomTags/Gedcom7.php:79 app/CustomTags/Gedcom7.php:106
 #: app/Gedcom.php:501
 msgid "Time"
-msgstr ""
+msgstr "Ordua"
 
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:120
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "Jaiotzaren ordua"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Jaiotzaren eta heriotzaren ordua"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr ""
+msgstr "Heriotzaren ordua"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:448 app/Gedcom.php:615
 #: app/Gedcom.php:762 app/Gedcom.php:783 app/Gedcom.php:814 app/Gedcom.php:830
 #: app/Gedcom.php:861 app/Gedcom.php:877
 msgid "Time of last change"
-msgstr ""
+msgstr "Azken aldaketaren ordua"
 
 #: app/CustomTags/Gedcom7.php:130
 msgid "Time of status change"
-msgstr ""
+msgstr "Egoeraren aldaketaren ordua"
 
 #. I18N: A configuration setting
 #: app/CustomTags/MyHeritage.php:56
@@ -15704,75 +15885,75 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:137
 #: resources/views/edit-account-page.phtml:111
 msgid "Time zone"
-msgstr ""
+msgstr "Ordu-eremua"
 
 #. I18N: Name of a module/chart
 #: app/Module/TimelineChartModule.php:93
 msgid "Timeline"
-msgstr ""
+msgstr "Denboraren haria"
 
 #: resources/views/admin/changes-log.phtml:136
 #: resources/views/admin/site-logs.phtml:124
 msgid "Timestamp"
-msgstr ""
+msgstr "Data eta ordua"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:492
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Ekialdeko Timor"
 
 #: app/Date/JalaliDate.php:276
 msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:145
 msgctxt "GENITIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:235
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:190
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:193
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:245
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #: app/CustomTags/Geneatique.php:57 app/Gedcom.php:757 app/Gedcom.php:788
 #: app/Gedcom.php:849 resources/views/admin/fix-level-0-media.phtml:38
@@ -15789,60 +15970,82 @@ msgstr ""
 #: resources/views/modules/html/config.phtml:20
 #: resources/views/modules/user_blog/edit.phtml:25
 msgid "Title"
-msgstr ""
+msgstr "Izenburua"
 
 #: resources/views/admin/broadcast.phtml:36
 #: resources/views/admin/email-page.phtml:41
 #: resources/views/contact-page.phtml:33 resources/views/message-page.phtml:38
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Nori"
 
 #: resources/views/admin/changes-log.phtml:48
 #: resources/views/admin/site-logs.phtml:46
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "bitarte"
 
 #: resources/views/modules/html/config.phtml:34
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
+"Bloke honetan hasten laguntzeko, zenbait platilla sortu ditugu. Horietako "
+"bat aukeratzen baduzu, testuaren zatiaren kopia bat izanen gordeko dugu, "
+"zure orrriaren beharretara egokitzeko aldatzen ahal izanen duzuna."
 
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
+"Etiketa pertsonalizatuak erabiliz datu berriak sortzeko, gaitu beharko "
+"dituzu aitzinetik."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
+"Ikerketa lan berriak sortzeko, lehenbiziko \"ikerketa lana\" gehitu beharko "
+"diozu gertaera zerrendari, zuhaitz genealogikoen lehentasunetan."
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"Mapa bat erakutsi ahal izateko, mapa hornitzaile bat gaitu beharko duzu "
+"aitzinetik kontrol-panelean."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:588
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"Bertze genealogia-aplikazio batzuekin bateragarriak izateko, oharrak, "
+"testuak eta transkripzioak formaturik gabeko testuarekin sartu beharko "
+"dituzu. Halere, maiz aski formatua ona izaten da aurkezpen egoki baterako, "
+"ulermenerako, etabar."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr ""
+"Datu pribatuak babesteko, Webtrees-ek Apache-ren (.htaccess) konfigurazio "
+"artxiboa erabiltzen du, karpeta horretarako sarrera guztiak blokeatzen "
+"dituena. Zure zerbitzaria ez bada bateragarria karpeta horrekin eta ezin "
+"baduzu sarrera baldintzatu, bertze karpeta bat aukeratzen ahal duzu, orriko "
+"zure karpetetatik kanpo."
 
 #: resources/views/emails/password-request-html.phtml:20
 #: resources/views/emails/password-request-text.phtml:16
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Pasahitza berria sortzeko, jarrai ezazu ondoko lotura."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:43
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
+"Testu hau bertze hizkuntzetara egokitu nahi baduzu, aldatu lehenbiziko "
+"hizkuntz horretara eta ondotik orri hau bera bisitatu."
 
 #: resources/views/modules/sitemap/config.phtml:51
 msgid "To tell search engines that sitemaps are available, you can use the following links."
 msgstr ""
+"Nabigatzaileen bilaketa motoreei orriaren mapa eskuragarri dagoela "
+"komunikatzeko, ondoko lotura hauek erabiltzen ahal dituzu."
 
 #: resources/views/modules/bing-maps/config.phtml:36
 #: resources/views/modules/google-maps/config.phtml:36
@@ -15850,83 +16053,83 @@ msgstr ""
 #: resources/views/modules/map-box/config.phtml:36
 #: resources/views/modules/openrouteservice/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Zerbitzu hau erabiltzeko, API klabea behar duzu."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Zerbitzu hau erabiltzeko, kontua ireki behar duzu aitzinetik."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:488
 msgid "Tokelau"
-msgstr ""
+msgstr "Tokelau"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:198
 msgid "Tokyo, Japan"
-msgstr ""
+msgstr "Tokyo, Japonia"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:95
 msgid "Tombstone"
-msgstr ""
+msgstr "Hilarria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Eskaera gehiegi. Saia zaitez beranduago."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:105
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s izenik erabiliena"
+msgstr[1] "%s izenik erabilienak"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:194
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s abizen erabiliena"
+msgstr[1] "%s abizen erabilienak"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:102
 msgid "Top given name"
-msgstr ""
+msgstr "Izenik erabiliena"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:48
 #: resources/views/modules/statistics-chart/names.phtml:45
 msgid "Top given names"
-msgstr ""
+msgstr "Abizenik erabilienak"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:191
 msgid "Top surname"
-msgstr ""
+msgstr "Abizenik erabiliena"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:74
 #: resources/views/modules/statistics-chart/names.phtml:25
 msgid "Top surnames"
-msgstr ""
+msgstr "Abizenik erabilienak"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:199
 msgid "Toronto, Ontario, Canada"
-msgstr ""
+msgstr "Toronto, Ontario, Kanada"
 
 #: app/Module/StatisticsChartModule.php:764
 #: app/Statistics/Google/ChartBirth.php:97
@@ -15945,33 +16148,33 @@ msgstr ""
 #: app/Statistics/Google/ChartSex.php:56
 #: resources/views/admin/control-panel.phtml:458
 msgid "Total"
-msgstr ""
+msgstr "Guztira"
 
 #: resources/xml/reports/change_report.xml:127
 msgid "Total accepted changes: "
-msgstr ""
+msgstr "Onartutako aldaketan kopurua: "
 
 #: resources/views/modules/statistics-chart/individual-events.phtml:18
 msgid "Total births"
-msgstr ""
+msgstr "Jaiotzak guztira"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:59
 msgid "Total dead"
-msgstr ""
+msgstr "Heriotzak guztira"
 
 #: resources/views/modules/statistics-chart/individual-events.phtml:62
 msgid "Total deaths"
-msgstr ""
+msgstr "Heriotzak guztira"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:63
 msgid "Total divorces"
-msgstr ""
+msgstr "Dibortzioak guztira"
 
 #: resources/views/modules/gedcom_stats/config.phtml:53
 #: resources/views/modules/statistics-chart/other-events.phtml:10
 #: resources/xml/reports/missing_facts_report.xml:602
 msgid "Total events"
-msgstr ""
+msgstr "Gertaerak guztira"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:127
 #: resources/views/modules/statistics-chart/family-totals.phtml:10
@@ -15981,15 +16184,15 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:354
 #: resources/xml/reports/marriage_report.xml:111
 msgid "Total families"
-msgstr ""
+msgstr "Familiak guztira"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:30
 msgid "Total females"
-msgstr ""
+msgstr "Emakumeak guztira"
 
 #: resources/views/modules/statistics-chart/names.phtml:38
 msgid "Total given names"
-msgstr ""
+msgstr "Izenak guztira"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:10
 #: resources/xml/reports/bdm_report.xml:210
@@ -16004,33 +16207,33 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:94
 #: resources/xml/reports/relative_ext_report.xml:147
 msgid "Total individuals"
-msgstr ""
+msgstr "Pertsonak guztira"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:50
 msgid "Total living"
-msgstr ""
+msgstr "Bizirik guztira"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:21
 msgid "Total males"
-msgstr ""
+msgstr "Gizonak guztira"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:19
 msgid "Total marriages"
-msgstr ""
+msgstr "Ezkontzak guztira"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
-msgstr ""
+msgstr "Onartzeke dauden aldaketak guztira: "
 
 #: resources/views/modules/gedcom_stats/config.phtml:48
 #: resources/views/modules/html/template-statistics.phtml:38
 #: resources/views/modules/statistics-chart/names.phtml:18
 msgid "Total surnames"
-msgstr ""
+msgstr "Abizenak guztira"
 
 #: resources/views/modules/gedcom_stats/config.phtml:54
 msgid "Total users"
-msgstr ""
+msgstr "Erabiltzaileak guztira"
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php:43
 #: app/Module/ModuleAnalyticsTrait.php:107
@@ -16042,78 +16245,78 @@ msgstr ""
 #: resources/views/admin/modules.phtml:259
 #: resources/views/modules/privacy-policy/page.phtml:43
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Jarraipena eta azterketa"
 
 #: app/Gedcom.php:886
 msgid "Trailer"
-msgstr ""
+msgstr "Esperuan"
 
 #: app/Module/AncestorsChartModule.php:256
 #: app/Module/DescendancyChartModule.php:247
 #: resources/views/emails/register-notify-html.phtml:36
 #: resources/views/emails/register-notify-text.phtml:30
 msgid "Tree"
-msgstr ""
+msgstr "Zuhaitza"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:305
 msgid "Tridi"
-msgstr ""
+msgstr "Tridi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:496
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "Trinidad eta Tobago"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "Trujillo, Peru"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:275
 #: resources/views/edit/initialize-calendar-popup.phtml:27
 msgid "Tue"
-msgstr ""
+msgstr "As."
 
 #: app/Date/AbstractCalendarDate.php:247
 msgid "Tuesday"
-msgstr ""
+msgstr "Asteartea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:498
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:500
 msgid "Turkey"
-msgstr ""
+msgstr "Turkia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:490
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Turkmenistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "Turks eta Caicos Uharteak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:502
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:196
 msgid "Tuxtla Gutiérrez, Mexico"
-msgstr ""
+msgstr "Tuxtla Gutiérrez, Mexiko"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:201
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "Twin Falls, Idaho, Estatu Batuak"
 
 #: app/CustomTags/Gedcom7.php:81 app/CustomTags/Gedcom7.php:95
 #: app/CustomTags/Gedcom7.php:99 app/CustomTags/Gedcom7.php:108
@@ -16137,52 +16340,52 @@ msgstr ""
 #: resources/views/modules/random_media/config.phtml:28
 #: resources/views/modules/recent_changes/changes-table.phtml:41
 msgid "Type"
-msgstr ""
+msgstr "Mota"
 
 #: app/CustomTags/GedcomL.php:262
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Laburdura mota"
 
 #: app/CustomTags/GedcomL.php:286
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Identifikazioa administratiboaren mota"
 
 #: app/CustomTags/GedcomL.php:290
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Datu demografikoen mota"
 
 #: app/CustomTags/GedcomL.php:255 app/Gedcom.php:458 app/Gedcom.php:655
 msgid "Type of event"
-msgstr ""
+msgstr "Gertaera mota"
 
 #: app/CustomTags/Gedcom7.php:97 app/Gedcom.php:657
 msgid "Type of fact"
-msgstr ""
+msgstr "Gertaera mota"
 
 #: app/Gedcom.php:668
 msgid "Type of identification number"
-msgstr ""
+msgstr "Identifikazio zenbakiaren mota"
 
 #: app/CustomTags/GedcomL.php:279
 msgid "Type of location"
-msgstr ""
+msgstr "Ubikazio mota"
 
 #: app/Gedcom.php:468
 msgid "Type of marriage"
-msgstr ""
+msgstr "Ezkontza mota"
 
 #: app/Gedcom.php:709
 msgid "Type of name"
-msgstr ""
+msgstr "Izen mota"
 
 #: app/Gedcom.php:474 app/Gedcom.php:727 app/Gedcom.php:767 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:842
 msgid "Type of reference number"
-msgstr ""
+msgstr "Erreferentzia zenbakiaren mota"
 
 #: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
-msgstr ""
+msgstr "Ikerketa lanaren mota"
 
 #. I18N: A configuration setting
 #: app/CustomTags/Aldfaer.php:70 app/CustomTags/Ancestry.php:76
@@ -16201,27 +16404,27 @@ msgstr ""
 #: resources/views/modules/share-url/share.phtml:12
 #: resources/views/modules/sitemap/config.phtml:47
 msgid "URL"
-msgstr ""
+msgstr "URL lotura"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
 msgid "US Minor Outlying Islands"
-msgstr ""
+msgstr "US Minor Outlying Uharteak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:528
 msgid "US Virgin Islands"
-msgstr ""
+msgstr "US Virgin Uharteak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:508
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:510
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukraina"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:77
@@ -16230,7 +16433,7 @@ msgstr ""
 #: app/Elements/LdsOrdinanceStatus.php:83
 #: app/Elements/LdsSpouseSealingDateStatus.php:78
 msgid "Uncleared: insufficient data"
-msgstr ""
+msgstr "Ez da onartu: ez dago nahiko daturik"
 
 #: app/CustomTags/Gedcom7.php:86 app/CustomTags/Gedcom7.php:101
 #: app/CustomTags/Gedcom7.php:113 app/CustomTags/Gedcom7.php:135
@@ -16256,27 +16459,31 @@ msgstr ""
 #: app/CustomTags/RootsMagic.php:77 app/CustomTags/RootsMagic.php:78
 #: app/CustomTags/RootsMagic.php:81
 msgid "Unique identifier"
-msgstr ""
+msgstr "Identifikatzaile bakarra"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr ""
+"Identifikatzaile bakarrek ahalbidetzen dute erregistro bat zuhaitz "
+"ezberdinetan erabiltzea. Erregistro bat sortu edo eguneratzen denean "
+"gehitzen dira. Ez baduzu nahi identifikatzailea ikustea, pribatutasun "
+"arauekin gordetzen ahal duzu."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "Arabiar Emirerri Batuak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
 msgid "United Kingdom"
-msgstr ""
+msgstr "Erresuma Batua"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:516
 msgid "United States"
-msgstr ""
+msgstr "Estatu Batuak"
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php:138 app/Elements/FamilyStatusText.php:73
@@ -16284,12 +16491,12 @@ msgstr ""
 #: app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
-msgstr ""
+msgstr "Ezezaguna"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:114
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "Ezezaguna"
 
 #: app/Elements/SexValue.php:87
 #: resources/xml/reports/family_group_report.xml:844
@@ -16299,58 +16506,58 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "Ezezaguna"
 
 #: resources/views/edit-account-page.phtml:64
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "Ezezaguna"
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
 msgid "Unlink"
-msgstr ""
+msgstr "Lotura ezabatu"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
-msgstr ""
+msgstr "GEDCOM kodigo ezezaguna"
 
 #: resources/views/admin/media.phtml:50
 msgid "Unused files"
-msgstr ""
+msgstr "Erabili gabeko artxiboak"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:125
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "%s behin behineko karpeta batera deskonprimitzen…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:122
 msgid "Upcoming events"
-msgstr ""
+msgstr "Datozen gertaerak"
 
 #: app/Http/RequestHandlers/DataFixData.php:104
 msgid "Update"
-msgstr ""
+msgstr "Eguneratu"
 
 #: resources/views/admin/data-fix-page.phtml:49
 msgid "Update all"
-msgstr ""
+msgstr "Dena eguneratu"
 
 #. I18N: Name of a module
 #: app/Module/FixPlaceNames.php:61
 msgid "Update place names"
-msgstr ""
+msgstr "Lekuen izenak eguneratu"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:72
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Lekuen izenen goi mailako zatiak eguneratu, behe mailakoak aldatu gabe."
 
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
-msgstr ""
+msgstr "Eguneratua"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16359,38 +16566,43 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:206
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "Webtrees %s-era eguneratu."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:80
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:120
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Eguneratzeko laguntzailea"
 
 #: app/Http/RequestHandlers/UploadMediaPage.php:69
 #: resources/views/admin/control-panel.phtml:815
 msgid "Upload media files"
-msgstr ""
+msgstr "Multimedia artxiboak igo"
 
 #: resources/views/admin/media-upload.phtml:25
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr ""
+"Zure ordenagailutik multimedia artxiboak kargatzea ahalbidetzen dizu. "
+"Irudiak, bideoak, audioak eta bertze formatu batzuk izaten ahal dira "
+"multimedia artxiboak."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:514
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguai"
 
 #: app/Services/EmailService.php:225
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "SMTP zerbitzaria erabili mezuak bidalzteko"
 
 #: app/Module/FixSearchAndReplace.php:103
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
 msgstr ""
+"“?” erabili karaktere bakar batean bat etortzeko, “*” erabili bat etortzeko "
+"zero edo karaktere gehiagotan."
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Kanpoko zerbitzu bat erabili ubikazioak bilatzeko."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -16399,18 +16611,18 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Erabili gutienez %s karaktere."
+msgstr[1] "Erabili gutienez %s karaktere."
 
 #: resources/xml/reports/family_group_report.xml:12
 #: resources/xml/reports/individual_ext_report.xml:13
 #: resources/xml/reports/individual_report.xml:10
 msgid "Use colors"
-msgstr ""
+msgstr "Koloreak erabili"
 
 #: resources/views/modules/interactive-tree/chart.phtml:22
 msgid "Use compact layout"
-msgstr ""
+msgstr "Diseinu trinkoa erabili"
 
 #: resources/views/setup/step-4-database-mysql.phtml:127
 #: resources/views/setup/step-4-database-pgsql.phtml:112
@@ -16418,39 +16630,45 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:82
 #: resources/views/setup/step-4-database-sqlsrv.phtml:112
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "A-Z letrak erabili, a-z, 0-9 digitoak, edo gidoi baxuak"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Erabili mapak Webtrees-en."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:121
 msgid "Use password"
-msgstr ""
+msgstr "Pasahitza erabili"
 
 #. I18N: "sendmail" is the name of some mail software
 #: app/Services/EmailService.php:224
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Sendmail erabili mezuak bidaltzeko"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr ""
+"Silueta bat erabiliko da erlazionatutako irudirik ez duen pertsonentzat. "
+"Erabilitako siluetak pertsonen generoari egokituak daude."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:306
 msgid "Use silhouettes"
-msgstr ""
+msgstr "Siluetak erabili"
 
 #: app/Http/RequestHandlers/CopyFact.php:73
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "“edit“ menua erabili hau bertze erregistro bati eransteko."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
+"Eremu hau erabil ezazu kontua zertarako nahi duzun errateko "
+"administratzaileari eta zein den hemen agertzen diren datu genealogikoekin "
+"daukazun harremana. Zuhaitzari buruzko bertze edozien komentario ere "
+"aipatzen ahal duzu hemen."
 
 #: app/Module/ResearchTaskModule.php:67 app/Module/ResearchTaskModule.php:71
 #: resources/views/admin/changes-log.phtml:85
@@ -16458,7 +16676,7 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:76
 #: resources/views/admin/site-logs.phtml:128
 msgid "User"
-msgstr ""
+msgstr "Erabiltzailea"
 
 #: app/Http/RequestHandlers/UserListPage.php:50
 #: resources/views/admin/control-panel.phtml:532
@@ -16467,19 +16685,19 @@ msgstr ""
 #: resources/views/admin/users-create.phtml:22
 #: resources/views/admin/users-edit.phtml:31
 msgid "User administration"
-msgstr ""
+msgstr "Erabiltzaileen administrazioa"
 
 #: resources/views/admin/users-cleanup.phtml:64
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "Erabiltzaileak ez du bere helbidea 7 egunetan egiaztatu."
 
 #: resources/views/admin/users-cleanup.phtml:66
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "Administrariak egiaztatu gabeko erabiltzailea."
 
 #: app/Http/RequestHandlers/VerifyEmail.php:74
 msgid "User verification"
-msgstr ""
+msgstr "Erabiltzailearen egiaztapena"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:135
@@ -16497,12 +16715,12 @@ msgstr ""
 #: resources/views/register-page.phtml:61
 #: resources/views/setup/step-5-administrator.phtml:68
 msgid "Username"
-msgstr ""
+msgstr "Erabiltzailearen izena"
 
 #: resources/views/forgot-password-page.phtml:23
 #: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
-msgstr ""
+msgstr "Erabiltzailea edo helbide elektronikoa"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:61
@@ -16510,134 +16728,137 @@ msgstr ""
 #: resources/views/register-page.phtml:66
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr ""
+"Erabiltzaileen izenak ez ditu maiuskula eta minuskulak bereizten, ezta "
+"diatrikoak irakurri ere. Errate baterako, «matxinena», «matxiñena» eta "
+"«Matxiñena» berdinak dira izena osatzerakoan."
 
 #: resources/views/admin/control-panel.phtml:498
 #: resources/views/modules/gedcom_stats/statistics.phtml:146
 #: resources/views/modules/html/template-statistics.phtml:62
 msgid "Users"
-msgstr ""
+msgstr "Erabiltzaileak"
 
 #: resources/views/admin/users-cleanup.phtml:45
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Erabiltzailearen kontuak denbora gehiegi pasatu du erabili gabe: "
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:202
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Vancouver, British Columbia, Kanada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:532
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:98
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Grafiko estadistiko zenbait."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:520
 msgid "Vatican City"
-msgstr ""
+msgstr "Vatikanoa"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:243
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:196
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:524
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:253
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:111
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:203
 msgid "Veracruz, Mexico"
-msgstr ""
+msgstr "Veracruz, Mexiko"
 
 #: app/CustomTags/Legacy.php:57 app/CustomTags/Legacy.php:59
 #: app/CustomTags/Legacy.php:121 app/CustomTags/Legacy.php:123
 #: app/CustomTags/Legacy.php:126 resources/views/admin/users.phtml:36
 msgid "Verified"
-msgstr ""
+msgstr "Egiaztatua"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:204
 msgid "Vernal, Utah, United States"
-msgstr ""
+msgstr "Vernal, Utah, Estatu Batuak"
 
 #: app/CustomTags/GedcomL.php:150 app/Gedcom.php:498 app/Gedcom.php:506
 #: app/Gedcom.php:529
 msgid "Version"
-msgstr ""
+msgstr "Bertsioa"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:96
 msgid "Video"
-msgstr ""
+msgstr "Bideoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:530
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #: resources/views/modules/place-hierarchy/page.phtml:51
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "%s(e)an dauden gertakizunen taula ikusi"
 
 #: resources/views/calendar-page.phtml:221
 msgid "View this day"
-msgstr ""
+msgstr "Egun hau ikusi"
 
 #: app/Statistics/Repository/FamilyRepository.php:483
 #: resources/views/fact.phtml:110
@@ -16649,32 +16870,32 @@ msgstr "Familia ikusi nahi?"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Ikusi leku hau %s erabiliz"
 
 #: resources/views/calendar-page.phtml:225
 msgid "View this month"
-msgstr ""
+msgstr "Hilabete hau ikusi"
 
 #: resources/views/calendar-page.phtml:229
 msgid "View this year"
-msgstr ""
+msgstr "Urte hau ikusi"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:205
 msgid "Villa Hermosa, Mexico"
-msgstr ""
+msgstr "Villa Hermosa, Mexiko"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:168
 #: resources/views/edit-account-page.phtml:147
 msgid "Visible online"
-msgstr ""
+msgstr "Ikusgai online"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:174
 #: resources/views/edit-account-page.phtml:150
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Ikusgai konektatuak dauden bertze erabiltzaileentzat"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:97
@@ -16683,7 +16904,7 @@ msgstr ""
 #: resources/views/admin/gedcom-export-options.phtml:108
 #: resources/views/admin/users-edit.phtml:240
 msgid "Visitor"
-msgstr ""
+msgstr "Bisitaria"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:40
@@ -16691,153 +16912,184 @@ msgstr ""
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
-msgstr ""
+msgstr "Bizitzaren erregistroak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:536
 msgid "Wales"
-msgstr ""
+msgstr "Gales"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:534
 msgid "Wallis and Futuna"
-msgstr ""
+msgstr "Wallis eta Futuna"
 
 #: app/Elements/RelationIsDescriptor.php:127
 msgid "Ward"
-msgstr ""
+msgstr "Ikaslea"
 
 #: app/Elements/RelationIsDescriptor.php:91
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr ""
+msgstr "Ikaslea"
 
 #: app/Elements/RelationIsDescriptor.php:70
 msgctxt "MALE"
 msgid "Ward"
-msgstr ""
+msgstr "Ikaslea"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:206
 msgid "Washington, District of Columbia, United States"
-msgstr ""
+msgstr "Washington, District of Columbia, Estatu Batuak"
 
 #: resources/views/admin/trees-preferences.phtml:316
 msgid "Watermarks"
-msgstr ""
+msgstr "Ur-marka"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.phtml:326
 msgid "Watermarks are optional and normally shown just to visitors."
 msgstr ""
+"Ur-markak aukerakoak dira eta bisitariei bakarrik erakusten zaizkie "
+"normalean."
 
 #: resources/views/register-success-page.phtml:25
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr ""
+"Orain konfirmazio mezu bat bidaliko dugu helbide honetara <b>%s</b>. "
+"Kontuaren eskaera egiaztatu beharko duzu mezu honetan dauden argibideak "
+"jarraituz. Zure eskaera ez baduzu 7 egunez bideratzen, automatikoki "
+"errefusatuko da. Eskaera berria egin beharko duzu. <br><br>Egiaztapen mezuan "
+"bidalitako argibideak jarraitu ondotik, administratzaileak onartu egin "
+"beharko du zure eskaria erabiltzen hasi baino lehen. <br><br>Orrian sartu "
+"ahal izateko, erabiltzaile izena eta pasahitza beharko dituzu."
 
 #: resources/views/admin/control-panel.phtml:166
 #: resources/views/admin/control-panel.phtml:594
 #: resources/views/admin/trees-preferences.phtml:192
 msgid "Website"
-msgstr ""
+msgstr "Webgunea"
 
 #: app/Http/RequestHandlers/SiteLogsPage.php:96
 #: resources/views/admin/control-panel.phtml:262
 msgid "Website logs"
-msgstr ""
+msgstr "Webguneko erregistroak"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:66
 #: resources/views/admin/control-panel.phtml:240
 msgid "Website preferences"
-msgstr ""
+msgstr "Webguneko lehenespenak"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:277
 #: resources/views/edit/initialize-calendar-popup.phtml:28
 msgid "Wed"
-msgstr ""
+msgstr "Az."
 
 #: app/Date/AbstractCalendarDate.php:248
 msgid "Wednesday"
-msgstr ""
+msgstr "Asteazkena"
 
 #: app/CustomTags/Aldfaer.php:73 app/CustomTags/BrothersKeeper.php:110
 msgid "Weight"
-msgstr ""
+msgstr "Pisua"
 
 #. I18N: A %s is the user’s name
 #: app/Module/UserWelcomeModule.php:120
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "Ongi etorria %s"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:26
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "Ongietorri mezua sarrerako orrian"
 
 #: resources/views/login-page.phtml:23
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "Ongietorria genealogia webgune honetara"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:179
 msgid "Western Sahara"
-msgstr ""
+msgstr "Mendebaldeko Sahara"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:711
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr ""
+"Erregistro bat editatzen denean, erabiltzailea, data eta ordua gordetzen "
+"dira. Batzutan \"azken aldaketa\"ren informazioa gordetzea garrantzitsua da, "
+"pertsona baten datuei aldaketa txiki batzuk egiten dizkiogunean, errate "
+"baterako. Aukera honek funtzio lehenetsita ote dagoen kontrolatzen du."
 
 #: resources/views/admin/users-edit.phtml:109
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
+"Erabiltzaile batek kontu berri bat erregistratzen badu, mezu elektronikoa "
+"bidaltzen zaio egiaztapenaren loturarekin. Erabiltzaileak lotura erabiltzen "
+"duenean , sistemak helbide elektroniko zuzena dela baieztatzen du eta "
+"automatikoki egiaztatutzat ematen du."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
 msgstr ""
+"Pertsona batek ezkontide bat baino gehiago izan duenean, dataz sailkatu "
+"beharko ditu familiak."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:698
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
 msgstr ""
+"Kide berri bat sartzen duzunean famili batean, automatikoki abizen bat "
+"ematea lehenesten ahal duzu. Abizena leku bakoitzeko ohituren arabera emanen "
+"zaio."
 
 #: resources/views/help/pending-changes.phtml:14
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"Informazioa gehitzen, editatzen edo ezabatzen duzunean, aldaketak ez dira "
+"automatikoki gordetzen. \"Behin behineko\" aldaketen lekuan gelditzen dira. "
+"Behin betiko onartuak izateko moderatzaile batek berraztertu eta onartu "
+"beharko ditu."
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
+"Erabiltzaile batek bere erregistro pertsonala baldin badu zuhaitzean eta "
+"partaidea, editatzailea edo moderatzailea baldin bada, bizirik dauden "
+"arbasoen xehetasunak gorde ahal izanen ditu. Bisitariek ikusten dituzten "
+"famili-mailak zehaztu ahal izanen ditu."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:29
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "Zein zuhaitz genealogiko sartu beharrak diren webgunearen mapan"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:265
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Nork igotzen ahal dituen artxibo berriak"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr ""
+msgstr "Nor dagoen konektatua"
 
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
 msgstr ""
+"Zergatik erakusten ditu zerrenda honek eguneratu behar ez diren erregistroak?"
 
 #: resources/views/lists/families-table.phtml:97
 msgid "Widow"
-msgstr ""
+msgstr "Alarguna"
 
 #: resources/views/lists/families-table.phtml:92
 msgid "Widower"
-msgstr ""
+msgstr "Alarguna"
 
 #: app/Gedcom.php:441 app/Gedcom.php:495
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:77
@@ -16854,75 +17106,75 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:489
 #: resources/xml/reports/relative_ext_report.xml:111
 msgid "Wife"
-msgstr ""
+msgstr "Emaztea"
 
 #: app/Gedcom.php:442 resources/views/modules/timeline-chart/chart.phtml:355
 msgid "Wife’s age"
-msgstr ""
+msgstr "Emaztearen adina"
 
 #: app/Gedcom.php:758
 msgid "Will"
-msgstr ""
+msgstr "Testamentua"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:207
 msgid "Winter Quarters, Nebraska, United States"
-msgstr ""
+msgstr "Winter Quarters, Nebraska, Estatu Batuak"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:76
 #: app/Statistics/Google/ChartIndividualWithSources.php:76
 msgid "With sources"
-msgstr ""
+msgstr "Iturriekin"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:71
 #: app/Statistics/Google/ChartIndividualWithSources.php:71
 msgid "Without sources"
-msgstr ""
+msgstr "Iturririk gabe"
 
 #: app/Elements/RelationIsDescriptor.php:128
 msgid "Witness"
-msgstr ""
+msgstr "Lekukoa"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "Lekukoak"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
 #: app/SurnameTradition/PolishSurnameTradition.php:67
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Emazteek senarren abizena hartzen dute."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:75
 #: resources/views/modules/place-hierarchy/page.phtml:30
 #: resources/views/modules/place-hierarchy/page.phtml:33
 #: resources/views/modules/statistics-chart/custom.phtml:179
 msgid "World"
-msgstr ""
+msgstr "Mundua"
 
 #: app/CustomTags/BrothersKeeper.php:111
 #: resources/views/modules/yahrzeit/table.phtml:36
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Yahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:67
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Module/CalendarMenuModule.php:117 resources/views/calendar-page.phtml:78
 msgid "Year"
-msgstr ""
+msgstr "Urtea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:147
 #: resources/views/modules/timeline-chart/chart.phtml:412
 msgid "Year:"
-msgstr ""
+msgstr "Urtea:"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:540
 msgid "Yemen"
-msgstr ""
+msgstr "Yemen"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: resources/views/emails/register-user-html.phtml:22
@@ -16930,96 +17182,120 @@ msgstr ""
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
+"Zeuk (edo zure lekua hartu nahi duen norbaitek) kontu berria eskatu du %1$s-"
+"an, %2$s helbide elektronikoa erabiliz."
 
 #: app/Http/RequestHandlers/ContactAction.php:124
 #: app/Http/RequestHandlers/RegisterAction.php:274
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Ez da onartzen kanpoko URL-loturaren bat daraman mezurik bidaltzea."
 
 #: resources/views/modules/login_block/sign-out.phtml:17
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "%s izenarekin ireki da saioa."
 
 #: app/Http/RequestHandlers/LoginPage.php:99
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Behean ageri den loturarekin eskatzen ahal duzu erabiltzaile kontua."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr ""
+"Webtrees-en itxura aldatzen ahal duzu \"Itxura/Gaia\"-n dauden plantillak "
+"erabiliz. Gai bakoitzak bere estiloa, formatoa, koloreak, etabar... dauzka. "
+"Hemen \"Rural\" izeneko gaia lehenesten dugu."
 
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr ""
+"Momentuan konektatuak dauden erabiltzaileen zerrendan agertu nahi duzun edo "
+"ez aukeratzen ahal duzu."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:29
 #: resources/views/edit/raw-gedcom-record.phtml:28
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "%s-en GEDCOM zehaztapena deskargatzen ahal da."
 
 #: resources/views/modules/privacy-policy/page.phtml:63
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "Jarraitua ez izateko aukera daukazu, nabigatzailean lehenesten baduzu."
 
 #: resources/views/admin/trees-renumber.phtml:28
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr ""
+"Zuhaitzeko erregistroak berriz zenbakitzen ahhal dituzu, sortutako "
+"erreferentzia zenbaki horiek bertze edozein zuhaitzetan ez errepikatzeko "
+"moduan."
 
 #: resources/views/admin/trees-renumber.phtml:37
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Berriz zenbakitzen ahal duzu zuhaitz genealogiko hau."
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
 msgstr ""
+"Edozein erregistro, gertaera edo gertakizun konfiguratzen ahal duzu "
+"murrizketa baten bitartez. Erregistro, gertaera edo gertakizun batek ez badu "
+"murrizketarik, hurrengo murrizketak lehenetsiko dira."
 
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
 msgstr ""
+"Edizio formularioak errazten ahal dituzu erabitzen ez dituzun GEDCOM "
+"etiketak ezkutatuz."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
 msgstr ""
+"Pribatutasun kalkuluak azkartzen ahal dira defuntzio partida bat gehituta "
+"heriotz, ehorzketa edo errausketa erregistrorik ez duten pertsonei. Bertze "
+"gertaera batzuren datatik ondorioztatuko litzateke pertsona horren "
+"defuntzioaren partidan paratu beharreko guti gora beherako data."
 
 #: app/Http/RequestHandlers/LoginAction.php:110
 msgid "You cannot sign in because your browser does not accept cookies."
 msgstr ""
+"Ezin da saiorik hasi zure nabigatzaileak ez duelako cookie-rik onartzen."
 
 #: app/Http/Exceptions/HttpAccessDeniedException.php:35
 #: app/Http/Exceptions/HttpNotFoundException.php:35
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Ez duzu orri hau ikusteko baimenik."
 
 #: resources/views/verify-success-page.phtml:19
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "Erabiltzaile erregistratua izateko eskaera konfirmatu duzu."
 
 #: resources/views/admin/trees-import.phtml:33
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr ""
+msgstr "Izen ezberdina duen GEDCOM artxiboa aukeratu duzu. Ongi dago?"
 
 #: app/Http/RequestHandlers/Logout.php:52
 msgid "You have signed out."
-msgstr ""
+msgstr "Saioa itxi duzu."
 
 #: resources/views/modules/faq/config.phtml:29
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr ""
+"HTML erabiltzen ahal duzu erantzunerako eta bertze webgunetarako loturak "
+"gehitzeko."
 
 #: app/Http/RequestHandlers/SetupWizard.php:377
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "Administratzaile konturako eremu guztiak bete beharko dituzu."
 
 #: resources/views/admin/trees-merge.phtml:33
 msgid "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"Bi zuhaitz bateratu nahi baditugu, bietako baten erregistro guztiei zenbaki "
+"berria sartu beharko diegu."
 
 #: app/Module/ChartsBlockModule.php:184
 msgid "You must select an individual and a chart type in the block preferences"
@@ -17168,7 +17444,7 @@ msgstr ""
 #: resources/views/record-page-pending.phtml:25
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "Onartu"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
@@ -17178,12 +17454,12 @@ msgstr ""
 #: resources/views/record-page-pending.phtml:19
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "Onartu"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:115
 msgid "accepted"
-msgstr ""
+msgstr "Onartua"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:238
@@ -17193,34 +17469,34 @@ msgstr ""
 #: resources/views/modules/lifespans-chart/page.phtml:75
 #: resources/views/modules/timeline-chart/page.phtml:41
 msgid "add"
-msgstr ""
+msgstr "Gehitu"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:147
 msgid "add place"
-msgstr ""
+msgstr "Leku bat gehitu"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:71
 msgid "adopted name"
-msgstr ""
+msgstr "Adopzio izena"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "%sren ondotik"
 
 #: app/Module/StatisticsChartModule.php:517
 #: app/Module/StatisticsChartModule.php:579
 #: app/Module/StatisticsChartModule.php:640
 msgid "age"
-msgstr ""
+msgstr "Adina"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:73
 msgid "also known as"
-msgstr ""
+msgstr "modu honetan ere ezaguna"
 
 #: app/Statistics/Repository/FamilyRepository.php:481
 #: app/Statistics/Repository/UserRepository.php:93
@@ -17234,168 +17510,168 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:433
 #: resources/xml/reports/descendancy_report.xml:486
 msgid "and"
-msgstr ""
+msgstr "eta"
 
 #: app/Services/RelationshipService.php:781
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "izeba"
 
 #: app/Services/RelationshipService.php:539
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "izeba"
 
 #: app/Services/RelationshipService.php:861
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "izeba"
 
 #: app/Services/RelationshipService.php:577
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "izeba"
 
 #: app/Services/RelationshipService.php:913
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "izeba"
 
 #: app/Services/RelationshipService.php:595
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "izeba"
 
 #: app/Services/RelationshipService.php:537
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "izeba/osaba"
 
 #: app/Services/RelationshipService.php:575
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "izeba/osaba"
 
 #: app/Services/RelationshipService.php:593
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "izeba/osaba"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr ""
+msgstr "automatikoa"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
-msgstr ""
+msgstr "hasierara itzuli"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "%sren aitzinetik"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:217
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "%s eta %sren artean"
 
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php:75
 msgid "birth name"
-msgstr ""
+msgstr "jaiotza izena"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/trees-privacy.phtml:108
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "Azken %1$s urteetan jaio ziren edo azkeneko %2$s urteetan hil ziren"
 
 #: app/Services/RelationshipService.php:451
 msgid "brother"
-msgstr ""
+msgstr "anaia"
 
 #: app/Services/RelationshipService.php:719
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "anaiaren koinatua"
 
 #: app/Services/RelationshipService.php:545
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "koinatua"
 
 #: app/Services/RelationshipService.php:835
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "koinatua"
 
 #: app/Services/RelationshipService.php:613
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "koinatua"
 
 #: app/Services/RelationshipService.php:1019
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "arreba/ahizparen koinatua"
 
 #: app/Services/RelationshipService.php:625
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "koinatua"
 
 #: app/Services/RelationshipService.php:643
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "koinatua"
 
 #: app/Services/RelationshipService.php:1075
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "koinatua"
 
 #: app/Services/RelationshipService.php:721
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "anaiaren koinatu/koinata"
 
 #: app/Services/RelationshipService.php:555
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "koinatu/koinata"
 
 #: app/Services/RelationshipService.php:607
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "koinatu/koinata"
 
 #: app/Services/RelationshipService.php:1021
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "Arreba/ahizparen koinatu/koinata"
 
 #: app/Services/RelationshipService.php:641
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "koinatu/koinata"
 
 #: app/Services/RelationshipService.php:653
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "koinatu/koinata"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:273
 msgid "bullet list"
-msgstr ""
+msgstr "bineta zerrenda"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:189
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "%s kalkulatuak"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:46
@@ -17444,33 +17720,33 @@ msgstr ""
 #: resources/views/modules/stories/edit.phtml:76
 #: resources/views/modules/user_blog/edit.phtml:54
 msgid "cancel"
-msgstr ""
+msgstr "ezeztatu"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:65
 msgid "challenged"
-msgstr ""
+msgstr "inpugnatua"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:77
 msgid "change of name"
-msgstr ""
+msgstr "izen aldaketa"
 
 #. I18N: button label
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "orain gainbegiratu"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
 msgid "child"
-msgstr ""
+msgstr "seme-alaba"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "herritarra"
 
 #: resources/views/admin/components.phtml:108
 #: resources/views/admin/components.phtml:129
@@ -17484,22 +17760,22 @@ msgstr ""
 #: resources/views/modules/favorites/favorites.phtml:58
 #: resources/views/modules/privacy-policy/footer.phtml:25
 msgid "close"
-msgstr ""
+msgstr "Itxi"
 
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr ""
+msgstr "hodeiak"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr ""
+msgstr "koloreak"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:275
 msgid "compact list"
-msgstr ""
+msgstr "zerrenda trinkoa"
 
 #. I18N: A button label.
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:293
@@ -17520,59 +17796,59 @@ msgstr ""
 #: resources/views/register-page.phtml:101
 #: resources/views/report-select-page.phtml:40
 msgid "continue"
-msgstr ""
+msgstr "jarraitu"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
-msgstr ""
+msgstr "sortu"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulturala"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
-msgstr ""
+msgstr "daten denbora-tarteak"
 
 #: app/Services/RelationshipService.php:428
 msgid "daughter"
-msgstr ""
+msgstr "alaba"
 
 #: resources/xml/reports/descendancy_report.xml:226
 msgid "daughter of"
-msgstr ""
+msgstr "honen alaba"
 
 #: app/Services/RelationshipService.php:515
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "erraina"
 
 #: app/Services/RelationshipService.php:623
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "erraina"
 
 #: app/Services/RelationshipService.php:1067
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr ""
+msgstr "guraskidea"
 
 #: app/Services/RelationshipService.php:1069
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr ""
+msgstr "guraskidea"
 
 #: app/Services/RelationshipService.php:1071
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr ""
+msgstr "guraskidea"
 
 #: resources/views/admin/location-edit.phtml:54
 #: resources/views/admin/location-edit.phtml:65
 msgid "degrees"
-msgstr ""
+msgstr "graduak"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:115
@@ -17582,30 +17858,30 @@ msgstr ""
 #: resources/views/admin/users-cleanup.phtml:78
 #: resources/views/admin/webtrees1-thumbnails-form.phtml:35
 msgid "delete"
-msgstr ""
+msgstr "ezabatu"
 
 #: resources/xml/reports/descendancy_report.xml:137
 #: resources/xml/reports/descendancy_report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "hila"
 
 #: resources/xml/reports/descendancy_report.xml:134
 #: resources/xml/reports/descendancy_report.xml:435
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "hila"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:66
 msgid "disproven"
-msgstr ""
+msgstr "ezeztatua"
 
 #: app/Module/PedigreeChartModule.php:367
 #: app/Module/PedigreeChartModule.php:375
 #: resources/views/edit/reorder-card-header.phtml:32
 msgid "down"
-msgstr ""
+msgstr "behea"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -17615,11 +17891,11 @@ msgstr ""
 #: resources/views/report-setup-page.phtml:83
 #: resources/views/report-setup-page.phtml:96
 msgid "download"
-msgstr ""
+msgstr "deskarga"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:19
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville zenbakia"
 
 #: resources/views/admin/components.phtml:141
 #: resources/views/family-page-menu.phtml:29
@@ -17627,163 +17903,163 @@ msgstr ""
 #: resources/views/media-page-menu.phtml:28
 #: resources/views/record-page-menu.phtml:23
 msgid "edit"
-msgstr ""
+msgstr "editatu"
 
 #: app/Services/RelationshipService.php:2338
 msgid "eighth cousin"
-msgstr ""
+msgstr "zortzigarren lehengusua/lehengusina"
 
 #: app/Services/RelationshipService.php:2302
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "zortzigarren lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2257
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "zortzigarren lehengusua"
 
 #: app/Services/RelationshipService.php:446
 msgid "elder brother"
-msgstr ""
+msgstr "anaia zaharragoa"
 
 #: app/Services/RelationshipService.php:488
 msgid "elder sibling"
-msgstr ""
+msgstr "anai-arreba zaharragoak"
 
 #: app/Services/RelationshipService.php:467
 msgid "elder sister"
-msgstr ""
+msgstr "arreba/ahizpa zaharragoa"
 
 #: app/Services/RelationshipService.php:2344
 msgid "eleventh cousin"
-msgstr ""
+msgstr "hamaikagarren lehengusu/lehengusina"
 
 #: app/Services/RelationshipService.php:2308
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "hamaikagarren lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2266
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "hamaikagarren lehengusua"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:79
 msgid "estate name"
-msgstr ""
+msgstr "etxalde izena"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:193
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "%s guti gora behera"
 
 #: app/Services/RelationshipService.php:365
 msgid "ex-husband"
-msgstr ""
+msgstr "senar ohia"
 
 #: app/Services/RelationshipService.php:412
 msgid "ex-spouse"
-msgstr ""
+msgstr "senar-emazte ohia"
 
 #: app/Services/RelationshipService.php:389
 msgid "ex-wife"
-msgstr ""
+msgstr "emazte ohia"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
-msgstr ""
+msgstr "artxiboa esportatu"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
 msgid "facts"
-msgstr ""
+msgstr "gertaerak"
 
 #: app/Elements/RoleInEvent.php:82 app/Services/RelationshipService.php:351
 msgid "father"
-msgstr ""
+msgstr "aita"
 
 #: app/Services/RelationshipService.php:551
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "aitaginarreba"
 
 #: app/Services/RelationshipService.php:631
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "aitaginarreba"
 
 #: app/Services/RelationshipService.php:649
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "aitaginarreba"
 
 #: app/Services/RelationshipService.php:369
 msgid "fiancé"
-msgstr ""
+msgstr "senargaia"
 
 #: app/Services/RelationshipService.php:416
 msgid "fiancé(e)"
-msgstr ""
+msgstr "senargai/emaztegaia"
 
 #: app/Services/RelationshipService.php:393
 msgid "fiancée"
-msgstr ""
+msgstr "emaztegaia"
 
 #: app/Services/RelationshipService.php:2352
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "hamabostgarren lehengusu/lehengusina"
 
 #: app/Services/RelationshipService.php:2316
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "hamabostgarren lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2278
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "hamabostgarren lehengusua"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2433
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "bosgarren %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2411
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "bosgarren %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2388
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "bosgarren %s"
 
 #: app/Services/RelationshipService.php:2332
 msgid "fifth cousin"
-msgstr ""
+msgstr "bosgarren lehengusina/lehengusua"
 
 #: app/Services/RelationshipService.php:2296
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "Bosgarren lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2248
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "bosgarren lehengusua"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:560
@@ -17791,277 +18067,277 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:27
 msgid "first"
-msgstr ""
+msgstr "lehenbizikoa"
 
 #: resources/views/admin/trees-preferences.phtml:569
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "lehenbizikoa"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2421
 #, php-format
 msgid "first %s"
-msgstr ""
+msgstr "lehenbiziko %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2399
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "lehenbiziko %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2376
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "lehenbiziko %s"
 
 #: app/Services/RelationshipService.php:2324
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusua/lehengusina propioa"
 
 #: app/Services/RelationshipService.php:2288
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusina propioa"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2236
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusu propioa"
 
 #: app/Services/RelationshipService.php:775
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "Lehengusina/lehengusu propioa"
 
 #: app/Services/RelationshipService.php:777
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "Lehengusina propioa"
 
 #: app/Services/RelationshipService.php:779
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "Lehengusu propioa"
 
 #: app/Services/RelationshipService.php:819
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusina/lehengusu propioa"
 
 #: app/Services/RelationshipService.php:821
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusina propioa"
 
 #: app/Services/RelationshipService.php:825
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusu propioa"
 
 #: app/Services/RelationshipService.php:855
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusina/lehengusu propioa"
 
 #: app/Services/RelationshipService.php:857
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusina propioa"
 
 #: app/Services/RelationshipService.php:859
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusu propioa"
 
 #: app/Services/RelationshipService.php:905
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusina/lehengusu propioa"
 
 #: app/Services/RelationshipService.php:907
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusina propioa"
 
 #: app/Services/RelationshipService.php:911
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "lehengusu propioa"
 
 #: app/Services/RelationshipService.php:1155
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1151
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1153
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:1161
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1157
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1159
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:1167
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1163
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1165
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:1173
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1169
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1171
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:1179
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1175
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1177
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:1185
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1181
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1183
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:1191
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1187
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1189
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:1197
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba/osaba txikia"
 
 #: app/Services/RelationshipService.php:1193
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "izeba txikia"
 
 #: app/Services/RelationshipService.php:1195
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "osaba txikia"
 
 #: app/Services/RelationshipService.php:2350
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "14. lehengusina/lehengusua"
 
 #: app/Services/RelationshipService.php:2314
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "14. lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2275
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "14. lehengusua"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2430
 #, php-format
 msgid "fourth %s"
-msgstr ""
+msgstr "%s iloba txikia"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2408
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "%s iloba txikia"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2385
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "%s iloba txikia"
 
 #: app/Services/RelationshipService.php:2330
 msgid "fourth cousin"
-msgstr ""
+msgstr "laugarren lehengusina/lehengusua"
 
 #: app/Services/RelationshipService.php:2294
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "laugarren lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2245
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "laugarren lehengusua"
 
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml:101
@@ -18073,129 +18349,129 @@ msgstr ""
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$stik hasita %2$s urteko denbora-tartea"
+msgstr[1] "%1$stik hasita %2$s urtetako denbora-tartea"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:209
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "%stik hasita"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:221
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "%stik hasita %s(e)ra"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:521
 msgid "full circle"
-msgstr ""
+msgstr "Zirkulu osoa"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "gender"
-msgstr ""
+msgstr "generoa"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geografikoa"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
 msgid "go to new individual"
-msgstr ""
+msgstr "pertsona berrira joan"
 
 #: app/Services/RelationshipService.php:505
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:517
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:617
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:507
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:519
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:619
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:735
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "bilobaren bikotea"
 
 #: app/Services/RelationshipService.php:757
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "bilobaren bikotea"
 
 #: app/Services/RelationshipService.php:1055
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "bilobaren bikotea"
 
 #: app/Services/RelationshipService.php:587
 msgctxt "parent’s father"
 msgid "grandfather"
-msgstr ""
+msgstr "Aitona"
 
 #: app/Services/RelationshipService.php:589
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr ""
+msgstr "amona"
 
 #: app/Services/RelationshipService.php:591
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "aiton-amona"
 
 #: app/Services/RelationshipService.php:511
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:523
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:621
 msgctxt "son’s son"
 msgid "grandson"
-msgstr ""
+msgstr "biloba"
 
 #: app/Services/RelationshipService.php:745
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "bilobaren bikotea"
 
 #: app/Services/RelationshipService.php:773
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "bilobaren bikotea"
 
 #: app/Services/RelationshipService.php:1065
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "bilobaren bikotea"
 
 #: app/Services/RelationshipService.php:1441
 #: app/Services/RelationshipService.php:1460
@@ -18205,7 +18481,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1511
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "%s. izeba zaharra"
 
 #: app/Services/RelationshipService.php:1444
 #: app/Services/RelationshipService.php:1463
@@ -18215,7 +18491,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1514
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "%s. izeba/osaba zaharra"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2055
@@ -18224,7 +18500,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2098
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "%s. birbiloba"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2052
@@ -18233,7 +18509,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2094
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr ""
+msgstr "%s. birbiloba"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1889
@@ -18244,7 +18520,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1955
 #, php-format
 msgid "great ×%s grandfather"
-msgstr ""
+msgstr "%s. birraitona"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1893
@@ -18255,7 +18531,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1960
 #, php-format
 msgid "great ×%s grandmother"
-msgstr ""
+msgstr "%s. birramona"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1896
@@ -18266,7 +18542,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1964
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "%s. birraitona/birramona"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2048
@@ -18275,7 +18551,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2089
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "%s. birbiloba"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1772
@@ -18283,7 +18559,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1800
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s. biloba"
 
 #: app/Services/RelationshipService.php:1672
 #: app/Services/RelationshipService.php:1707
@@ -18291,7 +18567,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s. biloba"
 
 #: app/Services/RelationshipService.php:1676
 #: app/Services/RelationshipService.php:1711
@@ -18299,7 +18575,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s. biloba"
 
 #: app/Services/RelationshipService.php:1679
 #: app/Services/RelationshipService.php:1714
@@ -18307,14 +18583,14 @@ msgstr ""
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s. biloba"
 
 #: app/Services/RelationshipService.php:1779
 #: app/Services/RelationshipService.php:1791
 #: app/Services/RelationshipService.php:1807
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s. biloba"
 
 #: app/Services/RelationshipService.php:1695
 #: app/Services/RelationshipService.php:1730
@@ -18322,7 +18598,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s. biloba"
 
 #: app/Services/RelationshipService.php:1699
 #: app/Services/RelationshipService.php:1734
@@ -18330,7 +18606,7 @@ msgstr ""
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s. biloba"
 
 #: app/Services/RelationshipService.php:1702
 #: app/Services/RelationshipService.php:1737
