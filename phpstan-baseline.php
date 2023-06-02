@@ -3119,22 +3119,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/IndividualFactsService.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:familyFacts\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/IndividualFactsService.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:familyFacts\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection\\<int, mixed\\>\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:familyFacts\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection\\<int, mixed\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/IndividualFactsService.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:historicFacts\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection\\<int, mixed\\>\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/IndividualFactsService.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:individualFacts\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/IndividualFactsService.php',
 ];
