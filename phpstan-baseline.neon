@@ -1286,6 +1286,11 @@ parameters:
 			path: app/Module/CensusAssistantModule.php
 
 		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/CloudsTheme.php
+
+		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
@@ -1294,6 +1299,11 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/FabTheme.php
 
 		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
@@ -1951,6 +1961,11 @@ parameters:
 			path: app/Module/MapGeoLocationOpenRouteService.php
 
 		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/MinimalTheme.php
+
+		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
@@ -2201,6 +2216,11 @@ parameters:
 			path: app/Module/TopSurnamesModule.php
 
 		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/WebtreesTheme.php
+
+		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
@@ -2209,6 +2229,11 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/XeneaTheme.php
 
 		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
@@ -2486,12 +2511,12 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#2 \\$callback of function uasort expects callable\\(Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\GedcomRecord, Fisharebest\\\\Webtrees\\\\GedcomRecord\\)\\: int given\\.$#"
+			message: "#^Parameter \\#2 \\$callback of function uasort expects callable\\(Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\GedcomRecord, Fisharebest\\\\Webtrees\\\\GedcomRecord\\)\\: int given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#2 \\$callback of function uasort expects callable\\(Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\)\\: int given\\.$#"
+			message: "#^Parameter \\#2 \\$callback of function uasort expects callable\\(Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\)\\: int, Closure\\(Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\)\\: int given\\.$#"
 			count: 2
 			path: app/Report/ReportParserGenerate.php
 
