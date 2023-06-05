@@ -137,13 +137,13 @@ class Validator
     }
 
     /**
-     * @param array<string> $values
+     * @param array<int|string> $values
      *
      * @return self
      */
     public function isInArray(array $values): self
     {
-        $this->rules[] = static fn (/*int|string|null*/ $value)/*: int|string|null*/ => $value !== null && in_array($value, $values, true) ? $value : null;
+        $this->rules[] = static fn (int|string|null $value): int|string|null => in_array($value, $values, true) ? $value : null;
 
         return $this;
     }
