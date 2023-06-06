@@ -28,7 +28,7 @@
         "process-timeout": 3600
     },
     "require": {
-        "php": "7.4 - 8.2",
+        "php": "7.4 - 8.3",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-exif": "*",
@@ -44,7 +44,7 @@
         "ext-simplexml": "*",
         "ext-xml": "*",
         "aura/router": "3.2.0",
-        "doctrine/dbal": "3.6.2",
+        "doctrine/dbal": "3.6.3",
         "ezyang/htmlpurifier": "4.16.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
