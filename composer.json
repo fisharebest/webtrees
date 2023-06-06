@@ -127,21 +127,13 @@
             "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css"
         ],
         "webtrees:phpstan": [
-            "@composer global require --quiet phpstan/phpstan=*",
-            "@composer global require --quiet phpstan/extension-installer=*",
-            "@composer global require --quiet phpstan/phpstan-deprecation-rules=*",
-            "@composer global require --quiet phpstan/phpstan-strict-rules=*",
-            "@composer global require --quiet phpstan/phpstan-phpunit=*",
+            "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --xdebug --level=max index.php app",
+            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1",
             "@composer install --no-dev --quiet"
         ],
         "webtrees:phpstan-baseline": [
-            "@composer global require --quiet phpstan/phpstan=*",
-            "@composer global require --quiet phpstan/extension-installer=*",
-            "@composer global require --quiet phpstan/phpstan-deprecation-rules=*",
-            "@composer global require --quiet phpstan/phpstan-strict-rules=*",
-            "@composer global require --quiet phpstan/phpstan-phpunit=*",
+            "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
             "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.php index.php app",
 						"sed -i -e 's/\\t/    /' phpstan-baseline.php",

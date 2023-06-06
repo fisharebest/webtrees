@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
@@ -68,12 +67,12 @@ class BirthDeathMarriageReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
-        $module_service = new ModuleService();
-
         $tree   = $this->importTree('demo.ged');
-        $module = $module_service->findByInterface(BirthDeathMarriageReportModule::class)->first();
-        $xml    = 'resources/' . $module->xmlFilename();
-        $vars   = [
+        $module = new BirthDeathMarriageReportModule();
+        $module->setName('bdm_report');
+
+        $xml  = 'resources/' . $module->xmlFilename();
+        $vars = [
             'name'       => ['id' => ''],
             'bdmplace'   => ['id' => ''],
             'birthdate1' => ['id' => ''],

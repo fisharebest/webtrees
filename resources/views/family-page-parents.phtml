@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php endif ?>
             </div>
 
-            <?= view('family-page-grandparents', ['family' => $family, 'parent_family' => $family?->husband()?->childFamilies()->first(), 'individual' => $family->husband()]) ?>
+            <?= view('family-page-grandparents', ['family' => $family, 'parent_family' => $family->husband()?->childFamilies()->first(), 'individual' => $family->husband()]) ?>
         </div>
 
         <div class="d-flex">
@@ -55,7 +55,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php endif ?>
             </div>
 
-            <?= view('family-page-grandparents', ['family' => $family, 'parent_family' => $family?->wife()?->childFamilies()->first(), 'individual' => $family->wife()]) ?>
+            <?= view('family-page-grandparents', ['family' => $family, 'parent_family' => $family->wife()?->childFamilies()->first(), 'individual' => $family->wife()]) ?>
         </div>
     </div>
 </div>
