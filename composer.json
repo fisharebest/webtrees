@@ -29,7 +29,7 @@
         "process-timeout": 3600
     },
     "require": {
-        "php": "8.1 - 8.2",
+        "php": "8.1 - 8.3",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-exif": "*",
@@ -45,15 +45,15 @@
         "ext-simplexml": "*",
         "ext-xml": "*",
         "aura/router": "3.2.0",
-        "doctrine/dbal": "3.6.2",
+        "doctrine/dbal": "3.6.3",
         "ezyang/htmlpurifier": "4.16.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.7.0",
-        "illuminate/database": "10.13.0",
-        "illuminate/support": "10.13.0",
+        "illuminate/database": "10.13.2",
+        "illuminate/support": "10.13.2",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.10",
         "league/commonmark": "2.4.0",
@@ -86,7 +86,7 @@
         "composer/composer": "2.5.7",
         "league/flysystem-memory": "3.15.0",
         "php-coveralls/php-coveralls": "2.5.3",
-        "phpunit/phpunit": "10.2.0"
+        "phpunit/phpunit": "10.2.1"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
