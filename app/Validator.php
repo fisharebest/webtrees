@@ -137,7 +137,7 @@ class Validator
     }
 
     /**
-     * @param array<int|string> $values
+     * @param array<int|string,int|string> $values
      *
      * @return self
      */
@@ -149,7 +149,7 @@ class Validator
     }
 
     /**
-     * @param array<string> $values
+     * @param array<int|string,int|string> $values
      *
      * @return self
      */

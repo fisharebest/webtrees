@@ -25,9 +25,10 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+
+use function ob_get_clean;
 
 /**
  * Test harness for the class FamilyGroupReportModule
@@ -71,16 +72,16 @@ class FamilyGroupReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
-        $module_service = new ModuleService();
-
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree   = $this->importTree('demo.ged');
-        $module = $module_service->findByInterface(FamilyGroupReportModule::class)->first();
-        $xml    = 'resources/' . $module->xmlFilename();
-        $vars   = [
+        $module = new FamilyGroupReportModule();
+        $module->setName('family_group_report');
+
+        $xml  = 'resources/' . $module->xmlFilename();
+        $vars = [
             'id'       => ['id' => 'f1'],
             'sources'  => ['id' => 'on'],
             'notes'    => ['id' => 'on'],

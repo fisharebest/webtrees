@@ -25,9 +25,10 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+
+use function ob_get_clean;
 
 /**
  * Test harness for the class CemeteryReportModule
@@ -71,16 +72,16 @@ class CemeteryReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
-        $module_service = new ModuleService();
-
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree   = $this->importTree('demo.ged');
-        $module = $module_service->findByInterface(CemeteryReportModule::class)->first();
-        $xml    = 'resources/' . $module->xmlFilename();
-        $vars   = [
+        $module = new CemeteryReportModule();
+        $module->setName('cemetery_report');
+
+        $xml  = 'resources/' . $module->xmlFilename();
+        $vars = [
             'deathplace' => ['id' => ''],
             'adlist'     => ['id' => 'none'],
             'sortby'     => ['id' => 'NAME'],

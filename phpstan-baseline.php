@@ -569,12 +569,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsData.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot access offset \'0\' on array\\|false\\.$#',
+    'message' => '#^Cannot access offset \'0\' on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot access offset \'1\' on array\\|false\\.$#',
+    'message' => '#^Cannot access offset \'1\' on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
@@ -2529,12 +2529,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot access offset 0 on array\\|false\\.$#',
+    'message' => '#^Cannot access offset 0 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot access offset 1 on array\\|false\\.$#',
+    'message' => '#^Cannot access offset 1 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
@@ -2844,11 +2844,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Schema/Migration42.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Schema/Migration44.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/AdminService.php',
@@ -2891,11 +2886,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Source\\>, Closure\\(string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Source\\> given\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Services/AdminService.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
-    'count' => 4,
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
 $ignoreErrors[] = [
@@ -3930,11 +3920,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: int, Closure\\(string\\)\\: int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
 ];

@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
@@ -74,16 +73,16 @@ class DescendancyReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
-        $module_service = new ModuleService();
-
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree   = $this->importTree('demo.ged');
-        $module = $module_service->findByInterface(DescendancyReportModule::class)->first();
-        $xml    = 'resources/' . $module->xmlFilename();
-        $vars   = [
+        $module = new DescendancyReportModule();
+        $module->setName('descendancy_report');
+
+        $xml  = 'resources/' . $module->xmlFilename();
+        $vars = [
             'pid'      => ['id' => 'X1030'],
             'maxgen'   => ['id' => '3'],
             'sources'  => ['id' => 'on'],
