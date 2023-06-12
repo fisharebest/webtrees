@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-10 13:51+0000\n"
+"PO-Revision-Date: 2023-06-12 15:04+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -43,13 +43,13 @@ msgstr " -ean "
 #: app/Services/RelationshipService.php:2178
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "%1$s %2$s maila ezabatuak gorantz"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2183
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "%1$s %2$s maila ezabatuak beherantz"
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -145,7 +145,7 @@ msgid "%1$s–%2$s"
 msgstr "%1$s–%2$s"
 
 #: app/Services/RelationshipService.php:2204
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s’s %2$s"
 msgstr "%1$s’s %2$s"
 
@@ -348,39 +348,39 @@ msgstr[1] "%s erabiltzaile izenak"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s iturria eguneratu da."
+msgstr[1] "%s iturriak eguneratu dira."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2169
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s hiru aldiz ezabatua gorantz"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2174
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s hiru aldiz ezabatua beherantz"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2160
 #, php-format
 msgid "%s twice removed ascending"
-msgstr ""
+msgstr "%s aldiz ezabatua gorantz"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2165
 #, php-format
 msgid "%s twice removed descending"
-msgstr ""
+msgstr "%s aldiz ezabatua beherantz"
 
 #: app/Elements/AgeAtEvent.php:102
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s aste"
+msgstr[1] "%s aste"
 
 #: app/Age.php:92 app/Elements/AgeAtEvent.php:100
 #: app/Statistics/Repository/FamilyRepository.php:364
@@ -391,14 +391,14 @@ msgstr[1] ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s urte"
+msgstr[1] "%s urte"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:159
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "%sren urteurrena"
 
 #: app/Services/RelationshipService.php:2354
 #, php-format
@@ -536,7 +536,6 @@ msgstr "(bere heriotzaren eguna)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:315
-#, fuzzy
 msgid ", "
 msgstr ", "
 
@@ -662,56 +661,66 @@ msgstr ""
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
 msgid "A URL"
-msgstr ""
+msgstr "URL lotura"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:125
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Bi gizabanakoen artean dauden harremanak erakusten dituen grafikoa."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:91
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
 msgstr ""
+"Gizabanako baten arbasoak eta ondorengoak erakusten dituen grafikoa, famili-"
+"liburu itxurarekin."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:88
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Gizabanako baten arbasoen grafikoa, zuhaitz trinkoaren itxurarekin."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:115
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Gizabanako baten arbasoen grafikoa, zuhaitz itxurarekin."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:109
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Gizabanako baten arbasoen grafikoa."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:105
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Gizabanako baten ondorengoak."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:114
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Gizabanakoen bizi-itxaropena erakusteko grafikoa."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"Haur batek guraso-bikote bat baino gehiago izaten ahal du. Haur eta gurasoen "
+"arteko harremana biologikoa izaten ahal da, legala, edo leku bakoitzean "
+"dagoen kultura eta tradizioen araberakoa. Ez bada bertzerik zehazten, "
+"harreman biologikoak izanen du lehentasuna."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:69
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"Akats arrunta da gedcom-en lotura bat baino gehiagoko erregistroak izatea, "
+"seme-alaba berak bere familian erregistro bat baino gehiago izatea, errate "
+"baterako."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:150
 msgid "A fan chart of an individual’s ancestors."
 msgstr ""
+"Gizabanako baten arbasoak abaniko itxurarekin erakusten dituen grafikoa."
 
 #: resources/views/admin/map-import-form.phtml:37
 #: resources/views/admin/trees-export.phtml:30
@@ -719,7 +728,7 @@ msgstr ""
 #: resources/views/modals/media-file-fields.phtml:32
 #: resources/views/modals/media-file-fields.phtml:88
 msgid "A file on the server"
-msgstr ""
+msgstr "Artxibo bat zerbitzarian"
 
 #: resources/views/admin/map-import-form.phtml:27
 #: resources/views/admin/trees-export.phtml:54
@@ -727,112 +736,115 @@ msgstr ""
 #: resources/views/modals/media-file-fields.phtml:28
 #: resources/views/modals/media-file-fields.phtml:44
 msgid "A file on your computer"
-msgstr ""
+msgstr "Artxibo bat zure ordenagailuan"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:70
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Ongi-etorri mezua eta lotura erabilgarriak erabiltzailearentzat."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:68
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Ongi-etorri mezua webgunearen erabiltzaileentzat."
 
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:66
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Lotura webgunearen kontaktuekin."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Lotura webtrees-eko sarrerako orriarekin."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Zerrenda familiko adar guztiekin."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:93
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr ""
+"Moderatzaile batek gainbegiratu beharreko aldaketen zerrenda eta bere "
+"notifikazioak."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:56
 msgid "A list of families."
-msgstr ""
+msgstr "Famili guztien zerrenda."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:83
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "Ohiko galderen eta bere erantzunen zerrenda."
 
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:99
 msgid "A list of individuals."
-msgstr ""
+msgstr "Gizabanakoen zerrenda."
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:76
 msgid "A list of locations."
-msgstr ""
+msgstr "Lekuen/ubikazioen zerrenda."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:98
 msgid "A list of media objects."
-msgstr ""
+msgstr "Multimedia objektuen zerrenda."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:98
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Eguneratu berriak diren erregistroen zerrenda."
 
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:76
 msgid "A list of repositories."
-msgstr ""
+msgstr "Gordailuen zerrenda."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:73
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Konpartitutako oharren zerrenda."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:75
 msgid "A list of sources."
-msgstr ""
+msgstr "Datuen iturrien zerrenda."
 
 #. I18N: Description of the “Submitters” module
 #: app/Module/SubmitterListModule.php:76
 msgid "A list of submitters."
-msgstr ""
+msgstr "Bidaltzaileen zerrenda."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
 msgid "A list of tasks and activities that are linked to the family tree."
 msgstr ""
+"Zuhaitz genealogiarekin zerikusia duten eginbehar eta aktibitateen zerrenda."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Epera motzera gertatuko diren hebrearren heriotz-urteurrenen zerrenda."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Gaurko urteurrenen zerrenda."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:133
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Hurrengo egunetan gertatuko diren urteurrenen zerrenda."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:59
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Izen gogokoenen zerrenda."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:85
@@ -1179,7 +1191,6 @@ msgstr "Kontuaren onarpena eta helbide elektronikoaren egiaztapena"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54
-#, fuzzy
 msgid "Accra, Ghana"
 msgstr "Accra, Ghana"
 
@@ -1680,7 +1691,6 @@ msgstr "Bilaketa berezia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
-#, fuzzy
 msgid "Afghanistan"
 msgstr "Afghanistan"
 
@@ -1722,7 +1732,7 @@ msgstr "Anai-arreben arteko aldea adinean"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:46
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "Emaztea eta senarraren adinen arteko aldea"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:10
 msgid "Age difference"
@@ -2196,58 +2206,58 @@ msgstr "Asia"
 #: resources/views/fact-association-structure.phtml:103
 #: resources/views/fact-association-structure.phtml:107
 msgid "Associate"
-msgstr ""
+msgstr "Bazkideak"
 
 #: app/Http/RequestHandlers/HelpText.php:263
 msgid "Associate events with this source"
-msgstr ""
+msgstr "Gertaerak iturri honekin lotu"
 
 #: resources/views/modules/personal_facts/tab.phtml:34
 msgid "Associated events"
-msgstr ""
+msgstr "Elkartutako gertaerak"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
 msgid "Asunción, Paraguay"
-msgstr ""
+msgstr "Asunción, Paraguai"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:433
 msgid "At sea"
-msgstr ""
+msgstr "At Ozeanoa"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:62
 msgid "Atlanta, Georgia, United States"
-msgstr ""
+msgstr "Atlanta, Georgia, Estatu Batuak"
 
 #: app/Elements/RelationIsDescriptor.php:94
 msgid "Attendant"
-msgstr ""
+msgstr "Zaindaria"
 
 #: app/Elements/RelationIsDescriptor.php:73
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Zaindaria"
 
 #: app/Elements/RelationIsDescriptor.php:52
 msgctxt "MALE"
 msgid "Attendant"
-msgstr ""
+msgstr "Zaindaria"
 
 #: app/Elements/RelationIsDescriptor.php:95
 msgid "Attending"
-msgstr ""
+msgstr "Zaintzen"
 
 #: app/Elements/RelationIsDescriptor.php:74
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr ""
+msgstr "Zaintzen"
 
 #: app/Elements/RelationIsDescriptor.php:53
 msgctxt "MALE"
 msgid "Attending"
-msgstr ""
+msgstr "Zaintzen"
 
 #. I18N: Type of media object
 #: app/CustomTags/Legacy.php:147 app/Elements/SourceMediaType.php:79
@@ -2257,29 +2267,29 @@ msgstr "Audioa"
 #: app/Date/AbstractGregorianJulianDate.php:238
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Abu"
 
 #: app/Date/AbstractGregorianJulianDate.php:135
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "Abuztuaren"
 
 #: app/Date/AbstractGregorianJulianDate.php:205
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "Abuztua"
 
 #: app/Date/AbstractGregorianJulianDate.php:170
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "Abuztuko"
 
 #: app/Date/AbstractGregorianJulianDate.php:100
 #: app/Module/StatisticsChartModule.php:794
 #: resources/views/edit/initialize-calendar-popup.phtml:20
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "Abuztua"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:68
@@ -2289,12 +2299,12 @@ msgstr "Australia"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:70
 msgid "Austria"
-msgstr ""
+msgstr "Austria"
 
 #: app/Gedcom.php:827 resources/views/lists/sources-table.phtml:102
 #: resources/views/modals/source-fields.phtml:32
 msgid "Author"
-msgstr ""
+msgstr "Egilea"
 
 #: app/CustomTags/PhpGedView.php:61 app/CustomTags/PhpGedView.php:67
 #: app/CustomTags/PhpGedView.php:72 app/CustomTags/PhpGedView.php:73
@@ -2302,13 +2312,13 @@ msgstr ""
 #: app/Gedcom.php:898 app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:928
 #: app/Gedcom.php:930 app/Gedcom.php:932 app/Gedcom.php:934 app/Gedcom.php:936
 msgid "Author of last change"
-msgstr ""
+msgstr "Azkeneko aldaketaren egilea"
 
 #. I18N: Automatic suggestions when you type
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:650
 msgid "Autocomplete"
-msgstr ""
+msgstr "Bere gisera bete"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
@@ -2317,12 +2327,12 @@ msgstr "Automatikoki onartzen ditu erabiltzaile honek egindako aldaketak"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:527
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "Oharrak automatikoki zabaldu"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:541
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "Iturriak automatikoki zabaldu"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
@@ -2373,11 +2383,11 @@ msgstr "Ezkontzeko batez besteko adina mendean"
 
 #: app/Statistics/Google/ChartAge.php:132
 msgid "Average age related to death century"
-msgstr ""
+msgstr "Batezbesteko adina heriotzaren mendearen arabera"
 
 #: app/Statistics/Google/ChartChildren.php:88
 msgid "Average number"
-msgstr ""
+msgstr "Batezbesteko zenbakia"
 
 #: app/Statistics/Google/ChartChildren.php:99
 #: resources/views/modules/gedcom_stats/config.phtml:62
@@ -2385,13 +2395,15 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:99
 #: resources/views/modules/statistics-chart/children.phtml:17
 msgid "Average number of children per family"
-msgstr ""
+msgstr "Familiko seme-alaba kopuruaren batezbestekoa"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: resources/views/admin/trees-create.phtml:48
 #: resources/views/admin/trees-preferences.phtml:86
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr ""
+"Ahal bada ez utzi tarte eta puntuaziorik utzi. Familiaren izena paratzea "
+"aukera ona izaten ahal da."
 
 #: app/Date/JalaliDate.php:281
 #, fuzzy
@@ -2436,7 +2448,7 @@ msgstr "Azerbaijan"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:74
 msgid "Azores"
-msgstr ""
+msgstr "Azoreak"
 
 #: app/Date/JalaliDate.php:283
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -2446,7 +2458,7 @@ msgstr "Bo!"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:91
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamak"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
@@ -17340,7 +17352,7 @@ msgstr "Gizonezkorik gazteena"
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:28
 msgid "Youngest mother"
-msgstr ""
+msgstr "Amarik gazteena"
 
 #: resources/views/modules/clippings/show.phtml:26
 msgid "Your clippings cart is empty."
@@ -19409,7 +19421,7 @@ msgstr "2. birrramona-birraitona"
 
 #: app/Services/RelationshipService.php:1974
 msgid "great-great-grandson"
-msgstr "bigarren birbiloba"
+msgstr "hirugarren biloba"
 
 #: app/Services/RelationshipService.php:1348
 msgid "great-great-great-aunt"
@@ -19441,497 +19453,497 @@ msgstr "3. birramona-birraitona"
 
 #: app/Services/RelationshipService.php:1985
 msgid "great-great-great-grandson"
-msgstr "3. birbiloba"
+msgstr "4. birbiloba"
 
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "anaiaren hirugarren biloba"
 
 #: app/Services/RelationshipService.php:1565
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "arrebaren hirugarren biloba"
 
 #: app/Services/RelationshipService.php:1568
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "hirugarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1584
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "hirugarren biloba ttikia"
 
 #: app/Services/RelationshipService.php:1588
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "hirugarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1591
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "hirugarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1573
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "hirugarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1577
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "hirugarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1580
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "hirugarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "hirugarren osaba zaharra"
 
 #: app/Services/RelationshipService.php:1341
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "hirugarren osaba zaharra"
 
 #: app/Services/RelationshipService.php:1344
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "hirugarren osaba zaharra"
 
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1530
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1533
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1549
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1553
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1556
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1538
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1542
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1545
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "bigarren iloba ttikia"
 
 #: app/Services/RelationshipService.php:1318
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "bigarren osaba zaharra"
 
 #: app/Services/RelationshipService.php:1322
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "bigarren osaba zaharra"
 
 #: app/Services/RelationshipService.php:1325
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "bigarren osaba zaharra"
 
 #: app/Services/RelationshipService.php:674
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:694
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:712
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:994
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1014
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1038
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:677
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:697
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:715
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:997
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1017
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1041
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:963
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:971
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:977
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:662
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:680
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:700
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:982
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1000
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1026
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:665
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:683
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:703
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:985
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1003
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1029
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:959
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:965
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:973
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:668
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:686
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:706
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:988
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1006
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1032
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:671
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:689
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:709
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:991
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1009
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:1035
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:961
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:967
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:975
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "iloba ttikia"
 
 #: app/Services/RelationshipService.php:783
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1101
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:795
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1107
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:807
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1113
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:863
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1119
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:881
 msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1125
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:893
 msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1131
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:915
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1137
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:927
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1143
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:939
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #: app/Services/RelationshipService.php:1149
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "osaba zaharra"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:517
 msgid "half circle"
-msgstr ""
+msgstr "borobil erdia"
 
 #: app/Services/RelationshipService.php:541
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "anaia/nebaordea"
 
 #: app/Services/RelationshipService.php:579
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "anaia/nebaordea"
 
 #: app/Services/RelationshipService.php:597
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr ""
+msgstr "anaia/nebaordea"
 
 #: app/Services/RelationshipService.php:527
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "anaia/neba/arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:563
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "anaia/neba/arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:583
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "anaia/neba/arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:529
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:565
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "ahizpaorde/arrebaordea"
 
 #: app/Services/RelationshipService.php:585
 msgctxt "parent’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "ahizpaorde/arrebaordea"
 
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php:244
 msgid "herself"
-msgstr ""
+msgstr "bera"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/tags.phtml:70 resources/views/admin/tags.phtml:84
@@ -19977,74 +19989,74 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "hide"
-msgstr ""
+msgstr "gorde"
 
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php:241
 msgid "himself"
-msgstr ""
+msgstr "bera"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "etxea"
 
 #: app/Elements/RoleInEvent.php:79 app/Services/RelationshipService.php:367
 msgid "husband"
-msgstr ""
+msgstr "senarra"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:81
 msgid "immigration name"
-msgstr ""
+msgstr "inmigrazio izena"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:166
 msgid "import file"
-msgstr ""
+msgstr "artxiboa garraiatu"
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
-msgstr ""
+msgstr "haurra"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
-msgstr ""
+msgstr "oharra linean"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:197
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "%s interpretatuak (%s)"
 
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:54
 msgid "invert selection"
-msgstr ""
+msgstr "aukeraketa inbertitu"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:173
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "egun osagarriak"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:267
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "egun osagarriak"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:220
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "egun osagarriak"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "egun osagarriak"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:560
@@ -20052,17 +20064,17 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/modules/media-list/pagination.phtml:55
 msgid "last"
-msgstr ""
+msgstr "azkena"
 
 #: resources/views/admin/trees-preferences.phtml:569
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "azkena"
 
 #: app/Module/PedigreeChartModule.php:364
 #: app/Module/PedigreeChartModule.php:372
 msgid "left"
-msgstr ""
+msgstr "ezkerra"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -20072,61 +20084,61 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:316
 #: app/Module/YahrzeitModule.php:260
 msgid "list"
-msgstr ""
+msgstr "zerrenda"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "eguneratutako ubikazioak: %s, gehitutako ubikazioak: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:83
 msgid "maiden name"
-msgstr ""
+msgstr "ezkongabetako izena"
 
 #: resources/views/admin/trees-privacy.phtml:127
 msgid "managers"
-msgstr ""
+msgstr "begiraleak"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:108
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: resources/xml/reports/descendancy_report.xml:245
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "ezkondua"
 
 #: resources/xml/reports/descendancy_report.xml:176
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "ezkondua"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:85
 msgid "married name"
-msgstr ""
+msgstr "ezkongabetako izena"
 
 #: app/Services/RelationshipService.php:567
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "atautxi amaren aldetik"
 
 #: app/Services/RelationshipService.php:571
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "amautxi amaren aldetik"
 
 #: app/Services/RelationshipService.php:573
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "atautxi-amautxia amaren aldetik"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition/MatrilinealSurnameTradition.php:39
 msgid "matrilineal"
-msgstr ""
+msgstr "ama-lerrokoa"
 
 #: resources/views/modules/recent_changes/config.phtml:27
 #: resources/views/modules/upcoming_events/config.phtml:27
@@ -20134,8 +20146,8 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "egun bat gehienez"
+msgstr[1] "%s egun gehienez"
 
 #: resources/views/admin/trees-privacy.phtml:37
 #: resources/views/admin/trees-privacy.phtml:56
@@ -20143,141 +20155,141 @@ msgstr[1] ""
 #: resources/views/admin/trees-privacy.phtml:126
 #: resources/views/admin/trees-privacy.phtml:146
 msgid "members"
-msgstr ""
+msgstr "kideak"
 
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr ""
+msgstr "soila"
 
 #: app/Elements/RoleInEvent.php:81 app/Services/RelationshipService.php:349
 msgid "mother"
-msgstr ""
+msgstr "ama"
 
 #: app/Services/RelationshipService.php:553
 msgctxt "husband’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "amaginarreba"
 
 #: app/Services/RelationshipService.php:633
 msgctxt "spouse’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "amaginarreba"
 
 #: app/Services/RelationshipService.php:651
 msgctxt "wife’s mother"
 msgid "mother-in-law"
-msgstr ""
+msgstr "amaginarreba"
 
 #: app/Services/RelationshipService.php:639
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr ""
+msgstr "amaginarreba/aitaginarreba"
 
 #: app/Services/RelationshipService.php:501
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:853
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:849
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:851
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:605
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:615
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1093
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1089
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1091
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:691
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:969
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1011
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:497
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:841
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:837
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:839
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:601
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:609
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1081
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1077
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1079
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "iloba"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -20294,82 +20306,82 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:121
 #: resources/views/setup/step-5-administrator.phtml:106
 msgid "next"
-msgstr ""
+msgstr "hurrengoa"
 
 #: app/Services/RelationshipService.php:499
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:847
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:843
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:845
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:603
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:611
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1087
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1083
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1085
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:717
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:979
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:1043
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "iloba"
 
 #: app/Services/RelationshipService.php:2340
 msgid "ninth cousin"
-msgstr ""
+msgstr "9. lehengusu/lehengusina"
 
 #: app/Services/RelationshipService.php:2304
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "9. lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2260
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "9. lehengusua"
 
 #: app/Elements/OrdinanceProcessFlag.php:55
 #: app/Http/RequestHandlers/UserListData.php:140
@@ -20406,14 +20418,14 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:190
 #: resources/xml/reports/individual_report.xml:178
 msgid "no"
-msgstr ""
+msgstr "ez"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:112
 #: app/Module/RelationshipsChartModule.php:477
 #: app/Services/EmailService.php:207
 #: resources/views/modules/statistics-chart/custom.phtml:83
 msgid "none"
-msgstr ""
+msgstr "bakarrik ere"
 
 #: app/SurnameTradition/DefaultSurnameTradition.php:57
 msgctxt "Surname tradition"
@@ -20451,17 +20463,17 @@ msgstr "bikotea"
 #: app/Services/RelationshipService.php:400
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "bikotea"
+msgstr "bikotekidea"
 
 #: app/Services/RelationshipService.php:376
 msgctxt "MALE"
 msgid "partner"
-msgstr "bikotea"
+msgstr "bikoteakidea"
 
 #: app/SurnameTradition/PaternalSurnameTradition.php:38
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "Patronimikoa"
+msgstr "patronimikoa"
 
 #: app/Services/RelationshipService.php:531
 msgctxt "father’s father"
@@ -20481,7 +20493,7 @@ msgstr "atautxi-amautxiak (aitaren aldetik)"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition/PatrilinealSurnameTradition.php:39
 msgid "patrilineal"
-msgstr "aita lerrokoa"
+msgstr "aita-lerrokoa"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:119
@@ -20683,7 +20695,7 @@ msgstr "lehengusina ttikia"
 #: app/Services/RelationshipService.php:2239
 msgctxt "MALE"
 msgid "second cousin"
-msgstr "lehengusina/lehengusu ttikia"
+msgstr "lehengusu ttikia"
 
 #: app/Services/RelationshipService.php:1210
 msgctxt "grandfather’s brother’s grandchild"
@@ -20888,7 +20900,7 @@ msgstr "erakutsi"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:277
 msgid "show changes made in webtrees"
-msgstr "Webtrees-en egindako aldaketak erakutsi"
+msgstr "webtrees-en egindako aldaketak erakutsi"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:279
@@ -20907,7 +20919,7 @@ msgstr "gehiago erakutsi"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
-msgstr "grafikoa erakusti"
+msgstr "grafikoa erakutsi"
 
 #: app/Services/RelationshipService.php:493
 msgid "sibling"
@@ -21014,7 +21026,7 @@ msgstr "guraskidea"
 #: app/Services/RelationshipService.php:765
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "guraskideak"
+msgstr "guraskidea"
 
 #: app/Services/RelationshipService.php:513
 msgctxt "child’s spouse"
@@ -21055,12 +21067,12 @@ msgstr "ezkontzaren dataz sailkatu"
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:279 app/Module/RecentChangesModule.php:272
 msgid "sort by date, newest first"
-msgstr "dataz sailkatu, hurbilenekotik hasita"
+msgstr "dataz sailkatu, hurbilkoenetik hasita"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:277 app/Module/RecentChangesModule.php:270
 msgid "sort by date, oldest first"
-msgstr "dataz sailkatu, urrunenetik hasita"
+msgstr "dataz sailkatu, urrunekoenetik hasita"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:275 app/Module/RecentChangesModule.php:268
@@ -21080,7 +21092,7 @@ msgstr "Izenez sailkatu"
 
 #: app/Elements/RoleInEvent.php:83 app/Services/RelationshipService.php:414
 msgid "spouse"
-msgstr "Ezkontidea"
+msgstr "ezkontidea"
 
 #: app/Services/RelationshipService.php:831
 msgctxt "father’s wife’s son"
@@ -21100,17 +21112,17 @@ msgstr "anaiordea"
 #: app/Services/RelationshipService.php:547
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr "seme-alabaorde"
+msgstr "seme-alabaordea"
 
 #: app/Services/RelationshipService.php:627
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr "seme-alabaorde"
+msgstr "seme-alabaordea"
 
 #: app/Services/RelationshipService.php:645
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr "semeordea"
+msgstr "seme-alabaordea"
 
 #: app/Services/RelationshipService.php:549
 msgctxt "husband’s daughter"
@@ -21206,7 +21218,7 @@ msgstr "taula"
 #: app/Http/RequestHandlers/TreePreferencesPage.php:94
 #: app/Module/TopSurnamesModule.php:279
 msgid "tag cloud"
-msgstr "etiketa lainoa"
+msgstr "etiketa-lainoa"
 
 #: app/Services/RelationshipService.php:2342
 msgid "tenth cousin"
@@ -21227,20 +21239,20 @@ msgstr "10. lehengusua"
 #: resources/views/errors/database-connection.phtml:26
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
-"“/data/config.ini.php” artxiboan dauden datu-basearen konexioaren "
+"“/data/config.ini.php” artxiboan dagoen datu-basearen konexioaren "
 "parametroak zuzenak dira"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:29
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
-"“/data” direktorian eta “/data/config.ini.php” artxiboaren sarrera-baimenek "
-"uzten diote web zerbitzariari dauzkaten datuen irakurketa"
+"“/data” direktorioan eta “/data/config.ini.php” artxiboaren sarrera-baimenek "
+"datuen irakurketa uzten diote web zerbitzariari"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php:247
 msgid "themself"
-msgstr "Eurek"
+msgstr "eurek"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2427
@@ -21382,7 +21394,7 @@ msgstr "iturri ez fidagarria"
 #: app/Module/PedigreeChartModule.php:374
 #: resources/views/edit/reorder-card-header.phtml:28
 msgid "up"
-msgstr "goian"
+msgstr "goiti"
 
 #: resources/views/admin/trees-unconnected.phtml:33
 msgid "update"
@@ -21455,7 +21467,7 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
-"webtrees-ek korreo elektronikoak bidali beharrak ditu, pasahitzaren "
+"webtrees-ek korreo elektronikoak bidaltzeko beharra du, pasahitzaren "
 "oroigarriak eta webgunearen jakinarazpenak, errate baterako."
 
 #: app/Services/MessageService.php:233
@@ -21570,11 +21582,14 @@ msgstr "“%s” ezabatu da."
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"“Irudi aukeratua” (_PRIM) etiketak aplikazio genealogiko batzuek erabiltzen "
+"dituzte, gizabanako batentzako irudi gogokoena adierazteko. Aukeretako bat "
+"irudiak berriro ordenatzea da, gustukoena lehenengoa izan dadin zerrendan."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:363
 #: app/Family.php:381 app/Individual.php:1051
@@ -21582,7 +21597,7 @@ msgstr ""
 #: app/Module/IndividualListModule.php:504
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:363
 #: app/Family.php:381 app/Individual.php:1050
@@ -21595,4 +21610,4 @@ msgstr ""
 #: resources/views/lists/surnames-table.phtml:66
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
