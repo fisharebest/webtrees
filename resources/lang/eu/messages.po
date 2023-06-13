@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-12 15:04+0000\n"
+"PO-Revision-Date: 2023-06-15 10:51+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " Baina xehetasunak ez dira ezagutzen"
+msgstr " baina xehetasunak ez dira ezagutzen"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -261,7 +261,7 @@ msgstr[1] "%s famili zuhaitzak"
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s biloba"
-msgstr[1] "%s bilobak"
+msgstr[1] "%s biloba"
 
 #: app/Module/LifespansChartModule.php:266
 #: resources/views/admin/trees-unconnected.phtml:42
@@ -295,8 +295,8 @@ msgstr[1] "%s mezuak"
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "%s hilabetea"
-msgstr[1] "%s hilabeteak"
+msgstr[0] "hilabete %s"
+msgstr[1] "%s hilabete"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:87
 #, php-format
@@ -341,8 +341,8 @@ msgstr "%sk mezu hau bidali dizu."
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] "%s erabiltzaile izena"
-msgstr[1] "%s erabiltzaile izenak"
+msgstr[0] "erabiltzaile %s"
+msgstr[1] "%s erabiltzaile"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:83
 #, php-format
@@ -398,7 +398,7 @@ msgstr[1] "%s urte"
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
-msgstr "%sren urteurrena"
+msgstr "%s. urteurrena"
 
 #: app/Services/RelationshipService.php:2354
 #, php-format
@@ -480,7 +480,7 @@ msgstr "%s, bere ezkontideak eta ondorengoak"
 #: resources/views/edit/add-fact-row.phtml:30
 #: resources/views/modules/user-messages/user-messages.phtml:35
 msgid "&lt;select&gt;"
-msgstr "&lt;hautatzen du&gt;"
+msgstr "&lt;aukeratu&gt;"
 
 #: resources/views/fact-date.phtml:121
 #, php-format
@@ -866,10 +866,10 @@ msgid "A media object is a record in the family tree which contains information 
 msgstr ""
 "Multimedia-objektu bat fitxategi multimedia bati buruzko informazioa duen "
 "zuhaitz genealogikoko erregistro bat da. Informazio horrek izenburu bat, "
-"egile-eskubideen ohar bat, transkripzio bat, pribatutasun-murrizketak eta "
-"abar izan ditzake. Multimedia-fitxategia, hala nola argazkia edo bideoa, "
-"lokalki (web zerbitzari honetan) edo urrunetik (beste web zerbitzari batean) "
-"gorde daiteke."
+"egile-eskubideen ohar bat, transkripzio bat, pribatutasun-murrizketak, "
+"etabar... izaten ahal ditu. Multimedia-fitxategia, hala nola argazkia edo "
+"bideoa, lokalki (web zerbitzari honetan) edo urrunetik (beste web zerbitzari "
+"batean) gordetzen ahal da."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -2361,7 +2361,7 @@ msgstr "Av"
 #: app/Statistics/Google/ChartAge.php:115
 #: app/Statistics/Google/ChartMarriageAge.php:138
 msgid "Average age"
-msgstr "Batez besteko adina"
+msgstr "Batezbesteko adina"
 
 #: app/Module/StatisticsChartModule.php:516
 #: app/Statistics/Google/ChartAge.php:135
@@ -3551,7 +3551,7 @@ msgstr "Akatsak bilatu"
 
 #: app/Module/CheckForNewVersion.php:66
 msgid "Check for new version"
-msgstr "Bertsio berria ote dagoen begiratu"
+msgstr "Bertsio berririk ote dagoen begiratu"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Check for pending changes…"
@@ -6239,7 +6239,7 @@ msgstr "Familiko liburua"
 #: app/Module/FamilyBookChartModule.php:126
 #, php-format
 msgid "Family book of %s"
-msgstr "%s-ren genealogi-liburua"
+msgstr "%s(r)en genealogia liburua"
 
 #: app/Gedcom.php:445
 msgid "Family census"
@@ -6270,7 +6270,7 @@ msgstr "Familiaren berriak eta orrien iragarkiak."
 #: resources/views/modules/family-book-chart/chart.phtml:23
 #, php-format
 msgid "Family of %s"
-msgstr "%s-ren familia"
+msgstr "%sren familia"
 
 #: app/CustomTags/Gedcom7.php:179 app/Gedcom.php:475
 msgid "Family residence"
@@ -6294,7 +6294,7 @@ msgstr "Familiaren egoera"
 #: resources/views/modules/faq/edit.phtml:74
 #: resources/views/modules/stories/config.phtml:27
 msgid "Family tree"
-msgstr "Familiaren zuhaitz genealogikoa"
+msgstr "Zuhaitz genealogikoa"
 
 #: app/Module/ClippingsCartModule.php:242
 #: app/Module/ClippingsCartModule.php:400
@@ -6318,7 +6318,7 @@ msgstr "Familiko zuhaitzak"
 #: app/Individual.php:923
 #, php-format
 msgid "Family with %s"
-msgstr "%s-rekin familia"
+msgstr "%s(r)ekin familia"
 
 #: app/Individual.php:853
 msgid "Family with adoptive parents"
@@ -6378,7 +6378,7 @@ msgstr "Abaniko-grafikoa"
 #: app/Module/FanChartModule.php:185
 #, php-format
 msgid "Fan chart of %s"
-msgstr "%s-ren abaniko-grafikoa"
+msgstr "%sren abaniko-grafikoa"
 
 #: app/Date/JalaliDate.php:273
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -6565,8 +6565,8 @@ msgstr ""
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
 msgstr ""
-"%s-ekin markatutako artxiboak nahitaezkoak funtzionamendurako eta ezin dira "
-"kendu."
+"%s-ekin markatutako artxiboak derrigorrezkoak dira funtzionamendurako eta "
+"ezin dira kendu."
 
 #: resources/views/calendar-page.phtml:122
 #: resources/views/lists/datatables-attributes.phtml:34
@@ -6604,7 +6604,7 @@ msgstr "Bertze harremanak bilatu"
 #: app/Module/RelationshipsChartModule.php:465
 #: resources/views/modules/relationships-chart/page.phtml:55
 msgid "Find relationships via ancestors"
-msgstr "Bilatu harremanak arbasoetan"
+msgstr "Harremanak arbasoetan bilatu"
 
 #: app/Module/RelationshipsChartModule.php:742
 #: resources/views/modules/relationships-chart/page.phtml:67
@@ -6758,19 +6758,19 @@ msgstr "Informazio gehiagorako, begiratu %s."
 #: app/Module/ContactsFooterModule.php:160
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "Laguntza teknikoa behar baduzu %s-eki kontaktatu."
+msgstr "Laguntza teknikoa behar baduzu %srekin kontaktatu."
 
 #: app/Module/ContactsFooterModule.php:134
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Laguntza teknikoa edo genealogikoa behar baduzu %s-ekin kontaktatu."
+msgstr "Laguntza teknikoa edo genealogikoa behar baduzu %srekin kontaktatu."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:104
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr ""
-"Zuhaitz genealogiko bat baino gehiago dituen orrietan, aukera honek "
-"zuhaitzen zerrenda erakutsiko dizu menu nagusian, bilaketa orriak, etabar."
+"Zuhaitz genealogiko bat baino gehiago dauzkaten orriek, aukera honekin "
+"zuhaitzen zerrenda erakutsiko dute menu nagusian, bilaketa orrietan, etabar."
 
 #: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:42
@@ -7247,11 +7247,11 @@ msgstr "Graduazioa"
 
 #: resources/views/modules/statistics-chart/greatest-age.phtml:10
 msgid "Greatest age at death"
-msgstr "Heldua hiltzerakoan"
+msgstr "Adina hiltzerakoan"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:26
 msgid "Greatest age between siblings"
-msgstr "Anai-arreben arteko adin handiena"
+msgstr "Anai-arreben arteko adin tarterik handiena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:223
@@ -7636,7 +7636,7 @@ msgstr "Harea-erloju grafikoa"
 #: app/Module/HourglassChartModule.php:125
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "%s-ren harea-erloju grafikoa"
+msgstr "%sren harezko erloju grafikoa"
 
 #: resources/views/modules/census-assistant.phtml:112
 msgid "Household"
@@ -7720,7 +7720,7 @@ msgid "If a visitor to the website has not selected a preferred language in thei
 msgstr ""
 "Orriaren bisitari batek ez badu nabigatzailean lehenetsitako hizkuntza "
 "aukeratu, edo zerrendan ez dagoen bat aukeratu baldin badu, hizkuntza hau "
-"erabiliko da. Hau da bilatzaileen erabiltzen den hizkuntza."
+"erabiliko da. Hau da bilatzaileetan erabiltzen den hizkuntza."
 
 #: resources/views/admin/users-edit.phtml:112
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7856,16 +7856,16 @@ msgstr ""
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
-"Beste karpeta bat hautatzen baduzu, karpetatik karpeta berrira mugitu behar "
-"dituzu fitxategi guztiak (config.index.php, index.php eta .htaccess izan "
-"ezik)."
+"Bertze karpeta bat aukeratzen baduzu, karpeta berrira mugitu behar dituzu "
+"fitxategi guztiak (\"config.index.php\", \"index.php\" eta \".htaccess\"a "
+"izan ezik)."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:253
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
 msgstr ""
-"Beste karpeta bat hautatzen baduzu, karpetako edozein multimedia-fitxategi "
-"karpeta berrira mugitu behar duzu."
+"Bertze karpeta bat aukeratzen baduzu, oraingo karpetan daukazun edozein "
+"multimedia-fitxategi aukeratutakora mugitu behar duzu."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:94
@@ -8272,7 +8272,7 @@ msgstr ""
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
 "Ez da gomendatzen GEDCOM etiketa pertsonalizatuak erabiltzea. Datu horiek "
-"galdu egin daitezke beste aplikazio batzuetara transferitzen direnean."
+"galdu egiten ahal dira bertze aplikazio batzuetara transferitzen direnean."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
@@ -9244,7 +9244,7 @@ msgstr "Maparen loturak"
 #: app/Services/LeafletJsService.php:69
 #: resources/views/admin/control-panel.phtml:671
 msgid "Map providers"
-msgstr "Mapa hornitzailea"
+msgstr "Mapa hornitzaileak"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:96
@@ -10057,19 +10057,21 @@ msgstr "Korreo-zerbitzari anitzek baliozko domeinu baten izena eskatzen dute."
 
 #: resources/views/admin/site-mail.phtml:82
 msgid "Most mail servers require a valid email address."
-msgstr "Korreo-zerbitzari anitzek baiozko helbide elektroniko eskatzen dute."
+msgstr ""
+"Korreo-zerbitzari anitzek indarrean dauden helbide elektronikoak eskatzen "
+"dituzte."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:183
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
-"Korreo-zerbitzari anitzek zerbitzari-bidaltzailearen identifikazio zuzena "
+"Korreo-zerbitzu anitzek zerbitzari-bidaltzailearen identifikazio egokia "
 "eskatzen dute, domeinu zuzena erabiliz."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:169
 msgid "Most servers do not use secure connections."
-msgstr "Zerbitzari gehienek ez dituzte konexio seguruak erbiltzen."
+msgstr "Zerbitzari gehienek ez dituzte konexio seguruak erabiltzen."
 
 #: resources/views/setup/step-4-database-mysql.phtml:56
 #: resources/views/setup/step-4-database-pgsql.phtml:54
@@ -10582,7 +10584,7 @@ msgstr "Ez da artikulurik bidali \"Berriak\" sailera."
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:47
 msgid "No predefined text"
-msgstr "Ez dago aurretik aukeratutako testurik"
+msgstr "Ez dago aitzinetik aukeratutako testurik"
 
 #: resources/views/lists/datatables-attributes.phtml:24
 #: resources/views/lists/datatables-attributes.phtml:35
@@ -10703,7 +10705,7 @@ msgstr "Erregistratu gabea"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Not verified by the user"
-msgstr "Erabiltzaileak egiaztatu gabeak"
+msgstr "Egiaztatu gabeko erabiltzaileak"
 
 #: app/CustomTags/Ancestry.php:62 app/CustomTags/Ancestry.php:65
 #: app/CustomTags/GedcomL.php:140 app/CustomTags/GedcomL.php:196
@@ -10974,7 +10976,7 @@ msgstr "Artxibo zaharrak aurkitu dira"
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:39
 msgid "Oldest father"
-msgstr "Aitarik zaharrena"
+msgstr "Aitarik adinduena"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:50
 msgid "Oldest female"
@@ -10982,7 +10984,7 @@ msgstr "Emekumerik adindunena"
 
 #: resources/views/modules/statistics-chart/oldest-living.phtml:10
 msgid "Oldest living individuals"
-msgstr "Gehien bizi diren pertsonak"
+msgstr "Gehien bizi izan diren pertsonak"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:39
 msgid "Oldest male"
@@ -11005,11 +11007,11 @@ msgstr "Oman"
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:102
 msgid "On this day"
-msgstr "Gaurko egunarekin"
+msgstr "Gaurko urteurrenak"
 
 #: app/Http/RequestHandlers/CalendarPage.php:115
 msgid "On this day…"
-msgstr "Gaurko egunarekin…"
+msgstr "Gaurko egunez…"
 
 #: resources/views/admin/map-import-form.phtml:63
 msgid "Only add new records"
@@ -11289,7 +11291,7 @@ msgstr "Pasahitza"
 msgid "Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”."
 msgstr ""
 "Pasahitzak 8 karaktere baino gehiago izan behar ditu eta maiuskula eta "
-"minuskulak bereziten dira. Beraz, ez da gauza bera \"Izena\" edo \"izena\"."
+"minuskulak bereizten dira. Beraz, ez da gauza bera \"Izena\" edo \"izena\"."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:158
@@ -12986,7 +12988,7 @@ msgstr "Bidaltzailearen izena"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:67
 #: resources/views/admin/control-panel.phtml:246
 msgid "Sending email"
-msgstr "Mezu bidaltzen"
+msgstr "Mezu bidalketa"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:177
@@ -13835,7 +13837,7 @@ msgstr "Snowflake, Arizona, Estatu Batuak"
 
 #: app/Gedcom.php:755
 msgid "Social security number"
-msgstr "Gizarte Segurantzaren zenbakia"
+msgstr "Gizarte Segurantzako zenbakia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
@@ -14248,7 +14250,7 @@ msgstr "Igandea"
 #: resources/views/admin/control-panel.phtml:183
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr "%s(e)an aurkitzen ahal da laguntza eta dokumentazioa."
+msgstr "%s-en aurkitzen ahal da laguntza eta dokumentazioa."
 
 #: app/Services/ServerCheckService.php:327
 msgid "Support for PostgreSQL is experimental."
@@ -15254,7 +15256,7 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml:97
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
-"Email helbide hau erabiliko da pasahitzen, notifikazioen eta bertze "
+"Email helbide hau erabiliko da pasahitzen, notifikazioen eta "
 "erregistratutako bertze erabiltzaileen oroigarrriak bidaltzeko."
 
 #: app/Elements/AbstractEventElement.php:67
@@ -15332,8 +15334,8 @@ msgstr "Artxibo honen izena ez da GEDZIP formatoarekin bateragarria."
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr ""
 "Artxibo hau erabiliko du webtrees-ek multimedia artxiboak, GEDCOM artxiboak "
-"eta behin behineko artxiboak gordetzeko, Artxibo hauetan datu pribatuak izan "
-"daitezke eta ezin dira interneten eskuratzeko moduan paratu."
+"eta behin behineko artxiboak gordetzeko. Artxibo hauetan datu pribatuak "
+"izaten ahal dira eta ezin dira interneten eskuratzeko moduan paratu."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:252
@@ -15523,7 +15525,7 @@ msgstr ""
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
 "Izen hau erabiltzen da \"Nork\" eremuan, zerbitzari honen mezu elektroniko "
-"automatikoak bidaltzerakon."
+"automatikoak bidaltzerakoan."
 
 #: app/Auth.php:380 app/Auth.php:409
 #: app/Http/RequestHandlers/RedirectNotePhp.php:69
@@ -15961,7 +15963,7 @@ msgstr ""
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
-"Etiketa pertsonalizatuak erabiliz datu berriak sortzeko, gaitu beharko "
+"Datu berriak sortzeko etiketa pertsonalizatuak erabiliz, gaitu egin beharko "
 "dituzu aitzinetik."
 
 #: resources/views/modules/todo/config.phtml:17
@@ -16004,7 +16006,7 @@ msgstr "Pasahitza berria sortzeko, jarrai ezazu ondoko lotura."
 #: resources/views/admin/site-registration.phtml:43
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
-"Testu hau bertze hizkuntzetara egokitu nahi baduzu, aldatu lehenbiziko "
+"Testu hau bertze hizkuntzetara egokitu nahi baduzu, lehenbiziko aldatu "
 "hizkuntz horretara eta ondotik orri hau bera bisitatu."
 
 #: resources/views/modules/sitemap/config.phtml:51
@@ -16079,7 +16081,7 @@ msgstr "Izenik erabiliena"
 #: app/Module/TopGivenNamesModule.php:48
 #: resources/views/modules/statistics-chart/names.phtml:45
 msgid "Top given names"
-msgstr "Abizenik erabilienak"
+msgstr "Izenik erabilienak"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:191
@@ -16154,7 +16156,7 @@ msgstr "Familiak guztira"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:30
 msgid "Total females"
-msgstr "Emakumeak guztira"
+msgstr "Emakumezkoak guztira"
 
 #: resources/views/modules/statistics-chart/names.phtml:38
 msgid "Total given names"
@@ -16181,7 +16183,7 @@ msgstr "Bizirik guztira"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:21
 msgid "Total males"
-msgstr "Gizonak guztira"
+msgstr "Gizonezkoak guztira"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:19
 msgid "Total marriages"
@@ -16831,7 +16833,7 @@ msgstr "Egun hau ikusi"
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
 msgid "View this family"
-msgstr "Familia ikusi nahi?"
+msgstr "bere familia ikusi nahi?"
 
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
@@ -17213,7 +17215,7 @@ msgstr ""
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
 msgstr ""
-"Edizio formularioak errazten ahal dituzu erabitzen ez dituzun GEDCOM "
+"Edizio formularioak errazten ahal dituzu erabiltzen ez dituzun GEDCOM "
 "etiketak ezkutatuz."
 
 #. I18N: Description of a “Data fix” module
@@ -17910,7 +17912,7 @@ msgstr "zortzigarren lehengusua"
 
 #: app/Services/RelationshipService.php:446
 msgid "elder brother"
-msgstr "anaia zaharragoa"
+msgstr "anaia/neba zaharragoa"
 
 #: app/Services/RelationshipService.php:488
 msgid "elder sibling"
@@ -18355,7 +18357,7 @@ msgstr "%stik hasita %s(e)ra"
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:521
 msgid "full circle"
-msgstr "Zirkulu osoa"
+msgstr "Borobil osoa"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "gender"
@@ -21467,8 +21469,9 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
-"webtrees-ek korreo elektronikoak bidaltzeko beharra du, pasahitzaren "
-"oroigarriak eta webgunearen jakinarazpenak, errate baterako."
+"webtrees-ek korreo elektronikoak bidaltzeko beharra du, pasahitzen "
+"oroigarriak eta webgunearen jakinarazpenak erabiltzaileei helarazteko, "
+"errate baterako."
 
 #: app/Services/MessageService.php:233
 msgid "webtrees sends emails with no storage"
@@ -21535,7 +21538,7 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:442
 msgid "younger brother"
-msgstr "anaia/neba gazteena"
+msgstr "anaia/neba gazteagoa"
 
 #: app/Services/RelationshipService.php:484
 msgid "younger sibling"
@@ -21543,7 +21546,7 @@ msgstr "anai-arreba gazteena"
 
 #: app/Services/RelationshipService.php:463
 msgid "younger sister"
-msgstr "arreba/ahizpa gazteena"
+msgstr "arreba/ahizpa gazteagoa"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:237
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:238
