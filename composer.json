@@ -43,7 +43,7 @@
         "ext-session": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
-        "aura/router": "3.2.0",
+        "aura/router": "3.3.0",
         "doctrine/dbal": "3.6.3",
         "ezyang/htmlpurifier": "4.16.0",
         "fig/http-message-util": "1.1.5",
@@ -84,10 +84,10 @@
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.5.7",
+        "composer/composer": "2.5.8",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.5.3",
-        "phpunit/phpunit": "9.6.8"
+        "phpunit/phpunit": "9.6.9"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
