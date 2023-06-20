@@ -44,7 +44,7 @@
         "ext-session": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
-        "aura/router": "3.2.0",
+        "aura/router": "3.3.0",
         "doctrine/dbal": "3.6.3",
         "ezyang/htmlpurifier": "4.16.0",
         "fig/http-message-util": "1.1.5",
@@ -52,8 +52,8 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.7.0",
-        "illuminate/database": "10.13.2",
-        "illuminate/support": "10.13.2",
+        "illuminate/database": "10.13.5",
+        "illuminate/support": "10.13.5",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.10",
         "league/commonmark": "2.4.0",
@@ -83,10 +83,10 @@
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.5.7",
+        "composer/composer": "2.5.8",
         "league/flysystem-memory": "3.15.0",
         "php-coveralls/php-coveralls": "2.5.3",
-        "phpunit/phpunit": "10.2.1"
+        "phpunit/phpunit": "10.2.2"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
@@ -135,7 +135,7 @@
         "webtrees:phpstan-baseline": [
             "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.php index.php app",
+            "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.php",
 						"sed -i -e 's/\\t/    /' phpstan-baseline.php",
 						"sed -i -e 's/ declare(strict_types = 1)/\\n\\ndeclare(strict_types=1)/' phpstan-baseline.php",
             "@composer install --no-dev --quiet"
