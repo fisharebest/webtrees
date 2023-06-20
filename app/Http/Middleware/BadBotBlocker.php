@@ -93,6 +93,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Turnitin',
         'wp_is_mobile', // Nothing to do with wordpress
         'XoviBot',
+        'YisouSpider',
         'ZoominfoBot',
     ];
 
