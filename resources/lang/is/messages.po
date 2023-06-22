@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-19 18:35+0000\n"
+"PO-Revision-Date: 2023-06-23 22:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -1849,7 +1849,7 @@ msgstr "Önnu leið að gagnaflipa og fullkomnari myndaskoðara."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:78
 msgid "An alternative way to display charts."
-msgstr "Önnur leið til að birta gröf."
+msgstr "Önnur leið til að birta töflur."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:62
@@ -3471,7 +3471,7 @@ msgstr "Gerð grafs"
 #: resources/views/admin/modules.phtml:104
 #: resources/views/admin/trees-preferences.phtml:391
 msgid "Charts"
-msgstr "Gröf"
+msgstr "Töflur"
 
 #: app/Http/RequestHandlers/CheckTree.php:324
 #: resources/views/admin/trees.phtml:185
@@ -11204,7 +11204,10 @@ msgstr "Staðarlisti"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:573
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Staðarheiti eru oft of löng til að passa í gröf, lista o.s.frv. Hægt er að stytta þau með því að birta eingöngu fyrstu hlutina af heitinu, t.d. <i>bær, sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
+msgstr ""
+"Staðarheiti eru oft of löng til að passa í töflur, lista o.s.frv. Hægt er að "
+"stytta þau með því að birta eingöngu fyrstu hlutina af heitinu, t.d. <i>bær, "
+"sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
 
 #: resources/views/help/place.phtml:14
 msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
@@ -13289,7 +13292,7 @@ msgstr "Sýna þetta box fyrir hvaða tungumál"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Birta smámyndir í gröfum og fjölskylduhópum."
+msgstr "Birta smámyndir í töflum og fjölskylduhópum."
 
 #: app/Auth.php:595 app/Auth.php:608 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -15109,7 +15112,11 @@ msgstr "Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og mó�
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:374
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar fyrir fæðingu og andlát í stað þess að skilja eftir autt á einstaklingslistum og gröfum fyrir einstaklinga þar sem dagsetningar eru óþekktar."
+msgstr ""
+"Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar "
+"fyrir fæðingu og andlát í stað þess að skilja eftir autt á "
+"einstaklingslistum og töflum fyrir einstaklinga þar sem dagsetningar eru "
+"óþekktar."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
@@ -15119,7 +15126,10 @@ msgstr "Þessi valkostur mun auðvelda notendum að hlaða niður myndum."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða „friðhelgis“ kassa á ættartölugrafinu og á öðrum gröfum hjá fólki með friðhelgi."
+msgstr ""
+"Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. "
+"Þetta þýðir að þú sérð auða „friðhelgis“ kassa í ættartölugrafinu og á öðrum "
+"töflum hjá fólki með friðhelgi."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
