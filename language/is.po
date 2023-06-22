@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-22 07:07+0000\n"
+"PO-Revision-Date: 2023-06-23 22:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -1957,7 +1957,7 @@ msgstr "Önnu leið að gagnaflipa og fullkomnari myndaskoðara."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
 msgid "An alternative way to display charts."
-msgstr "Önnur leið til að birta gröf."
+msgstr "Önnur leið til að birta töflur."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
@@ -3574,7 +3574,7 @@ msgstr "Gerð grafs"
 #: app/Module/ChartsBlockModule.php:34 app/Theme/AbstractTheme.php:1107
 #: app/Theme/AdministrationTheme.php:195
 msgid "Charts"
-msgstr "Gröf"
+msgstr "Töflur"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:327
@@ -10897,7 +10897,7 @@ msgstr "Staðarlisti"
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
-"Staðarheiti eru oft of löng til að passa í gröf, lista o.s.frv. Hægt er að "
+"Staðarheiti eru oft of löng til að passa í töflur, lista o.s.frv. Hægt er að "
 "stytta þau með því að birta eingöngu fyrstu hlutina af heitinu, t.d. <i>bær, "
 "sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
 
@@ -12907,7 +12907,7 @@ msgstr "Sýna þetta box fyrir hvaða tungumál"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Sýna smámyndir í gröfum og fjölskylduhópum."
+msgstr "Birta smámyndir í töflum og fjölskylduhópum."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -14831,8 +14831,8 @@ msgid "This option controls whether or not to show estimated dates for birth and
 msgstr ""
 "Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar "
 "fyrir fæðingu og andlát í stað þess að skilja eftir autt á "
-"einstaklingslistum og gröfum fyrir einstaklinga þar sem dagsetningar eru "
-"ókunnar."
+"einstaklingslistum og töflum fyrir einstaklinga þar sem dagsetningar eru "
+"óþekktar."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1303
@@ -14852,7 +14852,10 @@ msgstr "Þessi valkostur mun auðvelda notendum að hlaða niður myndum."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða „friðhelgis“ kassa á ættartölugrafinu og á öðrum gröfum hjá fólki með friðhelgi."
+msgstr ""
+"Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. "
+"Þetta þýðir að þú sérð auða „friðhelgis“ kassa í ættartölugrafinu og á öðrum "
+"töflum hjá fólki með friðhelgi."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
