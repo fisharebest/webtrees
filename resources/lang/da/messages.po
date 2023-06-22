@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-03-27 16:07+0000\n"
+"PO-Revision-Date: 2023-06-23 22:51+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -1982,7 +1982,7 @@ msgstr "Aner til %s"
 #. I18N: gedcom tag AFN
 #: app/Factories/ElementFactory.php:1123 app/GedcomTag.php:446
 msgid "Ancestral file number"
-msgstr "Anens filnummer"
+msgstr "Ancestral file number (AFN)"
 
 #: app/Factories/ElementFactory.php:258
 msgid "Ancestry PID"
@@ -16148,7 +16148,7 @@ msgstr "Opdater alle"
 #. I18N: Name of a module
 #: app/Module/FixPlaceNames.php:62
 msgid "Update place names"
-msgstr "Opdatér sted navne"
+msgstr "Opdatér stednavne"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:73
