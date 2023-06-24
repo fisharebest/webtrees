@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-23 22:51+0000\n"
+"PO-Revision-Date: 2023-06-26 15:27+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -392,7 +392,7 @@ msgstr[1] "%s vikur"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s árs"
-msgstr[1] "%s ár"
+msgstr[1] "%s ára"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:159
 #: resources/views/modules/yahrzeit/list.phtml:47
@@ -5287,7 +5287,7 @@ msgstr "Dó sem barn: undanþegið"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr "Dó yngri en 1 árs, innsiglunar ekki krafist."
+msgstr "Dó yngri en 1 árs, innsiglingar ekki krafist."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
