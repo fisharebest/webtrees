@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
-"Last-Translator: olor <olor@foxmail.com>\n"
+"PO-Revision-Date: 2023-06-26 15:27+0000\n"
+"Last-Translator: nuxiong <511984450@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -431,7 +431,7 @@ msgstr "隔 %s 代的堂（表）兄妹"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BCE"
+msgstr "公元前%s年"
 
 # I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
@@ -10848,7 +10848,7 @@ msgstr "姓名前缀"
 #: app/Factories/ElementFactory.php:1219 app/Factories/ElementFactory.php:1226
 #: app/Factories/ElementFactory.php:1231 app/GedcomTag.php:839
 msgid "Name suffix"
-msgstr "姓名后缀"
+msgstr "古代字/号"
 
 #: resources/views/search-replace-page.phtml:47
 #: resources/views/statistics/individuals/names.phtml:12
@@ -11020,7 +11020,7 @@ msgstr "尼加拉瓜"
 #: app/Factories/ElementFactory.php:1217 app/Factories/ElementFactory.php:1224
 #: app/Factories/ElementFactory.php:1229 app/GedcomTag.php:827
 msgid "Nickname"
-msgstr "昵称"
+msgstr "辈/派行"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -22464,7 +22464,7 @@ msgstr "出生"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr "webtrees"
+msgstr "家谱树"
 
 #: app/Services/MessageService.php:127
 msgid "webtrees message"
