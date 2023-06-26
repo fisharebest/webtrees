@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-26 15:27+0000\n"
+"PO-Revision-Date: 2023-06-29 08:51+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -829,7 +829,7 @@ msgstr ""
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Epera motzera gertatuko diren hebrearren heriotz-urteurrenen zerrenda."
+msgstr "Epe motzera gertatuko diren hebrearren heriotza-urteurrenen zerrenda."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
@@ -1457,7 +1457,7 @@ msgstr "Gehitu falta diren heriotza-erregistroak"
 
 #: resources/views/edit-blocks-page.phtml:51
 msgid "Add more blocks from the following list."
-msgstr "Gehitu bloke gehiago hurrengo zerrendatik."
+msgstr "Gehitu bloke gehiago zerrenda honetatik."
 
 #: resources/views/search-advanced-page.phtml:44
 msgid "Add more fields"
@@ -2381,7 +2381,7 @@ msgstr "Ezkontzeko batez besteko adina mendean"
 
 #: app/Statistics/Google/ChartAge.php:132
 msgid "Average age related to death century"
-msgstr "Batezbesteko adina heriotzaren mendearen arabera"
+msgstr "Batezbesteko adina heriotza gertatu den mendearen arabera"
 
 #: app/Statistics/Google/ChartChildren.php:88
 msgid "Average number"
@@ -5490,7 +5490,7 @@ msgstr "Artxiboa deskargatu"
 
 #: resources/views/edit-blocks-page.phtml:25
 msgid "Drag the blocks to change their position."
-msgstr "Blokeak garraiatu euren posizio aldatzeko."
+msgstr "Blokeak garraiatu euren posizioa aldatzeko."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:91
