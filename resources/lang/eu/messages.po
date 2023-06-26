@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-15 10:51+0000\n"
+"PO-Revision-Date: 2023-06-26 15:27+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -1085,7 +1085,6 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:7
 #: resources/xml/reports/pedigree_report.xml:8
 #: resources/xml/reports/relative_ext_report.xml:8
-#, fuzzy
 msgctxt "paper size"
 msgid "A3"
 msgstr "A3"
@@ -1106,7 +1105,6 @@ msgstr "A3"
 #: resources/xml/reports/occupation_report.xml:7
 #: resources/xml/reports/pedigree_report.xml:8
 #: resources/xml/reports/relative_ext_report.xml:8
-#, fuzzy
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
@@ -2406,42 +2404,36 @@ msgstr ""
 "aukera ona izaten ahal da."
 
 #: app/Date/JalaliDate.php:281
-#, fuzzy
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:245
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:200
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:110
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Azar"
 msgstr "Azar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
-#, fuzzy
 msgid "Azerbaijan"
 msgstr "Azerbaijan"
 
@@ -2638,7 +2630,6 @@ msgstr "Gizonik onena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:111
-#, fuzzy
 msgid "Bhutan"
 msgstr "Bhutan"
 
@@ -3048,7 +3039,6 @@ msgid "Brisbane, Australia"
 msgstr "Brisbane, Australia"
 
 #: app/CustomTags/BrothersKeeper.php:94
-#, fuzzy
 msgid "Brit milah"
 msgstr "Brit milah"
 
