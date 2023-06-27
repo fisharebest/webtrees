@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-25 21:38+0000\n"
+"PO-Revision-Date: 2023-06-27 15:16+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -398,7 +398,7 @@ msgstr[1] "%s ára"
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s ára afmæli"
+msgstr "%s ára viðburður"
 
 #: app/Services/RelationshipService.php:2354
 #, php-format
@@ -811,17 +811,18 @@ msgstr "Listi verkefna og athafna sem eru tengd ættartölunni."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Listi yfir Hebresk dánar afmæli sem munu eiga sér stað í náinni framtíð."
+msgstr ""
+"Listi yfir Hebreska dánarviðburði sem munu eiga sér stað í náinni framtíð."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
 msgid "A list of the anniversaries that occur today."
-msgstr "Listi yfir afmæli sem eiga sér stað í dag."
+msgstr "Listi yfir viðburði sem eiga sér stað í dag."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:133
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
+msgstr "Listi yfir viðburðardaga sem væntanlegir eru í náinni framtíð."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:59
@@ -1952,11 +1953,11 @@ msgstr "Anguilla"
 #: resources/views/modules/share-anniversary/share.phtml:20
 #: resources/views/modules/yahrzeit/table.phtml:31
 msgid "Anniversary"
-msgstr "Afmæli"
+msgstr "Viðburður"
 
 #: app/Http/RequestHandlers/CalendarPage.php:111
 msgid "Anniversary calendar"
-msgstr "Afmælis dagatal"
+msgstr "Viðburðardagatal"
 
 #: app/Gedcom.php:444
 msgid "Annulment"
@@ -5393,7 +5394,7 @@ msgstr "Sækja %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
-msgstr "Sækja .ICS skjal sem inniheldur afmæli"
+msgstr "Sækja .ICS skjal sem inniheldur viðburð"
 
 #: resources/views/media-page-details.phtml:83
 msgid "Download file"
@@ -12858,7 +12859,7 @@ msgstr "Deila vefslóðinni"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr "Deildu afmælisdegi viðburðar"
+msgstr "Deildu viðburðardegi atburðar"
 
 #: app/CustomTags/Gedcom7.php:85 app/CustomTags/Gedcom7.php:100
 #: app/CustomTags/Gedcom7.php:112 app/CustomTags/Gedcom7.php:134
