@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-26 15:27+0000\n"
+"PO-Revision-Date: 2023-06-29 08:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -398,7 +398,7 @@ msgstr[1] "%s ára"
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s ára afmæli"
+msgstr "%s ára atburður"
 
 #: app/Services/RelationshipService.php:2354
 #, php-format
@@ -811,17 +811,18 @@ msgstr "Listi verkefna og athafna sem eru tengd ættartölunni."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Listi yfir Hebresk dánar afmæli sem munu eiga sér stað í náinni framtíð."
+msgstr ""
+"Listi yfir Hebreska dánaratburði sem munu eiga sér stað í náinni framtíð."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
 msgid "A list of the anniversaries that occur today."
-msgstr "Listi yfir afmæli sem eiga sér stað í dag."
+msgstr "Listi yfir atburði sem eiga sér stað í dag."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:133
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
+msgstr "Listi yfir atburðardaga sem væntanlegir eru í náinni framtíð."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:59
@@ -1952,11 +1953,11 @@ msgstr "Anguilla"
 #: resources/views/modules/share-anniversary/share.phtml:20
 #: resources/views/modules/yahrzeit/table.phtml:31
 msgid "Anniversary"
-msgstr "Afmæli"
+msgstr "Atburður"
 
 #: app/Http/RequestHandlers/CalendarPage.php:111
 msgid "Anniversary calendar"
-msgstr "Afmælis dagatal"
+msgstr "Atburðardagatal"
 
 #: app/Gedcom.php:444
 msgid "Annulment"
@@ -5393,7 +5394,7 @@ msgstr "Sækja %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
-msgstr "Sækja .ICS skjal sem inniheldur afmæli"
+msgstr "Sækja .ICS skjal sem inniheldur atburð"
 
 #: resources/views/media-page-details.phtml:83
 msgid "Download file"
@@ -7313,7 +7314,7 @@ msgstr "Hæ %s …<br><br>Takk fyrir skráninguna þína."
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:14
 msgid "Hello administrator…"
-msgstr "Halló Kerfissstjóri …"
+msgstr "Halló kerfisstjóri…"
 
 #: app/Http/RequestHandlers/HelpText.php:280 resources/views/help/link.phtml:13
 #: resources/views/help/link.phtml:15
@@ -10288,8 +10289,8 @@ msgstr "Engir atburðir eru til staðar á morgun fyrir fólk á lífi."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Engir viðburðir fyrir lifandi fólk eru til fyrir næsta %s dag."
-msgstr[1] "Engir viðburðir fyrir lifandi fólk eru til fyrir næstu %s daga."
+msgstr[0] "Engir atburðir fyrir lifandi fólk eru til fyrir næsta %s dag."
+msgstr[1] "Engir atburðir fyrir lifandi fólk eru til fyrir næstu %s daga."
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
@@ -12858,7 +12859,7 @@ msgstr "Deila vefslóðinni"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr "Deildu afmælisdegi viðburðar"
+msgstr "Deildu viðburðardegi atburðar"
 
 #: app/CustomTags/Gedcom7.php:85 app/CustomTags/Gedcom7.php:100
 #: app/CustomTags/Gedcom7.php:112 app/CustomTags/Gedcom7.php:134
@@ -13271,7 +13272,7 @@ msgstr "Sýna lista yfir eftirnöfn"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr "Sýnið staðsetningu viðburðar á ytra korti."
+msgstr "Sýnið staðsetningu atburðar á ytra korti."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
