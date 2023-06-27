@@ -3694,6 +3694,36 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Repository/ContactRepository.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Property object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\:\\:\\$year is not writable\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Property object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\:\\:\\$year is not writable\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot access property \\$age on mixed\\.$#',
     'count' => 9,
     'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
