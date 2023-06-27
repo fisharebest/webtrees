@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2023-06-26 15:27+0000\n"
+"PO-Revision-Date: 2023-06-29 08:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -391,7 +391,7 @@ msgstr[1] "%s ára"
 #: resources/views/modules/yahrzeit/list.phtml:45
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s ára afmæli"
+msgstr "%s ára atburður"
 
 #: app/Functions/Functions.php:497
 #, php-format
@@ -818,17 +818,18 @@ msgstr "Listi verkefna og athafna sem eru tengd ættartölunni."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:77
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Listi yfir Hebresk dánar afmæli sem munu eiga sér stað í náinni framtíð."
+msgstr ""
+"Listi yfir Hebreska dánaratburði sem munu eiga sér stað í náinni framtíð."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:112
 msgid "A list of the anniversaries that occur today."
-msgstr "Listi yfir afmæli sem eiga sér stað í dag."
+msgstr "Listi yfir atburði sem eiga sér stað í dag."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:116
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
+msgstr "Listi yfir atburðardaga sem væntanlegir eru í náinni framtíð."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
@@ -2038,11 +2039,11 @@ msgstr "Anguilla"
 #: resources/views/lists/individuals-table.phtml:248
 #: resources/views/modules/yahrzeit/table.phtml:29
 msgid "Anniversary"
-msgstr "Afmæli"
+msgstr "Atburður"
 
 #: app/Http/RequestHandlers/CalendarPage.php:122
 msgid "Anniversary calendar"
-msgstr "Afmælis dagatal"
+msgstr "Atburðardagatal"
 
 #. I18N: gedcom tag ANUL
 #: app/Factories/ElementFactory.php:989 app/GedcomTag.php:464
@@ -7469,7 +7470,7 @@ msgstr "Hæ %s …<br><br>Takk fyrir skráninguna þína."
 #: resources/views/emails/verify-notify-html.phtml:14
 #: resources/views/emails/verify-notify-text.phtml:12
 msgid "Hello administrator…"
-msgstr "Halló Kerfissstjóri …"
+msgstr "Halló kerfisstjóri…"
 
 #: app/Http/RequestHandlers/HelpText.php:289 resources/views/help/link.phtml:11
 #: resources/views/help/link.phtml:13
