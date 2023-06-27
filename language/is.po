@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-06-26 09:51+0000\n"
+"PO-Revision-Date: 2023-06-29 08:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -465,7 +465,7 @@ msgstr[1] "%s ár síðan"
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s ára afmæli"
+msgstr "%s ára atburður"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -838,17 +838,18 @@ msgstr "Listi verkefna og athafna sem eru tengd ættartölunni."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Listi yfir Hebresk dánar afmæli sem munu eiga sér stað í náinni framtíð."
+msgstr ""
+"Listi yfir Hebreska dánaratburði sem munu eiga sér stað í náinni framtíð."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr "Listi yfir afmæli sem eiga sér stað í dag."
+msgstr "Listi yfir atburði sem eiga sér stað í dag."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
+msgstr "Listi yfir atburðardaga sem væntanlegir eru í náinni framtíð."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
@@ -2065,11 +2066,11 @@ msgstr "Anguilla"
 #: app/Functions/FunctionsPrintLists.php:727
 #: app/Functions/FunctionsPrintLists.php:1682 app/Module/YahrzeitModule.php:171
 msgid "Anniversary"
-msgstr "Afmæli"
+msgstr "Atburður"
 
 #: calendar.php:118
 msgid "Anniversary calendar"
-msgstr "Afmælis dagatal"
+msgstr "Atburðardagatal"
 
 #. I18N: gedcom tag ANUL
 #: app/GedcomTag.php:162
@@ -7167,7 +7168,7 @@ msgstr "Halló %s …<br>Takk fyrir skráninguna þína."
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr "Halló Kerfissstjóri …"
+msgstr "Halló kerfisstjóri…"
 
 #: help_text.php:320
 msgid "Help"
@@ -10000,8 +10001,8 @@ msgstr "Engir atburðir eru til staðar á morgun fyrir fólk á lífi."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Engir viðburðir fyrir lifandi fólk eru til fyrir næsta %s dag."
-msgstr[1] "Engir viðburðir fyrir lifandi fólk eru til fyrir næstu %s daga."
+msgstr[0] "Engir atburðir fyrir lifandi fólk eru til fyrir næsta %s dag."
+msgstr[1] "Engir atburðir fyrir lifandi fólk eru til fyrir næstu %s daga."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
