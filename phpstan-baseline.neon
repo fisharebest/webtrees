@@ -3261,6 +3261,26 @@ parameters:
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\EventRepository\\:\\:eventQuery\\(\\) should return object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\|null but returns mixed\\.$#"
+			count: 1
+			path: app/Statistics/Repository/EventRepository.php
+
+		-
+			message: "#^Property object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\:\\:\\$year is not writable\\.$#"
+			count: 1
+			path: app/Statistics/Repository/EventRepository.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyDatesRepository\\:\\:eventQuery\\(\\) should return object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\|null but returns mixed\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyDatesRepository.php
+
+		-
+			message: "#^Property object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\:\\:\\$year is not writable\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyDatesRepository.php
+
+		-
 			message: "#^Cannot access property \\$age on mixed\\.$#"
 			count: 4
 			path: app/Statistics/Repository/FamilyRepository.php
