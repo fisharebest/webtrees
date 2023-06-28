@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-27 15:36+0000\n"
+"PO-Revision-Date: 2023-06-29 08:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -7314,7 +7314,7 @@ msgstr "Hæ %s …<br><br>Takk fyrir skráninguna þína."
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:14
 msgid "Hello administrator…"
-msgstr "Halló Kerfissstjóri …"
+msgstr "Halló kerfisstjóri…"
 
 #: app/Http/RequestHandlers/HelpText.php:280 resources/views/help/link.phtml:13
 #: resources/views/help/link.phtml:15
