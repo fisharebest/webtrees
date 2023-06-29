@@ -1376,12 +1376,12 @@ parameters:
 			path: app/Http/RequestHandlers/LoginAction.php
 
 		-
-			message: "#^Cannot access offset '0' on array\\|false\\.$#"
+			message: "#^Cannot access offset '0' on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: "#^Cannot access offset '1' on array\\|false\\.$#"
+			message: "#^Cannot access offset '1' on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
@@ -2006,7 +2006,7 @@ parameters:
 			path: app/Media.php
 
 		-
-			message: "#^Cannot use array destructuring on array\\|false\\.$#"
+			message: "#^Cannot use array destructuring on array\\<int\\|string, int\\|string\\>\\|false\\.$#"
 			count: 1
 			path: app/MediaFile.php
 
@@ -2122,7 +2122,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset string on mixed\\.$#"
-			count: 30
+			count: 38
 			path: app/Module/ClippingsCartModule.php
 
 		-
@@ -2169,6 +2169,11 @@ parameters:
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\ClippingsCartModule\\:\\:\\$user_service is never read, only written\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/CloudsTheme.php
 
 		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
@@ -2249,6 +2254,11 @@ parameters:
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\DescendancyModule\\:\\:\\$sidebar_order \\(int\\) on left side of \\?\\? is not nullable\\.$#"
 			count: 1
 			path: app/Module/DescendancyModule.php
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/FabTheme.php
 
 		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
@@ -2794,6 +2804,11 @@ parameters:
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\MediaTabModule\\:\\:\\$tab_order \\(int\\) on left side of \\?\\? is not nullable\\.$#"
 			count: 1
 			path: app/Module/MediaTabModule.php
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/MinimalTheme.php
 
 		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
@@ -3351,6 +3366,11 @@ parameters:
 			path: app/Module/UserJournalModule.php
 
 		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/WebtreesTheme.php
+
+		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
 			count: 3
 			path: app/Module/WebtreesTheme.php
@@ -3384,6 +3404,11 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Module/XeneaTheme.php
 
 		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
@@ -3691,12 +3716,12 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Cannot access offset 0 on array\\|false\\.$#"
+			message: "#^Cannot access offset 0 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Cannot access offset 1 on array\\|false\\.$#"
+			message: "#^Cannot access offset 1 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
 			path: app/Report/ReportParserGenerate.php
 
@@ -4107,7 +4132,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset string on mixed\\.$#"
-			count: 10
+			count: 11
 			path: app/Services/ClipboardService.php
 
 		-
