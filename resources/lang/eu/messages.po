@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-27 15:16+0000\n"
+"PO-Revision-Date: 2023-07-01 14:51+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -654,8 +654,8 @@ msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>
 msgstr ""
 "<p>Oharra: Formularioa bete eta bidaltzen duzunean hauxe onartzen duzu:</"
 "p><ul><li>gure aplikazioan agertzen diren pertsona bizien pribatutasuna "
-"babestea;</li><li>eta ondoko testu-koadroan, norekin dagoen erlazionatua "
-"azaltzeko edo gure web-ean agertu behar lukeen informazioa gure esku "
+"babestea;</li><li>eta ondoko testu-koadroan, norekin zauden erlazionatua "
+"azaltzeko edo gure webgunean agertu beharko lukeen informazioa gure esku "
 "jartzeko.</li></ul>"
 
 #. I18N: URL = web address
@@ -761,7 +761,7 @@ msgstr "Lotura webtrees-eko sarrerako orriarekin."
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:112
 msgid "A list of branches of a family."
-msgstr "Zerrenda familiko adar guztiekin."
+msgstr "Zerrenda familiako adar guztiekin."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:93
@@ -1756,7 +1756,7 @@ msgstr "Urte tartea"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:396
 msgid "Age of parents next to child’s birthdate"
-msgstr "Gurasoen adina erakutsi jaiotze-dataren ondoan"
+msgstr "Gurasoen adina ikusi jaiotze-dataren ondoan"
 
 #: app/CustomTags/GedcomL.php:233 app/Gedcom.php:408 app/Gedcom.php:542
 #: app/Gedcom.php:833
@@ -1857,7 +1857,7 @@ msgstr "Erabiltzaileak baimendu GEDCOM erregistro primarioak ikusteko"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:51
 msgid "Allow visitors to request a new user account"
-msgstr "Bisitariak baimendu erabiltzaile kontuak eskatzeko"
+msgstr "Bisitariak baimendu erabiltzaile-kontuak eskatzeko"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
 #: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
@@ -1884,7 +1884,7 @@ msgstr ""
 #: resources/views/admin/site-registration.phtml:58
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
-"Administratzaileak erabiltzaile kontua berri bat onartu beharko du eta "
+"Administratzaileak erabiltzaile-kontua berri bat onartu beharko du eta "
 "sarbiderako bere maila aukeratu."
 
 #. I18N: Description of the “Album” module
@@ -2028,7 +2028,9 @@ msgstr "Antigua eta Barbuda"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
-msgstr "Erabiltzaile kontua daukan edozein sartzen ahal da orri honetan."
+msgstr ""
+"Erabiltzaile-kontua daukan edozeinek izanen du webgune honetan sartzeko "
+"baimena."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59
@@ -5384,8 +5386,7 @@ msgstr ""
 "erabili izan dira lehenago. Ahal bada, hasieratik erabili duzun egutegia "
 "erabiliz sartu beharko zenituzke datak. Ondotik itzulpen bat egiteko aukera "
 "izanen duzu, bertze egutegi bat erabiliz erakusteko. Normalean bi egutegi "
-"erabiltzen badituzu, bi itzulpenak aukeratu eta hala erakutsiko dira "
-"egutegian."
+"erabiltzen badituzu, bi itzulpenak aukeratu eta hala ikusiko dira egutegian."
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:91
@@ -5407,17 +5408,17 @@ msgstr "Zuzeneko lerroko arbasoak eta euren familiak"
 #: resources/views/lists/datatables-attributes.phtml:31
 #, php-format
 msgid "Display %s"
-msgstr "%s erakutsi"
+msgstr "%s ikusi"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:60
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Zuhaitz bateko gogoko orriak erakutsi eta administratu."
+msgstr "Zuhaitz bateko gogoko orriak ikusi eta administratu."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:61
 msgid "Display and manage a user’s favorite pages."
-msgstr "Erabiltzailearen gogoko orriak erakutsi eta administratu."
+msgstr "Erabiltzailearen gogoko orriak ikusi eta administratu."
 
 #: app/Gedcom.php:451 resources/views/calendar-page.phtml:195
 #: resources/views/lists/families-table.phtml:136
@@ -6039,7 +6040,7 @@ msgid "FAQs are lists of questions and answers, which allow you to explain the s
 msgstr ""
 "FAQ-ak galdera eta erantzunen zerrendak dira, bisitariei orriaren arauak "
 "zein diren jakinaratzen dizkietenak. Galderak pribatutasunarekin "
-"erlazionatuak daude gehienetan, eta egilearen eskubideekin, erabiltzaileen "
+"erlazionatuak daude gehienetan, eta egilearen eskubideekin, erabiltzaile-"
 "kontuekin, eduki desegokiekin, etabar..."
 
 #: app/CustomTags/Gedcom7.php:96 app/Gedcom.php:656
@@ -6533,7 +6534,7 @@ msgstr "Artxiboaren izena"
 #: resources/views/admin/media-upload.phtml:45
 #: resources/views/modals/media-file-fields.phtml:57
 msgid "Filename on server"
-msgstr "Arxtiboaren izena zerbitzarian"
+msgstr "Artxiboaren izena zerbitzarian"
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:104
 #, php-format
@@ -7715,7 +7716,7 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:112
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr ""
-"Administratzaile batek erabiltzaile kontua sortzen badu, berifikazio mezua "
+"Administratzaile batek erabiltzaile-kontua sortzen badu, berifikazio mezua "
 "ez da ateratzen eta bere helbide elektronikoa eskuz onartzen da."
 
 #: resources/views/help/name.phtml:24
@@ -8898,7 +8899,7 @@ msgstr "Multimedia objektuak gertaerei binkulatu"
 #: resources/views/emails/verify-notify-html.phtml:43
 #: resources/views/emails/verify-notify-text.phtml:29
 msgid "Link the user account to an individual."
-msgstr "Erabiltzaile kontua pertsona bati binkulatu."
+msgstr "Erabiltzaile-kontua pertsona bati binkulatu."
 
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:49
 #: resources/views/modules/relatives/tab.phtml:123
@@ -10799,7 +10800,7 @@ msgstr "Ez da deus aurkitu."
 #: resources/views/modules/pedigree-map/chart.phtml:68
 #: resources/views/modules/places/tab.phtml:69
 msgid "Nothing to show"
-msgstr "Ez da erakustekorik"
+msgstr "Ez da deus erakustekorik"
 
 #: app/Date/AbstractGregorianJulianDate.php:241
 msgctxt "Abbreviation for November"
@@ -11111,7 +11112,7 @@ msgstr "Bertzerik"
 
 #: resources/views/admin/trees-preferences.phtml:409
 msgid "Other facts to show in charts"
-msgstr "Bertze gertaerak erakutsi grafikoetan"
+msgstr "Bertze gertaerak ikusi grafikoetan"
 
 #: resources/views/admin/trees-preferences.phtml:688
 msgid "Other preferences"
@@ -11743,14 +11744,14 @@ msgstr ""
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:48
 msgid "Predefined text that states all users can request a user account"
 msgstr ""
-"Aitzinetik definitutako testua, edozienek eskatzen ahal duela erabitzaile "
+"Aitzinetik definitutako testua, edozeinek eskatzen ahal duela erabitzaile "
 "kontua"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:50
 msgid "Predefined text that states only family members can request a user account"
 msgstr ""
-"Aitzinetik definitutako testua, familikoek bakarrik eskatu ahal izanen "
-"dutela erabiltzaile kontuaerraten duena erraten duena"
+"Aitzinetik definitutako testua, erabiltzaile-kontua familiakoek bakarrik "
+"eskatzen ahal izanen dutela errateko"
 
 #: app/Http/RequestHandlers/TreePageBlockEdit.php:60
 #: app/Http/RequestHandlers/TreePreferencesPage.php:162
@@ -11911,7 +11912,7 @@ msgstr "Quetzaltenango, Guatemala"
 
 #: resources/views/admin/trees-preferences.phtml:678
 msgid "Quick family facts"
-msgstr "Laster datozen familiko gertaerak"
+msgstr "Laster datozen familiako gertaerak"
 
 #: resources/views/admin/trees-preferences.phtml:653
 msgid "Quick individual facts"
@@ -12426,7 +12427,7 @@ msgstr "Pasahitza berri bat eskatu"
 #: app/Module/WelcomeBlockModule.php:111 resources/views/login-page.phtml:66
 #: resources/views/modules/login_block/sign-in.phtml:51
 msgid "Request a new user account"
-msgstr "Erabiltzaile kontu berri bat eskatu"
+msgstr "Erabiltzaile-kontua eskatu nahi?"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
@@ -12472,7 +12473,7 @@ msgstr "Programan blokeentzako lehenetsita dagoen diseinura itzuli"
 #: app/Http/RequestHandlers/HelpText.php:275
 #: resources/views/admin/users-edit.phtml:295
 msgid "Restrict to immediate family"
-msgstr "Hurbileko familikoei sarrera mugatu"
+msgstr "Hurbileko familiakoei sarrera mugatu"
 
 #. I18N: a restriction on viewing data
 #: app/CustomTags/GedcomL.php:253 app/CustomTags/PhpGedView.php:83
@@ -13313,73 +13314,71 @@ msgstr "Gutien iraun duen ezkontza"
 
 #: resources/views/calendar-page.phtml:109
 msgid "Show"
-msgstr "Erakutsi"
+msgstr "Ikusi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:278
 msgid "Show a download link in the media viewer"
-msgstr "Deskargatzeko lotura erakutsi multimedia objektuen bisorean"
+msgstr "Deskargatzeko lotura ikusi multimedia objektuen bisorean"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:76
 msgid "Show a privacy policy."
-msgstr "Pribatutasun politika erakutsi."
+msgstr "Pribatutasun politika ikusi."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:66
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr ""
-"Erabileraren arauak erakutsi \"Erabiltzaile kontu berria eskatu\" orrian"
+msgstr "Erabileraren arauak ikusi \"Erabiltzaile-kontu berria eskatu\" orrian"
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
-msgstr "Multimedia guztiak erakutsi"
+msgstr "Multimedia guztiak ikusi"
 
 #: resources/views/modules/notes/tab.phtml:30
 msgid "Show all notes"
-msgstr "Ohar guztiak erakutsi"
+msgstr "Ohar guztiak ikusi"
 
 #: app/Module/PlaceHierarchyListModule.php:203
 msgid "Show all places in a list"
-msgstr "Leku guztiak erakutsi zerrenda batean"
+msgstr "Leku guztiak ikusi zerrenda batean"
 
 #: resources/views/modules/sources_tab/tab.phtml:26
 msgid "Show all sources"
-msgstr "Datuen iturri guztiak erakutsi"
+msgstr "Datuen iturri guztiak ikusi"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:83
 msgid "Show an age cursor"
-msgstr "Adin-kurtsorea erakutsi"
+msgstr "Adin-kurtsorea ikusi"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Arbasoen seme-alabak erakutsi"
+msgstr "Arbasoen seme-alabak ikusi"
 
 #: resources/views/lists/families-table.phtml:140
 msgid "Show couples where either partner married more than once."
-msgstr ""
-"Behin baino gehiagotan ezkondu diren pertsonarik duten bikoteak erakutsi."
+msgstr "Behin baino gehiagotan ezkondu diren pertsonak dituzten bikoteak ikusi."
 
 #: resources/views/lists/families-table.phtml:91
 msgid "Show couples where only the female partner is dead."
-msgstr "Emaztea hilik eta senarra bizirik daukaten bikoteak erakutsi."
+msgstr "Emaztea hilik eta senarra bizirik daukaten bikoteak ikusi."
 
 #: resources/views/lists/families-table.phtml:96
 msgid "Show couples where only the male partner is dead."
-msgstr "Emaztea bizirik eta senarra hilik daukaten bikoteak erakutsi."
+msgstr "Emaztea bizirik eta senarra hilik daukaten bikoteak ikusi."
 
 #: resources/views/lists/families-table.phtml:125
 msgid "Show couples who married more than 100 years ago."
-msgstr "Orain dela 100 urte baino gehiago ezkondutako bikoteak erakutsi."
+msgstr "Orain dela 100 urte baino gehiago ezkondutako bikoteak ikusi."
 
 #: resources/views/lists/families-table.phtml:130
 msgid "Show couples who married within the last 100 years."
-msgstr "Azken 100 urtetan ezkondutako bikoteak erakutsi."
+msgstr "Azken 100 urtetan ezkondutako bikoteak ikusi."
 
 #: resources/views/lists/families-table.phtml:120
 msgid "Show couples with an unknown marriage date."
-msgstr "Ezkontza-datarik gabeko bikoteak erakutsi."
+msgstr "Ezkontza-datarik gabeko bikoteak ikusi."
 
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:37
@@ -13393,85 +13392,85 @@ msgstr "Hildako pertsonak ikusi"
 
 #: resources/views/lists/families-table.phtml:135
 msgid "Show divorced couples."
-msgstr "Dibortziatutako bikoteak erakutsi."
+msgstr "Dibortziatutako bikoteak ikusi."
 
 #: resources/views/lists/individuals-table.phtml:137
 msgid "Show individuals born more than 100 years ago."
-msgstr "Orain dela 100 urte baino gehiago jaiotako pertsonak erakutsi."
+msgstr "Orain dela 100 urte baino gehiago jaiotako pertsonak ikusi."
 
 #: resources/views/lists/individuals-table.phtml:142
 msgid "Show individuals born within the last 100 years."
-msgstr "Azken 100 urteetan jaiotako pertsonak erakutsi."
+msgstr "Azken 100 urteetan jaiotako pertsonak ikusi."
 
 #: resources/views/lists/individuals-table.phtml:114
 msgid "Show individuals who are alive or couples where both partners are alive."
 msgstr ""
-"Bizirik dauden pertsonak edo bi ezkontideak bizirik dauden bikoteak erakutsi."
+"Bizirik dauden pertsonak edo bi ezkontideak bizirik dauden bikoteak ikusi."
 
 #: resources/views/lists/families-table.phtml:101
 #: resources/views/lists/individuals-table.phtml:119
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Hildako pertsonak edo bi ezkontideak hilik dauden bikoteak erakutsi."
+msgstr "Hildako pertsonak edo bi ezkontideak hilik dauden bikoteak ikusi."
 
 #: resources/views/lists/individuals-table.phtml:124
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Orain dela 100 urte baino gehiago hildako pertsonak erakutsi."
+msgstr "Orain dela 100 urte baino gehiago hildako pertsonak ikusi."
 
 #: resources/views/lists/individuals-table.phtml:129
 msgid "Show individuals who died within the last 100 years."
-msgstr "Azken 100 urteetan hildako pertsonak erakutsi."
+msgstr "Azken 100 urteetan hildako pertsonak ikusi."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:98
 msgid "Show list of family trees"
-msgstr "Zuhaitz genealogikoen zerrenda erakutsi"
+msgstr "Zuhaitz genealogikoen zerrenda ikusi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:84
 msgid "Show living individuals"
-msgstr "Bizirik dauden pertsonak erakutsi"
+msgstr "Bizirik dauden pertsonak ikusi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:122
 msgid "Show names of private individuals"
-msgstr "Pertsona pribatuen izenak erakutsi"
+msgstr "Pertsona pribatuen izenak ikusi"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Oharrak erakutsi"
+msgstr "Oharrak ikusi"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Lanbideak erakutsi"
+msgstr "Lanbideak ikusi"
 
 #: resources/views/modules/todays_events/config.phtml:21
 #: resources/views/modules/upcoming_events/config.phtml:33
 msgid "Show only events of living individuals"
-msgstr "Bizirik dauden pertsonen gertaerak erakutsi bakarrik"
+msgstr "Bizirik dauden pertsonen gertaerak ikusi bakarrik"
 
 #: resources/views/lists/individuals-table.phtml:102
 msgid "Show only females."
-msgstr "Emakumezkoak erakutsi bakarrik."
+msgstr "Emakumezkoak ikusi bakarrik."
 
 #: resources/views/lists/individuals-table.phtml:107
 msgid "Show only individuals for whom the gender is not known."
-msgstr "Genero ezezaguna duten pertsonak erakutsi bakarrik."
+msgstr "Genero ezezaguna duten pertsonak ikusi bakarrik."
 
 #: resources/views/modules/random_media/config.phtml:19
 msgid "Show only individuals, events, or all"
-msgstr "Pertsonak, gertaerak edo dena erakutsi"
+msgstr "Pertsonak, gertaerak edo dena ikusi"
 
 #: resources/views/lists/individuals-table.phtml:97
 msgid "Show only males."
-msgstr "Gizonezkoak erakutsi bakarrik."
+msgstr "Gizonezkoak ikusi bakarrik."
 
 #: resources/views/lists/families-table.phtml:322
 #: resources/views/lists/individuals-table.phtml:334
 msgid "Show parents"
-msgstr "Gurasoak erakutsi"
+msgstr "Gurasoak ikusi"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/users-create.phtml:61
@@ -13486,46 +13485,46 @@ msgstr "Gurasoak erakutsi"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Show password"
-msgstr "Pasahitza erakutsi"
+msgstr "Pasahitza ikusi"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
-msgstr "Egiteke dauden aldaketak erakutsi"
+msgstr "Egiteke dauden aldaketak ikusi"
 
 #: resources/xml/reports/family_group_report.xml:9
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "Argazkiak erakutsi"
+msgstr "Argazkiak ikusi"
 
 #: app/Module/PlaceHierarchyListModule.php:197
 msgid "Show place hierarchy"
-msgstr "Lekuen ierarkia erakutsi"
+msgstr "Lekuen ierarkia ikusi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:142
 msgid "Show private relationships"
-msgstr "Harreman pribatuak erakutsi"
+msgstr "Harreman pribatuak ikusi"
 
 #: resources/views/modules/todo/config.phtml:23
 msgid "Show research tasks that are assigned to other users"
-msgstr "Bertze erabitzaileei esleitutako ikerketa lanak erakutsi"
+msgstr "Bertze erabitzaileei esleitutako ikerketa lanak ikusi"
 
 #: resources/views/modules/todo/config.phtml:33
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Inori esleitu ez zaizkion ikerketa lanak erakutsi"
+msgstr "Inori esleitu ez zaizkion ikerketa lanak ikusi"
 
 #: resources/views/modules/todo/config.phtml:42
 msgid "Show research tasks that have a date in the future"
-msgstr "Etorkizuneko data daukaten ikerketa lanak erakutsi"
+msgstr "Etorkizuneko data daukaten ikerketa lanak ikusi"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Egoitzak erakutsi"
+msgstr "Egoitzak ikusi"
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
-msgstr "Aurkezpenaren kontrolak erakutsi"
+msgstr "Aurkezpenaren kontrolak ikusi"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -13533,24 +13532,24 @@ msgstr "Aurkezpenaren kontrolak erakutsi"
 #: resources/xml/reports/individual_ext_report.xml:9
 #: resources/xml/reports/individual_report.xml:6
 msgid "Show sources"
-msgstr "Datuen iturriak erakutsi"
+msgstr "Datuen iturriak ikusi"
 
 #: resources/views/modules/family-book-chart/page.phtml:62
 #: resources/views/modules/hourglass-chart/page.phtml:50
 #: resources/xml/reports/pedigree_report.xml:6
 msgid "Show spouses"
-msgstr "Ezkontideak erakutsi"
+msgstr "Ezkontideak ikusi"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:568
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "%1$s %2$sen lekuaren izenaren zatiak erakutsi."
+msgstr "%1$s %2$sen lekuaren izenaren zatiak ikusi."
 
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:122
 msgid "Show the birthplace of ancestors on a map."
-msgstr "Arbasoen jaiotzaren lekua mapa batean erakutsi."
+msgstr "Arbasoen jaiotzaren lekua mapa batean ikusi."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:69
@@ -13559,57 +13558,57 @@ msgstr "Data eta ordua erakutsi"
 
 #: resources/views/modules/html/config.phtml:53
 msgid "Show the date and time of update"
-msgstr "Eguneratzearen data eta ordua erakutsi"
+msgstr "Eguneratzearen data eta ordua ikusi"
 
 #: resources/views/admin/trees-preferences.phtml:423
 msgid "Show the events of close relatives on the individual page"
-msgstr "Hurbileko ahaideen gertaerak erakutsi pertsonen orrietan"
+msgstr "Hurbileko ahaideen gertaerak ikusi pertsonen orrietan"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Show the family tree"
-msgstr "Zuhaitz genealogikoa erakutsi"
+msgstr "Zuhaitz genealogikoa ikusi"
 
 #: app/Module/IndividualListModule.php:350
 msgid "Show the list of individuals"
-msgstr "Perstonen zerrendak erakutsi"
+msgstr "Perstonen zerrendak ikusi"
 
 #: app/Module/IndividualListModule.php:356
 msgid "Show the list of surnames"
-msgstr "Abizenen zerrenda erakutsi"
+msgstr "Abizenen zerrenda ikusi"
 
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr "Kanpoko mapa batean erakutsi gertaera baten lekua."
+msgstr "Kanpoko mapa batean ikusi gertaera baten lekua."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
 msgid "Show the location of events on a map."
-msgstr "Gertaeren ubikazioa erakutsi mapa batean."
+msgstr "Gertaeren ubikazioa ikusi mapa batean."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:60
 msgid "Show the user who made the change"
-msgstr "Aldaketa egin duen erabiltzailea erakutsi"
+msgstr "Aldaketa egin duen erabiltzailea ikusi"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.phtml:54
 #: resources/views/modules/html/config.phtml:62
 #: resources/views/modules/stories/edit.phtml:60
 msgid "Show this block for which languages"
-msgstr "Zein hizkuntzentzat erakutsi bloke hau"
+msgstr "Zein hizkuntzentzat ikusi bloke hau"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Miniaturak erakutsi grafikoetan eta famili-taldeetan."
+msgstr "Miniaturak ikusi grafikoetan eta famili-taldeetan."
 
 #: app/Auth.php:595 app/Auth.php:608 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:23
 msgid "Show to managers"
-msgstr "Gainbegiratzaileak erakutsi"
+msgstr "Gainbegiratzaileak ikusi"
 
 #: app/Auth.php:594 app/Auth.php:607 app/Elements/RestrictionNotice.php:99
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
@@ -13618,7 +13617,7 @@ msgstr "Gainbegiratzaileak erakutsi"
 #: resources/views/admin/trees-privacy.phtml:92
 #: resources/views/modals/restriction-fields.phtml:20
 msgid "Show to members"
-msgstr "Partaideak erakutsi"
+msgstr "Partaideak ikusi"
 
 #: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:98
 #: app/Http/RequestHandlers/TreePrivacyPage.php:91
@@ -13627,21 +13626,21 @@ msgstr "Partaideak erakutsi"
 #: resources/views/admin/trees-privacy.phtml:150
 #: resources/views/modals/restriction-fields.phtml:17
 msgid "Show to visitors"
-msgstr "Bisitatzaileak erakutsi"
+msgstr "Bisitatzaileak ikusi"
 
 #: resources/views/lists/families-table.phtml:113
 #: resources/views/lists/individuals-table.phtml:155
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
 msgstr ""
-"Bikote edo pertsona \"leaves\" erakutsi. Bizirik izanik ez daukate seme-"
+"Bikote edo pertsona \"leaves\" ikusi. Bizirik izanik ez daukate seme-"
 "alabarik datu-basean."
 
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/individuals-table.phtml:150
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
 msgstr ""
-"\"Oinarrizko\" pertsonak edo bikoteak erakutsi. \"Patriarka\" ere deitzen "
-"zaie. Datu-basean gurasorik ez duten pertsonak dira."
+"\"Oinarrizko\" pertsonak edo bikoteak ikusi. \"Patriarka\" ere deitzen zaie. "
+"Datu-basean gurasorik ez duten pertsonak dira."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml:26
@@ -14510,8 +14509,8 @@ msgstr "Thailandia"
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
 "<b>izena</b> eremuak pertsonaren izen osoa dauka, idatzi edo erregistratu "
-"zuten bezala. Hori erakutsiko da pantailan. Izenen zati ezberdinak "
-"erakusteko ohiko ohar genealogikoak erabiltzen dira."
+"zuten bezala. Hori ikusiko da pantailan. Izenen zati ezberdinak erakusteko "
+"ohiko ohar genealogikoak erabiltzen dira."
 
 #: resources/views/help/surname.phtml:10
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -15414,7 +15413,7 @@ msgstr "Informazio hori ez dago eskuragarri."
 #: app/Statistics/Repository/IndividualRepository.php:1259
 #: app/Statistics/Repository/IndividualRepository.php:1279
 msgid "This information is private and cannot be shown."
-msgstr "Informazio hori pribatua da eta ezin da erakutsi."
+msgstr "Informazio hori pribatua da eta ezin da ikusi."
 
 #: resources/views/edit-account-page.phtml:68
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -15573,7 +15572,7 @@ msgstr ""
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
 msgstr ""
 "Hemen aukeratzen ahal duzu pertsonen zerrendetan eta grafikoetan guti gora "
-"beherako jaiotza eta heriotzaren datak erakutsi nahi dituzun, ez badituzu "
+"beherako jaiotza eta heriotzaren datak ikusi nahi dituzun, ez badituzu "
 "ezagutzen eta hutsik ez uzteko."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
@@ -15585,7 +15584,7 @@ msgstr "Aukera honek irudien deskarga erraztuko die erabiltzaileei."
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
-"Aukera honek familiko loturak/harremanak erregistro pribatuetan gordetzen "
+"Aukera honek familiako loturak/harremanak erregistro pribatuetan gordetzen "
 "ditu.Horrek erran nahi du \"kutxa pribatuak\" ikusiko dituzula arbasoen "
 "grafikoetan eta bertze batzuk pertsona pribatuak direnean."
 
@@ -15720,7 +15719,7 @@ msgstr "Iturri hori ez dago zuhaitzean edo ez duzu ikusteko baimenik."
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr ""
 "Testu hau orriaren titulu bakoitzari gehituko zaio. Nabigatzailearen "
-"tituluaren barran erakutsiko da, \"gogoko lekuetan\", etabar."
+"tituluaren barran ikusiko da, \"gogoko lekuetan\", etabar."
 
 #: resources/views/errors/no-tree-access.phtml:10
 msgid "This user account does not have access to any tree."
@@ -15965,7 +15964,7 @@ msgstr ""
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
-"Mapa bat erakutsi ahal izateko, mapa hornitzaile bat gaitu beharko duzu "
+"Mapa bat ikusi ahal izateko, mapa hornitzaile bat gaitu beharko duzu "
 "aitzinetik kontrol-panelean."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
@@ -16625,7 +16624,7 @@ msgid "Use this field to tell the site administrator why you are requesting an a
 msgstr ""
 "Eremu hau erabil ezazu kontua zertarako nahi duzun errateko "
 "administratzaileari eta zein den hemen agertzen diren datu genealogikoekin "
-"daukazun harremana. Zuhaitzari buruzko bertze edozien komentario ere "
+"daukazun harremana. Zuhaitzari buruzko bertze edozein komentario ere "
 "aipatzen ahal duzu hemen."
 
 #: app/Module/ResearchTaskModule.php:67 app/Module/ResearchTaskModule.php:71
@@ -16986,10 +16985,10 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:109
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
-"Erabiltzaile batek kontu berri bat erregistratzen badu, mezu elektronikoa "
-"bidaltzen zaio egiaztapenaren loturarekin. Erabiltzaileak lotura erabiltzen "
-"duenean , sistemak helbide elektroniko zuzena dela baieztatzen du eta "
-"automatikoki egiaztatutzat ematen du."
+"Erabiltzaile batek kontu berria erregistratzen badu, mezu elektronikoa "
+"bidaliko zaio egiaztapenaren loturarekin. Lotura hori erabili bezain abudo, "
+"helbide elektronikoa zuzena dela baieztatuko du sistemak eta automatikoki "
+"egiaztatutzat emanen du."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -17155,7 +17154,7 @@ msgstr "%s izenarekin ireki da saioa."
 
 #: app/Http/RequestHandlers/LoginPage.php:99
 msgid "You can apply for an account using the link below."
-msgstr "Behean ageri den loturarekin eskatzen ahal duzu erabiltzaile kontua."
+msgstr "Behean ageri den loturarekin eskatzen ahal duzu erabiltzaile-kontua."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
@@ -17322,9 +17321,10 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr ""
-"Erabiltzailea izan litekeenak eskaera konfirmatu duenean korreo elektronikoz "
-"informatuko zaio. Ondotik erabiltzaile-izenaren aktibazioa burutzen ahal du. "
-"Erabiltzaile berriak ezin izanen du saiorik ireki kontua gaitzen den arte."
+"Erabiltzailea izan litekeenak eskaera konfirmatzen duenean, korreo "
+"elektronikoz informatuko zaio. Ondotik erabiltzaile-izenaren aktibazioa "
+"burutzen ahal du. Erabiltzaile berriak ezin izanen du saiorik ireki kontua "
+"gaitu arte."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
@@ -20887,12 +20887,12 @@ msgstr "partekatutako oharra"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "show"
-msgstr "erakutsi"
+msgstr "ikusi"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:277
 msgid "show changes made in webtrees"
-msgstr "webtrees-en egindako aldaketak erakutsi"
+msgstr "webtrees-en egindako aldaketak ikusi"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:279
@@ -20911,7 +20911,7 @@ msgstr "gehiago erakutsi"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
-msgstr "grafikoa erakutsi"
+msgstr "grafikoa ikusi"
 
 #: app/Services/RelationshipService.php:493
 msgid "sibling"
