@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\Tree;
  * @var bool                      $families
  * @var IndividualListModule|null $module
  * @var array<array<int,string>>  $order
+ * @var array<string,string>      $params
  * @var array<array<int>>         $surnames
  * @var Tree                      $tree
  */
@@ -51,15 +52,15 @@ use Fisharebest\Webtrees\Tree;
                     <?php foreach ($surns as $surname => $count) : ?>
                         <?php if ($module instanceof IndividualListModule) : ?>
                             <?php if ($surname === Individual::NOMEN_NESCIO) : ?>
-                                <a href="<?= e($module->listUrl($tree, ['alpha' => '@'])) ?>"><?= I18N::translateContext('Unknown surname', '…') ?></a>
+                                <a href="<?= e($module->listUrl($tree, ['surname' => $surname] + $params)) ?>"><?= I18N::translateContext('Unknown surname', '…') ?></a>
                             <?php elseif ($surname === '') : ?>
                                 <?php if ($surn === '') : ?>
-                                    <a href="<?= e($module->listUrl($tree, ['alpha' => ','])) ?>"><?= I18N::translate('No surname') ?></a>
+                                    <a href="<?= e($module->listUrl($tree, ['surname' => $surname] + $params)) ?>"><?= I18N::translate('No surname') ?></a>
                                 <?php else : ?>
-                                    <a href="<?= e($module->listUrl($tree, ['alpha' => ','])) ?>" class="ut"><?= e($surn) ?></a>
+                                    <a href="<?= e($module->listUrl($tree, ['surname' => $surn] + $params)) ?>" class="ut"><?= e($surn) ?></a>
                                 <?php endif ?>
                             <?php else : ?>
-                                <a href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>" class="ut"><?= e($surname) ?></a>
+                                <a href="<?= e($module->listUrl($tree, ['surname' => $surname] + $params)) ?>" class="ut"><?= e($surname) ?></a>
                             <?php endif ?>
                         <?php else : ?>
                             <?php if ($surname === Individual::NOMEN_NESCIO) : ?>
