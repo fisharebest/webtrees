@@ -69,8 +69,8 @@ use Illuminate\Database\Capsule\Manager as DB;
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
                             <div id="import<?= $managed_tree->id() ?>" class="col-12">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar">
                                         <?= I18N::translate('Calculating…') ?>
                                     </div>
                                 </div>
