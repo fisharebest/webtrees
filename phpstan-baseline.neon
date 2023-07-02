@@ -986,6 +986,11 @@ parameters:
 			path: app/Http/RequestHandlers/ReportSetupPage.php
 
 		-
+			message: "#^Binary operation \"\\+\\=\" between string and array\\{type\\: 'text', default\\: '', lookup\\: '', extra\\: ''\\} results in an error\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ReportSetupPage.php
+
+		-
 			message: "#^Cannot call method url\\(\\) on mixed\\.$#"
 			count: 5
 			path: app/Http/RequestHandlers/SearchGeneralPage.php
@@ -1167,11 +1172,6 @@ parameters:
 
 		-
 			message: "#^Binary operation \"\\*\" between string and 365 results in an error\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Binary operation \"\\.\" between non\\-falsy\\-string and array\\<int, string\\>\\|string results in an error\\.$#"
 			count: 1
 			path: app/Individual.php
 
@@ -2391,6 +2391,16 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^Cannot access offset \\(float\\|int\\) on array\\<int, string\\>\\|false\\.$#"
+			count: 13
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Cannot access offset \\(float\\|int\\<1, max\\>\\) on array\\<int, string\\>\\|false\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Cannot access offset 0 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
 			path: app/Report/ReportParserGenerate.php
@@ -2398,16 +2408,6 @@ parameters:
 		-
 			message: "#^Cannot access offset 1 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Cannot access offset float\\|int on array\\<int, string\\>\\|false\\.$#"
-			count: 13
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Cannot access offset float\\|int\\<1, max\\> on array\\<int, string\\>\\|false\\.$#"
-			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -2622,11 +2622,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\}\\.$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float\\|int, 1, int\\<0, max\\>\\}\\.$#"
 			count: 1
 			path: app/Report/ReportPdfText.php
 
