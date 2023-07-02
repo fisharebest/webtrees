@@ -15,15 +15,13 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<div class="progress" id="progress<?= e($tree->id()) ?>">
-    <div
-        class="progress-bar"
-        role="progressbar"
-        aria-valuenow="<?= $progress * 100 ?>"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        style="min-width: <?= $progress * 100 ?>%;"
-    >
+<div class="progress" id="progress<?= e($tree->id()) ?>"
+     role="progressbar"
+     aria-valuenow="<?= $progress * 100 ?>"
+     aria-valuemin="0"
+     aria-valuemax="100"
+>
+    <div class="progress-bar" style="min-width: <?= $progress * 100 ?>%;">
         <?= $status ?: I18N::percentage($progress, 1) ?>
     </div>
 </div>
