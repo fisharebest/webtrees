@@ -370,6 +370,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         case 'style1':
                             echo view('lists/surnames-column-list', [
                                 'module'   => $this,
+                                'params'   => ['show' => 'indi'] + $params,
                                 'surnames' => $surns,
                                 'totals'   => true,
                                 'tree'     => $tree,
@@ -378,6 +379,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         case 'style3':
                             echo view('lists/surnames-tag-cloud', [
                                 'module'   => $this,
+                                'params'   => ['show' => 'indi'] + $params,
                                 'surnames' => $surns,
                                 'totals'   => true,
                                 'tree'     => $tree,
@@ -389,6 +391,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                                 'families' => $this->families,
                                 'module'   => $this,
                                 'order'    => [[0, 'asc']],
+                                'params'   => ['show' => 'indi'] + $params,
                                 'surnames' => $surns,
                                 'tree'     => $tree,
                             ]);
