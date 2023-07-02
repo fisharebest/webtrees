@@ -739,6 +739,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/ReportSetupPage.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Binary operation "\\+\\=" between string and array\\{type\\: \'text\', default\\: \'\', lookup\\: \'\', extra\\: \'\'\\} results in an error\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/ReportSetupPage.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SearchGeneralPage.php',
@@ -940,11 +945,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Binary operation "\\*" between string and 365 results in an error\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Individual.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Binary operation "\\." between non\\-falsy\\-string and array\\<int, string\\>\\|string results in an error\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Individual.php',
 ];
@@ -2529,6 +2529,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot access offset \\(float\\|int\\) on array\\<int, string\\>\\|false\\.$#',
+    'count' => 13,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot access offset \\(float\\|int\\<1, max\\>\\) on array\\<int, string\\>\\|false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot access offset 0 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
@@ -2536,16 +2546,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Cannot access offset 1 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 3,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access offset float\\|int on array\\<int, string\\>\\|false\\.$#',
-    'count' => 13,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access offset float\\|int\\<1, max\\> on array\\<int, string\\>\\|false\\.$#',
-    'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
@@ -2780,11 +2780,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\}\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfText.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float\\|int, 1, int\\<0, max\\>\\}\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportPdfText.php',
 ];
