@@ -100,7 +100,7 @@ class ReportParserGenerate extends ReportParserBase
     /** Are we collecting data from <Footnote> elements */
     private bool $process_footnote = true;
 
-    /** Are we currently outputing data? */
+    /** Are we currently outputting data? */
     private bool $print_data = false;
 
     /** @var array<int,bool> Push-down stack of $print_data */

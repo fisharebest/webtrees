@@ -153,7 +153,7 @@ class ReportPdfCell extends ReportBaseCell
             $renderer->lastCellHeight = $renderer->tcpdf->getLastH();
         }
 
-        // Set up the url link if exists ontop of the cell
+        // Set up the url link if exists on top of the cell
         if (!empty($this->url)) {
             $renderer->tcpdf->Link($cX, $this->top, $this->width, $this->height, $this->url);
         }
