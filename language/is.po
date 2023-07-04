@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-06-29 08:51+0000\n"
+"PO-Revision-Date: 2023-07-05 22:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -1331,7 +1331,7 @@ msgstr "Bæta við nýrri landfræðilegri staðsetningu"
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:790
 #: edit_interface.php:880
 msgid "Add a husband"
-msgstr "Bæta við nýjum eiginmanni"
+msgstr "Bæta við nýjum maka"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1340,7 +1340,7 @@ msgstr "Bæta við eiginmanni við þessa fjölskyldu"
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
 #: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
-msgstr "Bæta við eiginmanni með því að nota núverandi persónu"
+msgstr "Bæta við maka með því að nota fyrirliggjandi persónu"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
@@ -1413,7 +1413,7 @@ msgstr "Bæta við nýjum notanda"
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:787
 #: edit_interface.php:877
 msgid "Add a wife"
-msgstr "Bæta við nýrri eiginkonu"
+msgstr "Bæta við nýjum maka"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1422,7 +1422,7 @@ msgstr "Bæta eiginkonu við þessa fjölskyldu"
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
 #: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
-msgstr "Bæta eiginkonu við núverandi persónu"
+msgstr "Bæta maka við fyrirliggjandi persónu"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
@@ -3222,7 +3222,7 @@ msgstr "Jarðaför hálfsysturs"
 
 #: app/GedcomTag.php:1186
 msgid "Burial of a husband"
-msgstr "Jarðaför eiginmanns"
+msgstr "Jarðsetning maka"
 
 #: app/GedcomTag.php:1150
 msgid "Burial of a maternal grandfather"
@@ -3274,7 +3274,7 @@ msgstr "Jarðaför maka"
 
 #: app/GedcomTag.php:1188
 msgid "Burial of a wife"
-msgstr "Jarðaför eiginkonu"
+msgstr "Jarðsetning maka"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -4266,7 +4266,7 @@ msgstr "Líkbrennsla hálfsystur"
 
 #: app/GedcomTag.php:1343
 msgid "Cremation of a husband"
-msgstr "Líkbrennsla eiginmanns"
+msgstr "Líkbrennsla maka"
 
 #: app/GedcomTag.php:1307
 msgid "Cremation of a maternal grandfather"
@@ -4310,7 +4310,7 @@ msgstr "Líkbrennsla maka"
 
 #: app/GedcomTag.php:1345
 msgid "Cremation of a wife"
-msgstr "Líkbrennsla eiginkonu"
+msgstr "Líkbrennsla maka"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6773
@@ -4841,7 +4841,7 @@ msgstr "Andlát hálfsystur"
 
 #: app/GedcomTag.php:1446
 msgid "Death of a husband"
-msgstr "Andlát eiginmanns"
+msgstr "Andlát maka"
 
 #: app/GedcomTag.php:1410
 msgid "Death of a maternal grandfather"
@@ -4885,7 +4885,7 @@ msgstr "Andlát maka"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
-msgstr "Andlát eiginkonu"
+msgstr "Andlát maka"
 
 #. I18N: gedcom tag _DETS
 #: app/GedcomTag.php:1459
@@ -6151,7 +6151,7 @@ msgstr "Fjölskylda með fósturforeldrum"
 #: modules_v3/individual_ext_report/report.xml:441
 #: modules_v3/individual_report/report.xml:446
 msgid "Family with husband"
-msgstr "Fjölskylda með eiginmanni"
+msgstr "Fjölskylda með maka"
 
 #: app/GedcomCode/GedcomCodePedi.php:127 app/GedcomCode/GedcomCodePedi.php:141
 #: app/Individual.php:1026 modules_v3/individual_ext_report/report.xml:237
@@ -6182,7 +6182,7 @@ msgstr "Fjölskylda með flest börn"
 #: modules_v3/individual_ext_report/report.xml:435
 #: modules_v3/individual_report/report.xml:486
 msgid "Family with wife"
-msgstr "Fjölskylda með eiginkonu"
+msgstr "Fjölskylda með maka"
 
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
@@ -7334,7 +7334,7 @@ msgstr "Eiginmaður"
 
 #: app/Controller/TimelineController.php:228
 msgid "Husband’s age"
-msgstr "Aldur eiginmanns"
+msgstr "Aldur maka"
 
 #: app/Module/GoogleMapsModule.php:328
 msgid "Hybrid"
@@ -8408,7 +8408,7 @@ msgstr "Tengdu notandareikninginn við einstakling."
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:963
 #: edit_interface.php:1023
 msgid "Link this individual to an existing family as a child"
-msgstr "Tengja þessa persónu við núverandi fjölskyldu sem barni"
+msgstr "Tengja þessa persónu við fyrirliggjandi fjölskyldu sem barni"
 
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
@@ -16281,11 +16281,11 @@ msgstr "Breidd á útbúnum smámyndum"
 #: modules_v3/individual_report/report.xml:489
 #: modules_v3/relative_ext_report/report.xml:104
 msgid "Wife"
-msgstr "Eiginkona"
+msgstr "Maki"
 
 #: app/Controller/TimelineController.php:228
 msgid "Wife’s age"
-msgstr "Aldur eiginkonu"
+msgstr "Aldur maka"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
@@ -16328,7 +16328,7 @@ msgstr "Vitni"
 #: app/SurnameTradition.php:73 app/SurnameTradition.php:92
 #: app/SurnameTradition.php:97
 msgid "Wives take their husband’s surname."
-msgstr "Konur taka eftirnafn eiginmanns síns."
+msgstr "Konur taka eftirnafn maka síns."
 
 #: statistics.php:679
 msgid "World"
@@ -17256,7 +17256,7 @@ msgstr "áætlað %s"
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
-msgstr "fyrrverandi eiginmaður"
+msgstr "fyrrverandi maki"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
@@ -17278,7 +17278,7 @@ msgstr "fyrrverandi maki"
 
 #: app/Functions/Functions.php:721
 msgid "ex-wife"
-msgstr "fyrrverandi eiginkona"
+msgstr "fyrrverandi maki"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
@@ -17697,17 +17697,17 @@ msgstr "sonardóttir"
 #: app/Functions/Functions.php:1046
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "eiginmaður barnabarns"
+msgstr "maki barnabarns"
 
 #: app/Functions/Functions.php:1068
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "eignmaður dótturdóttur"
+msgstr "maki dótturdóttur"
 
 #: app/Functions/Functions.php:1348
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "eiginmaður sonardóttur"
+msgstr "maki sonardóttur"
 
 #: app/Functions/Functions.php:896
 msgctxt "parent’s father"
@@ -17742,17 +17742,17 @@ msgstr "sonarsonur"
 #: app/Functions/Functions.php:1056
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "eiginkona barnabarns"
+msgstr "maki barnabarns"
 
 #: app/Functions/Functions.php:1084
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "eiginkona dóttursonar"
+msgstr "maki dóttursonar"
 
 #: app/Functions/Functions.php:1358
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "eiginkona sonarsonar"
+msgstr "maki sonarsonar"
 
 #: app/Functions/Functions.php:1639 app/Functions/Functions.php:1654
 #: app/Functions/Functions.php:1667
@@ -20566,7 +20566,7 @@ msgstr "vestur"
 #: app/Functions/Functions.php:727 edit_interface.php:1909
 #: edit_interface.php:1944
 msgid "wife"
-msgstr "eiginkona"
+msgstr "maki"
 
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
