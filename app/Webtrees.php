@@ -143,7 +143,7 @@ class Webtrees
     public const STABILITY = '';
 
     // Version number.
-    public const VERSION = '2.1.16' . self::STABILITY;
+    public const VERSION = '2.1.17' . self::STABILITY;
 
     // Project website.
     public const URL = 'https://webtrees.net/';
