@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-01 14:51+0000\n"
+"PO-Revision-Date: 2023-07-07 10:51+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -932,7 +932,7 @@ msgstr "Pertsona baten xehetasunen txostena."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Iturri jakin batek babestutako gertaeren txostena."
+msgstr "Iturri jakin batetik bildutako erregistroen txostena."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
@@ -954,13 +954,13 @@ msgstr "Lan jakin bat zuten pertsonen txostena."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Une edo toki jakin batean jaio ziren pertsonen txostena."
+msgstr "Une edo toki jakin batean jaio diren gizabanakoen txostena."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Leku jakin batean lurperatutako pertsonen txostena."
+msgstr "Leku jakin batean ehortzitako pertsonen txostena."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
@@ -972,19 +972,19 @@ msgstr "Une edo toki jakin batean ezkondu diren pertsonen txostena."
 #: app/Module/ChangeReportModule.php:56
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Egin berri diren eta egiteke dauden aldaketen txostena."
+msgstr "Egin berriak diren eta egiteke dauden aldaketen txostena."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:56
 #: resources/xml/reports/individual_ext_report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "Gizabanako batekin harreman estua duten familien kontakizuna."
+msgstr "Gizabanako batekin harreman estua duten familietako kideen zerrenda."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:52
 #: resources/xml/reports/relative_ext_report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Gizabanako batekin harreman estua duten banakoen kontakizuna."
+msgstr "Gizabanako batekin harreman estua duten pertsonen zerrenda."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:56
@@ -1003,7 +1003,9 @@ msgstr ""
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Egun edo leku jakin baterako bizi-erregistroen txostena."
+msgstr ""
+"Denbora-tarte edo leku jakin baterako bizitza-erregistroen txostena ("
+"jaiotzak edo heriotzak)."
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -2811,12 +2813,12 @@ msgstr "Jaiotza herrialdeka"
 #: resources/xml/reports/bdm_report.xml:8
 #: resources/xml/reports/birth_report.xml:8
 msgid "Birth date range end"
-msgstr "Jaiotza data-tartea bukatzea"
+msgstr "Jaiotegun data-tartearen bukaera"
 
 #: resources/xml/reports/bdm_report.xml:7
 #: resources/xml/reports/birth_report.xml:7
 msgid "Birth date range start"
-msgstr "Jaiotza data tartea hasten da"
+msgstr "Jaiotegun data-tartearen hasiera"
 
 #: app/CustomTags/BrothersKeeper.php:73
 msgid "Birth name"
@@ -3232,7 +3234,7 @@ msgstr "Emaztearen ehorzketa"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
-msgstr "Ehorzketa-lekua"
+msgstr "Ehorzketaren lekua"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:40
@@ -3756,7 +3758,7 @@ msgstr "Zitazioa"
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
-msgstr "Zitazioaren xehetasunak"
+msgstr "Aipamenaren xehetasunak"
 
 #: app/CustomTags/Reunion.php:55
 msgid "Citizenship"
@@ -4878,12 +4880,12 @@ msgstr "Heriotzak herrialdeka"
 #: resources/xml/reports/bdm_report.xml:10
 #: resources/xml/reports/death_report.xml:8
 msgid "Death date range end"
-msgstr "Heriotzaren adin tartearen bukaera"
+msgstr "Heriotza-data tartearen bukaera"
 
 #: resources/xml/reports/bdm_report.xml:9
 #: resources/xml/reports/death_report.xml:7
 msgid "Death date range start"
-msgstr "Heriotzaren adin tartearen hasiera"
+msgstr "Heriotza-data tartearen hasiera"
 
 #: app/Services/IndividualFactsService.php:350
 msgid "Death of a brother"
@@ -5154,7 +5156,7 @@ msgstr "Ezabatu"
 #: app/Http/RequestHandlers/UsersCleanupPage.php:65
 #: resources/views/admin/control-panel.phtml:544
 msgid "Delete inactive users"
-msgstr "Ezabatu erabiltzaile ez-aktiboak"
+msgstr "Ezabatu aktiboak ez diren erabiltzaileak"
 
 #: resources/views/modules/user-messages/user-messages.phtml:146
 msgid "Delete selected messages"
@@ -5795,7 +5797,7 @@ msgstr "Azken urtea"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
-msgstr "Aldaketa-daten azken denbora-tartea"
+msgstr "Aldaketen denbora-tartearen bukaera"
 
 #. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
@@ -5881,7 +5883,7 @@ msgstr "Izen komertziala"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:369
 msgid "Estimated dates for birth and death"
-msgstr "Jaiotza eta heriotzerako gutzi gora beherako datak"
+msgstr "Jaiotza eta heriotzerako gutxi gora beherako datak"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:183
@@ -7083,7 +7085,7 @@ msgstr "Belaunaldia "
 #: resources/xml/reports/individual_ext_report.xml:7
 #: resources/xml/reports/missing_facts_report.xml:7
 msgid "Generations"
-msgstr "Belaunaldiak"
+msgstr "Zenbat belaunaldi"
 
 #: app/Gedcom.php:874
 msgid "Generations of ancestors"
@@ -8656,7 +8658,7 @@ msgstr "Lursail salmenta"
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Landscape"
-msgstr "Paisaia"
+msgstr "Etzana"
 
 #. I18N: A configuration setting
 #: app/CustomTags/GedcomL.php:264 app/Gedcom.php:507 app/Gedcom.php:865
@@ -9359,11 +9361,11 @@ msgstr "Ezkontza kontratua"
 
 #: resources/xml/reports/marriage_report.xml:8
 msgid "Marriage date range end"
-msgstr "Ezkontzaren adin-rangoaren bukaera"
+msgstr "Ezkontza-dataren tartearen bukaera"
 
 #: resources/xml/reports/marriage_report.xml:7
 msgid "Marriage date range start"
-msgstr "Ezkontzaren adin-rangoaren hasiera"
+msgstr "Ezkontza-dataren tartearen hasiera"
 
 #: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:89
 msgid "Marriage ending status"
@@ -11084,7 +11086,7 @@ msgstr "Ordenazioa"
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Orientation"
-msgstr "Norabidea"
+msgstr "Etzana/Zutikakoa"
 
 #: app/CustomTags/Ancestry.php:70
 msgid "Origin"
@@ -11460,7 +11462,7 @@ msgstr "Lekua"
 #: app/Module/PlaceHierarchyListModule.php:232
 #: resources/views/place-hierarchy.phtml:18
 msgid "Place hierarchy"
-msgstr "Lekuen ierarkia"
+msgstr "Lekuen izen-zerrenda"
 
 #: app/CustomTags/PhpGedView.php:65
 msgid "Place in Hebrew"
@@ -11686,7 +11688,7 @@ msgstr "Porto Alegre, Brasil"
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Portrait"
-msgstr "Erretratua"
+msgstr "Zutikakoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:409
@@ -11808,7 +11810,7 @@ msgstr "Primidi"
 
 #: resources/xml/reports/family_group_report.xml:10
 msgid "Print basic events when blank"
-msgstr "Inprimatu oinarrizko gertaerak hutsik daudenean"
+msgstr "Inprimatu oinarrizko gertaerak hutsik daudenean ere"
 
 #: app/CustomTags/GedcomL.php:146 app/CustomTags/GedcomL.php:202
 #: app/CustomTags/Legacy.php:137
@@ -12256,7 +12258,7 @@ msgstr "Ahaidetasuna: %s"
 #: resources/views/lists/individuals-table.phtml:215
 #: resources/views/modules/relationships-chart/config.phtml:35
 msgid "Relationships"
-msgstr "Ahaidetasunak"
+msgstr "Bi gizabanakoen arteko harremana"
 
 #. I18N: %s are individual’s names
 #: app/Module/RelationshipsChartModule.php:259
@@ -13904,7 +13906,7 @@ msgstr "Datak sailkatu"
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "Sort order"
-msgstr "Gai hontaz ordenatu"
+msgstr "Honen arabera sailkatu"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:111
 msgid "Sort time"
@@ -14103,7 +14105,7 @@ msgstr "Urtea hasterakoan"
 
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
-msgstr "Aldaketen daten denbora-tartearen hasiera"
+msgstr "Aldaketen denbora-tartearen hasiera"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
@@ -14314,7 +14316,7 @@ msgstr "Svalbard eta Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: resources/views/modules/relationships-chart/page.phtml:84
 msgid "Swap individuals"
-msgstr "Pertsonak trukatu"
+msgstr "Bi gizabanakoen lekua trukatu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:471
@@ -14591,14 +14593,14 @@ msgstr "Egutegiaren menua."
 #: app/Http/RequestHandlers/PendingChangesAcceptTree.php:60
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "\"%s\"eko aldaketak onartu dira."
+msgstr "\"%s\"ren aldaketak onartu dira."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php:64
 #: app/Http/RequestHandlers/PendingChangesRejectTree.php:59
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "\"%s\"eko aldaketak ez dira onartu."
+msgstr "\"%s\"ren aldaketak ez dira onartu."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:70
@@ -14879,7 +14881,7 @@ msgstr ""
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
-"GEDCOMeko bertsioa berriak etiketa berriak gehituko ditu eta zaharrak "
+"GEDCOMeko bertsio berriak etiketa berriak gehituko ditu eta zaharrak "
 "ezabatu. Zenbait etiketa berri erabiltzen ahal dituzu dagoeneko."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
@@ -14910,7 +14912,7 @@ msgstr "Pasahitza berreskuratzeko lotura kadukatu da."
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:114
 msgid "The place hierarchy."
-msgstr "Lekuen ierarkia."
+msgstr "Lekuen izen-zerrenda."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:170
 #: app/Http/RequestHandlers/TreePrivacyAction.php:133
@@ -17861,7 +17863,7 @@ msgstr "ezeztatua"
 #: app/Module/PedigreeChartModule.php:375
 #: resources/views/edit/reorder-card-header.phtml:32
 msgid "down"
-msgstr "behea"
+msgstr "beheiti"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -18047,7 +18049,7 @@ msgstr "bosgarren lehengusua"
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:27
 msgid "first"
-msgstr "lehenbizikoa"
+msgstr "lehenbizikora"
 
 #: resources/views/admin/trees-preferences.phtml:569
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -20056,12 +20058,12 @@ msgstr "egun osagarriak"
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/modules/media-list/pagination.phtml:55
 msgid "last"
-msgstr "azkena"
+msgstr "azkenera"
 
 #: resources/views/admin/trees-preferences.phtml:569
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr "azkena"
+msgstr "azkenera"
 
 #: app/Module/PedigreeChartModule.php:364
 #: app/Module/PedigreeChartModule.php:372
