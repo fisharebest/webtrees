@@ -441,7 +441,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     }
 
     /**
-     * Count the number of distinct given names (or the number of occurences of specific given names).
+     * Count the number of distinct given names (or the number of occurrences of specific given names).
      *
      * @param array<string> ...$params
      *
@@ -459,7 +459,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                 ->where('n_givn', '<>', Individual::PRAENOMEN_NESCIO)
                 ->whereNotNull('n_givn');
         } else {
-            // Count number of occurences of specific given names.
+            // Count number of occurrences of specific given names.
             $query->whereIn('n_givn', $params);
         }
 
@@ -485,7 +485,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             $query->distinct()
                 ->whereNotNull('n_surn');
         } else {
-            // Count number of occurences of specific surnames.
+            // Count number of occurrences of specific surnames.
             $query->whereIn('n_surn', $params);
         }
 

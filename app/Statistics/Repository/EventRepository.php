@@ -183,7 +183,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Retursn the list of common facts used query the data.
+     * Returns the list of common facts used query the data.
      *
      * @return array<string>
      */
@@ -242,7 +242,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted first/last occuring event.
+     * Returns the formatted first/last occurring event.
      *
      * @param string $direction The sorting direction
      *
@@ -283,7 +283,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted year of the first/last occuring event.
+     * Returns the formatted year of the first/last occurring event.
      *
      * @param string $direction The sorting direction
      *
@@ -364,7 +364,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted name of the first/last occuring event.
+     * Returns the formatted name of the first/last occurring event.
      *
      * @param string $direction The sorting direction
      *
@@ -402,7 +402,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted place of the first/last occuring event.
+     * Returns the formatted place of the first/last occurring event.
      *
      * @param string $direction The sorting direction
      *
