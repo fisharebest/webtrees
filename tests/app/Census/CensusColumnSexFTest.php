@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CensusColumnSexF
  *
- * X is the value expected for Female, as only the M or F colum is expected
+ * X is the value expected for Female, as only the M or F column is expected
  * to be marked.
  */
 class CensusColumnSexFTest extends TestCase

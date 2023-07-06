@@ -78,7 +78,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Calculates the Footnotes height
      *
      * @param HtmlRenderer $renderer
-     * @param float        $cellWidth The width of the cell to use it for text wraping
+     * @param float        $cellWidth The width of the cell to use it for text wrapping
      *
      * @return float     Footnote height in points
      */
@@ -134,11 +134,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote
                 $newtext            = '';
                 $wrapWidthRemaining = $this->wrapWidthRemaining;
                 $lines              = explode("\n", $this->numText);
-                // Go throught the text line by line
+                // Go through the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
                     $lw = $renderer->getStringWidth($line);
-                    // If the line has to be wraped
+                    // If the line has to be wrapped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
                         $addspace = count($words);

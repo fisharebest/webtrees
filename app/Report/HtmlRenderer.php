@@ -392,7 +392,7 @@ class HtmlRenderer extends AbstractRenderer
     }
 
     /**
-     * Uppdate max Y to keep track it incase of a pagebreak - ReportHtml
+     * Uppdate max Y to keep track it in case of a pagebreak - ReportHtml
      *
      * @param float $y
      *

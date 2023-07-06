@@ -236,7 +236,7 @@ class PdfRenderer extends AbstractRenderer
     }
 
     /**
-     * Get the maximum line width to draw from the curren position -PDF
+     * Get the maximum line width to draw from the current position -PDF
      * RTL supported
      *
      * @return float
