@@ -50,7 +50,7 @@ class CensusOfUnitedStates1890 extends CensusOfUnitedStates implements CensusInt
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnAge($this, 'Age', 'Age at nearest birthday. If under one year, give age in months'),
             new CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
-            new CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'Whether married duirng the census year (June 1, 1889, to May 31, 1890)'),
+            new CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'Whether married during the census year (June 1, 1889, to May 31, 1890)'),
             new CensusColumnNull($this, 'Chil', 'Mother of how many children, and number of these children living'),
             new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),
             new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father'),
