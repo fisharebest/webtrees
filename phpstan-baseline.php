@@ -1090,7 +1090,7 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
-    'count' => 2,
+    'count' => 3,
     'path' => __DIR__ . '/app/Module/CloudsTheme.php',
 ];
 $ignoreErrors[] = [
