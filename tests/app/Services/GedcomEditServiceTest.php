@@ -174,7 +174,7 @@ class GedcomEditServiceTest extends TestCase
     }
 
     /**
-     * Data provider for new inidvidual facts tests
+     * Data provider for new individual facts tests
      * @return array<array<string|array<string>>>
      */
     public function newIndividualFactsData(): array

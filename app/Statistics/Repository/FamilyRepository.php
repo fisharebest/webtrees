@@ -553,7 +553,7 @@ class FamilyRepository
     }
 
     /**
-     * General query on familes/children.
+     * General query on families/children.
      *
      * @param int    $year1
      * @param int    $year2

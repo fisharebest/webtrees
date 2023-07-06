@@ -200,7 +200,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
             if ($eH === 0.0) {
                 // This is text elements. Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->tcpdf->getCellHeightRatio();
-                // Calculate the cell hight with the largest font size used within this Box
+                // Calculate the cell height with the largest font size used within this Box
                 $cHT *= $renderer->largestFontHeight;
                 // Add cell padding
                 if ($this->padding) {
@@ -218,7 +218,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 $cH = $eH;
             }
         }
-        // Finaly, check the last cells height
+        // Finally, check the last cells height
         if ($cH < $renderer->lastCellHeight) {
             $cH = $renderer->lastCellHeight;
         }
