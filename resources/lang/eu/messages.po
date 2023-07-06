@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-06 09:48+0000\n"
+"PO-Revision-Date: 2023-07-07 10:51+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -932,7 +932,7 @@ msgstr "Pertsona baten xehetasunen txostena."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Iturri jakin batek babestutako gertaeren txostena."
+msgstr "Iturri jakin batetik bildutako erregistroen txostena."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
@@ -954,7 +954,7 @@ msgstr "Lan jakin bat zuten pertsonen txostena."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Une edo toki jakin batean jaio ziren pertsonen txostena."
+msgstr "Une edo toki jakin batean jaio diren gizabanakoen txostena."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
@@ -978,13 +978,13 @@ msgstr "Egin berriak diren eta egiteke dauden aldaketen txostena."
 #: app/Module/IndividualFamiliesReportModule.php:56
 #: resources/xml/reports/individual_ext_report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "Gizabanako batekin harreman estua duten familien kontakizuna."
+msgstr "Gizabanako batekin harreman estua duten familietako kideen zerrenda."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:52
 #: resources/xml/reports/relative_ext_report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Gizabanako batekin harreman estua duten banakoen kontakizuna."
+msgstr "Gizabanako batekin harreman estua duten pertsonen zerrenda."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:56
@@ -3758,7 +3758,7 @@ msgstr "Zitazioa"
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
-msgstr "Zitazioaren xehetasunak"
+msgstr "Aipamenaren xehetasunak"
 
 #: app/CustomTags/Reunion.php:55
 msgid "Citizenship"
@@ -8658,7 +8658,7 @@ msgstr "Lursail salmenta"
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Landscape"
-msgstr "Paisaia"
+msgstr "Etzana"
 
 #. I18N: A configuration setting
 #: app/CustomTags/GedcomL.php:264 app/Gedcom.php:507 app/Gedcom.php:865
@@ -9361,11 +9361,11 @@ msgstr "Ezkontza kontratua"
 
 #: resources/xml/reports/marriage_report.xml:8
 msgid "Marriage date range end"
-msgstr "Ezkontzaren adin-rangoaren bukaera"
+msgstr "Ezkontza-dataren tartearen bukaera"
 
 #: resources/xml/reports/marriage_report.xml:7
 msgid "Marriage date range start"
-msgstr "Ezkontzaren adin-rangoaren hasiera"
+msgstr "Ezkontza-dataren tartearen hasiera"
 
 #: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:89
 msgid "Marriage ending status"
@@ -11688,7 +11688,7 @@ msgstr "Porto Alegre, Brasil"
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Portrait"
-msgstr "Erretratua"
+msgstr "Zutikakoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:409
@@ -11810,7 +11810,7 @@ msgstr "Primidi"
 
 #: resources/xml/reports/family_group_report.xml:10
 msgid "Print basic events when blank"
-msgstr "Inprimatu oinarrizko gertaerak hutsik daudenean"
+msgstr "Inprimatu oinarrizko gertaerak hutsik daudenean ere"
 
 #: app/CustomTags/GedcomL.php:146 app/CustomTags/GedcomL.php:202
 #: app/CustomTags/Legacy.php:137
