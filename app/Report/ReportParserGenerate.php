@@ -1938,7 +1938,7 @@ class ReportParserGenerate extends ReportParserBase
                             });
                             // Search the DB only if there is any name supplied
                             $names = explode(' ', $match[1]);
-                            foreach ($names as $n => $name) {
+                            foreach ($names as $name) {
                                 $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
                             }
 
@@ -2038,7 +2038,7 @@ class ReportParserGenerate extends ReportParserBase
                                 // Search the DB only if there is any name supplied
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
-                                    foreach ($names as $n => $name) {
+                                    foreach ($names as $name) {
                                         $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
                                     }
                                 }

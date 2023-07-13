@@ -53,7 +53,7 @@ use Fisharebest\Webtrees\Tree;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($facts as $fact_id => $fact) : ?>
+                        <?php foreach ($facts as $fact) : ?>
                             <tr>
                                 <td>
                                     <input type="checkbox" name="keep1[]" value="<?= $fact->id() ?>" checked>
@@ -100,7 +100,7 @@ use Fisharebest\Webtrees\Tree;
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($facts1 as $fact_id => $fact) : ?>
+                                <?php foreach ($facts1 as $fact) : ?>
                                     <tr>
                                         <td>
                                             <input type="checkbox" name="keep1[]" value="<?= $fact->id() ?>" checked>
@@ -146,7 +146,7 @@ use Fisharebest\Webtrees\Tree;
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($facts2 as $fact_id => $fact) : ?>
+                                <?php foreach ($facts2 as $fact) : ?>
                                     <tr>
                                         <td>
                                             <input type="checkbox" name="keep2[]" value="<?= $fact->id() ?>" checked>

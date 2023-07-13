@@ -98,7 +98,7 @@ use Illuminate\Support\Collection;
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-            <?php foreach ($media_objects as $n => $media_object) : ?>
+            <?php foreach ($media_objects as $media_object) : ?>
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-header">
@@ -116,7 +116,6 @@ use Illuminate\Support\Collection;
                                 <p class="card-text">
                                     <?php
                                     // Show file details
-                                    $mediatype = $media_file->type();
                                     if ($media_file->type() !== '') {
                                         $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
                                         echo $element->labelValue($media_file->type(), $media_object->tree());

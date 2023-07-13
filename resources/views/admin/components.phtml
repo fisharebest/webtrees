@@ -50,7 +50,7 @@ use Illuminate\Support\Collection;
         </thead>
 
         <tbody>
-            <?php foreach ($modules as $module_name => $module) : ?>
+            <?php foreach ($modules as $module) : ?>
                 <tr>
                     <th scope="col">
                         <input type="hidden" name="order[]" value="<?= e($module->name()) ?>">
