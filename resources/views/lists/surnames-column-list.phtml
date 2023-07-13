@@ -16,17 +16,12 @@ use Fisharebest\Webtrees\Tree;
  * @var Tree                      $tree
  */
 
-$maximum = max(array_map(static fn (array $x): int => max($x), $surnames));
-$minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
-
 ?>
 
 <div class="wt-surnames-column-list px-3" style="columns: 15rem; column-rule: solid thin gray; border: solid thin gray;">
     <?php foreach ($surnames as $surn => $surns) : ?>
         <?php foreach ($surns as $surname => $count) : ?>
             <?php
-            $size     = 1.0 + ($maximum === $minimum ? 0 : 1.5 * ($count - $minimum) / ($maximum - $minimum));
-
             if ($surn === Individual::NOMEN_NESCIO) {
                 $label = I18N::translateContext('Unknown surname', '…');
                 $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surname] + $params) : '';
