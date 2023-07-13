@@ -256,7 +256,7 @@ $("#<?= e($table_id) ?>")
                     <!-- Death date -->
                     <?php $death_dates = $individual->getAllDeathDates() ?>
                     <td data-sort="<?= $individual->getEstimatedDeathDate()->julianDay() ?>">
-                        <?php foreach ($death_dates as $num => $death_date) : ?>
+                        <?php foreach ($death_dates as $death_date) : ?>
                             <div><?= $death_date->display($tree, null, true) ?></div>
                         <?php endforeach ?>
 

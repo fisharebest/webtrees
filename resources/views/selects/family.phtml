@@ -2,17 +2,13 @@
 
 declare(strict_types=1);
 
-use Fisharebest\Webtrees\Elements\Marriage;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\I18N;
 
 /**
  * @var Family $family
  */
 
 $marriage_date = $family->getMarriageDate();
-
-$marriage = new Marriage(I18N::translate('Marriage'))
 
 ?>
 <?= $family->fullName() ?>
