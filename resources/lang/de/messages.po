@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-04-19 10:07+0000\n"
-"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
+"PO-Revision-Date: 2023-07-15 04:51+0000\n"
+"Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -7614,7 +7614,11 @@ msgstr "Wenn das Miniaturbild mit dem Originalbild identisch ist, wird es nicht 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Das maximale Alter einer Person, das maximale Alter eines persönlichen Eintrages einer Person oder das maximale Alter der Kinder dieser Person, damit angenommen wird, dass diese Person mittlerweile verstorben ist und ihr Datensatz nicht mehr dem Datenschutz unterliegt."
+msgstr ""
+"Das maximale Alter einer Person, das maximale Alter eines persönlichen "
+"Eintrages einer Person oder das maximale Alter der Geburtsdaten von Kindern "
+"dieser Person, damit angenommen wird, dass diese Person mittlerweile "
+"verstorben ist und ihr Datensatz nicht mehr dem Datenschutz unterliegt."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:254
@@ -16607,7 +16611,11 @@ msgstr "Sie können die Bearbeitungsformulare vereinfachen, indem Sie nicht verw
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, in dem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
+msgstr ""
+"Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder "
+"Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt "
+"werden, indem ein „verstorben“-Merkmal gesetzt wird, das aus anderen "
+"Ereignissen abgeleitet werden kann."
 
 #: app/Http/RequestHandlers/LoginAction.php:110
 msgid "You cannot sign in because your browser does not accept cookies."
