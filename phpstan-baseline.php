@@ -4414,41 +4414,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/lists/submitters-table.phtml',
 ];
 $ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$clipboard_facts contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/media-page-details.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$clipboard_facts contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/media-page.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_families contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/media-page.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_individuals contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/media-page.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_locations contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/media-page.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_notes contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/media-page.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_sources contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/media-page.phtml',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/ancestors-chart/page.phtml',
@@ -4552,21 +4517,6 @@ $ignoreErrors[] = [
     'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleAnalyticsInterface\\:\\:externalUrl\\(\\)\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/resources/views/modules/privacy-policy/page.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_families contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/random_media/slide-show.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_individuals contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/random_media/slide-show.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^PHPDoc tag @var for variable \\$linked_sources contains generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/random_media/slide-show.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
