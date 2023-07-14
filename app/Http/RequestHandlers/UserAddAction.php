@@ -40,8 +40,6 @@ class UserAddAction implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * UserAddAction constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)

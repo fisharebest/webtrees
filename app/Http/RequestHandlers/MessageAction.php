@@ -47,8 +47,6 @@ class MessageAction implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * MessagePage constructor.
-     *
      * @param MessageService $message_service
      * @param UserService    $user_service
      */

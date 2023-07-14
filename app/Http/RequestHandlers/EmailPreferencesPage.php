@@ -45,8 +45,6 @@ class EmailPreferencesPage implements RequestHandlerInterface
     private EmailService $email_service;
 
     /**
-     * AdminSiteController constructor.
-     *
      * @param EmailService $email_service
      */
     public function __construct(EmailService $email_service)

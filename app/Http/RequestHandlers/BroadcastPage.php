@@ -36,8 +36,6 @@ class BroadcastPage implements RequestHandlerInterface
     private MessageService $message_service;
 
     /**
-     * MessagePage constructor.
-     *
      * @param MessageService $message_service
      */
     public function __construct(MessageService $message_service)

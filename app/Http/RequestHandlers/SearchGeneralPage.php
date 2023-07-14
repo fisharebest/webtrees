@@ -57,8 +57,6 @@ class SearchGeneralPage implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * SearchController constructor.
-     *
      * @param SearchService $search_service
      * @param TreeService   $tree_service
      */

@@ -37,8 +37,6 @@ class TomSelectNote extends AbstractTomSelectHandler
     protected SearchService $search_service;
 
     /**
-     * TomSelectNote constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(

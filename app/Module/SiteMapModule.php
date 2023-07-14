@@ -73,8 +73,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     private TreeService $tree_service;
 
     /**
-     * TreesMenuModule constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(TreeService $tree_service)

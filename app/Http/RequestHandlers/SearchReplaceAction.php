@@ -41,8 +41,6 @@ class SearchReplaceAction implements RequestHandlerInterface
     private SearchService $search_service;
 
     /**
-     * SearchController constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(SearchService $search_service)

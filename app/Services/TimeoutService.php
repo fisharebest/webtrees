@@ -36,8 +36,6 @@ class TimeoutService
     private float $start_time;
 
     /**
-     * TimeoutService constructor.
-     *
      * @param float|null $start_time
      */
     public function __construct(float $start_time = null)

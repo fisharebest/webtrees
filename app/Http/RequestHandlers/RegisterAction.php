@@ -62,8 +62,6 @@ class RegisterAction implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * RegisterController constructor.
-     *
      * @param CaptchaService   $captcha_service
      * @param EmailService     $email_service
      * @param RateLimitService $rate_limit_service

@@ -52,8 +52,6 @@ class Router implements MiddlewareInterface
     private TreeService $tree_service;
 
     /**
-     * Router constructor.
-     *
      * @param ModuleService   $module_service
      * @param RouterContainer $router_container
      * @param TreeService     $tree_service

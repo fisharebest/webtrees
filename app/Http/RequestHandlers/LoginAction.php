@@ -47,8 +47,6 @@ class LoginAction implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * LoginController constructor.
-     *
      * @param UpgradeService $upgrade_service
      * @param UserService    $user_service
      */

@@ -30,8 +30,6 @@ use function e;
 class GedcomErrorException extends Exception
 {
     /**
-     * GedcomErrorException constructor.
-     *
      * @param string $gedcom
      */
     public function __construct(string $gedcom)

@@ -55,8 +55,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     private TreeService $tree_service;
 
     /**
-     * ReviewChangesModule constructor.
-     *
      * @param EmailService $email_service
      * @param TreeService  $tree_service
      * @param UserService  $user_service

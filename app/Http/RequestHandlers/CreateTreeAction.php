@@ -40,8 +40,6 @@ class CreateTreeAction implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * CreateTreePage constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(TreeService $tree_service)

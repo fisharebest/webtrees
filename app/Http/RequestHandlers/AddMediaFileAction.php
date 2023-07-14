@@ -42,8 +42,6 @@ class AddMediaFileAction implements RequestHandlerInterface
     private PendingChangesService $pending_changes_service;
 
     /**
-     * AddMediaFileAction constructor.
-     *
      * @param MediaFileService      $media_file_service
      * @param PendingChangesService $pending_changes_service
      */

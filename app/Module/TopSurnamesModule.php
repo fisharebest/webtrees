@@ -54,8 +54,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     private ModuleService $module_service;
 
     /**
-     * TopSurnamesModule constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

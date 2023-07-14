@@ -39,8 +39,6 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
     private ModuleService $module_service;
 
     /**
-     * ChartsMenuModule constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

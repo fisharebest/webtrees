@@ -37,8 +37,6 @@ class FixMissingDeaths extends AbstractModule implements ModuleDataFixInterface
     private DataFixService $data_fix_service;
 
     /**
-     * FixMissingDeaths constructor.
-     *
      * @param DataFixService $data_fix_service
      */
     public function __construct(DataFixService $data_fix_service)

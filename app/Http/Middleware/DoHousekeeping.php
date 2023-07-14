@@ -53,8 +53,6 @@ class DoHousekeeping implements MiddlewareInterface
     private HousekeepingService $housekeeping_service;
 
     /**
-     * Housekeeping constructor.
-     *
      * @param HousekeepingService $housekeeping_service
      */
     public function __construct(HousekeepingService $housekeeping_service)

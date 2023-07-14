@@ -38,8 +38,6 @@ class ManageMediaPage implements RequestHandlerInterface
     private MediaFileService $media_file_service;
 
     /**
-     * MediaController constructor.
-     *
      * @param MediaFileService $media_file_service
      */
     public function __construct(MediaFileService $media_file_service)

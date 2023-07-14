@@ -57,8 +57,6 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     private DataFixService $data_fix_service;
 
     /**
-     * FixMissingDeaths constructor.
-     *
      * @param DataFixService $data_fix_service
      */
     public function __construct(DataFixService $data_fix_service)

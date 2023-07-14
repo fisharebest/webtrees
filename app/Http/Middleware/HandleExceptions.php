@@ -59,8 +59,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     private TreeService $tree_service;
 
     /**
-     * HandleExceptions constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(TreeService $tree_service)

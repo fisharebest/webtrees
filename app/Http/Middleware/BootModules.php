@@ -36,8 +36,6 @@ class BootModules implements MiddlewareInterface
     private ModuleThemeInterface $theme;
 
     /**
-     * BootModules constructor.
-     *
      * @param ModuleService        $module_service
      * @param ModuleThemeInterface $theme
      */

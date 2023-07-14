@@ -51,8 +51,6 @@ class SynchronizeTrees implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * AdminTreesController constructor.
-     *
      * @param AdminService        $admin_service
      * @param StreamFactoryInterface $stream_factory
      * @param TimeoutService      $timeout_service

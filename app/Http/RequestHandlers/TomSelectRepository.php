@@ -37,8 +37,6 @@ class TomSelectRepository extends AbstractTomSelectHandler
     protected SearchService $search_service;
 
     /**
-     * TomSelectRepository constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(

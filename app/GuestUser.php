@@ -33,8 +33,6 @@ class GuestUser implements UserInterface
     private string $real_name;
 
     /**
-     * GuestUser constructor.
-     *
      * @param string $email
      * @param string $real_name
      */

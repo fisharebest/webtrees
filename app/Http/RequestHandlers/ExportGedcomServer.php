@@ -50,8 +50,6 @@ class ExportGedcomServer implements RequestHandlerInterface
     private GedcomExportService $gedcom_export_service;
 
     /**
-     * ExportGedcomServer constructor.
-     *
      * @param GedcomExportService $gedcom_export_service
      */
     public function __construct(GedcomExportService $gedcom_export_service)

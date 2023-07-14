@@ -66,8 +66,6 @@ class ImportThumbnailsData implements RequestHandlerInterface
     private SearchService $search_service;
 
     /**
-     * ImportThumbnailsData constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(SearchService $search_service)

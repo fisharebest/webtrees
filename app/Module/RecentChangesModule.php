@@ -67,8 +67,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     private UserService $user_service;
 
     /**
-     * RecentChangesModule constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)

@@ -45,8 +45,6 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
     private ChartService $chart_service;
 
     /**
-     * CompactTreeChartModule constructor.
-     *
      * @param ChartService $chart_service
      */
     public function __construct(ChartService $chart_service)

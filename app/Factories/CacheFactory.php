@@ -43,9 +43,7 @@ class CacheFactory implements CacheFactoryInterface
 
     private FilesystemAdapter $filesystem_adapter;
 
-    /**
-     * CacheFactory constructor.
-     */
+    /**/
     public function __construct()
     {
         $this->array_adapter      = new ArrayAdapter(0, false);

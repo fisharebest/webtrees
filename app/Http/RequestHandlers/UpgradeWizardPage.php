@@ -55,8 +55,6 @@ class UpgradeWizardPage implements RequestHandlerInterface
     private UpgradeService $upgrade_service;
 
     /**
-     * UpgradeController constructor.
-     *
      * @param TreeService    $tree_service
      * @param UpgradeService $upgrade_service
      */

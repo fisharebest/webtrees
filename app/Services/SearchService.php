@@ -71,8 +71,6 @@ class SearchService
     private TreeService $tree_service;
 
     /**
-     * SearchService constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(

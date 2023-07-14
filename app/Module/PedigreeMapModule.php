@@ -72,8 +72,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     protected RelationshipService $relationship_service;
 
     /**
-     * PedigreeMapModule constructor.
-     *
      * @param ChartService        $chart_service
      * @param LeafletJsService    $leaflet_js_service
      * @param RelationshipService $relationship_service

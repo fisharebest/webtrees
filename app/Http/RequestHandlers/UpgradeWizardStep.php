@@ -83,8 +83,6 @@ class UpgradeWizardStep implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * UpgradeController constructor.
-     *
      * @param GedcomExportService $gedcom_export_service
      * @param TreeService         $tree_service
      * @param UpgradeService      $upgrade_service

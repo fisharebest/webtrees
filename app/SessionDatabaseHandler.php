@@ -36,8 +36,6 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     private ?object $row;
 
     /**
-     * SessionDatabaseHandler constructor.
-     *
      * @param ServerRequestInterface $request
      */
     public function __construct(ServerRequestInterface $request)

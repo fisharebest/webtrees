@@ -54,8 +54,6 @@ class MessageService
     private UserService $user_service;
 
     /**
-     * MessageService constructor.
-     *
      * @param EmailService $email_service
      * @param UserService  $user_service
      */

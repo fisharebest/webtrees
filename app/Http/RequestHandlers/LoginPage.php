@@ -40,8 +40,6 @@ class LoginPage implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * LoginPage constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(TreeService $tree_service)

@@ -47,8 +47,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     private UserService $user_service;
 
     /**
-     * UserMessagesModule constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)

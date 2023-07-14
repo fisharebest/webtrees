@@ -43,8 +43,6 @@ class AccountUpdate implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * AccountController constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)

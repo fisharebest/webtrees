@@ -39,8 +39,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
     private ClipboardService $clipboard_service;
 
     /**
-     * NotesTabModule constructor.
-     *
      * @param ClipboardService $clipboard_service
      */
     public function __construct(ClipboardService $clipboard_service)

@@ -40,8 +40,6 @@ class MergeTreesPage implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * AdminTreesController constructor.
-     *
      * @param AdminService   $admin_service
      * @param TreeService    $tree_service
      */

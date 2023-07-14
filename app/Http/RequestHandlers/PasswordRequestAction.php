@@ -61,8 +61,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
     private UserService $user_service;
 
     /**
-     * PasswordRequestForm constructor.
-     *
      * @param EmailService     $email_service
      * @param RateLimitService $rate_limit_service
      * @param UserService      $user_service

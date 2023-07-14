@@ -97,8 +97,6 @@ class SetupWizard implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * SetupWizard constructor.
-     *
      * @param MigrationService   $migration_service
      * @param ModuleService      $module_service
      * @param ServerCheckService $server_check_service

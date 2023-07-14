@@ -42,8 +42,6 @@ class RegisterPage implements RequestHandlerInterface
     private CaptchaService $captcha_service;
 
     /**
-     * RegisterPage constructor.
-     *
      * @param CaptchaService $captcha_service
      */
     public function __construct(CaptchaService $captcha_service)

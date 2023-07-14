@@ -42,8 +42,6 @@ class PendingChanges implements RequestHandlerInterface
     private PendingChangesService $pending_changes_service;
 
     /**
-     * PendingChanges constructor.
-     *
      * @param PendingChangesService $pending_changes_service
      */
     public function __construct(PendingChangesService $pending_changes_service)
