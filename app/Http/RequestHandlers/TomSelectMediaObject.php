@@ -37,8 +37,6 @@ class TomSelectMediaObject extends AbstractTomSelectHandler
     protected SearchService $search_service;
 
     /**
-     * TomSelectMediaObject constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(

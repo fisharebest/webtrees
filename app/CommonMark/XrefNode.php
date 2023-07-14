@@ -30,8 +30,6 @@ class XrefNode extends Node
     private GedcomRecord $record;
 
     /**
-     * XrefNode constructor.
-     *
      * @param GedcomRecord $record
      */
     public function __construct(GedcomRecord $record)

@@ -94,8 +94,6 @@ class ControlPanel implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * ControlPanel constructor.
-     *
      * @param AdminService        $admin_service
      * @param HousekeepingService $housekeeping_service
      * @param MessageService      $message_service

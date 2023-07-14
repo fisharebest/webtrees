@@ -32,8 +32,6 @@ class Cache
     private CacheInterface $cache;
 
     /**
-     * Cache constructor.
-     *
      * @param CacheInterface $cache
      */
     public function __construct(CacheInterface $cache)

@@ -46,8 +46,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     private HtmlService $html_service;
 
     /**
-     * HtmlBlockModule constructor.
-     *
      * @param HtmlService $html_service
      */
     public function __construct(HtmlService $html_service)

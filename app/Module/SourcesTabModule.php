@@ -38,8 +38,6 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     private ClipboardService $clipboard_service;
 
     /**
-     * SourcesTabModule constructor.
-     *
      * @param ClipboardService $clipboard_service
      */
     public function __construct(ClipboardService $clipboard_service)

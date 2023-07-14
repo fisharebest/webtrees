@@ -40,8 +40,6 @@ class SitePreferencesPage implements RequestHandlerInterface
     private ModuleService $module_service;
 
     /**
-     * AdminSiteController constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

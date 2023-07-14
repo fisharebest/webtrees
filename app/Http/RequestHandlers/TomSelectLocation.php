@@ -37,8 +37,6 @@ class TomSelectLocation extends AbstractTomSelectHandler
     protected SearchService $search_service;
 
     /**
-     * TomSelectLocation constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(

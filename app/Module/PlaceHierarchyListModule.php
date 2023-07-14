@@ -68,8 +68,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     private SearchService $search_service;
 
     /**
-     * PlaceHierarchy constructor.
-     *
      * @param LeafletJsService $leaflet_js_service
      * @param ModuleService    $module_service
      * @param SearchService    $search_service

@@ -40,8 +40,6 @@ use const UPLOAD_ERR_PARTIAL;
 class FileUploadException extends RuntimeException
 {
     /**
-     * GedcomErrorException constructor.
-     *
      * @param UploadedFileInterface|null $uploaded_file
      */
     public function __construct(?UploadedFileInterface $uploaded_file)

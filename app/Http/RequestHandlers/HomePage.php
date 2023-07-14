@@ -43,8 +43,6 @@ class HomePage implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * HomePage constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(TreeService $tree_service)

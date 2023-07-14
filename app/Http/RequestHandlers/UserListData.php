@@ -47,8 +47,6 @@ class UserListData implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * UserListData constructor.
-     *
      * @param DatatablesService $datatables_service
      * @param ModuleService     $module_service
      * @param UserService       $user_service

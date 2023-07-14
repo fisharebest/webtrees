@@ -67,8 +67,6 @@ class ManageMediaData implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * MediaController constructor.
-     *
      * @param DatatablesService   $datatables_service
      * @param LinkedRecordService $linked_record_service
      * @param MediaFileService    $media_file_service

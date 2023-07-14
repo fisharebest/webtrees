@@ -84,8 +84,6 @@ class UpgradeService
     private TimeoutService $timeout_service;
 
     /**
-     * UpgradeService constructor.
-     *
      * @param TimeoutService $timeout_service
      */
     public function __construct(TimeoutService $timeout_service)

@@ -38,8 +38,6 @@ class CalendarPage implements RequestHandlerInterface
     private CalendarService $calendar_service;
 
     /**
-     * CalendarPage constructor.
-     *
      * @param CalendarService $calendar_service
      */
     public function __construct(CalendarService $calendar_service)

@@ -60,8 +60,6 @@ class ContactAction implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * MessagePage constructor.
-     *
      * @param CaptchaService   $captcha_service
      * @param EmailService     $email_service
      * @param MessageService   $message_service

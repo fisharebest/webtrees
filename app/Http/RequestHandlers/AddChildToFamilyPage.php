@@ -41,8 +41,6 @@ class AddChildToFamilyPage implements RequestHandlerInterface
     private GedcomEditService $gedcom_edit_service;
 
     /**
-     * LinkSpouseToIndividualPage constructor.
-     *
      * @param GedcomEditService $gedcom_edit_service
      */
     public function __construct(GedcomEditService $gedcom_edit_service)

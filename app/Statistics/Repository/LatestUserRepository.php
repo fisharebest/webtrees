@@ -41,8 +41,6 @@ class LatestUserRepository implements LatestUserRepositoryInterface
     private UserService $user_service;
 
     /**
-     * LatestUserRepository constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)

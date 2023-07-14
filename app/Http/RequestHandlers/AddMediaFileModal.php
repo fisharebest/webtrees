@@ -41,8 +41,6 @@ class AddMediaFileModal implements RequestHandlerInterface
     private MediaFileService $media_file_service;
 
     /**
-     * AddMediaFileModal constructor.
-     *
      * @param MediaFileService $media_file_service
      */
     public function __construct(MediaFileService $media_file_service)

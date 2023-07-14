@@ -30,8 +30,6 @@ use function e;
 class InvalidGedcomEncodingException extends Exception
 {
     /**
-     * InvalidGedcomEncodingException constructor.
-     *
      * @param string $charset
      */
     public function __construct(string $charset)

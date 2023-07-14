@@ -47,8 +47,6 @@ class DataFixData implements RequestHandlerInterface
     private ModuleService $module_service;
 
     /**
-     * DataFix constructor.
-     *
      * @param DataFixService    $data_fix_service
      * @param DatatablesService $datatables_service
      * @param ModuleService     $module_service

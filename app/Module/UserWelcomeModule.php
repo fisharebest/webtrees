@@ -39,8 +39,6 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
     private ModuleService $module_service;
 
     /**
-     * UserWelcomeModule constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

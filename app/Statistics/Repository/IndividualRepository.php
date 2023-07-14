@@ -854,7 +854,6 @@ class IndividualRepository implements IndividualRepositoryInterface
             return '';
         }
 
-        /** @var Individual $individual */
         $individual = Registry::individualFactory()->mapper($this->tree)($row);
 
         if ($type !== 'age' && !$individual->canShow()) {
@@ -1008,7 +1007,6 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $top10 = [];
         foreach ($rows as $row) {
-            /** @var Individual $individual */
             $individual = Registry::individualFactory()->mapper($this->tree)($row);
 
             if ($individual->canShow()) {

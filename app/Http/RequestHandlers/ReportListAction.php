@@ -38,8 +38,6 @@ class ReportListAction implements RequestHandlerInterface
     private ModuleService $module_service;
 
     /**
-     * ReportEngineController constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

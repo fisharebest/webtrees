@@ -37,8 +37,6 @@ class TomSelectSubmitter extends AbstractTomSelectHandler
     protected SearchService $search_service;
 
     /**
-     * TomSelectSubmitter constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(

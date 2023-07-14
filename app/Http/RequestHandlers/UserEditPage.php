@@ -50,8 +50,6 @@ class UserEditPage implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * UserEditPage constructor.
-     *
      * @param MessageService $message_service
      * @param ModuleService  $module_service
      * @param TreeService    $tree_service

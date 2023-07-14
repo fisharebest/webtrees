@@ -63,8 +63,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     private ModuleService $module_service;
 
     /**
-     * PlacesModule constructor.
-     *
      * @param LeafletJsService $leaflet_js_service
      * @param ModuleService    $module_service
      */

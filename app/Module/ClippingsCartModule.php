@@ -112,8 +112,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     private LinkedRecordService $linked_record_service;
 
     /**
-     * ClippingsCartModule constructor.
-     *
      * @param GedcomExportService $gedcom_export_service
      * @param LinkedRecordService $linked_record_service
      */

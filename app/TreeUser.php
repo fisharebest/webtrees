@@ -30,8 +30,6 @@ class TreeUser implements UserInterface
     private Tree $tree;
 
     /**
-     * TreeUser constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)

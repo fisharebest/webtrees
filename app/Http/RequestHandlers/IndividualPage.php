@@ -65,8 +65,6 @@ class IndividualPage implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * IndividualPage constructor.
-     *
      * @param ClipboardService $clipboard_service
      * @param ModuleService    $module_service
      * @param UserService      $user_service
