@@ -3316,6 +3316,11 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
+			message: "#^Cannot call method fullName\\(\\) on mixed\\.$#"
+			count: 2
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
 			message: "#^Cannot call method getBirthDate\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
@@ -3333,6 +3338,11 @@ parameters:
 		-
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: "#^Cannot call method url\\(\\) on mixed\\.$#"
+			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
