@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-07 10:51+0000\n"
+"PO-Revision-Date: 2023-07-17 19:51+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -6297,7 +6297,7 @@ msgstr "Familiaren saski genealogikoa"
 #: resources/views/admin/trees-create.phtml:25
 #: resources/views/admin/trees-preferences.phtml:50
 msgid "Family tree title"
-msgstr "Familiko zuhaitzaren izena"
+msgstr "Familiako zuhaitzaren izena"
 
 #. I18N: Name of a module
 #: app/Module/TreesMenuModule.php:59 app/Module/TreesMenuModule.php:108
@@ -15340,7 +15340,9 @@ msgstr "Formulario hau iraungirik dago. Saiatu berriz."
 
 #: app/Auth.php:289 app/Http/RequestHandlers/RedirectIndividualPhp.php:69
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "Pertsona hau ez dago zuhaitzean, edo ez duzu baimenik ikusteko."
+msgstr ""
+"Pertsona hau ez dago zuhaitzean, edo ezin zaizu erakutsi pribatutasun arauak "
+"direla medio."
 
 #: resources/views/individual-page-pending.phtml:23
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
