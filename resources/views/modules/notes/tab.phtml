@@ -21,84 +21,89 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<div class="wt-tan-notes py-4">
-    <table class="table wt-facts-table">
-        <tr>
-            <td colspan="2">
-                <label>
-                    <input id="show-level-2-notes" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-note" data-wt-persist="level-two-notes" autocomplete="off">
-                    <?= I18N::translate('Show all notes') ?>
-                </label>
-            </td>
-        </tr>
+<div class="row">
+    <div class="wt-tab-facts py-4 col-12">
+        <table class="table wt-facts-table wt-table-fixed">
+            <colgroup>
+                <col class="col-2">
+            </colgroup>
+            <tr>
+                <td colspan="2">
+                    <label>
+                        <input id="show-level-2-notes" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-note" data-wt-persist="level-two-notes" autocomplete="off">
+                        <?= I18N::translate('Show all notes') ?>
+                    </label>
+                </td>
+            </tr>
 
-        <?php foreach ($facts as $fact) : ?>
-            <?php if ($fact->tag() === 'INDI:NOTE' || $fact->tag() === 'FAM:NOTE') : ?>
-                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
-            <?php else : ?>
-                <?php
-                if ($fact->isPendingAddition()) {
-                    $styleadd = 'wt-new ';
-                } elseif ($fact->isPendingDeletion()) {
-                    $styleadd = 'wt-old ';
-                } else {
-                    $styleadd = '';
-                }
-                ?>
+            <?php foreach ($facts as $fact) : ?>
+                <?php if ($fact->tag() === 'INDI:NOTE' || $fact->tag() === 'FAM:NOTE') : ?>
+                    <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
+                <?php else : ?>
+                    <?php
+                    if ($fact->isPendingAddition()) {
+                        $styleadd = 'wt-new ';
+                    } elseif ($fact->isPendingDeletion()) {
+                        $styleadd = 'wt-old ';
+                    } else {
+                        $styleadd = '';
+                    }
+                    ?>
 
-                <tr class="wt-level-two-note collapse">
-                    <th scope="row" class="rela <?= $styleadd ?>">
-                        <?= $fact->label() ?>
-                        <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-notes']) ?>
-                    </th>
+                    <tr class="wt-level-two-note collapse">
+                        <th scope="row" class="rela <?= $styleadd ?>">
+                            <?= $fact->label() ?>
+                            <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-notes']) ?>
+                        </th>
 
-                    <td class="<?= $styleadd ?>">
-                        <?php preg_match_all("/\n[1-9] NOTE ?(.*(?:\n\d CONT.*)*)/", $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
-                        <?php foreach ($matches as $match) : ?>
-                            <div class="mb-2">
-                                <?php $text = preg_replace('/\n\d CONT ?/', "\n", $match[1]) ?>
-                                <?php if (preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $text) === 1) : ?>
-                                    <?php $note = Registry::noteFactory()->make(trim($text, '@'), $individual->tree()) ?>
-                                    <?php if ($note instanceof Note) : ?>
-                                        <?php if ($note->canShow()) : ?>
-                                            <a href="<?= e($note->url()) ?>">
-                                                <?= I18N::translate('Shared note') ?>
-                                                <?= view('icons/note') ?>
-                                            </a>
-                                            <?= (new SubmitterText(''))->value($note->getNote(), $individual->tree()) ?>
+                        <td class="<?= $styleadd ?>">
+                            <?php preg_match_all("/\n[1-9] NOTE ?(.*(?:\n\d CONT.*)*)/", $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
+                            <?php foreach ($matches as $match) : ?>
+                                <div class="mb-2">
+                                    <?php $text = preg_replace('/\n\d CONT ?/', "\n", $match[1]) ?>
+                                    <?php if (preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $text) === 1) : ?>
+                                        <?php $note = Registry::noteFactory()->make(trim($text, '@'), $individual->tree()) ?>
+                                        <?php if ($note instanceof Note) : ?>
+                                            <?php if ($note->canShow()) : ?>
+                                                <a href="<?= e($note->url()) ?>">
+                                                    <?= I18N::translate('Shared note') ?>
+                                                    <?= view('icons/note') ?>
+                                                </a>
+                                                <?= (new SubmitterText(''))->value($note->getNote(), $individual->tree()) ?>
+                                            <?php endif ?>
+                                        <?php else : ?>
+                                            <span class="error"><?= e($text) ?></span>
                                         <?php endif ?>
                                     <?php else : ?>
-                                        <span class="error"><?= e($text) ?></span>
+                                        <?= (new SubmitterText(''))->value($text, $individual->tree()) ?>
                                     <?php endif ?>
-                                <?php else : ?>
-                                    <?= (new SubmitterText(''))->value($text, $individual->tree()) ?>
-                                <?php endif ?>
-                            </div>
-                        <?php endforeach ?>
+                                </div>
+                            <?php endforeach ?>
+                        </td>
+                    </tr>
+                <?php endif ?>
+            <?php endforeach ?>
+
+            <?php if ($facts->isEmpty()) : ?>
+                <tr>
+                    <td colspan="2">
+                        <?= I18N::translate('There are no notes for this individual.') ?>
                     </td>
                 </tr>
             <?php endif ?>
-        <?php endforeach ?>
 
-        <?php if ($facts->isEmpty()) : ?>
-            <tr>
-                <td colspan="2">
-                    <?= I18N::translate('There are no notes for this individual.') ?>
-                </td>
-            </tr>
-        <?php endif ?>
-
-        <?php if ($can_edit) : ?>
-            <tr>
-                <th scope="row">
-                    <?= I18N::translate('Note') ?>
-                </th>
-                <td>
-                    <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'NOTE'])) ?>">
-                        <?= I18N::translate('Add a note') ?>
-                    </a>
-                </td>
-            </tr>
-        <?php endif ?>
-    </table>
+            <?php if ($can_edit) : ?>
+                <tr>
+                    <th scope="row">
+                        <?= I18N::translate('Note') ?>
+                    </th>
+                    <td>
+                        <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'NOTE'])) ?>">
+                            <?= I18N::translate('Add a note') ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endif ?>
+        </table>
+    </div>
 </div>

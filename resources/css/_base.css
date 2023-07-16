@@ -147,3 +147,7 @@ a:hover, .btn-link:hover, .nav-link:hover {
 :fullscreen .wt-icon-enter-fullscreen {
     display: none;
 }
+
+.wt-table-fixed {
+    table-layout: fixed;
+}

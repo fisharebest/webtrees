@@ -19,53 +19,54 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<div class="wt-tab-facts py-4">
-    <table class="table wt-facts-table" style="table-layout: fixed">
-        <colgroup>
-            <col style="width:25%">
-            <col style="width:75%">
-        </colgroup>
-        <tbody>
-            <tr>
-                <td colspan="2">
-                    <?php if ($has_associate_facts) : ?>
-                        <label>
-                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates" autocomplete="off">
-                            <?= I18N::translate('Associated events') ?>
-                        </label>
-                    <?php endif ?>
-
-                    <?php if ($has_relative_facts) : ?>
-                        <label>
-                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives" autocomplete="off">
-                            <?= I18N::translate('Events of close relatives') ?>
-                        </label>
-                    <?php endif ?>
-
-                    <?php if ($has_historic_facts) : ?>
-                        <label>
-                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts" autocomplete="off">
-                            <?= I18N::translate('Historic events') ?>
-                        </label>
-                    <?php endif ?>
-                </td>
-            </tr>
-
-            <?php foreach ($facts as $fact) : ?>
-                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
-            <?php endforeach ?>
-
-            <?php if ($facts->isEmpty()) : ?>
+<div class="row">
+    <div class="wt-tab-facts py-4 col-12">
+        <table class="table wt-facts-table wt-table-fixed">
+            <colgroup>
+                <col class="col-2">
+            </colgroup>
+            <tbody>
                 <tr>
                     <td colspan="2">
-                        <?= I18N::translate('There are no facts for this individual.') ?>
+                        <?php if ($has_associate_facts) : ?>
+                            <label>
+                                <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates" autocomplete="off">
+                                <?= I18N::translate('Associated events') ?>
+                            </label>
+                        <?php endif ?>
+
+                        <?php if ($has_relative_facts) : ?>
+                            <label>
+                                <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives" autocomplete="off">
+                                <?= I18N::translate('Events of close relatives') ?>
+                            </label>
+                        <?php endif ?>
+
+                        <?php if ($has_historic_facts) : ?>
+                            <label>
+                                <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts" autocomplete="off">
+                                <?= I18N::translate('Historic events') ?>
+                            </label>
+                        <?php endif ?>
                     </td>
                 </tr>
-            <?php endif ?>
 
-            <?php if ($individual->canEdit()) : ?>
-                <?= view('fact-add-new', ['record' => $individual]) ?>
-            <?php endif ?>
-        </tbody>
-    </table>
+                <?php foreach ($facts as $fact) : ?>
+                    <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
+                <?php endforeach ?>
+
+                <?php if ($facts->isEmpty()) : ?>
+                    <tr>
+                        <td colspan="2">
+                            <?= I18N::translate('There are no facts for this individual.') ?>
+                        </td>
+                    </tr>
+                <?php endif ?>
+
+                <?php if ($individual->canEdit()) : ?>
+                    <?= view('fact-add-new', ['record' => $individual]) ?>
+                <?php endif ?>
+            </tbody>
+        </table>
+    </div>
 </div>

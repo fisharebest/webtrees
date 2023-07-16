@@ -24,219 +24,226 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
 ?>
 
-<table class="table table-sm wt-facts-table">
-    <caption>
-        <a href="<?= e($family->url()) ?>"><?= $label ?></a>
-    </caption>
+<div class="row">
+    <div class="wt-tab-facts col-12">
+        <table class="table wt-facts-table wt-table-fixed">
+            <colgroup>
+                <col class="col-2">
+            </colgroup>
+            <caption>
+                <a href="<?= e($family->url()) ?>"><?= $label ?></a>
+            </caption>
 
-    <tbody>
-        <?php
-        $found = false;
-        foreach ($family->facts(['HUSB'], false, $fam_access_level) as $fact) {
-            $found |= !$fact->isPendingDeletion();
-            $person = $fact->target();
-            if ($person instanceof Individual) {
-                $row_class = 'wt-sex-' . strtolower($person->sex());
-                if ($fact->isPendingAddition()) {
-                    $row_class .= ' wt-new';
-                } elseif ($fact->isPendingDeletion()) {
-                    $row_class .= ' wt-old';
-                }
-                ?>
-                <tr class="<?= $row_class ?>">
-                    <th scope="row">
-                        <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
-                        <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
-                    </th>
-                    <td class="border-0 p-0">
-                        <?= view('chart-box', ['individual' => $person]) ?>
-                    </td>
-                </tr>
+            <tbody>
                 <?php
-            }
-        }
-        if (!$found && $family->canEdit()) {
-            ?>
-            <tr>
-                <th scope="row"></th>
-                <td>
-                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= I18N::translate('Add a husband') ?>
-                    </a>
-                </td>
-            </tr>
-            <?php
-        }
-
-        $found = false;
-        foreach ($family->facts(['WIFE'], false, $fam_access_level) as $fact) {
-            $person = $fact->target();
-            if ($person instanceof Individual) {
-                $found |= !$fact->isPendingDeletion();
-                $row_class = 'wt-sex-' . strtolower($person->sex());
-                if ($fact->isPendingAddition()) {
-                    $row_class .= ' wt-new';
-                } elseif ($fact->isPendingDeletion()) {
-                    $row_class .= ' wt-old';
-                }
+                $found = false;
+                foreach ($family->facts(['HUSB'], false, $fam_access_level) as $fact) {
+                    $found |= !$fact->isPendingDeletion();
+                    $person = $fact->target();
+                    if ($person instanceof Individual) {
+                        $row_class = 'wt-sex-' . strtolower($person->sex());
+                        if ($fact->isPendingAddition()) {
+                            $row_class .= ' wt-new';
+                        } elseif ($fact->isPendingDeletion()) {
+                            $row_class .= ' wt-old';
+                        }
                 ?>
-
-                <tr class="<?= $row_class ?>">
-                    <th scope="row">
-                        <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
-                        <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
-                    </th>
-                    <td class="border-0 p-0">
-                        <?= view('chart-box', ['individual' => $person]) ?>
-                    </td>
-                </tr>
-                <?php
-            }
-        }
-        if (!$found && $family->canEdit()) { ?>
-            <tr>
-                <th scope="row"></th>
-                <td>
-                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= I18N::translate('Add a wife') ?>
-                    </a>
-                </td>
-            </tr>
-
-        <?php } ?>
-
-        <?php
-        ///// MARR /////
-        $found = false;
-        $prev  = new Date('');
-        foreach ($family->facts(array_merge(Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS), true) as $fact) {
-            $found |= !$fact->isPendingDeletion();
-            if ($fact->isPendingAddition()) {
-                $row_class = 'wt-new';
-            } elseif ($fact->isPendingDeletion()) {
-                $row_class = 'wt-old';
-            } else {
-                $row_class = '';
-            }
-            ?>
-
-            <tr class="<?= $row_class ?>">
-                <th scope="row">
-                    <span class="visually-hidden"><?= $fact->label() ?></span>
-                </th>
-
-                <td>
-                    <span class="label"><?= $fact->label() ?></span>
-                    —
-                    <span class="field"><?= $fact->date()->display() ?> — <?= $fact->place()->fullName() ?></span>
-                </td>
-            </tr>
-
-            <?php
-            if (!$prev->isOK() && $fact->date()->isOK()) {
-                $prev = $fact->date();
-            }
-        }
-
-        if (!$found && $family->canShow() && $family->canEdit()) {
-            ?>
-            <tr>
-                <th scope="row">
-                    <span class="visually-hidden"><?= I18N::translate('Marriage') ?></span>
-                </th>
-
-                <td>
-                    <a href="<?= e(route(AddNewFact::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'fact' => 'MARR'])) ?>">
-                        <?= I18N::translate('Add marriage details') ?>
-                    </a>
-                </td>
-            </tr>
-            <?php
-        }
-
-        ///// CHIL /////
-        $child_number = 0;
-        foreach ($family->facts(['CHIL'], false, $fam_access_level) as $fact) {
-            $person = $fact->target();
-            if ($person instanceof Individual) {
-                $row_class = 'wt-sex-' . strtolower($person->sex());
-                if ($fact->isPendingAddition()) {
-                    $child_number++;
-                    $row_class .= ' new';
-                } elseif ($fact->isPendingDeletion()) {
-                    $row_class .= ' old';
-                } else {
-                    $child_number++;
-                }
-                $next = new Date('');
-                foreach ($person->facts(Gedcom::BIRTH_EVENTS, true) as $bfact) {
-                    if ($bfact->date()->isOK()) {
-                        $next = $bfact->date();
-                        break;
+                        <tr class="<?= $row_class ?>">
+                            <th scope="row">
+                                <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
+                                <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
+                            </th>
+                            <td class="border-0 p-0">
+                                <?= view('chart-box', ['individual' => $person]) ?>
+                            </td>
+                        </tr>
+                    <?php
                     }
                 }
+                if (!$found && $family->canEdit()) {
+                    ?>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>
+                            <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                                <?= I18N::translate('Add a husband') ?>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php
+                }
+
+                $found = false;
+                foreach ($family->facts(['WIFE'], false, $fam_access_level) as $fact) {
+                    $person = $fact->target();
+                    if ($person instanceof Individual) {
+                        $found |= !$fact->isPendingDeletion();
+                        $row_class = 'wt-sex-' . strtolower($person->sex());
+                        if ($fact->isPendingAddition()) {
+                            $row_class .= ' wt-new';
+                        } elseif ($fact->isPendingDeletion()) {
+                            $row_class .= ' wt-old';
+                        }
+                    ?>
+
+                        <tr class="<?= $row_class ?>">
+                            <th scope="row">
+                                <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
+                                <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
+                            </th>
+                            <td class="border-0 p-0">
+                                <?= view('chart-box', ['individual' => $person]) ?>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                }
+                if (!$found && $family->canEdit()) { ?>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>
+                            <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                                <?= I18N::translate('Add a wife') ?>
+                            </a>
+                        </td>
+                    </tr>
+
+                <?php } ?>
+
+                <?php
+                ///// MARR /////
+                $found = false;
+                $prev  = new Date('');
+                foreach ($family->facts(array_merge(Gedcom::MARRIAGE_EVENTS, Gedcom::DIVORCE_EVENTS), true) as $fact) {
+                    $found |= !$fact->isPendingDeletion();
+                    if ($fact->isPendingAddition()) {
+                        $row_class = 'wt-new';
+                    } elseif ($fact->isPendingDeletion()) {
+                        $row_class = 'wt-old';
+                    } else {
+                        $row_class = '';
+                    }
                 ?>
 
-                <tr class="<?= $row_class ?>">
-                    <th scope="row">
-                        <?php if ($individual === $person) : ?>
-                            <i class="icon-selected"></i>
-                        <?php endif ?>
+                    <tr class="<?= $row_class ?>">
+                        <th scope="row">
+                            <span class="visually-hidden"><?= $fact->label() ?></span>
+                        </th>
 
-                        <?php if ($prev->isOK() && $next->isOK()) : ?>
-                            <div class="wt-date-difference collapse small">
-                                <?php $days = $next->maximumJulianDay() - $prev->minimumJulianDay(); ?>
-                                <?php if ($days < 0 || $child_number > 1 && $days > 1 && $days < 240) : ?>
-                                    <?= view('icons/warning') ?>
+                        <td>
+                            <span class="label"><?= $fact->label() ?></span>
+                            —
+                            <span class="field"><?= $fact->date()->display() ?> — <?= $fact->place()->fullName() ?></span>
+                        </td>
+                    </tr>
+
+                    <?php
+                    if (!$prev->isOK() && $fact->date()->isOK()) {
+                        $prev = $fact->date();
+                    }
+                }
+
+                if (!$found && $family->canShow() && $family->canEdit()) {
+                    ?>
+                    <tr>
+                        <th scope="row">
+                            <span class="visually-hidden"><?= I18N::translate('Marriage') ?></span>
+                        </th>
+
+                        <td>
+                            <a href="<?= e(route(AddNewFact::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'fact' => 'MARR'])) ?>">
+                                <?= I18N::translate('Add marriage details') ?>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php
+                }
+
+                ///// CHIL /////
+                $child_number = 0;
+                foreach ($family->facts(['CHIL'], false, $fam_access_level) as $fact) {
+                    $person = $fact->target();
+                    if ($person instanceof Individual) {
+                        $row_class = 'wt-sex-' . strtolower($person->sex());
+                        if ($fact->isPendingAddition()) {
+                            $child_number++;
+                            $row_class .= ' new';
+                        } elseif ($fact->isPendingDeletion()) {
+                            $row_class .= ' old';
+                        } else {
+                            $child_number++;
+                        }
+                        $next = new Date('');
+                        foreach ($person->facts(Gedcom::BIRTH_EVENTS, true) as $bfact) {
+                            if ($bfact->date()->isOK()) {
+                                $next = $bfact->date();
+                                break;
+                            }
+                        }
+                    ?>
+
+                        <tr class="<?= $row_class ?>">
+                            <th scope="row">
+                                <?php if ($individual === $person) : ?>
+                                    <i class="icon-selected"></i>
                                 <?php endif ?>
 
-                                <?php $months = intdiv($days + 15, 30); ?>
-                                <?php if (abs($months) === 12 || abs($months) >= 24) : ?>
-                                    <?= I18N::plural('%s year', '%s years', intdiv($months, 12), I18N::number(round($months / 12))) ?>
-                                <?php elseif ($months !== 0) : ?>
-                                    <?= I18N::plural('%s month', '%s months', $months, I18N::number($months)) ?>
-                                <?php endif ?>
-                            </div>
-                        <?php endif ?>
+                                <?php if ($prev->isOK() && $next->isOK()) : ?>
+                                    <div class="wt-date-difference collapse small">
+                                        <?php $days = $next->maximumJulianDay() - $prev->minimumJulianDay(); ?>
+                                        <?php if ($days < 0 || $child_number > 1 && $days > 1 && $days < 240) : ?>
+                                            <?= view('icons/warning') ?>
+                                        <?php endif ?>
 
-                        <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
-                    </th>
-                    <td class="border-0 p-0">
-                        <?= view('chart-box', ['individual' => $person]) ?>
-                    </td>
-                </tr>
+                                        <?php $months = intdiv($days + 15, 30); ?>
+                                        <?php if (abs($months) === 12 || abs($months) >= 24) : ?>
+                                            <?= I18N::plural('%s year', '%s years', intdiv($months, 12), I18N::number(round($months / 12))) ?>
+                                        <?php elseif ($months !== 0) : ?>
+                                            <?= I18N::plural('%s month', '%s months', $months, I18N::number($months)) ?>
+                                        <?php endif ?>
+                                    </div>
+                                <?php endif ?>
+
+                                <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
+                            </th>
+                            <td class="border-0 p-0">
+                                <?= view('chart-box', ['individual' => $person]) ?>
+                            </td>
+                        </tr>
                 <?php
-                $prev = $next;
-            }
-        } ?>
+                        $prev = $next;
+                    }
+                } ?>
 
-        <?php if ($family->canEdit()) : ?>
-            <tr>
-                <th scope="row">
-                    <span class="visually-hidden"><?= I18N::translate('Children') ?></span>
-                </th>
+                <?php if ($family->canEdit()) : ?>
+                    <tr>
+                        <th scope="row">
+                            <span class="visually-hidden"><?= I18N::translate('Children') ?></span>
+                        </th>
 
-                <td>
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= $type === 'FAMS' ? I18N::translate('Add a son') : I18N::translate('Add a brother') ?>
-                    </a>
-                    |
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= $type === 'FAMS' ? I18N::translate('Add a daughter') : I18N::translate('Add a sister') ?>
-                    </a>
-                    |
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'U', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= $type === 'FAMS' ? I18N::translate('Add a child') : I18N::translate('Add a sibling') ?>
-                    </a>
+                        <td>
+                            <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                                <?= $type === 'FAMS' ? I18N::translate('Add a son') : I18N::translate('Add a brother') ?>
+                            </a>
+                            |
+                            <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                                <?= $type === 'FAMS' ? I18N::translate('Add a daughter') : I18N::translate('Add a sister') ?>
+                            </a>
+                            |
+                            <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'U', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                                <?= $type === 'FAMS' ? I18N::translate('Add a child') : I18N::translate('Add a sibling') ?>
+                            </a>
 
-                    <?php if ($family->children()->count() > 1) : ?>
-                        <br>
-                        <a href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                            <?= I18N::translate('Re-order children') ?>
-                        </a>
-                    <?php endif; ?>
-                </td>
-            </tr>
-        <?php endif ?>
-    </tbody>
-</table>
+                            <?php if ($family->children()->count() > 1) : ?>
+                                <br>
+                                <a href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                                    <?= I18N::translate('Re-order children') ?>
+                                </a>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endif ?>
+            </tbody>
+        </table>
+    </div>
+</div>

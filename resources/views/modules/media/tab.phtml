@@ -15,54 +15,60 @@ use Illuminate\Support\Collection;
  */
 
 ?>
-<div class="wt-tab-media py-4">
-    <table class="table wt-facts-table">
-        <tr>
-            <td colspan="2">
-                <label>
-                    <input id="show-level-2-media" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-media" data-wt-persist="level-two-media" autocomplete="off">
-                    <?= I18N::translate('Show all media') ?>
-                </label>
-            </td>
-        </tr>
 
-        <?php foreach ($facts as $fact) : ?>
-            <?php if (str_ends_with($fact->tag(), ':OBJE')) : ?>
-                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
-            <?php else : ?>
-                <?php
-                if ($fact->isPendingAddition()) {
-                    $styleadd = 'wt-new ';
-                } elseif ($fact->isPendingDeletion()) {
-                    $styleadd = 'wt-old ';
-                } else {
-                    $styleadd = '';
-                }
-                ?>
+<div class="row">
+    <div class="wt-tab-facts py-4 col-12">
+        <table class="table wt-facts-table wt-table-fixed">
+            <colgroup>
+                <col class="col-2">
+            </colgroup>
+            <tr>
+                <td colspan="2">
+                    <label>
+                        <input id="show-level-2-media" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-media" data-wt-persist="level-two-media" autocomplete="off">
+                        <?= I18N::translate('Show all media') ?>
+                    </label>
+                </td>
+            </tr>
 
-                <tr class="wt-level-two-media collapse">
-                    <th scope="row" class="rela <?= $styleadd ?>">
-                        <?= $fact->label() ?>
-                        <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-media']) ?>
-                    </th>
+            <?php foreach ($facts as $fact) : ?>
+                <?php if (str_ends_with($fact->tag(), ':OBJE')) : ?>
+                    <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
+                <?php else : ?>
+                    <?php
+                    if ($fact->isPendingAddition()) {
+                        $styleadd = 'wt-new ';
+                    } elseif ($fact->isPendingDeletion()) {
+                        $styleadd = 'wt-old ';
+                    } else {
+                        $styleadd = '';
+                    }
+                    ?>
 
-                    <td class="<?= $styleadd ?>">
-                        <?php if (preg_match_all('/\n([2-4] OBJE .*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) > 0) : ?>
-                            <?php foreach ($matches as $match) : ?>
-                                <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag(), 'tree' => $fact->record()->tree()]) ?>
-                            <?php endforeach ?>
-                        <?php endif ?>
+                    <tr class="wt-level-two-media collapse">
+                        <th scope="row" class="rela <?= $styleadd ?>">
+                            <?= $fact->label() ?>
+                            <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-media']) ?>
+                        </th>
+
+                        <td class="<?= $styleadd ?>">
+                            <?php if (preg_match_all('/\n([2-4] OBJE .*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) > 0) : ?>
+                                <?php foreach ($matches as $match) : ?>
+                                    <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag(), 'tree' => $fact->record()->tree()]) ?>
+                                <?php endforeach ?>
+                            <?php endif ?>
+                        </td>
+                    </tr>
+                <?php endif ?>
+            <?php endforeach ?>
+
+            <?php if ($facts->isEmpty()) : ?>
+                <tr>
+                    <td colspan="2">
+                        <?= I18N::translate('There are no media objects for this individual.') ?>
                     </td>
                 </tr>
             <?php endif ?>
-        <?php endforeach ?>
-
-        <?php if ($facts->isEmpty()) : ?>
-            <tr>
-                <td colspan="2">
-                    <?= I18N::translate('There are no media objects for this individual.') ?>
-                </td>
-            </tr>
-        <?php endif ?>
-    </table>
+        </table>
+    </div>
 </div>
