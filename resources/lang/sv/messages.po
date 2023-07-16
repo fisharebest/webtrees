@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-16 12:53+0000\n"
+"PO-Revision-Date: 2023-07-17 19:51+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
@@ -2806,22 +2806,22 @@ msgstr "Birmingham, Alabama, Förenta staterna"
 #: resources/xml/reports/pedigree_report.xml:1379
 #: resources/xml/reports/relative_ext_report.xml:63
 msgid "Birth"
-msgstr "Född"
+msgstr "Födelse"
 
 #: app/Elements/PedigreeLinkageType.php:60 app/GedcomCode/GedcomCodePedi.php:63
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Född"
+msgstr "Födelse"
 
 #: app/Elements/PedigreeLinkageType.php:50 app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Född"
+msgstr "Födelse"
 
 #: app/Elements/PedigreeLinkageType.php:70 app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Född"
+msgstr "Födelse"
 
 #: app/Statistics/Google/ChartDistribution.php:338
 msgid "Birth by country"
