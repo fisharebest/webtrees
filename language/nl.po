@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-08 21:59+0000\n"
-"Last-Translator: Joppla <joppla@gmx.com>\n"
+"PO-Revision-Date: 2023-07-17 19:51+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
 "Language: nl\n"
@@ -5239,7 +5239,14 @@ msgstr "Verschillen"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:706
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Verschillende kalendersystemen worden in verschillende delen van de wereld gebruikt, en vele anderen zijn in het verleden gebruikt, Waar mogelijk zou u de data moeten invoeren gebruik makend van de kalender die op dat moment in gebruik was. U kunt daarna een conversie opgeven om de datum in een gangbare kalender weer te geven. Als u vaak twee kalenders gebruikt, dan kunt u twee conversies opgeven en worden data geconverteerd naar beide geselecteerde kalenders."
+msgstr ""
+"Verschillende kalendersystemen worden gebruikt in verschillende delen van de "
+"wereld, en veel andere kalendersystemen zijn in het verleden gebruikt. Waar "
+"mogelijk moet u de datums invoeren met de kalender waarin de gebeurtenis "
+"oorspronkelijk werd vastgelegd. U kunt dan een conversie opgeven om deze "
+"datums in een meer bekende kalender weer te geven. Als u regelmatig twee "
+"kalenders gebruikt, kunt u twee conversies opgeven en worden de datums naar "
+"beide geselecteerde kalenders geconverteerd."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
