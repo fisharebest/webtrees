@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-07-15 04:51+0000\n"
+"PO-Revision-Date: 2023-07-19 17:51+0000\n"
 "Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -6666,7 +6666,7 @@ msgstr "Fukuoka, Japan"
 #. I18N: gedcom tag _FNRL
 #: app/GedcomTag.php:1501
 msgid "Funeral"
-msgstr "Begräbnis"
+msgstr "Trauerfeier"
 
 #. I18N: A configuration setting
 #: admin_trees_check.php:139 admin_trees_config.php:1588
