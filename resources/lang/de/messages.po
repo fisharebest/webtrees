@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-07-15 04:51+0000\n"
+"PO-Revision-Date: 2023-07-20 13:51+0000\n"
 "Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -6952,7 +6952,7 @@ msgstr "Fukuoka, Japan"
 #: app/Factories/ElementFactory.php:303 app/Factories/ElementFactory.php:834
 #: app/GedcomTag.php:1109
 msgid "Funeral"
-msgstr "Begräbnis"
+msgstr "Trauerfeier"
 
 #: app/Factories/ElementFactory.php:1048
 msgid "GEDCOM"
