@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-26 15:27+0000\n"
-"Last-Translator: nuxiong <511984450@qq.com>\n"
+"PO-Revision-Date: 2023-07-20 13:51+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -4405,7 +4405,7 @@ msgstr "创建一个提交者"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Create a temporary folder…"
-msgstr "解压缩 %s 到一个临时文件夹…"
+msgstr ""
 
 #: resources/views/modals/media-file-fields.phtml:80
 msgid "Create a unique filename"
