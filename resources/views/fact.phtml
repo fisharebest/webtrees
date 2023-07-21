@@ -58,7 +58,6 @@ if ($element instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRO
     $styles[] = 'd-none';
 }
 
-
 // historical facts
 if ($id === 'histo') {
     $styles[] = 'wt-historic-fact collapse';
@@ -71,20 +70,23 @@ if ($tag === 'MARR') {
 }
 
 ?>
-<tr class="<?= implode(' ', $styles) ?>">
-    <th scope="row">
-        <div class="wt-fact-label ut"><?= $label?></div>
 
-        <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
-            <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
-        <?php endif ?>
+<div class="row pt-1 <?= implode(' ', $styles) ?>">
+    <div class="col-sm-3 pe-1 ps-0">
+        <div class="wt-fact-controls">
+            <div class="wt-fact-label ut"><?= $label?></div>
 
-        <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
-            <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>"></span>
-        <?php endif ?>
-    </th>
+            <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
+                <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
+            <?php endif ?>
 
-    <td>
+            <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
+                <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>"></span>
+            <?php endif ?>
+        </div>
+    </div>
+
+    <div class="col-sm-9 wt-fact-content">
         <?php if ($fact->target() instanceof Media) : ?>
             <div class="d-flex flex-wrap">
                 <?php foreach ($fact->target()->mediaFiles() as $media_file) : ?>
@@ -158,5 +160,5 @@ if ($tag === 'MARR') {
             <?= view('fact-notes', ['fact' => $fact]) ?>
             <?= view('fact-media', ['fact' => $fact]) ?>
         <?php endif ?>
-    </td>
-</tr>
+    </div>
+</div>

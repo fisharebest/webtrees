@@ -15,13 +15,15 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<tr>
-    <th scope="row">
-        <label for="add-fact">
-            <?= I18N::translate('Add a fact') ?>
-        </label>
-    </th>
-    <td>
+<div class="row pt-1">
+    <div class="col-sm-3 pe-1 ps-0">
+        <div class="wt-fact-controls">
+            <label for="add-fact">
+                <?= I18N::translate('Add a fact') ?>
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-9 wt-fact-content pt-2">
         <?php if ($add_facts !== []) : ?>
             <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
                 <div class="input-group">
@@ -46,13 +48,13 @@ use Fisharebest\Webtrees\I18N;
         <div class="wt-quick-facts">
             <?php foreach ($quick_facts as $fact => $label) : ?>
                 <a class="btn btn-link wt-quick-fact" href="<?= e(route(AddNewFact::class, [
-                    'fact' => $fact,
-                    'xref' => $record->xref(),
-                    'tree' => $record->tree()->name(),
-                ])) ?>">
+                        'fact' => $fact,
+                        'xref' => $record->xref(),
+                        'tree' => $record->tree()->name(),
+                    ])) ?>">
                     <?= $label ?>
                 </a>
             <?php endforeach ?>
         </div>
-    </td>
-</tr>
+    </div>
+</div>
