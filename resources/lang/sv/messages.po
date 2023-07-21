@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-17 19:51+0000\n"
+"PO-Revision-Date: 2023-07-22 12:51+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -12778,12 +12778,12 @@ msgstr "Sätt integritetsaccessnivån för alla träd."
 #: app/Http/RequestHandlers/TreePageDefaultEdit.php:69
 #: resources/views/admin/control-panel.phtml:321
 msgid "Set the default blocks for new family trees"
-msgstr "Ställ in standarblocken för nya släktträd"
+msgstr "Ställ in standardblocken för nya släktträd"
 
 #: app/Http/RequestHandlers/UserPageDefaultEdit.php:68
 #: resources/views/admin/control-panel.phtml:550
 msgid "Set the default blocks for new users"
-msgstr "Ställ in standarblocken för nya användare"
+msgstr "Ställ in standardblocken för nya användare"
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:62
@@ -14711,7 +14711,7 @@ msgstr "Användarnamn som kanske behövs för SMTP-servern behörighet."
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:55
 #: app/Http/RequestHandlers/SiteTagsAction.php:69
 msgid "The website preferences have been updated."
-msgstr "Webbplatsens inställningarna har uppdaterats."
+msgstr "Webbplatsens inställningar har uppdaterats."
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
@@ -15186,7 +15186,10 @@ msgstr "Denna roll har alla redigerare rollens rättigheter, plus rättigheter a
 
 #: resources/views/admin/users-edit.phtml:277
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Denna roll har alla rättigheter för manager rollen i alla släktträd, plus rättigheter att ändra webbplatsens inställningar/konfigurationer, användare och moduler."
+msgstr ""
+"Denna roll har alla rättigheter för manager-rollen i alla släktträd, plus "
+"rättigheter att ändra webbplatsens inställningar/konfigurationer, användare "
+"och moduler."
 
 #: resources/views/admin/users-edit.phtml:257
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -15194,7 +15197,10 @@ msgstr "Denna roll har alla medlem rollens rättigheter, plus rättigheter att l
 
 #: resources/views/admin/users-edit.phtml:271
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "Denna roll har alla moderator rollens rättigheter, plus eventuella ytterligare tillgång som beviljas av släktträd konfigurationen, plus rättigheter att ändra släktträdets inställningar/konfigurationer."
+msgstr ""
+"Denna roll har alla moderator-rollens rättigheter, plus eventuella "
+"ytterligare åtkomster som beviljas av släktträdskonfigurationen, plus "
+"rättigheter att ändra släktträdets inställningar/konfigurationer."
 
 #: resources/views/admin/users-edit.phtml:249
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
@@ -16373,7 +16379,7 @@ msgstr "Webbplatsens loggar"
 #: app/Http/RequestHandlers/SitePreferencesPage.php:66
 #: resources/views/admin/control-panel.phtml:240
 msgid "Website preferences"
-msgstr "Webbplats inställningar"
+msgstr "Webbplatsinställningar"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:277
