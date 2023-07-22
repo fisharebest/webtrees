@@ -424,7 +424,7 @@ class GedcomRecord
     }
 
     /**
-     * Allow the choice of primary name to be overidden, e.g. in a search result
+     * Allow the choice of primary name to be overridden, e.g. in a search result
      *
      * @param int|null $n
      *
