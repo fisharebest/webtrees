@@ -16,14 +16,14 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <div class="row pt-1">
-    <div class="col-sm-3 pe-1 ps-0">
+    <div class="col-sm-2 pe-1 ps-0">
         <div class="wt-fact-controls">
             <label for="add-fact">
                 <?= I18N::translate('Add a fact') ?>
             </label>
         </div>
     </div>
-    <div class="col-sm-9 wt-fact-content pt-2">
+    <div class="col-sm-10 wt-fact-content pt-2">
         <?php if ($add_facts !== []) : ?>
             <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
                 <div class="input-group">

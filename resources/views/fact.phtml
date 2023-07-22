@@ -72,7 +72,7 @@ if ($tag === 'MARR') {
 ?>
 
 <div class="row pt-1 <?= implode(' ', $styles) ?>">
-    <div class="col-sm-3 pe-1 ps-0">
+    <div class="col-sm-2 pe-1 ps-0">
         <div class="wt-fact-controls">
             <div class="wt-fact-label ut"><?= $label?></div>
 
@@ -86,7 +86,7 @@ if ($tag === 'MARR') {
         </div>
     </div>
 
-    <div class="col-sm-9 wt-fact-content">
+    <div class="col-sm-10 wt-fact-content">
         <?php if ($fact->target() instanceof Media) : ?>
             <div class="d-flex flex-wrap">
                 <?php foreach ($fact->target()->mediaFiles() as $media_file) : ?>

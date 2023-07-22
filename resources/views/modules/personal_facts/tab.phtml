@@ -20,36 +20,45 @@ use Illuminate\Support\Collection;
 ?>
 
 <div class="container py-4">
-    <?php if ($has_associate_facts || $has_relative_facts || $has_historic_facts) : ?>
-        <div class="row wt-fact-content py-1">
-            <?php if ($has_associate_facts) : ?>
-                <div class="col-sm-auto">
-                    <label>
-                        <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates" autocomplete="off">
-                        <?= I18N::translate('Associated events') ?>
-                    </label>
-                </div>
-            <?php endif ?>
 
-            <?php if ($has_relative_facts) : ?>
-                <div class="col-sm-auto">
-                    <label>
-                        <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives" autocomplete="off">
-                        <?= I18N::translate('Events of close relatives') ?>
-                    </label>
-                </div>
-            <?php endif ?>
-
-            <?php if ($has_historic_facts) : ?>
-                <div class="col-sm-auto">
-                    <label>
-                        <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts" autocomplete="off">
-                        <?= I18N::translate('Historic events') ?>
-                    </label>
-                </div>
-            <?php endif ?>
+    <div class="row wt-fact-content py-1">
+        <div class="col-sm-auto">
+            <input id="show-associate-facts" class="form-check-input" type="checkbox"
+                data-bs-toggle="collapse"
+                data-bs-target=".wt-associate-fact"
+                data-wt-persist="associates"
+                autocomplete="off"
+                <?= !$has_associate_facts ? 'disabled="disabled"' : '' ?>
+            >
+            <label class="form-check-label" for="show-associate-facts">
+                <?= I18N::translate('Associated events') ?>
+            </label>
         </div>
-    <?php endif ?>
+        <div class="col-sm-auto">
+            <input id="show-relatives-facts" class="form-check-input" type="checkbox"
+                data-bs-toggle="collapse"
+                data-bs-target=".wt-relation-fact"
+                data-wt-persist="relatives"
+                autocomplete="off"
+                <?= !$has_relative_facts ? 'disabled="disabled"' : '' ?>
+            >
+            <label class="form-check-label" for="show-relatives-facts">
+                <?= I18N::translate('Events of close relatives') ?>
+            </label>
+        </div>
+        <div class="col-sm-auto">
+            <input id="show-historical-facts" class="form-check-input" type="checkbox"
+                data-bs-toggle="collapse"
+                data-bs-target=".wt-historic-fact"
+                data-wt-persist="historic-facts"
+                autocomplete="off"
+                <?= !$has_historic_facts ? 'disabled="disabled"' : '' ?>
+            >
+            <label class="form-check-label" for="show-historical-facts">
+                <?= I18N::translate('Historic events') ?>
+            </label>
+        </div>
+    </div>
 
     <?php foreach ($facts as $fact) : ?>
         <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
