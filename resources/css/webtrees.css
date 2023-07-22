@@ -639,18 +639,19 @@ div.fact_SHARED_NOTE {
     caption-side: top;
 }
 
-.wt-facts-table th {
+.wt-facts-table th, .wt-fact-controls {
     background-color: #81a9cb;
     border: solid #81a9cb 1px;
     text-align: center;
     font-weight: normal;
+    height: 100%;
 }
 
 .wt-facts-table > tbody > tr > th {
     min-width: 20%;
 }
 
-.wt-facts-table td {
+.wt-facts-table td, .wt-fact-content {
     background-color: #edf7fd;
     border: 1px solid #81a9cb;
 }
@@ -1353,19 +1354,4 @@ a > .wt-icon-arrow-up:hover {
 /* Forms */
 .col-form-label {
     font-weight: bold;
-}
-
-.wt-fact-controls {
-    background-color: #81a9cb;
-    border: solid #81a9cb 1px;
-    text-align: center;
-    font-weight: normal;
-    height: 100%;
-}
-
-.wt-fact-content {
-    background-color: #edf7fd;
-    border: solid #81a9cb 1px;
-    white-space: normal;
-    height: 100%;
 }

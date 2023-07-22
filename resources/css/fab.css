@@ -447,18 +447,19 @@ div.fact_SHARED_NOTE {
     caption-side: top;
 }
 
-.wt-facts-table th {
+.wt-facts-table th, .wt-fact-controls {
     background-color: #ccc;
     border-radius: 4px;
     text-align: center;
     font-weight: normal;
+    height: 100%;
 }
 
 .wt-facts-table > tbody > tr > th {
     min-width: 20%;
 }
 
-.wt-facts-table td {
+.wt-facts-table td, .wt-fact-content {
     border-radius: 4px;
     background-color: #ddd;
 }
