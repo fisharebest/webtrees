@@ -190,7 +190,7 @@ TreeViewHandler.prototype.updateTree = function (center, button) {
         for (var i = 0; i < nb; i++) {
           elts[i].removeAttr('abbr').html(ret[i]);
         }
-        // we now ajust the draggable treeview size to its content size
+        // we now adjust the draggable treeview size to its content size
         tv.getSize();
       },
       complete: function () {
@@ -334,7 +334,7 @@ TreeViewHandler.prototype.expandBox = function (box, event) {
     collapsed.css('display', 'none');
     expanded.addClass('boxExpanded');
   }
-  // we must ajust the draggable treeview size to its content size
+  // we must adjust the draggable treeview size to its content size
   this.getSize();
   return false;
 };
