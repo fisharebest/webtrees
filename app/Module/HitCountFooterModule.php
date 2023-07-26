@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
@@ -32,7 +33,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

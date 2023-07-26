@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
@@ -32,7 +33,6 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\TestCase;
-use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Test the modules

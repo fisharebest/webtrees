@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -37,7 +38,6 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;

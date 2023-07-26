@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\DateValueToday;
 use Fisharebest\Webtrees\Elements\NoteStructure;
 use Fisharebest\Webtrees\Elements\ResearchTask;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;

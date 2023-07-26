@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Services\HomePageService;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

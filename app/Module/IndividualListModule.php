@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;

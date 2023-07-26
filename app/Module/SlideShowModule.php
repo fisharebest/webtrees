@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\SourceMediaType;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -26,7 +27,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;

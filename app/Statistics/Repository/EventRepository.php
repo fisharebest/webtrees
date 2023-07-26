@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -31,7 +32,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 
 use function abs;
 use function array_map;

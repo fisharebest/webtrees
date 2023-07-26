@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
@@ -26,7 +27,6 @@ use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;

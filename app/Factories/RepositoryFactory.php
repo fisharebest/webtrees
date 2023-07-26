@@ -21,10 +21,10 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 
 use function assert;
 use function preg_match;

@@ -19,13 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -50,7 +50,6 @@ use function pathinfo;
 use function sha1;
 use function sort;
 use function str_contains;
-use function strlen;
 use function strtoupper;
 use function strtr;
 use function substr;

@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Exception;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 
 use function e;
 use function str_contains;

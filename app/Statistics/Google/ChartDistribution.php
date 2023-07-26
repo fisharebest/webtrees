@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;

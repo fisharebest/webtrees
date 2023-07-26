@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Illuminate\Database\Capsule\Manager as DB;
 use PHPUnit\Framework\Constraint\Callback;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;

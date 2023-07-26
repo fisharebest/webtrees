@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Schema;
 
-use Illuminate\Database\Capsule\Manager as DB;
+use Fisharebest\Webtrees\DB;
 
 /**
  * Populate the gedcom table

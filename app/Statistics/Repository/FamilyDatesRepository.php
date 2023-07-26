@@ -20,13 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
 use function abs;

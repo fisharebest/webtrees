@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -28,7 +29,6 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;

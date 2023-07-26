@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;

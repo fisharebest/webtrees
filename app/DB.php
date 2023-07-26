@@ -17,39 +17,28 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Schema;
+namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\DB;
+use Illuminate\Database\Capsule\Manager;
 
 /**
- * Populate the user table
+ * Database abstraction
  */
-class SeedUserTable implements SeedInterface
+class DB extends Manager
 {
     /**
-     *  Run the seeder.
-     *
-     * @return void
+     * @internal
      */
-    public function run(): void
+    public static function caseInsensitiveLikeOperator(): string
     {
-        // Add a "default" user, to store default settings
-
-        if (DB::connection()->getDriverName() === 'sqlsrv') {
-            DB::connection()->unprepared('SET IDENTITY_INSERT [' . DB::connection()->getTablePrefix() . 'user] ON');
+        if (DB::connection()->getDriverName() === 'pgsql') {
+            return 'ILIKE';
         }
 
-        DB::table('user')->updateOrInsert([
-            'user_id'   => -1,
-        ], [
-            'user_name' => 'DEFAULT_USER',
-            'real_name' => 'DEFAULT_USER',
-            'email'     => 'DEFAULT_USER',
-            'password'  => 'DEFAULT_USER',
-        ]);
-
         if (DB::connection()->getDriverName() === 'sqlsrv') {
-            DB::connection()->unprepared('SET IDENTITY_INSERT [' . DB::connection()->getTablePrefix() . 'user] OFF');
+            return 'COLLATE SQL_UTF8_General_CI_AI LIKE';
         }
+
+        return 'LIKE';
     }
 }

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Illuminate\Database\Capsule\Manager as DB;
 
 use function is_string;
 

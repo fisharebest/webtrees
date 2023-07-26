@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Site;
-use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Make an XREF.

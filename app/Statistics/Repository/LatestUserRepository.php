@@ -21,11 +21,11 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 

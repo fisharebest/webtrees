@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -28,7 +29,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;

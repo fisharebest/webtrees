@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
@@ -28,7 +29,6 @@ use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;

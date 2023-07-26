@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -38,7 +39,6 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

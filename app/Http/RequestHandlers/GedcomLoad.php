@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
@@ -27,7 +28,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\DetectsConcurrencyErrors;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
