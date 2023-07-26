@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2022-08-10 12:48+0000\n"
-"Last-Translator: Ekrem Parlak <ekrem@parlak.org>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
+"PO-Revision-Date: 2023-07-27 14:51+0000\n"
+"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
+"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -308,7 +309,7 @@ msgstr[1] "%s notları güncellendi."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s çok kez tekrarlıyor."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -527,7 +528,7 @@ msgstr "(%s toplam girişten filtrelendi)"
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
 msgid "(includes media files)"
-msgstr ""
+msgstr "(medya dosyaları içerir)"
 
 #: resources/views/fact-date.phtml:117
 msgid "(on the date of death)"
@@ -1506,7 +1507,7 @@ msgstr "Adelaide, Avustralya"
 
 #: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
-msgstr ""
+msgstr "İdari kimlik"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1824,7 +1825,7 @@ msgstr "Olarak da bilinir"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Soyadı alternatif yazımı"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1922,7 +1923,7 @@ msgstr "Soy PID"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com kaynak tanımlayıcı"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1986,11 +1987,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:511
 msgid "Application ID"
-msgstr ""
+msgstr "Uygulama No"
 
 #: app/Gedcom.php:528
 msgid "Application name"
-msgstr ""
+msgstr "Uygulama adı"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -3438,7 +3439,7 @@ msgstr "Değişiklikler günlüğü"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "Karakter kodlama"
 
 #: app/Gedcom.php:497
 msgid "Character set"
@@ -3880,7 +3881,7 @@ msgstr "İçerik"
 
 #: app/Gedcom.php:765
 msgid "Continuation"
-msgstr ""
+msgstr "Devamlılık"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -4119,7 +4120,7 @@ msgstr "Veri klasöründeki her GEDCOM dosyası için bir aile ağacı oluşturu
 #: app/CustomTags/Gedcom7.php:140 app/CustomTags/Gedcom7.php:149
 #: app/CustomTags/Gedcom7.php:157 app/CustomTags/Gedcom7.php:166
 msgid "Created at"
-msgstr ""
+msgstr "Oluşturuldğu yer"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
@@ -4134,7 +4135,7 @@ msgstr "Oluşturma tarihi"
 #: app/CustomTags/Gedcom7.php:151 app/CustomTags/Gedcom7.php:159
 #: app/CustomTags/Gedcom7.php:168
 msgid "Creation time"
-msgstr ""
+msgstr "Oluşturma zamanı"
 
 #: app/Gedcom.php:632 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4279,8 +4280,9 @@ msgstr "Küba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
+#, fuzzy
 msgid "Curaçao"
-msgstr ""
+msgstr "Curaçao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -4298,6 +4300,8 @@ msgstr "Özel GEDCOM etiketleri"
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
+"Özel GEDCOM etiketleri önerilmez. Standard GEDCOM etiketlerini kullanmayı "
+"deneyin."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
@@ -5284,7 +5288,7 @@ msgstr "Çocukken öldü: muaf"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Bir yaşından küçük öldü, Sealing (Mormonizm) gerekli değil."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5705,7 +5709,7 @@ msgstr "Bu favori hakkında isteğe bağlı bir not girin"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Tam ekran yap"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5797,7 +5801,7 @@ msgstr "Etkinlik"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Olay gerçekleşmedi"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5849,7 +5853,7 @@ msgstr "Bu gönderimden hariç tutuldu"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Tam ekrandan çık"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6117,11 +6121,11 @@ msgstr "Aile sayımı"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "Aile olayı"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
-msgstr ""
+msgstr "Aile olayları ve etkinlikler"
 
 #: app/Gedcom.php:880
 msgid "Family file"
@@ -6374,19 +6378,19 @@ msgstr "Kadınlar"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Alan"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Alan adı"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Alan değeri"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6826,8 +6830,9 @@ msgid "GEDCOM"
 msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
+#, fuzzy
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -6854,13 +6859,15 @@ msgstr "GEDCOM etiketleri"
 
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
+#, fuzzy
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:57
+#, fuzzy
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/CustomTags/GedcomL.php:113 app/CustomTags/GedcomL.php:167
@@ -7414,7 +7421,7 @@ msgstr "Şifreyi gizle"
 #: resources/views/admin/trees-check.phtml:55
 #: resources/views/admin/trees-check.phtml:71
 msgid "Hide these errors"
-msgstr ""
+msgstr "Bu hataları gizle"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
@@ -7662,7 +7669,7 @@ msgstr "Webtrees'de medya nesneleri oluşturduysanız ve daha sonra medya nesnel
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Dosya adını değiştirirseniz, dosyayı da yeniden adlandırmalısınız."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7855,7 +7862,7 @@ msgstr "Bireysel dağıtım şeması"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Birey olayları ve etkinlikler"
 
 #: resources/views/admin/control-panel.phtml:722
 msgid "Individual page"
@@ -7945,7 +7952,7 @@ msgstr "Muhbir"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Satır arası kaynak kayıtları önerilmez."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:177 app/Module/ChartsBlockModule.php:260
@@ -7979,11 +7986,11 @@ msgstr "Geçersiz GEDCOM dosyası - başlık kaydı bulunamadı."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Geçersiz GEDCOM dosyası - sondaki kayıt bulunamadı."
 
 #: app/Http/RequestHandlers/CheckTree.php:198
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Geçersiz GEDCOM seviye numarası."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7991,7 +7998,7 @@ msgstr "Geçersiz GEDCOM kaydı"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Geçersiz GEDCOM kaydı."
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
@@ -8037,6 +8044,8 @@ msgstr "Yükseltmeyi indirmek ve kurmak birkaç dakika sürebilir. Sabırlı olu
 #: resources/views/admin/tags.phtml:1025
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
+"Özel GEDCOM etiketleri kullanımı önerilmez. Başka uygulamalara aktarım "
+"sırasında bu veriyi kaybedebilirsiniz."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
@@ -8390,7 +8399,7 @@ msgstr "LDS bağış"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:127
 msgid "LDS initiatory"
-msgstr ""
+msgstr "LDS başlatıcı"
 
 #: app/Gedcom.php:478
 msgid "LDS spouse sealing"
@@ -8403,11 +8412,11 @@ msgstr "Etiket"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr ""
+msgstr "Koca için etiket"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr ""
+msgstr "Eşi için etiket"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8417,12 +8426,12 @@ msgstr "Laie, Hawaii, ABD"
 #. I18N: GEDCOM tag _PURC
 #: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
-msgstr ""
+msgstr "Arazi satın alımı"
 
 #. I18N: GEDCOM tag _SALE
 #: app/CustomTags/Reunion.php:60
 msgid "Land sale"
-msgstr ""
+msgstr "Arazi satışı"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:101
@@ -8498,7 +8507,7 @@ msgstr "Son değişiklik"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Son kontrol ediliş %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -8655,11 +8664,11 @@ msgstr "Lima, Peru"
 
 #: resources/views/admin/gedcom-export-options.phtml:89
 msgid "Line endings"
-msgstr ""
+msgstr "Satır sonları"
 
 #: app/Http/RequestHandlers/CheckTree.php:420
 msgid "Line number"
-msgstr ""
+msgstr "Satır numarası"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:821
@@ -8968,6 +8977,8 @@ msgstr "El yazması"
 #: resources/views/admin/tags.phtml:1023
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
 msgstr ""
+"Birçok şecere uygulaması kendi özel GEDCOM etiketlerini tanımlar ve webtrees "
+"bunların çoğunu görüntüleyebilir."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
@@ -9923,7 +9934,7 @@ msgstr "Muharrem"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Çoklu doğum"
 
 #: resources/views/lists/families-table.phtml:141
 msgid "Multiple marriages"
@@ -10007,7 +10018,7 @@ msgstr "İbranice adı"
 #: app/CustomTags/GedcomL.php:216 app/CustomTags/Legacy.php:116
 #: app/CustomTags/PersonalAncestralFile.php:73
 msgid "Name of addressee"
-msgstr ""
+msgstr "Muhatabın adı"
 
 #: app/Gedcom.php:687 app/Gedcom.php:695 app/Gedcom.php:701
 msgid "Name prefix"
@@ -10295,7 +10306,7 @@ msgstr "Bu aile için hiçbir gerçek yok."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Dosya alınmadı."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -10466,33 +10477,33 @@ msgstr "Not"
 #: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
 #: app/Gedcom.php:900 app/Gedcom.php:914
 msgid "Note on association"
-msgstr ""
+msgstr "İlişkilendirme hakkında not"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:449 app/Gedcom.php:616
 #: app/Gedcom.php:763 app/Gedcom.php:784 app/Gedcom.php:815 app/Gedcom.php:831
 #: app/Gedcom.php:862 app/Gedcom.php:878
 msgid "Note on last change"
-msgstr ""
+msgstr "Son değişim notu"
 
 #: app/Gedcom.php:686
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Fonetik isimle ilgili not"
 
 #: app/CustomTags/GedcomL.php:248 app/Gedcom.php:425 app/Gedcom.php:557
 msgid "Note on place"
-msgstr ""
+msgstr "Yer ile ilgili not"
 
 #: app/Gedcom.php:846
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Depo referansı hakkında not"
 
 #: app/Gedcom.php:700
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Romanize ad ile ilgili not"
 
 #: app/Gedcom.php:838
 msgid "Note on source"
-msgstr ""
+msgstr "Kaynak notu"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
@@ -10500,11 +10511,11 @@ msgstr ""
 #: app/Gedcom.php:751 app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:908
 #: app/Gedcom.php:922
 msgid "Note on source citation"
-msgstr ""
+msgstr "Alıntı kaynak ile ilgili not"
 
 #: app/Gedcom.php:837
 msgid "Note on source data"
-msgstr ""
+msgstr "Kaynak veri notu"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10822,7 +10833,7 @@ msgstr "Yönlendirme"
 
 #: app/CustomTags/Ancestry.php:70
 msgid "Origin"
-msgstr ""
+msgstr "Köken"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/CustomTags/Ancestry.php:75
@@ -11137,7 +11148,7 @@ msgstr "Fotoğraf"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Fotoğraf"
 
 #: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:78
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:88
@@ -11146,7 +11157,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:114 app/CustomTags/Gedcom7.php:115
 #: app/CustomTags/Gedcom7.php:117 app/CustomTags/Gedcom7.php:119
 msgid "Phrase"
-msgstr ""
+msgstr "İfade"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:174
@@ -12042,7 +12053,7 @@ msgstr "Reno, Nevada, ABD"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "XREF değerlerini yeniden numaralandır"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12076,7 +12087,7 @@ msgstr "Rapor"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
 msgid "Report phrase"
-msgstr ""
+msgstr "Rapor cümlesi"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12324,7 +12335,7 @@ msgstr "Ada çayı"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Aziz Barthelemy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -13546,7 +13557,7 @@ msgstr "%s oğlu"
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:109
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "Tarihi sırala"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13569,7 +13580,7 @@ msgstr "Sıralama düzeni"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:111
 msgid "Sort time"
-msgstr ""
+msgstr "Zamanı sırala"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13752,7 +13763,7 @@ msgstr "St. Paul, Minnesota, ABD"
 
 #: resources/views/admin/tags.phtml:32
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standart GEDCOM etiketleri"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -14110,7 +14121,7 @@ msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Şablon"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14159,7 +14170,7 @@ msgstr "Metin"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "Metin yönü"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:484
@@ -14394,6 +14405,8 @@ msgstr "Aşağıdaki liste tipik gereksinimleri gösterir."
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"Form verileri eksik. Sunucudaki max_imput_vars değerini arttırmaniz "
+"gerekebilir?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -14503,6 +14516,9 @@ msgstr "Hesap oluşturulmadan önce yeni kullanıcıdan e-posta adresini onaylam
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"GEDCOM standardının bir sonraki sürümü, yeni etiketler ekleyecek ve "
+"eskilerini kaldıracaktır. Artık yeni etiketlerin bazılarını "
+"kullanabilirsiniz."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -14776,7 +14792,7 @@ msgstr[1] "Son %s günler içinde herhangi bir değişiklik olmadı."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Yeni versiyon kontrolü sırasında hata oluştu."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15203,7 +15219,7 @@ msgstr "Bu sunucunun bellek sınırı %s MB ve CPU zaman sınırı %s saniyedir.
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Bu servis API anahtarı gerektirir."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -15295,16 +15311,16 @@ msgstr "Zaman"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:120
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "Doğum zamanı"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Doğum ve ölüm zamanı"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr ""
+msgstr "Ölüm zamanı"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:448 app/Gedcom.php:615
 #: app/Gedcom.php:762 app/Gedcom.php:783 app/Gedcom.php:814 app/Gedcom.php:830
@@ -15314,7 +15330,7 @@ msgstr "Son değişiklik zamanı"
 
 #: app/CustomTags/Gedcom7.php:130
 msgid "Time of status change"
-msgstr ""
+msgstr "Durum değişim zamanı"
 
 #. I18N: A configuration setting
 #: app/CustomTags/MyHeritage.php:56
@@ -15429,6 +15445,8 @@ msgstr "Bu bloğa başlamanıza yardımcı olmak için birkaç standart şablon 
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
+"Özel etiketleri kullanarak yeni veriler oluşturmak için bunları "
+"etkinleştirmeniz gerekir."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15437,6 +15455,8 @@ msgstr "Yeni araştırma görevleri oluşturmak için, önce aile ağacının te
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"Bir haritayı görüntülemek için, kontrol panelinde bir harita sağlayıcıyı "
+"etkinleştirmeniz gerekir."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:588
@@ -15968,7 +15988,7 @@ msgstr "Yer adlarının daha düşük seviyeli kısımlarını korurken, daha y�
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
-msgstr ""
+msgstr "Şurada güncellendi"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16771,6 +16791,9 @@ msgstr "Uzaklaştır"
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"_WT_OBJE_SORT etiketleri, bir kişi için tercih edilen görüntüyü belirtmek "
+"için webtrees eski sürümleri tarafından kullanılıyordu. Alternatif olarak, "
+"tercih edilen ilk önce listelenecek şekilde görüntüleri yeniden sıralamaktır."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -17078,7 +17101,7 @@ msgstr "ad değişikliği"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "Şimdi kontrol et"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
@@ -19861,7 +19884,7 @@ msgstr "yüzde"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr ""
+msgstr "düz metin"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -20802,7 +20825,7 @@ msgstr "webtrees bu dosya formatı için küçük resim oluşturamaz."
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees bu dosya formatını tanımlayamadı."
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -20909,7 +20932,7 @@ msgstr "Aland Adaları"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” yerine “%2$s” olmalı."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
