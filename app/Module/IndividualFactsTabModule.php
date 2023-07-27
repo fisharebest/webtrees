@@ -138,6 +138,8 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $associate_facts  = $this->individual_facts_service->associateFacts($individual);
         $historic_facts   = $this->individual_facts_service->historicFacts($individual);
 
+        $has_individual_facts = $individual_facts->isNotEmpty();
+
         $individual_facts = $individual_facts
             ->merge($family_facts)
             ->merge($relative_facts)
@@ -156,13 +158,14 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         ]);
 
         return view('modules/personal_facts/tab', [
-            'can_edit'            => $individual->canEdit(),
-            'clipboard_facts'     => $this->clipboard_service->pastableFacts($individual),
-            'has_associate_facts' => $associate_facts->isNotEmpty(),
-            'has_historic_facts'  => $historic_facts->isNotEmpty(),
-            'has_relative_facts'  => $relative_facts->isNotEmpty(),
-            'individual'          => $individual,
-            'facts'               => $individual_facts,
+            'can_edit'             => $individual->canEdit(),
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($individual),
+            'has_associate_facts'  => $associate_facts->isNotEmpty(),
+            'has_historic_facts'   => $historic_facts->isNotEmpty(),
+            'has_relative_facts'   => $relative_facts->isNotEmpty(),
+            'has_individual_facts' => $has_individual_facts,
+            'individual'           => $individual,
+            'facts'                => $individual_facts,
         ]);
     }
 

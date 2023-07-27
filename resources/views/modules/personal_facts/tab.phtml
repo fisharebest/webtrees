@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
  * @var bool                 $has_associate_facts
  * @var bool                 $has_historic_facts
  * @var bool                 $has_relative_facts
+ * @var bool                 $has_individual_facts
  * @var Individual           $individual
  */
 
@@ -55,7 +56,7 @@ use Illuminate\Support\Collection;
                 <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
             <?php endforeach ?>
 
-            <?php if ($facts->isEmpty()) : ?>
+            <?php if (!$has_individual_facts) : ?>
                 <tr>
                     <td colspan="2">
                         <?= I18N::translate('There are no facts for this individual.') ?>
