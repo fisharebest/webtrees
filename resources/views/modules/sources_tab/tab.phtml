@@ -17,67 +17,76 @@ use Illuminate\Support\Collection;
 
 ?>
 
-<div class="wt-tab-sources py-4">
-    <table class="table wt-facts-table">
-        <tr>
-            <td colspan="2">
-                <label>
-                    <input id="show-level-2-sources" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-source" data-wt-persist="level-two-sources" autocomplete="off">
-                    <?= I18N::translate('Show all sources') ?>
-                </label>
-            </td>
-        </tr>
+<div class="container py-4 wt-facts-table">
 
-        <?php foreach ($facts as $fact) : ?>
-            <?php if (str_ends_with($fact->tag(), ':SOUR')) : ?>
-                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
-            <?php else : ?>
-                <?php
-                if ($fact->isPendingAddition()) {
-                    $styleadd = 'wt-new ';
-                } elseif ($fact->isPendingDeletion()) {
-                    $styleadd = 'wt-old ';
-                } else {
-                    $styleadd = '';
-                }
-                ?>
+    <div class="row wt-fact-content py-1">
+        <div class="col-sm-auto">
+            <input id="show-level-2-sources" class="form-check-input" type="checkbox"
+                data-bs-toggle="collapse"
+                data-bs-target=".wt-level-two-source"
+                data-wt-persist="level-two-sources"
+                autocomplete="off"
+                <?= $facts->isEmpty() ? 'disabled="disabled"' : '' ?>
+            >
+            <label class="form-check-label" for="show-level-2-notes">
+                <?= I18N::translate('Show all sources') ?>
+            </label>
+        </div>
+    </div>
 
-                <tr class="wt-level-two-source collapse">
-                    <th scope="row" class="rela <?= $styleadd ?>">
-                        <?= $fact->label() ?>
-                        <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-sources']) ?>
-                    </th>
+    <?php foreach ($facts as $fact) : ?>
+        <?php if (str_ends_with($fact->tag(), ':SOUR')) : ?>
+            <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
+        <?php else : ?>
+            <?php
+            if ($fact->isPendingAddition()) {
+                $styleadd = 'wt-new ';
+            } elseif ($fact->isPendingDeletion()) {
+                $styleadd = 'wt-old ';
+            } else {
+                $styleadd = '';
+            }
+            ?>
 
-                    <td class="<?= $styleadd ?>">
-                        <?php if (preg_match_all('/\n(2 SOUR\b.*(?:\n[^2].*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) > 0) : ?>
-                            <?php foreach ($matches as $match) : ?>
-                                <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag(), 'tree' => $fact->record()->tree()]) ?>
-                            <?php endforeach ?>
-                        <?php endif ?>
-                    </td>
-                </tr>
-            <?php endif ?>
-        <?php endforeach ?>
-
-        <?php if ($facts->isEmpty()) : ?>
-            <tr>
-                <td colspan="2">
-                    <?= I18N::translate('There are no source citations for this individual.') ?>
-                </td>
-            </tr>
+        <div class="row mt-1 wt-level-two-source collapse">
+            <div class="col-sm-2 ps-0 px-1 rela <?= $styleadd ?>">
+                <div class="wt-fact-controls h-100 pt-1">
+                    <?= $fact->label() ?>
+                    <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-sources']) ?>
+                </div>
+            </div>
+            <div class="col-sm-10 wt-fact-content pt-1 <?= $styleadd ?>">
+                <?php if (preg_match_all('/\n(2 SOUR\b.*(?:\n[^2].*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) > 0) : ?>
+                    <?php foreach ($matches as $match) : ?>
+                        <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag(), 'tree' => $fact->record()->tree()]) ?>
+                    <?php endforeach ?>
+                <?php endif ?>
+            </div>
+        </div>
         <?php endif ?>
+    <?php endforeach ?>
 
-        <?php if ($can_edit) : ?>
-            <tr>
-                <th scope="row">
-                    <?= I18N::translate('Source') ?>
-                </th>
-                <td>
-                    <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'SOUR'])) ?>">
-                        <?= I18N::translate('Add a source citation') ?>
-                    </a>
-                </td>
-            </tr>
-        <?php endif ?>
-    </table>
+    <?php if ($facts->isEmpty()) : ?>
+    <div class="row wt-fact-content my-3">
+        <div class="col-sm-auto py-2">
+            <?= I18N::translate('There are no source citations for this individual.') ?>
+        </div>
+    </div>
+<?php endif ?>
+
+<?php if ($can_edit) : ?>
+    <div class="row mt-1">
+        <div class="col-2 ps-0 px-1">
+            <div class="wt-fact-controls h-100 pt-1">
+                <?= I18N::translate('Source') ?>
+            </div>
+        </div>
+        <div class="col-10 wt-fact-content p-1">
+            <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'SOUR'])) ?>">
+                <?= I18N::translate('Add a source citation') ?>
+            </a>
+        </div>
+    </div>
+<?php endif ?>
+
 </div>
