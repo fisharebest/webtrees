@@ -157,23 +157,23 @@
 }
 
 .wt-page-options-label,
-.wt-facts-table th, .wt-facts-table .dropdown-toggle,
+.wt-facts-table th, .wt-facts-table .dropdown-toggle, wt-fact-controls
 .descriptionbox, .descriptionbox a,
 .topbottombar, .topbottombar a,
-.list_label, .list_label a {
+.list_label, .list_label a, .wt-fact-controls {
     background-color: var(--color-3);
     color: var(--color-6);
 }
 
 .wt-page-options-value,
 .wt-block-content,
-.wt-facts-table td,
+.wt-facts-table td, wt-fact-content
 .ui-widget-header,
 .optionbox, .ui-state-active a:link,
-.list_value, .list_value_wrap, .list_value_wrap a {
+.list_value, .list_value_wrap,
+.list_value_wrap a, .wt-fact-content {
     background: var(--color-4);
 }
-
 
 .menu-tree .nav-link::before {
     content: url(colors/menu/tree.png);

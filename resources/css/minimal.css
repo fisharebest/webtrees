@@ -409,7 +409,7 @@ table {
     caption-side: top;
 }
 
-.wt-facts-table th {
+.wt-facts-table th, .wt-fact-controls {
     border: 1px solid #000;
     font-weight: normal;
 }
@@ -418,7 +418,7 @@ table {
     min-width: 20%;
 }
 
-.wt-facts-table td {
+.wt-facts-table td, .wt-fact-content {
     border: solid #000 1px;
 }
 
