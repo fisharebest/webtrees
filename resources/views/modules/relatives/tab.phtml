@@ -27,19 +27,22 @@ use Illuminate\Support\Collection;
 <?php
 ?>
 
-<div class="wt-tab-relatives py-4">
-    <table class="table table-sm wt-facts-table" role="presentation">
-    <tbody>
-        <tr>
-            <td>
-                <label>
-                    <input id="show-date-differences" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-date-difference" data-wt-persist="date-differences" autocomplete="off">
-                    <?= I18N::translate('Date differences') ?>
-                </label>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container py-1">
+
+    <div class="row wt-fact-content py-1 mb-2">
+        <div class="col-sm-auto">
+            <input id="show-date-differences" type="checkbox" class="form-check-input"
+                data-bs-toggle="collapse"
+                data-bs-target=".wt-date-difference"
+                data-wt-persist="date-differences"
+                autocomplete="off"
+            >
+            <label class="form-check-label" for="show-date-differences">
+                <?= I18N::translate('Date differences') ?>
+            </label>
+        </div>
+    </div>
+
 
 <!-- Parents -->
 <?php foreach ($parent_families as $family) : ?>
@@ -86,47 +89,44 @@ use Illuminate\Support\Collection;
 <?php endforeach ?>
 
 <?php if ($can_edit) : ?>
-    <br>
-    <table class="table table-sm wt-facts-table" role="presentation">
-        <tbody>
             <?php if ($spouse_families->count() > 1) : ?>
-                <tr>
-                    <td>
+                <div class="row mt-2">
+                    <div class="col-sm-12 wt-fact-content py-1">
                         <a href="<?= e(route(ReorderFamiliesPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                             <?= view('icons/reorder') ?>
                             <?= I18N::translate('Re-order families') ?>
                         </a>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             <?php endif ?>
 
             <?php if ($parent_families->isEmpty()) : ?>
-                <tr>
-                    <td>
+                <div class="row mt-1">
+                    <div class="col-sm-12 wt-fact-content py-1">
                         <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                             <?= I18N::translate('Add a father') ?>
                         </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-sm-12 wt-fact-content py-1">
                         <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                             <?= I18N::translate('Add a mother') ?>
                         </a>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             <?php endif ?>
 
-            <tr>
-                <td>
+            <div class="row mt-1">
+                    <div class="col-sm-12 wt-fact-content py-1">
                     <a href="<?= e(route(LinkChildToFamilyPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                         <?= I18N::translate('Link this individual to an existing family as a child') ?>
                     </a>
-                </td>
-            </tr>
+                    </div>
+                </div>
 
-            <tr>
-                <td>
+            <div class="row mt-1">
+                    <div class="col-sm-12 wt-fact-content py-1">
                     <a href="<?= e(route(AddSpouseToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?php if ($individual->sex() !== 'F') : ?>
                             <?= I18N::translate('Add a wife') ?>
@@ -134,11 +134,11 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Add a husband') ?>
                         <?php endif ?>
                     </a>
-                </td>
-            </tr>
+                    </div>
+                </div>
 
-            <tr>
-                <td>
+                <div class="row mt-1">
+                    <div class="col-sm-12 wt-fact-content py-1">
                     <a href="<?= e(route(LinkSpouseToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
                         <?php if ($individual->sex() !== 'F') : ?>
                             <?= I18N::translate('Add a wife using an existing individual') ?>
@@ -146,17 +146,16 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Add a husband using an existing individual') ?>
                         <?php endif ?>
                     </a>
-                </td>
-            </tr>
+                    </div>
+                </div>
 
-            <tr>
-                <td>
+            <div class="row mt-1">
+                    <div class="col-sm-12 wt-fact-content py-1">
                     <a href="<?= e(route(AddChildToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'U'])) ?>">
                         <?= I18N::translate('Add a child to create a one-parent family') ?>
                     </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    </div>
+                </div>
+
 <?php endif ?>
 </div>
