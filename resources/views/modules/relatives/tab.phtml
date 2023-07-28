@@ -36,6 +36,12 @@ use Illuminate\Support\Collection;
                 data-bs-target=".wt-date-difference"
                 data-wt-persist="date-differences"
                 autocomplete="off"
+                <?= $parent_families ->isEmpty() &&
+                    $spouse_families->isEmpty() &&
+                    $step_child_families->isEmpty() &&
+                    $step_parent_families->isEmpty() ?
+                    'disabled="disabled"' : ''
+                ?>
             >
             <label class="form-check-label" for="show-date-differences">
                 <?= I18N::translate('Date differences') ?>
