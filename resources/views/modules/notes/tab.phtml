@@ -53,7 +53,7 @@ use Illuminate\Support\Collection;
             ?>
 
             <div class="row wt-level-two-note collapse mt-1">
-                <div class="col-sm-2 pe-1 ps-0 rela <?= $styleadd ?>">
+                <div class="col-sm-2 pe-1 ps-0 <?= $styleadd ?>">
                     <div class="wt-fact-controls h-100 pt-1">
                         <?= $fact->label() ?>
                         <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-notes']) ?>

@@ -125,7 +125,7 @@ if (!$found && $family->canEdit()) { ?>
     ?>
 
     <div class="row mt-1 <?= $row_class ?>">
-        <div class="col-sm-2 ps-0 px-1">
+        <div class="col-sm-2 ps-0 pe-1">
             <div class="wt-fact-controls h-100 pt-1">
                 <span class="visually-hidden"><?= $fact->label() ?></span>
             </div>
@@ -183,7 +183,7 @@ if (!$found && $family->canEdit()) { ?>
         ?>
 
         <div class="row mt-1">
-            <div class="col-sm-2 ps-0 px-1">
+            <div class="col-sm-2 ps-0 pe-1">
                 <div class="wt-fact-controls h-100 pt-1">
                     <?php if ($prev->isOK() && $next->isOK()) : ?>
                         <div class="wt-date-difference collapse small">
@@ -218,7 +218,7 @@ if (!$found && $family->canEdit()) { ?>
 
     <?php if ($family->canEdit()) : ?>
         <div class="row mt-1">
-            <div class="col-sm-2 ps-0 px-1">
+            <div class="col-sm-2 ps-0 pe-1">
                 <div class="wt-fact-controls h-100 pt-1">
                     <span class="visually-hidden"><?= I18N::translate('Children') ?></span>
                 </div>

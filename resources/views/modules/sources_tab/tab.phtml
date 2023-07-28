@@ -49,7 +49,7 @@ use Illuminate\Support\Collection;
             ?>
 
         <div class="row mt-1 wt-level-two-source collapse">
-            <div class="col-sm-2 ps-0 px-1 rela <?= $styleadd ?>">
+            <div class="col-sm-2 ps-0 pe-1 <?= $styleadd ?>">
                 <div class="wt-fact-controls h-100 pt-1">
                     <?= $fact->label() ?>
                     <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-sources']) ?>
@@ -76,7 +76,7 @@ use Illuminate\Support\Collection;
 
 <?php if ($can_edit) : ?>
     <div class="row mt-1">
-        <div class="col-2 ps-0 px-1">
+        <div class="col-2 ps-0 pe-1">
             <div class="wt-fact-controls h-100 pt-1">
                 <?= I18N::translate('Source') ?>
             </div>

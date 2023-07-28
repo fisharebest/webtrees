@@ -48,9 +48,11 @@ use Illuminate\Support\Collection;
 
 
             <div class="row wt-level-two-media collapse pt-1">
-                <div class="col-sm-2 pe-1 ps-0 rela wt-fact-controls <?= $styleadd ?>">
-                    <?= $fact->label() ?>
-                    <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-media']) ?>
+                <div class="col-sm-2  ps-0 pe-1">
+                    <div class="wt-fact-controls h-100 <?= $styleadd ?>">
+                        <?= $fact->label() ?>
+                        <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-media']) ?>
+                    </div>
                 </div>
 
                 <div class="col-sm-10 wt-fact-content <?= $styleadd ?>">
