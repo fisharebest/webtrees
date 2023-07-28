@@ -45,8 +45,8 @@ foreach ($family->facts(['HUSB'], false, $fam_access_level) as $fact) {
 ?>
         <div class="row mt-1 <?= $row_class ?>">
             <div class="col-sm-2 pe-1 ps-0">
-                <div class="wt-fact-controls h-100">
-                    <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
+                <div class="wt-fact-controls h-100 pt-1">
+                    <?= $individual === $person ? '<i class="icon-selected"> </i>' : '' ?>
                     <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
                 </div>
             </div>
@@ -85,8 +85,8 @@ foreach ($family->facts(['WIFE'], false, $fam_access_level) as $fact) {
 
         <div class="row mt-1 <?= $row_class ?>">
             <div class="col-sm-2 pe-1 ps-0">
-                <div class="wt-fact-controls h-100">
-                <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
+                <div class="wt-fact-controls h-100 pt-1">
+                <?= $individual === $person ? '<i class="icon-selected"> </i>' : '' ?>
                 <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
                 </div>
             </div>
@@ -201,7 +201,7 @@ if (!$found && $family->canEdit()) { ?>
                         </div>
                     <?php endif ?>
                     <?php if ($individual === $person) : ?>
-                        <i class="icon-selected"></i>
+                        <i class="icon-selected"> </i>
                     <?php endif ?>
                     <?= Registry::container()->get(RelationshipService::class)->getCloseRelationshipName($individual, $person) ?>
                 </div>

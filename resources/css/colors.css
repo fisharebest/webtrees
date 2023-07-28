@@ -157,7 +157,7 @@
 }
 
 .wt-page-options-label,
-.wt-facts-table th, .wt-facts-table .dropdown-toggle, wt-fact-controls
+.wt-facts-table th, .wt-facts-table .dropdown-toggle,
 .descriptionbox, .descriptionbox a,
 .topbottombar, .topbottombar a,
 .list_label, .list_label a, .wt-fact-controls {
@@ -167,7 +167,7 @@
 
 .wt-page-options-value,
 .wt-block-content,
-.wt-facts-table td, wt-fact-content
+.wt-facts-table td,
 .ui-widget-header,
 .optionbox, .ui-state-active a:link,
 .list_value, .list_value_wrap,
