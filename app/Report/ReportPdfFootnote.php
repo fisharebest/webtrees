@@ -124,11 +124,11 @@ class ReportPdfFootnote extends ReportBaseFootnote
             if ($lw >= $wrapWidthRemaining || $lfct > 1) {
                 $newtext = '';
                 $lines   = explode("\n", $this->numText);
-                // Go throught the text line by line
+                // Go through the text line by line
                 foreach ($lines as $line) {
                     // Line width in points
                     $lw = ceil($renderer->tcpdf->GetStringWidth($line));
-                    // If the line has to be wraped
+                    // If the line has to be wrapped
                     if ($lw >= $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
                         $addspace = count($words);

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-28 11:07+0000\n"
+"PO-Revision-Date: 2023-06-23 22:51+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -1917,7 +1917,7 @@ msgstr "Aner til %s"
 
 #: app/Gedcom.php:579
 msgid "Ancestral file number"
-msgstr "Anens filnummer"
+msgstr "Ancestral file number (AFN)"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/Ancestry.php:64
@@ -4285,7 +4285,7 @@ msgstr "Cuba"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "Curaçao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -5802,7 +5802,7 @@ msgstr "Begivenhed"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Hændelsen er ikke forekommet"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -8503,7 +8503,7 @@ msgstr "Sidste ændring"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Senest tjekket %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -12329,7 +12329,7 @@ msgstr "Salvie"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Saint-Barthélemy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -14781,7 +14781,7 @@ msgstr[1] "Der er ikke foretaget nogen ændringer de seneste %s dage."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Der opstod en fejl ved kontrollen efter ny version."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15208,7 +15208,7 @@ msgstr "Serverens hukommelsesgrænse er på %sMB og CPU-tidsgrænsen er på %s s
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Denne tjeneste forudsætter en API-nøgle."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -15963,7 +15963,7 @@ msgstr "Opdater alle"
 #. I18N: Name of a module
 #: app/Module/FixPlaceNames.php:61
 msgid "Update place names"
-msgstr "Opdatér sted navne"
+msgstr "Opdatér stednavne"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:72
@@ -17083,7 +17083,7 @@ msgstr "navneændring"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "tjek nu"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430

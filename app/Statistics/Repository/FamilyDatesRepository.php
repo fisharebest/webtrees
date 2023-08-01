@@ -67,7 +67,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      * @param string $fact
      * @param string $operation
      *
-     * @return object|null
+     * @return object{id:string,year:int,fact:string,type:string}|null
      */
     private function eventQuery(string $fact, string $operation): ?object
     {
@@ -82,11 +82,19 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
                     ->where('d_fact', '=', $fact)
                     ->where('d_julianday1', '<>', 0);
             })
+            ->limit(1)
+            ->get()
+            ->map(static fn (object $row): object => (object) [
+                'id'   => $row->id,
+                'year' => (int) $row->year,
+                'fact' => $row->fact,
+                'type' => $row->type,
+            ])
             ->first();
     }
 
     /**
-     * Returns the formatted year of the first/last occuring event.
+     * Returns the formatted year of the first/last occurring event.
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation
@@ -176,7 +184,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Returns the formatted year of the first/last occuring event.
+     * Returns the formatted year of the first/last occurring event.
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation
@@ -264,7 +272,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Returns the formatted name of the first/last occuring event.
+     * Returns the formatted name of the first/last occurring event.
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation
@@ -351,7 +359,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     }
 
     /**
-     * Returns the formatted place of the first/last occuring event.
+     * Returns the formatted place of the first/last occurring event.
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation

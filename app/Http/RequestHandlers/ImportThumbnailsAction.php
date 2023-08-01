@@ -49,8 +49,6 @@ class ImportThumbnailsAction implements RequestHandlerInterface
     private TreeService $tree_service;
 
     /**
-     * ImportThumbnailsController constructor.
-     *
      * @param PendingChangesService $pending_changes_service
      * @param TreeService           $tree_service
      */

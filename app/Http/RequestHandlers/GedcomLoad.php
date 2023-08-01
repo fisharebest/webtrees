@@ -52,8 +52,6 @@ class GedcomLoad implements RequestHandlerInterface
     private TimeoutService $timeout_service;
 
     /**
-     * GedcomLoad constructor.
-     *
      * @param GedcomImportService $gedcom_import_service
      * @param TimeoutService      $timeout_service
      */

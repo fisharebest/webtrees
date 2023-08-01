@@ -75,8 +75,6 @@ abstract class AbstractElement implements ElementInterface
     private array $subtags;
 
     /**
-     * AbstractGedcomElement constructor.
-     *
      * @param string             $label
      * @param array<string>|null $subtags
      */

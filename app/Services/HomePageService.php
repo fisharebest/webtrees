@@ -41,8 +41,6 @@ class HomePageService
     private ModuleService $module_service;
 
     /**
-     * HomePageController constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

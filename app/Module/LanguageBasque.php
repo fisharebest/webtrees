@@ -17,25 +17,33 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Exceptions;
+namespace Fisharebest\Webtrees\Module;
 
-use Exception;
-use Fisharebest\Webtrees\I18N;
-
-use function e;
+use Fisharebest\Localization\Locale\LocaleEu;
+use Fisharebest\Localization\Locale\LocaleInterface;
 
 /**
- * Exception thrown when importing invalid GEDCOM data.
+ * Class LanguageBasque.
  */
-class GedcomErrorException extends Exception
+class LanguageBasque extends AbstractModule implements ModuleLanguageInterface
 {
-    /**
-     * @param string $gedcom
-     */
-    public function __construct(string $gedcom)
-    {
-        $message = I18N::translate('Invalid GEDCOM record') . '<pre>' . e($gedcom) . '</pre>';
+    use ModuleLanguageTrait;
 
-        parent::__construct($message);
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @return LocaleInterface
+     */
+    public function locale(): LocaleInterface
+    {
+        return new LocaleEu();
     }
 }

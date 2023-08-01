@@ -62,8 +62,6 @@ class Relationship
     private array $matchers;
 
     /**
-     * Relationship constructor.
-     *
      * @param Closure $callback
      */
     private function __construct(Closure $callback)

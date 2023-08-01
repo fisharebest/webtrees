@@ -31,8 +31,6 @@ class XrefExtension implements ExtensionInterface
     private Tree $tree;
 
     /**
-     * MarkdownXrefParser constructor.
-     *
      * @param Tree $tree Match XREFs in this tree
      */
     public function __construct(Tree $tree)

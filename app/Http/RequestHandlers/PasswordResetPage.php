@@ -43,8 +43,6 @@ class PasswordResetPage implements RequestHandlerInterface, StatusCodeInterface
     private UserService $user_service;
 
     /**
-     * PasswordResetForm constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)

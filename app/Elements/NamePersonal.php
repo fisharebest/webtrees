@@ -86,8 +86,6 @@ class NamePersonal extends AbstractElement
     ];
 
     /**
-     * AbstractGedcomElement constructor.
-     *
      * @param string             $label
      * @param array<string>|null $subtags
      */

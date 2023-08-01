@@ -105,12 +105,12 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
                         view('emails/new-version-text', [
                             'latest_version' => $latest_version,
                             'recipient'      => $administrator,
-                            'url'            => $request->getAttribute('base_url'),
+                            'url'            => $request->getAttribute('base_url', ''),
                         ]),
                         view('emails/new-version-html', [
                             'latest_version' => $latest_version,
                             'recipient'      => $administrator,
-                            'url'            => $request->getAttribute('base_url'),
+                            'url'            => $request->getAttribute('base_url', ''),
                         ])
                     );
                 }

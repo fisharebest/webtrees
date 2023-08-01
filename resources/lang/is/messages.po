@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-19 18:35+0000\n"
+"PO-Revision-Date: 2023-07-06 09:48+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -392,13 +392,13 @@ msgstr[1] "%s vikur"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s árs"
-msgstr[1] "%s ár"
+msgstr[1] "%s ára"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:159
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s ára afmæli"
+msgstr "%s ára atburður"
 
 #: app/Services/RelationshipService.php:2354
 #, php-format
@@ -811,17 +811,18 @@ msgstr "Listi verkefna og athafna sem eru tengd ættartölunni."
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Listi yfir Hebresk dánar afmæli sem munu eiga sér stað í náinni framtíð."
+msgstr ""
+"Listi yfir Hebreska dánaratburði sem munu eiga sér stað í náinni framtíð."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
 msgid "A list of the anniversaries that occur today."
-msgstr "Listi yfir afmæli sem eiga sér stað í dag."
+msgstr "Listi yfir atburði sem eiga sér stað í dag."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:133
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
+msgstr "Listi yfir atburðardaga sem væntanlegir eru í náinni framtíð."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:59
@@ -1292,12 +1293,12 @@ msgstr "Bæta við nýju eftirlæti"
 #: resources/views/modules/relatives/family.phtml:63
 #: resources/views/modules/relatives/tab.phtml:134
 msgid "Add a husband"
-msgstr "Bæta við nýjum eiginmanni"
+msgstr "Bæta við nýjum maka"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:73
 #: resources/views/modules/relatives/tab.phtml:146
 msgid "Add a husband using an existing individual"
-msgstr "Bæta við eiginmanni með því að nota núverandi persónu"
+msgstr "Bæta við maka með því að nota fyrirliggjandi persónu"
 
 #: resources/views/modules/user_blog/list.phtml:62
 msgid "Add a journal entry"
@@ -1374,12 +1375,12 @@ msgstr "Bæta við nýjum notanda"
 #: resources/views/modules/relatives/family.phtml:100
 #: resources/views/modules/relatives/tab.phtml:132
 msgid "Add a wife"
-msgstr "Bæta við nýrri eiginkonu"
+msgstr "Bæta við nýjum maka"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:76
 #: resources/views/modules/relatives/tab.phtml:144
 msgid "Add a wife using an existing individual"
-msgstr "Bæta eiginkonu við núverandi persónu"
+msgstr "Bæta maka við fyrirliggjandi persónu"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:301
@@ -1849,7 +1850,7 @@ msgstr "Önnu leið að gagnaflipa og fullkomnari myndaskoðara."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:78
 msgid "An alternative way to display charts."
-msgstr "Önnur leið til að birta gröf."
+msgstr "Önnur leið til að birta töflur."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:62
@@ -1952,11 +1953,11 @@ msgstr "Anguilla"
 #: resources/views/modules/share-anniversary/share.phtml:20
 #: resources/views/modules/yahrzeit/table.phtml:31
 msgid "Anniversary"
-msgstr "Afmæli"
+msgstr "Atburður"
 
 #: app/Http/RequestHandlers/CalendarPage.php:111
 msgid "Anniversary calendar"
-msgstr "Afmælis dagatal"
+msgstr "Atburðardagatal"
 
 #: app/Gedcom.php:444
 msgid "Annulment"
@@ -3121,7 +3122,7 @@ msgstr "Jarðsetning hálfsysturs"
 
 #: app/Services/IndividualFactsService.php:801
 msgid "Burial of a husband"
-msgstr "Jarðsetning eiginmanns"
+msgstr "Jarðsetning maka"
 
 #: app/Services/IndividualFactsService.php:667
 msgid "Burial of a maternal grandfather"
@@ -3165,7 +3166,7 @@ msgstr "Jarðsetning maka"
 
 #: app/Services/IndividualFactsService.php:802
 msgid "Burial of a wife"
-msgstr "Jarðsetning eiginkonu"
+msgstr "Jarðsetning maka"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
@@ -3471,7 +3472,7 @@ msgstr "Gerð grafs"
 #: resources/views/admin/modules.phtml:104
 #: resources/views/admin/trees-preferences.phtml:391
 msgid "Charts"
-msgstr "Gröf"
+msgstr "Töflur"
 
 #: app/Http/RequestHandlers/CheckTree.php:324
 #: resources/views/admin/trees.phtml:185
@@ -4224,7 +4225,7 @@ msgstr "Líkbrennsla hálfsystur"
 
 #: app/Services/IndividualFactsService.php:806
 msgid "Cremation of a husband"
-msgstr "Líkbrennsla eiginmanns"
+msgstr "Líkbrennsla maka"
 
 #: app/Services/IndividualFactsService.php:672
 msgid "Cremation of a maternal grandfather"
@@ -4268,7 +4269,7 @@ msgstr "Líkbrennsla maka"
 
 #: app/Services/IndividualFactsService.php:807
 msgid "Cremation of a wife"
-msgstr "Líkbrennsla eiginkonu"
+msgstr "Líkbrennsla maka"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:243
@@ -4888,7 +4889,7 @@ msgstr "Andlát hálfsystur"
 
 #: app/Services/IndividualFactsService.php:796
 msgid "Death of a husband"
-msgstr "Andlát eiginmanns"
+msgstr "Andlát maka"
 
 #: app/Services/IndividualFactsService.php:662
 msgid "Death of a maternal grandfather"
@@ -4937,7 +4938,7 @@ msgstr "Andlát maka"
 
 #: app/Services/IndividualFactsService.php:797
 msgid "Death of a wife"
-msgstr "Andlát eiginkonu"
+msgstr "Andlát maka"
 
 #: app/CustomTags/FamilyTreeMaker.php:55
 msgid "Death of one spouse"
@@ -5287,7 +5288,7 @@ msgstr "Dó sem barn: undanþegið"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr "Dó yngri en 1 árs, innsiglunar ekki krafist."
+msgstr "Dó yngri en 1 árs, innsiglingar ekki krafist."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5393,7 +5394,7 @@ msgstr "Sækja %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
-msgstr "Sækja .ICS skjal sem inniheldur afmæli"
+msgstr "Sækja .ICS skjal sem inniheldur atburð"
 
 #: resources/views/media-page-details.phtml:83
 msgid "Download file"
@@ -6204,7 +6205,7 @@ msgstr "Fjölskylda með fósturforeldrum"
 #: resources/xml/reports/individual_ext_report.xml:449
 #: resources/xml/reports/individual_report.xml:446
 msgid "Family with husband"
-msgstr "Fjölskylda með eiginmanni"
+msgstr "Fjölskylda með maka"
 
 #: app/Individual.php:852 app/Individual.php:906
 #: resources/xml/reports/individual_ext_report.xml:245
@@ -6235,7 +6236,7 @@ msgstr "Fjölskylda með flest börn"
 #: resources/xml/reports/individual_ext_report.xml:443
 #: resources/xml/reports/individual_report.xml:486
 msgid "Family with wife"
-msgstr "Fjölskylda með eiginkonu"
+msgstr "Fjölskylda með maka"
 
 #. I18N: familysearch.org
 #: app/CustomTags/FamilySearch.php:52 app/CustomTags/GenPlusWin.php:52
@@ -7313,7 +7314,7 @@ msgstr "Hæ %s …<br><br>Takk fyrir skráninguna þína."
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:14
 msgid "Hello administrator…"
-msgstr "Halló Kerfissstjóri …"
+msgstr "Halló kerfisstjóri…"
 
 #: app/Http/RequestHandlers/HelpText.php:280 resources/views/help/link.phtml:13
 #: resources/views/help/link.phtml:15
@@ -7537,7 +7538,7 @@ msgstr "Eiginmaður"
 
 #: app/Gedcom.php:414 resources/views/modules/timeline-chart/chart.phtml:357
 msgid "Husband’s age"
-msgstr "Aldur eiginmanns"
+msgstr "Aldur maka"
 
 #: resources/views/admin/site-logs.phtml:60
 #: resources/views/admin/site-logs.phtml:127
@@ -8678,7 +8679,7 @@ msgstr "Tengdu notandareikninginn við einstakling."
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:49
 #: resources/views/modules/relatives/tab.phtml:123
 msgid "Link this individual to an existing family as a child"
-msgstr "Tengja þessa persónu við núverandi fjölskyldu sem barni"
+msgstr "Tengja þessa persónu við fyrirliggjandi fjölskyldu sem barni"
 
 #: resources/views/media-page-menu.phtml:65
 #: resources/views/modals/link-media-to-family.phtml:18
@@ -10288,8 +10289,8 @@ msgstr "Engir atburðir eru til staðar á morgun fyrir fólk á lífi."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] "Engir viðburðir fyrir lifandi fólk eru til fyrir næsta %s dag."
-msgstr[1] "Engir viðburðir fyrir lifandi fólk eru til fyrir næstu %s daga."
+msgstr[0] "Engir atburðir fyrir lifandi fólk eru til fyrir næsta %s dag."
+msgstr[1] "Engir atburðir fyrir lifandi fólk eru til fyrir næstu %s daga."
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
@@ -11204,7 +11205,10 @@ msgstr "Staðarlisti"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:573
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Staðarheiti eru oft of löng til að passa í gröf, lista o.s.frv. Hægt er að stytta þau með því að birta eingöngu fyrstu hlutina af heitinu, t.d. <i>bær, sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
+msgstr ""
+"Staðarheiti eru oft of löng til að passa í töflur, lista o.s.frv. Hægt er að "
+"stytta þau með því að birta eingöngu fyrstu hlutina af heitinu, t.d. <i>bær, "
+"sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
 
 #: resources/views/help/place.phtml:14
 msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
@@ -12855,7 +12859,7 @@ msgstr "Deila vefslóðinni"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr "Deildu afmælisdegi viðburðar"
+msgstr "Deildu viðburðardegi atburðar"
 
 #: app/CustomTags/Gedcom7.php:85 app/CustomTags/Gedcom7.php:100
 #: app/CustomTags/Gedcom7.php:112 app/CustomTags/Gedcom7.php:134
@@ -13268,7 +13272,7 @@ msgstr "Sýna lista yfir eftirnöfn"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr "Sýnið staðsetningu viðburðar á ytra korti."
+msgstr "Sýnið staðsetningu atburðar á ytra korti."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
@@ -13289,7 +13293,7 @@ msgstr "Sýna þetta box fyrir hvaða tungumál"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Birta smámyndir í gröfum og fjölskylduhópum."
+msgstr "Birta smámyndir í töflum og fjölskylduhópum."
 
 #: app/Auth.php:595 app/Auth.php:608 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -15109,7 +15113,11 @@ msgstr "Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og mó�
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:374
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar fyrir fæðingu og andlát í stað þess að skilja eftir autt á einstaklingslistum og gröfum fyrir einstaklinga þar sem dagsetningar eru óþekktar."
+msgstr ""
+"Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar "
+"fyrir fæðingu og andlát í stað þess að skilja eftir autt á "
+"einstaklingslistum og töflum fyrir einstaklinga þar sem dagsetningar eru "
+"óþekktar."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
@@ -15119,7 +15127,10 @@ msgstr "Þessi valkostur mun auðvelda notendum að hlaða niður myndum."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða „friðhelgis“ kassa á ættartölugrafinu og á öðrum gröfum hjá fólki með friðhelgi."
+msgstr ""
+"Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. "
+"Þetta þýðir að þú sérð auða „friðhelgis“ kassa í ættartölugrafinu og á öðrum "
+"töflum hjá fólki með friðhelgi."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
@@ -16476,11 +16487,11 @@ msgstr "Ekkill"
 #: resources/xml/reports/individual_report.xml:489
 #: resources/xml/reports/relative_ext_report.xml:111
 msgid "Wife"
-msgstr "Eiginkona"
+msgstr "Maki"
 
 #: app/Gedcom.php:442 resources/views/modules/timeline-chart/chart.phtml:355
 msgid "Wife’s age"
-msgstr "Aldur eiginkonu"
+msgstr "Aldur maka"
 
 #: app/Gedcom.php:758
 msgid "Will"
@@ -16513,7 +16524,7 @@ msgstr "Vitni"
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
 #: app/SurnameTradition/PolishSurnameTradition.php:67
 msgid "Wives take their husband’s surname."
-msgstr "Konur taka eftirnafn eiginmanns síns."
+msgstr "Konur taka eftirnafn maka síns."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:75
 #: resources/views/modules/place-hierarchy/page.phtml:30
@@ -17306,7 +17317,7 @@ msgstr "áætlað %s"
 
 #: app/Services/RelationshipService.php:365
 msgid "ex-husband"
-msgstr "fyrrverandi eiginmaður"
+msgstr "fyrrverandi maki"
 
 #: app/Services/RelationshipService.php:412
 msgid "ex-spouse"
@@ -17314,7 +17325,7 @@ msgstr "fyrrverandi maki"
 
 #: app/Services/RelationshipService.php:389
 msgid "ex-wife"
-msgstr "fyrrverandi eiginkona"
+msgstr "fyrrverandi maki"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:153
@@ -17762,17 +17773,17 @@ msgstr "sonardóttir"
 #: app/Services/RelationshipService.php:735
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "eiginmaður barnabarns"
+msgstr "maki barnabarns"
 
 #: app/Services/RelationshipService.php:757
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "eignmaður dótturdóttur"
+msgstr "maki dótturdóttur"
 
 #: app/Services/RelationshipService.php:1055
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "eiginmaður sonardóttur"
+msgstr "maki sonardóttur"
 
 #: app/Services/RelationshipService.php:587
 msgctxt "parent’s father"
@@ -17807,17 +17818,17 @@ msgstr "sonarsonur"
 #: app/Services/RelationshipService.php:745
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "eiginkona barnabarns"
+msgstr "maki barnabarns"
 
 #: app/Services/RelationshipService.php:773
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "eiginkona dóttursonar"
+msgstr "maki dóttursonar"
 
 #: app/Services/RelationshipService.php:1065
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "eiginkona sonarsonar"
+msgstr "maki sonarsonar"
 
 #: app/Services/RelationshipService.php:1441
 #: app/Services/RelationshipService.php:1460
@@ -20827,7 +20838,7 @@ msgstr "webtrees sendir tölvupósta án geymslu þeirra"
 
 #: app/Elements/RoleInEvent.php:80 app/Services/RelationshipService.php:391
 msgid "wife"
-msgstr "eiginkona"
+msgstr "maki"
 
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39

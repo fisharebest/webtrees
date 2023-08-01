@@ -53,8 +53,6 @@ class CompressResponse implements MiddlewareInterface
     protected StreamFactoryInterface $stream_factory;
 
     /**
-     * CompressResponse constructor.
-     *
      * @param StreamFactoryInterface $stream_factory
      */
     public function __construct(StreamFactoryInterface $stream_factory)

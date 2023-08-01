@@ -213,6 +213,7 @@ class GedcomL implements CustomTagInterface
             'SOUR:DATA:EVEN:PLAC:_MAIDENHEAD' => new MaidenheadLocator(I18N::translate('Maidenhead location code')),
             'SOUR:DATA:EVEN:PLAC:_POST'       => new AddressPostalCode(I18N::translate('Postal code')),
             'SOUR:DATA:EVEN:PLAC:_POST:DATE'  => new DateValue(I18N::translate('Date')),
+            'SOUR:DATA:EVEN:PLAC:_GOV'        => new GovIdentifier(I18N::translate('GOV identifier')),
             'SUBM:ADDR:_NAME'                 => new CustomElement(I18N::translate('Name of addressee')),
             'SUBM:_UID'                       => new PafUid(I18N::translate('Unique identifier')),
             'SUBN:_UID'                       => new PafUid(I18N::translate('Unique identifier')),

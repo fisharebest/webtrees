@@ -17,7 +17,7 @@ use Illuminate\Support\Collection;
 /**
  * @var array<string,array<string,string>> $access_summary
  * @var string                             $description
- * @var string                             $interface
+ * @var class-string<ModuleInterface>      $interface
  * @var Collection<int,ModuleInterface>    $modules
  * @var string                             $title
  * @var Collection<int,Tree>               $trees
@@ -50,7 +50,7 @@ use Illuminate\Support\Collection;
         </thead>
 
         <tbody>
-            <?php foreach ($modules as $module_name => $module) : ?>
+            <?php foreach ($modules as $module) : ?>
                 <tr>
                     <th scope="col">
                         <input type="hidden" name="order[]" value="<?= e($module->name()) ?>">
@@ -189,4 +189,3 @@ use Illuminate\Support\Collection;
   });
 </script>
 <?php View::endpush() ?>
-

@@ -100,7 +100,7 @@ class ReportParserGenerate extends ReportParserBase
     /** Are we collecting data from <Footnote> elements */
     private bool $process_footnote = true;
 
-    /** Are we currently outputing data? */
+    /** Are we currently outputting data? */
     private bool $print_data = false;
 
     /** @var array<int,bool> Push-down stack of $print_data */
@@ -1938,7 +1938,7 @@ class ReportParserGenerate extends ReportParserBase
                             });
                             // Search the DB only if there is any name supplied
                             $names = explode(' ', $match[1]);
-                            foreach ($names as $n => $name) {
+                            foreach ($names as $name) {
                                 $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
                             }
 
@@ -2038,7 +2038,7 @@ class ReportParserGenerate extends ReportParserBase
                                 // Search the DB only if there is any name supplied
                                 if ($match[1] != '') {
                                     $names = explode(' ', $match[1]);
-                                    foreach ($names as $n => $name) {
+                                    foreach ($names as $name) {
                                         $query->where($attr . '.n_full', 'LIKE', '%' . addcslashes($name, '\\%_') . '%');
                                     }
                                 }

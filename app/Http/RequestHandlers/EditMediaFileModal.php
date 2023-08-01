@@ -42,8 +42,6 @@ class EditMediaFileModal implements RequestHandlerInterface
     private MediaFileService $media_file_service;
 
     /**
-     * EditMediaFileModal constructor.
-     *
      * @param MediaFileService $media_file_service
      */
     public function __construct(MediaFileService $media_file_service)

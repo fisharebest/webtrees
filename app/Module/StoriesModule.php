@@ -51,8 +51,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     private TreeService $tree_service;
 
     /**
-     * StoriesModule constructor.
-     *
      * @param HtmlService $html_service
      * @param TreeService $tree_service
      */

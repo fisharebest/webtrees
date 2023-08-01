@@ -39,8 +39,6 @@ class Age
     private bool $is_valid;
 
     /**
-     * Age constructor.
-     *
      * @param Date $x The first date
      * @param Date $y The second date
      */

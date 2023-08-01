@@ -38,8 +38,6 @@ class EditRecordAction implements RequestHandlerInterface
     private GedcomEditService $gedcom_edit_service;
 
     /**
-     * EditFactAction constructor.
-     *
      * @param GedcomEditService $gedcom_edit_service
      */
     public function __construct(GedcomEditService $gedcom_edit_service)

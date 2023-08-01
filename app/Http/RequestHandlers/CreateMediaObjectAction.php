@@ -41,8 +41,6 @@ class CreateMediaObjectAction implements RequestHandlerInterface
     private PendingChangesService $pending_changes_service;
 
     /**
-     * CreateMediaObjectAction constructor.
-     *
      * @param MediaFileService      $media_file_service
      * @param PendingChangesService $pending_changes_service
      */

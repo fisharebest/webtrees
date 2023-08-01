@@ -97,6 +97,7 @@ use Fisharebest\Webtrees\Module\InteractiveTreeModule;
 use Fisharebest\Webtrees\Module\LanguageAfrikaans;
 use Fisharebest\Webtrees\Module\LanguageAlbanian;
 use Fisharebest\Webtrees\Module\LanguageArabic;
+use Fisharebest\Webtrees\Module\LanguageBasque;
 use Fisharebest\Webtrees\Module\LanguageBosnian;
 use Fisharebest\Webtrees\Module\LanguageBulgarian;
 use Fisharebest\Webtrees\Module\LanguageCatalan;
@@ -402,6 +403,7 @@ class ModuleService
         'language-en-US'          => LanguageEnglishUnitedStates::class,
         'language-es'             => LanguageSpanish::class,
         'language-et'             => LanguageEstonian::class,
+        'language-eu'             => LanguageBasque::class,
         'language-fa'             => LanguageFarsi::class,
         'language-fi'             => LanguageFinnish::class,
         'language-fo'             => LanguageFaroese::class,

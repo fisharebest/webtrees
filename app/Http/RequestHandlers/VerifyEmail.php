@@ -47,8 +47,6 @@ class VerifyEmail implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * MessageController constructor.
-     *
      * @param EmailService $email_service
      * @param UserService  $user_service
      */

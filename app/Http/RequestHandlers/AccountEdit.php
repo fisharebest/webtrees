@@ -48,8 +48,6 @@ class AccountEdit implements RequestHandlerInterface
     private ModuleService $module_service;
 
     /**
-     * AccountEdit constructor.
-     *
      * @param MessageService $message_service
      * @param ModuleService  $module_service
      */

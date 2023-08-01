@@ -54,8 +54,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     private ModuleService $module_service;
 
     /**
-     * TopSurnamesModule constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)
@@ -147,6 +145,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 uksort($top_surnames, I18N::comparator());
                 $content = view('lists/surnames-tag-cloud', [
                     'module'   => $module,
+                    'params'   => [],
                     'surnames' => $top_surnames,
                     'totals'   => true,
                     'tree'     => $tree,
@@ -156,6 +155,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             case 'list':
                 $content = view('lists/surnames-bullet-list', [
                     'module'   => $module,
+                    'params'   => [],
                     'surnames' => $top_surnames,
                     'totals'   => true,
                     'tree'     => $tree,
@@ -165,6 +165,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             case 'array':
                 $content = view('lists/surnames-compact-list', [
                     'module'   => $module,
+                    'params'   => [],
                     'surnames' => $top_surnames,
                     'totals'   => true,
                     'tree'     => $tree,
@@ -178,6 +179,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                     'families' => false,
                     'module'   => $module,
                     'order'    => [[1, 'desc']],
+                    'params'   => [],
                     'surnames' => $top_surnames,
                     'tree'     => $tree,
                 ]);

@@ -59,7 +59,7 @@ class IndividualFactsService
      * @param Individual             $individual
      * @param Collection<int,string> $exclude_facts
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function individualFacts(Individual $individual, Collection $exclude_facts): Collection
     {
@@ -73,7 +73,7 @@ class IndividualFactsService
      * @param Individual             $individual
      * @param Collection<int,string> $exclude_facts
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function familyFacts(Individual $individual, Collection $exclude_facts): Collection
     {

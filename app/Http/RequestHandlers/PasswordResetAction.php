@@ -40,8 +40,6 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
     private UserService $user_service;
 
     /**
-     * PasswordRequestForm constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)

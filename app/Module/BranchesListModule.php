@@ -67,8 +67,6 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     private ModuleService $module_service;
 
     /**
-     * BranchesListModule constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

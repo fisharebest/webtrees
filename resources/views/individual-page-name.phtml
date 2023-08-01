@@ -57,7 +57,7 @@ if ($fact->isPendingDeletion()) {
                 <dd class="col-md-8 col-lg-9"><bdi><?= e($fact->value()) ?></bdi></dd>
     
                 <?php preg_match_all('/\n2 (\w+) (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
-                <?php foreach ($matches as $key => $match) : ?>
+                <?php foreach ($matches as $match) : ?>
                     <?php [, $tag, $value] = $match ?>
                     <?php $element = Registry::elementFactory()->make($fact->tag() . ':' . $tag) ?>
                     <?php if ($tag !== 'SOUR' && $tag !== 'NOTE') : ?>

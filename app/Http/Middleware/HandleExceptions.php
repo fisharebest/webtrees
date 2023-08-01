@@ -38,6 +38,7 @@ use Throwable;
 use function dirname;
 use function error_get_last;
 use function ini_get;
+use function nl2br;
 use function ob_end_clean;
 use function ob_get_level;
 use function register_shutdown_function;
@@ -58,8 +59,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     private TreeService $tree_service;
 
     /**
-     * HandleExceptions constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(TreeService $tree_service)
@@ -140,7 +139,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             }
 
             // Show a stack dump.
-            return response((string) $exception, StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+            return response(nl2br((string) $exception), StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
         }
     }
 

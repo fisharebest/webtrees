@@ -41,8 +41,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
     private SearchService $search_service;
 
     /**
-     * DescendancyModule constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(SearchService $search_service)

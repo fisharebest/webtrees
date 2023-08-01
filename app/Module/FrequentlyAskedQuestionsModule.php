@@ -50,8 +50,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     private TreeService $tree_service;
 
     /**
-     * FrequentlyAskedQuestionsModule constructor.
-     *
      * @param HtmlService $html_service
      * @param TreeService $tree_service
      */

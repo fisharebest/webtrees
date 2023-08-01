@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterfa
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
+use function abs;
 use function array_map;
 use function array_merge;
 use function e;
@@ -182,7 +183,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Retursn the list of common facts used query the data.
+     * Returns the list of common facts used query the data.
      *
      * @return array<string>
      */
@@ -217,7 +218,7 @@ class EventRepository implements EventRepositoryInterface
      *
      * @param string $direction The sorting direction of the query (To return first or last record)
      *
-     * @return object|null
+     * @return object{id:string,year:int,fact:string,type:string}|null
      */
     private function eventQuery(string $direction): ?object
     {
@@ -229,11 +230,19 @@ class EventRepository implements EventRepositoryInterface
             ->where('d_julianday1', '<>', 0)
             ->orderBy('d_julianday1', $direction)
             ->orderBy('d_type')
+            ->limit(1)
+            ->get()
+            ->map(static fn (object $row): object => (object) [
+                'id'   => $row->id,
+                'year' => (int) $row->year,
+                'fact' => $row->fact,
+                'type' => $row->type,
+            ])
             ->first();
     }
 
     /**
-     * Returns the formatted first/last occuring event.
+     * Returns the formatted first/last occurring event.
      *
      * @param string $direction The sorting direction
      *
@@ -274,7 +283,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted year of the first/last occuring event.
+     * Returns the formatted year of the first/last occurring event.
      *
      * @param string $direction The sorting direction
      *
@@ -286,6 +295,10 @@ class EventRepository implements EventRepositoryInterface
 
         if ($row === null) {
             return '';
+        }
+
+        if ($row->year < 0) {
+            $row->year = abs($row->year) . ' B.C.';
         }
 
         return (new Date($row->type . ' ' . $row->year))
@@ -351,7 +364,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted name of the first/last occuring event.
+     * Returns the formatted name of the first/last occurring event.
      *
      * @param string $direction The sorting direction
      *
@@ -389,7 +402,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * Returns the formatted place of the first/last occuring event.
+     * Returns the formatted place of the first/last occurring event.
      *
      * @param string $direction The sorting direction
      *

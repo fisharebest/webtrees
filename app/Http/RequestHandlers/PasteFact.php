@@ -37,8 +37,6 @@ class PasteFact implements RequestHandlerInterface
     private ClipboardService $clipboard_service;
 
     /**
-     * PasteFact constructor.
-     *
      * @param ClipboardService $clipboard_service
      */
     public function __construct(ClipboardService $clipboard_service)

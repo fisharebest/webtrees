@@ -37,8 +37,6 @@ class TomSelectIndividual extends AbstractTomSelectHandler
     protected SearchService $search_service;
 
     /**
-     * TomSelectIndividual constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(SearchService $search_service)

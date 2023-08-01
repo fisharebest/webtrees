@@ -35,8 +35,6 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
     private ModuleService $module_service;
 
     /**
-     * ListsMenuModule constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

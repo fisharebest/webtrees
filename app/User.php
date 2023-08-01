@@ -42,8 +42,6 @@ class User implements UserInterface
     private array $preferences;
 
     /**
-     * User constructor.
-     *
      * @param int    $user_id
      * @param string $user_name
      * @param string $real_name

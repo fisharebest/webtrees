@@ -152,7 +152,7 @@ use Illuminate\Support\Collection;
                             <?= view('admin/external-module-info', ['module' => $module]) ?>
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Preferences') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Preferences') ?>">
                         <?php if ($module instanceof ModuleConfigInterface) : ?>
                             <?php if ($module->isEnabled()) : ?>
                                 <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
@@ -166,7 +166,7 @@ use Illuminate\Support\Collection;
                             <?php endif ?>
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Menu') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Menu') ?>">
                         <?php if ($module instanceof ModuleMenuInterface) : ?>
                             <?= view('icons/menu') ?>
                             <span class="visually-hidden"><?= I18N::translate('Menu') ?></span>
@@ -174,7 +174,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Tab') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Tab') ?>">
                         <?php if ($module instanceof ModuleTabInterface) : ?>
                             <?= view('icons/tab') ?>
                             <span class="visually-hidden"><?= I18N::translate('Tab') ?></span>
@@ -182,7 +182,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Sidebar') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Sidebar') ?>">
                         <?php if ($module instanceof ModuleSidebarInterface) : ?>
                             <?= view('icons/sidebar') ?>
                             <span class="visually-hidden"><?= I18N::translate('Sidebar') ?></span>
@@ -190,7 +190,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted">
+                    <td class="text-center">
                         <?php if ($module instanceof ModuleBlockInterface) : ?>
                             <?php if ($module->isUserBlock()) : ?>
                                 <span title="<?= I18N::translate('My page') ?>">
@@ -213,7 +213,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Data fix') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Data fix') ?>">
                         <?php if ($module instanceof ModuleDataFixInterface) : ?>
                             <?= view('icons/data-fix') ?>
                             <span class="visually-hidden"><?= I18N::translate('Data fix') ?></span>
@@ -221,7 +221,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Chart') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Chart') ?>">
                         <?php if ($module instanceof ModuleChartInterface) : ?>
                             <?= view('icons/chart') ?>
                             <span class="visually-hidden"><?= I18N::translate('Chart') ?></span>
@@ -229,7 +229,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('List') ?>">
+                    <td class="text-center" title="<?= I18N::translate('List') ?>">
                         <?php if ($module instanceof ModuleListInterface) : ?>
                             <?= view('icons/list') ?>
                             <span class="visually-hidden"><?= I18N::translate('List') ?></span>
@@ -237,7 +237,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Report') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Report') ?>">
                         <?php if ($module instanceof ModuleReportInterface) : ?>
                             <?= view('icons/report') ?>
                             <span class="visually-hidden"><?= I18N::translate('Report') ?></span>
@@ -245,7 +245,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Footer') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Footer') ?>">
                         <?php if ($module instanceof ModuleFooterInterface) : ?>
                             <?= view('icons/footer') ?>
                             <span class="visually-hidden"><?= I18N::translate('Footer') ?></span>
@@ -253,7 +253,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Tracking and analytics') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Tracking and analytics') ?>">
                         <?php if ($module instanceof ModuleAnalyticsInterface) : ?>
                             <?= view('icons/analytics') ?>
                             <span class="visually-hidden"><?= I18N::translate('Tracking and analytics') ?></span>
@@ -261,7 +261,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Historic events') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Historic events') ?>">
                         <?php if ($module instanceof ModuleHistoricEventsInterface) : ?>
                             <?= view('icons/history') ?>
                             <span class="visually-hidden"><?= I18N::translate('Historic events') ?></span>
@@ -269,7 +269,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Theme') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Theme') ?>">
                         <?php if ($module instanceof ModuleThemeInterface) : ?>
                             <?= view('icons/theme') ?>
                             <span class="visually-hidden"><?= I18N::translate('Theme') ?></span>
@@ -277,7 +277,7 @@ use Illuminate\Support\Collection;
                             -
                         <?php endif ?>
                     </td>
-                    <td class="text-center text-muted" title="<?= I18N::translate('Language') ?>">
+                    <td class="text-center" title="<?= I18N::translate('Language') ?>">
                         <?php if ($module instanceof ModuleLanguageInterface) : ?>
                             <?= view('icons/language') ?>
                             <span class="visually-hidden"><?= I18N::translate('Language') ?></span>

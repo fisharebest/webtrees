@@ -105,8 +105,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     private ChartService $chart_service;
 
     /**
-     * FanChartModule constructor.
-     *
      * @param ChartService $chart_service
      */
     public function __construct(ChartService $chart_service)

@@ -43,8 +43,6 @@ class UseLanguage implements MiddlewareInterface
     private ModuleService $module_service;
 
     /**
-     * UseTheme constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)

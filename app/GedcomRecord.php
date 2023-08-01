@@ -424,7 +424,7 @@ class GedcomRecord
     }
 
     /**
-     * Allow the choice of primary name to be overidden, e.g. in a search result
+     * Allow the choice of primary name to be overridden, e.g. in a search result
      *
      * @param int|null $n
      *
@@ -836,6 +836,7 @@ class GedcomRecord
                 'xref'       => $this->xref,
                 'old_gedcom' => $old_gedcom,
                 'new_gedcom' => $new_gedcom,
+                'status'     => 'pending',
                 'user_id'    => Auth::id(),
             ]);
 
@@ -885,6 +886,7 @@ class GedcomRecord
             'xref'       => $this->xref,
             'old_gedcom' => $this->gedcom(),
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -919,6 +921,7 @@ class GedcomRecord
                 'xref'       => $this->xref,
                 'old_gedcom' => $this->gedcom(),
                 'new_gedcom' => '',
+                'status'     => 'pending',
                 'user_id'    => Auth::id(),
             ]);
         }

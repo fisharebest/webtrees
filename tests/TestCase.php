@@ -139,7 +139,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param array<string>                $query
      * @param array<string>                $params
      * @param array<UploadedFileInterface> $files
-     * @param array<string>                $attributes
+     * @param array<string|Tree>           $attributes
      *
      * @return ServerRequestInterface
      */

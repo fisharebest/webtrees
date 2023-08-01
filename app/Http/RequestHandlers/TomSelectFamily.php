@@ -37,8 +37,6 @@ class TomSelectFamily extends AbstractTomSelectHandler
     protected SearchService $search_service;
 
     /**
-     * TomSelectFamily constructor.
-     *
      * @param SearchService $search_service
      */
     public function __construct(

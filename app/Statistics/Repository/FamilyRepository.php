@@ -90,7 +90,6 @@ class FamilyRepository
             return '';
         }
 
-        /** @var Family $family */
         $family = Registry::familyFactory()->mapper($this->tree)($row);
 
         if (!$family->canShow()) {
@@ -259,7 +258,6 @@ class FamilyRepository
 
         $top10 = [];
 
-        /** @var Family $family */
         foreach ($families as $family) {
             if ($type === 'list') {
                 $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->fullName() . '</a></li>';
@@ -553,7 +551,7 @@ class FamilyRepository
     }
 
     /**
-     * General query on familes/children.
+     * General query on families/children.
      *
      * @param int    $year1
      * @param int    $year2

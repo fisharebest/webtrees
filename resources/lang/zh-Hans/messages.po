@@ -2,9 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"PO-Revision-Date: 2023-07-20 13:51+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
+"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -436,7 +437,7 @@ msgstr "隔 %s 代的堂（表）兄妹"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BCE"
+msgstr "公元前%s年"
 
 # I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
@@ -4404,7 +4405,7 @@ msgstr "创建一个提交者"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Create a temporary folder…"
-msgstr "解压缩 %s 到一个临时文件夹…"
+msgstr ""
 
 #: resources/views/modals/media-file-fields.phtml:80
 msgid "Create a unique filename"
@@ -10790,7 +10791,7 @@ msgstr "姓名前缀"
 # I18N: gedcom tag NSFX
 #: app/Gedcom.php:688 app/Gedcom.php:696 app/Gedcom.php:702
 msgid "Name suffix"
-msgstr "姓名后缀"
+msgstr "古代字/号"
 
 #: resources/views/admin/tags.phtml:42
 #: resources/views/modules/statistics-chart/names.phtml:10
@@ -10954,7 +10955,7 @@ msgstr "尼加拉瓜"
 # I18N: gedcom tag NICK
 #: app/Gedcom.php:685 app/Gedcom.php:694 app/Gedcom.php:699
 msgid "Nickname"
-msgstr "昵称"
+msgstr "辈/派行"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -11082,17 +11083,17 @@ msgstr "明天没有事件。"
 
 #: app/Module/OnThisDayModule.php:155
 msgid "No events for living individuals exist for today."
-msgstr ""
+msgstr "在世的人今天没有任何事件发生。"
 
 #: app/Module/UpcomingAnniversariesModule.php:175
 msgid "No events for living individuals exist for tomorrow."
-msgstr ""
+msgstr "在世的人明天没有任何事件发生。"
 
 #: app/Module/UpcomingAnniversariesModule.php:181
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
+msgstr[0] "在%s天内，不存在任何事件。"
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
@@ -11101,7 +11102,7 @@ msgstr "这个家庭没有事件。"
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "未收到任何文件。"
 
 # I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -11155,7 +11156,7 @@ msgstr "没有登录，没有匿名用户"
 #: resources/views/lists/surnames-table.phtml:69
 #: resources/views/lists/surnames-tag-cloud.phtml:34
 msgid "No surname"
-msgstr ""
+msgstr "无姓氏"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -22235,15 +22236,15 @@ msgstr "出生"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr "webtrees"
+msgstr "家谱树"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "家谱树无法为此文件格式创建缩略图。"
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "家谱树无法识别此文件格式。"
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -22358,7 +22359,7 @@ msgstr ""
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "已复制“%s”到剪贴板。"
 
 # I18N: %s is the name of a genealogy record
 #. I18N: %s is the name of a genealogy record

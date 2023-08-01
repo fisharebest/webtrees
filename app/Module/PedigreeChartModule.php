@@ -72,8 +72,6 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     private ChartService $chart_service;
 
     /**
-     * PedigreeChartModule constructor.
-     *
      * @param ChartService $chart_service
      */
     public function __construct(ChartService $chart_service)

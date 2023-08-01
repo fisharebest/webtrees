@@ -42,8 +42,6 @@ class EditFactAction implements RequestHandlerInterface
     private ModuleService $module_service;
 
     /**
-     * EditFactAction constructor.
-     *
      * @param GedcomEditService $gedcom_edit_service
      * @param ModuleService     $module_service
      */
