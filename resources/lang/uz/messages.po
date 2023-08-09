@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-17 12:06+0000\n"
+"PO-Revision-Date: 2023-08-10 13:31+0000\n"
 "Last-Translator: rabbimovj <rabbimov@gmail.com>\n"
 "Language-Team: Uzbek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/uz/>\n"
@@ -2345,7 +2345,7 @@ msgstr ""
 #: resources/views/modules/statistics-chart/custom.phtml:38
 #: resources/views/modules/statistics-chart/lifespan.phtml:17
 msgid "Average age at death"
-msgstr ""
+msgstr "Vafot etganlarning o'rtacha yoshi"
 
 #: app/Statistics/Google/ChartMarriageAge.php:158
 msgid "Average age at marriage"
@@ -2369,7 +2369,7 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:99
 #: resources/views/modules/statistics-chart/children.phtml:17
 msgid "Average number of children per family"
-msgstr ""
+msgstr "Bir oilaga o'rtacha bolalar soni"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: resources/views/admin/trees-create.phtml:48
@@ -3979,7 +3979,7 @@ msgstr ""
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Control panel"
-msgstr ""
+msgstr "Boshqaruv paneli"
 
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:60 app/Module/FixNameTags.php:84
@@ -5508,14 +5508,14 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:71
 #: resources/views/modules/statistics-chart/individual-events.phtml:36
 msgid "Earliest birth"
-msgstr ""
+msgstr "Eng birinchi tug'ilganlar"
 
 #: resources/views/modules/gedcom_stats/config.phtml:57
 #: resources/views/modules/gedcom_stats/statistics.phtml:189
 #: resources/views/modules/html/template-statistics.phtml:79
 #: resources/views/modules/statistics-chart/individual-events.phtml:80
 msgid "Earliest death"
-msgstr ""
+msgstr "Ancha oldin vafot etganlar"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:81
 msgid "Earliest divorce"
@@ -6300,7 +6300,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.phtml:237
 #: resources/views/modules/html/template-statistics.phtml:95
 msgid "Family with the most children"
-msgstr ""
+msgstr "Eng ko'p bolali oila"
 
 #: resources/xml/reports/individual_ext_report.xml:443
 #: resources/xml/reports/individual_report.xml:486
@@ -7993,7 +7993,7 @@ msgstr "Shaxsiy yozuv"
 #: resources/views/modules/gedcom_stats/statistics.phtml:211
 #: resources/views/modules/html/template-statistics.phtml:87
 msgid "Individual who lived the longest"
-msgstr ""
+msgstr "Eng uzoq umr ko'rgan shaxs"
 
 #. I18N: Name of a module/list
 #: app/Module/AncestorsChartModule.php:257
@@ -8638,14 +8638,14 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:75
 #: resources/views/modules/statistics-chart/individual-events.phtml:47
 msgid "Latest birth"
-msgstr ""
+msgstr "So'ngi tug'ilganlar"
 
 #: resources/views/modules/gedcom_stats/config.phtml:58
 #: resources/views/modules/gedcom_stats/statistics.phtml:200
 #: resources/views/modules/html/template-statistics.phtml:83
 #: resources/views/modules/statistics-chart/individual-events.phtml:91
 msgid "Latest death"
-msgstr ""
+msgstr "Yaqinda vafot etganlar"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:92
 msgid "Latest divorce"
@@ -10728,7 +10728,7 @@ msgstr "Farzandsiz oilalar soni"
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_givnnames/config.phtml:17
 msgid "Number of given names"
-msgstr ""
+msgstr "Berilgan ismlar soni"
 
 #: app/Gedcom.php:715
 msgid "Number of marriages"
@@ -10870,7 +10870,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:102
 msgid "On this day"
-msgstr ""
+msgstr "Bu kunda"
 
 #: app/Http/RequestHandlers/CalendarPage.php:115
 msgid "On this day…"
@@ -13952,7 +13952,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.phtml:40
 #: resources/views/modules/gedcom_stats/statistics.phtml:160
 msgid "Statistics"
-msgstr ""
+msgstr "Statistika"
 
 #: app/CustomTags/Gedcom7.php:128 app/CustomTags/GedcomL.php:142
 #: app/CustomTags/GedcomL.php:198 app/CustomTags/Legacy.php:63
@@ -15668,6 +15668,8 @@ msgstr ""
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"Xaritani ko'rsatish uchun boshqaruv panelida xarita-provayderni yoqishingiz "
+"kerak."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:588
@@ -15745,8 +15747,8 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Top % ta ism"
+msgstr[1] "Top % ta ismlar"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:194
@@ -15765,7 +15767,7 @@ msgstr ""
 #: app/Module/TopGivenNamesModule.php:48
 #: resources/views/modules/statistics-chart/names.phtml:45
 msgid "Top given names"
-msgstr ""
+msgstr "Top ismlar"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:191
@@ -15844,7 +15846,7 @@ msgstr "Jami ayollar"
 
 #: resources/views/modules/statistics-chart/names.phtml:38
 msgid "Total given names"
-msgstr ""
+msgstr "Top ismlar"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:10
 #: resources/xml/reports/bdm_report.xml:210
@@ -16402,7 +16404,7 @@ msgstr ""
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:98
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Har xil statistik jadvallar."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:520
@@ -16915,6 +16917,8 @@ msgstr ""
 #: app/Http/RequestHandlers/LoginPage.php:88
 msgid "You need to be an authorized user to access this website."
 msgstr ""
+"Ushbu tizimga kirish uchun siz ro'yhatdan o'tgan foydalanuvchi bo'lishingiz "
+"kerak."
 
 #: resources/views/admin/control-panel.phtml:307
 #: resources/views/admin/trees.phtml:50
