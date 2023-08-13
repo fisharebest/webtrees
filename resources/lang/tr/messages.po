@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-27 14:51+0000\n"
+"PO-Revision-Date: 2023-08-14 09:31+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/tr/>\n"
@@ -906,7 +906,7 @@ msgstr "Bir kişinin detaylarının bir raporu."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Belirli bir kaynak tarafından desteklenen gerçeklerin bir raporu."
+msgstr "Belirli bir kaynak tarafından desteklenen olayların raporu."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
@@ -4280,7 +4280,6 @@ msgstr "Küba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
-#, fuzzy
 msgid "Curaçao"
 msgstr "Curaçao"
 
@@ -6830,7 +6829,6 @@ msgid "GEDCOM"
 msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
-#, fuzzy
 msgid "GEDCOM 7"
 msgstr "GEDCOM 7"
 
@@ -6859,13 +6857,11 @@ msgstr "GEDCOM etiketleri"
 
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
-#, fuzzy
 msgid "GEDCOM-L"
 msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:57
-#, fuzzy
 msgid "GEDZIP"
 msgstr "GEDZIP"
 
@@ -10286,7 +10282,7 @@ msgstr "Yarın için hiçbir olay yok."
 
 #: app/Module/OnThisDayModule.php:155
 msgid "No events for living individuals exist for today."
-msgstr "Yaşayan kişilerin bugün için hadiseleri yok."
+msgstr "Yaşayan bireyler için bugün için herhangi bir olay mevcut değil."
 
 #: app/Module/UpcomingAnniversariesModule.php:175
 msgid "No events for living individuals exist for tomorrow."
