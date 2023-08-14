@@ -26,8 +26,8 @@
 
 	<!-- landscape orientation -->
 	<SetVar name="namewidth" value="185"/>
-	<SetVar name="datewidth" value="95"/>
-	<SetVar name="placewidth" value="325"/>
+	<SetVar name="datewidth" value="115"/>
+	<SetVar name="placewidth" value="200"/>
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
@@ -47,9 +47,15 @@
 			</TextBox>
 
 			<SetVar name="fill" value="" />
+			<if condition="$sortby=='DEAT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
+			<TextBox bgcolor="$fill" border="1" width="$datewidth">
+				<Text style="label"><var var="I18N::translate('Date of burial')" /></Text>
+			</TextBox>
+
+			<SetVar name="fill" value="" />
 			<if condition="$sortby=='PLAC'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$placewidth">
-				<Text style="label"><var var="I18N::translate('Place')" /></Text>
+				<Text style="label"><var var="I18N::translate('Place of burial')" /></Text>
 			</TextBox>
 
 			<TextBox border="1" newline="1">
@@ -74,6 +80,9 @@
 				</Cell>
 				<Cell style="text" width="$datewidth">
 					<GedcomValue tag="DEAT:DATE" newline="1" />
+				</Cell>
+				<Cell style="text" width="$datewidth">
+					<GedcomValue tag="BURI:DATE" newline="1" />
 				</Cell>
 				<Cell style="text" width="$placewidth">
 					<GedcomValue tag="BURI:CEME" />
