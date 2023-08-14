@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-22 12:51+0000\n"
-"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
+"PO-Revision-Date: 2023-08-15 20:31+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
 "Language: sv\n"
@@ -14781,7 +14781,7 @@ msgstr[1] "Inga förändringar inom de senaste %s dagarna."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Det uppstod ett fel vid sökning efter en ny version."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
