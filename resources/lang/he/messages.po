@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-11 13:35+0000\n"
-"Last-Translator: melizaa <meliza@amitys.com>\n"
+"PO-Revision-Date: 2023-08-14 20:31+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/he/>\n"
 "Language: he\n"
@@ -15360,7 +15360,7 @@ msgstr[1] "לא היו שינויים במשך %s הימים האחרונים."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "אירעה שגיאה בבדיקת גרסה חדשה."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15945,7 +15945,7 @@ msgstr "מגבלת זיכרון של שרת זה היא %s מגה-בית, ומג
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "שירות זה דורש מפתח API."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -18006,7 +18006,7 @@ msgstr "שם ששונה"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "בדוק עכשיו"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
