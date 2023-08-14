@@ -61,6 +61,7 @@ use function imagecreatefromstring;
 use function imagesx;
 use function imagesy;
 use function in_array;
+use function ltrim;
 use function method_exists;
 use function preg_match;
 use function preg_match_all;
@@ -71,10 +72,12 @@ use function reset;
 use function round;
 use function sprintf;
 use function str_contains;
+use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
 use function strip_tags;
 use function strlen;
+use function strpos;
 use function strtoupper;
 use function substr;
 use function trim;
@@ -89,6 +92,7 @@ use function xml_parser_set_option;
 use function xml_set_character_data_handler;
 use function xml_set_element_handler;
 
+use const PREG_OFFSET_CAPTURE;
 use const PREG_SET_ORDER;
 use const XML_OPTION_CASE_FOLDING;
 
@@ -2803,6 +2807,10 @@ class ReportParserGenerate extends ReportParserBase
             }
             if ($level !== 0 || $t !== 'NOTE') {
                 $value .= self::getCont($level + 1, $subrec);
+            }
+
+            if ($tag === 'NAME' || $tag === '_MARNM' || $tag === '_AKA') {
+                return strtr($value, ['/' => '']);
             }
 
             return $value;
