@@ -74,7 +74,7 @@ class BadBotBlocker implements MiddlewareInterface
         'DataForSEO',
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
-        'gptbot', // Collects training data for ChatCPT
+        'GPTBot', // Collects training data for ChatGPT
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
