@@ -413,6 +413,6 @@ class UserService
             ]);
         }
 
-        return '<a href="' . e($url) . '" dir="auto">' . e($contact_user->realName()) . '</a>';
+        return '<a href="' . e($url) . '" dir="auto" rel="nofollow">' . e($contact_user->realName()) . '</a>';
     }
 }
