@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-20 13:51+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-08-22 10:31+0000\n"
+"Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -742,7 +742,7 @@ msgstr "一种以扇形样式显示个人祖先的图表。"
 #: resources/views/modals/media-file-fields.phtml:32
 #: resources/views/modals/media-file-fields.phtml:88
 msgid "A file on the server"
-msgstr "文件在服务器上"
+msgstr "从服务器上选择"
 
 #: resources/views/admin/map-import-form.phtml:27
 #: resources/views/admin/trees-export.phtml:54
@@ -750,7 +750,7 @@ msgstr "文件在服务器上"
 #: resources/views/modals/media-file-fields.phtml:28
 #: resources/views/modals/media-file-fields.phtml:44
 msgid "A file on your computer"
-msgstr "文件在我的设备上"
+msgstr "从我的设备上传"
 
 # I18N: Description of the “My page” module
 #. I18N: Description of the “My page” module
