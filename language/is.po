@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-07-05 22:51+0000\n"
+"PO-Revision-Date: 2023-08-25 10:31+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -18640,7 +18640,7 @@ msgstr "barnabarnabarnabarn"
 
 #: app/Functions/Functions.php:1972
 msgid "great-great-granddaughter"
-msgstr "dótturbarn barnabarns"
+msgstr "dóttir barnabarnabarns"
 
 #: app/Functions/Functions.php:1852
 msgid "great-great-grandfather"
@@ -18656,7 +18656,7 @@ msgstr "langalangafi og -amma"
 
 #: app/Functions/Functions.php:1970
 msgid "great-great-grandson"
-msgstr "sonarbarn barnabarns"
+msgstr "sonur barnabarnabarns"
 
 #: app/Functions/Functions.php:1564
 msgid "great-great-great-aunt"
