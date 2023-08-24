@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2023-07-05 22:51+0000\n"
+"PO-Revision-Date: 2023-08-25 10:31+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -19275,7 +19275,7 @@ msgstr "barnabarnabarnabarn"
 
 #: app/Functions/Functions.php:2188
 msgid "great-great-granddaughter"
-msgstr "barnabarnabarn dóttur"
+msgstr "dóttir barnabarnabarns"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
@@ -19291,7 +19291,7 @@ msgstr "langalangafi og -amma"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
-msgstr "barnabarnabarn sonar"
+msgstr "sonur barnabarnabarns"
 
 #: app/Functions/Functions.php:1619
 msgid "great-great-great-aunt"
@@ -19307,7 +19307,7 @@ msgstr "barnabarnabarnabarnabarn"
 
 #: app/Functions/Functions.php:2199
 msgid "great-great-great-granddaughter"
-msgstr "barnabarnabarnabarn dóttur"
+msgstr "dóttir barnabarnabarnabarns"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
@@ -19323,7 +19323,7 @@ msgstr "langalangalangafi og -amma"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
-msgstr "barnabarnabarnabarn sonar"
+msgstr "sonur barnabarnabarnabarns"
 
 #: app/Functions/Functions.php:1820
 msgctxt "(a man’s) brother’s great-great-grandson"
