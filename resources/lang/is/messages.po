@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-04 22:01+0000\n"
+"PO-Revision-Date: 2023-08-24 09:45+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -18774,7 +18774,7 @@ msgstr "barnabarnabarnabarn"
 
 #: app/Services/RelationshipService.php:1978
 msgid "great-great-granddaughter"
-msgstr "barnabarnabarn dóttur"
+msgstr "dóttir barnabarnabarns"
 
 #: app/Services/RelationshipService.php:1817
 msgid "great-great-grandfather"
@@ -18790,7 +18790,7 @@ msgstr "langalangafi og -amma"
 
 #: app/Services/RelationshipService.php:1974
 msgid "great-great-grandson"
-msgstr "barnabarnabarn sonar"
+msgstr "sonur barnabarnabarns"
 
 #: app/Services/RelationshipService.php:1348
 msgid "great-great-great-aunt"
@@ -18806,7 +18806,7 @@ msgstr "barnabarnabarnabarnabarn"
 
 #: app/Services/RelationshipService.php:1989
 msgid "great-great-great-granddaughter"
-msgstr "barnabarnabarnabarn dóttur"
+msgstr "dóttir barnabarnabarnabarns"
 
 #: app/Services/RelationshipService.php:1828
 msgid "great-great-great-grandfather"
@@ -18822,7 +18822,7 @@ msgstr "langalangalangafi og -amma"
 
 #: app/Services/RelationshipService.php:1985
 msgid "great-great-great-grandson"
-msgstr "barnabarnabarnabarn sonar"
+msgstr "sonur barnabarnabarnabarns"
 
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
