@@ -573,7 +573,7 @@ class Gedcom
             'INDI:*:WWW'                 => new AddressWebPage(I18N::translate('URL')),
             'INDI:ADOP'                  => new Adoption(I18N::translate('Adoption')),
             'INDI:ADOP:DATE'             => new DateValue(I18N::translate('Date of adoption')),
-            'INDI:ADOP:FAMC'             => new XrefFamily(I18N::translate('Adoptive parents')),
+            'INDI:ADOP:FAMC'             => new XrefFamily(I18N::translate('Adoptive parents'), ['ADOP' => '0:1']),
             'INDI:ADOP:FAMC:ADOP'        => new AdoptedByWhichParent(I18N::translate('Adoption')),
             'INDI:ADOP:PLAC'             => new PlaceName(I18N::translate('Place of adoption')),
             'INDI:AFN'                   => new AncestralFileNumber(I18N::translate('Ancestral file number')),
