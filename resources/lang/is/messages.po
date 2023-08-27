@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2023-08-25 10:31+0000\n"
+"PO-Revision-Date: 2023-08-29 20:31+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -6999,7 +6999,7 @@ msgstr "Fukuoka, Japan"
 #: app/Factories/ElementFactory.php:303 app/Factories/ElementFactory.php:834
 #: app/GedcomTag.php:1109
 msgid "Funeral"
-msgstr "Jarðaför"
+msgstr "Útför"
 
 #: app/Factories/ElementFactory.php:1048
 msgid "GEDCOM"
@@ -12835,7 +12835,7 @@ msgstr "Skilin/-n"
 #. I18N: gedcom tag _SEPR
 #: app/Factories/ElementFactory.php:359 app/GedcomTag.php:1214
 msgid "Separation"
-msgstr "Skilnaður"
+msgstr "Sambúðarslit"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
