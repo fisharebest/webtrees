@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-08-24 09:45+0000\n"
+"PO-Revision-Date: 2023-08-27 21:51+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -6823,7 +6823,7 @@ msgstr "Fukuoka, Japan"
 
 #: app/CustomTags/Ancestry.php:67 app/CustomTags/BrothersKeeper.php:99
 msgid "Funeral"
-msgstr "Jarðaför"
+msgstr "Útför"
 
 #: app/Gedcom.php:504 resources/views/admin/gedcom-export-options.phtml:32
 msgid "GEDCOM"
@@ -12703,7 +12703,7 @@ msgstr "Skilin/-n"
 
 #: app/CustomTags/FamilyTreeMaker.php:71
 msgid "Separation"
-msgstr "Skilnaður"
+msgstr "Sambúðarslit"
 
 #: app/Date/AbstractGregorianJulianDate.php:136
 msgctxt "GENITIVE"
