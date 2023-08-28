@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-05-02 15:47+0000\n"
-"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
+"PO-Revision-Date: 2023-08-29 20:31+0000\n"
+"Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
 "Language: ca\n"
@@ -4373,7 +4373,7 @@ msgstr "Contrasenya per a la base de dades"
 
 #: setup.php:288
 msgid "Database user account"
-msgstr "Compte d’usuari de la Base de dades"
+msgstr "Compte d’usuari de la base de dades"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:348 edit_changes.php:184 help_text.php:136
@@ -10245,7 +10245,7 @@ msgstr "Mare de més edat"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:87
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Verd oliva"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6846
@@ -10683,7 +10683,7 @@ msgstr "Assistent per a la transferència de PhpGedView a webtrees"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr "Plàstic Rosa"
+msgstr "Plàstic rosa"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6849
@@ -12392,7 +12392,7 @@ msgstr "Xevat"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
 msgid "Shiny Tomato"
-msgstr "Tomàquet Brillant"
+msgstr "Tomàquet brillant"
 
 #. I18N: gedcom tag _SUBQ
 #: app/GedcomTag.php:1739
@@ -13452,7 +13452,7 @@ msgstr "Tanzània"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:91
 msgid "Teal Top"
-msgstr "Teal Top"
+msgstr "Verd blavós"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:895
