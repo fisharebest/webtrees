@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-08-31 09:34+0000\n"
+"PO-Revision-Date: 2023-08-31 11:40+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -1682,7 +1682,7 @@ msgstr "Aldur sem hægt er að gera ráð fyrir að einstaklingur sé látin"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:37
 msgid "Age between husband and wife"
-msgstr "Aldur á milli eiginmanns og eiginkonu"
+msgstr "Aldur á milli maka"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:17
 msgid "Age between siblings"
@@ -1690,7 +1690,7 @@ msgstr "Aldur milli systkina"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:46
 msgid "Age between wife and husband"
-msgstr "Aldur á milli eiginkonu og eiginmanns"
+msgstr "Aldur á milli maka"
 
 #: resources/views/modules/statistics-chart/age-difference.phtml:10
 msgid "Age difference"
@@ -7534,7 +7534,7 @@ msgstr "Ungverjaland"
 #: resources/xml/reports/individual_report.xml:449
 #: resources/xml/reports/relative_ext_report.xml:116
 msgid "Husband"
-msgstr "Eiginmaður"
+msgstr "Maki"
 
 #: app/Gedcom.php:414 resources/views/modules/timeline-chart/chart.phtml:357
 msgid "Husband’s age"
@@ -8407,11 +8407,11 @@ msgstr "Merkja"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr "Merki fyrir eiginmann"
+msgstr "Merki fyrir karlkyns maka"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr "Merki fyrir eiginkonu"
+msgstr "Merki fyrir kvenkyns maka"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -19372,7 +19372,7 @@ msgstr "heimilishald"
 
 #: app/Elements/RoleInEvent.php:79 app/Services/RelationshipService.php:367
 msgid "husband"
-msgstr "eiginmaður"
+msgstr "maki"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:81
