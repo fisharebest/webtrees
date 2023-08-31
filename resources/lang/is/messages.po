@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2023-08-29 20:31+0000\n"
+"PO-Revision-Date: 2023-09-02 16:31+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -1730,7 +1730,7 @@ msgstr "Aldur sem hægt er að gera ráð fyrir að einstaklingur sé látin"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
-msgstr "Aldur á milli eiginmanns og eiginkonu"
+msgstr "Aldur á milli maka"
 
 #: resources/views/statistics/families/age-difference.phtml:20
 msgid "Age between siblings"
@@ -1738,7 +1738,7 @@ msgstr "Aldur milli systkina"
 
 #: resources/views/statistics/families/age-difference.phtml:51
 msgid "Age between wife and husband"
-msgstr "Aldur á milli eiginkonu og eiginmanns"
+msgstr "Aldur á milli maka"
 
 #: resources/views/statistics/families/age-difference.phtml:12
 msgid "Age difference"
@@ -1777,7 +1777,7 @@ msgstr "Aldur tengdur við andlátsár"
 #: app/Factories/ElementFactory.php:953 app/Factories/ElementFactory.php:1086
 #: app/Factories/ElementFactory.php:1359 app/GedcomTag.php:452
 msgid "Agency"
-msgstr "Umboðsskrifstofa"
+msgstr "Ábyrgðaraðili"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
@@ -6829,12 +6829,12 @@ msgstr "Fort Lauderdale, Flórída, Bandaríkin"
 #: app/Elements/PedigreeLinkageType.php:62 app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Fóstra"
+msgstr "Fósturdóttir"
 
 #: app/Elements/PedigreeLinkageType.php:52 app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Fóstri"
+msgstr "Fóstursonur"
 
 #: app/Elements/PedigreeLinkageType.php:72 app/GedcomCode/GedcomCodePedi.php:88
 msgctxt "Pedigree"
@@ -7658,7 +7658,7 @@ msgstr "Ungverjaland"
 #: resources/xml/reports/individual_report.xml:449
 #: resources/xml/reports/relative_ext_report.xml:116
 msgid "Husband"
-msgstr "Eiginmaður"
+msgstr "Maki"
 
 #: app/Factories/ElementFactory.php:959
 #: resources/views/modules/timeline-chart/chart.phtml:353
@@ -10535,7 +10535,7 @@ msgstr "Ekki á lífi"
 #: app/GedcomTag.php:1196 app/Module/BranchesListModule.php:448
 #: resources/views/lists/families-table.phtml:191
 msgid "Not married"
-msgstr "Ekki gift/-ur"
+msgstr "Ógift"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Not verified by the user"
@@ -16823,7 +16823,7 @@ msgstr "Móttökutexti á innskráningarsíðu"
 
 #: resources/views/login-page.phtml:22
 msgid "Welcome to this genealogy website"
-msgstr "Velkomin/-n á þessa ættfræðivefsíðu"
+msgstr "Velkomin/-n á ættfræðivefsíðuna"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
@@ -19842,7 +19842,7 @@ msgstr "heimilishald"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
-msgstr "eiginmaður"
+msgstr "maki"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:57 app/GedcomCode/GedcomCodeName.php:143
