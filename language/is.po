@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-08-28 13:31+0000\n"
+"PO-Revision-Date: 2023-09-02 16:31+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -1754,7 +1754,7 @@ msgstr "Aldur sem hægt er að gera ráð fyrir að einstaklingur sé látin"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
-msgstr "Aldur á milli eiginmanns og eiginkonu"
+msgstr "Aldur á milli maka"
 
 #: statistics.php:330
 msgid "Age between siblings"
@@ -1762,7 +1762,7 @@ msgstr "Aldur milli systkina"
 
 #: statistics.php:339
 msgid "Age between wife and husband"
-msgstr "Aldur á milli eiginkonu og eiginmanns"
+msgstr "Aldur á milli maka"
 
 #: statistics.php:327
 msgid "Age difference"
@@ -1794,7 +1794,7 @@ msgstr "Aldur tengdur við andlátsár"
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
 msgid "Agency"
-msgstr "Umboðsskrifstofa"
+msgstr "Ábyrgðaraðili"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6675
@@ -6578,12 +6578,12 @@ msgstr "Fort Lauderdale, Flórída, Bandaríkin"
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Fóstra"
+msgstr "Fósturdóttir"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Fóstri"
+msgstr "Fóstursonur"
 
 #: app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Pedigree"
@@ -7330,7 +7330,7 @@ msgstr "Ungverjaland"
 #: modules_v3/individual_report/report.xml:449
 #: modules_v3/relative_ext_report/report.xml:109
 msgid "Husband"
-msgstr "Eiginmaður"
+msgstr "Maki"
 
 #: app/Controller/TimelineController.php:228
 msgid "Husband’s age"
@@ -10149,7 +10149,7 @@ msgstr "Ekki á lífi"
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1712
 msgid "Not married"
-msgstr "Ekki gift/-ur"
+msgstr "Ógift"
 
 #. I18N: gedcom tag _NMR
 #: app/GedcomTag.php:1708
@@ -16167,7 +16167,7 @@ msgstr "Móttökutexti á innskráningarsíðu"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr "Velkomin/-n á þessa ættfræði vefsíðu"
+msgstr "Velkomin/-n á ættfræðivefsíðuna"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -19201,7 +19201,7 @@ msgstr "sjálfur"
 #: app/Functions/Functions.php:709 edit_interface.php:1908
 #: edit_interface.php:1943
 msgid "husband"
-msgstr "eiginmaður"
+msgstr "maki"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:115
