@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-17 19:51+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2023-09-03 10:31+0000\n"
+"Last-Translator: Marianne van Harten <marianne@vanharten.net>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -7674,7 +7674,7 @@ msgstr "Als u mediaobjecten hebt aangemaakt in webtrees, en vervolgens dit GEDCO
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr "Als u de bestandsnaam wijzigt, moet ook u het bestand hernoemen."
+msgstr "Als u de bestandsnaam wijzigt, moet u ook het bestand hernoemen."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
