@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-08-31 23:49+0000\n"
+"PO-Revision-Date: 2023-09-03 10:31+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -6659,12 +6659,12 @@ msgstr "Fort Lauderdale, Flórída, Bandaríkin"
 #: app/Elements/PedigreeLinkageType.php:82
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Fóstra"
+msgstr "Fósturdóttir"
 
 #: app/Elements/PedigreeLinkageType.php:72
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Fóstri"
+msgstr "Fóstursonur"
 
 #: app/Elements/PedigreeLinkageType.php:92
 msgctxt "Pedigree"
