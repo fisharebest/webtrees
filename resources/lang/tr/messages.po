@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-08-14 09:31+0000\n"
+"PO-Revision-Date: 2023-09-03 10:31+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/tr/>\n"
@@ -6965,7 +6965,7 @@ msgstr "Torunların nesilleri"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:46
 msgid "GeoNames"
-msgstr "Coğrafi Adlar"
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7094,7 +7094,7 @@ msgstr "Google™ analizi"
 
 #: app/Module/GoogleMaps.php:86 app/Module/MapLinkGoogle.php:41
 msgid "Google™ maps"
-msgstr "Google Haritalar™"
+msgstr "Google™ haritalar"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
@@ -7352,7 +7352,7 @@ msgstr "Onun mesleği oldu"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:96
 msgid "Here maps"
-msgstr "İşte haritalar"
+msgstr "Here haritalar"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -9007,7 +9007,7 @@ msgstr "Harita sağlayıcıları"
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:96
 msgid "Mapbox"
-msgstr "Harita Kutusu"
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:233
 msgctxt "Abbreviation for March"
@@ -10774,7 +10774,7 @@ msgstr "Hay aksi! Webtrees bu klasörde dosya oluşturamadı."
 #: app/Module/MapGeoLocationOpenRouteService.php:45
 #: app/Module/OpenRouteServiceAutocomplete.php:82
 msgid "OpenRouteService"
-msgstr "Açık Güzergah Hizmeti"
+msgstr "openrouteservice.org"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:51
 msgid "OpenStreetMap™"
