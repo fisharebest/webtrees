@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2023-09-02 16:31+0000\n"
+"PO-Revision-Date: 2023-09-07 19:32+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -18829,7 +18829,7 @@ msgstr "maki ömmubróðurs"
 #: app/Functions/Functions.php:1076
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr "ömmusystir"
+msgstr "systir móðurafa"
 
 #: app/Functions/Functions.php:1380
 msgctxt "father’s parent’s brother’s wife"
@@ -18849,7 +18849,7 @@ msgstr "maki afabróðurs"
 #: app/Functions/Functions.php:1144
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr "ömmusystir"
+msgstr "systir föðurafa"
 
 #: app/Functions/Functions.php:1392
 msgctxt "mother’s mother’s brother’s wife"
@@ -18859,7 +18859,7 @@ msgstr "maki ömmubróðurs"
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr "ömmusystir"
+msgstr "systir móðurömmu"
 
 #: app/Functions/Functions.php:1398
 msgctxt "mother’s parent’s brother’s wife"
