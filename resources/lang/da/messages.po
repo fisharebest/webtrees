@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-06-23 22:51+0000\n"
+"PO-Revision-Date: 2023-09-12 18:32+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -12662,7 +12662,7 @@ msgstr "Send påmindelse via e-mails"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:71
 msgid "Sender email"
-msgstr "Afsenders e-mail"
+msgstr "Opsætning af e-mail"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
