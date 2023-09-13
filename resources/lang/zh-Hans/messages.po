@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-08-22 10:31+0000\n"
+"PO-Revision-Date: 2023-09-14 03:32+0000\n"
 "Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
@@ -318,7 +318,7 @@ msgstr[0] "%s 项注释说明已更新。"
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s 出现次数过多"
 
 # I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #. I18N: %s=“fifth cousin”, etc.
@@ -547,7 +547,7 @@ msgstr "(从 %s 个总条目中过滤)"
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
 msgid "(includes media files)"
-msgstr ""
+msgstr "（包括媒体文件）"
 
 #: resources/views/fact-date.phtml:117
 msgid "(on the date of death)"
@@ -672,6 +672,9 @@ msgstr "<默认主题>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>注意：填写并提交此表格，即表示您同意：</p><ul><li>保护我们网站上列出的在世"
+"个人的隐私;</li><li>并在下面的文本框中，解释您与谁有关系，或向我们提供有关应"
+"在我们网站上列出的人员的信息。</li></ul>"
 
 # I18N: URL = web address
 #. I18N: URL = web address
@@ -1155,7 +1158,7 @@ msgstr "A4"
 #: resources/views/modules/map-box/config.phtml:23
 #: resources/views/modules/openrouteservice/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "API密钥"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -1606,7 +1609,7 @@ msgstr "地址三"
 
 #: resources/views/admin/tags.phtml:264
 msgid "Addresses"
-msgstr ""
+msgstr "地址"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -1616,7 +1619,7 @@ msgstr "阿德莱德，澳大利亚"
 
 #: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
-msgstr ""
+msgstr "管理ID"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1952,7 +1955,7 @@ msgstr "或称为"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "姓氏的替代拼写"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -2064,7 +2067,7 @@ msgstr "祖先PID"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com 源标识符"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -2136,11 +2139,11 @@ msgstr "阿皮亚，萨摩亚"
 
 #: app/Gedcom.php:511
 msgid "Application ID"
-msgstr ""
+msgstr "应用程序ID"
 
 #: app/Gedcom.php:528
 msgid "Application name"
-msgstr ""
+msgstr "应用程序名称"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -2311,7 +2314,7 @@ msgstr "关联事务到此信息来源"
 
 #: resources/views/modules/personal_facts/tab.phtml:34
 msgid "Associated events"
-msgstr ""
+msgstr "关联事件"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -2423,7 +2426,7 @@ msgstr "最后一次更改的作者"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:650
 msgid "Autocomplete"
-msgstr ""
+msgstr "自动建议"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
@@ -3601,7 +3604,7 @@ msgstr "人口普查时间"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:15
 msgid "Census date and place"
-msgstr ""
+msgstr "人口普查日期和地点"
 
 #: app/Gedcom.php:612
 msgid "Census place"
@@ -3704,7 +3707,7 @@ msgstr "修改日志"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "字符编码"
 
 # I18N: gedcom tag CHAR
 #: app/Gedcom.php:497
@@ -3748,7 +3751,7 @@ msgstr "检查错误"
 
 #: app/Module/CheckForNewVersion.php:66
 msgid "Check for new version"
-msgstr ""
+msgstr "检查新版本"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Check for pending changes…"
@@ -3961,7 +3964,7 @@ msgstr "执行"
 
 #: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
-msgstr ""
+msgstr "割礼"
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
@@ -4189,7 +4192,7 @@ msgstr "内容"
 
 #: app/Gedcom.php:765
 msgid "Continuation"
-msgstr ""
+msgstr "延续"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -4256,7 +4259,7 @@ msgstr "控制面板"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:61
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "将 %s 标记转换为 GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4305,7 +4308,7 @@ msgstr "复制文件…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "复制记录的 URL 到剪贴板"
 
 # I18N: gedcom tag COPR
 #: app/Gedcom.php:499 app/Gedcom.php:526
@@ -4405,7 +4408,7 @@ msgstr "创建一个提交者"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "创建临时文件夹…"
 
 #: resources/views/modals/media-file-fields.phtml:80
 msgid "Create a unique filename"
@@ -4421,7 +4424,7 @@ msgstr "添加个人"
 #: app/Module/MapBox.php:51 app/Module/OpenStreetMap.php:41
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "用%s创建地图"
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
@@ -4437,7 +4440,7 @@ msgstr "创建，更新和删除家谱中的数据文件夹中的每个GEDCOM文
 #: app/CustomTags/Gedcom7.php:140 app/CustomTags/Gedcom7.php:149
 #: app/CustomTags/Gedcom7.php:157 app/CustomTags/Gedcom7.php:166
 msgid "Created at"
-msgstr ""
+msgstr "创建于"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
@@ -4452,7 +4455,7 @@ msgstr "建立日期"
 #: app/CustomTags/Gedcom7.php:151 app/CustomTags/Gedcom7.php:159
 #: app/CustomTags/Gedcom7.php:168
 msgid "Creation time"
-msgstr ""
+msgstr "创建时间"
 
 # I18N: gedcom tag CREM
 #: app/Gedcom.php:632 resources/xml/reports/family_group_report.xml:315
@@ -4615,11 +4618,11 @@ msgstr "定制"
 
 #: resources/views/admin/tags.phtml:1020
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "自定义GEDCOM标签"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "不鼓励使用自定义GEDCOM标签。尝试仅使用标准GEDCOM标签。"
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
@@ -4929,7 +4932,7 @@ msgstr "居住日期"
 
 #: app/CustomTags/Gedcom7.php:129
 msgid "Date of status change"
-msgstr ""
+msgstr "状态改变日期"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
@@ -5436,7 +5439,7 @@ msgstr "删除此名称"
 
 #: resources/views/admin/locations.phtml:174
 msgid "Delete unused locations"
-msgstr ""
+msgstr "删除未使用的位置"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
@@ -5448,7 +5451,7 @@ msgstr "删除这个家庭将拆开所有的个人彼此关系,将个人独立�
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "正在删除…"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -5458,7 +5461,7 @@ msgstr "刚果(金沙萨)"
 
 #: app/CustomTags/GedcomL.php:287
 msgid "Demographic data"
-msgstr ""
+msgstr "人口统计数据"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -5776,7 +5779,7 @@ msgstr "下载 %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "下载包含周年纪念日的 ICS 文件"
 
 #: resources/views/media-page-details.phtml:83
 msgid "Download file"
@@ -5931,7 +5934,7 @@ msgstr "编辑这个个体和用你自己的细节替换他们的。"
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "使用所有GEDCOM标签进行编辑"
 
 # I18N: Listbox entry; name of a role
 #. I18N: Listbox entry; name of a role
@@ -6062,7 +6065,7 @@ msgstr "男老板"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "清空剪贴板"
 
 #: app/Module/ClippingsCartModule.php:192
 msgid "Empty the clippings cart"
@@ -6112,7 +6115,7 @@ msgstr "输入这个收藏的备注"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "全屏输入"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -6214,7 +6217,7 @@ msgstr "事件"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "事件未发生"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -6267,7 +6270,7 @@ msgstr "不包括在此提交"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "退出全屏"
 
 # I18N: placeholder text for registration-comments field
 #. I18N: placeholder text for registration-comments field
@@ -6309,11 +6312,11 @@ msgstr "外部文件"
 #: app/CustomTags/Gedcom7.php:143 app/CustomTags/Gedcom7.php:152
 #: app/CustomTags/Gedcom7.php:160 app/CustomTags/Gedcom7.php:169
 msgid "External identifier"
-msgstr ""
+msgstr "扩展标识"
 
 #: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
-msgstr ""
+msgstr "扩展链接"
 
 #: resources/views/admin/media.phtml:77
 msgid "External media files have a URL instead of a filename."
@@ -6555,11 +6558,11 @@ msgstr "家庭普查"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "家庭信息"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
-msgstr ""
+msgstr "家庭信息"
 
 # I18N: gedcom tag FAMF
 #: app/Gedcom.php:880
@@ -6831,19 +6834,19 @@ msgstr "女性"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "字段"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "字段名称"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "字段值"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -7078,7 +7081,7 @@ msgstr "家谱问题请联系%s。"
 #: resources/views/modules/openrouteservice/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "有关详细信息，请参阅 %s。"
 
 #: app/Module/ContactsFooterModule.php:160
 #, php-format
@@ -7338,12 +7341,12 @@ msgstr "GEDCOM文件"
 #: resources/views/admin/tags.phtml:736 resources/views/admin/tags.phtml:790
 #: resources/views/admin/tags.phtml:894 resources/views/admin/tags.phtml:952
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "GEDCOM标签"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:83
 #: resources/views/admin/control-panel.phtml:284
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM标签"
 
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
@@ -7483,7 +7486,7 @@ msgstr "地理数据"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:657
 msgid "Geolocation"
-msgstr ""
+msgstr "地点定位"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -7890,7 +7893,7 @@ msgstr "她的工作/岗位是"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:96
 msgid "Here maps"
-msgstr ""
+msgstr "这个地图"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -7932,7 +7935,7 @@ msgstr "第二月"
 #: resources/views/admin/tags.phtml:737 resources/views/admin/tags.phtml:791
 #: resources/views/admin/tags.phtml:895 resources/views/admin/tags.phtml:953
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "隐藏GEDCOM标签"
 
 #: app/Auth.php:596 app/Auth.php:609
 #: app/Http/RequestHandlers/TreePreferencesPage.php:125
@@ -7954,13 +7957,13 @@ msgstr "对所有人隐藏"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Hide password"
-msgstr ""
+msgstr "隐藏密码"
 
 #: resources/views/admin/trees-check.phtml:39
 #: resources/views/admin/trees-check.phtml:55
 #: resources/views/admin/trees-check.phtml:71
 msgid "Hide these errors"
-msgstr ""
+msgstr "隐藏这些错误"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
@@ -8125,7 +8128,7 @@ msgstr "标识号"
 
 #: resources/views/admin/tags.phtml:778
 msgid "Identifiers"
-msgstr ""
+msgstr "身份标识"
 
 #: resources/views/admin/fix-level-0-media.phtml:22
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -8229,7 +8232,7 @@ msgstr "如果您之前已经创建了多媒体文件,并离线使用一个删�
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "如果修改文件名，还应重命名该文件。"
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8434,7 +8437,7 @@ msgstr "个体分布图表"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr ""
+msgstr "基本信息"
 
 #: resources/views/admin/control-panel.phtml:722
 msgid "Individual page"
@@ -8526,7 +8529,7 @@ msgstr "男线人"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "不鼓励使用内联源记录。"
 
 # I18N: Name of a module
 #. I18N: Name of a module
@@ -8566,7 +8569,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php:198
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "GEDCOM级别编号无效。"
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -8574,15 +8577,15 @@ msgstr "无效GEDCOM格式"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "GEDCOM记录无效。"
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "GEDCOM中标签无效。"
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "GEDCOM中的值无效。"
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8624,7 +8627,8 @@ msgstr "这可能需要几分钟下载并安装升级。 耐心一点。"
 
 #: resources/views/admin/tags.phtml:1025
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "不建议使用自定义 GEDCOM "
+"标签。当您将其传输到其他应用程序时，此数据可能会丢失。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9038,11 +9042,11 @@ msgstr "标签"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr ""
+msgstr "丈夫标签"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr ""
+msgstr "妻子标签"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -9053,7 +9057,7 @@ msgstr "Laie,夏威夷"
 #. I18N: GEDCOM tag _PURC
 #: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
-msgstr ""
+msgstr "土地购买"
 
 #. I18N: GEDCOM tag _SALE
 #: app/CustomTags/Reunion.php:60
@@ -9140,7 +9144,7 @@ msgstr "最新更改"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "上次检查是%s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -11290,7 +11294,7 @@ msgstr ""
 #: app/Gedcom.php:763 app/Gedcom.php:784 app/Gedcom.php:815 app/Gedcom.php:831
 #: app/Gedcom.php:862 app/Gedcom.php:878
 msgid "Note on last change"
-msgstr ""
+msgstr "上次改变的说明"
 
 #: app/Gedcom.php:686
 msgid "Note on phonetic name"
@@ -11298,19 +11302,19 @@ msgstr ""
 
 #: app/CustomTags/GedcomL.php:248 app/Gedcom.php:425 app/Gedcom.php:557
 msgid "Note on place"
-msgstr ""
+msgstr "地点说明"
 
 #: app/Gedcom.php:846
 msgid "Note on repository reference"
-msgstr ""
+msgstr "存储库引用说明"
 
 #: app/Gedcom.php:700
 msgid "Note on romanized name"
-msgstr ""
+msgstr "关于罗马化名称的说明"
 
 #: app/Gedcom.php:838
 msgid "Note on source"
-msgstr ""
+msgstr "来源说明"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
@@ -11318,11 +11322,11 @@ msgstr ""
 #: app/Gedcom.php:751 app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:908
 #: app/Gedcom.php:922
 msgid "Note on source citation"
-msgstr ""
+msgstr "引用来源说明"
 
 #: app/Gedcom.php:837
 msgid "Note on source data"
-msgstr ""
+msgstr "数据来源说明"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -11670,7 +11674,7 @@ msgstr ""
 #. I18N: GEDCOM tag _ORIG
 #: app/CustomTags/Ancestry.php:75
 msgid "Original text"
-msgstr ""
+msgstr "原文"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -12010,7 +12014,7 @@ msgstr "照片"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "照片"
 
 #: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:78
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:88
@@ -12725,7 +12729,7 @@ msgstr "重新排列多媒体"
 
 #: resources/views/media-page-menu.phtml:40
 msgid "Re-order media files"
-msgstr ""
+msgstr "重新排序多媒体文件"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:51
@@ -12997,7 +13001,7 @@ msgstr "内华达州里诺"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "重新对XREF编号"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -13513,17 +13517,17 @@ msgstr "搜索"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "在外部数据库中搜索位置。"
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "在外部数据库中搜索地名。"
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:57
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "使用 %s 搜索地名。"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -13655,7 +13659,7 @@ msgstr "使用这些设置发送测试电子邮件"
 
 #: app/Module/CheckForNewVersion.php:76
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "当升级可用时，向所有管理员发送电子邮件。"
 
 # I18N: Label for a configuration option
 #. I18N: Label for a configuration option
@@ -13666,7 +13670,7 @@ msgstr "发送提醒邮件"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:71
 msgid "Sender email"
-msgstr ""
+msgstr "发送者Email"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -13870,15 +13874,15 @@ msgstr "第六月"
 #: resources/views/individual-page-menu.phtml:37
 #: resources/views/individual-page.phtml:68
 msgid "Share"
-msgstr ""
+msgstr "分享"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "分享网址"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "分享活动的周年纪念日"
 
 #: app/CustomTags/Gedcom7.php:85 app/CustomTags/Gedcom7.php:100
 #: app/CustomTags/Gedcom7.php:112 app/CustomTags/Gedcom7.php:134
@@ -13904,7 +13908,7 @@ msgstr "共享笔记"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:750
 msgid "Shares"
-msgstr ""
+msgstr "共享"
 
 # I18N: https://en.wikipedia.org/wiki/Shawwal
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
@@ -14061,7 +14065,7 @@ msgstr "在《请求新的用户账户》页面显示使用协议"
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
-msgstr ""
+msgstr "显示所有媒体"
 
 #: resources/views/modules/notes/tab.phtml:30
 msgid "Show all notes"
@@ -14218,7 +14222,7 @@ msgstr "显示父母"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Show password"
-msgstr ""
+msgstr "显示密码"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -14432,7 +14436,7 @@ msgstr "登录和注册"
 
 #: app/CustomTags/Heredis.php:52
 msgid "Signature"
-msgstr ""
+msgstr "签名"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -14628,7 +14632,7 @@ msgstr "%s 的儿子"
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:109
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "按日期排序"
 
 # I18N: Label for a configuration option
 #. I18N: Label for a configuration option
@@ -14652,7 +14656,7 @@ msgstr "排列顺序"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:111
 msgid "Sort time"
-msgstr ""
+msgstr "按时间排序"
 
 # I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
@@ -14850,7 +14854,7 @@ msgstr "圣保罗，明尼苏达"
 
 #: resources/views/admin/tags.phtml:32
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "标准GEDCOM标签"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -15246,7 +15250,7 @@ msgstr "特古西加尔巴,洪都拉斯"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "模板"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -15301,7 +15305,7 @@ msgstr "文本内容"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "文字方向"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -15324,7 +15328,7 @@ msgstr "GEDCOM 文件“%s”已被导入。"
 
 #: resources/views/admin/tags.phtml:35
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "GEDCOM 标准提供了大量的数据输入字段，称为标签。"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -15360,7 +15364,7 @@ msgstr "模块“%1$s”已被启用。"
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "URL 已复制到剪贴板"
 
 #: resources/views/emails/approve-user-html.phtml:22
 #: resources/views/emails/approve-user-text.phtml:16
@@ -15550,7 +15554,7 @@ msgstr "下面的清单显示了典型的需求。"
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "表单数据不完整。可能您需要增加服务器上的max_input_vars？"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -15617,7 +15621,7 @@ msgstr "内存和CPU的要求取决于你的家谱的人员数目。"
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "邮件未发送到%s。"
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:102
@@ -15665,7 +15669,7 @@ msgstr "新用户在创建账户之前，要验证他们的电子邮件地址。
 
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
-msgstr ""
+msgstr "GEDCOM标准的下一个版本将添加新标签并删除旧标签。您现在可以使用一些新标签。"
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -15946,7 +15950,7 @@ msgstr[0] "在最后的 %s 一天内一直没有变化。"
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "新版本检查存在错误。"
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -16071,7 +16075,7 @@ msgstr "家谱数据最近更新是在%s。"
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "此文件名与 GEDZIP 文件格式不兼容。"
 
 # I18N: Help text for the "Data folder" site configuration setting
 #. I18N: Help text for the "Data folder" site configuration setting
@@ -16398,7 +16402,7 @@ msgstr "这个服务器的内存限制是 %s MB和它的CPU时间限制是 %s �
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "此服务需要 API 密钥。"
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -16495,16 +16499,16 @@ msgstr "时间"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:120
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "出生时间"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "出生时间和死亡时间"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr ""
+msgstr "死亡时间"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:448 app/Gedcom.php:615
 #: app/Gedcom.php:762 app/Gedcom.php:783 app/Gedcom.php:814 app/Gedcom.php:830
@@ -16514,7 +16518,7 @@ msgstr "最后更改的时间"
 
 #: app/CustomTags/Gedcom7.php:130
 msgid "Time of status change"
-msgstr ""
+msgstr "状态更改时间"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -16640,7 +16644,7 @@ msgstr "为帮助你在开始使用这一块,我们已经创建了一些标准�
 
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "您需要先启用，才可使用自定义标记创建新数据。"
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -16648,7 +16652,7 @@ msgstr "创建新的考证任务,您必须先将“考证任务”添加到家�
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "要显示地图，您需要在控制面板中启用地图提供程序。"
 
 # I18N: Help text for the “Format text and notes” configuration setting
 #. I18N: Help text for the “Format text and notes” configuration setting
@@ -16683,11 +16687,11 @@ msgstr "告诉搜索引擎网站地图是可用的，你可以使用下面的链
 #: resources/views/modules/map-box/config.phtml:36
 #: resources/views/modules/openrouteservice/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "要使用此服务，您需要一个 API 密钥。"
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "要使用此服务，您需要一个帐户。"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -17221,7 +17225,7 @@ msgstr "更新地名的级别较高部分，同时保留级别较低部分。"
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
-msgstr ""
+msgstr "更新于"
 
 # I18N: %s is a version number, such as 1.2.3
 # I18N: %s is a version number
@@ -17264,7 +17268,7 @@ msgstr "使用'？'匹配一个字符，使用“*”匹配零个或多个字符
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "使用外部服务查找位置。"
 
 # I18N: placeholder text for new-password field
 #. I18N: placeholder text for new-password field
@@ -17296,7 +17300,7 @@ msgstr "使用字母a-z、A-Z、数字0-9或下划线"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "在网络树中使用地图。"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -17324,7 +17328,7 @@ msgstr "使用轮廓"
 
 #: app/Http/RequestHandlers/CopyFact.php:73
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "使用“编辑”菜单将其粘贴到另一条记录中。"
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -17546,7 +17550,7 @@ msgstr "显示家庭"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "使用 %s 查看此位置"
 
 #: resources/views/calendar-page.phtml:225
 msgid "View this month"
@@ -17805,7 +17809,7 @@ msgstr "见证"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "证人"
 
 # I18N: In the paternal surname tradition, ...
 # I18N: In the Polish surname tradition, ...
@@ -17912,7 +17916,7 @@ msgstr "您可以为特定的记录、事实或事件添加限制访问权限。
 
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "您可以通过隐藏不使用的 GEDCOM 标签来简化编辑表单。"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
@@ -18086,7 +18090,8 @@ msgstr "缩小"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "旧版本的网络树使用_WT_OBJE_SORT标签来指示个人的首选图像。另一种方法是对图像重"
+"新排序，以便首先列出首选图像。"
 
 # I18N: Gedcom ABT dates
 #. I18N: Gedcom ABT dates
@@ -18226,7 +18231,7 @@ msgstr "姑妈/叔叔"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr ""
+msgstr "自动"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
@@ -18411,7 +18416,7 @@ msgstr "更改后的姓名"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "立即检查"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
@@ -21257,7 +21262,7 @@ msgstr "百分比"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr ""
+msgstr "纯文本"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -22354,7 +22359,7 @@ msgstr "阿兰群岛"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” 应该是 “%2$s”。"
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
