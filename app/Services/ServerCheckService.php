@@ -94,12 +94,10 @@ class ServerCheckService
         $warnings = Collection::make([
             $this->databaseDriverWarnings($driver),
             $this->checkPhpExtension('curl'),
-            $this->checkPhpExtension('exif'),
             $this->checkPhpExtension('fileinfo'),
             $this->checkPhpExtension('gd'),
             $this->checkPhpExtension('intl'),
             $this->checkPhpExtension('zip'),
-            $this->checkPhpExtension('simplexml'),
             $this->checkPhpIni('file_uploads', true),
             $this->checkSystemTemporaryFolder(),
             $this->checkPhpVersion(),
