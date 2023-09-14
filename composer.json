@@ -31,7 +31,6 @@
         "php": "7.4 - 8.3",
         "ext-ctype": "*",
         "ext-curl": "*",
-        "ext-exif": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
@@ -41,7 +40,6 @@
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-session": "*",
-        "ext-simplexml": "*",
         "ext-xml": "*",
         "aura/router": "3.3.0",
         "doctrine/dbal": "3.6.6",
@@ -176,6 +174,14 @@
             "find resources/css -name *.png -exec pngquant --ext .png --force --skip-if-larger --speed 1 {} \\;",
             "find resources/css -name *.png -exec pngcrush -rem allb -brute -reduce {} {} \\;",
             "find resources/css -name *.png -exec optipng -o7 -zm1-9 {} \\;"
+        ],
+        "ci" : [
+            "@composer validate",
+            "@composer install --quiet",
+            "@composer global require --quiet icanhazstring/composer-unused=*",
+            "~/.composer/vendor/bin/composer-unused",
+            "@composer global require --quiet maglnet/composer-require-checker=*",
+            "~/.composer/vendor/bin/composer-require-checker check"
         ]
     },
     "scripts-descriptions": {
