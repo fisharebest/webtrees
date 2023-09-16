@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-09-12 18:32+0000\n"
+"PO-Revision-Date: 2023-09-18 07:32+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -2130,7 +2130,12 @@ msgstr "Aruba"
 
 #: resources/views/modules/html/config.phtml:45
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Så vel som at bruge denne værktøjslinje til HTML formattering, så kan du indsætte felter der opdateres automatisk. Disse felter er markeret med tegnet <b>#</b>. Fx vil <b>#totalFamilies#</b> vise hvor mange familier der findes i databasen. Avancerede brugere kan tilføje CCS kodning til deres tekst, således at formatteringen er samstemmende med det valgte tema."
+msgstr ""
+"Såvel som at bruge denne værktøjslinje til HTML-formattering, så kan du "
+"indsætte felter, der opdateres automatisk. Disse felter er markeret med "
+"tegnet <b>#</b>. Fx vil <b>#totalFamilies#</b> vise hvor mange familier, der "
+"findes i databasen. Avancerede brugere kan tilføje CCS kodning til deres "
+"tekst, således at formatteringen er samstemmende med det valgte tema."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:152
@@ -7618,7 +7623,10 @@ msgstr "Hvis thumbnail billedet er det samme som det originale billede, er det i
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Hvis denne person har andre begivenheder end Død, Begravelse eller Kremering som er nyere end dette antal år, anses personen som “levende”. Børns fødselsdatoer anses for at være sådanne begivenheder."
+msgstr ""
+"Hvis denne person har andre begivenheder end Død, Begravelse eller "
+"Kremering, som er nyere end dette antal år, anses personen som “levende”. "
+"Børns fødselsdatoer anses for at være sådanne begivenheder."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:254
@@ -11904,7 +11912,7 @@ msgstr "Registerfører"
 #. I18N: https://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:105
 msgid "Regular expression"
-msgstr "Regulært udtryk"
+msgstr "Regulært udtryk (REGEX)"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:44
 msgid "Regular expressions are an advanced pattern matching technique."
@@ -16609,7 +16617,11 @@ msgstr "Du kan forenkle redigeringsvinduerne ved at skjule GEDCOM-koder, som du 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Hvis der er personer hvis dødstidspunkt beregnes ud fra andre datoer end død, begravelse, kremering eller lignende, så kan privatiseringsberegningerne gøres hurtigere ved at tilføje et dødstidspunkt til netop disse personer."
+msgstr ""
+"Hvis der er personer, hvis dødstidspunkt beregnes ud fra andre datoer end "
+"død, begravelse, kremering eller lignende, så kan "
+"privatiseringsberegningerne gøres hurtigere ved at tilføje et dødstidspunkt "
+"til netop disse personer."
 
 #: app/Http/RequestHandlers/LoginAction.php:110
 msgid "You cannot sign in because your browser does not accept cookies."
