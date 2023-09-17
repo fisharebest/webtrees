@@ -2469,16 +2469,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/PlaceLocation.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$fm of method TCPDF\\:\\:setFooterMargin\\(\\) expects int, float given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/PdfRenderer.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$hm of method TCPDF\\:\\:setHeaderMargin\\(\\) expects int, float given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/PdfRenderer.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$stream of function fclose expects resource, resource\\|false given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserBase.php',
@@ -2764,24 +2754,9 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserSetup.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\}\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfFootnote.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$link of method TCPDF\\:\\:setLink\\(\\) expects int, string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportPdfFootnote.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$num of function ceil expects float\\|int, array\\<float\\>\\|float given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/app/Report/ReportPdfFootnote.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\}\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportPdfText.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote will always evaluate to false\\.$#',
@@ -2859,7 +2834,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Call to an undefined static method Illuminate\\\\Database\\\\Capsule\\\\Manager\\:\\:query\\(\\)\\.$#',
+    'message' => '#^Call to an undefined static method Fisharebest\\\\Webtrees\\\\DB\\:\\:query\\(\\)\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
