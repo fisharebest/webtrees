@@ -2321,16 +2321,6 @@ parameters:
 			path: app/PlaceLocation.php
 
 		-
-			message: "#^Parameter \\#1 \\$fm of method TCPDF\\:\\:setFooterMargin\\(\\) expects int, float given\\.$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Parameter \\#1 \\$hm of method TCPDF\\:\\:setHeaderMargin\\(\\) expects int, float given\\.$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
 			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Report/ReportParserBase.php
@@ -2606,24 +2596,9 @@ parameters:
 			path: app/Report/ReportParserSetup.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\}\\.$#"
-			count: 1
-			path: app/Report/ReportPdfFootnote.php
-
-		-
 			message: "#^Parameter \\#1 \\$link of method TCPDF\\:\\:setLink\\(\\) expects int, string given\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$number of function ceil expects float, array\\<float\\>\\|float given\\.$#"
-			count: 3
-			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\}\\.$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
 
 		-
 			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote will always evaluate to false\\.$#"
