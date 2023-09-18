@@ -1,4 +1,4 @@
-?php
+<?php
 
 /**
  * webtrees: online genealogy
