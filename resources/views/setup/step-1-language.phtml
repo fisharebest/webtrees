@@ -13,6 +13,7 @@ use Illuminate\Support\Collection;
  * @var string                          $dbport
  * @var string                          $dbtype
  * @var string                          $dbuser
+ * @var string                          $dbsocket
  * @var Collection<int,string>          $errors
  * @var string                          $lang
  * @var Collection<int,LocaleInterface> $locales
@@ -33,6 +34,7 @@ use Illuminate\Support\Collection;
     <input name="dbuser" type="hidden" value="<?= e($dbuser) ?>">
     <input name="dbpass" type="hidden" value="<?= e($dbpass) ?>">
     <input name="dbname" type="hidden" value="<?= e($dbname) ?>">
+    <input name="dbsocket" type="hidden" value="<?= e($dbsocket) ?>">
     <input name="tblpfx" type="hidden" value="<?= e($tblpfx) ?>">
     <input name="wtname" type="hidden" value="<?= e($wtname) ?>">
     <input name="wtuser" type="hidden" value="<?= e($wtuser) ?>">

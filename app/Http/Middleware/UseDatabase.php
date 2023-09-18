@@ -94,6 +94,7 @@ class UseDatabase implements MiddlewareInterface
             // For MySQL
             'charset'                 => $charset,
             'collation'               => $collation,
+            'unix_socket'             => Validator::attributes($request)->string('dbsocket'),
             'timezone'                => '+00:00',
             'engine'                  => 'InnoDB',
             'modes'                   => [

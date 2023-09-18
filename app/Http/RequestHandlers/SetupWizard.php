@@ -65,19 +65,20 @@ class SetupWizard implements RequestHandlerInterface
     private const DEFAULT_DBTYPE = 'mysql';
     private const DEFAULT_PREFIX = 'wt_';
     private const DEFAULT_DATA   = [
-        'baseurl' => '',
-        'lang'    => '',
-        'dbtype'  => self::DEFAULT_DBTYPE,
-        'dbhost'  => '',
-        'dbport'  => '',
-        'dbuser'  => '',
-        'dbpass'  => '',
-        'dbname'  => '',
-        'tblpfx'  => self::DEFAULT_PREFIX,
-        'wtname'  => '',
-        'wtuser'  => '',
-        'wtpass'  => '',
-        'wtemail' => '',
+        'baseurl'  => '',
+        'lang'     => '',
+        'dbtype'   => self::DEFAULT_DBTYPE,
+        'dbhost'   => '',
+        'dbport'   => '',
+        'dbuser'   => '',
+        'dbpass'   => '',
+        'dbname'   => '',
+        'dbsocket' => '',
+        'tblpfx'   => self::DEFAULT_PREFIX,
+        'wtname'   => '',
+        'wtuser'   => '',
+        'wtpass'   => '',
+        'wtemail'  => '',
     ];
 
     private const DEFAULT_PORTS = [
@@ -451,6 +452,7 @@ class SetupWizard implements RequestHandlerInterface
                     'database'                => '',
                     'username'                => $data['dbuser'],
                     'password'                => $data['dbpass'],
+                    'unix_socket'             => $data['dbsocket'],
                 ], 'temp');
                 $capsule->getConnection('temp')->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
                 break;
@@ -469,6 +471,7 @@ class SetupWizard implements RequestHandlerInterface
             // For MySQL
             'charset'                 => 'utf8',
             'collation'               => 'utf8_unicode_ci',
+            'unix_socket'             => $data['dbsocket'],
             'timezone'                => '+00:00',
             'engine'                  => 'InnoDB',
             'modes'                   => [

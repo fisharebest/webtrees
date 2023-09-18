@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
  * @var string                 $dbport
  * @var string                 $dbtype
  * @var string                 $dbuser
+ * @var string                 $dbsocket
  * @var Collection<int,string> $errors
  * @var string                 $lang
  * @var string                 $tblpfx
@@ -55,12 +56,6 @@ use Illuminate\Support\Collection;
             <div class="form-text">
                 <?= I18N::translate('Most sites are configured to use localhost. This means that your database runs on the same computer as your web server.') ?>
             </div>
-
-            <!--
-            <div class="form-text">
-                <?= I18N::translate('If you connect to the database using a UNIX socket, enter the path here and leave the port number empty.') ?>
-            </div>
-            -->
         </div>
     </div>
 
@@ -74,6 +69,20 @@ use Illuminate\Support\Collection;
 
             <div class="form-text">
                 <?= I18N::translate('Most sites are configured to use the default value of 3306.') ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-form-label col-sm-3" for="dbsocket">
+            <?= I18N::translate('UNIX Socket path') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <input class="form-control" id="dbsocket" name="dbsocket" type="text" value="<?= e($dbsocket) ?>" dir="ltr">
+
+            <div class="form-text">
+                <?= I18N::translate('If you connect to the database using a UNIX socket, enter the path here.') ?>
             </div>
         </div>
     </div>
