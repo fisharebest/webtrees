@@ -49,7 +49,7 @@ new CensusColumnFullName($this, 'Name', 'Name of each person in family, househol
             new CensusColumnNull($this, 'Class', 'Class of House: Apartment, Row or Terrace, Single house, Semi-Detached, Flat'),
             new CensusColumnNull($this, 'Materials', 'Material of Construction: Stone, Brick, Wood, Brick Veneered, Stucco, Cement bricks'),
             new CensusColumnNull($this, 'Rooms', 'Rooms occupied by this family'),
-            new CensusColumnNull($this, 'Radio', 'Has this fmily a radio?'),
+            new CensusColumnNull($this, 'Radio', 'Has this family a radio?'),
             new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family or household'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnConditionCanada($this, 'S/M/W/D', 'Single, Married, Widowed, Divorced'),
