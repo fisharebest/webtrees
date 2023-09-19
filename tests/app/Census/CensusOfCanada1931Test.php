@@ -150,7 +150,7 @@ class CensusOfCanada1931Test extends TestCase
         self::assertSame('Place of birth of mother', $columns[14]->title());
         self::assertSame('Year of immigration to Canada', $columns[15]->title());
         self::assertSame('Year of naturalization', $columns[16]->title());
-        self::assertSame('Country to which this person owes allegiance', $columns[17]->title());
+        self::assertSame('Country to which this person owes allegiance.', $columns[17]->title());
         self::assertSame('Racial origin', $columns[18]->title());
         self::assertSame('Can speak English', $columns[19]->title());
         self::assertSame('Can speak French', $columns[20]->title());
