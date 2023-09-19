@@ -33,6 +33,9 @@ class CensusColumnNationality extends AbstractCensusColumn implements CensusColu
         'Scotland'    => 'British',
         'Wales'       => 'British',
         'Deutschland' => 'Deutsch',
+        'Canada'      => 'Canadian',
+        'Italy'       => 'Italian',
+        'Italia'      => 'Italiano',
     ];
 
     /**
