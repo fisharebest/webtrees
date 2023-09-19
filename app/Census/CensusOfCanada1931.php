@@ -43,7 +43,7 @@ class CensusOfCanada1931 extends CensusOfCanada implements CensusInterface
     {
         return [
             new CensusColumnFullName($this, 'Name', 'Name of each person in family, household or institution'),
-            new CensusColumnNull($this, 'Place of Abode', 'In rural localities give parish or township. In cities, towns and villages, give street street and number of dwelling.'),
+            new CensusColumnNull($this, 'Place of Abode', 'In rural localities give parish or township. In cities, towns and villages, give street and number of dwelling.'),
             new CensusColumnNull($this, 'Own/Rent', 'Home owned or rented'),
             new CensusColumnNull($this, 'Value', 'If Owned give value. If rented, give rent paid per month'),
             new CensusColumnNull($this, 'Class', 'Class of House: Apartment, Row or Terrace, Single house, Semi-Detached, Flat'),
