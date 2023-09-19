@@ -51,7 +51,7 @@ class CensusOfCanadaTest extends TestCase
     {
         $census = new CensusOfCanada();
 
-        self::assertSame('en-GB', $census->censusLanguage());
+        self::assertSame('en-US', $census->censusLanguage());
     }
 
     /**
