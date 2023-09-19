@@ -125,13 +125,13 @@ class CensusOfCanada1931Test extends TestCase
         self::assertSame('Earnings', $columns[28]->abbreviation());
         self::assertSame('Employed', $columns[29]->abbreviation());
         self::assertSame('WHY', $columns[30]->abbreviation());
-	      self::assertSame('Weeks unemployed', $columns[31]->abbreviation());
-	      self::assertSame('No Job', $columns[32]->abbreviation());
-	      self::assertSame('Illness', $columns[33]->abbreviation());
-	      self::assertSame('Accident', $columns[34]->abbreviation());
-	      self::assertSame('Strike or Lock-out', $columns[35]->abbreviation());
-	      self::assertSame('Temporary Lay-off', $columns[36]->abbreviation());
-	      self::assertSame('Other Causes', $columns[37]->abbreviation());
+	self::assertSame('Weeks unemployed', $columns[31]->abbreviation());
+	self::assertSame('No Job', $columns[32]->abbreviation());
+	self::assertSame('Illness', $columns[33]->abbreviation());
+	self::assertSame('Accident', $columns[34]->abbreviation());
+	self::assertSame('Strike or Lock-out', $columns[35]->abbreviation());
+	self::assertSame('Temporary Lay-off', $columns[36]->abbreviation());
+	self::assertSame('Other Causes', $columns[37]->abbreviation());
 
         self::assertSame('Name of each person in family, household or institution', $columns[0]->title());
         self::assertSame('In rural localities give parish or township. In cities, towns and villages, give street and number of dwelling.', $columns[1]->title());
