@@ -134,7 +134,7 @@ class CensusOfCanada1931Test extends TestCase
         self::assertSame('Other Causes', $columns[37]->abbreviation());
 
         self::assertSame('Name of each person in family, household or institution', $columns[0]->title());
-        self::assertSame('In rural localities give parish or township. In cities, towns and villages, give street and number of dwelling.', $columns[1]->title());
+        self::assertSame('In rural localities give parish or township. In cities, towns and villages, give street and number of dwelling', $columns[1]->title());
         self::assertSame('Home owned or rented', $columns[2]->title());
         self::assertSame('If Owned give value. If rented, give rent paid per month', $columns[3]->title());
         self::assertSame('Class of House: Apartment, Row or Terrace, Single house, Semi-Detached, Flat', $columns[4]->title());
@@ -150,7 +150,7 @@ class CensusOfCanada1931Test extends TestCase
         self::assertSame('Place of birth of mother', $columns[14]->title());
         self::assertSame('Year of immigration to Canada', $columns[15]->title());
         self::assertSame('Year of naturalization', $columns[16]->title());
-        self::assertSame('Country to which this person owes allegiance.', $columns[17]->title());
+        self::assertSame('Country to which this person owes allegiance', $columns[17]->title());
         self::assertSame('Racial origin', $columns[18]->title());
         self::assertSame('Can speak English', $columns[19]->title());
         self::assertSame('Can speak French', $columns[20]->title());
@@ -158,11 +158,11 @@ class CensusOfCanada1931Test extends TestCase
         self::assertSame('Religious body, Denomination or Community to which this person adheres or belongs', $columns[22]->title());
         self::assertSame('Can read and write', $columns[23]->title());
         self::assertSame('Months at school since Sept. 1, 1930', $columns[24]->title());
-        self::assertSame('Trade, profession or particular kind of work, as carpenter, weaver, sawyer, merchant, farmer,salesman, teacher, etc. (Give as definite and precise information as possivle)', $columns[25]->title());
+        self::assertSame('Trade, profession or particular kind of work, as carpenter, weaver, sawyer, merchant, farmer,salesman, teacher, etc. (Give as definite and precise information as possible)', $columns[25]->title());
         self::assertSame('Industry or business in which engaged or employed as cotton mill, brass foundry, grocery, coal mine, dairy farm, public school, business college, etc', $columns[26]->title());
         self::assertSame('Class of worker', $columns[27]->title());
         self::assertSame('Total earnings in the past twelve months (Since June 1st, 1930)', $columns[28]->title());
-        self::assertSame('If an employee, where you at work Monday June 1st , 1930', $columns[29]->title());
+        self::assertSame('If an employee, where you at work Monday June 1st, 1930', $columns[29]->title());
         self::assertSame('If answer to previous question is NO. Why were you not at work on Monday, June 1st, 1931. (For Example, no job, sick, accident, on holidays, strike or lock-out, plant closed, no materials, etc)', $columns[30]->title());
         self::assertSame('Total number of weeks unemployed from any cause in the last 12 months', $columns[31]->title());
         self::assertSame('Of the total numer of weeks reported out of work, how many were due to-', $columns[32]->title());
