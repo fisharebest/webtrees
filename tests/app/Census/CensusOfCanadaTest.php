@@ -67,16 +67,17 @@ class CensusOfCanadaTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        self::assertCount(10, $census_dates);
+        self::assertCount(11, $census_dates);
         self::assertInstanceOf(CensusOfCanada1851::class, $census_dates[0]);
         self::assertInstanceOf(CensusOfCanada1861::class, $census_dates[1]);
         self::assertInstanceOf(CensusOfCanada1871::class, $census_dates[2]);
         self::assertInstanceOf(CensusOfCanada1881::class, $census_dates[3]);
-        self::assertInstanceOf(CensusOfCanada1901::class, $census_dates[4]);
-        self::assertInstanceOf(CensusOfCanada1911::class, $census_dates[5]);
-        self::assertInstanceOf(CensusOfCanadaPraries1916::class, $census_dates[6]);
-        self::assertInstanceOf(CensusOfCanada1921::class, $census_dates[7]);
-        self::assertInstanceOf(CensusOfCanadaPraries1926::class, $census_dates[8]);
-        self::assertInstanceOf(CensusOfCanada1931::class, $census_dates[9]);
+        self::assertInstanceOf(CensusOfCanada1891::class, $census_dates[4]);
+        self::assertInstanceOf(CensusOfCanada1901::class, $census_dates[5]);
+        self::assertInstanceOf(CensusOfCanada1911::class, $census_dates[6]);
+        self::assertInstanceOf(CensusOfCanadaPraries1916::class, $census_dates[7]);
+        self::assertInstanceOf(CensusOfCanada1921::class, $census_dates[8]);
+        self::assertInstanceOf(CensusOfCanadaPraries1926::class, $census_dates[9]);
+        self::assertInstanceOf(CensusOfCanada1931::class, $census_dates[10]);
     }
 }
