@@ -27,12 +27,12 @@ $minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
             <?php
             $size = $maximum === $minimum ? 1.0 : 1.0 + 1.5 * ($count - $minimum) / ($maximum - $minimum);
 
-            if ($surname !== '') {
-                $label = e($surname);
-            } elseif ($surn !== Individual::NOMEN_NESCIO) {
+            if ($surname === Individual::NOMEN_NESCIO) {
+                $label = I18N::translateContext('Unknown surname', '…');
+            } elseif ($surname === '') {
                 $label = e($surn);
             } else {
-                $label = I18N::translate('No surname');
+                $label = e($surname);
             }
 
             if ($totals) {
