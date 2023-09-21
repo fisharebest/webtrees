@@ -42,6 +42,7 @@ class CensusOfCanada extends Census implements CensusPlaceInterface
             new CensusOfCanadaPraries1916(),
             new CensusOfCanada1921(),
             new CensusOfCanadaPraries1926(),
+            new CensusOfCanada1931(),
         ];
     }
 

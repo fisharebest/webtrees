@@ -23,13 +23,61 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test harness for the class CensusOfCanada
- *
- * @covers \Fisharebest\Webtrees\Census\CensusOfCanada
  */
 class CensusOfCanadaTest extends TestCase
 {
-    public function testClass(): void
+    /**
+     * Test the census place
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada
+     *
+     * @return void
+     */
+    public function testPlace(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Census\CensusOfCanada::class));
+        $census = new CensusOfCanada();
+
+        self::assertSame('Canada', $census->censusPlace());
+    }
+
+    /**
+     * Test the census language
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada
+     *
+     * @return void
+     */
+    public function testLanguage(): void
+    {
+        $census = new CensusOfCanada();
+
+        self::assertSame('en-US', $census->censusLanguage());
+    }
+
+    /**
+     * Test the census dates
+     *
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada
+     *
+     * @return void
+     */
+    public function testAllDates(): void
+    {
+        $census = new CensusOfCanada();
+
+        $census_dates = $census->allCensusDates();
+
+        self::assertCount(11, $census_dates);
+        self::assertInstanceOf(CensusOfCanada1851::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfCanada1861::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfCanada1871::class, $census_dates[2]);
+        self::assertInstanceOf(CensusOfCanada1881::class, $census_dates[3]);
+        self::assertInstanceOf(CensusOfCanada1891::class, $census_dates[4]);
+        self::assertInstanceOf(CensusOfCanada1901::class, $census_dates[5]);
+        self::assertInstanceOf(CensusOfCanada1911::class, $census_dates[6]);
+        self::assertInstanceOf(CensusOfCanadaPraries1916::class, $census_dates[7]);
+        self::assertInstanceOf(CensusOfCanada1921::class, $census_dates[8]);
+        self::assertInstanceOf(CensusOfCanadaPraries1926::class, $census_dates[9]);
+        self::assertInstanceOf(CensusOfCanada1931::class, $census_dates[10]);
     }
 }
