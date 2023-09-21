@@ -22,19 +22,15 @@ use Fisharebest\Webtrees\Tree;
     <?php foreach ($surnames as $surn => $surns) : ?>
         <?php foreach ($surns as $surname => $count) : ?>
             <?php
-            if ($surn === Individual::NOMEN_NESCIO) {
+            if ($surname === Individual::NOMEN_NESCIO) {
                 $label = I18N::translateContext('Unknown surname', '…');
-                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surname] + $params) : '';
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['alpha' => '@'] + $params) : '';
             } elseif ($surname === '') {
-                if ($surn === '') {
-                    $label = I18N::translate('No surname');
-                } else {
-                    $label = e($surn);
-                }
-                $url = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surname] + $params) : '';
+                $label = e($surn);
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn] + $params) : '';
             } else {
                 $label = e($surname);
-                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surname] + $params) : '';
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn] + $params) : '';
             }
 
             if ($totals) {
