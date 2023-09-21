@@ -375,6 +375,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -419,6 +420,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -463,6 +465,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -507,6 +510,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
