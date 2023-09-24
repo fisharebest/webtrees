@@ -21,7 +21,14 @@ namespace Fisharebest\Webtrees;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Module\IndividualListModule;
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
+
+use function array_map;
+use function preg_match_all;
 
 /**
  * Test the individual lists.
@@ -32,33 +39,182 @@ class IndividualListTest extends TestCase
 {
     protected static bool $uses_database = true;
 
+    private IndividualListModule $module;
+    private Tree                 $tree;
+    private User                 $user;
+
+    public function setUp(): void
+    {
+        I18N::init('en-US');
+
+        $this->module = new IndividualListModule();
+        $user_service = new UserService();
+        $tree_service = new TreeService(new GedcomImportService());
+        $this->tree   = $tree_service->create('name', 'title');
+        $this->user   = $user_service->create('user', 'User', 'user@example.com', 'secret');
+        $this->user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
+        $this->user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '1');
+        Auth::login($this->user);
+        // The default "John Doe" individual will confuse the test results...
+        Registry::individualFactory()->make('X1', $this->tree)->deleteRecord();
+    }
+
+    public function tearDown(): void
+    {
+        $tree_service = new TreeService(new GedcomImportService());
+        $tree_service->delete($this->tree);
+
+        $user_service = new UserService();
+        $user_service->delete($this->user);
+    }
+
     /**
      * @covers \Fisharebest\Webtrees\Module\IndividualListModule
-     * @return void
      */
-    public function testIndividualList(): void
+    public function testCollationOfInitials(): void
     {
-        $tree        = $this->importTree('demo.ged');
-        $list_module = new IndividualListModule();
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME /Âaa/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME /aaa/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME /Ååå/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME /æææ/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME /Caa/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME /Css/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME /Dza/");
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree]);
-        $response = $list_module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        I18N::init('en-US');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
+        self::assertEquals(['A', 'C', 'D', 'Æ'], array_map(rawurldecode(...), $matches[1]));
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B'], [], [], ['tree' => $tree]);
-        $response = $list_module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        I18N::init('sv');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
+        self::assertEquals(['A', 'C', 'D', 'Å', 'Æ'], array_map(rawurldecode(...), $matches[1]));
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => ','], [], [], ['tree' => $tree]);
-        $response = $list_module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        I18N::init('hu');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
+        self::assertEquals(['A', 'C', 'CS', 'DZ', 'Æ'], array_map(rawurldecode(...), $matches[1]));
+    }
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => '@'], [], [], ['tree' => $tree]);
-        $response = $list_module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+    /**
+     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
+     */
+    public function testRedirectToCanonicalSurname(): void
+    {
+        I18N::init('en-US');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MÜLLER'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
+        self::assertStringContainsString('surname=MULLER', $response->getHeaderLine('Location'));
 
-        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'BRAUN'], [], [], ['tree' => $tree]);
-        $response = $list_module->handle($request);
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        I18N::init('de');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MÜLLER'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
+        self::assertStringContainsString('surname=MUELLER', $response->getHeaderLine('Location'));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
+     */
+    public function testCollationOfSurnames(): void
+    {
+        $i1 = $this->tree->createIndividual("0 @@ INDI\n1 NAME /Muller/");
+        $i2 = $this->tree->createIndividual("0 @@ INDI\n1 NAME /Müller/");
+        $i3 = $this->tree->createIndividual("0 @@ INDI\n1 NAME /Mueller/");
+
+        I18N::init('en-US');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MULLER'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
+        self::assertEqualsCanonicalizing([$i1->xref(), $i2->xref()], $matches[1], 'English, so U should match U and Ü');
+
+        I18N::init('de');
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MULLER'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
+        self::assertEqualsCanonicalizing([$i1->xref()], $matches[1], 'German, so U should only match U');
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['surname' => 'MUELLER'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
+        self::assertEqualsCanonicalizing([$i2->xref(), $i3->xref()], $matches[1], 'German, so UE should also match Ü');
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
+     */
+    public function testUnknownVersusMissingSurname(): void
+    {
+        $i1 = $this->tree->createIndividual("0 @@ INDI\n1 NAME John //");
+        $i2 = $this->tree->createIndividual("0 @@ INDI\n1 NAME John");
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => '@'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
+        self::assertEqualsCanonicalizing([$i1->xref()], $matches[1]);
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => ','], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
+        self::assertEqualsCanonicalizing([$i2->xref()], $matches[1]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
+     */
+    public function testAllSurnamesExcludesUnknownAndMissing(): void
+    {
+        $i1 = $this->tree->createIndividual("0 @@ INDI\n1 NAME John /Black/");
+        $i2 = $this->tree->createIndividual("0 @@ INDI\n1 NAME Mary /White/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME Peter //");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME Paul");
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['show_all' => 'yes'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/individual-list&amp;surname=([A-Z]+)/', $html, $matches);
+        self::assertEqualsCanonicalizing(['BLACK', 'WHITE'], $matches[1]);
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['show_all' => 'yes', 'show' => 'indi'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
+        self::assertEqualsCanonicalizing([$i1->xref(), $i2->xref()], $matches[1]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
+     */
+    public function testSurnameInitial(): void
+    {
+        $i1 = $this->tree->createIndividual("0 @@ INDI\n1 NAME John /Black/");
+        $i2 = $this->tree->createIndividual("0 @@ INDI\n1 NAME Mary /Brown/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME Peter /White/");
+        $this->tree->createIndividual("0 @@ INDI\n1 NAME Paul /Green/");
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/individual-list&amp;surname=([A-Z]+)/', $html, $matches);
+        self::assertEqualsCanonicalizing(['BLACK', 'BROWN'], $matches[1]);
+
+        $request  = self::createRequest(RequestMethodInterface::METHOD_GET, ['alpha' => 'B', 'show' => 'indi'], [], [], ['tree' => $this->tree]);
+        $response = $this->module->handle($request);
+        $html     = $response->getBody()->getContents();
+        preg_match_all('/%2Fname%2Findividual%2F(X\d+)%2F/', $html, $matches);
+        self::assertEqualsCanonicalizing([$i1->xref(), $i2->xref()], $matches[1]);
     }
 }

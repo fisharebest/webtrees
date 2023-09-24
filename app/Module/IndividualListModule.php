@@ -209,8 +209,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $alpha = I18N::language()->initialLetter($surname);
         }
 
-        $all_surnames     = $this->allSurnames($tree, $show_marnm === 'yes', $this->families);
-        $surname_initials = $this->surnameInitials($all_surnames);
+        $surname_data     = $this->surnameData($tree, $show_marnm === 'yes', $this->families);
+        $all_surns        = $this->allSurns($surname_data);
+        $all_surnames     = $this->allSurnames($surname_data);
+        $surname_initials = $this->surnameInitials($surname_data);
 
         // Make sure selections are consistent.
         // i.e. can’t specify show_all and surname at the same time.
@@ -342,26 +344,28 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             if ($show === 'indi' || $show === 'surn') {
                 switch ($alpha) {
                     case '@':
-                        $surns = array_filter($all_surnames, static fn (string $x): bool => $x === Individual::NOMEN_NESCIO, ARRAY_FILTER_USE_KEY);
+                        $filter = static fn(string $x): bool => $x === Individual::NOMEN_NESCIO;
                         break;
                     case ',':
-                        $surns = array_filter($all_surnames, static fn (string $x): bool => $x === '', ARRAY_FILTER_USE_KEY);
+                        $filter = static fn(string $x): bool => $x === '';
                         break;
                     case '':
                         if ($show_all === 'yes') {
-                            $surns = array_filter($all_surnames, static fn (string $x): bool => $x !== '' && $x !== Individual::NOMEN_NESCIO, ARRAY_FILTER_USE_KEY);
+                            $filter = static fn(string $x): bool => $x !== '' && $x !== Individual::NOMEN_NESCIO;
                         } else {
-                            $surns = array_filter($all_surnames, static fn (string $x): bool => $x === $surname, ARRAY_FILTER_USE_KEY);
+                            $filter = static fn(string $x): bool => $x === $surname;
                         }
                         break;
                     default:
                         if ($surname === '') {
-                            $surns = array_filter($all_surnames, static fn (string $x): bool => I18N::language()->initialLetter($x) === $alpha, ARRAY_FILTER_USE_KEY);
+                            $filter = static fn(string $x): bool => I18N::language()->initialLetter($x) === $alpha;
                         } else {
-                            $surns = array_filter($all_surnames, static fn (string $x): bool => $x === $surname, ARRAY_FILTER_USE_KEY);
+                            $filter = static fn(string $x): bool => $x === $surname;
                         }
                         break;
                 }
+
+                $all_surnames = array_filter($all_surnames, $filter, ARRAY_FILTER_USE_KEY);
 
                 if ($show === 'surn') {
                     // Show the surname list
@@ -370,7 +374,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                             echo view('lists/surnames-column-list', [
                                 'module'   => $this,
                                 'params'   => ['show' => 'indi', 'show_all' => null] + $params,
-                                'surnames' => $surns,
+                                'surnames' => $all_surnames,
                                 'totals'   => true,
                                 'tree'     => $tree,
                             ]);
@@ -379,7 +383,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                             echo view('lists/surnames-tag-cloud', [
                                 'module'   => $this,
                                 'params'   => ['show' => 'indi', 'show_all' => null] + $params,
-                                'surnames' => $surns,
+                                'surnames' => $all_surnames,
                                 'totals'   => true,
                                 'tree'     => $tree,
                             ]);
@@ -391,23 +395,23 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                                 'module'   => $this,
                                 'order'    => [[0, 'asc']],
                                 'params'   => ['show' => 'indi', 'show_all' => null] + $params,
-                                'surnames' => $surns,
+                                'surnames' => $all_surnames,
                                 'tree'     => $tree,
                             ]);
                             break;
                     }
                 } else {
                     // Show the list
-                    $count = array_sum(array_map(static fn (array $x): int => array_sum($x), $surns));
+                    $count = array_sum(array_map(static fn(array $x): int => array_sum($x), $all_surnames));
 
                     // Don't sublist short lists.
                     if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
                         $falpha = '';
                     } else {
                         // Break long lists by initial letter of given name
-                        $surns         = array_values(array_map(static fn ($x): array => array_keys($x), $surns));
-                        $surns         = array_merge(...$surns);
-                        $givn_initials = $this->givenNameInitials($tree, $surns, $show_marnm === 'yes', $this->families);
+                        $all_surnames  = array_values(array_map(static fn($x): array => array_keys($x), $all_surnames));
+                        $all_surnames  = array_merge(...$all_surnames);
+                        $givn_initials = $this->givenNameInitials($tree, $all_surnames, $show_marnm === 'yes', $this->families);
 
                         if ($surname !== '' || $show_all === 'yes') {
                             if ($show_all !== 'yes') {
@@ -443,14 +447,32 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         }
                     }
                     if ($show === 'indi') {
+                        if ($alpha === '@') {
+                            $surns_to_show = ['@N.N.'];
+                        } elseif ($alpha === ',') {
+                            $surns_to_show = [''];
+                        } elseif ($surname !== '') {
+                            $surns_to_show = $all_surns[$surname];
+                        } elseif ($alpha !== '') {
+                            $tmp = array_filter(
+                                $all_surns,
+                                static fn (string $x): bool => I18N::language()->initialLetter($x) === $alpha,
+                                ARRAY_FILTER_USE_KEY
+                            );
+
+                            $surns_to_show = array_merge(...array_values($tmp));
+                        } else {
+                            $surns_to_show = [];
+                        }
+
                         if ($this->families) {
                             echo view('lists/families-table', [
-                                'families' => $this->families($tree, $surname, array_keys($all_surnames[$surname] ?? []), $falpha, $show_marnm === 'yes'),
+                                'families' => $this->families($tree, $surns_to_show, $falpha, $show_marnm === 'yes'),
                                 'tree'     => $tree,
                             ]);
                         } else {
                             echo view('lists/individuals-table', [
-                                'individuals' => $this->individuals($tree, $surname, array_keys($all_surnames[$surname] ?? []), $falpha, $show_marnm === 'yes', false),
+                                'individuals' => $this->individuals($tree, $surns_to_show, $falpha, $show_marnm === 'yes', false),
                                 'sosa'        => false,
                                 'tree'        => $tree,
                             ]);
@@ -571,7 +593,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             ->groupBy([$this->binaryColumn('n_givn')]);
 
         foreach ($query->get() as $row) {
-            $initial = I18N::strtoupper(I18N::language()->initialLetter($row->n_givn));
+            $initial            = I18N::strtoupper(I18N::language()->initialLetter($row->n_givn));
             $initials[$initial] ??= 0;
             $initials[$initial] += (int) $row->count;
         }
@@ -587,15 +609,13 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * Get a count of all surnames and variants.
-     *
      * @param Tree $tree
-     * @param bool $marnm if set, include married names
-     * @param bool $fams  if set, only consider individuals with FAMS records
+     * @param bool $marnm
+     * @param bool $fams
      *
-     * @return array<array<int>>
+     * @return array<object{n_surn:string,n_surname:string,total:int}>
      */
-    protected function allSurnames(Tree $tree, bool $marnm, bool $fams): array
+    private function surnameData(Tree $tree, bool $marnm, bool $fams): array
     {
         $query = DB::table('name')
             ->where('n_file', '=', $tree->id())
@@ -615,15 +635,52 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $this->binaryColumn('n_surname'),
         ]);
 
-        /** @var array<array<int>> $list */
+        return $query
+            ->get()
+            ->map(static fn(object $x): object => (object) ['n_surn' => $x->n_surn, 'n_surname' => $x->n_surname, 'total' => (int) $x->total])
+            ->all();
+    }
+
+    /**
+     * Group n_surn values, based on collation rules for the current language.
+     * We need them to find the individuals with this n_surn.
+     *
+     * @param array<object{n_surn:string,n_surname:string,total:int}> $surname_data
+     *
+     * @return array<array<int,string>>
+     */
+    protected function allSurns(array $surname_data): array
+    {
         $list = [];
 
-        foreach ($query->get() as $row) {
-            $row->n_surn = $row->n_surn === '' ? $row->n_surname : $row->n_surn;
-            $row->n_surn = I18N::strtoupper(I18N::language()->normalize($row->n_surn));
+        foreach ($surname_data as $row) {
+            $normalized = I18N::strtoupper(I18N::language()->normalize($row->n_surn));
+            $list[$normalized][] = $row->n_surn;
+        }
 
-            $list[$row->n_surn][$row->n_surname] ??= 0;
-            $list[$row->n_surn][$row->n_surname] += (int) $row->total;
+        uksort($list, I18N::comparator());
+
+        return $list;
+    }
+
+    /**
+     * Group n_surname values, based on collation rules for each n_surn.
+     * We need them to show counts of individuals with each surname.
+     *
+     * @param array<object{n_surn:string,n_surname:string,total:int}> $surname_data
+     *
+     * @return array<array<int>>
+     */
+    protected function allSurnames(array $surname_data): array
+    {
+        $list = [];
+
+        foreach ($surname_data as $row) {
+            $n_surn = $row->n_surn === '' ? $row->n_surname : $row->n_surn;
+            $n_surn = I18N::strtoupper(I18N::language()->normalize($n_surn));
+
+            $list[$n_surn][$row->n_surname] ??= 0;
+            $list[$n_surn][$row->n_surname] += $row->total;
         }
 
         uksort($list, I18N::comparator());
@@ -634,11 +691,11 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     /**
      * Extract initial letters and counts for all surnames.
      *
-     * @param array<array<int>> $all_surnames
+     * @param array<object{n_surn:string,n_surname:string,total:int}> $surname_data
      *
      * @return array<int>
      */
-    protected function surnameInitials(array $all_surnames): array
+    protected function surnameInitials(array $surname_data): array
     {
         $initials = [];
 
@@ -647,11 +704,12 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $initials[$initial] = 0;
         }
 
-        foreach ($all_surnames as $surn => $surnames) {
-            $initial = I18N::language()->initialLetter((string) $surn);
+        foreach ($surname_data as $row) {
+            $initial = I18N::language()->initialLetter(I18N::strtoupper($row->n_surn));
+            $initial = I18N::language()->normalize($initial);
 
             $initials[$initial] ??= 0;
-            $initials[$initial] += array_sum($surnames);
+            $initials[$initial] += $row->total;
         }
 
         // Move specials to the end
@@ -677,16 +735,15 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
      * To search for names with no surnames, use $salpha=","
      *
-     * @param Tree            $tree
-     * @param string          $surname  if set, only fetch people with this n_surn
-     * @param array<string>   $surnames if set, only fetch people with this n_surname
-     * @param string          $galpha   if set, only fetch given names starting with this letter
-     * @param bool            $marnm    if set, include married names
-     * @param bool            $fams     if set, only fetch individuals with FAMS records
+     * @param Tree          $tree
+     * @param array<string> $surns_to_show if set, only fetch people with this n_surn
+     * @param string        $galpha        if set, only fetch given names starting with this letter
+     * @param bool          $marnm         if set, include married names
+     * @param bool          $fams          if set, only fetch individuals with FAMS records
      *
      * @return Collection<int,Individual>
      */
-    protected function individuals(Tree $tree, string $surname, array $surnames, string $galpha, bool $marnm, bool $fams): Collection
+    protected function individuals(Tree $tree, array $surns_to_show, string $galpha, bool $marnm, bool $fams): Collection
     {
         $query = DB::table('individuals')
             ->join('name', static function (JoinClause $join): void {
@@ -700,18 +757,11 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $this->whereFamily($fams, $query);
         $this->whereMarriedName($marnm, $query);
 
-        if ($surnames === []) {
-            // SURN, with no surname
-            $query->where('n_surn', '=', $surname);
+        if ($surns_to_show === []) {
+            $query->whereNotIn('n_surn', ['', '@N.N.']);
         } else {
-            $query->whereIn($this->binaryColumn('n_surname'), $surnames);
+            $query->whereIn($this->binaryColumn('n_surn'), $surns_to_show);
         }
-
-        $query
-            ->orderBy(new Expression("CASE n_surn WHEN '" . Individual::NOMEN_NESCIO . "' THEN 1 ELSE 0 END"))
-            ->orderBy('n_surn')
-            ->orderBy(new Expression("CASE n_givn WHEN '" . Individual::NOMEN_NESCIO . "' THEN 1 ELSE 0 END"))
-            ->orderBy('n_givn');
 
         $individuals = new Collection();
 
@@ -743,18 +793,17 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * To search for names with no surnames, use $salpha=","
      *
      * @param Tree          $tree
-     * @param string        $surname  if set, only fetch people with this n_surn
      * @param array<string> $surnames if set, only fetch people with this n_surname
      * @param string        $galpha   if set, only fetch given names starting with this letter
      * @param bool          $marnm    if set, include married names
      *
      * @return Collection<int,Family>
      */
-    protected function families(Tree $tree, string $surname, array $surnames, string $galpha, bool $marnm): Collection
+    protected function families(Tree $tree, array $surnames, string $galpha, bool $marnm): Collection
     {
         $families = new Collection();
 
-        foreach ($this->individuals($tree, $surname, $surnames, $galpha, $marnm, true) as $indi) {
+        foreach ($this->individuals($tree, $surnames, $galpha, $marnm, true) as $indi) {
             foreach ($indi->spouseFamilies() as $family) {
                 $families->push($family);
             }
