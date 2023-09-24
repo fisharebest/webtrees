@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2016-04-19 11:36+0000\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Nepali <https://translate.webtrees.net/projects/webtrees/webtrees/ne/>\n"
+"PO-Revision-Date: 2023-09-24 13:07+0000\n"
+"Last-Translator: pawan58289 <pawan58289@gmail.com>\n"
+"Language-Team: Nepali <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ne/>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -19,7 +20,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr ""
+msgstr " तर विवरणहरू अज्ञात छन्"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -70,7 +71,7 @@ msgstr ""
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s उपलब्ध छैन. तपाईको मतलब %2$s हो ?"
 
 #: app/Http/RequestHandlers/CheckTree.php:260
 #: app/Http/RequestHandlers/CheckTree.php:265
