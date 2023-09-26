@@ -91,6 +91,7 @@ class BadBotBlocker implements MiddlewareInterface
         'serpstatbot',
         'SEOkicks',
         'SiteKiosk',
+        'TinyTestBot',
         'Turnitin',
         'wp_is_mobile', // Nothing to do with wordpress
         'XoviBot',
