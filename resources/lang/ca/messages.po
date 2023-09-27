@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-08-29 20:31+0000\n"
+"PO-Revision-Date: 2023-09-28 17:16+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
@@ -83,15 +83,15 @@ msgstr "%1$s no existeix. Potser volíeu dir %2$s?"
 #: app/Http/RequestHandlers/CheckTree.php:275
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr "%1$s no te cap enllaç amb %2$s."
+msgstr "%1$s no té cap enllaç amb %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:264
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "S’ha extret %1$s fitxer en %2$s segons."
-msgstr[1] "S’han extret %1$s fitxers en %2$s segons."
+msgstr[0] "S’ha extret el fitxer %1$s en %2$s segons."
+msgstr[1] "S’han extret els fitxers %1$s en %2$s segons."
 
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
