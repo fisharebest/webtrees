@@ -197,14 +197,14 @@ class GedcomExportService
         if ($records instanceof Collection) {
             // Export just these records - e.g. from clippings cart.
             $data = [
-                new Collection([$this->createHeader($tree, $encoding, false)]),
+                new Collection([$this->createHeader($tree, $encoding, false, $access_level)]),
                 $records,
                 new Collection(['0 TRLR']),
             ];
         } elseif ($access_level === Auth::PRIV_HIDE) {
             // If we will be applying privacy filters, then we will need the GEDCOM record objects.
             $data = [
-                new Collection([$this->createHeader($tree, $encoding, true)]),
+                new Collection([$this->createHeader($tree, $encoding, true, $access_level)]),
                 $this->individualQuery($tree, $sort_by_xref)->cursor(),
                 $this->familyQuery($tree, $sort_by_xref)->cursor(),
                 $this->sourceQuery($tree, $sort_by_xref)->cursor(),
@@ -219,7 +219,7 @@ class GedcomExportService
             });
 
             $data = [
-                new Collection([$this->createHeader($tree, $encoding, true)]),
+                new Collection([$this->createHeader($tree, $encoding, true, $access_level)]),
                 $this->individualQuery($tree, $sort_by_xref)->get()->map(Registry::individualFactory()->mapper($tree)),
                 $this->familyQuery($tree, $sort_by_xref)->get()->map(Registry::familyFactory()->mapper($tree)),
                 $this->sourceQuery($tree, $sort_by_xref)->get()->map(Registry::sourceFactory()->mapper($tree)),
@@ -288,7 +288,7 @@ class GedcomExportService
      *
      * @return string
      */
-    public function createHeader(Tree $tree, string $encoding, bool $include_sub): string
+    public function createHeader(Tree $tree, string $encoding, bool $include_sub, int $access_level = null): string
     {
         // Force a ".ged" suffix
         $filename = $tree->name();
@@ -322,12 +322,12 @@ class GedcomExportService
 
         // There should always be a header record.
         if ($header instanceof Header) {
-            foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE']) as $fact) {
+            foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE'], false, $access_level) as $fact) {
                 $gedcom .= "\n" . $fact->gedcom();
             }
 
             if ($include_sub) {
-                foreach ($header->facts(['SUBM', 'SUBN']) as $fact) {
+                foreach ($header->facts(['SUBM', 'SUBN'], false, $access_level) as $fact) {
                     $gedcom .= "\n" . $fact->gedcom();
                 }
             }
