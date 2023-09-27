@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use ErrorException;
+use Fisharebest\Webtrees\Contracts\ContainerInterface;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\CalendarDateFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
@@ -62,6 +63,7 @@ use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
+use Fisharebest\Webtrees\Http\Middleware\PublicFiles;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
 use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
 use Fisharebest\Webtrees\Http\Middleware\Router;
@@ -72,23 +74,18 @@ use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
-use Illuminate\Container\Container;
 use Middleland\Dispatcher;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
-use Psr\Http\Server\MiddlewareInterface;
 
 use function date_default_timezone_set;
 use function error_reporting;
-use function is_string;
 use function mb_internal_encoding;
 use function set_error_handler;
 use function stream_filter_register;
@@ -96,6 +93,7 @@ use function stream_filter_register;
 use const E_ALL;
 use const E_DEPRECATED;
 use const E_USER_DEPRECATED;
+use const PHP_SAPI;
 
 /**
  * Definitions for the webtrees application.
@@ -160,6 +158,7 @@ class Webtrees
         ReadConfigIni::class,
         BaseUrl::class,
         HandleExceptions::class,
+        PublicFiles::class,
         ClientIp::class,
         ContentLength::class,
         CompressResponse::class,
@@ -183,9 +182,9 @@ class Webtrees
     /**
      * Initialise the application.
      *
-     * @return void
+     * @return static
      */
-    public function bootstrap(): void
+    public function bootstrap(): static
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
@@ -200,6 +199,7 @@ class Webtrees
         // Factory objects
         Registry::cache(new CacheFactory());
         Registry::calendarDateFactory(new CalendarDateFactory());
+        Registry::container(new Container());
         Registry::elementFactory(new ElementFactory());
         Registry::encodingFactory(new EncodingFactory());
         Registry::familyFactory(new FamilyFactory());
@@ -226,7 +226,31 @@ class Webtrees
         Registry::timestampFactory(new TimestampFactory());
         Registry::xrefFactory(new XrefFactory());
 
+        // PSR7 messages and PSR17 message-factories
+        Registry::container()
+            ->set(ResponseFactoryInterface::class, new Psr17Factory())
+            ->set(ServerRequestFactoryInterface::class, new Psr17Factory())
+            ->set(StreamFactoryInterface::class, new Psr17Factory())
+            ->set(UploadedFileFactoryInterface::class, new Psr17Factory())
+            ->set(UriFactoryInterface::class, new Psr17Factory());
+
         stream_filter_register(GedcomEncodingFilter::class, GedcomEncodingFilter::class);
+
+        return $this;
+    }
+
+    /**
+     * Run the application.
+     *
+     * @return void
+     */
+    public function run(): void
+    {
+        if (PHP_SAPI === 'cli') {
+            $this->cliRequest();
+        } else {
+            $this->httpRequest();
+        };
     }
 
     /**
@@ -246,31 +270,16 @@ class Webtrees
      */
     public function httpRequest(): ResponseInterface
     {
-        $psr17factory = new Psr17Factory();
-
-        // PSR7 messages and PSR17 message-factories
-        self::set(ResponseFactoryInterface::class, $psr17factory);
-        self::set(ServerRequestFactoryInterface::class, $psr17factory);
-        self::set(StreamFactoryInterface::class, $psr17factory);
-        self::set(UploadedFileFactoryInterface::class, $psr17factory);
-        self::set(UriFactoryInterface::class, $psr17factory);
-
-        $server_request_creator = new ServerRequestCreator($psr17factory, $psr17factory, $psr17factory, $psr17factory);
+        $server_request_creator = new ServerRequestCreator(
+            Registry::container()->get(ServerRequestFactoryInterface::class),
+            Registry::container()->get(UriFactoryInterface::class),
+            Registry::container()->get(UploadedFileFactoryInterface::class),
+            Registry::container()->get(StreamFactoryInterface::class)
+        );
 
         $request = $server_request_creator->fromGlobals();
 
-        return self::dispatch($request, self::MIDDLEWARE);
-    }
-
-    /**
-     * @param ServerRequestInterface            $request
-     * @param array<string|MiddlewareInterface> $middleware
-     *
-     * @return ResponseInterface
-     */
-    public static function dispatch(ServerRequestInterface $request, array $middleware): ResponseInterface
-    {
-        $dispatcher = new Dispatcher($middleware, self::container());
+        $dispatcher = new Dispatcher(self::MIDDLEWARE, Registry::container());
 
         return $dispatcher->dispatch($request);
     }
@@ -278,7 +287,7 @@ class Webtrees
     /**
      * An error handler that can be passed to set_error_handler().
      *
-     * @return Closure
+     * @return Closure(int,string,string,int):bool
      */
     private function phpErrorHandler(): Closure
     {
@@ -290,40 +299,5 @@ class Webtrees
 
             return true;
         };
-    }
-
-    /**
-     * @return ContainerInterface
-     */
-    public static function container(): ContainerInterface
-    {
-        return Container::getInstance();
-    }
-
-    /**
-     * Make an object, using dependency injection.
-     *
-     * @param string $class
-     *
-     * @return mixed
-     */
-    public static function make(string $class)
-    {
-        return Container::getInstance()->make($class);
-    }
-
-    /**
-     * Write a value into the container.
-     *
-     * @param string        $abstract
-     * @param string|object $concrete
-     */
-    public static function set(string $abstract, string|object $concrete): void
-    {
-        if (is_string($concrete)) {
-            Container::getInstance()->bind($abstract, $concrete);
-        } else {
-            Container::getInstance()->instance($abstract, $concrete);
-        }
     }
 }

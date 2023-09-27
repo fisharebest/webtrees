@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Exception;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -34,7 +35,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -90,7 +90,6 @@ class FamilyRepository
             return '';
         }
 
-        /** @var Family $family */
         $family = Registry::familyFactory()->mapper($this->tree)($row);
 
         if (!$family->canShow()) {
@@ -259,7 +258,6 @@ class FamilyRepository
 
         $top10 = [];
 
-        /** @var Family $family */
         foreach ($families as $family) {
             if ($type === 'list') {
                 $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->fullName() . '</a></li>';
@@ -553,7 +551,7 @@ class FamilyRepository
     }
 
     /**
-     * General query on familes/children.
+     * General query on families/children.
      *
      * @param int    $year1
      * @param int    $year2

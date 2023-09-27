@@ -10,13 +10,11 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var IndividualListModule|null $module
+ * @var array<string,string>      $params
  * @var array<array<int>>         $surnames
  * @var bool                      $totals
  * @var Tree                      $tree
  */
-
-$maximum = max(array_map(static fn (array $x): int => max($x), $surnames));
-$minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
 
 ?>
 
@@ -24,21 +22,15 @@ $minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
     <?php foreach ($surnames as $surn => $surns) : ?>
         <?php foreach ($surns as $surname => $count) : ?>
             <?php
-            $size     = 1.0 + ($maximum === $minimum ? 0 : 1.5 * ($count - $minimum) / ($maximum - $minimum));
-
-            if ($surn === Individual::NOMEN_NESCIO) {
+            if ($surname === Individual::NOMEN_NESCIO) {
                 $label = I18N::translateContext('Unknown surname', '…');
-                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['alpha' => '@']) : '';
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['alpha' => '@'] + $params) : '';
             } elseif ($surname === '') {
-                if ($surn === '') {
-                    $label = I18N::translate('No surname');
-                } else {
-                    $label = e($surn);
-                }
-                $url = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['alpha' => ',']) : '';
+                $label = e($surn);
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn] + $params) : '';
             } else {
                 $label = e($surname);
-                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn]) : '';
+                $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn] + $params) : '';
             }
 
             if ($totals) {

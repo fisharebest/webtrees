@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Tree;
@@ -14,20 +15,34 @@ use Fisharebest\Webtrees\Tree;
  * @var Tree                      $tree
  */
 
-?>
+$items = [];
 
-<ul class="wt-surnames-bullet-list">
-    <?php foreach ($surnames as $surn => $surns) : ?>
-        <?php foreach ($surns as $spfxsurn => $count) : ?>
-            <li class="wt-surnames-column-list-item">
-                <?php if ($module instanceof ModuleListInterface) : ?>
-                    <a href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>">
-                        <?= $totals ? I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count)) : e($spfxsurn) ?>
-                    </a>
-                <?php else : ?>
-                    <?= $totals ? I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count)) : e($spfxsurn) ?>
-                <?php endif ?>
-            </li>
-        <?php endforeach ?>
-    <?php endforeach ?>
-</ul>
+foreach ($surnames as $surn => $surns) {
+    foreach ($surns as $surname => $count) {
+        if ($surname === Individual::NOMEN_NESCIO) {
+            $label = I18N::translateContext('Unknown surname', '…');
+            $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['alpha' => '@']) : '';
+        } elseif ($surname === '') {
+            $label = e($surn);
+            $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn]) : '';
+        } else {
+            $label = e($surname);
+            $url   = $module instanceof ModuleListInterface ? $module->listUrl($tree, ['surname' => $surn]) : '';
+        }
+
+        if ($totals) {
+            $item = I18N::translate('%1$s (%2$s)', '<span class="ut">' . $label . '</span>', I18N::number($count));
+        } else {
+            $item = $label;
+        }
+
+        if ($url !== '') {
+            $items[] = '<li class="wt-surnames-bullet-list-item"><a href="' . e($url) . '">' . $item . '</a></li>';
+        } else {
+            $items[] = '<li class="wt-surnames-bullet-list-item">' . $item . '</li>';
+        }
+    }
+}
+?>
+<ul class="wt-surnames-bullet-list"><?= implode('', $items) ?></ul>
+

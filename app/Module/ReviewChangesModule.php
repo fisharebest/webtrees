@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -33,7 +34,6 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
@@ -55,8 +55,6 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     private TreeService $tree_service;
 
     /**
-     * ReviewChangesModule constructor.
-     *
      * @param EmailService $email_service
      * @param TreeService  $tree_service
      * @param UserService  $user_service
@@ -168,13 +166,12 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             $changes = DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())
                 ->whereIn('change_id', static function (Builder $query) use ($tree): void {
-                    $query->select(new Expression('MAX(change_id)'))
+                    $query->select([new Expression('MAX(change_id)')])
                         ->from('change')
                         ->where('gedcom_id', '=', $tree->id())
                         ->where('status', '=', 'pending')
                         ->groupBy(['xref']);
                 })
-                //->select(['xref'])
                 ->get();
 
             foreach ($changes as $change) {

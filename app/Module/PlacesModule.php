@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,22 +38,22 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     use ModuleTabTrait;
 
     protected const ICONS = [
-        'FAM:CENS'  => ['color' => 'cyan', 'name' => 'list fas'],
+        'FAM:CENS'  => ['color' => 'darkcyan', 'name' => 'list fas'],
         'FAM:MARR'  => ['color' => 'green', 'name' => 'infinity fas'],
-        'INDI:BAPM' => ['color' => 'pink', 'name' => 'water fas'],
-        'INDI:BARM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
-        'INDI:BASM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
-        'INDI:BIRT' => ['color' => 'pink', 'name' => 'baby-carriage fas'],
+        'INDI:BAPM' => ['color' => 'hotpink', 'name' => 'water fas'],
+        'INDI:BARM' => ['color' => 'hotpink', 'name' => 'star-of-david fas'],
+        'INDI:BASM' => ['color' => 'hotpink', 'name' => 'star-of-david fas'],
+        'INDI:BIRT' => ['color' => 'hotpink', 'name' => 'baby-carriage fas'],
         'INDI:BURI' => ['color' => 'purple', 'name' => 'times fas'],
-        'INDI:CENS' => ['color' => 'cyan', 'name' => 'list fas'],
-        'INDI:CHR'  => ['color' => 'pink', 'name' => 'water fas'],
-        'INDI:CHRA' => ['color' => 'pink', 'name' => 'water fas'],
+        'INDI:CENS' => ['color' => 'darkcyan', 'name' => 'list fas'],
+        'INDI:CHR'  => ['color' => 'hotpink', 'name' => 'water fas'],
+        'INDI:CHRA' => ['color' => 'hotpink', 'name' => 'water fas'],
         'INDI:CREM' => ['color' => 'black', 'name' => 'times fas'],
         'INDI:DEAT' => ['color' => 'black', 'name' => 'times fas'],
         'INDI:EDUC' => ['color' => 'violet', 'name' => 'university fas'],
         'INDI:GRAD' => ['color' => 'violet', 'name' => 'university fas'],
-        'INDI:OCCU' => ['color' => 'cyan', 'name' => 'industry fas'],
-        'INDI:RESI' => ['color' => 'cyan', 'name' => 'home fas'],
+        'INDI:OCCU' => ['color' => 'darkcyan', 'name' => 'industry fas'],
+        'INDI:RESI' => ['color' => 'darkcyan', 'name' => 'home fas'],
     ];
 
     protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
@@ -63,8 +63,6 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     private ModuleService $module_service;
 
     /**
-     * PlacesModule constructor.
-     *
      * @param LeafletJsService $leaflet_js_service
      * @param ModuleService    $module_service
      */

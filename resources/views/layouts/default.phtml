@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -55,18 +56,18 @@ use Psr\Http\Message\ServerRequestInterface;
         <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>" crossorigin="use-credentials">
 
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
-        <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
+        <?php foreach (Registry::container()->get(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
             <link rel="stylesheet" href="<?= e($stylesheet) ?>">
         <?php endforeach ?>
 
         <?= View::stack('styles') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->headContent();
         })->implode('') ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name ?? '/', ['\\' => '/']))) ?>">
+    <body class="wt-global wt-theme-<?= e(Registry::container()->get(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name ?? '/', ['\\' => '/']))) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
@@ -100,7 +101,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
                     <div class="col wt-secondary-navigation">
                         <ul class="nav wt-user-menu">
-                            <?php foreach (app(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
+                            <?php foreach (Registry::container()->get(ModuleThemeInterface::class)->userMenu($tree) as $menu) : ?>
                                 <?= view('components/menu-item', ['menu' => $menu]) ?>
                             <?php endforeach ?>
                         </ul>
@@ -109,7 +110,7 @@ use Psr\Http\Message\ServerRequestInterface;
                     <?php if ($tree !== null) : ?>
                         <nav class="col wt-primary-navigation">
                             <ul class="nav wt-genealogy-menu">
-                                <?php foreach (app(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
+                                <?php foreach (Registry::container()->get(ModuleThemeInterface::class)->genealogyMenu($tree) as $menu) : ?>
                                     <?= view('components/menu-item', ['menu' => $menu]) ?>
                                 <?php endforeach ?>
                             </ul>
@@ -136,7 +137,7 @@ use Psr\Http\Message\ServerRequestInterface;
         </main>
 
         <footer class="container-lg wt-footers d-print-none">
-            <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
+            <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
                 return $module->getFooter($request);
             })->implode('') ?>
         </footer>
@@ -181,7 +182,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('javascript') ?>
 
-        <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->bodyContent();
         })->implode('') ?>
     </body>

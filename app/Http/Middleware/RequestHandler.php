@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,14 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Container\Container;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function is_string;
 
 /**
@@ -47,10 +46,8 @@ class RequestHandler implements MiddlewareInterface
         $request_handler = $route->handler;
 
         if (is_string($request_handler)) {
-            $request_handler = Container::getInstance()->get($request_handler);
+            $request_handler = Registry::container()->get($request_handler);
         }
-
-        assert($request_handler instanceof RequestHandlerInterface);
 
         return $request_handler->handle($request);
     }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Google;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -220,7 +220,7 @@ class ChartDistribution
                     ->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');
             })
-            ->select('p_place AS place', 'f_gedcom AS gedcom');
+            ->select(['p_place AS place', 'f_gedcom AS gedcom']);
 
         return $this->filterEventPlaces($query, $fact);
     }
@@ -246,7 +246,7 @@ class ChartDistribution
                     ->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
             })
-            ->select('p_place AS place', 'i_gedcom AS gedcom');
+            ->select(['p_place AS place', 'i_gedcom AS gedcom']);
 
         return $this->filterEventPlaces($query, $fact);
     }

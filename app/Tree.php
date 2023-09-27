@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,13 +22,10 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
 use League\Flysystem\FilesystemOperator;
 
-use function app;
 use function array_key_exists;
-use function assert;
 use function date;
 use function is_string;
 use function str_starts_with;
@@ -158,7 +155,7 @@ class Tree
     /**
      * A closure which will create a record from a database row.
      *
-     * @return Closure
+     * @return Closure(object):Tree
      */
     public static function rowMapper(): Closure
     {
@@ -378,6 +375,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -385,9 +383,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::gedcomRecordFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;
@@ -424,6 +420,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -431,9 +428,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::familyFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;
@@ -470,6 +465,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -477,9 +473,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::individualFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;
@@ -516,6 +510,7 @@ class Tree
             'xref'       => $xref,
             'old_gedcom' => '',
             'new_gedcom' => $gedcom,
+            'status'     => 'pending',
             'user_id'    => Auth::id(),
         ]);
 
@@ -523,9 +518,7 @@ class Tree
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             $record = Registry::mediaFactory()->new($xref, $gedcom, null, $this);
 
-            $pending_changes_service = app(PendingChangesService::class);
-            assert($pending_changes_service instanceof PendingChangesService);
-
+            $pending_changes_service = Registry::container()->get(PendingChangesService::class);
             $pending_changes_service->acceptRecord($record);
 
             return $record;

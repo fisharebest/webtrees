@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -123,22 +123,6 @@ class RedirectIndividualPhpTest extends TestCase
         );
 
         $this->expectException(HttpNotFoundException::class);
-
-        $handler->handle($request);
-    }
-
-    /**
-     * @return void
-     */
-    public function testMissingTreeParameter(): void
-    {
-        $tree_service = $this->createStub(TreeService::class);
-
-        $handler = new RedirectFamilyPhp($tree_service);
-
-        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['pid' => 'X123']);
-
-        $this->expectException(HttpBadRequestException::class);
 
         $handler->handle($request);
     }

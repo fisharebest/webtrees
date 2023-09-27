@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -56,7 +56,7 @@ class ReportPdfCell extends ReportBaseCell
         // Background color
         $match = [];
         // Indicates if the cell background must be painted (1) or transparent (0)
-        if ($this->fill === 1) {
+        if ($this->fill) {
             if (!empty($this->bgcolor)) {
                 // HTML color to RGB
                 if (preg_match('/#?(..)(..)(..)/', $this->bgcolor, $match)) {
@@ -67,7 +67,7 @@ class ReportPdfCell extends ReportBaseCell
                 }
             } else {
                 // If no color set then don't fill
-                $this->fill = 0;
+                $this->fill = false;
             }
         }
 
@@ -153,7 +153,7 @@ class ReportPdfCell extends ReportBaseCell
             $renderer->lastCellHeight = $renderer->tcpdf->getLastH();
         }
 
-        // Set up the url link if exists ontop of the cell
+        // Set up the url link if exists on top of the cell
         if (!empty($this->url)) {
             $renderer->tcpdf->Link($cX, $this->top, $this->width, $this->height, $this->url);
         }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,7 +50,7 @@ class CensusOfUnitedStates1890 extends CensusOfUnitedStates implements CensusInt
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnAge($this, 'Age', 'Age at nearest birthday. If under one year, give age in months'),
             new CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
-            new CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'Whether married duirng the census year (June 1, 1889, to May 31, 1890)'),
+            new CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'Whether married during the census year (June 1, 1889, to May 31, 1890)'),
             new CensusColumnNull($this, 'Chil', 'Mother of how many children, and number of these children living'),
             new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),
             new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father'),

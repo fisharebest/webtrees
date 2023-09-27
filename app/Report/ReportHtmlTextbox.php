@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -199,7 +199,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
             if ($eH === 0.0) {
                 // Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->cellHeightRatio;
-                // Calculate the cell hight with the largest font size used
+                // Calculate the cell height with the largest font size used
                 $cHT *= $renderer->largestFontHeight;
                 if ($cH < $cHT) {
                     $cH = $cHT;
@@ -216,7 +216,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
 
         unset($lw, $cHT, $fH, $w);
 
-        // Finaly, check the last cells height
+        // Finally, check the last cells height
         if ($cH < $renderer->lastCellHeight) {
             $cH = $renderer->lastCellHeight;
         }

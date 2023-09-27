@@ -9,6 +9,7 @@ use Fisharebest\Webtrees\Site;
 
 /**
  * @var array<string> $all_themes
+ * @var string        $data_folder
  * @var string        $title
  */
 
@@ -26,7 +27,7 @@ use Fisharebest\Webtrees\Site;
             I18N::translate('Data folder') ?>
         </label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?= e(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required="required">
+            <input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?= e($data_folder) ?>" maxlength="255" placeholder="data/" required="required">
             <div class="form-text">
                 <?= /* I18N: Help text for the "Data folder" site configuration setting */
                 I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet.') ?>

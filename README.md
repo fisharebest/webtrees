@@ -87,7 +87,6 @@ of revenue to support the project. Please consider these circumstances when
 making support requests and consider volunteering your own time and skills to make
 the project even stronger and better.
 
-
 ## System requirements
 
 To install **webtrees**, you need:
@@ -126,7 +125,6 @@ privacy settings first. Don't worry too much about all the other options - the
 defaults are good for most people. If you get stuck, you can get friendly help
 and advice from the [help](https://webtrees.net/forums) forum.
 
-
 ## Upgrading
 
 Upgrading **webtrees** is quick and easy. It is strongly recommended that you
@@ -154,7 +152,6 @@ then a manual upgrade should be performed.
   4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
   5. Delete the file **data/offline.txt**.
 
-
 ### Note for Macintosh users
 
 Step 4 assumes you are using a copy tool that **merges** directories rather than
@@ -164,7 +161,6 @@ your configuration, media and other directories with the empty/default ones from
 the installation. This would be very bad (but you did take a backup in step 1,
 didn't you!). Further details and recommendations for suitable tools can be found
 by searching [google.com](https://google.com).
-
 
 ## Building and developing
 
@@ -209,32 +205,6 @@ over. Follow these steps to update a GEDCOM that has already been imported:
   this may take some time. **No progress bar will show while the data is being
   copied** and should you navigate away from this page, the process is suspended.
   It will start again when you return to the Family Tree management page.
-
-
-### Gedcom file Formats
-
-Every Family History program has its own method of creating GEDCOM files, and
-differing output format options to select from. **webtrees'** import routines
-can read many different formats, but not necessarily all. If your software has
-a “UTF8” option you should always use that. However, **webtrees** has been
-tested with these alternative formats:
-
-* ANSI
-   * imports OK, but is slow due to the translation into UTF8 as part
-     of the import process.
-* MAC
-   * imports OK, but is slow due to the translation into UTF8 as part
-     of the import process.
-* DOS
-   * imports OK, but is slow due to the translation into UTF8 as part
-     of the import process.
-* ANSEL
-   * currently will not import. Gives warning *Error: cannot convert
-     GEDCOM file from ANSEL encoding to UTF-8 encoding*. Later releases
-     of **webtrees** may include the facility to translate from ANSEL to UTF8,
-     but for now a standalone utility [is available here](https://dev.webtrees.net/ansel/)
-     and should be used to convert the format to UTF-8 prior to importing.
-
 
 ## Security
 
@@ -288,7 +258,6 @@ You will have **two** data directories:
 * [path to webtrees]/data - just needs to contain config.ini.php
 * /home/username/private/data - contains everything else
 
-
 ## Backup
 
 Backups are good. Whatever problem you have, it can always be fixed from a good
@@ -303,7 +272,6 @@ To make a backup of **webtrees**, you need to make a copy of the following
     `mysqldump --host=[localhost] -u [username] -p[password] --databases [databasename] > dump_file.sql`
 
     Note that '*-p[password]*' goes together with no space in between.
-
 
 Remember that most web hosting services do NOT backup your data, and this is
 your responsibility.

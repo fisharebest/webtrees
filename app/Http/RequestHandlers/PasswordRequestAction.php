@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -61,8 +61,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
     private UserService $user_service;
 
     /**
-     * PasswordRequestForm constructor.
-     *
      * @param EmailService     $email_service
      * @param RateLimitService $rate_limit_service
      * @param UserService      $user_service

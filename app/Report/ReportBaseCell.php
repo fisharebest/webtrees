@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -47,9 +47,9 @@ class ReportBaseCell extends ReportBaseElement
     // The HTML color code to fill the background of this cell.
     public string $bgcolor;
 
-    // Indicates if the cell background must be painted (1) or transparent (0). Default value: 1.
+    // Indicates if the cell background must be painted (true) or transparent (false).
     // If no background color is set then it will not be painted
-    public int $fill;
+    public bool $fill;
 
     // Cell height DEFAULT 0 (expressed in points)
     // The starting height of this cell. If the text wraps the height will automatically be adjusted.
@@ -58,10 +58,10 @@ class ReportBaseCell extends ReportBaseElement
     /**
      * Left position in user units (X-position). Default is the current position
      *
-     * @var mixed
+     * @var float
      */
 
-    public $left;
+    public float $left;
 
     // Indicates where the current position should go after the call. Possible values are:
     // 0: to the right [DEFAULT]
@@ -86,10 +86,10 @@ class ReportBaseCell extends ReportBaseElement
     /**
      * Top position in user units (Y-position). Default is the current position
      *
-     * @var mixed
+     * @var float
      */
 
-    public $top;
+    public float $top;
 
     // URL address
     public string $url = '';
@@ -110,9 +110,9 @@ class ReportBaseCell extends ReportBaseElement
      * @param string $bgcolor Background color code
      * @param string $style   The name of the text style
      * @param int    $ln      Indicates where the current position should go after the call
-     * @param mixed  $top     Y-position
-     * @param mixed  $left    X-position
-     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0).
+     * @param float  $top     Y-position
+     * @param float  $left    X-position
+     * @param bool   $fill    Indicates if the cell background must be painted (1) or transparent (0).
      * @param int    $stretch Stretch carachter mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
@@ -126,9 +126,9 @@ class ReportBaseCell extends ReportBaseElement
         string $bgcolor,
         string $style,
         int $ln,
-        $top,
-        $left,
-        int $fill,
+        float $top,
+        float $left,
+        bool $fill,
         int $stretch,
         string $bocolor,
         string $tcolor,

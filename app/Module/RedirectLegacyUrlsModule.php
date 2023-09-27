@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,9 +50,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RedirectSourcePhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectStatisticsPhp;
 use Fisharebest\Webtrees\Http\RequestHandlers\RedirectTimeLinePhp;
 use Fisharebest\Webtrees\I18N;
-
-use function app;
-use function assert;
+use Fisharebest\Webtrees\Registry;
 
 /**
  * Class RedirectLegacyUrlsModule - rewrite URLs from phpGedView and webtrees 1.x
@@ -66,10 +64,8 @@ class RedirectLegacyUrlsModule extends AbstractModule
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router = $router_container->getMap();
+        $router_container = Registry::container()->get(RouterContainer::class);
+        $router           = $router_container->getMap();
 
         // Legacy URLs from older software.
         $router->get(RedirectAncestryPhp::class, '/ancestry.php', RedirectAncestryPhp::class);

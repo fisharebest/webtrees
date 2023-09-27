@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,28 +24,40 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_map;
+use function asset;
 use function count;
+use function current;
+use function e;
+use function implode;
 use function in_array;
+use function max;
+use function min;
+use function next;
+use function ob_get_clean;
+use function ob_start;
+use function preg_match;
 use function redirect;
+use function response;
 use function route;
+use function sort;
 use function view;
 
 /**
@@ -71,20 +83,16 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         'recursion' => self::DEFAULT_RECURSION,
     ];
 
-    private ModuleService $module_service;
-
     private TreeService $tree_service;
 
     private RelationshipService $relationship_service;
 
     /**
-     * @param ModuleService       $module_service
      * @param RelationshipService $relationship_service
      * @param TreeService         $tree_service
      */
-    public function __construct(ModuleService $module_service, RelationshipService $relationship_service, TreeService $tree_service)
+    public function __construct(RelationshipService $relationship_service, TreeService $tree_service)
     {
-        $this->module_service       = $module_service;
         $this->relationship_service = $relationship_service;
         $this->tree_service         = $tree_service;
     }
@@ -320,11 +328,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     return  Registry::familyFactory()->make($xref, $tree);
                 });
 
-            $language = $this->module_service
-                ->findByInterface(ModuleLanguageInterface::class, true)
-                ->first(fn (ModuleLanguageInterface $language): bool => $language->locale()->languageTag() === I18N::languageTag());
+            $relationship = $this->relationship_service->nameFromPath($nodes->all(), I18N::language());
 
-            echo '<h3>', I18N::translate('Relationship: %s', $this->relationship_service->nameFromPath($nodes->all(), $language)), '</h3>';
+            echo '<h3>', I18N::translate('Relationship: %s', $relationship), '</h3>';
+
             $num_paths++;
 
             // Use a table/grid for layout.
@@ -574,7 +581,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * Convert numeric values to strings
      *
-     * @return Closure
+     * @return Closure(int|string):string
      */
     private function stringMapper(): Closure
     {

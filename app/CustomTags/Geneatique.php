@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -56,7 +56,7 @@ class Geneatique implements CustomTagInterface
             'OBJE:FORM'           => new MultimediaFormat(I18N::translate('Format')),
             'OBJE:TITL'           => new DescriptiveTitle(I18N::translate('Title')),
             'INDI:NAME:_AKA'      => new NamePersonal(I18N::translate('Also known as'), []),
-            'INDI:NAME:_MARNM'    => new NamePersonal(I18N::translate('Also known as'), []),
+            'INDI:NAME:_MARNM'    => new NamePersonal(I18N::translate('Married name'), []),
 
             /*
             Pour déclarer les témoins dans les actes de naissance

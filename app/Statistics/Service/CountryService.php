@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,7 +45,7 @@ class CountryService
             /* I18N: Name of a country or state */
             'AIA' => I18N::translate('Anguilla'),
             /* I18N: Name of a country or state */
-            'ALA' => I18N::translate('Aland Islands'),
+            'ALA' => I18N::translate('Åland Islands'),
             /* I18N: Name of a country or state */
             'ALB' => I18N::translate('Albania'),
             /* I18N: Name of a country or state */
@@ -92,6 +92,7 @@ class CountryService
             /* I18N: Name of a country or state */
             'BIH' => I18N::translate('Bosnia and Herzegovina'),
             // BLM => Saint Barthélemy
+            'BLM' => I18N::translate('Saint Barthélemy'),
             /* I18N: Name of a country or state */
             'BLR' => I18N::translate('Belarus'),
             /* I18N: Name of a country or state */
@@ -125,7 +126,7 @@ class CountryService
             /* I18N: Name of a country or state */
             'CHN' => I18N::translate('China'),
             /* I18N: Name of a country or state */
-            'CIV' => I18N::translate('Cote d’Ivoire'),
+            'CIV' => I18N::translate('Côte d’Ivoire'),
             /* I18N: Name of a country or state */
             'CMR' => I18N::translate('Cameroon'),
             /* I18N: Name of a country or state */
@@ -144,7 +145,8 @@ class CountryService
             'CRI' => I18N::translate('Costa Rica'),
             /* I18N: Name of a country or state */
             'CUB' => I18N::translate('Cuba'),
-            // CUW => Curaçao
+            /* I18N: Name of a country or state */
+            'CUW' => I18N::translate('Curaçao'),
             /* I18N: Name of a country or state */
             'CXR' => I18N::translate('Christmas Island'),
             /* I18N: Name of a country or state */
@@ -414,7 +416,7 @@ class CountryService
             /* I18N: Name of a country or state */
             'QAT' => I18N::translate('Qatar'),
             /* I18N: Name of a country or state */
-            'REU' => I18N::translate('Reunion'),
+            'REU' => I18N::translate('Réunion'),
             /* I18N: Name of a country or state */
             'ROM' => I18N::translate('Romania'),
             /* I18N: Name of a country or state */
@@ -732,7 +734,7 @@ class CountryService
             'POL' => 'PL',
             'PRI' => 'PR',
             'PRK' => 'KP',
-            'PRT' => 'PO',
+            'PRT' => 'PT',
             'PRY' => 'PY',
             'PSE' => 'PS',
             'PYF' => 'PF',

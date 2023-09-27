@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -39,8 +40,6 @@ class SitePreferencesPage implements RequestHandlerInterface
     private ModuleService $module_service;
 
     /**
-     * AdminSiteController constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)
@@ -67,6 +66,7 @@ class SitePreferencesPage implements RequestHandlerInterface
 
         return $this->viewResponse('admin/site-preferences', [
             'all_themes'         => $all_themes,
+            'data_folder'        => Registry::filesystem()->dataName(),
             'max_execution_time' => $max_execution_time,
             'title'              => $title,
         ]);

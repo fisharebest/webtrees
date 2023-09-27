@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -47,8 +47,6 @@ class MessageAction implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * MessagePage constructor.
-     *
      * @param MessageService $message_service
      * @param UserService    $user_service
      */

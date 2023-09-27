@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,8 +43,6 @@ class UseLanguage implements MiddlewareInterface
     private ModuleService $module_service;
 
     /**
-     * UseTheme constructor.
-     *
      * @param ModuleService $module_service
      */
     public function __construct(ModuleService $module_service)
@@ -84,11 +82,8 @@ class UseLanguage implements MiddlewareInterface
         $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true);
 
         // Last language used
-        $language = Session::get('language');
-
-        if (is_string($language)) {
-            yield $languages->get('language-' . $language);
-        }
+        yield $languages
+            ->first(static fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === Session::get('language'));
 
         // Browser negotiation
         $locales = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)
@@ -99,7 +94,8 @@ class UseLanguage implements MiddlewareInterface
         $default = Locale::create(Site::getPreference('LANGUAGE'));
         $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
 
-        yield $languages->get('language-' . $locale->languageTag());
+        yield $languages
+            ->first(static fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === $locale->languageTag());
 
         // No languages enabled?  Use en-US
         yield new LanguageEnglishUnitedStates();

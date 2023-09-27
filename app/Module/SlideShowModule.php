@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\SourceMediaType;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -26,12 +27,10 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function array_filter;
 use function in_array;
 use function str_contains;
@@ -88,7 +87,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $request       = app(ServerRequestInterface::class);
+        $request       = Registry::container()->get(ServerRequestInterface::class);
         $default_start = (bool) $this->getBlockSetting($block_id, 'start');
         $filter_links  = $this->getBlockSetting($block_id, 'filter', self::LINK_ALL);
         $controls      = $this->getBlockSetting($block_id, 'controls', '1');
@@ -132,7 +131,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             ->where('media.m_file', '=', $tree->id())
             ->whereIn('media_file.multimedia_format', self::SUPPORTED_FORMATS)
             ->whereIn('media_file.source_media_type', $filter_types)
-            ->select('media.*')
+            ->select(['media.*'])
             ->get()
             ->shuffle()
             ->first(function (object $row) use ($filter_links, $tree): bool {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -103,7 +103,7 @@ class EncodingFactoryTest extends TestCase
         $factory = new EncodingFactory();
 
         static::assertInstanceOf(
-            ASCII::class,
+            UTF8::class,
             $factory->detect("0 HEAD\n0 TRLR")
         );
     }

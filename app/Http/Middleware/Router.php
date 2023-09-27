@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,12 +30,12 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
+use Middleland\Dispatcher;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function explode;
 use function implode;
 use function str_contains;
@@ -52,8 +52,6 @@ class Router implements MiddlewareInterface
     private TreeService $tree_service;
 
     /**
-     * Router constructor.
-     *
      * @param ModuleService   $module_service
      * @param RouterContainer $router_container
      * @param TreeService     $tree_service
@@ -88,15 +86,17 @@ class Router implements MiddlewareInterface
 
                 return Registry::responseFactory()->redirectUrl($uri, StatusCodeInterface::STATUS_PERMANENT_REDIRECT);
             }
+
+            $pretty = $request;
         } else {
             // Turn the ugly URL into a pretty one, so the router can parse it.
-            $uri     = $request->getUri()->withPath($url_route);
-            $request = $request->withUri($uri);
+            $uri    = $request->getUri()->withPath($url_route);
+            $pretty = $request->withUri($uri);
         }
 
         // Match the request to a route.
         $matcher = $this->router_container->getMatcher();
-        $route   = $matcher->match($request);
+        $route   = $matcher->match($pretty);
 
         // No route matched?
         if ($route === false) {
@@ -144,7 +144,10 @@ class Router implements MiddlewareInterface
         foreach ($route->attributes as $key => $value) {
             if ($key === 'tree') {
                 $value = $this->tree_service->all()->get($value);
-                app()->instance(Tree::class, $value);
+
+                if ($value instanceof Tree) {
+                    Registry::container()->set(Tree::class, $value);
+                }
 
                 // Missing mandatory parameter? Let the default handler take care of it.
                 if ($value === null && str_contains($route->path, '{tree}')) {
@@ -156,8 +159,10 @@ class Router implements MiddlewareInterface
         }
 
         // Bind the updated request into the container
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
-        return Webtrees::dispatch($request, $middleware);
+        $dispatcher = new Dispatcher($middleware, Registry::container());
+
+        return $dispatcher->dispatch($request);
     }
 }

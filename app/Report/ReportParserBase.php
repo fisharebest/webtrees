@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -62,7 +62,7 @@ class ReportParserBase
     {
         $this->xml_parser = xml_parser_create();
 
-        xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);
+        xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, 0);
 
         xml_set_element_handler(
             $this->xml_parser,

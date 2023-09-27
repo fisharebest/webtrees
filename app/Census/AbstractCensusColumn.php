@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,9 +41,9 @@ class AbstractCensusColumn
     /**
      * Create a column for a census
      *
-     * @param CensusInterface $census - The census to which this column forms part.
-     * @param string          $abbr   - The abbreviated on-screen name "BiC"
-     * @param string          $title  - The full column heading "Born in the county"
+     * @param CensusInterface $census The census to which this column forms part.
+     * @param string          $abbr   The abbreviated on-screen name "BiC"
+     * @param string          $title  The full column heading "Born in the county"
      */
     public function __construct(CensusInterface $census, string $abbr, string $title)
     {
@@ -174,9 +174,9 @@ class AbstractCensusColumn
     /**
      * Extract the country (last part) of a place name.
      *
-     * @param string $place - e.g. "London, England"
+     * @param string $place e.g. "London, England"
      *
-     * @return string - e.g. "England"
+     * @return string e.g. "England"
      */
     protected function lastPartOfPlace(string $place): string
     {
@@ -188,9 +188,9 @@ class AbstractCensusColumn
     /**
      * Remove the country of a place name, where it is the same as the census place
      *
-     * @param string $place - e.g. "London, England"
+     * @param string $place e.g. "London, England"
      *
-     * @return string - e.g. "London" (for census of England) and "London, England" elsewhere
+     * @return string e.g. "London" (for census of England) and "London, England" elsewhere
      */
     protected function notCountry(string $place): string
     {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,12 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function app;
-use function assert;
 
 /**
  * Trait ModuleAnalyticsTrait - default implementation of ModuleAnalyticsInterface
@@ -70,8 +68,7 @@ trait ModuleAnalyticsTrait
      */
     public function analyticsCanShow(): bool
     {
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
+        $request = Registry::container()->get(ServerRequestInterface::class);
 
         // If the browser sets the DNT header, then we won't use analytics.
         if (Validator::serverParams($request)->boolean('HTTP_DNT', false)) {

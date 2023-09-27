@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,12 +23,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function array_key_exists;
 use function array_keys;
 use function array_map;
@@ -181,7 +181,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         return $this->viewResponse('modules/statistics-chart/individuals', [
             'show_oldest_living' => Auth::check(),
-            'statistics'         => app(Statistics::class),
+            'statistics'         => Registry::container()->get(Statistics::class),
         ]);
     }
 
@@ -195,7 +195,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/families', [
-            'statistics' => app(Statistics::class),
+            'statistics' => Registry::container()->get(Statistics::class),
         ]);
     }
 
@@ -209,7 +209,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/other', [
-            'statistics' => app(Statistics::class),
+            'statistics' => Registry::container()->get(Statistics::class),
         ]);
     }
 
@@ -237,7 +237,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function postCustomChartAction(ServerRequestInterface $request): ResponseInterface
     {
-        $statistics = app(Statistics::class);
+        $statistics = Registry::container()->get(Statistics::class);
         assert($statistics instanceof Statistics);
 
         $x_axis_type = Validator::parsedBody($request)->integer('x-as');

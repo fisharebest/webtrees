@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -37,13 +38,11 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
-use function app;
 use function e;
 use function file_get_contents;
 use function file_put_contents;
@@ -97,8 +96,6 @@ class SetupWizard implements RequestHandlerInterface
     private UserService $user_service;
 
     /**
-     * SetupWizard constructor.
-     *
      * @param MigrationService   $migration_service
      * @param ModuleService      $module_service
      * @param ServerCheckService $server_check_service
@@ -134,7 +131,7 @@ class SetupWizard implements RequestHandlerInterface
         $ip_address = Validator::serverParams($request)->string('REMOTE_ADDR', '127.0.0.1');
         $request    = $request->withAttribute('client-ip', $ip_address);
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::container()->set(ServerRequestInterface::class, $request);
 
         $data = $this->userData($request);
 
@@ -422,7 +419,7 @@ class SetupWizard implements RequestHandlerInterface
         file_put_contents(Webtrees::CONFIG_FILE, $config_ini_php);
 
         // Login as the new user
-        $request = app(ServerRequestInterface::class)
+        $request = Registry::container()->get(ServerRequestInterface::class)
             ->withAttribute('base_url', $data['baseurl']);
 
         Session::start($request);

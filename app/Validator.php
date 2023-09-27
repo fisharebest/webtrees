@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -137,19 +137,19 @@ class Validator
     }
 
     /**
-     * @param array<string> $values
+     * @param array<int|string,int|string> $values
      *
      * @return self
      */
     public function isInArray(array $values): self
     {
-        $this->rules[] = static fn (/*int|string|null*/ $value)/*: int|string|null*/ => $value !== null && in_array($value, $values, true) ? $value : null;
+        $this->rules[] = static fn (int|string|null $value): int|string|null => in_array($value, $values, true) ? $value : null;
 
         return $this;
     }
 
     /**
-     * @param array<string> $values
+     * @param array<int|string,int|string> $values
      *
      * @return self
      */

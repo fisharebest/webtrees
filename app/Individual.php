@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,6 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 use function array_key_exists;
@@ -55,7 +54,7 @@ class Individual extends GedcomRecord
     /**
      * A closure which will compare individuals by birth date.
      *
-     * @return Closure
+     * @return Closure(Individual,Individual):int
      */
     public static function birthDateComparator(): Closure
     {
@@ -67,7 +66,7 @@ class Individual extends GedcomRecord
     /**
      * A closure which will compare individuals by death date.
      *
-     * @return Closure
+     * @return Closure(Individual,Individual):int
      */
     public static function deathDateComparator(): Closure
     {
@@ -477,6 +476,14 @@ class Individual extends GedcomRecord
         // Use minimum and maximum dates - to agree with the age calculations.
         $birth_year = $this->getBirthDate()->minimumDate()->format('%Y');
         $death_year = $this->getDeathDate()->maximumDate()->format('%Y');
+
+        if ($birth_year === '') {
+            $birth_year = I18N::translate('…');
+        }
+
+        if ($death_year === '' && $this->isDead()) {
+            $death_year = I18N::translate('…');
+        }
 
         /* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */
         return I18N::translate(

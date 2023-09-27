@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,9 +43,7 @@ class CacheFactory implements CacheFactoryInterface
 
     private FilesystemAdapter $filesystem_adapter;
 
-    /**
-     * CacheFactory constructor.
-     */
+    /**/
     public function __construct()
     {
         $this->array_adapter      = new ArrayAdapter(0, false);

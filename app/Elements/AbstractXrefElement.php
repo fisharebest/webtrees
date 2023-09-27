@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -57,13 +58,13 @@ class AbstractXrefElement extends AbstractElement
     /**
      * Display the value of this type of element - convert XREFs to links.
      *
-     * @param string $value
-     * @param Tree   $tree
-     * @param mixed  $factory We can type-hint this from PHP 7.4
+     * @param string                       $value
+     * @param Tree                         $tree
+     * @param GedcomRecordFactoryInterface $factory
      *
      * @return string
      */
-    protected function valueXrefLink(string $value, Tree $tree, $factory): string
+    protected function valueXrefLink(string $value, Tree $tree, GedcomRecordFactoryInterface $factory): string
     {
         if ($value === '@VOID@') {
             // I18N: The record was not recorded in this GEDCOM file.

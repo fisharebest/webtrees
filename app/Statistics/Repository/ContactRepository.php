@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,14 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function app;
-use function assert;
 
 /**
  * A repository providing methods for contact related statistics.
@@ -56,8 +54,7 @@ class ContactRepository implements ContactRepositoryInterface
         $user    = $this->user_service->find($user_id);
 
         if ($user instanceof User) {
-            $request = app(ServerRequestInterface::class);
-            assert($request instanceof ServerRequestInterface);
+            $request = Registry::container()->get(ServerRequestInterface::class);
 
             return $this->user_service->contactLink($user, $request);
         }
@@ -74,8 +71,7 @@ class ContactRepository implements ContactRepositoryInterface
         $user    = $this->user_service->find($user_id);
 
         if ($user instanceof User) {
-            $request = app(ServerRequestInterface::class);
-            assert($request instanceof ServerRequestInterface);
+            $request = Registry::container()->get(ServerRequestInterface::class);
 
             return $this->user_service->contactLink($user, $request);
         }

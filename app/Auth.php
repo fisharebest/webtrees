@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
-use function assert;
 use function is_int;
 
 /**
@@ -171,8 +170,7 @@ class Auth
      */
     public static function user(): UserInterface
     {
-        $user_service = app(UserService::class);
-        assert($user_service instanceof UserService);
+        $user_service = Registry::container()->get(UserService::class);
 
         return $user_service->find(self::id()) ?? new GuestUser();
     }
@@ -201,8 +199,10 @@ class Auth
     }
 
     /**
+     * @template T of ModuleInterface
+     *
      * @param ModuleInterface $module
-     * @param string          $interface
+     * @param class-string<T> $interface
      * @param Tree            $tree
      * @param UserInterface   $user
      *

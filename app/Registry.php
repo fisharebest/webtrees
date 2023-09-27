@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\CalendarDateFactoryInterface;
+use Fisharebest\Webtrees\Contracts\ContainerInterface;
 use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
 use Fisharebest\Webtrees\Contracts\EncodingFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
@@ -55,6 +56,8 @@ class Registry
     private static CacheFactoryInterface $cache_factory;
 
     private static CalendarDateFactoryInterface $calendar_date_factory;
+
+    private static ContainerInterface $container;
 
     private static ElementFactoryInterface $element_factory;
 
@@ -136,6 +139,22 @@ class Registry
         }
 
         return self::$calendar_date_factory;
+    }
+
+    /**
+     * Store or retrieve a PSR-11 container.
+     *
+     * @param ContainerInterface|null $container
+     *
+     * @return ContainerInterface
+     */
+    public static function container(ContainerInterface $container = null): ContainerInterface
+    {
+        if ($container instanceof ContainerInterface) {
+            self::$container = $container;
+        }
+
+        return self::$container;
     }
 
     /**

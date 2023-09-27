@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,15 +20,14 @@
 @import "_blocks.css";
 @import "_charts.css";
 @import "_colorbox.css";
-@import "_leaflet.css";
 @import "_lists.css";
 @import "_markdown.css";
+@import "_maps.css";
 @import "_mime-type-icons.css";
 @import "_on-screen-keyboard.css";
 @import "_pages.css";
 @import "_sortable.css";
 @import "_tab-album.css";
-@import "_tab-places.css";
 @import "_tab-relatives.css";
 
 /* Some icons need to be reversed on right-to-left pages */

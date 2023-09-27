@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,11 +21,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 
-use function app;
-use function assert;
 use function view;
 
 /**
@@ -69,10 +68,8 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $theme = app(ModuleThemeInterface::class);
-        assert($theme instanceof ModuleThemeInterface);
-
-        $menu = $theme->menuThemes();
+        $theme = Registry::container()->get(ModuleThemeInterface::class);
+        $menu  = $theme->menuThemes();
 
         if ($menu instanceof Menu) {
             $content = '<ul class="nav text-justify" role="menu">' . view('components/menu-item', ['menu' => $menu]) . '</ul>';

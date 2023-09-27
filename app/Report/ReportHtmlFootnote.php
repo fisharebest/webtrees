@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -78,7 +78,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      * Calculates the Footnotes height
      *
      * @param HtmlRenderer $renderer
-     * @param float        $cellWidth The width of the cell to use it for text wraping
+     * @param float        $cellWidth The width of the cell to use it for text wrapping
      *
      * @return float     Footnote height in points
      */
@@ -134,11 +134,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote
                 $newtext            = '';
                 $wrapWidthRemaining = $this->wrapWidthRemaining;
                 $lines              = explode("\n", $this->numText);
-                // Go throught the text line by line
+                // Go through the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
                     $lw = $renderer->getStringWidth($line);
-                    // If the line has to be wraped
+                    // If the line has to be wrapped
                     if ($lw > $wrapWidthRemaining) {
                         $words    = explode(' ', $line);
                         $addspace = count($words);

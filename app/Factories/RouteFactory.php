@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,13 +24,12 @@ use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function array_filter;
 use function array_map;
-use function assert;
 use function is_bool;
 use function parse_url;
 use function strlen;
@@ -54,16 +53,12 @@ class RouteFactory implements RouteFactoryInterface
      */
     public function route(string $route_name, array $parameters = []): string
     {
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
-
+        $request  = Registry::container()->get(ServerRequestInterface::class);
         $base_url = Validator::attributes($request)->string('base_url');
-
-        $route = $this->routeMap()->getRoute($route_name);
+        $route    = $this->routeMap()->getRoute($route_name);
 
         // Generate the URL.
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
+        $router_container = Registry::container()->get(RouterContainer::class);
 
         // webtrees uses http_build_query() to generate URLs - which maps false onto "0".
         // Aura uses rawurlencode(), which maps false onto "" - which does not work as an aura URL parameter.
@@ -98,8 +93,7 @@ class RouteFactory implements RouteFactoryInterface
      */
     public function routeMap(): Map
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
+        $router_container = Registry::container()->get(RouterContainer::class);
 
         return $router_container->getMap();
     }

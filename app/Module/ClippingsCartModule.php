@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,7 +55,6 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function app;
 use function array_filter;
 use function array_keys;
 use function array_map;
@@ -113,8 +112,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     private LinkedRecordService $linked_record_service;
 
     /**
-     * ClippingsCartModule constructor.
-     *
      * @param GedcomExportService $gedcom_export_service
      * @param LinkedRecordService $linked_record_service
      */
@@ -156,14 +153,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
-
-        $route = Validator::attributes($request)->route();
-        $cart  = Session::get('cart');
-        $cart  = is_array($cart) ? $cart : [];
-        $count = count($cart[$tree->name()] ?? []);
-        $badge = view('components/badge', ['count' => $count]);
+        $request = Registry::container()->get(ServerRequestInterface::class);
+        $route   = Validator::attributes($request)->route();
+        $cart    = Session::get('cart');
+        $cart    = is_array($cart) ? $cart : [];
+        $count   = count($cart[$tree->name()] ?? []);
+        $badge   = view('components/badge', ['count' => $count]);
 
         $submenus = [
             new Menu($this->title() . ' ' . $badge, route('module', [

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,19 +17,28 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\TestCase;
+use Illuminate\Database\Capsule\Manager;
 
 /**
- * Test harness for the class PhpEnvironment
- *
- * @covers Fisharebest\Webtrees\Http\Middleware\PhpEnvironment
+ * Database abstraction
  */
-class PhpEnvironmentTest extends TestCase
+class DB extends Manager
 {
-    public function testClass(): void
+    /**
+     * @internal
+     */
+    public static function caseInsensitiveLikeOperator(): string
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\PhpEnvironment::class));
+        if (DB::connection()->getDriverName() === 'pgsql') {
+            return 'ILIKE';
+        }
+
+        if (DB::connection()->getDriverName() === 'sqlsrv') {
+            return 'COLLATE SQL_UTF8_General_CI_AI LIKE';
+        }
+
+        return 'LIKE';
     }
 }

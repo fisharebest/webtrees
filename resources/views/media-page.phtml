@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -12,14 +13,14 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection             $clipboard_facts
- * @var Collection<Family>     $linked_families
- * @var Collection<Individual> $linked_individuals
- * @var Collection<Location>   $linked_locations
- * @var Collection<Note>       $linked_notes
- * @var Collection<Source>     $linked_sources
- * @var Media                  $record
- * @var Tree                   $tree
+ * @var Collection<int,Fact>       $clipboard_facts
+ * @var Collection<int,Family>     $linked_families
+ * @var Collection<int,Individual> $linked_individuals
+ * @var Collection<int,Location>   $linked_locations
+ * @var Collection<int,Note>       $linked_notes
+ * @var Collection<int,Source>     $linked_sources
+ * @var Media                      $record
+ * @var Tree                       $tree
  */
 
 ?>

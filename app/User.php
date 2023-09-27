@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Illuminate\Database\Capsule\Manager as DB;
 
 use function is_string;
 
@@ -42,8 +41,6 @@ class User implements UserInterface
     private array $preferences;
 
     /**
-     * User constructor.
-     *
      * @param int    $user_id
      * @param string $user_name
      * @param string $real_name
@@ -251,7 +248,7 @@ class User implements UserInterface
     /**
      * A closure which will create an object from a database row.
      *
-     * @return Closure
+     * @return Closure(object):User
      */
     public static function rowMapper(): Closure
     {

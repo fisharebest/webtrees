@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF16LE;
 use Fisharebest\Webtrees\Encodings\UTF8;
@@ -32,7 +33,6 @@ use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
@@ -94,14 +94,14 @@ class GedcomExportService
     }
 
     /**
-     * @param Tree            $tree         - Export data from this tree
-     * @param bool            $sort_by_xref - Write GEDCOM records in XREF order
-     * @param string          $encoding     - Convert from UTF-8 to other encoding
-     * @param string          $privacy      - Filter records by role
-     * @param string          $line_endings
-     * @param string          $filename     - Name of download file, without an extension
-     * @param string          $format       - One of: gedcom, zip, zipmedia, gedzip
-     * @param Collection|null $records
+     * @param Tree                        $tree         Export data from this tree
+     * @param bool                        $sort_by_xref Write GEDCOM records in XREF order
+     * @param string                      $encoding     Convert from UTF-8 to other encoding
+     * @param string                      $privacy      Filter records by role
+     * @param string                      $line_endings
+     * @param string                      $filename     Name of download file, without an extension
+     * @param string                      $format       One of: gedcom, zip, zipmedia, gedzip
+     * @param Collection<int,string|object|GedcomRecord>|null $records
      *
      * @return ResponseInterface
      */
@@ -165,14 +165,14 @@ class GedcomExportService
     /**
      * Write GEDCOM data to a stream.
      *
-     * @param Tree                        $tree           - Export data from this tree
-     * @param bool                        $sort_by_xref   - Write GEDCOM records in XREF order
-     * @param string                      $encoding       - Convert from UTF-8 to other encoding
-     * @param int                         $access_level   - Apply privacy filtering
-     * @param string                      $line_endings   - CRLF or LF
-     * @param Collection<int,string>|null $records        - Just export these records
-     * @param FilesystemOperator|null     $zip_filesystem - Write media files to this filesystem
-     * @param string|null                 $media_path     - Location within the zip filesystem
+     * @param Tree                                            $tree           Export data from this tree
+     * @param bool                                            $sort_by_xref   Write GEDCOM records in XREF order
+     * @param string                                          $encoding       Convert from UTF-8 to other encoding
+     * @param int                                             $access_level   Apply privacy filtering
+     * @param string                                          $line_endings   CRLF or LF
+     * @param Collection<int,string|object|GedcomRecord>|null $records        Just export these records
+     * @param FilesystemOperator|null                         $zip_filesystem Write media files to this filesystem
+     * @param string|null                                     $media_path     Location within the zip filesystem
      *
      * @return resource
      */
@@ -320,13 +320,16 @@ class GedcomExportService
         // Preserve some values from the original header
         $header = Registry::headerFactory()->make('HEAD', $tree) ?? Registry::headerFactory()->new('HEAD', '0 HEAD', null, $tree);
 
-        foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE']) as $fact) {
-            $gedcom .= "\n" . $fact->gedcom();
-        }
-
-        if ($include_sub) {
-            foreach ($header->facts(['SUBM', 'SUBN']) as $fact) {
+        // There should always be a header record.
+        if ($header instanceof Header) {
+            foreach ($header->facts(['COPR', 'LANG', 'PLAC', 'NOTE']) as $fact) {
                 $gedcom .= "\n" . $fact->gedcom();
+            }
+
+            if ($include_sub) {
+                foreach ($header->facts(['SUBM', 'SUBN']) as $fact) {
+                    $gedcom .= "\n" . $fact->gedcom();
+                }
             }
         }
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
@@ -34,10 +35,10 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
-use function app;
 use function dirname;
 use function error_get_last;
 use function ini_get;
+use function nl2br;
 use function ob_end_clean;
 use function ob_get_level;
 use function register_shutdown_function;
@@ -58,8 +59,6 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
     private TreeService $tree_service;
 
     /**
-     * HandleExceptions constructor.
-     *
      * @param TreeService $tree_service
      */
     public function __construct(TreeService $tree_service)
@@ -90,16 +89,16 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             return $handler->handle($request);
         } catch (HttpException $exception) {
             // The router added the tree attribute to the request, and we need it for the error response.
-            if (app()->has(ServerRequestInterface::class)) {
-                $request = app(ServerRequestInterface::class);
+            if (Registry::container()->has(ServerRequestInterface::class)) {
+                $request = Registry::container()->get(ServerRequestInterface::class);
             } else {
-                app()->instance(ServerRequestInterface::class, $request);
+                Registry::container()->set(ServerRequestInterface::class, $request);
             }
 
             return $this->httpExceptionResponse($request, $exception);
         } catch (FilesystemException $exception) {
             // The router added the tree attribute to the request, and we need it for the error response.
-            $request = app(ServerRequestInterface::class) ?? $request;
+            $request = Registry::container()->get(ServerRequestInterface::class) ?? $request;
 
             return $this->thirdPartyExceptionResponse($request, $exception);
         } catch (Throwable $exception) {
@@ -110,8 +109,8 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
 
             // The Router middleware may have added a tree attribute to the request.
             // This might be usable in the error page.
-            if (app()->has(ServerRequestInterface::class)) {
-                $request = app(ServerRequestInterface::class) ?? $request;
+            if (Registry::container()->has(ServerRequestInterface::class)) {
+                $request = Registry::container()->get(ServerRequestInterface::class);
             }
 
             // Show the exception in a standard webtrees page (if we can).
@@ -140,7 +139,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             }
 
             // Show a stack dump.
-            return response((string) $exception, StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+            return response(nl2br((string) $exception), StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
         }
     }
 

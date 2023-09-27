@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
@@ -65,10 +66,8 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        /** @var Statistics $statistics */
-        $statistics = app(Statistics::class);
-
-        $content = $statistics->usersLoggedInList();
+        $statistics = Registry::container()->get(Statistics::class);
+        $content    = $statistics->usersLoggedInList();
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [

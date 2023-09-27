@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -218,7 +218,7 @@ class I18N
      */
     public static function activeLocales(): array
     {
-        $locales = app(ModuleService::class)
+        $locales = Registry::container()->get(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, false, true)
             ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
                 return $module->locale();
@@ -295,7 +295,7 @@ class I18N
 
         // Add translations from custom modules (but not during setup, as we have no database/modules)
         if (!$setup) {
-            $module_service = app(ModuleService::class);
+            $module_service = Registry::container()->get(ModuleService::class);
 
             $translations = $module_service
                 ->findByInterface(ModuleCustomInterface::class)
@@ -546,7 +546,7 @@ class I18N
     /**
      * A closure which will compare strings using local collation rules.
      *
-     * @return Closure
+     * @return Closure(string,string):int
      */
     public static function comparator(): Closure
     {

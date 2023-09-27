@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -139,9 +139,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record);
 
-        $fact = $record->facts()
-            ->filter(fn (Fact $fact): bool => $fact->id() === $fact_id)
-            ->first();
+        $fact = $record->facts()->first(fn (Fact $fact): bool => $fact->id() === $fact_id);
 
         if ($fact instanceof Fact) {
             $date             = $fact->date()->minimumDate()->format('%Y%m%d');

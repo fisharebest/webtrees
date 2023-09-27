@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,13 +22,13 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -153,7 +153,7 @@ class UserService
     /**
      * Callback to sort users by their last-login (or registration) time.
      *
-     * @return Closure
+     * @return Closure(UserInterface,UserInterface):int
      */
     public function sortByLastLogin(): Closure
     {
@@ -172,7 +172,7 @@ class UserService
      *
      * @param int $timestamp
      *
-     * @return Closure
+     * @return Closure(UserInterface):bool
      */
     public function filterInactive(int $timestamp): Closure
     {
@@ -413,6 +413,6 @@ class UserService
             ]);
         }
 
-        return '<a href="' . e($url) . '" dir="auto">' . e($contact_user->realName()) . '</a>';
+        return '<a href="' . e($url) . '" dir="auto" rel="nofollow">' . e($contact_user->realName()) . '</a>';
     }
 }

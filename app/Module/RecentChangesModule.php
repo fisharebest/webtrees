@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -28,7 +29,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -67,8 +67,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     private UserService $user_service;
 
     /**
-     * RecentChangesModule constructor.
-     *
      * @param UserService $user_service
      */
     public function __construct(UserService $user_service)
@@ -309,7 +307,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->where('new_gedcom', '<>', '')
             ->where('change_time', '>', Registry::timestampFactory()->now()->subtractDays($days)->toDateTimeString())
             ->groupBy(['xref'])
-            ->select(new Expression('MAX(change_id) AS recent_change_id'));
+            ->select([new Expression('MAX(change_id) AS recent_change_id')]);
 
         $query = DB::table('change')
             ->joinSub($subquery, 'recent', 'recent_change_id', '=', 'change_id')

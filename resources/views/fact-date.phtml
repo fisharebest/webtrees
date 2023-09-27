@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\AbstractEventElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -19,26 +20,24 @@ use Fisharebest\Webtrees\Registry;
  * @var bool         $time
  */
 
-$element_factory = Registry::elementFactory();
-
 $factrec = $fact->gedcom();
 $html    = '';
 
 // Recorded age
 if (preg_match('/\n2 AGE (.+)/', $factrec, $match) === 1) {
-    $fact_age = $element_factory->make($fact->tag() . ':AGE')->value($match[1], $record->tree());
+    $fact_age = Registry::elementFactory()->make($fact->tag() . ':AGE')->value($match[1], $record->tree());
 } else {
     $fact_age = '';
 }
 
 if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match) === 1) {
-    $husb_age = $element_factory->make($fact->tag() . ':HUSB:AGE')->value($match[1], $record->tree());
+    $husb_age = Registry::elementFactory()->make($fact->tag() . ':HUSB:AGE')->value($match[1], $record->tree());
 } else {
     $husb_age = '';
 }
 
 if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match) === 1) {
-    $wife_age = $element_factory->make($fact->tag() . ':WIFE:AGE')->value($match[1], $record->tree());
+    $wife_age = Registry::elementFactory()->make($fact->tag() . ':WIFE:AGE')->value($match[1], $record->tree());
 } else {
     $wife_age = '';
 }
@@ -64,7 +63,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
             $html .= view('fact-parents-age', ['individual' => $record, 'birth_date' => $date]);
         }
 
-        if ($tag !== 'BIRT' && $tag !== 'CHAN' && $tag !== 'NO' && $tag !== '_TODO') {
+        if ($tag !== 'BIRT' && Registry::elementFactory()->make($fact->tag()) instanceof AbstractEventElement) {
             // age at event
             $birth_date = $record->getBirthDate();
             // Can't use getDeathDate(), as this also gives BURI/CREM events, which

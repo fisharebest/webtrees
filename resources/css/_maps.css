@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -13,21 +13,45 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+ :root {
+    --wt-map-height: 70vh;
+ }
+
 /*
- * Close relatives tab
- *
- * wt-tabs-individual
- * +--- wt-tab-places
+ * Formatting for LeafletJS based maps.
  */
-.wt-places-tab-wrapper {
-    height: 70vh
+
+.leaflet-control-layers-selector {
+    margin-right: 2px;
 }
 
-.wt-places-tab-map {
-    height: 100%
+/* Default is 12px - a bit too small */
+.leaflet-container {
+    font-size: 0.8rem;
 }
 
-.wt-places-tab-sidebar {
+/* No way to target parents-only... */
+.leaflet-layerstree-header-name {
+    font-weight: bold;
+}
+
+.leaflet-layerstree-node .leaflet-layerstree-node .leaflet-layerstree-header-name {
+    font-weight: normal;
+}
+
+.wt-map {
+    height: var(--wt-map-height);
+}
+
+:fullscreen .wt-map {
     height: 100%;
+}
+
+.wt-map-sidebar {
+    height: var(--wt-map-height);
     overflow-y: auto;
+}
+
+:fullscreen .wt-map-sidebar {
+    height: 100%;
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -72,7 +72,7 @@ abstract class AbstractRenderer
     /** @var float Width of page format in points */
     public float $page_width = 0.0;
 
-    /** @var array<array<string,string>> An array of the Styles elements found in the document */
+    /** @var array<array{'name': string, 'font': string, 'style': string, 'size': float}> Styles elements found in the document */
     public array $styles = [];
 
     /** @var string The default Report font name */
@@ -187,9 +187,9 @@ abstract class AbstractRenderer
      * @param string $bgcolor Background color code
      * @param string $style   The name of the text style
      * @param int    $ln      Indicates where the current position should go after the call
-     * @param mixed  $top     Y-position
-     * @param mixed  $left    X-position
-     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+     * @param float  $top     Y-position
+     * @param float  $left    X-position
+     * @param bool   $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
      * @param int    $stretch Stretch character mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
@@ -205,9 +205,9 @@ abstract class AbstractRenderer
         string $bgcolor,
         string $style,
         int $ln,
-        $top,
-        $left,
-        int $fill,
+        float $top,
+        float $left,
+        bool $fill,
         int $stretch,
         string $bocolor,
         string $tcolor,
@@ -375,7 +375,7 @@ abstract class AbstractRenderer
     /**
      * Add Style to Styles array
      *
-     * @param array<string> $style
+     * @param array{'name': string, 'font': string, 'style': string, 'size': float} $style
      *
      * @return void
      */
@@ -389,7 +389,7 @@ abstract class AbstractRenderer
      *
      * @param string $s Style name
      *
-     * @return array<string>
+     * @return array{'name': string, 'font': string, 'style': string, 'size': float}
      */
     public function getStyle(string $s): array
     {

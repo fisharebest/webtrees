@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Elements\Creation;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\DateValueExact;
 use Fisharebest\Webtrees\Elements\DateValueToday;
+use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\ExternalIdentifier;
 use Fisharebest\Webtrees\Elements\ExternalIdentifierType;
@@ -99,6 +100,8 @@ class Gedcom7 implements CustomTagInterface
             'FAM:REFN:TYPE'              => new UserReferenceType(I18N::translate('Type')),
             'FAM:SNOTE'                  => new XrefSharedNote(I18N::translate('Shared note')),
             'FAM:UID'                    => new Uid(I18N::translate('Unique identifier')),
+            'HEAD:SCHMA'                 => new EmptyElement(I18N::translate('Custom GEDCOM tags'), ['TAG' => '0:M']),
+            'HEAD:SCHMA:TAG'             => new CustomElement(I18N::translate('GEDCOM tag')),
             'INDI:*:ASSO'                => new XrefAssociate(I18N::translate('Associate')),
             'INDI:*:ASSO:PHRASE'         => new CustomElement(I18N::translate('Phrase')),
             'INDI:*:ASSO:ROLE'           => new RoleInEvent(I18N::translate('Role')),

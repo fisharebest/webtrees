@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -32,6 +33,10 @@ use Psr\Http\Message\ServerRequestInterface;
 class FamilyListModule extends IndividualListModule
 {
     protected const ROUTE_URL = '/tree/{tree}/family-list';
+
+    // The individual list and family list use the same code/logic.
+    // They just display different lists.
+    protected bool $families = true;
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -63,37 +68,5 @@ class FamilyListModule extends IndividualListModule
     public function listMenuClass(): string
     {
         return 'menu-list-fam';
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function handle(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = Validator::attributes($request)->tree();
-        $user = Validator::attributes($request)->user();
-
-        Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
-
-        $surname_param = Validator::queryParams($request)->string('surname', '');
-        $surname       = I18N::strtoupper(I18N::language()->normalize($surname_param));
-
-        $params = [
-            'alpha'               => Validator::queryParams($request)->string('alpha', ''),
-            'falpha'              => Validator::queryParams($request)->string('falpha', ''),
-            'show'                => Validator::queryParams($request)->string('show', 'surn'),
-            'show_all'            => Validator::queryParams($request)->string('show_all', 'no'),
-            'show_all_firstnames' => Validator::queryParams($request)->string('show_all_firstnames', 'no'),
-            'show_marnm'          => Validator::queryParams($request)->string('show_marnm', ''),
-            'surname'             => $surname,
-        ];
-
-        if ($surname_param !== $surname) {
-            return Registry::responseFactory()->redirectUrl($this->listUrl($tree, $params));
-        }
-
-        return $this->createResponse($tree, $user, $params, true);
     }
 }

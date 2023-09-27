@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -127,30 +127,40 @@ class BingMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 'default'     => false,
                 'imagerySet'  => 'Aerial',
                 'label'       => 'Aerial',
+                'maxZoom'     => 15,
+                'minZoom'     => 2,
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => false,
                 'imagerySet'  => 'CanvasDark',
                 'label'       => 'Dark',
+                'maxZoom'     => 15,
+                'minZoom'     => 2,
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => false,
                 'imagerySet'  => 'CanvasGray',
                 'label'       => 'Grey',
+                'maxZoom'     => 15,
+                'minZoom'     => 2,
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => true,
                 'imagerySet'  => 'CanvasLight',
                 'label'       => 'Light',
+                'maxZoom'     => 15,
+                'minZoom'     => 2,
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => false,
                 'imagerySet'  => 'Road',
                 'label'       => 'Road',
+                'maxZoom'     => 15,
+                'minZoom'     => 2,
             ],
         ];
     }

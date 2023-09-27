@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -86,8 +86,6 @@ class NamePersonal extends AbstractElement
     ];
 
     /**
-     * AbstractGedcomElement constructor.
-     *
      * @param string             $label
      * @param array<string>|null $subtags
      */
@@ -148,7 +146,8 @@ class NamePersonal extends AbstractElement
         return
             '<div class="input-group">' .
             view('edit/input-addon-edit-name', ['id' => $id]) .
-            '<input class="form-control" style="background-color:#e9ecef" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" readonly="readonly" />' .
+            '<input class="form-control" type="text" id="' . e($id) . '-disabled" name="' . e($name) . '" value="' . e($value) . '" readonly="readonly" disabled="disabled" />' .
+            '<input class="form-control d-none" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
             view('edit/input-addon-keyboard', ['id' => $id]) .
             view('edit/input-addon-help', ['topic' => 'NAME']) .
             '</div>';

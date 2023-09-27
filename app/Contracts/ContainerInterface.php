@@ -1,6 +1,8 @@
+<?php
+
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -10,27 +12,19 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/*
- * Formatting for LeafletJS based maps.
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Contracts;
+
+use Psr\Container\ContainerInterface as Psr11ContainerInterface;
+
+/**
+ * Extend the PSR-11 container interface with a method to add items.
  */
-
-.leaflet-control-layers-selector {
-    margin-right: 2px;
-}
-
-/* Default is 12px - a bit too small */
-.leaflet-container {
-    font-size: 0.8rem;
-}
-
-/* No way to target parents-only... */
-.leaflet-layerstree-header-name {
-    font-weight: bold;
-}
-
-.leaflet-layerstree-node .leaflet-layerstree-node .leaflet-layerstree-header-name {
-    font-weight: normal;
+interface ContainerInterface extends Psr11ContainerInterface
+{
+    public function set(string $id, object $object): static;
 }

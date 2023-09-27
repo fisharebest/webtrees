@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -163,7 +163,7 @@ class GedcomEditServiceTest extends TestCase
      * Data provider for new family facts tests
      * @return array<array<string|array<string>>>
      */
-    public function newFamilyFactsData(): array
+    public static function newFamilyFactsData(): array
     {
         return [
             ['', []],
@@ -174,10 +174,10 @@ class GedcomEditServiceTest extends TestCase
     }
 
     /**
-     * Data provider for new inidvidual facts tests
+     * Data provider for new individual facts tests
      * @return array<array<string|array<string>>>
      */
-    public function newIndividualFactsData(): array
+    public static function newIndividualFactsData(): array
     {
         return [
             ['', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME']],

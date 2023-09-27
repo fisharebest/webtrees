@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,6 +27,8 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 use League\Flysystem\PathPrefixing\PathPrefixedAdapter;
 
 use function realpath;
+
+use const DIRECTORY_SEPARATOR;
 
 /**
  * Make a filesystem.
@@ -60,7 +62,7 @@ class FilesystemFactory implements FilesystemFactoryInterface
      */
     public function dataName(): string
     {
-        return Site::getPreference('INDEX_DIRECTORY');
+        return realpath(Site::getPreference('INDEX_DIRECTORY')) . DIRECTORY_SEPARATOR;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,17 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Localization\Locale\LocaleEu;
+use Fisharebest\Localization\Locale\LocaleInterface;
 
 /**
- * Test harness for the class OrdnanceSurveyHistoricMaps
- *
- * @covers Fisharebest\Webtrees\Module\OrdnanceSurveyHistoricMaps
+ * Class LanguageBasque.
  */
-class OrdnanceSurveyHistoricMapsTest extends TestCase
+class LanguageBasque extends AbstractModule implements ModuleLanguageInterface
 {
-    public function testClass(): void
+    use ModuleLanguageTrait;
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\OrdnanceSurveyHistoricMaps::class));
+        return false;
+    }
+
+    /**
+     * @return LocaleInterface
+     */
+    public function locale(): LocaleInterface
+    {
+        return new LocaleEu();
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,13 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -50,7 +50,6 @@ use function pathinfo;
 use function sha1;
 use function sort;
 use function str_contains;
-use function strlen;
 use function strtoupper;
 use function strtr;
 use function substr;
@@ -312,15 +311,15 @@ class MediaFileService
             //->where('multimedia_file_refn', 'LIKE', '%/%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%')
-            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
-            ->orderBy(new Expression('setting_value || multimedia_file_refn'));
+            ->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');
 
         if (!$subfolders) {
             $query->where(new Expression('setting_value || multimedia_file_refn'), 'NOT LIKE', $media_folder . '%/%');
         }
 
-        return $query->pluck('path');
+        return $query
+            ->orderBy(new Expression('setting_value || multimedia_file_refn'))
+            ->pluck(new Expression('setting_value || multimedia_file_refn AS path'));
     }
 
     /**
@@ -361,8 +360,7 @@ class MediaFileService
             })
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->select(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS path"))
-            ->pluck('path')
+            ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS path"))
             ->map(static function (string $path): string {
                 return dirname($path) . '/';
             });

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
@@ -74,16 +73,16 @@ class IndividualFamiliesReportModuleTest extends TestCase
      */
     public function testReportRunsWithoutError(): void
     {
-        $module_service = new ModuleService();
-
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree   = $this->importTree('demo.ged');
-        $module = $module_service->findByInterface(IndividualFamiliesReportModule::class)->first();
-        $xml    = 'resources/' . $module->xmlFilename();
-        $vars   = [
+        $module = new IndividualFamiliesReportModule();
+        $module->setName('individual_ext_report');
+
+        $xml  = 'resources/' . $module->xmlFilename();
+        $vars = [
             'pid'       => ['id' => 'X1030'],
             'relatives' => ['id' => 'child-families'],
             'maxgen'    => ['id' => '4'],

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -113,7 +113,7 @@ class CensusOfUnitedStates1890Test extends TestCase
         self::assertSame('Sex', $columns[5]->title());
         self::assertSame('Age at nearest birthday. If under one year, give age in months', $columns[6]->title());
         self::assertSame('Whether single, married, widowed, or divorced', $columns[7]->title());
-        self::assertSame('Whether married duirng the census year (June 1, 1889, to May 31, 1890)', $columns[8]->title());
+        self::assertSame('Whether married during the census year (June 1, 1889, to May 31, 1890)', $columns[8]->title());
         self::assertSame('Mother of how many children, and number of these children living', $columns[9]->title());
         self::assertSame('Place of birth', $columns[10]->title());
         self::assertSame('Place of birth of father', $columns[11]->title());

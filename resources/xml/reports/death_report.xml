@@ -60,6 +60,12 @@
 				<TextBox width="200">
 					<Text style="text"><GetPersonName id="" />
 						<if condition="$adlist=='_MARNM'">
+							<RepeatTag tag="NAME">
+								<if condition="@NAME:TYPE=='married'">
+									<br /><GedcomValue tag="NAME" />
+								</if>
+							</RepeatTag>
+
 							<RepeatTag tag="NAME:_MARNM">
 								<br /><GedcomValue tag="_MARNM" />
 							</RepeatTag>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-use function app;
 use function is_string;
 use function json_encode;
 use function view;
@@ -147,8 +146,8 @@ class ResponseFactory implements ResponseFactoryInterface
         // Make the view's data available to the layout.
         $layout_data = [
             'content' => $content,
-            'request' => app(ServerRequestInterface::class),
-            'theme'   => app(ModuleThemeInterface::class),
+            'request' => Registry::container()->get(ServerRequestInterface::class),
+            'theme'   => Registry::container()->get(ModuleThemeInterface::class),
             'title'   => $view_data['title'] ?? Webtrees::NAME,
         ];
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,13 +58,13 @@ class TempleCode extends AbstractElement
             'ANCHO' => /* I18N: Location of an LDS church temple */ I18N::translate('Anchorage, Alaska, United States'),
             'APIA'  => /* I18N: Location of an LDS church temple */ I18N::translate('Apia, Samoa'),
             'ARIZO' => /* I18N: Location of an LDS church temple */ I18N::translate('Mesa, Arizona, United States'),
-            'ASUNC' => /* I18N: Location of an LDS church temple */ I18N::translate('Asuncion, Paraguay'),
+            'ASUNC' => /* I18N: Location of an LDS church temple */ I18N::translate('Asunción, Paraguay'),
             'ATLAN' => /* I18N: Location of an LDS church temple */ I18N::translate('Atlanta, Georgia, United States'),
             'BAIRE' => /* I18N: Location of an LDS church temple */ I18N::translate('Buenos Aires, Argentina'),
             'BILLI' => /* I18N: Location of an LDS church temple */ I18N::translate('Billings, Montana, United States'),
             'BIRMI' => /* I18N: Location of an LDS church temple */ I18N::translate('Birmingham, Alabama, United States'),
             'BISMA' => /* I18N: Location of an LDS church temple */ I18N::translate('Bismarck, North Dakota, United States'),
-            'BOGOT' => /* I18N: Location of an LDS church temple */ I18N::translate('Bogota, Colombia'),
+            'BOGOT' => /* I18N: Location of an LDS church temple */ I18N::translate('Bogotá, Colombia'),
             'BOISE' => /* I18N: Location of an LDS church temple */ I18N::translate('Boise, Idaho, United States'),
             'BOSTO' => /* I18N: Location of an LDS church temple */ I18N::translate('Boston, Massachusetts, United States'),
             'BOUNT' => /* I18N: Location of an LDS church temple */ I18N::translate('Bountiful, Utah, United States'),
@@ -76,13 +76,13 @@ class TempleCode extends AbstractElement
             'CARAC' => /* I18N: Location of an LDS church temple */ I18N::translate('Caracas, Venezuela'),
             'CEBUP' => /* I18N: Location of an LDS church temple */ I18N::translate('Cebu City, Philippines'),
             'CHICA' => /* I18N: Location of an LDS church temple */ I18N::translate('Chicago, Illinois, United States'),
-            'CIUJU' => /* I18N: Location of an LDS church temple */ I18N::translate('Ciudad Juarez, Mexico'),
+            'CIUJU' => /* I18N: Location of an LDS church temple */ I18N::translate('Ciudad Juárez, Mexico'),
             'COCHA' => /* I18N: Location of an LDS church temple */ I18N::translate('Cochabamba, Bolivia'),
-            'COLJU' => /* I18N: Location of an LDS church temple */ I18N::translate('Colonia Juarez, Mexico'),
+            'COLJU' => /* I18N: Location of an LDS church temple */ I18N::translate('Colonia Juárez, Mexico'),
             'COLSC' => /* I18N: Location of an LDS church temple */ I18N::translate('Columbia, South Carolina, United States'),
             'COLUM' => /* I18N: Location of an LDS church temple */ I18N::translate('Columbus, Ohio, United States'),
             'COPEN' => /* I18N: Location of an LDS church temple */ I18N::translate('Copenhagen, Denmark'),
-            'CORDO' => /* I18N: Location of an LDS church temple */ I18N::translate('Cordoba, Argentina'),
+            'CORDO' => /* I18N: Location of an LDS church temple */ I18N::translate('Córdoba, Argentina'),
             'CRIVE' => /* I18N: Location of an LDS church temple */ I18N::translate('Columbia River, Washington, United States'),
             'CURIT' => /* I18N: Location of an LDS church temple */ I18N::translate('Curitiba, Brazil'),
             'DALLA' => /* I18N: Location of an LDS church temple */ I18N::translate('Dallas, Texas, United States'),
@@ -179,11 +179,11 @@ class TempleCode extends AbstractElement
             'SEATT' => /* I18N: Location of an LDS church temple */ I18N::translate('Seattle, Washington, United States'),
             'SEOUL' => /* I18N: Location of an LDS church temple */ I18N::translate('Seoul, Korea'),
             'SGEOR' => /* I18N: Location of an LDS church temple */ I18N::translate('St. George, Utah, United States'),
-            'SJOSE' => /* I18N: Location of an LDS church temple */ I18N::translate('San Jose, Costa Rica'),
+            'SJOSE' => /* I18N: Location of an LDS church temple */ I18N::translate('San José, Costa Rica'),
             'SLAKE' => /* I18N: Location of an LDS church temple */ I18N::translate('Salt Lake City, Utah, United States'),
             'SLOUI' => /* I18N: Location of an LDS church temple */ I18N::translate('St. Louis, Missouri, United States'),
             'SNOWF' => /* I18N: Location of an LDS church temple */ I18N::translate('Snowflake, Arizona, United States'),
-            'SPAUL' => /* I18N: Location of an LDS church temple */ I18N::translate('Sao Paulo, Brazil'),
+            'SPAUL' => /* I18N: Location of an LDS church temple */ I18N::translate('São Paulo, Brazil'),
             'SPMIN' => /* I18N: Location of an LDS church temple */ I18N::translate('St. Paul, Minnesota, United States'),
             'SPOKA' => /* I18N: Location of an LDS church temple */ I18N::translate('Spokane, Washington, United States'),
             'STOCK' => /* I18N: Location of an LDS church temple */ I18N::translate('Stockholm, Sweden'),
@@ -193,7 +193,7 @@ class TempleCode extends AbstractElement
             'TAIPE' => /* I18N: Location of an LDS church temple */ I18N::translate('Taipei, Taiwan'),
             'TAMPI' => /* I18N: Location of an LDS church temple */ I18N::translate('Tampico, Mexico'),
             'TEGUC' => /* I18N: Location of an LDS church temple */ I18N::translate('Tegucigalpa, Honduras'),
-            'TGUTI' => /* I18N: Location of an LDS church temple */ I18N::translate('Tuxtla Gutierrez, Mexico'),
+            'TGUTI' => /* I18N: Location of an LDS church temple */ I18N::translate('Tuxtla Gutiérrez, Mexico'),
             'TIJUA' => /* I18N: Location of an LDS church temple */ I18N::translate('Tijuana, Mexico'),
             'TOKYO' => /* I18N: Location of an LDS church temple */ I18N::translate('Tokyo, Japan'),
             'TORNO' => /* I18N: Location of an LDS church temple */ I18N::translate('Toronto, Ontario, Canada'),

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\CheckTree;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
@@ -13,8 +14,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\DataFixChoose;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\FindDuplicateRecords;
 use Fisharebest\Webtrees\Http\RequestHandlers\ExportGedcomPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\FindDuplicateRecords;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MergeRecordsPage;
@@ -29,7 +30,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
-use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * @var array<Tree> $all_trees
@@ -69,8 +69,8 @@ use Illuminate\Database\Capsule\Manager as DB;
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
                             <div id="import<?= $managed_tree->id() ?>" class="col-12">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar">
                                         <?= I18N::translate('Calculating…') ?>
                                     </div>
                                 </div>

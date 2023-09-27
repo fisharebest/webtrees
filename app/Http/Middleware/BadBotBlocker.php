@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -67,11 +67,14 @@ class BadBotBlocker implements MiddlewareInterface
         'AhrefsBot',
         'Amazonbot', // Until it understands crawl-delay and noindex / nofollow
         'AspiegelBot',
+        'Awario', // Brand management
         'Barkrowler',
         'BLEXBot',
+        'Bytespider',
         'DataForSEO',
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
+        'GPTBot', // Collects training data for ChatGPT
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
@@ -91,6 +94,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Turnitin',
         'wp_is_mobile', // Nothing to do with wordpress
         'XoviBot',
+        'YisouSpider',
         'ZoominfoBot',
     ];
 
@@ -106,18 +110,19 @@ class BadBotBlocker implements MiddlewareInterface
      * @see https://support.apple.com/en-gb/HT204683
      */
     private const ROBOT_REV_FWD_DNS = [
-        'Amazonbot'   => ['.crawl.amazon.com'],
-        'Applebot'    => ['.applebot.apple.com'],
-        'bingbot'     => ['.search.msn.com'],
-        'BingPreview' => ['.search.msn.com'],
-        'Google'      => ['.google.com', '.googlebot.com'],
-        'MojeekBot'   => ['.mojeek.com'],
-        'Mail.RU_Bot' => ['.mail.ru'],
-        'msnbot'      => ['.search.msn.com'],
-        'Qwantify'    => ['.search.qwant.com'],
-        'Sogou'       => ['.crawl.sogou.com'],
-        'Yahoo'       => ['.crawl.yahoo.net'],
-        'Yandex'      => ['.yandex.ru', '.yandex.net', '.yandex.com'],
+        'Amazonbot'        => ['.crawl.amazon.com'],
+        'Applebot'         => ['.applebot.apple.com'],
+        'BingPreview'      => ['.search.msn.com'],
+        'Google'           => ['.google.com', '.googlebot.com'],
+        'Mail.RU_Bot'      => ['.mail.ru'],
+        'MicrosoftPreview' => ['.search.msn.com'],
+        'MojeekBot'        => ['.mojeek.com'],
+        'Qwantify'         => ['.search.qwant.com'],
+        'Sogou'            => ['.crawl.sogou.com'],
+        'Yahoo'            => ['.crawl.yahoo.net'],
+        'Yandex'           => ['.yandex.ru', '.yandex.net', '.yandex.com'],
+        'bingbot'          => ['.search.msn.com'],
+        'msnbot'           => ['.search.msn.com'],
     ];
 
     /**
@@ -132,6 +137,7 @@ class BadBotBlocker implements MiddlewareInterface
         'FreshBot'    => ['.seznam.cz'],
         'IonCrawl'    => ['.1und1.org'],
         'Neevabot'    => ['.neeva.com'],
+        'SeznamBot'   => ['.seznam.cz'],
     ];
 
     /**
@@ -311,7 +317,7 @@ class BadBotBlocker implements MiddlewareInterface
     /**
      * Perform a whois search for an ASN.
      *
-     * @param string $asn - The autonomous system number to query
+     * @param string $asn The autonomous system number to query
      *
      * @return array<RangeInterface>
      */

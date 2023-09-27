@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2022 webtrees development team
+ * Copyright (C) 2023 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -28,7 +29,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -37,10 +37,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_filter;
 use function array_keys;
+use function array_map;
+use function array_merge;
 use function array_sum;
+use function array_values;
 use function assert;
 use function e;
 use function implode;
@@ -48,6 +50,7 @@ use function ob_get_clean;
 use function ob_start;
 use function route;
 use function uksort;
+use function usort;
 use function view;
 
 use const ARRAY_FILTER_USE_KEY;
@@ -60,6 +63,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     use ModuleListTrait;
 
     protected const ROUTE_URL = '/tree/{tree}/individual-list';
+
+    // The individual list and family list use the same code/logic.
+    // They just display different lists.
+    protected bool $families = false;
 
     /**
      * Initialization.
@@ -112,10 +119,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
-        $request = app(ServerRequestInterface::class);
-        assert($request instanceof ServerRequestInterface);
-
-        $xref = Validator::attributes($request)->isXref()->string('xref', '');
+        $request = Registry::container()->get(ServerRequestInterface::class);
+        $xref    = Validator::attributes($request)->isXref()->string('xref', '');
 
         if ($xref !== '') {
             $individual = Registry::individualFactory()->make($xref, $tree);
@@ -152,65 +157,50 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
+        // All individuals with this surname
         $surname_param = Validator::queryParams($request)->string('surname', '');
         $surname       = I18N::strtoupper(I18N::language()->normalize($surname_param));
 
+        // All surnames beginning with this letter, where "@" is unknown and "," is none
+        $alpha = Validator::queryParams($request)->string('alpha', '');
+
+        // All first names beginning with this letter where "@" is unknown
+        $falpha = Validator::queryParams($request)->string('falpha', '');
+
+        // What type of list to display, if any
+        $show = Validator::queryParams($request)->string('show', 'surn');
+
+        // All individuals
+        $show_all = Validator::queryParams($request)->string('show_all', '');
+
+        // Include/exclude married names
+        $show_marnm = Validator::queryParams($request)->string('show_marnm', '');
+
+        // Break long lists down by given name
+        $show_all_firstnames = Validator::queryParams($request)->string('show_all_firstnames', '');
+
         $params = [
-            'alpha'               => Validator::queryParams($request)->string('alpha', ''),
-            'falpha'              => Validator::queryParams($request)->string('falpha', ''),
-            'show'                => Validator::queryParams($request)->string('show', 'surn'),
-            'show_all'            => Validator::queryParams($request)->string('show_all', 'no'),
-            'show_all_firstnames' => Validator::queryParams($request)->string('show_all_firstnames', 'no'),
-            'show_marnm'          => Validator::queryParams($request)->string('show_marnm', ''),
+            'alpha'               => $alpha,
+            'falpha'              => $falpha,
+            'show'                => $show,
+            'show_all'            => $show_all,
+            'show_all_firstnames' => $show_all_firstnames,
+            'show_marnm'          => $show_marnm,
             'surname'             => $surname,
         ];
 
         if ($surname_param !== $surname) {
-            return Registry::responseFactory()->redirectUrl($this->listUrl($tree, $params));
+            return Registry::responseFactory()
+                ->redirectUrl($this->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        return $this->createResponse($tree, $user, $params, false);
-    }
-
-    /**
-     * @param Tree          $tree
-     * @param UserInterface $user
-     * @param array<string> $params
-     * @param bool          $families
-     *
-     * @return ResponseInterface
-     */
-    protected function createResponse(Tree $tree, UserInterface $user, array $params, bool $families): ResponseInterface
-    {
-        // We show three different lists: initials, surnames and individuals
-
-        // All surnames beginning with this letter, where "@" is unknown and "," is none
-        $alpha = $params['alpha'];
-
-        // All individuals with this surname
-        $surname = $params['surname'];
-
-        // All individuals
-        $show_all = $params['show_all'] === 'yes';
-
-        // Include/exclude married names
-        $show_marnm = $params['show_marnm'];
-
-        // What type of list to display, if any
-        $show = $params['show'];
-
-        // Break long lists down by given name
-        $show_all_firstnames = $params['show_all_firstnames'] === 'yes';
-
-        // All first names beginning with this letter where "@" is unknown
-        $falpha = $params['falpha'];
 
         // Make sure parameters are consistent with each other.
-        if ($show_all_firstnames) {
+        if ($show_all_firstnames === 'yes') {
             $falpha = '';
         }
 
-        if ($show_all) {
+        if ($show_all === 'yes') {
             $alpha   = '';
             $surname = '';
         }
@@ -219,35 +209,26 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $alpha = I18N::language()->initialLetter($surname);
         }
 
-        $all_surnames     = $this->allSurnames($tree, $show_marnm === 'yes', $families);
+        $all_surnames     = $this->allSurnames($tree, $show_marnm === 'yes', $this->families);
         $surname_initials = $this->surnameInitials($all_surnames);
-
-        switch ($show_marnm) {
-            case 'no':
-            case 'yes':
-                $user->setPreference($families ? 'family-list-marnm' : 'individual-list-marnm', $show_marnm);
-                break;
-            default:
-                $show_marnm = $user->getPreference($families ? 'family-list-marnm' : 'individual-list-marnm');
-        }
 
         // Make sure selections are consistent.
         // i.e. can’t specify show_all and surname at the same time.
-        if ($show_all) {
-            if ($show_all_firstnames) {
-                $legend  = I18N::translate('All');
-                $params = ['tree' => $tree->name(), 'show_all' => 'yes'];
-                $show    = 'indi';
+        if ($show_all === 'yes') {
+            if ($show_all_firstnames === 'yes') {
+                $legend = I18N::translate('All');
+                $params = ['tree' => $tree->name(), 'show_all' => 'yes', 'show_marnm' => $show_marnm];
+                $show   = 'indi';
             } elseif ($falpha !== '') {
-                $legend  = I18N::translate('All') . ', ' . e($falpha) . '…';
-                $params = ['tree' => $tree->name(), 'show_all' => 'yes'];
-                $show    = 'indi';
+                $legend = I18N::translate('All') . ', ' . e($falpha) . '…';
+                $params = ['tree' => $tree->name(), 'show_all' => 'yes', 'show_marnm' => $show_marnm];
+                $show   = 'indi';
             } else {
-                $legend  = I18N::translate('All');
-                $params = ['tree' => $tree->name(), 'show_all' => 'yes'];
+                $legend = I18N::translate('All');
+                $params = ['tree' => $tree->name(), 'show_all' => 'yes', 'show_marnm' => $show_marnm];
             }
         } elseif ($surname !== '') {
-            $show_all = false;
+            $show_all = 'no';
             if ($surname === Individual::NOMEN_NESCIO) {
                 $legend = I18N::translateContext('Unknown surname', '…');
                 $show   = 'indi'; // The surname list makes no sense with only one surname.
@@ -259,7 +240,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 $legend   = implode('/', $variants);
                 $show     = 'indi'; // The surname list makes no sense with only one surname.
             }
-            $params = ['tree' => $tree->name(), 'surname' => $surname, 'falpha' => $falpha];
+            $params = ['tree' => $tree->name(), 'surname' => $surname, 'falpha' => $falpha, 'show_marnm' => $show_marnm];
             switch ($falpha) {
                 case '':
                     break;
@@ -271,29 +252,29 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     break;
             }
         } elseif ($alpha === '@') {
-            $show_all = false;
+            $show_all = 'no';
             $legend   = I18N::translateContext('Unknown surname', '…');
-            $params   = ['alpha' => $alpha, 'tree' => $tree->name()];
+            $params   = ['alpha' => $alpha, 'tree' => $tree->name(), 'show_marnm' => $show_marnm];
             $surname  = Individual::NOMEN_NESCIO;
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha === ',') {
-            $show_all = false;
+            $show_all = 'no';
             $legend   = I18N::translate('No surname');
-            $params = ['alpha' => $alpha, 'tree' => $tree->name()];
+            $params   = ['alpha' => $alpha, 'tree' => $tree->name(), 'show_marnm' => $show_marnm];
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha !== '') {
-            $show_all = false;
+            $show_all = 'no';
             $legend   = e($alpha) . '…';
-            $params = ['alpha' => $alpha, 'tree' => $tree->name()];
+            $params   = ['alpha' => $alpha, 'tree' => $tree->name(), 'show_marnm' => $show_marnm];
         } else {
-            $show_all = false;
+            $show_all = 'no';
             $legend   = '…';
-            $params   = ['tree' => $tree->name()];
+            $params   = ['tree' => $tree->name(), 'show_marnm' => $show_marnm];
             $show     = 'none'; // Don't show lists until something is chosen
         }
         $legend = '<bdi>' . $legend . '</bdi>';
 
-        if ($families) {
+        if ($this->families) {
             $title = I18N::translate('Families') . ' — ' . $legend;
         } else {
             $title = I18N::translate('Individuals') . ' — ' . $legend;
@@ -306,7 +287,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 <?php foreach ($surname_initials as $letter => $count) : ?>
                     <li class="wt-initials-list-item d-flex">
                         <?php if ($count > 0) : ?>
-                            <a href="<?= e($this->listUrl($tree, ['alpha' => $letter, 'tree' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->displaySurnameInitial((string) $letter) ?></a>
+                            <a href="<?= e($this->listUrl($tree, ['alpha' => $letter, 'show_marnm' => $show_marnm, 'tree' => $tree->name()])) ?>" class="wt-initial px-1<?= $letter === $alpha ? ' active' : '' ?> '" title="<?= I18N::number($count) ?>"><?= $this->displaySurnameInitial((string) $letter) ?></a>
                         <?php else : ?>
                             <span class="wt-initial px-1 text-muted"><?= $this->displaySurnameInitial((string) $letter) ?></span>
 
@@ -317,7 +298,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 <?php if (Session::has('initiated')) : ?>
                     <!-- Search spiders don't get the "show all" option as the other links give them everything. -->
                     <li class="wt-initials-list-item d-flex">
-                        <a class="wt-initial px-1<?= $show_all ? ' active' : '' ?>" href="<?= e($this->listUrl($tree, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
+                        <a class="wt-initial px-1<?= $show_all === 'yes' ? ' active' : '' ?>" href="<?= e($this->listUrl($tree, ['show_all' => 'yes'] + $params)) ?>"><?= I18N::translate('All') ?></a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -341,13 +322,13 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 <?php if ($alpha !== '@' && $alpha !== ',' && $surname === '') : ?>
                     <?php if ($show === 'surn') : ?>
                         <p>
-                            <a href="<?= e($this->listUrl($tree, ['show' => 'indi', 'show_marnm' => 'no'] + $params)) ?>">
+                            <a href="<?= e($this->listUrl($tree, ['show' => 'indi'] + $params)) ?>">
                                 <?= I18N::translate('Show the list of individuals') ?>
                             </a>
                         </p>
                     <?php else : ?>
                         <p>
-                            <a href="<?= e($this->listUrl($tree, ['show' => 'surn', 'show_marnm' => 'no'] + $params)) ?>">
+                            <a href="<?= e($this->listUrl($tree, ['show' => 'surn'] + $params)) ?>">
                                 <?= I18N::translate('Show the list of surnames') ?>
                             </a>
                         </p>
@@ -367,7 +348,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         $surns = array_filter($all_surnames, static fn (string $x): bool => $x === '', ARRAY_FILTER_USE_KEY);
                         break;
                     case '':
-                        if ($show_all) {
+                        if ($show_all === 'yes') {
                             $surns = array_filter($all_surnames, static fn (string $x): bool => $x !== '' && $x !== Individual::NOMEN_NESCIO, ARRAY_FILTER_USE_KEY);
                         } else {
                             $surns = array_filter($all_surnames, static fn (string $x): bool => $x === $surname, ARRAY_FILTER_USE_KEY);
@@ -388,6 +369,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         case 'style1':
                             echo view('lists/surnames-column-list', [
                                 'module'   => $this,
+                                'params'   => ['show' => 'indi', 'show_all' => null] + $params,
                                 'surnames' => $surns,
                                 'totals'   => true,
                                 'tree'     => $tree,
@@ -396,6 +378,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         case 'style3':
                             echo view('lists/surnames-tag-cloud', [
                                 'module'   => $this,
+                                'params'   => ['show' => 'indi', 'show_all' => null] + $params,
                                 'surnames' => $surns,
                                 'totals'   => true,
                                 'tree'     => $tree,
@@ -404,9 +387,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         case 'style2':
                         default:
                             echo view('lists/surnames-table', [
-                                'families' => $families,
+                                'families' => $this->families,
                                 'module'   => $this,
                                 'order'    => [[0, 'asc']],
+                                'params'   => ['show' => 'indi', 'show_all' => null] + $params,
                                 'surnames' => $surns,
                                 'tree'     => $tree,
                             ]);
@@ -420,19 +404,22 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
                         $falpha = '';
                     } else {
-                        $givn_initials = $this->givenNameInitials($tree, array_keys($surns), $show_marnm === 'yes', $families);
                         // Break long lists by initial letter of given name
-                        if ($surname !== '' || $show_all) {
-                            if (!$show_all) {
+                        $surns         = array_values(array_map(static fn ($x): array => array_keys($x), $surns));
+                        $surns         = array_merge(...$surns);
+                        $givn_initials = $this->givenNameInitials($tree, $surns, $show_marnm === 'yes', $this->families);
+
+                        if ($surname !== '' || $show_all === 'yes') {
+                            if ($show_all !== 'yes') {
                                 echo '<h2 class="wt-page-title">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
                             }
                             // Don't show the list until we have some filter criteria
-                            $show = $falpha !== '' || $show_all_firstnames ? 'indi' : 'none';
+                            $show = $falpha !== '' || $show_all_firstnames === 'yes' ? 'indi' : 'none';
                             echo '<ul class="d-flex flex-wrap list-unstyled justify-content-center wt-initials-list wt-initials-list-given-names">';
                             foreach ($givn_initials as $givn_initial => $given_count) {
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($given_count > 0) {
-                                    if ($show === 'indi' && $givn_initial === $falpha && !$show_all_firstnames) {
+                                    if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames !== 'yes') {
                                         echo '<a class="wt-initial px-1 active" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
                                     } else {
                                         echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['falpha' => $givn_initial] + $params)) . '" title="' . I18N::number($given_count) . '">' . $this->displayGivenNameInitial((string) $givn_initial) . '</a>';
@@ -445,7 +432,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                             // Search spiders don't get the "show all" option as the other links give them everything.
                             if (Session::has('initiated')) {
                                 echo '<li class="wt-initials-list-item d-flex">';
-                                if ($show_all_firstnames) {
+                                if ($show_all_firstnames === 'yes') {
                                     echo '<span class="wt-initial px-1 active">' . I18N::translate('All') . '</span>';
                                 } else {
                                     echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
@@ -456,7 +443,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         }
                     }
                     if ($show === 'indi') {
-                        if ($families) {
+                        if ($this->families) {
                             echo view('lists/families-table', [
                                 'families' => $this->families($tree, $surname, array_keys($all_surnames[$surname] ?? []), $falpha, $show_marnm === 'yes'),
                                 'tree'     => $tree,
@@ -580,7 +567,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         }
 
         $query
-            ->select($this->binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count'))
+            ->select([$this->binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count')])
             ->groupBy([$this->binaryColumn('n_givn')]);
 
         foreach ($query->get() as $row) {
@@ -653,11 +640,11 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     protected function surnameInitials(array $all_surnames): array
     {
-        $initials    = [];
+        $initials = [];
 
         // Ensure our own language comes before others.
         foreach (I18N::language()->alphabet() as $initial) {
-            $initials[$initial]    = 0;
+            $initials[$initial] = 0;
         }
 
         foreach ($all_surnames as $surn => $surnames) {
