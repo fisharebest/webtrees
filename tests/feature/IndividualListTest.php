@@ -40,8 +40,8 @@ class IndividualListTest extends TestCase
     protected static bool $uses_database = true;
 
     private IndividualListModule $module;
-    private Tree                 $tree;
-    private User                 $user;
+    private Tree $tree;
+    private User $user;
 
     public function setUp(): void
     {
