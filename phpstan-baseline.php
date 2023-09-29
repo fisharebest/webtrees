@@ -1395,16 +1395,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$n_surn on mixed\\.$#',
-    'count' => 8,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access property \\$n_surname on mixed\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access property \\$total on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/IndividualListModule.php',
 ];
@@ -1414,7 +1404,22 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/IndividualListModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\>\\:\\:all\\(\\) contains unresolvable type\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/IndividualListModule.php',
 ];
@@ -5357,6 +5362,11 @@ $ignoreErrors[] = [
     'message' => '#^Call to an undefined method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationStubber\\:\\:with\\(\\)\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/tests/app/ValidatorTest.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method deleteRecord\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/tests/feature/IndividualListTest.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$valueMap of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationStubber\\:\\:willReturnMap\\(\\) expects array\\<int, array\\<int, mixed\\>\\>, array\\<string, Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#',
