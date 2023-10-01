@@ -33,9 +33,6 @@ use Fisharebest\Webtrees\User;
  */
 class AccountUpdateTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testHandler(): void
     {
         $user_service = $this->createMock(UserService::class);

@@ -32,9 +32,8 @@ use Illuminate\Support\Collection;
  */
 class RedirectCalendarPhpTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testRedirect(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -67,9 +66,6 @@ class RedirectCalendarPhpTest extends TestCase
         );
     }
 
-    /**
-     * @return void
-     */
     public function testNoSuchTree(): void
     {
         $tree_service = $this->createStub(TreeService::class);

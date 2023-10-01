@@ -37,9 +37,6 @@ class LanguageIdTest extends AbstractElementTestCase
         static::$element = new LanguageId('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('ENGLISH', self::$element->canonical("\t English\t "));

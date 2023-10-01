@@ -37,9 +37,6 @@ class RoleInEventTest extends AbstractElementTestCase
         self::$element = new RoleInEvent('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('CHIL', self::$element->canonical('cHiL'));

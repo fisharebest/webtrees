@@ -30,9 +30,8 @@ use Fisharebest\Webtrees\User;
  */
 class PasswordResetPageTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testPasswordResetPageWithValidToken(): void
     {
         $user = $this->createMock(User::class);
@@ -52,9 +51,6 @@ class PasswordResetPageTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testPasswordResetPageWithoutValidToken(): void
     {
         $user_service = $this->createMock(UserService::class);

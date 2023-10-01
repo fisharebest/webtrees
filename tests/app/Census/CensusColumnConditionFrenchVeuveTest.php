@@ -34,8 +34,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoSpouseFamiliesMale(): void
     {
@@ -55,8 +53,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoSpouseFamiliesFemale(): void
     {
@@ -76,8 +72,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyFactsMale(): void
     {
@@ -101,8 +95,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyFactsFemale(): void
     {
@@ -126,8 +118,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testSpouseDeadMale(): void
     {
@@ -163,8 +153,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testSpouseDeadFemale(): void
     {
@@ -200,8 +188,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyUnmarriedMale(): void
     {
@@ -225,8 +211,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyUnmarriedFemale(): void
     {
@@ -250,8 +234,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testChildMale(): void
     {
@@ -275,8 +257,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testChildFemale(): void
     {
@@ -300,8 +280,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testDivorcedMale(): void
     {
@@ -333,8 +311,6 @@ class CensusColumnConditionFrenchVeuveTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchVeuve
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testDivorcedFemale(): void
     {

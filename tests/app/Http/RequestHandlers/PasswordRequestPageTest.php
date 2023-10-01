@@ -28,9 +28,8 @@ use Fisharebest\Webtrees\User;
  */
 class PasswordRequestPageTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testPasswordRequestPage(): void
     {
         $request  = self::createRequest();
@@ -40,9 +39,6 @@ class PasswordRequestPageTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testPasswordRequestPageAlreadyLoggedIn(): void
     {
         $user     = $this->createMock(User::class);

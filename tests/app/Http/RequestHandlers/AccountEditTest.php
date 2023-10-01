@@ -35,9 +35,6 @@ class AccountEditTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testHandler(): void
     {
         $user            = $this->createStub(User::class);

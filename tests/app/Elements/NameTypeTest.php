@@ -37,9 +37,6 @@ class NameTypeTest extends AbstractElementTestCase
         self::$element = new NameType('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO BAR BAZ', self::$element->canonical('Foo  bAr  baZ'));

@@ -36,8 +36,6 @@ class ISO88592Test extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\ISO88592
-     *
-     * @return void
      */
     public function testToUtf8(): void
     {

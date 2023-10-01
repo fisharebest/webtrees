@@ -35,9 +35,6 @@ class FixLevel0MediaDataTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testFixLevel0MediaData(): void
     {
         $datatables_service    = new DatatablesService();

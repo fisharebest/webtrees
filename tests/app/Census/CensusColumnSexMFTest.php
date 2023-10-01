@@ -30,8 +30,6 @@ class CensusColumnSexMFTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMF
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMale(): void
     {
@@ -48,8 +46,6 @@ class CensusColumnSexMFTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMF
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testFeale(): void
     {
@@ -66,8 +62,6 @@ class CensusColumnSexMFTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMF
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testUnknownSex(): void
     {

@@ -32,9 +32,6 @@ class ManageMediaPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testIndex(): void
     {
         $media_file_service = new MediaFileService();

@@ -28,13 +28,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class CensusColumnBirthPlaceSimpleTest extends TestCase
 {
-    /**
-     * Get place mock.
-     *
-     * @param string $place Gedcom Place
-     *
-     * @return Place
-     */
     private function getPlaceMock(string $place): Place
     {
         $placeMock = $this->createMock(Place::class);
@@ -46,8 +39,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testForeignCountry(): void
     {
@@ -65,8 +56,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testJustCountry(): void
     {
@@ -84,8 +73,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testKnownState(): void
     {
@@ -103,8 +90,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testKnownStateAndTown(): void
     {

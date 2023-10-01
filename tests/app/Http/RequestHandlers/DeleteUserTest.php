@@ -34,9 +34,6 @@ class DeleteUserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testDeleteUser(): void
     {
         $user = $this->createMock(User::class);
@@ -53,9 +50,6 @@ class DeleteUserTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteNonExistingUser(): void
     {
         $this->expectException(HttpNotFoundException::class);
@@ -70,9 +64,6 @@ class DeleteUserTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testCannotDeleteAdministrator(): void
     {
         $this->expectException(HttpAccessDeniedException::class);

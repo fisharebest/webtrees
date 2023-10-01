@@ -37,9 +37,6 @@ class LdsBaptismDateStatusTest extends AbstractElementTestCase
         self::$element = new LdsBaptismDateStatus('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO BAR BAZ', self::$element->canonical('Foo  bAr  baZ'));

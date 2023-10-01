@@ -37,9 +37,6 @@ class RestrictionNoticeTest extends AbstractElementTestCase
         self::$element = new RestrictionNotice('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('PRIVACY', self::$element->canonical('pRiVacy'));

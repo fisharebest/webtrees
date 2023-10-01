@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\User;
  */
 class SelectThemeTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testSelectThemeForGuest(): void
     {
         $user = $this->createMock(GuestUser::class);
@@ -47,9 +44,6 @@ class SelectThemeTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testSelectThemeForUser(): void
     {
         $user = $this->createMock(User::class);

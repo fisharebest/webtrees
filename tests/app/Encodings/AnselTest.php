@@ -96,8 +96,6 @@ class AnselTest extends TestCase
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\ANSEL
      * @covers \Fisharebest\Webtrees\Encodings\UTF8::chr
-     *
-     * @return void
      */
     public function testPreComposedCharacters(): void
     {
@@ -169,8 +167,6 @@ class AnselTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     *
-     * @return void
      */
     public function testToUtf8(): void
     {
@@ -184,8 +180,6 @@ class AnselTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     *
-     * @return void
      */
     public function testFromUtf8(): void
     {
@@ -199,8 +193,6 @@ class AnselTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     *
-     * @return void
      */
     public function testUnprintable(): void
     {
@@ -215,8 +207,6 @@ class AnselTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     *
-     * @return void
      */
     public function testMultiPartDiacritic(): void
     {

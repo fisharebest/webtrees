@@ -32,9 +32,6 @@ class MapDataExportGeoJsonTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testExportGeoJson(): void
     {
         $map_data_service = new MapDataService();

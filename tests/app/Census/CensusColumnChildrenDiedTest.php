@@ -33,8 +33,6 @@ class CensusColumnChildrenDiedTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnChildrenDied
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMale(): void
     {
@@ -52,8 +50,6 @@ class CensusColumnChildrenDiedTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnChildrenDied
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testCountChildren(): void
     {

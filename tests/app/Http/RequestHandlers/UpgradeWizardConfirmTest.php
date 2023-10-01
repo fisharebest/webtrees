@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class UpgradeWizardConfirmTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testWizardContinue(): void
     {
         $handler  = new UpgradeWizardConfirm();

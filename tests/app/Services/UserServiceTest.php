@@ -45,7 +45,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::create
-     * @return void
      */
     public function testCreate(): void
     {
@@ -58,7 +57,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::delete
-     * @return void
      */
     public function testDelete(): void
     {
@@ -72,7 +70,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::find
-     * @return void
      */
     public function testFindNonExistingUser(): void
     {
@@ -84,7 +81,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::find
-     * @return void
      */
     public function testFindExistingUser(): void
     {
@@ -97,7 +93,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::findByEmail
-     * @return void
      */
     public function testFindUserByEmail(): void
     {
@@ -110,7 +105,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::findByUserName
-     * @return void
      */
     public function testFindUserByUserName(): void
     {
@@ -123,7 +117,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::findByIdentifier
-     * @return void
      */
     public function testFindUserByIdentifier(): void
     {
@@ -138,7 +131,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::findByIndividual
-     * @return void
      */
     public function testFindUsersByIndividual(): void
     {
@@ -157,7 +149,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::all
-     * @return void
      */
     public function testFindAllUsers(): void
     {
@@ -174,7 +165,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::administrators
-     * @return void
      */
     public function testFindAdministrators(): void
     {
@@ -192,7 +182,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::managers
-     * @return void
      */
     public function testFindManagers(): void
     {
@@ -216,7 +205,6 @@ class UserServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::moderators
-     * @return void
      */
     public function testFindModerators(): void
     {
@@ -241,7 +229,6 @@ class UserServiceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Services\UserService::unapproved
      * @covers \Fisharebest\Webtrees\Services\UserService::unverified
-     * @return void
      */
     public function testFindUnapprovedAndUnverified(): void
     {

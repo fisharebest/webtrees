@@ -29,9 +29,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class FixLevel0MediaPageTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testFixLevel0Media(): void
     {
         $handler  = new FixLevel0MediaPage();

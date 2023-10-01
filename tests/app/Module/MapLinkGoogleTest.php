@@ -30,9 +30,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class MapLinkGoogleTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testNoCoordinates(): void
     {
         $module = new MapLinkGoogle();
@@ -46,9 +43,6 @@ class MapLinkGoogleTest extends TestCase
         static::assertSame('', $html);
     }
 
-    /**
-     * @return void
-     */
     public function testLink(): void
     {
         $module = new MapLinkGoogle();

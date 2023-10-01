@@ -29,9 +29,6 @@ use Illuminate\Support\Collection;
  */
 class PingTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testPingOK(): void
     {
         $server_check_service = $this->createMock(ServerCheckService::class);
@@ -46,9 +43,6 @@ class PingTest extends TestCase
         self::assertSame('OK', (string) $response->getBody());
     }
 
-    /**
-     * @return void
-     */
     public function testPingWarnings(): void
     {
         $server_check_service = $this->createMock(ServerCheckService::class);
@@ -63,9 +57,6 @@ class PingTest extends TestCase
         self::assertSame('WARNING', (string) $response->getBody());
     }
 
-    /**
-     * @return void
-     */
     public function testPingErrors(): void
     {
         $server_check_service = $this->createMock(ServerCheckService::class);

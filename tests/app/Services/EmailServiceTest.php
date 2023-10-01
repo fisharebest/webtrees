@@ -117,9 +117,6 @@ U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ
      * @dataProvider emailProvider
      *
      * @covers \Fisharebest\Webtrees\Services\EmailService::isValidEmail
-     *
-     * @param string $email
-     * @param bool $is_valid
      */
     public function testIsValidEmail(string $email, bool $is_valid): void
     {

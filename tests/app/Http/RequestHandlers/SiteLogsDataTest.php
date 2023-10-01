@@ -32,9 +32,6 @@ use Psr\Http\Message\ResponseInterface;
  */
 class SiteLogsDataTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testResponse(): void
     {
         $request = self::createRequest(

@@ -36,8 +36,6 @@ class Windows1250Test extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\Windows1250
-     *
-     * @return void
      */
     public function testToUtf8(): void
     {

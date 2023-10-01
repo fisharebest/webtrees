@@ -37,9 +37,6 @@ class NoteStructureTest extends AbstractElementTestCase
         self::$element = new NoteStructure('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('Foo  bAr  baZ', self::$element->canonical('Foo  bAr  baZ'));

@@ -28,9 +28,6 @@ class ImportGedcomTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testImportTrees(): void
     {
         $tree = $this->importTree('demo.ged');

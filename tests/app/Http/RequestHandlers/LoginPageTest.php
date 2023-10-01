@@ -30,9 +30,8 @@ use Fisharebest\Webtrees\User;
  */
 class LoginPageTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testLoginPage(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -44,9 +43,6 @@ class LoginPageTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testLoginPageAlreadyLoggedIn(): void
     {
         $gedcom_import_service = new GedcomImportService();

@@ -31,7 +31,6 @@ class WebtreesTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Webtrees::bootstrap
-     * @return void
      */
     public function testInit(): void
     {

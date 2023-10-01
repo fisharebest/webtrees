@@ -37,9 +37,6 @@ class SourceOriginatorTest extends AbstractElementTestCase
         self::$element = new SourceOriginator('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('Foo  bAr  baZ', self::$element->canonical('Foo  bAr  baZ'));

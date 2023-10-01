@@ -17,19 +17,23 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\RequestHandlers;
-
-use Fisharebest\Webtrees\TestCase;
+namespace Fisharebest\Webtrees\Elements;
 
 /**
- * Test harness for the class RedirectDescendencyPhp
+ * Test harness for the class AbstractXrefElement
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\RedirectDescendencyPhp
+ * @covers \Fisharebest\Webtrees\Elements\AbstractElement
+ * @covers \Fisharebest\Webtrees\Elements\AbstractXrefElement
  */
-class RedirectDescendencyPhpTest extends TestCase
+class AbstractXrefElementTestCase extends AbstractElementTestCase
 {
-    public function testClass(): void
+    /**
+     * Standard tests for all elements.
+     */
+    public static function setupBeforeClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\RedirectDescendencyPhp::class));
+        parent::setUpBeforeClass();
+
+        self::$element = new AbstractXrefElement('label');
     }
 }

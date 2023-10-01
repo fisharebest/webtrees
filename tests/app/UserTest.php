@@ -49,7 +49,6 @@ class UserTest extends TestCase
      * @covers \Fisharebest\Webtrees\User::email
      * @covers \Fisharebest\Webtrees\User::realName
      * @covers \Fisharebest\Webtrees\User::userName
-     * @return void
      */
     public function testConstructor(): void
     {
@@ -71,7 +70,6 @@ class UserTest extends TestCase
      * @covers \Fisharebest\Webtrees\User::email
      * @covers \Fisharebest\Webtrees\User::setPassword
      * @covers \Fisharebest\Webtrees\User::checkPassword
-     * @return void
      */
     public function testGettersAndSetters(): void
     {
@@ -100,7 +98,6 @@ class UserTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\User::setPreference
      * @covers \Fisharebest\Webtrees\User::getPreference
-     * @return void
      */
     public function testPreferences(): void
     {

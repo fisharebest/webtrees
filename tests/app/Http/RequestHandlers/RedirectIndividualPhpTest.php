@@ -36,9 +36,8 @@ use Illuminate\Support\Collection;
  */
 class RedirectIndividualPhpTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testRedirect(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -79,9 +78,6 @@ class RedirectIndividualPhpTest extends TestCase
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
     }
 
-    /**
-     * @return void
-     */
     public function testNoSuchRecord(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -104,9 +100,6 @@ class RedirectIndividualPhpTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testNoSuchTree(): void
     {
         $tree_service = $this->createStub(TreeService::class);
@@ -127,9 +120,6 @@ class RedirectIndividualPhpTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testMissingXrefParameter(): void
     {
         $tree_service = $this->createStub(TreeService::class);

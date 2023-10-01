@@ -72,9 +72,6 @@ abstract class AbstractViewTest extends TestCase
         return $result;
     }
 
-    /**
-     * @param string $html
-     */
     protected function validateHTML(string $html): void
     {
         if (str_starts_with($html, '<!DOCTYPE html>')) {

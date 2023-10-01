@@ -30,13 +30,6 @@ use Illuminate\Support\Collection;
  */
 class CensusColumnFatherForeignTest extends TestCase
 {
-    /**
-     * Get place mock.
-     *
-     * @param string $place Gedcom Place
-     *
-     * @return Place
-     */
     private function getPlaceMock(string $place): Place
     {
         $placeMock = $this->createMock(Place::class);
@@ -48,8 +41,6 @@ class CensusColumnFatherForeignTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testSameCountry(): void
     {
@@ -73,8 +64,6 @@ class CensusColumnFatherForeignTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testDifferentCountry(): void
     {
@@ -98,8 +87,6 @@ class CensusColumnFatherForeignTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testPlaceNoParent(): void
     {
@@ -120,8 +107,6 @@ class CensusColumnFatherForeignTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testPlaceNoParentFamily(): void
     {

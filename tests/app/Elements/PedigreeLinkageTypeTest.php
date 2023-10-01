@@ -37,9 +37,6 @@ class PedigreeLinkageTypeTest extends AbstractElementTestCase
         self::$element = new PedigreeLinkageType('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO BAR BAZ', self::$element->canonical('Foo  bAr  baZ'));

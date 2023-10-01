@@ -34,8 +34,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoSpouseFamiliesMale(): void
     {
@@ -55,8 +53,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoSpouseFamiliesFemale(): void
     {
@@ -76,8 +72,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyFactsMale(): void
     {
@@ -101,8 +95,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyFactsFemale(): void
     {
@@ -126,8 +118,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testSpouseDeadMale(): void
     {
@@ -162,8 +152,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testSpouseDeadFemale(): void
     {
@@ -198,8 +186,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyUnmarriedMale(): void
     {
@@ -223,8 +209,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyUnmarriedFemale(): void
     {
@@ -248,8 +232,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testChildMale(): void
     {
@@ -273,8 +255,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testChildFemale(): void
     {
@@ -298,8 +278,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testDivorcedMale(): void
     {
@@ -330,8 +308,6 @@ class CensusColumnConditionFrenchGarconTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchGarcon
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testDivorcedFemale(): void
     {

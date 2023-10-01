@@ -32,7 +32,6 @@ class GuestUserTest extends TestCase
      * @covers \Fisharebest\Webtrees\GuestUser::email
      * @covers \Fisharebest\Webtrees\GuestUser::realName
      * @covers \Fisharebest\Webtrees\GuestUser::userName
-     * @return void
      */
     public function testAnonymous(): void
     {
@@ -51,7 +50,6 @@ class GuestUserTest extends TestCase
      * @covers \Fisharebest\Webtrees\GuestUser::email
      * @covers \Fisharebest\Webtrees\GuestUser::realName
      * @covers \Fisharebest\Webtrees\GuestUser::userName
-     * @return void
      */
     public function testVisitor(): void
     {
@@ -67,7 +65,6 @@ class GuestUserTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\GuestUser::getPreference
      * @covers \Fisharebest\Webtrees\GuestUser::setPreference
-     * @return void
      */
     public function testPreferences(): void
     {

@@ -37,9 +37,6 @@ class MultimediaFormatTest extends AbstractElementTestCase
         self::$element = new MultimediaFormat('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('JPG', self::$element->canonical('jpg'));

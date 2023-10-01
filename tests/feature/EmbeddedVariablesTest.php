@@ -73,9 +73,6 @@ class EmbeddedVariablesTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testAllEmbeddedVariables(): void
     {
         $user_service = new UserService();
@@ -106,9 +103,6 @@ class EmbeddedVariablesTest extends TestCase
         self::assertNotEquals('#getAllTagsTable#', $text);
     }
 
-    /**
-     * @return void
-     */
     public function testAllEmbeddedVariablesWithEmptyTree(): void
     {
         $gedcom_import_service = new GedcomImportService();

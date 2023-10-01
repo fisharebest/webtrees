@@ -33,8 +33,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 
     /**
      * Prepare the environment for these tests
-     *
-     * @return void
      */
     protected function setUp(): void
     {
@@ -47,8 +45,6 @@ class PortugueseSurnameTraditionTest extends TestCase
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
-     *
-     * @return void
      */
     public function testSurnames(): void
     {
@@ -59,8 +55,6 @@ class PortugueseSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNames(): void
     {
@@ -96,8 +90,6 @@ class PortugueseSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesWithNoParentsNames(): void
     {
@@ -111,8 +103,6 @@ class PortugueseSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesCompunds(): void
     {
@@ -138,8 +128,6 @@ class PortugueseSurnameTraditionTest extends TestCase
      * Test new parent names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
-     *
-     * @return void
      */
     public function testNewParentNames(): void
     {
@@ -168,8 +156,6 @@ class PortugueseSurnameTraditionTest extends TestCase
      * Test new spouse names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
-     *
-     * @return void
      */
     public function testNewSpouseNames(): void
     {

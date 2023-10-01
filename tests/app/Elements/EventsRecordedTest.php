@@ -37,9 +37,6 @@ class EventsRecordedTest extends AbstractElementTestCase
         self::$element = new EventsRecorded('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO,BAR,BAZ', self::$element->canonical('Foo , bAr,  baZ'));

@@ -35,9 +35,6 @@ use function response;
  */
 class CheckCsrfTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testMiddleware(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);

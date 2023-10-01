@@ -31,8 +31,6 @@ class CensusColumnAgeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAge
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testGenerateColumn(): void
     {

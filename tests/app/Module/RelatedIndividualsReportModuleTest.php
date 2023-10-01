@@ -65,8 +65,6 @@ class RelatedIndividualsReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportPdfText
      * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
      * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
-     *
-     * @return void
      */
     public function testReportRunsWithoutError(): void
     {

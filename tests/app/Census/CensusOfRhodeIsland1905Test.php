@@ -30,8 +30,6 @@ class CensusOfRhodeIsland1905Test extends TestCase
      * Test the census place and date
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfRhodeIsland1905
-     *
-     * @return void
      */
     public function testPlaceAndDate(): void
     {
@@ -46,8 +44,6 @@ class CensusOfRhodeIsland1905Test extends TestCase
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfRhodeIsland1905
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testColumns(): void
     {

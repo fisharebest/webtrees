@@ -30,8 +30,6 @@ class CensusColumnNullTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNull
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNull(): void
     {

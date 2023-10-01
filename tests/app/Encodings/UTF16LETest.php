@@ -37,8 +37,6 @@ class UTF16LETest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\UTF16LE
-     *
-     * @return void
      */
     public function testToUtf8(): void
     {

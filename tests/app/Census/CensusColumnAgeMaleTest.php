@@ -31,8 +31,6 @@ class CensusColumnAgeMaleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMale(): void
     {
@@ -51,8 +49,6 @@ class CensusColumnAgeMaleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testFemale(): void
     {
@@ -69,8 +65,6 @@ class CensusColumnAgeMaleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testUnknownSex(): void
     {
@@ -89,8 +83,6 @@ class CensusColumnAgeMaleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testLessThanOneYear(): void
     {

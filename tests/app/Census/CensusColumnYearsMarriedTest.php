@@ -34,8 +34,6 @@ class CensusColumnYearsMarriedTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoSpouseFamily(): void
     {
@@ -53,8 +51,6 @@ class CensusColumnYearsMarriedTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoMarriage(): void
     {
@@ -75,8 +71,6 @@ class CensusColumnYearsMarriedTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testUndatedMarriage(): void
     {
@@ -100,8 +94,6 @@ class CensusColumnYearsMarriedTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMarriageAfterCensus(): void
     {
@@ -125,8 +117,6 @@ class CensusColumnYearsMarriedTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnYearsMarried
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMarriageBeforeCensus(): void
     {

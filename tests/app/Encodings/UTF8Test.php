@@ -32,8 +32,6 @@ class UTF8Test extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\UTF8
-     *
-     * @return void
      */
     public function testToUtf8(): void
     {
@@ -48,8 +46,6 @@ class UTF8Test extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\UTF8
-     *
-     * @return void
      */
     public function testFromUtf8(): void
     {

@@ -37,9 +37,6 @@ class ManageMediaDataTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testDataLocal(): void
     {
         $datatables_service    = new DatatablesService();
@@ -61,9 +58,6 @@ class ManageMediaDataTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testDataExternal(): void
     {
         $datatables_service    = new DatatablesService();
@@ -85,9 +79,6 @@ class ManageMediaDataTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testDataUnused(): void
     {
         $datatables_service    = new DatatablesService();

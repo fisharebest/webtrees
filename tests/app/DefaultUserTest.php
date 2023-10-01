@@ -48,7 +48,6 @@ class DefaultUserTest extends TestCase
      * @covers \Fisharebest\Webtrees\DefaultUser::email
      * @covers \Fisharebest\Webtrees\DefaultUser::realName
      * @covers \Fisharebest\Webtrees\DefaultUser::userName
-     * @return void
      */
     public function testDefaultUser(): void
     {
@@ -64,7 +63,6 @@ class DefaultUserTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\DefaultUser::getPreference
      * @covers \Fisharebest\Webtrees\DefaultUser::setPreference
-     * @return void
      */
     public function testPreferences(): void
     {

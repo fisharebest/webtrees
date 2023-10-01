@@ -34,9 +34,8 @@ use Illuminate\Support\Collection;
  */
 class RedirectNoteListPhpTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testRedirect(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -73,9 +72,6 @@ class RedirectNoteListPhpTest extends TestCase
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
     }
 
-    /**
-     * @return void
-     */
     public function testModuleDisabled(): void
     {
         $module_service = $this->createStub(ModuleService::class);
@@ -101,9 +97,6 @@ class RedirectNoteListPhpTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testNoSuchTree(): void
     {
         $module = $this->createStub(NoteListModule::class);

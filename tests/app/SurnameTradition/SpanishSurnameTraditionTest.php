@@ -35,8 +35,6 @@ class SpanishSurnameTraditionTest extends TestCase
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
      */
     public function testSurnames(): void
     {
@@ -47,8 +45,6 @@ class SpanishSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNames(): void
     {
@@ -84,8 +80,6 @@ class SpanishSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesWithNoParentsNames(): void
     {
@@ -99,8 +93,6 @@ class SpanishSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesCompound(): void
     {
@@ -126,8 +118,6 @@ class SpanishSurnameTraditionTest extends TestCase
      * Test new parent names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
      */
     public function testNewParentNames(): void
     {
@@ -157,8 +147,6 @@ class SpanishSurnameTraditionTest extends TestCase
      * Test new spouse names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
      */
     public function testNewSpouseNames(): void
     {
@@ -186,8 +174,6 @@ class SpanishSurnameTraditionTest extends TestCase
 
     /**
      * Prepare the environment for these tests
-     *
-     * @return void
      */
     protected function setUp(): void
     {

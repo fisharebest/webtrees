@@ -30,9 +30,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class AccountDeleteTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testHandler(): void
     {
         $user_service = $this->createStub(UserService::class);

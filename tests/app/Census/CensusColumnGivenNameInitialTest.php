@@ -30,8 +30,6 @@ class CensusColumnGivenNameInitialTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testOneGivenName(): void
     {
@@ -48,8 +46,6 @@ class CensusColumnGivenNameInitialTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMultipleGivenNames(): void
     {
@@ -66,8 +62,6 @@ class CensusColumnGivenNameInitialTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoName(): void
     {

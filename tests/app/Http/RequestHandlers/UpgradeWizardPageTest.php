@@ -35,9 +35,6 @@ class UpgradeWizardPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testWizard(): void
     {
         $timeout_service       = new TimeoutService();

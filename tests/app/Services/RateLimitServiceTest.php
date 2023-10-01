@@ -36,8 +36,6 @@ class RateLimitServiceTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     *
-     * @return void
      */
     public function testTooMuchHistory(): void
     {
@@ -52,8 +50,6 @@ class RateLimitServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     *
-     * @return void
      */
     public function testLimitNotReached(): void
     {
@@ -76,8 +72,6 @@ class RateLimitServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     *
-     * @return void
      */
     public function testOldEventsIgnored(): void
     {
@@ -95,8 +89,6 @@ class RateLimitServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     *
-     * @return void
      */
     public function testLimitReached(): void
     {

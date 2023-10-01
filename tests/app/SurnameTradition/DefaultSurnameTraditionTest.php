@@ -35,8 +35,6 @@ class DefaultSurnameTraditionTest extends TestCase
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
      */
     public function testSurnames(): void
     {
@@ -47,8 +45,6 @@ class DefaultSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNames(): void
     {
@@ -84,8 +80,6 @@ class DefaultSurnameTraditionTest extends TestCase
      * Test new parent names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
      */
     public function testNewParentNames(): void
     {
@@ -115,8 +109,6 @@ class DefaultSurnameTraditionTest extends TestCase
      * Test new spouse names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
      */
     public function testNewSpouseNames(): void
     {
@@ -144,8 +136,6 @@ class DefaultSurnameTraditionTest extends TestCase
 
     /**
      * Prepare the environment for these tests
-     *
-     * @return void
      */
     protected function setUp(): void
     {

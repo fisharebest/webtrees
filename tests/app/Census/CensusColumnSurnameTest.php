@@ -30,8 +30,6 @@ class CensusColumnSurnameTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testSurname(): void
     {
@@ -48,8 +46,6 @@ class CensusColumnSurnameTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoName(): void
     {

@@ -32,9 +32,6 @@ use function response;
  */
 class CheckForMaintenanceModeTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testMiddleware(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);

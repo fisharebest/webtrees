@@ -36,9 +36,6 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class XrefLocationTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testEdit(): void
     {
         $element = new XrefLocation('');
@@ -68,9 +65,6 @@ class XrefLocationTest extends TestCase
         self::assertEquals(1, $option_nodes->count());
     }
 
-    /**
-     * @return void
-     */
     public function testEscape(): void
     {
         $element = new XrefLocation('');
@@ -78,9 +72,6 @@ class XrefLocationTest extends TestCase
         self::assertSame('@X123@', $element->escape('@X123@'));
     }
 
-    /**
-     * @return void
-     */
     public function testValueXrefLink(): void
     {
         $element = new XrefLocation('');
@@ -109,9 +100,6 @@ class XrefLocationTest extends TestCase
         self::assertSame('<a href="https://url">Full Name</a>', $element->value('@X123@', $tree));
     }
 
-    /**
-     * @return void
-     */
     public function testValueXrefLinkWithInvalidXref(): void
     {
         $element = new XrefLocation('');
@@ -121,9 +109,6 @@ class XrefLocationTest extends TestCase
         self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
     }
 
-    /**
-     * @return void
-     */
     public function testValueXrefLinkWithMissingRecord(): void
     {
         $element = new XrefLocation('');

@@ -30,8 +30,6 @@ class CensusOfRhodeIslandTest extends TestCase
      * Test the census place
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfRhodeIsland
-     *
-     * @return void
      */
     public function testPlace(): void
     {
@@ -44,8 +42,6 @@ class CensusOfRhodeIslandTest extends TestCase
      * Test the census language
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfRhodeIsland
-     *
-     * @return void
      */
     public function testLanguage(): void
     {
@@ -58,8 +54,6 @@ class CensusOfRhodeIslandTest extends TestCase
      * Test the census dates
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfRhodeIsland
-     *
-     * @return void
      */
     public function testAllDates(): void
     {

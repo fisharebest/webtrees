@@ -29,9 +29,6 @@ use Illuminate\Database\Query\Builder;
  */
 class SiteLogsDeleteTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testResponse(): void
     {
         $request = self::createRequest();

@@ -39,9 +39,6 @@ class AgeAtEventTest extends AbstractElementTestCase
         self::$element = new AgeAtEvent('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('CHILD', self::$element->canonical('cHiLd'));
@@ -51,9 +48,6 @@ class AgeAtEventTest extends AbstractElementTestCase
         self::assertSame('1y 2m 3d', self::$element->canonical('1Y  2M  3D'));
     }
 
-    /**
-     * @return void
-     */
     public function testValue(): void
     {
         $tree = $this->createStub(Tree::class);

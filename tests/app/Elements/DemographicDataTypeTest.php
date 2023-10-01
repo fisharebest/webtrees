@@ -37,9 +37,6 @@ class DemographicDataTypeTest extends AbstractElementTestCase
         self::$element = new DemographicDataType('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO BAR BAZ', self::$element->canonical('Foo  bAr  baZ'));

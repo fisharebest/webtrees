@@ -36,9 +36,8 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class HandleExceptionsTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testMiddleware(): void
     {
         $tree_service = $this->createMock(TreeService::class);

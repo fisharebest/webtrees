@@ -28,13 +28,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class CensusColumnBirthPlaceTest extends TestCase
 {
-    /**
-     * Get place mock.
-     *
-     * @param string $place Gedcom Place
-     *
-     * @return Place
-     */
     private function getPlaceMock(string $place): Place
     {
         $placeMock = $this->createMock(Place::class);
@@ -46,8 +39,6 @@ class CensusColumnBirthPlaceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testPlaceCountry(): void
     {
@@ -65,8 +56,6 @@ class CensusColumnBirthPlaceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testPlaceAndCountry(): void
     {
@@ -84,8 +73,6 @@ class CensusColumnBirthPlaceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testDifferentCountry(): void
     {

@@ -32,7 +32,6 @@ class CensusColumnReligionTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     * @return void
      */
     public function testNoReligion(): void
     {
@@ -53,7 +52,6 @@ class CensusColumnReligionTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     * @return void
      */
     public function testRecordReligion(): void
     {
@@ -72,7 +70,6 @@ class CensusColumnReligionTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     * @return void
      */
     public function testEventReligion(): void
     {

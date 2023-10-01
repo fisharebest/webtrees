@@ -29,9 +29,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class SelectLanguageTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testSelectLanguageForGuest(): void
     {
         $user     = new GuestUser();
@@ -44,9 +43,6 @@ class SelectLanguageTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testSelectLanguageForUser(): void
     {
         $user_service = new UserService();

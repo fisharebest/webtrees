@@ -37,9 +37,6 @@ class DateValueTest extends AbstractElementTestCase
         static::$element = new DateValue('label');
     }
 
-    /**
-     * @return void
-     */
     public function testEscapeAtSigns(): void
     {
         self::assertSame(

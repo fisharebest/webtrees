@@ -28,8 +28,6 @@ class CensusTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesCzech(): void
     {
@@ -51,8 +49,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesDanish(): void
     {
@@ -74,8 +70,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesGerman(): void
     {
@@ -97,8 +91,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesAustralianEnglish(): void
     {
@@ -120,8 +112,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesBritishEnglish(): void
     {
@@ -143,8 +133,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesUSEnglish(): void
     {
@@ -166,8 +154,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesFrench(): void
     {
@@ -189,8 +175,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesCanadianFrench(): void
     {
@@ -212,8 +196,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesSlovak(): void
     {
@@ -235,8 +217,6 @@ class CensusTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Census\Census
-     *
-     * @return void
      */
     public function testCensusPlacesDefault(): void
     {

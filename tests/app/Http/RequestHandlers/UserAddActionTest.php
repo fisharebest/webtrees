@@ -33,9 +33,6 @@ class UserAddActionTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testHandler(): void
     {
         $user_service = new UserService();

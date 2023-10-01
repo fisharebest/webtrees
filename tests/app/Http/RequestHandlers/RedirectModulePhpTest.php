@@ -38,9 +38,8 @@ use Illuminate\Support\Collection;
  */
 class RedirectModulePhpTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testRedirectPedigreeMap(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -91,9 +90,6 @@ class RedirectModulePhpTest extends TestCase
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
     }
 
-    /**
-     * @return void
-     */
     public function testRedirectInteractiveTree(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -145,9 +141,6 @@ class RedirectModulePhpTest extends TestCase
     }
 
 
-    /**
-     * @return void
-     */
     public function testNoSuchTree(): void
     {
         $module_service  = $this->createStub(ModuleService::class);
@@ -169,9 +162,6 @@ class RedirectModulePhpTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testNoSuchIndividual(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -206,9 +196,6 @@ class RedirectModulePhpTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testPedigreeMapModuleDisabled(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -252,9 +239,6 @@ class RedirectModulePhpTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testInteractiveTreeModuleDisabled(): void
     {
         $tree = $this->createStub(Tree::class);
