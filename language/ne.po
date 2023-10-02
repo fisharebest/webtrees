@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-10-01 11:32+0000\n"
+"PO-Revision-Date: 2023-10-03 10:00+0000\n"
 "Last-Translator: Purushottam Ghimire <ghimiretree@gmail.com>\n"
 "Language-Team: Nepali <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ne/>\n"
@@ -3764,27 +3764,27 @@ msgstr "नातिको नामकरण"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-brother"
-msgstr ""
+msgstr "सौतेनी भाइको नामकरण"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr ""
+msgstr "सौतेनी दाजुभाइको नामकरण"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
-msgstr ""
+msgstr "सौतेनी बहिनीको नामकरण"
 
 #: app/GedcomTag.php:1244
 msgid "Christening of a sibling"
-msgstr ""
+msgstr "दाजुभाइको नामकरण"
 
 #: app/GedcomTag.php:1242
 msgid "Christening of a sister"
-msgstr ""
+msgstr "बहिनीको नामकरण"
 
 #: app/GedcomTag.php:1195
 msgid "Christening of a son"
-msgstr ""
+msgstr "छोराको नामकरण"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
@@ -3793,7 +3793,7 @@ msgstr "क्रिस्टमस आइस्ल्यान्ड"
 
 #: app/GedcomCode/GedcomCodeRela.php:90
 msgid "Circumciser"
-msgstr ""
+msgstr "सर्कमसाइजर"
 
 #. I18N: gedcom tag PAGE
 #: app/GedcomTag.php:674 modules_v3/fact_sources/report.xml:74
@@ -3801,7 +3801,7 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr ""
+msgstr "उद्धरण विवरण"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
@@ -3820,27 +3820,27 @@ msgstr ""
 
 #: app/GedcomTag.php:582 modules_v3/fact_sources/report.xml:202
 msgid "Civil marriage"
-msgstr ""
+msgstr "नागरिक विवाह"
 
 #: app/GedcomCode/GedcomCodeRela.php:98
 msgid "Civil registrar"
-msgstr ""
+msgstr "सिभिल रजिस्ट्रार"
 
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "सिभिल रजिस्ट्रार"
 
 #: app/GedcomCode/GedcomCodeRela.php:94
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr ""
+msgstr "सिभिल रजिस्ट्रार"
 
 #. I18N: The “Data folder” is a configuration setting
 #. I18N: Menu entry
 #: admin_site_clean.php:51 app/Theme/AdministrationTheme.php:102
 msgid "Clean up data folder"
-msgstr ""
+msgstr "डाटा फोल्डर सफा गर्नुहोस्"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
@@ -3850,17 +3850,17 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
-msgstr ""
+msgstr "क्लिपिङ्स कार्ट"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1918
 msgid "Coat of arms"
-msgstr ""
+msgstr "कोट अफ आर्मस्"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Cochabamba, Bolivia"
-msgstr ""
+msgstr "कोचाबाम्बा, बोलिभिया"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
@@ -3870,7 +3870,7 @@ msgstr "कोकस (केलिङ) द्वीप"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr ""
+msgstr "कफी र क्रीम"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
@@ -3890,17 +3890,17 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:147
 msgid "Columbia River, Washington, United States"
-msgstr ""
+msgstr "कोलम्बिया नदी, वासिङ्गटन, संयुक्त राज्य अमेरिका"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Columbia, South Carolina, United States"
-msgstr ""
+msgstr "Columbia, दक्षिण क्यारोलाइना, संयुक्त राज्य अमेरिका"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:141
 msgid "Columbus, Ohio, United States"
-msgstr ""
+msgstr "Columbus, ओहायो, संयुक्त राज्य अमेरिका"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -3918,7 +3918,7 @@ msgstr "टिप्पणीहरू"
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1249
 msgid "Common law marriage"
-msgstr ""
+msgstr "सामान्य कानुनी विवाह"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:38
@@ -3934,24 +3934,24 @@ msgstr "कोमोरस"
 #: app/Controller/CompactController.php:46
 #: app/Module/CompactTreeChartModule.php:33
 msgid "Compact tree"
-msgstr ""
+msgstr "कम्प्याक्ट वंशवृक्ष"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:43
 #: app/Controller/CompactController.php:125
 #, php-format
 msgid "Compact tree of %s"
-msgstr ""
+msgstr "%s को कम्प्याक्ट वंशवृक्ष"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
 msgid "Completed before 1970; date not available"
-msgstr ""
+msgstr "1970 अघि पूरा भएको; मिति उपलब्ध छैन"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "पूरा भयो; मिति अज्ञात"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
@@ -3973,7 +3973,7 @@ msgstr "स्वीकृति"
 
 #: setup.php:275
 msgid "Connection to database server"
-msgstr ""
+msgstr "डाटाबेस सर्भरमा जडान"
 
 #: admin_trees_config.php:847
 msgid "Contact information"
@@ -3981,7 +3981,7 @@ msgstr "सम्पर्क जानकारी"
 
 #: edituser.php:294
 msgid "Contact method"
-msgstr ""
+msgstr "सम्पर्क विधि"
 
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
@@ -4019,7 +4019,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:212 app/Module/StoriesModule.php:347
 #: app/Theme/AbstractTheme.php:1315 app/Theme/AdministrationTheme.php:243
 msgid "Control panel"
-msgstr ""
+msgstr "कन्ट्रोल प्यानल"
 
 #: admin_trees_download.php:150 app/Module/ClippingsCartModule.php:426
 #: app/Module/ClippingsCartModule.php:794
@@ -4033,12 +4033,12 @@ msgstr "कुक टापु"
 
 #: app/Theme/AbstractTheme.php:345
 msgid "Cookies"
-msgstr ""
+msgstr "कुकीज्"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:143
 msgid "Copenhagen, Denmark"
-msgstr ""
+msgstr "कोपेनहेगन, डेनमार्क"
 
 #: app/Functions/FunctionsPrintFacts.php:191
 #: app/Functions/FunctionsPrintFacts.php:194
@@ -4052,12 +4052,12 @@ msgstr "प्रतिलिपि गर्नुहोस्"
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "%1$s बाट %2$s मा सबै रेकर्डहरू प्रतिलिपि गर्नुहोस्।"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:369
 msgid "Copy files…"
-msgstr ""
+msgstr "फाइलहरू प्रतिलिपि गर्नुहोस्…"
 
 #: admin_site_upgrade.php:339
 #, php-format
@@ -4082,6 +4082,8 @@ msgstr "संघ"
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
 msgstr ""
+"\"John/DOE/\" वा \"John /DOE\" फारमको NAME रेकर्डहरू, पुरानो वंशावली "
+"कार्यक्रमहरूद्वारा उत्पादित गरी सही गर्नुहोस्।"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6724
@@ -4096,6 +4098,8 @@ msgstr "कोट ड'लवोइर"
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
 msgstr ""
+"तपाईंले प्रविष्ट गर्नुभएको जानकारी प्रमाणित गर्न सकेन। कृपया पुन: प्रयास "
+"गर्नुहोस् वा थप जानकारीको लागि साइट प्रशासकलाई सम्पर्क गर्नुहोस्।"
 
 #: app/Stats.php:5579
 msgid "Count"
@@ -4125,36 +4129,36 @@ msgstr "देश"
 
 #: admin_media.php:314
 msgid "Create"
-msgstr ""
+msgstr "सिर्जना गर्नुहोस्"
 
 #: admin_trees_manage.php:634
 msgid "Create a family tree"
-msgstr ""
+msgstr "एउटा पारिवारिक वृक्ष बनाउनुहोस्"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
-msgstr ""
+msgstr "मिडिया वस्तु सिर्जना गर्नुहोस्"
 
 #: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
 #: edit_interface.php:1555
 msgid "Create a repository"
-msgstr ""
+msgstr "एउटा भण्डार सिर्जना गर्नुहोस्"
 
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
 msgid "Create a shared note"
-msgstr ""
+msgstr "साझा नोट सिर्जना गर्नुहोस्"
 
 #: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr ""
+msgstr "जनगणना सहायक प्रयोग गरेर साझा नोट सिर्जना गर्नुहोस्"
 
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
 #: edit_interface.php:1259
 msgid "Create a source"
-msgstr ""
+msgstr "स्रोत सिर्जना गर्नुहोस्"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
@@ -4162,15 +4166,17 @@ msgstr ""
 
 #: edit_interface.php:730
 msgid "Create an individual"
-msgstr ""
+msgstr "व्यक्ति सिर्जना गर्नुहोस्"
 
 #: statistics.php:497
 msgid "Create your own chart"
-msgstr ""
+msgstr "तपाईंको आफ्नै चार्ट सिर्जना गर्नुहोस्"
 
 #: admin_trees_manage.php:757
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"डेटा फोल्डरमा प्रत्येक GEDCOM फाइलको लागि पारिवारिक रूख सिर्जना गर्नुहोस्, "
+"अद्यावधिक गर्नुहोस् र मेटाउनुहोस्।"
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4180,23 +4186,23 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:1013
 #: modules_v3/family_group_report/report.xml:1040
 msgid "Cremation"
-msgstr ""
+msgstr "दाहसंस्कार"
 
 #: app/GedcomTag.php:1334
 msgid "Cremation of a brother"
-msgstr ""
+msgstr "भाइको दाहसंस्कार"
 
 #: app/GedcomTag.php:1257
 msgid "Cremation of a child"
-msgstr ""
+msgstr "बच्चाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1255
 msgid "Cremation of a daughter"
-msgstr ""
+msgstr "छोरीको दाहसंस्कार"
 
 #: app/GedcomTag.php:1325
 msgid "Cremation of a father"
-msgstr ""
+msgstr "पिताको दाहसंस्कार"
 
 #: app/GedcomTag.php:1293 app/GedcomTag.php:1302 app/GedcomTag.php:1311
 msgid "Cremation of a grand-parent"
@@ -4204,103 +4210,103 @@ msgstr ""
 
 #: app/GedcomTag.php:1266 app/GedcomTag.php:1275 app/GedcomTag.php:1284
 msgid "Cremation of a grandchild"
-msgstr ""
+msgstr "नातिनातिनाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1264
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "नातिनीको दाहसंस्कार"
 
 #: app/GedcomTag.php:1273
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "नातिनीको दाहसंस्कार"
 
 #: app/GedcomTag.php:1282
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr ""
+msgstr "नातिनीको दाहसंस्कार"
 
 #: app/GedcomTag.php:1289
 msgid "Cremation of a grandfather"
-msgstr ""
+msgstr "हजुरबुवाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1291
 msgid "Cremation of a grandmother"
-msgstr ""
+msgstr "हजुरआमाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1262
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "नातिको दाहसंस्कार"
 
 #: app/GedcomTag.php:1271
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "नातिको दाहसंस्कार"
 
 #: app/GedcomTag.php:1280
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr ""
+msgstr "नातिको दाहसंस्कार"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-brother"
-msgstr ""
+msgstr "सौतेनी भाइको दाहसंस्कार"
 
 #: app/GedcomTag.php:1320
 msgid "Cremation of a half-sibling"
-msgstr ""
+msgstr "सौतेनी दाजुभाइको दाहसंस्कार"
 
 #: app/GedcomTag.php:1318
 msgid "Cremation of a half-sister"
-msgstr ""
+msgstr "सौतेनी बहिनीको दाहसंस्कार"
 
 #: app/GedcomTag.php:1343
 msgid "Cremation of a husband"
-msgstr ""
+msgstr "श्रीमानको दाहसंस्कार"
 
 #: app/GedcomTag.php:1307
 msgid "Cremation of a maternal grandfather"
-msgstr ""
+msgstr "हजुरबुवाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1309
 msgid "Cremation of a maternal grandmother"
-msgstr ""
+msgstr "हजुरआमाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1327
 msgid "Cremation of a mother"
-msgstr ""
+msgstr "आमाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1329
 msgid "Cremation of a parent"
-msgstr ""
+msgstr "अभिभावकको दाहसंस्कार"
 
 #: app/GedcomTag.php:1298
 msgid "Cremation of a paternal grandfather"
-msgstr ""
+msgstr "हजुरबुवाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1300
 msgid "Cremation of a paternal grandmother"
-msgstr ""
+msgstr "हजुरआमाको दाहसंस्कार"
 
 #: app/GedcomTag.php:1338
 msgid "Cremation of a sibling"
-msgstr ""
+msgstr "दाजुभाइको दाहसंस्कार"
 
 #: app/GedcomTag.php:1336
 msgid "Cremation of a sister"
-msgstr ""
+msgstr "बहिनीको दाहसंस्कार"
 
 #: app/GedcomTag.php:1253
 msgid "Cremation of a son"
-msgstr ""
+msgstr "छोराको दाहसंस्कार"
 
 #: app/GedcomTag.php:1347
 msgid "Cremation of a spouse"
-msgstr ""
+msgstr "पति/पत्नीको दाहसंस्कार"
 
 #: app/GedcomTag.php:1345
 msgid "Cremation of a wife"
-msgstr ""
+msgstr "पत्नीको दाहसंस्कार"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6773
@@ -4315,7 +4321,7 @@ msgstr "क्यूबा"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "क्युरिटिबा, ब्राजिल"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
@@ -4327,7 +4333,7 @@ msgstr "अनुकूल"
 
 #: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
-msgstr ""
+msgstr "अनुकूलन घटना"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
@@ -4335,7 +4341,7 @@ msgstr ""
 
 #: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
-msgstr ""
+msgstr "अनुकूलन मोड्युल"
 
 #: find.php:533
 msgid "Custom tags"
@@ -4348,11 +4354,11 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_site_config.php:478
 msgid "Custom welcome text"
-msgstr ""
+msgstr "अनुकूलन स्वागत पाठ"
 
 #: app/Theme/AbstractTheme.php:1078 app/Theme/AbstractTheme.php:1080
 msgid "Customize this page"
-msgstr ""
+msgstr "यो पृष्ठ आफ्नो अनुकुल बनाउनुहोस्"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6729
@@ -4367,17 +4373,17 @@ msgstr "चेक गणराज्य"
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
 msgid "DNA markers"
-msgstr ""
+msgstr "डीएनए मार्करहरू"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:262
 msgid "Daitch-Mokotoff"
-msgstr ""
+msgstr "डाइच-Mokotoff"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Dallas, Texas, United States"
-msgstr ""
+msgstr "डल्लास, टेक्सस्, संयुक्त राज्य अमेरिका"
 
 #. I18N: A summary of the system status
 #: admin.php:482
@@ -4400,7 +4406,7 @@ msgstr ""
 
 #: setup.php:278
 msgid "Database connection"
-msgstr ""
+msgstr "डाटाबेस जडान"
 
 #: setup.php:373 setup.php:375
 msgid "Database name"
@@ -4408,11 +4414,11 @@ msgstr "डाटाबेस नाम"
 
 #: setup.php:292
 msgid "Database password"
-msgstr ""
+msgstr "डाटाबेस पासवर्ड"
 
 #: setup.php:288
 msgid "Database user account"
-msgstr ""
+msgstr "डाटाबेस प्रयोगकर्ता खाता"
 
 #. I18N: gedcom tag DATE
 #: app/GedcomTag.php:348 edit_changes.php:184 help_text.php:136
@@ -4427,43 +4433,43 @@ msgstr "मिति"
 
 #: app/Module/RelativesTabModule.php:315
 msgid "Date differences"
-msgstr ""
+msgstr "मिति भिन्नताहरू"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
-msgstr ""
+msgstr "LDS बप्तिस्मा को मिति"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr ""
+msgstr "LDS बच्चा सील को मिति"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr ""
+msgstr "LDS निधिको मिति"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
 msgid "Date of LDS spouse sealing"
-msgstr ""
+msgstr "LDS पति वा पत्नी सील को मिति"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
-msgstr ""
+msgstr "ग्रहण मिति"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
-msgstr ""
+msgstr "बप्तिस्मा को मिति"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:212
 msgid "Date of bar mitzvah"
-msgstr ""
+msgstr "बार mitzvah को मिति"
 
 #: app/GedcomTag.php:200 modules_v3/missing_facts_report/report.xml:253
 msgid "Date of bat mitzvah"
-msgstr ""
+msgstr "ब्याट mitzvah को मिति"
 
 #: app/GedcomTag.php:208 modules_v3/fact_sources/report.xml:68
 #: modules_v3/fact_sources/report.xml:272
@@ -4474,61 +4480,61 @@ msgstr "जन्म मिति"
 
 #: app/GedcomTag.php:216
 msgid "Date of blessing"
-msgstr ""
+msgstr "आशीर्वाद दिन"
 
 #: app/GedcomTag.php:1090
 msgid "Date of brit milah"
-msgstr ""
+msgstr "ब्रिट मिलह को मिति"
 
 #: app/GedcomTag.php:228 modules_v3/missing_facts_report/report.xml:546
 msgid "Date of burial"
-msgstr ""
+msgstr "दाहसंस्कार मिति"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr ""
+msgstr "नामकरण मिति"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
-msgstr ""
+msgstr "पुष्टि मिति"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr ""
+msgstr "दाहसंस्कार मिति"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:505
 msgid "Date of death"
-msgstr ""
+msgstr "मृत्यु मिति"
 
 #: app/GedcomTag.php:462
 msgid "Date of divorce"
-msgstr ""
+msgstr "सम्बन्धविच्छेदको मिति"
 
 #: app/GedcomTag.php:406
 msgid "Date of emigration"
-msgstr ""
+msgstr "प्रवासको मिति"
 
 #: app/GedcomTag.php:422 modules_v3/missing_facts_report/report.xml:336
 msgid "Date of engagement"
-msgstr ""
+msgstr "संलग्नता मिति"
 
 #: app/GedcomTag.php:344
 msgid "Date of entry in original source"
-msgstr ""
+msgstr "मूल स्रोतमा प्रविष्टिको मिति"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr ""
+msgstr "घटनाको मिति"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
-msgstr ""
+msgstr "पहिलो सम्वादको मिति"
 
 #: app/GedcomTag.php:526
 msgid "Date of immigration"
-msgstr ""
+msgstr "अध्यागमन मिति"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
@@ -4543,35 +4549,39 @@ msgstr "विवाह मिति"
 
 #: app/GedcomTag.php:562 modules_v3/missing_facts_report/report.xml:420
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "विवाह प्रतिबन्धको मिति"
 
 #: app/GedcomTag.php:620
 msgid "Date of naturalization"
-msgstr ""
+msgstr "प्राकृतिकीकरण को मिति"
 
 #: app/GedcomTag.php:668
 msgid "Date of ordination"
-msgstr ""
+msgstr "समायोजन मिति"
 
 #: app/GedcomTag.php:734
 msgid "Date of residence"
-msgstr ""
+msgstr "बस्ने मिति"
 
 #: help_text.php:159
 msgid "Date period"
-msgstr ""
+msgstr "मिति अवधि"
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr ""
+"मिति अवधिहरू संकेत गर्न प्रयोग गरिन्छ कि एक तथ्य, जस्तै पेशा, समय को लागी "
+"जारी रह्यो।"
 
 #: help_text.php:148 statistics.php:723
 msgid "Date range"
-msgstr ""
+msgstr "मिति दायरा"
 
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
+"मिति दायराहरू संकेत गर्न प्रयोग गरिन्छ कि घटना, जस्तै जन्म, सम्भव दायरा भित्"
+"र अज्ञात मितिमा भयो।"
 
 #: admin_users.php:850
 msgid "Date registered"
@@ -4751,7 +4761,7 @@ msgstr "मृत्यु"
 
 #: app/Stats.php:1674 statistics.php:575
 msgid "Death by country"
-msgstr ""
+msgstr "देश अनुसार मृत्यु"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
@@ -4987,7 +4997,7 @@ msgstr "पूर्वनिर्धारित थीम"
 #. I18N: gedcom tag _DEG
 #: app/GedcomTag.php:1455
 msgid "Degree"
-msgstr ""
+msgstr "डिग्री"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -5005,7 +5015,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "देजाभु"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_config.php:572 admin_trees_manage.php:418
@@ -5170,84 +5180,84 @@ msgstr "देत्रोइत, मिसिकन, संयुक्त र�
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "डेइ"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "डेइ"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "डेइ"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:128
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "डेइ"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "डेइ"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "धु अल हिज्जा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "धु अल हिज्जा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "धु अल हिज्जा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "धु अल हिज्जा"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "धु अल-किदाह"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "धु अल-किदाह"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:132
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "धु अल-किदाह"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:68
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "धु अल-किदाह"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
 msgid "Died as a child: exempt"
-msgstr ""
+msgstr "बच्चाको रूपमा मृत्यु भयो: exempt"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:96
@@ -5256,24 +5266,31 @@ msgstr ""
 
 #: modules_v3/change_report/report.xml:60
 msgid "Differences"
-msgstr ""
+msgstr "भिन्नताहरू"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:706
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
 msgstr ""
+"संसारका विभिन्न भागहरूमा विभिन्न पात्रो प्रणालीहरू प्रयोग गरिन्छ, र धेरै अन्"
+"य क्यालेन्डर प्रणालीहरू विगतमा प्रयोग गरिएको छ। जहाँ सम्भव छ, तपाईंले "
+"क्यालेन्डर प्रयोग गरेर मितिहरू प्रविष्ट गर्नुपर्छ जसमा घटना मूल रूपमा रेकर्ड "
+"गरिएको थियो। तपाइँ त्यसपछि एक रूपान्तरण निर्दिष्ट गर्न सक्नुहुन्छ, यी "
+"मितिहरूलाई थप परिचित पात्रोमा देखाउन। यदि तपाइँ नियमित रूपमा दुई "
+"क्यालेन्डरहरू प्रयोग गर्नुहुन्छ भने, तपाइँ दुईवटा रूपान्तरणहरू निर्दिष्ट गर्"
+"न सक्नुहुन्छ र मितिहरू दुवै चयन गरिएका क्यालेन्डरहरूमा रूपान्तरण गरिनेछ।"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors"
-msgstr ""
+msgstr "प्रत्यक्ष रेखा पुर्खाहरू"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr ""
+msgstr "प्रत्यक्ष रेखा पुर्खाहरू र तिनीहरूका परिवारहरू"
 
 #: admin_site_upgrade.php:137
 msgid "Disable these modules"
@@ -5287,31 +5304,31 @@ msgstr ""
 #: app/I18N.php:183
 #, php-format
 msgid "Display %s"
-msgstr ""
+msgstr "%s देखाउनुहोस्"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
 msgid "Display and manage a family tree’s favorite pages."
-msgstr ""
+msgstr "पारिवारिक वृक्षको मनपर्ने पृष्ठहरू देखाउनुहोस् र व्यवस्थापन गर्नुहोस्।"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "प्रयोगकर्ताको मनपर्ने पृष्ठहरू प्रदर्शन र व्यवस्थापन गर्नुहोस्।"
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
 msgid "Divorce"
-msgstr ""
+msgstr "सम्बन्धविच्छेद"
 
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:378
 msgid "Divorce filed"
-msgstr ""
+msgstr "सम्बन्धविच्छेद दर्ता गराइयो"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
-msgstr ""
+msgstr "शताब्दी अनुसार सम्बन्ध विच्छेद"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6732
@@ -5329,12 +5346,12 @@ msgstr ""
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
 msgid "Do not seal, previous sealing canceled"
-msgstr ""
+msgstr "सील नगर्नुहोस्, अघिल्लो सील रद्द गरियो"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:84
 msgid "Do not seal: unauthorized"
-msgstr ""
+msgstr "सील नगर्नुहोस्: अनाधिकृत"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1920
@@ -5361,7 +5378,7 @@ msgstr "डाऊनलोड"
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "%s डाउनलोड गर्नुहोस्…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -5374,32 +5391,49 @@ msgstr "भौगोलिक आँकडा डाऊनलोड गर्न
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:157
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "Draper, युटा, संयुक्त राज्य अमेरिका"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr ""
+msgstr "डुओडी"
 
 #: admin_users.php:73 edituser.php:60 login.php:289
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "डुप्लिकेट इमेल ठेगाना। त्यो इमेल भएको प्रयोगकर्ता पहिले नै अवस्थित छ।"
 
 #: admin_users.php:71 edituser.php:58 login.php:287
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
 msgstr ""
+"डुप्लिकेट प्रयोगकर्ता नाम। त्यो प्रयोगकर्ता नाम भएको प्रयोगकर्ता पहिले नै "
+"अवस्थित छ। कृपया अर्को प्रयोगकर्ता नाम छान्नुहोस्।"
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"प्रत्येक स्रोतले विशेष घटनाहरू रेकर्ड गर्दछ, सामान्यतया दिइएको मिति दायरा र "
+"स्थान क्षेत्राधिकारको लागि। उदाहरणका लागि जनगणनाले जनगणनाका घटनाहरू रेकर्ड "
+"गर्छ र चर्चले जन्म, विवाह र मृत्युका घटनाहरू रेकर्ड गर्छ।<br><br>प्रदान "
+"गरिएका घटनाहरूको सूचीबाट यो स्रोतद्वारा रेकर्ड गरिएका घटनाहरू चयन गर्नुहोस्। "
+"मिति दायरा ढाँचामा निर्दिष्ट गरिनु पर्छ जस्तै <i>1900 देखि 1910</i>। स्थान "
+"क्षेत्राधिकार भनेको सबैभन्दा तल्लो अधिकार क्षेत्रको नाम हो जसले यस स्रोतमा ना"
+"म गरिएका सबै तल्लो-स्तरका स्थानहरूलाई समेट्छ। उदाहरणका लागि, \"Oneida, "
+"Idaho, USA\" लाई Oneida काउन्टी भित्रका विभिन्न सहरहरूमा हुने घटनाहरूका लागि "
+"स्रोत अधिकार क्षेत्रको रूपमा प्रयोग गरिनेछ। \"Idaho, USA\" स्रोत क्षेत्राधिका"
+"र स्थान हुनेछ यदि रेकर्ड गरिएका घटनाहरू Oneida County मा मात्र नभएर Idaho का "
+"अन्य काउन्टीहरूमा पनि भएमा।"
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
 msgstr ""
+"प्रत्येक प्रयोगकर्ता खातासँग \"स्वचालित रूपमा परिवर्तनहरू स्वीकार गर्ने\" "
+"विकल्प हुन्छ। जब यो सक्षम हुन्छ, त्यो प्रयोगकर्ताद्वारा गरिएका कुनै पनि "
+"परिवर्तनहरू तुरुन्तै सुरक्षित हुन्छन्। धेरै प्रशासकहरूले यसलाई आफ्नै "
+"प्रयोगकर्ता खाताको लागि सक्षम पार्छन्।"
 
 #: statistics.php:129
 msgid "Earliest birth"
-msgstr ""
+msgstr "सबैभन्दा प्रारम्भिक जन्म"
 
 #: app/Module/FamilyTreeStatisticsModule.php:142
 #: app/Module/FamilyTreeStatisticsModule.php:320
@@ -5409,7 +5443,7 @@ msgstr ""
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr ""
+msgstr "प्रारम्भिक मृत्यु"
 
 #: app/Module/FamilyTreeStatisticsModule.php:156
 #: app/Module/FamilyTreeStatisticsModule.php:348
@@ -5419,11 +5453,11 @@ msgstr ""
 
 #: statistics.php:232
 msgid "Earliest divorce"
-msgstr ""
+msgstr "प्रारम्भिक सम्बन्ध विच्छेद"
 
 #: statistics.php:231
 msgid "Earliest marriage"
-msgstr ""
+msgstr "प्रारम्भिक विवाह"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6737
@@ -5468,12 +5502,12 @@ msgstr ""
 #. I18N: Options for editing
 #: admin_trees_config.php:1611
 msgid "Edit preferences"
-msgstr ""
+msgstr "प्राथमिकताहरू सम्पादन गर्नुहोस्"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:136
 msgid "Edit the FAQ"
-msgstr ""
+msgstr "FAQ सम्पादन गर्नुहोस्"
 
 #: app/Controller/MediaController.php:116
 #: modules_v3/GEDFact_assistant/census/census-edit.php:130
@@ -5508,7 +5542,7 @@ msgstr ""
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2559 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr ""
+msgstr "कच्चा GEDCOM सम्पादन गर्नुहोस्"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
@@ -5518,7 +5552,7 @@ msgstr ""
 #: app/Functions/FunctionsEdit.php:450 edit_interface.php:1424
 #: edit_interface.php:1470
 msgid "Edit the shared note"
-msgstr ""
+msgstr "साझा नोट सम्पादन गर्नुहोस्"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
@@ -5531,11 +5565,13 @@ msgstr "कथा सम्पादन गर्नुहोस्"
 
 #: admin_users.php:272
 msgid "Edit the user"
-msgstr ""
+msgstr "प्रयोगकर्ता सम्पादन गर्नुहोस्"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
 msgstr ""
+"यस व्यक्तिलाई सम्पादन गर्नुहोस् र तिनीहरूको विवरणहरू तपाईंको आफ्नैसँग "
+"बदल्नुहोस्।"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
@@ -5545,7 +5581,7 @@ msgstr "सम्पादक"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
 msgid "Edmonton, Alberta, Canada"
-msgstr ""
+msgstr "Edmonton, Alberta, क्यानाडा"
 
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:386
@@ -5614,7 +5650,7 @@ msgstr ""
 
 #: admin_users.php:381
 msgid "Email verified"
-msgstr ""
+msgstr "इमेल प्रमाणित भयो"
 
 #: app/Stats.php:84
 msgid "Embedded variable"
@@ -5623,7 +5659,7 @@ msgstr ""
 #. I18N: gedcom tag EMIG
 #: app/GedcomTag.php:404
 msgid "Emigration"
-msgstr ""
+msgstr "आप्रवासन"
 
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Employee"
@@ -5642,22 +5678,22 @@ msgstr "कर्मचारी"
 #: app/GedcomCode/GedcomCodeRela.php:116 app/GedcomTag.php:656
 #: app/GedcomTag.php:746
 msgid "Employer"
-msgstr ""
+msgstr "रोजगारदाता"
 
 #: app/GedcomCode/GedcomCodeRela.php:114
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr ""
+msgstr "रोजगारदाता"
 
 #: app/GedcomCode/GedcomCodeRela.php:112
 msgctxt "MALE"
 msgid "Employer"
-msgstr ""
+msgstr "रोजगारदाता"
 
 #: app/Module/ClippingsCartModule.php:481
 #: app/Module/ClippingsCartModule.php:728
 msgid "Empty the clippings cart"
-msgstr ""
+msgstr "क्लिपिङ्स कार्ट खाली गर्नुहोस्"
 
 #: admin_modules.php:156
 msgid "Enabled"
@@ -5667,6 +5703,8 @@ msgstr "सक्षम पारिएको"
 #: admin_trees_config.php:370
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr ""
+"यो विकल्प सक्षम गर्नाले सबै आगन्तुकहरूलाई वेबसाइटमा कुनै पनि डेटा हेर्न सक्नु"
+" अघि साइन इन गर्न बाध्य पार्छ।"
 
 #. I18N …of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
@@ -5676,21 +5714,21 @@ msgstr ""
 #. I18N: The latest year in a range
 #: lifespan.php:77
 msgid "End year"
-msgstr ""
+msgstr "अन्त्य वर्ष"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
-msgstr ""
+msgstr "परिवर्तन मितिहरूको अन्त्य दायरा"
 
 #. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
 #: app/GedcomCode/GedcomCodeTemp.php:161
 msgid "Endowment House"
-msgstr ""
+msgstr "इन्डोमेन्ट हाउस"
 
 #. I18N: gedcom tag ENGA
 #: app/GedcomTag.php:420 modules_v3/missing_facts_report/report.xml:20
 msgid "Engagement"
-msgstr ""
+msgstr "संलग्नता"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6739
@@ -5703,7 +5741,7 @@ msgstr "व्यात्ति,परिवार अथवा श्रोत
 
 #: app/Module/FamilyTreeFavoritesModule.php:225
 msgid "Enter an optional note about this favorite"
-msgstr ""
+msgstr "यो मनपर्ने बारेमा एक वैकल्पिक टिप्पणी प्रविष्ट गर्नुहोस्"
 
 #: addmedia.php:434
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
@@ -5712,7 +5750,7 @@ msgstr ""
 
 #: search.php:191
 msgid "Entire record"
-msgstr ""
+msgstr "सम्पूर्ण रेकर्ड"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6762
@@ -5728,17 +5766,19 @@ msgstr "इरिट्राया"
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr ""
+"Error: GEDCOM फाइलहरूलाई %s इन्कोडिङबाट UTF-8 इन्कोडिङमा रूपान्तरण गर्ने हाल "
+"समर्थित छैन।"
 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "इएसफ"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "एसफान्ड"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:162
@@ -5761,7 +5801,7 @@ msgstr "इस्फान्ड"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1184
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "जन्म र मृत्युको लागि अनुमानित मितिहरू"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6743
@@ -5790,7 +5830,7 @@ msgstr "घटनाहरू"
 
 #: statistics.php:420
 msgid "Events in countries"
-msgstr ""
+msgstr "देशहरूमा घटनाहरू"
 
 #: app/Module/IndividualFactsTabModule.php:134
 msgid "Events of close relatives"
@@ -5798,16 +5838,16 @@ msgstr "नजिकैको नातेदारहरुको घटना�
 
 #: admin_users.php:532
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr ""
+msgstr "वेबसाइट र खोज इन्जिनहरूमा आगन्तुकहरू सहित सबैको यो भूमिका हुन्छ।"
 
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:255 search_advanced.php:270
 msgid "Exact"
-msgstr ""
+msgstr "ठ्याक्कै"
 
 #: search_advanced.php:103 search_advanced.php:168
 msgid "Exact date"
-msgstr ""
+msgstr "ठ्याक्कै मिति"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:162
 msgid "Exact text"
@@ -5816,21 +5856,21 @@ msgstr ""
 #: famlist.php:176 indilist.php:176
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr ""
+msgstr "विवाहित नामको रूपमा \"%s\" भएका व्यक्तिहरूलाई बहिष्कार गर्नुहोस्"
 
 #: admin_media.php:671
 msgid "Exclude subfolders"
-msgstr ""
+msgstr "सबफोल्डरहरू समावेश नगर्नुहोस्"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
 msgid "Excluded from this submission"
-msgstr ""
+msgstr "यो सबमिशनबाट बहिष्कृत"
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:487
 msgid "Explain why you are requesting an account."
-msgstr ""
+msgstr "तपाइँ किन खाता अनुरोध गर्दै हुनुहुन्छ भनेर व्याख्या गर्नुहोस्।"
 
 #: admin_trees_manage.php:604
 msgid "Export"
@@ -5838,30 +5878,30 @@ msgstr "ऐक्स्पोर्ट गर्नुहोस"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फाइल निर्यात गर्नुहोस्"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:219
 msgid "Export all the family trees to GEDCOM files…"
-msgstr ""
+msgstr "सबै पारिवारिक रूखहरू GEDCOM फाइलहरूमा निर्यात गर्नुहोस्…"
 
 #: admin_trees_download.php:134
 msgid "Export preferences"
-msgstr ""
+msgstr "प्राथमिकताहरू निर्यात गर्नुहोस्"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:443
 msgid "Extend privacy to dead individuals"
-msgstr ""
+msgstr "मृत व्यक्तिहरूलाई गोपनीयता विस्तार गर्नुहोस्"
 
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:637
 msgid "External files"
-msgstr ""
+msgstr "बाह्य फाइलहरू"
 
 #: admin_media.php:676
 msgid "External media files have a URL instead of a filename."
-msgstr ""
+msgstr "बाह्य मिडिया फाइलहरूमा फाइलनामको सट्टा URL हुन्छ।"
 
 #. I18N: Name of a module/sidebar
 #: app/Module/ExtraInformationModule.php:29
@@ -5871,88 +5911,92 @@ msgstr "अतिरिक्त जानकारी"
 #. I18N: gedcom tag _EYEC
 #: app/GedcomTag.php:1471
 msgid "Eye color"
-msgstr ""
+msgstr "आँखाको रंग"
 
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:172
 msgid "F.A.B."
-msgstr ""
+msgstr "एफ.ए.बी."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 msgid "FAQ"
-msgstr ""
+msgstr "एफएक्यू"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr ""
+"FAQ हरू प्रश्न र उत्तरहरूको सूची हुन्, जसले तपाईंलाई तपाईंको आगन्तुकहरूलाई "
+"साइटका नियमहरू, नीतिहरू र प्रक्रियाहरू व्याख्या गर्न अनुमति दिन्छ। प्रश्नहरू "
+"सामान्यतया गोपनीयता, प्रतिलिपि अधिकार, प्रयोगकर्ता-खाताहरू, अनुपयुक्त सामग्री"
+", स्रोत-उद्धरणहरूको लागि आवश्यकता, आदिसँग सम्बन्धित छन्।"
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
 msgid "Fact"
-msgstr ""
+msgstr "तथ्य"
 
 #: app/GedcomTag.php:1473
 msgid "Fact 1"
-msgstr ""
+msgstr "तथ्य 1"
 
 #: app/GedcomTag.php:1491
 msgid "Fact 10"
-msgstr ""
+msgstr "तथ्य 10"
 
 #: app/GedcomTag.php:1493
 msgid "Fact 11"
-msgstr ""
+msgstr "तथ्य 11"
 
 #: app/GedcomTag.php:1495
 msgid "Fact 12"
-msgstr ""
+msgstr "तथ्य 12"
 
 #: app/GedcomTag.php:1497
 msgid "Fact 13"
-msgstr ""
+msgstr "तथ्य 13"
 
 #: app/GedcomTag.php:1475
 msgid "Fact 2"
-msgstr ""
+msgstr "तथ्य 2"
 
 #: app/GedcomTag.php:1477
 msgid "Fact 3"
-msgstr ""
+msgstr "तथ्य 3"
 
 #: app/GedcomTag.php:1479
 msgid "Fact 4"
-msgstr ""
+msgstr "तथ्य 4"
 
 #: app/GedcomTag.php:1481
 msgid "Fact 5"
-msgstr ""
+msgstr "तथ्य 5"
 
 #: app/GedcomTag.php:1483
 msgid "Fact 6"
-msgstr ""
+msgstr "तथ्य 6"
 
 #: app/GedcomTag.php:1485
 msgid "Fact 7"
-msgstr ""
+msgstr "तथ्य 7"
 
 #: app/GedcomTag.php:1487
 msgid "Fact 8"
-msgstr ""
+msgstr "तथ्य 8"
 
 #: app/GedcomTag.php:1489
 msgid "Fact 9"
-msgstr ""
+msgstr "तथ्य 9"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1459
 msgid "Fact icons"
-msgstr ""
+msgstr "तथ्य आइकनहरू"
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
-msgstr ""
+msgstr "तथ्य वा घटना"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -5964,11 +6008,11 @@ msgstr "तथ्य र घटनाहरु"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
-msgstr ""
+msgstr "पारिवारिक अभिलेखका लागि तथ्यहरू"
 
 #: admin_trees_config.php:1613
 msgid "Facts for individual records"
-msgstr ""
+msgstr "व्यक्तिगत रेकर्डका लागि तथ्यहरू"
 
 #: admin_trees_config.php:1794
 msgid "Facts for new families"
@@ -5976,7 +6020,7 @@ msgstr "नयाँ परिवारका लागि तथ्यहरू
 
 #: admin_trees_config.php:1676
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "नयाँ व्यक्तिहरूको लागि तथ्य"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
@@ -6011,7 +6055,7 @@ msgstr "परिवारहरु"
 
 #: app/Stats.php:520 statistics.php:395
 msgid "Families with sources"
-msgstr ""
+msgstr "स्रोतहरू भएका परिवारहरू"
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
@@ -6030,12 +6074,12 @@ msgstr "परिवार"
 #. I18N: gedcom tag FAMC
 #: app/GedcomTag.php:448
 msgid "Family as a child"
-msgstr ""
+msgstr "बच्चाको रूपमा परिवार"
 
 #. I18N: gedcom tag FAMS
 #: app/GedcomTag.php:456
 msgid "Family as a spouse"
-msgstr ""
+msgstr "जीवनसाथीको रूपमा परिवार"
 
 #. I18N: Name of a module/chart
 #: app/Controller/FamilyBookController.php:63
@@ -6095,11 +6139,11 @@ msgstr "परिवार वृक्ष"
 #: app/Module/ClippingsCartModule.php:103
 #: app/Module/ClippingsCartModule.php:492
 msgid "Family tree clippings cart"
-msgstr ""
+msgstr "पारिवारिक रूख क्लिपिंग्स कार्ट"
 
 #: admin_trees_config.php:590 admin_trees_manage.php:645
 msgid "Family tree title"
-msgstr ""
+msgstr "पारिवारिक रूख शीर्षक"
 
 #. I18N: Menu entry
 #: admin.php:754 admin.php:762 app/Theme/AbstractTheme.php:1398
@@ -6135,16 +6179,16 @@ msgstr "बुवाआमासँग परिवार"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
 msgid "Family with rada parents"
-msgstr ""
+msgstr "राडा आमाबाबुसँग परिवार"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
 msgid "Family with sealing parents"
-msgstr ""
+msgstr "सील गर्ने आमाबाबुको साथ परिवार"
 
 #: app/Theme/AbstractTheme.php:994
 msgid "Family with spouse"
-msgstr ""
+msgstr "जीवनसाथीसँग परिवार"
 
 #: app/Module/FamilyTreeStatisticsModule.php:186
 #: app/Module/FamilyTreeStatisticsModule.php:404
@@ -6230,7 +6274,7 @@ msgstr "%s सँग बुवाको परिवार"
 #. I18N: A step-family.
 #: app/Individual.php:1005
 msgid "Father’s family with an unknown individual"
-msgstr ""
+msgstr "अज्ञात व्यक्तिसँग बुबाको परिवार"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:62 app/Theme/AbstractTheme.php:1375
@@ -6298,7 +6342,7 @@ msgstr "फाईलको नाप"
 
 #: app/Functions/Functions.php:69
 msgid "File successfully uploaded"
-msgstr ""
+msgstr "फाइल सफलतापूर्वक अपलोड गरियो"
 
 #. I18N: gedcom tag FILE
 #: admin_media.php:481 app/GedcomTag.php:488
@@ -6307,17 +6351,17 @@ msgstr "फाइलनाम"
 
 #: addmedia.php:472 addmedia.php:492 admin_media_upload.php:219
 msgid "Filename on server"
-msgstr ""
+msgstr "सर्भरको फाइल नाम"
 
 #: addmedia.php:161 addmedia.php:295 admin_media_upload.php:117
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "फाइलनामहरूलाई \"%s\" क्यारेक्टर समावेश गर्न अनुमति छैन।"
 
 #: addmedia.php:165 addmedia.php:299 admin_media_upload.php:122
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "फाइलनामहरूलाई \"%s\" विस्तार गर्न अनुमति छैन।"
 
 #: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -6449,19 +6493,19 @@ msgstr "Floreal (फूल)"
 #: app/Date/FrenchDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr ""
+msgstr "फ्लोरियल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:128
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "फ्लोरियल"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "फ्लोरियल"
 
 #: medialist.php:91
 msgid "Folder"
@@ -6497,6 +6541,8 @@ msgstr "फन्ट"
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"उदाहरणका लागि, यदि GEDCOM फाइलमा %1$s छ र webtrees ले मिडिया फोल्डरमा %2$s "
+"फेला पार्ने अपेक्षा गर्दछ भने, तपाईंले %3$s हटाउन आवश्यक छ।"
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6678,25 +6724,25 @@ msgstr ""
 #: app/Date/FrenchDate.php:99
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:132
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "फ्रुक्टिडोर"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:171
@@ -6706,18 +6752,18 @@ msgstr "फुकुओका, जापान"
 #. I18N: gedcom tag _FNRL
 #: app/GedcomTag.php:1501
 msgid "Funeral"
-msgstr ""
+msgstr "अन्त्येष्टि"
 
 #. I18N: A configuration setting
 #: admin_trees_check.php:139 admin_trees_config.php:1588
 msgid "GEDCOM errors"
-msgstr ""
+msgstr "GEDCOM त्रुटिहरू"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
 #: admin_trees_manage.php:597 app/GedcomTag.php:500 app/GedcomTag.php:1509
 msgid "GEDCOM file"
-msgstr ""
+msgstr "GEDCOM फाइल"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6752
@@ -6861,12 +6907,12 @@ msgstr "गिब्राल्टर"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:173
 msgid "Gila Valley, Arizona, United States"
-msgstr ""
+msgstr "गिला Valley, एरिजोना, संयुक्त राज्य अमेरिका"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Gilbert, Arizona, United States"
-msgstr ""
+msgstr "गिलबर्ट, एरिजोना, संयुक्त राज्य अमेरिका"
 
 #: search.php:230
 msgid "Given name"
@@ -6952,7 +6998,7 @@ msgstr "ग्रीस"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:83
 msgid "Green Beam"
-msgstr ""
+msgstr "ग्रीन बीम"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6765
@@ -6972,12 +7018,12 @@ msgstr "ग्रेनाडा"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:177
 msgid "Guadalajara, Mexico"
-msgstr ""
+msgstr "ग्वाडालजारा, मेक्सिको"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6759
 msgid "Guadeloupe"
-msgstr ""
+msgstr "ग्वाडेलुप"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6768
@@ -7006,12 +7052,12 @@ msgstr "ग्वाटेमाला"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:179
 msgid "Guatemala City, Guatemala"
-msgstr ""
+msgstr "ग्वाटेमाला सिटी, ग्वाटेमाला"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:181
 msgid "Guayaquil, Ecuador"
-msgstr ""
+msgstr "ग्वायाकिल, इक्वेडर"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6755
@@ -7041,7 +7087,7 @@ msgstr "एचटीएमएल"
 #. I18N: gedcom tag _HAIR
 #: app/GedcomTag.php:1517
 msgid "Hair color"
-msgstr ""
+msgstr "कपालको रंग"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6774
@@ -7051,17 +7097,17 @@ msgstr "हाइटी"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Halifax, Nova Scotia, Canada"
-msgstr ""
+msgstr "Halifax, नोभा स्कोटिया, क्यानाडा"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:269
 msgid "Hamilton, New Zealand"
-msgstr ""
+msgstr "ह्यामिल्टन, न्युजिल्याण्ड"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:187
 msgid "Hartford, Connecticut, United States"
-msgstr ""
+msgstr "Hartford, कनेक्टिकट, संयुक्त राज्य अमेरिका"
 
 #: modules_v3/descendancy_report/report.xml:428
 msgid "He "
@@ -7086,15 +7132,15 @@ msgstr "उ जन्मेको"
 
 #: modules_v3/ahnentafel_report/report.xml:339
 msgid "He was buried"
-msgstr ""
+msgstr "उहाँलाई गाडियो"
 
 #: modules_v3/ahnentafel_report/report.xml:166
 msgid "He was christened"
-msgstr ""
+msgstr "उहाँको नामकरण गरिएको थियो"
 
 #: modules_v3/ahnentafel_report/report.xml:314
 msgid "He was cremated"
-msgstr ""
+msgstr "उनको दाहसंस्कार गरियो"
 
 #: app/Module/CensusAssistantModule.php:420
 #: modules_v3/GEDFact_assistant/census/census-edit.php:64
@@ -7120,7 +7166,7 @@ msgstr "हिब्रु"
 #. I18N: gedcom tag _HNM
 #: app/GedcomTag.php:1529
 msgid "Hebrew name"
-msgstr ""
+msgstr "हिब्रू नाम"
 
 #. I18N: gedcom tag _HEIG
 #: app/GedcomTag.php:1525 app/Module/GoogleMapsModule.php:441
@@ -7130,16 +7176,16 @@ msgstr "उचाई"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr ""
+msgstr "नमस्कार %s…"
 
 #: login.php:389
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr ""
+msgstr "नमस्कार %s...<br>तपाईँको दर्ताको लागि धन्यवाद।"
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr ""
+msgstr "नमस्ते एडमिन…"
 
 #: help_text.php:320
 msgid "Help"
@@ -7148,7 +7194,7 @@ msgstr "मद्दत"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:191
 msgid "Helsinki, Finland"
-msgstr ""
+msgstr "हेलसिंकी, फिनल्याण्ड"
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -7166,7 +7212,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica फन्ट"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
@@ -7175,7 +7221,7 @@ msgstr "उनीको व्यबासय"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:193
 msgid "Hermosillo, Mexico"
-msgstr ""
+msgstr "हर्मोसिलो, मेक्सिको"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:136
@@ -7205,7 +7251,7 @@ msgstr "हेस्भान"
 #: admin_trees_config.php:492 admin_trees_config.php:1021
 #: app/Functions/FunctionsEdit.php:208
 msgid "Hide from everyone"
-msgstr ""
+msgstr "सबैबाट लुकाउनुहोस्"
 
 #: app/Stats.php:1737
 msgid "Highest population"
@@ -7215,7 +7261,7 @@ msgstr ""
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr ""
+msgstr "हाइलाइट गरिएको छवि"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
@@ -7233,12 +7279,12 @@ msgstr "एतिहासिक तथ्यहरु"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1601
 msgid "Hit counters"
-msgstr ""
+msgstr "आगन्तुक गणनाहरू"
 
 #. I18N: gedcom tag _HOL
 #: app/GedcomTag.php:1533
 msgid "Holocaust"
-msgstr ""
+msgstr "होलोकउस्ट Holocaust"
 
 #. I18N: Name of a module
 #: admin_modules.php:229 app/Module/WelcomeBlockModule.php:30
@@ -7259,14 +7305,14 @@ msgstr "हङकङ"
 #. I18N: Name of a module/chart
 #: app/Module/ChartsBlockModule.php:187 app/Module/HourglassChartModule.php:33
 msgid "Hourglass chart"
-msgstr ""
+msgstr "घन्टा चार्ट"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/HourglassController.php:87
 #: app/Module/ChartsBlockModule.php:111
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr ""
+msgstr "%s को घडीको घडी चार्ट"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:143
 msgid "Household"
@@ -7275,12 +7321,12 @@ msgstr "घरेलु"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Houston, Texas, United States"
-msgstr ""
+msgstr "Houston, टेक्सस्, संयुक्त राज्य अमेरिका"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "सम्बन्ध खोज्दा कति पुनरावृत्ति प्रयोग गर्ने"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7301,11 +7347,11 @@ msgstr "हङ्गेरी"
 #: modules_v3/individual_report/report.xml:449
 #: modules_v3/relative_ext_report/report.xml:109
 msgid "Husband"
-msgstr ""
+msgstr "श्रीमान्"
 
 #: app/Controller/TimelineController.php:228
 msgid "Husband’s age"
-msgstr ""
+msgstr "श्रीमानको उमेर"
 
 #: app/Module/GoogleMapsModule.php:328
 msgid "Hybrid"
