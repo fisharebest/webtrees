@@ -31,8 +31,6 @@ class CensusColumnRelationToHeadEnglishTest extends TestCase
      * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHeadEnglish
      * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHead
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNull(): void
     {

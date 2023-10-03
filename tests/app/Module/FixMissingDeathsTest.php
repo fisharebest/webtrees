@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FixMissingDeaths
  *
- * @covers \Fisharebest\Webtrees\Module\FixMissingDeaths
+ * @covers Fisharebest\Webtrees\Module\FixMissingDeaths
  */
 class FixMissingDeathsTest extends TestCase
 {

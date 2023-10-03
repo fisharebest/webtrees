@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class NoteListModule
  *
- * @covers \Fisharebest\Webtrees\Module\NoteListModule
+ * @covers Fisharebest\Webtrees\Module\NoteListModule
  */
 class NoteListModuleTest extends TestCase
 {

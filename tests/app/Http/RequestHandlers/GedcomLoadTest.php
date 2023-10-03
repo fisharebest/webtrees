@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GedcomLoad
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad
  */
 class GedcomLoadTest extends TestCase
 {

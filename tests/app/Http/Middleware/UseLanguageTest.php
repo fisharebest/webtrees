@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UseLanguage
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\UseLanguage
+ * @covers Fisharebest\Webtrees\Http\Middleware\UseLanguage
  */
 class UseLanguageTest extends TestCase
 {

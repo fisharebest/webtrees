@@ -33,7 +33,6 @@ class SiteUserTest extends TestCase
      * @covers \Fisharebest\Webtrees\SiteUser::email
      * @covers \Fisharebest\Webtrees\SiteUser::realName
      * @covers \Fisharebest\Webtrees\SiteUser::userName
-     * @return void
      */
     public function testConstructor(): void
     {
@@ -51,7 +50,6 @@ class SiteUserTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\SiteUser::getPreference
      * @covers \Fisharebest\Webtrees\SiteUser::setPreference
-     * @return void
      */
     public function testPreferences(): void
     {

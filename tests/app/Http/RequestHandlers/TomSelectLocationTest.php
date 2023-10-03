@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TomSelectLocation
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TomSelectLocation
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\TomSelectLocation
  */
 class TomSelectLocationTest extends TestCase
 {

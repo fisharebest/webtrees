@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Reunion
  *
- * @covers \Fisharebest\Webtrees\CustomTags\Reunion
+ * @covers Fisharebest\Webtrees\CustomTags\Reunion
  */
 class ReunionTest extends TestCase
 {

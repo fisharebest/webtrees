@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FindDuplicateRecords
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FindDuplicateRecords
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\FindDuplicateRecords
  */
 class FindDuplicateRecordsTest extends TestCase
 {

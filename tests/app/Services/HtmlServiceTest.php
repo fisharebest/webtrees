@@ -28,8 +28,6 @@ class HtmlServiceTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Services\HtmlService::sanitize
-     *
-     * @return void
      */
     public function testAllowedHtml(): void
     {
@@ -43,8 +41,6 @@ class HtmlServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\HtmlService::sanitize
-     *
-     * @return void
      */
     public function testDisallowedHtml(): void
     {

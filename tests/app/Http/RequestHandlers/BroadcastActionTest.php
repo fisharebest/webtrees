@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class BroadcastAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction
  */
 class BroadcastActionTest extends TestCase
 {

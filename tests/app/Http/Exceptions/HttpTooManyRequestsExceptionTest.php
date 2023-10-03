@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HttpTooManyRequestsException
  *
- * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException
+ * @covers Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException
  */
 class HttpTooManyRequestsExceptionTest extends TestCase
 {

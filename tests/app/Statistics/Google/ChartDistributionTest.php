@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartDistribution
  *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDistribution
+ * @covers Fisharebest\Webtrees\Statistics\Google\ChartDistribution
  */
 class ChartDistributionTest extends TestCase
 {

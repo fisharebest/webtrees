@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EmailPreferencesPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage
  */
 class EmailPreferencesPageTest extends TestCase
 {

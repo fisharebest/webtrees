@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EditFactAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction
  */
 class EditFactActionTest extends TestCase
 {

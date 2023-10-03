@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UserPageBlockUpdate
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockUpdate
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockUpdate
  */
 class UserPageBlockUpdateTest extends TestCase
 {

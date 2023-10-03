@@ -31,8 +31,6 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornWithinYear(): void
     {
@@ -50,8 +48,6 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornOverYearBeforeTheCensus(): void
     {
@@ -69,8 +65,6 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornAfterTheCensus(): void
     {
@@ -90,8 +84,6 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoBirth(): void
     {

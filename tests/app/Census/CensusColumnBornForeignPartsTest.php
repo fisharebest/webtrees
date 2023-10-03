@@ -29,13 +29,6 @@ use Illuminate\Support\Collection;
  */
 class CensusColumnBornForeignPartsTest extends TestCase
 {
-    /**
-     * Get place mock.
-     *
-     * @param string $place Gedcom Place
-     *
-     * @return Place
-     */
     private function getPlaceMock(string $place): Place
     {
         $placeParts = explode(', ', $place);
@@ -50,8 +43,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornEnglandCensusEngland(): void
     {
@@ -69,8 +60,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornWalesCensusEngland(): void
     {
@@ -88,8 +77,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornScotlandCensusEngland(): void
     {
@@ -107,8 +94,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornIrelandCensusEngland(): void
     {
@@ -126,8 +111,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornForeignCensusEngland(): void
     {
@@ -145,8 +128,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornEnglandCensusIreland(): void
     {
@@ -164,8 +145,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornWalesCensusIreland(): void
     {
@@ -183,8 +162,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornScotlandCensusIreland(): void
     {
@@ -202,8 +179,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornIrelandCensusIreland(): void
     {
@@ -221,8 +196,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornForeignCensusIreland(): void
     {
@@ -240,8 +213,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornEnglandCensusScotland(): void
     {
@@ -259,8 +230,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornWalesCensusScotland(): void
     {
@@ -278,8 +247,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornScotlandCensusScotland(): void
     {
@@ -297,8 +264,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornIrelandCensusScotland(): void
     {
@@ -316,8 +281,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornForeignCensusScotland(): void
     {
@@ -335,8 +298,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornEnglandCensusWales(): void
     {
@@ -354,8 +315,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornWalesCensusWales(): void
     {
@@ -373,8 +332,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornScotlandCensusWales(): void
     {
@@ -392,8 +349,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornIrelandCensusWales(): void
     {
@@ -411,8 +366,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornForeignCensusWales(): void
     {
@@ -430,8 +383,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornNowhereCensusEngland(): void
     {
@@ -449,8 +400,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornNowhereCensusWales(): void
     {
@@ -468,8 +417,6 @@ class CensusColumnBornForeignPartsTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBornForeignParts
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBornNowhereCensusScotland(): void
     {

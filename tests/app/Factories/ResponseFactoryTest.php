@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ResponseFactory
  *
- * @covers \Fisharebest\Webtrees\Factories\ResponseFactory
+ * @covers Fisharebest\Webtrees\Factories\ResponseFactory
  */
 class ResponseFactoryTest extends TestCase
 {

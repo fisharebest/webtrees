@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Router
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\Router
+ * @covers Fisharebest\Webtrees\Http\Middleware\Router
  */
 class RouterTest extends TestCase
 {

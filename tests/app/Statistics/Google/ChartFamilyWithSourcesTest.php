@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartFamilyWithSources
  *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources
+ * @covers Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources
  */
 class ChartFamilyWithSourcesTest extends TestCase
 {

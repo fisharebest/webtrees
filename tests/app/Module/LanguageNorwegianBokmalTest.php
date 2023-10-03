@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LanguageNorwegianBokmal
  *
- * @covers \Fisharebest\Webtrees\Module\LanguageNorwegianBokmal
+ * @covers Fisharebest\Webtrees\Module\LanguageNorwegianBokmal
  */
 class LanguageNorwegianBokmalTest extends TestCase
 {

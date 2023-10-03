@@ -32,8 +32,6 @@ class CensusColumnOccupationTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoOccupation(): void
     {
@@ -50,8 +48,6 @@ class CensusColumnOccupationTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testOccupation(): void
     {

@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\MultimediaFileReference
  */
-class MultimediaFileReferenceTest extends AbstractElementTest
+class MultimediaFileReferenceTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class MultimediaFileReferenceTest extends AbstractElementTest
         self::$element = new MultimediaFileReference('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('Foo  bAr  baZ', self::$element->canonical('Foo  bAr  baZ'));

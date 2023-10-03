@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\RestrictionNotice
  */
-class RestrictionNoticeTest extends AbstractElementTest
+class RestrictionNoticeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class RestrictionNoticeTest extends AbstractElementTest
         self::$element = new RestrictionNotice('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('PRIVACY', self::$element->canonical('pRiVacy'));

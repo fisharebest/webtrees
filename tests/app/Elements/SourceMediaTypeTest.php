@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\SourceMediaType
  */
-class SourceMediaTypeTest extends AbstractElementTest
+class SourceMediaTypeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class SourceMediaTypeTest extends AbstractElementTest
         self::$element = new SourceMediaType('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO BAR BAZ', self::$element->canonical('Foo  bAr  baZ'));

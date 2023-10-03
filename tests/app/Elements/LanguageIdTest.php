@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\LanguageId
  */
-class LanguageIdTest extends AbstractElementTest
+class LanguageIdTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class LanguageIdTest extends AbstractElementTest
         static::$element = new LanguageId('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('ENGLISH', self::$element->canonical("\t English\t "));

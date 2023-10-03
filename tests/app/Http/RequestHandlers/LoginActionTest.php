@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LoginAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LoginAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\LoginAction
  */
 class LoginActionTest extends TestCase
 {

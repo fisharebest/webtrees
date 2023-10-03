@@ -21,14 +21,14 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function app;
 
 /**
  * Test the HandleExceptions middleware.
@@ -37,9 +37,8 @@ use function app;
  */
 class HandleExceptionsTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testMiddleware(): void
     {
         $tree_service = $this->createMock(TreeService::class);
@@ -50,15 +49,12 @@ class HandleExceptionsTest extends TestCase
         $module_service = $this->createMock(ModuleService::class);
         $module_service->method('findByInterface')->willReturn(new Collection());
         $module_service->method('findByComponent')->willReturn(new Collection());
-        app()->instance(ModuleService::class, $module_service);
+        Webtrees::set(ModuleService::class, $module_service);
 
         $request    = self::createRequest();
         $middleware = new HandleExceptions($tree_service);
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
-
-        app()->forgetInstance(ModuleService::class);
-        app()->forgetInstance(UserService::class);
     }
 }

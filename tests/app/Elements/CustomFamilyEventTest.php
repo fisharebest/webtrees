@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CustomFamilyEvent
  *
- * @covers \Fisharebest\Webtrees\Elements\CustomFamilyEvent
+ * @covers Fisharebest\Webtrees\Elements\CustomFamilyEvent
  */
 class CustomFamilyEventTest extends TestCase
 {

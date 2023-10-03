@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GedcomEncodingFilter
  *
- * @covers \Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter
+ * @covers Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter
  */
 class GedcomEncodingFilterTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CleanDataFolder
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder
  */
 class CleanDataFolderTest extends TestCase
 {

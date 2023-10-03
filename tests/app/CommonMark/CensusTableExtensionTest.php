@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CensusTableExtension
  *
- * @covers \Fisharebest\Webtrees\CommonMark\CensusTableExtension
+ * @covers Fisharebest\Webtrees\CommonMark\CensusTableExtension
  */
 class CensusTableExtensionTest extends TestCase
 {

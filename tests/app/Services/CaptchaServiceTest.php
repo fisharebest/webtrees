@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CaptchaService
  *
- * @covers \Fisharebest\Webtrees\Services\CaptchaService
+ * @covers Fisharebest\Webtrees\Services\CaptchaService
  */
 class CaptchaServiceTest extends TestCase
 {

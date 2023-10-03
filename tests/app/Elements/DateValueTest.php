@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\DateValue
  */
-class DateValueTest extends AbstractElementTest
+class DateValueTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class DateValueTest extends AbstractElementTest
         static::$element = new DateValue('label');
     }
 
-    /**
-     * @return void
-     */
     public function testEscapeAtSigns(): void
     {
         self::assertSame(

@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class UpcomingAnniversariesModuleTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testModuleProperties(): void
     {
         $calendar_service = $this->createStub(CalendarService::class);

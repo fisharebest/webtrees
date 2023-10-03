@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SynchronizeTrees
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SynchronizeTrees
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\SynchronizeTrees
  */
 class SynchronizeTreesTest extends TestCase
 {

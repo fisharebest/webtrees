@@ -32,9 +32,6 @@ class UploadMediaActionTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testResponseIsOK(): void
     {
         $media_file_service = new MediaFileService();

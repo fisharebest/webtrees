@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Statistics
  *
- * @covers \Fisharebest\Webtrees\Statistics
+ * @covers Fisharebest\Webtrees\Statistics
  */
 class StatisticsTest extends TestCase
 {

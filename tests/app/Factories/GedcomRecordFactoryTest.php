@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GedcomRecordFactory
  *
- * @covers \Fisharebest\Webtrees\Factories\GedcomRecordFactory
+ * @covers Fisharebest\Webtrees\Factories\GedcomRecordFactory
  */
 class GedcomRecordFactoryTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HtmlRenderer
  *
- * @covers \Fisharebest\Webtrees\Report\HtmlRenderer
+ * @covers Fisharebest\Webtrees\Report\HtmlRenderer
  */
 class HtmlRendererTest extends TestCase
 {

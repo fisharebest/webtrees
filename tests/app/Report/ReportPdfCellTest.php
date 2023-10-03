@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReportPdfCell
  *
- * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
+ * @covers Fisharebest\Webtrees\Report\ReportPdfCell
  */
 class ReportPdfCellTest extends TestCase
 {

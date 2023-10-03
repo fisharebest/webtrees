@@ -38,7 +38,6 @@ class SurnameTraditionFactoryTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::make
-     * @return void
      */
     public function testCreate(): void
     {
@@ -59,7 +58,6 @@ class SurnameTraditionFactoryTest extends TestCase
      * Test create() with invalid input
      *
      * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::make
-     * @return void
      */
     public function testCreateInvalid(): void
     {
@@ -72,7 +70,6 @@ class SurnameTraditionFactoryTest extends TestCase
      * Test allDescriptions()
      *
      * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::list
-     * @return void
      */
     public function testAllDescriptions(): void
     {

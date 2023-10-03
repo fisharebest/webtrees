@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DatatablesService
  *
- * @covers \Fisharebest\Webtrees\Services\DatatablesService
+ * @covers Fisharebest\Webtrees\Services\DatatablesService
  */
 class DatatablesServiceTest extends TestCase
 {

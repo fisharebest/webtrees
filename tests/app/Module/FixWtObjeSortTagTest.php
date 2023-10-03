@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FixWtObjeSortTag
  *
- * @covers \Fisharebest\Webtrees\Module\FixWtObjeSortTag
+ * @covers Fisharebest\Webtrees\Module\FixWtObjeSortTag
  */
 class FixWtObjeSortTagTest extends TestCase
 {

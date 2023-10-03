@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PlaceLongtitude
  */
-class PlaceLongtitudeTest extends AbstractElementTest
+class PlaceLongtitudeTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

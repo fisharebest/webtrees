@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\SubmitterRegisteredRfn
  */
-class SubmitterRegisteredRfnTest extends AbstractElementTest
+class SubmitterRegisteredRfnTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

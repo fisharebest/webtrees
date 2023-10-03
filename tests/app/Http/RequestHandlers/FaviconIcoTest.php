@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FaviconIco
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FaviconIco
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\FaviconIco
  */
 class FaviconIcoTest extends TestCase
 {

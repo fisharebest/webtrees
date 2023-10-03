@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EmitResponse
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\EmitResponse
+ * @covers Fisharebest\Webtrees\Http\Middleware\EmitResponse
  */
 class EmitResponseTest extends TestCase
 {

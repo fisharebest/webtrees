@@ -31,8 +31,6 @@ class RightToLeftSupportTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testEmptyString(): void
     {
@@ -51,8 +49,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testStripControlCharacters(): void
     {
@@ -135,8 +131,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testNewLinesBecomeHTMLBreaks(): void
     {
@@ -163,8 +157,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testLineBreaks(): void
     {
@@ -191,8 +183,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testHtmlEntities(): void
     {
@@ -227,8 +217,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testBraces(): void
     {
@@ -263,8 +251,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testNumbers(): void
     {
@@ -323,8 +309,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testParentheses(): void
     {
@@ -367,8 +351,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testUnescapedHtml(): void
     {
@@ -395,8 +377,6 @@ class RightToLeftSupportTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     *
-     * @return void
      */
     public function testBreakInNumber(): void
     {

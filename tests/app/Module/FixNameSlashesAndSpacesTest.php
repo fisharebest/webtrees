@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FixNameSlashesAndSpaces
  *
- * @covers \Fisharebest\Webtrees\Module\FixNameSlashesAndSpaces
+ * @covers Fisharebest\Webtrees\Module\FixNameSlashesAndSpaces
  */
 class FixNameSlashesAndSpacesTest extends TestCase
 {

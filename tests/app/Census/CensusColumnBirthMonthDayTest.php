@@ -31,8 +31,6 @@ class CensusColumnBirthMonthDayTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthMonthDay
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testGenerateColumn(): void
     {

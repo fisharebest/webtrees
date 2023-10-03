@@ -33,9 +33,6 @@ use Fisharebest\Webtrees\User;
  */
 class AccountUpdateTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testHandler(): void
     {
         $user_service = $this->createMock(UserService::class);
@@ -47,11 +44,9 @@ class AccountUpdateTest extends TestCase
         $user->expects(self::once())->method('setUserName')->with('h');
         $user->expects(self::exactly(4))
             ->method('setPreference')
-            ->withConsecutive(
-                [UserInterface::PREF_CONTACT_METHOD, 'a'],
-                [UserInterface::PREF_LANGUAGE, 'c'],
-                [UserInterface::PREF_TIME_ZONE, 'g'],
-                [UserInterface::PREF_IS_VISIBLE_ONLINE, '']
+            ->with(
+                self::withConsecutive([UserInterface::PREF_CONTACT_METHOD, UserInterface::PREF_LANGUAGE, UserInterface::PREF_TIME_ZONE, UserInterface::PREF_IS_VISIBLE_ONLINE]),
+                self::withConsecutive(['a', 'c', 'g', ''])
             );
 
         $tree = $this->createMock(Tree::class);

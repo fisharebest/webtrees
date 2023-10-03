@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Adoption
  */
-class AdoptionTest extends AbstractElementTest
+class AdoptionTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

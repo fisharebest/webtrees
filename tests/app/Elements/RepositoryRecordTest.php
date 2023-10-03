@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\RepositoryRecord
  */
-class RepositoryRecordTest extends AbstractElementTest
+class RepositoryRecordTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

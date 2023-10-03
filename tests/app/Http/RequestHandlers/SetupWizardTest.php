@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SetupWizard
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard
  */
 class SetupWizardTest extends TestCase
 {

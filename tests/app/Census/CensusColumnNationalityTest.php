@@ -31,13 +31,6 @@ use Illuminate\Support\Collection;
  */
 class CensusColumnNationalityTest extends TestCase
 {
-    /**
-     * Get place mock.
-     *
-     * @param string $place Gedcom Place
-     *
-     * @return Place
-     */
     private function getPlaceMock(string $place): Place
     {
         $placeMock = $this->createMock(Place::class);
@@ -49,8 +42,6 @@ class CensusColumnNationalityTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoBirthPlace(): void
     {
@@ -69,8 +60,6 @@ class CensusColumnNationalityTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testPlaceCountry(): void
     {
@@ -89,8 +78,6 @@ class CensusColumnNationalityTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testBritish(): void
     {
@@ -109,8 +96,6 @@ class CensusColumnNationalityTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testEmigrated(): void
     {

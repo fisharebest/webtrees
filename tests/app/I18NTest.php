@@ -26,8 +26,6 @@ class I18NTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\I18N::strtoupper
-     *
-     * @return void
      */
     public function testStrtoupper(): void
     {
@@ -37,8 +35,6 @@ class I18NTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\I18N::strtolower
-     *
-     * @return void
      */
     public function testStrtolower(): void
     {
@@ -48,8 +44,6 @@ class I18NTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\I18N::comparator()
-     *
-     * @return void
      */
     public function testComparator(): void
     {
@@ -65,8 +59,6 @@ class I18NTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\I18N::reverseText
-     *
-     * @return void
      */
     public function testReverseText(): void
     {

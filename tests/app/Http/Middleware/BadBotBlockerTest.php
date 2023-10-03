@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class BadBotBlocker
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\BadBotBlocker
+ * @covers Fisharebest\Webtrees\Http\Middleware\BadBotBlocker
  */
 class BadBotBlockerTest extends TestCase
 {

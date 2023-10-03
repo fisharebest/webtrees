@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SiteLogsService
  *
- * @covers \Fisharebest\Webtrees\Services\SiteLogsService
+ * @covers Fisharebest\Webtrees\Services\SiteLogsService
  */
 class SiteLogsServiceTest extends TestCase
 {

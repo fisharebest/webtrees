@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MediaFileService
  *
- * @covers \Fisharebest\Webtrees\Services\MediaFileService
+ * @covers Fisharebest\Webtrees\Services\MediaFileService
  */
 class MediaFileServiceTest extends TestCase
 {

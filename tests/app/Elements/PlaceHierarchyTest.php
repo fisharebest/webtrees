@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PlaceHierarchy
  */
-class PlaceHierarchyTest extends AbstractElementTest
+class PlaceHierarchyTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class PlaceHierarchyTest extends AbstractElementTest
         self::$element = new PlaceHierarchy('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('Foo, bAr, baZ', self::$element->canonical('Foo  bAr  baZ'));

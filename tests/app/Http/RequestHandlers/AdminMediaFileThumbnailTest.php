@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AdminMediaFileThumbnail
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail
  */
 class AdminMediaFileThumbnailTest extends TestCase
 {

@@ -30,8 +30,6 @@ class MacRomanTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\MacRoman
-     *
-     * @return void
      */
     public function testToUtf8HexStrings(): void
     {
@@ -98,8 +96,6 @@ class MacRomanTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\MacRoman
-     *
-     * @return void
      */
     public function testToUtf8StringLiterals(): void
     {

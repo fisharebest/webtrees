@@ -30,9 +30,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class MapLinkOpenStreetMapTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testNoCoordinates(): void
     {
         $module = new MapLinkOpenStreetMap();
@@ -46,9 +43,6 @@ class MapLinkOpenStreetMapTest extends TestCase
         static::assertSame('', $html);
     }
 
-    /**
-     * @return void
-     */
     public function testLink(): void
     {
         $module = new MapLinkOpenStreetMap();

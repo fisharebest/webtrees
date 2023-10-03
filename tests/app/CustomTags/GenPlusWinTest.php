@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GenPlusWin
  *
- * @covers \Fisharebest\Webtrees\CustomTags\GenPlusWin
+ * @covers Fisharebest\Webtrees\CustomTags\GenPlusWin
  */
 class GenPlusWinTest extends TestCase
 {

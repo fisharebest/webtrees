@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TimeValueNow
  *
- * @covers \Fisharebest\Webtrees\Elements\TimeValueNow
+ * @covers Fisharebest\Webtrees\Elements\TimeValueNow
  */
 class TimeValueNowTest extends TestCase
 {

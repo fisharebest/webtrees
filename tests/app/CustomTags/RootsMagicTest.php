@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RootsMagic
  *
- * @covers \Fisharebest\Webtrees\CustomTags\RootsMagic
+ * @covers Fisharebest\Webtrees\CustomTags\RootsMagic
  */
 class RootsMagicTest extends TestCase
 {

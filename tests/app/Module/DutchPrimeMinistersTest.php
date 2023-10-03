@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DutchPrimeMinisters
  *
- * @covers \Fisharebest\Webtrees\Module\DutchPrimeMinisters
+ * @covers Fisharebest\Webtrees\Module\DutchPrimeMinisters
  */
 class DutchPrimeMinistersTest extends TestCase
 {

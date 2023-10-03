@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TimestampFactory
  *
- * @covers \Fisharebest\Webtrees\Factories\TimestampFactory
+ * @covers Fisharebest\Webtrees\Factories\TimestampFactory
  */
 class TimestampFactoryTest extends TestCase
 {

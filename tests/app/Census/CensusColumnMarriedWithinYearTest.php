@@ -34,8 +34,6 @@ class CensusColumnMarriedWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMarriedWithinYear(): void
     {
@@ -59,8 +57,6 @@ class CensusColumnMarriedWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMarriedOverYearBeforeTheCensus(): void
     {
@@ -84,8 +80,6 @@ class CensusColumnMarriedWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMarriedAfterTheCensus(): void
     {
@@ -109,8 +103,6 @@ class CensusColumnMarriedWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoMarriage(): void
     {
@@ -131,8 +123,6 @@ class CensusColumnMarriedWithinYearTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMarriedWithinYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testNoSpouseFamily(): void
     {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HousekeepingService
  *
- * @covers \Fisharebest\Webtrees\Services\HousekeepingService
+ * @covers Fisharebest\Webtrees\Services\HousekeepingService
  */
 class HousekeepingServiceTest extends TestCase
 {

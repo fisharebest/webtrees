@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EventRepository
  *
- * @covers \Fisharebest\Webtrees\Statistics\Repository\EventRepository
+ * @covers Fisharebest\Webtrees\Statistics\Repository\EventRepository
  */
 class EventRepositoryTest extends TestCase
 {

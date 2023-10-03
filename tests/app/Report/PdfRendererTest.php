@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PdfRenderer
  *
- * @covers \Fisharebest\Webtrees\Report\PdfRenderer
+ * @covers Fisharebest\Webtrees\Report\PdfRenderer
  */
 class PdfRendererTest extends TestCase
 {

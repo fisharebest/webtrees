@@ -34,8 +34,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoSpouseFamiliesMale(): void
     {
@@ -55,8 +53,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoSpouseFamiliesFemale(): void
     {
@@ -76,8 +72,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyFactsMale(): void
     {
@@ -101,8 +95,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyFactsFemale(): void
     {
@@ -126,8 +118,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testSpouseDeadMale(): void
     {
@@ -140,10 +130,7 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
@@ -165,8 +152,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testSpouseDeadFemale(): void
     {
@@ -179,10 +164,7 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturnOnConsecutiveCalls(
                 new Collection([$fact]),
                 new Collection()
@@ -204,8 +186,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyUnmarriedMale(): void
     {
@@ -229,8 +209,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testNoFamilyUnmarriedFemale(): void
     {
@@ -254,8 +232,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testChildMale(): void
     {
@@ -279,8 +255,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testChildFemale(): void
     {
@@ -304,8 +278,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testDivorcedMale(): void
     {
@@ -315,10 +287,7 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])
@@ -339,8 +308,6 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionFrenchFemme
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     *
-     * @return void
      */
     public function testDivorcedFemale(): void
     {
@@ -350,10 +317,7 @@ class CensusColumnConditionFrenchFemmeTest extends TestCase
         $family
             ->expects(self::exactly(2))
             ->method('facts')
-            ->withConsecutive(
-                [['MARR']],
-                [['DIV']]
-            )
+            ->with(self::withConsecutive([['MARR'], ['DIV']]))
             ->willReturn(
                 new Collection([$fact]),
                 new Collection([$fact])

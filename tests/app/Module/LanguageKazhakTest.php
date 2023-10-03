@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LanguageKazhak
  *
- * @covers \Fisharebest\Webtrees\Module\LanguageKazhak
+ * @covers Fisharebest\Webtrees\Module\LanguageKazhak
  */
 class LanguageKazhakTest extends TestCase
 {

@@ -33,9 +33,8 @@ use function response;
  */
 class DoHousekeepingTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testMiddleware(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);

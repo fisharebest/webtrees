@@ -36,7 +36,6 @@ class TreeUserTest extends TestCase
      * @covers \Fisharebest\Webtrees\TreeUser::email
      * @covers \Fisharebest\Webtrees\TreeUser::realName
      * @covers \Fisharebest\Webtrees\TreeUser::userName
-     * @return void
      */
     public function testConstructor(): void
     {
@@ -55,7 +54,6 @@ class TreeUserTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\TreeUser::getPreference
      * @covers \Fisharebest\Webtrees\TreeUser::setPreference
-     * @return void
      */
     public function testPreferences(): void
     {

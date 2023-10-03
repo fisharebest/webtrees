@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CreateRepositoryAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryAction
  */
 class CreateRepositoryActionTest extends TestCase
 {

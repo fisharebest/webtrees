@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RobotsTxt
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RobotsTxt
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\RobotsTxt
  */
 class RobotsTxtTest extends TestCase
 {

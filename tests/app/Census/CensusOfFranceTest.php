@@ -30,8 +30,6 @@ class CensusOfFranceTest extends TestCase
      * Test the census place
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfFrance
-     *
-     * @return void
      */
     public function testPlace(): void
     {
@@ -44,8 +42,6 @@ class CensusOfFranceTest extends TestCase
      * Test the census language
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfFrance
-     *
-     * @return void
      */
     public function testLanguage(): void
     {
@@ -58,8 +54,6 @@ class CensusOfFranceTest extends TestCase
      * Test the census dates
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfFrance
-     *
-     * @return void
      */
     public function testAllDates(): void
     {

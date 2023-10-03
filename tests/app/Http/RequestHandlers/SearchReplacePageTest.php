@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SearchReplacePage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchReplacePage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\SearchReplacePage
  */
 class SearchReplacePageTest extends TestCase
 {

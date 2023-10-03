@@ -34,9 +34,6 @@ class ImportThumbnailsActionTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testWebtrees1ThumbnailsAction(): void
     {
         $gedcom_import_service   = new GedcomImportService();

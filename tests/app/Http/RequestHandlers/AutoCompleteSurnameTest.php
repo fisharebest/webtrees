@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AutoCompleteSurname
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname
  */
 class AutoCompleteSurnameTest extends TestCase
 {

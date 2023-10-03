@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CalendarMenuModule
  *
- * @covers \Fisharebest\Webtrees\Module\CalendarMenuModule
+ * @covers Fisharebest\Webtrees\Module\CalendarMenuModule
  */
 class CalendarMenuModuleTest extends TestCase
 {

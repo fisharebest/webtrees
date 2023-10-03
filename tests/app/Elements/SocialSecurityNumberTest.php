@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\SocialSecurityNumber
  */
-class SocialSecurityNumberTest extends AbstractElementTest
+class SocialSecurityNumberTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

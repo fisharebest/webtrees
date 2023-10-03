@@ -30,9 +30,6 @@ use Fisharebest\Webtrees\TestCase;
  */
 class MapLinkBingTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testNoCoordinates(): void
     {
         $module = new MapLinkBing();
@@ -48,8 +45,6 @@ class MapLinkBingTest extends TestCase
 
     /**
      * Test that the class exists
-     *
-     * @return void
      */
     public function testLink(): void
     {

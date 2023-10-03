@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TreeService
  *
- * @covers \Fisharebest\Webtrees\Services\TreeService
+ * @covers Fisharebest\Webtrees\Services\TreeService
  */
 class TreeServiceTest extends TestCase
 {

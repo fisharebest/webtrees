@@ -31,9 +31,6 @@ class ImportThumbnailsPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testWebtrees1Thumbnails(): void
     {
         $handler  = new ImportThumbnailsPage();

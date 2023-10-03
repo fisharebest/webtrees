@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Html
  *
- * @covers \Fisharebest\Webtrees\Html
+ * @covers Fisharebest\Webtrees\Html
  */
 class HtmlTest extends TestCase
 {

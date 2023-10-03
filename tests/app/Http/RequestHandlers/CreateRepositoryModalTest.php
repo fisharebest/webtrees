@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CreateRepositoryModal
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal
  */
 class CreateRepositoryModalTest extends TestCase
 {

@@ -32,9 +32,6 @@ class MapDataExportCSVTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testExportCSV(): void
     {
         $map_data_service = new MapDataService();

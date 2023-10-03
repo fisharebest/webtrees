@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
@@ -66,21 +65,19 @@ class OccupationReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportPdfText
      * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
      * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
-     *
-     * @return void
      */
     public function testReportRunsWithoutError(): void
     {
-        $module_service = new ModuleService();
-
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree   = $this->importTree('demo.ged');
-        $module = $module_service->findByInterface(OccupationReportModule::class)->first();
-        $xml    = 'resources/' . $module->xmlFilename();
-        $vars   = [
+        $module = new OccupationReportModule();
+        $module->setName('occupation_report');
+
+        $xml  = 'resources/' . $module->xmlFilename();
+        $vars = [
             'occupation' => ['id' => 'king'],
             'pageSize'  => ['id' => 'A4'],
             'sortby'    => ['id' => 'NAME'],

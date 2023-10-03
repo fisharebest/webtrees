@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ClientIp
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\ClientIp
+ * @covers Fisharebest\Webtrees\Http\Middleware\ClientIp
  */
 class ClientIpTest extends TestCase
 {

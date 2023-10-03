@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CreateNoteModal
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal
  */
 class CreateNoteModalTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TreePrivacyAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyAction
  */
 class TreePrivacyActionTest extends TestCase
 {

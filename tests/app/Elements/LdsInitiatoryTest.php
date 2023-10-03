@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LdsInitiatory
  *
- * @covers \Fisharebest\Webtrees\Elements\LdsInitiatory
+ * @covers Fisharebest\Webtrees\Elements\LdsInitiatory
  */
 class LdsInitiatoryTest extends TestCase
 {

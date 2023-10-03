@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class InvalidGedcomEncodingException
  *
- * @covers \Fisharebest\Webtrees\Exceptions\InvalidGedcomEncodingException
+ * @covers Fisharebest\Webtrees\Exceptions\InvalidGedcomEncodingException
  */
 class InvalidGedcomEncodingExceptionTest extends TestCase
 {

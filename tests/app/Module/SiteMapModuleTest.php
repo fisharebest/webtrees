@@ -30,8 +30,6 @@ class SiteMapModuleTest extends TestCase
 {
     /**
      * Test that the class exists
-     *
-     * @return void
      */
     public function testClassExists(): void
     {

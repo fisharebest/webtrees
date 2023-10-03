@@ -30,8 +30,6 @@ class SiteTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Site
-     *
-     * @return void
      */
     public function testDefault(): void
     {
@@ -41,8 +39,6 @@ class SiteTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Site
-     *
-     * @return void
      */
     public function testSetAndGetPreference(): void
     {
@@ -53,8 +49,6 @@ class SiteTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Site
-     *
-     * @return void
      */
     public function test2000CharacterLimit(): void
     {

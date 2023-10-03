@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Registry
  *
- * @covers \Fisharebest\Webtrees\Registry
+ * @covers Fisharebest\Webtrees\Registry
  */
 class RegistryTest extends TestCase
 {

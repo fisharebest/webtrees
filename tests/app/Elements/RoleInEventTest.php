@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\RoleInEvent
  */
-class RoleInEventTest extends AbstractElementTest
+class RoleInEventTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class RoleInEventTest extends AbstractElementTest
         self::$element = new RoleInEvent('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('CHIL', self::$element->canonical('cHiL'));

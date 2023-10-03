@@ -35,8 +35,6 @@ class ASCIITest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
      * @covers \Fisharebest\Webtrees\Encodings\ASCII
-     *
-     * @return void
      */
     public function testToUtf8(): void
     {

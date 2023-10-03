@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UserPageDefaultUpdate
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultUpdate
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\UserPageDefaultUpdate
  */
 class UserPageDefaultUpdateTest extends TestCase
 {

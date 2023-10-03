@@ -37,9 +37,6 @@ use function response;
  */
 class AuthEditorTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testAllowed(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);
@@ -59,9 +56,6 @@ class AuthEditorTest extends TestCase
         self::assertSame('lorem ipsum', (string) $response->getBody());
     }
 
-    /**
-     * @return void
-     */
     public function testNotAllowed(): void
     {
         $this->expectException(HttpAccessDeniedException::class);
@@ -82,9 +76,6 @@ class AuthEditorTest extends TestCase
         $middleware->process($request, $handler);
     }
 
-    /**
-     * @return void
-     */
     public function testNotLoggedIn(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);

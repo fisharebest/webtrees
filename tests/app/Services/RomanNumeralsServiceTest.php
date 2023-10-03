@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RomanNumeralsService
  *
- * @covers \Fisharebest\Webtrees\Services\RomanNumeralsService
+ * @covers Fisharebest\Webtrees\Services\RomanNumeralsService
  */
 class RomanNumeralsServiceTest extends TestCase
 {

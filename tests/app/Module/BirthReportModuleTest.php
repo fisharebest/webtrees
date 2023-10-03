@@ -25,9 +25,10 @@ use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+
+use function ob_get_clean;
 
 /**
  * Test harness for the class BirthReportModule
@@ -66,21 +67,19 @@ class BirthReportModuleTest extends TestCase
      * @covers \Fisharebest\Webtrees\Report\ReportPdfText
      * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
      * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
-     *
-     * @return void
      */
     public function testReportRunsWithoutError(): void
     {
-        $module_service = new ModuleService();
-
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
         $tree   = $this->importTree('demo.ged');
-        $module = $module_service->findByInterface(BirthReportModule::class)->first();
-        $xml    = 'resources/' . $module->xmlFilename();
-        $vars   = [
+        $module = new BirthReportModule();
+        $module->setName('birth_report');
+
+        $xml  = 'resources/' . $module->xmlFilename();
+        $vars = [
             'name'       => ['id' => ''],
             'birthplace' => ['id' => ''],
             'birthdate1' => ['id' => ''],

@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\CustomEvent
  */
-class CustomEventTest extends AbstractElementTest
+class CustomEventTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

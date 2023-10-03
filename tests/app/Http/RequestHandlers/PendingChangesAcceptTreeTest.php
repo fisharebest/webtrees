@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PendingChangesAcceptTree
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptTree
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptTree
  */
 class PendingChangesAcceptTreeTest extends TestCase
 {

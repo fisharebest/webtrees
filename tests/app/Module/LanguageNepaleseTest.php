@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LanguageNepalese
  *
- * @covers \Fisharebest\Webtrees\Module\LanguageNepalese
+ * @covers Fisharebest\Webtrees\Module\LanguageNepalese
  */
 class LanguageNepaleseTest extends TestCase
 {

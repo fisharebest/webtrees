@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SeedUserTable
  *
- * @covers \Fisharebest\Webtrees\Schema\SeedUserTable
+ * @covers Fisharebest\Webtrees\Schema\SeedUserTable
  */
 class SeedUserTableTest extends TestCase
 {

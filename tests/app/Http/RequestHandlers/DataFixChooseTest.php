@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DataFixChoose
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DataFixChoose
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\DataFixChoose
  */
 class DataFixChooseTest extends TestCase
 {

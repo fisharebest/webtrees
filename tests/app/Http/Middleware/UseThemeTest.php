@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UseTheme
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\UseTheme
+ * @covers Fisharebest\Webtrees\Http\Middleware\UseTheme
  */
 class UseThemeTest extends TestCase
 {

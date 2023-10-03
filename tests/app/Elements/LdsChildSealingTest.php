@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\LdsChildSealing
  */
-class LdsChildSealingTest extends AbstractElementTest
+class LdsChildSealingTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

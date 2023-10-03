@@ -30,8 +30,6 @@ class CensusOfDeutschland1919Test extends TestCase
      * Test the census place and date
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1919
-     *
-     * @return void
      */
     public function testPlaceAndDate(): void
     {
@@ -46,8 +44,6 @@ class CensusOfDeutschland1919Test extends TestCase
      *
      * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland1919
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testColumns(): void
     {

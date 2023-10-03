@@ -32,9 +32,6 @@ class BroadcastPageTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testMissingParameterTo(): void
     {
         $message_service = $this->createStub(MessageService::class);
@@ -49,9 +46,6 @@ class BroadcastPageTest extends TestCase
 
         $handler->handle($request);
     }
-    /**
-     * @return void
-     */
     public function testHandler(): void
     {
         $message_service = $this->createStub(MessageService::class);

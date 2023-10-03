@@ -28,9 +28,6 @@ class FactTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testAttribute(): void
     {
         $individual = $this->createStub(Individual::class);
@@ -44,8 +41,6 @@ class FactTest extends TestCase
     }
 
     /**
-     * @return void
-     *
      * @see https://github.com/fisharebest/webtrees/issues/4417
      */
     public function testIssue4417(): void

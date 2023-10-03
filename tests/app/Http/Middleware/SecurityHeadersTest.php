@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SecurityHeaders
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\SecurityHeaders
+ * @covers Fisharebest\Webtrees\Http\Middleware\SecurityHeaders
  */
 class SecurityHeadersTest extends TestCase
 {

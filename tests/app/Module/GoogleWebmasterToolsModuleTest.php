@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GoogleWebmasterToolsModule
  *
- * @covers \Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule
+ * @covers Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule
  */
 class GoogleWebmasterToolsModuleTest extends TestCase
 {

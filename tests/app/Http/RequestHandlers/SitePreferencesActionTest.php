@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SitePreferencesAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesAction
  */
 class SitePreferencesActionTest extends TestCase
 {

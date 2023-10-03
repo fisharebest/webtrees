@@ -28,7 +28,6 @@ class AbstractCalendarDateTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
-     * @return void
      */
     public function testAgeDifference(): void
     {
@@ -67,7 +66,6 @@ class AbstractCalendarDateTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
-     * @return void
      */
     public function testAgeDifferenceIncomplete(): void
     {
@@ -110,7 +108,6 @@ class AbstractCalendarDateTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Date\AbstractCalendarDate::ageDifference
-     * @return void
      */
     public function testAgeDifferenceOverlap(): void
     {

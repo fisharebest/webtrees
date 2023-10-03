@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\NameRomanizedVariation
  */
-class NameRomanizedVariationTest extends AbstractElementTest
+class NameRomanizedVariationTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

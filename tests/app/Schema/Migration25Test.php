@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Migration25
  *
- * @covers \Fisharebest\Webtrees\Schema\Migration25
+ * @covers Fisharebest\Webtrees\Schema\Migration25
  */
 class Migration25Test extends TestCase
 {

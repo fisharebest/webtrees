@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Aldfaer
  *
- * @covers \Fisharebest\Webtrees\CustomTags\Aldfaer
+ * @covers Fisharebest\Webtrees\CustomTags\Aldfaer
  */
 class AldfaerTest extends TestCase
 {

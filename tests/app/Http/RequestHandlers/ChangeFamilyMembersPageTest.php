@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChangeFamilyMembersPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersPage
  */
 class ChangeFamilyMembersPageTest extends TestCase
 {

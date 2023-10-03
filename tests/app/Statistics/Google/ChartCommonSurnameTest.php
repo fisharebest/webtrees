@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartCommonSurname
  *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname
+ * @covers Fisharebest\Webtrees\Statistics\Google\ChartCommonSurname
  */
 class ChartCommonSurnameTest extends TestCase
 {

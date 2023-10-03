@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CountOfChildrenFam
  *
- * @covers \Fisharebest\Webtrees\Elements\CountOfChildrenFam
+ * @covers Fisharebest\Webtrees\Elements\CountOfChildrenFam
  */
 class CountOfChildrenFamTest extends TestCase
 {

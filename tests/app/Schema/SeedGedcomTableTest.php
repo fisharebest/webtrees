@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SeedGedcomTable
  *
- * @covers \Fisharebest\Webtrees\Schema\SeedGedcomTable
+ * @covers Fisharebest\Webtrees\Schema\SeedGedcomTable
  */
 class SeedGedcomTableTest extends TestCase
 {

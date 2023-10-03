@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UpdateDatabaseSchema
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema
+ * @covers Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema
  */
 class UpdateDatabaseSchemaTest extends TestCase
 {

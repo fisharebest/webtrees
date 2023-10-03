@@ -24,12 +24,5 @@ namespace Fisharebest\Webtrees;
  */
 abstract class MockGlobalFunctions
 {
-    /**
-     * Mock version of ini_get()
-     *
-     * @param string $varname
-     *
-     * @return string
-     */
     abstract public function iniGet(string $varname): string;
 }

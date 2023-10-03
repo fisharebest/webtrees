@@ -43,9 +43,6 @@ class UpgradeWizardStepTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testIgnoreStepInvalid(): void
     {
         $handler = new UpgradeWizardStep(
@@ -61,9 +58,6 @@ class UpgradeWizardStepTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testStepCheckOK(): void
     {
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
@@ -80,9 +74,6 @@ class UpgradeWizardStepTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testStepCheckUnavailable(): void
     {
         $this->expectException(HttpServerErrorException::class);
@@ -99,9 +90,6 @@ class UpgradeWizardStepTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testStepCheckFail(): void
     {
         $this->expectException(HttpServerErrorException::class);
@@ -118,9 +106,6 @@ class UpgradeWizardStepTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testStepPrepare(): void
     {
         $handler = new UpgradeWizardStep(
@@ -135,9 +120,6 @@ class UpgradeWizardStepTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testStepPending(): void
     {
         $handler = new UpgradeWizardStep(
@@ -152,9 +134,6 @@ class UpgradeWizardStepTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testStepPendingExist(): void
     {
         $tree_service = new TreeService(new GedcomImportService());
@@ -176,9 +155,6 @@ class UpgradeWizardStepTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testStepExport(): void
     {
         $tree            = $this->importTree('demo.ged');
@@ -203,9 +179,6 @@ class UpgradeWizardStepTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testStepDownloadFails(): void
     {
         $this->expectException(HttpServerErrorException::class);
@@ -222,9 +195,6 @@ class UpgradeWizardStepTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testStepDownload(): void
     {
         $mock_upgrade_service = $this->createMock(UpgradeService::class);
@@ -241,9 +211,6 @@ class UpgradeWizardStepTest extends TestCase
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
 
-    /**
-     * @return void
-     */
     public function testStepUnzip(): void
     {
         $mock_upgrade_service = $this->createMock(UpgradeService::class);

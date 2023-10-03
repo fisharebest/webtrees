@@ -25,8 +25,10 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Census
  */
-class CensusTest extends AbstractElementTest
+class CensusTest extends AbstractElementTestCase
 {
+    protected static bool $uses_database = true;
+
     /**
      * Standard tests for all elements.
      */

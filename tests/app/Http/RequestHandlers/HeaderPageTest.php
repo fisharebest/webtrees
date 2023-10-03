@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HeaderPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\HeaderPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\HeaderPage
  */
 class HeaderPageTest extends TestCase
 {

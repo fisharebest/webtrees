@@ -32,9 +32,8 @@ use Fisharebest\Webtrees\User;
  */
 class MasqueradeTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testMasqueradeAsUser(): void
     {
         $user1 = $this->createMock(User::class);
@@ -58,9 +57,6 @@ class MasqueradeTest extends TestCase
         self::assertSame('1', Session::get('masquerade'));
     }
 
-    /**
-     * @return void
-     */
     public function testCannotMasqueradeAsSelf(): void
     {
         $user = $this->createMock(User::class);
@@ -80,9 +76,6 @@ class MasqueradeTest extends TestCase
         self::assertNull(Session::get('masquerade'));
     }
 
-    /**
-     * @return void
-     */
     public function testMasqueradeAsNonExistingUser(): void
     {
         $this->expectException(HttpNotFoundException::class);

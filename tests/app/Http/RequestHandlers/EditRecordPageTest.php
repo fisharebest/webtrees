@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EditRecordPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EditRecordPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\EditRecordPage
  */
 class EditRecordPageTest extends TestCase
 {

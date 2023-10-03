@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class IndividualListModule
  *
- * @covers \Fisharebest\Webtrees\Module\IndividualListModule
+ * @covers Fisharebest\Webtrees\Module\IndividualListModule
  */
 class IndividualListModuleTest extends TestCase
 {

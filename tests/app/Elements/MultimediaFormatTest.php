@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\MultimediaFormat
  */
-class MultimediaFormatTest extends AbstractElementTest
+class MultimediaFormatTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class MultimediaFormatTest extends AbstractElementTest
         self::$element = new MultimediaFormat('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('JPG', self::$element->canonical('jpg'));

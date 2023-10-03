@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PrivacyPolicy
  *
- * @covers \Fisharebest\Webtrees\Module\PrivacyPolicy
+ * @covers Fisharebest\Webtrees\Module\PrivacyPolicy
  */
 class PrivacyPolicyTest extends TestCase
 {

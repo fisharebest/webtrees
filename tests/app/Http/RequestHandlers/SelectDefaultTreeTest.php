@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SelectDefaultTree
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\SelectDefaultTree
  */
 class SelectDefaultTreeTest extends TestCase
 {

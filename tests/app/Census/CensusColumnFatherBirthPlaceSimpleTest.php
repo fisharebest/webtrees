@@ -30,13 +30,6 @@ use Illuminate\Support\Collection;
  */
 class CensusColumnFatherBirthPlaceSimpleTest extends TestCase
 {
-    /**
-     * Get place mock.
-     *
-     * @param string $place Gedcom Place
-     *
-     * @return Place
-     */
     private function getPlaceMock(string $place): Place
     {
         $placeParts = explode(', ', $place);
@@ -51,8 +44,6 @@ class CensusColumnFatherBirthPlaceSimpleTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlaceSimple
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testKnownStateAndTown(): void
     {

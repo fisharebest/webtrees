@@ -45,9 +45,6 @@ class RelationshipNamesTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testRelationshipNames(): void
     {
         //                                                   i22m===f10===i23f

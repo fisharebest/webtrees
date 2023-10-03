@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TreePageDefaultUpdate
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultUpdate
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultUpdate
  */
 class TreePageDefaultUpdateTest extends TestCase
 {

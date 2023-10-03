@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ResidenceWithValue
  *
- * @covers \Fisharebest\Webtrees\Elements\ResidenceWithValue
+ * @covers Fisharebest\Webtrees\Elements\ResidenceWithValue
  */
 class ResidenceWithValueTest extends TestCase
 {

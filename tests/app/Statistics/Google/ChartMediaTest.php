@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartMedia
  *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartMedia
+ * @covers Fisharebest\Webtrees\Statistics\Google\ChartMedia
  */
 class ChartMediaTest extends TestCase
 {

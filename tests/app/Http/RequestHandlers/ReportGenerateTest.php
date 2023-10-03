@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReportGenerate
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReportGenerate
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ReportGenerate
  */
 class ReportGenerateTest extends TestCase
 {

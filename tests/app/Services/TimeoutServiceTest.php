@@ -45,9 +45,6 @@ function ini_get(...$args)
  */
 class TimeoutServiceTest extends TestCase
 {
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -55,9 +52,6 @@ class TimeoutServiceTest extends TestCase
         self::$mock_functions = $this->getMockForAbstractClass(MockGlobalFunctions::class);
     }
 
-    /**
-     * @return void
-     */
     protected function tearDown(): void
     {
         parent::setUp();
@@ -68,8 +62,6 @@ class TimeoutServiceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     *
-     * @return void
      */
     public function testNoTimeOut(): void
     {
@@ -88,8 +80,6 @@ class TimeoutServiceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     *
-     * @return void
      */
     public function testTimeOutReached(): void
     {
@@ -112,8 +102,6 @@ class TimeoutServiceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     *
-     * @return void
      */
     public function testTimeOutNotReached(): void
     {
@@ -136,8 +124,6 @@ class TimeoutServiceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
-     *
-     * @return void
      */
     public function testTimeLimitNotReached(): void
     {
@@ -155,8 +141,6 @@ class TimeoutServiceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
      * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
-     *
-     * @return void
      */
     public function testTimeLimitReached(): void
     {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModulesMenusAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusAction
  */
 class ModulesMenusActionTest extends TestCase
 {

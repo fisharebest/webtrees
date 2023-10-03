@@ -31,9 +31,6 @@ class SearchServiceTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @return void
-     */
     public function testSearchesReturnCollections(): void
     {
         $tree_service = new TreeService(new GedcomImportService());

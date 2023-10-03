@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CreateMediaObjectModal
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal
  */
 class CreateMediaObjectModalTest extends TestCase
 {

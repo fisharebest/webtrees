@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class NewsRepository
  *
- * @covers \Fisharebest\Webtrees\Statistics\Repository\NewsRepository
+ * @covers Fisharebest\Webtrees\Statistics\Repository\NewsRepository
  */
 class NewsRepositoryTest extends TestCase
 {

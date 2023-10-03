@@ -30,13 +30,6 @@ use Illuminate\Support\Collection;
  */
 class CensusColumnMotherBirthPlaceTest extends TestCase
 {
-    /**
-     * Get place mock.
-     *
-     * @param string $place Gedcom Place
-     *
-     * @return Place
-     */
     private function getPlaceMock(string $place): Place
     {
         $placeParts = explode(', ', $place);
@@ -51,8 +44,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testSameCountry(): void
     {
@@ -76,8 +67,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testDifferentCountry(): void
     {
@@ -101,8 +90,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testPlaceNoParent(): void
     {
@@ -123,8 +110,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testPlaceNoParentFamily(): void
     {

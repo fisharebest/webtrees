@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FamilySearch
  *
- * @covers \Fisharebest\Webtrees\CustomTags\FamilySearch
+ * @covers Fisharebest\Webtrees\CustomTags\FamilySearch
  */
 class FamilySearchTest extends TestCase
 {

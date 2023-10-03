@@ -34,6 +34,7 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use PHPUnit\Framework\Constraint\Callback;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -43,7 +44,7 @@ use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriFactoryInterface;
 
-use function app;
+use function array_shift;
 use function basename;
 use function filesize;
 use function http_build_query;
@@ -67,62 +68,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected static bool $uses_database = false;
 
     /**
-     * Things to run once, before all the tests.
-     */
-    public static function setUpBeforeClass(): void
-    {
-        parent::setUpBeforeClass();
-
-        $webtrees = new Webtrees();
-        $webtrees->bootstrap();
-
-        // PSR7 messages and PSR17 message-factories
-        Webtrees::set(ResponseFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(ServerRequestFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(StreamFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(UploadedFileFactoryInterface::class, Psr17Factory::class);
-        Webtrees::set(UriFactoryInterface::class, Psr17Factory::class);
-
-        // This is normally set in middleware.
-        Webtrees::set(ModuleThemeInterface::class, WebtreesTheme::class);
-
-        // Need the routing table, to generate URLs.
-        $router_container = new RouterContainer('/');
-        (new WebRoutes())->load($router_container->getMap());
-        Webtrees::set(RouterContainer::class, $router_container);
-
-        if (static::$uses_database) {
-            static::createTestDatabase();
-
-            I18N::init('en-US');
-
-            // This is normally set in middleware.
-            (new Gedcom())->registerTags(Registry::elementFactory(), true);
-
-            // Boot modules
-            (new ModuleService())->bootModules(new WebtreesTheme());
-        } else {
-            I18N::init('en-US', true);
-        }
-    }
-
-    /**
-     * Things to run once, AFTER all the tests.
-     */
-    public static function tearDownAfterClass(): void
-    {
-        if (static::$uses_database) {
-            $pdo = DB::connection()->getPdo();
-            unset($pdo);
-        }
-
-        parent::tearDownAfterClass();
-    }
-
-    /**
      * Create an SQLite in-memory database for testing
      */
-    protected static function createTestDatabase(): void
+    private static function createTestDatabase(): void
     {
         $capsule = new DB();
         $capsule->addConnection([
@@ -130,9 +78,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
             'database' => ':memory:',
         ]);
         $capsule->setAsGlobal();
-
-        // Migrations create logs, which requires an IP address, which requires a request
-        self::createRequest();
 
         // Create tables
         $migration_service = new MigrationService();
@@ -149,7 +94,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param array<string>                $query
      * @param array<string>                $params
      * @param array<UploadedFileInterface> $files
-     * @param array<string>                $attributes
+     * @param array<string|Tree>           $attributes
      *
      * @return ServerRequestInterface
      */
@@ -160,8 +105,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         array $files = [],
         array $attributes = []
     ): ServerRequestInterface {
-        /** @var ServerRequestFactoryInterface */
-        $server_request_factory = app(ServerRequestFactoryInterface::class);
+        $server_request_factory = Webtrees::make(ServerRequestFactoryInterface::class);
 
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
 
@@ -179,11 +123,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $request = $request->withAttribute($key, $value);
 
             if ($key === 'tree') {
-                app()->instance(Tree::class, $value);
+                Webtrees::set(Tree::class, $value);
             }
         }
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Webtrees::set(ServerRequestInterface::class, $request);
 
         return $request;
     }
@@ -195,9 +139,41 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
+        $webtrees = new Webtrees();
+        $webtrees->bootstrap();
+
+        // PSR7 messages and PSR17 message-factories
+        Webtrees::set(ResponseFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(ServerRequestFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(StreamFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(UploadedFileFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(UriFactoryInterface::class, Psr17Factory::class);
+
+        // This is normally set in middleware.
+        Webtrees::set(ModuleThemeInterface::class, new WebtreesTheme());
+
+        // Need the routing table, to generate URLs.
+        $router_container = new RouterContainer('/');
+        (new WebRoutes())->load($router_container->getMap());
+        Webtrees::set(RouterContainer::class, $router_container);
+        $module_service = new ModuleService();
+        Webtrees::set(ModuleService::class, $module_service);
+
         if (static::$uses_database) {
-            DB::connection()->beginTransaction();
+            static::createTestDatabase();
+
+            // This is normally set in middleware.
+            (new Gedcom())->registerTags(Registry::elementFactory(), true);
+
+            // Boot modules
+            $module_service->bootModules(new WebtreesTheme());
+
+            I18N::init('en-US');
+        } else {
+            I18N::init('en-US', true);
         }
+
+        self::createRequest();
     }
 
     /**
@@ -206,27 +182,19 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function tearDown(): void
     {
         if (static::$uses_database) {
-            DB::connection()->rollBack();
+            DB::connection()->disconnect();
         }
 
-        Site::$preferences = [];
-
-        Auth::logout();
+        Session::clear(); // Session data is stored in the super-global
+        Site::$preferences = []; // These are cached from the database
     }
 
-    /**
-     * Import a GEDCOM file into the test database.
-     *
-     * @param string $gedcom_file
-     *
-     * @return Tree
-     */
     protected function importTree(string $gedcom_file): Tree
     {
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
-        $stream                = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
+        $stream                = Webtrees::make(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
@@ -243,21 +211,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return $tree;
     }
 
-    /**
-     * Create an uploaded file for a request.
-     *
-     * @param string $filename
-     * @param string $mime_type
-     *
-     * @return UploadedFileInterface
-     */
     protected function createUploadedFile(string $filename, string $mime_type): UploadedFileInterface
     {
-        /** @var StreamFactoryInterface */
-        $stream_factory = app(StreamFactoryInterface::class);
-
-        /** @var UploadedFileFactoryInterface */
-        $uploaded_file_factory = app(UploadedFileFactoryInterface::class);
+        $stream_factory        = Webtrees::make(StreamFactoryInterface::class);
+        $uploaded_file_factory = Webtrees::make(UploadedFileFactoryInterface::class);
 
         $stream      = $stream_factory->createStreamFromFile($filename);
         $size        = filesize($filename);
@@ -267,11 +224,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
     }
 
-    /**
-     * Assert that a response contains valid HTML - either a full page or a fragment.
-     *
-     * @param ResponseInterface $response
-     */
     protected function validateHtmlResponse(ResponseInterface $response): void
     {
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
@@ -285,11 +237,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $this->validateHtml(substr($html, strlen('<DOCTYPE html>')));
     }
 
-    /**
-     * Assert that a response contains valid HTML - either a full page or a fragment.
-     *
-     * @param string $html
-     */
     protected function validateHtml(string $html): void
     {
         $stack = [];
@@ -342,5 +289,21 @@ class TestCase extends \PHPUnit\Framework\TestCase
         } while ($html !== '');
 
         static::assertSame([], $stack);
+    }
+
+    /**
+     * Workaround for removal of withConsecutive in phpunit 10.
+     *
+     * @param array<int,mixed> $parameters
+     */
+    protected static function withConsecutive(array $parameters): Callback
+    {
+        return self::callback(static function (mixed $parameter) use ($parameters): bool {
+            static $array = null;
+
+            $array ??= $parameters;
+
+            return $parameter === array_shift($array);
+        });
     }
 }

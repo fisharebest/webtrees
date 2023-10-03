@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LocationFactory
  *
- * @covers \Fisharebest\Webtrees\Factories\LocationFactory
+ * @covers Fisharebest\Webtrees\Factories\LocationFactory
  */
 class LocationFactoryTest extends TestCase
 {

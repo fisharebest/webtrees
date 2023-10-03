@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartMortality
  *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartMortality
+ * @covers Fisharebest\Webtrees\Statistics\Google\ChartMortality
  */
 class ChartMortalityTest extends TestCase
 {

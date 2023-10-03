@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CheckTree
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CheckTree
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CheckTree
  */
 class CheckTreeTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartMarriageAge
  *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge
+ * @covers Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge
  */
 class ChartMarriageAgeTest extends TestCase
 {

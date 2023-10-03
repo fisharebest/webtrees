@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SearchQuickAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction
  */
 class SearchQuickActionTest extends TestCase
 {

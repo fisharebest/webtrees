@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReorderNamesPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage
  */
 class ReorderNamesPageTest extends TestCase
 {

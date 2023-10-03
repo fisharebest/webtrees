@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ControlPanel
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel
  */
 class ControlPanelTest extends TestCase
 {

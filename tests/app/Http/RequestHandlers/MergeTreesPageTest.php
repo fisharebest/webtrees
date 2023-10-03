@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MergeTreesPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesPage
  */
 class MergeTreesPageTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AutoCompleteCitation
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation
  */
 class AutoCompleteCitationTest extends TestCase
 {

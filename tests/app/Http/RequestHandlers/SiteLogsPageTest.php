@@ -30,9 +30,8 @@ use Illuminate\Support\Collection;
  */
 class SiteLogsPageTest extends TestCase
 {
-    /**
-     * @return void
-     */
+    protected static bool $uses_database = true;
+
     public function testResponse(): void
     {
         $request = self::createRequest();

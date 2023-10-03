@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\LdsEndowmentDateStatus
  */
-class LdsEndowmentDateStatusTest extends AbstractElementTest
+class LdsEndowmentDateStatusTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -37,9 +37,6 @@ class LdsEndowmentDateStatusTest extends AbstractElementTest
         self::$element = new LdsEndowmentDateStatus('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO BAR BAZ', self::$element->canonical('Foo  bAr  baZ'));

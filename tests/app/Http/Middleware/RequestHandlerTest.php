@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RequestHandler
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\RequestHandler
+ * @covers Fisharebest\Webtrees\Http\Middleware\RequestHandler
  */
 class RequestHandlerTest extends TestCase
 {

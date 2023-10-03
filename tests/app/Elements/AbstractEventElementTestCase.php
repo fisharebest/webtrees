@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * Test harness for the class AbstractXrefElement
+ * Test harness for the class AbstractEventElement
  *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\AbstractXrefElement
+ * @covers \Fisharebest\Webtrees\Elements\AbstractEventElement
  */
-class AbstractXrefElementTest extends AbstractElementTest
+class AbstractEventElementTestCase extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -34,6 +34,6 @@ class AbstractXrefElementTest extends AbstractElementTest
     {
         parent::setUpBeforeClass();
 
-        self::$element = new AbstractXrefElement('label');
+        self::$element = new AbstractEventElement('label');
     }
 }

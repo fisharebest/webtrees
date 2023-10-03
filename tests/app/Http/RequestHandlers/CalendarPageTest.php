@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CalendarPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage
  */
 class CalendarPageTest extends TestCase
 {

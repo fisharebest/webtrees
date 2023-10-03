@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FilesystemFactory
  *
- * @covers \Fisharebest\Webtrees\Factories\FilesystemFactory
+ * @covers Fisharebest\Webtrees\Factories\FilesystemFactory
  */
 class FilesystemFactoryTest extends TestCase
 {

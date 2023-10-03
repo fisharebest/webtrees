@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AutoCompleteFolder
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder
  */
 class AutoCompleteFolderTest extends TestCase
 {

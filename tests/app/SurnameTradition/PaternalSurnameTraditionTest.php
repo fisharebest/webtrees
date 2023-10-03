@@ -35,8 +35,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testSurnames(): void
     {
@@ -47,8 +45,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNames(): void
     {
@@ -84,8 +80,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesWithSpfx(): void
     {
@@ -111,8 +105,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesWithMultipleSpfx(): void
     {
@@ -138,8 +130,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesWithDutchSpfx(): void
     {
@@ -165,8 +155,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewChildNamesWithMultipleDutchSpfx(): void
     {
@@ -192,8 +180,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new father names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewFatherNames(): void
     {
@@ -213,8 +199,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new mother names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewMotherNames(): void
     {
@@ -234,8 +218,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new parent names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewParentNames(): void
     {
@@ -255,8 +237,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new husband names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewHusbandNames(): void
     {
@@ -276,8 +256,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new wife names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewWifeNames(): void
     {
@@ -297,8 +275,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new wife names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewWifeNamesWithSpfx(): void
     {
@@ -318,8 +294,6 @@ class PaternalSurnameTraditionTest extends TestCase
      * Test new spouse names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
      */
     public function testNewSpouseNames(): void
     {
@@ -337,8 +311,6 @@ class PaternalSurnameTraditionTest extends TestCase
 
     /**
      * Prepare the environment for these tests
-     *
-     * @return void
      */
     protected function setUp(): void
     {

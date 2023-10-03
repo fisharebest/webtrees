@@ -34,9 +34,6 @@ use function response;
  */
 class BootModulesTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testMiddleware(): void
     {
         $theme = new WebtreesTheme();

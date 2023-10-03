@@ -31,8 +31,6 @@ class CensusColumnSurnameGivenNameInitialTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testOneGivenName(): void
     {
@@ -56,8 +54,6 @@ class CensusColumnSurnameGivenNameInitialTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMultipleGivenNames(): void
     {

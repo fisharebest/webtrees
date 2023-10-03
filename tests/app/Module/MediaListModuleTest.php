@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MediaListModule
  *
- * @covers \Fisharebest\Webtrees\Module\MediaListModule
+ * @covers Fisharebest\Webtrees\Module\MediaListModule
  */
 class MediaListModuleTest extends TestCase
 {

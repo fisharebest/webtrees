@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PhpInformation
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\PhpInformation
  */
 class PhpInformationTest extends TestCase
 {

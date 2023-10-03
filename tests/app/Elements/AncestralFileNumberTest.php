@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
  * @covers \Fisharebest\Webtrees\Elements\AncestralFileNumber
  */
-class AncestralFileNumberTest extends AbstractElementTest
+class AncestralFileNumberTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -38,9 +38,6 @@ class AncestralFileNumberTest extends AbstractElementTest
         self::$element = new AncestralFileNumber('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('FOO BAR BAZ', self::$element->canonical('Foo  bAr  baZ'));

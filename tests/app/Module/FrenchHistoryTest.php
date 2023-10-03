@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FrenchHistory
  *
- * @covers \Fisharebest\Webtrees\Module\FrenchHistory
+ * @covers Fisharebest\Webtrees\Module\FrenchHistory
  */
 class FrenchHistoryTest extends TestCase
 {

@@ -26,16 +26,13 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Common tests for ElementInterface
  */
-abstract class AbstractElementTest extends TestCase
+abstract class AbstractElementTestCase extends TestCase
 {
     private const EVIL_VALUE = '<script>evil()</script>';
     private const TEST_VALUE = '01 JAN 1970';
 
     protected static ElementInterface $element;
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('Foo bAr baZ', self::$element->canonical('Foo  bAr  baZ'));
@@ -43,9 +40,6 @@ abstract class AbstractElementTest extends TestCase
         self::assertSame('Foo bAr baZ', self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
     }
 
-    /**
-     * @return void
-     */
     public function testEscapeAtSigns(): void
     {
         if (static::$element instanceof AbstractXrefElement) {
@@ -55,9 +49,6 @@ abstract class AbstractElementTest extends TestCase
         }
     }
 
-    /**
-     * @return void
-     */
     public function testXssInValue(): void
     {
         $tree    = $this->createMock(Tree::class);
@@ -67,9 +58,6 @@ abstract class AbstractElementTest extends TestCase
         self::assertStringNotContainsStringIgnoringCase(self::EVIL_VALUE, $html, $message);
     }
 
-    /**
-     * @return void
-     */
     public function testXssInLabelValue(): void
     {
         $tree    = $this->createMock(Tree::class);
@@ -79,9 +67,6 @@ abstract class AbstractElementTest extends TestCase
         self::assertStringNotContainsStringIgnoringCase(self::EVIL_VALUE, $html, $message);
     }
 
-    /**
-     * @return void
-     */
     public function testXssInEdit(): void
     {
         $tree    = $this->createMock(Tree::class);
@@ -91,9 +76,6 @@ abstract class AbstractElementTest extends TestCase
         self::assertStringNotContainsStringIgnoringCase(self::EVIL_VALUE, $html, $message);
     }
 
-    /**
-     * @return void
-     */
     public function testValidHtmlInValue(): void
     {
         $tree = $this->createMock(Tree::class);
@@ -102,9 +84,6 @@ abstract class AbstractElementTest extends TestCase
         $this->validateHtml($html);
     }
 
-    /**
-     * @return void
-     */
     public function testValidHtmlInEdit(): void
     {
         $tree = $this->createMock(Tree::class);

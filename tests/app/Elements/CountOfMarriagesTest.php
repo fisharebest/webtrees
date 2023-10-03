@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\CountOfMarriages
  */
-class CountOfMarriagesTest extends AbstractElementTest
+class CountOfMarriagesTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

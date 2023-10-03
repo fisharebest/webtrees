@@ -30,17 +30,12 @@ class NoteTest extends TestCase
 
     /**
      * Test that the class exists
-     *
-     * @return void
      */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Note::class));
     }
 
-    /**
-     * @return void
-     */
     public function testNoteName(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -49,9 +44,6 @@ class NoteTest extends TestCase
         self::assertSame('<bdi>1</bdi>', $note->fullName());
     }
 
-    /**
-     * @return void
-     */
     public function testNoteNameWithHtmlEntities(): void
     {
         $tree = $this->createStub(Tree::class);

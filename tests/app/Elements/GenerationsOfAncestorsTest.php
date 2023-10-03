@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\GenerationsOfAncestors
  */
-class GenerationsOfAncestorsTest extends AbstractElementTest
+class GenerationsOfAncestorsTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

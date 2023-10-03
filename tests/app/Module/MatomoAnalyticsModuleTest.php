@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MatomoAnalyticsModule
  *
- * @covers \Fisharebest\Webtrees\Module\MatomoAnalyticsModule
+ * @covers Fisharebest\Webtrees\Module\MatomoAnalyticsModule
  */
 class MatomoAnalyticsModuleTest extends TestCase
 {

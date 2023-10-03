@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ManageMediaAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaAction
  */
 class ManageMediaActionTest extends TestCase
 {

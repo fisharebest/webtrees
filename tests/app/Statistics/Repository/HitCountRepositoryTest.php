@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HitCountRepository
  *
- * @covers \Fisharebest\Webtrees\Statistics\Repository\HitCountRepository
+ * @covers Fisharebest\Webtrees\Statistics\Repository\HitCountRepository
  */
 class HitCountRepositoryTest extends TestCase
 {

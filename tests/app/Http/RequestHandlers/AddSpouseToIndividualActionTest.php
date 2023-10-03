@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AddSpouseToIndividualAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToIndividualAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToIndividualAction
  */
 class AddSpouseToIndividualActionTest extends TestCase
 {

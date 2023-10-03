@@ -30,9 +30,6 @@ use Illuminate\Support\Collection;
  */
 class SiteLogsDownloadTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testResponse(): void
     {
         $request = self::createRequest();

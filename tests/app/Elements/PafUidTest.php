@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PafUid
  */
-class PafUidTest extends AbstractElementTest
+class PafUidTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

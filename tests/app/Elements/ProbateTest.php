@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Probate
  */
-class ProbateTest extends AbstractElementTest
+class ProbateTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Coordinates
  *
- * @covers \Fisharebest\Webtrees\Elements\Coordinates
+ * @covers Fisharebest\Webtrees\Elements\Coordinates
  */
 class CoordinatesTest extends TestCase
 {

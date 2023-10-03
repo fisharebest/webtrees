@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TomSelectSubmission
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TomSelectSubmission
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\TomSelectSubmission
  */
 class TomSelectSubmissionTest extends TestCase
 {

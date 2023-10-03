@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CreateLocationAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateLocationAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\CreateLocationAction
  */
 class CreateLocationActionTest extends TestCase
 {

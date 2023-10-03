@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Mime
  *
- * @covers \Fisharebest\Webtrees\Mime
+ * @covers Fisharebest\Webtrees\Mime
  */
 class MimeTest extends TestCase
 {

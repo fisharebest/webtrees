@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\ApprovedSystemId
  */
-class ApprovedSystemIdTest extends AbstractElementTest
+class ApprovedSystemIdTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

@@ -25,9 +25,8 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function app;
 
 /**
  * Test harness for the class XrefSubmission
@@ -38,9 +37,6 @@ use function app;
  */
 class XrefSubmissionTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testEdit(): void
     {
         $element = new XrefSubmission('');
@@ -57,7 +53,7 @@ class XrefSubmissionTest extends TestCase
 
         $request = self::createRequest();
 
-        app()->instance(ServerRequestInterface::class, $request);
+        Webtrees::set(ServerRequestInterface::class, $request);
 
         $html = $element->edit('some-id', 'some-name', '@X123@', $tree);
         $dom  = new DOMDocument();
@@ -69,9 +65,6 @@ class XrefSubmissionTest extends TestCase
         $option_nodes = $select_nodes[0]->getElementsByTagName('option');
         self::assertEquals(1, $option_nodes->count());
     }
-    /**
-     * @return void
-     */
     public function testEscape(): void
     {
         $element = new XrefSubmission('');
@@ -79,9 +72,6 @@ class XrefSubmissionTest extends TestCase
         self::assertSame('@X123@', $element->escape('@X123@'));
     }
 
-    /**
-     * @return void
-     */
     public function testValueXrefLink(): void
     {
         $element = new XrefSubmission('');
@@ -110,9 +100,6 @@ class XrefSubmissionTest extends TestCase
         self::assertSame('<a href="https://url">Full Name</a>', $element->value('@X123@', $tree));
     }
 
-    /**
-     * @return void
-     */
     public function testValueXrefLinkWithInvalidXref(): void
     {
         $element = new XrefSubmission('');
@@ -122,9 +109,6 @@ class XrefSubmissionTest extends TestCase
         self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
     }
 
-    /**
-     * @return void
-     */
     public function testValueXrefLinkWithMissingRecord(): void
     {
         $element = new XrefSubmission('');

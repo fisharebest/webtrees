@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReportListAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReportListAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ReportListAction
  */
 class ReportListActionTest extends TestCase
 {

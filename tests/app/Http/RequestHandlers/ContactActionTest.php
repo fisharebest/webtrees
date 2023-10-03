@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ContactAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ContactAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ContactAction
  */
 class ContactActionTest extends TestCase
 {

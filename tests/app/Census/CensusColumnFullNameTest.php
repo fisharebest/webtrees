@@ -34,8 +34,6 @@ class CensusColumnFullNameTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFullName
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function xxxtestFullName(): void
     {
@@ -54,8 +52,6 @@ class CensusColumnFullNameTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnFullName
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     *
-     * @return void
      */
     public function testMarriedName(): void
     {

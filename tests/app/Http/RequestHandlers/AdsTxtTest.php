@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AdsTxt
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AdsTxt
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\AdsTxt
  */
 class AdsTxtTest extends TestCase
 {

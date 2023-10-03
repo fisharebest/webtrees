@@ -36,9 +36,6 @@ use function response;
  */
 class ModuleActionTest extends TestCase
 {
-    /**
-     * @return void
-     */
     public function testModuleAction(): void
     {
         $module_service = $this->createMock(ModuleService::class);
@@ -60,9 +57,6 @@ class ModuleActionTest extends TestCase
         self::assertSame('It works!', (string) $response->getBody());
     }
 
-    /**
-     * @return void
-     */
     public function testNonExistingAction(): void
     {
         $this->expectException(HttpNotFoundException::class);
@@ -84,9 +78,6 @@ class ModuleActionTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testNonExistingModule(): void
     {
         $this->expectException(HttpNotFoundException::class);
@@ -108,9 +99,6 @@ class ModuleActionTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return void
-     */
     public function testAdminAction(): void
     {
         $this->expectException(HttpAccessDeniedException::class);

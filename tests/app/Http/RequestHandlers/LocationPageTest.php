@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LocationPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LocationPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\LocationPage
  */
 class LocationPageTest extends TestCase
 {

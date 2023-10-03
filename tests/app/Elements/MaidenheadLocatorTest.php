@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\MaidenheadLocator
  */
-class MaidenheadLocatorTest extends AbstractElementTest
+class MaidenheadLocatorTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -38,9 +38,6 @@ class MaidenheadLocatorTest extends AbstractElementTest
     }
 
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('AB', self::$element->canonical('ab'));

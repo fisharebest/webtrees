@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AddChildToFamilyAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyAction
  */
 class AddChildToFamilyActionTest extends TestCase
 {

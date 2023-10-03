@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class XrefNode
  *
- * @covers \Fisharebest\Webtrees\CommonMark\XrefNode
+ * @covers Fisharebest\Webtrees\CommonMark\XrefNode
  */
 class XrefNodeTest extends TestCase
 {

@@ -58,7 +58,6 @@ class TreeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Tree::id
      * @covers \Fisharebest\Webtrees\Tree::name
      * @covers \Fisharebest\Webtrees\Tree::title
-     * @return void
      */
     public function testConstructor(): void
     {
@@ -73,7 +72,6 @@ class TreeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Tree::getPreference
      * @covers \Fisharebest\Webtrees\Tree::setPreference
-     * @return void
      */
     public function testTreePreferences(): void
     {
@@ -89,7 +87,6 @@ class TreeTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Tree::getUserPreference
      * @covers \Fisharebest\Webtrees\Tree::setUserPreference
-     * @return void
      */
     public function testUserTreePreferences(): void
     {
@@ -109,7 +106,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     * @return void
      */
     public function testCreateInvalidIndividual(): void
     {
@@ -128,7 +124,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     * @return void
      */
     public function testCreateIndividual(): void
     {
@@ -150,7 +145,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createFamily
-     * @return void
      */
     public function testCreateInvalidFamily(): void
     {
@@ -169,7 +163,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createFamily
-     * @return void
      */
     public function testCreateFamily(): void
     {
@@ -191,7 +184,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     * @return void
      */
     public function testCreateInvalidMediaObject(): void
     {
@@ -210,7 +202,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     * @return void
      */
     public function testCreateMediaObject(): void
     {
@@ -232,7 +223,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createRecord
-     * @return void
      */
     public function testCreateInvalidRecord(): void
     {
@@ -251,7 +241,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::createRecord
-     * @return void
      */
     public function testCreateRecord(): void
     {
@@ -273,7 +262,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::significantIndividual
-     * @return void
      */
     public function testSignificantIndividual(): void
     {
@@ -314,7 +302,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\TreeService::importGedcomFile
-     * @return void
      */
     public function testImportAndDeleteGedcomFile(): void
     {
@@ -332,7 +319,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Tree::hasPendingEdit
-     * @return void
      */
     public function testHasPendingEdits(): void
     {
@@ -353,7 +339,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\GedcomExportService::export
-     * @return void
      */
     public function testExportGedcom(): void
     {

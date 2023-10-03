@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class OpenRouteServiceAutocomplete
  *
- * @covers \Fisharebest\Webtrees\Module\OpenRouteServiceAutocomplete
+ * @covers Fisharebest\Webtrees\Module\OpenRouteServiceAutocomplete
  */
 class OpenRouteServiceAutocompleteTest extends TestCase
 {

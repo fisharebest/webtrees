@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LanguageUrdu
  *
- * @covers \Fisharebest\Webtrees\Module\LanguageUrdu
+ * @covers Fisharebest\Webtrees\Module\LanguageUrdu
  */
 class LanguageUrduTest extends TestCase
 {

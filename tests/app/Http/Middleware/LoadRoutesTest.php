@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LoadRoutes
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\LoadRoutes
+ * @covers Fisharebest\Webtrees\Http\Middleware\LoadRoutes
  */
 class LoadRoutesTest extends TestCase
 {

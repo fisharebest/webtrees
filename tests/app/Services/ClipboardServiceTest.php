@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ClipboardService
  *
- * @covers \Fisharebest\Webtrees\Services\ClipboardService
+ * @covers Fisharebest\Webtrees\Services\ClipboardService
  */
 class ClipboardServiceTest extends TestCase
 {

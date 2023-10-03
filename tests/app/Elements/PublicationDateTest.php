@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\PublicationDate
  */
-class PublicationDateTest extends AbstractElementTest
+class PublicationDateTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RepositoryFactory
  *
- * @covers \Fisharebest\Webtrees\Factories\RepositoryFactory
+ * @covers Fisharebest\Webtrees\Factories\RepositoryFactory
  */
 class RepositoryFactoryTest extends TestCase
 {

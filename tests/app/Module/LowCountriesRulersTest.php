@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LowCountriesRulers
  *
- * @covers \Fisharebest\Webtrees\Module\LowCountriesRulers
+ * @covers Fisharebest\Webtrees\Module\LowCountriesRulers
  */
 class LowCountriesRulersTest extends TestCase
 {

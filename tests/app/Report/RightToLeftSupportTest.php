@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RightToLeftSupport
  *
- * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
+ * @covers Fisharebest\Webtrees\Report\RightToLeftSupport
  */
 class RightToLeftSupportTest extends TestCase
 {

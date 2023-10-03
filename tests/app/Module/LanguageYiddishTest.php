@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LanguageYiddish
  *
- * @covers \Fisharebest\Webtrees\Module\LanguageYiddish
+ * @covers Fisharebest\Webtrees\Module\LanguageYiddish
  */
 class LanguageYiddishTest extends TestCase
 {

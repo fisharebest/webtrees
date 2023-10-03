@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AgeAtEvent
  */
-class AgeAtEventTest extends AbstractElementTest
+class AgeAtEventTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.
@@ -39,9 +39,6 @@ class AgeAtEventTest extends AbstractElementTest
         self::$element = new AgeAtEvent('label');
     }
 
-    /**
-     * @return void
-     */
     public function testCanonical(): void
     {
         self::assertSame('CHILD', self::$element->canonical('cHiLd'));
@@ -51,9 +48,6 @@ class AgeAtEventTest extends AbstractElementTest
         self::assertSame('1y 2m 3d', self::$element->canonical('1Y  2M  3D'));
     }
 
-    /**
-     * @return void
-     */
     public function testValue(): void
     {
         $tree = $this->createStub(Tree::class);

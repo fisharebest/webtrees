@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Annulment
  */
-class AnnulmentTest extends AbstractElementTest
+class AnnulmentTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

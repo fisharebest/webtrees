@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModulesMapLinksPage
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapLinksPage
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapLinksPage
  */
 class ModulesMapLinksPageTest extends TestCase
 {

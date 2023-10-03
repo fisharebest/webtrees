@@ -26,8 +26,6 @@ class MenuTest extends TestCase
 {
     /**
      * @covers \Fisharebest\Webtrees\Menu::__construct
-     *
-     * @return void
      */
     public function testConstructorDefaults(): void
     {
@@ -42,8 +40,6 @@ class MenuTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Menu::__construct
-     *
-     * @return void
      */
     public function testConstructorNonDefaults(): void
     {
@@ -60,8 +56,6 @@ class MenuTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Menu::getLabel
      * @covers \Fisharebest\Webtrees\Menu::setLabel
-     *
-     * @return void
      */
     public function testGetterSetterLabel(): void
     {
@@ -76,8 +70,6 @@ class MenuTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Menu::getLink
      * @covers \Fisharebest\Webtrees\Menu::setLink
-     *
-     * @return void
      */
     public function testGetterSetterLink(): void
     {
@@ -92,8 +84,6 @@ class MenuTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Menu::getClass
      * @covers \Fisharebest\Webtrees\Menu::setClass
-     *
-     * @return void
      */
     public function testGetterSetterId(): void
     {
@@ -108,8 +98,6 @@ class MenuTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Menu::getAttrs
      * @covers \Fisharebest\Webtrees\Menu::setAttrs
-     *
-     * @return void
      */
     public function testGetterSetterAttrs(): void
     {
@@ -124,8 +112,6 @@ class MenuTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Menu::getSubmenus
      * @covers \Fisharebest\Webtrees\Menu::setSubmenus
-     *
-     * @return void
      */
     public function testGetterSetterSubmenus(): void
     {

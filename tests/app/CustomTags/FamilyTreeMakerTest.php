@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FamilyTreeMaker
  *
- * @covers \Fisharebest\Webtrees\CustomTags\FamilyTreeMaker
+ * @covers Fisharebest\Webtrees\CustomTags\FamilyTreeMaker
  */
 class FamilyTreeMakerTest extends TestCase
 {

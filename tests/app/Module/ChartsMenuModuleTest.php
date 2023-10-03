@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartsMenuModule
  *
- * @covers \Fisharebest\Webtrees\Module\ChartsMenuModule
+ * @covers Fisharebest\Webtrees\Module\ChartsMenuModule
  */
 class ChartsMenuModuleTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LeafletJsService
  *
- * @covers \Fisharebest\Webtrees\Services\LeafletJsService
+ * @covers Fisharebest\Webtrees\Services\LeafletJsService
  */
 class LeafletJsServiceTest extends TestCase
 {

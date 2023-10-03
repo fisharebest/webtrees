@@ -32,8 +32,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testSameDayMonthYear(): void
     {
@@ -53,8 +51,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testSameMonthYear(): void
     {
@@ -74,8 +70,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testSameYear(): void
     {
@@ -95,8 +89,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testReversed(): void
     {
@@ -116,8 +108,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testStartDateInvalid(): void
     {
@@ -137,8 +127,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testEndDateInvalid(): void
     {
@@ -158,8 +146,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testOverlappingDates1(): void
     {
@@ -179,8 +165,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testOverlappingDates2(): void
     {
@@ -200,8 +184,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testDifferentDay(): void
     {
@@ -221,8 +203,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testDifferentMonth(): void
     {
@@ -242,8 +222,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::ageYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
-     *
-     * @return void
      */
     public function testDifferentYear(): void
     {

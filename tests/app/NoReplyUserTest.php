@@ -33,7 +33,6 @@ class NoReplyUserTest extends TestCase
      * @covers \Fisharebest\Webtrees\NoReplyUser::email
      * @covers \Fisharebest\Webtrees\NoReplyUser::realName
      * @covers \Fisharebest\Webtrees\NoReplyUser::userName
-     * @return void
      */
     public function testConstructor(): void
     {
@@ -49,7 +48,6 @@ class NoReplyUserTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\NoReplyUser::getPreference
      * @covers \Fisharebest\Webtrees\NoReplyUser::setPreference
-     * @return void
      */
     public function testPreferences(): void
     {

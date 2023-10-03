@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PasswordResetAction
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetAction
+ * @covers Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetAction
  */
 class PasswordResetActionTest extends TestCase
 {

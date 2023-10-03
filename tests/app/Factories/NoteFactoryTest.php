@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class NoteFactory
  *
- * @covers \Fisharebest\Webtrees\Factories\NoteFactory
+ * @covers Fisharebest\Webtrees\Factories\NoteFactory
  */
 class NoteFactoryTest extends TestCase
 {

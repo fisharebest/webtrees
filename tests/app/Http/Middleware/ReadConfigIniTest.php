@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReadConfigIni
  *
- * @covers \Fisharebest\Webtrees\Http\Middleware\ReadConfigIni
+ * @covers Fisharebest\Webtrees\Http\Middleware\ReadConfigIni
  */
 class ReadConfigIniTest extends TestCase
 {

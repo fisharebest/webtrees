@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MapGeoLocationGeonames
  *
- * @covers \Fisharebest\Webtrees\Module\MapGeoLocationGeonames
+ * @covers Fisharebest\Webtrees\Module\MapGeoLocationGeonames
  */
 class MapGeoLocationGeonamesTest extends TestCase
 {

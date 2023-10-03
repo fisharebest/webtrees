@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Cremation
  */
-class CremationTest extends AbstractElementTest
+class CremationTest extends AbstractElementTestCase
 {
     /**
      * Standard tests for all elements.

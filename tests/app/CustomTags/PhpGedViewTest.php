@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PhpGedView
  *
- * @covers \Fisharebest\Webtrees\CustomTags\PhpGedView
+ * @covers Fisharebest\Webtrees\CustomTags\PhpGedView
  */
 class PhpGedViewTest extends TestCase
 {
