@@ -79,21 +79,21 @@ class IndividualListTest extends TestCase
         $response = $module->handle($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
-        self::assertEquals(['A', 'C', 'D', 'Æ'], array_map(rawurldecode(...), $matches[1]));
+        self::assertEquals(['A', 'C', 'D', 'Æ'], array_map(static fn (string $x): string => rawurldecode($x), $matches[1]));
 
         I18N::init('sv');
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
         $response = $module->handle($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
-        self::assertEquals(['A', 'C', 'D', 'Å', 'Æ'], array_map(rawurldecode(...), $matches[1]));
+        self::assertEquals(['A', 'C', 'D', 'Å', 'Æ'], array_map(static fn (string $x): string => rawurldecode($x), $matches[1]));
 
         I18N::init('hu');
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $this->tree]);
         $response = $module->handle($request);
         $html     = $response->getBody()->getContents();
         preg_match_all('/%2Findividual-list&amp;alpha=([^"&]+)/', $html, $matches);
-        self::assertEquals(['A', 'C', 'CS', 'DZ', 'Æ'], array_map(rawurldecode(...), $matches[1]));
+        self::assertEquals(['A', 'C', 'CS', 'DZ', 'Æ'], array_map(static fn (string $x): string => rawurldecode($x), $matches[1]));
     }
 
     /**
