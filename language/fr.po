@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-10-05 19:32+0000\n"
+"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
 "Language: fr\n"
@@ -5171,49 +5171,49 @@ msgstr "Dey"
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhou al-hijja"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhou al-hijja"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhou al-hijja"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhou al-hijja"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhou al-qiʿda"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhou al-qiʿda"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:132
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhou al-qiʿda"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:68
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi’dah"
+msgstr "Dhou al-qiʿda"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
@@ -7916,49 +7916,49 @@ msgstr "juillet"
 #: app/Date/HijriDate.php:94
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Joumada al-oula"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Joumada al-oula"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:126
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Joumada al-oula"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Joumada al-oula"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:95
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Joumada ath-thania"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Joumada ath-thania"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:127
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Joumada ath-thania"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Joumada ath-thania"
 
 #: app/Date/CalendarDate.php:326
 msgctxt "Abbreviation for June"
@@ -9544,25 +9544,25 @@ msgstr "Mozambique"
 #: app/Date/HijriDate.php:90
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Mouharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Mouharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:122
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Mouharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:58
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "Mouharram"
 
 #: app/Functions/FunctionsPrintLists.php:713
 msgid "Multiple marriages"
@@ -11296,49 +11296,49 @@ msgstr "Rabbin"
 #: app/Date/HijriDate.php:92
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabiʿ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabiʿ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:124
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabiʿ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi’ al-awwal"
+msgstr "Rabiʿ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabiʿ ath-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabiʿ ath-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:125
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabiʿ ath-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi’ al-thani"
+msgstr "Rabiʿ ath-thani"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
@@ -12403,49 +12403,49 @@ msgstr "Notes partagées trouvées"
 #: app/Date/HijriDate.php:99
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Chawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Chawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:131
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Chawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:67
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Chawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Chaabane"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Chaabane"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:129
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Chaabane"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Chaabane"
 
 #: modules_v3/descendancy_report/report.xml:358
 msgid "She "
@@ -13476,7 +13476,7 @@ msgstr "Intervertir les individus"
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
 msgid "Swaziland"
-msgstr "Swaziland"
+msgstr "Eswatini"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6887
@@ -16794,7 +16794,7 @@ msgstr "fermer"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
 msgid "clouds"
-msgstr "clouds"
+msgstr "Nuages"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:196
