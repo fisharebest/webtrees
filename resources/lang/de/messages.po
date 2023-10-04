@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-20 13:51+0000\n"
-"Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
+"PO-Revision-Date: 2023-10-05 19:32+0000\n"
+"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -3286,7 +3286,7 @@ msgstr "Cardston, Alberta, Kanada"
 
 #: app/Gedcom.php:609
 msgid "Caste"
-msgstr "Stand"
+msgstr "Kaste"
 
 #: resources/views/modules/statistics-chart/custom.phtml:79
 msgid "Categories"
@@ -8183,49 +8183,49 @@ msgstr "Juli"
 #: app/Date/HijriDate.php:150
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Dschumādā l-ūlā"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:240
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Dschumādā l-ūlā"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:195
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Dschumādā l-ūlā"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "Dschumādā l-ūlā"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:152
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Dschumādā th-thāniya"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:242
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Dschumādā th-thāniya"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:197
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "Dschumādā th-thāniya"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:107
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr "umada al-thani"
+msgstr "Dschumādā th-thāniya"
 
 #: app/Date/AbstractGregorianJulianDate.php:236
 msgctxt "Abbreviation for June"
@@ -11612,7 +11612,7 @@ msgstr "Datenqualität"
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:307
 msgid "Quartidi"
-msgstr "Tridi"
+msgstr "Quartidi"
 
 #: resources/views/modules/faq/config.phtml:60
 #: resources/views/modules/faq/edit.phtml:32
@@ -12887,49 +12887,49 @@ msgstr "Geteiltes"
 #: app/Date/HijriDate.php:160
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Schawwāl"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:250
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Schawwāl"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:205
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Schawwāl"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:115
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "Schawwāl"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:156
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Schaʿbān"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:246
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Schaʿbān"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:201
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Schaʿbān"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:111
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr "Sha’aban"
+msgstr "Schaʿbān"
 
 #: resources/xml/reports/descendancy_report.xml:358
 msgid "She "
@@ -13985,7 +13985,7 @@ msgstr "Tausche Personen"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:471
 msgid "Swaziland"
-msgstr "Swasiland"
+msgstr "Eswatini"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:469
@@ -17358,7 +17358,7 @@ msgstr "Verlobter"
 
 #: app/Services/RelationshipService.php:416
 msgid "fiancé(e)"
-msgstr "Verlobte"
+msgstr "Verlobter/verlobte"
 
 #: app/Services/RelationshipService.php:393
 msgid "fiancée"
