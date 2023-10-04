@@ -298,7 +298,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected static function withConsecutive(array $parameters): Callback
     {
-        return self::callback(static function (mixed $parameter) use ($parameters): bool {
+        return self::callback(static function ($parameter) use ($parameters): bool {
             static $array = null;
 
             $array ??= $parameters;
