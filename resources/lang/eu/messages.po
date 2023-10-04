@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-07-17 19:51+0000\n"
+"PO-Revision-Date: 2023-10-05 19:32+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -904,7 +904,7 @@ msgstr "Oharrak grabatzeko edo eguneko bat edukitzeko eremu pribatua."
 #: resources/views/emails/register-notify-text.phtml:20
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Erabiltzaile bat %s-ra erregistratu da webtrees-ekin."
+msgstr "Erabiltzaile bat %s-an erregistratu da webtrees-ekin."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
@@ -2032,7 +2032,7 @@ msgstr "Antigua eta Barbuda"
 msgid "Anyone with a user account can access this website."
 msgstr ""
 "Erabiltzaile-kontua daukan edozeinek izanen du webgune honetan sartzeko "
-"baimena."
+"aukera."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59
@@ -7956,11 +7956,11 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:113
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
 msgstr ""
-"Herrialde batzuetan, pribatutasun-legeak ez zaizkie soilik indibiduo biziei "
-"aplikatzen, baita berriki hil direnei ere. Aukera honi esker, pertsona "
-"bizien pribatutasun-arauak urte kopuru jakin batean jaio edo hil zirenen "
-"pribatutasun-arauetara zabaldu ahal izango dituzu. Utzi balio horiek hutsik "
-"funtzio hau desaktibatzeko."
+"Herrialde batzuetan, pribatutasun-legeak ez zaizkie soilik hilak diren "
+"pertsonei aplikatzen, baizik eta hil berriak direnei ere. Aukera honi esker, "
+"pertsona bizien pribatutasun-arauak, urte kopuru jakin batean, jaio edo hil "
+"direnei ere zabaldu ahal izango dizkiezu. Utzi balio horiek hutsik funtzio "
+"hau desaktibatzeko."
 
 #: app/Http/RequestHandlers/CalendarPage.php:118
 msgid "In this month…"
@@ -10205,11 +10205,11 @@ msgstr "Nere erregistro pertsonala"
 #: resources/views/admin/modules.phtml:200
 #: resources/views/layouts/administration.phtml:54
 msgid "My page"
-msgstr "Nere orria"
+msgstr "zuhaitz genealogikoa"
 
 #: app/Module/ModuleThemeTrait.php:374
 msgid "My pages"
-msgstr "Nere orriak"
+msgstr "Zuhaitz guztiak"
 
 #: app/Module/ModuleThemeTrait.php:413
 msgid "My pedigree"
@@ -15417,7 +15417,7 @@ msgstr "Informazio hori ez dago eskuragarri."
 #: app/Statistics/Repository/IndividualRepository.php:1259
 #: app/Statistics/Repository/IndividualRepository.php:1279
 msgid "This information is private and cannot be shown."
-msgstr "Informazio hori pribatua da eta ezin da ikusi."
+msgstr "Informazio hau pribatua da eta ezin da ikusi."
 
 #: resources/views/edit-account-page.phtml:68
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -17158,7 +17158,8 @@ msgstr "%s izenarekin ireki da saioa."
 
 #: app/Http/RequestHandlers/LoginPage.php:99
 msgid "You can apply for an account using the link below."
-msgstr "Behean ageri den loturarekin eskatzen ahal duzu erabiltzaile-kontua."
+msgstr ""
+"Behean ageri den lotura erabiliz erabiltzaile-kontua eskatzen ahal duzu."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
@@ -17553,7 +17554,7 @@ msgstr "hasierara itzuli"
 #: app/Date.php:201
 #, php-format
 msgid "before %s"
-msgstr "%sren aitzinetik"
+msgstr "%saren aitzinetik"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:217
@@ -21463,9 +21464,8 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
-"webtrees-ek korreo elektronikoak bidaltzeko beharra du, pasahitzen "
-"oroigarriak eta webgunearen jakinarazpenak erabiltzaileei helarazteko, "
-"errate baterako."
+"Webtrees-ek korreo elektronikoak bidaltzen ditu, pasahitzen oroigarriak edo "
+"webgunearen jakinarazpenak erabiltzaileei helarazteko, errate baterako."
 
 #: app/Services/MessageService.php:233
 msgid "webtrees sends emails with no storage"
