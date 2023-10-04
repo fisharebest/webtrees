@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-05-22 08:05+0000\n"
-"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
+"PO-Revision-Date: 2023-10-05 19:32+0000\n"
+"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/es/>\n"
 "Language: es\n"
@@ -13353,7 +13353,7 @@ msgstr "Intercambiar individuos"
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
 msgid "Swaziland"
-msgstr "Suazilandia"
+msgstr "Esuatini"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6887
