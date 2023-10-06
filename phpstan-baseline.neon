@@ -1926,11 +1926,6 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Binary operation \"\\.\" between non\\-falsy\\-string and array\\<int, string\\>\\|string results in an error\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
 			count: 1
 			path: app/Individual.php
@@ -2177,7 +2172,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
-			count: 2
+			count: 3
 			path: app/Module/CloudsTheme.php
 
 		-
@@ -3716,6 +3711,16 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^Cannot access offset \\(float\\|int\\) on array\\<int, string\\>\\|false\\.$#"
+			count: 13
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Cannot access offset \\(float\\|int\\<1, max\\>\\) on array\\<int, string\\>\\|false\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Cannot access offset 0 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
 			path: app/Report/ReportParserGenerate.php
@@ -3723,16 +3728,6 @@ parameters:
 		-
 			message: "#^Cannot access offset 1 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Cannot access offset float\\|int on array\\<int, string\\>\\|false\\.$#"
-			count: 13
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Cannot access offset float\\|int\\<1, max\\> on array\\<int, string\\>\\|false\\.$#"
-			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -3972,11 +3967,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\}\\.$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float\\|int, 1, int\\<0, max\\>\\}\\.$#"
 			count: 1
 			path: app/Report/ReportPdfText.php
 
@@ -4349,6 +4339,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingChanges\\(\\) should return array\\<array\\<stdClass\\>\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#"
 			count: 1
 			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Binary operation \"\\*\" between 365 and 0\\|string results in an error\\.$#"
+			count: 1
+			path: app/Services/SearchService.php
 
 		-
 			message: "#^Binary operation \"\\*\" between 365 and string results in an error\\.$#"
