@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-09-14 03:32+0000\n"
+"PO-Revision-Date: 2023-10-08 02:32+0000\n"
 "Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
@@ -987,7 +987,7 @@ msgstr "去世时间或地点的报告。"
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "工作/岗位报告。"
+msgstr "职业信息报告。"
 
 # I18N: Description of the “Births” module
 #. I18N: Description of the “Births” module
@@ -4940,7 +4940,7 @@ msgstr "日期"
 
 #: resources/views/help/date.phtml:100
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "日期时间是用来表明一个事实,如一个工作/岗位,持续一段时间。"
+msgstr "日期时间是用来表明一个事实,如一个职业,它持续一段时间。"
 
 #: app/Gedcom.php:835 resources/views/help/date.phtml:69
 #: resources/views/modules/statistics-chart/custom.phtml:96
@@ -7888,7 +7888,7 @@ msgstr "黑体"
 
 #: resources/xml/reports/ahnentafel_report.xml:197
 msgid "Her occupation was"
-msgstr "她的工作/岗位是"
+msgstr "她的职业是"
 
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:96
@@ -7990,7 +7990,7 @@ msgstr "伊斯兰历"
 
 #: resources/xml/reports/ahnentafel_report.xml:196
 msgid "His occupation was"
-msgstr "他的工作/岗位是"
+msgstr "他的职业是"
 
 #: app/Http/RequestHandlers/ModulesHistoricEventsPage.php:43
 #: resources/views/admin/control-panel.phtml:743
@@ -11471,7 +11471,7 @@ msgstr "瓦哈卡州,墨西哥"
 #: resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
-msgstr "工作/岗位"
+msgstr "职业"
 
 # I18N: Name of a report
 #. I18N: Name of a report
@@ -11479,7 +11479,7 @@ msgstr "工作/岗位"
 #: resources/xml/reports/occupation_report.xml:3
 #: resources/xml/reports/occupation_report.xml:37
 msgid "Occupations"
-msgstr "工作/岗位"
+msgstr "职业信息"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -14181,7 +14181,7 @@ msgstr "显示注释说明"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "显示工作/岗位"
+msgstr "显示职业信息"
 
 #: resources/views/modules/todays_events/config.phtml:21
 #: resources/views/modules/upcoming_events/config.phtml:33
