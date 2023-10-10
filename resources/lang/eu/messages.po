@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-05 19:32+0000\n"
+"PO-Revision-Date: 2023-10-10 18:31+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -3494,7 +3494,7 @@ msgstr "Aldaketak"
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Aldaketak azkeneko %s egunean"
-msgstr[1] "Aldaketak azkeneko %s egunetan"
+msgstr[1] "Azkeneko %s egunetan egindako aldaketak"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:94
 #: resources/views/admin/trees.phtml:211
