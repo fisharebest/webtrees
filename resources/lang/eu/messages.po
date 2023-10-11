@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-10 18:31+0000\n"
+"PO-Revision-Date: 2023-10-16 16:34+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -7865,8 +7865,8 @@ msgstr ""
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr ""
 "Bisitariei gizabanako biziak erakusten badizkiezu, gainerako pribatutasun-"
-"murrizketak ez dira kontuan hartuko. Zure zuhaitzaren datu guztiak publikoak "
-"badira bakarrik egin hori."
+"murrizketak ez dira kontuan hartuko. Zure zuhaitzaren datu guztiak bakarrik "
+"publikoak badira egin hori."
 
 #: resources/views/setup/step-2-server-checks.phtml:82
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -9735,7 +9735,7 @@ msgstr "Melbourne, Australia"
 #: resources/views/admin/gedcom-export-options.phtml:108
 #: resources/views/admin/users-edit.phtml:246
 msgid "Member"
-msgstr "Kidea"
+msgstr "Erabiltzailea"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:133
@@ -13727,8 +13727,9 @@ msgstr "Orriaren identifikazio kodea"
 #: resources/views/edit-account-page.phtml:140
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
-"Orriko kideak mezuak bidaltzen ahal dizkiete elkarri. Zuk aukeratzen ahal "
-"duzu nola bidaltzen dizkizuten mezuak, edo ez dituzun hartu nahi."
+"Orriaren erabiltzaileek mezuak bidaltzen ahal dizkiete elkarri. Zuk "
+"aukeratzen ahal duzu nola bidaltzen dizkizuten mezuak, edo ez dituzun hartu "
+"nahi."
 
 #. I18N: A configuration setting
 #: resources/views/modules/bing-webmaster-tools/form.phtml:11
@@ -15160,7 +15161,7 @@ msgstr "Ez dago iturri-oharrik pertsona honentzat."
 #: resources/views/emails/pending-changes-html.phtml:22
 #: resources/views/emails/pending-changes-text.phtml:19
 msgid "There are pending changes for you to moderate."
-msgstr "Ez dago behin behineko aldaketarik moderatzeke."
+msgstr "Ez dago moderatu gabeko behin behineko aldaketarik."
 
 #: app/Module/RecentChangesModule.php:151
 #, php-format
@@ -16923,9 +16924,9 @@ msgstr ""
 "Kontuaren eskaera egiaztatu beharko duzu mezu honetan dauden argibideak "
 "jarraituz. Zure eskaera ez baduzu 7 egunez bideratzen, automatikoki "
 "errefusatuko da. Eskaera berria egin beharko duzu. <br><br>Egiaztapen mezuan "
-"bidalitako argibideak jarraitu ondotik, administratzaileak onartu egin "
-"beharko du zure eskaria erabiltzen hasi baino lehen. <br><br>Orrian sartu "
-"ahal izateko, erabiltzaile izena eta pasahitza beharko dituzu."
+"bidalitako argibideak jarraitu ondotik, zure eskaria erabiltzen hasi baino "
+"lehen, administratzaileak onartu egin beharko du. <br><br>Orrian sartu ahal "
+"izateko, erabiltzaile-izena eta pasahitza beharko dituzu."
 
 #: resources/views/admin/control-panel.phtml:166
 #: resources/views/admin/control-panel.phtml:594
@@ -17326,10 +17327,10 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr ""
-"Erabiltzailea izan litekeenak eskaera konfirmatzen duenean, korreo "
-"elektronikoz informatuko zaio. Ondotik erabiltzaile-izenaren aktibazioa "
-"burutzen ahal du. Erabiltzaile berriak ezin izanen du saiorik ireki kontua "
-"gaitu arte."
+"Erabiltzailea izan litekeenak, eskaera konfirmatu eta onartzen denean, "
+"korreo elektronikoz informatuko zaio. Ondotik erabiltzaile-izenaren "
+"aktibazioa burutzen ahal du. Erabiltzaile berriak ezin izanen du saiorik "
+"ireki administratzaileak kontua gaitu arte."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
@@ -17419,7 +17420,7 @@ msgstr ""
 #: app/Date.php:185
 #, php-format
 msgid "about %s"
-msgstr "%s-taz"
+msgstr "%sa inguruan"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
@@ -20152,7 +20153,7 @@ msgstr[1] "%s egun gehienez"
 #: resources/views/admin/trees-privacy.phtml:126
 #: resources/views/admin/trees-privacy.phtml:146
 msgid "members"
-msgstr "kideak"
+msgstr "Erabiltzaileak"
 
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
@@ -20465,7 +20466,7 @@ msgstr "bikotekidea"
 #: app/Services/RelationshipService.php:376
 msgctxt "MALE"
 msgid "partner"
-msgstr "bikoteakidea"
+msgstr "bikotekidea"
 
 #: app/SurnameTradition/PaternalSurnameTradition.php:38
 msgctxt "Surname tradition"
@@ -20846,7 +20847,7 @@ msgstr "deus ez aukeratu"
 
 #: app/Services/RelationshipService.php:346
 msgid "self"
-msgstr "neu"
+msgstr "Bilatutakoa bera"
 
 #: app/Services/RelationshipService.php:2336
 msgid "seventh cousin"
