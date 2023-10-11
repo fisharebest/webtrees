@@ -71,9 +71,13 @@ class BadBotBlocker implements MiddlewareInterface
         'Barkrowler',
         'BLEXBot',
         'Bytespider',
+        'CCBot', // Used to train a number of LLMs
+        'ChatGPT-User', // Used by ChatGPT during operation
         'DataForSEO',
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
+        'FacebookBot', // Collects training data for Facebook's LLM translator.
+        'Google-Extended', // Collects training data for Google Bard
         'GPTBot', // Collects training data for ChatGPT
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
@@ -83,6 +87,7 @@ class BadBotBlocker implements MiddlewareInterface
         'MegaIndex.ru',
         'MJ12bot',
         'netEstate NE',
+        'Omgilibot', // Collects training data for LLMs
         'panscient',
         'PetalBot',
         'proximic',
