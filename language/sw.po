@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-10-15 12:34+0000\n"
+"Last-Translator: adammaranja <adam.maranja@gmail.com>\n"
 "Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-1-7/sw/>\n"
 "Language: sw\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " lakini maelezo ni haijulikani"
+msgstr " lakini taarifa za kina hazijulikani"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -90,7 +90,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "KB %1$s walikuwa kupakuliwa katika sekunde %2$s."
+msgstr "KB %1$s zimepakuliwa katika sekunde %2$s."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
