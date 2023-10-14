@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2017-08-01 18:39+0000\n"
-"Last-Translator: Jean-Maurice Omankoy <jean_mau@hotmail.com>\n"
-"Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/webtrees/sw/>\n"
+"PO-Revision-Date: 2023-10-15 12:02+0000\n"
+"Last-Translator: adammaranja <adam.maranja@gmail.com>\n"
+"Language-Team: Swahili <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/sw/>\n"
 "Language: sw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -19,7 +20,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " lakini maelezo ni haijulikani"
+msgstr " lakini taarifa za kina hazijulikani"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -65,7 +66,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:243
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "KB %1$s walikuwa kupakuliwa katika sekunde %2$s."
+msgstr "KB %1$s zimepakuliwa katika sekunde %2$s."
 
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
