@@ -2,15 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2021-08-15 08:31+0000\n"
-"Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
-"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
+"PO-Revision-Date: 2023-10-15 12:03+0000\n"
+"Last-Translator: Yuri <zaharchenko.yurij@gmail.com>\n"
+"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -321,7 +323,7 @@ msgstr[2] "%s нотаток буде оновлено."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s зустрічається занадто багато разів."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -545,7 +547,7 @@ msgstr "(відсортовано з усього %s записів)"
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
 msgid "(includes media files)"
-msgstr ""
+msgstr "(включає медіафайли)"
 
 #: resources/views/fact-date.phtml:117
 msgid "(on the date of death)"
@@ -669,6 +671,11 @@ msgstr "<тема за замовчуванням>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>Примітка: Заповнюючи та надсилаючи цю форму, Ви погоджуєтеся:</"
+"p><ul><li>захищати конфіденційність живих осіб, указаних на нашому сайті;</"
+"li><li>і в текстовому полі нижче, щоб пояснити, з ким Ви пов’язані, або "
+"надати нам інформацію про когось, хто має бути вказаний на нашому "
+"вебсайті.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -1524,7 +1531,7 @@ msgstr "Аделаїда, Австралія"
 
 #: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
-msgstr ""
+msgstr "Адміністративний ID"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1842,7 +1849,7 @@ msgstr "Інакше"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Альтернативне написання прізвища"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1940,7 +1947,7 @@ msgstr "PID предка"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ідентифікатор джерела Ancestry.com"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -2004,11 +2011,11 @@ msgstr "Апіа, Самоа"
 
 #: app/Gedcom.php:511
 msgid "Application ID"
-msgstr ""
+msgstr "ID програми"
 
 #: app/Gedcom.php:528
 msgid "Application name"
-msgstr ""
+msgstr "Назва програми"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -3457,7 +3464,7 @@ msgstr "Історія змін"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "Кодування символів"
 
 #: app/Gedcom.php:497
 msgid "Character set"
@@ -3498,7 +3505,7 @@ msgstr "Перевірка на наявність помилок"
 
 #: app/Module/CheckForNewVersion.php:66
 msgid "Check for new version"
-msgstr ""
+msgstr "Перевірити на нову версію"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Check for pending changes…"
@@ -3696,7 +3703,7 @@ msgstr "Здійснює обрізання"
 
 #: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
-msgstr ""
+msgstr "Обрізання"
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
@@ -3899,7 +3906,7 @@ msgstr "Зміст"
 
 #: app/Gedcom.php:765
 msgid "Continuation"
-msgstr ""
+msgstr "Продовження"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3966,7 +3973,7 @@ msgstr "Панель керування"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:61
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Перетворити %s теги до GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4138,7 +4145,7 @@ msgstr "Створити, оновити і видалити генеалогі�
 #: app/CustomTags/Gedcom7.php:140 app/CustomTags/Gedcom7.php:149
 #: app/CustomTags/Gedcom7.php:157 app/CustomTags/Gedcom7.php:166
 msgid "Created at"
-msgstr ""
+msgstr "Створено в"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
@@ -4153,7 +4160,7 @@ msgstr "Дата утворення"
 #: app/CustomTags/Gedcom7.php:151 app/CustomTags/Gedcom7.php:159
 #: app/CustomTags/Gedcom7.php:168
 msgid "Creation time"
-msgstr ""
+msgstr "Час створення"
 
 #: app/Gedcom.php:632 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4317,6 +4324,8 @@ msgstr "Нестандартні теги GEDCOM"
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
+"Спеціальні теги GEDCOM не рекомендуються. Намагайтеся використовувати лише "
+"стандартні теги GEDCOM."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
@@ -4610,7 +4619,7 @@ msgstr "Дата проживання"
 
 #: app/CustomTags/Gedcom7.php:129
 msgid "Date of status change"
-msgstr ""
+msgstr "Дата зміни статусу"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
@@ -5108,7 +5117,7 @@ msgstr "Видалити ім'я"
 
 #: resources/views/admin/locations.phtml:174
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Видалити невикористані локації"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
@@ -5120,7 +5129,7 @@ msgstr "Видалення сім'ї від'єднає всіх персон о�
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Видалення…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:133
@@ -5129,7 +5138,7 @@ msgstr "Демократична Республіка Конго"
 
 #: app/CustomTags/GedcomL.php:287
 msgid "Demographic data"
-msgstr ""
+msgstr "Демографічні дані"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
@@ -5304,6 +5313,7 @@ msgstr "Помер, як дитина: виключається"
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
 msgstr ""
+"Дитині, що померла у віці до 1 року, мормонське запечатування не потрібно."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5560,7 +5570,7 @@ msgstr "Редагуйте запис цієї персони і замініт�
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Редагувати з усіма тегами GEDCOM"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:101
@@ -5678,7 +5688,7 @@ msgstr "Роботодавець"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Очистити буфер обміну"
 
 #: app/Module/ClippingsCartModule.php:192
 msgid "Empty the clippings cart"
@@ -5724,7 +5734,7 @@ msgstr "Введіть додаткові нотатки про запис"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Перейти в повноекранний режим"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5816,7 +5826,7 @@ msgstr "Подія"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Подія не відбулася"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5868,7 +5878,7 @@ msgstr "Виключені з цього подання"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Вийти з повноекранного режиму"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5907,7 +5917,7 @@ msgstr "Зовнішні файли"
 #: app/CustomTags/Gedcom7.php:143 app/CustomTags/Gedcom7.php:152
 #: app/CustomTags/Gedcom7.php:160 app/CustomTags/Gedcom7.php:169
 msgid "External identifier"
-msgstr ""
+msgstr "Зовнішній ідентифікатор"
 
 #: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
@@ -6136,11 +6146,11 @@ msgstr "Родинний перепис"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "Сімейний факт"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
-msgstr ""
+msgstr "Сімейні факти та події"
 
 #: app/Gedcom.php:880
 msgid "Family file"
@@ -6393,19 +6403,19 @@ msgstr "Жінки"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Поле"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Назва поля"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Значення поля"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6846,7 +6856,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -6889,7 +6899,7 @@ msgstr "Ідентифікатор GOV"
 
 #: app/CustomTags/GedcomL.php:282
 msgid "GOV identifier type"
-msgstr ""
+msgstr "Тип ідентифікатора GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:201
@@ -7427,13 +7437,13 @@ msgstr "Приховати від усіх"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Hide password"
-msgstr ""
+msgstr "Приховати пароль"
 
 #: resources/views/admin/trees-check.phtml:39
 #: resources/views/admin/trees-check.phtml:55
 #: resources/views/admin/trees-check.phtml:71
 msgid "Hide these errors"
-msgstr ""
+msgstr "Приховати ці помилки"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
@@ -7681,7 +7691,7 @@ msgstr "Якщо ви створили медіаоб'єкти в webtrees, ал
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Якщо Ви змінюєте ім'я файлу, потрібно також перейменувати файл."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7874,7 +7884,7 @@ msgstr "Карта розподілу персон"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Індивідуальні факти та події"
 
 #: resources/views/admin/control-panel.phtml:722
 msgid "Individual page"
@@ -7964,7 +7974,7 @@ msgstr "Iнформант"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Записи вбудованого джерела не рекомендовані."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:177 app/Module/ChartsBlockModule.php:260
@@ -7998,11 +8008,11 @@ msgstr "Неправильний файл GEDCOM - знайдені записи
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Недійсний файл GEDCOM – запис трейлера не знайдено."
 
 #: app/Http/RequestHandlers/CheckTree.php:198
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Недійсний номер рівня GEDCOM."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -8010,15 +8020,15 @@ msgstr "Хибний запис GEDCOM"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Недійсний запис GEDCOM."
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Недійсний тег GEDCOM."
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Недійсне значення GEDCOM."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8056,6 +8066,8 @@ msgstr "Завантаження і встановлення оновлень м
 #: resources/views/admin/tags.phtml:1025
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
+"Не рекомендується використовувати спеціальні теги GEDCOM. Ці дані можуть "
+"бути втрачені під час перенесення їх в інші програми."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
@@ -8422,11 +8434,11 @@ msgstr "Позначка"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr ""
+msgstr "Мітка для чоловіка"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr ""
+msgstr "Мітка для дружини"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8436,12 +8448,12 @@ msgstr "Лаі, Гаваї"
 #. I18N: GEDCOM tag _PURC
 #: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
-msgstr ""
+msgstr "Викуп землі"
 
 #. I18N: GEDCOM tag _SALE
 #: app/CustomTags/Reunion.php:60
 msgid "Land sale"
-msgstr ""
+msgstr "Продаж землі"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:101
@@ -8517,7 +8529,7 @@ msgstr "Остання зміна"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Востаннє перевірено %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -8612,7 +8624,7 @@ msgstr "Спадкоємець"
 
 #: app/CustomTags/Aldfaer.php:72
 msgid "Length"
-msgstr ""
+msgstr "Довжина"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -8674,11 +8686,11 @@ msgstr "Ліма, Перу"
 
 #: resources/views/admin/gedcom-export-options.phtml:89
 msgid "Line endings"
-msgstr ""
+msgstr "Закінчення рядків"
 
 #: app/Http/RequestHandlers/CheckTree.php:420
 msgid "Line number"
-msgstr ""
+msgstr "Номер рядка"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:821
@@ -8987,6 +8999,8 @@ msgstr "Рукопис"
 #: resources/views/admin/tags.phtml:1023
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
 msgstr ""
+"Багато генеалогічних програм визначають власні спеціальні теги GEDCOM, і "
+"webtrees зможуть відображати більшість із них."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
@@ -9942,7 +9956,7 @@ msgstr "Мухаррам"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Кілька народжень"
 
 #: resources/views/lists/families-table.phtml:141
 msgid "Multiple marriages"
@@ -10026,7 +10040,7 @@ msgstr "ПІБ (імена) на івриті"
 #: app/CustomTags/GedcomL.php:216 app/CustomTags/Legacy.php:116
 #: app/CustomTags/PersonalAncestralFile.php:73
 msgid "Name of addressee"
-msgstr ""
+msgstr "Ім'я адресата"
 
 #: app/Gedcom.php:687 app/Gedcom.php:695 app/Gedcom.php:701
 msgid "Name prefix"
@@ -10316,7 +10330,7 @@ msgstr "У базі даних немає фактів про цю сім'ю."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Файл не отримано."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -10369,7 +10383,7 @@ msgstr "Немає ні зареєстрованих, ні анонімних к
 #: resources/views/lists/surnames-table.phtml:69
 #: resources/views/lists/surnames-tag-cloud.phtml:34
 msgid "No surname"
-msgstr ""
+msgstr "Немає прізвища"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10455,7 +10469,7 @@ msgstr "Не одружений/одружена"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:104
 msgid "Not recorded"
-msgstr ""
+msgstr "Не записано"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Not verified by the user"
@@ -10487,33 +10501,33 @@ msgstr "Примітка"
 #: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
 #: app/Gedcom.php:900 app/Gedcom.php:914
 msgid "Note on association"
-msgstr ""
+msgstr "Примітка щодо асоціації"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:449 app/Gedcom.php:616
 #: app/Gedcom.php:763 app/Gedcom.php:784 app/Gedcom.php:815 app/Gedcom.php:831
 #: app/Gedcom.php:862 app/Gedcom.php:878
 msgid "Note on last change"
-msgstr ""
+msgstr "Примітка щодо останньої зміни"
 
 #: app/Gedcom.php:686
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Примітка щодо фонетичної назви"
 
 #: app/CustomTags/GedcomL.php:248 app/Gedcom.php:425 app/Gedcom.php:557
 msgid "Note on place"
-msgstr ""
+msgstr "Примітка щодо місця"
 
 #: app/Gedcom.php:846
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Примітка щодо посилання на репозиторій"
 
 #: app/Gedcom.php:700
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Примітка щодо латинізованого імені"
 
 #: app/Gedcom.php:838
 msgid "Note on source"
-msgstr ""
+msgstr "Примітка щодо джерела"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
@@ -10521,11 +10535,11 @@ msgstr ""
 #: app/Gedcom.php:751 app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:908
 #: app/Gedcom.php:922
 msgid "Note on source citation"
-msgstr ""
+msgstr "Примітка щодо джерела цитати"
 
 #: app/Gedcom.php:837
 msgid "Note on source data"
-msgstr ""
+msgstr "Примітка щодо вихідних даних"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10843,7 +10857,7 @@ msgstr "Орієнтація"
 
 #: app/CustomTags/Ancestry.php:70
 msgid "Origin"
-msgstr ""
+msgstr "Походження"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/CustomTags/Ancestry.php:75
@@ -10995,7 +11009,7 @@ msgstr "Парагвай"
 
 #: app/CustomTags/GedcomL.php:293
 msgid "Parent location"
-msgstr ""
+msgstr "Батьківське розташування"
 
 #: app/Gedcom.php:740 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:72
@@ -11158,7 +11172,7 @@ msgstr "Фотографія"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Фотографія"
 
 #: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:78
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:88
@@ -11167,7 +11181,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:114 app/CustomTags/Gedcom7.php:115
 #: app/CustomTags/Gedcom7.php:117 app/CustomTags/Gedcom7.php:119
 msgid "Phrase"
-msgstr ""
+msgstr "Фраза"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:174
@@ -11812,7 +11826,7 @@ msgstr "Упорядкувати медіа"
 
 #: resources/views/media-page-menu.phtml:40
 msgid "Re-order media files"
-msgstr ""
+msgstr "Зміна порядку медіафайлів"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:51
@@ -12063,7 +12077,7 @@ msgstr "Ріно, штат Невада"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Перенумерування XREF'ів"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12096,8 +12110,9 @@ msgstr "Звіт"
 
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
+#, fuzzy
 msgid "Report phrase"
-msgstr ""
+msgstr "Доповідна фраза"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12302,12 +12317,12 @@ msgstr "Встановлена версія SQLite %s. Потрібна верс
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:211
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12345,7 +12360,7 @@ msgstr "Шавлія"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Сен-Бартелемі"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -12669,6 +12684,8 @@ msgstr "Надіслати тестовий лист, використовуюч
 #: app/Module/CheckForNewVersion.php:76
 msgid "Send an email to all administrators when an upgrade is available."
 msgstr ""
+"Надіслати електронного листа усім адміністраторам, коли буде доступне "
+"оновлення."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:20
@@ -13039,7 +13056,7 @@ msgstr "Показати угоду користувача на сторінці
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
-msgstr ""
+msgstr "Показати все медіа"
 
 #: resources/views/modules/notes/tab.phtml:30
 msgid "Show all notes"
@@ -13190,7 +13207,7 @@ msgstr "Показати батьків"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Show password"
-msgstr ""
+msgstr "Показати пароль"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13394,7 +13411,7 @@ msgstr "Вхід в систему і реєстрація"
 
 #: app/CustomTags/Heredis.php:52
 msgid "Signature"
-msgstr ""
+msgstr "Підпис"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13567,7 +13584,7 @@ msgstr "Син від %s"
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:109
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "Сортувати дату"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13590,7 +13607,7 @@ msgstr "Порядок сортування"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:111
 msgid "Sort time"
-msgstr ""
+msgstr "Сортувати час"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13773,7 +13790,7 @@ msgstr "Сент-Пол, Міннесота"
 
 #: resources/views/admin/tags.phtml:32
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Стандартні теги GEDCOM"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -14131,7 +14148,7 @@ msgstr "Тегусігальпа, Гондурас"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Зразок"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14180,7 +14197,7 @@ msgstr "Текст"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "Напрямок тексту"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:484
@@ -14415,6 +14432,8 @@ msgstr "У наведеному списку вказані типові вим�
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"Дані форми неповні. Можливо, Вам потрібно збільшити max_input_vars на Вашому "
+"сервері?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -14477,7 +14496,7 @@ msgstr "Вимоги до процесора та пам'яті залежать
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Повідомлення не надіслано до %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:102
@@ -14524,6 +14543,8 @@ msgstr "Новому користувачу буде запропоновано 
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Наступна версія стандарту GEDCOM додасть нові теги та видалить старі. Ви "
+"можете використовувати деякі з нових тегів зараз."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -14799,7 +14820,7 @@ msgstr[2] "За останніх %s днів ніяких змін не було
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Під час перевірки нової версії сталася помилка."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -14919,7 +14940,7 @@ msgstr "Це генеалогічне дерево востаннє було о�
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Ця назва файлу не сумісна з форматом файлу GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15228,7 +15249,7 @@ msgstr "Цей сервер має наступні налаштування: о
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Для цієї служби потрібен ключ API."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -15320,26 +15341,26 @@ msgstr "Час"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:120
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "Час народження"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Час народження і час смерті"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr ""
+msgstr "Час смерті"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:448 app/Gedcom.php:615
 #: app/Gedcom.php:762 app/Gedcom.php:783 app/Gedcom.php:814 app/Gedcom.php:830
 #: app/Gedcom.php:861 app/Gedcom.php:877
 msgid "Time of last change"
-msgstr ""
+msgstr "Час останньої зміни"
 
 #: app/CustomTags/Gedcom7.php:130
 msgid "Time of status change"
-msgstr ""
+msgstr "Час зміни статусу"
 
 #. I18N: A configuration setting
 #: app/CustomTags/MyHeritage.php:56
@@ -15454,6 +15475,7 @@ msgstr "Щоб допомогти вам почати роботу з цим б�
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
+"Щоб створити нові дані за допомогою спеціальних тегів, їх потрібно ввімкнути."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15462,6 +15484,8 @@ msgstr "Щоб створити нове дослідницьке завданн
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"Щоб відобразити карту, необхідно ввімкнути постачальника карт на панелі "
+"керування."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:588
@@ -15526,7 +15550,7 @@ msgstr "Тонга"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Забагато запитів. Спробуйте ще раз згодом."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:105
@@ -15806,7 +15830,7 @@ msgstr "Тип факту"
 
 #: app/Gedcom.php:668
 msgid "Type of identification number"
-msgstr ""
+msgstr "Тип ідентифікаційного номера"
 
 #: app/CustomTags/GedcomL.php:279
 msgid "Type of location"
@@ -15823,7 +15847,7 @@ msgstr "Тип назви"
 #: app/Gedcom.php:474 app/Gedcom.php:727 app/Gedcom.php:767 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:842
 msgid "Type of reference number"
-msgstr ""
+msgstr "Тип номера посилання"
 
 #: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
@@ -15995,7 +16019,7 @@ msgstr "Оновити частини назв топонімів вищого �
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
-msgstr ""
+msgstr "Оновлено о"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16092,7 +16116,7 @@ msgstr "Використовувати силуети"
 
 #: app/Http/RequestHandlers/CopyFact.php:73
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Скористайтеся меню «редагування», щоб вставити це в інший запис."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16531,7 +16555,7 @@ msgstr "Свідок"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "Свідки"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
@@ -16768,8 +16792,9 @@ msgstr "Ваш веб-сервер використовує PHP версії %s,
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
+#, fuzzy
 msgid "ZIP"
-msgstr ""
+msgstr "Індекс"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:544
@@ -16799,6 +16824,9 @@ msgstr "Віддалити"
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"Теги _WT_OBJE_SORT використовувалися старими версіями webtrees для "
+"позначення бажаного зображення для окремої особи. Альтернативою є "
+"перевпорядкування зображень таким чином, щоб бажане відображалося першим."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -16929,7 +16957,7 @@ msgstr "тітка/дядько"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr ""
+msgstr "автоматично"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
@@ -17106,7 +17134,7 @@ msgstr "зміна імені"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "перевірити зараз"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
@@ -19891,7 +19919,7 @@ msgstr "відсоток"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr ""
+msgstr "простий текст"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -20828,11 +20856,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees не може створювати мініатюри для цього формату файлу."
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees не може розпізнати цей формат файлу."
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -20940,12 +20968,12 @@ msgstr "Аландські острови"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” має бути “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s“ скопійовано до буфера обміну."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
