@@ -147,3 +147,8 @@ a:hover, .btn-link:hover, .nav-link:hover {
 :fullscreen .wt-icon-enter-fullscreen {
     display: none;
 }
+
+/* Leaflet sets this to 1000, which conflicts with bootstrap dropdowns */
+.leaflet-bottom, .leaflet-top {
+    z-index: 999;
+}
