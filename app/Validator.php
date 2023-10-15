@@ -286,6 +286,33 @@ class Validator
 
     /**
      * @param string   $parameter
+     * @param float|null $default
+     *
+     * @return float
+     */
+    public function float(string $parameter, float $default = null): float
+    {
+        $value = $this->parameters[$parameter] ?? null;
+
+        if (is_numeric($value)) {
+            $value = (float) $value;
+        } else {
+            $value = null;
+        }
+
+        $callback = static fn (?float $value, Closure $rule): ?float => $rule($value);
+
+        $value = array_reduce($this->rules, $callback, $value) ?? $default;
+
+        if ($value === null) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        }
+
+        return $value;
+    }
+
+    /**
+     * @param string   $parameter
      * @param int|null $default
      *
      * @return int
