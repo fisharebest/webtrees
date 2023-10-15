@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-15 12:03+0000\n"
+"PO-Revision-Date: 2023-10-16 16:33+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -20847,7 +20847,7 @@ msgstr "deus ez aukeratu"
 
 #: app/Services/RelationshipService.php:346
 msgid "self"
-msgstr "neu"
+msgstr "Bilatutakoa bera"
 
 #: app/Services/RelationshipService.php:2336
 msgid "seventh cousin"
