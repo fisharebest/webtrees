@@ -22,14 +22,14 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GoogleWebmasterToolsModule
+ * Test harness for the class YandexMetrica
  *
- * @covers Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule
+ * @covers Fisharebest\Webtrees\Module\YandexMetrica
  */
-class GoogleWebmasterToolsModuleTest extends TestCase
+class YandexMetricaTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule::class));
+        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\YandexMetrica::class));
     }
 }
