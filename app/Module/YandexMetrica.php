@@ -68,7 +68,7 @@ class YandexMetrica extends AbstractModule implements ModuleAnalyticsInterface, 
      */
     public function analyticsFormFields(): string
     {
-        return view('modules/yandex-webmaster-tools/form', $this->analyticsParameters());
+        return view('modules/yandex-metrica/form', $this->analyticsParameters());
     }
 
     /**
@@ -102,7 +102,7 @@ class YandexMetrica extends AbstractModule implements ModuleAnalyticsInterface, 
      */
     public function analyticsSnippet(array $parameters): string
     {
-        return view('modules/yandex-webmaster-tools/snippet', $parameters);
+        return view('modules/yandex-metrica/snippet', $parameters);
     }
 
     /**
