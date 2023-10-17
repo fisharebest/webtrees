@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-16 16:34+0000\n"
+"PO-Revision-Date: 2023-10-18 14:15+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -13546,7 +13546,7 @@ msgstr "Ezkontideak ikusi"
 #: resources/views/admin/trees-preferences.phtml:568
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "%1$s %2$sen lekuaren izenaren zatiak ikusi."
+msgstr "Ikusi %1$s %2$sen lekuaren zatiak."
 
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:122
