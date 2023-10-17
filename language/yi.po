@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-22 07:07+0000\n"
+"PO-Revision-Date: 2023-10-18 16:15+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -3972,7 +3972,7 @@ msgstr "קאָמפּרעס די GEDCOM טעקע"
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:302
 msgid "Concatenation"
-msgstr ""
+msgstr "קייטינג"
 
 #: admin_users.php:351 edituser.php:226 login.php:467
 msgid "Confirm password"
@@ -6253,7 +6253,7 @@ msgstr "פארבארדין"
 #: app/Date/JalaliDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr "פרברדין"
+msgstr "פארבארדין"
 
 #: modules_v3/bdm_report/report.xml:118
 #: modules_v3/family_group_report/report.xml:467
@@ -13118,6 +13118,10 @@ msgstr "סיטעמאַפּס"
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
+"סיטעמאַפּס זענען אַ וועג פֿאַר וועבמאַסטערס צו דערציילן זוכֿן ענדזשאַנז "
+"וועגן די בלעטער אויף אַ וועבזייטל וואָס זענען בארעכֿטיגט פֿאַר קריכֿן. אַלע "
+"הויפּט זוכן ענדזשאַנז שטיצן סיטעמאַפּס. פֿאַר מער אינפֿאָרמאַציע, זען <a "
+"href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
@@ -13298,6 +13302,10 @@ msgstr "מקור"
 #: admin_trees_config.php:2110
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
 msgstr ""
+"מקור ציטאטן קענען אַרייַננעמען פעלדער צו רעקאָרדירן די קוואַליטעט פון די דאַ"
+"טן (ערשטיק, צווייטיק, אאז\"ו ו) און די דאַטע וואָס די געשעעניש איז רעקאָרדעד "
+"אין די מקור. אויב איר טאָן ניט נוצן די פעלדער, איר קענען באָטל מאַכן זיי "
+"ווען איר שאַפֿן נייַע מקור ציטאטן."
 
 #. I18N: Label for search field
 #: find.php:257
@@ -13473,7 +13481,7 @@ msgstr "סטאַטוס טוישן דאַטע"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
-msgstr ""
+msgstr "שטיל געבוירן"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
@@ -14109,11 +14117,15 @@ msgstr ""
 #: admin_trees_config.php:2022
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
 msgstr ""
+"די מערסט פּראָסט ריפּאַזאַטאָרי פאקטן זענען ליסטעד באַזונדער, אַזוי זיי "
+"קענען זיין מוסיף מער לייכט."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1933
 msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr ""
+"די מערסט פּראָסט מקור פאקטן זענען ליסטעד באַזונדער, אַזוי זיי קענען זיין "
+"מוסיף מער לייכט."
 
 #: admin_site_upgrade.php:338
 #, php-format
@@ -14182,7 +14194,7 @@ msgstr ""
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "די רעקאָרד איז איברגעשריבן צו די קליפּבאָרד."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:172
@@ -14319,6 +14331,9 @@ msgstr "דער וועבזייטל פּרעפֿערענצן זענען דערהי
 #: admin_trees_config.php:1547
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
+"די וועבזייטל www.geonames.org גיט אַ גרויס דאַטאַבייס פון אָרט נעמען. מען "
+"קען דאס זוכן ווען מען קומט אריין אין נייע ערטער. צו נוצן דעם שטריך, איר מוזן "
+"פאַרשרייַבן פֿאַר אַ פריי חשבון אויף www.geonames.org און צושטעלן די נאמען."
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
@@ -14612,21 +14627,39 @@ msgstr ""
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr ""
+"דאָס איז אַ קאָמע אפגעשיידט רשימה פון GEDCOM פאַקט טאַגס וואָס וועט זיין "
+"געוויזן אויף די לייגן / רעדאַגירן נאָמען פאָרעם. אויב איר נוצן ניט-לאַטייַן "
+"אַלפאַבעטן אַזאַ ווי העברעיש, גריכיש, סיריליש אָדער אַראַביש, איר זאל וועלן "
+"צו לייגן טאַגס אַזאַ ווי _HEB, ROMN, FONE, אאז\"ו ו צו לאָזן איר קראָם נעמען "
+"אין עטלעכע פאַרשידענע אַלפאַבעטן."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
 msgstr ""
+"דאָס איז אַ קאָמע אפגעשיידט רשימה פון GEDCOM פאַקט טאַגס וואָס וועט זיין "
+"געוויזן ווען אַדינג אַ נייַע משפּחה. פֿאַר בייַשפּיל, אויב MARR איז אין דער "
+"רשימה, פעלדער פֿאַר חתונה טאָג און חתונה אָרט וועט זיין געוויזן אויף די "
+"פאָרעם."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
 msgstr ""
+"דאָס איז אַ קאָמע אפגעשיידט רשימה פון GEDCOM פאַקט טאַגס וואָס וועט זיין "
+"געוויזן ווען אַדינג אַ נייַע יחיד. פֿאַר בייַשפּיל, אויב BIRT איז אין דער "
+"רשימה, פעלדער פֿאַר געבורט טאָג און געבורט אָרט וועט זיין געוויזן אויף די "
+"פאָרעם."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr ""
+"דאָס איז אַ קאָמע אפגעשיידט רשימה פון GEDCOM פאַקט טאַגס וואָס וועט זיין "
+"געוויזן ווען איר לייגן אָדער רעדאַגירן אָרט נעמען. אויב איר נוצן ניט-לאַטייַ"
+"ן אַלפאַבעטן אַזאַ ווי העברעיש, גריכיש, קיריליש אָדער אַראַביש, איר זאל "
+"וועלן צו לייגן טאַגס אַזאַ ווי _HEB, ROMN, FONE, אאז\"ו ו צו לאָזן איר קראָם "
+"אָרט נעמען אין עטלעכע פאַרשידענע אַלפאַבעטן."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14660,41 +14693,78 @@ msgstr "דאָס איז די לעצטע ווערסיע פון webtrees. קיין
 #: admin_trees_config.php:1757
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען לייגן צו פאַ"
+"מיליעס. איר קענען מאָדיפיצירן דעם רשימה דורך רימוווינג אָדער אַדינג פאַקט "
+"נעמען, אפילו מנהג אָנעס, ווי נייטיק. פאַקט נעמען וואָס דערשייַנען אין דער "
+"רשימה מוזן נישט אויך דערשייַנען אין דער רשימה פון \"איינציק משפּחה פאקטן\"."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען לייגן צו מענטשן. "
+"איר קענען מאָדיפיצירן דעם רשימה דורך רימוווינג אָדער אַדינג פאַקט נעמען, "
+"אפילו מנהג אָנעס, ווי נייטיק. פאַקט נעמען וואָס דערשייַנען אין דער רשימה "
+"מוזן נישט אויך דערשייַנען אין דער רשימה פון \"איינציק יחיד פאקטן\"."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1964
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען לייגן צו "
+"ריפּאַזאַטאָריז. איר קענען מאָדיפיצירן דעם רשימה דורך רימוווינג אָדער אַדינג "
+"פאַקט נעמען, אפילו מנהג אָנעס, ווי נייטיק. פאַקט נעמען וואָס דערשייַנען אין "
+"דער רשימה מוזן נישט אויך דערשייַנען אין דער רשימה פון \"איינציק ריפּאַזאַטאָ"
+"רי פאקטן\"."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען לייגן צו קוואלן. "
+"איר קענען מאָדיפיצירן דעם רשימה דורך רימוווינג אָדער אַדינג פאַקט נעמען, "
+"אפילו מנהג אָנעס, ווי נייטיק. פאַקט נעמען וואָס דערשייַנען אין דער רשימה "
+"מוזן נישט אויך דערשייַנען אין דער רשימה פון \"איינציק מקור פאקטן\"."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען בלויז לייגן אַמאָ"
+"ל צו פאַמיליעס. צום ביישפּיל, אויב MARR איז אין דער רשימה, ניצערס וועלן נישט "
+"קענען צו לייגן מער ווי איין MARR רעקאָרד צו אַ משפּחה. פאַקט נעמען וואָס "
+"דערשייַנען אין דער רשימה מוזן נישט אויך דערשייַנען אין די \"אַלע משפּחה "
+"פאקטן\" רשימה."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען בלויז לייגן אַמאָ"
+"ל צו יחידים. צום ביישפּיל, אויב BIRT איז אין דער רשימה, ניצערס וועלן נישט "
+"קענען צו לייגן מער ווי איין BIRT רעקאָרד צו אַ יחיד. פאַקט נעמען וואָס "
+"דערשייַנען אין דער רשימה מוזן נישט אויך דערשייַנען אין דער רשימה \"אַלע יחיד "
+"פאקטן\"."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1993
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען בלויז לייגן אַמאָ"
+"ל צו ריפּאַזאַטאָריז. צום ביישפּיל, אויב NAME איז אין דער רשימה, ניצערס "
+"וועלן נישט קענען צו לייגן מער ווי איין NAME רעקאָרד צו אַ ריפּאַזאַטאָרי. פאַ"
+"קט נעמען וואָס דערשייַנען אין דער רשימה מוזן נישט אויך דערשייַנען אין דער "
+"רשימה \"אַלע ריפּאַזאַטאָרי פאקטן\"."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr ""
+"דאָס איז די רשימה פון GEDCOM פאקטן וואָס דיין יוזערז קענען בלויז לייגן אַמאָ"
+"ל צו קוואלן. פֿאַר בייַשפּיל, אויב TITL איז אין דער רשימה, ניצערס וועלן נישט "
+"קענען צו לייגן מער ווי איין טיטל רעקאָרד צו אַ מקור. פאַקט נעמען וואָס "
+"דערשייַנען אין דער רשימה מוזן נישט אויך דערשייַנען אין דער רשימה פון \"אַלע "
+"מקור פאקטן\"."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
@@ -14951,22 +15021,30 @@ msgstr ""
 #: repo.php:45
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
+"דעם ריפּאַזאַטאָרי איז אויסגעמעקט. דער אויסמעק וועט זיין ריוויוד דורך אַ "
+"מאָדעראַטאָר."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:40
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"דעם ריפּאַזאַטאָרי איז אויסגעמעקט. איר זאָל אָפּשאַצן דער אויסמעק און דעמאָ"
+"לט %1$s אָדער %2$s עס."
 
 #: repo.php:55
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
+"דעם ריפּאַזאַטאָרי איז רעדאַקטירט. די ענדערונגען מוזן זיין ריוויוד דורך אַ "
+"מאָדעראַטאָר."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:50
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"דעם ריפּאַזאַטאָרי איז רעדאַקטירט. איר זאָל אָפּשאַצן די ענדערונגען און דעמאָ"
+"לט %1$s אָדער %2$s זיי."
 
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15018,6 +15096,11 @@ msgstr ""
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr ""
+"דאָס זאָל זיין אַ קאָמע אָדער פּלאַץ אפגעשיידט רשימה פון פאקטן, אין אַדישאַן "
+"צו געבורט און טויט, וואָס איר ווילן צו דערשייַנען אין טשאַרט באָקסעס אַזאַ "
+"ווי די ייכעס טשאַרט. די רשימה ריקווייערז איר צו נוצן פאַקט טאַגס ווי דיפיינד "
+"אין די GEDCOM 5.5.1 נאָרמאַל. צום ביישפּיל, אויב איר ווילט אַז די פאַך זאָל "
+"זיין געוויזן אין די קעסטל, איר וואָלט לייגן \"OCCU\" צו דעם פעלד."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
@@ -15032,6 +15115,8 @@ msgstr "דאס מקור האט שוין אויסגעמעקט. די דילישא�
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"דער מקור איז אויסגעמעקט. איר זאָל אָפּשאַצן דער אויסמעק און דעמאָלט %1$s אָ"
+"דער %2$s עס."
 
 #: source.php:55
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
@@ -15256,6 +15341,9 @@ msgstr ""
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"צו רעדוצירן די גרייס פון די אראפקאפיע, איר קענען קאָמפּרעס די דאַטן אין אַ ."
+"זיפּ טעקע. איר וועט דאַרפֿן צו ונקאָמפּרעסס די .זיפּ טעקע איידער איר קענען "
+"נוצן עס."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:483
@@ -15620,7 +15708,7 @@ msgstr "ונקלעאַרעד: ניט גענוגיק דאַטן"
 
 #: admin_trees_config.php:1765
 msgid "Unique family facts"
-msgstr ""
+msgstr "איינציק משפּחה פאקטן"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
@@ -15639,15 +15727,15 @@ msgstr ""
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
-msgstr ""
+msgstr "איינציק יחיד פאקטן"
 
 #: admin_trees_config.php:1972
 msgid "Unique repository facts"
-msgstr ""
+msgstr "איינציק ריפּאַזאַטאָרי פאקטן"
 
 #: admin_trees_config.php:1883
 msgid "Unique source facts"
-msgstr ""
+msgstr "איינציק מקור פאקטן"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
@@ -15806,7 +15894,7 @@ msgstr "ניצן קאמפאקטע אויסלייג"
 #. I18N: A configuration setting
 #: admin_trees_config.php:2105
 msgid "Use full source citations"
-msgstr ""
+msgstr "ניצן פול מקור ציטאַטן"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:376
@@ -15832,7 +15920,7 @@ msgstr "ניצן סילועטן"
 
 #: admin_trees_config.php:1534
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
+msgstr "ניצן די GeoNames דאַטאַבייס פֿאַר אַוטאָקאָמפּלעטע אויף ערטער"
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -15844,7 +15932,7 @@ msgstr ""
 
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "ניצן דעם בילד פֿאַר טשאַרץ און אויף דעם יחיד ס בלאַט."
 
 #: app/Module/GoogleMapsModule.php:3277
 msgid "Use this value"
@@ -16250,6 +16338,10 @@ msgstr ""
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr ""
+"ווען אַדינג נייַע נאָענט קרובים, איר קענען לייגן מקור ציטאטן צו די רעקאָרדס ("
+"יחיד און משפּחה) אָדער צו די פאקטן און געשעענישן (געבורט, חתונה און טויט). "
+"דער אָפּציע קאָנטראָלס צי רעקאָרדס אָדער פאקטן וועט זיין אויסגעקליבן דורך "
+"פעליקייַט."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -16338,11 +16430,11 @@ msgstr "יאָרן פון פרוי"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "פרוי 'ס מיידל פאַמיליע ווערט נייַ נאָמען"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "פרוי ס פאַמיליע ריפּלייסט דורך מאַן ס פאַמיליע"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -16466,6 +16558,9 @@ msgstr "איר קענט אראפקאפיע אַ קאָפּיע פון די GEDCO
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr ""
+"איר קענען מאַכן עס גרינגער צו זוכן פֿאַר באהעפט פרויען דורך רעקאָרדינג זייער "
+"באהעפט נאָמען. אָבער ניט אַלע וואָמען נעמען זייער מאַן 'ס פאַמיליע, אַזוי "
+"היט אייך פון ינטראָודוסינג פאַלש אינפֿאָרמאַציע אין דיין דאַטאַבייס."
 
 #: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
@@ -16711,6 +16806,8 @@ msgstr ""
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
 msgstr ""
+"דיין באַניצער חשבון טוט נישט האָבן \"אָטאַמאַטיק אָננעמען ענדערונגען\" אַ"
+"קטיווירט. איר וועט נאָר קענען צו טוישן איין רעקאָרד אין אַ צייַט."
 
 #: admin.php:571
 #, php-format
@@ -16817,7 +16914,7 @@ msgstr "אנגענומען נאָמען"
 
 #: app/Stats.php:2913
 msgid "adoption"
-msgstr ""
+msgstr "אַדאָפטירונג"
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "after"
@@ -16863,7 +16960,7 @@ msgstr "אויך באקאנט ווי"
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:657
 msgid "always"
-msgstr ""
+msgstr "אַלע מאָל"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4533
 #: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5911
@@ -17300,13 +17397,13 @@ msgstr "נחלה נאָמען"
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "נחלה נאָמען"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "נחלה נאָמען"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
@@ -19247,7 +19344,7 @@ msgstr "זיך"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:762
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm אָדער hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:342
 msgid "hide"
@@ -19544,7 +19641,7 @@ msgstr "פּלימעניק/פּלימעניצע"
 #. I18N: option in list box “never use this image”
 #: app/Functions/FunctionsEdit.php:663
 msgid "never"
-msgstr ""
+msgstr "קיינמאָל"
 
 #. I18N: A button label, next page
 #: app/I18N.php:224 app/Module/BatchUpdateModule.php:247
@@ -20613,6 +20710,10 @@ msgstr "webtrees שיקט בליצפאָסט קיין מאַגאַזינירונ
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"וועבטריעס ניצט UTF-8 קאָדירונג פֿאַר אַקסענטיד אותיות, ספּעציעל אותיות און "
+"ניט-לאַטייַן סקריפּס. אויב איר ווילן צו נוצן דעם GEDCOM טעקע מיט גענעאלאגיע "
+"ווייכווארג וואָס שטיצט נישט UTF-8, איר קענען מאַכן עס מיט ISO-8859-1 "
+"קאָדירונג."
 
 #: app/Functions/FunctionsPrint.php:211
 msgid "webtrees wiki"
