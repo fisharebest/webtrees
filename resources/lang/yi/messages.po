@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-19 18:35+0000\n"
+"PO-Revision-Date: 2023-10-18 14:15+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/yi/>\n"
@@ -6498,7 +6498,7 @@ msgstr "פארבארדין"
 #: app/Date/JalaliDate.php:94
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr "פרברדין"
+msgstr "פארבארדין"
 
 #: resources/views/search-advanced-page.phtml:63
 #: resources/xml/reports/bdm_report.xml:118
