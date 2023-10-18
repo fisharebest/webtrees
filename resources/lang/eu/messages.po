@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-18 12:00+0000\n"
+"PO-Revision-Date: 2023-10-18 19:00+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -996,8 +996,7 @@ msgstr "Iturri batek emandako informazioari buruzko txostena."
 #: resources/xml/reports/missing_facts_report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr ""
-"Pertsona batetaz eta haren senideetaz falta den informazioari buruzko "
-"txostena."
+"Pertsona bat eta bere senideez falta den informazioari buruzko txostena."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:52
