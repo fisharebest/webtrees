@@ -15,7 +15,7 @@
     "postcss-import": "15.1.0",
     "postcss-rtlcss": "4.0.8",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.69.3",
+    "sass": "1.69.4",
     "sass-loader": "13.3.2"
   },
   "dependencies": {
