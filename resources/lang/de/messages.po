@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-05 19:32+0000\n"
-"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
+"PO-Revision-Date: 2023-10-21 07:15+0000\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -17358,7 +17358,7 @@ msgstr "Verlobter"
 
 #: app/Services/RelationshipService.php:416
 msgid "fiancé(e)"
-msgstr "Verlobter/verlobte"
+msgstr "Verlobter/Verlobte"
 
 #: app/Services/RelationshipService.php:393
 msgid "fiancée"
