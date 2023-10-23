@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-07-17 19:51+0000\n"
+"PO-Revision-Date: 2023-10-24 09:15+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -2230,7 +2230,13 @@ msgstr "Aruba"
 
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Naast het gebruik van de gereedschapsbalk om HTML formattering toe te passen, kunt u databasevelden invoegen die automatisch worden bijgewerkt. Deze speciale velden zijn gemarkeerd met <b>#</b> tekens. Bijvoorbeeld <b>#totalFamilies#</b> wordt vervangen door het actuele aantal families in de database. Gevorderde gebruikers kunnen CSS classes aan hun tekst toevoegen, zodat de layout past bij het gekozen thema."
+msgstr ""
+"Naast het gebruik van de gereedschapsbalk om HTML formattering toe te "
+"passen, kunt u databasevelden invoegen die automatisch worden bijgewerkt. "
+"Deze speciale velden zijn gemarkeerd met <b>#</b> tekens. Bijvoorbeeld "
+"<b>#totalFamilies#</b> wordt vervangen door het actuele aantal families in "
+"de database. Gevorderde gebruikers kunnen CSS classes aan hun tekst "
+"toevoegen, zodat de opmaak past bij het gekozen thema."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
@@ -8213,7 +8219,7 @@ msgstr "Letland"
 
 #: ancestry.php:59 descendancy.php:55 fanchart.php:88 pedigree.php:163
 msgid "Layout"
-msgstr "Opmaak"
+msgstr "Indeling"
 
 #: edituser.php:220
 msgid "Leave the password blank if you want to keep the current password."
@@ -11710,7 +11716,7 @@ msgstr "Woonplaats"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr "Herstel de standaard weergave voor blokken"
+msgstr "Herstel de standaard blokindeling"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -15501,7 +15507,7 @@ msgstr "Gebruik kleuren"
 
 #: app/Module/InteractiveTree/TreeView.php:59
 msgid "Use compact layout"
-msgstr "Compacte weergave"
+msgstr "Compacte indeling"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2105
@@ -16116,7 +16122,9 @@ msgstr "U kunt een account aanvragen door op de link hieronder te klikken."
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "U kunt het uiterlijk van webtrees met thema's wijzigen. Elk thema heeft een andere stijl, opmaak, kleurenschema, enz."
+msgstr ""
+"U kunt het uiterlijk van webtrees met thema's wijzigen. Elk thema heeft een "
+"andere stijl, indeling, kleurenschema, enz."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
