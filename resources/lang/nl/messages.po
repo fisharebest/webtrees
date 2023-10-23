@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-09-03 10:31+0000\n"
-"Last-Translator: Marianne van Harten <marianne@vanharten.net>\n"
+"PO-Revision-Date: 2023-10-24 09:15+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -2130,7 +2130,13 @@ msgstr "Aruba"
 
 #: resources/views/modules/html/config.phtml:45
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Naast het gebruik van de gereedschapsbalk om HTML formattering toe te passen, kunt u databasevelden invoegen die automatisch worden bijgewerkt. Deze speciale velden zijn gemarkeerd met <b>#</b> tekens. Bijvoorbeeld <b>#totalFamilies#</b> wordt vervangen door het actuele aantal families in de database. Gevorderde gebruikers kunnen CSS classes aan hun tekst toevoegen, zodat de layout past bij het gekozen thema."
+msgstr ""
+"Naast het gebruik van de gereedschapsbalk om HTML formattering toe te "
+"passen, kunt u databasevelden invoegen die automatisch worden bijgewerkt. "
+"Deze speciale velden zijn gemarkeerd met <b>#</b> tekens. Bijvoorbeeld "
+"<b>#totalFamilies#</b> wordt vervangen door het actuele aantal families in "
+"de database. Gevorderde gebruikers kunnen CSS classes aan hun tekst "
+"toevoegen, zodat de opmaak past bij het gekozen thema."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:152
@@ -8574,7 +8580,7 @@ msgstr "Letland"
 #: resources/views/modules/upcoming_events/config.phtml:51
 #: resources/views/modules/yahrzeit/config.phtml:32
 msgid "Layout"
-msgstr "Opmaak"
+msgstr "Indeling"
 
 #: resources/views/edit-account-page.phtml:95
 msgid "Leave the password blank if you want to keep the current password."
@@ -12182,7 +12188,7 @@ msgstr "Woonplaats"
 #: resources/views/edit-blocks-page.phtml:74
 #: resources/views/edit-blocks-page.phtml:75
 msgid "Restore the default block layout"
-msgstr "Herstel de standaard weergave voor blokken"
+msgstr "Herstel de standaard blokindeling"
 
 #: app/Http/RequestHandlers/HelpText.php:275
 #: resources/views/admin/users-edit.phtml:295
@@ -16040,7 +16046,7 @@ msgstr "Gebruik kleuren"
 
 #: resources/views/modules/interactive-tree/chart.phtml:22
 msgid "Use compact layout"
-msgstr "Compacte weergave"
+msgstr "Compacte indeling"
 
 #: resources/views/setup/step-4-database-mysql.phtml:127
 #: resources/views/setup/step-4-database-pgsql.phtml:112
@@ -16578,7 +16584,9 @@ msgstr "U kunt een account aanvragen door op de link hieronder te klikken."
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "U kunt het uiterlijk van webtrees met thema's wijzigen. Elk thema heeft een andere stijl, opmaak, kleurenschema, enz."
+msgstr ""
+"U kunt het uiterlijk van webtrees met thema's wijzigen. Elk thema heeft een "
+"andere stijl, indeling, kleurenschema, enz."
 
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
