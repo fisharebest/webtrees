@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\Contracts\CustomTagInterface;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\Creation;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\I18N;
 
@@ -49,6 +50,8 @@ class Heredis implements CustomTagInterface
     public function tags(): array
     {
         return [
+            'FAM:_CREA'                   => new Creation(I18N::translate('Created at')),
+            'INDI:_CREA'                  => new Creation(I18N::translate('Created at')),
             'INDI:SIGN'                   => new CustomElement(I18N::translate('Signature')),
             /* Reported on the forum - but what do they mean?
             'INDI:_FIL'                   => new CustomElement(I18N::translate('???')),
