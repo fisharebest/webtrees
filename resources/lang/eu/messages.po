@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-18 19:00+0000\n"
+"PO-Revision-Date: 2023-10-28 08:15+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -213,7 +213,7 @@ msgstr[1] "%s erregistratutako erabiltzaile anonimoak"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "haur %s"
+msgstr[0] "seme-alaba %s"
 msgstr[1] "%s seme-alaba"
 
 #: app/Age.php:100 app/Elements/AgeAtEvent.php:103
@@ -285,8 +285,8 @@ msgstr[1] "%s gizabanakoak eguneratu dira."
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] "%s mezua"
-msgstr[1] "%s mezuak"
+msgstr[0] "mezu %s"
+msgstr[1] "%s mezu"
 
 #: app/Age.php:96 app/Elements/AgeAtEvent.php:101
 #: app/Statistics/Repository/FamilyRepository.php:359
@@ -1816,7 +1816,7 @@ msgstr "Bizirik"
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:46
 msgid "All"
-msgstr "Abizen guztiak ikusi"
+msgstr "Denak ikusi"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:170
 #: resources/views/admin/trees-privacy.phtml:262
@@ -3113,7 +3113,7 @@ msgstr "Anaiaren ehorzketa"
 
 #: app/Services/IndividualFactsService.php:339
 msgid "Burial of a child"
-msgstr "Haur baten ehorzketa"
+msgstr "Seme-alaba baten ehorzketa"
 
 #: app/Services/IndividualFactsService.php:338
 msgid "Burial of a daughter"
@@ -15217,7 +15217,7 @@ msgstr "Pertsona talde hau ez dago %srekin erlazionatua."
 #: resources/views/modules/privacy-policy/page.phtml:59
 msgid "These services may use cookies or other tracking technology."
 msgstr ""
-"Zerbitzau haurk cookie-ak erabil ditzakete edo segimendurako bertze "
+"Zerbitzu hauek cookie-ak erabil ditzakete edo segimendurako bertze "
 "teknologia batzuk."
 
 #: app/Http/RequestHandlers/LoginAction.php:132
@@ -16553,7 +16553,7 @@ msgstr "Uruguai"
 
 #: app/Services/EmailService.php:225
 msgid "Use SMTP to send messages"
-msgstr "SMTP zerbitzaria erabili mezuak bidalzteko"
+msgstr "SMTP zerbitzaria erabili mezuak bidaltzeko"
 
 #: app/Module/FixSearchAndReplace.php:103
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
