@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-28 00:02+0000\n"
+"PO-Revision-Date: 2023-10-29 15:15+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -12263,7 +12263,7 @@ msgstr "Bi gizabanakoen arteko harremana"
 #: app/Module/RelationshipsChartModule.php:259
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "%1$s eta %2$sren arteko ahaidetasuna"
+msgstr "%1$s eta %2$s(r)en arteko ahaidetasuna"
 
 #: app/CustomTags/GedcomL.php:252 app/CustomTags/GedcomL.php:268
 #: app/Gedcom.php:428 app/Gedcom.php:560 app/Gedcom.php:728
