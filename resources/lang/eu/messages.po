@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-28 17:12+0000\n"
+"PO-Revision-Date: 2023-11-01 15:15+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -1337,7 +1337,7 @@ msgstr "Senar berria gehitu"
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:73
 #: resources/views/modules/relatives/tab.phtml:146
 msgid "Add a husband using an existing individual"
-msgstr "Sartua dagoen gizabanakoa senar bezala gehitu"
+msgstr "Lehendik orrian erregistratua dagoen gizabanakoa senar bezala gehitu"
 
 #: resources/views/modules/user_blog/list.phtml:62
 msgid "Add a journal entry"
@@ -1419,7 +1419,7 @@ msgstr "Emazte berri bat gehitu"
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:76
 #: resources/views/modules/relatives/tab.phtml:144
 msgid "Add a wife using an existing individual"
-msgstr "Sartua dagoen gizabanakoa emazte bezala aukeratu"
+msgstr "Lehendik orrian erregistratua dagoen gizabanakoa emazte bezala gehitu"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:301
@@ -4893,7 +4893,7 @@ msgstr "Anaiaren heriotza"
 #: app/Services/IndividualFactsService.php:334
 #: resources/views/admin/trees-preferences.phtml:481
 msgid "Death of a child"
-msgstr "Semearen heriotza"
+msgstr "Seme-alaben heriotza"
 
 #: app/Services/IndividualFactsService.php:333
 msgid "Death of a daughter"
@@ -4909,7 +4909,7 @@ msgstr "Aitaren heriotza"
 #: app/Services/IndividualFactsService.php:424
 #: resources/views/admin/trees-preferences.phtml:475
 msgid "Death of a grandchild"
-msgstr "Bilobaren heriotza"
+msgstr "Biloben heriotza"
 
 #: app/Services/IndividualFactsService.php:387
 msgid "Death of a granddaughter"
@@ -4938,7 +4938,7 @@ msgstr "Amonaren heriotza"
 #: app/Services/IndividualFactsService.php:682
 #: resources/views/admin/trees-preferences.phtml:505
 msgid "Death of a grandparent"
-msgstr "Aiton-amonaren heriotza"
+msgstr "Aiton-amonen heriotza"
 
 #: app/Services/IndividualFactsService.php:386
 msgid "Death of a grandson"
@@ -5000,7 +5000,7 @@ msgstr "Aitaren aldeko amonaren heriotza"
 #: app/Services/IndividualFactsService.php:352
 #: resources/views/admin/trees-preferences.phtml:487
 msgid "Death of a sibling"
-msgstr "Anai-arreba baten heriotza"
+msgstr "Anai-arreben heriotza"
 
 #: app/Services/IndividualFactsService.php:351
 msgid "Death of a sister"
@@ -5008,7 +5008,7 @@ msgstr "Arreba/Ahizparen heriotza"
 
 #: app/Services/IndividualFactsService.php:332
 msgid "Death of a son"
-msgstr "Semearen heriotza"
+msgstr "Seme-alaben heriotza"
 
 #: app/Services/IndividualFactsService.php:798
 #: resources/views/admin/trees-preferences.phtml:499
@@ -9385,7 +9385,7 @@ msgstr "Anaiaren ezkontza"
 #: app/Services/IndividualFactsService.php:441
 #: resources/views/admin/trees-preferences.phtml:455
 msgid "Marriage of a child"
-msgstr "Seme-alabaren ezkontza"
+msgstr "Seme-alaben ezkontza"
 
 #: app/Services/IndividualFactsService.php:440
 msgid "Marriage of a daughter"
@@ -9454,7 +9454,7 @@ msgstr "Gurasoetako baten ezkontza"
 #: app/Services/IndividualFactsService.php:465
 #: resources/views/admin/trees-preferences.phtml:461
 msgid "Marriage of a sibling"
-msgstr "Anai-arrebaren ezkontza"
+msgstr "Anai-arreben ezkontza"
 
 #: app/Services/IndividualFactsService.php:464
 msgid "Marriage of a sister"
@@ -11298,22 +11298,22 @@ msgstr "Payson, Utah, Estatu Batuak"
 #: resources/xml/reports/pedigree_report.xml:3
 #: resources/xml/reports/pedigree_report.xml:48
 msgid "Pedigree"
-msgstr "Jatorri-haria"
+msgstr "Arbasoak belaunaldika"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Jatorri-hariaren grafikoa"
+msgstr "Arbasoen grafikoa"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:111
 msgid "Pedigree map"
-msgstr "Jatorri-hariaren mapa"
+msgstr "Arbasoen mapa"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeMapModule.php:157 app/Module/PedigreeMapModule.php:210
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "%s-ren jatorri-hariaren mapa"
+msgstr "%s-ren arbasoen mapa"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeChartModule.php:150
@@ -15589,7 +15589,7 @@ msgstr "Aukera honek irudien deskarga erraztuko die erabiltzaileei."
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
 "Aukera honek familiako loturak/harremanak erregistro pribatuetan gordetzen "
-"ditu.Horrek erran nahi du \"kutxa pribatuak\" ikusiko dituzula arbasoen "
+"ditu. Horrek erran nahi du \"kutxa pribatuak\" ikusiko dituzula arbasoen "
 "grafikoetan eta bertze batzuk pertsona pribatuak direnean."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
@@ -17419,7 +17419,7 @@ msgstr ""
 #: app/Date.php:185
 #, php-format
 msgid "about %s"
-msgstr "%sa inguruan"
+msgstr "%s inguruan"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
