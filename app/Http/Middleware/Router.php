@@ -84,7 +84,9 @@ class Router implements MiddlewareInterface
                     ->withPath($url_route)
                     ->withQuery(explode('&', $request->getUri()->getQuery(), 2)[1] ?? '');
 
-                return Registry::responseFactory()->redirectUrl($uri, StatusCodeInterface::STATUS_PERMANENT_REDIRECT);
+                return Registry::responseFactory()
+                    ->redirectUrl($uri, StatusCodeInterface::STATUS_PERMANENT_REDIRECT)
+                    ->withHeader('Link', '<' . $uri . '>; rel="canonical"');
             }
 
             $pretty = $request;

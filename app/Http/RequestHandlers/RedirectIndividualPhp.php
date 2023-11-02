@@ -20,8 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -39,20 +38,11 @@ class RedirectIndividualPhp implements RequestHandlerInterface
 {
     private TreeService $tree_service;
 
-    /**
-     * @param TreeService $tree_service
-     */
     public function __construct(TreeService $tree_service)
     {
         $this->tree_service = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     * @throws HttpNotFoundException
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
@@ -63,12 +53,14 @@ class RedirectIndividualPhp implements RequestHandlerInterface
             $individual = Registry::individualFactory()->make($pid, $tree);
 
             if ($individual instanceof Individual) {
-                return Registry::responseFactory()->redirectUrl($individual->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                $url = $individual->url();
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
             }
         }
 
-        $message = I18N::translate('This individual does not exist or you do not have permission to view it.');
-
-        throw new HttpNotFoundException($message);
+        throw new HttpGoneException();
     }
 }

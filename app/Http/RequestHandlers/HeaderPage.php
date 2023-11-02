@@ -71,6 +71,6 @@ class HeaderPage implements RequestHandlerInterface
             'record'               => $header,
             'title'                => $header->fullName(),
             'tree'                 => $tree,
-        ]);
+        ])->withHeader('Link', '<' . $header->url() . '>; rel="canonical"');
     }
 }

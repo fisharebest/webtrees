@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -49,21 +49,12 @@ class RedirectAncestryPhp implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
-    /**
-     * @param ModuleService $module_service
-     * @param TreeService   $tree_service
-     */
     public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
         $this->tree_service   = $tree_service;
         $this->module_service = $module_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ged         = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
@@ -81,9 +72,11 @@ class RedirectAncestryPhp implements RequestHandlerInterface
                 'style'       => self::CHART_STYLES[$chart_style] ?? AncestorsChartModule::DEFAULT_STYLE,
             ]);
 
-            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()
+                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
         }
 
-        throw new HttpNotFoundException();
+        throw new HttpGoneException();
     }
 }

@@ -136,7 +136,7 @@ class IndividualPage implements RequestHandlerInterface
             'title'            => $individual->fullName() . ' ' . $individual->lifespan(),
             'tree'             => $tree,
             'users'            => $users,
-        ]);
+        ])->withHeader('Link', '<' . $individual->url() . '>; rel="canonical"');
     }
 
     /**
