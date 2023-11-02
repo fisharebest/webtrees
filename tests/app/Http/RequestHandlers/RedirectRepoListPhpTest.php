@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -92,7 +92,7 @@ class RedirectRepoListPhpTest extends TestCase
 
         $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1']);
 
-        $this->expectException(HttpNotFoundException::class);
+        $this->expectException(HttpGoneException::class);
 
         $handler->handle($request);
     }
@@ -118,7 +118,7 @@ class RedirectRepoListPhpTest extends TestCase
 
         $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1']);
 
-        $this->expectException(HttpNotFoundException::class);
+        $this->expectException(HttpGoneException::class);
 
         $handler->handle($request);
     }

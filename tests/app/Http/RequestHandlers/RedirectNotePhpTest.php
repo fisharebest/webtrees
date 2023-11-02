@@ -23,7 +23,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -95,7 +95,7 @@ class RedirectNotePhpTest extends TestCase
             ['ged' => 'tree1', 'nid' => 'X123']
         );
 
-        $this->expectException(HttpNotFoundException::class);
+        $this->expectException(HttpGoneException::class);
 
         $handler->handle($request);
     }

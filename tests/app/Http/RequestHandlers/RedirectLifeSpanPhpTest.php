@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -98,7 +98,7 @@ class RedirectLifeSpanPhpTest extends TestCase
             ['ged' => 'tree1', 'rootid' => 'X123']
         );
 
-        $this->expectException(HttpNotFoundException::class);
+        $this->expectException(HttpGoneException::class);
 
         $handler->handle($request);
     }
@@ -127,7 +127,7 @@ class RedirectLifeSpanPhpTest extends TestCase
             ['ged' => 'tree1', 'rootid' => 'X123']
         );
 
-        $this->expectException(HttpNotFoundException::class);
+        $this->expectException(HttpGoneException::class);
 
         $handler->handle($request);
     }

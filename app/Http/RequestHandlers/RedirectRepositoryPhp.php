@@ -20,8 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -37,22 +36,11 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class RedirectRepositoryPhp implements RequestHandlerInterface
 {
-    private TreeService $tree_service;
-
-    /**
-     * @param TreeService $tree_service
-     */
-    public function __construct(TreeService $tree_service)
-    {
-        $this->tree_service = $tree_service;
+    public function __construct(
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     * @throws HttpNotFoundException
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
@@ -63,12 +51,14 @@ class RedirectRepositoryPhp implements RequestHandlerInterface
             $repository = Registry::repositoryFactory()->make($rid, $tree);
 
             if ($repository instanceof Repository) {
-                return Registry::responseFactory()->redirectUrl($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                $url = $repository->url();
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
             }
         }
 
-        $message = I18N::translate('This repository does not exist or you do not have permission to view it.');
-
-        throw new HttpNotFoundException($message);
+        throw new HttpGoneException();
     }
 }

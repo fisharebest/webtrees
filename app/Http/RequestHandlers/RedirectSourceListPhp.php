@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\SourceListModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -37,25 +37,12 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class RedirectSourceListPhp implements RequestHandlerInterface
 {
-    private ModuleService $module_service;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param ModuleService $module_service
-     * @param TreeService   $tree_service
-     */
-    public function __construct(ModuleService $module_service, TreeService $tree_service)
-    {
-        $this->module_service = $module_service;
-        $this->tree_service   = $tree_service;
+    public function __construct(
+        private readonly ModuleService $module_service,
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ged    = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
@@ -63,9 +50,13 @@ class RedirectSourceListPhp implements RequestHandlerInterface
         $module = $this->module_service->findByInterface(SourceListModule::class)->first();
 
         if ($tree instanceof Tree && $module instanceof SourceListModule) {
-            return Registry::responseFactory()->redirectUrl($module->listUrl($tree), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            $url = $module->listUrl($tree);
+
+            return Registry::responseFactory()
+                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
         }
 
-        throw new HttpNotFoundException();
+        throw new HttpGoneException();
     }
 }

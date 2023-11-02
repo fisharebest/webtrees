@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -38,21 +38,11 @@ use function dirname;
  */
 class RedirectReportEnginePhp implements RequestHandlerInterface
 {
-    private TreeService $tree_service;
-
-    /**
-     * @param TreeService $tree_service
-     */
-    public function __construct(TreeService $tree_service)
-    {
-        $this->tree_service = $tree_service;
+    public function __construct(
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ged    = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
@@ -70,9 +60,11 @@ class RedirectReportEnginePhp implements RequestHandlerInterface
 
             $url = route(ReportGenerate::class, $params);
 
-            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()
+                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
         }
 
-        throw new HttpNotFoundException();
+        throw new HttpGoneException();
     }
 }

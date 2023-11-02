@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -81,7 +81,7 @@ class RedirectReportEnginePhpTest extends TestCase
             ['ged'    => 'tree1', 'action' => 'run', 'report' => 'foo/report.xml']
         );
 
-        $this->expectException(HttpNotFoundException::class);
+        $this->expectException(HttpGoneException::class);
 
         $handler->handle($request);
     }

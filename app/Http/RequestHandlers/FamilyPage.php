@@ -94,7 +94,7 @@ class FamilyPage implements RequestHandlerInterface
             'significant'      => $this->significant($family),
             'title'            => $family->fullName(),
             'tree'             => $tree,
-        ]);
+        ])->withHeader('Link', '<' . $family->url() . '>; rel="canonical"');
     }
 
     /**

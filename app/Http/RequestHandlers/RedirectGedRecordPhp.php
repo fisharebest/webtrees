@@ -21,8 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -37,22 +36,11 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class RedirectGedRecordPhp implements RequestHandlerInterface
 {
-    private TreeService $tree_service;
-
-    /**
-     * @param TreeService $tree_service
-     */
-    public function __construct(TreeService $tree_service)
-    {
-        $this->tree_service = $tree_service;
+    public function __construct(
+        private readonly TreeService $tree_service,
+    ) {
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     * @throws HttpNotFoundException
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
@@ -63,13 +51,14 @@ class RedirectGedRecordPhp implements RequestHandlerInterface
             $record = Registry::gedcomRecordFactory()->make($pid, $tree);
 
             if ($record instanceof GedcomRecord) {
-                return Registry::responseFactory()->redirectUrl($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                $url = $record->url();
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
             }
         }
 
-        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
-
-
-        throw new HttpNotFoundException($message);
+        throw new HttpGoneException();
     }
 }

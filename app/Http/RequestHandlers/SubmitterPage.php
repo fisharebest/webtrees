@@ -86,6 +86,6 @@ class SubmitterPage implements RequestHandlerInterface
             'record'               => $record,
             'title'                => $record->fullName(),
             'tree'                 => $tree,
-        ]);
+        ])->withHeader('Link', '<' . $record->url() . '>; rel="canonical"');
     }
 }
