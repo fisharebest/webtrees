@@ -159,7 +159,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $module_service = new ModuleService();
         Webtrees::set(ModuleService::class, $module_service);
 
-        if (self::$uses_database) {
+        if (static::$uses_database) {
             self::createTestDatabase();
 
             // This is normally set in middleware.
