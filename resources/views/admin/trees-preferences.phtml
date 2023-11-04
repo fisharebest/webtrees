@@ -351,10 +351,11 @@ use Illuminate\Support\Collection;
             <input
                 class="form-control"
                 id="SUBLIST_TRIGGER_I"
-                maxlength="5"
+                max="99999"
+                min="0"
                 name="SUBLIST_TRIGGER_I"
                 required
-                type="text"
+                type="number"
                 value="<?= e($tree->getPreference('SUBLIST_TRIGGER_I')) ?>"
             >
             <div class="form-text">
