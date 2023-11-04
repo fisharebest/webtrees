@@ -409,7 +409,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     $count = array_sum(array_map(static fn(array $x): int => array_sum($x), $all_surnames));
 
                     // Don't sublist short lists.
-                    if ($count < $tree->getPreference('SUBLIST_TRIGGER_I')) {
+                    $sublist_threshold = (int) $tree->getPreference('SUBLIST_TRIGGER_I');
+                    if ($sublist_threshold === 0 || $count < $sublist_threshold) {
                         $falpha = '';
                     } else {
                         // Break long lists by initial letter of given name
