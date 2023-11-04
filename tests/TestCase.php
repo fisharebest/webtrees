@@ -146,7 +146,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         (new WebRoutes())->load($router_container->getMap());
         Registry::container()->set(RouterContainer::class, $router_container);
 
-        if (self::$uses_database) {
+        if (static::$uses_database) {
             self::createTestDatabase();
 
             // This is normally set in middleware.
