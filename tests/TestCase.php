@@ -146,8 +146,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         (new WebRoutes())->load($router_container->getMap());
         Registry::container()->set(RouterContainer::class, $router_container);
 
-        if (static::$uses_database) {
-            static::createTestDatabase();
+        if (self::$uses_database) {
+            self::createTestDatabase();
 
             // This is normally set in middleware.
             (new Gedcom())->registerTags(Registry::elementFactory(), true);
