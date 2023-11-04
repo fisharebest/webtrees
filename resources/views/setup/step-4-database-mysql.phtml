@@ -45,35 +45,57 @@ use Illuminate\Support\Collection;
     <?php endforeach ?>
 
     <div class="row mb-3">
-        <label class="col-form-label col-sm-3" for="dbhost">
-            <?= I18N::translate('Server name') ?>
-        </label>
-
-        <div class="col-sm-9">
-            <input class="form-control" id="dbhost" name="dbhost" type="text" value="<?= e($dbhost) ?>" dir="ltr">
-
-            <div class="form-text">
-                <?= I18N::translate('Most sites are configured to use localhost. This means that your database runs on the same computer as your web server.') ?>
-            </div>
-
-            <!--
-            <div class="form-text">
-                <?= I18N::translate('If you connect to the database using a UNIX socket, enter the path here and leave the port number empty.') ?>
-            </div>
-            -->
+        <div class="col">
+            <?= I18N::translate('Connection type') ?>
         </div>
     </div>
 
     <div class="row mb-3">
-        <label class="col-form-label col-sm-3" for="dbport">
-            <?= I18N::translate('Port number') ?>
-        </label>
+        <div class="col-sm-3">
+            <div class="form-check">
+                <input type="radio" name="mysql-type" id="mysql-type-local" class="form-check-input" <?= ($dbhost === '' || $dbhost === 'localhost') ? 'checked="checked"' : '' ?>">
+                <label class="form-check-label" for="mysql-type-local">
+                    <?= I18N::translate('local') ?>
+                </label>
+            </div>
+        </div>
 
         <div class="col-sm-9">
-            <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport) ?>" dir="ltr">
+            <input type="text" value="localhost:<?= ini_get('pdo_mysql.default_socket') ?>" class="form-control" readonly="readonly">
+        </div>
+    </div>
 
-            <div class="form-text">
-                <?= I18N::translate('Most sites are configured to use the default value of 3306.') ?>
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <div class="form-check">
+                <input type="radio" name="mysql-type" id="mysql-type-network" class="form-check-input" <?= ($dbhost === '' || $dbhost === 'localhost') ? '' : 'checked="checked"' ?>">
+                <label class="form-check-label" for="mysql-type-network">
+                    <?= I18N::translate('network') ?>
+                </label>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-8">
+                    <label class="form-label" for="dbhost">
+                        <?= I18N::translate('Server name') ?>
+                    </label>
+                </div>
+                <div class="col-4">
+                    <label class="form-label" for="dbport">
+                        <?= I18N::translate('Port number') ?>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                    <input class="form-control" id="dbhost" name="dbhost" type="text" value="<?= e($dbhost === 'localhost' ? '' : $dbhost) ?>" dir="ltr">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" id="dbport" name="dbport" pattern="\d+" type="text" value="<?= e($dbport ?: '3306') ?>" dir="ltr">
+                </div>
             </div>
         </div>
     </div>
@@ -85,10 +107,6 @@ use Illuminate\Support\Collection;
 
         <div class="col-sm-9">
             <input class="form-control" id="dbuser" name="dbuser" type="text" value="<?= e($dbuser) ?>" dir="ltr">
-
-            <div class="form-text">
-                <?= I18N::translate('This is case sensitive.') ?>
-            </div>
         </div>
     </div>
 
@@ -99,10 +117,6 @@ use Illuminate\Support\Collection;
 
         <div class="col-sm-9">
             <input class="form-control" id="dbpass" name="dbpass" type="password" value="<?= e($dbpass) ?>" dir="ltr" autocomplete="off" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
-
-            <div class="form-text">
-                <?= I18N::translate('This is case sensitive.') ?>
-            </div>
         </div>
     </div>
 
@@ -141,3 +155,28 @@ use Illuminate\Support\Collection;
         </button>
     </div>
 </form>
+
+<script>
+  (function () {
+    const inputDbHost = document.getElementById('dbhost');
+
+    document.getElementById('mysql-type-local').addEventListener('click', () => inputDbHost.value = '');
+
+    inputDbHost.addEventListener('change', () => {
+      if (inputDbHost.value === 'localhost') {
+        inputDbHost.value = '';
+      }
+      if (inputDbHost.value === '') {
+        document.getElementById('mysql-type-local').click();
+      } else {
+        document.getElementById('mysql-type-network').click();
+      }
+    });
+
+    document.querySelector('form').addEventListener('submit', () => {
+      if (inputDbHost.value === '') {
+        inputDbHost.value = 'localhost'
+      }
+    });
+  })();
+</script>

@@ -159,8 +159,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $module_service = new ModuleService();
         Webtrees::set(ModuleService::class, $module_service);
 
-        if (static::$uses_database) {
-            static::createTestDatabase();
+        if (self::$uses_database) {
+            self::createTestDatabase();
 
             // This is normally set in middleware.
             (new Gedcom())->registerTags(Registry::elementFactory(), true);
