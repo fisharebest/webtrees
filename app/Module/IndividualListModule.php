@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -40,6 +41,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function array_filter;
+use function array_key_exists;
 use function array_keys;
 use function array_map;
 use function array_merge;
@@ -198,7 +200,6 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 ->redirectUrl($this->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-
         // Make sure parameters are consistent with each other.
         if ($show_all_firstnames === 'yes') {
             $falpha = '';
@@ -217,6 +218,15 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $all_surns        = $this->allSurns($surname_data);
         $all_surnames     = $this->allSurnames($surname_data);
         $surname_initials = $this->surnameInitials($surname_data);
+
+        // We've requested a surname that doesn't currently exist.
+        if (!array_key_exists($surname, $all_surns)) {
+            $message = I18N::translate('There are no individuals with the surname “%s“', e($surname));
+            FlashMessages::addMessage($message);
+
+            return Registry::responseFactory()
+                ->redirectUrl($this->listUrl($tree));
+        }
 
         // Make sure selections are consistent.
         // i.e. can’t specify show_all and surname at the same time.
