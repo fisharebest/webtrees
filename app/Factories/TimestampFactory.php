@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Timestamp;
-use LogicException;
+use InvalidArgumentException;
 
 use function date;
 use function date_create_from_format;
@@ -65,7 +65,7 @@ class TimestampFactory implements TimestampFactoryInterface
         $timestamp = date_create_from_format($format, $string);
 
         if ($timestamp === false) {
-            throw new LogicException('date/time "' . $string . '" does not match pattern "' . $format . '"');
+            throw new InvalidArgumentException('date/time "' . $string . '" does not match pattern "' . $format . '"');
         }
 
         return $this->make($timestamp->getTimestamp(), $user);
