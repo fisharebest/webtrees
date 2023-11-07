@@ -84,7 +84,6 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
         $matomo_site_id = $this->getPreference('MATOMO_SITE_ID');
         $matomo_url     = $this->getPreference('MATOMO_URL');
 
-        // Reports on the webtrees forum say that a trailing slash is required.
         if (!str_ends_with($matomo_url, '/')) {
             $matomo_url .= '/';
         }
