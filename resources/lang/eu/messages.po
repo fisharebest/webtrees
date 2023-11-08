@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-11-01 15:15+0000\n"
+"PO-Revision-Date: 2023-11-09 12:15+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -202,8 +202,8 @@ msgstr "%s eta ondorengoak"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s erregistratutako erabiltzaile anonimoa"
-msgstr[1] "%s erregistratutako erabiltzaile anonimoak"
+msgstr[0] "%s erabiltzaile anonimoa saioa irekiarekin"
+msgstr[1] "%s erabiltzaile anonimoak saioa irekiarekin"
 
 #: resources/views/family-page-children.phtml:21
 #: resources/views/modules/ancestors-chart/tree.phtml:44
@@ -213,8 +213,8 @@ msgstr[1] "%s erregistratutako erabiltzaile anonimoak"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "seme-alaba %s"
-msgstr[1] "%s seme-alaba"
+msgstr[0] "%s seme-alaba"
+msgstr[1] "%s seme-alabak"
 
 #: app/Age.php:100 app/Elements/AgeAtEvent.php:103
 #: app/Statistics/Repository/FamilyRepository.php:353
@@ -223,7 +223,7 @@ msgstr[1] "%s seme-alaba"
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s eguna"
-msgstr[1] "%s egunak"
+msgstr[1] "%s egun"
 
 #: app/Http/RequestHandlers/CheckTree.php:228
 #: app/Http/RequestHandlers/UserEditAction.php:94
@@ -2496,7 +2496,7 @@ msgstr "Bataioa"
 
 #: app/Services/IndividualFactsService.php:227
 msgid "Baptism of a brother"
-msgstr "Anaia/nebaren bataioa"
+msgstr "Anaiaren bataioa"
 
 #: app/Services/IndividualFactsService.php:206
 msgid "Baptism of a child"
@@ -2873,11 +2873,11 @@ msgstr "Biloba baten jaiotza"
 
 #: app/Services/IndividualFactsService.php:240
 msgid "Birth of a half-brother"
-msgstr "Anaia/nebaordearen jaiotza"
+msgstr "Anaiordearen jaiotza"
 
 #: app/Services/IndividualFactsService.php:242
 msgid "Birth of a half-sibling"
-msgstr "Anaia/neba/arreba/ahizpaordearen jaiotza"
+msgstr "Anaia/arreba/ahizpaordearen jaiotza"
 
 #: app/Services/IndividualFactsService.php:241
 msgid "Birth of a half-sister"
@@ -2886,7 +2886,7 @@ msgstr "Erdi arreba/ahizparen jaiotza"
 #: app/Services/IndividualFactsService.php:219
 #: resources/views/admin/trees-preferences.phtml:441
 msgid "Birth of a sibling"
-msgstr "Anaia/neba/ahizpa/arrebaren jaiotza"
+msgstr "Anaia/ahizpa/arrebaren jaiotza"
 
 #: app/Services/IndividualFactsService.php:218
 msgid "Birth of a sister"
@@ -3173,7 +3173,7 @@ msgstr "Biloba baten ehorzketa"
 
 #: app/Services/IndividualFactsService.php:373
 msgid "Burial of a half-brother"
-msgstr "Anaia/nebaordearen ehorzketa"
+msgstr "Anaiordearen ehorzketa"
 
 #: app/Services/IndividualFactsService.php:375
 msgid "Burial of a half-sibling"
@@ -3709,11 +3709,11 @@ msgstr "Bilobaren bataioa (semearen semea)"
 
 #: app/Services/IndividualFactsService.php:245
 msgid "Christening of a half-brother"
-msgstr "Anaia/nebaordearen bataioa"
+msgstr "Anaiordearen bataioa"
 
 #: app/Services/IndividualFactsService.php:247
 msgid "Christening of a half-sibling"
-msgstr "Anaia/neba/ahizpa/arrebaordearen bataioa"
+msgstr "Anaia/ahizpa/arrebaordearen bataioa"
 
 #: app/Services/IndividualFactsService.php:246
 msgid "Christening of a half-sister"
@@ -4280,11 +4280,11 @@ msgstr "Bilobaren errausketa (semearen semea)"
 
 #: app/Services/IndividualFactsService.php:378
 msgid "Cremation of a half-brother"
-msgstr "Anaia/nebaordearen errausketa"
+msgstr "Anaiordearen errausketa"
 
 #: app/Services/IndividualFactsService.php:380
 msgid "Cremation of a half-sibling"
-msgstr "Anaia/neba/ahizpa/arrebaordearen errausketa"
+msgstr "Anaia/ahizpa/arrebaordearen errausketa"
 
 #: app/Services/IndividualFactsService.php:379
 msgid "Cremation of a half-sister"
@@ -4960,7 +4960,7 @@ msgstr "Anaia/nebordearen heriotza"
 
 #: app/Services/IndividualFactsService.php:370
 msgid "Death of a half-sibling"
-msgstr "Anaia/neba/ahizpa/arrebaordearen heriotza"
+msgstr "Anaia/ahizpa/arrebaordearen heriotza"
 
 #: app/Services/IndividualFactsService.php:369
 msgid "Death of a half-sister"
@@ -9432,11 +9432,11 @@ msgstr "Bilobaren ezkontza (semearen semea)"
 
 #: app/Services/IndividualFactsService.php:469
 msgid "Marriage of a half-brother"
-msgstr "Anaia/nebaordearen ezkontza"
+msgstr "Anaiordearen ezkontza"
 
 #: app/Services/IndividualFactsService.php:471
 msgid "Marriage of a half-sibling"
-msgstr "Anaia/neba/ahizpa/arrebaordearen ezkontza"
+msgstr "Anaia/ahizpa/arrebaordearen ezkontza"
 
 #: app/Services/IndividualFactsService.php:470
 msgid "Marriage of a half-sister"
@@ -17907,7 +17907,7 @@ msgstr "zortzigarren lehengusua"
 
 #: app/Services/RelationshipService.php:446
 msgid "elder brother"
-msgstr "anaia/neba zaharragoa"
+msgstr "anaia zaharragoa"
 
 #: app/Services/RelationshipService.php:488
 msgid "elder sibling"
@@ -19895,32 +19895,32 @@ msgstr "borobil erdia"
 #: app/Services/RelationshipService.php:541
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr "anaia/nebaordea"
+msgstr "anaiordea"
 
 #: app/Services/RelationshipService.php:579
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr "anaia/nebaordea"
+msgstr "anaiordea"
 
 #: app/Services/RelationshipService.php:597
 msgctxt "parent’s son"
 msgid "half-brother"
-msgstr "anaia/nebaordea"
+msgstr "anaiordea"
 
 #: app/Services/RelationshipService.php:527
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "anaia/neba/arreba/ahizpaordea"
+msgstr "anaia/arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:563
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "anaia/neba/arreba/ahizpaordea"
+msgstr "anaia/arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:583
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "anaia/neba/arreba/ahizpaordea"
+msgstr "anaia/arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:529
 msgctxt "father’s daughter"
@@ -20945,7 +20945,7 @@ msgstr "koinata"
 #: app/Services/RelationshipService.php:723
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr "anaia/nebaren koinata"
+msgstr "anaiaren koinata"
 
 #: app/Services/RelationshipService.php:833
 msgctxt "husband’s brother’s wife"
@@ -21154,17 +21154,17 @@ msgstr "aita-amaordea"
 #: app/Services/RelationshipService.php:827
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr "anaia/nebaordea / arreba/ahizpaordea"
+msgstr "anaiordea / arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:875
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr "anaia/nebaordea / arreba/ahizpaordea"
+msgstr "anaia/ arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:953
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr "anaia/nebaordea / arreba/ahizpaordea"
+msgstr "anaia / arreba/ahizpaordea"
 
 #: app/Services/RelationshipService.php:829
 msgctxt "father’s wife’s daughter"
@@ -21333,7 +21333,7 @@ msgstr "anaia bikia"
 
 #: app/Services/RelationshipService.php:480
 msgid "twin sibling"
-msgstr "arreba/ahizpa - anaia/neba bikia"
+msgstr "arreba/ahizpa - anaia bikia"
 
 #: app/Services/RelationshipService.php:459
 msgid "twin sister"
@@ -21532,7 +21532,7 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:442
 msgid "younger brother"
-msgstr "anaia/neba gazteagoa"
+msgstr "anaia gazteagoa"
 
 #: app/Services/RelationshipService.php:484
 msgid "younger sibling"
