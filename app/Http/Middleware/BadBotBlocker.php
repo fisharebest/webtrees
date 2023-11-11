@@ -66,6 +66,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Adsbot',
         'AhrefsBot',
         'Amazonbot', // Until it understands crawl-delay and noindex / nofollow
+        'AntBot', // Aggressive crawler
         'AspiegelBot',
         'Awario', // Brand management
         'Barkrowler',
@@ -76,6 +77,7 @@ class BadBotBlocker implements MiddlewareInterface
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
         'FacebookBot', // Collects training data for Facebook's LLM translator.
+        'fidget-spinner-bot', // Agressive crawler
         'Google-Extended', // Collects training data for Google Bard
         'GPTBot', // Collects training data for ChatGPT
         'Grapeshot',
@@ -95,6 +97,7 @@ class BadBotBlocker implements MiddlewareInterface
         'serpstatbot',
         'SEOkicks',
         'SiteKiosk',
+        'test-bot', // Agressive crawler
         'TinyTestBot',
         'Turnitin',
         'wp_is_mobile', // Nothing to do with wordpress
