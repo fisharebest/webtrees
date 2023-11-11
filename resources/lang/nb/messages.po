@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-15 12:41+0000\n"
+"PO-Revision-Date: 2023-11-12 10:17+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
@@ -8980,7 +8980,7 @@ msgstr "Flere slektsprogrammer genererer GEDCOM-filer med egne tilpassede koder,
 #: resources/views/admin/control-panel.phtml:838
 #: resources/views/modules/statistics-chart/custom.phtml:60
 msgid "Map"
-msgstr "Oppsett"
+msgstr "Kart"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
