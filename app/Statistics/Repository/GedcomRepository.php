@@ -146,7 +146,7 @@ class GedcomRepository implements GedcomRepositoryInterface
             if ($fact instanceof Fact) {
                 try {
                     return Registry::timestampFactory()->fromString($fact->value(), 'j M Y')->isoFormat('LL');
-                } catch (InvalidArgumentException) {
+                } catch (InvalidArgumentException $ex) {
                     // HEAD:DATE invalid.
                 }
             }
