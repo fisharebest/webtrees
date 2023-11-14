@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-11-14 11:27+0000\n"
+"PO-Revision-Date: 2023-11-15 18:04+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -654,9 +654,8 @@ msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>
 msgstr ""
 "<p>Oharra: Formularioa bete eta bidaltzen duzunean hauxe onartzen duzu:</"
 "p><ul><li>gure aplikazioan agertzen diren pertsona bizien pribatutasuna "
-"babestea;</li><li>eta ondoko testu-koadroan, norekin zauden erlazionatua "
-"azaltzeko edo gure webgunean agertu beharko lukeen informazioa gure esku "
-"jartzeko.</li></ul>"
+"babestea;</li><li>azpiko testu-koadroan, zuhaitz honetako zein pertsonarekin "
+"zauden erlazionatua adieraztea, elkarren arteko lotura argituz.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -2821,7 +2820,7 @@ msgstr "Jaiotegun data-tartearen hasiera"
 
 #: app/CustomTags/BrothersKeeper.php:73
 msgid "Birth name"
-msgstr "Jaiotza izena"
+msgstr "Jaiotza-izena"
 
 #: app/Services/IndividualFactsService.php:217
 msgid "Birth of a brother"
@@ -7864,8 +7863,8 @@ msgstr ""
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr ""
 "Bisitariei gizabanako biziak erakusten badizkiezu, gainerako pribatutasun-"
-"murrizketak ez dira kontuan hartuko. Zure zuhaitzaren datu guztiak bakarrik "
-"publikoak badira egin hori."
+"murrizketak ez dira kontuan hartuko. Zure zuhaitzaren datu guztiak publikoak "
+"badira bakarrik egin hori."
 
 #: resources/views/setup/step-2-server-checks.phtml:82
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -15439,7 +15438,8 @@ msgstr "Maiuskulak eta miniskulak bereizi behar dira."
 #: resources/views/admin/upgrade/wizard.phtml:27
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr ""
-"Webtrees-en azken bertsioa erabiltzen ari zara. Ez dago eguneratzerik eskura."
+"Webtrees-en azken bertsioa erabiltzen ari zara. Ez dago bertsio berririk "
+"eskura."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:99
@@ -15596,10 +15596,11 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:133
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
-"Aukera honek pertsona pribatuen izenak soilik erakutsiko ditu (xetetasunik "
-"gabe). Biririk daudenak dira pertsona pribatuak eta pribatutasun "
-"murrizketaren bat daukaten pertsona hilak ere bai. Izena gordetzeko "
-"pribatutasun murrizketa gehitzen ahal diozu erregistroaren izenari."
+"Aukera honek pertsona pribatuen izenak soilik erakutsiko ditu, bertze "
+"daturik gabe. Biririk daudenak pertsona pribatuak dira eta pribatutasun "
+"murrizketaren bat daukaten pertsona hilak ere bai. Izena gordetzeko, "
+"pribatutasun murrizketa gehitzen ahal diozu edozein pertsonaren "
+"erregistroari."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
@@ -17374,8 +17375,8 @@ msgstr "Zure erregistroa %sen"
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
 "Zure orriaren zerbitzaria %s PHP bertsioa erabiltzen ari da, eta dagoeneko "
-"ez du segurtasun eguneratzerik hartzen. PHP bertsioa eguneratu beharko "
-"zenuke berehala."
+"ez du segurtasun eguneratzerik hartzen. Zeuk eguneratu beharko zenuke "
+"berehala."
 
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
@@ -17565,13 +17566,15 @@ msgstr "%s eta %sren artean"
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php:75
 msgid "birth name"
-msgstr "jaiotza izena"
+msgstr "jaiotza-izena"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/trees-privacy.phtml:108
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "Azken %1$s urteetan jaio ziren edo azkeneko %2$s urteetan hil ziren"
+msgstr ""
+"Azken %1$s urteetan jaio diren edo azkeneko %2$s urteetan hil diren "
+"gizabanakoak babestu"
 
 #: app/Services/RelationshipService.php:451
 msgid "brother"
@@ -17721,7 +17724,7 @@ msgstr "izen aldaketa"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr "orain gainbegiratu"
+msgstr "orain egiaztatu"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
