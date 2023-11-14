@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-11-09 12:15+0000\n"
+"PO-Revision-Date: 2023-11-14 11:27+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -21581,7 +21581,8 @@ msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applicati
 msgstr ""
 "“Irudi aukeratua” (_PRIM) etiketak aplikazio genealogiko batzuek erabiltzen "
 "dituzte, gizabanako batentzako irudi gogokoena adierazteko. Aukeretako bat "
-"irudiak berriro ordenatzea da, gustukoena lehenengoa izan dadin zerrendan."
+"irudiak berriro ordenatzea da, gustukoena zerrendaren lehenengo lekuan "
+"paratuta."
 
 #: app/Note.php:101 app/Report/ReportParserGenerate.php:1002
 #: app/Report/ReportParserGenerate.php:1088
