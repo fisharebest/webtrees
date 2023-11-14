@@ -220,7 +220,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $surname_initials = $this->surnameInitials($surname_data);
 
         // We've requested a surname that doesn't currently exist.
-        if (!array_key_exists($surname, $all_surns)) {
+        if ($surname !== ''  && !array_key_exists($surname, $all_surns)) {
             $message = I18N::translate('There are no individuals with the surname “%s“', e($surname));
             FlashMessages::addMessage($message);
 
