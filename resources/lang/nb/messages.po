@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-11-12 10:16+0000\n"
+"PO-Revision-Date: 2023-11-19 11:04+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
@@ -651,7 +651,12 @@ msgstr "<standardtema>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr "<p>Merknas: Ved å fylle ut og sende inn dette skjemaet, samtykker du i:</p><ul><li>respektere personvern til nålevende personer registrert på dette nettstedet;</li><li>og i tekstfeltet nedenfor, forklare hvem du er i slekt med, eller gi oss informasjon om personer du mener bør legges til på dette nettstedet.</li></ul>"
+msgstr ""
+"<p>Merknad: Ved å fylle ut og sende inn dette skjemaet, samtykker du i:</"
+"p><ul><li>respektere personvern til nålevende personer registrert på dette "
+"nettstedet;</li><li>og i tekstfeltet nedenfor, forklare hvem du er i slekt "
+"med, eller gi oss informasjon om personer du mener bør legges til på dette "
+"nettstedet.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
