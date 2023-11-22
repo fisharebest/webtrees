@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-11-15 18:04+0000\n"
+"PO-Revision-Date: 2023-11-22 09:44+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -3192,7 +3192,7 @@ msgstr "Amaren aldeko atautxiaren ehorzketa"
 
 #: app/Services/IndividualFactsService.php:668
 msgid "Burial of a maternal grandmother"
-msgstr "Amaren aldeko amonaren ehorzketa"
+msgstr "Amaren aldeko amautxiaren ehorzketa"
 
 #: app/Services/IndividualFactsService.php:632
 msgid "Burial of a mother"
@@ -3208,7 +3208,7 @@ msgstr "Aitaren aldeko atautxiaren ehorzketa"
 
 #: app/Services/IndividualFactsService.php:686
 msgid "Burial of a paternal grandmother"
-msgstr "Aitaren aldeko amonaren ehorzketa"
+msgstr "Aitaren aldeko amautxiaren ehorzketa"
 
 #: app/Services/IndividualFactsService.php:357
 msgid "Burial of a sibling"
@@ -4261,7 +4261,7 @@ msgstr "Amonaren errausketa"
 #: app/Services/IndividualFactsService.php:674
 #: app/Services/IndividualFactsService.php:692
 msgid "Cremation of a grandparent"
-msgstr "Aiton-amonaren errausketa"
+msgstr "Atautxi-amautxiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:396
 msgid "Cremation of a grandson"
@@ -4299,7 +4299,7 @@ msgstr "Amaren aldeko atautxiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:673
 msgid "Cremation of a maternal grandmother"
-msgstr "Amaren aldeko amonaren errausketa"
+msgstr "Amaren aldeko amautxiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:637
 msgid "Cremation of a mother"
@@ -4315,7 +4315,7 @@ msgstr "Aitaren aldeko atautxiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:691
 msgid "Cremation of a paternal grandmother"
-msgstr "Aitaren aldeko amonaren errausketa"
+msgstr "Aitaren aldeko amautxiaren errausketa"
 
 #: app/Services/IndividualFactsService.php:362
 msgid "Cremation of a sibling"
@@ -4975,7 +4975,7 @@ msgstr "Amaren aldeko atautxiaren heriotza"
 
 #: app/Services/IndividualFactsService.php:663
 msgid "Death of a maternal grandmother"
-msgstr "Amaren aldeko amonaren heriotza"
+msgstr "Amaren aldeko amautxiaren heriotza"
 
 #: app/Services/IndividualFactsService.php:627
 #: resources/views/fact-parent-age.phtml:18
@@ -4994,7 +4994,7 @@ msgstr "Aitaren aldeko atautxiaren heriotza"
 
 #: app/Services/IndividualFactsService.php:681
 msgid "Death of a paternal grandmother"
-msgstr "Aitaren aldeko amonaren heriotza"
+msgstr "Aitaren aldeko amautxiaren heriotza"
 
 #: app/Services/IndividualFactsService.php:352
 #: resources/views/admin/trees-preferences.phtml:487
@@ -17895,18 +17895,18 @@ msgstr "editatu"
 
 #: app/Services/RelationshipService.php:2338
 msgid "eighth cousin"
-msgstr "zortzigarren lehengusua/lehengusina"
+msgstr "8. lehengusua/lehengusina"
 
 #: app/Services/RelationshipService.php:2302
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr "zortzigarren lehengusina"
+msgstr "8. lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2257
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr "zortzigarren lehengusua"
+msgstr "8. lehengusua"
 
 #: app/Services/RelationshipService.php:446
 msgid "elder brother"
@@ -18036,7 +18036,7 @@ msgstr "bosgarren %s"
 
 #: app/Services/RelationshipService.php:2332
 msgid "fifth cousin"
-msgstr "bosgarren lehengusina/lehengusua"
+msgstr "5. lehengusina/lehengusua"
 
 #: app/Services/RelationshipService.php:2296
 msgctxt "FEMALE"
@@ -18047,7 +18047,7 @@ msgstr "Bosgarren lehengusina"
 #: app/Services/RelationshipService.php:2248
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr "bosgarren lehengusua"
+msgstr "5. lehengusua"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:560
@@ -18314,18 +18314,18 @@ msgstr "%s iloba txikia"
 
 #: app/Services/RelationshipService.php:2330
 msgid "fourth cousin"
-msgstr "laugarren lehengusina/lehengusua"
+msgstr "4. lehengusina/lehengusua"
 
 #: app/Services/RelationshipService.php:2294
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr "laugarren lehengusina"
+msgstr "4. lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2245
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr "laugarren lehengusua"
+msgstr "4. lehengusua"
 
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml:101
@@ -18424,12 +18424,12 @@ msgstr "Atautxia"
 #: app/Services/RelationshipService.php:589
 msgctxt "parent’s mother"
 msgid "grandmother"
-msgstr "amona"
+msgstr "amautxia"
 
 #: app/Services/RelationshipService.php:591
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr "aiton-amona"
+msgstr "atautxi-amautxia"
 
 #: app/Services/RelationshipService.php:511
 msgctxt "child’s son"
@@ -18519,7 +18519,7 @@ msgstr "%s. birratautxia"
 #: app/Services/RelationshipService.php:1960
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "%s. birramona"
+msgstr "%s. birramautxia"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1896
@@ -18665,11 +18665,11 @@ msgstr "%s. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt"
-msgstr "laugarren izeba zaharra"
+msgstr "4. izeba zaharra"
 
 #: app/Services/RelationshipService.php:1370
 msgid "great ×4 aunt/uncle"
-msgstr "laugarren osaba-izeba zaharrak"
+msgstr "4. osaba-izeba zaharrak"
 
 #: app/Services/RelationshipService.php:2003
 msgid "great ×4 grandchild"
@@ -18677,207 +18677,207 @@ msgstr "Laugarren biloba"
 
 #: app/Services/RelationshipService.php:2000
 msgid "great ×4 granddaughter"
-msgstr "laugarren biloba"
+msgstr "4. biloba"
 
 #: app/Services/RelationshipService.php:1839
 msgid "great ×4 grandfather"
-msgstr "laugarren atautxia"
+msgstr "4. atautxia"
 
 #: app/Services/RelationshipService.php:1843
 msgid "great ×4 grandmother"
-msgstr "laugarren amona"
+msgstr "4. amautxia"
 
 #: app/Services/RelationshipService.php:1846
 msgid "great ×4 grandparent"
-msgstr "laugarren aiton-amona"
+msgstr "4. atautxi-amautxia"
 
 #: app/Services/RelationshipService.php:1996
 msgid "great ×4 grandson"
-msgstr "laugarren biloba"
+msgstr "4. biloba"
 
 #: app/Services/RelationshipService.php:1596
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1600
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1603
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1619
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1623
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1626
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1608
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1612
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1615
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr "laugarren iloba txikia"
+msgstr "4. iloba txikia"
 
 #: app/Services/RelationshipService.php:1356
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr "laugarren osaba zaharra"
+msgstr "4. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1360
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr "laugarren osaba zaharra"
+msgstr "4. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1363
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr "laugarren osaba zaharra"
+msgstr "4. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1386
 msgid "great ×5 aunt"
-msgstr "bosgarren osaba zaharra"
+msgstr "5. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1389
 msgid "great ×5 aunt/uncle"
-msgstr "bosgarren osaba-izeba zaharrak"
+msgstr "5. osaba-izeba zaharrak"
 
 #: app/Services/RelationshipService.php:2014
 msgid "great ×5 grandchild"
-msgstr "bosgarren biloba"
+msgstr "5. biloba"
 
 #: app/Services/RelationshipService.php:2011
 msgid "great ×5 granddaughter"
-msgstr "bosgarren biloba"
+msgstr "5. biloba"
 
 #: app/Services/RelationshipService.php:1850
 msgid "great ×5 grandfather"
-msgstr "bosgarren atautxia"
+msgstr "5. atautxia"
 
 #: app/Services/RelationshipService.php:1854
 msgid "great ×5 grandmother"
-msgstr "bosgarren amona"
+msgstr "5. amautxia"
 
 #: app/Services/RelationshipService.php:1857
 msgid "great ×5 grandparent"
-msgstr "bosgarren aiton-amonak"
+msgstr "5. atautxi-amautxiak"
 
 #: app/Services/RelationshipService.php:2007
 msgid "great ×5 grandson"
-msgstr "bosgarren biloba"
+msgstr "5. biloba"
 
 #: app/Services/RelationshipService.php:1631
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "bosgarren iloba txikia"
+msgstr "5. iloba txikia"
 
 #: app/Services/RelationshipService.php:1635
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "bosgarren iloba txikia"
+msgstr "5. iloba txikia"
 
 #: app/Services/RelationshipService.php:1638
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr "bosgarren iloba txikia"
+msgstr "5. iloba txikia"
 
 #: app/Services/RelationshipService.php:1654
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "bosgarren iloba txikiak"
+msgstr "5. iloba txikiak"
 
 #: app/Services/RelationshipService.php:1658
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "bosgarren iloba txikiak"
+msgstr "5. iloba txikiak"
 
 #: app/Services/RelationshipService.php:1661
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr "bosgarren iloba txikiak"
+msgstr "5. iloba txikiak"
 
 #: app/Services/RelationshipService.php:1643
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "bosgarren iloba txikia"
+msgstr "5. iloba txikia"
 
 #: app/Services/RelationshipService.php:1647
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "bosgarren iloba txikia"
+msgstr "5. iloba txikia"
 
 #: app/Services/RelationshipService.php:1650
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr "bosgarren iloba txikia"
+msgstr "5. iloba txikia"
 
 #: app/Services/RelationshipService.php:1375
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr "bosgarren osaba zaharra"
+msgstr "5. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1379
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr "bosgarren osaba zaharra"
+msgstr "5. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1382
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr "bosgarren osaba zaharra"
+msgstr "5. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1405
 msgid "great ×6 aunt"
-msgstr "seigarren osaba-izeba zaharra"
+msgstr "6. osaba-izeba zaharra"
 
 #: app/Services/RelationshipService.php:1408
 msgid "great ×6 aunt/uncle"
-msgstr "seigarren osaba-izeba zaharra"
+msgstr "6. osaba-izeba zaharra"
 
 #: app/Services/RelationshipService.php:2025
 msgid "great ×6 grandchild"
-msgstr "seigarren biloba"
+msgstr "6. biloba"
 
 #: app/Services/RelationshipService.php:2022
 msgid "great ×6 granddaughter"
-msgstr "seigarren biloba"
+msgstr "6. biloba"
 
 #: app/Services/RelationshipService.php:1861
 msgid "great ×6 grandfather"
-msgstr "seigarren atautxia"
+msgstr "6. atautxia"
 
 #: app/Services/RelationshipService.php:1865
 msgid "great ×6 grandmother"
-msgstr "seigarren amona"
+msgstr "6. amautxia"
 
 #: app/Services/RelationshipService.php:1868
 msgid "great ×6 grandparent"
-msgstr "seigarren aiton-amonak"
+msgstr "6. atautxi-amautxiak"
 
 #: app/Services/RelationshipService.php:2018
 msgid "great ×6 grandson"
-msgstr "seigarren biloba"
+msgstr "6. biloba"
 
 #: app/Services/RelationshipService.php:1394
 msgctxt "great ×5 grandfather’s brother"
@@ -18916,7 +18916,7 @@ msgstr "7. atautxia"
 
 #: app/Services/RelationshipService.php:1876
 msgid "great ×7 grandmother"
-msgstr "7. amona"
+msgstr "7. amautxia"
 
 #: app/Services/RelationshipService.php:1879
 msgid "great ×7 grandparent"
@@ -19254,97 +19254,97 @@ msgstr "birratautxia"
 #: app/Services/RelationshipService.php:941
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr "birraitona"
+msgstr "birratautxia"
 
 #: app/Services/RelationshipService.php:787
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:799
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:811
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:867
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:885
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:897
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:919
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:931
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:943
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr "birramona"
+msgstr "birramautxia"
 
 #: app/Services/RelationshipService.php:789
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:801
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:813
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:869
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:887
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:899
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:921
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:933
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:945
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr "birraitona-birramona"
+msgstr "birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:729
 msgctxt "child’s child’s son"
@@ -19393,35 +19393,35 @@ msgstr "birbiloba"
 
 #: app/Services/RelationshipService.php:1329
 msgid "great-great-aunt"
-msgstr "bigarren izeba zaharra"
+msgstr "2. izeba zaharra"
 
 #: app/Services/RelationshipService.php:1332
 msgid "great-great-aunt/uncle"
-msgstr "bigarren osaba-izeba zaharra"
+msgstr "2. osaba-izeba zaharra"
 
 #: app/Services/RelationshipService.php:1981
 msgid "great-great-grandchild"
-msgstr "bigarren birbiloba"
+msgstr "2. birbiloba"
 
 #: app/Services/RelationshipService.php:1978
 msgid "great-great-granddaughter"
-msgstr "bigarren birbiloba"
+msgstr "2. birbiloba"
 
 #: app/Services/RelationshipService.php:1817
 msgid "great-great-grandfather"
-msgstr "bigarren birraitona"
+msgstr "2. birratautxia"
 
 #: app/Services/RelationshipService.php:1821
 msgid "great-great-grandmother"
-msgstr "bigarren birramona"
+msgstr "2. birramautxia"
 
 #: app/Services/RelationshipService.php:1824
 msgid "great-great-grandparent"
-msgstr "2. birrramona-birraitona"
+msgstr "2. birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:1974
 msgid "great-great-grandson"
-msgstr "hirugarren biloba"
+msgstr "3. biloba"
 
 #: app/Services/RelationshipService.php:1348
 msgid "great-great-great-aunt"
@@ -19441,15 +19441,15 @@ msgstr "3. birbiloba"
 
 #: app/Services/RelationshipService.php:1828
 msgid "great-great-great-grandfather"
-msgstr "3. birramona"
+msgstr "3. birramautxia"
 
 #: app/Services/RelationshipService.php:1832
 msgid "great-great-great-grandmother"
-msgstr "3. birramona"
+msgstr "3. birramautxia"
 
 #: app/Services/RelationshipService.php:1835
 msgid "great-great-great-grandparent"
-msgstr "3. birramona-birraitona"
+msgstr "3. birratautxia-birramautxia"
 
 #: app/Services/RelationshipService.php:1985
 msgid "great-great-great-grandson"
@@ -19458,122 +19458,122 @@ msgstr "4. birbiloba"
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "anaiaren hirugarren biloba"
+msgstr "anaiaren 3. biloba"
 
 #: app/Services/RelationshipService.php:1565
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "arrebaren hirugarren biloba"
+msgstr "arrebaren 3. biloba"
 
 #: app/Services/RelationshipService.php:1568
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "hirugarren iloba ttikia"
+msgstr "3. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1584
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "hirugarren biloba ttikia"
+msgstr "3. biloba ttikia"
 
 #: app/Services/RelationshipService.php:1588
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "hirugarren iloba ttikia"
+msgstr "3. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1591
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr "hirugarren iloba ttikia"
+msgstr "3. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1573
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "hirugarren iloba ttikia"
+msgstr "3. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1577
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "hirugarren iloba ttikia"
+msgstr "3. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1580
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "hirugarren iloba ttikia"
+msgstr "3. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "hirugarren osaba zaharra"
+msgstr "3. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1341
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "hirugarren osaba zaharra"
+msgstr "3. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1344
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr "hirugarren osaba zaharra"
+msgstr "3. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1530
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1533
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1549
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1553
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1556
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1538
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1542
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1545
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr "bigarren iloba ttikia"
+msgstr "2. iloba ttikia"
 
 #: app/Services/RelationshipService.php:1318
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr "bigarren osaba zaharra"
+msgstr "2. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1322
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr "bigarren osaba zaharra"
+msgstr "2. osaba zaharra"
 
 #: app/Services/RelationshipService.php:1325
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr "bigarren osaba zaharra"
+msgstr "2. osaba zaharra"
 
 #: app/Services/RelationshipService.php:674
 msgctxt "(a man’s) brother’s child’s son"
@@ -21276,18 +21276,18 @@ msgstr "hirugarren %s"
 
 #: app/Services/RelationshipService.php:2328
 msgid "third cousin"
-msgstr "hirugarren lehengusina/lehengusua"
+msgstr "3. lehengusina/lehengusua"
 
 #: app/Services/RelationshipService.php:2292
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr "hirugarren lehengusina"
+msgstr "3. lehengusina"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2242
 msgctxt "MALE"
 msgid "third cousin"
-msgstr "hirugarren lehengusua"
+msgstr "3. lehengusua"
 
 #: app/Services/RelationshipService.php:2348
 msgid "thirteenth cousin"
