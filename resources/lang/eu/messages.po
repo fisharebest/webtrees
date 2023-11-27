@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-11-23 10:04+0000\n"
+"PO-Revision-Date: 2023-11-28 12:04+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -4004,7 +4004,7 @@ msgstr "Jarraipena"
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Control panel"
-msgstr "Kontrolerako panela"
+msgstr "Kontrol-panela"
 
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:60 app/Module/FixNameTags.php:84
