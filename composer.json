@@ -119,7 +119,7 @@
             "@composer webtrees:psalm"
         ],
         "webtrees:phpcs": [
-            "@composer global require squizlabs/php_codesniffer=* --quiet",
+            "@composer global require phpcsstandards/php_codesniffer=* --quiet",
             "~/.composer/vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
             "#~/.composer/vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views",
             "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css"
