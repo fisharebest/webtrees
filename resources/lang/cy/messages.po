@@ -2,14 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Welsh (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-01-08 21:59+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\n"
+"PO-Revision-Date: 2023-12-10 21:54+0000\n"
+"Last-Translator: Meddal <post@meddal.com>\n"
+"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/cy/>\n"
 "Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
+"(n==3) ? 3 :(n==6) ? 4 : 5;\n"
 "X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
@@ -108,14 +110,14 @@ msgstr "%1$s × %2$s"
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2391
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/RequestHandlers/ManageMediaData.php:372 app/MediaFile.php:326
@@ -150,7 +152,7 @@ msgstr "%1$s–%2$s"
 #: app/Services/RelationshipService.php:2204
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%2$s %1$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:604
@@ -360,7 +362,7 @@ msgstr[5] "Mae %s nodyn wedi'u diweddaru."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "Mae %s yn digwydd yn rhy aml."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -480,14 +482,14 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × cyfnither"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2281
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × cefnder"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -599,7 +601,7 @@ msgstr "(wedi'i hidlo o gyfanswm o %s cofnod)"
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
 msgid "(includes media files)"
-msgstr ""
+msgstr "(yn cynnwys ffeiliau cyfryngau)"
 
 #: resources/views/fact-date.phtml:117
 msgid "(on the date of death)"
@@ -723,6 +725,11 @@ msgstr "<default theme>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>Hysbysiad: Trwy lenwi a chyflwyno’r ffurflen hon, rydych yn cytuno:</"
+"p><ul><li> i ddiogelu preifatrwydd unigolion byw sy'n cael eu rhestri ar ein "
+"gwefan;</li><li> ac yn y blwch testun isod, i egluro i bwy rydych yn "
+"perthyn, neu i roi gwybodaeth i ni am rywun y dylid ei restru ar ein "
+"gwefan.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -1569,7 +1576,7 @@ msgstr "Llinell cyfeiriad 3"
 
 #: resources/views/admin/tags.phtml:264
 msgid "Addresses"
-msgstr ""
+msgstr "Cyfeiriadau"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1578,7 +1585,7 @@ msgstr "Adelaide, Awstralia"
 
 #: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
-msgstr ""
+msgstr "ID Gweinyddol"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1896,7 +1903,7 @@ msgstr "Hefyd yn hysbys fel"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Sillafu arall cyfenw"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1994,7 +2001,7 @@ msgstr "PID Ancestry"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Dynodwr ffynhonnell Ancestry.com"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -2058,11 +2065,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:511
 msgid "Application ID"
-msgstr ""
+msgstr "ID rhaglen"
 
 #: app/Gedcom.php:528
 msgid "Application name"
-msgstr ""
+msgstr "Enw rhaglen"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -3514,7 +3521,7 @@ msgstr "Cofnod newidiadau"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "Amgodiad nodau"
 
 #: app/Gedcom.php:497
 msgid "Character set"
@@ -3555,7 +3562,7 @@ msgstr "Gwiriwch am wallau"
 
 #: app/Module/CheckForNewVersion.php:66
 msgid "Check for new version"
-msgstr ""
+msgstr "Gwiriwch am fersiwn newydd"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Check for pending changes…"
@@ -3753,7 +3760,7 @@ msgstr "Enwaedydd"
 
 #: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
-msgstr ""
+msgstr "Enwaediad"
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
@@ -3956,7 +3963,7 @@ msgstr "Cynnwys"
 
 #: app/Gedcom.php:765
 msgid "Continuation"
-msgstr ""
+msgstr "Parhad"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -4023,7 +4030,7 @@ msgstr "Panel rheoli"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:61
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Trosi tagiau %s i GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4195,7 +4202,7 @@ msgstr "Creu, diweddaru, a dileu cart achau ar gyfer pob ffeil GEDCOM yn y ffold
 #: app/CustomTags/Gedcom7.php:140 app/CustomTags/Gedcom7.php:149
 #: app/CustomTags/Gedcom7.php:157 app/CustomTags/Gedcom7.php:166
 msgid "Created at"
-msgstr ""
+msgstr "Crëwyd ar"
 
 #: app/CustomTags/Gedcom7.php:92 app/CustomTags/Gedcom7.php:122
 #: app/CustomTags/Gedcom7.php:137 app/CustomTags/Gedcom7.php:141
@@ -4210,7 +4217,7 @@ msgstr "Dyddiad creu"
 #: app/CustomTags/Gedcom7.php:151 app/CustomTags/Gedcom7.php:159
 #: app/CustomTags/Gedcom7.php:168
 msgid "Creation time"
-msgstr ""
+msgstr "Amser creu"
 
 #: app/Gedcom.php:632 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4356,7 +4363,7 @@ msgstr "Ciwba"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "Curacao"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -4374,6 +4381,8 @@ msgstr "Tagiau GEDCOM cyfaddas"
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
+"Nid yw tagiau GEDCOM cyfaddas yn cael eu hannog. Ceisiwch ddefnyddio tagiau "
+"GEDCOM safonol yn unig."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
@@ -4667,7 +4676,7 @@ msgstr "Dyddiad preswylio"
 
 #: app/CustomTags/Gedcom7.php:129
 msgid "Date of status change"
-msgstr ""
+msgstr "Dyddiad newid statws"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
@@ -5165,7 +5174,7 @@ msgstr "Dileu'r enw hwn"
 
 #: resources/views/admin/locations.phtml:174
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Dileu lleoliadau heb ei ddefnyddio"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
@@ -5177,7 +5186,7 @@ msgstr "Bydd dileu'r teulu'n datgysylltu'r holl unigolion oddi wrth ei gilydd on
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Wrthi'n dileu…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:133
@@ -5186,7 +5195,7 @@ msgstr "Gweriniaeth Ddemocrataidd y Congo"
 
 #: app/CustomTags/GedcomL.php:287
 msgid "Demographic data"
-msgstr ""
+msgstr "Data demograffig"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
@@ -5360,7 +5369,7 @@ msgstr "Bu farw fel plentyn: wedi'i eithrio"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Bu farw'n llai na blwydd oed, nid oes angen ei selio."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5617,7 +5626,7 @@ msgstr "Golygwch yr unigolyn hwn a rhoi eich manylion chi yn lle eu manylion."
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Golygu gyda phob tag GEDCOM"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:101
@@ -5735,7 +5744,7 @@ msgstr "Cyflogwr"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Gwagiwch y clipfwrdd"
 
 #: app/Module/ClippingsCartModule.php:192
 msgid "Empty the clippings cart"
@@ -5781,7 +5790,7 @@ msgstr "Rhowch nodyn dewisol am y ffefryn hwn"
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Mynd i'r sgrin lawn"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5873,7 +5882,7 @@ msgstr "Digwyddiad"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "Nid yw'r digwyddiad wedi ddigwydd"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5925,7 +5934,7 @@ msgstr "Wedi'i eithrio o'r cyflwyniad hwn"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Gadael y sgrin lawn"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5964,7 +5973,7 @@ msgstr "Ffeiliau allanol"
 #: app/CustomTags/Gedcom7.php:143 app/CustomTags/Gedcom7.php:152
 #: app/CustomTags/Gedcom7.php:160 app/CustomTags/Gedcom7.php:169
 msgid "External identifier"
-msgstr ""
+msgstr "Dynodwr allanol"
 
 #: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
@@ -6189,15 +6198,15 @@ msgstr "Llyfr teulu %s"
 
 #: app/Gedcom.php:445
 msgid "Family census"
-msgstr ""
+msgstr "Cyfrifiad teulu"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "Ffaith deuluol"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
-msgstr ""
+msgstr "Ffeithiau a digwyddiadau teuluol"
 
 #: app/Gedcom.php:880
 msgid "Family file"
@@ -6220,7 +6229,7 @@ msgstr "Teulu %s"
 
 #: app/CustomTags/Gedcom7.php:179 app/Gedcom.php:475
 msgid "Family residence"
-msgstr ""
+msgstr "Preswylfa deuluol"
 
 #: app/CustomTags/GedcomL.php:135
 msgid "Family status"
@@ -6450,19 +6459,19 @@ msgstr "Benywod"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Maes"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Enw maes"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Gwerth maes"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6903,7 +6912,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -6926,17 +6935,17 @@ msgstr "Tag GEDCOM"
 #: app/Http/RequestHandlers/SiteTagsPage.php:83
 #: resources/views/admin/control-panel.phtml:284
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "Tagiau GEDCOM"
 
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:57
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/CustomTags/GedcomL.php:113 app/CustomTags/GedcomL.php:167
@@ -6946,7 +6955,7 @@ msgstr "Dynodwr GOV"
 
 #: app/CustomTags/GedcomL.php:282
 msgid "GOV identifier type"
-msgstr ""
+msgstr "Math dynodwr GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:201
@@ -7462,7 +7471,7 @@ msgstr "Heshvan"
 #: resources/views/admin/tags.phtml:737 resources/views/admin/tags.phtml:791
 #: resources/views/admin/tags.phtml:895 resources/views/admin/tags.phtml:953
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Cuddio tagiau GEDCOM"
 
 #: app/Auth.php:596 app/Auth.php:609
 #: app/Http/RequestHandlers/TreePreferencesPage.php:125
@@ -7484,13 +7493,13 @@ msgstr "Cuddio rhag pawb"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Hide password"
-msgstr ""
+msgstr "Cuddio'r cyfrinair"
 
 #: resources/views/admin/trees-check.phtml:39
 #: resources/views/admin/trees-check.phtml:55
 #: resources/views/admin/trees-check.phtml:71
 msgid "Hide these errors"
-msgstr ""
+msgstr "Cuddio'r gwallau hyn"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
@@ -7638,7 +7647,7 @@ msgstr "Rhif adnabod"
 
 #: resources/views/admin/tags.phtml:778
 msgid "Identifiers"
-msgstr ""
+msgstr "Dynodwyr"
 
 #: resources/views/admin/fix-level-0-media.phtml:22
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -7738,7 +7747,7 @@ msgstr "Os ydych chi wedi creu gwrthrychau cyfryngau yn webtrees, ac wedi golygu
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Os byddwch yn newid enw'r ffeil, dylech hefyd ailenwi'r ffeil."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7931,7 +7940,7 @@ msgstr "Siart dosbarthu unigol"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Ffeithiau a digwyddiadau unigolyn"
 
 #: resources/views/admin/control-panel.phtml:722
 msgid "Individual page"
@@ -8021,7 +8030,7 @@ msgstr "Hysbyswr"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Nid yw cofnodion ffynhonnell ar-lein cyn cael eu cymeradwyo."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:177 app/Module/ChartsBlockModule.php:260
@@ -8055,11 +8064,11 @@ msgstr "Ffeil GEDCOM annilys - heb ganfod cofnod pennyn."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Ffeil GEDCOM annilys - heb ganfod cofnod trelar."
 
 #: app/Http/RequestHandlers/CheckTree.php:198
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Rhif lefel GEDCOM annilys."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -8067,15 +8076,15 @@ msgstr "Cofnod GEDCOM annilys"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Cofnod GEDCOM annilys."
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Tag GEDCOM annilys."
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Gwerth GEDCOM annilys."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8113,6 +8122,8 @@ msgstr "Gall gymryd sawl munud i lwytho i lawr a gosod yr uwchraddiad. Byddwch y
 #: resources/views/admin/tags.phtml:1025
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
+"Nid yw defnyddio tagiau GEDCOM cyfaddas yn cael eu hargymell. Gall y data "
+"hwn gael ei golli pan fyddwch chi'n ei drosglwyddo i raglenni eraill."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
@@ -8436,7 +8447,7 @@ msgstr "Kuwait"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:118
 msgid "Kyiv, Ukraine"
-msgstr ""
+msgstr "Kyiv, Wcráin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
@@ -8453,7 +8464,7 @@ msgstr "Selio plentyn LDS"
 
 #: resources/views/admin/tags.phtml:724
 msgid "LDS church"
-msgstr ""
+msgstr "Eglwys LDS"
 
 #: app/Gedcom.php:626
 msgid "LDS confirmation"
@@ -8479,11 +8490,11 @@ msgstr "Label"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr ""
+msgstr "Label ar gyfer gŵr"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr ""
+msgstr "Label ar gyfer gwraig"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8493,12 +8504,12 @@ msgstr "Laie, Hawaii, Unol Daleithiau"
 #. I18N: GEDCOM tag _PURC
 #: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
-msgstr ""
+msgstr "Pryniant tir"
 
 #. I18N: GEDCOM tag _SALE
 #: app/CustomTags/Reunion.php:60
 msgid "Land sale"
-msgstr ""
+msgstr "Gwerthiant tir"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:101
@@ -8574,7 +8585,7 @@ msgstr "Y newid diwethaf"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Gwiriwyd ddiwethaf %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -8669,7 +8680,7 @@ msgstr "Etifedd"
 
 #: app/CustomTags/Aldfaer.php:72
 msgid "Length"
-msgstr ""
+msgstr "Hyd"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -8731,11 +8742,11 @@ msgstr "Lima, Periw"
 
 #: resources/views/admin/gedcom-export-options.phtml:89
 msgid "Line endings"
-msgstr ""
+msgstr "Diweddion llinell"
 
 #: app/Http/RequestHandlers/CheckTree.php:420
 msgid "Line number"
-msgstr ""
+msgstr "Rhif llinell"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:821
@@ -9044,6 +9055,8 @@ msgstr "Llawysgrif"
 #: resources/views/admin/tags.phtml:1023
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
 msgstr ""
+"Mae llawer o raglenni achyddiaeth yn diffinio eu tagiau GEDCOM cyfaddas eu "
+"hunain a bydd webtrees yn gallu dangos y rhan fwyaf ohonyn nhw."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
@@ -9999,7 +10012,7 @@ msgstr "Muharram"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Genedigaeth luosog"
 
 #: resources/views/lists/families-table.phtml:141
 msgid "Multiple marriages"
@@ -10083,7 +10096,7 @@ msgstr "Enw yn Hebraeg"
 #: app/CustomTags/GedcomL.php:216 app/CustomTags/Legacy.php:116
 #: app/CustomTags/PersonalAncestralFile.php:73
 msgid "Name of addressee"
-msgstr ""
+msgstr "Enw'r derbynnydd"
 
 #: app/Gedcom.php:687 app/Gedcom.php:695 app/Gedcom.php:701
 msgid "Name prefix"
@@ -10356,21 +10369,36 @@ msgstr "Nid oes digwyddiadau yn bodoli ar gyfer yfory."
 #: app/Module/OnThisDayModule.php:155
 msgid "No events for living individuals exist for today."
 msgstr ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer unigolion byw yn bodoli ar gyfer "
+"heddiw."
 
 #: app/Module/UpcomingAnniversariesModule.php:175
 msgid "No events for living individuals exist for tomorrow."
 msgstr ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer unigolion byw yn bodoli ar gyfer yfory."
 
 #: app/Module/UpcomingAnniversariesModule.php:181
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 msgstr[1] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 msgstr[2] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s ddiwrnod "
+"nesaf."
 msgstr[3] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 msgstr[4] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s niwrnod "
+"nesaf."
 msgstr[5] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
@@ -10379,7 +10407,7 @@ msgstr "Nid oes unrhyw ffeithiau'n bodoli i'r teulu hwn."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Heb dderbyn ffeil."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -10432,7 +10460,7 @@ msgstr "Dim mewngofnodion a dim defnyddwyr anhysbys"
 #: resources/views/lists/surnames-table.phtml:69
 #: resources/views/lists/surnames-tag-cloud.phtml:34
 msgid "No surname"
-msgstr ""
+msgstr "Dim cyfenw"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10518,7 +10546,7 @@ msgstr "Heb briod"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:104
 msgid "Not recorded"
-msgstr ""
+msgstr "Heb ei gofnodi"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Not verified by the user"
@@ -10550,33 +10578,33 @@ msgstr "Nodyn"
 #: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
 #: app/Gedcom.php:900 app/Gedcom.php:914
 msgid "Note on association"
-msgstr ""
+msgstr "Nodyn ar y cysylltiad"
 
 #: app/CustomTags/GedcomL.php:223 app/Gedcom.php:449 app/Gedcom.php:616
 #: app/Gedcom.php:763 app/Gedcom.php:784 app/Gedcom.php:815 app/Gedcom.php:831
 #: app/Gedcom.php:862 app/Gedcom.php:878
 msgid "Note on last change"
-msgstr ""
+msgstr "Nodyn ar y newid diwethaf"
 
 #: app/Gedcom.php:686
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Nodyn ar enw ffonetig"
 
 #: app/CustomTags/GedcomL.php:248 app/Gedcom.php:425 app/Gedcom.php:557
 msgid "Note on place"
-msgstr ""
+msgstr "Nodyn ar le"
 
 #: app/Gedcom.php:846
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Nodyn ar gyfeirnod storfan"
 
 #: app/Gedcom.php:700
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Nodyn ar enw wedi'i Rufeineiddio"
 
 #: app/Gedcom.php:838
 msgid "Note on source"
-msgstr ""
+msgstr "Nodyn ar y ffynhonnell"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
@@ -10584,11 +10612,11 @@ msgstr ""
 #: app/Gedcom.php:751 app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:908
 #: app/Gedcom.php:922
 msgid "Note on source citation"
-msgstr ""
+msgstr "Nodyn ar y cyfeirnod ffynhonnell"
 
 #: app/Gedcom.php:837
 msgid "Note on source data"
-msgstr ""
+msgstr "Nodyn ar ddata ffynhonnell"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10906,7 +10934,7 @@ msgstr "Cyfeiriadaeth"
 
 #: app/CustomTags/Ancestry.php:70
 msgid "Origin"
-msgstr ""
+msgstr "Tarddiad"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/CustomTags/Ancestry.php:75
@@ -11058,7 +11086,7 @@ msgstr "Paraguay"
 
 #: app/CustomTags/GedcomL.php:293
 msgid "Parent location"
-msgstr ""
+msgstr "Lleoliad rhiant"
 
 #: app/Gedcom.php:740 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:72
@@ -11221,7 +11249,7 @@ msgstr "Llun"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Ffotograff"
 
 #: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:78
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:88
@@ -11230,7 +11258,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:114 app/CustomTags/Gedcom7.php:115
 #: app/CustomTags/Gedcom7.php:117 app/CustomTags/Gedcom7.php:119
 msgid "Phrase"
-msgstr ""
+msgstr "Ymadrodd"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:174
@@ -11875,7 +11903,7 @@ msgstr "Ail drefnu'r cyfryngau"
 
 #: resources/views/media-page-menu.phtml:40
 msgid "Re-order media files"
-msgstr ""
+msgstr "Ail-drefnu ffeiliau cyfryngau"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:51
@@ -12126,7 +12154,7 @@ msgstr "Reno, Nevada, Unol Daleithiau"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Ail-rifo XREFs"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12160,7 +12188,7 @@ msgstr "Adroddiad"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
 msgid "Report phrase"
-msgstr ""
+msgstr "Adrodd ar ymadrodd"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12365,12 +12393,12 @@ msgstr "Mae fersiwn SQLite %s wedi'i osod. Mae angen fersiwn SQLite %s neu'n hwy
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:211
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12408,7 +12436,7 @@ msgstr "Sage"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "Sant Barthélemy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -12731,7 +12759,7 @@ msgstr "Anfon e-bost prawf gan ddefnyddio'r gosodiadau hyn"
 
 #: app/Module/CheckForNewVersion.php:76
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Anfonwch e-bost at bob gweinyddwr pan fydd diweddariad ar gael."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:20
@@ -13102,7 +13130,7 @@ msgstr "Dangos cytundeb defnydd derbyniol ar dudalen “Gofyn am gyfrif defnyddi
 
 #: resources/views/modules/media/tab.phtml:24
 msgid "Show all media"
-msgstr ""
+msgstr "Dangos pob cyfrwng"
 
 #: resources/views/modules/notes/tab.phtml:30
 msgid "Show all notes"
@@ -13253,7 +13281,7 @@ msgstr "Dangos rhieni"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:88
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Show password"
-msgstr ""
+msgstr "Dangos y cyfrinair"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13457,7 +13485,7 @@ msgstr "Mewngofnodi a chofrestru"
 
 #: app/CustomTags/Heredis.php:52
 msgid "Signature"
-msgstr ""
+msgstr "Llofnod"
 
 #: resources/views/help/date.phtml:138
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13602,7 +13630,7 @@ msgstr "Mae rhai pecynnau meddalwedd achau yn storio pob enw mewn cofnod un enw,
 
 #: resources/views/admin/tags.phtml:37
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Mae rhai o'r tagiau GEDCOM hyn yn cael eu defnyddio'n anaml neu fyth."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:631
@@ -13630,7 +13658,7 @@ msgstr "Mab %s"
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:109
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "Trefnu dyddiadau"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13653,7 +13681,7 @@ msgstr "Trefnu yn ôl"
 
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:111
 msgid "Sort time"
-msgstr ""
+msgstr "Trefnu amser"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13716,7 +13744,7 @@ msgstr "Dyfyniad ffynhonnell"
 
 #: resources/views/admin/tags.phtml:326
 msgid "Source citations"
-msgstr ""
+msgstr "Dyfyniadau ffynhonnell"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -13836,7 +13864,7 @@ msgstr "St Paul, Minnesota, Unol Daleithiau"
 
 #: resources/views/admin/tags.phtml:32
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Tagiau GEDCOM safonol"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -14194,7 +14222,7 @@ msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Templed"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14243,7 +14271,7 @@ msgstr "Testun"
 
 #: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
-msgstr ""
+msgstr "Cyfeiriad y testun"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:484
@@ -14266,6 +14294,8 @@ msgstr "Mae'r ffeil GEDCOM “%s” wedi'i mewnforio."
 #: resources/views/admin/tags.phtml:35
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
 msgstr ""
+"Mae safon GEDCOM yn darparu nifer fawr o feysydd mynediad data, sy'n cael eu "
+"galw'n dagiau."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14478,6 +14508,8 @@ msgstr "Mae'r rhestr ganlynol yn dangos gofynion nodweddiadol."
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"Mae data'r ffurflen yn anghyflawn. Efallai bod angen i chi gynyddu "
+"max_input_vars ar eich gweinydd?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -14540,7 +14572,7 @@ msgstr "Mae'r gofynion y cof ac amser y CPU yn dibynnu ar nifer yr unigolion yn 
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Heb anfon y neges at %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:102
@@ -14587,6 +14619,8 @@ msgstr "Bydd gofyn i'r defnyddiwr newydd gadarnhau ei gyfeiriad e-bost cyn i'r c
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Bydd y fersiwn nesaf o safon GEDCOM yn ychwanegu tagiau newydd ac yn dileu "
+"hen rai. Gallwch ddefnyddio rhai o'r tagiau newydd hyn nawr."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -14868,7 +14902,7 @@ msgstr[5] "Dim newidiadau o fewn y %s diwrnod diwethaf."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Bu gwall wrth wirio am fersiwn newydd."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -14991,7 +15025,7 @@ msgstr "Diweddarwyd y cart achau hwn ddiwethaf ar %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Nid yw'r enw ffeil hwn yn gydnaws â fformat ffeil GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15303,7 +15337,7 @@ msgstr "Terfyn cof y gweinydd hwn yw %s MB a therfyn amser ei CPU yw %s eiliad."
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "Mae angen allwedd API ar gyfer y gwasanaeth hwn."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -15395,26 +15429,26 @@ msgstr "Amser"
 #: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:120
 #: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
-msgstr ""
+msgstr "Amser geni"
 
 #: resources/views/admin/tags.phtml:960
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Amser geni ac amser marwolaeth"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr ""
+msgstr "Amser marwolaeth"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:448 app/Gedcom.php:615
 #: app/Gedcom.php:762 app/Gedcom.php:783 app/Gedcom.php:814 app/Gedcom.php:830
 #: app/Gedcom.php:861 app/Gedcom.php:877
 msgid "Time of last change"
-msgstr ""
+msgstr "Amser y newid diwethaf"
 
 #: app/CustomTags/Gedcom7.php:130
 msgid "Time of status change"
-msgstr ""
+msgstr "Amser newid statws"
 
 #. I18N: A configuration setting
 #: app/CustomTags/MyHeritage.php:56
@@ -15529,6 +15563,8 @@ msgstr "Er mwyn eich cynorthwyo i ddechrau gyda'r bloc hwn, rydym wedi creu sawl
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
+"I greu data newydd gan ddefnyddio tagiau cyfaddas, mae angen i chi eu "
+"galluogi."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15537,6 +15573,7 @@ msgstr "I greu tasgau ymchwil newydd, yn gyntaf rhaid i chi ychwanegu “tasg ym
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
 msgstr ""
+"I ddangos map, mae angen i chi alluogi darparwr mapiau yn y panel rheoli."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:588
@@ -15601,7 +15638,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Gormod o geisiadau. Ceisiwch eto yn nes ymlaen."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:105
@@ -15887,7 +15924,7 @@ msgstr "Math o ffaith"
 
 #: app/Gedcom.php:668
 msgid "Type of identification number"
-msgstr ""
+msgstr "Math o rif adnabod"
 
 #: app/CustomTags/GedcomL.php:279
 msgid "Type of location"
@@ -15904,7 +15941,7 @@ msgstr "Math o enw"
 #: app/Gedcom.php:474 app/Gedcom.php:727 app/Gedcom.php:767 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:842
 msgid "Type of reference number"
-msgstr ""
+msgstr "Math o gyfeirnod"
 
 #: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
@@ -16076,7 +16113,7 @@ msgstr "Diweddaru'r rhannau lefel uwch o enwau lleoedd, wrth gadw'r rhannau lefe
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
-msgstr ""
+msgstr "Diweddarwyd ar"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16176,7 +16213,7 @@ msgstr "Defnyddiwch silwetau"
 
 #: app/Http/RequestHandlers/CopyFact.php:73
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Defnyddiwch y ddewislen “golygu” i gludo hwn i gofnod arall."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16615,7 +16652,7 @@ msgstr "Tyst"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "Tystion"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
@@ -16712,6 +16749,8 @@ msgstr "Gallwch osod y mynediad ar gyfer cofnod, ffaith neu ddigwyddiad penodol 
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
 msgstr ""
+"Gallwch symleiddio'r ffurflenni golygu trwy guddio tagiau GEDCOM nad ydych "
+"yn eu defnyddio."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
@@ -16853,7 +16892,7 @@ msgstr "Mae eich gweinydd gwe yn defnyddio fersiwn PHP %s, nad yw bellach yn der
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:544
@@ -16883,6 +16922,9 @@ msgstr "Chwyddo allan"
 #: app/Module/FixWtObjeSortTag.php:72
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"Defnyddiwyd tagiau _WT_OBJE_SORT gan hen fersiynau o webtrees i ddangos hoff "
+"ddelwedd unigolyn. Dewis arall yw ail-drefnu'r delweddau fel bod yr un hoff "
+"yn cael ei restru gyntaf."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -17013,7 +17055,7 @@ msgstr "modryb/ewythr"
 
 #: resources/views/admin/trees-import.phtml:86
 msgid "automatic"
-msgstr ""
+msgstr "awtomatig"
 
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
@@ -17190,7 +17232,7 @@ msgstr "newid enw"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "gwiriwch nawr"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
@@ -19487,7 +19529,7 @@ msgstr "mewnforio ffeil"
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
-msgstr "Baban"
+msgstr "baban"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
@@ -20675,7 +20717,7 @@ msgstr "llys-fab"
 
 #: app/Elements/AgeAtEvent.php:96
 msgid "stillborn"
-msgstr "Marw-anedig"
+msgstr "marw-anedig"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -20918,11 +20960,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "nid yw webtrees yn gallu creu mân-luniau ar gyfer y fformat ffeil hwn."
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "Nid yw webtrees yn adnabod y fformat ffeil hwn."
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -21033,12 +21075,12 @@ msgstr "Ynysoedd yr Aland"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "Dylai “%1$s” fod yn “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "Mae “%s“ wedi’i gopïo i’r clipfwrdd."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
