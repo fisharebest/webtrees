@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-08 21:59+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-12-10 21:54+0000\n"
+"Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cy/>\n"
 "Language: cy\n"
@@ -126,14 +126,14 @@ msgstr "%1$s × %2$s"
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:532
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/RequestHandlers/ManageMediaData.php:322 app/MediaFile.php:333
@@ -160,7 +160,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2396
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%2$s %1$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:619
@@ -480,14 +480,14 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × cyfnither"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:424
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × cefnder"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -6334,7 +6334,7 @@ msgstr "Llyfr teulu %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Cyfrifiad teulu"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6358,7 +6358,7 @@ msgstr "Teulu %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Preswylfa deuluol"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -8492,7 +8492,7 @@ msgstr "Kuwait"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:118 app/GedcomCode/GedcomCodeTemp.php:420
 msgid "Kyiv, Ukraine"
-msgstr ""
+msgstr "Kyiv, Wcráin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:278
@@ -15539,7 +15539,7 @@ msgstr "Amser"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Amser y newid diwethaf"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15717,7 +15717,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Gormod o geisiadau. Ceisiwch eto yn nes ymlaen."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -16001,7 +16001,7 @@ msgstr "Math o ffaith"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Math o rif adnabod"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -16019,7 +16019,7 @@ msgstr "Math o enw"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Math o gyfeirnod"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
