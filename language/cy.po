@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-01-08 21:59+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2023-12-10 21:18+0000\n"
+"Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
 "Language: cy\n"
@@ -163,14 +163,14 @@ msgstr "%1$s × %2$s"
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:615
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:497 app/Media.php:387
@@ -189,7 +189,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%2$s %1$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:822
@@ -586,14 +586,14 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × cyfnither"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:515
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × cefnder"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:85
@@ -9978,11 +9978,14 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:1821
 msgid "No events for living individuals exist for today."
 msgstr ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer unigolion byw yn bodoli ar gyfer "
+"heddiw."
 
 #: app/Functions/FunctionsPrintLists.php:1724
 #: app/Functions/FunctionsPrintLists.php:1836
 msgid "No events for living individuals exist for tomorrow."
 msgstr ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer unigolion byw yn bodoli ar gyfer yfory."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1727
@@ -9991,11 +9994,23 @@ msgstr ""
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 msgstr[1] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 msgstr[2] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s ddiwrnod "
+"nesaf."
 msgstr[3] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 msgstr[4] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s niwrnod "
+"nesaf."
 msgstr[5] ""
+"Nid oes unrhyw ddigwyddiadau ar gyfer pobl fyw yn bodoli am y %s diwrnod "
+"nesaf."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
