@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-12-12 09:14+0000\n"
+"PO-Revision-Date: 2023-12-13 11:54+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cy/>\n"
@@ -102,7 +102,7 @@ msgstr "Nid oes gan %1$s ddolen yn ôl i %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "Tynnwyd %1$s ffeiliau mewn %2$s eiliad."
+msgstr[0] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
 msgstr[1] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
 msgstr[2] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
 msgstr[3] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
@@ -3611,11 +3611,11 @@ msgstr "Newidiadau"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Newidiadau yn y %s dyddiau diwethaf"
+msgstr[0] "Newidiadau yn y %s diwrnod diwethaf"
 msgstr[1] "Newidiadau yn y %s diwrnod diwethaf"
-msgstr[2] "Newidiadau yn y %s ddiwrnod diwethaf"
+msgstr[2] "Newidiadau yn y %s diwrnod diwethaf"
 msgstr[3] "Newidiadau yn y %s diwrnod diwethaf"
-msgstr[4] "Newidiadau yn y %s niwrnod diwethaf"
+msgstr[4] "Newidiadau yn y %s diwrnod diwethaf"
 msgstr[5] "Newidiadau yn y %s diwrnod diwethaf"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
@@ -5575,7 +5575,7 @@ msgstr "Djibouti"
 #: app/Elements/LdsSpouseSealingDateStatus.php:69
 #: app/GedcomCode/GedcomCodeStat.php:124
 msgid "Do not seal, previous sealing canceled"
-msgstr "Peidiwch â'i selio, selio blaenorol wedi'i ddiddymu"
+msgstr "Peidio â selio, selio blaenorol wedi'i ddiddymu"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -7803,7 +7803,7 @@ msgstr "Os na wnaethoch ofyn am gyfrinair newydd, anwybyddwch y neges hon."
 #: resources/views/emails/register-user-html.phtml:34
 #: resources/views/emails/register-user-text.phtml:22
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "Os na wnaethoch ofyn am gyfrif, gallwch ddileu'r neges hon yn unig."
+msgstr "Os na wnaethoch ofyn am gyfrif, gallwch ddileu'r neges hon."
 
 #: resources/views/modals/media-file-fields.phtml:76
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -10401,11 +10401,11 @@ msgstr "Heb ganfod unrhyw wallau."
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] "Nid oes digwyddiadau yn bodoli ar gyfer y %s dyddiau nesaf."
+msgstr[0] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
 msgstr[1] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
-msgstr[2] "Nid oes digwyddiadau yn bodoli ar gyfer y %s ddiwrnod nesaf."
+msgstr[2] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
 msgstr[3] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
-msgstr[4] "Nid oes digwyddiadau yn bodoli ar gyfer y %s niwrnod nesaf."
+msgstr[4] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
 msgstr[5] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
 
 #: resources/views/modules/todays_events/empty.phtml:8
@@ -15788,12 +15788,12 @@ msgstr[5] "%s enw cyntaf mwyaf poblogaidd"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Y %s cyfenwau mwyaf poblogaidd"
-msgstr[1] "Y %s cyfenw mwyaf poblogaidd"
-msgstr[2] "Y %s cyfenw mwyaf poblogaidd"
-msgstr[3] "Y %s cyfenw mwyaf poblogaidd"
-msgstr[4] "Y %s cyfenw mwyaf poblogaidd"
-msgstr[5] "Y %s cyfenw mwyaf poblogaidd"
+msgstr[0] "%s cyfenw mwyaf poblogaidd"
+msgstr[1] "%s cyfenw mwyaf poblogaidd"
+msgstr[2] "%s cyfenw mwyaf poblogaidd"
+msgstr[3] "%s cyfenw mwyaf poblogaidd"
+msgstr[4] "%s cyfenw mwyaf poblogaidd"
+msgstr[5] "%s cyfenw mwyaf poblogaidd"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:101
@@ -16292,7 +16292,7 @@ msgstr "Defnyddio “?” i gydweddu â nod sengl, defnyddio “*” i gydweddu 
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "Defnyddiwch o leiaf %s nodau."
+msgstr[0] "Defnyddiwch o leiaf %s nod."
 msgstr[1] "Defnyddiwch o leiaf %s nod."
 msgstr[2] "Defnyddiwch o leiaf %s nod."
 msgstr[3] "Defnyddiwch o leiaf %s nod."
@@ -17000,8 +17000,8 @@ msgstr "Dylech ddileu'r “%1$s” o “%2$s” a rhoi cynnig arall arni."
 #: resources/views/admin/users-edit.phtml:114
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
-"Peidiwch â chymeradwyo cyfrif oni bai eich bod yn gwybod bod y cyfeiriad e-"
-"bost yn un cywir."
+"Dylech chi ddim cymeradwyo cyfrif oni bai eich bod yn gwybod bod y cyfeiriad "
+"e-bost yn gywir."
 
 #: resources/views/emails/register-notify-html.phtml:43
 #: resources/views/emails/register-notify-text.phtml:32
@@ -19839,7 +19839,7 @@ msgstr "mamlinachol"
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] "uchafswm o %s dyddiau"
+msgstr[0] "uchafswm o %s diwrnod"
 msgstr[1] "uchafswm o %s diwrnod"
 msgstr[2] "uchafswm o %s ddiwrnod"
 msgstr[3] "uchafswm o %s diwrnod"
