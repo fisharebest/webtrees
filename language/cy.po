@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-12 10:44+0000\n"
+"PO-Revision-Date: 2023-12-13 11:54+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
@@ -7613,7 +7613,7 @@ msgstr ""
 
 #: login.php:349
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "Os na wnaethoch ofyn am gyfrif, gallwch ddileu'r neges hon yn unig."
+msgstr "Os na wnaethoch ofyn am gyfrif, gallwch ddileu'r neges hon."
 
 #: app/Module/GoogleMapsModule.php:3956
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
