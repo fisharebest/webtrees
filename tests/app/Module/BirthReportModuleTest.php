@@ -89,7 +89,7 @@ class BirthReportModuleTest extends TestCase
         ];
 
         $report = new ReportParserSetup($xml);
-        self::assertIsArray($report->reportProperties());
+        self::assertNotEmpty($report->reportProperties());
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);

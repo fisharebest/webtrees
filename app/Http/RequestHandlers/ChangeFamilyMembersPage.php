@@ -35,11 +35,6 @@ class ChangeFamilyMembersPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree   = Validator::attributes($request)->tree();
@@ -49,12 +44,9 @@ class ChangeFamilyMembersPage implements RequestHandlerInterface
         $title  = I18N::translate('Change family members') . ' – ' . $family->fullName();
 
         return $this->viewResponse('edit/change-family-members', [
-            'tree'     => $tree,
-            'title'    => $title,
-            'family'   => $family,
-            'father'   => $family->husband(),
-            'mother'   => $family->wife(),
-            'children' => $family->children(),
+            'tree'   => $tree,
+            'title'  => $title,
+            'family' => $family,
         ]);
     }
 }
