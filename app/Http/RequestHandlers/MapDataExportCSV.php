@@ -91,7 +91,7 @@ class MapDataExportCSV implements RequestHandlerInterface
         while ($queue !== []) {
             [$id, $hierarchy, $latitude, $longitude] = array_shift($queue);
 
-            if ($latitude !== null && !$longitude !== null) {
+            if ($latitude !== null && $longitude !== null) {
                 $places[] = (object) [
                     'hierarchy' => $hierarchy,
                     'latitude'  => $latitude,
