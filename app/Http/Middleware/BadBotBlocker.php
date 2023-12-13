@@ -74,6 +74,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Bytespider',
         'CCBot', // Used to train a number of LLMs
         'ChatGPT-User', // Used by ChatGPT during operation
+        'ClaudeBot', // Collects training data for LLMs
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
         'FacebookBot', // Collects training data for Facebook's LLM translator.
@@ -125,7 +126,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Mail.RU_Bot'      => ['.mail.ru'],
         'MicrosoftPreview' => ['.search.msn.com'],
         'MojeekBot'        => ['.mojeek.com'],
-        'Qwantify'         => ['.search.qwant.com'],
+        'Qwantify'         => ['.qwant.com'],
         'Sogou'            => ['.crawl.sogou.com'],
         'Yahoo'            => ['.crawl.yahoo.net'],
         'Yandex'           => ['.yandex.ru', '.yandex.net', '.yandex.com'],
