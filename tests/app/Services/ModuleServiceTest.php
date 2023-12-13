@@ -53,7 +53,7 @@ class ModuleServiceTest extends TestCase
     {
         $module_service = new ModuleService();
 
-        self::assertNotEmpty($module_service->all());
+        self::assertNotEmpty($module_service->all()->all());
     }
 
     /**

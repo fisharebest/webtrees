@@ -5,17 +5,12 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersAction;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 
 /**
- * @var Collection<int,Individual> $children
- * @var Family                     $family
- * @var Individual|null            $father
- * @var Individual|null            $mother
- * @var string                     $title
- * @var Tree                       $tree
+ * @var Family $family
+ * @var string $title
+ * @var Tree   $tree
  */
 
 ?>
@@ -28,40 +23,40 @@ use Illuminate\Support\Collection;
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="HUSB">
-            <?php if ($father instanceof Individual && $father->sex() === 'M') : ?>
+            <?php if ($family->husband()?->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
-            <?php elseif ($father !== null && $father->sex() === 'F') : ?>
+            <?php elseif ($family->husband()?->sex() === 'F') : ?>
                 <?= I18N::translate('Wife') ?>
             <?php else : ?>
                 <?= I18N::translate('Spouse') ?>
             <?php endif ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'HUSB', 'individual' => $father, 'tree' => $tree]) ?>
+            <?= view('components/select-individual', ['name' => 'HUSB', 'individual' => $family->husband(), 'tree' => $tree]) ?>
         </div>
     </div>
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="WIFE">
-            <?php if ($mother  instanceof Individual && $mother->sex() === 'M') : ?>
+            <?php if ($family->wife()?->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
-            <?php elseif ($mother !== null && $mother->sex() === 'F') : ?>
+            <?php elseif ($family->wife()?->sex() === 'F') : ?>
                 <?= I18N::translate('Wife') ?>
             <?php else : ?>
                 <?= I18N::translate('Spouse') ?>
             <?php endif ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'WIFE', 'individual' => $mother, 'tree' => $tree]) ?>
+            <?= view('components/select-individual', ['name' => 'WIFE', 'individual' => $family->wife(), 'tree' => $tree]) ?>
         </div>
     </div>
 
-    <?php foreach ($children as $n => $child) : ?>
+    <?php foreach ($family->children() as $n => $child) : ?>
         <div class="row">
-            <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= e($n) ?>">
-                <?php if ($child !== null && $child->sex() === 'M') : ?>
+            <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= $n ?>">
+                <?php if ($child->sex() === 'M') : ?>
                     <?= I18N::translate('Son') ?>
-                <?php elseif ($child !== null && $child->sex() === 'F') : ?>
+                <?php elseif ($child->sex() === 'F') : ?>
                     <?= I18N::translate('Daughter') ?>
                 <?php else : ?>
                     <?= I18N::translate('Child') ?>
@@ -74,11 +69,11 @@ use Illuminate\Support\Collection;
     <?php endforeach ?>
 
     <div class="row">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= e(count($children) + 1) ?>">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= count($family->children()) + 1 ?>">
             <?= I18N::translate('Child') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-individual', ['name' => 'CHIL[]', 'id' => 'CHIL' . (count($children) + 1), 'tree' => $tree]) ?>
+            <?= view('components/select-individual', ['name' => 'CHIL[]', 'id' => 'CHIL' . (count($family->children()) + 1), 'tree' => $tree]) ?>
         </div>
     </div>
 
