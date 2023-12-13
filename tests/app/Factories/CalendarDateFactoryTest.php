@@ -295,6 +295,6 @@ class CalendarDateFactoryTest extends TestCase
 
         $calendars = $factory->supportedCalendars();
 
-        static::assertIsArray($calendars);
+        static::assertNotEmpty($calendars);
     }
 }
