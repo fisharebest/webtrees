@@ -435,8 +435,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                     $areas .= '<area shape="poly" coords="';
                     for ($deg = $start_angle; $deg <= $end_angle; $deg++) {
                         $rad = deg2rad($deg);
-                        $areas .= round($center_x + $arc_radius * cos(deg2rad($rad)), 1) . ',';
-                        $areas .= round($center_y + $arc_radius * sin(deg2rad($rad)), 1) . ',';
+                        $areas .= round($center_x + $arc_radius * cos($rad), 1) . ',';
+                        $areas .= round($center_y + $arc_radius * sin($rad), 1) . ',';
                     }
                     for ($deg = $end_angle; $deg >= $start_angle; $deg--) {
                         $rad = deg2rad($deg);
