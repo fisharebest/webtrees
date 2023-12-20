@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-09-28 17:23+0000\n"
+"PO-Revision-Date: 2023-12-22 10:15+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -11006,11 +11006,13 @@ msgstr "Text predefinit informant que l’administrador decideix si autoritza o 
 
 #: admin_site_config.php:128
 msgid "Predefined text that states all users can request a user account"
-msgstr "Text predefinit informant que tots els usuaris poden demanar accés"
+msgstr "Text predefinit informant que tots els usuaris poden demanar accedir-hi"
 
 #: admin_site_config.php:130
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Text predefinit informant que solament els membres de la família poden demanar accés"
+msgstr ""
+"Text predefinit informant que solament els membres de la família poden "
+"demanar accedir-hi"
 
 #: admin_trees_config.php:325 admin_trees_manage.php:388
 #: app/Module/ChartsBlockModule.php:77
@@ -12794,7 +12796,7 @@ msgstr "Serra Lleona"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:151
 msgid "Sign in"
-msgstr "Accés"
+msgstr "Inicieu sessió"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
@@ -19166,12 +19168,12 @@ msgstr "parella"
 #: app/Functions/Functions.php:718
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "parella"
+msgstr "esposa"
 
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr "parella"
+msgstr "espòs"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
