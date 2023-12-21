@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-09-18 07:32+0000\n"
+"PO-Revision-Date: 2023-12-22 10:15+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -154,7 +154,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2396
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s’s %2$s"
+msgstr "%1$ss %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:619
@@ -181,12 +181,12 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:605
 #, php-format
 msgid "%s and her ancestors"
-msgstr "%s og hendes forfædre"
+msgstr "%s og hendes aner"
 
 #: app/Module/ClippingsCartModule.php:614
 #, php-format
 msgid "%s and his ancestors"
-msgstr "%s og hans forfædre"
+msgstr "%s og hans aner"
 
 #: app/Module/ClippingsCartModule.php:939
 #, php-format
