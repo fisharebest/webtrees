@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-22 10:15+0000\n"
+"PO-Revision-Date: 2023-12-23 20:15+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -13271,7 +13271,7 @@ msgstr "Presentat però pendent d’aprovació"
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Remitent"
+msgstr "Fornidor de dades"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
