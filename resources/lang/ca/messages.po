@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-12-22 10:15+0000\n"
+"PO-Revision-Date: 2023-12-23 21:15+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
@@ -805,7 +805,7 @@ msgstr "Llistat de fonts."
 #. I18N: Description of the “Submitters” module
 #: app/Module/SubmitterListModule.php:76
 msgid "A list of submitters."
-msgstr "Una llista de remitents."
+msgstr "Una llista de fornidors de dades."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
@@ -4088,7 +4088,7 @@ msgstr "Creeu una presentació"
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
 msgid "Create a submitter"
-msgstr "Crea un remitent"
+msgstr "Crea un fornidor de dades"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Create a temporary folder…"
@@ -13871,11 +13871,11 @@ msgstr "Presentat però pendent d’aprovació"
 #: resources/views/modals/submission-fields.phtml:16
 #: resources/views/modules/recent_changes/changes-table.phtml:76
 msgid "Submitter"
-msgstr "Remitent"
+msgstr "Fornidor de dades"
 
 #: resources/views/lists/submitters-table.phtml:71
 msgid "Submitter name"
-msgstr "Nom del remitent"
+msgstr "Nom del fornidor de dades"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:116 app/Module/SubmitterListModule.php:65
@@ -13886,7 +13886,7 @@ msgstr "Nom del remitent"
 #: resources/views/lists/submitters-table.phtml:66
 #: resources/views/record-page-links.phtml:96
 msgid "Submitters"
-msgstr "Remitents"
+msgstr "Fornidors de dades"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:431
@@ -14640,7 +14640,7 @@ msgstr "S'ha creat la presentació"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:80
 msgid "The submitter has been created"
-msgstr "S'ha creat el remitent"
+msgstr "S'ha creat el fornidor de dades"
 
 #: resources/views/help/name.phtml:15
 #, php-format
