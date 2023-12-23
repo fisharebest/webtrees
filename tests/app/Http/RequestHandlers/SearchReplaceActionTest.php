@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SearchReplaceAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\SearchReplaceAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchReplaceAction
  */
 class SearchReplaceActionTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ContentLength
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\ContentLength
+ * @covers \Fisharebest\Webtrees\Http\Middleware\ContentLength
  */
 class ContentLengthTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MapDataService
  *
- * @covers Fisharebest\Webtrees\Services\MapDataService
+ * @covers \Fisharebest\Webtrees\Services\MapDataService
  */
 class MapDataServiceTest extends TestCase
 {

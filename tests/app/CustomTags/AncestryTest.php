@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Ancestry
  *
- * @covers Fisharebest\Webtrees\CustomTags\Ancestry
+ * @covers \Fisharebest\Webtrees\CustomTags\Ancestry
  */
 class AncestryTest extends TestCase
 {

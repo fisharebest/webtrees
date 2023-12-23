@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UnconnectedPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage
  */
 class UnconnectedPageTest extends TestCase
 {

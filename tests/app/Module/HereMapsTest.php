@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HereMaps
  *
- * @covers Fisharebest\Webtrees\Module\HereMaps
+ * @covers \Fisharebest\Webtrees\Module\HereMaps
  */
 class HereMapsTest extends TestCase
 {

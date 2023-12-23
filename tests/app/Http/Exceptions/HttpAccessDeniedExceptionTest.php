@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HttpAccessDeniedException
  *
- * @covers Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException
+ * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException
  */
 class HttpAccessDeniedExceptionTest extends TestCase
 {

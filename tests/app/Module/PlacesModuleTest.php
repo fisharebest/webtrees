@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PlacesModule
  *
- * @covers Fisharebest\Webtrees\Module\PlacesModule
+ * @covers \Fisharebest\Webtrees\Module\PlacesModule
  */
 class PlacesModuleTest extends TestCase
 {

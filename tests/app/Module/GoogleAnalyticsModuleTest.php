@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GoogleAnalyticsModule
  *
- * @covers Fisharebest\Webtrees\Module\GoogleAnalyticsModule
+ * @covers \Fisharebest\Webtrees\Module\GoogleAnalyticsModule
  */
 class GoogleAnalyticsModuleTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReportExpressionLanguageProvider
  *
- * @covers Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
+ * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
  */
 class ReportExpressionLanguageProviderTest extends TestCase
 {

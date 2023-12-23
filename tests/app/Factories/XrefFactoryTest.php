@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class XrefFactory
  *
- * @covers Fisharebest\Webtrees\Factories\XrefFactory
+ * @covers \Fisharebest\Webtrees\Factories\XrefFactory
  */
 class XrefFactoryTest extends TestCase
 {

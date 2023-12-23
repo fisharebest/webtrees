@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UseTransaction
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\UseTransaction
+ * @covers \Fisharebest\Webtrees\Http\Middleware\UseTransaction
  */
 class UseTransactionTest extends TestCase
 {

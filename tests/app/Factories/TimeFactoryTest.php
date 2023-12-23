@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TimeFactory
  *
- * @covers Fisharebest\Webtrees\Factories\TimeFactory
+ * @covers \Fisharebest\Webtrees\Factories\TimeFactory
  */
 class TimeFactoryTest extends TestCase
 {

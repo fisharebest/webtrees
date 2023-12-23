@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CreateLocationModal
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\CreateLocationModal
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateLocationModal
  */
 class CreateLocationModalTest extends TestCase
 {

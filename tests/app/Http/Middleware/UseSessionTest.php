@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UseSession
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\UseSession
+ * @covers \Fisharebest\Webtrees\Http\Middleware\UseSession
  */
 class UseSessionTest extends TestCase
 {

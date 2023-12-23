@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UsersCleanupAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction
  */
 class UsersCleanupActionTest extends TestCase
 {

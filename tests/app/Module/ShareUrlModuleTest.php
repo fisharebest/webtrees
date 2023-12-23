@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ShareUrlModule
  *
- * @covers Fisharebest\Webtrees\Module\ShareUrlModule
+ * @covers \Fisharebest\Webtrees\Module\ShareUrlModule
  */
 class ShareUrlModuleTest extends TestCase
 {

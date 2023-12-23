@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PedigreeMapModule
  *
- * @covers Fisharebest\Webtrees\Module\PedigreeMapModule
+ * @covers \Fisharebest\Webtrees\Module\PedigreeMapModule
  */
 class PedigreeMapModuleTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FixSearchAndReplace
  *
- * @covers Fisharebest\Webtrees\Module\FixSearchAndReplace
+ * @covers \Fisharebest\Webtrees\Module\FixSearchAndReplace
  */
 class FixSearchAndReplaceTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartDeath
  *
- * @covers Fisharebest\Webtrees\Statistics\Google\ChartDeath
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDeath
  */
 class ChartDeathTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class EmptyClipboard
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\EmptyClipboard
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EmptyClipboard
  */
 class EmptyClipboardTest extends TestCase
 {

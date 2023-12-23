@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LinkSpouseToIndividualPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualPage
  */
 class LinkSpouseToIndividualPageTest extends TestCase
 {

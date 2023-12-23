@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class NonEvent
  *
- * @covers Fisharebest\Webtrees\Elements\IndividualNonEvent
+ * @covers \Fisharebest\Webtrees\Elements\IndividualNonEvent
  */
 class IndividualNonEventTest extends TestCase
 {

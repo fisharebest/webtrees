@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MapBox
  *
- * @covers Fisharebest\Webtrees\Module\MapBox
+ * @covers \Fisharebest\Webtrees\Module\MapBox
  */
 class MapBoxTest extends TestCase
 {

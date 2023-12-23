@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RelationshipService
  *
- * @covers Fisharebest\Webtrees\Services\RelationshipService
+ * @covers \Fisharebest\Webtrees\Services\RelationshipService
  */
 class RelationshipServiceTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AddUnlinkedPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage
  */
 class AddUnlinkedPageTest extends TestCase
 {

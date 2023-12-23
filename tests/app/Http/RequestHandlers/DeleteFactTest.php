@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DeleteFact
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact
  */
 class DeleteFactTest extends TestCase
 {

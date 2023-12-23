@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TcpdfWrapper
  *
- * @covers Fisharebest\Webtrees\Report\TcpdfWrapper
+ * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
  */
 class TcpdfWrapperTest extends TestCase
 {

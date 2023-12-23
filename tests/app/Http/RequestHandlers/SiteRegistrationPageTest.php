@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SiteRegistrationPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage
  */
 class SiteRegistrationPageTest extends TestCase
 {

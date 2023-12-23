@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LinkMediaToIndividualModal
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToIndividualModal
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToIndividualModal
  */
 class LinkMediaToIndividualModalTest extends TestCase
 {

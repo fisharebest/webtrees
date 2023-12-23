@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HttpServerErrorException
  *
- * @covers Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException
+ * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException
  */
 class HttpServerErrorExceptionTest extends TestCase
 {

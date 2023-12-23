@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CustomCssJsModule
  *
- * @covers Fisharebest\Webtrees\Module\CustomCssJsModule
+ * @covers \Fisharebest\Webtrees\Module\CustomCssJsModule
  */
 class CustomCssJsModuleTest extends TestCase
 {

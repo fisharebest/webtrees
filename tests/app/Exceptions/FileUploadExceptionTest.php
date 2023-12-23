@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class FileUploadException
  *
- * @covers Fisharebest\Webtrees\Exceptions\FileUploadException
+ * @covers \Fisharebest\Webtrees\Exceptions\FileUploadException
  */
 class FileUploadExceptionTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RenumberTreePage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\RenumberTreePage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RenumberTreePage
  */
 class RenumberTreePageTest extends TestCase
 {

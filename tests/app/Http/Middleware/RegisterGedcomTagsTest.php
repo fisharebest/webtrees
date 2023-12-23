@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RegisterGedcomTags
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags
+ * @covers \Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags
  */
 class RegisterGedcomTagsTest extends TestCase
 {

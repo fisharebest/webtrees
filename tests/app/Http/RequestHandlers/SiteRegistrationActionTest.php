@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SiteRegistrationAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationAction
  */
 class SiteRegistrationActionTest extends TestCase
 {

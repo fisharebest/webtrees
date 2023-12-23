@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HttpServiceUnavailableException
  *
- * @covers Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException
+ * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException
  */
 class HttpServiceUnavailableExceptionTest extends TestCase
 {

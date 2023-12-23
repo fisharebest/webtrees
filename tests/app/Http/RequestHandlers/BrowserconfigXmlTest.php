@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class BrowserconfigXml
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml
  */
 class BrowserconfigXmlTest extends TestCase
 {

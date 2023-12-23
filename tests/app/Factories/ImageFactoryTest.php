@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ImageFactory
  *
- * @covers Fisharebest\Webtrees\Factories\ImageFactory
+ * @covers \Fisharebest\Webtrees\Factories\ImageFactory
  */
 class ImageFactoryTest extends TestCase
 {

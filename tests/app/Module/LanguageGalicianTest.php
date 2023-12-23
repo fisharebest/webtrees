@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LanguageGalician
  *
- * @covers Fisharebest\Webtrees\Module\LanguageGalician
+ * @covers \Fisharebest\Webtrees\Module\LanguageGalician
  */
 class LanguageGalicianTest extends TestCase
 {

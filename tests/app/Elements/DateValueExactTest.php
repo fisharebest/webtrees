@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DateValueExact
  *
- * @covers Fisharebest\Webtrees\Elements\DateValueExact
+ * @covers \Fisharebest\Webtrees\Elements\DateValueExact
  */
 class DateValueExactTest extends TestCase
 {

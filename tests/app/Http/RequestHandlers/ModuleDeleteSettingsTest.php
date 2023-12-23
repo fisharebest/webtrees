@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModuleDeleteSettings
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModuleDeleteSettings
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModuleDeleteSettings
  */
 class ModuleDeleteSettingsTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CenturyService
  *
- * @covers Fisharebest\Webtrees\Statistics\Service\CenturyService
+ * @covers \Fisharebest\Webtrees\Statistics\Service\CenturyService
  */
 class CenturyServiceTest extends TestCase
 {

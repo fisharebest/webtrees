@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ColorsTheme
  *
- * @covers Fisharebest\Webtrees\Module\ColorsTheme
+ * @covers \Fisharebest\Webtrees\Module\ColorsTheme
  */
 class ColorsThemeTest extends TestCase
 {

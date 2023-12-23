@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GoogleMaps
  *
- * @covers Fisharebest\Webtrees\Module\GoogleMaps
+ * @covers \Fisharebest\Webtrees\Module\GoogleMaps
  */
 class GoogleMapsTest extends TestCase
 {

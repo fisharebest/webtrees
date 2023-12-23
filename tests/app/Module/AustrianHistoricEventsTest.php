@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AustrianHistoricEvents
  *
- * @covers Fisharebest\Webtrees\Module\AustrianHistoricEvents
+ * @covers \Fisharebest\Webtrees\Module\AustrianHistoricEvents
  */
 class AustrianHistoricEventsTest extends TestCase
 {
