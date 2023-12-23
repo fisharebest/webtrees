@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GedcomRepository
  *
- * @covers Fisharebest\Webtrees\Statistics\Repository\GedcomRepository
+ * @covers \Fisharebest\Webtrees\Statistics\Repository\GedcomRepository
  */
 class GedcomRepositoryTest extends TestCase
 {

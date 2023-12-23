@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class RepositoryListModule
  *
- * @covers Fisharebest\Webtrees\Module\RepositoryListModule
+ * @covers \Fisharebest\Webtrees\Module\RepositoryListModule
  */
 class RepositoryListModuleTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class WebmanifestJson
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson
  */
 class WebmanifestJsonTest extends TestCase
 {

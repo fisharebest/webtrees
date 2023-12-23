@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LdsOrdinanceStatus
  *
- * @covers Fisharebest\Webtrees\Elements\LdsOrdinanceStatus
+ * @covers \Fisharebest\Webtrees\Elements\LdsOrdinanceStatus
  */
 class LdsOrdinanceStatusTest extends TestCase
 {

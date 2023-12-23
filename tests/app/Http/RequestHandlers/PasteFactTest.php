@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PasteFact
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\PasteFact
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PasteFact
  */
 class PasteFactTest extends TestCase
 {

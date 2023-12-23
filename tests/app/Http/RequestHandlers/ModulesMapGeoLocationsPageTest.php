@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModulesMapGeoLocationsPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapGeoLocationsPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapGeoLocationsPage
  */
 class ModulesMapGeoLocationsPageTest extends TestCase
 {

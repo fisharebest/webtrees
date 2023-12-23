@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ModulesTabsPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ModulesTabsPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesTabsPage
  */
 class ModulesTabsPageTest extends TestCase
 {

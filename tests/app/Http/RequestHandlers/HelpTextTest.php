@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class HelpText
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\HelpText
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\HelpText
  */
 class HelpTextTest extends TestCase
 {

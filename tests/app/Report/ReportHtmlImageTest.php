@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReportHtmlImage
  *
- * @covers Fisharebest\Webtrees\Report\ReportHtmlImage
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
  */
 class ReportHtmlImageTest extends TestCase
 {

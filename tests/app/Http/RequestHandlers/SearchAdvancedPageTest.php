@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SearchAdvancedPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\SearchAdvancedPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchAdvancedPage
  */
 class SearchAdvancedPageTest extends TestCase
 {

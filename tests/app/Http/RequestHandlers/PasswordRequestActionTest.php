@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class PasswordRequestAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestAction
  */
 class PasswordRequestActionTest extends TestCase
 {

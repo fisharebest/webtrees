@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DeletePath
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\DeletePath
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeletePath
  */
 class DeletePathTest extends TestCase
 {

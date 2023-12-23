@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartCommonGiven
  *
- * @covers Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartCommonGiven
  */
 class ChartCommonGivenTest extends TestCase
 {

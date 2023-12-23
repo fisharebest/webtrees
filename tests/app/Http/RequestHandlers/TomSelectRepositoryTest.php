@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TomSelectRepository
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\TomSelectRepository
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TomSelectRepository
  */
 class TomSelectRepositoryTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TreePageBlock
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlock
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlock
  */
 class TreePageBlockTest extends TestCase
 {

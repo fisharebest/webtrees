@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReorderMediaFilesAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaFilesAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaFilesAction
  */
 class ReorderMediaFilesActionTest extends TestCase
 {

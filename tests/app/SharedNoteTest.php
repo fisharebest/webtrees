@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class SharedNote
  *
- * @covers Fisharebest\Webtrees\SharedNote
+ * @covers \Fisharebest\Webtrees\SharedNote
  */
 class SharedNoteTest extends TestCase
 {

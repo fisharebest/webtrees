@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ExternalIdentifier
  *
- * @covers Fisharebest\Webtrees\Elements\ExternalIdentifier
+ * @covers \Fisharebest\Webtrees\Elements\ExternalIdentifier
  */
 class ExternalIdentifierTest extends TestCase
 {

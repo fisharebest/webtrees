@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Session
  *
- * @covers Fisharebest\Webtrees\Session
+ * @covers \Fisharebest\Webtrees\Session
  */
 class SessionTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AddMediaFileModal
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileModal
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileModal
  */
 class AddMediaFileModalTest extends TestCase
 {

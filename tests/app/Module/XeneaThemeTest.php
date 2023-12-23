@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class XeneaTheme
  *
- * @covers Fisharebest\Webtrees\Module\XeneaTheme
+ * @covers \Fisharebest\Webtrees\Module\XeneaTheme
  */
 class XeneaThemeTest extends TestCase
 {

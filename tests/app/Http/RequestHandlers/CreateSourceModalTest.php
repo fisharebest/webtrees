@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CreateSourceModal
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal
  */
 class CreateSourceModalTest extends TestCase
 {

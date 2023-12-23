@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ChartFamilyLargest
  *
- * @covers Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest
+ * @covers \Fisharebest\Webtrees\Statistics\Google\ChartFamilyLargest
  */
 class ChartFamilyLargestTest extends TestCase
 {

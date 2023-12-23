@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class LinkSpouseToIndividualAction
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualAction
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualAction
  */
 class LinkSpouseToIndividualActionTest extends TestCase
 {

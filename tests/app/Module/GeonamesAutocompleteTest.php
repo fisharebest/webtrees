@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GeonamesAutocomplete
  *
- * @covers Fisharebest\Webtrees\Module\GeonamesAutocomplete
+ * @covers \Fisharebest\Webtrees\Module\GeonamesAutocomplete
  */
 class GeonamesAutocompleteTest extends TestCase
 {

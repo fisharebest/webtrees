@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class CloudsTheme
  *
- * @covers Fisharebest\Webtrees\Module\CloudsTheme
+ * @covers \Fisharebest\Webtrees\Module\CloudsTheme
  */
 class CloudsThemeTest extends TestCase
 {

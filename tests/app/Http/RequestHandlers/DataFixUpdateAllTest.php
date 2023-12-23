@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class DataFixUpdateAll
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\DataFixUpdateAll
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DataFixUpdateAll
  */
 class DataFixUpdateAllTest extends TestCase
 {

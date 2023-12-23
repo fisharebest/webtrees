@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Creation
  *
- * @covers Fisharebest\Webtrees\Elements\Creation
+ * @covers \Fisharebest\Webtrees\Elements\Creation
  */
 class CreationTest extends TestCase
 {

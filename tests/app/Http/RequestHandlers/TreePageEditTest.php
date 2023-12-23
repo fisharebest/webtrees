@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class TreePageEdit
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\TreePageEdit
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePageEdit
  */
 class TreePageEditTest extends TestCase
 {

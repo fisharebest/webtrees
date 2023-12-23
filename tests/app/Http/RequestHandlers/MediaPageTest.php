@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class MediaPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\MediaPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MediaPage
  */
 class MediaPageTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class IndividualFact
  *
- * @covers Fisharebest\Webtrees\Elements\IndividualFact
+ * @covers \Fisharebest\Webtrees\Elements\IndividualFact
  */
 class IndividualFactTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Auth
  *
- * @covers Fisharebest\Webtrees\Auth
+ * @covers \Fisharebest\Webtrees\Auth
  */
 class AuthTest extends TestCase
 {

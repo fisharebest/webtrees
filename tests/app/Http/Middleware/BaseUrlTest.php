@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class BaseUrl
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\BaseUrl
+ * @covers \Fisharebest\Webtrees\Http\Middleware\BaseUrl
  */
 class BaseUrlTest extends TestCase
 {

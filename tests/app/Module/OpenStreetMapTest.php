@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class OpenStreetMap
  *
- * @covers Fisharebest\Webtrees\Module\OpenStreetMap
+ * @covers \Fisharebest\Webtrees\Module\OpenStreetMap
  */
 class OpenStreetMapTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ShareAnniversaryModule
  *
- * @covers Fisharebest\Webtrees\Module\ShareAnniversaryModule
+ * @covers \Fisharebest\Webtrees\Module\ShareAnniversaryModule
  */
 class ShareAnniversaryModuleTest extends TestCase
 {

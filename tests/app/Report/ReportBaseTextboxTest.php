@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReportBaseTextbox
  *
- * @covers Fisharebest\Webtrees\Report\ReportBaseTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
  */
 class ReportBaseTextboxTest extends TestCase
 {

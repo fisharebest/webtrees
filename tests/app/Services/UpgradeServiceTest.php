@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UpgradeService
  *
- * @covers Fisharebest\Webtrees\Services\UpgradeService
+ * @covers \Fisharebest\Webtrees\Services\UpgradeService
  */
 class UpgradeServiceTest extends TestCase
 {

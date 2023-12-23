@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AddChildToIndividualPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\AddChildToIndividualPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddChildToIndividualPage
  */
 class AddChildToIndividualPageTest extends TestCase
 {

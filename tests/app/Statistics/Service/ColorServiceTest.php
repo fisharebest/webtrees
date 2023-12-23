@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ColorService
  *
- * @covers Fisharebest\Webtrees\Statistics\Service\ColorService
+ * @covers \Fisharebest\Webtrees\Statistics\Service\ColorService
  */
 class ColorServiceTest extends TestCase
 {

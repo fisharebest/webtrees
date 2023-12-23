@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Logout
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\Logout
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\Logout
  */
 class LogoutTest extends TestCase
 {

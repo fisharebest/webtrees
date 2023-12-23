@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AdminMediaFileDownload
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileDownload
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileDownload
  */
 class AdminMediaFileDownloadTest extends TestCase
 {

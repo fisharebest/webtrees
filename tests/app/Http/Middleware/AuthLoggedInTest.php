@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class AuthLoggedIn
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn
+ * @covers \Fisharebest\Webtrees\Http\Middleware\AuthLoggedIn
  */
 class AuthLoggedInTest extends TestCase
 {

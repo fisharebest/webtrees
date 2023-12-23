@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class IdFactory
  *
- * @covers Fisharebest\Webtrees\Factories\IdFactory
+ * @covers \Fisharebest\Webtrees\Factories\IdFactory
  */
 class IdFactoryTest extends TestCase
 {

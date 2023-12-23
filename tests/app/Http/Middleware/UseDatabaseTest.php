@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class UseDatabase
  *
- * @covers Fisharebest\Webtrees\Http\Middleware\UseDatabase
+ * @covers \Fisharebest\Webtrees\Http\Middleware\UseDatabase
  */
 class UseDatabaseTest extends TestCase
 {

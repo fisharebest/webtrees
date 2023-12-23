@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class GedcomRecordPage
  *
- * @covers Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage
  */
 class GedcomRecordPageTest extends TestCase
 {

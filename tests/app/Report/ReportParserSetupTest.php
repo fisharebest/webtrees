@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class ReportParserSetup
  *
- * @covers Fisharebest\Webtrees\Report\ReportParserSetup
+ * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
  */
 class ReportParserSetupTest extends TestCase
 {

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test harness for the class Location
  *
- * @covers Fisharebest\Webtrees\Location
+ * @covers \Fisharebest\Webtrees\Location
  */
 class LocationTest extends TestCase
 {
