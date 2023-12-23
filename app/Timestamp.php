@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Carbon\Carbon;
-use DateInterval;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 
 /**
@@ -120,13 +119,9 @@ class Timestamp implements TimestampInterface
      */
     public function addSeconds(int $seconds): TimestampInterface
     {
-        if ($seconds < 0) {
-            return $this->subtractSeconds(-$seconds);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->add(new DateInterval('PT' . $seconds . 'S'));
+        $clone->carbon->addSeconds($seconds);
 
         return $clone;
     }
@@ -138,13 +133,9 @@ class Timestamp implements TimestampInterface
      */
     public function addMinutes(int $minutes): TimestampInterface
     {
-        if ($minutes < 0) {
-            return $this->subtractMinutes(-$minutes);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->add(new DateInterval('PT' . $minutes . 'M'));
+        $clone->carbon->addMinutes($minutes);
 
         return $this;
     }
@@ -156,13 +147,9 @@ class Timestamp implements TimestampInterface
      */
     public function addHours(int $hours): TimestampInterface
     {
-        if ($hours < 0) {
-            return $this->subtractHours(-$hours);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->add(new DateInterval('PT' . $hours . 'H'));
+        $clone->carbon->addHours($hours);
 
         return $clone;
     }
@@ -174,49 +161,45 @@ class Timestamp implements TimestampInterface
      */
     public function addDays(int $days): TimestampInterface
     {
-        if ($days < 0) {
-            return $this->subtractHours(-$days);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->add(new DateInterval('P' . $days . 'D'));
+        $clone->carbon->addDays($days);
 
         return $clone;
     }
 
     /**
+     * Add to the month portion of the date.
+     *
+     * Allows overflow, consistent with v2.1.0 ... 2023-10-31 plus 1 month = 2023-12-01.
+     *
      * @param int $months
      *
      * @return self
      */
     public function addMonths(int $months): TimestampInterface
     {
-        if ($months < 0) {
-            return $this->subtractMonths(-$months);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->add(new DateInterval('P' . $months . 'M'));
+        $clone->carbon->addMonths($months);
 
         return $clone;
     }
 
     /**
+     * Add to the year portion of the date.
+     *
+     * Allows overflow, consistent with v2.1.0 ... 2024-02-29 plus 1 year = 2025-03-01.
+     *
      * @param int $years
      *
      * @return self
      */
     public function addYears(int $years): TimestampInterface
     {
-        if ($years < 0) {
-            return $this->subtractYears(-$years);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->add(new DateInterval('P' . $years . 'Y'));
+        $clone->carbon->addYears($years);
 
         return $clone;
     }
@@ -228,13 +211,9 @@ class Timestamp implements TimestampInterface
      */
     public function subtractSeconds(int $seconds): TimestampInterface
     {
-        if ($seconds < 0) {
-            return $this->addSeconds(-$seconds);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->sub(new DateInterval('PT' . $seconds . 'S'));
+        $clone->carbon->subSeconds($seconds);
 
         return $clone;
     }
@@ -246,15 +225,11 @@ class Timestamp implements TimestampInterface
      */
     public function subtractMinutes(int $minutes): TimestampInterface
     {
-        if ($minutes < 0) {
-            return $this->addMinutes(-$minutes);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->sub(new DateInterval('PT' . $minutes . 'M'));
+        $clone->carbon->subMinutes($minutes);
 
-        return $clone;
+        return $this;
     }
 
     /**
@@ -264,13 +239,9 @@ class Timestamp implements TimestampInterface
      */
     public function subtractHours(int $hours): TimestampInterface
     {
-        if ($hours < 0) {
-            return $this->addHours(-$hours);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->sub(new DateInterval('PT' . $hours . 'H'));
+        $clone->carbon->subHours($hours);
 
         return $clone;
     }
@@ -282,49 +253,45 @@ class Timestamp implements TimestampInterface
      */
     public function subtractDays(int $days): TimestampInterface
     {
-        if ($days < 0) {
-            return $this->addDays(-$days);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->sub(new DateInterval('P' . $days . 'D'));
+        $clone->carbon->subDays($days);
 
         return $clone;
     }
 
     /**
+     * Subtract from the month portion of the date.
+     *
+     * Allows overflow, consistent with v2.1.0 ... 2023-10-31 minus 1 month = 2023-10-01.
+     *
      * @param int $months
      *
      * @return self
      */
     public function subtractMonths(int $months): TimestampInterface
     {
-        if ($months < 0) {
-            return $this->addMonths(-$months);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->sub(new DateInterval('P' . $months . 'M'));
+        $clone->carbon->subMonths($months);
 
         return $clone;
     }
 
     /**
+     * Subtract from the year portion of the date.
+     *
+     * Allows overflow, consistent with v2.1.0 ... 2024-02-29 minus 1 year = 2023-03-01.
+     *
      * @param int $years
      *
      * @return self
      */
     public function subtractYears(int $years): TimestampInterface
     {
-        if ($years < 0) {
-            return $this->addYears(-$years);
-        }
-
         $clone = clone($this);
 
-        $clone->carbon->sub(new DateInterval('P' . $years . 'Y'));
+        $clone->carbon->subYears($years);
 
         return $clone;
     }
