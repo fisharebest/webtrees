@@ -166,6 +166,19 @@ class Place
     }
 
     /**
+     * Extract the last parts of a place name, omitting top levels if possible.
+     *
+     * @param int $num : of parts to include - has highest priority
+     * @param int $omit : where to start counting backwards 1=top level, 2=next etc.
+     *
+     * @return Collection<string>
+     */
+    public function backParts(int $num, $omit): Collection
+    {
+        return $this->parts->slice(-($omit - 1) - $num, $num);
+    }
+
+    /**
      * Extract the country (last parts) of a place name.
      *
      * @param int $n
@@ -280,10 +293,11 @@ class Place
     public function shortName(bool $link = false): string
     {
         $SHOW_PEDIGREE_PLACES = (int) $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
+        $SHOW_PEDIGREE_PLACES_SUFFIX = (int) $this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX');
 
         // Abbreviate the place name, for lists
-        if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
-            $parts = $this->lastParts($SHOW_PEDIGREE_PLACES);
+        if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
+            $parts = $this->backParts($SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX);
         } else {
             $parts = $this->firstParts($SHOW_PEDIGREE_PLACES);
         }
