@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-12-23 21:15+0000\n"
+"PO-Revision-Date: 2023-12-24 12:05+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
@@ -206,7 +206,7 @@ msgstr "%s i els seus descendents"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s usuari anònim amb accés"
+msgstr[0] "%s usuari anònim amb sessió oberta"
 msgstr[1] "%s usuaris anònims amb accés"
 
 #: resources/views/family-page-children.phtml:21
@@ -345,7 +345,7 @@ msgstr "%s us ha enviat el següent missatge."
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] "%s usuari amb accés"
+msgstr[0] "%s usuari amb sessió oberta"
 msgstr[1] "%s usuaris amb accés"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:83
@@ -1032,7 +1032,9 @@ msgstr "Línia de temps que mostra els esdeveniments personals."
 
 #: resources/views/admin/users-edit.phtml:118
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Un usuari no podrà iniciar cap sessió fins que tant el «correu electrònic verificat» com «aprovat per l’administrador» estiguin seleccionats."
+msgstr ""
+"Cap usuari podrà iniciar la sessió mentre que, tant el «correu electrònic "
+"verificat» com «aprovat per l’administrador», no estiguin seleccionats."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1868,7 +1870,7 @@ msgstr "Una manera alternativa de triar una nova presentació."
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:54
 msgid "An alternative way to sign in and sign out."
-msgstr "Una forma alternativa de connexió i desconnexió."
+msgstr "Una forma alternativa d'iniciar i tancar la sessió."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:90
@@ -1982,7 +1984,7 @@ msgstr "Antigua i Barbuda"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
-msgstr "Qualsevol persona amb un compte d'usuari pot tenir accés a aquest lloc web."
+msgstr "Qualsevol persona amb un compte d'usuari pot accedir a aquest lloc web."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59
@@ -5679,7 +5681,9 @@ msgstr "Activat"
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "Activant aquesta opció s’obliga als visitants a accedir (amb nom d’usuari i contrasenya) per poder veure qualsevol dada del lloc."
+msgstr ""
+"Activant aquesta opció s’obliga als visitants a iniciar la sessió (amb nom d’"
+"usuari i contrasenya) per poder veure qualsevol dada del lloc."
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
@@ -10342,7 +10346,7 @@ msgstr "Sense resultats."
 
 #: app/Statistics/Repository/UserRepository.php:81
 msgid "No signed-in and no anonymous users"
-msgstr "Ni usuaris amb accés ni anònims"
+msgstr "Ni usuaris amb sessió oberta ni anònims"
 
 #: app/Module/IndividualListModule.php:263
 #: app/Module/IndividualListModule.php:286
@@ -10505,7 +10509,7 @@ msgstr "Nota sobre la font"
 #: app/Gedcom.php:751 app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:908
 #: app/Gedcom.php:922
 msgid "Note on source citation"
-msgstr "Nota sobre la citació de la font"
+msgstr "Nota sobre la ressenya de la font"
 
 #: app/Gedcom.php:837
 msgid "Note on source data"
@@ -13371,12 +13375,12 @@ msgstr "Inicieu sessió"
 #: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:313
 #: resources/views/layouts/administration.phtml:67
 msgid "Sign out"
-msgstr "Surt"
+msgstr "Tanqueu la sessió"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:44
 #: resources/views/admin/control-panel.phtml:252
 msgid "Sign-in and registration"
-msgstr "Accés i registre"
+msgstr "Iniciar sessió i registre"
 
 #: app/CustomTags/Heredis.php:52
 msgid "Signature"
@@ -13635,11 +13639,11 @@ msgstr "Font"
 #: app/Gedcom.php:745 app/Gedcom.php:769 app/Gedcom.php:793 app/Gedcom.php:902
 #: app/Gedcom.php:916
 msgid "Source citation"
-msgstr "Citació de la font"
+msgstr "Ressenya de la font"
 
 #: resources/views/admin/tags.phtml:326
 msgid "Source citations"
-msgstr "Cites de fonts"
+msgstr "Ressenyes de fonts"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -14228,7 +14232,9 @@ msgstr "L'URL s'ha copiat al porta-retalls"
 #: resources/views/emails/approve-user-text.phtml:16
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "L’administrador del lloc webtrees %s ha autoritzat la vostra sol·licitud d’obtenir un compte. Podeu accedir-hi seguint el següent enllaç: %s"
+msgstr ""
+"L’administrador del lloc webtrees %s ha autoritzat la vostra sol·licitud d’"
+"accés. Podeu iniciar la sessió seguint el següent enllaç: %s"
 
 #: resources/views/verify-success-page.phtml:22
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
@@ -14766,7 +14772,7 @@ msgstr "No hi ha tasques de recerca en aquest arbre genealògic."
 
 #: resources/views/modules/sources_tab/tab.phtml:65
 msgid "There are no source citations for this individual."
-msgstr "No hi ha Fonts d’aquesta persona."
+msgstr "No hi ha ressenyes de fonts d’aquesta persona."
 
 #: app/Module/ReviewChangesModule.php:157
 #: resources/views/emails/pending-changes-html.phtml:22
@@ -16359,7 +16365,15 @@ msgstr "Les marques d’aigua són opcionals i normalment només es mostren als 
 #: resources/views/register-success-page.phtml:25
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Ara rebreu un correu electrònic de confirmació a l’adreça <b>%s</b>. Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició serà automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic de confirmació, caldrà que l’administrador autoritzi la comanda abans de poder accedir planament.<br><br>Per accedir a aquest lloc cal conèixer el nom d’usuari i la contrasenya."
+msgstr ""
+"Ara rebreu un correu electrònic de confirmació a l’adreça <b>%s</b>. Us "
+"caldrà confirmar la vostra petició seguint les instruccions del correu "
+"electrònic. Si no ho feu, passada una setmana la petició serà automàticament "
+"rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les "
+"instruccions del correu electrònic de confirmació, caldrà que l’"
+"administrador autoritzi la petició abans de poder accedir "
+"plenament.<br><br>Per iniciar la sessió en aquest lloc cal conèixer el nom d’"
+"usuari i la contrasenya."
 
 #: resources/views/admin/control-panel.phtml:166
 #: resources/views/admin/control-panel.phtml:594
@@ -16400,7 +16414,7 @@ msgstr "Benvingut/da %s"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:26
 msgid "Welcome text on sign-in page"
-msgstr "Text de benvinguda a la pàgina d’accés"
+msgstr "Text de benvinguda a la pàgina d’inici de sessió"
 
 #: resources/views/login-page.phtml:23
 msgid "Welcome to this genealogy website"
@@ -16578,7 +16592,8 @@ msgstr "Podeu canviar l’aparença de webtrees emprant «presentacions». Cada 
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Podeu escollir si voleu aparèixer a la llista d'usuaris que actualment estan accedint al lloc."
+msgstr ""
+"Podeu escollir si voleu aparèixer a la llista d'usuaris amb sessió iniciada."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:29
@@ -16615,7 +16630,8 @@ msgstr "Podeu accelerar els càlculs de privadesa mitjançant l’addició d’u
 
 #: app/Http/RequestHandlers/LoginAction.php:110
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr "No podeu accedir perquè el vostre navegador no accepta galetes."
+msgstr ""
+"No podeu iniciar la sessió perquè el vostre navegador no accepta galetes."
 
 #: app/Http/Exceptions/HttpAccessDeniedException.php:35
 #: app/Http/Exceptions/HttpNotFoundException.php:35
@@ -16632,7 +16648,7 @@ msgstr "Heu seleccionat un GEDCOM amb un nom diferent. És correcte?"
 
 #: app/Http/RequestHandlers/Logout.php:52
 msgid "You have signed out."
-msgstr "Heu sortit."
+msgstr "Heu tancat la sessió."
 
 #: resources/views/modules/faq/config.phtml:29
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -16703,7 +16719,7 @@ msgstr "Us informarem per correu electrònic quan aquest usuari potencial hagi c
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
-msgstr "El fareu servir per accedir al webtrees."
+msgstr "El fareu servir per iniciar la sessió a webtrees."
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:17
 msgid "Youngest father"
@@ -19378,7 +19394,7 @@ msgstr "importa el fitxer"
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
-msgstr "Infant"
+msgstr "infant"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
@@ -19868,7 +19884,7 @@ msgstr "percentatge"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr "Text"
+msgstr "text simple"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -20290,12 +20306,12 @@ msgstr "germà"
 #: resources/views/login-page.phtml:57
 #: resources/views/modules/login_block/sign-in.phtml:38
 msgid "sign in"
-msgstr "accés"
+msgstr "inicieu la sessió"
 
 #. I18N: A button label.
 #: resources/views/modules/login_block/sign-out.phtml:22
 msgid "sign out"
-msgstr "surt"
+msgstr "tanqueu la sessió"
 
 #: app/Services/RelationshipService.php:472
 msgid "sister"
@@ -20562,7 +20578,7 @@ msgstr "fillastre"
 
 #: app/Elements/AgeAtEvent.php:96
 msgid "stillborn"
-msgstr "Nat mort"
+msgstr "nat mort"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
