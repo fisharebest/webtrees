@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-12-24 14:35+0000\n"
-"Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
+"PO-Revision-Date: 2023-12-25 12:06+0000\n"
+"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
 "Language: ca\n"
@@ -15317,7 +15317,7 @@ msgstr "Hora de naixement i temps de defunció"
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:124
 #: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
-msgstr "Data de la mort"
+msgstr "Hora de la mort"
 
 #: app/CustomTags/GedcomL.php:222 app/Gedcom.php:448 app/Gedcom.php:615
 #: app/Gedcom.php:762 app/Gedcom.php:783 app/Gedcom.php:814 app/Gedcom.php:830
