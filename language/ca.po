@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-23 20:15+0000\n"
+"PO-Revision-Date: 2023-12-24 14:35+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -238,7 +238,7 @@ msgstr "%s i els seus descendents"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "%s usuari anònim amb accés"
+msgstr[0] "%s usuari anònim amb sessió oberta"
 msgstr[1] "%s usuaris anònims amb accés"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
@@ -405,7 +405,7 @@ msgstr "%s us ha enviat el següent missatge."
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] "%s usuari amb accés"
+msgstr[0] "%s usuari amb sessió oberta"
 msgstr[1] "%s usuaris amb accés"
 
 #: app/Controller/SearchController.php:411
@@ -1048,7 +1048,9 @@ msgstr "Línia de temps que mostra els esdeveniments personals."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Un usuari no podrà iniciar cap sessió fins que tant el «correu electrònic verificat» com «aprovat per l’administrador» estiguin seleccionats."
+msgstr ""
+"Cap usuari podrà iniciar la sessió mentre que, tant el «correu electrònic "
+"verificat» com «aprovat per l’administrador», no estiguin seleccionats."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1938,7 +1940,7 @@ msgstr "Una manera alternativa de triar una nova presentació."
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:34
 msgid "An alternative way to sign in and sign out."
-msgstr "Una forma alternativa de connexió i desconnexió."
+msgstr "Una forma alternativa d'iniciar i tancar la sessió."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2054,7 +2056,7 @@ msgstr "Antigua i Barbuda"
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr "Qualsevol persona amb un compte d'usuari pot tenir accés a aquest lloc web."
+msgstr "Qualsevol persona amb un compte d'usuari pot accedir a aquest lloc web."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -5615,7 +5617,9 @@ msgstr "Activat"
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:370
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
-msgstr "Activant aquesta opció s’obliga als visitants a accedir (amb nom d’usuari i contrasenya) per poder veure qualsevol dada del lloc."
+msgstr ""
+"Activant aquesta opció s’obliga als visitants a iniciar la sessió (amb nom d’"
+"usuari i contrasenya) per poder veure qualsevol dada del lloc."
 
 #. I18N …of a range of addresses
 #: admin_site_access.php:264 admin_site_access.php:362
@@ -9906,7 +9910,7 @@ msgstr "Sense resultats."
 
 #: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
-msgstr "Ni usuaris amb accés ni anònims"
+msgstr "Ni usuaris amb sessió oberta ni anònims"
 
 #: app/Functions/FunctionsEdit.php:634
 msgid "No temple - living ordinance"
@@ -12800,7 +12804,7 @@ msgstr "Inicieu sessió"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
-msgstr "Surt"
+msgstr "Tanqueu la sessió"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:453
@@ -12810,7 +12814,7 @@ msgstr "URL d’accés"
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr "Accés i registre"
+msgstr "Iniciar sessió i registre"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13031,7 +13035,11 @@ msgstr "Font"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2110
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "<br>Les citacions de font poden incloure camps per deixar constància de la qualitat de les dades (primària, secundària, etc.) i la data en què l’esdeveniment es va enregistrar a la font. Si no empreu aquests camps, podeu inhabilitar-los quan creeu noves citacions de font."
+msgstr ""
+"<br>Les citacions de font poden incloure camps per deixar constància de la "
+"qualitat de les dades (primària, secundària, etc.) i la data en què l’"
+"esdeveniment es va enregistrar a la font. Si no empreu aquests camps, podeu "
+"inhabilitar-los quan creeu noves ressenyes de fonts."
 
 #. I18N: Label for search field
 #: find.php:257
@@ -13549,7 +13557,9 @@ msgstr "L’assitent webtrees a webtrees és un procés automatitzat per ajudar 
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "L’administrador del lloc webtrees %s ha autoritzat la vostra sol·licitud d’obtenir un compte. Podeu accedir-hi seguint el següent enllaç: %s"
+msgstr ""
+"L’administrador del lloc webtrees %s ha autoritzat la vostra sol·licitud d’"
+"accés. Podeu iniciar la sessió seguint el següent enllaç: %s"
 
 #: login.php:616
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
@@ -14051,7 +14061,12 @@ msgstr "Presentacions"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
-msgstr "Les presentacions poden seleccionar-se en tres nivells: usuari, arbre de família, i lloc web. La configuració d'usuari té prioritat sobre els els arbres de la família, que al seu torn tenen prioritat sobre la configuració del lloc web. En seleccionar una \"presentació per defecte\" per a un nivell s'utilitzarà també per al següent nivell."
+msgstr ""
+"Les presentacions poden seleccionar-se en tres nivells: usuari, arbre de "
+"família, i lloc web. La configuració d'usuari té prioritat sobre els arbres "
+"de la família, que al seu torn tenen prioritat sobre la configuració del "
+"lloc web. En seleccionar una \"presentació per defecte\" per a un nivell "
+"s'utilitzarà també per al següent nivell."
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
@@ -14076,7 +14091,7 @@ msgstr "No hi ha tasques de recerca en aquest arbre genealògic."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
-msgstr "No hi ha Fonts d’aquesta persona."
+msgstr "No hi ha ressenyes de fonts d’aquesta persona."
 
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
@@ -15368,7 +15383,7 @@ msgstr "Utilitza disseny compacte"
 #. I18N: A configuration setting
 #: admin_trees_config.php:2105
 msgid "Use full source citations"
-msgstr "Empra citacions de font completes"
+msgstr "Empreu ressenyes de font completes"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:376
@@ -15705,7 +15720,15 @@ msgstr "Les marques d’aigua poden resultar lentes generant imatges grans. En l
 #: login.php:390
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Ara rebreu un correu electrònic de confirmació a l’adreça <b>%s</b>. Us caldrà confirmar la vostra petició seguint les instruccions del correu electrònic. Si no ho feu, passada una setmana la petició serà automàticament rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les instruccions del correu electrònic de confirmació, caldrà que l’administrador autoritzi la comanda abans de poder accedir planament.<br><br>Per accedir a aquest lloc cal conèixer el nom d’usuari i la contrasenya."
+msgstr ""
+"Ara rebreu un correu electrònic de confirmació a l’adreça <b>%s</b>. Us "
+"caldrà confirmar la vostra petició seguint les instruccions del correu "
+"electrònic. Si no ho feu, passada una setmana la petició serà automàticament "
+"rebutjada i us caldria tornar a demanar-la.<br><br>Desprès de seguir les "
+"instruccions del correu electrònic de confirmació, caldrà que l’"
+"administrador autoritzi la petició abans de poder accedir "
+"plenament.<br><br>Per iniciar la sessió en aquest lloc cal conèixer el nom d’"
+"usuari i la contrasenya."
 
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
@@ -15756,7 +15779,7 @@ msgstr "Benvingut/da %s"
 #. I18N: A configuration setting
 #: admin_site_config.php:466
 msgid "Welcome text on sign-in page"
-msgstr "Text de benvinguda a la pàgina d’accés"
+msgstr "Text de benvinguda a la pàgina d’inici de sessió"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
@@ -15783,7 +15806,11 @@ msgstr "En afegir un enllaç, el camp ID no pot estar buit."
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "A l'agregar nous parents directes, podeu afegir als registres cites de fonts (individuals i familiars) o als fets i esdeveniments (naixement, matrimoni i mort). Aquesta opció controla si els registres o fets es seleccionaran per defecte."
+msgstr ""
+"A l'agregar nous parents directes, podeu afegir als registres ressenyes de "
+"fonts (individuals i familiars) o als fets i esdeveniments (naixement, "
+"matrimoni i mort). Aquesta opció controla si els registres o fets es "
+"seleccionaran per defecte."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -15972,7 +15999,8 @@ msgstr "Podeu triar el prefix a utilitzar cada vegada que es creïn nous XREFs."
 
 #: admin_users.php:462 edituser.php:312
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Podeu escollir si voleu aparèixer a la llista d'usuaris que actualment estan accedint al lloc."
+msgstr ""
+"Podeu escollir si voleu aparèixer a la llista d'usuaris amb sessió iniciada."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -16019,7 +16047,8 @@ msgstr "No podeu crear una norma que impedeixi a un mateix l'accés al lloc web.
 
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr "No podeu accedir perquè el vostre navegador no accepta galetes."
+msgstr ""
+"No podeu iniciar la sessió perquè el vostre navegador no accepta galetes."
 
 #: includes/session.php:493
 msgid "You do not have permission to view this page."
@@ -16043,7 +16072,7 @@ msgstr "Heu seleccionat un GEDCOM amb un nom diferent. És correcte?"
 
 #: logout.php:27
 msgid "You have signed out."
-msgstr "Heu sortit."
+msgstr "Heu tancat la sessió."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16163,7 +16192,7 @@ msgstr "Us informarem per correu electrònic quan aquest usuari potencial hagi c
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
-msgstr "El fareu servir per accedir al webtrees."
+msgstr "El fareu servir per iniciar la sessió a webtrees."
 
 #: statistics.php:286
 msgid "Youngest father"
@@ -19547,12 +19576,12 @@ msgstr "germà"
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:84 login.php:202
 msgid "sign in"
-msgstr "accés"
+msgstr "inicieu la sessió"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
 msgid "sign out"
-msgstr "surt"
+msgstr "tanqueu la sessió"
 
 #: app/Functions/Functions.php:785
 msgid "sister"
