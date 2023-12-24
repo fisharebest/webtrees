@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-12-24 14:35+0000\n"
+"PO-Revision-Date: 2023-12-24 16:11+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ca/>\n"
@@ -1282,12 +1282,12 @@ msgstr "Afegiu-hi un nou favorit"
 #: resources/views/modules/relatives/family.phtml:63
 #: resources/views/modules/relatives/tab.phtml:136
 msgid "Add a husband"
-msgstr "Afegiu un espòs"
+msgstr "Afegiu un marit"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:56
 #: resources/views/modules/relatives/tab.phtml:148
 msgid "Add a husband using an existing individual"
-msgstr "Afegiu un espòs emprant algú existent"
+msgstr "Afegiu un marit emprant algú existent"
 
 #: resources/views/modules/user_blog/list.phtml:59
 msgid "Add a journal entry"
@@ -3256,7 +3256,7 @@ msgstr "Enterrament del cònjuge"
 
 #: app/Module/IndividualFactsTabModule.php:264
 msgid "Burial of a wife"
-msgstr "Enterrament d’una esposa"
+msgstr "Enterrament de la muller"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
@@ -4387,7 +4387,7 @@ msgstr "Cremació del cònjuge"
 
 #: app/Module/IndividualFactsTabModule.php:269
 msgid "Cremation of a wife"
-msgstr "Cremació d’una esposa"
+msgstr "Cremació de la muller"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:241
@@ -5058,7 +5058,7 @@ msgstr "Defunció del cònjuge"
 
 #: app/Module/IndividualFactsTabModule.php:259
 msgid "Death of a wife"
-msgstr "Defunció d’una esposa"
+msgstr "Defunció de la muller"
 
 #. I18N: gedcom tag _DETS
 #: app/Factories/ElementFactory.php:343 app/GedcomTag.php:1071
@@ -6373,7 +6373,7 @@ msgstr "Família amb més fills"
 #: resources/xml/reports/individual_ext_report.xml:443
 #: resources/xml/reports/individual_report.xml:486
 msgid "Family with wife"
-msgstr "Família amb la dona"
+msgstr "Família amb la muller"
 
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
@@ -7608,7 +7608,7 @@ msgstr "Hongria"
 #: resources/xml/reports/individual_report.xml:449
 #: resources/xml/reports/relative_ext_report.xml:116
 msgid "Husband"
-msgstr "Espòs"
+msgstr "Marit"
 
 #: app/Factories/ElementFactory.php:959
 #: resources/views/modules/timeline-chart/chart.phtml:353
@@ -16627,7 +16627,7 @@ msgstr "Vidu"
 #: resources/xml/reports/individual_report.xml:489
 #: resources/xml/reports/relative_ext_report.xml:111
 msgid "Wife"
-msgstr "Esposa"
+msgstr "Muller"
 
 #: app/Factories/ElementFactory.php:987
 #: resources/views/modules/timeline-chart/chart.phtml:351
@@ -17554,7 +17554,7 @@ msgstr "ex-cònjuge"
 
 #: app/Functions/Functions.php:660
 msgid "ex-wife"
-msgstr "ex-esposa"
+msgstr "ex-muller"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:150
@@ -18047,17 +18047,17 @@ msgstr "nét"
 #: app/Functions/Functions.php:1016
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "nét de l’esposa"
+msgstr "muller del nét"
 
 #: app/Functions/Functions.php:1044
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "nét de l’esposa"
+msgstr "muller del nét"
 
 #: app/Functions/Functions.php:1336
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "nét de l’esposa"
+msgstr "muller del nét"
 
 #: app/Functions/Functions.php:1712 app/Functions/Functions.php:1731
 #: app/Functions/Functions.php:1743 app/Functions/Functions.php:1754
@@ -20025,7 +20025,7 @@ msgstr "esposa"
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr "espòs"
+msgstr "marit"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
