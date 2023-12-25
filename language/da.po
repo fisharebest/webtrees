@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-22 10:15+0000\n"
+"PO-Revision-Date: 2023-12-26 22:18+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
@@ -2399,7 +2399,7 @@ msgstr "Gennemsnitlig antal børn pr. familie"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:627 admin_trees_manage.php:680
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr "Undgå mellemrum og tegnsætning. Et familienavn kunne være et godt valg."
+msgstr "Undgå mellemrum og tegnsætning. Et slægtsnavn kunne være et godt valg."
 
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2905,7 +2905,7 @@ msgstr "Bismarck, North Dakota, USA"
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
 msgid "Blessing"
-msgstr "Velsignet / Navnefest"
+msgstr "Velsignet/Navnefest"
 
 #: admin_module_blocks.php:73
 msgid "Block"
