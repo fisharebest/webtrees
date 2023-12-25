@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-12-22 10:15+0000\n"
+"PO-Revision-Date: 2023-12-29 14:15+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -2349,7 +2349,7 @@ msgstr "Gennemsnitlig antal børn pr. familie"
 #: resources/views/admin/trees-create.phtml:48
 #: resources/views/admin/trees-preferences.phtml:86
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr "Undgå mellemrum og tegnsætning. Et familienavn kunne være et godt valg."
+msgstr "Undgå mellemrum og tegnsætning. Et slægtsnavn kunne være et godt valg."
 
 #: app/Date/JalaliDate.php:281
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2873,7 +2873,7 @@ msgstr "Bismarck, North Dakota, USA"
 
 #: app/Gedcom.php:603
 msgid "Blessing"
-msgstr "Velsignet / Navnefest"
+msgstr "Velsignet/Navnefest"
 
 #: app/CustomTags/PhpGedView.php:80 resources/views/edit-blocks-block.phtml:24
 msgid "Block"
@@ -5772,7 +5772,7 @@ msgstr "Esri/ArcGIS"
 
 #: app/CustomTags/BrothersKeeper.php:77
 msgid "Estate name"
-msgstr "Gårdnavn"
+msgstr "Ejendomsnavn"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:369
