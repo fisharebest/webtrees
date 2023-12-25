@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-12-22 10:15+0000\n"
+"PO-Revision-Date: 2023-12-26 21:10+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -2415,7 +2415,7 @@ msgstr "Gennemsnitlig antal børn pr. familie"
 #: resources/views/admin/trees-create.phtml:49
 #: resources/views/admin/trees-preferences.phtml:89
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr "Undgå mellemrum og tegnsætning. Et familienavn kunne være et godt valg."
+msgstr "Undgå mellemrum og tegnsætning. Et slægtsnavn kunne være et godt valg."
 
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2955,7 +2955,7 @@ msgstr "Bismarck, North Dakota, USA"
 #. I18N: gedcom tag BLES
 #: app/Factories/ElementFactory.php:1147 app/GedcomTag.php:510
 msgid "Blessing"
-msgstr "Velsignet / Navnefest"
+msgstr "Velsignet/Navnefest"
 
 #: app/Factories/ElementFactory.php:847
 #: resources/views/edit-blocks-block.phtml:22
@@ -5929,7 +5929,7 @@ msgstr "Esfand (Persisk kalender)"
 
 #: app/Factories/ElementFactory.php:281
 msgid "Estate name"
-msgstr "Gårdnavn"
+msgstr "Ejendomsnavn"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
