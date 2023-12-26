@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-24 14:35+0000\n"
+"PO-Revision-Date: 2023-12-26 22:18+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -1276,11 +1276,11 @@ msgstr "Afegiu un nou germà o germana"
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr "Afegiu un nou fill/a"
+msgstr "Afegeix un nou fill/a"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
-msgstr "Afegiu un fill/a per crear una família monoparental"
+msgstr "Afegeix un fill/a per crear una família monoparental"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
@@ -1288,15 +1288,15 @@ msgstr "Afegiu un fill a aquesta família"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Afegiu un esdeveniment"
+msgstr "Afegeix un esdeveniment"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
-msgstr "Afegiu un pare"
+msgstr "Afegeix un pare"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr "Afegiu-hi un nou favorit"
+msgstr "Afegeix un favorit"
 
 #: app/Module/GoogleMapsModule.php:4016
 msgid "Add a geographic location"
@@ -1305,7 +1305,7 @@ msgstr "Afegiu una nova ubicació geogràfica"
 #: app/Module/RelativesTabModule.php:387 edit_interface.php:790
 #: edit_interface.php:880
 msgid "Add a husband"
-msgstr "Afegiu un espòs"
+msgstr "Afegeix un marit"
 
 #: app/Module/RelativesTabModule.php:154
 msgid "Add a husband to this family"
@@ -1314,34 +1314,34 @@ msgstr "Afegiu un marit a aquesta família"
 #: app/Module/RelativesTabModule.php:392 edit_interface.php:1064
 #: edit_interface.php:1136
 msgid "Add a husband using an existing individual"
-msgstr "Afegiu un espòs emprant algú existent"
+msgstr "Afegeix un marit emprant algú existent"
 
 #: app/Module/UserJournalModule.php:110
 msgid "Add a journal entry"
-msgstr "Afegiu una nova entrada a l’Agenda"
+msgstr "Afegeix una nova entrada a l’Agenda"
 
 #: app/Controller/FamilyController.php:162 app/Functions/FunctionsEdit.php:1129
 #: app/Module/AlbumModule.php:98 app/Module/AlbumModule.php:99
 #: app/Module/MediaTabModule.php:87 source.php:168
 msgid "Add a media object"
-msgstr "Afegiu un objecte multimèdia"
+msgstr "Afegeix un objecte multimèdia"
 
 #: app/Module/RelativesTabModule.php:329 edit_interface.php:652 family.php:96
 msgid "Add a mother"
-msgstr "Afegiu una mare"
+msgstr "Afegeix una mare"
 
 #: app/Controller/IndividualController.php:276 edit_interface.php:1635
 msgid "Add a name"
-msgstr "Afegiu un nom"
+msgstr "Afegeix un nom"
 
 #: app/Module/FamilyTreeNewsModule.php:130
 msgid "Add a news article"
-msgstr "Afegiu una notícia"
+msgstr "Afegeix una notícia"
 
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr "Afegiu una nota"
+msgstr "Afegeix una nota"
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
@@ -1368,26 +1368,26 @@ msgstr "Afeugiu un nou fill o filla"
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
-msgstr "Afegiu una ressenya de font"
+msgstr "Afegeix una ressenya de font"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
-msgstr "Afegiu un/a cònjuge"
+msgstr "Afegeix un/a cònjuge"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr "Afegiu una història"
+msgstr "Afegeix una història"
 
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
 msgid "Add a user"
-msgstr "Afegiu un usuari"
+msgstr "Afegeix un usuari"
 
 #: app/Module/RelativesTabModule.php:375 edit_interface.php:787
 #: edit_interface.php:877
 msgid "Add a wife"
-msgstr "Afegiu una muller"
+msgstr "Afegeix una muller"
 
 #: app/Module/RelativesTabModule.php:188
 msgid "Add a wife to this family"
@@ -1396,13 +1396,13 @@ msgstr "Afegiu una esposa a aquesta família"
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
 #: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
-msgstr "Afegiu una muller emprant algú existent"
+msgstr "Afegeix una muller emprant algú existent"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
 #: app/Module/FrequentlyAskedQuestionsModule.php:463
 msgid "Add an FAQ"
-msgstr "Afegiu una PMF"
+msgstr "Afegeix una PMF"
 
 #: app/Functions/FunctionsEdit.php:1086 app/Functions/FunctionsEdit.php:1090
 msgid "Add an associate"
@@ -1418,7 +1418,7 @@ msgstr "Enganxa des del porta-retalls"
 
 #: lifespan.php:44 modules_v3/GEDFact_assistant/census/census-edit.php:82
 msgid "Add individuals"
-msgstr "Afegiu persones"
+msgstr "Afegeix persones"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 msgid "Add links"
@@ -1426,7 +1426,7 @@ msgstr "Afegiu enllaços"
 
 #: app/Module/RelativesTabModule.php:226
 msgid "Add marriage details"
-msgstr "Afegiu detalls del casament"
+msgstr "Afegeix detalls del casament"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
@@ -1472,12 +1472,12 @@ msgstr "Afegir a favorits"
 #: app/Module/ClippingsCartModule.php:459
 #: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
-msgstr "Posa-ho al cistell"
+msgstr "Posar-ho al cistell"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr "Afegir identificadors únics"
+msgstr "Afegeix identificadors únics"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
@@ -1495,7 +1495,7 @@ msgstr "Afegiu els vostres propis textos i gràfics."
 
 #: editnews.php:34 editnews.php:52
 msgid "Add/edit a journal/news entry"
-msgstr "Afegiu/editeu entrades de l’Agenda"
+msgstr "Afegeix/edita entrades de l’Agenda"
 
 #. I18N: gedcom tag ADDR
 #: app/GedcomTag.php:122
@@ -2168,7 +2168,7 @@ msgstr "Esteu segur d’eliminar els enllaços a aquest objecte multimèdia?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Esteu segur que cal eliminar aquesta entrada dels vostres Favorits?"
+msgstr "Esteu segur d'eliminar aquesta entrada dels vostres Favorits?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
@@ -3236,7 +3236,7 @@ msgstr "Enterrament del cònjuge"
 
 #: app/GedcomTag.php:1188
 msgid "Burial of a wife"
-msgstr "Enterrament d’una esposa"
+msgstr "Enterrament de la muller"
 
 #: modules_v3/cemetery_report/report.xml:5
 msgid "Burial place contains"
@@ -3382,7 +3382,7 @@ msgstr "Causa de la defunció"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Precaució! Això pot portar molt de temps. Paciència."
+msgstr "Precaució! Això pot trigar força. Paciència."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3803,7 +3803,7 @@ msgstr "Registrador Civil"
 #. I18N: Menu entry
 #: admin_site_clean.php:51 app/Theme/AdministrationTheme.php:102
 msgid "Clean up data folder"
-msgstr "Neteja de la carpeta de dades"
+msgstr "Neteja la carpeta de dades"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:76
@@ -4106,7 +4106,7 @@ msgstr "Crea un arxiu"
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
 msgid "Create a shared note"
-msgstr "Crea una nova nota compartida"
+msgstr "Crea una nota compartida nova"
 
 #: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
@@ -4129,11 +4129,13 @@ msgstr "Crea una persona nova"
 
 #: statistics.php:497
 msgid "Create your own chart"
-msgstr "Elaboreu el vostre propi gràfic"
+msgstr "Elaborar el vostre propi gràfic"
 
 #: admin_trees_manage.php:757
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "Crear, actualitzar i eliminar un arbre genealògic per a cada fitxer GEDCOM a la carpeta de dades."
+msgstr ""
+"Crea, actualitza i elimina un arbre genealògic per a cada fitxer GEDCOM a la "
+"carpeta de dades."
 
 #. I18N: gedcom tag CREM
 #: app/GedcomTag.php:330 modules_v3/family_group_report/report.xml:315
@@ -4263,7 +4265,7 @@ msgstr "Cremació del cònjuge"
 
 #: app/GedcomTag.php:1345
 msgid "Cremation of a wife"
-msgstr "Cremació d’una esposa"
+msgstr "Cremació de la muller"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6773
@@ -4836,7 +4838,7 @@ msgstr "Defunció del cònjuge"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
-msgstr "Defunció d’una esposa"
+msgstr "Defunció de la muller"
 
 #. I18N: gedcom tag _DETS
 #: app/GedcomTag.php:1459
@@ -5004,7 +5006,7 @@ msgstr "Elimina usuaris inactius"
 
 #: app/Module/UserMessagesModule.php:142
 msgid "Delete selected messages"
-msgstr "Esborra els missatges seleccionats"
+msgstr "Esborrar els missatges seleccionats"
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:424
@@ -5238,7 +5240,7 @@ msgstr "Desactiva aquestes presentacions"
 #: app/I18N.php:183
 #, php-format
 msgid "Display %s"
-msgstr "Mostra'n %s"
+msgstr "Mostra %s"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
@@ -5410,7 +5412,7 @@ msgstr "Equador"
 #: edit_interface.php:261 edit_interface.php:418 note.php:151 note.php:156
 #: note.php:157
 msgid "Edit"
-msgstr "Editor"
+msgstr "Edita"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
@@ -5459,7 +5461,7 @@ msgstr "Edita la nota"
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2559 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr "Editeu el registre primari GEDCOM"
+msgstr "Edita el registre primari GEDCOM"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
@@ -5486,12 +5488,13 @@ msgstr "Edita l'usuari"
 
 #: app/Tree.php:494
 msgid "Edit this individual and replace their details with your own."
-msgstr "Edita aquesta persona i substituïu llurs detalls amb els vostres propis."
+msgstr ""
+"Editeu aquesta persona i substituïu-ne llurs detalls amb els vostres propis."
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:543
 msgid "Editor"
-msgstr "Editor/a"
+msgstr "Editor"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
@@ -6108,7 +6111,7 @@ msgstr "Família amb més fills"
 #: modules_v3/individual_ext_report/report.xml:435
 #: modules_v3/individual_report/report.xml:486
 msgid "Family with wife"
-msgstr "Família amb la dona"
+msgstr "Família amb la muller"
 
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
@@ -6274,7 +6277,9 @@ msgstr "Els noms d’arxiu no poden contenir l’extensió «%s»."
 
 #: admin.php:893
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
-msgstr "S’han trobat fitxers d’una versió anterior de webtrees. De vegades pot haver-hi risc de seguretat. Cal eliminar-los."
+msgstr ""
+"S’han trobat fitxers d’una versió anterior de webtrees. De vegades poden "
+"comportar un risc de seguretat. Caldria eliminar-los."
 
 #: admin_site_clean.php:88
 #, php-format
@@ -6376,7 +6381,7 @@ msgstr "Primer registre"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:30
 msgid "Fix name slashes and spaces"
-msgstr "Arranja barres i espais als noms"
+msgstr "Arranjar barres i espais als noms"
 
 #. I18N: The emblem of a country or region
 #: app/Module/GoogleMapsModule.php:458 app/Module/GoogleMapsModule.php:3390
@@ -6470,7 +6475,9 @@ msgstr "Per a qüestions tècniques i genealògiques adreceu-vos a %s."
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr "Per als llocs amb més d’un arbre genealògic, aquesta opció us mostrarà en mostrarà una llista al menú principal, a les pàgines de cerca, etc."
+msgstr ""
+"Per als llocs amb més d’un arbre genealògic, aquesta opció us en mostrarà "
+"una llista al menú principal, a les pàgines de cerca, etc."
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
@@ -6709,7 +6716,7 @@ msgstr "Recerca general"
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:44
 msgid "Generate sitemap files for search engines."
-msgstr "Genera fitxers de mapa del lloc per als motors de recerca."
+msgstr "Generar fitxers de mapa del lloc per als motors de recerca."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ReportBase.php:108
@@ -7224,7 +7231,7 @@ msgstr "Houston, Texas, Estats Units"
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr "Nivell de recursivitat a utilitzar en la recerca de parentiu"
+msgstr "Nivell de recursivitat a en la recerca de parentiu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7245,7 +7252,7 @@ msgstr "Hongria"
 #: modules_v3/individual_report/report.xml:449
 #: modules_v3/relative_ext_report/report.xml:109
 msgid "Husband"
-msgstr "Espòs"
+msgstr "Marit"
 
 #: app/Controller/TimelineController.php:228
 msgid "Husband’s age"
@@ -7549,7 +7556,7 @@ msgstr "Registre personal"
 #: app/Module/FamilyTreeStatisticsModule.php:376
 #: app/Module/HtmlBlockModule.php:236
 msgid "Individual who lived the longest"
-msgstr "Persona que ha viscut més temps"
+msgstr "Persona més longeva"
 
 #: admin.php:768 admin.php:799 admin_trees_duplicates.php:142 ancestry.php:81
 #: app/Controller/SearchController.php:519
@@ -8110,7 +8117,7 @@ msgstr "Darrer accés"
 
 #: statistics.php:137
 msgid "Latest birth"
-msgstr "Darrer naixement"
+msgstr "Naixement més recent"
 
 #: app/Module/FamilyTreeStatisticsModule.php:149
 #: app/Module/FamilyTreeStatisticsModule.php:334
@@ -8120,7 +8127,7 @@ msgstr "Natalici més recent"
 
 #: statistics.php:138
 msgid "Latest death"
-msgstr "Darrera defunció"
+msgstr "Defunció més recent"
 
 #: app/Module/FamilyTreeStatisticsModule.php:163
 #: app/Module/FamilyTreeStatisticsModule.php:362
@@ -8258,7 +8265,7 @@ msgstr "Lima, Perú"
 #. I18N: You need to:
 #: login.php:575
 msgid "Link the user account to an individual."
-msgstr "Enllaça el compte d'usuari a una persona."
+msgstr "Vincular el compte d'usuari a una persona."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:963
 #: edit_interface.php:1023
@@ -8509,7 +8516,7 @@ msgstr "Gestió d'arbres genealògics"
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
 msgid "Manage media"
-msgstr "Gestió de multimèdia"
+msgstr "Gestió multimèdia"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
@@ -8843,7 +8850,7 @@ msgstr "Martinica"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:210
 msgid "Masquerade as this user"
-msgstr "Fer-se passar per aquest usuari"
+msgstr "Fes-me passar per aquest usuari"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
@@ -9422,7 +9429,7 @@ msgstr "Mount Timpanogos, Utah, Estats Units"
 #: app/Module/FrequentlyAskedQuestionsModule.php:490 index_edit.php:312
 #: index_edit.php:361
 msgid "Move down"
-msgstr "Desplaça avall"
+msgstr "Moure avall"
 
 #: index_edit.php:342
 msgid "Move left"
@@ -9435,7 +9442,7 @@ msgstr "Mou a la dreta"
 #: app/Module/FrequentlyAskedQuestionsModule.php:484 index_edit.php:310
 #: index_edit.php:359
 msgid "Move up"
-msgstr "Desplaça amunt"
+msgstr "Moure amunt"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6825
@@ -10598,7 +10605,11 @@ msgstr "Canvis pendents"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Els canvis pendents us apereixeran solament si teniu atribucions per editar. Quan acabeu la sessió, no tornareu a veure’ls. A més, els canvis pendents es mostren només en algunes pàgines. Per exemple, no es mostren en les llistes, informes o resultats de recerca."
+msgstr ""
+"Els canvis pendents us apareixeran solament si teniu atribucions per editar. "
+"Quan acabeu la sessió, no tornareu a veure’ls. A més, els canvis pendents es "
+"mostren només en algunes pàgines. Per exemple, no es mostren en les llistes, "
+"informes o resultats de recerca."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -11507,7 +11518,7 @@ msgstr "Elimina"
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:30
 msgid "Remove duplicate links"
-msgstr "Esborra vincles duplicats"
+msgstr "Esborrar vincles duplicats"
 
 #: app/Module/GoogleMapsModule.php:539 app/Module/GoogleMapsModule.php:542
 #: app/Module/GoogleMapsModule.php:545 app/Module/GoogleMapsModule.php:3397
@@ -11516,7 +11527,7 @@ msgstr "Esborra la bandera"
 
 #: timeline.php:277 timeline.php:292
 msgid "Remove individual"
-msgstr "Elimina la persona"
+msgstr "Suprimir la persona"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:127
 msgid "Remove link from list"
@@ -11529,7 +11540,7 @@ msgstr "Elimina el camí multimèdia dels fitxers GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
-msgstr "Esborra aquesta ubicació?"
+msgstr "Esborrar aquesta ubicació?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
@@ -11626,7 +11637,10 @@ msgstr "Les tasques de recerca són esdeveniments especials afegits a persones d
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Les tasques de recerca s’emmagatzemen utilitzant l’etiqueta GEDCOM personalitzada «_TODO». Aplicacions genealogiques alienes poden no reconèixer aquesta etiqueta."
+msgstr ""
+"Les tasques de recerca s’emmagatzemen utilitzant l’etiqueta GEDCOM "
+"personalitzada «_TODO». Aplicacions genealògiques alienes poden no "
+"reconèixer aquesta etiqueta."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -11635,7 +11649,7 @@ msgstr "Residència"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr "Restaurar el disseny de bloc per defecte"
+msgstr "Restaura el disseny de bloc per defecte"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11924,7 +11938,9 @@ msgstr "Recerca i substitució"
 #. I18N: Description of the “Search and replace” option of the batch update module
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
 msgid "Search and replace text, using simple searches or advanced pattern matching."
-msgstr "Cercar i reemplaçar text, mitjançant cerques simples o avançades per coincidència de patrons."
+msgstr ""
+"Cerca i reemplaça text, mitjançant cerques simples o avançades per "
+"coincidència de patrons."
 
 #: includes/session.php:491
 msgid "Search engine"
@@ -11956,7 +11972,8 @@ msgstr "Cerqueu text/patró"
 
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr "Cercar tots els possibles parentius pot ser molt llarg en arbres complexes."
+msgstr ""
+"Cercar tots els possibles parentius pot ser molt llarg en arbres complexes."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
@@ -12037,7 +12054,7 @@ msgstr "Seleccioneu l'idioma que es mostrarà als menús."
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:352
 msgid "Select two records to merge."
-msgstr "Seleccioneu dos registres a fusionar."
+msgstr "Selecciona dos registres a fusionar."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
@@ -12055,7 +12072,7 @@ msgstr "Venedor"
 
 #: app/Module/UserMessagesModule.php:107 login.php:538 message.php:128
 msgid "Send"
-msgstr "Envia"
+msgstr "Enviar"
 
 #: app/Module/LoggedInUsersModule.php:90 app/Module/UserMessagesModule.php:100
 #: app/Stats.php:5930 app/Stats.php:5932 edit_changes.php:201 message.php:103
@@ -12072,7 +12089,8 @@ msgstr "Envia un missatge als usuaris que no hagin accedit mai"
 
 #: admin_users_bulk.php:51
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr "Envia un missatge als usuaris que no hagin accedit durant els darrers 6 mesos"
+msgstr ""
+"Envia un missatge als usuaris que no hagin accedit durant els darrers 6 mesos"
 
 #. I18N: Menu entry
 #: admin_users_bulk.php:26 app/Theme/AdministrationTheme.php:165
@@ -12092,7 +12110,7 @@ msgstr "Nom del remitent"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr "Enviant correu electrònic"
+msgstr "Envia un correu electrònic"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
@@ -12424,14 +12442,14 @@ msgstr "Mostra"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1031
 msgid "Show a download link in the media viewer"
-msgstr "Al visor multimèdia mostra l'enllaç per descarregar"
+msgstr "Mostra l'enllaç per descàrrega al visor multimèdia"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
 msgstr ""
-"Mostrar la conformitat amb les normes d’ús a la pàgina «Sol·liciteu un "
-"compte d'usuari»"
+"Mostra la conformitat amb les normes d’ús a la pàgina «Sol·licitar un compte "
+"d'usuari»"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
@@ -12439,11 +12457,11 @@ msgstr "Mostra totes les notes"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Mostra tots els indrets en un únic llistat"
+msgstr "Mostra tots els indrets en una llista"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
-msgstr "Mostra totes les fonts"
+msgstr "Veure totes les fonts"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
@@ -12456,7 +12474,7 @@ msgstr "Mostra totes les etiquetes"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "Mostrar l’indicador d'edat"
+msgstr "Mostra l’indicador d'edat"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12465,7 +12483,7 @@ msgstr "Mostra per defecte detalls dels gràfics"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors"
-msgstr "Mostrar els fills dels avantpassats"
+msgstr "Mostra els fills dels avantpassats"
 
 #. I18N: Label for a configuration option
 #: app/Module/TopPageViewsModule.php:165
@@ -12474,15 +12492,17 @@ msgstr "Comptador d’indrets abans o després del nom"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
-msgstr "Mostra parelles en les que qualsevol dels cònjuges s’hagi casat més d’una vegada."
+msgstr ""
+"Mostra parelles en les que qualsevol dels cònjuges s’hagi casat més d’una "
+"vegada."
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
-msgstr "Mostra parelles on solament la dona hagi mort."
+msgstr "Mostra parelles on solament la dona s'hagi mort."
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the male partner is dead."
-msgstr "Mostra parelles on solament l’home hagi mort."
+msgstr "Mostra parelles on solament l’home s'hagi mort."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples who married more than 100 years ago."
@@ -12503,7 +12523,7 @@ msgstr "Veure els cosins"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Mostra la data de l’última actualització"
+msgstr "Mostra la data de la darrera actualització"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
@@ -12577,7 +12597,7 @@ msgstr "Incloure notes"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Mostrar oficis"
+msgstr "Mostra oficis"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
@@ -12587,7 +12607,7 @@ msgstr "Mostrar solament naixements, òbits i casaments"
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Mostrar solament esdeveniments relatius a persones vives"
+msgstr "Mostra solament esdeveniments relatius a persones vives"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12600,7 +12620,7 @@ msgstr "Mostra solament persones de les que es desconeix el sexe."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Mostrar solament persones, esdeveniments o tot"
+msgstr "Mostra solament persones, esdeveniments o tot"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12640,11 +12660,11 @@ msgstr "Mostra persones/famílies relacionades"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr "Mostra tasques de recerca assignades a altres usuaris"
+msgstr "Mostra les tasques de recerca assignades a altres usuaris"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Mostra tasques de recerca que no estiguin assignades a cap usuari"
+msgstr "Mostra tasques de recerca que no tinguin cap usuari assignat"
 
 #: app/Module/ResearchTaskModule.php:221
 msgid "Show research tasks that have a date in the future"
@@ -12652,7 +12672,7 @@ msgstr "Mostra tasques de recerca que tenen una data futura"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Mostrar residències"
+msgstr "Mostra residències"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
@@ -12684,11 +12704,12 @@ msgstr "Mostra %1$s %2$s parts del nom de l’indret."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
-msgstr "Mostrar la data i hora d’actualització"
+msgstr "Mostra la data i hora d’actualització"
 
 #: admin_trees_config.php:1368
 msgid "Show the events of close relatives on the individual page"
-msgstr "Mostra els esdeveniments dels parents directes a les pàgines individuals"
+msgstr ""
+"Mostra els esdeveniments dels parents directes a les pàgines individuals"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
@@ -12717,7 +12738,7 @@ msgstr "Mostra l'usuari que ha realitzat el canvi"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "En quins idiomes es mostrarà aquest bloc"
+msgstr "En quins idiomes es mostrarà aquest bloc?"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
@@ -12758,12 +12779,17 @@ msgstr "Mostra-ho als visitants"
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Mostra «fulles»; parelles o persones. Són persones vives però sense fills enregistrats a la base de dades."
+msgstr ""
+"Mostra «fulles», es a dir: persones vives a dia d'avui sense fills "
+"enregistrats a la base de dades."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Mostra «caps de llinatges»; parelles o persones. Aquestes persones poden anomenar-se també «patriarques». Són persones sense pares enregistrats a la base de dades."
+msgstr ""
+"Mostra «caps de llinatge» és a dir, parelles o persones que en podríem "
+"anomenar «patriarques». Són persones sense pares enregistrats a la base de "
+"dades."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
@@ -12804,7 +12830,7 @@ msgstr "Inicieu sessió"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
-msgstr "Tanqueu la sessió"
+msgstr "Tanca la sessió"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:453
@@ -12814,7 +12840,7 @@ msgstr "URL d’accés"
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr "Iniciar sessió i registre"
+msgstr "Inici de sessió i registre"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -12965,7 +12991,9 @@ msgstr "Alguns noms d’indrets poden ser escrits amb prefixos i sufixos opciona
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Algunes presentacions poden mostrar icones a la pestanya de \"Fets i esdeveniments\"."
+msgstr ""
+"Algunes presentacions poden mostrar icones a la pestanya de «Fets i "
+"esdeveniments»."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13361,7 +13389,7 @@ msgstr "Illes Svalbard i Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
 msgid "Swap individuals"
-msgstr "Intercanvia persones"
+msgstr "Intercanviar persones"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
@@ -13629,13 +13657,13 @@ msgstr "Als visitants que arribin per primer cop a aquest lloc web se'ls hi most
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr "S'han fusionat correctament els abres genealògics."
+msgstr "S'han fusionat correctament els arbres genealògics."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:144
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "La família «%s» ha estat eliminada, ja que només té un membre."
+msgstr "La família «%s» ha estat suprimida, ja que només té un membre."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
@@ -13728,7 +13756,7 @@ msgstr "Els següents fets i esdeveniments s'han trobat solament al registre de 
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
-msgstr "La següent llista mostra els requisits estàndard."
+msgstr "La següent llista mostra els requisits típics."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
@@ -13980,7 +14008,7 @@ msgstr "El fitxer carregat excedeix el volum permès."
 #: admin_users.php:786
 #, php-format
 msgid "The user %s has been deleted."
-msgstr "S'ha eliminat l'usuari %s."
+msgstr "S'ha suprimit l'usuari %s."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
@@ -14194,7 +14222,9 @@ msgstr "Aquesta família ha estat esborrada. La supressió haurà de ser revisad
 #: family.php:39
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Aquesta família ha estat esborrada. Heu de revisar l’eliminació i %1$s o %2$s -la."
+msgstr ""
+"Aquesta família ha estat esborrada. Heu de revisar-ne la supressió i %1$s o "
+"%2$s -la."
 
 #: family.php:54
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
@@ -14231,7 +14261,7 @@ msgstr "Aquest arbre genealògic es va actualitzar per última vegada el #gedcom
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Aquest arbre genealògic fou actualitzat per darrera vegada el %s."
+msgstr "Aquest arbre genealògic s'ha actualitzat per darrera vegada el %s."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14263,7 +14293,9 @@ msgstr "Aquesta persona ha estat esborrada. La supressió haurà de ser revisada
 #: individual.php:53
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Aquesta persona ha estat esborrada. Heu de revisar l’eliminació i %1$s or %2$s -ho."
+msgstr ""
+"Aquesta persona ha estat esborrada. Heu de revisar la supressió i %1$s or %2$"
+"s -ho."
 
 #: individual.php:68
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
@@ -14334,7 +14366,9 @@ msgstr "Aquest és l’ajust inicial per a l’opció «mostra els detalls» en 
 
 #: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr "Aquesta és la darrera versió de webtrees. No hi ha actualització disponible."
+msgstr ""
+"Aquesta és la darrera versió de webtrees. No hi ha cap actualització "
+"disponible."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
@@ -14426,7 +14460,9 @@ msgstr "S’ha eliminat l’objecte multimèdia. Però ara cal que ho revisi un 
 #: mediaviewer.php:40
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Aquest objecte multimèdia s’ha eliminat. Heu de revisar aquesta eliminació i %1$s o %2$s."
+msgstr ""
+"Aquest objecte multimèdia s’ha eliminat. Heu de revisar aquesta supressió i "
+"%1$s o %2$s."
 
 #: mediaviewer.php:55
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
@@ -14472,7 +14508,9 @@ msgstr "Aquesta nota ha estat esborrada. La supressió haurà de ser revisada pe
 #: note.php:41
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Aquesta nota ha estat esborrada. Heu ha de revisar l’eliminació i %1$s or %2$s -ho."
+msgstr ""
+"Aquesta nota ha estat esborrada. Heu ha de revisar la supressió i %1$s or %2$"
+"s -ho."
 
 #: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
@@ -14527,7 +14565,11 @@ msgstr "Amb aquesta opció es mantenen en registres privats els vincles familiar
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Aquesta opció mostrarà els noms (però no altres detalls) dels individus. Les persones són privades si estan vives o si s’ha afegit una restricció de privacitat al seu expedient individual. Per amagar un nom específic, afegiu una restricció de privadesa al registre d’aquest nom."
+msgstr ""
+"Aquesta opció mostrarà els noms (però no altres detalls) dels individus. Les "
+"persones són privades si estan vives o si s’hi ha afegit una restricció de "
+"privacitat al seu expedient individual. Per ocultar un nom específic, afegiu "
+"una restricció de privadesa al registre d’aquest nom."
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
@@ -15216,7 +15258,11 @@ msgstr "Identificador únic"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "Els identificadors únics permeten que el mateix registre es trobi en diferents arbres genealògics i en diferents sistemes. S'afegiran cada cop que es creïn o s'actualitzin els registres. Si no voleu que es mostrin els identificadors únics, es poden amagar usant les regles de privadesa."
+msgstr ""
+"Els identificadors únics permeten que el mateix registre es trobi en "
+"diferents arbres genealògics i en diferents sistemes. S'afegiran cada cop "
+"que es creïn o s'actualitzin els registres. Si no voleu que es mostrin els "
+"identificadors únics, es poden ocultar usant les regles de privadesa."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
@@ -15335,7 +15381,7 @@ msgstr "Carrega les dades geogràfiques"
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:179
 msgid "Upload media files"
-msgstr "Càrrega de fitxers multimèdia"
+msgstr "Carregar fitxers multimèdia"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
@@ -15356,7 +15402,7 @@ msgstr "Fes servir el correu PHP per enviar missatges"
 
 #: admin_site_config.php:119
 msgid "Use SMTP to send messages"
-msgstr "Fes servir SMTP per enviar missatges"
+msgstr "Utilitza «SMTP» per enviar missatges"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
@@ -15393,7 +15439,7 @@ msgstr "Utilitza contrasenya"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr "Utilitza sendmail per enviar missatges"
+msgstr "Utilitza «sendmail» per enviar missatges"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
@@ -15616,7 +15662,7 @@ msgstr "Mostra les Notes"
 
 #: calendar.php:292
 msgid "View this day"
-msgstr "Mostra aquest dia"
+msgstr "Mostra «en tal dia com avui»"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15793,7 +15839,12 @@ msgstr "Sàhara Occidental"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: admin_trees_config.php:2136
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Quan s'edita un registre, es registra l'usuari, data i hora. A vegades és desitjable mantenir la informació existent dela \"darrera modificació\", per exemple, en fer petites correccions a les dades facilitades per una altra persona. Aquesta opció controla si aquesta funció està activada per defecte."
+msgstr ""
+"Quan s'edita un registre, es registra l'usuari, data i hora. A vegades és "
+"desitjable mantenir la informació existent de la \"darrera modificació\", "
+"per exemple, en fer petites correccions a les dades facilitades per una "
+"altra persona. Aquesta opció controla si aquesta funció està activada per "
+"defecte."
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15881,7 +15932,7 @@ msgstr "Amplada de les miniatures generades"
 #: modules_v3/individual_report/report.xml:489
 #: modules_v3/relative_ext_report/report.xml:104
 msgid "Wife"
-msgstr "Esposa"
+msgstr "Muller"
 
 #: app/Controller/TimelineController.php:228
 msgid "Wife’s age"
@@ -16117,7 +16168,9 @@ msgstr "Heu de donar un títol de la font"
 
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr "Heu de renumerar els registres d'un dels arbres abans de poder fusionar-los."
+msgstr ""
+"Heu de re-enumerar els registres d'un dels arbres abans de poder fusionar-"
+"los."
 
 #: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
@@ -16145,7 +16198,10 @@ msgstr "Cal revisar els detalls del compte."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Us cal crear un compte d’administrador. Aquest compte controlarà tots els aspectes de la instal.lació d’aquest webtrees. Si us plau, escolliu una contrasenya segura."
+msgstr ""
+"Us cal crear un compte d’administrador. Aquest compte controlarà tots els "
+"aspectes de la instal·lació del webtrees. Si us plau, escolliu una "
+"contrasenya segura."
 
 #: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
@@ -16162,7 +16218,7 @@ msgstr "Missatge enviat a l’Administrador webtrees:"
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
-msgstr "Missatge enviat al compte d’Usuari webtrees:"
+msgstr "Missatge enviat al compte d’usuari webtrees:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
@@ -16180,7 +16236,7 @@ msgstr "Us cal consultar l’autor de la presentació per confirmar la compatibi
 #: login.php:293 message.php:58
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Heu d’eliminar el «%1$s» de «%2$s» i torneu a intentar-ho."
+msgstr "Us cal eliminar el «%1$s» de «%2$s» i tornar a intentar-ho."
 
 #: admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -16660,7 +16716,7 @@ msgstr "llista compacta"
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr "continueu"
+msgstr "continua"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
@@ -16856,7 +16912,7 @@ msgstr "ex-cònjuge"
 
 #: app/Functions/Functions.php:721
 msgid "ex-wife"
-msgstr "ex-esposa"
+msgstr "ex-muller"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
@@ -17240,7 +17296,7 @@ msgstr "homes/dones"
 #. I18N: A button label.
 #: edit_interface.php:2566
 msgid "go to new individual"
-msgstr "ves a la nova persona"
+msgstr "anar a la nova persona"
 
 #: app/Functions/Functions.php:814
 msgctxt "child’s child"
@@ -17320,17 +17376,17 @@ msgstr "nét"
 #: app/Functions/Functions.php:1056
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "nét de l’esposa"
+msgstr "muller del nét"
 
 #: app/Functions/Functions.php:1084
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "nét de l’esposa"
+msgstr "muller del nét"
 
 #: app/Functions/Functions.php:1358
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "nét de l’esposa"
+msgstr "muller del nét"
 
 #: app/Functions/Functions.php:1639 app/Functions/Functions.php:1654
 #: app/Functions/Functions.php:1667
@@ -18769,7 +18825,7 @@ msgstr "hh:mm o hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:342
 msgid "hide"
-msgstr "amaga"
+msgstr "oculta"
 
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
@@ -19202,7 +19258,7 @@ msgstr "esposa"
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr "espòs"
+msgstr "marit"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
@@ -19576,12 +19632,12 @@ msgstr "germà"
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:84 login.php:202
 msgid "sign in"
-msgstr "inicieu la sessió"
+msgstr "inicia la sessió"
 
 #. I18N: A button label.
 #: app/Module/LoginBlockModule.php:65
 msgid "sign out"
-msgstr "tanqueu la sessió"
+msgstr "tanca la sessió"
 
 #: app/Functions/Functions.php:785
 msgid "sister"
@@ -20069,7 +20125,7 @@ msgstr "carrega"
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:87
 msgid "view"
-msgstr "mostra-ho"
+msgstr "veure"
 
 #: admin_trees_config.php:363 admin_trees_config.php:387
 #: admin_trees_config.php:427 admin_trees_config.php:467
