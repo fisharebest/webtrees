@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-26 22:18+0000\n"
+"PO-Revision-Date: 2023-12-29 14:15+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -1149,7 +1149,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "Abreujar els noms dels indrets"
+msgstr "Abreuja els noms dels indrets"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1458,7 +1458,7 @@ msgstr "Afegeix la ruta multimèdia GEDCOM als noms d’arxiu"
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
 msgid "Add to TITLE header tag"
-msgstr "Afegeix-ho a l’etiqueta de capçalera TÍTOL"
+msgstr "Afegeix a l’etiqueta de capçalera TÍTOL"
 
 #. I18N: Menu option. Add [the current page] to the list of favorites
 #: app/Controller/RepositoryController.php:71 app/Theme/AbstractTheme.php:1367
@@ -6492,7 +6492,7 @@ msgstr "Format"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1557
 msgid "Format text and notes"
-msgstr "Donar format al text i notes"
+msgstr "Dona format al text i notes"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:163
@@ -14244,8 +14244,12 @@ msgstr "Aquesta família no té descendència"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Aquest arbre genealògic té %s registre amb el mateix \"XREF\" que un altre arbre."
-msgstr[1] "Aquest arbre genealògic té %s registres amb el mateix \"XREF\" que un altre arbre."
+msgstr[0] ""
+"Aquest arbre genealògic té %s registre amb el mateix \"XREF\" d'un altre "
+"arbre."
+msgstr[1] ""
+"Aquest arbre genealògic té %s registres amb el mateix \"XREF\" d'un altre "
+"arbre."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14675,7 +14679,7 @@ msgstr "Aquesta és una llista d’esdeveniments separats per espais o una coma,
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
-msgstr "Aquesta font no existeix o no teniu permís per veure-ho."
+msgstr "Aquesta font no existeix o no teniu permís per veure-la."
 
 #: source.php:45
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
@@ -15829,7 +15833,7 @@ msgstr "Text de benvinguda a la pàgina d’inici de sessió"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr "Benvingut/da a aquest lloc web de genealogia"
+msgstr "Benvinguts a aquest lloc web de genealogia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -16073,7 +16077,9 @@ msgstr "Després de l’actualització podeu tornar a habilitar aquestes present
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr "Podeu renumerar els registres d'un arbre genealògic, de manera que aquests números de referència interns no estan duplicats en qualsevol altre arbre."
+msgstr ""
+"Podeu renumerar els registres d'un arbre genealògic, de manera que aquests "
+"números de referència interns no estiguin duplicats en qualsevol altre arbre."
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
@@ -17296,7 +17302,7 @@ msgstr "homes/dones"
 #. I18N: A button label.
 #: edit_interface.php:2566
 msgid "go to new individual"
-msgstr "anar a la nova persona"
+msgstr "ves a la nova persona"
 
 #: app/Functions/Functions.php:814
 msgctxt "child’s child"
