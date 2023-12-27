@@ -69,21 +69,28 @@ class BadBotBlocker implements MiddlewareInterface
         'AntBot', // Aggressive crawler
         'AspiegelBot',
         'Awario', // Brand management
-        'Barkrowler',
+        'Barkrowler', // Crawler for babbar.tech
         'BLEXBot',
-        'Bytespider',
+        'Bytespider', // Aggressive crawler from Bytedance/TikTok
         'CCBot', // Used to train a number of LLMs
+        'CensysInspect', // Vulnerability scanner
         'ChatGPT-User', // Used by ChatGPT during operation
         'ClaudeBot', // Collects training data for LLMs
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
+        'Expanse', // Another pointless crawler
         'FacebookBot', // Collects training data for Facebook's LLM translator.
         'fidget-spinner-bot', // Agressive crawler
+        'Foregenix', // Vulnerability scanner
+        'Go-http-client', // Crawler library used by many bots
         'Google-Extended', // Collects training data for Google Bard
         'GPTBot', // Collects training data for ChatGPT
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
+        'internet-measurement', // Driftnet
+        'IonCrawl',
+        'Java', // Crawler library used by many bots
         'linabot', // Aggressive crawer, no info available
         'Linguee',
         'MegaIndex.ru',
@@ -93,6 +100,8 @@ class BadBotBlocker implements MiddlewareInterface
         'panscient',
         'PetalBot',
         'proximic',
+        'python-requests', // Crawler library used by many bots
+        'Scrapy', // Scraping tool
         'SeekportBot', // Pretends to be a search engine - but isn't
         'SemrushBot',
         'serpstatbot',
