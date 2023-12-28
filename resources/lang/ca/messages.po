@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-12-26 22:49+0000\n"
+"PO-Revision-Date: 2023-12-29 14:15+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ca/>\n"
@@ -10544,7 +10544,7 @@ msgstr "No s’ha trobat res."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:107
 msgid "Nothing to show"
-msgstr "Res per veure"
+msgstr "Res per mostrar"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -15393,7 +15393,7 @@ msgstr "Aquesta és una llista d’esdeveniments separats per espais o una coma,
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
 msgid "This source does not exist or you do not have permission to view it."
-msgstr "Aquesta font no existeix o no teniu permís per veure-ho."
+msgstr "Aquesta font no existeix o no teniu permís per veure-la."
 
 #: resources/views/source-page.phtml:36
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
@@ -16605,7 +16605,7 @@ msgstr "Text de benvinguda a la pàgina d’inici de sessió"
 
 #: resources/views/login-page.phtml:22
 msgid "Welcome to this genealogy website"
-msgstr "Benvingut/da a aquest lloc web de genealogia"
+msgstr "Benvinguts a aquest lloc web de genealogia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
@@ -18042,7 +18042,7 @@ msgstr "geogràfic"
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
 msgid "go to new individual"
-msgstr "anar a la nova persona"
+msgstr "ves a la nova persona"
 
 #: app/Functions/Functions.php:776
 msgctxt "child’s child"
