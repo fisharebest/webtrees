@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-15 10:54+0000\n"
+"PO-Revision-Date: 2023-12-30 18:15+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
@@ -5844,7 +5844,7 @@ msgstr ""
 #. I18N: The latest year in a range
 #: lifespan.php:77
 msgid "End year"
-msgstr "Blwyddyn gorffen"
+msgstr "Blwyddyn yn gorffen"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
@@ -7779,7 +7779,7 @@ msgstr ""
 #: famlist.php:178 indilist.php:178
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Cynhwys unigolion sydd â “%s” fel enw priod"
+msgstr "Cynnwys unigolion sydd â “%s” fel enw priod"
 
 #: app/Module/ClippingsCartModule.php:386
 #: app/Module/ClippingsCartModule.php:771
@@ -10933,7 +10933,7 @@ msgstr "Siart tras"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
-msgstr "Map tras"
+msgstr "Map achau"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:708
@@ -10950,7 +10950,7 @@ msgstr ""
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Cart tras %s"
+msgstr "Cart achau %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -13595,7 +13595,7 @@ msgstr "Dechrau'r sioe sleidiau wrth lwytho'r dudalen"
 #. I18N: The earliest year in a range
 #: lifespan.php:69
 msgid "Start year"
-msgstr "Blwyddyn gychwyn"
+msgstr "Blwyddyn yn cychwyn"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
@@ -15655,7 +15655,7 @@ msgstr "Cyfanswm yn fyw"
 
 #: statistics.php:93
 msgid "Total males"
-msgstr "Cyfanswm gwrywod"
+msgstr "Cyfanswm y gwrywod"
 
 #: statistics.php:215
 msgid "Total marriages"
