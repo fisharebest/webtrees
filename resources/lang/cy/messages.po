@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Welsh (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-12-14 11:27+0000\n"
+"PO-Revision-Date: 2023-12-30 18:15+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/cy/>\n"
@@ -5763,7 +5763,7 @@ msgstr "Bydd galluogi'r opsiwn hwn yn gorfodi pob ymwelydd i fewngofnodi cyn y g
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
-msgstr "Blwyddyn gorffen"
+msgstr "Blwyddyn yn gorffen"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
@@ -7858,7 +7858,7 @@ msgstr "Cynnwys gymdeithion"
 #: app/Module/IndividualListModule.php:341
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Cynhwys unigolion sydd â “%s” fel enw priod"
+msgstr "Cynnwys unigolion sydd â “%s” fel enw priod"
 
 #. I18N: Label for check-box
 #: resources/views/admin/media.phtml:68
@@ -11152,7 +11152,7 @@ msgstr "Siart tras"
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:111
 msgid "Pedigree map"
-msgstr "Map tras"
+msgstr "Map achau"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeMapModule.php:157 app/Module/PedigreeMapModule.php:210
@@ -11164,7 +11164,7 @@ msgstr "Map achau %s"
 #: app/Module/PedigreeChartModule.php:150
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Cart tras %s"
+msgstr "Cart achau %s"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:268
@@ -13874,7 +13874,7 @@ msgstr "Dechrau'r sioe sleidiau wrth lwytho'r dudalen"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
-msgstr "Blwyddyn gychwyn"
+msgstr "Blwyddyn yn cychwyn"
 
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
@@ -15777,7 +15777,7 @@ msgstr "Cyfanswm yn fyw"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:21
 msgid "Total males"
-msgstr "Cyfanswm gwrywod"
+msgstr "Cyfanswm y gwrywod"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:19
 msgid "Total marriages"
