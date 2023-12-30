@@ -41,6 +41,11 @@ class Timestamp implements TimestampInterface
         $this->carbon->locale($locale);
     }
 
+    public function __clone()
+    {
+        $this->carbon = clone($this->carbon);
+    }
+
     /**
      * Convert a datetime to the user's Julian day number.
      *
@@ -102,11 +107,11 @@ class Timestamp implements TimestampInterface
      */
     public function compare(TimestampInterface $datetime): int
     {
-        if ($this->carbon->lt($datetime)) {
+        if ($this->carbon->lt($datetime->carbon)) {
             return -1;
         }
 
-        if ($this->carbon->gt($datetime)) {
+        if ($this->carbon->gt($datetime->carbon)) {
             return 1;
         }
 
