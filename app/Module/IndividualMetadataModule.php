@@ -101,7 +101,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
     public function getSidebarContent(Individual $individual): string
     {
         $html = $individual->facts(static::HANDLED_FACTS)
-            ->map(static fn (Fact $fact): string =>view('fact', ['fact' => $fact, 'record' => $individual]))
+            ->map(static fn (Fact $fact): string => view('fact', ['fact' => $fact, 'record' => $individual]))
             ->implode('<hr>');
 
         return strip_tags($html, ['a', 'div', 'span', 'i', 'hr', 'br']);
