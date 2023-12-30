@@ -342,6 +342,8 @@ class UpgradeService
         $current_timestamp = time();
 
         if ($force || $last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
+            Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
+
             try {
                 $client = new Client([
                     'timeout' => self::HTTP_TIMEOUT,
@@ -353,7 +355,6 @@ class UpgradeService
 
                 if ($response->getStatusCode() === StatusCodeInterface::STATUS_OK) {
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
-                    Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
                     Site::setPreference('LATEST_WT_VERSION_ERROR', '');
                 } else {
                     Site::setPreference('LATEST_WT_VERSION_ERROR', 'HTTP' . $response->getStatusCode());
