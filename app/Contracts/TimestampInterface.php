@@ -61,11 +61,11 @@ interface TimestampInterface
     public function toDateTimeString(): string;
 
     /**
-     * @param TimestampInterface $datetime
+     * @param TimestampInterface $timestamp
      *
      * @return int
      */
-    public function compare(TimestampInterface $datetime): int;
+    public function compare(TimestampInterface $timestamp): int;
 
     /**
      * @param int $seconds
