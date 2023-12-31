@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
+use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\TimestampFactoryInterface;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
@@ -53,6 +54,8 @@ class TimestampFactory implements TimestampFactoryInterface
     }
 
     /**
+     * Constructs a Timestamp using UTC input only.
+     *
      * @param string|null        $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
      * @param string             $format
      * @param UserInterface|null $user
@@ -61,14 +64,48 @@ class TimestampFactory implements TimestampFactoryInterface
      */
     public function fromString(?string $string, string $format = 'Y-m-d H:i:s', UserInterface $user = null): TimestampInterface
     {
-        $string    ??= date($format);
-        $timestamp = date_create_from_format($format, $string);
+        $string ??= date($format);
+        $utc    = new DateTimeZone('UTC');
 
-        if ($timestamp === false) {
+        return $this->fromZoneString($utc, $string, $format, $user);
+    }
+
+    /**
+     * Constructs a Timestamp using local datetime input according to user's timezone setting.
+     *
+     * @param string             $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
+     * @param string             $format
+     * @param UserInterface|null $user
+     *
+     * @return TimestampInterface
+     */
+    public function fromLocalString(string $string, string $format = 'Y-m-d H:i:s', UserInterface $user = null): TimestampInterface
+    {
+        $user     ??= Auth::user();
+        $timezone = new DateTimeZone($user->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE')));
+
+        return $this->fromZoneString($timezone, $string, $format, $user);
+    }
+
+    /**
+     * Constructs a Timestamp using local datetime input according to the specified timezone.
+     *
+     * @param DateTimeZone       $timezone
+     * @param string             $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
+     * @param string             $format
+     * @param UserInterface|null $user
+     *
+     * @return TimestampInterface
+     */
+    public function fromZoneString(DateTimeZone $timezone, string $string, string $format, UserInterface $user = null): TimestampInterface
+    {
+        $datetime = date_create_from_format($format, $string, $timezone);
+
+        if ($datetime === false) {
             throw new InvalidArgumentException('date/time "' . $string . '" does not match pattern "' . $format . '"');
         }
 
-        return $this->make($timestamp->getTimestamp(), $user);
+        return $this->make($datetime->getTimestamp(), $user);
     }
 
     /**

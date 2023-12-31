@@ -56,12 +56,12 @@ class SiteLogsService
             ->select(['log.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), new Expression("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
 
         if ($from !== '') {
-            $query->where('log_time', '>=', Registry::timestampFactory()->fromString($from, 'Y-m-d')->toDateString());
+            $query->where('log_time', '>=', Registry::timestampFactory()->fromLocalString("$from 00:00:00")->toUTCDateTimeString());
         }
 
         if ($to !== '') {
             // before end of the day
-            $query->where('log_time', '<', Registry::timestampFactory()->fromString($to, 'Y-m-d')->addDays(1)->toDateString());
+            $query->where('log_time', '<', Registry::timestampFactory()->fromLocalString("$to 00:00:00")->addDays(1)->toUTCDateTimeString());
         }
 
         if ($type !== '') {

@@ -33,6 +33,8 @@ interface TimestampFactoryInterface
     public function make(int $timestamp, UserInterface $user = null): TimestampInterface;
 
     /**
+     * Constructs a Timestamp using UTC input only.
+     *
      * @param string|null        $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
      * @param string             $format
      * @param UserInterface|null $user
@@ -40,6 +42,29 @@ interface TimestampFactoryInterface
      * @return TimestampInterface
      */
     public function fromString(?string $string, string $format = 'Y-m-d H:i:s', UserInterface $user = null): TimestampInterface;
+
+    /**
+     * Constructs a Timestamp using local datetime input according to user's timezone setting.
+     *
+     * @param string             $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
+     * @param string             $format
+     * @param UserInterface|null $user
+     *
+     * @return TimestampInterface
+     */
+    public function fromLocalString(string $string, string $format = 'Y-m-d H:i:s', UserInterface $user = null): TimestampInterface;
+
+    /**
+     * Constructs a Timestamp using local datetime input according to the specified timezone.
+     *
+     * @param DateTimeZone       $timezone
+     * @param string             $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
+     * @param string             $format
+     * @param UserInterface|null $user
+     *
+     * @return TimestampInterface
+     */
+    public function fromZoneString(DateTimeZone $timezone, string $string, string $format, UserInterface $user = null): TimestampInterface;
 
     /**
      * @param UserInterface|null $user

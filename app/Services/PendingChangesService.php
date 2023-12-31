@@ -289,12 +289,12 @@ class PendingChangesService
             ->where('gedcom_name', '=', $tree);
 
         if ($from !== '') {
-            $query->where('change_time', '>=', Registry::timestampFactory()->fromString($from, 'Y-m-d')->toDateString());
+            $query->where('change_time', '>=', Registry::timestampFactory()->fromLocalString("$from 00:00:00")->toUTCDateTimeString());
         }
 
         if ($to !== '') {
             // before end of the day
-            $query->where('change_time', '<', Registry::timestampFactory()->fromString($to, 'Y-m-d')->addDays(1)->toDateString());
+            $query->where('change_time', '<', Registry::timestampFactory()->fromLocalString("$to 00:00:00")->addDays(1)->toUTCDateTimeString());
         }
 
         if ($type !== '') {
