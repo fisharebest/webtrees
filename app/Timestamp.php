@@ -117,7 +117,7 @@ class Timestamp implements TimestampInterface
     public function addMonths(int $months): TimestampInterface
     {
         return new self(
-            $this->carbon->addMonth($months)->getTimestamp(),
+            $this->carbon->addMonths($months)->getTimestamp(),
             $this->carbon->timezone->getName(),
             $this->carbon->locale
         );
