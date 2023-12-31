@@ -83,7 +83,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->addSeconds($seconds)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function addMinutes(int $minutes): TimestampInterface
@@ -91,7 +92,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->addMinutes($minutes)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function addHours(int $hours): TimestampInterface
@@ -99,7 +101,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->addHours($hours)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function addDays(int $days): TimestampInterface
@@ -107,7 +110,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->addDays($days)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function addMonths(int $months): TimestampInterface
@@ -115,7 +119,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->addMonth($months)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function addYears(int $years): TimestampInterface
@@ -123,7 +128,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->addYears($years)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function subtractSeconds(int $seconds): TimestampInterface
@@ -131,7 +137,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->subSeconds($seconds)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function subtractMinutes(int $minutes): TimestampInterface
@@ -139,7 +146,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->subMinutes($minutes)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function subtractHours(int $hours): TimestampInterface
@@ -147,7 +155,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->subHours($hours)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function subtractDays(int $days): TimestampInterface
@@ -155,7 +164,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->subDays($days)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function subtractMonths(int $months): TimestampInterface
@@ -163,7 +173,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->subMonths($months)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function subtractYears(int $years): TimestampInterface
@@ -171,7 +182,8 @@ class Timestamp implements TimestampInterface
         return new self(
             $this->carbon->subYears($years)->getTimestamp(),
             $this->carbon->timezone->getName(),
-            $this->carbon->locale);
+            $this->carbon->locale
+        );
     }
 
     public function timestamp(): int
