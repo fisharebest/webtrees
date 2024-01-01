@@ -482,6 +482,10 @@ class SetupWizard implements RequestHandlerInterface
             'foreign_key_constraints' => true,
         ]);
 
+        if ($data['dbtype'] === 'sqlsrv') {
+            DB::connection()->unprepared('SET language us_english'); // For timestamp columns
+        }
+
         $capsule->setAsGlobal();
     }
 }
