@@ -26,6 +26,11 @@ use Fisharebest\Webtrees\I18N;
  */
 class ChartSex
 {
+    public function __construct()
+    {
+        // Empty constructor to prevent the "deprecated constructor" warning in PHP 7.4
+    }
+
     /**
      * Generate a chart showing sex distribution.
      *
