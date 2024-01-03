@@ -180,7 +180,7 @@ class AdminService
             ->where('descriptive_title', '<>', '')
             ->groupBy(['descriptive_title'])
             ->having(new Expression('COUNT(DISTINCT m_id)'), '>', '1')
-            ->select([new Expression(self::groupConcat('m_id') .' AS xrefs')])
+            ->select([new Expression(self::groupConcat('m_id') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
