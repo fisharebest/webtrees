@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-12-29 14:15+0000\n"
+"PO-Revision-Date: 2024-01-05 10:15+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ca/>\n"
@@ -12568,7 +12568,7 @@ msgstr "Segellament cancel·lat (divorci)"
 #: resources/views/modules/fix-place-names/options.phtml:11
 #: resources/views/search-replace-page.phtml:44
 msgid "Search"
-msgstr "Cerca"
+msgstr "Cerqueu"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/SearchReplacePage.php:52
@@ -13430,7 +13430,7 @@ msgstr "Inicieu sessió"
 #: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:302
 #: resources/views/layouts/administration.phtml:66
 msgid "Sign out"
-msgstr "Tanca la sessió"
+msgstr "Tanqueu la sessió"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:44
 #: resources/views/admin/control-panel.phtml:201
