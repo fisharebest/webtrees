@@ -41,4 +41,21 @@ class DB extends Manager
 
         return 'LIKE';
     }
+
+    /**
+     * @internal
+     */
+    public static function groupConcat(string $column): string
+    {
+        switch (DB::connection()->getDriverName()) {
+            case 'pgsql':
+            case 'sqlsrv':
+                return 'STRING_AGG(' . $column . ", ',')";
+
+            case 'mysql':
+            case 'sqlite':
+            default:
+                return 'GROUP_CONCAT(' . $column . ')';
+        }
+    }
 }

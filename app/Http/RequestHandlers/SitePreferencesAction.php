@@ -27,6 +27,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function e;
+use function is_writable;
 use function redirect;
 use function route;
 
@@ -53,7 +55,11 @@ class SitePreferencesAction implements RequestHandlerInterface
         }
 
         if (is_dir($index_directory)) {
-            Site::setPreference('INDEX_DIRECTORY', $index_directory);
+            if (is_writable($index_directory)) {
+                Site::setPreference('INDEX_DIRECTORY', $index_directory);
+            } else {
+                FlashMessages::addMessage(I18N::translate('Cannot write to the folder “%s”.', e($index_directory)), 'danger');
+            }
         } else {
             FlashMessages::addMessage(I18N::translate('The folder “%s” does not exist.', e($index_directory)), 'danger');
         }

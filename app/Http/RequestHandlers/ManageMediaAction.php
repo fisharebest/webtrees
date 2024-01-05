@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -32,6 +34,16 @@ use function route;
  */
 class ManageMediaAction implements RequestHandlerInterface
 {
+    private MediaFileService $media_file_service;
+
+    /**
+     * @param MediaFileService $media_file_service
+     */
+    public function __construct(MediaFileService $media_file_service)
+    {
+        $this->media_file_service = $media_file_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -39,9 +51,12 @@ class ManageMediaAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $data_filesystem = Registry::filesystem()->data();
+        $media_folders   = $this->media_file_service->allMediaFolders($data_filesystem)->all();
+
         return redirect(route(ManageMediaPage::class, [
             'files'        => Validator::parsedBody($request)->string('files'),
-            'media_folder' => Validator::parsedBody($request)->string('media_folder'),
+            'media_folder' => Validator::parsedBody($request)->isInArray($media_folders)->string('media_folder'),
             'subfolders'   => Validator::parsedBody($request)->string('subfolders'),
         ]));
     }

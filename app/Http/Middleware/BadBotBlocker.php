@@ -99,6 +99,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Omgilibot', // Collects training data for LLMs
         'panscient',
         'PetalBot',
+        'phxbot', // Badly written crawler
         'proximic',
         'python-requests', // Crawler library used by many bots
         'Scrapy', // Scraping tool

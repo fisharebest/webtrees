@@ -19,7 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,6 +33,16 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class AdminMediaFileThumbnail implements RequestHandlerInterface
 {
+    private MediaFileService $media_file_service;
+
+    /**
+     * @param MediaFileService $media_file_service
+     */
+    public function __construct(MediaFileService $media_file_service)
+    {
+        $this->media_file_service = $media_file_service;
+    }
+
     /**
      * Show an image/thumbnail, with/without a watermark.
      *
@@ -42,6 +55,14 @@ class AdminMediaFileThumbnail implements RequestHandlerInterface
         $filesystem = Registry::filesystem()->data();
         $path       = Validator::queryParams($request)->string('path');
 
-        return Registry::imageFactory()->thumbnailResponse($filesystem, $path, 120, 120, 'contain');
+        $media_folders = $this->media_file_service->allMediaFolders($filesystem)->all();
+
+        foreach ($media_folders as $media_folder) {
+            if (str_starts_with($path, $media_folder)) {
+                return Registry::imageFactory()->thumbnailResponse($filesystem, $path, 120, 120, 'contain');
+            }
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “path” is invalid.'));
     }
 }

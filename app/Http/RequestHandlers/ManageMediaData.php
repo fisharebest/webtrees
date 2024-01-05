@@ -96,7 +96,8 @@ class ManageMediaData implements RequestHandlerInterface
         $files = Validator::queryParams($request)->isInArray(['local', 'external', 'unused'])->string('files');
 
         // Files within this folder
-        $media_folder = Validator::queryParams($request)->string('media_folder');
+        $media_folders = $this->media_file_service->allMediaFolders($data_filesystem)->all();
+        $media_folder  = Validator::queryParams($request)->isInArray($media_folders)->string('media_folder');
 
         // Show sub-folders within $media_folder
         $subfolders = Validator::queryParams($request)->isInArray(['include', 'exclude'])->string('subfolders');

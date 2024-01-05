@@ -39,10 +39,13 @@ use League\Flysystem\FilesystemOperator;
 use League\Flysystem\StorageAttributes;
 
 use function array_map;
+use function array_unique;
 use function explode;
 use function fclose;
 use function fread;
+use function implode;
 use function preg_match;
+use function sort;
 
 /**
  * Utilities for the control panel.
@@ -117,7 +120,7 @@ class AdminService
             ->where('s_file', '=', $tree->id())
             ->groupBy(['s_name'])
             ->having(new Expression('COUNT(s_id)'), '>', '1')
-            ->select([new Expression('GROUP_CONCAT(s_id) AS xrefs')])
+            ->select([new Expression(DB::groupConcat('s_id') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
@@ -126,6 +129,14 @@ class AdminService
                 }, explode(',', $xrefs));
             })
             ->all();
+
+        // Database agnostic way to do GROUP_CONCAT(DISTINCT x ORDER BY x)
+        $distinct_order_by = static function (string $xrefs): string {
+            $array = explode(',', $xrefs);
+            sort($array);
+
+            return implode(',', array_unique($array));
+        };
 
         $individuals = DB::table('dates')
             ->join('name', static function (JoinClause $join): void {
@@ -137,10 +148,11 @@ class AdminService
             ->whereIn('d_fact', ['BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI'])
             ->groupBy(['d_year', 'd_month', 'd_day', 'd_type', 'd_fact', 'n_type', 'n_full'])
             ->having(new Expression('COUNT(DISTINCT d_gid)'), '>', '1')
-            ->select([new Expression('GROUP_CONCAT(DISTINCT d_gid ORDER BY d_gid) AS xrefs')])
-            ->distinct()
+            ->select([new Expression(DB::groupConcat('d_gid') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
+            ->map($distinct_order_by)
+            ->unique()
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Individual {
                     return Registry::individualFactory()->make($xref, $tree);
@@ -153,7 +165,7 @@ class AdminService
             ->groupBy([new Expression('LEAST(f_husb, f_wife)')])
             ->groupBy([new Expression('GREATEST(f_husb, f_wife)')])
             ->having(new Expression('COUNT(f_id)'), '>', '1')
-            ->select([new Expression('GROUP_CONCAT(f_id) AS xrefs')])
+            ->select([new Expression(DB::groupConcat('f_id') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
@@ -168,7 +180,7 @@ class AdminService
             ->where('descriptive_title', '<>', '')
             ->groupBy(['descriptive_title'])
             ->having(new Expression('COUNT(DISTINCT m_id)'), '>', '1')
-            ->select([new Expression('GROUP_CONCAT(m_id) AS xrefs')])
+            ->select([new Expression(DB::groupConcat('m_id') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
