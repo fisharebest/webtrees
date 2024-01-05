@@ -252,7 +252,6 @@ class MapDataService
 
         return $query
             ->groupBy(['p0.id'])
-            ->orderBy('p0.place')
             ->select([
                 'p0.*',
                 new Expression('COUNT(' . $prefix . 'p1.id) AS child_count'),
@@ -265,7 +264,8 @@ class MapDataService
                 $row->key         = mb_strtolower($row->place);
 
                 return $row;
-            });
+            })
+            ->sort(static fn (object $x, object $y): int => I18N::comparator()($x->place, $y->place));
     }
 
     /**
