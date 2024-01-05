@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\ExternalIdentifier;
 use Fisharebest\Webtrees\Elements\ExternalIdentifierType;
 use Fisharebest\Webtrees\Elements\FamilyFact;
+use Fisharebest\Webtrees\Elements\FamilyNonEvent;
 use Fisharebest\Webtrees\Elements\LdsInitiatory;
 use Fisharebest\Webtrees\Elements\LdsOrdinanceStatus;
 use Fisharebest\Webtrees\Elements\IndividualNonEvent;
@@ -71,7 +72,7 @@ class Gedcom7 implements CustomTagInterface
     public function tags(): array
     {
         $tags = [
-            'FAM:NO'                     => new IndividualNonEvent(I18N::translate('Event did not occur')),
+            'FAM:NO'                     => new FamilyNonEvent(I18N::translate('Event did not occur')),
             'INDI:NO'                    => new IndividualNonEvent(I18N::translate('Event did not occur')),
             'FAM:*:ASSO'                 => new XrefAssociate(I18N::translate('Associate')),
             'FAM:*:ASSO:PHRASE'          => new CustomElement(I18N::translate('Phrase')),
