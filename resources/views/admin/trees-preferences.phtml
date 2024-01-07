@@ -87,6 +87,8 @@ use Illuminate\Support\Collection;
                 </div>
             </div>
         </div>
+    <?php else : ?>
+        <input type="hidden" name="gedcom" value="<?= e($tree->name()) ?>">
     <?php endif ?>
 
     <!-- PEDIGREE_ROOT_ID -->
