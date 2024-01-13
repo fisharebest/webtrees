@@ -38,7 +38,7 @@ class CensusColumnMotherBirthPlace extends AbstractCensusColumn implements Censu
     {
         $mother = $this->mother($individual);
 
-        if ($mother) {
+        if ($mother instanceof Individual) {
             return $this->notCountry($mother->getBirthPlace()->gedcomName());
         }
 

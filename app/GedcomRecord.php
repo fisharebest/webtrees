@@ -796,7 +796,7 @@ class GedcomRecord
             throw new Exception('Invalid GEDCOM data passed to GedcomRecord::updateFact(' . $gedcom . ')');
         }
 
-        if ($this->pending) {
+        if ($this->pending !== null && $this->pending !== '') {
             $old_gedcom = $this->pending;
         } else {
             $old_gedcom = $this->gedcom;
@@ -1065,13 +1065,13 @@ class GedcomRecord
     private function parseFacts(): array
     {
         // Split the record into facts
-        if ($this->gedcom) {
+        if ($this->gedcom !== '') {
             $gedcom_facts = preg_split('/\n(?=1)/', $this->gedcom);
             array_shift($gedcom_facts);
         } else {
             $gedcom_facts = [];
         }
-        if ($this->pending) {
+        if ($this->pending !== null && $this->pending !== '') {
             $pending_facts = preg_split('/\n(?=1)/', $this->pending);
             array_shift($pending_facts);
         } else {

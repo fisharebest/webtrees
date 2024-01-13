@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -56,7 +57,7 @@ class PendingChangesAcceptRecord implements RequestHandlerInterface
         $xref   = Validator::attributes($request)->isXref()->string('xref', '');
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
 
-        if ($record) {
+        if ($record instanceof GedcomRecord) {
             if ($record->isPendingDeletion()) {
                 /* I18N: %s is the name of a genealogy record */
                 FlashMessages::addMessage(I18N::translate('“%s” has been deleted.', $record->fullName()));

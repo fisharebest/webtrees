@@ -413,7 +413,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $indi_html = '<small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small><a class="' . $sosa_class . '" href="' . e($individual->url()) . '">' . $person_name . '</a> ' . $individual->lifespan() . $sosa_html;
 
         // If this is not a birth pedigree (e.g. an adoption), highlight it
-        if ($parents) {
+        if ($parents instanceof Family) {
             foreach ($individual->facts(['FAMC']) as $fact) {
                 if ($fact->target() === $parents) {
                     $pedi = $fact->attribute('PEDI');

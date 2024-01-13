@@ -237,7 +237,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 $out .= $this->getFamilyLi($family, $individual, $generations - 1);
             }
         }
-        if ($out) {
+        if ($out !== '') {
             return '<ul>' . $out . '</ul>';
         }
 
@@ -266,7 +266,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
                 $out .= '<li class="sb_desc_none">' . I18N::translate('No children') . '</li>';
             }
         }
-        if ($out) {
+        if ($out !== '') {
             return '<ul>' . $out . '</ul>';
         }
 

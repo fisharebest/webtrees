@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -60,12 +61,13 @@ class UserAddAction implements RequestHandlerInterface
         $password  = Validator::parsedBody($request)->string('password');
 
         $errors = false;
-        if ($this->user_service->findByUserName($username)) {
+
+        if ($this->user_service->findByUserName($username) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
             $errors = true;
         }
 
-        if ($this->user_service->findByEmail($email)) {
+        if ($this->user_service->findByEmail($email) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.'));
             $errors = true;
         }
