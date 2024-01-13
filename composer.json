@@ -84,7 +84,7 @@
         "composer/composer": "2.6.6",
         "league/flysystem-memory": "3.19.0",
         "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "10.5.5"
+        "phpunit/phpunit": "10.4.2"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
