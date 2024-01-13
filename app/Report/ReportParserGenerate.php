@@ -2122,7 +2122,7 @@ class ReportParserGenerate extends ReportParserBase
                             $val = $this->vars[$match[1]]['id'];
                             $val = trim($val);
                         }
-                        if ($val) {
+                        if ($val !== '') {
                             $searchstr = '';
                             $tags      = explode(':', $tag);
                             //-- only limit to a level number if we are specifically looking at a level
@@ -2170,7 +2170,7 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         //-- apply other filters to the list that could not be added to the search string
-        if ($filters) {
+        if ($filters !== []) {
             foreach ($this->list as $key => $record) {
                 foreach ($filters as $filter) {
                     if (!preg_match('/' . $filter . '/i', $record->privatizeGedcom(Auth::accessLevel($this->tree)))) {
@@ -2180,7 +2180,7 @@ class ReportParserGenerate extends ReportParserBase
                 }
             }
         }
-        if ($filters2) {
+        if ($filters2 !== []) {
             $mylist = [];
             foreach ($this->list as $indi) {
                 $key  = $indi->xref();

@@ -163,7 +163,7 @@ class TreeView
         foreach ($individual->facts(Gedcom::BIRTH_EVENTS, true) as $fact) {
             $hmtl .= $fact->summary();
         }
-        if ($family) {
+        if ($family instanceof Family) {
             foreach ($family->facts(Gedcom::MARRIAGE_EVENTS, true) as $fact) {
                 $hmtl .= $fact->summary();
             }
@@ -300,13 +300,13 @@ class TreeView
             $parent = null;
         }
 
-        if ($parent instanceof Individual || !empty($fop) || $state < 0) {
+        if ($parent instanceof Individual || $fop !== [] || $state < 0) {
             $html .= $this->drawHorizontalLine();
         }
 
         /* draw the parents */
-        if ($state >= 0 && ($parent instanceof Individual || !empty($fop))) {
-            $unique = $parent === null || empty($fop);
+        if ($state >= 0 && ($parent instanceof Individual || $fop !== [])) {
+            $unique = $parent === null || $fop === [];
             $html .= '<td align="left"><table class="tv_tree"><tbody>';
 
             if ($parent instanceof Individual) {
@@ -316,7 +316,7 @@ class TreeView
                 $html .= '</td></tr>';
             }
 
-            if (count($fop)) {
+            if ($fop !== []) {
                 $n  = 0;
                 $nb = count($fop);
                 foreach ($fop as $p) {
@@ -385,7 +385,7 @@ class TreeView
      */
     private function getThumbnail(Individual $individual): string
     {
-        if ($individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+        if ($individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES') !== '' && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES') !== '0') {
             return $individual->displayImage(40, 50, 'crop', []);
         }
 

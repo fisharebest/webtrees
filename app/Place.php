@@ -284,7 +284,7 @@ class Place
         $SHOW_PEDIGREE_PLACES = (int) $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
 
         // Abbreviate the place name, for lists
-        if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
+        if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX') === '1') {
             $parts = $this->lastParts($SHOW_PEDIGREE_PLACES);
         } else {
             $parts = $this->firstParts($SHOW_PEDIGREE_PLACES);

@@ -272,7 +272,7 @@ class Family extends GedcomRecord
     public function getMarriageDate(): Date
     {
         $marriage = $this->getMarriage();
-        if ($marriage) {
+        if ($marriage instanceof Fact) {
             return $marriage->date();
         }
 
@@ -350,7 +350,7 @@ class Family extends GedcomRecord
         if ($this->getAllNames === []) {
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
-            if ($this->husb) {
+            if ($this->husb instanceof Individual) {
                 $husb_names = array_filter($this->husb->getAllNames(), static function (array $x): bool {
                     return $x['type'] !== '_MARNM';
                 });
@@ -368,7 +368,7 @@ class Family extends GedcomRecord
             }
 
             $wife_names = [];
-            if ($this->wife) {
+            if ($this->wife instanceof Individual) {
                 $wife_names = array_filter($this->wife->getAllNames(), static function (array $x): bool {
                     return $x['type'] !== '_MARNM';
                 });

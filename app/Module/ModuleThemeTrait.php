@@ -341,7 +341,7 @@ trait ModuleThemeTrait
     {
         $record = Registry::individualFactory()->make($tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF), $tree);
 
-        if ($record) {
+        if ($record instanceof Individual) {
             return new Menu(I18N::translate('My individual record'), $record->url(), 'menu-myrecord');
         }
 

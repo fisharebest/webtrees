@@ -293,7 +293,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             });
         }
 
-        if ($format) {
+        if ($format !== '') {
             $query->where('source_media_type', '=', $format);
         }
 
