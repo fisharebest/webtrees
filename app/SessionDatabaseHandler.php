@@ -84,14 +84,14 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      */
     public function write(string $id, string $data): bool
     {
-        $ip_address   = Validator::attributes($this->request)->string('client-ip');
-        $session_time = time();
-        $user_id      = (int) Auth::id();
+        $ip_address = Validator::attributes($this->request)->string('client-ip');
+        $user_id    = (int) Auth::id();
+        $now        = Registry::timestampFactory()->now();
 
         if ($this->row === null) {
             DB::table('session')->insert([
                 'session_id'   => $id,
-                'session_time' => date('Y-m-d H:i:s', $session_time),
+                'session_time' => $now->toDateTimeString(),
                 'user_id'      => $user_id,
                 'ip_address'   => $ip_address,
                 'session_data' => $data,
@@ -112,8 +112,9 @@ class SessionDatabaseHandler implements SessionHandlerInterface
                 $updates['session_data'] = $data;
             }
 
-            if ($session_time - 60 > $this->row->session_time) {
-                $updates['session_time'] = date('Y-m-d H:i:s', $session_time);
+            // Only update session once a minute to reduce contention on the session table.
+            if ($now->subtractMinutes(1)->timestamp() > Registry::timestampFactory()->fromString($this->row->session_time)->timestamp()) {
+                $updates['session_time'] =  $now->toDateTimeString();
             }
 
             if ($updates !== []) {
