@@ -2849,17 +2849,17 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Individual\\>, Closure\\(string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Individual\\> given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/AdminService.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Media\\>, Closure\\(string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Media\\> given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Source\\>, Closure\\(string\\)\\: non\\-empty\\-array\\<int, Fisharebest\\\\Webtrees\\\\Source\\> given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/AdminService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: string, Closure\\(string\\)\\: non\\-falsy\\-string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
@@ -4214,16 +4214,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/edit-blocks-block.phtml',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/edit/change-family-members.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int\\<1, max\\> given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/edit/change-family-members.phtml',
-];
-$ignoreErrors[] = [
     'message' => '#^Unreachable statement \\- code above always terminates\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/edit/edit-gedcom-fields.phtml',
@@ -5347,6 +5337,11 @@ $ignoreErrors[] = [
     'message' => '#^Cannot call method id\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#',
     'count' => 5,
     'path' => __DIR__ . '/tests/app/Services/UserServiceTest.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$timestamp of class Fisharebest\\\\Webtrees\\\\Timestamp constructor expects int, int\\|false given\\.$#',
+    'count' => 19,
+    'path' => __DIR__ . '/tests/app/TimestampTest.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#',
