@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-03-15 12:41+0000\n"
+"PO-Revision-Date: 2024-01-15 11:36+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nn/>\n"
@@ -2569,7 +2569,7 @@ msgstr "Bern, Sveits"
 
 #: app/Elements/RelationIsDescriptor.php:96
 msgid "Best man"
-msgstr "Forlovar til brudgomen"
+msgstr "Forlovar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:111
@@ -2969,7 +2969,7 @@ msgstr "Brasil"
 
 #: app/Elements/RelationIsDescriptor.php:97
 msgid "Bridesmaid"
-msgstr "Forlovar til bruda"
+msgstr "Brurejente"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:71
