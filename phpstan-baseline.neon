@@ -431,7 +431,7 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int, string\\>\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int\\<1, max\\>, string\\>\\|false given\\.$#"
 			count: 2
 			path: app/GedcomRecord.php
 
