@@ -341,6 +341,11 @@ parameters:
 			path: app/Factories/SlugFactory.php
 
 		-
+			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
+			count: 1
+			path: app/Factories/SlugFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SourceFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/SourceFactory.php
@@ -992,7 +997,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'geonames' on mixed\\.$#"
-			count: 3
+			count: 1
 			path: app/Http/RequestHandlers/AutoCompletePlace.php
 
 		-
@@ -4122,7 +4127,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset string on mixed\\.$#"
-			count: 11
+			count: 9
 			path: app/Services/ClipboardService.php
 
 		-
@@ -4457,11 +4462,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:findByUserName\\(\\) should return Fisharebest\\\\Webtrees\\\\User\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Parameter \\#2 \\$algo of function password_hash expects int, string given\\.$#"
 			count: 1
 			path: app/Services/UserService.php
 
@@ -4992,16 +4992,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$hash of function password_needs_rehash expects string, mixed given\\.$#"
-			count: 1
-			path: app/User.php
-
-		-
-			message: "#^Parameter \\#2 \\$algo of function password_hash expects int, string given\\.$#"
-			count: 1
-			path: app/User.php
-
-		-
-			message: "#^Parameter \\#2 \\$algo of function password_needs_rehash expects int, string given\\.$#"
 			count: 1
 			path: app/User.php
 
