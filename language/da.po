@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-26 22:18+0000\n"
-"Last-Translator: stc4000 <sofie54@icloud.com>\n"
+"PO-Revision-Date: 2024-01-17 09:36+0000\n"
+"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
 "Language: da\n"
@@ -8735,7 +8735,7 @@ msgstr "Ægteskabsintention"
 #. I18N: gedcom tag MARL
 #: app/GedcomTag.php:572
 msgid "Marriage license"
-msgstr "Vielsesattest"
+msgstr "Ægteskabserklæring"
 
 #: app/GedcomTag.php:1634
 msgid "Marriage of a brother"
