@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-12-29 14:15+0000\n"
-"Last-Translator: stc4000 <sofie54@icloud.com>\n"
+"PO-Revision-Date: 2024-01-17 09:36+0000\n"
+"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
 "Language: da\n"
@@ -9145,7 +9145,7 @@ msgstr "Ægteskabsintention"
 
 #: app/Gedcom.php:464
 msgid "Marriage license"
-msgstr "Vielsesattest"
+msgstr "Ægteskabserklæring"
 
 #: app/Services/IndividualFactsService.php:463
 msgid "Marriage of a brother"
