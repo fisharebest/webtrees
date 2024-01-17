@@ -80,7 +80,7 @@ class JulianDate extends AbstractGregorianJulianDate
         }
 
         if (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
-            return - (int) $match[1];
+            return -(int) $match[1];
         }
 
         return (int) $year;

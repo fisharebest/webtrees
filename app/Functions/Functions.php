@@ -615,7 +615,7 @@ class Functions
         switch ($path) {
             case '':
                 return I18N::translate('self');
-            //  Level One relationships
+                //  Level One relationships
             case 'mot':
                 return I18N::translate('mother');
             case 'fat':
@@ -763,7 +763,7 @@ class Functions
 
                 return I18N::translate('sibling');
 
-            // Level Two relationships
+                // Level Two relationships
             case 'brochi':
                 return I18N::translateContext('brother’s child', 'nephew/niece');
             case 'brodau':
@@ -927,7 +927,7 @@ class Functions
             case 'wifson':
                 return I18N::translateContext('wife’s son', 'step-son');
 
-            // Level Three relationships
+                // Level Three relationships
             case 'brochichi':
                 if ($sex1 === 'M') {
                     return I18N::translateContext('(a man’s) brother’s child’s child', 'great-nephew/niece');
@@ -1363,7 +1363,7 @@ class Functions
             case 'wifbroson':
                 return I18N::translateContext('wife’s brother’s son', 'nephew');
 
-            // Some “special case” level four relationships that have specific names in certain languages
+                // Some “special case” level four relationships that have specific names in certain languages
             case 'fatfatbrowif':
                 return I18N::translateContext('father’s father’s brother’s wife', 'great-aunt');
             case 'fatfatsibspo':

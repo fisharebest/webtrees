@@ -543,7 +543,7 @@ class GedcomTag
                 return I18N::translate('Census place');
             case '_UPD': // Family Tree Builder uses "1 _UPD 14 APR 2012 00:14:10 GMT-5" instead of 1 CHAN/2 DATE/3 TIME
             case 'CHAN':
-            /* I18N: gedcom tag CHAN */
+                /* I18N: gedcom tag CHAN */
                 return I18N::translate('Last change');
             case 'CHAN:DATE':
                 /* I18N: gedcom tag CHAN:DATE */
@@ -868,7 +868,7 @@ class GedcomTag
                 return I18N::translate('Phone');
             case '_PLACE': // Family Tree Builder uses OBJE:_PLACE
             case 'PLAC':
-            /* I18N: gedcom tag PLAC */
+                /* I18N: gedcom tag PLAC */
                 return I18N::translate('Place');
             case 'PLAC:FONE':
                 return I18N::translate('Phonetic place');
