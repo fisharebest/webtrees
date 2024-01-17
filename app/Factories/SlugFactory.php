@@ -41,7 +41,7 @@ class SlugFactory implements SlugFactoryInterface
         if (extension_loaded('intl')) {
             $ids = Transliterator::listIDs();
 
-            if (in_array('Any-Latin', $ids, true) && in_array('Latin-ASCII', $ids, true)) {
+            if ($ids !== false && in_array('Any-Latin', $ids, true) && in_array('Latin-ASCII', $ids, true)) {
                 $this->transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
             }
         }
