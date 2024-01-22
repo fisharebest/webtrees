@@ -169,7 +169,8 @@ class HtmlRenderer extends AbstractRenderer
         //-- header divider
         echo '</style>', PHP_EOL;
         echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->header_margin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
-        echo '<div id="headerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;">';
+        echo '<div id="headerdiv" style="position: relative; top: auto; width: ',
+                $this->noMarginWidth, 'pt;margin-bottom:10pt;text-align:center;">';
         foreach ($this->headerElements as $element) {
             if ($element instanceof ReportBaseElement) {
                 $element->render($this);
@@ -196,9 +197,14 @@ class HtmlRenderer extends AbstractRenderer
         }
         //-- footer
         echo '</div>';
-        echo '<script>document.getElementById("bodydiv").style.height="', $this->maxY, 'pt";</script>';
-        echo '<div id="bottommargin" style="position: relative; top: auto; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
-        echo '<div id="footerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;height:auto;">';
+        //echo '<script>document.getElementById("bodydiv").style.height="', $this->maxY, 'pt";</script>';
+        if ($this->Y < 200) { //heuristic guess!
+            echo '<div id="bottommargin" style="position: relative; top: auto; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+            echo '<div id="footerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;height:auto;">';
+        } else {
+            echo '<div id="bottommargin" style="position: relative; top: '.$this->Y.'pt; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+            echo '<div id="footerdiv" style="position: relative; top: '.$this->Y.'pt; width: ', $this->noMarginWidth, 'pt;height:auto;">';
+        }
         $this->Y    = 0;
         $this->X    = 0;
         $this->maxY = 0;
@@ -212,7 +218,11 @@ class HtmlRenderer extends AbstractRenderer
             }
         }
         echo '</div>';
-        echo '<script>document.getElementById("footerdiv").style.height="', $this->maxY, 'pt";</script>';
+        if ($this->show_generated_by) {
+            echo '<script>document.getElementsByClassName("genby")[0].style.height="15pt";';
+            echo 'document.getElementsByClassName("date")[0].style.top="15pt";';
+            echo '</script>';
+        }
         echo '<div id="footermargin" style="position: relative; top: auto; height: ', $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
     }
 
@@ -524,7 +534,9 @@ class HtmlRenderer extends AbstractRenderer
     {
         $style = $this->getStyle($this->currentStyle);
 
-        return mb_strlen($text) * $style['size'] / 2;
+        // &#x..; is counted as 6 chars, not one. Many such chars will force too early line breaks
+        $txt2 = str_replace(['&#xA0;', '&#x2570;', '&nbsp;', '&mdash;'], ["#", "#", "#", "#"], $text);
+        return mb_strlen($txt2) * ($style['size'] / 2);
     }
 
     /**
@@ -715,10 +727,12 @@ class HtmlRenderer extends AbstractRenderer
             "\n",
             '> ',
             ' <',
+            "\xA0",
         ], [
             '<br>',
             '>&nbsp;',
             '&nbsp;<',
+            '&nbsp;',
         ], $htmlcode);
         echo $htmlcode;
     }

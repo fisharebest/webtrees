@@ -346,6 +346,7 @@ class Gedcom
         '_MBON',
         '_NMR',
         '_SEPR',
+	'_SP_DEAT',  // only used internally, not exported to a gedcom file
     ];
 
     public const CUSTOM_INDIVIDUAL_TAGS = [
@@ -756,6 +757,7 @@ class Gedcom
             'INDI:SUBM'                  => new XrefSubmitter(I18N::translate('Submitter')),
             'INDI:TITL'                  => new NobilityTypeTitle(I18N::translate('Title')),
             'INDI:WILL'                  => new Will(I18N::translate('Will')),
+            'INDI:_SP_DEAT'              => new Death(I18N::translate('Death of spouse')),
             'NOTE'                       => new NoteRecord(I18N::translate('Shared note')),
             'NOTE:CHAN'                  => new Change(I18N::translate('Last change')),
             'NOTE:CHAN:DATE'             => new ChangeDate(I18N::translate('Date of last change')),

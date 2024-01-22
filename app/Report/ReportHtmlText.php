@@ -97,7 +97,10 @@ class ReportHtmlText extends ReportBaseText
      */
     public function getHeight($renderer): float
     {
-        $ct = substr_count($this->text, "\n");
+        $txt2 = $this->text;
+        if (substr($txt2, -1) == "\n")
+            $txt2 = substr($txt2, 0, -1);
+        $ct = substr_count($txt2, "\n");
         if ($ct > 0) {
             $ct += 1;
         }

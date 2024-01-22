@@ -42,6 +42,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
      */
     public function render($renderer): void
     {
+        static $lastBoxYfinal;
         $newelements      = [];
         $lastelement      = '';
         $footnote_element = [];
@@ -93,6 +94,10 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 }
             } else {
                 if (!empty($lastelement)) {
+                    if ($element instanceof ReportBaseImage) {
+                        $imgH = $element->getHeight();
+                    } else $imgH = 0;
+                    $cX = $renderer->tcpdf->GetX();
                     $newelements[] = $lastelement;
                     $lastelement   = [];
                 }
@@ -130,12 +135,25 @@ class ReportPdfTextBox extends ReportBaseTextbox
         }
 
         // If current position (top)
+        $align_Y = false;
+        $curr_P = $renderer->tcpdf->getPage();
+        if ($this->top < -95000) { // 90000: only html; 100000: both pdf and html
+            $align_Y = true;
+        }
+        if ($this->top < -200000)   // pos="abs"
+            $this->top += 222000;
+        else
+            $this->top = ReportBaseElement::CURRENT_POSITION;
         if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $cY = $renderer->tcpdf->GetY();
+            //-- check for space after the last picture
+            if ($align_Y && ($cY < $lastBoxYfinal) )
+                $cY = $lastBoxYfinal;
         } else {
             $cY = $this->top;
             $renderer->tcpdf->setY($cY);
         }
+        $start_Y = $renderer->tcpdf->GetY();
 
         // Check the width if set to page wide OR set by xml to larger then page width (margin)
         if ($this->width === 0.0 || $this->width > $renderer->getRemainingWidthPDF()) {
@@ -222,7 +240,11 @@ class ReportPdfTextBox extends ReportBaseTextbox
         if ($cH < $renderer->lastCellHeight) {
             $cH = $renderer->lastCellHeight;
         }
+        if ($cH < $this->height) {
+            $cH = $this->height;
+        }
         // Add a new page if needed
+        $cPN = $renderer->tcpdf->getPage();
         if ($this->pagecheck) {
             // Reset last cell height or Header/Footer will inherit it, in case of pagebreak
             $renderer->lastCellHeight = 0;
@@ -230,6 +252,8 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 $cY = $renderer->tcpdf->GetY();
             }
         }
+        $curr_P = $renderer->tcpdf->getPage();
+        $min_Y = $cY + $cH;
 
         // Setup the border and background color
         $cS = ''; // Class Style
@@ -293,11 +317,17 @@ class ReportPdfTextBox extends ReportBaseTextbox
         }
         // Save the current page number
         $cPN = $renderer->tcpdf->getPage();
+        $start_P = $cPN;
 
         // Render the elements (write text, print picture...)
         foreach ($this->elements as $element) {
             if ($element instanceof ReportBaseElement) {
+                $cPT = $renderer->tcpdf->getPage();
+                $cMT = $renderer->tcpdf->getMargins();
                 $element->render($renderer);
+                // If tcpdf has added a new page the left margin must be restored
+                if ($cPT != $renderer->tcpdf->getPage())
+                	$renderer->tcpdf->setLeftMargin($cMT['left']);
             } elseif ($element === 'footnotetexts') {
                 $renderer->footnotes();
             } elseif ($element === 'addpage') {
@@ -309,6 +339,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
         $renderer->tcpdf->setRightMargin($cM['right']);
 
         // This will be mostly used to trick the multiple images last height
+
         if ($this->reseth) {
             $cH = 0;
             // This can only happen with multiple images and with pagebreak
@@ -316,14 +347,22 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 $renderer->tcpdf->setPage($cPN);
             }
         }
+        $curr_Y = $renderer->tcpdf->GetY();
+        $curr_P = $renderer->tcpdf->getPage();
         // New line and some clean up
         if (!$this->newline) {
-            $renderer->tcpdf->setXY($cX + $cW, $cY);
+            $renderer->tcpdf->setXY($cX + $cW, $cY);   // $curr_Y);
             $renderer->lastCellHeight = $cH;
         } else {
             // addMarginX() also updates X
             $renderer->addMarginX(0);
-            $renderer->tcpdf->setY($cY + $cH);
+            //$renderer->tcpdf->setY($cY + $cH);
+            if ($align_Y && ($curr_Y < $min_Y) && ($curr_P == $start_P)) {
+                $renderer->tcpdf->setY($min_Y);
+            } else {
+                // 15 is good enough, should be a more general value ($cH is too large!)
+                $renderer->tcpdf->setY($curr_Y + ($cH>15?15:$cH));
+            }
             $renderer->lastCellHeight = 0;
         }
     }
