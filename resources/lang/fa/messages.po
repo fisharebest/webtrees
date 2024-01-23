@@ -2,9 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/webtrees/fa/>\n"
+"PO-Revision-Date: 2024-01-24 16:36+0000\n"
+"Last-Translator: jsh649 <jsh649@gmail.com>\n"
+"Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " اما جزئیات نامشخص است"
+msgstr " اما جزئیات مشخص نیست"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -287,7 +288,7 @@ msgstr[1] "%s نفر(نفرات) بروز شد."
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s پیام"
-msgstr[1] "%s پیام(ها)"
+msgstr[1] "%s پیام"
 
 #: app/Age.php:96 app/Elements/AgeAtEvent.php:101
 #: app/Statistics/Repository/FamilyRepository.php:359
@@ -381,7 +382,7 @@ msgstr "%s دو نسل فاصله"
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s هفته"
-msgstr[1] "%s هفته(هفته ها)"
+msgstr[1] "%s هفته"
 
 #: app/Age.php:92 app/Elements/AgeAtEvent.php:100
 #: app/Statistics/Repository/FamilyRepository.php:364
@@ -393,7 +394,7 @@ msgstr[1] "%s هفته(هفته ها)"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s سال"
-msgstr[1] "%s سال(سال ها)"
+msgstr[1] "%sسال"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:159
 #: resources/views/modules/yahrzeit/list.phtml:47
@@ -500,7 +501,7 @@ msgstr "(سن %s)"
 #: resources/views/fact-date.phtml:103
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s سالگی)"
+msgstr "(%s سن)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:165
@@ -1979,7 +1980,7 @@ msgstr "آنتیگوا و باربودا"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
-msgstr "هر کسی که یک حساب کاربری داشته باشد می تواند به این وب سایت دسترسی داشته باشد."
+msgstr "هر کس با داشتن حساب کاربری می تواند به این وب سایت دسترسی داشته باشد."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59
@@ -2505,7 +2506,7 @@ msgstr "غسل تعمید یک پسر"
 
 #: app/Gedcom.php:593 resources/xml/reports/missing_facts_report.xml:17
 msgid "Bar mitzvah"
-msgstr "Bar mitzvah"
+msgstr "بار میتزوه"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:107
@@ -2518,7 +2519,7 @@ msgstr "بر اساس تگ GEDCOM"
 
 #: app/Gedcom.php:596 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
-msgstr "Bat mitzvah"
+msgstr "بت میتزوه"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:73
@@ -2762,7 +2763,7 @@ msgstr "نام تولد"
 
 #: app/Services/IndividualFactsService.php:217
 msgid "Birth of a brother"
-msgstr "تولد برادر"
+msgstr "تولد یک برادر"
 
 #: app/Module/PlacesModule.php:222 app/Services/IndividualFactsService.php:196
 #: resources/views/admin/trees-preferences.phtml:435
@@ -2810,7 +2811,7 @@ msgstr "تولد نوه پسری(پسر)"
 
 #: app/Services/IndividualFactsService.php:240
 msgid "Birth of a half-brother"
-msgstr "تولد برادر ناتنی"
+msgstr "تولد یک برادر ناتنی"
 
 #: app/Services/IndividualFactsService.php:242
 msgid "Birth of a half-sibling"
@@ -2980,7 +2981,7 @@ msgstr "بریزبن، استرالیا"
 
 #: app/CustomTags/BrothersKeeper.php:94
 msgid "Brit milah"
-msgstr "Brit milah"
+msgstr "بریت میلا"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:255
@@ -3211,7 +3212,7 @@ msgstr "به صورت پیش فرض SMTP با استفاده از پورت 25 ک
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
 #: app/Module/CkeditorModule.php:43
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:83
@@ -4282,7 +4283,7 @@ msgstr "کوبا"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "کوراسائو"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -5043,7 +5044,7 @@ msgstr "درجه"
 #: resources/xml/reports/relative_ext_report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "دژاوو"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:261
 #: app/Module/FixPrimaryTag.php:114 resources/views/admin/locations.phtml:52
@@ -5707,7 +5708,7 @@ msgstr "ثبت یادداشت اختیاری در مورد این علاقه م�
 #: app/Services/LeafletJsService.php:75
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "ورود به حالت تمام صفحه"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5760,7 +5761,7 @@ msgstr "اسفند"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/CustomTags/BrothersKeeper.php:77
 msgid "Estate name"
@@ -5799,7 +5800,7 @@ msgstr "رویداد"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:74
 msgid "Event did not occur"
-msgstr ""
+msgstr "رویداد رخ نداد"
 
 #: app/Gedcom.php:834 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5851,7 +5852,7 @@ msgstr "بجز این تفویض"
 #: app/Services/LeafletJsService.php:76
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "خروج از حالت تمام صفحه"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5912,7 +5913,7 @@ msgstr "رنگ چشم"
 #. I18N: Name of a theme.
 #: app/Module/FabTheme.php:39
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:72
@@ -6119,7 +6120,7 @@ msgstr "سرشماری خانواده"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "واقعیت خانوادگی"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
@@ -6376,19 +6377,19 @@ msgstr "زنان"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "فیلد"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "نام فیلد"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "مقدار فیلد"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6829,7 +6830,7 @@ msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -6857,12 +6858,12 @@ msgstr "برچسب های GEDCOM"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:57
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/CustomTags/GedcomL.php:113 app/CustomTags/GedcomL.php:167
@@ -6964,7 +6965,7 @@ msgstr "نسل های نوادگان"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:46
 msgid "GeoNames"
-msgstr ""
+msgstr "نام های جغرافیایی"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7089,11 +7090,11 @@ msgstr "پسرخوانده"
 
 #: app/Module/GoogleAnalyticsModule.php:48
 msgid "Google™ analytics"
-msgstr "Google™ analytics"
+msgstr "تجزیه و تحلیل گوگل"
 
 #: app/Module/GoogleMaps.php:86 app/Module/MapLinkGoogle.php:41
 msgid "Google™ maps"
-msgstr ""
+msgstr "نقشه گوگل"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
@@ -7342,7 +7343,7 @@ msgstr "هلسینکی، فنلاند"
 #: resources/xml/reports/relative_ext_report.xml:10
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "هلوتیکا"
 
 #: resources/xml/reports/ahnentafel_report.xml:197
 msgid "Her occupation was"
@@ -7431,7 +7432,7 @@ msgstr "رابطه سلسله مراتبی"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Highlighted image"
-msgstr "تصویر هایلایت شده"
+msgstr "تصویر برجسته شده"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Factories/CalendarDateFactory.php:154
@@ -7655,7 +7656,9 @@ msgstr "اگر حساب کاربری درخواست نکردید، فقط می �
 
 #: resources/views/modals/media-file-fields.phtml:75
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "اگر تعداد فایل های رسانه ای زیادی دارید، می توانید آنها را در پوشه ها و زیر پوشه ها سازماندهی کنید."
+msgstr ""
+"اگر تعداد فایل های رسانه ای زیادی دارید، می توانید آنها را در پوشه ها و زیر "
+"پوشه ها سازماندهی کنید."
 
 #: resources/views/admin/trees-import.phtml:99
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -8500,7 +8503,7 @@ msgstr "آخرین تغییر"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "آخرین بررسی %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
@@ -9002,7 +9005,7 @@ msgstr "ارائه دهندگان نقشه"
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:96
 msgid "Mapbox"
-msgstr ""
+msgstr "مپ باکس"
 
 #: app/Date/AbstractGregorianJulianDate.php:233
 msgctxt "Abbreviation for March"
@@ -10297,7 +10300,7 @@ msgstr "وقایعی برای این خانواده در دسترس نیست."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "هیچ فایلی دریافت نشد."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:50
@@ -10370,7 +10373,7 @@ msgstr "شبانه"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "برای مثال"
 
 #: resources/views/admin/gedcom-export-options.phtml:104
 #: resources/xml/reports/cemetery_report.xml:7
@@ -10769,11 +10772,11 @@ msgstr "اوه! وبسایت قادر به ایجاد فایل در این پو�
 #: app/Module/MapGeoLocationOpenRouteService.php:45
 #: app/Module/OpenRouteServiceAutocomplete.php:82
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:51
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:152
@@ -11139,7 +11142,7 @@ msgstr "عکس"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "فتوگرافی"
 
 #: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:78
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:88
@@ -12283,12 +12286,12 @@ msgstr "نسخه SQLite %s نصب شده است. نسخه SQLite %s یا جدی�
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:211
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12326,7 +12329,7 @@ msgstr "مریم گلی"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr ""
+msgstr "سنت بارتلمی"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -13576,7 +13579,7 @@ msgstr "مرتب سازی زمان"
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
 msgid "Sosa"
-msgstr ""
+msgstr "سوسا"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:20
 msgid "Sosa-Stradonitz number"
@@ -13770,7 +13773,7 @@ msgstr "ابتدای بازه تغییر تاریخ"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #: app/CustomTags/GedcomL.php:232 app/CustomTags/PersonalAncestralFile.php:72
 #: app/Gedcom.php:407 app/Gedcom.php:520 app/Gedcom.php:540 app/Gedcom.php:811
@@ -14037,7 +14040,7 @@ msgstr "پیشوند جدول"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "تبلوید"
 
 #: app/Http/RequestHandlers/ModulesTabsPage.php:43
 #: resources/views/admin/control-panel.phtml:729
@@ -14112,7 +14115,7 @@ msgstr "تگوکیگالپا ، هندوراس"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "قالب"
 
 #: resources/views/modules/html/config.phtml:29
 msgid "Templates"
@@ -14505,6 +14508,8 @@ msgstr "از کاربر جدید خواسته می شود قبل از ایجاد
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"نسخه بعدی استاندارد GEDCOM تگ های جدید اضافه می کند و برچسب های قدیمی را حذف "
+"می کند. اکنون می توانید از برخی از برچسب های جدید استفاده کنید."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
@@ -14778,7 +14783,7 @@ msgstr[1] "تغییری در %s روز گذشته وجود نداشته است."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "هنگام بررسی نسخه جدید خطایی روی داد."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -15205,7 +15210,7 @@ msgstr "محدودیت حافظه این سرور %s مگابایت و محدو�
 #: app/Module/BingMaps.php:115 app/Module/GoogleMaps.php:115
 #: app/Module/HereMaps.php:74 app/Module/MapBox.php:74
 msgid "This service requires an API key."
-msgstr ""
+msgstr "این سرویس به یک کلید API نیاز دارد."
 
 #: app/Auth.php:496 app/Http/RequestHandlers/RedirectSourcePhp.php:69
 msgid "This source does not exist or you do not have permission to view it."
@@ -15494,7 +15499,7 @@ msgstr "توکیو ژاپن"
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:95
 msgid "Tombstone"
-msgstr ""
+msgstr "سنگ قبر"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
@@ -15821,7 +15826,7 @@ msgstr "نوع وظیفه پژوهشی"
 #: resources/views/modules/share-url/share.phtml:12
 #: resources/views/modules/sitemap/config.phtml:47
 msgid "URL"
-msgstr ""
+msgstr "آدرس لینک"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
@@ -16523,12 +16528,12 @@ msgstr "جهان"
 #: app/CustomTags/BrothersKeeper.php:111
 #: resources/views/modules/yahrzeit/table.phtml:36
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Yahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:67
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Module/CalendarMenuModule.php:117 resources/views/calendar-page.phtml:78
 msgid "Year"
@@ -16743,7 +16748,7 @@ msgstr "وب سرور شما از نسخه PHP %s استفاده می کند ک�
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:544
@@ -17080,7 +17085,7 @@ msgstr "تغییر نام"
 #: resources/views/admin/control-panel.phtml:194
 #: resources/views/admin/control-panel.phtml:215
 msgid "check now"
-msgstr ""
+msgstr "اکنون بررسی کنید"
 
 #: app/Elements/AgeAtEvent.php:90 app/Elements/RoleInEvent.php:78
 #: app/Services/RelationshipService.php:430
@@ -20796,7 +20801,7 @@ msgstr "متولد شد"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr ""
+msgstr "وبتریز"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
@@ -20830,7 +20835,7 @@ msgstr "زن"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr ""
+msgstr "زنیا"
 
 #: resources/views/modules/timeline-chart/chart.phtml:145
 msgid "years"
@@ -20897,7 +20902,7 @@ msgstr "خواهر کوچکتر"
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:239
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:241
-#, fuzzy, php-format
+#, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s سال"
@@ -20941,7 +20946,7 @@ msgstr "…"
 #: app/Module/IndividualListModule.php:504
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:363
 #: app/Family.php:381 app/Individual.php:1050
@@ -20954,7 +20959,7 @@ msgstr ""
 #: resources/views/lists/surnames-table.phtml:66
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid " per gender"
 #~ msgstr " به ازای جنسیت"
