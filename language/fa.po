@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-01-24 16:36+0000\n"
+"Last-Translator: jsh649 <jsh649@gmail.com>\n"
 "Language-Team: Persian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fa/>\n"
 "Language: fa\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " اما جزئیات نامشخص است"
+msgstr " اما جزئیات مشخص نیست"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -72,9 +72,9 @@ msgstr "%1$s %2$s %3$s لینک به %4$s دارد"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s بار صعودی حذف شد"
+msgstr "%1$s %2$s نسل فاصله"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
@@ -342,7 +342,7 @@ msgstr "%s در این سرور غیرفعال است. شما نمیتوانید
 msgid "%s message"
 msgid_plural "%s messages"
 msgstr[0] "%s پیام"
-msgstr[1] "%s پیام(ها)"
+msgstr[1] "%s پیام"
 
 #: app/I18N.php:810
 #, php-format
@@ -443,7 +443,7 @@ msgstr "%s دوبار بصورت نزولی حذف میشوند"
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s هفته"
-msgstr[1] "%s هفته(هفته ها)"
+msgstr[1] "%s هفته"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:300
 #: app/Module/RelativesTabModule.php:83
@@ -451,7 +451,7 @@ msgstr[1] "%s هفته(هفته ها)"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s سال"
-msgstr[1] "%s سال(سال ها)"
+msgstr[1] "%sسال"
 
 #: app/I18N.php:794
 #, php-format
@@ -559,7 +559,7 @@ msgstr ""
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s سالگی)"
+msgstr "(%s سن)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -1005,7 +1005,7 @@ msgstr ""
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "نوار کناری که خانواده و بستگان نزدیک یک فرد را نشان می دهد."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
@@ -1540,7 +1540,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodePedi.php:57
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "به فرزند خواندگی پذیرفته شده"
 
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
@@ -1694,7 +1694,7 @@ msgstr "جستجوی پیشرفته"
 #. I18N: Name of a country or state
 #: app/Stats.php:6672
 msgid "Afghanistan"
-msgstr ""
+msgstr "افغانستان"
 
 #: statistics.php:697
 msgid "Africa"
@@ -1842,7 +1842,7 @@ msgstr ""
 
 #: login.php:415
 msgid "All fields must be completed."
-msgstr ""
+msgstr "همه فیلدها باید پر شوند."
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
@@ -2058,7 +2058,7 @@ msgstr ""
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "هر کس با داشتن حساب کاربری می تواند به این وب سایت دسترسی داشته باشد."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2193,7 +2193,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6680
@@ -2308,7 +2308,7 @@ msgstr "آگوست"
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
 msgid "Australia"
-msgstr ""
+msgstr "استرالیا"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
@@ -2557,7 +2557,7 @@ msgstr ""
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
 msgid "Bar mitzvah"
-msgstr ""
+msgstr "بار میتزوه"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6705
@@ -2567,7 +2567,7 @@ msgstr ""
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
 msgid "Bat mitzvah"
-msgstr ""
+msgstr "بت میتزوه"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
@@ -2810,7 +2810,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a brother"
-msgstr ""
+msgstr "تولد یک برادر"
 
 #: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a child"
@@ -2854,7 +2854,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "تولد یک برادر ناتنی"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
@@ -3023,7 +3023,7 @@ msgstr ""
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1088
 msgid "Brit milah"
-msgstr ""
+msgstr "بریت میلا"
 
 #: app/GedcomTag.php:1782
 msgid "Brit milah of a brother"
@@ -3294,7 +3294,7 @@ msgstr ""
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
@@ -3826,7 +3826,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Cochabamba, Bolivia"
-msgstr ""
+msgstr "کوچابامبا، بولیوی"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
@@ -4355,7 +4355,7 @@ msgstr ""
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:390 app/GedcomTag.php:342
 msgid "Data"
-msgstr ""
+msgstr "داده"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:181
@@ -4967,7 +4967,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "دژاوو"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_config.php:572 admin_trees_manage.php:418
@@ -5832,7 +5832,7 @@ msgstr ""
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:172
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
@@ -6008,7 +6008,7 @@ msgstr "کتاب اقوام %s"
 #. I18N: gedcom tag FAMF
 #: app/GedcomTag.php:452
 msgid "Family file"
-msgstr ""
+msgstr "فایل خانواده"
 
 #: family.php:104
 msgid "Family group information"
@@ -6318,7 +6318,7 @@ msgstr ""
 #: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
-msgstr ""
+msgstr "یافتن منبع"
 
 #: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
@@ -6784,13 +6784,13 @@ msgstr "جرمینال"
 #: app/Date/FrenchDate.php:127
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr "جرمینال"
+msgstr "ژرمینال"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr "جرمینال"
+msgstr "ژرمینال"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
@@ -7115,7 +7115,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "هلوتیکا"
 
 #: modules_v3/ahnentafel_report/report.xml:196
 msgid "Her occupation was"
@@ -7164,7 +7164,7 @@ msgstr "بیشترین نفوس"
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr ""
+msgstr "تصویر برجسته شده"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
@@ -7364,6 +7364,8 @@ msgstr ""
 #: addmedia.php:545 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
 msgstr ""
+"اگر تعداد فایل های رسانه ای زیادی دارید، می توانید آنها را در پوشه ها و زیر "
+"پوشه ها سازماندهی کنید."
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -8403,7 +8405,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Louisville, Kentucky, United States"
-msgstr ""
+msgstr "لوئیزویل، کنتاکی، ایالات متحده"
 
 #: app/Stats.php:1738
 msgid "Lowest population"
@@ -9600,7 +9602,7 @@ msgstr ""
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:614
 msgid "Nationality"
-msgstr ""
+msgstr "ملیت"
 
 #. I18N: gedcom tag NATU
 #: app/GedcomTag.php:618
@@ -9620,7 +9622,7 @@ msgstr ""
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "Nauvoo (original), Illinois, United States"
-msgstr ""
+msgstr "ناوو (اصلی)، ایلینوی، ایالات متحده"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
@@ -9661,7 +9663,7 @@ msgstr ""
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
-msgstr ""
+msgstr "نیویورک، نیویورک، ایالات متحده آمریکا"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -9860,7 +9862,8 @@ msgstr "هیچ رخدادی برای فردا برای افرادی که در ق
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
+msgstr[0] "هیچ رویدادی برای افراد زنده برای %s روز آینده وجود ندارد."
+msgstr[1] "هیچ رویدادی برای افراد زنده برای %s روز آینده وجود ندارد."
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
@@ -10293,7 +10296,7 @@ msgstr "اوه! وبسایت قادر به ایجاد فایل در این پو�
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:373
 msgid "Optional prefixes and suffixes"
@@ -10390,7 +10393,7 @@ msgstr "نمودارهای شخصی"
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
-msgstr ""
+msgstr "مالک"
 
 #: app/GedcomCode/GedcomCodeRela.php:210
 msgctxt "FEMALE"
@@ -11366,7 +11369,7 @@ msgstr "رکورد"
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
 msgid "Record ID number"
-msgstr ""
+msgstr "شناسه رکورد"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
@@ -11842,7 +11845,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6879
 msgid "San Marino"
-msgstr ""
+msgstr "سن مارینو"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
@@ -12474,7 +12477,7 @@ msgstr "نمایش تمام تگ‌ها"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr "نشانگر سن نمایش داده شود"
+msgstr "نمایش نشانگر سن"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12719,7 +12722,7 @@ msgstr ""
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "نمایش فهرست نام های خانوادگی"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -13018,7 +13021,7 @@ msgstr ""
 #: app/Controller/BranchesController.php:250
 #: app/Functions/FunctionsPrintLists.php:285
 msgid "Sosa"
-msgstr ""
+msgstr "سوسا"
 
 #: search_advanced.php:160 search_advanced.php:222 search_advanced.php:237
 #: search_advanced.php:258 search_advanced.php:273
@@ -14893,7 +14896,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1938
 msgid "Tombstone"
-msgstr ""
+msgstr "سنگ قبر"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6900
@@ -15174,7 +15177,7 @@ msgstr ""
 #: admin_trees_manage.php:661 app/GedcomTag.php:852 app/GedcomTag.php:868
 #: app/GedcomTag.php:1755
 msgid "URL"
-msgstr ""
+msgstr "آدرس لینک"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6909
@@ -15957,12 +15960,12 @@ msgstr "تنظیمات شناسه"
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/GedcomTag.php:1769
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Yahrzeit"
 
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:203 search.php:248
 msgid "Year"
@@ -20109,7 +20112,7 @@ msgstr ""
 
 #: app/Theme/WebtreesTheme.php:133
 msgid "webtrees"
-msgstr ""
+msgstr "وبتریز"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:110
@@ -20164,7 +20167,7 @@ msgstr "زوجه"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr ""
+msgstr "زنیا"
 
 #: timeline.php:130
 msgid "years"
@@ -20206,7 +20209,7 @@ msgstr ""
 
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:169 search_advanced.php:170 search_advanced.php:171
-#, fuzzy, php-format
+#, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s سال"
@@ -20239,7 +20242,7 @@ msgstr "…"
 #: indilist.php:230
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
@@ -20248,7 +20251,7 @@ msgstr ""
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #, fuzzy
 #~ msgid "Automatically add unique identifiers"
