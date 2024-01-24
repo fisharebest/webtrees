@@ -24,6 +24,7 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
@@ -54,6 +55,7 @@ use function redirect;
 use function response;
 use function route;
 use function usort;
+use function var_dump;
 use function view;
 
 use const PHP_INT_MAX;
@@ -152,9 +154,14 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
         $xrefs = Validator::queryParams($request)->string('xrefs', '');
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
 
-        // URLs created by webtrees 2.0 and earlier used an array.
         if ($xrefs === '') {
-            $xrefs = Validator::queryParams($request)->array('xrefs');
+            try {
+                // URLs created by webtrees 2.0 and earlier used an array.
+                $xrefs = Validator::queryParams($request)->array('xrefs');
+            } catch (HttpBadRequestException) {
+                // Not a 2.0 request, just an empty parameter.
+                $xrefs = [];
+            }
         } else {
             $xrefs = explode(self::SEPARATOR, $xrefs);
         }
