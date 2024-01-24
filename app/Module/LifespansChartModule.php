@@ -55,7 +55,6 @@ use function redirect;
 use function response;
 use function route;
 use function usort;
-use function var_dump;
 use function view;
 
 use const PHP_INT_MAX;
