@@ -157,7 +157,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             try {
                 // URLs created by webtrees 2.0 and earlier used an array.
                 $xrefs = Validator::queryParams($request)->array('xrefs');
-            } catch (HttpBadRequestException) {
+            } catch (HttpBadRequestException $ex) {
                 // Not a 2.0 request, just an empty parameter.
                 $xrefs = [];
             }
