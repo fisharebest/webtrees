@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-08-15 20:31+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-01-26 21:36+0000\n"
+"Last-Translator: Seved Torstendahl <sevedt@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
 "Language: sv\n"
@@ -7259,7 +7259,7 @@ msgstr "Han begravdes"
 
 #: resources/xml/reports/ahnentafel_report.xml:167
 msgid "He was christened"
-msgstr "Han var kristnad"
+msgstr "Han döptes"
 
 #: resources/xml/reports/ahnentafel_report.xml:313
 msgid "He was cremated"
@@ -12958,7 +12958,7 @@ msgstr "Hon begravdes"
 
 #: resources/xml/reports/ahnentafel_report.xml:168
 msgid "She was christened"
-msgstr "Hon var kristnad"
+msgstr "Hon döptes"
 
 #: resources/xml/reports/ahnentafel_report.xml:314
 msgid "She was cremated"
@@ -13009,7 +13009,7 @@ msgstr "Visa"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:278
 msgid "Show a download link in the media viewer"
-msgstr "Visa nedladdninglänken i mediavisaren"
+msgstr "Visa nedladdningslänken i mediavisaren"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:76
