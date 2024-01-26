@@ -640,7 +640,6 @@ class ReportParserGenerate extends ReportParserBase
         if (isset($attrs['url'])) {
             $url = $attrs['url'];
             $this->current_element->setUrl($url);
-            error_log("RPG ".__LINE__." seturl=".$url."\n",3,"url.log");
         } else {
             $url = "";
         }
@@ -2736,7 +2735,8 @@ class ReportParserGenerate extends ReportParserBase
                 $genCounter = 1;
                 while (count($newarray) < count($this->list)) {
                     foreach ($this->list as $key => $value) {
-                        if ($value->generation < 0) { // indication of husband or wife
+                        if ($value->generation < 0) {
+                            // indication of husband or wife
                             $this->generation = -$value->generation;
                         }
                         else {
