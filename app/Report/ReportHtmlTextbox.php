@@ -137,12 +137,15 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // If current position (top)
         $align_Y = false;
         $topstr = "";
-        if ($this->top < -110000) // pos='abs'
-            $this->top += 222000; 
+        if ($this->top < -110000) { // pos='abs'
+            $this->top += 222000;
+        }
         if ($this->top < -10000) { // <= -100000: both pdf and html; -100000 -- -90000: only html
             $this->top += 90000;  //= ReportBaseElement::CURRENT_POSITION;
-            if ($this->top < -9000) $this->top += 10000; 
-            $topstr = "top:".$this->top."pt;";
+            if ($this->top < -9000) {
+                $this->top += 10000;
+            }
+            $topstr = "top:" . $this->top . "pt;";
             $align_Y = true;
         }
         if ($this->top === ReportBaseElement::CURRENT_POSITION) {
@@ -239,11 +242,12 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         $renderer->addMaxY($this->top + $cH);
 
         // Start to print HTML
-        if (!$align_Y)
+        if (!$align_Y) {
             echo '<div style="position:absolute;top:', $this->top, 'pt;';
-        else
+        } else {
             echo '<div style="position:relative;top:', $this->top, 'pt;';
-            //echo '<div style="position:relative;';
+        }
+        //echo '<div style="position:relative;';
         // LTR (left) or RTL (right)
         echo $renderer->alignRTL, ':', $cX, 'pt;';
         // Background color
@@ -258,15 +262,17 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // Border setup
         if ($this->border) {
             echo ' border:solid black 1pt;';
-            if (!$align_Y)
+            if (!$align_Y) {
                 echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:', $cH - 1, 'pt;';
-            else
-                echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:auto;'; // height:',$this->height,'pt;'; //,$topstr;
+            } else {
+                echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:auto;';
+            } // height:',$this->height,'pt;'; //,$topstr;
         } else {
-            if (!$align_Y)
+            if (!$align_Y) {
                 echo 'width:', $this->width - $cP * 2, 'pt;height:', $cH, 'pt;';
-            else
-                echo 'width:', $this->width - $cP * 2, 'pt;height:auto;'; //height:',$this->height,'pt;'; //,$topstr;
+            } else {
+                echo 'width:', $this->width - $cP * 2, 'pt;height:auto;';
+            } //height:',$this->height,'pt;'; //,$topstr;
         }
         echo '">';
 

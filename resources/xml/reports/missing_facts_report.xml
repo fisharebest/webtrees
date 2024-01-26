@@ -46,6 +46,9 @@
 	<SetVar name="nrprinted" value="0" />
 	<SetVar name="nrevent" value="0" />
 	<SetVar name="nrmissingevent" value="0" />
+        <SetVar name="dump" value="dval" />
+        <SetVar name="dval" value="25" />
+	<SetVar name="urlbase" value="@base_url"/>
 
 	<Doc pageSize="$pageSize">
 		<Header>
@@ -67,15 +70,18 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				<!-- Relatives counter -->
 				<SetVar name="nrrelatives" value="$nrrelatives + 1" />
 				<SetVar name="printname" value="0" />
+				<SetVar name="id" value="@ID"/>
 				<!-- Birth -->
 				<if condition="$fbirt=='on'">
 					<!-- Total Event Counter -->
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<if condition="@BIRT:DATE==''">
+                                                                <SetVar name="xx" value="@$dump" dumpvar="id"/>
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of birth')" /></Cell>
@@ -87,7 +93,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of birth')" /></Cell>
@@ -102,7 +109,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -123,7 +131,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of baptism')" /></Cell>
@@ -134,7 +143,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of baptism')" /></Cell>
@@ -147,7 +157,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								        <SetVar name="url" value="$urlbase/individual/$id" />
+								        <Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -164,7 +175,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of christening')" /></Cell>
@@ -175,7 +187,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of christening')" /></Cell>
@@ -188,7 +201,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								        <SetVar name="url" value="$urlbase/individual/$id" />
+								        <Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -206,7 +220,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of bar mitzvah')" /></Cell>
@@ -217,7 +232,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of bar mitzvah')" /></Cell>
@@ -230,7 +246,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -247,7 +264,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of bat mitzvah')" /></Cell>
@@ -258,7 +276,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of bat mitzvah')" /></Cell>
@@ -271,7 +290,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -288,7 +308,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of confirmation')" /></Cell>
@@ -299,7 +320,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of confirmation')" /></Cell>
@@ -312,7 +334,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -324,13 +347,15 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				<if condition="$fenga=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<Gedcom id="@FAMS">
+						<SetVar name="fid" value="@ID"/>
 						<if condition="@ENGA:DATE==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
 							<if condition="$printname=='1'">
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/family/$fid" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of engagement')" /></Cell>
@@ -341,7 +366,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/family/$fid" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of engagement')" /></Cell>
@@ -354,7 +380,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								        <SetVar name="url" value="$urlbase/family/$fid" />
+								        <Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -372,7 +399,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of first communion')" /></Cell>
@@ -383,7 +411,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of first communion')" /></Cell>
@@ -396,7 +425,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -408,13 +438,15 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				<if condition="$fmarb=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<Gedcom id="@FAMS">
+						<SetVar name="fid" value="@ID"/>
 						<if condition="@MARB:DATE==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
 							<if condition="$printname=='1'">
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/family/$fid" />
+                                                                <Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of marriage banns')" /></Cell>
@@ -451,13 +483,15 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				<if condition="$fmarr=='on'">
 					<SetVar name="nrevent" value="$nrevent + 2" />
 					<Gedcom id="@FAMS">
+						<SetVar name="fid" value="@ID"/>
 						<if condition="@MARR:DATE==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
 							<if condition="$printname=='1'">
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/family/$fid" />
+                                                                <Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of marriage')" /></Cell>
@@ -468,7 +502,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/family/$fid" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of marriage')" /></Cell>
@@ -481,7 +516,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 									<Cell style="list_value" width="$name"> </Cell>
 								</if>
 								<if condition="$printname=='0'">
-									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								        <SetVar name="url" value="$urlbase/family/$fid" />
+								        <Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
 								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -499,7 +535,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of death')" /></Cell>
@@ -510,7 +547,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of death')" /></Cell>
@@ -523,7 +561,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -540,7 +579,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of burial')" /></Cell>
@@ -551,7 +591,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of burial')" /></Cell>
@@ -564,7 +605,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 								<Cell style="list_value" width="$name"> </Cell>
 							</if>
 							<if condition="$printname=='0'">
-								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+								<SetVar name="url" value="$urlbase/individual/$id" />
+								<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
 							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
@@ -581,7 +623,8 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 							<Cell style="list_value" width="$name"> </Cell>
 						</if>
 						<if condition="$printname=='0'">
-							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
+							<SetVar name="url" value="$urlbase/individual/$id" />
+							<Cell style="list_value" width="$name" url="$url"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
 						<Cell newline="1" style="list_value"><var var="I18N::translate('Religion')" /></Cell>

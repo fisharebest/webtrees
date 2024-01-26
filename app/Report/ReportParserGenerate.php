@@ -635,6 +635,15 @@ class ReportParserGenerate extends ReportParserBase
             $tcolor,
             $reseth
         );
+
+        // set string URL to be a link
+        if (isset($attrs['url'])) {
+            $url = $attrs['url'];
+            $this->current_element->setUrl($url);
+            error_log("RPG ".__LINE__." seturl=".$url."\n",3,"url.log");
+        } else {
+            $url = "";
+        }
     }
 
     /**
@@ -828,21 +837,21 @@ class ReportParserGenerate extends ReportParserBase
         // position of box absolute or relative, and possibly top and height
         if (isset($attrs['pos'])) {
             $pos = $attrs['pos'];
-            if (substr($pos,0,3) == 'abs') {
+            if (substr($pos, 0, 3) == 'abs') {
                 //-- check absolute or relative position
                 $top += -222000;
             }
-            if (substr($pos,0,3) == 'rel') {
+            if (substr($pos, 0, 3) == 'rel') {
                 //-- check absolute or relative position
                 $top = -100000;
             }
-            if (substr($pos,3,3) == '_fh') {
+            if (substr($pos, 3, 3) == '_fh') {
                 $top = -100012;
             }
-            if (substr($pos,3,3) == '_f2') {
+            if (substr($pos, 3, 3) == '_f2') {
                 $top = -100018;
             }
-            if (substr($pos,6,5) == '_html') {
+            if (substr($pos, 6, 5) == '_html') {
                 $top = -90012;
             }
         }
@@ -948,25 +957,6 @@ class ReportParserGenerate extends ReportParserBase
             $color = $attrs['color'];
         }
 
-/*
-        // string The text alignment of the text in this box.
-        $align = $attrs['align'] ?? '';
-        // RTL supported left/right alignment
-        if ($align === 'rightrtl') {
-            if ($this->wt_report->rtl) {
-                $align = 'left';
-            } else {
-                $align = 'right';
-            }
-        } elseif ($align === 'leftrtl') {
-            if ($this->wt_report->rtl) {
-                $align = 'right';
-            } else {
-                $align = 'left';
-            }
-        }
-*/
-
         $this->current_element = $this->report_root->createText($style, $color);
     }
 
@@ -1016,11 +1006,11 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         $nameselect = "";
-        if ( isset($attrs['select']) ) {
+        if (isset($attrs['select'])) {
             $nameselect = $attrs['select'];
         }
         $famrel = false;
-        if ( isset($attrs['fam_relation']) ) {
+        if (isset($attrs['fam_relation'])) {
             $famrel = true;
         }
         if (!empty($id)) {
@@ -1030,29 +1020,30 @@ class ReportParserGenerate extends ReportParserBase
             }
             if (!$record->canShowName()) {
                 $this->current_element->addText(I18N::translate('Private'));
-            } else if ( $nameselect == 'latest' ) {
+            } elseif ($nameselect == 'latest') {
                 $tmp = $record->getAllNames();
-                $name  = strip_tags($tmp[count($tmp)-1]['full']);
+                $name  = strip_tags($tmp[count($tmp) - 1]['full']);
                 $this->current_element->addText(trim($name));
-            } else if ( $nameselect == 'combined' ) {
+            } elseif ($nameselect == 'combined') {
                 $tmp = $record->getAllNames();
-                $name = $tmp[count($tmp)-1]['full'];
-                if ($ix1 = strpos($name,'<span class="starredname">')) {   // '«' and '»' mark text for underlining
+                $name = $tmp[count($tmp) - 1]['full'];
+                if ($ix1 = strpos($name, '<span class="starredname">')) {   // '«' and '»' mark text for underlining
                     $name = substr_replace($name, '«', $ix1, 26);
-                    $ix1 = strpos($name,'</span>',$ix1);
+                    $ix1 = strpos($name, '</span>', $ix1);
                     $name = substr_replace($name, '»', $ix1, 7);
                 }
                 $addname = strip_tags((string) $tmp[0]['surn']);
-                if ( !empty($addname) && !($addname==='@N.N.') && !str_contains($name,$addname) ) {
-                    $name .= " ".I18N::translate('b.')." ".$addname;
+                if (!empty($addname) && !($addname === '@N.N.') && !str_contains($name, $addname)) {
+                    $name .= " " . I18N::translate('b.') . " " . $addname;
                 }
                 $this->current_element->addText(trim($name));
             } else {
                 $name = $record->fullName();
                 $name = strip_tags($name);
                 if (!empty($attrs['truncate'])) {
-                    if ( (int) $attrs['truncate'] > 0 )
-                    $name = Str::limit($name, (int) $attrs['truncate'], I18N::translate('…'));
+                    if ((int) $attrs['truncate'] > 0) {
+                        $name = Str::limit($name, (int) $attrs['truncate'], I18N::translate('…'));
+                    }
                 } else {
                     $addname = (string) $record->alternateName();
                     $addname = strip_tags($addname);
@@ -1063,8 +1054,8 @@ class ReportParserGenerate extends ReportParserBase
                 $this->current_element->addText(trim($name));
             }
         }
-        if ( $famrel && ($this->mfrelation[$record->xref()] != "") ) {
-            $this->current_element->addText(" (".(string) $this->mfrelation[$record->xref()].")");
+        if ($famrel && ($this->mfrelation[$record->xref()] != "")) {
+            $this->current_element->addText(" (" . (string) $this->mfrelation[$record->xref()] . ")");
         }
     }
 
@@ -1113,11 +1104,15 @@ class ReportParserGenerate extends ReportParserBase
                 switch (end($tags)) {
                     case 'DATE':
                         $tmp   = new Date($value);
-            $dfmt = "%j %F %Y";
-            if (!empty($attrs['truncate'])) {
-                if ( $attrs['truncate'] === "d" ) $dfmt = "%j %M %Y";
-                if ( $attrs['truncate'] === "Y" ) $dfmt = "%Y";
-            }
+                        $dfmt = "%j %F %Y";
+                        if (!empty($attrs['truncate'])) {
+                            if ($attrs['truncate'] === "d") {
+                                $dfmt = "%j %M %Y";
+                            }
+                            if ($attrs['truncate'] === "Y") {
+                                $dfmt = "%Y";
+                            }
+                        }
                         $value = strip_tags($tmp->display(null, $dfmt));
                         break;
                     case 'PLAC':
@@ -1137,24 +1132,25 @@ class ReportParserGenerate extends ReportParserBase
                 }
                 $tmp = explode(':', $tag);
                 if (in_array(end($tmp), ['NOTE', 'TEXT'], true)) {
-            if ($this->tree->getPreference('FORMAT_TEXT') === 'xxmarkdown') {
+                    if ($this->tree->getPreference('FORMAT_TEXT') === 'xxmarkdown') {
                         $value = strip_tags(Registry::markdownFactory()->markdown($value, $this->tree), ['br']);
                     } else {
                         $value = str_replace("\n", "<br>", $value);
-            //$value = strip_tags(Registry::markdownFactory()->autolink($value, $this->tree), ['br']);
+                        //$value = strip_tags(Registry::markdownFactory()->autolink($value, $this->tree), ['br']);
                     }
                     $value = strtr($value, [MarkdownFactory::BREAK => ' ']);
                 }
 
-        if (isset($attrs['lcfirst'])) {
-            $value = lcfirst($value);
-            $value = str_replace(["Å","Ä","Ö"], ["å","ä","ö"], $value);
-        }
+                if (isset($attrs['lcfirst'])) {
+                    $value = lcfirst($value);
+                    $value = str_replace(["Å","Ä","Ö"], ["å","ä","ö"], $value);
+                }
 
                 if (!empty($attrs['truncate'])) {
                     $value = strip_tags($value);
-            if ( (int) $attrs['truncate'] > 0 )
-              $value = Str::limit($value, (int) $attrs['truncate'], I18N::translate('…'));
+                    if ((int) $attrs['truncate'] > 0) {
+                        $value = Str::limit($value, (int) $attrs['truncate'], I18N::translate('…'));
+                    }
                 }
                 $this->current_element->addText($value);
             }
@@ -1244,8 +1240,8 @@ class ReportParserGenerate extends ReportParserBase
             return;
         }
 
-            $nnnn = count($this->repeats);
-            $rpt1 = isset($this->repeats[0]) ? $this->repeats[0] : "";
+        $nnnn = count($this->repeats);
+        $rpt1 = isset($this->repeats[0]) ? $this->repeats[0] : "";
         // Check if there is anything to repeat
         if (count($this->repeats) > 0) {
             // No need to load them if not used...
@@ -1262,7 +1258,7 @@ class ReportParserGenerate extends ReportParserBase
             $lineoffset++;
             $reportxml = "<tempdoc>\n";
             $line_nr   = $lineoffset + $this->repeat_bytes;
-        $lnnn = $line_nr;
+            $lnnn = $line_nr;
             // RepeatTag Level counter
             $count = 1;
             while (0 < $count) {
@@ -1381,15 +1377,17 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         if (isset($attrs['amp'])) {
-        $var = str_replace("%26", '&', $var);
+            $var = str_replace("%26", '&', $var);
         }
         if (isset($attrs['cut'])) {
-        $cut = (int) $attrs['cut'];
-        $var = $cut >0 ? substr($var, 0, $cut) : substr($var, $cut);
-        if ($cut == 0) $var = "";
+            $cut = (int) $attrs['cut'];
+            $var = $cut > 0 ? substr($var, 0, $cut) : substr($var, $cut);
+            if ($cut == 0) {
+                $var = "";
+            }
         }
         if (isset($attrs['lcfirst'])) {
-        $var = lcfirst($var);
+            $var = lcfirst($var);
         }
         $this->current_element->addText($var);
         $this->text = $var; // Used for title/description
@@ -1446,43 +1444,50 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-            // Add fact/event for FAM:DIV and for death of spouse
+        // Add fact/event for FAM:DIV and for death of spouse
         foreach ($this->repeats as $key => $fact) {
             $jdarr[$key] = 0;
             if (preg_match('/1 FAMS @(.+)@/', $fact, $match)) {
                 $famid = $match[1];
                 $fam = Registry::familyFactory()->make($match[1], $this->tree);
                 $dt = $this->getGedcomValue("MARR:DATE", 0, $fam->gedcom());
-                if ($dt == "")
+                if ($dt == "") {
                     $dt = $this->getGedcomValue("ENGA:DATE", 0, $fam->gedcom());
-                if ($dt == "" && $this->getGedcomValue("EVEN:TYPE", 0, $fam->gedcom()) == "Sambo")
+                }
+                if ($dt == "" && $this->getGedcomValue("EVEN:TYPE", 0, $fam->gedcom()) == "Sambo") {
                     $dt = $this->getGedcomValue("EVEN:DATE", 0, $fam->gedcom());
+                }
                 $date = new Date($dt);
                 $jd = $date->julianDay();
                 $jdarr[$key] = $jd;
                 // Divorce
                 $dt = $this->getGedcomValue("DIV:DATE", 0, $fam->gedcom());
-                if ($dt != "")
+                if ($dt != "") {
                     $this->repeats[] = "1 DIV\n2 DATE " . $dt . "\n";
+                }
                 // Separation // Doesn't work!! getGedComValue only reports the first event!! I.e. no match here
                 if ($this->getGedcomValue("EVEN:TYPE", 0, $fam->gedcom()) == "Separation") {
                     $dt = $this->getGedcomValue("EVEN:DATE", 0, $fam->gedcom());
-                    if ($dt != "")
+                    if ($dt != "") {
                         $this->repeats[] = "1 EVEN\n2 TYPE Separation\n2 DATE " . $dt . "\n";
+                    }
                 }
                 // death of husband / wife
                 $husb = $fam->husband();
                 $wife = $fam->wife();
-                if ($this->getGedcomValue("SEX", 0, $this->gedrec) == "M")
+                if ($this->getGedcomValue("SEX", 0, $this->gedrec) == "M") {
                     $spouse = $wife;
-                else
+                } else {
                     $spouse = $husb;
-                if ($spouse)
+                }
+                if ($spouse) {
                     $dt = $this->getGedcomValue("DEAT:DATE", 0, $spouse->gedcom());
-                else
+                } else {
                     $dt = "";
-                if ($dt != "")
+                }
+                if ($dt != "") {
                     $this->repeats[] = "1 _SP_DEAT\n2 DATE " . $dt . "\n2 _O_FAM " . $famid . "\n";
+                }
             }
         }
         // Find the dates for the facts that are found
@@ -1497,11 +1502,12 @@ class ReportParserGenerate extends ReportParserBase
         // Resort facts in chronological order, if possible
         $m = count($this->repeats) - 1;
         $prevd = 0;
-        for ($i = 0; $i <= $m; $i ++) { // keep undated events after previous dated event
-            if ($jdarr[$i] === 0)
+        for ($i = 0; $i <= $m; $i++) { // keep undated events after previous dated event
+            if ($jdarr[$i] === 0) {
                 $jdarr[$i] = $prevd;
-            else
+            } else {
                 $prevd = $jdarr[$i];
+            }
         }
 
         while ($m > 1) {
@@ -1522,12 +1528,14 @@ class ReportParserGenerate extends ReportParserBase
 
         // Remove spouse deaths that are too late: after new marriage or own death
         $currfam = "";
-        for ($i = 0; $i <= count($this->repeats) - 1; $i ++) {
-            if (preg_match('/[1234] FAMS @(.+)@/', $this->repeats[$i], $match))
+        for ($i = 0; $i <= count($this->repeats) - 1; $i++) {
+            if (preg_match('/[1234] FAMS @(.+)@/', $this->repeats[$i], $match)) {
                 $currfam = $match[1];
+            }
             if (preg_match('/_SP_DEAT.*\n2 DATE (.*)\n.*_O_FAM (.+)\n/', $this->repeats[$i], $match)) {
-                if ($currfam != $match[2] || $i == count($this->repeats) - 1)
-                    $this->repeats[$i] = "1 _XXX\n"; // ignore fact
+                if ($currfam != $match[2] || $i == count($this->repeats) - 1) {
+                    $this->repeats[$i] = "1 _XXX\n";
+                } // ignore fact
             }
         }
     }
@@ -1574,8 +1582,8 @@ class ReportParserGenerate extends ReportParserBase
             $count = count($this->repeats);
             $i = 0;
             while ($i < $count) {
-                if (! isset($this->repeats[$i])) {
-                    $i ++;
+                if (!isset($this->repeats[$i])) {
+                    $i++;
                     continue; // this fact has been removed above, occured too late
                 }
                 $this->gedrec = $this->repeats[$i];
@@ -1648,8 +1656,11 @@ class ReportParserGenerate extends ReportParserBase
 
         $name  = $attrs['name'];
         $value = $attrs['value'];
-        if (isset($attrs['dumpvar'])) $dumpvar = $attrs['dumpvar'];
-        else $dumpvar = "";
+        if (isset($attrs['dumpvar'])) {
+            $dumpvar = $attrs['dumpvar'];
+        } else {
+            $dumpvar = "";
+        }
         $match = [];
         // Current GEDCOM record strings
         if ($value === '@ID') {
@@ -1661,17 +1672,28 @@ class ReportParserGenerate extends ReportParserBase
         } elseif ($value === '@desc') {
             $value = $this->desc;
         } elseif ($value === '@format') {
-            if (isset($_GET["format"]))
+            if (isset($_GET["format"])) {
                 $value = $_GET["format"];
-            else
+            } else {
                 $value = "";
+            }
         } elseif ($value === '@generation') {
             $value = (string) $this->generation;
+        } elseif ($value === '@base_url') {
+            $value = (string) $_SERVER["HTTP_REFERER"];
+            $i = strpos($value, "%2Freport%2F");
+            if ($i === false) {
+                $i = strpos($value, "/report/");
+            }
+            if ($i !== false) {
+                $value = substr($value, 0, $i);
+            }
         } elseif ($value === '@relation') {
-            if (isset($this->mfrelation[$this->xref()]))
+            if (isset($this->mfrelation[$this->xref()])) {
                 $value = (string) $this->mfrelation[$this->xref()];
-            else
+            } else {
                 $value = "";
+            }
         } elseif (preg_match("/@(\w+)/", $value, $match)) {
             $gmatch = [];
             if (preg_match("/\d $match[1] (.+)/", $this->gedrec, $gmatch)) {
@@ -1680,30 +1702,33 @@ class ReportParserGenerate extends ReportParserBase
         } elseif (preg_match("/@\\$(\w+)/", $value, $match)) {
             if ($match[1] == "dump" && $this->vars['dval']['id'] > 0) {
                 // if ($this->vars[ 'dval' ]['id'] == 1001)
-                if ($dumpvar == "gedrec")
+                if ($dumpvar == "gedrec") {
                     error_log("\n---- setvar start  " . date("Y-m-d H:i:s") . " RPG " . __LINE__ . "  " . $name . "  gedcom=\n" . $this->gedrec . "\n", 3, "my-errors.log");
-                else if ($dumpvar != "")
+                } elseif ($dumpvar != "") {
                     error_log("var: " . $dumpvar . " = " . $this->vars[$dumpvar]['id'] . "\n", 3, "my-errors.log");
-                else {
-                    if (isset($this->vars['dval']['id']))
+                } else {
+                    if (isset($this->vars['dval']['id'])) {
                         $nnn = $this->vars['dval']['id'];
-                    else
+                    } else {
                         $nnn = 0;
+                    }
                     error_log("\n---- setvar start  " . date("Y-m-d H:i:s") . " RPG " . __LINE__ . "  " . $name . "  -----\n", 3, "my-errors.log");
                     foreach ($this->vars as $key => $val) {
-                        if ($nnn -- < 0)
+                        if ($nnn-- < 0) {
                             error_log($key . "='" . $val['id'] . "'\n", 3, "my-errors.log");
+                        }
                     }
                 }
             }
             $value = $this->vars[$match[1]]['id'];
-            if (isset($this->vars[$value]['id']))
+            if (isset($this->vars[$value]['id'])) {
                 $value = '$' . $this->vars[$match[1]]['id'];
-            else
+            } else {
                 $value = "0";
+            }
         }
-        if ( isset($attrs['trim']) ) {
-          $value = str_replace($attrs['trim'], '', $value);
+        if (isset($attrs['trim'])) {
+            $value = str_replace($attrs['trim'], '', $value);
         }
         if (preg_match("/\\$(\w+)/", $name, $match)) {
             $name = $this->vars["'" . $match[1] . "'"]['id'];
@@ -2711,10 +2736,12 @@ class ReportParserGenerate extends ReportParserBase
                 $genCounter = 1;
                 while (count($newarray) < count($this->list)) {
                     foreach ($this->list as $key => $value) {
-                        if ($value->generation < 0)
-                            $this->generation = -$value->generation; // indication of husband or wife
-                        else
+                        if ($value->generation < 0) { // indication of husband or wife
+                            $this->generation = -$value->generation;
+                        }
+                        else {
                             $this->generation = $value->generation;
+                        }
                         if ($this->generation == $genCounter) {
                             $newarray[$key] = (object) ['generation' => $this->generation];
                         }
@@ -2889,21 +2916,23 @@ class ReportParserGenerate extends ReportParserBase
         static $focusperson = true;
         static $dupl = 1;
         $sx = $person->sex();
-        $rl="x"; // unknown
-        if ($sx == "M")
-            $rl = "s"; // son
-        if ($sx == "F")
-            $rl = "d"; // daughter
-        if ($focusperson)
+        $rl = "x"; // unknown
+        if ($sx == "M") {
+            $rl = "s";
+        } // son
+        if ($sx == "F") {
+            $rl = "d";
+        } // daughter
+        if ($focusperson) {
             $this->mfrelation[$pid] = "";
+        }
         $nam = $person->getAllNames()[0]['fullNN'];
 
         $newpid = $pid;
         if (!isset($list[$pid])) {
-                $list[$pid] = $person;
-            }
-        else if (!$focusperson) {
-            $newpid = "D_".$dupl."_".$pid;
+            $list[$pid] = $person;
+        } elseif (!$focusperson) {
+            $newpid = "D_" . $dupl . "_" . $pid;
             $list[$newpid] = $person;
         }
         if (!isset($list[$newpid]->generation)) {
@@ -2937,17 +2966,21 @@ class ReportParserGenerate extends ReportParserBase
             if ($husband && $wife) {
                 if ($husband->xref() == $person->xref()) {
                     $this->mfrelation[$wife->xref()] = $this->mfrelation[$person->xref()] . "x";
-                    if ($wife->canShow())
+                    if ($wife->canShow()) {
                         $list[$wife->xref()] = $wife;
-                    if (! isset($wife->generation))
+                    }
+                    if (!isset($wife->generation)) {
                         $wife->generation = $person->generation;
+                    }
                     $nam = $wife->getAllNames()[0]['fullNN'];
                 } else {
                     $this->mfrelation[$husband->xref()] = $this->mfrelation[$person->xref()] . "x";
-                    if ($husband->canShow())
+                    if ($husband->canShow()) {
                         $list[$husband->xref()] = $husband;
-                    if (! isset($husband->generation))
+                    }
+                    if (!isset($husband->generation)) {
                         $husband->generation = $person->generation;
+                    }
                     $nam = $husband->getAllNames()[0]['fullNN'];
                 }
             }
@@ -2955,13 +2988,14 @@ class ReportParserGenerate extends ReportParserBase
             $children = $family->children();
             foreach ($children as $child) {
                 if ($child) {
-
                     $sx = $child->sex();
-                    $rl="x"; // unknown
-                    if ($sx == "M")
-                        $rl = "s"; // son
-                    if ($sx == "F")
-                        $rl = "d"; // daughter
+                    $rl = "x"; // unknown
+                    if ($sx == "M") {
+                        $rl = "s";
+                    } // son
+                    if ($sx == "F") {
+                        $rl = "d";
+                    } // daughter
                     $rl = $this->mfrelation[$person->xref()] . $rl;
                     $this->mfrelation[$child->xref()] = $rl;
                     if (isset($list[$pid]->generation)) {
@@ -2973,8 +3007,9 @@ class ReportParserGenerate extends ReportParserBase
             }
             if ($generations == -1 || $list[$pid]->generation < $generations) {
                 foreach ($children as $child) {
-                    if ($child->canShow())
-                        $this->addDescendancy($list, $child->xref(), $parents, $generations); // recurse on the childs family
+                    if ($child->canShow()) {
+                        $this->addDescendancy($list, $child->xref(), $parents, $generations);
+                    } // recurse on the childs family
                 }
             }
         }
@@ -3000,8 +3035,9 @@ class ReportParserGenerate extends ReportParserBase
             if (str_starts_with($id, 'empty')) {
                 continue; // id can be something like “empty7”
             }
-            if (! isset($this->mfrelation[$id]))
+            if (!isset($this->mfrelation[$id])) {
                 $this->mfrelation[$id] = "";
+            }
             $person = Registry::individualFactory()->make($id, $this->tree);
             foreach ($person->childFamilies() as $family) {
                 $husband = $family->husband();
@@ -3026,11 +3062,12 @@ class ReportParserGenerate extends ReportParserBase
                 }
                 if ($children) {
                     foreach ($family->children() as $child) {
-                    $list[$child->xref()] = $child;
-                    $child->generation = $list[$id]->generation ?? 1;
-                    if ( $child->xref() != $person->xref() )
-                        $this->mfrelation[$child->xref()] = $this->mfrelation[$id] . "x";
-                   }
+                        $list[$child->xref()] = $child;
+                        $child->generation = $list[$id]->generation ?? 1;
+                        if ($child->xref() != $person->xref()) {
+                            $this->mfrelation[$child->xref()] = $this->mfrelation[$id] . "x";
+                        }
+                    }
                 }
             }
         }

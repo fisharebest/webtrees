@@ -96,7 +96,9 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 if (!empty($lastelement)) {
                     if ($element instanceof ReportBaseImage) {
                         $imgH = $element->getHeight();
-                    } else $imgH = 0;
+                    } else {
+                        $imgH = 0;
+                    }
                     $cX = $renderer->tcpdf->GetX();
                     $newelements[] = $lastelement;
                     $lastelement   = [];
@@ -140,15 +142,17 @@ class ReportPdfTextBox extends ReportBaseTextbox
         if ($this->top < -95000) { // 90000: only html; 100000: both pdf and html
             $align_Y = true;
         }
-        if ($this->top < -200000)   // pos="abs"
+        if ($this->top < -200000) {   // pos="abs"
             $this->top += 222000;
-        else
+        } else {
             $this->top = ReportBaseElement::CURRENT_POSITION;
+        }
         if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $cY = $renderer->tcpdf->GetY();
             //-- check for space after the last picture
-            if ($align_Y && ($cY < $lastBoxYfinal) )
+            if ($align_Y && ($cY < $lastBoxYfinal)) {
                 $cY = $lastBoxYfinal;
+            }
         } else {
             $cY = $this->top;
             $renderer->tcpdf->setY($cY);
@@ -326,8 +330,9 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 $cMT = $renderer->tcpdf->getMargins();
                 $element->render($renderer);
                 // If tcpdf has added a new page the left margin must be restored
-                if ($cPT != $renderer->tcpdf->getPage())
-                	$renderer->tcpdf->setLeftMargin($cMT['left']);
+                if ($cPT != $renderer->tcpdf->getPage()) {
+                    $renderer->tcpdf->setLeftMargin($cMT['left']);
+                }
             } elseif ($element === 'footnotetexts') {
                 $renderer->footnotes();
             } elseif ($element === 'addpage') {
@@ -361,7 +366,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 $renderer->tcpdf->setY($min_Y);
             } else {
                 // 15 is good enough, should be a more general value ($cH is too large!)
-                $renderer->tcpdf->setY($curr_Y + ($cH>15?15:$cH));
+                $renderer->tcpdf->setY($curr_Y + ($cH > 15 ? 15 : $cH));
             }
             $renderer->lastCellHeight = 0;
         }
