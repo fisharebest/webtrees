@@ -1492,7 +1492,6 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         // Find the dates for the facts that are found
-        $jdarr = [];
         foreach ($this->repeats as $key => $fact) {
             if (preg_match('/[234] DATE ([^\n]+)/', $fact, $match)) {
                 $date = new Date($match[1]);
@@ -1501,7 +1500,7 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-        // Resort facts in chronological order, if possible
+        // Sort facts in chronological order, if possible
         $m = count($this->repeats) - 1;
         $prevd = 0;
         for ($i = 0; $i <= $m; $i++) { // keep undated events after previous dated event
