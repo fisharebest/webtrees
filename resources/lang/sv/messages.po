@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-01-26 21:36+0000\n"
-"Last-Translator: Seved Torstendahl <sevedt@gmail.com>\n"
+"PO-Revision-Date: 2024-01-28 18:36+0000\n"
+"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
 "Language: sv\n"
@@ -12329,12 +12329,12 @@ msgstr "Salvia"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
-msgstr "Saint Barthélemy"
+msgstr "Saint-Barthélemy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
 msgid "Saint Helena"
-msgstr "St Helena"
+msgstr "Sankta Helena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:286
