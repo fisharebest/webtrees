@@ -182,6 +182,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array<array<string>> Variables defined in the report at run-time */
     private array $vars;
 
+    /** @var array<array<string,string>> Family relationship */
     private array $mfrelation = [];
 
     private Tree $tree;
@@ -1053,7 +1054,7 @@ class ReportParserGenerate extends ReportParserBase
                 $this->current_element->addText(trim($name));
             }
         }
-        if ($famrel && ($this->mfrelation[$record->xref()] != "")) {
+        if (isset($record) && $famrel && ($this->mfrelation[$record->xref()] != "")) {
             $this->current_element->addText(" (" . (string) $this->mfrelation[$record->xref()] . ")");
         }
     }
@@ -1490,6 +1491,7 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
         // Find the dates for the facts that are found
+        $jdarr = [];
         foreach ($this->repeats as $key => $fact) {
             if (preg_match('/[234] DATE ([^\n]+)/', $fact, $match)) {
                 $date = new Date($match[1]);
@@ -1556,7 +1558,7 @@ class ReportParserGenerate extends ReportParserBase
             $line       = xml_get_current_line_number($this->parser) - 1;
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1] - 1;
+                $lineoffset = $lineoffset + $rep[1] - 1;
             }
 
             //-- read the xml from the file
@@ -1660,6 +1662,10 @@ class ReportParserGenerate extends ReportParserBase
         } else {
             $dumpvar = "";
         }
+        $curr_id = "";
+        if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
+            $curr_id = $match[1];
+        }
         $match = [];
         // Current GEDCOM record strings
         if ($value === '@ID') {
@@ -1688,8 +1694,8 @@ class ReportParserGenerate extends ReportParserBase
                 $value = substr($value, 0, $i);
             }
         } elseif ($value === '@relation') {
-            if (isset($this->mfrelation[$this->xref()])) {
-                $value = (string) $this->mfrelation[$this->xref()];
+            if (isset($this->mfrelation[$curr_id]) && $curr_id != "") {
+                $value = (string) $this->mfrelation[$curr_id];
             } else {
                 $value = "";
             }
@@ -1706,7 +1712,7 @@ class ReportParserGenerate extends ReportParserBase
                 } elseif ($dumpvar != "") {
                     error_log("var: " . $dumpvar . " = " . $this->vars[$dumpvar]['id'] . "\n", 3, "my-errors.log");
                 } else {
-                    if (isset($this->vars['dval']['id'])) {
+                    if (isset($this->vars['dval'])) {
                         $nnn = $this->vars['dval']['id'];
                     } else {
                         $nnn = 0;
@@ -2540,7 +2546,7 @@ class ReportParserGenerate extends ReportParserBase
         if (count($this->list) > 0) {
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1] - 1;
+                $lineoffset = $lineoffset + $rep[1] - 1;
             }
             //-- read the xml from the file
             $lines = file($this->report);
@@ -2773,7 +2779,7 @@ class ReportParserGenerate extends ReportParserBase
         if (count($this->list) > 0) {
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1] - 1;
+                $lineoffset = $lineoffset + $rep[1] - 1;
             }
             //-- read the xml from the file
             $lines = file($this->report);
