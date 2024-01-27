@@ -182,7 +182,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array<array<string>> Variables defined in the report at run-time */
     private array $vars;
 
-    /** @var array<array<string,string>> Family relationship */
+    /** @var array<array<string>> Family relationship */
     private array $mfrelation = [];
 
     private Tree $tree;
@@ -1027,7 +1027,8 @@ class ReportParserGenerate extends ReportParserBase
             } elseif ($nameselect == 'combined') {
                 $tmp = $record->getAllNames();
                 $name = $tmp[count($tmp) - 1]['full'];
-                if ($ix1 = strpos($name, '<span class="starredname">')) {   // '«' and '»' mark text for underlining
+                $ix1 = strpos($name, '<span class="starredname">');
+                if ($ix1 !== false) {   // '«' and '»' mark text for underlining
                     $name = substr_replace($name, '«', $ix1, 26);
                     $ix1 = strpos($name, '</span>', $ix1);
                     $name = substr_replace($name, '»', $ix1, 7);
@@ -1250,7 +1251,7 @@ class ReportParserGenerate extends ReportParserBase
             $lines = file($this->report);
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1] - 1;
+                $lineoffset = $lineoffset + $rep[1] - 1;
             }
             while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<RepeatTag')) {
                 $lineoffset--;
@@ -1663,6 +1664,7 @@ class ReportParserGenerate extends ReportParserBase
             $dumpvar = "";
         }
         $curr_id = "";
+        $match = [];
         if (preg_match('/0 @(.+)@/', $this->gedrec, $match)) {
             $curr_id = $match[1];
         }
@@ -1685,14 +1687,15 @@ class ReportParserGenerate extends ReportParserBase
         } elseif ($value === '@generation') {
             $value = (string) $this->generation;
         } elseif ($value === '@base_url') {
-            $value = (string) $_SERVER["REQUEST_URI"];
-            $i = strpos($value, "%2Freport%2F");
+            $value = $_GET["route"];
+            $i = strpos($value, "%2Freport");
             if ($i === false) {
-                $i = strpos($value, "/report/");
+                $i = strpos($value, "/report");
             }
             if ($i !== false) {
                 $value = substr($value, 0, $i);
             }
+                $value = "index.php?route=" . $value;
         } elseif ($value === '@relation') {
             if (isset($this->mfrelation[$curr_id]) && $curr_id != "") {
                 $value = (string) $this->mfrelation[$curr_id];
@@ -1712,7 +1715,7 @@ class ReportParserGenerate extends ReportParserBase
                 } elseif ($dumpvar != "") {
                     error_log("var: " . $dumpvar . " = " . $this->vars[$dumpvar]['id'] . "\n", 3, "my-errors.log");
                 } else {
-                    if (isset($this->vars['dval'])) {
+                    if (array_key_exists('dval',$this->vars)) {
                         $nnn = $this->vars['dval']['id'];
                     } else {
                         $nnn = 0;
