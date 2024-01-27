@@ -182,7 +182,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array<array<string>> Variables defined in the report at run-time */
     private array $vars;
 
-    /** @var array<array<string>> Family relationship */
+    /** @var array<string> Family relationship */
     private array $mfrelation = [];
 
     private Tree $tree;
@@ -1031,7 +1031,9 @@ class ReportParserGenerate extends ReportParserBase
                 if ($ix1 !== false) {   // '«' and '»' mark text for underlining
                     $name = substr_replace($name, '«', $ix1, 26);
                     $ix1 = strpos($name, '</span>', $ix1);
-                    $name = substr_replace($name, '»', $ix1, 7);
+                    if ($ix1 !== false) {   // '«' and '»' mark text for underlining
+                        $name = substr_replace($name, '»', $ix1, 7);
+                    }
                 }
                 $addname = strip_tags((string) $tmp[0]['surn']);
                 if (!empty($addname) && !($addname === '@N.N.') && !str_contains($name, $addname)) {
@@ -1451,6 +1453,9 @@ class ReportParserGenerate extends ReportParserBase
             if (preg_match('/1 FAMS @(.+)@/', $fact, $match)) {
                 $famid = $match[1];
                 $fam = Registry::familyFactory()->make($match[1], $this->tree);
+                if ($fam === null) {
+                    continue;
+                }
                 $dt = $this->getGedcomValue("MARR:DATE", 0, $fam->gedcom());
                 if ($dt == "") {
                     $dt = $this->getGedcomValue("ENGA:DATE", 0, $fam->gedcom());
@@ -1697,7 +1702,7 @@ class ReportParserGenerate extends ReportParserBase
             if ($i !== false) {
                 $value = substr($value, 0, $i);
             }
-                $value = "index.php?route=" . $value;
+            $value = "index.php?route=" . $value;
         } elseif ($value === '@relation') {
             if (isset($this->mfrelation[$curr_id]) && $curr_id != "") {
                 $value = (string) $this->mfrelation[$curr_id];
@@ -1717,7 +1722,7 @@ class ReportParserGenerate extends ReportParserBase
                 } elseif ($dumpvar != "") {
                     error_log("var: " . $dumpvar . " = " . $this->vars[$dumpvar]['id'] . "\n", 3, "my-errors.log");
                 } else {
-                    if (array_key_exists('dval',$this->vars)) {
+                    if (array_key_exists('dval', $this->vars)) {
                         $nnn = $this->vars['dval']['id'];
                     } else {
                         $nnn = 0;
