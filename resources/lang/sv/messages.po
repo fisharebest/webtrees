@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-01-26 21:36+0000\n"
-"Last-Translator: Seved Torstendahl <sevedt@gmail.com>\n"
+"PO-Revision-Date: 2024-01-28 18:36+0000\n"
+"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
 "Language: sv\n"
@@ -12391,7 +12391,7 @@ msgstr "Salvia"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:441
 msgid "Saint Helena"
-msgstr "St Helena"
+msgstr "Sankta Helena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:284
