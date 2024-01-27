@@ -1687,7 +1687,10 @@ class ReportParserGenerate extends ReportParserBase
         } elseif ($value === '@generation') {
             $value = (string) $this->generation;
         } elseif ($value === '@base_url') {
-            $value = $_GET["route"];
+            $value = "";
+            if (array_key_exists("route", $_GET)) {
+                $value = $_GET["route"];
+            }
             $i = strpos($value, "%2Freport");
             if ($i === false) {
                 $i = strpos($value, "/report");
