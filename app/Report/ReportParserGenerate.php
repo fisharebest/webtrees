@@ -2738,8 +2738,7 @@ class ReportParserGenerate extends ReportParserBase
                         if ($value->generation < 0) {
                             // indication of husband or wife
                             $this->generation = -$value->generation;
-                        }
-                        else {
+                        } else {
                             $this->generation = $value->generation;
                         }
                         if ($this->generation == $genCounter) {
