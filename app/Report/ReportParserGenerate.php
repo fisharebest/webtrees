@@ -1238,6 +1238,9 @@ class ReportParserGenerate extends ReportParserBase
      */
     protected function repeatTagEndHandler(): void
     {
+        /** @var array<int> Remember line offsets */
+        array $rep = null;
+
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
             return;
@@ -1553,6 +1556,9 @@ class ReportParserGenerate extends ReportParserBase
      */
     protected function factsEndHandler(): void
     {
+        /** @var array<int> Remember line offsets */
+        array $rep = null;
+
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
             return;
@@ -2547,6 +2553,9 @@ class ReportParserGenerate extends ReportParserBase
      */
     protected function listEndHandler(): void
     {
+        /** @var array<int> Remember line offsets */
+        array $rep = null;
+
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
             return;
@@ -2780,6 +2789,9 @@ class ReportParserGenerate extends ReportParserBase
      */
     protected function relativesEndHandler(): void
     {
+        /** @var array<int> Remember line offsets */
+        array $rep = null;
+
         $this->process_repeats--;
         if ($this->process_repeats > 0) {
             return;
