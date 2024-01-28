@@ -43,7 +43,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         static $lastBoxYfinal;
         // checkFootnote
         $newelements      = [];
-        $lastelement      = [];
+        $lastelement      = null;
         $footnote_element = [];
         // Element counter
         $cE = count($this->elements);
@@ -74,9 +74,9 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                     // Check if the Footnote has been set with it’s link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
-                    if (!empty($lastelement)) {
+                    if (isset($lastelement)) {
                         $newelements[] = $lastelement;
-                        $lastelement   = [];
+                        $lastelement   = null;
                     }
                     // Save the Footnote with it’s link number as key for sorting later
                     $footnote_element[$element->num] = $element;
@@ -89,16 +89,16 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                         }
                         $footnote_element = [];
                     }
-                    if (!empty($lastelement)) {
+                    if (isset($lastelement)) {
                         $newelements[] = $lastelement;
-                        $lastelement   = [];
+                        $lastelement   = null;
                     }
                     $newelements[] = $element;
                 }
             } else {
-                if (!empty($lastelement)) {
+                if (isset($lastelement)) {
                     $newelements[] = $lastelement;
-                    $lastelement   = [];
+                    $lastelement   = null;
                 }
                 if (!empty($footnote_element)) {
                     ksort($footnote_element);
@@ -110,7 +110,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                 $newelements[] = $element;
             }
         }
-        if (!empty($lastelement)) {
+        if (isset($lastelement)) {
             $newelements[] = $lastelement;
         }
         if (!empty($footnote_element)) {
