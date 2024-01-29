@@ -63,7 +63,6 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                         $lastelement = $element;
                     } elseif (($element instanceof ReportBaseText && $lastelement instanceof ReportBaseText) &&
                            ($element->getStyleName() === $lastelement->getStyleName())) {
-                        // Checking if the Text has the same style
                         $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
                     } else {
                         $newelements[] = $lastelement;
