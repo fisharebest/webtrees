@@ -1252,7 +1252,7 @@ class ReportParserGenerate extends ReportParserBase
             //-- read the xml from the file
             $lines = file($this->report);
             if (empty($lines)) {
-                error_log(__FILE__.":".__LINE__." impossible error!? \n");
+                error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
             }
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
@@ -1575,7 +1575,7 @@ class ReportParserGenerate extends ReportParserBase
             //-- read the xml from the file
             $lines = file($this->report);
             if (empty($lines)) {
-                error_log(__FILE__.":".__LINE__." impossible error!? \n");
+                error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
             }
             while ($lineoffset + $this->repeat_bytes > 0 && !str_contains($lines[$lineoffset + $this->repeat_bytes], '<Facts ')) {
                 $lineoffset--;
@@ -2570,7 +2570,7 @@ class ReportParserGenerate extends ReportParserBase
             //-- read the xml from the file
             $lines = file($this->report);
             if (empty($lines)) {
-                error_log(__FILE__.":".__LINE__." impossible error!? \n");
+                error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
             }
             while ((!str_contains($lines[$lineoffset + $this->repeat_bytes], '<List')) && (($lineoffset + $this->repeat_bytes) > 0)) {
                 $lineoffset--;
@@ -2806,7 +2806,7 @@ class ReportParserGenerate extends ReportParserBase
             //-- read the xml from the file
             $lines = file($this->report);
             if (empty($lines)) {
-                error_log(__FILE__.":".__LINE__." impossible error!? \n");
+                error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
             }
             while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<Relatives') && $lineoffset + $this->repeat_bytes > 0) {
                 $lineoffset--;
