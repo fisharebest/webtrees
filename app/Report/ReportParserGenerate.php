@@ -1254,8 +1254,7 @@ class ReportParserGenerate extends ReportParserBase
             $lines = file($this->report);
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset += $rep[1];
-                $lineoffset -= 1;
+                $lineoffset = $lineoffset + (int) $rep[1] - 1;
             }
             while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<RepeatTag')) {
                 $lineoffset--;
@@ -1449,9 +1448,7 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-        if (!isset($jdarr)) {
-            $jdarr = [];
-        }
+        $jdarr = [];
         // Add fact/event for FAM:DIV and for death of spouse
         foreach ($this->repeats as $key => $fact) {
             $jdarr[$key] = 0;
@@ -1568,7 +1565,7 @@ class ReportParserGenerate extends ReportParserBase
             $line       = xml_get_current_line_number($this->parser) - 1;
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset = $lineoffset + $rep[1] - 1;
+                $lineoffset = $lineoffset + (int) $rep[1] - 1;
             }
 
             //-- read the xml from the file
@@ -2561,7 +2558,7 @@ class ReportParserGenerate extends ReportParserBase
         if (count($this->list) > 0) {
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset = $lineoffset + $rep[1] - 1;
+                $lineoffset = $lineoffset + (int) $rep[1] - 1;
             }
             //-- read the xml from the file
             $lines = file($this->report);
@@ -2794,7 +2791,7 @@ class ReportParserGenerate extends ReportParserBase
         if (count($this->list) > 0) {
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset = $lineoffset + $rep[1] - 1;
+                $lineoffset = $lineoffset + (int) $rep[1] - 1;
             }
             //-- read the xml from the file
             $lines = file($this->report);
