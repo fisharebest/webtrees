@@ -1253,7 +1253,9 @@ class ReportParserGenerate extends ReportParserBase
             $lines = file($this->report);
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset = $lineoffset + (int) ($rep[1]) - 1;
+                if (!empty($rep[1])) {
+                    $lineoffset = $lineoffset + (int) ($rep[1]) - 1;
+                }
             }
             while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<RepeatTag')) {
                 $lineoffset--;
