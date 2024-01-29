@@ -1253,7 +1253,8 @@ class ReportParserGenerate extends ReportParserBase
             $lines = file($this->report);
             $lineoffset = 0;
             foreach ($this->repeats_stack as $rep) {
-                $lineoffset = $lineoffset + $rep[1] - 1;
+                $lineoffset += $rep[1];
+                $lineoffset -= 1;
             }
             while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<RepeatTag')) {
                 $lineoffset--;
@@ -1449,6 +1450,9 @@ class ReportParserGenerate extends ReportParserBase
 
         // Add fact/event for FAM:DIV and for death of spouse
         foreach ($this->repeats as $key => $fact) {
+            if (!isset($jdarr)) {
+                $jdarr = [];
+            }
             $jdarr[$key] = 0;
             if (preg_match('/1 FAMS @(.+)@/', $fact, $match)) {
                 $famid = $match[1];

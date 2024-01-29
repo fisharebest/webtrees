@@ -61,9 +61,11 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                     }
                     if (empty($lastelement)) {
                         $lastelement = $element;
-                    } elseif ($element->getStyleName() === $lastelement->getStyleName()) {
-                        // Checking if the Text has the same style
-                        $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
+                    } elseif ($element instanceof ReportBaseText && $lastelement instanceof ReportBaseText)
+                        if ($element->getStyleName() === $lastelement->getStyleName()) {
+                            // Checking if the Text has the same style
+                            $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
+                        }
                     } else {
                         $newelements[] = $lastelement;
                         $lastelement   = $element;

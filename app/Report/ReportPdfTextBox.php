@@ -94,12 +94,6 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 }
             } else {
                 if (!empty($lastelement)) {
-                    if ($element instanceof ReportBaseImage) {
-                        $imgH = $element->getHeight();
-                    } else {
-                        $imgH = 0;
-                    }
-                    $cX = $renderer->tcpdf->GetX();
                     $newelements[] = $lastelement;
                     $lastelement   = [];
                 }
