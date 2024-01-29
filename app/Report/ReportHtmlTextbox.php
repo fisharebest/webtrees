@@ -59,13 +59,13 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                         }
                         $footnote_element = [];
                     }
-                    if (empty($lastelement)) {
+                    if (!isset($lastelement)) {
                         $lastelement = $element;
-                    } elseif ($element instanceof ReportBaseText && $lastelement instanceof ReportBaseText) {
-                        if ($element->getStyleName() === $lastelement->getStyleName()) {
+                    } elseif (($element instanceof ReportBaseText && $lastelement instanceof ReportBaseText) &&
+                           ($element->getStyleName() === $lastelement->getStyleName())) {
                             // Checking if the Text has the same style
                             $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
-                        }
+                        
                     } else {
                         $newelements[] = $lastelement;
                         $lastelement   = $element;

@@ -1234,6 +1234,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle </repeatTag>
      *
+     * @var mixed $rep
      * @return void
      */
     protected function repeatTagEndHandler(): void
@@ -1448,11 +1449,11 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
+        if (!isset($jdarr)) {
+            $jdarr = [];
+        }
         // Add fact/event for FAM:DIV and for death of spouse
         foreach ($this->repeats as $key => $fact) {
-            if (!isset($jdarr)) {
-                $jdarr = [];
-            }
             $jdarr[$key] = 0;
             if (preg_match('/1 FAMS @(.+)@/', $fact, $match)) {
                 $famid = $match[1];
@@ -3079,7 +3080,8 @@ class ReportParserGenerate extends ReportParserBase
                         $genlist[] = $wife->xref();
                     }
                 }
-                if ($children) {
+                if ($children && isset($person)) {
+                    // unnecessary test of $person to satisfy phpstan!
                     foreach ($family->children() as $child) {
                         $list[$child->xref()] = $child;
                         $child->generation = $list[$id]->generation ?? 1;
