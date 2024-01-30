@@ -198,13 +198,8 @@ class HtmlRenderer extends AbstractRenderer
         //-- footer
         echo '</div>';
         //echo '<script>document.getElementById("bodydiv").style.height="', $this->maxY, 'pt";</script>';
-        if ($this->Y < 200) { //heuristic guess!
-            echo '<div id="bottommargin" style="position: relative; top: auto; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
-            echo '<div id="footerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;height:auto;">';
-        } else {
-            echo '<div id="bottommargin" style="position: relative; top: ' . $this->Y . 'pt; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
-            echo '<div id="footerdiv" style="position: relative; top: ' . $this->Y . 'pt; width: ', $this->noMarginWidth, 'pt;height:auto;">';
-        }
+        echo '<div id="bottommargin" style="position: relative; z.index:-1; top: ' . $this->Y . 'pt; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+        echo '<div id="footerdiv" style="position: relative; top: ' . $this->Y . 'pt; width: ', $this->noMarginWidth, 'pt;height:auto;">';
         $this->Y    = 0;
         $this->X    = 0;
         $this->maxY = 0;
@@ -223,7 +218,7 @@ class HtmlRenderer extends AbstractRenderer
             echo 'document.getElementsByClassName("date")[0].style.top="15pt";';
             echo '</script>';
         }
-        echo '<div id="footermargin" style="position: relative; top: auto; height: ', $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+        echo '<div id="footermargin" style="position: relative; z.index:-1; top: auto; height: ', $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
     }
 
     /**
