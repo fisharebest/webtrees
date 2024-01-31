@@ -2680,7 +2680,7 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#',
-    'count' => 5,
+    'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
