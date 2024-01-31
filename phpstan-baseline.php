@@ -2524,16 +2524,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot access offset \\(float\\|int\\) on array\\<int, string\\>\\|false\\.$#',
-    'count' => 13,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access offset \\(float\\|int\\<1, max\\>\\) on array\\<int, string\\>\\|false\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Cannot access offset 0 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
@@ -2629,16 +2619,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$expression of method Symfony\\\\Component\\\\ExpressionLanguage\\\\ExpressionLanguage\\:\\:evaluate\\(\\) expects string\\|Symfony\\\\Component\\\\ExpressionLanguage\\\\Expression, string\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$haystack of function str_contains expects string, string\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$image of function imagesx expects GdImage, GdImage\\|false given\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
@@ -2680,11 +2660,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
@@ -2731,11 +2706,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$repeats \\(array\\<string\\>\\) does not accept array\\<string\\>\\|int\\.$#',
     'count' => 4,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$vars \\(array\\<array\\<string\\>\\>\\) does not accept array\\<array\\<string\\|null\\>\\>\\.$#',
-    'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
