@@ -1254,6 +1254,7 @@ class ReportParserGenerate extends ReportParserBase
             if (empty($lines)) {
                 error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
                 // this can not happen! phpstan forces me to add stupid code
+                // we come here because the xml file exists! Is it possible to tell phpstan the $lines *is* an array ??
                 die("can not happen!!!");
             }
             $lineoffset = 0;
@@ -1579,6 +1580,7 @@ class ReportParserGenerate extends ReportParserBase
             if (empty($lines)) {
                 error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
                 // this can not happen! phpstan forces me to add stupid code
+                // we come here because the xml file exists! Is it possible to tell phpstan the $lines *is* an array ??
                 die("can not happen!!!");
             }
             while ($lineoffset + $this->repeat_bytes > 0 && !str_contains($lines[$lineoffset + $this->repeat_bytes], '<Facts ')) {
@@ -2576,6 +2578,7 @@ class ReportParserGenerate extends ReportParserBase
             if (empty($lines)) {
                 error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
                 // this can not happen! phpstan forces me to add stupid code
+                // we come here because the xml file exists! Is it possible to tell phpstan the $lines *is* an array ??
                 die("can not happen!!!");
             }
             while ((!str_contains($lines[$lineoffset + $this->repeat_bytes], '<List')) && (($lineoffset + $this->repeat_bytes) > 0)) {
@@ -2814,6 +2817,7 @@ class ReportParserGenerate extends ReportParserBase
             if (empty($lines)) {
                 error_log(__FILE__ . ":" . __LINE__ . " impossible error!? \n");
                 // this can not happen! phpstan forces me to add stupid code
+                // we come here because the xml file exists! Is it possible to tell phpstan the $lines *is* an array ??
                 die("can not happen!!!");
             }
             while (!str_contains($lines[$lineoffset + $this->repeat_bytes], '<Relatives') && $lineoffset + $this->repeat_bytes > 0) {
