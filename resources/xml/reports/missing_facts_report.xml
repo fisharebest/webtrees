@@ -68,7 +68,11 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 
 			<Relatives id="$pid" group="$relatives" maxgen="$maxgen" sortby="NAME">
 				<!-- Relatives counter -->
-				<SetVar name="nrrelatives" value="$nrrelatives + 1" />
+				<SetVar name="tree" value="@tree"/>
+				<SetVar name="urlbase" value="@base_url"/>
+				<SetVar name="urlbase" value="$urlbase"/>
+                                <SetVar name="x" value="@$dump" dumpvar="urlbase" />
+                                <SetVar name="nrrelatives" value="$nrrelatives + 1" />
 				<SetVar name="printname" value="0" />
 				<SetVar name="id" value="@ID"/>
 				<!-- Birth -->
