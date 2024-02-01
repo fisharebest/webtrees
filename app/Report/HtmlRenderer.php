@@ -169,8 +169,7 @@ class HtmlRenderer extends AbstractRenderer
         //-- header divider
         echo '</style>', PHP_EOL;
         echo '<div id="headermargin" style="position: relative; top: auto; height: ', $this->header_margin, 'pt; width: ', $this->noMarginWidth, 'pt;"></div>';
-        echo '<div id="headerdiv" style="position: relative; top: auto; width: ',
-        $this->noMarginWidth, 'pt;margin-bottom:10pt;text-align:center;">';
+        echo '<div id="headerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;margin-bottom:10pt;text-align:center;">';
         foreach ($this->headerElements as $element) {
             if ($element instanceof ReportBaseElement) {
                 $element->render($this);
@@ -197,8 +196,7 @@ class HtmlRenderer extends AbstractRenderer
         }
         //-- footer
         echo '</div>';
-        //echo '<script>document.getElementById("bodydiv").style.height="', $this->maxY, 'pt";</script>';
-        echo '<div id="bottommargin" style="position: relative; z.index:-1; top: ' . $this->Y . 'pt; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+        echo '<div id="bottommargin" style="position: relative; z-index: -1; top: ' . $this->Y . 'pt; height: ', $this->bottom_margin - $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
         echo '<div id="footerdiv" style="position: relative; top: ' . $this->Y . 'pt; width: ', $this->noMarginWidth, 'pt;height:auto;">';
         $this->Y    = 0;
         $this->X    = 0;
@@ -218,7 +216,7 @@ class HtmlRenderer extends AbstractRenderer
             echo 'document.getElementsByClassName("date")[0].style.top="15pt";';
             echo '</script>';
         }
-        echo '<div id="footermargin" style="position: relative; z.index:-1; top: auto; height: ', $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
+        echo '<div id="footermargin" style="position: relative; z-index: -1; top: auto; height: ', $this->footer_margin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
     }
 
     /**
