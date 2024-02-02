@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest]
+        operating-system: ['ubuntu-latest']
         php-version: ['8.1', '8.2', '8.3', '8.4']
       fail-fast: false
 
@@ -21,7 +21,7 @@ jobs:
           extensions: gd,intl,mbstring,sqlite,zip
           coverage: pcov
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - run: composer validate
 
