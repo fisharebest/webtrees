@@ -82,6 +82,7 @@ class BadBotBlocker implements MiddlewareInterface
         'FacebookBot', // Collects training data for Facebook's LLM translator.
         'fidget-spinner-bot', // Agressive crawler
         'Foregenix', // Vulnerability scanner
+        'FriendlyCrawler', // Collects training data for LLMs
         'Go-http-client', // Crawler library used by many bots
         'Google-Extended', // Collects training data for Google Bard
         'GPTBot', // Collects training data for ChatGPT
