@@ -69,14 +69,11 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				<SetVar name="no_fact" value=""/>
 				<SetVar name="no_data" value=""/>
 				<SetVar name="no_source" value=""/>
-																																<!-- Relatives counter -->
+				<!-- Relatives counter -->
 				<SetVar name="tree" value="@tree"/>
 				<SetVar name="nrrelatives" value="$nrrelatives + 1" />
 				<SetVar name="printname" value="0" />
 				<SetVar name="id" value="@ID"/>
-				<SetVar name="nm" value="@NAME"/>
-																																<SetVar name="y" value="$id : $nm --- start -------"/>
-																																<SetVar name="x" value="@$dump" dumpvar="y"/>
 				<!-- Birth -->
 				<if condition="$fbirt=='on'">
 					<SetVar name="evnt" value="I18N::translate('Birth')" lcfirst="1"/>
@@ -93,7 +90,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -147,7 +144,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -201,7 +198,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -256,7 +253,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -310,7 +307,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -364,7 +361,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -419,7 +416,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -474,7 +471,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -529,7 +526,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -585,7 +582,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -640,7 +637,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -694,7 +691,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</Gedcom>
 					<if condition="$fact=='MARR' and $ffound=='N'">
 					<Gedcom id="EVEN" > <!-- partnership without marriage recorded as Event:Type -->
-																								<setvar name="ffound" value="Y"/>
+						<setvar name="ffound" value="Y"/>
 						<setvar name="fdate" value="@DATE" />
 						<setvar name="fplac" value="@PLAC" />
 						<setvar name="fsrc" value="@SOUR" />
@@ -743,11 +740,6 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					</if>
 				</if>
 				<!-- print result -->
-																																<SetVar name="x" value="@$dump" dumpvar="no_fact"/>
-																																<SetVar name="x" value="@$dump" dumpvar="no_data"/>
-																																<SetVar name="x" value="@$dump" dumpvar="no_source"/>
-																																<SetVar name="y" value="$id : $nm --- end -------"/>
-																																<SetVar name="x" value="@$dump" dumpvar="y"/>
 				<if condition="$no_fact!='' and $printname=='1'">
 					<Cell style="list_value" width="$name"> </Cell>
 				</if>
@@ -757,10 +749,10 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<SetVar name="printname" value="1" />
 				</if>
 				<if condition="$no_fact!=''">
-																																	<SetVar name="newtext" value="I18N::translate('Missing records')"/>
-																																	<SetVar name="newtext" value="$newtext: $no_fact"/>
-																																								<Cell newline="1" style="list_value"><var var="newtext" /></Cell>
-																																</if>
+					<SetVar name="newtext" value="I18N::translate('Missing records')"/>
+					<SetVar name="newtext" value="$newtext: $no_fact"/>
+					<Cell newline="1" style="list_value"><var var="newtext" /></Cell>
+				</if>
 				<if condition="$no_data!='' and $printname=='1'">
 					<Cell style="list_value" width="$name"> </Cell>
 				</if>
@@ -770,11 +762,11 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<SetVar name="printname" value="1" />
 				</if>
 				<if condition="$no_data!=''">
-																																	<SetVar name="newtext" value="I18N::translate('Missing data')"/>
-																																	<SetVar name="newtext" value="$newtext: $no_data"/>
-																																								<Cell newline="1" style="list_value"><var var="newtext" /></Cell>
-																																</if>
-																																<if condition="$no_source!='' and $printname=='1'">
+					<SetVar name="newtext" value="I18N::translate('Missing data')"/>
+					<SetVar name="newtext" value="$newtext: $no_data"/>
+					<Cell newline="1" style="list_value"><var var="newtext" /></Cell>
+				</if>
+				<if condition="$no_source!='' and $printname=='1'">
 					<Cell style="list_value" width="$name"> </Cell>
 				</if>
 				<if condition="$no_source!='' and $printname=='0'">
@@ -783,10 +775,10 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<SetVar name="printname" value="1" />
 				</if>
 				<if condition="$no_source!=''">
-																																	<SetVar name="newtext" value="I18N::translate('Records without source ref.')"/>
-																																	<SetVar name="newtext" value="$newtext: $no_source"/>
-																																								<Cell newline="1" style="list_value"><var var="newtext" /></Cell>
-																																</if>
+					<SetVar name="newtext" value="I18N::translate('Records without source ref.')"/>
+					<SetVar name="newtext" value="$newtext: $no_source"/>
+					<Cell newline="1" style="list_value"><var var="newtext" /></Cell>
+				</if>
 				<if condition="$printname=='1'">
 					<SetVar name="nrprinted" value="$nrprinted + 1" />
 					<TextBox height="1" newline="1" padding="0"/>

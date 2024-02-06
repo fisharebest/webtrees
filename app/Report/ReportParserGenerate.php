@@ -1707,17 +1707,20 @@ class ReportParserGenerate extends ReportParserBase
             $value = (string) $this->generation;
         } elseif ($value === '@base_url') {
             $value = "";
-            if (array_key_exists("route", $_GET)) {
-                $value = $_GET["route"];
+            if (array_key_exists("REQUEST_URI", $_SERVER)) {
+                $value = urldecode($_SERVER["REQUEST_URI"]);
             }
-            $i = strpos($value, "%2Freport");
-            if ($i === false) {
-                $i = strpos($value, "/report");
+            $url1 = "";
+            $i = strpos($value, "route=");
+            if ($i !== false) {
+                $url1 = substr($value, 0, $i + 6);
+                $value = substr($value, $i + 6);
             }
+            $i = strpos($value, "/report");
             if ($i !== false) {
                 $value = substr($value, 0, $i);
             }
-            $value = "index.php?route=" . $value;
+            $value = $url1 . $value;
         } elseif ($value === '@relation') {
             if (isset($this->mfrelation[$curr_id]) && $curr_id != "") {
                 $value = (string) $this->mfrelation[$curr_id];
