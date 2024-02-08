@@ -60,12 +60,6 @@
 				<TextBox width="200">
 					<Text style="text"><GetPersonName id="" />
 						<if condition="$adlist=='_MARNM'">
-							<RepeatTag tag="NAME">
-								<if condition="@NAME:TYPE=='married'">
-									<br /><GedcomValue tag="NAME" />
-								</if>
-							</RepeatTag>
-
 							<RepeatTag tag="NAME:_MARNM">
 								<br /><GedcomValue tag="_MARNM" />
 							</RepeatTag>
@@ -83,7 +77,7 @@
 					<Text style="text"><GedcomValue tag="DEAT:DATE" newline="1" /></Text>
 				</TextBox>
 				<TextBox width="150">
-					<Text style="text"><GedcomValue tag="DEAT:PLAC" /></Text>
+					<Text style="text"><GedcomValue tag="DEAT:PLAC" truncate="28"/></Text>
 				</TextBox>
 				<TextBox newline="1">
 					<!-- Only with multiple sources use line feed (br) -->

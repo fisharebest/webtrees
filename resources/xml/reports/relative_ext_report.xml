@@ -104,6 +104,8 @@
 				<if condition="@FAMC==''">
 					<TextBox height="2" newline="1"/>
 				</if>
+                                <!-- The cell below will force a table-like layout when pdf is chosen -->
+                                <Cell align="center" height="2" newline="1" style="text"></Cell>
 				<RepeatTag tag="FAMS">
 					<Gedcom id="@FAMS">
 						<TextBox height="$height2" left="$width1" width="$widthB2">

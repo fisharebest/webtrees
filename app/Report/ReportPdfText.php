@@ -125,8 +125,33 @@ class ReportPdfText extends ReportBaseText
             $renderer->largestFontHeight = $fsize;
         }
 
+        // Tcpdf does not support box-drawing chars, change them to simple chars
+        $this->text = str_replace([
+            '&#x251C;',
+            '&#x2570;'
+        ], [
+            "|",
+            "\\"
+        ], $this->text);
+
         // Get the line width for the text in points
-        $lw = $renderer->tcpdf->GetStringWidth($this->text);
+        // Count some html entities as one char
+        $txt2 = str_replace([
+            '&#xA0;',
+            '&nbsp;',
+            '&mdash;',
+            '&#x2570;',
+            '<u>',
+            '</u>'
+        ], [
+            "#",
+            "#",
+            "#",
+            "#",
+            "",
+            ""
+        ], $this->text);
+        $lw = $renderer->tcpdf->GetStringWidth($txt2);
         // Line Feed counter - Number of lines in the text
         $lfct = substr_count($this->text, "\n") + 1;
         // If there is still remaining wrap width...
@@ -139,10 +164,17 @@ class ReportPdfText extends ReportBaseText
                 // Go through the text line by line
                 foreach ($lines as $line) {
                     // Line width in points + a little margin
-                    $lw = $renderer->tcpdf->GetStringWidth($line);
+                    $txt2 = str_replace([
+                        '&#xA0;',
+                        '&nbsp;'
+                    ], [
+                        "#",
+                        "#"
+                    ], $line);
+                    $lw = $renderer->tcpdf->GetStringWidth($txt2);
                     // If the line has to be wrapped
                     if ($lw > $wrapWidthRemaining) {
-                        $words    = explode(' ', $line);
+                        $words    = explode(' ', $txt2);
                         $addspace = count($words);
                         $lw       = 0;
                         foreach ($words as $word) {

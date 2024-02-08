@@ -40,9 +40,10 @@ class ReportHtmlTextbox extends ReportBaseTextbox
      */
     public function render($renderer): void
     {
+        static $lastBoxYfinal;
         // checkFootnote
         $newelements      = [];
-        $lastelement      = [];
+        $lastelement      = null;
         $footnote_element = [];
         // Element counter
         $cE = count($this->elements);
@@ -58,22 +59,23 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                         }
                         $footnote_element = [];
                     }
-                    if (empty($lastelement)) {
+                    if (!isset($lastelement)) {
                         $lastelement = $element;
-                    } elseif ($element->getStyleName() === $lastelement->getStyleName()) {
-                        // Checking if the Text has the same style
+                    } elseif (($element instanceof ReportBaseText && $lastelement instanceof ReportBaseText) && ($element->getStyleName() === $lastelement->getStyleName())) {
                         $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
                     } else {
                         $newelements[] = $lastelement;
                         $lastelement   = $element;
                     }
+                } elseif ($element instanceof ReportHtmlImage) {
+                    $lastelement   = $element;
                 } elseif ($element instanceof ReportHtmlFootnote) {
                     // Check if the Footnote has been set with it’s link number
                     $renderer->checkFootnote($element);
                     // Save first the last element if any
-                    if (!empty($lastelement)) {
+                    if (isset($lastelement)) {
                         $newelements[] = $lastelement;
-                        $lastelement   = [];
+                        $lastelement   = null;
                     }
                     // Save the Footnote with it’s link number as key for sorting later
                     $footnote_element[$element->num] = $element;
@@ -86,16 +88,16 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                         }
                         $footnote_element = [];
                     }
-                    if (!empty($lastelement)) {
+                    if (isset($lastelement)) {
                         $newelements[] = $lastelement;
-                        $lastelement   = [];
+                        $lastelement   = null;
                     }
                     $newelements[] = $element;
                 }
             } else {
-                if (!empty($lastelement)) {
+                if (isset($lastelement)) {
                     $newelements[] = $lastelement;
-                    $lastelement   = [];
+                    $lastelement   = null;
                 }
                 if (!empty($footnote_element)) {
                     ksort($footnote_element);
@@ -107,7 +109,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                 $newelements[] = $element;
             }
         }
-        if (!empty($lastelement)) {
+        if (isset($lastelement)) {
             $newelements[] = $lastelement;
         }
         if (!empty($footnote_element)) {
@@ -132,6 +134,19 @@ class ReportHtmlTextbox extends ReportBaseTextbox
             $renderer->setX($cX);
         }
         // If current position (top)
+        $align_Y = false;
+        $topstr = "";
+        if ($this->top < -110000) { // pos='abs'
+            $this->top += 222000;
+        }
+        if ($this->top < -10000) { // <= -100000: both pdf and html; -100000 -- -90000: only html
+            $this->top += 90000;  //= ReportBaseElement::CURRENT_POSITION;
+            if ($this->top < -9000) {
+                $this->top += 10000;
+            }
+            $topstr = "top:" . $this->top . "pt;";
+            $align_Y = true;
+        }
         if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $this->top = $renderer->getY();
         } else {
@@ -192,7 +207,8 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         }
 
         // Add up what’s the final height
-        $cH = $this->height;
+        //$cH = $this->height;
+        $cH = 0;
         // If any element exist
         if ($cE > 0) {
             // Check if this is text or some other element, like images
@@ -225,7 +241,12 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         $renderer->addMaxY($this->top + $cH);
 
         // Start to print HTML
-        echo '<div style="position:absolute;top:', $this->top, 'pt;';
+        if (!$align_Y) {
+            echo '<div style="position:absolute;top:', $this->top, 'pt;';
+        } else {
+            echo '<div style="position:relative;top:', $this->top, 'pt;';
+        }
+        //echo '<div style="position:relative;';
         // LTR (left) or RTL (right)
         echo $renderer->alignRTL, ':', $cX, 'pt;';
         // Background color
@@ -240,9 +261,17 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // Border setup
         if ($this->border) {
             echo ' border:solid black 1pt;';
-            echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:', $cH - 1, 'pt;';
+            if (!$align_Y) {
+                echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:', $cH - 1, 'pt;';
+            } else {
+                echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:auto;';
+            } // height:',$this->height,'pt;'; //,$topstr;
         } else {
-            echo 'width:', $this->width - $cP * 2, 'pt;height:', $cH, 'pt;';
+            if (!$align_Y) {
+                echo 'width:', $this->width - $cP * 2, 'pt;height:', $cH, 'pt;';
+            } else {
+                echo 'width:', $this->width - $cP * 2, 'pt;height:auto;';
+            } //height:',$this->height,'pt;'; //,$topstr;
         }
         echo '">';
 
@@ -280,5 +309,8 @@ class ReportHtmlTextbox extends ReportBaseTextbox
             $renderer->setXy(0, $this->top + $cH + $cP * 2);
             $renderer->lastCellHeight = 0;
         }
+        // This will make images in textboxes to ignore images in previous textboxes
+        // Without this trick the $lastpicbottom in the previos textbox will be used in ReportHtmlImage
+        $renderer->pageN++;
     }
 }
