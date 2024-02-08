@@ -9,7 +9,7 @@
     "autoprefixer": "10.4.17",
     "cross-env": "7.0.3",
     "laravel-mix": "6.0.49",
-    "postcss": "8.4.33",
+    "postcss": "8.4.35",
     "postcss-custom-properties": "13.3.4",
     "postcss-image-inliner": "7.0.1",
     "postcss-import": "16.0.0",
