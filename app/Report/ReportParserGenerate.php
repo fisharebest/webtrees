@@ -1009,6 +1009,10 @@ class ReportParserGenerate extends ReportParserBase
         if (isset($attrs['select'])) {
             $nameselect = $attrs['select'];
         }
+        $namesep = "";
+        if (isset($attrs['name_sep'])) {
+            $namesep = $attrs['name_sep'];
+        }
         $famrel = false;
         if (isset($attrs['fam_relation'])) {
             $famrel = true;
@@ -1037,7 +1041,7 @@ class ReportParserGenerate extends ReportParserBase
                 }
                 $addname = strip_tags((string) $tmp[0]['surn']);
                 if (!empty($addname) && !($addname === '@N.N.') && !str_contains($name, $addname)) {
-                    $name .= " " . I18N::translate('b.') . " " . $addname;
+                    $name .= " " . $namesep . " " . $addname;
                 }
                 $this->current_element->addText(trim($name));
             } else {
