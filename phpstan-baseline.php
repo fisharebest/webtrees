@@ -5363,15 +5363,5 @@ $ignoreErrors[] = [
     'count' => 1,
     'path' => __DIR__ . '/tests/feature/IndividualListTest.php',
 ];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$valueMap of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationStubber\\:\\:willReturnMap\\(\\) expects array\\<int, array\\<int, mixed\\>\\>, array\\<string, Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/feature/RelationshipNamesTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$valueMap of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationStubber\\:\\:willReturnMap\\(\\) expects array\\<int, array\\<int, mixed\\>\\>, array\\<string, Fisharebest\\\\Webtrees\\\\Individual\\> given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/feature/RelationshipNamesTest.php',
-];
 
 return ['parameters' => ['ignoreErrors' => $ignoreErrors]];
