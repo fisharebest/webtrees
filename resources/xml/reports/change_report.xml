@@ -32,7 +32,7 @@
 		<SetVar name="namewidth" value="270"/>
 		<SetVar name="datewidth" value="300"/>
 	</if>
-	
+
 	<if condition="$pageorient=='portrait'">
 		<!-- portrait orientation -->
 		<SetVar name="namewidth" value="210"/>
@@ -81,7 +81,8 @@
 					<TextBox height="12" newline="1">
 						<Text style="text"><GedcomValue tag="CHAN:DATE" /> <GedcomValue tag="CHAN:DATE:TIME" /> - <GedcomValue tag="CHAN:_WT_USER" /></Text>
 					</TextBox>
-
+                                        <!-- The cell below will force a table-like layout when pdf is chosen -->
+                                        <Cell align="center" height="2" newline="1" style="text"></Cell>
 				</List>
 				<Cell align="rightrtl" height="25" newline="1" style="label">
 					<var var="I18N::translate('Total pending changes: ')" /><ListTotal /><br />
@@ -121,6 +122,7 @@
 				<TextBox height="12" newline="1">
 					<Text style="text"><GedcomValue tag="CHAN:DATE" /> <GedcomValue tag="CHAN:DATE:TIME" /> - <GedcomValue tag="CHAN:_WT_USER" /></Text>
 				</TextBox>
+                                <Cell align="center" height="2" newline="1" style="text"><sp /></Cell>
 			</List>
 
 			<Cell align="rightrtl" height="25" newline="1" style="label">
