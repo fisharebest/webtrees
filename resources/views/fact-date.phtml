@@ -117,19 +117,18 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
                     $ageText = I18N::translate('(on the date of death)');
                 } else {
                     // After death
-                    $age     = (string) new Age($death_date, $date);
-					if ($age !== '') {
+                    $age = (string) new Age($death_date, $date);
+                    
+                    if ($age !== '') {
                         $ageText = I18N::translate('(%s after death)', $age);
-					} else {
-						$ageText = '';
-					}
+                    } else {
+                        $ageText = '';
+                    }
                 }
 
                 // Family events which occur after death are probably errors
-                if ($fact->record() instanceof Family) {
-					if ($ageText !== '') {
-                        $ageText .= view('icons/warning');
-					}
+                if ($fact->record() instanceof Family && $ageText !== '') {
+                    $ageText .= view('icons/warning');
                 }
             }
 
