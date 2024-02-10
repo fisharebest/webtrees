@@ -390,7 +390,7 @@ class Migration0 implements MigrationInterface
         });
 
         DB::schema()->create('session', static function (Blueprint $table): void {
-            $table->string('session_id', 32);
+            $table->string('session_id', 256);
             $table->timestamp('session_time')->useCurrent();
             $table->integer('user_id');
             $table->ipAddress('ip_address');
