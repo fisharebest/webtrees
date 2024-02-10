@@ -130,6 +130,8 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('WEBMASTER_USER_ID', (string) $webmaster_user_id);
         $tree->setPreference('title', $title);
 
+        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
+
         if (Auth::isAdmin()) {
             // Only accept valid folders for MEDIA_DIRECTORY
             $MEDIA_DIRECTORY = Validator::parsedBody($request)->string('MEDIA_DIRECTORY');
@@ -137,27 +139,27 @@ class TreePreferencesAction implements RequestHandlerInterface
             $MEDIA_DIRECTORY = trim($MEDIA_DIRECTORY, '/') . '/';
 
             $tree->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-        }
 
-        $gedcom = Validator::parsedBody($request)->string('gedcom');
-        $url    = route(ManageTrees::class, ['tree' => $tree->name()]);
+            $gedcom = Validator::parsedBody($request)->isNotEmpty()->string('gedcom');
 
-        if (Auth::isAdmin() && $gedcom !== '' && $gedcom !== $tree->name()) {
-            try {
-                DB::table('gedcom')
-                    ->where('gedcom_id', '=', $tree->id())
-                    ->update(['gedcom_name' => $gedcom]);
+            if ($gedcom !== $tree->name()) {
+                try {
+                    DB::table('gedcom')
+                        ->where('gedcom_id', '=', $tree->id())
+                        ->update(['gedcom_name' => $gedcom]);
 
-                // Did we rename the default tree?
-                DB::table('site_setting')
-                    ->where('setting_name', '=', 'DEFAULT_GEDCOM')
-                    ->where('setting_value', '=', $tree->name())
-                    ->update(['setting_value' => $gedcom]);
+                    // Did we rename the default tree?
+                    DB::table('site_setting')
+                        ->where('setting_name', '=', 'DEFAULT_GEDCOM')
+                        ->where('setting_value', '=', $tree->name())
+                        ->update(['setting_value' => $gedcom]);
 
-                $url = route(ManageTrees::class, ['tree' => $gedcom]);
-            } catch (PDOException $ex) {
-                // Probably a duplicate name.
+                    $url = route(ManageTrees::class, ['tree' => $gedcom]);
+                } catch (PDOException $ex) {
+                    // Probably a duplicate name.
+                }
             }
+
         }
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
