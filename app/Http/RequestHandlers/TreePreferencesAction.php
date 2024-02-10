@@ -159,7 +159,6 @@ class TreePreferencesAction implements RequestHandlerInterface
                     // Probably a duplicate name.
                 }
             }
-
         }
 
         FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', e($tree->title())), 'success');
