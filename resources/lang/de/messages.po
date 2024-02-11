@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-02-08 09:36+0000\n"
+"PO-Revision-Date: 2024-02-14 01:15+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
@@ -8503,7 +8503,7 @@ msgstr "Letzte Änderung"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr "Zuletzt geprüft vor %s."
+msgstr "Zuletzt geprüft %s."
 
 #: app/Module/ReviewChangesModule.php:163
 msgid "Last email reminder was sent "
