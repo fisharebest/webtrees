@@ -346,7 +346,7 @@ class Gedcom
         '_MBON',
         '_NMR',
         '_SEPR',
-    '_SP_DEAT',  // only used internally, not exported to a gedcom file
+        '_SP_DEAT',  // only used internally, not exported to a gedcom file
     ];
 
     public const CUSTOM_INDIVIDUAL_TAGS = [
