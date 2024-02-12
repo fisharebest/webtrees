@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-15 12:02+0000\n"
+"PO-Revision-Date: 2024-02-14 01:15+0000\n"
 "Last-Translator: Purushottam Ghimire <ghimiretree@gmail.com>\n"
 "Language-Team: Nepali <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ne/>\n"
@@ -3857,7 +3857,7 @@ msgstr "सामान्य कानुनी विवाह"
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:78
 msgid "Communicate directly with other users, using private messages."
-msgstr "व्याक्तिगत खबर पठाएर सोझै अरु प्रयोगकर्ताहरु सँग सम्पर्क गर्नुहोस्।"
+msgstr "व्याक्तिगत खबर पठाएर सोझै अरु प्रयोगकर्ताहरू सँग सम्पर्क गर्नुहोस्।"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:141
@@ -6480,7 +6480,7 @@ msgstr "महिला"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:26
 #: resources/views/modules/top10_givnnames/block.phtml:20
 msgid "Females"
-msgstr "महिलाहरु"
+msgstr "महिलाहरू"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
@@ -9115,7 +9115,7 @@ msgstr "पुरुष"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:17
 #: resources/views/modules/top10_givnnames/block.phtml:16
 msgid "Males"
-msgstr "पुरुषहरु"
+msgstr "पुरुषहरू"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:333
