@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Localization\Translation;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Mime;
@@ -33,7 +32,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function str_contains;
 use function strtoupper;
-use function substr_replace;
 
 /**
  * Trait ModuleCustomTrait - default implementation of ModuleCustomInterface
@@ -112,7 +110,7 @@ trait ModuleCustomTrait
                         return $version;
                     }
                 }
-            } catch (GuzzleException $ex) {
+            } catch (GuzzleException) {
                 // Can't connect to the server?
             }
 
@@ -139,31 +137,7 @@ trait ModuleCustomTrait
      */
     public function customTranslations(string $language): array
     {
-        $php_file     = $this->resourcesFolder() . 'lang/' . $language . '/messages.php';
-        $po_file      = $this->resourcesFolder() . 'lang/' . $language . '/messages.po';
-        $mo_file      = $this->resourcesFolder() . 'lang/' . $language . '/messages.mo';
-        if (file_exists($php_file)) {
-            $translation  = new Translation($php_file);
-            $translations = $translation->asArray();
-            return $translations;
-        }
-        if (file_exists($mo_file)) {
-            $translation  = new Translation($mo_file);
-            $translations = $translation->asArray();
-            if (is_writeable($this->resourcesFolder() . 'lang/' . $language)) {
-                file_put_contents($php_file, "<?php\n\nreturn " . var_export($translations, true) . ";\n");
-            }
-            return $translations;
-        }
-        if (!file_exists($po_file)) {
-            return [];
-        }
-        $translation  = new Translation($po_file);
-        $translations = $translation->asArray();
-        if (is_writeable($this->resourcesFolder() . 'lang/' . $language)) {
-            file_put_contents($php_file, "<?php\n\nreturn " . var_export($translations, true) . ";\n");
-        }
-        return $translations;
+        return [];
     }
 
     /**
