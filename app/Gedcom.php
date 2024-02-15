@@ -346,7 +346,6 @@ class Gedcom
         '_MBON',
         '_NMR',
         '_SEPR',
-        '_SP_DEAT',  // only used internally, not exported to a gedcom file
     ];
 
     public const CUSTOM_INDIVIDUAL_TAGS = [
@@ -595,8 +594,8 @@ class Gedcom
             'INDI:BARM:DATE'             => new DateValue(I18N::translate('Date of bar mitzvah')),
             'INDI:BARM:PLAC'             => new PlaceName(I18N::translate('Place of bar mitzvah')),
             'INDI:BASM'                  => new BasMitzvah(I18N::translate('Bat mitzvah')),
-            'INDI:BASM:DATE'             => new DateValue(I18N::translate('Date of bat mitzvah')),
-            'INDI:BASM:PLAC'             => new PlaceName(I18N::translate('Place of bat mitzvah')),
+            'INDI:BASM:DATE'             => new BasMitzvah(I18N::translate('Date of bat mitzvah')),
+            'INDI:BASM:PLAC'             => new DateValue(I18N::translate('Place of bat mitzvah')),
             'INDI:BIRT'                  => new Birth(I18N::translate('Birth')),
             'INDI:BIRT:DATE'             => new DateValue(I18N::translate('Date of birth')),
             'INDI:BIRT:FAMC'             => new XrefFamily(I18N::translate('Birth parents')),
@@ -757,7 +756,6 @@ class Gedcom
             'INDI:SUBM'                  => new XrefSubmitter(I18N::translate('Submitter')),
             'INDI:TITL'                  => new NobilityTypeTitle(I18N::translate('Title')),
             'INDI:WILL'                  => new Will(I18N::translate('Will')),
-            'INDI:_SP_DEAT'              => new Death(I18N::translate('Death of spouse')),
             'NOTE'                       => new NoteRecord(I18N::translate('Shared note')),
             'NOTE:CHAN'                  => new Change(I18N::translate('Last change')),
             'NOTE:CHAN:DATE'             => new ChangeDate(I18N::translate('Date of last change')),

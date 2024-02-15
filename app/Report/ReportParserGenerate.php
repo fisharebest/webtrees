@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Family;
@@ -36,6 +35,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB; // webtrees 2.1.x
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -2058,7 +2058,7 @@ class ReportParserGenerate extends ReportParserBase
 
         if ($file === '@FILE') {
             $match = [];
-            if (preg_match("/\d OBJE @(.+)@/", $this->gedrec, $match)) {
+            if (preg_match("/1 OBJE @(.+)@/", $this->gedrec, $match)) {
                 $mediaobject = Registry::mediaFactory()->make($match[1], $this->tree);
                 $media_file  = $mediaobject->firstImageFile();
 
