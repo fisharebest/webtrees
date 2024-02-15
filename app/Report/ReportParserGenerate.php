@@ -1699,6 +1699,8 @@ class ReportParserGenerate extends ReportParserBase
             }
         } elseif ($value === '@fact') {
             $value = $this->fact;
+        } elseif ($value === '@lang') {
+            $value = I18N::languageTag();
         } elseif ($value === '@desc') {
             $value = $this->desc;
         } elseif ($value === '@format') {
@@ -1785,7 +1787,9 @@ class ReportParserGenerate extends ReportParserBase
             $value = I18N::translateContext($match[1], $match[2]);
         }
         if (isset($attrs['lcfirst'])) { // set 1st char to lower case
-            $value = lcfirst($value);
+            if ($attrs['lcfirst'] == '1') {
+                $value = lcfirst($value);
+            }
         }
 
         // Arithmetic functions

@@ -49,6 +49,11 @@
 	<SetVar name="dump" value="dval" />
 	<SetVar name="dval" value="25" />
 	<SetVar name="urlbase" value="@base_url"/>
+	<SetVar name="lang" value="@lang"/>
+	<SetVar name="lc1" value="1"/>
+	<if condition="$lang=='de'">
+		<SetVar name="lc1" value="0"/>
+	</if>
 	<Doc pageSize="$pageSize">
 		<Header>
 			<Cell align="center" newline="1" style="header"><var var="I18N::translate('Missing data')" /></Cell>
@@ -76,10 +81,10 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				<SetVar name="id" value="@ID"/>
 				<!-- Birth -->
 				<if condition="$fbirt=='on'">
-					<SetVar name="evnt" value="I18N::translate('Birth')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('Birth')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="BIRT"/>
-					<SetVar name="str_date" value="I18N::translate('Date of birth')"/>
-					<SetVar name="str_plac" value="I18N::translate('Place of birth')"/>
+					<SetVar name="str_date" value="I18N::translate('Date of birth')" lcfirst="$lc1"/>
+					<SetVar name="str_plac" value="I18N::translate('Place of birth')" lcfirst="$lc1"/>
 					<!-- Total Event Counter -->
 					<setvar name="ffound" value="N"/>
 					<Gedcom id="$fact" >
@@ -107,13 +112,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -122,7 +127,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -130,7 +135,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- Baptism / Christining -->
 				<if condition="$fbapm=='on'">
-					<SetVar name="evnt" value="I18N::translate('Baptism')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('Baptism')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="BAPM"/>
 					<SetVar name="str_date" value="I18N::translate('Date of baptism')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of baptism')"/>
@@ -161,13 +166,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -176,7 +181,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -184,10 +189,10 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<SetVar name="printbapm" value="1" />
 					<!-- Christining -->
 					<if condition="((@CHR:DATE=='') or (@CHR:PLAC=='')) and ($printbapm==0)">
-					<SetVar name="evnt" value="I18N::translate('Christening')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('Christening')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="CHR"/>
-					<SetVar name="str_date" value="I18N::translate('Date of christening')"/>
-					<SetVar name="str_plac" value="I18N::translate('Place of christening')"/>
+					<SetVar name="str_date" value="I18N::translate('Date of christening')" lcfirst="$lc1"/>
+					<SetVar name="str_plac" value="I18N::translate('Place of christening')" lcfirst="$lc1"/>
 					<!-- Total Event Counter -->
 					<setvar name="ffound" value="N"/>
 					<Gedcom id="$fact" >
@@ -215,13 +220,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -230,7 +235,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -239,7 +244,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- BARM - male only -->
 				<if condition="($fbarm=='on') and (@SEX=='M')">
-					<SetVar name="evnt" value="I18N::translate('bar mitzvah')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('bar mitzvah')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="BARM"/>
 					<SetVar name="str_date" value="I18N::translate('Date of bar mitzvah')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of bar mitzvah')"/>
@@ -270,13 +275,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -285,7 +290,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -293,7 +298,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- BASM - female only -->
 				<if condition="($fbasm=='on') and (@SEX=='F')">
-					<SetVar name="evnt" value="I18N::translate('bat mitzvah')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('bat mitzvah')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="BASM"/>
 					<SetVar name="str_date" value="I18N::translate('Date of bat mitzvah')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of bat mitzvah')"/>
@@ -324,13 +329,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -339,7 +344,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -347,7 +352,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- CONF -->
 				<if condition="$fconf=='on'">
-					<SetVar name="evnt" value="I18N::translate('confirmation')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('confirmation')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="CONF"/>
 					<SetVar name="str_date" value="I18N::translate('Date of bat confirmation')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of bat confirmation')"/>
@@ -378,13 +383,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -393,7 +398,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -401,7 +406,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- ENGA -->
 				<if condition="$fenga=='on'">
-					<SetVar name="evnt" value="I18N::translate('engagement')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('engagement')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="ENGA"/>
 					<SetVar name="str_date" value="I18N::translate('Date of engagement')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of engagement')"/>
@@ -433,13 +438,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -448,7 +453,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -457,7 +462,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- FCOM -->
 				<if condition="$ffcom=='on'">
-					<SetVar name="evnt" value="I18N::translate('first communion')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('first communion')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="FCOM"/>
 					<SetVar name="str_date" value="I18N::translate('Date of first communion')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of first communion')"/>
@@ -488,13 +493,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -503,7 +508,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -511,7 +516,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- MARB -->
 				<if condition="$fmarb=='on'">
-					<SetVar name="evnt" value="I18N::translate('marriage banns')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('marriage banns')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="MARB"/>
 					<SetVar name="str_date" value="I18N::translate('Date of marriage banns')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of marriage banns')"/>
@@ -543,13 +548,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -558,7 +563,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -567,10 +572,10 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- MARR -->
 				<if condition="$fmarr=='on'">
-					<SetVar name="evnt" value="I18N::translate('marriage')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('marriage')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="MARR"/>
-					<SetVar name="str_date" value="I18N::translate('Date of marriage')"/>
-					<SetVar name="str_plac" value="I18N::translate('Place of marriage')"/>
+					<SetVar name="str_date" value="I18N::translate('Date of marriage')" lcfirst="$lc1"/>
+					<SetVar name="str_plac" value="I18N::translate('Place of marriage')" lcfirst="$lc1"/>
 					<Gedcom id="@FAMS">
 					<!-- Total Event Counter -->
 					<setvar name="ffound" value="N"/>
@@ -599,13 +604,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -614,7 +619,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -623,10 +628,10 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- DEAT -->
 				<if condition="$fdeat=='on'">
-					<SetVar name="evnt" value="I18N::translate('death')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('Death')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="DEAT"/>
-					<SetVar name="str_date" value="I18N::translate('Date of death')"/>
-					<SetVar name="str_plac" value="I18N::translate('Place of death')"/>
+					<SetVar name="str_date" value="I18N::translate('Date of death')" lcfirst="$lc1"/>
+					<SetVar name="str_plac" value="I18N::translate('Place of death')" lcfirst="$lc1"/>
 					<!-- Total Event Counter -->
 					<setvar name="ffound" value="N"/>
 					<Gedcom id="$fact" >
@@ -654,13 +659,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -669,7 +674,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
@@ -677,7 +682,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 				</if>
 				<!-- BURI -->
 				<if condition="$fburi=='on'">
-					<SetVar name="evnt" value="I18N::translate('burial')" lcfirst="1"/>
+					<SetVar name="evnt" value="I18N::translate('burial')" lcfirst="$lc1"/>
 					<SetVar name="fact" value="BURI"/>
 					<SetVar name="str_date" value="I18N::translate('Date of burial')"/>
 					<SetVar name="str_plac" value="I18N::translate('Place of burial')"/>
@@ -708,13 +713,13 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 					<if condition="$fdate==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_date"/>
+						<SetVar name="no_data1" value="$no_data $str_date, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fplac==''">
 						<!-- Missing event counter -->
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<SetVar name="no_data1" value="$no_data $str_plac"/>
+						<SetVar name="no_data1" value="$no_data $str_plac, "/>
 						<SetVar name="no_data" value="$no_data1"/>
 					</if>
 					<if condition="$fsour=='on' and (($fdate!='') or ($fplac!=''))">
@@ -723,7 +728,7 @@ Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as R
 						<if condition="$fsrc==''">
 							<!-- Missing event counter -->
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<SetVar name="no_source1" value="$no_source $fact"/>
+							<SetVar name="no_source1" value="$no_source $fact, "/>
 							<SetVar name="no_source" value="$no_source1"/>
 						</if>
 					</if>
