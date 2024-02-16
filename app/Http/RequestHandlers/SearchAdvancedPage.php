@@ -150,6 +150,8 @@ class SearchAdvancedPage implements RequestHandlerInterface
         $date_options   = $this->dateOptions();
         $name_options   = $this->nameOptions();
 
+        $fields = array_map(static fn (string $x): string => preg_replace('/^\s+|\s+$/uD', '', $x), $fields);
+
         $search_fields = array_filter($fields, static fn (string $x): bool => $x !== '');
 
         if ($search_fields !== []) {
