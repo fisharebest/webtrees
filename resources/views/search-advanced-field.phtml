@@ -9,7 +9,11 @@ declare(strict_types=1);
  * @var string        $field_value
  * @var string        $modifier
  * @var array<string> $name_options
+ * @var Tree          $tree
  */
+
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Tree;
 
 ?>
 
@@ -19,9 +23,13 @@ declare(strict_types=1);
     </label>
 
     <div class="col-sm-6 wt-page-options-value">
-        <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" <?php if (str_ends_with($field_name, ':DATE')) :
-            ?>onchange="webtrees.reformatDate(this, 'dmy')" <?php
-                                                                        endif ?>>
+        <?php if (str_ends_with($field_name, ':PLAC')) : ?>
+            <?= view('components/select-place', ['name' => 'fields[' . $field_name . ']', 'id' => 'fields-' . $field_name, 'tree' => $tree, 'place' => Place::find((int) $field_value, $tree)]) ?>
+        <?php elseif (str_ends_with($field_name, ':DATE')) : ?>
+            <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" onchange="webtrees.reformatDate(this, 'dmy')">
+        <?php else : ?>
+            <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>">
+        <?php endif ?>
     </div>
 
     <div class="col-sm-3 wt-page-options-value">

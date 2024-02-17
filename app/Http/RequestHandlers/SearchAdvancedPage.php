@@ -161,7 +161,8 @@ class SearchAdvancedPage implements RequestHandlerInterface
                 $message = 'Advanced: ' . implode(', ', array_map($fn, array_keys($search_fields), $search_fields));
                 Log::addSearchLog($message, [$tree]);
             }
-            $individuals = $this->search_service->searchIndividualsAdvanced([$tree], $search_fields, $modifiers);
+
+            $individuals = $this->search_service->searchIndividualsAdvanced($tree, $search_fields, $modifiers);
         } else {
             $individuals = new Collection();
         }

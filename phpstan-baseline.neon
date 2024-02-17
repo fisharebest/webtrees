@@ -991,6 +991,11 @@ parameters:
 			path: app/Http/RequestHandlers/ReportSetupPage.php
 
 		-
+			message: "#^Anonymous function should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SearchAdvancedPage.php
+
+		-
 			message: "#^Cannot call method url\\(\\) on mixed\\.$#"
 			count: 5
 			path: app/Http/RequestHandlers/SearchGeneralPage.php

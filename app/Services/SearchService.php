@@ -506,21 +506,20 @@ class SearchService
     }
 
     /**
-     * @param array<Tree>          $trees
+     * @param Tree                 $tree
      * @param array<string,string> $fields
      * @param array<string,string> $modifiers
      *
      * @return Collection<int,Individual>
      */
-    public function searchIndividualsAdvanced(array $trees, array $fields, array $modifiers): Collection
+    public function searchIndividualsAdvanced(Tree $tree, array $fields, array $modifiers): Collection
     {
         $fields = array_filter($fields, static fn (string $x): bool => $x !== '');
 
         $query = DB::table('individuals')
+            ->where('i_file', '=', $tree->id())
             ->select(['individuals.*'])
             ->distinct();
-
-        $this->whereTrees($query, 'i_file', $trees);
 
         // Join the following tables
         $father_name   = false;
@@ -778,10 +777,10 @@ class SearchService
                 unset($fields[$field_name]);
             } elseif (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':PLAC')) {
                 // SQL can only link a place to a person/family, not to an event.
-                $query->where('individual_places.p_place', $this->iLike(), '%' . $field_value . '%');
+                $query->where('individual_places.p_id', '=', $field_value);
             } elseif (str_starts_with($field_name, 'FAM:') && str_ends_with($field_name, ':PLAC')) {
                 // SQL can only link a place to a person/family, not to an event.
-                $query->where('family_places.p_place', $this->iLike(), '%' . $field_value . '%');
+                $query->where('family_places.p_id', '=', $field_value);
             } elseif (str_starts_with($field_name, 'MOTHER:NAME:') || str_starts_with($field_name, 'FATHER:NAME:')) {
                 $table = str_starts_with($field_name, 'FATHER:NAME:') ? 'father_name' : 'mother_name';
                 switch ($parts[2]) {
@@ -870,7 +869,7 @@ class SearchService
             ->each($this->rowLimiter())
             ->map($this->individualRowMapper())
             ->filter(GedcomRecord::accessFilter())
-            ->filter(static function (Individual $individual) use ($fields): bool {
+            ->filter(static function (Individual $individual) use ($fields, $tree): bool {
                 // Check for searches which were only partially matched by SQL
                 foreach ($fields as $field_name => $field_value) {
                     $parts = explode(':', $field_name . '::::');
@@ -885,11 +884,11 @@ class SearchService
                         return false;
                     }
 
-                    $regex = '/' . preg_quote($field_value, '/') . '/i';
-
                     if (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':PLAC')) {
+                        $place = Place::find((int) $field_value, $tree);
+
                         foreach ($individual->facts([$parts[1]]) as $fact) {
-                            if (preg_match($regex, $fact->place()->gedcomName()) === 1) {
+                            if ($fact->place()->gedcomName() === $place->gedcomName() || str_ends_with($fact->place()->gedcomName(), ', ' . $place->gedcomName())) {
                                 continue 2;
                             }
                         }
@@ -897,15 +896,19 @@ class SearchService
                     }
 
                     if (str_starts_with($field_name, 'FAM:') && str_ends_with($field_name, ':PLAC')) {
+                        $place = Place::find((int) $field_value, $tree);
+
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
-                                if (preg_match($regex, $fact->place()->gedcomName()) === 1) {
+                                if ($fact->place()->gedcomName() === $place->gedcomName() || str_ends_with($fact->place()->gedcomName(), ', ' . $place->gedcomName())) {
                                     continue 3;
                                 }
                             }
                         }
                         return false;
                     }
+
+                    $regex = '/' . preg_quote($field_value, '/') . '/i';
 
                     if ($field_name === 'INDI:FACT:TYPE' || $field_name === 'INDI:EVEN:TYPE' || $field_name === 'INDI:CHAN:_WT_USER') {
                         foreach ($individual->facts([$parts[1]]) as $fact) {

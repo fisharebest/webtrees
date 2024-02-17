@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Tree;
     <?= ($disabled ?? false) ? 'disabled="disabled"' : '' ?>
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
-    <?php if (($place ?? null) instanceof Place) : ?>
-        <option value="<?= e($place->id()) ?>">
+    <?php if (($place ?? null) instanceof Place && $place->id() !== 0) : ?>
+        <option value="<?= $place->id() ?>">
             <?= view('selects/place', ['place' => $place]) ?>
         </option>
     <?php else : ?>
