@@ -744,6 +744,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/ReportSetupPage.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Anonymous function should return string but returns string\\|null\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SearchAdvancedPage.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SearchGeneralPage.php',
@@ -2700,7 +2705,7 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\>\\.$#',
-    'count' => 1,
+    'count' => 2,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
@@ -4197,11 +4202,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/components/select-number.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/components/select-place.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to string\\.$#',

@@ -35,7 +35,7 @@ use Illuminate\Support\Collection;
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
             <?php if (!str_starts_with($field_name, 'FATHER:') && !str_starts_with($field_name, 'MOTHER:')) : ?>
-                <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
+                <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options, 'tree' => $tree]) ?>
             <?php endif ?>
         <?php endforeach ?>
 
@@ -66,7 +66,7 @@ use Illuminate\Support\Collection;
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
             <?php if (str_starts_with($field_name, 'FATHER:')) : ?>
-                <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
+                <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options, 'tree' => $tree]) ?>
             <?php endif ?>
         <?php endforeach ?>
 
@@ -80,7 +80,7 @@ use Illuminate\Support\Collection;
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
             <?php if (str_starts_with($field_name, 'MOTHER:')) : ?>
-                <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
+                <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options, 'tree' => $tree]) ?>
             <?php endif ?>
         <?php endforeach ?>
 
