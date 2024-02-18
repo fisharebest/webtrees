@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-02-14 01:15+0000\n"
-"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
+"PO-Revision-Date: 2024-02-19 19:15+0000\n"
+"Last-Translator: HerzScheisse <github@eisold.family>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -428,7 +428,7 @@ msgstr "%s&nbsp;v. u. Z."
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;n. u. Z."
+msgstr "%s&#7478;&#7489;&#7480;"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:860
@@ -15269,7 +15269,9 @@ msgstr "Diese Website verwendet Dienstleistungen von Drittanbietern, um Informat
 #: resources/views/admin/trees-import.phtml:30
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Dies wird die genealogischen Daten von „%s“ löschen und sie durch Daten einer andern GEDCOM ersetzen."
+msgstr ""
+"Dies wird die genealogischen Daten von „%s“ löschen und sie durch Daten "
+"einer anderen GEDCOM-Datei ersetzen."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:279
