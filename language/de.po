@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2024-02-19 19:15+0000\n"
-"Last-Translator: HerzScheisse <github@eisold.family>\n"
+"Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -1015,7 +1015,7 @@ msgstr "Eine Seitenleiste zur Anzeige einer alphabetischen Liste aller Personen 
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
 msgstr ""
-"Eine Seitenleiste, die die engsten Familien und Verwandten einer Person "
+"Eine Seitenleiste, welche die engsten Familien und Verwandten einer Person "
 "zeigt."
 
 #. I18N: Description of the “Extra information” module
@@ -1026,7 +1026,7 @@ msgstr "Eine Seitenleiste mit nicht genealogischen Informationen einer Person."
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Eine Seitenleiste, die die Nachkommen einer Person zeigt."
+msgstr "Eine Seitenleiste, welche die Nachkommen einer Person zeigt."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
@@ -7457,7 +7457,18 @@ msgstr "In einem Stammbaum hat jeder Datensatz eine interne Referenznummer („x
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "In vielen Kulturkreisen ist es üblich, den traditionellen Namen in landesüblicher Schreibweise festzuhalten und zusätzlich einen romanisierten Namen, der die Aussprache des Namens im lateinischen Alphabet wiedergibt.<br><br>Falls Sie es vorziehen ein nicht lateinisches Alphabet, wie Hebräisch, Griechisch, Russisch, Chinesisch oder Arabisch zur Namenseingabe in den Standardfeldern zu nutzen, dann steht dieses Feld zur Eingabe eines Namens im lateinischen Alphabet bereit. Beide Namensversionen erscheinen in Listen und Diagrammen.<br><br>Wenngleich das Feld als „Romanized“ gekennzeichnet ist, ist es nicht auf die Eingabe von Buchstaben des lateinischen Alphabets beschränkt. Dies ist bei japanischen Namen von Interesse, wo drei verschiedene Alphabete vorkommen können."
+msgstr ""
+"In vielen Kulturkreisen ist es üblich, den traditionellen Namen in "
+"landesüblicher Schreibweise festzuhalten und zusätzlich einen romanisierten "
+"Namen, der die Aussprache des Namens im lateinischen Alphabet "
+"wiedergibt.<br><br>Falls Sie es vorziehen, ein nicht lateinisches Alphabet - "
+"wie Hebräisch, Griechisch, Russisch, Chinesisch oder Arabisch - zur "
+"Namenseingabe in den Standardfeldern zu nutzen, dann steht dieses Feld zur "
+"Eingabe eines Namens im lateinischen Alphabet bereit. Beide Namensversionen "
+"erscheinen in Listen und Diagrammen.<br><br>Wenngleich das Feld als "
+"„Romanized“ gekennzeichnet ist, ist es nicht auf die Eingabe von Buchstaben "
+"des lateinischen Alphabets beschränkt. Dies ist bei japanischen Namen von "
+"Interesse, wo drei verschiedene Alphabete vorkommen können."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
@@ -14005,8 +14016,12 @@ msgstr "Die Angabe der Zeitzone wird für die Datumsberechnungen, wie z.B das he
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Die beiden Stammbäume haben einen Datensatz, der die gleiche „xref_ID“ verwendet."
-msgstr[1] "Die beiden Stammbäume haben %1$s Datensätze, die die gleiche „xref_ID“ verwenden."
+msgstr[0] ""
+"Die beiden Stammbäume haben einen Datensatz, welcher die gleiche „xref_ID“ "
+"verwendet."
+msgstr[1] ""
+"Die beiden Stammbäume haben %1$s Datensätze, welche die gleiche „xref_ID“ "
+"verwenden."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
@@ -14260,8 +14275,12 @@ msgstr "Diese Familie blieb kinderlos"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Dieser Stammbaum hat einen Datensatz, der die gleiche „xref_ID“ verwendet wie in einem anderen Stammbaum."
-msgstr[1] "Dieser Stammbaum hat %s Datensätze, die die gleiche „xref_ID“ verwenden wie in einem anderen Stammbaum."
+msgstr[0] ""
+"Dieser Stammbaum hat einen Datensatz, welcher die gleiche „xref_ID“ "
+"verwendet wie ein anderer Stammbaum."
+msgstr[1] ""
+"Dieser Stammbaum hat %s Datensätze, welche die gleiche „xref_ID“ verwenden "
+"wie ein anderer Stammbaum."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
@@ -14660,8 +14679,8 @@ msgstr ""
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "Diese Seite wurde bisher %s mal angesehen."
-msgstr[1] "Diese Seite wurde bisher %s mal angesehen."
+msgstr[0] "Diese Seite wurde bisher %s Mal angesehen."
+msgstr[1] "Diese Seite wurde bisher %s Mal angesehen."
 
 #: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
