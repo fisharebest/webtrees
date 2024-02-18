@@ -39,6 +39,8 @@ use Fisharebest\Webtrees\CustomTags\PhpGedView;
 use Fisharebest\Webtrees\CustomTags\ProGen;
 use Fisharebest\Webtrees\CustomTags\Reunion;
 use Fisharebest\Webtrees\CustomTags\RootsMagic;
+use Fisharebest\Webtrees\CustomTags\TheMasterGenealogist;
+use Fisharebest\Webtrees\CustomTags\TheNextGeneration;
 use Fisharebest\Webtrees\Elements\AddressCity;
 use Fisharebest\Webtrees\Elements\AddressCountry;
 use Fisharebest\Webtrees\Elements\AddressEmail;
@@ -1142,6 +1144,8 @@ class Gedcom
                 new ProGen(),
                 new Reunion(),
                 new RootsMagic(),
+                new TheMasterGenealogist(),
+                new TheNextGeneration(),
             ];
 
             foreach ($custom_tags as $custom_tag) {
