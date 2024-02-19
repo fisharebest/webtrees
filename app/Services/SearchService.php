@@ -645,15 +645,15 @@ class SearchService
         }
 
         if ($fam_plac) {
-            $query->join('placelinks AS familyl_placelinks', static function (JoinClause $join): void {
+            $query->join('placelinks AS family_placelinks', static function (JoinClause $join): void {
                 $join
-                    ->on('familyl_placelinks.pl_file', '=', 'individuals.i_file')
-                    ->on('familyl_placelinks.pl_gid', '=', 'individuals.i_id');
+                    ->on('family_placelinks.pl_file', '=', 'spouse_families.f_file')
+                    ->on('family_placelinks.pl_gid', '=', 'spouse_families.f_id');
             });
             $query->join('places AS family_places', static function (JoinClause $join): void {
                 $join
-                    ->on('family_places.p_file', '=', 'familyl_placelinks.pl_file')
-                    ->on('family_places.p_id', '=', 'familyl_placelinks.pl_p_id');
+                    ->on('family_places.p_file', '=', 'family_placelinks.pl_file')
+                    ->on('family_places.p_id', '=', 'family_placelinks.pl_p_id');
             });
         }
 
