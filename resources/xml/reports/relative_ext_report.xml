@@ -49,6 +49,9 @@
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><GetPersonName id="$pid" /> — <var var="$explain"/></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
+		</Header>
+
+		<Body>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'">
@@ -70,9 +73,7 @@
 
 			<Cell border="1" height="$height1" style="label" width="$width5"> <var var="I18N::translate('Father')" /></Cell>
 			<Cell border="1" height="$height1" newline="1" style="label"> <var var="I18N::translate('Mother')" /></Cell>
-		</Header>
 
-		<Body>
 			<Relatives id="$pid" group="$relatives" sortby="$sortby">
 				<SetVar name="sex" value="@SEX" />
 				<!-- 1. Block -->
@@ -81,11 +82,11 @@
 				</TextBox>
 				<TextBox height="$height1" width="$width3">
 					<Text style="text"><GedcomValue tag="BIRT:DATE" truncate="20" /><br/></Text>
-					<Text style="mini"><GedcomValue tag="BIRT:PLAC" /></Text>
+					<Text style="mini"><GedcomValue tag="BIRT:PLAC" truncate="24" /></Text>
 				</TextBox>
 				<TextBox height="$height1" width="$width4">
 					<Text style="text"><GedcomValue tag="DEAT:DATE" truncate="20" /><br/></Text>
-					<Text style="mini"><GedcomValue tag="DEAT:PLAC" /></Text>
+					<Text style="mini"><GedcomValue tag="DEAT:PLAC" truncate="24" /></Text>
 				</TextBox>
 				<!-- If FAMC is empty all lines will be ignored. So, don't place any newline break in here -->
 				<Gedcom id="@FAMC">
@@ -149,7 +150,7 @@
 				<br /><var var="I18N::translate('Total individuals')" />: <ListTotal />
 			</Cell>
 		</Body>
-		
+
 		<Footer>
 			<Cell align="rightrtl" newline="1" style="date"><Now /></Cell>
 		</Footer>

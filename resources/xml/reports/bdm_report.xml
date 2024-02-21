@@ -28,18 +28,30 @@
 	<Style name="small" font="$fonts" size="7"/>
 	<Style name="label" font="$fonts" size="10" style="b" />
 
+	<setvar name="dval" value="10" />
+	<setvar name="dump" value="$dval" />
+	<SetVar name="nbsp" value="%26#xA0;"/>
+
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
 			<Cell align="center" newline="1" style="header">
 				<var var="I18N::translate('Vital records')" />
 				<if condition="$name!=''">
-				    : <var var="name" /> 
+				    : <var var="name" />
 				</if>
 				<if condition="$bdmplace!=''">
 					: <var var="bdmplace" />
 				</if>
 			</Cell>
 			<Cell align="rightrtl" height="10" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
+		</Header>
+
+		<Body>
+			<SetVar name="filter1" value="" />
+			<if condition="$bdmplace!=''">
+				<SetVar name="filter1" value=":PLAC CONTAINS $bdmplace" />
+				<!-- todo: print only if BDM place is the searched place - use OR - search also on marriage place and date -->
+			</if>
 			<!-- Name -->
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'">
@@ -98,14 +110,6 @@
 					</if>
 				</Text>
 			</TextBox>
-		</Header>
-
-		<Body>
-			<SetVar name="filter1" value="" />
-			<if condition="$bdmplace!=''">
-				<SetVar name="filter1" value=":PLAC CONTAINS $bdmplace" />
-				<!-- todo: print only if BDM place is the searched place - use OR - search also on marriage place and date -->
-			</if>
 
 			<List list="individual" filter1="$filter1" filter2="BIRT:DATE GTE $birthdate1" filter3="BIRT:DATE LTE $birthdate2" filter4="DEAT:DATE GTE $deathdate1" filter5="DEAT:DATE LTE $deathdate2" filter6="NAME CONTAINS $name" sortby="$sortby">
 				<SetVar name="spid" value="@ID" />
@@ -149,7 +153,7 @@
 					<RepeatTag tag="FAMS">
 						<Text style="small">
 							<Gedcom id="@FAMS">
-								<if condition="$more==1">
+								<if condition="$more GT 0">
 									<br />
 									________________________________
 									<br />
@@ -162,21 +166,21 @@
 								<br />  <var var="I18N::translate('Source')" />
 								: <RepeatTag tag="MARR:SOUR">
 									<Gedcom id="@SOUR">
-										<GedcomValue tag="TITL" /> 
+										<GedcomValue tag="TITL" />
 									</Gedcom>
 								</RepeatTag>
 								<br />
 								<var var="I18N::translate('Spouse')" />
-								: 
+								:
 								<SetVar name="hpid" value="@HUSB"/>
 								<SetVar name="wpid" value="@WIFE"/>
 								<if condition="$spid==$wpid">
-									<GetPersonName id="@HUSB" />
+									<GetPersonName id="@HUSB" truncate="28"/>
 								</if>
 								<if condition="$spid==$hpid">
-									<GetPersonName id="@WIFE" />
+									<GetPersonName id="@WIFE"  truncate="28"/>
 								</if>
-								<SetVar name="more" value="1" />
+								<SetVar name="more" value="$more+1" />
 							</Gedcom>
 						</Text>
 					</RepeatTag>
@@ -184,6 +188,7 @@
 
 				<TextBox border="0" height="46" newline="1">
 					<SetVar name="moreD" value="0" />
+							<SetVar name="d" value="$spid: $more" />
 					<Text style="small">
 						<RepeatTag tag="DEAT">
 							<if condition="$moreD==1">
@@ -196,11 +201,37 @@
 							<br />  <var var="I18N::translate('Source')" />
 							: <RepeatTag tag="DEAT:SOUR">
 								<Gedcom id="@SOUR">
-									<GedcomValue tag="TITL" /> 
+									<GedcomValue tag="TITL" />
 								</Gedcom>
 							</RepeatTag>
 							<SetVar name="moreD" value="1" />
+							<SetVar name="x" value="$spid: $more" />
 						</RepeatTag>
+						<if condition="$moreD == 1 and $more GT 0" comment="one extra line needed for marriage ">
+							<br /><var var="$nbsp" amp="1" />
+						</if>
+						<if condition="$moreD == 1 and $more == 0" comment="no extra line needed for marriage ">
+							<!--br /><var var="$nbsp" amp="1" /-->
+						</if>
+						<if condition="$moreD == 0 and $more == 0" comment="three extra lines needed if no DEAT record ">
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+						</if>
+						<if condition="$moreD == 0 and $more GT 0" comment="three extra lines needed if no DEAT record ">
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+							<br /><var var="$nbsp" amp="1" />
+						</if>
+						<if condition="$more GT 1" comment="five extra lines needed for second marriage ">
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+						</if>
+						<if condition="$more GT 2" comment="five extra lines needed for second marriage ">
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+						</if>
+						<if condition="$more GT 3" comment="five extra lines needed for second marriage ">
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+							<br /><var var="$nbsp" amp="1" /><br /><var var="$nbsp" amp="1" />
+						</if>
 					</Text>
 				</TextBox>
 				<Line />

@@ -79,6 +79,19 @@
 	<SetVar name="width1" value="418"/>
 	<SetVar name="width2" value="233"/>
 
+	<!-- change the widths for wide paper size and for HTML -->
+	<SetVar name="format" value="@format"/>
+	<if condition="$format=='HTML'">
+		<SetVar name="pageSize" value="A3"/>
+	</if>
+	<if condition="$pageSize=='A3' or $pageSize=='US-Tabloid'">
+		<SetVar name="dwidth" value="300"/>
+		<SetVar name="pwidth" value="636"/>
+		<SetVar name="width" value="633"/>
+		<SetVar name="width1" value="618"/>
+		<SetVar name="width2" value="333"/>
+	</if>
+
 	<!-- change the widths for no pictures -->
 	<if condition="$photos=='none'">
 		<SetVar name="width" value="0"/>
@@ -233,6 +246,11 @@
 								</if>
 								<Text color="$tcolor" style="text"> <GetPersonName id=""/></Text>
 							</Gedcom>
+							<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
+								<Text color="$tcolor" style="fact">
+									<GedcomValue tag="@fact:PLAC"/>
+								</Text>
+							</if>
 						</TextBox>
 					</if>
 				</Facts>

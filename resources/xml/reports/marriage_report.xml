@@ -25,11 +25,17 @@
 	<Style name="spouse" font="$fonts" size="8" />
 	<Style name="label" font="$fonts" size="10" style="b"/>
 
+	<SetVar name="nbsp" value="%26#xA0;"/>
+
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Marriages')" /></Cell>
 			<Cell align="rightrtl" height="10" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 
+		</Header>
+
+		<Body>
+			<!-- header part only on first page -->
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'">
 				<SetVar name="fill" value="#AAAAAA" />
@@ -53,9 +59,7 @@
 			<TextBox border="1" height="12" newline="1">
 				<Text style="label"><var var="I18N::translate('Source')" /></Text>
 			</TextBox>
-		</Header>
 
-		<Body>
 			<SetVar name="printedFamilies" value="0" />
 			<List list="family" filter1="MARR:PLAC CONTAINS $marrplace" filter2="MARR:DATE GTE $marrdate1" filter3="MARR:DATE LTE $marrdate2" filter4="NAME CONTAINS $name" sortby="$sortby">
 				<SetVar name="skipFamily" value="no" />
@@ -91,9 +95,10 @@
 
 					<TextBox height="12" newline="1">
 						<!-- Only with multiple sources use line feed (br) -->
-						<SetVar name="usebr" value="0"/>
+						<SetVar name="nrl" value="0"/>
 						<Text style="text">
 							<RepeatTag tag="MARR:SOUR">
+								<SetVar name="nrl" value="$nrl+1"/>
 								<Gedcom id="@SOUR">
 									<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
 									«<GedcomValue tag="TITL" />»
@@ -101,9 +106,11 @@
 								</Gedcom>
 								<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
 								 <GedcomValue tag="SOUR:DATA:TEXT" />
-								<SetVar name="usebr" value="1"/>
 							</RepeatTag>
 						</Text>
+						<!-- tcpdf does not generate any text if just spaces and new lines, but non-breakable space works! -->
+				   		<if condition="$nrl LT 0"><Text style="text"><br /><var var="$nbsp" amp="1" /><sp /></Text></if>
+						<if condition="$nrl LT 2"><Text style="text"><br /><var var="$nbsp" amp="1" /><sp /></Text></if>
 					</TextBox>
 
 				</if>

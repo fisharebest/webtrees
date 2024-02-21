@@ -27,15 +27,25 @@
 	<!-- Date text -->
 	<Style name="date" font="$fonts" size="8"/>
 
+	<setvar name="dval" value="10" />
+	<setvar name="dump" value="$dval" />
+	<SetVar name="nbsp" value="%26#xA0;"/>
+	<SetVar name="lang" value="@lang"/>
+	<SetVar name="lc1" value="1"/>
+        <if condition="$lang=='de'"><SetVar name="lc1" value="0"/></if>
+	<SetVar name="husband" value="I18N::translate('Husband')" lcfirst="$lc1"/>
+
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Deaths')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
+		</Header>
 
+		<Body>
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="200">
-				<Text style="label"><var var="I18N::translate('Name')" /></Text>
+				<Text style="label"><var var="I18N::translate('Name')"/></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
@@ -51,23 +61,20 @@
 			</TextBox>
 
 			<TextBox border="1" newline="1">
-			  <Text style="label"><var var="I18N::translate('Source')" /></Text>
+			        <Text style="label"><var var="I18N::translate('Source')" /></Text>
 			</TextBox>
-		</Header>
-
-		<Body>
 			<List list="individual" filter1="DEAT:PLAC CONTAINS $deathplace" filter2="DEAT:DATE GTE $deathdate1" filter3="DEAT:DATE LTE $deathdate2" filter4="NAME CONTAINS $name" filter5="LIKE /%\n1 DEAT%/" sortby="$sortby">
 				<TextBox width="200">
-					<Text style="text"><GetPersonName id="" />
-						<if condition="$adlist=='_MARNM'">
-							<RepeatTag tag="NAME:_MARNM">
-								<br /><GedcomValue tag="_MARNM" />
-							</RepeatTag>
+					<SetVar name="n" value="1"/>
+                                        <Text style="text"><GetPersonName id="" truncate="38" select="latest" />
+						<if condition="$adlist=='_MARNM' and (@SEX=='F')"><SetVar name="n" value="$n+1"/>
+							<br />- <var var="I18N::translate('née')"/> <GetPersonName id="" truncate="33" />
 						</if>
 						<if condition="($adlist=='HUSB') and (@SEX=='F')">
 							<RepeatTag tag="FAMS">
+								<SetVar name="n" value="$n+1"/>
 								<Gedcom id="@FAMS:@HUSB">
-									<br /><GetPersonName id="" />
+									<br />- <var var="$husband" /> <GetPersonName id="" truncate="32" />
 								</Gedcom>
 							</RepeatTag>
 						</if>
@@ -77,11 +84,10 @@
 					<Text style="text"><GedcomValue tag="DEAT:DATE" newline="1" /></Text>
 				</TextBox>
 				<TextBox width="150">
-					<Text style="text"><GedcomValue tag="DEAT:PLAC" truncate="28"/></Text>
+                                        <Text style="text"><GedcomValue tag="DEAT:PLAC" truncate="28"/></Text>
 				</TextBox>
 				<TextBox newline="1">
-					<!-- Only with multiple sources use line feed (br) -->
-					<SetVar name="usebr" value="0"/>
+					<SetVar name="n" value="$n-1"/>
 					<Text style="text">
 						<RepeatTag tag="DEAT:SOUR">
 							<Gedcom id="@SOUR">
@@ -90,10 +96,18 @@
 								<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 							</Gedcom>
 							<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-							 <GedcomValue tag="SOUR:DATA:TEXT" />
-							<SetVar name="usebr" value="1"/>
+							<if condition="@DATA!=''">
+								<GedcomValue tag="SOUR:DATA:TEXT" />
+								<SetVar name="n" value="$n-1"/>
+							</if>
 						</RepeatTag>
+						<sp />
 					</Text>
+					<!-- tcpdf does not generate any text if just spaces and new lines, but non-breakable space works! -->
+                                        <if condition="$n GT 3"><Text style="text"><br /><var var="$nbsp" amp="1" /><sp /></Text></if>
+					<if condition="$n GT 2"><Text style="text"><br /><var var="$nbsp" amp="1" /><sp /></Text></if>
+					<if condition="$n GT 1"><Text style="text"><br /><var var="$nbsp" amp="1" /><sp /></Text></if>
+					<if condition="$n GT 0"><Text style="text"><br /><var var="$nbsp" amp="1" /><sp /></Text></if>
 				</TextBox>
 			</List>
 			<Cell align="rightrtl" height="24" newline="1" style="label"><br/><var var="I18N::translate('Total individuals')"/>: <ListTotal/></Cell>
