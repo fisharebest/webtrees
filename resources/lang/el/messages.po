@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2022-03-14 22:09+0000\n"
-"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
-"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
+"PO-Revision-Date: 2024-02-23 02:43+0000\n"
+"Last-Translator: jpeppas <jpeppas@gmail.com>\n"
+"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -137,7 +138,7 @@ msgstr "%1$s × %2$s pixels"
 #: resources/views/fact-association-structure.phtml:109
 #: resources/views/fact-gedcom-fields.phtml:68
 #: resources/views/modules/media-list/page.phtml:143
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
@@ -312,7 +313,7 @@ msgstr[1] "οι %s σημειώσεις έχουν ανανεωθεί."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s συμβαίνει πολλές φορές."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
