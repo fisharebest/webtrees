@@ -19,7 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Registry;
+use DateTimeImmutable;
+use DateTimeZone;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
@@ -37,10 +40,6 @@ class SiteLogsData implements RequestHandlerInterface
 
     private SiteLogsService $site_logs_service;
 
-    /**
-     * @param DatatablesService $datatables_service
-     * @param SiteLogsService   $site_logs_service
-     */
     public function __construct(
         DatatablesService $datatables_service,
         SiteLogsService $site_logs_service
@@ -49,19 +48,18 @@ class SiteLogsData implements RequestHandlerInterface
         $this->site_logs_service  = $site_logs_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $query = $this->site_logs_service->logsQuery($request);
 
         return $this->datatables_service->handleQuery($request, $query, [], [], static function (object $row): array {
+            $log_time = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $row->log_time, new DateTimeZone('UTC'))
+                ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+                ->format('Y-m-d H:i:s T');
+
             return [
                 $row->log_id,
-                Registry::timestampFactory()->fromString($row->log_time)->toDateTimeString(),
+                $log_time,
                 $row->log_type,
                 '<span class="ut">' . e($row->log_message) . '</span>',
                 e($row->ip_address),

@@ -19,7 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Fisharebest\Algorithm\MyersDiff;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -97,9 +101,13 @@ class PendingChangesLogData implements RequestHandlerInterface
             // Only convert valid xrefs to links
             $record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
 
+            $change_time = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $row->change_time, new DateTimeZone('UTC'))
+                ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+                ->format('Y-m-d H:i:s T');
+
             return [
                 $row->change_id,
-                Registry::timestampFactory()->fromString($row->change_time)->toDateTimeString(),
+                $change_time,
                 I18N::translate($row->status),
                 $record ? '<a href="' . e($record->url()) . '">' . $record->xref() . '</a>' : $row->xref,
                 '<div class="gedcom-data" dir="ltr">' .

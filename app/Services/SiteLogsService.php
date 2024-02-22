@@ -19,7 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Registry;
+use DateInterval;
+use DateTimeImmutable;
+use DateTimeZone;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -55,13 +59,26 @@ class SiteLogsService
             ->leftJoin('gedcom', 'gedcom.gedcom_id', '=', 'log.gedcom_id')
             ->select(['log.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), new Expression("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
 
+        $tz  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
+        $utc = new DateTimeZone('UTC');
+
         if ($from !== '') {
-            $query->where('log_time', '>=', Registry::timestampFactory()->fromString($from, 'Y-m-d')->toDateString());
+            $from_time = DateTimeImmutable::createFromFormat('Y-m-d', $from, $tz)
+                ->setTime(0, 0)
+                ->setTimezone($utc)
+                ->format('Y-m-d H:i:s');
+
+            $query->where('log_time', '>=', $from_time);
         }
 
         if ($to !== '') {
-            // before end of the day
-            $query->where('log_time', '<', Registry::timestampFactory()->fromString($to, 'Y-m-d')->addDays(1)->toDateString());
+            $to_time = DateTimeImmutable::createFromFormat('Y-m-d', $from, $tz)
+                ->setTime(0, 0)
+                ->add(new DateInterval('P1D'))
+                ->setTimezone($utc)
+                ->format('Y-m-d H:i:s');
+
+            $query->where('log_time', '<', $to_time);
         }
 
         if ($type !== '') {

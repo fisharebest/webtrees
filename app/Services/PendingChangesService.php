@@ -19,6 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use DateInterval;
+use DateTimeImmutable;
+use DateTimeZone;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -41,6 +46,7 @@ use Illuminate\Support\Collection;
 
 use function addcslashes;
 use function preg_match;
+use function var_dump;
 
 /**
  * Manage pending changes
@@ -288,13 +294,27 @@ class PendingChangesService
             ->select(['change.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), 'gedcom_name'])
             ->where('gedcom_name', '=', $tree);
 
+        $tz  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
+        $utc = new DateTimeZone('UTC');
+
         if ($from !== '') {
-            $query->where('change_time', '>=', Registry::timestampFactory()->fromString($from, 'Y-m-d')->toDateString());
+            $from_time = DateTimeImmutable::createFromFormat('Y-m-d', $from, $tz)
+                ->setTime(0, 0)
+                ->setTimezone($utc)
+                ->format('Y-m-d H:i:s');
+
+            $query->where('change_time', '>=', $from_time);
         }
 
         if ($to !== '') {
             // before end of the day
-            $query->where('change_time', '<', Registry::timestampFactory()->fromString($to, 'Y-m-d')->addDays(1)->toDateString());
+            $to_time = DateTimeImmutable::createFromFormat('Y-m-d', $from, $tz)
+                ->setTime(0, 0)
+                ->add(new DateInterval('P1D'))
+                ->setTimezone($utc)
+                ->format('Y-m-d H:i:s');
+
+            $query->where('change_time', '<', $to_time);
         }
 
         if ($type !== '') {

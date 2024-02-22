@@ -19,9 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use DateTimeImmutable;
+use DateTimeZone;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -32,6 +35,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function date;
 use function max;
 use function min;
 
@@ -65,11 +69,17 @@ class SiteLogsPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $earliest = DB::table('log')->min('log_time');
-        $latest   = DB::table('log')->max('log_time');
+        // First and last change in the database
+        $earliest = DB::table('log')->min('log_time') ?? date('Y-m-d H:i:s');;
+        $latest   = DB::table('log')->max('log_time') ?? date('Y-m-d H:i:s');;
 
-        $earliest = Registry::timestampFactory()->fromString($earliest)->toDateString();
-        $latest   = Registry::timestampFactory()->fromString($latest)->toDateString();
+        $earliest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $earliest, new DateTimeZone('UTC'))
+            ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+            ->format('Y-m-d');
+
+        $latest = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $latest, new DateTimeZone('UTC'))
+            ->setTimezone(new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC')))
+            ->format('Y-m-d');
 
         $action   = Validator::queryParams($request)->string('action', '');
         $from     = Validator::queryParams($request)->string('from', $earliest);
