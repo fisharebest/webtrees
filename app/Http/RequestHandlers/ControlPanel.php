@@ -223,7 +223,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of pending changes in each tree.
      *
-     * @return array<string>
+     * @return array<int>
      */
     private function totalChanges(): array
     {

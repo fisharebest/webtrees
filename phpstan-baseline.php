@@ -394,11 +394,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/CheckTree.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ControlPanel\\:\\:totalChanges\\(\\) should return array\\<string\\> but returns array\\<int\\>\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ControlPanel.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: int, Closure\\(string\\)\\: int given\\.$#',
     'count' => 8,
     'path' => __DIR__ . '/app/Http/RequestHandlers/ControlPanel.php',
@@ -495,11 +490,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/GedcomLoad.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Variable \\$progress on left side of \\?\\? always exists and is not nullable\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/GedcomLoad.php',
 ];
@@ -709,12 +699,22 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesAcceptChange.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: string, Closure\\(object\\)\\: non\\-falsy\\-string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$string of method Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampFactoryInterface\\:\\:fromString\\(\\) expects string\\|null, mixed given\\.$#',
+    'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogPage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogPage.php',
 ];
@@ -734,12 +734,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/ReportGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Argument of an invalid type array\\<string\\>\\|string supplied for foreach, only iterables are supported\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ReportSetupPage.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Binary operation "\\+\\=" between string and array\\{type\\: \'text\', default\\: \'\', lookup\\: \'\', extra\\: \'\'\\} results in an error\\.$#',
+    'message' => '#^Offset \'inputs\' on array\\{title\\: string, description\\: string, inputs\\: array\\<array\\{name\\: string, type\\: string, lookup\\: string, options\\: string, default\\: string, value\\: string\\}\\>\\} on left side of \\?\\? always exists and is not nullable\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/ReportSetupPage.php',
 ];
@@ -874,12 +869,22 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: string, Closure\\(object\\)\\: non\\-falsy\\-string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsDownload.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$string of method Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampFactoryInterface\\:\\:fromString\\(\\) expects string\\|null, mixed given\\.$#',
+    'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsPage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsPage.php',
 ];
@@ -947,11 +952,6 @@ $ignoreErrors[] = [
     'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/app/I18N.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Binary operation "\\*" between string and 365 results in an error\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Individual.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot call method spouseFamilies\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
@@ -1295,11 +1295,6 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#6 \\$color of function imagefilledrectangle expects int, int\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Unsafe access to private constant Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:FONT through static\\:\\:\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
@@ -2049,11 +2044,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/ReviewChangesModule.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Sabre\\\\VObject\\\\Node\\:\\:add\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/app/Module/ShareAnniversaryModule.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:filter\\(\\) expects \\(callable\\(mixed, int\\)\\: bool\\)\\|null, Closure\\(Fisharebest\\\\Webtrees\\\\Fact\\)\\: bool given\\.$#',
     'count' => 4,
     'path' => __DIR__ . '/app/Module/ShareAnniversaryModule.php',
@@ -2504,11 +2494,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Binary operation "\\+" between non\\-empty\\-string and 1 results in an error\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\:\\:canShow\\(\\)\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
@@ -2759,6 +2744,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserSetup.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserSetup\\:\\:reportProperties\\(\\) should return array\\{title\\: string, description\\: string, inputs\\: array\\<array\\{name\\: string, type\\: string, lookup\\: string, options\\: string, default\\: string, value\\: string\\}\\>\\} but returns array\\<string, array\\<string\\>\\|string\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Report/ReportParserSetup.php',
+];
+$ignoreErrors[] = [
     'message' => '#^array\\<string\\>\\|string does not accept array\\<string\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserSetup.php',
@@ -2844,7 +2834,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Call to an undefined static method Fisharebest\\\\Webtrees\\\\DB\\:\\:query\\(\\)\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\AdminService\\:\\:duplicateXrefs\\(\\) should return array\\<string\\> but returns array\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/AdminService.php',
 ];
@@ -3339,6 +3329,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/PendingChangesService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Cannot call method add\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/PendingChangesService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/PendingChangesService.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingChanges\\(\\) should return array\\<array\\<object\\>\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/PendingChangesService.php',
@@ -3497,6 +3497,16 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#2 \\$string of function explode expects string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/ServerCheckService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method add\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/SiteLogsService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/SiteLogsService.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to int\\.$#',
@@ -4079,11 +4089,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/admin/control-panel.phtml',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Variable \\$list in empty\\(\\) always exists and is not falsy\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/admin/control-panel.phtml',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/admin/fix-level-0-media-action.phtml',
@@ -4182,16 +4187,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, int\\|null given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/components/badge.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^Variable \\$value on left side of \\?\\? always exists and is not nullable\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/components/checkbox-inline.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^Variable \\$value on left side of \\?\\? always exists and is not nullable\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/components/checkbox.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to int\\.$#',
@@ -4434,16 +4429,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Variable \\$GOOGLE_ANALYTICS_ID on left side of \\?\\? always exists and is not nullable\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/google-analytics/snippet-v4.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^Variable \\$GOOGLE_ANALYTICS_ID on left side of \\?\\? always exists and is not nullable\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/google-analytics/snippet.phtml',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/modules/notes/tab.phtml',
@@ -4482,11 +4467,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, string given\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/place-hierarchy/sidebar.phtml',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleAnalyticsInterface\\:\\:externalUrl\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/resources/views/modules/privacy-policy/page.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',

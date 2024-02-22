@@ -584,13 +584,13 @@ class Individual extends GedcomRecord
                 $max = [];
                 $tmp = $this->getDeathDate();
                 if ($tmp->isOK()) {
-                    $min[] = $tmp->minimumJulianDay() - $this->tree->getPreference('MAX_ALIVE_AGE') * 365;
+                    $min[] = $tmp->minimumJulianDay() - 365 * (int) $this->tree->getPreference('MAX_ALIVE_AGE');
                     $max[] = $tmp->maximumJulianDay();
                 }
                 foreach ($this->childFamilies() as $family) {
                     $tmp = $family->getMarriageDate();
                     if ($tmp->isOK()) {
-                        $min[] = $tmp->maximumJulianDay() - 365 * 1;
+                        $min[] = $tmp->maximumJulianDay() - 365;
                         $max[] = $tmp->minimumJulianDay() + 365 * 30;
                     }
                     $husband = $family->husband();

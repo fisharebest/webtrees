@@ -40,6 +40,7 @@ use function assert;
 use function count;
 use function explode;
 use function in_array;
+use function intdiv;
 use function is_numeric;
 use function sprintf;
 

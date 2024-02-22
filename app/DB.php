@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Database abstraction
@@ -57,5 +58,13 @@ class DB extends Manager
             default:
                 return 'GROUP_CONCAT(' . $column . ')';
         }
+    }
+
+    /**
+     * PHPSTAN can't detect the magic methods in the parent class.
+     */
+    public static function query(): Builder
+    {
+        return self::connection()->query();
     }
 }

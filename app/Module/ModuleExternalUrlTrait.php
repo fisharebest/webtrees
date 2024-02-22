@@ -20,14 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 /**
- * Trait ModuleExternalUrlITrait - default implementation of ModuleExternalUrlIInterface.
+ * Trait ModuleExternalUrlTrait - default implementation of ModuleExternalUrlInterface.
  */
 trait ModuleExternalUrlTrait
 {
     /**
      * Home page for the service.
-     *
-     * @return string
      */
     public function externalUrl(): string
     {
