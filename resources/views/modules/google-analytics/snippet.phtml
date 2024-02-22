@@ -12,6 +12,6 @@ declare(strict_types=1);
 <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};
     ga.l=+new Date;
-    ga("create", "<?=  e($GOOGLE_ANALYTICS_ID ?? '') ?>", "auto");
+    ga("create", "<?=  e($GOOGLE_ANALYTICS_ID) ?>", "auto");
     ga("send", "pageview", <?= json_encode($dimensions, JSON_THROW_ON_ERROR) ?>);
 </script>

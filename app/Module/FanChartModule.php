@@ -426,7 +426,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         (int) $tx_start,
                         (int) $ty_start,
                         $text_color,
-                        static::FONT,
+                        self::FONT,
                         $text
                     );
                     // Debug text positions by underlining first line of text

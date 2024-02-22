@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
+use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Illuminate\Support\Collection;
 
 /**
@@ -48,8 +49,10 @@ use Illuminate\Support\Collection;
             <ul>
                 <?php foreach ($analytics as $module) : ?>
                     <li>
-                        <?= $module->title() ?> —
-                        <a href="<?= e($module->externalUrl()) ?>"><?= e($module->externalUrl()) ?></a>
+                        <?= $module->title() ?>
+                        <?php if ($module instanceof ModuleExternalUrlInterface) : ?>
+                            — <a href="<?= e($module->externalUrl()) ?>"><?= e($module->externalUrl()) ?></a>
+                        <?php endif ?>
                     </li>
                 <?php endforeach ?>
             </ul>
@@ -84,4 +87,3 @@ use Illuminate\Support\Collection;
 
     </li>
 </ul>
-

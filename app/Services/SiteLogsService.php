@@ -63,8 +63,7 @@ class SiteLogsService
         $utc = new DateTimeZone('UTC');
 
         if ($from !== '') {
-            $from_time = DateTimeImmutable::createFromFormat('Y-m-d', $from, $tz)
-                ->setTime(0, 0)
+            $from_time = DateTimeImmutable::createFromFormat('!Y-m-d', $from, $tz)
                 ->setTimezone($utc)
                 ->format('Y-m-d H:i:s');
 
@@ -72,8 +71,7 @@ class SiteLogsService
         }
 
         if ($to !== '') {
-            $to_time = DateTimeImmutable::createFromFormat('Y-m-d', $from, $tz)
-                ->setTime(0, 0)
+            $to_time = DateTimeImmutable::createFromFormat('!Y-m-d', $to, $tz)
                 ->add(new DateInterval('P1D'))
                 ->setTimezone($utc)
                 ->format('Y-m-d H:i:s');

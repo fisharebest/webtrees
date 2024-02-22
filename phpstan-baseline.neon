@@ -716,11 +716,6 @@ parameters:
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
-			message: "#^Variable \\$progress on left side of \\?\\? always exists and is not nullable\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/GedcomLoad.php
-
-		-
 			message: "#^Cannot call method createFact\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
@@ -961,7 +956,17 @@ parameters:
 			path: app/Http/RequestHandlers/PendingChangesAcceptChange.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of method Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampFactoryInterface\\:\\:fromString\\(\\) expects string\\|null, mixed given\\.$#"
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/PendingChangesLogPage.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/PendingChangesLogPage.php
 
@@ -981,12 +986,7 @@ parameters:
 			path: app/Http/RequestHandlers/ReportGenerate.php
 
 		-
-			message: "#^Argument of an invalid type array\\<string\\>\\|string supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ReportSetupPage.php
-
-		-
-			message: "#^Binary operation \"\\+\\=\" between string and array\\{type\\: 'text', default\\: '', lookup\\: '', extra\\: ''\\} results in an error\\.$#"
+			message: "#^Offset 'inputs' on array\\{title\\: string, description\\: string, inputs\\: array\\<array\\{name\\: string, type\\: string, lookup\\: string, options\\: string, default\\: string, value\\: string\\}\\>\\} on left side of \\?\\? always exists and is not nullable\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ReportSetupPage.php
 
@@ -1106,7 +1106,17 @@ parameters:
 			path: app/Http/RequestHandlers/SetupWizard.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of method Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampFactoryInterface\\:\\:fromString\\(\\) expects string\\|null, mixed given\\.$#"
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/SiteLogsPage.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/SiteLogsPage.php
 
@@ -1174,11 +1184,6 @@ parameters:
 			message: "#^Cannot call method findByInterface\\(\\) on mixed\\.$#"
 			count: 3
 			path: app/I18N.php
-
-		-
-			message: "#^Binary operation \"\\*\" between string and 365 results in an error\\.$#"
-			count: 1
-			path: app/Individual.php
 
 		-
 			message: "#^Cannot call method spouseFamilies\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
@@ -1442,11 +1447,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#6 \\$col of function imagefilledrectangle expects int, int\\|false given\\.$#"
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
-			message: "#^Unsafe access to private constant Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:FONT through static\\:\\:\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
@@ -2066,11 +2066,6 @@ parameters:
 			path: app/Module/ReviewChangesModule.php
 
 		-
-			message: "#^Call to an undefined method Sabre\\\\VObject\\\\Node\\:\\:add\\(\\)\\.$#"
-			count: 3
-			path: app/Module/ShareAnniversaryModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 7
 			path: app/Module/SiteMapModule.php
@@ -2351,11 +2346,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Binary operation \"\\+\" between non\\-empty\\-string and 1 results in an error\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\:\\:canShow\\(\\)\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -2582,6 +2572,11 @@ parameters:
 
 		-
 			message: "#^Cannot assign new offset to array\\<string\\>\\|string\\.$#"
+			count: 1
+			path: app/Report/ReportParserSetup.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserSetup\\:\\:reportProperties\\(\\) should return array\\{title\\: string, description\\: string, inputs\\: array\\<array\\{name\\: string, type\\: string, lookup\\: string, options\\: string, default\\: string, value\\: string\\}\\>\\} but returns array\\<string, array\\<string\\>\\|string\\>\\.$#"
 			count: 1
 			path: app/Report/ReportParserSetup.php
 
@@ -2971,6 +2966,16 @@ parameters:
 			path: app/Services/PendingChangesService.php
 
 		-
+			message: "#^Cannot call method add\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 1
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 1
+			path: app/Services/PendingChangesService.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingChanges\\(\\) should return array\\<array\\<object\\>\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#"
 			count: 1
 			path: app/Services/PendingChangesService.php
@@ -3114,6 +3119,16 @@ parameters:
 			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
+
+		-
+			message: "#^Cannot call method add\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 1
+			path: app/Services/SiteLogsService.php
+
+		-
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 1
+			path: app/Services/SiteLogsService.php
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|null given\\.$#"

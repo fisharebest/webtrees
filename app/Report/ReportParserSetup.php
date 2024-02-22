@@ -39,7 +39,7 @@ class ReportParserSetup extends ReportParserBase
     /**
      * Return the parsed data.
      *
-     * @return array<string,string|array<string>>
+     * @return array{"title":string,"description":string,"inputs":array<array{"name":string,"type":string,"lookup":string,"options":string,"default":string,"value":string}>}
      */
     public function reportProperties(): array
     {
