@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-02-23 18:28+0000\n"
+"PO-Revision-Date: 2024-02-23 19:39+0000\n"
 "Last-Translator: elvedinz <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/bs/>\n"
@@ -14169,11 +14169,11 @@ msgstr "Izgleda da regularni izraz sadrži grešku i ne može biti korišten."
 
 #: setup.php:154
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "Konfiguracija servera je OK."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Dostignuto je vremensko ograničenje servera."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:42
@@ -14183,7 +14183,7 @@ msgstr "Veličina porodičnog stabla, najraniji i najkasniji događaji, česta i
 #: help_text.php:222
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Prezime je zatvoreno kosim crtama: <%s>John Paul /Smith/<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
@@ -14213,19 +14213,21 @@ msgstr ""
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Vremenska zona je potrebna za izračunavanje datuma, kao što je npr. današnji "
+"datum."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Dva porodična stabla imaju %1$s zapis koji koristi isti “XREF”."
+msgstr[1] "Dva porodična stabla imaju %1$s zapisa koji koriste isti “XREF”."
+msgstr[2] "Dva porodična stabla imaju %1$s zapisa koji koriste isti “XREF”."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Nadogradnja je završena."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:73
@@ -14235,20 +14237,22 @@ msgstr "Učitana datoteka prelazi maksimalo dozvoljenu veličinu."
 #: admin_users.php:786
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Korisnik %s je obrisan."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr ""
+"Korisniku je poslat e-mail sa informacijama potrebnim za potvrdu zahtjeva za "
+"pristup."
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Korisničko ime ili lozinka nisu ispravni."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "Korisničko ime potrebno za autentifikaciju na SMTP server."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:951
@@ -14280,7 +14284,7 @@ msgstr ""
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Postavke web stranice su ažurirane."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1547
@@ -14290,6 +14294,8 @@ msgstr ""
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr ""
+"Programeri webtrees-a bi bili vrlo zainteresirani da saznaju više o ovoj "
+"grešci. Ako ih kontaktirate, oni će vam pomoći da riješite problem."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
@@ -14313,7 +14319,7 @@ msgstr "Padajući meni za promjenu teme"
 
 #: admin_modules.php:165
 msgid "Themes"
-msgstr ""
+msgstr "Teme"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
@@ -14334,7 +14340,7 @@ msgstr "Ne postoje Zabilješke ze ovu osobu."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Nema promjena na čekanju."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
@@ -14353,9 +14359,9 @@ msgstr "Nema novih promjena koje treba odobriti."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Nije bilo promjena u toku posljednjeg %s dana."
+msgstr[1] "Nije bilo promjena u toku posljednjih %s dana."
+msgstr[2] "Nije bilo promjena u toku posljednjih %s dana."
 
 #: login.php:266
 #, php-format
@@ -14393,7 +14399,7 @@ msgstr "Thermidor"
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Ove grupe pojedinaca nisu povezane sa %s."
 
 #: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14407,15 +14413,20 @@ msgstr ""
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "Ovaj račun nije odobren. Molimo pričekajte dok ga administrator odobri."
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
+"Ovaj račun nije verificiran. Molimo provjerite svoju e-poštu da li ste "
+"dobili poruku za verifikaciju."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Ovaj blok će urednicima prikazati listu zapisa sa promjenama na čekanju koje "
+"moderator treba da pregleda. Također generiše dnevne e-poruke moderatorima "
+"kad god postoje promjene na čekanju."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14429,6 +14440,9 @@ msgstr ""
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
+"Ova adresa e-pošte će se koristiti za slanje podsjetnika za lozinke, "
+"obavještenja web stranice i poruka drugih članova porodice koji su "
+"registrovani na web stranici."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14436,27 +14450,31 @@ msgstr "Unos je ignorisan ako ste unijeli URL kao ime datoteke."
 
 #: family.php:63
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ova porodica ne postoji ili nemate dozvolu da je vidite."
 
 #: family.php:44
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova porodica je izbrisana. Brisanje će morati da pregleda moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:39
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ova porodica je izbrisana. Trebali biste pregledati brisanje, a zatim %1$s "
+"ili %2$s brisanje."
 
 #: family.php:54
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova porodica je uređena. Promjene treba pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:49
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ova porodica je uređena. Trebali biste pregledati promjene, a zatim ih %1$s "
+"ili %2$s."
 
 #: app/Functions/FunctionsCharts.php:409 app/Functions/FunctionsCharts.php:546
 msgid "This family remained childless"
@@ -14467,8 +14485,14 @@ msgstr "Ova porodica nije imala djece"
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] ""
+"Ovo porodično stablo ima %s zapis koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 msgstr[1] ""
+"Ovo porodično stablo ima %s zapisa koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 msgstr[2] ""
+"Ovo porodično stablo ima %s zapisa koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
