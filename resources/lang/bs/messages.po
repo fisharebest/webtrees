@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-02-23 19:39+0000\n"
+"Last-Translator: elvedinz <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/bs/>\n"
 "Language: bs\n"
@@ -1585,7 +1585,7 @@ msgstr "Posvojeno od strane majke"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:810
 msgid "Adopted name"
-msgstr "Usvojeno ime"
+msgstr "Ime nakon usvanjanja"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:1118 app/Factories/ElementFactory.php:1121
@@ -1899,7 +1899,7 @@ msgstr "Omogući posjetiteljima da zatraže novi korisnički račun"
 #: app/Factories/ElementFactory.php:399 app/Factories/ElementFactory.php:811
 #: app/Factories/ElementFactory.php:812 app/GedcomTag.php:1036
 msgid "Also known as"
-msgstr "Znan kao"
+msgstr "Poznat/a i kao"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2124,7 +2124,7 @@ msgstr "Aqua Marine"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Da li si ste sigurni da želite da obrišete link do “%s”?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -2854,7 +2854,7 @@ msgstr "Od datuma rođenja"
 
 #: app/Factories/ElementFactory.php:277
 msgid "Birth name"
-msgstr "Rodno ime"
+msgstr "Ime pri rođenju"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -5687,7 +5687,7 @@ msgstr "Uredi sirovi GEDCOM zapis"
 
 #: app/Http/RequestHandlers/EditNotePage.php:59
 msgid "Edit the shared note"
-msgstr "Uredi djeljenu zabilješku"
+msgstr "Uredi dijeljenu zabilješku"
 
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
@@ -6274,7 +6274,7 @@ msgstr "Porodična knjiga osobe %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Popis porodice"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6298,7 +6298,7 @@ msgstr "Porodica osobe %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Porodična rezidencija"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6392,7 +6392,7 @@ msgstr "Porodica sa ženom"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "ID za pretragu porodice"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -11652,7 +11652,7 @@ msgstr "Provo, Utah, Sjedinjene Države"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Proksi"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -12942,14 +12942,14 @@ msgstr "Shahrivar"
 #: resources/views/modules/notes/tab.phtml:61
 #: resources/views/note-page.phtml:98
 msgid "Shared note"
-msgstr "Djeljenja zabilješka"
+msgstr "Dijeljena zabilješka"
 
 #. I18N: Name of a module/list
 #: app/Module/NoteListModule.php:70
 #: resources/views/lists/sources-table.phtml:100
 #: resources/views/search-general-page.phtml:88
 msgid "Shared notes"
-msgstr "Dijeljeni zapisi"
+msgstr "Dijeljene zabilješke"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -14368,45 +14368,45 @@ msgstr "Porodično stablo “%s” će biti vidljivo posjetiocima kada prvi put 
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:251
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Porodična stabla su uspješno spojena."
 
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:71
 msgid "The family trees menu."
-msgstr ""
+msgstr "Meni porodičnih stabala."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:75
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "Porodica \"%s” je obrisana pošto ima samo jednog člana."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:120
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "Datoteka %s već postoji. Koristite drugo ime za datoteku."
 
 #: app/Http/RequestHandlers/ExportGedcomServer.php:103
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Datoteka %s ne može biti kreirana."
 
 #: app/Http/RequestHandlers/DeletePath.php:60
 #: app/Http/RequestHandlers/DeletePath.php:74
 #: app/Http/RequestHandlers/DeletePath.php:88
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Datoteka %s ne može biti obrisana."
 
 #: app/Http/RequestHandlers/DeletePath.php:72
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "Datoteka %s je obrisana."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:127
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "Datoteka %s je učitana."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:52
@@ -14423,110 +14423,121 @@ msgstr "Datoteka “%s” ne postoji."
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
+"Prva porodica sa liste biće korištena u grafikonima, listama, izvještajima, "
+"itd."
 
 #: app/Http/RequestHandlers/DeletePath.php:83
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Folder %s ne može biti obrisan."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:200
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "Folder %s je kreiran."
 
 #: app/Http/RequestHandlers/DeletePath.php:81
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Folder %s je obrisan."
 
 #: resources/views/admin/site-preferences.phtml:42
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"Folder može biti specificiran kao puna putanja (npr. /home/user_name/"
+"webtrees_data/) ili relativno u odnosu na instalacioni folder (npr. ../../"
+"webtrees_data/)."
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:55
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Folder “%s” ne postoji."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Slijedeće činjenice i događaji su pronađeni u oba zapisa."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.phtml:86
 #: resources/views/admin/merge-records-step-2.phtml:132
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Slijedeće činjenice i događaji su pronađeni samo u zapisu %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "Sljedeća lista prikazuje tipične zahtjeve."
 
 #: app/Http/RequestHandlers/HelpText.php:290
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "Tekst pomoći nije napisan za ovu stavku."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:193
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr ""
+"Osoba koju treba kontaktirati u vezi tehničkih pitanja ili grešaka na vašoj "
+"web stranici."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:173
 msgid "The individual to contact about the genealogy data on this website."
 msgstr ""
+"Osoba koju treba kontaktirati u vezi genealoških podataka na ovoj web "
+"stranici."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:83
 #: app/Http/RequestHandlers/DeleteRecord.php:88
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "Veza od „%1$s” do „%2$s” je izbrisana."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:98
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Veza od “%1$s” do “%2$s” je ažurirana."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "Meni sa listama."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "Lokacija je kreirana"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Lokacija ovog mjesta nije poznata."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:151
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "Medijska datoteka %1$s nije mogla biti preimenovana u %2$s."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:145
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Medijska datoteka %1$s je preimenovana u %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:108
 msgid "The media object has been created"
-msgstr ""
+msgstr "Medijski objekt je kreiran"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr ""
+"Zahtjevi za memorijom i CPU vremenom zavise od broja pojedinaca u vašem "
+"porodičnom stablu."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:89
 #: app/Http/RequestHandlers/ContactAction.php:159
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:92
 #: app/Http/RequestHandlers/MessageAction.php:105
 msgid "The message was not sent."
-msgstr ""
+msgstr "Poruka nije poslana."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:82
 #: app/Http/RequestHandlers/ContactAction.php:154
@@ -14534,7 +14545,7 @@ msgstr ""
 #: app/Http/RequestHandlers/MessageAction.php:100
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "Poruka uspješno poslana %s."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:78
 #: app/Http/RequestHandlers/ModulesAllAction.php:72
@@ -14542,23 +14553,27 @@ msgstr ""
 #: app/Module/ChartsBlockModule.php:166 app/Module/ChartsBlockModule.php:180
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Modul “%s” je onemogućen."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:76
 #: app/Http/RequestHandlers/ModulesAllAction.php:70
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Modul “%s” je uključen."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:779
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"Najčešće porodične činjenice i događaji navedeni su odvojeno, tako da se "
+"mogu lako dodati."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:725
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"Najčešće činjenice i događaji osoba su prikazani odvojeno, tako da se mogu "
+"lako dodavati."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:861
@@ -14573,61 +14588,63 @@ msgstr ""
 #: resources/views/admin/site-registration.phtml:57
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Od novog korisnika će se tražiti da potvrdi svoju adresu e-pošte prije "
+"kreiranja naloga."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:75
 msgid "The note has been created"
-msgstr ""
+msgstr "Bilješka je kreirana"
 
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Nedostaje parametar “%s”."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "Lozinka mora imati najmanje šest znakova."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: resources/views/admin/site-mail.phtml:143
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "Lozinka potrebna za autentifikaciju na SMTP server."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:84
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Veza za ponovno postavljanje lozinke je istekla."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:109
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Hijerarhija mjesta."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:143
 #: app/Http/RequestHandlers/TreePrivacyAction.php:118
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Postavke za sva porodična stabla su ažurirane."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:147
 #: app/Http/RequestHandlers/TreePrivacyAction.php:121
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Postavke za nova porodična stabla su ažurirane."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:136
 #: app/Http/RequestHandlers/TreePrivacyAction.php:111
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Postavke za porodično stablo “%s” su ažurirane."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:73
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Postavke za modul “%s” su izbrisane."
 
 #: app/Module/CustomCssJsModule.php:99
 #: app/Module/RelationshipsChartModule.php:432 app/Module/SiteMapModule.php:180
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Postavke za modul “%s” su ažurirane."
 
 #: resources/views/setup/step-4-database-mysql.phtml:124
 #: resources/views/setup/step-4-database-pgsql.phtml:109
@@ -14635,6 +14652,9 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"Prefiks nije obavezan, ali se preporučuje. Davanjem jedinstvenog prefiksa "
+"nazivima tabela možete dopustiti da nekoliko različitih aplikacija dijeli "
+"istu bazu podataka."
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
@@ -14647,42 +14667,42 @@ msgstr "Zapis kopiran u clipboard."
 #: app/Http/RequestHandlers/MergeFactsAction.php:163
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Zapisi “%1$s” i “%2$s” su spojeni."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:72
 msgid "The reports menu."
-msgstr ""
+msgstr "Meni izvještaja."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:80
 msgid "The repository has been created"
-msgstr ""
+msgstr "Spremište je kreirano"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Meni za pretragu."
 
 #: app/Services/SearchService.php:1171
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Pretraživanje je dalo previše rezultata."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "Konfiguracija servera je OK."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Server nije mogao razumjeti ovaj zahtjev."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Ne može se pristupiti privremenom folderu servera."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:556
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Dostignuto je vremensko ograničenje servera."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:63
@@ -14691,43 +14711,45 @@ msgstr "Veličina porodičnog stabla, najraniji i najkasniji događaji, česta i
 
 #: app/Factories/ElementFactory.php:594 app/Factories/ElementFactory.php:636
 msgid "The solution"
-msgstr ""
+msgstr "Rešenje"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
-msgstr ""
+msgstr "Izvor je kreiran"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Podnesak je kreiran"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Podnosilac je kreiran"
 
 #: resources/views/help/name.phtml:13
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Prezime je zatvoreno kosim crtama: <%s>John Paul /Smith/<%s>"
 
 #: resources/views/admin/site-preferences.phtml:55
 #: resources/views/admin/users-edit.phtml:141
 #: resources/views/edit-account-page.phtml:117
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Vremenska zona je potrebna za izračunavanje datuma, kao što je npr. današnji "
+"datum."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:28
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Dva porodična stabla imaju %1$s zapis koji koristi isti “XREF”."
+msgstr[1] "Dva porodična stabla imaju %1$s zapisa koji koriste isti “XREF”."
+msgstr[2] "Dva porodična stabla imaju %1$s zapisa koji koriste isti “XREF”."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:324
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Nadogradnja je završena."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:49
@@ -14737,22 +14759,24 @@ msgstr "Učitana datoteka prelazi maksimalo dozvoljenu veličinu."
 #: app/Http/RequestHandlers/UsersCleanupAction.php:69
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Korisnik %s je obrisan."
 
 #: resources/views/emails/register-notify-html.phtml:39
 #: resources/views/emails/register-notify-text.phtml:30
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr ""
+"Korisniku je poslat e-mail sa informacijama potrebnim za potvrdu zahtjeva za "
+"pristup."
 
 #: app/Http/RequestHandlers/LoginAction.php:119
 #: app/Http/RequestHandlers/LoginAction.php:124
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Korisničko ime ili lozinka nisu ispravni."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: resources/views/admin/site-mail.phtml:129
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "Korisničko ime potrebno za autentifikaciju na SMTP server."
 
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:82
 #: app/Http/RequestHandlers/ModulesAnalyticsAction.php:45
@@ -14771,7 +14795,7 @@ msgstr ""
 #: app/Http/RequestHandlers/SitePreferencesAction.php:63
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:51
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Postavke web stranice su ažurirane."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: resources/views/admin/map-provider.phtml:51
@@ -14782,6 +14806,8 @@ msgstr ""
 #: resources/views/setup/step-6-failed.phtml:20
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr ""
+"Programeri webtrees-a bi bili vrlo zainteresirani da saznaju više o ovoj "
+"grešci. Ako ih kontaktirate, oni će vam pomoći da riješite problem."
 
 #: app/Module/ModuleThemeTrait.php:65 app/Module/ModuleThemeTrait.php:451
 #: resources/views/admin/modules.phtml:256
@@ -14800,7 +14826,7 @@ msgstr "Promjena teme"
 #: resources/views/admin/modules.phtml:118
 #: resources/views/admin/modules.phtml:120
 msgid "Themes"
-msgstr ""
+msgstr "Teme"
 
 #: resources/views/modules/personal_facts/tab.phtml:46
 msgid "There are no facts for this individual."
@@ -14808,7 +14834,7 @@ msgstr "Nema činjenica za ovog pojedinca."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:288
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Ovaj medijski objekt nije povezan."
 
 #: resources/views/modules/media/tab.phtml:29
 msgid "There are no media objects for this individual."
@@ -14821,7 +14847,7 @@ msgstr "Ne postoje Zabilješke ze ovu osobu."
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:218
 #: resources/views/pending-changes-page.phtml:30
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Nema promjena na čekanju."
 
 #: app/Module/ResearchTaskModule.php:122
 msgid "There are no research tasks in this family tree."
@@ -14841,9 +14867,9 @@ msgstr "Ima novih promjena koje treba odobriti."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Nije bilo promjena u toku posljednjeg %s dana."
+msgstr[1] "Nije bilo promjena u toku posljednjih %s dana."
+msgstr[2] "Nije bilo promjena u toku posljednjih %s dana."
 
 #: app/Http/RequestHandlers/AddMediaFileAction.php:88
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:81
@@ -14878,28 +14904,33 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Ovi kolačići su „osnovni“ i ne zahtijevaju pristanak."
 
 #: resources/views/admin/trees-unconnected.phtml:35
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Ove grupe pojedinaca nisu povezane sa %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Ove usluge mogu koristiti kolačiće ili drugu tehnologiju praćenja."
 
 #: app/Http/RequestHandlers/LoginAction.php:134
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "Ovaj račun nije odobren. Molimo pričekajte dok ga administrator odobri."
 
 #: app/Http/RequestHandlers/LoginAction.php:129
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
+"Ovaj račun nije verificiran. Molimo provjerite svoju e-poštu da li ste "
+"dobili poruku za verifikaciju."
 
 #: resources/views/modules/review_changes/config.phtml:13
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Ovaj blok će urednicima prikazati listu zapisa sa promjenama na čekanju koje "
+"moderator treba da pregleda. Također generiše dnevne e-poruke moderatorima "
+"kad god postoje promjene na čekanju."
 
 #. I18N: %s is a URL
 #: app/Exceptions/MissingParameterException.php:43
@@ -14914,43 +14945,56 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml:95
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
+"Ova adresa e-pošte će se koristiti za slanje podsjetnika za lozinke, "
+"obavještenja web stranice i poruka drugih članova porodice koji su "
+"registrovani na web stranici."
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Ovaj događaj se desio, ali detalji nisu poznati."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ova porodica ne postoji ili nemate dozvolu da je vidite."
 
 #: resources/views/family-page.phtml:26
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova porodica je izbrisana. Brisanje će morati da pregleda moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:24
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ova porodica je izbrisana. Trebali biste pregledati brisanje, a zatim %1$s "
+"ili %2$s brisanje."
 
 #: resources/views/family-page.phtml:32
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova porodica je uređena. Promjene treba pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:30
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ova porodica je uređena. Trebali biste pregledati promjene, a zatim ih %1$s "
+"ili %2$s."
 
 #: resources/views/admin/trees-renumber.phtml:30
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] ""
+"Ovo porodično stablo ima %s zapis koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 msgstr[1] ""
+"Ovo porodično stablo ima %s zapisa koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 msgstr[2] ""
+"Ovo porodično stablo ima %s zapisa koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 
 #: app/Module/SlideShowModule.php:165
 msgid "This family tree has no images to display."
@@ -17021,7 +17065,7 @@ msgstr ""
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:47 app/GedcomCode/GedcomCodeName.php:73
 msgid "adopted name"
-msgstr ""
+msgstr "ime nakon usvajanja"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:69
@@ -17054,7 +17098,7 @@ msgstr ""
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:49 app/GedcomCode/GedcomCodeName.php:87
 msgid "also known as"
-msgstr ""
+msgstr "takođe poznat/a kao"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:83
@@ -17154,7 +17198,7 @@ msgstr "rođenje"
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php:51 app/GedcomCode/GedcomCodeName.php:101
 msgid "birth name"
-msgstr ""
+msgstr "ime pri rođenju"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:97
@@ -17321,7 +17365,7 @@ msgstr ""
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
 msgid "change of name"
-msgstr ""
+msgstr "promjena imena"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:111
@@ -19558,7 +19602,7 @@ msgstr "muž"
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:57 app/GedcomCode/GedcomCodeName.php:143
 msgid "immigration name"
-msgstr ""
+msgstr "ime nakon imigracije"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:139
@@ -19579,7 +19623,7 @@ msgstr ""
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "umetnuta bilješka"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -19652,7 +19696,7 @@ msgstr ""
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:59 app/GedcomCode/GedcomCodeName.php:148
 msgid "maiden name"
-msgstr ""
+msgstr "djevojačko prezime"
 
 #: resources/views/admin/trees-privacy.phtml:141
 msgid "managers"
@@ -19680,7 +19724,7 @@ msgstr "oženjen"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:61 app/GedcomCode/GedcomCodeName.php:162
 msgid "married name"
-msgstr ""
+msgstr "vjenčano prezime"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:158
@@ -20456,7 +20500,7 @@ msgstr "rođak u sedmom koljenu"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "dijeljena zabilješka"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
