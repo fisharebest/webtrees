@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-02-23 18:07+0000\n"
+"PO-Revision-Date: 2024-02-23 19:39+0000\n"
 "Last-Translator: elvedinz <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/bs/>\n"
@@ -14411,99 +14411,110 @@ msgstr "Folder %s je obrisan."
 #: resources/views/admin/site-preferences.phtml:42
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"Folder može biti specificiran kao puna putanja (npr. /home/user_name/"
+"webtrees_data/) ili relativno u odnosu na instalacioni folder (npr. ../../"
+"webtrees_data/)."
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:58
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Folder “%s” ne postoji."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Slijedeće činjenice i događaji su pronađeni u oba zapisa."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.phtml:86
 #: resources/views/admin/merge-records-step-2.phtml:132
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Slijedeće činjenice i događaji su pronađeni samo u zapisu %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:67
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "Sljedeća lista prikazuje tipične zahtjeve."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 msgstr ""
+"Podaci obrasca su nepotpuni. Možda trebate povećati max_input_vars na vašem "
+"serveru?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "Tekst pomoći nije napisan za ovu stavku."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:187
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
 msgstr ""
+"Osoba koju treba kontaktirati u vezi tehničkih pitanja ili grešaka na vašoj "
+"web stranici."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:167
 msgid "The individual to contact about the genealogy data on this website."
 msgstr ""
+"Osoba koju treba kontaktirati u vezi genealoških podataka na ovoj web "
+"stranici."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:92
 #: app/Http/RequestHandlers/DeleteRecord.php:97
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "Veza od „%1$s” do „%2$s” je izbrisana."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:103
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Veza od “%1$s” do “%2$s” je ažurirana."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:66
 msgid "The lists menu."
-msgstr ""
+msgstr "Meni sa listama."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:56
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "Lokacija je kreirana"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:36
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Lokacija ovog mjesta nije poznata."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:134
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "Medijska datoteka %1$s nije mogla biti preimenovana u %2$s."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:131
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "Medijska datoteka %1$s je preimenovana u %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:98
 msgid "The media object has been created"
-msgstr ""
+msgstr "Medijski objekt je kreiran"
 
 #: resources/views/setup/step-2-server-checks.phtml:64
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
 msgstr ""
+"Zahtjevi za memorijom i CPU vremenom zavise od broja pojedinaca u vašem "
+"porodičnom stablu."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Poruka nije poslana %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:102
 #: app/Http/RequestHandlers/MessageAction.php:98
 msgid "The message was not sent."
-msgstr ""
+msgstr "Poruka nije poslana."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:80
 #: app/Http/RequestHandlers/ContactAction.php:146
@@ -14511,7 +14522,7 @@ msgstr ""
 #: app/Http/RequestHandlers/MessageAction.php:93
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "Poruka uspješno poslana %s."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:79
 #: app/Http/RequestHandlers/ModulesAllAction.php:70
@@ -14519,82 +14530,90 @@ msgstr ""
 #: app/Module/ChartsBlockModule.php:164 app/Module/ChartsBlockModule.php:178
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Modul “%s” je onemogućen."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:77
 #: app/Http/RequestHandlers/ModulesAllAction.php:68
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Modul “%s” je uključen."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:683
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"Najčešće porodične činjenice i događaji navedeni su odvojeno, tako da se "
+"mogu lako dodati."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:658
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"Najčešće činjenice i događaji osoba su prikazani odvojeno, tako da se mogu "
+"lako dodavati."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Od novog korisnika će se tražiti da potvrdi svoju adresu e-pošte prije "
+"kreiranja naloga."
 
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
 msgstr ""
+"Sledeća verzija GEDCOM standarda će dodati nove oznake i ukloniti stare. "
+"Sada možete koristiti neke od novih oznaka."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:62
 msgid "The note has been created"
-msgstr ""
+msgstr "Bilješka je kreirana"
 
 #: app/Validator.php:263 app/Validator.php:279 app/Validator.php:314
 #: app/Validator.php:333 app/Validator.php:355 app/Validator.php:374
 #: app/Validator.php:390 app/Validator.php:406
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Nedostaje parametar “%s”."
 
 #: app/Http/RequestHandlers/SetupWizard.php:381
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "Lozinka mora imati najmanje šest znakova."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: resources/views/admin/site-mail.phtml:155
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "Lozinka potrebna za autentifikaciju na SMTP server."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:81
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Veza za ponovno postavljanje lozinke je istekla."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:114
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Hijerarhija mjesta."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:170
 #: app/Http/RequestHandlers/TreePrivacyAction.php:133
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Postavke za sva porodična stabla su ažurirane."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:174
 #: app/Http/RequestHandlers/TreePrivacyAction.php:136
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Postavke za nova porodična stabla su ažurirane."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:163
 #: app/Http/RequestHandlers/TreePrivacyAction.php:126
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Postavke za porodično stablo “%s” su ažurirane."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:72
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Postavke za modul “%s” su izbrisane."
 
 #: app/Module/BingMaps.php:100 app/Module/CustomCssJsModule.php:101
 #: app/Module/GeonamesAutocomplete.php:110 app/Module/GoogleMaps.php:100
@@ -14605,7 +14624,7 @@ msgstr ""
 #: app/Module/RelationshipsChartModule.php:451 app/Module/SiteMapModule.php:171
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Postavke za modul “%s” su ažurirane."
 
 #: resources/views/setup/step-4-database-mysql.phtml:126
 #: resources/views/setup/step-4-database-pgsql.phtml:111
@@ -14613,47 +14632,50 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:111
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"Prefiks nije obavezan, ali se preporučuje. Davanjem jedinstvenog prefiksa "
+"nazivima tabela možete dopustiti da nekoliko različitih aplikacija dijeli "
+"istu bazu podataka."
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:174
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Zapisi “%1$s” i “%2$s” su spojeni."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:71
 msgid "The reports menu."
-msgstr ""
+msgstr "Meni izvještaja."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:77
 msgid "The repository has been created"
-msgstr ""
+msgstr "Spremište je kreirano"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Meni za pretragu."
 
 #: app/Services/SearchService.php:1178
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Pretraživanje je dalo previše rezultata."
 
 #: resources/views/setup/step-2-server-checks.phtml:57
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "Konfiguracija servera je OK."
 
 #: app/Http/Exceptions/HttpBadRequestException.php:35
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Server nije mogao razumjeti ovaj zahtjev."
 
 #: app/Services/ServerCheckService.php:244
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Ne može se pristupiti privremenom folderu servera."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:551
 #: app/Services/UpgradeService.php:176 app/Services/UpgradeService.php:208
 #: resources/views/admin/trees-check.phtml:86
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Dostignuto je vremensko ograničenje servera."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:81
@@ -14662,43 +14684,45 @@ msgstr "Veličina porodičnog stabla, najraniji i najkasniji događaji, česta i
 
 #: app/CustomTags/GedcomL.php:137 app/CustomTags/GedcomL.php:193
 msgid "The solution"
-msgstr ""
+msgstr "Rešenje"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:98
 msgid "The source has been created"
-msgstr ""
+msgstr "Izvor je kreiran"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:56
 msgid "The submission has been created"
-msgstr ""
+msgstr "Podnesak je kreiran"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:80
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Podnosilac je kreiran"
 
 #: resources/views/help/name.phtml:15
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Prezime je zatvoreno kosim crtama: <%s>John Paul /Smith/<%s>"
 
 #: resources/views/admin/site-preferences.phtml:55
 #: resources/views/admin/users-edit.phtml:142
 #: resources/views/edit-account-page.phtml:116
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Vremenska zona je potrebna za izračunavanje datuma, kao što je npr. današnji "
+"datum."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:30
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Dva porodična stabla imaju %1$s zapis koji koristi isti “XREF”."
+msgstr[1] "Dva porodična stabla imaju %1$s zapisa koji koriste isti “XREF”."
+msgstr[2] "Dva porodična stabla imaju %1$s zapisa koji koriste isti “XREF”."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:292
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Nadogradnja je završena."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:63
@@ -14708,22 +14732,24 @@ msgstr "Učitana datoteka prelazi maksimalo dozvoljenu veličinu."
 #: app/Http/RequestHandlers/UsersCleanupAction.php:67
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Korisnik %s je obrisan."
 
 #: resources/views/emails/register-notify-html.phtml:41
 #: resources/views/emails/register-notify-text.phtml:32
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr ""
+"Korisniku je poslat e-mail sa informacijama potrebnim za potvrdu zahtjeva za "
+"pristup."
 
 #: app/Http/RequestHandlers/LoginAction.php:117
 #: app/Http/RequestHandlers/LoginAction.php:122
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Korisničko ime ili lozinka nisu ispravni."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: resources/views/admin/site-mail.phtml:141
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "Korisničko ime potrebno za autentifikaciju na SMTP server."
 
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:94
 #: app/Http/RequestHandlers/ModulesAnalyticsAction.php:45
@@ -14748,12 +14774,14 @@ msgstr ""
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:55
 #: app/Http/RequestHandlers/SiteTagsAction.php:69
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Postavke web stranice su ažurirane."
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
 msgstr ""
+"Programeri webtrees-a bi bili vrlo zainteresirani da saznaju više o ovoj "
+"grešci. Ako ih kontaktirate, oni će vam pomoći da riješite problem."
 
 #: app/Module/ModuleThemeTrait.php:74 app/Module/ModuleThemeTrait.php:471
 #: resources/views/admin/modules.phtml:272
@@ -14772,7 +14800,7 @@ msgstr "Promjena teme"
 #: resources/views/admin/modules.phtml:126
 #: resources/views/admin/modules.phtml:128
 msgid "Themes"
-msgstr ""
+msgstr "Teme"
 
 #: resources/views/modules/personal_facts/tab.phtml:61
 msgid "There are no facts for this individual."
@@ -14780,7 +14808,7 @@ msgstr "Nema činjenica za ovog pojedinca."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:328
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Ovaj medijski objekt nije povezan."
 
 #: resources/views/modules/media/tab.phtml:63
 msgid "There are no media objects for this individual."
@@ -14793,7 +14821,7 @@ msgstr "Ne postoje Zabilješke ze ovu osobu."
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:201
 #: resources/views/pending-changes-page.phtml:32
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Nema promjena na čekanju."
 
 #: app/Module/ResearchTaskModule.php:133
 msgid "There are no research tasks in this family tree."
@@ -14813,13 +14841,13 @@ msgstr "Ima novih promjena koje treba odobriti."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Nije bilo promjena u toku posljednjeg %s dana."
+msgstr[1] "Nije bilo promjena u toku posljednjih %s dana."
+msgstr[2] "Nije bilo promjena u toku posljednjih %s dana."
 
 #: resources/views/admin/control-panel.phtml:188
 msgid "There was an error checking for a new version."
-msgstr ""
+msgstr "Došlo je do greške prilikom provjere nove verzije."
 
 #: app/Exceptions/FileUploadException.php:99
 #: app/Http/RequestHandlers/AddMediaFileAction.php:78
@@ -14855,28 +14883,33 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:38
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Ovi kolačići su „osnovni“ i ne zahtijevaju pristanak."
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Ove grupe pojedinaca nisu povezane sa %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:59
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Ove usluge mogu koristiti kolačiće ili drugu tehnologiju praćenja."
 
 #: app/Http/RequestHandlers/LoginAction.php:132
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "Ovaj račun nije odobren. Molimo pričekajte dok ga administrator odobri."
 
 #: app/Http/RequestHandlers/LoginAction.php:127
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
+"Ovaj račun nije verificiran. Molimo provjerite svoju e-poštu da li ste "
+"dobili poruku za verifikaciju."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"Ovaj blok će urednicima prikazati listu zapisa sa promjenama na čekanju koje "
+"moderator treba da pregleda. Također generiše dnevne e-poruke moderatorima "
+"kad god postoje promjene na čekanju."
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:87
@@ -14885,42 +14918,55 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml:97
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
+"Ova adresa e-pošte će se koristiti za slanje podsjetnika za lozinke, "
+"obavještenja web stranice i poruka drugih članova porodice koji su "
+"registrovani na web stranici."
 
 #: app/Elements/AbstractEventElement.php:67
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Ovaj događaj se desio, ali detalji nisu poznati."
 
 #: app/Auth.php:230 app/Http/RequestHandlers/RedirectFamilyPhp.php:69
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ova porodica ne postoji ili nemate dozvolu da je vidite."
 
 #: resources/views/family-page-pending.phtml:21
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova porodica je izbrisana. Brisanje će morati da pregleda moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ova porodica je izbrisana. Trebali biste pregledati brisanje, a zatim %1$s "
+"ili %2$s brisanje."
 
 #: resources/views/family-page-pending.phtml:27
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova porodica je uređena. Promjene treba pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ova porodica je uređena. Trebali biste pregledati promjene, a zatim ih %1$s "
+"ili %2$s."
 
 #: resources/views/admin/trees-renumber.phtml:32
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
 msgstr[0] ""
+"Ovo porodično stablo ima %s zapis koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 msgstr[1] ""
+"Ovo porodično stablo ima %s zapisa koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 msgstr[2] ""
+"Ovo porodično stablo ima %s zapisa koji koristi isti “XREF” kao drugo "
+"porodično stablo."
 
 #: app/Module/SlideShowModule.php:181
 msgid "This family tree has no images to display."
