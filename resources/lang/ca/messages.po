@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-01-05 10:15+0000\n"
-"Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
+"PO-Revision-Date: 2024-02-25 09:15+0000\n"
+"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
 "Language: ca\n"
@@ -5927,7 +5927,7 @@ msgstr "F.A.B."
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:72
 msgid "FAQ"
-msgstr "PMF (Preguntes Més Freqüents)"
+msgstr "PMF (FAQ)"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:28
