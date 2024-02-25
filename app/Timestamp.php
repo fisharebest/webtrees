@@ -73,6 +73,21 @@ class Timestamp implements TimestampInterface
         return $this->carbon->format('Y-m-d H:i:s');
     }
 
+    /**
+     * Use UTC instead of the saved timezone.
+     *
+     * @return string
+     */
+    public function toUTCDateTimeString(): string
+    {
+        return Carbon::createFromTimestampUTC($this->carbon->getTimestamp())->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * @param TimestampInterface $datetime
+     *
+     * @return int
+     */
     public function compare(TimestampInterface $timestamp): int
     {
         return $this->timestamp() <=> $timestamp->timestamp();

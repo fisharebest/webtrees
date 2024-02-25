@@ -61,6 +61,13 @@ interface TimestampInterface
     public function toDateTimeString(): string;
 
     /**
+     * Use UTC instead of the saved timezone.
+     *
+     * @return string
+     */
+    public function toUTCDateTimeString(): string;
+
+    /**
      * @param TimestampInterface $timestamp
      *
      * @return int
