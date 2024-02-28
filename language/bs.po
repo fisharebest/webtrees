@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-02-23 19:39+0000\n"
+"PO-Revision-Date: 2024-02-29 21:16+0000\n"
 "Last-Translator: elvedinz <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/bs/>\n"
@@ -14496,7 +14496,7 @@ msgstr[2] ""
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Ovo porodično stablo nema fotografije za prikaz."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -14518,39 +14518,48 @@ msgstr "Ovaj file je povezan sa drugom genološkom bazom na serveru. Ne može se
 #: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr ""
+"Ovu fasciklu će webtrees koristiti za skladištenje medijskih datoteka, "
+"GEDCOM datoteka, privremenih datoteka, itd. Ove datoteke mogu sadržavati "
+"privatne podatke i ne bi trebale biti dostupne preko interneta."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
 msgid "This folder will be used to store the media files for this family tree."
 msgstr ""
+"Ovaj folder će se koristiti za čuvanje medijskih datoteka ovog porodičnog "
+"stabla."
 
 #: app/Filter.php:480
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Ovaj obrazac je istekao. Pokušaj ponovo."
 
 #: app/Controller/ChartController.php:57 individual.php:80
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ova osoba ne postoji ili nemate dozvolu da je vidite."
 
 #: individual.php:58
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova osoba je izbrisana. Brisanje će morati da pregleda moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:53
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ova osoba je izbrisana. Trebali biste pregledati brisanje, a zatim %1$s ili "
+"%2$s."
 
 #: individual.php:68
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova osoba je izmenjena. Izmjene treba pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:63
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ova osoba je uređena. Trebali biste pregledati promjene, a zatim ih %1$s ili "
+"%2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:680 edituser.php:207
