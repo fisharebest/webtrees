@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-02-29 21:15+0000\n"
+"PO-Revision-Date: 2024-03-04 01:55+0000\n"
 "Last-Translator: elvedinz <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/bs/>\n"
@@ -15064,6 +15064,8 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:81
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
+"Ova osoba će biti odabrana kao početna osoba kada gledate grafikone i "
+"izveštaje."
 
 #: app/Module/StatisticsChartModule.php:952
 #: app/Statistics/Repository/EventRepository.php:246
@@ -15094,7 +15096,7 @@ msgstr ""
 #: resources/views/statistics/other/places.phtml:55
 #: resources/views/statistics/other/top10-list.phtml:26
 msgid "This information is not available."
-msgstr ""
+msgstr "Ove informacije nisu dostupne."
 
 #: app/Statistics/Repository/EventRepository.php:254
 #: app/Statistics/Repository/FamilyDatesRepository.php:110
@@ -15136,6 +15138,8 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:69
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
 msgstr ""
+"Ovo je link na vaš vlastiti zapis u porodičnom stablu. Ako je ovo pogrešna "
+"osoba, kontaktirajte administratora."
 
 #: resources/views/setup/step-4-database-mysql.phtml:88
 #: resources/views/setup/step-4-database-mysql.phtml:102
@@ -15144,13 +15148,13 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:76
 #: resources/views/setup/step-4-database-sqlsvr.phtml:88
 msgid "This is case sensitive."
-msgstr ""
+msgstr "Ovo je osjetljivo na velika i mala slova."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:175
 #: resources/views/admin/control-panel.phtml:170
 #: resources/views/admin/upgrade/wizard.phtml:25
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Ovo je najnovija verzija webtreesa. Nadogradnja nije dostupna."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:740
@@ -15196,6 +15200,8 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml:85
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr ""
+"Ovo je ime SMTP servera. “localhost” znači da servis e-pošte radi na istom "
+"računaru kao i vaš web server."
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:47
@@ -15204,14 +15210,17 @@ msgstr ""
 #: resources/views/setup/step-5-administrator.phtml:59
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr ""
+"Ovo je vaše pravo ime, ono kako biste željeli da se prikazuje na ekranu."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:122
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Ovaj link važi jedan sat."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
 msgstr ""
+"Ova lista je kreirana korišćenjem jednostavne (ali brze) pretrage i stoga "
+"uključuje zapise koji se neće ažurirati."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15248,66 +15257,85 @@ msgstr "Ova poruka je poslana koristeći slijedeći URL: "
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "This must be at least six characters long. It is case-sensitive."
 msgstr ""
+"Ovo mora biti najmanje šest znakova. Osetljivo je na velika i mala slova."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: resources/views/admin/site-mail.phtml:63
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
+"Ovo ime se koristi u polju “Od” kada se automatski šalju e-mailovi sa ovog "
+"servera."
 
 #: app/Exceptions/NoteAccessDeniedException.php:35
 #: app/Exceptions/NoteNotFoundException.php:35
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ova bilješka ne postoji ili nemate dozvolu da je vidite."
 
 #: resources/views/note-page.phtml:37
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova bilješka je izbrisana. Brisanje će morati da pregleda moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:35
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ova bilješka je izbrisana. Trebali biste pregledati brisanje, a zatim %1$s "
+"ili %2$s."
 
 #: resources/views/note-page.phtml:43
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova bilješka je uređena. Promjene treba pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:41
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ova bilješka je uređena. Trebali biste pregledati promjene, a zatim ih %1$s "
+"ili %2$s."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:557
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
 msgstr ""
+"Ova opcija kontroliše da li će se ili ne automatski prikazati sadržaj zapisa "
+"<i>Bilješka</i> na stranici osobe."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:573
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
 msgstr ""
+"Ova opcija kontroliše da li će se ili ne automatski prikazati sadržaj zapisa "
+"<i>Izvor</i> na stranici osobe."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:416
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
+"Ova opcija kontroliše da li će se pored datuma rođenja djeteta na "
+"grafikonima prikazati starost oca i majke."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:385
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
 msgstr ""
+"Ova opcija kontroliše da li će se prikazati približan datum rođenja i smrti "
+"umjesto ostavljanja praznina na listama osoba i grafikonima za osobe čiji "
+"tačni datumi nisu poznati."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:288
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "Ova opcija će korisnicima olakšati preuzimanje slika."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:166
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
+"Ova opcija će zadržati porodične veze u privatnim zapisima. To znači da ćete "
+"vidjeti prazna „privatna” polja na dijagramu rodoslovlja i na drugim "
+"grafikonima sa privatnim pojedincima."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
