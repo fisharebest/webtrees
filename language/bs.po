@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-02-29 21:16+0000\n"
+"PO-Revision-Date: 2024-03-04 01:55+0000\n"
 "Last-Translator: elvedinz <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/bs/>\n"
@@ -14565,6 +14565,8 @@ msgstr ""
 #: admin_trees_config.php:680 edituser.php:207
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
+"Ova osoba će biti odabrana kao početna osoba kada gledate grafikone i "
+"izveštaje."
 
 #: app/Stats.php:1452 app/Stats.php:2267 app/Stats.php:2375 app/Stats.php:2950
 #: app/Stats.php:3124 app/Stats.php:3422 app/Stats.php:4405 app/Stats.php:4537
@@ -14599,6 +14601,8 @@ msgstr ""
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
 msgstr ""
+"Ovo je link na vaš vlastiti zapis u porodičnom stablu. Ako je ovo pogrešna "
+"osoba, kontaktirajte administratora."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1329
@@ -14607,7 +14611,7 @@ msgstr ""
 
 #: setup.php:290 setup.php:294
 msgid "This is case sensitive."
-msgstr ""
+msgstr "Ovo je osjetljivo na velika i mala slova."
 
 #: setup.php:377
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
@@ -14620,7 +14624,7 @@ msgstr ""
 
 #: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Ovo je najnovija verzija webtreesa. Nadogradnja nije dostupna."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
@@ -14666,6 +14670,8 @@ msgstr ""
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr ""
+"Ovo je ime SMTP servera. “localhost” znači da servis e-pošte radi na istom "
+"računaru kao i vaš web server."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -14675,6 +14681,7 @@ msgstr ""
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr ""
+"Ovo je vaše pravo ime, ono kako biste željeli da se prikazuje na ekranu."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -14740,55 +14747,71 @@ msgstr ""
 #: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
 msgstr ""
+"Ovo mora biti najmanje šest znakova. Osetljivo je na velika i mala slova."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
+"Ovo ime se koristi u polju “Od” kada se automatski šalju e-mailovi sa ovog "
+"servera."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ova bilješka ne postoji ili nemate dozvolu da je vidite."
 
 #: note.php:46
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova bilješka je izbrisana. Brisanje će morati da pregleda moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:41
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ova bilješka je izbrisana. Trebali biste pregledati brisanje, a zatim %1$s "
+"ili %2$s."
 
 #: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ova bilješka je uređena. Promjene treba pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:51
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ova bilješka je uređena. Trebali biste pregledati promjene, a zatim ih %1$s "
+"ili %2$s."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1480
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
 msgstr ""
+"Ova opcija kontroliše da li će se ili ne automatski prikazati sadržaj zapisa "
+"<i>Bilješka</i> na stranici osobe."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1495
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
 msgstr ""
+"Ova opcija kontroliše da li će se ili ne automatski prikazati sadržaj zapisa "
+"<i>Izvor</i> na stranici osobe."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1316
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
+"Ova opcija kontroliše da li će se pored datuma rođenja djeteta na "
+"grafikonima prikazati starost oca i majke."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1189
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
 msgstr ""
+"Ova opcija kontroliše da li će se prikazati približan datum rođenja i smrti "
+"umjesto ostavljanja praznina na listama osoba i grafikonima za osobe čiji "
+"tačni datumi nisu poznati."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1303
@@ -14803,12 +14826,15 @@ msgstr ""
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "Ova opcija će korisnicima olakšati preuzimanje slika."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
+"Ova opcija će zadržati porodične veze u privatnim zapisima. To znači da ćete "
+"vidjeti prazna „privatna” polja na dijagramu rodoslovlja i na drugim "
+"grafikonima sa privatnim pojedincima."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
