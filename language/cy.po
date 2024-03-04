@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-12-30 18:15+0000\n"
-"Last-Translator: Meddal <post@meddal.com>\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
 "Language: cy\n"
@@ -1809,7 +1809,7 @@ msgstr ""
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
-msgstr ""
+msgstr "Ffeithiau enw uwch"
 
 #: admin_trees_config.php:2061
 msgid "Advanced place name facts"
@@ -13631,7 +13631,7 @@ msgstr "Dyddiad newid statws"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
-msgstr ""
+msgstr "Marw-anedig"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
