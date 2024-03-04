@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-01-17 09:36+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2024-03-04 10:50+0000\n"
+"Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
 "Language: da\n"
@@ -8184,7 +8184,9 @@ msgstr "Udseende"
 
 #: edituser.php:220
 msgid "Leave the password blank if you want to keep the current password."
-msgstr "Lad feltet til kodeordet være tomt, hvis du ønsker at beholde det nuværende password."
+msgstr ""
+"Lad feltet til kodeordet være tomt, hvis du ønsker at beholde den nuværende "
+"adgangskode."
 
 #: admin_site_config.php:210 admin_site_config.php:229
 #: admin_site_config.php:297 admin_site_config.php:311
@@ -13878,7 +13880,7 @@ msgstr "Antallet af forekomster af det angivne navn vil blive vist på kortet. H
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr "Kodeordet skal være mindst seks karakterer langt."
+msgstr "Adgangskoden skal være mindst seks karakterer lang."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
@@ -16190,7 +16192,9 @@ msgstr "Du bør gennemse konto detaljerne."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Du skal oprette en administratorkonto. Denne konto kan styre alle dele af denne webtrees-installation. Vælg venligst et komplekst kodeord."
+msgstr ""
+"Du skal oprette en administratorkonto. Denne konto kan styre alle dele af "
+"denne webtrees-installation. Vælg venligst en stærk adgangskode."
 
 #: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
