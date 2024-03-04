@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ko/>\n"
@@ -1656,7 +1656,7 @@ msgstr "확장된 정보 환경 설정"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
-msgstr "확장된 이름"
+msgstr "확장된 이름 정보"
 
 #: admin_trees_config.php:2061
 msgid "Advanced place name facts"
@@ -1670,7 +1670,7 @@ msgstr "확장 검색"
 #. I18N: Name of a country or state
 #: app/Stats.php:6672
 msgid "Afghanistan"
-msgstr ""
+msgstr "아프가니스탄"
 
 #: statistics.php:697
 msgid "Africa"
@@ -1818,7 +1818,7 @@ msgstr "가족의 모든 정보"
 
 #: login.php:415
 msgid "All fields must be completed."
-msgstr ""
+msgstr "모든 필드를 작성해야 합니다."
 
 #: admin_site_upgrade.php:346
 msgid "All files have read and write permission."
@@ -2034,7 +2034,7 @@ msgstr ""
 
 #: login.php:170
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "사용자 계정이 있는 사람은 누구나 이 웹사이트에 액세스할 수 있습니다."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:93
@@ -2074,7 +2074,7 @@ msgstr ""
 
 #: admin_users.php:385
 msgid "Approved by administrator"
-msgstr ""
+msgstr "관리자 승인"
 
 #: app/Date/CalendarDate.php:324
 msgctxt "Abbreviation for April"
@@ -2287,7 +2287,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
 msgid "Australia"
-msgstr ""
+msgstr "Australia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6686
@@ -2413,7 +2413,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6688
 msgid "Azores"
-msgstr ""
+msgstr "Azores"
 
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -2788,7 +2788,7 @@ msgstr "생년월일 범위 시작"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a brother"
-msgstr ""
+msgstr "남자형제의 출생"
 
 #: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a child"
@@ -2832,7 +2832,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "이복형제의 출생"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
@@ -3271,7 +3271,7 @@ msgstr ""
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
 #: app/Module/CkeditorModule.php:27
 msgid "CKEditor™"
-msgstr ""
+msgstr "CKEditor™"
 
 #: admin_trees_manage.php:367
 msgid "Calculating…"
@@ -3802,7 +3802,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:135
 msgid "Cochabamba, Bolivia"
-msgstr ""
+msgstr "Cochabamba, Bolivia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6712
@@ -4329,7 +4329,7 @@ msgstr ""
 #. I18N: gedcom tag DATA
 #: admin_site_change.php:390 app/GedcomTag.php:342
 msgid "Data"
-msgstr ""
+msgstr "데이터"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:181
@@ -4346,7 +4346,7 @@ msgstr ""
 
 #: setup.php:373 setup.php:375
 msgid "Database name"
-msgstr ""
+msgstr "데이터베이스 이름"
 
 #: setup.php:292
 msgid "Database password"
@@ -4941,7 +4941,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:10
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "DejaVu"
 
 #: admin_media.php:320 admin_media.php:529 admin_site_access.php:193
 #: admin_trees_config.php:572 admin_trees_manage.php:418
@@ -5237,7 +5237,7 @@ msgstr ""
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:378
 msgid "Divorce filed"
-msgstr ""
+msgstr "이혼 필드"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
@@ -5984,7 +5984,7 @@ msgstr ""
 #. I18N: gedcom tag FAMF
 #: app/GedcomTag.php:452
 msgid "Family file"
-msgstr ""
+msgstr "가족 파일"
 
 #: family.php:104
 msgid "Family group information"
@@ -6419,7 +6419,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
 msgid "Font"
-msgstr ""
+msgstr "글꼴"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:301
@@ -6758,13 +6758,13 @@ msgstr ""
 #: app/Date/FrenchDate.php:127
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
@@ -7138,12 +7138,12 @@ msgstr ""
 #: app/GedcomTag.php:1564 modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr ""
+msgstr "강조 표시된 이미지"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
 msgid "Hijri"
-msgstr ""
+msgstr "Hijri"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
@@ -7341,7 +7341,7 @@ msgstr ""
 
 #: addmedia.php:545 admin_media_upload.php:254
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "미디어 파일이 많은 경우 폴더와 하위 폴더로 구성할 수 있습니다."
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -7419,10 +7419,28 @@ msgstr ""
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 "
+"발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 "
+"표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 "
+"또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 "
+"입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 "
+"있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 "
+"\"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 "
+"포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 "
+"일본어 이름과 함께 사용할 수 있습니다."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
+"많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 "
+"발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 "
+"표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 "
+"또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 "
+"입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 "
+"있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 "
+"\"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 "
+"포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 "
+"일본어 이름과 함께 사용할 수 있습니다."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
@@ -8087,7 +8105,7 @@ msgstr ""
 
 #: admin_users.php:852
 msgid "Last signed in"
-msgstr ""
+msgstr "마지막 로그인"
 
 #: statistics.php:137
 msgid "Latest birth"
@@ -8288,7 +8306,7 @@ msgstr ""
 
 #: admin_trees_config.php:1146 app/Theme/AbstractTheme.php:1471
 msgid "Lists"
-msgstr ""
+msgstr "목록"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6806
@@ -8377,7 +8395,7 @@ msgstr "분실 비밀번호 요청"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Louisville, Kentucky, United States"
-msgstr ""
+msgstr "Louisville, Kentucky, United States"
 
 #: app/Stats.php:1738
 msgid "Lowest population"
@@ -9054,7 +9072,7 @@ msgstr ""
 
 #: admin_module_menus.php:87 admin_modules.php:204
 msgid "Menu"
-msgstr ""
+msgstr "메뉴"
 
 #. I18N: Menu entry
 #: admin_module_menus.php:28 admin_modules.php:159
@@ -9132,7 +9150,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Mexico City, Mexico"
-msgstr ""
+msgstr "Mexico City, Mexico"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1924
@@ -9307,7 +9325,7 @@ msgstr ""
 #: app/Date/JalaliDate.php:91
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
@@ -9572,7 +9590,7 @@ msgstr ""
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:614
 msgid "Nationality"
-msgstr ""
+msgstr "국적"
 
 #. I18N: gedcom tag NATU
 #: app/GedcomTag.php:618
@@ -9592,7 +9610,7 @@ msgstr ""
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:261
 msgid "Nauvoo (original), Illinois, United States"
-msgstr ""
+msgstr "Nauvoo (original), Illinois, United States"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6843
@@ -9633,7 +9651,7 @@ msgstr ""
 #. I18N: Location of an historic LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:267
 msgid "New York, New York, United States"
-msgstr ""
+msgstr "New York, New York, United States"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6845
@@ -10262,7 +10280,7 @@ msgstr "앗! webtrees는 이 폴더에 파일을 생성할 수 없습니다."
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:373
 msgid "Optional prefixes and suffixes"
@@ -10293,7 +10311,7 @@ msgstr ""
 #: app/Date/JalaliDate.php:152
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:120
@@ -10358,7 +10376,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:212
 msgid "Owner"
-msgstr ""
+msgstr "오너"
 
 #: app/GedcomCode/GedcomCodeRela.php:210
 msgctxt "FEMALE"
@@ -10480,7 +10498,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr ""
+msgstr "Panama City, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -10540,7 +10558,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr ""
+msgstr "가계도"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
@@ -11323,7 +11341,7 @@ msgstr ""
 #. I18N: gedcom tag RIN
 #: app/GedcomTag.php:754
 msgid "Record ID number"
-msgstr ""
+msgstr "레코드 ID 번호"
 
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
@@ -11799,7 +11817,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6879
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
@@ -12360,7 +12378,7 @@ msgstr ""
 #: app/Date/JewishDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:177
@@ -12433,7 +12451,7 @@ msgstr ""
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr ""
+msgstr "연령 커서 표시"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12840,8 +12858,9 @@ msgstr "사이트맵"
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
-"사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 "
-"지원합니다."
+"사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 "
+"엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다 <a "
+"href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
@@ -12983,7 +13002,7 @@ msgstr "정렬 순서"
 #: app/Controller/BranchesController.php:250
 #: app/Functions/FunctionsPrintLists.php:285
 msgid "Sosa"
-msgstr ""
+msgstr "Sosa"
 
 #: search_advanced.php:160 search_advanced.php:222 search_advanced.php:237
 #: search_advanced.php:258 search_advanced.php:273
@@ -13290,7 +13309,7 @@ msgstr "지원 및 설명서는 %s에서 찾을 수 있습니다."
 #. I18N: Name of a country or state
 #: app/Stats.php:6884
 msgid "Suriname"
-msgstr ""
+msgstr "Suriname"
 
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:818 help_text.php:297 search.php:236
@@ -14100,7 +14119,7 @@ msgstr "Thermidor"
 #: app/Date/FrenchDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:131
@@ -14785,7 +14804,7 @@ msgstr ""
 #: app/Date/JalaliDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:122
@@ -14803,7 +14822,7 @@ msgstr ""
 #: app/Date/JewishDate.php:135
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
@@ -14850,7 +14869,8 @@ msgstr ""
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "새로운 연구 과제를 만들려면 먼저 가계도 환경 설정의 사실 및 사건 목록에 “연구 과제”를 추가해야합니다."
+msgstr "새로운 연구 과제를 만들려면 먼저 가계도 환경 설정의 정보 및 이벤트 목록에 “"
+"연구 과제”를 추가해야합니다."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
@@ -15549,7 +15569,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
@@ -15982,7 +16002,7 @@ msgstr ""
 #. I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:37
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:203 search.php:248
 msgid "Year"
@@ -17450,13 +17470,13 @@ msgstr ""
 #: app/Functions/Functions.php:1827 app/Functions/Functions.php:1840
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s종손(◇從孫)/내종손(內◇從孫)"
 
 #: app/Functions/Functions.php:1813
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s종손(◇從孫)/내종손(內◇從孫)"
 
 #: app/Functions/Functions.php:1815
 #, php-format
@@ -17736,7 +17756,7 @@ msgstr ""
 #: app/Functions/Functions.php:1602
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "종6대조부(從6代祖父)"
 
 #: app/Functions/Functions.php:1604
 msgctxt "great ×5 grandmother’s brother"
@@ -17933,7 +17953,7 @@ msgstr ""
 #: app/Functions/Functions.php:1398
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "외외종조모/외외존이모부"
 
 #: app/Functions/Functions.php:1194
 msgctxt "mother’s parent’s sibling"
@@ -17953,7 +17973,7 @@ msgstr ""
 #: app/Functions/Functions.php:1410
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "종조모/대고모부/진외종조모/진외존고모부"
 
 #: app/Functions/Functions.php:1228
 msgctxt "parent’s mother’s sibling"
@@ -18128,7 +18148,7 @@ msgstr ""
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "외증조모"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s mother’s mother"
@@ -18138,7 +18158,7 @@ msgstr ""
 #: app/Functions/Functions.php:1190
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "외증조모/외외증조모"
 
 #: app/Functions/Functions.php:1212
 msgctxt "parent’s father’s mother"
@@ -18992,7 +19012,7 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
+msgstr[0] "최대 %s일"
 
 #: admin_trees_config.php:364 admin_trees_config.php:388
 #: admin_trees_config.php:428 admin_trees_config.php:468
@@ -19069,7 +19089,7 @@ msgstr ""
 #: app/Functions/Functions.php:1002
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "조카사위-질서(姪壻)"
 
 #: app/Functions/Functions.php:1262
 msgctxt "sibling’s daughter’s husband"
@@ -19119,7 +19139,7 @@ msgstr ""
 #: app/Functions/Functions.php:920
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "조카-생질녀(甥姪女)"
 
 #: app/Functions/Functions.php:1028
 msgctxt "brother’s son’s wife"
@@ -19586,7 +19606,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:567
 msgid "seventh cousin"
-msgstr ""
+msgstr "칠종형제"
 
 #: app/Functions/Functions.php:532
 msgctxt "FEMALE"
@@ -19725,7 +19745,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "날짜순으로 정렬"
 
 #: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19847,7 +19867,7 @@ msgstr ""
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "step-mother"
 
 #: app/Functions/Functions.php:908
 msgctxt "parent’s spouse"
@@ -19911,7 +19931,7 @@ msgstr ""
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:165
 msgid "tag cloud"
-msgstr ""
+msgstr "tag cloud"
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
@@ -20116,7 +20136,7 @@ msgstr ""
 #: admin_trees_config.php:427 admin_trees_config.php:467
 #: admin_trees_config.php:487
 msgid "visitors"
-msgstr ""
+msgstr "방문자"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:105
@@ -20190,7 +20210,7 @@ msgstr ""
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
