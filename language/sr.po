@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-17 21:07+0000\n"
-"Last-Translator: Enes Sadikovic <enes_s@yahoo.com>\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Serbian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sr/>\n"
 "Language: sr\n"
@@ -2835,7 +2835,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a brother"
-msgstr ""
+msgstr "Рођење брата"
 
 #: app/GedcomTag.php:1038 app/Module/GoogleMapsModule.php:1818
 msgid "Birth of a child"
@@ -2879,7 +2879,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1070
 msgid "Birth of a half-brother"
-msgstr ""
+msgstr "Рођење полубрата"
 
 #: app/GedcomTag.php:1074
 msgid "Birth of a half-sibling"
@@ -5288,7 +5288,7 @@ msgstr "Razvod"
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:378
 msgid "Divorce filed"
-msgstr "Podnet zahtev za razvod braka"
+msgstr "Поднет захтев за развод брака"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
@@ -8333,7 +8333,7 @@ msgstr ""
 
 #: admin_trees_config.php:1146 app/Theme/AbstractTheme.php:1471
 msgid "Lists"
-msgstr "Liste"
+msgstr "Листе"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6806
@@ -9617,7 +9617,7 @@ msgstr ""
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:614
 msgid "Nationality"
-msgstr "Nacionalnost"
+msgstr "Националност"
 
 #. I18N: gedcom tag NATU
 #: app/GedcomTag.php:618
@@ -12480,7 +12480,7 @@ msgstr ""
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr ""
+msgstr "Прикажи показивач старости"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -12725,7 +12725,7 @@ msgstr ""
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Прикажи листу презимена"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -18089,7 +18089,7 @@ msgstr ""
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "прабака"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s mother’s mother"
@@ -18099,7 +18099,7 @@ msgstr ""
 #: app/Functions/Functions.php:1190
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "прабака"
 
 #: app/Functions/Functions.php:1212
 msgctxt "parent’s father’s mother"
@@ -19084,7 +19084,7 @@ msgstr ""
 #: app/Functions/Functions.php:920
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "сестричина"
 
 #: app/Functions/Functions.php:1028
 msgctxt "brother’s son’s wife"
@@ -19690,7 +19690,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "сортирај по датуму"
 
 #: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19812,7 +19812,7 @@ msgstr ""
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "маћеха"
 
 #: app/Functions/Functions.php:908
 msgctxt "parent’s spouse"
