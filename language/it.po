@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-03-22 07:07+0000\n"
-"Last-Translator: McGrelio <mcgrelio@gmail.com>\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/it/>\n"
 "Language: it\n"
@@ -9149,7 +9149,6 @@ msgstr "Messico"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:245
-#, fuzzy
 msgid "Mexico City, Mexico"
 msgstr "Città del Messico, Messico"
 
@@ -10500,7 +10499,6 @@ msgstr "Panamá"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
-#, fuzzy
 msgid "Panama City, Panama"
 msgstr "Città di Panama, Panama"
 
