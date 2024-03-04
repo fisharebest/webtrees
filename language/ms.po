@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-10-18 21:08+0000\n"
-"Last-Translator: Kilik Alexander <kilikgantit@gmail.com>\n"
-"Language-Team: Malay <https://translate.webtrees.net/projects/webtrees/webtrees-1-7/ms/>\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Malay <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-1-7/ms/>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -12778,7 +12779,11 @@ msgstr "Log masuk dan pendaftaran"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Tarikh yang sesuai perlu didalam kalenadar. Untuk menetukan satu satu tarikh dalam kalendar, sila masukkan kata kunci sebelum tarikh yang dikehendaki. Kata kunci ini merupakan satu pilihan jika format bulan dan tahun tersebut dari tahun yang kabur."
+msgstr ""
+"Tarikh yang sesuai perlu didalam kalenadar. Untuk menetukan satu tarikh "
+"dalam kalendar, sila masukkan kata kunci sebelum tarikh yang dikehendaki. "
+"Kata kunci ini merupakan satu pilihan jika format bulan dan tahun tersebut "
+"dari tahun yang kabur."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6872
