@@ -2,9 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
+"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -632,7 +633,11 @@ msgstr "<기본 테마>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr "<p>알림: 이 양식을 작성하여 제출함으로써 귀하는 다음 사항에 동의하게 됩니다.</p><ul><li>당사 사이트 및 아래 텍스트 상자에 나열된 살아있는 개인의 개인정보 보호에 동의합니다. , 귀하가 누구와 관련이 있는지 설명하거나 당사 웹사이트에 등재되어야 하는 사람에 대한 정보를 제공합니다.</li></ul>"
+msgstr ""
+"<p>알림: 이 양식을 작성하여 제출함으로써 귀하는 다음 사항에 동의하게 "
+"됩니다.</p><ul><li>당사 사이트 및 아래 텍스트 상자에 나열된 살아있는 개인의 "
+"개인정보 보호에 동의합니다;</li><li>귀하가 누구와 관련이 있는지 설명하거나 "
+"당사 웹사이트에 등재되어야 하는 사람에 대한 정보를 제공합니다.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -7708,11 +7713,29 @@ msgstr "가계도에서 각 기록에는 \"F123\" 또는 \"R14\"와 같은 내�
 
 #: resources/views/help/romanized.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 \"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 일본어 이름과 함께 사용할 수 있습니다."
+msgstr ""
+"많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 "
+"발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 "
+"표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 "
+"또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 "
+"입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 "
+"있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 "
+"\"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 "
+"포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 "
+"일본어 이름과 함께 사용할 수 있습니다."
 
 #: resources/views/help/hebrew.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 \"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 일본어 이름과 함께 사용할 수 있습니다."
+msgstr ""
+"많은 문화권에서는 영어와 같은 라틴 알파벳을 기반으로 하는 언어에서 철자 또는 "
+"발음되는 것과 같이 전통적인 이름을 전통적인 문자로 철자하고 로마자로 "
+"표기하는 것이 관례입니다.<br><br>만약 히브리어, 그리스어, 러시아어, 중국어 "
+"또는 아랍어와 같은 비라틴 알파벳을 사용하여 표준 이름 필드에 이름을 "
+"입력하려는 경우 이 필드에 라틴 알파벳을 사용하여 동일한 이름을 입력할 수 "
+"있습니다. 두 가지 버전의 이름이 목록과 차트에 표시됩니다.<br><br>이 필드에 "
+"\"로마자 표기\"라고 표시되어 있지만 라틴 알파벳을 기반으로 한 문자만 "
+"포함하도록 제한되지는 않습니다. 이것은 세 개의 다른 알파벳이 나타날 수 있는 "
+"일본어 이름과 함께 사용할 수 있습니다."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
@@ -13401,7 +13424,10 @@ msgstr "사이트맵"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:25
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다."
+msgstr ""
+"사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 "
+"엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다 <a "
+"href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
@@ -15407,7 +15433,8 @@ msgstr ""
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "새로운 연구 과제를 만들려면 먼저 가계도 환경 설정의 정보 및 이벤트 목록에 “연구 과제”를 추가해야합니다."
+msgstr "새로운 연구 과제를 만들려면 먼저 가계도 환경 설정의 정보 및 이벤트 목록에 “"
+"연구 과제”를 추가해야합니다."
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
@@ -17903,7 +17930,7 @@ msgstr "%s종손자(◇從孫子)"
 #: app/Services/RelationshipService.php:1807
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "%s종손(◇從孫)/내%s종손(內◇從孫)"
+msgstr "%s종손(◇從孫)/내종손(內◇從孫)"
 
 #: app/Services/RelationshipService.php:1695
 #: app/Services/RelationshipService.php:1730
@@ -17911,7 +17938,7 @@ msgstr "%s종손(◇從孫)/내%s종손(內◇從孫)"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s종손(◇從孫)/내%s종손(內◇從孫)"
+msgstr "%s종손(◇從孫)/내종손(內◇從孫)"
 
 #: app/Services/RelationshipService.php:1699
 #: app/Services/RelationshipService.php:1734
