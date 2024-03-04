@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-02-25 09:15+0000\n"
-"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
 "Language: ca\n"
@@ -13321,7 +13321,7 @@ msgstr "Mostra l'usuari que ha realitzat el canvi"
 #: resources/views/modules/html/config.phtml:62
 #: resources/views/modules/stories/edit.phtml:60
 msgid "Show this block for which languages"
-msgstr "En quins idiomes es mostrarà aquest bloc?"
+msgstr "En quins idiomes es mostrarà aquest bloc"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
