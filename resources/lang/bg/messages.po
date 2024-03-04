@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
-"Last-Translator: Dieter <ungeahnt@proavitus.de>\n"
-"Language-Team: Bulgarian <https://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Bulgarian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -638,7 +639,13 @@ msgstr "<по подразбиране>"
 
 #: resources/views/register-page.phtml:26
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Важно:</div><div class=\"error\">С попълването и изпращането на тази форма Вие се съгласявате:<ul><li>да не разгласявате информацията за живите хора от базата данни, която е с конфинденциален характер;</li><li>да отбележите в полето «Коментари», с кого от хората сте в родствена връзка или за кого желаете да добавите данни във фамилните дървета;</li><li>да представите копие или референция към източниците, от които е почерпана Вашата информация.</li></ul></div>"
+msgstr ""
+"<div class=\"largeError\">Важно:</div><div class=\"error\">С попълването и "
+"изпращането на тази форма Вие се съгласявате:<ul><li>да не разгласявате "
+"информацията за живите хора от базата данни, която е с конфинденциален "
+"характер;</li><li>да отбележите в полето «Коментари», с кого от хората сте в "
+"родствена връзка или за кого желаете да добавите данни във фамилните "
+"дървета;</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:643 app/Functions/FunctionsPrint.php:120
@@ -11305,7 +11312,7 @@ msgstr "Място на първо причастие"
 
 #: app/Factories/ElementFactory.php:1213 app/GedcomTag.php:749
 msgid "Place of immigration"
-msgstr "Място на на имиграция"
+msgstr "Място на имиграция"
 
 #: app/Factories/ElementFactory.php:1011 app/GedcomTag.php:790
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:227
