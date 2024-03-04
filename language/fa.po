@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-01-24 16:36+0000\n"
-"Last-Translator: jsh649 <jsh649@gmail.com>\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Persian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fa/>\n"
 "Language: fa\n"
@@ -1680,7 +1680,7 @@ msgstr "تنظیمات پیشرفته وقایع"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
-msgstr "مشخصات پیشرفته اسامی"
+msgstr "مشخصات پیشرفته نام وقایع"
 
 #: admin_trees_config.php:2061
 msgid "Advanced place name facts"
@@ -2435,7 +2435,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6688
 msgid "Azores"
-msgstr ""
+msgstr "آزور"
 
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -4372,7 +4372,7 @@ msgstr "اتصال دیتابیس"
 
 #: setup.php:373 setup.php:375
 msgid "Database name"
-msgstr "نام دیتابیس"
+msgstr "نام بانک اطلاعات"
 
 #: setup.php:292
 msgid "Database password"
@@ -5263,7 +5263,7 @@ msgstr ""
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:378
 msgid "Divorce filed"
-msgstr ""
+msgstr "تقاضای طلاق"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
@@ -7447,10 +7447,27 @@ msgstr ""
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"در بسیاری از فرهنگ‌ها داشتن یک نام سنتی مرسوم است و همچنین نسخه کاتولیکی شده "
+"از این نام که در زبان‌های مبتنی بر الفبای لاتین مانند انگلیسی املا یا تلفظ "
+"می‌شود، وجود دارد.<br><br>اگر ترجیح می دهید از الفبای غیر لاتین مانند عبری، "
+"یونانی، روسی، چینی یا عربی برای وارد کردن نام در فیلدهای نام استاندارد "
+"استفاده کنید، سپس می توانید از این فیلد برای وارد کردن همان نام با استفاده "
+"از الفبای لاتین استفاده کنید. هر دو نسخه از نام در فهرست‌ها و نمودارها ظاهر "
+"می‌شوند.<br><br>اگرچه این فیلد دارای برچسب \"کاتولیکی\" است، فقط شامل نویسه‌"
+"های مبتنی بر الفبای لاتین نیست.و ممکن است برای نام های ژاپنی، که در آن سه "
+"الفبای مختلف وجود دارد، استفاده شود."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
+"در بسیاری از فرهنگ‌ها داشتن یک نام سنتی مرسوم است و همچنین نوعی کاتولیکی شده "
+"از این نام که در زبان‌های مبتنی بر الفبای لاتین مانند انگلیسی املا یا تلفظ "
+"می‌شود، وجود دارد.<br><br>اگر ترجیح می دهید از الفبای لاتین برای وارد کردن "
+"نام در فیلدهای نام استاندارد استفاده کنید، سپس می توانید از این فیلد برای "
+"وارد کردن همان نام در الفبای غیر لاتین مانند یونانی، عبری، روسی، عربی یا "
+"چینی استفاده کنید. هر دو نسخه از نام در فهرست‌ها و نمودارها ظاهر می‌"
+"شوند.<br><br>اگرچه این فیلد \"عبری\" نام دارد، اما محدود به داشتن نویسه‌های "
+"عبری نیست."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
@@ -9160,7 +9177,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:245
 msgid "Mexico City, Mexico"
-msgstr ""
+msgstr "مکزیکو سیتی، مکزیک"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1924
@@ -9884,7 +9901,7 @@ msgstr ""
 
 #: admin_site_merge.php:241 admin_site_merge.php:288 admin_site_merge.php:334
 msgid "No matching facts found"
-msgstr ""
+msgstr "واقعه ای منطبق نگردید"
 
 #: addmedia.php:168 addmedia.php:302 admin_media_upload.php:126
 msgid "No media file was provided."
@@ -10515,7 +10532,7 @@ msgstr "پاناما"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr ""
+msgstr "پاناما سیتی، پاناما"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -10575,7 +10592,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "پیشنه"
+msgstr "تبار"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
@@ -13233,7 +13250,7 @@ msgstr ""
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
-msgstr ""
+msgstr "زایمان بچه مرده"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
@@ -13326,7 +13343,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6884
 msgid "Suriname"
-msgstr ""
+msgstr "سورینام"
 
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:818 help_text.php:297 search.php:236
@@ -13834,6 +13851,8 @@ msgstr ""
 #: admin_trees_config.php:1726
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
+"رایج ترین وقایع و رویدادهای فردی به طور جداگانه ذکر شده است ، به طوری که می "
+"توان آنها را راحت تر اضافه کرد."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
@@ -14004,7 +14023,7 @@ msgstr ""
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "نام کاربری مورد نیاز برای احراز هویت با سرور SMTP."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:951
@@ -14841,6 +14860,8 @@ msgstr ""
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
+"برای ایجاد وظایف پژوهشی جدید، ابتدا باید «وظیفه پژوهشی» را به فهرست وقایع و "
+"رویدادها در تنظیمات برگزیده شجره نامه اضافه کنید."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
@@ -15853,7 +15874,7 @@ msgstr "پوشه محل نصب PhpGedView شما کدام است‌؟"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "کدام شچره نامه ها باید در نقشه سایت گنجانده شوند"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
@@ -15919,7 +15940,7 @@ msgstr ""
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:864
 msgid "Will"
-msgstr ""
+msgstr "وصیت"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:389
@@ -16203,6 +16224,7 @@ msgstr ""
 #: admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
+"شما نباید یک حساب کاربری را تایید کنید مگر اینکه بدانید آدرس ایمیل صحیح است."
 
 #: login.php:328
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
@@ -16441,7 +16463,7 @@ msgstr ""
 #: app/Functions/Functions.php:904
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "خاله/عمه"
 
 #: app/Functions/Functions.php:846
 msgctxt "father’s sibling"
@@ -16753,7 +16775,7 @@ msgstr "عدم اجازه"
 #: modules_v3/descendancy_report/report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "متوفی"
 
 #: modules_v3/descendancy_report/report.xml:134
 #: modules_v3/descendancy_report/report.xml:435
@@ -17911,7 +17933,7 @@ msgstr ""
 #: app/Functions/Functions.php:1398
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "همسر فرزندان مادربزرگ مادری"
 
 #: app/Functions/Functions.php:1194
 msgctxt "mother’s parent’s sibling"
@@ -17931,7 +17953,7 @@ msgstr ""
 #: app/Functions/Functions.php:1410
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "همسر فرزندان پدربزرگ"
 
 #: app/Functions/Functions.php:1228
 msgctxt "parent’s mother’s sibling"
@@ -18106,7 +18128,7 @@ msgstr ""
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "مادر پدربزرگ"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s mother’s mother"
@@ -18116,7 +18138,7 @@ msgstr ""
 #: app/Functions/Functions.php:1190
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "مادر پدربزرگ/مادربزرگ"
 
 #: app/Functions/Functions.php:1212
 msgctxt "parent’s father’s mother"
@@ -18972,8 +18994,8 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "حداکثر %s روز"
+msgstr[1] "حداکثر %s روز"
 
 #: admin_trees_config.php:364 admin_trees_config.php:388
 #: admin_trees_config.php:428 admin_trees_config.php:468
@@ -19050,7 +19072,7 @@ msgstr ""
 #: app/Functions/Functions.php:1002
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "داماد برادر"
 
 #: app/Functions/Functions.php:1262
 msgctxt "sibling’s daughter’s husband"
@@ -19100,7 +19122,7 @@ msgstr ""
 #: app/Functions/Functions.php:920
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "دختر خواهر"
 
 #: app/Functions/Functions.php:1028
 msgctxt "brother’s son’s wife"
@@ -19567,7 +19589,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:567
 msgid "seventh cousin"
-msgstr ""
+msgstr "عمو/دایی/عمه/خاله زاده نَسَب هفتم"
 
 #: app/Functions/Functions.php:532
 msgctxt "FEMALE"
@@ -19706,7 +19728,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "مرتب سازی براساس تاریخ"
 
 #: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19828,7 +19850,7 @@ msgstr ""
 #: app/Functions/Functions.php:852 app/Module/FamilyNavigatorModule.php:224
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "نامادری"
 
 #: app/Functions/Functions.php:908
 msgctxt "parent’s spouse"
@@ -19892,7 +19914,7 @@ msgstr "جدول"
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:165
 msgid "tag cloud"
-msgstr "دسته تگ"
+msgstr "ابر برچسب"
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
@@ -20096,7 +20118,7 @@ msgstr "نما"
 #: admin_trees_config.php:427 admin_trees_config.php:467
 #: admin_trees_config.php:487
 msgid "visitors"
-msgstr ""
+msgstr "بازدید کنندگان"
 
 #: modules_v3/ahnentafel_report/report.xml:141
 #: modules_v3/descendancy_report/report.xml:105
