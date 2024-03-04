@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-03-17 21:07+0000\n"
-"Last-Translator: Enes Sadikovic <enes_s@yahoo.com>\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/sr_Latn/>\n"
 "Language: sr-Latn\n"
@@ -17689,7 +17689,7 @@ msgstr "obriši"
 #: resources/xml/reports/descendancy_report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr "umrla"
+msgstr "umro"
 
 #: resources/xml/reports/descendancy_report.xml:134
 #: resources/xml/reports/descendancy_report.xml:435
