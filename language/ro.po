@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Romanian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ro/>\n"
@@ -126,7 +126,7 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: app/Module/GoogleMapsModule.php:838
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
 msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
 msgstr[0] "%1$s individ afişat dintr-un total normal de %2$s, din %3$s generaţii."
@@ -137,7 +137,7 @@ msgstr[2] ""
 
 #. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:852
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] "%1$s individ nu are coordonate geografice pentru locul naşterii: %2$s."
