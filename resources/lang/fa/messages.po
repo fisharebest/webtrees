@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-01-24 16:36+0000\n"
-"Last-Translator: jsh649 <jsh649@gmail.com>\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/fa/>\n"
 "Language: fa\n"
@@ -7732,11 +7732,28 @@ msgstr "در یک شجره نامه، هر رکورد دارای یک شماره
 
 #: resources/views/help/romanized.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "در بسیاری از فرهنگ‌ها داشتن یک نام سنتی مرسوم است و همچنین نسخه کاتولیکی شده از این نام که در زبان‌های مبتنی بر الفبای لاتین مانند انگلیسی املا یا تلفظ می‌شود، وجود دارد.<br><br>اگر ترجیح می دهید از الفبای غیر لاتین مانند عبری، یونانی، روسی، چینی یا عربی برای وارد کردن نام در فیلدهای نام استاندارد استفاده کنید، سپس می توانید از این فیلد برای وارد کردن همان نام با استفاده از الفبای لاتین استفاده کنید. هر دو نسخه از نام در فهرست‌ها و نمودارها ظاهر می‌شوند.<br><br>اگرچه این فیلد دارای برچسب \"کاتولیکی\" است، فقط شامل نویسه‌های مبتنی بر الفبای لاتین نیست.و ممکن است برای نام های ژاپنی، که در آن سه الفبای مختلف وجود دارد، استفاده شود."
+msgstr ""
+"در بسیاری از فرهنگ‌ها داشتن یک نام سنتی مرسوم است و همچنین نسخه کاتولیکی شده "
+"از این نام که در زبان‌های مبتنی بر الفبای لاتین مانند انگلیسی املا یا تلفظ "
+"می‌شود، وجود دارد.<br><br>اگر ترجیح می دهید از الفبای غیر لاتین مانند عبری، "
+"یونانی، روسی، چینی یا عربی برای وارد کردن نام در فیلدهای نام استاندارد "
+"استفاده کنید، سپس می توانید از این فیلد برای وارد کردن همان نام با استفاده "
+"از الفبای لاتین استفاده کنید. هر دو نسخه از نام در فهرست‌ها و نمودارها ظاهر "
+"می‌شوند.<br><br>اگرچه این فیلد دارای برچسب \"کاتولیکی\" است، فقط شامل نویسه‌"
+"های مبتنی بر الفبای لاتین نیست.و ممکن است برای نام های ژاپنی، که در آن سه "
+"الفبای مختلف وجود دارد، استفاده شود."
 
 #: resources/views/help/hebrew.phtml:10
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "در بسیاری از فرهنگ‌ها داشتن یک نام سنتی مرسوم است و همچنین نوعی کاتولیکی شده از این نام که در زبان‌های مبتنی بر الفبای لاتین مانند انگلیسی املا یا تلفظ می‌شود، وجود دارد.<br><br>اگر ترجیح می دهید از الفبای لاتین برای وارد کردن نام در فیلدهای نام استاندارد استفاده کنید، سپس می توانید از این فیلد برای وارد کردن همان نام در الفبای غیر لاتین مانند یونانی، عبری، روسی، عربی یا چینی استفاده کنید. هر دو نسخه از نام در فهرست‌ها و نمودارها ظاهر می‌شوند.<br><br>اگرچه این فیلد \"عبری\" نام دارد، اما محدود به داشتن نویسه‌های عبری نیست."
+msgstr ""
+"در بسیاری از فرهنگ‌ها داشتن یک نام سنتی مرسوم است و همچنین نوعی کاتولیکی شده "
+"از این نام که در زبان‌های مبتنی بر الفبای لاتین مانند انگلیسی املا یا تلفظ "
+"می‌شود، وجود دارد.<br><br>اگر ترجیح می دهید از الفبای لاتین برای وارد کردن "
+"نام در فیلدهای نام استاندارد استفاده کنید، سپس می توانید از این فیلد برای "
+"وارد کردن همان نام در الفبای غیر لاتین مانند یونانی، عبری، روسی، عربی یا "
+"چینی استفاده کنید. هر دو نسخه از نام در فهرست‌ها و نمودارها ظاهر می‌"
+"شوند.<br><br>اگرچه این فیلد \"عبری\" نام دارد، اما محدود به داشتن نویسه‌های "
+"عبری نیست."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
@@ -14499,7 +14516,9 @@ msgstr "رایج ترین وقایع و رویدادهای خانوادگی به
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:658
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "رایج ترین وقایع و رویدادهای فردی به طور جداگانه ذکر شده است ، به طوری که می توان آنها را راحت تر اضافه کرد."
+msgstr ""
+"رایج ترین وقایع و رویدادهای فردی به طور جداگانه ذکر شده است ، به طوری که می "
+"توان آنها را راحت تر اضافه کرد."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
@@ -15439,7 +15458,9 @@ msgstr "برای ایجاد داده های جدید با استفاده از ب
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "برای ایجاد وظایف پژوهشی جدید، ابتدا باید «وظیفه پژوهشی» را به فهرست وقایع و رویدادها در تنظیمات برگزیده شجره نامه اضافه کنید."
+msgstr ""
+"برای ایجاد وظایف پژوهشی جدید، ابتدا باید «وظیفه پژوهشی» را به فهرست وقایع و "
+"رویدادها در تنظیمات برگزیده شجره نامه اضافه کنید."
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
@@ -16694,7 +16715,8 @@ msgstr "باید «%1$s» را از «%2$s» حذف کنید و دوباره ا�
 
 #: resources/views/admin/users-edit.phtml:115
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "شما نباید یک حساب کاربری را تایید کنید مگر اینکه بدانید آدرس ایمیل صحیح است."
+msgstr ""
+"شما نباید یک حساب کاربری را تایید کنید مگر اینکه بدانید آدرس ایمیل صحیح است."
 
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
