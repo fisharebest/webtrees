@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Georgian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ka/>\n"
@@ -11808,7 +11808,7 @@ msgstr "Сантьяго, Чили"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:331
 msgid "Santo Domingo, Dominican Republic"
-msgstr "Санто-Доминго, Домин. респ."
+msgstr "Санто-Доминго, Доминиканская Республика"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:347
@@ -12690,9 +12690,8 @@ msgid "Show this block for which languages"
 msgstr ""
 
 #: admin_trees_config.php:1051
-#, fuzzy
 msgid "Show thumbnail images in charts and family groups."
-msgstr "ვაჩვენოთ მთავარი ფოტო სავიზიტო ბარათებზე"
+msgstr "ვაჩვენოთ მთავარი ფოტო სავიზიტო ბარათებზე."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
