@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-03 23:01+0000\n"
-"PO-Revision-Date: 2024-02-19 19:15+0000\n"
-"Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
+"PO-Revision-Date: 2024-03-05 20:37+0000\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
+"Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3266,7 +3267,7 @@ msgstr "Kanada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Es kann nicht in den Ordner “%s” geschrieben werden."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3865,7 +3866,7 @@ msgstr "Verbindung zum Datenbank Server"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Verbindungstyp"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -14520,7 +14521,7 @@ msgstr "Der Parameter „%s“ fehlt."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Der Parameter “Pfad” ist ungültig."
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -14746,7 +14747,7 @@ msgstr "Zu dieser Person gibt es keine Ereignisse."
 #: app/Module/IndividualListModule.php:224
 #, php-format
 msgid "There are no individuals with the surname “%s“"
-msgstr ""
+msgstr "Es gibt keine Personen mit dem Nachnamen “%s“"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15131,7 +15132,7 @@ msgstr "Auf dieser Seite können Sie die üblichen Bearbeitungsformulare umgehen
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Diese Seite wurde gelöscht."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -19448,7 +19449,7 @@ msgstr "Liste"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokal"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19657,7 +19658,7 @@ msgstr "Neffe/Nichte"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "Netzwerk"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
