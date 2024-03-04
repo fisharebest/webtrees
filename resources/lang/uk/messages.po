@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2023-10-16 16:34+0000\n"
-"Last-Translator: Yuri <zaharchenko.yurij@gmail.com>\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/uk/>\n"
 "Language: uk\n"
@@ -12110,7 +12110,6 @@ msgstr "Звіт"
 
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
-#, fuzzy
 msgid "Report phrase"
 msgstr "Доповідна фраза"
 
@@ -16792,7 +16791,6 @@ msgstr "Ваш веб-сервер використовує PHP версії %s,
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
-#, fuzzy
 msgid "ZIP"
 msgstr "Індекс"
 
