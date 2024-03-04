@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-02-25 09:15+0000\n"
-"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
+"PO-Revision-Date: 2024-03-04 12:15+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
 "Language: ca\n"
@@ -12738,7 +12738,7 @@ msgstr "Mostra l'usuari que ha realitzat el canvi"
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "En quins idiomes es mostrarà aquest bloc?"
+msgstr "En quins idiomes es mostrarà aquest bloc"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
