@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2024-02-14 01:15+0000\n"
-"Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -318,7 +318,7 @@ msgstr[0] "%s 项注释说明已更新。"
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr "%s 出现次数过多"
+msgstr "%s 出现次数过多."
 
 # I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #. I18N: %s=“fifth cousin”, etc.
@@ -4424,7 +4424,7 @@ msgstr "添加个人"
 #: app/Module/MapBox.php:51 app/Module/OpenStreetMap.php:41
 #, php-format
 msgid "Create maps using %s."
-msgstr "用%s创建地图"
+msgstr "用%s创建地图."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
