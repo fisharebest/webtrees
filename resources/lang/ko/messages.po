@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-11 18:41+0000\n"
+"PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ko/>\n"
@@ -13493,7 +13493,10 @@ msgstr "사이트맵"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:23
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다."
+msgstr ""
+"사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 "
+"엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다 <a "
+"href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:196
@@ -18188,13 +18191,13 @@ msgstr "%s종손자(◇從孫子)"
 #: app/Functions/Functions.php:2028
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "%s종손(◇從孫)/내%s종손(內◇從孫)"
+msgstr "%s종손(◇從孫)/내종손(內◇從孫)"
 
 #: app/Functions/Functions.php:1954 app/Functions/Functions.php:1984
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s종손(◇從孫)/내%s종손(內◇從孫)"
+msgstr "%s종손(◇從孫)/내종손(內◇從孫)"
 
 #: app/Functions/Functions.php:1958 app/Functions/Functions.php:1987
 #, php-format
