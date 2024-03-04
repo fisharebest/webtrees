@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-01-17 09:36+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2024-03-04 10:50+0000\n"
+"Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
 "Language: da\n"
@@ -862,7 +862,7 @@ msgstr "En ny version af webtrees er frigivet."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:121
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr "Et password reset link er sendt til “%s”."
+msgstr "Et link til nulstilling af adgangskode er sendt til “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -7738,7 +7738,8 @@ msgstr "Hvis du oprettede denne GEDCOM fil ved brug af et slægtsforskningsprogr
 #: resources/views/emails/password-request-html.phtml:26
 #: resources/views/emails/password-request-text.phtml:18
 msgid "If you did not request a new password, please ignore this message."
-msgstr "Ignorér venligst denne besked hvis du ikke har bedt om et ny password."
+msgstr ""
+"Ignorér venligst denne besked, hvis du ikke har bedt om en ny adgangskode."
 
 #: resources/views/emails/register-user-html.phtml:34
 #: resources/views/emails/register-user-text.phtml:22
@@ -8630,7 +8631,9 @@ msgstr "Udseende"
 
 #: resources/views/edit-account-page.phtml:96
 msgid "Leave the password blank if you want to keep the current password."
-msgstr "Lad feltet til kodeordet være tomt, hvis du ønsker at beholde det nuværende password."
+msgstr ""
+"Lad feltet til kodeordet være tomt, hvis du ønsker at beholde den nuværende "
+"adgangskode."
 
 #: resources/views/admin/media-upload.phtml:51
 msgid "Leave this entry blank to keep the original filename"
@@ -12853,7 +12856,7 @@ msgstr "Servernavn"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:64
 msgid "Set a new password"
-msgstr "Angiv nyt password"
+msgstr "Angiv ny adgangskode"
 
 #: resources/views/admin/trees.phtml:129 resources/views/admin/trees.phtml:136
 msgid "Set as default"
@@ -14597,7 +14600,7 @@ msgstr "Parameteren “%s” mangler."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
-msgstr "Kodeordet skal være mindst seks karakterer langt."
+msgstr "Adgangskoden skal være mindst seks karakterer lang."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: resources/views/admin/site-mail.phtml:143
@@ -16907,7 +16910,9 @@ msgstr "Du bør gennemse konto detaljerne."
 
 #: resources/views/setup/step-5-administrator.phtml:49
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Du skal oprette en administratorkonto. Denne konto kan styre alle dele af denne webtrees-installation. Vælg venligst et komplekst kodeord."
+msgstr ""
+"Du skal oprette en administratorkonto. Denne konto kan styre alle dele af "
+"denne webtrees-installation. Vælg venligst en stærk adgangskode."
 
 #: resources/views/emails/message-copy-html.phtml:20
 #: resources/views/emails/message-copy-text.phtml:16
