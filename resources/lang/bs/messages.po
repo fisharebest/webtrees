@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-03-04 01:55+0000\n"
+"PO-Revision-Date: 2024-03-12 09:30+0000\n"
 "Last-Translator: elvedinz <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/bs/>\n"
@@ -15341,37 +15341,48 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:147
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
+"Ova opcija će prikazati imena (ali ne i druge detalje) privatnih osoba. "
+"Osobe su privatne ako su još žive ili ako je ograničenje privatnosti dodano "
+"u njihov zapis. Da biste sakrili određeno ime, dodajte ograničenje "
+"privatnosti tom zapisu imena."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:24
 #: resources/views/edit/raw-gedcom-record.phtml:25
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"Ova stranica vam omogućava da zaobiđete uobičajene obrasce i direktno "
+"uredite osnovne podatke. To je napredna opcija i ne biste je trebali "
+"koristiti osim ako ne razumijete GEDCOM format. Ako ovdje napravite grešku, "
+"to može biti teško ispraviti."
 
 #: app/Module/HitCountFooterModule.php:115
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ova stranica je pregledana %s put."
+msgstr[1] "Ova stranica je pregledana %s puta."
+msgstr[2] "Ova stranica je pregledana %s puta."
 
 #: resources/views/help/pending-changes.phtml:16
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
 msgstr ""
+"Ovaj proces omogućava vlasniku web stranice da osigura da nove informacije "
+"slijede standarde i konvencije stranice, da imaju odgovarajuće izvorne "
+"atributa itd."
 
 #: app/Exceptions/RecordAccessDeniedException.php:35
 #: app/Exceptions/RecordNotFoundException.php:35
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ovaj zapis ne postoji ili nemate dozvolu da ga vidite."
 
 #: resources/views/admin/trees-privacy.phtml:261
 msgid "This record does not exist."
-msgstr ""
+msgstr "Ovaj zapis ne postoji."
 
 #: resources/views/gedcom-record-page.phtml:35
 #: resources/views/submitter-page.phtml:29
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ovaj zapis je obrisan. Brisanje će morati da pregleda moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:33
@@ -15379,11 +15390,13 @@ msgstr ""
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
+"Ovaj zapis je obrisan. Trebali biste pregledati brisanje, a zatim %1$s ili "
+"%2$s."
 
 #: resources/views/gedcom-record-page.phtml:41
 #: resources/views/submitter-page.phtml:35
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Ovaj zapis je uređen. Promjene treba pregledati moderator."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:39
@@ -15391,11 +15404,13 @@ msgstr ""
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
+"Ovaj zapis je uređen. Trebali biste pregledati promjene, a zatim ih %1$s ili "
+"%2$s."
 
 #: app/Exceptions/RepositoryAccessDeniedException.php:35
 #: app/Exceptions/RepositoryNotFoundException.php:35
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ovo spremište ne postoji ili nemate dozvolu da ga pregledate."
 
 #: resources/views/repository-page.phtml:29
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
@@ -15420,31 +15435,45 @@ msgstr ""
 #: resources/views/modules/privacy-policy/page.phtml:25
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
 msgstr ""
+"Ovo istraživanje je „legitiman interes“ prema članu 6(f) Opštih propisa EU o "
+"zaštiti podataka."
 
 #: resources/views/admin/users-edit.phtml:262
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr ""
+"Ova uloga ima sve dozvole uloge urednika, plus dozvolu da prihvati/odbije "
+"promjene koje su napravili drugi korisnici."
 
 #: resources/views/admin/users-edit.phtml:276
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr ""
+"Ova uloga ima sve dozvole uloge menadžera u svim porodičnim stablima, plus "
+"dozvolu za promjenu postavki/konfiguracije web stranice, korisnika i modula."
 
 #: resources/views/admin/users-edit.phtml:256
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
+"Ova uloga ima sve dozvole uloge člana, plus dozvolu za dodavanje/promjenu/"
+"brisanje podataka. Sve promjene morat će pregledati moderator, osim ako "
+"korisnik ima omogućenu opciju „automatski prihvati promjene“."
 
 #: resources/views/admin/users-edit.phtml:270
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 msgstr ""
+"Ova uloga ima sve dozvole uloge moderatora, plus dodatni pristup koji daje "
+"konfiguracija porodičnog stabla, plus dozvolu za promjenu postavki/"
+"konfiguracije porodičnog stabla."
 
 #: resources/views/admin/users-edit.phtml:248
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
 msgstr ""
+"Ova uloga ima sve dozvole uloge posjetitelja, plus dodatni pristup odobren "
+"konfiguracijom porodičnog stabla."
 
 #: resources/views/setup/step-2-server-checks.phtml:76
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr ""
+msgstr "Memorija na serveru je ograničena na %sMB i CPU vrijeme na %s sekundi."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:432
@@ -15454,7 +15483,7 @@ msgstr ""
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
 msgid "This source does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ovaj izvor ne postoji ili nemate dozvolu da ga vidite."
 
 #: resources/views/source-page.phtml:36
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
@@ -15480,6 +15509,8 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:215
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr ""
+"Ovaj tekst će biti dodan na svaki naslov stranice. Biće prikazano u "
+"naslovnoj traci pretraživača, prečicama itd."
 
 #: app/Http/RequestHandlers/CheckTree.php:236
 #: app/Http/RequestHandlers/CheckTree.php:241
@@ -15488,51 +15519,61 @@ msgstr ""
 
 #: resources/views/errors/no-tree-access.phtml:8
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Ovaj korisnički nalog nema pristup nijednom stablu."
 
 #: app/Http/RequestHandlers/SetupWizard.php:183
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr ""
+msgstr "To obično znači da trebate promijeniti dozvole foldera na 777."
 
 #: app/Services/UpgradeService.php:254
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "Ova web stranica se nadograđuje. Pokušajte ponovo za nekoliko minuta."
 
 #: resources/views/layouts/offline.phtml:70
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr ""
+"Ova web stranica je nedostupna zbog održavanja. Trebali biste <a href=\"index"
+".php\">pokušati ponovo</a> za nekoliko minuta."
 
 #: resources/views/modules/privacy-policy/page.phtml:70
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Ovom web-stranicom upravljaju sljedeće osobe."
 
 #: resources/views/layouts/error.phtml:17
 #: resources/views/layouts/error.phtml:34
 #: resources/views/layouts/offline.phtml:67
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "Ova web stranica je privremeno nedostupna"
 
 #: resources/views/modules/privacy-policy/page.phtml:22
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr ""
+"Ova web stranica obrađuje lične podatke u svrhu historijskih i genealoških "
+"istraživanja."
 
 #: resources/views/modules/privacy-policy/page.phtml:33
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
 msgstr ""
+"Ova web stranica koristi kolačiće kako bi omogućila sesije za prijavu i "
+"zapamtila postavke kao što je vaš odabrani jezik."
 
 #: resources/views/modules/privacy-policy/footer.phtml:21
 msgid "This website uses cookies to learn about visitor behavior."
-msgstr ""
+msgstr "Ova web stranica koristi kolačiće za učenje o ponašanju posjetitelja."
 
 #: resources/views/modules/privacy-policy/page.phtml:45
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
+"Ova web stranica koristi usluge trećih strana za učenje o ponašanju "
+"posjetitelja."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:27
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr ""
+"Ovo će izbrisati sve genealoške podatke iz “%s” i zamijeniti ih podacima iz "
+"GEDCOM datoteke."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:291
@@ -15543,12 +15584,12 @@ msgstr "čet"
 #: app/Factories/ElementFactory.php:841
 #: resources/views/admin/webtrees1-thumbnails.phtml:39
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Sličica slike"
 
 #: resources/views/admin/trees-preferences.phtml:294
 #: resources/views/admin/trees-preferences.phtml:300
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Sličice slika"
 
 #: app/Date/AbstractCalendarDate.php:261
 msgid "Thursday"
@@ -15557,7 +15598,7 @@ msgstr "Četvrtak"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:197 app/GedcomCode/GedcomCodeTemp.php:657
 msgid "Tijuana, Mexico"
-msgstr ""
+msgstr "Tihuana, Meksiko"
 
 #. I18N: gedcom tag TIME
 #: app/Factories/ElementFactory.php:660 app/Factories/ElementFactory.php:827
@@ -15571,14 +15612,14 @@ msgstr "Vrijeme"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Vrijeme posljednje promjene"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
 #: resources/views/admin/users-edit.phtml:136
 #: resources/views/edit-account-page.phtml:112
 msgid "Time zone"
-msgstr ""
+msgstr "Vremenska zona"
 
 #. I18N: Name of a module/chart
 #: app/Module/TimelineChartModule.php:98
@@ -15590,7 +15631,7 @@ msgstr "Hronologija"
 #: resources/views/edit/edit-fact.phtml:115
 #: resources/views/edit/edit-record.phtml:34
 msgid "Timestamp"
-msgstr ""
+msgstr "Vremenska oznaka"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:490
@@ -15678,17 +15719,21 @@ msgstr ""
 #: resources/views/contact-page.phtml:32 resources/views/message-page.phtml:38
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Kome"
 
 #: resources/views/admin/changes-log.phtml:48
 #: resources/views/admin/site-logs.phtml:46
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "Do"
 
 #: resources/views/modules/html/config.phtml:32
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
+"Kako bismo vam pomogli da počnete s ovim blokom, kreirali smo nekoliko "
+"standardnih predložaka. Kada odaberete jedan od ovih predložaka, tekstualno "
+"područje će sadržavati kopiju koju zatim možete promijeniti kako bi "
+"odgovarao zahtjevima vaše web lokacije."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15698,11 +15743,19 @@ msgstr "Za kreiranje novog zadatka istaživanja, prvo morate dodati “zadatak i
 #: resources/views/admin/trees-preferences.phtml:618
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"Kako bi se osigurala kompatibilnost s drugim genealoškim aplikacijama, "
+"bilješke, tekst i prepise bi trebali biti snimljeni u jednostavnom, "
+"neformatiranom tekstu. Međutim, formatiranje je često poželjno bolju "
+"prezentaciju, razumjevanje, itd."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr ""
+"Za zaštitu ovih privatnih podataka, webtrees koristi Apache konfiguracijsku "
+"datoteku (.htaccess) koja blokira svaki pristup ovoj fascikli. Ako vaš web-"
+"server ne podržava .htaccess datoteke i ne možete ograničiti pristup ovoj "
+"mapi, tada možete odabrati drugu mapu, izvan vaših web dokumenata."
 
 #: resources/views/help/zip-gedcom.phtml:8
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15711,12 +15764,14 @@ msgstr ""
 #: resources/views/emails/password-request-html.phtml:18
 #: resources/views/emails/password-request-text.phtml:14
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Za postavljanje nove lozinke kliknite na ovaj link."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:43
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
+"Da postavite ovaj tekst za druge jezike, morate se prebaciti na taj jezik i "
+"ponovo posjetiti ovu stranicu."
 
 #: resources/views/modules/sitemap/config.phtml:50
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15735,7 +15790,7 @@ msgstr "Tokelau"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:198 app/GedcomCode/GedcomCodeTemp.php:660
 msgid "Tokyo, Japan"
-msgstr ""
+msgstr "Tokio, Japan"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:76
@@ -15749,7 +15804,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Previše zahtjeva. Pokušajte ponovo kasnije."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15765,9 +15820,9 @@ msgstr[2] "Najčešća %s imena"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Najčešće %s prezime"
+msgstr[1] "Najčešća %s prezimena"
+msgstr[2] "Najčešćih %s prezimena"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:101
@@ -15783,7 +15838,7 @@ msgstr "Najčešća imena"
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:162
 msgid "Top surname"
-msgstr ""
+msgstr "Najčešće prezime"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:65
@@ -15794,7 +15849,7 @@ msgstr "Najčešća prezimena"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:199 app/GedcomCode/GedcomCodeTemp.php:663
 msgid "Toronto, Ontario, Canada"
-msgstr ""
+msgstr "Toronto, Ontario, Kanada"
 
 #: app/Module/StatisticsChartModule.php:770
 #: app/Statistics/Google/ChartBirth.php:115
@@ -15815,11 +15870,11 @@ msgstr ""
 #: resources/views/lists/chart-by-age.phtml:29
 #: resources/views/lists/chart-by-decade.phtml:21
 msgid "Total"
-msgstr ""
+msgstr "Ukupno"
 
 #: resources/xml/reports/change_report.xml:127
 msgid "Total accepted changes: "
-msgstr ""
+msgstr "Ukupno prihvaćenih promjena: "
 
 #: resources/views/statistics/individuals/total-events.phtml:22
 msgid "Total births"
@@ -15890,7 +15945,7 @@ msgstr "Ukupno brakova"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
-msgstr ""
+msgstr "Ukupno promjena na čekanju: "
 
 #: resources/views/modules/gedcom_stats/config.phtml:47
 #: resources/views/modules/html/template-statistics.phtml:36
@@ -15912,7 +15967,7 @@ msgstr "Ukupno korisnika"
 #: resources/views/admin/modules.phtml:243
 #: resources/views/modules/privacy-policy/page.phtml:41
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Praćenje i analitika"
 
 #. I18N: gedcom tag TRLR
 #: app/Factories/ElementFactory.php:1412 app/GedcomTag.php:1005
@@ -15924,7 +15979,7 @@ msgstr "Najava"
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:28
 msgid "Tree"
-msgstr ""
+msgstr "Stablo"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
@@ -15939,7 +15994,7 @@ msgstr "Trinidad i Tobago"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200 app/GedcomCode/GedcomCodeTemp.php:666
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "Trujillo, Peru"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:287
@@ -15984,7 +16039,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:201 app/GedcomCode/GedcomCodeTemp.php:669
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "Twin Falls, Idaho, Sjedinjene Američke Države"
 
 #. I18N: gedcom tag TYPE
 #: app/Factories/ElementFactory.php:846 app/Factories/ElementFactory.php:965
@@ -16006,50 +16061,50 @@ msgstr "Vrsta"
 
 #: app/Factories/ElementFactory.php:669
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Vrsta skraćenice"
 
 #: app/Factories/ElementFactory.php:693
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Vrsta administrativnog ID-a"
 
 #: app/Factories/ElementFactory.php:697
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Vrsta demografskih podataka"
 
 #: app/Factories/ElementFactory.php:663 app/Factories/ElementFactory.php:1002
 #: app/Factories/ElementFactory.php:1197 app/GedcomTag.php:688
 msgid "Type of event"
-msgstr ""
+msgstr "Vrsta događaja"
 
 #: app/Factories/ElementFactory.php:1199 app/GedcomTag.php:693
 msgid "Type of fact"
-msgstr ""
+msgstr "Vrsta činjenice"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Vrsta identifikacionog broja"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
-msgstr ""
+msgstr "Vrsta lokacije"
 
 #: app/Factories/ElementFactory.php:1012
 msgid "Type of marriage"
-msgstr ""
+msgstr "Vrsta braka"
 
 #: app/Factories/ElementFactory.php:1237
 msgid "Type of name"
-msgstr ""
+msgstr "Vrsta imena"
 
 #: app/Factories/ElementFactory.php:1018 app/Factories/ElementFactory.php:1255
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Vrsta referentnog broja"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
-msgstr ""
+msgstr "Vrsta istraživačkog zadatka"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -16069,7 +16124,7 @@ msgstr ""
 #: resources/views/modules/matomo-analytics/form.phtml:18
 #: resources/views/modules/sitemap/config.phtml:46
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:510
@@ -16122,6 +16177,10 @@ msgstr "Jedinstveni identifikator"
 #: resources/views/admin/trees-preferences.phtml:150
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr ""
+"Jedinstveni identifikatori omogućavaju da se isti zapis nađe u različitim "
+"porodičnim stablima iu različitim sistemima. Oni će biti dodani kad god se "
+"zapisi kreiraju ili ažuriraju. Ako ne želite da se jedinstveni "
+"identifikatori prikazuju, možete ih sakriti koristeći pravila privatnosti."
 
 #: resources/views/admin/trees-preferences.phtml:694
 msgid "Unique individual facts"
@@ -16148,7 +16207,7 @@ msgstr "Ujedinjeno Kraljevstvo"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:514
 msgid "United States"
-msgstr ""
+msgstr "Sjedinjene Američke Države"
 
 #. I18N: Name of a country or state
 #: app/Elements/FamilyStatusText.php:73 app/Factories/ElementFactory.php:426
@@ -16182,7 +16241,7 @@ msgstr "Nepoznato"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Prekini vezu"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -16190,12 +16249,12 @@ msgstr "Neprepoznati GEDCOM kod"
 
 #: resources/views/admin/media.phtml:50
 msgid "Unused files"
-msgstr ""
+msgstr "Nekorišteni fajlovi"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:126
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Raspakujte %s u privremeni folder…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:105
@@ -16216,12 +16275,14 @@ msgstr "Ažuriraj sve"
 #. I18N: Name of a module
 #: app/Module/FixPlaceNames.php:62
 msgid "Update place names"
-msgstr ""
+msgstr "Ažurirajte nazive mjesta"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:73
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
 msgstr ""
+"Ažurirajte dijelove višeg nivoa imena mjesta, zadržavajući dijelove nižeg "
+"nivoa."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16230,12 +16291,12 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:166
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr ""
+msgstr "Nadogradite na webtrees %s."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:81
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Čarobnjak za nadogradnju"
 
 #: app/Http/RequestHandlers/UploadMediaPage.php:70
 #: resources/views/admin/control-panel.phtml:723
@@ -16245,6 +16306,8 @@ msgstr "Učitajte medijske datoteke"
 #: resources/views/admin/media-upload.phtml:23
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr ""
+"Prenesite jednu ili više medijskih datoteka sa vašeg lokalnog računara. "
+"Medijski fajlovi mogu biti slike, video, audio ili drugi formati."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
@@ -16253,7 +16316,7 @@ msgstr "Urugvaj"
 
 #: app/Services/EmailService.php:252
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "Koristite SMTP za slanje poruka"
 
 #: app/Module/FixSearchAndReplace.php:104
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
@@ -16266,15 +16329,15 @@ msgstr "Koristi “?” za pronalazak jednog karaktera, koristi “*” za prona
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Koristite najmanje %s znak."
+msgstr[1] "Koristite najmanje %s znakova."
+msgstr[2] "Koristite najmanje %s znakova."
 
 #: resources/xml/reports/family_group_report.xml:12
 #: resources/xml/reports/individual_ext_report.xml:13
 #: resources/xml/reports/individual_report.xml:10
 msgid "Use colors"
-msgstr ""
+msgstr "Koristite boje"
 
 #: resources/views/modules/interactive-tree/chart.phtml:19
 msgid "Use compact layout"
@@ -16291,7 +16354,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:84
 #: resources/views/setup/step-4-database-sqlsvr.phtml:110
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Koristite slova A-Z, a-z, cifre 0-9 ili donje crte"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:108
@@ -16301,17 +16364,19 @@ msgstr "Koristi lozinku"
 #. I18N: "sendmail" is the name of some mail software
 #: app/Services/EmailService.php:251
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Koristite sendmail za slanje poruka"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:320
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr ""
+"Koristite slike silueta kada nije navedena istaknuta slika za tu osobu. "
+"Korištene slike su specifične za spol dotične osobe."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:315
 msgid "Use silhouettes"
-msgstr ""
+msgstr "Koristite siluete"
 
 #: resources/views/admin/map-provider.phtml:38
 msgid "Use the GeoNames database for autocomplete on places"
@@ -16320,6 +16385,10 @@ msgstr ""
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
+"Koristite ovo polje da kažete administratoru sajta zašto tražite nalog i "
+"kako ste vezani za genealoške podatke prikazane na ovoj stranici. Ovo "
+"također možete koristiti za unos svih drugih komentara koje imate za "
+"administratora stranice."
 
 #: app/Functions/FunctionsEdit.php:565
 msgid "Use this image for charts and on the individual’s page."
@@ -16344,15 +16413,15 @@ msgstr "Administracija korisnika"
 
 #: resources/views/admin/users-cleanup.phtml:64
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "Korisnik nije potvrdio u roku od 7 dana."
 
 #: resources/views/admin/users-cleanup.phtml:66
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "Korisnik nije verificiran od strane administratora."
 
 #: app/Http/RequestHandlers/VerifyEmail.php:74
 msgid "User verification"
-msgstr ""
+msgstr "Verifikacija korisnika"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -16382,6 +16451,8 @@ msgstr "Korisničko ime ili e-mail adresa"
 #: resources/views/register-page.phtml:65
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr ""
+"Korisnička imena ne razlikuju velika i mala slova i zanemaruju naglašena "
+"slova, tako da se \"semso\", \"šemso\" i \"Šemso\" smatraju istim."
 
 #: resources/views/admin/control-panel.phtml:434
 #: resources/views/modules/gedcom_stats/statistics.phtml:146
@@ -16391,7 +16462,7 @@ msgstr "Korisnici"
 
 #: resources/views/admin/users-cleanup.phtml:45
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Korisnički račun je predugo neaktivan: "
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:516
@@ -16401,7 +16472,7 @@ msgstr "Uzbekistan"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:202 app/GedcomCode/GedcomCodeTemp.php:672
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Vankuver, Britanska Kolumbija, Kanada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:530
@@ -16411,7 +16482,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:99
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Različiti statistički grafikoni."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
@@ -16474,16 +16545,16 @@ msgstr "Ventôse"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:203 app/GedcomCode/GedcomCodeTemp.php:675
 msgid "Veracruz, Mexico"
-msgstr ""
+msgstr "Veracruz, Meksiko"
 
 #: resources/views/admin/users.phtml:34
 msgid "Verified"
-msgstr ""
+msgstr "Potvrđeno"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:204 app/GedcomCode/GedcomCodeTemp.php:678
 msgid "Vernal, Utah, United States"
-msgstr ""
+msgstr "Vernal, Utah, Sjedinjene Američke Države"
 
 #. I18N: gedcom tag VERS
 #: app/Factories/ElementFactory.php:1042 app/Factories/ElementFactory.php:1050
@@ -16510,7 +16581,7 @@ msgstr "Prikaz"
 #: resources/views/modules/place-hierarchy/page.phtml:49
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Pogledajte tabelu događaja koji se dešavaju u %s"
 
 #: resources/views/calendar-page.phtml:215
 msgid "View this day"
@@ -16534,13 +16605,13 @@ msgstr "Pogledaj ovu godinu"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:205 app/GedcomCode/GedcomCodeTemp.php:681
 msgid "Villa Hermosa, Mexico"
-msgstr ""
+msgstr "Villa Hermosa, Meksiko"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:167
 #: resources/views/edit-account-page.phtml:149
 msgid "Visible online"
-msgstr ""
+msgstr "Vidljivo online"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:173
@@ -16578,54 +16649,62 @@ msgstr "Ostrvlje Valis i Fortuna"
 #: app/Elements/RelationIsDescriptor.php:126
 #: app/GedcomCode/GedcomCodeRela.php:346
 msgid "Ward"
-msgstr ""
+msgstr "Štićenik"
 
 #: app/Elements/RelationIsDescriptor.php:91
 #: app/GedcomCode/GedcomCodeRela.php:343
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr ""
+msgstr "Štićenica"
 
 #: app/Elements/RelationIsDescriptor.php:70
 #: app/GedcomCode/GedcomCodeRela.php:339
 msgctxt "MALE"
 msgid "Ward"
-msgstr ""
+msgstr "Štićenik"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:206 app/GedcomCode/GedcomCodeTemp.php:684
 msgid "Washington, District of Columbia, United States"
-msgstr ""
+msgstr "Washington, District of Columbia, Sjedinjene Američke Države"
 
 #: resources/views/admin/trees-preferences.phtml:326
 msgid "Watermarks"
-msgstr ""
+msgstr "Vodeni žigovi"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.phtml:336
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vodeni žigovi su opcioni i obično se prikazuju samo posjetiteljima."
 
 #: resources/views/register-success-page.phtml:23
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr ""
+"Sada ćemo poslati potvrdni email na adresu <b>%s</b>. Morate potvrditi svoj "
+"zahtjev za korisnički nalog slijedeći upute u emailu. Ako ne potvrdite svoj "
+"zahtjev za korisnički nalog u roku od sedam dana, vaša prijava će biti "
+"automatski odbijena. Morat ćete se ponovo prijaviti.<br><br>Nakon što ste "
+"slijedili upute u emailu, administrator još uvijek mora odobriti vaš zahtjev "
+"prije nego što se vaš korisnički nalog može koristiti.<br><br>Da se "
+"prijavite na ovo web stranicu, morat ćete znati svoje korisničko ime i "
+"lozinku."
 
 #: resources/views/admin/control-panel.phtml:139
 #: resources/views/admin/control-panel.phtml:582
 #: resources/views/admin/trees-preferences.phtml:198
 msgid "Website"
-msgstr ""
+msgstr "Web stranica"
 
 #: app/Http/RequestHandlers/SiteLogsPage.php:102
 #: resources/views/admin/control-panel.phtml:211
 msgid "Website logs"
-msgstr ""
+msgstr "Dnevnici web stranice"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:65
 #: resources/views/admin/control-panel.phtml:189
 msgid "Website preferences"
-msgstr ""
+msgstr "Postavke web stranice"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:289
@@ -16651,7 +16730,7 @@ msgstr "Dobro došli %s"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:26
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "Tekst dobrodošlice na stranici za prijavu"
 
 #: resources/views/login-page.phtml:22
 msgid "Welcome to this genealogy website"
@@ -16666,10 +16745,17 @@ msgstr "Zapadna Sahara"
 #: resources/views/admin/trees-preferences.phtml:950
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr ""
+"Kada se uređuje zapis, evidentira se korisnik i vrijeme promjene. Ponekad je "
+"poželjno zadržati postojeće podatke o „posljednjoj izmjeni“, na primjer "
+"prilikom manjih ispravki nečijih podataka. Ova opcija kontroliše da li je "
+"ova funkcija odabrana kao zadana postavka."
 
 #: resources/views/admin/users-edit.phtml:108
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
+"Kada se korisnik registruje za nalog, na njegovu adresu e-pošte se šalje "
+"email sa linkom za verifikaciju. Kada korisnik klikne na link znamo da je "
+"adresa e-pošte ispravna, a opcija „e-mail verifikovan“ se automatski uključi."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:935
@@ -16679,19 +16765,30 @@ msgstr ""
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
 msgstr ""
+"Kada pojedinac ima više od jednog supružnika, trebalo bi da sortirate "
+"porodice po datumu."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:905
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
 msgstr ""
+"Kada dodate novog člana porodice, može se dati zadano prezime. Ovo prezime "
+"će zavisiti od lokalne tradicije."
 
 #: resources/views/help/pending-changes.phtml:12
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"Kada dodate, uredite ili izbrišete informacije, promjene se ne pohranjuju "
+"odmah. Umjesto toga, oni se drže u području \"na čekanju\". Ove promjene na "
+"čekanju mora pregledati moderator prije nego što budu prihvaćene."
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
+"Kada je korisnik povezan sa pojedinačnim zapisom u porodičnom stablu i ima "
+"ulogu člana, urednika ili moderatora, možete mu spriječiti pristup detaljima "
+"udaljenih, živih rođaka. Upišite broj odnosa koliko daleko je odobreno "
+"korisniku da može vidjeti."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:27
@@ -16701,7 +16798,7 @@ msgstr "Koja porodična stabla trebaju biti uključena u mapi sitea"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:269
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Ko može učitavati nove medijske fajlove"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
@@ -16710,7 +16807,7 @@ msgstr "Ko je online"
 
 #: resources/views/admin/data-fix-page.phtml:82
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Zašto ova lista uključuje zapise koje ne treba ažurirati?"
 
 #: resources/views/lists/families-table.phtml:169
 msgid "Widow"
@@ -16759,7 +16856,7 @@ msgstr "Oporuka"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:207 app/GedcomCode/GedcomCodeTemp.php:687
 msgid "Winter Quarters, Nebraska, United States"
-msgstr ""
+msgstr "Winter Quarters, Nebraska, Sjedinjene Američke Države"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:88
 #: app/Statistics/Google/ChartIndividualWithSources.php:88
@@ -16775,7 +16872,7 @@ msgstr "Bez izvora"
 #: app/Elements/RelationIsDescriptor.php:127
 #: app/GedcomCode/GedcomCodeRela.php:350 app/GedcomTag.php:1241
 msgid "Witness"
-msgstr ""
+msgstr "Svjedok"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16783,14 +16880,14 @@ msgstr ""
 #: app/SurnameTradition.php:81 app/SurnameTradition.php:104
 #: app/SurnameTradition.php:111
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Žene uzimaju prezime svog muža."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:71
 #: resources/views/modules/place-hierarchy/page.phtml:28
 #: resources/views/modules/place-hierarchy/page.phtml:31
 #: resources/views/modules/statistics-chart/custom.phtml:179
 msgid "World"
-msgstr ""
+msgstr "Svijet"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/Factories/ElementFactory.php:314 app/GedcomTag.php:1247
@@ -16827,37 +16924,43 @@ msgstr "Da"
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
+"Vi (ili neko ko tvrdi da ste vi) je zatražio korisnički nalog na %1$s "
+"koristeći adresu e-pošte %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:132
 #: app/Http/RequestHandlers/RegisterAction.php:269
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Nije vam dozvoljeno slanje poruka koje sadrže vanjske linkove."
 
 #: resources/views/modules/login_block/sign-out.phtml:15
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "Prijavljeni ste kao %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:99
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Možete se prijaviti za korisnički nalog koristeći link ispod."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr ""
+"Možete promijeniti izgled webtrees stranice koristeći “teme”. Svaka tema ima "
+"drugačiji stil, raspored, shemu boja itd."
 
 #: resources/views/admin/users-edit.phtml:176
 #: resources/views/edit-account-page.phtml:154
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr ""
+"Možete odabrati da li ćete se prikazivati na listi korisnika koji su "
+"trenutno prijavljeni."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:27
 #: resources/views/edit/raw-gedcom-record.phtml:28
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "Možete preuzeti kopiju GEDCOM specifikacije sa %s."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingMarriedNames.php:80
@@ -16867,14 +16970,18 @@ msgstr "Možete olakšati traženje udanih žena tako što ćete zabilježiti ud
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
+"Možete isključiti praćenje tako što ćete postaviti zaglavlje „Ne prati“ u "
+"postavkama vašeg pretraživača."
 
 #: resources/views/admin/trees-renumber.phtml:26
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
 msgstr ""
+"Možete prenumerisati zapise u porodičnom stablu, tako da ovi interni "
+"referentni brojevi ne budu duplirani ni u jednom drugom porodičnom stablu."
 
 #: resources/views/admin/trees-renumber.phtml:35
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Možete prenumerisati ovo porodično stablo."
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:172
