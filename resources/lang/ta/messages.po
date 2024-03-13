@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "POT-Creation-Date: 2023-03-05 08:26+0000\n"
-"PO-Revision-Date: 2012-03-15 15:20+0000\n"
-"Last-Translator: Gokul S <yesgocool@yahoo.co.in>\n"
+"PO-Revision-Date: 2024-03-13 23:44+0300\n"
+"Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
+"Language-Team: \n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -17,7 +19,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr ""
+msgstr " ஆனால் விவரம் தெரியவில்லை"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -34,7 +36,7 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
 msgid " in "
-msgstr ""
+msgstr " உள்ளே"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2178
@@ -171,12 +173,12 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:547
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s மற்றும் அவளுடைய முன்னோர்கள்"
 
 #: app/Module/ClippingsCartModule.php:556
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s மற்றும் அவனுடைய முன்னோர்கள்"
 
 #: app/Module/ClippingsCartModule.php:850
 #, php-format
@@ -210,8 +212,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s குழந்தை"
+msgstr[1] "%s குழந்தைகள்"
 
 #: app/Age.php:100 app/Elements/AgeAtEvent.php:103
 #: app/Statistics/Repository/FamilyRepository.php:353
@@ -219,8 +221,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s நாள்"
+msgstr[1] "%s நாள்கள்"
 
 #: app/Http/RequestHandlers/CheckTree.php:228
 #: app/Http/RequestHandlers/UserEditAction.php:94
@@ -234,8 +236,8 @@ msgstr ""
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s குடும்பம்"
+msgstr[1] "%s குடும்பங்கள்"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:75
 #: app/Http/RequestHandlers/SearchReplaceAction.php:107
@@ -257,8 +259,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s பேரக்குழந்தை"
+msgstr[1] "%s பேரப்பிள்ளைகள்"
 
 #: app/Module/LifespansChartModule.php:266
 #: resources/views/admin/trees-unconnected.phtml:42
@@ -282,8 +284,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s செய்தி"
+msgstr[1] "%s செய்திகள்"
 
 #: app/Age.php:96 app/Elements/AgeAtEvent.php:101
 #: app/Statistics/Repository/FamilyRepository.php:359
@@ -292,8 +294,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s மாதம்"
+msgstr[1] "%s மாதங்கள்"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:87
 #, php-format
@@ -1317,23 +1319,23 @@ msgstr ""
 #: resources/views/family-page-grandparents.phtml:74
 #: resources/views/modules/relatives/tab.phtml:114
 msgid "Add a mother"
-msgstr ""
+msgstr "தாயைச் சேர்க்கவும்"
 
 #: resources/views/individual-page-menu.phtml:45
 msgid "Add a name"
-msgstr ""
+msgstr "பெயரைச் சேர்க்கவும்"
 
 #: resources/views/modules/gedcom_news/list.phtml:63
 msgid "Add a news article"
-msgstr ""
+msgstr "செய்திக் கட்டுரையைச் சேர்க்கவும்"
 
 #: resources/views/modules/notes/tab.phtml:98
 msgid "Add a note"
-msgstr ""
+msgstr "குறிப்பைச் சேர்க்கவும்"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr ""
+msgstr "சகோதரனைச் சேர்க்கவும்"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
@@ -2831,11 +2833,11 @@ msgstr ""
 
 #: app/Gedcom.php:601
 msgid "Birth parents"
-msgstr ""
+msgstr "பிறந்த பெற்றோர்"
 
 #: resources/views/modules/statistics-chart/places.phtml:18
 msgid "Birth places"
-msgstr ""
+msgstr "பிறந்த இடங்கள்"
 
 #: resources/xml/reports/birth_report.xml:6
 msgid "Birthplace contains"
@@ -2847,12 +2849,12 @@ msgstr ""
 #: resources/xml/reports/birth_report.xml:3
 #: resources/xml/reports/birth_report.xml:31
 msgid "Births"
-msgstr ""
+msgstr "பிறப்புகள்"
 
 #: app/Statistics/Google/ChartBirth.php:111
 #: resources/views/modules/statistics-chart/individual-events.phtml:25
 msgid "Births by century"
-msgstr "நூற்றாண்டின் படி பிறப்புகள்"
+msgstr "நூற்றாண்டுக்கு பிறப்புகள்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:66
@@ -3054,13 +3056,13 @@ msgstr ""
 
 #: app/Services/IndividualFactsService.php:631
 msgid "Burial of a father"
-msgstr ""
+msgstr "தந்தையின் அடக்கம்"
 
 #: app/Services/IndividualFactsService.php:393
 #: app/Services/IndividualFactsService.php:411
 #: app/Services/IndividualFactsService.php:429
 msgid "Burial of a grandchild"
-msgstr ""
+msgstr "பேரக்குழந்தையின் அடக்கம்"
 
 #: app/Services/IndividualFactsService.php:392
 msgid "Burial of a granddaughter"
@@ -11004,7 +11006,7 @@ msgstr ""
 #: resources/views/register-page.phtml:73
 #: resources/views/setup/step-5-administrator.phtml:80
 msgid "Password"
-msgstr "கடவுச்சொல்"
+msgstr "கடவுச்சொல்"
 
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:74
