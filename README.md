@@ -46,7 +46,7 @@ webtrees follows the [PHP Standards Recommendations](https://www.php-fig.org/psr
 
 * [PSR-1](https://www.php-fig.org/psr/psr-1) - Basic Coding Standard
 * [PSR-2](https://www.php-fig.org/psr/psr-2) - Coding Style Guide
-* [PSR-4](https://www.php-fig.org/psr/psr-4) - Autoloading Stardard
+* [PSR-4](https://www.php-fig.org/psr/psr-4) - Autoloading Standard
 * [PSR-6](https://www.php-fig.org/psr/psr-6) - Cache
 * [PSR-7](https://www.php-fig.org/psr/psr-7) - HTTP Message Interface
 * [PSR-11](https://www.php-fig.org/psr/psr-11) - Container Interface
