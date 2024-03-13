@@ -189,6 +189,7 @@ use Fisharebest\Webtrees\Module\MissingFactsReportModule;
 use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleContainerInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
@@ -702,16 +703,30 @@ class ModuleService
 
                 return strlen($module_name) <= 30;
             })
-            ->map(static function (string $filename): ?ModuleCustomInterface {
+            ->flatMap(static function (string $filename): Collection {
                 $module = self::load($filename);
 
                 if ($module instanceof ModuleCustomInterface) {
-                    $module->setName('_' . basename(dirname($filename)) . '_');
-
-                    return $module;
+                    $moduleName = '_' . basename(dirname($filename)) . '_';
+                    $module->setName($moduleName);
+                    
+                    if ($module instanceof ModuleContainerInterface) {
+                        $collection = $module->containedModules()
+                            //force numeric keys
+                            ->values();
+                        
+                        $collection->each(function (ModuleCustomInterface $submodule, int $key) use ($moduleName) {
+                           $submodule->setName($moduleName . $key);
+                        });
+                            
+                        $collection->prepend($module);
+                        return $collection;
+                    }
+                    
+                    return new Collection([$module]);
                 }
 
-                return null;
+                return new Collection();
             })
             ->filter()
             ->mapWithKeys(static function (ModuleCustomInterface $module): array {
