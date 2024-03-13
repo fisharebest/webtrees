@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<div class="row mb-3">
+    <label for="YANDEX_METRICA_ID" class="col-sm-3 col-form-label">
+        <?= /* I18N: A configuration setting */ I18N::translate('Yandex Metica') ?>
+        <span class="visually-hidden">Yandex Metrica</span>
+    </label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="YANDEX_METRICA_ID" name="YANDEX_METRICA_ID" value="<?= e($YANDEX_METRICA_ID ?? '') ?>" maxlength="255" pattern="[0-9]+">
+    </div>
+</div>
+
+<p>
+    <?= I18N::translate('Yandex Metrica') ?>
+</p>
