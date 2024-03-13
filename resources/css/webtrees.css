@@ -639,7 +639,7 @@ div.fact_SHARED_NOTE {
     caption-side: top;
 }
 
-.wt-facts-table th {
+.wt-facts-table th, .wt-fact-controls {
     background-color: #81a9cb;
     border: solid #81a9cb 1px;
     text-align: center;
@@ -650,7 +650,7 @@ div.fact_SHARED_NOTE {
     min-width: 20%;
 }
 
-.wt-facts-table td {
+.wt-facts-table td, .wt-fact-content {
     background-color: #edf7fd;
     border: 1px solid #81a9cb;
 }
