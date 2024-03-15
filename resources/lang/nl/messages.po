@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-03 23:01+0000\n"
-"PO-Revision-Date: 2023-10-24 09:15+0000\n"
+"PO-Revision-Date: 2024-03-15 21:15+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3270,7 +3271,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Kan niet schrijven naar map \"%s\"."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3869,7 +3870,7 @@ msgstr "Verbinding met de databaseserver"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Verbindingstype"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -14524,7 +14525,7 @@ msgstr "De parameter “%s” ontbreekt."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "De parameter \"pad\" is ongeldig."
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -14750,7 +14751,7 @@ msgstr "Er zijn geen feiten voor deze persoon."
 #: app/Module/IndividualListModule.php:224
 #, php-format
 msgid "There are no individuals with the surname “%s“"
-msgstr ""
+msgstr "Er zijn geen personen met de achternaam \"%s\""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15135,7 +15136,7 @@ msgstr "Met deze pagina kunt u de normale pagina's omzeilen en de onderliggende 
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Deze pagina is verwijderd."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -19452,7 +19453,7 @@ msgstr "lijst"
 
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokaal"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19661,7 +19662,7 @@ msgstr "neef/nicht"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "netwerk"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
