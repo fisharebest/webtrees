@@ -8,7 +8,18 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var array<string,string> $charts
- * @var Individual|null      $individual
+ * @var Individual           $individual
+ * @var int                  $pedigree_generations
+ * @var int                  $pedigree_max_generations
+ * @var int                  $pedigree_min_generations
+ * @var string               $pedigree_style
+ * @var array<string,string> $pedigree_styles
+ * @var int                  $descendants_generations
+ * @var int                  $descendants_max_generations
+ * @var int                  $descendants_min_generations
+ * @var int                  $hourglass_generations
+ * @var int                  $hourglass_max_generations
+ * @var int                  $hourglass_min_generations
  * @var Tree                 $tree
  * @var string               $type
  */
@@ -34,3 +45,69 @@ use Fisharebest\Webtrees\Tree;
         <?= view('components/select-individual', ['name' => 'xref', 'individual' => $individual, 'tree' => $tree]) ?>
     </div>
 </div>
+
+<div id="options-pedigree"<?= $type !== 'pedigree' ? ' style="display: none"' : '' ?>>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="pedigree_generations">
+            <?= I18N::translate('Generations') ?>
+        </label>
+        <div class="col-sm-9 wt-page-options-value">
+            <?= view('components/select-number', ['name' => 'pedigree_generations', 'selected' => $pedigree_generations, 'options' => range($pedigree_min_generations, $pedigree_max_generations)]) ?>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="style">
+            <?= I18N::translate('Layout') ?>
+        </label>
+        <div class="col-sm-9 wt-page-options-value">
+            <?= view('components/radios-inline', ['name' => 'pedigree_style', 'options' => $pedigree_styles, 'selected' => $pedigree_style]) ?>
+        </div>
+    </div>
+</div>
+
+<div id="options-descendants"<?= $type !== 'descendants' ? ' style="display: none"' : '' ?>>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="descendants_generations">
+            <?= I18N::translate('Generations') ?>
+        </label>
+        <div class="col-sm-9 wt-page-options-value">
+            <?= view('components/select-number', ['name' => 'descendants_generations', 'selected' => $descendants_generations, 'options' => range($descendants_min_generations, $descendants_max_generations)]) ?>
+        </div>
+    </div>
+</div>
+
+<div id="options-hourglass"<?= $type !== 'hourglass' ? ' style="display: none"' : '' ?>>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label wt-page-options-label" for="hourglass_generations">
+            <?= I18N::translate('Generations') ?>
+        </label>
+        <div class="col-sm-9 wt-page-options-value">
+            <?= view('components/select-number', ['name' => 'hourglass_generations', 'selected' => $hourglass_generations, 'options' => range($hourglass_min_generations, $hourglass_max_generations)]) ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const typeEl = document.getElementById('type');
+    typeEl.addEventListener('change', () => {
+        const selectedOption = typeEl.options[typeEl.selectedIndex].value;
+        if (selectedOption === 'pedigree') {
+            document.getElementById('options-pedigree').style.removeProperty('display');
+            document.getElementById('options-descendants').style.display = 'none';
+            document.getElementById('options-hourglass').style.display = 'none';
+        } else if (selectedOption === 'descendants') {
+            document.getElementById('options-pedigree').style.display = 'none';
+            document.getElementById('options-descendants').style.removeProperty('display');
+            document.getElementById('options-hourglass').style.display = 'none';
+        } else if (selectedOption === 'hourglass') {
+            document.getElementById('options-pedigree').style.display = 'none';
+            document.getElementById('options-descendants').style.display = 'none';
+            document.getElementById('options-hourglass').style.removeProperty('display');
+        } else {
+            document.getElementById('options-pedigree').style.display = 'none';
+            document.getElementById('options-descendants').style.display = 'none';
+            document.getElementById('options-hourglass').style.display = 'none';
+        }
+    });
+</script>
