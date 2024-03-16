@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2012-03-15 15:20+0000\n"
-"Last-Translator: Gokul S <yesgocool@yahoo.co.in>\n"
+"PO-Revision-Date: 2024-03-17 13:37+0000\n"
+"Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -17,8 +18,9 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:309
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
+#, fuzzy
 msgid " but the details are unknown"
-msgstr ""
+msgstr " விவரம் தெரியவில்லை"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -201,13 +203,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:216
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s மற்றும் அவளது முன்னோர்கள்"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s மற்றும் அவரது முன்னோர்கள்"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:305
@@ -219,13 +221,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s மற்றும் அவர்களது குழந்தைகள்"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:141
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s மற்றும் அவர்களின் வழித்தோன்றல்கள்"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
