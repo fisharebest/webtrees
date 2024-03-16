@@ -10,6 +10,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Auth;
 
 /**
  * @var string $gedcom
@@ -58,16 +59,24 @@ foreach ($keys as $key) {
         <?php $id = Registry::idFactory()->id() ?>
         <?php $expanded = $tree->getPreference('EXPAND_SOURCES') === '1' ?>
         <div>
-            <button type="button" class="btn btn-text p-0" href="#<?= e($id) ?>" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
-                <?= view('icons/expand') ?>
-                <?= view('icons/collapse') ?>
-             </button>
+			<?php if (Auth::isMember($tree) || ($tree->getPreference('SHOW_SOURCE_DETAIL_TOGGLES') === '0' && $tree->getPreference('SHOW_SOURCE_TITLES') === '0')) : ?>
+				<button type="button" class="btn btn-text p-0" href="#<?= e($id) ?>" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
+					<?= view('icons/expand') ?>
+					<?= view('icons/collapse') ?>
+				</button>
+			<?php else: ?>
+				<?php $expanded = '' ?>
+			<?php endif ?>
 
             <?php $label = '<span class="label">' . I18N::translate('Source') . '</span>' ?>
-            <?php $value = '<span class="field" dir="auto"><a href="' . e($source->url()) . '">' . $source->fullName() . '</a></span>' ?>
+			<?php if (Auth::isMember($tree) || $tree->getPreference('SHOW_SOURCE_TITLES') === '0') : ?>
+				<?php $value = '<span class="field" dir="auto"><a href="' . e($source->url()) . '">' . $source->fullName() . '</a></span>' ?>
+			<?php else: ?>
+				<?php $value = '<span class="field" dir="auto">' . I18N::translate('PRIVATE') . '</span>' ?>
+				<?php $expanded = '' ?>
+			<?php endif ?>
             <?= I18N::translate('%1$s: %2$s', $label, $value) ?>
         </div>
-
         <div id="<?= e($id) ?>" class="ps-4 collapse <?= $expanded ? 'show' : '' ?>">
             <?php array_shift($keys) ?>
             <?php foreach ($keys as $key) : ?>
