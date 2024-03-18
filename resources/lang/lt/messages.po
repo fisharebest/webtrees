@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-03 23:01+0000\n"
+"POT-Creation-Date: 2024-03-18 23:58+0000\n"
 "PO-Revision-Date: 2019-10-22 21:17+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/lt/>\n"
@@ -10355,6 +10355,20 @@ msgstr "Be numatyto teksto"
 #: resources/views/lists/datatables-attributes.phtml:35
 msgid "No records to display"
 msgstr "Rodymui įrašų nerasta"
+
+#: resources/views/components/select-family.phtml:27
+#: resources/views/components/select-individual.phtml:27
+#: resources/views/components/select-location.phtml:27
+#: resources/views/components/select-media.phtml:27
+#: resources/views/components/select-note.phtml:27
+#: resources/views/components/select-place.phtml:24
+#: resources/views/components/select-repository.phtml:27
+#: resources/views/components/select-shared-note.phtml:27
+#: resources/views/components/select-source.phtml:27
+#: resources/views/components/select-submission.phtml:27
+#: resources/views/components/select-submitter.phtml:27
+msgid "No results found"
+msgstr ""
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48

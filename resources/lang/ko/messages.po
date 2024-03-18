@@ -2,11 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-03 23:01+0000\n"
+"POT-Creation-Date: 2024-03-18 23:58+0000\n"
 "PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
-"webtrees/ko/>\n"
+"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -633,11 +632,7 @@ msgstr "<기본 테마>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
-"<p>알림: 이 양식을 작성하여 제출함으로써 귀하는 다음 사항에 동의하게 "
-"됩니다.</p><ul><li>당사 사이트 및 아래 텍스트 상자에 나열된 살아있는 개인의 "
-"개인정보 보호에 동의합니다;</li><li>귀하가 누구와 관련이 있는지 설명하거나 "
-"당사 웹사이트에 등재되어야 하는 사람에 대한 정보를 제공합니다.</li></ul>"
+msgstr "<p>알림: 이 양식을 작성하여 제출함으로써 귀하는 다음 사항에 동의하게 됩니다.</p><ul><li>당사 사이트 및 아래 텍스트 상자에 나열된 살아있는 개인의 개인정보 보호에 동의합니다;</li><li>귀하가 누구와 관련이 있는지 설명하거나 당사 웹사이트에 등재되어야 하는 사람에 대한 정보를 제공합니다.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -10315,6 +10310,20 @@ msgstr "사전 정의된 텍스트 없음"
 msgid "No records to display"
 msgstr "표시할 레코드가 없습니다"
 
+#: resources/views/components/select-family.phtml:27
+#: resources/views/components/select-individual.phtml:27
+#: resources/views/components/select-location.phtml:27
+#: resources/views/components/select-media.phtml:27
+#: resources/views/components/select-note.phtml:27
+#: resources/views/components/select-place.phtml:24
+#: resources/views/components/select-repository.phtml:27
+#: resources/views/components/select-shared-note.phtml:27
+#: resources/views/components/select-source.phtml:27
+#: resources/views/components/select-submission.phtml:27
+#: resources/views/components/select-submitter.phtml:27
+msgid "No results found"
+msgstr ""
+
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
 #: resources/views/search-advanced-page.phtml:102
@@ -13403,10 +13412,7 @@ msgstr "사이트맵"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:25
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr ""
-"사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 "
-"엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다 <a "
-"href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgstr "사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 지원합니다 <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211

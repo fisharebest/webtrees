@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-03 23:01+0000\n"
+"POT-Creation-Date: 2024-03-18 23:58+0000\n"
 "PO-Revision-Date: 2022-09-05 12:36+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
@@ -10364,6 +10364,20 @@ msgstr "Žiaden prednastavený text"
 #: resources/views/lists/datatables-attributes.phtml:35
 msgid "No records to display"
 msgstr "Žiadne záznamy na zobrazenie"
+
+#: resources/views/components/select-family.phtml:27
+#: resources/views/components/select-individual.phtml:27
+#: resources/views/components/select-location.phtml:27
+#: resources/views/components/select-media.phtml:27
+#: resources/views/components/select-note.phtml:27
+#: resources/views/components/select-place.phtml:24
+#: resources/views/components/select-repository.phtml:27
+#: resources/views/components/select-shared-note.phtml:27
+#: resources/views/components/select-source.phtml:27
+#: resources/views/components/select-submission.phtml:27
+#: resources/views/components/select-submitter.phtml:27
+msgid "No results found"
+msgstr ""
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48

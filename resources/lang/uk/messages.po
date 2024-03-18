@@ -2,17 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-03 23:01+0000\n"
+"POT-Creation-Date: 2024-03-18 23:58+0000\n"
 "PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
-"webtrees/uk/>\n"
+"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
@@ -10353,6 +10351,20 @@ msgstr "Ніякого зумовленого тексту"
 #: resources/views/lists/datatables-attributes.phtml:35
 msgid "No records to display"
 msgstr "Немає записів для відображення"
+
+#: resources/views/components/select-family.phtml:27
+#: resources/views/components/select-individual.phtml:27
+#: resources/views/components/select-location.phtml:27
+#: resources/views/components/select-media.phtml:27
+#: resources/views/components/select-note.phtml:27
+#: resources/views/components/select-place.phtml:24
+#: resources/views/components/select-repository.phtml:27
+#: resources/views/components/select-shared-note.phtml:27
+#: resources/views/components/select-source.phtml:27
+#: resources/views/components/select-submission.phtml:27
+#: resources/views/components/select-submitter.phtml:27
+msgid "No results found"
+msgstr ""
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
