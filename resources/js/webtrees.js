@@ -763,7 +763,7 @@
       return element.tomselect;
     }
 
-    if (element.dataset.url) {
+    if (element.dataset.wtUrl) {
       let options = {
         plugins: ['dropdown_input', 'virtual_scroll'],
         maxOptions: false,
@@ -771,8 +771,9 @@
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
+          no_results: (data, escape) => '<div class="no-results">' + element.dataset.wtI18nNoResults + '</div>',
         },
-        firstUrl: query => element.dataset.url + '&query=' + encodeURIComponent(query),
+        firstUrl: query => element.dataset.wtUrl + '&query=' + encodeURIComponent(query),
         load: function (query, callback) {
           webtrees.httpGet(this.getUrl(query))
             .then(response => response.json())

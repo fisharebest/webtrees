@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Http\RequestHandlers\TomSelectIndividual;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 
@@ -22,7 +23,8 @@ $at = $at ?? '';
 <select
     autocomplete="off"
     class="form-select tom-select <?= $class ?? '' ?>"
-    data-url="<?= e(route(TomSelectIndividual::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
+    data-wt-url="<?= e(route(TomSelectIndividual::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
+    data-wt-i18n-no-results="<?= I18N::translate('No results found') ?>"
     id="<?= e($id ?? $name) ?>"
     name="<?= e($name) ?>"
     <?= ($disabled ?? false) ? 'disabled="disabled"' : '' ?>
