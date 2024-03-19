@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 23:58+0000\n"
+"POT-Creation-Date: 2024-03-19 10:14+0000\n"
 "PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
@@ -7107,7 +7107,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "对于具有一个以上的家谱网站，此选项会显示在主菜单的家谱清单，搜索页面等。"
 
 #: resources/views/login-page.phtml:61
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Forgot password?"
 msgstr "忘记密码？"
 
@@ -7957,7 +7957,7 @@ msgstr "对所有人隐藏"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -11871,7 +11871,7 @@ msgstr "父母的年龄"
 #: resources/views/admin/users-edit.phtml:69
 #: resources/views/edit-account-page.phtml:88
 #: resources/views/login-page.phtml:44
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 #: resources/views/password-reset-page.phtml:34
 #: resources/views/register-page.phtml:73
 #: resources/views/setup/step-5-administrator.phtml:80
@@ -13100,14 +13100,13 @@ msgstr "刚果(布拉柴维尔)"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:106
 #: app/Http/RequestHandlers/PasswordRequestPage.php:56
-#: resources/views/modules/login_block/sign-in.phtml:57
 msgid "Request a new password"
 msgstr "重置密码"
 
 #: app/Http/RequestHandlers/RegisterAction.php:210
 #: app/Http/RequestHandlers/RegisterPage.php:77
 #: app/Module/WelcomeBlockModule.php:109 resources/views/login-page.phtml:66
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:48
 msgid "Request a new user account"
 msgstr "注册账户"
 
@@ -14219,7 +14218,7 @@ msgstr "显示父母"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -15929,7 +15928,7 @@ msgstr "这有个人没有事件。"
 
 #: app/Module/IndividualListModule.php:224
 #, php-format
-msgid "There are no individuals with the surname “%s“"
+msgid "There are no individuals with the surname “%s”"
 msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
@@ -17389,7 +17388,7 @@ msgstr "用户验证"
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/login-page.phtml:35
 #: resources/views/modules/geonames/config.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/modules/todo/research-tasks.phtml:35
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:61
@@ -17398,7 +17397,6 @@ msgid "Username"
 msgstr "用户名"
 
 #: resources/views/forgot-password-page.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
 msgstr "用户名或电子邮件地址"
 
@@ -18487,7 +18485,6 @@ msgstr "紧凑列表"
 #: resources/views/admin/upgrade/wizard.phtml:40
 #: resources/views/forgot-password-page.phtml:36
 #: resources/views/modules/clippings/add-options.phtml:35
-#: resources/views/modules/login_block/sign-in.phtml:66
 #: resources/views/password-request-page.phtml:36
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:36
@@ -20729,7 +20726,7 @@ msgstr "她自己"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -21680,7 +21677,7 @@ msgstr "共享笔记"
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
 #: resources/views/modules/faq/config.phtml:36
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/modules/stories/config.phtml:28
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
@@ -21722,7 +21719,7 @@ msgstr "兄弟姐妹"
 # I18N: A button label.
 #. I18N: A button label.
 #: resources/views/login-page.phtml:57
-#: resources/views/modules/login_block/sign-in.phtml:38
+#: resources/views/modules/login_block/sign-in.phtml:39
 msgid "sign in"
 msgstr "登录"
 

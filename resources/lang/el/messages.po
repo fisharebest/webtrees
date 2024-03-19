@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 23:58+0000\n"
+"POT-Creation-Date: 2024-03-19 10:14+0000\n"
 "PO-Revision-Date: 2024-02-22 23:15+0000\n"
 "Last-Translator: jpeppas <jpeppas@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
@@ -6645,7 +6645,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "Για ιστότοπους με περισσότερα από ένα οικογενειακά δέντρα, αυτή η επιλογή θα εμφανίσει τη λίστα των οικογενειακών δέντρων στο κύριο μενού, τις σελίδες αναζήτησης κ.λπ."
 
 #: resources/views/login-page.phtml:61
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Forgot password?"
 msgstr "Ξεχάσατε το συνθηματικό;"
 
@@ -7417,7 +7417,7 @@ msgstr "Απόκρυψη απο όλους"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -11019,7 +11019,7 @@ msgstr "Ηλικία γονέα"
 #: resources/views/admin/users-edit.phtml:69
 #: resources/views/edit-account-page.phtml:88
 #: resources/views/login-page.phtml:44
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 #: resources/views/password-reset-page.phtml:34
 #: resources/views/register-page.phtml:73
 #: resources/views/setup/step-5-administrator.phtml:80
@@ -12147,14 +12147,13 @@ msgstr "Δημοκρατία του Κονγκό"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:106
 #: app/Http/RequestHandlers/PasswordRequestPage.php:56
-#: resources/views/modules/login_block/sign-in.phtml:57
 msgid "Request a new password"
 msgstr "Αίτημα νέου συνθηματικού"
 
 #: app/Http/RequestHandlers/RegisterAction.php:210
 #: app/Http/RequestHandlers/RegisterPage.php:77
 #: app/Module/WelcomeBlockModule.php:109 resources/views/login-page.phtml:66
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:48
 msgid "Request a new user account"
 msgstr "Αίτημα νέου λογαριασμού χρήστη"
 
@@ -13177,7 +13176,7 @@ msgstr "Εμφάνιση γονέων"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -14764,7 +14763,7 @@ msgstr "Δεν υπάρχουν γεγονότα γι' αυτό το άτομο 
 
 #: app/Module/IndividualListModule.php:224
 #, php-format
-msgid "There are no individuals with the surname “%s“"
+msgid "There are no individuals with the surname “%s”"
 msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
@@ -16134,7 +16133,7 @@ msgstr "Επαλήθευση χρήστη"
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/login-page.phtml:35
 #: resources/views/modules/geonames/config.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/modules/todo/research-tasks.phtml:35
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:61
@@ -16143,7 +16142,6 @@ msgid "Username"
 msgstr "Όνομα Χρήστη"
 
 #: resources/views/forgot-password-page.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
 msgstr "Όνομα χρήστη ή διεύθυνση ηλεκτρονικού ταχυδρομείου"
 
@@ -17157,7 +17155,6 @@ msgstr "σύντομη λίστα"
 #: resources/views/admin/upgrade/wizard.phtml:40
 #: resources/views/forgot-password-page.phtml:36
 #: resources/views/modules/clippings/add-options.phtml:35
-#: resources/views/modules/login_block/sign-in.phtml:66
 #: resources/views/password-request-page.phtml:36
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:36
@@ -19361,7 +19358,7 @@ msgstr "η ίδια"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -20274,7 +20271,7 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
 #: resources/views/modules/faq/config.phtml:36
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/modules/stories/config.phtml:28
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
@@ -20315,7 +20312,7 @@ msgstr "αδελφός/η"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:57
-#: resources/views/modules/login_block/sign-in.phtml:38
+#: resources/views/modules/login_block/sign-in.phtml:39
 msgid "sign in"
 msgstr "είσοδος"
 

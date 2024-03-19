@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 23:58+0000\n"
+"POT-Creation-Date: 2024-03-19 10:14+0000\n"
 "PO-Revision-Date: 2024-03-04 10:50+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\n"
@@ -6640,7 +6640,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 
 #: resources/views/login-page.phtml:61
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Forgot password?"
 msgstr "Forgot password?"
 
@@ -7412,7 +7412,7 @@ msgstr "Hide from everyone"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -11014,7 +11014,7 @@ msgstr "Parent’s age"
 #: resources/views/admin/users-edit.phtml:69
 #: resources/views/edit-account-page.phtml:88
 #: resources/views/login-page.phtml:44
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 #: resources/views/password-reset-page.phtml:34
 #: resources/views/register-page.phtml:73
 #: resources/views/setup/step-5-administrator.phtml:80
@@ -12142,14 +12142,13 @@ msgstr "Republic of the Congo"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:106
 #: app/Http/RequestHandlers/PasswordRequestPage.php:56
-#: resources/views/modules/login_block/sign-in.phtml:57
 msgid "Request a new password"
 msgstr "Request a new password"
 
 #: app/Http/RequestHandlers/RegisterAction.php:210
 #: app/Http/RequestHandlers/RegisterPage.php:77
 #: app/Module/WelcomeBlockModule.php:109 resources/views/login-page.phtml:66
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:48
 msgid "Request a new user account"
 msgstr "Request a new user account"
 
@@ -13172,7 +13171,7 @@ msgstr "Show parents"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -14759,8 +14758,8 @@ msgstr "There are no facts for this individual."
 
 #: app/Module/IndividualListModule.php:224
 #, php-format
-msgid "There are no individuals with the surname “%s“"
-msgstr "There are no individuals with the surname “%s“"
+msgid "There are no individuals with the surname “%s”"
+msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -16129,7 +16128,7 @@ msgstr "User verification"
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/login-page.phtml:35
 #: resources/views/modules/geonames/config.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/modules/todo/research-tasks.phtml:35
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:61
@@ -16138,7 +16137,6 @@ msgid "Username"
 msgstr "Username"
 
 #: resources/views/forgot-password-page.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
 msgstr "Username or e-mail address"
 
@@ -17151,7 +17149,6 @@ msgstr "compact list"
 #: resources/views/admin/upgrade/wizard.phtml:40
 #: resources/views/forgot-password-page.phtml:36
 #: resources/views/modules/clippings/add-options.phtml:35
-#: resources/views/modules/login_block/sign-in.phtml:66
 #: resources/views/password-request-page.phtml:36
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:36
@@ -19355,7 +19352,7 @@ msgstr "herself"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -20268,7 +20265,7 @@ msgstr "shared note"
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
 #: resources/views/modules/faq/config.phtml:36
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/modules/stories/config.phtml:28
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
@@ -20309,7 +20306,7 @@ msgstr "sibling"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:57
-#: resources/views/modules/login_block/sign-in.phtml:38
+#: resources/views/modules/login_block/sign-in.phtml:39
 msgid "sign in"
 msgstr "sign in"
 
@@ -22666,6 +22663,10 @@ msgstr "…"
 
 #~ msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 #~ msgstr "Themes can be selected at three levels: user, family tree and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting ‘default theme’ at one level will use the theme at the next level."
+
+#, php-format
+#~ msgid "There are no individuals with the surname “%s“"
+#~ msgstr "There are no individuals with the surname “%s“"
 
 #, php-format
 #~ msgid "There is no account with the username or email “%s”."
