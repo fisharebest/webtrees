@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 10:50+0000\n"
+"PO-Revision-Date: 2024-03-20 19:37+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
@@ -14486,7 +14486,9 @@ msgstr "Dette skal være mindst seks karakterer, og er versalfølsom."
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Dette navn bruges i “fra” feltet når der sendes automatisk emails fra denne server."
+msgstr ""
+"Dette bruges i “fra” feltet, når der sendes automatiske emails fra denne "
+"server."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
