@@ -587,17 +587,12 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
-			count: 9
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: "#^Cannot access property \\$type on mixed\\.$#"
-			count: 47
+			count: 1
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
-			count: 46
+			count: 4
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
@@ -2511,7 +2506,7 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<\\(object\\{generation\\: int\\}&stdClass\\)\\|\\(object\\{generation\\: int\\}&stdClass\\)\\>\\.$#"
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<\\(object\\{generation\\: int\\}&stdClass\\)\\>\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
