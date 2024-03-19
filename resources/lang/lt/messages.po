@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 23:48+0000\n"
+"POT-Creation-Date: 2024-03-19 10:15+0000\n"
 "PO-Revision-Date: 2019-10-22 21:17+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/lt/>\n"
@@ -6663,7 +6663,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "Svetainėse su daugiau negu vienu šeimos medžiu ši parinktis parodys šeimos medžių sąrašą pagrindiniame meniu, paieškų puslapyje ir t.t."
 
 #: resources/views/login-page.phtml:61
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Forgot password?"
 msgstr "Pamiršote slaptažodį?"
 
@@ -7435,7 +7435,7 @@ msgstr "Slėpti nuo visų"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -11039,7 +11039,7 @@ msgstr "Tėvų amžius"
 #: resources/views/admin/users-edit.phtml:69
 #: resources/views/edit-account-page.phtml:88
 #: resources/views/login-page.phtml:44
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 #: resources/views/password-reset-page.phtml:34
 #: resources/views/register-page.phtml:73
 #: resources/views/setup/step-5-administrator.phtml:80
@@ -12168,14 +12168,13 @@ msgstr "Kongas (Brazavilis)"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:106
 #: app/Http/RequestHandlers/PasswordRequestPage.php:56
-#: resources/views/modules/login_block/sign-in.phtml:57
 msgid "Request a new password"
 msgstr "Naujo slaptažodžio sukūrimas"
 
 #: app/Http/RequestHandlers/RegisterAction.php:210
 #: app/Http/RequestHandlers/RegisterPage.php:77
 #: app/Module/WelcomeBlockModule.php:109 resources/views/login-page.phtml:66
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:48
 msgid "Request a new user account"
 msgstr "Naujo naudotojo sukūrimas"
 
@@ -13198,7 +13197,7 @@ msgstr "Rodyti tėvus"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -14786,7 +14785,7 @@ msgstr "Nėra detalesnės informacijos apie šį asmenį."
 
 #: app/Module/IndividualListModule.php:220
 #, php-format
-msgid "There are no individuals with the surname “%s“"
+msgid "There are no individuals with the surname “%s”"
 msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
@@ -16162,7 +16161,7 @@ msgstr "Naudotojo patvirtinimas"
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/login-page.phtml:35
 #: resources/views/modules/geonames/config.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/modules/todo/research-tasks.phtml:35
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:61
@@ -16171,7 +16170,6 @@ msgid "Username"
 msgstr "Nario vardas"
 
 #: resources/views/forgot-password-page.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
 msgstr "Vartotojo vardas ar elektroninis adresas"
 
@@ -17184,7 +17182,6 @@ msgstr "glaustas sąrašas"
 #: resources/views/admin/upgrade/wizard.phtml:40
 #: resources/views/forgot-password-page.phtml:36
 #: resources/views/modules/clippings/add-options.phtml:35
-#: resources/views/modules/login_block/sign-in.phtml:66
 #: resources/views/password-request-page.phtml:36
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:36
@@ -19389,7 +19386,7 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -20303,7 +20300,7 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
 #: resources/views/modules/faq/config.phtml:36
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/modules/stories/config.phtml:28
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
@@ -20344,7 +20341,7 @@ msgstr "brolis/sesuo"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:57
-#: resources/views/modules/login_block/sign-in.phtml:38
+#: resources/views/modules/login_block/sign-in.phtml:39
 msgid "sign in"
 msgstr "prisijungti"
 

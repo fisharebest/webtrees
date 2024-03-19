@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 23:48+0000\n"
+"POT-Creation-Date: 2024-03-19 10:15+0000\n"
 "PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\n"
@@ -6664,7 +6664,7 @@ msgid "For websites with more than one family tree, this option will show the li
 msgstr "Za web stranice sa više od jednog porodičnog stabla, ova opcija će prikazati listu porodičnih stabala u glavnom meniju, stranicama za pretraživanje, itd."
 
 #: resources/views/login-page.phtml:61
-#: resources/views/modules/login_block/sign-in.phtml:42
+#: resources/views/modules/login_block/sign-in.phtml:43
 msgid "Forgot password?"
 msgstr "Zaboravljena lozinka?"
 
@@ -7436,7 +7436,7 @@ msgstr "Sakrij od svih"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -11040,7 +11040,7 @@ msgstr "Starost roditelja"
 #: resources/views/admin/users-edit.phtml:69
 #: resources/views/edit-account-page.phtml:88
 #: resources/views/login-page.phtml:44
-#: resources/views/modules/login_block/sign-in.phtml:31
+#: resources/views/modules/login_block/sign-in.phtml:32
 #: resources/views/password-reset-page.phtml:34
 #: resources/views/register-page.phtml:73
 #: resources/views/setup/step-5-administrator.phtml:80
@@ -12168,14 +12168,13 @@ msgstr "Kongo (Brazzaville)"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:106
 #: app/Http/RequestHandlers/PasswordRequestPage.php:56
-#: resources/views/modules/login_block/sign-in.phtml:57
 msgid "Request a new password"
 msgstr "Zahtevajte novu lozinku"
 
 #: app/Http/RequestHandlers/RegisterAction.php:210
 #: app/Http/RequestHandlers/RegisterPage.php:77
 #: app/Module/WelcomeBlockModule.php:109 resources/views/login-page.phtml:66
-#: resources/views/modules/login_block/sign-in.phtml:51
+#: resources/views/modules/login_block/sign-in.phtml:48
 msgid "Request a new user account"
 msgstr "Zatražite novi nalog"
 
@@ -13198,7 +13197,7 @@ msgstr "Prikaži roditelje"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -14786,7 +14785,7 @@ msgstr "Ne postoje činjenice za ovu osobu."
 
 #: app/Module/IndividualListModule.php:220
 #, php-format
-msgid "There are no individuals with the surname “%s“"
+msgid "There are no individuals with the surname “%s”"
 msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
@@ -16162,7 +16161,7 @@ msgstr "Korisnička provera"
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/login-page.phtml:35
 #: resources/views/modules/geonames/config.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:24
+#: resources/views/modules/login_block/sign-in.phtml:25
 #: resources/views/modules/todo/research-tasks.phtml:35
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:61
@@ -16171,7 +16170,6 @@ msgid "Username"
 msgstr "Korisničko ime"
 
 #: resources/views/forgot-password-page.phtml:23
-#: resources/views/modules/login_block/sign-in.phtml:60
 msgid "Username or email address"
 msgstr "Korisničko ime ili adresa elektronske pošte"
 
@@ -17184,7 +17182,6 @@ msgstr "kompaktna lista"
 #: resources/views/admin/upgrade/wizard.phtml:40
 #: resources/views/forgot-password-page.phtml:36
 #: resources/views/modules/clippings/add-options.phtml:35
-#: resources/views/modules/login_block/sign-in.phtml:66
 #: resources/views/password-request-page.phtml:36
 #: resources/views/password-reset-page.phtml:50
 #: resources/views/pending-changes-page.phtml:36
@@ -19389,7 +19386,7 @@ msgstr "ona"
 #: resources/views/admin/users-edit.phtml:72
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
 #: resources/views/setup/step-4-database-mysql.phtml:119
@@ -20303,7 +20300,7 @@ msgstr "zajednička beleška"
 #: resources/views/edit-account-page.phtml:91
 #: resources/views/login-page.phtml:47
 #: resources/views/modules/faq/config.phtml:36
-#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/login_block/sign-in.phtml:34
 #: resources/views/modules/stories/config.phtml:28
 #: resources/views/password-reset-page.phtml:37
 #: resources/views/register-page.phtml:76
@@ -20344,7 +20341,7 @@ msgstr "brat i sestra"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:57
-#: resources/views/modules/login_block/sign-in.phtml:38
+#: resources/views/modules/login_block/sign-in.phtml:39
 msgid "sign in"
 msgstr "prijava"
 
