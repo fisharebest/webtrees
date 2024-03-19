@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:14+0000\n"
+"POT-Creation-Date: 2024-03-19 13:09+0000\n"
 "PO-Revision-Date: 2020-03-29 16:29+0000\n"
 "Last-Translator: Robert Eržen <erzen.robert@gmail.com>\n"
 "Language-Team: Slovenian <https://translate.webtrees.net/projects/webtrees/webtrees/sl/>\n"
@@ -1857,7 +1857,7 @@ msgid "Allow visitors to request a new user account"
 msgstr ""
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3419,6 +3419,7 @@ msgid "Century"
 msgstr ""
 
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "potrdilo"
@@ -6687,7 +6688,7 @@ msgstr ""
 msgid "Forgot password?"
 msgstr ""
 
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9301,7 +9302,7 @@ msgstr ""
 msgid "Marriages by century"
 msgstr "Porok po stoletjih"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -15376,7 +15377,7 @@ msgid "Time of birth and time of death"
 msgstr ""
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr ""
 
@@ -15466,7 +15467,7 @@ msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr ""
 
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -16902,6 +16903,10 @@ msgstr ""
 msgid "adopted name"
 msgstr ""
 
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr "po"
+
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
 #, php-format
@@ -16985,6 +16990,10 @@ msgstr ""
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr "pred"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
@@ -17218,6 +17227,11 @@ msgstr ""
 msgid "continue"
 msgstr "naprej"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
@@ -17393,6 +17407,11 @@ msgstr ""
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
 msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
@@ -19520,6 +19539,7 @@ msgstr ""
 msgid "list"
 msgstr ""
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -19896,6 +19916,10 @@ msgstr "številke za družino"
 msgid "of"
 msgstr "od"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:353
 msgid "parent"
 msgstr ""
@@ -19947,6 +19971,10 @@ msgstr ""
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "odstotki"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
@@ -21741,12 +21769,6 @@ msgstr ""
 
 #~ msgid "adoption"
 #~ msgstr "posvojitev"
-
-#~ msgid "after"
-#~ msgstr "po"
-
-#~ msgid "before"
-#~ msgstr "pred"
 
 #~ msgid "birth"
 #~ msgstr "rojstvo"

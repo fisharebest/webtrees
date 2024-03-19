@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:14+0000\n"
+"POT-Creation-Date: 2024-03-19 13:09+0000\n"
 "PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
@@ -1943,7 +1943,7 @@ msgstr "允许注册新的账户"
 
 # I18N: gedcom tag _AKA
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3640,6 +3640,7 @@ msgstr "世纪"
 
 # I18N: Type of media object
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "证书"
@@ -7112,7 +7113,7 @@ msgid "Forgot password?"
 msgstr "忘记密码？"
 
 # I18N: gedcom tag FORM
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9957,7 +9958,7 @@ msgid "Marriages by century"
 msgstr "按世纪统计结婚"
 
 # I18N: gedcom tag _MARNM
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -16520,7 +16521,7 @@ msgid "Time of birth and time of death"
 msgstr "出生时间和死亡时间"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr "死亡时间"
 
@@ -16622,7 +16623,7 @@ msgid "Tishrei"
 msgstr "第一月"
 
 # I18N: gedcom tag TITL
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -18163,6 +18164,11 @@ msgstr "添加地点"
 msgid "adopted name"
 msgstr "过继/收养后姓名"
 
+# I18N: An option in a list-box
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr "以后"
+
 # I18N: Gedcom AFT dates
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
@@ -18248,6 +18254,11 @@ msgstr "自动"
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr "返回页首"
+
+# I18N: An option in a list-box
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr "以前"
 
 # I18N: Gedcom BEF dates
 #. I18N: Gedcom BEF dates
@@ -18493,6 +18504,11 @@ msgstr "紧凑列表"
 msgid "continue"
 msgstr "继续"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 # I18N: A button label.
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -18677,6 +18693,11 @@ msgstr "前妻"
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
 msgstr "导出文件"
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
+msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -20843,6 +20864,7 @@ msgstr "向左"
 msgid "list"
 msgstr "列表"
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -21224,6 +21246,10 @@ msgstr "数字"
 msgid "of"
 msgstr "从"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:353
 msgid "parent"
 msgstr "父母"
@@ -21277,6 +21303,10 @@ msgstr "待定"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "百分比"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
@@ -23246,10 +23276,6 @@ msgstr "…"
 #~ msgid "adoption"
 #~ msgstr "过继/收养儿女"
 
-# I18N: An option in a list-box
-#~ msgid "after"
-#~ msgstr "以后"
-
 # I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #~ msgctxt "FEMALE"
 #~ msgid "also known as"
@@ -23262,10 +23288,6 @@ msgstr "…"
 
 #~ msgid "always"
 #~ msgstr "总是"
-
-# I18N: An option in a list-box
-#~ msgid "before"
-#~ msgstr "以前"
 
 #~ msgid "birth"
 #~ msgstr "出生"

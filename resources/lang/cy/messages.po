@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Welsh (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:14+0000\n"
+"POT-Creation-Date: 2024-03-19 13:09+0000\n"
 "PO-Revision-Date: 2023-12-30 18:15+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\n"
@@ -1888,7 +1888,7 @@ msgid "Allow visitors to request a new user account"
 msgstr "Caniatáu i ymwelwyr ofyn am gyfrif defnyddiwr newydd"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3450,6 +3450,7 @@ msgid "Century"
 msgstr "Canrif"
 
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "Tystysgrif"
@@ -6720,7 +6721,7 @@ msgstr "Ar gyfer gwefannau sydd â mwy nag un cart achau, bydd yr opsiwn hwn yn 
 msgid "Forgot password?"
 msgstr "Wedi anghofio'ch cyfrinair?"
 
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9334,7 +9335,7 @@ msgstr "Priodasau"
 msgid "Marriages by century"
 msgstr "Priodasau yn ôl canrif"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -15421,7 +15422,7 @@ msgid "Time of birth and time of death"
 msgstr "Amser geni ac amser marwolaeth"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr "Amser marwolaeth"
 
@@ -15511,7 +15512,7 @@ msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -16953,6 +16954,10 @@ msgstr "ychwanegu man"
 msgid "adopted name"
 msgstr "enw mabwysiedig"
 
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr ""
+
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
 #, php-format
@@ -17036,6 +17041,10 @@ msgstr "awtomatig"
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr "yn ôl i'r brig"
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr ""
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
@@ -17269,6 +17278,11 @@ msgstr "rhestr gryno"
 msgid "continue"
 msgstr "parhau"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
@@ -17445,6 +17459,11 @@ msgstr "cyn-wraig"
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
 msgstr "allforio ffeil"
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
+msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19573,6 +19592,7 @@ msgstr "chwith"
 msgid "list"
 msgstr "rhestr"
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -19951,6 +19971,10 @@ msgstr "rhifau"
 msgid "of"
 msgstr "o"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:353
 msgid "parent"
 msgstr "rhiant"
@@ -20002,6 +20026,10 @@ msgstr "arfaethedig"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "canran"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106

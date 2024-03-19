@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:14+0000\n"
+"POT-Creation-Date: 2024-03-19 13:09+0000\n"
 "PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
@@ -1798,7 +1798,7 @@ msgid "Allow visitors to request a new user account"
 msgstr "방문자가 새 사용자 계정을 요청할 수 있도록 허용"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3360,6 +3360,7 @@ msgid "Century"
 msgstr "세기"
 
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "자격증"
@@ -6625,7 +6626,7 @@ msgstr "하나 이상의 가계도가 있는 웹사이트의 경우 이 옵션�
 msgid "Forgot password?"
 msgstr "비밀번호를 잊으셨나요?"
 
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9239,7 +9240,7 @@ msgstr "결혼"
 msgid "Marriages by century"
 msgstr "세기별 결혼"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -15296,7 +15297,7 @@ msgid "Time of birth and time of death"
 msgstr ""
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr ""
 
@@ -15386,7 +15387,7 @@ msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -16813,6 +16814,10 @@ msgstr "장소 추가"
 msgid "adopted name"
 msgstr "입양 된 이름"
 
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr ""
+
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
 #, php-format
@@ -16896,6 +16901,10 @@ msgstr ""
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr "맨 위로"
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr ""
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
@@ -17129,6 +17138,11 @@ msgstr "컴팩트 목록"
 msgid "continue"
 msgstr "계속"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
@@ -17305,6 +17319,11 @@ msgstr "전 부인"
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
 msgstr "파일 내보내기"
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
+msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19428,6 +19447,7 @@ msgstr "왼쪽"
 msgid "list"
 msgstr "목록"
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -19801,6 +19821,10 @@ msgstr "수"
 msgid "of"
 msgstr "의"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:353
 msgid "parent"
 msgstr "부모님"
@@ -19852,6 +19876,10 @@ msgstr "보류 중"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "백분율"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106

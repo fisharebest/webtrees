@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:14+0000\n"
+"POT-Creation-Date: 2024-03-19 13:09+0000\n"
 "PO-Revision-Date: 2023-09-06 19:12+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
@@ -1816,7 +1816,7 @@ msgid "Allow visitors to request a new user account"
 msgstr "Heimila gestum að óska eftir nýjum notandareikning"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3378,6 +3378,7 @@ msgid "Century"
 msgstr "Öld"
 
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "Vottorð"
@@ -6644,7 +6645,7 @@ msgstr "Fyrir vefsíður með fleiri en einni ættartölu, þá mun þessi valko
 msgid "Forgot password?"
 msgstr "Gleymt lykilorð?"
 
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9258,7 +9259,7 @@ msgstr "Giftingar"
 msgid "Marriages by century"
 msgstr "Gifting eftir öldum"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -15321,7 +15322,7 @@ msgid "Time of birth and time of death"
 msgstr "Tími fæðingar og tími andláts"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr "Tími andláts"
 
@@ -15411,7 +15412,7 @@ msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr "tishrei"
 
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -16841,6 +16842,10 @@ msgstr "bæta við stað"
 msgid "adopted name"
 msgstr "ættleiðingarnafn"
 
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr "fyrir aftan"
+
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
 #, php-format
@@ -16924,6 +16929,10 @@ msgstr "sjálfvirkt"
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr "Aftur upp á topp"
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr "fyrir framan"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
@@ -17157,6 +17166,11 @@ msgstr "samanþjappaður listi"
 msgid "continue"
 msgstr "halda áfram"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
@@ -17333,6 +17347,11 @@ msgstr "fyrrverandi maki"
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
 msgstr "flytja út skrá"
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
+msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19457,6 +19476,7 @@ msgstr "vinstri"
 msgid "list"
 msgstr "lista"
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -19831,6 +19851,10 @@ msgstr "tölur"
 msgid "of"
 msgstr "af"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:353
 msgid "parent"
 msgstr "foreldri"
@@ -19882,6 +19906,10 @@ msgstr "í bið"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "prósenta"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
@@ -22799,9 +22827,6 @@ msgstr "…"
 #~ msgid "adoption"
 #~ msgstr "ættleiðing"
 
-#~ msgid "after"
-#~ msgstr "fyrir aftan"
-
 #~ msgid "allow"
 #~ msgstr "heimila"
 
@@ -22812,9 +22837,6 @@ msgstr "…"
 #~ msgctxt "MALE"
 #~ msgid "also known as"
 #~ msgstr "einnig þekktur sem"
-
-#~ msgid "before"
-#~ msgstr "fyrir framan"
 
 #~ msgid "birth"
 #~ msgstr "fæðing"
