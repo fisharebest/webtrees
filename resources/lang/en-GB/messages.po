@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-01-06 19:15+0000\n"
+"PO-Revision-Date: 2024-03-20 19:37+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: English (United Kingdom) <https://translate.webtrees.net/"
 "projects/webtrees/webtrees-20/en_GB/>\n"
@@ -165,7 +165,7 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s B.C."
+msgstr "%s ʙᴄ"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:312 app/MediaFile.php:320
@@ -415,13 +415,13 @@ msgstr "%s × cousin"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BC"
+msgstr "%s&nbsp;ʙᴄ"
 
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "AD&nbsp;%s"
+msgstr "ᴀᴅ&nbsp;%s"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:866
