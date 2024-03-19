@@ -3394,7 +3394,7 @@ msgstr "Kanada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr "Es kann nicht in den Ordner “%s” geschrieben werden."
+msgstr "Kann nicht in den Ordner “%s” schreiben."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -10872,7 +10872,7 @@ msgstr "Keine Datensätze zum Anzeigen"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Keine Ergebnisse gefunden"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
@@ -15579,7 +15579,7 @@ msgstr "Zu dieser Person gibt es keine Ereignisse."
 #: app/Module/IndividualListModule.php:224
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Es gibt keine Personen mit dem Nachname “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
