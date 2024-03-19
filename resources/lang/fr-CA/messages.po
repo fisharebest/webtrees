@@ -10346,7 +10346,7 @@ msgstr "Aucun enregistrement à afficher"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Recherche infructueuse"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48

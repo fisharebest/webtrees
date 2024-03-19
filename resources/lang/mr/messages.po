@@ -10344,7 +10344,7 @@ msgstr "दर्शविण्यासाठी कोणतेही रे�
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "परिणाम आढळले नाहीत"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48

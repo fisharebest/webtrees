@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2023-10-24 09:15+0000\n"
+"PO-Revision-Date: 2024-03-24 21:39+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -3270,7 +3270,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Kan niet schrijven naar de map \"%s\"."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3870,7 +3870,7 @@ msgstr "Verbinding met de databaseserver"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Verbindingstype"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -10348,7 +10348,7 @@ msgstr "Geen records om te tonen"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Geen resultaten gevonden"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
@@ -14538,7 +14538,7 @@ msgstr "De parameter “%s” ontbreekt."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "De parameter \"pad\" is ongeldig."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14764,7 +14764,7 @@ msgstr "Er zijn geen feiten voor deze persoon."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Er zijn geen personen met de achternaam \"%s\""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15149,7 +15149,7 @@ msgstr "Met deze pagina kunt u de normale pagina's omzeilen en de onderliggende 
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Deze pagina is verwijderd."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17173,7 +17173,7 @@ msgstr "doorgaan"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "kopie"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17355,7 +17355,7 @@ msgstr "bestand exporteren"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "uittreksel"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19483,7 +19483,7 @@ msgstr "lijst"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokaal"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19692,7 +19692,7 @@ msgstr "neef/nicht"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "netwerk"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19857,7 +19857,7 @@ msgstr "van"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "online"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -19913,7 +19913,7 @@ msgstr "percentage"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "fotokopie"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106

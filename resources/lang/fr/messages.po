@@ -2055,7 +2055,7 @@ msgstr "Aigue-marine"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Voulez-vous vraiment supprimer le lien vers « %s » ?"
+msgstr "Voulez-vous vraiment supprimer le lien vers « %s » ?"
 
 #: resources/views/individual-page-name.phtml:90
 #: resources/views/media-page-details.phtml:38
@@ -3270,7 +3270,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Impossible d’écrire dans le dossier « %s »."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3317,7 +3317,7 @@ msgstr "Cause du décès"
 #: resources/views/admin/trees-merge.phtml:66
 #: resources/views/admin/trees-renumber.phtml:47
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Attention, ça pourrait prendre un bon moment ! Patience."
+msgstr "Attention ! Cette opération peut prendre du temps. Veuillez patienter."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
@@ -3870,7 +3870,7 @@ msgstr "Connexion à la base de données"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Type de connexion"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -7768,7 +7768,7 @@ msgstr "Cette année-là…"
 #. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "Dans webtrees version 1, vous pouviez ajouter des vignettes personnalisées aux objets médias en créant des fichiers dans le dossier « thumbs »."
+msgstr "Dans webtrees version 1, les vignettes pouvaient être personnalisées pour les objets médias en créant des fichiers dans le dossier « thumbs »."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -7959,7 +7959,7 @@ msgstr "Déclarant"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr "L'usage des sources « en ligne » est déconseillé."
+msgstr "L'usage des sources « en ligne » est déconseillé."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:175 app/Module/ChartsBlockModule.php:258
@@ -10348,7 +10348,7 @@ msgstr "Aucun enregistrement à afficher"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Recherche infructueuse"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
@@ -11226,7 +11226,7 @@ msgstr "Les noms de lieux peuvent changer au cours du temps. En généalogie, il
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Les noms de lieux doivent être saisis sous forme de liste séparés par des virgules, en commençant par le plus petit lieu pour finir par le pays. Par exemple, « Rouen, Seine-Maritime, Normandie, France »."
+msgstr "Les noms de lieux doivent être saisis sous forme de liste, séparés par des virgules, en commençant par le plus petit lieu pour finir par le pays. Par exemple, « Rouen, Seine-Maritime, Normandie, France »."
 
 #: app/Gedcom.php:588
 msgid "Place of LDS baptism"
@@ -12063,7 +12063,7 @@ msgstr "Reno, Nevada, États-Unis"
 #: resources/views/admin/trees-merge.phtml:42
 #: resources/views/admin/trees.phtml:201
 msgid "Renumber XREFs"
-msgstr "Renuméroter les identifiants « XREF »"
+msgstr "Renuméroter les identifiants « XREF »"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -14211,12 +14211,12 @@ msgstr "La Haye, Pays-Bas"
 #: app/Services/ServerCheckService.php:121
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "L’extension PHP « %s » n’est pas installée."
+msgstr "L’extension PHP « %s » n’est pas installée."
 
 #: app/Services/ServerCheckService.php:177
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "La fonction PHP « %1$s » est désactivée."
+msgstr "La fonction PHP « %1$s » est désactivée."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:76
@@ -14226,12 +14226,12 @@ msgstr "Répertoire temporaire PHP manquant."
 #: app/Services/ServerCheckService.php:140
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "Le paramètre « %1$s » est désactivé dans PHP.INI."
+msgstr "Le paramètre « %1$s » est désactivé dans PHP.INI."
 
 #: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "Le paramètre « %1$s » est activé dans PHP.INI."
+msgstr "Le paramètre « %1$s » est activé dans PHP.INI."
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
@@ -14283,7 +14283,7 @@ msgstr "La date et l’heure de la dernière mise à jour"
 #: app/Http/RequestHandlers/MapDataSave.php:101
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "Les détails de « %s » ont été mis à jour."
+msgstr "Les détails de « %s » ont été mis à jour."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php:84
@@ -14413,7 +14413,7 @@ msgstr "La liste suivante donne une indication des performances requises."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr "Des données du formulaire sont manquantes. Il est peut-être nécessaire d'augmenter la valeur de « max_input_vars » sur le serveur ?"
+msgstr "Des données du formulaire sont manquantes. Il est peut-être nécessaire d'augmenter la valeur de « max_input_vars » sur le serveur ?"
 
 #: app/Http/RequestHandlers/HelpText.php:281
 msgid "The help text has not been written for this item."
@@ -14533,12 +14533,12 @@ msgstr "La note a été créée"
 #: app/Validator.php:401 app/Validator.php:417 app/Validator.php:433
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr "Le paramètre « %s » est manquant."
+msgstr "Le paramètre « %s » est manquant."
 
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Le paramètre « path » n’est pas valide."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14764,7 +14764,7 @@ msgstr "Aucun fait n’est lié à cet individu."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Aucun individu ne porte le nom de famille « %s »"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15149,7 +15149,7 @@ msgstr "Cette page vous permet de contourner les formes habituelles, et de modif
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Cette page a été supprimée."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -16088,7 +16088,7 @@ msgstr "Utilisez des silhouettes"
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "Utilisez le menu « Modifier » pour copier cet événement dans un autre enregistrement."
+msgstr "Utilisez le menu « Modifier » pour copier cet événement dans un autre enregistrement."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -19483,7 +19483,7 @@ msgstr "liste"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "local"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19692,7 +19692,7 @@ msgstr "neveu/nièce"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "réseau"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -20966,12 +20966,12 @@ msgstr "Îles Aland, Finlande"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr "« %1$s » devrait être « %2$s »."
+msgstr "« %1$s » devrait être « %2$s »."
 
 #: app/Http/RequestHandlers/CopyFact.php:69
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr "« %s » a été copié dans le presse-papiers."
+msgstr "« %s » a été copié dans le presse-papiers."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:63

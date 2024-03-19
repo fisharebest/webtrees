@@ -80,7 +80,7 @@ abstract class AbstractCalendarDate
      *
      * @param array<string>|int|AbstractCalendarDate $date
      */
-    protected function __construct(array|int|AbstractCalendarDate $date)
+    public function __construct(array|int|AbstractCalendarDate $date)
     {
         // Construct from an integer (a julian day number)
         if (is_int($date)) {

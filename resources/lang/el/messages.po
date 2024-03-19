@@ -531,7 +531,7 @@ msgstr "(φιλτραρισμένο από %s συνολικές καταχωρ�
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
 msgid "(includes media files)"
-msgstr ""
+msgstr "(περιλαμβάνει αρχεία πολυμέσων)"
 
 #: resources/views/fact-date.phtml:117
 msgid "(on the date of death)"
@@ -654,7 +654,7 @@ msgstr "<Προεπιλεγμένο Θέμα>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Ανακοίνωση : Συμπληρώνοντας και αποστέλλοντας αυτή τη φόρμα, συμφωνείτε:</p><ul><li>να προστατεύσετε το απόρρητο των ζωντανών ατόμων που αναφέρονται στον ιστότοπό μας;</li><li>και στο πλαίσιο κειμένου παρακάτω, να εξηγήσετε με ποιον είστε συγγενής ή να μας δώσετε πληροφορίες για κάποιον που θα έπρεπε να αναφέρεται στον ιστότοπό μας.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -1079,7 +1079,7 @@ msgstr "A4"
 #: resources/views/modules/map-box/config.phtml:23
 #: resources/views/modules/openrouteservice/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "Κλειδί Διεπαφής προγραμματισμού εφαρμογών"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
@@ -1501,7 +1501,7 @@ msgstr "Γραμμή διεύθυνσης 3"
 
 #: resources/views/admin/tags.phtml:264
 msgid "Addresses"
-msgstr ""
+msgstr "Διευθύνσεις"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1510,7 +1510,7 @@ msgstr "Αδελαΐδα, Αυστραλία"
 
 #: app/CustomTags/GedcomL.php:284
 msgid "Administrative ID"
-msgstr ""
+msgstr "Ταυτότητα Διαχειριστή"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1828,7 +1828,7 @@ msgstr "Επίσης γνωστός ως"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Εναλλακτική γραφή του επωνύμου"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1926,7 +1926,7 @@ msgstr "Προγονικό PID"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "αναγνωριστικό πηγής Ancestry.com"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1990,11 +1990,11 @@ msgstr "Apia, Σαμόα"
 
 #: app/Gedcom.php:513
 msgid "Application ID"
-msgstr ""
+msgstr "Ταυτότητα Εφαρμογής"
 
 #: app/Gedcom.php:530
 msgid "Application name"
-msgstr ""
+msgstr "Όνομα Εφαρμογής"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -2055,7 +2055,7 @@ msgstr "Άκουα Μαρίν"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Σίγουρα θέλετε να διαγράψετε το σύνδεσμο προς το \"%s\";"
 
 #: resources/views/individual-page-name.phtml:90
 #: resources/views/media-page-details.phtml:38
@@ -2156,7 +2156,7 @@ msgstr "Συσχετίστε συμβάντα με αυτή την πηγή"
 
 #: resources/views/modules/personal_facts/tab.phtml:34
 msgid "Associated events"
-msgstr ""
+msgstr "Συναφή γεγονότα"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2260,7 +2260,7 @@ msgstr "Συντάκτης τελευταίας αλλαγής"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:648
 msgid "Autocomplete"
-msgstr ""
+msgstr "Αυτόματη συμπλήρωση"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
@@ -2280,25 +2280,25 @@ msgstr "Αυτόματο ξεδίπλωμα πηγών"
 #: app/Date/JewishDate.php:215
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:319
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:267
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:163
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #: app/Statistics/Google/ChartAge.php:115
 #: app/Statistics/Google/ChartMarriageAge.php:138
@@ -2348,31 +2348,31 @@ msgstr "Αποφύγετε κενά και σημεία στίξης. Ένα ο�
 #: app/Date/JalaliDate.php:281
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:245
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:200
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:110
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
@@ -2387,7 +2387,7 @@ msgstr "Αζόρες"
 #: app/Date/JalaliDate.php:283
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Μπαχ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:91
@@ -2398,25 +2398,25 @@ msgstr "Μπαχάμες"
 #: app/Date/JalaliDate.php:159
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:249
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:204
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:114
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
@@ -3270,7 +3270,7 @@ msgstr "Καναδάς"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Δεν είναι δυνατή η εγγραφή στο φάκελο \"%s\"."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3349,7 +3349,7 @@ msgstr "Ημ/νία απογραφής"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:15
 msgid "Census date and place"
-msgstr ""
+msgstr "Ημερομηνία και τόπος απογραφής"
 
 #: app/Gedcom.php:614
 msgid "Census place"
@@ -3448,7 +3448,7 @@ msgstr "Αρχείο αλλαγών"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "Κωδικοποίηση χαρακτήρων"
 
 #: app/Gedcom.php:499
 msgid "Character set"
@@ -3489,7 +3489,7 @@ msgstr "Έλεγχος για σφάλματα"
 
 #: app/Module/CheckForNewVersion.php:66
 msgid "Check for new version"
-msgstr ""
+msgstr "Έλεγχος για νέα έκδοση"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:120
 msgid "Check for pending changes…"
@@ -3687,7 +3687,7 @@ msgstr "Διενεργών περιτομές"
 
 #: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
-msgstr ""
+msgstr "Περιτομή"
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
@@ -3870,7 +3870,7 @@ msgstr "Σύνδεση στον database server"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Είδος σύνδεσης"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -3894,7 +3894,7 @@ msgstr "Περιεχόμενο"
 
 #: app/Gedcom.php:767
 msgid "Continuation"
-msgstr ""
+msgstr "Συνέχεια"
 
 #: app/Http/RequestHandlers/ControlPanel.php:148
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3961,7 +3961,7 @@ msgstr "Πίνακας Ελέγχου"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:59
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Μετατροπή %s ετικέτες σε GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4007,7 +4007,7 @@ msgstr "Αντιγραφή αρχείων…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Αντιγράψτε τη διεύθυνση URL της εγγραφής στο πρόχειρο"
 
 #: app/Gedcom.php:501 app/Gedcom.php:528
 msgid "Copyright"
@@ -4112,7 +4112,7 @@ msgstr "Δημιουργία νέου ατόμου"
 #: app/Module/MapBox.php:51 app/Module/OpenStreetMap.php:41
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Δημιουργήστε χάρτες χρησιμοποιώντας %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
@@ -4129,7 +4129,7 @@ msgstr "Δημιουργήστε, ενημερώστε και διαγράψτε
 #: app/CustomTags/Gedcom7.php:161 app/CustomTags/Gedcom7.php:170
 #: app/CustomTags/Heredis.php:53 app/CustomTags/Heredis.php:54
 msgid "Created at"
-msgstr ""
+msgstr "Δημιουργήθηκε στο"
 
 #: app/CustomTags/Gedcom7.php:94 app/CustomTags/Gedcom7.php:126
 #: app/CustomTags/Gedcom7.php:141 app/CustomTags/Gedcom7.php:145
@@ -4144,7 +4144,7 @@ msgstr "Ημερομηνία δημιουργίας"
 #: app/CustomTags/Gedcom7.php:155 app/CustomTags/Gedcom7.php:163
 #: app/CustomTags/Gedcom7.php:172
 msgid "Creation time"
-msgstr ""
+msgstr "Ώρα δημιουργίας"
 
 #: app/Gedcom.php:634 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4290,7 +4290,7 @@ msgstr "Κούβα"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "Κουρασάο"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -4303,11 +4303,11 @@ msgstr "Εξατομίκευση"
 
 #: app/CustomTags/Gedcom7.php:104 resources/views/admin/tags.phtml:1020
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Προσαρμοσμένες ετικέτες GEDCOM"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Οι προσαρμοσμένες ετικέτες GEDCOM δεν ενθαρρύνονται. Προσπαθήστε να χρησιμοποιείτε μόνο τυποποιημένες ετικέτες GEDCOM."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
@@ -4607,7 +4607,7 @@ msgstr "Ημερομηνία διαμονής"
 
 #: app/CustomTags/Gedcom7.php:133
 msgid "Date of status change"
-msgstr ""
+msgstr "Ημερομηνία αλλαγής κατάστασης"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
@@ -5007,7 +5007,7 @@ msgstr "Δεκέμβριος"
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:319
 msgid "Decidi"
-msgstr ""
+msgstr "Ντέικαντι"
 
 #: app/Module/UserWelcomeModule.php:96 app/Module/WelcomeBlockModule.php:95
 msgid "Default chart"
@@ -5105,7 +5105,7 @@ msgstr "Διαγράψτε αυτό το όνομα"
 
 #: resources/views/admin/locations.phtml:174
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Διαγραφή αχρησιμοποίητων θέσεων"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
@@ -5117,7 +5117,7 @@ msgstr "Διαγράφοντας την οικογένεια θα αποσυνδ
 
 #: app/Http/RequestHandlers/GedcomLoad.php:132
 msgid "Deleting…"
-msgstr ""
+msgstr "Γίνεται διαγραφή…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:133
@@ -5126,7 +5126,7 @@ msgstr "Demokr. Republik Kongo (ehem. Zaire)"
 
 #: app/CustomTags/GedcomL.php:288
 msgid "Demographic data"
-msgstr ""
+msgstr "Δημογραφικά δεδομένα"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
@@ -5216,31 +5216,31 @@ msgstr "Ντιτρόιτ, Μίσιγκαν, Ηνωμένες Πολιτείες"
 #: app/Date/JalaliDate.php:282
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:157
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:247
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:202
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:112
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:164
@@ -5300,7 +5300,7 @@ msgstr "Πέθανε ως παιδί: εξαιρείται"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Πέθανε σε ηλικία μικρότερη του 1 έτους, δεν απαιτείται σφράγιση."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5406,7 +5406,7 @@ msgstr "Λήψη %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Κατεβάστε ένα αρχείο .ICS που περιέχει μια επέτειο"
 
 #: resources/views/media-page-details.phtml:83
 msgid "Download file"
@@ -5424,7 +5424,7 @@ msgstr "Draper, Utah, Ηνωμένες Πολιτείες"
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:303
 msgid "Duodi"
-msgstr ""
+msgstr "Ντούοντι"
 
 #: app/Http/RequestHandlers/AccountUpdate.php:93
 #: app/Http/RequestHandlers/RegisterAction.php:265
@@ -5557,7 +5557,7 @@ msgstr "Επεξεργαστείτε αυτό το άτομο και αντικ�
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Επεξεργασία με όλες τις ετικέτες GEDCOM"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:99
@@ -10349,7 +10349,7 @@ msgstr "Δεν υπάρχουν εγγραφές προς εμφάνιση"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Δεν βρέθηκαν αποτελέσματα"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48

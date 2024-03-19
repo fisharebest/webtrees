@@ -161,7 +161,7 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s B.C."
+msgstr "%s ʙᴄ"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:361 app/MediaFile.php:312
@@ -421,13 +421,13 @@ msgstr "%s × cousin"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BC"
+msgstr "%s&nbsp;ʙᴄ"
 
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "AD&nbsp;%s"
+msgstr "ᴀᴅ&nbsp;%s"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:861
@@ -3266,7 +3266,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Cannot write to the folder ‘%s’."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3866,7 +3866,7 @@ msgstr "Connection to database server"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Connection type"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -10344,7 +10344,7 @@ msgstr "No records to display"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "No results found"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
@@ -14534,7 +14534,7 @@ msgstr "The parameter “%s” is missing."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "The parameter ‘path’ is invalid."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14760,7 +14760,7 @@ msgstr "There are no facts for this individual."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "There are no individuals with the surname ‘%s’"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15145,7 +15145,7 @@ msgstr "This page allows you to bypass the usual forms, and edit the underlying 
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "This page has been deleted."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -19479,7 +19479,7 @@ msgstr "list"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "local"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19688,7 +19688,7 @@ msgstr "nephew/niece"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "network"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50

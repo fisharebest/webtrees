@@ -2765,7 +2765,7 @@ msgstr "Anaia baten jaiotza"
 #: app/Module/PlacesModule.php:220 app/Services/IndividualFactsService.php:196
 #: resources/views/admin/trees-preferences.phtml:436
 msgid "Birth of a child"
-msgstr "Seme baten jaiotza"
+msgstr "Seme-alaba baten jaiotza"
 
 #: app/Services/IndividualFactsService.php:195
 msgid "Birth of a daughter"
@@ -10344,7 +10344,7 @@ msgstr "Ez dago erregistrorik erakusteko"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Ez da emaitzik aurkitu"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
@@ -11214,7 +11214,7 @@ msgstr "Lekuen zerrenda"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:574
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Batzutan lekuen izenak luzeegiak dira gutunetan, zerrendetan, etabar... sartzeko. Moztu egiten ahal dira, izenaren lehenbiziko zatia erakutsiz bakarrik. Errate baterako, <i>herria, eskuladea</i>, edo bukaera <i>lurraldea, herrialdea</i>."
+msgstr "Batzutan lekuen izenak luzeegiak dira gutunetan, zerrendetan, etabar... sartzeko. Moztu egiten ahal dira, izenaren lehenbiziko zatia erakutsiz bakarrik. Errate baterako, <i>herria, eskualdea</i>, edo bukaera <i>lurraldea, herrialdea</i>."
 
 #: resources/views/help/place.phtml:14
 msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
@@ -19454,12 +19454,12 @@ msgstr "egun osagarriak"
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/modules/media-list/pagination.phtml:55
 msgid "last"
-msgstr "azkenera"
+msgstr "azkena"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr "azkenera"
+msgstr "azkenekora"
 
 #: app/Module/PedigreeChartModule.php:362
 #: app/Module/PedigreeChartModule.php:370
@@ -19518,17 +19518,17 @@ msgstr "ezkongabetako izena"
 #: app/Services/RelationshipService.php:568
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr "atautxi amaren aldetik"
+msgstr "atautxia (amaren aldetik)"
 
 #: app/Services/RelationshipService.php:572
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr "amautxi amaren aldetik"
+msgstr "amautxia (amaren aldetik)"
 
 #: app/Services/RelationshipService.php:574
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr "atautxi-amautxia amaren aldetik"
+msgstr "atautxi-amautxiak (amaren aldetik)"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition/MatrilinealSurnameTradition.php:39
@@ -19886,7 +19886,7 @@ msgstr "atautxi (aitaren aldetik)"
 #: app/Services/RelationshipService.php:534
 msgctxt "father’s mother"
 msgid "paternal grandmother"
-msgstr "amautxi (aitaren aldetik)"
+msgstr "amautxia (aitaren aldetik)"
 
 #: app/Services/RelationshipService.php:536
 msgctxt "father’s parent"

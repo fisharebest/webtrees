@@ -10348,7 +10348,7 @@ msgstr "Ingen poster at vise"
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Fandt ingenting"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
@@ -12672,7 +12672,7 @@ msgstr "Send påmindelse via e-mails"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:71
 msgid "Sender email"
-msgstr "Opsætning af e-mail"
+msgstr "Mailadresse"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
@@ -15081,7 +15081,7 @@ msgstr "Dette skal være mindst seks karakterer, og er versalfølsom."
 #: resources/views/admin/site-mail.phtml:63
 #: resources/views/admin/site-mail.phtml:77
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Dette navn bruges i “fra” feltet når der sendes automatisk emails fra denne server."
+msgstr "Dette bruges i “fra” feltet, når der sendes automatiske emails fra denne server."
 
 #: app/Auth.php:378 app/Auth.php:407
 msgid "This note does not exist or you do not have permission to view it."

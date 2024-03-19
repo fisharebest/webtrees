@@ -161,7 +161,7 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s B.C."
+msgstr "%s ʙᴄ"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:361 app/MediaFile.php:312
@@ -421,13 +421,13 @@ msgstr "%s × cousin"
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;BC"
+msgstr "%s&nbsp;ʙᴄ"
 
 #. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "AD&nbsp;%s"
+msgstr "ᴀᴅ&nbsp;%s"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:861
@@ -14760,7 +14760,7 @@ msgstr "There are no facts for this individual."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "There are no individuals with the surname ‘%s’"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -22691,6 +22691,10 @@ msgstr "…"
 
 #~ msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
 #~ msgstr "Themes can be selected at three levels: user, family tree and website. User settings take priority over family tree settings, which in turn take priority over the website setting. Selecting ‘default theme’ at one level will use the theme at the next level."
+
+#, php-format
+#~ msgid "There are no individuals with the surname “%s“"
+#~ msgstr "There are no individuals with the surname ‘%s’"
 
 #, php-format
 #~ msgid "There is no account with the username or email “%s”."
