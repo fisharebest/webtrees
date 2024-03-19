@@ -2684,7 +2684,7 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<\\(object\\{generation\\: int\\}&stdClass\\)\\|\\(object\\{generation\\: int\\}&stdClass\\)\\>\\.$#',
+    'message' => '#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list \\(array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\>\\) does not accept array\\<\\(object\\{generation\\: int\\}&stdClass\\)\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
