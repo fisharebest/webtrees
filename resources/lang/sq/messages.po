@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Albanian (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:15+0000\n"
+"POT-Creation-Date: 2024-03-19 13:12+0000\n"
 "PO-Revision-Date: 2021-07-01 09:22+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Albanian <https://translate.webtrees.net/projects/webtrees/webtrees/sq/>\n"
@@ -1960,7 +1960,7 @@ msgstr "Lejo vizitorët të kërkojnë llogari të reja përdoruesish"
 
 # I18N: gedcom tag _AKA
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3655,6 +3655,7 @@ msgstr ""
 
 # I18N: Type of media object
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "Çertifikata"
@@ -7134,7 +7135,7 @@ msgid "Forgot password?"
 msgstr "Keni harruar fjalëkalimin?"
 
 # I18N: gedcom tag FORM
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9952,7 +9953,7 @@ msgid "Marriages by century"
 msgstr "Martesat sipas shekullit"
 
 # I18N: gedcom tag _MARNM
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -16415,7 +16416,7 @@ msgid "Time of birth and time of death"
 msgstr ""
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr ""
 
@@ -16509,7 +16510,7 @@ msgid "Tishrei"
 msgstr "Tishrei"
 
 # I18N: gedcom tag TITL
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -18045,6 +18046,10 @@ msgstr ""
 msgid "adopted name"
 msgstr "emri i adoptuar"
 
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr "pas"
+
 # I18N: Gedcom AFT dates
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
@@ -18130,6 +18135,10 @@ msgstr ""
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr "prapa lartë"
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr "para"
 
 # I18N: Gedcom BEF dates
 #. I18N: Gedcom BEF dates
@@ -18374,6 +18383,11 @@ msgstr "lista kompakte"
 msgid "continue"
 msgstr "vazhdo"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 # I18N: A button label.
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -18558,6 +18572,11 @@ msgstr "ish-gruaja"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
 msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
@@ -20711,6 +20730,7 @@ msgstr ""
 msgid "list"
 msgstr "listat"
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -21092,6 +21112,10 @@ msgstr "numrat"
 msgid "of"
 msgstr "nga"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:354
 msgid "parent"
 msgstr "prindi"
@@ -21145,6 +21169,10 @@ msgstr "pezull"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "përqindja"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
@@ -24359,9 +24387,6 @@ msgstr "…"
 #~ msgid "adoption"
 #~ msgstr "adoptimi"
 
-#~ msgid "after"
-#~ msgstr "pas"
-
 # I18N: An access rule - allow access to the site
 #~ msgid "allow"
 #~ msgstr "lejo"
@@ -24379,9 +24404,6 @@ msgstr "…"
 # I18N: option in list box “always use this image”
 #~ msgid "always"
 #~ msgstr "gjithmonë"
-
-#~ msgid "before"
-#~ msgstr "para"
 
 #~ msgid "birth"
 #~ msgstr "lindja"

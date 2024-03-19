@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:15+0000\n"
+"POT-Creation-Date: 2024-03-19 13:12+0000\n"
 "PO-Revision-Date: 2023-10-06 21:32+0000\n"
 "Last-Translator: mrqd9 <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
@@ -1821,7 +1821,7 @@ msgid "Allow visitors to request a new user account"
 msgstr "दर्शकों को एक नए उपयोगकर्ता खाते का अनुरोध करने की अनुमति दें"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3383,6 +3383,7 @@ msgid "Century"
 msgstr "सदी"
 
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "प्रमाणपत्र"
@@ -6649,7 +6650,7 @@ msgstr "एक से अधिक वंश वृक्ष वाली वे
 msgid "Forgot password?"
 msgstr "पासवर्ड याद नहीं?"
 
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9263,7 +9264,7 @@ msgstr "शादियां"
 msgid "Marriages by century"
 msgstr "शताब्दी के दौरान विवाह"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -15326,7 +15327,7 @@ msgid "Time of birth and time of death"
 msgstr "जन्म का समय और मृत्यु का समय"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr "मृत्यु का समय"
 
@@ -15416,7 +15417,7 @@ msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr "तिशरी"
 
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -16846,6 +16847,10 @@ msgstr "जगह जोड़ें"
 msgid "adopted name"
 msgstr "दत्तक नाम"
 
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr "के बाद"
+
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
 #, php-format
@@ -16929,6 +16934,10 @@ msgstr "स्वचालित"
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr "वापस ऊपर"
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr "से पहले"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
@@ -17162,6 +17171,11 @@ msgstr "ठोस सूची"
 msgid "continue"
 msgstr "जारी"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
@@ -17338,6 +17352,11 @@ msgstr "पिछली-पत्नी"
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
 msgstr "फ़ाइल निर्यात करें"
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
+msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19462,6 +19481,7 @@ msgstr "बाएं"
 msgid "list"
 msgstr "सूची"
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -19836,6 +19856,10 @@ msgstr "संख्या"
 msgid "of"
 msgstr "के"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:354
 msgid "parent"
 msgstr "माँ/बाप"
@@ -19887,6 +19911,10 @@ msgstr "अनिर्णीत"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "प्रतिशत"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
@@ -21681,9 +21709,6 @@ msgstr "…"
 #~ msgid "adoption"
 #~ msgstr "दत्तक"
 
-#~ msgid "after"
-#~ msgstr "के बाद"
-
 #~ msgctxt "FEMALE"
 #~ msgid "also known as"
 #~ msgstr "उर्फ"
@@ -21694,9 +21719,6 @@ msgstr "…"
 
 #~ msgid "always"
 #~ msgstr "हमेशा"
-
-#~ msgid "before"
-#~ msgstr "से पहले"
 
 #~ msgid "birth"
 #~ msgstr "जन्म"

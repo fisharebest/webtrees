@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:15+0000\n"
+"POT-Creation-Date: 2024-03-19 13:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -268,7 +268,7 @@ msgid "Weight"
 msgstr ""
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr ""
 
@@ -473,7 +473,7 @@ msgid "Adopted name"
 msgstr ""
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -766,7 +766,7 @@ msgstr ""
 msgid "External link"
 msgstr ""
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -1333,7 +1333,7 @@ msgstr ""
 msgid "Phonetic place"
 msgstr ""
 
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -1503,7 +1503,13 @@ msgstr ""
 msgid "Hierarchical relationship"
 msgstr ""
 
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
+#: app/Elements/SourceMediaType.php:82
+msgid "Certificate"
+msgstr ""
+
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -3651,6 +3657,37 @@ msgstr ""
 msgid "citizen"
 msgstr ""
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:39
+#: resources/views/setup/step-4-database-mysql.phtml:58
+msgid "local"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr ""
+
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr ""
+
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
@@ -4321,11 +4358,6 @@ msgstr ""
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:81
 msgid "Card"
-msgstr ""
-
-#. I18N: Type of media object
-#: app/Elements/SourceMediaType.php:82
-msgid "Certificate"
 msgstr ""
 
 #. I18N: Type of media object
@@ -20329,10 +20361,6 @@ msgstr ""
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
-
-#: resources/views/setup/step-4-database-mysql.phtml:58
-msgid "local"
 msgstr ""
 
 #: resources/views/setup/step-4-database-mysql.phtml:73

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 10:15+0000\n"
+"POT-Creation-Date: 2024-03-19 13:12+0000\n"
 "PO-Revision-Date: 2024-03-04 12:16+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
@@ -1843,7 +1843,7 @@ msgid "Allow visitors to request a new user account"
 msgstr "Отключить регистрацию на сайте"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -3405,6 +3405,7 @@ msgid "Century"
 msgstr "Век"
 
 #. I18N: Type of media object
+#: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "Удостоверение"
@@ -6672,7 +6673,7 @@ msgstr "Для сайтов с более чем одним генеалогич
 msgid "Forgot password?"
 msgstr "Забыли пароль?"
 
-#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:56
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/Geneatique.php:62
 #: app/Gedcom.php:423 app/Gedcom.php:507 app/Gedcom.php:512 app/Gedcom.php:555
 #: app/Gedcom.php:788 resources/views/admin/gedcom-export-options.phtml:24
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
@@ -9286,7 +9287,7 @@ msgstr "Бракосочетания"
 msgid "Marriages by century"
 msgstr "Вступления в брак по столетиям"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:59
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -15355,7 +15356,7 @@ msgid "Time of birth and time of death"
 msgstr "Время рождения и время смерти"
 
 #: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:128
-#: app/CustomTags/Geneatique.php:55
+#: app/CustomTags/Geneatique.php:59
 msgid "Time of death"
 msgstr "Время смерти"
 
@@ -15445,7 +15446,7 @@ msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr "тишрей"
 
-#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:759 app/Gedcom.php:790
+#: app/CustomTags/Geneatique.php:63 app/Gedcom.php:759 app/Gedcom.php:790
 #: app/Gedcom.php:851 resources/views/admin/fix-level-0-media.phtml:38
 #: resources/views/lists/media-table.phtml:80
 #: resources/views/lists/notes-table.phtml:91
@@ -16878,6 +16879,10 @@ msgstr "добавить место"
 msgid "adopted name"
 msgstr "имя после адопции"
 
+#: app/Elements/GeneatiqueAct.php:44
+msgid "after"
+msgstr "после"
+
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
 #, php-format
@@ -16961,6 +16966,10 @@ msgstr "автоматический"
 #: resources/views/modules/faq/show.phtml:32
 msgid "back to top"
 msgstr "назад вверх"
+
+#: app/Elements/GeneatiqueAct.php:43
+msgid "before"
+msgstr "до"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
@@ -17194,6 +17203,11 @@ msgstr "компактный список"
 msgid "continue"
 msgstr "Продолжить"
 
+#: app/Elements/GeneatiqueAct.php:40
+msgctxt "NOUN"
+msgid "copy"
+msgstr ""
+
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
@@ -17370,6 +17384,11 @@ msgstr "бывшая жена"
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
 msgstr "экспорт файла"
+
+#: app/Elements/GeneatiqueAct.php:42
+msgctxt "NOUN"
+msgid "extract"
+msgstr ""
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19495,6 +19514,7 @@ msgstr "налево"
 msgid "list"
 msgstr "список"
 
+#: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
 msgstr ""
@@ -19870,6 +19890,10 @@ msgstr "числа"
 msgid "of"
 msgstr "из"
 
+#: app/Elements/GeneatiqueAct.php:38
+msgid "online"
+msgstr ""
+
 #: app/Services/RelationshipService.php:354
 msgid "parent"
 msgstr "родитель"
@@ -19921,6 +19945,10 @@ msgstr "в ожидании"
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
 msgstr "процент"
+
+#: app/Elements/GeneatiqueAct.php:41
+msgid "photocopy"
+msgstr ""
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
@@ -23154,9 +23182,6 @@ msgstr "…"
 #~ msgid "adoption"
 #~ msgstr "усыновление"
 
-#~ msgid "after"
-#~ msgstr "после"
-
 #~ msgid "allow"
 #~ msgstr "разрешить"
 
@@ -23170,9 +23195,6 @@ msgstr "…"
 
 #~ msgid "always"
 #~ msgstr "всегда"
-
-#~ msgid "before"
-#~ msgstr "до"
 
 #~ msgid "birth"
 #~ msgstr "рождение"
