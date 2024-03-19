@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\RegisterPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
@@ -38,33 +39,16 @@ use Fisharebest\Webtrees\Tree;
             <?= /* I18N: A button label. */ I18N::translate('sign in') ?>
         </button>
 
-        <button type="button" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#forgot-password" aria-expanded="false" aria-controls="forgot-password">
+        <a class="btn btn-link" href="<?= e(route(PasswordRequestPage::class, ['tree' => $tree?->name()])) ?>">
             <?= I18N::translate('Forgot password?') ?>
-        </button>
+        </a>
+
+        <?php if ($allow_register) : ?>
+            <a class="btn btn-link" href="<?= e(route(RegisterPage::class, ['tree' => $tree->name()])) ?>">
+                <?= I18N::translate('Request a new user account') ?>
+            </a>
+        <?php endif ?>
     </div>
 
     <?= csrf_field() ?>
 </form>
-
-<?php if ($allow_register) : ?>
-    <a class="btn btn-link" href="<?= e(route(RegisterPage::class, ['tree' => $tree->name()])) ?>">
-        <?= I18N::translate('Request a new user account') ?>
-    </a>
-<?php endif ?>
-
-<div class="collapse" id="forgot-password">
-    <form method="post" action="<?= e(route(PasswordRequestAction::class, ['tree' => $tree->name()])) ?>">
-        <?= I18N::translate('Request a new password') ?>
-        <div class="mb-3">
-            <label for="new_passwd_username">
-                <?= I18N::translate('Username or email address') ?>
-                <input type="text" id="new_passwd_username" name="new_passwd_username" class="form-control">
-            </label>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary">
-                <?= /* I18N: A button label. */ I18N::translate('continue') ?>
-            </button>
-        </div>
-    </form>
-</div>
