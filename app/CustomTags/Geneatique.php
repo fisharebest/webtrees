@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\Contracts\CustomTagInterface;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\DescriptiveTitle;
 use Fisharebest\Webtrees\Elements\MultimediaFormat;
 use Fisharebest\Webtrees\Elements\NamePersonal;
@@ -52,11 +53,14 @@ class Geneatique implements CustomTagInterface
     public function tags(): array
     {
         return [
+            // Values for _ACT include "al" (acte en-ligne). Are there others?
+            'FAM:*:_ACT'          => new CustomElement(I18N::translate('Certificate'), []),
+            'INDI:*:_ACT'         => new CustomElement(I18N::translate('Certificate'), []),
             'INDI:DEAT:DATE:TIME' => new TimeValue(I18N::translate('Time of death')),
-            'OBJE:FORM'           => new MultimediaFormat(I18N::translate('Format')),
-            'OBJE:TITL'           => new DescriptiveTitle(I18N::translate('Title')),
             'INDI:NAME:_AKA'      => new NamePersonal(I18N::translate('Also known as'), []),
             'INDI:NAME:_MARNM'    => new NamePersonal(I18N::translate('Married name'), []),
+            'OBJE:FORM'           => new MultimediaFormat(I18N::translate('Format')),
+            'OBJE:TITL'           => new DescriptiveTitle(I18N::translate('Title')),
 
             /*
             Pour déclarer les témoins dans les actes de naissance
