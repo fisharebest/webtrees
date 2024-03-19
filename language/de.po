@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-02-19 19:15+0000\n"
-"Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
+"PO-Revision-Date: 2024-03-20 19:37+0000\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -1533,7 +1533,7 @@ msgstr "Administrator"
 
 #: setup.php:424 setup.php:426
 msgid "Administrator account"
-msgstr "Administrator Konto"
+msgstr "Administrator-Konto"
 
 #: admin_users.php:495
 msgid "Administrator comments on user"
