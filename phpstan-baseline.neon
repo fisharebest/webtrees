@@ -446,7 +446,7 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Else branch is unreachable because previous condition is always true\\.$#"
+			message: "#^Strict comparison using \\=\\=\\= between '\\-dev' and '' will always evaluate to false\\.$#"
 			count: 1
 			path: app/Helpers/functions.php
 
@@ -3541,11 +3541,6 @@ parameters:
 			path: app/Validator.php
 
 		-
-			message: "#^Strict comparison using \\!\\=\\= between '' and '' will always evaluate to false\\.$#"
-			count: 1
-			path: app/Webtrees.php
-
-		-
-			message: "#^Ternary operator condition is always false\\.$#"
+			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
