@@ -39,7 +39,7 @@ use Fisharebest\Webtrees\Tree;
             <?= /* I18N: A button label. */ I18N::translate('sign in') ?>
         </button>
 
-        <a class="btn btn-link" href="<?= e(route(PasswordRequestPage::class, ['tree' => $tree?->name()])) ?>">
+        <a class="btn btn-link" href="<?= e(route(PasswordRequestPage::class, ['tree' => $tree->name()])) ?>">
             <?= I18N::translate('Forgot password?') ?>
         </a>
 
