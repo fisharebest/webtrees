@@ -44,7 +44,7 @@ class SharedNoteFactory extends AbstractGedcomRecordFactory implements SharedNot
      *
      * @return SharedNote|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?SharedNote
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?SharedNote
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

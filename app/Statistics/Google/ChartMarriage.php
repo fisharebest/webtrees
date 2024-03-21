@@ -86,7 +86,7 @@ class ChartMarriage
      *
      * @return string
      */
-    public function chartMarriage(string $color_from = null, string $color_to = null): string
+    public function chartMarriage(string|null $color_from = null, string|null $color_to = null): string
     {
         $color_from ??= 'ffffff';
         $color_to ??= '84beff';

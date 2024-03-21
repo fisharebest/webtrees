@@ -86,7 +86,7 @@ class ChartDeath
      *
      * @return string
      */
-    public function chartDeath(string $color_from = null, string $color_to = null): string
+    public function chartDeath(string|null $color_from = null, string|null $color_to = null): string
     {
         $color_from ??= 'ffffff';
         $color_to ??= '84beff';

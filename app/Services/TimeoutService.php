@@ -38,7 +38,7 @@ class TimeoutService
     /**
      * @param float|null $start_time
      */
-    public function __construct(float $start_time = null)
+    public function __construct(float|null $start_time = null)
     {
         $this->start_time = $start_time ?? Registry::timeFactory()->now();
     }

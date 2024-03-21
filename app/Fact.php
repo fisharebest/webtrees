@@ -313,7 +313,7 @@ class Fact
      *
      * @return bool
      */
-    public function canShow(int $access_level = null): bool
+    public function canShow(int|null $access_level = null): bool
     {
         $access_level ??= Auth::accessLevel($this->record->tree());
 

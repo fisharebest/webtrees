@@ -111,7 +111,7 @@ class ChartCommonSurname
     public function chartCommonSurnames(
         int $tot_indi,
         array $all_surnames,
-        string $color_from = null,
+        string|null $color_from = null,
         string $color_to = null
     ): string {
         $color_from ??= 'ffffff';

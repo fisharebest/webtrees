@@ -45,7 +45,7 @@ class SourceFactory extends AbstractGedcomRecordFactory implements SourceFactory
      *
      * @return Source|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Source
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Source
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

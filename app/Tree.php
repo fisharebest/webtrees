@@ -196,7 +196,7 @@ class Tree
      *
      * @return string
      */
-    public function getPreference(string $setting_name, string $default = null): string
+    public function getPreference(string $setting_name, string|null $default = null): string
     {
         if ($this->preferences === []) {
             $this->preferences = DB::table('gedcom_setting')

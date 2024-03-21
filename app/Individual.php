@@ -82,7 +82,7 @@ class Individual extends GedcomRecord
      *
      * @return bool
      */
-    public function canShowName(int $access_level = null): bool
+    public function canShowName(int|null $access_level = null): bool
     {
         $access_level ??= Auth::accessLevel($this->tree);
 
@@ -703,7 +703,7 @@ class Individual extends GedcomRecord
      *
      * @return Collection<int,Family>
      */
-    public function spouseFamilies(int $access_level = null): Collection
+    public function spouseFamilies(int|null $access_level = null): Collection
     {
         $access_level ??= Auth::accessLevel($this->tree);
 
@@ -769,7 +769,7 @@ class Individual extends GedcomRecord
      *
      * @return Collection<int,Family>
      */
-    public function childFamilies(int $access_level = null): Collection
+    public function childFamilies(int|null $access_level = null): Collection
     {
         $access_level ??= Auth::accessLevel($this->tree);
 

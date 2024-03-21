@@ -244,7 +244,7 @@ class MediaRepository implements MediaRepositoryInterface
      *
      * @return string
      */
-    public function chartMedia(string $color_from = null, string $color_to = null): string
+    public function chartMedia(string|null $color_from = null, string|null $color_to = null): string
     {
         $media = DB::table('media_file')
             ->where('m_file', '=', $this->tree->id())

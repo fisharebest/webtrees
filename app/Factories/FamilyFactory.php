@@ -45,7 +45,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
      *
      * @return Family|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Family
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Family
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

@@ -378,7 +378,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      *
      * @return string
      */
-    private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family $parents = null): string
+    private function getDescendantsHtml(Tree $tree, array $individuals, array $ancestors, string $surname, bool $soundex_dm, bool $soundex_std, Individual $individual, Family|null $parents = null): string
     {
         $module = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())->first(static function (ModuleInterface $module) {
             return $module instanceof RelationshipsChartModule;

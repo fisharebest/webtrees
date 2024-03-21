@@ -85,7 +85,7 @@ class LinkedRecordService
      *
      * @return Collection<int,Family>
      */
-    public function linkedFamilies(GedcomRecord $record, string $link_type = null): Collection
+    public function linkedFamilies(GedcomRecord $record, string|null $link_type = null): Collection
     {
         $query = DB::table('families')
             ->join('link', static function (JoinClause $join): void {
@@ -116,7 +116,7 @@ class LinkedRecordService
      *
      * @return Collection<int,Individual>
      */
-    public function linkedIndividuals(GedcomRecord $record, string $link_type = null): Collection
+    public function linkedIndividuals(GedcomRecord $record, string|null $link_type = null): Collection
     {
         $query = DB::table('individuals')
             ->join('link', static function (JoinClause $join): void {

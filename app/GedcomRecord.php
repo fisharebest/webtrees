@@ -243,7 +243,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function canShow(int $access_level = null): bool
+    public function canShow(int|null $access_level = null): bool
     {
         $access_level ??= Auth::accessLevel($this->tree);
 
@@ -267,7 +267,7 @@ class GedcomRecord
      *
      * @return bool
      */
-    public function canShowName(int $access_level = null): bool
+    public function canShowName(int|null $access_level = null): bool
     {
         return $this->canShow($access_level);
     }
@@ -429,7 +429,7 @@ class GedcomRecord
      *
      * @return void
      */
-    public function setPrimaryName(int $n = null): void
+    public function setPrimaryName(int|null $n = null): void
     {
         $this->getPrimaryName   = $n;
         $this->getSecondaryName = null;
@@ -608,7 +608,7 @@ class GedcomRecord
     public function facts(
         array $filter = [],
         bool $sort = false,
-        int $access_level = null,
+        int|null $access_level = null,
         bool $ignore_deleted = false
     ): Collection {
         $access_level ??= Auth::accessLevel($this->tree);

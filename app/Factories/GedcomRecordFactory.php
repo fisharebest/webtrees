@@ -52,7 +52,7 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
      *
      * @return GedcomRecord|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?GedcomRecord
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?GedcomRecord
     {
         // We know the type of the record.  Return it directly.
         if ($gedcom !== null && preg_match('/^0(?: @[^@]+@)? ([A-Z_]+)/', $gedcom, $match)) {

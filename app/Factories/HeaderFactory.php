@@ -44,7 +44,7 @@ class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactory
      *
      * @return Header|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Header
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Header
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

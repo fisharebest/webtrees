@@ -30,7 +30,7 @@ class HttpGoneException extends HttpException
     /**
      * @param string|null $message
      */
-    public function __construct(string $message = null)
+    public function __construct(string|null $message = null)
     {
         $message ??= I18N::translate('This page has been deleted.');
 

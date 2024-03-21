@@ -78,7 +78,7 @@ abstract class AbstractElement implements ElementInterface
      * @param string             $label
      * @param array<string>|null $subtags
      */
-    public function __construct(string $label, array $subtags = null)
+    public function __construct(string $label, array|null $subtags = null)
     {
         $this->label   = $label;
         $this->subtags = $subtags ?? static::SUBTAGS;

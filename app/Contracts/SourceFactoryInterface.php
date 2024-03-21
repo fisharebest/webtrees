@@ -37,7 +37,7 @@ interface SourceFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Source|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Source;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Source;
 
     /**
      * Create a source from a row in the database.

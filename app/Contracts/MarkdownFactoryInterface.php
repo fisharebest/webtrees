@@ -32,7 +32,7 @@ interface MarkdownFactoryInterface
      *
      * @return string
      */
-    public function autolink(string $markdown, Tree $tree = null): string;
+    public function autolink(string $markdown, Tree|null $tree = null): string;
 
     /**
      * @param string    $markdown
@@ -40,5 +40,5 @@ interface MarkdownFactoryInterface
      *
      * @return string
      */
-    public function markdown(string $markdown, Tree $tree = null): string;
+    public function markdown(string $markdown, Tree|null $tree = null): string;
 }

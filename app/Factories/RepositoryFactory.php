@@ -45,7 +45,7 @@ class RepositoryFactory extends AbstractGedcomRecordFactory implements Repositor
      *
      * @return Repository|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Repository
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Repository
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

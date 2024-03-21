@@ -78,8 +78,8 @@ class ChartFamilyLargest
      * @return string
      */
     public function chartLargestFamilies(
-        string $color_from = null,
-        string $color_to = null,
+        string|null $color_from = null,
+        string|null $color_to = null,
         int $total = 10
     ): string {
         $color_from ??= 'ffffff';

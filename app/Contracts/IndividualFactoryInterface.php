@@ -37,7 +37,7 @@ interface IndividualFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Individual|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Individual;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Individual;
 
     /**
      * Create an individual from a row in the database.

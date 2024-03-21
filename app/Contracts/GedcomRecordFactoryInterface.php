@@ -37,7 +37,7 @@ interface GedcomRecordFactoryInterface
      *
      * @return GedcomRecord|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?GedcomRecord;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?GedcomRecord;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.

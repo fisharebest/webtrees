@@ -347,7 +347,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
      *
      * @return Expression
      */
-    private function binaryColumn(string $column, string $alias = null): Expression
+    private function binaryColumn(string $column, string|null $alias = null): Expression
     {
         if (DB::connection()->getDriverName() === 'mysql') {
             $sql = 'CAST(' . $column . ' AS binary)';

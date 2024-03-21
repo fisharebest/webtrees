@@ -247,7 +247,7 @@ class Validator
      *
      * @return bool
      */
-    public function boolean(string $parameter, bool $default = null): bool
+    public function boolean(string $parameter, bool|null $default = null): bool
     {
         $value = $this->parameters[$parameter] ?? null;
 
@@ -290,7 +290,7 @@ class Validator
      *
      * @return float
      */
-    public function float(string $parameter, float $default = null): float
+    public function float(string $parameter, float|null $default = null): float
     {
         $value = $this->parameters[$parameter] ?? null;
 
@@ -317,7 +317,7 @@ class Validator
      *
      * @return int
      */
-    public function integer(string $parameter, int $default = null): int
+    public function integer(string $parameter, int|null $default = null): int
     {
         $value = $this->parameters[$parameter] ?? null;
 
@@ -366,7 +366,7 @@ class Validator
      *
      * @return string
      */
-    public function string(string $parameter, string $default = null): string
+    public function string(string $parameter, string|null $default = null): string
     {
         $value = $this->parameters[$parameter] ?? null;
 

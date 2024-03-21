@@ -37,7 +37,7 @@ interface FamilyFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Family|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Family;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Family;
 
     /**
      * Create a Family object from a row in the database.

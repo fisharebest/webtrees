@@ -50,7 +50,7 @@ class Cache
      *
      * @return T
      */
-    public function remember(string $key, Closure $closure, int $ttl = null)
+    public function remember(string $key, Closure $closure, int|null $ttl = null)
     {
         return $this->cache->get(md5($key), static function (ItemInterface $item) use ($closure, $ttl) {
             $item->expiresAfter($ttl);

@@ -44,7 +44,7 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
      *
      * @return Note|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Note
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Note
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

@@ -107,7 +107,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function husband(int $access_level = null): ?Individual
+    public function husband(int|null $access_level = null): ?Individual
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
             $access_level = Auth::PRIV_HIDE;
@@ -127,7 +127,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function wife(int $access_level = null): ?Individual
+    public function wife(int|null $access_level = null): ?Individual
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
             $access_level = Auth::PRIV_HIDE;
@@ -168,7 +168,7 @@ class Family extends GedcomRecord
      *
      * @return bool
      */
-    public function canShowName(int $access_level = null): bool
+    public function canShowName(int|null $access_level = null): bool
     {
         // We can always see the name (Husband-name + Wife-name), however,
         // the name will often be "private + private"
@@ -183,7 +183,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function spouse(Individual $person, int $access_level = null): ?Individual
+    public function spouse(Individual $person, int|null $access_level = null): ?Individual
     {
         if ($person === $this->wife) {
             return $this->husband($access_level);
@@ -199,7 +199,7 @@ class Family extends GedcomRecord
      *
      * @return Collection<int,Individual>
      */
-    public function spouses(int $access_level = null): Collection
+    public function spouses(int|null $access_level = null): Collection
     {
         $spouses = new Collection([
             $this->husband($access_level),
@@ -216,7 +216,7 @@ class Family extends GedcomRecord
      *
      * @return Collection<int,Individual>
      */
-    public function children(int $access_level = null): Collection
+    public function children(int|null $access_level = null): Collection
     {
         $access_level ??= Auth::accessLevel($this->tree);
 

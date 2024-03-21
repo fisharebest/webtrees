@@ -37,7 +37,7 @@ interface MediaFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Media|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Media;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Media;
 
     /**
      * Create a media object from a row in the database.
