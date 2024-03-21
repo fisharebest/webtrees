@@ -58,7 +58,7 @@ class Log
      *
      * @return void
      */
-    private static function addLog(string $message, string $log_type, Tree $tree = null): void
+    private static function addLog(string $message, string $log_type, ?Tree $tree = null): void
     {
         if (app()->has(ServerRequestInterface::class)) {
             $request = app(ServerRequestInterface::class);
@@ -86,7 +86,7 @@ class Log
      *
      * @return void
      */
-    public static function addConfigurationLog(string $message, Tree $tree = null): void
+    public static function addConfigurationLog(string $message, ?Tree $tree = null): void
     {
         self::addLog($message, self::TYPE_CONFIGURATION, $tree);
     }

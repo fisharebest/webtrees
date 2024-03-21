@@ -52,7 +52,7 @@ interface LatestUserRepositoryInterface
      *
      * @return string
      */
-    public function latestUserRegDate(string $format = null): string;
+    public function latestUserRegDate(?string $format = null): string;
 
     /**
      * Find the timestamp of the latest user to register.
@@ -61,7 +61,7 @@ interface LatestUserRepositoryInterface
      *
      * @return string
      */
-    public function latestUserRegTime(string $format = null): string;
+    public function latestUserRegTime(?string $format = null): string;
 
     /**
      * Is the most recently registered user logged in right now?
@@ -71,5 +71,5 @@ interface LatestUserRepositoryInterface
      *
      * @return string
      */
-    public function latestUserLoggedin(string $yes = null, string $no = null): string;
+    public function latestUserLoggedin(?string $yes = null, ?string $no = null): string;
 }

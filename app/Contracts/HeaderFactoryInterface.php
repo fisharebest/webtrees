@@ -37,7 +37,7 @@ interface HeaderFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Header|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Header;
+    public function make(string $xref, Tree $tree, ?string $gedcom = null): ?Header;
 
     /**
      * Create a header from a row in the database.

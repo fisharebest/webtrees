@@ -149,7 +149,7 @@ class TreeView
      *
      * @return string
      */
-    private function getPersonDetails(Individual $individual, Family $family = null): string
+    private function getPersonDetails(Individual $individual, ?Family $family = null): string
     {
         $chart_url = route('module', [
             'module' => 'tree',

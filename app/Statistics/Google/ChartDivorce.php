@@ -86,7 +86,7 @@ class ChartDivorce
      *
      * @return string
      */
-    public function chartDivorce(string $color_from = null, string $color_to = null): string
+    public function chartDivorce(?string $color_from = null, ?string $color_to = null): string
     {
         $color_from ??= 'ffffff';
         $color_to ??= '84beff';

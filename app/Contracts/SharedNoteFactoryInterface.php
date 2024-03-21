@@ -37,7 +37,7 @@ interface SharedNoteFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return SharedNote|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?SharedNote;
+    public function make(string $xref, Tree $tree, ?string $gedcom = null): ?SharedNote;
 
     /**
      * Create a note from a row in the database.

@@ -98,7 +98,7 @@ class Date
      *
      * @return string
      */
-    public function display(Tree $tree = null, string $date_format = null, bool $convert_calendars = false): string
+    public function display(?Tree $tree = null, ?string $date_format = null, bool $convert_calendars = false): string
     {
         if ($tree instanceof Tree) {
             $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');

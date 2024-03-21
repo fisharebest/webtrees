@@ -110,7 +110,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      *
      * @return string
      */
-    public function latestUserRegDate(string $format = null): string
+    public function latestUserRegDate(?string $format = null): string
     {
         $format ??= I18N::dateFormat();
         $user      = $this->latestUserQuery();
@@ -124,7 +124,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      *
      * @return string
      */
-    public function latestUserRegTime(string $format = null): string
+    public function latestUserRegTime(?string $format = null): string
     {
         $format ??= str_replace('%', '', I18N::timeFormat());
         $user = $this->latestUserQuery();
@@ -138,7 +138,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
      *
      * @return string
      */
-    public function latestUserLoggedin(string $yes = null, string $no = null): string
+    public function latestUserLoggedin(?string $yes = null, ?string $no = null): string
     {
         $yes ??= I18N::translate('yes');
         $no ??= I18N::translate('no');

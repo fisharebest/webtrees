@@ -30,7 +30,7 @@ interface TimestampFactoryInterface
      *
      * @return TimestampInterface
      */
-    public function make(int $timestamp, UserInterface $user = null): TimestampInterface;
+    public function make(int $timestamp, ?UserInterface $user = null): TimestampInterface;
 
     /**
      * @param string|null        $string YYYY-MM-DD HH:MM:SS (as provided by SQL).
@@ -39,12 +39,12 @@ interface TimestampFactoryInterface
      *
      * @return TimestampInterface
      */
-    public function fromString(?string $string, string $format = 'Y-m-d H:i:s', UserInterface $user = null): TimestampInterface;
+    public function fromString(?string $string, string $format = 'Y-m-d H:i:s', ?UserInterface $user = null): TimestampInterface;
 
     /**
      * @param UserInterface|null $user
      *
      * @return TimestampInterface
      */
-    public function now(UserInterface $user = null): TimestampInterface;
+    public function now(?UserInterface $user = null): TimestampInterface;
 }

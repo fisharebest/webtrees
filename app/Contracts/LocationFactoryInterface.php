@@ -37,7 +37,7 @@ interface LocationFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Location|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Location;
+    public function make(string $xref, Tree $tree, ?string $gedcom = null): ?Location;
 
     /**
      * Create a Location from a row in the database.

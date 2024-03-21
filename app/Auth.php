@@ -56,7 +56,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isAdmin(UserInterface $user = null): bool
+    public static function isAdmin(?UserInterface $user = null): bool
     {
         $user ??= self::user();
 
@@ -71,7 +71,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isManager(Tree $tree, UserInterface $user = null): bool
+    public static function isManager(Tree $tree, ?UserInterface $user = null): bool
     {
         $user ??= self::user();
 
@@ -86,7 +86,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isModerator(Tree $tree, UserInterface $user = null): bool
+    public static function isModerator(Tree $tree, ?UserInterface $user = null): bool
     {
         $user ??= self::user();
 
@@ -103,7 +103,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isEditor(Tree $tree, UserInterface $user = null): bool
+    public static function isEditor(Tree $tree, ?UserInterface $user = null): bool
     {
         $user ??= self::user();
 
@@ -120,7 +120,7 @@ class Auth
      *
      * @return bool
      */
-    public static function isMember(Tree $tree, UserInterface $user = null): bool
+    public static function isMember(Tree $tree, ?UserInterface $user = null): bool
     {
         $user ??= self::user();
 
@@ -137,7 +137,7 @@ class Auth
      *
      * @return int
      */
-    public static function accessLevel(Tree $tree, UserInterface $user = null): int
+    public static function accessLevel(Tree $tree, ?UserInterface $user = null): int
     {
         $user ??= self::user();
 

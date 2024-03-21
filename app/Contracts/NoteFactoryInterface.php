@@ -37,7 +37,7 @@ interface NoteFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Note|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Note;
+    public function make(string $xref, Tree $tree, ?string $gedcom = null): ?Note;
 
     /**
      * Create a note from a row in the database.

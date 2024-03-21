@@ -113,7 +113,7 @@ class Registry
      *
      * @return CacheFactoryInterface
      */
-    public static function cache(CacheFactoryInterface $factory = null): CacheFactoryInterface
+    public static function cache(?CacheFactoryInterface $factory = null): CacheFactoryInterface
     {
         if ($factory instanceof CacheFactoryInterface) {
             self::$cache_factory = $factory;
@@ -129,7 +129,7 @@ class Registry
      *
      * @return CalendarDateFactoryInterface
      */
-    public static function calendarDateFactory(CalendarDateFactoryInterface $factory = null): CalendarDateFactoryInterface
+    public static function calendarDateFactory(?CalendarDateFactoryInterface $factory = null): CalendarDateFactoryInterface
     {
         if ($factory instanceof CalendarDateFactoryInterface) {
             self::$calendar_date_factory = $factory;
@@ -145,7 +145,7 @@ class Registry
      *
      * @return ElementFactoryInterface
      */
-    public static function elementFactory(ElementFactoryInterface $factory = null): ElementFactoryInterface
+    public static function elementFactory(?ElementFactoryInterface $factory = null): ElementFactoryInterface
     {
         if ($factory instanceof ElementFactoryInterface) {
             self::$element_factory = $factory;
@@ -161,7 +161,7 @@ class Registry
      *
      * @return EncodingFactoryInterface
      */
-    public static function encodingFactory(EncodingFactoryInterface $factory = null): EncodingFactoryInterface
+    public static function encodingFactory(?EncodingFactoryInterface $factory = null): EncodingFactoryInterface
     {
         if ($factory instanceof EncodingFactoryInterface) {
             self::$encoding_factory = $factory;
@@ -177,7 +177,7 @@ class Registry
      *
      * @return FamilyFactoryInterface
      */
-    public static function familyFactory(FamilyFactoryInterface $factory = null): FamilyFactoryInterface
+    public static function familyFactory(?FamilyFactoryInterface $factory = null): FamilyFactoryInterface
     {
         if ($factory instanceof FamilyFactoryInterface) {
             self::$family_factory = $factory;
@@ -193,7 +193,7 @@ class Registry
      *
      * @return FilesystemFactoryInterface
      */
-    public static function filesystem(FilesystemFactoryInterface $factory = null): FilesystemFactoryInterface
+    public static function filesystem(?FilesystemFactoryInterface $factory = null): FilesystemFactoryInterface
     {
         if ($factory instanceof FilesystemFactoryInterface) {
             self::$filesystem_factory = $factory;
@@ -209,7 +209,7 @@ class Registry
      *
      * @return GedcomRecordFactoryInterface
      */
-    public static function gedcomRecordFactory(GedcomRecordFactoryInterface $factory = null): GedcomRecordFactoryInterface
+    public static function gedcomRecordFactory(?GedcomRecordFactoryInterface $factory = null): GedcomRecordFactoryInterface
     {
         if ($factory instanceof GedcomRecordFactoryInterface) {
             self::$gedcom_record_factory = $factory;
@@ -225,7 +225,7 @@ class Registry
      *
      * @return HeaderFactoryInterface
      */
-    public static function headerFactory(HeaderFactoryInterface $factory = null): HeaderFactoryInterface
+    public static function headerFactory(?HeaderFactoryInterface $factory = null): HeaderFactoryInterface
     {
         if ($factory instanceof HeaderFactoryInterface) {
             self::$header_factory = $factory;
@@ -241,7 +241,7 @@ class Registry
      *
      * @return IdFactoryInterface
      */
-    public static function idFactory(IdFactoryInterface $factory = null): IdFactoryInterface
+    public static function idFactory(?IdFactoryInterface $factory = null): IdFactoryInterface
     {
         if ($factory instanceof IdFactoryInterface) {
             self::$id_factory = $factory;
@@ -257,7 +257,7 @@ class Registry
      *
      * @return ImageFactoryInterface
      */
-    public static function imageFactory(ImageFactoryInterface $factory = null): ImageFactoryInterface
+    public static function imageFactory(?ImageFactoryInterface $factory = null): ImageFactoryInterface
     {
         if ($factory instanceof ImageFactoryInterface) {
             self::$image_factory = $factory;
@@ -273,7 +273,7 @@ class Registry
      *
      * @return IndividualFactoryInterface
      */
-    public static function individualFactory(IndividualFactoryInterface $factory = null): IndividualFactoryInterface
+    public static function individualFactory(?IndividualFactoryInterface $factory = null): IndividualFactoryInterface
     {
         if ($factory instanceof IndividualFactoryInterface) {
             self::$individual_factory = $factory;
@@ -289,7 +289,7 @@ class Registry
      *
      * @return LocationFactoryInterface
      */
-    public static function locationFactory(LocationFactoryInterface $factory = null): LocationFactoryInterface
+    public static function locationFactory(?LocationFactoryInterface $factory = null): LocationFactoryInterface
     {
         if ($factory instanceof LocationFactoryInterface) {
             self::$location_factory = $factory;
@@ -305,7 +305,7 @@ class Registry
      *
      * @return MarkdownFactoryInterface
      */
-    public static function markdownFactory(MarkdownFactoryInterface $factory = null): MarkdownFactoryInterface
+    public static function markdownFactory(?MarkdownFactoryInterface $factory = null): MarkdownFactoryInterface
     {
         if ($factory instanceof MarkdownFactoryInterface) {
             self::$markdown_factory = $factory;
@@ -321,7 +321,7 @@ class Registry
      *
      * @return MediaFactoryInterface
      */
-    public static function mediaFactory(MediaFactoryInterface $factory = null): MediaFactoryInterface
+    public static function mediaFactory(?MediaFactoryInterface $factory = null): MediaFactoryInterface
     {
         if ($factory instanceof MediaFactoryInterface) {
             self::$media_factory = $factory;
@@ -337,7 +337,7 @@ class Registry
      *
      * @return NoteFactoryInterface
      */
-    public static function noteFactory(NoteFactoryInterface $factory = null): NoteFactoryInterface
+    public static function noteFactory(?NoteFactoryInterface $factory = null): NoteFactoryInterface
     {
         if ($factory instanceof NoteFactoryInterface) {
             self::$note_factory = $factory;
@@ -353,7 +353,7 @@ class Registry
      *
      * @return RepositoryFactoryInterface
      */
-    public static function repositoryFactory(RepositoryFactoryInterface $factory = null): RepositoryFactoryInterface
+    public static function repositoryFactory(?RepositoryFactoryInterface $factory = null): RepositoryFactoryInterface
     {
         if ($factory instanceof RepositoryFactoryInterface) {
             self::$repository_factory = $factory;
@@ -369,7 +369,7 @@ class Registry
      *
      * @return ResponseFactoryInterface
      */
-    public static function responseFactory(ResponseFactoryInterface $factory = null): ResponseFactoryInterface
+    public static function responseFactory(?ResponseFactoryInterface $factory = null): ResponseFactoryInterface
     {
         if ($factory instanceof ResponseFactoryInterface) {
             self::$response_factory = $factory;
@@ -385,7 +385,7 @@ class Registry
      *
      * @return RouteFactoryInterface
      */
-    public static function routeFactory(RouteFactoryInterface $factory = null): RouteFactoryInterface
+    public static function routeFactory(?RouteFactoryInterface $factory = null): RouteFactoryInterface
     {
         if ($factory instanceof RouteFactoryInterface) {
             self::$route_factory = $factory;
@@ -401,7 +401,7 @@ class Registry
      *
      * @return SharedNoteFactoryInterface
      */
-    public static function sharedNoteFactory(SharedNoteFactoryInterface $factory = null): SharedNoteFactoryInterface
+    public static function sharedNoteFactory(?SharedNoteFactoryInterface $factory = null): SharedNoteFactoryInterface
     {
         if ($factory instanceof SharedNoteFactoryInterface) {
             self::$shared_note_factory = $factory;
@@ -417,7 +417,7 @@ class Registry
      *
      * @return SlugFactoryInterface
      */
-    public static function slugFactory(SlugFactoryInterface $factory = null): SlugFactoryInterface
+    public static function slugFactory(?SlugFactoryInterface $factory = null): SlugFactoryInterface
     {
         if ($factory instanceof SlugFactoryInterface) {
             self::$slug_factory = $factory;
@@ -433,7 +433,7 @@ class Registry
      *
      * @return SourceFactoryInterface
      */
-    public static function sourceFactory(SourceFactoryInterface $factory = null): SourceFactoryInterface
+    public static function sourceFactory(?SourceFactoryInterface $factory = null): SourceFactoryInterface
     {
         if ($factory instanceof SourceFactoryInterface) {
             self::$source_factory = $factory;
@@ -449,7 +449,7 @@ class Registry
      *
      * @return SubmissionFactoryInterface
      */
-    public static function submissionFactory(SubmissionFactoryInterface $factory = null): SubmissionFactoryInterface
+    public static function submissionFactory(?SubmissionFactoryInterface $factory = null): SubmissionFactoryInterface
     {
         if ($factory instanceof SubmissionFactoryInterface) {
             self::$submission_factory = $factory;
@@ -465,7 +465,7 @@ class Registry
      *
      * @return SubmitterFactoryInterface
      */
-    public static function submitterFactory(SubmitterFactoryInterface $factory = null): SubmitterFactoryInterface
+    public static function submitterFactory(?SubmitterFactoryInterface $factory = null): SubmitterFactoryInterface
     {
         if ($factory instanceof SubmitterFactoryInterface) {
             self::$submitter_factory = $factory;
@@ -481,7 +481,7 @@ class Registry
      *
      * @return SurnameTraditionFactoryInterface
      */
-    public static function surnameTraditionFactory(SurnameTraditionFactoryInterface $factory = null): SurnameTraditionFactoryInterface
+    public static function surnameTraditionFactory(?SurnameTraditionFactoryInterface $factory = null): SurnameTraditionFactoryInterface
     {
         if ($factory instanceof SurnameTraditionFactoryInterface) {
             self::$surname_tradition_factory = $factory;
@@ -497,7 +497,7 @@ class Registry
      *
      * @return TimeFactoryInterface
      */
-    public static function timeFactory(TimeFactoryInterface $factory = null): TimeFactoryInterface
+    public static function timeFactory(?TimeFactoryInterface $factory = null): TimeFactoryInterface
     {
         if ($factory instanceof TimeFactoryInterface) {
             self::$time_factory = $factory;
@@ -513,7 +513,7 @@ class Registry
      *
      * @return TimestampFactoryInterface
      */
-    public static function timestampFactory(TimestampFactoryInterface $factory = null): TimestampFactoryInterface
+    public static function timestampFactory(?TimestampFactoryInterface $factory = null): TimestampFactoryInterface
     {
         if ($factory instanceof TimestampFactoryInterface) {
             self::$timestamp_factory = $factory;
@@ -529,7 +529,7 @@ class Registry
      *
      * @return XrefFactoryInterface
      */
-    public static function xrefFactory(XrefFactoryInterface $factory = null): XrefFactoryInterface
+    public static function xrefFactory(?XrefFactoryInterface $factory = null): XrefFactoryInterface
     {
         if ($factory instanceof XrefFactoryInterface) {
             self::$xref_factory = $factory;

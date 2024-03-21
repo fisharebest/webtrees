@@ -34,7 +34,7 @@ use Psr\Http\Message\ServerRequestInterface;
  *
  * @return mixed
  */
-function app(string $abstract = null)
+function app(?string $abstract = null)
 {
     if ($abstract === null) {
         return Webtrees::container();

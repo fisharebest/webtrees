@@ -324,7 +324,7 @@ class RelationshipService
      *
      * @deprecated This code was originally Functions::getRelationshipNameFromPath
      */
-    public function legacyNameAlgorithm(string $path, Individual $person1 = null, Individual $person2 = null): string
+    public function legacyNameAlgorithm(string $path, ?Individual $person1 = null, ?Individual $person2 = null): string
     {
         // The path does not include the starting person. In some languages, the
         // translation for a man’s (relative) is different from a woman’s (relative),

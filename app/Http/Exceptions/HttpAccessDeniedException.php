@@ -30,7 +30,7 @@ class HttpAccessDeniedException extends HttpException
     /**
      * @param string|null $message
      */
-    public function __construct(string $message = null)
+    public function __construct(?string $message = null)
     {
         $message ??= I18N::translate('You do not have permission to view this page.');
 

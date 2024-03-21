@@ -44,7 +44,7 @@ class SubmitterFactory extends AbstractGedcomRecordFactory implements SubmitterF
      *
      * @return Submitter|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Submitter
+    public function make(string $xref, Tree $tree, ?string $gedcom = null): ?Submitter
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

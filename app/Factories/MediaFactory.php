@@ -44,7 +44,7 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
      *
      * @return Media|null
      */
-    public function make(string $xref, Tree $tree, string $gedcom = null): ?Media
+    public function make(string $xref, Tree $tree, ?string $gedcom = null): ?Media
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);

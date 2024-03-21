@@ -727,7 +727,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function statsBirth(string $color_from = null, string $color_to = null): string
+    public function statsBirth(?string $color_from = null, ?string $color_to = null): string
     {
         return (new ChartBirth($this->century_service, $this->color_service, $this->tree))
             ->chartBirth($color_from, $color_to);
@@ -785,7 +785,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function statsDeath(string $color_from = null, string $color_to = null): string
+    public function statsDeath(?string $color_from = null, ?string $color_to = null): string
     {
         return (new ChartDeath($this->century_service, $this->color_service, $this->tree))
             ->chartDeath($color_from, $color_to);
@@ -1820,8 +1820,8 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     public function chartCommonGiven(
-        string $color_from = null,
-        string $color_to = null,
+        ?string $color_from = null,
+        ?string $color_to = null,
         int $maxtoshow = 7
     ): string {
         $tot_indi = $this->totalIndividualsQuery();
@@ -1845,8 +1845,8 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     public function chartCommonSurnames(
-        string $color_from = null,
-        string $color_to = null,
+        ?string $color_from = null,
+        ?string $color_to = null,
         int $number_of_surnames = 10
     ): string {
         $tot_indi     = $this->totalIndividualsQuery();
@@ -1871,7 +1871,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function chartMortality(string $color_living = null, string $color_dead = null): string
+    public function chartMortality(?string $color_living = null, ?string $color_dead = null): string
     {
         $tot_l = $this->totalLivingQuery();
         $tot_d = $this->totalDeceasedQuery();
@@ -1889,7 +1889,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     public function chartIndisWithSources(
-        string $color_from = null,
+        ?string $color_from = null,
         string $color_to = null
     ): string {
         $tot_indi        = $this->totalIndividualsQuery();
@@ -1908,7 +1908,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     public function chartFamsWithSources(
-        string $color_from = null,
+        ?string $color_from = null,
         string $color_to = null
     ): string {
         $tot_fam        = $this->totalFamiliesQuery();
@@ -1926,8 +1926,8 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @return string
      */
     public function chartSex(
-        string $color_female = null,
-        string $color_male = null,
+        ?string $color_female = null,
+        ?string $color_male = null,
         string $color_unknown = null
     ): string {
         $tot_m = $this->totalSexMalesQuery();

@@ -43,7 +43,7 @@ class TimestampFactory implements TimestampFactoryInterface
      *
      * @return TimestampInterface
      */
-    public function make(int $timestamp, UserInterface $user = null): TimestampInterface
+    public function make(int $timestamp, ?UserInterface $user = null): TimestampInterface
     {
         $user     ??= Auth::user();
         $timezone = $user->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
@@ -59,7 +59,7 @@ class TimestampFactory implements TimestampFactoryInterface
      *
      * @return TimestampInterface
      */
-    public function fromString(?string $string, string $format = 'Y-m-d H:i:s', UserInterface $user = null): TimestampInterface
+    public function fromString(?string $string, string $format = 'Y-m-d H:i:s', ?UserInterface $user = null): TimestampInterface
     {
         $string    ??= date($format);
         $timestamp = date_create_from_format($format, $string);
@@ -76,7 +76,7 @@ class TimestampFactory implements TimestampFactoryInterface
      *
      * @return TimestampInterface
      */
-    public function now(UserInterface $user = null): TimestampInterface
+    public function now(?UserInterface $user = null): TimestampInterface
     {
         return $this->make(time(), $user);
     }
