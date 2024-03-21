@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-03-17 13:37+0000\n"
+"PO-Revision-Date: 2024-03-22 10:37+0000\n"
 "Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -59,12 +59,12 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:70
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:271
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "%1$s KB %2$s வினாடிகளில் பதிவிறக்கம் செய்யப்பட்டது."
 
 #: app/Http/RequestHandlers/UserEditAction.php:99
 #, php-format
@@ -95,8 +95,8 @@ msgstr ""
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s கோப்பு %2$s வினாடிகளில் பிரித்தெடுக்கப்பட்டது."
+msgstr[1] "%1$s கோப்புகள் %2$s வினாடிகளில் பிரித்தெடுக்கப்பட்டது."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/RequestHandlers/CheckTree.php:247
@@ -108,27 +108,27 @@ msgstr ""
 #: app/Functions/Functions.php:577
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:555
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:532
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/RequestHandlers/ManageMediaData.php:322 app/MediaFile.php:333
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s பிக்சல்கள்"
 
 #. I18N: e.g. "Occupation: farmer"
 #: app/Elements/AbstractElement.php:212
@@ -138,13 +138,13 @@ msgstr ""
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:558 app/Module/StatisticsChartModule.php:861
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #: app/Functions/Functions.php:2396
 #, php-format
@@ -159,19 +159,19 @@ msgstr ""
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:258
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:312 app/MediaFile.php:320
 #: app/Services/MediaFileService.php:89
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #: app/Module/ClippingsCartModule.php:605
 #, php-format
@@ -184,9 +184,9 @@ msgid "%s and his ancestors"
 msgstr "%s மற்றும் அவரது முன்னோர்கள்"
 
 #: app/Module/ClippingsCartModule.php:939
-#, php-format
+#, fuzzy, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s மற்றும் அதைக் குறிக்கும் தனிநபர்கள்."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:503
@@ -240,15 +240,15 @@ msgstr[1] ""
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s குடும்பம் புதுப்பிக்கப்பட்டது."
+msgstr[1] "%s குடும்பங்கள் புதுப்பிக்கப்பட்டன."
 
 #: resources/views/admin/locations.phtml:109
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s குடும்ப மரம்"
+msgstr[1] "%s குடும்ப மரங்கள்"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -20664,7 +20664,7 @@ msgstr ""
 #: app/Functions/Functions.php:814
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr ""
+msgstr "மாற்றாந்தாய்"
 
 #: app/Functions/Functions.php:870
 msgctxt "parent’s spouse"
@@ -20735,12 +20735,12 @@ msgstr ""
 
 #: app/Functions/Functions.php:485
 msgid "tenth cousin"
-msgstr ""
+msgstr "பத்தாவது உறவினர்"
 
 #: app/Functions/Functions.php:449
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "பத்தாவது உறவினர்"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:406
@@ -20781,7 +20781,7 @@ msgstr ""
 #, php-format
 msgctxt "MALE"
 msgid "third %s"
-msgstr ""
+msgstr "மூன்றாவது %s"
 
 #: app/Functions/Functions.php:471
 msgid "third cousin"
@@ -20859,7 +20859,7 @@ msgstr ""
 #: app/Functions/Functions.php:796
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr ""
+msgstr "பெரியப்பா/சித்தப்பா"
 
 #: app/Functions/Functions.php:1094
 msgctxt "father’s sister’s husband"
@@ -20934,7 +20934,7 @@ msgstr ""
 #: resources/views/report-setup-page.phtml:87
 #: resources/views/report-setup-page.phtml:92
 msgid "view"
-msgstr ""
+msgstr "பார்வையீடு"
 
 #: resources/views/admin/trees-privacy.phtml:36
 #: resources/views/admin/trees-privacy.phtml:55
@@ -20992,7 +20992,7 @@ msgstr ""
 
 #: resources/views/modules/timeline-chart/chart.phtml:141
 msgid "years"
-msgstr ""
+msgstr "ஆண்டுகள்"
 
 #: app/Elements/OrdinanceProcessFlag.php:56 app/Functions/FunctionsEdit.php:153
 #: app/Functions/FunctionsEdit.php:187
