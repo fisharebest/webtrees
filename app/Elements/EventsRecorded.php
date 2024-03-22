@@ -125,9 +125,7 @@ class EventsRecorded extends AbstractElement
         $factory = Registry::elementFactory();
 
         $options = Collection::make(self::EVENTS_RECORDED)
-            ->mapWithKeys(static function (string $tag) use ($factory): array {
-                return [explode(':', $tag)[1] => $factory->make($tag)->label()];
-            })
+            ->mapWithKeys(static fn(string $tag): array => [explode(':', $tag)[1] => $factory->make($tag)->label()])
             ->sort()
             ->all();
 

@@ -90,12 +90,8 @@ class ReportsMenuModule extends AbstractModule implements ModuleMenuInterface
         $xref       = Validator::attributes($request)->isXref()->string('xref', '');
         $individual = $tree->significantIndividual(Auth::user(), $xref);
         $submenus   = $this->module_service->findByComponent(ModuleReportInterface::class, $tree, Auth::user())
-            ->map(static function (ModuleReportInterface $module) use ($individual): Menu {
-                return $module->getReportMenu($individual);
-            })
-            ->sort(static function (Menu $x, Menu $y): int {
-                return I18N::comparator()($x->getLabel(), $y->getLabel());
-            });
+            ->map(static fn(ModuleReportInterface $module): Menu => $module->getReportMenu($individual))
+            ->sort(static fn(Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
 
         if ($submenus->isEmpty()) {
             return null;

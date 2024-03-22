@@ -56,18 +56,17 @@ class PendingChangesLogDownload implements RequestHandlerInterface
 
         $content = $this->pending_changes_service->changesQuery($params)
             ->get()
-            ->map(static function (object $row): string {
+            ->map(static fn(object $row): string =>
                 // Convert to CSV
-                return implode(',', [
-                    '"' . $row->change_time . '"',
-                    '"' . $row->status . '"',
-                    '"' . $row->xref . '"',
-                    '"' . str_replace('"', '""', $row->old_gedcom) . '"',
-                    '"' . str_replace('"', '""', $row->new_gedcom) . '"',
-                    '"' . str_replace('"', '""', $row->user_name) . '"',
-                    '"' . str_replace('"', '""', $row->gedcom_name) . '"',
-                ]);
-            })
+                implode(',', [
+                '"' . $row->change_time . '"',
+                '"' . $row->status . '"',
+                '"' . $row->xref . '"',
+                '"' . str_replace('"', '""', $row->old_gedcom) . '"',
+                '"' . str_replace('"', '""', $row->new_gedcom) . '"',
+                '"' . str_replace('"', '""', $row->user_name) . '"',
+                '"' . str_replace('"', '""', $row->gedcom_name) . '"',
+            ]))
             ->implode("\n");
 
         return response($content, StatusCodeInterface::STATUS_OK, [

@@ -84,13 +84,9 @@ class ListsMenuModule extends AbstractModule implements ModuleMenuInterface
     public function getMenu(Tree $tree): ?Menu
     {
         $submenus = $this->module_service->findByComponent(ModuleListInterface::class, $tree, Auth::user())
-            ->map(static function (ModuleListInterface $module) use ($tree): ?Menu {
-                return $module->listMenu($tree);
-            })
+            ->map(static fn(ModuleListInterface $module): ?Menu => $module->listMenu($tree))
             ->filter()
-            ->sort(static function (Menu $x, Menu $y): int {
-                return I18N::comparator()($x->getLabel(), $y->getLabel());
-            });
+            ->sort(static fn(Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
 
         if ($submenus->isEmpty()) {
             return null;

@@ -69,9 +69,7 @@ class Media extends GedcomRecord
     public function mediaFiles(): Collection
     {
         return $this->facts(['FILE'])
-            ->map(function (Fact $fact): MediaFile {
-                return new MediaFile($fact->gedcom(), $this);
-            });
+            ->map(fn(Fact $fact): MediaFile => new MediaFile($fact->gedcom(), $this));
     }
 
     /**
@@ -82,9 +80,7 @@ class Media extends GedcomRecord
     public function firstImageFile(): ?MediaFile
     {
         return $this->mediaFiles()
-            ->first(static function (MediaFile $media_file): bool {
-                return $media_file->isImage() && !$media_file->isExternal();
-            });
+            ->first(static fn(MediaFile $media_file): bool => $media_file->isImage() && !$media_file->isExternal());
     }
 
     /**

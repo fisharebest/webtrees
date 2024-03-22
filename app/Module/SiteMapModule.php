@@ -204,11 +204,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
     {
         $content = Registry::cache()->file()->remember('sitemap.xml', function (): string {
             // Which trees have sitemaps enabled?
-            $tree_ids = $this->tree_service->all()->filter(static function (Tree $tree): bool {
-                return $tree->getPreference('include_in_sitemap') === '1';
-            })->map(static function (Tree $tree): int {
-                return $tree->id();
-            });
+            $tree_ids = $this->tree_service->all()
+                ->filter(static fn(Tree $tree): bool => $tree->getPreference('include_in_sitemap') === '1')
+                ->map(static fn(Tree $tree): int => $tree->id());
 
             $count_families = DB::table('families')
                 ->join('gedcom', 'f_file', '=', 'gedcom_id')
@@ -357,9 +355,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         }
 
         // Skip private records.
-        $records = $records->filter(static function (GedcomRecord $record): bool {
-            return $record->canShow(Auth::PRIV_PRIVATE);
-        });
+        $records = $records->filter(static fn(GedcomRecord $record): bool => $record->canShow(Auth::PRIV_PRIVATE));
 
         return $records;
     }

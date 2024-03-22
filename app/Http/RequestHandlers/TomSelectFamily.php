@@ -68,11 +68,9 @@ class TomSelectFamily extends AbstractTomSelectHandler
             $results = $this->search_service->searchFamilyNames([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static function (Family $family) use ($at): array {
-            return [
-                'text'  => view('selects/family', ['family' => $family]),
-                'value' => $at . $family->xref() . $at,
-            ];
-        });
+        return $results->map(static fn(Family $family): array => [
+            'text'  => view('selects/family', ['family' => $family]),
+            'value' => $at . $family->xref() . $at,
+        ]);
     }
 }

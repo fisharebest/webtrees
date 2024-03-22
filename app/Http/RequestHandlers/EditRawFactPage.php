@@ -53,9 +53,7 @@ class EditRawFactPage implements RequestHandlerInterface
         $title   = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
         $fact = $record->facts([], false, null, true)
-            ->first(static function (Fact $fact) use ($fact_id): bool {
-                return $fact->id() === $fact_id;
-            });
+            ->first(static fn(Fact $fact): bool => $fact->id() === $fact_id);
 
         if ($fact instanceof Fact) {
             return $this->viewResponse('edit/raw-gedcom-fact', [

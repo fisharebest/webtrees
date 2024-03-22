@@ -54,11 +54,9 @@ class TomSelectPlace extends AbstractTomSelectHandler
     {
         return $this->search_service
             ->searchPlaces($tree, $query, $offset, $limit)
-            ->map(static function (Place $place): array {
-                return [
-                    'text'  => $place->gedcomName(),
-                    'value' => (string) $place->id(),
-                ];
-            });
+            ->map(static fn(Place $place): array => [
+                'text'  => $place->gedcomName(),
+                'value' => (string) $place->id(),
+            ]);
     }
 }

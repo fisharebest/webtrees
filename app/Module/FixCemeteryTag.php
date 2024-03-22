@@ -122,9 +122,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
         return $record->facts(['BURI'], false, null, true)
-            ->filter(static function (Fact $fact): bool {
-                return preg_match('/\n[23] CEME/', $fact->gedcom()) === 1;
-            })
+            ->filter(static fn(Fact $fact): bool => preg_match('/\n[23] CEME/', $fact->gedcom()) === 1)
             ->isNotEmpty();
     }
 

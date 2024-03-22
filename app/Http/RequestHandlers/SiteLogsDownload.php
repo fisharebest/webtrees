@@ -53,16 +53,13 @@ class SiteLogsDownload implements RequestHandlerInterface
         $content = $this->site_logs_service->logsQuery($request)
             ->orderBy('log_id')
             ->get()
-            ->map(static function (object $row): string {
-                return
-                    '"' . $row->log_time . '",' .
-                    '"' . $row->log_type . '",' .
-                    '"' . str_replace('"', '""', $row->log_message) . '",' .
-                    '"' . $row->ip_address . '",' .
-                    '"' . str_replace('"', '""', $row->user_name) . '",' .
-                    '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
-                    "\n";
-            })
+            ->map(static fn(object $row): string => '"' . $row->log_time . '",' .
+            '"' . $row->log_type . '",' .
+            '"' . str_replace('"', '""', $row->log_message) . '",' .
+            '"' . $row->ip_address . '",' .
+            '"' . str_replace('"', '""', $row->user_name) . '",' .
+            '"' . str_replace('"', '""', $row->gedcom_name) . '"' .
+            "\n")
             ->implode('');
 
         return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [

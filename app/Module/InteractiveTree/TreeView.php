@@ -93,9 +93,7 @@ class TreeView
             switch ($firstLetter) {
                 case 'c':
                     $families = Collection::make(explode(',', $json_request))
-                        ->map(static function (string $xref) use ($tree): ?Family {
-                            return Registry::familyFactory()->make($xref, $tree);
-                        })
+                        ->map(static fn(string $xref): ?Family => Registry::familyFactory()->make($xref, $tree))
                         ->filter();
 
                     $r[] = $this->drawChildren($families, 1, true);

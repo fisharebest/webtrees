@@ -132,9 +132,7 @@ class TreePrivacyPage implements RequestHandlerInterface
 
                 return $row;
             })
-            ->sort(static function (object $x, object $y): int {
-                return I18N::comparator()($x->tag_label, $y->tag_label);
-            })
+            ->sort(static fn(object $x, object $y): int => I18N::comparator()($x->tag_label, $y->tag_label))
             ->all();
     }
 

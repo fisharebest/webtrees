@@ -68,11 +68,9 @@ class TomSelectRepository extends AbstractTomSelectHandler
             $results = $this->search_service->searchRepositories([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static function (Repository $repository) use ($at): array {
-            return [
-                'text'  => view('selects/repository', ['repository' => $repository]),
-                'value' => $at . $repository->xref() . $at,
-            ];
-        });
+        return $results->map(static fn(Repository $repository): array => [
+            'text'  => view('selects/repository', ['repository' => $repository]),
+            'value' => $at . $repository->xref() . $at,
+        ]);
     }
 }

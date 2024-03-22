@@ -127,20 +127,18 @@ class MapDataExportCSV implements RequestHandlerInterface
             $max_level = max($max_level, count($place->hierarchy));
         }
 
-        $places = array_map(function (object $place) use ($max_level): array {
-            return array_merge(
-                [
-                    count($place->hierarchy) - 1,
-                ],
-                array_pad($place->hierarchy, $max_level, ''),
-                [
-                    $this->map_data_service->writeLongitude((float) $place->longitude),
-                    $this->map_data_service->writeLatitude((float) $place->latitude),
-                    '',
-                    '',
-                ]
-            );
-        }, $places);
+        $places = array_map(fn(object $place): array => array_merge(
+            [
+                count($place->hierarchy) - 1,
+            ],
+            array_pad($place->hierarchy, $max_level, ''),
+            [
+                $this->map_data_service->writeLongitude((float) $place->longitude),
+                $this->map_data_service->writeLatitude((float) $place->latitude),
+                '',
+                '',
+            ]
+        ), $places);
 
         // Create the header line for the output file (always English)
         $header = [

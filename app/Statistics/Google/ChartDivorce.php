@@ -70,12 +70,10 @@ class ChartDivorce
             ->groupBy(['century'])
             ->orderBy('century')
             ->get()
-            ->map(static function (object $row): object {
-                return (object) [
-                    'century' => (int) $row->century,
-                    'total'   => (float) $row->total,
-                ];
-            });
+            ->map(static fn(object $row): object => (object) [
+                'century' => (int) $row->century,
+                'total'   => (float) $row->total,
+            ]);
     }
 
     /**

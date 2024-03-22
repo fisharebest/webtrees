@@ -92,12 +92,8 @@ class ImportThumbnailsData implements RequestHandlerInterface
         // Fetch all thumbnails
         try {
             $thumbnails = Collection::make($data_filesystem->listContents('', FilesystemReader::LIST_DEEP))
-                ->filter(static function (StorageAttributes $attributes): bool {
-                    return $attributes->isFile() && str_contains($attributes->path(), '/thumbs/');
-                })
-                ->map(static function (StorageAttributes $attributes): string {
-                    return $attributes->path();
-                });
+                ->filter(static fn(StorageAttributes $attributes): bool => $attributes->isFile() && str_contains($attributes->path(), '/thumbs/'))
+                ->map(static fn(StorageAttributes $attributes): string => $attributes->path());
         } catch (FilesystemException) {
             $thumbnails = new Collection();
         }
@@ -105,9 +101,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
         $recordsTotal = $thumbnails->count();
 
         if ($search !== '') {
-            $thumbnails = $thumbnails->filter(static function (string $thumbnail) use ($search): bool {
-                return stripos($thumbnail, $search) !== false;
-            });
+            $thumbnails = $thumbnails->filter(static fn(string $thumbnail): bool => stripos($thumbnail, $search) !== false);
         }
 
         $recordsFiltered = $thumbnails->count();
@@ -125,9 +119,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
 
                 $media = $this->search_service->findMediaObjectsForMediaFile($original);
 
-                $media_links = array_map(static function (Media $media): string {
-                    return '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
-                }, $media);
+                $media_links = array_map(static fn(Media $media): string => '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>', $media);
 
                 $media_links = implode('<br>', $media_links);
 

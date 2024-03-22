@@ -58,9 +58,7 @@ class Individual extends GedcomRecord
      */
     public static function birthDateComparator(): Closure
     {
-        return static function (Individual $x, Individual $y): int {
-            return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
-        };
+        return static fn(Individual $x, Individual $y): int => Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
     }
 
     /**
@@ -70,9 +68,7 @@ class Individual extends GedcomRecord
      */
     public static function deathDateComparator(): Closure
     {
-        return static function (Individual $x, Individual $y): int {
-            return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
-        };
+        return static fn(Individual $x, Individual $y): int => Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
     }
 
     /**
@@ -808,9 +804,7 @@ class Individual extends GedcomRecord
             }
         }
 
-        return $step_families->uniqueStrict(static function (Family $family): string {
-            return $family->xref();
-        });
+        return $step_families->uniqueStrict(static fn(Family $family): string => $family->xref());
     }
 
     /**
@@ -1060,9 +1054,7 @@ class Individual extends GedcomRecord
         // Format for display
         $full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', e($full)) . '</span>';
         // Localise quotation marks around the nickname
-        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', static function (array $matches): string {
-            return '<q class="wt-nickname">' . $matches[1] . '</q>';
-        }, $full);
+        $full = preg_replace_callback('/&quot;([^&]*)&quot;/', static fn(array $matches): string => '<q class="wt-nickname">' . $matches[1] . '</q>', $full);
 
         // A suffix of “*” indicates a preferred name
         $full = preg_replace('/([^ >\x{200C}]*)\*/u', '<span class="starredname">\\1</span>', $full);

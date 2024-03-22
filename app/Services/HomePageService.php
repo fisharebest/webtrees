@@ -122,9 +122,7 @@ class HomePageService
             ->where('block_id', '=', $block_id)
             ->value('module_name');
 
-        $block = $active_blocks->first(static function (ModuleInterface $module) use ($module_name): bool {
-            return $module->name() === $module_name;
-        });
+        $block = $active_blocks->first(static fn(ModuleInterface $module): bool => $module->name() === $module_name);
 
         if ($block instanceof ModuleBlockInterface) {
             return $block;
@@ -144,12 +142,8 @@ class HomePageService
     public function availableTreeBlocks(Tree $tree, UserInterface $user): Collection
     {
         return $this->module_service->findByComponent(ModuleBlockInterface::class, $tree, $user)
-            ->filter(static function (ModuleBlockInterface $block): bool {
-                return $block->isTreeBlock();
-            })
-            ->mapWithKeys(static function (ModuleBlockInterface $block): array {
-                return [$block->name() => $block];
-            });
+            ->filter(static fn(ModuleBlockInterface $block): bool => $block->isTreeBlock())
+            ->mapWithKeys(static fn(ModuleBlockInterface $block): array => [$block->name() => $block]);
     }
 
     /**
@@ -163,12 +157,8 @@ class HomePageService
     public function availableUserBlocks(Tree $tree, UserInterface $user): Collection
     {
         return $this->module_service->findByComponent(ModuleBlockInterface::class, $tree, $user)
-            ->filter(static function (ModuleBlockInterface $block): bool {
-                return $block->isUserBlock();
-            })
-            ->mapWithKeys(static function (ModuleBlockInterface $block): array {
-                return [$block->name() => $block];
-            });
+            ->filter(static fn(ModuleBlockInterface $block): bool => $block->isUserBlock())
+            ->mapWithKeys(static fn(ModuleBlockInterface $block): array => [$block->name() => $block]);
     }
 
     /**
@@ -395,10 +385,6 @@ class HomePageService
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {
-        return $blocks->map(static function (string $block_name) use ($active_blocks): ?ModuleBlockInterface {
-            return $active_blocks->filter(static function (ModuleInterface $block) use ($block_name): bool {
-                return $block->name() === $block_name;
-            })->first();
-        })->filter();
+        return $blocks->map(static fn(string $block_name): ?ModuleBlockInterface => $active_blocks->filter(static fn(ModuleInterface $block): bool => $block->name() === $block_name)->first())->filter();
     }
 }

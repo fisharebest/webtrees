@@ -309,9 +309,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         foreach ($ancestors as $sosa => $person) {
             if ($person->canShow()) {
                 $birth = $person->facts(Gedcom::BIRTH_EVENTS, true)
-                    ->first(static function (Fact $fact): bool {
-                        return $fact->place()->gedcomName() !== '';
-                    });
+                    ->first(static fn(Fact $fact): bool => $fact->place()->gedcomName() !== '');
 
                 if ($birth instanceof Fact) {
                     $facts[$sosa] = $birth;

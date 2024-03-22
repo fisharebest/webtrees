@@ -138,9 +138,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
                 }
             }
 
-            $facts = $facts->filter(static function (Fact $fact): bool {
-                return preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom()) === 1;
-            });
+            $facts = $facts->filter(static fn(Fact $fact): bool => preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom()) === 1);
 
             return Fact::sortFacts($facts);
         });
