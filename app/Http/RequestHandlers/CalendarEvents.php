@@ -103,17 +103,11 @@ class CalendarEvents implements RequestHandlerInterface
 
             $anniversaries = Collection::make($anniversary_facts)
                 ->unique()
-                ->sort(static function (Fact $x, Fact $y): int {
-                    return $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay();
-                });
+                ->sort(static fn(Fact $x, Fact $y): int => $x->date()->minimumJulianDay() <=> $y->date()->minimumJulianDay());
 
-            $family_anniversaries = $anniversaries->filter(static function (Fact $f): bool {
-                return $f->record() instanceof Family;
-            });
+            $family_anniversaries = $anniversaries->filter(static fn(Fact $f): bool => $f->record() instanceof Family);
 
-            $individual_anniversaries = $anniversaries->filter(static function (Fact $f): bool {
-                return $f->record() instanceof Individual;
-            });
+            $individual_anniversaries = $anniversaries->filter(static fn(Fact $f): bool => $f->record() instanceof Individual);
 
             return response(view('calendar-list', [
                 'family_anniversaries'     => $family_anniversaries,

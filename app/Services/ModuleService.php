@@ -538,9 +538,7 @@ class ModuleService
      */
     public function titleMapper(): Closure
     {
-        return static function (ModuleInterface $module): string {
-            return $module->title();
-        };
+        return static fn(ModuleInterface $module): string => $module->title();
     }
 
     /**
@@ -557,9 +555,7 @@ class ModuleService
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
         return $this->findByInterface($interface, false, true)
-            ->filter(static function (ModuleInterface $module) use ($interface, $tree, $user): bool {
-                return $module->accessLevel($tree, $interface) >= Auth::accessLevel($tree, $user);
-            });
+            ->filter(static fn(ModuleInterface $module): bool => $module->accessLevel($tree, $interface) >= Auth::accessLevel($tree, $user));
     }
 
     /**
@@ -620,9 +616,7 @@ class ModuleService
             // We can override these from database settings.
             $module_info = DB::table('module')
                 ->get()
-                ->mapWithKeys(static function (object $row): array {
-                    return [$row->module_name => $row];
-                });
+                ->mapWithKeys(static fn(object $row): array => [$row->module_name => $row]);
 
             return $this->coreModules()
                 ->merge($this->customModules())
@@ -714,9 +708,7 @@ class ModuleService
                 return null;
             })
             ->filter()
-            ->mapWithKeys(static function (ModuleCustomInterface $module): array {
-                return [$module->name() => $module];
-            });
+            ->mapWithKeys(static fn(ModuleCustomInterface $module): array => [$module->name() => $module]);
     }
 
     /**
@@ -748,9 +740,7 @@ class ModuleService
      */
     private function enabledFilter(bool $include_disabled): Closure
     {
-        return static function (ModuleInterface $module) use ($include_disabled): bool {
-            return $include_disabled || $module->isEnabled();
-        };
+        return static fn(ModuleInterface $module): bool => $include_disabled || $module->isEnabled();
     }
 
     /**
@@ -764,9 +754,7 @@ class ModuleService
      */
     private function interfaceFilter(string $interface): Closure
     {
-        return static function (ModuleInterface $module) use ($interface): bool {
-            return $module instanceof $interface;
-        };
+        return static fn(ModuleInterface $module): bool => $module instanceof $interface;
     }
 
     /**
@@ -776,9 +764,7 @@ class ModuleService
      */
     private function footerComparator(): Closure
     {
-        return static function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
-            return $x->getFooterOrder() <=> $y->getFooterOrder();
-        };
+        return static fn(ModuleFooterInterface $x, ModuleFooterInterface $y): int => $x->getFooterOrder() <=> $y->getFooterOrder();
     }
 
     /**
@@ -788,9 +774,7 @@ class ModuleService
      */
     private function menuComparator(): Closure
     {
-        return static function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
-            return $x->getMenuOrder() <=> $y->getMenuOrder();
-        };
+        return static fn(ModuleMenuInterface $x, ModuleMenuInterface $y): int => $x->getMenuOrder() <=> $y->getMenuOrder();
     }
 
     /**
@@ -800,9 +784,7 @@ class ModuleService
      */
     private function sidebarComparator(): Closure
     {
-        return static function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
-            return $x->getSidebarOrder() <=> $y->getSidebarOrder();
-        };
+        return static fn(ModuleSidebarInterface $x, ModuleSidebarInterface $y): int => $x->getSidebarOrder() <=> $y->getSidebarOrder();
     }
 
     /**
@@ -812,9 +794,7 @@ class ModuleService
      */
     private function tabComparator(): Closure
     {
-        return static function (ModuleTabInterface $x, ModuleTabInterface $y): int {
-            return $x->getTabOrder() <=> $y->getTabOrder();
-        };
+        return static fn(ModuleTabInterface $x, ModuleTabInterface $y): int => $x->getTabOrder() <=> $y->getTabOrder();
     }
 
     /**
@@ -843,12 +823,8 @@ class ModuleService
     public function setupLanguages(): Collection
     {
         return $this->coreModules()
-            ->filter(static function (ModuleInterface $module): bool {
-                return $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault();
-            })
-            ->sort(static function (ModuleLanguageInterface $x, ModuleLanguageInterface $y): int {
-                return $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable();
-            });
+            ->filter(static fn(ModuleInterface $module): bool => $module instanceof ModuleLanguageInterface && $module->isEnabledByDefault())
+            ->sort(static fn(ModuleLanguageInterface $x, ModuleLanguageInterface $y): int => $x->locale()->endonymSortable() <=> $y->locale()->endonymSortable());
     }
 
     /**
@@ -862,9 +838,7 @@ class ModuleService
     public function findByName(string $module_name, bool $include_disabled = false): ?ModuleInterface
     {
         return $this->all($include_disabled)
-            ->first(static function (ModuleInterface $module) use ($module_name): bool {
-                return $module->name() === $module_name;
-            });
+            ->first(static fn(ModuleInterface $module): bool => $module->name() === $module_name);
     }
 
     /**
@@ -899,9 +873,7 @@ class ModuleService
         $database_modules = DB::table('module')->pluck('module_name');
 
         $disk_modules = $this->all(true)
-            ->map(static function (ModuleInterface $module): string {
-                return $module->name();
-            });
+            ->map(static fn(ModuleInterface $module): string => $module->name());
 
         return $database_modules->diff($disk_modules);
     }

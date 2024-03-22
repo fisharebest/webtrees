@@ -84,12 +84,11 @@ abstract class AbstractModule implements ModuleInterface
      */
     final protected function getBlockSetting(int $block_id, string $setting_name, string $default = ''): string
     {
-        $settings = Registry::cache()->array()->remember('block-setting-' . $block_id, static function () use ($block_id): array {
-            return DB::table('block_setting')
+        $settings = Registry::cache()->array()
+            ->remember('block-setting-' . $block_id, static fn(): array => DB::table('block_setting')
                 ->where('block_id', '=', $block_id)
                 ->pluck('setting_value', 'setting_name')
-                ->all();
-        });
+                ->all());
 
         return $settings[$setting_name] ?? $default;
     }
@@ -221,15 +220,11 @@ abstract class AbstractModule implements ModuleInterface
     final public function accessLevel(Tree $tree, string $interface): int
     {
         $access_levels = Registry::cache()->array()
-            ->remember('module-privacy-' . $tree->id(), static function () use ($tree): Collection {
-                return DB::table('module_privacy')
-                    ->where('gedcom_id', '=', $tree->id())
-                    ->get();
-            });
+            ->remember('module-privacy-' . $tree->id(), static fn(): Collection => DB::table('module_privacy')
+                ->where('gedcom_id', '=', $tree->id())
+                ->get());
 
-        $row = $access_levels->first(function (object $row) use ($interface): bool {
-            return $row->interface === $interface && $row->module_name === $this->name();
-        });
+        $row = $access_levels->first(fn(object $row): bool => $row->interface === $interface && $row->module_name === $this->name());
 
         return $row ? (int) $row->access_level : $this->access_level;
     }

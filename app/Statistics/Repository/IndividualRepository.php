@@ -1151,12 +1151,10 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->get()
             ->map(Registry::individualFactory()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
-            ->map(function (Individual $individual): array {
-                return [
-                    'person' => $individual,
-                    'age'    => $this->calculateAge(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
-                ];
-            })
+            ->map(fn(Individual $individual): array => [
+                'person' => $individual,
+                'age'    => $this->calculateAge(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+            ])
             ->all();
     }
 

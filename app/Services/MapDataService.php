@@ -124,9 +124,7 @@ class MapDataService
                 'p8.p_place AS part_8',
             ])
             ->get()
-            ->map(static function (object $row): string {
-                return implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row));
-            });
+            ->map(static fn(object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row)));
 
         $all_locations = DB::table('place_location AS p0')
             ->leftJoin('place_location AS p1', 'p1.id', '=', 'p0.parent_id')
@@ -149,9 +147,7 @@ class MapDataService
                 'p8.place AS part_8',
             ])
             ->get()
-            ->map(static function (object $row): string {
-                return implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row));
-            });
+            ->map(static fn(object $row): string => implode(Gedcom::PLACE_SEPARATOR, array_filter((array) $row)));
 
         $missing = $all_places->diff($all_locations);
 

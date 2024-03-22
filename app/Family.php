@@ -69,9 +69,7 @@ class Family extends GedcomRecord
      */
     public static function marriageDateComparator(): Closure
     {
-        return static function (Family $x, Family $y): int {
-            return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
-        };
+        return static fn(Family $x, Family $y): int => Date::compare($x->getMarriageDate(), $y->getMarriageDate());
     }
 
     /**
@@ -350,9 +348,7 @@ class Family extends GedcomRecord
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
             if ($this->husb instanceof Individual) {
-                $husb_names = array_filter($this->husb->getAllNames(), static function (array $x): bool {
-                    return $x['type'] !== '_MARNM';
-                });
+                $husb_names = array_filter($this->husb->getAllNames(), static fn(array $x): bool => $x['type'] !== '_MARNM');
             }
             // If the individual only has married names, create a fake birth name.
             if ($husb_names === []) {
@@ -368,9 +364,7 @@ class Family extends GedcomRecord
 
             $wife_names = [];
             if ($this->wife instanceof Individual) {
-                $wife_names = array_filter($this->wife->getAllNames(), static function (array $x): bool {
-                    return $x['type'] !== '_MARNM';
-                });
+                $wife_names = array_filter($this->wife->getAllNames(), static fn(array $x): bool => $x['type'] !== '_MARNM');
             }
             // If the individual only has married names, create a fake birth name.
             if ($wife_names === []) {

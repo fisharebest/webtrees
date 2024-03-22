@@ -319,9 +319,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     private function getList(Tree $tree): array
     {
         $places = $this->search_service->searchPlaces($tree, '')
-            ->sort(static function (Place $x, Place $y): int {
-                return I18N::comparator()($x->gedcomName(), $y->gedcomName());
-            })
+            ->sort(static fn(Place $x, Place $y): int => I18N::comparator()($x->gedcomName(), $y->gedcomName()))
             ->all();
 
         $count = count($places);

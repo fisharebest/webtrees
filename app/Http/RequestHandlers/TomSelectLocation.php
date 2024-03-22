@@ -68,11 +68,9 @@ class TomSelectLocation extends AbstractTomSelectHandler
             $results = $this->search_service->searchLocations([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static function (Location $location) use ($at): array {
-            return [
-                'text'  => view('selects/location', ['location' => $location]),
-                'value' => $at . $location->xref() . $at,
-            ];
-        });
+        return $results->map(static fn(Location $location): array => [
+            'text'  => view('selects/location', ['location' => $location]),
+            'value' => $at . $location->xref() . $at,
+        ]);
     }
 }

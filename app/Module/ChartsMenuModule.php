@@ -90,12 +90,8 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
         $xref       = Validator::attributes($request)->isXref()->string('xref', '');
         $individual = $tree->significantIndividual(Auth::user(), $xref);
         $submenus   = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->map(static function (ModuleChartInterface $module) use ($individual): Menu {
-                return $module->chartMenu($individual);
-            })
-            ->sort(static function (Menu $x, Menu $y): int {
-                return I18N::comparator()($x->getLabel(), $y->getLabel());
-            });
+            ->map(static fn(ModuleChartInterface $module): Menu => $module->chartMenu($individual))
+            ->sort(static fn(Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
 
         if ($submenus->isEmpty()) {
             return null;

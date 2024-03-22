@@ -86,13 +86,11 @@ class ChartAge
             ->orderBy('century')
             ->orderBy('sex')
             ->get()
-            ->map(static function (object $row): object {
-                return (object) [
-                    'age'     => (float) $row->age,
-                    'century' => (int) $row->century,
-                    'sex'     => $row->sex,
-                ];
-            });
+            ->map(static fn(object $row): object => (object) [
+                'age'     => (float) $row->age,
+                'century' => (int) $row->century,
+                'sex'     => $row->sex,
+            ]);
     }
 
     /**

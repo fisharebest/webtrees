@@ -361,9 +361,7 @@ class MediaFileService
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
             ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS path"))
-            ->map(static function (string $path): string {
-                return dirname($path) . '/';
-            });
+            ->map(static fn(string $path): string => dirname($path) . '/');
 
         $media_roots = DB::table('gedcom')
             ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
@@ -391,9 +389,7 @@ class MediaFileService
         return $disk_folders->concat($db_folders)
             ->uniqueStrict()
             ->sort(I18N::comparator())
-            ->mapWithKeys(static function (string $folder): array {
-                return [$folder => $folder];
-            });
+            ->mapWithKeys(static fn(string $folder): array => [$folder => $folder]);
     }
 
     /**

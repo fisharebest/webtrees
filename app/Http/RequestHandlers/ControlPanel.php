@@ -137,9 +137,7 @@ class ControlPanel implements RequestHandlerInterface
 
         $custom_updates = $this->module_service
             ->findByInterface(ModuleCustomInterface::class)
-            ->filter(static function (ModuleCustomInterface $module): bool {
-                return version_compare($module->customModuleLatestVersion(), $module->customModuleVersion()) > 0;
-            });
+            ->filter(static fn(ModuleCustomInterface $module): bool => version_compare($module->customModuleLatestVersion(), $module->customModuleVersion()) > 0);
 
         $multiple_tree_threshold = $this->admin_service->multipleTreeThreshold();
         $gedcom_file_count       = $this->admin_service->gedcomFiles(Registry::filesystem()->data())->count();

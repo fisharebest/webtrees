@@ -70,9 +70,7 @@ class RouteFactory implements RouteFactoryInterface
         $url = $router_container->getGenerator()->generate($route_name, $url_parameters);
 
         // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
-        $parameters = array_filter($parameters, static function (string $key) use ($route): bool {
-            return !str_contains($route->path, '{' . $key . '}') && !str_contains($route->path, '{/' . $key . '}');
-        }, ARRAY_FILTER_USE_KEY);
+        $parameters = array_filter($parameters, static fn(string $key): bool => !str_contains($route->path, '{' . $key . '}') && !str_contains($route->path, '{/' . $key . '}'), ARRAY_FILTER_USE_KEY);
 
         if (Validator::attributes($request)->boolean('rewrite_urls', false)) {
             // Make the pretty URL absolute.

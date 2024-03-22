@@ -123,24 +123,18 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
-                    return GedcomRecord::nameComparator()($x->record, $y->record);
-                });
+                $rows  = $rows->sort(static fn(stdClass $x, stdClass $y): int => GedcomRecord::nameComparator()($x->record, $y->record));
                 $order = [[1, 'asc']];
                 break;
 
             case 'date_asc':
-                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
-                    return $x->time <=> $y->time;
-                });
+                $rows  = $rows->sort(static fn(stdClass $x, stdClass $y): int => $x->time <=> $y->time);
                 $order = [[2, 'asc']];
                 break;
 
             default:
             case 'date_desc':
-                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
-                    return $y->time <=> $x->time;
-                });
+                $rows  = $rows->sort(static fn(stdClass $x, stdClass $y): int => $y->time <=> $x->time);
                 $order = [[2, 'desc']];
                 break;
         }
@@ -315,16 +309,12 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         return $query
             ->get()
-            ->map(function (object $row) use ($tree): object {
-                return (object) [
-                    'record' => Registry::gedcomRecordFactory()->make($row->xref, $tree, $row->new_gedcom),
-                    'time'   => Registry::timestampFactory()->fromString($row->change_time),
-                    'user'   => $this->user_service->find((int) $row->user_id),
-                ];
-            })
-            ->filter(static function (object $row): bool {
-                return $row->record instanceof GedcomRecord && $row->record->canShow();
-            });
+            ->map(fn(object $row): object => (object) [
+                'record' => Registry::gedcomRecordFactory()->make($row->xref, $tree, $row->new_gedcom),
+                'time'   => Registry::timestampFactory()->fromString($row->change_time),
+                'user'   => $this->user_service->find((int) $row->user_id),
+            ])
+            ->filter(static fn(object $row): bool => $row->record instanceof GedcomRecord && $row->record->canShow());
     }
 
     /**

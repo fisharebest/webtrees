@@ -133,9 +133,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
-        $facts = $record->facts(['_PRIM'])->filter(static function (Fact $fact): bool {
-            return !$fact->isPendingDeletion();
-        });
+        $facts = $record->facts(['_PRIM'])->filter(static fn(Fact $fact): bool => !$fact->isPendingDeletion());
 
         foreach ($facts as $fact) {
             $primary = strtoupper($fact->value()) !== 'N';
@@ -176,9 +174,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
 
         $sorted_facts = $facts1->concat($facts2)->concat($facts3)->concat($facts4);
 
-        $gedcom = $sorted_facts->map(static function (Fact $fact): string {
-            return "\n" . $fact->gedcom();
-        })->implode('');
+        $gedcom = $sorted_facts->map(static fn(Fact $fact): string => "\n" . $fact->gedcom())->implode('');
 
         $gedcom = '0 @' . $individual->xref() . '@ INDI' . $gedcom;
 

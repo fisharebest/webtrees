@@ -113,13 +113,11 @@ class FixLevel0MediaData implements RequestHandlerInterface
             $media      = Registry::mediaFactory()->make($datum->m_id, $tree, $datum->m_gedcom);
             $individual = Registry::individualFactory()->make($datum->i_id, $tree, $datum->i_gedcom);
 
-            $facts = $individual->facts([], true)
-                ->filter(static function (Fact $fact) use ($ignore_facts): bool {
-                    return
-                        !$fact->isPendingDeletion() &&
-                        !preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $fact->value()) &&
-                        !in_array($fact->tag(), $ignore_facts, true);
-                });
+            $facts = $individual
+                ->facts([], true)
+                ->filter(static fn(Fact $fact): bool => !$fact->isPendingDeletion() &&
+                    !preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $fact->value()) &&
+                    !in_array($fact->tag(), $ignore_facts, true));
 
             // The link to the media object may have been deleted in a pending change.
             $deleted = true;
@@ -132,13 +130,11 @@ class FixLevel0MediaData implements RequestHandlerInterface
                 $facts = new Collection();
             }
 
-            $facts = $facts->map(static function (Fact $fact) use ($individual, $media): string {
-                return view('admin/fix-level-0-media-action', [
-                    'fact'       => $fact,
-                    'individual' => $individual,
-                    'media'      => $media,
-                ]);
-            });
+            $facts = $facts->map(static fn(Fact $fact): string => view('admin/fix-level-0-media-action', [
+                'fact'       => $fact,
+                'individual' => $individual,
+                'media'      => $media,
+            ]));
 
             return [
                 $tree->name(),

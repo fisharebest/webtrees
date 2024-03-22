@@ -635,12 +635,10 @@ class FamilyRepository
             ->get()
             ->map(Registry::familyFactory()->mapper($this->tree))
             ->filter(GedcomRecord::accessFilter())
-            ->map(static function (Family $family): array {
-                return [
-                    'family' => $family,
-                    'count'  => $family->numberOfChildren(),
-                ];
-            })
+            ->map(static fn(Family $family): array => [
+                'family' => $family,
+                'count'  => $family->numberOfChildren(),
+            ])
             ->all();
     }
 

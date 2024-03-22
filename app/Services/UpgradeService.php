@@ -127,12 +127,8 @@ class UpgradeService
         $zip_filesystem = new Filesystem($zip_adapter);
 
         $files = $zip_filesystem->listContents('', FilesystemReader::LIST_DEEP)
-            ->filter(static function (StorageAttributes $attributes): bool {
-                return $attributes->isFile();
-            })
-            ->map(static function (StorageAttributes $attributes): string {
-                return $attributes->path();
-            });
+            ->filter(static fn(StorageAttributes $attributes): bool => $attributes->isFile())
+            ->map(static fn(StorageAttributes $attributes): string => $attributes->path());
 
         return new Collection($files);
     }

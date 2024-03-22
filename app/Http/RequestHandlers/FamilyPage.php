@@ -80,9 +80,7 @@ class FamilyPage implements RequestHandlerInterface
         $clipboard_facts = $this->clipboard_service->pastableFacts($family);
 
         $facts = $family->facts([], true)
-            ->filter(static function (Fact $fact): bool {
-                return !in_array($fact->tag(), ['FAM:HUSB', 'FAM:WIFE', 'FAM:CHIL'], true);
-            });
+            ->filter(static fn(Fact $fact): bool => !in_array($fact->tag(), ['FAM:HUSB', 'FAM:WIFE', 'FAM:CHIL'], true));
 
         return $this->viewResponse('family-page', [
             'can_upload_media' => Auth::canUploadMedia($tree, Auth::user()),

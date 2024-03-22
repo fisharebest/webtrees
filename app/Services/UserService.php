@@ -51,13 +51,12 @@ class UserService
      */
     public function find(?int $user_id): ?User
     {
-        return Registry::cache()->array()->remember('user-' . $user_id, static function () use ($user_id): ?User {
-            return DB::table('user')
+        return Registry::cache()->array()
+            ->remember('user-' . $user_id, static fn(): ?User => DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()
                 ->map(User::rowMapper())
-                ->first();
-        });
+                ->first());
     }
 
     /**

@@ -85,9 +85,7 @@ class EditMediaFileAction implements RequestHandlerInterface
 
         // Find the fact to edit
         $media_file = $media->mediaFiles()
-            ->first(static function (MediaFile $media_file) use ($fact_id): bool {
-                return $media_file->factId() === $fact_id;
-            });
+            ->first(static fn(MediaFile $media_file): bool => $media_file->factId() === $fact_id);
 
         // Media file does not exist?
         if ($media_file === null) {

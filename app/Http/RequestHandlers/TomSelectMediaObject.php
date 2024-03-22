@@ -68,11 +68,9 @@ class TomSelectMediaObject extends AbstractTomSelectHandler
             $results = $this->search_service->searchMedia([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static function (Media $media) use ($at): array {
-            return [
-                'text'  => view('selects/media', ['media' => $media]),
-                'value' => $at . $media->xref() . $at,
-            ];
-        });
+        return $results->map(static fn(Media $media): array => [
+            'text'  => view('selects/media', ['media' => $media]),
+            'value' => $at . $media->xref() . $at,
+        ]);
     }
 }

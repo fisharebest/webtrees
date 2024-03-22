@@ -139,9 +139,7 @@ class SetupWizard implements RequestHandlerInterface
 
         $locales = $this->module_service
             ->setupLanguages()
-            ->map(static function (ModuleLanguageInterface $module): LocaleInterface {
-                return $module->locale();
-            });
+            ->map(static fn(ModuleLanguageInterface $module): LocaleInterface => $module->locale());
 
         if ($data['lang'] === '') {
             $default = new LocaleEnUs();

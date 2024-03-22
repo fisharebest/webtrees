@@ -57,9 +57,7 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
 
         $data = $this->search_service
             ->searchPlaces($tree, $query, 0, static::LIMIT)
-            ->map(static function (Place $place): string {
-                return $place->gedcomName();
-            });
+            ->map(static fn(Place $place): string => $place->gedcomName());
 
         // No place found? Use external gazetteers.
         foreach ($this->module_service->findByInterface(ModuleMapAutocompleteInterface::class) as $module) {
