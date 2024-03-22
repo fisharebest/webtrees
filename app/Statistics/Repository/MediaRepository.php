@@ -249,7 +249,7 @@ class MediaRepository implements MediaRepositoryInterface
         $media = DB::table('media_file')
             ->where('m_file', '=', $this->tree->id())
             ->groupBy('source_media_type')
-            ->pluck(new Expression('COUNT(*)'), 'source_media_type')
+            ->pluck(new Expression('COUNT(*) AS total'), 'source_media_type')
             ->map(static fn (string $n): int => (int) $n)
             ->all();
 

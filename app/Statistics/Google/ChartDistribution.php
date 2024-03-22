@@ -145,7 +145,7 @@ class ChartDistribution
                     ->on('pl_gid', '=', 'i_id');
             })
             ->groupBy('p_place')
-            ->pluck(new Expression('COUNT(*)'), 'p_place');
+            ->pluck(new Expression('COUNT(*) AS total'), 'p_place');
 
         $totals = [];
 
@@ -184,7 +184,7 @@ class ChartDistribution
                 })
                 ->where('n_surn', '=', $surname)
                 ->groupBy('p_place')
-                ->pluck(new Expression('COUNT(*)'), 'p_place');
+                ->pluck(new Expression('COUNT(*) AS total'), 'p_place');
 
         $totals = [];
 
