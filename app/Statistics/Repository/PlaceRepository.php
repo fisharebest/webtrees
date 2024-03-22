@@ -202,7 +202,7 @@ class PlaceRepository implements PlaceRepositoryInterface
             ->groupBy(['p_place'])
             ->orderByDesc(new Expression('COUNT(*)'))
             ->orderBy('p_place')
-            ->pluck(new Expression('COUNT(*)'), 'p_place')
+            ->pluck(new Expression('COUNT(*) AS total'), 'p_place')
             ->map(static fn (string $col): int => (int) $col)
             ->all();
 
