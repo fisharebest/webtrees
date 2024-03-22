@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-10-04 23:38+0000\n"
-"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
+"PO-Revision-Date: 2024-03-23 12:38+0000\n"
+"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fr/>\n"
 "Language: fr\n"
@@ -2109,7 +2109,7 @@ msgstr "Aigue-marine"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Voulez-vous vraiment supprimer le lien vers « %s » ?"
+msgstr "Voulez-vous vraiment supprimer le lien vers « %s » ?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -3410,7 +3410,7 @@ msgstr "Cause du décès"
 #: resources/views/admin/trees-merge.phtml:60
 #: resources/views/admin/trees-renumber.phtml:46
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Attention, ça pourrait prendre un bon moment ! Patience."
+msgstr "Attention ! Cette opération peut prendre du temps. Veuillez patienter."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
@@ -7826,8 +7826,8 @@ msgstr "Cette année-là…"
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
-"Dans webtrees version 1, vous pouviez ajouter des vignettes personnalisées "
-"aux objets médias en créant des fichiers dans le dossier « thumbs »."
+"Dans webtrees version 1, les vignettes pouvaient être personnalisées pour "
+"les objets médias en créant des fichiers dans le dossier « thumbs »."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -11211,7 +11211,10 @@ msgstr "Les noms de lieux peuvent changer au cours du temps. En généalogie, il
 
 #: resources/views/help/place.phtml:8
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Les noms de lieux doivent être saisis sous forme de liste séparés par des virgules, en commençant par le plus petit lieu pour finir par le pays. Par exemple, « Rouen, Seine-Maritime, Normandie, France »."
+msgstr ""
+"Les noms de lieux doivent être saisis sous forme de liste, séparés par des "
+"virgules, en commençant par le plus petit lieu pour finir par le pays. Par "
+"exemple, « Rouen, Seine-Maritime, Normandie, France »."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1130 app/GedcomTag.php:479
@@ -14229,12 +14232,12 @@ msgstr "La Haye, Pays-Bas"
 #: app/Services/ServerCheckService.php:125
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "L’extension PHP « %s » n’est pas installée."
+msgstr "L’extension PHP « %s » n’est pas installée."
 
 #: app/Services/ServerCheckService.php:183
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr "La fonction PHP « %1$s » est désactivée."
+msgstr "La fonction PHP « %1$s » est désactivée."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:58
@@ -14244,12 +14247,12 @@ msgstr "Répertoire temporaire PHP manquant."
 #: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr "Le paramètre « %1$s » est désactivé dans PHP.INI."
+msgstr "Le paramètre « %1$s » est désactivé dans PHP.INI."
 
 #: app/Services/ServerCheckService.php:148
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr "Le paramètre « %1$s » est activé dans PHP.INI."
+msgstr "Le paramètre « %1$s » est activé dans PHP.INI."
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -14297,7 +14300,7 @@ msgstr "La date et l’heure de la dernière mise à jour"
 #: app/Http/RequestHandlers/MapDataSave.php:101
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "Les détails de « %s » ont été mis à jour."
+msgstr "Les détails de « %s » ont été mis à jour."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php:100
@@ -14544,7 +14547,7 @@ msgstr "La note a été créée"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr "Le paramètre « %s » est manquant."
+msgstr "Le paramètre « %s » est manquant."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
