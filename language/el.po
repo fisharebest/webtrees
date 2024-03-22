@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-11 18:42+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-03-23 12:38+0000\n"
+"Last-Translator: jpeppas <jpeppas@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/el/>\n"
 "Language: el\n"
@@ -1138,7 +1138,7 @@ msgstr "ALPHABET_upper=ΆΑΒΓΔΈΕΖΉΗΘΊΪΪΙΚΛΜΝΞΌΟΠΡΣΣΤΎ�
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "Κλειδί Διεπαφής προγραμματισμού εφαρμογών"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -2394,25 +2394,25 @@ msgstr "Αυτόματο ξεδίπλωμα πηγών"
 #: app/Date/JewishDate.php:147
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:223
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:185
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:109
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Αβ"
 
 #: index_edit.php:301
 msgid "Available blocks"
@@ -2453,31 +2453,31 @@ msgstr ""
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:95
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Αζάρ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6687
@@ -2492,7 +2492,7 @@ msgstr "Αζόρες"
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Μπαχ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6697
@@ -2503,25 +2503,25 @@ msgstr "Μπαχάμες"
 #: app/Date/JalaliDate.php:97
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Μπάχμαν"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6696
@@ -4975,7 +4975,7 @@ msgstr "Δεκέμβριος"
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgid "Decidi"
-msgstr ""
+msgstr "Ντέικαντι"
 
 #: app/Module/HtmlBlockModule.php:303
 msgid "Default"
@@ -5198,31 +5198,31 @@ msgstr "Ντιτρόιτ, Μίσιγκαν, Ηνωμένες Πολιτείες"
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:128
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Ντέι"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:101
@@ -5416,7 +5416,7 @@ msgstr "Draper, Utah, Ηνωμένες Πολιτείες"
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgid "Duodi"
-msgstr ""
+msgstr "Ντούοντι"
 
 #: admin_users.php:73 edituser.php:60 login.php:289
 msgid "Duplicate email address. A user with that email already exists."
