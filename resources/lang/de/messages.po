@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-02-19 19:15+0000\n"
-"Last-Translator: Jefferson49 <markus.hemprich@gmail.com>\n"
+"PO-Revision-Date: 2024-03-24 21:39+0000\n"
+"Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -9825,7 +9825,7 @@ msgstr "Mauritius"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:348
 msgid "Maximum number of surnames on individual list"
-msgstr "Maximale Anzahl von Nachnamen auf der Personenliste"
+msgstr "Maximale Anzahl von Nachnamen in der Personenliste"
 
 #: resources/views/admin/media-upload.phtml:26
 #: resources/views/modals/media-file-fields.phtml:49
@@ -15579,7 +15579,7 @@ msgstr "Zu dieser Person gibt es keine Ereignisse."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr "Es gibt keine Personen mit dem Nachname “%s”"
+msgstr "Es gibt keine Personen mit dem Nachnamen “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -17675,7 +17675,7 @@ msgid ""
 "surname will depend on the local tradition."
 msgstr ""
 "Beim Hinzufügen eines neuen Familienmitgliedes kann ein Standardnachname in "
-"Abhängigkeit von lokalen Traditionen vorgeschlagen werden."
+"Abhängigkeit von örtlichen Traditionen vorgeschlagen werden."
 
 #: resources/views/help/pending-changes.phtml:14
 msgid ""
@@ -17717,7 +17717,7 @@ msgstr "Wer darf neue Mediendateien hochladen"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:43
 msgid "Who is online"
-msgstr "Wer ist online"
+msgstr "Wer ist angemeldet"
 
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
@@ -18514,7 +18514,7 @@ msgstr "Weiter"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "Kopie"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -18696,7 +18696,7 @@ msgstr "Datei exportieren"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "Auszug"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -21197,7 +21197,7 @@ msgstr "von"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "Internet"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -21253,7 +21253,7 @@ msgstr "Prozentzahl"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "Fotokopie"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
