@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-20 19:37+0000\n"
+"PO-Revision-Date: 2024-03-24 21:39+0000\n"
 "Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -8915,7 +8915,7 @@ msgstr "Maximale Anzahl von Nachkommengenerationen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1163
 msgid "Maximum number of surnames on individual list"
-msgstr "Maximale Anzahl von Nachnamen auf der Personenliste"
+msgstr "Maximale Anzahl von Nachnamen in der Personenliste"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1245
@@ -15980,7 +15980,9 @@ msgstr ""
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein Standardnachname in Abhängigkeit von lokalen Traditionen vorgeschlagen werden."
+msgstr ""
+"Beim Hinzufügen eines neuen Familienmitgliedes kann ein Standardnachname in "
+"Abhängigkeit von örtlichen Traditionen vorgeschlagen werden."
 
 #: help_text.php:305
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
@@ -16011,7 +16013,7 @@ msgstr "Wer darf neue Mediendateien hochladen"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr "Wer ist online"
+msgstr "Wer ist angemeldet"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
 msgid "Whole words only"
