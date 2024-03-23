@@ -91,7 +91,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
      *
      * @return Collection<int,string>|null
      */
-    protected function familiesToFix(Tree $tree, array $params): ?Collection
+    protected function familiesToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['search-for'] === '' || $params['replace-with'] === '') {
             return null;
@@ -113,7 +113,7 @@ class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
      *
      * @return Collection<int,string>|null
      */
-    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['search-for'] === '' || $params['replace-with'] === '') {
             return null;

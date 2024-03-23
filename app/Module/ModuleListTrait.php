@@ -48,7 +48,7 @@ trait ModuleListTrait
      *
      * @return Menu|null
      */
-    public function listMenu(Tree $tree): ?Menu
+    public function listMenu(Tree $tree): Menu|null
     {
         if ($this->listIsEmpty($tree)) {
             return null;

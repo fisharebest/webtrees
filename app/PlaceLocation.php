@@ -71,7 +71,7 @@ class PlaceLocation
      *
      * @return int|null
      */
-    public function id(): ?int
+    public function id(): int|null
     {
         // The "top-level" location won't exist in the database.
         if ($this->parts->isEmpty()) {
@@ -169,20 +169,16 @@ class PlaceLocation
 
     /**
      * Latitude of the location.
-     *
-     * @return float|null
      */
-    public function latitude(): ?float
+    public function latitude(): float|null
     {
         return $this->details()->latitude;
     }
 
     /**
      * Longitude of the location.
-     *
-     * @return float|null
      */
-    public function longitude(): ?float
+    public function longitude(): float|null
     {
         return $this->details()->longitude;
     }

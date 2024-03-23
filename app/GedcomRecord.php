@@ -77,7 +77,7 @@ class GedcomRecord
     protected string $gedcom;
 
     // GEDCOM data (after any pending edits)
-    protected ?string $pending;
+    protected string|null $pending;
 
     /** @var array<Fact> Facts extracted from $gedcom/$pending */
     protected array $facts;
@@ -86,10 +86,10 @@ class GedcomRecord
     protected array $getAllNames = [];
 
     /** @var int|null Cached result */
-    private ?int $getPrimaryName = null;
+    private int|null $getPrimaryName = null;
 
     /** @var int|null Cached result */
-    private ?int $getSecondaryName = null;
+    private int|null $getSecondaryName = null;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
@@ -100,7 +100,7 @@ class GedcomRecord
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct(string $xref, string $gedcom, ?string $pending, Tree $tree)
+    public function __construct(string $xref, string $gedcom, string|null $pending, Tree $tree)
     {
         $this->xref    = $xref;
         $this->gedcom  = $gedcom;
@@ -474,7 +474,7 @@ class GedcomRecord
      *
      * @return string|null
      */
-    public function alternateName(): ?string
+    public function alternateName(): string|null
     {
         if ($this->canShowName() && $this->getPrimaryName() !== $this->getSecondaryName()) {
             $all_names = $this->getAllNames();

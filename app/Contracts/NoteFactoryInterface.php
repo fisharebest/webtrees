@@ -30,14 +30,8 @@ interface NoteFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a note.
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Note|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Note;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): Note|null;
 
     /**
      * Create a note from a row in the database.
@@ -59,5 +53,5 @@ interface NoteFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Note
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): Note;
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Note;
 }

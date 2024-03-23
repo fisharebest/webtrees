@@ -184,7 +184,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getMenu(Tree $tree): Menu|null
     {
         return new Menu($this->title(), route('module', [
             'module' => $this->name(),

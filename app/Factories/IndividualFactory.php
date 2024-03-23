@@ -44,7 +44,7 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
      *
      * @return Individual|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Individual
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): Individual|null
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);
@@ -82,7 +82,7 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
      *
      * @return Individual
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): Individual
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Individual
     {
         return new Individual($xref, $gedcom, $pending, $tree);
     }
@@ -95,7 +95,7 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
      *
      * @return string|null
      */
-    protected function gedcom(string $xref, Tree $tree): ?string
+    protected function gedcom(string $xref, Tree $tree): string|null
     {
         return DB::table('individuals')
             ->where('i_id', '=', $xref)

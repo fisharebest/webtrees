@@ -30,14 +30,8 @@ interface GedcomRecordFactoryInterface
 {
     /**
      * Create a GedcomRecord object.
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return GedcomRecord|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?GedcomRecord;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): GedcomRecord|null;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
@@ -50,7 +44,7 @@ interface GedcomRecordFactoryInterface
      *
      * @return GedcomRecord
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): GedcomRecord;
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): GedcomRecord;
 
     /**
      * Create a GedcomRecord object from a row in the database.

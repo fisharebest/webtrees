@@ -385,6 +385,7 @@ class HomePageService
      */
     private function filterActiveBlocks(Collection $blocks, Collection $active_blocks): Collection
     {
-        return $blocks->map(static fn(string $block_name): ?ModuleBlockInterface => $active_blocks->filter(static fn(ModuleInterface $block): bool => $block->name() === $block_name)->first())->filter();
+        return $blocks->map(static fn(string $block_name): ModuleBlockInterface|null => $active_blocks->filter(static fn(ModuleInterface $block): bool => $block->name() === $block_name)->first())
+            ->filter();
     }
 }

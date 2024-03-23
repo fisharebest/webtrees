@@ -93,7 +93,7 @@ class TreeView
             switch ($firstLetter) {
                 case 'c':
                     $families = Collection::make(explode(',', $json_request))
-                        ->map(static fn(string $xref): ?Family => Registry::familyFactory()->make($xref, $tree))
+                        ->map(static fn(string $xref): Family|null => Registry::familyFactory()->make($xref, $tree))
                         ->filter();
 
                     $r[] = $this->drawChildren($families, 1, true);
@@ -235,7 +235,7 @@ class TreeView
      *
      * @return string
      */
-    private function drawPerson(Individual $person, int $gen, int $state, ?Family $pfamily, string $line, bool $isRoot): string
+    private function drawPerson(Individual $person, int $gen, int $state, Family|null $pfamily, string $line, bool $isRoot): string
     {
         if ($gen < 0) {
             return '';

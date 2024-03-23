@@ -34,7 +34,7 @@ interface ModuleListInterface extends ModuleInterface
      *
      * @return Menu|null
      */
-    public function listMenu(Tree $tree): ?Menu;
+    public function listMenu(Tree $tree): Menu|null;
 
     /**
      * CSS class for the menu.

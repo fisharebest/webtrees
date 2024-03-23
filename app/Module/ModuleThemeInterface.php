@@ -42,7 +42,7 @@ interface ModuleThemeInterface extends ModuleInterface
      *
      * @return Menu|null
      */
-    public function menuThemes(): ?Menu;
+    public function menuThemes(): Menu|null;
 
     /**
      * Generate a list of items for the main menu.
@@ -51,7 +51,7 @@ interface ModuleThemeInterface extends ModuleInterface
      *
      * @return array<Menu>
      */
-    public function genealogyMenu(?Tree $tree): array;
+    public function genealogyMenu(Tree|null $tree): array;
 
     /**
      * Generate a list of items for the user menu.
@@ -60,7 +60,7 @@ interface ModuleThemeInterface extends ModuleInterface
      *
      * @return array<Menu>
      */
-    public function userMenu(?Tree $tree): array;
+    public function userMenu(Tree|null $tree): array;
 
     /**
      * A list of CSS files to include for this page.

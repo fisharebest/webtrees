@@ -30,14 +30,8 @@ interface SharedNoteFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a note.
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return SharedNote|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?SharedNote;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): SharedNote|null;
 
     /**
      * Create a note from a row in the database.
@@ -59,5 +53,5 @@ interface SharedNoteFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return SharedNote
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): SharedNote;
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): SharedNote;
 }

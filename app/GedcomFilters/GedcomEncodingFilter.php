@@ -34,9 +34,9 @@ class GedcomEncodingFilter extends php_user_filter
 {
     private string $data = '';
 
-    private ?EncodingInterface $src_encoding = null;
+    private EncodingInterface|null $src_encoding = null;
 
-    private ?EncodingInterface $dst_encoding = null;
+    private EncodingInterface|null $dst_encoding = null;
 
     /**
      * Initialization

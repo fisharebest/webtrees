@@ -76,7 +76,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getMenu(Tree $tree): Menu|null
     {
         $submenu = [
             $this->menuSearchGeneral($tree),
@@ -130,7 +130,7 @@ class SearchMenuModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return Menu|null
      */
-    protected function menuSearchAndReplace(Tree $tree): ?Menu
+    protected function menuSearchAndReplace(Tree $tree): Menu|null
     {
         if (Auth::isEditor($tree)) {
             $url = route(SearchReplacePage::class, ['tree' => $tree->name()]);

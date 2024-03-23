@@ -77,7 +77,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
      *
      * @return array<int,string>
      */
-    public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
         if (preg_match(self::REGEX_SURN, $this->extractName($father), $match) === 1) {
             if ($sex === 'F') {

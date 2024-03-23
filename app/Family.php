@@ -33,10 +33,10 @@ class Family extends GedcomRecord
     protected const ROUTE_NAME = FamilyPage::class;
 
     // The husband (or first spouse for same-sex couples)
-    private ?Individual $husb = null;
+    private Individual|null $husb = null;
 
     // The wife (or second spouse for same-sex couples)
-    private ?Individual $wife = null;
+    private Individual|null $wife = null;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
@@ -47,7 +47,7 @@ class Family extends GedcomRecord
      *                             empty string for records with pending deletions
      * @param Tree        $tree
      */
-    public function __construct(string $xref, string $gedcom, ?string $pending, Tree $tree)
+    public function __construct(string $xref, string $gedcom, string|null $pending, Tree $tree)
     {
         parent::__construct($xref, $gedcom, $pending, $tree);
 
@@ -105,7 +105,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function husband(int|null $access_level = null): ?Individual
+    public function husband(int|null $access_level = null): Individual|null
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
             $access_level = Auth::PRIV_HIDE;
@@ -125,7 +125,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function wife(int|null $access_level = null): ?Individual
+    public function wife(int|null $access_level = null): Individual|null
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
             $access_level = Auth::PRIV_HIDE;
@@ -181,7 +181,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function spouse(Individual $person, int|null $access_level = null): ?Individual
+    public function spouse(Individual $person, int|null $access_level = null): Individual|null
     {
         if ($person === $this->wife) {
             return $this->husband($access_level);
@@ -253,10 +253,8 @@ class Family extends GedcomRecord
 
     /**
      * get the marriage event
-     *
-     * @return Fact|null
      */
-    public function getMarriage(): ?Fact
+    public function getMarriage(): Fact|null
     {
         return $this->facts(['MARR'])->first();
     }

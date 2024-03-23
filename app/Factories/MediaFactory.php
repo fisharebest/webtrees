@@ -37,14 +37,8 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
 
     /**
      * Create a individual.
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Media|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Media
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): Media|null
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);
@@ -83,7 +77,7 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
      *
      * @return Media
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): Media
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Media
     {
         return new Media($xref, $gedcom, $pending, $tree);
     }
@@ -96,7 +90,7 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
      *
      * @return string|null
      */
-    protected function gedcom(string $xref, Tree $tree): ?string
+    protected function gedcom(string $xref, Tree $tree): string|null
     {
         return DB::table('media')
             ->where('m_id', '=', $xref)

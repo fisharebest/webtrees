@@ -30,14 +30,8 @@ interface RepositoryFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a repository.
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Repository|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Repository;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): Repository|null;
 
     /**
      * Create a source from a row in the database.
@@ -59,5 +53,5 @@ interface RepositoryFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Repository
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): Repository;
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Repository;
 }

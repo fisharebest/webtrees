@@ -133,7 +133,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function familiesToFix(Tree $tree, array $params): ?Collection
+    protected function familiesToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Family::RECORD_TYPE || $params['search-for'] === '') {
             return null;
@@ -154,7 +154,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Individual::RECORD_TYPE || $params['search-for'] === '') {
             return null;
@@ -177,7 +177,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function locationsToFix(Tree $tree, array $params): ?Collection
+    protected function locationsToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Location::RECORD_TYPE || $params['search-for'] === '') {
             return null;
@@ -201,7 +201,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function mediaToFix(Tree $tree, array $params): ?Collection
+    protected function mediaToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Media::RECORD_TYPE || $params['search-for'] === '') {
             return null;
@@ -224,7 +224,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function notesToFix(Tree $tree, array $params): ?Collection
+    protected function notesToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Note::RECORD_TYPE || $params['search-for'] === '') {
             return null;
@@ -248,7 +248,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function repositoriesToFix(Tree $tree, array $params): ?Collection
+    protected function repositoriesToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Repository::RECORD_TYPE || $params['search-for'] === '') {
             return null;
@@ -272,7 +272,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function sourcesToFix(Tree $tree, array $params): ?Collection
+    protected function sourcesToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Source::RECORD_TYPE || $params['search-for'] === '') {
             return null;
@@ -294,7 +294,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<int,string>|null
      */
-    protected function submittersToFix(Tree $tree, array $params): ?Collection
+    protected function submittersToFix(Tree $tree, array $params): Collection|null
     {
         if ($params['type'] !== Submitter::RECORD_TYPE || $params['search-for'] === '') {
             return null;

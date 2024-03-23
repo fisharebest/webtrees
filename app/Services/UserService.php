@@ -44,15 +44,11 @@ class UserService
 {
     /**
      * Find the user with a specified user_id.
-     *
-     * @param int|null $user_id
-     *
-     * @return User|null
      */
-    public function find(?int $user_id): ?User
+    public function find(int|null $user_id): User|null
     {
         return Registry::cache()->array()
-            ->remember('user-' . $user_id, static fn(): ?User => DB::table('user')
+            ->remember('user-' . $user_id, static fn(): User|null => DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()
                 ->map(User::rowMapper())
@@ -61,12 +57,8 @@ class UserService
 
     /**
      * Find the user with a specified email address.
-     *
-     * @param string $email
-     *
-     * @return User|null
      */
-    public function findByEmail(string $email): ?User
+    public function findByEmail(string $email): User|null
     {
         return DB::table('user')
             ->where('email', '=', $email)
@@ -77,12 +69,8 @@ class UserService
 
     /**
      * Find the user with a specified user_name or email address.
-     *
-     * @param string $identifier
-     *
-     * @return User|null
      */
-    public function findByIdentifier(string $identifier): ?User
+    public function findByIdentifier(string $identifier): User|null
     {
         return DB::table('user')
             ->where('user_name', '=', $identifier)
@@ -113,12 +101,8 @@ class UserService
 
     /**
      * Find the user with a specified password reset token.
-     *
-     * @param string $token
-     *
-     * @return User|null
      */
-    public function findByToken(string $token): ?User
+    public function findByToken(string $token): User|null
     {
         return DB::table('user')
             ->join('user_setting AS us1', 'us1.user_id', '=', 'user.user_id')
@@ -135,12 +119,8 @@ class UserService
 
     /**
      * Find the user with a specified user_name.
-     *
-     * @param string $user_name
-     *
-     * @return User|null
      */
-    public function findByUserName(string $user_name): ?User
+    public function findByUserName(string $user_name): User|null
     {
         return DB::table('user')
             ->where('user_name', '=', $user_name)

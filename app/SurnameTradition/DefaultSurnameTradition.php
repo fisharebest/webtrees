@@ -86,7 +86,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      *
      * @return array<int,string>
      */
-    public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
         return [
             $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
@@ -155,7 +155,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      *
      * @return string
      */
-    protected function extractName(?Individual $individual): string
+    protected function extractName(Individual|null $individual): string
     {
         if ($individual instanceof Individual) {
             $fact = $individual

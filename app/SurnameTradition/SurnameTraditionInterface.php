@@ -57,7 +57,7 @@ interface SurnameTraditionInterface
      *
      * @return array<int,string>
      */
-    public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array;
+    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array;
 
     /**
      * What name is given to a new parent

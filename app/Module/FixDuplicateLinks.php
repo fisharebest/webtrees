@@ -92,7 +92,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      *
      * @return Collection<int,string>|null
      */
-    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
         // No DB querying possible?  Select all.
         return $this->individualsToFixQuery($tree, $params)

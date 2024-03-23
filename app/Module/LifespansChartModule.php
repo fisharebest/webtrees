@@ -248,9 +248,9 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     protected function chart(Tree $tree, array $xrefs): ResponseInterface
     {
         /** @var Individual[] $individuals */
-        $individuals = array_map(static fn(string $xref): ?Individual => Registry::individualFactory()->make($xref, $tree), $xrefs);
+        $individuals = array_map(static fn(string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree), $xrefs);
 
-        $individuals = array_filter($individuals, static fn(?Individual $individual): bool => $individual instanceof Individual && $individual->canShow());
+        $individuals = array_filter($individuals, static fn(Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
         // Sort the array in order of birth year
         usort($individuals, Individual::birthDateComparator());

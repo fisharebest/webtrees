@@ -153,10 +153,8 @@ class Auth
 
     /**
      * The ID of the authenticated user, from the current session.
-     *
-     * @return int|null
      */
-    public static function id(): ?int
+    public static function id(): int|null
     {
         $wt_user = Session::get('wt_user');
 
@@ -223,7 +221,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkFamilyAccess(?Family $family, bool $edit = false): Family
+    public static function checkFamilyAccess(Family|null $family, bool $edit = false): Family
     {
         $message = I18N::translate('This family does not exist or you do not have permission to view it.');
 
@@ -252,7 +250,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkHeaderAccess(?Header $header, bool $edit = false): Header
+    public static function checkHeaderAccess(Header|null $header, bool $edit = false): Header
     {
         $message = I18N::translate('This record does not exist or you do not have permission to view it.');
 
@@ -282,7 +280,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkIndividualAccess(?Individual $individual, bool $edit = false, bool $chart = false): Individual
+    public static function checkIndividualAccess(Individual|null $individual, bool $edit = false, bool $chart = false): Individual
     {
         $message = I18N::translate('This individual does not exist or you do not have permission to view it.');
 
@@ -315,7 +313,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkLocationAccess(?Location $location, bool $edit = false): Location
+    public static function checkLocationAccess(Location|null $location, bool $edit = false): Location
     {
         $message = I18N::translate('This record does not exist or you do not have permission to view it.');
 
@@ -344,7 +342,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkMediaAccess(?Media $media, bool $edit = false): Media
+    public static function checkMediaAccess(Media|null $media, bool $edit = false): Media
     {
         $message = I18N::translate('This media object does not exist or you do not have permission to view it.');
 
@@ -373,7 +371,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkNoteAccess(?Note $note, bool $edit = false): Note
+    public static function checkNoteAccess(Note|null $note, bool $edit = false): Note
     {
         $message = I18N::translate('This note does not exist or you do not have permission to view it.');
 
@@ -402,7 +400,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkSharedNoteAccess(?SharedNote $shared_note, bool $edit = false): SharedNote
+    public static function checkSharedNoteAccess(SharedNote|null $shared_note, bool $edit = false): SharedNote
     {
         $message = I18N::translate('This note does not exist or you do not have permission to view it.');
 
@@ -431,7 +429,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkRecordAccess(?GedcomRecord $record, bool $edit = false): GedcomRecord
+    public static function checkRecordAccess(GedcomRecord|null $record, bool $edit = false): GedcomRecord
     {
         $message = I18N::translate('This record does not exist or you do not have permission to view it.');
 
@@ -460,7 +458,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkRepositoryAccess(?Repository $repository, bool $edit = false): Repository
+    public static function checkRepositoryAccess(Repository|null $repository, bool $edit = false): Repository
     {
         $message = I18N::translate('This repository does not exist or you do not have permission to view it.');
 
@@ -489,7 +487,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkSourceAccess(?Source $source, bool $edit = false): Source
+    public static function checkSourceAccess(Source|null $source, bool $edit = false): Source
     {
         $message = I18N::translate('This source does not exist or you do not have permission to view it.');
 
@@ -518,7 +516,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkSubmitterAccess(?Submitter $submitter, bool $edit = false): Submitter
+    public static function checkSubmitterAccess(Submitter|null $submitter, bool $edit = false): Submitter
     {
         $message = I18N::translate('This record does not exist or you do not have permission to view it.');
 
@@ -547,7 +545,7 @@ class Auth
      * @throws HttpNotFoundException
      * @throws HttpAccessDeniedException
      */
-    public static function checkSubmissionAccess(?Submission $submission, bool $edit = false): Submission
+    public static function checkSubmissionAccess(Submission|null $submission, bool $edit = false): Submission
     {
         $message = I18N::translate('This record does not exist or you do not have permission to view it.');
 

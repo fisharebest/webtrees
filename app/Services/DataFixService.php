@@ -45,14 +45,8 @@ class DataFixService
 {
     /**
      * Since we know the type, this is quicker than calling Registry::gedcomRecordFactory()->make().
-     *
-     * @param string $xref
-     * @param Tree   $tree
-     * @param string $type
-     *
-     * @return GedcomRecord|null
      */
-    public function getRecordByType(string $xref, Tree $tree, string $type): ?GedcomRecord
+    public function getRecordByType(string $xref, Tree $tree, string $type): GedcomRecord|null
     {
         switch ($type) {
             case Family::RECORD_TYPE:

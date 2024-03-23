@@ -57,5 +57,5 @@ interface ModuleMenuInterface extends ModuleInterface
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu;
+    public function getMenu(Tree $tree): Menu|null;
 }

@@ -28,12 +28,8 @@ interface EncodingFactoryInterface
 {
     /**
      * Detect an encoding from a GEDCOM header record.
-     *
-     * @param string $header
-     *
-     * @return EncodingInterface|null
      */
-    public function detect(string $header): ?EncodingInterface;
+    public function detect(string $header): EncodingInterface|null;
 
     /**
      * Create a named encoding.

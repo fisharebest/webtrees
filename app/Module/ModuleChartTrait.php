@@ -48,7 +48,7 @@ trait ModuleChartTrait
      *
      * @return Menu|null
      */
-    public function chartBoxMenu(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): Menu|null
     {
         return null;
     }

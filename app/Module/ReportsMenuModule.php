@@ -84,7 +84,7 @@ class ReportsMenuModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getMenu(Tree $tree): Menu|null
     {
         $request    = Registry::container()->get(ServerRequestInterface::class);
         $xref       = Validator::attributes($request)->isXref()->string('xref', '');

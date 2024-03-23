@@ -174,34 +174,17 @@ class GedcomService
         return $tag;
     }
 
-    /**
-     * @param string $text
-     *
-     * @return float|null
-     */
-    public function readLatitude(string $text): ?float
+    public function readLatitude(string $text): float|null
     {
         return $this->readDegrees($text, Gedcom::LATITUDE_NORTH, Gedcom::LATITUDE_SOUTH);
     }
 
-    /**
-     * @param string $text
-     *
-     * @return float|null
-     */
-    public function readLongitude(string $text): ?float
+    public function readLongitude(string $text): float|null
     {
         return $this->readDegrees($text, Gedcom::LONGITUDE_EAST, Gedcom::LONGITUDE_WEST);
     }
 
-    /**
-     * @param string $text
-     * @param string $positive
-     * @param string $negative
-     *
-     * @return float|null
-     */
-    private function readDegrees(string $text, string $positive, string $negative): ?float
+    private function readDegrees(string $text, string $positive, string $negative): float|null
     {
         $text       = trim($text);
         $hemisphere = substr($text, 0, 1);

@@ -125,7 +125,7 @@ class Validator
      */
     public function isBetween(int $minimum, int $maximum): self
     {
-        $this->rules[] = static function (?int $value) use ($minimum, $maximum): ?int {
+        $this->rules[] = static function (int|null $value) use ($minimum, $maximum): int|null {
             if (is_int($value) && $value >= $minimum && $value <= $maximum) {
                 return $value;
             }
@@ -163,7 +163,7 @@ class Validator
      */
     public function isNotEmpty(): self
     {
-        $this->rules[] = static fn (?string $value): ?string => $value !== null && $value !== '' ? $value : null;
+        $this->rules[] = static fn (string|null $value): string|null => $value !== null && $value !== '' ? $value : null;
 
         return $this;
     }
@@ -175,7 +175,7 @@ class Validator
     {
         $base_url = $this->request->getAttribute('base_url', '');
 
-        $this->rules[] = static function (?string $value) use ($base_url): ?string {
+        $this->rules[] = static function (string|null $value) use ($base_url): string|null {
             if ($value !== null) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
@@ -204,7 +204,7 @@ class Validator
      */
     public function isTag(): self
     {
-        $this->rules[] = static function (?string $value): ?string {
+        $this->rules[] = static function (string|null $value): string|null {
             if ($value !== null && preg_match('/^' . Gedcom::REGEX_TAG . '$/', $value) === 1) {
                 return $value;
             }
@@ -279,7 +279,7 @@ class Validator
             throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
         }
 
-        $callback = static fn (?array $value, Closure $rule): ?array => $rule($value);
+        $callback = static fn (array|null $value, Closure $rule): array|null => $rule($value);
 
         return array_reduce($this->rules, $callback, $value) ?? [];
     }
@@ -300,7 +300,7 @@ class Validator
             $value = null;
         }
 
-        $callback = static fn (?float $value, Closure $rule): ?float => $rule($value);
+        $callback = static fn (?float $value, Closure $rule): float|null => $rule($value);
 
         $value = array_reduce($this->rules, $callback, $value) ?? $default;
 
@@ -333,7 +333,7 @@ class Validator
             $value = null;
         }
 
-        $callback = static fn (?int $value, Closure $rule): ?int => $rule($value);
+        $callback = static fn (int|null $value, Closure $rule): int|null => $rule($value);
 
         $value = array_reduce($this->rules, $callback, $value) ?? $default;
 
@@ -374,7 +374,7 @@ class Validator
             $value = null;
         }
 
-        $callback = static fn (?string $value, Closure $rule): ?string => $rule($value);
+        $callback = static fn (string|null $value, Closure $rule): string|null => $rule($value);
 
         $value =  array_reduce($this->rules, $callback, $value) ?? $default;
 
@@ -401,12 +401,7 @@ class Validator
         throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
     }
 
-    /**
-     * @param string $parameter
-     *
-     * @return Tree|null
-     */
-    public function treeOptional(string $parameter = 'tree'): ?Tree
+    public function treeOptional(string $parameter = 'tree'): Tree|null
     {
         $value = $this->parameters[$parameter] ?? null;
 
@@ -417,11 +412,6 @@ class Validator
         throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
     }
 
-    /**
-     * @param string $parameter
-     *
-     * @return UserInterface
-     */
     public function user(string $parameter = 'user'): UserInterface
     {
         $value = $this->parameters[$parameter] ?? null;

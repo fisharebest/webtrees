@@ -52,12 +52,9 @@ class EncodingFactory implements EncodingFactoryInterface
     /**
      * Detect an encoding from a GEDCOM header record.
      *
-     * @param string $header
-     *
-     * @return EncodingInterface|null
      * @throws InvalidGedcomEncodingException
      */
-    public function detect(string $header): ?EncodingInterface
+    public function detect(string $header): EncodingInterface|null
     {
         $utf_bom = [
             '/^' . UTF8::BYTE_ORDER_MARK . '/'    => UTF8::NAME,

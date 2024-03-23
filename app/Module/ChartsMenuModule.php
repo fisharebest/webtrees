@@ -79,12 +79,8 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getMenu(Tree $tree): Menu|null
     {
         $request    = Registry::container()->get(ServerRequestInterface::class);
         $xref       = Validator::attributes($request)->isXref()->string('xref', '');

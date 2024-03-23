@@ -30,14 +30,8 @@ interface SubmitterFactoryInterface extends GedcomRecordFactoryInterface
 {
     /**
      * Create a submitter.
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Submitter|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Submitter;
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): Submitter|null;
 
     /**
      * Create a submitter from a row in the database.
@@ -59,5 +53,5 @@ interface SubmitterFactoryInterface extends GedcomRecordFactoryInterface
      *
      * @return Submitter
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): Submitter;
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Submitter;
 }
