@@ -209,7 +209,7 @@ class I18N
 
     private static Translator $translator;
 
-    private static ?Collator $collator = null;
+    private static Collator|null $collator = null;
 
     /**
      * The preferred locales for this site, or a default list if no preference.

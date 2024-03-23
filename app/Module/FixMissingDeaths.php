@@ -75,7 +75,7 @@ class FixMissingDeaths extends AbstractModule implements ModuleDataFixInterface
      *
      * @return Collection<int,string>|null
      */
-    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
         $query = $this->individualsToFixQuery($tree, $params);
 

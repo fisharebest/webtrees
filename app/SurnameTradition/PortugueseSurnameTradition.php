@@ -72,7 +72,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
      *
      * @return array<int,string>
      */
-    public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
         if (preg_match(self::REGEX_SURNS, $this->extractName($father), $match_father) === 1) {
             $father_surname = $match_father['SURN2'];

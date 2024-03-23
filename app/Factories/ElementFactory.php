@@ -71,12 +71,7 @@ class ElementFactory implements ElementFactoryInterface
         }
     }
 
-    /**
-     * @param string $tag
-     *
-     * @return ElementInterface|null
-     */
-    private function findElementByWildcard(string $tag): ?ElementInterface
+    private function findElementByWildcard(string $tag): ElementInterface|null
     {
         foreach ($this->elements as $tags => $element) {
             if (str_contains($tags, '*')) {

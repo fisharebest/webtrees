@@ -103,7 +103,7 @@ class Relationship
      *
      * @return array<string>|null [nominative, genitive] or null
      */
-    public function match(array $nodes, array $patterns): ?array
+    public function match(array $nodes, array $patterns): array|null
     {
         $captures = [];
 

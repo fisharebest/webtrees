@@ -74,10 +74,8 @@ class Media extends GedcomRecord
 
     /**
      * Get the first media file that contains an image.
-     *
-     * @return MediaFile|null
      */
-    public function firstImageFile(): ?MediaFile
+    public function firstImageFile(): MediaFile|null
     {
         return $this->mediaFiles()
             ->first(static fn(MediaFile $media_file): bool => $media_file->isImage() && !$media_file->isExternal());

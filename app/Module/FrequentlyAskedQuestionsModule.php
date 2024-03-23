@@ -98,7 +98,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getMenu(Tree $tree): Menu|null
     {
         if ($this->faqsExist($tree, I18N::languageTag())) {
             return new Menu($this->title(), route('module', [

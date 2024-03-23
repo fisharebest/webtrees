@@ -59,7 +59,7 @@ class TimestampFactory implements TimestampFactoryInterface
      *
      * @return TimestampInterface
      */
-    public function fromString(?string $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface
+    public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface
     {
         $string    ??= date($format);
         $timestamp = date_create_from_format($format, $string);

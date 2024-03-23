@@ -100,12 +100,7 @@ class CompressResponse implements MiddlewareInterface
         return $response;
     }
 
-    /**
-     * @param RequestInterface $request
-     *
-     * @return string|null
-     */
-    protected function compressionMethod(RequestInterface $request): ?string
+    protected function compressionMethod(RequestInterface $request): string|null
     {
         $accept_encoding = strtolower($request->getHeaderLine('accept-encoding'));
         $zlib_available  = extension_loaded('zlib');

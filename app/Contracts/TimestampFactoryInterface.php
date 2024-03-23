@@ -39,7 +39,7 @@ interface TimestampFactoryInterface
      *
      * @return TimestampInterface
      */
-    public function fromString(?string $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface;
+    public function fromString(string|null $string, string $format = 'Y-m-d H:i:s', UserInterface|null $user = null): TimestampInterface;
 
     /**
      * @param UserInterface|null $user

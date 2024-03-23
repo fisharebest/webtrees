@@ -2796,7 +2796,7 @@ class Statistics implements
      *
      * @return string|null
      */
-    public function callBlock(string $block = '', ...$params): ?string
+    public function callBlock(string $block = '', ...$params): string|null
     {
         /** @var ModuleBlockInterface|null $module */
         $module = $this->module_service

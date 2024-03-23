@@ -30,13 +30,7 @@ use League\CommonMark\Parser\MarkdownParserStateInterface;
  */
 class CensusTableStartParser implements BlockStartParserInterface
 {
-    /**
-     * @param Cursor                       $cursor
-     * @param MarkdownParserStateInterface $parserState
-     *
-     * @return BlockStart|null
-     */
-    public function tryStart(Cursor $cursor, MarkdownParserStateInterface $parserState): ?BlockStart
+    public function tryStart(Cursor $cursor, MarkdownParserStateInterface $parserState): BlockStart|null
     {
         if ($cursor->getLine() === CensusTableExtension::CA_PREFIX) {
             return BlockStart::of(new CensusTableContinueParser())

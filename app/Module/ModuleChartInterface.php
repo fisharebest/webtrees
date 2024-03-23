@@ -29,12 +29,8 @@ interface ModuleChartInterface extends ModuleInterface
 {
     /**
      * A menu item for this chart for an individual box in a chart.
-     *
-     * @param Individual $individual
-     *
-     * @return Menu|null
      */
-    public function chartBoxMenu(Individual $individual): ?Menu;
+    public function chartBoxMenu(Individual $individual): Menu|null;
 
     /**
      * A main menu item for this chart.

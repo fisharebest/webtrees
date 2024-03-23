@@ -344,7 +344,7 @@ class BadBotBlocker implements MiddlewareInterface
     private function fetchIpRangesForAsn(string $asn): array
     {
         return Registry::cache()->file()->remember('whois-asn-' . $asn, static function () use ($asn): array {
-            $mapper = static fn (AsnRouteInfo $route_info): ?RangeInterface => IPFactory::parseRangeString($route_info->route ?: $route_info->route6);
+            $mapper = static fn (AsnRouteInfo $route_info): RangeInterface|null => IPFactory::parseRangeString($route_info->route ?: $route_info->route6);
 
             try {
                 $loader = new CurlLoader(self::WHOIS_TIMEOUT);

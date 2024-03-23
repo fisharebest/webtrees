@@ -69,7 +69,7 @@ trait ModuleMenuTrait
      *
      * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getMenu(Tree $tree): Menu|null
     {
         return null;
     }

@@ -71,7 +71,7 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition
      *
      * @return array<int,string>
      */
-    public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
+    public function newChildNames(Individual|null $father, Individual|null $mother, string $sex): array
     {
         if (preg_match(self::REGEX_GIVN, $this->extractName($father), $match) === 1) {
             switch ($sex) {

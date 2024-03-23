@@ -100,7 +100,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      *
      * @return Collection<int,string>|null
      */
-    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    protected function individualsToFix(Tree $tree, array $params): Collection|null
     {
         return $this->individualsToFixQuery($tree, $params)
             ->where(static function (Builder $query): void {

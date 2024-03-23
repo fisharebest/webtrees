@@ -276,10 +276,8 @@ class Fact
 
     /**
      * Get the PLAC:MAP:LATI for the fact.
-     *
-     * @return float|null
      */
-    public function latitude(): ?float
+    public function latitude(): float|null
     {
         if (preg_match('/\n4 LATI (.+)/', $this->gedcom, $match)) {
             $gedcom_service = new GedcomService();
@@ -292,10 +290,8 @@ class Fact
 
     /**
      * Get the PLAC:MAP:LONG for the fact.
-     *
-     * @return float|null
      */
-    public function longitude(): ?float
+    public function longitude(): float|null
     {
         if (preg_match('/\n4 LONG (.+)/', $this->gedcom, $match)) {
             $gedcom_service = new GedcomService();

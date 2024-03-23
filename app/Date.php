@@ -45,7 +45,7 @@ class Date
     public string $qual2 = '';
 
     // Optional second date
-    private ?AbstractCalendarDate $date2 = null;
+    private AbstractCalendarDate|null $date2 = null;
 
     // Optional text, as included with an INTerpreted date
     private string $text = '';

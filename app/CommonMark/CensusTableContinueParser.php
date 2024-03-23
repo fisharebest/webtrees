@@ -66,7 +66,7 @@ class CensusTableContinueParser extends AbstractBlockContinueParser
      *
      * @return BlockContinue|null
      */
-    public function tryContinue(Cursor $cursor, BlockContinueParserInterface $activeBlockParser): ?BlockContinue
+    public function tryContinue(Cursor $cursor, BlockContinueParserInterface $activeBlockParser): BlockContinue|null
     {
         $line = $cursor->getLine();
 

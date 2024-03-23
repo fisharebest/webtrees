@@ -175,7 +175,7 @@ class MapDataService
      *
      * @return void
      */
-    public function deleteUnusedLocations(?int $parent_location_id, array $parent_place_ids): void
+    public function deleteUnusedLocations(int|null $parent_location_id, array $parent_place_ids): void
     {
         if ($parent_location_id === null) {
             $location_query = DB::table('place_location')
@@ -212,7 +212,7 @@ class MapDataService
      *
      * @return Collection<int,object>
      */
-    public function getPlaceListLocation(?int $parent_id): Collection
+    public function getPlaceListLocation(int|null $parent_id): Collection
     {
         $prefix = DB::connection()->getTablePrefix();
 

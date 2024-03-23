@@ -141,7 +141,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return Menu|null
      */
-    public function chartBoxMenu(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): Menu|null
     {
         return $this->chartMenu($individual);
     }

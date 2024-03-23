@@ -34,7 +34,7 @@ use function trim;
  */
 class SlugFactory implements SlugFactoryInterface
 {
-    private ?Transliterator $transliterator = null;
+    private Transliterator|null $transliterator = null;
 
     public function __construct()
     {

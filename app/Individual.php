@@ -45,11 +45,11 @@ class Individual extends GedcomRecord
     protected const ROUTE_NAME = IndividualPage::class;
 
     /** Used in some lists to keep track of this individual’s generation in that list */
-    public ?int $generation = null;
+    public int|null $generation = null;
 
-    private ?Date $estimated_birth_date = null;
+    private Date|null $estimated_birth_date = null;
 
-    private ?Date $estimated_death_date = null;
+    private Date|null $estimated_death_date = null;
 
     /**
      * A closure which will compare individuals by birth date.
@@ -345,10 +345,8 @@ class Individual extends GedcomRecord
 
     /**
      * Find the highlighted media object for an individual
-     *
-     * @return MediaFile|null
      */
-    public function findHighlightedMediaFile(): ?MediaFile
+    public function findHighlightedMediaFile(): MediaFile|null
     {
         $fact = $this->facts(['OBJE'])
             ->first(static function (Fact $fact): bool {
@@ -726,7 +724,7 @@ class Individual extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function getCurrentSpouse(): ?Individual
+    public function getCurrentSpouse(): Individual|null
     {
         $family = $this->spouseFamilies()->last();
 

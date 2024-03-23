@@ -37,14 +37,8 @@ class SubmissionFactory extends AbstractGedcomRecordFactory implements Submissio
 
     /**
      * Create a submission.
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Submission|null
      */
-    public function make(string $xref, Tree $tree, string|null $gedcom = null): ?Submission
+    public function make(string $xref, Tree $tree, string|null $gedcom = null): Submission|null
     {
         return Registry::cache()->array()->remember(self::class . $xref . '@' . $tree->id(), function () use ($xref, $tree, $gedcom) {
             $gedcom ??= $this->gedcom($xref, $tree);
@@ -83,7 +77,7 @@ class SubmissionFactory extends AbstractGedcomRecordFactory implements Submissio
      *
      * @return Submission
      */
-    public function new(string $xref, string $gedcom, ?string $pending, Tree $tree): Submission
+    public function new(string $xref, string $gedcom, string|null $pending, Tree $tree): Submission
     {
         return new Submission($xref, $gedcom, $pending, $tree);
     }
@@ -96,7 +90,7 @@ class SubmissionFactory extends AbstractGedcomRecordFactory implements Submissio
      *
      * @return string|null
      */
-    protected function gedcom(string $xref, Tree $tree): ?string
+    protected function gedcom(string $xref, Tree $tree): string|null
     {
         return DB::table('other')
             ->where('o_id', '=', $xref)

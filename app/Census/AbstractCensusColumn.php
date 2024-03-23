@@ -64,10 +64,6 @@ class AbstractCensusColumn
 
     /**
      * Find the father of an individual
-     *
-     * @param Individual $individual
-     *
-     * @return Individual|null
      */
     public function father(Individual $individual): ?Individual
     {
@@ -82,10 +78,6 @@ class AbstractCensusColumn
 
     /**
      * Find the mother of an individual
-     *
-     * @param Individual $individual
-     *
-     * @return Individual|null
      */
     public function mother(Individual $individual): ?Individual
     {
@@ -100,10 +92,6 @@ class AbstractCensusColumn
 
     /**
      * Find the current spouse family of an individual
-     *
-     * @param Individual $individual
-     *
-     * @return Family|null
      */
     public function spouseFamily(Individual $individual): ?Family
     {
@@ -117,8 +105,6 @@ class AbstractCensusColumn
     /**
      * What was an individual's likely name on a given date, allowing
      * for marriages and married names.
-     *
-     * @param Individual $individual
      *
      * @return array<string>
      */
@@ -151,8 +137,6 @@ class AbstractCensusColumn
 
     /**
      * When did this census occur
-     *
-     * @return Date
      */
     public function date(): Date
     {

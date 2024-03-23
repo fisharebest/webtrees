@@ -252,14 +252,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
         ]);
     }
 
-    /**
-     * @param string $type
-     * @param string $xref
-     * @param Tree   $tree
-     *
-     * @return GedcomRecord|null
-     */
-    private function getRecordForType(string $type, string $xref, Tree $tree): ?GedcomRecord
+    private function getRecordForType(string $type, string $xref, Tree $tree): GedcomRecord|null
     {
         switch ($type) {
             case 'indi':

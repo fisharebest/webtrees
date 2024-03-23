@@ -160,7 +160,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
             ->uniqueStrict()
-            ->map(static fn(string $xref): ?Individual => Registry::individualFactory()->make($xref, $tree))
+            ->map(static fn(string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree))
             ->filter()
             ->filter(GedcomRecord::accessFilter());
 
@@ -179,9 +179,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ]);
         }
 
-        $individuals = array_map(static fn(string $xref): ?Individual => Registry::individualFactory()->make($xref, $tree), $xrefs);
+        $individuals = array_map(static fn(string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree), $xrefs);
 
-        $individuals = array_filter($individuals, static fn(?Individual $individual): bool => $individual instanceof Individual && $individual->canShow());
+        $individuals = array_filter($individuals, static fn(Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
         if ($ajax) {
             $this->layout = 'layouts/ajax';
@@ -237,9 +237,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     protected function chart(Tree $tree, array $xrefs, int $scale): ResponseInterface
     {
         /** @var Individual[] $individuals */
-        $individuals = array_map(static fn(string $xref): ?Individual => Registry::individualFactory()->make($xref, $tree), $xrefs);
+        $individuals = array_map(static fn(string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree), $xrefs);
 
-        $individuals = array_filter($individuals, static fn(?Individual $individual): bool => $individual instanceof Individual && $individual->canShow());
+        $individuals = array_filter($individuals, static fn(Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
         $baseyear    = (int) date('Y');
         $topyear     = 0;

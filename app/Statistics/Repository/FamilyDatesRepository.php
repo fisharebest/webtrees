@@ -69,7 +69,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      *
      * @return object{id:string,year:int,fact:string,type:string}|null
      */
-    private function eventQuery(string $fact, string $operation): ?object
+    private function eventQuery(string $fact, string $operation): object|null
     {
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])

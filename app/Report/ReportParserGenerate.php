@@ -1899,7 +1899,7 @@ class ReportParserGenerate extends ReportParserBase
                             ->groupBy(['xref']);
                     })
                     ->get()
-                    ->map(fn (object $row): ?GedcomRecord => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom ?: $row->old_gedcom))
+                    ->map(fn (object $row): GedcomRecord|null => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom ?: $row->old_gedcom))
                     ->filter()
                     ->all();
                 break;

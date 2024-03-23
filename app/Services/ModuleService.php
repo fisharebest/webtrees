@@ -696,7 +696,7 @@ class ModuleService
 
                 return strlen($module_name) <= 30;
             })
-            ->map(static function (string $filename): ?ModuleCustomInterface {
+            ->map(static function (string $filename): ModuleCustomInterface|null {
                 $module = self::load($filename);
 
                 if ($module instanceof ModuleCustomInterface) {
@@ -713,12 +713,8 @@ class ModuleService
 
     /**
      * Load a custom module in a static scope, to prevent it from modifying local or object variables.
-     *
-     * @param string $filename
-     *
-     * @return ModuleInterface|null
      */
-    private static function load(string $filename): ?ModuleInterface
+    private static function load(string $filename): ModuleInterface|null
     {
         try {
             return include $filename;
@@ -829,13 +825,8 @@ class ModuleService
 
     /**
      * Find a specified module, if it is currently active.
-     *
-     * @param string $module_name
-     * @param bool   $include_disabled
-     *
-     * @return ModuleInterface|null
      */
-    public function findByName(string $module_name, bool $include_disabled = false): ?ModuleInterface
+    public function findByName(string $module_name, bool $include_disabled = false): ModuleInterface|null
     {
         return $this->all($include_disabled)
             ->first(static fn(ModuleInterface $module): bool => $module->name() === $module_name);

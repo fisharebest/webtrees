@@ -89,8 +89,8 @@ class DataFixUpdateAll implements RequestHandlerInterface
 
         /** @var Collection<int,GedcomRecord> $records */
         $records = $rows
-            ->map(fn(object $row): ?GedcomRecord => $this->data_fix_service->getRecordByType($row->xref, $tree, $row->type))
-            ->filter(static fn(?GedcomRecord $record): bool => $record instanceof GedcomRecord && !$record->isPendingDeletion() && $module->doesRecordNeedUpdate($record, $params));
+            ->map(fn(object $row): GedcomRecord|null => $this->data_fix_service->getRecordByType($row->xref, $tree, $row->type))
+            ->filter(static fn(GedcomRecord|null $record): bool => $record instanceof GedcomRecord && !$record->isPendingDeletion() && $module->doesRecordNeedUpdate($record, $params));
 
         foreach ($records as $record) {
             $module->updateRecord($record, $params);

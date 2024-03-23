@@ -146,12 +146,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     /**
      * A menu, to be added to the main application menu.
-     *
-     * @param Tree $tree
-     *
-     * @return Menu|null
      */
-    public function getMenu(Tree $tree): ?Menu
+    public function getMenu(Tree $tree): Menu|null
     {
         $request = Registry::container()->get(ServerRequestInterface::class);
         $route   = Validator::attributes($request)->route();
@@ -413,7 +409,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
 
         // Fetch all the records in the cart.
-        $records = array_map(static fn(string $xref): ?GedcomRecord => Registry::gedcomRecordFactory()->make($xref, $tree), $xrefs);
+        $records = array_map(static fn(string $xref): GedcomRecord|null => Registry::gedcomRecordFactory()->make($xref, $tree), $xrefs);
 
         // Some records may have been deleted after they were added to the cart.
         $records = array_filter($records);

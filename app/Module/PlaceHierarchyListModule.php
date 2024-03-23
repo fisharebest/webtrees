@@ -338,7 +338,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      *
      * @return array{columns:array<array<Place>>,place:Place,tree:Tree,col_class:string}|null
      */
-    private function getHierarchy(Place $place): ?array
+    private function getHierarchy(Place $place): array|null
     {
         $child_places = $place->getChildPlaces();
         $numfound     = count($child_places);

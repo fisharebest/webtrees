@@ -60,7 +60,7 @@ class ColorsTheme extends CloudsTheme
      *
      * @return array<Menu>
      */
-    public function userMenu(?Tree $tree): array
+    public function userMenu(Tree|null $tree): array
     {
         return array_filter([
             $this->menuPendingChanges($tree),

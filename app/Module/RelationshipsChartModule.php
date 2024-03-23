@@ -131,7 +131,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      *
      * @return Menu|null
      */
-    public function chartBoxMenu(Individual $individual): ?Menu
+    public function chartBoxMenu(Individual $individual): Menu|null
     {
         return $this->chartMenu($individual);
     }

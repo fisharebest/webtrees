@@ -50,7 +50,7 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
      *
      * @return array<Menu>
      */
-    public function genealogyMenu(?Tree $tree): array
+    public function genealogyMenu(Tree|null $tree): array
     {
         $primary_menu = $this->baseGenealogyMenu($tree);
 
