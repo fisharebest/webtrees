@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2023-10-24 09:15+0000\n"
+"PO-Revision-Date: 2024-03-24 21:39+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -6879,7 +6879,7 @@ msgstr "Peetoom"
 
 #: app/GedcomCode/GedcomCodeRela.php:141 app/GedcomCode/GedcomCodeRela.php:147
 msgid "Godmother"
-msgstr "Peettante"
+msgstr "Peetmoeder"
 
 #. I18N: gedcom tag _GODP
 #: app/GedcomCode/GedcomCodeRela.php:149 app/GedcomTag.php:1513
@@ -10209,7 +10209,7 @@ msgstr "Verpleegkundige"
 #: app/GedcomCode/GedcomCodeRela.php:201
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr "Verpleegkundige"
+msgstr "Verpleegster"
 
 #: app/GedcomCode/GedcomCodeRela.php:199
 msgctxt "MALE"
