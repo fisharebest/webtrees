@@ -76,7 +76,7 @@
         "symfony/mailer": "5.4.36",
         "symfony/polyfill-mbstring": "1.29.0",
         "symfony/polyfill-php80": "1.29.0",
-        "tecnickcom/tcpdf": "6.6.5"
+        "tecnickcom/tcpdf": "6.7.4"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -86,7 +86,7 @@
         "composer/composer": "2.7.2",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "9.6.17"
+        "phpunit/phpunit": "9.6.18"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
