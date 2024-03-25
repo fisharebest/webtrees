@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac291bcb7a7eb48bf4b60b64efc78398",
+    "content-hash": "dc633f919f96c7fa562da1e4f7d5db3f",
     "packages": [
         {
             "name": "aura/router",
@@ -5850,20 +5850,20 @@
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.6.5",
+            "version": "6.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "5fce932fcee4371865314ab7f6c0d85423c5c7ce"
+                "reference": "f9fd21807cbb5d43ed62c685e2d6467515d31746"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/5fce932fcee4371865314ab7f6c0d85423c5c7ce",
-                "reference": "5fce932fcee4371865314ab7f6c0d85423c5c7ce",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/f9fd21807cbb5d43ed62c685e2d6467515d31746",
+                "reference": "f9fd21807cbb5d43ed62c685e2d6467515d31746",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.5.0"
             },
             "type": "library",
             "autoload": {
@@ -5910,7 +5910,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.6.5"
+                "source": "https://github.com/tecnickcom/TCPDF/tree/6.7.4"
             },
             "funding": [
                 {
@@ -5918,7 +5918,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-09-06T15:09:26+00:00"
+            "time": "2024-03-21T09:36:59+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -5998,28 +5998,28 @@
     "packages-dev": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "3ce240142f6d59b808dd65c1f52f7a1c252e6cfd"
+                "reference": "0c5ccfcfea312b5c5a190a21ac5cef93f74baf99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/3ce240142f6d59b808dd65c1f52f7a1c252e6cfd",
-                "reference": "3ce240142f6d59b808dd65c1f52f7a1c252e6cfd",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/0c5ccfcfea312b5c5a190a21ac5cef93f74baf99",
+                "reference": "0c5ccfcfea312b5c5a190a21ac5cef93f74baf99",
                 "shasum": ""
             },
             "require": {
                 "ext-openssl": "*",
                 "ext-pcre": "*",
-                "php": "^5.3.2 || ^7.0 || ^8.0"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.12.55",
+                "phpstan/phpstan": "^1.10",
                 "psr/log": "^1.0",
                 "symfony/phpunit-bridge": "^4.2 || ^5",
-                "symfony/process": "^2.5 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "symfony/process": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "type": "library",
             "extra": {
@@ -6054,7 +6054,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.4.1"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.0"
             },
             "funding": [
                 {
@@ -6070,20 +6070,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-23T10:16:52+00:00"
+            "time": "2024-03-15T14:00:32+00:00"
         },
         {
             "name": "composer/class-map-generator",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "953cc4ea32e0c31f2185549c7d216d7921f03da9"
+                "reference": "8286a62d243312ed99b3eee20d5005c961adb311"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/953cc4ea32e0c31f2185549c7d216d7921f03da9",
-                "reference": "953cc4ea32e0c31f2185549c7d216d7921f03da9",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/8286a62d243312ed99b3eee20d5005c961adb311",
+                "reference": "8286a62d243312ed99b3eee20d5005c961adb311",
                 "shasum": ""
             },
             "require": {
@@ -6127,7 +6127,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.1.0"
+                "source": "https://github.com/composer/class-map-generator/tree/1.1.1"
             },
             "funding": [
                 {
@@ -6143,7 +6143,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-30T13:58:57+00:00"
+            "time": "2024-03-15T12:53:41+00:00"
         },
         {
             "name": "composer/composer",
@@ -6330,16 +6330,16 @@
         },
         {
             "name": "composer/pcre",
-            "version": "3.1.2",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace"
+                "reference": "5b16e25a5355f1f3afdfc2f954a0a80aec4826a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/4775f35b2d70865807c89d32c8e7385b86eb0ace",
-                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/5b16e25a5355f1f3afdfc2f954a0a80aec4826a8",
+                "reference": "5b16e25a5355f1f3afdfc2f954a0a80aec4826a8",
                 "shasum": ""
             },
             "require": {
@@ -6381,7 +6381,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/3.1.2"
+                "source": "https://github.com/composer/pcre/tree/3.1.3"
             },
             "funding": [
                 {
@@ -6397,7 +6397,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-07T15:38:35+00:00"
+            "time": "2024-03-19T10:26:25+00:00"
         },
         {
             "name": "composer/semver",
@@ -7454,16 +7454,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.17",
+            "version": "9.6.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd"
+                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1a156980d78a6666721b7e8e8502fe210b587fcd",
-                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
+                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
                 "shasum": ""
             },
             "require": {
@@ -7537,7 +7537,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.17"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.18"
             },
             "funding": [
                 {
@@ -7553,7 +7553,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-23T13:14:51+00:00"
+            "time": "2024-03-21T12:07:32+00:00"
         },
         {
             "name": "react/promise",
@@ -8430,16 +8430,16 @@
         },
         {
             "name": "sebastian/resource-operations",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/resource-operations.git",
-                "reference": "0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8"
+                "reference": "05d5692a7993ecccd56a03e40cd7e5b09b1d404e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8",
-                "reference": "0f4443cb3a1d92ce809899753bc0d5d5a8dd19a8",
+                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/05d5692a7993ecccd56a03e40cd7e5b09b1d404e",
+                "reference": "05d5692a7993ecccd56a03e40cd7e5b09b1d404e",
                 "shasum": ""
             },
             "require": {
@@ -8451,7 +8451,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-main": "3.0-dev"
                 }
             },
             "autoload": {
@@ -8472,8 +8472,7 @@
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
             "support": {
-                "issues": "https://github.com/sebastianbergmann/resource-operations/issues",
-                "source": "https://github.com/sebastianbergmann/resource-operations/tree/3.0.3"
+                "source": "https://github.com/sebastianbergmann/resource-operations/tree/3.0.4"
             },
             "funding": [
                 {
@@ -8481,8 +8480,7 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
-            "time": "2020-09-28T06:45:17+00:00"
+            "time": "2024-03-14T16:00:52+00:00"
         },
         {
             "name": "sebastian/type",
