@@ -10,15 +10,17 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: ['ubuntu-20.04']
+        operating-system: ['ubuntu-latest']
         php-version: ['7.4']
+      fail-fast: false
 
     steps:
-      - uses: shivammathur/setup-php@master
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
+          ini-file: 'development'
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - run: composer validate
 
