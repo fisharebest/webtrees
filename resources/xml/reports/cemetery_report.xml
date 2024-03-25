@@ -33,6 +33,8 @@
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Burials')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
+		</Header>
+		<Body>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
@@ -61,8 +63,7 @@
 			<TextBox border="1" newline="1">
 				<Text style="label"><var var="I18N::translate('Note')" /></Text>
 			</TextBox>
-		</Header>
-		<Body>
+
 			<List list="individual" filter1="BURI:PLAC CONTAINS $deathplace" filter2="LIKE /%\n1 BURI%/" sortby="$sortby">
 				<Cell style="text" width="$namewidth"><GetPersonName id="" />
 					<if condition="$adlist=='_MARNM'">

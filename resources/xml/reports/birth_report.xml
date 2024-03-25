@@ -30,20 +30,24 @@
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Births')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
-
-			<SetVar name="fill" value="" />
-			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<Cell bgcolor="$fill" border="1" width="200" style="label"><var var="I18N::translate('Name')" /></Cell>
-
-			<SetVar name="fill" value="" />
-			<if condition="$sortby=='BIRT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<Cell bgcolor="$fill" border="1" width="100" style="label"><var var="I18N::translate('Date')" /></Cell>
-
-			<Cell border="1" width="150" style="label"><var var="I18N::translate('Place')" /></Cell>
-			<Cell border="1" newline="1" style="label"><var var="I18N::translate('Source')" /></Cell>
 		</Header>
 
 		<Body>
+			<setvar name="dval" value="10" />
+			<setvar name="dump" value="$dval" />
+			<SetVar name="nbsp" value="%26#xA0;"/>
+
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
+			<Cell bgcolor="$fill" fill="1" border="1" width="200" style="label"><var var="I18N::translate('Name')" /></Cell>
+
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='BIRT:DATE' or $sortby=='BIRT%3ADATE'"><SetVar name="fill" value="#AAAAAA" /></if>
+			<Cell bgcolor="$fill" fill="1" border="1" width="100" style="label"><var var="I18N::translate('Date')" /></Cell>
+
+			<Cell border="1" width="150" style="label"><var var="I18N::translate('Place')" /></Cell>
+			<Cell border="1" newline="1" style="label"><var var="I18N::translate('Source')" /></Cell>
+
 			<List list="individual" filter1="BIRT:PLAC CONTAINS $birthplace" filter2="BIRT:DATE GTE $birthdate1" filter3="BIRT:DATE LTE $birthdate2" filter4="NAME CONTAINS $name" sortby="$sortby">
 				<Cell width="200" style="text"><GetPersonName id="" /></Cell>
 				<Cell width="100" style="text"><GedcomValue tag="BIRT:DATE" newline="1" /></Cell>
