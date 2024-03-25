@@ -1042,17 +1042,12 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: "#^Cannot access property \\$type on mixed\\.$#"
-			count: 2
+			count: 1
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
-			count: 6
+			count: 2
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
@@ -4992,6 +4987,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$hash of function password_needs_rehash expects string, mixed given\\.$#"
+			count: 1
+			path: app/User.php
+
+		-
+			message: "#^Parameter \\#2 \\$algo of function password_needs_rehash expects int, string given\\.$#"
 			count: 1
 			path: app/User.php
 
