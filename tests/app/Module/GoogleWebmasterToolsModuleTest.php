@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(GoogleWebmasterToolsModule::class)]
 class GoogleWebmasterToolsModuleTest extends TestCase
 {

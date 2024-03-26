@@ -28,7 +28,6 @@ use PHPUnit\Framework\TestCase;
 use function chr;
 use function iconv;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(CP850::class)]
 class CP850Test extends TestCase

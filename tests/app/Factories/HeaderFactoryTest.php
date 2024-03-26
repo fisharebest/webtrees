@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Factories;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(HeaderFactory::class)]
 class HeaderFactoryTest extends TestCase
 {

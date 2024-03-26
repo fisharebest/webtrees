@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ServerRequestInterface;
 
-
 #[CoversClass(AbstractElement::class)]
 #[CoversClass(AbstractXrefElement::class)]
 #[CoversClass(XrefFamily::class)]
@@ -91,7 +90,6 @@ class XrefFamilyTest extends TestCase
         $factory->expects(self::once())
             ->method('make')
             ->willReturn($record);
-
 
         Registry::familyFactory($factory);
 

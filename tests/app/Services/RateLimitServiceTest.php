@@ -31,7 +31,6 @@ use function implode;
 use function range;
 use function time;
 
-
 #[CoversClass(RateLimitService::class)]
 class RateLimitServiceTest extends TestCase
 {

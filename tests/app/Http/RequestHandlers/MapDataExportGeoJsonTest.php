@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(MapDataExportGeoJson::class)]
 class MapDataExportGeoJsonTest extends TestCase
 {

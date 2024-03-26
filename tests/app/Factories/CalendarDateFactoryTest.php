@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Date\RomanDate;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CalendarDateFactory::class)]
 class CalendarDateFactoryTest extends TestCase
 {

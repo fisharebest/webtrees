@@ -30,7 +30,6 @@ use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Server\RequestHandlerInterface;
 
-
 #[CoversClass(HandleExceptions::class)]
 class HandleExceptionsTest extends TestCase
 {

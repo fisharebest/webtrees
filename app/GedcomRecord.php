@@ -635,7 +635,6 @@ class GedcomRecord
                         $subtags = array_combine(range(1, count($subtags)), $subtags);
                     }
 
-
                     $facts = $facts
                         ->sort(static function (Fact $x, Fact $y) use ($subtags): int {
                             $sort_x = array_search($x->tag(), $subtags, true) ?: PHP_INT_MAX;

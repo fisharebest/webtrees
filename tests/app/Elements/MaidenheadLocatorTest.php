@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AbstractElement::class)]
 #[CoversClass(MaidenheadLocator::class)]
 class MaidenheadLocatorTest extends AbstractElementTestCase
@@ -35,7 +34,6 @@ class MaidenheadLocatorTest extends AbstractElementTestCase
 
         self::$element = new MaidenheadLocator('label');
     }
-
 
     public function testCanonical(): void
     {

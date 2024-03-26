@@ -25,7 +25,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 use function error_reporting;
 
-
 #[CoversClass(Webtrees::class)]
 class WebtreesTest extends TestCase
 {

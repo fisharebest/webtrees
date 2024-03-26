@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CensusColumnBirthDaySlashMonth::class)]
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnBirthDaySlashMonthTest extends TestCase

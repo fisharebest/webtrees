@@ -30,7 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-
 #[CoversClass(AuthAdministrator::class)]
 class AuthAdministratorTest extends TestCase
 {

@@ -207,7 +207,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         ]);
     }
 
-
     /**
      * @param ServerRequestInterface $request
      *

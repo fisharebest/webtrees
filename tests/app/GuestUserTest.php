@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(GuestUser::class)]
 class GuestUserTest extends TestCase
 {

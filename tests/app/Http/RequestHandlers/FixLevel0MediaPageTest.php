@@ -23,7 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(FixLevel0MediaPageTest::class)]
 class FixLevel0MediaPageTest extends TestCase
 {

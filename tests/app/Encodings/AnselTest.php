@@ -37,7 +37,6 @@ use function strlen;
 
 use const PREG_SPLIT_NO_EMPTY;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(ANSEL::class)]
 #[CoversClass(UTF8::class)]

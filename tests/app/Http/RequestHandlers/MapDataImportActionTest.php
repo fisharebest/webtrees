@@ -28,7 +28,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 use function dirname;
 
-
 #[CoversClass(MapDataImportAction::class)]
 class MapDataImportActionTest extends TestCase
 {

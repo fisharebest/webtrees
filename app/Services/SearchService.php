@@ -1059,7 +1059,6 @@ class SearchService
             }
         }
 
-
         return $collection;
     }
 

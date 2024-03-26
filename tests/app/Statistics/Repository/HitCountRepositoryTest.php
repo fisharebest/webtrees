@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(HitCountRepository::class)]
 class HitCountRepositoryTest extends TestCase
 {

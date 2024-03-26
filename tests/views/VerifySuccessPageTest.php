@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-
 class VerifySuccessPageTest extends AbstractViewTest
 {
     /**

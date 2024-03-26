@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AccountDelete::class)]
 class AccountDeleteTest extends TestCase
 {

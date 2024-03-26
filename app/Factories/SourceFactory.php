@@ -35,7 +35,6 @@ class SourceFactory extends AbstractGedcomRecordFactory implements SourceFactory
 {
     private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Source::RECORD_TYPE . '/';
 
-
     /**
      * Create a individual.
      */

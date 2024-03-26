@@ -35,7 +35,6 @@ use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(EncodingFactory::class)]
 class EncodingFactoryTest extends TestCase
 {

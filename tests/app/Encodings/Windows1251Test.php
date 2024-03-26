@@ -30,7 +30,6 @@ use function dechex;
 use function iconv;
 use function range;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(Windows1251::class)]
 class Windows1251Test extends TestCase

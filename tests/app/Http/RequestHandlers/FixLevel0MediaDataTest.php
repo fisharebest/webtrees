@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(FixLevel0MediaDataTest::class)]
 class FixLevel0MediaDataTest extends TestCase
 {

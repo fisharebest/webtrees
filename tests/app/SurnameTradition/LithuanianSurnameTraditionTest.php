@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(LithuanianSurnameTradition::class)]
 #[CoversClass(PatrilinealSurnameTradition::class)]
 class LithuanianSurnameTraditionTest extends TestCase

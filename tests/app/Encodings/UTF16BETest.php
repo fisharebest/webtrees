@@ -31,7 +31,6 @@ use function iconv;
 use function intdiv;
 use function range;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(UTF16BE::class)]
 class UTF16BETest extends TestCase

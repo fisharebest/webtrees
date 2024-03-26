@@ -41,7 +41,6 @@ function ini_get(...$args)
     return TestCase::$mock_functions->iniGet(...$args);
 }
 
-
 #[CoversClass(TimeoutService::class)]
 class TimeoutServiceTest extends TestCase
 {

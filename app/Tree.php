@@ -44,7 +44,6 @@ class Tree
         'hidden'       => Auth::PRIV_HIDE,
     ];
 
-
     // Default values for some tree preferences.
     protected const DEFAULT_PREFERENCES = [
         'CALENDAR_FORMAT'              => 'gregorian',

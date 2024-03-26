@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AbstractElement::class)]
 #[CoversClass(LdsSpouseSealingDateStatus::class)]
 class LdsSpouseSealingDateStatusTest extends AbstractElementTestCase

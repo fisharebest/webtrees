@@ -71,7 +71,6 @@ class EmailPreferencesAction implements RequestHandlerInterface
         $dkim_key      = Validator::parsedBody($request)->string('DKIM_KEY');
         $test          = Validator::parsedBody($request)->boolean('test', false);
 
-
         Site::setPreference('SMTP_ACTIVE', $active);
         Site::setPreference('SMTP_DISP_NAME', $disp_name);
         Site::setPreference('SMTP_FROM_NAME', $from_name);

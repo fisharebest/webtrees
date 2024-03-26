@@ -35,7 +35,6 @@ use function file_get_contents;
 use function preg_replace;
 use function stream_get_contents;
 
-
 #[CoversClass(Tree::class)]
 #[CoversClass(TreeService::class)]
 #[CoversClass(GedcomExportService::class)]

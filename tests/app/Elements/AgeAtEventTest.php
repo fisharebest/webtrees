@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AbstractElement::class)]
 #[CoversClass(AgeAtEvent::class)]
 class AgeAtEventTest extends AbstractElementTestCase

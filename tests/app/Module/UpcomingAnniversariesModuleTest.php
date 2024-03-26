@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(UpcomingAnniversariesModule::class)]
 class UpcomingAnniversariesModuleTest extends TestCase
 {

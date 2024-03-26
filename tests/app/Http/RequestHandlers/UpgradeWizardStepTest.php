@@ -35,7 +35,6 @@ use Illuminate\Support\Collection;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(UpgradeWizardStep::class)]
 class UpgradeWizardStepTest extends TestCase
 {

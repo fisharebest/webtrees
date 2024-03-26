@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 
-
 #[CoversClass(UserService::class)]
 class UserServiceTest extends TestCase
 {

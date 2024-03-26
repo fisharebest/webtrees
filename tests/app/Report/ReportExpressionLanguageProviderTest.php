@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ReportExpressionLanguageProvider::class)]
 class ReportExpressionLanguageProviderTest extends TestCase
 {

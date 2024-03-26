@@ -26,7 +26,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-
 #[CoversClass(NoRouteFound::class)]
 class NoRouteFoundTest extends TestCase
 {

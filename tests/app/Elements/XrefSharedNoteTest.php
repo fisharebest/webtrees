@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AbstractElement::class)]
 #[CoversClass(AbstractXrefElement::class)]
 #[CoversClass(XrefSharedNote::class)]
@@ -85,7 +84,6 @@ class XrefSharedNoteTest extends TestCase
         $factory->expects(self::once())
             ->method('make')
             ->willReturn($record);
-
 
         Registry::sharedNoteFactory($factory);
 

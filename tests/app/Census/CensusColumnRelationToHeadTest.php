@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CensusColumnRelationToHead::class)]
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnRelationToHeadTest extends TestCase

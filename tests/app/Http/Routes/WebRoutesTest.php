@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Routes;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(WebRoutes::class)]
 class WebRoutesTest extends TestCase
 {

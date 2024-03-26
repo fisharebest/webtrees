@@ -27,7 +27,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-
 #[CoversClass(DoHousekeeping::class)]
 class DoHousekeepingTest extends TestCase
 {

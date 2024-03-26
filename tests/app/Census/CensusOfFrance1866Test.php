@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CensusOfFrance1866::class)]
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusOfFrance1866Test extends TestCase

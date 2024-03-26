@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(MatrilinealSurnameTradition::class)]
 class MatrilinealSurnameTraditionTest extends TestCase
 {
@@ -126,7 +125,6 @@ class MatrilinealSurnameTraditionTest extends TestCase
 
         $individual = $this->createMock(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
-
 
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],

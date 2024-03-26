@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(HttpBadRequestException::class)]
 class HttpBadRequestExceptionTest extends TestCase
 {

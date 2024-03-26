@@ -92,7 +92,6 @@ class LanguageTatar extends AbstractModule implements ModuleLanguageInterface
         return new LocaleTt();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

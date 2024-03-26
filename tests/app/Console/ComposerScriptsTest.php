@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Console;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ComposerScripts::class)]
 class ComposerScriptsTest extends TestCase
 {

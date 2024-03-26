@@ -52,7 +52,6 @@ trait ModuleReportTrait
         return 'xml/reports/' . $this->name() . '.xml';
     }
 
-
     /**
      * Return a menu item for this report.
      *

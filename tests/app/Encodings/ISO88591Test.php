@@ -30,7 +30,6 @@ use function dechex;
 use function iconv;
 use function range;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(ISO88591::class)]
 class ISO88591Test extends TestCase

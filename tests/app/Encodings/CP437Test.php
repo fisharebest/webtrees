@@ -30,7 +30,6 @@ use function dechex;
 use function iconv;
 use function range;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(CP437::class)]
 class CP437Test extends TestCase

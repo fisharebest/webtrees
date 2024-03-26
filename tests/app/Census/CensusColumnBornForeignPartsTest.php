@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CensusColumnBornForeignParts::class)]
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnBornForeignPartsTest extends TestCase

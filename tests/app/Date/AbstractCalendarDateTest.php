@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AbstractCalendarDate::class)]
 class AbstractCalendarDateTest extends TestCase
 {

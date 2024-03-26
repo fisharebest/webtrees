@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\CommonMark;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CensusTableStartParser::class)]
 class CensusTableStartParserTest extends TestCase
 {

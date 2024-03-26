@@ -31,7 +31,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-
 #[CoversClass(AuthManager::class)]
 class AuthManagerTest extends TestCase
 {

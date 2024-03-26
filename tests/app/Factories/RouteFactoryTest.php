@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(RouteFactory::class)]
 class RouteFactoryTest extends TestCase
 {

@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(UploadMediaAction::class)]
 class UploadMediaActionTest extends TestCase
 {
