@@ -71,7 +71,7 @@ class Migration37 implements MigrationInterface
                 'descriptive_title',
             ], function (Builder $query): void {
                 // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
-                $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+                $substring_function = DB::driverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
 
                 $query->select([
                     'm_id',

@@ -826,15 +826,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     /**
      * This module assumes the database will use binary collation on the name columns.
      * Until we convert MySQL databases to use utf8_bin, we need to do this at run-time.
-     *
-     * @param string      $column
-     * @param string|null $alias
-     *
-     * @return Expression
      */
     private function binaryColumn(string $column, string|null $alias = null): Expression
     {
-        if (DB::connection()->getDriverName() === 'mysql') {
+        if (DB::driverName() === 'mysql') {
             $sql = 'CAST(' . $column . ' AS binary)';
         } else {
             $sql = $column;

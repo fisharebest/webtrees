@@ -214,7 +214,7 @@ class MapDataService
      */
     public function getPlaceListLocation(int|null $parent_id): Collection
     {
-        $prefix = DB::connection()->getTablePrefix();
+        $prefix = DB::prefix();
 
         $expression =
             $prefix . 'p1.place IS NOT NULL AND ' . $prefix . 'p1.latitude IS NULL OR ' .
