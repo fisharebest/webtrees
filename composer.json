@@ -50,12 +50,12 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.8.1",
-        "illuminate/database": "11.0.7",
-        "illuminate/support": "11.0.7",
+        "illuminate/database": "11.0.8",
+        "illuminate/support": "11.0.8",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.10",
         "league/commonmark": "2.4.2",
-        "league/flysystem": "3.25.1",
+        "league/flysystem": "3.26.0",
         "league/flysystem-path-prefixing": "3.23.1",
         "league/flysystem-ziparchive": "3.24.0",
         "middlewares/client-ip": "2.0.1",
@@ -74,7 +74,7 @@
         "symfony/expression-language": "7.0.3",
         "symfony/mailer": "7.0.4",
         "symfony/polyfill-mbstring": "1.29.0",
-        "tecnickcom/tcpdf": "6.7.3"
+        "tecnickcom/tcpdf": "6.7.4"
     },
     "require-dev": {
         "ext-dom": "*",
