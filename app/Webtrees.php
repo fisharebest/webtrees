@@ -60,6 +60,7 @@ use Fisharebest\Webtrees\Http\Middleware\CompressResponse;
 use Fisharebest\Webtrees\Http\Middleware\ContentLength;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
+use Fisharebest\Webtrees\Http\Middleware\ErrorHandler;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
@@ -87,7 +88,6 @@ use Psr\Http\Message\UriFactoryInterface;
 use function date_default_timezone_set;
 use function error_reporting;
 use function mb_internal_encoding;
-use function set_error_handler;
 use function stream_filter_register;
 
 use const E_ALL;
@@ -153,6 +153,7 @@ class Webtrees
     public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-5-5-1.pdf';
 
     private const MIDDLEWARE = [
+        ErrorHandler::class,
         EmitResponse::class,
         SecurityHeaders::class,
         ReadConfigIni::class,
@@ -188,7 +189,6 @@ class Webtrees
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
-        set_error_handler($this->phpErrorHandler());
 
         // All modern software uses UTF-8 encoding.
         mb_internal_encoding('UTF-8');
@@ -282,22 +282,5 @@ class Webtrees
         $dispatcher = new Dispatcher(self::MIDDLEWARE, Registry::container());
 
         return $dispatcher->dispatch($request);
-    }
-
-    /**
-     * An error handler that can be passed to set_error_handler().
-     *
-     * @return Closure(int,string,string,int):bool
-     */
-    private function phpErrorHandler(): Closure
-    {
-        return static function (int $errno, string $errstr, string $errfile, int $errline): bool {
-            // Ignore errors that are silenced with '@'
-            if ((error_reporting() & $errno) !== 0) {
-                throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-            }
-
-            return true;
-        };
     }
 }

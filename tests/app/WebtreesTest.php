@@ -24,7 +24,6 @@ use ErrorException;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function error_reporting;
-use function set_error_handler;
 
 
 #[CoversClass(Webtrees::class)]
@@ -33,7 +32,6 @@ class WebtreesTest extends TestCase
     public function testInit(): void
     {
         error_reporting(0);
-        set_error_handler(null);
 
         $webtrees = new Webtrees();
         $webtrees->bootstrap();
@@ -41,16 +39,5 @@ class WebtreesTest extends TestCase
         // webtrees sets the error reporting level.
         self::assertNotSame(0, error_reporting());
         self::assertSame(Webtrees::ERROR_REPORTING, error_reporting());
-
-        try {
-            // Trigger an error
-            fopen(__DIR__ . '/no-such-file', 'rb');
-        } catch (ErrorException $ex) {
-            self::assertSame(__FILE__, $ex->getFile());
-        }
-
-        // Disable error reporting (we could use "@"), and don't raise an exception.
-        error_reporting(0);
-        fopen(__DIR__ . '/no-such-file', 'rb');
     }
 }
