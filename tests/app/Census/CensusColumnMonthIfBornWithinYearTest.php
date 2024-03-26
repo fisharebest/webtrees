@@ -74,12 +74,10 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
-
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
         self::assertSame('', $column->generate($individual, $individual));
     }
-
 
     /**
      * @covers \Fisharebest\Webtrees\Census\CensusColumnMonthIfBornWithinYear

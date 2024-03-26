@@ -91,7 +91,6 @@ class LanguageRomanian extends AbstractModule implements ModuleLanguageInterface
         return new LocaleRo();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

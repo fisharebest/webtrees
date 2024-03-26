@@ -95,7 +95,6 @@ class XrefFamilyTest extends TestCase
             ->method('make')
             ->willReturn($record);
 
-
         Registry::familyFactory($factory);
 
         self::assertSame('<a href="https://url">Full Name</a>', $element->value('@X123@', $tree));

@@ -180,7 +180,6 @@ class RegisterAction implements RequestHandlerInterface
                 'tree'     => $tree,
             ]);
 
-
             /* I18N: %s is a server name/URL */
             $this->email_service->send(
                 new SiteUser(),

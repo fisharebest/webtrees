@@ -37,7 +37,6 @@ class MaidenheadLocatorTest extends AbstractElementTestCase
         self::$element = new MaidenheadLocator('label');
     }
 
-
     public function testCanonical(): void
     {
         self::assertSame('AB', self::$element->canonical('ab'));

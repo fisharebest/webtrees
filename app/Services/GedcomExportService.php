@@ -390,7 +390,6 @@ class GedcomExportService
             ->where('f_file', '=', $tree->id())
             ->select(['f_gedcom', 'f_id']);
 
-
         if ($sort_by_xref) {
             $query
                 ->orderBy(new Expression('LENGTH(f_id)'))

@@ -221,7 +221,6 @@ class User implements UserInterface
         return $this;
     }
 
-
     /**
      * Validate a supplied password
      *
