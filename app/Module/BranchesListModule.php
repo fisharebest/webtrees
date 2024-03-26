@@ -382,7 +382,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     {
         $module = $this->module_service
             ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->first(static fn(ModuleInterface $module) => $module instanceof RelationshipsChartModule);
+            ->first(static fn (ModuleInterface $module) => $module instanceof RelationshipsChartModule);
 
         // A person has many names. Select the one that matches the searched surname
         $person_name = '';

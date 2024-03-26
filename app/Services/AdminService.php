@@ -123,7 +123,7 @@ class AdminService
             ->select([new Expression(DB::groupConcat('s_id') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
-            ->map(static fn(string $xrefs): array => array_map(static fn(string $xref): Source => Registry::sourceFactory()->make($xref, $tree), explode(',', $xrefs)))
+            ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Source => Registry::sourceFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
         // Database agnostic way to do GROUP_CONCAT(DISTINCT x ORDER BY x)
@@ -149,7 +149,7 @@ class AdminService
             ->pluck('xrefs')
             ->map($distinct_order_by)
             ->unique()
-            ->map(static fn(string $xrefs): array => array_map(static fn(string $xref): Individual => Registry::individualFactory()->make($xref, $tree), explode(',', $xrefs)))
+            ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Individual => Registry::individualFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
         $families = DB::table('families')
@@ -160,7 +160,7 @@ class AdminService
             ->select([new Expression(DB::groupConcat('f_id') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
-            ->map(static fn(string $xrefs): array => array_map(static fn(string $xref): Family => Registry::familyFactory()->make($xref, $tree), explode(',', $xrefs)))
+            ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Family => Registry::familyFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
         $media = DB::table('media_file')
@@ -171,7 +171,7 @@ class AdminService
             ->select([new Expression(DB::groupConcat('m_id') . ' AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
-            ->map(static fn(string $xrefs): array => array_map(static fn(string $xref): Media => Registry::mediaFactory()->make($xref, $tree), explode(',', $xrefs)))
+            ->map(static fn (string $xrefs): array => array_map(static fn (string $xref): Media => Registry::mediaFactory()->make($xref, $tree), explode(',', $xrefs)))
             ->all();
 
         return [
@@ -259,7 +259,7 @@ class AdminService
 
                     return preg_match('/^(' . UTF8::BYTE_ORDER_MARK . ')?0 HEAD/', $header) > 0;
                 })
-                ->map(fn(StorageAttributes $attributes) => $attributes->path())
+                ->map(fn (StorageAttributes $attributes) => $attributes->path())
                 ->toArray();
         } catch (FilesystemException) {
             $files = [];

@@ -97,7 +97,7 @@ class AbstractCensusColumn
     {
         return $individual->spouseFamilies()
                 // Exclude families that were created after this census date
-            ->filter(fn(Family $family): bool => Date::compare($family->getMarriageDate(), $this->date()) <= 0)
+            ->filter(fn (Family $family): bool => Date::compare($family->getMarriageDate(), $this->date()) <= 0)
             ->sort(Family::marriageDateComparator())
             ->last();
     }

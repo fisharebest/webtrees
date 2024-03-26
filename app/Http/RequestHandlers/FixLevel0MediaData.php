@@ -115,7 +115,7 @@ class FixLevel0MediaData implements RequestHandlerInterface
 
             $facts = $individual
                 ->facts([], true)
-                ->filter(static fn(Fact $fact): bool => !$fact->isPendingDeletion() &&
+                ->filter(static fn (Fact $fact): bool => !$fact->isPendingDeletion() &&
                     !preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $fact->value()) &&
                     !in_array($fact->tag(), $ignore_facts, true));
 
@@ -130,7 +130,7 @@ class FixLevel0MediaData implements RequestHandlerInterface
                 $facts = new Collection();
             }
 
-            $facts = $facts->map(static fn(Fact $fact): string => view('admin/fix-level-0-media-action', [
+            $facts = $facts->map(static fn (Fact $fact): string => view('admin/fix-level-0-media-action', [
                 'fact'       => $fact,
                 'individual' => $individual,
                 'media'      => $media,

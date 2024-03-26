@@ -69,10 +69,10 @@ abstract class AbstractModuleComponentPage implements RequestHandlerInterface
         $access_summary = $modules
             ->mapWithKeys(function (ModuleInterface $module) use ($interface): array {
                 $access_levels = $this->tree_service->all()
-                    ->map(static fn(Tree $tree): int => $module->accessLevel($tree, $interface))
+                    ->map(static fn (Tree $tree): int => $module->accessLevel($tree, $interface))
                     ->uniqueStrict()
                     ->values()
-                    ->map(static fn(int $level): string => Auth::accessLevelNames()[$level])
+                    ->map(static fn (int $level): string => Auth::accessLevelNames()[$level])
                     ->all();
 
                 return [$module->name() => $access_levels];

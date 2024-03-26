@@ -204,7 +204,7 @@ class EventRepository implements EventRepositoryInterface
     public function totalEventsOther(): string
     {
         $no_facts = array_map(
-            static fn(string $fact): string => '!' . $fact,
+            static fn (string $fact): string => '!' . $fact,
             $this->getCommonFacts()
         );
 

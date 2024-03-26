@@ -220,7 +220,7 @@ class I18N
     {
         $locales = Registry::container()->get(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, false, true)
-            ->map(static fn(ModuleLanguageInterface $module): LocaleInterface => $module->locale());
+            ->map(static fn (ModuleLanguageInterface $module): LocaleInterface => $module->locale());
 
         if ($locales->isEmpty()) {
             return [new LocaleEnUs()];
@@ -297,7 +297,7 @@ class I18N
 
             $translations = $module_service
                 ->findByInterface(ModuleCustomInterface::class)
-                ->reduce(static fn(array $carry, ModuleCustomInterface $item): array => array_merge($carry, $item->customTranslations(self::$locale->languageTag())), $translations);
+                ->reduce(static fn (array $carry, ModuleCustomInterface $item): array => array_merge($carry, $item->customTranslations(self::$locale->languageTag())), $translations);
 
             self::$language = $module_service
                 ->findByInterface(ModuleLanguageInterface::class, true)

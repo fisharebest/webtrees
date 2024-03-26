@@ -53,7 +53,7 @@ class SiteLogsDownload implements RequestHandlerInterface
         $content = $this->site_logs_service->logsQuery($request)
             ->orderBy('log_id')
             ->get()
-            ->map(static fn(object $row): string => '"' . $row->log_time . '",' .
+            ->map(static fn (object $row): string => '"' . $row->log_time . '",' .
             '"' . $row->log_type . '",' .
             '"' . str_replace('"', '""', $row->log_message) . '",' .
             '"' . $row->ip_address . '",' .

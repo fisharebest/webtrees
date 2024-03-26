@@ -133,7 +133,7 @@ class TreePreferencesPage implements RequestHandlerInterface
 
         $pedigree_individual = Registry::individualFactory()->make($tree->getPreference('PEDIGREE_ROOT_ID'), $tree);
 
-        $members = $this->user_service->all()->filter(static fn(UserInterface $user): bool => Auth::isMember($tree, $user));
+        $members = $this->user_service->all()->filter(static fn (UserInterface $user): bool => Auth::isMember($tree, $user));
 
         $ignore_facts = ['CHAN', 'CHIL', 'FAMC', 'FAMS', 'HUSB', 'SUBM', 'WIFE', 'NAME', 'SEX'];
 

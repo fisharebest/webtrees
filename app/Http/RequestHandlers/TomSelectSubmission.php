@@ -68,7 +68,7 @@ class TomSelectSubmission extends AbstractTomSelectHandler
             $results = $this->search_service->searchSubmissions([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static fn(Submission $submission): array => [
+        return $results->map(static fn (Submission $submission): array => [
             'text'  => view('selects/submission', ['submission' => $submission]),
             'value' => $at . $submission->xref() . $at,
         ]);

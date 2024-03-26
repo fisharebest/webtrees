@@ -212,7 +212,7 @@ class PlaceLocation
             })
             ->groupBy(['latitude'])
             ->pluck('latitude')
-            ->map(static fn(string $x): float => (float) $x);
+            ->map(static fn (string $x): float => (float) $x);
 
         $longitudes = DB::table('place_location')
             ->whereNotNull('longitude')
@@ -223,7 +223,7 @@ class PlaceLocation
             })
             ->groupBy(['longitude'])
             ->pluck('longitude')
-            ->map(static fn(string $x): float => (float) $x);
+            ->map(static fn (string $x): float => (float) $x);
 
         // No co-ordinates?  Use the parent place instead.
         if ($latitudes->isEmpty() || $longitudes->isEmpty()) {

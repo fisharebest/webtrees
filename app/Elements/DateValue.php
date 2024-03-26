@@ -90,7 +90,7 @@ class DateValue extends AbstractElement
     public function escape(string $value): string
     {
         // Only escape @ signs in an INT phrase
-        return preg_replace_callback('/\(.*@.*\)/', static fn(array $matches): string => strtr($matches[0], ['@' => '@@']), $value);
+        return preg_replace_callback('/\(.*@.*\)/', static fn (array $matches): string => strtr($matches[0], ['@' => '@@']), $value);
     }
 
     /**

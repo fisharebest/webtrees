@@ -68,7 +68,7 @@ class TomSelectSource extends AbstractTomSelectHandler
             $results = $this->search_service->searchSourcesByName([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static fn(Source $source): array => [
+        return $results->map(static fn (Source $source): array => [
             'text'  => view('selects/source', ['source' => $source]),
             'value' => $at . $source->xref() . $at,
         ]);

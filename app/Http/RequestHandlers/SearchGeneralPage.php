@@ -154,7 +154,7 @@ class SearchGeneralPage implements RequestHandlerInterface
                 $tmp1 = $this->search_service->searchFamilies($search_trees->all(), $search_terms);
                 $tmp2 = $this->search_service->searchFamilyNames($search_trees->all(), $search_terms);
 
-                $families = $tmp1->merge($tmp2)->unique(static fn(Family $family): string => $family->xref() . '@' . $family->tree()->id());
+                $families = $tmp1->merge($tmp2)->unique(static fn (Family $family): string => $family->xref() . '@' . $family->tree()->id());
             }
 
             if ($search_repositories) {

@@ -106,7 +106,7 @@ trait ModuleDataFixTrait
 
         return $records
             ->unique()
-            ->sort(static fn(object $x, object $y) => $x->xref <=> $y->xref);
+            ->sort(static fn (object $x, object $y) => $x->xref <=> $y->xref);
     }
 
     /**
@@ -422,6 +422,6 @@ trait ModuleDataFixTrait
 
         return $records
             ->concat($pending)
-            ->map(static fn(string $xref): object => (object) ['xref' => $xref, 'type' => $type]);
+            ->map(static fn (string $xref): object => (object) ['xref' => $xref, 'type' => $type]);
     }
 }

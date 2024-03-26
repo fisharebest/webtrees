@@ -188,7 +188,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
         $facts = Fact::sortFacts($facts);
 
-        return $facts->filter(static fn(Fact $item): bool => $item->place()->gedcomName() !== '');
+        return $facts->filter(static fn (Fact $item): bool => $item->place()->gedcomName() !== '');
     }
 
     /**

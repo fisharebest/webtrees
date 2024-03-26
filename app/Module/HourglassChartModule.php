@@ -234,7 +234,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 
-        $children = $individual->spouseFamilies()->map(static fn(Family $family): Collection => $family->children())->flatten();
+        $children = $individual->spouseFamilies()->map(static fn (Family $family): Collection => $family->children())->flatten();
 
         return response(view('modules/hourglass-chart/children', [
             'children'    => $children,

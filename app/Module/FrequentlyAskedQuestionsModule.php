@@ -310,7 +310,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         }
 
         $gedcom_ids = $this->tree_service->all()
-            ->mapWithKeys(static fn(Tree $tree): array => [$tree->id() => $tree->title()])
+            ->mapWithKeys(static fn (Tree $tree): array => [$tree->id() => $tree->title()])
             ->all();
 
         $gedcom_ids = ['' => I18N::translate('All')] + $gedcom_ids;
@@ -388,7 +388,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
-            ->filter(static fn(object $faq): bool => $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true));
+            ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true));
 
         return $this->viewResponse('modules/faq/show', [
             'faqs'  => $faqs,
@@ -448,7 +448,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             })
             ->select(['setting_value AS languages'])
             ->get()
-            ->filter(static fn(object $faq): bool => $faq->languages === '' || in_array($language, explode(',', $faq->languages), true))
+            ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array($language, explode(',', $faq->languages), true))
             ->isNotEmpty();
     }
 }

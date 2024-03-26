@@ -116,7 +116,7 @@ class GedcomRecord
      */
     public static function accessFilter(): Closure
     {
-        return static fn(GedcomRecord $record): bool => $record->canShow();
+        return static fn (GedcomRecord $record): bool => $record->canShow();
     }
 
     /**
@@ -152,7 +152,7 @@ class GedcomRecord
      */
     public static function lastChangeComparator(int $direction = 1): Closure
     {
-        return static fn(GedcomRecord $x, GedcomRecord $y): int => $direction * ($x->lastChangeTimestamp() <=> $y->lastChangeTimestamp());
+        return static fn (GedcomRecord $x, GedcomRecord $y): int => $direction * ($x->lastChangeTimestamp() <=> $y->lastChangeTimestamp());
     }
 
     /**
@@ -251,7 +251,7 @@ class GedcomRecord
 
         $cache_key = 'show-' . $this->xref . '-' . $this->tree->id() . '-' . $access_level;
 
-        return Registry::cache()->array()->remember($cache_key, fn() => $this->canShowRecord($access_level));
+        return Registry::cache()->array()->remember($cache_key, fn () => $this->canShowRecord($access_level));
     }
 
     /**
@@ -647,7 +647,7 @@ class GedcomRecord
         }
 
         if ($ignore_deleted) {
-            $facts = $facts->filter(static fn(Fact $fact): bool => !$fact->isPendingDeletion());
+            $facts = $facts->filter(static fn (Fact $fact): bool => !$fact->isPendingDeletion());
         }
 
         return $facts;
@@ -998,7 +998,7 @@ class GedcomRecord
     {
         $this->getAllNames[] = [
             'type'   => $type,
-            'sort'   => preg_replace_callback('/(\d+)/', static fn(array $matches): string => str_pad($matches[0], 10, '0', STR_PAD_LEFT), $value),
+            'sort'   => preg_replace_callback('/(\d+)/', static fn (array $matches): string => str_pad($matches[0], 10, '0', STR_PAD_LEFT), $value),
             'full'   => '<bdi>' . e($value) . '</bdi>',
             // This is used for display
             'fullNN' => $value,

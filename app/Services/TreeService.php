@@ -133,7 +133,7 @@ class TreeService
 
             return $query
                 ->get()
-                ->mapWithKeys(static fn(object $row): array => [$row->tree_name => Tree::rowMapper()($row)]);
+                ->mapWithKeys(static fn (object $row): array => [$row->tree_name => Tree::rowMapper()($row)]);
         });
     }
 
@@ -146,7 +146,7 @@ class TreeService
      */
     public function find(int $id): Tree
     {
-        $tree = $this->all()->first(static fn(Tree $tree): bool => $tree->id() === $id);
+        $tree = $this->all()->first(static fn (Tree $tree): bool => $tree->id() === $id);
 
         if ($tree instanceof Tree) {
             return $tree;
@@ -162,7 +162,7 @@ class TreeService
      */
     public function titles(): array
     {
-        return $this->all()->map(static fn(Tree $tree): string => $tree->title())->all();
+        return $this->all()->map(static fn (Tree $tree): string => $tree->title())->all();
     }
 
     /**

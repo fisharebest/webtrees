@@ -333,7 +333,7 @@ class Relationship
      */
     protected function sex(string $sex): Relationship
     {
-        $this->matchers[] = static fn(array $nodes): bool => $nodes[0]->sex() === $sex;
+        $this->matchers[] = static fn (array $nodes): bool => $nodes[0]->sex() === $sex;
 
         return $this;
     }

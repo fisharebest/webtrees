@@ -134,7 +134,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         $module = $this->module_service
             ->findByComponent(ModuleListInterface::class, $tree, Auth::user())
                 // The family list extends the individual list
-            ->first(static fn(ModuleInterface $module): bool => $module instanceof IndividualListModule && !$module instanceof FamilyListModule);
+            ->first(static fn (ModuleInterface $module): bool => $module instanceof IndividualListModule && !$module instanceof FamilyListModule);
 
         switch ($info_style) {
             case 'tagcloud':

@@ -68,7 +68,7 @@ class TomSelectSharedNote extends AbstractTomSelectHandler
             $results = $this->search_service->searchSharedNotes([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static fn(SharedNote $note): array => [
+        return $results->map(static fn (SharedNote $note): array => [
             'text'  => view('selects/shared-note', ['note' => $note]),
             'value' => $at . $note->xref() . $at,
         ]);
