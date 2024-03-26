@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(EmitResponse::class)]
 class EmitResponseTest extends TestCase
 {

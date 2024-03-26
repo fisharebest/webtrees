@@ -24,7 +24,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use function gregoriantojd;
 use function mktime;
 
-
 #[CoversClass(Timestamp::class)]
 class TimestampTest extends TestCase
 {

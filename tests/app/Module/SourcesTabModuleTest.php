@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(SourcesTabModule::class)]
 class SourcesTabModuleTest extends TestCase
 {

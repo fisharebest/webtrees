@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CalendarService::class)]
 class CalendarServiceTest extends TestCase
 {

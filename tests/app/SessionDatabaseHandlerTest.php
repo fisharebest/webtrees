@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(SessionDatabaseHandler::class)]
 class SessionDatabaseHandlerTest extends TestCase
 {

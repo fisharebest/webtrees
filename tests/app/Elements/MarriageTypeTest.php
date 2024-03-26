@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AbstractElement::class)]
 #[CoversClass(MarriageType::class)]
 class MarriageTypeTest extends AbstractElementTestCase

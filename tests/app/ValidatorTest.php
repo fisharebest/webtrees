@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ServerRequestInterface;
 
-
 #[CoversClass(Validator::class)]
 class ValidatorTest extends TestCase
 {
@@ -99,7 +98,6 @@ class ValidatorTest extends TestCase
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => ['test'], 'invalid' => 'not_array']);
-
 
         self::assertSame(['test'], Validator::queryParams($request)->array('param'));
 
@@ -342,7 +340,6 @@ class ValidatorTest extends TestCase
         $request
             ->method('getQueryParams')
             ->willReturn(['param' => 'http://example.local/wt/page', 'noscheme' => '//example.local/wt/page']);
-
 
         self::assertSame('http://example.local/wt/page', Validator::queryParams($request)->isLocalUrl()->string('param'));
         self::assertSame('//example.local/wt/page', Validator::queryParams($request)->isLocalUrl()->string('noscheme'));

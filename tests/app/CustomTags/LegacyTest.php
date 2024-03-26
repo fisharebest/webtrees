@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(Legacy::class)]
 class LegacyTest extends TestCase
 {

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(BrowserRepository::class)]
 class BrowserRepositoryTest extends TestCase
 {

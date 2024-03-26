@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ReportHtmlTextbox::class)]
 class ReportHtmlTextboxTest extends TestCase
 {

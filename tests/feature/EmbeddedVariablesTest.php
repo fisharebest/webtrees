@@ -63,7 +63,6 @@ use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ServerRequestInterface;
 
-
 #[CoversClass(Statistics::class)]
 #[CoversClass(BrowserRepository::class)]
 #[CoversClass(ServerRepository::class)]

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Elements;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AbstractElement::class)]
 #[CoversClass(CustomEvent::class)]
 class CustomEventTest extends AbstractElementTestCase

@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(MarkdownFactory::class)]
 #[CoversClass(XrefExtension::class)]
 class MarkdownFactoryTest extends TestCase

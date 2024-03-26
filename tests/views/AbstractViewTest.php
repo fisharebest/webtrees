@@ -25,7 +25,6 @@ use function str_starts_with;
 
 use const LIBXML_PEDANTIC;
 
-
 abstract class AbstractViewTest extends TestCase
 {
     protected const EVIL_VALUE = '<script>evil()</script>';

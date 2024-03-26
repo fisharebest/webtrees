@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AccountUpdate::class)]
 class AccountUpdateTest extends TestCase
 {

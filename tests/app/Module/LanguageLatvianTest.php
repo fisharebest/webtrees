@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(LanguageLatvian::class)]
 class LanguageLatvianTest extends TestCase
 {

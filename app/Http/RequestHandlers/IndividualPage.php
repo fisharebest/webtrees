@@ -218,7 +218,6 @@ class IndividualPage implements RequestHandlerInterface
 
             $child_names = $family->children()->map(static fn(Individual $individual): string => e($individual->getAllNames()[0]['givn']))->implode(', ');
 
-
             if ($child_names !== '') {
                 $meta_facts[] = I18N::translate('Children') . ' ' . $child_names;
             }

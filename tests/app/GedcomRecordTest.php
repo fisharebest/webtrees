@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(GedcomRecord::class)]
 class GedcomRecordTest extends TestCase
 {

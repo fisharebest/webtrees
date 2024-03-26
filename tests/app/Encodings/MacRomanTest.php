@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Encodings\MacRoman;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(MacRoman::class)]
 class MacRomanTest extends TestCase

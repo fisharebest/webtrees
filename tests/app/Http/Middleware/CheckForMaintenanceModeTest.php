@@ -26,7 +26,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-
 #[CoversClass(CheckForMaintenanceMode::class)]
 class CheckForMaintenanceModeTest extends TestCase
 {

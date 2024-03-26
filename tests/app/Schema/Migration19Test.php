@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Schema;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(Migration19::class)]
 class Migration19Test extends TestCase
 {

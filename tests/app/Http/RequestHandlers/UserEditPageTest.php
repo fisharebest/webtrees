@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(UserEditPage::class)]
 class UserEditPageTest extends TestCase
 {

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Schema;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(SeedDefaultResnTable::class)]
 class SeedDefaultResnTableTest extends TestCase
 {

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(GenPlusWin::class)]
 class GenPlusWinTest extends TestCase
 {

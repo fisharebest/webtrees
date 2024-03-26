@@ -71,7 +71,6 @@ trait ModuleSidebarTrait
         return $this->sidebar_order ?? $this->defaultSidebarOrder();
     }
 
-
     /**
      * The default position for this sidebar.
      *

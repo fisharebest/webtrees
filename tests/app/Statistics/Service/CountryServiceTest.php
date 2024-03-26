@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Statistics\Service;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CountryService::class)]
 class CountryServiceTest extends TestCase
 {

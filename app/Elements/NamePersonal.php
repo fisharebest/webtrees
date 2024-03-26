@@ -115,8 +115,6 @@ class NamePersonal extends AbstractElement
         return $value;
     }
 
-
-
     /**
      * Create a default value for this element.
      *

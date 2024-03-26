@@ -26,7 +26,6 @@ use PHPUnit\Framework\TestCase;
 
 use function chr;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(UTF8::class)]
 class UTF8Test extends TestCase

@@ -29,7 +29,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 use function function_exists;
 
-
 #[CoversClass(EmailService::class)]
 class EmailServiceTest extends TestCase
 {

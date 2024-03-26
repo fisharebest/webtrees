@@ -23,7 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(MapDataImportPage::class)]
 class MapDataImportPageTest extends TestCase
 {

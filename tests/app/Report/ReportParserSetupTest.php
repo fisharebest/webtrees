@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ReportParserSetup::class)]
 class ReportParserSetupTest extends TestCase
 {

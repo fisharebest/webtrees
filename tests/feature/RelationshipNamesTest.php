@@ -34,7 +34,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 use function array_reverse;
 
-
 #[CoversClass(Relationship::class)]
 #[CoversClass(RelationshipService::class)]
 #[CoversClass(LanguageEnglishGreatBritain::class)]

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(GedcomExportService::class)]
 class GedcomExportServiceTest extends TestCase
 {

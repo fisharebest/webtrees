@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(Individual::class)]
 class IndividualTest extends TestCase
 {

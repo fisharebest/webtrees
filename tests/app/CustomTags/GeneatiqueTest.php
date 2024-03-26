@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(Geneatique::class)]
 class GeneatiqueTest extends TestCase
 {

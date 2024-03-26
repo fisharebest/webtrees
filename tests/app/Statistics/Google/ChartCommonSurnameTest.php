@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ChartCommonSurname::class)]
 class ChartCommonSurnameTest extends TestCase
 {

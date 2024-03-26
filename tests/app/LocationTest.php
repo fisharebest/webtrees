@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(Location::class)]
 class LocationTest extends TestCase
 {

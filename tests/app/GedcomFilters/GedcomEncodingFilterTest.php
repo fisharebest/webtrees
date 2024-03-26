@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\GedcomFilters;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(GedcomEncodingFilter::class)]
 class GedcomEncodingFilterTest extends TestCase
 {

@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(SurnameTraditionFactory::class)]
 class SurnameTraditionFactoryTest extends TestCase
 {

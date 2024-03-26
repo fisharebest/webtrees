@@ -232,7 +232,6 @@ class ManageMediaData implements RequestHandlerInterface
                         $mime_type = Mime::DEFAULT_TYPE;
                     }
 
-
                     if (str_starts_with($mime_type, 'image/')) {
                         $url = route(AdminMediaFileThumbnail::class, ['path' => $row[0]]);
                         $img = '<img src="' . e($url) . '">';

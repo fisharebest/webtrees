@@ -409,7 +409,6 @@ class GedcomImportService
                 ]);
                 break;
 
-
             case Media::RECORD_TYPE:
                 $record = Registry::mediaFactory()->new($xref, $gedrec, null, $tree);
 

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(UseLanguage::class)]
 class UseLanguageTest extends TestCase
 {

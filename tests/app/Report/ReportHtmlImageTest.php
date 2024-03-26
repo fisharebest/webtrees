@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ReportHtmlImage::class)]
 class ReportHtmlImageTest extends TestCase
 {

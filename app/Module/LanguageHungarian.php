@@ -125,7 +125,6 @@ class LanguageHungarian extends AbstractModule implements ModuleLanguageInterfac
         return new LocaleHu();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

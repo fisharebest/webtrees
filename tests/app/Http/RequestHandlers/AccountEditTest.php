@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(AccountEdit::class)]
 class AccountEditTest extends TestCase
 {

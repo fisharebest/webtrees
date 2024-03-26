@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(HousekeepingService::class)]
 class HousekeepingServiceTest extends TestCase
 {

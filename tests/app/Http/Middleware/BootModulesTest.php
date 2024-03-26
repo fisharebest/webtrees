@@ -28,7 +28,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-
 #[CoversClass(BootModules::class)]
 class BootModulesTest extends TestCase
 {

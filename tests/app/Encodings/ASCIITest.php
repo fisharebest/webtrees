@@ -29,7 +29,6 @@ use function chr;
 use function iconv;
 use function range;
 
-
 #[CoversClass(AbstractEncoding::class)]
 #[CoversClass(ASCII::class)]
 class ASCIITest extends TestCase

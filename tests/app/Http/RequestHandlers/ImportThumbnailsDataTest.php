@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ImportThumbnailsData::class)]
 class ImportThumbnailsDataTest extends TestCase
 {

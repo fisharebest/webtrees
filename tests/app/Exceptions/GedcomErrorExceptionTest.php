@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(GedcomErrorException::class)]
 class GedcomErrorExceptionTest extends TestCase
 {

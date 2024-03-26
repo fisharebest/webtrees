@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(FamilyNonEvent::class)]
 class FamilyNonEventTest extends TestCase
 {

@@ -555,8 +555,6 @@ class I18N
         return static fn (string $x, string $y): int => strcmp(self::strtolower($x), self::strtolower($y));
     }
 
-
-
     /**
      * Convert a string to lower case.
      *

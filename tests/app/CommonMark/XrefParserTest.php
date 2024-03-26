@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\CommonMark;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(XrefParser::class)]
 class XrefParserTest extends TestCase
 {

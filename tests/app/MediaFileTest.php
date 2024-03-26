@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(MediaFile::class)]
 class MediaFileTest extends TestCase
 {

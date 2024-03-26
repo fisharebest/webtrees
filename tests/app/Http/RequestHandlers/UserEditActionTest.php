@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(UserEditAction::class)]
 class UserEditActionTest extends TestCase
 {

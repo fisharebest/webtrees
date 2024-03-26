@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(TreeUser::class)]
 class TreeUserTest extends TestCase
 {

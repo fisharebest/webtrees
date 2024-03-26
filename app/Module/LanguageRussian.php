@@ -82,7 +82,6 @@ class LanguageRussian extends AbstractModule implements ModuleLanguageInterface
         return new LocaleRu();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

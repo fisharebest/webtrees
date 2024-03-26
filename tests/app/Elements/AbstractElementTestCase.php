@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 
-
 abstract class AbstractElementTestCase extends TestCase
 {
     private const EVIL_VALUE = '<script>evil()</script>';

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(Log::class)]
 class LogTest extends TestCase
 {

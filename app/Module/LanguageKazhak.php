@@ -82,7 +82,6 @@ class LanguageKazhak extends AbstractModule implements ModuleLanguageInterface
         return new LocaleKk();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

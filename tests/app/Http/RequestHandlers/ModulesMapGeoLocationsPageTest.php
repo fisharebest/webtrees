@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ModulesMapGeoLocationsPage::class)]
 class ModulesMapGeoLocationsPageTest extends TestCase
 {

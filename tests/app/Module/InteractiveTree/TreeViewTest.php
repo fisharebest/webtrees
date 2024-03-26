@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module\InteractiveTree;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(TreeView::class)]
 class TreeViewTest extends TestCase
 {

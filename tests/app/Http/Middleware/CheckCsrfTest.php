@@ -29,7 +29,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-
 #[CoversClass(CheckCsrf::class)]
 class CheckCsrfTest extends TestCase
 {

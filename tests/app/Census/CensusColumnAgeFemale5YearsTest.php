@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CensusColumnAgeFemale5Years::class)]
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnAgeFemale5YearsTest extends TestCase

@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(UserListData::class)]
 class UserListDataTest extends TestCase
 {

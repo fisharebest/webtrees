@@ -35,7 +35,6 @@ class IndividualNonEvent extends AbstractElement
         'SOUR' => '0:1',
     ];
 
-
     /**
      * Convert a value to a canonical form.
      *

@@ -139,7 +139,6 @@ class RedirectModulePhpTest extends TestCase
         self::assertSame('https://www.example.com', $response->getHeaderLine('Location'));
     }
 
-
     public function testNoSuchTree(): void
     {
         $module_service  = $this->createMock(ModuleService::class);

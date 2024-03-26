@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(HttpNotFoundException::class)]
 class HttpNotFoundExceptionTest extends TestCase
 {

@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(CensusColumnMonthIfBornWithinYear::class)]
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnMonthIfBornWithinYearTest extends TestCase
@@ -63,12 +62,10 @@ class CensusColumnMonthIfBornWithinYearTest extends TestCase
         $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
-
         $column = new CensusColumnMonthIfBornWithinYear($census, '', '');
 
         self::assertSame('', $column->generate($individual, $individual));
     }
-
 
     public function testNoBirth(): void
     {

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(ResidenceWithValue::class)]
 class ResidenceWithValueTest extends TestCase
 {

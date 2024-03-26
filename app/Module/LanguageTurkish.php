@@ -79,7 +79,6 @@ class LanguageTurkish extends AbstractModule implements ModuleLanguageInterface
         return new LocaleTr();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

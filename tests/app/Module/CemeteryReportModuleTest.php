@@ -55,7 +55,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 use function ob_get_clean;
 
-
 #[CoversClass(ModuleReportTrait::class)]
 #[CoversClass(PedigreeReportModule::class)]
 #[CoversClass(AbstractRenderer::class)]

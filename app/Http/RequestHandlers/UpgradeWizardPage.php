@@ -95,7 +95,6 @@ class UpgradeWizardPage implements RequestHandlerInterface
         ]);
     }
 
-
     /**
      * @return array<string>
      */

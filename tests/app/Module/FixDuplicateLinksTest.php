@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-
 #[CoversClass(FixDuplicateLinks::class)]
 #[CoversClass(ModuleDataFixTrait::class)]
 class FixDuplicateLinksTest extends TestCase
