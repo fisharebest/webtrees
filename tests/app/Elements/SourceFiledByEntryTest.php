@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class SourceFiledByEntry
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\SourceFiledByEntry
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(SourceFiledByEntry::class)]
 class SourceFiledByEntryTest extends AbstractElementTestCase
 {
     /**

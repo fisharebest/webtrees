@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class UnknownElement
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\UnknownElement
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(UnknownElement::class)]
 class UnknownElementTest extends AbstractElementTestCase
 {
     /**

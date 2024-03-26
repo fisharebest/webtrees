@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class UseLanguage
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\UseLanguage
- */
+
+#[CoversClass(UseLanguage::class)]
 class UseLanguageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\UseLanguage::class));
+        $this->assertTrue(class_exists(UseLanguage::class));
     }
 }

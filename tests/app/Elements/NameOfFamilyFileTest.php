@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class NameOfFamilyFile
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\NameOfFamilyFile
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(NameOfFamilyFile::class)]
 class NameOfFamilyFileTest extends AbstractElementTestCase
 {
     /**

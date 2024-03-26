@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RouteFactory
- *
- * @covers \Fisharebest\Webtrees\Factories\RouteFactory
- */
+
+#[CoversClass(RouteFactory::class)]
 class RouteFactoryTest extends TestCase
 {
     /**

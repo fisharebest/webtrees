@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class ResearchTaskStatus
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\ResearchTaskStatus
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(ResearchTaskStatus::class)]
 class ResearchTaskStatusTest extends AbstractElementTestCase
 {
     /**

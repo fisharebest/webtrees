@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class Engagement
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\Engagement
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(Engagement::class)]
 class EngagementTest extends AbstractElementTestCase
 {
     /**

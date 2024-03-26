@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class SiteTagsPage
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsPage
- */
+
+#[CoversClass(SiteTagsPage::class)]
 class SiteTagsPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsPage::class));
+        $this->assertTrue(class_exists(SiteTagsPage::class));
     }
 }

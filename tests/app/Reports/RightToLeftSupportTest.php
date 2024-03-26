@@ -22,16 +22,15 @@ namespace Fisharebest\Webtrees\Reports;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Report\RightToLeftSupport;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Test the RTL functions.  This is very old code, and poorly understood.
  * These tests exist to capture the existing functionality, and prevent regression during refactoring.
  */
+#[CoversClass(RightToLeftSupport::class)]
 class RightToLeftSupportTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testEmptyString(): void
     {
         I18N::init('en-US', true);
@@ -47,9 +46,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testStripControlCharacters(): void
     {
         I18N::init('en-US', true);
@@ -129,9 +125,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testNewLinesBecomeHTMLBreaks(): void
     {
         I18N::init('en-US', true);
@@ -155,9 +148,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testLineBreaks(): void
     {
         I18N::init('en-US', true);
@@ -181,9 +171,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testHtmlEntities(): void
     {
         I18N::init('en-US', true);
@@ -215,9 +202,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testBraces(): void
     {
         I18N::init('en-US', true);
@@ -249,9 +233,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testNumbers(): void
     {
         I18N::init('en-US', true);
@@ -307,9 +288,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testParentheses(): void
     {
         I18N::init('en-US', true);
@@ -349,9 +327,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testUnescapedHtml(): void
     {
         I18N::init('en-US', true);
@@ -375,9 +350,6 @@ class RightToLeftSupportTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testBreakInNumber(): void
     {
         I18N::init('en-US', true);

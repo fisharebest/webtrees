@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test ImportThumbnailsData class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsPage
- */
+
+#[CoversClass(ImportThumbnailsPage::class)]
 class ImportThumbnailsPageTest extends TestCase
 {
     protected static bool $uses_database = true;

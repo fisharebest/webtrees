@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RecentChangesModule
- *
- * @covers \Fisharebest\Webtrees\Module\RecentChangesModule
- */
+
+#[CoversClass(RecentChangesModule::class)]
 class RecentChangesModuleTest extends TestCase
 {
     /**

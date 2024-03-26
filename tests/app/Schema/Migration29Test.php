@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class Migration29
- *
- * @covers \Fisharebest\Webtrees\Schema\Migration29
- */
+
+#[CoversClass(Migration29::class)]
 class Migration29Test extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Schema\Migration29::class));
+        $this->assertTrue(class_exists(Migration29::class));
     }
 }

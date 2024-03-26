@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test harness for the class Soundex
- *
- * @covers \Fisharebest\Webtrees\Soundex
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(Soundex::class)]
 class SoundexTest extends TestCase
 {
     /**

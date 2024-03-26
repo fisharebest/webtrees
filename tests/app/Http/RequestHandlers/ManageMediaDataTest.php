@@ -28,12 +28,10 @@ use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test ManageMediaData class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData
- */
+
+#[CoversClass(ManageMediaData::class)]
 class ManageMediaDataTest extends TestCase
 {
     protected static bool $uses_database = true;

@@ -21,17 +21,14 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnRelationToHead
- */
+
+#[CoversClass(CensusColumnRelationToHeadGerman::class)]
+#[CoversClass(CensusColumnRelationToHead::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnRelationToHeadGermanTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHeadGerman
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnRelationToHead
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNull(): void
     {
         $individual = $this->createMock(Individual::class);

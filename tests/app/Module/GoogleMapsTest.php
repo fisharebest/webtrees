@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class GoogleMaps
- *
- * @covers \Fisharebest\Webtrees\Module\GoogleMaps
- */
+
+#[CoversClass(GoogleMaps::class)]
 class GoogleMapsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\GoogleMaps::class));
+        $this->assertTrue(class_exists(GoogleMaps::class));
     }
 }

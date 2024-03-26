@@ -23,16 +23,13 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnAge
- */
+
+#[CoversClass(CensusColumnBirthDay::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnBirthDayTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDay
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testGenerateColumn(): void
     {
         $cal_date = $this->createMock(GregorianDate::class);

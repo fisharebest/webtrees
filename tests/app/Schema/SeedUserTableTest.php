@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class SeedUserTable
- *
- * @covers \Fisharebest\Webtrees\Schema\SeedUserTable
- */
+
+#[CoversClass(SeedUserTable::class)]
 class SeedUserTableTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Schema\SeedUserTable::class));
+        $this->assertTrue(class_exists(SeedUserTable::class));
     }
 }

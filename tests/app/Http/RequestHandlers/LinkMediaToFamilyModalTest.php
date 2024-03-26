@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class LinkMediaToFamilyModal
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToFamilyModal
- */
+
+#[CoversClass(LinkMediaToFamilyModal::class)]
 class LinkMediaToFamilyModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToFamilyModal::class));
+        $this->assertTrue(class_exists(LinkMediaToFamilyModal::class));
     }
 }

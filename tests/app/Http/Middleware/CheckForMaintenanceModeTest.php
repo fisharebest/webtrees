@@ -21,15 +21,13 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Test the CheckForMaintenanceMode middleware.
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode
- */
+
+#[CoversClass(CheckForMaintenanceMode::class)]
 class CheckForMaintenanceModeTest extends TestCase
 {
     public function testMiddleware(): void

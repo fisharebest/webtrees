@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ChartService
- *
- * @covers \Fisharebest\Webtrees\Services\ChartService
- */
+
+#[CoversClass(ChartService::class)]
 class ChartServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\ChartService::class));
+        $this->assertTrue(class_exists(ChartService::class));
     }
 }

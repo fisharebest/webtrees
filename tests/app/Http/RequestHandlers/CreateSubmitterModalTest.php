@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CreateSubmitterModal
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterModal
- */
+
+#[CoversClass(CreateSubmitterModal::class)]
 class CreateSubmitterModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CreateSubmitterModal::class));
+        $this->assertTrue(class_exists(CreateSubmitterModal::class));
     }
 }

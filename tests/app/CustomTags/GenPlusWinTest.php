@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class GenPlusWin
- *
- * @covers \Fisharebest\Webtrees\CustomTags\GenPlusWin
- */
+
+#[CoversClass(GenPlusWin::class)]
 class GenPlusWinTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\GenPlusWin::class));
+        $this->assertTrue(class_exists(GenPlusWin::class));
     }
 }

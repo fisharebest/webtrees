@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class LanguageMaori
- *
- * @covers \Fisharebest\Webtrees\Module\LanguageMaori
- */
+
+#[CoversClass(LanguageMaori::class)]
 class LanguageMaoriTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LanguageMaori::class));
+        $this->assertTrue(class_exists(LanguageMaori::class));
     }
 }

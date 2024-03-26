@@ -24,10 +24,9 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage
- */
+#[CoversClass(BroadcastPage::class)]
 class BroadcastPageTest extends TestCase
 {
     protected static bool $uses_database = true;

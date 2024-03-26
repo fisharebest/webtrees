@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ContentLength
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\ContentLength
- */
+
+#[CoversClass(ContentLength::class)]
 class ContentLengthTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\ContentLength::class));
+        $this->assertTrue(class_exists(ContentLength::class));
     }
 }

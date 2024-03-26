@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ChartBirth
- *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartBirth
- */
+
+#[CoversClass(ChartBirth::class)]
 class ChartBirthTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Statistics\Google\ChartBirth::class));
+        $this->assertTrue(class_exists(ChartBirth::class));
     }
 }

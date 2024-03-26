@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test harness for the class Note
- *
- * @covers \Fisharebest\Webtrees\Note
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(Note::class)]
 class NoteTest extends TestCase
 {
     protected static bool $uses_database = true;

@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class BadBotBlocker
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\BadBotBlocker
- */
+
+#[CoversClass(BadBotBlocker::class)]
 class BadBotBlockerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\BadBotBlocker::class));
+        $this->assertTrue(class_exists(BadBotBlocker::class));
     }
 }

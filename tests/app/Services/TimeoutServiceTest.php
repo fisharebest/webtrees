@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\TimeFactoryInterface;
 use Fisharebest\Webtrees\MockGlobalFunctions;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Mock function.
@@ -40,9 +41,8 @@ function ini_get(...$args)
     return TestCase::$mock_functions->iniGet(...$args);
 }
 
-/**
- * Test harness for the class TimeoutService
- */
+
+#[CoversClass(TimeoutService::class)]
 class TimeoutServiceTest extends TestCase
 {
     protected function setUp(): void
@@ -59,10 +59,6 @@ class TimeoutServiceTest extends TestCase
         self::$mock_functions = null;
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     */
     public function testNoTimeOut(): void
     {
         $now = 1500000000.0;
@@ -77,10 +73,6 @@ class TimeoutServiceTest extends TestCase
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     */
     public function testTimeOutReached(): void
     {
         $now = 1500000000.0;
@@ -99,10 +91,6 @@ class TimeoutServiceTest extends TestCase
         self::assertTrue($timeout_service->isTimeNearlyUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     */
     public function testTimeOutNotReached(): void
     {
         $now = Registry::timeFactory()->now();
@@ -121,10 +109,6 @@ class TimeoutServiceTest extends TestCase
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
-     */
     public function testTimeLimitNotReached(): void
     {
         $now = Registry::timeFactory()->now();
@@ -138,10 +122,6 @@ class TimeoutServiceTest extends TestCase
         self::assertFalse($timeout_service->isTimeLimitUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
-     */
     public function testTimeLimitReached(): void
     {
         $now = Registry::timeFactory()->now();

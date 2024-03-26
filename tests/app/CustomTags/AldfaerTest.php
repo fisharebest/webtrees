@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class Aldfaer
- *
- * @covers \Fisharebest\Webtrees\CustomTags\Aldfaer
- */
+
+#[CoversClass(Aldfaer::class)]
 class AldfaerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\Aldfaer::class));
+        $this->assertTrue(class_exists(Aldfaer::class));
     }
 }

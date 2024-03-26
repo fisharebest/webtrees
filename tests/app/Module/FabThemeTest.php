@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class FabTheme
- *
- * @covers \Fisharebest\Webtrees\Module\FabTheme
- */
+
+#[CoversClass(FabTheme::class)]
 class FabThemeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FabTheme::class));
+        $this->assertTrue(class_exists(FabTheme::class));
     }
 }

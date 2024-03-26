@@ -20,16 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusOfSlovakia1930
- */
+
+#[CoversClass(CensusOfSlovakia1930::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusOfSlovakia1930Test extends TestCase
 {
     /**
      * Test the census place and date
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia1930
      */
     public function testPlaceAndDate(): void
     {
@@ -41,9 +40,6 @@ class CensusOfSlovakia1930Test extends TestCase
 
     /**
      * Test the census columns
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia1930
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      */
     public function testColumns(): void
     {

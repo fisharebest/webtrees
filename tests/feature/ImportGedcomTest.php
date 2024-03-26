@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test the user functions
- *
- * @coversNothing
- */
+use Fisharebest\Webtrees\Services\GedcomImportService;
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(GedcomImportService::class)]
 class ImportGedcomTest extends TestCase
 {
     protected static bool $uses_database = true;

@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class SearchPhoneticAction
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticAction
- */
+
+#[CoversClass(SearchPhoneticAction::class)]
 class SearchPhoneticActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticAction::class));
+        $this->assertTrue(class_exists(SearchPhoneticAction::class));
     }
 }

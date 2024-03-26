@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ProGen
- *
- * @covers \Fisharebest\Webtrees\CustomTags\ProGen
- */
+
+#[CoversClass(ProGen::class)]
 class ProGenTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\ProGen::class));
+        $this->assertTrue(class_exists(ProGen::class));
     }
 }

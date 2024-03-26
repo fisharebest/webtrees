@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RelativesTabModule
- *
- * @covers \Fisharebest\Webtrees\Module\RelativesTabModule
- */
+
+#[CoversClass(RelativesTabModule::class)]
 class RelativesTabModuleTest extends TestCase
 {
     /**

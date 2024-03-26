@@ -24,12 +24,10 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test FixLevel0MediaActionTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaActionTest
- */
+
+#[CoversClass(FixLevel0MediaActionTest::class)]
 class FixLevel0MediaActionTest extends TestCase
 {
     protected static bool $uses_database = true;

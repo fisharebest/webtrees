@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class FamilyTreeBuilder
- *
- * @covers \Fisharebest\Webtrees\CustomTags\FamilyTreeBuilder
- */
+
+#[CoversClass(FamilyTreeBuilder::class)]
 class FamilyTreeBuilderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\FamilyTreeBuilder::class));
+        $this->assertTrue(class_exists(FamilyTreeBuilder::class));
     }
 }

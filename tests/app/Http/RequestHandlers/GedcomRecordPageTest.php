@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class GedcomRecordPage
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage
- */
+
+#[CoversClass(GedcomRecordPage::class)]
 class GedcomRecordPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage::class));
+        $this->assertTrue(class_exists(GedcomRecordPage::class));
     }
 }

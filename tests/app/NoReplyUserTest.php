@@ -20,20 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test the NoReplyUser class
- */
+
+#[CoversClass(NoReplyUser::class)]
 class NoReplyUserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @covers \Fisharebest\Webtrees\NoReplyUser::id
-     * @covers \Fisharebest\Webtrees\NoReplyUser::email
-     * @covers \Fisharebest\Webtrees\NoReplyUser::realName
-     * @covers \Fisharebest\Webtrees\NoReplyUser::userName
-     */
     public function testConstructor(): void
     {
         $user = new NoReplyUser();
@@ -45,10 +39,6 @@ class NoReplyUserTest extends TestCase
         self::assertSame('', $user->userName());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\NoReplyUser::getPreference
-     * @covers \Fisharebest\Webtrees\NoReplyUser::setPreference
-     */
     public function testPreferences(): void
     {
         $user = new NoReplyUser();

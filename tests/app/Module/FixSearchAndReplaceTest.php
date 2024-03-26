@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class FixSearchAndReplace
- *
- * @covers \Fisharebest\Webtrees\Module\FixSearchAndReplace
- */
+
+#[CoversClass(FixSearchAndReplace::class)]
 class FixSearchAndReplaceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FixSearchAndReplace::class));
+        $this->assertTrue(class_exists(FixSearchAndReplace::class));
     }
 }

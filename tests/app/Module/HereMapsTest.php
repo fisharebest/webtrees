@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class HereMaps
- *
- * @covers \Fisharebest\Webtrees\Module\HereMaps
- */
+
+#[CoversClass(HereMaps::class)]
 class HereMapsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\HereMaps::class));
+        $this->assertTrue(class_exists(HereMaps::class));
     }
 }

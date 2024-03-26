@@ -32,12 +32,10 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test the control panel
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel
- */
+
+#[CoversClass(ControlPanel::class)]
 class ControlPanelControllerTest extends TestCase
 {
     protected static bool $uses_database = true;

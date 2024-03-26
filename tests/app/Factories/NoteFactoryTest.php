@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class NoteFactory
- *
- * @covers \Fisharebest\Webtrees\Factories\NoteFactory
- */
+
+#[CoversClass(NoteFactory::class)]
 class NoteFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Factories\NoteFactory::class));
+        $this->assertTrue(class_exists(NoteFactory::class));
     }
 }

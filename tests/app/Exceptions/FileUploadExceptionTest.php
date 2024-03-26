@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Exceptions;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class FileUploadException
- *
- * @covers \Fisharebest\Webtrees\Exceptions\FileUploadException
- */
+
+#[CoversClass(FileUploadException::class)]
 class FileUploadExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Exceptions\FileUploadException::class));
+        $this->assertTrue(class_exists(FileUploadException::class));
     }
 }

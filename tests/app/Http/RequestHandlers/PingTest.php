@@ -23,10 +23,9 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\Ping
- */
+#[CoversClass(Ping::class)]
 class PingTest extends TestCase
 {
     public function testPingOK(): void

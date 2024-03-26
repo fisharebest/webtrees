@@ -24,10 +24,9 @@ use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDownload
- */
+#[CoversClass(SiteLogsDownload::class)]
 class SiteLogsDownloadTest extends TestCase
 {
     public function testResponse(): void

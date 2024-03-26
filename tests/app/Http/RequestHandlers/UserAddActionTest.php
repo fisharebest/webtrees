@@ -23,12 +23,10 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test UserAddActionTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserAddAction
- */
+
+#[CoversClass(UserAddAction::class)]
 class UserAddActionTest extends TestCase
 {
     protected static bool $uses_database = true;

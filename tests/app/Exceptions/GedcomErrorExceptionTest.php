@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Exceptions;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class GedcomErrorException
- *
- * @covers \Fisharebest\Webtrees\Exceptions\GedcomErrorException
- */
+
+#[CoversClass(GedcomErrorException::class)]
 class GedcomErrorExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Exceptions\GedcomErrorException::class));
+        $this->assertTrue(class_exists(GedcomErrorException::class));
     }
 }

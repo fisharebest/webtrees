@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RootsMagic
- *
- * @covers \Fisharebest\Webtrees\CustomTags\RootsMagic
- */
+
+#[CoversClass(RootsMagic::class)]
 class RootsMagicTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\RootsMagic::class));
+        $this->assertTrue(class_exists(RootsMagic::class));
     }
 }

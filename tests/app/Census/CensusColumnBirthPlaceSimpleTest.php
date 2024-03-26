@@ -22,10 +22,11 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnBirthPlaceSimple
- */
+
+#[CoversClass(CensusColumnBirthPlaceSimple::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnBirthPlaceSimpleTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
@@ -36,10 +37,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
         return $placeMock;
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testForeignCountry(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -53,10 +50,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
         self::assertSame('England', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testJustCountry(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -70,10 +63,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testKnownState(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -87,10 +76,6 @@ class CensusColumnBirthPlaceSimpleTest extends TestCase
         self::assertSame('Maryland', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthPlaceSimple
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testKnownStateAndTown(): void
     {
         $individual = $this->createMock(Individual::class);

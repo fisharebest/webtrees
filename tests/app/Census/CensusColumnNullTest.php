@@ -21,16 +21,13 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnNull
- */
+
+#[CoversClass(CensusColumnNull::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnNullTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnNull
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNull(): void
     {
         $individual = $this->createMock(Individual::class);

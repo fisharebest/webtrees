@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class LanguageLingala
- *
- * @covers \Fisharebest\Webtrees\Module\LanguageLingala
- */
+
+#[CoversClass(LanguageLingala::class)]
 class LanguageLingalaTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LanguageLingala::class));
+        $this->assertTrue(class_exists(LanguageLingala::class));
     }
 }

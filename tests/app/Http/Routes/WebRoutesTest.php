@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Routes;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class WebRoutes
- *
- * @covers \Fisharebest\Webtrees\Http\Routes\WebRoutes
- */
+
+#[CoversClass(WebRoutes::class)]
 class WebRoutesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Routes\WebRoutes::class));
+        $this->assertTrue(class_exists(WebRoutes::class));
     }
 }

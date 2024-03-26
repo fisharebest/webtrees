@@ -21,15 +21,13 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Test the NoRouteFound middleware.
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\NoRouteFound
- */
+
+#[CoversClass(NoRouteFound::class)]
 class NoRouteFoundTest extends TestCase
 {
     public function testMiddleware(): void

@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ResidenceWithValue
- *
- * @covers \Fisharebest\Webtrees\Elements\ResidenceWithValue
- */
+
+#[CoversClass(ResidenceWithValue::class)]
 class ResidenceWithValueTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\ResidenceWithValue::class));
+        $this->assertTrue(class_exists(ResidenceWithValue::class));
     }
 }

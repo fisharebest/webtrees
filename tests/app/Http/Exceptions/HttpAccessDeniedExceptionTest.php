@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class HttpAccessDeniedException
- *
- * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException
- */
+
+#[CoversClass(HttpAccessDeniedException::class)]
 class HttpAccessDeniedExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException::class));
+        $this->assertTrue(class_exists(HttpAccessDeniedException::class));
     }
 }

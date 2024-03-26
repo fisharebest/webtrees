@@ -22,12 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test the location export.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV
- */
+
+#[CoversClass(MapDataExportCSV::class)]
 class MapDataExportCSVTest extends TestCase
 {
     protected static bool $uses_database = true;

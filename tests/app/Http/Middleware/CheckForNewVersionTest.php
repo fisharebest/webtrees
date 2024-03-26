@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CheckForNewVersion
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion
- */
+
+#[CoversClass(CheckForNewVersion::class)]
 class CheckForNewVersionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion::class));
+        $this->assertTrue(class_exists(CheckForNewVersion::class));
     }
 }

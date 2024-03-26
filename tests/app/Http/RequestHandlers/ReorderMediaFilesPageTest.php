@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ReorderMediaFilesPage
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaFilesPage
- */
+
+#[CoversClass(ReorderMediaFilesPage::class)]
 class ReorderMediaFilesPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaFilesPage::class));
+        $this->assertTrue(class_exists(ReorderMediaFilesPage::class));
     }
 }

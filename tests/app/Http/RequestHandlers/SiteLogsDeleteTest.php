@@ -23,10 +23,9 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Database\Query\Builder;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete
- */
+#[CoversClass(SiteLogsDelete::class)]
 class SiteLogsDeleteTest extends TestCase
 {
     public function testResponse(): void

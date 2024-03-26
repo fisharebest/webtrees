@@ -22,12 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test UserListTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserListPage
- */
+
+#[CoversClass(UserListPage::class)]
 class UserListTest extends TestCase
 {
     protected static bool $uses_database = true;

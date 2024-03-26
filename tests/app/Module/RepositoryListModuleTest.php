@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RepositoryListModule
- *
- * @covers \Fisharebest\Webtrees\Module\RepositoryListModule
- */
+
+#[CoversClass(RepositoryListModule::class)]
 class RepositoryListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\RepositoryListModule::class));
+        $this->assertTrue(class_exists(RepositoryListModule::class));
     }
 }

@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test harness for the class Place
- *
- * @covers \Fisharebest\Webtrees\Place
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(Place::class)]
 class PlaceTest extends TestCase
 {
     /**

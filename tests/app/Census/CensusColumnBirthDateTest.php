@@ -22,16 +22,13 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnAge
- */
+
+#[CoversClass(CensusColumnBirthDate::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnBirthDateTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDate
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testGenerateColumn(): void
     {
         $individual = $this->createMock(Individual::class);

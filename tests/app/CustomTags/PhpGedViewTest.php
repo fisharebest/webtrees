@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class PhpGedView
- *
- * @covers \Fisharebest\Webtrees\CustomTags\PhpGedView
- */
+
+#[CoversClass(PhpGedView::class)]
 class PhpGedViewTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\PhpGedView::class));
+        $this->assertTrue(class_exists(PhpGedView::class));
     }
 }

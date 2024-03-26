@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class PasteFact
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PasteFact
- */
+
+#[CoversClass(PasteFact::class)]
 class PasteFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\PasteFact::class));
+        $this->assertTrue(class_exists(PasteFact::class));
     }
 }

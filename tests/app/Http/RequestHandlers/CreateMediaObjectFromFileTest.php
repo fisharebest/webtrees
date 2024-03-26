@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CreateMediaObjectFromFile
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectFromFile
- */
+
+#[CoversClass(CreateMediaObjectFromFile::class)]
 class CreateMediaObjectFromFileTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectFromFile::class));
+        $this->assertTrue(class_exists(CreateMediaObjectFromFile::class));
     }
 }

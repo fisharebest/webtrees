@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CalendarMenuModule
- *
- * @covers \Fisharebest\Webtrees\Module\CalendarMenuModule
- */
+
+#[CoversClass(CalendarMenuModule::class)]
 class CalendarMenuModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\CalendarMenuModule::class));
+        $this->assertTrue(class_exists(CalendarMenuModule::class));
     }
 }

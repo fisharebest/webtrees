@@ -23,16 +23,13 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnReligion
- */
+
+#[CoversClass(CensusColumnReligion::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnReligionTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNoReligion(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -49,10 +46,6 @@ class CensusColumnReligionTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testRecordReligion(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -67,10 +60,6 @@ class CensusColumnReligionTest extends TestCase
         self::assertSame('Jedi', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testEventReligion(): void
     {
         $individual = $this->createMock(Individual::class);

@@ -20,13 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Tree;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class AgeAtEvent
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\AgeAtEvent
- */
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(AgeAtEvent::class)]
 class AgeAtEventTest extends AbstractElementTestCase
 {
     /**

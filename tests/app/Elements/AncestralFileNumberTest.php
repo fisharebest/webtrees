@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class AncestralFileNumber
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
- * @covers \Fisharebest\Webtrees\Elements\AncestralFileNumber
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(AbstractExternalLink::class)]
+#[CoversClass(AncestralFileNumber::class)]
 class AncestralFileNumberTest extends AbstractElementTestCase
 {
     /**

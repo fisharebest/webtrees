@@ -24,12 +24,10 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test UserEditPageTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserListData
- */
+
+#[CoversClass(UserListData::class)]
 class UserListDataTest extends TestCase
 {
     protected static bool $uses_database = true;

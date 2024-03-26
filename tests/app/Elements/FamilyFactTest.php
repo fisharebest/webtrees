@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class FamilyFact
- *
- * @covers \Fisharebest\Webtrees\Elements\FamilyFact
- */
+
+#[CoversClass(FamilyFact::class)]
 class FamilyFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\FamilyFact::class));
+        $this->assertTrue(class_exists(FamilyFact::class));
     }
 }

@@ -28,10 +28,9 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RedirectLifeSpanPhp
- */
+#[CoversClass(RedirectLifeSpanPhp::class)]
 class RedirectLifeSpanPhpTest extends TestCase
 {
     protected static bool $uses_database = true;

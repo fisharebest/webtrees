@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test FixLevel0MediaPageTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaPageTest
- */
+
+#[CoversClass(FixLevel0MediaPageTest::class)]
 class FixLevel0MediaPageTest extends TestCase
 {
     protected static bool $uses_database = true;

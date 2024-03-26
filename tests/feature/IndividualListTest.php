@@ -27,14 +27,12 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+
 use function array_map;
 use function preg_match_all;
 
-/**
- * Test the individual lists.
- *
- * @coversNothing
- */
+#[CoversClass(IndividualListModule::class)]
 class IndividualListTest extends TestCase
 {
     protected static bool $uses_database = true;
@@ -59,9 +57,6 @@ class IndividualListTest extends TestCase
         Registry::individualFactory()->make('X1', $this->tree)->deleteRecord();
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
-     */
     public function testCollationOfInitials(): void
     {
         $module = new IndividualListModule();
@@ -96,9 +91,6 @@ class IndividualListTest extends TestCase
         self::assertEquals(['A', 'C', 'CS', 'DZ', 'Æ'], array_map(rawurldecode(...), $matches[1]));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
-     */
     public function xtestRedirectToCanonicalSurname(): void
     {
         $module = new IndividualListModule();
@@ -121,9 +113,6 @@ class IndividualListTest extends TestCase
         self::assertStringContainsString('surname=MUELLER', $response->getHeaderLine('Location'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
-     */
     public function testCollationOfSurnames(): void
     {
         $module = new IndividualListModule();
@@ -153,9 +142,6 @@ class IndividualListTest extends TestCase
         self::assertEqualsCanonicalizing([$i2->xref(), $i3->xref()], $matches[1], 'German, so UE should also match Ü');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
-     */
     public function xtestUnknownVersusMissingSurname(): void
     {
         $module = new IndividualListModule();
@@ -176,9 +162,6 @@ class IndividualListTest extends TestCase
         self::assertEqualsCanonicalizing([$i2->xref()], $matches[1]);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
-     */
     public function xtestAllSurnamesExcludesUnknownAndMissing(): void
     {
         $module = new IndividualListModule();
@@ -201,9 +184,6 @@ class IndividualListTest extends TestCase
         self::assertEqualsCanonicalizing([$i1->xref(), $i2->xref()], $matches[1]);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Module\IndividualListModule
-     */
     public function xtestSurnameInitial(): void
     {
         $module = new IndividualListModule();

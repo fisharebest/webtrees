@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class TreePrivacyAction
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyAction
- */
+
+#[CoversClass(TreePrivacyAction::class)]
 class TreePrivacyActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyAction::class));
+        $this->assertTrue(class_exists(TreePrivacyAction::class));
     }
 }

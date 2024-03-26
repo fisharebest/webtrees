@@ -25,12 +25,10 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test FixLevel0MediaDataTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaDataTest
- */
+
+#[CoversClass(FixLevel0MediaDataTest::class)]
 class FixLevel0MediaDataTest extends TestCase
 {
     protected static bool $uses_database = true;

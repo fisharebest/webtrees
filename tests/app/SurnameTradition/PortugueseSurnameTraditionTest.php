@@ -23,10 +23,10 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class PortugueseSurnameTradition
- */
+
+#[CoversClass(PortugueseSurnameTradition::class)]
 class PortugueseSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
@@ -43,8 +43,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 
     /**
      * Test whether surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
      */
     public function testSurnames(): void
     {
@@ -53,8 +51,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
      */
     public function testNewChildNames(): void
     {
@@ -88,8 +84,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
      */
     public function testNewChildNamesWithNoParentsNames(): void
     {
@@ -101,8 +95,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
      */
     public function testNewChildNamesCompunds(): void
     {
@@ -126,8 +118,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 
     /**
      * Test new parent names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
      */
     public function testNewParentNames(): void
     {
@@ -154,8 +144,6 @@ class PortugueseSurnameTraditionTest extends TestCase
 
     /**
      * Test new spouse names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition
      */
     public function testNewSpouseNames(): void
     {

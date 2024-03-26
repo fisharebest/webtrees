@@ -27,13 +27,12 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ResponseInterface;
 
 use function response;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction
- */
+#[CoversClass(ModuleAction::class)]
 class ModuleActionTest extends TestCase
 {
     public function testModuleAction(): void
@@ -120,15 +119,9 @@ class ModuleActionTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return ModuleInterface
-     */
     private function fooModule(): ModuleInterface
     {
         return new class () extends AbstractModule {
-            /**
-             * @return ResponseInterface
-             */
             public function getTestAction(): ResponseInterface
             {
                 return response('It works!');

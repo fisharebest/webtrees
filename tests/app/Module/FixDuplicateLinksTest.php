@@ -27,13 +27,11 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Class FixDuplicateLinksTest.
- *
- * @covers \Fisharebest\Webtrees\Module\FixDuplicateLinks
- * @covers \Fisharebest\Webtrees\Module\ModuleDataFixTrait
- */
+
+#[CoversClass(FixDuplicateLinks::class)]
+#[CoversClass(ModuleDataFixTrait::class)]
 class FixDuplicateLinksTest extends TestCase
 {
     protected static bool $uses_database = true;

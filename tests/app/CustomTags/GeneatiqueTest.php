@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class Geneatique
- *
- * @covers \Fisharebest\Webtrees\CustomTags\Geneatique
- */
+
+#[CoversClass(Geneatique::class)]
 class GeneatiqueTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\Geneatique::class));
+        $this->assertTrue(class_exists(Geneatique::class));
     }
 }

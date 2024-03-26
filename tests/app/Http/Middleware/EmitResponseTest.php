@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class EmitResponse
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\EmitResponse
- */
+
+#[CoversClass(EmitResponse::class)]
 class EmitResponseTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\EmitResponse::class));
+        $this->assertTrue(class_exists(EmitResponse::class));
     }
 }

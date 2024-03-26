@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class IndividualListModule
- *
- * @covers \Fisharebest\Webtrees\Module\IndividualListModule
- */
+
+#[CoversClass(IndividualListModule::class)]
 class IndividualListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\IndividualListModule::class));
+        $this->assertTrue(class_exists(IndividualListModule::class));
     }
 }

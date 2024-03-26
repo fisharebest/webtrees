@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RomanDate
- *
- * @covers \Fisharebest\Webtrees\Date\RomanDate
- */
+
+#[CoversClass(RomanDate::class)]
 class RomanDateTest extends TestCase
 {
     /**

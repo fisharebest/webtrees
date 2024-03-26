@@ -23,22 +23,18 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use function function_exists;
 
-/**
- * Test harness for the class EmailService
- *
- * @covers \Fisharebest\Webtrees\Services\EmailService
- */
+
+#[CoversClass(EmailService::class)]
 class EmailServiceTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\EmailService::send
-     * @covers \Fisharebest\Webtrees\Services\EmailService::message
-     * @covers \Fisharebest\Webtrees\Services\EmailService::transport
-     */
     public function testSend(): void
     {
         $email_service = new EmailService();
@@ -113,19 +109,12 @@ U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ
         ];
     }
 
-    /**
-     * @dataProvider emailProvider
-     *
-     * @covers \Fisharebest\Webtrees\Services\EmailService::isValidEmail
-     */
+    #[DataProvider('emailProvider')]
     public function testIsValidEmail(string $email, bool $is_valid): void
     {
         self::assertSame($is_valid, (new EmailService())->isValidEmail($email));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\EmailService::mailSslOptions
-     */
     public function testMailSslOptions(): void
     {
         $options = (new EmailService())->mailSslOptions();
@@ -133,9 +122,6 @@ U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ
         self::assertArrayHasKey('ssl', $options);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\EmailService::mailTransportOptions
-     */
     public function testMailTransportOptions(): void
     {
         $options = (new EmailService())->mailTransportOptions();

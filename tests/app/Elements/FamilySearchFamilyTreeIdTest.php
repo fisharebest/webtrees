@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class FamilySearchFamilyTreeId
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
- * @covers \Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(AbstractExternalLink::class)]
+#[CoversClass(FamilySearchFamilyTreeId::class)]
 class FamilySearchFamilyTreeIdTest extends AbstractElementTestCase
 {
     /**

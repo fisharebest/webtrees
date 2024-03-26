@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ExternalIdentifier
- *
- * @covers \Fisharebest\Webtrees\Elements\ExternalIdentifier
- */
+
+#[CoversClass(ExternalIdentifier::class)]
 class ExternalIdentifierTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\ExternalIdentifier::class));
+        $this->assertTrue(class_exists(ExternalIdentifier::class));
     }
 }

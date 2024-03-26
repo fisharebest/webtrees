@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\ISO88592;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 use function chr;
@@ -28,15 +30,11 @@ use function dechex;
 use function iconv;
 use function range;
 
-/**
- * Tests for class ISO88592.
- */
+
+#[CoversClass(AbstractEncoding::class)]
+#[CoversClass(ISO88592::class)]
 class ISO88592Test extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ISO88592
-     */
     public function testToUtf8(): void
     {
         $encoding = new ISO88592();

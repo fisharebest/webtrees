@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RepositoryPage
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage
- */
+
+#[CoversClass(RepositoryPage::class)]
 class RepositoryPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage::class));
+        $this->assertTrue(class_exists(RepositoryPage::class));
     }
 }

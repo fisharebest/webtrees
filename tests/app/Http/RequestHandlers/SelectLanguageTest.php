@@ -23,10 +23,9 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage
- */
+#[CoversClass(SelectLanguage::class)]
 class SelectLanguageTest extends TestCase
 {
     protected static bool $uses_database = true;

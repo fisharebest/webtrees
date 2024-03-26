@@ -25,12 +25,10 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test the AccountEdit request handler.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit
- */
+
+#[CoversClass(AccountEdit::class)]
 class AccountEditTest extends TestCase
 {
     protected static bool $uses_database = true;

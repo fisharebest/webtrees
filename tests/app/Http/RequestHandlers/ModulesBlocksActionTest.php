@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ModulesBlocksAction
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksAction
- */
+
+#[CoversClass(ModulesBlocksAction::class)]
 class ModulesBlocksActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksAction::class));
+        $this->assertTrue(class_exists(ModulesBlocksAction::class));
     }
 }

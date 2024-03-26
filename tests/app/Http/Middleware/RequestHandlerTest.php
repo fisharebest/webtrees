@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RequestHandler
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\RequestHandler
- */
+
+#[CoversClass(RequestHandler::class)]
 class RequestHandlerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\RequestHandler::class));
+        $this->assertTrue(class_exists(RequestHandler::class));
     }
 }

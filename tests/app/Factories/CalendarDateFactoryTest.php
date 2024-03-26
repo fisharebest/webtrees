@@ -27,17 +27,12 @@ use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Date\RomanDate;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CalendarDateFactory
- *
- * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory
- */
+
+#[CoversClass(CalendarDateFactory::class)]
 class CalendarDateFactoryTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testEmptyDate(): void
     {
         $factory = new CalendarDateFactory();
@@ -50,9 +45,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testValidCalendarEscape(): void
     {
         $factory = new CalendarDateFactory();
@@ -76,9 +68,6 @@ class CalendarDateFactoryTest extends TestCase
         }
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testInvalidCalendarEscapeIgnored(): void
     {
         $factory = new CalendarDateFactory();
@@ -90,9 +79,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testDayMonthAndYear(): void
     {
         $factory = new CalendarDateFactory();
@@ -104,9 +90,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(1, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testMonthAndYear(): void
     {
         $factory = new CalendarDateFactory();
@@ -118,9 +101,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testYear(): void
     {
         $factory = new CalendarDateFactory();
@@ -132,9 +112,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testExtractedYear(): void
     {
         $factory = new CalendarDateFactory();
@@ -146,9 +123,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testExtractedMonthAndYear(): void
     {
         $factory = new CalendarDateFactory();
@@ -160,9 +134,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testExtractedDayMonthAndYear(): void
     {
         $factory = new CalendarDateFactory();
@@ -174,9 +145,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(11, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testExtractedMonth(): void
     {
         $factory = new CalendarDateFactory();
@@ -188,9 +156,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testExtractedDayAndMonth(): void
     {
         $factory = new CalendarDateFactory();
@@ -202,9 +167,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(11, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testUnambiguousOverrideWithHebrewMonth(): void
     {
         $factory = new CalendarDateFactory();
@@ -216,9 +178,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(10, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testUnambiguousOverrideWithFrenchMonth(): void
     {
         $factory = new CalendarDateFactory();
@@ -230,9 +189,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(10, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testUnambiguousOverrideWithHijriMonth(): void
     {
         $factory = new CalendarDateFactory();
@@ -244,9 +200,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(10, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testUnambiguousOverrideWithJalaliMonth(): void
     {
         $factory = new CalendarDateFactory();
@@ -258,9 +211,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(10, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testUnambiguousOverrideWithJulianBCYear(): void
     {
         $factory = new CalendarDateFactory();
@@ -272,9 +222,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(10, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::make
-     */
     public function testUnambiguousYearWithNoCalendar(): void
     {
         $factory = new CalendarDateFactory();
@@ -286,9 +233,6 @@ class CalendarDateFactoryTest extends TestCase
         static::assertSame(0, $date->day);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\CalendarDateFactory::supportedCalendars
-     */
     public function testSupportedCalendars(): void
     {
         $factory = new CalendarDateFactory();
