@@ -54,7 +54,7 @@ class ChartIndividualWithSources
         int $tot_indi,
         int $tot_indi_source,
         ?string $color_from = null,
-        string $color_to = null
+        ?string $color_to = null
     ): string {
         $color_from ??= 'ffffff';
         $color_to ??= '84beff';
