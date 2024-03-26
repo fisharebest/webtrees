@@ -42,7 +42,7 @@ class MarkdownFactoryTest extends TestCase
     public function testAutoLinkWithTree(): void
     {
         $factory = new MarkdownFactory();
-        $tree    = $this->createStub(Tree::class);
+        $tree    = $this->createMock(Tree::class);
 
         static::assertSame(
             '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
@@ -77,7 +77,7 @@ class MarkdownFactoryTest extends TestCase
 
     public function testMarkdownWithTree(): void
     {
-        $tree    = $this->createStub(Tree::class);
+        $tree    = $this->createMock(Tree::class);
         $factory = new MarkdownFactory();
 
         static::assertSame(

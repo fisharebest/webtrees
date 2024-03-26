@@ -39,23 +39,23 @@ class RedirectNotePhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $note = $this->createStub(Note::class);
+        $note = $this->createMock(Note::class);
         $note
             ->method('url')
             ->willReturn('https://www.example.com');
 
-        $note_factory = $this->createStub(NoteFactory::class);
+        $note_factory = $this->createMock(NoteFactory::class);
         $note_factory
             ->expects(self::once())
             ->method('make')
@@ -79,9 +79,9 @@ class RedirectNotePhpTest extends TestCase
 
     public function testNoSuchRecord(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
@@ -101,7 +101,7 @@ class RedirectNotePhpTest extends TestCase
 
     public function testMissingXrefParameter(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
 
         $handler = new RedirectNotePhp($tree_service);
 

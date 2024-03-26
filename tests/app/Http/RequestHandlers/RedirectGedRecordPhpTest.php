@@ -39,23 +39,23 @@ class RedirectGedRecordPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $gedcom_record = $this->createStub(GedcomRecord::class);
+        $gedcom_record = $this->createMock(GedcomRecord::class);
         $gedcom_record
             ->method('url')
             ->willReturn('https://www.example.com');
 
-        $gedcom_record_factory = $this->createStub(GedcomRecordFactory::class);
+        $gedcom_record_factory = $this->createMock(GedcomRecordFactory::class);
         $gedcom_record_factory
             ->expects(self::once())
             ->method('make')
@@ -79,9 +79,9 @@ class RedirectGedRecordPhpTest extends TestCase
 
     public function testNoSuchRecord(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
@@ -101,7 +101,7 @@ class RedirectGedRecordPhpTest extends TestCase
 
     public function testMissingXrefParameter(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
 
         $handler = new RedirectGedRecordPhp($tree_service);
 

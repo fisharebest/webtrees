@@ -74,8 +74,8 @@ class RelationshipNamesTest extends TestCase
         //
         $tree = $this->createMock(Tree::class);
 
-        $individual_factory = $this->createStub(IndividualFactory::class);
-        $family_factory     = $this->createStub(FamilyFactory::class);
+        $individual_factory = $this->createMock(IndividualFactory::class);
+        $family_factory     = $this->createMock(FamilyFactory::class);
 
         Registry::familyFactory($family_factory);
         Registry::individualFactory($individual_factory);

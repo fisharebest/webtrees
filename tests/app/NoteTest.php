@@ -37,7 +37,7 @@ class NoteTest extends TestCase
 
     public function testNoteName(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $note = new Note('X123', "0 @X123@ NOTE 1\n1 CONT\n1 CONT 2\n1 CONT 3\n1 CONT 4", null, $tree);
 
         self::assertSame('<bdi>1</bdi>', $note->fullName());
@@ -45,7 +45,7 @@ class NoteTest extends TestCase
 
     public function testNoteNameWithHtmlEntities(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $text = '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt." "a quote"';
         $note = new Note('X123', '0 @X123@ NOTE ' . $text, null, $tree);
 
