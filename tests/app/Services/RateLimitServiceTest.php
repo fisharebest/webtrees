@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException;
 use Fisharebest\Webtrees\TestCase;
 use LogicException;
-
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function explode;

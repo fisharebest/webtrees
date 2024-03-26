@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use ErrorException;
-
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function error_reporting;

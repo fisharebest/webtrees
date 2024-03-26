@@ -190,6 +190,6 @@ interface IndividualRepositoryInterface
     public function chartSex(
         string|null $color_female = null,
         string|null $color_male = null,
-        string $color_unknown = null
+        string|null $color_unknown = null
     ): string;
 }

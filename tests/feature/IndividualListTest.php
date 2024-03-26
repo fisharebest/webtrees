@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Module\IndividualListModule;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
-
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function array_map;

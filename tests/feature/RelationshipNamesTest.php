@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Module\LanguageSlovakian;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageTrait;
 use Fisharebest\Webtrees\Services\RelationshipService;
-
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function array_reverse;

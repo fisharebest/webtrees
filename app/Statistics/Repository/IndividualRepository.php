@@ -1885,7 +1885,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function chartIndisWithSources(
         string|null $color_from = null,
-        string $color_to = null
+        string|null $color_to = null
     ): string {
         $tot_indi        = $this->totalIndividualsQuery();
         $tot_indi_source = $this->totalIndisWithSourcesQuery();
@@ -1904,7 +1904,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function chartFamsWithSources(
         string|null $color_from = null,
-        string $color_to = null
+        string|null $color_to = null
     ): string {
         $tot_fam        = $this->totalFamiliesQuery();
         $tot_fam_source = $this->totalFamsWithSourcesQuery();
@@ -1923,7 +1923,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function chartSex(
         string|null $color_female = null,
         string|null $color_male = null,
-        string $color_unknown = null
+        string|null $color_unknown = null
     ): string {
         $tot_m = $this->totalSexMalesQuery();
         $tot_f = $this->totalSexFemalesQuery();
