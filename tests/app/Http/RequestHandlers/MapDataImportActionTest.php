@@ -23,7 +23,6 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use Nyholm\Psr7\Factory\Psr17Factory;
-
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function dirname;
