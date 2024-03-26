@@ -29,7 +29,7 @@ class FactTest extends TestCase
 
     public function testAttribute(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('tag')->willReturn('INDI');
 
         $fact = new Fact("1 BIRT\n2 ADDR address", $individual, '');
@@ -44,7 +44,7 @@ class FactTest extends TestCase
      */
     public function testIssue4417(): void
     {
-        $individual = $this->createStub(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('tag')->willReturn('INDI');
 
         $fact = new Fact("1 BIRT\n2 PLACXYZ\n3 CONT place", $individual, '');

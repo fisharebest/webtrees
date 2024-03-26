@@ -49,7 +49,7 @@ class TimeoutServiceTest extends TestCase
     {
         parent::setUp();
 
-        self::$mock_functions = $this->getMockForAbstractClass(MockGlobalFunctions::class);
+        self::$mock_functions = $this->createMock(MockGlobalFunctions::class);
     }
 
     protected function tearDown(): void
