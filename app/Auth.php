@@ -583,7 +583,6 @@ class Auth
             self::accessLevel($tree, $user) <= (int) $tree->getPreference('MEDIA_UPLOAD');
     }
 
-
     /**
      * @return array<int,string>
      */

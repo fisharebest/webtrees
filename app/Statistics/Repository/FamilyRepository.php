@@ -272,7 +272,6 @@ class FamilyRepository
             $top10 = implode('; ', $top10);
         }
 
-
         if ($type === 'list') {
             return '<ul>' . $top10 . '</ul>';
         }

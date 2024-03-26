@@ -116,7 +116,6 @@ class NamePersonal extends AbstractElement
     }
 
 
-
     /**
      * Create a default value for this element.
      *

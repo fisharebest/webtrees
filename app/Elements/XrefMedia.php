@@ -66,7 +66,6 @@ class XrefMedia extends AbstractXrefElement
             '</div>';
     }
 
-
     /**
      * Create a label/value pair for this element.
      *

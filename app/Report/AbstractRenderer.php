@@ -123,7 +123,6 @@ abstract class AbstractRenderer
      */
     abstract public function clearHeader(): void;
 
-
     /**
      * @param ReportBaseElement|string $element
      *

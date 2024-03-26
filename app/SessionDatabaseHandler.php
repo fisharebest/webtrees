@@ -73,7 +73,6 @@ class SessionDatabaseHandler implements SessionHandlerInterface
             ->where('session_id', '=', $id)
             ->first();
 
-
         return $this->row->session_data ?? '';
     }
 

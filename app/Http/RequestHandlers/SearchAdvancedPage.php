@@ -209,7 +209,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
             ->all();
     }
 
-
     /**
      * We use some pseudo-GEDCOM tags for some of our fields.
      *
@@ -223,7 +222,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
             $tmp = strtr($field, ['MOTHER:' => 'INDI:', 'FATHER:' => 'INDI:']);
             $return[$field] = Registry::elementFactory()->make($tmp)->label();
         }
-
 
         return $return;
     }

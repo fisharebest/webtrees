@@ -114,7 +114,6 @@ class LanguageId extends AbstractElement
         return strtoupper(parent::canonical($value));
     }
 
-
     /**
      * A list of controlled values for this element
      *

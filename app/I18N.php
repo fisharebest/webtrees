@@ -560,7 +560,6 @@ class I18N
     }
 
 
-
     /**
      * Convert a string to lower case.
      *

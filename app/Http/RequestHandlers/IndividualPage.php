@@ -220,7 +220,6 @@ class IndividualPage implements RequestHandlerInterface
                 return e($individual->getAllNames()[0]['givn']);
             })->implode(', ');
 
-
             if ($child_names !== '') {
                 $meta_facts[] = I18N::translate('Children') . ' ' . $child_names;
             }

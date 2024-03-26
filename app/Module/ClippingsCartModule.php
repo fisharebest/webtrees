@@ -493,7 +493,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         return redirect($family->url());
     }
 
-
     /**
      * @param Family $family
      *

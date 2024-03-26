@@ -92,7 +92,6 @@ class LanguageLithuanian extends AbstractModule implements ModuleLanguageInterfa
         return new LocaleLt();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

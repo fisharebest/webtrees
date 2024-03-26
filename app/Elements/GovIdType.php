@@ -314,7 +314,6 @@ class GovIdType extends AbstractElement
             }
         });
 
-
         return $values;
     }
 }

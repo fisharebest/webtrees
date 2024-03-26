@@ -79,7 +79,6 @@ class LanguageSwedish extends AbstractModule implements ModuleLanguageInterface
         return new LocaleSv();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

@@ -485,7 +485,6 @@ class Relationship
                 }
             }
 
-
             $nodes      = array_slice($nodes, 2 * (2 * $n + 1));
             $patterns   = [];
             $captures[] = $n;

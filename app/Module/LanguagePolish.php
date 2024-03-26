@@ -81,7 +81,6 @@ class LanguagePolish extends AbstractModule implements ModuleLanguageInterface
         return new LocalePl();
     }
 
-
     /**
      * Letters with diacritics that are considered distinct letters in this language.
      *

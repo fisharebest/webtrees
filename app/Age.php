@@ -147,7 +147,6 @@ class Age
             return view('icons/warning');
         }
 
-
         return I18N::number($this->years);
     }
 }

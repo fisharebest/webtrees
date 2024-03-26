@@ -137,7 +137,6 @@ class MatrilinealSurnameTraditionTest extends TestCase
         $individual = $this->createStub(Individual::class);
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
-
         self::assertSame(
             ["1 NAME //\n2 TYPE BIRTH"],
             $this->surname_tradition->newParentNames($individual, 'M')

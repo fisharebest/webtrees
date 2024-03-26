@@ -120,7 +120,6 @@ class Privacy extends TestCase
         Auth::logout();
 
 
-
         Auth::login($admin);
         self::assertTrue($queen_elizabeth->canShow(), 'admin can see living individual with RESN=none');
         self::assertTrue($prince_charles->canShow(), 'admin can see living individual');
