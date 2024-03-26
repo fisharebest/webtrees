@@ -374,6 +374,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/AutoCompleteCitation.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Unable to resolve the template type TConcatValue in call to method Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*,\\*NEVER\\*\\>\\:\\:concat\\(\\)$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/AutoCompleteCitation.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/CalendarEvents.php',
@@ -1299,7 +1304,17 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixCemeteryTag.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
 ];
@@ -1309,7 +1324,17 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixMissingDeaths.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
 ];
@@ -1319,14 +1344,39 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixNameTags.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixPrimaryTag.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixWtObjeSortTag.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to int\\.$#',
@@ -4684,436 +4734,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/tests/app/Http/RequestHandlers/PingTest.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\AncestorsChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectBranchesPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectBranchesPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectCalendarPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\CompactTreeChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\DescendancyChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyBookChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\FamilyFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamilyPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFamilyPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectGedRecordPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectGedRecordPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\HourglassChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectIndividualPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectIndividualPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\LifespansChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\MediaListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectMediaViewerPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectMediaViewerPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 5,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectModulePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\InteractiveTreeModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectModulePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeMapModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectModulePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 4,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectModulePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 6,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectModulePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\NoteListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\NoteFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectNotePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectNotePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\PlaceHierarchyListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\RelationshipsChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\RepositoryListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectReportEnginePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRepositoryPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectRepositoryPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\SourceListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\SourceFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectSourcePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectSourcePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\StatisticsChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\TimelineChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#2 \\$query of static method Fisharebest\\\\Webtrees\\\\TestCase\\:\\:createRequest\\(\\) expects array\\<string\\>, array\\<string, array\\<int, string\\>\\|string\\> given\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php',
@@ -5332,11 +4952,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#',
     'count' => 4,
     'path' => __DIR__ . '/tests/app/TreeTest.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Call to an undefined method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationStubber\\:\\:with\\(\\)\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/tests/app/ValidatorTest.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot call method deleteRecord\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
