@@ -86,7 +86,7 @@ class MigrationService
     {
         $connection = DB::connection();
 
-        if ($connection->getDriverName() !== 'mysql') {
+        if (DB::driverName() !== 'mysql') {
             return;
         }
 
@@ -94,8 +94,8 @@ class MigrationService
 
         $bindings = [
             $connection->getDatabaseName(),
-            mb_strlen($connection->getTablePrefix()),
-            $connection->getTablePrefix(),
+            mb_strlen(DB::prefix()),
+            DB::prefix(),
         ];
 
         $rows = DB::connection()->select($sql, $bindings);

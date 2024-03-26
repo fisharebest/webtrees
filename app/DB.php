@@ -21,22 +21,33 @@ namespace Fisharebest\Webtrees;
 
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder;
+use PDO;
 
 /**
  * Database abstraction
  */
 class DB extends Manager
 {
+    public static function driverName(): string
+    {
+        return parent::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME);
+    }
+
+    public static function prefix(string $identifier = ''): string
+    {
+        return parent::connection()->getTablePrefix() . $identifier;
+    }
+
     /**
      * @internal
      */
     public static function caseInsensitiveLikeOperator(): string
     {
-        if (DB::connection()->getDriverName() === 'pgsql') {
+        if (self::driverName() === 'pgsql') {
             return 'ILIKE';
         }
 
-        if (DB::connection()->getDriverName() === 'sqlsrv') {
+        if (self::driverName() === 'sqlsrv') {
             return 'COLLATE SQL_UTF8_General_CI_AI LIKE';
         }
 
@@ -48,7 +59,7 @@ class DB extends Manager
      */
     public static function groupConcat(string $column): string
     {
-        switch (DB::connection()->getDriverName()) {
+        switch (self::driverName()) {
             case 'pgsql':
             case 'sqlsrv':
                 return 'STRING_AGG(' . $column . ", ',')";
@@ -65,6 +76,6 @@ class DB extends Manager
      */
     public static function query(): Builder
     {
-        return self::connection()->query();
+        return parent::connection()->query();
     }
 }
