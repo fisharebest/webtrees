@@ -23,15 +23,13 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Test the BootModules middleware.
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\BootModules
- */
+
+#[CoversClass(BootModules::class)]
 class BootModulesTest extends TestCase
 {
     public function testMiddleware(): void

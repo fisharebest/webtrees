@@ -21,16 +21,13 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnSexMZ
- */
+
+#[CoversClass(CensusColumnSexMZ::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnSexMZTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testMale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -43,10 +40,6 @@ class CensusColumnSexMZTest extends TestCase
         self::assertSame('M', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testFeale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -59,10 +52,6 @@ class CensusColumnSexMZTest extends TestCase
         self::assertSame('Ž', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testUnknownSex(): void
     {
         $individual = $this->createMock(Individual::class);

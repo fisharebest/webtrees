@@ -25,10 +25,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnNationality
- */
+
+#[CoversClass(CensusColumnNationality::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnNationalityTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
@@ -39,10 +40,6 @@ class CensusColumnNationalityTest extends TestCase
         return $placeMock;
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNoBirthPlace(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -57,10 +54,6 @@ class CensusColumnNationalityTest extends TestCase
         self::assertSame('Deutsch', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testPlaceCountry(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -75,10 +68,6 @@ class CensusColumnNationalityTest extends TestCase
         self::assertSame('Australia', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testBritish(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -93,10 +82,6 @@ class CensusColumnNationalityTest extends TestCase
         self::assertSame('British', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnNationality
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testEmigrated(): void
     {
         $place1 = $this->createMock(Place::class);

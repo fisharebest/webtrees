@@ -24,10 +24,9 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LoginPage
- */
+#[CoversClass(LoginPage::class)]
 class LoginPageTest extends TestCase
 {
     protected static bool $uses_database = true;

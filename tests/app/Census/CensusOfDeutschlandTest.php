@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusOfDeutschland
- */
+
+#[CoversClass(CensusOfDeutschland::class)]
 class CensusOfDeutschlandTest extends TestCase
 {
     /**
      * Test the census place
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
      */
     public function testPlace(): void
     {
@@ -40,8 +38,6 @@ class CensusOfDeutschlandTest extends TestCase
 
     /**
      * Test the census language
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
      */
     public function testLanguage(): void
     {
@@ -52,8 +48,6 @@ class CensusOfDeutschlandTest extends TestCase
 
     /**
      * Test the census dates
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
      */
     public function testAllDates(): void
     {

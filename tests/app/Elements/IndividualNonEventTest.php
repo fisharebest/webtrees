@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class NonEvent
- *
- * @covers \Fisharebest\Webtrees\Elements\IndividualNonEvent
- */
+
+#[CoversClass(IndividualNonEvent::class)]
 class IndividualNonEventTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\IndividualNonEvent::class));
+        $this->assertTrue(class_exists(IndividualNonEvent::class));
     }
 }

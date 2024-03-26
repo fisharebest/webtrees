@@ -22,12 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test MediaController class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaAction
- */
+
+#[CoversClass(UploadMediaAction::class)]
 class UploadMediaActionTest extends TestCase
 {
     protected static bool $uses_database = true;

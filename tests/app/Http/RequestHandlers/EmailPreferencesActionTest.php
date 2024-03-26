@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class EmailPreferencesAction
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction
- */
+
+#[CoversClass(EmailPreferencesAction::class)]
 class EmailPreferencesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesAction::class));
+        $this->assertTrue(class_exists(EmailPreferencesAction::class));
     }
 }

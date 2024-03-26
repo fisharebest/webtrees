@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class FixCemeteryTag
- *
- * @covers \Fisharebest\Webtrees\Module\FixCemeteryTag
- */
+
+#[CoversClass(FixCemeteryTag::class)]
 class FixCemeteryTagTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FixCemeteryTag::class));
+        $this->assertTrue(class_exists(FixCemeteryTag::class));
     }
 }

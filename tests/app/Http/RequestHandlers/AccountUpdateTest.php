@@ -25,12 +25,10 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test the AccountUpdate request handler.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AccountUpdate
- */
+
+#[CoversClass(AccountUpdate::class)]
 class AccountUpdateTest extends TestCase
 {
     public function testHandler(): void

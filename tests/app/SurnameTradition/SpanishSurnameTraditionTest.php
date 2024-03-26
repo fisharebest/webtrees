@@ -23,18 +23,16 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class SpanishSurnameTradition
- */
+
+#[CoversClass(SpanishSurnameTradition::class)]
 class SpanishSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
 
     /**
      * Test whether surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
     public function testSurnames(): void
     {
@@ -43,8 +41,6 @@ class SpanishSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
     public function testNewChildNames(): void
     {
@@ -78,8 +74,6 @@ class SpanishSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
     public function testNewChildNamesWithNoParentsNames(): void
     {
@@ -91,8 +85,6 @@ class SpanishSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
     public function testNewChildNamesCompound(): void
     {
@@ -116,8 +108,6 @@ class SpanishSurnameTraditionTest extends TestCase
 
     /**
      * Test new parent names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
     public function testNewParentNames(): void
     {
@@ -145,8 +135,6 @@ class SpanishSurnameTraditionTest extends TestCase
 
     /**
      * Test new spouse names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
      */
     public function testNewSpouseNames(): void
     {

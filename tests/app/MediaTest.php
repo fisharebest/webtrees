@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test harness for the class Media
- *
- * @covers \Fisharebest\Webtrees\Media
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(Media::class)]
 class MediaTest extends TestCase
 {
     /**

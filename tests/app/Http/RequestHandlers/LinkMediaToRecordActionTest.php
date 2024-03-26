@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class LinkMediaToRecordAction
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToRecordAction
- */
+
+#[CoversClass(LinkMediaToRecordAction::class)]
 class LinkMediaToRecordActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToRecordAction::class));
+        $this->assertTrue(class_exists(LinkMediaToRecordAction::class));
     }
 }

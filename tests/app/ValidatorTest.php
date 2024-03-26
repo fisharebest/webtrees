@@ -22,17 +22,13 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\Route;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Test harness for the class Validator
- */
+
+#[CoversClass(Validator::class)]
 class ValidatorTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::attributes
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testAttributes(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -43,10 +39,6 @@ class ValidatorTest extends TestCase
         self::assertSame('test', Validator::attributes($request)->string('param'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::parsedBody
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testParsedBody(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -57,10 +49,6 @@ class ValidatorTest extends TestCase
         self::assertSame('test', Validator::parsedBody($request)->string('param'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::queryParams
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testQueryParams(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -71,10 +59,6 @@ class ValidatorTest extends TestCase
         self::assertSame('test', Validator::queryParams($request)->string('param'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::serverParams
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testServerParams(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -85,10 +69,6 @@ class ValidatorTest extends TestCase
         self::assertSame('test', Validator::serverParams($request)->string('param'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::queryParams
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testNonUTF8QueryParameterName(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -101,10 +81,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::queryParams
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testNonUTF8QueryParameterValue(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -117,10 +93,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::array
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testRequiredArrayParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -136,10 +108,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->array('invalid');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::boolean
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testRequiredBooleanParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -167,10 +135,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->boolean('h');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::integer
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testRequiredIntegerParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -194,10 +158,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->integer('invalid');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::route
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testRequiredRouteParameter(): void
     {
         $route = $this->createStub(Route::class);
@@ -217,10 +177,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->route('not-route');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::string
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testRequiredStringParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -235,10 +191,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->string('invalid');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::tree
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testRequiredTreeParameter(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -258,10 +210,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->tree('no-tree');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::treeOptional
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testOptionalTreeParameter(): void
     {
         $tree = $this->createStub(Tree::class);
@@ -282,10 +230,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->treeOptional('not-tree');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::user
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testRequiredUserParameter(): void
     {
         $user = $this->createStub(UserInterface::class);
@@ -305,10 +249,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->user('not-user');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isBetween
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsBetweenParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -321,10 +261,6 @@ class ValidatorTest extends TestCase
         self::assertSame(42, Validator::queryParams($request)->isBetween(40, 45)->integer('wrongtype', 42));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isInArray
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsInArray(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -339,10 +275,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->isInArray(['baz'])->string('param');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isInArrayKeys
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsInArrayKeys(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -357,10 +289,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->isInArrayKeys(['baz' => 3])->string('param');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isNotEmpty
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsNotEmpty(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -375,10 +303,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->isNotEmpty()->string('empty');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isTag
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsTagParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -393,10 +317,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->isTag()->string('invalid');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isXref
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsXrefParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -413,10 +333,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->isXref()->string('invalid');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isLocalUrl
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsLocalUrlParameter(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -432,10 +348,6 @@ class ValidatorTest extends TestCase
         self::assertSame('//example.local/wt/page', Validator::queryParams($request)->isLocalUrl()->string('noscheme'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isLocalUrl
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsLocalUrlParameterWrongScheme(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -452,10 +364,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->isLocalUrl()->string('https');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isLocalUrl
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsLocalUrlParameterWrongDomain(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);
@@ -472,10 +380,6 @@ class ValidatorTest extends TestCase
         Validator::queryParams($request)->isLocalUrl()->string('invalid');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::isLocalUrl
-     * @covers \Fisharebest\Webtrees\Validator::__construct
-     */
     public function testIsLocalUrlParameterWrongType(): void
     {
         $request = $this->createStub(ServerRequestInterface::class);

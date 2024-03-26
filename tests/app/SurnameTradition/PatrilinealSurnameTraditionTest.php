@@ -23,10 +23,10 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class PatrilinenalSurnameTradition
- */
+
+#[CoversClass(PatrilinealSurnameTradition::class)]
 class PatrilinealSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
@@ -43,8 +43,6 @@ class PatrilinealSurnameTraditionTest extends TestCase
 
     /**
      * Test whether surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
     public function testSurnames(): void
     {
@@ -53,8 +51,6 @@ class PatrilinealSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
     public function testNewChildNames(): void
     {
@@ -88,8 +84,6 @@ class PatrilinealSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
     public function testNewChildNamesWithSpfx(): void
     {
@@ -113,8 +107,6 @@ class PatrilinealSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
     public function testNewChildNamesWithNoParentsNames(): void
     {
@@ -126,8 +118,6 @@ class PatrilinealSurnameTraditionTest extends TestCase
 
     /**
      * Test new parent names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
     public function testNewParentNames(): void
     {
@@ -155,8 +145,6 @@ class PatrilinealSurnameTraditionTest extends TestCase
 
     /**
      * Test new spouse names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
      */
     public function testNewSpouseNames(): void
     {

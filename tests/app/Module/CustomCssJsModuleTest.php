@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CustomCssJsModule
- *
- * @covers \Fisharebest\Webtrees\Module\CustomCssJsModule
- */
+
+#[CoversClass(CustomCssJsModule::class)]
 class CustomCssJsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\CustomCssJsModule::class));
+        $this->assertTrue(class_exists(CustomCssJsModule::class));
     }
 }

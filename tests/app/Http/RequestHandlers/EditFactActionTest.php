@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class EditFactAction
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction
- */
+
+#[CoversClass(EditFactAction::class)]
 class EditFactActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction::class));
+        $this->assertTrue(class_exists(EditFactAction::class));
     }
 }

@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class Gedcom7
- *
- * @covers \Fisharebest\Webtrees\CustomTags\Gedcom7
- */
+
+#[CoversClass(Gedcom7::class)]
 class Gedcom7Test extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\Gedcom7::class));
+        $this->assertTrue(class_exists(Gedcom7::class));
     }
 }

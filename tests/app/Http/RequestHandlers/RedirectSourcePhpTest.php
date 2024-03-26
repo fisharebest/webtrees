@@ -30,10 +30,9 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RedirectSourcePhp
- */
+#[CoversClass(RedirectSourcePhp::class)]
 class RedirectSourcePhpTest extends TestCase
 {
     protected static bool $uses_database = true;

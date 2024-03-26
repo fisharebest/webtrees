@@ -20,13 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class JulianDate
- *
- * @covers \Fisharebest\Webtrees\Date\AbstractGregorianJulianDate
- * @covers \Fisharebest\Webtrees\Date\JulianDate
- */
+
+#[CoversClass(AbstractGregorianJulianDate::class)]
+#[CoversClass(JulianDate::class)]
 class JulianDateTest extends TestCase
 {
     /**

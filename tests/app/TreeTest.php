@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use InvalidArgumentException;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 
 use function fclose;
@@ -34,9 +35,10 @@ use function file_get_contents;
 use function preg_replace;
 use function stream_get_contents;
 
-/**
- * Test harness for the class Tree
- */
+
+#[CoversClass(Tree::class)]
+#[CoversClass(TreeService::class)]
+#[CoversClass(GedcomExportService::class)]
 class TreeTest extends TestCase
 {
     protected static bool $uses_database = true;
@@ -53,12 +55,6 @@ class TreeTest extends TestCase
         Registry::cache($cache_factory);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::__construct
-     * @covers \Fisharebest\Webtrees\Tree::id
-     * @covers \Fisharebest\Webtrees\Tree::name
-     * @covers \Fisharebest\Webtrees\Tree::title
-     */
     public function testConstructor(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -69,10 +65,6 @@ class TreeTest extends TestCase
         self::assertSame('title', $tree->title());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::getPreference
-     * @covers \Fisharebest\Webtrees\Tree::setPreference
-     */
     public function testTreePreferences(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -84,10 +76,6 @@ class TreeTest extends TestCase
         self::assertSame('bar', $pref);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::getUserPreference
-     * @covers \Fisharebest\Webtrees\Tree::setUserPreference
-     */
     public function testUserTreePreferences(): void
     {
         $user_service          = new UserService();
@@ -104,9 +92,6 @@ class TreeTest extends TestCase
         self::assertSame('bar', $pref);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     */
     public function testCreateInvalidIndividual(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -122,9 +107,6 @@ class TreeTest extends TestCase
         $tree->createIndividual("0 @@ FOO\n1 SEX U");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     */
     public function testCreateIndividual(): void
     {
         $user_service          = new UserService();
@@ -143,9 +125,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createFamily
-     */
     public function testCreateInvalidFamily(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -161,9 +140,6 @@ class TreeTest extends TestCase
         $tree->createFamily("0 @@ FOO\n1 MARR Y");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createFamily
-     */
     public function testCreateFamily(): void
     {
         $user_service          = new UserService();
@@ -182,9 +158,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     */
     public function testCreateInvalidMediaObject(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -200,9 +173,6 @@ class TreeTest extends TestCase
         $tree->createMediaObject("0 @@ FOO\n1 MARR Y");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     */
     public function testCreateMediaObject(): void
     {
         $user_service          = new UserService();
@@ -221,9 +191,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createRecord
-     */
     public function testCreateInvalidRecord(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -239,9 +206,6 @@ class TreeTest extends TestCase
         $tree->createRecord("0 @@FOO\n1 NOTE noted");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createRecord
-     */
     public function testCreateRecord(): void
     {
         $user_service          = new UserService();
@@ -260,9 +224,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::significantIndividual
-     */
     public function testSignificantIndividual(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -300,9 +261,6 @@ class TreeTest extends TestCase
         self::assertSame($record4->xref(), $tree->significantIndividual($user)->xref());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TreeService::importGedcomFile
-     */
     public function testImportAndDeleteGedcomFile(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -317,9 +275,6 @@ class TreeTest extends TestCase
         self::assertSame('', Site::getPreference('DEFAULT_GEDCOM'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::hasPendingEdit
-     */
     public function testHasPendingEdits(): void
     {
         $user_service = new UserService();
@@ -337,9 +292,6 @@ class TreeTest extends TestCase
         self::assertTrue($tree->hasPendingEdit());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\GedcomExportService::export
-     */
     public function testExportGedcom(): void
     {
         $tree = $this->importTree('demo.ged');

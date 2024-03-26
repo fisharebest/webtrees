@@ -19,19 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
+use Fisharebest\Webtrees\CommonMark\XrefExtension;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class MarkdownFactory
- *
- * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
- */
+
+#[CoversClass(MarkdownFactory::class)]
+#[CoversClass(XrefExtension::class)]
 class MarkdownFactoryTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testAutoLinkWithoutTree(): void
     {
         $factory  = new MarkdownFactory();
@@ -42,10 +39,6 @@ class MarkdownFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\CommonMark\XrefExtension
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testAutoLinkWithTree(): void
     {
         $factory = new MarkdownFactory();
@@ -57,10 +50,6 @@ class MarkdownFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\CommonMark\XrefExtension
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testAutoLinkWithHtml(): void
     {
         $factory  = new MarkdownFactory();
@@ -71,9 +60,6 @@ class MarkdownFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testMarkdownWithoutTree(): void
     {
         $factory = new MarkdownFactory();
@@ -89,9 +75,6 @@ class MarkdownFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testMarkdownWithTree(): void
     {
         $tree    = $this->createStub(Tree::class);
@@ -108,9 +91,6 @@ class MarkdownFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testMarkdownWithHtml(): void
     {
         $factory = new MarkdownFactory();
@@ -121,9 +101,6 @@ class MarkdownFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testSoftLineBreaks(): void
     {
         $factory = new MarkdownFactory();
@@ -139,9 +116,6 @@ class MarkdownFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
-     */
     public function testMultipleParagraphs(): void
     {
         $factory = new MarkdownFactory();

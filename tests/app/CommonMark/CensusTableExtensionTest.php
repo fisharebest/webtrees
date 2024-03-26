@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusTableExtension
- *
- * @covers \Fisharebest\Webtrees\CommonMark\CensusTableExtension
- */
+
+#[CoversClass(CensusTableExtension::class)]
 class CensusTableExtensionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CommonMark\CensusTableExtension::class));
+        $this->assertTrue(class_exists(CensusTableExtension::class));
     }
 }

@@ -24,13 +24,12 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use Nyholm\Psr7\Factory\Psr17Factory;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+
 use function dirname;
 
-/**
- * Test the location import.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportAction
- */
+
+#[CoversClass(MapDataImportAction::class)]
 class MapDataImportActionTest extends TestCase
 {
     protected static bool $uses_database = true;

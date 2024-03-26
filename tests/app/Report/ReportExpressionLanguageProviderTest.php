@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ReportExpressionLanguageProvider
- *
- * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
- */
+
+#[CoversClass(ReportExpressionLanguageProvider::class)]
 class ReportExpressionLanguageProviderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider::class));
+        $this->assertTrue(class_exists(ReportExpressionLanguageProvider::class));
     }
 }

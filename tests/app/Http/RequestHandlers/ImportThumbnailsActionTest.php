@@ -24,12 +24,10 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test ImportThumbnailsAction class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsAction
- */
+
+#[CoversClass(ImportThumbnailsAction::class)]
 class ImportThumbnailsActionTest extends TestCase
 {
     protected static bool $uses_database = true;

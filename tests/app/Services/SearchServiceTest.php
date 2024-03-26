@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class SearchService
- *
- * @covers \Fisharebest\Webtrees\Services\SearchService
- */
+
+#[CoversClass(SearchService::class)]
 class SearchServiceTest extends TestCase
 {
     protected static bool $uses_database = true;

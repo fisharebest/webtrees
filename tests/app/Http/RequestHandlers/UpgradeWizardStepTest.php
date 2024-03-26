@@ -33,12 +33,10 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test UpgradeController class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardStep
- */
+
+#[CoversClass(UpgradeWizardStep::class)]
 class UpgradeWizardStepTest extends TestCase
 {
     protected static bool $uses_database = true;

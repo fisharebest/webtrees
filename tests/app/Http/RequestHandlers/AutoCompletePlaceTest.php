@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class AutoCompletePlace
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace
- */
+
+#[CoversClass(AutoCompletePlace::class)]
 class AutoCompletePlaceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace::class));
+        $this->assertTrue(class_exists(AutoCompletePlace::class));
     }
 }

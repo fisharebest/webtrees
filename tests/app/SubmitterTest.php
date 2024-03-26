@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class Submitter
- *
- * @covers \Fisharebest\Webtrees\Submitter
- */
+
+#[CoversClass(Submitter::class)]
 class SubmitterTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Submitter::class));
+        $this->assertTrue(class_exists(Submitter::class));
     }
 }

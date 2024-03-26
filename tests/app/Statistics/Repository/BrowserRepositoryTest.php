@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class BrowserRepository
- *
- * @covers \Fisharebest\Webtrees\Statistics\Repository\BrowserRepository
- */
+
+#[CoversClass(BrowserRepository::class)]
 class BrowserRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Statistics\Repository\BrowserRepository::class));
+        $this->assertTrue(class_exists(BrowserRepository::class));
     }
 }

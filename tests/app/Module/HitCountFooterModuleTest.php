@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class HitCountFooterModule
- *
- * @covers \Fisharebest\Webtrees\Module\HitCountFooterModule
- */
+
+#[CoversClass(HitCountFooterModule::class)]
 class HitCountFooterModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\HitCountFooterModule::class));
+        $this->assertTrue(class_exists(HitCountFooterModule::class));
     }
 }

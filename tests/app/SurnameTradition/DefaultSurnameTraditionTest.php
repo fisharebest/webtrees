@@ -23,18 +23,16 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class DefaultSurnameTradition
- */
+
+#[CoversClass(DefaultSurnameTradition::class)]
 class DefaultSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
 
     /**
      * Test whether surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
      */
     public function testSurnames(): void
     {
@@ -43,8 +41,6 @@ class DefaultSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
      */
     public function testNewChildNames(): void
     {
@@ -78,8 +74,6 @@ class DefaultSurnameTraditionTest extends TestCase
 
     /**
      * Test new parent names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
      */
     public function testNewParentNames(): void
     {
@@ -107,8 +101,6 @@ class DefaultSurnameTraditionTest extends TestCase
 
     /**
      * Test new spouse names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
      */
     public function testNewSpouseNames(): void
     {

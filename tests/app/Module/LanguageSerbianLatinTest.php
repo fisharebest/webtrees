@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class LanguageSerbianLatin
- *
- * @covers \Fisharebest\Webtrees\Module\LanguageSerbianLatin
- */
+
+#[CoversClass(LanguageSerbianLatin::class)]
 class LanguageSerbianLatinTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LanguageSerbianLatin::class));
+        $this->assertTrue(class_exists(LanguageSerbianLatin::class));
     }
 }

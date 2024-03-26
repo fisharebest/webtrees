@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class LdsOrdinanceStatus
- *
- * @covers \Fisharebest\Webtrees\Elements\LdsOrdinanceStatus
- */
+
+#[CoversClass(LdsOrdinanceStatus::class)]
 class LdsOrdinanceStatusTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\LdsOrdinanceStatus::class));
+        $this->assertTrue(class_exists(LdsOrdinanceStatus::class));
     }
 }

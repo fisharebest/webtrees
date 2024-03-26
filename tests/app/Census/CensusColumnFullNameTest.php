@@ -25,16 +25,13 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnFullName
- */
+
+#[CoversClass(CensusColumnFullName::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnFullNameTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFullName
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function xxxtestFullName(): void
     {
         $individual = $this->createStub(Individual::class);
@@ -49,10 +46,6 @@ class CensusColumnFullNameTest extends TestCase
         self::assertSame('Joe Bloggs', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFullName
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testMarriedName(): void
     {
         $wife_names = [

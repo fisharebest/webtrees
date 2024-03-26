@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class AddNewFact
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact
- */
+
+#[CoversClass(AddNewFact::class)]
 class AddNewFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact::class));
+        $this->assertTrue(class_exists(AddNewFact::class));
     }
 }

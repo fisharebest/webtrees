@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class GeonamesAutocomplete
- *
- * @covers \Fisharebest\Webtrees\Module\GeonamesAutocomplete
- */
+
+#[CoversClass(GeonamesAutocomplete::class)]
 class GeonamesAutocompleteTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\GeonamesAutocomplete::class));
+        $this->assertTrue(class_exists(GeonamesAutocomplete::class));
     }
 }

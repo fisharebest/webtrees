@@ -19,23 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\ASCII;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 use function chr;
 use function iconv;
 use function range;
 
-/**
- * Tests for class ASCII.
- */
+
+#[CoversClass(AbstractEncoding::class)]
+#[CoversClass(ASCII::class)]
 class ASCIITest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ASCII
-     */
     public function testToUtf8(): void
     {
         $encoding = new ASCII();

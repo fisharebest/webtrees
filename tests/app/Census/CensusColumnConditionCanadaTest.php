@@ -25,17 +25,12 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnConditionCanada
- * Copied from CensusColumnConditionUs
- */
+#[CoversClass(CensusColumnConditionCanada::class)]
+#[CoversClass(AbstractCensusColumnCondition::class)]
 class CensusColumnConditionCanadaTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testNoSpouseFamiliesMale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -51,10 +46,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testNoSpouseFamiliesFemale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -70,10 +61,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testNoFamilyFactsMale(): void
     {
         $family = $this->createMock(Family::class);
@@ -93,10 +80,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testNoFamilyFactsFemale(): void
     {
         $family = $this->createMock(Family::class);
@@ -116,10 +99,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testSpouseDeadMale(): void
     {
         $fact = $this->createMock(Fact::class);
@@ -150,10 +129,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('W', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testSpouseDeadFemale(): void
     {
         $fact = $this->createMock(Fact::class);
@@ -185,10 +160,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('W', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testNoFamilyUnmarriedMale(): void
     {
         $family = $this->createMock(Family::class);
@@ -208,10 +179,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testNoFamilyUnmarriedFemale(): void
     {
         $family = $this->createMock(Family::class);
@@ -231,10 +198,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testChildMale(): void
     {
         $family = $this->createMock(Family::class);
@@ -254,10 +217,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testChildFemale(): void
     {
         $family = $this->createMock(Family::class);
@@ -277,10 +236,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('S', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testDivorcedMale(): void
     {
         $fact = $this->createMock(Fact::class);
@@ -308,10 +263,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('D', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testDivorcedFemale(): void
     {
         $fact = $this->createMock(Fact::class);
@@ -339,10 +290,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('D', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testMarriedMale(): void
     {
         $fact = $this->createMock(Fact::class);
@@ -370,10 +317,6 @@ class CensusColumnConditionCanadaTest extends TestCase
         self::assertSame('M', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanada
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
-     */
     public function testMarriedFemale(): void
     {
         $fact = $this->createMock(Fact::class);

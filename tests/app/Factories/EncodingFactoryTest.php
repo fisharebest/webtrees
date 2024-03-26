@@ -33,17 +33,12 @@ use Fisharebest\Webtrees\Encodings\Windows1250;
 use Fisharebest\Webtrees\Encodings\Windows1251;
 use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class EncodingFactory
- *
- * @covers \Fisharebest\Webtrees\Factories\EncodingFactory
- */
+
+#[CoversClass(EncodingFactory::class)]
 class EncodingFactoryTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testDetectUsingByteOrderMark(): void
     {
         $factory = new EncodingFactory();
@@ -64,9 +59,6 @@ class EncodingFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testDetectUtf16UsingNullBytes(): void
     {
         $factory = new EncodingFactory();
@@ -82,9 +74,6 @@ class EncodingFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testDetectByCharAndVers(): void
     {
         $factory = new EncodingFactory();
@@ -95,9 +84,6 @@ class EncodingFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testMissingCharHeader(): void
     {
         $factory = new EncodingFactory();
@@ -108,9 +94,6 @@ class EncodingFactoryTest extends TestCase
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::make
-     */
     public function testMake(): void
     {
         $factory = new EncodingFactory();
@@ -131,9 +114,6 @@ class EncodingFactoryTest extends TestCase
         $factory->make('Not the name of a valid encoding');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::list
-     */
     public function testList(): void
     {
         $factory = new EncodingFactory();

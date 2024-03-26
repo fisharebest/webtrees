@@ -19,32 +19,24 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test harness for the class I18N
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(I18N::class)]
 class I18NTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\I18N::strtoupper
-     */
     public function testStrtoupper(): void
     {
         self::assertSame(I18N::strtoupper(''), '');
         self::assertSame(I18N::strtoupper('Abc'), 'ABC');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\I18N::strtolower
-     */
     public function testStrtolower(): void
     {
         self::assertSame(I18N::strtolower(''), '');
         self::assertSame(I18N::strtolower('Abc'), 'abc');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\I18N::comparator()
-     */
     public function testComparator(): void
     {
         $comparator = I18N::comparator();
@@ -57,9 +49,6 @@ class I18NTest extends TestCase
         self::assertTrue($comparator('Abcd', 'abc') > 0);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\I18N::reverseText
-     */
     public function testReverseText(): void
     {
         // Create these strings carefully, as text editors can display them in confusing ways.

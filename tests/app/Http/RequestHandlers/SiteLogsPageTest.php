@@ -24,10 +24,9 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage
- */
+#[CoversClass(SiteLogsPage::class)]
 class SiteLogsPageTest extends TestCase
 {
     protected static bool $uses_database = true;

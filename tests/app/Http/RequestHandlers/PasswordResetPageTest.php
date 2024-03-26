@@ -24,10 +24,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetPage;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PasswordResetPage
- */
+#[CoversClass(PasswordResetPage::class)]
 class PasswordResetPageTest extends TestCase
 {
     protected static bool $uses_database = true;

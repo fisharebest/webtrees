@@ -31,10 +31,9 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RedirectFamilyBookPhp
- */
+#[CoversClass(RedirectFamilyBookPhp::class)]
 class RedirectFamilyBookPhpTest extends TestCase
 {
     protected static bool $uses_database = true;

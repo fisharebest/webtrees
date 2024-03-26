@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test harness for the class Log
- *
- * @covers \Fisharebest\Webtrees\Log
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(Log::class)]
 class LogTest extends TestCase
 {
     /**

@@ -24,10 +24,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnMotherBirthPlace
- */
+
+#[CoversClass(CensusColumnMotherBirthPlace::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnMotherBirthPlaceTest extends TestCase
 {
     private function getPlaceMock(string $place): Place
@@ -41,10 +42,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
         return $placeMock;
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testSameCountry(): void
     {
         $mother = $this->createMock(Individual::class);
@@ -64,10 +61,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
         self::assertSame('London', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testDifferentCountry(): void
     {
         $mother = $this->createMock(Individual::class);
@@ -87,10 +80,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
         self::assertSame('London, England', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testPlaceNoParent(): void
     {
         $family = $this->createMock(Family::class);
@@ -107,10 +96,6 @@ class CensusColumnMotherBirthPlaceTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnMotherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testPlaceNoParentFamily(): void
     {
         $individual = $this->createMock(Individual::class);

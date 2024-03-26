@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class MediaFileService
- *
- * @covers \Fisharebest\Webtrees\Services\MediaFileService
- */
+
+#[CoversClass(MediaFileService::class)]
 class MediaFileServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\MediaFileService::class));
+        $this->assertTrue(class_exists(MediaFileService::class));
     }
 }

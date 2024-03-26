@@ -25,15 +25,13 @@ use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
 
-/**
- * Test the AuthAdministrator middleware.
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\AuthAdministrator
- */
+
+#[CoversClass(AuthAdministrator::class)]
 class AuthAdministratorTest extends TestCase
 {
     public function testAllowed(): void

@@ -19,14 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+
 use function gregoriantojd;
 use function mktime;
 
-/**
- * Test harness for the class Timestamp
- *
- * @covers \Fisharebest\Webtrees\Timestamp
- */
+
+#[CoversClass(Timestamp::class)]
 class TimestampTest extends TestCase
 {
     public function testJulianDay(): void

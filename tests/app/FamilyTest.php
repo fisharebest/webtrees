@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-/**
- * Test harness for the class Family
- *
- * @covers \Fisharebest\Webtrees\Family
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+
+#[CoversClass(Family::class)]
 class FamilyTest extends TestCase
 {
     /**

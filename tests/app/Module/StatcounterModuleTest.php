@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class StatcounterModule
- *
- * @covers \Fisharebest\Webtrees\Module\StatcounterModule
- */
+
+#[CoversClass(StatcounterModule::class)]
 class StatcounterModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\StatcounterModule::class));
+        $this->assertTrue(class_exists(StatcounterModule::class));
     }
 }

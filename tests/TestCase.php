@@ -54,9 +54,6 @@ use function substr;
 
 use const UPLOAD_ERR_OK;
 
-/**
- * Base class for unit tests
- */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     public static ?object $mock_functions = null;
@@ -86,13 +83,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Create a request and bind it into the container.
      *
-     * @param string                       $method
      * @param array<string>                $query
      * @param array<string>                $params
      * @param array<UploadedFileInterface> $files
      * @param array<string|Tree>           $attributes
-     *
-     * @return ServerRequestInterface
      */
     protected static function createRequest(
         string $method = RequestMethodInterface::METHOD_GET,

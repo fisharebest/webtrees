@@ -26,10 +26,9 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\Masquerade
- */
+#[CoversClass(Masquerade::class)]
 class MasqueradeTest extends TestCase
 {
     protected static bool $uses_database = true;

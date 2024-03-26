@@ -22,10 +22,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PasswordRequestPage
- */
+#[CoversClass(PasswordRequestPage::class)]
 class PasswordRequestPageTest extends TestCase
 {
     protected static bool $uses_database = true;

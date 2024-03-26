@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class HttpNotFoundException
- *
- * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException
- */
+
+#[CoversClass(HttpNotFoundException::class)]
 class HttpNotFoundExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException::class));
+        $this->assertTrue(class_exists(HttpNotFoundException::class));
     }
 }

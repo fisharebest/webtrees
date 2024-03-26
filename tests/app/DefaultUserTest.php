@@ -21,11 +21,10 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 
-/**
- * Test the DefaultUser class
- */
+#[CoversClass(DefaultUser::class)]
 class DefaultUserTest extends TestCase
 {
     protected static bool $uses_database = true;
@@ -42,13 +41,6 @@ class DefaultUserTest extends TestCase
         Registry::cache($cache_factory);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\DefaultUser::__construct
-     * @covers \Fisharebest\Webtrees\DefaultUser::id
-     * @covers \Fisharebest\Webtrees\DefaultUser::email
-     * @covers \Fisharebest\Webtrees\DefaultUser::realName
-     * @covers \Fisharebest\Webtrees\DefaultUser::userName
-     */
     public function testDefaultUser(): void
     {
         $user = new DefaultUser();
@@ -60,10 +52,6 @@ class DefaultUserTest extends TestCase
         self::assertSame('', $user->userName());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\DefaultUser::getPreference
-     * @covers \Fisharebest\Webtrees\DefaultUser::setPreference
-     */
     public function testPreferences(): void
     {
         $user = new DefaultUser();

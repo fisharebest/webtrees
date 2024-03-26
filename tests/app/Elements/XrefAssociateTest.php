@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class XrefAssociate
- *
- * @covers \Fisharebest\Webtrees\Elements\XrefAssociate
- */
+
+#[CoversClass(XrefAssociate::class)]
 class XrefAssociateTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\XrefAssociate::class));
+        $this->assertTrue(class_exists(XrefAssociate::class));
     }
 }

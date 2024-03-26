@@ -24,9 +24,7 @@ use Fisharebest\Webtrees\Services\UserService;
 
 use function strip_tags;
 
-/**
- * Test the privacy logic
- */
+
 class Privacy extends TestCase
 {
     protected static bool $uses_database = true;

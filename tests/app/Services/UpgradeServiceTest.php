@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class UpgradeService
- *
- * @covers \Fisharebest\Webtrees\Services\UpgradeService
- */
+
+#[CoversClass(UpgradeService::class)]
 class UpgradeServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\UpgradeService::class));
+        $this->assertTrue(class_exists(UpgradeService::class));
     }
 }

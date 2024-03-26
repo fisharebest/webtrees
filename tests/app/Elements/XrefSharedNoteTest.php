@@ -25,14 +25,12 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\SharedNote;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class XrefSharedNote
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\AbstractXrefElement
- * @covers \Fisharebest\Webtrees\Elements\XrefSharedNote
- */
+
+#[CoversClass(AbstractElement::class)]
+#[CoversClass(AbstractXrefElement::class)]
+#[CoversClass(XrefSharedNote::class)]
 class XrefSharedNoteTest extends TestCase
 {
     public function testEdit(): void

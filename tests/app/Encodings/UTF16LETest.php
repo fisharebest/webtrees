@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\UTF16LE;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 use function chr;
@@ -29,15 +31,11 @@ use function iconv;
 use function intdiv;
 use function range;
 
-/**
- * Tests for class UTF16LE.
- */
+
+#[CoversClass(AbstractEncoding::class)]
+#[CoversClass(UTF16LE::class)]
 class UTF16LETest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\UTF16LE
-     */
     public function testToUtf8(): void
     {
         $encoding = new UTF16LE();

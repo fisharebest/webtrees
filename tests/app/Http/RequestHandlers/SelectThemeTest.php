@@ -23,10 +23,9 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme
- */
+#[CoversClass(SelectTheme::class)]
 class SelectThemeTest extends TestCase
 {
     public function testSelectThemeForGuest(): void

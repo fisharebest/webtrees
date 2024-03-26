@@ -21,19 +21,15 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Test harness for the class GedcomEditService
- *
- * @covers \Fisharebest\Webtrees\Services\GedcomEditService
- */
+
+#[CoversClass(GedcomEditService::class)]
 class GedcomEditServiceTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\GedcomEditService::editLinesToGedcom
-     */
     public function testEditLinesToGedcom(): void
     {
         $gedcom_edit_service = new GedcomEditService();
@@ -112,11 +108,10 @@ class GedcomEditServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider newFamilyFactsData
-     *
      * @param string $required_famfacts
      * @param array<string> $expected_new_facts
      */
+    #[DataProvider('newFamilyFactsData')]
     public function testNewFamilyFacts(string $required_famfacts, array $expected_new_facts): void
     {
         $gedcom_edit_service = new GedcomEditService();
@@ -133,13 +128,10 @@ class GedcomEditServiceTest extends TestCase
     }
 
     /**
-     * @dataProvider newIndividualFactsData
-     *
-     * @param string $required_facts
-     * @param string $sex
      * @param array<string> $names
      * @param array<string> $expected_new_facts
      */
+    #[DataProvider('newIndividualFactsData')]
     public function testNewIndividualFactsWithNoFacts(
         string $required_facts,
         string $sex,

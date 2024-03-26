@@ -20,19 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test the GuestUser class
- */
+
+#[CoversClass(GuestUser::class)]
 class GuestUserTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\GuestUser::__construct
-     * @covers \Fisharebest\Webtrees\GuestUser::id
-     * @covers \Fisharebest\Webtrees\GuestUser::email
-     * @covers \Fisharebest\Webtrees\GuestUser::realName
-     * @covers \Fisharebest\Webtrees\GuestUser::userName
-     */
     public function testAnonymous(): void
     {
         $user = new GuestUser();
@@ -44,13 +37,6 @@ class GuestUserTest extends TestCase
         self::assertSame('', $user->userName());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\GuestUser::__construct
-     * @covers \Fisharebest\Webtrees\GuestUser::id
-     * @covers \Fisharebest\Webtrees\GuestUser::email
-     * @covers \Fisharebest\Webtrees\GuestUser::realName
-     * @covers \Fisharebest\Webtrees\GuestUser::userName
-     */
     public function testVisitor(): void
     {
         $user = new GuestUser('guest@example.com', 'guest user');
@@ -62,10 +48,6 @@ class GuestUserTest extends TestCase
         self::assertSame('', $user->userName());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\GuestUser::getPreference
-     * @covers \Fisharebest\Webtrees\GuestUser::setPreference
-     */
     public function testPreferences(): void
     {
         $user = new GuestUser();

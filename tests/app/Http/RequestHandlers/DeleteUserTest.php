@@ -26,10 +26,9 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeleteUser
- */
+#[CoversClass(DeleteUser::class)]
 class DeleteUserTest extends TestCase
 {
     protected static bool $uses_database = true;

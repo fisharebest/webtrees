@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class HttpServerErrorException
- *
- * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException
- */
+
+#[CoversClass(HttpServerErrorException::class)]
 class HttpServerErrorExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException::class));
+        $this->assertTrue(class_exists(HttpServerErrorException::class));
     }
 }

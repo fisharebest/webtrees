@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class XrefNode
- *
- * @covers \Fisharebest\Webtrees\CommonMark\XrefNode
- */
+
+#[CoversClass(XrefNode::class)]
 class XrefNodeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CommonMark\XrefNode::class));
+        $this->assertTrue(class_exists(XrefNode::class));
     }
 }

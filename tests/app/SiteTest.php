@@ -19,27 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+
 use function str_repeat;
 
-/**
- * Test the site functions
- */
+#[CoversClass(Site::class)]
 class SiteTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @covers \Fisharebest\Webtrees\Site
-     */
     public function testDefault(): void
     {
         self::assertSame('', Site::getPreference('no-such-setting'));
         self::assertSame('UTC', Site::getPreference('TIMEZONE'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Site
-     */
     public function testSetAndGetPreference(): void
     {
         Site::setPreference('setting', 'foo');
@@ -47,9 +41,6 @@ class SiteTest extends TestCase
         self::assertSame('foo', Site::getPreference('setting'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Site
-     */
     public function test2000CharacterLimit(): void
     {
         $too_long = str_repeat('x', 3000);

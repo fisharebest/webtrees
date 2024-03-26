@@ -21,16 +21,13 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class CensusColumnGivenNames
- */
+
+#[CoversClass(CensusColumnGivenNames::class)]
+#[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnGivenNamesTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNames
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testGivenNames(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -43,10 +40,6 @@ class CensusColumnGivenNamesTest extends TestCase
         self::assertSame('Joe', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNames
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNoName(): void
     {
         $individual = $this->createMock(Individual::class);

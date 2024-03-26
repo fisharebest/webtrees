@@ -20,12 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class LifespansChartModule
- *
- * @covers \Fisharebest\Webtrees\Module\LifespansChartModule
- */
+
+#[CoversClass(LifespansChartModule::class)]
 class LifespansChartModuleTest extends TestCase
 {
     /**

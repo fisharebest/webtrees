@@ -24,12 +24,10 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test ImportThumbnailsData class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsData
- */
+
+#[CoversClass(ImportThumbnailsData::class)]
 class ImportThumbnailsDataTest extends TestCase
 {
     protected static bool $uses_database = true;

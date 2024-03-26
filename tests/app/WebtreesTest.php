@@ -21,17 +21,15 @@ namespace Fisharebest\Webtrees;
 
 use ErrorException;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+
 use function error_reporting;
 use function set_error_handler;
 
-/**
- * Test the Webtrees class
- */
+
+#[CoversClass(Webtrees::class)]
 class WebtreesTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Webtrees::bootstrap
-     */
     public function testInit(): void
     {
         error_reporting(0);

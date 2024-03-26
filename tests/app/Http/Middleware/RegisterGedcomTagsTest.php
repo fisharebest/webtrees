@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class RegisterGedcomTags
- *
- * @covers \Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags
- */
+
+#[CoversClass(RegisterGedcomTags::class)]
 class RegisterGedcomTagsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags::class));
+        $this->assertTrue(class_exists(RegisterGedcomTags::class));
     }
 }

@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class AdminService
- *
- * @covers \Fisharebest\Webtrees\Services\AdminService
- */
+
+#[CoversClass(AdminService::class)]
 class AdminServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\AdminService::class));
+        $this->assertTrue(class_exists(AdminService::class));
     }
 }

@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ReportHtmlLine
- *
- * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
- */
+
+#[CoversClass(ReportHtmlLine::class)]
 class ReportHtmlLineTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportHtmlLine::class));
+        $this->assertTrue(class_exists(ReportHtmlLine::class));
     }
 }

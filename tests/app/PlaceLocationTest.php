@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class PlaceLocation
- *
- * @covers \Fisharebest\Webtrees\PlaceLocation
- */
+
+#[CoversClass(PlaceLocation::class)]
 class PlaceLocationTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\PlaceLocation::class));
+        $this->assertTrue(class_exists(PlaceLocation::class));
     }
 }

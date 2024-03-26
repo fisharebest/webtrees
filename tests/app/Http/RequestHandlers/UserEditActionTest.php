@@ -26,12 +26,10 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test UserEditActionTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserEditAction
- */
+
+#[CoversClass(UserEditAction::class)]
 class UserEditActionTest extends TestCase
 {
     protected static bool $uses_database = true;

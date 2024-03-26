@@ -23,18 +23,16 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class IcelandicSurnameTradition
- */
+
+#[CoversClass(IcelandicSurnameTradition::class)]
 class IcelandicSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
 
     /**
      * Test whether surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testSurnames(): void
     {
@@ -43,8 +41,6 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     /**
      * Test new son names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testNewSonNames(): void
     {
@@ -68,8 +64,6 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     /**
      * Test new daughter names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testNewDaughterNames(): void
     {
@@ -93,8 +87,6 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     /**
      * Test new child names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testNewChildNames(): void
     {
@@ -118,8 +110,6 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     /**
      * Test new father names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testNewFatherNames(): void
     {
@@ -137,8 +127,6 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     /**
      * Test new mother names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testNewMotherNames(): void
     {
@@ -156,8 +144,6 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     /**
      * Test new parent names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testNewParentNames(): void
     {
@@ -175,8 +161,6 @@ class IcelandicSurnameTraditionTest extends TestCase
 
     /**
      * Test new spouse names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition
      */
     public function testNewSpouseNames(): void
     {

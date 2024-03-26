@@ -25,11 +25,10 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Database\Query\Builder;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData
- */
+#[CoversClass(SiteLogsData::class)]
 class SiteLogsDataTest extends TestCase
 {
     public function testResponse(): void

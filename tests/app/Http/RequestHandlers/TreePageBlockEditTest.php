@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class TreePageBlockEdit
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit
- */
+
+#[CoversClass(TreePageBlockEdit::class)]
 class TreePageBlockEditTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit::class));
+        $this->assertTrue(class_exists(TreePageBlockEdit::class));
     }
 }

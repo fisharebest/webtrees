@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class ChartDeath
- *
- * @covers \Fisharebest\Webtrees\Statistics\Google\ChartDeath
- */
+
+#[CoversClass(ChartDeath::class)]
 class ChartDeathTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Statistics\Google\ChartDeath::class));
+        $this->assertTrue(class_exists(ChartDeath::class));
     }
 }

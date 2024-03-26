@@ -22,19 +22,18 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\FixSearchAndReplace;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test DataFixDataTest class.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DataFixData
- * @covers \Fisharebest\Webtrees\Module\FixSearchAndReplace
- */
+
+#[CoversClass(DataFixData::class)]
+#[CoversClass(FixSearchAndReplace::class)]
 class DataFixDataTest extends TestCase
 {
     protected static bool $uses_database = true;

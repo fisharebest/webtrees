@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class SharedNotePage
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SharedNotePage
- */
+
+#[CoversClass(SharedNotePage::class)]
 class SharedNotePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\SharedNotePage::class));
+        $this->assertTrue(class_exists(SharedNotePage::class));
     }
 }

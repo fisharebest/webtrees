@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CustomTags;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class Reunion
- *
- * @covers \Fisharebest\Webtrees\CustomTags\Reunion
- */
+
+#[CoversClass(Reunion::class)]
 class ReunionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\Reunion::class));
+        $this->assertTrue(class_exists(Reunion::class));
     }
 }

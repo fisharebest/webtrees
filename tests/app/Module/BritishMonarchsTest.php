@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class BritishMonarchs
- *
- * @covers \Fisharebest\Webtrees\Module\BritishMonarchs
- */
+
+#[CoversClass(BritishMonarchs::class)]
 class BritishMonarchsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BritishMonarchs::class));
+        $this->assertTrue(class_exists(BritishMonarchs::class));
     }
 }

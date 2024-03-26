@@ -19,8 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\CP437;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 use function chr;
@@ -28,15 +30,11 @@ use function dechex;
 use function iconv;
 use function range;
 
-/**
- * Tests for class CP437.
- */
+
+#[CoversClass(AbstractEncoding::class)]
+#[CoversClass(CP437::class)]
 class CP437Test extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\CP437
-     */
     public function testToUtf8(): void
     {
         $encoding = new CP437();

@@ -20,16 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * Test harness for the class PendingChanges
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges
- */
+
+#[CoversClass(PendingChanges::class)]
 class PendingChangesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges::class));
+        $this->assertTrue(class_exists(PendingChanges::class));
     }
 }

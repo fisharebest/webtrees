@@ -26,10 +26,9 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\RedirectReportEnginePhp
- */
+#[CoversClass(RedirectReportEnginePhp::class)]
 class RedirectReportEnginePhpTest extends TestCase
 {
     protected static bool $uses_database = true;

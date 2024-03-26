@@ -27,20 +27,20 @@ use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\LanguageFrench;
 use Fisharebest\Webtrees\Module\LanguageSlovakian;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageTrait;
 use Fisharebest\Webtrees\Services\RelationshipService;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 use function array_reverse;
 
-/**
- * Test the user functions
- *
- * @covers \Fisharebest\Webtrees\Relationship
- * @covers \Fisharebest\Webtrees\Services\RelationshipService
- * @covers \Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain
- * @covers \Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates
- * @covers \Fisharebest\Webtrees\Module\LanguageFrench
- * @covers \Fisharebest\Webtrees\Module\ModuleLanguageTrait
- */
+
+#[CoversClass(Relationship::class)]
+#[CoversClass(RelationshipService::class)]
+#[CoversClass(LanguageEnglishGreatBritain::class)]
+#[CoversClass(LanguageEnglishUnitedStates::class)]
+#[CoversClass(LanguageFrench::class)]
+#[CoversClass(ModuleLanguageTrait::class)]
 class RelationshipNamesTest extends TestCase
 {
     protected static bool $uses_database = true;
@@ -378,9 +378,7 @@ class RelationshipNamesTest extends TestCase
     }
 
     /**
-     * @param string                   $expected
      * @param array<Individual|Family> $nodes
-     * @param ModuleLanguageInterface  $language
      */
     private static function assertRelationship(string $expected, array $nodes, ModuleLanguageInterface $language): void
     {
@@ -396,10 +394,7 @@ class RelationshipNamesTest extends TestCase
     /**
      * Test a relationship name in both directions
      *
-     * @param string                   $fwd
-     * @param string                   $rev
      * @param array<Individual|Family> $nodes
-     * @param ModuleLanguageInterface  $language
      */
     private static function assertRelationships(string $fwd, string $rev, array $nodes, ModuleLanguageInterface $language): void
     {
