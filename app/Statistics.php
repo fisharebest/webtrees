@@ -321,7 +321,7 @@ class Statistics implements
      */
     public function chartIndisWithSources(
         ?string $color_from = null,
-        string $color_to = null
+        ?string $color_to = null
     ): string {
         return $this->individual_repository->chartIndisWithSources($color_from, $color_to);
     }
@@ -374,7 +374,7 @@ class Statistics implements
      */
     public function chartFamsWithSources(
         ?string $color_from = null,
-        string $color_to = null
+        ?string $color_to = null
     ): string {
         return $this->individual_repository->chartFamsWithSources($color_from, $color_to);
     }
@@ -587,7 +587,7 @@ class Statistics implements
     public function chartSex(
         ?string $color_female = null,
         ?string $color_male = null,
-        string $color_unknown = null
+        ?string $color_unknown = null
     ): string {
         return $this->individual_repository->chartSex($color_female, $color_male, $color_unknown);
     }

@@ -184,7 +184,7 @@ class GedcomExportService
         string $line_endings = 'CRLF',
         ?Collection $records = null,
         ?FilesystemOperator $zip_filesystem = null,
-        string $media_path = null
+        ?string $media_path = null
     ) {
         $stream = fopen('php://memory', 'wb+');
 

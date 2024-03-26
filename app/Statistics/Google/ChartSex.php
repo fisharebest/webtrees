@@ -49,7 +49,7 @@ class ChartSex
         int $tot_u,
         ?string $color_female = null,
         ?string $color_male = null,
-        string $color_unknown = null
+        ?string $color_unknown = null
     ): string {
         $color_female ??= '#ffd1dc';
         $color_male ??= '#84beff';

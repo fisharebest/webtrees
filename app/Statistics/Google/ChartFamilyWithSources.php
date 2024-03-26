@@ -54,7 +54,7 @@ class ChartFamilyWithSources
         int $tot_fam,
         int $tot_fam_source,
         ?string $color_from = null,
-        string $color_to = null
+        ?string $color_to = null
     ): string {
         $color_from ??= 'ffffff';
         $color_to ??= '84beff';
