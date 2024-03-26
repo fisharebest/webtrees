@@ -44,7 +44,7 @@ class CensusColumnChildrenBornAlive extends AbstractCensusColumn implements Cens
         }
 
         return (string) $family->children()
-            ->filter(fn(Individual $child): bool => $child->getBirthDate()->isOK() &&
+            ->filter(fn (Individual $child): bool => $child->getBirthDate()->isOK() &&
                 Date::compare($child->getBirthDate(), $this->date()) < 0 &&
                 $child->getBirthDate()->minimumJulianDay() !== $child->getDeathDate()->minimumJulianDay())
             ->count();

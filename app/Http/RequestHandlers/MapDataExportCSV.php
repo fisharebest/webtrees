@@ -127,7 +127,7 @@ class MapDataExportCSV implements RequestHandlerInterface
             $max_level = max($max_level, count($place->hierarchy));
         }
 
-        $places = array_map(fn(object $place): array => array_merge(
+        $places = array_map(fn (object $place): array => array_merge(
             [
                 count($place->hierarchy) - 1,
             ],

@@ -138,6 +138,6 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
     {
         return $this->module_service
             ->findByComponent(ModuleAnalyticsInterface::class, $tree, $user)
-            ->filter(static fn(ModuleAnalyticsInterface $module): bool => $module->isTracker());
+            ->filter(static fn (ModuleAnalyticsInterface $module): bool => $module->isTracker());
     }
 }

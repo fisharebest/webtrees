@@ -836,7 +836,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     {
         $boundaries = explode(',', $boundaries_csv);
 
-        $boundaries = array_map(static fn(string $x): int => (int) $x, $boundaries);
+        $boundaries = array_map(static fn (string $x): int => (int) $x, $boundaries);
 
         $axis = [];
         foreach ($boundaries as $n => $boundary) {

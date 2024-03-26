@@ -354,23 +354,23 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             if ($show === 'indi' || $show === 'surn') {
                 switch ($alpha) {
                     case '@':
-                        $filter = static fn(string $x): bool => $x === Individual::NOMEN_NESCIO;
+                        $filter = static fn (string $x): bool => $x === Individual::NOMEN_NESCIO;
                         break;
                     case ',':
-                        $filter = static fn(string $x): bool => $x === '';
+                        $filter = static fn (string $x): bool => $x === '';
                         break;
                     case '':
                         if ($show_all === 'yes') {
-                            $filter = static fn(string $x): bool => $x !== '' && $x !== Individual::NOMEN_NESCIO;
+                            $filter = static fn (string $x): bool => $x !== '' && $x !== Individual::NOMEN_NESCIO;
                         } else {
-                            $filter = static fn(string $x): bool => $x === $surname;
+                            $filter = static fn (string $x): bool => $x === $surname;
                         }
                         break;
                     default:
                         if ($surname === '') {
-                            $filter = static fn(string $x): bool => I18N::language()->initialLetter($x) === $alpha;
+                            $filter = static fn (string $x): bool => I18N::language()->initialLetter($x) === $alpha;
                         } else {
-                            $filter = static fn(string $x): bool => $x === $surname;
+                            $filter = static fn (string $x): bool => $x === $surname;
                         }
                         break;
                 }
@@ -412,7 +412,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     }
                 } else {
                     // Show the list
-                    $count = array_sum(array_map(static fn(array $x): int => array_sum($x), $all_surnames));
+                    $count = array_sum(array_map(static fn (array $x): int => array_sum($x), $all_surnames));
 
                     // Don't sublist short lists.
                     $sublist_threshold = (int) $tree->getPreference('SUBLIST_TRIGGER_I');
@@ -420,7 +420,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                         $falpha = '';
                     } else {
                         // Break long lists by initial letter of given name
-                        $all_surnames  = array_values(array_map(static fn($x): array => array_keys($x), $all_surnames));
+                        $all_surnames  = array_values(array_map(static fn ($x): array => array_keys($x), $all_surnames));
                         $all_surnames  = array_merge(...$all_surnames);
                         $givn_initials = $this->givenNameInitials($tree, $all_surnames, $show_marnm === 'yes', $this->families);
 
@@ -648,7 +648,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         return $query
             ->get()
-            ->map(static fn(object $x): object => (object) ['n_surn' => $x->n_surn, 'n_surname' => $x->n_surname, 'total' => (int) $x->total])
+            ->map(static fn (object $x): object => (object) ['n_surn' => $x->n_surn, 'n_surname' => $x->n_surname, 'total' => (int) $x->total])
             ->all();
     }
 

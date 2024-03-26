@@ -67,7 +67,7 @@ class TomSelectIndividual extends AbstractTomSelectHandler
             $results = $this->search_service->searchIndividualNames([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static fn(Individual $individual): array => [
+        return $results->map(static fn (Individual $individual): array => [
             'text'  => view('selects/individual', ['individual' => $individual]),
             'value' => $at . $individual->xref() . $at,
         ]);

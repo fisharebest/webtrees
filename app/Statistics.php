@@ -178,13 +178,13 @@ class Statistics implements
             $public_methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
 
             $examples = Collection::make($public_methods)
-                ->filter(static fn(ReflectionMethod $method): bool => !in_array($method->getName(), ['embedTags', 'getAllTagsTable'], true))
+                ->filter(static fn (ReflectionMethod $method): bool => !in_array($method->getName(), ['embedTags', 'getAllTagsTable'], true))
                 ->filter(static function (ReflectionMethod $method): bool {
                     $type = $method->getReturnType();
 
                     return $type instanceof ReflectionNamedType && $type->getName() === 'string';
                 })
-                ->sort(static fn(ReflectionMethod $x, ReflectionMethod $y): int => $x->getName() <=> $y->getName())
+                ->sort(static fn (ReflectionMethod $x, ReflectionMethod $y): int => $x->getName() <=> $y->getName())
                 ->map(function (ReflectionMethod $method): string {
                     $tag = $method->getName();
 
@@ -2801,7 +2801,7 @@ class Statistics implements
         /** @var ModuleBlockInterface|null $module */
         $module = $this->module_service
             ->findByComponent(ModuleBlockInterface::class, $this->tree, Auth::user())
-            ->first(static fn(ModuleInterface $module): bool => $module->name() === $block && $module->name() !== 'html');
+            ->first(static fn (ModuleInterface $module): bool => $module->name() === $block && $module->name() !== 'html');
 
         if ($module === null) {
             return '';

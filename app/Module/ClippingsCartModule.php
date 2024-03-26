@@ -409,13 +409,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
 
         // Fetch all the records in the cart.
-        $records = array_map(static fn(string $xref): GedcomRecord|null => Registry::gedcomRecordFactory()->make($xref, $tree), $xrefs);
+        $records = array_map(static fn (string $xref): GedcomRecord|null => Registry::gedcomRecordFactory()->make($xref, $tree), $xrefs);
 
         // Some records may have been deleted after they were added to the cart.
         $records = array_filter($records);
 
         // Group and sort.
-        uasort($records, static fn(GedcomRecord $x, GedcomRecord $y): int => $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y));
+        uasort($records, static fn (GedcomRecord $x, GedcomRecord $y): int => $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y));
 
         return $records;
     }

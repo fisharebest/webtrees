@@ -56,7 +56,7 @@ class PendingChangesLogDownload implements RequestHandlerInterface
 
         $content = $this->pending_changes_service->changesQuery($params)
             ->get()
-            ->map(static fn(object $row): string =>
+            ->map(static fn (object $row): string =>
                 // Convert to CSV
                 implode(',', [
                 '"' . $row->change_time . '"',

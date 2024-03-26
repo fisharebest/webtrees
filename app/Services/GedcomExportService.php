@@ -214,7 +214,7 @@ class GedcomExportService
             ];
         } else {
             // Disable the pending changes before creating GEDCOM records.
-            Registry::cache()->array()->remember(AbstractGedcomRecordFactory::class . $tree->id(), static fn(): Collection => new Collection());
+            Registry::cache()->array()->remember(AbstractGedcomRecordFactory::class . $tree->id(), static fn (): Collection => new Collection());
 
             $data = [
                 new Collection([$this->createHeader($tree, $encoding, true)]),

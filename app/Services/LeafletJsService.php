@@ -49,7 +49,7 @@ class LeafletJsService
 
         $map_providers = $this->module_service
             ->findByInterface(ModuleMapProviderInterface::class)
-            ->map(static fn(ModuleMapProviderInterface $map_provider): object => (object) [
+            ->map(static fn (ModuleMapProviderInterface $map_provider): object => (object) [
                 'children'  => $map_provider->leafletJsTileLayers(),
                 'collapsed' => true,
                 'default'   => $map_provider->name() === $default,

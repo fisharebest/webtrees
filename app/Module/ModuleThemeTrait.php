@@ -161,7 +161,7 @@ trait ModuleThemeTrait
             }
         }
 
-        usort($menus, static fn(Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
+        usort($menus, static fn (Menu $x, Menu $y): int => I18N::comparator()($x->getLabel(), $y->getLabel()));
 
         return $menus;
     }
@@ -491,7 +491,7 @@ trait ModuleThemeTrait
      */
     public function genealogyMenuContent(array $menus): string
     {
-        return implode('', array_map(static fn(Menu $menu): string => view('components/menu-item', ['menu' => $menu]), $menus));
+        return implode('', array_map(static fn (Menu $menu): string => view('components/menu-item', ['menu' => $menu]), $menus));
     }
 
     /**

@@ -75,7 +75,7 @@ class UnconnectedPage implements RequestHandlerInterface
         $graph = DB::table('individuals')
             ->where('i_file', '=', $tree->id())
             ->pluck('i_id')
-            ->mapWithKeys(static fn(string $xref): array => [$xref => []])
+            ->mapWithKeys(static fn (string $xref): array => [$xref => []])
             ->all();
 
         foreach ($rows as $row) {

@@ -160,7 +160,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
             ->uniqueStrict()
-            ->map(static fn(string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree))
+            ->map(static fn (string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree))
             ->filter()
             ->filter(GedcomRecord::accessFilter());
 
@@ -169,8 +169,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         foreach ($individuals as $exclude) {
             $xrefs_1 = $individuals
-                ->filter(static fn(Individual $individual): bool => $individual->xref() !== $exclude->xref())
-                ->map(static fn(Individual $individual): string => $individual->xref());
+                ->filter(static fn (Individual $individual): bool => $individual->xref() !== $exclude->xref())
+                ->map(static fn (Individual $individual): string => $individual->xref());
 
             $remove_urls[$exclude->xref()] = route(static::class, [
                 'tree'  => $tree->name(),
@@ -179,9 +179,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             ]);
         }
 
-        $individuals = array_map(static fn(string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree), $xrefs);
+        $individuals = array_map(static fn (string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree), $xrefs);
 
-        $individuals = array_filter($individuals, static fn(Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
+        $individuals = array_filter($individuals, static fn (Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
         if ($ajax) {
             $this->layout = 'layouts/ajax';
@@ -237,9 +237,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     protected function chart(Tree $tree, array $xrefs, int $scale): ResponseInterface
     {
         /** @var Individual[] $individuals */
-        $individuals = array_map(static fn(string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree), $xrefs);
+        $individuals = array_map(static fn (string $xref): Individual|null => Registry::individualFactory()->make($xref, $tree), $xrefs);
 
-        $individuals = array_filter($individuals, static fn(Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
+        $individuals = array_filter($individuals, static fn (Individual|null $individual): bool => $individual instanceof Individual && $individual->canShow());
 
         $baseyear    = (int) date('Y');
         $topyear     = 0;
@@ -285,7 +285,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         }
 
         // do not add the same fact twice (prevents marriages from being added multiple times)
-        $indifacts = $indifacts->uniqueStrict(static fn(Fact $fact): string => $fact->id());
+        $indifacts = $indifacts->uniqueStrict(static fn (Fact $fact): string => $fact->id());
 
         if ($scale === 0) {
             $scale = (int) (($topyear - $baseyear) / 20 * $indifacts->count() / 4);

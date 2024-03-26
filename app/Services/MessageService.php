@@ -191,7 +191,7 @@ class MessageService
                 return $this->user_service->all();
             case self::BROADCAST_NEVER:
                 return $this->user_service->all()
-                    ->filter(static fn(UserInterface $user): bool => $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE));
+                    ->filter(static fn (UserInterface $user): bool => $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE));
             case self::BROADCAST_GONE:
                 $six_months_ago = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();
 

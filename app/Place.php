@@ -195,7 +195,7 @@ class Place
             ->where('p_parent_id', '=', $this->id())
             ->pluck('p_place')
             ->sort(I18N::comparator())
-            ->map(fn(string $place): Place => new self($place . $parent_text, $this->tree))
+            ->map(fn (string $place): Place => new self($place . $parent_text, $this->tree))
             ->all();
     }
 
@@ -209,7 +209,7 @@ class Place
         //find a module providing the place hierarchy
         $module = Registry::container()->get(ModuleService::class)
             ->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())
-            ->first(static fn(ModuleInterface $module): bool => $module instanceof PlaceHierarchyListModule);
+            ->first(static fn (ModuleInterface $module): bool => $module instanceof PlaceHierarchyListModule);
 
         if ($module instanceof PlaceHierarchyListModule) {
             return $module->listUrl($this->tree, [

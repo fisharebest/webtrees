@@ -167,7 +167,7 @@ class IndividualFactsService
     public function historicFacts(Individual $individual): Collection
     {
         return $this->module_service->findByInterface(ModuleHistoricEventsInterface::class)
-            ->map(static fn(ModuleHistoricEventsInterface $module): Collection => $module->historicEventsForIndividual($individual))
+            ->map(static fn (ModuleHistoricEventsInterface $module): Collection => $module->historicEventsForIndividual($individual))
             ->flatten();
     }
 

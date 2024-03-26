@@ -226,7 +226,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
             ->where('multimedia_file_refn', 'NOT LIKE', 'https:%')
             ->where('multimedia_file_refn', 'LIKE', '%/%')
             ->pluck('multimedia_file_refn', 'multimedia_file_refn')
-            ->map(static fn(string $path): string => dirname($path))
+            ->map(static fn (string $path): string => dirname($path))
             ->uniqueStrict()
             ->sort()
             ->all();

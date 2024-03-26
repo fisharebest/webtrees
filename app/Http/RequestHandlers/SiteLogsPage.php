@@ -94,10 +94,10 @@ class SiteLogsPage implements RequestHandlerInterface
         $from = max($from, $earliest);
         $to   = min(max($from, $to), $latest);
 
-        $user_options = $this->user_service->all()->mapWithKeys(static fn(User $user): array => [$user->userName() => $user->userName()]);
+        $user_options = $this->user_service->all()->mapWithKeys(static fn (User $user): array => [$user->userName() => $user->userName()]);
         $user_options->prepend('', '');
 
-        $tree_options = $this->tree_service->all()->mapWithKeys(static fn(Tree $tree): array => [$tree->name() => $tree->title()]);
+        $tree_options = $this->tree_service->all()->mapWithKeys(static fn (Tree $tree): array => [$tree->name() => $tree->title()]);
         $tree_options->prepend('', '');
 
         $title = I18N::translate('Website logs');

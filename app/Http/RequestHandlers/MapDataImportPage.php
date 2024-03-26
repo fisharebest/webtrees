@@ -60,7 +60,7 @@ class MapDataImportPage implements RequestHandlerInterface
 
                     return $extension === 'csv' || $extension === 'geojson';
                 })
-                ->map(static fn(StorageAttributes $attributes): string => pathinfo($attributes->path(), PATHINFO_BASENAME))
+                ->map(static fn (StorageAttributes $attributes): string => pathinfo($attributes->path(), PATHINFO_BASENAME))
                 ->toArray();
         } catch (FilesystemException) {
             $files = [];

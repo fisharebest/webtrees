@@ -241,7 +241,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         }
 
         $tree_names = $this->tree_service->all()
-            ->map(static fn(Tree $tree): string => $tree->title());
+            ->map(static fn (Tree $tree): string => $tree->title());
 
         return $this->viewResponse('modules/stories/config', [
             'module'     => $this->name(),
@@ -405,9 +405,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 return $story;
             })
                 // Filter non-existent and private individuals.
-            ->filter(static fn(object $story): bool => $story->individual instanceof Individual && $story->individual->canShow())
+            ->filter(static fn (object $story): bool => $story->individual instanceof Individual && $story->individual->canShow())
                 // Filter foreign languages.
-            ->filter(static fn(object $story): bool => $story->languages === '' || in_array(I18N::languageTag(), explode(',', $story->languages), true));
+            ->filter(static fn (object $story): bool => $story->languages === '' || in_array(I18N::languageTag(), explode(',', $story->languages), true));
 
         return $this->viewResponse('modules/stories/list', [
             'stories' => $stories,

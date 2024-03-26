@@ -48,7 +48,7 @@ class UserService
     public function find(int|null $user_id): User|null
     {
         return Registry::cache()->array()
-            ->remember('user-' . $user_id, static fn(): User|null => DB::table('user')
+            ->remember('user-' . $user_id, static fn (): User|null => DB::table('user')
                 ->where('user_id', '=', $user_id)
                 ->get()
                 ->map(User::rowMapper())

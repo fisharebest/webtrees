@@ -216,7 +216,7 @@ class IndividualPage implements RequestHandlerInterface
                 $meta_facts[] = I18N::translate('Spouse') . ' ' . $spouse->fullName();
             }
 
-            $child_names = $family->children()->map(static fn(Individual $individual): string => e($individual->getAllNames()[0]['givn']))->implode(', ');
+            $child_names = $family->children()->map(static fn (Individual $individual): string => e($individual->getAllNames()[0]['givn']))->implode(', ');
 
             if ($child_names !== '') {
                 $meta_facts[] = I18N::translate('Children') . ' ' . $child_names;
@@ -241,7 +241,7 @@ class IndividualPage implements RequestHandlerInterface
     {
         return $this->module_service
             ->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
-            ->filter(static fn(ModuleSidebarInterface $sidebar): bool => $sidebar->hasSidebarContent($individual));
+            ->filter(static fn (ModuleSidebarInterface $sidebar): bool => $sidebar->hasSidebarContent($individual));
     }
 
     /**
@@ -256,7 +256,7 @@ class IndividualPage implements RequestHandlerInterface
     {
         return $this->module_service
             ->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
-            ->filter(static fn(ModuleTabInterface $tab): bool => $tab->hasTabContent($individual));
+            ->filter(static fn (ModuleTabInterface $tab): bool => $tab->hasTabContent($individual));
     }
 
     /**

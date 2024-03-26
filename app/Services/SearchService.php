@@ -498,7 +498,7 @@ class SearchService
             return new Place($place, $tree);
         };
 
-        $filter = static fn(): bool => true;
+        $filter = static fn (): bool => true;
 
         return $this->paginateQuery($query, $row_mapper, $filter, $offset, $limit);
     }
@@ -1101,7 +1101,7 @@ class SearchService
      */
     private function whereTrees(Builder $query, string $tree_id_field, array $trees): void
     {
-        $tree_ids = array_map(static fn(Tree $tree): int => $tree->id(), $trees);
+        $tree_ids = array_map(static fn (Tree $tree): int => $tree->id(), $trees);
 
         $query->whereIn($tree_id_field, $tree_ids);
     }

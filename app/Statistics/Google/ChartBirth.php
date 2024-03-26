@@ -70,7 +70,7 @@ class ChartBirth
             ->groupBy(['century'])
             ->orderBy('century')
             ->get()
-            ->map(static fn(object $row): object => (object) [
+            ->map(static fn (object $row): object => (object) [
                 'century' => (int) $row->century,
                 'total'   => (float) $row->total,
             ]);

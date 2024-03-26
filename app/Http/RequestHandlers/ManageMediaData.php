@@ -220,7 +220,7 @@ class ManageMediaData implements RequestHandlerInterface
 
                 // All unused files
                 $unused_files = $disk_files->diff($db_files)
-                    ->map(static fn(string $file): array => (array) $file);
+                    ->map(static fn (string $file): array => (array) $file);
 
                 $search_columns = [0];
                 $sort_columns   = [0 => 0];

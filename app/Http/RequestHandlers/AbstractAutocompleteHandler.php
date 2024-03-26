@@ -56,7 +56,7 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data = $this->search($request)
-            ->map(static fn(string $datum): array => ['value' => $datum]);
+            ->map(static fn (string $datum): array => ['value' => $datum]);
 
         return response($data)
             ->withHeader('cache-control', 'public,max-age=' . static::CACHE_LIFE);

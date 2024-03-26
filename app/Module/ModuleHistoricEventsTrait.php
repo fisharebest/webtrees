@@ -65,7 +65,7 @@ trait ModuleHistoricEventsTrait
         $max_date = $individual->getEstimatedDeathDate();
 
         return (new Collection($this->historicEventsAll()))
-            ->map(static fn(string $gedcom): Fact => new Fact($gedcom, $individual, 'histo'))
-            ->filter(static fn(Fact $fact): bool => Date::compare($fact->date(), $min_date) >= 0 && Date::compare($fact->date(), $max_date) <= 0);
+            ->map(static fn (string $gedcom): Fact => new Fact($gedcom, $individual, 'histo'))
+            ->filter(static fn (Fact $fact): bool => Date::compare($fact->date(), $min_date) >= 0 && Date::compare($fact->date(), $max_date) <= 0);
     }
 }
