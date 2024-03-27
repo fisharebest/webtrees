@@ -197,7 +197,7 @@ class SetupWizard implements RequestHandlerInterface
     /**
      * @param ServerRequestInterface $request
      *
-     * @return array<string,mixed>
+     * @return array<string,string>
      */
     private function userData(ServerRequestInterface $request): array
     {
@@ -269,7 +269,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return ResponseInterface
      */
@@ -279,7 +279,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return ResponseInterface
      */
@@ -289,7 +289,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return ResponseInterface
      */
@@ -303,7 +303,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return ResponseInterface
      */
@@ -317,7 +317,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return ResponseInterface
      */
@@ -339,7 +339,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return ResponseInterface
      */
@@ -385,7 +385,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return void
      */
@@ -431,7 +431,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<string,string> $data
      *
      * @return void
      */
