@@ -116,7 +116,7 @@ class UseDatabase implements MiddlewareInterface
             // Eager-load the connection, to prevent database credentials appearing in error logs.
             DB::connection()->getPdo();
         } catch (PDOException $exception) {
-            throw new RuntimeException($exception->getMessage());
+            //throw new RuntimeException($exception->getMessage());
         }
 
         return $handler->handle($request);

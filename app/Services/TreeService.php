@@ -177,7 +177,7 @@ class TreeService
             'gedcom_name' => $name,
         ]);
 
-        $tree_id = (int) DB::connection()->getPdo()->lastInsertId();
+        $tree_id = DB::lastInsertId();
 
         $tree = new Tree($tree_id, $name, $title);
 
