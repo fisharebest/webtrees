@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -55,28 +56,28 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-mysql" value="mysql" <?= $dbtype === 'mysql' ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-mysql" value="mysql" <?= $dbtype === DB::MYSQL ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-mysql">
                     MySQL
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlite" value="sqlite" <?= $dbtype === 'sqlite' ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlite" value="sqlite" <?= $dbtype === DB::SQLITE ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-sqlite">
                     SQLite
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-pgsql" value="pgsql" <?= $dbtype === 'pgsql' ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-pgsql" value="pgsql" <?= $dbtype === DB::POSTGRES ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-pgsql">
                     PostgreSQL
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlsrv" value="sqlsrv" <?= $dbtype === 'sqlsrv' ? 'checked' : '' ?>>
+                <input class="form-check-input" type="radio" name="dbtype" id="dbtype-sqlsrv" value="sqlsrv" <?= $dbtype === DB::SQL_SERVER ? 'checked' : '' ?>>
                 <label class="form-check-label" for="dbtype-sqlsrv">
                     SQL Server
                 </label>

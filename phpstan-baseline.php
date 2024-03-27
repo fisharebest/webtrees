@@ -19,6 +19,21 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Container.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Constant Fisharebest\\\\Webtrees\\\\DB\\:\\:COLLATION_ASCII is unused\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/DB.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Constant Fisharebest\\\\Webtrees\\\\DB\\:\\:COLLATION_UTF8 is unused\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/DB.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\DB\\:\\:driverName\\(\\) should return string but returns mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/DB.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AgeAtEvent\\:\\:value\\(\\) should return string but returns string\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Elements/AgeAtEvent.php',
@@ -871,6 +886,56 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#4 \\$wtemail of method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\SetupWizard\\:\\:checkAdminUser\\(\\) expects string, mixed given\\.$#',
     'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$ca of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$certificate of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$database of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$driver of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$host of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$key of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$password of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$port of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$prefix of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$username of static method Fisharebest\\\\Webtrees\\\\DB\\:\\:connect\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
 ];
 $ignoreErrors[] = [

@@ -27,11 +27,6 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class Migration0 implements MigrationInterface
 {
-    /**
-     * Upgrade to the next version.
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         DB::schema()->create('gedcom', static function (Blueprint $table): void {

@@ -123,13 +123,13 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 ->where('n_surn', '<>', '')
                 ->where('n_surn', '<>', Individual::NOMEN_NESCIO)
                 ->select([
-                    $this->binaryColumn('n_surn', 'n_surn'),
-                    $this->binaryColumn('n_surname', 'n_surname'),
+                    DB::binaryColumn('n_surn', 'n_surn'),
+                    DB::binaryColumn('n_surname', 'n_surname'),
                     new Expression('COUNT(*) AS total'),
                 ])
                 ->groupBy([
-                    $this->binaryColumn('n_surn'),
-                    $this->binaryColumn('n_surname'),
+                    DB::binaryColumn('n_surn'),
+                    DB::binaryColumn('n_surname'),
                 ]);
 
             /** @var array<array<int>> $top_surnames */
@@ -336,24 +336,5 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             'stat_most_chil'       => $stat_most_chil,
             'stat_avg_chil'        => $stat_avg_chil,
         ]);
-    }
-
-    /**
-     * This module assumes the database will use binary collation on the name columns.
-     * Until we convert MySQL databases to use utf8_bin, we need to do this at run-time.
-     */
-    private function binaryColumn(string $column, string|null $alias = null): Expression
-    {
-        if (DB::driverName() === 'mysql') {
-            $sql = 'CAST(' . $column . ' AS binary)';
-        } else {
-            $sql = $column;
-        }
-
-        if ($alias !== null) {
-            $sql .= ' AS ' . $alias;
-        }
-
-        return new Expression($sql);
     }
 }

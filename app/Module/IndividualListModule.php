@@ -600,8 +600,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         }
 
         $query
-            ->select([$this->binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count')])
-            ->groupBy([$this->binaryColumn('n_givn')]);
+            ->select([DB::binaryColumn('n_givn', 'n_givn'), new Expression('COUNT(*) AS count')])
+            ->groupBy([DB::binaryColumn('n_givn')]);
 
         foreach ($query->get() as $row) {
             $initial            = I18N::strtoupper(I18N::language()->initialLetter($row->n_givn));
@@ -633,8 +633,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             ->whereNotNull('n_surn') // Filters old records for sources, repositories, etc.
             ->whereNotNull('n_surname')
             ->select([
-                $this->binaryColumn('n_surn', 'n_surn'),
-                $this->binaryColumn('n_surname', 'n_surname'),
+                DB::binaryColumn('n_surn', 'n_surn'),
+                DB::binaryColumn('n_surname', 'n_surname'),
                 new Expression('COUNT(*) AS total'),
             ]);
 
@@ -642,8 +642,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $this->whereMarriedName($marnm, $query);
 
         $query->groupBy([
-            $this->binaryColumn('n_surn'),
-            $this->binaryColumn('n_surname'),
+            DB::binaryColumn('n_surn'),
+            DB::binaryColumn('n_surname'),
         ]);
 
         return $query
@@ -771,7 +771,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         if ($surns_to_show === []) {
             $query->whereNotIn('n_surn', ['', '@N.N.']);
         } else {
-            $query->whereIn($this->binaryColumn('n_surn'), $surns_to_show);
+            $query->whereIn(DB::binaryColumn('n_surn'), $surns_to_show);
         }
 
         $individuals = new Collection();
@@ -821,24 +821,5 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         }
 
         return $families->unique();
-    }
-
-    /**
-     * This module assumes the database will use binary collation on the name columns.
-     * Until we convert MySQL databases to use utf8_bin, we need to do this at run-time.
-     */
-    private function binaryColumn(string $column, string|null $alias = null): Expression
-    {
-        if (DB::driverName() === 'mysql') {
-            $sql = 'CAST(' . $column . ' AS binary)';
-        } else {
-            $sql = $column;
-        }
-
-        if ($alias !== null) {
-            $sql .= ' AS ' . $alias;
-        }
-
-        return new Expression($sql);
     }
 }

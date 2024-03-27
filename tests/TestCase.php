@@ -65,12 +65,19 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     private static function createTestDatabase(): void
     {
-        $capsule = new DB();
-        $capsule->addConnection([
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-        ]);
-        $capsule->setAsGlobal();
+        DB::connect(
+            driver: DB::SQLITE,
+            host: '',
+            port: '',
+            database: ':memory:',
+            username: '',
+            password: '',
+            prefix: 'wt_',
+            key: '',
+            certificate: '',
+            ca: '',
+            verify_certificate: false,
+        );
 
         // Create tables
         $migration_service = new MigrationService();

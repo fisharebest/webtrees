@@ -24,10 +24,5 @@ namespace Fisharebest\Webtrees\Schema;
  */
 interface MigrationInterface
 {
-    /**
-     * Upgrade to the next version
-     *
-     * @return void
-     */
     public function upgrade(): void;
 }

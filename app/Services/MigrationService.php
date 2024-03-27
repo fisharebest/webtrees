@@ -51,14 +51,6 @@ class MigrationService
             $current_version = 0;
         }
 
-        if ($current_version < $target_version) {
-            try {
-                $this->transactionalTables();
-            } catch (PDOException) {
-                // There is probably nothing we can do.
-            }
-        }
-
         $updates_applied = false;
 
         // Update the schema, one version at a time.
@@ -73,38 +65,6 @@ class MigrationService
         }
 
         return $updates_applied;
-    }
-
-    /**
-     * Upgrades from older installations may have MyISAM or other non-transactional tables.
-     * These could prevent us from creating foreign key constraints.
-     *
-     * @return void
-     * @throws PDOException
-     */
-    private function transactionalTables(): void
-    {
-        $connection = DB::connection();
-
-        if (DB::driverName() !== 'mysql') {
-            return;
-        }
-
-        $sql = "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'";
-
-        $bindings = [
-            $connection->getDatabaseName(),
-            mb_strlen(DB::prefix()),
-            DB::prefix(),
-        ];
-
-        $rows = DB::connection()->select($sql, $bindings);
-
-        foreach ($rows as $row) {
-            $table = $row->TABLE_NAME ?? $row->table_name;
-            $alter_sql = 'ALTER TABLE `' . $table . '` ENGINE=InnoDB';
-            DB::connection()->statement($alter_sql);
-        }
     }
 
     /**

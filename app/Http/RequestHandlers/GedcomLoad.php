@@ -213,7 +213,7 @@ class GedcomLoad implements RequestHandlerInterface
                 'tree'     => $tree,
             ]);
         } catch (Exception $ex) {
-            DB::connection()->rollBack();
+            DB::rollBack();
 
             // Deadlock? Try again.
             if ($this->causedByConcurrencyError($ex)) {

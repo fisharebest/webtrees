@@ -24,11 +24,6 @@ namespace Fisharebest\Webtrees\Schema;
  */
 class Migration18 implements MigrationInterface
 {
-    /**
-     * Upgrade to the next version.
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         // These migrations have been merged into migration 0.

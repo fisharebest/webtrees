@@ -27,11 +27,6 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class Migration39 implements MigrationInterface
 {
-    /**
-     * Upgrade to the next version
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         // This table was previously created by the favorites module in 1.7.9.

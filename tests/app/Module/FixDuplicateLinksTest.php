@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -53,10 +54,9 @@ class FixDuplicateLinksTest extends TestCase
 
         $this->fixDuplicateLinks = new FixDuplicateLinks(new DataFixService());
 
-        if (Auth::id() === null) {
-            Session::put('wt_user', 0);
-            $this->restore_session_user = true;
-        }
+        $user_service = new UserService();
+        $user         = $user_service->create('user', 'real', 'email', 'pass');
+        Auth::login($user);
     }
 
     /**

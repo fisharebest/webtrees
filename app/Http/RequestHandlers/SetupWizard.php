@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -62,7 +63,7 @@ class SetupWizard implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private const DEFAULT_DBTYPE = 'mysql';
+    private const DEFAULT_DBTYPE = DB::MYSQL;
     private const DEFAULT_PREFIX = 'wt_';
     private const DEFAULT_DATA   = [
         'baseurl' => '',
@@ -81,10 +82,10 @@ class SetupWizard implements RequestHandlerInterface
     ];
 
     private const DEFAULT_PORTS = [
-        'mysql'  => '3306',
-        'pgsql'  => '5432',
-        'sqlite' => '',
-        'sqlsrv' => '', // Do not use default, as it is valid to have no port number.
+        DB::MYSQL      => '3306',
+        DB::POSTGRES   => '5432',
+        DB::SQLITE     => '',
+        DB::SQL_SERVER => '', // Do not use default, as it is valid to have no port number.
     ];
 
     private MigrationService $migration_service;
@@ -432,58 +433,42 @@ class SetupWizard implements RequestHandlerInterface
      */
     private function connectToDatabase(array $data): void
     {
-        $capsule = new DB();
-
         // Try to create the database, if it does not already exist.
         switch ($data['dbtype']) {
-            case 'sqlite':
-                $data['dbname'] = Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite';
-                touch($data['dbname']);
+            case DB::SQLITE:
+                touch(Webtrees::ROOT_DIR . 'data/' . $data['dbname'] . '.sqlite');
                 break;
 
-            case 'mysql':
-                $capsule->addConnection([
-                    'driver'                  => $data['dbtype'],
-                    'host'                    => $data['dbhost'],
-                    'port'                    => $data['dbport'],
-                    'database'                => '',
-                    'username'                => $data['dbuser'],
-                    'password'                => $data['dbpass'],
-                ], 'temp');
-                $capsule->getConnection('temp')->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
+            case DB::MYSQL:
+                DB::connect(
+                    driver: $data['dbtype'],
+                    host: $data['dbhost'],
+                    port: $data['dbport'],
+                    database: '',
+                    username: $data['dbuser'],
+                    password: $data['dbpass'],
+                    prefix: $data['tblpfx'],
+                    key: $data['dbkey'],
+                    certificate: $data['dbcert'],
+                    ca: $data['dbca'],
+                    verify_certificate: (bool) $data['dbverify'],
+                );
+                DB::exec('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8mb4_unicode_ci');
                 break;
         }
 
-        // Connect to the database.
-        $capsule->addConnection([
-            'driver'                  => $data['dbtype'],
-            'host'                    => $data['dbhost'],
-            'port'                    => $data['dbport'],
-            'database'                => $data['dbname'],
-            'username'                => $data['dbuser'],
-            'password'                => $data['dbpass'],
-            'prefix'                  => $data['tblpfx'],
-            'prefix_indexes'          => true,
-            // For MySQL
-            'charset'                 => 'utf8',
-            'collation'               => 'utf8_unicode_ci',
-            'timezone'                => '+00:00',
-            'engine'                  => 'InnoDB',
-            'modes'                   => [
-                'ANSI',
-                'STRICT_TRANS_TABLES',
-                'NO_ZERO_IN_DATE',
-                'NO_ZERO_DATE',
-                'ERROR_FOR_DIVISION_BY_ZERO',
-            ],
-            // For SQLite
-            'foreign_key_constraints' => true,
-        ]);
-
-        $capsule->setAsGlobal();
-
-        if ($data['dbtype'] === 'sqlsrv') {
-            DB::connection()->unprepared('SET language us_english'); // For timestamp columns
-        }
+        DB::connect(
+            driver: $data['dbtype'],
+            host: $data['dbhost'],
+            port: $data['dbport'],
+            database: $data['dbname'],
+            username: $data['dbuser'],
+            password: $data['dbpass'],
+            prefix: $data['tblpfx'],
+            key: $data['dbkey'],
+            certificate: $data['dbcert'],
+            ca: $data['dbca'],
+            verify_certificate: (bool) $data['dbverify'],
+        );
     }
 }

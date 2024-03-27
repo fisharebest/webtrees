@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -68,7 +69,7 @@ class CleanDataFolder implements RequestHandlerInterface
             'config.ini.php',
         ];
 
-        if (Validator::attributes($request)->string('dbtype', 'mysql') === 'sqlite') {
+        if (Validator::attributes($request)->string('dbtype', DB::MYSQL) === DB::SQLITE) {
             $protected[] = Validator::attributes($request)->string('dbname') . '.sqlite';
         }
 

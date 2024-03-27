@@ -437,20 +437,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
                 // of MySQL (e.g. 5.7), and harmless on others (e.g. 8.0).
                 $search = strtr($search, ['\n' => "\n"]);
 
-                switch (DB::driverName()) {
-                    case 'sqlite':
-                    case 'mysql':
-                        $query->where($column, 'REGEXP', $search);
-                        break;
-
-                    case 'pgsql':
-                        $query->where($column, '~', $search);
-                        break;
-
-                    case 'sqlsrv':
-                        // Not available
-                        break;
-                }
+                $query->where($column, DB::regexOperator(), $search);
                 break;
         }
     }

@@ -43,81 +43,19 @@ class UseDatabase implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Earlier versions of webtrees did not have a dbtype config option.  They always used mysql.
-        $driver = Validator::attributes($request)->string('dbtype', 'mysql');
-
-        $dbname = Validator::attributes($request)->string('dbname');
-
-        if ($driver === 'sqlite') {
-            $dbname = Webtrees::ROOT_DIR . 'data/' . $dbname . '.sqlite';
-        }
-
-        $capsule = new DB();
-
-        // Newer versions of webtrees support utf8mb4.  Older ones only support 3-byte utf8
-        if ($driver === 'mysql' && Validator::attributes($request)->boolean('mysql_utf8mb4', false)) {
-            $charset   = 'utf8mb4';
-            $collation = 'utf8mb4_unicode_ci';
-        } else {
-            $charset   = 'utf8';
-            $collation = 'utf8_unicode_ci';
-        }
-
-        $options = [
-            // Some drivers do this and some don't.  Make them consistent.
-            PDO::ATTR_STRINGIFY_FETCHES => true,
-        ];
-
-        $dbkey    = Validator::attributes($request)->string('dbkey', '');
-        $dbcert   = Validator::attributes($request)->string('dbcert', '');
-        $dbca     = Validator::attributes($request)->string('dbca', '');
-        $dbverify = Validator::attributes($request)->boolean('dbverify', false);
-
-        // MySQL/MariaDB support encrypted connections
-        if ($dbkey !== '' && $dbcert !== '' && $dbca !== '') {
-            $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $dbverify;
-            $options[PDO::MYSQL_ATTR_SSL_KEY]                = Webtrees::ROOT_DIR . 'data/' . $dbkey;
-            $options[PDO::MYSQL_ATTR_SSL_CERT]               = Webtrees::ROOT_DIR . 'data/' . $dbcert;
-            $options[PDO::MYSQL_ATTR_SSL_CA]                 = Webtrees::ROOT_DIR . 'data/' . $dbca;
-        }
-
-        $capsule->addConnection([
-            'driver'                  => $driver,
-            'host'                    => Validator::attributes($request)->string('dbhost'),
-            'port'                    => Validator::attributes($request)->string('dbport'),
-            'database'                => $dbname,
-            'username'                => Validator::attributes($request)->string('dbuser'),
-            'password'                => Validator::attributes($request)->string('dbpass'),
-            'prefix'                  => Validator::attributes($request)->string('tblpfx'),
-            'prefix_indexes'          => true,
-            'options'                 => $options,
-            // For MySQL
-            'charset'                 => $charset,
-            'collation'               => $collation,
-            'timezone'                => '+00:00',
-            'engine'                  => 'InnoDB',
-            'modes'                   => [
-                'ANSI',
-                'STRICT_ALL_TABLES',
-                // Use SQL injection(!) to override MAX_JOIN_SIZE and GROUP_CONCAT_MAX_LEN settings.
-                "', SQL_BIG_SELECTS=1, GROUP_CONCAT_MAX_LEN=1048576, @foobar='"
-            ],
-            // For SQLite
-            'foreign_key_constraints' => true,
-        ]);
-
-        $capsule->setAsGlobal();
-
-        if ($driver === 'sqlsrv') {
-            DB::connection()->unprepared('SET language us_english'); // For timestamp columns
-        }
-
-        try {
-            // Eager-load the connection, to prevent database credentials appearing in error logs.
-            DB::connection()->getPdo();
-        } catch (PDOException $exception) {
-            //throw new RuntimeException($exception->getMessage());
-        }
+        DB::connect(
+            driver: Validator::attributes($request)->string('dbtype', DB::MYSQL),
+            host: Validator::attributes($request)->string('dbhost'),
+            port: Validator::attributes($request)->string('dbport'),
+            database: Validator::attributes($request)->string('dbname'),
+            username: Validator::attributes($request)->string('dbuser'),
+            password: Validator::attributes($request)->string('dbpass'),
+            prefix: Validator::attributes($request)->string('tblpfx'),
+            key: Validator::attributes($request)->string('dbkey', ''),
+            certificate: Validator::attributes($request)->string('dbcert', ''),
+            ca: Validator::attributes($request)->string('dbca', ''),
+            verify_certificate: Validator::attributes($request)->boolean('dbverify', false),
+        );
 
         return $handler->handle($request);
     }

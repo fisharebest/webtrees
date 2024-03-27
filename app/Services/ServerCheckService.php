@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 use SQLite3;
@@ -276,13 +277,13 @@ class ServerCheckService
     private function databaseDriverErrors(string $driver): Collection
     {
         switch ($driver) {
-            case 'mysql':
+            case DB::MYSQL:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_mysql'),
                 ]);
 
-            case 'sqlite':
+            case DB::SQLITE:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('sqlite3'),
@@ -290,13 +291,13 @@ class ServerCheckService
                     $this->checkSqliteVersion(),
                 ]);
 
-            case 'pgsql':
+            case DB::POSTGRES:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_pgsql'),
                 ]);
 
-            case 'sqlsrv':
+            case DB::SQL_SERVER:
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_odbc'),
@@ -315,17 +316,17 @@ class ServerCheckService
     private function databaseDriverWarnings(string $driver): Collection
     {
         switch ($driver) {
-            case 'sqlite':
+            case DB::SQLITE:
                 return new Collection([
                     I18N::translate('SQLite is only suitable for small sites, testing and evaluation.'),
                 ]);
 
-            case 'pgsql':
+            case DB::POSTGRES:
                 return new Collection([
                     I18N::translate('Support for PostgreSQL is experimental.'),
                 ]);
 
-            case 'sqlsrv':
+            case DB::SQL_SERVER:
                 return new Collection([
                     I18N::translate('Support for SQL Server is experimental.'),
                 ]);

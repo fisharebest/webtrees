@@ -46,11 +46,6 @@ class Migration42 implements MigrationInterface
         'theme'   => ModuleThemeInterface::class,
     ];
 
-    /**
-     * Upgrade to the next version
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         // doctrine/dbal cannot modify tables containing ENUM fields
