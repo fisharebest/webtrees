@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder;
 use PDO;
+use RuntimeException;
 
 /**
  * Database abstraction
@@ -69,6 +70,18 @@ class DB extends Manager
             default:
                 return 'GROUP_CONCAT(' . $column . ')';
         }
+    }
+
+    public static function lastInsertId(): int
+    {
+        $return = parent::connection()->getPdo()->lastInsertId();
+
+        if ($return === false) {
+            throw new RuntimeException('Unable to retrieve last insert ID');
+        }
+
+        // All IDs are integers in our schema.
+        return (int) $return;
     }
 
     /**
