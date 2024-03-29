@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Basque https://translate.webtrees.net/projects/webtrees/webtrees/eu/>\n"
+"PO-Revision-Date: 2024-03-31 08:11+0000\n"
+"Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
+"Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
+"webtrees/eu/>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4560,7 +4561,7 @@ msgstr "Hitzematearen data"
 #: app/Gedcom.php:749 app/Gedcom.php:773 app/Gedcom.php:797 app/Gedcom.php:906
 #: app/Gedcom.php:920
 msgid "Date of entry in original source"
-msgstr "Iturria originalaren sarrera data"
+msgstr "Jatorri-iturriaren sarrera data"
 
 #: app/CustomTags/GedcomL.php:236 app/Gedcom.php:655
 msgid "Date of event"
