@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
 "PO-Revision-Date: 2024-03-31 08:11+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -654,7 +654,7 @@ msgstr "<standaard thema>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr "<p>Let op: Door dit formulier in te vullen en te verzenden, gaat u ermee akkoord:</p><ul><li>de privacy te beschermen van levende personen die op onze website zijn vermeld;</li><li>en in het onderstaande tekstvak uit te leggen aan wie u verwant bent, of ons informatie te verstrekken over iemand die op onze website zou moeten worden vermeld.</li></ul>"
+msgstr "<p>Let op: Door dit formulier in te vullen en te verzenden, gaat u ermee akkoord:</p><ul><li>om de privacy te beschermen van levende personen die op onze website zijn vermeld;</li><li>en in het onderstaande tekstvak uit te leggen aan wie u verwant bent, of ons informatie te geven over iemand die op onze website zou moeten staan.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
