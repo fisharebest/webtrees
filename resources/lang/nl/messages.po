@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-10-24 09:15+0000\n"
+"PO-Revision-Date: 2024-03-31 08:11+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -21017,7 +21017,7 @@ msgstr "achterneef 26e graad"
 
 #: app/Functions/Functions.php:709
 msgid "twin brother"
-msgstr "tweelingbroer"
+msgstr "tweeling&shy;broer"
 
 #: app/Functions/Functions.php:751
 msgid "twin sibling"
@@ -21025,7 +21025,7 @@ msgstr "tweeling"
 
 #: app/Functions/Functions.php:730
 msgid "twin sister"
-msgstr "tweelingzus"
+msgstr "tweeling&shy;zus"
 
 #: app/Functions/Functions.php:796
 msgctxt "father’s brother"
