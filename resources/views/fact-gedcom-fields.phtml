@@ -72,7 +72,7 @@ foreach ($keys as $key) {
 			<?php if (Auth::isMember($tree) || $tree->getPreference('SHOW_SOURCE_TITLES') === '0') : ?>
 				<?php $value = '<span class="field" dir="auto"><a href="' . e($source->url()) . '">' . $source->fullName() . '</a></span>' ?>
 			<?php else: ?>
-				<?php $value = '<span class="field" dir="auto">' . I18N::translate('PRIVATE') . '</span>' ?>
+				<?php $value = '<span class="field" dir="auto">' . I18N::translate('Private') . '</span>' ?>
 				<?php $expanded = '' ?>
 			<?php endif ?>
             <?= I18N::translate('%1$s: %2$s', $label, $value) ?>
