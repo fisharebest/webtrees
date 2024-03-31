@@ -23,9 +23,9 @@ use Fisharebest\Webtrees\Tree;
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="HUSB">
-            <?php if ($family->husband()?->sex() === 'M') : ?>
+            <?php if ($family->husband() !== null && $family->husband()->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
-            <?php elseif ($family->husband()?->sex() === 'F') : ?>
+            <?php elseif ($family->husband() !== null && $family->husband()->sex() === 'F') : ?>
                 <?= I18N::translate('Wife') ?>
             <?php else : ?>
                 <?= I18N::translate('Spouse') ?>
@@ -38,9 +38,9 @@ use Fisharebest\Webtrees\Tree;
 
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="WIFE">
-            <?php if ($family->wife()?->sex() === 'M') : ?>
+            <?php if ($family->wife()  !== null && $family->wife()->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
-            <?php elseif ($family->wife()?->sex() === 'F') : ?>
+            <?php elseif ($family->wife() !== null && $family->wife()->sex() === 'F') : ?>
                 <?= I18N::translate('Wife') ?>
             <?php else : ?>
                 <?= I18N::translate('Spouse') ?>
