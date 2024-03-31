@@ -21,5 +21,4 @@ namespace Fisharebest\Webtrees;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$webtrees = new Webtrees();
-$webtrees->bootstrap()->run();
+return Webtrees::new()->run(PHP_SAPI);

@@ -19,9 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
-use ErrorException;
-use Fisharebest\Webtrees\Contracts\ContainerInterface;
+use Fisharebest\Webtrees\Cli\Console;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\CalendarDateFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
@@ -93,7 +91,6 @@ use function stream_filter_register;
 use const E_ALL;
 use const E_DEPRECATED;
 use const E_USER_DEPRECATED;
-use const PHP_SAPI;
 
 /**
  * Definitions for the webtrees application.
@@ -180,12 +177,15 @@ class Webtrees
         NoRouteFound::class,
     ];
 
+    public static function new(): self
+    {
+        return new self();
+    }
+
     /**
      * Initialise the application.
-     *
-     * @return static
      */
-    public function bootstrap(): static
+    public function bootstrap(): self
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
@@ -241,32 +241,28 @@ class Webtrees
 
     /**
      * Run the application.
-     *
-     * @return void
      */
-    public function run(): void
+    public function run(string $php_sapi): int|ResponseInterface
     {
-        if (PHP_SAPI === 'cli') {
-            $this->cliRequest();
-        } else {
-            $this->httpRequest();
-        };
+        if ($php_sapi === 'cli') {
+            return $this->bootstrap()->cliRequest();
+        }
+
+        return $this->bootstrap()->httpRequest();
     }
 
     /**
      * Respond to a CLI request.
-     *
-     * @return void
      */
-    public function cliRequest(): void
+    public function cliRequest(): int
     {
-        // CLI handler will go here.
+        $console = new Console();
+
+        return $console->loadCommands()->bootstrap()->run();
     }
 
     /**
      * Respond to an HTTP request.
-     *
-     * @return ResponseInterface
      */
     public function httpRequest(): ResponseInterface
     {
