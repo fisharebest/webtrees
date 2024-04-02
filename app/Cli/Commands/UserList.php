@@ -19,21 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Composer\Console\Input\InputOption;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
-
-use function bin2hex;
-use function random_bytes;
 
 class UserList extends Command
 {
@@ -51,13 +44,11 @@ class UserList extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle(input: $input, output: $output);
-
         $users = $this->user_service->all()->sort(fn($a, $b) => $a->id() <=> $b->id());
 
         $table = new Table(output: $output);
 
-        $table->setHeaders(headers: ['ID', 'Username', 'Real Name', 'Email', 'Admin', 'Approved', 'Verified', 'Language', 'Time zone', 'Registered', 'Last login']);
+        $table->setHeaders(headers: ['ID', 'Username', 'Real Name', 'Email', 'Admin', 'Approved', 'Verified', 'Language', 'Timezone', 'Contact', 'Registered', 'Last login']);
 
         foreach ($users as $user) {
             $registered = (int) $user->getPreference(setting_name: UserInterface::PREF_TIMESTAMP_REGISTERED);
@@ -85,6 +76,7 @@ class UserList extends Command
                 $user->getPreference(setting_name: UserInterface::PREF_IS_EMAIL_VERIFIED) ? 'Yes' : 'No',
                 $user->getPreference(setting_name: UserInterface::PREF_LANGUAGE),
                 $user->getPreference(setting_name: UserInterface::PREF_TIME_ZONE),
+                $user->getPreference(setting_name: UserInterface::PREF_CONTACT_METHOD),
                 $registered,
                 $last_login,
             ]);

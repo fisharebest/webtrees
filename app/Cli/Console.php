@@ -29,6 +29,11 @@ use function parse_ini_file;
 
 final class Console extends Application
 {
+    public function __construct()
+    {
+        parent::__construct(Webtrees::NAME, Webtrees::VERSION);
+    }
+
     public function loadCommands(): self
     {
         $commands = glob(pattern: __DIR__ . '/Commands/*.php') ?: [];

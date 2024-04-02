@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Composer\Console\Input\InputOption;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -43,12 +42,14 @@ class UserCreate extends Command
     {
         $this
             ->setName(name: 'user-create')
-            ->setDescription(description: 'Create a new user account')
-            ->addOption(name: 'admin', shortcut: 'a', mode: InputOption::VALUE_NONE, description: 'Make the new user an administrator')
-            ->addOption(name: 'username', shortcut: 'u', mode: InputOption::VALUE_REQUIRED, description: 'The username of the new user')
-            ->addOption(name: 'realname', shortcut: 'r', mode: InputOption::VALUE_REQUIRED, description: 'The real name of the new user')
-            ->addOption(name: 'email', shortcut: 'e', mode: InputOption::VALUE_REQUIRED, description: 'The email of the new user')
-            ->addOption(name: 'password', shortcut: 'p', mode: InputOption::VALUE_OPTIONAL, description: 'The password of the new user');
+            ->setDescription(description: 'Create a new user')
+            ->addOption(name: 'username', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The username of the new user')
+            ->addOption(name: 'realname', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The real name of the new user')
+            ->addOption(name: 'email', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The email of the new user')
+            ->addOption(name: 'password', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'The password of the new user')
+            ->addOption(name: 'timezone', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'Set the timezone', default: 'UTC')
+            ->addOption(name: 'language', shortcut: null, mode: InputOption::VALUE_REQUIRED, description: 'Set the language', default: 'en-US')
+            ->addOption(name: 'admin', shortcut: null, mode: InputOption::VALUE_NONE, description: 'Make the new user an administrator');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -60,26 +61,33 @@ class UserCreate extends Command
         $email    = $input->getOption(name: 'email');
         $password = $input->getOption(name: 'password');
         $admin    = (bool) $input->getOption(name: 'admin');
+        $timezone = $input->getOption(name: 'timezone');
+        $language = $input->getOption(name: 'language');
 
-        $missing = false;
+        $errors = false;
 
         if ($username === null) {
             $io->error(message: 'Missing required option: --username');
-            $missing = true;
+            $errors = true;
         }
 
         if ($realname === null) {
             $io->error(message: 'Missing required option: --realname');
-            $missing = true;
+            $errors = true;
         }
 
         if ($email === null) {
             $io->error(message: 'Missing required option: --email');
-            $missing = true;
+            $errors = true;
         }
 
-        if ($missing) {
-            return Command::FAILURE;
+        if ($timezone === null) {
+            $io->error(message: 'Missing required option: --timezone');
+            $errors = true;
+        }
+
+        if ($errors) {
+            return Command::INVALID;
         }
 
         $user = $this->user_service->findByUserName(user_name: $username);
@@ -104,8 +112,11 @@ class UserCreate extends Command
         }
 
         $user = $this->user_service->create(user_name: $username, real_name:$realname, email: $email, password: $password);
+        $user->setPreference(setting_name: UserInterface::PREF_TIME_ZONE, setting_value: $timezone);
+        $user->setPreference(setting_name: UserInterface::PREF_LANGUAGE, setting_value: $language);
         $user->setPreference(setting_name: UserInterface::PREF_IS_ACCOUNT_APPROVED, setting_value: '1');
         $user->setPreference(setting_name: UserInterface::PREF_IS_EMAIL_VERIFIED, setting_value: '1');
+        $user->setPreference(setting_name: UserInterface::PREF_CONTACT_METHOD, setting_value: 'messaging');
         $io->success('User ' . $user->id() . ' created.');
 
         if ($admin) {
