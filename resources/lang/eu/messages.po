@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-03-31 08:11+0000\n"
+"PO-Revision-Date: 2024-04-03 12:17+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -1278,7 +1278,7 @@ msgstr "Gertakizuna gehitu"
 #: resources/views/family-page-grandparents.phtml:44
 #: resources/views/modules/relatives/tab.phtml:107
 msgid "Add a father"
-msgstr "Aita berri bat gehitu"
+msgstr "Zuhaitzean ez dagoen aita sartu"
 
 #: resources/views/modules/favorites/favorites.phtml:47
 #: resources/views/modules/favorites/favorites.phtml:56
@@ -1320,7 +1320,7 @@ msgstr "Multimedia artxibo berri bat sartu"
 #: resources/views/family-page-grandparents.phtml:74
 #: resources/views/modules/relatives/tab.phtml:114
 msgid "Add a mother"
-msgstr "Bertze ama bat sartu"
+msgstr "Zuhaitzean ez dagoen ama sartu"
 
 #: resources/views/individual-page-menu.phtml:45
 msgid "Add a name"
