@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -77,6 +78,9 @@ use Illuminate\Support\Collection;
                         <?php elseif ($row->record->tag() === Repository::RECORD_TYPE) : ?>
                             <?= view('icons/repository') ?>
                             <span class="visually-hidden"><?= I18N::translate('Repository') ?></span>
+                        <?php elseif ($row->record->tag() === Location::RECORD_TYPE) : ?>
+                            <?= view('icons/location') ?>
+                            <span class="visually-hidden"><?= I18N::translate('Location') ?></span>
                         <?php endif ?>
                     </td>
 
