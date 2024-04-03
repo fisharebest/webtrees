@@ -29,6 +29,14 @@ use function parse_ini_file;
 
 final class Console extends Application
 {
+    private const COMMANDS = [
+        Commands\CompilePoFiles::class,
+        Commands\TreeCreate::class,
+        Commands\TreeList::class,
+        Commands\UserCreate::class,
+        Commands\UserList::class,
+    ];
+
     public function __construct()
     {
         parent::__construct(Webtrees::NAME, Webtrees::VERSION);
@@ -36,12 +44,8 @@ final class Console extends Application
 
     public function loadCommands(): self
     {
-        $commands = glob(pattern: __DIR__ . '/Commands/*.php') ?: [];
-
-        foreach ($commands as $command) {
-            $class = __NAMESPACE__ . '\\Commands\\' . basename(path: $command, suffix: '.php');
-
-            $this->add(Registry::container()->get($class));
+        foreach (self::COMMANDS as $command) {
+            $this->add(Registry::container()->get($command));
         }
 
         return $this;
