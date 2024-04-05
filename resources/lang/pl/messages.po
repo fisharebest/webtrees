@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2023-05-02 15:47+0000\n"
-"Last-Translator: Maciej Bator <maciej@bator.com.pl>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"PO-Revision-Date: 2024-04-07 07:11+0000\n"
+"Last-Translator: Zen0bi1 <tymolewski@gmail.com>\n"
+"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -2558,7 +2560,7 @@ msgstr "Białoruś"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:154
 msgid "Belgian Chocolate"
-msgstr "Belgian Chocolate"
+msgstr "Belgijska Czekolada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
@@ -2902,12 +2904,12 @@ msgstr "Bloki"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:156
 msgid "Blue Lagoon"
-msgstr "Blue Lagoon"
+msgstr "Błękinta Laguna"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:158
 msgid "Blue Marine"
-msgstr "Blue Marine"
+msgstr "Morski Niebieski"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:67
@@ -3289,7 +3291,7 @@ msgstr "Kanada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Nie można zapisać w katalogu \"%s\"."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3786,12 +3788,12 @@ msgstr "Wyspy Kokosowe (Keelinga)"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:160
 msgid "Coffee and Cream"
-msgstr "Coffee and Cream"
+msgstr "Kawa z Mlekiem"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:162
 msgid "Cold Day"
-msgstr "Cold Day"
+msgstr "Chłodny Dzień"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:139
@@ -3890,7 +3892,7 @@ msgstr "Połączenie z serwerem bazy danych"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Typ połączenia"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -7132,7 +7134,7 @@ msgstr "Mapy Google"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr "Google™ webmaster tools"
+msgstr "Narzędzia Google™ webmaster"
 
 #: app/Gedcom.php:667
 msgid "Graduation"
@@ -7154,7 +7156,7 @@ msgstr "Grecja"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:164
 msgid "Green Beam"
-msgstr "Green Beam"
+msgstr "Zielony Promień"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:227
@@ -9477,7 +9479,7 @@ msgstr "Informacje medyczne"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:166
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr "Śródziemnomorski"
 
 #: resources/views/setup/step-2-server-checks.phtml:72
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -9515,7 +9517,7 @@ msgstr "Mehr"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:132
 msgid "Melbourne, Australia"
-msgstr "Melbourne, Australia"
+msgstr "Melbern, Australia"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:97
@@ -9546,7 +9548,7 @@ msgstr "Menu"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:168
 msgid "Mercury"
-msgstr "Mercury"
+msgstr "Rtęć"
 
 #: resources/views/admin/trees-duplicates.phtml:41
 msgid "Merge"
@@ -10766,7 +10768,7 @@ msgstr "Najstarsza matka"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:172
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Oliwia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:387
@@ -11191,7 +11193,7 @@ msgstr "Wyrażenie"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:174
 msgid "Pink Plastic"
-msgstr "Pink Plastic"
+msgstr "Różowy Plastik"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:393
@@ -12362,7 +12364,7 @@ msgstr "safar"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:176
 msgid "Sage"
-msgstr "Sage"
+msgstr "Szałwia"
 
 #: app/Statistics/Service/CountryService.php:95
 msgid "Saint Barthélemy"
@@ -13023,7 +13025,7 @@ msgstr "szwat"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:178
 msgid "Shiny Tomato"
-msgstr "Shiny Tomato"
+msgstr "Błyszczący Pomidor"
 
 #: resources/views/help/date.phtml:37 resources/views/help/date.phtml:75
 #: resources/views/help/date.phtml:113
@@ -14560,7 +14562,7 @@ msgstr "Brakuje parametru „%s”."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Parametr \"path\" jest niepoprawny."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14787,7 +14789,7 @@ msgstr "Brak faktów dla tej osoby."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Nie ma osób z nazwiskiem \"%s\""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15174,7 +15176,7 @@ msgstr "Ta strona pozwala na ominięcie normalnych formularzy edycji i edytowani
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Strona została usunięta."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17167,12 +17169,12 @@ msgstr "Zamknij"
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr "clouds"
+msgstr "chmury"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr "colors"
+msgstr "kolory"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:277
@@ -17202,7 +17204,7 @@ msgstr "Kontynuuj"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "kopia"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17384,7 +17386,7 @@ msgstr "Eksportuj plik"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "wyciąg"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19513,7 +19515,7 @@ msgstr "Lista"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokalny"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19590,7 +19592,7 @@ msgstr "użytkownicy"
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr "minimal"
+msgstr "minimalny"
 
 #: app/Elements/RoleInEvent.php:81 app/Services/RelationshipService.php:350
 msgid "mother"
@@ -19723,7 +19725,7 @@ msgstr "dziecko siostry żony"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "sieć"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19888,7 +19890,7 @@ msgstr "z"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "online"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -19944,7 +19946,7 @@ msgstr "procentowa"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "kopia"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
