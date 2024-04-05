@@ -153,6 +153,45 @@ use Fisharebest\Webtrees\View;
             </div>
         </div>
     </div>
+	
+	<!-- SHOW_SOURCE_DETAIL_TOGGLES -->
+    <div class="row mb-3">
+        <div class="col-form-label col-sm-4">
+            <label for="SHOW_SOURCE_DETAIL_TOGGLES">
+                <?= /* I18N: A configuration setting */ I18N::translate('Show source detail toggles in facts and events tables') ?>
+            </label>
+            <div class="hidden-xs">
+                <span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+                <span class="badge members"><?= I18N::translate('members') ?></span>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <?= view('components/select', ['name' => 'SHOW_SOURCE_DETAIL_TOGGLES', 'selected' => $tree->getPreference('SHOW_SOURCE_DETAIL_TOGGLES'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
+            <div class="form-text">
+                <?= /* I18N: Help text for the “Show source detail toggles in facts and events tables” configuration setting */ I18N::translate('This option will display the arrow toggles to expand source details in facts and events tables for individuals and families. This will override any automatic display of source details.') ?>
+            </div>
+        </div>
+    </div>
+
+	<!-- SHOW_SOURCE_TITLES -->
+    <div class="row mb-3">
+        <div class="col-form-label col-sm-4">
+            <label for="SHOW_SOURCE_TITLES">
+                <?= /* I18N: A configuration setting */ I18N::translate('Show source titles in facts and events tables') ?>
+            </label>
+            <div class="hidden-xs">
+                <span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+                <span class="badge members"><?= I18N::translate('members') ?></span>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <?= view('components/select', ['name' => 'SHOW_SOURCE_TITLES', 'selected' => $tree->getPreference('SHOW_SOURCE_TITLES'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
+            <div class="form-text">
+                <?= /* I18N: Help text for the “Show source titles in facts and events tables” configuration setting */ I18N::translate('This option will display the source titles in facts and events tables for individuals and families. If not allowed, no source details will be available, and the source title will be replaced with PRIVATE.') ?>
+            </div>
+        </div>
+    </div>
+	
     <h2><?= /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions') ?></h2>
     <p>
         <?= /* I18N: Privacy restrictions are RESN tags in GEDCOM. */ I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used.') ?>
@@ -344,7 +383,9 @@ use Fisharebest\Webtrees\View;
     var hideLivePeople = parseInt($('[name=HIDE_LIVE_PEOPLE]').val(), 10);
     var showLivingNames = parseInt($('[name=SHOW_LIVING_NAMES]').val(), 10);
     var showPrivateRelationships = parseInt($('[name=SHOW_PRIVATE_RELATIONSHIPS]').val(), 10);
-
+	var showSourceDetailToggles = parseInt($('[name=SHOW_SOURCE_DETAIL_TOGGLES]').val(), 10);
+	var showSourceTitles = parseInt($('[name=SHOW_SOURCE_TITLES]').val(), 10);
+	
     setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'visitors', requireAuthentication === 0);
     setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'members', true);
 
@@ -360,11 +401,17 @@ use Fisharebest\Webtrees\View;
 
     setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'visitors', requireAuthentication === 0 && showPrivateRelationships >= 1);
     setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'members', showPrivateRelationships >= 1);
+
+	setPrivacyFeedback('[name=SHOW_SOURCE_DETAIL_TOGGLES]', 'visitors', requireAuthentication === 0 && showSourceDetailToggles === 0);
+    setPrivacyFeedback('[name=SHOW_SOURCE_DETAIL_TOGGLES]', 'members', true);
+	
+	setPrivacyFeedback('[name=SHOW_SOURCE_TITLES]', 'visitors', requireAuthentication === 0 && showSourceTitles === 0);
+    setPrivacyFeedback('[name=SHOW_SOURCE_TITLES]', 'members', true);	
   }
 
   // Activate the privacy feedback labels.
   updatePrivacyFeedback();
-  $('[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]').on('change', function () {
+  $('[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS], [name=SHOW_SOURCE_DETAIL_TOGGLES], [name=SHOW_SOURCE_TITLES]').on('change', function () {
     updatePrivacyFeedback();
   });
 
