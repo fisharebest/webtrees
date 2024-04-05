@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-05-02 15:47+0000\n"
-"Last-Translator: Maciej Bator <maciej@bator.com.pl>\n"
+"PO-Revision-Date: 2024-04-06 21:11+0000\n"
+"Last-Translator: Zen0bi1 <tymolewski@gmail.com>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pl/>\n"
 "Language: pl\n"
@@ -2633,7 +2633,7 @@ msgstr "Białoruś"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:157
 msgid "Belgian Chocolate"
-msgstr "Belgian Chocolate"
+msgstr "Belgijska Czekolada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
@@ -2984,12 +2984,12 @@ msgstr "Bloki"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:159
 msgid "Blue Lagoon"
-msgstr "Blue Lagoon"
+msgstr "Błękinta Laguna"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:161
 msgid "Blue Marine"
-msgstr "Blue Marine"
+msgstr "Morski Niebieski"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:67 app/GedcomCode/GedcomCodeTemp.php:267
@@ -3889,12 +3889,12 @@ msgstr "Wyspy Kokosowe (Keelinga)"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:163
 msgid "Coffee and Cream"
-msgstr "Coffee and Cream"
+msgstr "Kawa z Mlekiem"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
 msgid "Cold Day"
-msgstr "Cold Day"
+msgstr "Chłodny Dzień"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:138
@@ -7213,7 +7213,7 @@ msgstr "Google™ Analytics"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr "Google™ webmaster tools"
+msgstr "Narzędzia Google™ webmaster"
 
 #. I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:1207 app/GedcomTag.php:733
@@ -7236,7 +7236,7 @@ msgstr "Grecja"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:167
 msgid "Green Beam"
-msgstr "Green Beam"
+msgstr "Zielony Promień"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:225
@@ -9517,7 +9517,7 @@ msgstr "Stan zdrowia"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:169
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr "Śródziemnomorski"
 
 #: resources/views/setup/step-2-server-checks.phtml:70
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -9555,7 +9555,7 @@ msgstr "Mehr"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:132 app/GedcomCode/GedcomCodeTemp.php:462
 msgid "Melbourne, Australia"
-msgstr "Melbourne, Australia"
+msgstr "Melbern, Australia"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:102
@@ -9586,7 +9586,7 @@ msgstr "Menu"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:171
 msgid "Mercury"
-msgstr "Mercury"
+msgstr "Rtęć"
 
 #: resources/views/admin/trees-duplicates.phtml:39
 msgid "Merge"
@@ -10744,7 +10744,7 @@ msgstr "Najstarsza matka"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:175
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Oliwia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:385
@@ -11167,7 +11167,7 @@ msgstr "Fotografia"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
 msgid "Pink Plastic"
-msgstr "Pink Plastic"
+msgstr "Różowy Plastik"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:391
@@ -12404,7 +12404,7 @@ msgstr "safar"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:179
 msgid "Sage"
-msgstr "Sage"
+msgstr "Szałwia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:441
@@ -13036,7 +13036,7 @@ msgstr "szwat"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:181
 msgid "Shiny Tomato"
-msgstr "Shiny Tomato"
+msgstr "Błyszczący Pomidor"
 
 #. I18N: gedcom tag _SUBQ
 #: app/GedcomTag.php:1223
@@ -17340,12 +17340,12 @@ msgstr "Zamknij"
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr "clouds"
+msgstr "chmury"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr "colors"
+msgstr "kolory"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:245
@@ -19717,7 +19717,7 @@ msgstr "użytkownicy"
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr "minimal"
+msgstr "minimalny"
 
 #: app/Functions/Functions.php:620
 msgid "mother"
