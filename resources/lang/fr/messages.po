@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2023-10-05 19:32+0000\n"
-"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
+"PO-Revision-Date: 2024-04-07 07:11+0000\n"
+"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17173,7 +17174,7 @@ msgstr "continuer"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "copie"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17355,7 +17356,7 @@ msgstr "exporter le fichier"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "extrait"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19857,7 +19858,7 @@ msgstr "de"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "en ligne"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -19913,7 +19914,7 @@ msgstr "pourcentage"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "photocopie"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
