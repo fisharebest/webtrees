@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-02-23 18:07+0000\n"
+"PO-Revision-Date: 2024-04-07 07:11+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
-"Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/nb_NO/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3266,7 +3267,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Kan ikke skrive til mappen “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3866,7 +3867,7 @@ msgstr "Forbindelse til database-server"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Tilkoblingstype"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -14534,7 +14535,7 @@ msgstr "Parameteren “%s” mangler."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Parameteren “bane” er ugyldig."
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -14760,7 +14761,7 @@ msgstr "Det finnes ingen fakta om denne personen."
 #: app/Module/IndividualListModule.php:224
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Det finnes ingen personer med etternavnet “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15145,7 +15146,7 @@ msgstr "Denne siden lar deg redigere GEDCOM-dataene direkte, uten å gå gjennom
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Denne siden har blitt slettet."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17169,7 +17170,7 @@ msgstr "fortsett"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "kopi"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17351,7 +17352,7 @@ msgstr "eksporter fil"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "utdrag"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19479,7 +19480,7 @@ msgstr "liste"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokalt"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19688,7 +19689,7 @@ msgstr "nevø/niese"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "nettverk"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19853,7 +19854,7 @@ msgstr "av"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "på nett"
 
 #: app/Services/RelationshipService.php:353
 msgid "parent"
@@ -19909,7 +19910,7 @@ msgstr "prosent"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "fotokopi"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
