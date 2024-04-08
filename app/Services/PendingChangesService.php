@@ -307,7 +307,7 @@ class PendingChangesService
 
         if ($to !== '') {
             // before end of the day
-            $to_time = DateTimeImmutable::createFromFormat('!Y-m-d', $from, $tz)
+            $to_time = DateTimeImmutable::createFromFormat('!Y-m-d', $to, $tz)
                 ->add(new DateInterval('P1D'))
                 ->setTimezone($utc)
                 ->format('Y-m-d H:i:s');
