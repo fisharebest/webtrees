@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: Welsh (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2023-12-30 18:15+0000\n"
+"PO-Revision-Date: 2024-04-08 16:59+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
-"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\n"
+"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/cy/>\n"
 "Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
+"(n==3) ? 3 :(n==6) ? 4 : 5;\n"
 "X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
@@ -3338,7 +3340,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Methu ysgrifennu i ffolder “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3942,7 +3944,7 @@ msgstr "Cysylltiad â gweinydd cronfa ddata"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Math o gysylltiad"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -14618,7 +14620,7 @@ msgstr "Mae'r paramedr “%s” ar goll."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Mae'r paramedr \"path\" yn annilys."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14848,7 +14850,7 @@ msgstr "Nid oes unrhyw ffeithiau i'r unigolyn hwn."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Nid oes unigolion gyda'r cyfenw “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15241,7 +15243,7 @@ msgstr "Mae'r dudalen hon yn caniatáu i chi osgoi'r ffurflenni arferol, a golyg
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Mae'r dudalen hon wedi'i dileu."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -16956,7 +16958,7 @@ msgstr "enw mabwysiedig"
 
 #: app/Elements/GeneatiqueAct.php:44
 msgid "after"
-msgstr ""
+msgstr "ar ôl"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:205
@@ -17044,7 +17046,7 @@ msgstr "yn ôl i'r brig"
 
 #: app/Elements/GeneatiqueAct.php:43
 msgid "before"
-msgstr ""
+msgstr "cyn"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:201
@@ -17281,7 +17283,7 @@ msgstr "parhau"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "copïo"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17463,7 +17465,7 @@ msgstr "allforio ffeil"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "echdynnu/cyfran"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19595,7 +19597,7 @@ msgstr "rhestr"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lleol"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19808,7 +19810,7 @@ msgstr "nai/nith"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "rhwydwaith"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19973,7 +19975,7 @@ msgstr "o"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "ar-lein"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -20029,7 +20031,7 @@ msgstr "canran"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "ffotocopi"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
