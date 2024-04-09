@@ -52,7 +52,7 @@
         "guzzlehttp/guzzle": "7.8.1",
         "illuminate/database": "11.1.1",
         "illuminate/support": "11.1.1",
-        "intervention/image": "2.7.2",
+        "intervention/image": "3.5.1",
         "io-developer/php-whois": "4.1.10",
         "league/commonmark": "2.4.2",
         "league/flysystem": "3.26.0",
