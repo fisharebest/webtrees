@@ -57,7 +57,7 @@ class TreeExport extends Command
     private function autoCompleteTreeName(CompletionInput $input): array
     {
         return DB::table('tree')
-            ->where('tree_name', 'LIKE', addcslashes($input->getCompletionValue(), '%_\\') .'%')
+            ->where('tree_name', 'LIKE', addcslashes($input->getCompletionValue(), '%_\\') . '%')
             ->pluck('name')
             ->all();
     }

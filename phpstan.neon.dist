@@ -6,9 +6,6 @@ parameters:
         - php
         - phtml
 
-    ignoreErrors:
-        - '#^Access to an undefined property object::\$[A-Za-z0-9_]+\.$#'
-
     level: max
 
     paths:
