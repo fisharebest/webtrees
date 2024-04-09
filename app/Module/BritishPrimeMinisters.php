@@ -135,6 +135,8 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
                     "1 EVEN David Cameron\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 11 MAY 2010 TO 13 JUL 2016",
                     "1 EVEN Theresa May\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 13 JUL 2016 TO 24 JUL 2019",
                     "1 EVEN Boris Johnson\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 24 JUL 2019",
+                    "1 EVEN Mary Elizabeth 'Liz' Truss\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 06 SEP 2022 TO 25 OCT 2022",
+                    "1 EVEN Rishi Sunak\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 25 OCT 2022\n2 NOTE Incumbent",
                 ]);
 
             default:
