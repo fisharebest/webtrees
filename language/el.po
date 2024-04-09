@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-23 12:38+0000\n"
-"Last-Translator: jpeppas <jpeppas@gmail.com>\n"
+"PO-Revision-Date: 2024-04-10 07:11+0000\n"
+"Last-Translator: Panagiotis Klimis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/el/>\n"
 "Language: el\n"
@@ -1148,31 +1148,31 @@ msgstr "Αμπα, Νιγηρία"
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Αμπάν"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Αμπάν"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Αμπάν"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:126
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Αμπάν"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Αμπάν"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
@@ -1217,73 +1217,73 @@ msgstr "Άκρα, Γκάνα"
 #: app/Date/JewishDate.php:141
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Αδάρ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "Αδάρ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:179
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Αδάρ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Αδάρ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Αδάρ Α'"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:216
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "Αδάρ Α'"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:178
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Αδάρ Α'"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Αδάρ Α'"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:142
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Αδάρ Β'"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Αδάρ Β'"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:180
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Αδάρ Β'"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:104
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Αδάρ Β'"
 
 #: edit_interface.php:2013 index_edit.php:329 index_edit.php:346
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:170
@@ -2619,7 +2619,7 @@ msgstr "Μπαρμπάντος"
 #. I18N: gedcom tag BASM
 #: app/GedcomTag.php:198 modules_v3/missing_facts_report/report.xml:18
 msgid "Bat mitzvah"
-msgstr ""
+msgstr "Μπατ μιτζβά"
 
 #. I18N: Name of a module
 #: app/Module/BatchUpdateModule.php:77 app/Module/BatchUpdateModule.php:184
@@ -3075,7 +3075,7 @@ msgstr "Μπρίσμπεϊν, Αυστραλία"
 #. I18N: gedcom tag _BRTM
 #: app/GedcomTag.php:1088
 msgid "Brit milah"
-msgstr ""
+msgstr "Μπριτ Μιλά"
 
 #: app/GedcomTag.php:1782
 msgid "Brit milah of a brother"
@@ -3122,25 +3122,25 @@ msgstr "Αδελφός"
 #: app/Date/FrenchDate.php:89
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Μπρυμαίρ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Μπρυμαίρ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Μπρυμαίρ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Μπρυμαίρ"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6706
@@ -5228,49 +5228,49 @@ msgstr "Ντέι"
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Ντου αλ-Χιτζά"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Ντου αλ-Χιτζά"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Ντου αλ-Χιτζά"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Ντου αλ-Χιτζά"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Ντου αλ-Καντά"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Ντου αλ-Καντά"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:132
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Ντου αλ-Καντά"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:68
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Ντου αλ-Καντά"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:71
@@ -5429,12 +5429,12 @@ msgstr "Διπλότυπο όνομα χρήστη. Υπάρχει ήδη χρή
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
-"Κάθε πηγή καταγράφει συγκεκριμένα συμβάντα, γενικά για ένα δεδομένο εύρος "
+"<p>Κάθε πηγή καταγράφει συγκεκριμένα συμβάντα, γενικά για ένα δεδομένο εύρος "
 "ημερομηνιών και για μια περιοχή δικαιοδοσίας. Για παράδειγμα, η Απογραφή "
 "καταγράφει γεγονότα απογραφής και η εκκλησία καταγράφει γεγονότα γέννησης, "
-"γάμου και θανάτου. <br> <br> Επιλέξτε τα συμβάντα που καταγράφονται από "
-"αυτήν την πηγή από τη λίστα των παρεχόμενων συμβάντων. Η ημερομηνία πρέπει "
-"να καθορίζεται σε μορφή εύρους όπως <i> ΑΠΟ 1900 - 1910 </i>. Η περιοχή "
+"γάμου και θανάτου. </p> Επιλέξτε τα συμβάντα που καταγράφονται από αυτήν την "
+"πηγή από τη λίστα των παρεχόμενων συμβάντων. Η ημερομηνία πρέπει να "
+"καθορίζεται σε μορφή εύρους όπως <i> ΑΠΟ 1900 - 1910 </i>. Η περιοχή "
 "δικαιοδοσίας είναι το όνομα της χαμηλότερης δικαιοδοσίας που περιλαμβάνει "
 "όλες τις θέσεις χαμηλότερου επιπέδου που αναφέρονται σε αυτήν την πηγή. Για "
 "παράδειγμα, το \"Oneida, Idaho, USA\" θα χρησιμοποιείται ως πηγή "
@@ -5632,25 +5632,25 @@ msgstr "Υψόμετρο"
 #: app/Date/JewishDate.php:148
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Έλουλ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Έλουλ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Έλουλ"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:110
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Έλουλ"
 
 #. I18N: gedcom tag EMAI
 #. I18N: gedcom tag EMAIL
@@ -5790,31 +5790,31 @@ msgstr ""
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Εσφ"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Εσφαντ"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "Εσφαντ"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:130
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Εσφαντ"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Εσφαντ"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1184
@@ -10161,7 +10161,7 @@ msgstr "Κανένα"
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:205
 msgid "Nonidi"
-msgstr ""
+msgstr "Ένατη"
 
 #. I18N: time format “%A” - exactly 12:00:00
 #: app/Functions/FunctionsDate.php:103
