@@ -14,6 +14,76 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Census/CensusColumnRelationToHead.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Parameter \\$filename of class Fisharebest\\\\Localization\\\\Translation constructor expects string, string\\|false given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/CompilePoFiles.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$path of function basename expects string, string\\|false given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/CompilePoFiles.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$path of function dirname expects string, string\\|false given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/CompilePoFiles.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$name of method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService\\:\\:create\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/TreeCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$title of method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService\\:\\:create\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/TreeCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Cli\\\\Commands\\\\TreeExport\\:\\:autoCompleteTreeName\\(\\) return type has no value type specified in iterable type array\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/TreeExport.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$email of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:create\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/UserCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$email of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:findByEmail\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/UserCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$password of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:create\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/UserCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$real_name of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:create\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/UserCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$setting_value of method Fisharebest\\\\Webtrees\\\\User\\:\\:setPreference\\(\\) expects string, mixed given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Cli/Commands/UserCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$user_name of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:create\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/UserCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\$user_name of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:findByUserName\\(\\) expects string, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Commands/UserCreate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$command of method Symfony\\\\Component\\\\Console\\\\Application\\:\\:add\\(\\) expects Symfony\\\\Component\\\\Console\\\\Command\\\\Command, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Cli/Console.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$id of method Fisharebest\\\\Webtrees\\\\Container\\<T of object\\>\\:\\:get\\(\\) expects class\\-string\\<T of object\\>, string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Container.php',
@@ -89,6 +159,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Fact.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$f_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/FamilyFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$f_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/FamilyFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/FamilyFactory.php',
@@ -104,6 +184,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/FamilyFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/GedcomRecordFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/GedcomRecordFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/GedcomRecordFactory.php',
@@ -112,6 +202,16 @@ $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/GedcomRecordFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/HeaderFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/HeaderFactory.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Header but returns Fisharebest\\\\Webtrees\\\\Header\\|null\\.$#',
@@ -129,6 +229,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/IdFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$i_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/IndividualFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$i_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/IndividualFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Individual but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/IndividualFactory.php',
@@ -137,6 +247,16 @@ $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/IndividualFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/LocationFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/LocationFactory.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Location but returns Fisharebest\\\\Webtrees\\\\Location\\|null\\.$#',
@@ -149,6 +269,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/LocationFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/MediaFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/MediaFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Media but returns Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/MediaFactory.php',
@@ -159,6 +289,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/MediaFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/NoteFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/NoteFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Note but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/NoteFactory.php',
@@ -167,6 +307,16 @@ $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\NoteFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/NoteFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/RepositoryFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/RepositoryFactory.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#',
@@ -189,6 +339,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/RouteFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SharedNoteFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SharedNoteFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\SharedNote but returns Fisharebest\\\\Webtrees\\\\SharedNote\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/SharedNoteFactory.php',
@@ -204,6 +364,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/SlugFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$s_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SourceFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$s_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SourceFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Source but returns Fisharebest\\\\Webtrees\\\\Source\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/SourceFactory.php',
@@ -214,6 +384,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Factories/SourceFactory.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SubmissionFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SubmissionFactory.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Submission but returns Fisharebest\\\\Webtrees\\\\Submission\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/SubmissionFactory.php',
@@ -222,6 +402,16 @@ $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmissionFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Factories/SubmissionFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SubmitterFactory.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/SubmitterFactory.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Submitter but returns Fisharebest\\\\Webtrees\\\\Submitter\\|null\\.$#',
@@ -409,6 +599,21 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/CalendarEvents.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom\\.$#',
+    'count' => 11,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/CheckTree.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$type\\.$#',
+    'count' => 38,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/CheckTree.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 46,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/CheckTree.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/CheckTree.php',
@@ -419,9 +624,29 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/ControlPanel.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/DataFixData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/DataFixData.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Module\\\\ModuleDataFixInterface\\>\\:\\:get\\(\\) expects int, string given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/DataFixSelect.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/DataFixUpdateAll.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/DataFixUpdateAll.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$xref on object\\|null\\.$#',
@@ -479,6 +704,31 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/FaviconIco.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$i_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/FixLevel0MediaData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$i_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/FixLevel0MediaData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_file\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/FixLevel0MediaData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/FixLevel0MediaData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/FixLevel0MediaData.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/FixLevel0MediaData.php',
@@ -509,74 +759,44 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/FixLevel0MediaData.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$chunk_data\\.$#',
+    'count' => 6,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/GedcomLoad.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom_chunk_id\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/GedcomLoad.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/GedcomLoad.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method createFact\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_file\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
+    'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method facts\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
+    'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method firstImageFile\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_id\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
+    'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method tree\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
+    'message' => '#^Access to an undefined property object\\:\\:\\$media_folder\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
+    'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Cannot call method updateRecord\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot call method xref\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$record of method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:acceptRecord\\(\\) expects Fisharebest\\\\Webtrees\\\\GedcomRecord, Fisharebest\\\\Webtrees\\\\Media\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Parameter \\#2 \\$tree of method Fisharebest\\\\Webtrees\\\\Contracts\\\\MediaFactoryInterface\\:\\:make\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, Fisharebest\\\\Webtrees\\\\Tree\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsAction.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access offset 0 on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsData.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access offset 0 on non\\-empty\\-array\\<int, string\\>\\|false\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsData.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access offset 1 on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsData.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Cannot access offset 2 on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsData.php',
-];
-$ignoreErrors[] = [
-    'message' => '#^Unable to resolve the template type TMakeKey in call to method static method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:make\\(\\)$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Http/RequestHandlers/ImportThumbnailsData.php',
+    'message' => '#^Access to an undefined property object\\:\\:\\$multimedia_file_refn\\.$#',
+    'count' => 6,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access offset \'0\' on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
@@ -719,9 +939,84 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesAcceptChange.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$change_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$change_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$old_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$status\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$change_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$old_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$status\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesLogDownload.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: string, Closure\\(object\\)\\: non\\-falsy\\-string given\\.$#',
@@ -939,9 +1234,74 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$ip_address\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$log_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$log_message\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$log_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$log_type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$ip_address\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$log_message\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$log_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$log_type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsDownload.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/SiteLogsDownload.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: string, Closure\\(object\\)\\: non\\-falsy\\-string given\\.$#',
@@ -974,6 +1334,31 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/TreePreferencesAction.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$label\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/TreePrivacyPage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/TreePrivacyPage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tag_label\\.$#',
+    'count' => 4,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/TreePrivacyPage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tag_type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/TreePrivacyPage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/TreePrivacyPage.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/TreePrivacyPage.php',
@@ -1002,6 +1387,51 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#2 \\$callback of function usort expects callable\\(array\\<Fisharebest\\\\Webtrees\\\\Individual\\>\\|Illuminate\\\\Support\\\\Collection\\<int\\|string, Fisharebest\\\\Webtrees\\\\Individual\\>, array\\<Fisharebest\\\\Webtrees\\\\Individual\\>\\|Illuminate\\\\Support\\\\Collection\\<int\\|string, Fisharebest\\\\Webtrees\\\\Individual\\>\\)\\: int, Closure\\(Illuminate\\\\Support\\\\Collection, Illuminate\\\\Support\\\\Collection\\)\\: int\\<\\-1, 1\\> given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/UnconnectedPage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$active_at\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$email\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$language\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$real_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$registered_at\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_id\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$verified\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$verified_by_admin\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/UserListData.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Unable to resolve the template type TGetDefault in call to method Illuminate\\\\Support\\\\Collection\\<string,string\\>\\:\\:get\\(\\)$#',
@@ -1067,6 +1497,16 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$xref of method Fisharebest\\\\Webtrees\\\\Contracts\\\\GedcomRecordFactoryInterface\\:\\:make\\(\\) expects string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Media.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$interface\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$module_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$access_level on mixed\\.$#',
@@ -1239,9 +1679,39 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FabTheme.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$note\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FamilyTreeFavoritesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FamilyTreeFavoritesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FamilyTreeFavoritesModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FamilyTreeFavoritesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$body\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FamilyTreeNewsModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$subject\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FamilyTreeNewsModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$updated\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FamilyTreeNewsModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
@@ -1369,9 +1839,19 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixCemeteryTag.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixCemeteryTag.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
@@ -1389,9 +1869,19 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixMissingDeaths.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixMissingDeaths.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
@@ -1409,9 +1899,19 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixNameTags.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixNameTags.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
@@ -1424,9 +1924,19 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixPrimaryTag.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixPrimaryTag.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#',
@@ -1439,9 +1949,34 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixWtObjeSortTag.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FixWtObjeSortTag.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$block_id\\.$#',
+    'count' => 4,
+    'path' => __DIR__ . '/app/Module/FrequentlyAskedQuestionsModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$block_order\\.$#',
+    'count' => 4,
+    'path' => __DIR__ . '/app/Module/FrequentlyAskedQuestionsModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom_id\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FrequentlyAskedQuestionsModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$languages\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/FrequentlyAskedQuestionsModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to int\\.$#',
@@ -1492,6 +2027,21 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,string\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, string\\>\\|iterable\\<int, string\\>, Illuminate\\\\Support\\\\Collection\\<int, mixed\\> given\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Module/IndividualFactsTabModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$n_surn\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$n_surname\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$count on mixed\\.$#',
@@ -1899,6 +2449,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/LanguageYiddish.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$row\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/LifespansChartModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\LifespansChartModule\\:\\:findIndividualsByDate\\(\\) should return array\\<string\\> but returns array\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/LifespansChartModule.php',
@@ -2017,6 +2572,31 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#2 \\$length of function array_chunk expects int\\<1, max\\>, int given\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Module/PlaceHierarchyListModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$features\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/PlacesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$change_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/RecentChangesModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{record\\: Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null, time\\: Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampInterface, user\\: Fisharebest\\\\Webtrees\\\\User\\|null\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{record\\: Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null, time\\: Fisharebest\\\\Webtrees\\\\Contracts\\\\TimestampInterface, user\\: Fisharebest\\\\Webtrees\\\\User\\|null\\}&stdClass\\) given\\.$#',
@@ -2209,6 +2789,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/SiteMapModule.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/SlideShowModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/SlideShowModule.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot access property \\$m_gedcom on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/SlideShowModule.php',
@@ -2282,6 +2872,31 @@ $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$total on mixed\\.$#',
     'count' => 11,
     'path' => __DIR__ . '/app/Module/StatisticsChartModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$block_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/StoriesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$individual\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/StoriesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$languages\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/StoriesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$title\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/StoriesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/StoriesModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$block_id on mixed\\.$#',
@@ -2399,14 +3014,49 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/TopSurnamesModule.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
+    'message' => '#^Access to an undefined property object\\:\\:\\$note\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/UserFavoritesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/UserFavoritesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/UserFavoritesModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
     'count' => 1,
+    'path' => __DIR__ . '/app/Module/UserFavoritesModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$body\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/UserJournalModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$subject\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/UserJournalModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$updated\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/UserJournalModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/UserJournalModule.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$created\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Module/UserMessagesModule.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#',
@@ -2504,6 +3154,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Note.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$p_parent_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Place.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$p_place\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Place.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Place.php',
@@ -2542,6 +3202,16 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$text of static method Fisharebest\\\\Webtrees\\\\Soundex\\:\\:russell\\(\\) expects string, string\\|null given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Place.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$latitude\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/PlaceLocation.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$longitude\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/PlaceLocation.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$latitude on object\\|null\\.$#',
@@ -2600,6 +3270,21 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     'message' => '#^Access to an undefined property Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\:\\:\\$generation\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$old_gedcom\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
@@ -2929,6 +3614,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Schema/Migration42.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$max\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Schema/Migration44.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$min\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Schema/Migration44.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/AdminService.php',
@@ -3184,6 +3879,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/GedcomImportService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$module_name\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Services/HomePageService.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:filterActiveBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\|null\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/HomePageService.php',
@@ -3304,6 +4004,36 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/LinkedRecordService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$child_count\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Services/MapDataService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$key\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/MapDataService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$no_coord\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Services/MapDataService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$p_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/MapDataService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$parent_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/MapDataService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$place\\.$#',
+    'count' => 4,
+    'path' => __DIR__ . '/app/Services/MapDataService.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot access property \\$id on mixed\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Services/MapDataService.php',
@@ -3367,6 +4097,36 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$location of method League\\\\Flysystem\\\\FilesystemReader\\:\\:listContents\\(\\) expects string, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/MediaFileService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$footer_order\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$menu_order\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$module_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$sidebar_order\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$status\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tab_order\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface but returns mixed\\.$#',
@@ -3504,6 +4264,31 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/RelationshipService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$f_file\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/SearchService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$i_file\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/SearchService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$m_file\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/SearchService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$o_file\\.$#',
+    'count' => 6,
+    'path' => __DIR__ . '/app/Services/SearchService.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$s_file\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/SearchService.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchFamilyNames\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Family\\> but returns Illuminate\\\\Support\\\\Collection\\<int, mixed\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/SearchService.php',
@@ -3629,6 +4414,11 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/TimeoutService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tree_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/TreeService.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:mapWithKeys\\(\\) expects callable\\(mixed, int\\|string\\)\\: array\\<int\\|string, Fisharebest\\\\Webtrees\\\\Tree\\>, Closure\\(object\\)\\: non\\-empty\\-array\\<int\\|string, Fisharebest\\\\Webtrees\\\\Tree\\> given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/TreeService.php',
@@ -3694,6 +4484,26 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/UserService.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$ip_address\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/SessionDatabaseHandler.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$session_data\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/SessionDatabaseHandler.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$session_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/SessionDatabaseHandler.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/SessionDatabaseHandler.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Site\\:\\:getPreference\\(\\) should return string but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Site.php',
@@ -3719,6 +4529,21 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$age\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$sex\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
@@ -3734,14 +4559,44 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartAge.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\) given\\.$#',
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartBirth.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartBirth.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\) given\\.$#',
     'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartBirth.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartChildren.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartChildren.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartChildren.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartDeath.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartDeath.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\) given\\.$#',
@@ -3759,9 +4614,29 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartDistribution.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartDivorce.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartDivorce.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartDivorce.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartFamilyLargest.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartFamilyLargest.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartFamilyLargest\\:\\:queryRecords\\(\\) should return array\\<object\\> but returns array\\.$#',
@@ -3769,9 +4644,34 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartFamilyLargest.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriage.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{century\\: int, total\\: float\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartMarriage.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$age\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$sex\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{age\\: float, century\\: int, sex\\: mixed\\}&stdClass\\) given\\.$#',
@@ -3789,6 +4689,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Google/ChartMarriageAge.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$century\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartNoChildrenFamilies.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Statistics/Google/ChartNoChildrenFamilies.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartNoChildrenFamilies\\:\\:queryRecords\\(\\) should return array\\<object\\> but returns array\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Google/ChartNoChildrenFamilies.php',
@@ -3799,6 +4709,26 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Repository/ContactRepository.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$fact\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$year\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
@@ -3814,6 +4744,26 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Repository/EventRepository.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$fact\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$year\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{id\\: mixed, year\\: int, fact\\: mixed, type\\: mixed\\}&stdClass\\) given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
@@ -3827,6 +4777,31 @@ $ignoreErrors[] = [
     'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/FamilyDatesRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$age\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$ch1\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$ch2\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$f_numchil\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$family\\.$#',
+    'count' => 5,
+    'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$age on mixed\\.$#',
@@ -3929,9 +4904,19 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Repository/FamilyRepository.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$change_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/GedcomRepository.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to int\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/HitCountRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$days\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot access property \\$days on mixed\\.$#',
@@ -4109,6 +5094,21 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/SurnameTradition/PatrilinealSurnameTradition.php',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tree_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Tree.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tree_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Tree.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tree_title\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Tree.php',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot access property \\$resn on mixed\\.$#',
     'count' => 5,
     'path' => __DIR__ . '/app/Tree.php',
@@ -4147,6 +5147,26 @@ $ignoreErrors[] = [
     'message' => '#^Cannot call method find\\(\\) on mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/TreeUser.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$email\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/User.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$real_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/User.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/User.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/User.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Property Fisharebest\\\\Webtrees\\\\User\\:\\:\\$preferences \\(array\\<string, string\\>\\) does not accept array\\.$#',
@@ -4224,6 +5244,41 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/admin/import-progress.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$child_count\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/admin/locations.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$id\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/admin/locations.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$key\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/admin/locations.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$latitude\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/locations.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$longitude\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/locations.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$no_coord\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/locations.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$place\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/locations.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Argument of an invalid type object supplied for foreach, only iterables are supported\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/admin/locations.phtml',
@@ -4254,6 +5309,16 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/admin/media-upload.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$message\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/admin/trees-check.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tag\\.$#',
+    'count' => 6,
+    'path' => __DIR__ . '/resources/views/admin/trees-check.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method name\\(\\) on Fisharebest\\\\Webtrees\\\\Tree\\|null\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/resources/views/admin/trees-merge.phtml',
@@ -4262,6 +5327,41 @@ $ignoreErrors[] = [
     'message' => '#^Cannot call method title\\(\\) on Fisharebest\\\\Webtrees\\\\Tree\\|null\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/resources/views/admin/trees-merge.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$default_resn_id\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/admin/trees-privacy.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/trees-privacy.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$resn\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/trees-privacy.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$tag_label\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/trees-privacy.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/trees-privacy.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_id\\.$#',
+    'count' => 5,
+    'path' => __DIR__ . '/resources/views/admin/users-table-options.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/admin/users-table-options.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
@@ -4414,9 +5514,29 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/individual-page-images.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$status\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/layouts/administration.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$text\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/layouts/administration.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/resources/views/layouts/administration.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$status\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/layouts/default.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$text\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/layouts/default.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Cannot call method findByInterface\\(\\) on mixed\\.$#',
@@ -4529,9 +5649,69 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/family_nav/sidebar-family.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$block_id\\.$#',
+    'count' => 4,
+    'path' => __DIR__ . '/resources/views/modules/faq/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$block_order\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/modules/faq/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$gedcom_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/faq/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$header\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/faq/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$faqbody\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/modules/faq/show.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$header\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/faq/show.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/modules/faq/show.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$favorite_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$favorite_type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$note\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$title\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$url\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
@@ -4539,9 +5719,59 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$body\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$news_id\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$subject\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$updated\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$background\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/lifespans-chart/chart.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$birth_year\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/modules/lifespans-chart/chart.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$death_year\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/lifespans-chart/chart.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$id\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/modules/lifespans-chart/chart.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$individual\\.$#',
+    'count' => 5,
+    'path' => __DIR__ . '/resources/views/modules/lifespans-chart/chart.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$row\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/lifespans-chart/chart.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#',
@@ -4584,9 +5814,39 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/place-hierarchy/sidebar.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$time\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-list.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 12,
+    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-table.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$time\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-table.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-table.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
@@ -4617,6 +5877,51 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, float given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/modules/sitemap/sitemap-file-xml.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$block_id\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/stories/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$individual\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/stories/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$title\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/stories/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/stories/config.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$individual\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/stories/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$title\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/stories/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$block_id\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/stories/tab.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$story_body\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/stories/tab.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$title\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/stories/tab.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:husband\\(\\)\\.$#',
@@ -4664,9 +5969,69 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/top10_pageviews/list.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$body\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/user-messages/user-messages.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$created\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/user-messages/user-messages.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$message_id\\.$#',
+    'count' => 6,
+    'path' => __DIR__ . '/resources/views/modules/user-messages/user-messages.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$sender\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/modules/user-messages/user-messages.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$subject\\.$#',
+    'count' => 5,
+    'path' => __DIR__ . '/resources/views/modules/user-messages/user-messages.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$body\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/user_blog/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$news_id\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/user_blog/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$subject\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/user_blog/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$updated\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/user_blog/list.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/user_blog/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$fact\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/yahrzeit/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$individual\\.$#',
+    'count' => 5,
+    'path' => __DIR__ . '/resources/views/modules/yahrzeit/list.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$yahrzeit_date\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/yahrzeit/list.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
@@ -4674,9 +6039,59 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/yahrzeit/list.phtml',
 ];
 $ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$fact\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/modules/yahrzeit/table.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$fact_date\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/modules/yahrzeit/table.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$individual\\.$#',
+    'count' => 7,
+    'path' => __DIR__ . '/resources/views/modules/yahrzeit/table.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$yahrzeit_date\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/resources/views/modules/yahrzeit/table.phtml',
+];
+$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/modules/yahrzeit/table.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$change_id\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/pending-changes-page.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$change_time\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/pending-changes-page.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$real_name\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/resources/views/pending-changes-page.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
+    'count' => 5,
+    'path' => __DIR__ . '/resources/views/pending-changes-page.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$user_name\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/pending-changes-page.phtml',
+];
+$ignoreErrors[] = [
+    'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/resources/views/pending-changes-page.phtml',
 ];
 $ignoreErrors[] = [
     'message' => '#^PHPDoc tag @var for variable \\$records has no value type specified in iterable type array\\.$#',

@@ -10,7 +10,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateTreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EmailPreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
@@ -817,12 +816,6 @@ use Illuminate\Support\Collection;
                 <span class="fa-li"><?= view('icons/link') ?></span>
                 <a href="<?= e(route(FixLevel0MediaPage::class)) ?>">
                     <?= I18N::translate('Link media objects to facts and events') ?>
-                </a>
-            </li>
-            <li>
-                <span class="fa-li"><?= view('icons/upload') ?></span>
-                <a href="<?= e(route(ImportThumbnailsPage::class)) ?>">
-                    <?= I18N::translate('Import custom thumbnails from webtrees version 1') ?>
                 </a>
             </li>
         </ul>

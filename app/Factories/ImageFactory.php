@@ -28,11 +28,12 @@ use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
 use Imagick;
-use Intervention\Image\Constraint;
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Intervention\Gif\Exceptions\NotReadableException;
+use Intervention\Image\Drivers\Gd\Driver as GdDriver;
+use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
 use Intervention\Image\ImageManager;
+use Intervention\Image\Interfaces\ImageInterface;
+use InvalidArgumentException;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\UnableToReadFile;
@@ -66,8 +67,6 @@ class ImageFactory implements ImageFactoryInterface
 
     protected const THUMBNAIL_CACHE_TTL = 8640000;
 
-    protected const INTERVENTION_DRIVERS = ['imagick', 'gd'];
-
     public const SUPPORTED_FORMATS = [
         'image/jpeg' => 'jpg',
         'image/png'  => 'png',
@@ -79,42 +78,27 @@ class ImageFactory implements ImageFactoryInterface
 
     /**
      * Send the original file - either inline or as a download.
-     *
-     * @param FilesystemOperator $filesystem
-     * @param string             $path
-     * @param bool               $download
-     *
-     * @return ResponseInterface
      */
     public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface
     {
         try {
             try {
-                $mime_type = $filesystem->mimeType($path);
+                $mime_type = $filesystem->mimeType(path: $path);
             } catch (UnableToRetrieveMetadata) {
                 $mime_type = Mime::DEFAULT_TYPE;
             }
 
-            $filename = $download ? addcslashes(basename($path), '"') : '';
+            $filename = $download ? addcslashes(string: basename(path: $path), characters: '"') : '';
 
-            return $this->imageResponse($filesystem->read($path), $mime_type, $filename);
+            return $this->imageResponse(data: $filesystem->read(location: $path), mime_type: $mime_type, filename: $filename);
         } catch (UnableToReadFile | FilesystemException $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         }
     }
 
     /**
      * Send a thumbnail.
-     *
-     * @param FilesystemOperator $filesystem
-     * @param string             $path
-     * @param int                $width
-     * @param int                $height
-     * @param string             $fit
-     *
-     *
-     * @return ResponseInterface
      */
     public function thumbnailResponse(
         FilesystemOperator $filesystem,
@@ -124,35 +108,30 @@ class ImageFactory implements ImageFactoryInterface
         string $fit
     ): ResponseInterface {
         try {
-            $image = $this->imageManager()->make($filesystem->readStream($path));
-            $image = $this->autorotateImage($image);
-            $image = $this->resizeImage($image, $width, $height, $fit);
+            $mime_type = $filesystem->mimeType(path: $path);
+            $image     = $this->imageManager()->read(input: $filesystem->readStream($path));
+            $image     = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
+            $quality   = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_THUMBNAIL_QUALITY);
+            $data      = $image->encodeByMediaType(type: $mime_type, quality: $quality)->toString();
 
-            $format  = static::SUPPORTED_FORMATS[$image->mime()] ?? 'jpg';
-            $quality = $this->extractImageQuality($image, static::GD_DEFAULT_THUMBNAIL_QUALITY);
-            $data    = (string) $image->encode($format, $quality);
-
-            return $this->imageResponse($data, $image->mime(), '');
-        } catch (NotReadableException $ex) {
-            return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this->imageResponse(data: $data, mime_type: $mime_type, filename: '');
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this
+                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
+        } catch (RuntimeException $ex) {
+            return $this
+                ->replacementImageResponse(text: '.' . pathinfo(path: $path, flags: PATHINFO_EXTENSION))
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this
+                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         }
     }
 
     /**
      * Create a full-size version of an image.
-     *
-     * @param MediaFile $media_file
-     * @param bool      $add_watermark
-     * @param bool      $download
-     *
-     * @return ResponseInterface
      */
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
@@ -160,42 +139,33 @@ class ImageFactory implements ImageFactoryInterface
         $path       = $media_file->filename();
 
         if (!$add_watermark || !$media_file->isImage()) {
-            return $this->fileResponse($filesystem, $path, $download);
+            return $this->fileResponse(filesystem: $filesystem, path: $path, download: $download);
         }
 
         try {
-            $image     = $this->imageManager()->make($filesystem->readStream($path));
-            $image     = $this->autorotateImage($image);
-            $watermark = $this->createWatermark($image->width(), $image->height(), $media_file);
-            $image     = $this->addWatermark($image, $watermark);
-            $filename  = $download ? basename($path) : '';
-            $format    = static::SUPPORTED_FORMATS[$image->mime()] ?? 'jpg';
-            $quality   = $this->extractImageQuality($image, static::GD_DEFAULT_IMAGE_QUALITY);
-            $data      = (string) $image->encode($format, $quality);
+            $mime_type = $media_file->mimeType();
+            $image     = $this->imageManager()->read(input: $filesystem->readStream($path));
+            $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
+            $image     = $this->addWatermark(image: $image, watermark: $watermark);
+            $filename  = $download ? basename(path: $path) : '';
+            $quality   = $this->extractImageQuality(image: $image, default: static::GD_DEFAULT_IMAGE_QUALITY);
+            $data      = $image->encodeByMediaType(type: $mime_type, quality:  $quality)->toString();
 
-            return $this->imageResponse($data, $image->mime(), $filename);
+            return $this->imageResponse(data: $data, mime_type: $mime_type, filename: $filename);
         } catch (NotReadableException $ex) {
-            return $this->replacementImageResponse(pathinfo($path, PATHINFO_EXTENSION))
+            return $this->replacementImageResponse(text: pathinfo(path: $path, flags: PATHINFO_EXTENSION))
                 ->withHeader('x-image-exception', $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
+            return $this->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
                 ->withHeader('x-image-exception', $ex->getMessage());
         }
     }
 
     /**
      * Create a smaller version of an image.
-     *
-     * @param MediaFile $media_file
-     * @param int       $width
-     * @param int       $height
-     * @param string    $fit
-     * @param bool      $add_watermark
-     *
-     * @return ResponseInterface
      */
     public function mediaFileThumbnailResponse(
         MediaFile $media_file,
@@ -211,12 +181,12 @@ class ImageFactory implements ImageFactoryInterface
         $path = $media_file->filename();
 
         try {
-            $mime_type = $filesystem->mimeType($path);
+            $mime_type = $filesystem->mimeType(path: $path);
 
-            $key = implode(':', [
+            $key = implode(separator: ':', array: [
                 $media_file->media()->tree()->name(),
                 $path,
-                $filesystem->lastModified($path),
+                $filesystem->lastModified(path: $path),
                 (string) $width,
                 (string) $height,
                 $fit,
@@ -224,126 +194,96 @@ class ImageFactory implements ImageFactoryInterface
             ]);
 
             $closure = function () use ($filesystem, $path, $width, $height, $fit, $add_watermark, $media_file): string {
-                $image = $this->imageManager()->make($filesystem->readStream($path));
-                $image = $this->autorotateImage($image);
-                $image = $this->resizeImage($image, $width, $height, $fit);
+                $image = $this->imageManager()->read(input: $filesystem->readStream($path));
+                $image = $this->resizeImage(image: $image, width: $width, height: $height, fit: $fit);
 
                 if ($add_watermark) {
-                    $watermark = $this->createWatermark($image->width(), $image->height(), $media_file);
-                    $image     = $this->addWatermark($image, $watermark);
+                    $watermark = $this->createWatermark(width: $image->width(), height: $image->height(), media_file: $media_file);
+                    $image     = $this->addWatermark(image: $image, watermark: $watermark);
                 }
 
-                $format  = static::SUPPORTED_FORMATS[$image->mime()] ?? 'jpg';
-                $quality = $this->extractImageQuality($image, static::GD_DEFAULT_THUMBNAIL_QUALITY);
+                $quality = $this->extractImageQuality(image: $image, default:  static::GD_DEFAULT_THUMBNAIL_QUALITY);
 
-                return (string) $image->encode($format, $quality);
+                return $image->encodeByMediaType(type: $media_file->mimeType(), quality: $quality)->toString();
             };
 
             // Images and Responses both contain resources - which cannot be serialized.
             // So cache the raw image data.
-            $data = Registry::cache()->file()->remember($key, $closure, static::THUMBNAIL_CACHE_TTL);
+            $data = Registry::cache()->file()->remember(key: $key, closure: $closure, ttl: static::THUMBNAIL_CACHE_TTL);
 
-            return $this->imageResponse($data, $mime_type, '');
+            return $this->imageResponse(data: $data, mime_type:  $mime_type, filename:  '');
         } catch (NotReadableException $ex) {
-            return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this
+                ->replacementImageResponse(text: '.' . pathinfo(path: $path, flags:  PATHINFO_EXTENSION))
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this
+                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
+            return $this
+                ->replacementImageResponse(text: (string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
+                ->withHeader('x-thumbnail-exception', get_class(object: $ex) . ': ' . $ex->getMessage());
         }
     }
 
     /**
      * Does a full-sized image need a watermark?
-     *
-     * @param MediaFile     $media_file
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
     {
         $tree = $media_file->media()->tree();
 
-        return Auth::accessLevel($tree, $user) > (int) $tree->getPreference('SHOW_NO_WATERMARK');
+        return Auth::accessLevel(tree: $tree, user: $user) > (int) $tree->getPreference(setting_name: 'SHOW_NO_WATERMARK');
     }
 
     /**
      * Does a thumbnail image need a watermark?
-     *
-     * @param MediaFile     $media_file
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool
     {
-        return $this->fileNeedsWatermark($media_file, $user);
+        return $this->fileNeedsWatermark(media_file: $media_file, user:  $user);
     }
 
     /**
      * Create a watermark image, perhaps specific to a media-file.
-     *
-     * @param int       $width
-     * @param int       $height
-     * @param MediaFile $media_file
-     *
-     * @return Image
      */
-    public function createWatermark(int $width, int $height, MediaFile $media_file): Image
+    public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface
     {
         return $this->imageManager()
-            ->make(Webtrees::ROOT_DIR . static::WATERMARK_FILE)
-            ->resize($width, $height, static function (Constraint $constraint) {
-                $constraint->aspectRatio();
-            });
+            ->read(input: Webtrees::ROOT_DIR . static::WATERMARK_FILE)
+            ->contain(width: $width, height: $height);
     }
 
     /**
      * Add a watermark to an image.
-     *
-     * @param Image $image
-     * @param Image $watermark
-     *
-     * @return Image
      */
-    public function addWatermark(Image $image, Image $watermark): Image
+    public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface
     {
-        return $image->insert($watermark, 'center');
+        return $image->place(element: $watermark, position:  'center');
     }
 
     /**
      * Send a replacement image, to replace one that could not be found or created.
-     *
-     * @param string $text HTTP status code or file extension
-     *
-     * @return ResponseInterface
      */
     public function replacementImageResponse(string $text): ResponseInterface
     {
         // We can't create a PNG/BMP/JPEG image, as the GD/IMAGICK libraries may be missing.
-        $svg = view('errors/image-svg', ['status' => $text]);
+        $svg = view(name: 'errors/image-svg', data: ['status' => $text]);
 
         // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
-        return response($svg, StatusCodeInterface::STATUS_OK, [
+        return response(content: $svg, code: StatusCodeInterface::STATUS_OK, headers: [
             'content-type' => 'image/svg+xml',
         ]);
     }
 
     /**
-     * @param string $data
-     * @param string $mime_type
-     * @param string $filename
-     *
-     * @return ResponseInterface
+     * Create a response from image data.
      */
     protected function imageResponse(string $data, string $mime_type, string $filename): ResponseInterface
     {
-        if ($mime_type === 'image/svg+xml' && str_contains($data, '<script')) {
-            return $this->replacementImageResponse('XSS')
+        if ($mime_type === 'image/svg+xml' && str_contains(haystack: $data, needle: '<script')) {
+            return $this->replacementImageResponse(text: 'XSS')
                 ->withHeader('x-image-exception', 'SVG image blocked due to XSS.');
         }
 
@@ -357,81 +297,46 @@ class ImageFactory implements ImageFactoryInterface
         }
 
         return $response
-            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes(basename($filename), '"'));
+            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes(string: basename(path: $filename), characters: '"'));
     }
 
     /**
-     * @return ImageManager
-     * @throws RuntimeException
+     * Choose an image library, based on what is installed.
      */
     protected function imageManager(): ImageManager
     {
-        foreach (static::INTERVENTION_DRIVERS as $driver) {
-            if (extension_loaded($driver)) {
-                return new ImageManager(['driver' => $driver]);
-            }
+        if (extension_loaded(extension: 'imagick')) {
+            return new ImageManager(driver: new ImagickDriver());
         }
 
-        throw new RuntimeException('No PHP graphics library is installed.  Need Imagick or GD');
-    }
-
-    /**
-     * Apply EXIF rotation to an image.
-     *
-     * @param Image $image
-     *
-     * @return Image
-     */
-    protected function autorotateImage(Image $image): Image
-    {
-        try {
-            // Auto-rotate using EXIF information.
-            return $image->orientate();
-        } catch (NotSupportedException) {
-            // If we can't auto-rotate the image, then don't.
-            return $image;
+        if (extension_loaded(extension: 'gd')) {
+            return new ImageManager(driver: new GdDriver());
         }
+
+        throw new RuntimeException(message: 'No PHP graphics library is installed.  Need Imagick or GD');
     }
 
     /**
      * Resize an image.
-     *
-     * @param Image  $image
-     * @param int    $width
-     * @param int    $height
-     * @param string $fit
-     *
-     * @return Image
      */
-    protected function resizeImage(Image $image, int $width, int $height, string $fit): Image
+    protected function resizeImage(ImageInterface $image, int $width, int $height, string $fit): ImageInterface
     {
-        switch ($fit) {
-            case 'crop':
-                return $image->fit($width, $height);
-            case 'contain':
-                return $image->resize($width, $height, static function (Constraint $constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
-        }
-
-        return $image;
+        return match ($fit) {
+            'crop'    => $image->cover(width: $width, height: $height),
+            'contain' => $image->scale(width: $width, height: $height),
+            default   => throw new InvalidArgumentException(message: 'Unknown fit type: ' . $fit),
+        };
     }
 
     /**
      * Extract the quality/compression parameter from an image.
-     *
-     * @param Image $image
-     * @param int   $default
-     *
-     * @return int
      */
-    protected function extractImageQuality(Image $image, int $default): int
+    protected function extractImageQuality(ImageInterface $image, int $default): int
     {
-        $core = $image->getCore();
+        $native = $image->core()->native();
 
-        if ($core instanceof Imagick) {
-            return $core->getImageCompressionQuality() ?: $default;
+        if ($native instanceof Imagick) {
+            return $native->getImageCompressionQuality();
         }
 
         return $default;

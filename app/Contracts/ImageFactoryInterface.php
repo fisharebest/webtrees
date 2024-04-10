@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\MediaFile;
-use Intervention\Image\Image;
+use Intervention\Image\Interfaces\ImageInterface;
 use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseInterface;
 
@@ -31,25 +31,11 @@ interface ImageFactoryInterface
 {
     /**
      * Send the original file - either inline or as a download.
-     *
-     * @param FilesystemOperator $filesystem
-     * @param string             $path
-     * @param bool               $download
-     *
-     * @return ResponseInterface
      */
     public function fileResponse(FilesystemOperator $filesystem, string $path, bool $download): ResponseInterface;
 
     /**
      * Send the original file - either inline or as a download.
-     *
-     * @param FilesystemOperator $filesystem
-     * @param string             $path
-     * @param int                $width
-     * @param int                $height
-     * @param string             $fit
-     *
-     * @return ResponseInterface
      */
     public function thumbnailResponse(
         FilesystemOperator $filesystem,
@@ -61,25 +47,11 @@ interface ImageFactoryInterface
 
     /**
      * Create a full-size version of an image.
-     *
-     * @param MediaFile $media_file
-     * @param bool      $add_watermark
-     * @param bool      $download
-     *
-     * @return ResponseInterface
      */
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface;
 
     /**
      * Create a smaller version of an image.
-     *
-     * @param MediaFile $media_file
-     * @param int       $width
-     * @param int       $height
-     * @param string    $fit
-     * @param bool      $add_watermark
-     *
-     * @return ResponseInterface
      */
     public function mediaFileThumbnailResponse(
         MediaFile $media_file,
@@ -91,51 +63,26 @@ interface ImageFactoryInterface
 
     /**
      * Does a full-sized image need a watermark?
-     *
-     * @param MediaFile     $media_file
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function fileNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
 
     /**
      * Does a thumbnail image need a watermark?
-     *
-     * @param MediaFile     $media_file
-     * @param UserInterface $user
-     *
-     * @return bool
      */
     public function thumbnailNeedsWatermark(MediaFile $media_file, UserInterface $user): bool;
 
     /**
      * Create a watermark image, perhaps specific to a media-file.
-     *
-     * @param int       $width
-     * @param int       $height
-     * @param MediaFile $media_file
-     *
-     * @return Image
      */
-    public function createWatermark(int $width, int $height, MediaFile $media_file): Image;
+    public function createWatermark(int $width, int $height, MediaFile $media_file): ImageInterface;
 
     /**
      * Add a watermark to an image.
-     *
-     * @param Image $image
-     * @param Image $watermark
-     *
-     * @return Image
      */
-    public function addWatermark(Image $image, Image $watermark): Image;
+    public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface;
 
     /**
      * Send a replacement image, to replace one that could not be found or created.
-     *
-     * @param string $text HTTP status code or file extension
-     *
-     * @return ResponseInterface
      */
     public function replacementImageResponse(string $text): ResponseInterface;
 }
