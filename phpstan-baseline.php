@@ -149,13 +149,8 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Encodings/AbstractEncoding.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:value\\(\\) should return string but returns string\\|null\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Fact.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$value of method Fisharebest\\\\Webtrees\\\\Contracts\\\\ElementInterface\\:\\:canonical\\(\\) expects string, string\\|null given\\.$#',
-    'count' => 1,
+    'count' => 2,
     'path' => __DIR__ . '/app/Fact.php',
 ];
 $ignoreErrors[] = [
