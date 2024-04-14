@@ -46,7 +46,6 @@ use Illuminate\Support\Collection;
 
 use function addcslashes;
 use function preg_match;
-use function var_dump;
 
 /**
  * Manage pending changes

@@ -282,7 +282,7 @@ class GedcomRecord
         }
 
         $fact   = $this->facts(['RESN'])->first();
-        $locked = $fact instanceof Fact && str_ends_with($fact->attribute('RESN'), RestrictionNotice::VALUE_LOCKED);
+        $locked = $fact instanceof Fact && str_ends_with($fact->value(), RestrictionNotice::VALUE_LOCKED);
 
         return Auth::isEditor($this->tree) && !$locked;
     }

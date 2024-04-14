@@ -202,7 +202,9 @@ class Fact
     public function value(): string
     {
         if (preg_match('/^1 ' . $this->tag . ' ?(.*(?:\n2 CONT ?.*)*)/', $this->gedcom, $match)) {
-            return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
+            $value = preg_replace("/\n2 CONT ?/", "\n", $match[1]);
+
+            return Registry::elementFactory()->make($this->tag())->canonical($value);
         }
 
         return '';
