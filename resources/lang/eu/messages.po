@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-04-03 08:11+0000\n"
+"PO-Revision-Date: 2024-04-18 15:11+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -8509,7 +8509,7 @@ msgstr "Azken aldaketa"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr "Azken egiaztatuak %s."
+msgstr "Azken egiaztapena %s."
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
@@ -16282,7 +16282,7 @@ msgstr "Egun hau ikusi"
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
 msgid "View this family"
-msgstr "bere familia ikusi nahi"
+msgstr "bere familia ikusi nahi?"
 
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
