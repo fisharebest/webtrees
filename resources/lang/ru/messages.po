@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-04-17 09:07+0000\n"
+"PO-Revision-Date: 2024-04-18 15:11+0000\n"
 "Last-Translator: ol810 <uolega@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ru/>\n"
@@ -12490,7 +12490,7 @@ msgstr "Сан Марино"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:174 app/GedcomCode/GedcomCodeTemp.php:588
 msgid "San Salvador, El Salvador"
-msgstr "Сан - Сальвадор, Сальвадор"
+msgstr "Сан Сальвадор, Сальвадор"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:175 app/GedcomCode/GedcomCodeTemp.php:591
@@ -13835,7 +13835,7 @@ msgstr "Начало диапазона дат"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr "Statcounter™"
+msgstr "Счетчик состояния™"
 
 #. I18N: gedcom tag STAE
 #: app/Factories/ElementFactory.php:952 app/Factories/ElementFactory.php:1064
@@ -19690,7 +19690,7 @@ msgstr "женился"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:61 app/GedcomCode/GedcomCodeName.php:162
 msgid "married name"
-msgstr "Фамилия в замужестве"
+msgstr "фамилия в браке"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:158
@@ -20059,12 +20059,12 @@ msgstr "партнер"
 #: app/Functions/Functions.php:671
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "партнер"
+msgstr "жена"
 
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr "партнер"
+msgstr "муж"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
@@ -21058,7 +21058,7 @@ msgstr "жена"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr "xenea"
+msgstr "ксения"
 
 #: resources/views/modules/timeline-chart/chart.phtml:141
 msgid "years"
