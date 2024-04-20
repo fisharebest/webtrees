@@ -71,9 +71,9 @@
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.2.3",
         "sabre/vobject": "4.5.4",
-        "symfony/cache": "5.4.36",
+        "symfony/cache": "5.4.38",
         "symfony/expression-language": "5.4.35",
-        "symfony/mailer": "5.4.36",
+        "symfony/mailer": "5.4.38",
         "symfony/polyfill-mbstring": "1.29.0",
         "symfony/polyfill-php80": "1.29.0",
         "tecnickcom/tcpdf": "6.7.4"
@@ -83,10 +83,10 @@
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.7.2",
+        "composer/composer": "2.7.3",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "9.6.18"
+        "phpunit/phpunit": "9.6.19"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
@@ -133,7 +133,7 @@
             "@composer global require --quiet phpstan/phpstan-strict-rules=*",
             "@composer global require --quiet phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --xdebug --level=max index.php app",
+            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --level=max index.php app",
             "@composer install --no-dev --quiet"
         ],
         "webtrees:phpstan-baseline": [
