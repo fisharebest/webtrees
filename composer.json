@@ -48,9 +48,9 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/localization": "1.17.0",
         "guzzlehttp/guzzle": "7.8.1",
-        "illuminate/database": "11.3.1",
-        "illuminate/support": "11.3.1",
-        "intervention/image": "3.5.1",
+        "illuminate/database": "11.4.0",
+        "illuminate/support": "11.4.0",
+        "intervention/image": "3.6.0",
         "io-developer/php-whois": "4.1.10",
         "league/commonmark": "2.4.2",
         "league/flysystem": "3.27.0",
@@ -82,7 +82,7 @@
         "ext-sqlite3": "*",
         "league/flysystem-memory": "3.25.1",
         "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "11.1.1"
+        "phpunit/phpunit": "11.1.2"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",

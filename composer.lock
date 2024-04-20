@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85db4f7cfbc44f4c04c47ec51e0795fd",
+    "content-hash": "c7eb9b7b2f6a95da83b8e27d023e008a",
     "packages": [
         {
             "name": "aura/router",
@@ -1118,16 +1118,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v11.3.1",
+            "version": "v11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "aee944e8220588756e21aa4c30eebd5f6481e453"
+                "reference": "19c6554c7eba0efabc3f8aa4c434815b7f6b4b7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/aee944e8220588756e21aa4c30eebd5f6481e453",
-                "reference": "aee944e8220588756e21aa4c30eebd5f6481e453",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/19c6554c7eba0efabc3f8aa4c434815b7f6b4b7d",
+                "reference": "19c6554c7eba0efabc3f8aa4c434815b7f6b4b7d",
                 "shasum": ""
             },
             "require": {
@@ -1169,11 +1169,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-04-04T17:36:49+00:00"
+            "time": "2024-04-15T15:26:05+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v11.3.1",
+            "version": "v11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -1219,7 +1219,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v11.3.1",
+            "version": "v11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1270,7 +1270,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v11.3.1",
+            "version": "v11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1318,16 +1318,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v11.3.1",
+            "version": "v11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "ad964b5e8e95417fbad28ecaf5ab77a5b3210b4b"
+                "reference": "aa4171c74d3bac4500128aedc6084377e2e4b950"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/ad964b5e8e95417fbad28ecaf5ab77a5b3210b4b",
-                "reference": "ad964b5e8e95417fbad28ecaf5ab77a5b3210b4b",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/aa4171c74d3bac4500128aedc6084377e2e4b950",
+                "reference": "aa4171c74d3bac4500128aedc6084377e2e4b950",
                 "shasum": ""
             },
             "require": {
@@ -1382,11 +1382,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-04-10T14:52:18+00:00"
+            "time": "2024-04-16T14:29:11+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v11.3.1",
+            "version": "v11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1432,16 +1432,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v11.3.1",
+            "version": "v11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "0794cd2077e57cabe9dead2b081e7e20f71e4ffe"
+                "reference": "e7de8b8aa7658c827c48c99212927695848540b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/0794cd2077e57cabe9dead2b081e7e20f71e4ffe",
-                "reference": "0794cd2077e57cabe9dead2b081e7e20f71e4ffe",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/e7de8b8aa7658c827c48c99212927695848540b8",
+                "reference": "e7de8b8aa7658c827c48c99212927695848540b8",
                 "shasum": ""
             },
             "require": {
@@ -1502,7 +1502,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-04-09T14:13:50+00:00"
+            "time": "2024-04-15T12:21:59+00:00"
         },
         {
             "name": "intervention/gif",
@@ -1570,21 +1570,21 @@
         },
         {
             "name": "intervention/image",
-            "version": "3.5.1",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "67be90e5700370c88833190d4edc07e4bb7d157b"
+                "reference": "e9227300192f9df789fa300aeabb969e4e56d270"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/67be90e5700370c88833190d4edc07e4bb7d157b",
-                "reference": "67be90e5700370c88833190d4edc07e4bb7d157b",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/e9227300192f9df789fa300aeabb969e4e56d270",
+                "reference": "e9227300192f9df789fa300aeabb969e4e56d270",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "intervention/gif": "^4.0.1",
+                "intervention/gif": "^4.1",
                 "php": "^8.1"
             },
             "require-dev": {
@@ -1626,7 +1626,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/image/issues",
-                "source": "https://github.com/Intervention/image/tree/3.5.1"
+                "source": "https://github.com/Intervention/image/tree/3.6.0"
             },
             "funding": [
                 {
@@ -1638,7 +1638,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-22T07:12:19+00:00"
+            "time": "2024-04-17T14:01:15+00:00"
         },
         {
             "name": "io-developer/php-whois",
@@ -3750,16 +3750,16 @@
         },
         {
             "name": "sabre/xml",
-            "version": "4.0.4",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabre-io/xml.git",
-                "reference": "99caa5dd248776ca6a1e1d2cfdef556a3fa63456"
+                "reference": "c29e49fcf9ca8ca058b1e350ee9abe4205c0de89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabre-io/xml/zipball/99caa5dd248776ca6a1e1d2cfdef556a3fa63456",
-                "reference": "99caa5dd248776ca6a1e1d2cfdef556a3fa63456",
+                "url": "https://api.github.com/repos/sabre-io/xml/zipball/c29e49fcf9ca8ca058b1e350ee9abe4205c0de89",
+                "reference": "c29e49fcf9ca8ca058b1e350ee9abe4205c0de89",
                 "shasum": ""
             },
             "require": {
@@ -3771,7 +3771,7 @@
                 "sabre/uri": ">=2.0,<4.0.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.38",
+                "friendsofphp/php-cs-fixer": "^3.51",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.6"
             },
@@ -3815,7 +3815,7 @@
                 "issues": "https://github.com/sabre-io/xml/issues",
                 "source": "https://github.com/fruux/sabre-xml"
             },
-            "time": "2023-11-09T10:47:15+00:00"
+            "time": "2024-04-18T10:44:25+00:00"
         },
         {
             "name": "symfony/cache",
@@ -6503,16 +6503,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.1.1",
+            "version": "11.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "816cb6070af901c0548aa5f18f2132fd8a6e4ade"
+                "reference": "51e342a0bc987e0ea8418105d0711f08ae116de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/816cb6070af901c0548aa5f18f2132fd8a6e4ade",
-                "reference": "816cb6070af901c0548aa5f18f2132fd8a6e4ade",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/51e342a0bc987e0ea8418105d0711f08ae116de3",
+                "reference": "51e342a0bc987e0ea8418105d0711f08ae116de3",
                 "shasum": ""
             },
             "require": {
@@ -6583,7 +6583,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.1.1"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.1.2"
             },
             "funding": [
                 {
@@ -6599,7 +6599,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-06T06:20:21+00:00"
+            "time": "2024-04-14T07:13:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",

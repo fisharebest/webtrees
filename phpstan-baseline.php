@@ -5034,17 +5034,17 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
 ];
 $ignoreErrors[] = [
-    'message' => '#^Parameter \\#1 \\$ of closure expects object, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
-];
-$ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: Fisharebest\\\\Webtrees\\\\Individual, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Individual given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
 ];
 $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: int, Closure\\(string\\)\\: int given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
+];
+$ignoreErrors[] = [
+    'message' => '#^Parameter \\#1 of closure expects object, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Statistics/Repository/IndividualRepository.php',
 ];
