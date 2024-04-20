@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2023-10-18 14:15+0000\n"
+"PO-Revision-Date: 2024-04-21 21:11+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
-"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3266,7 +3267,7 @@ msgstr "קאנאדע"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "קענען ניט שרייַבן צו די טעקע “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3866,7 +3867,7 @@ msgstr "קשר צו דאַטאַבאַסע סערווער"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "טיפּ פון פֿאַרבינדונג"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -14534,7 +14535,7 @@ msgstr "דער פּאַראַמעטער \"%s\" איז פעלנדיק."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "דער פּאַראַמעטער “path” איז פאַרקריפּלט."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14760,7 +14761,7 @@ msgstr "עס זענען קיין פאקטן פֿאַר דעם יחיד."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "עס זענען קיין מענטשן מיט די פאַמיליע “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15145,7 +15146,7 @@ msgstr "דער בלאַט אַלאַוז איר צו בייפּאַס די גע�
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "דער בלאט איז אויסגעמעקט געווארן."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17169,7 +17170,7 @@ msgstr "פאָרזעצן"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "קאָפּיע"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17351,7 +17352,7 @@ msgstr "אַרויספירן טעקע"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "עקסטראַקט"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19479,7 +19480,7 @@ msgstr "רשימה"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "היגע"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19688,7 +19689,7 @@ msgstr "פלימעניק/פלימעניצע"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "נעץ"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19853,7 +19854,7 @@ msgstr "פון"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "אָנליין"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -19909,7 +19910,7 @@ msgstr "פראָצענט"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "פאָטאָקאָפּי"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
