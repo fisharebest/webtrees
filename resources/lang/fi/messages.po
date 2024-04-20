@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-15 11:53+0000\n"
+"PO-Revision-Date: 2024-04-21 21:11+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fi/>\n"
@@ -1320,7 +1320,7 @@ msgstr "Lisää uutisartikkeli"
 #: resources/views/family-page.phtml:75
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a note"
-msgstr "Lisää huomautus"
+msgstr "Lisää merkintä"
 
 #: resources/views/media-page.phtml:200
 msgid "Add a restriction"
