@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2022-12-15 11:53+0000\n"
+"PO-Revision-Date: 2024-04-21 21:11+0000\n"
 "Last-Translator: melizaa <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fi/>\n"
@@ -1340,7 +1340,7 @@ msgstr "Lisää uutisartikkeli"
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr "Lisää lisätieto"
+msgstr "Lisää merkintä"
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
