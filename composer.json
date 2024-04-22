@@ -43,7 +43,7 @@
         "ext-session": "*",
         "ext-xml": "*",
         "aura/router": "3.3.0",
-        "doctrine/dbal": "3.8.3",
+        "doctrine/dbal": "3.8.4",
         "ezyang/htmlpurifier": "4.17.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
@@ -71,19 +71,19 @@
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.2.3",
         "sabre/vobject": "4.5.4",
-        "symfony/cache": "5.4.38",
-        "symfony/expression-language": "5.4.35",
-        "symfony/mailer": "5.4.38",
+        "symfony/cache": "5.4.39",
+        "symfony/expression-language": "5.4.39",
+        "symfony/mailer": "5.4.39",
         "symfony/polyfill-mbstring": "1.29.0",
         "symfony/polyfill-php80": "1.29.0",
-        "tecnickcom/tcpdf": "6.7.4"
+        "tecnickcom/tcpdf": "6.7.5"
     },
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.7.3",
+        "composer/composer": "2.7.6",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
         "phpunit/phpunit": "9.6.19"
@@ -179,10 +179,9 @@
         "ci" : [
             "@composer validate",
             "@composer install --quiet",
-            "@composer global require --quiet icanhazstring/composer-unused=*",
-            "~/.composer/vendor/bin/composer-unused",
-            "@composer global require --quiet maglnet/composer-require-checker=*",
-            "~/.composer/vendor/bin/composer-require-checker check"
+            "@composer webtrees:phpcs",
+            "@composer webtrees:phpstan",
+            "@composer webtrees:test"
         ]
     },
     "scripts-descriptions": {
