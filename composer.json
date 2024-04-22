@@ -58,7 +58,7 @@
         "league/flysystem-ziparchive": "3.27.0",
         "middlewares/client-ip": "2.0.1",
         "mlocati/ip-lib": "1.18.0",
-        "nesbot/carbon": "3.2.4",
+        "nesbot/carbon": "3.3.0",
         "nyholm/psr7": "1.8.1",
         "nyholm/psr7-server": "1.1.0",
         "oscarotero/middleland": "1.0.1",
@@ -73,7 +73,7 @@
         "symfony/expression-language": "7.0.3",
         "symfony/mailer": "7.0.6",
         "symfony/polyfill-mbstring": "1.29.0",
-        "tecnickcom/tcpdf": "6.7.4"
+        "tecnickcom/tcpdf": "6.7.5"
     },
     "require-dev": {
         "ext-dom": "*",
