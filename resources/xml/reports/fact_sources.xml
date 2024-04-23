@@ -59,13 +59,13 @@
 			<if condition="$sortby=='NAME'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><var var="I18N::translate('Name')" /></Cell>
+			<Cell bgcolor="$fill" fill="1" border="1" style="list_label" width="$nameindi"><var var="I18N::translate('Name')" /></Cell>
 			<!-- Birth date -->
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BIRT:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$datebirth"><var var="I18N::translate('Date of birth')" /></Cell>
+			<Cell bgcolor="$fill" fill="1" border="1" style="list_label" width="$datebirth"><var var="I18N::translate('Date of birth')" /></Cell>
 			<!-- Name of the fact that contains the source -->
 			<Cell border="1" style="list_label" width="$fact"><var var="I18N::translate('Event')" /></Cell>
 			<!-- Date of the fact -->

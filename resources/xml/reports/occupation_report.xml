@@ -36,6 +36,8 @@
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Occupations')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
+		</Header>
+		<Body>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
@@ -63,8 +65,7 @@
 			<TextBox border="1" newline="1">
 				<Text style="label"><var var="I18N::translate('Note')" /></Text>
 			</TextBox>
-		</Header>
-		<Body>
+
 			<List list="individual" filter1="OCCU CONTAINS $occupation" sortby="$sortby">
 				<SetVar name="moreoccupation" value="0" />
 				<!-- Printed List counter -->
