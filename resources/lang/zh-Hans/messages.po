@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-10-08 02:32+0000\n"
-"Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
+"PO-Revision-Date: 2024-04-26 15:11+0000\n"
+"Last-Translator: 果然 <olor@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -496,7 +496,7 @@ msgstr "&lt; 选择 &gt;"
 #: app/Age.php:219 app/Functions/FunctionsPrint.php:380
 #, php-format
 msgid "(%s after death)"
-msgstr "(%s之后去世)"
+msgstr "(去世之后%s)"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
