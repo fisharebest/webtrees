@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-05-03 17:32+0000\n"
+"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ca/>\n"
 "Language: ca\n"
@@ -800,7 +800,7 @@ msgstr "Llistat de fonts."
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:84
 msgid "A list of submitters."
-msgstr "Una llista de fornidors de dades."
+msgstr "Una llista de remitents de dades."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:75
@@ -4230,7 +4230,7 @@ msgstr "Crea una presentació"
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:553
 #: resources/views/modals/create-submitter.phtml:16
 msgid "Create a submitter"
-msgstr "Crea un fornidor de dades"
+msgstr "Crea un remitent de dades"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Create a temporary folder…"
@@ -13942,11 +13942,11 @@ msgstr "Presentat però pendent d’aprovació"
 #: resources/views/modals/submission-fields.phtml:14
 #: resources/views/modules/recent_changes/changes-table.phtml:74
 msgid "Submitter"
-msgstr "Fornidor de dades"
+msgstr "Remitent de dades"
 
 #: resources/views/lists/submitters-table.phtml:67
 msgid "Submitter name"
-msgstr "Nom del fornidor de dades"
+msgstr "Nom del remitent de dades"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:117 app/Module/SubmitterListModule.php:73
@@ -13955,7 +13955,7 @@ msgstr "Nom del fornidor de dades"
 #: resources/views/admin/merge-records-step-1.phtml:60
 #: resources/views/lists/submitters-table.phtml:62
 msgid "Submitters"
-msgstr "Fornidors de dades"
+msgstr "Remitents de dades"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -14706,7 +14706,7 @@ msgstr "S'ha creat la presentació"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
-msgstr "S'ha creat el fornidor de dades"
+msgstr "S'ha creat el remitent de dades"
 
 #: resources/views/help/name.phtml:13
 #, php-format
