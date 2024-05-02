@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
+"PO-Revision-Date: 2024-05-03 17:32+0000\n"
+"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
+"Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -804,7 +805,7 @@ msgstr "Llistat de fonts."
 #. I18N: Description of the “Submitters” module
 #: app/Module/SubmitterListModule.php:76
 msgid "A list of submitters."
-msgstr "Una llista de fornidors de dades."
+msgstr "Una llista de remitents de dades."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
@@ -4092,7 +4093,7 @@ msgstr "Crea una presentació"
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
 msgid "Create a submitter"
-msgstr "Crea un fornidor de dades"
+msgstr "Crea un remitent de dades"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:119
 msgid "Create a temporary folder…"
@@ -13879,11 +13880,11 @@ msgstr "Presentat però pendent d’aprovació"
 #: resources/views/modals/submission-fields.phtml:16
 #: resources/views/modules/recent_changes/changes-table.phtml:76
 msgid "Submitter"
-msgstr "Fornidor de dades"
+msgstr "Remitent de dades"
 
 #: resources/views/lists/submitters-table.phtml:69
 msgid "Submitter name"
-msgstr "Nom del fornidor de dades"
+msgstr "Nom del remitent de dades"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:114 app/Module/SubmitterListModule.php:65
@@ -13894,7 +13895,7 @@ msgstr "Nom del fornidor de dades"
 #: resources/views/lists/submitters-table.phtml:64
 #: resources/views/record-page-links.phtml:96
 msgid "Submitters"
-msgstr "Fornidors de dades"
+msgstr "Remitents de dades"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:431
@@ -14658,7 +14659,7 @@ msgstr "S'ha creat la presentació"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:80
 msgid "The submitter has been created"
-msgstr "S'ha creat el fornidor de dades"
+msgstr "S'ha creat el remitent de dades"
 
 #: resources/views/help/name.phtml:15
 #, php-format
@@ -17173,7 +17174,7 @@ msgstr "continua"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "còpia"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17355,7 +17356,7 @@ msgstr "exporta el fitxer"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "extracte"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19857,7 +19858,7 @@ msgstr "de"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "En línia"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -19913,7 +19914,7 @@ msgstr "percentatge"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "Fotocòpia"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
