@@ -27,6 +27,6 @@ class CalendarPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CalendarPage::class));
+        self::assertTrue(class_exists(CalendarPage::class));
     }
 }

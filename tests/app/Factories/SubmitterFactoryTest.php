@@ -27,6 +27,6 @@ class SubmitterFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SubmitterFactory::class));
+        self::assertTrue(class_exists(SubmitterFactory::class));
     }
 }

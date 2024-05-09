@@ -27,6 +27,6 @@ class UserPageBlockEditTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UserPageBlockEdit::class));
+        self::assertTrue(class_exists(UserPageBlockEdit::class));
     }
 }

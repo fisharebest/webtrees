@@ -27,6 +27,6 @@ class ModulesLanguagesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesLanguagesAction::class));
+        self::assertTrue(class_exists(ModulesLanguagesAction::class));
     }
 }

@@ -120,13 +120,13 @@ class ValidatorTest extends TestCase
                 'f' => false,
             ]);
 
-        self::assertSame(true, Validator::queryParams($request)->boolean('a'));
-        self::assertSame(true, Validator::queryParams($request)->boolean('b'));
-        self::assertSame(true, Validator::queryParams($request)->boolean('c'));
-        self::assertSame(false, Validator::queryParams($request)->boolean('d'));
-        self::assertSame(false, Validator::queryParams($request)->boolean('e'));
-        self::assertSame(false, Validator::queryParams($request)->boolean('f'));
-        self::assertSame(false, Validator::queryParams($request)->boolean('g', false));
+        self::assertTrue(Validator::queryParams($request)->boolean('a'));
+        self::assertTrue(Validator::queryParams($request)->boolean('b'));
+        self::assertTrue(Validator::queryParams($request)->boolean('c'));
+        self::assertFalse(Validator::queryParams($request)->boolean('d'));
+        self::assertFalse(Validator::queryParams($request)->boolean('e'));
+        self::assertFalse(Validator::queryParams($request)->boolean('f'));
+        self::assertFalse(Validator::queryParams($request)->boolean('g', false));
 
         $this->expectException(HttpBadRequestException::class);
 
@@ -221,7 +221,7 @@ class ValidatorTest extends TestCase
             ]);
 
         self::assertSame($tree, Validator::queryParams($request)->treeOptional('valid-tree'));
-        self::assertSame(null, Validator::queryParams($request)->treeOptional('missing-tree'));
+        self::assertNull(Validator::queryParams($request)->treeOptional('missing-tree'));
 
         $this->expectException(HttpBadRequestException::class);
 

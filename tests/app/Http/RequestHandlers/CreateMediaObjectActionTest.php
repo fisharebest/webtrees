@@ -27,6 +27,6 @@ class CreateMediaObjectActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateMediaObjectAction::class));
+        self::assertTrue(class_exists(CreateMediaObjectAction::class));
     }
 }

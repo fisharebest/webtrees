@@ -27,6 +27,6 @@ class HousekeepingServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HousekeepingService::class));
+        self::assertTrue(class_exists(HousekeepingService::class));
     }
 }

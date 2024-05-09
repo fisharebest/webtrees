@@ -27,6 +27,6 @@ class BrowserRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BrowserRepository::class));
+        self::assertTrue(class_exists(BrowserRepository::class));
     }
 }

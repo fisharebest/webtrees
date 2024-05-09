@@ -27,6 +27,6 @@ class DeleteRecordTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DeleteRecord::class));
+        self::assertTrue(class_exists(DeleteRecord::class));
     }
 }

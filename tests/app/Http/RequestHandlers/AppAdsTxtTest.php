@@ -27,6 +27,6 @@ class AppAdsTxtTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AppAdsTxt::class));
+        self::assertTrue(class_exists(AppAdsTxt::class));
     }
 }

@@ -27,6 +27,6 @@ class TimeFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TimeFactory::class));
+        self::assertTrue(class_exists(TimeFactory::class));
     }
 }

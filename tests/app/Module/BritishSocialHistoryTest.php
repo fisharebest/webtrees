@@ -27,6 +27,6 @@ class BritishSocialHistoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BritishSocialHistory::class));
+        self::assertTrue(class_exists(BritishSocialHistory::class));
     }
 }

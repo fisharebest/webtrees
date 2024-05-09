@@ -27,6 +27,6 @@ class FabThemeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FabTheme::class));
+        self::assertTrue(class_exists(FabTheme::class));
     }
 }

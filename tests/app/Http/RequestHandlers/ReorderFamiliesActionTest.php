@@ -27,6 +27,6 @@ class ReorderFamiliesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReorderFamiliesAction::class));
+        self::assertTrue(class_exists(ReorderFamiliesAction::class));
     }
 }

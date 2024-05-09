@@ -27,6 +27,6 @@ class HttpServiceUnavailableExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HttpServiceUnavailableException::class));
+        self::assertTrue(class_exists(HttpServiceUnavailableException::class));
     }
 }

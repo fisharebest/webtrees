@@ -27,6 +27,6 @@ class LegacyTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Legacy::class));
+        self::assertTrue(class_exists(Legacy::class));
     }
 }

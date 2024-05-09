@@ -27,6 +27,6 @@ class SearchGeneralPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SearchGeneralPage::class));
+        self::assertTrue(class_exists(SearchGeneralPage::class));
     }
 }

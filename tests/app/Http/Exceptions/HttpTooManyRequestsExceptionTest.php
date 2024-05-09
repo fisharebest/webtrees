@@ -27,6 +27,6 @@ class HttpTooManyRequestsExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HttpTooManyRequestsException::class));
+        self::assertTrue(class_exists(HttpTooManyRequestsException::class));
     }
 }

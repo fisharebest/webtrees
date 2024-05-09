@@ -27,6 +27,6 @@ class LdsInitiatoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LdsInitiatory::class));
+        self::assertTrue(class_exists(LdsInitiatory::class));
     }
 }

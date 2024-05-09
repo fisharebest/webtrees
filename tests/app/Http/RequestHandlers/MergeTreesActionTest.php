@@ -27,6 +27,6 @@ class MergeTreesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MergeTreesAction::class));
+        self::assertTrue(class_exists(MergeTreesAction::class));
     }
 }

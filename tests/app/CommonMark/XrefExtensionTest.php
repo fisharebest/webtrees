@@ -27,6 +27,6 @@ class XrefExtensionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(XrefExtension::class));
+        self::assertTrue(class_exists(XrefExtension::class));
     }
 }

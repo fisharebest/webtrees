@@ -27,6 +27,6 @@ class AdminMediaFileDownloadTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AdminMediaFileDownload::class));
+        self::assertTrue(class_exists(AdminMediaFileDownload::class));
     }
 }

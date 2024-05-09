@@ -27,6 +27,6 @@ class LanguageSpanishTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LanguageSpanish::class));
+        self::assertTrue(class_exists(LanguageSpanish::class));
     }
 }

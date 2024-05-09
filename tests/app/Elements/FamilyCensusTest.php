@@ -27,6 +27,6 @@ class FamilyCensusTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FamilyCensus::class));
+        self::assertTrue(class_exists(FamilyCensus::class));
     }
 }

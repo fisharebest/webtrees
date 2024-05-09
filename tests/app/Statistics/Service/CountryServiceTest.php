@@ -27,6 +27,6 @@ class CountryServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CountryService::class));
+        self::assertTrue(class_exists(CountryService::class));
     }
 }

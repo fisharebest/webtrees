@@ -27,6 +27,6 @@ class ReportExpressionLanguageProviderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportExpressionLanguageProvider::class));
+        self::assertTrue(class_exists(ReportExpressionLanguageProvider::class));
     }
 }

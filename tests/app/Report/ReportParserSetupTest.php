@@ -27,6 +27,6 @@ class ReportParserSetupTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportParserSetup::class));
+        self::assertTrue(class_exists(ReportParserSetup::class));
     }
 }

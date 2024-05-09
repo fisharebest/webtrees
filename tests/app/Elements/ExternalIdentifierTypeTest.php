@@ -27,6 +27,6 @@ class ExternalIdentifierTypeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ExternalIdentifierType::class));
+        self::assertTrue(class_exists(ExternalIdentifierType::class));
     }
 }

@@ -27,6 +27,6 @@ class LinkSpouseToIndividualPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LinkSpouseToIndividualPage::class));
+        self::assertTrue(class_exists(LinkSpouseToIndividualPage::class));
     }
 }

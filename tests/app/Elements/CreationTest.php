@@ -27,6 +27,6 @@ class CreationTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Creation::class));
+        self::assertTrue(class_exists(Creation::class));
     }
 }

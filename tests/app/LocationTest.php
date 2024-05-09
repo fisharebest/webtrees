@@ -27,6 +27,6 @@ class LocationTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Location::class));
+        self::assertTrue(class_exists(Location::class));
     }
 }

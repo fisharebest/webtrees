@@ -27,6 +27,6 @@ class FamilyDatesRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FamilyDatesRepository::class));
+        self::assertTrue(class_exists(FamilyDatesRepository::class));
     }
 }

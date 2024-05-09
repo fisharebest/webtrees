@@ -27,6 +27,6 @@ class TheMasterGenealogistTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TheMasterGenealogist::class));
+        self::assertTrue(class_exists(TheMasterGenealogist::class));
     }
 }

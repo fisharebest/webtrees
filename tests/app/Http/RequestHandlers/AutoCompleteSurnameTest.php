@@ -27,6 +27,6 @@ class AutoCompleteSurnameTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AutoCompleteSurname::class));
+        self::assertTrue(class_exists(AutoCompleteSurname::class));
     }
 }

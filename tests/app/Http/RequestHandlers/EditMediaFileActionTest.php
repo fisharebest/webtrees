@@ -27,6 +27,6 @@ class EditMediaFileActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EditMediaFileAction::class));
+        self::assertTrue(class_exists(EditMediaFileAction::class));
     }
 }

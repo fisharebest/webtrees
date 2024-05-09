@@ -27,6 +27,6 @@ class TreePreferencesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TreePreferencesAction::class));
+        self::assertTrue(class_exists(TreePreferencesAction::class));
     }
 }

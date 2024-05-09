@@ -27,6 +27,6 @@ class LoadRoutesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LoadRoutes::class));
+        self::assertTrue(class_exists(LoadRoutes::class));
     }
 }

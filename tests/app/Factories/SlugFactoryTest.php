@@ -27,6 +27,6 @@ class SlugFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SlugFactory::class));
+        self::assertTrue(class_exists(SlugFactory::class));
     }
 }

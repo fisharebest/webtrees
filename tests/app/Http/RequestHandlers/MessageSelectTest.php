@@ -27,6 +27,6 @@ class MessageSelectTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MessageSelect::class));
+        self::assertTrue(class_exists(MessageSelect::class));
     }
 }

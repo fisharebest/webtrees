@@ -27,6 +27,6 @@ class ChartCommonSurnameTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartCommonSurname::class));
+        self::assertTrue(class_exists(ChartCommonSurname::class));
     }
 }

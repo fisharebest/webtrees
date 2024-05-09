@@ -27,6 +27,6 @@ class ModulesMenusActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesMenusAction::class));
+        self::assertTrue(class_exists(ModulesMenusAction::class));
     }
 }

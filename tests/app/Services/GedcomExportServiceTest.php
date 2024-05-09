@@ -27,6 +27,6 @@ class GedcomExportServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GedcomExportService::class));
+        self::assertTrue(class_exists(GedcomExportService::class));
     }
 }

@@ -27,6 +27,6 @@ class ReorderMediaFilesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReorderMediaFilesAction::class));
+        self::assertTrue(class_exists(ReorderMediaFilesAction::class));
     }
 }

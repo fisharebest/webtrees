@@ -27,6 +27,6 @@ class AddUnlinkedActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AddUnlinkedAction::class));
+        self::assertTrue(class_exists(AddUnlinkedAction::class));
     }
 }

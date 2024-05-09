@@ -27,6 +27,6 @@ class BingMapsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BingMaps::class));
+        self::assertTrue(class_exists(BingMaps::class));
     }
 }

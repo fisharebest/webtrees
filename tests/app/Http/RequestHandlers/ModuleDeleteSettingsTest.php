@@ -27,6 +27,6 @@ class ModuleDeleteSettingsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModuleDeleteSettings::class));
+        self::assertTrue(class_exists(ModuleDeleteSettings::class));
     }
 }

@@ -27,6 +27,6 @@ class CaptchaServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CaptchaService::class));
+        self::assertTrue(class_exists(CaptchaService::class));
     }
 }

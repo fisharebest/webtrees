@@ -27,6 +27,6 @@ class MapDataAddTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MapDataAdd::class));
+        self::assertTrue(class_exists(MapDataAdd::class));
     }
 }

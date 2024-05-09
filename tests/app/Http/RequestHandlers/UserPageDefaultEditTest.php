@@ -27,6 +27,6 @@ class UserPageDefaultEditTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UserPageDefaultEdit::class));
+        self::assertTrue(class_exists(UserPageDefaultEdit::class));
     }
 }

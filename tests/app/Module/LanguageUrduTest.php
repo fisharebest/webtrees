@@ -27,6 +27,6 @@ class LanguageUrduTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LanguageUrdu::class));
+        self::assertTrue(class_exists(LanguageUrdu::class));
     }
 }

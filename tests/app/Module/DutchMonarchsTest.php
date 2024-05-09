@@ -27,6 +27,6 @@ class DutchMonarchsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DutchMonarchs::class));
+        self::assertTrue(class_exists(DutchMonarchs::class));
     }
 }

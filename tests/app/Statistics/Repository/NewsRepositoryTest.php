@@ -27,6 +27,6 @@ class NewsRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(NewsRepository::class));
+        self::assertTrue(class_exists(NewsRepository::class));
     }
 }

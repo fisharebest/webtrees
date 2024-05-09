@@ -27,6 +27,6 @@ class MatomoAnalyticsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MatomoAnalyticsModule::class));
+        self::assertTrue(class_exists(MatomoAnalyticsModule::class));
     }
 }

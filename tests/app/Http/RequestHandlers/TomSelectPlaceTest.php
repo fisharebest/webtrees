@@ -27,6 +27,6 @@ class TomSelectPlaceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TomSelectPlace::class));
+        self::assertTrue(class_exists(TomSelectPlace::class));
     }
 }

@@ -27,6 +27,6 @@ class BroadcastActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BroadcastAction::class));
+        self::assertTrue(class_exists(BroadcastAction::class));
     }
 }

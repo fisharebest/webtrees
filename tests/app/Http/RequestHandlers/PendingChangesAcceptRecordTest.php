@@ -27,6 +27,6 @@ class PendingChangesAcceptRecordTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PendingChangesAcceptRecord::class));
+        self::assertTrue(class_exists(PendingChangesAcceptRecord::class));
     }
 }

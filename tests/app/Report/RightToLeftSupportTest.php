@@ -27,6 +27,6 @@ class RightToLeftSupportTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RightToLeftSupport::class));
+        self::assertTrue(class_exists(RightToLeftSupport::class));
     }
 }

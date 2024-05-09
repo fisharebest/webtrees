@@ -27,6 +27,6 @@ class HomePageServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HomePageService::class));
+        self::assertTrue(class_exists(HomePageService::class));
     }
 }

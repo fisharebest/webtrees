@@ -27,6 +27,6 @@ class ReportHtmlCellTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportHtmlCell::class));
+        self::assertTrue(class_exists(ReportHtmlCell::class));
     }
 }

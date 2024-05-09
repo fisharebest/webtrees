@@ -27,6 +27,6 @@ class ShareUrlModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ShareUrlModule::class));
+        self::assertTrue(class_exists(ShareUrlModule::class));
     }
 }

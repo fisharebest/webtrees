@@ -27,6 +27,6 @@ class UserPageBlockTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UserPageBlock::class));
+        self::assertTrue(class_exists(UserPageBlock::class));
     }
 }

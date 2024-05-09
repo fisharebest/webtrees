@@ -27,6 +27,6 @@ class GedcomRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GedcomRepository::class));
+        self::assertTrue(class_exists(GedcomRepository::class));
     }
 }

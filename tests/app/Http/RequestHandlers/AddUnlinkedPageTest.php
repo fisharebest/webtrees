@@ -27,6 +27,6 @@ class AddUnlinkedPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AddUnlinkedPage::class));
+        self::assertTrue(class_exists(AddUnlinkedPage::class));
     }
 }

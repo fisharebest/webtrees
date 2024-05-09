@@ -27,6 +27,6 @@ class ChartDeathTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartDeath::class));
+        self::assertTrue(class_exists(ChartDeath::class));
     }
 }

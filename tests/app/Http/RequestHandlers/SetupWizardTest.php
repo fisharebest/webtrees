@@ -27,6 +27,6 @@ class SetupWizardTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SetupWizard::class));
+        self::assertTrue(class_exists(SetupWizard::class));
     }
 }

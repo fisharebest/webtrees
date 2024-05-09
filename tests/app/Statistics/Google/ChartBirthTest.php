@@ -27,6 +27,6 @@ class ChartBirthTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartBirth::class));
+        self::assertTrue(class_exists(ChartBirth::class));
     }
 }

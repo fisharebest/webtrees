@@ -27,6 +27,6 @@ class ImageFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ImageFactory::class));
+        self::assertTrue(class_exists(ImageFactory::class));
     }
 }

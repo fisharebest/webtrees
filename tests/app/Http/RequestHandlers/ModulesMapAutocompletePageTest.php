@@ -27,6 +27,6 @@ class ModulesMapAutocompletePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesMapAutocompletePage::class));
+        self::assertTrue(class_exists(ModulesMapAutocompletePage::class));
     }
 }

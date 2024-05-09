@@ -27,6 +27,6 @@ class LanguageDivehiTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LanguageDivehi::class));
+        self::assertTrue(class_exists(LanguageDivehi::class));
     }
 }

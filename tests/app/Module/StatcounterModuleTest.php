@@ -27,6 +27,6 @@ class StatcounterModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(StatcounterModule::class));
+        self::assertTrue(class_exists(StatcounterModule::class));
     }
 }

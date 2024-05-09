@@ -27,6 +27,6 @@ class ProGenTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ProGen::class));
+        self::assertTrue(class_exists(ProGen::class));
     }
 }

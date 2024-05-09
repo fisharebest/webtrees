@@ -27,6 +27,6 @@ class LeafletJsServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LeafletJsService::class));
+        self::assertTrue(class_exists(LeafletJsService::class));
     }
 }

@@ -27,6 +27,6 @@ class RenumberTreePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RenumberTreePage::class));
+        self::assertTrue(class_exists(RenumberTreePage::class));
     }
 }

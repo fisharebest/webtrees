@@ -27,6 +27,6 @@ class LogoutTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Logout::class));
+        self::assertTrue(class_exists(Logout::class));
     }
 }

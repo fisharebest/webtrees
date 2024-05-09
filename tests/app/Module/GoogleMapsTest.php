@@ -27,6 +27,6 @@ class GoogleMapsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GoogleMaps::class));
+        self::assertTrue(class_exists(GoogleMaps::class));
     }
 }

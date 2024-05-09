@@ -27,6 +27,6 @@ class XrefNodeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(XrefNode::class));
+        self::assertTrue(class_exists(XrefNode::class));
     }
 }

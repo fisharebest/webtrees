@@ -27,6 +27,6 @@ class AppleTouchIconPngTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AppleTouchIconPng::class));
+        self::assertTrue(class_exists(AppleTouchIconPng::class));
     }
 }

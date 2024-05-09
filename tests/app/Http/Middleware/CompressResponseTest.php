@@ -27,6 +27,6 @@ class CompressResponseTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CompressResponse::class));
+        self::assertTrue(class_exists(CompressResponse::class));
     }
 }

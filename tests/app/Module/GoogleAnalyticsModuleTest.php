@@ -27,6 +27,6 @@ class GoogleAnalyticsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GoogleAnalyticsModule::class));
+        self::assertTrue(class_exists(GoogleAnalyticsModule::class));
     }
 }

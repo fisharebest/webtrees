@@ -27,6 +27,6 @@ class SourcePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SourcePage::class));
+        self::assertTrue(class_exists(SourcePage::class));
     }
 }

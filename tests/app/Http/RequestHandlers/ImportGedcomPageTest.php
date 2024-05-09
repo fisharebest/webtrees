@@ -27,6 +27,6 @@ class ImportGedcomPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ImportGedcomPage::class));
+        self::assertTrue(class_exists(ImportGedcomPage::class));
     }
 }

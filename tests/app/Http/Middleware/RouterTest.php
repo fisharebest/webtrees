@@ -27,6 +27,6 @@ class RouterTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Router::class));
+        self::assertTrue(class_exists(Router::class));
     }
 }

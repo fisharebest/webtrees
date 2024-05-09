@@ -27,6 +27,6 @@ class ReorderNamesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReorderNamesAction::class));
+        self::assertTrue(class_exists(ReorderNamesAction::class));
     }
 }

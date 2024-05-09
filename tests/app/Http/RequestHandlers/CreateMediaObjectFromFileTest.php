@@ -27,6 +27,6 @@ class CreateMediaObjectFromFileTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateMediaObjectFromFile::class));
+        self::assertTrue(class_exists(CreateMediaObjectFromFile::class));
     }
 }

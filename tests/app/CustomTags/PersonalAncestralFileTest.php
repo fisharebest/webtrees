@@ -27,6 +27,6 @@ class PersonalAncestralFileTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PersonalAncestralFile::class));
+        self::assertTrue(class_exists(PersonalAncestralFile::class));
     }
 }

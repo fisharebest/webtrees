@@ -27,6 +27,6 @@ class VerifyEmailTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(VerifyEmail::class));
+        self::assertTrue(class_exists(VerifyEmail::class));
     }
 }

@@ -27,6 +27,6 @@ class HttpServerErrorExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HttpServerErrorException::class));
+        self::assertTrue(class_exists(HttpServerErrorException::class));
     }
 }

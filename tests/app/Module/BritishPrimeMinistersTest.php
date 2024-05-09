@@ -27,6 +27,6 @@ class BritishPrimeMinistersTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BritishPrimeMinisters::class));
+        self::assertTrue(class_exists(BritishPrimeMinisters::class));
     }
 }

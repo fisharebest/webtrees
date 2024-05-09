@@ -27,6 +27,6 @@ class CleanDataFolderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CleanDataFolder::class));
+        self::assertTrue(class_exists(CleanDataFolder::class));
     }
 }

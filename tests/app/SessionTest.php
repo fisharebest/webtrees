@@ -27,6 +27,6 @@ class SessionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Session::class));
+        self::assertTrue(class_exists(Session::class));
     }
 }

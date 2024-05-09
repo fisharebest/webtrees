@@ -27,6 +27,6 @@ class AddChildToFamilyPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AddChildToFamilyPage::class));
+        self::assertTrue(class_exists(AddChildToFamilyPage::class));
     }
 }

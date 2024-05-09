@@ -27,6 +27,6 @@ class GedcomRecordPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GedcomRecordPage::class));
+        self::assertTrue(class_exists(GedcomRecordPage::class));
     }
 }

@@ -27,6 +27,6 @@ class ChartFamilyLargestTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartFamilyLargest::class));
+        self::assertTrue(class_exists(ChartFamilyLargest::class));
     }
 }

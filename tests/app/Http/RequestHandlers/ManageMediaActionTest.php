@@ -27,6 +27,6 @@ class ManageMediaActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ManageMediaAction::class));
+        self::assertTrue(class_exists(ManageMediaAction::class));
     }
 }

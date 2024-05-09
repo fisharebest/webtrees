@@ -27,6 +27,6 @@ class Migration37Test extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Migration37::class));
+        self::assertTrue(class_exists(Migration37::class));
     }
 }

@@ -27,6 +27,6 @@ class MapGeoLocationOpenRouteServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MapGeoLocationOpenRouteService::class));
+        self::assertTrue(class_exists(MapGeoLocationOpenRouteService::class));
     }
 }

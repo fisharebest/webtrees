@@ -27,6 +27,6 @@ class ReportHtmlImageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportHtmlImage::class));
+        self::assertTrue(class_exists(ReportHtmlImage::class));
     }
 }

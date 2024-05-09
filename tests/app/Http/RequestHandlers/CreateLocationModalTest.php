@@ -27,6 +27,6 @@ class CreateLocationModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateLocationModal::class));
+        self::assertTrue(class_exists(CreateLocationModal::class));
     }
 }

@@ -27,6 +27,6 @@ class UsersCleanupPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UsersCleanupPage::class));
+        self::assertTrue(class_exists(UsersCleanupPage::class));
     }
 }

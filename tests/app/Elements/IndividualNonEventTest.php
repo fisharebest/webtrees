@@ -27,6 +27,6 @@ class IndividualNonEventTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(IndividualNonEvent::class));
+        self::assertTrue(class_exists(IndividualNonEvent::class));
     }
 }

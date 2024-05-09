@@ -27,6 +27,6 @@ class CreateNoteModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateNoteModal::class));
+        self::assertTrue(class_exists(CreateNoteModal::class));
     }
 }

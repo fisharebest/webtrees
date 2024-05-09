@@ -27,6 +27,6 @@ class ReportBaseTextboxTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportBaseTextbox::class));
+        self::assertTrue(class_exists(ReportBaseTextbox::class));
     }
 }

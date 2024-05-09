@@ -27,6 +27,6 @@ class TomSelectSubmitterTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TomSelectSubmitter::class));
+        self::assertTrue(class_exists(TomSelectSubmitter::class));
     }
 }

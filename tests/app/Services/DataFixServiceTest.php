@@ -27,6 +27,6 @@ class DataFixServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DataFixService::class));
+        self::assertTrue(class_exists(DataFixService::class));
     }
 }

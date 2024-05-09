@@ -27,6 +27,6 @@ class TreesMenuModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TreesMenuModule::class));
+        self::assertTrue(class_exists(TreesMenuModule::class));
     }
 }

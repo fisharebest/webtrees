@@ -27,6 +27,6 @@ class CreateSubmissionActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateSubmissionAction::class));
+        self::assertTrue(class_exists(CreateSubmissionAction::class));
     }
 }

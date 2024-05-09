@@ -27,6 +27,6 @@ class ModulesMapGeoLocationsActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesMapGeoLocationsAction::class));
+        self::assertTrue(class_exists(ModulesMapGeoLocationsAction::class));
     }
 }

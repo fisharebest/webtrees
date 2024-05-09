@@ -27,6 +27,6 @@ class SourceFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SourceFactory::class));
+        self::assertTrue(class_exists(SourceFactory::class));
     }
 }

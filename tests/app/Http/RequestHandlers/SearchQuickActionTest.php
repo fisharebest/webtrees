@@ -27,6 +27,6 @@ class SearchQuickActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SearchQuickAction::class));
+        self::assertTrue(class_exists(SearchQuickAction::class));
     }
 }

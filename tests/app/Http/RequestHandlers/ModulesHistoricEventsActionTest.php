@@ -27,6 +27,6 @@ class ModulesHistoricEventsActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesHistoricEventsAction::class));
+        self::assertTrue(class_exists(ModulesHistoricEventsAction::class));
     }
 }

@@ -27,6 +27,6 @@ class BrowserconfigXmlTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BrowserconfigXml::class));
+        self::assertTrue(class_exists(BrowserconfigXml::class));
     }
 }

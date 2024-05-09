@@ -27,6 +27,6 @@ class UpgradeServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UpgradeService::class));
+        self::assertTrue(class_exists(UpgradeService::class));
     }
 }

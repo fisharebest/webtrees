@@ -27,6 +27,6 @@ class LocationListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LocationListModule::class));
+        self::assertTrue(class_exists(LocationListModule::class));
     }
 }

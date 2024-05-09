@@ -27,6 +27,6 @@ class UnconnectedPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UnconnectedPage::class));
+        self::assertTrue(class_exists(UnconnectedPage::class));
     }
 }

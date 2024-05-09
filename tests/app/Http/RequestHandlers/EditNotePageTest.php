@@ -27,6 +27,6 @@ class EditNotePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EditNotePage::class));
+        self::assertTrue(class_exists(EditNotePage::class));
     }
 }

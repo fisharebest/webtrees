@@ -27,6 +27,6 @@ class SeedDefaultResnTableTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SeedDefaultResnTable::class));
+        self::assertTrue(class_exists(SeedDefaultResnTable::class));
     }
 }

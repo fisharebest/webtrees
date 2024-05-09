@@ -27,6 +27,6 @@ class ModulesMapLinksPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesMapLinksPage::class));
+        self::assertTrue(class_exists(ModulesMapLinksPage::class));
     }
 }

@@ -27,6 +27,6 @@ class RequestHandlerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RequestHandler::class));
+        self::assertTrue(class_exists(RequestHandler::class));
     }
 }

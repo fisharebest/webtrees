@@ -27,6 +27,6 @@ class StatisticsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Statistics::class));
+        self::assertTrue(class_exists(Statistics::class));
     }
 }

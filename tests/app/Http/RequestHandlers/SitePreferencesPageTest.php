@@ -27,6 +27,6 @@ class SitePreferencesPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SitePreferencesPage::class));
+        self::assertTrue(class_exists(SitePreferencesPage::class));
     }
 }

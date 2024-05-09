@@ -27,6 +27,6 @@ class RelationshipServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RelationshipService::class));
+        self::assertTrue(class_exists(RelationshipService::class));
     }
 }

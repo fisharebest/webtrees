@@ -27,6 +27,6 @@ class PasteFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PasteFact::class));
+        self::assertTrue(class_exists(PasteFact::class));
     }
 }

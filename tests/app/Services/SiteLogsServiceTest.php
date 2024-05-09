@@ -27,6 +27,6 @@ class SiteLogsServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SiteLogsService::class));
+        self::assertTrue(class_exists(SiteLogsService::class));
     }
 }

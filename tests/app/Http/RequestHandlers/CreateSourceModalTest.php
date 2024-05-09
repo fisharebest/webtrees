@@ -27,6 +27,6 @@ class CreateSourceModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateSourceModal::class));
+        self::assertTrue(class_exists(CreateSourceModal::class));
     }
 }

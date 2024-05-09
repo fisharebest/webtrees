@@ -27,6 +27,6 @@ class CopyFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CopyFact::class));
+        self::assertTrue(class_exists(CopyFact::class));
     }
 }

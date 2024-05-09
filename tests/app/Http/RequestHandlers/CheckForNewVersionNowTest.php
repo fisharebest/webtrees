@@ -27,6 +27,6 @@ class CheckForNewVersionNowTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CheckForNewVersionNow::class));
+        self::assertTrue(class_exists(CheckForNewVersionNow::class));
     }
 }

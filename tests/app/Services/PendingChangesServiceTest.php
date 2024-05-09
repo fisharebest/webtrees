@@ -27,6 +27,6 @@ class PendingChangesServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PendingChangesService::class));
+        self::assertTrue(class_exists(PendingChangesService::class));
     }
 }

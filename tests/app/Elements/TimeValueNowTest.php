@@ -27,6 +27,6 @@ class TimeValueNowTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TimeValueNow::class));
+        self::assertTrue(class_exists(TimeValueNow::class));
     }
 }

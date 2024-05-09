@@ -27,6 +27,6 @@ class EmailPreferencesPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EmailPreferencesPage::class));
+        self::assertTrue(class_exists(EmailPreferencesPage::class));
     }
 }

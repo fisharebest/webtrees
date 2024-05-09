@@ -27,6 +27,6 @@ class PdfRendererTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PdfRenderer::class));
+        self::assertTrue(class_exists(PdfRenderer::class));
     }
 }

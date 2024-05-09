@@ -27,6 +27,6 @@ class HitCountFooterModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HitCountFooterModule::class));
+        self::assertTrue(class_exists(HitCountFooterModule::class));
     }
 }

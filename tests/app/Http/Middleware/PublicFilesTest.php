@@ -27,6 +27,6 @@ class PublicFilesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PublicFiles::class));
+        self::assertTrue(class_exists(PublicFiles::class));
     }
 }

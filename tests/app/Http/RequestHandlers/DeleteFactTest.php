@@ -27,6 +27,6 @@ class DeleteFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DeleteFact::class));
+        self::assertTrue(class_exists(DeleteFact::class));
     }
 }

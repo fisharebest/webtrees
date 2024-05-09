@@ -27,6 +27,6 @@ class CreateSubmissionModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateSubmissionModal::class));
+        self::assertTrue(class_exists(CreateSubmissionModal::class));
     }
 }

@@ -27,6 +27,6 @@ class WebRoutesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(WebRoutes::class));
+        self::assertTrue(class_exists(WebRoutes::class));
     }
 }

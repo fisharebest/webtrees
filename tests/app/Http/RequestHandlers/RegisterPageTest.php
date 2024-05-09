@@ -27,6 +27,6 @@ class RegisterPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RegisterPage::class));
+        self::assertTrue(class_exists(RegisterPage::class));
     }
 }

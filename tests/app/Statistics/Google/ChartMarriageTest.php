@@ -27,6 +27,6 @@ class ChartMarriageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartMarriage::class));
+        self::assertTrue(class_exists(ChartMarriage::class));
     }
 }

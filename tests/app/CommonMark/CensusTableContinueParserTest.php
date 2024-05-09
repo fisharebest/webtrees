@@ -27,6 +27,6 @@ class CensusTableContinueParserTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CensusTableContinueParser::class));
+        self::assertTrue(class_exists(CensusTableContinueParser::class));
     }
 }

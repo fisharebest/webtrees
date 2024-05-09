@@ -27,6 +27,6 @@ class ChartFamilyWithSourcesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartFamilyWithSources::class));
+        self::assertTrue(class_exists(ChartFamilyWithSources::class));
     }
 }

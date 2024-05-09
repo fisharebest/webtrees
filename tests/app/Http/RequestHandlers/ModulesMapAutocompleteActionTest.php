@@ -27,6 +27,6 @@ class ModulesMapAutocompleteActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesMapAutocompleteAction::class));
+        self::assertTrue(class_exists(ModulesMapAutocompleteAction::class));
     }
 }

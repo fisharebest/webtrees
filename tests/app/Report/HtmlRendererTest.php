@@ -27,6 +27,6 @@ class HtmlRendererTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HtmlRenderer::class));
+        self::assertTrue(class_exists(HtmlRenderer::class));
     }
 }

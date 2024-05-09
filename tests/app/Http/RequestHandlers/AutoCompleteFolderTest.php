@@ -27,6 +27,6 @@ class AutoCompleteFolderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AutoCompleteFolder::class));
+        self::assertTrue(class_exists(AutoCompleteFolder::class));
     }
 }

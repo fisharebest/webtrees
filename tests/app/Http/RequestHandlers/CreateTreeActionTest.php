@@ -27,6 +27,6 @@ class CreateTreeActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateTreeAction::class));
+        self::assertTrue(class_exists(CreateTreeAction::class));
     }
 }

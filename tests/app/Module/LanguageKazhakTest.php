@@ -27,6 +27,6 @@ class LanguageKazhakTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LanguageKazhak::class));
+        self::assertTrue(class_exists(LanguageKazhak::class));
     }
 }

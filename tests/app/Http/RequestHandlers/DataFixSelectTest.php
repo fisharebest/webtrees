@@ -27,6 +27,6 @@ class DataFixSelectTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DataFixSelect::class));
+        self::assertTrue(class_exists(DataFixSelect::class));
     }
 }

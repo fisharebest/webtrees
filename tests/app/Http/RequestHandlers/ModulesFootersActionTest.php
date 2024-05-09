@@ -27,6 +27,6 @@ class ModulesFootersActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesFootersAction::class));
+        self::assertTrue(class_exists(ModulesFootersAction::class));
     }
 }

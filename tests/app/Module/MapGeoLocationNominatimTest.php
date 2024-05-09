@@ -27,6 +27,6 @@ class MapGeoLocationNominatimTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MapGeoLocationNominatim::class));
+        self::assertTrue(class_exists(MapGeoLocationNominatim::class));
     }
 }

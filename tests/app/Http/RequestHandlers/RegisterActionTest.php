@@ -27,6 +27,6 @@ class RegisterActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RegisterAction::class));
+        self::assertTrue(class_exists(RegisterAction::class));
     }
 }

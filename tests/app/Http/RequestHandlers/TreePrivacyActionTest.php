@@ -27,6 +27,6 @@ class TreePrivacyActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TreePrivacyAction::class));
+        self::assertTrue(class_exists(TreePrivacyAction::class));
     }
 }

@@ -27,6 +27,6 @@ class ModulesDataFixesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesDataFixesAction::class));
+        self::assertTrue(class_exists(ModulesDataFixesAction::class));
     }
 }

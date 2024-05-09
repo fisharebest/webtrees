@@ -27,6 +27,6 @@ class ReportPdfCellTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportPdfCell::class));
+        self::assertTrue(class_exists(ReportPdfCell::class));
     }
 }

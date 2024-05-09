@@ -27,6 +27,6 @@ class ReportSetupActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportSetupAction::class));
+        self::assertTrue(class_exists(ReportSetupAction::class));
     }
 }

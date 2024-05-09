@@ -27,6 +27,6 @@ class ResidenceWithValueTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ResidenceWithValue::class));
+        self::assertTrue(class_exists(ResidenceWithValue::class));
     }
 }

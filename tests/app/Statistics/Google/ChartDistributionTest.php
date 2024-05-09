@@ -27,6 +27,6 @@ class ChartDistributionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartDistribution::class));
+        self::assertTrue(class_exists(ChartDistribution::class));
     }
 }

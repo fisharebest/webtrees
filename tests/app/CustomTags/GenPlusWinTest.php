@@ -27,6 +27,6 @@ class GenPlusWinTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GenPlusWin::class));
+        self::assertTrue(class_exists(GenPlusWin::class));
     }
 }

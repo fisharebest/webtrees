@@ -27,6 +27,6 @@ class UserPageUpdateTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UserPageUpdate::class));
+        self::assertTrue(class_exists(UserPageUpdate::class));
     }
 }

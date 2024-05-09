@@ -27,6 +27,6 @@ class ReportHtmlLineTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportHtmlLine::class));
+        self::assertTrue(class_exists(ReportHtmlLine::class));
     }
 }

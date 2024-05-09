@@ -27,6 +27,6 @@ class ModulesThemesPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesThemesPage::class));
+        self::assertTrue(class_exists(ModulesThemesPage::class));
     }
 }

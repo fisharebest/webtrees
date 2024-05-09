@@ -93,7 +93,7 @@ class ModuleServiceTest extends TestCase
         $modules = $module_service->otherModules()
             ->filter(fn (ModuleInterface $module): bool => !$module instanceof ModuleCustomInterface);
 
-        self::assertSame(4, $modules->count());
+        self::assertCount(4, $modules);
     }
 
     public function testDeletedModules(): void
@@ -102,7 +102,7 @@ class ModuleServiceTest extends TestCase
 
         $module_service = new ModuleService();
 
-        self::assertSame(1, $module_service->deletedModules()->count());
+        self::assertCount(1, $module_service->deletedModules());
         self::assertSame('not-a-module', $module_service->deletedModules()->first());
     }
 }

@@ -27,6 +27,6 @@ class SharedNoteTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SharedNote::class));
+        self::assertTrue(class_exists(SharedNote::class));
     }
 }

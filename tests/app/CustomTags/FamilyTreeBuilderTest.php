@@ -27,6 +27,6 @@ class FamilyTreeBuilderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FamilyTreeBuilder::class));
+        self::assertTrue(class_exists(FamilyTreeBuilder::class));
     }
 }

@@ -27,6 +27,6 @@ class HeaderFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HeaderFactory::class));
+        self::assertTrue(class_exists(HeaderFactory::class));
     }
 }

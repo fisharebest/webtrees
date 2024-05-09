@@ -27,6 +27,6 @@ class ExportGedcomServerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ExportGedcomServer::class));
+        self::assertTrue(class_exists(ExportGedcomServer::class));
     }
 }

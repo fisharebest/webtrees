@@ -27,6 +27,6 @@ class OpenRouteServiceAutocompleteTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(OpenRouteServiceAutocomplete::class));
+        self::assertTrue(class_exists(OpenRouteServiceAutocomplete::class));
     }
 }

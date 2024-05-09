@@ -27,6 +27,6 @@ class AddParentToIndividualActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AddParentToIndividualAction::class));
+        self::assertTrue(class_exists(AddParentToIndividualAction::class));
     }
 }

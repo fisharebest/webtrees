@@ -27,6 +27,6 @@ class ElementFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ElementFactory::class));
+        self::assertTrue(class_exists(ElementFactory::class));
     }
 }

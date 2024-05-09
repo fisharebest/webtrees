@@ -27,6 +27,6 @@ class MapDataDeleteUnusedTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MapDataDeleteUnused::class));
+        self::assertTrue(class_exists(MapDataDeleteUnused::class));
     }
 }

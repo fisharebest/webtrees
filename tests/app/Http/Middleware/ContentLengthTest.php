@@ -27,6 +27,6 @@ class ContentLengthTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ContentLength::class));
+        self::assertTrue(class_exists(ContentLength::class));
     }
 }

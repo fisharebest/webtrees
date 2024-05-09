@@ -27,6 +27,6 @@ class ContactActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ContactAction::class));
+        self::assertTrue(class_exists(ContactAction::class));
     }
 }

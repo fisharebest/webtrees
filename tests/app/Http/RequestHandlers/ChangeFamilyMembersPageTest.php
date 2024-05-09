@@ -27,6 +27,6 @@ class ChangeFamilyMembersPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChangeFamilyMembersPage::class));
+        self::assertTrue(class_exists(ChangeFamilyMembersPage::class));
     }
 }

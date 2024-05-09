@@ -27,6 +27,6 @@ class ChartMediaTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartMedia::class));
+        self::assertTrue(class_exists(ChartMedia::class));
     }
 }

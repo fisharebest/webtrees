@@ -27,6 +27,6 @@ class TreeServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TreeService::class));
+        self::assertTrue(class_exists(TreeService::class));
     }
 }

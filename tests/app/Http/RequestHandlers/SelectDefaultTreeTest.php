@@ -27,6 +27,6 @@ class SelectDefaultTreeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SelectDefaultTree::class));
+        self::assertTrue(class_exists(SelectDefaultTree::class));
     }
 }

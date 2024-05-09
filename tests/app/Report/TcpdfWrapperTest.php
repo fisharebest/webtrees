@@ -27,6 +27,6 @@ class TcpdfWrapperTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TcpdfWrapper::class));
+        self::assertTrue(class_exists(TcpdfWrapper::class));
     }
 }

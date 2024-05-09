@@ -27,6 +27,6 @@ class LinkChildToFamilyActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LinkChildToFamilyAction::class));
+        self::assertTrue(class_exists(LinkChildToFamilyAction::class));
     }
 }

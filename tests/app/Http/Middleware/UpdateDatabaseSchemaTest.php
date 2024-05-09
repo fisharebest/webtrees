@@ -27,6 +27,6 @@ class UpdateDatabaseSchemaTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UpdateDatabaseSchema::class));
+        self::assertTrue(class_exists(UpdateDatabaseSchema::class));
     }
 }

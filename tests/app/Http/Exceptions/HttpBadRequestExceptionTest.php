@@ -27,6 +27,6 @@ class HttpBadRequestExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HttpBadRequestException::class));
+        self::assertTrue(class_exists(HttpBadRequestException::class));
     }
 }

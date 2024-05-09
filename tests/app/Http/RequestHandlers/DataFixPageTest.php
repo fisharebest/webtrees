@@ -27,6 +27,6 @@ class DataFixPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DataFixPage::class));
+        self::assertTrue(class_exists(DataFixPage::class));
     }
 }

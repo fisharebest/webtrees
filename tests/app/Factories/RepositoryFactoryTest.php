@@ -27,6 +27,6 @@ class RepositoryFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RepositoryFactory::class));
+        self::assertTrue(class_exists(RepositoryFactory::class));
     }
 }

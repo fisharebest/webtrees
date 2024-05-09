@@ -27,6 +27,6 @@ class ReportListPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportListPage::class));
+        self::assertTrue(class_exists(ReportListPage::class));
     }
 }

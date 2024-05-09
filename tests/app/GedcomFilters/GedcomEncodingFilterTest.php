@@ -27,6 +27,6 @@ class GedcomEncodingFilterTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GedcomEncodingFilter::class));
+        self::assertTrue(class_exists(GedcomEncodingFilter::class));
     }
 }

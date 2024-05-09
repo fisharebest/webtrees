@@ -27,6 +27,6 @@ class XrefParserTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(XrefParser::class));
+        self::assertTrue(class_exists(XrefParser::class));
     }
 }

@@ -27,6 +27,6 @@ class EditRawRecordActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EditRawRecordAction::class));
+        self::assertTrue(class_exists(EditRawRecordAction::class));
     }
 }

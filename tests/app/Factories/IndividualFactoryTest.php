@@ -27,6 +27,6 @@ class IndividualFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(IndividualFactory::class));
+        self::assertTrue(class_exists(IndividualFactory::class));
     }
 }

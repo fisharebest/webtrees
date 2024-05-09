@@ -27,6 +27,6 @@ class FamilyFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FamilyFact::class));
+        self::assertTrue(class_exists(FamilyFact::class));
     }
 }

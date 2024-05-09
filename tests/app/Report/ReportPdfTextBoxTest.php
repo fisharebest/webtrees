@@ -27,6 +27,6 @@ class ReportPdfTextBoxTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportPdfTextBox::class));
+        self::assertTrue(class_exists(ReportPdfTextBox::class));
     }
 }

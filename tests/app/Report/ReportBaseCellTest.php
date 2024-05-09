@@ -27,6 +27,6 @@ class ReportBaseCellTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReportBaseCell::class));
+        self::assertTrue(class_exists(ReportBaseCell::class));
     }
 }

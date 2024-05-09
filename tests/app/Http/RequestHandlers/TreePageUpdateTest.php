@@ -27,6 +27,6 @@ class TreePageUpdateTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TreePageUpdate::class));
+        self::assertTrue(class_exists(TreePageUpdate::class));
     }
 }

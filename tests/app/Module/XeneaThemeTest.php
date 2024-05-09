@@ -27,6 +27,6 @@ class XeneaThemeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(XeneaTheme::class));
+        self::assertTrue(class_exists(XeneaTheme::class));
     }
 }

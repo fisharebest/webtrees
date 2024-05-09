@@ -27,6 +27,6 @@ class EmailPreferencesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EmailPreferencesAction::class));
+        self::assertTrue(class_exists(EmailPreferencesAction::class));
     }
 }

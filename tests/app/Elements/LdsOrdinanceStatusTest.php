@@ -27,6 +27,6 @@ class LdsOrdinanceStatusTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LdsOrdinanceStatus::class));
+        self::assertTrue(class_exists(LdsOrdinanceStatus::class));
     }
 }

@@ -27,6 +27,6 @@ class ContactRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ContactRepository::class));
+        self::assertTrue(class_exists(ContactRepository::class));
     }
 }

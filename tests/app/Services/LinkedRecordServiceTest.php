@@ -27,6 +27,6 @@ class LinkedRecordServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LinkedRecordService::class));
+        self::assertTrue(class_exists(LinkedRecordService::class));
     }
 }

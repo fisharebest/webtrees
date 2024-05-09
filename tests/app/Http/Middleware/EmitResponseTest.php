@@ -27,6 +27,6 @@ class EmitResponseTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EmitResponse::class));
+        self::assertTrue(class_exists(EmitResponse::class));
     }
 }

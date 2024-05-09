@@ -27,6 +27,6 @@ class TreePreferencesPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TreePreferencesPage::class));
+        self::assertTrue(class_exists(TreePreferencesPage::class));
     }
 }

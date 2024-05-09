@@ -27,6 +27,6 @@ class SeedUserTableTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SeedUserTable::class));
+        self::assertTrue(class_exists(SeedUserTable::class));
     }
 }

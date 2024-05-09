@@ -27,6 +27,6 @@ class ClientIpTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ClientIp::class));
+        self::assertTrue(class_exists(ClientIp::class));
     }
 }

@@ -27,6 +27,6 @@ class MapDataServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MapDataService::class));
+        self::assertTrue(class_exists(MapDataService::class));
     }
 }

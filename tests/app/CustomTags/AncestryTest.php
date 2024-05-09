@@ -27,6 +27,6 @@ class AncestryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Ancestry::class));
+        self::assertTrue(class_exists(Ancestry::class));
     }
 }

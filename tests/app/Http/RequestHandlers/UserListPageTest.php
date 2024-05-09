@@ -27,6 +27,6 @@ class UserListPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UserListPage::class));
+        self::assertTrue(class_exists(UserListPage::class));
     }
 }

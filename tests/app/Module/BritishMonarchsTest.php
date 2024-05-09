@@ -27,6 +27,6 @@ class BritishMonarchsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BritishMonarchs::class));
+        self::assertTrue(class_exists(BritishMonarchs::class));
     }
 }

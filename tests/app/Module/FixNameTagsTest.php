@@ -27,6 +27,6 @@ class FixNameTagsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FixNameTags::class));
+        self::assertTrue(class_exists(FixNameTags::class));
     }
 }

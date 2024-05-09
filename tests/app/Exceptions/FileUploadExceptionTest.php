@@ -27,6 +27,6 @@ class FileUploadExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FileUploadException::class));
+        self::assertTrue(class_exists(FileUploadException::class));
     }
 }

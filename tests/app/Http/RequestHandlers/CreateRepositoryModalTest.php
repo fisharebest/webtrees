@@ -27,6 +27,6 @@ class CreateRepositoryModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateRepositoryModal::class));
+        self::assertTrue(class_exists(CreateRepositoryModal::class));
     }
 }

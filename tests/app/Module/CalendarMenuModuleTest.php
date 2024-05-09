@@ -27,6 +27,6 @@ class CalendarMenuModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CalendarMenuModule::class));
+        self::assertTrue(class_exists(CalendarMenuModule::class));
     }
 }

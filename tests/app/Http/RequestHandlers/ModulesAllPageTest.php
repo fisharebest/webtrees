@@ -27,6 +27,6 @@ class ModulesAllPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesAllPage::class));
+        self::assertTrue(class_exists(ModulesAllPage::class));
     }
 }

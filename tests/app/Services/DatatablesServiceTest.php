@@ -27,6 +27,6 @@ class DatatablesServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DatatablesService::class));
+        self::assertTrue(class_exists(DatatablesService::class));
     }
 }

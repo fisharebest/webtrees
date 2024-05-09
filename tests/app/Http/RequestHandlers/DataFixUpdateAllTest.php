@@ -27,6 +27,6 @@ class DataFixUpdateAllTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DataFixUpdateAll::class));
+        self::assertTrue(class_exists(DataFixUpdateAll::class));
     }
 }

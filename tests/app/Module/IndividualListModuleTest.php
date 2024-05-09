@@ -27,6 +27,6 @@ class IndividualListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(IndividualListModule::class));
+        self::assertTrue(class_exists(IndividualListModule::class));
     }
 }

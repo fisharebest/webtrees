@@ -27,6 +27,6 @@ class SearchPhoneticActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SearchPhoneticAction::class));
+        self::assertTrue(class_exists(SearchPhoneticAction::class));
     }
 }

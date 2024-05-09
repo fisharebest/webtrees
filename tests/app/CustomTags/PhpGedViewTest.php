@@ -27,6 +27,6 @@ class PhpGedViewTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PhpGedView::class));
+        self::assertTrue(class_exists(PhpGedView::class));
     }
 }

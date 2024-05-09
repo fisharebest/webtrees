@@ -27,6 +27,6 @@ class MediaPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MediaPage::class));
+        self::assertTrue(class_exists(MediaPage::class));
     }
 }

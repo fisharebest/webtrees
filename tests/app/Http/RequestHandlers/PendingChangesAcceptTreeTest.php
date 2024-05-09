@@ -27,6 +27,6 @@ class PendingChangesAcceptTreeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PendingChangesAcceptTree::class));
+        self::assertTrue(class_exists(PendingChangesAcceptTree::class));
     }
 }

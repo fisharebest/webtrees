@@ -27,6 +27,6 @@ class ServerRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ServerRepository::class));
+        self::assertTrue(class_exists(ServerRepository::class));
     }
 }

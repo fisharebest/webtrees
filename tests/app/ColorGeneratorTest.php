@@ -27,6 +27,6 @@ class ColorGeneratorTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ColorGenerator::class));
+        self::assertTrue(class_exists(ColorGenerator::class));
     }
 }

@@ -27,6 +27,6 @@ class ChartAgeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartAge::class));
+        self::assertTrue(class_exists(ChartAge::class));
     }
 }

@@ -27,6 +27,6 @@ class AddParentToIndividualPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AddParentToIndividualPage::class));
+        self::assertTrue(class_exists(AddParentToIndividualPage::class));
     }
 }

@@ -27,6 +27,6 @@ class CreateTreePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CreateTreePage::class));
+        self::assertTrue(class_exists(CreateTreePage::class));
     }
 }

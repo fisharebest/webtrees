@@ -27,6 +27,6 @@ class SeedGedcomTableTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SeedGedcomTable::class));
+        self::assertTrue(class_exists(SeedGedcomTable::class));
     }
 }

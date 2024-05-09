@@ -27,6 +27,6 @@ class MergeFactsPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MergeFactsPage::class));
+        self::assertTrue(class_exists(MergeFactsPage::class));
     }
 }

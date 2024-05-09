@@ -27,6 +27,6 @@ class SelectNewFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SelectNewFact::class));
+        self::assertTrue(class_exists(SelectNewFact::class));
     }
 }

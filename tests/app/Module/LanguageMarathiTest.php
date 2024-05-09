@@ -27,6 +27,6 @@ class LanguageMarathiTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LanguageMarathi::class));
+        self::assertTrue(class_exists(LanguageMarathi::class));
     }
 }

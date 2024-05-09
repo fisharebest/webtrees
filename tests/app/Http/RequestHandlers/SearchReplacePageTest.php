@@ -27,6 +27,6 @@ class SearchReplacePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SearchReplacePage::class));
+        self::assertTrue(class_exists(SearchReplacePage::class));
     }
 }

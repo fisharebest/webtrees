@@ -27,6 +27,6 @@ class MapDataDeleteTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MapDataDelete::class));
+        self::assertTrue(class_exists(MapDataDelete::class));
     }
 }

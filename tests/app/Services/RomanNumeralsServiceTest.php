@@ -27,6 +27,6 @@ class RomanNumeralsServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RomanNumeralsService::class));
+        self::assertTrue(class_exists(RomanNumeralsService::class));
     }
 }

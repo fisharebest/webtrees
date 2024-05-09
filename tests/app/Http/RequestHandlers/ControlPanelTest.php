@@ -27,6 +27,6 @@ class ControlPanelTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ControlPanel::class));
+        self::assertTrue(class_exists(ControlPanel::class));
     }
 }

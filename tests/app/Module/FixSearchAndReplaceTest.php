@@ -27,6 +27,6 @@ class FixSearchAndReplaceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FixSearchAndReplace::class));
+        self::assertTrue(class_exists(FixSearchAndReplace::class));
     }
 }

@@ -27,6 +27,6 @@ class GedcomServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GedcomService::class));
+        self::assertTrue(class_exists(GedcomService::class));
     }
 }

@@ -27,6 +27,6 @@ class BingWebmasterToolsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BingWebmasterToolsModule::class));
+        self::assertTrue(class_exists(BingWebmasterToolsModule::class));
     }
 }

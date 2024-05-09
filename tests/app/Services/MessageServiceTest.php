@@ -27,6 +27,6 @@ class MessageServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MessageService::class));
+        self::assertTrue(class_exists(MessageService::class));
     }
 }

@@ -27,6 +27,6 @@ class AddSpouseToFamilyActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(AddSpouseToFamilyAction::class));
+        self::assertTrue(class_exists(AddSpouseToFamilyAction::class));
     }
 }

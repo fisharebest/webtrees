@@ -27,6 +27,6 @@ class PendingChangesLogDataTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PendingChangesLogData::class));
+        self::assertTrue(class_exists(PendingChangesLogData::class));
     }
 }

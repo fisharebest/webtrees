@@ -27,6 +27,6 @@ class LinkMediaToSourceModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LinkMediaToSourceModal::class));
+        self::assertTrue(class_exists(LinkMediaToSourceModal::class));
     }
 }

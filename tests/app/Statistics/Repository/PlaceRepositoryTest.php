@@ -27,6 +27,6 @@ class PlaceRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PlaceRepository::class));
+        self::assertTrue(class_exists(PlaceRepository::class));
     }
 }

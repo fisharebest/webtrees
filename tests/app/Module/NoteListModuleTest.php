@@ -27,6 +27,6 @@ class NoteListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(NoteListModule::class));
+        self::assertTrue(class_exists(NoteListModule::class));
     }
 }

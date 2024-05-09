@@ -27,6 +27,6 @@ class ReorderNamesPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ReorderNamesPage::class));
+        self::assertTrue(class_exists(ReorderNamesPage::class));
     }
 }

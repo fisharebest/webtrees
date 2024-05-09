@@ -27,6 +27,6 @@ class RedirectLegacyUrlsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RedirectLegacyUrlsModule::class));
+        self::assertTrue(class_exists(RedirectLegacyUrlsModule::class));
     }
 }

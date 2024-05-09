@@ -27,6 +27,6 @@ class LanguageFaroeseTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LanguageFaroese::class));
+        self::assertTrue(class_exists(LanguageFaroese::class));
     }
 }

@@ -27,6 +27,6 @@ class XrefAssociateTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(XrefAssociate::class));
+        self::assertTrue(class_exists(XrefAssociate::class));
     }
 }

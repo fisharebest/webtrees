@@ -27,6 +27,6 @@ class PlaceHierarchyListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PlaceHierarchyListModule::class));
+        self::assertTrue(class_exists(PlaceHierarchyListModule::class));
     }
 }

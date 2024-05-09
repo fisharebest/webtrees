@@ -27,6 +27,6 @@ class RepositoryListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RepositoryListModule::class));
+        self::assertTrue(class_exists(RepositoryListModule::class));
     }
 }

@@ -27,6 +27,6 @@ class LanguageTagalogTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LanguageTagalog::class));
+        self::assertTrue(class_exists(LanguageTagalog::class));
     }
 }

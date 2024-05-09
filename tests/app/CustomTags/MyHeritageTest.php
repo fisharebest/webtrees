@@ -27,6 +27,6 @@ class MyHeritageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MyHeritage::class));
+        self::assertTrue(class_exists(MyHeritage::class));
     }
 }

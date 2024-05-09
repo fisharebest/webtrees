@@ -27,6 +27,6 @@ class EditFactActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EditFactAction::class));
+        self::assertTrue(class_exists(EditFactAction::class));
     }
 }

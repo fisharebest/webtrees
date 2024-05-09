@@ -27,6 +27,6 @@ class EditRecordPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EditRecordPage::class));
+        self::assertTrue(class_exists(EditRecordPage::class));
     }
 }

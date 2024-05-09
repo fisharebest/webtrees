@@ -27,6 +27,6 @@ class ChartsMenuModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartsMenuModule::class));
+        self::assertTrue(class_exists(ChartsMenuModule::class));
     }
 }

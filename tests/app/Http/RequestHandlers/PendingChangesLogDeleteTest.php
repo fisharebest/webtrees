@@ -27,6 +27,6 @@ class PendingChangesLogDeleteTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PendingChangesLogDelete::class));
+        self::assertTrue(class_exists(PendingChangesLogDelete::class));
     }
 }

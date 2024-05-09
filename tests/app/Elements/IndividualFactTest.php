@@ -27,6 +27,6 @@ class IndividualFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(IndividualFact::class));
+        self::assertTrue(class_exists(IndividualFact::class));
     }
 }

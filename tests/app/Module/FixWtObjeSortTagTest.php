@@ -27,6 +27,6 @@ class FixWtObjeSortTagTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FixWtObjeSortTag::class));
+        self::assertTrue(class_exists(FixWtObjeSortTag::class));
     }
 }

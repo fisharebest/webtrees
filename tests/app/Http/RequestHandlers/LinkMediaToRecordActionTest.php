@@ -27,6 +27,6 @@ class LinkMediaToRecordActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LinkMediaToRecordAction::class));
+        self::assertTrue(class_exists(LinkMediaToRecordAction::class));
     }
 }

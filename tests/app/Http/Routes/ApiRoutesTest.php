@@ -27,6 +27,6 @@ class ApiRoutesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ApiRoutes::class));
+        self::assertTrue(class_exists(ApiRoutes::class));
     }
 }

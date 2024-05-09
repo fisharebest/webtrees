@@ -27,6 +27,6 @@ class MediaFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MediaFactory::class));
+        self::assertTrue(class_exists(MediaFactory::class));
     }
 }

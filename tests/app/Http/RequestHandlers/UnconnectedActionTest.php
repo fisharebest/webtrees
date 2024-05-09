@@ -27,6 +27,6 @@ class UnconnectedActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(UnconnectedAction::class));
+        self::assertTrue(class_exists(UnconnectedAction::class));
     }
 }

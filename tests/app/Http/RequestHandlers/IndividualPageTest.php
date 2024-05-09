@@ -27,6 +27,6 @@ class IndividualPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(IndividualPage::class));
+        self::assertTrue(class_exists(IndividualPage::class));
     }
 }

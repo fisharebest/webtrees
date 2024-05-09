@@ -27,6 +27,6 @@ class CustomIndividualEventTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(CustomIndividualEvent::class));
+        self::assertTrue(class_exists(CustomIndividualEvent::class));
     }
 }

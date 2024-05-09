@@ -27,6 +27,6 @@ class DeletePathTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(DeletePath::class));
+        self::assertTrue(class_exists(DeletePath::class));
     }
 }

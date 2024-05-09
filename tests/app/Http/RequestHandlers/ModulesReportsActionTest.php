@@ -27,6 +27,6 @@ class ModulesReportsActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesReportsAction::class));
+        self::assertTrue(class_exists(ModulesReportsAction::class));
     }
 }

@@ -27,6 +27,6 @@ class HtmlTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Html::class));
+        self::assertTrue(class_exists(Html::class));
     }
 }

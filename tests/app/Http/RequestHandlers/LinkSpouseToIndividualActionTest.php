@@ -27,6 +27,6 @@ class LinkSpouseToIndividualActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(LinkSpouseToIndividualAction::class));
+        self::assertTrue(class_exists(LinkSpouseToIndividualAction::class));
     }
 }

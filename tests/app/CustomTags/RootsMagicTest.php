@@ -27,6 +27,6 @@ class RootsMagicTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RootsMagic::class));
+        self::assertTrue(class_exists(RootsMagic::class));
     }
 }

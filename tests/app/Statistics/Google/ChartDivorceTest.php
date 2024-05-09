@@ -27,6 +27,6 @@ class ChartDivorceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ChartDivorce::class));
+        self::assertTrue(class_exists(ChartDivorce::class));
     }
 }

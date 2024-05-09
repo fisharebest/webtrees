@@ -27,6 +27,6 @@ class HitCountRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HitCountRepository::class));
+        self::assertTrue(class_exists(HitCountRepository::class));
     }
 }

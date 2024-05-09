@@ -27,6 +27,6 @@ class GedcomRecordFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(GedcomRecordFactory::class));
+        self::assertTrue(class_exists(GedcomRecordFactory::class));
     }
 }

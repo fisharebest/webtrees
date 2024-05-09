@@ -27,6 +27,6 @@ class FixCemeteryTagTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FixCemeteryTag::class));
+        self::assertTrue(class_exists(FixCemeteryTag::class));
     }
 }

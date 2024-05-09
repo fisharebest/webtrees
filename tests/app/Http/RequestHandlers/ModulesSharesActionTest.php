@@ -27,6 +27,6 @@ class ModulesSharesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(ModulesSharesAction::class));
+        self::assertTrue(class_exists(ModulesSharesAction::class));
     }
 }

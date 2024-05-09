@@ -27,6 +27,6 @@ class RobotsTxtTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(RobotsTxt::class));
+        self::assertTrue(class_exists(RobotsTxt::class));
     }
 }

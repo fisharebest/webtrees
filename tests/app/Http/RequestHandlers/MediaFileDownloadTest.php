@@ -27,6 +27,6 @@ class MediaFileDownloadTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(MediaFileDownload::class));
+        self::assertTrue(class_exists(MediaFileDownload::class));
     }
 }

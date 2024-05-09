@@ -27,6 +27,6 @@ class HttpNotFoundExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HttpNotFoundException::class));
+        self::assertTrue(class_exists(HttpNotFoundException::class));
     }
 }

@@ -27,6 +27,6 @@ class TomSelectMediaObjectTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TomSelectMediaObject::class));
+        self::assertTrue(class_exists(TomSelectMediaObject::class));
     }
 }

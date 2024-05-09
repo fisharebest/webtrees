@@ -27,6 +27,6 @@ class GeneatiqueTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Geneatique::class));
+        self::assertTrue(class_exists(Geneatique::class));
     }
 }

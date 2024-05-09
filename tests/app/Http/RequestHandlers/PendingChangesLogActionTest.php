@@ -27,6 +27,6 @@ class PendingChangesLogActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(PendingChangesLogAction::class));
+        self::assertTrue(class_exists(PendingChangesLogAction::class));
     }
 }

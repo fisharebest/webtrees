@@ -27,6 +27,6 @@ class SecurityHeadersTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(SecurityHeaders::class));
+        self::assertTrue(class_exists(SecurityHeaders::class));
     }
 }

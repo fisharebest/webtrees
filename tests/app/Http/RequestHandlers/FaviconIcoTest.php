@@ -27,6 +27,6 @@ class FaviconIcoTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FaviconIco::class));
+        self::assertTrue(class_exists(FaviconIco::class));
     }
 }

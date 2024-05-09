@@ -27,6 +27,6 @@ class TreePageBlockTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(TreePageBlock::class));
+        self::assertTrue(class_exists(TreePageBlock::class));
     }
 }

@@ -27,6 +27,6 @@ class FavoritesRepositoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(FavoritesRepository::class));
+        self::assertTrue(class_exists(FavoritesRepository::class));
     }
 }

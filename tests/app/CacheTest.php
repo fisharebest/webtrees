@@ -27,6 +27,6 @@ class CacheTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(Cache::class));
+        self::assertTrue(class_exists(Cache::class));
     }
 }

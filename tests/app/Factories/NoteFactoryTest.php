@@ -27,6 +27,6 @@ class NoteFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(NoteFactory::class));
+        self::assertTrue(class_exists(NoteFactory::class));
     }
 }

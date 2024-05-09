@@ -27,6 +27,6 @@ class HereMapsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(HereMaps::class));
+        self::assertTrue(class_exists(HereMaps::class));
     }
 }

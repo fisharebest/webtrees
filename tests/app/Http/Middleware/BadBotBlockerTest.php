@@ -27,6 +27,6 @@ class BadBotBlockerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(BadBotBlocker::class));
+        self::assertTrue(class_exists(BadBotBlocker::class));
     }
 }

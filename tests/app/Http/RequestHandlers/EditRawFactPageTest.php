@@ -27,6 +27,6 @@ class EditRawFactPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(EditRawFactPage::class));
+        self::assertTrue(class_exists(EditRawFactPage::class));
     }
 }
