@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-05-07 20:32+0000\n"
+"PO-Revision-Date: 2024-05-10 12:32+0000\n"
 "Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -9474,7 +9474,7 @@ msgstr "எனது பரம்பரை"
 
 #: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1614
 msgid "My individual record"
-msgstr ""
+msgstr "என்னுடைய தனிப்பட்ட பதிவு"
 
 #. I18N: Name of a module
 #: admin_modules.php:226 app/Module/UserWelcomeModule.php:29
@@ -9622,7 +9622,7 @@ msgstr ""
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1697
 msgid "Never married"
-msgstr ""
+msgstr "திருமணமே ஆகாதவர்"
 
 #. I18N: gedcom tag _NMAR
 #: app/GedcomTag.php:1693
@@ -9653,7 +9653,7 @@ msgstr ""
 
 #: admin_site_change.php:344
 msgid "New data"
-msgstr ""
+msgstr "புதிய தரவு"
 
 #. I18N: %s is a server name/URL
 #: login.php:330
@@ -9765,7 +9765,7 @@ msgstr ""
 
 #: admin_users.php:639 app/Functions/FunctionsPrintFacts.php:308
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
@@ -9786,7 +9786,7 @@ msgstr ""
 #: app/Controller/DescendancyController.php:213
 #: app/Functions/FunctionsCharts.php:302 app/Module/DescendancyModule.php:273
 msgid "No children"
-msgstr ""
+msgstr "குழந்தைகள் இல்லை"
 
 #: app/Functions/FunctionsEdit.php:251
 msgid "No contact"
@@ -9802,11 +9802,11 @@ msgstr ""
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "நகல்கள் எதுவும் கிடைக்கவில்லை."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
-msgstr ""
+msgstr "பிழைகள் ஏதும் காணப்படவில்லை."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Functions/FunctionsPrintLists.php:1720
@@ -9814,18 +9814,18 @@ msgstr ""
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "அடுத்த %s நாளுக்கான நிகழ்வுகள் எதுவும் இல்லை."
+msgstr[1] "அடுத்த %s நாட்களுக்கு எந்த நிகழ்வுகளும் இல்லை."
 
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
 msgid "No events exist for today."
-msgstr ""
+msgstr "இன்றைக்கு எந்த நிகழ்வுகளும் இல்லை."
 
 #: app/Functions/FunctionsPrintLists.php:1718
 #: app/Functions/FunctionsPrintLists.php:1829
 msgid "No events exist for tomorrow."
-msgstr ""
+msgstr "நாளைக்கான நிகழ்வுகள் எதுவும் இல்லை."
 
 #: app/Functions/FunctionsPrintLists.php:1712
 #: app/Functions/FunctionsPrintLists.php:1821
@@ -9898,7 +9898,7 @@ msgstr ""
 #: find.php:640 find.php:667 find.php:689 find.php:711 find.php:735
 #: placelist.php:62
 msgid "No results found."
-msgstr ""
+msgstr "முடிவுகள் எதுவும் கிடைக்கவில்லை."
 
 #: app/Stats.php:5901
 msgid "No signed-in and no anonymous users"
