@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-05-07 20:32+0000\n"
+"PO-Revision-Date: 2024-05-10 12:32+0000\n"
 "Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -9984,7 +9984,7 @@ msgstr "எனது பரம்பரை"
 
 #: app/Module/ModuleThemeTrait.php:334 app/Module/UserWelcomeModule.php:108
 msgid "My individual record"
-msgstr ""
+msgstr "என்னுடைய தனிப்பட்ட பதிவு"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/UserPage.php:90 app/Module/ModuleThemeTrait.php:349
@@ -10137,7 +10137,7 @@ msgstr ""
 #: app/Elements/FamilyStatusText.php:72 app/Factories/ElementFactory.php:310
 #: app/GedcomTag.php:1192
 msgid "Never married"
-msgstr ""
+msgstr "திருமணமே ஆகாதவர்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:361
@@ -10162,7 +10162,7 @@ msgstr ""
 
 #: resources/views/admin/changes-log.phtml:78
 msgid "New data"
-msgstr ""
+msgstr "புதிய தரவு"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/RegisterAction.php:174
@@ -10278,7 +10278,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:265
 #: resources/views/admin/users-edit.phtml:335
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: app/Http/RequestHandlers/ImportGedcomAction.php:88
 #: app/Http/RequestHandlers/ImportGedcomAction.php:100
@@ -10298,7 +10298,7 @@ msgstr ""
 #: app/Module/DescendancyModule.php:273
 #: resources/views/family-page-children.phtml:17
 msgid "No children"
-msgstr ""
+msgstr "குழந்தைகள் இல்லை"
 
 #: app/Services/MessageService.php:230
 msgid "No contact"
@@ -10306,27 +10306,27 @@ msgstr ""
 
 #: resources/views/admin/trees-duplicates.phtml:46
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "நகல்கள் எதுவும் கிடைக்கவில்லை."
 
 #: resources/views/admin/trees-check.phtml:35
 msgid "No errors have been found."
-msgstr ""
+msgstr "பிழைகள் ஏதும் காணப்படவில்லை."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Module/UpcomingAnniversariesModule.php:164
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "அடுத்த %s நாளுக்கான நிகழ்வுகள் எதுவும் இல்லை."
+msgstr[1] "அடுத்த %s நாட்களுக்கு எந்த நிகழ்வுகளும் இல்லை."
 
 #: resources/views/modules/todays_events/empty.phtml:8
 msgid "No events exist for today."
-msgstr ""
+msgstr "இன்றைக்கு எந்த நிகழ்வுகளும் இல்லை."
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "No events exist for tomorrow."
-msgstr ""
+msgstr "நாளைக்கான நிகழ்வுகள் எதுவும் இல்லை."
 
 #: resources/views/family-page.phtml:56
 msgid "No facts exist for this family."
@@ -10367,7 +10367,7 @@ msgstr ""
 #: resources/views/search-general-page.phtml:109
 #: resources/views/search-phonetic-page.phtml:98
 msgid "No results found."
-msgstr ""
+msgstr "முடிவுகள் எதுவும் கிடைக்கவில்லை."
 
 #: app/Statistics/Repository/UserRepository.php:84
 msgid "No signed-in and no anonymous users"
