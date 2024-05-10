@@ -125,7 +125,8 @@ class Webtrees
     public const DEBUG = self::STABILITY !== '';
 
     // We want to know about all PHP errors during development, and fewer in production.
-    public const ERROR_REPORTING = self::DEBUG ? E_ALL : E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
+    // Several of our libaries (e.g. laravel) give deprecations for PHP 8.4, and won't be fixed.
+    public const ERROR_REPORTING = (self::DEBUG && PHP_VERSION_ID < 80400)? E_ALL : E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
 
     // Page layouts for various page types.
     public const LAYOUT_ADMINISTRATION = 'layouts/administration';
