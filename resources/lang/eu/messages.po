@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-04-18 15:11+0000\n"
+"PO-Revision-Date: 2024-05-13 13:32+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -14693,7 +14693,9 @@ msgstr "%s erabiltzailea ezabatu da."
 #: resources/views/emails/register-notify-html.phtml:41
 #: resources/views/emails/register-notify-text.phtml:32
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "Erabitzalieak mezu elektronikoa bidali du, sarrera eskaera konfirmatzeko beharrezko den informazioarekin."
+msgstr ""
+"Erabiltzaileak mezu elektronikoa bidali du, sarrera eskaera konfirmatzeko "
+"beharrezko den informazioarekin."
 
 #: app/Http/RequestHandlers/LoginAction.php:115
 #: app/Http/RequestHandlers/LoginAction.php:120
@@ -16712,7 +16714,11 @@ msgstr "Ezin duzu erabiltzaile bat onartu bere helbide elektronikoa zuzena dela 
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Erabiltzailea izan litekeenak, eskaera konfirmatu eta onartzen denean, korreo elektronikoz informatuko zaio. Ondotik erabiltzaile-izenaren aktibazioa burutzen ahal du. Erabiltzaile berriak ezin izanen du saiorik ireki administratzaileak kontua gaitu arte."
+msgstr ""
+"Erabiltzailea izan litekeenari, behin eskaera onartutakoan, korreo "
+"elektronikoz informatuko zaio. Ondotik aktibatzen ahal izanen da "
+"erabiltzaile-kontua. Erabiltzaile berriak ezin izanen du saiorik ireki "
+"administratzaileak kontua gaitu arte."
 
 #: resources/views/setup/step-5-administrator.phtml:73
 msgid "You will use this to sign in to webtrees."
