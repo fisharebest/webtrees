@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-20 19:37+0000\n"
+"PO-Revision-Date: 2024-05-13 13:32+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
@@ -15864,7 +15864,11 @@ msgstr ""
 
 #: help_text.php:305
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Når du tilføjer, redigerer eller sletter information bliver disse ikke gemt med det samme. I stedet for opbevares de i et midlertidigt område. De nye informationer træder først i kraft når de er blevet kontrollleret og accepteret af administrator."
+msgstr ""
+"Når du tilføjer, redigerer eller sletter information bliver disse ikke gemt "
+"med det samme. I stedet for opbevares de i et midlertidigt område. De nye "
+"informationer træder først i kraft når de er blevet kontrolleret og "
+"accepteret af administrator."
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
