@@ -123,7 +123,7 @@ entering your family tree.
 There are lots of configuration options. You'll probably want to review the
 privacy settings first. Don't worry too much about all the other options - the
 defaults are good for most people. If you get stuck, you can get friendly help
-and advice from the [help](https://webtrees.net/forums) forum.
+and advice from the [help](https://www.webtrees.net/index.php/forum) forum.
 
 ## Upgrading
 
