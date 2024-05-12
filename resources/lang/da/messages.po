@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-03-04 10:50+0000\n"
+"PO-Revision-Date: 2024-05-13 13:32+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
-"Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
+"Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16447,7 +16448,11 @@ msgstr "Når du tilføjer et nyt familiemedlem, kan der automatisk blive tilføj
 
 #: resources/views/help/pending-changes.phtml:14
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Når du tilføjer, redigerer eller sletter information bliver disse ikke gemt med det samme. I stedet for opbevares de i et midlertidigt område. De nye informationer træder først i kraft når de er blevet kontrollleret og accepteret af administrator."
+msgstr ""
+"Når du tilføjer, redigerer eller sletter information bliver disse ikke gemt "
+"med det samme. I stedet for opbevares de i et midlertidigt område. De nye "
+"informationer træder først i kraft når de er blevet kontrolleret og "
+"accepteret af administrator."
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
