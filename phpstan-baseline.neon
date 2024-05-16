@@ -1191,8 +1191,13 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$str of function substr_replace expects array\\|string, string\\|null given\\.$#"
 			count: 2
+			path: app/Individual.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
+			count: 4
 			path: app/Individual.php
 
 		-
@@ -1213,6 +1218,11 @@ parameters:
 		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
 			count: 2
+			path: app/Individual.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:\\$getAllNames \\(array\\<array\\<string\\>\\>\\) does not accept array\\<array\\<string\\|null\\>\\>\\.$#"
+			count: 1
 			path: app/Individual.php
 
 		-
@@ -2321,6 +2331,31 @@ parameters:
 			path: app/Report/ReportParserBase.php
 
 		-
+			message: "#^Parameter \\#1 \\$parser of function xml_get_current_line_number expects resource, XMLParser given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser of function xml_get_error_code expects resource, XMLParser given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser of function xml_parse expects resource, XMLParser given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser of function xml_parser_free expects resource, XMLParser given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Parameter \\#1 \\$parser of function xml_set_character_data_handler expects resource, XMLParser given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\:\\:\\$xml_parser \\(XMLParser\\) does not accept resource\\.$#"
 			count: 1
 			path: app/Report/ReportParserBase.php
@@ -2764,6 +2799,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomEditService\\:\\:insertMissingLevels\\(\\) expects string, string\\|null given\\.$#"
 			count: 2
 			path: app/Services/GedcomEditService.php
+
+		-
+			message: "#^Offset 'uri' does not exist on array\\{timed_out\\: bool, blocked\\: bool, eof\\: bool, unread_bytes\\: int, stream_type\\: string, wrapper_type\\: string, wrapper_data\\: mixed, mode\\: string, \\.\\.\\.\\}\\.$#"
+			count: 1
+			path: app/Services/GedcomExportService.php
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
@@ -3541,6 +3581,6 @@ parameters:
 			path: app/Validator.php
 
 		-
-			message: "#^Ternary operator condition is always true\\.$#"
+			message: "#^Left side of && is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
