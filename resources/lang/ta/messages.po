@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-05-10 12:32+0000\n"
+"PO-Revision-Date: 2024-05-18 12:32+0000\n"
 "Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -3316,7 +3316,7 @@ msgstr ""
 #: app/Module/CalendarMenuModule.php:42 app/Module/CalendarMenuModule.php:81
 #: resources/views/modules/yahrzeit/config.phtml:39
 msgid "Calendar"
-msgstr ""
+msgstr "நாட்காட்டி"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:111
@@ -3424,7 +3424,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:505 app/Factories/ElementFactory.php:828
 #: app/GedcomTag.php:536
 msgid "Cemetery"
-msgstr ""
+msgstr "இடுகாடு"
 
 #. I18N: gedcom tag CENS
 #: app/Factories/ElementFactory.php:1154 app/GedcomTag.php:539
@@ -3479,7 +3479,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:63
 msgid "Certificate"
-msgstr ""
+msgstr "சான்றிதழ்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3846,7 +3846,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:217
 msgid "Clippings cart"
-msgstr ""
+msgstr "கிளிப்பிங்ஸ் கார்ட்"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:64
@@ -5941,7 +5941,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
 msgid "Event"
-msgstr ""
+msgstr "நிகழ்வு"
 
 #: app/Factories/ElementFactory.php:1360
 #: resources/views/calendar-page.phtml:174
@@ -6045,7 +6045,7 @@ msgstr ""
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:73
 msgid "FAQ"
-msgstr ""
+msgstr "அடிக்கடி கேட்கப்படும் கேள்விகள்"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:26
@@ -6055,72 +6055,72 @@ msgstr ""
 #. I18N: gedcom tag FACT
 #: app/Factories/ElementFactory.php:1198 app/GedcomTag.php:691
 msgid "Fact"
-msgstr ""
+msgstr "தகவல்"
 
 #: app/Factories/ElementFactory.php:363 app/Factories/ElementFactory.php:381
 #: app/GedcomTag.php:1082
 msgid "Fact 1"
-msgstr ""
+msgstr "தகவல் 1"
 
 #: app/Factories/ElementFactory.php:364 app/Factories/ElementFactory.php:382
 #: app/GedcomTag.php:1100
 msgid "Fact 10"
-msgstr ""
+msgstr "தகவல் 10"
 
 #: app/Factories/ElementFactory.php:365 app/Factories/ElementFactory.php:383
 #: app/GedcomTag.php:1102
 msgid "Fact 11"
-msgstr ""
+msgstr "தகவல் 11"
 
 #: app/Factories/ElementFactory.php:366 app/Factories/ElementFactory.php:384
 #: app/GedcomTag.php:1104
 msgid "Fact 12"
-msgstr ""
+msgstr "தகவல் 12"
 
 #: app/Factories/ElementFactory.php:367 app/Factories/ElementFactory.php:385
 #: app/GedcomTag.php:1106
 msgid "Fact 13"
-msgstr ""
+msgstr "தகவல் 13"
 
 #: app/Factories/ElementFactory.php:368 app/Factories/ElementFactory.php:386
 #: app/GedcomTag.php:1084
 msgid "Fact 2"
-msgstr ""
+msgstr "தகவல் 2"
 
 #: app/Factories/ElementFactory.php:369 app/Factories/ElementFactory.php:387
 #: app/GedcomTag.php:1086
 msgid "Fact 3"
-msgstr ""
+msgstr "தகவல் 3"
 
 #: app/Factories/ElementFactory.php:370 app/Factories/ElementFactory.php:388
 #: app/GedcomTag.php:1088
 msgid "Fact 4"
-msgstr ""
+msgstr "தகவல் 4"
 
 #: app/Factories/ElementFactory.php:371 app/Factories/ElementFactory.php:389
 #: app/GedcomTag.php:1090
 msgid "Fact 5"
-msgstr ""
+msgstr "தகவல் 5"
 
 #: app/Factories/ElementFactory.php:372 app/Factories/ElementFactory.php:390
 #: app/GedcomTag.php:1092
 msgid "Fact 6"
-msgstr ""
+msgstr "தகவல் 6"
 
 #: app/Factories/ElementFactory.php:373 app/Factories/ElementFactory.php:391
 #: app/GedcomTag.php:1094
 msgid "Fact 7"
-msgstr ""
+msgstr "தகவல் 7"
 
 #: app/Factories/ElementFactory.php:374 app/Factories/ElementFactory.php:392
 #: app/GedcomTag.php:1096
 msgid "Fact 8"
-msgstr ""
+msgstr "தகவல் 8"
 
 #: app/Factories/ElementFactory.php:375 app/Factories/ElementFactory.php:393
 #: app/GedcomTag.php:1098
 msgid "Fact 9"
-msgstr ""
+msgstr "தகவல் 9"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:536
@@ -6130,7 +6130,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:240
 #: resources/views/edit/add-fact-row.phtml:22
 msgid "Fact or event"
-msgstr ""
+msgstr "தகவல் அல்லது நிகழ்வு"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:67
@@ -6141,7 +6141,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:161
 #: resources/xml/reports/individual_report.xml:149
 msgid "Facts and events"
-msgstr ""
+msgstr "தகவல்கள் மற்றும் நிகழ்வுகள்"
 
 #: resources/views/admin/trees-preferences.phtml:730
 msgid "Facts for family records"
@@ -6203,7 +6203,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:152
 #: resources/xml/reports/fact_sources.xml:314
 msgid "Families"
-msgstr ""
+msgstr "குடும்பங்கள்"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:96
 #: resources/views/statistics/other/chart-sources.phtml:32
@@ -6244,7 +6244,7 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Module/FamilyBookChartModule.php:92
 msgid "Family book"
-msgstr ""
+msgstr "குடும்ப புத்தகம்"
 
 #. I18N: %s is an individual’s name
 #: app/Module/FamilyBookChartModule.php:138
@@ -6259,7 +6259,7 @@ msgstr ""
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
 msgid "Family file"
-msgstr ""
+msgstr "குடும்ப கோப்பு"
 
 #. I18N: Name of a module/sidebar
 #: app/Module/FamilyNavigatorModule.php:40
@@ -6460,7 +6460,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1090 app/Factories/ElementFactory.php:1343
 #: app/Factories/ElementFactory.php:1390 app/GedcomTag.php:708
 msgid "Fax"
-msgstr ""
+msgstr "தொலைநகல்"
 
 #: app/Date/AbstractGregorianJulianDate.php:202
 msgctxt "Abbreviation for February"
@@ -6493,7 +6493,7 @@ msgstr ""
 #: app/Module/StatisticsChartModule.php:781
 #: resources/views/individual-sex.phtml:36
 msgid "Female"
-msgstr ""
+msgstr "பெண்"
 
 #: app/Statistics/Google/ChartAge.php:118
 #: app/Statistics/Google/ChartMarriageAge.php:141
@@ -6535,7 +6535,7 @@ msgstr ""
 #: resources/views/admin/trees-export.phtml:34
 #: resources/views/modals/media-file-fields.phtml:72
 msgid "Filename"
-msgstr ""
+msgstr "கோப்பு பெயர்"
 
 #: resources/views/admin/media-upload.phtml:45
 #: resources/views/modals/media-file-fields.phtml:54
@@ -6588,11 +6588,11 @@ msgstr ""
 #: app/Http/RequestHandlers/FindDuplicateRecords.php:64
 #: resources/views/admin/trees.phtml:165
 msgid "Find duplicates"
-msgstr ""
+msgstr "நகல்களைக் கண்டறியவும்"
 
 #: app/Module/RelationshipsChartModule.php:719
 msgid "Find other relationships"
-msgstr ""
+msgstr "பிற உறவுகளைக் கண்டறியவும்"
 
 #: app/Module/RelationshipsChartModule.php:446
 #: resources/views/modules/relationships-chart/page.phtml:56
@@ -6669,7 +6669,7 @@ msgstr ""
 #: resources/views/modals/media-file-fields.phtml:63
 #: resources/views/modules/media-list/page.phtml:45
 msgid "Folder"
-msgstr ""
+msgstr "கோப்புறை"
 
 #: resources/views/admin/media-upload.phtml:58
 msgid "Folder name on server"
@@ -6697,7 +6697,7 @@ msgstr ""
 #: resources/xml/reports/pedigree_report.xml:10
 #: resources/xml/reports/relative_ext_report.xml:10
 msgid "Font"
-msgstr ""
+msgstr "எழுத்துரு"
 
 #: resources/views/admin/modules.phtml:232
 #: resources/views/admin/modules.phtml:235
@@ -6748,7 +6748,7 @@ msgstr ""
 #: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:42
 msgid "Forgot password?"
-msgstr ""
+msgstr "கடவுச்சொல் மறந்தால் ?"
 
 #. I18N: gedcom tag FORM
 #: app/Factories/ElementFactory.php:966 app/Factories/ElementFactory.php:1049
@@ -6758,7 +6758,7 @@ msgstr ""
 #: resources/views/help/date.phtml:107 resources/views/help/date.phtml:145
 #: resources/views/report-setup-page.phtml:54
 msgid "Format"
-msgstr ""
+msgstr "வடிவம்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:613
@@ -6839,7 +6839,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:405
 #: resources/views/modules/faq/edit.phtml:21
 msgid "Frequently asked questions"
-msgstr ""
+msgstr "அடிக்கடி கேட்கப்படும் கேள்விகள்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:97 app/GedcomCode/GedcomCodeTemp.php:357
@@ -6850,28 +6850,28 @@ msgstr ""
 #: app/Date/AbstractCalendarDate.php:293
 #: resources/views/edit/initialize-calendar-popup.phtml:28
 msgid "Fri"
-msgstr ""
+msgstr "வெள்ளி"
 
 #: app/Date/AbstractCalendarDate.php:262
 msgid "Friday"
-msgstr ""
+msgstr "வெள்ளிக்கிழமை"
 
 #: app/Elements/RelationIsDescriptor.php:106
 #: app/GedcomCode/GedcomCodeRela.php:186
 msgid "Friend"
-msgstr ""
+msgstr "நண்பர்"
 
 #: app/Elements/RelationIsDescriptor.php:79
 #: app/GedcomCode/GedcomCodeRela.php:183
 msgctxt "FEMALE"
 msgid "Friend"
-msgstr ""
+msgstr "தோழி"
 
 #: app/Elements/RelationIsDescriptor.php:58
 #: app/GedcomCode/GedcomCodeRela.php:179
 msgctxt "MALE"
 msgid "Friend"
-msgstr ""
+msgstr "தோழன்"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:139
@@ -6987,7 +6987,7 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Gender"
-msgstr ""
+msgstr "பாலினம்"
 
 #: resources/views/admin/control-panel.phtml:540
 msgid "Genealogy"
@@ -7419,7 +7419,7 @@ msgstr ""
 #: app/Http/RequestHandlers/HelpText.php:289 resources/views/help/link.phtml:11
 #: resources/views/help/link.phtml:13
 msgid "Help"
-msgstr ""
+msgstr "உதவி"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:108 app/GedcomCode/GedcomCodeTemp.php:390
@@ -7505,7 +7505,7 @@ msgstr ""
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:240 resources/views/help/date.phtml:184
 msgid "Hijri"
-msgstr ""
+msgstr "ஹிஜ்ரி"
 
 #: resources/xml/reports/ahnentafel_report.xml:196
 msgid "His occupation was"
@@ -7539,7 +7539,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:197
 #: resources/views/admin/modules.phtml:201 resources/views/admin/trees.phtml:90
 msgid "Home page"
-msgstr ""
+msgstr "முகப்பு பக்கம்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:239
@@ -7811,11 +7811,11 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CalendarPage.php:129
 msgid "In this month…"
-msgstr ""
+msgstr "இந்த மாதத்தில்…"
 
 #: app/Http/RequestHandlers/CalendarPage.php:132
 msgid "In this year…"
-msgstr ""
+msgstr "இந்த ஆண்டில்…"
 
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
@@ -7865,7 +7865,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
 msgid "India"
-msgstr ""
+msgstr "இந்தியா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:113 app/GedcomCode/GedcomCodeTemp.php:405
@@ -8407,7 +8407,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:288
 msgid "Kuwait"
-msgstr ""
+msgstr "குவைத்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:118 app/GedcomCode/GedcomCodeTemp.php:420
@@ -8475,19 +8475,19 @@ msgstr ""
 #: resources/views/layouts/administration.phtml:57
 #: resources/views/setup/step-1-language.phtml:42
 msgid "Language"
-msgstr ""
+msgstr "மொழி"
 
 #: app/Http/RequestHandlers/ModulesLanguagesPage.php:43
 #: resources/views/admin/control-panel.phtml:610
 #: resources/views/admin/modules.phtml:122
 #: resources/views/admin/modules.phtml:124
 msgid "Languages"
-msgstr ""
+msgstr "மொழிகள்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:290
 msgid "Laos"
-msgstr ""
+msgstr "லாவோஸ்"
 
 #: resources/views/setup/step-2-server-checks.phtml:72
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
@@ -10278,7 +10278,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:265
 #: resources/views/admin/users-edit.phtml:335
 msgid "No"
-msgstr "No"
+msgstr "இல்லை"
 
 #: app/Http/RequestHandlers/ImportGedcomAction.php:88
 #: app/Http/RequestHandlers/ImportGedcomAction.php:100
@@ -10354,7 +10354,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:47
 msgid "No predefined text"
-msgstr ""
+msgstr "முன் வரையறுக்கப்பட்ட உரை இல்லை"
 
 #: resources/views/lists/datatables-attributes.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:33
