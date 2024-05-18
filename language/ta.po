@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-05-10 12:32+0000\n"
+"PO-Revision-Date: 2024-05-18 12:32+0000\n"
 "Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -3296,7 +3296,7 @@ msgstr ""
 #: app/Module/YahrzeitModule.php:280 app/Theme/AbstractTheme.php:1061
 #: lifespan.php:93
 msgid "Calendar"
-msgstr ""
+msgstr "நாட்காட்டி"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:688 admin_trees_config.php:690
@@ -3408,7 +3408,7 @@ msgstr ""
 #. I18N: gedcom tag CEME
 #: app/GedcomTag.php:246 modules_v3/cemetery_report/report.xml:54
 msgid "Cemetery"
-msgstr ""
+msgstr "இடுகாடு"
 
 #. I18N: gedcom tag CENS
 #: app/GedcomTag.php:250
@@ -3440,7 +3440,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1916
 msgid "Certificate"
-msgstr ""
+msgstr "சான்றிதழ்"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6893
@@ -3809,7 +3809,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
-msgstr ""
+msgstr "கிளிப்பிங்ஸ் கார்ட்"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1918
@@ -5729,7 +5729,7 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:157
 #: modules_v3/missing_facts_report/report.xml:55
 msgid "Event"
-msgstr ""
+msgstr "நிகழ்வு"
 
 #: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 msgid "Events"
@@ -5828,7 +5828,7 @@ msgstr ""
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
 msgid "FAQ"
-msgstr ""
+msgstr "அடிக்கடி கேட்கப்படும் கேள்விகள்"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
@@ -5838,59 +5838,59 @@ msgstr ""
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
 msgid "Fact"
-msgstr ""
+msgstr "தகவல்"
 
 #: app/GedcomTag.php:1473
 msgid "Fact 1"
-msgstr ""
+msgstr "தகவல் 1"
 
 #: app/GedcomTag.php:1491
 msgid "Fact 10"
-msgstr ""
+msgstr "தகவல் 10"
 
 #: app/GedcomTag.php:1493
 msgid "Fact 11"
-msgstr ""
+msgstr "தகவல் 11"
 
 #: app/GedcomTag.php:1495
 msgid "Fact 12"
-msgstr ""
+msgstr "தகவல் 12"
 
 #: app/GedcomTag.php:1497
 msgid "Fact 13"
-msgstr ""
+msgstr "தகவல் 13"
 
 #: app/GedcomTag.php:1475
 msgid "Fact 2"
-msgstr ""
+msgstr "தகவல் 2"
 
 #: app/GedcomTag.php:1477
 msgid "Fact 3"
-msgstr ""
+msgstr "தகவல் 3"
 
 #: app/GedcomTag.php:1479
 msgid "Fact 4"
-msgstr ""
+msgstr "தகவல் 4"
 
 #: app/GedcomTag.php:1481
 msgid "Fact 5"
-msgstr ""
+msgstr "தகவல் 5"
 
 #: app/GedcomTag.php:1483
 msgid "Fact 6"
-msgstr ""
+msgstr "தகவல் 6"
 
 #: app/GedcomTag.php:1485
 msgid "Fact 7"
-msgstr ""
+msgstr "தகவல் 7"
 
 #: app/GedcomTag.php:1487
 msgid "Fact 8"
-msgstr ""
+msgstr "தகவல் 8"
 
 #: app/GedcomTag.php:1489
 msgid "Fact 9"
-msgstr ""
+msgstr "தகவல் 9"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1459
@@ -5899,7 +5899,7 @@ msgstr ""
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
-msgstr ""
+msgstr "தகவல் அல்லது நிகழ்வு"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -5907,7 +5907,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr ""
+msgstr "தகவல்கள் மற்றும் நிகழ்வுகள்"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
@@ -5954,7 +5954,7 @@ msgstr ""
 #: repo.php:127 search.php:93 source.php:131 statistics.php:71
 #: statisticsplot.php:990 statisticsplot.php:1094 statisticsplot.php:1344
 msgid "Families"
-msgstr ""
+msgstr "குடும்பங்கள்"
 
 #: app/Stats.php:520 statistics.php:395
 msgid "Families with sources"
@@ -5988,7 +5988,7 @@ msgstr ""
 #: app/Controller/FamilyBookController.php:63
 #: app/Module/FamilyBookChartModule.php:33
 msgid "Family book"
-msgstr ""
+msgstr "குடும்ப புத்தகம்"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/FamilyBookController.php:60
@@ -5999,7 +5999,7 @@ msgstr ""
 #. I18N: gedcom tag FAMF
 #: app/GedcomTag.php:452
 msgid "Family file"
-msgstr ""
+msgstr "குடும்ப கோப்பு"
 
 #: family.php:104
 msgid "Family group information"
@@ -6187,7 +6187,7 @@ msgstr ""
 #. I18N: gedcom tag FAX
 #: app/GedcomTag.php:476
 msgid "Fax"
-msgstr ""
+msgstr "தொலைநகல்"
 
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for February"
@@ -6222,7 +6222,7 @@ msgstr ""
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
 #: statisticsplot.php:1359
 msgid "Female"
-msgstr ""
+msgstr "பெண்"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:109
@@ -6250,7 +6250,7 @@ msgstr ""
 #. I18N: gedcom tag FILE
 #: admin_media.php:481 app/GedcomTag.php:488
 msgid "Filename"
-msgstr ""
+msgstr "கோப்பு பெயர்"
 
 #: addmedia.php:472 addmedia.php:492 admin_media_upload.php:219
 msgid "Filename on server"
@@ -6330,11 +6330,11 @@ msgstr ""
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:469
 msgid "Find duplicates"
-msgstr ""
+msgstr "நகல்களைக் கண்டறியவும்"
 
 #: relationship.php:134
 msgid "Find other relationships"
-msgstr ""
+msgstr "பிற உறவுகளைக் கண்டறியவும்"
 
 #: app/Module/RelationshipsChartModule.php:135 relationship.php:105
 #: relationship.php:114
@@ -6409,7 +6409,7 @@ msgstr ""
 
 #: medialist.php:91
 msgid "Folder"
-msgstr ""
+msgstr "கோப்புறை"
 
 #: addmedia.php:513 admin_media_upload.php:234
 msgid "Folder name on server"
@@ -6434,7 +6434,7 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:10
 msgid "Font"
-msgstr ""
+msgstr "எழுத்துரு"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:301
@@ -6468,13 +6468,13 @@ msgstr ""
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
-msgstr ""
+msgstr "கடவுச்சொல் மறந்தால் ?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
 #: help_text.php:166
 msgid "Format"
-msgstr ""
+msgstr "வடிவம்"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1557
@@ -6553,7 +6553,7 @@ msgstr ""
 #: app/Module/FrequentlyAskedQuestionsModule.php:363
 #: app/Module/FrequentlyAskedQuestionsModule.php:405
 msgid "Frequently asked questions"
-msgstr ""
+msgstr "அடிக்கடி கேட்கப்படும் கேள்விகள்"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:169
@@ -6563,25 +6563,25 @@ msgstr ""
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
-msgstr ""
+msgstr "வெள்ளி"
 
 #: app/Date/CalendarDate.php:355
 msgid "Friday"
-msgstr ""
+msgstr "வெள்ளிக்கிழமை"
 
 #: app/GedcomCode/GedcomCodeRela.php:134
 msgid "Friend"
-msgstr ""
+msgstr "நண்பர்"
 
 #: app/GedcomCode/GedcomCodeRela.php:132
 msgctxt "FEMALE"
 msgid "Friend"
-msgstr ""
+msgstr "தோழி"
 
 #: app/GedcomCode/GedcomCodeRela.php:130
 msgctxt "MALE"
 msgid "Friend"
-msgstr ""
+msgstr "தோழன்"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:90
@@ -6674,7 +6674,7 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:388
 #: modules_v3/individual_report/report.xml:602
 msgid "Gender"
-msgstr ""
+msgstr "பாலினம்"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1298
@@ -7081,7 +7081,7 @@ msgstr ""
 
 #: help_text.php:320
 msgid "Help"
-msgstr ""
+msgstr "உதவி"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:191
@@ -7158,7 +7158,7 @@ msgstr ""
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
 msgid "Hijri"
-msgstr ""
+msgstr "ஹிஜ்ரி"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
@@ -7181,7 +7181,7 @@ msgstr ""
 #. I18N: Name of a module
 #: admin_modules.php:229 app/Module/WelcomeBlockModule.php:30
 msgid "Home page"
-msgstr ""
+msgstr "முகப்பு பக்கம்"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6772
@@ -7447,11 +7447,11 @@ msgstr ""
 
 #: calendar.php:125
 msgid "In this month…"
-msgstr ""
+msgstr "இந்த மாதத்தில்…"
 
 #: calendar.php:128
 msgid "In this year…"
-msgstr ""
+msgstr "இந்த ஆண்டில்…"
 
 #: app/Module/GoogleMapsModule.php:1358
 msgid "Include fully matched places"
@@ -7480,7 +7480,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6777
 msgid "India"
-msgstr ""
+msgstr "இந்தியா"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
@@ -7995,7 +7995,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6797
 msgid "Kuwait"
-msgstr ""
+msgstr "குவைத்"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6792
@@ -8053,17 +8053,17 @@ msgstr ""
 #: admin_users.php:848 app/GedcomTag.php:540 app/Theme/AbstractTheme.php:1408
 #: edituser.php:238 setup.php:111
 msgid "Language"
-msgstr ""
+msgstr "மொழி"
 
 #. I18N: Menu entry
 #: admin_site_config.php:153 app/Theme/AdministrationTheme.php:98
 msgid "Languages"
-msgstr ""
+msgstr "மொழிகள்"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6798
 msgid "Laos"
-msgstr ""
+msgstr "லாவோஸ்"
 
 #: setup.php:180
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
@@ -9765,7 +9765,7 @@ msgstr ""
 
 #: admin_users.php:639 app/Functions/FunctionsPrintFacts.php:308
 msgid "No"
-msgstr "No"
+msgstr "இல்லை"
 
 #: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
@@ -9885,7 +9885,7 @@ msgstr ""
 
 #: admin_site_config.php:127
 msgid "No predefined text"
-msgstr ""
+msgstr "முன் வரையறுக்கப்பட்ட உரை இல்லை"
 
 #: app/I18N.php:227 app/I18N.php:237
 msgid "No records to display"
