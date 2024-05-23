@@ -655,10 +655,6 @@ div.fact_SHARED_NOTE {
     border: 1px solid #81a9cb;
 }
 
-.wt-facts-table td .wt-fact-notes p {
-    overflow-wrap: break-word;
-}
-
 .wt-facts-table .wt-sex-f > td {
     background-color: var(--sex-f-bg);
     border: solid #81a9cb thin;
