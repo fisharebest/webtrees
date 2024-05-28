@@ -1355,7 +1355,7 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, string\\|false given\\.$#',
+    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|float\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|int\\|string\\|null, string\\|false given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/SetupWizard.php',
 ];
@@ -1812,12 +1812,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     // identifier: property.nonObject
     'message' => '#^Cannot access property \\$access_level on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/AbstractModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: return.type
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\AbstractModule\\:\\:getBlockSetting\\(\\) should return string but returns mixed\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/AbstractModule.php',
 ];
@@ -3149,13 +3143,13 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: return.type
-    'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
+    'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/RelationshipsChartModule.php',
 ];
 $ignoreErrors[] = [
     // identifier: return.type
-    'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
+    'message' => '#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/RelationshipsChartModule.php',
 ];
@@ -3210,12 +3204,6 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/RelationshipsChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$nodes of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:nameFromPath\\(\\) expects array\\<Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\>, array\\<Fisharebest\\\\Webtrees\\\\GedcomRecord\\> given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/RelationshipsChartModule.php',
 ];
@@ -5273,7 +5261,7 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, mixed given\\.$#',
+    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|float\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|int\\|string\\|null, mixed given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/ServerCheckService.php',
 ];
@@ -6274,30 +6262,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/admin/control-panel.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/admin/fix-level-0-media-action.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/resources/views/admin/import-complete.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/admin/import-fail.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/admin/import-progress.phtml',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$child_count\\.$#',
     'count' => 2,
@@ -6370,12 +6334,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/admin/locations.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int\\<1, max\\> given\\.$#',
-    'count' => 12,
-    'path' => __DIR__ . '/resources/views/admin/media-upload.phtml',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$message\\.$#',
     'count' => 3,
@@ -6442,12 +6400,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/admin/users-table-options.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 5,
-    'path' => __DIR__ . '/resources/views/calendar-page.phtml',
-];
-$ignoreErrors[] = [
     // identifier: foreach.nonIterable
     'message' => '#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#',
     'count' => 1,
@@ -6506,12 +6458,6 @@ $ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to string\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/components/select.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int\\|string given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/edit-blocks-block.phtml',
 ];
 $ignoreErrors[] = [
     // identifier: deadCode.unreachable
@@ -6682,18 +6628,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/layouts/default.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/lists/anniversaries-list.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/lists/anniversaries-table.phtml',
-];
-$ignoreErrors[] = [
     // identifier: method.nonObject
     'message' => '#^Cannot call method findByComponent\\(\\) on mixed\\.$#',
     'count' => 1,
@@ -6742,18 +6676,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/lists/submitters-table.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/modules/ancestors-chart/page.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/block-template.phtml',
-];
-$ignoreErrors[] = [
     // identifier: method.nonObject
     'message' => '#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
     'count' => 1,
@@ -6764,18 +6686,6 @@ $ignoreErrors[] = [
     'message' => '#^Cannot call method tree\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/census-assistant.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/charts/chart.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/modules/descendancy_chart/page.phtml',
 ];
 $ignoreErrors[] = [
     // identifier: method.nonObject
@@ -6820,12 +6730,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/faq/show.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/faq/show.phtml',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$favorite_id\\.$#',
     'count' => 1,
@@ -6862,12 +6766,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 18,
-    'path' => __DIR__ . '/resources/views/modules/favorites/favorites.phtml',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$body\\.$#',
     'count' => 1,
@@ -6889,12 +6787,6 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$updated\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/gedcom_news/list.phtml',
 ];
 $ignoreErrors[] = [
@@ -7000,12 +6892,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-list.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-list.phtml',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$record\\.$#',
     'count' => 12,
@@ -7024,38 +6910,14 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-table.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/recent_changes/changes-table.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/recent_changes/config.phtml',
-];
-$ignoreErrors[] = [
     // identifier: method.nonObject
     'message' => '#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/relatives/family.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/share-anniversary/share.phtml',
-];
-$ignoreErrors[] = [
     // identifier: method.nonObject
     'message' => '#^Cannot call method date\\(\\) on Fisharebest\\\\Webtrees\\\\Fact\\|null\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/sitemap/sitemap-file-xml.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, float given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/modules/sitemap/sitemap-file-xml.phtml',
 ];
@@ -7124,18 +6986,6 @@ $ignoreErrors[] = [
     'message' => '#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:wife\\(\\)\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/modules/timeline-chart/chart.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/modules/timeline-chart/chart.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/todo/research-tasks.phtml',
 ];
 $ignoreErrors[] = [
     // identifier: offsetAccess.nonOffsetAccessible
@@ -7222,12 +7072,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/modules/user_blog/list.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/modules/user_blog/list.phtml',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$fact\\.$#',
     'count' => 2,
@@ -7243,12 +7087,6 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$yahrzeit_date\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/yahrzeit/list.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/yahrzeit/list.phtml',
 ];
 $ignoreErrors[] = [
@@ -7273,12 +7111,6 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$yahrzeit_date\\.$#',
     'count' => 3,
-    'path' => __DIR__ . '/resources/views/modules/yahrzeit/table.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$value of function e expects BackedEnum\\|Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#',
-    'count' => 1,
     'path' => __DIR__ . '/resources/views/modules/yahrzeit/table.phtml',
 ];
 $ignoreErrors[] = [

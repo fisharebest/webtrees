@@ -118,7 +118,7 @@ if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
                 } else {
                     // After death
                     $age = (string) new Age($death_date, $date);
-                    
+
                     if ($age !== '') {
                         $ageText = I18N::translate('(%s after death)', $age);
                     } else {
