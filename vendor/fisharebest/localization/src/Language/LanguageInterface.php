@@ -9,9 +9,9 @@ use Fisharebest\Localization\Territory\TerritoryInterface;
 /**
  * Interface LanguageInterface - Representation of a language.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 interface LanguageInterface
 {
@@ -41,7 +41,7 @@ interface LanguageInterface
     public function defaultScript();
 
     /**
-     * Which plural rule is used in this locale?
+     * Which plural rule is used in this language?
      *
      * @return PluralRuleInterface
      */

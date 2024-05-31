@@ -7,12 +7,20 @@ use Fisharebest\Localization\Territory\TerritoryDk;
 /**
  * Class LocaleEnDe - English
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LocaleEnDk extends LocaleEn
 {
+    public function numberSymbols()
+    {
+        return array(
+            self::GROUP   => self::DOT,
+            self::DECIMAL => self::COMMA,
+        );
+    }
+
     protected function percentFormat()
     {
         return self::PLACEHOLDER . self::NBSP . self::PERCENT;

@@ -7,13 +7,13 @@ use Fisharebest\Localization\PluralRule\PluralRuleInterface;
 /**
  * Class Translator - use a translation to translate messages.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class Translator
 {
-    /** @var array An association of English -> translated messages */
+    /** @var array<string,string> An association of English -> translated messages */
     private $translations;
 
     /** @var PluralRuleInterface */
@@ -22,8 +22,8 @@ class Translator
     /**
      * Create a translator
      *
-     * @param array               $translations
-     * @param PluralRuleInterface $plural_rule
+     * @param array<string,string> $translations
+     * @param PluralRuleInterface  $plural_rule
      */
     public function __construct(array $translations, $plural_rule)
     {

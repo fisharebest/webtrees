@@ -7,9 +7,9 @@ use Fisharebest\Localization\Language\LanguageMy;
 /**
  * Class LocaleMy - Burmese
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LocaleMy extends AbstractLocale implements LocaleInterface
 {

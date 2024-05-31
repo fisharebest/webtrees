@@ -6,11 +6,11 @@ use Fisharebest\Localization\PluralRule\PluralRule1;
 use Fisharebest\Localization\Territory\TerritoryLs;
 
 /**
- * Class LanguageEn - Representation of the Sotho language.
+ * Class LanguageSt - Representation of the Sotho language.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LanguageSt extends AbstractLanguage implements LanguageInterface
 {

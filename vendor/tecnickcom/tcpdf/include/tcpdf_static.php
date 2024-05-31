@@ -3,11 +3,11 @@
 // File name   : tcpdf_static.php
 // Version     : 1.1.4
 // Begin       : 2002-08-03
-// Last Update : 2019-11-01
+// Last Update : 2022-08-12
 // Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
 // License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
-// Copyright (C) 2002-2015 Nicola Asuni - Tecnick.com LTD
+// Copyright (C) 2002-2022 Nicola Asuni - Tecnick.com LTD
 //
 // This file is part of TCPDF software library.
 //
@@ -55,7 +55,7 @@ class TCPDF_STATIC {
 	 * Current TCPDF version.
 	 * @private static
 	 */
-	private static $tcpdf_version = '6.4.2';
+	private static $tcpdf_version = '6.6.2';
 
 	/**
 	 * String alias for total number of pages.
@@ -126,39 +126,6 @@ class TCPDF_STATIC {
 	 */
 	public static function getTCPDFProducer() {
 		return "\x54\x43\x50\x44\x46\x20".self::getTCPDFVersion()."\x20\x28\x68\x74\x74\x70\x3a\x2f\x2f\x77\x77\x77\x2e\x74\x63\x70\x64\x66\x2e\x6f\x72\x67\x29";
-	}
-
-	/**
-	 * Sets the current active configuration setting of magic_quotes_runtime (if the set_magic_quotes_runtime function exist)
-	 * @param boolean $mqr FALSE for off, TRUE for on.
-	 * @since 4.6.025 (2009-08-17)
-	 * @public static
-	 */
-	public static function set_mqr($mqr) {
-		if (!defined('PHP_VERSION_ID')) {
-			$version = PHP_VERSION;
-			define('PHP_VERSION_ID', (($version[0] * 10000) + ($version[2] * 100) + $version[4]));
-		}
-		if (PHP_VERSION_ID < 50300) {
-			@set_magic_quotes_runtime($mqr);
-		}
-	}
-
-	/**
-	 * Gets the current active configuration setting of magic_quotes_runtime (if the get_magic_quotes_runtime function exist)
-	 * @return int Returns 0 if magic quotes runtime is off or get_magic_quotes_runtime doesn't exist, 1 otherwise.
-	 * @since 4.6.025 (2009-08-17)
-	 * @public static
-	 */
-	public static function get_mqr() {
-		if (!defined('PHP_VERSION_ID')) {
-			$version = PHP_VERSION;
-			define('PHP_VERSION_ID', (($version[0] * 10000) + ($version[2] * 100) + $version[4]));
-		}
-		if (PHP_VERSION_ID < 50300) {
-			return @get_magic_quotes_runtime();
-		}
-		return 0;
 	}
 
 	/**
@@ -319,7 +286,7 @@ class TCPDF_STATIC {
 	 */
 	public static function _escapeXML($str) {
 		$replaceTable = array("\0" => '', '&' => '&amp;', '<' => '&lt;', '>' => '&gt;');
-		$str = strtr($str, $replaceTable);
+		$str = strtr($str === null ? '' : $str, $replaceTable);
 		return $str;
 	}
 
@@ -449,8 +416,12 @@ class TCPDF_STATIC {
 		$padding = 16 - (strlen($text) % 16);
 		$text .= str_repeat(chr($padding), $padding);
 		if (extension_loaded('openssl')) {
-			$iv = openssl_random_pseudo_bytes (openssl_cipher_iv_length('aes-256-cbc'));
-			$text = openssl_encrypt($text, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+			$algo = 'aes-256-cbc';
+			if (strlen($key) == 16) {
+				$algo = 'aes-128-cbc';
+			}
+			$iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($algo));
+			$text = openssl_encrypt($text, $algo, $key, OPENSSL_RAW_DATA, $iv);
 			return $iv.substr($text, 0, -16);
 		}
 		$iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC), MCRYPT_RAND);
@@ -471,8 +442,12 @@ class TCPDF_STATIC {
 	 */
 	public static function _AESnopad($key, $text) {
 		if (extension_loaded('openssl')) {
-			$iv = str_repeat("\x00", openssl_cipher_iv_length('aes-256-cbc'));
-			$text = openssl_encrypt($text, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+			$algo = 'aes-256-cbc';
+			if (strlen($key) == 16) {
+				$algo = 'aes-128-cbc';
+			}
+			$iv = str_repeat("\x00", openssl_cipher_iv_length($algo));
+			$text = openssl_encrypt($text, $algo, $key, OPENSSL_RAW_DATA, $iv);
 			return substr($text, 0, -16);
 		}
 		$iv = str_repeat("\x00", mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC));
@@ -498,7 +473,7 @@ class TCPDF_STATIC {
 			return $out;
 		}
 		if ($last_enc_key != $key) {
-			$k = str_repeat($key, ((256 / strlen($key)) + 1));
+			$k = str_repeat($key, (int) ((256 / strlen($key)) + 1));
 			$rc4 = range(0, 255);
 			$j = 0;
 			for ($i = 0; $i < 256; ++$i) {
@@ -844,9 +819,7 @@ class TCPDF_STATIC {
 		if (isset($prop['charLimit'])) {
 			$opt['maxlen'] = intval($prop['charLimit']);
 		}
-		if (!isset($ff)) {
-			$ff = 0; // default value
-		}
+		$ff = 0;
 		// readonly: The read-only characteristic of a field. If a field is read-only, the user can see the field but cannot change it.
 		if (isset($prop['readonly']) AND ($prop['readonly'] == 'true')) {
 			$ff += 1 << 0;
@@ -1132,8 +1105,8 @@ class TCPDF_STATIC {
 	 * Cleanup HTML code (requires HTML Tidy library).
 	 * @param string $html htmlcode to fix
 	 * @param string $default_css CSS commands to add
-	 * @param array $tagvs parameters for setHtmlVSpace method
-	 * @param array $tidy_options options for tidy_parse_string function
+	 * @param array|null $tagvs parameters for setHtmlVSpace method
+	 * @param array|null $tidy_options options for tidy_parse_string function
 	 * @param array $tagvspaces Array of vertical spaces for tags.
 	 * @return string XHTML code cleaned up
 	 * @author Nicola Asuni
@@ -1143,7 +1116,7 @@ class TCPDF_STATIC {
 	 */
 	public static function fixHTMLCode($html, $default_css, $tagvs, $tidy_options, &$tagvspaces) {
 		// configure parameters for HTML Tidy
-		if ($tidy_options === '') {
+		if (TCPDF_STATIC::empty_string($tidy_options)) {
 			$tidy_options = array (
 				'clean' => 1,
 				'drop-empty-paras' => 0,
@@ -1190,7 +1163,7 @@ class TCPDF_STATIC {
 		// remove some empty tag blocks
 		$html = preg_replace('/<div([^\>]*)><\/div>/', '', $html);
 		$html = preg_replace('/<p([^\>]*)><\/p>/', '', $html);
-		if ($tagvs !== '') {
+		if (!TCPDF_STATIC::empty_string($tagvs)) {
 			// set vertical space for some XHTML tags
 			$tagvspaces = $tagvs;
 		}
@@ -1803,7 +1776,11 @@ class TCPDF_STATIC {
 		$flags = $flags === null ? 0 : $flags;
 		// the bug only happens on PHP 5.2 when using the u modifier
 		if ((strpos($modifiers, 'u') === FALSE) OR (count(preg_split('//u', "\n\t", -1, PREG_SPLIT_NO_EMPTY)) == 2)) {
-			return preg_split($pattern.$modifiers, $subject, $limit, $flags);
+			$ret = preg_split($pattern.$modifiers, $subject, $limit, $flags);
+			if ($ret === false) {
+				return array();
+			}
+			return $ret;
 		}
 		// preg_split is bugged - try alternative solution
 		$ret = array();
@@ -1879,7 +1856,8 @@ class TCPDF_STATIC {
 		if (isset($urlData['query']) && $urlData['query']) {
 			$urlQueryData = array();
 			parse_str(urldecode($urlData['query']), $urlQueryData);
-			$updatedUrl = $urlData['scheme'] . '://' . $urlData['host'] . $urlData['path'] . '?' . http_build_query($urlQueryData);
+			$port = isset($urlData['port']) ? ':'.$urlData['port'] : '';
+			$updatedUrl = $urlData['scheme'].'://'.$urlData['host'].$port.$urlData['path'].'?'.http_build_query($urlQueryData);
 		} else {
 			$updatedUrl = $url;
 		}
@@ -2133,7 +2111,7 @@ class TCPDF_STATIC {
 
 	/**
 	 * Read a 4-byte (32 bit) integer from file.
-	 * @param string $f file name.
+	 * @param resource $f file resource.
 	 * @return int 4-byte integer
 	 * @public static
 	 */

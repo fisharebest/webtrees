@@ -5,19 +5,14 @@ namespace Fisharebest\Localization\Territory;
 /**
  * Class AbstractTerritory - Representation of the territory AU - Australia.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class TerritoryAu extends AbstractTerritory implements TerritoryInterface
 {
     public function code()
     {
         return 'AU';
-    }
-
-    public function firstDay()
-    {
-        return 0;
     }
 }

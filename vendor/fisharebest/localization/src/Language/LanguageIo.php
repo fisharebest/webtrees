@@ -3,14 +3,13 @@
 namespace Fisharebest\Localization\Language;
 
 use Fisharebest\Localization\PluralRule\PluralRule1;
-use Fisharebest\Localization\Territory\Territory001;
 
 /**
  * Class LanguageIo - Representation of the Ido language.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LanguageIo extends AbstractLanguage implements LanguageInterface
 {

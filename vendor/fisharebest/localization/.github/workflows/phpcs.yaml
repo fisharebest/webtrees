@@ -1,0 +1,24 @@
+name: Code style
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    name: Code style
+
+    steps:
+      - uses: shivammathur/setup-php@master
+        with:
+          php-version: latest
+
+      - uses: actions/checkout@v2
+
+      - run: composer validate
+
+      - run: composer install
+
+      - run: composer require squizlabs/php_codesniffer
+
+      - name: PHP
+        run: vendor/bin/phpcs --colors --standard=PSR12 --exclude=Generic.Files.LineLength,PSR12.Properties.ConstantVisibility src test

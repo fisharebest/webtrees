@@ -7,9 +7,9 @@ use Fisharebest\Localization\Territory\TerritoryEt;
 /**
  * Class LanguageAa - Representation of the Afar language.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LanguageAa extends AbstractLanguage implements LanguageInterface
 {

@@ -3,11 +3,11 @@
 namespace Fisharebest\Localization\Territory;
 
 /**
- * Class AbstractTerritory - Representation of the territory ST - Sao Tome and Principe.
+ * Class AbstractTerritory - Representation of the territory ST - São Tomé and Príncipe.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class TerritorySt extends AbstractTerritory implements TerritoryInterface
 {

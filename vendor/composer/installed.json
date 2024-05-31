@@ -2,35 +2,32 @@
     "packages": [
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.13.0",
-            "version_normalized": "4.13.0.0",
+            "version": "v4.14.0",
+            "version_normalized": "4.14.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
-                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
             },
-            "require-dev": {
-                "simpletest/simpletest": "dev-master#72de02a7b80c6bb8864ef9bf66d41d2f58f826bd"
-            },
-            "time": "2020-06-29T00:56:53+00:00",
+            "time": "2021-12-25T01:21:49+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
-                "psr-0": {
-                    "HTMLPurifier": "library/"
-                },
                 "files": [
                     "library/HTMLPurifier.composer.php"
                 ],
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
                 "exclude-from-classmap": [
                     "/library/HTMLPurifier/Language/"
                 ]
@@ -53,7 +50,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/master"
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
             },
             "install-path": "../ezyang/htmlpurifier"
         },
@@ -115,27 +112,31 @@
         },
         {
             "name": "fisharebest/ext-calendar",
-            "version": "2.5.0",
-            "version_normalized": "2.5.0.0",
+            "version": "2.6.0",
+            "version_normalized": "2.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/ext-calendar.git",
-                "reference": "155a2d3f5713e1e1805d68cdb42a28ca842e7329"
+                "reference": "a1442ee2e6d0e28da16608be80a20642f52b791b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/155a2d3f5713e1e1805d68cdb42a28ca842e7329",
-                "reference": "155a2d3f5713e1e1805d68cdb42a28ca842e7329",
+                "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/a1442ee2e6d0e28da16608be80a20642f52b791b",
+                "reference": "a1442ee2e6d0e28da16608be80a20642f52b791b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "require-dev": {
-                "phpunit/phpunit": "<6",
-                "satooshi/php-coveralls": "*"
+            "provide": {
+                "ext-calendar": "1"
             },
-            "time": "2018-09-17T20:40:07+00:00",
+            "require-dev": {
+                "phpunit/phpunit": "*",
+                "satooshi/php-coveralls": "*",
+                "yoast/phpunit-polyfills": "*"
+            },
+            "time": "2022-05-31T16:01:21+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -148,12 +149,12 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0+"
+                "GPL-3.0-or-later"
             ],
             "authors": [
                 {
                     "name": "Greg Roach",
-                    "email": "fisharebest@gmail.com",
+                    "email": "greg@subaqua.co.uk",
                     "role": "Developer"
                 }
             ],
@@ -177,23 +178,23 @@
             ],
             "support": {
                 "issues": "https://github.com/fisharebest/ext-calendar/issues",
-                "source": "https://github.com/fisharebest/ext-calendar/tree/develop"
+                "source": "https://github.com/fisharebest/ext-calendar/tree/2.6.0"
             },
             "install-path": "../fisharebest/ext-calendar"
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.15.1",
-            "version_normalized": "1.15.1.0",
+            "version": "1.17.0",
+            "version_normalized": "1.17.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "2f2b620e90998cc263d9fcef87e8b173376d1b0c"
+                "reference": "ed04431fd1329191da0addb028404aa769d6b388"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/2f2b620e90998cc263d9fcef87e8b173376d1b0c",
-                "reference": "2f2b620e90998cc263d9fcef87e8b173376d1b0c",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/ed04431fd1329191da0addb028404aa769d6b388",
+                "reference": "ed04431fd1329191da0addb028404aa769d6b388",
                 "shasum": ""
             },
             "require": {
@@ -204,7 +205,7 @@
                 "php-coveralls/php-coveralls": "*",
                 "phpunit/phpunit": "*"
             },
-            "time": "2019-07-02T10:07:27+00:00",
+            "time": "2022-10-24T15:23:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -214,12 +215,12 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0+"
+                "GPL-3.0-or-later"
             ],
             "authors": [
                 {
                     "name": "Greg Roach",
-                    "email": "fisharebest@gmail.com",
+                    "email": "greg@subaqua.co.uk",
                     "role": "Developer"
                 }
             ],
@@ -239,7 +240,7 @@
             ],
             "support": {
                 "issues": "https://github.com/fisharebest/localization/issues",
-                "source": "https://github.com/fisharebest/localization/tree/1.15.1"
+                "source": "https://github.com/fisharebest/localization/tree/1.17.0"
             },
             "install-path": "../fisharebest/localization"
         },
@@ -508,29 +509,29 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.20",
-            "version_normalized": "2.0.20.0",
+            "version": "v2.0.21",
+            "version_normalized": "2.0.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "0f1f60250fccffeaf5dda91eea1c018aed1adc2a"
+                "reference": "96c132c7f2f7bc3230723b66e89f8f150b29d5ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/0f1f60250fccffeaf5dda91eea1c018aed1adc2a",
-                "reference": "0f1f60250fccffeaf5dda91eea1c018aed1adc2a",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/96c132c7f2f7bc3230723b66e89f8f150b29d5ae",
+                "reference": "96c132c7f2f7bc3230723b66e89f8f150b29d5ae",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "*"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
-            "time": "2021-04-17T09:33:01+00:00",
+            "time": "2022-02-16T17:07:03+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1912,23 +1913,23 @@
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.4.2",
-            "version_normalized": "6.4.2.0",
+            "version": "6.6.2",
+            "version_normalized": "6.6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "172540dcbfdf8dc983bc2fe78feff48ff7ec1c76"
+                "reference": "e3cffc9bcbc76e89e167e9eb0bbda0cab7518459"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/172540dcbfdf8dc983bc2fe78feff48ff7ec1c76",
-                "reference": "172540dcbfdf8dc983bc2fe78feff48ff7ec1c76",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/e3cffc9bcbc76e89e167e9eb0bbda0cab7518459",
+                "reference": "e3cffc9bcbc76e89e167e9eb0bbda0cab7518459",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2021-07-20T14:43:20+00:00",
+            "time": "2022-12-17T10:28:59+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1975,7 +1976,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.4.2"
+                "source": "https://github.com/tecnickcom/TCPDF/tree/6.6.2"
             },
             "funding": [
                 {

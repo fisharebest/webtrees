@@ -7,11 +7,11 @@ use Fisharebest\Localization\Script\ScriptHans;
 use Fisharebest\Localization\Territory\TerritoryCn;
 
 /**
- * Class LanguageZh - Representation of the Chinese language.
+ * Class LanguageYue - Representation of the Chinese language.
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LanguageYue extends AbstractLanguage implements LanguageInterface
 {

@@ -7,9 +7,9 @@ use Fisharebest\Localization\Language\LanguageSmn;
 /**
  * Class LocaleSmn - Inari Sami
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LocaleSmn extends AbstractLocale implements LocaleInterface
 {
@@ -38,6 +38,6 @@ class LocaleSmn extends AbstractLocale implements LocaleInterface
 
     public function percentFormat()
     {
-        return self::PLACEHOLDER . self:: NBSP . self::PERCENT;
+        return self::PLACEHOLDER . self::NBSP . self::PERCENT;
     }
 }

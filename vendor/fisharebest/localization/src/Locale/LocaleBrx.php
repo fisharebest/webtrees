@@ -7,9 +7,9 @@ use Fisharebest\Localization\Language\LanguageBrx;
 /**
  * Class LocaleBrx - Bodo
  *
- * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2019 Greg Roach
- * @license   GPLv3+
+ * @author    Greg Roach <greg@subaqua.co.uk>
+ * @copyright (c) 2022 Greg Roach
+ * @license   GPL-3.0-or-later
  */
 class LocaleBrx extends AbstractLocale implements LocaleInterface
 {
@@ -20,7 +20,7 @@ class LocaleBrx extends AbstractLocale implements LocaleInterface
 
     public function endonym()
     {
-        return 'बड़ो';
+        return 'बर’';
     }
 
     public function language()
