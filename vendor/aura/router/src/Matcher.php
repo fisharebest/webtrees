@@ -8,7 +8,6 @@
  */
 namespace Aura\Router;
 
-use Aura\Router\Exception;
 use Aura\Router\Rule\RuleIterator;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;

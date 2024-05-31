@@ -24,6 +24,7 @@ jobs:
           - '7.4'
           - '8.0'
           - '8.1'
+          - '8.2'
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -32,13 +33,13 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          coverage: none
-          tools: none
+          coverage: xdebug
+          tools: composer:2.2
           ini-values: assert.exception=1, zend.assertions=1
 
       - name: Get composer cache directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -51,4 +52,9 @@ jobs:
         run: composer install --no-interaction --prefer-dist
 
       - name: Run test suite
-        run: ./vendor/bin/phpunit
+        run: php -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-clover=coverage.xml
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: false

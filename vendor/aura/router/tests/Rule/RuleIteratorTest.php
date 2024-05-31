@@ -49,8 +49,7 @@ class RuleIteratorTest extends TestCase
         ]);
 
         $this->expectException(
-            'Aura\Router\Exception\UnexpectedValue',
-            'string'
+            'Aura\Router\Exception\UnexpectedValue'
         );
 
         $this->ruleIterator->current();
@@ -63,8 +62,7 @@ class RuleIteratorTest extends TestCase
         ]);
 
         $this->expectException(
-            'Aura\Router\Exception\UnexpectedValue',
-            'object of type stdClass'
+            'Aura\Router\Exception\UnexpectedValue'
         );
 
         $this->ruleIterator->current();

@@ -6,6 +6,7 @@
  * @license http://opensource.org/licenses/bsd-license.php BSD
  *
  */
+
 namespace Aura\Router;
 
 /**
@@ -17,6 +18,10 @@ namespace Aura\Router;
  */
 class Generator
 {
+    const REGEX = '#{\s*([a-zA-Z_][a-zA-Z0-9_-]*)\s*:*\s*([^{}]*{*[^{}]*}*[^{}]*)\s*}#';
+    const OPT_REGEX = '#{\s*/\s*([a-z][a-zA-Z0-9_-]*\s*:*\s*[^/]*{*[^/]*}*[^/]*,*)}#';
+    const EXPLODE_REGEX = '#\s*([a-zA-Z_][a-zA-Z0-9_-]*)\s*(?::*\s*([^,]*[{\d+,}]*[^,\w\s])[^}]?)?#';
+
     /**
      *
      * The map of all routes.
@@ -117,25 +122,6 @@ class Generator
 
     /**
      *
-     * Generate the route without url encoding.
-     *
-     * @param string $name The route name to look up.
-     *
-     * @param array $data The data to interpolate into the URI; data keys
-     * map to attribute tokens in the path.
-     *
-     * @return string A URI path string
-     *
-     * @throws Exception\RouteNotFound
-     *
-     */
-    public function generateRaw($name, array $data = [])
-    {
-        return $this->build($name, $data, true);
-    }
-
-    /**
-     *
      * Gets the URL for a Route.
      *
      * @param string $name The route name to look up.
@@ -145,9 +131,9 @@ class Generator
      *
      * @param bool $raw Leave the data unencoded?
      *
-     * @throws Exception\RouteNotFound
-     *
      * @return string
+     *
+     * @throws Exception\RouteNotFound
      *
      */
     protected function build($name, array $data, $raw)
@@ -178,7 +164,7 @@ class Generator
         $this->url = $this->basepath . $this->route->path;
 
         $host = $this->route->host;
-        if (! $host) {
+        if (!$host) {
             return;
         }
         $this->url = '//' . $host . $this->url;
@@ -200,9 +186,47 @@ class Generator
      */
     protected function buildTokenReplacements()
     {
-        foreach ($this->data as $key => $val) {
-            $this->repl["{{$key}}"] = $this->encode($val);
+        preg_match_all(self::REGEX, $this->url, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
+            $name = $match[1];
+            foreach ($this->data as $key => $val) {
+                if ($key === $name) {
+                    $token = isset($match[2]) ? $match[2] : null;
+                    if (isset($this->route->tokens[$name]) && is_string($this->route->tokens[$name])) {
+                        // if $token is null use route token
+                        $token = $token ?: $this->route->tokens[$name];
+                    }
+                    if ($token) {
+                        if (!preg_match('~^' . $token . '$~', (string)$val)) {
+                            throw new \RuntimeException(sprintf(
+                                'Parameter value for [%s] did not match the regex `%s`',
+                                $name,
+                                $token
+                            ));
+                        }
+                    }
+                    $this->repl[$match[0]] = $this->encode($val);
+                }
+            }
         }
+    }
+
+    /**
+     *
+     * Encodes values, or leaves them raw.
+     *
+     * @param string $val The value to encode or leave raw.
+     *
+     * @return mixed
+     *
+     */
+    protected function encode($val)
+    {
+        if ($this->raw) {
+            return $val;
+        }
+
+        return is_scalar($val) ? rawurlencode($val) : null;
     }
 
     /**
@@ -215,13 +239,23 @@ class Generator
     protected function buildOptionalReplacements()
     {
         // replacements for optional attributes, if any
-        preg_match('#{/([a-z][a-zA-Z0-9_,]*)}#', $this->url, $matches);
-        if (! $matches) {
+        preg_match(self::OPT_REGEX, $this->url, $matches);
+        if (!$matches) {
             return;
         }
 
         // the optional attribute names in the token
-        $names = explode(',', $matches[1]);
+        $names = [];
+        preg_match_all(self::EXPLODE_REGEX, $matches[1], $exMatches, PREG_SET_ORDER);
+        foreach ($exMatches as $match) {
+            $name = $match[1];
+            $token = isset($match[2]) ? $match[2] : null;
+            if (isset($this->route->tokens[$name]) && is_string($this->route->tokens[$name])) {
+                // if $token is null use route token
+                $token = $token ?: $this->route->tokens[$name];
+            }
+            $names[] = $token ? [$name, $token] : $name;
+        }
 
         // this is the full token to replace in the path
         $key = $matches[0];
@@ -243,14 +277,32 @@ class Generator
     {
         $repl = '';
         foreach ($names as $name) {
+            $token = null;
+            if (is_array($name)) {
+                $token = $name[1];
+                $name = $name[0];
+            }
             // is there data for this optional attribute?
-            if (! isset($this->data[$name])) {
+            if (!isset($this->data[$name])) {
                 // options are *sequentially* optional, so if one is
                 // missing, we're done
                 return $repl;
             }
+
+            $val = $this->data[$name];
+
+            // Check val matching token
+            if ($token) {
+                if (!preg_match('~^' . $token . '$~', (string)$val)) {
+                    throw new \RuntimeException(sprintf(
+                        'Parameter value for [%s] did not match the regex `%s`',
+                        $name,
+                        $token
+                    ));
+                }
+            }
             // encode the optional value
-            $repl .= '/' . $this->encode($this->data[$name]);
+            $repl .= '/' . $this->encode($val);
         }
         return $repl;
     }
@@ -275,19 +327,20 @@ class Generator
 
     /**
      *
-     * Encodes values, or leaves them raw.
+     * Generate the route without url encoding.
      *
-     * @param string $val The value to encode or leave raw.
+     * @param string $name The route name to look up.
      *
-     * @return mixed
+     * @param array $data The data to interpolate into the URI; data keys
+     * map to attribute tokens in the path.
+     *
+     * @return string A URI path string
+     *
+     * @throws Exception\RouteNotFound
      *
      */
-    protected function encode($val)
+    public function generateRaw($name, array $data = [])
     {
-        if ($this->raw) {
-            return $val;
-        }
-
-        return is_scalar($val) ? rawurlencode($val) : null;
+        return $this->build($name, $data, true);
     }
 }

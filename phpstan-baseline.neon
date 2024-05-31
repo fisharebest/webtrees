@@ -106,12 +106,17 @@ parameters:
 			path: app/Fact.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int\\<0, max\\>, array\\<int, string\\>\\|Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int\\<0, max\\>, Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
 			count: 1
 			path: app/Fact.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:value\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Fact.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Fact.php
 
@@ -1106,6 +1111,11 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixPreview.php
 
 		-
+			message: "#^Cannot access offset 'data_fix' on array\\|object\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/DataFixSelect.php
+
+		-
 			message: "#^Parameter \\#1 \\$module_name of method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByName\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdate.php
@@ -1187,6 +1197,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method mediaFiles\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ExportGedcomClient.php
+
+		-
+			message: "#^Offset 'uri' does not exist on array\\{timed_out\\: bool, blocked\\: bool, eof\\: bool, unread_bytes\\: int, stream_type\\: string, wrapper_type\\: string, wrapper_data\\: mixed, mode\\: string, \\.\\.\\.\\}\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
@@ -1946,8 +1961,13 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$str of function substr_replace expects array\\|string, string\\|null given\\.$#"
 			count: 2
+			path: app/Individual.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
+			count: 4
 			path: app/Individual.php
 
 		-
@@ -1968,6 +1988,11 @@ parameters:
 		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
 			count: 2
+			path: app/Individual.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:\\$getAllNames \\(array\\<array\\<string\\>\\>\\) does not accept array\\<array\\<string\\|null\\>\\>\\.$#"
+			count: 1
 			path: app/Individual.php
 
 		-
@@ -2122,6 +2147,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method createStreamFromFile\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Module/ClippingsCartModule.php
+
+		-
+			message: "#^Offset 'uri' does not exist on array\\{timed_out\\: bool, blocked\\: bool, eof\\: bool, unread_bytes\\: int, stream_type\\: string, wrapper_type\\: string, wrapper_data\\: mixed, mode\\: string, \\.\\.\\.\\}\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
 
@@ -3606,16 +3636,6 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
-			message: "#^Parameter \\#1 \\$fm of method TCPDF\\:\\:setFooterMargin\\(\\) expects int, float given\\.$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Parameter \\#1 \\$hm of method TCPDF\\:\\:setHeaderMargin\\(\\) expects int, float given\\.$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:\\$styles \\(array\\<array\\<string\\>\\>\\) does not accept array\\<array\\<string\\>\\|string\\>\\.$#"
 			count: 1
 			path: app/Report/PdfRenderer.php
@@ -3951,24 +3971,9 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\}\\.$#"
-			count: 1
-			path: app/Report/ReportPdfFootnote.php
-
-		-
 			message: "#^Parameter \\#1 \\$link of method TCPDF\\:\\:setLink\\(\\) expects int, string given\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$number of function ceil expects float, array\\<float\\>\\|float given\\.$#"
-			count: 3
-			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\}\\.$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
 
 		-
 			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote will always evaluate to false\\.$#"
@@ -4056,11 +4061,6 @@ parameters:
 			path: app/Services/AdminService.php
 
 		-
-			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Services/AdminService.php
-
-		-
 			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$anniv\\.$#"
 			count: 2
 			path: app/Services/CalendarService.php
@@ -4109,6 +4109,11 @@ parameters:
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
 			count: 4
 			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access offset mixed on array\\|object\\.$#"
+			count: 2
+			path: app/Services/CaptchaService.php
 
 		-
 			message: "#^Cannot call method children\\(\\) on mixed\\.$#"

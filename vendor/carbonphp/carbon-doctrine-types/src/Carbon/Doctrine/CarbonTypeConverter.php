@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Carbon package.
- *
- * (c) Brian Nesbitt <brian@nesbot.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Carbon\Doctrine;
 
 use Carbon\Carbon;
@@ -24,6 +15,16 @@ use Exception;
 trait CarbonTypeConverter
 {
     /**
+     * This property differentiates types installed by carbonphp/carbon-doctrine-types
+     * from the ones embedded previously in nesbot/carbon source directly.
+     *
+     * @readonly
+     *
+     * @var bool
+     */
+    public $external = true;
+
+    /**
      * @return class-string<T>
      */
     protected function getCarbonClassName(): string
@@ -36,13 +37,14 @@ trait CarbonTypeConverter
      */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        $precision = $fieldDeclaration['precision'] ?: 10;
+        $maximum = CarbonDoctrineType::MAXIMUM_PRECISION;
+        $precision = ($fieldDeclaration['precision'] ?? null) ?: $maximum;
 
         if ($fieldDeclaration['secondPrecision'] ?? false) {
             $precision = 0;
         }
 
-        if ($precision === 10) {
+        if ($precision === $maximum) {
             $precision = DateTimeDefaultPrecision::get();
         }
 
@@ -114,7 +116,11 @@ trait CarbonTypeConverter
             return $value->format('Y-m-d H:i:s.u');
         }
 
-        throw ConversionException::conversionFailedInvalidType(
+        $method = method_exists(ConversionException::class, 'conversionFailedInvalidType')
+            ? 'conversionFailedInvalidType'
+            : 'conversionFailed'; // @codeCoverageIgnore
+
+        throw ConversionException::$method(
             $value,
             $this->getName(),
             ['null', 'DateTime', 'Carbon']

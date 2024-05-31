@@ -52,6 +52,25 @@ class GeneratorTest extends TestCase
         $this->assertEquals('/blog/42/edit', $url);
     }
 
+    /**
+     * This test should not throw exception for the urlencode on closure
+     */
+    public function testGenerateControllerAsClosureIssue19WithFastRouteFormat()
+    {
+        $this->map->route('issue19', '/blog/{id:\d+}/edit')
+            ->defaults([
+                'controller' => function ($attributes) {
+                    $id = (int) $attributes['id'];
+                    return "Hello World";
+                },
+                'action' => 'read',
+                'format' => '.html',
+            ]);
+
+        $url = $this->generator->generate('issue19', ['id' => 42, 'foo' => 'bar']);
+        $this->assertEquals('/blog/42/edit', $url);
+    }
+
     public function testGenerate()
     {
         $this->map->route('test', '/blog/{id}/edit')
@@ -61,6 +80,43 @@ class GeneratorTest extends TestCase
 
         $url = $this->generator->generate('test', ['id' => 42, 'foo' => 'bar']);
         $this->assertEquals('/blog/42/edit', $url);
+    }
+
+    public function testGenerateWithFastRouteFormat()
+    {
+        $this->map->route('test', '/blog/{id:([0-9]+)}/edit');
+
+        $url = $this->generator->generate('test', ['id' => 42, 'foo' => 'bar']);
+        $this->assertEquals('/blog/42/edit', $url);
+    }
+
+    public function testGenerateWithFastRouteFormatAndOtherQuantifier()
+    {
+        $this->map->route('test', '/blog/{id:([0-9]{1,})}/edit');
+
+        $url = $this->generator->generate('test', ['id' => 42, 'foo' => 'bar']);
+        $this->assertEquals('/blog/42/edit', $url);
+    }
+
+    public function testGenerateMatchingException()
+    {
+        $this->map->route('test', '/blog/{id}/edit')
+            ->tokens([
+                'id' => '([0-9]+)',
+            ]);
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('Parameter value for [id] did not match the regex `([0-9]+)`');
+        $url = $this->generator->generate('test', ['id' => '4 2', 'foo' => 'bar']);
+    }
+
+    public function testGenerateMatchingExceptionWithFastRouteFormat()
+    {
+        $this->map->route('test', '/blog/{id:([0-9]+)}/edit');
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('Parameter value for [id] did not match the regex `([0-9]+)`');
+        $url = $this->generator->generate('test', ['id' => '4 2', 'foo' => 'bar']);
     }
 
     public function testGenerateMissing()
@@ -75,6 +131,23 @@ class GeneratorTest extends TestCase
             ->tokens([
                 'id' => '([0-9]+)',
             ])
+            ->wildcard('other');
+
+        $url = $this->generator->generate('test', [
+            'id' => 42,
+            'foo' => 'bar',
+            'other' => [
+                'dib' => 'zim',
+                'irk' => 'gir',
+            ],
+        ]);
+
+        $this->assertEquals('/blog/42/zim/gir', $url);
+    }
+
+    public function testGenerateWithWildcardAndWithFastRouteFormat()
+    {
+        $this->map->route('test', '/blog/{id:([0-9]+)}')
             ->wildcard('other');
 
         $url = $this->generator->generate('test', [
@@ -111,9 +184,41 @@ class GeneratorTest extends TestCase
         $this->assertEquals('/archive/foo/1979/11/07', $url);
     }
 
+    public function testGenerateWithOptionalAndFastRouteFormatInOptional()
+    {
+        $this->map->route('test', '/archive/{category}{/year:\d{4},month:\d{2},day:\d{2}}');
+
+        // some
+        $url = $this->generator->generate('test', [
+            'category' => 'foo',
+            'year' => '1979',
+            'month' => '11',
+        ]);
+        $this->assertEquals('/archive/foo/1979/11', $url);
+
+        // all
+        $url = $this->generator->generate('test', [
+            'category' => 'foo',
+            'year' => '1979',
+            'month' => '11',
+            'day' => '07',
+        ]);
+        $this->assertEquals('/archive/foo/1979/11/07', $url);
+    }
+
     public function testGenerateOnFullUri()
     {
         $this->map->route('test', 'http://google.com/?q={q}', ['action' => 'google-search'])
+            ->isRoutable(false);
+
+        $actual = $this->generator->generate('test', ['q' => "what's up doc?"]);
+        $expect = "http://google.com/?q=what%27s%20up%20doc%3F";
+        $this->assertSame($expect, $actual);
+    }
+
+    public function testGenerateOnFullUriWithFastRouteFormat()
+    {
+        $this->map->route('test', 'http://google.com/?q={q:[^/]*}', ['action' => 'google-search'])
             ->isRoutable(false);
 
         $actual = $this->generator->generate('test', ['q' => "what's up doc?"]);
@@ -162,9 +267,28 @@ class GeneratorTest extends TestCase
         $this->assertEquals('/path/to/sub/index.php/blog/42/edit', $url);
     }
 
+    public function testGenerateWithBasepathAndFastRouteFormat()
+    {
+        $this->setProperties('/path/to/sub/index.php');
+
+        $this->map->route('test', '/blog/{id:([0-9]+)}/edit');
+
+        $url = $this->generator->generate('test', ['id' => 42, 'foo' => 'bar']);
+        $this->assertEquals('/path/to/sub/index.php/blog/42/edit', $url);
+    }
+
     public function testGenerateWithHost()
     {
         $this->map->route('test', '/blog/{id}/edit')
+            ->host('{host}.example.com');
+
+        $url = $this->generator->generate('test', ['id' => 42, 'host' => 'bar']);
+        $this->assertEquals('//bar.example.com/blog/42/edit', $url);
+    }
+
+    public function testGenerateWithHostAndFastRouteFormat()
+    {
+        $this->map->route('test', '/blog/{id:\d+}/edit')
             ->host('{host}.example.com');
 
         $url = $this->generator->generate('test', ['id' => 42, 'host' => 'bar']);
@@ -181,9 +305,29 @@ class GeneratorTest extends TestCase
         $this->assertEquals('http://bar.example.com/blog/42/edit', $url);
     }
 
+    public function testGenerateWithHttpHostAndFastRouteFormat()
+    {
+        $this->map->route('test', '/blog/{id:\d+}/edit')
+            ->secure(false)
+            ->host('{host}.example.com');
+
+        $url = $this->generator->generate('test', ['id' => 42, 'host' => 'bar']);
+        $this->assertEquals('http://bar.example.com/blog/42/edit', $url);
+    }
+
     public function testGenerateWithHttpsHost()
     {
         $this->map->route('test', '/blog/{id}/edit')
+            ->secure(true)
+            ->host('{host}.example.com');
+
+        $url = $this->generator->generate('test', ['id' => 42, 'host' => 'bar']);
+        $this->assertEquals('https://bar.example.com/blog/42/edit', $url);
+    }
+
+    public function testGenerateWithHttpsHostAndFastRouteFormat()
+    {
+        $this->map->route('test', '/blog/{id:\d+}/edit')
             ->secure(true)
             ->host('{host}.example.com');
 

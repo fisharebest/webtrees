@@ -190,6 +190,29 @@ class MatcherTest extends TestCase
         $this->assertRoute($expect, $this->matcher->getMatchedRoute());
     }
 
+    public function testMatchWithFastRouteFormat()
+    {
+        $route = $this->map->route('test',
+            '/{controller:[a-zA-Z][a-zA-Z0-9_-]{1,}}' .
+            '/{action:[a-zA-Z][a-zA-Z0-9_-]+}' .
+            '/{id:[0-9]+}' .
+            '{format: (\.[^/]+)?}'
+        );
+
+        $request = $this->newRequest('/foo/bar/42');
+        $actual = $this->matcher->match($request);
+
+        $expect = [
+            'attributes' => [
+                'controller' => 'foo',
+                'action' => 'bar',
+                'id' => '42',
+                'format' => null,
+            ]
+        ];
+        $this->assertRoute($expect, $actual);
+    }
+
     public function testGetFailedRouteIsBestMatch()
     {
         $expect = $this->map->post('bar', '/bar');

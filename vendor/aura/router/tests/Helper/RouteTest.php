@@ -22,12 +22,24 @@ class RouteTest extends TestCase
 
     public function testInvokeReturnsGeneratedRoute()
     {
-        $this->map->route('test', '/blog/{id}/edit')
-                  ->tokens([
-                      'id' => '([0-9]+)',
-                  ]);
+        $this->map->route('test', '/blog/{id}/edit');
 
         $helper = $this->container->newRouteHelper();
+
         $this->assertEquals('/blog/4%202/edit', $helper('test', ['id' => '4 2', 'foo' => 'bar']));
+    }
+
+    public function testInvokeGenerateExceptionWithToken()
+    {
+        $this->map->route('test', '/blog/{id}/edit')
+            ->tokens([
+                'id' => '([0-9]+)',
+            ]);
+
+        $helper = $this->container->newRouteRawHelper();
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('Parameter value for [id] did not match the regex `([0-9]+)`');
+        $helper('test', ['id' => '4 2', 'foo' => 'bar']);
     }
 }

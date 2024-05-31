@@ -57,6 +57,7 @@ class ComposerStaticInit894fe75d16c3adcf748f715fa5f1ed8a
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
         ),
         'N' => 
@@ -122,6 +123,7 @@ class ComposerStaticInit894fe75d16c3adcf748f715fa5f1ed8a
         ),
         'C' => 
         array (
+            'Carbon\\Doctrine\\' => 16,
             'Carbon\\' => 7,
         ),
         'A' => 
@@ -216,6 +218,10 @@ class ComposerStaticInit894fe75d16c3adcf748f715fa5f1ed8a
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
         'Psr\\Cache\\' => 
         array (
@@ -356,6 +362,10 @@ class ComposerStaticInit894fe75d16c3adcf748f715fa5f1ed8a
         'Doctrine\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
+        ),
+        'Carbon\\Doctrine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine',
         ),
         'Carbon\\' => 
         array (

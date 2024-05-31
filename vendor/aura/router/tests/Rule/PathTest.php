@@ -47,7 +47,83 @@ class PathTest extends AbstractRuleTest
         $this->assertEquals($expect, $route->attributes);
     }
 
-    public function testIsMatchOnDefaultAndDefinedSubpatterns()
+    public function testIsMatchOnDynamicPathWithFastRouteFormat()
+    {
+        $route = $this->newRoute(
+            '/{controller:[a-zA-Z][a-zA-Z0-9_-]+}' .
+            '/{action:[a-zA-Z][a-zA-Z0-9_-]+}' .
+            '/{id:[0-9]+}' .
+            '{format: (\.[^/]+)?}'
+        );
+
+        $request = $this->newRequest('/foo/bar/42');
+
+        $this->assertIsMatch($request, $route);
+
+        $expect = [
+            'controller' => 'foo',
+            'action' => 'bar',
+            'id' => '42',
+            'format' => null,
+        ];
+        $this->assertEquals($expect, $route->attributes);
+    }
+
+    public function testIsMatchOnDynamicPathWithFastRouteFormatAndRouteTokens()
+    {
+        $route = $this->newRoute(
+            '/{controller}' .
+            '/{action:[a-zA-Z][a-zA-Z0-9_-]+}' .
+            '/{id:[0-9]+}' .
+            '{format: (\.[^/]+)?}'
+        ) ->tokens([
+            'controller' => '([a-zA-Z][a-zA-Z0-9_-]+)',
+            'action' => '([a-zA-Z][a-zA-Z0-9_-]+)',
+            'id' => '([0-9]+)',
+            'format' => '(\.[^/]+)?',
+        ]);;
+
+        $request = $this->newRequest('/foo/bar/42');
+
+        $this->assertIsMatch($request, $route);
+
+        $expect = [
+            'controller' => 'foo',
+            'action' => 'bar',
+            'id' => '42',
+            'format' => null,
+        ];
+        $this->assertEquals($expect, $route->attributes);
+    }
+
+    public function testIsMatchOnDynamicPathWithFastRouteFormatAndFailedRouteTokens()
+    {
+        $route = $this->newRoute(
+            '/{controller:[a-zA-Z][a-zA-Z0-9_-]+}' .
+            '/{action:[a-zA-Z][a-zA-Z0-9_-]+}' .
+            '/{id:[0-9]+}' .
+            '{format: (\.[^/]+)?}'
+        ) ->tokens([
+            'controller' => '(\d+)',
+            'action' => '([a-zA-Z][a-zA-Z0-9_-]+)',
+            'id' => '([0-9]+)',
+            'format' => '(\.[^/]+)?',
+        ]);;
+
+        $request = $this->newRequest('/foo/bar/42');
+
+        $this->assertIsMatch($request, $route);
+
+        $expect = [
+            'controller' => 'foo',
+            'action' => 'bar',
+            'id' => '42',
+            'format' => null,
+        ];
+        $this->assertEquals($expect, $route->attributes);
+    }
+
+    public function testIsMatchOnDefaultAndDefinedSubPatterns()
     {
         $route = $this->newRoute('/{controller}/{action}/{id}{format}')
             ->tokens([
@@ -67,11 +143,53 @@ class PathTest extends AbstractRuleTest
         $this->assertSame($expect, $route->attributes);
     }
 
-    public function testIsMatchOnDefaultAndCustomSubpatterns()
+    public function testIsMatchOnDefaultAndDefinedSubPatternsWithFastRouteFormat()
+    {
+        $route = $this->newRoute('/{controller}'.
+            '/{action: (browse|read|edit|add|delete)}' .
+            '/{id: \d+}' .
+            '{format: (\.[^/]+)?}'
+        );
+
+        $request = $this->newRequest('/any-value/read/42');
+        $this->assertIsMatch($request, $route);
+        $expect = [
+            'controller' => 'any-value',
+            'action' => 'read',
+            'id' => '42',
+            'format' => null,
+        ];
+        $this->assertSame($expect, $route->attributes);
+    }
+
+    public function testIsMatchOnDefaultAndCustomSubPatterns()
     {
         $route = $this->newRoute('/assets/{file}\.{semver}{format}')
             ->tokens([
                 'file' => '([\w\d\-\_]+)',
+                'semver' => function ($semver, $route, $request) {
+                    if ($semver === '1.3.1') {
+                        return true;
+                    }
+                    return false;
+                },
+                'format' => '(\.[^/]+)',
+            ]);
+
+        $request = $this->newRequest('/assets/any-file.1.3.1.zip');
+        $this->assertIsMatch($request, $route);
+        $expect = [
+            'file' => 'any-file',
+            'semver' => '1.3.1',
+            'format' => '.zip'
+        ];
+        $this->assertSame($expect, $route->attributes);
+    }
+
+    public function testIsMatchOnDefaultAndCustomSubPatternsWithFastRouteForFile()
+    {
+        $route = $this->newRoute('/assets/{file: [\w\d\-\_]+}\.{semver}{format}')
+            ->tokens([
                 'semver' => function ($semver, $route, $request) {
                     if ($semver === '1.3.1') {
                         return true;
@@ -166,9 +284,58 @@ class PathTest extends AbstractRuleTest
         $this->assertIsNotMatch($request, $route);
     }
 
+    public function testIsMatchOnOptionalAttributesWithSomeFastRouteFormat()
+    {
+        $route = $this->newRoute('/foo/{bar:[a-zA-Z]+}{/baz:[a-zA-Z]+,dib,zim}');
+
+        // not enough attributes
+        $request = $this->newRequest('/foo');
+        $this->assertIsNotMatch($request, $route);
+
+        // just enough attributes
+        $request = $this->newRequest('/foo/bar');
+        $this->assertIsMatch($request, $route);
+
+        // optional attribute 1
+        $request = $this->newRequest('/foo/bar/baz');
+        $this->assertIsMatch($request, $route);
+
+        // optional attribute 2
+        $request = $this->newRequest('/foo/bar/baz/dib');
+        $this->assertIsMatch($request, $route);
+
+        // optional attribute 3
+        $request = $this->newRequest('/foo/bar/baz/dib/zim');
+        $this->assertIsMatch($request, $route);
+
+        // too many attributes
+        $request = $this->newRequest('/foo/bar/baz/dib/zim/gir');
+        $this->assertIsNotMatch($request, $route);
+    }
+
     public function testIsMatchOnOnlyOptionalAttributes()
     {
         $route = $this->newRoute('{/foo,bar,baz}');
+
+        $request = $this->newRequest('/');
+        $this->assertIsMatch($request, $route);
+
+        $request = $this->newRequest('/foo');
+        $this->assertIsMatch($request, $route);
+
+        $request = $this->newRequest('/foo/bar');
+        $this->assertIsMatch($request, $route);
+
+        $request = $this->newRequest('/foo/bar/baz');
+        $this->assertIsMatch($request, $route);
+
+        $request = $this->newRequest('/foo/bar/baz/dib');
+        $this->assertIsNotMatch($request, $route);
+    }
+
+    public function testIsMatchOnOnlyOptionalAttributesWithSomeFastRouteFormat()
+    {
+        $route = $this->newRoute('{/foo:[a-zA-Z]+,bar,baz:[a-zA-Z]+}');
 
         $request = $this->newRequest('/');
         $this->assertIsMatch($request, $route);
