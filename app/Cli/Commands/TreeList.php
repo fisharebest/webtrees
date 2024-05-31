@@ -41,7 +41,7 @@ class TreeList extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $trees = $this->tree_service->all()->sort(fn($a, $b) => $a->id() <=> $b->id());
+        $trees = $this->tree_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
 
         $table = new Table(output: $output);
 

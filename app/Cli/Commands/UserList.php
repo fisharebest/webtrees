@@ -44,7 +44,7 @@ class UserList extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $users = $this->user_service->all()->sort(fn($a, $b) => $a->id() <=> $b->id());
+        $users = $this->user_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
 
         $table = new Table(output: $output);
 
