@@ -4588,12 +4588,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/GedcomExportService.php',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$stream of function stream_get_meta_data expects resource, resource\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Services/GedcomExportService.php',
-];
-$ignoreErrors[] = [
     // identifier: method.nonObject
     'message' => '#^Cannot call method canonicalTag\\(\\) on mixed\\.$#',
     'count' => 1,
