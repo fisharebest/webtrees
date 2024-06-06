@@ -2806,11 +2806,6 @@ parameters:
 			path: app/Services/GedcomExportService.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomImportService\\:\\:createMediaObject\\(\\) should return string but returns mixed\\.$#"
 			count: 1
 			path: app/Services/GedcomImportService.php
