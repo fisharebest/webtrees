@@ -65,7 +65,7 @@ class AbstractCensusColumn
     /**
      * Find the father of an individual
      */
-    public function father(Individual $individual): ?Individual
+    public function father(Individual $individual): Individual|null
     {
         $family = $individual->childFamilies()->first();
 
@@ -79,7 +79,7 @@ class AbstractCensusColumn
     /**
      * Find the mother of an individual
      */
-    public function mother(Individual $individual): ?Individual
+    public function mother(Individual $individual): Individual|null
     {
         $family = $individual->childFamilies()->first();
 
@@ -93,7 +93,7 @@ class AbstractCensusColumn
     /**
      * Find the current spouse family of an individual
      */
-    public function spouseFamily(Individual $individual): ?Family
+    public function spouseFamily(Individual $individual): Family|null
     {
         return $individual->spouseFamilies()
                 // Exclude families that were created after this census date
