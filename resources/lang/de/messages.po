@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-05-05 06:45+0000\n"
+"PO-Revision-Date: 2024-06-08 07:59+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -6291,7 +6291,7 @@ msgstr "Familienwohnsitz"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
-msgstr "Familienstand"
+msgstr "Familienstatus"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
