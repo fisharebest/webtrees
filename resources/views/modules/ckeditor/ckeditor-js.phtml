@@ -25,7 +25,13 @@ declare(strict_types=1);
         // Disable toolbars
         CKEDITOR.config.language = <?= json_encode(strtolower($language), JSON_THROW_ON_ERROR) ?>;
         CKEDITOR.config.removePlugins = 'forms,newpage,preview,print,save,templates,flash,iframe';
-        CKEDITOR.config.extraAllowedContent = 'area[shape,coords,href,target,alt,title];map[name];img[usemap];*{*}(*)';
+        CKEDITOR.config.extraAllowedContent =
+          'area[shape,coords,href,target,alt,title];' +
+          'map[name];' +
+          'img[usemap];' +
+          'audio[controls,src];' +
+          'video[controls,height,poster,src,width];' +
+          '*{*}(*)';
 
         // Do not convert é to &eacute; in the editor
         CKEDITOR.config.entities = false;

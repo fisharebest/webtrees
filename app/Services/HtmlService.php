@@ -84,6 +84,22 @@ class HtmlService
 
         $area->excludes = ['area' => true];
 
+        // Allow audio and video
+        $audio = $def->addElement('audio', 'Block', 'Flow', 'Common', [
+            'controls' => 'Bool#controls',
+            'src'      => 'URI',
+        ]);
+        $audio->excludes = ['audio' => true];
+
+        $video = $def->addElement('video', 'Block', 'Flow', 'Common', [
+            'controls' => 'Bool#controls',
+            'height'   => 'Number',
+            'poster'   => 'URI',
+            'src'      => 'URI',
+            'width'    => 'Number',
+        ]);
+        $video->excludes = ['video' => true];
+
         $purifier = new HTMLPurifier($config);
 
         return $purifier->purify($html);
