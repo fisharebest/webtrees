@@ -1246,6 +1246,36 @@ parameters:
 			path: app/Media.php
 
 		-
+			message: "#^Cannot access property \\$count on mixed\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$n_givn on mixed\\.$#"
+			count: 3
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:whereIn\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
 			message: "#^Cannot access property \\$access_level on mixed\\.$#"
 			count: 1
 			path: app/Module/AbstractModule.php
@@ -1549,36 +1579,6 @@ parameters:
 			message: "#^Cannot call method embedTags\\(\\) on mixed\\.$#"
 			count: 2
 			path: app/Module/HtmlBlockModule.php
-
-		-
-			message: "#^Cannot access property \\$count on mixed\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Cannot access property \\$n_givn on mixed\\.$#"
-			count: 3
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Cannot access property \\$xref on mixed\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:whereIn\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
 
 		-
 			message: "#^Cannot call method fullName\\(\\) on mixed\\.$#"
@@ -2207,6 +2207,11 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$total on mixed\\.$#"
+			count: 1
+			path: app/Module/TopSurnamesModule.php
+
+		-
+			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Module\\\\IndividualListModule and Fisharebest\\\\Webtrees\\\\Module\\\\FamilyListModule will always evaluate to false\\.$#"
 			count: 1
 			path: app/Module/TopSurnamesModule.php
 
