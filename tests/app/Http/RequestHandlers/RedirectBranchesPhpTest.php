@@ -23,6 +23,7 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\BranchesListModule;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
@@ -44,7 +45,7 @@ class RedirectBranchesPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -52,9 +53,9 @@ class RedirectBranchesPhpTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(BranchesListModule::class)
+            ->expects($this->once())
+            ->method('findByComponent')
+            ->with(ModuleListInterface::class)
             ->willReturn(new Collection([$module]));
 
         $handler = new RedirectBranchesPhp($module_service, $tree_service);
@@ -78,19 +79,19 @@ class RedirectBranchesPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $module_service = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())->method('findByInterface')
-            ->with(BranchesListModule::class)
-            ->willReturn(new Collection());
-
         $tree = $this->createMock(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->method('findByComponent')
+            ->with(ModuleListInterface::class)
+            ->willReturn(new Collection());
 
         $handler = new RedirectBranchesPhp($module_service, $tree_service);
 
@@ -106,20 +107,13 @@ class RedirectBranchesPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module = $this->createMock(BranchesListModule::class);
-
-        $module_service = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(BranchesListModule::class)
-            ->willReturn(new Collection([$module]));
-
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
+
+        $module_service = $this->createMock(ModuleService::class);
 
         $handler = new RedirectBranchesPhp($module_service, $tree_service);
 

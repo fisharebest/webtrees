@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTreeModule;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -48,7 +49,7 @@ class RedirectModulePhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -56,7 +57,7 @@ class RedirectModulePhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -65,14 +66,14 @@ class RedirectModulePhpTest extends TestCase
 
         $module = $this->createMock(PedigreeMapModule::class);
         $module
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('chartUrl')
             ->willReturn('https://www.example.com');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
+            ->expects($this->once())
+            ->method('findByinterface')
             ->with(PedigreeMapModule::class)
             ->willReturn(new Collection([$module]));
 
@@ -98,7 +99,7 @@ class RedirectModulePhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -106,7 +107,7 @@ class RedirectModulePhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -115,13 +116,13 @@ class RedirectModulePhpTest extends TestCase
 
         $module = $this->createMock(InteractiveTreeModule::class);
         $module
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('chartUrl')
             ->willReturn('https://www.example.com');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByInterface')
             ->with(InteractiveTreeModule::class)
             ->willReturn(new Collection([$module]));
@@ -144,7 +145,7 @@ class RedirectModulePhpTest extends TestCase
         $module_service  = $this->createMock(ModuleService::class);
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 
@@ -169,7 +170,7 @@ class RedirectModulePhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn(null);
@@ -178,7 +179,7 @@ class RedirectModulePhpTest extends TestCase
         $module_service  = $this->createMock(ModuleService::class);
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -203,7 +204,7 @@ class RedirectModulePhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -211,7 +212,7 @@ class RedirectModulePhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -220,7 +221,7 @@ class RedirectModulePhpTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByInterface')
             ->with(PedigreeMapModule::class)
             ->willReturn(new Collection([]));
@@ -246,7 +247,7 @@ class RedirectModulePhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -254,7 +255,7 @@ class RedirectModulePhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -263,7 +264,7 @@ class RedirectModulePhpTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByInterface')
             ->with(InteractiveTreeModule::class)
             ->willReturn(new Collection([]));

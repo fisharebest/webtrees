@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -47,7 +49,7 @@ class RedirectCompactPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -55,7 +57,7 @@ class RedirectCompactPhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -64,23 +66,20 @@ class RedirectCompactPhpTest extends TestCase
 
         $module = $this->createMock(CompactTreeChartModule::class);
         $module
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('chartUrl')
             ->willReturn('https://www.example.com');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(CompactTreeChartModule::class)
+            ->expects($this->once())
+            ->method('findByComponent')
+            ->with(ModuleChartInterface::class)
             ->willReturn(new Collection([$module]));
 
         $handler = new RedirectCompactPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -92,24 +91,21 @@ class RedirectCompactPhpTest extends TestCase
     {
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())->method('findByInterface')
-            ->with(CompactTreeChartModule::class)
+            ->expects($this->once())->method('findByComponent')
+            ->with(ModuleChartInterface::class)
             ->willReturn(new Collection());
 
         $tree = $this->createMock(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectCompactPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -118,27 +114,17 @@ class RedirectCompactPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module = $this->createMock(CompactTreeChartModule::class);
-
-        $module_service = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(CompactTreeChartModule::class)
-            ->willReturn(new Collection([$module]));
-
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 
+        $module_service = $this->createMock(ModuleService::class);
+
         $handler = new RedirectCompactPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 

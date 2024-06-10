@@ -31,8 +31,8 @@ class PingTest extends TestCase
     public function testPingOK(): void
     {
         $server_check_service = $this->createMock(ServerCheckService::class);
-        $server_check_service->expects(self::once())->method('serverErrors')->willReturn(new Collection());
-        $server_check_service->expects(self::once())->method('serverWarnings')->willReturn(new Collection());
+        $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection());
+        $server_check_service->expects($this->once())->method('serverWarnings')->willReturn(new Collection());
 
         $request  = self::createRequest();
         $handler  = new Ping($server_check_service);
@@ -45,8 +45,8 @@ class PingTest extends TestCase
     public function testPingWarnings(): void
     {
         $server_check_service = $this->createMock(ServerCheckService::class);
-        $server_check_service->expects(self::once())->method('serverErrors')->willReturn(new Collection());
-        $server_check_service->expects(self::once())->method('serverWarnings')->willReturn(new Collection('warning'));
+        $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection());
+        $server_check_service->expects($this->once())->method('serverWarnings')->willReturn(new Collection('warning'));
 
         $request  = self::createRequest();
         $handler  = new Ping($server_check_service);
@@ -59,7 +59,7 @@ class PingTest extends TestCase
     public function testPingErrors(): void
     {
         $server_check_service = $this->createMock(ServerCheckService::class);
-        $server_check_service->expects(self::once())->method('serverErrors')->willReturn(new Collection('error'));
+        $server_check_service->expects($this->once())->method('serverErrors')->willReturn(new Collection('error'));
 
         $request  = self::createRequest();
         $handler  = new Ping($server_check_service);

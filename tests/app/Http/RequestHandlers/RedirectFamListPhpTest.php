@@ -21,8 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\FamilyListModule;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
@@ -44,21 +46,21 @@ class RedirectFamListPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
         $module = $this->createMock(FamilyListModule::class);
         $module
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('listUrl')
             ->willReturn('https://www.example.com');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(FamilyListModule::class)
+            ->expects($this->once())
+            ->method('findByComponent')
+            ->with(ModuleListInterface::class, $tree, new GuestUser())
             ->willReturn(new Collection([$module]));
 
         $handler = new RedirectFamListPhp($module_service, $tree_service);
@@ -73,19 +75,22 @@ class RedirectFamListPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $module_service = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())->method('findByInterface')
-            ->with(FamilyListModule::class)
-            ->willReturn(new Collection());
-
         $tree = $this->createMock(Tree::class);
+        $tree
+            ->method('name')
+            ->willReturn('tree1');
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->expects($this->once())->method('findByComponent')
+            ->with(ModuleListInterface::class, $tree, new GuestUser())
+            ->willReturn(new Collection());
 
         $handler = new RedirectFamListPhp($module_service, $tree_service);
 
@@ -98,18 +103,11 @@ class RedirectFamListPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module = $this->createMock(FamilyListModule::class);
-
         $module_service = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(FamilyListModule::class)
-            ->willReturn(new Collection([$module]));
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 

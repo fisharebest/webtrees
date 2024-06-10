@@ -41,7 +41,7 @@ class XrefSubmitterTest extends TestCase
 
         $factory = $this->createMock(SubmitterFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn(null);
 
@@ -74,11 +74,11 @@ class XrefSubmitterTest extends TestCase
 
         $record = $this->createMock(Submitter::class);
 
-        $record->expects(self::once())
+        $record->expects($this->once())
             ->method('fullName')
             ->willReturn('Full Name');
 
-        $record->expects(self::once())
+        $record->expects($this->once())
             ->method('url')
             ->willReturn('https://url');
 
@@ -86,7 +86,7 @@ class XrefSubmitterTest extends TestCase
 
         $factory = $this->createMock(SubmitterFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn($record);
 
@@ -112,7 +112,7 @@ class XrefSubmitterTest extends TestCase
 
         $factory = $this->createMock(SubmitterFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn(null);
 

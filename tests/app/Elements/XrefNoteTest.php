@@ -40,7 +40,7 @@ class XrefNoteTest extends TestCase
 
         $factory = $this->createMock(NoteFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn(null);
 
@@ -69,11 +69,11 @@ class XrefNoteTest extends TestCase
 
         $record = $this->createMock(Note::class);
 
-        $record->expects(self::once())
+        $record->expects($this->once())
             ->method('fullName')
             ->willReturn('Full Name');
 
-        $record->expects(self::once())
+        $record->expects($this->once())
             ->method('url')
             ->willReturn('https://url');
 
@@ -81,7 +81,7 @@ class XrefNoteTest extends TestCase
 
         $factory = $this->createMock(NoteFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn($record);
 
@@ -107,7 +107,7 @@ class XrefNoteTest extends TestCase
 
         $factory = $this->createMock(NoteFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn(null);
 

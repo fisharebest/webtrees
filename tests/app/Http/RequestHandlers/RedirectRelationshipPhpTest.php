@@ -22,8 +22,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -47,7 +50,7 @@ class RedirectRelationshipPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -55,7 +58,7 @@ class RedirectRelationshipPhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -64,23 +67,20 @@ class RedirectRelationshipPhpTest extends TestCase
 
         $module = $this->createMock(RelationshipsChartModule::class);
         $module
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('chartUrl')
             ->willReturn('https://www.example.com');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(RelationshipsChartModule::class)
+            ->expects($this->once())
+            ->method('findByComponent')
+            ->with(ModuleChartInterface::class)
             ->willReturn(new Collection([$module]));
 
         $handler = new RedirectRelationshipPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid1' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid1' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -90,26 +90,26 @@ class RedirectRelationshipPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $module_service = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())->method('findByInterface')
-            ->with(RelationshipsChartModule::class)
-            ->willReturn(new Collection());
-
         $tree = $this->createMock(Tree::class);
+        $tree
+            ->method('name')
+            ->willReturn('tree1');
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->method('findByComponent')
+            ->with(ModuleChartInterface::class, $tree, new GuestUser())
+            ->willReturn(new Collection());
 
         $handler = new RedirectRelationshipPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid1' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid1' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -118,27 +118,17 @@ class RedirectRelationshipPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module = $this->createMock(RelationshipsChartModule::class);
-
         $module_service  = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(RelationshipsChartModule::class)
-            ->willReturn(new Collection([$module]));
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 
         $handler = new RedirectRelationshipPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid1' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid1' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 

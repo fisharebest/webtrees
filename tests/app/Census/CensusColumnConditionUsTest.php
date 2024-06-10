@@ -107,7 +107,7 @@ class CensusColumnConditionUsTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
-        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family->expects($this->once())->method('getMarriageDate')->willReturn(new Date(''));
         $family->expects(self::exactly(2))
             ->method('facts')
             ->with(self::withConsecutive([['MARR'], ['DIV']]))
@@ -115,7 +115,7 @@ class CensusColumnConditionUsTest extends TestCase
                 new Collection([$fact]),
                 new Collection()
             );
-        $family->expects(self::once())->method('spouse')->willReturn($spouse);
+        $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
         $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
@@ -137,7 +137,7 @@ class CensusColumnConditionUsTest extends TestCase
         $spouse->method('getDeathDate')->willReturn(new Date('1820'));
 
         $family = $this->createMock(Family::class);
-        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family->expects($this->once())->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects(self::exactly(2))
             ->method('facts')
@@ -146,7 +146,7 @@ class CensusColumnConditionUsTest extends TestCase
                 new Collection([$fact]),
                 new Collection()
             );
-        $family->expects(self::once())->method('spouse')->willReturn($spouse);
+        $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
         $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
@@ -241,7 +241,7 @@ class CensusColumnConditionUsTest extends TestCase
         $fact = $this->createMock(Fact::class);
 
         $family = $this->createMock(Family::class);
-        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family->expects($this->once())->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects(self::exactly(2))
             ->method('facts')
@@ -268,7 +268,7 @@ class CensusColumnConditionUsTest extends TestCase
         $fact = $this->createMock(Fact::class);
 
         $family = $this->createMock(Family::class);
-        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family->expects($this->once())->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects(self::exactly(2))
             ->method('facts')
@@ -295,7 +295,7 @@ class CensusColumnConditionUsTest extends TestCase
         $fact = $this->createMock(Fact::class);
 
         $family = $this->createMock(Family::class);
-        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family->expects($this->once())->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects(self::exactly(2))
             ->method('facts')
@@ -322,7 +322,7 @@ class CensusColumnConditionUsTest extends TestCase
         $fact = $this->createMock(Fact::class);
 
         $family = $this->createMock(Family::class);
-        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family->expects($this->once())->method('getMarriageDate')->willReturn(new Date(''));
         $family
             ->expects(self::exactly(2))
             ->method('facts')

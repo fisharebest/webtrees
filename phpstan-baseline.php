@@ -1799,6 +1799,78 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: property.notFound
+    'message' => '#^Access to an undefined property object\\:\\:\\$n_surn\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.notFound
+    'message' => '#^Access to an undefined property object\\:\\:\\$n_surname\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.notFound
+    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.nonObject
+    'message' => '#^Cannot access property \\$count on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.nonObject
+    'message' => '#^Cannot access property \\$gedcom on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.nonObject
+    'message' => '#^Cannot access property \\$n_givn on mixed\\.$#',
+    'count' => 3,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.nonObject
+    'message' => '#^Cannot access property \\$n_surn on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.nonObject
+    'message' => '#^Cannot access property \\$xref on mixed\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: argument.type
+    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\) given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: argument.type
+    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: method.unresolvableReturnType
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: method.unresolvableReturnType
+    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\>\\:\\:all\\(\\) contains unresolvable type\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/AbstractIndividualListModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$interface\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/AbstractModule.php',
@@ -2426,78 +2498,6 @@ $ignoreErrors[] = [
     'message' => '#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,string\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, string\\>\\|iterable\\<int, string\\>, Illuminate\\\\Support\\\\Collection\\<int, mixed\\> given\\.$#',
     'count' => 2,
     'path' => __DIR__ . '/app/Module/IndividualFactsTabModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.notFound
-    'message' => '#^Access to an undefined property object\\:\\:\\$n_surn\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.notFound
-    'message' => '#^Access to an undefined property object\\:\\:\\$n_surname\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.notFound
-    'message' => '#^Access to an undefined property object\\:\\:\\$total\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.nonObject
-    'message' => '#^Cannot access property \\$count on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.nonObject
-    'message' => '#^Cannot access property \\$gedcom on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.nonObject
-    'message' => '#^Cannot access property \\$n_givn on mixed\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.nonObject
-    'message' => '#^Cannot access property \\$n_surn on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: property.nonObject
-    'message' => '#^Cannot access property \\$xref on mixed\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: \\(object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\), Closure\\(object\\)\\: \\(object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\) given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$request of static method Fisharebest\\\\Webtrees\\\\Validator\\:\\:attributes\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: method.unresolvableReturnType
-    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) contains unresolvable type\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: method.unresolvableReturnType
-    'message' => '#^Return type of call to method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),object\\{n_surn\\: mixed, n_surname\\: mixed, total\\: int\\}&stdClass\\>\\:\\:all\\(\\) contains unresolvable type\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/IndividualListModule.php',
 ];
 $ignoreErrors[] = [
     // identifier: method.nonObject

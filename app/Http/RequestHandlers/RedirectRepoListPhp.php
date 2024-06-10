@@ -20,7 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -45,16 +47,21 @@ class RedirectRepoListPhp implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged    = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
-        $tree   = $this->tree_service->all()->get($ged);
-        $module = $this->module_service->findByInterface(RepositoryListModule::class)->first();
+        $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $tree = $this->tree_service->all()->get($ged);
 
-        if ($tree instanceof Tree && $module instanceof RepositoryListModule) {
-            $url = $module->listUrl($tree);
+        if ($tree instanceof Tree) {
+            $module = $this->module_service
+                ->findByComponent(ModuleListInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleListInterface $module): bool => $module instanceof RepositoryListModule);
 
-            return Registry::responseFactory()
-                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
-                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            if ($module instanceof RepositoryListModule) {
+                $url = $module->listUrl($tree);
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            }
         }
 
         throw new HttpGoneException();

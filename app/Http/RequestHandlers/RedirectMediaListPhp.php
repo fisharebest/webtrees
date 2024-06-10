@@ -20,8 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\MediaListModule;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -45,27 +47,27 @@ class RedirectMediaListPhp implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged       = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
-        $folder    = Validator::queryParams($request)->string('folder', '');
-        $form_type = Validator::queryParams($request)->string('form_type', '');
-        $filter    = Validator::queryParams($request)->string('filter', '');
-        $max       = Validator::queryParams($request)->string('max', '');
-        $subdirs   = Validator::queryParams($request)->string('subdirs', '');
-        $tree      = $this->tree_service->all()->get($ged);
-        $module    = $this->module_service->findByInterface(MediaListModule::class)->first();
+        $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $tree = $this->tree_service->all()->get($ged);
 
-        if ($tree instanceof Tree && $module instanceof MediaListModule) {
-            $url = $module->listUrl($tree, [
-                'folder'    => $folder,
-                'form_type' => $form_type,
-                'max'       => $max,
-                'filter'    => $filter,
-                'subdirs'   => $subdirs,
-            ]);
+        if ($tree instanceof Tree) {
+            $module = $this->module_service
+                ->findByComponent(ModuleListInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleListInterface $module): bool => $module instanceof MediaListModule);
 
-            return Registry::responseFactory()
-                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
-                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            if ($module instanceof MediaListModule) {
+                $url = $module->listUrl($tree, [
+                    'filter'    => Validator::queryParams($request)->string('filter', ''),
+                    'folder'    => Validator::queryParams($request)->string('folder', ''),
+                    'form_type' => Validator::queryParams($request)->string('form_type', ''),
+                    'max'       => Validator::queryParams($request)->string('max', ''),
+                    'subdirs'   => Validator::queryParams($request)->string('subdirs', ''),
+                ]);
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            }
         }
 
         throw new HttpGoneException();

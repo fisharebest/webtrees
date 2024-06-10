@@ -35,10 +35,10 @@ class AccountUpdateTest extends TestCase
         $user_service = $this->createMock(UserService::class);
 
         $user = $this->createMock(User::class);
-        $user->expects(self::once())->method('setEmail')->with('b');
-        $user->expects(self::once())->method('setPassword')->with('e');
-        $user->expects(self::once())->method('setRealName')->with('d');
-        $user->expects(self::once())->method('setUserName')->with('h');
+        $user->expects($this->once())->method('setEmail')->with('b');
+        $user->expects($this->once())->method('setPassword')->with('e');
+        $user->expects($this->once())->method('setRealName')->with('d');
+        $user->expects($this->once())->method('setUserName')->with('h');
         $user->expects(self::exactly(4))
             ->method('setPreference')
             ->with(
@@ -47,7 +47,7 @@ class AccountUpdateTest extends TestCase
             );
 
         $tree = $this->createMock(Tree::class);
-        $tree->expects(self::once())->method('setUserPreference')->with($user, UserInterface::PREF_TREE_DEFAULT_XREF, 'f');
+        $tree->expects($this->once())->method('setUserPreference')->with($user, UserInterface::PREF_TREE_DEFAULT_XREF, 'f');
 
         $handler  = new AccountUpdate($user_service);
         $request  = self::createRequest()

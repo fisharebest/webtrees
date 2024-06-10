@@ -46,7 +46,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -57,7 +57,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
         $media_factory = $this->createMock(MediaFactory::class);
         $media_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($media);
@@ -66,10 +66,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
         $handler = new RedirectMediaViewerPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'mid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -83,16 +80,13 @@ class RedirectMediaViewerPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectMediaViewerPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'mid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -103,16 +97,13 @@ class RedirectMediaViewerPhpTest extends TestCase
     {
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 
         $handler = new RedirectMediaViewerPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'mid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 

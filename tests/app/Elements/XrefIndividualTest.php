@@ -41,7 +41,7 @@ class XrefIndividualTest extends TestCase
 
         $factory = $this->createMock(IndividualFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn(null);
 
@@ -75,11 +75,11 @@ class XrefIndividualTest extends TestCase
 
         $record = $this->createMock(Individual::class);
 
-        $record->expects(self::once())
+        $record->expects($this->once())
             ->method('fullName')
             ->willReturn('Full Name');
 
-        $record->expects(self::once())
+        $record->expects($this->once())
             ->method('url')
             ->willReturn('https://url');
 
@@ -87,7 +87,7 @@ class XrefIndividualTest extends TestCase
 
         $factory = $this->createMock(IndividualFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn($record);
 
@@ -113,7 +113,7 @@ class XrefIndividualTest extends TestCase
 
         $factory = $this->createMock(IndividualFactory::class);
 
-        $factory->expects(self::once())
+        $factory->expects($this->once())
             ->method('make')
             ->willReturn(null);
 

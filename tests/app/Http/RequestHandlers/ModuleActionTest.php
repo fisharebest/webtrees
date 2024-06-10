@@ -39,7 +39,7 @@ class ModuleActionTest extends TestCase
     {
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByName')
             ->with('test')
             ->willReturn($this->fooModule());
@@ -63,7 +63,7 @@ class ModuleActionTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByName')
             ->with('test')
             ->willReturn($this->fooModule());
@@ -84,7 +84,7 @@ class ModuleActionTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByName')
             ->with('test')
             ->willReturn(null);
@@ -105,7 +105,7 @@ class ModuleActionTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByName')
             ->with('test')
             ->willReturn($this->fooModule());

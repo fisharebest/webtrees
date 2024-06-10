@@ -46,7 +46,7 @@ class RedirectSourcePhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -57,7 +57,7 @@ class RedirectSourcePhpTest extends TestCase
 
         $source_factory = $this->createMock(SourceFactory::class);
         $source_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($source);
@@ -66,10 +66,7 @@ class RedirectSourcePhpTest extends TestCase
 
         $handler = new RedirectSourcePhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'sid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'sid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -83,16 +80,13 @@ class RedirectSourcePhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectSourcePhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'sid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'sid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 

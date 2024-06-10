@@ -46,7 +46,7 @@ class RedirectGedRecordPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -57,7 +57,7 @@ class RedirectGedRecordPhpTest extends TestCase
 
         $gedcom_record_factory = $this->createMock(GedcomRecordFactory::class);
         $gedcom_record_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($gedcom_record);
@@ -83,9 +83,9 @@ class RedirectGedRecordPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectGedRecordPhp($tree_service);
 

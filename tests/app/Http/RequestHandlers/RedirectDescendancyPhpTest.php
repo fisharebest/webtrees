@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -47,7 +49,7 @@ class RedirectDescendancyPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -55,7 +57,7 @@ class RedirectDescendancyPhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -64,15 +66,15 @@ class RedirectDescendancyPhpTest extends TestCase
 
         $descendancy_chart = $this->createMock(DescendancyChartModule::class);
         $descendancy_chart
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('chartUrl')
             ->willReturn('https://www.example.com');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(DescendancyChartModule::class)
+            ->expects($this->once())
+            ->method('findByComponent')
+            ->with(ModuleChartInterface::class)
             ->willReturn(new Collection([$descendancy_chart]));
 
         $handler = new RedirectDescendencyPhp($module_service, $tree_service);
@@ -88,24 +90,21 @@ class RedirectDescendancyPhpTest extends TestCase
     {
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())->method('findByInterface')
-            ->with(DescendancyChartModule::class)
+            ->method('findByComponent')
+            ->with(ModuleChartInterface::class)
             ->willReturn(new Collection());
 
         $tree = $this->createMock(Tree::class);
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectDescendencyPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -114,27 +113,17 @@ class RedirectDescendancyPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module = $this->createMock(DescendancyChartModule::class);
-
         $module_service = $this->createMock(ModuleService::class);
-        $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(DescendancyChartModule::class)
-            ->willReturn(new Collection([$module]));
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 
         $handler = new RedirectDescendencyPhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 

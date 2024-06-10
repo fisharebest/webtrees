@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -46,19 +47,24 @@ class RedirectLifeSpanPhp implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged    = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
-        $tree   = $this->tree_service->all()->get($ged);
-        $module = $this->module_service->findByInterface(LifespansChartModule::class)->first();
+        $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $tree = $this->tree_service->all()->get($ged);
 
-        if ($tree instanceof Tree && $module instanceof LifespansChartModule) {
-            $individual = $tree->significantIndividual(Auth::user());
+        if ($tree instanceof Tree) {
+            $module = $this->module_service
+                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleChartInterface $module): bool => $module instanceof LifespansChartModule);
 
-            // This chart stored a list of individuals in the session, which we won't have.
-            $url = $module->chartUrl($individual, []);
+            if ($module instanceof LifespansChartModule) {
+                $individual = $tree->significantIndividual(Auth::user());
 
-            return Registry::responseFactory()
-                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
-                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+                // This chart stored a list of individuals in the session, which we won't have.
+                $url = $module->chartUrl($individual, []);
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            }
         }
 
         throw new HttpGoneException();

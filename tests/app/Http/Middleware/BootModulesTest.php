@@ -40,7 +40,7 @@ class BootModulesTest extends TestCase
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('bootModules')
             ->with($theme);
 

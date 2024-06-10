@@ -20,7 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -45,18 +48,24 @@ class RedirectPlaceListPhp implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged      = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
-        $action2  = Validator::queryParams($request)->string('action2', '');
-        $place_id = Validator::queryParams($request)->string('place_id', '');
-        $tree     = $this->tree_service->all()->get($ged);
-        $module   = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->first();
+        $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $tree = $this->tree_service->all()->get($ged);
 
-        if ($tree instanceof Tree && $module instanceof PlaceHierarchyListModule) {
-            $url = $module->listUrl($tree, ['action2' => $action2, 'place_id' => $place_id]);
+        if ($tree instanceof Tree) {
+            $module = $this->module_service
+                ->findByComponent(ModuleListInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleListInterface $module): bool => $module instanceof PlaceHierarchyListModule);
 
-            return Registry::responseFactory()
-                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
-                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            if ($module instanceof PlaceHierarchyListModule) {
+                $url = $module->listUrl($tree, [
+                    'action2'  => Validator::queryParams($request)->string('action2', ''),
+                    'place_id' => Validator::queryParams($request)->string('place_id', ''),
+                ]);
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            }
         }
 
         throw new HttpGoneException();

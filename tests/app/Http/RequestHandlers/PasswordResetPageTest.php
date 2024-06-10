@@ -37,7 +37,7 @@ class PasswordResetPageTest extends TestCase
 
         $user_service = $this->createMock(UserService::class);
         $user_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByToken')
             ->with('1234')
             ->willReturn($user);
@@ -54,7 +54,7 @@ class PasswordResetPageTest extends TestCase
     {
         $user_service = $this->createMock(UserService::class);
         $user_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('findByToken')
             ->with('4321')
             ->willReturn(null);

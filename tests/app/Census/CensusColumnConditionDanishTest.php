@@ -115,7 +115,7 @@ class CensusColumnConditionDanishTest extends TestCase
                 new Collection([$fact]),
                 new Collection()
             );
-        $family->expects(self::once())->method('spouse')->willReturn($spouse);
+        $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
         $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
@@ -145,7 +145,7 @@ class CensusColumnConditionDanishTest extends TestCase
                 new Collection([$fact]),
                 new Collection()
             );
-        $family->expects(self::once())->method('spouse')->willReturn($spouse);
+        $family->expects($this->once())->method('spouse')->willReturn($spouse);
 
         $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('F');

@@ -46,7 +46,7 @@ class RedirectIndividualPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
@@ -57,7 +57,7 @@ class RedirectIndividualPhpTest extends TestCase
 
         $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('make')
             ->with('X123', $tree)
             ->willReturn($individual);
@@ -66,10 +66,7 @@ class RedirectIndividualPhpTest extends TestCase
 
         $handler = new RedirectIndividualPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -83,16 +80,13 @@ class RedirectIndividualPhpTest extends TestCase
 
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectIndividualPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -103,16 +97,13 @@ class RedirectIndividualPhpTest extends TestCase
     {
         $tree_service = $this->createMock(TreeService::class);
         $tree_service
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('all')
             ->willReturn(new Collection([]));
 
         $handler = new RedirectIndividualPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 

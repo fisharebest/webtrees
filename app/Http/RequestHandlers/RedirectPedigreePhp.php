@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -45,10 +46,6 @@ class RedirectPedigreePhp implements RequestHandlerInterface
         3 => 'bottom',
     ];
 
-    /**
-     * @param ModuleService $module_service
-     * @param TreeService   $tree_service
-     */
     public function __construct(
         private readonly ModuleService $module_service,
         private readonly TreeService $tree_service,
@@ -57,24 +54,29 @@ class RedirectPedigreePhp implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged         = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
-        $root_id     = Validator::queryParams($request)->string('rootid', '');
-        $generations = Validator::queryParams($request)->string('generations', PedigreeChartModule::DEFAULT_GENERATIONS);
-        $orientation = Validator::queryParams($request)->string('orientation', '');
-        $tree        = $this->tree_service->all()->get($ged);
-        $module      = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
+        $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $tree = $this->tree_service->all()->get($ged);
 
-        if ($tree instanceof Tree && $module instanceof PedigreeChartModule) {
-            $individual = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
+        if ($tree instanceof Tree) {
+            $module = $this->module_service
+                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleChartInterface $module): bool => $module instanceof PedigreeChartModule);
 
-            $url = $module->chartUrl($individual, [
-                'generations' => $generations,
-                'style'       => self::CHART_STYLES[$orientation] ?? PedigreeChartModule::DEFAULT_STYLE,
-            ]);
+            if ($module instanceof PedigreeChartModule) {
+                $root_id     = Validator::queryParams($request)->string('rootid', '');
+                $generations = Validator::queryParams($request)->string('generations', PedigreeChartModule::DEFAULT_GENERATIONS);
+                $orientation = Validator::queryParams($request)->string('orientation', '');
+                $individual  = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            return Registry::responseFactory()
-                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
-                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+                $url = $module->chartUrl($individual, [
+                    'generations' => $generations,
+                    'style'       => self::CHART_STYLES[$orientation] ?? PedigreeChartModule::DEFAULT_STYLE,
+                ]);
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            }
         }
 
         throw new HttpGoneException();
