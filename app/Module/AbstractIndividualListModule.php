@@ -173,7 +173,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
         $surname_initials = $this->surnameInitials($surname_data);
 
         // We've requested a surname that doesn't currently exist.
-        if ($surname !== ''  && !array_key_exists($surname, $all_surns)) {
+        if ($surname !== '' && !array_key_exists($surname, $all_surns)) {
             $message = I18N::translate('There are no individuals with the surname “%s”', e($surname));
             FlashMessages::addMessage($message);
 
@@ -308,8 +308,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
         </div>
 
         <div class="wt-page-content">
-            <?php
-            if ($show === 'indi' || $show === 'surn') {
+            <?php if ($show === 'indi' || $show === 'surn') {
                 switch ($alpha) {
                     case '@':
                         $filter = static fn (string $x): bool => $x === Individual::NOMEN_NESCIO;
