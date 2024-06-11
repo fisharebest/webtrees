@@ -1151,7 +1151,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     protected function addRepositoryLinksToCart(GedcomRecord $record): void
     {
-        preg_match_all('/\n\d REPO @(' . Gedcom::REGEX_XREF . '@)/', $record->gedcom(), $matches);
+        preg_match_all('/\n\d REPO @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
 
         foreach ($matches[1] as $xref) {
             $repository = Registry::repositoryFactory()->make($xref, $record->tree());
