@@ -26,7 +26,7 @@ use Illuminate\Support\Collection;
 
     <div class="tab-content">
         <?php foreach ($tabs as $tab) : ?>
-            <div id="<?= $tab->name() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) : ?><?= $tab->getTabContent($record) ?><?php endif ?></div>
+            <div id="<?= $tab->name() ?>" class="tab-pane mt-2 fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) : ?><?= $tab->getTabContent($record) ?><?php endif ?></div>
         <?php endforeach ?>
     </div>
 </div>
