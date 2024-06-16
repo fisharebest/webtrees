@@ -83,10 +83,6 @@ class GedcomExportService
 
     private StreamFactoryInterface $stream_factory;
 
-    /**
-     * @param ResponseFactoryInterface $response_factory
-     * @param StreamFactoryInterface   $stream_factory
-     */
     public function __construct(ResponseFactoryInterface $response_factory, StreamFactoryInterface $stream_factory)
     {
         $this->response_factory = $response_factory;
@@ -94,16 +90,14 @@ class GedcomExportService
     }
 
     /**
-     * @param Tree                        $tree         Export data from this tree
-     * @param bool                        $sort_by_xref Write GEDCOM records in XREF order
-     * @param string                      $encoding     Convert from UTF-8 to other encoding
-     * @param string                      $privacy      Filter records by role
-     * @param string                      $line_endings
-     * @param string                      $filename     Name of download file, without an extension
-     * @param string                      $format       One of: gedcom, zip, zipmedia, gedzip
+     * @param Tree                                            $tree         Export data from this tree
+     * @param bool                                            $sort_by_xref Write GEDCOM records in XREF order
+     * @param string                                          $encoding     Convert from UTF-8 to other encoding
+     * @param string                                          $privacy      Filter records by role
+     * @param string                                          $line_endings CRLF or LF
+     * @param string                                          $filename     Name of download file, without an extension
+     * @param string                                          $format       One of: gedcom, zip, zipmedia, gedzip
      * @param Collection<int,string|object|GedcomRecord>|null $records
-     *
-     * @return ResponseInterface
      */
     public function downloadResponse(
         Tree $tree,
@@ -235,6 +229,10 @@ class GedcomExportService
                     $gedcom = $datum;
                 } elseif ($datum instanceof GedcomRecord) {
                     $gedcom = $datum->privatizeGedcom($access_level);
+
+                    if ($gedcom === '') {
+                        continue;
+                    }
                 } else {
                     $gedcom =
                         $datum->i_gedcom ??
@@ -277,15 +275,6 @@ class GedcomExportService
         return $stream;
     }
 
-    /**
-     * Create a header record for a gedcom file.
-     *
-     * @param Tree   $tree
-     * @param string $encoding
-     * @param bool   $include_sub
-     *
-     * @return string
-     */
     public function createHeader(Tree $tree, string $encoding, bool $include_sub): string
     {
         // Force a ".ged" suffix
@@ -334,14 +323,6 @@ class GedcomExportService
         return $gedcom;
     }
 
-    /**
-     * Wrap long lines using concatenation records.
-     *
-     * @param string $gedcom
-     * @param int    $max_line_length
-     *
-     * @return string
-     */
     public function wrapLongLines(string $gedcom, int $max_line_length): string
     {
         $lines = [];
@@ -376,12 +357,6 @@ class GedcomExportService
         return implode("\n", $lines);
     }
 
-    /**
-     * @param Tree $tree
-     * @param bool $sort_by_xref
-     *
-     * @return Builder
-     */
     private function familyQuery(Tree $tree, bool $sort_by_xref): Builder
     {
         $query = DB::table('families')
@@ -397,12 +372,6 @@ class GedcomExportService
         return $query;
     }
 
-    /**
-     * @param Tree $tree
-     * @param bool $sort_by_xref
-     *
-     * @return Builder
-     */
     private function individualQuery(Tree $tree, bool $sort_by_xref): Builder
     {
         $query = DB::table('individuals')
@@ -418,12 +387,6 @@ class GedcomExportService
         return $query;
     }
 
-    /**
-     * @param Tree $tree
-     * @param bool $sort_by_xref
-     *
-     * @return Builder
-     */
     private function sourceQuery(Tree $tree, bool $sort_by_xref): Builder
     {
         $query = DB::table('sources')
@@ -439,12 +402,6 @@ class GedcomExportService
         return $query;
     }
 
-    /**
-     * @param Tree $tree
-     * @param bool $sort_by_xref
-     *
-     * @return Builder
-     */
     private function mediaQuery(Tree $tree, bool $sort_by_xref): Builder
     {
         $query = DB::table('media')
@@ -460,12 +417,6 @@ class GedcomExportService
         return $query;
     }
 
-    /**
-     * @param Tree $tree
-     * @param bool $sort_by_xref
-     *
-     * @return Builder
-     */
     private function otherQuery(Tree $tree, bool $sort_by_xref): Builder
     {
         $query = DB::table('other')
