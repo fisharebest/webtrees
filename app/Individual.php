@@ -217,40 +217,6 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Generate a private version of this record
-     *
-     * @param int $access_level
-     *
-     * @return string
-     */
-    protected function createPrivateGedcomRecord(int $access_level): string
-    {
-        $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
-
-        $rec = '0 @' . $this->xref . '@ INDI';
-        if ((int) $this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {
-            // Show all the NAME tags, including subtags
-            foreach ($this->facts(['NAME']) as $fact) {
-                $rec .= "\n" . $fact->gedcom();
-            }
-        }
-        // Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
-        preg_match_all('/\n1 (?:FAMC|FAMS) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
-        foreach ($matches as $match) {
-            $rela = Registry::familyFactory()->make($match[1], $this->tree);
-            if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
-                $rec .= $match[0];
-            }
-        }
-        // Don’t privatize sex.
-        if (preg_match('/\n1 SEX [MFU]/', $this->gedcom, $match)) {
-            $rec .= $match[0];
-        }
-
-        return $rec;
-    }
-
-    /**
      * Calculate whether this individual is living or dead.
      * If not known to be dead, then assume living.
      *

@@ -76,32 +76,6 @@ class Family extends GedcomRecord
     }
 
     /**
-     * Generate a private version of this record
-     *
-     * @param int $access_level
-     *
-     * @return string
-     */
-    protected function createPrivateGedcomRecord(int $access_level): string
-    {
-        if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
-            $access_level = Auth::PRIV_HIDE;
-        }
-
-        $rec = '0 @' . $this->xref . '@ FAM';
-        // Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
-        preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
-        foreach ($matches as $match) {
-            $rela = Registry::individualFactory()->make($match[1], $this->tree);
-            if ($rela instanceof Individual && $rela->canShow($access_level)) {
-                $rec .= $match[0];
-            }
-        }
-
-        return $rec;
-    }
-
-    /**
      * Get the male (or first female) partner of the family
      *
      * @param int|null $access_level
