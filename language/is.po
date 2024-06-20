@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 12:15+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-06-21 10:59+0000\n"
+"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
 "Language: is\n"
@@ -7417,9 +7417,9 @@ msgstr "Ef eftirnafnið er ókunnugt, notaðu tóm skrástrik: <%s>Mary //<%s>"
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
-"Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðaför eða "
-"líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera "
-"„lifandi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum "
+"Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðsetningu "
+"eða líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera "
+"\"á lífi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum "
 "tilgangi."
 
 #. I18N: Help text for the “Media folder” configuration setting
@@ -15662,7 +15662,7 @@ msgstr "Afkrækja miðil"
 
 #: app/GedcomTag.php:1797
 msgid "Unrecognized GEDCOM code"
-msgstr "Ókunnur GEDCOM kóði"
+msgstr "Óþekktur GEDCOM kóði"
 
 #: admin_media.php:642
 msgid "Unused files"
@@ -17054,7 +17054,7 @@ msgstr "börn"
 #: edit_interface.php:2568 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
-msgstr "lok"
+msgstr "loka"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
@@ -18808,7 +18808,7 @@ msgstr "frændi í 2. ættlið"
 #: app/Functions/Functions.php:1546
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr "frændi í 2. ættlið"
+msgstr "frændi í annan ættlið"
 
 #: app/Functions/Functions.php:985
 msgctxt "(a man’s) brother’s child’s son"
@@ -20617,7 +20617,7 @@ msgstr "yngri systir"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s ár"
-msgstr[1] "±%s ára"
+msgstr[1] "±%s ár"
 
 #: app/Individual.php:1218
 #, php-format
