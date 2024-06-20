@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
+"PO-Revision-Date: 2024-06-21 10:59+0000\n"
+"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
+"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/is/>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3266,7 +3267,7 @@ msgstr "Kanada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Get ekki skrifað í möppuna \"%s“."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3866,7 +3867,7 @@ msgstr "Tenging við gagnagrunnsþjóninn"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Tegund tengingar"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -7627,7 +7628,11 @@ msgstr "Ef smámyndin er sú sama og upphaflega myndin, þá er þess ekki lengu
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðsetningu eða líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera „lifandi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum tilgangi."
+msgstr ""
+"Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðsetningu "
+"eða líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera "
+"\"á lífi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum "
+"tilgangi."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:254
@@ -14534,7 +14539,7 @@ msgstr "Færibreytuna “%s” vantar."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Færibreytan \"slóð“ er ógild."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14760,7 +14765,7 @@ msgstr "Það eru engar staðreyndir fyrir þennan einstakling."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Það eru engir einstaklingar með eftirnafnið \"%s“"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15145,7 +15150,7 @@ msgstr "Þessi síða gerir þér kleift að fara fram hjá venjulegu eyðublö�
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Þessari síðu hefur verið eytt."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17169,7 +17174,7 @@ msgstr "halda áfram"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "afrita"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17351,7 +17356,7 @@ msgstr "flytja út skrá"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "útdráttur"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19479,7 +19484,7 @@ msgstr "lista"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "staðbundið"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19688,7 +19693,7 @@ msgstr "maki systurbarns"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "net"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19853,7 +19858,7 @@ msgstr "af"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "á netinu"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -19909,7 +19914,7 @@ msgstr "prósenta"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "ljósrit"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
