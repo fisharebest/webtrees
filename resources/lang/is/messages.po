@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2023-09-07 19:32+0000\n"
+"PO-Revision-Date: 2024-06-21 10:59+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -7742,7 +7742,7 @@ msgid "If this individual has any events other than death, burial, or cremation 
 msgstr ""
 "Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðsetningu "
 "eða líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera "
-"„lifandi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum "
+"\"á lífi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum "
 "tilgangi."
 
 #. I18N: Help text for the “Media folder” configuration setting
