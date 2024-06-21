@@ -2207,50 +2207,8 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: return.type
-    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) should return int but returns int\\|false\\.$#',
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) should return int but returns int\\<0, max\\>\\|false\\.$#',
     'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$image of function imagecolorallocate expects GdImage, GdImage\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$image of function imagecolortransparent expects GdImage, GdImage\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$image of function imagefilledarc expects GdImage, GdImage\\|false given\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$image of function imagefilledrectangle expects GdImage, GdImage\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$image of function imagepng expects GdImage, GdImage\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$image of function imagettftext expects GdImage, GdImage\\|false given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Module/FanChartModule.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$image of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) expects GdImage, GdImage\\|false given\\.$#',
-    'count' => 4,
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
 $ignoreErrors[] = [
@@ -2261,13 +2219,13 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: argument.type
-    'message' => '#^Parameter \\#2 \\$color of function imagecolortransparent expects int\\|null, int\\|false given\\.$#',
+    'message' => '#^Parameter \\#2 \\$color of function imagecolortransparent expects int\\|null, int\\<0, max\\>\\|false given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
 $ignoreErrors[] = [
     // identifier: argument.type
-    'message' => '#^Parameter \\#6 \\$color of function imagefilledrectangle expects int, int\\|false given\\.$#',
+    'message' => '#^Parameter \\#6 \\$color of function imagefilledrectangle expects int, int\\<0, max\\>\\|false given\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/FanChartModule.php',
 ];
