@@ -151,7 +151,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 if ($fact->record() === $indi) {
                     $icon = static::OWNBIRTH_ICON;
                 }
-            } 
+            }
             elseif ($fact->tag() === 'INDI:CHR') {
                 if ($fact->record() === $indi) {
                     $icon = static::OWNBIRTH_ICON;
