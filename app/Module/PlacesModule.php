@@ -56,6 +56,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         'INDI:RESI' => ['color' => 'darkcyan', 'name' => 'home fas'],
     ];
 
+    protected const OWNBIRTH_ICON = ['color' => 'red', 'name' => 'baby-carriage fas'];
     protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
 
     private LeafletJsService $leaflet_js_service;
@@ -144,6 +145,19 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();
             }
+            
+            $icon = static::ICONS[$fact->tag()];
+            if ($fact->tag() === 'INDI:BIRT') {
+                if ($fact->record() === $indi) {
+                    $icon = static::OWNBIRTH_ICON;
+                }
+            }
+            else if ($fact->tag() === 'INDI:CHR') {
+                if ($fact->record() === $indi) {
+                    $icon = static::OWNBIRTH_ICON;
+                    $icon['name'] = 'water fas'; 
+                }
+            }
 
             if ($latitude !== null && $longitude !== null) {
                 $geojson['features'][] = [
@@ -154,7 +168,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
-                        'icon'    => static::ICONS[$fact->tag()] ?? static::DEFAULT_ICON,
+                        'icon'    => $icon ?? static::DEFAULT_ICON,
                         'tooltip' => $fact->place()->gedcomName(),
                         'summary' => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
                     ],
@@ -188,7 +202,9 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
         $facts = Fact::sortFacts($facts);
 
-        return $facts->filter(static fn (Fact $item): bool => $item->place()->gedcomName() !== '');
+        return $facts->filter(static function (Fact $item): bool {
+            return $item->place()->gedcomName() !== '';
+        });
     }
 
     /**
