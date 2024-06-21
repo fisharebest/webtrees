@@ -145,17 +145,17 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $latitude  = $location->latitude();
                 $longitude = $location->longitude();
             }
-            
+
             $icon = static::ICONS[$fact->tag()];
             if ($fact->tag() === 'INDI:BIRT') {
                 if ($fact->record() === $indi) {
                     $icon = static::OWNBIRTH_ICON;
                 }
             }
-            else if ($fact->tag() === 'INDI:CHR') {
+            elseif ($fact->tag() === 'INDI:CHR') {
                 if ($fact->record() === $indi) {
                     $icon = static::OWNBIRTH_ICON;
-                    $icon['name'] = 'water fas'; 
+                    $icon['name'] = 'water fas';
                 }
             }
 
