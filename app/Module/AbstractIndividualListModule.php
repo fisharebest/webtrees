@@ -654,8 +654,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
         }
 
         foreach ($surname_data as $row) {
-            $initial = I18N::language()->initialLetter(I18N::strtoupper($row->n_surn));
-            $initial = I18N::language()->normalize($initial);
+            $initial = I18N::language()->initialLetter(I18N::language()->normalize(I18N::strtoupper($row->n_surn)));
 
             $initials[$initial] ??= 0;
             $initials[$initial] += $row->total;
