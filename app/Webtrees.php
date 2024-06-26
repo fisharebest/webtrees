@@ -152,9 +152,9 @@ class Webtrees
     private const MIDDLEWARE = [
         ErrorHandler::class,
         EmitResponse::class,
-        SecurityHeaders::class,
         ReadConfigIni::class,
         BaseUrl::class,
+        SecurityHeaders::class,
         HandleExceptions::class,
         PublicFiles::class,
         ClientIp::class,
