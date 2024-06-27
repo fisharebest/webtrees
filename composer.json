@@ -60,7 +60,7 @@
         "league/flysystem-ziparchive": "1.0.3",
         "middlewares/client-ip": "1.3.0",
         "mlocati/ip-lib": "1.18.0",
-        "nesbot/carbon": "2.72.3",
+        "nesbot/carbon": "2.72.5",
         "nyholm/psr7": "1.6.1",
         "nyholm/psr7-server": "1.1.0",
         "oscarotero/middleland": "1.0.1",
@@ -72,8 +72,8 @@
         "swiftmailer/swiftmailer": "6.3.0",
         "symfony/cache": "4.4.48",
         "symfony/expression-language": "4.4.47",
-        "symfony/polyfill-mbstring": "v1.29.0",
-        "symfony/polyfill-php80": "1.29.0",
+        "symfony/polyfill-mbstring": "v1.30.0",
+        "symfony/polyfill-php80": "1.30.0",
         "tecnickcom/tcpdf": "6.7.5"
     },
     "require-dev": {
