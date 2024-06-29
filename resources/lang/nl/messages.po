@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-03-31 08:11+0000\n"
-"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"PO-Revision-Date: 2024-06-30 07:59+0000\n"
+"Last-Translator: Marianne van Harten <marianne@vanharten.net>\n"
+"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3811,7 +3812,7 @@ msgstr "Commentaar"
 
 #: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
-msgstr "Erkend partnerschap"
+msgstr "Geregistreerd partnerschap"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
