@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 12:15+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-07-01 13:59+0000\n"
+"Last-Translator: alirjamali <alireza.jamali.mp@gmail.com>\n"
 "Language-Team: Persian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fa/>\n"
 "Language: fa\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " اما جزئیات مشخص نیست"
+msgstr " اما جزئیات مشخص نیستند"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -78,21 +78,21 @@ msgstr "%1$s %2$s نسل فاصله"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s %2$s بار نزولی حذف شد"
+msgstr "%1$s %2$s نسل فاصله"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s %2$s"
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$s کیلوبایت در %2$s ثانیه بارگیری شد."
+msgstr "%1$s کیلوبایت در %2$s ثانیه دانلود شد."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
@@ -118,7 +118,7 @@ msgstr "%1$s لینکی برای برگشت به %2$s ندارد."
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%1$s فایل در %2$s ثانیه استخراج شد."
-msgstr[1] "%1$s فایل در %2$s ثانیه استخراج شده."
+msgstr[1] "%1$s فایل در %2$s ثانیه استخراج شدند."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -139,7 +139,7 @@ msgstr[1] "مختصات نقشه محل تولد %1$s تا از افراد وج�
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s یک %2$s می باشد اما انتظار می رود %3$s باشد."
+msgstr "%1$s یک %2$s می‌باشد اما انتظار می‌رود %3$s باشد."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
@@ -986,7 +986,7 @@ msgstr ""
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "گزارشِ سوابق حیاتی برای یک تاریخ یا مکانِ معین."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1342,7 +1342,7 @@ msgstr ""
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr ""
+msgstr "افزودن یک یادداشت"
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
@@ -2637,7 +2637,7 @@ msgstr ""
 #. I18N: gedcom tag _BIBL
 #: app/GedcomTag.php:1030
 msgid "Bibliography"
-msgstr ""
+msgstr "مراجع"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
@@ -2978,7 +2978,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6709
 msgid "Botswana"
-msgstr ""
+msgstr "بوتسوانا"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
@@ -3248,7 +3248,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6693
 msgid "Burkina Faso"
-msgstr ""
+msgstr "بورکینا فاسو"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6689
@@ -4725,7 +4725,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1437
 msgid "Death of a brother"
-msgstr ""
+msgstr "فوتِ یک برادر"
 
 #: app/GedcomTag.php:1360
 msgid "Death of a child"
@@ -5300,7 +5300,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
 msgid "Dominica"
-msgstr ""
+msgstr "دومینیکا"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6735
@@ -6283,8 +6283,8 @@ msgstr ""
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
 msgstr ""
-"فایل های علامت گذاری شده با %s جهت انجام یک سری فعالیت‌ها لازم می‌باشند و "
-"قابل پاک شدن نیستند."
+"فایل هایی که با %s علامت‌گذاری شده‌اند برای عملکرد صحیح مورد نیاز هستند و "
+"قابل حذف نیستند."
 
 #: app/I18N.php:235 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
@@ -6368,7 +6368,7 @@ msgstr ""
 #. I18N: gedcom tag FCOM
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:21
 msgid "First communion"
-msgstr ""
+msgstr "اولین اشتراک"
 
 #: statistics.php:370
 msgid "First event"
@@ -7229,7 +7229,7 @@ msgstr ""
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "چه مقدار از بازگشت به عقب به هنگام جستجو برای روابط استفاده می‌شود"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7281,7 +7281,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Idaho Falls, Idaho, United States"
-msgstr ""
+msgstr "آیداهو فالز، آیداهو، ایالات متحده آمریکا"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
@@ -7326,6 +7326,9 @@ msgstr ""
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
+"اگر این فرد رویدادهای دیگری غیر از مرگ، دفن یا سوزاندن بیش از این تعداد سال "
+"داشته‌باشد، «زنده» محسوب می‌شود. تاریخ تولد کودکان برای این منظور چنین "
+"رویدادهایی در نظر گرفته‌می شود."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
@@ -8244,7 +8247,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr ""
+msgstr "سایزِ نامه"
 
 #: app/Module/GoogleMapsModule.php:384 app/Module/GoogleMapsModule.php:400
 #: app/Module/GoogleMapsModule.php:1438 app/Module/GoogleMapsModule.php:3444
@@ -8530,7 +8533,7 @@ msgstr ""
 #: admin_trees_places.php:91 admin_trees_unconnected.php:74
 #: app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
-msgstr ""
+msgstr "مدیریت شجره‌نامه‌ها"
 
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
@@ -9231,7 +9234,7 @@ msgstr ""
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 admin_users.php:549
 msgid "Moderator"
-msgstr "مدیر"
+msgstr "ناظر"
 
 #: admin.php:692
 msgid "Moderators"
@@ -10165,7 +10168,7 @@ msgstr "پرستار"
 #: app/GedcomCode/GedcomCodeRela.php:201
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr ""
+msgstr "پرستار"
 
 #: app/GedcomCode/GedcomCodeRela.php:199
 msgctxt "MALE"
@@ -13561,6 +13564,12 @@ msgstr ""
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
+"قسمت <b> نام خانوادگی </b> حاوی نامی است که برای مرتب سازی و گروه‌بندی "
+"استفاده می‌‎شود، و می‌تواند با نام خانوادگیِ واقعی فرد که همیشه از قسمت <b> "
+"نام </b> گرفته می‌شود، متفاوت باشد. این قسمت می‌تواند برای مرتب‌کردن نام "
+"خانوادگی با یا بدونِ پیشوند (بروجنی / بروجنی‌پور) و گروه‌های مختلف هجی یا "
+"متمایزشده (Kowalski / Kowalska) استفاده شود. اگر فرد نیاز به ذکر بیش از یک "
+"نام خانوادگی داشته باشد، هر نام باید توسط یک کاما از بقیه جدا شود."
 
 #: admin_trees_manage.php:148
 #, php-format
@@ -14407,7 +14416,9 @@ msgstr ""
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "این نام، نام سرور SMTP موردنظر شماست، \"localhost\" بدین معناست که سرور میل نیز بر روی همین وب سرور است."
+msgstr ""
+"اینْ نام سرور SMTP موردنظر شماست. \"localhost\" به این معنی است که سرویس پست "
+"الکترونیکی در همان رایانه وب سرور شما در حال اجرا است."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -16030,6 +16041,8 @@ msgstr ""
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
 msgstr ""
+"شما می توانید ظاهر سایت را با استفاده از \"تم‌ها\" تغییر دهید. هر تم دارای "
+"سبک، طرح، طرحِ رنگ و غیره‌ی متفاوت است."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
