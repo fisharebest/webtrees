@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-01-24 16:36+0000\n"
-"Last-Translator: jsh649 <jsh649@gmail.com>\n"
-"Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/webtrees/fa/>\n"
+"PO-Revision-Date: 2024-07-01 13:59+0000\n"
+"Last-Translator: alirjamali <alireza.jamali.mp@gmail.com>\n"
+"Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " اما جزئیات مشخص نیست"
+msgstr " اما جزئیات مشخص نیستند"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -62,7 +63,7 @@ msgstr "%1$s %2$s نسل فاصله"
 #: resources/views/lists/surnames-tag-cloud.phtml:39
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s %2$s"
+msgstr "%1$s (%2$s)"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:241
 #, php-format
@@ -88,12 +89,12 @@ msgstr "%1$s لینکی برای برگشت به %2$s ندارد."
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
 msgstr[0] "%1$s فایل در %2$s ثانیه استخراج شد."
-msgstr[1] "%1$s فایل ها در %2$s ثانیه استخراج شدند."
+msgstr[1] "%1$s فایل در %2$s ثانیه استخراج شدند."
 
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s یک %2$s می باشد اما انتظار می رود %3$s باشد."
+msgstr "%1$s یک %2$s می‌باشد اما انتظار می‌رود %3$s باشد."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2436
@@ -976,7 +977,7 @@ msgstr "گزارش اطلاعات مفقود شده برای یک فرد و بس
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "گزارش سوابق حیاتی برای یک تاریخ یا مکان معین."
+msgstr "گزارشِ سوابق حیاتی برای یک تاریخ یا مکانِ معین."
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1333,7 +1334,7 @@ msgstr "افزودن آرتیکل خبری"
 
 #: resources/views/modules/notes/tab.phtml:98
 msgid "Add a note"
-msgstr "افزودن یادداشت"
+msgstr "افزودن یک یادداشت"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
@@ -2575,7 +2576,7 @@ msgstr "بوتان"
 
 #: app/CustomTags/RootsMagic.php:79
 msgid "Bibliography"
-msgstr "کتابشناسی"
+msgstr "مراجع"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:64
@@ -3182,7 +3183,7 @@ msgstr "خاکسپاری ها"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
 msgid "Burkina Faso"
-msgstr "بورکینافاسو"
+msgstr "بورکینا فاسو"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:76
@@ -3268,7 +3269,7 @@ msgstr "کانادا"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "نمی‌توان در پوشه‌ی %s نوشت."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3868,7 +3869,7 @@ msgstr "اتصال به سرور دیتابیس"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "نوع اتصال"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -4819,7 +4820,7 @@ msgstr "شروع دامنه تاریخ فوت"
 
 #: app/Services/IndividualFactsService.php:350
 msgid "Death of a brother"
-msgstr "فوت برادر"
+msgstr "فوتِ یک برادر"
 
 #: app/Services/IndividualFactsService.php:334
 #: resources/views/admin/trees-preferences.phtml:482
@@ -6446,7 +6447,9 @@ msgstr "فایل‌هایی از نسخه قبلی webtrees پیدا شده‌ا
 #: resources/views/admin/clean-data.phtml:22
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr "فایل هایی که با %s علامت گذاری شده اند برای عملکرد صحیح مورد نیاز هستند و قابل حذف نیستند."
+msgstr ""
+"فایل هایی که با %s علامت‌گذاری شده‌اند برای عملکرد صحیح مورد نیاز هستند و "
+"قابل حذف نیستند."
 
 #: resources/views/calendar-page.phtml:122
 #: resources/views/lists/datatables-attributes.phtml:34
@@ -7522,7 +7525,7 @@ msgstr "هیوستون، تگزاس، ایالات متحده"
 #. I18N: Configuration option
 #: resources/views/modules/relationships-chart/config.phtml:45
 msgid "How much recursion to use when searching for relationships"
-msgstr "چه مقدار از بازگشت به عقب به هنگام جستجو برای روابط استفاده کنید"
+msgstr "چه مقدار از بازگشت به عقب به هنگام جستجو برای روابط استفاده می‌شود"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:247
@@ -7629,7 +7632,10 @@ msgstr "اگر ریزعکس با تصویر اصلی یکسان است، دیگ�
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "اگر این فرد رویدادهای دیگری غیر از مرگ، دفن یا سوزاندن بیش از این تعداد سال داشته باشد، «زنده» محسوب می شود. تاریخ تولد کودکان برای این منظور چنین رویدادهایی در نظر گرفته می شود."
+msgstr ""
+"اگر این فرد رویدادهای دیگری غیر از مرگ، دفن یا سوزاندن بیش از این تعداد سال "
+"داشته‌باشد، «زنده» محسوب می‌شود. تاریخ تولد کودکان برای این منظور چنین "
+"رویدادهایی در نظر گرفته‌می شود."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:254
@@ -8634,7 +8640,7 @@ msgstr "لسوتو"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "نامه"
+msgstr "سایزِ نامه"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:296
@@ -8933,7 +8939,7 @@ msgstr "مالت"
 #: resources/views/admin/trees-renumber.phtml:19
 #: resources/views/admin/trees-unconnected.phtml:24
 msgid "Manage family trees"
-msgstr "مدیریت شجره نامه ها"
+msgstr "مدیریت شجره‌نامه‌ها"
 
 #: app/Http/RequestHandlers/ManageMediaPage.php:66
 #: resources/views/admin/control-panel.phtml:807
@@ -14190,7 +14196,13 @@ msgstr "قسمت <b> نام </b> شامل نام کامل فرد, همانطور
 
 #: resources/views/help/surname.phtml:10
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "قسمت <b> نام خانوادگی </b> حاوی نامی است که برای مرتب سازی و گروه بندی استفاده می شود. و می تواند با نام خانوادگی واقعی فرد که همیشه از قسمت <b> نام </b> گرفته می شود ، متفاوت باشد. این قسمت می تواند برای مرتب کردن نام خانوادگی با یا بدون پیشوند (بروجنی / بروجنی پور ) و گروه های مختلف هجی یا متمایزشده (Kowalski / Kowalska) استفاده شود. اگر فرد نیاز به ذکر بیش از یک نام خانوادگی داشته باشد ، هر نام باید توسط یک کاما از هم جدا شود."
+msgstr ""
+"قسمت <b> نام خانوادگی </b> حاوی نامی است که برای مرتب سازی و گروه‌بندی "
+"استفاده می‌‎شود، و می‌تواند با نام خانوادگیِ واقعی فرد که همیشه از قسمت <b> "
+"نام </b> گرفته می‌شود، متفاوت باشد. این قسمت می‌تواند برای مرتب‌کردن نام "
+"خانوادگی با یا بدونِ پیشوند (بروجنی / بروجنی‌پور) و گروه‌های مختلف هجی یا "
+"متمایزشده (Kowalski / Kowalska) استفاده شود. اگر فرد نیاز به ذکر بیش از یک "
+"نام خانوادگی داشته باشد، هر نام باید توسط یک کاما از بقیه جدا شود."
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:96
 #, php-format
@@ -14536,7 +14548,7 @@ msgstr "پارامتر “%s” از دست رفته است."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "پارامترِ “path” نامعتبر است."
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -14762,7 +14774,7 @@ msgstr "واقعه ای برای این فرد وجود ندارد."
 #: app/Module/IndividualListModule.php:224
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "شخصی با نام خانوادگیِ «%s» وجود ندارد"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15022,7 +15034,9 @@ msgstr "این آخرین نسخه webtrees است. هیچ ارتقای در د�
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:99
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "این نام، نام سرور SMTP موردنظر شماست. \"localhost\" به این معنی است که سرویس پست الکترونیکی در همان رایانه وب سرور شما در حال اجرا است."
+msgstr ""
+"اینْ نام سرور SMTP موردنظر شماست. \"localhost\" به این معنی است که سرویس پست "
+"الکترونیکی در همان رایانه وب سرور شما در حال اجرا است."
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:48
@@ -15147,7 +15161,7 @@ msgstr "این صفحه به شما امکان می دهد فرم های معم�
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "این صفحه حذف شده‌است."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -16468,7 +16482,7 @@ msgstr "چه کسی آنلاین است"
 
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
-msgstr "چرا این لیست شامل رکوردهایی است که نیازی به به روز رسانی ندارند؟"
+msgstr "چرا این لیست شامل رکوردهایی است که نیازی به به‌روزرسانی ندارند؟"
 
 #: resources/views/lists/families-table.phtml:97
 msgid "Widow"
@@ -16587,7 +16601,9 @@ msgstr "با استفاده از لینک زیر می توانید برای یک
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:71
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr "شما می توانید ظاهر سایت را با استفاده از \"تم ها\" تغییر دهید. هر تم دارای سبک، طرح، طرح رنگ و غیره متفاوت است."
+msgstr ""
+"شما می توانید ظاهر سایت را با استفاده از \"تم‌ها\" تغییر دهید. هر تم دارای "
+"سبک، طرح، طرحِ رنگ و غیره‌ی متفاوت است."
 
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
@@ -17171,7 +17187,7 @@ msgstr "ادامه"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "رونوشت"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17353,7 +17369,7 @@ msgstr "ارسال فایل"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "چکیده"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19481,7 +19497,7 @@ msgstr "فهرست"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "محلی"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19690,7 +19706,7 @@ msgstr "فرزند خواهر زن"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "شبکه"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19855,7 +19871,7 @@ msgstr "از"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "برخط"
 
 #: app/Services/RelationshipService.php:353
 msgid "parent"
@@ -19911,7 +19927,7 @@ msgstr "درصد"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "فتوکپی"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
