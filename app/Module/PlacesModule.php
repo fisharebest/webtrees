@@ -56,6 +56,11 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         'INDI:RESI' => ['color' => 'darkcyan', 'name' => 'home fas'],
     ];
 
+    protected const OWN_ICONS = [
+        'INDI:BIRT' => ['color' => 'red', 'name' => 'baby-carriage fas'],
+        'INDI:CHR'  => ['color' => 'red', 'name' => 'water fas'],
+    ] + self::ICONS;
+
     protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
 
     private LeafletJsService $leaflet_js_service;
@@ -145,6 +150,8 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                 $longitude = $location->longitude();
             }
 
+            $icons = $fact->record() === $indi ? static::OWN_ICONS : static::ICONS;
+
             if ($latitude !== null && $longitude !== null) {
                 $geojson['features'][] = [
                     'type'       => 'Feature',
@@ -154,7 +161,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
-                        'icon'    => static::ICONS[$fact->tag()] ?? static::DEFAULT_ICON,
+                        'icon'    => $icons[$fact->tag()] ?? static::DEFAULT_ICON,
                         'tooltip' => $fact->place()->gedcomName(),
                         'summary' => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
                     ],
@@ -188,7 +195,9 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 
         $facts = Fact::sortFacts($facts);
 
-        return $facts->filter(static fn (Fact $item): bool => $item->place()->gedcomName() !== '');
+        return $facts->filter(static function (Fact $item): bool {
+            return $item->place()->gedcomName() !== '';
+        });
     }
 
     /**
