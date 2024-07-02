@@ -947,13 +947,13 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: offsetAccess.nonOffsetAccessible
-    'message' => '#^Cannot access offset \'0\' on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
+    'message' => '#^Cannot access offset \'0\' on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
 $ignoreErrors[] = [
     // identifier: offsetAccess.nonOffsetAccessible
-    'message' => '#^Cannot access offset \'1\' on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
+    'message' => '#^Cannot access offset \'1\' on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Http/RequestHandlers/ManageMediaData.php',
 ];
@@ -3935,13 +3935,13 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: offsetAccess.nonOffsetAccessible
-    'message' => '#^Cannot access offset 0 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
+    'message' => '#^Cannot access offset 0 on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
     // identifier: offsetAccess.nonOffsetAccessible
-    'message' => '#^Cannot access offset 1 on array\\{0\\: int, 1\\: int, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
+    'message' => '#^Cannot access offset 1 on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
