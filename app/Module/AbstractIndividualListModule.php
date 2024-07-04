@@ -546,7 +546,8 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
             ->groupBy([DB::binaryColumn('n_givn')]);
 
         foreach ($query->get() as $row) {
-            $initial            = I18N::strtoupper(I18N::language()->initialLetter($row->n_givn));
+            $initial = I18N::language()->initialLetter(I18N::language()->normalize(I18N::strtoupper($row->n_givn)));
+
             $initials[$initial] ??= 0;
             $initials[$initial] += (int) $row->count;
         }
