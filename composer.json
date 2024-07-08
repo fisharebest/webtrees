@@ -70,10 +70,10 @@
         "psr/http-server-handler": "1.0.2",
         "psr/http-server-middleware": "1.0.2",
         "ramsey/uuid": "4.2.3",
-        "sabre/vobject": "4.5.4",
+        "sabre/vobject": "4.5.5",
         "symfony/cache": "5.4.40",
         "symfony/expression-language": "5.4.40",
-        "symfony/mailer": "5.4.40",
+        "symfony/mailer": "5.4.41",
         "symfony/polyfill-mbstring": "1.30.0",
         "symfony/polyfill-php80": "1.30.0",
         "tecnickcom/tcpdf": "6.7.5"

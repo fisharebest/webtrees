@@ -771,12 +771,12 @@ parameters:
 			path: app/Http/RequestHandlers/ImportThumbnailsData.php
 
 		-
-			message: "#^Cannot access offset '0' on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
+			message: "#^Cannot access offset '0' on array\\{0\\: int\\<0, max\\>, 1\\: int\\<0, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: "#^Cannot access offset '1' on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
+			message: "#^Cannot access offset '1' on array\\{0\\: int\\<0, max\\>, 1\\: int\\<0, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
@@ -2371,12 +2371,12 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Cannot access offset 0 on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
+			message: "#^Cannot access offset 0 on array\\{0\\: int\\<0, max\\>, 1\\: int\\<0, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Cannot access offset 1 on array\\{0\\: int\\<1, max\\>, 1\\: int\\<1, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
+			message: "#^Cannot access offset 1 on array\\{0\\: int\\<0, max\\>, 1\\: int\\<0, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 3
 			path: app/Report/ReportParserGenerate.php
 
