@@ -80,7 +80,7 @@
         "ext-dom": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.2.23",
+        "composer/composer": "2.2.24",
         "league/flysystem-memory": "1.0.2",
         "phpunit/phpunit": "7.5.20"
     },
