@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-06-30 07:59+0000\n"
+"PO-Revision-Date: 2024-07-09 13:56+0000\n"
 "Last-Translator: Marianne van Harten <marianne@vanharten.net>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -1413,7 +1413,7 @@ msgstr "Voeg echtgenote toe aan dit gezin"
 #: app/Module/RelativesTabModule.php:380 edit_interface.php:1067
 #: edit_interface.php:1138
 msgid "Add a wife using an existing individual"
-msgstr "Voeg en bestaand persoon als echtgenote toe"
+msgstr "Voeg een bestaand persoon als echtgenote toe"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:146
