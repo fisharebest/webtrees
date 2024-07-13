@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2024-06-21 10:59+0000\n"
+"PO-Revision-Date: 2024-07-14 00:00+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -5613,7 +5613,18 @@ msgstr "Tvöfalt notandaheiti. Notandi með þetta notandaheiti er þegar til st
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Hver heimild skráir tiltekna atburði, venjulega fyrir tiltekið tímabil og fyrir lögsögu staða. Til dæmis skráir Manntal manntalsatburði og kirkjubækur skráir fæðingar-, hjónabands- og andlátsatburði. <br> <br> Veldu atburði sem skráðir eru af þessari heimild frá listanum yfir atburði. Dagsetninguna ætti að tilgreina á sviðssniði eins og <i> FRÁ 1900 TIL 1910 </i>. Staðarumdæmi er nafn lægsta staðarumdæmis sem nær til allra lægri staða sem nefndir eru í þessari heimild. Til dæmis, „Oneida, Idaho, Bandaríkjunum“ væri notað sem heimildar staðarumdæmis fyrir atburði sem áttu sér stað í hinum ýmsu bæjum í Oneida-sýslu. „Idaho, USA“ væri heimild staðarumdæmis ef atburðirnir sem skráðir voru áttu sér stað ekki aðeins í Oneida-sýslu heldur einnig í öðrum sýslum í Idaho."
+msgstr ""
+"Hver heimild skráir tiltekna atburði, venjulega fyrir tiltekið tímabil og "
+"fyrir lögsögu staða. Til dæmis skráir Manntal manntalsatburði og kirkjubækur "
+"skráir fæðingar-, hjónabands- og andlátsatburði. <br><br> Veldu atburði sem "
+"skráðir eru af þessari heimild frá listanum yfir atburði. Dagsetninguna ætti "
+"að tilgreina á sviðssniði eins og <i> FRÁ 1900 TIL 1910 </i>. Staðarumdæmi "
+"er nafn lægsta staðarumdæmis sem nær til allra lægri staða sem nefndir eru í "
+"þessari heimild. Til dæmis, „Oneida, Idaho, Bandaríkjunum“ væri notað sem "
+"heimildar staðarumdæmis fyrir atburði sem áttu sér stað í hinum ýmsu bæjum í "
+"Oneida-sýslu. „Idaho, USA“ væri heimild staðarumdæmis ef atburðirnir sem "
+"skráðir voru áttu sér stað ekki aðeins í Oneida-sýslu heldur einnig í öðrum "
+"sýslum í Idaho."
 
 #: resources/views/help/pending-changes.phtml:25
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -7865,11 +7876,31 @@ msgstr ""
 
 #: resources/views/help/romanized.phtml:8
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem ensku. <br> <br> Ef þú vilt frekar nota stafróf sem ekki er latneskt, svo sem hebreska, gríska, rússneska, kínverska eða arabíska til að slá inn nafnið í reitina fyrir venjulegt heiti, þá geturðu notað þennan reit til að slá inn sama nafn með latneska stafrófinu. Báðar útgáfur nafnsins birtast í listum og töflum. <br> <br> Þó að þessi reitur sé merktur „Romanized“ er hann ekki takmarkaður við að innihalda aðeins stafi sem byggja á latneska stafrófinu. Þetta gæti verið gagnlegt með japönskum nöfnum, þar sem þrjú mismunandi stafróf geta komið fyrir."
+msgstr ""
+"Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með "
+"hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri "
+"stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem "
+"ensku. <br><br> Ef þú vilt frekar nota stafróf sem ekki er latneskt, svo sem "
+"hebreska, gríska, rússneska, kínverska eða arabíska til að slá inn nafnið í "
+"reitina fyrir venjulegt heiti, þá geturðu notað þennan reit til að slá inn "
+"sama nafn með latneska stafrófinu. Báðar útgáfur nafnsins birtast í listum "
+"og töflum. <br><br> Þó að þessi reitur sé merktur „Romanized“ er hann ekki "
+"takmarkaður við að innihalda aðeins stafi sem byggja á latneska stafrófinu. "
+"Þetta gæti verið gagnlegt með japönskum nöfnum, þar sem þrjú mismunandi "
+"stafróf geta komið fyrir."
 
 #: resources/views/help/hebrew.phtml:8
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem ensku. <br> <br> Ef þú vilt frekar nota latneska stafrófið til að slá inn nafnið í reitina fyrir venjulegt heiti, þá getur þú notað þennan reit til að slá inn sama nafn í stafrófinu sem ekki er latneskt, svo sem gríska, hebreska, rússneska, arabíska eða kínverska. Báðar útgáfur nafnsins birtast í listum og töflum. <br> <br> Þó að þessi reitur sé merktur „hebreskur“ er hann ekki takmarkaður við að innihalda aðeins hebreska stafi."
+msgstr ""
+"Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með "
+"hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri "
+"stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem "
+"ensku. <br><br> Ef þú vilt frekar nota latneska stafrófið til að slá inn "
+"nafnið í reitina fyrir venjulegt heiti, þá getur þú notað þennan reit til að "
+"slá inn sama nafn í stafrófinu sem ekki er latneskt, svo sem gríska, "
+"hebreska, rússneska, arabíska eða kínverska. Báðar útgáfur nafnsins birtast "
+"í listum og töflum. <br><br> Þó að þessi reitur sé merktur „hebreskur“ er "
+"hann ekki takmarkaður við að innihalda aðeins hebreska stafi."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:135
@@ -14872,7 +14903,10 @@ msgstr ""
 #: resources/views/errors/database-error.phtml:20
 #: resources/views/setup/step-6-failed.phtml:20
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr "Þróunaraðilar webtrees eru mjög áhugasamir um að fá upplýsingar um þessa villu. Ef þú hefur samband við þá, þá munu þeir hjálpa þér við að leysa þetta vandamál."
+msgstr ""
+"Þróunaraðilar webtrees eru mjög áhugasamir um að fá upplýsingar um þessa "
+"villu. Ef þú hefur samband þróunaraðilana, þá munu þeir hjálpa þér við að "
+"leysa þetta vandamál."
 
 #: app/Module/ModuleThemeTrait.php:65 app/Module/ModuleThemeTrait.php:451
 #: resources/views/admin/modules.phtml:256
@@ -16461,7 +16495,7 @@ msgstr "Notaðu sendmail til að senda skilaboð"
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr ""
 "Notaðu skuggamyndir þegar engin auðkennd mynd fyrir þennan einstakling hefur "
-"verið tilgreind. Myndirnar sem notaðar eru eru sértækar fyrir kyn viðkomandi "
+"verið tilgreind. Myndirnar sem notaðar eru sértækar fyrir kyn viðkomandi "
 "einstaklings."
 
 #. I18N: A configuration setting
