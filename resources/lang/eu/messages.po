@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-05-13 13:32+0000\n"
+"PO-Revision-Date: 2024-07-22 16:56+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -3877,7 +3877,7 @@ msgstr "Kontakturako informazioa"
 
 #: resources/views/edit-account-page.phtml:135
 msgid "Contact method"
-msgstr "Nola kontaktatu"
+msgstr "Harremanetan jartzeko modua"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:258
 msgid "Contains"
@@ -6629,12 +6629,13 @@ msgstr "Informazio gehiagorako, begiratu %s."
 #: app/Module/ContactsFooterModule.php:160
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "Laguntza teknikoa behar baduzu %srekin kontaktatu."
+msgstr "Laguntza teknikoa behar baduzu, %srekin jarri harremanetan."
 
 #: app/Module/ContactsFooterModule.php:134
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Laguntza teknikoa edo genealogikoa behar baduzu %srekin kontaktatu."
+msgstr ""
+"Laguntza teknikoa edo genealogikoa behar baduzu %srekin jarri harremanetan."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:105
@@ -14118,7 +14119,7 @@ msgstr "Urdin berdexka"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:175
 msgid "Technical help contact"
-msgstr "Kontaktatu laguntza teknikorako"
+msgstr "Jarri harremanetan laguntza teknikorako"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:195
@@ -14419,12 +14420,13 @@ msgstr "Elementu honentzako laguntza-testoa ez da idatzi."
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:187
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr "Gai tekniko eta orrian aurkitutako akatsei buruz kontaktatu beharreko pertsona."
+msgstr "Norekin jarri harremanetan web orriaren akats teknikoak bideratzeko."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:167
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "Zuhaitz genealogikoei buruz kontaktatu beharreko pertsona."
+msgstr ""
+"Norekin jarri harremanetan zuhaitz genealogikoari buruzko gaiak bideratzeko."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:92
