@@ -383,7 +383,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
 
                         if ($surname !== '' || $show_all === 'yes') {
                             if ($show_all !== 'yes') {
-                                echo '<h2 class="wt-page-title">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
+                                echo '<h2 class="wt-page-title">', I18N::translate('Given names'), '</h2>';
                             }
                             // Don't show the list until we have some filter criteria
                             $show = $falpha !== '' || $show_all_firstnames === 'yes' ? 'indi' : 'none';
