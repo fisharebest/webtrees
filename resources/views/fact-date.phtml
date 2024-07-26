@@ -47,7 +47,7 @@ if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match) === 1) {
 
 if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
 	if (str_starts_with($match[1], '(')) {
-        $html .= ' ' . $match[1];
+        $html .= ' ' . e($match[1]);
     } else {
         $date = new Date($match[1]);
         $html .= ' ' . $date->display($cal_link ? $record->tree() : null, null, true);
