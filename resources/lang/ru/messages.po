@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-04-18 15:11+0000\n"
+"PO-Revision-Date: 2024-07-26 11:40+0000\n"
 "Last-Translator: ol810 <uolega@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ru/>\n"
@@ -158,7 +158,7 @@ msgstr "%1$s–%2$s"
 #: app/Services/RelationshipService.php:2204
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$sой %2$s"
+msgstr "%1$s бывший/бывшая %2$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:604
@@ -10763,7 +10763,7 @@ msgstr "Старейшие живущие персоны"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:39
 msgid "Oldest male"
-msgstr "Самый пожилой мужчина"
+msgstr "Самый старый мужчина"
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:50
 msgid "Oldest mother"
@@ -16473,7 +16473,9 @@ msgstr "Когда пользователь регистрирует аккау�
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr "Если у человека более одного супруга, вам следует отсортировать семьи в порядке дат."
+msgstr ""
+"Если у человека более одного супруга, Вам следует отсортировать семьи в "
+"порядке дат."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:699
@@ -19907,12 +19909,12 @@ msgstr "партнер"
 #: app/Services/RelationshipService.php:400
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "жена"
+msgstr "партнер-женщина"
 
 #: app/Services/RelationshipService.php:376
 msgctxt "MALE"
 msgid "partner"
-msgstr "муж"
+msgstr "партнер-мужчина"
 
 #: app/SurnameTradition/PaternalSurnameTradition.php:38
 msgctxt "Surname tradition"
