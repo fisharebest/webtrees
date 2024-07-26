@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-04-18 15:11+0000\n"
+"PO-Revision-Date: 2024-07-27 09:57+0000\n"
 "Last-Translator: ol810 <uolega@yandex.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ru/>\n"
@@ -189,7 +189,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2154
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$sой %2$s"
+msgstr "%1$s бывший/бывшая %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:822
@@ -10276,7 +10276,7 @@ msgstr "Старейшие живущие персоны"
 
 #: statistics.php:271
 msgid "Oldest male"
-msgstr "Самый пожилой мужчина"
+msgstr "Самый старый мужчина"
 
 #: statistics.php:295
 msgid "Oldest mother"
@@ -19215,12 +19215,12 @@ msgstr "партнер"
 #: app/Functions/Functions.php:718
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "жена"
+msgstr "партнер-женщина"
 
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr "муж"
+msgstr "партнер-мужчина"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
