@@ -179,6 +179,9 @@ class Date
         switch ($q1 . $q2) {
             case '':
                 $tmp = $d1 . $conv1;
+                if ($this->text !== '') {
+                    $tmp .= '(' . e($this->text) . ')';
+                }
                 break;
             case 'ABT':
                 /* I18N: Gedcom ABT dates */
