@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-06-23 13:59+0000\n"
+"PO-Revision-Date: 2024-07-26 11:50+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -2569,7 +2569,7 @@ msgstr "Bern, Schweiz"
 
 #: app/Elements/RelationIsDescriptor.php:96
 msgid "Best man"
-msgstr "Best man"
+msgstr "Bröllopsmarskalk"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:111
