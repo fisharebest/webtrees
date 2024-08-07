@@ -717,7 +717,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
 
             // The name from the database may be private - check the filtered list...
             foreach ($individual->getAllNames() as $n => $name) {
-                if ($name['givn'] === $row->n_givn && $name['surn'] === $row->n_surn)
+                if ($name['givn'] === $row->n_givn && $name['surn'] === $row->n_surn) {
                     if ($galpha === '' || I18N::language()->initialLetter(I18N::language()->normalize(I18N::strtoupper($row->n_givn))) === $galpha) {
                         $individual->setPrimaryName($n);
                         // We need to clone $individual, as we may have multiple references to the
@@ -726,6 +726,7 @@ abstract class AbstractIndividualListModule extends AbstractModule implements Mo
                         $individuals->push(clone $individual);
                         break;
                     }
+                }
             }
         }
 
