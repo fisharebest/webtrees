@@ -167,7 +167,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         return redirect($this->listUrl($tree, [
             'soundex_dm'  => Validator::queryParams($request)->boolean('soundex_dm'),
             'soundex_std' => Validator::queryParams($request)->boolean('soundex_std'),
-            'surname'     => 'x' . Validator::queryParams($request)->string('surname'),
+            'surname'     => Validator::queryParams($request)->string('surname'),
         ]));
     }
 
