@@ -971,6 +971,11 @@ parameters:
 			path: app/Http/RequestHandlers/PendingChangesRejectChange.php
 
 		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: string\\}\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PhpInformation.php
+
+		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/PhpInformation.php
@@ -2581,6 +2586,11 @@ parameters:
 			path: app/Report/ReportParserSetup.php
 
 		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-falsy\\-string\\}\\.$#"
+			count: 1
+			path: app/Report/ReportParserSetup.php
+
+		-
 			message: "#^array\\<string\\>\\|string does not accept array\\<string\\>\\.$#"
 			count: 1
 			path: app/Report/ReportParserSetup.php
@@ -2781,6 +2791,11 @@ parameters:
 			path: app/Services/GedcomImportService.php
 
 		-
+			message: "#^Offset 1 on array\\{array\\<int, string\\>, array\\<int, non\\-falsy\\-string\\>\\} on left side of \\?\\? always exists and is not nullable\\.$#"
+			count: 1
+			path: app/Services/GedcomImportService.php
+
+		-
 			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Services/GedcomImportService.php
@@ -2977,6 +2992,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingChanges\\(\\) should return array\\<array\\<object\\>\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#"
+			count: 1
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-falsy\\-string\\}\\.$#"
 			count: 1
 			path: app/Services/PendingChangesService.php
 
