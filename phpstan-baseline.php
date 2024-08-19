@@ -4006,6 +4006,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
+    // identifier: postInc.type
+    'message' => '#^Cannot use \\+\\+ on array\\<string\\>\\|float\\|int\\.$#',
+    'count' => 4,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
     // identifier: offsetAccess.nonArray
     'message' => '#^Cannot use array destructuring on array\\<int, array\\<string\\>\\|int\\>\\|null\\.$#',
     'count' => 4,

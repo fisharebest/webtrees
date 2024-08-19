@@ -54,22 +54,13 @@ use function view;
  */
 class CalendarEvents implements RequestHandlerInterface
 {
-    private CalendarService $calendar_service;
-
-    /**
-     * @param CalendarService $calendar_service
-     */
-    public function __construct(CalendarService $calendar_service)
-    {
-        $this->calendar_service = $calendar_service;
+    public function __construct(
+        private readonly CalendarService $calendar_service,
+    ) {
     }
 
     /**
      * Show anniversaries that occurred on a given day/month/year.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -109,9 +100,21 @@ class CalendarEvents implements RequestHandlerInterface
 
             $individual_anniversaries = $anniversaries->filter(static fn (Fact $f): bool => $f->record() instanceof Individual);
 
+            $family_count = $family_anniversaries
+                ->map(static fn (Fact $x): string => $x->record()->xref())
+                ->unique()
+                ->count();
+
+            $individual_count = $individual_anniversaries
+                ->map(static fn (Fact $x): string => $x->record()->xref())
+                ->unique()
+                ->count();
+
             return response(view('calendar-list', [
                 'family_anniversaries'     => $family_anniversaries,
                 'individual_anniversaries' => $individual_anniversaries,
+                'family_count'             => $family_count,
+                'individual_count'         => $individual_count,
             ]));
         }
 
@@ -216,30 +219,16 @@ class CalendarEvents implements RequestHandlerInterface
                 }
                 // Show a converted date
                 foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
-                    switch ($convcal) {
-                        case 'french':
-                            $alt_date = new FrenchDate($cal_date->minimumJulianDay() + $d - 1);
-                            break;
-                        case 'gregorian':
-                            $alt_date = new GregorianDate($cal_date->minimumJulianDay() + $d - 1);
-                            break;
-                        case 'jewish':
-                            $alt_date = new JewishDate($cal_date->minimumJulianDay() + $d - 1);
-                            break;
-                        case 'julian':
-                            $alt_date = new JulianDate($cal_date->minimumJulianDay() + $d - 1);
-                            break;
-                        case 'hijri':
-                            $alt_date = new HijriDate($cal_date->minimumJulianDay() + $d - 1);
-                            break;
-                        case 'jalali':
-                            $alt_date = new JalaliDate($cal_date->minimumJulianDay() + $d - 1);
-                            break;
-                        case 'none':
-                        default:
-                            $alt_date = $cal_date;
-                            break;
-                    }
+                    $alt_date = match ($convcal) {
+                        'french'    => new FrenchDate($cal_date->minimumJulianDay() + $d - 1),
+                        'gregorian' => new GregorianDate($cal_date->minimumJulianDay() + $d - 1),
+                        'jewish'    => new JewishDate($cal_date->minimumJulianDay() + $d - 1),
+                        'julian'    => new JulianDate($cal_date->minimumJulianDay() + $d - 1),
+                        'hijri'     => new HijriDate($cal_date->minimumJulianDay() + $d - 1),
+                        'jalali'    => new JalaliDate($cal_date->minimumJulianDay() + $d - 1),
+                        default     => $cal_date,
+                    };
+
                     if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {
                         echo '<span class="rtl_cal_day">' . $alt_date->format('%j %M') . '</span>';
                         // Just show the first conversion
@@ -266,9 +255,6 @@ class CalendarEvents implements RequestHandlerInterface
      * Format a list of facts for display
      *
      * @param array<string> $list
-     * @param Tree          $tree
-     *
-     * @return string
      */
     private function calendarListText(array $list, Tree $tree): string
     {
