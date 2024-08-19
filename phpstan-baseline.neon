@@ -2426,6 +2426,11 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^Cannot use \\+\\+ on array\\<string\\>\\|float\\|int\\.$#"
+			count: 4
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Cannot use array destructuring on array\\<int, array\\<string\\>\\|int\\>\\|null\\.$#"
 			count: 4
 			path: app/Report/ReportParserGenerate.php

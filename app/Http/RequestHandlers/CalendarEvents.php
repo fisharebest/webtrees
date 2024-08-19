@@ -115,9 +115,21 @@ class CalendarEvents implements RequestHandlerInterface
                 return $f->record() instanceof Individual;
             });
 
+            $family_count = $family_anniversaries
+                ->map(static fn (Fact $x): string => $x->record()->xref())
+                ->unique()
+                ->count();
+
+            $individual_count = $individual_anniversaries
+                ->map(static fn (Fact $x): string => $x->record()->xref())
+                ->unique()
+                ->count();
+
             return response(view('calendar-list', [
                 'family_anniversaries'     => $family_anniversaries,
                 'individual_anniversaries' => $individual_anniversaries,
+                'family_count'             => $family_count,
+                'individual_count'         => $individual_count,
             ]));
         }
 

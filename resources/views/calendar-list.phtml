@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
-use Illuminate\Support\Collection;
 
 /**
- * @var Collection<int,Fact> $family_anniversaries
- * @var Collection<int,Fact> $individual_anniversaries
+ * @var iterable<int,Fact> $family_anniversaries
+ * @var iterable<int,Fact> $individual_anniversaries
+ * @var int                $family_count
+ * @var int                $individual_count
  */
 
 ?>
@@ -17,12 +18,12 @@ use Illuminate\Support\Collection;
     <tr>
         <td class="wt-page-options-label text-center w-50">
             <?= view('icons/individual') ?>
-            <?= I18N::plural('%s individual', '%s individuals', $individual_anniversaries->count(), I18N::number($individual_anniversaries->count())) ?>
+            <?= I18N::plural('%s individual', '%s individuals', $individual_count, I18N::number($individual_count)) ?>
         </td>
 
         <td class="wt-page-options-label text-center w-50">
             <?= view('icons/family') ?>
-            <?= I18N::plural('%s family', '%s families', $family_anniversaries->count(), I18N::number($family_anniversaries->count())) ?>
+            <?= I18N::plural('%s family', '%s families', $family_count, I18N::number($family_count)) ?>
         </td>
     </tr>
 
