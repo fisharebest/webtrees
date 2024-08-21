@@ -184,6 +184,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Fact.php',
 ];
 $ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:pendingChanges\\(\\) should return Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Factories/AbstractGedcomRecordFactory.php',
+];
+$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$f_gedcom\\.$#',
     'count' => 1,
@@ -2236,6 +2242,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixCemeteryTag.php',
 ];
 $ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixCemeteryTag.php',
+];
+$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
@@ -2245,6 +2257,48 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
     'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:familiesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:mediaToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:notesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:repositoriesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:sourcesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:submittersToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/FixDuplicateLinks.php',
 ];
 $ignoreErrors[] = [
@@ -2272,6 +2326,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixMissingDeaths.php',
 ];
 $ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixMissingDeaths.php',
+];
+$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
@@ -2281,6 +2341,12 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
     'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/FixNameSlashesAndSpaces.php',
 ];
 $ignoreErrors[] = [
@@ -2308,6 +2374,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixNameTags.php',
 ];
 $ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameTags\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixNameTags.php',
+];
+$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
@@ -2317,6 +2389,18 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
     'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:familiesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/FixPlaceNames.php',
 ];
 $ignoreErrors[] = [
@@ -2338,6 +2422,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Module/FixPrimaryTag.php',
 ];
 $ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mediaToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixPrimaryTag.php',
+];
+$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\), Closure\\(string\\)\\: \\(object\\{xref\\: string, type\\: string\\}&stdClass\\) given\\.$#',
     'count' => 1,
@@ -2347,6 +2437,54 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
     'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:familiesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:locationsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:mediaToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:notesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:repositoriesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:sourcesToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:submittersToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\>\\|null but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/FixSearchAndReplace.php',
 ];
 $ignoreErrors[] = [
@@ -2365,6 +2503,12 @@ $ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$xref\\.$#',
     'count' => 2,
+    'path' => __DIR__ . '/app/Module/FixWtObjeSortTag.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixWtObjeSortTag\\:\\:individualsToFix\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
     'path' => __DIR__ . '/app/Module/FixWtObjeSortTag.php',
 ];
 $ignoreErrors[] = [
@@ -2906,6 +3050,12 @@ $ignoreErrors[] = [
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Module\\\\LifespansChartModule\\:\\:findIndividualsByPlace\\(\\) should return array\\<string\\> but returns array\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Module/LifespansChartModule.php',
+];
+$ignoreErrors[] = [
+    // identifier: method.impossibleType
+    'message' => '#^Call to method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Menu\\|null\\>\\:\\:isEmpty\\(\\) will always evaluate to false\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Module/ListsMenuModule.php',
 ];
 $ignoreErrors[] = [
     // identifier: argument.type
@@ -3772,24 +3922,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Place.php',
 ];
 $ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$string of function mb_substr expects string, string\\|null given\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/app/Place.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$text of static method Fisharebest\\\\Webtrees\\\\Soundex\\:\\:daitchMokotoff\\(\\) expects string, string\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Place.php',
-];
-$ignoreErrors[] = [
-    // identifier: argument.type
-    'message' => '#^Parameter \\#1 \\$text of static method Fisharebest\\\\Webtrees\\\\Soundex\\:\\:russell\\(\\) expects string, string\\|null given\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/app/Place.php',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$latitude\\.$#',
     'count' => 1,
@@ -4619,6 +4751,12 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: argument.type
+    'message' => '#^Parameter \\#1 \\$blocks of method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:filterActiveBlocks\\(\\) expects Illuminate\\\\Support\\\\Collection\\<int, string\\>, Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\> given\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Services/HomePageService.php',
+];
+$ignoreErrors[] = [
+    // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<int,string\\>\\:\\:contains\\(\\) expects \\(callable\\(string, int\\)\\: bool\\)\\|string, mixed given\\.$#',
     'count' => 4,
     'path' => __DIR__ . '/app/Services/HomePageService.php',
@@ -4846,6 +4984,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Services/MediaFileService.php',
 ];
 $ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:allFilesInDatabase\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/MediaFileService.php',
+];
+$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: string, Closure\\(string\\)\\: non\\-falsy\\-string given\\.$#',
     'count' => 1,
@@ -4931,6 +5075,12 @@ $ignoreErrors[] = [
 ];
 $ignoreErrors[] = [
     // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:deletedModules\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/ModuleService.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\> but returns Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/ModuleService.php',
@@ -5010,6 +5160,12 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     // identifier: return.type
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingChanges\\(\\) should return array\\<array\\<object\\>\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/PendingChangesService.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingXrefs\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/PendingChangesService.php',
 ];
@@ -5166,6 +5322,12 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     // identifier: return.type
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchSubmitters\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Submitter\\> but returns Illuminate\\\\Support\\\\Collection\\<int, mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/SearchService.php',
+];
+$ignoreErrors[] = [
+    // identifier: return.type
+    'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchSurnames\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/SearchService.php',
 ];
@@ -6520,12 +6682,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/resources/views/help/date.phtml',
 ];
 $ignoreErrors[] = [
-    // identifier: method.nonObject
-    'message' => '#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/individual-page-images.phtml',
-];
-$ignoreErrors[] = [
     // identifier: property.notFound
     'message' => '#^Access to an undefined property object\\:\\:\\$status\\.$#',
     'count' => 1,
@@ -6614,12 +6770,6 @@ $ignoreErrors[] = [
     'message' => '#^Cannot cast mixed to int\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/resources/views/lists/repositories-table.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: method.nonObject
-    'message' => '#^Cannot call method value\\(\\) on Fisharebest\\\\Webtrees\\\\Fact\\|null\\.$#',
-    'count' => 3,
-    'path' => __DIR__ . '/resources/views/lists/sources-table.phtml',
 ];
 $ignoreErrors[] = [
     // identifier: cast.int
@@ -6872,12 +7022,6 @@ $ignoreErrors[] = [
     'message' => '#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#',
     'count' => 3,
     'path' => __DIR__ . '/resources/views/modules/relatives/family.phtml',
-];
-$ignoreErrors[] = [
-    // identifier: method.nonObject
-    'message' => '#^Cannot call method date\\(\\) on Fisharebest\\\\Webtrees\\\\Fact\\|null\\.$#',
-    'count' => 1,
-    'path' => __DIR__ . '/resources/views/modules/sitemap/sitemap-file-xml.phtml',
 ];
 $ignoreErrors[] = [
     // identifier: property.notFound
