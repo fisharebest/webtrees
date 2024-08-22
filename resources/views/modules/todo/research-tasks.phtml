@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
 
 <table
     class="table table-bordered table-sm wt-table-tasks datatables d-none"
+    style="table-layout: fixed"
     <?= view('lists/datatables-attributes') ?>
     data-paging="<?= $tasks->count() >= $limit_high ? 'true' : 'false' ?>"
     data-filter="false"
@@ -34,7 +35,7 @@ use Illuminate\Support\Collection;
             <th class="d-none d-md-table-cell wt-side-block-optional">
                 <?= I18N::translate('Username') ?>
             </th>
-            <th>
+            <th class="w-50">
                 <?= I18N::translate('Research task') ?>
             </th>
         </tr>
@@ -54,7 +55,7 @@ use Illuminate\Support\Collection;
                 <td class="d-none d-md-table-cell wt-side-block-optional">
                     <?= e($task->attribute('_WT_USER')) ?>
                 </td>
-                <td dir="auto">
+                <td class="ut" dir="auto">
                     <?= e($task->value()) ?>
                 </td>
             </tr>
