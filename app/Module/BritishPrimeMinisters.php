@@ -132,11 +132,12 @@ class BritishPrimeMinisters extends AbstractModule implements ModuleHistoricEven
                     "1 EVEN John Major\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 28 NOV 1990 TO 02 MAY 1997",
                     "1 EVEN Tony Blair\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 02 MAY 1997 TO 27 JUN 2007",
                     "1 EVEN Gordon Brown\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 27 JUN 2007 TO 11 MAY 2010",
-                    "1 EVEN David Cameron\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 11 MAY 2010 TO 13 JUL 2016",
-                    "1 EVEN Theresa May\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 13 JUL 2016 TO 24 JUL 2019",
-                    "1 EVEN Boris Johnson\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 24 JUL 2019",
-                    "1 EVEN Mary Elizabeth 'Liz' Truss\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 06 SEP 2022 TO 25 OCT 2022",
-                    "1 EVEN Rishi Sunak\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 25 OCT 2022\n2 NOTE Incumbent",
+                    "1 EVEN David Cameron\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 11 MAY 2010 TO 13 JUL 2016\n2 NOTE Read more [here](https://en.wikipedia.org/wiki/David_Cameron",
+                    "1 EVEN Theresa May\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 13 JUL 2016 TO 24 JUL 2019\n2 NOTE Read more [here](https://en.wikipedia.org/wiki/Thereza_May",
+                    "1 EVEN Boris Johnson\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 24 JUL 2019\n2 NOTE Read more [here](https://en.wikipedia.org/wiki/Boris_Johnson",
+                    "1 EVEN 'Liz' Truss\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 06 SEP 2022 TO 25 OCT 2022\n2 NOTE Read more [here](https://en.wikipedia.org/wiki/Liz_Truss",
+                    "1 EVEN Rishi Sunak\n2 TYPE Prime Minister of the United Kingdom\n2 DATE FROM 25 OCT 2022 TO 05 JUL 2024\n2 NOTE Read more [here](https://en.wikipedia.org/wiki/Rishi_Sunak",
+                    "1 EVEN Sir Keir Starmer\n2 TYPE Prime Minister of the United Kingdom (inCumbent)\n2 DATE FROM 05 JUL 2024\n2 NOTE Read more [here](https://en.wikipedia.org/wiki/Keir_Starmer)",
                 ]);
 
             default:
