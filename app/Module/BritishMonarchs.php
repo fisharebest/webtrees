@@ -108,8 +108,8 @@ class BritishMonarchs extends AbstractModule implements ModuleHistoricEventsInte
                     "1 EVEN George V\n2 TYPE British King\n2 DATE FROM 06 MAY 1910 TO 20 JAN 1936",
                     "1 EVEN Edward VII\n2 TYPE British King\n2 DATE FROM 20 JAN 1936 TO 11 DEC 1936",
                     "1 EVEN George VI\n2 TYPE British King\n2 DATE FROM 11 DEC 1936 TO 06 FEB 1952",
-                    "1 EVEN Elizabeth II\n2 TYPE British Queen\n2 DATE FROM 06 FEB 1952 TO 08 SEP 2022",
-		    "1 EVEN Charles III\n2 TYPE British King\n2 DATE FROM 08 SEP 2022",
+                    "1 EVEN Elizabeth II\n2 TYPE British Queen\n2 DATE FROM 06 FEB 1952 TO 08 SEP 2022\n2 NOTE Read more [here](https://en.wikipedia.org/wiki/Elizabeth_II)",
+		    "1 EVEN Charles III\n2 TYPE British King\n2 DATE FROM 08 SEP 2022\n2 NOTE Read More [here](https://en.wikipedia.org/wiki/Charles_III)",
                 ]);
 
             default:
