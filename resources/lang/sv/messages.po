@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-07-27 09:58+0000\n"
+"PO-Revision-Date: 2024-08-27 08:14+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
@@ -10769,7 +10769,7 @@ msgstr "Oj! webtrees kunde inte skapa filer i den här mappen."
 #: app/Functions/FunctionsPrint.php:464 app/Functions/FunctionsPrint.php:466
 #: resources/views/admin/map-provider.phtml:28
 msgid "OpenStreetMap™"
-msgstr "\"OpenStreetMap™\""
+msgstr "OpenStreetMap™"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:152 app/GedcomCode/GedcomCodeTemp.php:522
