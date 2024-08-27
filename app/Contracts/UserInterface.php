@@ -31,6 +31,7 @@ interface UserInterface
     public const PREF_IS_ADMINISTRATOR     = 'canadmin';
     public const PREF_IS_EMAIL_VERIFIED    = 'verified';
     public const PREF_IS_VISIBLE_ONLINE    = 'visibleonline';
+    public const PREF_IS_STATUS_MFA    = 'statusmfa';
     public const PREF_LANGUAGE             = 'language';
     public const PREF_NEW_ACCOUNT_COMMENT  = 'comment';
     public const PREF_TIMESTAMP_REGISTERED = 'reg_timestamp';

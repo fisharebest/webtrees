@@ -22,6 +22,14 @@
 * [Backup](#backup)
 * [Restore from Backup](#restore-from-backup)
 
+
+## Amendments to get 2FA working - BS
+
+Built to integrate with Google Authenticator. Two extra php packages required - 
+chillerlan/php-qrcode and pragmarx/google2fa. Database has to have extra field in user called secret (varchar) and an extra key/value added to user_setting table called statusmfa set to 1 (enabled) or <empty> (disabled). The database changes are not coded in.
+
+When a user logs in, in edit account, they can enable 2FA which will generate a QR code to scan. Then save the user record. At next login, an extra box is presented after username/password to enter the code from the authenticator. If the match is made, login happens. New QR codes can be generated from edit account in case the old one is lost too. I hope this helps someone.
+
 ## License
 
 * **webtrees: online genealogy**
