@@ -1240,6 +1240,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Http/RequestHandlers/PendingChangesRejectChange.php',
 ];
 $ignoreErrors[] = [
+    // identifier: offsetAccess.notFound
+    'message' => '#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: string\\}\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Http/RequestHandlers/PhpInformation.php',
+];
+$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#',
     'count' => 1,
@@ -4174,6 +4180,12 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
+    // identifier: offsetAccess.notFound
+    'message' => '#^Offset int\\<0, max\\> does not exist on array\\{\\}\\.$#',
+    'count' => 2,
+    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
+];
+$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$array of function end expects array\\|object, array\\<int, string\\>\\|false given\\.$#',
     'count' => 1,
@@ -4338,6 +4350,12 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     // identifier: return.type
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserSetup\\:\\:reportProperties\\(\\) should return array\\{title\\: string, description\\: string, inputs\\: array\\<array\\{name\\: string, type\\: string, lookup\\: string, options\\: string, default\\: string, value\\: string\\}\\>\\} but returns array\\<string, array\\<string\\>\\|string\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Report/ReportParserSetup.php',
+];
+$ignoreErrors[] = [
+    // identifier: offsetAccess.notFound
+    'message' => '#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-falsy\\-string\\}\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Report/ReportParserSetup.php',
 ];
@@ -5166,6 +5184,12 @@ $ignoreErrors[] = [
 $ignoreErrors[] = [
     // identifier: return.type
     'message' => '#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingXrefs\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\.$#',
+    'count' => 1,
+    'path' => __DIR__ . '/app/Services/PendingChangesService.php',
+];
+$ignoreErrors[] = [
+    // identifier: offsetAccess.notFound
+    'message' => '#^Offset 1 does not exist on array\\{0\\?\\: string, 1\\?\\: non\\-falsy\\-string\\}\\.$#',
     'count' => 1,
     'path' => __DIR__ . '/app/Services/PendingChangesService.php',
 ];

@@ -768,7 +768,7 @@ class GedcomImportService
         }
 
         preg_match_all('/\n\d NOTE (.+(?:\n\d CONT.*)*)/', $gedcom, $matches);
-        $notes = $matches[1] ?? [];
+        $notes = $matches[1];
 
         // Have we already created a media object with the same title/filename?
         $xref = DB::table('media_file')
