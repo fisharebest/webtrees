@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-07-22 16:56+0000\n"
+"PO-Revision-Date: 2024-08-30 16:49+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -13039,7 +13039,7 @@ msgstr "Ohar guztiak ikusi"
 
 #: app/Module/PlaceHierarchyListModule.php:201
 msgid "Show all places in a list"
-msgstr "Leku guztiak ikusi zerrenda batean"
+msgstr "Leku guztien zerrenda ikusi"
 
 #: resources/views/modules/sources_tab/tab.phtml:26
 msgid "Show all sources"
@@ -16804,7 +16804,7 @@ msgstr "Webtrees-en bertsio zaharrak _WT_OBJE_SORT etiketak erabiltzen zituzten 
 #: app/Date.php:185
 #, php-format
 msgid "about %s"
-msgstr "%s inguruan"
+msgstr "%saren inguruan"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
