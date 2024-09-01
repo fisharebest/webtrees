@@ -64,7 +64,8 @@ use Illuminate\Support\Collection;
             <li>
                 <span class="fa-li" title="<?= I18N::translate('Individual') ?>"><?= view('icons/individual') ?></span>
                 <a href="<?= e($individual->url()) ?>" class="wt-slide-show-link">
-                    <?= $individual->fullName() ?>
+                    <span class="wt-slide-show-link-name"><?= $individual->fullName() ?></span>
+                    <span class="wt-slide-show-link-lifespan small"><?= $individual->lifespan() ?></span>
                 </a>
             </li>
         <?php endforeach ?>
@@ -73,7 +74,7 @@ use Illuminate\Support\Collection;
             <li>
                 <span class="fa-li" title="<?= I18N::translate('Family') ?>"><?= view('icons/family') ?></span>
                 <a href="<?= e($family->url()) ?>" class="wt-slide-show-link">
-                    <?= $family->fullName() ?>
+                    <span class="wt-slide-show-link-name"><?= $family->fullName() ?></span>
                 </a>
             </li>
         <?php endforeach ?>
@@ -82,7 +83,7 @@ use Illuminate\Support\Collection;
             <li>
                 <span class="fa-li" title="<?= I18N::translate('Source') ?>"><?= view('icons/source') ?></span>
                 <a href="<?= e($source->url()) ?>" class="wt-slide-show-link">
-                    <?= $source->fullName() ?>
+                    <span class="wt-slide-show-link-name"><?= $source->fullName() ?></span>
                 </a>
             </li>
         <?php endforeach ?>
