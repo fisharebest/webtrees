@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-08-31 23:12+0000\n"
+"PO-Revision-Date: 2024-09-02 17:42+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -713,8 +713,8 @@ msgstr "Um filho pode ter mais de um conjunto de pais. A relação entre pais e 
 #: app/Module/FixDuplicateLinks.php:67
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
-"Um erro comum é ter múltiplos links para o mesmo registo, por exemplo, "
-"listando o mesmo filho mais que uma vez num registo de família."
+"Um erro comum é ter múltiplas hiperligações para o mesmo registo, por "
+"exemplo, listando o mesmo filho mais que uma vez num registo de família."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:147
@@ -735,12 +735,12 @@ msgstr "Um ficheiro no servidor"
 #: resources/views/modals/media-file-fields.phtml:28
 #: resources/views/modals/media-file-fields.phtml:44
 msgid "A file on your computer"
-msgstr "Um ficheiro no seu computador"
+msgstr "Ficheiro no seu computador"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:68
 msgid "A greeting message and useful links for a user."
-msgstr "Uma mensagem de saudação e links úteis para um utilizador."
+msgstr "Uma mensagem de saudação e hiperligações úteis para um utilizador."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:66
@@ -1278,13 +1278,13 @@ msgstr "Adicionar %s ao carrinho de recortes"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
-msgstr "Adicionar irmão"
+msgstr "Adicionar um irmão"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:77
 #: resources/views/family-page-menu.phtml:54
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a child"
-msgstr "Adicionar filho(a)"
+msgstr "Adicionar um filho(a)"
 
 #: app/Http/RequestHandlers/AddChildToIndividualPage.php:85
 #: resources/views/modules/relatives/tab.phtml:155
@@ -1295,7 +1295,7 @@ msgstr "Adicionar um filho para criar família monoparental"
 #: resources/views/family-page-children.phtml:47
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr "Adicionar filha"
+msgstr "Adicionar uma filha"
 
 #: resources/views/edit/add-fact-row.phtml:21
 #: resources/views/edit/raw-gedcom-record.phtml:60
@@ -1308,12 +1308,12 @@ msgstr "Adicionar um facto"
 #: resources/views/family-page-grandparents.phtml:44
 #: resources/views/modules/relatives/tab.phtml:107
 msgid "Add a father"
-msgstr "Adicionar pai"
+msgstr "Adicionar um pai"
 
 #: resources/views/modules/favorites/favorites.phtml:47
 #: resources/views/modules/favorites/favorites.phtml:56
 msgid "Add a favorite"
-msgstr "Adicionar Favorito"
+msgstr "Adicionar favorito"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:85
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:86
@@ -1322,16 +1322,16 @@ msgstr "Adicionar Favorito"
 #: resources/views/modules/relatives/family.phtml:63
 #: resources/views/modules/relatives/tab.phtml:134
 msgid "Add a husband"
-msgstr "Adicionar marido"
+msgstr "Adicionar um marido"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:71
 #: resources/views/modules/relatives/tab.phtml:146
 msgid "Add a husband using an existing individual"
-msgstr "Adicionar um marido a partir de um indivíduo da árvore"
+msgstr "Adicionar um marido a partir de um indivíduo existente"
 
 #: resources/views/modules/user_blog/list.phtml:62
 msgid "Add a journal entry"
-msgstr "Adicionar informação ao Diário"
+msgstr "Adicionar informação ao diário"
 
 #: app/Http/RequestHandlers/AddMediaFileModal.php:68
 #: resources/views/media-page-menu.phtml:34
@@ -1343,18 +1343,18 @@ msgstr "Adicionar um ficheiro multimédia"
 #: resources/views/individual-page-images.phtml:61
 #: resources/views/individual-page-menu.phtml:97
 msgid "Add a media object"
-msgstr "Adicionar um novo objeto multimédia"
+msgstr "Adicionar um objeto multimédia"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:75
 #: resources/views/family-page-grandparents.phtml:66
 #: resources/views/family-page-grandparents.phtml:74
 #: resources/views/modules/relatives/tab.phtml:114
 msgid "Add a mother"
-msgstr "Adicionar mãe"
+msgstr "Adicionar uma mãe"
 
 #: resources/views/individual-page-menu.phtml:45
 msgid "Add a name"
-msgstr "Adicionar nome"
+msgstr "Adicionar um nome"
 
 #: resources/views/modules/gedcom_news/list.phtml:63
 msgid "Add a news article"
@@ -1362,29 +1362,29 @@ msgstr "Adicionar um artigo de notícia"
 
 #: resources/views/modules/notes/tab.phtml:98
 msgid "Add a note"
-msgstr "Adicionar uma nova nota"
+msgstr "Adicionar uma nota"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr "Adicionar irmã(o)"
+msgstr "Adicionar um(a) irmã(o)"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
-msgstr "Adicionar irmã"
+msgstr "Adicionar uma irmã"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:75
 #: resources/views/family-page-children.phtml:43
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a son"
-msgstr "Adicionar filho"
+msgstr "Adicionar um filho"
 
 #: resources/views/modules/sources_tab/tab.phtml:77
 msgid "Add a source citation"
-msgstr "Adicionar uma nova citação da fonte"
+msgstr "Adicionar uma citação de fonte"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:87
 msgid "Add a spouse"
-msgstr "Adicionar cônjuge"
+msgstr "Adicionar um cônjuge"
 
 #: app/Module/StoriesModule.php:289
 #: resources/views/modules/stories/config.phtml:38
@@ -1395,7 +1395,7 @@ msgstr "Adicionar uma história"
 #: app/Http/RequestHandlers/UserAddPage.php:48
 #: resources/views/admin/control-panel.phtml:536
 msgid "Add a user"
-msgstr "Adicionar um novo utilizador"
+msgstr "Adicionar um utilizador"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:83
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:85
@@ -1409,7 +1409,7 @@ msgstr "Adicionar uma esposa"
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:74
 #: resources/views/modules/relatives/tab.phtml:144
 msgid "Add a wife using an existing individual"
-msgstr "Adicionar uma esposa a partir de um indivíduo da árvore"
+msgstr "Adicionar uma esposa a partir de um indivíduo existente"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:299
@@ -1427,7 +1427,7 @@ msgstr ""
 
 #: resources/views/record-page-menu-clipboard.phtml:20
 msgid "Add from clipboard"
-msgstr "Adicionar da Área de Transferência"
+msgstr "Adicionar da área de transferência"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
@@ -1452,7 +1452,7 @@ msgstr ""
 
 #: resources/views/search-advanced-page.phtml:44
 msgid "Add more fields"
-msgstr "Adicionar Mais Campos"
+msgstr "Adicionar mais campos"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:74
@@ -1494,11 +1494,11 @@ msgstr "Adicionar registos sem ligação"
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:72
 msgid "Add your own text and graphics."
-msgstr "Adicionar seu próprio texto e gráficos."
+msgstr "Adicionar o seu próprio texto e gráficos."
 
 #: app/Module/FamilyTreeNewsModule.php:182 app/Module/UserJournalModule.php:181
 msgid "Add/edit a journal/news entry"
-msgstr "Adicionar/Editar Notícias ou Diário"
+msgstr "Adicionar/editar notícias ou diário"
 
 #: app/CustomTags/Aldfaer.php:66 app/CustomTags/GedcomL.php:226
 #: app/CustomTags/PersonalAncestralFile.php:66 app/Gedcom.php:402
@@ -4124,11 +4124,11 @@ msgstr "Criar Repositório"
 #: app/Elements/XrefNote.php:60 app/Elements/XrefSharedNote.php:60
 #: resources/views/modals/create-note-object.phtml:16
 msgid "Create a shared note"
-msgstr "Criar uma nova nota partilhada"
+msgstr "Criar uma nota partilhada"
 
 #: resources/views/modules/census-assistant.phtml:17
 msgid "Create a shared note using the census assistant"
-msgstr "Criar uma nova nota partilhada usando o assistente de censo"
+msgstr "Criar uma nota partilhada usando o assistente de censo"
 
 #: app/Elements/XrefSource.php:74 resources/views/modals/create-source.phtml:16
 msgid "Create a source"
@@ -5586,7 +5586,7 @@ msgstr "Editar as Perguntas Mais Frequentes"
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
 msgid "Edit the gender"
-msgstr "Alterar gênero"
+msgstr "Alterar o género"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
 #: resources/views/edit/input-addon-edit-name.phtml:17
@@ -6989,7 +6989,7 @@ msgstr "Gâmbia"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Gender"
-msgstr "Gênero"
+msgstr "Género"
 
 #: resources/views/admin/control-panel.phtml:678
 msgid "Genealogy"
@@ -8838,7 +8838,7 @@ msgstr ""
 #: resources/views/chart-box.phtml:113 resources/views/chart-box.phtml:125
 #: resources/views/chart-box.phtml:126
 msgid "Links"
-msgstr "Links"
+msgstr "Hiperligações"
 
 #: resources/views/admin/modules.phtml:232
 #: resources/views/admin/modules.phtml:235
@@ -11937,14 +11937,14 @@ msgstr "Imagens aleatórias da árvore genealógica atual."
 #: resources/views/family-page-menu.phtml:60
 #: resources/views/modules/relatives/family.phtml:234
 msgid "Re-order children"
-msgstr "Re-ordenar filhos"
+msgstr "Reordenar filhos"
 
 #: app/Http/RequestHandlers/ReorderFamiliesPage.php:49
 #: resources/views/individual-page-menu.phtml:83
 #: resources/views/individual-page-menu.phtml:88
 #: resources/views/modules/relatives/tab.phtml:97
 msgid "Re-order families"
-msgstr ""
+msgstr "Reordenar famílias"
 
 #: app/CustomTags/PhpGedView.php:71
 #: app/Http/RequestHandlers/ReorderMediaFilesPage.php:49
@@ -11957,13 +11957,13 @@ msgstr "Reordenar multimédia"
 
 #: resources/views/media-page-menu.phtml:40
 msgid "Re-order media files"
-msgstr ""
+msgstr "Reordenar ficheiros multimédia"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:51
 #: resources/views/individual-page-menu.phtml:56
 msgid "Re-order names"
-msgstr ""
+msgstr "Reordenar nomes"
 
 #: resources/views/admin/users-create.phtml:32
 #: resources/views/admin/users-edit.phtml:43
@@ -12184,7 +12184,7 @@ msgstr "Remover"
 #. I18N: Name of a module
 #: app/Module/FixDuplicateLinks.php:56
 msgid "Remove duplicate links"
-msgstr "Remover links duplicados"
+msgstr "Remover hiperligações duplicadas"
 
 #: resources/views/modules/timeline-chart/page.phtml:76
 msgid "Remove individual"
@@ -13015,15 +13015,15 @@ msgstr ""
 #: resources/views/individual-page-menu.phtml:37
 #: resources/views/individual-page.phtml:68
 msgid "Share"
-msgstr ""
+msgstr "Partilhar"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Partilhar o endereço web"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Partilhar o aniversário de um evento"
 
 #: app/CustomTags/Gedcom7.php:87 app/CustomTags/Gedcom7.php:102
 #: app/CustomTags/Gedcom7.php:116 app/CustomTags/Gedcom7.php:138
@@ -13048,7 +13048,7 @@ msgstr "Notas partilhadas"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:748
 msgid "Shares"
-msgstr ""
+msgstr "Partilhas"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
@@ -15699,7 +15699,7 @@ msgstr ""
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
 msgstr ""
 "Para criar novas tarefas de investigação, você deve primeiro adicionar "
-"\"Tarefa de investigação\" na lista de factos ou eventos nas preferências da "
+"\"tarefa de investigação\" à lista de factos ou eventos nas preferências da "
 "árvore geneálogica."
 
 #: app/Services/LeafletJsService.php:63
@@ -16836,7 +16836,9 @@ msgstr ""
 #: app/Http/RequestHandlers/ContactAction.php:122
 #: app/Http/RequestHandlers/RegisterAction.php:272
 msgid "You are not allowed to send messages that contain external links."
-msgstr "Você não tem permissão para enviar mensagens que contém links externos."
+msgstr ""
+"Você não tem permissão para enviar mensagens que contêm hiperligações "
+"externas."
 
 #: resources/views/modules/login_block/sign-out.phtml:17
 #, php-format
@@ -17113,7 +17115,7 @@ msgstr "aceite"
 #: resources/views/modules/lifespans-chart/page.phtml:75
 #: resources/views/modules/timeline-chart/page.phtml:41
 msgid "add"
-msgstr "adicionar"
+msgstr "Adicionar"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:147
@@ -18032,7 +18034,7 @@ msgstr "círculo completo"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "gender"
-msgstr "gênero"
+msgstr "género"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
