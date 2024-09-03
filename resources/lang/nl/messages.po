@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-07-09 13:56+0000\n"
-"Last-Translator: Marianne van Harten <marianne@vanharten.net>\n"
+"PO-Revision-Date: 2024-09-05 12:09+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
 "Language: nl\n"
@@ -17338,7 +17338,7 @@ msgstr "%s (geschat)"
 
 #: app/Services/RelationshipService.php:366
 msgid "ex-husband"
-msgstr "ex-echtgenoot"
+msgstr "ex-echt&shy;genoot"
 
 #: app/Services/RelationshipService.php:413
 msgid "ex-spouse"
@@ -19398,7 +19398,7 @@ msgstr "huishouden"
 
 #: app/Elements/RoleInEvent.php:79 app/Services/RelationshipService.php:368
 msgid "husband"
-msgstr "echtgenoot"
+msgstr "echt&shy;genoot"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:81
@@ -20509,77 +20509,77 @@ msgstr "huwelijkspartner"
 #: app/Services/RelationshipService.php:832
 msgctxt "father’s wife’s son"
 msgid "step-brother"
-msgstr "stiefbroer"
+msgstr "stief&shy;broer"
 
 #: app/Services/RelationshipService.php:880
 msgctxt "mother’s husband’s son"
 msgid "step-brother"
-msgstr "stiefbroer"
+msgstr "stief&shy;broer"
 
 #: app/Services/RelationshipService.php:958
 msgctxt "parent’s spouse’s son"
 msgid "step-brother"
-msgstr "stiefbroer"
+msgstr "stief&shy;broer"
 
 #: app/Services/RelationshipService.php:548
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr "stiefkind"
+msgstr "stief&shy;kind"
 
 #: app/Services/RelationshipService.php:628
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr "stiefkind"
+msgstr "stief&shy;kind"
 
 #: app/Services/RelationshipService.php:646
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr "stiefkind"
+msgstr "stief&shy;kind"
 
 #: app/Services/RelationshipService.php:550
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr "stiefdochter"
+msgstr "stief&shy;dochter"
 
 #: app/Services/RelationshipService.php:630
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr "stiefdochter"
+msgstr "stief&shy;dochter"
 
 #: app/Services/RelationshipService.php:648
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr "stiefdochter"
+msgstr "stief&shy;dochter"
 
 #: app/Services/RelationshipService.php:570
 msgctxt "mother’s husband"
 msgid "step-father"
-msgstr "stiefvader"
+msgstr "stief&shy;vader"
 
 #: app/Services/RelationshipService.php:544
 msgctxt "father’s wife"
 msgid "step-mother"
-msgstr "stiefmoeder"
+msgstr "stief&shy;moeder"
 
 #: app/Services/RelationshipService.php:600
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr "stiefouder"
+msgstr "stief&shy;ouder"
 
 #: app/Services/RelationshipService.php:828
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr "stiefbroer/stiefzus"
+msgstr "stiefbroer/&shy;stiefzus"
 
 #: app/Services/RelationshipService.php:876
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr "stiefbroer/stiefzus"
+msgstr "stiefbroer/&shy;stiefzus"
 
 #: app/Services/RelationshipService.php:954
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr "stiefbroer/stiefzus"
+msgstr "stiefbroer/&shy;stiefzus"
 
 #: app/Services/RelationshipService.php:830
 msgctxt "father’s wife’s daughter"
