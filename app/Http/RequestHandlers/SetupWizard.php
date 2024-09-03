@@ -78,7 +78,7 @@ class SetupWizard implements RequestHandlerInterface
         'dbkey'   => '',
         'dbcert'  => '',
         'dbca'    => '',
-        'dbverify'=> '',
+        'dbverify' => '',
         'wtname'  => '',
         'wtuser'  => '',
         'wtpass'  => '',
