@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-07-14 00:00+0000\n"
+"PO-Revision-Date: 2024-09-05 17:14+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -3420,7 +3420,7 @@ msgstr "Ástæða andláts"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Varúð! Þetta getur tekið langan tíma. Vertu þolinmóður."
+msgstr "Varúð! Þetta getur tekið langan tíma. Vertu þolinmóð/-ur."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -5161,7 +5161,7 @@ msgstr "Upplýsingar"
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
-"Upplýsingar um nýja notandann verða sendar á ættartengilið viðkomandi "
+"Upplýsingar um nýja notandann verða sendar á ættfræði tengilið viðkomandi "
 "ættartölu."
 
 #. I18N: Location of an LDS church temple
@@ -6302,7 +6302,7 @@ msgstr "febrúar"
 #: statisticsplot.php:1209 statisticsplot.php:1259 statisticsplot.php:1309
 #: statisticsplot.php:1359
 msgid "Female"
-msgstr "Kvenkyn"
+msgstr "Kona"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:109
@@ -8618,7 +8618,7 @@ msgstr "Maldíveyjar"
 #: statisticsplot.php:1208 statisticsplot.php:1258 statisticsplot.php:1308
 #: statisticsplot.php:1358
 msgid "Male"
-msgstr "Karlkyn"
+msgstr "Karl"
 
 #: app/Functions/FunctionsPrintLists.php:1880
 #: app/Module/FamilyTreeStatisticsModule.php:108
@@ -10434,7 +10434,7 @@ msgstr "Ææ! Vefþjónninn getur ekki tengst gagnagrunnsþjóninum. Hann kann a
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr "Því miður webtrees gat ekki stofnað skrár í þessari möppu."
+msgstr "Því miður! webtrees gat ekki stofnað skrár í þessari möppu."
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
@@ -13144,7 +13144,7 @@ msgid "Some genealogy software creates GEDCOM files that contain media filenames
 msgstr ""
 "Sum ættfræðiforrit útbúa GEDCOM skrár sem innihalda skráarheiti gagna með "
 "fullum slóðum. Þessar slóðir verða ekki til staðar á vefþjóninum. Til að "
-"leyfa Webtrees forritinu að finna skrána verður að fjarlægja fyrsta hluta "
+"gera webtrees kleift að finna skrána verður að fjarlægja fyrsta hluta "
 "slóðarinnar."
 
 #. I18N: Help text for the “Hit counters” configuration setting
@@ -13530,7 +13530,7 @@ msgstr "Forskeyti eftirnafns"
 
 #: admin_trees_config.php:2092
 msgid "Surname tradition"
-msgstr "Eftirnafnavenja"
+msgstr "Eftirnafna venja"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
@@ -17367,7 +17367,7 @@ msgstr "fyrsta"
 #: admin_trees_config.php:1519
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr "fyrsta"
+msgstr "fyrstu"
 
 #. I18N: A Spanish relationship name, such as first great-nephew
 #: app/Functions/Functions.php:635
