@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-07-14 00:00+0000\n"
+"PO-Revision-Date: 2024-09-05 12:09+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -2834,7 +2834,7 @@ msgstr "Fæðing sonar"
 
 #: app/Gedcom.php:603
 msgid "Birth parents"
-msgstr "Fæðingarforeldrar"
+msgstr "Fæðingar foreldrar"
 
 #: resources/views/modules/statistics-chart/places.phtml:18
 msgid "Birth places"
@@ -3314,7 +3314,7 @@ msgstr "Ástæða andláts"
 #: resources/views/admin/trees-merge.phtml:66
 #: resources/views/admin/trees-renumber.phtml:47
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Varúð! Þetta getur tekið langan tíma. Vertu þolinmóður."
+msgstr "Varúð! Þetta getur tekið langan tíma. Vertu þolinmóð/-ur."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
@@ -5203,7 +5203,9 @@ msgstr "Upplýsingar"
 
 #: resources/views/admin/site-registration.phtml:57
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr "Upplýsingar um nýja notandann verða sendar á ættartengilið viðkomandi ættartölu."
+msgstr ""
+"Upplýsingar um nýja notandann verða sendar á ættfræði tengilið viðkomandi "
+"ættartölu."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:90
@@ -6379,7 +6381,7 @@ msgstr "febrúar"
 
 #: app/Elements/SexValue.php:86 app/Module/StatisticsChartModule.php:776
 msgid "Female"
-msgstr "Kvenkyn"
+msgstr "Kona"
 
 #: app/Statistics/Google/ChartAge.php:114
 #: app/Statistics/Google/ChartMarriageAge.php:137
@@ -8926,7 +8928,7 @@ msgstr "Maldíveyjar"
 
 #: app/Elements/SexValue.php:85 app/Module/StatisticsChartModule.php:775
 msgid "Male"
-msgstr "Karlkyn"
+msgstr "Karl"
 
 #: app/Statistics/Google/ChartAge.php:113
 #: app/Statistics/Google/ChartMarriageAge.php:136
@@ -10811,7 +10813,7 @@ msgstr "Ææ! Vefþjónninn getur ekki tengst gagnagrunnsþjóninum. Hann kann a
 
 #: app/Http/RequestHandlers/SetupWizard.php:172
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr "Því miður webtrees gat ekki stofnað skrár í þessari möppu."
+msgstr "Því miður! webtrees gat ekki stofnað skrár í þessari möppu."
 
 #. I18N: https://openrouteservice.org
 #: app/Module/MapGeoLocationOpenRouteService.php:45
@@ -13556,7 +13558,11 @@ msgstr "Sómalía"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:128
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Sum ættfræðiforrit útbúa GEDCOM skrár sem innihalda skráarheiti gagna með fullum slóðum. Þessar slóðir verða ekki til staðar á vefþjóninum. Til að leyfa Webtrees forritinu að finna skrána verður að fjarlægja fyrsta hluta slóðarinnar."
+msgstr ""
+"Sum ættfræðiforrit útbúa GEDCOM skrár sem innihalda skráarheiti gagna með "
+"fullum slóðum. Þessar slóðir verða ekki til staðar á vefþjóninum. Til að "
+"gera webtrees kleift að finna skrána verður að fjarlægja fyrsta hluta "
+"slóðarinnar."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:93
@@ -13992,7 +13998,7 @@ msgstr "Forskeyti eftirnafns"
 
 #: resources/views/admin/trees-preferences.phtml:694
 msgid "Surname tradition"
-msgstr "Eftirnafnavenja"
+msgstr "Eftirnafna venja"
 
 #: resources/views/lists/surnames-table.phtml:30
 #: resources/views/modules/gedcom_stats/config.phtml:70
@@ -17492,7 +17498,7 @@ msgstr "fyrsta"
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr "fyrsta"
+msgstr "fyrstu"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2422
