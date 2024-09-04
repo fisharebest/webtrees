@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-03 22:54+0000\n"
+"PO-Revision-Date: 2024-09-05 17:15+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -1647,7 +1647,7 @@ msgstr "Adoção de um meio-irmão"
 
 #: app/Services/IndividualFactsService.php:257
 msgid "Adoption of a half-sibling"
-msgstr "Adoção de um meio-irmão"
+msgstr "Adoção de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:256
 msgid "Adoption of a half-sister"
@@ -1655,7 +1655,7 @@ msgstr "Adoção de uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:234
 msgid "Adoption of a sibling"
-msgstr "Adoção de um irmão"
+msgstr "Adoção de um irmão / uma irmã"
 
 #: app/Services/IndividualFactsService.php:233
 msgid "Adoption of a sister"
@@ -2532,7 +2532,7 @@ msgstr "Batismo de um meio-irmão"
 
 #: app/Services/IndividualFactsService.php:252
 msgid "Baptism of a half-sibling"
-msgstr "Batismo de um meio-irmão"
+msgstr "Batismo de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:251
 msgid "Baptism of a half-sister"
@@ -2861,7 +2861,7 @@ msgstr "Nascimento de um meio-irmão"
 
 #: app/Services/IndividualFactsService.php:242
 msgid "Birth of a half-sibling"
-msgstr "Nascimento de um meio-irmão"
+msgstr "Nascimento de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:241
 msgid "Birth of a half-sister"
@@ -3161,7 +3161,7 @@ msgstr "Sepultamento de um meio--irmão"
 
 #: app/Services/IndividualFactsService.php:375
 msgid "Burial of a half-sibling"
-msgstr "Sepultamento de um meio-irmão"
+msgstr "Sepultamento de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:374
 msgid "Burial of a half-sister"
@@ -3703,7 +3703,7 @@ msgstr "Batizado de um meio-irmão"
 
 #: app/Services/IndividualFactsService.php:247
 msgid "Christening of a half-sibling"
-msgstr "Batizado de um meio-irmão"
+msgstr "Batizado de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:246
 msgid "Christening of a half-sister"
@@ -4273,7 +4273,7 @@ msgstr "Cremação de um meio-irmão"
 
 #: app/Services/IndividualFactsService.php:380
 msgid "Cremation of a half-sibling"
-msgstr "Cremação de um meio-irmão"
+msgstr "Cremação de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:379
 msgid "Cremation of a half-sister"
@@ -4949,7 +4949,7 @@ msgstr "Falecimento de um meio-irmão"
 
 #: app/Services/IndividualFactsService.php:370
 msgid "Death of a half-sibling"
-msgstr "Falecimento de um meio-irmão"
+msgstr "Falecimento de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:369
 msgid "Death of a half-sister"
@@ -6995,7 +6995,7 @@ msgstr "Género"
 
 #: resources/views/admin/control-panel.phtml:678
 msgid "Genealogy"
-msgstr ""
+msgstr "Genealogia"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:155
@@ -8010,7 +8010,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.phtml:720
 msgid "Individual page"
-msgstr ""
+msgstr "Página do indivíduo"
 
 #: resources/views/admin/trees-preferences.phtml:419
 msgid "Individual pages"
@@ -9347,7 +9347,7 @@ msgstr "Casamento de um meio-irmão"
 
 #: app/Services/IndividualFactsService.php:471
 msgid "Marriage of a half-sibling"
-msgstr "Casamento de um meio-irmão"
+msgstr "Casamento de um meio-irmão / uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:470
 msgid "Marriage of a half-sister"
@@ -11231,7 +11231,7 @@ msgstr "Árvores genealógica de %s"
 #: resources/views/pending-changes-page.phtml:80
 #: resources/xml/reports/change_report.xml:52
 msgid "Pending changes"
-msgstr "Alterações Pendentes"
+msgstr "Alterações pendentes"
 
 #: resources/views/help/pending-changes.phtml:22
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
@@ -12851,7 +12851,7 @@ msgstr ""
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:65
 #: resources/views/admin/control-panel.phtml:246
 msgid "Sending email"
-msgstr ""
+msgstr "Enviar email"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:177
@@ -12930,7 +12930,7 @@ msgstr "Servo"
 #: app/Http/RequestHandlers/PhpInformation.php:60
 #: resources/views/admin/control-panel.phtml:274
 msgid "Server information"
-msgstr ""
+msgstr "Informação do servidor"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:93
@@ -13524,7 +13524,7 @@ msgstr ""
 #: resources/views/pending-changes-page.phtml:26
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr "Exibindo %1$s para %2$s de %3$s"
+msgstr "Exibindo %1$s em %2$s de %3$s"
 
 #: resources/views/modules/pedigree-chart/previous.phtml:24
 msgid "Sibling"
@@ -16655,7 +16655,7 @@ msgstr "Sítio web"
 #: app/Http/RequestHandlers/SiteLogsPage.php:106
 #: resources/views/admin/control-panel.phtml:262
 msgid "Website logs"
-msgstr "Monitorização do sítio web"
+msgstr "Logs do sítio web"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:65
 #: resources/views/admin/control-panel.phtml:240
@@ -19600,17 +19600,17 @@ msgstr "meio-irmão"
 #: app/Services/RelationshipService.php:527
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "meio-irmão"
+msgstr "meio-irmão / meia-irmã"
 
 #: app/Services/RelationshipService.php:563
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "meio-irmão"
+msgstr "meio-irmão / meia-irmã"
 
 #: app/Services/RelationshipService.php:583
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "meio-irmão"
+msgstr "meio-irmão / meia-irmã"
 
 #: app/Services/RelationshipService.php:529
 msgctxt "father’s daughter"
@@ -20364,7 +20364,7 @@ msgstr "Gravar"
 #: resources/views/search-general-page.phtml:128
 #: resources/views/search-phonetic-page.phtml:88
 msgid "search"
-msgstr "pesquisar"
+msgstr "Pesquisar"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2424
@@ -20816,32 +20816,32 @@ msgstr "meio-irmão"
 #: app/Services/RelationshipService.php:547
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr "afilhado"
+msgstr "enteado(a)"
 
 #: app/Services/RelationshipService.php:627
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr "afilhado"
+msgstr "enteado(a)"
 
 #: app/Services/RelationshipService.php:645
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr "afilhado"
+msgstr "enteado(a)"
 
 #: app/Services/RelationshipService.php:549
 msgctxt "husband’s daughter"
 msgid "step-daughter"
-msgstr "afilhada"
+msgstr "enteada"
 
 #: app/Services/RelationshipService.php:629
 msgctxt "spouse’s daughter"
 msgid "step-daughter"
-msgstr "afilhada"
+msgstr "enteada"
 
 #: app/Services/RelationshipService.php:647
 msgctxt "wife’s daughter"
 msgid "step-daughter"
-msgstr "afilhada"
+msgstr "enteada"
 
 #: app/Services/RelationshipService.php:569
 msgctxt "mother’s husband"
@@ -20856,32 +20856,32 @@ msgstr "madrasta"
 #: app/Services/RelationshipService.php:599
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr "padrasto"
+msgstr "padrasto/madrasta"
 
 #: app/Services/RelationshipService.php:827
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr "meio-irmão"
+msgstr "meio-irmão / meia-irmã"
 
 #: app/Services/RelationshipService.php:875
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr "meio-irmão"
+msgstr "meio-irmão / meia-irmã"
 
 #: app/Services/RelationshipService.php:953
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr "meio-irmão"
+msgstr "meio-irmão / meia-irmã"
 
 #: app/Services/RelationshipService.php:829
 msgctxt "father’s wife’s daughter"
 msgid "step-sister"
-msgstr "meio-irmã"
+msgstr "meia-irmã"
 
 #: app/Services/RelationshipService.php:877
 msgctxt "mother’s husband’s daughter"
 msgid "step-sister"
-msgstr "meio-irmã"
+msgstr "meia-irmã"
 
 #: app/Services/RelationshipService.php:955
 msgctxt "parent’s spouse’s daughter"
@@ -20891,21 +20891,21 @@ msgstr "meia-irmã"
 #: app/Services/RelationshipService.php:559
 msgctxt "husband’s son"
 msgid "step-son"
-msgstr "afilhado"
+msgstr "enteado"
 
 #: app/Services/RelationshipService.php:637
 msgctxt "spouse’s son"
 msgid "step-son"
-msgstr "afilhado"
+msgstr "enteado"
 
 #: app/Services/RelationshipService.php:657
 msgctxt "wife’s son"
 msgid "step-son"
-msgstr "afilhado"
+msgstr "enteado"
 
 #: app/Elements/AgeAtEvent.php:96
 msgid "stillborn"
-msgstr "Natimorto"
+msgstr "nado-morto"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -20926,7 +20926,7 @@ msgstr "núvem de tag"
 
 #: app/Services/RelationshipService.php:2342
 msgid "tenth cousin"
-msgstr "primo de décimo grau"
+msgstr "primo(a) de décimo grau"
 
 #: app/Services/RelationshipService.php:2306
 msgctxt "FEMALE"
@@ -20980,7 +20980,7 @@ msgstr "terceiro %s"
 
 #: app/Services/RelationshipService.php:2328
 msgid "third cousin"
-msgstr "primo de terceiro grau"
+msgstr "primo(a) de terceiro grau"
 
 #: app/Services/RelationshipService.php:2292
 msgctxt "FEMALE"
@@ -21036,15 +21036,15 @@ msgstr "primo de décimo segundo grau"
 
 #: app/Services/RelationshipService.php:438
 msgid "twin brother"
-msgstr "irmão gêmeo"
+msgstr "irmão gémeo"
 
 #: app/Services/RelationshipService.php:480
 msgid "twin sibling"
-msgstr "irmão gêmeo"
+msgstr "irmã(o) gémea(o)"
 
 #: app/Services/RelationshipService.php:459
 msgid "twin sister"
-msgstr "irmã gêmea"
+msgstr "irmã gémea"
 
 #: app/Services/RelationshipService.php:525
 msgctxt "father’s brother"
