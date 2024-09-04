@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MapLinkOpenStreetMap::class)]
-#[CoversClass(ModuleMapLinkTrait::class)]
+#[CoversTrait(ModuleMapLinkTrait::trait)]
 class MapLinkOpenStreetMapTest extends TestCase
 {
     public function testNoCoordinates(): void
