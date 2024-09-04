@@ -4180,12 +4180,6 @@ $ignoreErrors[] = [
     'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
 ];
 $ignoreErrors[] = [
-    // identifier: offsetAccess.notFound
-    'message' => '#^Offset int\\<0, max\\> does not exist on array\\{\\}\\.$#',
-    'count' => 2,
-    'path' => __DIR__ . '/app/Report/ReportParserGenerate.php',
-];
-$ignoreErrors[] = [
     // identifier: argument.type
     'message' => '#^Parameter \\#1 \\$array of function end expects array\\|object, array\\<int, string\\>\\|false given\\.$#',
     'count' => 1,
