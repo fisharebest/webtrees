@@ -31,7 +31,7 @@ use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(FixDuplicateLinks::class)]
-#[CoversClass(ModuleDataFixTrait::class)]
+#[CoversTrait(ModuleDataFixTrait::trait)]
 class FixDuplicateLinksTest extends TestCase
 {
     protected static bool $uses_database = true;

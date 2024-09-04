@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(MapLinkBing::class)]
-#[CoversClass(ModuleMapLinkTrait::class)]
+#[CoversTrait(ModuleMapLinkTrait::trait)]
 class MapLinkGoogleTest extends TestCase
 {
     public function testNoCoordinates(): void
