@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2023-10-05 19:32+0000\n"
-"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
-"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
+"PO-Revision-Date: 2024-09-05 17:15+0000\n"
+"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
+"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3271,7 +3272,7 @@ msgstr "Canadá"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "No se puede escribir en la carpeta “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3871,7 +3872,7 @@ msgstr "Conexión al servidor de bases de datos"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Tipo de conexión"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -14539,7 +14540,7 @@ msgstr "Falta el parámetro \"%s\"."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "El parámetro “ruta” no es válido."
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -14765,7 +14766,7 @@ msgstr "No hay hechos para esta persona."
 #: app/Module/IndividualListModule.php:224
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "No existen personas con el apellido “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15150,7 +15151,7 @@ msgstr "Esta página le permite pasar por alto las formas usuales, y editar dire
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Esta página ha sido eliminada."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17174,7 +17175,7 @@ msgstr "continuar"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "Copiar"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17356,7 +17357,7 @@ msgstr "exportar archivo"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "extracto"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19484,7 +19485,7 @@ msgstr "lista"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "local"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19693,7 +19694,7 @@ msgstr "sobrino/sobrina"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "red"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19858,7 +19859,7 @@ msgstr "de"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "en línea"
 
 #: app/Services/RelationshipService.php:353
 msgid "parent"
@@ -19914,7 +19915,7 @@ msgstr "porcentaje"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "fotocopia"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
