@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-06 10:20+0000\n"
+"PO-Revision-Date: 2024-09-06 14:22+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -218,7 +218,7 @@ msgstr[1] "%s utilizadores anónimos conetados"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "%s filho"
+msgstr[0] "%s filho(a)"
 msgstr[1] "%s filhos"
 
 #: app/Age.php:98 app/Elements/AgeAtEvent.php:103
@@ -265,7 +265,7 @@ msgstr[1] "%s árvores genealógicas"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "%s neto"
+msgstr[0] "%s neto(a)"
 msgstr[1] "%s netos"
 
 #: app/Module/LifespansChartModule.php:272
@@ -703,7 +703,7 @@ msgstr "Um gráfico de descendentes de um indivíduo."
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:115
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Um gráfico da linha do tempo de um indivíduo."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -1106,7 +1106,7 @@ msgstr "A4"
 #: resources/views/modules/map-box/config.phtml:23
 #: resources/views/modules/openrouteservice/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "Chave da API"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
@@ -1176,7 +1176,7 @@ msgstr "Acesso às árvores genealógicas"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Aprovação de conta e verificação de email"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54
@@ -1284,12 +1284,12 @@ msgstr "Adicionar um irmão"
 #: resources/views/family-page-menu.phtml:54
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a child"
-msgstr "Adicionar um filho(a)"
+msgstr "Adicionar um(a) filho(a)"
 
 #: app/Http/RequestHandlers/AddChildToIndividualPage.php:85
 #: resources/views/modules/relatives/tab.phtml:155
 msgid "Add a child to create a one-parent family"
-msgstr "Adicionar um filho para criar uma família monoparental"
+msgstr "Adicionar um(a) filho(a) para criar uma família monoparental"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:76
 #: resources/views/family-page-children.phtml:47
@@ -1419,11 +1419,11 @@ msgstr "Adicionar uma pergunta frequente"
 
 #: resources/views/modules/custom-css-js/edit.phtml:35
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Adicionar conteúdo no final do elemento <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Adicionar conteúdo no final do elemento <code>&lt;body&gt;</code>."
 
 #: resources/views/record-page-menu-clipboard.phtml:20
 msgid "Add from clipboard"
@@ -1448,7 +1448,7 @@ msgstr "Acrescentar registos de falecimento em falta"
 
 #: resources/views/edit-blocks-page.phtml:51
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Adicionar mais blocos da seguinte lista."
 
 #: resources/views/search-advanced-page.phtml:44
 msgid "Add more fields"
@@ -1470,7 +1470,7 @@ msgstr ""
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:44
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Adicionar estilos e scripts a cada página."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:197
@@ -1537,7 +1537,7 @@ msgstr "Adelaide, Austrália"
 
 #: app/CustomTags/GedcomL.php:284
 msgid "Administrative ID"
-msgstr ""
+msgstr "ID Administrativo"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1690,6 +1690,7 @@ msgstr "África"
 #: resources/views/admin/trees-create.phtml:60
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"Após criar a árvore de família, poderá importar dados de um ficheiro GEDCOM."
 
 #: app/Gedcom.php:543 app/Statistics/Google/ChartAge.php:137
 #: app/Statistics/Google/ChartMarriageAge.php:160
@@ -1872,6 +1873,8 @@ msgstr ""
 #: resources/views/admin/site-registration.phtml:58
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
+"Um administrador terá de aprovar a nova conta de utilizador e selecionar um "
+"nível de acesso antes que o utilizador se possa autenticar."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
@@ -1906,6 +1909,7 @@ msgstr "Uma forma alternativa para conectar-se e desconectar-se."
 #: app/Module/HourglassChartModule.php:90
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
+"Um gráfico ampulheta dos antepassados e dos ascendentes de um indivídio."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -2031,7 +2035,7 @@ msgstr ""
 
 #: app/Gedcom.php:530
 msgid "Application name"
-msgstr ""
+msgstr "Nome da aplicação"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -2041,13 +2045,13 @@ msgstr "Aplicar medidas de privacidade"
 #: resources/views/admin/trees-preferences.phtml:732
 #: resources/views/admin/trees-privacy.phtml:298
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Aplicar estas preferências a todas as árvores de família"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:739
 #: resources/views/admin/trees-privacy.phtml:305
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Aplicar estas preferências a novas árvores de família"
 
 #: resources/views/admin/users.phtml:37
 msgid "Approved"
@@ -2305,7 +2309,7 @@ msgstr "Autor da última alteração"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:648
 msgid "Autocomplete"
-msgstr ""
+msgstr "Autopreenchimento"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
@@ -2388,7 +2392,7 @@ msgstr "Média de filhos por família"
 #: resources/views/admin/trees-create.phtml:48
 #: resources/views/admin/trees-preferences.phtml:86
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr ""
+msgstr "Evitar espaços e pontuação. Um nome de família será uma boa escolha."
 
 #: app/Date/JalaliDate.php:281
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2561,7 +2565,7 @@ msgstr "Barbados"
 
 #: app/CustomTags/GedcomL.php:154
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Etiqueta base GEDCOM"
 
 #: app/Gedcom.php:598 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
@@ -3362,7 +3366,7 @@ msgstr "Causa do falecimento"
 #: resources/views/admin/trees-merge.phtml:66
 #: resources/views/admin/trees-renumber.phtml:47
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "Cuidado! Isto poderá levar muito tempo. Seja paciente."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
@@ -3444,11 +3448,11 @@ msgstr "Alterar membros da família"
 
 #: app/Http/RequestHandlers/TreePageEdit.php:64
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Alterar os blocos em \"Página inicial\""
 
 #: app/Http/RequestHandlers/UserPageEdit.php:62
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Alterar os blocos em \"A minha página\""
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:52
@@ -3493,7 +3497,7 @@ msgstr "Lista de alterações"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "Codificação de caractéres"
 
 #: app/Gedcom.php:499
 msgid "Character set"
@@ -3506,7 +3510,7 @@ msgstr "Gráfico"
 
 #: app/Module/RelationshipsChartModule.php:432
 msgid "Chart preferences"
-msgstr ""
+msgstr "Preferências de gráfico"
 
 #: resources/views/modules/charts/config.phtml:20
 #: resources/views/modules/statistics-chart/custom.phtml:26
@@ -3600,12 +3604,12 @@ msgstr ""
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition/SpanishSurnameTradition.php:53
 msgid "Children take one surname from the father and one surname from the mother."
-msgstr ""
+msgstr "Filhos tomam um sobrenome do pai e um sobrenome da mãe."
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition/PortugueseSurnameTradition.php:53
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr ""
+msgstr "Filhos tomam um sobrenome da mãe e um sobrenome do pai."
 
 #. I18N: In the patrilineal surname tradition, ...
 #: app/SurnameTradition/LithuanianSurnameTradition.php:76
@@ -3613,12 +3617,12 @@ msgstr ""
 #: app/SurnameTradition/PatrilinealSurnameTradition.php:50
 #: app/SurnameTradition/PolishSurnameTradition.php:66
 msgid "Children take their father’s surname."
-msgstr ""
+msgstr "Filhos tomam o sobrenome do pai."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: app/SurnameTradition/MatrilinealSurnameTradition.php:50
 msgid "Children take their mother’s surname."
-msgstr ""
+msgstr "Filhos tomam o sobrenome da mãe."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:125
@@ -4045,7 +4049,7 @@ msgstr "Copiar"
 #: resources/views/admin/trees-merge.phtml:50
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Copiar todos os registos de %1$s para %2$s."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:124
 msgid "Copy files…"
@@ -4053,7 +4057,7 @@ msgstr "Copiar ficheiros…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Copiar o endereço web do registo para a área de transferência"
 
 #: app/Gedcom.php:501 app/Gedcom.php:528
 msgid "Copyright"
@@ -4137,7 +4141,7 @@ msgstr "Criar uma nova fonte"
 #: app/Elements/XrefSubmission.php:60
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Criar uma submissão"
 
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
@@ -4162,7 +4166,7 @@ msgstr "Criar um indivíduo"
 #: app/Module/MapBox.php:51 app/Module/OpenStreetMap.php:41
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Criar mapas usando %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
@@ -4171,6 +4175,8 @@ msgstr "Criar seu próprio gráfico"
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Criar, atualizar e excluir uma árvore de família em cada ficheiro GEDCOM na "
+"pasta de dados."
 
 #. I18N: GEDCOM tag _CREA
 #: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:93
@@ -4353,11 +4359,13 @@ msgstr "Personalizado"
 
 #: app/CustomTags/Gedcom7.php:104 resources/views/admin/tags.phtml:1020
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Etiquetas GEDCOM customizadas"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 msgstr ""
+"As etiquetas GEDCOM customizadas são desaconselhadas. Tente usar apenas "
+"etiquetas padrão GEDCOM."
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
@@ -4365,7 +4373,7 @@ msgstr "Configurar Evento"
 
 #: resources/views/admin/custom-module-info.phtml:14
 msgid "Custom module"
-msgstr ""
+msgstr "Módulo customizado"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
@@ -4434,7 +4442,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:216
 #: resources/views/admin/modules.phtml:219
 msgid "Data fix"
-msgstr ""
+msgstr "Correção de dados"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:63
 #: app/Http/RequestHandlers/DataFixPage.php:85
@@ -4455,7 +4463,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:27
 msgid "Data folder"
-msgstr ""
+msgstr "Pasta de dados"
 
 #: resources/views/setup/step-4-database-mysql.phtml:36
 #: resources/views/setup/step-4-database-pgsql.phtml:36
@@ -4528,11 +4536,11 @@ msgstr "Data do batismo mórmom"
 
 #: app/Gedcom.php:741
 msgid "Date of LDS child sealing"
-msgstr "Data do Selamento Mórmom de criança"
+msgstr "Data do selamento mórmom de criança"
 
 #: app/Gedcom.php:629
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Data da confirmação mórmon"
 
 #: app/Gedcom.php:649
 msgid "Date of LDS endowment"
@@ -4540,7 +4548,7 @@ msgstr "Data da dotação mórmom"
 
 #: app/Gedcom.php:481
 msgid "Date of LDS spouse sealing"
-msgstr "Data do Selamento Mórmom de cônjuge"
+msgstr "Data do selamento mórmom de cônjuge"
 
 #: app/Gedcom.php:577
 msgid "Date of adoption"
@@ -5089,7 +5097,7 @@ msgstr "Tema padrão"
 #: app/CustomTags/GedcomL.php:162 app/CustomTags/GedcomL.php:163
 #: app/CustomTags/GedcomL.php:164
 msgid "Definition"
-msgstr ""
+msgstr "Definição"
 
 #: app/CustomTags/FamilyTreeMaker.php:115
 msgid "Degree"
@@ -5148,24 +5156,24 @@ msgstr "Excluir utilizadores inativos"
 
 #: resources/views/modules/user-messages/user-messages.phtml:146
 msgid "Delete selected messages"
-msgstr "Excluir Mensagens Selecionadas"
+msgstr "Excluir mensagens selecionadas"
 
 #: resources/views/admin/modules.phtml:49
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Excluir as preferências para este módulo."
 
 #: resources/views/individual-page-name.phtml:92
 #: resources/views/individual-page-name.phtml:94
 msgid "Delete this name"
-msgstr ""
+msgstr "Excluir este nome"
 
 #: resources/views/admin/locations.phtml:174
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Excluir locais não utilizados"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
-msgstr ""
+msgstr "Excluir a sua conta"
 
 #: resources/views/family-page-menu.phtml:81
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
@@ -5175,7 +5183,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/GedcomLoad.php:132
 msgid "Deleting…"
-msgstr ""
+msgstr "Excluindo…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:133
@@ -5184,7 +5192,7 @@ msgstr "Congo-Kinshasa"
 
 #: app/CustomTags/GedcomL.php:288
 msgid "Demographic data"
-msgstr ""
+msgstr "Dados demográficos"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
@@ -5202,7 +5210,7 @@ msgstr ""
 
 #: resources/views/modules/family-book-chart/page.phtml:50
 msgid "Descendant generations"
-msgstr ""
+msgstr "Gerações descendentes"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a module/sidebar
@@ -6098,7 +6106,7 @@ msgstr "Ícones de factos"
 
 #: resources/views/admin/trees-privacy.phtml:230
 msgid "Fact or event"
-msgstr ""
+msgstr "Facto ou evento"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:73
@@ -6121,11 +6129,11 @@ msgstr "Factos para registos de indivíduos"
 
 #: resources/views/admin/trees-preferences.phtml:669
 msgid "Facts for new families"
-msgstr ""
+msgstr "Factos para novas famílias"
 
 #: resources/views/admin/trees-preferences.phtml:644
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "Factos para novos indivíduos"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:193
@@ -6211,11 +6219,11 @@ msgstr "Censo da família"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "Facto de família"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
-msgstr ""
+msgstr "Factos e eventos de família"
 
 #: app/Gedcom.php:882
 msgid "Family file"
@@ -6238,7 +6246,7 @@ msgstr "Família de %s"
 
 #: app/CustomTags/Gedcom7.php:183 app/Gedcom.php:477
 msgid "Family residence"
-msgstr ""
+msgstr "Residência de família"
 
 #: app/CustomTags/GedcomL.php:135
 msgid "Family status"
@@ -6268,7 +6276,7 @@ msgstr "Carrinho de recortes da árvore de família"
 #: resources/views/admin/trees-create.phtml:25
 #: resources/views/admin/trees-preferences.phtml:50
 msgid "Family tree title"
-msgstr ""
+msgstr "Título da árvore genealógica"
 
 #. I18N: Name of a module
 #: app/Module/TreesMenuModule.php:57 app/Module/TreesMenuModule.php:106
@@ -6406,7 +6414,7 @@ msgstr "Família do pai com %s"
 #. I18N: A step-family.
 #: app/Individual.php:896
 msgid "Father’s family with an unknown individual"
-msgstr ""
+msgstr "Família do pai com um indivíduo desconhecido"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:49
@@ -6550,11 +6558,11 @@ msgstr "Encontrar um caracter especial"
 
 #: app/Module/RelationshipsChartModule.php:736
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Encontrar todas as relações possíveis"
 
 #: app/Module/RelationshipsChartModule.php:464
 msgid "Find any relationship"
-msgstr ""
+msgstr "Encontrar qualquer relação"
 
 #: app/Http/RequestHandlers/FindDuplicateRecords.php:61
 #: resources/views/admin/trees.phtml:169
@@ -6563,22 +6571,22 @@ msgstr "Detetar duplicados"
 
 #: app/Module/RelationshipsChartModule.php:738
 msgid "Find other relationships"
-msgstr ""
+msgstr "Encontrar outras relações"
 
 #: app/Module/RelationshipsChartModule.php:465
 #: resources/views/modules/relationships-chart/page.phtml:55
 msgid "Find relationships via ancestors"
-msgstr ""
+msgstr "Encontrar relações via antepassados"
 
 #: app/Module/RelationshipsChartModule.php:742
 #: resources/views/modules/relationships-chart/page.phtml:67
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Encontrar as relações mais próximas"
 
 #: app/Http/RequestHandlers/UnconnectedPage.php:112
 #: resources/views/admin/trees.phtml:193
 msgid "Find unrelated individuals"
-msgstr "Detetar indivíduos sem relação entre si"
+msgstr "Encontrar indivíduos sem relação entre si"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
@@ -6595,12 +6603,12 @@ msgstr "Primeiro evento"
 
 #: resources/views/admin/merge-records-step-1.phtml:68
 msgid "First record"
-msgstr ""
+msgstr "Primeiro registo"
 
 #. I18N: Name of a module
 #: app/Module/FixNameSlashesAndSpaces.php:56
 msgid "Fix name slashes and spaces"
-msgstr "Fixar barras e espaços do nome"
+msgstr "Corrigir barras e espaços do nome"
 
 #: resources/views/admin/locations.phtml:48
 msgid "Flag"
@@ -6673,7 +6681,7 @@ msgstr "Fonte"
 #: resources/views/admin/modules.phtml:248
 #: resources/views/admin/modules.phtml:251
 msgid "Footer"
-msgstr ""
+msgstr "Rodapé"
 
 #: app/Http/RequestHandlers/ModulesFootersPage.php:43
 #: resources/views/admin/control-panel.phtml:599
@@ -6711,7 +6719,7 @@ msgstr "Para ajuda sobre questões genealógicas entre em contato com %s."
 #: resources/views/modules/openrouteservice/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Para mais informação consultar %s."
 
 #: app/Module/ContactsFooterModule.php:160
 #, php-format
@@ -6886,7 +6894,7 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:39
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Desde"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:171
@@ -7057,7 +7065,7 @@ msgstr "Gerações de antepassados"
 
 #: app/Gedcom.php:881
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Gerações de descendentes"
 
 #. I18N: https://www.geonames.org
 #: app/Module/GeonamesAutocomplete.php:57
@@ -7494,7 +7502,7 @@ msgstr ""
 #: app/Http/RequestHandlers/TreePrivacyPage.php:94
 #: resources/views/admin/trees-privacy.phtml:150
 msgid "Hide from everyone"
-msgstr "Esconder de todos"
+msgstr "Ocultar de todos"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/users-create.phtml:61
@@ -7509,21 +7517,21 @@ msgstr "Esconder de todos"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:85
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Hide password"
-msgstr ""
+msgstr "Ocultar senha"
 
 #: resources/views/admin/trees-check.phtml:39
 #: resources/views/admin/trees-check.phtml:55
 #: resources/views/admin/trees-check.phtml:71
 msgid "Hide these errors"
-msgstr ""
+msgstr "Ocultar estes erros"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Ocultar locais não utilizados"
 
 #: app/CustomTags/GedcomL.php:297
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Relação hierárquica"
 
 #: app/CustomTags/FamilyTreeBuilder.php:63 app/CustomTags/GedcomL.php:190
 #: app/CustomTags/GedcomL.php:206 app/CustomTags/Legacy.php:145
@@ -7608,7 +7616,7 @@ msgstr "Houston, Texas, Estados Unidos"
 #. I18N: Configuration option
 #: resources/views/modules/relationships-chart/config.phtml:45
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Quanta recursividade utilizar para encontrar relações"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:247
@@ -7664,7 +7672,7 @@ msgstr "Número de identificação"
 
 #: resources/views/admin/tags.phtml:778
 msgid "Identifiers"
-msgstr ""
+msgstr "Identificadores"
 
 #: resources/views/admin/fix-level-0-media.phtml:22
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -7758,12 +7766,12 @@ msgstr ""
 #: resources/views/emails/password-request-html.phtml:28
 #: resources/views/emails/password-request-text.phtml:20
 msgid "If you did not request a new password, please ignore this message."
-msgstr ""
+msgstr "Ignore esta mensagem caso não tenha solicitado uma nova senha."
 
 #: resources/views/emails/register-user-html.phtml:36
 #: resources/views/emails/register-user-text.phtml:24
 msgid "If you didn’t request an account, you can just delete this message."
-msgstr "Ignore esta mensagem caso você não tenha solicitado esse cadastramento."
+msgstr "Ignore esta mensagem caso não tenha solicitado uma conta."
 
 #: resources/views/modals/media-file-fields.phtml:75
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -7781,7 +7789,7 @@ msgstr ""
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Se modificar o ficheiro deve também renomeá-lo."
 
 #: resources/views/admin/site-preferences.phtml:40
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7807,11 +7815,11 @@ msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:369 app/MediaFile.php:328
 msgid "Image dimensions"
-msgstr ""
+msgstr "Dimensões de imagem"
 
 #: resources/views/admin/trees-preferences.phtml:321
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Imagens sem marcas de água"
 
 #: app/Gedcom.php:671
 msgid "Immigration"
@@ -7824,7 +7832,7 @@ msgstr "Importar"
 
 #: app/Http/RequestHandlers/ImportGedcomPage.php:68
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Importar um ficheiro GEDCOM"
 
 #: app/Http/RequestHandlers/ImportThumbnailsPage.php:47
 #: resources/views/admin/control-panel.phtml:825
@@ -7833,7 +7841,7 @@ msgstr "Importar miniaturas customizadas do webtrees versão 1"
 
 #: app/Http/RequestHandlers/MapDataImportPage.php:75
 msgid "Import geographic data"
-msgstr ""
+msgstr "Importar dados geográficos"
 
 #: resources/views/admin/trees-import.phtml:78
 msgid "Import preferences"
@@ -7928,7 +7936,7 @@ msgstr "Incluir indivíduos com “%s” como nome de casado(a)"
 #: resources/views/admin/media.phtml:68
 #: resources/views/modules/media-list/page.phtml:46
 msgid "Include subfolders"
-msgstr ""
+msgstr "Incluir subpastas"
 
 #: resources/views/modules/custom-css-js/edit.phtml:40
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
@@ -8006,7 +8014,7 @@ msgstr "Gráfico de distribuição de indivíduos"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Factos e eventos do invidívuo"
 
 #: resources/views/admin/control-panel.phtml:720
 msgid "Individual page"
@@ -8014,7 +8022,7 @@ msgstr "Página do indivíduo"
 
 #: resources/views/admin/trees-preferences.phtml:419
 msgid "Individual pages"
-msgstr "Páginas individuais"
+msgstr "Páginas do indivíduo"
 
 #: resources/views/admin/users-edit.phtml:292
 #: resources/views/edit-account-page.phtml:57
@@ -8524,7 +8532,7 @@ msgstr "Batismo LDS"
 
 #: app/Gedcom.php:740
 msgid "LDS child sealing"
-msgstr "Selamento Mórmom de criança"
+msgstr "Selamento mórmom de criança"
 
 #: resources/views/admin/tags.phtml:724
 msgid "LDS church"
@@ -8532,11 +8540,11 @@ msgstr ""
 
 #: app/Gedcom.php:628
 msgid "LDS confirmation"
-msgstr "Confirmação Mórmom"
+msgstr "Confirmação mórmom"
 
 #: app/Gedcom.php:648
 msgid "LDS endowment"
-msgstr "Doatção mórmom"
+msgstr "Dotação mórmom"
 
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:131
@@ -8545,20 +8553,20 @@ msgstr ""
 
 #: app/Gedcom.php:480
 msgid "LDS spouse sealing"
-msgstr "Selamento Mórmom de cônjuge"
+msgstr "Selamento mórmom de cônjuge"
 
 #: app/CustomTags/FamilyTreeMaker.php:74 app/CustomTags/FamilyTreeMaker.php:88
 #: app/CustomTags/FamilyTreeMaker.php:92 app/CustomTags/FamilyTreeMaker.php:107
 msgid "Label"
-msgstr ""
+msgstr "Designação"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr ""
+msgstr "Designação para marido"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr ""
+msgstr "Designação para esposa"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8649,7 +8657,7 @@ msgstr "Última alteração"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Última verficação %s."
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
@@ -8721,7 +8729,7 @@ msgstr "Deixe a senha em branco para manter a senha atual."
 
 #: resources/views/admin/media-upload.phtml:51
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Deixe esta entrada em branco para manter o nome original do ficheiro"
 
 #: resources/views/lists/families-table.phtml:114
 #: resources/views/lists/individuals-table.phtml:156
@@ -8744,7 +8752,7 @@ msgstr "Herdeiro"
 
 #: app/CustomTags/Aldfaer.php:72
 msgid "Length"
-msgstr ""
+msgstr "Duração"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -8821,7 +8829,7 @@ msgstr "Associar objetos multimédia a factos e eventos"
 #: resources/views/emails/verify-notify-html.phtml:43
 #: resources/views/emails/verify-notify-text.phtml:29
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Associar a conta de utilizador a um indivíduo."
 
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:49
 #: resources/views/modules/relatives/tab.phtml:123
@@ -8845,7 +8853,7 @@ msgstr "Associar este objeto multimédia a um indivíduo"
 
 #: resources/views/admin/users-edit.phtml:306
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Associar este utilizador a um indivíduo na árvore de família."
 
 #: resources/views/chart-box.phtml:113 resources/views/chart-box.phtml:125
 #: resources/views/chart-box.phtml:126
@@ -8893,7 +8901,7 @@ msgstr "Carregando…"
 #. I18N: “Local files” are stored on this computer
 #: resources/views/admin/media.phtml:40
 msgid "Local files"
-msgstr ""
+msgstr "Ficheiros locais"
 
 #: app/CustomTags/GedcomL.php:114 app/CustomTags/GedcomL.php:168
 #: app/CustomTags/GedcomL.php:211 app/CustomTags/GedcomL.php:220
@@ -8901,7 +8909,7 @@ msgstr ""
 #: app/Http/RequestHandlers/CheckTree.php:353
 #: resources/views/lists/locations-table.phtml:65
 msgid "Location"
-msgstr ""
+msgstr "Local"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:109 app/Module/LocationListModule.php:65
@@ -8913,7 +8921,7 @@ msgstr ""
 #: resources/views/search-general-page.phtml:115
 #: resources/views/search-results.phtml:94
 msgid "Locations"
-msgstr ""
+msgstr "Locais"
 
 #: app/Elements/RelationIsDescriptor.php:115
 msgid "Lodger"
@@ -9151,7 +9159,7 @@ msgstr ""
 #: app/Services/LeafletJsService.php:67
 #: resources/views/admin/control-panel.phtml:669
 msgid "Map providers"
-msgstr ""
+msgstr "Fornecedores de mapas"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:96
@@ -9296,15 +9304,15 @@ msgstr "Casamento de um irmão"
 #: app/Services/IndividualFactsService.php:441
 #: resources/views/admin/trees-preferences.phtml:456
 msgid "Marriage of a child"
-msgstr "Casamento de um filho"
+msgstr "Casamento de um(a) filho(a)"
 
 #: app/Services/IndividualFactsService.php:440
 msgid "Marriage of a daughter"
-msgstr "Anúncios de casamento de uma filha"
+msgstr "Casamento de uma filha"
 
 #: app/Services/IndividualFactsService.php:697
 msgid "Marriage of a father"
-msgstr "Casamento do pai"
+msgstr "Casamento de um pai"
 
 #: app/Services/IndividualFactsService.php:447
 #: app/Services/IndividualFactsService.php:453
@@ -9355,7 +9363,7 @@ msgstr "Casamento de uma meia-irmã"
 
 #: app/Services/IndividualFactsService.php:698
 msgid "Marriage of a mother"
-msgstr "Casamento da mãe"
+msgstr "Casamento de uma mãe"
 
 #: app/Services/IndividualFactsService.php:699
 #: resources/views/admin/trees-preferences.phtml:468
@@ -9365,7 +9373,7 @@ msgstr "Casamento de um dos pais"
 #: app/Services/IndividualFactsService.php:465
 #: resources/views/admin/trees-preferences.phtml:462
 msgid "Marriage of a sibling"
-msgstr "Casamento de um irmão"
+msgstr "Casamento de um irmão / uma irmã"
 
 #: app/Services/IndividualFactsService.php:464
 msgid "Marriage of a sister"
@@ -9528,7 +9536,7 @@ msgstr "Ficheiro multimédia a carregar"
 #: resources/views/admin/media.phtml:31
 #: resources/views/admin/trees-preferences.phtml:260
 msgid "Media files"
-msgstr ""
+msgstr "Ficheiros multimédia"
 
 #. I18N: A configuration setting
 #: resources/views/admin/media.phtml:61
@@ -9539,7 +9547,7 @@ msgstr ""
 #: resources/views/admin/media.phtml:32
 #: resources/views/admin/trees-preferences.phtml:235
 msgid "Media folders"
-msgstr ""
+msgstr "Pastas multimédia"
 
 #: app/CustomTags/GedcomL.php:129 app/CustomTags/GedcomL.php:183
 #: app/CustomTags/GedcomL.php:240 app/CustomTags/GedcomL.php:277
@@ -12683,7 +12691,7 @@ msgstr ""
 
 #: resources/views/modules/media-list/page.phtml:73
 msgid "Search filters"
-msgstr ""
+msgstr "Filtros de pesquisa"
 
 #: resources/views/search-general-page.phtml:49
 #: resources/views/search-replace-page.phtml:26
@@ -12702,7 +12710,7 @@ msgstr ""
 #: app/Module/OpenRouteServiceAutocomplete.php:57
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Pesquisar nomes de locais usando %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12723,7 +12731,7 @@ msgstr "Seattle, Washington, Estados Unidos"
 
 #: resources/views/admin/merge-records-step-1.phtml:106
 msgid "Second record"
-msgstr ""
+msgstr "Segundo registo"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:163
@@ -12733,7 +12741,7 @@ msgstr "Conexão segura"
 #. I18N: A configuration setting
 #: resources/views/modules/statcounter/form.phtml:20
 msgid "Security code"
-msgstr ""
+msgstr "Código de segurança"
 
 #: resources/views/admin/site-mail.phtml:36
 #: resources/views/emails/new-version-html.phtml:26
@@ -12741,17 +12749,17 @@ msgstr ""
 #: resources/views/modules/fix-search-and-replace/options.phtml:45
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Ver %s para mais informação."
 
 #: resources/views/admin/merge-records-step-2.phtml:48
 #: resources/views/admin/merge-records-step-2.phtml:95
 #: resources/views/admin/merge-records-step-2.phtml:141
 msgid "Select"
-msgstr ""
+msgstr "Selecionar"
 
 #: resources/views/admin/trees-import.phtml:36
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Selecionar um ficheiro GEDCOM para importar"
 
 #: resources/views/edit/input-addon-calendar.phtml:14
 #: resources/views/edit/input-addon-calendar.phtml:17
@@ -12760,7 +12768,7 @@ msgstr "Selecionar uma data"
 
 #: resources/views/modules/lifespans-chart/page.phtml:39
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Selecionar indivíduos por local ou data"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:135
@@ -12770,11 +12778,11 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:148
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Selecionar o intervalo de idade pretendido"
 
 #: resources/views/admin/merge-records-step-2.phtml:34
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Selecionar os factos e eventos a manter em ambos os registos."
 
 #: resources/views/admin/merge-records-step-1.phtml:50
 msgid "Select two records to merge."
@@ -12811,7 +12819,7 @@ msgstr "Enviar"
 #: resources/views/modules/user-messages/user-messages.phtml:31
 #: resources/views/pending-changes-page.phtml:80
 msgid "Send a message"
-msgstr "Enviar Mensagem"
+msgstr "Enviar mensagem"
 
 #: app/Services/MessageService.php:215
 msgid "Send a message to all users"
@@ -12827,7 +12835,7 @@ msgstr "Enviar mensagem aos utilizadores que não se autenticam há 6 meses"
 
 #: resources/views/admin/site-mail.phtml:233
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Enviar um email de teste usando estas definições"
 
 #: app/Module/CheckForNewVersion.php:76
 msgid "Send an email to all administrators when an upgrade is available."
@@ -16217,7 +16225,7 @@ msgstr "Código GEDCOM Desconhecido"
 
 #: resources/views/admin/media.phtml:50
 msgid "Unused files"
-msgstr ""
+msgstr "Ficheiros não utilizados"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:123
 #, php-format
