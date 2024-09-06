@@ -53,7 +53,7 @@ use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PedigreeReportModule::class)]
-#[CoversTrait(ModuleReportTrait::trait)]
+#[CoversTrait(ModuleReportTrait::class)]
 #[CoversClass(AbstractRenderer::class)]
 #[CoversClass(HtmlRenderer::class)]
 #[CoversClass(PdfRenderer::class)]
