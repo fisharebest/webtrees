@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-05 17:15+0000\n"
+"PO-Revision-Date: 2024-09-06 10:20+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -10022,7 +10022,7 @@ msgstr "Família da mãe com %s"
 #. I18N: A step-family.
 #: app/Individual.php:906
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Família da mãe com um indivíduo desconhecido"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:140
@@ -10037,7 +10037,7 @@ msgstr "Mover para Baixo"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:19
 msgid "Move the media object?"
-msgstr ""
+msgstr "Mover o objeto multimédia?"
 
 #: resources/views/admin/components.phtml:46
 #: resources/views/admin/components.phtml:148
@@ -10077,7 +10077,7 @@ msgstr "Muharram"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Nascimento múltiplo"
 
 #: resources/views/lists/families-table.phtml:141
 msgid "Multiple marriages"
@@ -10086,11 +10086,11 @@ msgstr "Vários casamentos"
 #: app/Http/RequestHandlers/AccountEdit.php:88
 #: app/Module/ModuleThemeTrait.php:330 app/Module/UserWelcomeModule.php:110
 msgid "My account"
-msgstr "Minha conta"
+msgstr "A minha conta"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:58
 msgid "My family tree"
-msgstr ""
+msgstr "A minha árvore de família"
 
 #: app/Module/ModuleThemeTrait.php:345 app/Module/UserWelcomeModule.php:103
 msgid "My individual record"
@@ -10102,7 +10102,7 @@ msgstr "O meu registo pessoal"
 #: resources/views/admin/modules.phtml:200
 #: resources/views/layouts/administration.phtml:54
 msgid "My page"
-msgstr "Minha página"
+msgstr "A minha página"
 
 #: app/Module/ModuleThemeTrait.php:374
 msgid "My pages"
@@ -10110,7 +10110,7 @@ msgstr "As minhas páginas"
 
 #: app/Module/ModuleThemeTrait.php:413
 msgid "My pedigree"
-msgstr "Minha árvore genealógica"
+msgstr "A minha árvore genealógica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:337
@@ -20002,7 +20002,7 @@ msgstr "rede"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:115
 #: resources/views/setup/step-5-administrator.phtml:106
 msgid "next"
-msgstr "próximo"
+msgstr "próxima"
 
 #: app/Services/RelationshipService.php:499
 msgctxt "brother’s daughter"
