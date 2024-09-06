@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-06 14:22+0000\n"
+"PO-Revision-Date: 2024-09-06 21:01+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -1059,6 +1059,8 @@ msgstr "Uma linha temporal que exibe os eventos do invidíduo."
 #: resources/views/admin/users-edit.phtml:118
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"Um utilizador não poderá iniciar sessão até que ambos \"email verificado\" e "
+"\"aprovado por administrador\" estejam selecionados."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1168,7 +1170,7 @@ msgstr "Aceitar todas as alterações"
 #: resources/views/admin/components.phtml:106
 #: resources/views/admin/trees-privacy.phtml:233
 msgid "Access level"
-msgstr "Nível de Acesso"
+msgstr "Nível de acesso"
 
 #: resources/views/admin/users-edit.phtml:231
 msgid "Access to family trees"
@@ -1874,7 +1876,7 @@ msgstr ""
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
 "Um administrador terá de aprovar a nova conta de utilizador e selecionar um "
-"nível de acesso antes que o utilizador se possa autenticar."
+"nível de acesso antes que o utilizador possa iniciar sessão."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
@@ -1903,7 +1905,7 @@ msgstr "Uma forma alternativa para selecionar um novo tema."
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:54
 msgid "An alternative way to sign in and sign out."
-msgstr "Uma forma alternativa para conectar-se e desconectar-se."
+msgstr "Uma forma alternativa para iniciar sessão e terminar sessão."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:90
@@ -5766,8 +5768,8 @@ msgstr "Habilitado"
 #: resources/views/admin/trees-privacy.phtml:43
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr ""
-"Ativar esta opção força todos os visitantes a se autenticarem antes de "
-"poderem ver quaisquer dados no sítio."
+"Ativar esta opção força todos os visitantes a iniciarem sessão antes de "
+"poderem ver quaisquer dados no sítio web."
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
@@ -6959,7 +6961,7 @@ msgstr ""
 #: app/Http/RequestHandlers/SiteTagsPage.php:83
 #: resources/views/admin/control-panel.phtml:284
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "Etiquetas GEDCOM"
 
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
@@ -10311,7 +10313,7 @@ msgstr "O próximo aviso por email será enviado após "
 #: resources/views/modules/random_media/slide-show.phtml:40
 #: resources/views/modules/random_media/slide-show.phtml:42
 msgid "Next image"
-msgstr "Próxima imagem"
+msgstr "Imagem seguinte"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
@@ -10414,7 +10416,7 @@ msgstr "Sem contato"
 
 #: resources/views/admin/trees-duplicates.phtml:48
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Não foram encontrados duplicados."
 
 #: resources/views/admin/trees-check.phtml:80
 msgid "No errors have been found."
@@ -13563,17 +13565,17 @@ msgstr "Serra-Leoa"
 #: app/Http/RequestHandlers/LoginPage.php:78 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:297
 msgid "Sign in"
-msgstr "Entrar"
+msgstr "Iniciar sessão"
 
 #: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:313
 #: resources/views/layouts/administration.phtml:67
 msgid "Sign out"
-msgstr "Sair"
+msgstr "Terminar sessão"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:44
 #: resources/views/admin/control-panel.phtml:252
 msgid "Sign-in and registration"
-msgstr "Entrada e registo"
+msgstr "Acesso e registo de conta"
 
 #: app/CustomTags/Heredis.php:55
 msgid "Signature"
@@ -13586,7 +13588,7 @@ msgstr "Datas simples são assumidas como sendo do calendário gregoriano. Para 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:439
 msgid "Singapore"
-msgstr "Cingapura"
+msgstr "Singapura"
 
 #: resources/xml/reports/individual_ext_report.xml:363
 #: resources/xml/reports/individual_report.xml:352
@@ -13960,7 +13962,7 @@ msgstr "St. Paul, Minnesota, Estados Unidos"
 
 #: resources/views/admin/tags.phtml:32
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Etiquetas padrão GEDCOM"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -14183,7 +14185,7 @@ msgstr "Ilhas Svalbard e Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: resources/views/modules/relationships-chart/page.phtml:84
 msgid "Swap individuals"
-msgstr ""
+msgstr "Trocar a ordem destes indivíduos"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:471
@@ -14428,7 +14430,7 @@ msgstr ""
 
 #: resources/views/modules/share-url/share.phtml:31
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "O endereço web foi copiado para a área de transferência"
 
 #: resources/views/emails/approve-user-html.phtml:22
 #: resources/views/emails/approve-user-text.phtml:16
@@ -14447,7 +14449,7 @@ msgstr ""
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
 msgid "The calendar menu."
-msgstr ""
+msgstr "O menu calendário."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:66
@@ -14466,7 +14468,7 @@ msgstr ""
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:68
 msgid "The charts menu."
-msgstr ""
+msgstr "O menu de gráficos."
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -14523,7 +14525,7 @@ msgstr "As árvores de família foram fundidas com sucesso."
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:68
 msgid "The family trees menu."
-msgstr ""
+msgstr "O menu de árvores de família."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:84
@@ -14582,12 +14584,12 @@ msgstr ""
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:181
 #, php-format
 msgid "The folder %s has been created."
-msgstr "A pasta \"%s\" foi criada."
+msgstr "A pasta %s foi criada."
 
 #: app/Http/RequestHandlers/DeletePath.php:82
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "A pasta %s foi removida."
 
 #: resources/views/admin/site-preferences.phtml:43
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -15125,7 +15127,7 @@ msgstr[1] ""
 
 #: app/Module/SlideShowModule.php:181
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "Esta árvore de família não tem imagens para exibir."
 
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:9
@@ -15245,6 +15247,8 @@ msgstr ""
 #: resources/views/admin/upgrade/wizard.phtml:27
 msgid "This is the latest version of webtrees. No upgrade is available."
 msgstr ""
+"Esta é a versão mais recente do webtrees. Não existe nenhuma atualização "
+"disponível."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:99
@@ -15370,7 +15374,7 @@ msgstr ""
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "Esta opção tornará mais fácil aos utilizadores descarregarem imagens."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
@@ -15553,12 +15557,12 @@ msgstr "Qui"
 #: app/CustomTags/PhpGedView.php:74
 #: resources/views/admin/webtrees1-thumbnails.phtml:41
 msgid "Thumbnail image"
-msgstr "Imagem miniatura"
+msgstr "Imagem em miniatura"
 
 #: resources/views/admin/trees-preferences.phtml:288
 #: resources/views/admin/trees-preferences.phtml:293
 msgid "Thumbnail images"
-msgstr "Imagens miniatura"
+msgstr "Imagens em miniatura"
 
 #: app/Date/AbstractCalendarDate.php:249
 msgid "Thursday"
@@ -20010,7 +20014,7 @@ msgstr "rede"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:115
 #: resources/views/setup/step-5-administrator.phtml:106
 msgid "next"
-msgstr "próxima"
+msgstr "seguinte"
 
 #: app/Services/RelationshipService.php:499
 msgctxt "brother’s daughter"
@@ -20641,12 +20645,12 @@ msgstr "irmão"
 #: resources/views/login-page.phtml:57
 #: resources/views/modules/login_block/sign-in.phtml:39
 msgid "sign in"
-msgstr "conectar"
+msgstr "Iniciar sessão"
 
 #. I18N: A button label.
 #: resources/views/modules/login_block/sign-out.phtml:22
 msgid "sign out"
-msgstr "Sair"
+msgstr "Terminar sessão"
 
 #: app/Services/RelationshipService.php:472
 msgid "sister"
