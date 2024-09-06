@@ -52,7 +52,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversTrait(ModuleReportTrait::trait)]
+#[CoversTrait(ModuleReportTrait::class)]
 #[CoversClass(PedigreeReportModule::class)]
 #[CoversClass(AbstractRenderer::class)]
 #[CoversClass(HtmlRenderer::class)]

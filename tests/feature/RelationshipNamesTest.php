@@ -38,7 +38,7 @@ use function array_reverse;
 #[CoversClass(LanguageEnglishGreatBritain::class)]
 #[CoversClass(LanguageEnglishUnitedStates::class)]
 #[CoversClass(LanguageFrench::class)]
-#[CoversTrait(ModuleLanguageTrait::trait)]
+#[CoversTrait(ModuleLanguageTrait::class)]
 class RelationshipNamesTest extends TestCase
 {
     protected static bool $uses_database = true;
