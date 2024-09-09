@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-07 03:57+0000\n"
+"PO-Revision-Date: 2024-09-09 17:42+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -727,7 +727,7 @@ msgstr "Um gráfico em leque dos antepassados de um indivíduo."
 #: resources/views/modals/media-file-fields.phtml:32
 #: resources/views/modals/media-file-fields.phtml:88
 msgid "A file on the server"
-msgstr "Um ficheiro no servidor"
+msgstr "Ficheiro no servidor"
 
 #: resources/views/admin/map-import-form.phtml:27
 #: resources/views/admin/trees-export.phtml:54
@@ -2365,7 +2365,7 @@ msgstr "Média de idade"
 #: resources/views/modules/statistics-chart/custom.phtml:38
 #: resources/views/modules/statistics-chart/lifespan.phtml:17
 msgid "Average age at death"
-msgstr "Média de idade ao falecer"
+msgstr "Média de idades ao falecer"
 
 #: app/Statistics/Google/ChartMarriageAge.php:158
 msgid "Average age at marriage"
@@ -8820,7 +8820,7 @@ msgstr "Lima, Peru"
 
 #: resources/views/admin/gedcom-export-options.phtml:89
 msgid "Line endings"
-msgstr ""
+msgstr "Terminação de linha"
 
 #: app/Http/RequestHandlers/CheckTree.php:420
 msgid "Line number"
@@ -8829,7 +8829,7 @@ msgstr ""
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:819
 msgid "Link media objects to facts and events"
-msgstr "Associar objetos multimédia a factos e eventos"
+msgstr "Ligar objetos multimédia a factos e eventos"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:43
@@ -14656,7 +14656,7 @@ msgstr "A ligação entre \"%1$s\" e \"%2$s\" foi apagada."
 #: app/Http/RequestHandlers/MergeFactsAction.php:103
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "A ligação entre \"%1$s\" e \"%2$s\" foi atualizada."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:64
@@ -14775,7 +14775,7 @@ msgstr ""
 #: app/Http/RequestHandlers/PasswordResetAction.php:79
 #: app/Http/RequestHandlers/PasswordResetPage.php:74
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "A hiperligação para redefinição de senha expirou."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:112
@@ -14991,7 +14991,7 @@ msgstr "Não existem invidíduos com o sobrenome \"%s\""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
-msgstr "Não existem associações a este objeto multimédia."
+msgstr "Não existem ligações a este objeto multimédia."
 
 #: resources/views/modules/media/tab.phtml:63
 msgid "There are no media objects for this individual."
@@ -15770,7 +15770,7 @@ msgstr ""
 #: resources/views/emails/password-request-html.phtml:20
 #: resources/views/emails/password-request-text.phtml:16
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Para definir uma nova senha, use esta hiperligação."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:43
@@ -15981,7 +15981,7 @@ msgstr "Total de utilizadores"
 #: resources/views/admin/modules.phtml:259
 #: resources/views/modules/privacy-policy/page.phtml:44
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Rastreio e analítica"
 
 #: app/Gedcom.php:888
 msgid "Trailer"
@@ -16080,31 +16080,31 @@ msgstr "Tipo"
 
 #: app/CustomTags/GedcomL.php:263
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Tipo de abreviatura"
 
 #: app/CustomTags/GedcomL.php:287
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Tipo de identificador administrativo"
 
 #: app/CustomTags/GedcomL.php:291
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Tipo de dados demográficos"
 
 #: app/CustomTags/GedcomL.php:256 app/Gedcom.php:460 app/Gedcom.php:657
 msgid "Type of event"
-msgstr ""
+msgstr "Tipo de evento"
 
 #: app/CustomTags/Gedcom7.php:99 app/Gedcom.php:659
 msgid "Type of fact"
-msgstr ""
+msgstr "Tipo de facto"
 
 #: app/Gedcom.php:670
 msgid "Type of identification number"
-msgstr ""
+msgstr "Tipo de número de identificação"
 
 #: app/CustomTags/GedcomL.php:280
 msgid "Type of location"
-msgstr ""
+msgstr "Tipo de local"
 
 #: app/Gedcom.php:470
 msgid "Type of marriage"
@@ -16117,7 +16117,7 @@ msgstr "Tipo de nome"
 #: app/Gedcom.php:476 app/Gedcom.php:729 app/Gedcom.php:769 app/Gedcom.php:793
 #: app/Gedcom.php:824 app/Gedcom.php:844
 msgid "Type of reference number"
-msgstr ""
+msgstr "Tipo de número de referência"
 
 #: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
@@ -16140,7 +16140,7 @@ msgstr "Tipo de tarefa de investigação"
 #: resources/views/modules/share-url/share.phtml:12
 #: resources/views/modules/sitemap/config.phtml:47
 msgid "URL"
-msgstr ""
+msgstr "Endereço web"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
@@ -16215,7 +16215,7 @@ msgstr "Reino Unido"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:516
 msgid "United States"
-msgstr ""
+msgstr "Estados Unidos"
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php:138 app/Elements/FamilyStatusText.php:73
@@ -16248,7 +16248,7 @@ msgstr "Desconhecido(a)"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
 msgid "Unlink"
-msgstr ""
+msgstr "Desligar"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -16279,7 +16279,7 @@ msgstr "Atualizar tudo"
 #. I18N: Name of a module
 #: app/Module/FixPlaceNames.php:59
 msgid "Update place names"
-msgstr ""
+msgstr "Atualizar nomes de locais"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:70
@@ -16902,7 +16902,7 @@ msgstr "Tem uma sessão ativa como %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:97
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Pode solicitar uma conta usando a hiperligação seguinte."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:71
@@ -20784,7 +20784,7 @@ msgstr "genro/nora"
 #: app/Module/UpcomingAnniversariesModule.php:328
 #: resources/xml/reports/change_report.xml:7
 msgid "sort by date"
-msgstr "ordenar por data"
+msgstr "Ordenar por data"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-children.phtml:49
@@ -20796,30 +20796,30 @@ msgstr "ordenar por data"
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of birth"
-msgstr "ordenar por data de nascimento"
+msgstr "Ordenar por data de nascimento"
 
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/cemetery_report.xml:6
 #: resources/xml/reports/death_report.xml:9
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of death"
-msgstr "ordenar por data de falecimento"
+msgstr "Ordenar por data de falecimento"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-families.phtml:42
 #: resources/xml/reports/marriage_report.xml:9
 msgid "sort by date of marriage"
-msgstr "ordenar por data de casamento"
+msgstr "Ordenar por data de casamento"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:279 app/Module/RecentChangesModule.php:270
 msgid "sort by date, newest first"
-msgstr "ordenar por data, mais novos primeiro"
+msgstr "Ordenar por data, mais novos primeiro"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:277 app/Module/RecentChangesModule.php:268
 msgid "sort by date, oldest first"
-msgstr "ordenar por data, mais antigos primeiro"
+msgstr "Ordenar por data, mais antigos primeiro"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:275 app/Module/RecentChangesModule.php:266
@@ -20835,7 +20835,7 @@ msgstr "ordenar por data, mais antigos primeiro"
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by name"
-msgstr "ordenar por nome"
+msgstr "Ordenar por nome"
 
 #: app/Elements/RoleInEvent.php:83 app/Services/RelationshipService.php:414
 msgid "spouse"
