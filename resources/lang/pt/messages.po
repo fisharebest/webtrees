@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-09 17:42+0000\n"
+"PO-Revision-Date: 2024-09-11 16:49+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -3020,7 +3020,7 @@ msgstr "Brasil"
 
 #: app/Elements/RelationIsDescriptor.php:97
 msgid "Bridesmaid"
-msgstr "Dama de Honra"
+msgstr "Dama de honor"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:71
@@ -6789,7 +6789,7 @@ msgstr "Pai adotivo"
 
 #: app/Elements/RelationIsDescriptor.php:105
 msgid "Foster mother"
-msgstr "Mãe Adotiva"
+msgstr "Mãe adotiva"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:195
@@ -7167,7 +7167,7 @@ msgstr "Nomes"
 
 #: app/Elements/RelationIsDescriptor.php:112
 msgid "Godchild"
-msgstr "Afilhado"
+msgstr "Afilhado(a)"
 
 #: app/Elements/RelationIsDescriptor.php:81
 #: app/Elements/RelationIsDescriptor.php:111
@@ -10204,7 +10204,7 @@ msgstr "Namíbia"
 
 #: app/Elements/RelationIsDescriptor.php:117
 msgid "Nanny"
-msgstr "Babá"
+msgstr "Ama"
 
 #: app/Module/HtmlBlockModule.php:194
 msgid "Narrative description"
@@ -18099,7 +18099,7 @@ msgstr "geográfico"
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
 msgid "go to new individual"
-msgstr "Ir para o novo indivíduo"
+msgstr "Ver o novo indivíduo"
 
 #: app/Services/RelationshipService.php:505
 msgctxt "child’s child"
