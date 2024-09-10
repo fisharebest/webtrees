@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-08 04:48+0000\n"
+"PO-Revision-Date: 2024-09-11 16:48+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -790,7 +790,7 @@ msgstr "Um gráfico em leque dos antepassados de um indivíduo."
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
 msgid "A file on the server"
-msgstr "Um ficheiro no servidor"
+msgstr "Ficheiro no servidor"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 #: app/Module/GoogleMapsModule.php:3639
@@ -2416,7 +2416,7 @@ msgstr "Média de idade"
 #: app/Module/FamilyTreeStatisticsModule.php:390
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2599 statistics.php:149
 msgid "Average age at death"
-msgstr "Média de idade ao falecer"
+msgstr "Média de idades ao falecer"
 
 #: app/Stats.php:3930 app/Stats.php:3931 app/Stats.php:3935 app/Stats.php:3939
 #: app/Stats.php:3942
@@ -3048,7 +3048,7 @@ msgstr "Brasil"
 
 #: app/GedcomCode/GedcomCodeRela.php:78
 msgid "Bridesmaid"
-msgstr "Dama de Honra"
+msgstr "Dama de honor"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
@@ -6602,7 +6602,7 @@ msgstr "Pai adotivo"
 
 #: app/GedcomCode/GedcomCodeRela.php:126
 msgid "Foster mother"
-msgstr "Mãe Adotiva"
+msgstr "Mãe adotiva"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6749
@@ -6908,7 +6908,7 @@ msgstr "Nomes"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
-msgstr "Afilhado"
+msgstr "Afilhado(a)"
 
 #: app/GedcomCode/GedcomCodeRela.php:156 app/GedcomCode/GedcomCodeRela.php:162
 msgid "Goddaughter"
@@ -9715,7 +9715,7 @@ msgstr "Namíbia"
 
 #: app/GedcomCode/GedcomCodeRela.php:195
 msgid "Nanny"
-msgstr "Babá"
+msgstr "Ama"
 
 #: app/Module/HtmlBlockModule.php:159
 msgid "Narrative description"
@@ -13941,7 +13941,7 @@ msgstr "A ligação entre \"%1$s\" e \"%2$s\" foi apagada."
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "A ligação entre \"%1$s\" e \"%2$s\" foi atualizada."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -15295,7 +15295,7 @@ msgstr "Total de utilizadores"
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Rastreio e analítica"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
@@ -15375,11 +15375,11 @@ msgstr "Tipo"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "Tipo de evento"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "Tipo de facto"
 
 #: app/Module/GoogleMapsModule.php:452
 msgid "Type of place markers in the place hierarchy"
@@ -15406,7 +15406,7 @@ msgstr ""
 #: admin_trees_manage.php:661 app/GedcomTag.php:852 app/GedcomTag.php:868
 #: app/GedcomTag.php:1755
 msgid "URL"
-msgstr ""
+msgstr "Endereço web"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6909
@@ -15486,7 +15486,7 @@ msgstr "Reino Unido"
 #. I18N: Name of a country or state
 #: app/Stats.php:6911 statistics.php:685
 msgid "United States"
-msgstr ""
+msgstr "Estados Unidos"
 
 #. I18N: Name of a country or state
 #: app/GedcomRecord.php:1158 app/GedcomRecord.php:1162 app/Stats.php:6670
@@ -15553,7 +15553,7 @@ msgstr ""
 
 #: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
-msgstr ""
+msgstr "Atualizar nomes de locais"
 
 #. I18N: Ignore the warnings, and…
 #: admin_site_upgrade.php:138 admin_site_upgrade.php:202
@@ -16239,7 +16239,7 @@ msgstr "Tem uma sessão ativa como %s."
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Pode solicitar uma conta usando a hiperligação seguinte."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -17513,7 +17513,7 @@ msgstr "género"
 #. I18N: A button label.
 #: edit_interface.php:2566
 msgid "go to new individual"
-msgstr "Ir para o novo indivíduo"
+msgstr "Ver o novo indivíduo"
 
 #: app/Functions/Functions.php:814
 msgctxt "child’s child"
@@ -19961,7 +19961,7 @@ msgstr "genro/nora"
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr "ordenar por data"
+msgstr "Ordenar por data"
 
 #: edit_interface.php:1827 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19970,27 +19970,27 @@ msgstr "ordenar por data"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of birth"
-msgstr "ordenar por data de nascimento"
+msgstr "Ordenar por data de nascimento"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr "ordenar por data de falecimento"
+msgstr "Ordenar por data de falecimento"
 
 #: edit_interface.php:2182 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr "ordenar por data de casamento"
+msgstr "Ordenar por data de casamento"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
 msgid "sort by date, newest first"
-msgstr "ordenar por data, mais novos primeiro"
+msgstr "Ordenar por data, mais novos primeiro"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:163
 msgid "sort by date, oldest first"
-msgstr "ordenar por data, mais antigos primeiro"
+msgstr "Ordenar por data, mais antigos primeiro"
 
 #. I18N: An option in a list-box
 #: medialist.php:109
@@ -20009,7 +20009,7 @@ msgstr "classificar por nome de arquivo"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by name"
-msgstr "ordenar por nome"
+msgstr "Ordenar por nome"
 
 #. I18N: An option in a list-box
 #: medialist.php:106
