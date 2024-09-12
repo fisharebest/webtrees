@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-08-30 16:49+0000\n"
+"PO-Revision-Date: 2024-09-14 15:31+0000\n"
 "Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
@@ -6220,7 +6220,7 @@ msgstr "Senarrarekin familia"
 #: resources/xml/reports/individual_ext_report.xml:245
 #: resources/xml/reports/individual_report.xml:234
 msgid "Family with parents"
-msgstr "Familia gurasoekin"
+msgstr "Familia bere gurasoekin"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Individual.php:866
@@ -9875,7 +9875,7 @@ msgstr "Amaren familia %s-rekin"
 #. I18N: A step-family.
 #: app/Individual.php:906
 msgid "Mother’s family with an unknown individual"
-msgstr "Pertsona ezezagun baten amaren familia"
+msgstr "Amaren familia, pertsona ezezagun batekin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:140
