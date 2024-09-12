@@ -50,6 +50,10 @@ class RedirectBranchesPhpTest extends TestCase
             ->willReturn(new Collection(['tree1' => $tree]));
 
         $module = $this->createMock(BranchesListModule::class);
+        $module
+            ->expects($this->once())
+            ->method('listUrl')
+            ->willReturn('https://www.example.com');
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service
@@ -72,7 +76,7 @@ class RedirectBranchesPhpTest extends TestCase
 
         self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
         self::assertSame(
-            'https://www.example.com/index.php?route=%2F%2FPage%2Ftree1&soundex_dm=&soundex_std=&surname=XYZ',
+            'https://www.example.com',
             $response->getHeaderLine('Location')
         );
     }
