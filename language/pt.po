@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-11 16:48+0000\n"
+"PO-Revision-Date: 2024-09-14 15:30+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -10376,7 +10376,7 @@ msgstr "Mulher mais idosa"
 
 #: statistics.php:176
 msgid "Oldest living individuals"
-msgstr "Indivíduo mais idoso vivo"
+msgstr "Indivíduos vivos mais idosos"
 
 #: statistics.php:271
 msgid "Oldest male"
@@ -10730,7 +10730,7 @@ msgstr "Árvore genealógica de %s"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Árvores genealógica de %s"
+msgstr "Árvore genealógica de %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -11039,7 +11039,7 @@ msgstr "Por favor informe o assunto da mensagem."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr "Por favor informe um endereço de e-mail válido."
+msgstr "Por favor indique um endereço de e-mail válido."
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
@@ -11251,7 +11251,7 @@ msgstr "Privado"
 #. I18N: gedcom tag PROB
 #: app/GedcomTag.php:700
 msgid "Probate"
-msgstr "Comprovação de Legitimidade"
+msgstr "Legitimação"
 
 #. I18N: gedcom tag PROP
 #: app/GedcomTag.php:704
@@ -11828,7 +11828,7 @@ msgstr "Resultados"
 #. I18N: gedcom tag RETI
 #: app/GedcomTag.php:744
 msgid "Retirement"
-msgstr "Aposentadoria"
+msgstr "Aposentação"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6862
@@ -13111,7 +13111,7 @@ msgstr "Snowflake, Arizona, Estados Unidos"
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
 msgid "Social security number"
-msgstr "Número do Seguro Social"
+msgstr "Número da Segurança Social"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6876
