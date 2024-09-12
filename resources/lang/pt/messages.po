@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-11 16:49+0000\n"
+"PO-Revision-Date: 2024-09-14 15:31+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -4014,7 +4014,7 @@ msgstr "Painel de controlo"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:59
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converter etiquetas %s para GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -9976,6 +9976,7 @@ msgstr ""
 #: resources/views/admin/site-mail.phtml:82
 msgid "Most mail servers require a valid email address."
 msgstr ""
+"A maior parte dos servidores de e-mail requerem um endereço de e-mail válido."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:183
@@ -10892,7 +10893,7 @@ msgstr "Mulher mais idosa"
 
 #: resources/views/modules/statistics-chart/oldest-living.phtml:10
 msgid "Oldest living individuals"
-msgstr "Indivíduo mais idoso vivo"
+msgstr "Indivíduos vivos mais idosos"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:39
 msgid "Oldest male"
@@ -11233,7 +11234,7 @@ msgstr "Mapa genealógico de %s"
 #: app/Module/PedigreeChartModule.php:148
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Árvores genealógica de %s"
+msgstr "Árvore genealógica de %s"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:268
@@ -11522,7 +11523,7 @@ msgstr "Reproduzir"
 
 #: app/Http/RequestHandlers/ContactAction.php:117
 msgid "Please enter a valid email address."
-msgstr "Por favor informe um endereço de e-mail válido."
+msgstr "Por favor indique um endereço de e-mail válido."
 
 #: app/Http/RequestHandlers/ContactAction.php:112
 #: app/Http/RequestHandlers/PasswordResetAction.php:80
@@ -11725,7 +11726,7 @@ msgstr "Privacidade"
 #: app/Module/PrivacyPolicy.php:65 app/Module/PrivacyPolicy.php:121
 #: resources/views/modules/privacy-policy/footer.phtml:18
 msgid "Privacy policy"
-msgstr "Política de Privacidade"
+msgstr "Política de privacidade"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:156
@@ -11753,7 +11754,7 @@ msgstr "Chave privada"
 
 #: app/Gedcom.php:726
 msgid "Probate"
-msgstr "Comprovação de Legitimidade"
+msgstr "Legitimação"
 
 #: app/Gedcom.php:727
 msgid "Property"
@@ -12402,7 +12403,7 @@ msgstr "Resultados"
 
 #: app/Gedcom.php:735
 msgid "Retirement"
-msgstr "Aposentadoria"
+msgstr "Aposentação"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:172
@@ -13711,7 +13712,7 @@ msgstr "Snowflake, Arizona, Estados Unidos"
 
 #: app/Gedcom.php:757
 msgid "Social security number"
-msgstr "Número do Seguro Social"
+msgstr "Número da Segurança Social"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
@@ -19804,7 +19805,7 @@ msgstr "último"
 #: app/Module/PedigreeChartModule.php:362
 #: app/Module/PedigreeChartModule.php:370
 msgid "left"
-msgstr "esquerda(o)"
+msgstr "esquerda"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -20346,7 +20347,7 @@ msgstr "Reiniciar"
 #: app/Module/PedigreeChartModule.php:363
 #: app/Module/PedigreeChartModule.php:371
 msgid "right"
-msgstr "direita(o)"
+msgstr "direita"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:41
