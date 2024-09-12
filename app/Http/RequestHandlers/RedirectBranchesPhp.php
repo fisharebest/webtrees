@@ -58,13 +58,10 @@ class RedirectBranchesPhp implements RequestHandlerInterface
                 ->first(static fn (ModuleListInterface $module): bool => $module instanceof BranchesListModule);
 
             if ($module instanceof BranchesListModule) {
-                $url = route('module', [
-                    'module'      => $module->name(),
-                    'action'      => 'Page',
+                $url = $module->listUrl($tree, [
                     'soundex_dm'  => Validator::queryParams($request)->string('soundex_dm', ''),
                     'soundex_std' => Validator::queryParams($request)->string('soundex_std', ''),
                     'surname'     => Validator::queryParams($request)->string('surname', ''),
-                    'tree'        => $tree->name(),
                 ]);
 
                 return Registry::responseFactory()
