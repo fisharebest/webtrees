@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-05 17:14+0000\n"
+"PO-Revision-Date: 2024-09-14 15:30+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -2000,12 +2000,12 @@ msgstr "Villa kom upp við að afpakka skránni."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Tímaglasagraf yfir forfeður og afkomendur einstaklings."
+msgstr "Stundaglasagraf yfir forfeður og afkomendur einstaklings."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur persónu."
+msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur einstaklings."
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
@@ -5121,7 +5121,7 @@ msgstr "Áhugi afkomenda"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
-msgstr "Afkomendur af "
+msgstr "Afkomendur "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:62
@@ -7115,7 +7115,7 @@ msgstr "Hann var fæddur"
 
 #: modules_v3/ahnentafel_report/report.xml:339
 msgid "He was buried"
-msgstr "Hann var grafinn"
+msgstr "Hann var jarðsettur"
 
 #: modules_v3/ahnentafel_report/report.xml:166
 msgid "He was christened"
@@ -12549,7 +12549,7 @@ msgstr "Hún var fædd"
 
 #: modules_v3/ahnentafel_report/report.xml:340
 msgid "She was buried"
-msgstr "Hún var grafin"
+msgstr "Hún var jarðsett"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
