@@ -483,6 +483,7 @@ class ModuleService
         'missing_facts_report'    => MissingFactsReportModule::class,
         'notes'                   => NotesTabModule::class,
         'note_list'               => NoteListModule::class,
+        'nz-leaders'              => NewZealandPrimeMinisters::class,
         'occupation_report'       => OccupationReportModule::class,
         'openrouteservice'        => OpenRouteServiceAutocomplete::class,
         'openstreetmap'           => OpenStreetMap::class,
