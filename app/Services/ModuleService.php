@@ -206,6 +206,7 @@ use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Module\NewZealandPrimeMinisters;
 use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\NotesTabModule;
 use Fisharebest\Webtrees\Module\OccupationReportModule;
@@ -482,6 +483,7 @@ class ModuleService
         'missing_facts_report'    => MissingFactsReportModule::class,
         'notes'                   => NotesTabModule::class,
         'note_list'               => NoteListModule::class,
+        'nz-leaders'              => NewZealandPrimeMinisters::class,
         'occupation_report'       => OccupationReportModule::class,
         'openrouteservice'        => OpenRouteServiceAutocomplete::class,
         'openstreetmap'           => OpenStreetMap::class,
