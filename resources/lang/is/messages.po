@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2024-09-05 17:14+0000\n"
+"PO-Revision-Date: 2024-09-14 15:30+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -1961,7 +1961,7 @@ msgstr ""
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:101
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Tímaglasagraf yfir forfeður og afkomendur einstaklings."
+msgstr "Stundaglasagraf yfir forfeður og afkomendur einstaklings."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
@@ -1970,7 +1970,7 @@ msgstr "Einstaklingur getur átt fleiri en eina foreldra.  Til dæmis, fæðing 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:64
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur persónu."
+msgstr "Gagnvirkt tré, sem sýnir alla forfeður og afkomendur einstaklings."
 
 #: resources/views/errors/database-error.phtml:12
 #: resources/views/setup/step-6-failed.phtml:12
@@ -5331,7 +5331,7 @@ msgstr "Áhugi afkomenda"
 
 #: resources/xml/reports/descendancy_report.xml:42
 msgid "Descendants of "
-msgstr "Afkomendur af "
+msgstr "Afkomendur "
 
 #. I18N: %s is an individual’s name
 #: app/Module/DescendancyChartModule.php:154
@@ -7417,7 +7417,7 @@ msgstr "Hann var fæddur"
 
 #: resources/xml/reports/ahnentafel_report.xml:338
 msgid "He was buried"
-msgstr "Hann var grafinn"
+msgstr "Hann var jarðsettur"
 
 #: resources/xml/reports/ahnentafel_report.xml:167
 msgid "He was christened"
@@ -13105,7 +13105,7 @@ msgstr "Hún var fædd"
 
 #: resources/xml/reports/ahnentafel_report.xml:339
 msgid "She was buried"
-msgstr "Hún var grafin"
+msgstr "Hún var jarðsett"
 
 #: resources/xml/reports/ahnentafel_report.xml:168
 msgid "She was christened"
