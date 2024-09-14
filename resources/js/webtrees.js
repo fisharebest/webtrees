@@ -863,13 +863,13 @@
     webtrees.httpPost(form.action, new FormData(form))
       .then(response => response.json())
       .then(json => {
-        if (select) {
+        if (select && json.value !== '') {
           // This modal was activated by the "create new" button in a select edit control.
           webtrees.resetTomSelect(select.tomselect, json.value, json.text);
 
           bootstrap.Modal.getInstance(modal).hide();
         } else {
-          // Show the success message in the existing modal.
+          // Show the success/fail message in the existing modal.
           modal_content.innerHTML = json.html;
         }
       })

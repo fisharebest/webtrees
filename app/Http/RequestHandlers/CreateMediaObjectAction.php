@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
@@ -30,6 +31,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function response;
+use function view;
 
 /**
  * Process a form to create a new media object.
@@ -70,7 +72,17 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $title       = Registry::elementFactory()->make('OBJE:FILE:TITL')->canonical($title);
         $restriction = Registry::elementFactory()->make('OBJE:RESN')->canonical($restriction);
 
-        $file = $this->media_file_service->uploadFile($request);
+        try {
+            $file = $this->media_file_service->uploadFile($request);
+        } catch (FileUploadException $exception) {
+            return response([
+                'value' => '',
+                'text'  => '',
+                'html'  => view('components/alert-danger', [
+                    'alert' => $exception->getMessage(),
+                ]),
+            ]);
+        }
 
         if ($file === '') {
             return response(['error_message' => I18N::translate('There was an error uploading your file.')], StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
