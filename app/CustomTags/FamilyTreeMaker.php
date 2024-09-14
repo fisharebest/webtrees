@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\CustomTagInterface;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\NamePersonal;
+use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -135,6 +136,7 @@ class FamilyTreeMaker implements CustomTagInterface
             'INDI:_MILTID'                => new CustomElement('Military ID number'),
             'INDI:_MISN'                  => new CustomElement('Mission'),
             'INDI:_NAMS'                  => new CustomElement(I18N::translate('Namesake')),
+            'INDI:_PHOTO'                 => new XrefMedia(I18N::translate('Photo')),
             'INDI:_UNKN'                  => new CustomElement(I18N::translate('Unknown')), // Special individual ID code for later file comparisons
         ];
     }
