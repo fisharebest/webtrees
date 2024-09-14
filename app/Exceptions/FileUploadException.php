@@ -91,14 +91,11 @@ class FileUploadException extends RuntimeException
                 break;
         }
 
-        $filename = $uploaded_file->getClientFilename() ?? '????????.???';
+        $filename = $uploaded_file->getClientFilename() ?? '';
 
-        $message =
-            I18N::translate('There was an error uploading your file.') .
-            '<br>' .
-            I18N::translate('%1$s: %2$s', I18N::translate('Filename'), e($filename)) .
-            '<br>' .
-            $message;
+        if ($filename !== '') {
+            $message = I18N::translate('%1$s: %2$s', e($filename), $message);
+        }
 
         parent::__construct($message);
     }
