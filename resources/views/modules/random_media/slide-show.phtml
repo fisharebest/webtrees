@@ -61,16 +61,17 @@ use Illuminate\Support\Collection;
 
     <ul class="fa-ul wt-slide-show-links">
         <?php foreach ($linked_individuals as $individual) : ?>
-            <li>
+            <li class="wt-slide-show-link">
                 <span class="fa-li" title="<?= I18N::translate('Individual') ?>"><?= view('icons/individual') ?></span>
-                <a href="<?= e($individual->url()) ?>" class="wt-slide-show-link">
+                <a href="<?= e($individual->url()) ?>">
                     <?= $individual->fullName() ?>
+                    <span class="wt-slide-show-link-lifespan"><?= $individual->lifespan() ?></span>
                 </a>
             </li>
         <?php endforeach ?>
 
         <?php foreach ($linked_families as $family) : ?>
-            <li>
+            <li class="wt-slide-show-link">
                 <span class="fa-li" title="<?= I18N::translate('Family') ?>"><?= view('icons/family') ?></span>
                 <a href="<?= e($family->url()) ?>" class="wt-slide-show-link">
                     <?= $family->fullName() ?>
@@ -79,7 +80,7 @@ use Illuminate\Support\Collection;
         <?php endforeach ?>
 
         <?php foreach ($linked_sources as $source) : ?>
-            <li>
+            <li class="wt-slide-show-link">
                 <span class="fa-li" title="<?= I18N::translate('Source') ?>"><?= view('icons/source') ?></span>
                 <a href="<?= e($source->url()) ?>" class="wt-slide-show-link">
                     <?= $source->fullName() ?>
