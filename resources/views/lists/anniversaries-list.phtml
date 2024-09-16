@@ -49,7 +49,9 @@ use Illuminate\Support\Collection;
         <?php endif ?>
         <div class="indent">
             <?= $fact->label() . ' — ' . $fact->date()->display($record->tree(), null, true) ?>
-            (<?= Registry::timestampFactory()->now()->subtractYears($fact->anniv)->diffForHumans() ?>)
+            <?php if (PHP_INT_SIZE >= 8 || $fact->anniv <= 100) : ?>
+                (<?= Registry::timestampFactory()->now()->subtractYears($fact->anniv)->diffForHumans() ?>)
+            <?php endif ?>
             <?php if ($fact->place()->gedcomName() !== '') : ?>
                 — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">
                     <?= $fact->place()->shortName() ?>
