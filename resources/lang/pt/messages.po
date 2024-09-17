@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-09-14 15:30+0000\n"
+"PO-Revision-Date: 2024-09-18 14:45+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -449,7 +449,7 @@ msgstr "%s, os seus antepassados e suas famílias"
 #: app/Module/ClippingsCartModule.php:540
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr "%s, seus pais e irmãos"
+msgstr "%s, os seus pais e irmãos"
 
 #: app/Module/ClippingsCartModule.php:541
 #, php-format
@@ -469,7 +469,7 @@ msgstr "%s, os seus antepassados e suas famílias"
 #: app/Module/ClippingsCartModule.php:549
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr "%s, seus pais e irmãos"
+msgstr "%s, os seus pais e irmãos"
 
 #: app/Module/ClippingsCartModule.php:550
 #, php-format
@@ -12011,7 +12011,7 @@ msgstr "Alterações Recentes"
 
 #: resources/views/calendar-page.phtml:130
 msgid "Recent years (&lt; 100 yrs)"
-msgstr "Eventos Recentes (< 100 anos)"
+msgstr "Eventos recentes (&lt; 100 anos)"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:168
@@ -12162,13 +12162,13 @@ msgstr "Relação: %s"
 #: resources/views/lists/individuals-table.phtml:215
 #: resources/views/modules/relationships-chart/config.phtml:35
 msgid "Relationships"
-msgstr "Relacionamentos"
+msgstr "Relações"
 
 #. I18N: %s are individual’s names
 #: app/Module/RelationshipsChartModule.php:258
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "Relacionamentos entre %1$s e %2$s"
+msgstr "Relações entre %1$s e %2$s"
 
 #: app/CustomTags/GedcomL.php:253 app/CustomTags/GedcomL.php:269
 #: app/Gedcom.php:430 app/Gedcom.php:562 app/Gedcom.php:730
@@ -13305,7 +13305,7 @@ msgstr ""
 
 #: resources/views/lists/individuals-table.phtml:124
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Exibir indivíduos que faleceram há mais que 100 anos."
+msgstr "Exibir indivíduos que faleceram há mais de 100 anos."
 
 #: resources/views/lists/individuals-table.phtml:129
 msgid "Show individuals who died within the last 100 years."
@@ -13395,7 +13395,7 @@ msgstr "Exibir hierarquia de locais"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:142
 msgid "Show private relationships"
-msgstr "Exibir relacionamentos privados"
+msgstr "Exibir relações privadas"
 
 #: resources/views/modules/todo/config.phtml:23
 msgid "Show research tasks that are assigned to other users"
