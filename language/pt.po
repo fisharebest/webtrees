@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-14 15:30+0000\n"
+"PO-Revision-Date: 2024-09-18 14:45+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -515,7 +515,7 @@ msgstr "%s, os seus antepassados e suas famílias"
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr "%s, seus pais e irmãos"
+msgstr "%s, os seus pais e irmãos"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:200
@@ -539,7 +539,7 @@ msgstr "%s, os seus antepassados e suas famílias"
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr "%s, seus pais e irmãos"
+msgstr "%s, os seus pais e irmãos"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
@@ -11478,7 +11478,7 @@ msgstr "Alterações Recentes"
 
 #: calendar.php:234
 msgid "Recent years (&lt; 100 yrs)"
-msgstr "Eventos Recentes (< 100 anos)"
+msgstr "Eventos recentes (&lt; 100 anos)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:311
@@ -11614,13 +11614,13 @@ msgstr "Relação: %s"
 #: app/Module/RelationshipsChartModule.php:90
 #: app/Module/RelationshipsChartModule.php:179 relationship.php:59
 msgid "Relationships"
-msgstr "Relacionamentos"
+msgstr "Relações"
 
 #. I18N: %s are individual’s names
 #: relationship.php:54
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "Relacionamentos entre %1$s e %2$s"
+msgstr "Relações entre %1$s e %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
@@ -12714,7 +12714,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:224
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Exibir indivíduos que faleceram há mais que 100 anos."
+msgstr "Exibir indivíduos que faleceram há mais de 100 anos."
 
 #: app/Functions/FunctionsPrintLists.php:233
 msgid "Show individuals who died within the last 100 years."
@@ -12799,7 +12799,7 @@ msgstr "Exibir Hierarquia dos Locais"
 #. I18N: A configuration setting
 #: admin_trees_config.php:484
 msgid "Show private relationships"
-msgstr "Exibir relacionamentos privados"
+msgstr "Exibir relações privadas"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
