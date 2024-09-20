@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-14 15:30+0000\n"
+"PO-Revision-Date: 2024-09-22 03:11+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -936,7 +936,7 @@ msgstr "Skýrsla yfir einstaklingsupplýsingar."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Skýrsla með staðreyndum sem eru með stuðningi frá tiltekinni heimild."
+msgstr "Skýrsla um staðreyndir sem eru studdar af tiltekinni heimild."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -981,24 +981,25 @@ msgstr "Skýrsla yfir nýlegar og fyrirhugaðar breytingar."
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "Skýrsla yfir fjölskyldur sem eru náið tengdar einstaklingi."
+msgstr "Skýrsla um fjölskyldur sem eru náskyldar einstaklingi."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Skýrsla yfir einstaklinga sem eru tengdir náið einstaklingi."
+msgstr "Skýrsla um þá einstaklinga sem eru náskyldir einstaklingi."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr "Skýrsla yfir upplýsingar sem útvegaðar eru af uppruna."
+msgstr "Skýrsla um upplýsingarnar sem veittar voru af heimildarmanni."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Skýrsla yfir upplýsingar sem vantar fyrir einstakling og skyldmenni hans."
+msgstr ""
+"Skýrsla um þær upplýsingar sem vantar fyrir einstakling og aðstandendur hans."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
