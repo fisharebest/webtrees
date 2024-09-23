@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-22 03:11+0000\n"
+"PO-Revision-Date: 2024-09-24 07:05+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -9452,7 +9452,7 @@ msgstr "Coincidir com o texto exato, mesmo que ocorra no meio de uma palavra."
 
 #: app/Module/FixSearchAndReplace.php:100
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "Coincidir com o texto exato, exceto que ocorra no meio de uma palavra."
+msgstr "Coincidir com o texto exato, exceto se ocorrer no meio de uma palavra."
 
 #: app/Module/MatomoAnalyticsModule.php:44
 msgid "Matomo™ / Piwik™ analytics"
@@ -12693,6 +12693,8 @@ msgstr "Pesquisar e substituir"
 #: app/Module/FixSearchAndReplace.php:86
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Pesquisar e substituir texto, usando pesquisas simples ou deteção avançada "
+"de padrões."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:229
@@ -16328,7 +16330,9 @@ msgstr "Usar SMTP para enviar mensagens"
 
 #: app/Module/FixSearchAndReplace.php:101
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Use «?» para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
+msgstr ""
+"Use \"?\" para coincidir um único caracter, use \"*\" para coincidir com "
+"zero ou mais caracteres."
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
