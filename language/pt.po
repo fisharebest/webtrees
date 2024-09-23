@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-22 03:11+0000\n"
+"PO-Revision-Date: 2024-09-24 07:05+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -8995,7 +8995,7 @@ msgstr "Coincidir com o texto exato, mesmo que ocorra no meio de uma palavra."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:140
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "Coincidir com o texto exato, exceto que ocorra no meio de uma palavra."
+msgstr "Coincidir com o texto exato, exceto se ocorrer no meio de uma palavra."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6826
@@ -12087,6 +12087,8 @@ msgstr "Pesquisar e substituir"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Pesquisar e substituir texto, usando pesquisas simples ou deteção avançada "
+"de padrões."
 
 #: includes/session.php:491
 msgid "Search engine"
@@ -15605,7 +15607,9 @@ msgstr "Usar SMTP para enviar mensagens"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Use «?» para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
+msgstr ""
+"Use \"?\" para coincidir um único caracter, use \"*\" para coincidir com "
+"zero ou mais caracteres."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:341 login.php:455
