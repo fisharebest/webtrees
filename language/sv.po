@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-08-27 08:14+0000\n"
+"PO-Revision-Date: 2024-09-25 12:11+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -14508,7 +14508,10 @@ msgstr "Detta alternativ kommer att göra det enklare för användare att ladda 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Detta val kommer att behålla familjelänkar i privata poster. Detta innebär att du kommer att se tomma \"privat\" rutor på antavlan och på andra diagram för privatpersoner."
+msgstr ""
+"Detta val kommer att behålla familjelänkar i privata poster. Detta innebär "
+"att du kommer att se tomma ”privat” rutor på antavlan och på andra diagram "
+"för privata personer."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
@@ -15360,7 +15363,9 @@ msgstr "Använd SMTP för sända meddelanden"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Använd &laquo;?&raquo; för att matcha ett tecken, använd &laquo;*&raquo; för att matcha noll eller flera tecken."
+msgstr ""
+"Använd ”?” för att matcha ett tecken, använd ”*” för att matcha noll eller "
+"fler tecken."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:341 login.php:455
