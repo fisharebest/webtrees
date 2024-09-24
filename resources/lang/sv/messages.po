@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-08-27 08:14+0000\n"
+"PO-Revision-Date: 2024-09-25 12:11+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -655,7 +655,12 @@ msgstr "<standardtema>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr "<p>Meddelande: Genom att fylla i och skicka det här formuläret godkänner du:</p><ul><li>att skydda integritetet för levande personer som anges på vår webbplats;</li><li>och i textrutan nedan, att förklara till vem du är släkt, eller att ge oss information om någon som bör listas på vår webbplats.</li></ul>\""
+msgstr ""
+"<p>Meddelande: Genom att fylla i och skicka det här formuläret godkänner "
+"du:</p><ul><li>att skydda integritetet för levande personer som anges på vår "
+"webbplats;</li><li>och i textrutan nedan, att förklara till vem du är släkt, "
+"eller att ge oss information om någon som bör listas på vår "
+"webbplats.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -7769,7 +7774,9 @@ msgstr "Historiska händelser detta år…"
 #. I18N: "thumbs" is fixed text. Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "I webtrees version 1 kan du lägga till egna miniatyrbilder till medieobjekt genom att skapa filer i \"thumbs\" mapparna."
+msgstr ""
+"I webtrees version 1 kan du lägga till egna miniatyrbilder till medieobjekt "
+"genom att skapa filer i ”thumbs”-mapparna."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -11227,7 +11234,9 @@ msgstr "Ortnamn kan ändras över tid. I släktforskning är det vanligt att anv
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Ortnamn ska anges som en kommaseparerad lista, som börjar med den minsta orten och slutar med landet. Till exempel \"Kungsholmen, Stockholm, Sverige\"."
+msgstr ""
+"Ortnamn ska anges som en kommaseparerad lista, som börjar med den minsta "
+"orten och slutar med landet. Till exempel ”Kungsholmen, Stockholm, Sverige”."
 
 #: app/Gedcom.php:588
 msgid "Place of LDS baptism"
@@ -14843,7 +14852,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:39
 msgid "These cookies are “essential”, and do not require consent."
-msgstr "Dessa kakor är \"väsentliga\" och kräver inte samtycke."
+msgstr "Dessa kakor är ”väsentliga” och kräver inte samtycke."
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
@@ -15136,7 +15145,10 @@ msgstr "Detta alternativ kommer att göra det enklare för användare att ladda 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Detta val kommer att behålla familjelänkar i privata poster. Detta innebär att du kommer att se tomma \"privat\" rutor på antavlan och på andra diagram för privatpersoner."
+msgstr ""
+"Detta val kommer att behålla familjelänkar i privata poster. Detta innebär "
+"att du kommer att se tomma ”privat” rutor på antavlan och på andra diagram "
+"för privata personer."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
@@ -15198,7 +15210,9 @@ msgstr "Detta arkiv existerar inte eller så saknar du rättigheter att se det."
 
 #: resources/views/modules/privacy-policy/page.phtml:28
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr "Denna forskning är ett \"legitimt intresse\" enligt artikel 6(f) i EU:s allmänna dataskyddsförordningar."
+msgstr ""
+"Denna forskning är ett ”legitimt intresse” enligt artikel 6(f) i EU:s "
+"allmänna dataskyddsförordningar (GDPR)."
 
 #: resources/views/admin/users-edit.phtml:263
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -16029,7 +16043,9 @@ msgstr "Använd SMTP för sända meddelanden"
 
 #: app/Module/FixSearchAndReplace.php:101
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Använd \"?\" för att matcha ett tecken, använd \"*\" för att matcha noll eller fler tecken."
+msgstr ""
+"Använd ”?” för att matcha ett tecken, använd ”*” för att matcha noll eller "
+"fler tecken."
 
 #: app/Module/ModuleMapGeoLocationTrait.php:56
 msgid "Use an external service to find locations."
@@ -16089,7 +16105,7 @@ msgstr "Använd siluettbilder"
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr "Använd \"redigera\"-menyn för att klistra in detta i en annan post."
+msgstr "Använd ”redigera”-menyn för att klistra in detta i en annan post."
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16606,7 +16622,9 @@ msgstr "Du kan nedladda en kopia av GEDCOM-specifikationen från %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:66
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr "Du kan välja bort spårning genom att ställa in rubriken \"Spåra inte\" i dina webbläsarinställningar."
+msgstr ""
+"Du kan välja bort spårning genom att ställa in rubriken ”Spåra inte” i dina "
+"webbläsarinställningar."
 
 #: resources/views/admin/trees-renumber.phtml:28
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -20967,12 +20985,12 @@ msgstr "Åland"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr "\"%1$s\" ska vara \"%2$s\"."
+msgstr "”%1$s” ska vara ”%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php:69
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr "\"%s\" har kopierats till urklippskorgen."
+msgstr "”%s” har kopierats till urklippskorgen."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:63
@@ -20984,7 +21002,10 @@ msgstr "”%s” har tagits bort."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "“Markerad bild” (_PRIM) taggar används av vissa släktforskningsprogram för att indikera den föredragna bilden för en person. Ett alternativ är att ordna om bilderna så att den föredragna listas först."
+msgstr ""
+"”Markerad bild” (_PRIM) taggar används av vissa släktforskningsprogram för "
+"att indikera den föredragna bilden för en person. Ett alternativ är att "
+"ordna om bilderna så att den föredragna listas först."
 
 #: app/Individual.php:481 app/Individual.php:485 app/Note.php:100
 #: app/Report/ReportParserGenerate.php:986
