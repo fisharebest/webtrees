@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-09-22 03:11+0000\n"
+"PO-Revision-Date: 2024-09-25 12:11+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -11899,7 +11899,7 @@ msgstr "Færslu auðkennsinúmer"
 
 #: app/Gedcom.php:737 app/Gedcom.php:872
 msgid "Record file number"
-msgstr "Færslu skráarnúmer"
+msgstr "Skrá skráarnúmer"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:62
 #: resources/views/modules/statistics-chart/other-records.phtml:10
