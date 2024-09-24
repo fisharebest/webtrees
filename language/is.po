@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-22 03:11+0000\n"
+"PO-Revision-Date: 2024-09-25 12:11+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -11533,7 +11533,7 @@ msgstr "Færslu auðkennsinúmer"
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
 msgid "Record file number"
-msgstr "Færslu skráarnúmer"
+msgstr "Skrá skráarnúmer"
 
 #: search.php:83 statistics.php:350
 msgid "Records"
