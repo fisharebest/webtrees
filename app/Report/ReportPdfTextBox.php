@@ -40,7 +40,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
      *
      * @return void
      */
-    public function render($renderer): void
+    public function render($renderer,bool $headerorfoot=false): void //sfqas
     {
         $newelements      = [];
         $lastelement      = '';
@@ -224,11 +224,13 @@ class ReportPdfTextBox extends ReportBaseTextbox
         }
         // Add a new page if needed
         if ($this->pagecheck) {
-            // Reset last cell height or Header/Footer will inherit it, in case of pagebreak
-            $renderer->lastCellHeight = 0;
-            if ($renderer->checkPageBreakPDF($cH)) {
-                $cY = $renderer->tcpdf->GetY();
+            if ($renderer->tcpdf->checkPageBreak($cH,null,false) and !$headerorfoot){
+				// Reset last cell height or Header/Footer will inherit it, in case of pagebreak
+				$renderer->lastCellHeight = 0;
+				if ($renderer->checkPageBreakPDF($cH)) {
+					$cY = $renderer->tcpdf->GetY();
             }
+			}
         }
 
         // Setup the border and background color
