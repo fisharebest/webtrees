@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-09-24 07:05+0000\n"
+"PO-Revision-Date: 2024-09-26 22:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -6752,7 +6752,7 @@ msgstr ""
 #: resources/views/help/date.phtml:110 resources/views/help/date.phtml:148
 #: resources/views/report-setup-page.phtml:53
 msgid "Format"
-msgstr "Formatar"
+msgstr "Formato"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:584
