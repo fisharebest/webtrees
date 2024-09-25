@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-09-24 07:05+0000\n"
+"PO-Revision-Date: 2024-09-26 22:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -6565,7 +6565,7 @@ msgstr ""
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
 #: help_text.php:166
 msgid "Format"
-msgstr "Formatar"
+msgstr "Formato"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1557
