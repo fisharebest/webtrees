@@ -1,6 +1,15 @@
 includes:
-	- phpstan-baseline.neon
+    - phpstan-baseline.neon
 
 parameters:
-    ignoreErrors:
-        - '#^Access to an undefined property object::\$[A-Za-z0-9_]+\.$#'
+    fileExtensions:
+        - php
+        - phtml
+
+    level: max
+
+    paths:
+        - index.php
+        - app
+        - resources/views
+        - tests

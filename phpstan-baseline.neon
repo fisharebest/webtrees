@@ -61,6 +61,16 @@ parameters:
 			path: app/Fact.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_gedcom\\.$#"
+			count: 1
+			path: app/Factories/FamilyFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_id\\.$#"
+			count: 1
+			path: app/Factories/FamilyFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 1
 			path: app/Factories/FamilyFactory.php
@@ -96,6 +106,16 @@ parameters:
 			path: app/Factories/FilesystemFactory.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/GedcomRecordFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/GedcomRecordFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
@@ -119,6 +139,16 @@ parameters:
 			message: "#^Parameter \\#4 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:newGedcomRecord\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/HeaderFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/HeaderFactory.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Header but returns Fisharebest\\\\Webtrees\\\\Header\\|null\\.$#"
@@ -151,6 +181,16 @@ parameters:
 			path: app/Factories/IdFactory.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$i_gedcom\\.$#"
+			count: 1
+			path: app/Factories/IndividualFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$i_id\\.$#"
+			count: 1
+			path: app/Factories/IndividualFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Individual but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
@@ -174,6 +214,16 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/LocationFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/LocationFactory.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Location but returns Fisharebest\\\\Webtrees\\\\Location\\|null\\.$#"
@@ -201,6 +251,16 @@ parameters:
 			path: app/Factories/LocationFactory.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#"
+			count: 1
+			path: app/Factories/MediaFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_id\\.$#"
+			count: 1
+			path: app/Factories/MediaFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Media but returns Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
 			count: 1
 			path: app/Factories/MediaFactory.php
@@ -224,6 +284,16 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/MediaFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/NoteFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/NoteFactory.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Note but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
@@ -251,6 +321,16 @@ parameters:
 			path: app/Factories/NoteFactory.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/RepositoryFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/RepositoryFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/RepositoryFactory.php
@@ -269,6 +349,16 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/RepositoryFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/SharedNoteFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/SharedNoteFactory.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\SharedNote but returns Fisharebest\\\\Webtrees\\\\SharedNote\\|null\\.$#"
@@ -301,6 +391,16 @@ parameters:
 			path: app/Factories/SlugFactory.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$s_gedcom\\.$#"
+			count: 1
+			path: app/Factories/SourceFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$s_id\\.$#"
+			count: 1
+			path: app/Factories/SourceFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Source but returns Fisharebest\\\\Webtrees\\\\Source\\|null\\.$#"
 			count: 1
 			path: app/Factories/SourceFactory.php
@@ -326,6 +426,16 @@ parameters:
 			path: app/Factories/SourceFactory.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/SubmissionFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/SubmissionFactory.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Submission but returns Fisharebest\\\\Webtrees\\\\Submission\\|null\\.$#"
 			count: 1
 			path: app/Factories/SubmissionFactory.php
@@ -349,6 +459,16 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmissionFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/SubmissionFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/SubmitterFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/SubmitterFactory.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Submitter but returns Fisharebest\\\\Webtrees\\\\Submitter\\|null\\.$#"
@@ -586,6 +706,16 @@ parameters:
 			path: app/Http/RequestHandlers/CalendarEvents.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/CheckTree.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$type\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/CheckTree.php
+
+		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CheckTree.php
@@ -599,6 +729,26 @@ parameters:
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 8
 			path: app/Http/RequestHandlers/ControlPanel.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/DataFixData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 3
+			path: app/Http/RequestHandlers/DataFixData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/DataFixUpdateAll.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
@@ -676,6 +826,31 @@ parameters:
 			path: app/Http/RequestHandlers/FaviconIco.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$i_gedcom\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$i_id\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_file\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_id\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
 			message: "#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/FixLevel0MediaData.php
@@ -704,6 +879,16 @@ parameters:
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/FixLevel0MediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$chunk_data\\.$#"
+			count: 6
+			path: app/Http/RequestHandlers/GedcomLoad.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_chunk_id\\.$#"
+			count: 3
+			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
@@ -769,6 +954,31 @@ parameters:
 			message: "#^Cannot access offset 2 on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportThumbnailsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_file\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_id\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$media_folder\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$multimedia_file_refn\\.$#"
+			count: 6
+			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
 			message: "#^Cannot access offset '0' on array\\{0\\: int\\<0, max\\>, 1\\: int\\<0, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
@@ -951,9 +1161,84 @@ parameters:
 			path: app/Http/RequestHandlers/PendingChangesAcceptChange.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$change_id\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$change_time\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$old_gedcom\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$status\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/PendingChangesLogData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$change_time\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$old_gedcom\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$status\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
 
 		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
@@ -1106,9 +1391,74 @@ parameters:
 			path: app/Http/RequestHandlers/SetupWizard.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$ip_address\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$log_id\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$log_message\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$log_time\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$log_type\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SiteLogsData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$ip_address\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$log_message\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$log_time\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$log_type\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsDownload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/SiteLogsDownload.php
 
 		-
 			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
@@ -1156,6 +1506,31 @@ parameters:
 			path: app/Http/RequestHandlers/TreePreferencesAction.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$label\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tag_label\\.$#"
+			count: 4
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tag_type\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
 			message: "#^Cannot access property \\$l_from on mixed\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/UnconnectedPage.php
@@ -1169,6 +1544,51 @@ parameters:
 			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(array\\<Fisharebest\\\\Webtrees\\\\Individual\\>\\|Illuminate\\\\Support\\\\Collection, array\\<Fisharebest\\\\Webtrees\\\\Individual\\>\\|Illuminate\\\\Support\\\\Collection\\)\\: int, Closure\\(Illuminate\\\\Support\\\\Collection, Illuminate\\\\Support\\\\Collection\\)\\: int\\<\\-1, 1\\> given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/UnconnectedPage.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$active_at\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$email\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$language\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$real_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$registered_at\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_id\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$verified\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/UserListData.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$verified_by_admin\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/UserListData.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
@@ -1251,6 +1671,21 @@ parameters:
 			path: app/Media.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$n_surn\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$n_surname\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 1
+			path: app/Module/AbstractIndividualListModule.php
+
+		-
 			message: "#^Cannot access property \\$count on mixed\\.$#"
 			count: 1
 			path: app/Module/AbstractIndividualListModule.php
@@ -1279,6 +1714,16 @@ parameters:
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:whereIn\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Module/AbstractIndividualListModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$interface\\.$#"
+			count: 1
+			path: app/Module/AbstractModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$module_name\\.$#"
+			count: 1
+			path: app/Module/AbstractModule.php
 
 		-
 			message: "#^Cannot access property \\$access_level on mixed\\.$#"
@@ -1366,6 +1811,36 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$note\\.$#"
+			count: 1
+			path: app/Module/FamilyTreeFavoritesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 2
+			path: app/Module/FamilyTreeFavoritesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: app/Module/FamilyTreeFavoritesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$body\\.$#"
+			count: 1
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$subject\\.$#"
+			count: 1
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$updated\\.$#"
+			count: 2
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
 			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
 			count: 7
 			path: app/Module/FamilyTreeStatisticsModule.php
@@ -1451,9 +1926,19 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixCemeteryTag.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
 			count: 1
 			path: app/Module/FixCemeteryTag.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixDuplicateLinks.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
@@ -1471,9 +1956,19 @@ parameters:
 			path: app/Module/FixDuplicateLinks.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixMissingDeaths.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
 			count: 1
 			path: app/Module/FixMissingDeaths.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
@@ -1491,9 +1986,19 @@ parameters:
 			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixNameTags.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameTags\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
 			count: 1
 			path: app/Module/FixNameTags.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixPlaceNames.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
@@ -1506,9 +2011,19 @@ parameters:
 			path: app/Module/FixPlaceNames.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixPrimaryTag.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
 			count: 1
 			path: app/Module/FixPrimaryTag.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixSearchAndReplace.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
@@ -1521,9 +2036,34 @@ parameters:
 			path: app/Module/FixSearchAndReplace.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: app/Module/FixWtObjeSortTag.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixWtObjeSortTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>\\.$#"
 			count: 1
 			path: app/Module/FixWtObjeSortTag.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$block_id\\.$#"
+			count: 4
+			path: app/Module/FrequentlyAskedQuestionsModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$block_order\\.$#"
+			count: 4
+			path: app/Module/FrequentlyAskedQuestionsModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_id\\.$#"
+			count: 2
+			path: app/Module/FrequentlyAskedQuestionsModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$languages\\.$#"
+			count: 2
+			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
@@ -1911,6 +2451,11 @@ parameters:
 			path: app/Module/LanguageYiddish.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$row\\.$#"
+			count: 1
+			path: app/Module/LifespansChartModule.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MapGeoLocationGeonames\\:\\:extractLocationsFromResponse\\(\\) should return array\\<string\\> but returns mixed\\.$#"
 			count: 1
 			path: app/Module/MapGeoLocationGeonames.php
@@ -1954,6 +2499,36 @@ parameters:
 			message: "#^Parameter \\#2 \\$size of function array_chunk expects int\\<1, max\\>, int given\\.$#"
 			count: 2
 			path: app/Module/PlaceHierarchyListModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$features\\.$#"
+			count: 1
+			path: app/Module/PlacesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$change_time\\.$#"
+			count: 1
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#"
+			count: 1
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 1
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_id\\.$#"
+			count: 1
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: app/Module/RecentChangesModule.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
@@ -2041,6 +2616,16 @@ parameters:
 			path: app/Module/SiteMapModule.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#"
+			count: 1
+			path: app/Module/SlideShowModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_id\\.$#"
+			count: 1
+			path: app/Module/SlideShowModule.php
+
+		-
 			message: "#^Cannot access property \\$m_gedcom on mixed\\.$#"
 			count: 1
 			path: app/Module/SlideShowModule.php
@@ -2099,6 +2684,31 @@ parameters:
 			message: "#^Cannot access property \\$total on mixed\\.$#"
 			count: 11
 			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$block_id\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$individual\\.$#"
+			count: 2
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$languages\\.$#"
+			count: 2
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$title\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
 
 		-
 			message: "#^Cannot access property \\$block_id on mixed\\.$#"
@@ -2181,6 +2791,41 @@ parameters:
 			path: app/Module/TopSurnamesModule.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$note\\.$#"
+			count: 1
+			path: app/Module/UserFavoritesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 2
+			path: app/Module/UserFavoritesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: app/Module/UserFavoritesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$body\\.$#"
+			count: 1
+			path: app/Module/UserJournalModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$subject\\.$#"
+			count: 1
+			path: app/Module/UserJournalModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$updated\\.$#"
+			count: 2
+			path: app/Module/UserJournalModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$created\\.$#"
+			count: 2
+			path: app/Module/UserMessagesModule.php
+
+		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
@@ -2221,6 +2866,16 @@ parameters:
 			path: app/Note.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$p_parent_id\\.$#"
+			count: 1
+			path: app/Place.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$p_place\\.$#"
+			count: 1
+			path: app/Place.php
+
+		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Place.php
@@ -2249,6 +2904,16 @@ parameters:
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Place.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$latitude\\.$#"
+			count: 1
+			path: app/PlaceLocation.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$longitude\\.$#"
+			count: 1
+			path: app/PlaceLocation.php
 
 		-
 			message: "#^Cannot access property \\$latitude on object\\|null\\.$#"
@@ -2337,6 +3002,21 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\:\\:\\$generation\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$new_gedcom\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$old_gedcom\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -2661,6 +3341,16 @@ parameters:
 			path: app/Schema/Migration42.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$max\\.$#"
+			count: 2
+			path: app/Schema/Migration44.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$min\\.$#"
+			count: 1
+			path: app/Schema/Migration44.php
+
+		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Schema/Migration44.php
@@ -2831,6 +3521,11 @@ parameters:
 			path: app/Services/GedcomImportService.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$module_name\\.$#"
+			count: 2
+			path: app/Services/HomePageService.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Services/HomePageService.php
@@ -2896,6 +3591,36 @@ parameters:
 			path: app/Services/IndividualFactsService.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$child_count\\.$#"
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$key\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$no_coord\\.$#"
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$p_id\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$parent_id\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$place\\.$#"
+			count: 4
+			path: app/Services/MapDataService.php
+
+		-
 			message: "#^Cannot access property \\$id on mixed\\.$#"
 			count: 2
 			path: app/Services/MapDataService.php
@@ -2939,6 +3664,36 @@ parameters:
 			message: "#^Parameter \\#1 \\$location of method League\\\\Flysystem\\\\FilesystemReader\\:\\:listContents\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Services/MediaFileService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$footer_order\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$menu_order\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$module_name\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$sidebar_order\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$status\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tab_order\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByName\\(\\) should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\|null but returns mixed\\.$#"
@@ -3046,6 +3801,31 @@ parameters:
 			path: app/Services/RelationshipService.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_file\\.$#"
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$i_file\\.$#"
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_file\\.$#"
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_file\\.$#"
+			count: 6
+			path: app/Services/SearchService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$s_file\\.$#"
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchFamilyNames\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Family\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, mixed\\>\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
@@ -3131,12 +3911,17 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, string\\|false given\\.$#"
+			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
 
 		-
-			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, mixed given\\.$#"
+			count: 1
+			path: app/Services/ServerCheckService.php
+
+		-
+			message: "#^Parameter \\#2 \\$str of function explode expects string, mixed given\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
 
@@ -3149,6 +3934,16 @@ parameters:
 			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
 			count: 1
 			path: app/Services/SiteLogsService.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: app/Services/TimeoutService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tree_name\\.$#"
+			count: 1
+			path: app/Services/TreeService.php
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|null given\\.$#"
@@ -3226,6 +4021,26 @@ parameters:
 			path: app/Services/UserService.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$ip_address\\.$#"
+			count: 1
+			path: app/SessionDatabaseHandler.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$session_data\\.$#"
+			count: 1
+			path: app/SessionDatabaseHandler.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$session_time\\.$#"
+			count: 1
+			path: app/SessionDatabaseHandler.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_id\\.$#"
+			count: 1
+			path: app/SessionDatabaseHandler.php
+
+		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Soundex.php
@@ -3246,9 +4061,54 @@ parameters:
 			path: app/Statistics.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartAge.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartAge.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$sex\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartAge.php
+
+		-
 			message: "#^Parameter \\#1 \\$century of method Fisharebest\\\\Webtrees\\\\Statistics\\\\Service\\\\CenturyService\\:\\:centuryName\\(\\) expects int, int\\|string given\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartAge.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartBirth.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartBirth.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartChildren.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartChildren.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartDeath.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartDeath.php
 
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
@@ -3256,9 +4116,84 @@ parameters:
 			path: app/Statistics/Google/ChartDistribution.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartDivorce.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartDivorce.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartFamilyLargest.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartFamilyLargest.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartMarriage.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartMarriage.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartMarriageAge.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartMarriageAge.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$sex\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartMarriageAge.php
+
+		-
 			message: "#^Parameter \\#1 \\$century of method Fisharebest\\\\Webtrees\\\\Statistics\\\\Service\\\\CenturyService\\:\\:centuryName\\(\\) expects int, int\\|string given\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
+			count: 1
+			path: app/Statistics/Google/ChartNoChildrenFamilies.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 2
+			path: app/Statistics/Google/ChartNoChildrenFamilies.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$fact\\.$#"
+			count: 1
+			path: app/Statistics/Repository/EventRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Statistics/Repository/EventRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Statistics/Repository/EventRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$year\\.$#"
+			count: 1
+			path: app/Statistics/Repository/EventRepository.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\EventRepository\\:\\:eventQuery\\(\\) should return object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\|null but returns mixed\\.$#"
@@ -3271,6 +4206,26 @@ parameters:
 			path: app/Statistics/Repository/EventRepository.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$fact\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyDatesRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyDatesRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$type\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyDatesRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$year\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyDatesRepository.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyDatesRepository\\:\\:eventQuery\\(\\) should return object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyDatesRepository.php
@@ -3279,6 +4234,31 @@ parameters:
 			message: "#^Property object\\{id\\: string, year\\: int, fact\\: string, type\\: string\\}\\:\\:\\$year is not writable\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyDatesRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
+			count: 3
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$ch1\\.$#"
+			count: 3
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$ch2\\.$#"
+			count: 3
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_numchil\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$family\\.$#"
+			count: 5
+			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
 			message: "#^Cannot access property \\$age on mixed\\.$#"
@@ -3366,9 +4346,19 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$change_time\\.$#"
+			count: 1
+			path: app/Statistics/Repository/GedcomRepository.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Statistics/Repository/HitCountRepository.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$days\\.$#"
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
 			message: "#^Cannot access property \\$days on mixed\\.$#"
@@ -3541,6 +4531,21 @@ parameters:
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$tree_id\\.$#"
+			count: 1
+			path: app/Tree.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tree_name\\.$#"
+			count: 1
+			path: app/Tree.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tree_title\\.$#"
+			count: 1
+			path: app/Tree.php
+
+		-
 			message: "#^Cannot access property \\$resn on mixed\\.$#"
 			count: 5
 			path: app/Tree.php
@@ -3561,6 +4566,26 @@ parameters:
 			path: app/Tree.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$email\\.$#"
+			count: 1
+			path: app/User.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$real_name\\.$#"
+			count: 1
+			path: app/User.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_id\\.$#"
+			count: 1
+			path: app/User.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 1
+			path: app/User.php
+
+		-
 			message: "#^Parameter \\#1 \\$url of function parse_url expects string, mixed given\\.$#"
 			count: 1
 			path: app/Validator.php
@@ -3569,3 +4594,1548 @@ parameters:
 			message: "#^Left side of && is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
+
+		-
+			message: "#^File ends with a trailing whitespace\\. This may cause problems when running the code in the web browser\\. Remove the closing \\?\\> mark or remove the whitespace\\.$#"
+			count: 1
+			path: resources/views/admin/components.phtml
+
+		-
+			message: "#^Parameter \\#2 \\$interface of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:accessLevel\\(\\) expects class\\-string\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>, string given\\.$#"
+			count: 1
+			path: resources/views/admin/components.phtml
+
+		-
+			message: "#^Left side of \\|\\| is always true\\.$#"
+			count: 1
+			path: resources/views/admin/control-panel.phtml
+
+		-
+			message: "#^Offset int does not exist on array\\<string, int\\>\\.$#"
+			count: 1
+			path: resources/views/admin/control-panel.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, mixed given\\.$#"
+			count: 21
+			path: resources/views/admin/control-panel.phtml
+
+		-
+			message: "#^Right side of \\|\\| is always true\\.$#"
+			count: 1
+			path: resources/views/admin/control-panel.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/admin/fix-level-0-media-action.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 2
+			path: resources/views/admin/import-complete.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/admin/import-fail.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/admin/import-progress.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$child_count\\.$#"
+			count: 2
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 3
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$key\\.$#"
+			count: 3
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$latitude\\.$#"
+			count: 1
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$longitude\\.$#"
+			count: 1
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$no_coord\\.$#"
+			count: 1
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$place\\.$#"
+			count: 1
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Argument of an invalid type object supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Cannot access offset 0 on object\\.$#"
+			count: 3
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Cannot access offset mixed on object\\.$#"
+			count: 1
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$tree of method Fisharebest\\\\Webtrees\\\\Module\\\\PlaceHierarchyListModule\\:\\:listUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
+			count: 2
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, object given\\.$#"
+			count: 3
+			path: resources/views/admin/locations.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int\\<1, max\\> given\\.$#"
+			count: 12
+			path: resources/views/admin/media-upload.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$message\\.$#"
+			count: 3
+			path: resources/views/admin/trees-check.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tag\\.$#"
+			count: 6
+			path: resources/views/admin/trees-check.phtml
+
+		-
+			message: "#^Cannot call method name\\(\\) on Fisharebest\\\\Webtrees\\\\Tree\\|null\\.$#"
+			count: 2
+			path: resources/views/admin/trees-merge.phtml
+
+		-
+			message: "#^Cannot call method title\\(\\) on Fisharebest\\\\Webtrees\\\\Tree\\|null\\.$#"
+			count: 2
+			path: resources/views/admin/trees-merge.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$default_resn_id\\.$#"
+			count: 3
+			path: resources/views/admin/trees-privacy.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 1
+			path: resources/views/admin/trees-privacy.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$resn\\.$#"
+			count: 1
+			path: resources/views/admin/trees-privacy.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tag_label\\.$#"
+			count: 1
+			path: resources/views/admin/trees-privacy.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: resources/views/admin/trees-privacy.phtml
+
+		-
+			message: "#^File ends with a trailing whitespace\\. This may cause problems when running the code in the web browser\\. Remove the closing \\?\\> mark or remove the whitespace\\.$#"
+			count: 1
+			path: resources/views/admin/users-edit.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_id\\.$#"
+			count: 5
+			path: resources/views/admin/users-table-options.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 1
+			path: resources/views/admin/users-table-options.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 5
+			path: resources/views/calendar-page.phtml
+
+		-
+			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: resources/views/chart-box.phtml
+
+		-
+			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/chart-box.phtml
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
+			count: 1
+			path: resources/views/chart-box.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, int\\|null given\\.$#"
+			count: 1
+			path: resources/views/components/badge.phtml
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: resources/views/components/select-number.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, string given\\.$#"
+			count: 1
+			path: resources/views/components/select-number.phtml
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 1
+			path: resources/views/components/select.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int\\|string given\\.$#"
+			count: 3
+			path: resources/views/edit-blocks-block.phtml
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: resources/views/edit/edit-gedcom-fields.phtml
+
+		-
+			message: "#^File ends with a trailing whitespace\\. This may cause problems when running the code in the web browser\\. Remove the closing \\?\\> mark or remove the whitespace\\.$#"
+			count: 1
+			path: resources/views/edit/raw-gedcom-fact.phtml
+
+		-
+			message: "#^Cannot call method formatFirstMajorFact\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 2
+			path: resources/views/edit/reorder-children.phtml
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 1
+			path: resources/views/edit/reorder-children.phtml
+
+		-
+			message: "#^Cannot call method getBirthDate\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 1
+			path: resources/views/edit/reorder-children.phtml
+
+		-
+			message: "#^Cannot call method formatFirstMajorFact\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 4
+			path: resources/views/edit/reorder-families.phtml
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 2
+			path: resources/views/edit/reorder-families.phtml
+
+		-
+			message: "#^Cannot call method getMarriageDate\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 2
+			path: resources/views/edit/reorder-families.phtml
+
+		-
+			message: "#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 1
+			path: resources/views/edit/reorder-media.phtml
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 1
+			path: resources/views/edit/reorder-media.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$array_arg of function uasort expects TArray of array\\<string, string\\>, array\\<string, string\\>\\|false given\\.$#"
+			count: 1
+			path: resources/views/fact-add-new.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$record of method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomEditService\\:\\:factsToAdd\\(\\) expects Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\GedcomRecord given\\.$#"
+			count: 1
+			path: resources/views/fact-add-new.phtml
+
+		-
+			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/fact-association-structure.phtml
+
+		-
+			message: "#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/fact-association-structure.phtml
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|null given\\.$#"
+			count: 1
+			path: resources/views/fact-gedcom-fields.phtml
+
+		-
+			message: "#^Cannot call method findByInterface\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/fact-place.phtml
+
+		-
+			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/fact.phtml
+
+		-
+			message: "#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/fact.phtml
+
+		-
+			message: "#^Argument of an invalid type string supplied for foreach, only iterables are supported\\.$#"
+			count: 3
+			path: resources/views/help/date.phtml
+
+		-
+			message: "#^Cannot call method displayImage\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/individual-page-images.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$status\\.$#"
+			count: 1
+			path: resources/views/layouts/administration.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$text\\.$#"
+			count: 1
+			path: resources/views/layouts/administration.phtml
+
+		-
+			message: "#^Cannot call method findByInterface\\(\\) on mixed\\.$#"
+			count: 2
+			path: resources/views/layouts/administration.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$status\\.$#"
+			count: 1
+			path: resources/views/layouts/default.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$text\\.$#"
+			count: 1
+			path: resources/views/layouts/default.phtml
+
+		-
+			message: "#^Cannot call method findByInterface\\(\\) on mixed\\.$#"
+			count: 3
+			path: resources/views/layouts/default.phtml
+
+		-
+			message: "#^Cannot call method genealogyMenu\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/layouts/default.phtml
+
+		-
+			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/layouts/default.phtml
+
+		-
+			message: "#^Cannot call method stylesheets\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/layouts/default.phtml
+
+		-
+			message: "#^Cannot call method userMenu\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/layouts/default.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/lists/anniversaries-list.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/lists/anniversaries-table.phtml
+
+		-
+			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/lists/individuals-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Module\\\\RelationshipsChartModule\\:\\:chartUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, mixed given\\.$#"
+			count: 1
+			path: resources/views/lists/individuals-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 2
+			path: resources/views/lists/locations-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 3
+			path: resources/views/lists/media-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 4
+			path: resources/views/lists/notes-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 1
+			path: resources/views/lists/repositories-table.phtml
+
+		-
+			message: "#^Cannot call method value\\(\\) on mixed\\.$#"
+			count: 3
+			path: resources/views/lists/sources-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 4
+			path: resources/views/lists/sources-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 2
+			path: resources/views/lists/submitters-table.phtml
+
+		-
+			message: "#^Anonymous function should return int but returns int\\|false\\.$#"
+			count: 2
+			path: resources/views/lists/surnames-tag-cloud.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/modules/ancestors-chart/page.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/block-template.phtml
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: resources/views/modules/census-assistant.phtml
+
+		-
+			message: "#^Cannot call method tree\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 3
+			path: resources/views/modules/census-assistant.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/charts/chart.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/modules/descendancy_chart/page.phtml
+
+		-
+			message: "#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#"
+			count: 6
+			path: resources/views/modules/family_nav/sidebar-family.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$block_id\\.$#"
+			count: 4
+			path: resources/views/modules/faq/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$block_order\\.$#"
+			count: 3
+			path: resources/views/modules/faq/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_id\\.$#"
+			count: 1
+			path: resources/views/modules/faq/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$header\\.$#"
+			count: 2
+			path: resources/views/modules/faq/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$faqbody\\.$#"
+			count: 3
+			path: resources/views/modules/faq/show.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$header\\.$#"
+			count: 2
+			path: resources/views/modules/faq/show.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/faq/show.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$favorite_id\\.$#"
+			count: 1
+			path: resources/views/modules/favorites/favorites.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$favorite_type\\.$#"
+			count: 1
+			path: resources/views/modules/favorites/favorites.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$note\\.$#"
+			count: 1
+			path: resources/views/modules/favorites/favorites.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 1
+			path: resources/views/modules/favorites/favorites.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$title\\.$#"
+			count: 1
+			path: resources/views/modules/favorites/favorites.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$url\\.$#"
+			count: 1
+			path: resources/views/modules/favorites/favorites.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 18
+			path: resources/views/modules/favorites/favorites.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$body\\.$#"
+			count: 1
+			path: resources/views/modules/gedcom_news/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$news_id\\.$#"
+			count: 2
+			path: resources/views/modules/gedcom_news/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$subject\\.$#"
+			count: 2
+			path: resources/views/modules/gedcom_news/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$updated\\.$#"
+			count: 1
+			path: resources/views/modules/gedcom_news/list.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/modules/gedcom_news/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$background\\.$#"
+			count: 1
+			path: resources/views/modules/lifespans-chart/chart.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$birth_year\\.$#"
+			count: 3
+			path: resources/views/modules/lifespans-chart/chart.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$death_year\\.$#"
+			count: 1
+			path: resources/views/modules/lifespans-chart/chart.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 3
+			path: resources/views/modules/lifespans-chart/chart.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$individual\\.$#"
+			count: 5
+			path: resources/views/modules/lifespans-chart/chart.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$row\\.$#"
+			count: 2
+			path: resources/views/modules/lifespans-chart/chart.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: resources/views/modules/notes/tab.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of method Fisharebest\\\\Webtrees\\\\Elements\\\\SubmitterText\\:\\:value\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: resources/views/modules/notes/tab.phtml
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#"
+			count: 1
+			path: resources/views/modules/notes/tab.phtml
+
+		-
+			message: "#^Parameter \\#1 \\(mixed\\) of echo cannot be converted to string\\.$#"
+			count: 2
+			path: resources/views/modules/pedigree-chart/chart-down.phtml
+
+		-
+			message: "#^Parameter \\#1 \\(mixed\\) of echo cannot be converted to string\\.$#"
+			count: 2
+			path: resources/views/modules/pedigree-chart/chart-left.phtml
+
+		-
+			message: "#^Parameter \\#1 \\(mixed\\) of echo cannot be converted to string\\.$#"
+			count: 2
+			path: resources/views/modules/pedigree-chart/chart-right.phtml
+
+		-
+			message: "#^Parameter \\#1 \\(mixed\\) of echo cannot be converted to string\\.$#"
+			count: 2
+			path: resources/views/modules/pedigree-chart/chart-up.phtml
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:displayImage\\(\\)\\.$#"
+			count: 1
+			path: resources/views/modules/pedigree-map/events.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, string given\\.$#"
+			count: 3
+			path: resources/views/modules/place-hierarchy/sidebar.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 3
+			path: resources/views/modules/recent_changes/changes-list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$time\\.$#"
+			count: 2
+			path: resources/views/modules/recent_changes/changes-list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user\\.$#"
+			count: 1
+			path: resources/views/modules/recent_changes/changes-list.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/modules/recent_changes/changes-list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 12
+			path: resources/views/modules/recent_changes/changes-table.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$time\\.$#"
+			count: 2
+			path: resources/views/modules/recent_changes/changes-table.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user\\.$#"
+			count: 1
+			path: resources/views/modules/recent_changes/changes-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/recent_changes/changes-table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/recent_changes/config.phtml
+
+		-
+			message: "#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#"
+			count: 3
+			path: resources/views/modules/relatives/family.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/share-anniversary/share.phtml
+
+		-
+			message: "#^Cannot call method date\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/modules/sitemap/sitemap-file-xml.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, float given\\.$#"
+			count: 1
+			path: resources/views/modules/sitemap/sitemap-file-xml.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$block_id\\.$#"
+			count: 2
+			path: resources/views/modules/stories/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$individual\\.$#"
+			count: 1
+			path: resources/views/modules/stories/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$title\\.$#"
+			count: 2
+			path: resources/views/modules/stories/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 1
+			path: resources/views/modules/stories/config.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$individual\\.$#"
+			count: 2
+			path: resources/views/modules/stories/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$title\\.$#"
+			count: 1
+			path: resources/views/modules/stories/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$block_id\\.$#"
+			count: 1
+			path: resources/views/modules/stories/tab.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$story_body\\.$#"
+			count: 1
+			path: resources/views/modules/stories/tab.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$title\\.$#"
+			count: 1
+			path: resources/views/modules/stories/tab.phtml
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:husband\\(\\)\\.$#"
+			count: 1
+			path: resources/views/modules/timeline-chart/chart.phtml
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:wife\\(\\)\\.$#"
+			count: 1
+			path: resources/views/modules/timeline-chart/chart.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/modules/timeline-chart/chart.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/todo/research-tasks.phtml
+
+		-
+			message: "#^Cannot access offset 'count' on mixed\\.$#"
+			count: 1
+			path: resources/views/modules/top10_pageviews/list.phtml
+
+		-
+			message: "#^Cannot access offset 'record' on mixed\\.$#"
+			count: 2
+			path: resources/views/modules/top10_pageviews/list.phtml
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/modules/top10_pageviews/list.phtml
+
+		-
+			message: "#^Cannot call method url\\(\\) on mixed\\.$#"
+			count: 1
+			path: resources/views/modules/top10_pageviews/list.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$n of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:number\\(\\) expects float, mixed given\\.$#"
+			count: 1
+			path: resources/views/modules/top10_pageviews/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$body\\.$#"
+			count: 1
+			path: resources/views/modules/user-messages/user-messages.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$created\\.$#"
+			count: 1
+			path: resources/views/modules/user-messages/user-messages.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$message_id\\.$#"
+			count: 6
+			path: resources/views/modules/user-messages/user-messages.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$sender\\.$#"
+			count: 3
+			path: resources/views/modules/user-messages/user-messages.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$subject\\.$#"
+			count: 5
+			path: resources/views/modules/user-messages/user-messages.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$body\\.$#"
+			count: 1
+			path: resources/views/modules/user_blog/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$news_id\\.$#"
+			count: 2
+			path: resources/views/modules/user_blog/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$subject\\.$#"
+			count: 2
+			path: resources/views/modules/user_blog/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$updated\\.$#"
+			count: 1
+			path: resources/views/modules/user_blog/list.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/modules/user_blog/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$fact\\.$#"
+			count: 2
+			path: resources/views/modules/yahrzeit/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$individual\\.$#"
+			count: 5
+			path: resources/views/modules/yahrzeit/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$yahrzeit_date\\.$#"
+			count: 1
+			path: resources/views/modules/yahrzeit/list.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 3
+			path: resources/views/modules/yahrzeit/list.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$fact\\.$#"
+			count: 2
+			path: resources/views/modules/yahrzeit/table.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$fact_date\\.$#"
+			count: 1
+			path: resources/views/modules/yahrzeit/table.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$individual\\.$#"
+			count: 7
+			path: resources/views/modules/yahrzeit/table.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$yahrzeit_date\\.$#"
+			count: 3
+			path: resources/views/modules/yahrzeit/table.phtml
+
+		-
+			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, int given\\.$#"
+			count: 1
+			path: resources/views/modules/yahrzeit/table.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$change_id\\.$#"
+			count: 2
+			path: resources/views/pending-changes-page.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$change_time\\.$#"
+			count: 1
+			path: resources/views/pending-changes-page.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$real_name\\.$#"
+			count: 1
+			path: resources/views/pending-changes-page.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 5
+			path: resources/views/pending-changes-page.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$user_name\\.$#"
+			count: 2
+			path: resources/views/pending-changes-page.phtml
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$xref\\.$#"
+			count: 2
+			path: resources/views/pending-changes-page.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$records has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/families/top10-list-age.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$records has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/families/top10-list-grand.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$records has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/families/top10-list-spouses.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$records has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/families/top10-list.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$records has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/families/top10-nolist-grand.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$records has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/families/top10-nolist-spouses.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$data has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/other/charts/column.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$data has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/other/charts/combo.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$data has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/other/charts/custom.phtml
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$data has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: resources/views/statistics/other/charts/pie.phtml
+
+		-
+			message: "#^Cannot call method createServerRequest\\(\\) on mixed\\.$#"
+			count: 1
+			path: tests/TestCase.php
+
+		-
+			message: "#^Cannot call method createStreamFromFile\\(\\) on mixed\\.$#"
+			count: 2
+			path: tests/TestCase.php
+
+		-
+			message: "#^Cannot call method createUploadedFile\\(\\) on mixed\\.$#"
+			count: 1
+			path: tests/TestCase.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\TestCase\\:\\:withConsecutive\\(\\) return type with generic class PHPUnit\\\\Framework\\\\Constraint\\\\Callback does not specify its types\\: CallbackInput$#"
+			count: 1
+			path: tests/TestCase.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strcspn expects string, string\\|false given\\.$#"
+			count: 1
+			path: tests/TestCase.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|false given\\.$#"
+			count: 1
+			path: tests/TestCase.php
+
+		-
+			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: tests/TestCase.php
+
+		-
+			message: "#^Cannot access offset 0 on array\\<int, string\\>\\|false\\.$#"
+			count: 1
+			path: tests/app/Encodings/AnselTest.php
+
+		-
+			message: "#^Cannot access offset 1 on array\\<int, string\\>\\|false\\.$#"
+			count: 1
+			path: tests/app/Encodings/AnselTest.php
+
+		-
+			message: "#^Cannot call method createUri\\(\\) on mixed\\.$#"
+			count: 1
+			path: tests/app/Http/Middleware/CheckCsrfTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$params of static method Fisharebest\\\\Webtrees\\\\TestCase\\:\\:createRequest\\(\\) expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/FixLevel0MediaActionTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$query of static method Fisharebest\\\\Webtrees\\\\TestCase\\:\\:createRequest\\(\\) expects array\\<string\\>, array\\<string, int\\> given\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/FixLevel0MediaDataTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$query of static method Fisharebest\\\\Webtrees\\\\TestCase\\:\\:createRequest\\(\\) expects array\\<string\\>, array\\<string, array\\<string, string\\>\\|string\\> given\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/ManageMediaDataTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\AncestorsChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\BranchesListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectBranchesPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectBranchesPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectBranchesPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectCalendarPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\CompactTreeChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\DescendancyChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyBookChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\FamilyFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFamilyPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectFamilyPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectGedRecordPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectGedRecordPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\HourglassChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectIndividualPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectIndividualPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\LifespansChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\MediaListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectMediaViewerPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectMediaViewerPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 5
+			path: tests/app/Http/RequestHandlers/RedirectModulePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\InteractiveTreeModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectModulePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeMapModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectModulePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 4
+			path: tests/app/Http/RequestHandlers/RedirectModulePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 6
+			path: tests/app/Http/RequestHandlers/RedirectModulePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\NoteListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\NoteFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectNotePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectNotePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\PlaceHierarchyListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\RelationshipsChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\RepositoryListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectReportEnginePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectRepositoryPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectRepositoryPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\SourceListModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\SourceFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectSourcePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectSourcePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\StatisticsChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\TimelineChartModule&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService&PHPUnit\\\\Framework\\\\MockObject\\\\Stub\\:\\:expects\\(\\)\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$query of static method Fisharebest\\\\Webtrees\\\\TestCase\\:\\:createRequest\\(\\) expects array\\<string\\>, array\\<string, array\\<int, string\\>\\|string\\> given\\.$#"
+			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$params of static method Fisharebest\\\\Webtrees\\\\TestCase\\:\\:createRequest\\(\\) expects array\\<string\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: tests/app/Http/RequestHandlers/UserEditActionTest.php
+
+		-
+			message: "#^Cannot call method tag\\(\\) on mixed\\.$#"
+			count: 2
+			path: tests/app/Services/GedcomEditServiceTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$interface of method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\) expects class\\-string\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\|Psr\\\\Http\\\\Server\\\\MiddlewareInterface\\>, string given\\.$#"
+			count: 1
+			path: tests/app/Services/ModuleServiceTest.php
+
+		-
+			message: "#^Unable to resolve the template type T in call to method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByInterface\\(\\)$#"
+			count: 1
+			path: tests/app/Services/ModuleServiceTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:iniGet\\(\\)\\.$#"
+			count: 1
+			path: tests/app/Services/TimeoutServiceTest.php
+
+		-
+			message: "#^Cannot call method method\\(\\) on object\\|null\\.$#"
+			count: 3
+			path: tests/app/Services/TimeoutServiceTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$varname of function ini_get expects string, mixed given\\.$#"
+			count: 1
+			path: tests/app/Services/TimeoutServiceTest.php
+
+		-
+			message: "#^Cannot call method id\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#"
+			count: 5
+			path: tests/app/Services/UserServiceTest.php
+
+		-
+			message: "#^Cannot call method id\\(\\) on mixed\\.$#"
+			count: 6
+			path: tests/app/Services/UserServiceTest.php
+
+		-
+			message: "#^Cannot call method userName\\(\\) on mixed\\.$#"
+			count: 4
+			path: tests/app/Services/UserServiceTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#"
+			count: 2
+			path: tests/app/TreeTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 4
+			path: tests/app/TreeTest.php
+
+		-
+			message: "#^Call to an undefined method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationStubber\\:\\:with\\(\\)\\.$#"
+			count: 3
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$values of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:isInArrayKeys\\(\\) expects array\\<string\\>, array\\<string, int\\> given\\.$#"
+			count: 2
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: "#^Cannot call method deleteRecord\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: tests/feature/IndividualListTest.php

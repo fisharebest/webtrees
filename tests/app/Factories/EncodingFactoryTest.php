@@ -143,8 +143,6 @@ class EncodingFactoryTest extends TestCase
         static::assertCount(13, $encodings);
 
         foreach ($encodings as $key => $value) {
-            static::assertIsString($key);
-            static::assertIsString($value);
             static::assertInstanceOf(EncodingInterface::class, $factory->make($key));
         }
     }
