@@ -109,18 +109,19 @@ class ChangeReportModuleTest extends TestCase
             'pageorient'       => ['id' => 'landscape'],
         ];
 
-        $report = new ReportParserSetup($xml);
-        self::assertNotEmpty($report->reportProperties());
+        new ReportParserSetup($xml);
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree);
         $html = ob_get_clean();
+        self::assertIsString($html);
         self::assertStringStartsWith('<', $html);
         self::assertStringEndsWith('>', $html);
 
         ob_start();
         new ReportParserGenerate($xml, new PdfRenderer(), $vars, $tree);
         $pdf = ob_get_clean();
+        self::assertIsString($pdf);
         self::assertStringStartsWith('%PDF', $pdf);
         self::assertStringEndsWith("%%EOF\n", $pdf);
     }

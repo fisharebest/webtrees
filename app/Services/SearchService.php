@@ -1236,7 +1236,7 @@ class SearchService
     /**
      * Convert a row from any tree in the other table into a note object.
      *
-     * @return Closure:Note
+     * @return Closure(object):Note
      */
     private function noteRowMapper(): Closure
     {
@@ -1250,7 +1250,7 @@ class SearchService
     /**
      * Convert a row from any tree in the other table into a repository object.
      *
-     * @return Closure:Repository
+     * @return Closure(object):Repository
      */
     private function repositoryRowMapper(): Closure
     {
@@ -1278,7 +1278,7 @@ class SearchService
     /**
      * Convert a row from any tree in the sources table into a source object.
      *
-     * @return Closure:Source
+     * @return Closure(object):Source
      */
     private function sourceRowMapper(): Closure
     {
