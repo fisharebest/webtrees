@@ -58,10 +58,16 @@ foreach ($keys as $key) {
         <?php $id = Registry::idFactory()->id() ?>
         <?php $expanded = $tree->getPreference('EXPAND_SOURCES') === '1' ?>
         <div>
-            <button type="button" class="btn btn-text p-0" href="#<?= e($id) ?>" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
-                <?= view('icons/expand') ?>
-                <?= view('icons/collapse') ?>
-             </button>
+            <?php if (isset($elements[1])) : ?>
+                <button type="button" class="btn btn-text p-0" href="#<?= e($id) ?>" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
+                        <?= view('icons/expand') ?>
+                        <?= view('icons/collapse') ?>
+                </button>
+            <?php else : ?>
+                <span class="btn btn-text p-0">
+                    <?= view('icons/spacer') ?>
+                </span>
+            <?php endif ?>
 
             <?php $label = '<span class="label">' . I18N::translate('Source') . '</span>' ?>
             <?php $value = '<span class="field" dir="auto"><a href="' . e($source->url()) . '">' . $source->fullName() . '</a></span>' ?>
