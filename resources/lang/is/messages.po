@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-25 12:11+0000\n"
+"PO-Revision-Date: 2024-10-01 16:12+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -13828,7 +13828,7 @@ msgstr "Statcounter™"
 #: app/Gedcom.php:409 app/Gedcom.php:522 app/Gedcom.php:542 app/Gedcom.php:813
 #: app/Gedcom.php:860
 msgid "State"
-msgstr "Landsvæði"
+msgstr "Landshluti"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
