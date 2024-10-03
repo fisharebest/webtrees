@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-09-05 17:14+0000\n"
+"PO-Revision-Date: 2024-10-04 16:11+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -14828,7 +14828,7 @@ msgstr "De gebruikersnaam vereist voor authenticatie bij de SMTP server."
 #: app/Http/RequestHandlers/SitePreferencesAction.php:63
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:51
 msgid "The website preferences have been updated."
-msgstr "De website voorkeuren zijn bijgewerkt."
+msgstr "De websitevoorkeuren zijn bijgewerkt."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: resources/views/admin/map-provider.phtml:51
@@ -16635,7 +16635,7 @@ msgstr "Website-logboekbestanden"
 #: app/Http/RequestHandlers/SitePreferencesPage.php:65
 #: resources/views/admin/control-panel.phtml:189
 msgid "Website preferences"
-msgstr "Website voorkeuren"
+msgstr "Websitevoorkeuren"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:289
