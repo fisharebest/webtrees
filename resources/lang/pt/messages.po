@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-26 16:29+0000\n"
+"PO-Revision-Date: 2024-10-03 01:21+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -5948,7 +5948,7 @@ msgstr ""
 #: app/Services/LeafletJsService.php:74
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Sair do ecrã completo"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5961,11 +5961,11 @@ msgstr "Exportar"
 
 #: app/Http/RequestHandlers/ExportGedcomPage.php:53
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Exportar um ficheiro GEDCOM"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:114
 msgid "Export all the family trees to GEDCOM files…"
-msgstr ""
+msgstr "Exportar todas as árvores de família para ficheiros GEDCOM…"
 
 #: resources/views/admin/trees-export.phtml:60
 #: resources/views/modules/clippings/download.phtml:23
@@ -6480,19 +6480,19 @@ msgstr "Mulheres"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Campo"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Nome do campo"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Valor do campo"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6524,12 +6524,12 @@ msgstr "Nome do ficheiro no servidor"
 #: app/Http/RequestHandlers/UploadMediaAction.php:102
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr ""
+msgstr "Os nomes dos ficheiros não podem conter o caracter \"%s\"."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:108
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr ""
+msgstr "Os nomes dos ficheiros não podem ter a extensão \"%s\"."
 
 #: resources/views/admin/control-panel.phtml:865
 msgid "Files have been found from a previous version of webtrees. Old files can sometimes be a security risk. You should delete them."
@@ -6892,7 +6892,7 @@ msgstr "Frimário"
 #: resources/views/message-page.phtml:29
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "De"
 
 #: resources/views/admin/changes-log.phtml:41
 #: resources/views/admin/site-logs.phtml:39
@@ -6935,11 +6935,11 @@ msgstr "Funeral"
 
 #: app/Gedcom.php:506 resources/views/admin/gedcom-export-options.phtml:32
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 #: resources/views/admin/tags.phtml:936
 msgid "GEDCOM 7"
-msgstr ""
+msgstr "GEDCOM 7"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:27
@@ -6958,7 +6958,7 @@ msgstr "Ficheiro GEDCOM"
 #: resources/views/admin/tags.phtml:790 resources/views/admin/tags.phtml:894
 #: resources/views/admin/tags.phtml:952
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "Etiqueta GEDCOM"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:83
 #: resources/views/admin/control-panel.phtml:284
@@ -6968,7 +6968,7 @@ msgstr "Etiquetas GEDCOM"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:57
@@ -7499,7 +7499,7 @@ msgstr "Heshvan"
 #: resources/views/admin/tags.phtml:737 resources/views/admin/tags.phtml:791
 #: resources/views/admin/tags.phtml:895 resources/views/admin/tags.phtml:953
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Esconder etiquetas GEDCOM"
 
 #: app/Auth.php:596 app/Auth.php:609
 #: app/Http/RequestHandlers/TreePreferencesPage.php:125
@@ -7681,6 +7681,8 @@ msgstr "Identificadores"
 #: resources/views/admin/fix-level-0-media.phtml:22
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
 msgstr ""
+"Se um objeto multimédia está ligado a um indivíduo quando deveria estar "
+"ligado a um facto ou evento, então pode movê-lo para o sítio correto."
 
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/site-preferences.phtml:90
@@ -7694,6 +7696,8 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:112
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr ""
+"Se um administrador criar uma conta de utilizador, o email de verificação "
+"não será enviado, pelo que o email terá de ser verificado manualmente."
 
 #: resources/views/help/name.phtml:24
 #, php-format
@@ -18204,7 +18208,7 @@ msgstr "esposa do neto"
 #: app/Services/RelationshipService.php:1511
 #, php-format
 msgid "great ×%s aunt"
-msgstr "%s° tia-avó"
+msgstr "%sª tia-avó"
 
 #: app/Services/RelationshipService.php:1444
 #: app/Services/RelationshipService.php:1463
@@ -18223,7 +18227,7 @@ msgstr "%sº tio(a)-avô(ó)"
 #: app/Services/RelationshipService.php:2098
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "%s° neto(a)"
+msgstr "%s° bisneto(a)"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2052
@@ -18232,7 +18236,7 @@ msgstr "%s° neto(a)"
 #: app/Services/RelationshipService.php:2094
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "%s° neta"
+msgstr "%sª bisneta"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1889
@@ -18243,7 +18247,7 @@ msgstr "%s° neta"
 #: app/Services/RelationshipService.php:1955
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "%s° avô"
+msgstr "%s° bisavô"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1893
@@ -18254,7 +18258,7 @@ msgstr "%s° avô"
 #: app/Services/RelationshipService.php:1960
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "%s° avó"
+msgstr "%sª bisavó"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1896
@@ -18265,7 +18269,7 @@ msgstr "%s° avó"
 #: app/Services/RelationshipService.php:1964
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "%s° avô(ó)"
+msgstr "%s° bisavô(ó)"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2048
@@ -18274,7 +18278,7 @@ msgstr "%s° avô(ó)"
 #: app/Services/RelationshipService.php:2089
 #, php-format
 msgid "great ×%s grandson"
-msgstr "%sº neto"
+msgstr "%sº bisneto"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1772
@@ -18400,11 +18404,11 @@ msgstr "%s° tio-avô"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt"
-msgstr "tia-pentavó"
+msgstr "tia-tetravó"
 
 #: app/Services/RelationshipService.php:1370
 msgid "great ×4 aunt/uncle"
-msgstr "tio(a)-pentavô(ó)"
+msgstr "tio(a)-tetravô(ó)"
 
 #: app/Services/RelationshipService.php:2003
 msgid "great ×4 grandchild"
@@ -18433,7 +18437,7 @@ msgstr "pentaneto"
 #: app/Services/RelationshipService.php:1596
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "sobrinho pentaneto"
+msgstr "sobrinho tetraneto"
 
 #: app/Services/RelationshipService.php:1600
 msgctxt "(a man’s) sister’s great-great-great-grandson"
@@ -18473,30 +18477,30 @@ msgstr "sobrinha tetraneta"
 #: app/Services/RelationshipService.php:1615
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr "sobrinha tetraneta"
+msgstr "sobrinha-tetraneta"
 
 #: app/Services/RelationshipService.php:1356
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr "tio-pentavô"
+msgstr "tio-tetravô"
 
 #: app/Services/RelationshipService.php:1360
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr "tio-pentavô"
+msgstr "tio-tetravô"
 
 #: app/Services/RelationshipService.php:1363
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr "tio-pentavô"
+msgstr "tio-tetravô"
 
 #: app/Services/RelationshipService.php:1386
 msgid "great ×5 aunt"
-msgstr "tia-hexavó"
+msgstr "tia-pentavó"
 
 #: app/Services/RelationshipService.php:1389
 msgid "great ×5 aunt/uncle"
-msgstr "tio(a)-hexavô(ó)"
+msgstr "tio(a)-pentavô(ó)"
 
 #: app/Services/RelationshipService.php:2014
 msgid "great ×5 grandchild"
@@ -18525,47 +18529,47 @@ msgstr "hexaneto"
 #: app/Services/RelationshipService.php:1631
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "sobrinho pentaneto"
+msgstr "sobrinho-pentaneto"
 
 #: app/Services/RelationshipService.php:1635
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "sobrinho pentaneto"
+msgstr "sobrinho-pentaneto"
 
 #: app/Services/RelationshipService.php:1638
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr "sobrinho pentaneto"
+msgstr "sobrinho-pentaneto"
 
 #: app/Services/RelationshipService.php:1654
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "sobrinho(a) pentaneto(a)"
+msgstr "sobrinho(a)-pentaneto(a)"
 
 #: app/Services/RelationshipService.php:1658
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "sobrinho(a) pentaneto(a)"
+msgstr "sobrinho(a)-pentaneto(a)"
 
 #: app/Services/RelationshipService.php:1661
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr "sobrinho(a) pentaneto(a)"
+msgstr "sobrinho(a)-pentaneto(a)"
 
 #: app/Services/RelationshipService.php:1643
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "sobrinha pentaneta"
+msgstr "sobrinha-pentaneta"
 
 #: app/Services/RelationshipService.php:1647
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "sobrinha pentaneta"
+msgstr "sobrinha-pentaneta"
 
 #: app/Services/RelationshipService.php:1650
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr "sobrinha pentaneta"
+msgstr "sobrinha-pentaneta"
 
 #: app/Services/RelationshipService.php:1375
 msgctxt "great ×4 grandfather’s brother"
@@ -18588,31 +18592,31 @@ msgstr "tia-hexavó"
 
 #: app/Services/RelationshipService.php:1408
 msgid "great ×6 aunt/uncle"
-msgstr "tia-hexavó/tio-hexavô"
+msgstr "tia(o)-hexavó(ô)"
 
 #: app/Services/RelationshipService.php:2025
 msgid "great ×6 grandchild"
-msgstr "hexaneto(a)"
+msgstr "heptaneto(a)"
 
 #: app/Services/RelationshipService.php:2022
 msgid "great ×6 granddaughter"
-msgstr "hexaneta"
+msgstr "heptaneta"
 
 #: app/Services/RelationshipService.php:1861
 msgid "great ×6 grandfather"
-msgstr "hexavô"
+msgstr "heptavô"
 
 #: app/Services/RelationshipService.php:1865
 msgid "great ×6 grandmother"
-msgstr "hexavó"
+msgstr "heptavó"
 
 #: app/Services/RelationshipService.php:1868
 msgid "great ×6 grandparent"
-msgstr "hexavô(ó)"
+msgstr "heptavô(ó)"
 
 #: app/Services/RelationshipService.php:2018
 msgid "great ×6 grandson"
-msgstr "hexaneto"
+msgstr "heptaneto"
 
 #: app/Services/RelationshipService.php:1394
 msgctxt "great ×5 grandfather’s brother"
@@ -18635,31 +18639,31 @@ msgstr "tia-heptavó"
 
 #: app/Services/RelationshipService.php:1427
 msgid "great ×7 aunt/uncle"
-msgstr "tia-heptavó/tio-heptavô"
+msgstr "tia(o)-heptavó(ô)"
 
 #: app/Services/RelationshipService.php:2036
 msgid "great ×7 grandchild"
-msgstr "heptaneto(a)"
+msgstr "octaneto(a)"
 
 #: app/Services/RelationshipService.php:2033
 msgid "great ×7 granddaughter"
-msgstr "heptaneta"
+msgstr "octaneta"
 
 #: app/Services/RelationshipService.php:1872
 msgid "great ×7 grandfather"
-msgstr "heptavô"
+msgstr "octavô"
 
 #: app/Services/RelationshipService.php:1876
 msgid "great ×7 grandmother"
-msgstr "heptavó"
+msgstr "octavó"
 
 #: app/Services/RelationshipService.php:1879
 msgid "great ×7 grandparent"
-msgstr "heptavô(ó)"
+msgstr "octavô(ó)"
 
 #: app/Services/RelationshipService.php:2029
 msgid "great ×7 grandson"
-msgstr "heptaneto"
+msgstr "octaneto"
 
 #: app/Services/RelationshipService.php:1413
 msgctxt "great ×6 grandfather’s brother"
@@ -19132,7 +19136,7 @@ msgstr "tia-bisavó"
 
 #: app/Services/RelationshipService.php:1332
 msgid "great-great-aunt/uncle"
-msgstr "tia-bisavó/tio-bisavô"
+msgstr "tia(o)-bisavó(ô)"
 
 #: app/Services/RelationshipService.php:1981
 msgid "great-great-grandchild"
@@ -19164,7 +19168,7 @@ msgstr "tia-trisavó"
 
 #: app/Services/RelationshipService.php:1351
 msgid "great-great-great-aunt/uncle"
-msgstr "tia-trisavó/tio-trisavô"
+msgstr "tia(o)-trisavó(ô)"
 
 #: app/Services/RelationshipService.php:1992
 msgid "great-great-great-grandchild"
@@ -19193,47 +19197,47 @@ msgstr "tetraneto"
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "sobrinho trineto"
+msgstr "sobrinho-trineto"
 
 #: app/Services/RelationshipService.php:1565
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "sobrinho trineto"
+msgstr "sobrinho-trineto"
 
 #: app/Services/RelationshipService.php:1568
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "sobrinho trineto"
+msgstr "sobrinho-trineto"
 
 #: app/Services/RelationshipService.php:1584
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "sobrinho(a) trineto(a)"
+msgstr "sobrinho(a)-trineto(a)"
 
 #: app/Services/RelationshipService.php:1588
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "sobrinho(a) trineto(a)"
+msgstr "sobrinho(a)-trineto(a)"
 
 #: app/Services/RelationshipService.php:1591
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr "sobrinho(a) trineto(a)"
+msgstr "sobrinho(a)-trineto(a)"
 
 #: app/Services/RelationshipService.php:1573
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "sobrinha trineta"
+msgstr "sobrinha-trineta"
 
 #: app/Services/RelationshipService.php:1577
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "sobrinha trineta"
+msgstr "sobrinha-trineta"
 
 #: app/Services/RelationshipService.php:1580
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "sobrinha trineta"
+msgstr "sobrinha-trineta"
 
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
@@ -19253,47 +19257,47 @@ msgstr "tio-trisavô"
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "sobrinho bisneto"
+msgstr "sobrinho-bisneto"
 
 #: app/Services/RelationshipService.php:1530
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr "sobrinho bisneto"
+msgstr "sobrinho-bisneto"
 
 #: app/Services/RelationshipService.php:1533
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "sobrinho bisneto"
+msgstr "sobrinho-bisneto"
 
 #: app/Services/RelationshipService.php:1549
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "sobrinho(a) bisneto(a)"
+msgstr "sobrinho(a)-bisneto(a)"
 
 #: app/Services/RelationshipService.php:1553
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr "sobrinho(a) bisneto(a)"
+msgstr "sobrinho(a)-bisneto(a)"
 
 #: app/Services/RelationshipService.php:1556
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr "sobrinho(a) bisneto(a)"
+msgstr "sobrinho(a)-bisneto(a)"
 
 #: app/Services/RelationshipService.php:1538
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "sobrinha bisneta"
+msgstr "sobrinha-bisneta"
 
 #: app/Services/RelationshipService.php:1542
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr "sobrinha bisneta"
+msgstr "sobrinha-bisneta"
 
 #: app/Services/RelationshipService.php:1545
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr "sobrinha bisneta"
+msgstr "sobrinha-bisneta"
 
 #: app/Services/RelationshipService.php:1318
 msgctxt "great-grandfather’s brother"
@@ -19313,62 +19317,62 @@ msgstr "tio-bisavô"
 #: app/Services/RelationshipService.php:674
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:694
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:712
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:994
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:1014
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:1038
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:677
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:697
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:715
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:997
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:1017
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:1041
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr "sobrinho neto"
+msgstr "sobrinho-neto"
 
 #: app/Services/RelationshipService.php:963
 msgctxt "sibling’s child’s son"
@@ -19388,62 +19392,62 @@ msgstr "sobrinho-neto"
 #: app/Services/RelationshipService.php:662
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:680
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:700
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:982
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:1000
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:1026
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:665
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:683
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:703
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:985
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:1003
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:1029
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr "sobrinho(a) neto(a)"
+msgstr "sobrinho(a)-neto(a)"
 
 #: app/Services/RelationshipService.php:959
 msgctxt "sibling’s child’s child"
@@ -19463,62 +19467,62 @@ msgstr "sobrinho-neto/sobrinha-neta"
 #: app/Services/RelationshipService.php:668
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:686
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:706
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:988
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:1006
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:1032
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:671
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:689
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:709
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:991
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:1009
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:1035
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr "sobrinha neta"
+msgstr "sobrinha-neta"
 
 #: app/Services/RelationshipService.php:961
 msgctxt "sibling’s child’s daughter"
@@ -19752,7 +19756,7 @@ msgstr "Importar ficheiro"
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
-msgstr "Criança"
+msgstr "criança"
 
 #: app/Elements/NoteStructure.php:65
 msgid "inline note"
