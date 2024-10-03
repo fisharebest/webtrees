@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-10-03 01:21+0000\n"
+"PO-Revision-Date: 2024-10-04 16:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -1888,7 +1888,7 @@ msgstr ""
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:76
 msgid "An alternative way to display charts."
-msgstr "Uma forma alternativa de exibir gráficos."
+msgstr "Uma forma alternativa de exibir diagramas."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:62
@@ -3532,7 +3532,7 @@ msgstr "Tipo de gráfico"
 #: resources/views/admin/modules.phtml:104
 #: resources/views/admin/trees-preferences.phtml:392
 msgid "Charts"
-msgstr "Gráficos"
+msgstr "Diagramas"
 
 #: app/Http/RequestHandlers/CheckTree.php:324
 #: resources/views/admin/trees.phtml:185
@@ -11034,7 +11034,7 @@ msgstr "Outro"
 
 #: resources/views/admin/trees-preferences.phtml:410
 msgid "Other facts to show in charts"
-msgstr "Outros factos para exibir nos gráficos"
+msgstr "Outros factos para exibir nos diagramas"
 
 #: resources/views/admin/trees-preferences.phtml:689
 msgid "Other preferences"
@@ -13500,7 +13500,7 @@ msgstr "Exibir este bloco para quais idiomas"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Exibir imagens miniatura em gráficos e grupos de família."
+msgstr "Exibir imagens miniatura em diagramas e grupos de família."
 
 #: app/Auth.php:595 app/Auth.php:608 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
@@ -14484,7 +14484,7 @@ msgstr "As alterações sugeridas a \"%s\" foram rejeitadas."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:68
 msgid "The charts menu."
-msgstr "O menu de gráficos."
+msgstr "O menu de diagramas."
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -15226,7 +15226,7 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:80
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
-"Este indivíduo será selecionado por defeito quando visualizar gráficos e "
+"Este indivíduo será selecionado por defeito quando visualizar diagramas e "
 "relatórios."
 
 #: app/Module/StatisticsChartModule.php:947
@@ -16491,7 +16491,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:99
 msgid "Various statistics charts."
-msgstr "Vários gráficos de estatísticas."
+msgstr "Vários diagramas de estatísticas."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:520
