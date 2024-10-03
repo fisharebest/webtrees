@@ -138,7 +138,7 @@ class NoteStructure extends SubmitterText
                 '</button> ' .
                 '<span class="label">' . $label . ':</span> ' . $first_line .
                 '</div>' .
-                '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
+                '<div id="' . e($id) . '" class="ps-4 collapse ut' . ($expanded ? 'show' : '') . '">' .
                 $html .
                 '</div>';
         }
@@ -165,7 +165,7 @@ class NoteStructure extends SubmitterText
             '</button> ' .
             I18N::translate('%1$s: %2$s', $label, $value) .
             '</div>' .
-            '<div class="ps-4 collapse ' . ($expanded ? 'show' : '') . ' ' . e($id) . '">' .
+            '<div class="ps-4 collapse ut ' . ($expanded ? 'show' : '') . ' ' . e($id) . '">' .
             $html .
             '</div>';
     }
