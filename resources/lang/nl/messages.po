@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-09-05 12:09+0000\n"
+"PO-Revision-Date: 2024-10-04 16:11+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/nl/>\n"
@@ -14732,7 +14732,7 @@ msgstr "De gebruikersnaam vereist voor authenticatie bij de SMTP server."
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:55
 #: app/Http/RequestHandlers/SiteTagsAction.php:69
 msgid "The website preferences have been updated."
-msgstr "De website voorkeuren zijn bijgewerkt."
+msgstr "De websitevoorkeuren zijn bijgewerkt."
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
@@ -16392,7 +16392,7 @@ msgstr "Website-logboekbestanden"
 #: app/Http/RequestHandlers/SitePreferencesPage.php:65
 #: resources/views/admin/control-panel.phtml:240
 msgid "Website preferences"
-msgstr "Website voorkeuren"
+msgstr "Websitevoorkeuren"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:277
