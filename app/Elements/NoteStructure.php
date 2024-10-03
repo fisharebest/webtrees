@@ -138,7 +138,7 @@ class NoteStructure extends SubmitterText
                 '</button> ' .
                 '<span class="label">' . $label . ':</span> ' . $first_line .
                 '</div>' .
-                '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
+                '<div id="' . e($id) . '" class="ps-4 collapse ut' . ($expanded ? 'show' : '') . '">' .
                 $html .
                 '</div>';
         }
