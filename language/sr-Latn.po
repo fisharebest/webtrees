@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 12:15+0000\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Serbian (latin) <http://weblate.iet.open.ac.uk/projects/"
 "webtrees/webtrees-17/sr_Latn/>\n"
@@ -7304,7 +7304,7 @@ msgstr "Ikonica"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Idaho Falls, Idaho, United States"
-msgstr ""
+msgstr "Idaho Falls, Idaho, USA"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
@@ -11400,7 +11400,7 @@ msgstr "Referentni broj"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "Regina, Saskatchewan, Kanada"
 
 #: app/GedcomTag.php:584 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
@@ -11878,7 +11878,7 @@ msgstr ""
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
-msgstr ""
+msgstr "Sub"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "Satellite"
@@ -12138,7 +12138,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Sep"
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1727
@@ -13369,7 +13369,7 @@ msgstr "Prezimena ukazuju na pol pojedinca."
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
 msgid "Suva, Fiji"
-msgstr ""
+msgstr "Suva, Fidži"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6875
@@ -13892,7 +13892,7 @@ msgstr ""
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Podešavanje za porodično stablo “%s” je ažurirano."
 
 #: admin_modules.php:86
 #, php-format
@@ -16421,7 +16421,7 @@ msgstr ""
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "ujna"
 
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
@@ -17861,7 +17861,7 @@ msgstr ""
 #: app/Functions/Functions.php:1102
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedov brat/sestra"
 
 #: app/Functions/Functions.php:1374
 msgctxt "father’s father’s sibling’s spouse"
@@ -18400,7 +18400,7 @@ msgstr ""
 #: app/Functions/Functions.php:1546
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "pradedov/prabakin brat"
 
 #: app/Functions/Functions.php:985
 msgctxt "(a man’s) brother’s child’s son"
@@ -18540,12 +18540,12 @@ msgstr ""
 #: app/Functions/Functions.php:1252
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1258
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1266
 msgctxt "sibling’s son’s child"
@@ -18720,7 +18720,7 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:67
 msgid "half circle"
-msgstr ""
+msgstr "polukrug"
 
 #: app/Functions/Functions.php:850
 msgctxt "father’s son"
