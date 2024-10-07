@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-07-01 13:59+0000\n"
-"Last-Translator: alirjamali <alireza.jamali.mp@gmail.com>\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/fa/>\n"
 "Language: fa\n"
@@ -15213,7 +15213,9 @@ msgstr "این پژوهش طبق ماده 6 (f) مقررات حفاظت از د�
 
 #: resources/views/admin/users-edit.phtml:263
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "این نقش دارای تمام مجوزهای نقش ویرایشگر، به اضافه اجازه پذیرش/رد تغییرات ایجاد شده توسط سایر کاربران است."
+msgstr ""
+"این نقش دارای تمام مجوزهای نقش ویرایشگر، به اضافه اجازه پذیرش/رد تغییرات "
+"ایجاد شده توسط سایر کاربران است."
 
 #: resources/views/admin/users-edit.phtml:277
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
