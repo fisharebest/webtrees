@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-04-26 16:12+0000\n"
-"Last-Translator: 果然 <olor@qq.com>\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -13267,7 +13267,6 @@ msgstr "已安装SQLite版本%s。需要SQLite版本%s或更高版本。"
 
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
-#, fuzzy
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
 
@@ -18074,7 +18073,6 @@ msgstr "您的Web服务器使用的PHP版本 %s ，它不再接收安全更新�
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
 #: resources/views/admin/gedcom-export-options.phtml:48
-#, fuzzy
 msgid "ZIP"
 msgstr "ZIP"
 
