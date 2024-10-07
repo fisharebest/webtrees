@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-09-14 15:30+0000\n"
-"Last-Translator: Oskar-Txoperena <o.txoperena@gogotik.com>\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Basque https://translate.webtrees.net/projects/webtrees/"
 "webtrees/eu/>\n"
 "Language: eu\n"
@@ -16286,7 +16286,7 @@ msgstr "Egun hau ikusi"
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
 msgid "View this family"
-msgstr "bere familia ikusi nahi?"
+msgstr "Familia hau ikusi"
 
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
