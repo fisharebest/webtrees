@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
+"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7608,7 +7609,10 @@ msgstr "썸네일 이미지가 원본 이미지와 동일하면 더 이상 필�
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "이 인물이 이 년 수보다 최근에 사망, 매장 또는 화장 이외의 다른 사건이 있는 경우 \"살아 있는\" 것으로 간주됩니다. 이러한 목적을 위해 자녀들의 생일은 그러한 이벤트로 간주됩니다."
+msgstr ""
+"이 인물이 이 년 수보다 최근에 사망, 매장 또는 화장 이외의 다른 사건이 있는 "
+"경우 \"살아 있는\" 것으로 간주됩니다. 이러한 목적을 위해 자녀들의 생일은 "
+"그러한 이벤트로 간주됩니다."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:254
@@ -15172,7 +15176,8 @@ msgstr "이 연구는 EU 일반 데이터 보호 규정 6 (f) 조에 따른“�
 
 #: resources/views/admin/users-edit.phtml:263
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "이 역할에는 편집자 역할의 모든 권한과 다른 사용자의 변경 사항을 수락/거부 할 수 있는 권한이 있습니다."
+msgstr "이 역할에는 편집자 역할의 모든 권한과 다른 사용자의 변경 사항을 수락/거부 할 "
+"수 있는 권한이 있습니다."
 
 #: resources/views/admin/users-edit.phtml:277
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
