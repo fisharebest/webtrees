@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-07-01 13:59+0000\n"
-"Last-Translator: alirjamali <alireza.jamali.mp@gmail.com>\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Persian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fa/>\n"
 "Language: fa\n"
@@ -553,7 +553,7 @@ msgstr "%s، همسر و فرزندانش"
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;انتخاب&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:329 app/I18N.php:333
@@ -2019,7 +2019,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6673
 msgid "Angola"
-msgstr ""
+msgstr "آنگولا"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6674
@@ -5561,7 +5561,7 @@ msgstr "اِلول"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr "نشانی پست الکترونیکی"
+msgstr "آدرس ایمیل"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -5936,7 +5936,7 @@ msgstr ""
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
-msgstr "مشخصات سوابق مخازن"
+msgstr "وقایع رکورد های مخازن"
 
 #: admin_trees_config.php:1849
 msgid "Facts for source records"
@@ -6171,7 +6171,7 @@ msgstr "پدر"
 #: app/Individual.php:1058
 #, php-format
 msgid "Father: %s"
-msgstr ""
+msgstr "پدر: %s"
 
 #: app/Functions/FunctionsPrint.php:276
 msgid "Father’s age"
@@ -8262,7 +8262,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6801
 msgid "Libya"
-msgstr ""
+msgstr "لیبی"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6803
@@ -11417,7 +11417,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "رجینا، ساسکاچوان، کانادا"
 
 #: app/GedcomTag.php:584 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
@@ -11471,7 +11471,7 @@ msgstr ""
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
 msgid "Relationship"
-msgstr ""
+msgstr "نسبت"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
@@ -11490,7 +11490,7 @@ msgstr ""
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:678
 msgid "Relationship to parents"
-msgstr ""
+msgstr "نسبت با والدین"
 
 #: relationship.php:166
 #, php-format
@@ -12287,7 +12287,7 @@ msgstr ""
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "شهریور"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
@@ -12681,7 +12681,7 @@ msgstr "نمایش افراد و خانواده های مرتبط"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "نمایش وظایف پژوهشی که به سایر کاربران اختصاص داده شده است"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
@@ -12954,7 +12954,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/GedcomTag.php:1731 app/Module/SlideShowModule.php:34
 msgid "Slide show"
-msgstr ""
+msgstr "نمایش اسلاید"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
@@ -13288,7 +13288,7 @@ msgstr ""
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
-msgstr ""
+msgstr "داستان"
 
 #: app/Module/StoriesModule.php:228 app/Module/StoriesModule.php:374
 #: app/Module/StoriesModule.php:458
@@ -13387,7 +13387,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
 msgid "Suva, Fiji"
-msgstr ""
+msgstr "سووا ، فیجی"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6875
@@ -13430,7 +13430,7 @@ msgstr ""
 
 #: admin_module_tabs.php:87 admin_modules.php:211
 msgid "Tab"
-msgstr "تب"
+msgstr "سربرگ"
 
 #: setup.php:379
 msgid "Table prefix"
@@ -13915,7 +13915,7 @@ msgstr ""
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "تنظیمات برگزیده مربوط به شجره نامه “%s” به روز شده است."
 
 #: admin_modules.php:86
 #, php-format
@@ -14470,7 +14470,7 @@ msgstr ""
 
 #: mediaviewer.php:55
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "این موضوع رسانه ویرایش شده است. تغییرات باید توسط ناظر بررسی شود."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:50
@@ -14640,6 +14640,8 @@ msgstr ""
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
 msgstr ""
+"این نقش دارای تمام مجوزهای نقش ویرایشگر، به اضافه اجازه پذیرش/رد تغییرات "
+"ایجاد شده توسط سایر کاربران است."
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
@@ -14665,9 +14667,7 @@ msgstr ""
 #: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr ""
-"نهایت حافظه سرور %s مگابایت و نهایت محدودیت زمانی پردازشگر نیز %s ثانیه می "
-"باشد."
+msgstr "محدودیت حافظه این سرور %s مگابایت و محدودیت زمانی CPU آن %s ثانیه است."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
@@ -15328,7 +15328,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1797
 msgid "Unrecognized GEDCOM code"
-msgstr ""
+msgstr "کد GEDCOM شناسایی نشده است"
 
 #: admin_media.php:642
 msgid "Unused files"
@@ -15643,7 +15643,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1940
 msgid "Video"
-msgstr ""
+msgstr "ویدئو"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6918
@@ -16461,7 +16461,7 @@ msgstr ""
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "زن دایی"
 
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
@@ -17901,7 +17901,7 @@ msgstr ""
 #: app/Functions/Functions.php:1102
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "فرزندان پدربزرگ پدری"
 
 #: app/Functions/Functions.php:1374
 msgctxt "father’s father’s sibling’s spouse"
@@ -18440,7 +18440,7 @@ msgstr ""
 #: app/Functions/Functions.php:1546
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "برادر والدین پدربزرگ/مادربزرگ"
 
 #: app/Functions/Functions.php:985
 msgctxt "(a man’s) brother’s child’s son"
@@ -18580,12 +18580,12 @@ msgstr ""
 #: app/Functions/Functions.php:1252
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "نوه خواهر/برادر"
 
 #: app/Functions/Functions.php:1258
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "نوه دختری خوهر/برادر"
 
 #: app/Functions/Functions.php:1266
 msgctxt "sibling’s son’s child"
@@ -18760,7 +18760,7 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:67
 msgid "half circle"
-msgstr ""
+msgstr "نیم دایره"
 
 #: app/Functions/Functions.php:850
 msgctxt "father’s son"
