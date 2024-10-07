@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2023-10-08 02:32+0000\n"
-"Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -20606,7 +20606,7 @@ msgstr "这个多媒体文件已被删除。你应该检查此操作，然后决
 
 #: mediaviewer.php:55 resources/views/media-page.phtml:32
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个多媒体文件已经被编辑。更改需要主编审批后，方可生效。"
+msgstr "这个多媒体文件已经被修改。更改需要主编审批后，方可生效。"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
@@ -20813,7 +20813,7 @@ msgstr "这个存储库已经被编辑。你应该检查此操作,然后决定�
 
 #: admin_users.php:552 resources/views/admin/users-edit.phtml:248
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "编辑的角色,许可批准/拒绝由其他用户更改。"
+msgstr "修编员的角色,许可批准/拒绝由其他用户更改。"
 
 #: admin_users.php:566 resources/views/admin/users-edit.phtml:262
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
