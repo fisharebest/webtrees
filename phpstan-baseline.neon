@@ -3481,7 +3481,7 @@ parameters:
 			path: app/Services/GedcomImportService.php
 
 		-
-			message: "#^Offset 1 on array\\{array\\<int, string\\>, array\\<int, non\\-falsy\\-string\\>\\} on left side of \\?\\? always exists and is not nullable\\.$#"
+			message: "#^Offset 1 on array\\{array\\<int, string\\>, array\\<int, non\\-empty\\-string\\>\\} on left side of \\?\\? always exists and is not nullable\\.$#"
 			count: 1
 			path: app/Services/GedcomImportService.php
 
