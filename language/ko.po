@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 12:15+0000\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ko/>\n"
@@ -523,7 +523,7 @@ msgstr "%s, 그의 배우자와 후손"
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr "<선택&gt;"
+msgstr "&lt;선택&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:329 app/I18N.php:333
@@ -622,7 +622,7 @@ msgstr "19번째"
 #: app/Stats.php:6985
 msgctxt "CENTURY"
 msgid "1st"
-msgstr "1번째"
+msgstr "1세기"
 
 #: app/Stats.php:6947
 msgctxt "CENTURY"
@@ -2615,7 +2615,7 @@ msgstr ""
 #. I18N: gedcom tag _BIBL
 #: app/GedcomTag.php:1030
 msgid "Bibliography"
-msgstr ""
+msgstr "관계 서적"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
@@ -2956,7 +2956,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6709
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
@@ -3226,7 +3226,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6693
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6689
@@ -3562,7 +3562,7 @@ msgstr ""
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:35 app/GedcomTag.php:274
 msgid "Child"
-msgstr ""
+msgstr "자녀"
 
 #: modules_v3/ahnentafel_report/report.xml:388
 #: modules_v3/descendancy_report/report.xml:480
@@ -4699,7 +4699,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1437
 msgid "Death of a brother"
-msgstr ""
+msgstr "남자형제의 사망"
 
 #: app/GedcomTag.php:1360
 msgid "Death of a child"
@@ -5274,7 +5274,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6733
 msgid "Dominica"
-msgstr ""
+msgstr "Dominica"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6735
@@ -5537,7 +5537,7 @@ msgstr ""
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr ""
+msgstr "이메일 주소"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -6147,7 +6147,7 @@ msgstr ""
 #: app/Individual.php:1058
 #, php-format
 msgid "Father: %s"
-msgstr ""
+msgstr "아버지: %s"
 
 #: app/Functions/FunctionsPrint.php:276
 msgid "Father’s age"
@@ -6177,7 +6177,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
@@ -6258,7 +6258,7 @@ msgstr ""
 #: admin_site_clean.php:88
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr ""
+msgstr "%s(으)로 표시된 파일은 올바른 작업에 필요하며 제거할 수 없습니다."
 
 #: app/I18N.php:235 app/Module/SlideShowModule.php:302 find.php:532
 msgid "Filter"
@@ -6342,7 +6342,7 @@ msgstr ""
 #. I18N: gedcom tag FCOM
 #: app/GedcomTag.php:480 modules_v3/missing_facts_report/report.xml:21
 msgid "First communion"
-msgstr ""
+msgstr "첫 영성체"
 
 #: statistics.php:370
 msgid "First event"
@@ -6814,7 +6814,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:141 app/GedcomCode/GedcomCodeRela.php:147
 msgid "Godmother"
-msgstr ""
+msgstr "대모"
 
 #. I18N: gedcom tag _GODP
 #: app/GedcomCode/GedcomCodeRela.php:149 app/GedcomTag.php:1513
@@ -7203,7 +7203,7 @@ msgstr ""
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "관계를 검색할 때 사용할 반복 횟수"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6775
@@ -7255,7 +7255,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Idaho Falls, Idaho, United States"
-msgstr ""
+msgstr "Idaho Falls, Idaho, United States"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
@@ -7304,6 +7304,9 @@ msgstr ""
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
+"이 인물이 이 년 수보다 최근에 사망, 매장 또는 화장 이외의 다른 사건이 있는 "
+"경우 \"살아 있는\" 것으로 간주됩니다. 이러한 목적을 위해 자녀들의 생일은 "
+"그러한 이벤트로 간주됩니다."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
@@ -7694,7 +7697,7 @@ msgstr ""
 #: app/Date/JewishDate.php:144
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:220
@@ -8082,7 +8085,7 @@ msgstr ""
 
 #: statistics.php:319
 msgid "Largest number of grandchildren"
-msgstr ""
+msgstr "가장 많은 수의 손주"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:225
@@ -8217,7 +8220,7 @@ msgstr ""
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr ""
+msgstr "Letter"
 
 #: app/Module/GoogleMapsModule.php:384 app/Module/GoogleMapsModule.php:400
 #: app/Module/GoogleMapsModule.php:1438 app/Module/GoogleMapsModule.php:3444
@@ -8232,7 +8235,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6801
 msgid "Libya"
-msgstr ""
+msgstr "Libya"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6803
@@ -8503,7 +8506,7 @@ msgstr ""
 #: admin_trees_places.php:91 admin_trees_unconnected.php:74
 #: app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
-msgstr ""
+msgstr "가계도 관리"
 
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
@@ -8520,7 +8523,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:403
 #: app/Module/ClippingsCartModule.php:780
 msgid "Manager"
-msgstr ""
+msgstr "관리자"
 
 #: admin.php:679
 msgid "Managers"
@@ -9204,7 +9207,7 @@ msgstr ""
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 admin_users.php:549
 msgid "Moderator"
-msgstr ""
+msgstr "중재자"
 
 #: admin.php:692
 msgid "Moderators"
@@ -10132,7 +10135,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodeRela.php:201
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr ""
+msgstr "유모"
 
 #: app/GedcomCode/GedcomCodeRela.php:199
 msgctxt "MALE"
@@ -10237,7 +10240,7 @@ msgstr ""
 
 #: statistics.php:271
 msgid "Oldest male"
-msgstr ""
+msgstr "가장 나이가 많은 남성"
 
 #: statistics.php:295
 msgid "Oldest mother"
@@ -11369,7 +11372,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Regina, Saskatchewan, Canada"
-msgstr ""
+msgstr "Regina, Saskatchewan, Canada"
 
 #: app/GedcomTag.php:584 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
@@ -11423,7 +11426,7 @@ msgstr ""
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
 msgid "Relationship"
-msgstr ""
+msgstr "관계"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
@@ -11442,7 +11445,7 @@ msgstr ""
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:678
 msgid "Relationship to parents"
-msgstr ""
+msgstr "부모님과 관계"
 
 #: relationship.php:166
 #, php-format
@@ -11847,7 +11850,7 @@ msgstr ""
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
-msgstr ""
+msgstr "Sat"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "Satellite"
@@ -12107,7 +12110,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Sep"
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1727
@@ -12241,7 +12244,7 @@ msgstr ""
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Shah"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
@@ -12635,7 +12638,7 @@ msgstr ""
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "다른 사용자에게 할당 된 연구 작업을 표시합니다"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
@@ -13350,7 +13353,7 @@ msgstr "가문이름은 개인의 성별을 나타 내기 위해 활용됩니다
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
 msgid "Suva, Fiji"
-msgstr ""
+msgstr "Suva, Fiji"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6875
@@ -14631,7 +14634,8 @@ msgstr "이 저장소가 편집되었습니다. 변경 사항을 검토 한 다�
 
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr "이 역할에는 편집자 역할의 모든 권한과 다른 사용자의 변경 사항을 수락 / 거부 할 수있는 권한이 있습니다."
+msgstr "이 역할에는 편집자 역할의 모든 권한과 다른 사용자의 변경 사항을 수락/거부 할 "
+"수 있는 권한이 있습니다."
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
@@ -15616,7 +15620,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:381
@@ -17908,7 +17912,7 @@ msgstr ""
 #: app/Functions/Functions.php:1102
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "종조부/대고모"
 
 #: app/Functions/Functions.php:1374
 msgctxt "father’s father’s sibling’s spouse"
@@ -18447,7 +18451,7 @@ msgstr ""
 #: app/Functions/Functions.php:1546
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "종증조부"
 
 #: app/Functions/Functions.php:985
 msgctxt "(a man’s) brother’s child’s son"
@@ -18587,12 +18591,12 @@ msgstr ""
 #: app/Functions/Functions.php:1252
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "종손(從孫)/이손(離孫)"
 
 #: app/Functions/Functions.php:1258
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "종손(從孫)/이손(離孫)"
 
 #: app/Functions/Functions.php:1266
 msgctxt "sibling’s son’s child"
@@ -18767,7 +18771,7 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:67
 msgid "half circle"
-msgstr ""
+msgstr "half circle"
 
 #: app/Functions/Functions.php:850
 msgctxt "father’s son"
@@ -19407,7 +19411,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 #: modules_v3/GEDFact_assistant/census/census-edit.php:197
 msgid "save"
-msgstr ""
+msgstr "저장"
 
 #. I18N: A button label.
 #: admin_site_change.php:366 admin_site_logs.php:306 find.php:154 find.php:171
