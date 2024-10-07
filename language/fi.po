@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-04-21 21:11+0000\n"
-"Last-Translator: melizaa <meliza@amitys.com>\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fi/>\n"
 "Language: fi\n"
@@ -369,8 +369,8 @@ msgstr[1] "%s kuukautta sitten"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s lisätieto on päivitetty."
-msgstr[1] "%s lisätietoa on päivitetty."
+msgstr[0] "%s huomautus on päivitetty."
+msgstr[1] "%s huomautusta on päivitetty."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
