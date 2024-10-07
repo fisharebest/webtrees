@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-05-18 12:32+0000\n"
-"Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: \n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,6 @@ msgstr " ஆனால் விவரம் தெரியவில்லை"
 #: resources/xml/reports/descendancy_report.xml:384
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
-#, fuzzy
 msgid " in "
 msgstr " இல் "
 
