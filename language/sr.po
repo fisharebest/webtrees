@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
+"PO-Revision-Date: 2024-10-07 12:22+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Serbian <http://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sr/>\n"
@@ -585,7 +585,7 @@ msgstr ""
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;одабери&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:329 app/I18N.php:333
@@ -1369,7 +1369,7 @@ msgstr ""
 #: app/Controller/FamilyController.php:149 app/Functions/FunctionsEdit.php:1108
 #: app/Module/NotesTabModule.php:102
 msgid "Add a note"
-msgstr ""
+msgstr "Додај белешку"
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
@@ -4750,7 +4750,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1437
 msgid "Death of a brother"
-msgstr ""
+msgstr "Смрт брата"
 
 #: app/GedcomTag.php:1360
 msgid "Death of a child"
@@ -5586,7 +5586,7 @@ msgstr ""
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr ""
+msgstr "Е-мејл адреса"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -6196,7 +6196,7 @@ msgstr "Otac"
 #: app/Individual.php:1058
 #, php-format
 msgid "Father: %s"
-msgstr ""
+msgstr "Отац: %s"
 
 #: app/Functions/FunctionsPrint.php:276
 msgid "Father’s age"
@@ -6226,7 +6226,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "Феб"
 
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
@@ -6863,7 +6863,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:141 app/GedcomCode/GedcomCodeRela.php:147
 msgid "Godmother"
-msgstr ""
+msgstr "Кума"
 
 #. I18N: gedcom tag _GODP
 #: app/GedcomCode/GedcomCodeRela.php:149 app/GedcomTag.php:1513
@@ -8530,7 +8530,7 @@ msgstr ""
 #: admin_trees_places.php:91 admin_trees_unconnected.php:74
 #: app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
-msgstr ""
+msgstr "Уређивање породичних стабала"
 
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
@@ -11878,7 +11878,7 @@ msgstr ""
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
-msgstr ""
+msgstr "Суб"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "Satellite"
@@ -12138,7 +12138,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "сеп"
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1727
@@ -12664,7 +12664,7 @@ msgstr ""
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr ""
+msgstr "Прикажи задатке за истраживање који су додељени другим корисницима"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
@@ -12936,7 +12936,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/GedcomTag.php:1731 app/Module/SlideShowModule.php:34
 msgid "Slide show"
-msgstr "Аутоматско приказивање слика"
+msgstr "Аутоматско пуштање слика"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6885
@@ -13887,7 +13887,7 @@ msgstr ""
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Подешавање за породично стабло “%s” је ажурирано."
 
 #: admin_modules.php:86
 #, php-format
@@ -14442,6 +14442,8 @@ msgstr ""
 #: mediaviewer.php:55
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
+"Овај медијски објекат је промењен. Промена ће бити прегледана од стране "
+"модератора."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:50
@@ -16409,7 +16411,7 @@ msgstr ""
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "ујна"
 
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
