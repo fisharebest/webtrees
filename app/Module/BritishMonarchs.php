@@ -50,8 +50,6 @@ class BritishMonarchs extends AbstractModule implements ModuleHistoricEventsInte
     }
 
     /**
-     * All events provided by this module.
-     *
      * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection

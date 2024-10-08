@@ -54,6 +54,9 @@ class TreeExport extends Command
             ->setDescription(description: 'Export a tree to a GEDCOM file');
     }
 
+    /**
+     * @return array<string>
+     */
     private function autoCompleteTreeName(CompletionInput $input): array
     {
         return DB::table('tree')

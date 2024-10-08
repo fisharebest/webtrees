@@ -50,8 +50,6 @@ class AustrianPresidents extends AbstractModule implements ModuleHistoricEventsI
     }
 
     /**
-     * All events provided by this module.
-     *
      * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection

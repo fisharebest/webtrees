@@ -41,11 +41,6 @@ class ShareUrlModule extends AbstractModule implements ModuleShareInterface
         return I18N::translate('Share the URL');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return I18N::translate('Copy the URL of the record to the clipboard');

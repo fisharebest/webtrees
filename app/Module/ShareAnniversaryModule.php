@@ -73,11 +73,6 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         return I18N::translate('Share the anniversary of an event');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return I18N::translate('Download a .ICS file containing an anniversary');

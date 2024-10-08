@@ -62,11 +62,6 @@ trait ModuleThemeTrait
      */
     abstract public function title(): string;
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return I18N::translate('Theme') . ' — ' . $this->title();

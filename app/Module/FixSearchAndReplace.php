@@ -75,11 +75,6 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
         return I18N::translate('Search and replace');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of a “Data fix” module */

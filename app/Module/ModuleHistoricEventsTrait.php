@@ -25,38 +25,22 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
-/**
- * Trait ModuleHistoricEventsTrait - Show historic events on an individual‘s page
- */
 trait ModuleHistoricEventsTrait
 {
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return I18N::translate('Add historic events to an individual’s page.');
     }
 
     /**
-     * All events provided by this module.
-     *
      * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection
     {
-        return new Collection([
-            "1 EVEN foo\n2 TYPE bar\n2 DATE FROM 6 FEB 1952"
-        ]);
+        return new Collection();
     }
 
     /**
-     * Which events should we show for an individual?
-     *
-     * @param Individual $individual
-     *
      * @return Collection<int,Fact>
      */
     public function historicEventsForIndividual(Individual $individual): Collection
@@ -64,8 +48,9 @@ trait ModuleHistoricEventsTrait
         $min_date = $individual->getEstimatedBirthDate();
         $max_date = $individual->getEstimatedDeathDate();
 
-        return (new Collection($this->historicEventsAll()))
+        return $this->historicEventsAll()
             ->map(static fn (string $gedcom): Fact => new Fact($gedcom, $individual, 'histo'))
-            ->filter(static fn (Fact $fact): bool => Date::compare($fact->date(), $min_date) >= 0 && Date::compare($fact->date(), $max_date) <= 0);
+            ->filter(static fn (Fact $fact): bool => Date::compare($fact->date(), $min_date) >= 0)
+            ->filter(static fn (Fact $fact): bool => Date::compare($fact->date(), $max_date) <= 0);
     }
 }

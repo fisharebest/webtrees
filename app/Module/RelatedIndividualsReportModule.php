@@ -40,11 +40,6 @@ class RelatedIndividualsReportModule extends AbstractModule implements ModuleRep
         return I18N::translate('Related individuals');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         // This text also appears in the .XML file - update both together

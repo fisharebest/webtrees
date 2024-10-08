@@ -102,11 +102,6 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         return I18N::translate('Pedigree');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “PedigreeChart” module */

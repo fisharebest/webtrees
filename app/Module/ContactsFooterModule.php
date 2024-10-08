@@ -55,11 +55,6 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
         return I18N::translate('Contact information');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Contact information” module */

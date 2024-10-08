@@ -75,11 +75,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
         Registry::elementFactory()->make('INDI')->subtag('_TODO', '0:M');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of “Research tasks” module */

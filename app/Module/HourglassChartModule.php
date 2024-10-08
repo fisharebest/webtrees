@@ -79,11 +79,6 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         return I18N::translate('Hourglass chart');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “HourglassChart” module */

@@ -62,11 +62,6 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
         return I18N::translate('Shared notes');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Shared notes” module */

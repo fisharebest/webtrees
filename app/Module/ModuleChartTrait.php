@@ -103,10 +103,10 @@ trait ModuleChartTrait
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
         return route('module', [
-                'module' => $this->name(),
-                'action' => 'Chart',
-                'xref'   => $individual->xref(),
-                'tree'    => $individual->tree()->name(),
+            'module' => $this->name(),
+            'action' => 'Chart',
+            'xref'   => $individual->xref(),
+            'tree'   => $individual->tree()->name(),
         ] + $parameters);
     }
 

@@ -50,8 +50,6 @@ class BritishSocialHistory extends AbstractModule implements ModuleHistoricEvent
     }
 
     /**
-     * All events provided by this module.
-     *
      * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection

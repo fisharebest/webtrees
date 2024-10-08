@@ -44,11 +44,6 @@ class FactSourcesReportModule extends AbstractModule implements ModuleReportInte
         return I18N::translate('Source');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         // This text also appears in the .XML file - update both together

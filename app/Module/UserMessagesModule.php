@@ -65,11 +65,6 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
         return I18N::translate('Messages');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Messages” module */

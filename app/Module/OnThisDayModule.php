@@ -102,11 +102,6 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         return I18N::translate('On this day');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “On this day” module */

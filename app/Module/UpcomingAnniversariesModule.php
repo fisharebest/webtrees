@@ -122,11 +122,6 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         return I18N::translate('Upcoming events');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Upcoming events” module */

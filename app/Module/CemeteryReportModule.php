@@ -40,11 +40,6 @@ class CemeteryReportModule extends AbstractModule implements ModuleReportInterfa
         return I18N::translate('Burials');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         // This text also appears in the .XML file - update both together

@@ -75,11 +75,6 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
         return I18N::translate('Compact tree');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “CompactTreeChart” module */

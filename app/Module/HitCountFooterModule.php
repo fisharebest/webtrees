@@ -73,11 +73,6 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         return I18N::translate('Hit counters');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Hit counters” module */

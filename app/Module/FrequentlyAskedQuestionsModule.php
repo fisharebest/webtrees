@@ -70,11 +70,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         return I18N::translate('FAQ');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “FAQ” module */

@@ -99,11 +99,6 @@ class RedirectLegacyUrlsModule extends AbstractModule
         $router->get(RedirectTimeLinePhp::class, '/timeline.php', RedirectTimeLinePhp::class);
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Legacy URLs” module */

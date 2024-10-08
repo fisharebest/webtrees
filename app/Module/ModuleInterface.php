@@ -77,11 +77,6 @@ interface ModuleInterface
      */
     public function title(): string;
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string;
 
     /**

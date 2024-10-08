@@ -49,11 +49,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         return I18N::translate('Interactive tree');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Interactive tree” module */

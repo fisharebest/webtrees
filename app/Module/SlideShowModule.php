@@ -64,11 +64,6 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $this->linked_record_service = $linked_record_service;
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Slide show” module */

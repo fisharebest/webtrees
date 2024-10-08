@@ -65,11 +65,6 @@ class LocationListModule extends AbstractModule implements ModuleListInterface, 
         return I18N::translate('Locations');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Locations” module */

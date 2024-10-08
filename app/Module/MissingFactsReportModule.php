@@ -44,11 +44,6 @@ class MissingFactsReportModule extends AbstractModule implements ModuleReportInt
         return I18N::translate('Missing data');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         // This text also appears in the .XML file - update both together

@@ -87,11 +87,6 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         return I18N::translate('Media objects');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Media objects” module */

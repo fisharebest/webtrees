@@ -135,11 +135,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         return I18N::translate('Fan chart');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Fan Chart” module */

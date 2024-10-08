@@ -82,11 +82,6 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
         return I18N::translate('Convert %s tags to GEDCOM 5.5.1', 'INDI:NAME:_XXX');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of a “Data fix” module */

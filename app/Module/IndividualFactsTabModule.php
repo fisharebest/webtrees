@@ -73,11 +73,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         return I18N::translate('Facts and events');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Facts and events” module */

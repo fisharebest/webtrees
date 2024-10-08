@@ -94,11 +94,6 @@ trait ModuleAnalyticsTrait
         return [];
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return I18N::translate('Tracking and analytics');

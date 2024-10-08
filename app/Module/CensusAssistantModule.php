@@ -51,11 +51,6 @@ class CensusAssistantModule extends AbstractModule
         return I18N::translate('Census assistant');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Census assistant” module */

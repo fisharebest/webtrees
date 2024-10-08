@@ -60,11 +60,6 @@ abstract class AbstractModule implements ModuleInterface
         return 'Module name goes here';
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return $this->title();

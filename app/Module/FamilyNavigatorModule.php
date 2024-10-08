@@ -40,11 +40,6 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
         return I18N::translate('Family navigator');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Family navigator” module */

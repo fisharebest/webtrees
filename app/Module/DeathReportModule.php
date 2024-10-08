@@ -40,11 +40,6 @@ class DeathReportModule extends AbstractModule implements ModuleReportInterface
         return I18N::translate('Deaths');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         // This text also appears in the .XML file - update both together

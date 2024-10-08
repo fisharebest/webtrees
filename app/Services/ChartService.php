@@ -91,7 +91,7 @@ class ChartService
             }
         }
 
-        return $descendants;
+        return $descendants->values();
     }
 
     /**
@@ -104,7 +104,7 @@ class ChartService
      */
     public function descendantFamilies(Individual $individual, int $generations): Collection
     {
-        $descendants = new Collection($individual->spouseFamilies());
+        $descendants = $individual->spouseFamilies();
 
         if ($generations > 0) {
             foreach ($descendants as $family) {

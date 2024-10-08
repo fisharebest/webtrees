@@ -43,11 +43,6 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
         return I18N::translate('CKEditor™');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get” */

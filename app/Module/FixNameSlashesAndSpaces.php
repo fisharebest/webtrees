@@ -56,11 +56,6 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
         return I18N::translate('Fix name slashes and spaces');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of a “Data fix” module */

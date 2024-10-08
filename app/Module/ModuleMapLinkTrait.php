@@ -39,11 +39,6 @@ trait ModuleMapLinkTrait
         return $this->providerName() . ' — ' . I18N::translate('Map link');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return I18N::translate('Show the location of an event on an external map.');

@@ -67,11 +67,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
         return I18N::translate('Yahrzeiten');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */

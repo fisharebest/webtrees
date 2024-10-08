@@ -66,11 +66,6 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
         return I18N::translate('Check for new version');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         return I18N::translate('Send an email to all administrators when an upgrade is available.');
