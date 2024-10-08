@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-09-30 12:11+0000\n"
-"Last-Translator: mpwt <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2024-10-08 10:07+0000\n"
+"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -10533,7 +10533,9 @@ msgstr "Bitte beachten: Wenn ein Benutzerkonto mit einem Datensatz verknüpft is
 
 #: resources/views/help/relationship-privacy.phtml:18
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "Hinweis: Längere Pfade benötigen viele Berechnungen, was dazu führen kann, dass Ihre Website für diese Nutzer langsam läuft."
+msgstr ""
+"Hinweis: Höhere Stufenweiten benötigen mehr Berechnungen, was dazu führen "
+"kann, dass Ihre Website für diese Nutzer langsam läuft."
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:111 app/Module/NoteListModule.php:141
@@ -16455,7 +16457,12 @@ msgstr "Wenn Sie Informationen hinzufügen, bearbeiten oder löschen, werden die
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet ist und zugleich eine Rolle als Mitglied, Bearbeiter oder Moderator ausübt, können Sie den Zugriff auf Details von entfernten, lebenden Verwandten verhindern. Sie geben die Anzahl der Beziehungsgrade an, die der Benutzer sehen darf."
+msgstr ""
+"Wenn ein Benutzer einem einzelnen Datensatz in einem Stammbaum zugeordnet "
+"ist und zugleich eine Rolle als Mitglied, Bearbeiter oder Moderator ausübt, "
+"können Sie den Zugriff auf Details von entfernten, lebenden Verwandten "
+"verhindern. Sie geben die Anzahl der Beziehungsgrade (Stufenweite) an, die "
+"der Benutzer sehen darf."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:29
