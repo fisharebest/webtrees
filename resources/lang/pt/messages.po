@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-10-04 16:11+0000\n"
+"PO-Revision-Date: 2024-10-09 20:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -671,39 +671,41 @@ msgstr "Um endereço web"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:124
 msgid "A chart displaying relationships between two individuals."
-msgstr "Um gráfico que exibe as relações entre dois indivíduos."
+msgstr "Um diagrama que exibe as relações entre dois indivíduos."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:91
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
 msgstr ""
-"Um gráfico de ascendentes e descendentes de um indivíduo, como um livro de "
+"Um diagrama de ascendentes e descendentes de um indivíduo, como um livro de "
 "família."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:86
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Um gráfico dos ascendentes de um indivíduo, como uma árvore compacta."
+msgstr ""
+"Um diagrama dos ascendentes de um indivíduo, em formato de árvore compacta."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:113
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Um gráfico dos antepassados de um indivíduo, formatado como uma árvore."
+msgstr ""
+"Um diagrama dos antepassados de um indivíduo, formatado como uma árvore."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:107
 msgid "A chart of an individual’s ancestors."
-msgstr "Um gráfico dos antepassados de um indivíduo."
+msgstr "Um diagrama dos antepassados de um indivíduo."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:103
 msgid "A chart of an individual’s descendants."
-msgstr "Um gráfico de descendentes de um indivíduo."
+msgstr "Um diagrama de descendentes de um indivíduo."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:115
 msgid "A chart of individuals’ lifespans."
-msgstr "Um gráfico da linha do tempo de um indivíduo."
+msgstr "Um diagrama da linha do tempo de um indivíduo."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -719,7 +721,7 @@ msgstr ""
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:146
 msgid "A fan chart of an individual’s ancestors."
-msgstr "Um gráfico em leque dos antepassados de um indivíduo."
+msgstr "Um diagrama em leque dos antepassados de um indivíduo."
 
 #: resources/views/admin/map-import-form.phtml:37
 #: resources/views/admin/trees-export.phtml:30
@@ -1496,7 +1498,7 @@ msgstr "Adicionar registos sem ligação"
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:72
 msgid "Add your own text and graphics."
-msgstr "Adicionar o seu próprio texto e gráficos."
+msgstr "Adicionar o seu próprio texto e diagramas."
 
 #: app/Module/FamilyTreeNewsModule.php:182 app/Module/UserJournalModule.php:181
 msgid "Add/edit a journal/news entry"
@@ -1911,7 +1913,7 @@ msgstr "Uma forma alternativa para iniciar sessão e terminar sessão."
 #: app/Module/HourglassChartModule.php:90
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
-"Um gráfico ampulheta dos antepassados e dos ascendentes de um indivídio."
+"Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivídio."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -3509,18 +3511,18 @@ msgstr "Conjunto de caracteres"
 #: resources/views/admin/modules.phtml:224
 #: resources/views/admin/modules.phtml:227
 msgid "Chart"
-msgstr "Gráfico"
+msgstr "Diagrama"
 
 #: app/Module/RelationshipsChartModule.php:431
 msgid "Chart preferences"
-msgstr "Preferências de gráfico"
+msgstr "Preferências de diagramas"
 
 #: resources/views/modules/charts/config.phtml:20
 #: resources/views/modules/statistics-chart/custom.phtml:26
 #: resources/views/modules/statistics-chart/custom.phtml:155
 #: resources/views/modules/statistics-chart/custom.phtml:157
 msgid "Chart type"
-msgstr "Tipo de gráfico"
+msgstr "Tipo de diagrama"
 
 #. I18N: Name of a module/block
 #. I18N: Name of a module
@@ -4173,7 +4175,7 @@ msgstr "Criar mapas usando %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
-msgstr "Criar seu próprio gráfico"
+msgstr "Criar seu próprio diagrama"
 
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
@@ -4381,7 +4383,7 @@ msgstr "Módulo customizado"
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
 msgid "Custom welcome text"
-msgstr "Texto personalizado de boas vindas"
+msgstr "Texto personalizado de boas-vindas"
 
 #: app/Module/ModuleThemeTrait.php:211 app/Module/ModuleThemeTrait.php:215
 msgid "Customize this page"
@@ -5078,7 +5080,7 @@ msgstr "Decidi"
 
 #: app/Module/UserWelcomeModule.php:96 app/Module/WelcomeBlockModule.php:95
 msgid "Default chart"
-msgstr "Gráfico por defeito"
+msgstr "Diagrama por defeito"
 
 #: resources/views/admin/trees.phtml:129
 msgid "Default family tree"
@@ -6348,13 +6350,13 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:135
 msgid "Fan chart"
-msgstr "Gráfico em leque"
+msgstr "Diagrama em leque"
 
 #. I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:181
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Gráfico em leque de %s"
+msgstr "Diagrama em leque de %s"
 
 #: app/Date/JalaliDate.php:273
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -6757,7 +6759,7 @@ msgstr "Formato"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:584
 msgid "Format text and notes"
-msgstr ""
+msgstr "Formatar texto e palavras"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:94
@@ -7570,7 +7572,7 @@ msgstr "Eventos históricos"
 #: app/Module/HitCountFooterModule.php:73
 #: resources/views/admin/trees-preferences.phtml:627
 msgid "Hit counters"
-msgstr "Contadores de clique"
+msgstr "Contadores de visualizações"
 
 #: app/CustomTags/PhpGedView.php:70
 msgid "Holocaust"
@@ -7600,13 +7602,13 @@ msgstr "Hong Kong"
 #: app/Module/ChartsBlockModule.php:161 app/Module/ChartsBlockModule.php:257
 #: app/Module/HourglassChartModule.php:79
 msgid "Hourglass chart"
-msgstr "Ampulheta"
+msgstr "Diagrama em ampulheta"
 
 #. I18N: %s is an individual’s name
 #: app/Module/HourglassChartModule.php:125
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Gráfico ampulheta de %s"
+msgstr "Diagrama em ampulheta de %s"
 
 #: resources/views/modules/census-assistant.phtml:112
 msgid "Household"
@@ -8020,7 +8022,7 @@ msgstr "Indivíduo 2"
 
 #: app/Statistics/Google/ChartDistribution.php:317
 msgid "Individual distribution chart"
-msgstr "Gráfico de distribuição de indivíduos"
+msgstr "Diagrama de distribuição de indivíduos"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
@@ -13330,7 +13332,7 @@ msgstr "Exibir indivíduos vivos"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:122
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Exibir nomes dos indivíduos privados"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
@@ -14533,7 +14535,7 @@ msgstr "A árvore da família \"%s\" foi apagada."
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
-"A árvore de família \"%s\" será mostrada aos visitantes quando chegam pela "
+"A árvore de família \"%s\" será exibida aos visitantes quando chegam pela "
 "primeira vez a este sítio web."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:247
@@ -15097,8 +15099,8 @@ msgstr ""
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
-"Este bloco mostra para editores uma lista de registos com as alterações "
-"pendentes que precisam de ser aprovados por um moderador. Também gera e-"
+"Este bloco exibe aos editores uma lista de registos com as alterações "
+"pendentes que precisam de ser aprovadas por um moderador. Também gera e-"
 "mails diários aos moderadores sempre que existam alterações pendentes."
 
 #: resources/views/admin/users-create.phtml:76
@@ -15787,7 +15789,7 @@ msgstr ""
 #: resources/views/modules/sitemap/config.phtml:51
 msgid "To tell search engines that sitemaps are available, you can use the following links."
 msgstr ""
-"Para informar motores de busca que o mapa do sítio está disponível, você "
+"Para informar os motores de busca que o mapa do sítio está disponível, você "
 "pode usar as seguintes hiperligações."
 
 #: resources/views/modules/bing-maps/config.phtml:36
@@ -16728,12 +16730,12 @@ msgstr "Peso"
 #: app/Module/UserWelcomeModule.php:118
 #, php-format
 msgid "Welcome %s"
-msgstr "Bemvindo %s"
+msgstr "Bem-vindo(a) %s"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:26
 msgid "Welcome text on sign-in page"
-msgstr "Texto de boas vindas na página de autenticação"
+msgstr "Texto de boas-vindas na página de autenticação"
 
 #: resources/views/login-page.phtml:23
 msgid "Welcome to this genealogy website"
@@ -17799,7 +17801,7 @@ msgstr "primeira"
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr "primeiro"
+msgstr "primeira"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2422
@@ -19808,7 +19810,7 @@ msgstr "última"
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr "último"
+msgstr "última"
 
 #: app/Module/PedigreeChartModule.php:362
 #: app/Module/PedigreeChartModule.php:370
