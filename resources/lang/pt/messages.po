@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-10-08 19:03+0000\n"
+"PO-Revision-Date: 2024-10-09 20:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -1913,7 +1913,7 @@ msgstr "Uma forma alternativa para iniciar sessão e terminar sessão."
 #: app/Module/HourglassChartModule.php:90
 msgid "An hourglass chart of an individual’s ancestors and descendants."
 msgstr ""
-"Um diagrama ampulheta dos antepassados e dos ascendentes de um indivídio."
+"Um diagrama em ampulheta dos antepassados e dos ascendentes de um indivídio."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -7602,13 +7602,13 @@ msgstr "Hong Kong"
 #: app/Module/ChartsBlockModule.php:161 app/Module/ChartsBlockModule.php:257
 #: app/Module/HourglassChartModule.php:79
 msgid "Hourglass chart"
-msgstr "Diagrama ampulheta"
+msgstr "Diagrama em ampulheta"
 
 #. I18N: %s is an individual’s name
 #: app/Module/HourglassChartModule.php:125
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Diagrama ampulheta de %s"
+msgstr "Diagrama em ampulheta de %s"
 
 #: resources/views/modules/census-assistant.phtml:112
 msgid "Household"
@@ -15789,7 +15789,7 @@ msgstr ""
 #: resources/views/modules/sitemap/config.phtml:51
 msgid "To tell search engines that sitemaps are available, you can use the following links."
 msgstr ""
-"Para informar motores de busca que o mapa do sítio está disponível, você "
+"Para informar os motores de busca que o mapa do sítio está disponível, você "
 "pode usar as seguintes hiperligações."
 
 #: resources/views/modules/bing-maps/config.phtml:36
