@@ -126,8 +126,8 @@ class DutchPrimeMinisters extends AbstractModule implements ModuleHistoricEvents
                     "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 26 OCT 2010 TO 05 NOV 2012\n2 kabinet-Rutte I",
                     "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 05 NOV 2012 TO 26 OCT 2017\n2 kabinet-Rutte II",
                     "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 26 OCT 2017 TO 10 JAN 2022\n2 kabinet-Rutte III",
-                    "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 10 JAN 2022 TO 02 JUl 2024\n2 kabinet-Rutte IV",
-                    "1 EVEN Dick Schoof\n2 TYPE Minister-President\n2 DATE FROM 02 JUl 2024\n2 kabinet-Schoof",
+                    "1 EVEN Mark Rutte\n2 TYPE Minister-President\n2 DATE FROM 10 JAN 2022 TO 02 JUL 2024\n2 kabinet-Rutte IV",
+                    "1 EVEN Dick Schoof\n2 TYPE Minister-President\n2 DATE FROM 02 JUL 2024\n2 kabinet-Schoof",
                 ]);
 
             default:
