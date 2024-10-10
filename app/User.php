@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use PragmaRX\Google2FA\Google2FA;
+use chillerlan\QRCode\QRCode;
 
 use function is_string;
 
@@ -109,6 +111,21 @@ class User implements UserInterface
     public function realName(): string
     {
         return $this->real_name;
+    }
+    /**
+     * Generate a QR code image based on 2FA secret and return both.
+     *
+     * @return array
+     */
+
+    public function genQRcode(): array
+    {
+        $qrinfo = array();
+        $google2fa = new Google2FA();
+        $qrinfo['secret'] = $google2fa->generateSecretKey();
+        $data = 'otpauth://totp/' . $this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
+        $qrinfo['qrcode'] = (new QRCode)->render($data);
+        return $qrinfo;
     }
 
     /**
@@ -243,6 +260,42 @@ class User implements UserInterface
 
         return false;
     }
+    /**
+     * Set the Secret of this user.
+     *
+     * @param string $secret
+     *
+     * @return User
+     */
+    public function setSecret(#[\SensitiveParameter] string $secret): User
+    {
+        DB::table('user')
+            ->where('user_id', '=', $this->user_id)
+            ->update([
+                'secret' => $secret,
+            ]);
+
+        return $this;
+    }
+   
+      /**
+      * Validate a supplied 2fa code
+      *
+      * @param string $code2fa
+      *
+      * @return bool
+      */
+     public function check2facode(string $code2fa): bool
+     {
+         $secret = DB::table('user')
+             ->where('user_id', '=', $this->id())
+             ->value('secret');
+       $google2fa = new Google2FA;
+         if($google2fa->verifyKey($secret, $code2fa)) {
+                  return true;
+               }
+         return false;
+     }
 
     /**
      * A closure which will create an object from a database row.

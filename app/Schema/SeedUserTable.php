@@ -46,6 +46,7 @@ class SeedUserTable implements SeedInterface
             'real_name' => 'DEFAULT_USER',
             'email'     => 'DEFAULT_USER',
             'password'  => 'DEFAULT_USER',
+            'secret'  => 'DEFAULT_USER',
         ]);
 
         if (DB::driverName() === DB::SQL_SERVER) {
