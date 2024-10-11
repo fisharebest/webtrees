@@ -14,6 +14,7 @@ use Fisharebest\Webtrees\Tree;
  * @var array<string,string> $languages
  * @var Individual|null      $my_individual_record
  * @var bool                 $show_delete_option
+ * @var bool                 $show_2fa
  * @var array<string,string> $timezones
  * @var string               $title
  * @var Tree|null            $tree
@@ -153,6 +154,7 @@ use Fisharebest\Webtrees\Tree;
             </div>
         </div>
     </fieldset>
+<?php if ($show_2fa) : ?>
     <fieldset class="row">
         <legend class="col-sm-3 col-form-label wt-page-options-label">
             <?= I18N::translate('2FA status') ?>
@@ -164,6 +166,7 @@ use Fisharebest\Webtrees\Tree;
             </div>
         </div>
     </fieldset>
+<?php endif ?>
     <div class="row"  id="qrcode">
         <?php $qrc = $user->genQRcode(); ?>
         <input type="hidden" name="secret" id="secret" value="">
