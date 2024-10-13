@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-09 20:11+0000\n"
+"PO-Revision-Date: 2024-10-13 21:22+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -9476,7 +9476,7 @@ msgstr "Nach rechts verschieben"
 #: app/Module/FrequentlyAskedQuestionsModule.php:484 index_edit.php:310
 #: index_edit.php:359
 msgid "Move up"
-msgstr "Nach oben verschieben"
+msgstr "Hoch schieben"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6825
