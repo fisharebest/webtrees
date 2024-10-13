@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-10-08 11:57+0000\n"
+"PO-Revision-Date: 2024-10-13 21:22+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
@@ -9901,7 +9901,7 @@ msgstr "Das Medienobjekt verschieben?"
 #: resources/views/admin/components.phtml:148
 #: resources/views/modules/faq/config.phtml:61
 msgid "Move up"
-msgstr "Nach oben verschieben"
+msgstr "Hoch schieben"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -20813,7 +20813,7 @@ msgstr "angenommen, geschätzt"
 #: app/Module/PedigreeChartModule.php:372
 #: resources/views/edit/reorder-card-header.phtml:28
 msgid "up"
-msgstr "oben"
+msgstr "hoch"
 
 #: resources/views/admin/trees-unconnected.phtml:33
 msgid "update"
