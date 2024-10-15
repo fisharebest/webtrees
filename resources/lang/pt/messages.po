@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-10-09 20:11+0000\n"
+"PO-Revision-Date: 2024-10-15 22:57+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -11380,7 +11380,7 @@ msgstr "Local do batismo mórmom"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1269 app/GedcomTag.php:955
 msgid "Place of LDS child sealing"
-msgstr "Local do Selamento Mórmom de criança"
+msgstr "Local do selamento mórmom de criança"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Place of LDS confirmation"
@@ -11394,7 +11394,7 @@ msgstr "Local da dotação mórmom"
 #: app/Factories/ElementFactory.php:1024
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 msgid "Place of LDS spouse sealing"
-msgstr "Local do Selamento Mórmom de cônjuge"
+msgstr "Local do selamento mórmom de cônjuge"
 
 #: app/Factories/ElementFactory.php:1122 app/GedcomTag.php:443
 msgid "Place of adoption"
