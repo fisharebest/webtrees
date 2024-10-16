@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-09 20:11+0000\n"
+"PO-Revision-Date: 2024-10-16 20:45+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -845,7 +845,7 @@ msgstr "Lista över de mest populära förnamnen."
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "En lista över de mest populära släktnamnen."
+msgstr "En lista över de populäraste efternamnen."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
@@ -6458,7 +6458,7 @@ msgstr "För hjälp med släktfrågor kontakta %s."
 #: app/Theme/AbstractTheme.php:307
 #, php-format
 msgid "For technical support and information contact %s."
-msgstr "För teknisk stöd och information kontakta %s."
+msgstr "För tekniskt stöd och information kontakta %s."
 
 #: app/Theme/AbstractTheme.php:285
 #, php-format
@@ -7914,7 +7914,7 @@ msgstr "Behåll mediaobjekt"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2256
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr "Behåll den befintliga ”senaste ändringen” informationen"
+msgstr "Behåll befintlig information om ”senaste ändringen”"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
@@ -12699,7 +12699,7 @@ msgstr "Visa personlistan"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr "Visa släktnamnslistan"
+msgstr "Visa efternamnslistan"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -13802,14 +13802,16 @@ msgstr "Modulen ”%s” är aktiverad."
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "De vanligaste familje fakta och händelser listas separat, så att de kan tillsättas lättare."
+msgstr ""
+"De vanligaste familjefaktumen och -händelser listas separat, så att de kan "
+"läggas till lättare."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1726
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
-"De vanligaste personfakta och -händelser listas separat, så att de kan "
-"tillsättas lättare."
+"De vanligaste personfaktumen och -händelser listas separat, så att de kan "
+"läggas till lättare."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
@@ -14895,15 +14897,15 @@ msgstr "Tonga"
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
 msgstr[0] "Vanligast förnamn"
-msgstr[1] "De %s vanligaste förnamn"
+msgstr[1] "De %s vanligaste förnamnen"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Vanligaste släktnamn"
-msgstr[1] "%s vanligaste släktnamn"
+msgstr[0] "Vanligaste efternamn"
+msgstr[1] "De %s vanligaste efternamnen"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:71
