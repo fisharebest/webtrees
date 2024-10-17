@@ -53,8 +53,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     ];
 
     // Limits
-    protected const MINIMUM_GENERATIONS = 2;
-    protected const MAXIMUM_GENERATIONS = 10;
+    public const MINIMUM_GENERATIONS = 2;
+    public const MAXIMUM_GENERATIONS = 10;
 
     /**
      * Initialization.
