@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-10-15 22:57+0000\n"
+"PO-Revision-Date: 2024-10-20 10:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -1572,26 +1572,26 @@ msgstr "Adotado"
 #: app/Elements/PedigreeLinkageType.php:71 app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr "Adotado"
+msgstr "Adotado(a)"
 
 #: app/Elements/AdoptedByWhichParent.php:57
 #: app/GedcomCode/GedcomCodeAdop.php:49
 msgid "Adopted by both parents"
-msgstr "Adotado por ambos os pais"
+msgstr "Adotado(a) por ambos os pais"
 
 #. I18N: gedcom tag _ADPF
 #: app/Elements/AdoptedByWhichParent.php:58
 #: app/Factories/ElementFactory.php:296 app/GedcomCode/GedcomCodeAdop.php:50
 #: app/GedcomTag.php:1027
 msgid "Adopted by father"
-msgstr "Adotado pelo pai"
+msgstr "Adotado(a) pelo pai"
 
 #. I18N: gedcom tag _ADPM
 #: app/Elements/AdoptedByWhichParent.php:59
 #: app/Factories/ElementFactory.php:297 app/GedcomCode/GedcomCodeAdop.php:51
 #: app/GedcomTag.php:1031
 msgid "Adopted by mother"
-msgstr "Adotado pela mãe"
+msgstr "Adotado(a) pela mãe"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:810
 msgid "Adopted name"
@@ -1981,7 +1981,7 @@ msgstr ""
 #: app/Module/InteractiveTreeModule.php:64
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr ""
-"Uma árvore interativa, que apresenta todos os antepassados e descendentes de "
+"Uma árvore interativa que apresenta todos os antepassados e descendentes de "
 "um indivíduo."
 
 #: resources/views/errors/database-error.phtml:12
@@ -2867,7 +2867,7 @@ msgstr "Nascimento"
 #: app/Elements/PedigreeLinkageType.php:70 app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Nascido"
+msgstr "Nascimento"
 
 #: app/Statistics/Google/ChartDistribution.php:338
 msgid "Birth by country"
@@ -9388,7 +9388,7 @@ msgstr "Casamento de uma irmã"
 
 #: app/Module/IndividualFactsTabModule.php:550
 msgid "Marriage of a son"
-msgstr "Anúncios de casamento de um filho"
+msgstr "Casamento de um filho"
 
 #: app/Module/IndividualFactsTabModule.php:845
 msgid "Marriage of parents"
@@ -9845,7 +9845,7 @@ msgstr "Moderadores"
 #: resources/views/admin/components.phtml:39
 #: resources/views/admin/modules.phtml:66
 msgid "Module"
-msgstr ""
+msgstr "Módulo"
 
 #: resources/views/admin/modules.phtml:61
 #: resources/views/modules/batch_update/admin.phtml:10
@@ -10088,7 +10088,7 @@ msgstr "Monte Timpanogos, Utah"
 #: resources/views/admin/components.phtml:146
 #: resources/views/modules/faq/config.phtml:57
 msgid "Move down"
-msgstr "Mover para Baixo"
+msgstr "Mover para baixo"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:17
 msgid "Move the media object?"
@@ -10098,7 +10098,7 @@ msgstr "Mover o objeto multimédia?"
 #: resources/views/admin/components.phtml:140
 #: resources/views/modules/faq/config.phtml:56
 msgid "Move up"
-msgstr "Mover para Cima"
+msgstr "Mover para cima"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:343
@@ -11188,7 +11188,7 @@ msgstr "Genealogia"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Árvore genealógica"
+msgstr "Diagrama de ascendentes"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:123
@@ -11205,7 +11205,7 @@ msgstr "Mapa genealógico de %s"
 #: app/Module/PedigreeChartModule.php:164
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Árvore genealógica de %s"
+msgstr "Árvore de ascendentes de %s"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:267
@@ -12817,7 +12817,7 @@ msgstr "Selecionar indivíduos por local ou data"
 #: app/Module/ClippingsCartModule.php:137
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr ""
-"Selecione registos de uma árvore genealógica e salve-as num ficheiro GEDCOM."
+"Selecione registos de uma árvore genealógica e grave-as num ficheiro GEDCOM."
 
 #: resources/views/modules/statistics-chart/custom.phtml:148
 msgid "Select the desired age interval"
@@ -14711,13 +14711,13 @@ msgstr "Mensagem enviada com sucesso para %s."
 #: app/Module/ChartsBlockModule.php:166 app/Module/ChartsBlockModule.php:180
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "O módulo \"%s\" foi desativado."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:76
 #: app/Http/RequestHandlers/ModulesAllAction.php:70
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "O módulo \"%s\" foi ativado."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:779
@@ -14800,7 +14800,7 @@ msgstr "As preferências para o módulo \"%s\" foram apagadas."
 #: app/Module/RelationshipsChartModule.php:432 app/Module/SiteMapModule.php:180
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "As preferências para o módulo \"%s\" foram atualizadas."
 
 #: resources/views/setup/step-4-database-mysql.phtml:124
 #: resources/views/setup/step-4-database-pgsql.phtml:109
