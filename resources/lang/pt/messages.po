@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-10-18 11:41+0000\n"
+"PO-Revision-Date: 2024-10-18 12:52+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -9393,7 +9393,7 @@ msgstr "Casamento de uma irmã"
 
 #: app/Services/IndividualFactsService.php:439
 msgid "Marriage of a son"
-msgstr "Anúncios de casamento de um filho"
+msgstr "Casamento de um filho"
 
 #: app/Services/IndividualFactsService.php:732
 msgid "Marriage of parents"
