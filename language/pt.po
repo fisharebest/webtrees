@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-15 22:57+0000\n"
+"PO-Revision-Date: 2024-10-20 10:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -1567,11 +1567,11 @@ msgstr "Adotado"
 #: app/GedcomCode/GedcomCodePedi.php:61
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr "Adotado"
+msgstr "Adotado(a)"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52
 msgid "Adopted by both parents"
-msgstr "Adotado por ambos os pais"
+msgstr "Adotado(a) por ambos os pais"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50
 msgctxt "FEMALE"
@@ -1586,7 +1586,7 @@ msgstr "Adotado por ambos pais"
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:61 app/GedcomTag.php:936
 msgid "Adopted by father"
-msgstr "Adotado pelo pai"
+msgstr "Adotado(a) pelo pai"
 
 #. I18N: gedcom tag _ADPF
 #: app/GedcomCode/GedcomCodeAdop.php:59 app/GedcomTag.php:932
@@ -1603,7 +1603,7 @@ msgstr "Adotado pelo pai"
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:70 app/GedcomTag.php:951
 msgid "Adopted by mother"
-msgstr "Adotado pela mãe"
+msgstr "Adotado(a) pela mãe"
 
 #. I18N: gedcom tag _ADPM
 #: app/GedcomCode/GedcomCodeAdop.php:68 app/GedcomTag.php:947
@@ -2003,7 +2003,7 @@ msgstr ""
 #: app/Module/InteractiveTreeModule.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
 msgstr ""
-"Uma árvore interativa, que apresenta todos os antepassados e descendentes de "
+"Uma árvore interativa que apresenta todos os antepassados e descendentes de "
 "um indivíduo."
 
 #: setup.php:507
@@ -2836,7 +2836,7 @@ msgstr "Nascimento"
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Nascido"
+msgstr "Nascimento"
 
 #: app/Stats.php:1658 statistics.php:565
 msgid "Birth by country"
@@ -8918,7 +8918,7 @@ msgstr "Casamento de uma irmã"
 
 #: app/GedcomTag.php:1570
 msgid "Marriage of a son"
-msgstr "Anúncios de casamento de um filho"
+msgstr "Casamento de um filho"
 
 #. I18N: ...to each other
 #: app/GedcomTag.php:1579
@@ -9352,7 +9352,7 @@ msgstr "Moderadores"
 
 #: admin_modules.php:157
 msgid "Module"
-msgstr ""
+msgstr "Módulo"
 
 #. I18N: Menu entry
 #: admin_module_blocks.php:61 admin_module_charts.php:54
@@ -9564,7 +9564,7 @@ msgstr "Monte Timpanogos, Utah"
 #: app/Module/FrequentlyAskedQuestionsModule.php:490 index_edit.php:312
 #: index_edit.php:361
 msgid "Move down"
-msgstr "Mover para Baixo"
+msgstr "Mover para baixo"
 
 #: index_edit.php:342
 msgid "Move left"
@@ -9577,7 +9577,7 @@ msgstr "Mover para Direita"
 #: app/Module/FrequentlyAskedQuestionsModule.php:484 index_edit.php:310
 #: index_edit.php:359
 msgid "Move up"
-msgstr "Mover para Cima"
+msgstr "Mover para cima"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6825
@@ -10713,7 +10713,7 @@ msgstr "Genealogia"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Árvore genealógica"
+msgstr "Diagrama de ascendentes"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
@@ -10734,7 +10734,7 @@ msgstr "Árvore genealógica de %s"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Árvore genealógica de %s"
+msgstr "Árvore de ascendentes de %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -12186,7 +12186,7 @@ msgstr "Selecionar indivíduos por local ou data"
 #: app/Module/ClippingsCartModule.php:44
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr ""
-"Selecione registos de uma árvore genealógica e salve-as num ficheiro GEDCOM."
+"Selecione registos de uma árvore genealógica e grave-as num ficheiro GEDCOM."
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
@@ -13990,12 +13990,12 @@ msgstr "Mensagem enviada com sucesso para %s."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "O módulo \"%s\" foi desativado."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "O módulo \"%s\" foi ativado."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -14073,7 +14073,7 @@ msgstr "As preferências para o módulo \"%s\" foram apagadas."
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "As preferências para o módulo \"%s\" foram atualizadas."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
