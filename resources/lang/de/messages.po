@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-10-13 21:22+0000\n"
+"PO-Revision-Date: 2024-10-20 10:11+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
@@ -1350,7 +1350,7 @@ msgstr "Einen Sohn hinzufügen"
 
 #: resources/views/modules/sources_tab/tab.phtml:77
 msgid "Add a source citation"
-msgstr "Ein Quellenzitat hinzufügen"
+msgstr "Ein Zitat aus einer Quelle hinzufügen"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:87
 msgid "Add a spouse"
@@ -5939,7 +5939,12 @@ msgstr "Häufige Fragen (FAQ)"
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:28
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären. Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellenzitate, usw."
+msgstr ""
+"FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, "
+"den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären. "
+"Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, "
+"Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellen "
+"eines Zitats, usw."
 
 #: app/CustomTags/Gedcom7.php:98 app/Gedcom.php:658
 msgid "Fact"
@@ -10521,7 +10526,7 @@ msgstr "Notiz zur Quelle"
 #: app/Gedcom.php:753 app/Gedcom.php:777 app/Gedcom.php:801 app/Gedcom.php:910
 #: app/Gedcom.php:924
 msgid "Note on source citation"
-msgstr "Notiz zum Quellenzitat"
+msgstr "Notiz zum Zitat"
 
 #: app/Gedcom.php:839
 msgid "Note on source data"
@@ -13648,11 +13653,11 @@ msgstr "Quelle"
 #: app/Gedcom.php:747 app/Gedcom.php:771 app/Gedcom.php:795 app/Gedcom.php:904
 #: app/Gedcom.php:918
 msgid "Source citation"
-msgstr "Quellenzitat"
+msgstr "Quelle des Zitats"
 
 #: resources/views/admin/tags.phtml:326
 msgid "Source citations"
-msgstr "Quellenzitate"
+msgstr "Quelle der Zitate"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -14794,7 +14799,7 @@ msgstr "Es gibt keine Forschungsaufgaben für diesen Stammbaum."
 
 #: resources/views/modules/sources_tab/tab.phtml:65
 msgid "There are no source citations for this individual."
-msgstr "Zu dieser Person gibt es keine Quellenangaben."
+msgstr "Zu dieser Person gibt es keine Zitate aus Quellen."
 
 #: app/Module/ReviewChangesModule.php:155
 #: resources/views/emails/pending-changes-html.phtml:22
