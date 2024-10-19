@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-13 21:22+0000\n"
+"PO-Revision-Date: 2024-10-20 10:11+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -1380,7 +1380,7 @@ msgstr "Einen Sohn oder eine Tochter hinzufügen"
 #: app/Controller/FamilyController.php:172 app/Functions/FunctionsEdit.php:1057
 #: app/Module/SourcesTabModule.php:95
 msgid "Add a source citation"
-msgstr "Ein Quellenzitat hinzufügen"
+msgstr "Ein Zitat aus einer Quelle hinzufügen"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
@@ -5859,7 +5859,12 @@ msgstr "Häufige Fragen (FAQ)"
 #. I18N: FAQ = “Frequently Asked Question”
 #: app/Module/FrequentlyAskedQuestionsModule.php:444
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären. Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellenzitate, usw."
+msgstr ""
+"FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, "
+"den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären. "
+"Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, "
+"Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellen "
+"eines Zitats, usw."
 
 #. I18N: gedcom tag FACT
 #: app/GedcomTag.php:438
@@ -14149,7 +14154,7 @@ msgstr "Es gibt keine Forschungsaufgaben für diesen Stammbaum."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
-msgstr "Zu dieser Person gibt es keine Quellenangaben."
+msgstr "Zu dieser Person gibt es keine Zitate aus Quellen."
 
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
