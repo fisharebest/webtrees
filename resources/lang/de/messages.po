@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-10-20 10:11+0000\n"
+"PO-Revision-Date: 2024-10-21 17:11+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -3806,7 +3806,7 @@ msgstr "Zitat"
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
-msgstr "Details zur Zitierung"
+msgstr "Fundstelle"
 
 #. I18N: gedcom tag CITN
 #: app/Factories/ElementFactory.php:857 app/GedcomTag.php:572
