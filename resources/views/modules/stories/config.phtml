@@ -85,7 +85,7 @@ use Illuminate\Support\Collection;
                 </td>
                 <td>
                     <form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
-                        <button type="submit" class="btn btn-danger" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);" aria-label="<?= I18N::translate('Delete') ?>">
+                        <button type="submit" class="btn btn-danger" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" aria-label="<?= I18N::translate('Delete') ?>">
                             <?= view('icons/delete') ?>
                             <?= I18N::translate('Delete') ?>
                         </button>

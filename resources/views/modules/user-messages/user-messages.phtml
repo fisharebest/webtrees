@@ -50,8 +50,6 @@ use Illuminate\Support\Collection;
 <form
     method="post"
     action="<?= e(route('module', ['action' => 'DeleteMessage', 'module' => $module->name(), 'context' => $context, 'tree' => $tree->name()])) ?>"
-    data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
-    onsubmit="return confirm(this.dataset.confirm);"
     id="messageform"
     name="messageform"
 >
@@ -131,9 +129,11 @@ use Illuminate\Support\Collection;
                                         <?= I18N::translate('Reply') ?>
                                     </a>
                                 <?php } ?>
-                                <button type="button" class="btn btn-danger"
-                                        data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
-                                        onclick="if (confirm(this.dataset.confirm)) {$('#messageform :checkbox').prop('checked', false); $('#cb_message<?= $message->message_id ?>').prop('checked', true); document.messageform.submit();}">
+                                <button
+                                    type="button"
+                                    class="btn btn-danger"
+                                    onclick="if (confirm('<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>')) {$('#messageform :checkbox').prop('checked', false); $('#cb_message<?= $message->message_id ?>').prop('checked', true); document.messageform.submit();}"
+                                >
                                     <?= I18N::translate('Delete') ?>
                                 </button>
                             </div>
@@ -143,7 +143,13 @@ use Illuminate\Support\Collection;
             </table>
         </div>
         <p>
-            <button type="submit" class="btn btn-primary"><?= I18N::translate('Delete selected messages') ?></button>
+            <button
+                type="submit"
+                class="btn btn-primary"
+                data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
+            >
+                <?= I18N::translate('Delete selected messages') ?>
+            </button>
         </p>
     <?php endif ?>
 
