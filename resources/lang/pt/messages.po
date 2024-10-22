@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-10-20 10:11+0000\n"
+"PO-Revision-Date: 2024-10-23 18:11+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -12998,7 +12998,7 @@ msgstr ""
 
 #: resources/views/admin/trees.phtml:129 resources/views/admin/trees.phtml:136
 msgid "Set as default"
-msgstr ""
+msgstr "Definir por defeito"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:39
