@@ -106,7 +106,7 @@ class LowCountriesRulers extends AbstractModule implements ModuleHistoricEventsI
                     "1 EVEN Koningen der Nederlanden\n2 TYPE koninkrijk\n2 DATE FROM 1831",
                     "1 EVEN Staten-Generaal van het Koninkrijk der Nederlanden\n2 TYPE koninkrijk\n2 DATE FROM 1848",
                     "1 EVEN Raad van State\n2 TYPE koninkrijk\n2 DATE FROM 1889 TO 1890",
-                    "1 EVEN Koningin-regentes van Nederland\n2 TYPE koninkrijk\\n2 DATE FROM 1890 TO 1898",
+                    "1 EVEN Koningin-regentes van Nederland\n2 TYPE koninkrijk\n2 DATE FROM 1890 TO 1898",
                     "1 EVEN Prins-regent van België\n2 TYPE koninkrijk\n2 DATE FROM 1944 TO 1950",
                 ]);
 
