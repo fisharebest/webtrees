@@ -63,7 +63,6 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionNamedType;
-use stdClass;
 
 use function count;
 use function in_array;
@@ -1059,7 +1058,7 @@ class Statistics implements
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<array<stdClass>>
+     * @return array<array<object>>
      */
     public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {
@@ -1657,7 +1656,7 @@ class Statistics implements
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
@@ -2005,7 +2004,7 @@ class Statistics implements
      * @param int $year1
      * @param int $year2
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
