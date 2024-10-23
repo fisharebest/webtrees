@@ -52,9 +52,9 @@ class DutchPrimeMinisters extends AbstractModule implements ModuleHistoricEvents
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'nl':
                 return new Collection([
                     "1 EVEN Gerrit graaf Schimmelpenninck\n2 TYPE Voorzitter van de ministerraad\n2 DATE FROM 25 MAR 1848 TO 21 NOV 1848\n2 NOTE kabinet-Schimmelpenninck",

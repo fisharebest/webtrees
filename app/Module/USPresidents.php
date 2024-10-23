@@ -52,9 +52,9 @@ class USPresidents extends AbstractModule implements ModuleHistoricEventsInterfa
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'en-AU':
             case 'en-GB':
             case 'en-US':

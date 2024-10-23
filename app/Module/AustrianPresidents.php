@@ -52,9 +52,9 @@ class AustrianPresidents extends AbstractModule implements ModuleHistoricEventsI
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'de':
                 return new Collection([
                     "1 EVEN Karl Seitz\n2 TYPE Präsident des Staatsdirektoriums\n2 DATE FROM 30 OCT 1918 TO 09 DEC 1920",

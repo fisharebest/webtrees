@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
@@ -52,9 +51,9 @@ class BritishMonarchs extends AbstractModule implements ModuleHistoricEventsInte
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'en-AU':
             case 'en-GB':
             case 'en-US':

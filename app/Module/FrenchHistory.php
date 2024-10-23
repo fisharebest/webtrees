@@ -54,9 +54,9 @@ class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterf
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'fr':
             case 'fr-CA':
                 return new Collection([

@@ -31,7 +31,7 @@ interface ModuleHistoricEventsInterface extends ModuleInterface
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection;
+    public function historicEventsAll(string $language_tag): Collection;
 
     /**
      * @return Collection<int,Fact>
