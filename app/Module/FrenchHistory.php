@@ -75,7 +75,7 @@ class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterf
                     "1 EVEN Guerre civile d’Espagne\n2 TYPE Guerre civile\n2 DATE 17 JUL 1936\n2 NOTE https://fr.wikipedia.org/wiki/Guerre_d%27Espagne",
                     # Guerres
                     "1 EVEN Guerre franco-allemande\n2 TYPE Guerre\n2 DATE FROM 19 JUL 1870 TO 29 JAN 1871\n2 NOTE https://fr.wikipedia.org/wiki/Guerre_franco-allemande_de_1870",
-                    "1 EVEN Première Guerre mondiale\n2 TYPE Guerre\n2 FROM DATE 1 AUG 1914 TO 11 NOV 1918\n2 NOTE https://fr.wikipedia.org/wiki/Premi%C3%A8re_Guerre_mondiale",
+                    "1 EVEN Première Guerre mondiale\n2 TYPE Guerre\n2 DATE FROM 1 AUG 1914 TO 11 NOV 1918\n2 NOTE https://fr.wikipedia.org/wiki/Premi%C3%A8re_Guerre_mondiale",
                     "1 EVEN Seconde Guerre mondiale\n2 TYPE Guerre\n2 DATE FROM 3 SEP 1939 TO 8 MAY 1945\n2 NOTE https://fr.wikipedia.org/wiki/Seconde_Guerre_mondiale",
                     # Présidents de France
                     "1 EVEN Louis-Napoléon Bonaparte\n2 TYPE 1er président de la République Française\n2 DATE 10 DEC 1848",
