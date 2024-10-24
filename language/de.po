@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2024-10-25 11:49+0000\n"
-"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
+"Last-Translator: Matthias Urlichs <matthias@urlichs.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
 "Language: de\n"
@@ -11223,7 +11223,7 @@ msgstr "Quintidi"
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
 msgid "RE: "
-msgstr "AW: "
+msgstr "Re: "
 
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
@@ -16239,9 +16239,9 @@ msgstr ""
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
 msgstr ""
 "Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder "
-"Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt "
-"werden, indem ein „verstorben“-Merkmal gesetzt wird, das aus anderen "
-"Ereignissen abgeleitet werden kann."
+"Einäscherungsdatum gesetzt ist, können die Abfragen beschleunigt werden, "
+"indem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen "
+"abgeleitet werden kann."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
