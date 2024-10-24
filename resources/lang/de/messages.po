@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-10-21 17:11+0000\n"
-"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
+"PO-Revision-Date: 2024-10-25 11:49+0000\n"
+"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -5942,7 +5942,7 @@ msgid "FAQs are lists of questions and answers, which allow you to explain the s
 msgstr ""
 "FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, "
 "den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären. "
-"Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, "
+"Die Fragen bewegen sich im Allgemeinen um die Bereiche Datenschutz, "
 "Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellen "
 "eines Zitats, usw."
 
@@ -15480,7 +15480,13 @@ msgstr "Um die Kompatibilität mit anderen Genealogieanwendungen zu gewährleist
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:37
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Um diese vertraulichen Daten zu schützen, verwendet webtrees eine Apache Konfigurations-Datei (.htaccess), die jeden Zugriff auf dieses Verzeichnis verhindert. Falls Ihr Web-Server .htaccess-Dateien nicht unterstützt und Sie den Zugriff auf dieses Verzeichnis nicht beschränken können, können Sie ein anderes Verzeichnis losgelöst von Ihren Web-Dokumenten wählen."
+msgstr ""
+"Um diese vertraulichen Daten zu schützen, verwendet webtrees eine Apache-"
+"Konfigurationsdatei (.htaccess), die jeglichen Zugriff auf dieses "
+"Verzeichnis verhindert. Falls Ihr Webserver keine .htaccess-Dateien "
+"unterstützt und Sie den Zugriff auf dieses Verzeichnis nicht einschränken "
+"können, können Sie ein anderes Verzeichnis außerhalb Ihrer Web-Dokumente "
+"auswählen."
 
 #: resources/views/emails/password-request-html.phtml:20
 #: resources/views/emails/password-request-text.phtml:16
