@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
 "PO-Revision-Date: 2024-10-25 11:49+0000\n"
-"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
+"Last-Translator: Matthias Urlichs <matthias@urlichs.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
 "Language: de\n"
@@ -11665,7 +11665,7 @@ msgstr "Quintidi"
 #: resources/views/modules/user-messages/user-messages.phtml:115
 #: resources/views/modules/user-messages/user-messages.phtml:116
 msgid "RE: "
-msgstr "AW: "
+msgstr "Re: "
 
 #: app/Elements/RelationIsDescriptor.php:122
 msgid "Rabbi"
@@ -16650,7 +16650,11 @@ msgstr "Sie können die Bearbeitungsformulare vereinfachen, indem Sie nicht verw
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:66
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, indem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
+msgstr ""
+"Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder "
+"Einäscherungsdatum gesetzt ist, können die Abfragen beschleunigt werden, "
+"indem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen "
+"abgeleitet werden kann."
 
 #: app/Http/RequestHandlers/LoginAction.php:108
 msgid "You cannot sign in because your browser does not accept cookies."
