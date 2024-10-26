@@ -299,7 +299,7 @@ msgstr[0] "%s ghi chú đã được cập nhật."
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s xảy ra quá nhiều lần."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2152
@@ -513,7 +513,7 @@ msgstr "(lọc từ tổng %s mục nhập)"
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
 msgid "(includes media files)"
-msgstr ""
+msgstr "(bao gồm các tập tin phương tiện)"
 
 #: resources/views/fact-date.phtml:117
 msgid "(on the date of death)"
@@ -636,7 +636,7 @@ msgstr "<kiểu trình bày mặc định>"
 
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Lưu ý: Bằng cách hoàn tất và gửi biểu mẫu này, bạn đồng ý:</p><ul><li>bảo vệ quyền riêng tư của những cá nhân còn sống được liệt kê trên trang web của chúng tôi;</li><li>và trong hộp văn bản bên dưới, giải thích bạn có quan hệ họ hàng với ai hoặc cung cấp cho chúng tôi thông tin về một người nào đó sẽ được liệt kê trên trang web của chúng tôi.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -1483,7 +1483,7 @@ msgstr "Địa chỉ dòng 3"
 
 #: resources/views/admin/tags.phtml:264
 msgid "Addresses"
-msgstr ""
+msgstr "Địa chỉ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1492,7 +1492,7 @@ msgstr "Adelaide, Úc"
 
 #: app/CustomTags/GedcomL.php:284
 msgid "Administrative ID"
-msgstr ""
+msgstr "ID Quản trị"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1810,7 +1810,7 @@ msgstr "Còn gọi là"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Cách viết thay thế của họ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1903,7 +1903,7 @@ msgstr "File tổ tiên số"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/Ancestry.php:64
 msgid "Ancestry PID"
-msgstr ""
+msgstr "ID Tổ tiên"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
@@ -1972,11 +1972,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:513
 msgid "Application ID"
-msgstr ""
+msgstr "ID Ứng dụng"
 
 #: app/Gedcom.php:530
 msgid "Application name"
-msgstr ""
+msgstr "Tên ứng dụng"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
@@ -2037,7 +2037,7 @@ msgstr "Aqua Marine"
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Bạn có chắc chắn muốn xóa liên kết tới “%s” không?"
 
 #: resources/views/individual-page-name.phtml:90
 #: resources/views/media-page-details.phtml:38
@@ -2138,7 +2138,7 @@ msgstr "Liên kết sự kiện với nguồn"
 
 #: resources/views/modules/personal_facts/tab.phtml:34
 msgid "Associated events"
-msgstr ""
+msgstr "Sự kiện liên quan"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2242,7 +2242,7 @@ msgstr "Tác giả thay đổi mới nhất"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:648
 msgid "Autocomplete"
-msgstr ""
+msgstr "Tự động hoàn thành"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
@@ -2498,7 +2498,7 @@ msgstr "Barbados"
 
 #: app/CustomTags/GedcomL.php:154
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Thẻ GEDCOM cơ sở"
 
 #: app/Gedcom.php:598 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
@@ -2819,7 +2819,7 @@ msgstr "Sinh của con"
 
 #: app/Gedcom.php:603
 msgid "Birth parents"
-msgstr ""
+msgstr "Bố mẹ đẻ"
 
 #: resources/views/modules/statistics-chart/places.phtml:18
 msgid "Birth places"
@@ -3252,7 +3252,7 @@ msgstr "Canada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Không thể ghi vào thư mục “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3285,7 +3285,7 @@ msgstr "Các nhóm"
 #: app/CustomTags/GedcomL.php:144 app/CustomTags/GedcomL.php:200
 #: app/CustomTags/Legacy.php:138
 msgid "Category"
-msgstr ""
+msgstr "Danh mục"
 
 #: app/CustomTags/GedcomL.php:235 app/Gedcom.php:411 app/Gedcom.php:545
 msgid "Cause"
@@ -3331,7 +3331,7 @@ msgstr "Ngày thống kê dân số"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:15
 msgid "Census date and place"
-msgstr ""
+msgstr "Ngày và địa điểm điều tra dân số"
 
 #: app/Gedcom.php:614
 msgid "Census place"
@@ -3391,7 +3391,7 @@ msgstr "Đổi các khối \"Trang của tôi\""
 #: resources/views/modules/recent_changes/changes-list.phtml:52
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Đã thay đổi bởi %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:50
@@ -3429,7 +3429,7 @@ msgstr "Ghi chép thay đổi"
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
 msgid "Character encoding"
-msgstr ""
+msgstr "Mã hóa ký tự"
 
 #: app/Gedcom.php:499
 msgid "Character set"
@@ -3470,7 +3470,7 @@ msgstr "Kiểm tra lỗi"
 
 #: app/Module/CheckForNewVersion.php:66
 msgid "Check for new version"
-msgstr ""
+msgstr "Kiểm tra phiên bản mới"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:120
 msgid "Check for pending changes…"
@@ -3839,7 +3839,7 @@ msgstr "Hoàn thành, không rõ ngày tháng"
 #: app/CustomTags/GedcomL.php:145 app/CustomTags/GedcomL.php:201
 #: app/CustomTags/Legacy.php:139
 msgid "Completion date"
-msgstr ""
+msgstr "Ngày hoàn thành"
 
 #: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
@@ -3851,7 +3851,7 @@ msgstr "Kết nối đến máy chủ CSDL"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Kiểu kết nối"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -3875,7 +3875,7 @@ msgstr "Nội dung"
 
 #: app/Gedcom.php:767
 msgid "Continuation"
-msgstr ""
+msgstr "Tiếp tục"
 
 #: app/Http/RequestHandlers/ControlPanel.php:148
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3961,7 +3961,7 @@ msgstr "bộ nhớ đệm"
 #: app/CustomTags/GedcomL.php:246 app/CustomTags/GedcomL.php:258
 #: app/Gedcom.php:424 app/Gedcom.php:556
 msgid "Coordinates"
-msgstr ""
+msgstr "Tọa độ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84
@@ -3988,7 +3988,7 @@ msgstr "Chép tập tin…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Sao chép URL của bản ghi vào bảng tạm"
 
 #: app/Gedcom.php:501 app/Gedcom.php:528
 msgid "Copyright"
@@ -4005,7 +4005,7 @@ msgstr "Sửa bản ghi TÊN theo mẫu 'John/DOE/' hoặc 'John /DOE'. như dù
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Thư"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:145
@@ -4039,7 +4039,7 @@ msgstr "Tạo một cây gia đình mới"
 #: app/Elements/XrefLocation.php:60
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Tạo một vị trí"
 
 #: app/Elements/XrefMedia.php:62
 #: resources/views/modals/create-media-from-file.phtml:20
@@ -4068,7 +4068,7 @@ msgstr "Tạo nguồn mới"
 #: app/Elements/XrefSubmission.php:60
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Tạo bài gửi"
 
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
@@ -4093,7 +4093,7 @@ msgstr "Tạo một cá nhân mới"
 #: app/Module/MapBox.php:51 app/Module/OpenStreetMap.php:41
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Tạo bản đồ bằng cách sử dụng %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
@@ -4110,7 +4110,7 @@ msgstr "Tạo, cập nhật và xóa bỏ cây gia đình cho từng tập tin G
 #: app/CustomTags/Gedcom7.php:161 app/CustomTags/Gedcom7.php:170
 #: app/CustomTags/Heredis.php:53 app/CustomTags/Heredis.php:54
 msgid "Created at"
-msgstr ""
+msgstr "Được tạo tại"
 
 #: app/CustomTags/Gedcom7.php:94 app/CustomTags/Gedcom7.php:126
 #: app/CustomTags/Gedcom7.php:141 app/CustomTags/Gedcom7.php:145
@@ -4118,14 +4118,14 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:171 app/CustomTags/GedcomL.php:138
 #: app/CustomTags/GedcomL.php:194
 msgid "Creation date"
-msgstr ""
+msgstr "Ngày tạo"
 
 #: app/CustomTags/Gedcom7.php:95 app/CustomTags/Gedcom7.php:127
 #: app/CustomTags/Gedcom7.php:142 app/CustomTags/Gedcom7.php:146
 #: app/CustomTags/Gedcom7.php:155 app/CustomTags/Gedcom7.php:163
 #: app/CustomTags/Gedcom7.php:172
 msgid "Creation time"
-msgstr ""
+msgstr "Thời gian tạo"
 
 #: app/Gedcom.php:634 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4588,7 +4588,7 @@ msgstr "Ngày cư trú"
 
 #: app/CustomTags/Gedcom7.php:133
 msgid "Date of status change"
-msgstr ""
+msgstr "Ngày thay đổi trạng thái"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
@@ -5014,7 +5014,7 @@ msgstr "Kiểu trình bày mặc định"
 #: app/CustomTags/GedcomL.php:162 app/CustomTags/GedcomL.php:163
 #: app/CustomTags/GedcomL.php:164
 msgid "Definition"
-msgstr ""
+msgstr "Định nghĩa"
 
 #: app/CustomTags/FamilyTreeMaker.php:115
 msgid "Degree"
@@ -5086,7 +5086,7 @@ msgstr "Xóa tên"
 
 #: resources/views/admin/locations.phtml:174
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Xóa các vị trí không sử dụng"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
@@ -5098,7 +5098,7 @@ msgstr "Xóa bỏ gia đình sẽ hủy liên kết mọi thành viên với nha
 
 #: app/Http/RequestHandlers/GedcomLoad.php:132
 msgid "Deleting…"
-msgstr ""
+msgstr "Đang xóa…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:133
@@ -5107,7 +5107,7 @@ msgstr "Democratic Republic of the Congo"
 
 #: app/CustomTags/GedcomL.php:288
 msgid "Demographic data"
-msgstr ""
+msgstr "Dữ liệu nhân khẩu học"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
@@ -5281,7 +5281,7 @@ msgstr "Mất lúc bé: loại trừ"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Chết trước 1 năm, không cần niêm phong."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5387,7 +5387,7 @@ msgstr "Tải về %s…"
 
 #: app/Module/ShareAnniversaryModule.php:83
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Tải xuống tệp .ICS có chứa ngày kỷ niệm"
 
 #: resources/views/media-page-details.phtml:83
 msgid "Download file"
@@ -5538,7 +5538,7 @@ msgstr "Sửa người này và thay thế chi tiết của họ bằng chi ti�
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Chỉnh sửa với tất cả các thẻ GEDCOM"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:99
@@ -5656,7 +5656,7 @@ msgstr "Người chủ"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Làm trống bảng tạm"
 
 #: app/Module/ClippingsCartModule.php:187
 msgid "Empty the clippings cart"
@@ -5702,7 +5702,7 @@ msgstr "Nhập một ghi chú tùy ý về nhân vật ưa thích này"
 #: app/Services/LeafletJsService.php:73
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "Vào chế độ toàn màn hình"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5794,7 +5794,7 @@ msgstr "Sự Kiện"
 
 #: app/CustomTags/Gedcom7.php:75 app/CustomTags/Gedcom7.php:76
 msgid "Event did not occur"
-msgstr ""
+msgstr "Sự kiện không xảy ra"
 
 #: app/Gedcom.php:836 resources/views/calendar-page.phtml:178
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5846,7 +5846,7 @@ msgstr "Loại khỏi ở lần gửi này"
 #: app/Services/LeafletJsService.php:74
 #: resources/views/modules/interactive-tree/chart.phtml:27
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Thoát toàn màn hình"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -5885,11 +5885,11 @@ msgstr "Tập tin bên ngoài"
 #: app/CustomTags/Gedcom7.php:147 app/CustomTags/Gedcom7.php:156
 #: app/CustomTags/Gedcom7.php:164 app/CustomTags/Gedcom7.php:173
 msgid "External identifier"
-msgstr ""
+msgstr "Mã định danh bên ngoài"
 
 #: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
-msgstr ""
+msgstr "Liên kết ngoài"
 
 #: resources/views/admin/media.phtml:77
 msgid "External media files have a URL instead of a filename."
@@ -6110,19 +6110,19 @@ msgstr "Gia phả của %s"
 
 #: app/Gedcom.php:447
 msgid "Family census"
-msgstr ""
+msgstr "Điều tra dân số gia đình"
 
 #: resources/views/admin/tags.phtml:976
 msgid "Family fact"
-msgstr ""
+msgstr "Thực tế gia đình"
 
 #: resources/views/admin/tags.phtml:1042
 msgid "Family facts and events"
-msgstr ""
+msgstr "Sự kiện và thông tin gia đình"
 
 #: app/Gedcom.php:882
 msgid "Family file"
-msgstr "File gia đình"
+msgstr "Hồ sơ gia đình"
 
 #. I18N: Name of a module/sidebar
 #: app/Module/FamilyNavigatorModule.php:40
@@ -6141,11 +6141,11 @@ msgstr "Gia đình của %s"
 
 #: app/CustomTags/Gedcom7.php:183 app/Gedcom.php:477
 msgid "Family residence"
-msgstr ""
+msgstr "Nơi cư trú của gia đình"
 
 #: app/CustomTags/GedcomL.php:135
 msgid "Family status"
-msgstr ""
+msgstr "Tình trạng gia đình"
 
 #: app/CustomTags/Ancestry.php:61 app/Module/TreesMenuModule.php:93
 #: resources/views/admin/changes-log.phtml:92
@@ -6234,7 +6234,7 @@ msgstr "Gia đình có vợ"
 #. I18N: familysearch.org
 #: app/CustomTags/FamilySearch.php:52 app/CustomTags/GenPlusWin.php:52
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "Tìm kiếm ID Gia đình"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:135
@@ -6371,19 +6371,19 @@ msgstr "Nữ"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Trường"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Tên trường"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Giá trị trường"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -6397,7 +6397,7 @@ msgstr "Kích cỡ file"
 
 #: app/Exceptions/FileUploadException.php:55
 msgid "File successfully uploaded"
-msgstr "Tập tin gửi lên tốt đẹp"
+msgstr "Tệp đã tải lên thành công"
 
 #: app/Exceptions/FileUploadException.php:99 app/Gedcom.php:505
 #: app/Gedcom.php:787 app/Http/RequestHandlers/ManageMediaData.php:344
@@ -6608,7 +6608,7 @@ msgstr "Để được hỗ trợ các câu hỏi về gia phả, xin liên lạ
 #: resources/views/modules/openrouteservice/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Để biết thêm thông tin, hãy xem %s."
 
 #: app/Module/ContactsFooterModule.php:160
 #, php-format
@@ -6950,17 +6950,17 @@ msgstr "Thế hệ"
 
 #: app/Gedcom.php:876
 msgid "Generations of ancestors"
-msgstr "Sô thế hệ tổ tiên"
+msgstr "Các thế hệ tổ tiên"
 
 #: app/Gedcom.php:881
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Các thế hệ con cháu"
 
 #. I18N: https://www.geonames.org
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:46
 msgid "GeoNames"
-msgstr ""
+msgstr "Tên địa lý"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -6980,7 +6980,7 @@ msgstr "Dữ liệu địa lý"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:655
 msgid "Geolocation"
-msgstr ""
+msgstr "Vị trí địa lý"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:205
@@ -7062,7 +7062,7 @@ msgstr "Con gái đỡ đầu"
 #: app/Elements/RelationIsDescriptor.php:59
 #: app/Elements/RelationIsDescriptor.php:107
 msgid "Godfather"
-msgstr "Cha đỡ đầu"
+msgstr "Bố đỡ đầu"
 
 #: app/Elements/RelationIsDescriptor.php:80
 #: app/Elements/RelationIsDescriptor.php:108
@@ -7071,12 +7071,12 @@ msgstr "Mẹ đỡ đầu"
 
 #: app/Elements/RelationIsDescriptor.php:109
 msgid "Godparent"
-msgstr "Cha mẹ đỡ đầu"
+msgstr "Bố mẹ đỡ đầu"
 
 #: app/CustomTags/GedcomL.php:187 app/CustomTags/GedcomL.php:188
 #: app/Gedcom.php:621
 msgid "Godparents"
-msgstr ""
+msgstr "Bố mẹ đỡ đầu"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
@@ -7406,21 +7406,21 @@ msgstr "Che tất cả mọi người"
 #: resources/views/setup/step-4-database-sqlsrv.phtml:85
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "Hide password"
-msgstr ""
+msgstr "Ẩn mật khẩu"
 
 #: resources/views/admin/trees-check.phtml:39
 #: resources/views/admin/trees-check.phtml:55
 #: resources/views/admin/trees-check.phtml:71
 msgid "Hide these errors"
-msgstr ""
+msgstr "Ẩn những lỗi này"
 
 #: resources/views/admin/locations.phtml:37
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Ẩn các vị trí không sử dụng"
 
 #: app/CustomTags/GedcomL.php:297
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Mối quan hệ phân cấp"
 
 #: app/CustomTags/FamilyTreeBuilder.php:63 app/CustomTags/GedcomL.php:190
 #: app/CustomTags/GedcomL.php:206 app/CustomTags/Legacy.php:145
@@ -7561,7 +7561,7 @@ msgstr "Số căn cước"
 
 #: resources/views/admin/tags.phtml:778
 msgid "Identifiers"
-msgstr ""
+msgstr "Nhận dạng"
 
 #: resources/views/admin/fix-level-0-media.phtml:22
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -7657,7 +7657,7 @@ msgstr "Nếu bạn tạo ra một đối tượng hình/phim ở webtrees, và 
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Nếu bạn sửa đổi tên tập tin, bạn cũng nên đổi tên tập tin."
 
 #: resources/views/admin/site-preferences.phtml:40
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7850,7 +7850,7 @@ msgstr "Biểu đồ phân bố người"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Sự kiện và thông tin cá nhân"
 
 #: resources/views/admin/control-panel.phtml:720
 msgid "Individual page"
@@ -7940,7 +7940,7 @@ msgstr "Người thông tin"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Không khuyến khích sử dụng bản ghi nguồn nội tuyến."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:175 app/Module/ChartsBlockModule.php:258
@@ -7958,7 +7958,7 @@ msgstr "Cây tương tác của %s"
 
 #: app/CustomTags/BrothersKeeper.php:102
 msgid "Interment"
-msgstr ""
+msgstr "Chôn cất"
 
 #: app/Services/MessageService.php:229
 msgid "Internal messaging"
@@ -7974,11 +7974,11 @@ msgstr "File GEDCOM không hợp lệ- không có bản ghi phần đầu."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:92
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Tệp GEDCOM không hợp lệ - không tìm thấy bản ghi giới thiệu."
 
 #: app/Http/RequestHandlers/CheckTree.php:198
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Số cấp độ GEDCOM không hợp lệ."
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
@@ -7986,7 +7986,7 @@ msgstr "Bản ghi GEDCM không hợp lệ"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Bản ghi GEDCOM không hợp lệ."
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
@@ -7994,7 +7994,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Giá trị GEDCOM không hợp lệ."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8031,7 +8031,7 @@ msgstr "Có thể mất đến vài phút để tải và cài bản nâng cấp
 
 #: resources/views/admin/tags.phtml:1025
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Không nên sử dụng thẻ GEDCOM tùy chỉnh. Dữ liệu này có thể bị mất khi bạn chuyển sang các ứng dụng khác."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
@@ -8385,7 +8385,7 @@ msgstr "Vốn Cúng cho LDS"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:131
 msgid "LDS initiatory"
-msgstr ""
+msgstr "LDS khởi xướng"
 
 #: app/Gedcom.php:480
 msgid "LDS spouse sealing"
@@ -8394,15 +8394,15 @@ msgstr "Ràng buộc LDS của bạn đời"
 #: app/CustomTags/FamilyTreeMaker.php:74 app/CustomTags/FamilyTreeMaker.php:88
 #: app/CustomTags/FamilyTreeMaker.php:92 app/CustomTags/FamilyTreeMaker.php:107
 msgid "Label"
-msgstr ""
+msgstr "Nhãn"
 
 #: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
-msgstr ""
+msgstr "Nhãn cho chồng"
 
 #: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
-msgstr ""
+msgstr "Nhãn cho vợ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8412,12 +8412,12 @@ msgstr "Laie, Hawaii, United States"
 #. I18N: GEDCOM tag _PURC
 #: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
-msgstr ""
+msgstr "Mua đất"
 
 #. I18N: GEDCOM tag _SALE
 #: app/CustomTags/Reunion.php:60
 msgid "Land sale"
-msgstr ""
+msgstr "Bán đất"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:101
@@ -8493,7 +8493,7 @@ msgstr "Cập Nhật Hóa"
 #: resources/views/admin/control-panel.phtml:212
 #, php-format
 msgid "Last checked %s."
-msgstr ""
+msgstr "Kiểm tra lần cuối %s."
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
@@ -8588,7 +8588,7 @@ msgstr "Người thừa kế"
 
 #: app/CustomTags/Aldfaer.php:72
 msgid "Length"
-msgstr ""
+msgstr "Chiều dài"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -8650,11 +8650,11 @@ msgstr "Lima, Pê ru"
 
 #: resources/views/admin/gedcom-export-options.phtml:89
 msgid "Line endings"
-msgstr ""
+msgstr "Kết thúc dòng"
 
 #: app/Http/RequestHandlers/CheckTree.php:420
 msgid "Line number"
-msgstr ""
+msgstr "Số dòng"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:819
@@ -8757,7 +8757,7 @@ msgstr "Địa điểm"
 #: resources/views/search-general-page.phtml:115
 #: resources/views/search-results.phtml:94
 msgid "Locations"
-msgstr ""
+msgstr "Địa điểm"
 
 #: app/Elements/RelationIsDescriptor.php:115
 msgid "Lodger"
@@ -8852,7 +8852,7 @@ msgstr "Tạp chí"
 #: app/CustomTags/GedcomL.php:116 app/CustomTags/GedcomL.php:170
 #: app/CustomTags/GedcomL.php:213 app/CustomTags/GedcomL.php:299
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "Mã vị trí Maidenhead"
 
 #: app/Services/MessageService.php:232
 msgid "Mailto link"
@@ -8963,7 +8963,7 @@ msgstr "Bản thảo"
 
 #: resources/views/admin/tags.phtml:1023
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Nhiều ứng dụng phả hệ định nghĩa thẻ GEDCOM tùy chỉnh của riêng mình và webtrees sẽ có thể hiển thị hầu hết các thẻ đó."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:619
@@ -8979,24 +8979,24 @@ msgstr "Bản Đồ"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "Liên kết bản đồ"
 
 #. I18N: Links to maps
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:662
 msgid "Map links"
-msgstr ""
+msgstr "Liên kết bản đồ"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: app/Services/LeafletJsService.php:67
 #: resources/views/admin/control-panel.phtml:669
 msgid "Map providers"
-msgstr ""
+msgstr "Nhà cung cấp bản đồ"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:96
 msgid "Mapbox"
-msgstr ""
+msgstr "Hộp bản đồ"
 
 #: app/Date/AbstractGregorianJulianDate.php:233
 msgctxt "Abbreviation for March"
@@ -9913,7 +9913,7 @@ msgstr "Muharram"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Sinh nhiều con"
 
 #: resources/views/lists/families-table.phtml:141
 msgid "Multiple marriages"
@@ -9997,7 +9997,7 @@ msgstr "Tên Do Thái"
 #: app/CustomTags/GedcomL.php:217 app/CustomTags/Legacy.php:116
 #: app/CustomTags/PersonalAncestralFile.php:73
 msgid "Name of addressee"
-msgstr ""
+msgstr "Tên người nhận"
 
 #: app/Gedcom.php:689 app/Gedcom.php:697 app/Gedcom.php:703
 msgid "Name prefix"
@@ -10283,7 +10283,7 @@ msgstr "Không có sự kiện cho gia đình này."
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "Không nhận được tệp."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:48
@@ -10345,7 +10345,7 @@ msgstr "Không ai trực tuyến và không có thành viên vô danh"
 #: app/Module/IndividualListModule.php:274
 #: app/Module/IndividualListModule.php:536
 msgid "No surname"
-msgstr ""
+msgstr "Không có họ"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10365,7 +10365,7 @@ msgstr "Màu đêm"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Danh nghĩa"
 
 #: resources/views/admin/gedcom-export-options.phtml:104
 #: resources/xml/reports/cemetery_report.xml:7
@@ -10431,7 +10431,7 @@ msgstr "Độc Thân"
 #: app/Elements/AbstractXrefElement.php:71
 #: resources/views/fact-association-structure.phtml:106
 msgid "Not recorded"
-msgstr ""
+msgstr "Không ghi lại"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Not verified by the user"
@@ -10463,33 +10463,33 @@ msgstr "Ghi chú"
 #: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
 #: app/Gedcom.php:902 app/Gedcom.php:916
 msgid "Note on association"
-msgstr ""
+msgstr "Lưu ý về hiệp hội"
 
 #: app/CustomTags/GedcomL.php:224 app/Gedcom.php:451 app/Gedcom.php:618
 #: app/Gedcom.php:765 app/Gedcom.php:786 app/Gedcom.php:817 app/Gedcom.php:833
 #: app/Gedcom.php:864 app/Gedcom.php:880
 msgid "Note on last change"
-msgstr ""
+msgstr "Lưu ý về thay đổi cuối cùng"
 
 #: app/Gedcom.php:688
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Lưu ý về tên phiên âm"
 
 #: app/CustomTags/GedcomL.php:249 app/Gedcom.php:427 app/Gedcom.php:559
 msgid "Note on place"
-msgstr ""
+msgstr "Lưu ý về địa điểm"
 
 #: app/Gedcom.php:848
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Lưu ý về tham chiếu kho lưu trữ"
 
 #: app/Gedcom.php:702
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Lưu ý về tên La tinh"
 
 #: app/Gedcom.php:840
 msgid "Note on source"
-msgstr ""
+msgstr "Ghi chú về nguồn"
 
 #: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
 #: app/CustomTags/GedcomL.php:276 app/CustomTags/GedcomL.php:309
@@ -10497,11 +10497,11 @@ msgstr ""
 #: app/Gedcom.php:753 app/Gedcom.php:777 app/Gedcom.php:801 app/Gedcom.php:910
 #: app/Gedcom.php:924
 msgid "Note on source citation"
-msgstr ""
+msgstr "Lưu ý về trích dẫn nguồn"
 
 #: app/Gedcom.php:839
 msgid "Note on source data"
-msgstr ""
+msgstr "Lưu ý về dữ liệu nguồn"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10819,12 +10819,12 @@ msgstr "Phương Hướng"
 
 #: app/CustomTags/Ancestry.php:70
 msgid "Origin"
-msgstr ""
+msgstr "Nguồn gốc"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/CustomTags/Ancestry.php:75
 msgid "Original text"
-msgstr ""
+msgstr "Văn bản gốc"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -10971,14 +10971,14 @@ msgstr "Paraguay"
 
 #: app/CustomTags/GedcomL.php:294
 msgid "Parent location"
-msgstr ""
+msgstr "Vị trí bố mẹ"
 
 #: app/Gedcom.php:742 app/Http/RequestHandlers/IndividualPage.php:210
 #: resources/views/edit/reorder-families.phtml:72
 #: resources/views/modules/ancestors-chart/tree.phtml:35
 #: resources/views/modules/family_nav/sidebar-family.phtml:44
 msgid "Parents"
-msgstr "Cha mẹ"
+msgstr "Bố mẹ"
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:89
@@ -10986,7 +10986,7 @@ msgstr "Cha mẹ"
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:41
 msgid "Parents and siblings"
-msgstr "Cha mẹ và anh em"
+msgstr "Bố mẹ và anh em"
 
 #: resources/views/fact-parent-age.phtml:42
 msgid "Parent’s age"
@@ -11134,7 +11134,7 @@ msgstr "Hình"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Ảnh chụp"
 
 #: app/CustomTags/Gedcom7.php:78 app/CustomTags/Gedcom7.php:80
 #: app/CustomTags/Gedcom7.php:85 app/CustomTags/Gedcom7.php:90
@@ -11143,7 +11143,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:118 app/CustomTags/Gedcom7.php:119
 #: app/CustomTags/Gedcom7.php:121 app/CustomTags/Gedcom7.php:123
 msgid "Phrase"
-msgstr ""
+msgstr "Cụm từ"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:174
