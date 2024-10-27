@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2024-10-04 16:11+0000\n"
+"PO-Revision-Date: 2024-10-28 13:11+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -18853,22 +18853,22 @@ msgstr "frændi í sjöunda ættlið"
 #: app/Functions/Functions.php:1368
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afabróðurs"
+msgstr "maki bróðurs föðurafa"
 
 #: app/Functions/Functions.php:1064
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr "afasystir"
+msgstr "systir föðurafa"
 
 #: app/Functions/Functions.php:1374
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki ömmubróðurs"
+msgstr "maki bróðurs föðurömmu"
 
 #: app/Functions/Functions.php:1076
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr "systir móðurafa"
+msgstr "systir föðurömmu"
 
 #: app/Functions/Functions.php:1380
 msgctxt "father’s parent’s brother’s wife"
@@ -18883,17 +18883,17 @@ msgstr "systir föðurforeldra"
 #: app/Functions/Functions.php:1386
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afabróðurs"
+msgstr "maki bróðurs móðurafa"
 
 #: app/Functions/Functions.php:1144
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr "systir föðurafa"
+msgstr "systir móðurafa"
 
 #: app/Functions/Functions.php:1392
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki ömmubróðurs"
+msgstr "maki bróðurs móðurömmu"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s mother’s sister"
@@ -18913,122 +18913,122 @@ msgstr "systir móðurforeldra"
 #: app/Functions/Functions.php:1404
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afabróðurs"
+msgstr "maki bróðurs föðurforeldra"
 
 #: app/Functions/Functions.php:1196
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "afa-/ömmusystir"
+msgstr "systir föðurforeldra"
 
 #: app/Functions/Functions.php:1410
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afa-/ömmubróðurs"
+msgstr "maki bróðurs móðurforeldra"
 
 #: app/Functions/Functions.php:1208
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr "ömmusystir"
+msgstr "systir móðurforeldra"
 
 #: app/Functions/Functions.php:1416
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afa/-ömmubróðurs"
+msgstr "maki bróðurs móður/-föðurforeldra"
 
 #: app/Functions/Functions.php:1220
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr "afa-/ömmusystir"
+msgstr "systir móður/-föðurforeldra"
 
 #: app/Functions/Functions.php:1062
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afasystkini"
+msgstr "systkini föðurafa"
 
 #: app/Functions/Functions.php:1370
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afasystkina"
+msgstr "maki systkinis móður/-föðurforeldra"
 
 #: app/Functions/Functions.php:1074
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "ömmusystkini"
+msgstr "systkini föðurömmu"
 
 #: app/Functions/Functions.php:1376
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki ömmusystkina"
+msgstr "maki systkinis föðurömmu"
 
 #: app/Functions/Functions.php:1086
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini föðurforeldra"
 
 #: app/Functions/Functions.php:1382
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis föðurforeldra"
 
 #: app/Functions/Functions.php:1142
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afasystkini"
+msgstr "systkini móðurafa"
 
 #: app/Functions/Functions.php:1388
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afasystkina"
+msgstr "maki systkinis móðurafa"
 
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "ömmusystkini"
+msgstr "systkini móðurömmu"
 
 #: app/Functions/Functions.php:1394
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki ömmusystkina"
+msgstr "maki systkinis móðurömmu"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini móðurforeldra"
 
 #: app/Functions/Functions.php:1400
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis móðurforeldra"
 
 #: app/Functions/Functions.php:1194
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini foreldraafa"
 
 #: app/Functions/Functions.php:1406
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis foreldraafa"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini foreldraömmu"
 
 #: app/Functions/Functions.php:1412
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis foreldraömmu"
 
 #: app/Functions/Functions.php:1218
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini foreldraföður/-móður"
 
 #: app/Functions/Functions.php:1418
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis foreldraföður/-móður"
 
 #: app/Functions/Functions.php:996
 msgctxt "child’s child’s child"
