@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2023-04-26 08:38+0000\n"
-"Last-Translator: kaitou1412 <github.com@bangetz.com>\n"
-"Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
+"PO-Revision-Date: 2024-10-27 13:30+0000\n"
+"Last-Translator: Ocid <alat.donlot@gmail.com>\n"
+"Language-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3253,7 +3254,7 @@ msgstr "Kanada"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "Tidak dapat menulis foler “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3852,7 +3853,7 @@ msgstr "Koneksi ke server basis data"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "Tipe Koneksi"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -14518,7 +14519,7 @@ msgstr "Parameter “%s” hilang."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "Parameter \"path\" tidak valid."
 
 #: app/Http/RequestHandlers/SetupWizard.php:378
 msgid "The password needs to be at least six characters long."
@@ -14743,7 +14744,7 @@ msgstr "Tidak ada fakta untuk orang ini."
 #: app/Module/IndividualListModule.php:220
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "Tidak ada individu dengan nama keluarga “%s”"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:327
 msgid "There are no links to this media object."
@@ -15126,7 +15127,7 @@ msgstr "Halaman ini memungkinkan Anda untuk memotong formulir yang biasa, dan me
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "Halaman ini telah dihapus."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17146,7 +17147,7 @@ msgstr "Lanjut"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "salin"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
@@ -17328,7 +17329,7 @@ msgstr "ekspor file"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr ""
+msgstr "ekstrak"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
@@ -19455,7 +19456,7 @@ msgstr "daftar"
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
 msgid "local"
-msgstr ""
+msgstr "lokal"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:193
 #, php-format
@@ -19663,7 +19664,7 @@ msgstr "keponakan"
 
 #: resources/views/setup/step-4-database-mysql.phtml:73
 msgid "network"
-msgstr ""
+msgstr "jaringan"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19828,7 +19829,7 @@ msgstr "dari"
 
 #: app/Elements/GeneatiqueAct.php:38
 msgid "online"
-msgstr ""
+msgstr "daring"
 
 #: app/Services/RelationshipService.php:354
 msgid "parent"
@@ -19884,7 +19885,7 @@ msgstr "Persentase"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
-msgstr ""
+msgstr "fotokopi"
 
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
