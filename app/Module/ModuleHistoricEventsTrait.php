@@ -35,7 +35,7 @@ trait ModuleHistoricEventsTrait
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
         return new Collection();
     }
@@ -48,7 +48,7 @@ trait ModuleHistoricEventsTrait
         $min_date = $individual->getEstimatedBirthDate();
         $max_date = $individual->getEstimatedDeathDate();
 
-        return $this->historicEventsAll()
+        return $this->historicEventsAll(I18N::languageTag())
             ->map(static fn (string $gedcom): Fact => new Fact($gedcom, $individual, 'histo'))
             ->filter(static fn (Fact $fact): bool => Date::compare($fact->date(), $min_date) >= 0)
             ->filter(static fn (Fact $fact): bool => Date::compare($fact->date(), $max_date) <= 0);

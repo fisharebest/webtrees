@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use stdClass;
 
 use function count;
 use function view;
@@ -56,7 +55,7 @@ class ChartMarriage
     /**
      * Returns the related database records.
      *
-     * @return Collection<array-key,stdClass>
+     * @return Collection<array-key,object>
      */
     private function queryRecords(): Collection
     {

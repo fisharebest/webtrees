@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use stdClass;
 
 use function round;
 use function view;
@@ -53,7 +52,7 @@ class ChartAge
     /**
      * Returns the related database records.
      *
-     * @return Collection<array-key,stdClass>
+     * @return Collection<array-key,object>
      */
     private function queryRecords(): Collection
     {

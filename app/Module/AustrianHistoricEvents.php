@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
@@ -52,9 +51,9 @@ class AustrianHistoricEvents extends AbstractModule implements ModuleHistoricEve
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'de':
                 return new Collection([
                     "1 EVEN Feldzug Karls des Großen gegen die Awaren\n2 DATE 791\n2 TYPE Österreichische Geschichte\n2 SOUR [Wikipedia:Geschichte Österreichs](https://de.wikipedia.org/wiki/Geschichte_%C3%96sterreichs#Fr%C3%BChmittelalter_(bis_976))\n3 CONT Im Jahr 791 führte Karl der Große einen ersten misslungenen Feldzug gegen die Awaren, konnte sie aber dennoch bis zum Wienerwald zurückdrängen und fränkische Stützpunkte in Comagena (Tulln) und Aelium Cetium (St. Pölten) errichten.",

@@ -34,7 +34,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
 
 use function extract;
 use function view;
@@ -118,18 +117,18 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                $rows  = $rows->sort(static fn (stdClass $x, stdClass $y): int => GedcomRecord::nameComparator()($x->record, $y->record));
+                $rows  = $rows->sort(static fn (object $x, object $y): int => GedcomRecord::nameComparator()($x->record, $y->record));
                 $order = [[1, 'asc']];
                 break;
 
             case 'date_asc':
-                $rows  = $rows->sort(static fn (stdClass $x, stdClass $y): int => $x->time <=> $y->time);
+                $rows  = $rows->sort(static fn (object $x, object $y): int => $x->time <=> $y->time);
                 $order = [[2, 'asc']];
                 break;
 
             default:
             case 'date_desc':
-                $rows  = $rows->sort(static fn (stdClass $x, stdClass $y): int => $y->time <=> $x->time);
+                $rows  = $rows->sort(static fn (object $x, object $y): int => $y->time <=> $x->time);
                 $order = [[2, 'desc']];
                 break;
         }
@@ -286,7 +285,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,stdClass> List of records with changes
+     * @return Collection<array-key,object> List of records with changes
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
@@ -318,7 +317,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,stdClass> List of records with changes
+     * @return Collection<array-key,object> List of records with changes
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-10-21 17:11+0000\n"
+"PO-Revision-Date: 2024-10-26 12:11+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
@@ -1350,7 +1350,7 @@ msgstr "Einen Sohn hinzufügen"
 
 #: resources/views/modules/sources_tab/tab.phtml:77
 msgid "Add a source citation"
-msgstr "Ein Zitat aus einer Quelle hinzufügen"
+msgstr "Eine Quellenangabe hinzufügen"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:87
 msgid "Add a spouse"
@@ -5942,9 +5942,9 @@ msgid "FAQs are lists of questions and answers, which allow you to explain the s
 msgstr ""
 "FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dienen, "
 "den Benutzern der Webseite Regeln, Methoden und Vorgehensweisen zu erklären. "
-"Die Fragen bewegen sich im allgemeinen um die Bereiche Datenschutz, "
-"Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an Quellen "
-"eines Zitats, usw."
+"Die Fragen bewegen sich im Allgemeinen um die Bereiche Datenschutz, "
+"Copyright, Benutzerkonten, nicht geeignete Inhalte, Anforderungen an "
+"Quellenangaben, usw."
 
 #: app/CustomTags/Gedcom7.php:98 app/Gedcom.php:658
 msgid "Fact"
@@ -10526,7 +10526,7 @@ msgstr "Notiz zur Quelle"
 #: app/Gedcom.php:753 app/Gedcom.php:777 app/Gedcom.php:801 app/Gedcom.php:910
 #: app/Gedcom.php:924
 msgid "Note on source citation"
-msgstr "Notiz zum Zitat"
+msgstr "Notiz zur Quellenangabe"
 
 #: app/Gedcom.php:839
 msgid "Note on source data"
@@ -11665,7 +11665,7 @@ msgstr "Quintidi"
 #: resources/views/modules/user-messages/user-messages.phtml:115
 #: resources/views/modules/user-messages/user-messages.phtml:116
 msgid "RE: "
-msgstr "AW: "
+msgstr "Re: "
 
 #: app/Elements/RelationIsDescriptor.php:122
 msgid "Rabbi"
@@ -13653,11 +13653,11 @@ msgstr "Quelle"
 #: app/Gedcom.php:747 app/Gedcom.php:771 app/Gedcom.php:795 app/Gedcom.php:904
 #: app/Gedcom.php:918
 msgid "Source citation"
-msgstr "Quelle des Zitats"
+msgstr "Quellenangabe"
 
 #: resources/views/admin/tags.phtml:326
 msgid "Source citations"
-msgstr "Quelle der Zitate"
+msgstr "Quellenangaben"
 
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
@@ -14799,7 +14799,7 @@ msgstr "Es gibt keine Forschungsaufgaben für diesen Stammbaum."
 
 #: resources/views/modules/sources_tab/tab.phtml:65
 msgid "There are no source citations for this individual."
-msgstr "Zu dieser Person gibt es keine Zitate aus Quellen."
+msgstr "Zu dieser Person gibt es keine Quellenangaben."
 
 #: app/Module/ReviewChangesModule.php:155
 #: resources/views/emails/pending-changes-html.phtml:22
@@ -15480,7 +15480,13 @@ msgstr "Um die Kompatibilität mit anderen Genealogieanwendungen zu gewährleist
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:37
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Um diese vertraulichen Daten zu schützen, verwendet webtrees eine Apache Konfigurations-Datei (.htaccess), die jeden Zugriff auf dieses Verzeichnis verhindert. Falls Ihr Web-Server .htaccess-Dateien nicht unterstützt und Sie den Zugriff auf dieses Verzeichnis nicht beschränken können, können Sie ein anderes Verzeichnis losgelöst von Ihren Web-Dokumenten wählen."
+msgstr ""
+"Um diese vertraulichen Daten zu schützen, verwendet webtrees eine Apache-"
+"Konfigurationsdatei (.htaccess), die jeglichen Zugriff auf dieses "
+"Verzeichnis verhindert. Falls Ihr Webserver keine .htaccess-Dateien "
+"unterstützt und Sie den Zugriff auf dieses Verzeichnis nicht einschränken "
+"können, können Sie ein anderes Verzeichnis außerhalb Ihrer Web-Dokumente "
+"auswählen."
 
 #: resources/views/emails/password-request-html.phtml:20
 #: resources/views/emails/password-request-text.phtml:16
@@ -16644,7 +16650,11 @@ msgstr "Sie können die Bearbeitungsformulare vereinfachen, indem Sie nicht verw
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:66
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, indem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
+msgstr ""
+"Wenn für eine Person noch kein Datensatz für das Todes-, Bestattungs- oder "
+"Einäscherungsdatum gesetzt ist, können die Abfragen beschleunigt werden, "
+"indem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen "
+"abgeleitet werden kann."
 
 #: app/Http/RequestHandlers/LoginAction.php:108
 msgid "You cannot sign in because your browser does not accept cookies."

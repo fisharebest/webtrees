@@ -46,7 +46,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
-use stdClass;
 
 use function array_key_exists;
 use function array_keys;
@@ -796,7 +795,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {

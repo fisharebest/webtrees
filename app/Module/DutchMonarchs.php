@@ -52,9 +52,9 @@ class DutchMonarchs extends AbstractModule implements ModuleHistoricEventsInterf
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'nl':
                 return new Collection([
                     "1 EVEN Lodewijk I, de Lamme Koning (Lodewijk Napoleon Bonaparte)\n2 TYPE Koning van Holland\n2 DATE FROM 05 JUN 1806 TO 01 JUL 1810\n2 NOTE Koninkrijk Holland (1806 - 1810), vazalstaat van het Eerste Franse Keizerrijk",

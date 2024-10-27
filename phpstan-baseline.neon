@@ -41,11 +41,6 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
-			message: "#^Unknown parameter \\$suggestedValues in call to method Symfony\\\\Component\\\\Console\\\\Command\\\\Command\\:\\:addArgument\\(\\)\\.$#"
-			count: 1
-			path: app/Cli/Commands/TreeExport.php
-
-		-
 			message: "#^Parameter \\$email of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:create\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Cli/Commands/UserCreate.php
@@ -572,6 +567,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: Fisharebest\\\\Webtrees\\\\Individual, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/AutoCompleteCitation.php
+
+		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Fisharebest\\\\Webtrees\\\\Individual\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>\\|iterable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>, Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/AutoCompleteCitation.php
 
@@ -2166,6 +2166,11 @@ parameters:
 			path: app/Module/HtmlBlockModule.php
 
 		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,string\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, string\\>\\|iterable\\<int, string\\>, Illuminate\\\\Support\\\\Collection\\<int, mixed\\> given\\.$#"
+			count: 2
+			path: app/Module/IndividualFactsTabModule.php
+
+		-
 			message: "#^Cannot call method xref\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 1
 			path: app/Module/InteractiveTree/TreeView.php
@@ -2671,6 +2676,16 @@ parameters:
 			path: app/Module/RecentChangesModule.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 2
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$time\\.$#"
+			count: 4
+			path: app/Module/RecentChangesModule.php
+
+		-
 			message: "#^Access to an undefined property object\\:\\:\\$user_id\\.$#"
 			count: 1
 			path: app/Module/RecentChangesModule.php
@@ -2692,6 +2707,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: Fisharebest\\\\Webtrees\\\\Individual, Closure\\(object\\)\\: Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
+			count: 1
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Fisharebest\\\\Webtrees\\\\Individual\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>\\|iterable\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Individual\\>, Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#"
 			count: 1
 			path: app/Module/RecentChangesModule.php
 
@@ -2776,6 +2796,11 @@ parameters:
 			path: app/Module/ResearchTaskModule.php
 
 		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Individual\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, Fisharebest\\\\Webtrees\\\\Individual\\>\\|iterable\\<int, Fisharebest\\\\Webtrees\\\\Individual\\>, Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#"
+			count: 1
+			path: app/Module/ResearchTaskModule.php
+
+		-
 			message: "#^Cannot access property \\$new_gedcom on mixed\\.$#"
 			count: 1
 			path: app/Module/ReviewChangesModule.php
@@ -2812,6 +2837,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:mapWithKeys\\(\\) expects callable\\(mixed, int\\)\\: array\\<string, string\\>, Closure\\(Fisharebest\\\\Webtrees\\\\Fact\\)\\: non\\-empty\\-array\\<string, non\\-falsy\\-string\\> given\\.$#"
+			count: 1
+			path: app/Module/ShareAnniversaryModule.php
+
+		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Fact\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, Fisharebest\\\\Webtrees\\\\Fact\\>\\|iterable\\<int, Fisharebest\\\\Webtrees\\\\Fact\\>, Illuminate\\\\Support\\\\Collection\\<int, Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Fact\\>\\> given\\.$#"
 			count: 1
 			path: app/Module/ShareAnniversaryModule.php
 
@@ -2891,6 +2921,26 @@ parameters:
 			path: app/Module/StatcounterModule.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
+			count: 6
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$d_gid\\.$#"
+			count: 6
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_numchil\\.$#"
+			count: 2
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 2
+			path: app/Module/StatisticsChartModule.php
+
+		-
 			message: "#^Binary operation \"\\+\" between int and int\\|string results in an error\\.$#"
 			count: 1
 			path: app/Module/StatisticsChartModule.php
@@ -2901,7 +2951,7 @@ parameters:
 			path: app/Module/StatisticsChartModule.php
 
 		-
-			message: "#^Binary operation \"/\" between stdClass and 365\\.25 results in an error\\.$#"
+			message: "#^Binary operation \"/\" between object and 365\\.25 results in an error\\.$#"
 			count: 3
 			path: app/Module/StatisticsChartModule.php
 
@@ -3771,6 +3821,11 @@ parameters:
 			path: app/Services/CalendarService.php
 
 		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<string,Fisharebest\\\\Webtrees\\\\Individual\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<string, Fisharebest\\\\Webtrees\\\\Individual\\>\\|iterable\\<string, Fisharebest\\\\Webtrees\\\\Individual\\>, Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Individual\\> given\\.$#"
+			count: 1
+			path: app/Services/ChartService.php
+
+		-
 			message: "#^Cannot access offset string on mixed\\.$#"
 			count: 2
 			path: app/Services/ClipboardService.php
@@ -3988,6 +4043,16 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$gedcom of class Fisharebest\\\\Webtrees\\\\Fact constructor expects string, string\\|null given\\.$#"
 			count: 1
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Fact\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, Fisharebest\\\\Webtrees\\\\Fact\\>\\|iterable\\<int, Fisharebest\\\\Webtrees\\\\Fact\\>, Illuminate\\\\Support\\\\Collection\\<int, mixed\\> given\\.$#"
+			count: 2
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Parameter \\#1 \\$items of method Illuminate\\\\Support\\\\Collection\\<int,Fisharebest\\\\Webtrees\\\\Individual\\>\\:\\:merge\\(\\) expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<int, Fisharebest\\\\Webtrees\\\\Individual\\>\\|iterable\\<int, Fisharebest\\\\Webtrees\\\\Individual\\>, Illuminate\\\\Support\\\\Collection\\<int, Fisharebest\\\\Webtrees\\\\Family\\> given\\.$#"
+			count: 2
 			path: app/Services/IndividualFactsService.php
 
 		-
@@ -4581,7 +4646,7 @@ parameters:
 			path: app/Site.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsAgeQuery\\(\\) should return array\\<array\\<stdClass\\>\\> but returns array\\<stdClass\\>\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsAgeQuery\\(\\) should return array\\<array\\<object\\>\\> but returns array\\<object\\>\\.$#"
 			count: 1
 			path: app/Statistics.php
 
@@ -4597,17 +4662,17 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$sex\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartAge.php
 
 		-
@@ -4627,12 +4692,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartBirth.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartBirth.php
 
 		-
@@ -4642,12 +4707,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartChildren.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartChildren.php
 
 		-
@@ -4657,12 +4722,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDeath.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDeath.php
 
 		-
@@ -4682,12 +4747,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
@@ -4712,12 +4777,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriage.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriage.php
 
 		-
@@ -4727,17 +4792,17 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$sex\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
@@ -4847,7 +4912,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
-			count: 3
+			count: 5
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -4956,7 +5021,7 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:statsChildrenQuery\\(\\) should return array\\<stdClass\\> but returns array\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:statsChildrenQuery\\(\\) should return array\\<object\\> but returns array\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
@@ -4966,7 +5031,7 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: stdClass, Closure\\(stdClass\\)\\: stdClass given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
@@ -5101,7 +5166,7 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:statsAgeQuery\\(\\) should return array\\<stdClass\\> but returns array\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:statsAgeQuery\\(\\) should return array\\<object\\> but returns array\\.$#"
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
 

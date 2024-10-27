@@ -52,9 +52,9 @@ class LowCountriesRulers extends AbstractModule implements ModuleHistoricEventsI
     /**
      * @return Collection<int,string>
      */
-    public function historicEventsAll(): Collection
+    public function historicEventsAll(string $language_tag): Collection
     {
-        switch (I18N::languageTag()) {
+        switch ($language_tag) {
             case 'nl':
                 return new Collection([
                     "1 EVEN Koningen, graven en potestaten van Friesland\n2 TYPE vorstendom, graafschap, potestaat\n2 DATE FROM 600 TO 1515",
@@ -104,7 +104,7 @@ class LowCountriesRulers extends AbstractModule implements ModuleHistoricEventsI
                     "1 EVEN Koningen der Nederlanden\n2 TYPE koninkrijk\n2 DATE FROM 1831",
                     "1 EVEN Staten-Generaal van het Koninkrijk der Nederlanden\n2 TYPE koninkrijk\n2 DATE FROM 1848",
                     "1 EVEN Raad van State\n2 TYPE koninkrijk\n2 DATE FROM 1889 TO 1890",
-                    "1 EVEN Koningin-regentes van Nederland\n2 TYPE koninkrijk\\n2 DATE FROM 1890 TO 1898",
+                    "1 EVEN Koningin-regentes van Nederland\n2 TYPE koninkrijk\n2 DATE FROM 1890 TO 1898",
                     "1 EVEN Prins-regent van België\n2 TYPE koninkrijk\n2 DATE FROM 1944 TO 1950",
                 ]);
 

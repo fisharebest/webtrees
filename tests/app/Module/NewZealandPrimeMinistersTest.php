@@ -24,16 +24,16 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(FrenchHistory::class)]
-class FrenchHistoryTest extends TestCase
+#[CoversClass(NewZealandPrimeMinisters::class)]
+class NewZealandPrimeMinistersTest extends TestCase
 {
     public function testEventsHaveValidDate(): void
     {
-        $module = new FrenchHistory();
+        $module = new NewZealandPrimeMinisters();
 
         $individual = $this->createMock(Individual::class);
 
-        foreach ($module->historicEventsAll(language_tag: 'fr') as $gedcom) {
+        foreach ($module->historicEventsAll(language_tag: 'en-AU') as $gedcom) {
             $fact = new Fact(gedcom: $gedcom, parent: $individual, id: 'test');
             self::assertTrue(condition: $fact->date()->isOK(), message: 'No date found in: ' . $gedcom);
         }
