@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-10-01 16:12+0000\n"
+"PO-Revision-Date: 2024-10-27 12:42+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -18383,22 +18383,22 @@ msgstr "frændi í sjöunda ættlið"
 #: app/Services/RelationshipService.php:1097
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afabróðurs"
+msgstr "maki bróðurs föðurafa"
 
 #: app/Services/RelationshipService.php:793
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr "afasystir"
+msgstr "systir föðurafa"
 
 #: app/Services/RelationshipService.php:1103
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki ömmubróðurs"
+msgstr "maki bróðurs föðurömmu"
 
 #: app/Services/RelationshipService.php:805
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr "systir móðurafa"
+msgstr "systir föðurömmu"
 
 #: app/Services/RelationshipService.php:1109
 msgctxt "father’s parent’s brother’s wife"
@@ -18413,17 +18413,17 @@ msgstr "systir föðurforeldra"
 #: app/Services/RelationshipService.php:1115
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afabróðurs"
+msgstr "maki bróðurs móðurafa"
 
 #: app/Services/RelationshipService.php:873
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr "systir föðurafa"
+msgstr "systir móðurafa"
 
 #: app/Services/RelationshipService.php:1121
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki ömmubróðurs"
+msgstr "maki bróðurs móðurömmu"
 
 #: app/Services/RelationshipService.php:891
 msgctxt "mother’s mother’s sister"
@@ -18443,122 +18443,122 @@ msgstr "systir móðurforeldra"
 #: app/Services/RelationshipService.php:1133
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afabróðurs"
+msgstr "maki bróðurs föðurforeldra"
 
 #: app/Services/RelationshipService.php:925
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "afa-/ömmusystir"
+msgstr "systir föðurforeldra"
 
 #: app/Services/RelationshipService.php:1139
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afa-/ömmubróðurs"
+msgstr "maki bróðurs móðurforeldra"
 
 #: app/Services/RelationshipService.php:937
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr "ömmusystir"
+msgstr "systir móðurforeldra"
 
 #: app/Services/RelationshipService.php:1145
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr "maki afa/-ömmubróðurs"
+msgstr "maki bróðurs móður/-föðurforeldra"
 
 #: app/Services/RelationshipService.php:949
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr "afa-/ömmusystir"
+msgstr "systir móður/-föðurforeldra"
 
 #: app/Services/RelationshipService.php:791
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afasystkini"
+msgstr "systkini föðurafa"
 
 #: app/Services/RelationshipService.php:1099
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afasystkina"
+msgstr "maki systkinis móður/-föðurforeldra"
 
 #: app/Services/RelationshipService.php:803
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "ömmusystkini"
+msgstr "systkini föðurömmu"
 
 #: app/Services/RelationshipService.php:1105
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki ömmusystkina"
+msgstr "maki systkinis föðurömmu"
 
 #: app/Services/RelationshipService.php:815
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini föðurforeldra"
 
 #: app/Services/RelationshipService.php:1111
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis föðurforeldra"
 
 #: app/Services/RelationshipService.php:871
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afasystkini"
+msgstr "systkini móðurafa"
 
 #: app/Services/RelationshipService.php:1117
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afasystkina"
+msgstr "maki systkinis móðurafa"
 
 #: app/Services/RelationshipService.php:889
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "ömmusystkini"
+msgstr "systkini móðurömmu"
 
 #: app/Services/RelationshipService.php:1123
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki ömmusystkina"
+msgstr "maki systkinis móðurömmu"
 
 #: app/Services/RelationshipService.php:901
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini móðurforeldra"
 
 #: app/Services/RelationshipService.php:1129
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis móðurforeldra"
 
 #: app/Services/RelationshipService.php:923
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini foreldraafa"
 
 #: app/Services/RelationshipService.php:1135
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis foreldraafa"
 
 #: app/Services/RelationshipService.php:935
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini foreldraömmu"
 
 #: app/Services/RelationshipService.php:1141
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis foreldraömmu"
 
 #: app/Services/RelationshipService.php:947
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "afa-/ömmusystkini"
+msgstr "systkini foreldraföður/-móður"
 
 #: app/Services/RelationshipService.php:1147
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "maki afa-/ömmusystkina"
+msgstr "maki systkinis foreldraföður/-móður"
 
 #: app/Services/RelationshipService.php:725
 msgctxt "child’s child’s child"
