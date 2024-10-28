@@ -11,16 +11,6 @@ parameters:
 			path: app/Auth.php
 
 		-
-			message: "#^Call to function GregorianToJD\\(\\) with incorrect case\\: gregoriantojd$#"
-			count: 1
-			path: app/Carbon.php
-
-		-
-			message: "#^Function GregorianToJD used with incorrect case\\: gregoriantojd\\.$#"
-			count: 1
-			path: app/Carbon.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Census\\\\AbstractCensusColumn\\:\\:spouseFamily\\(\\) should return Fisharebest\\\\Webtrees\\\\Family\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Census/AbstractCensusColumn.php
@@ -31,26 +21,6 @@ parameters:
 			path: app/Census/CensusColumnBornForeignParts.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Census/CensusColumnFatherBirthPlace.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Census/CensusColumnFatherForeign.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Census/CensusColumnMotherBirthPlace.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Census/CensusColumnMotherForeign.php
-
-		-
 			message: "#^Parameter \\#1 \\$line of method Fisharebest\\\\Webtrees\\\\CommonMark\\\\CensusTableParser\\:\\:parseRow\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/CommonMark/CensusTableParser.php
@@ -58,11 +28,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$str of function strtr expects string, mixed given\\.$#"
 			count: 2
-			path: app/Console/ComposerScripts.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
 			path: app/Console/ComposerScripts.php
 
 		-
@@ -76,31 +41,6 @@ parameters:
 			path: app/Date.php
 
 		-
-			message: "#^Only booleans are allowed in &&, int given on the left side\\.$#"
-			count: 4
-			path: app/Date.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int given on the right side\\.$#"
-			count: 4
-			path: app/Date.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\|false given\\.$#"
-			count: 7
-			path: app/Date.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, bool\\|null given\\.$#"
-			count: 4
-			path: app/Date.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 9
-			path: app/Date.php
-
-		-
 			message: "#^Parameter \\#2 \\$tree of method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:calendarUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
 			count: 5
 			path: app/Date.php
@@ -109,21 +49,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:formatGedcomMonth\\(\\) should return string but returns int\\|string\\|false\\.$#"
 			count: 1
 			path: app/Date/AbstractCalendarDate.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Date/AbstractCalendarDate.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string\\|false given on the right side\\.$#"
-			count: 2
-			path: app/Date/AbstractCalendarDate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 2
-			path: app/Date/JulianDate.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AbstractElement\\:\\:canonicalText\\(\\) should return string but returns string\\|null\\.$#"
@@ -136,24 +61,9 @@ parameters:
 			path: app/Elements/AbstractElement.php
 
 		-
-			message: "#^Only booleans are allowed in a ternary operator condition, string given\\.$#"
-			count: 2
-			path: app/Elements/AbstractEventElement.php
-
-		-
 			message: "#^Cannot call method make\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Elements/AbstractXrefElement.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Elements/AbstractXrefElement.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Elements/AddressFax.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AgeAtEvent\\:\\:value\\(\\) should return string but returns string\\|null\\.$#"
@@ -186,27 +96,9 @@ parameters:
 			path: app/Elements/LanguageId.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Elements/NoteStructure.php
-
-		-
 			message: "#^Parameter \\#1 \\$num of function dechex expects int, float\\|int given\\.$#"
 			count: 1
 			path: app/Elements/PafUid.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Elements/PhoneNumber.php
-
-		-
-			message: """
-				#^Call to method formatParentsAges\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrint\\:
-				since 2\\.0\\.6\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Fact.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:attribute\\(\\) should return string but returns string\\|null\\.$#"
@@ -224,36 +116,6 @@ parameters:
 			path: app/Fact.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Media\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Note\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Source\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string given on the right side\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 6
-			path: app/Fact.php
-
-		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Fact.php
@@ -264,27 +126,12 @@ parameters:
 			path: app/Factories/AbstractGedcomRecordFactory.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Factories/AbstractGedcomRecordFactory.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Factories/ElementFactory.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\FamilyFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/FamilyFactory.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\FamilyFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Family\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/FamilyFactory.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
 			path: app/Factories/FamilyFactory.php
 
@@ -314,16 +161,6 @@ parameters:
 			path: app/Factories/GedcomRecordFactory.php
 
 		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Factories/GedcomRecordFactory.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Factories/GedcomRecordFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
@@ -345,11 +182,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\HeaderFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Header\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/HeaderFactory.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
 			path: app/Factories/HeaderFactory.php
 
@@ -384,22 +216,12 @@ parameters:
 			path: app/Factories/ImageFactory.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Factories/ImageFactory.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Individual\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/IndividualFactory.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
 
@@ -429,11 +251,6 @@ parameters:
 			path: app/Factories/LocationFactory.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Factories/LocationFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/LocationFactory.php
@@ -455,11 +272,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Media\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/MediaFactory.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
 			path: app/Factories/MediaFactory.php
 
@@ -489,11 +301,6 @@ parameters:
 			path: app/Factories/NoteFactory.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Factories/NoteFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/NoteFactory.php
@@ -515,11 +322,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Repository\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/RepositoryFactory.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
 			path: app/Factories/RepositoryFactory.php
 
@@ -559,11 +361,6 @@ parameters:
 			path: app/Factories/SourceFactory.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Factories/SourceFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/SourceFactory.php
@@ -585,11 +382,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmissionFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Submission\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/SubmissionFactory.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
 			path: app/Factories/SubmissionFactory.php
 
@@ -619,11 +411,6 @@ parameters:
 			path: app/Factories/SubmitterFactory.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Factories/SubmitterFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/SubmitterFactory.php
@@ -641,26 +428,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Family\\:\\:getMarriage\\(\\) should return Fisharebest\\\\Webtrees\\\\Fact\\|null but returns mixed\\.$#"
 			count: 1
-			path: app/Family.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Family.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Fact\\|null given\\.$#"
-			count: 1
-			path: app/Family.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 2
-			path: app/Family.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 2
 			path: app/Family.php
 
 		-
@@ -686,46 +453,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\Functions\\:\\:getRelationshipNameFromPath\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 3
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the right side\\.$#"
-			count: 3
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\<0, max\\>\\|false given\\.$#"
-			count: 3
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, string\\|null given\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in a ternary operator condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 33
 			path: app/Functions/Functions.php
 
 		-
@@ -764,47 +491,12 @@ parameters:
 			path: app/Functions/FunctionsEdit.php
 
 		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsEdit.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, string given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsEdit.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 4
-			path: app/Functions/FunctionsEdit.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 4
-			path: app/Functions/FunctionsEdit.php
-
-		-
 			message: "#^Result of \\|\\| is always true\\.$#"
 			count: 1
 			path: app/Functions/FunctionsEdit.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between 'WIFE' and 'WIFE' will always evaluate to true\\.$#"
-			count: 1
-			path: app/Functions/FunctionsEdit.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Functions/FunctionsExport.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsExport.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string given on the left side\\.$#"
 			count: 1
 			path: app/Functions/FunctionsExport.php
 
@@ -825,36 +517,6 @@ parameters:
 
 		-
 			message: "#^Offset 1 on array\\{array\\<int, string\\>, array\\<int, non\\-empty\\-string\\>\\} on left side of \\?\\? always exists and is not nullable\\.$#"
-			count: 1
-			path: app/Functions/FunctionsImport.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string given on the right side\\.$#"
-			count: 3
-			path: app/Functions/FunctionsImport.php
-
-		-
-			message: "#^Only booleans are allowed in a ternary operator condition, string given\\.$#"
-			count: 4
-			path: app/Functions/FunctionsImport.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\|false given\\.$#"
-			count: 3
-			path: app/Functions/FunctionsImport.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 14
-			path: app/Functions/FunctionsImport.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsImport.php
-
-		-
-			message: "#^Only numeric types are allowed in \\-, int\\<0, max\\>\\|false\\|null given on the left side\\.$#"
 			count: 1
 			path: app/Functions/FunctionsImport.php
 
@@ -894,67 +556,7 @@ parameters:
 			path: app/Functions/FunctionsImport.php
 
 		-
-			message: "#^Strict comparison using \\!\\=\\= between 'FILE' and 'NOTE' will always evaluate to true\\.$#"
-			count: 1
-			path: app/Functions/FunctionsImport.php
-
-		-
 			message: "#^Cannot call method spouses\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string given on the left side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string given on the right side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Note\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 9
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only numeric types are allowed in \\+, int\\<0, max\\>\\|false given on the left side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Only numeric types are allowed in \\-, int\\<0, max\\>\\|false given on the right side\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php
 
@@ -999,81 +601,6 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Note\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, Fisharebest\\\\Webtrees\\\\Source\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Media\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Note\\|null given\\.$#"
-			count: 2
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Source\\|null given\\.$#"
-			count: 2
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, array\\<string\\>\\|string given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 8
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only numeric types are allowed in \\-, int\\<0, max\\>\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
 			message: "#^Parameter \\#1 \\$value of method Fisharebest\\\\Webtrees\\\\Contracts\\\\ElementInterface\\:\\:labelValue\\(\\) expects string, array\\<string\\>\\|string given\\.$#"
 			count: 5
 			path: app/Functions/FunctionsPrintFacts.php
@@ -1089,32 +616,12 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, \\(int\\|string\\) given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintLists.php
-
-		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsRtl\\:\\:spanLtrRtl\\(\\) should return string but returns array\\<int, string\\>\\|string\\.$#"
 			count: 1
 			path: app/Functions/FunctionsRtl.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsRtl\\:\\:starredName\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Only numeric types are allowed in \\+, int\\<0, max\\>\\|false given on the left side\\.$#"
 			count: 1
 			path: app/Functions/FunctionsRtl.php
 
@@ -1149,30 +656,6 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 2
-			path: app/GedcomRecord.php
-
-		-
-			message: """
-				#^Call to method formatFactDate\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrint\\:
-				since 2\\.0\\.6\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 2
-			path: app/GedcomRecord.php
-
-		-
-			message: """
-				#^Call to method formatFactPlace\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrint\\:
-				since 2\\.0\\.6\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 2
-			path: app/GedcomRecord.php
-
-		-
 			message: "#^Cannot call method acceptRecord\\(\\) on mixed\\.$#"
 			count: 3
 			path: app/GedcomRecord.php
@@ -1200,51 +683,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:slug\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\<0, max\\>\\|false\\|null given on the right side\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string given on the left side\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, string given\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 2
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 2
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
-			count: 2
 			path: app/GedcomRecord.php
 
 		-
@@ -1323,19 +761,6 @@ parameters:
 			path: app/Helpers/functions.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between '' and '' will always evaluate to true\\.$#"
-			count: 1
-			path: app/Helpers/functions.php
-
-		-
-			message: """
-				#^Class Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\Admin\\\\AbstractAdminController extends deprecated class Fisharebest\\\\Webtrees\\\\Http\\\\Controllers\\\\AbstractBaseController\\:
-				since 2\\.0\\.11 \\- will be removed in 2\\.1\\.0 \\- use RequestHandlers instead of Controllers$#
-			"""
-			count: 1
-			path: app/Http/Controllers/Admin/AbstractAdminController.php
-
-		-
 			message: "#^Parameter \\#1 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:isAdmin\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Http/Middleware/AuthAdministrator.php
@@ -1361,11 +786,6 @@ parameters:
 			path: app/Http/Middleware/AuthModerator.php
 
 		-
-			message: "#^Foreach overwrites \\$ip with its value variable\\.$#"
-			count: 1
-			path: app/Http/Middleware/BadBotBlocker.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\BadBotBlocker\\:\\:fetchIpRangesForAsn\\(\\) should return array\\<IPLib\\\\Range\\\\RangeInterface\\> but returns mixed\\.$#"
 			count: 1
 			path: app/Http/Middleware/BadBotBlocker.php
@@ -1377,11 +797,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, mixed given\\.$#"
-			count: 1
-			path: app/Http/Middleware/BadBotBlocker.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
 			count: 1
 			path: app/Http/Middleware/BadBotBlocker.php
 
@@ -1421,11 +836,6 @@ parameters:
 			path: app/Http/Middleware/ClientIp.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Http/Middleware/CompressResponse.php
-
-		-
 			message: "#^Cannot call method has\\(\\) on mixed\\.$#"
 			count: 2
 			path: app/Http/Middleware/HandleExceptions.php
@@ -1437,11 +847,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method withAttribute\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/Middleware/HandleExceptions.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\<0, 1\\> given on the right side\\.$#"
 			count: 1
 			path: app/Http/Middleware/HandleExceptions.php
 
@@ -1561,57 +966,7 @@ parameters:
 			path: app/Http/Middleware/WrapHandler.php
 
 		-
-			message: "#^Call to method Fisharebest\\\\Webtrees\\\\User\\:\\:userName\\(\\) with incorrect case\\: username$#"
-			count: 1
-			path: app/Http/RequestHandlers/AccountUpdate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AddChildToFamilyAction.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AddChildToIndividualAction.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AddParentToIndividualAction.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/AddSpouseToFamilyAction.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/AddSpouseToIndividualAction.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AddUnlinkedAction.php
-
-		-
-			message: "#^Casting to array something that's already array\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AdminMediaFileDownload.php
-
-		-
-			message: "#^Casting to array something that's already array\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AdminMediaFileThumbnail.php
-
-		-
 			message: "#^Cannot call method gedcom\\(\\) on mixed\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/AutoCompleteCitation.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/AutoCompleteCitation.php
 
@@ -1671,11 +1026,6 @@ parameters:
 			path: app/Http/RequestHandlers/CalendarEvents.php
 
 		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CalendarEvents.php
-
-		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CheckTree.php
@@ -1684,26 +1034,6 @@ parameters:
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: "#^Call to function in_array\\(\\) requires parameter \\#3 to be true\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$base_url of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:localUrl\\(\\) expects string, mixed given\\.$#"
@@ -1736,11 +1066,6 @@ parameters:
 			path: app/Http/RequestHandlers/ContactAction.php
 
 		-
-			message: "#^Call to function in_array\\(\\) requires parameter \\#3 to be true\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactPage.php
-
-		-
 			message: "#^Cannot call method realName\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ContactPage.php
@@ -1761,11 +1086,6 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixPage.php
 
 		-
-			message: "#^Casting to array something that's already array\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/DataFixPreview.php
-
-		-
 			message: "#^Parameter \\#1 \\$module_name of method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByName\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DataFixPreview.php
@@ -1776,11 +1096,6 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixSelect.php
 
 		-
-			message: "#^Casting to array something that's already array\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdate.php
-
-		-
 			message: "#^Parameter \\#1 \\$module_name of method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByName\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdate.php
@@ -1788,11 +1103,6 @@ parameters:
 		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
 			count: 2
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: "#^Casting to array something that's already array\\.$#"
-			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
@@ -1816,11 +1126,6 @@ parameters:
 			path: app/Http/RequestHandlers/DeleteRecord.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\GedcomRecord given on the left side\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/DeleteRecord.php
-
-		-
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 4
 			path: app/Http/RequestHandlers/DeleteRecord.php
@@ -1831,22 +1136,12 @@ parameters:
 			path: app/Http/RequestHandlers/DeleteUser.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EditFactAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$base_url of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:localUrl\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditFactAction.php
 
 		-
 			message: "#^Cannot call method label\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EditFactPage.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, string given on the right side\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditFactPage.php
 
@@ -1881,11 +1176,6 @@ parameters:
 			path: app/Http/RequestHandlers/EditRawFactAction.php
 
 		-
-			message: "#^Only booleans are allowed in \\|\\|, string given on the right side\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EditRecordPage.php
-
-		-
 			message: "#^Cannot call method mediaFiles\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
@@ -1899,14 +1189,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$resource of method League\\\\Flysystem\\\\Filesystem\\:\\:writeStream\\(\\) expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
-
-		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Http/RequestHandlers/FixLevel0MediaData.php
 
 		-
 			message: "#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
@@ -1939,11 +1221,6 @@ parameters:
 			path: app/Http/RequestHandlers/FixLevel0MediaData.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/FixLevel0MediaData.php
-
-		-
 			message: "#^Access to an undefined property object\\:\\:\\$chunk_data\\.$#"
 			count: 5
 			path: app/Http/RequestHandlers/GedcomLoad.php
@@ -1969,19 +1246,9 @@ parameters:
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/GedcomLoad.php
-
-		-
 			message: "#^Variable \\$progress on left side of \\?\\? always exists and is not nullable\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/GedcomLoad.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/HeaderPage.php
 
 		-
 			message: "#^Parameter \\#1 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:isAdmin\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
@@ -1995,11 +1262,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method createStreamFromResource\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ImportGedcomAction.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportGedcomAction.php
 
@@ -2054,11 +1316,6 @@ parameters:
 			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
-
-		-
 			message: "#^Cannot access offset 0 on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportThumbnailsData.php
@@ -2084,11 +1341,6 @@ parameters:
 			path: app/Http/RequestHandlers/ImportThumbnailsData.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/ImportThumbnailsData.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getSidebars\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/IndividualPage.php
@@ -2097,11 +1349,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getTabs\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/IndividualPage.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/LocationPage.php
 
 		-
 			message: "#^Parameter \\#1 \\$base_url of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:localUrl\\(\\) expects string, mixed given\\.$#"
@@ -2119,22 +1366,12 @@ parameters:
 			path: app/Http/RequestHandlers/LoginAction.php
 
 		-
-			message: "#^Call to method League\\\\Flysystem\\\\FilesystemInterface\\:\\:getMimetype\\(\\) with incorrect case\\: getMimeType$#"
-			count: 2
-			path: app/Http/RequestHandlers/ManageMediaData.php
-
-		-
 			message: "#^Cannot access offset '0' on array\\{0\\: int\\<0, max\\>, 1\\: int\\<0, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
 			message: "#^Cannot access offset '1' on array\\{0\\: int\\<0, max\\>, 1\\: int\\<0, max\\>, 2\\: int, 3\\: string, mime\\: string, channels\\?\\: int, bits\\?\\: int\\}\\|false\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ManageMediaData.php
-
-		-
-			message: "#^Only numeric types are allowed in \\+, int\\|false given on the left side\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
@@ -2150,11 +1387,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#4 \\$sort_columns of method Fisharebest\\\\Webtrees\\\\Services\\\\DatatablesService\\:\\:handleQuery\\(\\) expects array\\<string\\>, array\\<int, Illuminate\\\\Database\\\\Query\\\\Expression\\|string\\> given\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/ManageMediaData.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
@@ -2204,16 +1436,6 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
 
 		-
-			message: "#^Strict comparison using \\!\\=\\= between bool and null will always evaluate to true\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
-			message: "#^Variable \\$hierarchy might not be defined\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
 			message: "#^Cannot access property \\$id on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
@@ -2235,16 +1457,6 @@ parameters:
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between bool and null will always evaluate to true\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
-
-		-
-			message: "#^Variable \\$hierarchy might not be defined\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
 
@@ -2292,14 +1504,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MergeFactsAction.php
-
-		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 2
-			path: app/Http/RequestHandlers/MergeFactsPage.php
 
 		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
@@ -2367,14 +1571,6 @@ parameters:
 			path: app/Http/RequestHandlers/ModuleAction.php
 
 		-
-			message: """
-				#^Call to method formatText\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Filter\\:
-				since 2\\.0\\.17\\. Will be removed in 2\\.1\\.0\\.$#
-			"""
-			count: 1
-			path: app/Http/RequestHandlers/NotePage.php
-
-		-
 			message: "#^Parameter \\#1 \\$token of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:findByToken\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/PasswordResetAction.php
@@ -2390,11 +1586,6 @@ parameters:
 			path: app/Http/RequestHandlers/PendingChangesAcceptChange.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
-
-		-
 			message: "#^Parameter \\#1 \\$xref of method Fisharebest\\\\Webtrees\\\\Contracts\\\\GedcomRecordFactoryInterface\\:\\:make\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/PendingChangesAcceptRecord.php
@@ -2402,11 +1593,6 @@ parameters:
 		-
 			message: "#^Cannot call method local\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogData.php
-
-		-
-			message: "#^Only booleans are allowed in a ternary operator condition, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given\\.$#"
-			count: 2
 			path: app/Http/RequestHandlers/PendingChangesLogData.php
 
 		-
@@ -2435,11 +1621,6 @@ parameters:
 			path: app/Http/RequestHandlers/PhpInformation.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/RegisterAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$str of function preg_quote expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/RegisterAction.php
@@ -2448,30 +1629,6 @@ parameters:
 			message: "#^Parameter \\#2 \\.\\.\\.\\$args of static method Fisharebest\\\\Webtrees\\\\I18N\\:\\:translate\\(\\) expects string, mixed given\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/RegisterAction.php
-
-		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Http/RequestHandlers/ReorderChildrenAction.php
-
-		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Http/RequestHandlers/ReorderMediaAction.php
-
-		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Http/RequestHandlers/ReorderNamesAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$module_name of method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByName\\(\\) expects string, mixed given\\.$#"
@@ -2489,24 +1646,9 @@ parameters:
 			path: app/Http/RequestHandlers/ReportSetupAction.php
 
 		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\|false given\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/ReportSetupPage.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ReportSetupPage.php
-
-		-
 			message: "#^Parameter \\#1 \\$module_name of method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByName\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ReportSetupPage.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/RepositoryPage.php
 
 		-
 			message: "#^Parameter \\#1 \\$url of function parse_url expects string, mixed given\\.$#"
@@ -2639,11 +1781,6 @@ parameters:
 			path: app/Http/RequestHandlers/SetupWizard.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SetupWizard.php
-
-		-
 			message: "#^Cannot call method local\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SiteLogsData.php
@@ -2652,21 +1789,6 @@ parameters:
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SitePreferencesPage.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/SourcePage.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/SubmissionPage.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/SubmitterPage.php
 
 		-
 			message: "#^Cannot call method createStreamFromResource\\(\\) on mixed\\.$#"
@@ -2704,16 +1826,6 @@ parameters:
 			path: app/Http/RequestHandlers/TreePreferencesPage.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/TreePreferencesPage.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
 			message: "#^Cannot access property \\$l_from on mixed\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/UnconnectedPage.php
@@ -2724,29 +1836,9 @@ parameters:
 			path: app/Http/RequestHandlers/UnconnectedPage.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/UploadMediaAction.php
-
-		-
 			message: "#^Parameter \\#2 \\$resource of method League\\\\Flysystem\\\\FilesystemInterface\\:\\:writeStream\\(\\) expects resource, resource\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/UploadMediaAction.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/UploadMediaPage.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\User\\|null given\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/UserAddAction.php
-
-		-
-			message: "#^Casting to array something that's already array\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/UserAddPage.php
 
 		-
 			message: "#^Cannot call method id\\(\\) on mixed\\.$#"
@@ -2759,17 +1851,7 @@ parameters:
 			path: app/Http/RequestHandlers/UserEditAction.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, string given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/UserListData.php
-
-		-
 			message: "#^Cannot call method getPreference\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/UserListPage.php
-
-		-
-			message: "#^Casting to array something that's already array\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/UserListPage.php
 
@@ -2854,71 +1936,6 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Foreach overwrites \\$SURN with its value variable\\.$#"
-			count: 2
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Family\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in &&, array\\<int\\<0, max\\>, \\(float\\|int\\)\\> given on the left side\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in &&, array\\<int\\<0, max\\>, int\\> given on the right side\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, string given\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, string\\|null given\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in a ternary operator condition, int\\|false given\\.$#"
-			count: 2
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 6
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
-			count: 3
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 2
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 6
-			path: app/Individual.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
 			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Individual.php
@@ -2969,19 +1986,6 @@ parameters:
 			path: app/Log.php
 
 		-
-			message: "#^Only booleans are allowed in a ternary operator condition, Fisharebest\\\\Webtrees\\\\Tree\\|null given\\.$#"
-			count: 1
-			path: app/Log.php
-
-		-
-			message: """
-				#^Call to method printMediaLinks\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintFacts\\:
-				since 2\\.0\\.6\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Media.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:firstImageFile\\(\\) should return Fisharebest\\\\Webtrees\\\\MediaFile\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Media.php
@@ -3012,16 +2016,6 @@ parameters:
 			path: app/MediaFile.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 4
-			path: app/MediaFile.php
-
-		-
-			message: "#^Only numeric types are allowed in \\+, int\\|false given on the left side\\.$#"
-			count: 1
-			path: app/MediaFile.php
-
-		-
 			message: "#^Cannot access offset string on mixed\\.$#"
 			count: 1
 			path: app/Module/AbstractModule.php
@@ -3043,11 +2037,6 @@ parameters:
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: app/Module/AncestorsChartModule.php
-
-		-
-			message: "#^Foreach overwrites \\$individual with its value variable\\.$#"
 			count: 1
 			path: app/Module/AncestorsChartModule.php
 
@@ -3077,16 +2066,6 @@ parameters:
 			path: app/Module/BranchesListModule.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Family\\|null given\\.$#"
-			count: 1
-			path: app/Module/BranchesListModule.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
-			count: 1
-			path: app/Module/BranchesListModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$tree of method Fisharebest\\\\Webtrees\\\\Module\\\\BranchesListModule\\:\\:listUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
 			count: 1
 			path: app/Module/BranchesListModule.php
@@ -3103,11 +2082,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method updateFact\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
-			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Individual and Fisharebest\\\\Webtrees\\\\Individual will always evaluate to true\\.$#"
 			count: 1
 			path: app/Module/CensusAssistantModule.php
 
@@ -3130,16 +2104,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$census of method Fisharebest\\\\Webtrees\\\\Module\\\\CensusAssistantModule\\:\\:createNoteText\\(\\) expects Fisharebest\\\\Webtrees\\\\Census\\\\CensusInterface, object given\\.$#"
 			count: 1
 			path: app/Module/CensusAssistantModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ChartsBlockModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/ChartsBlockModule.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Module/ChartsBlockModule.php
 
 		-
 			message: "#^Cannot call method getAttribute\\(\\) on mixed\\.$#"
@@ -3207,11 +2171,6 @@ parameters:
 			path: app/Module/ClippingsCartModule.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
@@ -3243,16 +2202,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
 
@@ -3302,16 +2251,6 @@ parameters:
 			path: app/Module/DescendancyChartModule.php
 
 		-
-			message: "#^Only booleans are allowed in a ternary operator condition, int given\\.$#"
-			count: 1
-			path: app/Module/DescendancyModule.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 2
-			path: app/Module/DescendancyModule.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\DescendancyModule\\:\\:\\$sidebar_order \\(int\\) on left side of \\?\\? is not nullable\\.$#"
 			count: 1
 			path: app/Module/DescendancyModule.php
@@ -3352,16 +2291,6 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
@@ -3392,16 +2321,6 @@ parameters:
 			path: app/Module/FamilyTreeFavoritesModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyTreeFavoritesModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
 			message: "#^Cannot access property \\$body on object\\|null\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeNewsModule.php
@@ -3412,27 +2331,12 @@ parameters:
 			path: app/Module/FamilyTreeNewsModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyTreeNewsModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/FamilyTreeNewsModule.php
-
-		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeStatisticsModule.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeStatisticsModule.php
-
-		-
 			message: "#^Parameter \\#2 \\$callback of function uksort expects callable\\(int\\|string, int\\|string\\)\\: int, array\\{'Fisharebest\\\\\\\\Webtrees\\\\\\\\I18N', 'strcasecmp'\\} given\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeStatisticsModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\FamilyTreeStatisticsModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
 			count: 1
 			path: app/Module/FamilyTreeStatisticsModule.php
 
@@ -3497,11 +2401,6 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#2 \\$parameters \\(array\\<string, int\\|string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:chartUrl\\(\\) should be contravariant with parameter \\$parameters \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleChartInterface\\:\\:chartUrl\\(\\)$#"
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
 			message: "#^Parameter \\#2 \\$parameters of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:chartUrl\\(\\) expects array\\<string, int\\|string\\>, array\\<string, mixed\\> given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
@@ -3527,11 +2426,6 @@ parameters:
 			path: app/Module/FixCemeteryTag.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Module/FixCemeteryTag.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixDuplicateLinks.php
@@ -3539,21 +2433,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
-			path: app/Module/FixDuplicateLinks.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int\\|false given on the left side\\.$#"
-			count: 1
-			path: app/Module/FixDuplicateLinks.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int\\|false given on the right side\\.$#"
-			count: 2
-			path: app/Module/FixDuplicateLinks.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between Illuminate\\\\Support\\\\Collection&iterable\\<string\\> and null will always evaluate to true\\.$#"
-			count: 6
 			path: app/Module/FixDuplicateLinks.php
 
 		-
@@ -3577,26 +2456,6 @@ parameters:
 			path: app/Module/FixMissingMarriedNames.php
 
 		-
-			message: "#^Only booleans are allowed in &&, array\\<string\\> given on the right side\\.$#"
-			count: 1
-			path: app/Module/FixMissingMarriedNames.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the left side\\.$#"
-			count: 2
-			path: app/Module/FixMissingMarriedNames.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 2
-			path: app/Module/FixMissingMarriedNames.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Module/FixMissingMarriedNames.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixNameSlashesAndSpaces.php
@@ -3607,22 +2466,7 @@ parameters:
 			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
-			message: "#^Only booleans are allowed in \\|\\|, int\\|false given on the left side\\.$#"
-			count: 1
-			path: app/Module/FixNameSlashesAndSpaces.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/Module/FixNameSlashesAndSpaces.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameTags\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
-			count: 1
-			path: app/Module/FixNameTags.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between Illuminate\\\\Support\\\\Collection&iterable\\<string\\> and null will always evaluate to true\\.$#"
 			count: 1
 			path: app/Module/FixNameTags.php
 
@@ -3637,20 +2481,7 @@ parameters:
 			path: app/Module/FixPlaceNames.php
 
 		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Module/FixPrimaryTag.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
-			count: 1
-			path: app/Module/FixPrimaryTag.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between Illuminate\\\\Support\\\\Collection&iterable\\<string\\> and null will always evaluate to true\\.$#"
 			count: 1
 			path: app/Module/FixPrimaryTag.php
 
@@ -3710,11 +2541,6 @@ parameters:
 			path: app/Module/HitCountFooterModule.php
 
 		-
-			message: "#^Only booleans are allowed in &&, string given on the right side\\.$#"
-			count: 1
-			path: app/Module/HitCountFooterModule.php
-
-		-
 			message: "#^Parameter \\#3 \\$parameter of method Fisharebest\\\\Webtrees\\\\Module\\\\HitCountFooterModule\\:\\:countHit\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Module/HitCountFooterModule.php
@@ -3745,36 +2571,13 @@ parameters:
 			path: app/Module/HtmlBlockModule.php
 
 		-
-			message: "#^Only booleans are allowed in &&, string given on the left side\\.$#"
-			count: 1
-			path: app/Module/HtmlBlockModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\HtmlBlockModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/HtmlBlockModule.php
-
-		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:sex\\(\\)\\.$#"
 			count: 17
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 21
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
 			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Individual and Fisharebest\\\\Webtrees\\\\Family will always evaluate to false\\.$#"
 			count: 1
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 3
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
@@ -3843,21 +2646,6 @@ parameters:
 			path: app/Module/IndividualListModule.php
 
 		-
-			message: "#^Casting to string something that's already string\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, string given\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 2
-			path: app/Module/IndividualListModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$tree of method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualListModule\\:\\:listUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
 			count: 1
 			path: app/Module/IndividualListModule.php
@@ -3866,19 +2654,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$key of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string\\|null, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 2
 			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Module/IndividualListModule.php
-
-		-
-			message: """
-				#^Call to method printFact\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintFacts\\:
-				since 2\\.0\\.6\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Module/IndividualMetadataModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|false given\\.$#"
@@ -3901,42 +2676,12 @@ parameters:
 			path: app/Module/InteractiveTree/TreeView.php
 
 		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 4
-			path: app/Module/InteractiveTree/TreeView.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\InteractiveTree\\\\TreeView\\:\\:getIndividuals\\(\\) should return string but returns string\\|false\\.$#"
 			count: 1
 			path: app/Module/InteractiveTree/TreeView.php
 
 		-
 			message: "#^Offset 1 on array\\{Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Family\\} in empty\\(\\) always exists and is not falsy\\.$#"
-			count: 1
-			path: app/Module/InteractiveTree/TreeView.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Family\\|null given\\.$#"
-			count: 1
-			path: app/Module/InteractiveTree/TreeView.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/InteractiveTree/TreeView.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\> given\\.$#"
-			count: 2
-			path: app/Module/InteractiveTree/TreeView.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, mixed given\\.$#"
-			count: 1
-			path: app/Module/InteractiveTree/TreeView.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
 			count: 1
 			path: app/Module/InteractiveTree/TreeView.php
 
@@ -4001,24 +2746,9 @@ parameters:
 			path: app/Module/LocationListModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\LoggedInUsersModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/LoggedInUsersModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\LoginBlockModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/LoginBlockModule.php
-
-		-
 			message: "#^Cannot call method getServerParams\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/MatomoAnalyticsModule.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Module/MediaListModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$tree of method Fisharebest\\\\Webtrees\\\\Module\\\\MediaListModule\\:\\:listUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
@@ -4076,16 +2806,6 @@ parameters:
 			path: app/Module/MinimalTheme.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
@@ -4106,11 +2826,6 @@ parameters:
 			path: app/Module/NoteListModule.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Module/NotesTabModule.php
-
-		-
 			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:accessLevel\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Module/NotesTabModule.php
@@ -4119,11 +2834,6 @@ parameters:
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\NotesTabModule\\:\\:\\$tab_order \\(int\\) on left side of \\?\\? is not nullable\\.$#"
 			count: 1
 			path: app/Module/NotesTabModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\OnThisDayModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/OnThisDayModule.php
 
 		-
 			message: "#^Cannot call method name\\(\\) on mixed\\.$#"
@@ -4201,14 +2911,6 @@ parameters:
 			path: app/Module/PlaceHierarchyListModule.php
 
 		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Module/PlacesModule.php
-
-		-
 			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:accessLevel\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Module/PlacesModule.php
@@ -4279,33 +2981,8 @@ parameters:
 			path: app/Module/RelationshipsChartModule.php
 
 		-
-			message: "#^For loop initial assignment overwrites variable \\$x\\.$#"
-			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^For loop initial assignment overwrites variable \\$y\\.$#"
-			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\RelationshipsChartModule\\:\\:allAncestors\\(\\) should return array\\<string\\> but returns array\\<int, mixed\\>\\.$#"
 			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 2
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\<0, max\\> given\\.$#"
-			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 2
 			path: app/Module/RelationshipsChartModule.php
 
 		-
@@ -4349,21 +3026,6 @@ parameters:
 			path: app/Module/RepositoryListModule.php
 
 		-
-			message: "#^Only booleans are allowed in &&, string given on the right side\\.$#"
-			count: 2
-			path: app/Module/ResearchTaskModule.php
-
-		-
-			message: "#^Only booleans are allowed in a ternary operator condition, string given\\.$#"
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ResearchTaskModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
 			count: 1
 			path: app/Module/ReviewChangesModule.php
@@ -4380,11 +3042,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
-			count: 1
-			path: app/Module/ReviewChangesModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ReviewChangesModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
 			count: 1
 			path: app/Module/ReviewChangesModule.php
 
@@ -4419,24 +3076,9 @@ parameters:
 			path: app/Module/SlideShowModule.php
 
 		-
-			message: "#^Only booleans are allowed in a ternary operator condition, string given\\.$#"
-			count: 18
-			path: app/Module/SlideShowModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\SlideShowModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$tree of method Fisharebest\\\\Webtrees\\\\Module\\\\SourceListModule\\:\\:listUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
 			count: 1
 			path: app/Module/SourceListModule.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Module/SourcesTabModule.php
 
 		-
 			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:accessLevel\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
@@ -4505,11 +3147,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\StatisticsChartModule\\:\\:fillYData\\(\\) has parameter \\$z_axis with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\<0, max\\> given\\.$#"
 			count: 1
 			path: app/Module/StatisticsChartModule.php
 
@@ -4584,22 +3221,12 @@ parameters:
 			path: app/Module/StoriesModule.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$tree of method Fisharebest\\\\Webtrees\\\\Module\\\\SubmitterListModule\\:\\:listUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
 			count: 1
 			path: app/Module/SubmitterListModule.php
 
 		-
 			message: "#^Cannot call method menuThemes\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Module/ThemeSelectModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ThemeSelectModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
 			count: 1
 			path: app/Module/ThemeSelectModule.php
 
@@ -4649,22 +3276,12 @@ parameters:
 			path: app/Module/TopGivenNamesModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\TopGivenNamesModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/TopGivenNamesModule.php
-
-		-
 			message: "#^Cannot access property \\$page_count on mixed\\.$#"
 			count: 1
 			path: app/Module/TopPageViewsModule.php
 
 		-
 			message: "#^Cannot access property \\$page_parameter on mixed\\.$#"
-			count: 1
-			path: app/Module/TopPageViewsModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\TopPageViewsModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
 			count: 1
 			path: app/Module/TopPageViewsModule.php
 
@@ -4679,11 +3296,6 @@ parameters:
 			path: app/Module/TopSurnamesModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\TopSurnamesModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
 			message: "#^Parameter \\#4 \\$module of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintLists\\:\\:surnameList\\(\\) expects Fisharebest\\\\Webtrees\\\\Module\\\\ModuleListInterface\\|null, mixed given\\.$#"
 			count: 2
 			path: app/Module/TopSurnamesModule.php
@@ -4692,11 +3304,6 @@ parameters:
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\TreesMenuModule\\:\\:\\$menu_order \\(int\\) on left side of \\?\\? is not nullable\\.$#"
 			count: 1
 			path: app/Module/TreesMenuModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\UpcomingAnniversariesModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/UpcomingAnniversariesModule.php
 
 		-
 			message: "#^Cannot call method id\\(\\) on mixed\\.$#"
@@ -4714,16 +3321,6 @@ parameters:
 			path: app/Module/UserFavoritesModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\UserFavoritesModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/UserFavoritesModule.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Module/UserFavoritesModule.php
-
-		-
 			message: "#^Cannot access property \\$body on object\\|null\\.$#"
 			count: 1
 			path: app/Module/UserJournalModule.php
@@ -4734,26 +3331,6 @@ parameters:
 			path: app/Module/UserJournalModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\UserJournalModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/UserJournalModule.php
-
-		-
-			message: "#^Only booleans are allowed in &&, string given on the right side\\.$#"
-			count: 1
-			path: app/Module/UserMessagesModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\UserMessagesModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/UserMessagesModule.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\UserWelcomeModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/UserWelcomeModule.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
@@ -4789,24 +3366,9 @@ parameters:
 			path: app/Module/WebtreesTheme.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\WelcomeBlockModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/WelcomeBlockModule.php
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
@@ -4844,37 +3406,12 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/XeneaTheme.php
-
-		-
-			message: "#^Parameter \\#4 \\$config \\(array\\<string\\>\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\YahrzeitModule\\:\\:getBlock\\(\\) should be contravariant with parameter \\$config \\(array\\) of method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\)$#"
-			count: 1
-			path: app/Module/YahrzeitModule.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/NoReplyUser.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Note\\:\\:getNote\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Note.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
 			count: 1
 			path: app/Note.php
 
@@ -4905,11 +3442,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Place\\:\\:id\\(\\) should return int but returns mixed\\.$#"
-			count: 1
-			path: app/Place.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
 			count: 1
 			path: app/Place.php
 
@@ -4984,23 +3516,8 @@ parameters:
 			path: app/Report/AbstractRenderer.php
 
 		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 2
-			path: app/Report/HtmlRenderer.php
-
-		-
 			message: "#^Elseif branch is unreachable because previous condition is always true\\.$#"
 			count: 6
-			path: app/Report/HtmlRenderer.php
-
-		-
-			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement will always evaluate to true\\.$#"
-			count: 3
-			path: app/Report/HtmlRenderer.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
 			path: app/Report/HtmlRenderer.php
 
 		-
@@ -5029,68 +3546,8 @@ parameters:
 			path: app/Report/HtmlRenderer.php
 
 		-
-			message: "#^Call to method TCPDF\\:\\:setAuthor\\(\\) with incorrect case\\: SetAuthor$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setAutoPageBreak\\(\\) with incorrect case\\: SetAutoPageBreak$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setCompression\\(\\) with incorrect case\\: SetCompression$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setCreator\\(\\) with incorrect case\\: SetCreator$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setFont\\(\\) with incorrect case\\: SetFont$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setHeaderData\\(\\) with incorrect case\\: SetHeaderData$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setKeywords\\(\\) with incorrect case\\: SetKeywords$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setMargins\\(\\) with incorrect case\\: SetMargins$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setSubject\\(\\) with incorrect case\\: SetSubject$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setTitle\\(\\) with incorrect case\\: SetTitle$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setX\\(\\) with incorrect case\\: SetX$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
 			message: "#^Elseif branch is unreachable because previous condition is always true\\.$#"
 			count: 6
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement will always evaluate to true\\.$#"
-			count: 3
 			path: app/Report/PdfRenderer.php
 
 		-
@@ -5149,18 +3606,8 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 6
-			path: app/Report/ReportHtmlCell.php
-
-		-
 			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string\\|null, mixed given\\.$#"
 			count: 4
-			path: app/Report/ReportHtmlCell.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlCell\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
 			path: app/Report/ReportHtmlCell.php
 
 		-
@@ -5189,84 +3636,9 @@ parameters:
 			path: app/Report/ReportHtmlCell.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 5
-			path: app/Report/ReportHtmlCell.php
-
-		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlFootnote\\:\\:getWidth\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:getWidth\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlFootnote\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlFootnote\\:\\:renderFootnote\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:renderFootnote\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlImage\\:\\:getHeight\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseImage\\:\\:getHeight\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlImage.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlImage\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlImage.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlLine\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlLine.php
-
-		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlText.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlText\\:\\:getHeight\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:getHeight\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlText.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlText\\:\\:getWidth\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:getWidth\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlText.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlText\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlText.php
-
-		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 10
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlTextbox\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
 			message: "#^Variable \\$lastelement in empty\\(\\) always exists and is not falsy\\.$#"
 			count: 1
 			path: app/Report/ReportHtmlTextbox.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int given\\.$#"
-			count: 1
-			path: app/Report/ReportParserBase.php
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|false given\\.$#"
@@ -5294,23 +3666,7 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Call to function assert\\(\\) with false and LogicException will always evaluate to false\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: """
-				#^Call to method formatText\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Filter\\:
-				since 2\\.0\\.17\\. Will be removed in 2\\.1\\.0\\.$#
-			"""
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -5400,21 +3756,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 62
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Foreach overwrites \\$t with its value variable\\.$#"
-			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Foreach overwrites \\$tag with its value variable\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^If condition is always true\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -5427,76 +3768,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:substituteVars\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given on the left side\\.$#"
-			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int given\\.$#"
-			count: 4
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, mixed given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in a ternary operator condition, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given\\.$#"
-			count: 3
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\|false given\\.$#"
-			count: 15
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
-			count: 6
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, array\\<int\\<0, max\\>, array\\<string, string\\>\\> given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, array\\<int\\<0, max\\>, string\\> given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 37
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Only numeric types are allowed in post\\-increment, array\\<string\\>\\|float\\|int given\\.$#"
-			count: 4
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -5610,54 +3881,9 @@ parameters:
 			path: app/Report/ReportParserSetup.php
 
 		-
-			message: "#^Only booleans are allowed in an elseif condition, int\\|false given\\.$#"
-			count: 2
-			path: app/Report/ReportParserSetup.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserSetup\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Report/ReportParserSetup.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setDrawColor\\(\\) with incorrect case\\: SetDrawColor$#"
-			count: 2
-			path: app/Report/ReportPdfCell.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setFillColor\\(\\) with incorrect case\\: SetFillColor$#"
-			count: 1
-			path: app/Report/ReportPdfCell.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setTextColor\\(\\) with incorrect case\\: SetTextColor$#"
-			count: 3
-			path: app/Report/ReportPdfCell.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setY\\(\\) with incorrect case\\: SetY$#"
-			count: 1
-			path: app/Report/ReportPdfCell.php
-
-		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 3
-			path: app/Report/ReportPdfCell.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 3
-			path: app/Report/ReportPdfCell.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfCell\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfCell.php
 
 		-
 			message: "#^Parameter \\#1 \\$x of method Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\:\\:addMarginX\\(\\) expects float, mixed given\\.$#"
@@ -5685,122 +3911,12 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Call to method TCPDF\\:\\:setLink\\(\\) with incorrect case\\: SetLink$#"
-			count: 1
-			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 1
-			path: app/Report/ReportPdfFootnote.php
-
-		-
 			message: "#^Parameter \\#1 \\$link of method TCPDF\\:\\:setLink\\(\\) expects int, string given\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:getWidth\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:renderFootnote\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:renderFootnote\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfFootnote.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setX\\(\\) with incorrect case\\: SetX$#"
-			count: 1
-			path: app/Report/ReportPdfImage.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setY\\(\\) with incorrect case\\: SetY$#"
-			count: 3
-			path: app/Report/ReportPdfImage.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfImage\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfImage.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfLine\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfLine.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setTextColor\\(\\) with incorrect case\\: SetTextColor$#"
-			count: 3
-			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getHeight\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:getHeight\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:getWidth\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
-			count: 1
-			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setFillColor\\(\\) with incorrect case\\: SetFillColor$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setLeftMargin\\(\\) with incorrect case\\: SetLeftMargin$#"
-			count: 6
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setRightMargin\\(\\) with incorrect case\\: SetRightMargin$#"
-			count: 6
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setXY\\(\\) with incorrect case\\: SetXY$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Call to method TCPDF\\:\\:setY\\(\\) with incorrect case\\: SetY$#"
-			count: 4
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
-			count: 10
-			path: app/Report/ReportPdfTextBox.php
-
-		-
 			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote will always evaluate to false\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Parameter \\#1 \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfTextBox\\:\\:render\\(\\) should be contravariant with parameter \\$renderer \\(Fisharebest\\\\Webtrees\\\\Report\\\\HtmlRenderer\\|Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:render\\(\\)$#"
 			count: 1
 			path: app/Report/ReportPdfTextBox.php
 
@@ -5935,16 +4051,6 @@ parameters:
 			path: app/Services/CalendarService.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 4
-			path: app/Services/CalendarService.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 2
-			path: app/Services/CalendarService.php
-
-		-
 			message: "#^Cannot access offset mixed on array\\|object\\.$#"
 			count: 2
 			path: app/Services/CaptchaService.php
@@ -5953,14 +4059,6 @@ parameters:
 			message: "#^Cannot call method children\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Services/ChartService.php
-
-		-
-			message: """
-				#^Call to deprecated method getTag\\(\\) of class Fisharebest\\\\Webtrees\\\\Fact\\:
-				since 2\\.0\\.5\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 3
-			path: app/Services/ClipboardService.php
 
 		-
 			message: "#^Cannot access offset 'factrec' on mixed\\.$#"
@@ -6003,21 +4101,6 @@ parameters:
 			path: app/Services/EmailService.php
 
 		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 4
-			path: app/Services/EmailService.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 2
-			path: app/Services/GedcomEditService.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Services/GedcomEditService.php
-
-		-
 			message: "#^Cannot access property \\$f_gedcom on mixed\\.$#"
 			count: 1
 			path: app/Services/GedcomExportService.php
@@ -6044,11 +4127,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomExportService\\:\\:convertMediaPath\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
 			count: 1
 			path: app/Services/GedcomExportService.php
 
@@ -6086,11 +4164,6 @@ parameters:
 			message: "#^Cannot access offset 'type' on array\\|false\\.$#"
 			count: 1
 			path: app/Services/HousekeepingService.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 2
-			path: app/Services/LocalizationService.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$parent_id\\.$#"
@@ -6228,11 +4301,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 5
-			path: app/Services/SearchService.php
-
-		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:orWhere\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression\\|string given\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
@@ -6244,11 +4312,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between non\\-falsy\\-string and '' will always evaluate to true\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
 
@@ -6273,22 +4336,7 @@ parameters:
 			path: app/Services/TimeoutService.php
 
 		-
-			message: "#^Only numeric types are allowed in \\+, float\\|null given on the left side\\.$#"
-			count: 2
-			path: app/Services/TimeoutService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\TreeService\\:\\:all\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Tree\\> but returns mixed\\.$#"
-			count: 1
-			path: app/Services/TreeService.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
-			count: 1
-			path: app/Services/TreeService.php
-
-		-
-			message: "#^Variable \\$pos might not be defined\\.$#"
 			count: 1
 			path: app/Services/TreeService.php
 
@@ -6373,24 +4421,9 @@ parameters:
 			path: app/SessionDatabaseHandler.php
 
 		-
-			message: "#^Return type \\(bool\\) of method Fisharebest\\\\Webtrees\\\\SessionDatabaseHandler\\:\\:gc\\(\\) should be covariant with return type \\(int\\|false\\) of method SessionHandlerInterface\\:\\:gc\\(\\)$#"
-			count: 1
-			path: app/SessionDatabaseHandler.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 2
-			path: app/Soundex.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Soundex.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Repository\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Source.php
 
 		-
 			message: "#^Call to an undefined method ReflectionType\\:\\:getName\\(\\)\\.$#"
@@ -6518,11 +4551,6 @@ parameters:
 			path: app/Statistics/Google/ChartDistribution.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\>\\|false\\|null given\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
 			message: "#^Parameter \\#1 \\$twoLetterCode of method Fisharebest\\\\Webtrees\\\\Statistics\\\\Service\\\\CountryService\\:\\:mapTwoLetterToName\\(\\) expects string, int\\|string given\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartDistribution.php
@@ -6538,39 +4566,14 @@ parameters:
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Family\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartFamilyLargest.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartFamilyLargest\\:\\:\\$theme \\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\) does not accept mixed\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartFamilyLargest.php
 
 		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartFamilyWithSources.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the right side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartFamilyWithSources.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartFamilyWithSources\\:\\:\\$theme \\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\) does not accept mixed\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartFamilyWithSources.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartIndividualWithSources.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the right side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartIndividualWithSources.php
 
 		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartIndividualWithSources\\:\\:\\$theme \\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleThemeInterface\\) does not accept mixed\\.$#"
@@ -6593,42 +4596,9 @@ parameters:
 			path: app/Statistics/Google/ChartMedia.php
 
 		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartMortality.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the right side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartMortality.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartNoChildrenFamilies.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartSex.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, int given on the right side\\.$#"
-			count: 2
-			path: app/Statistics/Google/ChartSex.php
-
-		-
 			message: "#^Parameter \\#2 \\$request of method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:contactLink\\(\\) expects Psr\\\\Http\\\\Message\\\\ServerRequestInterface, mixed given\\.$#"
 			count: 2
 			path: app/Statistics/Repository/ContactRepository.php
-
-		-
-			message: """
-				#^Call to method formatFactPlace\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrint\\:
-				since 2\\.0\\.6\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\EventRepository\\:\\:eventQuery\\(\\) should return stdClass\\|null but returns object\\|null\\.$#"
@@ -6636,56 +4606,8 @@ parameters:
 			path: app/Statistics/Repository/EventRepository.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, stdClass\\|null given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given\\.$#"
-			count: 2
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, stdClass\\|null given\\.$#"
-			count: 4
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: """
-				#^Call to method formatFactPlace\\(\\) of deprecated class Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrint\\:
-				since 2\\.0\\.6\\.  Will be removed in 2\\.1\\.0$#
-			"""
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyDatesRepository\\:\\:eventQuery\\(\\) should return stdClass\\|null but returns object\\|null\\.$#"
 			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, stdClass\\|null given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null given\\.$#"
-			count: 2
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, stdClass\\|null given\\.$#"
-			count: 3
 			path: app/Statistics/Repository/FamilyDatesRepository.php
 
 		-
@@ -6789,21 +4711,6 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: "#^Only booleans are allowed in &&, Fisharebest\\\\Webtrees\\\\Individual\\|null given on the right side\\.$#"
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: "#^Only booleans are allowed in \\|\\|, array\\<Fisharebest\\\\Webtrees\\\\Date\\> given on the left side\\.$#"
-			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
 			message: "#^Access to an undefined property object\\:\\:\\$change_time\\.$#"
 			count: 1
 			path: app/Statistics/Repository/GedcomRepository.php
@@ -6814,22 +4721,7 @@ parameters:
 			path: app/Statistics/Repository/GedcomRepository.php
 
 		-
-			message: "#^Only numeric types are allowed in \\+, int\\<0, max\\>\\|false given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
-			message: "#^Only numeric types are allowed in \\-, int\\<0, max\\>\\|false given on the left side\\.$#"
-			count: 1
-			path: app/Statistics/Repository/GedcomRepository.php
-
-		-
 			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: app/Statistics/Repository/HitCountRepository.php
-
-		-
-			message: "#^Only booleans are allowed in a ternary operator condition, Fisharebest\\\\Webtrees\\\\User\\|null given\\.$#"
 			count: 1
 			path: app/Statistics/Repository/HitCountRepository.php
 
@@ -6954,11 +4846,6 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
 			message: "#^Parameter \\#2 \\$callback of function array_walk expects callable\\(int, string\\)\\: mixed, Closure\\(string, string\\)\\: void given\\.$#"
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
@@ -6979,11 +4866,6 @@ parameters:
 			path: app/Statistics/Repository/LatestUserRepository.php
 
 		-
-			message: "#^Only booleans are allowed in a ternary operator condition, object\\|null given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/LatestUserRepository.php
-
-		-
 			message: "#^Cannot access property \\$country on int\\|stdClass\\.$#"
 			count: 1
 			path: app/Statistics/Repository/PlaceRepository.php
@@ -6994,74 +4876,9 @@ parameters:
 			path: app/Statistics/Repository/PlaceRepository.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/PlaceRepository.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, string given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/PlaceRepository.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\<0, max\\> given\\.$#"
-			count: 1
-			path: app/Statistics/Repository/UserRepository.php
-
-		-
-			message: "#^Only booleans are allowed in a negated boolean, int given\\.$#"
-			count: 1
-			path: app/Statistics/Service/ColorService.php
-
-		-
-			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
-			count: 1
-			path: app/Statistics/Service/CountryService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Submission\\:\\:fetchGedcomRecord\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Submission.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/SurnameTradition/IcelandicSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/SurnameTradition/IcelandicSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 2
-			path: app/SurnameTradition/LithuanianSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/SurnameTradition/LithuanianSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/SurnameTradition/MatrilinealSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/SurnameTradition/MatrilinealSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/SurnameTradition/PaternalSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/SurnameTradition/PaternalSurnameTradition.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\SurnameTradition\\\\PatrilinealSurnameTradition\\:\\:inflect\\(\\) should return string but returns string\\|null\\.$#"
@@ -7069,39 +4886,9 @@ parameters:
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
 
 		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 1
-			path: app/SurnameTradition/PatrilinealSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/SurnameTradition/PatrilinealSurnameTradition.php
-
-		-
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in &&, int\\|false given on the right side\\.$#"
-			count: 2
-			path: app/SurnameTradition/PolishSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 1
-			path: app/SurnameTradition/PolishSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 3
-			path: app/SurnameTradition/PortugueseSurnameTradition.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int\\|false given\\.$#"
-			count: 3
-			path: app/SurnameTradition/SpanishSurnameTradition.php
 
 		-
 			message: "#^Cannot access property \\$resn on mixed\\.$#"
@@ -7134,22 +4921,12 @@ parameters:
 			path: app/Tree.php
 
 		-
-			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
-			count: 1
-			path: app/Tree.php
-
-		-
 			message: "#^Cannot call method find\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/TreeUser.php
 
 		-
 			message: "#^Cannot call method get\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/User.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
 			count: 1
 			path: app/User.php
 
@@ -7185,16 +4962,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method fromGlobals\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Webtrees.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
-			count: 1
-			path: app/Webtrees.php
-
-		-
-			message: "#^Strict comparison using \\!\\=\\= between '' and '\\-dev' will always evaluate to true\\.$#"
 			count: 1
 			path: app/Webtrees.php
 
