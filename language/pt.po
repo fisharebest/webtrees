@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-23 18:11+0000\n"
-"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
+"PO-Revision-Date: 2024-10-31 05:49+0000\n"
+"Last-Translator: Joao Ventura <joao@venturas.org>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
 "Language: pt\n"
@@ -1142,31 +1142,31 @@ msgstr "Aba, Nigéria"
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:126
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
@@ -2443,31 +2443,31 @@ msgstr "Evitar espaços e pontuação. Um nome de família será uma boa escolha
 #: app/Date/JalaliDate.php:191
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:95
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6687
@@ -2482,7 +2482,7 @@ msgstr "Açores"
 #: app/Date/JalaliDate.php:193
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6697
@@ -2493,25 +2493,25 @@ msgstr "Bahamas"
 #: app/Date/JalaliDate.php:97
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6696
@@ -3055,7 +3055,7 @@ msgstr "Dama de honor"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:117
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "Brigham City, Utah, Estados Unidos"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:119
@@ -3356,7 +3356,7 @@ msgstr "Conversão de calendário"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:123
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "Calgary, Alberta, Canadá"
 
 #. I18N: gedcom tag CALN
 #: app/GedcomTag.php:234
@@ -3401,7 +3401,7 @@ msgstr "Cartão"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:87
 msgid "Cardston, Alberta, Canada"
-msgstr "Cardston, Alberta, Canada"
+msgstr "Cardston, Alberta, Canadá"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:170
 msgid "Case insensitive"
@@ -3445,7 +3445,7 @@ msgstr "Ilhas Cayman"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:129
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "Cebu City, Filipinas"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:29
@@ -3660,7 +3660,7 @@ msgstr "Filhos de "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:88
 msgid "Children take a patronym instead of a surname."
-msgstr ""
+msgstr "As crianças usam um patronímico em vez de um apelido."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:82
@@ -4330,7 +4330,7 @@ msgstr "Cuba"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:149
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "Curitiba, Brasil"
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Current"
@@ -4382,7 +4382,7 @@ msgstr "República Checa"
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
 msgid "DNA markers"
-msgstr ""
+msgstr "Marcadores ADN"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:262
@@ -4968,7 +4968,7 @@ msgstr "Padrão"
 
 #: app/Module/WelcomeBlockModule.php:56
 msgid "Default chart"
-msgstr "Diagrama por defeito"
+msgstr "Diagrama por omissão"
 
 #: admin_trees_manage.php:438
 msgid "Default family tree"
@@ -4978,7 +4978,7 @@ msgstr "Árvore genealógica padrão"
 #: admin_trees_config.php:654 app/Module/WelcomeBlockModule.php:58
 #: edituser.php:196
 msgid "Default individual"
-msgstr "Indivíduo por defeito"
+msgstr "Indivíduo por omissão"
 
 #: app/Module/GoogleMapsModule.php:321
 msgid "Default map type"
@@ -5106,6 +5106,7 @@ msgstr "Denver, Colorado, Estados Unidos"
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
 msgstr ""
+"Dependendo da configuração do seu servidor, poderá atualizar automaticamente."
 
 #: familybook.php:90
 msgid "Descendant generations"
@@ -5182,31 +5183,31 @@ msgstr "Detroit, Michigan, Estados Unidos"
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "Dej"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dej"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "Dej"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:128
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dej"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dej"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:101
@@ -5380,7 +5381,7 @@ msgstr "Descarregar"
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Descarregar %s…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -5393,7 +5394,7 @@ msgstr "Baixar dados geográficos"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:157
 msgid "Draper, Utah, United States"
-msgstr ""
+msgstr "Draper, Utah, Estados Unidos"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:198
@@ -5566,7 +5567,7 @@ msgstr "Editor"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:159
 msgid "Edmonton, Alberta, Canada"
-msgstr "Edmonton, Alberta, Canada"
+msgstr "Edmonton, Alberta, Canadá"
 
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:386
@@ -5626,7 +5627,7 @@ msgstr "Elul"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr "Endereço de email"
+msgstr "Endereço de e-mail"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -5903,7 +5904,7 @@ msgstr "Cor dos olhos"
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:172
 msgid "F.A.B."
-msgstr ""
+msgstr "F.A.B."
 
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:34
@@ -6470,7 +6471,7 @@ msgstr "Bandeira"
 #. I18N: Name of a country or state
 #: app/Stats.php:6747
 msgid "Flanders"
-msgstr "Flanders"
+msgstr "Flandres"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
@@ -6656,7 +6657,7 @@ msgstr "Fresno, Califórnia"
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
-msgstr "Sex"
+msgstr "6ª"
 
 #: app/Date/CalendarDate.php:355
 msgid "Friday"
@@ -7047,7 +7048,7 @@ msgstr "Guayaquil, Equador"
 #. I18N: Name of a country or state
 #: app/Stats.php:6755
 msgid "Guernsey"
-msgstr ""
+msgstr "Guernsey"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6758
@@ -7376,7 +7377,7 @@ msgid "If a visitor to the website has not selected a preferred language in thei
 msgstr ""
 "Se o visitante do sítio não especificar um idioma preferido na configuração "
 "do seu navegador, ou se estiver num idioma não suportado, então este idioma "
-"será utilizado por defeito. Tipicamente, esta definição aplica-se a motores "
+"será utilizado por omissão. Tipicamente, esta definição aplica-se a motores "
 "de busca."
 
 #: admin_users.php:391
@@ -7781,7 +7782,7 @@ msgstr "Sepultado"
 
 #: import.php:114
 msgid "Invalid GEDCOM file - no header record found."
-msgstr ""
+msgstr "Ficheiro GEDCOM inválido - nenhum cabeçalho encontrado."
 
 #: app/Functions/FunctionsImport.php:619
 msgid "Invalid GEDCOM format"
@@ -8564,7 +8565,7 @@ msgstr "Madagáscar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:227
 msgid "Madrid, Spain"
-msgstr "Madrí, Espanha"
+msgstr "Madrid, Espanha"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1928
@@ -9250,7 +9251,7 @@ msgstr "Mesa, Arizona, Estados Unidos"
 
 #: admin_site_logs.php:284 admin_site_logs.php:329
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
 #. I18N: A configuration setting
 #. I18N: Name of a module
@@ -9382,12 +9383,12 @@ msgstr "Moldávia"
 #. I18N: abbreviation for Monday
 #: app/Date/CalendarDate.php:376 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
-msgstr "Seg"
+msgstr "2ª"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6812
 msgid "Monaco"
-msgstr "Mônaco"
+msgstr "Mónaco"
 
 #: app/Date/CalendarDate.php:351
 msgid "Monday"
@@ -10352,7 +10353,7 @@ msgstr "Ogden, Utah, Estados Unidos"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Cidade de Oklahoma, Oklahoma"
+msgstr "Cidade de Oklahoma, Oklahoma, Estados Unidos"
 
 #: admin_site_change.php:337
 msgid "Old data"
@@ -10431,7 +10432,7 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:373
 msgid "Optional prefixes and suffixes"
@@ -11427,25 +11428,25 @@ msgstr "Raleigh, Carolina do Norte"
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "Ramadão"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "Ramadão"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "Ramadão"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "Ramadão"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
@@ -11933,7 +11934,7 @@ msgstr "Safar"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr ""
+msgstr "Sálvia"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
@@ -12350,7 +12351,7 @@ msgstr "Tempo máximo de sessão"
 
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
-msgstr "Definir por defeito"
+msgstr "Definir por omissão"
 
 #. I18N: You need to:
 #: login.php:573
@@ -12360,12 +12361,12 @@ msgstr ""
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
 msgid "Set the default blocks for new family trees"
-msgstr "Definir blocos por defeito para novas árvores genealógicas"
+msgstr "Definir blocos por omissão para novas árvores genealógicas"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:167 index_edit.php:39
 msgid "Set the default blocks for new users"
-msgstr "Definir blocos por defeito para novos utilizadores"
+msgstr "Definir blocos por omissão para novos utilizadores"
 
 #. I18N: Help text for the “Default pedigree generations” configuration setting
 #: admin_trees_config.php:1237
@@ -14488,7 +14489,7 @@ msgstr ""
 #: admin_trees_config.php:680 edituser.php:207
 msgid "This individual will be selected by default when viewing charts and reports."
 msgstr ""
-"Este indivíduo será selecionado por defeito quando visualizar diagramas e "
+"Este indivíduo será selecionado por omissão quando visualizar diagramas e "
 "relatórios."
 
 #: app/Stats.php:1452 app/Stats.php:2267 app/Stats.php:2375 app/Stats.php:2950
@@ -14941,7 +14942,7 @@ msgstr ""
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
-msgstr "Qui"
+msgstr "5ª"
 
 #: addmedia.php:139 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
@@ -15186,7 +15187,7 @@ msgstr "Toronto, Ontário, Canadá"
 
 #: admin.php:851
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: modules_v3/change_report/report.xml:127
 msgid "Total accepted changes: "
@@ -15331,7 +15332,7 @@ msgstr ""
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
-msgstr "Ter"
+msgstr "3ª"
 
 #: app/Date/CalendarDate.php:352
 msgid "Tuesday"
@@ -15960,7 +15961,7 @@ msgstr "Guarda"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:387
 msgid "Washington, District of Columbia, United States"
-msgstr "Washington, District of Columbia, Estados Unidos"
+msgstr "Washington, Distrito de Colúmbia, Estados Unidos"
 
 #: admin_trees_config.php:1095
 msgid "Watermarks"
@@ -16016,7 +16017,7 @@ msgstr "Preferências do sítio web"
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
-msgstr "Qua"
+msgstr "4ª"
 
 #: app/Date/CalendarDate.php:353
 msgid "Wednesday"
@@ -16054,7 +16055,7 @@ msgstr ""
 "Quando um registo é editado, o utilizador e a data/hora são guardados. Por "
 "vezes é desejável manter a informação existente de \"última alteração\", por "
 "exemplo, quando se tratam de pequenas correções a dados de outrem. Esta "
-"opção controla se esta funcionalidade está ativa por defeito."
+"opção controla se esta funcionalidade está ativa por omissão."
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -16863,7 +16864,7 @@ msgstr "calculado em %s"
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:809
 msgid "cancel"
-msgstr "Cancelar"
+msgstr "cancelar"
 
 #: app/Stats.php:2915
 msgid "census added"
@@ -16941,12 +16942,12 @@ msgstr "lista compacta"
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr "Continuar"
+msgstr "continuar"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
 msgid "create"
-msgstr "Criar"
+msgstr "criar"
 
 #. I18N: a program feature
 #: setup.php:135
@@ -16979,17 +16980,17 @@ msgstr "nora"
 #: app/Functions/Functions.php:1360
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr "pai da nora"
+msgstr "compadre"
 
 #: app/Functions/Functions.php:1362
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr "mãe da nora"
+msgstr "comadre"
 
 #: app/Functions/Functions.php:1364
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "pai da nora"
+msgstr "compadre"
 
 #: app/Stats.php:2911
 msgid "death"
@@ -17004,7 +17005,7 @@ msgstr "graus"
 #: admin_site_change.php:374 admin_site_clean.php:115 admin_site_logs.php:314
 #: admin_users.php:772
 msgid "delete"
-msgstr "Apagar"
+msgstr "apagar"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -17028,7 +17029,7 @@ msgstr "falecido"
 #: app/Module/ClippingsCartModule.php:445
 #: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 msgid "download"
-msgstr "Descarregar"
+msgstr "descarregar"
 
 #: app/Module/GoogleMapsModule.php:3372
 msgid "east"
@@ -17046,7 +17047,7 @@ msgstr "leste"
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr "Editar"
+msgstr "editar"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -17628,7 +17629,7 @@ msgstr "%sº tio(a)-avô(ó)"
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "%s° bisneto(a)"
+msgstr "%sº bisneto(a)"
 
 #: app/Functions/Functions.php:2040 app/Functions/Functions.php:2055
 #, php-format
@@ -17641,7 +17642,7 @@ msgstr "%sª bisneta"
 #: app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "%s° bisavô"
+msgstr "%sº bisavô"
 
 #: app/Functions/Functions.php:1914 app/Functions/Functions.php:1924
 #: app/Functions/Functions.php:1934 app/Functions/Functions.php:1944
@@ -17655,7 +17656,7 @@ msgstr "%sª bisavó"
 #: app/Functions/Functions.php:1958
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "%s° bisavô(ó)"
+msgstr "%sº bisavô(ó)"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2038 app/Functions/Functions.php:2053
@@ -17667,48 +17668,48 @@ msgstr "%sº bisneto"
 #: app/Functions/Functions.php:1823 app/Functions/Functions.php:1836
 #, php-format
 msgid "great ×%s nephew"
-msgstr "%s° sobrinho-neto"
+msgstr "%sº sobrinho-neto"
 
 #: app/Functions/Functions.php:1797
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "%s° sobrinho-neto"
+msgstr "%sº sobrinho-neto"
 
 #: app/Functions/Functions.php:1799
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "%s° sobrinho-neto"
+msgstr "%sº sobrinho-neto"
 
 #: app/Functions/Functions.php:1801
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr "%s° sobrinho-neto"
+msgstr "%sº sobrinho-neto"
 
 #: app/Functions/Functions.php:1827 app/Functions/Functions.php:1840
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "%s° sobrinho(a)-neto(a)"
+msgstr "%sº sobrinho(a)-neto(a)"
 
 #: app/Functions/Functions.php:1813
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s° sobrinho(a)-neto(a)"
+msgstr "%sº sobrinho(a)-neto(a)"
 
 #: app/Functions/Functions.php:1815
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s° sobrinho(a)-neto(a)"
+msgstr "%sº sobrinho(a)-neto(a)"
 
 #: app/Functions/Functions.php:1817
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "%s° sobrinho(a)-neto(a)"
+msgstr "%sº sobrinho(a)-neto(a)"
 
 #: app/Functions/Functions.php:1825 app/Functions/Functions.php:1838
 #, php-format
@@ -17737,25 +17738,25 @@ msgstr "%sª sobrinha-neta"
 #: app/Functions/Functions.php:1637 app/Functions/Functions.php:1665
 #, php-format
 msgid "great ×%s uncle"
-msgstr "%s° tio-avô"
+msgstr "%sº tio-avô"
 
 #: app/Functions/Functions.php:1647
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "%s° tio-avô"
+msgstr "%sº tio-avô"
 
 #: app/Functions/Functions.php:1649
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "%s° tio-avô"
+msgstr "%sº tio-avô"
 
 #: app/Functions/Functions.php:1651
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "%s° tio-avô"
+msgstr "%sº tio-avô"
 
 #: app/Functions/Functions.php:1579
 msgid "great ×4 aunt"
@@ -17775,15 +17776,15 @@ msgstr "pentaneta"
 
 #: app/Functions/Functions.php:1870
 msgid "great ×4 grandfather"
-msgstr "pentavô"
+msgstr "5º avô"
 
 #: app/Functions/Functions.php:1872
 msgid "great ×4 grandmother"
-msgstr "pentavó"
+msgstr "5ª avó"
 
 #: app/Functions/Functions.php:1874
 msgid "great ×4 grandparent"
-msgstr "pentavô(ó)"
+msgstr "5º avô(ó)"
 
 #: app/Functions/Functions.php:1990
 msgid "great ×4 grandson"
@@ -17851,11 +17852,11 @@ msgstr "tio-tetravô"
 
 #: app/Functions/Functions.php:1594
 msgid "great ×5 aunt"
-msgstr "tia-pentavó"
+msgstr "tia-5ª avó"
 
 #: app/Functions/Functions.php:1596
 msgid "great ×5 aunt/uncle"
-msgstr "tio(a)-pentavô(ó)"
+msgstr "tio(a)-5º avô(ó)"
 
 #: app/Functions/Functions.php:2004
 msgid "great ×5 grandchild"
@@ -17867,15 +17868,15 @@ msgstr "hexaneta"
 
 #: app/Functions/Functions.php:1879
 msgid "great ×5 grandfather"
-msgstr "hexavô"
+msgstr "6º avô"
 
 #: app/Functions/Functions.php:1881
 msgid "great ×5 grandmother"
-msgstr "hexavó"
+msgstr "6ª avó"
 
 #: app/Functions/Functions.php:1883
 msgid "great ×5 grandparent"
-msgstr "hexavô(ó)"
+msgstr "6º avô(ó)"
 
 #: app/Functions/Functions.php:2000
 msgid "great ×5 grandson"
@@ -17929,25 +17930,25 @@ msgstr "sobrinha-pentaneta"
 #: app/Functions/Functions.php:1587
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr "tio-pentavô"
+msgstr "tio-5º avô"
 
 #: app/Functions/Functions.php:1589
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr "tio-pentavô"
+msgstr "tio-5º avô"
 
 #: app/Functions/Functions.php:1591
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr "tio-pentavô"
+msgstr "tio-5º avô"
 
 #: app/Functions/Functions.php:1609
 msgid "great ×6 aunt"
-msgstr "tia-hexavó"
+msgstr "tia-6ª avó"
 
 #: app/Functions/Functions.php:1611
 msgid "great ×6 aunt/uncle"
-msgstr "tia(o)-hexavó(ô)"
+msgstr "tia(o)-6ª avó(ô)"
 
 #: app/Functions/Functions.php:2014
 msgid "great ×6 grandchild"
@@ -17959,15 +17960,15 @@ msgstr "heptaneta"
 
 #: app/Functions/Functions.php:1888
 msgid "great ×6 grandfather"
-msgstr "heptavô"
+msgstr "7º avô"
 
 #: app/Functions/Functions.php:1890
 msgid "great ×6 grandmother"
-msgstr "heptavó"
+msgstr "7ª avó"
 
 #: app/Functions/Functions.php:1892
 msgid "great ×6 grandparent"
-msgstr "heptavô(ó)"
+msgstr "7º avô(ó)"
 
 #: app/Functions/Functions.php:2010
 msgid "great ×6 grandson"
@@ -17976,25 +17977,25 @@ msgstr "heptaneto"
 #: app/Functions/Functions.php:1602
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr "tio-hexavô"
+msgstr "tio-6º avô"
 
 #: app/Functions/Functions.php:1604
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr "tio-hexavô"
+msgstr "tio-6º avô"
 
 #: app/Functions/Functions.php:1606
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr "tio-hexavô"
+msgstr "tio-6º avô"
 
 #: app/Functions/Functions.php:1624
 msgid "great ×7 aunt"
-msgstr "tia-heptavó"
+msgstr "tia-7ª avó"
 
 #: app/Functions/Functions.php:1626
 msgid "great ×7 aunt/uncle"
-msgstr "tia(o)-heptavó(ô)"
+msgstr "tia(o)-7ª avó(ô)"
 
 #: app/Functions/Functions.php:2024
 msgid "great ×7 grandchild"
@@ -18006,15 +18007,15 @@ msgstr "octaneta"
 
 #: app/Functions/Functions.php:1897
 msgid "great ×7 grandfather"
-msgstr "octavô"
+msgstr "8º avô"
 
 #: app/Functions/Functions.php:1899
 msgid "great ×7 grandmother"
-msgstr "octavó"
+msgstr "8ª avó"
 
 #: app/Functions/Functions.php:1901
 msgid "great ×7 grandparent"
-msgstr "octavô(ó)"
+msgstr "8º avô(ó)"
 
 #: app/Functions/Functions.php:2020
 msgid "great ×7 grandson"
@@ -18023,17 +18024,17 @@ msgstr "octaneto"
 #: app/Functions/Functions.php:1617
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr "tio-heptavô"
+msgstr "tio-7º avô"
 
 #: app/Functions/Functions.php:1619
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr "tio-heptavô"
+msgstr "tio-7º avô"
 
 #: app/Functions/Functions.php:1621
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr "tio-heptavô"
+msgstr "tio-7º avô"
 
 #: app/Functions/Functions.php:1372
 msgctxt "father’s father’s brother’s wife"
@@ -19172,7 +19173,7 @@ msgstr "gestores"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: app/Stats.php:2912
 msgid "marriage"
@@ -19947,17 +19948,17 @@ msgstr "genro"
 #: app/Functions/Functions.php:1072
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr "pai do genro"
+msgstr "compadre"
 
 #: app/Functions/Functions.php:1074
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr "mãe do genro"
+msgstr "comadre"
 
 #: app/Functions/Functions.php:1076
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "pai do genro"
+msgstr "compadre"
 
 #: app/Functions/Functions.php:822
 msgctxt "child’s spouse"
@@ -20433,7 +20434,7 @@ msgstr "esposa"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: timeline.php:130
 msgid "years"
