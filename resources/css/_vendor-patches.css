@@ -46,3 +46,13 @@
 [dir=rtl] .carousel-control-prev-icon  {
     transform: scale(-1, 1);
 }
+
+/* Some themes set the global default to separate.  We should change this. */
+table.datatables {
+    border-collapse: collapse;
+}
+
+/* Don't right-align column headings of numeric data. */
+table.datatables > thead > tr > th.dt-type-numeric {
+    text-align: inherit;
+}
