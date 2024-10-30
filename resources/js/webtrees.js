@@ -941,9 +941,9 @@ $(function () {
   };
 
   // DataTables - start hidden to prevent FOUC.
-  $('table.datatables').each(function () {
-    $(this).DataTable();
-    $(this).removeClass('d-none');
+  document.querySelectorAll('table.datatables').forEach(function (element) {
+    new DataTable(element);
+    element.classList.remove('d-none');
   });
 
   // Save button/checkbox state between pages

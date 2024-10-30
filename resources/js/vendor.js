@@ -32,8 +32,6 @@ window.bootstrap = {
   Tooltip: Tooltip,
 };
 
-import 'datatables.net';
-
 // Just import the subset of icons that we use in resources/views/icons/
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -56,7 +54,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import 'corejs-typeahead';
 
+import DataTable from 'datatables.net';
 import 'datatables.net-bs5';
+window.DataTable = DataTable;
 
 import Sortable from 'sortablejs';
 
