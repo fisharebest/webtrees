@@ -69,10 +69,11 @@ class LoginAction implements RequestHandlerInterface
         $default_url = route(HomePage::class);
         $username    = Validator::parsedBody($request)->string('username');
         $password    = Validator::parsedBody($request)->string('password');
+        $code2fa     = Validator::parsedBody($request)->string('code2fa');
         $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
 
         try {
-            $this->doLogin($username, $password);
+            $this->doLogin($username, $password, $code2fa);
 
             if (Auth::isAdmin() && $this->upgrade_service->isUpgradeAvailable()) {
                 FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route(UpgradeWizardPage::class)) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $this->upgrade_service->latestVersion() . '</span>') . '</a>');
@@ -97,11 +98,12 @@ class LoginAction implements RequestHandlerInterface
      *
      * @param string $username
      * @param string $password
+     * @param string $code2fa
      *
      * @return void
      * @throws Exception
      */
-    private function doLogin(string $username, #[\SensitiveParameter] string $password): void
+    private function doLogin(string $username, #[\SensitiveParameter] string $password, string $code2fa): void
     {
         if ($_COOKIE === []) {
             Log::addAuthenticationLog('Login failed (no session cookies): ' . $username);
@@ -129,7 +131,17 @@ class LoginAction implements RequestHandlerInterface
             Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
             throw new Exception(I18N::translate('This account has not been approved. Please wait for an administrator to approve it.'));
         }
-
+        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) !== '') {
+            # covers scenario where 2fa not enabled by user
+            if($code2fa != '') {
+                if (!$user->check2FAcode($code2fa)) {
+                    throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
+                }
+            }
+            else {
+                    throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
+            }
+        }  
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
