@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
 "PO-Revision-Date: 2024-11-01 12:11+0000\n"
-"Last-Translator: Joao Ventura <joao@venturas.org>\n"
+"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
 "Language: pt\n"
@@ -10751,7 +10751,7 @@ msgstr "Número de nomes próprios"
 #. I18N: gedcom tag NMR
 #: app/Factories/ElementFactory.php:1243 app/GedcomTag.php:830
 msgid "Number of marriages"
-msgstr "Números de casamentos"
+msgstr "Número de casamentos"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:13
