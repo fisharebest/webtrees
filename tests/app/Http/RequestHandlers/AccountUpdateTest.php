@@ -64,6 +64,8 @@ class AccountUpdateTest extends TestCase
                 'timezone'       => 'g',
                 'user_name'      => 'h',
                 'visible-online' => 'i',
+		'secret'         => 'j',
+		'status-mfa'     => 'k',
             ]);
         $response = $handler->handle($request);
 
