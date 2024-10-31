@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-31 05:49+0000\n"
-"Last-Translator: Joao Ventura <joao@venturas.org>\n"
+"PO-Revision-Date: 2024-11-01 12:11+0000\n"
+"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
 "Language: pt\n"
@@ -10256,7 +10256,7 @@ msgstr "Número de nomes próprios"
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
 msgid "Number of marriages"
-msgstr "Números de casamentos"
+msgstr "Número de casamentos"
 
 #: admin_users.php:680
 msgid "Number of months since the last sign-in for a user’s account to be considered inactive: "
