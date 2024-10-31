@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
 "PO-Revision-Date: 2024-11-01 12:11+0000\n"
-"Last-Translator: Joao Ventura <joao@venturas.org>\n"
+"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
 "Language: pt\n"
@@ -10785,7 +10785,7 @@ msgstr "Número de nomes próprios"
 
 #: app/Gedcom.php:717
 msgid "Number of marriages"
-msgstr "Números de casamentos"
+msgstr "Número de casamentos"
 
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:15
