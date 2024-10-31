@@ -249,7 +249,8 @@ class RegisterAction implements RequestHandlerInterface
         string $email,
         string $realname,        
         string $comments,
-        #[\SensitiveParameter] string $password
+	#[\SensitiveParameter] string $password,
+	string $secret
     ): void {
         // All fields are required
         if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {
