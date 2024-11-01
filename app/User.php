@@ -124,8 +124,8 @@ class User implements UserInterface
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
         $data = 'otpauth://totp/' . $this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
-        $qrinfo['qrcode'] = new QRCode();
-        $qrinfo['qrcode'] = QRCode->render($data);
+        $qrcode = new QRCode();
+        $qrinfo['qrcode'] = $qrcode->render($data);
         return $qrinfo;
     }
 
