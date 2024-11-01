@@ -133,15 +133,14 @@ class LoginAction implements RequestHandlerInterface
         }
         if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) !== '') {
             # covers scenario where 2fa not enabled by user
-            if($code2fa != '') {
+            if ($code2fa != '') {
                 if (!$user->check2FAcode($code2fa)) {
                     throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
                 }
-            }
-            else {
+            } else {
                     throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
             }
-        }  
+        }
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());

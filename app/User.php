@@ -124,10 +124,11 @@ class User implements UserInterface
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
         $data = 'otpauth://totp/' . $this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
-        $qrinfo['qrcode'] = (new QRCode)->render($data);
+        $qrinfo['qrcode'] = new QRCode();
+        $qrinfo['qrcode'] = QRCode->render($data);
         return $qrinfo;
     }
- 
+
     /**
      * Set the real name of this user.
      *
@@ -290,8 +291,8 @@ class User implements UserInterface
         $secret = DB::table('user')
              ->where('user_id', '=', $this->id())
              ->value('secret');
-        $google2fa = new Google2FA;
-        if($google2fa->verifyKey($secret, $code2fa)) {
+        $google2fa = new Google2FA();
+        if ($google2fa->verifyKey($secret, $code2fa)) {
                   return true;
         }
         return false;
