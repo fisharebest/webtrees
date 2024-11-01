@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-11-01 12:11+0000\n"
-"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
+"PO-Revision-Date: 2024-11-03 16:11+0000\n"
+"Last-Translator: DeLinuxCo <john@delinuxco.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
 "Language: pt\n"
@@ -1010,6 +1010,11 @@ msgstr "Um relatório de registos vitais por um dado local ou data."
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
+"Uma função é um conjunto de direitos de acesso, que dão permissão para "
+"visualizar dados, alterar preferências, etc. Os direitos de acesso são "
+"atribuídos a funções e as funções são concedidas aos utilizadores. Cada "
+"árvore genealógica pode atribuir um acesso diferente a cada função e os "
+"utilizadores podem ter uma função diferente em cada árvore genealógica."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1470,7 +1475,7 @@ msgstr "Adicionar histórias narrativas para indivíduos na árvore genealógica
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Adicionar espaços onde as linhas longas estavam enroladas"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
@@ -5174,6 +5179,8 @@ msgstr "Detalhes"
 #: admin_site_config.php:497
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Os dados do novo utilizador serão enviados para o contacto genealógico da "
+"árvore genealógica correspondente."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
@@ -5414,10 +5421,26 @@ msgstr ""
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"Cada fonte regista eventos específicos, geralmente para um determinado "
+"intervalo de datas e para uma jurisdição local. Por exemplo, um Censo "
+"regista eventos de recenseamento e os registos da igreja registam eventos de "
+"nascimento, casamento e morte.<br><br>Selecione os eventos registados por "
+"esta fonte a partir da lista de eventos fornecida. A data deve ser "
+"especificada em um formato de intervalo, como <i>DE 1900 A 1910</i>. A "
+"jurisdição do local é o nome da jurisdição mais baixa que engloba todos os "
+"locais de nível inferior nomeados nesta fonte. Por exemplo, “Oneida, Idaho, "
+"EUA” seria utilizado como local de jurisdição da fonte para eventos "
+"ocorridos nas várias cidades do condado de Oneida. “Idaho, EUA” seria o "
+"local de jurisdição de origem se os eventos registados tivessem ocorrido não "
+"só no condado de Oneida mas também noutros condados de Idaho."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
 msgstr ""
+"Cada conta de utilizador tem uma opção para “aceitar automaticamente as "
+"alterações”. Quando esta opção está activada, todas as alterações feitas por "
+"esse utilizador são guardadas imediatamente. Muitos administradores activam "
+"esta opção para a sua própria conta de utilizador."
 
 #: statistics.php:129
 msgid "Earliest birth"
@@ -5752,35 +5775,37 @@ msgstr "Eritreia"
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
 msgstr ""
+"Erro: a conversão de ficheiros GEDCOM da codificação %s para a codificação "
+"UTF-8 não é atualmente suportada."
 
 #: app/Date/JalaliDate.php:194
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:130
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1184
@@ -5851,7 +5876,7 @@ msgstr "Excluir subpastas"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
 msgid "Excluded from this submission"
-msgstr ""
+msgstr "Excluídos da presente apresentação"
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:487
@@ -6168,7 +6193,7 @@ msgstr "Família com pais"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
 msgid "Family with rada parents"
-msgstr ""
+msgstr "Família com pais rada"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
@@ -6204,7 +6229,7 @@ msgstr "Diagrama em leque de %s"
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
-msgstr ""
+msgstr "Far"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6750
@@ -6215,25 +6240,25 @@ msgstr "Ilhas Faroé"
 #: app/Date/JalaliDate.php:87
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:151
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:119
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #: modules_v3/bdm_report/report.xml:118
 #: modules_v3/family_group_report/report.xml:467
@@ -6533,10 +6558,16 @@ msgstr "Fonte"
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Por exemplo, se o ficheiro GEDCOM contiver %1$s e o webtrees esperar "
+"encontrar %2$s na pasta media, terá de remover %3$s."
 
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
+"Por exemplo, se especificar um comprimento de percurso de 2, o indivíduo "
+"poderá ver o seu neto (criança, criança), a sua tia (pai, irmão), a sua "
+"enteada (cônjuge, criança), mas não o seu primo em primeiro grau (pai, "
+"irmão, criança)."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -6559,10 +6590,13 @@ msgstr ""
 #: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr ""
+"Para sítios Web com mais de uma árvore genealógica, esta opção mostrará a "
+"lista de árvores genealógicas no menu principal, nas páginas de pesquisa, "
+"etc."
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
-msgstr ""
+msgstr "Esqueceu-se da palavra-passe?"
 
 #. I18N: gedcom tag FORM
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
@@ -6578,7 +6612,7 @@ msgstr "Formatar texto e palavras"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:163
 msgid "Fort Lauderdale, Florida, United States"
-msgstr ""
+msgstr "Fort Lauderdale, Florida, Estados Unidos"
 
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
@@ -6893,12 +6927,12 @@ msgstr "Gibraltar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:173
 msgid "Gila Valley, Arizona, United States"
-msgstr ""
+msgstr "Gila Valley, Arizona, Estados Unidos"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Gilbert, Arizona, United States"
-msgstr ""
+msgstr "Gilbert, Arizona, Estados Unidos"
 
 #: search.php:230
 msgid "Given name"
@@ -7404,11 +7438,16 @@ msgstr ""
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 msgstr ""
+"Se uma pessoa era conhecida por uma alcunha que não faz parte do seu nome "
+"formal, esta deve ser colocada entre aspas. Por exemplo, <%s>John "
+"&quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:230
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
+"Se uma pessoa não era conhecida pelo seu nome próprio, o nome preferido deve "
+"ser indicado com um asterisco: <%s>John Paul* /Smith/<%s>"
 
 #: help_text.php:224
 #, php-format
@@ -7428,6 +7467,9 @@ msgstr ""
 #: admin_trees_config.php:1008
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
 msgstr ""
+"Se duas árvores genealógicas utilizarem a mesma pasta multimédia, poderão "
+"partilhar ficheiros multimédia. Se utilizarem pastas multimédia diferentes, "
+"os seus ficheiros multimédia serão mantidos separados."
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7437,6 +7479,9 @@ msgstr ""
 #: admin_trees_config.php:1023
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr ""
+"Se estiver preocupado com a possibilidade de os utilizadores carregarem "
+"imagens inadequadas, pode restringir os carregamentos de multimédia apenas "
+"aos gestores."
 
 #: site-unavailable.php:82
 msgid "If you are the website administrator, you should check that:"
@@ -7449,6 +7494,9 @@ msgstr "Se você não puder resolver o problema sozinho, você pode pedir por aj
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"Se criou este ficheiro GEDCOM utilizando um software de genealogia que omite "
+"espaços ao dividir linhas longas, selecione esta opção para reinserir os "
+"espaços em falta."
 
 #: login.php:349
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7480,16 +7528,24 @@ msgstr "Se você esconde um bloco quando está vazio, você não poderá alterar
 #: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
+"Se selecionar uma pasta diferente, deve também mover todos os ficheiros ("
+"exceto config.ini.php, index.php e .htaccess) da pasta existente para a nova "
+"pasta."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
 msgstr ""
+"Se selecionar uma pasta diferente, deve também mover quaisquer ficheiros "
+"multimédia da pasta existente para a nova pasta."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:434
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr ""
+"Se mostrar indivíduos vivos aos visitantes, todas as outras restrições de "
+"privacidade são ignoradas. Faça isto apenas se todos os dados da sua árvore "
+"forem públicos."
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7498,6 +7554,8 @@ msgstr "Se você tentar exceder estes limites, você pode ter erros no servidor 
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Se utilizar um dos seguintes serviços de rastreio e análise, a webtrees pode "
+"adicionar automaticamente os códigos de rastreio."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -7541,6 +7599,8 @@ msgstr "Importar preferências"
 #: admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
+"Numa árvore genealógica, cada registo tem um número de referência interno ("
+"designado por “XREF”), como “F123” ou “R14”."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
@@ -7628,7 +7688,7 @@ msgstr "Índia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Indianapolis, Indiana, United States"
-msgstr ""
+msgstr "Indianápolis, Indiana, Estados Unidos"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -7757,7 +7817,7 @@ msgstr "Árvore interativa de %s"
 
 #: app/Functions/FunctionsEdit.php:247
 msgid "Internal messaging"
-msgstr ""
+msgstr "Mensagens internas"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "Internal messaging with emails"
@@ -7820,6 +7880,8 @@ msgstr "Israel"
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr ""
+"Pode demorar alguns minutos a descarregar e instalar a atualização. Seja "
+"paciente."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6785
@@ -7853,7 +7915,7 @@ msgstr "Iyar"
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:203
 msgid "Jalali"
-msgstr ""
+msgstr "Jalali"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6786
@@ -8026,7 +8088,7 @@ msgstr "Junho"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "Kansas City, Missouri, Estados Unidos"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
@@ -8044,7 +8106,7 @@ msgstr "Manter Link na lista"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:275
 msgid "Keep media objects"
-msgstr ""
+msgstr "Guardar objectos multimédia"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2131
@@ -8065,31 +8127,31 @@ msgstr "Exemplos de palavras-chave"
 #: app/Date/JalaliDate.php:185
 msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
-msgstr ""
+msgstr "Khor"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:89
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:153
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:121
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:57
 msgctxt "NOMINATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:211
@@ -8508,6 +8570,11 @@ msgstr "Londres, Inglaterra"
 #: admin_trees_config.php:1176
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
 msgstr ""
+"Listas longas de indivíduos com o mesmo apelido podem ser divididas em sub-"
+"listas mais pequenas de acordo com a primeira letra do nome próprio do "
+"indivíduo.<br><br>Esta opção determina quando a sub-listagem de apelidos irá "
+"ocorrer. Para desativar completamente a sub-listagem, defina esta opção como "
+"zero."
 
 #: statistics.php:251
 msgid "Longest marriage"
@@ -8665,12 +8732,12 @@ msgstr "Gestores"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Manaus, Brazil"
-msgstr ""
+msgstr "Manaus, Brazil"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Manhattan, New York, United States"
-msgstr ""
+msgstr "Manhattan, Nova Iorque, Estados Unidos"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
@@ -8737,6 +8804,9 @@ msgstr "Março"
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown é um sistema simples de formatação, utilizado em sítios Web como a "
+"Wikipédia. Utiliza caracteres de pontuação discretos para criar títulos e "
+"subtítulos, texto em negrito e itálico, listas, tabelas, etc."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:449
@@ -8982,7 +9052,7 @@ msgstr "Martinica"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:210
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Mascarar-se como este utilizador"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
@@ -9101,7 +9171,7 @@ msgstr "Ficheiros multimédia"
 #. I18N: A configuration setting
 #: admin_trees_config.php:988
 msgid "Media folder"
-msgstr ""
+msgstr "Pasta multimédia"
 
 #: admin_media.php:624 admin_trees_config.php:983
 msgid "Media folders"
@@ -9161,31 +9231,31 @@ msgstr "Sistemas médios (5000 Indivíduos): 32-64MB, 20-40 segundos"
 #: app/Date/JalaliDate.php:189
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:93
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:125
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:239
@@ -9460,31 +9530,31 @@ msgstr "Montserrat"
 #: app/Date/JalaliDate.php:187
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "Mor"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:91
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:123
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #: app/Module/FamilyTreeNewsModule.php:137
 msgid "More news articles"
@@ -9804,7 +9874,7 @@ msgstr "Nova Zelândia"
 
 #: admin_site_change.php:344
 msgid "New data"
-msgstr ""
+msgstr "Novos dados"
 
 #. I18N: %s is a server name/URL
 #: login.php:330
@@ -9920,11 +9990,11 @@ msgstr "Não"
 
 #: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Não foi recebido nenhum ficheiro GEDCOM."
 
 #: admin_trees_manage.php:256
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Não foram encontrados ficheiros GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:849
 msgid "No ancestors in the database."
@@ -10102,6 +10172,9 @@ msgstr "Ilha Norfolk"
 #: admin_users.php:444
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
 msgstr ""
+"Normalmente, todas as alterações efectuadas numa árvore genealógica têm de "
+"ser revistas por um moderador. Esta opção permite que um utilizador faça "
+"alterações sem necessitar de um moderador."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
@@ -10177,6 +10250,9 @@ msgstr ""
 #: admin_users.php:601
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
 msgstr ""
+"Nota: os comprimentos de caminho mais longos requerem muitos cálculos, o que "
+"pode fazer com que o seu sítio Web funcione lentamente para estes "
+"utilizadores."
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:528 app/Module/NotesTabModule.php:34
@@ -10428,7 +10504,7 @@ msgstr ""
 
 #: setup.php:213
 msgid "Oops! webtrees was unable to create files in this folder."
-msgstr ""
+msgstr "Oops! O webtrees não conseguiu criar ficheiros nesta pasta."
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
@@ -10441,12 +10517,12 @@ msgstr "Sufixos e prefixos opcionais"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
+msgstr "Oquirrh Mountain, Utah, Estados Unidos"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr ""
+msgstr "Ord"
 
 #: admin_module_menus.php:89 admin_module_sidebar.php:89
 #: admin_module_tabs.php:89
@@ -10457,25 +10533,25 @@ msgstr "Ordem"
 #: app/Date/JalaliDate.php:88
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:152
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:120
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: gedcom tag ORDI
 #: app/GedcomTag.php:660
@@ -10700,7 +10776,7 @@ msgstr "Senhas precisam conter no mínimo 6 caracteres."
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Payson, Utah, United States"
-msgstr ""
+msgstr "Payson, Utah, Estados Unidos"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10748,6 +10824,10 @@ msgstr "Alterações pendentes"
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 msgstr ""
+"As alterações pendentes só são mostradas quando a sua conta tem permissão "
+"para editar. Quando terminar a sessão, deixará de as poder ver. Além disso, "
+"as alterações pendentes só são mostradas em determinadas páginas. Por "
+"exemplo, não são mostradas em listas, relatórios ou resultados de pesquisa."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -10776,7 +10856,7 @@ msgstr "Filipinas"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "Phoenix, Arizona, United States"
-msgstr ""
+msgstr "Phoenix, Arizona, Estados Unidos"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
@@ -10888,6 +10968,10 @@ msgstr "Lista de Local"
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
+"Os nomes de lugares são frequentemente demasiado longos para caberem em "
+"gráficos, listas, etc. Podem ser abreviados mostrando apenas as primeiras "
+"partes do nome, como <i>aldeia, concelho</i>, ou as últimas partes, como "
+"<i>região, país</i>."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
@@ -11266,7 +11350,7 @@ msgstr "Propriedade"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "Provo City Center, Utah, Estados Unidos"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
@@ -11305,7 +11389,7 @@ msgstr "Pergunta"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "Quetzaltenango, Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
@@ -11683,7 +11767,7 @@ msgstr "Remover Link da lista"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:288
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Remover o caminho do suporte GEDCOM dos nomes dos ficheiros"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
@@ -11800,7 +11884,7 @@ msgstr "Residência"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Restaurar o esquema de blocos predefinido"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11843,7 +11927,7 @@ msgstr "Reunião"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "Rexburg, Idaho, Estados Unidos"
 
 #: index_edit.php:304
 msgid "Right section blocks"
@@ -11994,7 +12078,7 @@ msgstr "San Marino"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "São Salvador, El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
@@ -12126,6 +12210,8 @@ msgstr "Pesquisar texto/padrão"
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
 msgstr ""
+"A pesquisa de todas as relações possíveis pode demorar muito tempo em "
+"árvores complexas."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
@@ -12258,7 +12344,7 @@ msgstr "Enviar lembrete por emails"
 #. I18N: A configuration setting
 #: admin_site_config.php:335
 msgid "Sender name"
-msgstr ""
+msgstr "Nome do remetente"
 
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
@@ -12268,7 +12354,7 @@ msgstr "Enviar email"
 #. I18N: A configuration setting
 #: admin_site_config.php:428
 msgid "Sending server name"
-msgstr ""
+msgstr "Nome do servidor de envio"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6870
@@ -12356,7 +12442,7 @@ msgstr "Definir por omissão"
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Definir o nível de acesso para cada árvore."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12387,16 +12473,20 @@ msgstr "Defina o número máximo de gerações a exibir nos gráficos de Árvore
 #: admin_trees_config.php:394
 msgid "Set the privacy access level for all dead individuals."
 msgstr ""
+"Definir o nível de acesso à privacidade para todos os indivíduos mortos."
 
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Definir o estado para “aprovado”."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr ""
+"Se esta opção for definida como <b>Sim</b>, serão colocados links nos "
+"indivíduos, fontes e famílias para permitir que os utilizadores abram outra "
+"janela com os dados em bruto retirados diretamente do ficheiro GEDCOM."
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
@@ -12415,31 +12505,31 @@ msgstr "Seicheles"
 #: app/Date/JalaliDate.php:188
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Shah"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:124
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #: admin_trees_manage.php:590 app/Controller/FamilyController.php:153
 #: app/GedcomTag.php:772 edit_interface.php:1344 edit_interface.php:1437
@@ -12626,7 +12716,7 @@ msgstr "Exibir todas as palavras-chave"
 #. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:280
 msgid "Show an age cursor"
-msgstr ""
+msgstr "Mostrar um cursor de idade"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1285
@@ -13022,6 +13112,9 @@ msgstr "Código de identificação do sítio"
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Os membros do sítio podem enviar mensagens uns aos outros. O utilizador pode "
+"escolher a forma como estas mensagens lhe são enviadas ou optar por não as "
+"receber de todo."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:527 admin_site_config.php:548
@@ -13032,6 +13125,8 @@ msgstr "Código de verificação do sítio"
 #: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Os códigos de verificação do site não funcionam quando o webtrees é "
+"instalado numa subpasta."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -13134,11 +13229,15 @@ msgstr "Somália"
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"Alguns programas de genealogia criam ficheiros GEDCOM que contêm nomes de "
+"ficheiros multimédia com caminhos completos. Estes caminhos não existirão no "
+"servidor Web. Para permitir que as árvores Web encontrem o ficheiro, a "
+"primeira parte do caminho tem de ser removida."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Algumas páginas podem apresentar o número de vezes que foram visitadas."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -13518,11 +13617,13 @@ msgstr "Tradição do sobrenome"
 #: app/SurnameTradition.php:98
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr ""
+"Os apelidos são flexionados para indicar o sexo e o estado civil de um "
+"indivíduo."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:93
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Os apelidos são flexionados para indicar o género de um indivíduo."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
@@ -13561,7 +13662,7 @@ msgstr "Sydney, Austrália"
 
 #: admin_trees_manage.php:750
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Sincronizar árvores genealógicas com ficheiros GEDCOM"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6891
@@ -19646,7 +19747,7 @@ msgstr "Pesquisar"
 #: app/Functions/Functions.php:637
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "segundo %s"
 
 #: app/Functions/Functions.php:622
 #, php-format
@@ -20434,7 +20535,7 @@ msgstr "esposa"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr "xenea"
+msgstr "xeneia"
 
 #: timeline.php:130
 msgid "years"
