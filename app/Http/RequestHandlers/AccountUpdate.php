@@ -83,7 +83,6 @@ class AccountUpdate implements RequestHandlerInterface
         if ($secret !== '' || $status_mfa === false) {
             $user->setSecret($secret);
         }
-        
         // Change the username
         if ($user_name !== $user->userName()) {
             if ($this->user_service->findByUserName($user_name) === null) {
