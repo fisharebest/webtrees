@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-10-26 12:11+0000\n"
+"PO-Revision-Date: 2024-11-03 16:11+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
@@ -845,7 +845,13 @@ msgstr "Eine Liste von Benutzern und Gästen, die gerade online sind."
 
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über eine Mediendatei enthält. Diese Informationen können einen Titel, einen Urheberrechtshinweis, eine Abschrift, Datenschutzeinschränkungen etc. enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal gespeichert werden (auf diesem Webserver) oder entfernt (auf einem anderen Webserver)."
+msgstr ""
+"Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über "
+"eine Mediendatei enthält. Diese Information kann einen Titel, einen "
+"Urheberrechtshinweis, eine Abschrift, eine Zugriffsberechtigung usw. "
+"enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal auf "
+"diesem Webserver oder auf einem anderen Webserver (http/s-Zugriff) "
+"gespeichert sein."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -7698,7 +7704,10 @@ msgstr "Wenn Sie ein anderes Verzeichnis wählen, müssen Sie auch alle Medienda
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:94
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr "Wenn Sie lebende Personen für Besucher sichtbar schalten, werden alle Datenschutzeinschränkungen ignoriert. Tun Sie dies nur, wenn alle Daten Ihres Stammbaum öffentlich sind."
+msgstr ""
+"Wenn Sie lebende Personen für Besucher sichtbar schalten, werden alle "
+"Zugriffsberechtigungen ignoriert. Tun Sie dies nur, wenn alle Daten Ihres "
+"Stammbaum öffentlich sind."
 
 #: resources/views/setup/step-2-server-checks.phtml:82
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -11568,11 +11577,13 @@ msgstr "Datenschutzerklärung"
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:156
 msgid "Privacy restrictions"
-msgstr "Einschränkungen Datenschutz"
+msgstr "Zugriffsberechtigungen"
 
 #: resources/views/admin/trees-privacy.phtml:222
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Datenschutzeinschränkungen - diese werden auf Datensätze und Ereignisse angewandt, die kein GEDCOM-RESN-Kennzeichen enthalten"
+msgstr ""
+"Zugriffsberechtigungen - diese werden auf Datensätze und Ereignisse "
+"angewandt, die kein GEDCOM-RESN-Kennzeichen enthalten"
 
 #: app/CustomTags/Legacy.php:56 app/CustomTags/Legacy.php:60
 #: app/CustomTags/Legacy.php:82 app/CustomTags/Legacy.php:117
@@ -12215,11 +12226,14 @@ msgstr "Beschränke auf die unmittelbaren Familienangehörigen"
 #: app/Http/RequestHandlers/HelpText.php:243
 #: resources/views/modals/restriction-fields.phtml:11
 msgid "Restriction"
-msgstr "Einschränkung"
+msgstr "Zugriffsberechtigung"
 
 #: resources/views/help/restriction.phtml:10
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Jedem Datensatz und/oder Ereignis können Einschränkungen zugeordnet werden. Diese bestimmen, wer lesenden oder schreibenden Zugriff auf die Daten erhält."
+msgstr ""
+"Jedem Datensatz und/oder Ereignis können Zugriffsberechtigungen zugeordnet "
+"werden. Diese bestimmen, wer lesenden oder schreibenden Zugriff auf die "
+"Daten erhält."
 
 #: resources/views/modules/statistics-chart/custom.phtml:122
 msgid "Results"
@@ -15150,7 +15164,12 @@ msgstr "Diese Einstellung erhält familiäre Verknüpfungen in vertraulichen Dat
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von vertraulichen Personen. Personen sind vertraulich, sofern sie noch leben oder falls dem Datensatz eine Einschränkung hinsichtlich des Datenschutzes hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen Sie dem Datensatz bitte eine solche Datenschutzeinschränkung hinzu."
+msgstr ""
+"Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von "
+"vertraulichen Personen. Personen sind vertraulich, sofern sie noch leben "
+"oder falls dem Datensatz eine Zugriffsberechtigung hinsichtlich des "
+"Datenschutzes hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen "
+"Sie dem Datensatz bitte eine solche Zugriffsberechtigung hinzu."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
@@ -16641,7 +16660,11 @@ msgstr "Sie können diesen Stammbaum neu nummerieren."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Sie können die Zugriffsrechte für einzelne Datensätze, Tatsachen oder Ereignisse setzen, indem Sie eine Einschränkung hinzufügen. Wenn ein Datensatz, eine Tatsache oder ein Ereignis keine Einschränkung aufweist, gelten die folgenden voreingestellten Einschränkungen."
+msgstr ""
+"Sie können die Zugriffsrechte für einzelne Datensätze, Tatsachen oder "
+"Ereignisse setzen, indem Sie eine Zugriffsberechtigung hinzufügen. Wenn ein "
+"Datensatz, eine Tatsache oder ein Ereignis keine Zugriffsberechtigung "
+"aufweist, gelten die folgenden Zugriffsberechtigungen."
 
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
