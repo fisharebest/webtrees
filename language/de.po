@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-26 12:11+0000\n"
+"PO-Revision-Date: 2024-11-03 16:11+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -864,7 +864,13 @@ msgstr "Eine Liste von Benutzern und Gästen, die gerade online sind."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über eine Mediendatei enthält. Diese Informationen können einen Titel, einen Urheberrechtshinweis, eine Abschrift, Datenschutzeinschränkungen etc. enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal gespeichert werden (auf diesem Webserver) oder entfernt (auf einem anderen Webserver)."
+msgstr ""
+"Ein Medienobjekt ist ein Eintrag im Stammbaum, welcher Informationen über "
+"eine Mediendatei enthält. Diese Information kann einen Titel, einen "
+"Urheberrechtshinweis, eine Abschrift, eine Zugriffsberechtigung usw. "
+"enthalten. Die Mediendatei, wie etwa ein Foto oder ein Video, kann lokal auf "
+"diesem Webserver oder auf einem anderen Webserver (http/s-Zugriff) "
+"gespeichert sein."
 
 #: login.php:264
 #, php-format
@@ -1357,7 +1363,7 @@ msgstr "Eine Notiz hinzufügen"
 
 #: app/Functions/FunctionsEdit.php:1139
 msgid "Add a restriction"
-msgstr "Eine Einschränkung hinzufügen"
+msgstr "Eine Zugriffsberechtigung hinzufügen"
 
 #. I18N: label for a yes/no option
 #: app/Module/FamilyTreeFavoritesModule.php:286
@@ -7413,7 +7419,10 @@ msgstr "Wenn Sie ein anderes Verzeichnis wählen, müssen Sie auch alle Medienda
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:434
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
-msgstr "Wenn Sie lebende Personen für Besucher sichtbar schalten, werden alle Datenschutzeinschränkungen ignoriert. Tun Sie dies nur, wenn alle Daten Ihres Stammbaum öffentlich sind."
+msgstr ""
+"Wenn Sie lebende Personen für Besucher sichtbar schalten, werden alle "
+"Zugriffsberechtigungen ignoriert. Tun Sie dies nur, wenn alle Daten Ihres "
+"Stammbaum öffentlich sind."
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -11129,12 +11138,12 @@ msgstr "Datenschutz"
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: admin_trees_config.php:498
 msgid "Privacy restrictions"
-msgstr "Datenschutzeinschränkungen"
+msgstr "Zugriffsberechtigungen"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr ""
-"Datenschutzeinschränkungen - diese werden auf Datensätze und Ereignisse "
+"Zugriffsberechtigungen - diese werden auf Datensätze und Ereignisse "
 "angewandt, die kein GEDCOM-RESN-Kennzeichen enthalten"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
@@ -11705,11 +11714,14 @@ msgstr "Beschränke auf die unmittelbaren Familienangehörigen"
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:740
 msgid "Restriction"
-msgstr "Einschränkung"
+msgstr "Zugriffsberechtigung"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr "Jedem Datensatz und/oder Ereignis können Einschränkungen zugeordnet werden. Diese bestimmen, wer lesenden oder schreibenden Zugriff auf die Daten erhält."
+msgstr ""
+"Jedem Datensatz und/oder Ereignis können Zugriffsberechtigungen zugeordnet "
+"werden. Diese bestimmen, wer lesenden oder schreibenden Zugriff auf die "
+"Daten erhält."
 
 #: app/Stats.php:87
 msgid "Resulting value"
@@ -14673,9 +14685,9 @@ msgid "This option will show the names (but no other details) of private individ
 msgstr ""
 "Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von "
 "vertraulichen Personen. Personen sind vertraulich, sofern sie noch leben "
-"oder falls dem Datensatz eine Einschränkung hinsichtlich des Datenschutzes "
-"hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen Sie dem "
-"Datensatz bitte eine solche Datenschutzeinschränkung hinzu."
+"oder falls dem Datensatz eine Zugriffsberechtigung hinsichtlich des "
+"Datenschutzes hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen "
+"Sie dem Datensatz bitte eine solche Zugriffsberechtigung hinzu."
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
@@ -16231,9 +16243,9 @@ msgstr "Sie können einen höheren oder niedrigeren Wert anfordern, wenngleich d
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
 msgstr ""
 "Sie können die Zugriffsrechte für einzelne Datensätze, Tatsachen oder "
-"Ereignisse setzen, indem Sie eine Einschränkung hinzufügen. Wenn ein "
-"Datensatz, eine Tatsache oder ein Ereignis keine Einschränkung aufweist, "
-"gelten die folgenden voreingestellten Einschränkungen."
+"Ereignisse setzen, indem Sie eine Zugriffsberechtigung hinzufügen. Wenn ein "
+"Datensatz, eine Tatsache oder ein Ereignis keine Zugriffsberechtigung "
+"aufweist, gelten die folgenden Zugriffsberechtigungen."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
