@@ -279,7 +279,7 @@ class User implements UserInterface
         return $this;
     }
 
-     /**
+    /**
      * Validate a supplied 2fa code
      *
      * @param string $code2fa
@@ -293,7 +293,7 @@ class User implements UserInterface
              ->value('secret');
         $google2fa = new Google2FA();
         if ($google2fa->verifyKey($secret, $code2fa)) {
-                  return true;
+            return true;
         }
         return false;
     }
