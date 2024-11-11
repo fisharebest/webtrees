@@ -35,7 +35,7 @@ class FrenchHistoryTest extends TestCase
 
         foreach ($module->historicEventsAll(language_tag: 'fr') as $gedcom) {
             $fact = new Fact(gedcom: $gedcom, parent: $individual, id: 'test');
-            self::assertTrue(condition: $fact->date()->isOK(), message: 'No date found in: ' . $gedcom);
+            self::assertTrue($fact->date()->isOK(), 'No date found in: ' . $gedcom);
         }
     }
 }

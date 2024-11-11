@@ -1,5 +1,4 @@
 includes:
-#    - phar://phpstan.phar/conf/bleedingEdge.neon
     - phpstan-baseline.neon
 
 parameters:
@@ -11,6 +10,7 @@ parameters:
 
     paths:
         - index.php
+        - public/index.php
         - app
         - resources/views
         - tests
