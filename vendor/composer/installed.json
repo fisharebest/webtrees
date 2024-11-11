@@ -732,21 +732,21 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.17.0",
-            "version_normalized": "4.17.0.0",
+            "version": "v4.18.0",
+            "version_normalized": "4.18.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c"
+                "reference": "cb56001e54359df7ae76dc522d08845dc741621b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/bbc513d79acf6691fa9cf10f192c90dd2957f18c",
-                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/cb56001e54359df7ae76dc522d08845dc741621b",
+                "reference": "cb56001e54359df7ae76dc522d08845dc741621b",
                 "shasum": ""
             },
             "require": {
-                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
+                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "require-dev": {
                 "cerdic/css-tidy": "^1.7 || ^2.0",
@@ -758,7 +758,7 @@
                 "ext-iconv": "Converts text to and from non-UTF-8 encodings",
                 "ext-tidy": "Used for pretty-printing HTML"
             },
-            "time": "2023-11-17T15:01:25+00:00",
+            "time": "2024-11-01T03:51:45+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -790,7 +790,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.17.0"
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.18.0"
             },
             "install-path": "../ezyang/htmlpurifier"
         },
@@ -2154,17 +2154,17 @@
         },
         {
             "name": "mlocati/ip-lib",
-            "version": "1.18.0",
-            "version_normalized": "1.18.0.0",
+            "version": "1.18.1",
+            "version_normalized": "1.18.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mlocati/ip-lib.git",
-                "reference": "c77bd0b1f3e3956c7e9661e75cb1f54ed67d95d2"
+                "reference": "08bb43b4949069c543ebdf099a6b2c322d0172ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mlocati/ip-lib/zipball/c77bd0b1f3e3956c7e9661e75cb1f54ed67d95d2",
-                "reference": "c77bd0b1f3e3956c7e9661e75cb1f54ed67d95d2",
+                "url": "https://api.github.com/repos/mlocati/ip-lib/zipball/08bb43b4949069c543ebdf099a6b2c322d0172ab",
+                "reference": "08bb43b4949069c543ebdf099a6b2c322d0172ab",
                 "shasum": ""
             },
             "require": {
@@ -2174,7 +2174,7 @@
                 "ext-pdo_sqlite": "*",
                 "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.5"
             },
-            "time": "2022-01-13T18:05:33+00:00",
+            "time": "2024-10-29T15:44:19+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2212,7 +2212,7 @@
             ],
             "support": {
                 "issues": "https://github.com/mlocati/ip-lib/issues",
-                "source": "https://github.com/mlocati/ip-lib/tree/1.18.0"
+                "source": "https://github.com/mlocati/ip-lib/tree/1.18.1"
             },
             "funding": [
                 {
