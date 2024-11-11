@@ -96,14 +96,13 @@ class RegisterAction implements RequestHandlerInterface
         $password = Validator::parsedBody($request)->string('password');
         $realname = Validator::parsedBody($request)->string('realname');
         $username = Validator::parsedBody($request)->string('username');
-        $secret   = Validator::parsedBody($request)->string('secret');
 
         try {
             if ($this->captcha_service->isRobot($request)) {
                 throw new Exception(I18N::translate('Please try again.'));
             }
 
-            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password, $secret);
+            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
 
             Session::forget('register_comments');
             Session::forget('register_email');
@@ -249,8 +248,7 @@ class RegisterAction implements RequestHandlerInterface
         string $email,
         string $realname,
         string $comments,
-        #[\SensitiveParameter] string $password,
-        string $secret
+        #[\SensitiveParameter] string $password
     ): void {
         // All fields are required
         if ($username === '' || $email === '' || $realname === '' || $comments === '' || $password === '') {

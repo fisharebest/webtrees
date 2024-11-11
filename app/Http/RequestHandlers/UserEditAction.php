@@ -75,7 +75,6 @@ class UserEditAction implements RequestHandlerInterface
         $real_name      = Validator::parsedBody($request)->string('real_name');
         $email          = Validator::parsedBody($request)->string('email');
         $password       = Validator::parsedBody($request)->string('password');
-        $secret         = Validator::parsedBody($request)->string('secret');
         $theme          = Validator::parsedBody($request)->string('theme');
         $language       = Validator::parsedBody($request)->string('language');
         $timezone       = Validator::parsedBody($request)->string('timezone');
@@ -85,7 +84,6 @@ class UserEditAction implements RequestHandlerInterface
         $canadmin       = Validator::parsedBody($request)->boolean('canadmin', false);
         $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
         $verified       = Validator::parsedBody($request)->boolean('verified', false);
-        $status_mfa     = Validator::parsedBody($request)->boolean('status-mfa', false);
         $approved       = Validator::parsedBody($request)->boolean('approved', false);
 
         $edit_user = $this->user_service->find($user_id);
