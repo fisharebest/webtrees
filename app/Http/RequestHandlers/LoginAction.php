@@ -138,7 +138,7 @@ class LoginAction implements RequestHandlerInterface
                     throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
                 }
             } else {
-                    throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
+                throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
             }
         }
         Auth::login($user);
