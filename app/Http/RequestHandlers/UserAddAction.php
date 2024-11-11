@@ -59,7 +59,6 @@ class UserAddAction implements RequestHandlerInterface
         $real_name = Validator::parsedBody($request)->string('real_name');
         $email     = Validator::parsedBody($request)->string('email');
         $password  = Validator::parsedBody($request)->string('password');
-        $secret    = "";
 
         $errors = false;
 
