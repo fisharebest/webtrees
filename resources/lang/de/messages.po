@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-11-03 16:11+0000\n"
+"PO-Revision-Date: 2024-11-15 09:38+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -1611,31 +1611,31 @@ msgstr "Adoption eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:390
 msgid "Adoption of a granddaughter"
-msgstr "Adoption einer Enkeltochter"
+msgstr "Adoption einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:413
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Adoption einer Enkeltochter"
+msgstr "Adoption einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:436
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr "Adoption einer Enkeltochter"
+msgstr "Adoption einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:389
 msgid "Adoption of a grandson"
-msgstr "Adoption eines Enkelsohns"
+msgstr "Adoption eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:412
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr "Adoption eines Enkelsohns"
+msgstr "Adoption eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:435
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr "Adoption eines Enkelsohns"
+msgstr "Adoption eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:366
 msgid "Adoption of a half-brother"
@@ -2396,7 +2396,7 @@ msgstr "Durchschnittsalter"
 #: resources/views/modules/statistics-chart/custom.phtml:38
 #: resources/views/statistics/individuals/lifespan.phtml:20
 msgid "Average age at death"
-msgstr "Durchschnittsalter beim Tod"
+msgstr "Durchschnittsalter bei Tod"
 
 #: app/Statistics/Google/ChartMarriageAge.php:162
 msgid "Average age at marriage"
@@ -2540,31 +2540,31 @@ msgstr "Taufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:385
 msgid "Baptism of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Taufe einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:408
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Taufe einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:431
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Taufe einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:384
 msgid "Baptism of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Taufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:407
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Taufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:430
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Taufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:361
 msgid "Baptism of a half-brother"
@@ -2882,31 +2882,31 @@ msgstr "Geburt eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:375
 msgid "Birth of a granddaughter"
-msgstr "Geburt einer Enkeltochter"
+msgstr "Geburt einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:398
 msgctxt "daughter’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "Geburt einer Enkeltochter"
+msgstr "Geburt einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:421
 msgctxt "son’s daughter"
 msgid "Birth of a granddaughter"
-msgstr "Geburt einer Enkeltochter"
+msgstr "Geburt einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:374
 msgid "Birth of a grandson"
-msgstr "Geburt eines Enkelsohns"
+msgstr "Geburt eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:397
 msgctxt "daughter’s son"
 msgid "Birth of a grandson"
-msgstr "Geburt eines Enkelsohns"
+msgstr "Geburt eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:420
 msgctxt "son’s son"
 msgid "Birth of a grandson"
-msgstr "Geburt eines Enkelsohns"
+msgstr "Geburt eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:351
 msgid "Birth of a half-brother"
@@ -3165,7 +3165,7 @@ msgstr "Bestattung einer Tochter"
 
 #: app/Module/IndividualFactsTabModule.php:744
 msgid "Burial of a father"
-msgstr "Bestattung eines Vaters"
+msgstr "Bestattung des Vaters"
 
 #: app/Module/IndividualFactsTabModule.php:504
 #: app/Module/IndividualFactsTabModule.php:522
@@ -3175,17 +3175,17 @@ msgstr "Bestattung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:503
 msgid "Burial of a granddaughter"
-msgstr "Bestattung einer Enkeltochter"
+msgstr "Bestattung einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:521
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Bestattung einer Enkeltochter"
+msgstr "Bestattung einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:539
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Bestattung einer Enkeltochter"
+msgstr "Bestattung einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:762
 msgid "Burial of a grandfather"
@@ -3203,17 +3203,17 @@ msgstr "Bestattung eines Großelternteils"
 
 #: app/Module/IndividualFactsTabModule.php:502
 msgid "Burial of a grandson"
-msgstr "Bestattung eines Enkelsohns"
+msgstr "Bestattung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:520
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Bestattung eines Enkelsohns"
+msgstr "Bestattung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:538
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Bestattung eines Enkelsohns"
+msgstr "Bestattung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:484
 msgid "Burial of a half-brother"
@@ -3233,15 +3233,15 @@ msgstr "Bestattung eines Ehemanns"
 
 #: app/Module/IndividualFactsTabModule.php:780
 msgid "Burial of a maternal grandfather"
-msgstr "Bestattung eines mütterlichen Großvaters"
+msgstr "Bestattung des Großvaters mütterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:781
 msgid "Burial of a maternal grandmother"
-msgstr "Bestattung einer mütterlichen Großmutter"
+msgstr "Bestattung der Großmutter mütterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:745
 msgid "Burial of a mother"
-msgstr "Bestattung einer Mutter"
+msgstr "Bestattung der Mutter"
 
 #: app/Module/IndividualFactsTabModule.php:746
 msgid "Burial of a parent"
@@ -3249,11 +3249,11 @@ msgstr "Bestattung eines Elternteils"
 
 #: app/Module/IndividualFactsTabModule.php:798
 msgid "Burial of a paternal grandfather"
-msgstr "Bestattung eines väterlichen Großvaters"
+msgstr "Bestattung des Großvaters väterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:799
 msgid "Burial of a paternal grandmother"
-msgstr "Bestattung einer väterlichen Großmutter"
+msgstr "Bestattung der Großmutter väterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:468
 msgid "Burial of a sibling"
@@ -3738,31 +3738,31 @@ msgstr "Kindstaufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:380
 msgid "Christening of a granddaughter"
-msgstr "Kindstaufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:403
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Kindstaufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:426
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Kindstaufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:379
 msgid "Christening of a grandson"
-msgstr "Kindstaufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:402
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Kindstaufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:425
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Kindstaufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:356
 msgid "Christening of a half-brother"
@@ -4298,7 +4298,7 @@ msgstr "Einäscherung einer Tochter"
 
 #: app/Module/IndividualFactsTabModule.php:749
 msgid "Cremation of a father"
-msgstr "Einäscherung eines Vaters"
+msgstr "Einäscherung des Vaters"
 
 #: app/Module/IndividualFactsTabModule.php:545
 msgid "Cremation of a grandchild"
@@ -4306,17 +4306,17 @@ msgstr "Einäscherung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:508
 msgid "Cremation of a granddaughter"
-msgstr "Einäscherung einer Enkeltochter"
+msgstr "Einäscherung einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:526
 msgctxt "daughter’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr "Einäscherung einer Enkeltochter"
+msgstr "Einäscherung einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:544
 msgctxt "son’s daughter"
 msgid "Cremation of a granddaughter"
-msgstr "Einäscherung einer Enkeltochter"
+msgstr "Einäscherung einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:767
 msgid "Cremation of a grandfather"
@@ -4334,17 +4334,17 @@ msgstr "Einäscherung eines Großelternteils"
 
 #: app/Module/IndividualFactsTabModule.php:507
 msgid "Cremation of a grandson"
-msgstr "Einäscherung eines Enkelsohns"
+msgstr "Einäscherung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:525
 msgctxt "daughter’s son"
 msgid "Cremation of a grandson"
-msgstr "Einäscherung eines Enkelsohns"
+msgstr "Einäscherung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:543
 msgctxt "son’s son"
 msgid "Cremation of a grandson"
-msgstr "Einäscherung eines Enkelsohns"
+msgstr "Einäscherung eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:489
 msgid "Cremation of a half-brother"
@@ -4364,15 +4364,15 @@ msgstr "Einäscherung eines Ehemanns"
 
 #: app/Module/IndividualFactsTabModule.php:785
 msgid "Cremation of a maternal grandfather"
-msgstr "Einäscherung eines mütterlichen Großvaters"
+msgstr "Einäscherung des Großvaters mütterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:786
 msgid "Cremation of a maternal grandmother"
-msgstr "Einäscherung einer mütterlichen Großmutter"
+msgstr "Einäscherung der Großmutter mütterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:750
 msgid "Cremation of a mother"
-msgstr "Einäscherung einer Mutter"
+msgstr "Einäscherung der Mutter"
 
 #: app/Module/IndividualFactsTabModule.php:751
 msgid "Cremation of a parent"
@@ -4380,11 +4380,11 @@ msgstr "Einäscherung eines Elternteils"
 
 #: app/Module/IndividualFactsTabModule.php:803
 msgid "Cremation of a paternal grandfather"
-msgstr "Einäscherung eines väterlichen Großvaters"
+msgstr "Einäscherung des Großvaters väterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:804
 msgid "Cremation of a paternal grandmother"
-msgstr "Einäscherung einer väterlichen Großmutter"
+msgstr "Einäscherung der Großmutter väterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:473
 msgid "Cremation of a sibling"
@@ -4961,7 +4961,7 @@ msgstr "Tod einer Tochter"
 #: app/Functions/FunctionsPrint.php:221
 #: app/Module/IndividualFactsTabModule.php:739
 msgid "Death of a father"
-msgstr "Tod eines Vaters"
+msgstr "Tod des Vaters"
 
 #: app/Module/IndividualFactsTabModule.php:499
 #: app/Module/IndividualFactsTabModule.php:517
@@ -4972,17 +4972,17 @@ msgstr "Tod eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:498
 msgid "Death of a granddaughter"
-msgstr "Tod einer Enkeltochter"
+msgstr "Tod einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:516
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Tod einer Enkeltochter"
+msgstr "Tod einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:534
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Tod einer Enkeltochter"
+msgstr "Tod einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:757
 msgid "Death of a grandfather"
@@ -5001,17 +5001,17 @@ msgstr "Tod eines Großelternteils"
 
 #: app/Module/IndividualFactsTabModule.php:497
 msgid "Death of a grandson"
-msgstr "Tod eines Enkelsohns"
+msgstr "Tod eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:515
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr "Tod eines Enkelsohns"
+msgstr "Tod eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:533
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr "Tod eines Enkelsohns"
+msgstr "Tod eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:479
 msgid "Death of a half-brother"
@@ -5027,20 +5027,20 @@ msgstr "Tod einer Halbschwester"
 
 #: app/Module/IndividualFactsTabModule.php:258
 msgid "Death of a husband"
-msgstr "Tod eines Ehemanns"
+msgstr "Tod des Ehemanns"
 
 #: app/Module/IndividualFactsTabModule.php:775
 msgid "Death of a maternal grandfather"
-msgstr "Tod eines mütterlichen Großvaters"
+msgstr "Tod des Großvaters mütterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:776
 msgid "Death of a maternal grandmother"
-msgstr "Tod einer mütterlichen Großmutter"
+msgstr "Tod der Großmutter mütterlicherseits"
 
 #: app/Functions/FunctionsPrint.php:213
 #: app/Module/IndividualFactsTabModule.php:740
 msgid "Death of a mother"
-msgstr "Tod einer Mutter"
+msgstr "Tod der Mutter"
 
 #: app/Module/IndividualFactsTabModule.php:741
 #: resources/views/admin/trees-preferences.phtml:513
@@ -5049,11 +5049,11 @@ msgstr "Tod eines Elternteils"
 
 #: app/Module/IndividualFactsTabModule.php:793
 msgid "Death of a paternal grandfather"
-msgstr "Tod eines väterlichen Großvaters"
+msgstr "Tod des Großvaters väterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:794
 msgid "Death of a paternal grandmother"
-msgstr "Tod einer väterlichen Großmutter"
+msgstr "Tod der Großmutter väterlicherseits"
 
 #: app/Module/IndividualFactsTabModule.php:463
 #: resources/views/admin/trees-preferences.phtml:507
@@ -5071,16 +5071,16 @@ msgstr "Tod eines Sohns"
 #: app/Module/IndividualFactsTabModule.php:260
 #: resources/views/admin/trees-preferences.phtml:519
 msgid "Death of a spouse"
-msgstr "Tod eines Ehepartners"
+msgstr "Ehepartners Tod"
 
 #: app/Module/IndividualFactsTabModule.php:259
 msgid "Death of a wife"
-msgstr "Tod einer Ehefrau"
+msgstr "Tod der Ehefrau"
 
 #. I18N: gedcom tag _DETS
 #: app/Factories/ElementFactory.php:343 app/GedcomTag.php:1071
 msgid "Death of one spouse"
-msgstr "Tod eines Ehepartners"
+msgstr "Ehepartners Tod"
 
 #: resources/xml/reports/death_report.xml:6
 msgid "Death place contains"
@@ -9214,7 +9214,7 @@ msgstr "Heirat einer Tochter"
 
 #: app/Module/IndividualFactsTabModule.php:810
 msgid "Marriage of a father"
-msgstr "Heirat eines Vaters"
+msgstr "Heirat des Vaters"
 
 #: app/Module/IndividualFactsTabModule.php:558
 #: app/Module/IndividualFactsTabModule.php:564
@@ -9225,31 +9225,31 @@ msgstr "Heirat eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:557
 msgid "Marriage of a granddaughter"
-msgstr "Heirat einer Enkeltochter"
+msgstr "Heirat einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:563
 msgctxt "daughter’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Heirat einer Enkeltochter"
+msgstr "Heirat einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:569
 msgctxt "son’s daughter"
 msgid "Marriage of a granddaughter"
-msgstr "Heirat einer Enkeltochter"
+msgstr "Heirat einer Enkelin"
 
 #: app/Module/IndividualFactsTabModule.php:556
 msgid "Marriage of a grandson"
-msgstr "Heirat eines Enkelsohns"
+msgstr "Heirat eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:562
 msgctxt "daughter’s son"
 msgid "Marriage of a grandson"
-msgstr "Heirat eines Enkelsohns"
+msgstr "Heirat eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:568
 msgctxt "son’s son"
 msgid "Marriage of a grandson"
-msgstr "Heirat eines Enkelsohns"
+msgstr "Heirat eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:580
 msgid "Marriage of a half-brother"
@@ -9265,7 +9265,7 @@ msgstr "Heirat einer Halbschwester"
 
 #: app/Module/IndividualFactsTabModule.php:811
 msgid "Marriage of a mother"
-msgstr "Heirat einer Mutter"
+msgstr "Heirat der Mutter"
 
 #: app/Module/IndividualFactsTabModule.php:812
 #: resources/views/admin/trees-preferences.phtml:487
@@ -18100,32 +18100,32 @@ msgstr "Enkel"
 #: app/Functions/Functions.php:778
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr "Enkeltochter"
+msgstr "Enkelin"
 
 #: app/Functions/Functions.php:790
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr "Enkeltochter"
+msgstr "Enkelin"
 
 #: app/Functions/Functions.php:890
 msgctxt "son’s daughter"
 msgid "granddaughter"
-msgstr "Enkeltochter"
+msgstr "Enkelin"
 
 #: app/Functions/Functions.php:1006
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Enkeltochters Ehemann"
+msgstr "Ehemann der Enkelin"
 
 #: app/Functions/Functions.php:1028
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Enkeltochters Ehemann"
+msgstr "Ehemann der Enkelin"
 
 #: app/Functions/Functions.php:1326
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "Enkeltochters Ehemann"
+msgstr "Ehemann der Enkelin"
 
 #: app/Functions/Functions.php:858
 msgctxt "parent’s father"
@@ -18145,32 +18145,32 @@ msgstr "Großelternteil"
 #: app/Functions/Functions.php:782
 msgctxt "child’s son"
 msgid "grandson"
-msgstr "Enkelsohn"
+msgstr "Enkel"
 
 #: app/Functions/Functions.php:794
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr "Enkelsohn"
+msgstr "Enkel"
 
 #: app/Functions/Functions.php:892
 msgctxt "son’s son"
 msgid "grandson"
-msgstr "Enkelsohn"
+msgstr "Enkel"
 
 #: app/Functions/Functions.php:1016
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr "Enkelsohns Ehefrau"
+msgstr "Ehefrau der Enkels"
 
 #: app/Functions/Functions.php:1044
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr "Enkelsohns Ehefrau"
+msgstr "Ehefrau des Enkels"
 
 #: app/Functions/Functions.php:1336
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr "Enkelsohns Ehefrau"
+msgstr "Ehefrau des Enkels"
 
 #: app/Functions/Functions.php:1712 app/Functions/Functions.php:1731
 #: app/Functions/Functions.php:1743 app/Functions/Functions.php:1754
@@ -18198,7 +18198,7 @@ msgstr "%s×Ur-Enkel"
 #: app/Functions/Functions.php:2292
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "%s×Ur-Enkeltochter"
+msgstr "%s×Ur-Enkelin"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2110 app/Functions/Functions.php:2124
@@ -18229,7 +18229,7 @@ msgstr "%s×Ur-Großvater/-mutter"
 #: app/Functions/Functions.php:2287
 #, php-format
 msgid "great ×%s grandson"
-msgstr "%s×Ur-Enkelsohn"
+msgstr "%s×Ur-Enkel"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1993 app/Functions/Functions.php:2005
@@ -18343,7 +18343,7 @@ msgstr "4×Ur-Enkel"
 
 #: app/Functions/Functions.php:2210
 msgid "great ×4 granddaughter"
-msgstr "4×Ur-Enkeltochter"
+msgstr "4×Ur-Enkelin"
 
 #: app/Functions/Functions.php:2060
 msgid "great ×4 grandfather"
@@ -18359,7 +18359,7 @@ msgstr "4×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:2206
 msgid "great ×4 grandson"
-msgstr "4×Ur-Enkelsohn"
+msgstr "4×Ur-Enkel"
 
 #: app/Functions/Functions.php:1855
 msgctxt "(a man’s) brother’s great-great-great-grandson"
@@ -18435,7 +18435,7 @@ msgstr "5×Ur-Enkel"
 
 #: app/Functions/Functions.php:2221
 msgid "great ×5 granddaughter"
-msgstr "5×Ur-Enkeltochter"
+msgstr "5×Ur-Enkelin"
 
 #: app/Functions/Functions.php:2071
 msgid "great ×5 grandfather"
@@ -18451,7 +18451,7 @@ msgstr "5×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:2217
 msgid "great ×5 grandson"
-msgstr "5×Ur-Enkelsohn"
+msgstr "5×Ur-Enkel"
 
 #: app/Functions/Functions.php:1890
 msgctxt "(a man’s) brother’s great ×4 grandson"
@@ -18527,7 +18527,7 @@ msgstr "6×Ur-Enkel"
 
 #: app/Functions/Functions.php:2232
 msgid "great ×6 granddaughter"
-msgstr "6×Ur-Enkeltochter"
+msgstr "6×Ur-Enkelin"
 
 #: app/Functions/Functions.php:2082
 msgid "great ×6 grandfather"
@@ -18543,7 +18543,7 @@ msgstr "6×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:2228
 msgid "great ×6 grandson"
-msgstr "6×Ur-Enkelsohn"
+msgstr "6×Ur-Enkel"
 
 #: app/Functions/Functions.php:1665
 msgctxt "great ×5 grandfather’s brother"
@@ -18574,7 +18574,7 @@ msgstr "7×Ur-Enkel"
 
 #: app/Functions/Functions.php:2243
 msgid "great ×7 granddaughter"
-msgstr "7×Ur-Enkeltochter"
+msgstr "7×Ur-Enkelin"
 
 #: app/Functions/Functions.php:2093
 msgid "great ×7 grandfather"
@@ -18590,7 +18590,7 @@ msgstr "7×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:2239
 msgid "great ×7 grandson"
-msgstr "7×Ur-Enkelsohn"
+msgstr "7×Ur-Enkel"
 
 #: app/Functions/Functions.php:1684
 msgctxt "great ×6 grandfather’s brother"
@@ -18835,47 +18835,47 @@ msgstr "Urenkel"
 #: app/Functions/Functions.php:998
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1004
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1012
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1020
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1026
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1040
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1318
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1324
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1332
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Ur-Enkeltochter"
+msgstr "Ur-Enkelin"
 
 #: app/Functions/Functions.php:1056
 msgctxt "father’s father’s father"
@@ -19015,47 +19015,47 @@ msgstr "Urgroßvater/-mutter"
 #: app/Functions/Functions.php:1000
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1008
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1014
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1022
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1030
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1042
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1320
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1328
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1334
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr "Ur-Enkelsohn"
+msgstr "Ur-Enkel"
 
 #: app/Functions/Functions.php:1600
 msgid "great-great-aunt"
@@ -19071,7 +19071,7 @@ msgstr "2×Ur-Enkel"
 
 #: app/Functions/Functions.php:2188
 msgid "great-great-granddaughter"
-msgstr "2×Ur-Enkeltochter"
+msgstr "2×Ur-Enkelin"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
@@ -19087,7 +19087,7 @@ msgstr "2×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
-msgstr "2×Ur-Enkelsohn"
+msgstr "2×Ur-Enkel"
 
 #: app/Functions/Functions.php:1619
 msgid "great-great-great-aunt"
@@ -19103,7 +19103,7 @@ msgstr "3×Ur-Enkel"
 
 #: app/Functions/Functions.php:2199
 msgid "great-great-great-granddaughter"
-msgstr "3×Ur-Enkeltochter"
+msgstr "3×Ur-Enkelin"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
@@ -19119,7 +19119,7 @@ msgstr "3×Ur-Großvater/-mutter"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
-msgstr "3×Ur-Enkelsohn"
+msgstr "3×Ur-Enkel"
 
 #: app/Functions/Functions.php:1820
 msgctxt "(a man’s) brother’s great-great-grandson"
