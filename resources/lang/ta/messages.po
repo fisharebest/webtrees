@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:12+0000\n"
-"PO-Revision-Date: 2024-10-07 12:22+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-11-13 11:43+0000\n"
+"Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language-Team: \n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -43,13 +43,13 @@ msgstr " இல் "
 #: app/Services/RelationshipService.php:2179
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "ஏறுவருசையில் %1$s %2$s முறை நீக்கப்பட்டது"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2184
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "இறங்கு வரிசையில் %1$s %2$s முறை அகற்றப்பட்டது"
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -70,7 +70,7 @@ msgstr "%1$s KB %2$s வினாடிகளில் பதிவிறக்�
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s காணப்படவில்லை, நீங்கள் %2$s என்று சொல்ல வந்தீர்களா?"
 
 #: app/Http/RequestHandlers/CheckTree.php:260
 #: app/Http/RequestHandlers/CheckTree.php:265
@@ -78,7 +78,7 @@ msgstr ""
 #: app/Http/RequestHandlers/CheckTree.php:275
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s இலிருந்து %2$s க்கு திரும்பும் இணைப்பு எதுவும் இல்லை."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:262
@@ -91,7 +91,7 @@ msgstr[1] "%1$s கோப்புகள் %2$s வினாடிகளில�
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s ஒரு %2$s ஆனால் %3$s எதிர்பார்க்கப்படுகிறது."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2437
@@ -146,12 +146,12 @@ msgstr "%1$s–%2$s"
 #: app/Services/RelationshipService.php:2205
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s-ன் %2$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:604
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See https://php.net/date for codes
 #: app/I18N.php:242
@@ -334,7 +334,7 @@ msgstr[1] "%s களஞ்சியங்கள் புதுப்பிக�
 #: resources/views/emails/message-user-text.phtml:18
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s உங்களுக்கு இந்த செய்தியை அனுப்பியுள்ளார்"
 
 #: app/Statistics/Repository/UserRepository.php:96
 #, php-format
@@ -347,8 +347,8 @@ msgstr[1] "%s உள்நுழைந்த பயனர்கள்"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ஆதாரம் புதுப்பிக்கப்பட்டது."
+msgstr[1] "%s ஆதாரங்கள் புதுப்பிக்கப்பட்டது."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2170
@@ -490,7 +490,7 @@ msgstr "(%s இறந்த பிறகு)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(வயது %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:166
@@ -498,7 +498,7 @@ msgstr ""
 #: resources/views/fact-date.phtml:103
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s வயது)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:163
@@ -507,7 +507,7 @@ msgstr ""
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s வயது)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:160
@@ -516,13 +516,13 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s வயது)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:29
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(%s மொத்த உள்ளீடுகளிலிருந்து வடிகட்டப்பட்டது)"
 
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
@@ -536,7 +536,7 @@ msgstr "(இறந்த தேதியில்)"
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:315
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Statistics/Service/CenturyService.php:67
 msgctxt "CENTURY"
@@ -651,6 +651,11 @@ msgstr "<இயல்புநிலை தீம்>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>அறிவிப்பு: இந்தப் படிவத்தைப் பூர்த்தி செய்து சமர்ப்பிப்பதன் மூலம், நீங்கள்"
+" ஒப்புக்கொள்கிறீர்கள்:</p><ul><li>எங்கள் தளத்தில் பட்டியலிடப்பட்டுள்ள வாழும் "
+"நபர்களின் தனியுரிமையைப் பாதுகாக்க;</li><li>மற்றும் கீழே உள்ள உரைப் பெட்டியில்"
+" , நீங்கள் யாருடன் தொடர்புடையவர் என்பதை விளக்க, அல்லது எங்கள் இணையதளத்தில் "
+"பட்டியலிடப்பட வேண்டிய ஒருவரைப் பற்றிய தகவலை எங்களுக்கு வழங்க.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -666,16 +671,18 @@ msgstr "இரண்டு நபர்களுக்கிடையேயா�
 #: app/Module/FamilyBookChartModule.php:91
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
 msgstr ""
+"ஒரு குடும்ப புத்தகமாக, ஒரு தனிநபரின் மூதாதையர்கள் மற்றும் சந்ததியினரின் "
+"விளக்கப்படம்."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:86
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "ஒரு தனிநபரின் குடும்ப வம்சாவளியை சுருக்கமாகக் காட்டும் வரைபடம்."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:113
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "ஒரு தனிநபரின் குடும்ப வம்சாவளியை காட்டும் வரைபடம்."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:107
@@ -695,11 +702,17 @@ msgstr "தனிநபர்களின் ஆயுட்காலம் ப�
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"ஒரு குழந்தைக்கு ஒன்றுக்கு மேற்பட்ட பெற்றோர்கள் இருக்கலாம். குழந்தைக்கும் "
+"பெற்றோருக்கும் இடையிலான உறவு உயிரியல், சட்டபூர்வமானது அல்லது உள்ளூர் "
+"கலாச்சாரம் மற்றும் பாரம்பரியத்தின் அடிப்படையில் இருக்கலாம். எந்த வம்சாவளியும்"
+" குறிப்பிடப்படவில்லை என்றால், ஒரு உயிரியல் உறவு கருதப்படும்."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:67
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"ஒரு பொதுவான பிழை ஒரே பதிவுக்கு பல இணைப்புகளைக் கொண்டிருப்பது, எடுத்துக்காட்டா"
+"க ஒரே குழந்தையை ஒரு குடும்ப பதிவில் ஒன்றுக்கு மேற்பட்ட முறை பட்டியலிடுவது."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:146
@@ -807,12 +820,12 @@ msgstr "சமர்ப்பித்தவர்களின் பட்ட�
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "குடும்ப மரத்துடன் இணைக்கப்பட்ட பணிகள் மற்றும் செயல்பாடுகளின் பட்டியல்."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "எதிர்காலத்தில் நிகழவிருக்கும் எபிரேய மரண ஆண்டுவிழாக்களின் பட்டியல்."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
@@ -822,7 +835,7 @@ msgstr "இன்று நடக்கும் ஆண்டுவிழாக�
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:133
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "எதிர்காலத்தில் நிகழவிருக்கும் ஆண்டுவிழாக்களின் பட்டியல்."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:60
@@ -832,21 +845,26 @@ msgstr "மிகவும் பிரபலமான கொடுக்கப�
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:83
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "மிகவும் பிரபலமான குடும்பப்பெயர்களின் பட்டியல்."
 
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:63
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "அதிக முறை பார்க்கப்பட்ட பக்கங்களின் பட்டியல்."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:54
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "தற்போது ஆன்லைனில் இருக்கும் பயனர்கள் மற்றும் பார்வையாளர்களின் பட்டியல்."
 
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"மீடியா ஆப்ஜெக்ட் என்பது குடும்ப மரத்தில் உள்ள ஒரு பதிவாகும், இது ஒரு மீடியா "
+"கோப்பு பற்றிய தகவல்களைக் கொண்டுள்ளது. இந்த தகவலில் ஒரு தலைப்பு, பதிப்புரிமை "
+"அறிவிப்பு, ஒரு டிரான்ஸ்கிரிப்ட், தனியுரிமை கட்டுப்பாடுகள் போன்றவை இருக்கலாம்"
+". புகைப்படம் அல்லது வீடியோ போன்ற மீடியாக் கோப்பை உள்ளமைவாக (இந்த "
+"வலைசேவையகத்தில்) அல்லது தொலைநிலையாக (வேறு வெப்சர்வரில்) சேமிக்கலாம்."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -854,6 +872,8 @@ msgstr ""
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"ஒரு புதிய பயனர் (%1$s) ஒரு கணக்கைக் (%2$s) கோரியுள்ளார் மற்றும் ஒரு "
+"மின்னஞ்சல் முகவரியை (%3$s) உறுதிப்படுத்தியுள்ளார்."
 
 #: app/Http/RequestHandlers/LoginAction.php:78
 #: app/Module/CheckForNewVersion.php:104
@@ -867,116 +887,120 @@ msgstr "வெப்ட்ரீஸின் புதிய பதிப்ப�
 #: app/Http/RequestHandlers/PasswordRequestAction.php:119
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "கடவுச்சொல் மீட்டமைப்பு இணைப்பு \"%s\" -க்கு அனுப்பப்பட்டுள்ளது."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:64
 msgid "A private area to record notes or keep a journal."
 msgstr ""
+"குறிப்புகளைப் பதிவு செய்ய அல்லது ஒரு குறிப்பேட்டை வைத்திருக்க ஒரு தனியார் "
+"பகுதி."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:24
 #: resources/views/emails/register-notify-text.phtml:20
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "ஒரு வருங்கால பயனர் %s இல் webtrees இல் பதிவு செய்துள்ளார்."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
 #: resources/xml/reports/pedigree_report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "ஒரு தனிநபரின் மூதாதையர்களின் அறிக்கை, ஒரு மரமாக வடிவமைக்கப்பட்டுள்ளது."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "ஒரு தனிநபரின் மூதாதையர்களின் அறிக்கை, ஒரு கதை பாணியில்."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
 #: resources/xml/reports/descendancy_report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "ஒரு தனிநபரின் வாரிசுகளின் அறிக்கை, ஒரு கதை பாணியில்."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:52
 #: resources/xml/reports/individual_report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "ஒரு தனிநபரின் விவரங்களின் அறிக்கை."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட மூலத்தால் ஆதரிக்கப்படும் உண்மைகளின் அறிக்கை."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
 #: resources/xml/reports/family_group_report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "குடும்ப உறுப்பினர்களின் அறிக்கை மற்றும் அவர்களின் விவரங்கள்."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "ஒரு குறிப்பிட்ட நேரத்தில் அல்லது இடத்தில் இறந்த தனிநபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட தொழிலைக் கொண்டிருந்த தனிநபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "ஒரு குறிப்பிட்ட நேரத்தில் அல்லது இடத்தில் பிறந்த நபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட இடத்தில் புதைக்கப்பட்ட நபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
 #: resources/xml/reports/marriage_report.xml:4
 msgid "A report of individuals who were married in a given time or place."
 msgstr ""
+"ஒரு குறிப்பிட்ட நேரத்தில் அல்லது இடத்தில் திருமணம் செய்த நபர்களைப் பற்றிய "
+"அறிக்கை."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "சமீபத்திய மற்றும் நிலுவையில் உள்ள மாற்றங்கள் பற்றிய அறிக்கை."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:56
 #: resources/xml/reports/individual_ext_report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் நெருங்கிய தொடர்புடைய குடும்பங்களின் அறிக்கை."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:52
 #: resources/xml/reports/relative_ext_report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் நெருங்கிய தொடர்புடைய குடும்பங்களின் அறிக்கை."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:56
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "ஒரு மூலத்தால் வழங்கப்பட்ட தகவலின் அறிக்கை."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:56
 #: resources/xml/reports/missing_facts_report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "ஒரு தனிநபர் மற்றும் அவரது உறவினர்களுக்கு விடுபட்ட தகவலின் அறிக்கை."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட தேதி அல்லது இடத்திற்கான முக்கிய பதிவுகளின் அறிக்கை."
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -986,50 +1010,53 @@ msgstr ""
 #: app/Module/FamilyNavigatorModule.php:51
 msgid "A sidebar showing an individual’s close families and relatives."
 msgstr ""
+"ஒரு நபரின் நெருங்கிய குடும்பங்கள் மற்றும் உறவினர்களைக் காட்டும் பக்கப்பட்டை."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/IndividualMetadataModule.php:71
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரைப் பற்றிய பரம்பரை அல்லாத தகவல்களைக் காட்டும் பக்கப்பட்டை."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:70
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரின் சந்ததியினரைக் காட்டும் பக்கப்பட்டை."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:53
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரின் நெருங்கிய உறவினர்களைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:84
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரின் உண்மைகள் மற்றும் நிகழ்வுகளைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:68
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் இணைக்கப்பட்ட மீடியா பொருட்களைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:69
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் இணைக்கப்பட்ட குறிப்புகளைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:67
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் இணைக்கப்பட்ட மீடியா பொருட்களைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:104
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "தனிப்பட்ட நிகழ்வுகளைக் காட்டும் காலவரிசை."
 
 #: resources/views/admin/users-edit.phtml:118
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"\"மின்னஞ்சல் சரிபார்க்கப்பட்டது\" மற்றும் \"நிர்வாகியால் அங்கீகரிக்கப்பட்டது"
+"\" ஆகிய இரண்டும் தேர்ந்தெடுக்கப்படும் வரை ஒரு பயனர் உள்நுழைய முடியாது."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1077,48 +1104,48 @@ msgstr "A4"
 #: resources/views/modules/map-box/config.phtml:23
 #: resources/views/modules/openrouteservice/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "API key"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "அபா, நைஜீரியா"
 
 #: app/Date/JalaliDate.php:280
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:153
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:243
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:198
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:108
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:558
 #: resources/views/admin/trees-preferences.phtml:560
 #: resources/views/admin/trees-preferences.phtml:564
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "சுருக்கமான இடப் பெயர்கள்"
 
 #: app/CustomTags/GedcomL.php:262 app/CustomTags/RootsMagic.php:80
 #: app/Gedcom.php:828 resources/views/lists/sources-table.phtml:97
@@ -1139,11 +1166,11 @@ msgstr "எல்லா மாற்றங்களையும் ஏற்ற�
 #: resources/views/admin/components.phtml:106
 #: resources/views/admin/trees-privacy.phtml:233
 msgid "Access level"
-msgstr ""
+msgstr "அணுகல் நிலை"
 
 #: resources/views/admin/users-edit.phtml:231
 msgid "Access to family trees"
-msgstr ""
+msgstr "குடும்ப மரங்களுக்கான அணுகல்"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "Account approval and email verification"
@@ -1508,7 +1535,7 @@ msgstr ""
 
 #: app/CustomTags/GedcomL.php:284
 msgid "Administrative ID"
-msgstr ""
+msgstr "நிர்வாக ஐடி"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1530,17 +1557,17 @@ msgstr "நிர்வாகிகள்"
 #: app/Elements/PedigreeLinkageType.php:81
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "தத்தெடுக்கப்பட்டது"
 
 #: app/Elements/PedigreeLinkageType.php:71
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "தத்தெடுக்கப்பட்டது"
 
 #: app/Elements/PedigreeLinkageType.php:91
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "தத்தெடுக்கப்பட்டது"
 
 #: app/Elements/AdoptedByWhichParent.php:57
 msgid "Adopted by both parents"
@@ -1559,7 +1586,7 @@ msgstr "தாயால் தத்தெடுக்கப்பட்டத�
 #: app/CustomTags/BrothersKeeper.php:71
 #: app/CustomTags/PersonalAncestralFile.php:63
 msgid "Adopted name"
-msgstr ""
+msgstr "தத்தெடுத்த பெயர்"
 
 #: app/Gedcom.php:576 app/Gedcom.php:579
 #: app/Module/IndividualFactsTabModule.php:155
@@ -1576,45 +1603,45 @@ msgstr "குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:210
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "பெண் குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:280
 #: app/Services/IndividualFactsService.php:303
 #: app/Services/IndividualFactsService.php:326
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "பேரக்குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:279
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "பேத்தியை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:302
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "பெண் குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:325
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "பெண் குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:278
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "பேரக்குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:301
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "பேரனை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:324
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "பேரனை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:255
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "ஒன்றுவிட்ட சகோதரனை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:257
 msgid "Adoption of a half-sibling"
@@ -20991,7 +21018,7 @@ msgstr ""
 #: app/Report/ReportParserGenerate.php:986
 #: app/Report/ReportParserGenerate.php:1072
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:362
 #: app/Family.php:380 app/Individual.php:1059
@@ -20999,7 +21026,7 @@ msgstr ""
 #: app/Module/IndividualListModule.php:516
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:362
 #: app/Family.php:380 app/Individual.php:1058
@@ -21014,7 +21041,7 @@ msgstr ""
 #: resources/views/lists/surnames-tag-cloud.phtml:31
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid "Configure"
 #~ msgstr "கட்டமைப்பு"
