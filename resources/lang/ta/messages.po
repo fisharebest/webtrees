@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-19 13:09+0000\n"
-"PO-Revision-Date: 2024-10-07 12:22+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-11-15 09:38+0000\n"
+"Last-Translator: Mohamed Kaleel <mohamed.kaleel@gmail.com>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,13 +42,13 @@ msgstr " இல் "
 #: app/Services/RelationshipService.php:2178
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr ""
+msgstr "ஏறுவருசையில் %1$s %2$s முறை நீக்கப்பட்டது"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2183
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr ""
+msgstr "இறங்கு வரிசையில் %1$s %2$s முறை அகற்றப்பட்டது"
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -69,7 +69,7 @@ msgstr "%1$s KB %2$s வினாடிகளில் பதிவிறக்�
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s காணப்படவில்லை, நீங்கள் %2$s என்று சொல்ல வந்தீர்களா?"
 
 #: app/Http/RequestHandlers/CheckTree.php:260
 #: app/Http/RequestHandlers/CheckTree.php:265
@@ -77,7 +77,7 @@ msgstr ""
 #: app/Http/RequestHandlers/CheckTree.php:275
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s இலிருந்து %2$s க்கு திரும்பும் இணைப்பு எதுவும் இல்லை."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:262
@@ -90,7 +90,7 @@ msgstr[1] "%1$s கோப்புகள் %2$s வினாடிகளில�
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s ஒரு %2$s ஆனால் %3$s எதிர்பார்க்கப்படுகிறது."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2436
@@ -145,12 +145,12 @@ msgstr "%1$s–%2$s"
 #: app/Services/RelationshipService.php:2204
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s-ன் %2$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:604
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See https://php.net/date for codes
 #: app/I18N.php:242
@@ -333,7 +333,7 @@ msgstr[1] "%s களஞ்சியங்கள் புதுப்பிக�
 #: resources/views/emails/message-user-text.phtml:18
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s உங்களுக்கு இந்த செய்தியை அனுப்பியுள்ளார்"
 
 #: app/Statistics/Repository/UserRepository.php:96
 #, php-format
@@ -346,8 +346,8 @@ msgstr[1] "%s உள்நுழைந்த பயனர்கள்"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ஆதாரம் புதுப்பிக்கப்பட்டது."
+msgstr[1] "%s ஆதாரங்கள் புதுப்பிக்கப்பட்டது."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2169
@@ -407,14 +407,14 @@ msgstr "%s × உறவினர்"
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × உறவினர்"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2281
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s × உறவினர்"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -478,7 +478,7 @@ msgstr "%s, அவரது மனைவிகள் மற்றும் ச�
 #: resources/views/edit/add-fact-row.phtml:30
 #: resources/views/modules/user-messages/user-messages.phtml:35
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;தேர்ந்தெடு&gt;"
 
 #: resources/views/fact-date.phtml:123
 #, php-format
@@ -489,7 +489,7 @@ msgstr "(%s இறந்த பிறகு)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(வயது %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:166
@@ -497,7 +497,7 @@ msgstr ""
 #: resources/views/fact-date.phtml:103
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s வயது)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:163
@@ -506,7 +506,7 @@ msgstr ""
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s வயது)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:160
@@ -515,13 +515,13 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s வயது)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:29
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(%s மொத்த உள்ளீடுகளிலிருந்து வடிகட்டப்பட்டது)"
 
 #: resources/views/admin/gedcom-export-options.phtml:49
 #: resources/views/admin/gedcom-export-options.phtml:58
@@ -535,7 +535,7 @@ msgstr "(இறந்த தேதியில்)"
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:315
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Statistics/Service/CenturyService.php:67
 msgctxt "CENTURY"
@@ -650,6 +650,11 @@ msgstr "<இயல்புநிலை தீம்>"
 #: resources/views/register-page.phtml:28
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
 msgstr ""
+"<p>அறிவிப்பு: இந்தப் படிவத்தைப் பூர்த்தி செய்து சமர்ப்பிப்பதன் மூலம், நீங்கள்"
+" ஒப்புக்கொள்கிறீர்கள்:</p><ul><li>எங்கள் தளத்தில் பட்டியலிடப்பட்டுள்ள வாழும் "
+"நபர்களின் தனியுரிமையைப் பாதுகாக்க;</li><li>மற்றும் கீழே உள்ள உரைப் பெட்டியில்"
+" , நீங்கள் யாருடன் தொடர்புடையவர் என்பதை விளக்க, அல்லது எங்கள் இணையதளத்தில் "
+"பட்டியலிடப்பட வேண்டிய ஒருவரைப் பற்றிய தகவலை எங்களுக்கு வழங்க.</li></ul>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:36
@@ -665,16 +670,18 @@ msgstr "இரண்டு நபர்களுக்கிடையேயா�
 #: app/Module/FamilyBookChartModule.php:91
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
 msgstr ""
+"ஒரு குடும்ப புத்தகமாக, ஒரு தனிநபரின் மூதாதையர்கள் மற்றும் சந்ததியினரின் "
+"விளக்கப்படம்."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:86
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "ஒரு தனிநபரின் குடும்ப வம்சாவளியை சுருக்கமாகக் காட்டும் வரைபடம்."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:113
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "ஒரு தனிநபரின் குடும்ப வம்சாவளியை காட்டும் வரைபடம்."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:107
@@ -694,11 +701,17 @@ msgstr "தனிநபர்களின் ஆயுட்காலம் ப�
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"ஒரு குழந்தைக்கு ஒன்றுக்கு மேற்பட்ட பெற்றோர்கள் இருக்கலாம். குழந்தைக்கும் "
+"பெற்றோருக்கும் இடையிலான உறவு உயிரியல், சட்டபூர்வமானது அல்லது உள்ளூர் "
+"கலாச்சாரம் மற்றும் பாரம்பரியத்தின் அடிப்படையில் இருக்கலாம். எந்த வம்சாவளியும்"
+" குறிப்பிடப்படவில்லை என்றால், ஒரு உயிரியல் உறவு கருதப்படும்."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:67
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"ஒரு பொதுவான பிழை ஒரே பதிவுக்கு பல இணைப்புகளைக் கொண்டிருப்பது, எடுத்துக்காட்டா"
+"க ஒரே குழந்தையை ஒரு குடும்ப பதிவில் ஒன்றுக்கு மேற்பட்ட முறை பட்டியலிடுவது."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:147
@@ -806,12 +819,12 @@ msgstr "சமர்ப்பித்தவர்களின் பட்ட�
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:86
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "குடும்ப மரத்துடன் இணைக்கப்பட்ட பணிகள் மற்றும் செயல்பாடுகளின் பட்டியல்."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:78
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "எதிர்காலத்தில் நிகழவிருக்கும் எபிரேய மரண ஆண்டுவிழாக்களின் பட்டியல்."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:113
@@ -821,7 +834,7 @@ msgstr "இன்று நடக்கும் ஆண்டுவிழாக�
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:133
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "எதிர்காலத்தில் நிகழவிருக்கும் ஆண்டுவிழாக்களின் பட்டியல்."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:59
@@ -831,21 +844,26 @@ msgstr "மிகவும் பிரபலமான கொடுக்கப�
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:83
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "மிகவும் பிரபலமான குடும்பப்பெயர்களின் பட்டியல்."
 
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:63
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "அதிக முறை பார்க்கப்பட்ட பக்கங்களின் பட்டியல்."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "தற்போது ஆன்லைனில் இருக்கும் பயனர்கள் மற்றும் பார்வையாளர்களின் பட்டியல்."
 
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"மீடியா ஆப்ஜெக்ட் என்பது குடும்ப மரத்தில் உள்ள ஒரு பதிவாகும், இது ஒரு மீடியா "
+"கோப்பு பற்றிய தகவல்களைக் கொண்டுள்ளது. இந்த தகவலில் ஒரு தலைப்பு, பதிப்புரிமை "
+"அறிவிப்பு, ஒரு டிரான்ஸ்கிரிப்ட், தனியுரிமை கட்டுப்பாடுகள் போன்றவை இருக்கலாம்"
+". புகைப்படம் அல்லது வீடியோ போன்ற மீடியாக் கோப்பை உள்ளமைவாக (இந்த "
+"வலைசேவையகத்தில்) அல்லது தொலைநிலையாக (வேறு வெப்சர்வரில்) சேமிக்கலாம்."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -853,6 +871,8 @@ msgstr ""
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"ஒரு புதிய பயனர் (%1$s) ஒரு கணக்கைக் (%2$s) கோரியுள்ளார் மற்றும் ஒரு "
+"மின்னஞ்சல் முகவரியை (%3$s) உறுதிப்படுத்தியுள்ளார்."
 
 #: app/Http/RequestHandlers/LoginAction.php:78
 #: app/Module/CheckForNewVersion.php:104
@@ -866,116 +886,120 @@ msgstr "வெப்ட்ரீஸின் புதிய பதிப்ப�
 #: app/Http/RequestHandlers/PasswordRequestAction.php:119
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "கடவுச்சொல் மீட்டமைப்பு இணைப்பு \"%s\" -க்கு அனுப்பப்பட்டுள்ளது."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:64
 msgid "A private area to record notes or keep a journal."
 msgstr ""
+"குறிப்புகளைப் பதிவு செய்ய அல்லது ஒரு குறிப்பேட்டை வைத்திருக்க ஒரு தனியார் "
+"பகுதி."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:24
 #: resources/views/emails/register-notify-text.phtml:20
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "ஒரு வருங்கால பயனர் %s இல் webtrees இல் பதிவு செய்துள்ளார்."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
 #: resources/xml/reports/pedigree_report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "ஒரு தனிநபரின் மூதாதையர்களின் அறிக்கை, ஒரு மரமாக வடிவமைக்கப்பட்டுள்ளது."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "ஒரு தனிநபரின் மூதாதையர்களின் அறிக்கை, ஒரு கதை பாணியில்."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
 #: resources/xml/reports/descendancy_report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "ஒரு தனிநபரின் வாரிசுகளின் அறிக்கை, ஒரு கதை பாணியில்."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:52
 #: resources/xml/reports/individual_report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "ஒரு தனிநபரின் விவரங்களின் அறிக்கை."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட மூலத்தால் ஆதரிக்கப்படும் உண்மைகளின் அறிக்கை."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
 #: resources/xml/reports/family_group_report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "குடும்ப உறுப்பினர்களின் அறிக்கை மற்றும் அவர்களின் விவரங்கள்."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "ஒரு குறிப்பிட்ட நேரத்தில் அல்லது இடத்தில் இறந்த தனிநபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட தொழிலைக் கொண்டிருந்த தனிநபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "ஒரு குறிப்பிட்ட நேரத்தில் அல்லது இடத்தில் பிறந்த நபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட இடத்தில் புதைக்கப்பட்ட நபர்களின் அறிக்கை."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
 #: resources/xml/reports/marriage_report.xml:4
 msgid "A report of individuals who were married in a given time or place."
 msgstr ""
+"ஒரு குறிப்பிட்ட நேரத்தில் அல்லது இடத்தில் திருமணம் செய்த நபர்களைப் பற்றிய "
+"அறிக்கை."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "சமீபத்திய மற்றும் நிலுவையில் உள்ள மாற்றங்கள் பற்றிய அறிக்கை."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:56
 #: resources/xml/reports/individual_ext_report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் நெருங்கிய தொடர்புடைய குடும்பங்களின் அறிக்கை."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:52
 #: resources/xml/reports/relative_ext_report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் நெருங்கிய தொடர்புடைய குடும்பங்களின் அறிக்கை."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:56
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "ஒரு மூலத்தால் வழங்கப்பட்ட தகவலின் அறிக்கை."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:56
 #: resources/xml/reports/missing_facts_report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "ஒரு தனிநபர் மற்றும் அவரது உறவினர்களுக்கு விடுபட்ட தகவலின் அறிக்கை."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "கொடுக்கப்பட்ட தேதி அல்லது இடத்திற்கான முக்கிய பதிவுகளின் அறிக்கை."
 
 #: resources/views/admin/users-edit.phtml:234
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -985,50 +1009,53 @@ msgstr ""
 #: app/Module/FamilyNavigatorModule.php:51
 msgid "A sidebar showing an individual’s close families and relatives."
 msgstr ""
+"ஒரு நபரின் நெருங்கிய குடும்பங்கள் மற்றும் உறவினர்களைக் காட்டும் பக்கப்பட்டை."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/IndividualMetadataModule.php:71
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரைப் பற்றிய பரம்பரை அல்லாத தகவல்களைக் காட்டும் பக்கப்பட்டை."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:70
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரின் சந்ததியினரைக் காட்டும் பக்கப்பட்டை."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:53
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரின் நெருங்கிய உறவினர்களைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:84
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "ஒரு தனிநபரின் உண்மைகள் மற்றும் நிகழ்வுகளைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:68
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் இணைக்கப்பட்ட மீடியா பொருட்களைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:69
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் இணைக்கப்பட்ட குறிப்புகளைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:67
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "ஒரு தனிநபருடன் இணைக்கப்பட்ட மீடியா பொருட்களைக் காட்டும் தாவல்."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:104
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "தனிப்பட்ட நிகழ்வுகளைக் காட்டும் காலவரிசை."
 
 #: resources/views/admin/users-edit.phtml:118
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"\"மின்னஞ்சல் சரிபார்க்கப்பட்டது\" மற்றும் \"நிர்வாகியால் அங்கீகரிக்கப்பட்டது"
+"\" ஆகிய இரண்டும் தேர்ந்தெடுக்கப்படும் வரை ஒரு பயனர் உள்நுழைய முடியாது."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1076,48 +1103,48 @@ msgstr "A4"
 #: resources/views/modules/map-box/config.phtml:23
 #: resources/views/modules/openrouteservice/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "API key"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "அபா, நைஜீரியா"
 
 #: app/Date/JalaliDate.php:280
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:153
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:243
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:198
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:108
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "அபான்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:558
 #: resources/views/admin/trees-preferences.phtml:560
 #: resources/views/admin/trees-preferences.phtml:564
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "சுருக்கமான இடப் பெயர்கள்"
 
 #: app/CustomTags/GedcomL.php:262 app/CustomTags/RootsMagic.php:80
 #: app/Gedcom.php:828 resources/views/lists/sources-table.phtml:97
@@ -1138,20 +1165,20 @@ msgstr "எல்லா மாற்றங்களையும் ஏற்ற�
 #: resources/views/admin/components.phtml:106
 #: resources/views/admin/trees-privacy.phtml:233
 msgid "Access level"
-msgstr ""
+msgstr "அணுகல் நிலை"
 
 #: resources/views/admin/users-edit.phtml:231
 msgid "Access to family trees"
-msgstr ""
+msgstr "குடும்ப மரங்களுக்கான அணுகல்"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "கணக்கு ஒப்புதல் மற்றும் மின்னஞ்சல் சரிபார்ப்பு"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54
 msgid "Accra, Ghana"
-msgstr ""
+msgstr "அக்ரா, கானா"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:45
 msgid "Action"
@@ -1161,73 +1188,73 @@ msgstr "செயல்"
 #: app/Date/JewishDate.php:205
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "ஆதார்"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:309
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "ஆதார்"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:257
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "ஆதார்"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:153
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "ஆதார்"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:203
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "ஆதார் I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:307
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "ஆதார் I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:255
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "ஆதார் I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:151
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "ஆதார் I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:223
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "ஆதார் II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:327
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "ஆதார் I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:275
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "ஆதார் I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:171
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "ஆதார் II"
 
 #: app/Http/RequestHandlers/MapDataAdd.php:80
 #: app/Http/RequestHandlers/MapDataAdd.php:83
@@ -1390,10 +1417,11 @@ msgstr "அடிக்கடி கேட்கப்படும் கேள�
 #: resources/views/modules/custom-css-js/edit.phtml:35
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
 msgstr ""
+"<code>&lt;உடல்&gt;</code> உறுப்பின் முடிவில் உள்ளடக்கத்தைச் சேர்க்கவும்."
 
 #: resources/views/modules/custom-css-js/edit.phtml:23
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "<code>&lt;தலை&gt;</code> உறுப்பின் முடிவில் உள்ளடக்கத்தைச் சேர்க்கவும்."
 
 #: resources/views/record-page-menu-clipboard.phtml:20
 msgid "Add from clipboard"
@@ -1401,7 +1429,7 @@ msgstr "கிளிப்போர்டில் இருந்து சே�
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "வரலாற்று நிகழ்வுகளை ஒரு தனிநபர் பக்கத்தில் சேர்க்கவும்."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
 msgid "Add individuals"
@@ -1418,7 +1446,7 @@ msgstr "விடுபட்ட இறப்பு பதிவுகளைச�
 
 #: resources/views/edit-blocks-page.phtml:51
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "பின்வரும் பட்டியலிலிருந்து மேலும் தொகுதிகளைச் சேர்க்கவும்."
 
 #: resources/views/search-advanced-page.phtml:44
 msgid "Add more fields"
@@ -1427,48 +1455,48 @@ msgstr "மேலும் புலங்களைச் சேர்க்க�
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:74
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "குடும்ப மரத்தில் தனிநபர்களுக்கு கதை கதைகளைச் சேர்க்கவும்."
 
 #: resources/views/admin/map-import-form.phtml:63
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "புதியவற்றைச் சேர்த்து, ஏற்கனவே உள்ள பதிவுகளைப் புதுப்பிக்கவும்"
 
 #: resources/views/admin/trees-import.phtml:107
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "நீண்ட கோடுகள் மூடப்பட்டிருக்கும் இடங்களைச் சேர்க்கவும்"
 
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:44
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "ஒவ்வொரு பக்கத்திலும் ஸ்டைலிங் மற்றும் ஸ்கிரிப்ட்களைச் சேர்க்கவும்."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:197
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "தலைப்பு குறிச்சொல்லில் சேர்"
 
 #: app/Module/ClippingsCartModule.php:186
 #: resources/views/modules/clippings/add-options.phtml:23
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "கிளிப்பிங்ஸ் கார்ட்டில் சேர்க்கவும்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:140
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "தனிப்பட்ட அடையாளங்காட்டிகளைச் சேர்க்கவும்"
 
 #: resources/views/admin/trees.phtml:219
 msgid "Add unlinked records"
-msgstr ""
+msgstr "இணைக்கப்படாத பதிவுகளைச் சேர்க்கவும்"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:72
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "உங்கள் சொந்த உரை மற்றும் கிராபிக்ஸ் சேர்க்கவும்."
 
 #: app/Module/FamilyTreeNewsModule.php:182 app/Module/UserJournalModule.php:181
 msgid "Add/edit a journal/news entry"
-msgstr ""
+msgstr "ஒரு பத்திரிகை/செய்தி உள்ளீட்டைச் சேர்க்கவும்/திருத்தவும்"
 
 #: app/CustomTags/Aldfaer.php:66 app/CustomTags/GedcomL.php:226
 #: app/CustomTags/PersonalAncestralFile.php:66 app/Gedcom.php:402
@@ -1503,11 +1531,11 @@ msgstr "முகவரிகள்"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
 msgid "Adelaide, Australia"
-msgstr ""
+msgstr "அடிலெய்ட், ஆஸ்திரேலியா"
 
 #: app/CustomTags/GedcomL.php:284
 msgid "Administrative ID"
-msgstr ""
+msgstr "நிர்வாக ஐடி"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
@@ -1529,17 +1557,17 @@ msgstr "நிர்வாகிகள்"
 #: app/Elements/PedigreeLinkageType.php:81
 msgctxt "Female pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "தத்தெடுக்கப்பட்டது"
 
 #: app/Elements/PedigreeLinkageType.php:71
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "தத்தெடுக்கப்பட்டது"
 
 #: app/Elements/PedigreeLinkageType.php:91
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "தத்தெடுக்கப்பட்டது"
 
 #: app/Elements/AdoptedByWhichParent.php:57
 msgid "Adopted by both parents"
@@ -1558,7 +1586,7 @@ msgstr "தாயால் தத்தெடுக்கப்பட்டத�
 #: app/CustomTags/BrothersKeeper.php:71
 #: app/CustomTags/PersonalAncestralFile.php:63
 msgid "Adopted name"
-msgstr ""
+msgstr "தத்தெடுத்த பெயர்"
 
 #: app/Gedcom.php:576 app/Gedcom.php:579
 #: app/Module/IndividualFactsTabModule.php:155
@@ -1575,53 +1603,53 @@ msgstr "குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:210
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "பெண் குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:280
 #: app/Services/IndividualFactsService.php:303
 #: app/Services/IndividualFactsService.php:326
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "பேரக்குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:279
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "பேத்தியை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:302
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "பெண் குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:325
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "பெண் குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:278
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "பேரக்குழந்தையை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:301
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "பேரனை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:324
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "பேரனை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:255
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "ஒன்றுவிட்ட சகோதரனை தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:257
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "ஒன்றுவிட்ட உடன்பிறப்பு தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:256
 msgid "Adoption of a half-sister"
-msgstr ""
+msgstr "ஒன்றுவிட்ட சகோதரியின் தத்தெடுப்பு"
 
 #: app/Services/IndividualFactsService.php:234
 msgid "Adoption of a sibling"
@@ -1641,7 +1669,7 @@ msgstr "தத்தெடுக்கப்பட்ட பெற்றோர�
 
 #: app/Gedcom.php:623
 msgid "Adult christening"
-msgstr ""
+msgstr "வயது வந்தோர் பெயர் சூட்டுதல்"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:170
 #: app/Module/SearchMenuModule.php:125
@@ -1651,15 +1679,17 @@ msgstr "மேம்பட்ட தேடல்"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
 msgid "Afghanistan"
-msgstr ""
+msgstr "ஆப்கானிஸ்தான்"
 
 #: resources/views/modules/statistics-chart/custom.phtml:197
 msgid "Africa"
-msgstr ""
+msgstr "ஆப்பிரிக்கா"
 
 #: resources/views/admin/trees-create.phtml:60
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"குடும்ப மரத்தை உருவாக்கிய பிறகு, நீங்கள் GEDCOM கோப்பிலிருந்து தரவை இறக்குமதி"
+" செய்ய முடியும்."
 
 #: app/Gedcom.php:543 app/Statistics/Google/ChartAge.php:137
 #: app/Statistics/Google/ChartMarriageAge.php:160
@@ -1710,45 +1740,45 @@ msgstr "திருமணமானபோது வயது"
 #: resources/views/modules/statistics-chart/custom.phtml:139
 #: resources/views/modules/statistics-chart/custom.phtml:145
 msgid "Age interval"
-msgstr ""
+msgstr "வயது இடைவெளி"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:397
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "குழந்தையின் பிறந்த தேதிக்கு அடுத்த பெற்றோரின் வயது"
 
 #: app/CustomTags/GedcomL.php:234 app/Gedcom.php:410 app/Gedcom.php:544
 #: app/Gedcom.php:835
 msgid "Agency"
-msgstr ""
+msgstr "ஏஜென்சி"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:50
 msgid "Albania"
-msgstr ""
+msgstr "அல்பேனியா"
 
 #. I18N: Name of a module
 #: app/CustomTags/FamilyTreeBuilder.php:57 app/Module/AlbumModule.php:42
 msgid "Album"
-msgstr ""
+msgstr "ஆல்பம்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:57
 msgid "Albuquerque, New Mexico, United States"
-msgstr ""
+msgstr "அல்புகேர்கி, நியூ மெக்ஸிகோ, அமெரிக்கா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:169
 msgid "Algeria"
-msgstr ""
+msgstr "அல்ஜீரியா"
 
 #: app/Gedcom.php:582
 msgid "Alias"
-msgstr ""
+msgstr "மாற்றுப்பெயர்"
 
 #: resources/views/lists/individuals-table.phtml:115
 msgid "Alive"
-msgstr ""
+msgstr "உயிருடன் இருக்கிறார்"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:318
 #: app/Module/IndividualListModule.php:235
@@ -1814,14 +1844,14 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:51
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "புதிய பயனர் கணக்கைக் கோர பார்வையாளர்களை அனுமதிக்கவும்"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
 #: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
-msgstr ""
+msgstr "என்றும் அறியப்படுகிறது"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
@@ -1830,21 +1860,25 @@ msgstr "குடும்பப்பெயரின் மாற்று எ�
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
 msgid "American Samoa"
-msgstr ""
+msgstr "அமெரிக்க சமோவா"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/edit.phtml:81
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr ""
+"ஒரு அடிக்கடி கேட்கப்படும் கேள்விகள் குடும்ப மரங்களில் ஒன்றில் அல்லது அனைத்து "
+"குடும்ப மரங்களிலும் காட்டப்படலாம்."
 
 #: resources/views/admin/site-registration.phtml:58
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
 msgstr ""
+"பயனர் உள்நுழைவதற்கு முன், நிர்வாகி புதிய பயனர் கணக்கை அங்கீகரித்து அணுகல் "
+"நிலையைத் தேர்ந்தெடுக்க வேண்டும்."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr ""
+msgstr "\"மீடியா\" தாவலுக்கு மாற்றாக, மேலும் மேம்படுத்தப்பட்ட பட பார்வையாளர்."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:76
@@ -1855,16 +1889,18 @@ msgstr "விளக்கப்படங்களைக் காண்பி�
 #: app/Module/CensusAssistantModule.php:62
 msgid "An alternative way to enter census transcripts and link them to individuals."
 msgstr ""
+"மக்கள் தொகை கணக்கெடுப்பு டிரான்ஸ்கிரிப்டுகளை உள்ளிட்டு அவற்றை தனிநபர்களுடன் "
+"இணைப்பதற்கான மாற்று வழி."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:57
 msgid "An alternative way to select a new theme."
-msgstr ""
+msgstr "ஒரு புதிய தீம் தேர்ந்தெடுக்க ஒரு மாற்று வழி."
 
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:54
 msgid "An alternative way to sign in and sign out."
-msgstr ""
+msgstr "உள்நுழைவதற்கும் வெளியேறுவதற்கும் ஒரு மாற்று வழி."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:90
@@ -1887,7 +1923,7 @@ msgstr ""
 
 #: resources/views/admin/control-panel.phtml:224
 msgid "An upgrade is available."
-msgstr ""
+msgstr "மேம்படுத்தல் கிடைக்கிறது."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -1899,11 +1935,11 @@ msgstr "முன்னோர்கள்"
 
 #: app/Gedcom.php:583
 msgid "Ancestors interest"
-msgstr ""
+msgstr "முன்னோர்களின் ஆர்வம்"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
-msgstr ""
+msgstr "என்ற மூதாதையர்கள் "
 
 #. I18N: %s is an individual’s name
 #: app/Module/AncestorsChartModule.php:142
@@ -1913,37 +1949,37 @@ msgstr ""
 
 #: app/Gedcom.php:581
 msgid "Ancestral file number"
-msgstr ""
+msgstr "மூதாதையர் கோப்பு எண்"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/Ancestry.php:64
 msgid "Ancestry PID"
-msgstr ""
+msgstr "பரம்பரை PID"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com மூல அடையாளங்காட்டி"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
 msgid "Anchorage, Alaska, United States"
-msgstr ""
+msgstr "ஏங்கரேஜ், அலாஸ்கா, அமெரிக்கா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:52
 msgid "Andorra"
-msgstr ""
+msgstr "அன்டோரா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:44
 msgid "Angola"
-msgstr ""
+msgstr "அங்கோலா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:46
 msgid "Anguilla"
-msgstr ""
+msgstr "அங்கியுலா"
 
 #: resources/views/lists/anniversaries-table.phtml:41
 #: resources/views/lists/families-table.phtml:156
@@ -1960,7 +1996,7 @@ msgstr "ஆண்டுவிழா காலண்டர்"
 
 #: app/Gedcom.php:446
 msgid "Annulment"
-msgstr ""
+msgstr "ரத்து"
 
 #: resources/views/modules/faq/edit.phtml:43
 msgid "Answer"
@@ -1969,33 +2005,33 @@ msgstr "பதில்"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:62
 msgid "Antarctica"
-msgstr ""
+msgstr "அண்டார்டிக்கா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:66
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "அன்டிகுவா மற்றும் பார்புடா"
 
 #: app/Http/RequestHandlers/LoginPage.php:83
 msgid "Anyone with a user account can access this website."
-msgstr ""
+msgstr "பயனர் கணக்கு உள்ள எவரும் இந்த வலைத்தளத்தை அணுகலாம்."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:59
 msgid "Apia, Samoa"
-msgstr ""
+msgstr "அபியா, சமோவா"
 
 #: app/Gedcom.php:513
 msgid "Application ID"
-msgstr ""
+msgstr "விண்ணப்ப ஐடி"
 
 #: app/Gedcom.php:530
 msgid "Application name"
-msgstr ""
+msgstr "விண்ணப்பப் பெயர்"
 
 #: resources/views/admin/gedcom-export-options.phtml:99
 msgid "Apply privacy settings"
-msgstr ""
+msgstr "தனியுரிமை அமைப்புகளைப் பயன்படுத்தவும்"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:732
@@ -2015,54 +2051,56 @@ msgstr "அங்கீகரிக்கப்பட்டது"
 
 #: resources/views/admin/users-edit.phtml:106
 msgid "Approved by administrator"
-msgstr ""
+msgstr "நிர்வாகியால் அங்கீகரிக்கப்பட்டது"
 
 #: app/Date/AbstractGregorianJulianDate.php:234
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "ஏப்ரல்"
 
 #: app/Date/AbstractGregorianJulianDate.php:131
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "ஏப்ரல்"
 
 #: app/Date/AbstractGregorianJulianDate.php:201
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "ஏப்ரல்"
 
 #: app/Date/AbstractGregorianJulianDate.php:166
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "ஏப்ரல்"
 
 #: app/Date/AbstractGregorianJulianDate.php:96
 #: app/Module/StatisticsChartModule.php:791
 #: resources/views/edit/initialize-calendar-popup.phtml:16
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "ஏப்ரல்"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:150
 msgid "Aqua Marine"
-msgstr ""
+msgstr "அக்வா மரைன்"
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "\"%s\" -க்கான இணைப்பை நீக்க நிச்சயமாக விரும்புகிறீர்களா?"
 
 #: resources/views/individual-page-name.phtml:90
 #: resources/views/media-page-details.phtml:38
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "இந்த உண்மையை நீக்க நிச்சயமாக விரும்புகிறீர்களா?"
 
 #: resources/views/modules/user-messages/user-messages.phtml:53
 #: resources/views/modules/user-messages/user-messages.phtml:135
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
 msgstr ""
+"இந்தச் செய்தியை நீக்க நிச்சயமாக விரும்புகிறீர்களா? அதை பின்னர் மீட்டெடுக்க "
+"முடியாது."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:258
 #: resources/views/admin/clean-data.phtml:42
@@ -2079,20 +2117,23 @@ msgstr ""
 #: resources/views/record-page-menu.phtml:47
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "\"%s\" -ஐ நீக்க நிச்சயமாக விரும்புகிறீர்களா?"
 
 #: resources/views/pending-changes-page.phtml:106
 msgid "Are you sure you want to reject all the changes to this family tree?"
 msgstr ""
+"இந்த குடும்ப மரத்தில் அனைத்து மாற்றங்களையும் நிராகரிக்க நிச்சயமாக "
+"விரும்புகிறீர்களா?"
 
 #: resources/views/modules/favorites/favorites.phtml:36
 msgid "Are you sure you want to remove this item from your list of favorites?"
 msgstr ""
+"உங்கள் பிடித்தவை பட்டியலில் இருந்து இதை அகற்ற நிச்சயமாக விரும்புகிறீர்களா?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
 msgid "Argentina"
-msgstr ""
+msgstr "அர்ஜண்டினா"
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -2112,30 +2153,37 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:10
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "ஏரியல்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:58
 msgid "Armenia"
-msgstr ""
+msgstr "அர்மீனியா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:40
 msgid "Aruba"
-msgstr ""
+msgstr "அரூபா"
 
 #: resources/views/modules/html/config.phtml:45
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr ""
+"HTML வடிவமைப்பைப் பயன்படுத்துவதற்கு கருவிப்பட்டியைப் பயன்படுத்துவதோடு, "
+"தானாகவே புதுப்பிக்கப்படும் தரவுத்தள புலங்களைச் செருகலாம். இந்த சிறப்பு "
+"புலங்கள் <b>#</b> எழுத்துகளால் குறிக்கப்பட்டுள்ளன. எடுத்துக்காட்டாக "
+"<b>#totalFamilies# என்பது</b> தரவுத்தளத்தில் உள்ள குடும்பங்களின் உண்மையான "
+"எண்ணிக்கையுடன் மாற்றப்படும். மேம்பட்ட பயனர்கள் தங்கள் உரைக்கு CSS "
+"வகுப்புகளைப் பயன்படுத்த விரும்பலாம், இதனால் வடிவமைப்பு தற்போது "
+"தேர்ந்தெடுக்கப்பட்ட கருப்பொருளுடன் பொருந்துகிறது."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:152
 msgid "Ash"
-msgstr ""
+msgstr "சாம்பல்"
 
 #: resources/views/modules/statistics-chart/custom.phtml:191
 msgid "Asia"
-msgstr ""
+msgstr "ஆசியா"
 
 #: app/CustomTags/Gedcom7.php:77 app/CustomTags/Gedcom7.php:89
 #: app/CustomTags/Gedcom7.php:106 app/CustomTags/Gedcom7.php:120
@@ -2145,7 +2193,7 @@ msgstr ""
 #: resources/views/fact-association-structure.phtml:103
 #: resources/views/fact-association-structure.phtml:107
 msgid "Associate"
-msgstr ""
+msgstr "அசோசியேட்"
 
 #: app/Http/RequestHandlers/HelpText.php:263
 msgid "Associate events with this source"
@@ -2158,7 +2206,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
 msgid "Asunción, Paraguay"
-msgstr ""
+msgstr "அசுன்சியன், பராகுவே"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:433
@@ -2168,7 +2216,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:62
 msgid "Atlanta, Georgia, United States"
-msgstr ""
+msgstr "அட்லாண்டா, ஜார்ஜியா, அமெரிக்கா"
 
 #: app/Elements/RelationIsDescriptor.php:94
 msgid "Attendant"
@@ -2201,17 +2249,17 @@ msgstr ""
 #. I18N: Type of media object
 #: app/CustomTags/Legacy.php:147 app/Elements/SourceMediaType.php:79
 msgid "Audio"
-msgstr ""
+msgstr "ஆடியோ"
 
 #: app/Date/AbstractGregorianJulianDate.php:238
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "ஆக"
 
 #: app/Date/AbstractGregorianJulianDate.php:135
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "ஆகஸ்ட்"
 
 #: app/Date/AbstractGregorianJulianDate.php:205
 msgctxt "INSTRUMENTAL"
@@ -2221,7 +2269,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:170
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "ஆகஸ்ட்"
 
 #: app/Date/AbstractGregorianJulianDate.php:100
 #: app/Module/StatisticsChartModule.php:795
@@ -2233,12 +2281,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:68
 msgid "Australia"
-msgstr ""
+msgstr "ஆஸ்திரேலியா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:70
 msgid "Austria"
-msgstr ""
+msgstr "ஆஸ்திரியா"
 
 #: app/Gedcom.php:829 resources/views/lists/sources-table.phtml:98
 #: resources/views/modals/source-fields.phtml:32
@@ -2251,27 +2299,27 @@ msgstr "ஆசிரியர்"
 #: app/Gedcom.php:900 app/Gedcom.php:914 app/Gedcom.php:928 app/Gedcom.php:930
 #: app/Gedcom.php:932 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:938
 msgid "Author of last change"
-msgstr ""
+msgstr "கடைசி மாற்றத்தின் ஆசிரியர்"
 
 #. I18N: Automatic suggestions when you type
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:648
 msgid "Autocomplete"
-msgstr ""
+msgstr "தன்னியக்க நிறைவு"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "இந்தப் பயனர் செய்த மாற்றங்களைத் தானாக ஏற்கவும்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:528
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "குறிப்புகளை தானாக விரிவாக்கு"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:542
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "தானாக மூலங்களை விரிவாக்கவும்"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
@@ -2314,19 +2362,19 @@ msgstr "இறப்பின் சராசரி வயது"
 
 #: app/Statistics/Google/ChartMarriageAge.php:158
 msgid "Average age at marriage"
-msgstr ""
+msgstr "திருமண சராசரி வயது"
 
 #: app/Statistics/Google/ChartMarriageAge.php:155
 msgid "Average age in century of marriage"
-msgstr ""
+msgstr "திருமணமான நூற்றாண்டின் சராசரி வயது"
 
 #: app/Statistics/Google/ChartAge.php:132
 msgid "Average age related to death century"
-msgstr ""
+msgstr "நூற்றாண்டுடன் தொடர்புடைய சராசரி இறப்பு வயது"
 
 #: app/Statistics/Google/ChartChildren.php:88
 msgid "Average number"
-msgstr ""
+msgstr "சராசரி எண்"
 
 #: app/Statistics/Google/ChartChildren.php:99
 #: resources/views/modules/gedcom_stats/config.phtml:62
@@ -2334,13 +2382,15 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:99
 #: resources/views/modules/statistics-chart/children.phtml:17
 msgid "Average number of children per family"
-msgstr ""
+msgstr "ஒரு குடும்பத்திற்கு சராசரியாக குழந்தைகளின் எண்ணிக்கை"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: resources/views/admin/trees-create.phtml:48
 #: resources/views/admin/trees-preferences.phtml:86
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr ""
+"இடைவெளிகள் மற்றும் நிறுத்தற்குறிகளைத் தவிர்க்கவும். குடும்பப் பெயர் ஒரு நல்ல "
+"தேர்வாக இருக்கலாம்."
 
 #: app/Date/JalaliDate.php:281
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2374,12 +2424,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
 msgid "Azerbaijan"
-msgstr ""
+msgstr "அஜர்பைஜான்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:74
 msgid "Azores"
-msgstr ""
+msgstr "அசோர்ஸ்"
 
 #: app/Date/JalaliDate.php:283
 msgctxt "Abbreviation for Persian month: Bahman"
@@ -2389,7 +2439,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:91
 msgid "Bahamas"
-msgstr ""
+msgstr "பஹாமாஸ்"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:159
@@ -2418,29 +2468,29 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
 msgid "Bahrain"
-msgstr ""
+msgstr "பஹ்ரைன்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:85
 msgid "Bangladesh"
-msgstr ""
+msgstr "பங்களாதேஷ்"
 
 #: app/Gedcom.php:592 resources/views/calendar-page.phtml:189
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
-msgstr ""
+msgstr "ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:227
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "சகோதரனின் ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:206
 msgid "Baptism of a child"
-msgstr ""
+msgstr "குழந்தையின் ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:205
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "மகளின் ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:275
 #: app/Services/IndividualFactsService.php:298
@@ -2448,11 +2498,11 @@ msgstr ""
 #: app/Services/IndividualFactsService.php:398
 #: app/Services/IndividualFactsService.php:416
 msgid "Baptism of a grandchild"
-msgstr ""
+msgstr "பேரக்குழந்தையின் ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:274
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "பேத்தியின் ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:297
 msgctxt "daughter’s daughter"
@@ -2466,7 +2516,7 @@ msgstr ""
 
 #: app/Services/IndividualFactsService.php:273
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "பேரனின் ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:296
 msgctxt "daughter’s son"
@@ -2496,11 +2546,11 @@ msgstr ""
 
 #: app/Services/IndividualFactsService.php:228
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "சகோதரியின் ஞானஸ்நானம்"
 
 #: app/Services/IndividualFactsService.php:204
 msgid "Baptism of a son"
-msgstr ""
+msgstr "மகனின் ஞானஸ்நானம்"
 
 #: app/Gedcom.php:595 resources/xml/reports/missing_facts_report.xml:17
 msgid "Bar mitzvah"
@@ -2509,7 +2559,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:107
 msgid "Barbados"
-msgstr ""
+msgstr "பார்படாஸ்"
 
 #: app/CustomTags/GedcomL.php:154
 msgid "Base GEDCOM tag"
@@ -2522,7 +2572,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:73
 msgid "Baton Rouge, Louisiana, United States"
-msgstr ""
+msgstr "பேடன் ரூஜ், லூசியானா, அமெரிக்கா"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:257
 msgid "Begins with"
@@ -2531,7 +2581,7 @@ msgstr "உடன் தொடங்குகிறது"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:97
 msgid "Belarus"
-msgstr ""
+msgstr "பெலாரஸ்"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:154
@@ -2541,27 +2591,27 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
 msgid "Belgium"
-msgstr ""
+msgstr "பெல்ஜியம்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:99
 msgid "Belize"
-msgstr ""
+msgstr "பெலிஸ்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:80
 msgid "Benin"
-msgstr ""
+msgstr "பெனின்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:101
 msgid "Bermuda"
-msgstr ""
+msgstr "பெர்முடா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:191
 msgid "Bern, Switzerland"
-msgstr ""
+msgstr "பேர்ன், சுவிட்சர்லாந்து"
 
 #: app/Elements/RelationIsDescriptor.php:96
 msgid "Best man"
@@ -2570,7 +2620,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:111
 msgid "Bhutan"
-msgstr ""
+msgstr "பூட்டான்"
 
 #: app/CustomTags/RootsMagic.php:79
 msgid "Bibliography"
@@ -2860,7 +2910,7 @@ msgstr "நூற்றாண்டின் படி பிறப்புக�
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:66
 msgid "Bismarck, North Dakota, United States"
-msgstr ""
+msgstr "பிஸ்மார்க், வடக்கு டகோட்டா, அமெரிக்கா"
 
 #: app/Gedcom.php:605
 msgid "Blessing"
@@ -2890,61 +2940,61 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:67
 msgid "Bogotá, Colombia"
-msgstr ""
+msgstr "பொகோட்டா, கொலம்பியா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:68
 msgid "Boise, Idaho, United States"
-msgstr ""
+msgstr "பாய்ஸ், இடாஹோ, அமெரிக்கா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:103
 msgid "Bolivia"
-msgstr ""
+msgstr "பொலிவியா"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:80
 msgid "Book"
-msgstr ""
+msgstr "புத்தகம்"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsChildSealingDateStatus.php:60
 #: app/Elements/LdsOrdinanceStatus.php:61
 msgid "Born in the covenant"
-msgstr ""
+msgstr "உடன்படிக்கையில் பிறந்தவர்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:93
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "போஸ்னியா மற்றும் ஹெர்சகோவினா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:69
 msgid "Boston, Massachusetts, United States"
-msgstr ""
+msgstr "பாஸ்டன், மாசசூசெட்ஸ், அமெரிக்கா"
 
 #: resources/views/lists/families-table.phtml:87
 msgid "Both alive"
-msgstr ""
+msgstr "இருவரும் உயிருடன் இருக்கின்றனர்"
 
 #: resources/views/lists/families-table.phtml:102
 msgid "Both dead"
-msgstr ""
+msgstr "இருவரும் இறந்துவிட்டனர்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:115
 msgid "Botswana"
-msgstr ""
+msgstr "போட்ஸ்வானா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:70
 msgid "Bountiful, Utah, United States"
-msgstr ""
+msgstr "பவுண்டிஃபுல், யூட்டா, ஐக்கிய அமெரிக்கா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:113
 msgid "Bouvet Island"
-msgstr ""
+msgstr "போவெட் தீவு"
 
 #. I18N: Name of a module/list
 #. I18N: Branches of a family tree
@@ -2961,7 +3011,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:105
 msgid "Brazil"
-msgstr ""
+msgstr "பிரேசில்"
 
 #: app/Elements/RelationIsDescriptor.php:97
 msgid "Bridesmaid"
@@ -2970,12 +3020,12 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:71
 msgid "Brigham City, Utah, United States"
-msgstr ""
+msgstr "பிரிகாம் நகரம், உட்டா, அமெரிக்கா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:72
 msgid "Brisbane, Australia"
-msgstr ""
+msgstr "பிரிஸ்பேன், ஆஸ்திரேலியா"
 
 #: app/CustomTags/BrothersKeeper.php:94
 msgid "Brit milah"
@@ -2984,12 +3034,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:255
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "பிரிட்டிஷ் இந்தியப் பெருங்கடல் பகுதி"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:526
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "பிரிட்டிஷ் விர்ஜின் தீவுகள்"
 
 #: resources/xml/reports/individual_ext_report.xml:327
 #: resources/xml/reports/individual_report.xml:316
@@ -3023,17 +3073,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:109
 msgid "Brunei Darussalam"
-msgstr ""
+msgstr "புருனே தருசலாம்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:63
 msgid "Buenos Aires, Argentina"
-msgstr ""
+msgstr "புவெனஸ் அயர்ஸ், அர்ஜென்டினா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:87
 msgid "Bulgaria"
-msgstr ""
+msgstr "பல்கேரியா"
 
 #: app/Gedcom.php:608 resources/views/calendar-page.phtml:201
 #: resources/xml/reports/family_group_report.xml:351
@@ -3049,7 +3099,7 @@ msgstr ""
 
 #: app/Services/IndividualFactsService.php:339
 msgid "Burial of a child"
-msgstr ""
+msgstr "குழந்தையின் அடக்கம்"
 
 #: app/Services/IndividualFactsService.php:338
 msgid "Burial of a daughter"
@@ -3121,19 +3171,19 @@ msgstr ""
 
 #: app/Services/IndividualFactsService.php:801
 msgid "Burial of a husband"
-msgstr ""
+msgstr "கணவனை அடக்கம் செய்த"
 
 #: app/Services/IndividualFactsService.php:667
 msgid "Burial of a maternal grandfather"
-msgstr ""
+msgstr "தாய்வழி தாத்தாவின் அடக்கம்"
 
 #: app/Services/IndividualFactsService.php:668
 msgid "Burial of a maternal grandmother"
-msgstr ""
+msgstr "தாய்வழி பாட்டியை அடக்கம் செய்தல்"
 
 #: app/Services/IndividualFactsService.php:632
 msgid "Burial of a mother"
-msgstr ""
+msgstr "தாய்யை அடக்கம் செய்த"
 
 #: app/Services/IndividualFactsService.php:633
 msgid "Burial of a parent"
@@ -3181,7 +3231,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
 msgid "Burkina Faso"
-msgstr ""
+msgstr "புர்கினா பாசோ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:76
@@ -3220,7 +3270,7 @@ msgstr ""
 #: resources/views/admin/trees.phtml:74
 #: resources/views/lists/datatables-attributes.phtml:33
 msgid "Calculating…"
-msgstr ""
+msgstr "கணக்கிடுகிறது…"
 
 #. I18N: Name of a module
 #: app/Module/CalendarMenuModule.php:42 app/Module/CalendarMenuModule.php:81
@@ -3233,51 +3283,51 @@ msgstr "நாட்காட்டி"
 #: resources/views/admin/trees-preferences.phtml:110
 #: resources/views/admin/trees-preferences.phtml:113
 msgid "Calendar conversion"
-msgstr ""
+msgstr "காலண்டர் மாற்றம்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:74
 msgid "Calgary, Alberta, Canada"
-msgstr ""
+msgstr "கல்கரி, ஆல்பர்ட்டா, கனடா"
 
 #: app/Gedcom.php:846 resources/views/modals/source-fields.phtml:52
 msgid "Call number"
-msgstr ""
+msgstr "அழைப்பு எண்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:282
 msgid "Cambodia"
-msgstr ""
+msgstr "கம்போடியா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:131
 msgid "Cameroon"
-msgstr ""
+msgstr "கமரூன்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:75
 msgid "Campinas, Brazil"
-msgstr ""
+msgstr "காம்பினாஸ், பிரேசில்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:119
 msgid "Canada"
-msgstr ""
+msgstr "பெலிஜ்"
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "\"%s\" கோப்புறையில் எழுத இயலவில்லை."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
 msgid "Cape Verde"
-msgstr ""
+msgstr "கேப் வேர்ட்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:76
 msgid "Caracas, Venezuela"
-msgstr ""
+msgstr "கராகஸ், வெனிசுலா"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:81
@@ -3308,23 +3358,23 @@ msgstr ""
 
 #: app/CustomTags/FamilyTreeMaker.php:114 app/Gedcom.php:638
 msgid "Cause of death"
-msgstr ""
+msgstr "மரணத்திற்கான காரணம்"
 
 #: resources/views/admin/synchronize-trees.phtml:30
 #: resources/views/admin/trees-merge.phtml:66
 #: resources/views/admin/trees-renumber.phtml:47
 msgid "Caution! This may take a long time. Be patient."
-msgstr ""
+msgstr "எண்ணிக்கை! இதற்கு நீண்ட காலம் ஆகலாம். பொறுமையாக இருங்கள்."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
 msgid "Cayman Islands"
-msgstr ""
+msgstr "கேமன் தீவுகள்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:77
 msgid "Cebu City, Philippines"
-msgstr ""
+msgstr "செபு நகரம், பிலிப்பைன்ஸ்"
 
 #: app/CustomTags/PhpGedView.php:66
 msgid "Cemetery"
@@ -3332,12 +3382,12 @@ msgstr "இடுகாடு"
 
 #: app/Gedcom.php:612
 msgid "Census"
-msgstr ""
+msgstr "மக்கள் தொகை கணக்கெடுப்பு"
 
 #. I18N: Name of a module
 #: app/Module/CensusAssistantModule.php:51
 msgid "Census assistant"
-msgstr ""
+msgstr "மக்கள் தொகை கணக்கெடுப்பு உதவியாளர்"
 
 #: app/Gedcom.php:613
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:16
@@ -3359,7 +3409,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:117
 msgid "Central African Republic"
-msgstr ""
+msgstr "மத்திய ஆப்பிரிக்க குடியரசு"
 
 #: app/Module/StatisticsChartModule.php:980
 #: app/Statistics/Google/ChartAge.php:112
@@ -3376,7 +3426,7 @@ msgstr ""
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:96
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:132
 msgid "Century"
-msgstr ""
+msgstr "நூற்றாண்டு"
 
 #. I18N: Type of media object
 #: app/CustomTags/Geneatique.php:57 app/CustomTags/Geneatique.php:58
@@ -3387,38 +3437,38 @@ msgstr "சான்றிதழ்"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
 msgid "Chad"
-msgstr ""
+msgstr "சாட்"
 
 #: app/Http/RequestHandlers/ChangeFamilyMembersPage.php:44
 #: resources/views/family-page-menu.phtml:35
 msgid "Change family members"
-msgstr ""
+msgstr "குடும்ப உறுப்பினர்களை மாற்றவும்"
 
 #: app/Http/RequestHandlers/TreePageEdit.php:64
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "\"முகப்பு பக்கம்\" தொகுதிகளை மாற்றவும்"
 
 #: app/Http/RequestHandlers/UserPageEdit.php:62
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "\"எனது பக்கம்\" தொகுதிகளை மாற்றவும்"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:52
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "%1$s ஆல் மாற்றப்பட்டது"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed on %1$s"
-msgstr ""
+msgstr "%1$s அன்று மாற்றப்பட்டது"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
 #, php-format
 msgid "Changed on %1$s by %2$s"
-msgstr ""
+msgstr "%1$s அன்று %2$s ஆல் மாற்றப்பட்டது"
 
 #. I18N: Name of a module/report
 #: app/Module/ChangeReportModule.php:44
@@ -3434,13 +3484,13 @@ msgstr "மாற்றங்கள்"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "கடந்த %s நாளில் மாற்றங்கள்"
+msgstr[1] "கடந்த %s நாட்களில் மாற்றங்கள்"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:95
 #: resources/views/admin/trees.phtml:211
 msgid "Changes log"
-msgstr ""
+msgstr "மாற்றங்கள் பதிவு"
 
 #: resources/views/admin/gedcom-export-options.phtml:79
 #: resources/views/admin/trees-import.phtml:82
@@ -3793,18 +3843,18 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:83
 msgid "Columbus, Ohio, United States"
-msgstr ""
+msgstr "கொலம்பஸ், ஓஹியோ, அமெரிக்கா"
 
 #: app/CustomTags/PhpGedView.php:62 app/CustomTags/PhpGedView.php:68
 msgid "Comment"
-msgstr ""
+msgstr "கருத்துரை"
 
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:28
 #: resources/views/modules/census-assistant.phtml:79
 #: resources/views/register-page.phtml:85
 msgid "Comments"
-msgstr ""
+msgstr "கருத்துரைகள்"
 
 #: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
@@ -3818,12 +3868,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:141
 msgid "Comoros"
-msgstr ""
+msgstr "கொமொரோசு"
 
 #. I18N: Name of a module/chart
 #: app/Module/CompactTreeChartModule.php:75
 msgid "Compact tree"
-msgstr ""
+msgstr "கச்சிதமான குடும்பம் மரம்"
 
 #. I18N: %s is an individual’s name
 #: app/Module/CompactTreeChartModule.php:121
@@ -3881,7 +3931,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:258
 msgid "Contains"
-msgstr ""
+msgstr "கொண்டுள்ளது"
 
 #: resources/views/modules/gedcom_news/edit.phtml:37
 #: resources/views/modules/html/config.phtml:41
@@ -3968,7 +4018,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:137
 msgid "Cook Islands"
-msgstr ""
+msgstr "குக் தீவுகள்"
 
 #: resources/views/modules/privacy-policy/page.phtml:32
 msgid "Cookies"
@@ -4000,7 +4050,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:124
 msgid "Copy files…"
-msgstr ""
+msgstr "கோப்புகளை நகலெடு…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
@@ -4041,21 +4091,21 @@ msgstr ""
 #: app/Gedcom.php:407 app/Gedcom.php:520 app/Gedcom.php:540 app/Gedcom.php:811
 #: app/Gedcom.php:858 app/Statistics/Google/ChartDistribution.php:108
 msgid "Country"
-msgstr ""
+msgstr "நாடு"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:254
 msgid "Create"
-msgstr ""
+msgstr "உருவாக்கு"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:56
 #: resources/views/admin/control-panel.phtml:315
 msgid "Create a family tree"
-msgstr ""
+msgstr "குடும்ப மரத்தை உருவாக்க"
 
 #: app/Elements/XrefLocation.php:60
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "இடத்தை உருவாக்க"
 
 #: app/Elements/XrefMedia.php:62
 #: resources/views/modals/create-media-from-file.phtml:20
@@ -4277,12 +4327,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:243
 msgid "Croatia"
-msgstr ""
+msgstr "குரோஷியா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:147
 msgid "Cuba"
-msgstr ""
+msgstr "கியூபா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
@@ -4292,11 +4342,11 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
 msgid "Curitiba, Brazil"
-msgstr ""
+msgstr "குரிடிபா, பிரேசில்"
 
 #: app/Module/HtmlBlockModule.php:192 app/Module/StatisticsChartModule.php:159
 msgid "Custom"
-msgstr ""
+msgstr "தனிப்பயன்"
 
 #: app/CustomTags/Gedcom7.php:104 resources/views/admin/tags.phtml:1020
 msgid "Custom GEDCOM tags"
@@ -4308,35 +4358,35 @@ msgstr ""
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
-msgstr ""
+msgstr "விருப்ப நிகழ்வு"
 
 #: resources/views/admin/custom-module-info.phtml:14
 msgid "Custom module"
-msgstr ""
+msgstr "தனிப்பயன் தொகுதி"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:38
 msgid "Custom welcome text"
-msgstr ""
+msgstr "விருப்ப வரவேற்பு உரை"
 
 #: app/Module/ModuleThemeTrait.php:216 app/Module/ModuleThemeTrait.php:220
 msgid "Customize this page"
-msgstr ""
+msgstr "இந்தப் பக்கத்தைத் தனிப்பயனாக்குங்கள்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:155
 msgid "Cyprus"
-msgstr ""
+msgstr "சைப்ரஸ்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:157
 msgid "Czech Republic"
-msgstr ""
+msgstr "செக் குடியரசு"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:85
 msgid "Córdoba, Argentina"
-msgstr ""
+msgstr "கோர்டோபா, அர்ஜென்டினா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:129
@@ -4346,11 +4396,11 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:196
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "DKIM டிஜிட்டல் கையொப்பம்"
 
 #: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
-msgstr ""
+msgstr "டி.என்.ஏ குறிப்பான்கள்"
 
 #. I18N: https://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:608 resources/views/branches-page.phtml:42
@@ -4361,7 +4411,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:88
 msgid "Dallas, Texas, United States"
-msgstr ""
+msgstr "டல்லாஸ், டெக்சாஸ், அமெரிக்கா"
 
 #: app/CustomTags/GedcomL.php:123 app/CustomTags/GedcomL.php:177
 #: app/CustomTags/GedcomL.php:271 app/CustomTags/GedcomL.php:304
@@ -4370,11 +4420,11 @@ msgstr ""
 #: app/Gedcom.php:834 app/Gedcom.php:905 app/Gedcom.php:919
 #: resources/views/admin/changes-log.phtml:139
 msgid "Data"
-msgstr ""
+msgstr "தரவு"
 
 #: resources/views/modules/privacy-policy/page.phtml:71
 msgid "Data controller"
-msgstr ""
+msgstr "தரவு கட்டுப்படுத்தி"
 
 #: resources/views/admin/data-fix-page.phtml:72
 #: resources/views/admin/data-fix-select.phtml:29
@@ -4409,7 +4459,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:41
 #: resources/views/setup/step-4-database-sqlsrv.phtml:36
 msgid "Database connection"
-msgstr ""
+msgstr "டேட்டாபேஸ் இணைப்பு"
 
 #: app/CustomTags/PhpGedView.php:81
 #: resources/views/setup/step-4-database-mysql.phtml:125
@@ -4417,25 +4467,25 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:54
 #: resources/views/setup/step-4-database-sqlsrv.phtml:91
 msgid "Database name"
-msgstr ""
+msgstr "டேட்டாபேஸ் பெயர்"
 
 #: app/CustomTags/PhpGedView.php:82
 #: resources/views/setup/step-4-database-mysql.phtml:115
 #: resources/views/setup/step-4-database-pgsql.phtml:82
 #: resources/views/setup/step-4-database-sqlsrv.phtml:82
 msgid "Database password"
-msgstr ""
+msgstr "டேட்டாபேஸ் கடவுச்சொல்"
 
 #: resources/views/setup/step-3-database-type.phtml:54
 msgid "Database type"
-msgstr ""
+msgstr "டேட்டாபேஸ் வகை"
 
 #: app/CustomTags/PhpGedView.php:84
 #: resources/views/setup/step-4-database-mysql.phtml:105
 #: resources/views/setup/step-4-database-pgsql.phtml:73
 #: resources/views/setup/step-4-database-sqlsrv.phtml:73
 msgid "Database user account"
-msgstr ""
+msgstr "டேட்டாபேஸ் பயனர் கணக்கு"
 
 #: app/CustomTags/Aldfaer.php:80 app/CustomTags/Ancestry.php:72
 #: app/CustomTags/FamilyTreeBuilder.php:58 app/CustomTags/GedcomL.php:118
@@ -4463,7 +4513,7 @@ msgstr ""
 #: resources/xml/reports/marriage_report.xml:46
 #: resources/xml/reports/occupation_report.xml:57
 msgid "Date"
-msgstr ""
+msgstr "தேதி"
 
 #: resources/views/modules/relatives/tab.phtml:37
 msgid "Date differences"
@@ -4617,7 +4667,7 @@ msgstr ""
 #: app/Gedcom.php:837 resources/views/help/date.phtml:69
 #: resources/views/modules/statistics-chart/custom.phtml:96
 msgid "Date range"
-msgstr ""
+msgstr "தேதி வரம்பு"
 
 #: resources/views/help/date.phtml:62
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
@@ -4646,7 +4696,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:570
 #: resources/xml/reports/individual_report.xml:566
 msgid "Daughter"
-msgstr ""
+msgstr "மகள்"
 
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:367
@@ -4823,7 +4873,7 @@ msgstr ""
 #: app/Services/IndividualFactsService.php:334
 #: resources/views/admin/trees-preferences.phtml:482
 msgid "Death of a child"
-msgstr ""
+msgstr "குழந்தையின் மரணம்"
 
 #: app/Services/IndividualFactsService.php:333
 msgid "Death of a daughter"
@@ -4977,7 +5027,7 @@ msgstr "நூற்றாண்டின் படி இறப்புகள�
 #: app/Date/AbstractGregorianJulianDate.php:242
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "டிச"
 
 #: app/Date/AbstractGregorianJulianDate.php:139
 msgctxt "GENITIVE"
@@ -5429,6 +5479,7 @@ msgstr ""
 #: app/Http/RequestHandlers/UserEditAction.php:148
 msgid "Duplicate email address. A user with that email already exists."
 msgstr ""
+"நகல் மின்னஞ்சல் முகவரி. அந்த மின்னஞ்சலைக் கொண்ட பயனர் ஏற்கனவே இருக்கிறார்."
 
 #: app/Http/RequestHandlers/AccountUpdate.php:84
 #: app/Http/RequestHandlers/RegisterAction.php:260
@@ -5450,27 +5501,27 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:71
 #: resources/views/modules/statistics-chart/individual-events.phtml:36
 msgid "Earliest birth"
-msgstr ""
+msgstr "முதல் பிறப்பு"
 
 #: resources/views/modules/gedcom_stats/config.phtml:57
 #: resources/views/modules/gedcom_stats/statistics.phtml:189
 #: resources/views/modules/html/template-statistics.phtml:79
 #: resources/views/modules/statistics-chart/individual-events.phtml:80
 msgid "Earliest death"
-msgstr ""
+msgstr "முதல் மரணம்"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:81
 msgid "Earliest divorce"
-msgstr ""
+msgstr "முதல் விவாகரத்து"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:37
 msgid "Earliest marriage"
-msgstr ""
+msgstr "முதல் திருமணம்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:171
 msgid "Ecuador"
-msgstr ""
+msgstr "ஈக்வடார்"
 
 #: app/Http/RequestHandlers/MapDataEdit.php:76
 #: app/Http/RequestHandlers/MapDataEdit.php:79
@@ -5500,30 +5551,30 @@ msgstr "திருத்து"
 #: app/Http/RequestHandlers/EditMediaFileModal.php:70
 #: resources/views/modals/edit-media-file.phtml:22
 msgid "Edit a media file"
-msgstr ""
+msgstr "மீடியா கோப்பைத் திருத்தவும்"
 
 #. I18N: Options for editing
 #: resources/views/admin/trees-preferences.phtml:637
 msgid "Edit preferences"
-msgstr ""
+msgstr "விருப்பங்களைத் திருத்தவும்"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:309
 msgid "Edit the FAQ"
-msgstr ""
+msgstr "அடிக்கடி கேட்கப்படும் கேள்விகளைத் திருத்தவும்"
 
 #: resources/views/individual-page-menu.phtml:65
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
 msgid "Edit the gender"
-msgstr ""
+msgstr "பாலினத்தைத் திருத்தவும்"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
 #: resources/views/edit/input-addon-edit-name.phtml:17
 #: resources/views/individual-page-name.phtml:79
 #: resources/views/individual-page-name.phtml:81
 msgid "Edit the name"
-msgstr ""
+msgstr "பெயரை மாற்றவும்"
 
 #: app/Http/RequestHandlers/EditRawFactPage.php:53
 #: app/Http/RequestHandlers/EditRawRecordPage.php:55
@@ -5532,29 +5583,31 @@ msgstr ""
 #: resources/views/family-page-menu.phtml:89
 #: resources/views/individual-page-menu.phtml:129
 msgid "Edit the raw GEDCOM"
-msgstr ""
+msgstr "மூல GEDCOM ஐத் திருத்தவும்"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
-msgstr ""
+msgstr "பகிரப்பட்ட குறிப்பைத் திருத்தவும்"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/tab.phtml:29
 msgid "Edit the story"
-msgstr ""
+msgstr "கதையைத் திருத்தவும்"
 
 #: app/Http/RequestHandlers/UserEditPage.php:118
 msgid "Edit the user"
-msgstr ""
+msgstr "பயனரைத் திருத்தவும்"
 
 #: app/Services/TreeService.php:227
 msgid "Edit this individual and replace their details with your own."
 msgstr ""
+"இந்த நபரைத் திருத்தி, அவர்களின் விவரங்களை உங்களின் சொந்த விவரங்களுடன் "
+"மாற்றவும்."
 
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "அனைத்து GEDCOM குறிச்சொற்களிலும் திருத்தவும்"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:99
@@ -5562,31 +5615,31 @@ msgstr ""
 #: resources/views/modules/recent_changes/changes-table.phtml:51
 #: resources/views/pending-changes-page.phtml:51
 msgid "Editor"
-msgstr ""
+msgstr "பதிப்பாசிரியர்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:92
 msgid "Edmonton, Alberta, Canada"
-msgstr ""
+msgstr "எட்மன்டன், ஆல்பர்ட்டா, கனடா"
 
 #: app/Gedcom.php:643
 msgid "Education"
-msgstr ""
+msgstr "கல்வி"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:173
 msgid "Egypt"
-msgstr ""
+msgstr "எகிப்து"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:451
 msgid "El Salvador"
-msgstr ""
+msgstr "எல் சல்வடார்"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:85
 msgid "Electronic"
-msgstr ""
+msgstr "மின்னணு"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:217
@@ -5616,7 +5669,7 @@ msgstr ""
 #: resources/views/modals/submitter-fields.phtml:19
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "மின்னஞ்சல்"
 
 #: app/CustomTags/BrothersKeeper.php:97 app/CustomTags/GedcomL.php:237
 #: app/CustomTags/PersonalAncestralFile.php:74 app/CustomTags/Reunion.php:56
@@ -5631,19 +5684,19 @@ msgstr ""
 #: resources/views/register-page.phtml:49
 #: resources/views/setup/step-5-administrator.phtml:92
 msgid "Email address"
-msgstr ""
+msgstr "மின்னஞ்சல் முகவரி"
 
 #: resources/views/admin/users-edit.phtml:102
 msgid "Email verified"
-msgstr ""
+msgstr "மின்னஞ்சல் உறுதிப்படுத்தப்பட்டது"
 
 #: app/Gedcom.php:645 resources/views/calendar-page.phtml:204
 msgid "Emigration"
-msgstr ""
+msgstr "குடியேற்றம்"
 
 #: app/Elements/RelationIsDescriptor.php:101
 msgid "Employee"
-msgstr ""
+msgstr "ஊழியர்"
 
 #: app/Elements/RelationIsDescriptor.php:77
 msgctxt "FEMALE"
@@ -5658,7 +5711,7 @@ msgstr ""
 #: app/Elements/RelationIsDescriptor.php:102 app/Gedcom.php:721
 #: app/Gedcom.php:736
 msgid "Employer"
-msgstr ""
+msgstr "பணியமர்த்துபவர்"
 
 #: app/Elements/RelationIsDescriptor.php:78
 msgctxt "FEMALE"
@@ -5668,11 +5721,11 @@ msgstr ""
 #: app/Elements/RelationIsDescriptor.php:57
 msgctxt "MALE"
 msgid "Employer"
-msgstr ""
+msgstr "ஆண் பணியமர்த்துபவர்"
 
 #: resources/views/record-page-menu-clipboard.phtml:43
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "கிளிப்போர்டை காலி செய்யவும்"
 
 #: app/Module/ClippingsCartModule.php:190
 msgid "Empty the clippings cart"
@@ -5682,16 +5735,18 @@ msgstr ""
 #: resources/views/admin/components.phtml:87
 #: resources/views/admin/modules.phtml:73
 msgid "Enabled"
-msgstr ""
+msgstr "இயக்கப்பட்டது"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
 msgid "Enabling this option will force all visitors to sign in before they can view any data on the website."
 msgstr ""
+"இந்த விருப்பத்தை இயக்குவது, இணையதளத்தில் உள்ள எந்தத் தரவையும் பார்ப்பதற்கு "
+"முன், அனைத்து பார்வையாளர்களையும் உள்நுழைய கட்டாயப்படுத்தும்."
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
-msgstr ""
+msgstr "இறுதி ஆண்டு"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
@@ -5700,16 +5755,16 @@ msgstr ""
 #. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
 msgid "Endowment House"
-msgstr ""
+msgstr "எண்டோவ்மென்ட் ஹவுஸ்"
 
 #: app/Gedcom.php:456 resources/xml/reports/missing_facts_report.xml:20
 msgid "Engagement"
-msgstr ""
+msgstr "நிச்சயதார்த்தம்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:175
 msgid "England"
-msgstr ""
+msgstr "இங்கிலாந்து"
 
 #: resources/views/modules/favorites/favorites.phtml:164
 msgid "Enter an optional note about this favorite"
@@ -5718,7 +5773,7 @@ msgstr ""
 #: app/Services/LeafletJsService.php:73
 #: resources/views/modules/interactive-tree/chart.phtml:26
 msgid "Enter fullscreen"
-msgstr ""
+msgstr "முழுத்திரையை உள்ளிடவும்"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -5785,16 +5840,16 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:183
 msgid "Estonia"
-msgstr ""
+msgstr "எஸ்டோனியா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:185
 msgid "Ethiopia"
-msgstr ""
+msgstr "எத்தியோப்பியா"
 
 #: resources/views/modules/statistics-chart/custom.phtml:182
 msgid "Europe"
-msgstr ""
+msgstr "ஐரோப்பா"
 
 #: app/CustomTags/GedcomL.php:126 app/CustomTags/GedcomL.php:180
 #: app/CustomTags/GedcomL.php:225 app/CustomTags/GedcomL.php:274
@@ -6342,12 +6397,12 @@ msgstr "தொலைநகல்"
 #: app/Date/AbstractGregorianJulianDate.php:232
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "பிப்"
 
 #: app/Date/AbstractGregorianJulianDate.php:129
 msgctxt "GENITIVE"
 msgid "February"
-msgstr ""
+msgstr "பிப்ரவரி"
 
 #: app/Date/AbstractGregorianJulianDate.php:199
 msgctxt "INSTRUMENTAL"
@@ -7850,15 +7905,15 @@ msgstr ""
 #: resources/xml/reports/pedigree_report.xml:5
 #: resources/xml/reports/relative_ext_report.xml:5
 msgid "Individual"
-msgstr ""
+msgstr "தனி நபர்"
 
 #: resources/views/modules/relationships-chart/page.phtml:33
 msgid "Individual 1"
-msgstr ""
+msgstr "தனி நபர் 1"
 
 #: resources/views/modules/relationships-chart/page.phtml:42
 msgid "Individual 2"
-msgstr ""
+msgstr "தனி நபர் 2"
 
 #: app/Statistics/Google/ChartDistribution.php:317
 msgid "Individual distribution chart"
@@ -7866,20 +7921,20 @@ msgstr ""
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
-msgstr ""
+msgstr "தணி நபரின் செய்திகளும் நிகழ்வுகளும்"
 
 #: resources/views/admin/control-panel.phtml:720
 msgid "Individual page"
-msgstr ""
+msgstr "தணி நபரின்  பக்கம்"
 
 #: resources/views/admin/trees-preferences.phtml:419
 msgid "Individual pages"
-msgstr ""
+msgstr "தணி நபரின்  பக்கங்கள்"
 
 #: resources/views/admin/users-edit.phtml:292
 #: resources/views/edit-account-page.phtml:57
 msgid "Individual record"
-msgstr ""
+msgstr "தணி நபரின்  பதிவு"
 
 #: resources/views/modules/gedcom_stats/config.phtml:59
 #: resources/views/modules/gedcom_stats/statistics.phtml:211
@@ -7923,7 +7978,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:54
 #: resources/xml/reports/fact_sources.xml:258
 msgid "Individuals"
-msgstr ""
+msgstr "தணி நபர்கள்"
 
 #: app/Statistics/Google/ChartIndividualWithSources.php:84
 #: resources/views/modules/statistics-chart/chart-sources.phtml:17
@@ -7938,7 +7993,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
 msgid "Indonesia"
-msgstr ""
+msgstr "இந்தோனேஷிய"
 
 #: app/Elements/RelationIsDescriptor.php:114
 msgid "Informant"
@@ -7998,61 +8053,65 @@ msgstr ""
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "தவறான GEDCOM பதிவு"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "தவறான GEDCOM பதிவு."
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "தவறான GEDCOM குறிச்சொல்."
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "தவறான GEDCOM மதிப்பு."
 
 #: app/Date.php:224
 msgid "Invalid date"
-msgstr ""
+msgstr "தவறான தேதி"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:259
 msgid "Iran"
-msgstr ""
+msgstr "ஈரான்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:261
 msgid "Iraq"
-msgstr ""
+msgstr "ஈராக்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:257
 msgid "Ireland"
-msgstr ""
+msgstr "அயர்லாந்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:253
 msgid "Isle of Man"
-msgstr ""
+msgstr "ஐல் ஆஃப் மேன்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
 msgid "Israel"
-msgstr ""
+msgstr "இஸ்ரேல்"
 
 #: resources/views/admin/upgrade/steps.phtml:21
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr ""
+"மேம்படுத்தலை பதிவிறக்கம் செய்து நிறுவ பல நிமிடங்கள் ஆகலாம். பொறுமையாக "
+"இருங்கள்."
 
 #: resources/views/admin/tags.phtml:1025
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
+"தனிப்பயன் GEDCOM குறிச்சொற்களைப் பயன்படுத்த பரிந்துரைக்கப்படவில்லை. இந்தத் "
+"தரவை நீங்கள் மற்ற பயன்பாடுகளுக்கு மாற்றும்போது அதை இழக்க நேரிடலாம்."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
 msgid "Italy"
-msgstr ""
+msgstr "இத்தாலி"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:209
@@ -8082,17 +8141,17 @@ msgstr ""
 #: app/Factories/CalendarDateFactory.php:156
 #: resources/views/help/date.phtml:203
 msgid "Jalali"
-msgstr ""
+msgstr "ஜலாலி"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:269
 msgid "Jamaica"
-msgstr ""
+msgstr "ஜமைகா"
 
 #: app/Date/AbstractGregorianJulianDate.php:231
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr ""
+msgstr "ஜன"
 
 #: app/Date/AbstractGregorianJulianDate.php:128
 msgctxt "GENITIVE"
@@ -8119,7 +8178,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:274
 msgid "Japan"
-msgstr ""
+msgstr "ஜப்பான்"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Factories/CalendarDateFactory.php:152 app/Module/YahrzeitModule.php:266
@@ -8155,7 +8214,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:237
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "ஜூலை"
 
 #. I18N: The julian calendar
 #: app/Factories/CalendarDateFactory.php:148
@@ -8236,7 +8295,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:236
 msgctxt "Abbreviation for June"
 msgid "Jun"
-msgstr ""
+msgstr "ஜூன்"
 
 #: app/Date/AbstractGregorianJulianDate.php:133
 msgctxt "GENITIVE"
@@ -9017,7 +9076,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:233
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "மார்"
 
 #: app/Date/AbstractGregorianJulianDate.php:130
 msgctxt "GENITIVE"
@@ -9322,12 +9381,12 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:235
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "மே"
 
 #: app/Date/AbstractGregorianJulianDate.php:132
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "மே"
 
 #: app/Date/AbstractGregorianJulianDate.php:202
 msgctxt "INSTRUMENTAL"
@@ -10059,17 +10118,17 @@ msgstr "குடியுரிமை"
 
 #: app/Gedcom.php:713
 msgid "Naturalization"
-msgstr ""
+msgstr "இயற்கைமயமாக்கல்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
 msgid "Nauru"
-msgstr ""
+msgstr "நவ்ரு"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:142
 msgid "Nauvoo (new), Illinois, United States"
-msgstr ""
+msgstr "Nauvoo (புதியது), இல்லினாய்ஸ், ஐக்கிய அமெரிக்க நாடுகள்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:143
@@ -10079,12 +10138,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:381
 msgid "Nepal"
-msgstr ""
+msgstr "நேபாளம்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:377
 msgid "Netherlands"
-msgstr ""
+msgstr "நெதர்லாந்து"
 
 #: app/Http/RequestHandlers/UserListData.php:137
 #: resources/views/components/datetime.phtml:15
@@ -10098,23 +10157,23 @@ msgstr "திருமணமே ஆகாதவர்"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:363
 msgid "New Caledonia"
-msgstr ""
+msgstr "நியூ கலிடோனியா"
 
 #: app/CustomTags/GedcomL.php:155 app/CustomTags/GedcomL.php:156
 #: app/CustomTags/GedcomL.php:157 app/CustomTags/GedcomL.php:158
 #: app/CustomTags/GedcomL.php:159
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "புதிய GEDCOM குறிச்சொல்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146
 msgid "New York, New York, United States"
-msgstr ""
+msgstr "நியூயார்க், நியூயார்க், அமெரிக்கா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:385
 msgid "New Zealand"
-msgstr ""
+msgstr "நியூசிலாந்து"
 
 #: resources/views/admin/changes-log.phtml:78
 msgid "New data"
@@ -10124,14 +10183,14 @@ msgstr "புதிய தரவு"
 #: app/Http/RequestHandlers/RegisterAction.php:167
 #, php-format
 msgid "New registration at %s"
-msgstr ""
+msgstr "%s இல் புதிய பதிவு"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/UserEditAction.php:106
 #: app/Http/RequestHandlers/VerifyEmail.php:86
 #, php-format
 msgid "New user at %s"
-msgstr ""
+msgstr "%s இல் புதிய பயனர்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:144
@@ -10150,7 +10209,7 @@ msgstr "செய்தித்தாள்"
 
 #: app/Module/ReviewChangesModule.php:162
 msgid "Next email reminder will be sent after "
-msgstr ""
+msgstr "அடுத்த மின்னஞ்சல் நினைவூட்டல் பின்னர் அனுப்பப்படும் "
 
 #: resources/views/modules/random_media/slide-show.phtml:40
 #: resources/views/modules/random_media/slide-show.phtml:42
@@ -10160,11 +10219,11 @@ msgstr "அடுத்த பிம்பம்"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
 msgid "Nicaragua"
-msgstr ""
+msgstr "நிகரகுவா"
 
 #: app/Gedcom.php:687 app/Gedcom.php:696 app/Gedcom.php:701
 msgid "Nickname"
-msgstr ""
+msgstr "புனைப்பெயர்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:365
@@ -10174,7 +10233,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
 msgid "Nigeria"
-msgstr ""
+msgstr "நைஜீரியா"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:207
@@ -10254,7 +10313,7 @@ msgstr "குழந்தைகள் இல்லை"
 
 #: app/Services/MessageService.php:233
 msgid "No contact"
-msgstr ""
+msgstr "தொடர்பு இல்லை"
 
 #: resources/views/admin/trees-duplicates.phtml:48
 msgid "No duplicates have been found."
@@ -10301,7 +10360,7 @@ msgstr ""
 #: app/Http/RequestHandlers/MapDataImportAction.php:94
 #: app/Http/RequestHandlers/MapDataImportAction.php:110
 msgid "No file was received."
-msgstr ""
+msgstr "கோப்பு எதுவும் வரவில்லை."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:48
@@ -10558,12 +10617,12 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:241
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "நவ"
 
 #: app/Date/AbstractGregorianJulianDate.php:138
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "நவம்பரின்"
 
 #: app/Date/AbstractGregorianJulianDate.php:208
 msgctxt "INSTRUMENTAL"
@@ -10573,7 +10632,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:173
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "நவம்பர்"
 
 #: app/Date/AbstractGregorianJulianDate.php:103
 #: app/Module/StatisticsChartModule.php:798
@@ -10671,7 +10730,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:240
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "அக்"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:315
@@ -10681,7 +10740,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:137
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "அக்டோபர் மாதம்"
 
 #: app/Date/AbstractGregorianJulianDate.php:207
 msgctxt "INSTRUMENTAL"
@@ -10691,7 +10750,7 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:172
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "அக்டோபர்"
 
 #: app/Date/AbstractGregorianJulianDate.php:102
 #: app/Module/StatisticsChartModule.php:797
@@ -12385,32 +12444,32 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:176
 msgid "San Antonio, Texas, United States"
-msgstr ""
+msgstr "சான் அன்டோனியோ, டெக்சாஸ், அமெரிக்கா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:177
 msgid "San Diego, California, United States"
-msgstr ""
+msgstr "சான் டியாகோ, கலிபோர்னியா, அமெரிக்கா"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:182
 msgid "San José, Costa Rica"
-msgstr ""
+msgstr "சான் ஜோஸ், கோஸ்டா ரிகா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:453
 msgid "San Marino"
-msgstr ""
+msgstr "சான் மரினோ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:174
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "சான் சால்வடார், எல் சால்வடார்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:175
 msgid "Santiago, Chile"
-msgstr ""
+msgstr "சாண்டியாகோ, சிலி"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:178
@@ -12426,7 +12485,7 @@ msgstr ""
 #: app/Date/AbstractCalendarDate.php:283
 #: resources/views/edit/initialize-calendar-popup.phtml:31
 msgid "Sat"
-msgstr ""
+msgstr "சனி"
 
 #: app/Date/AbstractCalendarDate.php:251
 msgid "Saturday"
@@ -12435,7 +12494,7 @@ msgstr "சனிக்கிழமை"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:427
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "சவுதி அரேபியா"
 
 #: app/CustomTags/FamilyTreeMaker.php:72 app/CustomTags/GedcomL.php:153
 msgid "Schema"
@@ -12443,12 +12502,12 @@ msgstr ""
 
 #: app/Gedcom.php:644 app/Gedcom.php:668
 msgid "School or college"
-msgstr ""
+msgstr "பள்ளி அல்லது கல்லூரி"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
 msgid "Scotland"
-msgstr ""
+msgstr "ஸ்காட்லாந்து"
 
 #: app/CustomTags/Legacy.php:146
 msgid "Scrapbook"
@@ -12498,7 +12557,7 @@ msgstr "தேடு"
 #: app/Http/RequestHandlers/SearchReplacePage.php:49
 #: app/Module/FixSearchAndReplace.php:75 app/Module/SearchMenuModule.php:138
 msgid "Search and replace"
-msgstr ""
+msgstr "தேடவும் மாற்றவும்"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixSearchAndReplace.php:86
@@ -12548,7 +12607,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:179
 msgid "Seattle, Washington, United States"
-msgstr ""
+msgstr "சியாட்டில், வாஷிங்டன், அமெரிக்கா"
 
 #: resources/views/admin/merge-records-step-1.phtml:106
 msgid "Second record"
@@ -12589,7 +12648,7 @@ msgstr "ஒரு தேதியைத் தேர்ந்தெடுக்�
 
 #: resources/views/modules/lifespans-chart/page.phtml:39
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "இடம் அல்லது தேதி அடிப்படையில் நபர்களைத் தேர்ந்தெடுக்கவும்"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:135
@@ -12606,7 +12665,7 @@ msgstr ""
 
 #: resources/views/admin/merge-records-step-1.phtml:50
 msgid "Select two records to merge."
-msgstr ""
+msgstr "ஒன்றிணைக்க இரண்டு பதிவுகளைத் தேர்ந்தெடுக்கவும்."
 
 #: resources/views/admin/site-mail.phtml:210
 msgid "Selector"
@@ -12643,11 +12702,11 @@ msgstr "செய்தி அனுப்பு"
 
 #: app/Services/MessageService.php:215
 msgid "Send a message to all users"
-msgstr ""
+msgstr "அனைத்து பயனர்களுக்கும் ஒரு செய்தியை அனுப்பவும்"
 
 #: app/Services/MessageService.php:216
 msgid "Send a message to users who have never signed in"
-msgstr ""
+msgstr "இதுவரை உள்நுழையாத பயனர்களுக்கு ஒரு செய்தியை அனுப்பவும்"
 
 #: app/Services/MessageService.php:217
 msgid "Send a message to users who have not signed in for 6 months"
@@ -12655,51 +12714,52 @@ msgstr ""
 
 #: resources/views/admin/site-mail.phtml:233
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "இந்த அமைப்புகளைப் பயன்படுத்தி சோதனை மின்னஞ்சலை அனுப்பவும்"
 
 #: app/Module/CheckForNewVersion.php:76
 msgid "Send an email to all administrators when an upgrade is available."
 msgstr ""
+"மேம்படுத்தல் கிடைக்கும்போது அனைத்து நிர்வாகிகளுக்கும் மின்னஞ்சல் அனுப்பவும்."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:20
 msgid "Send out reminder emails"
-msgstr ""
+msgstr "நினைவூட்டல் மின்னஞ்சல்களை அனுப்பவும்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:71
 msgid "Sender email"
-msgstr ""
+msgstr "அனுப்புநர் மின்னஞ்சல்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
 msgid "Sender name"
-msgstr ""
+msgstr "அனுப்புநரின் பெயர்"
 
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:65
 #: resources/views/admin/control-panel.phtml:246
 msgid "Sending email"
-msgstr ""
+msgstr "மின்னஞ்சல் அனுப்புகிறது"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:177
 msgid "Sending server name"
-msgstr ""
+msgstr "அனுப்பும் சர்வர் பெயர்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:435
 msgid "Senegal"
-msgstr ""
+msgstr "செனகல்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:180
 msgid "Seoul, Korea"
-msgstr ""
+msgstr "சியோல், கொரியா"
 
 #: app/Date/AbstractGregorianJulianDate.php:239
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "செப்"
 
 #: app/CustomTags/BrothersKeeper.php:68
 msgid "Separated"
@@ -12739,7 +12799,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:437
 msgid "Serbia"
-msgstr ""
+msgstr "செர்பியா"
 
 #: app/Elements/RelationIsDescriptor.php:125
 msgid "Servant"
@@ -12766,11 +12826,11 @@ msgstr ""
 #: resources/views/setup/step-4-database-pgsql.phtml:49
 #: resources/views/setup/step-4-database-sqlsrv.phtml:49
 msgid "Server name"
-msgstr ""
+msgstr "சர்வர் பெயர்"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:62
 msgid "Set a new password"
-msgstr ""
+msgstr "புதிய கடவுச்சொல்லை அமைக்கவும்"
 
 #: resources/views/admin/trees.phtml:132 resources/views/admin/trees.phtml:138
 msgid "Set as default"
@@ -12801,7 +12861,7 @@ msgstr ""
 #: resources/views/emails/verify-notify-html.phtml:39
 #: resources/views/emails/verify-notify-text.phtml:27
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "நிலையை \"அங்கீகரிக்கப்பட்டது\" என அமைக்கவும்."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:606
@@ -12821,7 +12881,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:474
 msgid "Seychelles"
-msgstr ""
+msgstr "சீஷெல்ஸ்"
 
 #: app/Date/JalaliDate.php:278
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -12953,7 +13013,7 @@ msgstr ""
 
 #: resources/xml/reports/ahnentafel_report.xml:224
 msgid "She resided at"
-msgstr ""
+msgstr "அவள் வசித்திடம்"
 
 #: resources/xml/reports/descendancy_report.xml:331
 msgid "She was born"
@@ -13304,7 +13364,7 @@ msgstr ""
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:23
 msgid "Show to managers"
-msgstr ""
+msgstr "மேலாளர்களிடம் காட்டு"
 
 #: app/Auth.php:594 app/Auth.php:607 app/Elements/RestrictionNotice.php:99
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
@@ -13313,7 +13373,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:92
 #: resources/views/modals/restriction-fields.phtml:20
 msgid "Show to members"
-msgstr ""
+msgstr "உறுப்பினர்களிடம் காட்டு"
 
 #: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:98
 #: app/Http/RequestHandlers/TreePrivacyPage.php:91
@@ -13322,7 +13382,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:150
 #: resources/views/modals/restriction-fields.phtml:17
 msgid "Show to visitors"
-msgstr ""
+msgstr "பார்வையாளர்களுக்குக் காட்டு"
 
 #: resources/views/lists/families-table.phtml:113
 #: resources/views/lists/individuals-table.phtml:155
@@ -13340,7 +13400,7 @@ msgstr ""
 #: resources/views/pending-changes-page.phtml:26
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "%1$s முதல் %2$s வரை %3$s -ஐ காண்பிக்கப்படுகிறது"
 
 #: resources/views/modules/pedigree-chart/previous.phtml:24
 msgid "Sibling"
@@ -13381,7 +13441,7 @@ msgstr "வெளியேறு"
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:44
 #: resources/views/admin/control-panel.phtml:252
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "உள்நுழைவு மற்றும் பதிவு"
 
 #: app/CustomTags/Heredis.php:55
 msgid "Signature"
@@ -13511,12 +13571,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
 msgid "Solomon Islands"
-msgstr ""
+msgstr "சாலமன் தீவுகள்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:455
 msgid "Somalia"
-msgstr ""
+msgstr "சோமாலியா"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:128
@@ -13558,7 +13618,7 @@ msgstr ""
 #: app/CustomTags/Gedcom7.php:84 app/CustomTags/Gedcom7.php:113
 #: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
-msgstr ""
+msgstr "தேதியை வரிசைப்படுத்து"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:58
@@ -13577,11 +13637,11 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "வரிசை முறை"
 
 #: app/CustomTags/Gedcom7.php:86 app/CustomTags/Gedcom7.php:115
 msgid "Sort time"
-msgstr ""
+msgstr "நேரத்தை வரிசைப்படுத்தவும்"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:166
@@ -13700,12 +13760,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
 msgid "South Sudan"
-msgstr ""
+msgstr "தெற்கு சூடான்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:181
 msgid "Spain"
-msgstr ""
+msgstr "ஸ்பெயின்"
 
 #: app/SurnameTradition/SpanishSurnameTradition.php:42
 msgctxt "Surname tradition"
@@ -13715,7 +13775,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:188
 msgid "Spokane, Washington, United States"
-msgstr ""
+msgstr "ஸ்போகேன், வாஷிங்டன், அமெரிக்கா"
 
 #: app/Http/RequestHandlers/IndividualPage.php:216
 #: resources/views/edit/change-family-members.phtml:31
@@ -13725,14 +13785,14 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:210
 #: resources/xml/reports/individual_ext_report.xml:227
 msgid "Spouse"
-msgstr ""
+msgstr "வாழ்க்கைத் துணை"
 
 #: resources/views/edit/reorder-families.phtml:33
 #: resources/views/lists/surnames-table.phtml:39
 #: resources/views/modules/family-book-chart/page.phtml:59
 #: resources/views/modules/pedigree-chart/previous.phtml:31
 msgid "Spouses"
-msgstr ""
+msgstr "வாழ்க்கைத் துணைவர்கள்"
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:90
@@ -13745,7 +13805,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:304
 msgid "Sri Lanka"
-msgstr ""
+msgstr "இலங்கை"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:181
@@ -13772,11 +13832,11 @@ msgstr ""
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
-msgstr ""
+msgstr "தொடக்க ஆண்டு"
 
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
-msgstr ""
+msgstr "தேதிகளை மாற்றுவதற்கான தொடக்க வரம்பு"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
@@ -13853,7 +13913,7 @@ msgstr ""
 #: resources/views/contact-page.phtml:60 resources/views/message-page.phtml:48
 #: resources/views/modules/user-messages/user-messages.phtml:70
 msgid "Subject"
-msgstr ""
+msgstr "பொருள்"
 
 #: app/Gedcom.php:533 app/Gedcom.php:875
 #: app/Http/RequestHandlers/CheckTree.php:358 app/Submission.php:44
@@ -13896,23 +13956,23 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:431
 msgid "Sudan"
-msgstr ""
+msgstr "சூடான்"
 
 #. I18N: abbreviation for Sunday
 #: app/Date/AbstractCalendarDate.php:285
 #: resources/views/edit/initialize-calendar-popup.phtml:25
 msgid "Sun"
-msgstr ""
+msgstr "ஞாயிறு"
 
 #: app/Date/AbstractCalendarDate.php:252
 msgid "Sunday"
-msgstr ""
+msgstr "ஞாயிறு"
 
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml:183
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "ஆதரவு மற்றும் ஆவணமாக்கத்தை %s -இல் காணலாம்."
 
 #: app/Services/ServerCheckService.php:327
 msgid "Support for PostgreSQL is experimental."
@@ -13925,7 +13985,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
 msgid "Suriname"
-msgstr ""
+msgstr "சுரிநாம்"
 
 #: app/Gedcom.php:693 app/Gedcom.php:707 app/Gedcom.php:710
 #: app/Http/RequestHandlers/HelpText.php:228
@@ -13937,7 +13997,7 @@ msgstr ""
 #: resources/views/modules/statistics-chart/custom.phtml:168
 #: resources/views/search-phonetic-page.phtml:44
 msgid "Surname"
-msgstr ""
+msgstr "குடும்பப் பெயர்"
 
 #: app/Statistics/Google/ChartDistribution.php:295
 msgid "Surname distribution chart"
@@ -14002,12 +14062,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:123
 msgid "Switzerland"
-msgstr ""
+msgstr "சுவிட்சர்லாந்து"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:192
 msgid "Sydney, Australia"
-msgstr ""
+msgstr "சிட்னி, ஆஸ்திரேலியா"
 
 #: resources/views/admin/synchronize-trees.phtml:14
 msgid "Synchronize family trees with GEDCOM files"
@@ -14064,17 +14124,17 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:193
 msgid "Taipei, Taiwan"
-msgstr ""
+msgstr "தைபே, தைவான்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:504
 msgid "Taiwan"
-msgstr ""
+msgstr "தைவான்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:486
 msgid "Tajikistan"
-msgstr ""
+msgstr "தஜிகிஸ்தான்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:194
@@ -14377,12 +14437,12 @@ msgstr ""
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:181
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "%s கோப்புறை உருவாக்கப்பட்டது."
 
 #: app/Http/RequestHandlers/DeletePath.php:82
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "%s கோப்புறை நீக்கப்பட்டது."
 
 #: resources/views/admin/site-preferences.phtml:43
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
@@ -14651,7 +14711,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:56
 msgid "The submission has been created"
-msgstr ""
+msgstr "சமர்ப்பிப்பு உருவாக்கப்பட்டது"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:80
 msgid "The submitter has been created"
@@ -14678,7 +14738,7 @@ msgstr[1] ""
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:290
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "மேம்படுத்தல் முடிந்தது."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:61
@@ -14811,7 +14871,7 @@ msgstr ""
 #: app/Http/RequestHandlers/UploadMediaAction.php:131
 #: app/Services/MediaFileService.php:222
 msgid "There was an error uploading your file."
-msgstr ""
+msgstr "உங்கள் கோப்பைப் பதிவேற்றுவதில் பிழை."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:169
@@ -14872,7 +14932,7 @@ msgstr ""
 
 #: app/Elements/AbstractEventElement.php:67
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "இந்த நிகழ்வு நடந்தது, ஆனால் விவரங்கள் தெரியவில்லை."
 
 #: app/Auth.php:230
 msgid "This family does not exist or you do not have permission to view it."
@@ -14918,7 +14978,7 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:20
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "இந்த குடும்ப மரம் கடைசியாக %s இல் புதுப்பிக்கப்பட்டது."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
@@ -14936,7 +14996,7 @@ msgstr ""
 
 #: app/Http/Middleware/CheckCsrf.php:72
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "இந்தப் படிவம் காலாவதியானது. மீண்டும் முயற்சிக்கவும்."
 
 #: app/Auth.php:289
 msgid "This individual does not exist or you do not have permission to view it."
@@ -14989,7 +15049,7 @@ msgstr ""
 #: resources/views/statistics/other/charts/pie.phtml:19
 #: resources/views/statistics/other/top10-list.phtml:25
 msgid "This information is not available."
-msgstr ""
+msgstr "இந்த தகவல் கிடைக்கப்பெறவில்லை."
 
 #: app/Statistics/Repository/EventRepository.php:262
 #: app/Statistics/Repository/FamilyDatesRepository.php:115
@@ -15033,7 +15093,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:120
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "இந்த இணைப்பு ஒரு மணிநேரத்திற்கு செல்லுபடியாகும்."
 
 #: resources/views/help/data-fixes.phtml:18
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
@@ -15146,14 +15206,14 @@ msgstr ""
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "இந்தப் பக்கம் நீக்கப்பட்டது."
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "இப்பக்கம் %s முறை பார்க்கப்பட்டது."
+msgstr[1] "இப்பக்கம் %s முறை பார்க்கப்பட்டது."
 
 #: resources/views/help/pending-changes.phtml:18
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -15250,6 +15310,8 @@ msgstr ""
 #: resources/views/layouts/offline.phtml:72
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr ""
+"இந்த இணையதளம் பராமரிப்பிற்காக முடக்கப்பட்டுள்ளது. சில நிமிடங்களில் <a href="
+"\"index.php\">மீண்டும் முயற்சிக்கவும்</a>."
 
 #: resources/views/modules/privacy-policy/page.phtml:75
 msgid "This website is operated by the following individuals."
@@ -15259,7 +15321,7 @@ msgstr ""
 #: resources/views/layouts/error.phtml:36
 #: resources/views/layouts/offline.phtml:69
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "இந்த இணையதளம் தற்காலிகமாக கிடைக்காது"
 
 #: resources/views/modules/privacy-policy/page.phtml:25
 msgid "This website processes personal data for the purpose of historical and genealogical research."
@@ -15306,7 +15368,7 @@ msgstr "வியாழக்கிழமை"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:197
 msgid "Tijuana, Mexico"
-msgstr ""
+msgstr "டிஜுவானா, மெக்சிகோ"
 
 #: app/CustomTags/Gedcom7.php:81 app/CustomTags/Gedcom7.php:110
 #: app/Gedcom.php:503
@@ -15353,7 +15415,7 @@ msgstr "காலவரிசை"
 #: resources/views/admin/changes-log.phtml:136
 #: resources/views/admin/site-logs.phtml:124
 msgid "Timestamp"
-msgstr ""
+msgstr "நேரமுத்திரை"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:492
@@ -15450,6 +15512,8 @@ msgstr ""
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
 msgstr ""
+"தனிப்பயன் குறிச்சொற்களைப் பயன்படுத்தி புதிய தரவை உருவாக்க, நீங்கள் அவற்றை "
+"இயக்க வேண்டும்."
 
 #: resources/views/modules/todo/config.phtml:17
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15489,11 +15553,11 @@ msgstr ""
 #: resources/views/modules/map-box/config.phtml:36
 #: resources/views/modules/openrouteservice/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "இந்தச் சேவையைப் பயன்படுத்த, உங்களுக்கு API விசை தேவை."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "இந்த சேவையைப் பயன்படுத்த, உங்களுக்கு ஒரு கணக்கு தேவை."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -15508,7 +15572,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:198
 msgid "Tokyo, Japan"
-msgstr ""
+msgstr "டோக்கியோ, ஜப்பான்"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:95
@@ -15518,7 +15582,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
 msgid "Tonga"
-msgstr ""
+msgstr "டோங்கா"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
@@ -15702,18 +15766,18 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:496
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "டிரினிடாட் மற்றும் டொபாகோ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "ட்ருஜிலோ, பெரு"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:275
 #: resources/views/edit/initialize-calendar-popup.phtml:27
 msgid "Tue"
-msgstr ""
+msgstr "செவ்வாய்"
 
 #: app/Date/AbstractCalendarDate.php:247
 msgid "Tuesday"
@@ -15722,17 +15786,17 @@ msgstr "செவ்வாய்கிழமை"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:498
 msgid "Tunisia"
-msgstr ""
+msgstr "துனிசியா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:500
 msgid "Turkey"
-msgstr ""
+msgstr "துருக்கி"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:490
 msgid "Turkmenistan"
-msgstr ""
+msgstr "துர்க்மெனிஸ்தான்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -15747,12 +15811,12 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:196
 msgid "Tuxtla Gutiérrez, Mexico"
-msgstr ""
+msgstr "Tuxtla Gutierrez, மெக்சிகோ"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:201
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "இரட்டை நீர்வீழ்ச்சி, இடாஹோ, அமெரிக்கா"
 
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:97
 #: app/CustomTags/Gedcom7.php:101 app/CustomTags/Gedcom7.php:112
@@ -15780,7 +15844,7 @@ msgstr "வகை"
 
 #: app/CustomTags/GedcomL.php:263
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "சுருக்க வகை"
 
 #: app/CustomTags/GedcomL.php:287
 msgid "Type of administrative ID"
@@ -15788,7 +15852,7 @@ msgstr ""
 
 #: app/CustomTags/GedcomL.php:291
 msgid "Type of demographic data"
-msgstr ""
+msgstr "மக்கள்தொகை தரவு வகை"
 
 #: app/CustomTags/GedcomL.php:256 app/Gedcom.php:460 app/Gedcom.php:657
 msgid "Type of event"
@@ -15850,17 +15914,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:528
 msgid "US Virgin Islands"
-msgstr ""
+msgstr "அமெரிக்க விர்ஜின் தீவுகள்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:508
 msgid "Uganda"
-msgstr ""
+msgstr "உகாண்டா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:510
 msgid "Ukraine"
-msgstr ""
+msgstr "உக்ரைன்"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:77
@@ -15905,17 +15969,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "ஐக்கிய அரபு எமிரேட்ஸ்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
 msgid "United Kingdom"
-msgstr ""
+msgstr "யூனைடெட் கிங்டம்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:516
 msgid "United States"
-msgstr ""
+msgstr "அமெரிக்கா"
 
 #. I18N: Name of a country or state
 #: app/CustomTags/FamilyTreeMaker.php:138 app/Elements/FamilyStatusText.php:73
@@ -15948,7 +16012,7 @@ msgstr ""
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
 msgid "Unlink"
-msgstr ""
+msgstr "இணைப்பை நீக்கவும்"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15966,7 +16030,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:122
 msgid "Upcoming events"
-msgstr ""
+msgstr "வரவிருக்கும் நிகழ்வுகள்"
 
 #: app/Http/RequestHandlers/DataFixData.php:102
 msgid "Update"
@@ -16008,7 +16072,7 @@ msgstr ""
 #: app/Http/RequestHandlers/UploadMediaPage.php:67
 #: resources/views/admin/control-panel.phtml:813
 msgid "Upload media files"
-msgstr ""
+msgstr "மீடியா கோப்புகளை பதிவேற்றவும்"
 
 #: resources/views/admin/media-upload.phtml:25
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
@@ -16017,7 +16081,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:514
 msgid "Uruguay"
-msgstr ""
+msgstr "உருகுவே"
 
 #: app/Services/EmailService.php:225
 msgid "Use SMTP to send messages"
@@ -16045,7 +16109,7 @@ msgstr[1] ""
 #: resources/xml/reports/individual_ext_report.xml:13
 #: resources/xml/reports/individual_report.xml:10
 msgid "Use colors"
-msgstr ""
+msgstr "வண்ணங்களைப் பயன்படுத்துங்கள்"
 
 #: resources/views/modules/interactive-tree/chart.phtml:22
 msgid "Use compact layout"
@@ -16057,21 +16121,21 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:82
 #: resources/views/setup/step-4-database-sqlsrv.phtml:106
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "A-Z, a-z, இலக்கங்கள் 0-9 அல்லது அடிக்கோடிட்டுகளைப் பயன்படுத்தவும்"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "வலை மரங்களில் வரைபடங்களைப் பயன்படுத்தவும்."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:121
 msgid "Use password"
-msgstr ""
+msgstr "கடவுச்சொல்லை பயன்படுத்தவும்"
 
 #. I18N: "sendmail" is the name of some mail software
 #: app/Services/EmailService.php:224
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "செய்திகளை அனுப்ப அனுப்பு அஞ்சல் பயன்படுத்தவும்"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
@@ -16106,7 +16170,7 @@ msgstr "பயனர்"
 #: resources/views/admin/users-create.phtml:22
 #: resources/views/admin/users-edit.phtml:31
 msgid "User administration"
-msgstr ""
+msgstr "பயனர் நிர்வாகம்"
 
 #: resources/views/admin/users-cleanup.phtml:64
 msgid "User didn’t verify within 7 days."
@@ -16114,11 +16178,11 @@ msgstr ""
 
 #: resources/views/admin/users-cleanup.phtml:66
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "நிர்வாகியால் பயனர் சரிபார்க்கப்படவில்லை."
 
 #: app/Http/RequestHandlers/VerifyEmail.php:72
 msgid "User verification"
-msgstr ""
+msgstr "பயனர் சரிபார்ப்பு"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:135
@@ -16140,7 +16204,7 @@ msgstr "பயனர் பெயர்"
 
 #: resources/views/forgot-password-page.phtml:23
 msgid "Username or email address"
-msgstr ""
+msgstr "பயனர்பெயர் அல்லது மின்னஞ்சல் முகவரி"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:61
@@ -16157,22 +16221,22 @@ msgstr "பயனர்கள்"
 
 #: resources/views/admin/users-cleanup.phtml:45
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "பயனரின் கணக்கு நீண்ட காலமாக செயலற்ற நிலையில் உள்ளது: "
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
 msgid "Uzbekistan"
-msgstr ""
+msgstr "உஸ்பெகிஸ்தன்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:202
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "வான்கூவர், பிரிட்டிஷ் கொலம்பியா, கனடா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:532
 msgid "Vanuatu"
-msgstr ""
+msgstr "வனுவாடு"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:99
@@ -16182,7 +16246,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:520
 msgid "Vatican City"
-msgstr ""
+msgstr "வத்திக்கான் நகரம்"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
@@ -16211,7 +16275,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:524
 msgid "Venezuela"
-msgstr ""
+msgstr "வெனிசுலா"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
@@ -16240,18 +16304,18 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:203
 msgid "Veracruz, Mexico"
-msgstr ""
+msgstr "வெராக்ரூஸ், மெக்சிகோ"
 
 #: app/CustomTags/Legacy.php:57 app/CustomTags/Legacy.php:59
 #: app/CustomTags/Legacy.php:121 app/CustomTags/Legacy.php:123
 #: app/CustomTags/Legacy.php:126 resources/views/admin/users.phtml:36
 msgid "Verified"
-msgstr ""
+msgstr "சரிபார்க்கப்பட்டது"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:204
 msgid "Vernal, Utah, United States"
-msgstr ""
+msgstr "வெர்னல், உட்டா, அமெரிக்கா"
 
 #: app/CustomTags/GedcomL.php:150 app/Gedcom.php:500 app/Gedcom.php:508
 #: app/Gedcom.php:531
@@ -16266,7 +16330,7 @@ msgstr "வீடியோ"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:530
 msgid "Vietnam"
-msgstr ""
+msgstr "வியட்நாம்"
 
 #: resources/views/modules/place-hierarchy/page.phtml:51
 #, php-format
@@ -16275,7 +16339,7 @@ msgstr ""
 
 #: resources/views/calendar-page.phtml:221
 msgid "View this day"
-msgstr ""
+msgstr "இந்த நாள் பார்க்க"
 
 #: app/Statistics/Repository/FamilyRepository.php:481
 #: resources/views/fact.phtml:110
@@ -16291,22 +16355,22 @@ msgstr ""
 
 #: resources/views/calendar-page.phtml:225
 msgid "View this month"
-msgstr ""
+msgstr "இந்த மாதம் பார்க்கவும்"
 
 #: resources/views/calendar-page.phtml:229
 msgid "View this year"
-msgstr ""
+msgstr "இந்த ஆண்டு பார்க்கவும்"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:205
 msgid "Villa Hermosa, Mexico"
-msgstr ""
+msgstr "வில்லா ஹெர்மோசா (மெக்சிக்கோ)"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:168
 #: resources/views/edit-account-page.phtml:147
 msgid "Visible online"
-msgstr ""
+msgstr "ஆன்லைனில் தெரியும்"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:174
@@ -16334,7 +16398,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:536
 msgid "Wales"
-msgstr ""
+msgstr "வேல்ஸ்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:534
@@ -16394,7 +16458,7 @@ msgstr ""
 #: app/Date/AbstractCalendarDate.php:277
 #: resources/views/edit/initialize-calendar-popup.phtml:28
 msgid "Wed"
-msgstr ""
+msgstr "புதன்"
 
 #: app/Date/AbstractCalendarDate.php:248
 msgid "Wednesday"
@@ -16408,21 +16472,21 @@ msgstr ""
 #: app/Module/UserWelcomeModule.php:118
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "நல்வரவு %s"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:26
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "உள்நுழைவு பக்கத்தில் வரவேற்பு உரை"
 
 #: resources/views/login-page.phtml:23
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "இந்த மரபுவழி இணையதளத்திற்கு வரவேற்கிறோம்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:179
 msgid "Western Sahara"
-msgstr ""
+msgstr "மேற்கு சஹாரா"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:712
@@ -16458,12 +16522,12 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:265
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "புதிய மீடியா கோப்புகளை யார் பதிவேற்றலாம்"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr ""
+msgstr "ஆன்லைனில் இருப்பவர்"
 
 #: resources/views/admin/data-fix-page.phtml:84
 msgid "Why does this list include records that do not need to be updated?"
@@ -16496,7 +16560,7 @@ msgstr "மனைவி"
 
 #: app/Gedcom.php:444 resources/views/modules/timeline-chart/chart.phtml:355
 msgid "Wife’s age"
-msgstr ""
+msgstr "மனைவியின் வயது"
 
 #: app/Gedcom.php:760
 msgid "Will"
@@ -16519,11 +16583,11 @@ msgstr ""
 
 #: app/Elements/RelationIsDescriptor.php:128
 msgid "Witness"
-msgstr ""
+msgstr "சாட்சி"
 
 #: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
-msgstr ""
+msgstr "சாட்சிகள்"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
@@ -16560,7 +16624,7 @@ msgstr "வருடம்:"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:540
 msgid "Yemen"
-msgstr ""
+msgstr "ஏமன்"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: resources/views/emails/register-user-html.phtml:22
@@ -16577,7 +16641,7 @@ msgstr ""
 #: resources/views/modules/login_block/sign-out.phtml:17
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "நீங்கள் %s ஆக உள்நுழைந்துள்ளீர்கள்."
 
 #: app/Http/RequestHandlers/LoginPage.php:97
 msgid "You can apply for an account using the link below."
@@ -16645,7 +16709,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/Logout.php:52
 msgid "You have signed out."
-msgstr ""
+msgstr "நீங்கள் வெளியேறிவிட்டீர்கள்."
 
 #: resources/views/modules/faq/config.phtml:29
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -16669,7 +16733,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/LoginPage.php:89
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "இந்த இணையதளத்தை அணுக நீங்கள் குடும்ப உறுப்பினராக இருக்க வேண்டும்."
 
 #: app/Http/RequestHandlers/LoginPage.php:86
 msgid "You need to be an authorized user to access this website."
@@ -16720,19 +16784,19 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:17
 msgid "Youngest father"
-msgstr ""
+msgstr "இளைய தந்தை"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:28
 msgid "Youngest female"
-msgstr ""
+msgstr "இளைய பெண்"
 
 #: resources/views/modules/statistics-chart/marriage-age.phtml:18
 msgid "Youngest male"
-msgstr ""
+msgstr "இளைய ஆண்"
 
 #: resources/views/modules/statistics-chart/birth-age.phtml:28
 msgid "Youngest mother"
-msgstr ""
+msgstr "இளைய தாய்"
 
 #: resources/views/modules/clippings/show.phtml:26
 msgid "Your clippings cart is empty."
@@ -16741,16 +16805,16 @@ msgstr ""
 #: resources/views/contact-page.phtml:43
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Your name"
-msgstr ""
+msgstr "உங்கள் பெயர்"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:72
 msgid "Your password has been updated."
-msgstr ""
+msgstr "உங்கள் கடவுச்சொல் புதுப்பிக்கப்பட்டது."
 
 #: app/Http/RequestHandlers/RegisterAction.php:157
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "%s இல் உங்கள் பதிவு"
 
 #: app/Services/ServerCheckService.php:194
 #, php-format
@@ -16766,12 +16830,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:544
 msgid "Zambia"
-msgstr ""
+msgstr "ஜாம்பியா"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:546
 msgid "Zimbabwe"
-msgstr ""
+msgstr "ஜிம்பாப்வே"
 
 #: resources/views/modules/fanchart/page.phtml:60
 msgid "Zoom"
@@ -16821,7 +16885,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:116
 msgid "accepted"
-msgstr ""
+msgstr "ஏற்றுக்கொள்ளப்பட்டது"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:238
@@ -16831,7 +16895,7 @@ msgstr ""
 #: resources/views/modules/lifespans-chart/page.phtml:75
 #: resources/views/modules/timeline-chart/page.phtml:41
 msgid "add"
-msgstr ""
+msgstr "சேர்க்க"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:147
@@ -16862,7 +16926,7 @@ msgstr ""
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:73
 msgid "also known as"
-msgstr ""
+msgstr "also known as"
 
 #: app/Statistics/Repository/FamilyRepository.php:479
 #: app/Statistics/Repository/UserRepository.php:93
@@ -16960,7 +17024,7 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:451
 msgid "brother"
-msgstr ""
+msgstr "சகோதரன்"
 
 #: app/Services/RelationshipService.php:719
 msgctxt "brother’s wife’s brother"
@@ -17090,7 +17154,7 @@ msgstr ""
 #: resources/views/modules/stories/edit.phtml:76
 #: resources/views/modules/user_blog/edit.phtml:54
 msgid "cancel"
-msgstr ""
+msgstr "ரத்து செய்"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:65
@@ -17100,7 +17164,7 @@ msgstr ""
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:77
 msgid "change of name"
-msgstr ""
+msgstr "பெயர் மாற்றம்"
 
 #. I18N: button label
 #: resources/views/admin/control-panel.phtml:194
@@ -17140,7 +17204,7 @@ msgstr ""
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr ""
+msgstr "நிறங்கள்"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:277
@@ -17165,7 +17229,7 @@ msgstr ""
 #: resources/views/register-page.phtml:101
 #: resources/views/report-select-page.phtml:40
 msgid "continue"
-msgstr ""
+msgstr "தொடரவும்"
 
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
@@ -17175,7 +17239,7 @@ msgstr ""
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
 msgid "create"
-msgstr ""
+msgstr "உருவாக்க"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
@@ -17188,7 +17252,7 @@ msgstr ""
 
 #: app/Services/RelationshipService.php:428
 msgid "daughter"
-msgstr ""
+msgstr "மகள்"
 
 #: resources/xml/reports/descendancy_report.xml:226
 msgid "daughter of"
@@ -17347,7 +17411,7 @@ msgstr "முன்னாள் மனைவி"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:153
 msgid "export file"
-msgstr ""
+msgstr "ஏற்றுமதி கோப்பு"
 
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
@@ -17735,7 +17799,7 @@ msgstr[1] ""
 #: app/Date.php:209
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "%s இலிருந்து"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:221
@@ -17750,7 +17814,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "gender"
-msgstr ""
+msgstr "பாலினம்"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
@@ -19404,7 +19468,7 @@ msgstr ""
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:166
 msgid "import file"
-msgstr ""
+msgstr "கோப்பு இறக்குமதி"
 
 #: app/Elements/AgeAtEvent.php:93
 msgid "infant"
@@ -19475,7 +19539,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:316
 #: app/Module/YahrzeitModule.php:260
 msgid "list"
-msgstr ""
+msgstr "பட்டியல்"
 
 #: app/Elements/GeneatiqueAct.php:39
 #: resources/views/setup/step-4-database-mysql.phtml:58
@@ -19560,7 +19624,7 @@ msgstr ""
 
 #: app/Elements/RoleInEvent.php:81 app/Services/RelationshipService.php:349
 msgid "mother"
-msgstr ""
+msgstr "தாய்"
 
 #: app/Services/RelationshipService.php:553
 msgctxt "husband’s mother"
@@ -19825,7 +19889,7 @@ msgstr ""
 #: app/Services/EmailService.php:207
 #: resources/views/modules/statistics-chart/custom.phtml:83
 msgid "none"
-msgstr ""
+msgstr "எதுவும் இல்லை"
 
 #: app/SurnameTradition/DefaultSurnameTradition.php:57
 msgctxt "Surname tradition"
@@ -19902,11 +19966,11 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:120
 msgid "pending"
-msgstr ""
+msgstr "நிலுவையில் உள்ளது"
 
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
-msgstr ""
+msgstr "சதவீதம்"
 
 #: app/Elements/GeneatiqueAct.php:41
 msgid "photocopy"
@@ -19935,7 +19999,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsrv.phtml:119
 #: resources/views/setup/step-5-administrator.phtml:110
 msgid "previous"
-msgstr ""
+msgstr "முந்தைய"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52
@@ -19950,7 +20014,7 @@ msgstr ""
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50
 msgid "questionable evidence"
-msgstr ""
+msgstr "கேள்விக்குரிய ஆதாரம்"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:114
 #: resources/xml/reports/fact_sources.xml:6
@@ -19978,7 +20042,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:118
 msgid "rejected"
-msgstr ""
+msgstr "நிராகரிக்கப்பட்டது"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
@@ -20074,7 +20138,7 @@ msgstr "தேடு"
 #: app/Services/RelationshipService.php:2424
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "இரண்டாவது %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2402
@@ -20257,7 +20321,7 @@ msgstr "எதையும் தேர்ந்தெடுக்க வேண�
 
 #: app/Services/RelationshipService.php:346
 msgid "self"
-msgstr ""
+msgstr "சுய"
 
 #: app/Services/RelationshipService.php:2336
 msgid "seventh cousin"
@@ -20276,7 +20340,7 @@ msgstr ""
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
-msgstr ""
+msgstr "பகிரப்பட்ட குறிப்பு"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/tags.phtml:970 resources/views/admin/tags.phtml:984
@@ -20956,8 +21020,8 @@ msgstr "தங்கை"
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "±%s ஆண்டு"
+msgstr[1] "±%s ஆண்டுகள்"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
@@ -20985,12 +21049,16 @@ msgstr "“%s” நீக்கப்பட்டது."
 #: app/Module/FixPrimaryTag.php:70
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"\"தனிப்படுத்தப்பட்ட படம்\" (_PRIM) குறிச்சொற்கள் ஒரு நபருக்கு விருப்பமான "
+"படத்தைக் குறிக்க சில பரம்பரை பயன்பாடுகளால் பயன்படுத்தப்படுகின்றன. ஒரு மாற்று "
+"படங்களை மீண்டும் ஆர்டர் செய்வதாகும், இதனால் விருப்பமான ஒன்று முதலில் "
+"பட்டியலிடப்படும்."
 
 #: app/Individual.php:482 app/Individual.php:486 app/Note.php:101
 #: app/Report/ReportParserGenerate.php:987
 #: app/Report/ReportParserGenerate.php:1073
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:363
 #: app/Family.php:381 app/Individual.php:1060
@@ -20998,7 +21066,7 @@ msgstr ""
 #: app/Module/IndividualListModule.php:520
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:363
 #: app/Family.php:381 app/Individual.php:1059
@@ -21013,7 +21081,7 @@ msgstr ""
 #: resources/views/lists/surnames-tag-cloud.phtml:31
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid "Configure"
 #~ msgstr "கட்டமைப்பு"
