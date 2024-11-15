@@ -129,16 +129,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
 
         $sitemap_url = route('sitemap-index');
 
-        // This list comes from https://en.wikipedia.org/wiki/Sitemaps
-        $submit_urls = [
-            'Bing/Yahoo' => Html::url('https://www.bing.com/webmaster/ping.aspx', ['siteMap' => $sitemap_url]),
-            'Google'     => Html::url('https://www.google.com/webmasters/tools/ping', ['sitemap' => $sitemap_url]),
-        ];
-
         return $this->viewResponse('modules/sitemap/config', [
             'all_trees'   => $this->tree_service->all(),
             'sitemap_url' => $sitemap_url,
-            'submit_urls' => $submit_urls,
             'title'       => $this->title(),
         ]);
     }
