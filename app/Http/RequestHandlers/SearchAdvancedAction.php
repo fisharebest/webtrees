@@ -40,10 +40,9 @@ class SearchAdvancedAction implements RequestHandlerInterface
         $fields      = Validator::parsedBody($request)->array('fields');
         $modifiers   = Validator::parsedBody($request)->array('modifiers');
         $other_field = Validator::parsedBody($request)->string('other_field');
-        $other_value = Validator::parsedBody($request)->string('other_value');
 
-        if ($other_field !== '' && $other_value !== '') {
-            $fields[$other_field] = $other_value;
+        if ($other_field !== '') {
+            $fields[$other_field] = '';
         }
 
         return redirect(route(SearchAdvancedPage::class, [

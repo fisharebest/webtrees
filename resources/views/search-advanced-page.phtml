@@ -44,12 +44,8 @@ use Illuminate\Support\Collection;
                 <?= I18N::translate('Add more fields') ?>
             </div>
 
-            <div class="col-sm-3 wt-page-options-value">
+            <div class="col-sm-6 wt-page-options-value">
                 <?= view('components/select', ['name' => 'other_field', 'selected' => '', 'options' => ['' => ''] + $other_fields]) ?>
-            </div>
-
-            <div class="col-sm-3 wt-page-options-value">
-                <input type="text" class="form-control" name="other_value">
             </div>
 
             <div class="col-sm-3 wt-page-options-value">
