@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-06-14 08:00+0000\n"
-"Last-Translator: Kjodleiken <kjetil@sorlund.no>\n"
+"PO-Revision-Date: 2024-11-18 16:38+0000\n"
+"Last-Translator: Bjørn Ove Bremnes <bjorn.ove.bremnes@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nb_NO/>\n"
 "Language: nb\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " men nærmere detaljer er ikke kjent"
+msgstr " - men nærmere detaljer er ikke kjent"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -217,7 +217,7 @@ msgstr[1] "%s anonyme innloggede brukere"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s barn"
-msgstr[1] "%s barn"
+msgstr[1] "%s barnene"
 
 #: app/Age.php:120 app/Elements/AgeAtEvent.php:97
 #: app/Functions/FunctionsDate.php:72 app/Functions/FunctionsPrint.php:272
@@ -257,7 +257,7 @@ msgstr[1] "%s slektstrær"
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s barnebarn"
-msgstr[1] "%s barnebarn"
+msgstr[1] "%s barnebarnene"
 
 #: app/Module/LifespansChartModule.php:276
 #: resources/views/admin/trees-unconnected.phtml:38
@@ -385,7 +385,7 @@ msgstr[1] "%s uker"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s år"
-msgstr[1] "%s år"
+msgstr[1] "%s årene"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:162
 #: resources/views/modules/yahrzeit/list.phtml:45
@@ -396,13 +396,13 @@ msgstr "%s årsdag"
 #: app/Functions/Functions.php:497
 #, php-format
 msgid "%s × cousin"
-msgstr "%s menning"
+msgstr "%s kusine"
 
 #: app/Functions/Functions.php:461
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr "%s menning"
+msgstr "%s slektning"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:424
@@ -21075,7 +21075,7 @@ msgstr "yngre søster"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s år"
-msgstr[1] "±%s år"
+msgstr[1] "±%s årene"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:66
