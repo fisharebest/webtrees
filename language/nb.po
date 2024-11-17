@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-02-23 18:28+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2024-11-18 12:30+0000\n"
+"Last-Translator: Bjørn Ove Bremnes <bjorn.ove.bremnes@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
 "Language: nb\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " men nærmere detaljer er ikke kjent"
+msgstr " - men nærmere detaljer er ikke kjent"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -242,7 +242,7 @@ msgstr[1] "%s anonyme innloggede brukere"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s barn"
-msgstr[1] "%s barn"
+msgstr[1] "%s barnene"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:314
@@ -278,7 +278,7 @@ msgstr[1] "%s slektstrær"
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s barnebarn"
-msgstr[1] "%s barnebarn"
+msgstr[1] "%s barnebarnene"
 
 #: app/I18N.php:806
 #, php-format
@@ -449,7 +449,7 @@ msgstr[1] "%s uker"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s år"
-msgstr[1] "%s år"
+msgstr[1] "%s årene"
 
 #: app/I18N.php:794
 #, php-format
@@ -467,13 +467,13 @@ msgstr "%s årsdag"
 #: app/Functions/Functions.php:585
 #, php-format
 msgid "%s × cousin"
-msgstr "%s menning"
+msgstr "%s kusine"
 
 #: app/Functions/Functions.php:550
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr "%s menning"
+msgstr "%s slektning"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:515
@@ -20189,7 +20189,7 @@ msgstr "yngre søster"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s år"
-msgstr[1] "±%s år"
+msgstr[1] "±%s årene"
 
 #: app/Individual.php:1218
 #, php-format
