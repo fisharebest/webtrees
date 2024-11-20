@@ -9673,12 +9673,6 @@ parameters:
 			path: app/Statistics/Repository/PlaceRepository.php
 
 		-
-			message: '#^Parameter \#1 \$places of method Fisharebest\\Webtrees\\Statistics\\Repository\\PlaceRepository\:\:renderTop10\(\) expects array\<int\|string, int\>, array\<int\> given\.$#'
-			identifier: argument.type
-			count: 3
-			path: app/Statistics/Repository/PlaceRepository.php
-
-		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1

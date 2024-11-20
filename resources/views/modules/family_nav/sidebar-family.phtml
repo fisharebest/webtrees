@@ -17,9 +17,13 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
 <table class="table table-sm wt-facts-table wt-family-navigator-family">
     <caption class="text-center wt-family-navigator-family-heading">
-        <a href="<?= e($family->url()) ?>">
+        <?php if ($family->canShow()) : ?>
+            <a href="<?= e($family->url()) ?>">
+                <?= $title ?>
+            </a>
+        <?php else : ?>
             <?= $title ?>
-        </a>
+        <?php endif ?>
     </caption>
     <tbody>
         <?php foreach ($family->spouses() as $spouse) : ?>
