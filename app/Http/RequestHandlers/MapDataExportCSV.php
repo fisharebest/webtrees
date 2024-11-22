@@ -162,10 +162,10 @@ class MapDataExportCSV implements RequestHandlerInterface
             throw new RuntimeException('Failed to create temporary stream');
         }
 
-        fputcsv($resource, $header, MapDataService::CSV_SEPARATOR);
+        fputcsv($resource, $header, MapDataService::CSV_SEPARATOR, '"', '\\');
 
         foreach ($places as $place) {
-            fputcsv($resource, $place, MapDataService::CSV_SEPARATOR);
+            fputcsv($resource, $place, MapDataService::CSV_SEPARATOR, '"', '\\');
         }
 
         rewind($resource);
