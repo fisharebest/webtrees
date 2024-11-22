@@ -12649,6 +12649,36 @@ parameters:
 			path: tests/TestCase.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Fisharebest\\Webtrees\\Date given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/Census/CensusColumnFullNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Fisharebest\\Webtrees\\Individual&PHPUnit\\Framework\\MockObject\\Stub given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Census/CensusColumnFullNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/app/Census/CensusColumnFullNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/app/Census/CensusColumnFullNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/Census/CensusColumnFullNameTest.php
+
+		-
 			message: '#^Cannot call method count\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -12787,6 +12817,12 @@ parameters:
 			path: tests/app/Encodings/AnselTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/FactTest.php
+
+		-
 			message: '#^Cannot call method createUri\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -12797,6 +12833,24 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: tests/app/Http/Middleware/CheckCsrfTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/AccountEditTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/BroadcastPageTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/Http/RequestHandlers/BroadcastPageTest.php
 
 		-
 			message: '#^Parameter \#3 \$params of static method Fisharebest\\Webtrees\\TestCase\:\:createRequest\(\) expects array\<string\>, array\<string, int\|string\> given\.$#'
@@ -12859,6 +12913,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectAncestryPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Module\\BranchesListModule&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -12895,6 +12955,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectBranchesPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectBranchesPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Services\\TreeService&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 2
@@ -12910,6 +12976,12 @@ parameters:
 			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectCalendarPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
 			path: tests/app/Http/RequestHandlers/RedirectCalendarPhpTest.php
 
 		-
@@ -12955,6 +13027,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectCompactPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Factories\\IndividualFactory&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -12997,6 +13075,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectDescendancyPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Module\\FamilyListModule&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13030,6 +13114,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
 			path: tests/app/Http/RequestHandlers/RedirectFamListPhpTest.php
 
 		-
@@ -13075,6 +13165,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFamilyBookPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Factories\\FamilyFactory&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13102,6 +13198,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFamilyPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
 			path: tests/app/Http/RequestHandlers/RedirectFamilyPhpTest.php
 
 		-
@@ -13147,6 +13249,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectFanChartPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Factories\\GedcomRecordFactory&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13174,6 +13282,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectGedRecordPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
 			path: tests/app/Http/RequestHandlers/RedirectGedRecordPhpTest.php
 
 		-
@@ -13219,6 +13333,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectHourGlassPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Module\\IndividualListModule&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13255,6 +13375,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectIndiListPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Factories\\IndividualFactory&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13282,6 +13408,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectIndividualPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
 			path: tests/app/Http/RequestHandlers/RedirectIndividualPhpTest.php
 
 		-
@@ -13321,6 +13453,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectLifeSpanPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Module\\MediaListModule&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13357,6 +13495,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectMediaListPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Factories\\MediaFactory&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13384,6 +13528,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectMediaViewerPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
 			path: tests/app/Http/RequestHandlers/RedirectMediaViewerPhpTest.php
 
 		-
@@ -13435,6 +13585,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectModulePhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 5
+			path: tests/app/Http/RequestHandlers/RedirectModulePhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Module\\NoteListModule&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13471,6 +13627,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectNoteListPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Factories\\NoteFactory&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13498,6 +13660,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectNotePhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
 			path: tests/app/Http/RequestHandlers/RedirectNotePhpTest.php
 
 		-
@@ -13543,6 +13711,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectPedigreePhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Module\\PlaceHierarchyListModule&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13576,6 +13750,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
 			path: tests/app/Http/RequestHandlers/RedirectPlaceListPhpTest.php
 
 		-
@@ -13621,6 +13801,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectRelationshipPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Module\\RepositoryListModule&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13657,6 +13843,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectRepoListPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Services\\TreeService&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 2
@@ -13672,6 +13864,12 @@ parameters:
 			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 2
+			path: tests/app/Http/RequestHandlers/RedirectReportEnginePhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
 			path: tests/app/Http/RequestHandlers/RedirectReportEnginePhpTest.php
 
 		-
@@ -13702,6 +13900,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectRepositoryPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
 			path: tests/app/Http/RequestHandlers/RedirectRepositoryPhpTest.php
 
 		-
@@ -13741,6 +13945,12 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectSourceListPhpTest.php
+
+		-
 			message: '#^Call to an undefined method Fisharebest\\Webtrees\\Factories\\SourceFactory&PHPUnit\\Framework\\MockObject\\Stub\:\:expects\(\)\.$#'
 			identifier: method.notFound
 			count: 1
@@ -13768,6 +13978,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectSourcePhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 2
 			path: tests/app/Http/RequestHandlers/RedirectSourcePhpTest.php
 
 		-
@@ -13804,6 +14020,12 @@ parameters:
 			message: '#^Cannot call method with\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
+			path: tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
 			path: tests/app/Http/RequestHandlers/RedirectStatisticsPhpTest.php
 
 		-
@@ -13849,10 +14071,64 @@ parameters:
 			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
+
+		-
 			message: '#^Parameter \#2 \$query of static method Fisharebest\\Webtrees\\TestCase\:\:createRequest\(\) expects array\<string\>, array\<string, list\<string\>\|string\> given\.$#'
 			identifier: argument.type
 			count: 3
 			path: tests/app/Http/RequestHandlers/RedirectTimeLinePhpTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Database\\Query\\Builder&PHPUnit\\Framework\\MockObject\\Stub given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/SiteLogsDataTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, PHPUnit\\Framework\\MockObject\\Stub&Psr\\Http\\Message\\ResponseInterface given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/SiteLogsDataTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/SiteLogsDataTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Database\\Query\\Builder&PHPUnit\\Framework\\MockObject\\Stub given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/SiteLogsDeleteTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Database\\Query\\Builder&PHPUnit\\Framework\\MockObject\\Stub given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/Http/RequestHandlers/SiteLogsDownloadTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection&PHPUnit\\Framework\\MockObject\\Stub given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/Http/RequestHandlers/SiteLogsDownloadTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/Http/RequestHandlers/SiteLogsDownloadTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/Http/RequestHandlers/SiteLogsPageTest.php
 
 		-
 			message: '#^Parameter \#3 \$params of static method Fisharebest\\Webtrees\\TestCase\:\:createRequest\(\) expects array\<string\>, array\<string, int\|string\> given\.$#'
@@ -13927,6 +14203,114 @@ parameters:
 			path: tests/app/Services/UserServiceTest.php
 
 		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 4
+			path: tests/app/SurnameTradition/DefaultSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 4
+			path: tests/app/SurnameTradition/DefaultSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 10
+			path: tests/app/SurnameTradition/IcelandicSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 10
+			path: tests/app/SurnameTradition/IcelandicSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 23
+			path: tests/app/SurnameTradition/LithuanianSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 23
+			path: tests/app/SurnameTradition/LithuanianSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/MatrilinealSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/MatrilinealSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 17
+			path: tests/app/SurnameTradition/PaternalSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 17
+			path: tests/app/SurnameTradition/PaternalSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/PatrilinealSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/PatrilinealSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 22
+			path: tests/app/SurnameTradition/PolishSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 22
+			path: tests/app/SurnameTradition/PolishSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/PortugueseSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/PortugueseSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, Illuminate\\Support\\Collection given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/SpanishSurnameTraditionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, string given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/app/SurnameTradition/SpanishSurnameTraditionTest.php
+
+		-
 			message: '#^Parameter \#3 \$subject of function preg_replace expects array\<float\|int\|string\>\|string, string\|false given\.$#'
 			identifier: argument.type
 			count: 2
@@ -13948,6 +14332,54 @@ parameters:
 			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 3
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, \(Aura\\Router\\Route&PHPUnit\\Framework\\MockObject\\Stub\)\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, \(Fisharebest\\Webtrees\\Contracts\\UserInterface&PHPUnit\\Framework\\MockObject\\Stub\)\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, \(Fisharebest\\Webtrees\\Tree&PHPUnit\\Framework\\MockObject\\Stub\)\|string\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, array\<int, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, bool\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, int\|string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, list\<string\>\|string\> given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/app/ValidatorTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber\:\:willReturn\(\) expects PHPUnit\\Framework\\MockObject\\Builder\\mixed, array\<string, string\> given\.$#'
+			identifier: argument.type
+			count: 14
 			path: tests/app/ValidatorTest.php
 
 		-
