@@ -23,13 +23,13 @@
     },
     "config": {
         "platform": {
-            "php": "8.2.0"
+            "php": "8.3.0"
         },
         "sort-packages": true,
         "process-timeout": 3600
     },
     "require": {
-        "php": "8.2 - 8.4",
+        "php": "8.3 - 8.4",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-gd": "*",
