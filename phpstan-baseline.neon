@@ -121,6 +121,12 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
+			message: '#^Parameter \$suggestedValues of method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\) expects array\|\(Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput, Symfony\\Component\\Console\\Completion\\CompletionSuggestions\)\: list\<string\|Symfony\\Component\\Console\\Completion\\Suggestion\>\), Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput\)\: array\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/TreeExport.php
+
+		-
 			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
@@ -687,12 +693,6 @@ parameters:
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Factories\\FamilyFactory\:\:gedcom\(\) should return string\|null but returns mixed\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Factories/FamilyFactory.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Factories/FamilyFactory.php
 
@@ -1525,19 +1525,7 @@ parameters:
 			path: app/Http/RequestHandlers/AppleTouchIconPng.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/AutoCompleteCitation.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/AutoCompleteCitation.php
-
-		-
-			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<\(int\|string\),Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>\|iterable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<\(int\|string\), Fisharebest\\Webtrees\\Family\> given\.$#'
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, Fisharebest\\Webtrees\\Individual\>\|iterable\<int, Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Family\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/AutoCompleteCitation.php
@@ -1573,24 +1561,6 @@ parameters:
 			path: app/Http/RequestHandlers/CalendarEvents.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$gedcom\.$#'
-			identifier: property.notFound
-			count: 11
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$type\.$#'
-			identifier: property.notFound
-			count: 38
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 46
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
 			message: '#^Binary operation "\." between "\\n1 CHIL @" and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
@@ -1617,12 +1587,6 @@ parameters:
 		-
 			message: '#^Binary operation "\." between "\\n1 WIFE @" and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/CheckTree.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/CheckTree.php
 
@@ -2053,6 +2017,12 @@ parameters:
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
+			message: '#^Binary operation "/" between Illuminate\\Support\\Collection\|int and Illuminate\\Support\\Collection\|int results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/Http/RequestHandlers/GedcomLoad.php
+
+		-
 			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -2251,30 +2221,6 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
 
 		-
-			message: '#^Cannot access property \$id on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
-			message: '#^Cannot access property \$latitude on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
-			message: '#^Cannot access property \$longitude on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
-			message: '#^Cannot access property \$place on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportCSV.php
-
-		-
 			message: '#^Cannot cast mixed to float\.$#'
 			identifier: cast.double
 			count: 2
@@ -2313,30 +2259,6 @@ parameters:
 		-
 			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
-
-		-
-			message: '#^Cannot access property \$id on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
-
-		-
-			message: '#^Cannot access property \$latitude on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
-
-		-
-			message: '#^Cannot access property \$longitude on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
-
-		-
-			message: '#^Cannot access property \$place on mixed\.$#'
-			identifier: property.nonObject
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
 
@@ -2677,57 +2599,9 @@ parameters:
 			path: app/Http/RequestHandlers/PendingChangesLogDelete.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$change_time\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$gedcom_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$new_gedcom\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$old_gedcom\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$status\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$user_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
 			message: '#^Binary operation "\." between ''"'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 3
-			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: non\-falsy\-string, Closure\(object\)\: non\-falsy\-string given\.$#'
-			identifier: argument.type
-			count: 1
 			path: app/Http/RequestHandlers/PendingChangesLogDownload.php
 
 		-
@@ -3109,42 +2983,6 @@ parameters:
 			path: app/Http/RequestHandlers/SiteLogsData.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$gedcom_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/SiteLogsDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$ip_address\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/SiteLogsDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$log_message\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/SiteLogsDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$log_time\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/SiteLogsDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$log_type\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/SiteLogsDownload.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$user_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/SiteLogsDownload.php
-
-		-
 			message: '#^Binary operation "\." between ''"'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
@@ -3154,12 +2992,6 @@ parameters:
 			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
-			path: app/Http/RequestHandlers/SiteLogsDownload.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: non\-falsy\-string, Closure\(object\)\: non\-falsy\-string given\.$#'
-			identifier: argument.type
-			count: 1
 			path: app/Http/RequestHandlers/SiteLogsDownload.php
 
 		-
@@ -3199,44 +3031,8 @@ parameters:
 			path: app/Http/RequestHandlers/TreePreferencesAction.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$label\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$tag_label\.$#'
-			identifier: property.notFound
-			count: 4
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$tag_type\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
 			message: '#^Binary operation "\." between ''''\|''FAM\:''\|''INDI\:'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/TreePrivacyPage.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/TreePrivacyPage.php
 
@@ -3259,26 +3055,8 @@ parameters:
 			path: app/Http/RequestHandlers/TreePrivacyPage.php
 
 		-
-			message: '#^Cannot access property \$l_from on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Http/RequestHandlers/UnconnectedPage.php
-
-		-
-			message: '#^Cannot access property \$l_to on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Http/RequestHandlers/UnconnectedPage.php
-
-		-
 			message: '#^Cannot cast mixed to string\.$#'
 			identifier: cast.string
-			count: 1
-			path: app/Http/RequestHandlers/UnconnectedPage.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/UnconnectedPage.php
 
@@ -3295,7 +3073,7 @@ parameters:
 			path: app/Http/RequestHandlers/UnconnectedPage.php
 
 		-
-			message: '#^Parameter \#2 \$callback of function usort expects callable\(array\<Fisharebest\\Webtrees\\Individual\>\|Illuminate\\Support\\Collection\<int\|string, Fisharebest\\Webtrees\\Individual\>, array\<Fisharebest\\Webtrees\\Individual\>\|Illuminate\\Support\\Collection\<int\|string, Fisharebest\\Webtrees\\Individual\>\)\: int, Closure\(Illuminate\\Support\\Collection, Illuminate\\Support\\Collection\)\: int\<\-1, 1\> given\.$#'
+			message: '#^Parameter \#2 \$callback of function usort expects callable\(array\<Fisharebest\\Webtrees\\Individual\>\|Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Individual\>, array\<Fisharebest\\Webtrees\\Individual\>\|Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Individual\>\)\: int, Closure\(Illuminate\\Support\\Collection, Illuminate\\Support\\Collection\)\: int\<\-1, 1\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/UnconnectedPage.php
@@ -3643,74 +3421,14 @@ parameters:
 			path: app/Media.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$n_surn\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$n_surname\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Cannot access property \$count on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Cannot access property \$gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Cannot access property \$n_givn on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Cannot access property \$n_surn on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Cannot access property \$xref on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 2
 			path: app/Module/AbstractIndividualListModule.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\AbstractIndividualListModule\:\:surnameData\(\) should return array\<object\{n_surn\: string, n_surname\: string, total\: int\}\> but returns array\<object\{n_surn\: mixed, n_surname\: mixed, total\: int\}&stdClass\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\AbstractIndividualListModule\:\:surnameData\(\) should return array\<object\{n_surn\: string, n_surname\: string, total\: int\}\> but returns array\<int, object\{n_surn\: mixed, n_surname\: mixed, total\: int\}&stdClass\>\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: argument.unresolvableType
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{n_surn\: mixed, n_surname\: mixed, total\: int\}&stdClass\), Closure\(object\)\: \(object\{n_surn\: mixed, n_surname\: mixed, total\: int\}&stdClass\) given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Module/AbstractIndividualListModule.php
 
@@ -3739,36 +3457,6 @@ parameters:
 			path: app/Module/AbstractIndividualListModule.php
 
 		-
-			message: '#^Return type of call to method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: method.unresolvableReturnType
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Return type of call to method Illuminate\\Support\\Collection\<\(int\|string\),object\{n_surn\: mixed, n_surname\: mixed, total\: int\}&stdClass\>\:\:all\(\) contains unresolvable type\.$#'
-			identifier: method.unresolvableReturnType
-			count: 1
-			path: app/Module/AbstractIndividualListModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$interface\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/AbstractModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$module_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/AbstractModule.php
-
-		-
-			message: '#^Cannot access property \$access_level on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/AbstractModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 1
@@ -3787,12 +3475,6 @@ parameters:
 			path: app/Module/AbstractModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:first\(\) expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(object\)\: bool given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/AbstractModule.php
-
-		-
 			message: '#^Parameter \#2 \$path of method Aura\\Router\\Map\:\:get\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -3803,12 +3485,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/BingWebmasterToolsModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/BranchesListModule.php
 
 		-
 			message: '#^Parameter \#1 \$request of static method Fisharebest\\Webtrees\\Validator\:\:attributes\(\) expects Psr\\Http\\Message\\ServerRequestInterface, mixed given\.$#'
@@ -4219,30 +3895,6 @@ parameters:
 			path: app/Module/FamilyBookChartModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$note\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\GedcomRecordFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -4261,40 +3913,10 @@ parameters:
 			path: app/Module/FamilyTreeNewsModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$updated\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FamilyTreeNewsModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FamilyTreeNewsModule.php
-
-		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/FamilyTreeNewsModule.php
-
-		-
-			message: '#^Cannot access property \$n_surn on mixed\.$#'
-			identifier: property.nonObject
-			count: 7
-			path: app/Module/FamilyTreeStatisticsModule.php
-
-		-
-			message: '#^Cannot access property \$n_surname on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
-			path: app/Module/FamilyTreeStatisticsModule.php
-
-		-
-			message: '#^Cannot access property \$total on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/FamilyTreeStatisticsModule.php
 
 		-
 			message: '#^Cannot call method embedTags\(\) on mixed\.$#'
@@ -4797,17 +4419,11 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$block_id\.$#'
 			identifier: property.notFound
-			count: 4
+			count: 2
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$block_order\.$#'
-			identifier: property.notFound
-			count: 4
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$gedcom_id\.$#'
 			identifier: property.notFound
 			count: 2
 			path: app/Module/FrequentlyAskedQuestionsModule.php
@@ -4815,25 +4431,13 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$languages\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 6
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:filter\(\) expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(object\)\: bool given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
@@ -5479,12 +5083,6 @@ parameters:
 			path: app/Module/ListsMenuModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Location, Closure\(object\)\: Fisharebest\\Webtrees\\Location given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LocationListModule.php
-
-		-
 			message: '#^Parameter \#2 \$path of method Aura\\Router\\Map\:\:get\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -5525,12 +5123,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/MatomoAnalyticsModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Media, Closure\(object\)\: Fisharebest\\Webtrees\\Media given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/MediaListModule.php
 
 		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: string, Closure\(string\)\: string given\.$#'
@@ -5689,12 +5281,6 @@ parameters:
 			path: app/Module/ModuleCustomTrait.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Note, Closure\(object\)\: Fisharebest\\Webtrees\\Note given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/NoteListModule.php
-
-		-
 			message: '#^Parameter \#2 \$path of method Aura\\Router\\Map\:\:get\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -5821,18 +5407,6 @@ parameters:
 			path: app/Module/PlacesModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$change_time\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$new_gedcom\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$record\.$#'
 			identifier: property.notFound
 			count: 2
@@ -5845,43 +5419,13 @@ parameters:
 			path: app/Module/RecentChangesModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$user_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 1
 			path: app/Module/RecentChangesModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{record\: Fisharebest\\Webtrees\\GedcomRecord\|null, time\: Fisharebest\\Webtrees\\Contracts\\TimestampInterface, user\: Fisharebest\\Webtrees\\User\|null\}&stdClass\), Closure\(object\)\: \(object\{record\: Fisharebest\\Webtrees\\GedcomRecord\|null, time\: Fisharebest\\Webtrees\\Contracts\\TimestampInterface, user\: Fisharebest\\Webtrees\\User\|null\}&stdClass\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<\(int\|string\),Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>\|iterable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<\(int\|string\), Fisharebest\\Webtrees\\Family\> given\.$#'
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, Fisharebest\\Webtrees\\Individual\>\|iterable\<int, Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Family\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/RecentChangesModule.php
@@ -5938,18 +5482,6 @@ parameters:
 			message: '#^Anonymous function should return Fisharebest\\Webtrees\\Family\|Fisharebest\\Webtrees\\Individual but returns Fisharebest\\Webtrees\\Individual\|null\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: '#^Cannot access property \$l_from on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
-			path: app/Module/RelationshipsChartModule.php
-
-		-
-			message: '#^Cannot access property \$l_to on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
 			path: app/Module/RelationshipsChartModule.php
 
 		-
@@ -6019,52 +5551,16 @@ parameters:
 			path: app/Module/ReportsMenuModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Repository, Closure\(object\)\: Fisharebest\\Webtrees\\Repository given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/RepositoryListModule.php
-
-		-
 			message: '#^Parameter \#2 \$path of method Aura\\Router\\Map\:\:get\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/RepositoryListModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/ResearchTaskModule.php
-
-		-
 			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, Fisharebest\\Webtrees\\Individual\>\|iterable\<int, Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Family\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/ResearchTaskModule.php
-
-		-
-			message: '#^Cannot access property \$new_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/ReviewChangesModule.php
-
-		-
-			message: '#^Cannot access property \$old_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/ReviewChangesModule.php
-
-		-
-			message: '#^Cannot access property \$xref on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/ReviewChangesModule.php
 
 		-
 			message: '#^Cannot call method canShow\(\) on Fisharebest\\Webtrees\\GedcomRecord\|null\.$#'
@@ -6127,78 +5623,6 @@ parameters:
 			path: app/Module/ShareAnniversaryModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Media, Closure\(object\)\: Fisharebest\\Webtrees\\Media given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Note, Closure\(object\)\: Fisharebest\\Webtrees\\Note given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Repository, Closure\(object\)\: Fisharebest\\Webtrees\\Repository given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Source, Closure\(object\)\: Fisharebest\\Webtrees\\Source given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Submitter, Closure\(object\)\: Fisharebest\\Webtrees\\Submitter given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SiteMapModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$m_gedcom\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$m_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
-			message: '#^Cannot access property \$m_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
-			message: '#^Cannot access property \$m_id on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:first\(\) expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(object\)\: bool given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SlideShowModule.php
-
-		-
 			message: '#^Parameter \#1 \$request of static method Fisharebest\\Webtrees\\Validator\:\:queryParams\(\) expects Psr\\Http\\Message\\ServerRequestInterface, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -6215,12 +5639,6 @@ parameters:
 			identifier: argument.type
 			count: 2
 			path: app/Module/SlideShowModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Source, Closure\(object\)\: Fisharebest\\Webtrees\\Source given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SourceListModule.php
 
 		-
 			message: '#^Parameter \#2 \$path of method Aura\\Router\\Map\:\:get\(\) expects string, mixed given\.$#'
@@ -6283,42 +5701,6 @@ parameters:
 			path: app/Module/StatisticsChartModule.php
 
 		-
-			message: '#^Cannot access property \$d_month on mixed\.$#'
-			identifier: property.nonObject
-			count: 11
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Cannot access property \$f_husb on mixed\.$#'
-			identifier: property.nonObject
-			count: 4
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Cannot access property \$f_wife on mixed\.$#'
-			identifier: property.nonObject
-			count: 4
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Cannot access property \$i_sex on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Cannot access property \$month on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: '#^Cannot access property \$total on mixed\.$#'
-			identifier: property.nonObject
-			count: 11
-			path: app/Module/StatisticsChartModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 3
@@ -6349,66 +5731,6 @@ parameters:
 			path: app/Module/StatisticsChartModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$block_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$individual\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$languages\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$title\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Cannot access property \$block_id on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Cannot access property \$individual on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Cannot access property \$languages on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Cannot access property \$title on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Cannot access property \$xref on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 3
@@ -6421,22 +5743,10 @@ parameters:
 			path: app/Module/StoriesModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
 			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/StoriesModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Submitter, Closure\(object\)\: Fisharebest\\Webtrees\\Submitter given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/SubmitterListModule.php
 
 		-
 			message: '#^Parameter \#2 \$path of method Aura\\Router\\Map\:\:get\(\) expects string, mixed given\.$#'
@@ -6511,18 +5821,6 @@ parameters:
 			path: app/Module/TopGivenNamesModule.php
 
 		-
-			message: '#^Cannot access property \$page_count on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/TopPageViewsModule.php
-
-		-
-			message: '#^Cannot access property \$page_parameter on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/TopPageViewsModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 1
@@ -6535,24 +5833,6 @@ parameters:
 			path: app/Module/TopPageViewsModule.php
 
 		-
-			message: '#^Cannot access property \$n_surn on mixed\.$#'
-			identifier: property.nonObject
-			count: 7
-			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: '#^Cannot access property \$n_surname on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
-			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: '#^Cannot access property \$total on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 1
@@ -6563,30 +5843,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$note\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/UserFavoritesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/UserFavoritesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Module/UserFavoritesModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/UserFavoritesModule.php
 
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\GedcomRecordFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
@@ -6607,34 +5863,10 @@ parameters:
 			path: app/Module/UserJournalModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$updated\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/UserJournalModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/UserJournalModule.php
-
-		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/UserJournalModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$created\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/UserMessagesModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/UserMessagesModule.php
 
 		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
@@ -7249,24 +6481,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$new_gedcom\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$old_gedcom\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: '#^Access to protected property Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\:\:\$generation\.$#'
 			identifier: property.protected
 			count: 1
@@ -7336,18 +6550,6 @@ parameters:
 			message: '#^Cannot access offset 1 on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Cannot access property \$gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Cannot access property \$xref on mixed\.$#'
-			identifier: property.nonObject
-			count: 4
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -7442,12 +6644,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$array of function end expects array\|object, list\<string\>\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(Fisharebest\\Webtrees\\GedcomRecord\|null\), Closure\(object\)\: \(Fisharebest\\Webtrees\\GedcomRecord\|null\) given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -7609,15 +6805,21 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
+			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\|null\>\.$#'
 			identifier: assign.propertyType
 			count: 2
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\|null\>\.$#'
+			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<int, Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
 			identifier: assign.propertyType
-			count: 2
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<int\|string, Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
+			identifier: assign.propertyType
+			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -7777,30 +6979,6 @@ parameters:
 			path: app/Report/RightToLeftSupport.php
 
 		-
-			message: '#^Cannot access property \$access_level on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Schema/Migration42.php
-
-		-
-			message: '#^Cannot access property \$component on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Schema/Migration42.php
-
-		-
-			message: '#^Cannot access property \$gedcom_id on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Schema/Migration42.php
-
-		-
-			message: '#^Cannot access property \$module_name on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Schema/Migration42.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$max\.$#'
 			identifier: property.notFound
 			count: 2
@@ -7832,6 +7010,12 @@ parameters:
 
 		-
 			message: '#^Anonymous function should return Fisharebest\\Webtrees\\Source but returns Fisharebest\\Webtrees\\Source\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Services/AdminService.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Services\\AdminService\:\:countCommonXrefs\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Services/AdminService.php
@@ -7900,48 +7084,6 @@ parameters:
 			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 6
-			path: app/Services/CalendarService.php
-
-		-
-			message: '#^Cannot access property \$d_day on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Services/CalendarService.php
-
-		-
-			message: '#^Cannot access property \$d_fact on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Services/CalendarService.php
-
-		-
-			message: '#^Cannot access property \$d_month on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Services/CalendarService.php
-
-		-
-			message: '#^Cannot access property \$d_type on mixed\.$#'
-			identifier: property.nonObject
-			count: 4
-			path: app/Services/CalendarService.php
-
-		-
-			message: '#^Cannot access property \$d_year on mixed\.$#'
-			identifier: property.nonObject
-			count: 4
-			path: app/Services/CalendarService.php
-
-		-
-			message: '#^Cannot access property \$gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 4
-			path: app/Services/CalendarService.php
-
-		-
-			message: '#^Cannot access property \$xref on mixed\.$#'
-			identifier: property.nonObject
-			count: 4
 			path: app/Services/CalendarService.php
 
 		-
@@ -8155,32 +7297,8 @@ parameters:
 			path: app/Services/GedcomEditService.php
 
 		-
-			message: '#^Cannot access property \$f_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Cannot access property \$i_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Cannot access property \$m_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Cannot access property \$o_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Cannot access property \$s_gedcom on mixed\.$#'
-			identifier: property.nonObject
+			message: '#^Access to an undefined property object\:\:\$o_gedcom\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Services/GedcomExportService.php
 
@@ -8193,36 +7311,6 @@ parameters:
 		-
 			message: '#^Offset ''uri'' might not exist on array\{timed_out\: bool, blocked\: bool, eof\: bool, unread_bytes\: int, stream_type\: string, wrapper_type\: string, wrapper_data\: mixed, mode\: string, \.\.\.\}\.$#'
 			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\GedcomRecord, Closure\(object\)\: Fisharebest\\Webtrees\\GedcomRecord given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Media, Closure\(object\)\: Fisharebest\\Webtrees\\Media given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Source, Closure\(object\)\: Fisharebest\\Webtrees\\Source given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Services/GedcomExportService.php
 
@@ -8461,72 +7549,6 @@ parameters:
 			path: app/Services/LinkedRecordService.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/LinkedRecordService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/LinkedRecordService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Location, Closure\(object\)\: Fisharebest\\Webtrees\\Location given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/LinkedRecordService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Media, Closure\(object\)\: Fisharebest\\Webtrees\\Media given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/LinkedRecordService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Note, Closure\(object\)\: Fisharebest\\Webtrees\\Note given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/LinkedRecordService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Repository, Closure\(object\)\: Fisharebest\\Webtrees\\Repository given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Services/LinkedRecordService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Source, Closure\(object\)\: Fisharebest\\Webtrees\\Source given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/LinkedRecordService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$child_count\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$key\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$no_coord\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$p_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/MapDataService.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$parent_id\.$#'
 			identifier: property.notFound
 			count: 1
@@ -8535,25 +7557,7 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$place\.$#'
 			identifier: property.notFound
-			count: 4
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Cannot access property \$id on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Cannot access property \$p_place on mixed\.$#'
-			identifier: property.nonObject
 			count: 1
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Cannot access property \$place on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
 			path: app/Services/MapDataService.php
 
 		-
@@ -8563,33 +7567,9 @@ parameters:
 			path: app/Services/MapDataService.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\MapDataService\:\:activePlaces\(\) should return array\<string, array\<object\>\> but returns array\<string, list\<mixed\>\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Services/MapDataService.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Services\\MapDataService\:\:placeIdsForLocation\(\) should return array\<string\> but returns array\<mixed\>\.$#'
 			identifier: return.type
 			count: 1
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(object\)\: int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/MapDataService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: string, Closure\(object\)\: string given\.$#'
-			identifier: argument.type
-			count: 2
 			path: app/Services/MapDataService.php
 
 		-
@@ -8701,42 +7681,6 @@ parameters:
 			path: app/Services/MediaFileService.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$footer_order\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$menu_order\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$module_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$sidebar_order\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$status\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$tab_order\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
 			message: '#^Anonymous function should return Fisharebest\\Webtrees\\Module\\ModuleInterface but returns mixed\.$#'
 			identifier: return.type
 			count: 1
@@ -8785,12 +7729,6 @@ parameters:
 			path: app/Services/ModuleService.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:mapWithKeys\(\) expects callable\(mixed, int\|string\)\: array\<int\|string, object\>, Closure\(object\)\: non\-empty\-array\<int\|string, object\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Module\\ModuleCustomInterface\|null\>\:\:mapWithKeys\(\) expects callable\(Fisharebest\\Webtrees\\Module\\ModuleCustomInterface\|null, int\)\: array\<string, Fisharebest\\Webtrees\\Module\\ModuleCustomInterface\>, Closure\(Fisharebest\\Webtrees\\Module\\ModuleCustomInterface\)\: non\-empty\-array\<string, Fisharebest\\Webtrees\\Module\\ModuleCustomInterface\> given\.$#'
 			identifier: argument.type
 			count: 1
@@ -8815,42 +7753,6 @@ parameters:
 			path: app/Services/PendingChangesService.php
 
 		-
-			message: '#^Cannot access property \$change_id on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Cannot access property \$change_time on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Cannot access property \$new_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 8
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Cannot access property \$old_gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 5
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Cannot access property \$record on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Cannot access property \$xref on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: app/Services/PendingChangesService.php
-
-		-
 			message: '#^Cannot call method add\(\) on DateTimeImmutable\|false\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -8859,12 +7761,6 @@ parameters:
 		-
 			message: '#^Cannot call method setTimezone\(\) on DateTimeImmutable\|false\.$#'
 			identifier: method.nonObject
-			count: 1
-			path: app/Services/PendingChangesService.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingChanges\(\) should return array\<array\<object\>\> but returns array\<int\|string, list\<mixed\>\>\.$#'
-			identifier: return.type
 			count: 1
 			path: app/Services/PendingChangesService.php
 
@@ -9121,24 +8017,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Services/SearchService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
-			count: 4
-			path: app/Services/SearchService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Media, Closure\(object\)\: Fisharebest\\Webtrees\\Media given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
 			message: '#^Parameter \#1 \$haystack of function mb_stripos expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9217,18 +8095,6 @@ parameters:
 			path: app/Services/TimeoutService.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$tree_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/TreeService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:mapWithKeys\(\) expects callable\(mixed, int\|string\)\: array\<int\|string, Fisharebest\\Webtrees\\Tree\>, Closure\(object\)\: non\-empty\-array\<int\|string, Fisharebest\\Webtrees\\Tree\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/TreeService.php
-
-		-
 			message: '#^Parameter \#1 \$stream of function fclose expects resource, resource\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9293,12 +8159,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Services/UpgradeService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\User, Closure\(object\)\: Fisharebest\\Webtrees\\User given\.$#'
-			identifier: argument.type
-			count: 13
-			path: app/Services/UserService.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$ip_address\.$#'
@@ -9387,19 +8247,19 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$age\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartAge.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$century\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartAge.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$sex\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartAge.php
 
 		-
@@ -9421,18 +8281,6 @@ parameters:
 			path: app/Statistics/Google/ChartAge.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: argument.unresolvableType
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{age\: float, century\: int, sex\: mixed\}&stdClass\), Closure\(object\)\: \(object\{age\: float, century\: int, sex\: mixed\}&stdClass\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
 			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9445,21 +8293,15 @@ parameters:
 			path: app/Statistics/Google/ChartAge.php
 
 		-
-			message: '#^Return type of call to method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: method.unresolvableReturnType
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$century\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartBirth.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$total\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartBirth.php
 
 		-
@@ -9471,12 +8313,6 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartBirth.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{century\: int, total\: float\}&stdClass\), Closure\(object\)\: \(object\{century\: int, total\: float\}&stdClass\) given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Statistics/Google/ChartBirth.php
 
@@ -9489,13 +8325,13 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$century\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartChildren.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$total\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartChildren.php
 
 		-
@@ -9507,12 +8343,6 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartChildren.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{century\: int, total\: float\}&stdClass\), Closure\(object\)\: \(object\{century\: int, total\: float\}&stdClass\) given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Statistics/Google/ChartChildren.php
 
@@ -9537,13 +8367,13 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$century\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartDeath.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$total\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartDeath.php
 
 		-
@@ -9559,12 +8389,6 @@ parameters:
 			path: app/Statistics/Google/ChartDeath.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{century\: int, total\: float\}&stdClass\), Closure\(object\)\: \(object\{century\: int, total\: float\}&stdClass\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartDeath.php
-
-		-
 			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9573,18 +8397,6 @@ parameters:
 		-
 			message: '#^Binary operation "\+" between mixed and \(float\|int\) results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 2
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: '#^Cannot access property \$gedcom on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: '#^Cannot access property \$place on mixed\.$#'
-			identifier: property.nonObject
 			count: 2
 			path: app/Statistics/Google/ChartDistribution.php
 
@@ -9603,13 +8415,13 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$century\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$total\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
@@ -9621,12 +8433,6 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartDivorce.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{century\: int, total\: float\}&stdClass\), Closure\(object\)\: \(object\{century\: int, total\: float\}&stdClass\) given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Statistics/Google/ChartDivorce.php
 
@@ -9649,12 +8455,6 @@ parameters:
 			path: app/Statistics/Google/ChartFamilyLargest.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyLargest\:\:queryRecords\(\) should return array\<object\> but returns array\<mixed\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Google/ChartFamilyLargest.php
-
-		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9663,13 +8463,13 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$century\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartMarriage.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$total\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartMarriage.php
 
 		-
@@ -9685,12 +8485,6 @@ parameters:
 			path: app/Statistics/Google/ChartMarriage.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{century\: int, total\: float\}&stdClass\), Closure\(object\)\: \(object\{century\: int, total\: float\}&stdClass\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartMarriage.php
-
-		-
 			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9699,19 +8493,19 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$age\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$century\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$sex\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
@@ -9733,18 +8527,6 @@ parameters:
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: argument.unresolvableType
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{age\: float, century\: int, sex\: mixed\}&stdClass\), Closure\(object\)\: \(object\{age\: float, century\: int, sex\: mixed\}&stdClass\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
 			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9754,12 +8536,6 @@ parameters:
 			message: '#^Parameter \#1 \$num of function round expects float\|int, mixed given\.$#'
 			identifier: argument.type
 			count: 2
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Return type of call to method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: method.unresolvableReturnType
-			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
@@ -9781,40 +8557,10 @@ parameters:
 			path: app/Statistics/Google/ChartNoChildrenFamilies.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Google\\ChartNoChildrenFamilies\:\:queryRecords\(\) should return array\<object\> but returns array\<mixed\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Google/ChartNoChildrenFamilies.php
-
-		-
 			message: '#^Parameter \#2 \$request of method Fisharebest\\Webtrees\\Services\\UserService\:\:contactLink\(\) expects Psr\\Http\\Message\\ServerRequestInterface, mixed given\.$#'
 			identifier: argument.type
 			count: 2
 			path: app/Statistics/Repository/ContactRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$fact\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$type\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$year\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
 
 		-
 			message: '#^Cannot cast mixed to int\.$#'
@@ -9829,14 +8575,8 @@ parameters:
 			path: app/Statistics/Repository/EventRepository.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: argument.unresolvableType
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{id\: mixed, year\: int, fact\: mixed, type\: mixed\}&stdClass\), Closure\(object\)\: \(object\{id\: mixed, year\: int, fact\: mixed, type\: mixed\}&stdClass\) given\.$#'
-			identifier: argument.type
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\EventRepository\:\:getEventCount\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/EventRepository.php
 
@@ -9845,36 +8585,6 @@ parameters:
 			identifier: assign.propertyReadOnly
 			count: 1
 			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Return type of call to method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: method.unresolvableReturnType
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$fact\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$type\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$year\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
 
 		-
 			message: '#^Cannot cast mixed to int\.$#'
@@ -9889,33 +8599,15 @@ parameters:
 			path: app/Statistics/Repository/FamilyDatesRepository.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: argument.unresolvableType
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: \(object\{id\: mixed, year\: int, fact\: mixed, type\: mixed\}&stdClass\), Closure\(object\)\: \(object\{id\: mixed, year\: int, fact\: mixed, type\: mixed\}&stdClass\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
 			message: '#^Property object\{id\: string, year\: int, fact\: string, type\: string\}\:\:\$year is not writable\.$#'
 			identifier: assign.propertyReadOnly
 			count: 1
 			path: app/Statistics/Repository/FamilyDatesRepository.php
 
 		-
-			message: '#^Return type of call to method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
-			identifier: method.unresolvableReturnType
-			count: 1
-			path: app/Statistics/Repository/FamilyDatesRepository.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$age\.$#'
 			identifier: property.notFound
-			count: 5
+			count: 3
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -9946,36 +8638,6 @@ parameters:
 			message: '#^Binary operation "/" between mixed and 365\.25 results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot access property \$age on mixed\.$#'
-			identifier: property.nonObject
-			count: 9
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot access property \$famid on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot access property \$family on mixed\.$#'
-			identifier: property.nonObject
-			count: 7
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot access property \$i_id on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Cannot access property \$id on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -10045,27 +8707,15 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:ageBetweenSiblingsQuery\(\) should return array\<object\> but returns array\<mixed\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:noChildrenFamiliesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:statsChildrenQuery\(\) should return array\<object\> but returns array\<mixed\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Family, Closure\(object\)\: Fisharebest\\Webtrees\\Family given\.$#'
+			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
 			identifier: argument.type
-			count: 4
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: object, Closure\(object\)\: object given\.$#'
-			identifier: argument.type
-			count: 1
+			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -10107,12 +8757,6 @@ parameters:
 		-
 			message: '#^Binary operation "/" between mixed and 365\.25 results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Cannot access property \$days on mixed\.$#'
-			identifier: property.nonObject
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
 
@@ -10255,14 +8899,68 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:statsAgeQuery\(\) should return array\<object\> but returns array\<mixed\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:getTotalSexQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
-			identifier: argument.type
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalDeceasedQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalFamiliesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalFamsWithSourcesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalIndisWithSourcesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalIndividualsQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalLivingQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalMediaQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalNotesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalRepositoriesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalSourcesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
 
@@ -10273,9 +8971,9 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: '#^Parameter \#1 of closure expects object, mixed given\.$#'
+			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
 			identifier: argument.type
-			count: 1
+			count: 2
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
@@ -10309,8 +9007,26 @@ parameters:
 			path: app/Statistics/Repository/MediaRepository.php
 
 		-
-			message: '#^Cannot access property \$tree on mixed\.$#'
-			identifier: property.nonObject
+			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Statistics/Repository/MediaRepository.php
+
+		-
+			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Statistics/Repository/MessageRepository.php
+
+		-
+			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Statistics/Repository/NewsRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\PlaceRepository\:\:totalPlacesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/PlaceRepository.php
 
@@ -10360,24 +9076,6 @@ parameters:
 			message: '#^Access to an undefined property object\:\:\$tree_title\.$#'
 			identifier: property.notFound
 			count: 1
-			path: app/Tree.php
-
-		-
-			message: '#^Cannot access property \$resn on mixed\.$#'
-			identifier: property.nonObject
-			count: 5
-			path: app/Tree.php
-
-		-
-			message: '#^Cannot access property \$tag_type on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
-			path: app/Tree.php
-
-		-
-			message: '#^Cannot access property \$xref on mixed\.$#'
-			identifier: property.nonObject
-			count: 3
 			path: app/Tree.php
 
 		-
