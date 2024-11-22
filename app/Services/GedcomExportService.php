@@ -107,7 +107,7 @@ class GedcomExportService
         string $line_endings,
         string $filename,
         string $format,
-        Collection $records = null
+        ?Collection $records = null
     ): ResponseInterface {
         $access_level = self::ACCESS_LEVELS[$privacy];
 
