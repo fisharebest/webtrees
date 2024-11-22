@@ -107,7 +107,7 @@ class GedcomExportService
         string $line_endings,
         string $filename,
         string $format,
-        Collection $records = null
+        Collection|null $records = null
     ): ResponseInterface {
         $access_level = self::ACCESS_LEVELS[$privacy];
 
@@ -178,7 +178,7 @@ class GedcomExportService
         string $line_endings = 'CRLF',
         Collection|null $records = null,
         FilesystemOperator|null $zip_filesystem = null,
-        string $media_path = null
+        string|null $media_path = null
     ) {
         $stream = fopen('php://memory', 'wb+');
 
