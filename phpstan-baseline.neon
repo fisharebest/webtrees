@@ -2251,7 +2251,7 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
 
 		-
-			message: '#^Parameter \#2 \$fields of function fputcsv expects array\<int\|string, bool\|float\|int\|string\|null\>, array given\.$#'
+			message: '#^Parameter \$fields of function fputcsv expects array\<int\|string, bool\|float\|int\|string\|null\>, array given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
