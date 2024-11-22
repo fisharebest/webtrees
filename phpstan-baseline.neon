@@ -121,12 +121,6 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
-			message: '#^Unknown parameter \$suggestedValues in call to method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\)\.$#'
-			identifier: argument.unknown
-			count: 1
-			path: app/Cli/Commands/TreeExport.php
-
-		-
 			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
@@ -1538,6 +1532,12 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: Fisharebest\\Webtrees\\Individual, Closure\(object\)\: Fisharebest\\Webtrees\\Individual given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/RequestHandlers/AutoCompleteCitation.php
+
+		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<\(int\|string\),Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>\|iterable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<\(int\|string\), Fisharebest\\Webtrees\\Family\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/AutoCompleteCitation.php
@@ -3559,12 +3559,6 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Individual\:\:spouseFamilies\(\) should return Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Family\> but returns Illuminate\\Support\\Collection\<\*NEVER\*, mixed\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Individual.php
-
-		-
 			message: '#^Parameter \#1 \$haystack of function strpos expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
@@ -4939,6 +4933,12 @@ parameters:
 			path: app/Module/HtmlBlockModule.php
 
 		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,string\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, ''FAM\:_UID''\|''FAM\:CHAN''\>\|iterable\<int, ''FAM\:_UID''\|''FAM\:CHAN''\>, Illuminate\\Support\\Collection\<int, mixed\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Module/IndividualFactsTabModule.php
+
+		-
 			message: '#^Parameter \#1 \$callback of function array_map expects \(callable\(mixed\)\: mixed\)\|null, Closure\(string\)\: non\-falsy\-string given\.$#'
 			identifier: argument.type
 			count: 1
@@ -5881,6 +5881,12 @@ parameters:
 			path: app/Module/RecentChangesModule.php
 
 		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<\(int\|string\),Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>\|iterable\<\(int\|string\), Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<\(int\|string\), Fisharebest\\Webtrees\\Family\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/RecentChangesModule.php
+
+		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -6037,6 +6043,12 @@ parameters:
 			path: app/Module/ResearchTaskModule.php
 
 		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, Fisharebest\\Webtrees\\Individual\>\|iterable\<int, Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Family\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/ResearchTaskModule.php
+
+		-
 			message: '#^Cannot access property \$new_gedcom on mixed\.$#'
 			identifier: property.nonObject
 			count: 1
@@ -6100,6 +6112,12 @@ parameters:
 			message: '#^Parameter \#1 \$filter of method Fisharebest\\Webtrees\\GedcomRecord\:\:facts\(\) expects array\<string\>, mixed given\.$#'
 			identifier: argument.type
 			count: 3
+			path: app/Module/ShareAnniversaryModule.php
+
+		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Fact\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, Fisharebest\\Webtrees\\Fact\>\|iterable\<int, Fisharebest\\Webtrees\\Fact\>, Illuminate\\Support\\Collection\<int, Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Fact\>\> given\.$#'
+			identifier: argument.type
+			count: 1
 			path: app/Module/ShareAnniversaryModule.php
 
 		-
@@ -7975,6 +7993,12 @@ parameters:
 			path: app/Services/CalendarService.php
 
 		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<string,Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<string, Fisharebest\\Webtrees\\Individual\>\|iterable\<string, Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Individual\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/ChartService.php
+
+		-
 			message: '#^Cannot access offset string on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 4
@@ -8392,6 +8416,18 @@ parameters:
 			message: '#^Parameter \#1 \$gedcom of class Fisharebest\\Webtrees\\Fact constructor expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Fact\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, Fisharebest\\Webtrees\\Fact\>\|iterable\<int, Fisharebest\\Webtrees\\Fact\>, Illuminate\\Support\\Collection\<int, mixed\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Individual\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, Fisharebest\\Webtrees\\Individual\>\|iterable\<int, Fisharebest\\Webtrees\\Individual\>, Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Family\> given\.$#'
+			identifier: argument.type
+			count: 2
 			path: app/Services/IndividualFactsService.php
 
 		-
