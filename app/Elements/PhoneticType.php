@@ -32,7 +32,7 @@ use function strtoupper;
  */
 class PhoneticType extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 30;
+    protected const int MAXIMUM_LENGTH = 30;
 
     /**
      * Convert a value to a canonical form.

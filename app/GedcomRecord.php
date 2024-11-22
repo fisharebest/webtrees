@@ -66,9 +66,9 @@ use const STR_PAD_LEFT;
  */
 class GedcomRecord
 {
-    public const RECORD_TYPE = 'UNKNOWN';
+    public const string RECORD_TYPE = 'UNKNOWN';
 
-    protected const ROUTE_NAME = GedcomRecordPage::class;
+    protected const string ROUTE_NAME = GedcomRecordPage::class;
 
     protected string $xref;
 

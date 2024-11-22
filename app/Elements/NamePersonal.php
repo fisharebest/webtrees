@@ -52,9 +52,9 @@ use function view;
  */
 class NamePersonal extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 120;
+    protected const int MAXIMUM_LENGTH = 120;
 
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE' => '0:1',
         'NPFX' => '0:1',
         'GIVN' => '0:1',
@@ -69,9 +69,9 @@ class NamePersonal extends AbstractElement
     ];
 
     // For some languages, we want to show the surname field first.
-    protected const SURNAME_FIRST_LANGUAGES = ['hu', 'jp', 'ko', 'zh-Hans', 'zh-Hant'];
+    protected const array SURNAME_FIRST_LANGUAGES = ['hu', 'jp', 'ko', 'zh-Hans', 'zh-Hant'];
 
-    protected const SUBTAGS_SURNAME_FIRST = [
+    protected const array SUBTAGS_SURNAME_FIRST = [
         'TYPE' => '0:1',
         'NPFX' => '0:1',
         'SPFX' => '0:1',

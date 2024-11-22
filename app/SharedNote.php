@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SharedNotePage;
  */
 class SharedNote extends Note
 {
-    public const RECORD_TYPE = 'SNOTE';
+    public const string RECORD_TYPE = 'SNOTE';
 
-    protected const ROUTE_NAME = SharedNotePage::class;
+    protected const string ROUTE_NAME = SharedNotePage::class;
 }

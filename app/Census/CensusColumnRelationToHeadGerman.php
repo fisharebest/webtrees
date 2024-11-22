@@ -24,5 +24,5 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnRelationToHeadGerman extends CensusColumnRelationToHead
 {
-    protected const HEAD_OF_HOUSEHOLD = 'Haushaltungsvorstand';
+    protected const string HEAD_OF_HOUSEHOLD = 'Haushaltungsvorstand';
 }

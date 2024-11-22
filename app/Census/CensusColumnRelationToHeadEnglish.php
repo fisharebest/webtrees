@@ -24,5 +24,5 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnRelationToHeadEnglish extends CensusColumnRelationToHead
 {
-    protected const HEAD_OF_HOUSEHOLD = 'head';
+    protected const string HEAD_OF_HOUSEHOLD = 'head';
 }

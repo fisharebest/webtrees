@@ -38,7 +38,7 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/note-list';
+    protected const string ROUTE_URL = '/tree/{tree}/note-list';
 
     /**
      * Initialization.

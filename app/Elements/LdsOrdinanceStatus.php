@@ -28,7 +28,7 @@ use function strtoupper;
  */
 class LdsOrdinanceStatus extends AbstractElement
 {
-    private const CORRECTIONS = [
+    private const array CORRECTIONS = [
         // PhpGedView misspells this tag.
         'CANCELLED' => 'CANCELED',
         // GEDCOM 5.5.1

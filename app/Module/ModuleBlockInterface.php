@@ -28,15 +28,15 @@ use Psr\Http\Message\ServerRequestInterface;
 interface ModuleBlockInterface extends ModuleInterface
 {
     // Places we can display blocks
-    public const CONTEXT_EMBED     = 'embed';
-    public const CONTEXT_TREE_PAGE = 'tree';
-    public const CONTEXT_USER_PAGE = 'user';
+    public const string CONTEXT_EMBED     = 'embed';
+    public const string CONTEXT_TREE_PAGE = 'tree';
+    public const string CONTEXT_USER_PAGE = 'user';
 
     // We show blocks in two columns on the tree/user pages.
-    public const MAIN_BLOCKS = 'main';
-    public const SIDE_BLOCKS = 'side';
+    public const string MAIN_BLOCKS = 'main';
+    public const string SIDE_BLOCKS = 'side';
 
-    public const DEFAULT_TREE_PAGE_BLOCKS = [
+    public const array DEFAULT_TREE_PAGE_BLOCKS = [
         self::MAIN_BLOCKS => [
             1 => FamilyTreeStatisticsModule::class,
             2 => FamilyTreeNewsModule::class,
@@ -51,7 +51,7 @@ interface ModuleBlockInterface extends ModuleInterface
         ],
     ];
 
-    public const DEFAULT_USER_PAGE_BLOCKS = [
+    public const array DEFAULT_USER_PAGE_BLOCKS = [
         self::MAIN_BLOCKS => [
             1 => OnThisDayModule::class,
             2 => UserMessagesModule::class,

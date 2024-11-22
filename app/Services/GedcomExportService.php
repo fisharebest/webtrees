@@ -72,7 +72,7 @@ use const STREAM_FILTER_WRITE;
  */
 class GedcomExportService
 {
-    private const ACCESS_LEVELS = [
+    private const array ACCESS_LEVELS = [
         'gedadmin' => Auth::PRIV_NONE,
         'user'     => Auth::PRIV_USER,
         'visitor'  => Auth::PRIV_PRIVATE,

@@ -39,7 +39,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class RedirectAncestryPhp implements RequestHandlerInterface
 {
-    private const CHART_STYLES = [
+    private const array CHART_STYLES = [
         0 => AncestorsChartModule::CHART_STYLE_TREE,
         1 => AncestorsChartModule::CHART_STYLE_TREE,
         2 => AncestorsChartModule::CHART_STYLE_INDIVIDUALS,

@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class LocationRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'NAME'        => '1:M',
         'TYPE'        => '0:M',
         '_POST'       => '0:M',

@@ -25,32 +25,32 @@ namespace Fisharebest\Webtrees\Contracts;
 interface UserInterface
 {
     // For historic reasons, user preferences have inconsistent and confusing names.
-    public const PREF_AUTO_ACCEPT_EDITS    = 'auto_accept';
-    public const PREF_CONTACT_METHOD       = 'contactmethod';
-    public const PREF_IS_ACCOUNT_APPROVED  = 'verified_by_admin';
-    public const PREF_IS_ADMINISTRATOR     = 'canadmin';
-    public const PREF_IS_EMAIL_VERIFIED    = 'verified';
-    public const PREF_IS_VISIBLE_ONLINE    = 'visibleonline';
-    public const PREF_LANGUAGE             = 'language';
-    public const PREF_NEW_ACCOUNT_COMMENT  = 'comment';
-    public const PREF_TIMESTAMP_REGISTERED = 'reg_timestamp';
-    public const PREF_TIMESTAMP_ACTIVE     = 'sessiontime';
-    public const PREF_TIME_ZONE            = 'TIMEZONE';
-    public const PREF_THEME                = 'theme';
-    public const PREF_VERIFICATION_TOKEN   = 'reg_hashcode';
+    public const string PREF_AUTO_ACCEPT_EDITS    = 'auto_accept';
+    public const string PREF_CONTACT_METHOD       = 'contactmethod';
+    public const string PREF_IS_ACCOUNT_APPROVED  = 'verified_by_admin';
+    public const string PREF_IS_ADMINISTRATOR     = 'canadmin';
+    public const string PREF_IS_EMAIL_VERIFIED    = 'verified';
+    public const string PREF_IS_VISIBLE_ONLINE    = 'visibleonline';
+    public const string PREF_LANGUAGE             = 'language';
+    public const string PREF_NEW_ACCOUNT_COMMENT  = 'comment';
+    public const string PREF_TIMESTAMP_REGISTERED = 'reg_timestamp';
+    public const string PREF_TIMESTAMP_ACTIVE     = 'sessiontime';
+    public const string PREF_TIME_ZONE            = 'TIMEZONE';
+    public const string PREF_THEME                = 'theme';
+    public const string PREF_VERIFICATION_TOKEN   = 'reg_hashcode';
 
     // For historic reasons, user-tree preferences have inconsistent and confusing names.
-    public const PREF_TREE_ACCOUNT_XREF = 'gedcomid';
-    public const PREF_TREE_DEFAULT_XREF = 'rootid';
-    public const PREF_TREE_PATH_LENGTH  = 'RELATIONSHIP_PATH_LENGTH';
-    public const PREF_TREE_ROLE         = 'canedit';
+    public const string PREF_TREE_ACCOUNT_XREF = 'gedcomid';
+    public const string PREF_TREE_DEFAULT_XREF = 'rootid';
+    public const string PREF_TREE_PATH_LENGTH  = 'RELATIONSHIP_PATH_LENGTH';
+    public const string PREF_TREE_ROLE         = 'canedit';
 
     // For historic reasons, roles have inconsistent and confusing names.
-    public const ROLE_VISITOR   = 'none';
-    public const ROLE_MEMBER    = 'access';
-    public const ROLE_EDITOR    = 'edit';
-    public const ROLE_MODERATOR = 'accept';
-    public const ROLE_MANAGER   = 'admin';
+    public const string ROLE_VISITOR   = 'none';
+    public const string ROLE_MEMBER    = 'access';
+    public const string ROLE_EDITOR    = 'edit';
+    public const string ROLE_MODERATOR = 'accept';
+    public const string ROLE_MANAGER   = 'admin';
 
     /**
      * The user‘s internal identifier

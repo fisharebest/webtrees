@@ -51,7 +51,7 @@ class GedcomRecordPage implements RequestHandlerInterface
     use ViewResponseTrait;
 
     // These standard genealogy record types have their own pages.
-    private const STANDARD_RECORDS = [
+    private const array STANDARD_RECORDS = [
         Family::class,
         Header::class,
         Individual::class,

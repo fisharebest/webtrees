@@ -32,7 +32,7 @@ class Soundex
     // Original implementation by Gerry Kroll, and analysis by Meliza Amity
 
     // Max. table key length (in ASCII bytes -- NOT in UTF-8 characters!)
-    private const MAXCHAR = 7;
+    private const int MAXCHAR = 7;
 
     /**
      * Name transformation arrays.
@@ -46,7 +46,7 @@ class Soundex
      * This code, which can’t legitimately occur in the kind of text we're dealing with,
      * is used as a place-holder so that conditional string replacements can be done.
      */
-    private const TRANSFORM_NAMES = [
+    private const array TRANSFORM_NAMES = [
         // Force Yiddish ligatures to be treated as separate letters
         ['װ', 'וו'],
         ['ײ', 'יי'],
@@ -80,7 +80,7 @@ class Soundex
      * [1],[2],[3] can be repeated several times to create branches in the code
      * an empty sound value means "ignore in this state"
      */
-    private const DM_SOUNDS = [
+    private const array DM_SOUNDS = [
         'A'       => ['1', '0', '', ''],
         'À'       => ['1', '0', '', ''],
         'Á'       => ['1', '0', '', ''],

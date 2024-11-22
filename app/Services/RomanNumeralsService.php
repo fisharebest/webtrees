@@ -29,7 +29,7 @@ use function substr;
 class RomanNumeralsService
 {
     // Convert numbers to/from roman numerals
-    private const ROMAN_NUMERALS = [
+    private const array ROMAN_NUMERALS = [
         1000 => 'M',
         900  => 'CM',
         500  => 'D',

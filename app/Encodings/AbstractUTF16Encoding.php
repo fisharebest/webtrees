@@ -31,7 +31,7 @@ use function strlen;
 abstract class AbstractUTF16Encoding implements EncodingInterface
 {
     // Concrete classes should implement this.
-    public const REPLACEMENT_CHARACTER = '';
+    public const string REPLACEMENT_CHARACTER = '';
 
     /**
      * Convert a string from UTF-8 to another encoding.

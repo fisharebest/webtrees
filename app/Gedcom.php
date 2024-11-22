@@ -223,52 +223,52 @@ use Fisharebest\Webtrees\Elements\XrefSubmitter;
 class Gedcom
 {
     // 255 less the EOL character.
-    public const LINE_LENGTH = 253;
+    public const int LINE_LENGTH = 253;
 
     // Gedcom tags which indicate the start of life.
-    public const BIRTH_EVENTS = ['BIRT', 'CHR', 'BAPM'];
+    public const array BIRTH_EVENTS = ['BIRT', 'CHR', 'BAPM'];
 
     // Gedcom tags which indicate the end of life.
-    public const DEATH_EVENTS = ['DEAT', 'BURI', 'CREM'];
+    public const array DEATH_EVENTS = ['DEAT', 'BURI', 'CREM'];
 
     // Gedcom tags which indicate the start of a relationship.
-    public const MARRIAGE_EVENTS = ['MARR', '_NMR'];
+    public const array MARRIAGE_EVENTS = ['MARR', '_NMR'];
 
     // Gedcom tags which indicate the end of a relationship.
-    public const DIVORCE_EVENTS = ['DIV', 'ANUL', '_SEPR'];
+    public const array DIVORCE_EVENTS = ['DIV', 'ANUL', '_SEPR'];
 
     // Regular expression to match a GEDCOM tag.
-    public const REGEX_TAG = '[_A-Z][_A-Z0-9]*';
+    public const string REGEX_TAG = '[_A-Z][_A-Z0-9]*';
 
     // Regular expression to match a GEDCOM XREF.
-    public const REGEX_XREF = '[A-Za-z0-9:_.-]{1,20}';
+    public const string REGEX_XREF = '[A-Za-z0-9:_.-]{1,20}';
 
     // Regular expression to match a GEDCOM fact/event for editing raw GEDCOM.
-    private const REGEX_VALUE   = '( .+)?';
-    private const REGEX_LEVEL_9 = '\n9 ' . self::REGEX_TAG . self::REGEX_VALUE;
-    private const REGEX_LEVEL_8 = '\n8 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_9 . ')*';
-    private const REGEX_LEVEL_7 = '\n7 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_8 . ')*';
-    private const REGEX_LEVEL_6 = '\n6 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_7 . ')*';
-    private const REGEX_LEVEL_5 = '\n5 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_6 . ')*';
-    private const REGEX_LEVEL_4 = '\n4 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_5 . ')*';
-    private const REGEX_LEVEL_3 = '\n3 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_4 . ')*';
-    private const REGEX_LEVEL_2 = '\n2 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_3 . ')*';
-    public const REGEX_FACT     = '1 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_2 . ')*\n?';
+    private const string REGEX_VALUE   = '( .+)?';
+    private const string REGEX_LEVEL_9 = '\n9 ' . self::REGEX_TAG . self::REGEX_VALUE;
+    private const string REGEX_LEVEL_8 = '\n8 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_9 . ')*';
+    private const string REGEX_LEVEL_7 = '\n7 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_8 . ')*';
+    private const string REGEX_LEVEL_6 = '\n6 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_7 . ')*';
+    private const string REGEX_LEVEL_5 = '\n5 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_6 . ')*';
+    private const string REGEX_LEVEL_4 = '\n4 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_5 . ')*';
+    private const string REGEX_LEVEL_3 = '\n3 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_4 . ')*';
+    private const string REGEX_LEVEL_2 = '\n2 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_3 . ')*';
+    public const string  REGEX_FACT    = '1 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_2 . ')*\n?';
 
     // Separates the parts of a place name.
-    public const PLACE_SEPARATOR = ', ';
+    public const string PLACE_SEPARATOR = ', ';
 
     // Regex to match a (badly formed) GEDCOM place separator.
-    public const PLACE_SEPARATOR_REGEX = '/ *,[, ]*/';
+    public const string PLACE_SEPARATOR_REGEX = '/ *,[, ]*/';
 
     // LATI and LONG tags
-    public const LATITUDE_NORTH = 'N';
-    public const LATITUDE_SOUTH = 'S';
-    public const LONGITUDE_EAST = 'E';
-    public const LONGITUDE_WEST = 'W';
+    public const string LATITUDE_NORTH = 'N';
+    public const string LATITUDE_SOUTH = 'S';
+    public const string LONGITUDE_EAST = 'E';
+    public const string LONGITUDE_WEST = 'W';
 
     // Not all record types allow a CHAN event.
-    public const RECORDS_WITH_CHAN = [
+    public const array RECORDS_WITH_CHAN = [
         Family::RECORD_TYPE,
         Individual::RECORD_TYPE,
         Media::RECORD_TYPE,
@@ -279,7 +279,7 @@ class Gedcom
     ];
 
     // These preferences control multiple tag definitions
-    public const HIDDEN_TAGS = [
+    public const array HIDDEN_TAGS = [
         // Individual names
         'NAME_NPFX'  => ['INDI:NAME:NPFX', 'INDI:NAME:FONE:NPFX', 'INDI:NAME:ROMN:NPFX'],
         'NAME_SPFX'  => ['INDI:NAME:SPFX', 'INDI:NAME:FONE:SPFX', 'INDI:NAME:ROMN:SPFX'],
@@ -341,7 +341,7 @@ class Gedcom
     ];
 
     // Custom GEDCOM tags that can be created in webtrees.
-    public const CUSTOM_FAMILY_TAGS = [
+    public const array CUSTOM_FAMILY_TAGS = [
         'FACT',
         '_COML',
         '_MARI',
@@ -350,7 +350,7 @@ class Gedcom
         '_SEPR',
     ];
 
-    public const CUSTOM_INDIVIDUAL_TAGS = [
+    public const array CUSTOM_INDIVIDUAL_TAGS = [
         '_BRTM',
         '_CIRC',
         '_DEG',
@@ -375,7 +375,7 @@ class Gedcom
 
     // Some applications create GEDCOM files containing records without XREFS.
     // We cannot process these.
-    public const CUSTOM_RECORDS_WITHOUT_XREFS = [
+    public const array CUSTOM_RECORDS_WITHOUT_XREFS = [
         'EMOTIONALRELATIONSHIP', // GenoPro
         'GENOMAP', // GenoPro
         'GLOBAL', // GenoPro

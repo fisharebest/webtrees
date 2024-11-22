@@ -34,7 +34,7 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class Census extends AbstractEventElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE'  => '0:1:?',
         'DATE'  => '0:1',
         'AGE'   => '0:1',

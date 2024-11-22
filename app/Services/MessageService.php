@@ -39,15 +39,15 @@ use function view;
 class MessageService
 {
     // Users can be contacted by various methods
-    public const CONTACT_METHOD_INTERNAL           = 'messaging';
-    public const CONTACT_METHOD_INTERNAL_AND_EMAIL = 'messaging2';
-    public const CONTACT_METHOD_EMAIL              = 'messaging3';
-    public const CONTACT_METHOD_MAILTO             = 'mailto';
-    public const CONTACT_METHOD_NONE               = 'none';
+    public const string CONTACT_METHOD_INTERNAL           = 'messaging';
+    public const string CONTACT_METHOD_INTERNAL_AND_EMAIL = 'messaging2';
+    public const string CONTACT_METHOD_EMAIL              = 'messaging3';
+    public const string CONTACT_METHOD_MAILTO             = 'mailto';
+    public const string CONTACT_METHOD_NONE               = 'none';
 
-    private const BROADCAST_ALL   = 'all';
-    private const BROADCAST_NEVER = 'never';
-    private const BROADCAST_GONE  = 'gone';
+    private const string BROADCAST_ALL   = 'all';
+    private const string BROADCAST_NEVER = 'never';
+    private const string BROADCAST_GONE  = 'gone';
 
     private EmailService $email_service;
 

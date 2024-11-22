@@ -33,7 +33,7 @@ use function preg_match;
  */
 class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 ' . Header::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 ' . Header::RECORD_TYPE . '/';
 
     /**
      * Create a header.

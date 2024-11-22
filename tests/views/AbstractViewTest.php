@@ -27,7 +27,7 @@ use const LIBXML_PEDANTIC;
 
 abstract class AbstractViewTest extends TestCase
 {
-    protected const EVIL_VALUE = '<script>evil()</script>';
+    protected const string EVIL_VALUE = '<script>evil()</script>';
 
     /**
      * Check the view runs without error and generates valid HTML

@@ -47,7 +47,7 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
 
     // Which routes do we count?
     // For historical reasons, we record the names of the original webtrees script and parameter.
-    protected const PAGE_NAMES = [
+    protected const array PAGE_NAMES = [
         FamilyPage::class     => 'family.php',
         IndividualPage::class => 'individual.php',
         MediaPage::class      => 'mediaviewer.php',

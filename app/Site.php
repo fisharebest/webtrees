@@ -28,17 +28,17 @@ use function mb_substr;
 class Site
 {
     // The following preferences contain sensitive data, and should not be logged.
-    private const SENSITIVE_PREFERENCES = [
+    private const array SENSITIVE_PREFERENCES = [
         'SMTP_AUTH_PASS',
     ];
 
     // The following preferences contain unimportant data, and should not be logged.
-    private const UNIMPORTANT_PREFERENCES = [
+    private const array UNIMPORTANT_PREFERENCES = [
         'next_xref',
     ];
 
     // Default values for some site preferences.
-    protected const DEFAULT_PREFERENCES = [
+    protected const array DEFAULT_PREFERENCES = [
         'ALLOW_CHANGE_GEDCOM'     => '1',
         'HIDE_ADDR_EMAIL'         => '1',
         'HIDE_ADDR_FAX'           => '1',

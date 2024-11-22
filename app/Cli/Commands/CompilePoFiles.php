@@ -36,7 +36,7 @@ use function var_export;
 
 class CompilePoFiles extends Command
 {
-    private const PO_FILE_PATTERN = Webtrees::ROOT_DIR . 'resources/lang/*/*.po';
+    private const string PO_FILE_PATTERN = Webtrees::ROOT_DIR . 'resources/lang/*/*.po';
 
     protected function configure(): void
     {

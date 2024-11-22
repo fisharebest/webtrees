@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Site;
  */
 class FamilyRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'ANUL' => '0:M',
         'CENS' => '0:M',
         'CHAN' => '0:1',

@@ -28,5 +28,5 @@ namespace Fisharebest\Webtrees\Elements;
 class UserReferenceNumber extends AbstractElement
 {
     // Which child elements can appear under this element.
-    protected const SUBTAGS = ['TYPE' => '0:1'];
+    protected const array SUBTAGS = ['TYPE' => '0:1'];
 }

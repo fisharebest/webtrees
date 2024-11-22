@@ -37,7 +37,7 @@ use function substr_replace;
  */
 class Tree
 {
-    private const RESN_PRIVACY = [
+    private const array RESN_PRIVACY = [
         'none'         => Auth::PRIV_PRIVATE,
         'privacy'      => Auth::PRIV_USER,
         'confidential' => Auth::PRIV_NONE,
@@ -45,7 +45,7 @@ class Tree
     ];
 
     // Default values for some tree preferences.
-    protected const DEFAULT_PREFERENCES = [
+    protected const array DEFAULT_PREFERENCES = [
         'CALENDAR_FORMAT'              => 'gregorian',
         'CHART_BOX_TAGS'               => '',
         'EXPAND_SOURCES'               => '0',

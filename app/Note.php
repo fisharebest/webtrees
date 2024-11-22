@@ -36,9 +36,9 @@ use const ENT_QUOTES;
  */
 class Note extends GedcomRecord
 {
-    public const RECORD_TYPE = 'NOTE';
+    public const string RECORD_TYPE = 'NOTE';
 
-    protected const ROUTE_NAME = NotePage::class;
+    protected const string ROUTE_NAME = NotePage::class;
 
     /**
      * Get the text contents of the note

@@ -28,10 +28,10 @@ use function strtoupper;
  */
 class MarriageType extends AbstractElement
 {
-    public const VALUE_CIVIL      = 'CIVIL';
-    public const VALUE_COMMON_LAW = 'COMMON LAW';
-    public const VALUE_PARTNERS   = 'PARTNERS';
-    public const VALUE_RELIGIOUS  = 'RELIGIOUS';
+    public const string VALUE_CIVIL      = 'CIVIL';
+    public const string VALUE_COMMON_LAW = 'COMMON LAW';
+    public const string VALUE_PARTNERS  = 'PARTNERS';
+    public const string VALUE_RELIGIOUS = 'RELIGIOUS';
 
     /**
      * Convert a value to a canonical form.

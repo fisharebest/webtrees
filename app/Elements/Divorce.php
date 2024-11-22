@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class Divorce extends AbstractEventElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE'  => '0:1:?',
         'DATE'  => '0:1',
         'HUSB'  => '0:1',

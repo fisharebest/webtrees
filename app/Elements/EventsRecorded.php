@@ -40,12 +40,12 @@ use function view;
  */
 class EventsRecorded extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE' => '0:1',
         'PLAC' => '0:1',
     ];
 
-    protected const EVENTS_RECORDED = [
+    protected const array EVENTS_RECORDED = [
         'INDI:ADOP',
         'INDI:BAPM',
         'INDI:BARM',

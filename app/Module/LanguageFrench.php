@@ -30,7 +30,7 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    protected const SYMMETRIC_COUSINS = [
+    protected const array SYMMETRIC_COUSINS = [
         1 => [
             'F' => ['cousine germaine', '%s de la cousine germaine'],
             'M' => ['cousin germain', '%s du cousin germain'],
@@ -43,7 +43,7 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
         ]
     ];
 
-    protected const ASYMMETRIC_COUSINS = [
+    protected const array ASYMMETRIC_COUSINS = [
         1 => [
             'F' => ['down', 'petite-cousine', 'de la '],
             'M' => ['down', 'petit-cousin', 'du '],

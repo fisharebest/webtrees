@@ -56,7 +56,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/place-list{/place_id}';
+    protected const string ROUTE_URL = '/tree/{tree}/place-list{/place_id}';
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected int $access_level = Auth::PRIV_USER;

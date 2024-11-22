@@ -24,9 +24,9 @@ namespace Fisharebest\Webtrees\Encodings;
  */
 class MacRoman extends AbstractEncoding
 {
-    public const NAME = 'MACROMAN';
+    public const string NAME = 'MACROMAN';
 
-    protected const TO_UTF8 = [
+    protected const array TO_UTF8 = [
         "\x80" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
         "\x81" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
         "\x82" => UTF8::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,

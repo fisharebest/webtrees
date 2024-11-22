@@ -29,7 +29,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class PhysicalDescription extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE'  => '0:1:?',
         'DATE'  => '0:1',
         'PLAC'  => '0:1',

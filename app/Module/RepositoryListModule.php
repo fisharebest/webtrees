@@ -38,7 +38,7 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/repository-list';
+    protected const string ROUTE_URL = '/tree/{tree}/repository-list';
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected int $access_level = Auth::PRIV_USER;

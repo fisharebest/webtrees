@@ -44,7 +44,7 @@ use const CONNECTION_NORMAL;
 class EmitResponse implements MiddlewareInterface
 {
     // Stream the output in chunks.
-    private const CHUNK_SIZE = 65536;
+    private const int CHUNK_SIZE = 65536;
 
     /**
      * @param ServerRequestInterface  $request

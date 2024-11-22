@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
  */
 class Location extends GedcomRecord
 {
-    public const RECORD_TYPE = '_LOC';
+    public const string RECORD_TYPE = '_LOC';
 
-    protected const ROUTE_NAME = LocationPage::class;
+    protected const string ROUTE_NAME = LocationPage::class;
 
     /**
      * Extract names from the GEDCOM record.

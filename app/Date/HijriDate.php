@@ -31,10 +31,10 @@ use Fisharebest\Webtrees\I18N;
 class HijriDate extends AbstractCalendarDate
 {
     // GEDCOM calendar escape
-    public const ESCAPE = '@#DHIJRI@';
+    public const string ESCAPE = '@#DHIJRI@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_TO_NUMBER = [
+    protected const array MONTH_TO_NUMBER = [
         'MUHAR' => 1,
         'SAFAR' => 2,
         'RABIA' => 3,
@@ -49,7 +49,7 @@ class HijriDate extends AbstractCalendarDate
         'DHUAH' => 12,
     ];
 
-    protected const NUMBER_TO_MONTH = [
+    protected const array NUMBER_TO_MONTH = [
         1  => 'MUHAR',
         2  => 'SAFAR',
         3  => 'RABIA',

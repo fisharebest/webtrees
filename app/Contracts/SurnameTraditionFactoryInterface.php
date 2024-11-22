@@ -26,15 +26,15 @@ use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
  */
 interface SurnameTraditionFactoryInterface
 {
-    public const PATERNAL    = 'paternal';
-    public const PATRILINEAL = 'patrilineal';
-    public const MATRILINEAL = 'matrilineal';
-    public const PORTUGUESE  = 'portuguese';
-    public const SPANISH     = 'spanish';
-    public const POLISH      = 'polish';
-    public const LITHUANIAN  = 'lithuanian';
-    public const ICELANDIC   = 'icelandic';
-    public const DEFAULT     = '';
+    public const string PATERNAL    = 'paternal';
+    public const string PATRILINEAL = 'patrilineal';
+    public const string MATRILINEAL = 'matrilineal';
+    public const string PORTUGUESE  = 'portuguese';
+    public const string SPANISH     = 'spanish';
+    public const string POLISH      = 'polish';
+    public const string LITHUANIAN  = 'lithuanian';
+    public const string ICELANDIC   = 'icelandic';
+    public const string DEFAULT     = '';
 
     /**
      * A list of supported surname traditions and their names.

@@ -63,9 +63,9 @@ class SetupWizard implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private const DEFAULT_DBTYPE = DB::MYSQL;
-    private const DEFAULT_PREFIX = 'wt_';
-    private const DEFAULT_DATA   = [
+    private const string DEFAULT_DBTYPE = DB::MYSQL;
+    private const string DEFAULT_PREFIX = 'wt_';
+    private const array DEFAULT_DATA    = [
         'baseurl'  => '',
         'lang'     => '',
         'dbtype'   => self::DEFAULT_DBTYPE,
@@ -85,7 +85,7 @@ class SetupWizard implements RequestHandlerInterface
         'wtemail'  => '',
     ];
 
-    private const DEFAULT_PORTS = [
+    private const array DEFAULT_PORTS = [
         DB::MYSQL      => '3306',
         DB::POSTGRES   => '5432',
         DB::SQLITE     => '',

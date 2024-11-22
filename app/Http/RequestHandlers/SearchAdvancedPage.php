@@ -47,7 +47,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private const DEFAULT_ADVANCED_FIELDS = [
+    private const array DEFAULT_ADVANCED_FIELDS = [
         'INDI:NAME:GIVN',
         'INDI:NAME:SURN',
         'INDI:BIRT:DATE',
@@ -62,7 +62,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'MOTHER:NAME:SURN',
     ];
 
-    private const OTHER_ADVANCED_FIELDS = [
+    private const array OTHER_ADVANCED_FIELDS = [
         'INDI:ADOP:DATE',
         'INDI:ADOP:PLAC',
         'INDI:AFN',

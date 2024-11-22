@@ -41,28 +41,28 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
+    protected const string ROUTE_URL = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
 
     // Chart styles
-    public const STYLE_LEFT  = 'left';
-    public const STYLE_RIGHT = 'right';
-    public const STYLE_UP    = 'up';
-    public const STYLE_DOWN  = 'down';
+    public const string STYLE_LEFT  = 'left';
+    public const string STYLE_RIGHT = 'right';
+    public const string STYLE_UP   = 'up';
+    public const string STYLE_DOWN = 'down';
 
     // Defaults
-    public const    DEFAULT_GENERATIONS = '4';
-    public const    DEFAULT_STYLE       = self::STYLE_RIGHT;
-    protected const DEFAULT_PARAMETERS  = [
+    public const    string DEFAULT_GENERATIONS = '4';
+    public const    string DEFAULT_STYLE      = self::STYLE_RIGHT;
+    protected const array  DEFAULT_PARAMETERS = [
         'generations' => self::DEFAULT_GENERATIONS,
         'style'       => self::DEFAULT_STYLE,
     ];
 
     // Limits
-    protected const MINIMUM_GENERATIONS = 2;
-    protected const MAXIMUM_GENERATIONS = 12;
+    protected const int MINIMUM_GENERATIONS = 2;
+    protected const int MAXIMUM_GENERATIONS = 12;
 
     // For RTL languages
-    protected const MIRROR_STYLE = [
+    protected const array MIRROR_STYLE = [
         self::STYLE_UP    => self::STYLE_DOWN,
         self::STYLE_DOWN  => self::STYLE_UP,
         self::STYLE_LEFT  => self::STYLE_RIGHT,

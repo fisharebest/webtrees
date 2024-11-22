@@ -28,7 +28,7 @@ use function strtoupper;
  */
 class AddressPostalCode extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 10;
+    protected const int MAXIMUM_LENGTH = 10;
 
     /**
      * Convert a value to a canonical form.

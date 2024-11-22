@@ -48,12 +48,12 @@ use function strtoupper;
  */
 class RestrictionNotice extends AbstractElement
 {
-    public const VALUE_NONE         = 'NONE';
-    public const VALUE_PRIVACY      = 'PRIVACY';
-    public const VALUE_CONFIDENTIAL = 'CONFIDENTIAL';
-    public const VALUE_LOCKED       = 'LOCKED';
+    public const string VALUE_NONE    = 'NONE';
+    public const string VALUE_PRIVACY      = 'PRIVACY';
+    public const string VALUE_CONFIDENTIAL = 'CONFIDENTIAL';
+    public const string VALUE_LOCKED       = 'LOCKED';
 
-    private const CANONICAL = [
+    private const array CANONICAL = [
         // Store the locked value after the privacy value.
         self::VALUE_LOCKED . ', ' . self::VALUE_NONE         => self::VALUE_NONE . ', ' . self::VALUE_LOCKED,
         self::VALUE_LOCKED . ', ' . self::VALUE_PRIVACY      => self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED,
@@ -62,10 +62,10 @@ class RestrictionNotice extends AbstractElement
         'invisible'                                          => self::VALUE_PRIVACY,
     ];
 
-    private const ICON_CONFIDENTIAL = '<i class="icon-resn-confidential"></i>';
-    private const ICON_LOCKED       = '<i class="icon-resn-locked"></i> ';
-    private const ICON_NONE         = '<i class="icon-resn-none"></i>';
-    private const ICON_PRIVACY      = '<i class="icon-resn-privacy"></i>';
+    private const string ICON_CONFIDENTIAL = '<i class="icon-resn-confidential"></i>';
+    private const string ICON_LOCKED = '<i class="icon-resn-locked"></i> ';
+    private const string ICON_NONE    = '<i class="icon-resn-none"></i>';
+    private const string ICON_PRIVACY = '<i class="icon-resn-privacy"></i>';
 
     /**
      * Convert a value to a canonical form.

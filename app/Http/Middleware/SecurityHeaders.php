@@ -30,7 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class SecurityHeaders implements MiddlewareInterface
 {
-    private const SECURITY_HEADERS = [
+    private const array SECURITY_HEADERS = [
         'Permissions-Policy'     => 'browsing-topics=()',
         'Referrer-Policy'        => 'same-origin',
         'X-Content-Type-Options' => 'nosniff',

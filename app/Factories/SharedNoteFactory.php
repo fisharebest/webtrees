@@ -33,7 +33,7 @@ use function preg_match;
  */
 class SharedNoteFactory extends AbstractGedcomRecordFactory implements SharedNoteFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . SharedNote::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . SharedNote::RECORD_TYPE . '/';
 
     /**
      * Create a note.

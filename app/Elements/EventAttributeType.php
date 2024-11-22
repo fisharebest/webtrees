@@ -29,5 +29,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class EventAttributeType extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 15;
+    protected const int MAXIMUM_LENGTH = 15;
 }

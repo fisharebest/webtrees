@@ -36,9 +36,9 @@ use League\Config\ConfigurationBuilderInterface;
 class CensusTableExtension implements ConfigurableExtensionInterface
 {
     // Keywords used to create the webtrees 1.x census-assistant notes.
-    public const CA_PREFIX = '.start_formatted_area.';
-    public const CA_SUFFIX = '.end_formatted_area.';
-    public const TH_PREFIX = '.b.';
+    public const string CA_PREFIX = '.start_formatted_area.';
+    public const string CA_SUFFIX = '.end_formatted_area.';
+    public const string TH_PREFIX = '.b.';
 
     /**
      * The core TableExtension will already have configured tables.

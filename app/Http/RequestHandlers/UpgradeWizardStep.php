@@ -52,25 +52,25 @@ use function view;
 class UpgradeWizardStep implements RequestHandlerInterface
 {
     // We make the upgrade in a number of small steps to keep within server time limits.
-    private const STEP_CHECK    = 'Check';
-    private const STEP_PREPARE  = 'Prepare';
-    private const STEP_PENDING  = 'Pending';
-    private const STEP_EXPORT   = 'Export';
-    private const STEP_DOWNLOAD = 'Download';
-    private const STEP_UNZIP    = 'Unzip';
-    private const STEP_COPY     = 'Copy';
+    private const string STEP_CHECK   = 'Check';
+    private const string STEP_PREPARE = 'Prepare';
+    private const string STEP_PENDING = 'Pending';
+    private const string STEP_EXPORT   = 'Export';
+    private const string STEP_DOWNLOAD = 'Download';
+    private const string STEP_UNZIP = 'Unzip';
+    private const string STEP_COPY  = 'Copy';
 
     // Where to store our temporary files.
-    private const UPGRADE_FOLDER = 'data/tmp/upgrade/';
+    private const string UPGRADE_FOLDER = 'data/tmp/upgrade/';
 
     // Where to store the downloaded ZIP archive.
-    private const ZIP_FILENAME = 'data/tmp/webtrees.zip';
+    private const string ZIP_FILENAME = 'data/tmp/webtrees.zip';
 
     // The ZIP archive stores everything inside this top-level folder.
-    private const ZIP_FILE_PREFIX = 'webtrees';
+    private const string ZIP_FILE_PREFIX = 'webtrees';
 
     // Cruft can accumulate after upgrades.
-    private const FOLDERS_TO_CLEAN = [
+    private const array FOLDERS_TO_CLEAN = [
         'app',
         'resources',
         'vendor',

@@ -32,7 +32,7 @@ use function view;
  */
 class MultimediaFileReference extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'FORM' => '0:1',
         'TITL' => '0:1',
     ];

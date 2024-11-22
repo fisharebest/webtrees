@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class SourceRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TITL' => '0:1',
         'ABBR' => '0:1',
         'AUTH' => '0:1',

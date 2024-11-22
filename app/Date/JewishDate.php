@@ -28,10 +28,10 @@ use Fisharebest\Webtrees\I18N;
 class JewishDate extends AbstractCalendarDate
 {
     // GEDCOM calendar escape
-    public const ESCAPE = '@#DHEBREW@';
+    public const string ESCAPE = '@#DHEBREW@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_TO_NUMBER = [
+    protected const array MONTH_TO_NUMBER = [
         'TSH' => 1,
         'CSH' => 2,
         'KSL' => 3,
@@ -47,7 +47,7 @@ class JewishDate extends AbstractCalendarDate
         'ELL' => 13,
     ];
 
-    protected const NUMBER_TO_MONTH = [
+    protected const array NUMBER_TO_MONTH = [
         1  => 'TSH',
         2  => 'CSH',
         3  => 'KSL',

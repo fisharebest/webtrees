@@ -27,10 +27,10 @@ use Fisharebest\Webtrees\Registry;
 class TimeoutService
 {
     //Long-running scripts run in small chunks
-    private const TIME_LIMIT = 1.5;
+    private const float TIME_LIMIT = 1.5;
 
     // Seconds until we run out of time
-    private const TIME_UP_THRESHOLD = 3.0;
+    private const float TIME_UP_THRESHOLD = 3.0;
 
     // The start time of the request
     private float $start_time;

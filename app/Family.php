@@ -28,9 +28,9 @@ use Illuminate\Support\Collection;
  */
 class Family extends GedcomRecord
 {
-    public const RECORD_TYPE = 'FAM';
+    public const string RECORD_TYPE = 'FAM';
 
-    protected const ROUTE_NAME = FamilyPage::class;
+    protected const string ROUTE_NAME = FamilyPage::class;
 
     // The husband (or first spouse for same-sex couples)
     private Individual|null $husb = null;

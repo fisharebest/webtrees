@@ -38,7 +38,7 @@ use function view;
  */
 class XrefSource extends AbstractXrefElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'PAGE' => '0:1',
         'EVEN' => '0:1',
         'DATA' => '0:1',

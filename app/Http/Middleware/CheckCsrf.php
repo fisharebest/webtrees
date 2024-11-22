@@ -39,7 +39,7 @@ use function in_array;
  */
 class CheckCsrf implements MiddlewareInterface
 {
-    private const EXCLUDE_ROUTES = [
+    private const array EXCLUDE_ROUTES = [
         Logout::class,
         SelectLanguage::class,
         SelectTheme::class,

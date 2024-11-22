@@ -52,7 +52,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     use ModuleDataFixTrait;
 
     // A regular expression that never matches.
-    private const INVALID_REGEX = '/(?!)/';
+    private const string INVALID_REGEX = '/(?!)/';
 
     private DataFixService $data_fix_service;
 

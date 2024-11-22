@@ -42,10 +42,10 @@ use function view;
 abstract class AbstractElement implements ElementInterface
 {
     // HTML attributes for an <input>
-    protected const MAXIMUM_LENGTH = false;
-    protected const PATTERN        = false;
+    protected const int|false    MAXIMUM_LENGTH = false;
+    protected const string|false PATTERN        = false;
 
-    private const WHITESPACE_LINE = [
+    private const array WHITESPACE_LINE = [
         "\t"       => ' ',
         "\n"       => ' ',
         "\r"       => ' ',
@@ -55,7 +55,7 @@ abstract class AbstractElement implements ElementInterface
         "\u{2029}" => ' ', // PS - paragraph separator
     ];
 
-    private const WHITESPACE_TEXT = [
+    private const array WHITESPACE_TEXT = [
         "\t"       => ' ',
         "\r\n"     => "\n",
         "\r"       => "\n",
@@ -66,7 +66,7 @@ abstract class AbstractElement implements ElementInterface
     ];
 
     // Which child elements can appear under this element.
-    protected const SUBTAGS = [];
+    protected const array SUBTAGS = [];
 
     // A label to describe this element
     private string $label;

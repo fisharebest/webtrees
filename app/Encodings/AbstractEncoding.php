@@ -35,10 +35,10 @@ use const PREG_SPLIT_NO_EMPTY;
  */
 abstract class AbstractEncoding implements EncodingInterface
 {
-    protected const REPLACEMENT_CHARACTER = '?';
+    protected const string REPLACEMENT_CHARACTER = '?';
 
     /** @var array<string,string> Encoded character => utf8 character */
-    protected const TO_UTF8 = [];
+    protected const array TO_UTF8 = [];
 
     /**
      * Convert a string from UTF-8 to another encoding.

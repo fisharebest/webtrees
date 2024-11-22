@@ -27,12 +27,12 @@ use Psr\Http\Message\ServerRequestInterface;
 class Log
 {
     // We can log the following types of message in the wt_log table.
-    private const TYPE_AUTHENTICATION = 'auth';
-    private const TYPE_CONFIGURATION  = 'config';
-    private const TYPE_EDIT           = 'edit';
-    private const TYPE_ERROR          = 'error';
-    private const TYPE_MEDIA          = 'media';
-    private const TYPE_SEARCH         = 'search';
+    private const string TYPE_AUTHENTICATION = 'auth';
+    private const string TYPE_CONFIGURATION  = 'config';
+    private const string TYPE_EDIT           = 'edit';
+    private const string TYPE_ERROR          = 'error';
+    private const string TYPE_MEDIA          = 'media';
+    private const string TYPE_SEARCH         = 'search';
 
     /**
      * Store an authentication message in the message log.

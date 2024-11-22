@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\DB;
  */
 class SeedDefaultResnTable implements SeedInterface
 {
-    private const DEFAULT_RESTRICTIONS = [
+    private const array DEFAULT_RESTRICTIONS = [
         'SSN'  => 'confidential',
         'SOUR' => 'privacy',
         'REPO' => 'privacy',

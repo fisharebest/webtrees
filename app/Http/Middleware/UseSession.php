@@ -41,7 +41,7 @@ use const PHP_SESSION_ACTIVE;
 class UseSession implements MiddlewareInterface
 {
     // To avoid read-write contention on the wt_user_setting table, don't update the last-active time on every request.
-    private const UPDATE_ACTIVITY_INTERVAL = 60;
+    private const int UPDATE_ACTIVITY_INTERVAL = 60;
 
     /**
      * @param ServerRequestInterface  $request

@@ -43,7 +43,7 @@ use function usort;
  */
 class Fact
 {
-    private const FACT_ORDER = [
+    private const array FACT_ORDER = [
         'BIRT',
         '_HNM',
         'ALIA',

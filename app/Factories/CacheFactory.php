@@ -33,11 +33,11 @@ use function random_int;
 class CacheFactory implements CacheFactoryInterface
 {
     // How frequently to perform garbage collection.
-    private const GC_PROBABILITY = 1000;
+    private const int GC_PROBABILITY = 1000;
 
     // Filesystem cache parameters.
-    private const FILES_TTL = 8640000;
-    private const FILES_DIR = Webtrees::DATA_DIR . 'cache/';
+    private const int    FILES_TTL = 8640000;
+    private const string FILES_DIR = Webtrees::DATA_DIR . 'cache/';
 
     private ArrayAdapter $array_adapter;
 

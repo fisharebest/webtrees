@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Gedcom;
 class GedcomService
 {
     // Some applications, such as FTM, use GEDCOM tag names instead of the tags.
-    private const TAG_NAMES = [
+    private const array TAG_NAMES = [
         'ABBREVIATION'      => 'ABBR',
         'ADDRESS'           => 'ADDR',
         'ADDRESS1'          => 'ADR1',
@@ -152,7 +152,7 @@ class GedcomService
     ];
 
     // Custom GEDCOM tags used by other applications, with direct synonyms
-    private const TAG_SYNONYMS = [
+    private const array TAG_SYNONYMS = [
         // Convert PhpGedView tag to webtrees
         '_PGVU'     => '_WT_USER',
         '_PGV_OBJS' => '_WT_OBJE_SORT',

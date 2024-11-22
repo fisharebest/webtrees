@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class SubmissionRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'SUBM' => '0:1',
         'FAMF' => '0:1',
         'TEMP' => '0:1',

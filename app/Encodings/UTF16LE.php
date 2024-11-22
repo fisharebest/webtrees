@@ -28,10 +28,10 @@ use function ord;
  */
 class UTF16LE extends AbstractUTF16Encoding
 {
-    public const NAME = 'UTF-16LE';
+    public const string NAME = 'UTF-16LE';
 
-    public const BYTE_ORDER_MARK       = "\xFF\xFE";
-    public const REPLACEMENT_CHARACTER = "\xFD\xFF";
+    public const string BYTE_ORDER_MARK       = "\xFF\xFE";
+    public const string REPLACEMENT_CHARACTER = "\xFD\xFF";
 
     /**
      * Convert two bytes to a code-point, taking care of byte-order.

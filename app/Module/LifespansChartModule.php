@@ -66,20 +66,20 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/lifespans';
+    protected const string ROUTE_URL = '/tree/{tree}/lifespans';
 
     // In theory, only "@" is a safe separator, but it gives longer and uglier URLs.
     // Unless some other application generates XREFs with a ".", we are safe.
-    protected const SEPARATOR = '.';
+    protected const string SEPARATOR = '.';
 
     // Defaults
-    protected const DEFAULT_PARAMETERS = [];
+    protected const array DEFAULT_PARAMETERS = [];
 
     // Parameters for generating colors
-    protected const RANGE      = 120; // degrees
-    protected const SATURATION = 100; // percent
-    protected const LIGHTNESS  = 30; // percent
-    protected const ALPHA      = 0.25;
+    protected const int RANGE      = 120; // degrees
+    protected const int SATURATION = 100; // percent
+    protected const int LIGHTNESS  = 30; // percent
+    protected const float ALPHA = 0.25;
 
     /**
      * Initialization.

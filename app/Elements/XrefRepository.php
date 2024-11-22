@@ -35,7 +35,7 @@ use function view;
  */
 class XrefRepository extends AbstractXrefElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'CALN' => '0:1',
         'NOTE' => '0:M',
     ];

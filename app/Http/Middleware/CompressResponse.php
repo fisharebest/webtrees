@@ -41,7 +41,7 @@ use function strtr;
 class CompressResponse implements MiddlewareInterface
 {
     // Non-text responses that will benefit from compression.
-    protected const MIME_TYPES = [
+    protected const array MIME_TYPES = [
         'application/javascript',
         'application/json',
         'application/pdf',

@@ -33,7 +33,7 @@ use function preg_match;
  */
 class SourceFactory extends AbstractGedcomRecordFactory implements SourceFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Source::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Source::RECORD_TYPE . '/';
 
     /**
      * Create a individual.

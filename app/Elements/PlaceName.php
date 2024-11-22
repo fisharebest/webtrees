@@ -36,7 +36,7 @@ use function trim;
  */
 class PlaceName extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'FORM' => '0:1',
         'MAP' => '0:1',
         'FONE' => '0:1',

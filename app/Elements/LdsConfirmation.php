@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class LdsConfirmation extends AbstractEventElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE' => '0:1',
         'TEMP' => '0:1',
         'PLAC' => '0:1',

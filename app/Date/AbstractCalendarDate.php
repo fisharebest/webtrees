@@ -54,11 +54,11 @@ use function trim;
 abstract class AbstractCalendarDate
 {
     // GEDCOM calendar escape
-    public const ESCAPE = '@#DUNKNOWN@';
+    public const string ESCAPE = '@#DUNKNOWN@';
 
     // Convert GEDCOM month names to month numbers.
-    protected const MONTH_TO_NUMBER = [];
-    protected const NUMBER_TO_MONTH = [];
+    protected const array MONTH_TO_NUMBER = [];
+    protected const array NUMBER_TO_MONTH = [];
 
     protected CalendarInterface $calendar;
 

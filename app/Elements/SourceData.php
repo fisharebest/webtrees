@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class SourceData extends EmptyElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE' => '0:1',
         'TEXT' => '0:M',
     ];

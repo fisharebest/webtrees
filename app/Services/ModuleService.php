@@ -278,7 +278,7 @@ use const GLOB_NOSORT;
 class ModuleService
 {
     // Components are pieces of user-facing functionality, are managed together in the control panel.
-    private const COMPONENTS = [
+    private const array COMPONENTS = [
         ModuleAnalyticsInterface::class,
         ModuleBlockInterface::class,
         ModuleChartInterface::class,
@@ -300,7 +300,7 @@ class ModuleService
     ];
 
     // Components that have access levels.
-    private const COMPONENTS_WITH_ACCESS = [
+    private const array COMPONENTS_WITH_ACCESS = [
         ModuleBlockInterface::class,
         ModuleChartInterface::class,
         ModuleListInterface::class,
@@ -311,7 +311,7 @@ class ModuleService
     ];
 
     // Components that are displayed in a particular order
-    private const COMPONENTS_WITH_SORT = [
+    private const array COMPONENTS_WITH_SORT = [
         ModuleFooterInterface::class,
         ModuleMenuInterface::class,
         ModuleSidebarInterface::class,
@@ -319,7 +319,7 @@ class ModuleService
     ];
 
     // Array keys are module names, and should match module names from earlier versions of webtrees.
-    private const CORE_MODULES = [
+    private const array CORE_MODULES = [
         'GEDFact_assistant'       => CensusAssistantModule::class,
         'ahnentafel_report'       => AhnentafelReportModule::class,
         'ancestors_chart'         => AncestorsChartModule::class,

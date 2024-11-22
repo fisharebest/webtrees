@@ -37,7 +37,7 @@ use function strtoupper;
  */
 class RoleInEvent extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 15;
+    protected const int MAXIMUM_LENGTH = 15;
 
     /**
      * Convert a value to a canonical form.

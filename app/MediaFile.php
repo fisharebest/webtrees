@@ -48,7 +48,7 @@ use const PATHINFO_EXTENSION;
  */
 class MediaFile
 {
-    private const SUPPORTED_IMAGE_MIME_TYPES = [
+    private const array SUPPORTED_IMAGE_MIME_TYPES = [
         'image/gif',
         'image/jpeg',
         'image/png',

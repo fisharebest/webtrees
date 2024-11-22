@@ -48,8 +48,8 @@ use const PHP_URL_SCHEME;
 class Session
 {
     // Use the secure prefix with HTTPS.
-    private const SESSION_NAME        = 'WT2_SESSION';
-    private const SECURE_SESSION_NAME = '__Secure-WT-ID';
+    private const string SESSION_NAME        = 'WT2_SESSION';
+    private const string SECURE_SESSION_NAME = '__Secure-WT-ID';
 
     /**
      * Start a session

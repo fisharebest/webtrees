@@ -39,7 +39,7 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
     use ViewResponseTrait;
 
     // Create mixed-sex couples by default
-    private const OPPOSITE_SEX = [
+    private const array OPPOSITE_SEX = [
         'F' => 'M',
         'M' => 'F',
         'U' => 'U',

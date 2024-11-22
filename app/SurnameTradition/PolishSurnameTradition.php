@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Individual;
 class PolishSurnameTradition extends PaternalSurnameTradition
 {
     // Inflect a surname for females
-    private const INFLECT_FEMALE = [
+    private const array INFLECT_FEMALE = [
         'cki\b'  => 'cka',
         'dzki\b' => 'dzka',
         'ski\b'  => 'ska',
@@ -37,7 +37,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     ];
 
     // Inflect a surname for males
-    private const INFLECT_MALE = [
+    private const array INFLECT_MALE = [
         'cka\b'  => 'cki',
         'dzka\b' => 'dzki',
         'ska\b'  => 'ski',

@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Webtrees;
  */
 class ApprovedSystemId extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 20;
+    protected const int MAXIMUM_LENGTH = 20;
 
     /**
      * Create a default value for this element.

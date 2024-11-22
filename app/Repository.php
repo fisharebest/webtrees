@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
  */
 class Repository extends GedcomRecord
 {
-    public const RECORD_TYPE = 'REPO';
+    public const string RECORD_TYPE = 'REPO';
 
-    protected const ROUTE_NAME = RepositoryPage::class;
+    protected const string ROUTE_NAME = RepositoryPage::class;
 
     /**
      * Extract names from the GEDCOM record.

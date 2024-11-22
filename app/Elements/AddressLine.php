@@ -31,9 +31,9 @@ use Fisharebest\Webtrees\Tree;
  */
 class AddressLine extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 60;
+    protected const int MAXIMUM_LENGTH = 60;
 
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'ADR1' => '0:1:?',
         'ADR2' => '0:1:?',
         'ADR3' => '0:1:?',

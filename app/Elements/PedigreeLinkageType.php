@@ -35,13 +35,13 @@ use function strtoupper;
  */
 class PedigreeLinkageType extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 7;
+    protected const int MAXIMUM_LENGTH = 7;
 
-    public const VALUE_ADOPTED = 'ADOPTED';
-    public const VALUE_BIRTH   = 'BIRTH';
-    public const VALUE_FOSTER  = 'FOSTER';
-    public const VALUE_SEALING = 'SEALING';
-    public const VALUE_RADA    = 'RADA';
+    public const string VALUE_ADOPTED = 'ADOPTED';
+    public const string VALUE_BIRTH   = 'BIRTH';
+    public const string VALUE_FOSTER  = 'FOSTER';
+    public const string VALUE_SEALING = 'SEALING';
+    public const string VALUE_RADA    = 'RADA';
 
     /**
      * Convert a value to a canonical form.

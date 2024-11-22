@@ -24,10 +24,10 @@ namespace Fisharebest\Webtrees;
  */
 class Mime
 {
-    public const DEFAULT_TYPE = 'application/octet-stream';
+    public const string DEFAULT_TYPE = 'application/octet-stream';
 
     // Convert extension to mime-type
-    public const TYPES = [
+    public const array TYPES = [
         'BMP'  => 'image/bmp',
         'CSS'  => 'text/css',
         'DOC'  => 'application/msword',

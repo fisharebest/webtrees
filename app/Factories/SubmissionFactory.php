@@ -33,7 +33,7 @@ use function preg_match;
  */
 class SubmissionFactory extends AbstractGedcomRecordFactory implements SubmissionFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Submission::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Submission::RECORD_TYPE . '/';
 
     /**
      * Create a submission.

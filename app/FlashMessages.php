@@ -27,7 +27,7 @@ use function is_array;
 class FlashMessages
 {
     // Session storage key
-    private const FLASH_KEY = 'flash_messages';
+    private const string FLASH_KEY = 'flash_messages';
 
     /**
      * Add a message to the session storage.

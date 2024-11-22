@@ -29,13 +29,13 @@ use Fisharebest\Webtrees\Webtrees;
 abstract class AbstractRenderer
 {
     // Reports layouts are measured in points.
-    protected const UNITS = 'pt';
+    protected const string UNITS = 'pt';
 
     // A point is 1/72 of an inch
-    protected const INCH_TO_POINTS = 72.0;
-    protected const MM_TO_POINTS   = 72.0 / 25.4;
+    protected const float INCH_TO_POINTS = 72.0;
+    protected const float MM_TO_POINTS   = 72.0 / 25.4;
 
-    protected const PAPER_SIZES = [
+    protected const array PAPER_SIZES = [
         // ISO 216
         'A0'         => [841.0 * self::MM_TO_POINTS, 1189.0 * self::MM_TO_POINTS],
         'A1'         => [594.0 * self::MM_TO_POINTS, 841.0 * self::MM_TO_POINTS],

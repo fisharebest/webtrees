@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class HeaderRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'SOUR' => '1:1',
         'DEST' => '0:1',
         'DATE' => '0:1',

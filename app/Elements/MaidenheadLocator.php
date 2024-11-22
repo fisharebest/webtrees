@@ -29,8 +29,8 @@ use function mb_substr;
  */
 class MaidenheadLocator extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 8;
-    protected const PATTERN        = '[A-Ra-r][A-Ra-r]([0-9][0-9]([A-Xa-x][A-Xa-x]([0-9][0-9])?)?)?';
+    protected const int    MAXIMUM_LENGTH = 8;
+    protected const string PATTERN        = '[A-Ra-r][A-Ra-r]([0-9][0-9]([A-Xa-x][A-Xa-x]([0-9][0-9])?)?)?';
 
     /**
      * Convert a value to a canonical form.

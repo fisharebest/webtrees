@@ -34,7 +34,7 @@ use function preg_match;
  */
 class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Family::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Family::RECORD_TYPE . '/';
 
     /**
      * Create a family.

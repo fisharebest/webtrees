@@ -49,9 +49,9 @@ use const PHP_VERSION;
  */
 class ServerCheckService
 {
-    private const PHP_SUPPORT_URL   = 'https://www.php.net/supported-versions.php';
-    private const PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
-    private const PHP_SUPPORT_DATES = [
+    private const string PHP_SUPPORT_URL   = 'https://www.php.net/supported-versions.php';
+    private const string PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
+    private const array PHP_SUPPORT_DATES = [
         '8.1' => '2025-12-31',
         '8.2' => '2026-12-31',
         '8.3' => '2027-12-31',
@@ -59,7 +59,7 @@ class ServerCheckService
     ];
 
     // As required by illuminate/database 8.x
-    private const MINIMUM_SQLITE_VERSION = '3.8.8';
+    private const string MINIMUM_SQLITE_VERSION = '3.8.8';
 
     /**
      * Things that may cause webtrees to break.

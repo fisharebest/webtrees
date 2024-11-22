@@ -28,5 +28,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class CopyrightSourceData extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 90;
+    protected const int MAXIMUM_LENGTH = 90;
 }

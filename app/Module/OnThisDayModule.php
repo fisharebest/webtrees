@@ -37,22 +37,22 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
     use ModuleBlockTrait;
 
     // Pagination
-    private const LIMIT_LOW  = 10;
-    private const LIMIT_HIGH = 20;
+    private const int LIMIT_LOW  = 10;
+    private const int LIMIT_HIGH = 20;
 
     // Default values for new blocks.
-    private const DEFAULT_SORT = 'date_desc';
-    private const DEFAULT_STYLE = 'date_desc';
+    private const string DEFAULT_SORT  = 'date_desc';
+    private const string DEFAULT_STYLE = 'date_desc';
 
     // Initial sorting for datatables
-    private const DATATABLES_ORDER = [
+    private const array DATATABLES_ORDER = [
         'alpha'     => [[0, 'asc']],
         'date_asc'  => [[2, 'asc']],
         'date_desc' => [[2, 'desc']],
     ];
 
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
-    private const ALL_EVENTS = [
+    private const array ALL_EVENTS = [
         'ADOP' => 'INDI:ADOP',
         'ANUL' => 'FAM:ANUL',
         'BAPM' => 'INDI:BAPM',
@@ -85,7 +85,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         'WILL' => 'INDI:WILL',
     ];
 
-    private const DEFAULT_EVENTS = [
+    private const array DEFAULT_EVENTS = [
         'BIRT',
         'MARR',
         'DEAT',

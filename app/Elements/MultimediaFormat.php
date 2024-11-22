@@ -31,12 +31,12 @@ use function strtoupper;
  */
 class MultimediaFormat extends AbstractElement
 {
-    protected const EXTENSION_TO_FORM = [
+    protected const array EXTENSION_TO_FORM = [
         'JPEG' => 'JPG',
         'TIFF' => 'TIF',
     ];
 
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE' => '0:1',
     ];
 

@@ -29,7 +29,7 @@ use function parse_ini_file;
 
 final class Console extends Application
 {
-    private const COMMANDS = [
+    private const array COMMANDS = [
         Commands\CompilePoFiles::class,
         Commands\TreeCreate::class,
         Commands\TreeList::class,

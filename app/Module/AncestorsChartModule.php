@@ -40,24 +40,24 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/ancestors-{style}-{generations}/{xref}';
+    protected const string ROUTE_URL = '/tree/{tree}/ancestors-{style}-{generations}/{xref}';
 
     // Chart styles
-    public const CHART_STYLE_TREE        = 'tree';
-    public const CHART_STYLE_INDIVIDUALS = 'individuals';
-    public const CHART_STYLE_FAMILIES    = 'families';
+    public const string CHART_STYLE_TREE        = 'tree';
+    public const string CHART_STYLE_INDIVIDUALS = 'individuals';
+    public const string CHART_STYLE_FAMILIES    = 'families';
 
     // Defaults
-    public const DEFAULT_GENERATIONS = '4';
-    public const DEFAULT_STYLE       = self::CHART_STYLE_TREE;
-    protected const DEFAULT_PARAMETERS  = [
+    public const string DEFAULT_GENERATIONS = '4';
+    public const string DEFAULT_STYLE       = self::CHART_STYLE_TREE;
+    protected const array DEFAULT_PARAMETERS  = [
         'generations' => self::DEFAULT_GENERATIONS,
         'style'       => self::DEFAULT_STYLE,
     ];
 
     // Limits
-    protected const MINIMUM_GENERATIONS = 2;
-    protected const MAXIMUM_GENERATIONS = 10;
+    protected const int MINIMUM_GENERATIONS = 2;
+    protected const int MAXIMUM_GENERATIONS = 10;
 
     private ChartService $chart_service;
 

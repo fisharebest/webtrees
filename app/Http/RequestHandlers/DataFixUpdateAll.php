@@ -43,7 +43,7 @@ use const JSON_THROW_ON_ERROR;
 class DataFixUpdateAll implements RequestHandlerInterface
 {
     // Process this number of records in each HTTP request
-    private const CHUNK_SIZE = 250;
+    private const int CHUNK_SIZE = 250;
 
     private DataFixService $data_fix_service;
 

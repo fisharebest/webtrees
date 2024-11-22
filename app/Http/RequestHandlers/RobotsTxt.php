@@ -40,7 +40,7 @@ use const PHP_URL_PATH;
  */
 class RobotsTxt implements RequestHandlerInterface
 {
-    private const DISALLOWED_PATHS = [
+    private const array DISALLOWED_PATHS = [
         'admin',
         'manager',
         'moderator',

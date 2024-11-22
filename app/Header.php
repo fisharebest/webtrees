@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\HeaderPage;
  */
 class Header extends GedcomRecord
 {
-    public const RECORD_TYPE = 'HEAD';
+    public const string RECORD_TYPE = 'HEAD';
 
-    protected const ROUTE_NAME = HeaderPage::class;
+    protected const string ROUTE_NAME = HeaderPage::class;
 
     /**
      * Extract names from the GEDCOM record.

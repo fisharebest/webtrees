@@ -33,26 +33,26 @@ use function uasort;
  */
 class SourceMediaType extends AbstractElement
 {
-    public const VALUE_AUDIO       = 'AUDIO';
-    public const VALUE_BOOK        = 'BOOK';
-    public const VALUE_CARD        = 'CARD';
-    public const VALUE_CERTIFICATE = 'CERTIFICATE';
-    public const VALUE_COAT        = 'COAT';
-    public const VALUE_DOCUMENT    = 'DOCUMENT';
-    public const VALUE_ELECTRONIC  = 'ELECTRONIC';
-    public const VALUE_FICHE       = 'FICHE';
-    public const VALUE_FILM        = 'FILM';
-    public const VALUE_MAGAZINE    = 'MAGAZINE';
-    public const VALUE_MANUSCRIPT  = 'MANUSCRIPT';
-    public const VALUE_MAP         = 'MAP';
-    public const VALUE_NEWSPAPER   = 'NEWSPAPER';
-    public const VALUE_OTHER       = 'OTHER';
-    public const VALUE_PAINTING    = 'PAINTING';
-    public const VALUE_PHOTO       = 'PHOTO';
-    public const VALUE_TOMBSTONE   = 'TOMBSTONE';
-    public const VALUE_VIDEO       = 'VIDEO';
+    public const string VALUE_AUDIO       = 'AUDIO';
+    public const string VALUE_BOOK        = 'BOOK';
+    public const string VALUE_CARD        = 'CARD';
+    public const string VALUE_CERTIFICATE = 'CERTIFICATE';
+    public const string VALUE_COAT        = 'COAT';
+    public const string VALUE_DOCUMENT    = 'DOCUMENT';
+    public const string VALUE_ELECTRONIC  = 'ELECTRONIC';
+    public const string VALUE_FICHE       = 'FICHE';
+    public const string VALUE_FILM        = 'FILM';
+    public const string VALUE_MAGAZINE    = 'MAGAZINE';
+    public const string VALUE_MANUSCRIPT  = 'MANUSCRIPT';
+    public const string VALUE_MAP         = 'MAP';
+    public const string VALUE_NEWSPAPER   = 'NEWSPAPER';
+    public const string VALUE_OTHER       = 'OTHER';
+    public const string VALUE_PAINTING    = 'PAINTING';
+    public const string VALUE_PHOTO       = 'PHOTO';
+    public const string VALUE_TOMBSTONE   = 'TOMBSTONE';
+    public const string VALUE_VIDEO       = 'VIDEO';
 
-    protected const MAXIMUM_LENGTH = 15;
+    protected const int MAXIMUM_LENGTH = 15;
 
     /**
      * Convert a value to a canonical form.

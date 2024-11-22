@@ -34,7 +34,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
 {
     use ModuleLanguageTrait;
 
-    protected const MALE_COUSINS = [
+    protected const array MALE_COUSINS = [
         ['', ''],
         ['bratranec', '%s bratranca'],
         ['druhostupňový bratranec', '%s druhostupňového bratranca'],
@@ -55,7 +55,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
         ['bratranec zo 17. kolena', '%s bratranca zo 17. kolena'],
     ];
 
-    protected const FEMALE_COUSINS = [
+    protected const array FEMALE_COUSINS = [
         ['', ''],
         ['sesternica', '%s sesternice'],
         ['druhostupňová sesternica', '%s druhostupňovej sesternice'],

@@ -28,7 +28,7 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
 {
     // British English changes "three-times" to "thrice"
-    protected const REMOVED = [
+    protected const array REMOVED = [
         '',
         ' once removed',
         ' twice removed',

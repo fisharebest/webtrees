@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
  */
 class Submitter extends GedcomRecord
 {
-    public const RECORD_TYPE = 'SUBM';
+    public const string RECORD_TYPE = 'SUBM';
 
-    protected const ROUTE_NAME = SubmitterPage::class;
+    protected const string ROUTE_NAME = SubmitterPage::class;
 
     /**
      * Extract names from the GEDCOM record.

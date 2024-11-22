@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
 class JulianDate extends AbstractGregorianJulianDate
 {
     // GEDCOM calendar escape
-    public const ESCAPE = '@#DJULIAN@';
+    public const string ESCAPE = '@#DJULIAN@';
 
     // For dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44
     private bool $new_old_style = false;

@@ -36,16 +36,16 @@ use function in_array;
 class DefaultSurnameTradition implements SurnameTraditionInterface
 {
     /** Extract a GIVN from a NAME */
-    protected const REGEX_GIVN = '~^(?<GIVN>[^/ ]+)~';
+    protected const string REGEX_GIVN = '~^(?<GIVN>[^/ ]+)~';
 
     /** Extract a SPFX and SURN from a NAME */
-    protected const REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z’\']{0,4}(?: [a-z’\']{1,4})*) ?(?<SURN>[^/]*)/)~';
+    protected const string REGEX_SPFX_SURN = '~(?<NAME>/(?<SPFX>[a-z’\']{0,4}(?: [a-z’\']{1,4})*) ?(?<SURN>[^/]*)/)~';
 
     /** Extract a simple SURN from a NAME */
-    protected const REGEX_SURN = '~(?<NAME>/(?<SURN>[^/]+)/)~';
+    protected const string REGEX_SURN = '~(?<NAME>/(?<SURN>[^/]+)/)~';
 
     /** Extract two Spanish/Portuguese SURNs from a NAME */
-    protected const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
+    protected const string REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
 
     /**
      * The name of this surname tradition

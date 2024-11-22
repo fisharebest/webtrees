@@ -27,7 +27,7 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 class GregorianDate extends AbstractGregorianJulianDate
 {
     // GEDCOM calendar escape
-    public const ESCAPE = '@#DGREGORIAN@';
+    public const string ESCAPE = '@#DGREGORIAN@';
 
     /**
      * Create a date from either:

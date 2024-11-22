@@ -62,24 +62,24 @@ use const PHP_VERSION;
 class UpgradeService
 {
     // Options for fetching files using GuzzleHTTP
-    private const GUZZLE_OPTIONS = [
+    private const array GUZZLE_OPTIONS = [
         'connect_timeout' => 25,
         'read_timeout'    => 25,
         'timeout'         => 55,
     ];
 
     // Transfer stream data in blocks of this number of bytes.
-    private const READ_BLOCK_SIZE = 65535;
+    private const int READ_BLOCK_SIZE = 65535;
 
     // Only check the webtrees server once per day.
-    private const CHECK_FOR_UPDATE_INTERVAL = 24 * 60 * 60;
+    private const int CHECK_FOR_UPDATE_INTERVAL = 24 * 60 * 60;
 
     // Fetch information about upgrades from here.
     // Note: earlier versions of webtrees used svn.webtrees.net, so we must maintain both URLs.
-    private const UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
+    private const string UPDATE_URL = 'https://dev.webtrees.net/build/latest-version.txt';
 
     // If the update server doesn't respond after this time, give up.
-    private const HTTP_TIMEOUT = 3.0;
+    private const float HTTP_TIMEOUT = 3.0;
 
     private TimeoutService $timeout_service;
 

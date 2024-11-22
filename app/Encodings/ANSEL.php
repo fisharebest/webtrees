@@ -91,9 +91,9 @@ use function strtr;
  */
 class ANSEL extends AbstractEncoding
 {
-    public const NAME = 'ANSEL';
+    public const string NAME = 'ANSEL';
 
-    protected const TO_UTF8 = [
+    protected const array TO_UTF8 = [
         "\x80" => UTF8::REPLACEMENT_CHARACTER,
         "\x81" => UTF8::REPLACEMENT_CHARACTER,
         "\x82" => UTF8::REPLACEMENT_CHARACTER,
@@ -225,7 +225,7 @@ class ANSEL extends AbstractEncoding
     ];
 
     // The subset of pre-composed UTF8 characters that can be made from ANSEL characters.
-    private const PRECOMPOSED_CHARACTERS = [
+    private const array PRECOMPOSED_CHARACTERS = [
         'A' . UTF8::COMBINING_ACUTE_ACCENT                                      => UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
         'A' . UTF8::COMBINING_BREVE                                             => UTF8::LATIN_CAPITAL_LETTER_A_WITH_BREVE,
         'A' . UTF8::COMBINING_BREVE . UTF8::COMBINING_ACUTE_ACCENT              => UTF8::LATIN_CAPITAL_LETTER_A_WITH_BREVE_AND_ACUTE,
@@ -640,13 +640,13 @@ class ANSEL extends AbstractEncoding
     ];
 
     // ANSEL supports O and U with a horn diacritic, but not the combining diacritic.
-    private const HORN_CONVERT_STEP_1 = [
+    private const array HORN_CONVERT_STEP_1 = [
         'O' . UTF8::COMBINING_HORN => "\x00O_WITH_HORN\x00",
         'U' . UTF8::COMBINING_HORN => "\x00U_WITH_HORN\x00",
         'o' . UTF8::COMBINING_HORN => "\x00o_WITH_HORN\x00",
         'u' . UTF8::COMBINING_HORN => "\x00u_WITH_HORN\x00",
     ];
-    private const HORN_CONVERT_STEP_2 = [
+    private const array HORN_CONVERT_STEP_2 = [
         "\x00O_WITH_HORN\x00" => "\xAC",
         "\x00U_WITH_HORN\x00" => "\xAD",
         "\x00o_WITH_HORN\x00" => "\xBC",

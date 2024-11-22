@@ -28,7 +28,7 @@ use function trim;
 class ReportBaseElement
 {
     // Special value for X or Y position, to indicate the current position.
-    public const CURRENT_POSITION = -1.0;
+    public const float CURRENT_POSITION = -1.0;
 
     public string $text = '';
 

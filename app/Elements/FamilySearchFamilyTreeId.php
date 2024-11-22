@@ -28,9 +28,9 @@ use function strtoupper;
  */
 class FamilySearchFamilyTreeId extends AbstractExternalLink
 {
-    protected const EXTERNAL_URL = 'https://www.familysearch.org/tree/person/details/{ID}';
+    protected const string EXTERNAL_URL = 'https://www.familysearch.org/tree/person/details/{ID}';
 
-    protected const MAXIMUM_LENGTH = 8;
+    protected const int MAXIMUM_LENGTH = 8;
 
     /**
      * Convert a value to a canonical form.

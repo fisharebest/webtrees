@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class MediaRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'FILE' => '1:M',
         'REFN' => '0:M',
         'RIN'  => '0:1',

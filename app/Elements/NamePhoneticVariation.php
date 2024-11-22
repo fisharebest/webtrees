@@ -29,7 +29,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NamePhoneticVariation extends NamePersonal
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE' => '1:1',
         'NPFX' => '0:1',
         'GIVN' => '0:1',

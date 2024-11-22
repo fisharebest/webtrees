@@ -33,7 +33,7 @@ use function strtoupper;
  */
 class FamilyStatusText extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE' => '0:1',
         'PLAC' => '0:1',
         'NOTE' => '0:M',

@@ -51,31 +51,31 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 {
     use ModuleChartTrait;
 
-    public const X_AXIS_INDIVIDUAL_MAP        = 1;
-    public const X_AXIS_BIRTH_MAP             = 2;
-    public const X_AXIS_DEATH_MAP             = 3;
-    public const X_AXIS_MARRIAGE_MAP          = 4;
-    public const X_AXIS_BIRTH_MONTH           = 11;
-    public const X_AXIS_DEATH_MONTH           = 12;
-    public const X_AXIS_MARRIAGE_MONTH        = 13;
-    public const X_AXIS_FIRST_CHILD_MONTH     = 14;
-    public const X_AXIS_FIRST_MARRIAGE_MONTH  = 15;
-    public const X_AXIS_AGE_AT_DEATH          = 18;
-    public const X_AXIS_AGE_AT_MARRIAGE       = 19;
-    public const X_AXIS_AGE_AT_FIRST_MARRIAGE = 20;
-    public const X_AXIS_NUMBER_OF_CHILDREN    = 21;
+    public const int X_AXIS_INDIVIDUAL_MAP = 1;
+    public const int X_AXIS_BIRTH_MAP      = 2;
+    public const int X_AXIS_DEATH_MAP          = 3;
+    public const int X_AXIS_MARRIAGE_MAP          = 4;
+    public const int X_AXIS_BIRTH_MONTH           = 11;
+    public const int X_AXIS_DEATH_MONTH           = 12;
+    public const int X_AXIS_MARRIAGE_MONTH        = 13;
+    public const int X_AXIS_FIRST_CHILD_MONTH     = 14;
+    public const int X_AXIS_FIRST_MARRIAGE_MONTH  = 15;
+    public const int X_AXIS_AGE_AT_DEATH          = 18;
+    public const int X_AXIS_AGE_AT_MARRIAGE       = 19;
+    public const int X_AXIS_AGE_AT_FIRST_MARRIAGE = 20;
+    public const int X_AXIS_NUMBER_OF_CHILDREN    = 21;
 
-    public const Y_AXIS_NUMBERS = 201;
-    public const Y_AXIS_PERCENT = 202;
+    public const int Y_AXIS_NUMBERS = 201;
+    public const int Y_AXIS_PERCENT = 202;
 
-    public const Z_AXIS_ALL  = 300;
-    public const Z_AXIS_SEX  = 301;
-    public const Z_AXIS_TIME = 302;
+    public const int Z_AXIS_ALL  = 300;
+    public const int Z_AXIS_SEX  = 301;
+    public const int Z_AXIS_TIME = 302;
 
     // First two colors are blue/pink, to work with Z_AXIS_SEX.
-    private const Z_AXIS_COLORS = ['0000FF', 'FFA0CB', '9F00FF', 'FF7000', '905030', 'FF0000', '00FF00', 'F0F000'];
+    private const array Z_AXIS_COLORS = ['0000FF', 'FFA0CB', '9F00FF', 'FF7000', '905030', 'FF0000', '00FF00', 'F0F000'];
 
-    private const DAYS_IN_YEAR = 365.25;
+    private const float DAYS_IN_YEAR = 365.25;
 
     /**
      * How should this module be identified in the control panel, etc.?

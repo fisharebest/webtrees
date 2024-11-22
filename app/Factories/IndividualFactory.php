@@ -33,7 +33,7 @@ use function preg_match;
  */
 class IndividualFactory extends AbstractGedcomRecordFactory implements IndividualFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Individual::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Individual::RECORD_TYPE . '/';
 
     /**
      * Create an individual.

@@ -62,7 +62,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/branches{/surname}';
+    protected const string ROUTE_URL = '/tree/{tree}/branches{/surname}';
 
     private ModuleService $module_service;
 

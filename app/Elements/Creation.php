@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class Creation extends EmptyElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE' => '1:1',
     ];
 }

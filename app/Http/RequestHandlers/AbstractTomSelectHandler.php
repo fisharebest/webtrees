@@ -34,7 +34,7 @@ use function response;
 abstract class AbstractTomSelectHandler implements RequestHandlerInterface
 {
     // For clients that request one page of data at a time.
-    private const RESULTS_PER_PAGE = 50;
+    private const int RESULTS_PER_PAGE = 50;
 
     /**
      * @param ServerRequestInterface $request

@@ -34,7 +34,7 @@ use function preg_match;
  */
 class RepositoryFactory extends AbstractGedcomRecordFactory implements RepositoryFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Repository::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Repository::RECORD_TYPE . '/';
 
     /**
      * Create a repository.

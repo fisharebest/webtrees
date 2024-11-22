@@ -33,7 +33,7 @@ use function preg_match;
  */
 class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Note::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Note::RECORD_TYPE . '/';
 
     /**
      * Create a note.

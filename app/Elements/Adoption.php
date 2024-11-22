@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class Adoption extends AbstractEventElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE'  => '0:1:?',
         'FAMC'  => '0:1',
         'DATE'  => '0:1',

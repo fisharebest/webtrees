@@ -36,7 +36,7 @@ use function view;
  */
 class HelpText implements RequestHandlerInterface
 {
-    private const FRENCH_DATES = [
+    private const array FRENCH_DATES = [
         '@#DFRENCH R@ 12',
         '@#DFRENCH R@ VEND 12',
         'ABT @#DFRENCH R@ BRUM 12',
@@ -51,7 +51,7 @@ class HelpText implements RequestHandlerInterface
         '@#DFRENCH R@ 03 COMP 12',
     ];
 
-    private const HIJRI_DATES = [
+    private const array HIJRI_DATES = [
         '@#DHIJRI@ 1497',
         '@#DHIJRI@ MUHAR 1497',
         'ABT @#DHIJRI@ SAFAR 1497',
@@ -65,7 +65,7 @@ class HelpText implements RequestHandlerInterface
         '@#DHIJRI@ 03 DHUAH 1497',
     ];
 
-    private const JALALI_DATES = [
+    private const array JALALI_DATES = [
         '@#DJALALI@ 1497',
         '@#DJALALI@ FARVA 1497',
         'ABT @#DJALALI@ ORDIB 1497',
@@ -79,7 +79,7 @@ class HelpText implements RequestHandlerInterface
         '@#DJALALI@ 03 XXXXX 1497',
     ];
 
-    private const JEWISH_DATES = [
+    private const array JEWISH_DATES = [
         '@#DHEBREW@ 5481',
         '@#DHEBREW@ TSH 5481',
         'ABT @#DHEBREW@ CSH 5481',
@@ -95,14 +95,14 @@ class HelpText implements RequestHandlerInterface
         '@#DHEBREW@ 03 ELL 5481',
     ];
 
-    private const JULIAN_DATES = [
+    private const array JULIAN_DATES = [
         '@#DJULIAN@ 14 JAN 1700',
         '@#DJULIAN@ 44 B.C.',
         '@#DJULIAN@ 20 FEB 1742/43',
         'BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752',
     ];
 
-    private const DATE_SHORTCUTS = [
+    private const array DATE_SHORTCUTS = [
         '1900'           => [],
         'JAN 1900'       => [],
         'FEB 1900'       => [],
@@ -122,7 +122,7 @@ class HelpText implements RequestHandlerInterface
         'INT 1900 (...)' => [],
     ];
 
-    private const DATE_RANGE_SHORTCUTS = [
+    private const array DATE_RANGE_SHORTCUTS = [
         'BET 1900 AND 1910'         => ['1900-1910'],
         'AFT 1900'                  => ['>1900'],
         'BEF 1910'                  => ['<1910'],
@@ -132,13 +132,13 @@ class HelpText implements RequestHandlerInterface
         'BET OCT 1900 AND DEC 1900' => ['Q4 1900'],
     ];
 
-    private const DATE_PERIOD_SHORTCUTS = [
+    private const array DATE_PERIOD_SHORTCUTS = [
         'FROM 1900 TO 1910' => ['1900~1910'],
         'FROM 1900'         => ['1900-'],
         'TO 1910'           => ['-1900'],
     ];
 
-    private const DMY_SHORTCUTS = [
+    private const array DMY_SHORTCUTS = [
         '11 DEC 1913' => [
             '11/12/1913',
             '11-12-1913',
@@ -151,7 +151,7 @@ class HelpText implements RequestHandlerInterface
         ],
     ];
 
-    private const MDY_SHORTCUTS = [
+    private const array MDY_SHORTCUTS = [
         '11 DEC 1913' => [
             '12/11/1913',
             '12-11-1913',
@@ -164,7 +164,7 @@ class HelpText implements RequestHandlerInterface
         ],
     ];
 
-    private const YMD_SHORTCUTS = [
+    private const array YMD_SHORTCUTS = [
         '11 DEC 1913' => [
             '11/12/1913',
             '11-12-1913',

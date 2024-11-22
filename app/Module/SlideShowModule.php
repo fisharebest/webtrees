@@ -44,15 +44,15 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
     use ModuleBlockTrait;
 
     // Show media linked to events or individuals.
-    private const LINK_ALL        = 'all';
-    private const LINK_EVENT      = 'event';
-    private const LINK_INDIVIDUAL = 'indi';
+    private const string LINK_ALL   = 'all';
+    private const string LINK_EVENT      = 'event';
+    private const string LINK_INDIVIDUAL = 'indi';
 
     // How long to show each slide (seconds)
-    private const DELAY = 6;
+    private const int DELAY = 6;
 
     // New data is normalized.  Old data may contain jpg/jpeg, tif/tiff.
-    private const SUPPORTED_FORMATS = ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'tif', 'tiff', 'webp'];
+    private const array SUPPORTED_FORMATS = ['bmp', 'gif', 'jpeg', 'jpg', 'png', 'tif', 'tiff', 'webp'];
 
     private LinkedRecordService $linked_record_service;
 

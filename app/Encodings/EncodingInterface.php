@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Encodings;
 interface EncodingInterface
 {
     // Concrete classes should re-define this.  Use the ICONV name, where possible.
-    //public const NAME = '????';
+    //public const string NAME = '????';
 
     /**
      * Convert a string from UTF-8 encoding to another encoding.

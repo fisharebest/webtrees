@@ -40,10 +40,10 @@ use function round;
 class MapDataService
 {
     // Location of files to import
-    public const PLACES_FOLDER = 'places/';
+    public const string PLACES_FOLDER = 'places/';
 
     // Format of CSV files
-    public const CSV_SEPARATOR = ';';
+    public const string CSV_SEPARATOR = ';';
 
     /**
      * @param int $id

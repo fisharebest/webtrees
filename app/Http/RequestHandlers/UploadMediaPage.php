@@ -37,7 +37,7 @@ class UploadMediaPage implements RequestHandlerInterface
     use ViewResponseTrait;
 
     // How many files to upload on one form.
-    private const MAX_UPLOAD_FILES = 10;
+    private const int MAX_UPLOAD_FILES = 10;
 
     private MediaFileService $media_file_service;
 

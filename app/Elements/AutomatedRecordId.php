@@ -28,5 +28,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class AutomatedRecordId extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 12;
+    protected const int MAXIMUM_LENGTH = 12;
 }

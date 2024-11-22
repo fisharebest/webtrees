@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Individual;
 class LithuanianSurnameTradition extends PaternalSurnameTradition
 {
     // Inflect a surname for wives
-    private const INFLECT_WIFE = [
+    private const array INFLECT_WIFE = [
         'as\b' => 'ienė',
         'is\b' => 'ienė',
         'ys\b' => 'ienė',
@@ -37,7 +37,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     ];
 
     // Inflect a surname for daughters
-    private const INFLECT_DAUGHTER = [
+    private const array INFLECT_DAUGHTER = [
         'a\b'   => 'aitė',
         'as\b'  => 'aitė',
         'is\b'  => 'ytė',
@@ -47,7 +47,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
     ];
 
     // Inflect a surname for males
-    private const INFLECT_MALE = [
+    private const array INFLECT_MALE = [
         'aitė\b' => 'as',
         'ytė\b'  => 'is',
         'iūtė\b' => 'ius',

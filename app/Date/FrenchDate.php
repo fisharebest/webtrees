@@ -29,10 +29,10 @@ use Fisharebest\Webtrees\Services\RomanNumeralsService;
 class FrenchDate extends AbstractCalendarDate
 {
     // GEDCOM calendar escape
-    public const ESCAPE = '@#DFRENCH R@';
+    public const string ESCAPE = '@#DFRENCH R@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_TO_NUMBER = [
+    protected const array MONTH_TO_NUMBER = [
         'VEND' => 1,
         'BRUM' => 2,
         'FRIM' => 3,
@@ -48,7 +48,7 @@ class FrenchDate extends AbstractCalendarDate
         'COMP' => 13,
     ];
 
-    protected const NUMBER_TO_MONTH = [
+    protected const array NUMBER_TO_MONTH = [
         1 => 'VEND',
         2 => 'BRUM',
         3 => 'FRIM',

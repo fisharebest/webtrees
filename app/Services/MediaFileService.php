@@ -64,7 +64,7 @@ use const UPLOAD_ERR_OK;
  */
 class MediaFileService
 {
-    private const IGNORE_FOLDERS = [
+    private const array IGNORE_FOLDERS = [
         // Old versions of webtrees
         'thumbs',
         'watermarks',

@@ -25,26 +25,26 @@ namespace Fisharebest\Webtrees\Census;
 class CensusColumnConditionDanish extends CensusColumnConditionEnglish
 {
     // Text to display for married males
-    protected const HUSBAND = 'Gift';
+    protected const string HUSBAND = 'Gift';
 
     // Text to display for married females
-    protected const WIFE = 'Gift';
+    protected const string WIFE = 'Gift';
 
     // Text to display for married unmarried males
-    protected const BACHELOR = 'Ugift';
+    protected const string BACHELOR = 'Ugift';
 
     // Text to display for married unmarried females
-    protected const SPINSTER = 'Ugift';
+    protected const string SPINSTER = 'Ugift';
 
     // Text to display for divorced males
-    protected const DIVORCE = 'Skilt';
+    protected const string DIVORCE = 'Skilt';
 
     // Text to display for divorced females
-    protected const DIVORCEE = 'Skilt';
+    protected const string DIVORCEE = 'Skilt';
 
     // Text to display for widowed males
-    protected const WIDOWER = 'Gift';
+    protected const string WIDOWER = 'Gift';
 
     // Text to display for widowed females
-    protected const WIDOW = 'Gift';
+    protected const string WIDOW = 'Gift';
 }

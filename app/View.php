@@ -46,9 +46,9 @@ use const EXTR_OVERWRITE;
  */
 class View
 {
-    public const NAMESPACE_SEPARATOR = '::';
+    public const string NAMESPACE_SEPARATOR = '::';
 
-    private const TEMPLATE_EXTENSION = '.phtml';
+    private const string TEMPLATE_EXTENSION = '.phtml';
 
     private string $name;
 

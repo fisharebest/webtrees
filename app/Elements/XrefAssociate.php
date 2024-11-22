@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class XrefAssociate extends XrefIndividual
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'RELA' => '0:1',
         'NOTE' => '0:M',
         'SOUR' => '0:M',

@@ -37,7 +37,7 @@ use function strtoupper;
  */
 class LdsEndowmentDateStatus extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE' => '0:1',
     ];
 

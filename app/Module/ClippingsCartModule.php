@@ -83,17 +83,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     use ModuleMenuTrait;
 
     // What to add to the cart?
-    private const ADD_RECORD_ONLY        = 'record';
-    private const ADD_CHILDREN           = 'children';
-    private const ADD_DESCENDANTS        = 'descendants';
-    private const ADD_PARENT_FAMILIES    = 'parents';
-    private const ADD_SPOUSE_FAMILIES    = 'spouses';
-    private const ADD_ANCESTORS          = 'ancestors';
-    private const ADD_ANCESTOR_FAMILIES  = 'families';
-    private const ADD_LINKED_INDIVIDUALS = 'linked';
+    private const string ADD_RECORD_ONLY        = 'record';
+    private const string ADD_CHILDREN           = 'children';
+    private const string ADD_DESCENDANTS        = 'descendants';
+    private const string ADD_PARENT_FAMILIES    = 'parents';
+    private const string ADD_SPOUSE_FAMILIES    = 'spouses';
+    private const string ADD_ANCESTORS          = 'ancestors';
+    private const string ADD_ANCESTOR_FAMILIES  = 'families';
+    private const string ADD_LINKED_INDIVIDUALS = 'linked';
 
     // Routes that have a record which can be added to the clipboard
-    private const ROUTES_WITH_RECORDS = [
+    private const array ROUTES_WITH_RECORDS = [
         'Family'     => FamilyPage::class,
         'Individual' => IndividualPage::class,
         'Media'      => MediaPage::class,

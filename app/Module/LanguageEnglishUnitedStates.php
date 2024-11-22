@@ -34,7 +34,7 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
 {
     use ModuleLanguageTrait;
 
-    protected const COUSIN = [
+    protected const array COUSIN = [
         'sibling',
         'first cousin',
         'second cousin',
@@ -68,7 +68,7 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
         'thirtieth cousin',
     ];
 
-    protected const REMOVED = [
+    protected const array REMOVED = [
         '',
         ' once removed',
         ' twice removed',
@@ -101,7 +101,7 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
         ' twenty-nine times removed',
     ];
 
-    protected const DIRECTION = [
+    protected const array DIRECTION = [
         -1 => ' descending',
         0  => '',
         1  => ' ascending',

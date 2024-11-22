@@ -34,7 +34,7 @@ use function is_array;
 class ClipboardService
 {
     // Maximum number of entries in the clipboard.
-    private const CLIPBOARD_SIZE = 10;
+    private const int CLIPBOARD_SIZE = 10;
 
     /**
      * Copy a fact to the clipboard.

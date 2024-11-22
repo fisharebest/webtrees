@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Tree;
 
 abstract class AbstractElementTestCase extends TestCase
 {
-    private const EVIL_VALUE = '<script>evil()</script>';
-    private const TEST_VALUE = '01 JAN 1970';
+    private const string EVIL_VALUE = '<script>evil()</script>';
+    private const string TEST_VALUE = '01 JAN 1970';
 
     protected static ElementInterface $element;
 

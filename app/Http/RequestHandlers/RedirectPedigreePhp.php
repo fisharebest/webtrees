@@ -39,7 +39,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class RedirectPedigreePhp implements RequestHandlerInterface
 {
-    private const CHART_STYLES = [
+    private const array CHART_STYLES = [
         0 => 'right',
         1 => 'right',
         2 => 'top',

@@ -36,15 +36,15 @@ use function strtoupper;
  */
 class NameType extends AbstractElement
 {
-    public const VALUE_ADOPTED   = 'ADOPTED';
-    public const VALUE_AKA       = 'AKA';
-    public const VALUE_BIRTH     = 'BIRTH';
-    public const VALUE_CHANGE    = 'CHANGE';
-    public const VALUE_ESTATE    = 'ESTATE';
-    public const VALUE_IMMIGRANT = 'IMMIGRANT';
-    public const VALUE_MAIDEN    = 'MAIDEN';
-    public const VALUE_MARRIED   = 'MARRIED';
-    public const VALUE_RELIGIOUS = 'RELIGIOUS';
+    public const string VALUE_ADOPTED   = 'ADOPTED';
+    public const string VALUE_AKA       = 'AKA';
+    public const string VALUE_BIRTH     = 'BIRTH';
+    public const string VALUE_CHANGE    = 'CHANGE';
+    public const string VALUE_ESTATE    = 'ESTATE';
+    public const string VALUE_IMMIGRANT = 'IMMIGRANT';
+    public const string VALUE_MAIDEN    = 'MAIDEN';
+    public const string VALUE_MARRIED   = 'MARRIED';
+    public const string VALUE_RELIGIOUS = 'RELIGIOUS';
 
     /**
      * Convert a value to a canonical form.

@@ -34,21 +34,21 @@ use Psr\Http\Server\RequestHandlerInterface;
 class DoHousekeeping implements MiddlewareInterface
 {
     // Delete old thumbnails after 90 days.
-    private const THUMBNAIL_DIR     = 'thumbnail-cache';
-    private const MAX_THUMBNAIL_AGE = 60 * 60 * 24 * 90;
+    private const string THUMBNAIL_DIR = 'thumbnail-cache';
+    private const int MAX_THUMBNAIL_AGE    = 60 * 60 * 24 * 90;
 
     // Delete files in /data/tmp after 1 hour.
-    private const TMP_DIR          = 'data/tmp';
-    private const MAX_TMP_FILE_AGE = 60 * 60;
+    private const string TMP_DIR   = 'data/tmp';
+    private const int    MAX_TMP_FILE_AGE = 60 * 60;
 
     // Delete error logs after 90 days.
-    private const MAX_LOG_AGE = 60 * 60 * 24 * 90;
+    private const int MAX_LOG_AGE = 60 * 60 * 24 * 90;
 
     // Delete inactive sessions after 1 day.
-    private const MAX_SESSION_AGE = 60 * 60 * 24;
+    private const int MAX_SESSION_AGE = 60 * 60 * 24;
 
     // Run the cleanup every N requests.
-    private const PROBABILITY = 250;
+    private const int PROBABILITY = 250;
 
     private HousekeepingService $housekeeping_service;
 

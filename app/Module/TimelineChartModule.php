@@ -45,20 +45,20 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/timeline-{scale}';
+    protected const string ROUTE_URL = '/tree/{tree}/timeline-{scale}';
 
     // Defaults
-    protected const DEFAULT_SCALE      = 10;
-    protected const DEFAULT_PARAMETERS = [
+    protected const int DEFAULT_SCALE        = 10;
+    protected const array DEFAULT_PARAMETERS = [
         'scale' => self::DEFAULT_SCALE,
     ];
 
     // Limits
-    protected const MINIMUM_SCALE = 1;
-    protected const MAXIMUM_SCALE = 200;
+    protected const int MINIMUM_SCALE = 1;
+    protected const int MAXIMUM_SCALE = 200;
 
     // GEDCOM events that may have DATE data, but should not be displayed
-    protected const NON_FACTS = [
+    protected const array NON_FACTS = [
         'FAM:CHAN',
         'INDI:BAPL',
         'INDI:CHAN',
@@ -68,7 +68,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         'INDI:_TODO',
     ];
 
-    protected const BOX_HEIGHT = 30;
+    protected const int BOX_HEIGHT = 30;
 
     /**
      * Initialization.

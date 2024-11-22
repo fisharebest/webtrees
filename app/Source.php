@@ -26,9 +26,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
  */
 class Source extends GedcomRecord
 {
-    public const RECORD_TYPE = 'SOUR';
+    public const string RECORD_TYPE = 'SOUR';
 
-    protected const ROUTE_NAME = SourcePage::class;
+    protected const string ROUTE_NAME = SourcePage::class;
 
     /**
      * Each object type may have its own special rules, and re-implement this function.

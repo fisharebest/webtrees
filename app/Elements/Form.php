@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class Form extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 20;
+    protected const int MAXIMUM_LENGTH = 20;
 
     /**
      * Convert a value to a canonical form.

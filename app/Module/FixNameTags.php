@@ -41,7 +41,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
     use ModuleDataFixTrait;
 
     // https://legacyfamilytree.se/WEB_US/user_defined_gedcom_tags.htm
-    private const CONVERT = [
+    private const array CONVERT = [
         '_ADPN'  => NameType::VALUE_ADOPTED,
         '_AKA'   => NameType::VALUE_AKA,
         '_AKAN'  => NameType::VALUE_AKA,

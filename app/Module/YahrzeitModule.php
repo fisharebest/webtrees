@@ -45,16 +45,16 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     use ModuleBlockTrait;
 
     // Default values for new blocks.
-    private const DEFAULT_CALENDAR = 'jewish';
-    private const DEFAULT_DAYS     = '7';
-    private const DEFAULT_STYLE    = 'table';
+    private const string DEFAULT_CALENDAR = 'jewish';
+    private const string DEFAULT_DAYS  = '7';
+    private const string DEFAULT_STYLE = 'table';
 
     // Can show this number of days into the future.
-    private const MAX_DAYS = 30;
+    private const int MAX_DAYS = 30;
 
     // Pagination
-    private const LIMIT_LOW  = 10;
-    private const LIMIT_HIGH = 20;
+    private const int LIMIT_LOW  = 10;
+    private const int LIMIT_HIGH = 20;
 
     /**
      * How should this module be identified in the control panel, etc.?

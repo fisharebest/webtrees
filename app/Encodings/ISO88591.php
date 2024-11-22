@@ -26,9 +26,9 @@ namespace Fisharebest\Webtrees\Encodings;
  */
 class ISO88591 extends AbstractEncoding
 {
-    public const NAME = 'ISO-8859-1';
+    public const string NAME = 'ISO-8859-1';
 
-    protected const TO_UTF8 = [
+    protected const array TO_UTF8 = [
         "\x80" => UTF8::REPLACEMENT_CHARACTER,
         "\x81" => UTF8::REPLACEMENT_CHARACTER,
         "\x82" => UTF8::REPLACEMENT_CHARACTER,

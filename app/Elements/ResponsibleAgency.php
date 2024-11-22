@@ -28,5 +28,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class ResponsibleAgency extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 120;
+    protected const int MAXIMUM_LENGTH = 120;
 }

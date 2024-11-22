@@ -52,7 +52,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/media-list';
+    protected const string ROUTE_URL = '/tree/{tree}/media-list';
 
     private LinkedRecordService $linked_record_service;
 

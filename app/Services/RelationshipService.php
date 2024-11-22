@@ -47,7 +47,7 @@ use function substr;
  */
 class RelationshipService
 {
-    private const COMPONENTS = [
+    private const array COMPONENTS = [
         'CHIL' => [
             'CHIL' => Relationship::SIBLINGS,
             'HUSB' => Relationship::PARENTS,

@@ -34,7 +34,7 @@ use const PATHINFO_EXTENSION;
  */
 class NameOfFamilyFile extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 120;
+    protected const int MAXIMUM_LENGTH = 120;
 
     /**
      * Create a default value for this element.

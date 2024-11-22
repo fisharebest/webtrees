@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class RepositoryRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'NAME'  => '0:1',
         'ADDR'  => '0:1',
         'PHON'  => '0:1',

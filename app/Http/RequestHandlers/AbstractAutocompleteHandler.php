@@ -33,10 +33,10 @@ use function response;
 abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
 {
     // The client software only shows the first few results
-    protected const LIMIT = 10;
+    protected const int LIMIT = 10;
 
     // Tell the browser to cache the results
-    protected const CACHE_LIFE = 1200;
+    protected const int CACHE_LIFE = 1200;
 
     protected SearchService $search_service;
 

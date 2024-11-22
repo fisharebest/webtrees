@@ -24,5 +24,5 @@ namespace Fisharebest\Webtrees\Census;
  */
 class CensusColumnSexMZ extends CensusColumnSexMF
 {
-    protected const FEMALE = 'Ž';
+    protected const string FEMALE = 'Ž';
 }

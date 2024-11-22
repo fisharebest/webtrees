@@ -37,7 +37,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
-    protected const ICONS = [
+    protected const array ICONS = [
         'FAM:CENS'  => ['color' => 'darkcyan', 'name' => 'list fas'],
         'FAM:MARR'  => ['color' => 'green', 'name' => 'infinity fas'],
         'INDI:BAPM' => ['color' => 'hotpink', 'name' => 'water fas'],
@@ -56,12 +56,12 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         'INDI:RESI' => ['color' => 'darkcyan', 'name' => 'home fas'],
     ];
 
-    protected const OWN_ICONS = [
+    protected const array OWN_ICONS = [
         'INDI:BIRT' => ['color' => 'red', 'name' => 'baby-carriage fas'],
         'INDI:CHR'  => ['color' => 'red', 'name' => 'water fas'],
     ] + self::ICONS;
 
-    protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
+    protected const array DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
 
     private LeafletJsService $leaflet_js_service;
 

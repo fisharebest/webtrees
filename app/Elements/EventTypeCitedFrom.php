@@ -38,13 +38,13 @@ use function uasort;
  */
 class EventTypeCitedFrom extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 15;
+    protected const int MAXIMUM_LENGTH = 15;
 
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'ROLE' => '0:1',
     ];
 
-    protected const FAMILY_EVENTS = [
+    protected const array FAMILY_EVENTS = [
         'ANUL',
         'CENS',
         'DIV',
@@ -58,7 +58,7 @@ class EventTypeCitedFrom extends AbstractElement
         'EVEN',
     ];
 
-    protected const INDIVIDUAL_EVENTS = [
+    protected const array INDIVIDUAL_EVENTS = [
         'ADOP',
         'BIRT',
         'BAPM',
@@ -84,7 +84,7 @@ class EventTypeCitedFrom extends AbstractElement
         'EVEN',
     ];
 
-    protected const ATTRIBUTE_TYPES = [
+    protected const array ATTRIBUTE_TYPES = [
         'CAST',
         'EDUC',
         'NATI',

@@ -39,7 +39,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class RedirectDescendencyPhp implements RequestHandlerInterface
 {
-    private const CHART_STYLES = [
+    private const array CHART_STYLES = [
         0 => 'tree',
         1 => 'tree',
         2 => 'individuals',

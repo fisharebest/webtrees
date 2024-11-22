@@ -30,5 +30,5 @@ namespace Fisharebest\Webtrees\Elements;
 class CountOfChildrenFam extends CountOfChildren
 {
     // FAM:NCHI has no subtags, unlike INDI:NCHI
-    protected const SUBTAGS = [];
+    protected const array SUBTAGS = [];
 }

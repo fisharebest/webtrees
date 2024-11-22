@@ -31,9 +31,9 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NationalIdNumber extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 30;
+    protected const int MAXIMUM_LENGTH = 30;
 
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE'  => '0:1',
         'DATE'  => '0:1',
         'PLAC'  => '0:1',

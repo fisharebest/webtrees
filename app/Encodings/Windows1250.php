@@ -26,9 +26,9 @@ namespace Fisharebest\Webtrees\Encodings;
  */
 class Windows1250 extends AbstractEncoding
 {
-    public const NAME = 'CP1250';
+    public const string NAME = 'CP1250';
 
-    protected const TO_UTF8 = [
+    protected const array TO_UTF8 = [
         "\x80" => UTF8::EURO_SIGN,
         "\x81" => UTF8::REPLACEMENT_CHARACTER,
         "\x82" => UTF8::SINGLE_LOW_9_QUOTATION_MARK,

@@ -34,24 +34,24 @@ class PdfRenderer extends AbstractRenderer
      *
      * @var bool const
      */
-    private const COMPRESSION = true;
+    private const bool COMPRESSION = true;
 
     /**
      * If true reduce the RAM memory usage by caching temporary data on filesystem (slower).
      *
      * @var bool const
      */
-    private const DISK_CACHE = false;
+    private const bool DISK_CACHE = false;
 
     /**
      * true means that the input text is unicode (PDF)
      *
      * @var bool const
      */
-    private const UNICODE = true;
+    private const bool UNICODE = true;
 
     // Font sub-setting in TCPDF is slow.
-    private const SUBSETTING = false;
+    private const bool SUBSETTING = false;
 
     public TcpdfWrapper $tcpdf;
 

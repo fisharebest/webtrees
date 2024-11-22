@@ -24,11 +24,11 @@ namespace Fisharebest\Webtrees\Encodings;
  */
 class ASCII extends AbstractEncoding
 {
-    public const NAME = 'ASCII';
+    public const string NAME = 'ASCII';
 
-    protected const REPLACEMENT_CHARACTER = '?';
+    protected const string REPLACEMENT_CHARACTER = '?';
 
-    protected const TO_UTF8 = [
+    protected const array TO_UTF8 = [
         "\x80" => UTF8::REPLACEMENT_CHARACTER,
         "\x81" => UTF8::REPLACEMENT_CHARACTER,
         "\x82" => UTF8::REPLACEMENT_CHARACTER,

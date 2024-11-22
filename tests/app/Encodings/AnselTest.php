@@ -42,7 +42,7 @@ use const PREG_SPLIT_NO_EMPTY;
 #[CoversClass(UTF8::class)]
 class AnselTest extends TestCase
 {
-    private const TEST_DATA = [
+    private const array TEST_DATA = [
         "\x00\x01\x02\x03\x04\x05\x06\x07"         => "\x00\x01\x02\x03\x04\x05\x06\x07",
         "\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F"         => "\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F",
         "\x10\x11\x12\x13\x14\x15\x16\x17"         => "\x10\x11\x12\x13\x14\x15\x16\x17",
@@ -78,7 +78,7 @@ class AnselTest extends TestCase
         'Ȫ'                                        => "\xE8\xE5O",
     ];
 
-    private const UNPRINTABLE = [
+    private const array UNPRINTABLE = [
         "\x80\x81\x82\x83\x84\x85\x86\x87",
         "\x8A\x8B\x8C\x8F",
         "\x90\x91\x92\x93\x94\x95\x96\x97",
@@ -92,7 +92,7 @@ class AnselTest extends TestCase
         "\xFC\xFD",
     ];
 
-    private const MULTIPART_DIACRITIC = ["\xEC", "\xFB"];
+    private const array MULTIPART_DIACRITIC = ["\xEC", "\xFB"];
 
     public function testPreComposedCharacters(): void
     {

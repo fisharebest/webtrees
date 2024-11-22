@@ -33,33 +33,33 @@ use SensitiveParameter;
 class DB extends Manager
 {
     // Supported drivers
-    public const MYSQL      = 'mysql';
-    public const POSTGRES   = 'pgsql';
-    public const SQLITE     = 'sqlite';
-    public const SQL_SERVER = 'sqlsrv';
+    public const string MYSQL      = 'mysql';
+    public const string POSTGRES   = 'pgsql';
+    public const string SQLITE     = 'sqlite';
+    public const string SQL_SERVER = 'sqlsrv';
 
-    private const COLLATION_ASCII = [
+    private const array COLLATION_ASCII = [
         self::MYSQL      => 'ascii_bin',
         self::POSTGRES   => 'C',
         self::SQLITE     => 'C',
         self::SQL_SERVER => 'Latin1_General_Bin',
     ];
 
-    private const COLLATION_UTF8 = [
+    private const array COLLATION_UTF8 = [
         self::MYSQL      => 'utf8mb4_unicode_ci',
         self::POSTGRES   => 'und-x-icu',
         self::SQLITE     => 'nocase',
         self::SQL_SERVER => 'utf8_CI_AI',
     ];
 
-    private const REGEX_OPERATOR = [
+    private const array REGEX_OPERATOR = [
         self::MYSQL      => 'REGEXP',
         self::POSTGRES   => '~',
         self::SQLITE     => 'REGEXP',
         self::SQL_SERVER => 'REGEXP',
     ];
 
-    private const DRIVER_INITIALIZATION = [
+    private const array DRIVER_INITIALIZATION = [
         self::MYSQL      => "SET NAMES utf8mb4, sql_mode := 'ANSI,STRICT_ALL_TABLES', TIME_ZONE := '+00:00', SQL_BIG_SELECTS := 1, GROUP_CONCAT_MAX_LEN := 1048576",
         self::POSTGRES   => '',
         self::SQLITE     => 'PRAGMA foreign_keys = ON',

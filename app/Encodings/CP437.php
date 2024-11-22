@@ -26,9 +26,9 @@ namespace Fisharebest\Webtrees\Encodings;
  */
 class CP437 extends AbstractEncoding
 {
-    public const NAME = 'CP437';
+    public const string NAME = 'CP437';
 
-    protected const TO_UTF8 = [
+    protected const array TO_UTF8 = [
         "\x80" => UTF8::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,
         "\x81" => UTF8::LATIN_SMALL_LETTER_U_WITH_DIAERESIS,
         "\x82" => UTF8::LATIN_SMALL_LETTER_E_WITH_ACUTE,

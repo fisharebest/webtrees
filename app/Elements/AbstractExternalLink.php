@@ -28,7 +28,7 @@ use function e;
  */
 class AbstractExternalLink extends AbstractElement
 {
-    protected const EXTERNAL_URL = 'https://www.example.com/{ID}';
+    protected const string EXTERNAL_URL = 'https://www.example.com/{ID}';
 
     /**
      * Display the value of this type of element.

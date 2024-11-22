@@ -32,7 +32,7 @@ use function view;
  */
 class NamePieceSurname extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 30;
+    protected const int MAXIMUM_LENGTH = 30;
 
     /**
      * An edit control for this data.

@@ -37,7 +37,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
 {
     use ModuleListTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/source-list';
+    protected const string ROUTE_URL = '/tree/{tree}/source-list';
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected int $access_level = Auth::PRIV_USER;

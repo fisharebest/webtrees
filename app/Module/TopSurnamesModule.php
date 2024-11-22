@@ -48,8 +48,8 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     use ModuleBlockTrait;
 
     // Default values for new blocks.
-    private const DEFAULT_NUMBER = '10';
-    private const DEFAULT_STYLE  = 'table';
+    private const string DEFAULT_NUMBER = '10';
+    private const string DEFAULT_STYLE  = 'table';
 
     private ModuleService $module_service;
 

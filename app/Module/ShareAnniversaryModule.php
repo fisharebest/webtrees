@@ -47,10 +47,10 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
 {
     use ModuleShareTrait;
 
-    protected const INDIVIDUAL_EVENTS = ['BIRT', 'DEAT'];
-    protected const FAMILY_EVENTS     = ['MARR'];
+    protected const array INDIVIDUAL_EVENTS = ['BIRT', 'DEAT'];
+    protected const array FAMILY_EVENTS     = ['MARR'];
 
-    protected const ROUTE_URL = '/tree/{tree}/anniversary-ics/{xref}/{fact_id}';
+    protected const string ROUTE_URL = '/tree/{tree}/anniversary-ics/{xref}/{fact_id}';
 
     /**
      * Initialization.

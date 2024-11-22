@@ -34,5 +34,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class PermanentRecordFileNumber extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 90;
+    protected const int MAXIMUM_LENGTH = 90;
 }

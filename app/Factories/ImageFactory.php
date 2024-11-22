@@ -60,14 +60,14 @@ use const PATHINFO_EXTENSION;
 class ImageFactory implements ImageFactoryInterface
 {
     // Imagick can detect the quality setting for images.  GD cannot.
-    protected const GD_DEFAULT_IMAGE_QUALITY     = 90;
-    protected const GD_DEFAULT_THUMBNAIL_QUALITY = 70;
+    protected const int GD_DEFAULT_IMAGE_QUALITY     = 90;
+    protected const int GD_DEFAULT_THUMBNAIL_QUALITY = 70;
 
-    protected const WATERMARK_FILE = 'resources/img/watermark.png';
+    protected const string WATERMARK_FILE = 'resources/img/watermark.png';
 
-    protected const THUMBNAIL_CACHE_TTL = 8640000;
+    protected const int THUMBNAIL_CACHE_TTL = 8640000;
 
-    public const SUPPORTED_FORMATS = [
+    public const array SUPPORTED_FORMATS = [
         'image/jpeg' => 'jpg',
         'image/png'  => 'png',
         'image/gif'  => 'gif',

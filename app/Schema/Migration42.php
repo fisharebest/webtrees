@@ -35,7 +35,7 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class Migration42 implements MigrationInterface
 {
-    private const COMPONENT_TO_INTERFACE = [
+    private const array COMPONENT_TO_INTERFACE = [
         'block'   => ModuleBlockInterface::class,
         'chart'   => ModuleChartInterface::class,
         'list'    => ModuleListInterface::class,

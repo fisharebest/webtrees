@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NoteRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'SOUR'  => '0:M',
         'REFN'  => '0:1',
         'RIN'   => '0:1',

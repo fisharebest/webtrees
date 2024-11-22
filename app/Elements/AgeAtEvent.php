@@ -49,9 +49,9 @@ use function strtoupper;
  */
 class AgeAtEvent extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 12;
+    protected const int MAXIMUM_LENGTH = 12;
 
-    protected const KEYWORDS = ['CHILD', 'INFANT', 'STILLBORN'];
+    protected const array KEYWORDS = ['CHILD', 'INFANT', 'STILLBORN'];
 
     /**
      * Convert a value to a canonical form.

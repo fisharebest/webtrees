@@ -31,9 +31,9 @@ use function array_unique;
  */
 class Media extends GedcomRecord
 {
-    public const RECORD_TYPE = 'OBJE';
+    public const string RECORD_TYPE = 'OBJE';
 
-    protected const ROUTE_NAME = MediaPage::class;
+    protected const string ROUTE_NAME = MediaPage::class;
 
     /**
      * Each object type may have its own special rules, and re-implement this function.

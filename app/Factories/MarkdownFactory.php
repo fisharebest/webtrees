@@ -50,9 +50,9 @@ use function strtr;
 class MarkdownFactory implements MarkdownFactoryInterface
 {
     // Commonmark uses the self-closing form of this tag, so we do the same for consistency.
-    public const BREAK = '<br />';
+    public const string BREAK = '<br />';
 
-    protected const CONFIG_AUTOLINK = [
+    protected const array CONFIG_AUTOLINK = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
@@ -60,7 +60,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         ],
     ];
 
-    protected const CONFIG_MARKDOWN = [
+    protected const array CONFIG_MARKDOWN = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [

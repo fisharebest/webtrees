@@ -30,7 +30,7 @@ use function uasort;
  */
 class FamilyNonEvent extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE' => '0:1',
         'NOTE' => '0:1',
         'SOUR' => '0:1',

@@ -39,26 +39,26 @@ class MediaRepository implements MediaRepositoryInterface
     /**
      * Available media types.
      */
-    private const MEDIA_TYPE_ALL         = 'all';
-    private const MEDIA_TYPE_AUDIO       = 'audio';
-    private const MEDIA_TYPE_BOOK        = 'book';
-    private const MEDIA_TYPE_CARD        = 'card';
-    private const MEDIA_TYPE_CERTIFICATE = 'certificate';
-    private const MEDIA_TYPE_COAT        = 'coat';
-    private const MEDIA_TYPE_DOCUMENT    = 'document';
-    private const MEDIA_TYPE_ELECTRONIC  = 'electronic';
-    private const MEDIA_TYPE_FICHE       = 'fiche';
-    private const MEDIA_TYPE_FILM        = 'film';
-    private const MEDIA_TYPE_MAGAZINE    = 'magazine';
-    private const MEDIA_TYPE_MANUSCRIPT  = 'manuscript';
-    private const MEDIA_TYPE_MAP         = 'map';
-    private const MEDIA_TYPE_NEWSPAPER   = 'newspaper';
-    private const MEDIA_TYPE_PAINTING    = 'painting';
-    private const MEDIA_TYPE_PHOTO       = 'photo';
-    private const MEDIA_TYPE_TOMBSTONE   = 'tombstone';
-    private const MEDIA_TYPE_VIDEO       = 'video';
-    private const MEDIA_TYPE_OTHER       = 'other';
-    private const MEDIA_TYPE_UNKNOWN     = '';
+    private const string MEDIA_TYPE_ALL         = 'all';
+    private const string MEDIA_TYPE_AUDIO       = 'audio';
+    private const string MEDIA_TYPE_BOOK        = 'book';
+    private const string MEDIA_TYPE_CARD        = 'card';
+    private const string MEDIA_TYPE_CERTIFICATE = 'certificate';
+    private const string MEDIA_TYPE_COAT        = 'coat';
+    private const string MEDIA_TYPE_DOCUMENT    = 'document';
+    private const string MEDIA_TYPE_ELECTRONIC  = 'electronic';
+    private const string MEDIA_TYPE_FICHE       = 'fiche';
+    private const string MEDIA_TYPE_FILM        = 'film';
+    private const string MEDIA_TYPE_MAGAZINE    = 'magazine';
+    private const string MEDIA_TYPE_MANUSCRIPT  = 'manuscript';
+    private const string MEDIA_TYPE_MAP         = 'map';
+    private const string MEDIA_TYPE_NEWSPAPER   = 'newspaper';
+    private const string MEDIA_TYPE_PAINTING    = 'painting';
+    private const string MEDIA_TYPE_PHOTO       = 'photo';
+    private const string MEDIA_TYPE_TOMBSTONE   = 'tombstone';
+    private const string MEDIA_TYPE_VIDEO       = 'video';
+    private const string MEDIA_TYPE_OTHER       = 'other';
+    private const string MEDIA_TYPE_UNKNOWN     = '';
 
     /**
      * @param ColorService $color_service

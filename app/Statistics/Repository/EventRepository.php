@@ -48,16 +48,16 @@ class EventRepository implements EventRepositoryInterface
     /**
      * Sorting directions.
      */
-    private const SORT_ASC  = 'ASC';
-    private const SORT_DESC = 'DESC';
+    private const string SORT_ASC  = 'ASC';
+    private const string SORT_DESC = 'DESC';
 
     /**
      * Event facts.
      */
-    private const EVENT_BIRTH    = 'BIRT';
-    private const EVENT_DEATH    = 'DEAT';
-    private const EVENT_MARRIAGE = 'MARR';
-    private const EVENT_DIVORCE  = 'DIV';
+    private const string EVENT_BIRTH    = 'BIRT';
+    private const string EVENT_DEATH    = 'DEAT';
+    private const string EVENT_MARRIAGE = 'MARR';
+    private const string EVENT_DIVORCE  = 'DIV';
 
     private Tree $tree;
 

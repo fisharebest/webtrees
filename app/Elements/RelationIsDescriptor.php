@@ -35,7 +35,7 @@ use function uasort;
  */
 class RelationIsDescriptor extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 25;
+    protected const int MAXIMUM_LENGTH = 25;
 
     /**
      * A list of controlled values for this element

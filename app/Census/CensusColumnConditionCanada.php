@@ -25,32 +25,32 @@ namespace Fisharebest\Webtrees\Census;
 class CensusColumnConditionCanada extends AbstractCensusColumnCondition
 {
     // Text to display for married males
-    protected const HUSBAND = 'M';
+    protected const string HUSBAND = 'M';
 
     // Text to display for married females
-    protected const WIFE = 'M';
+    protected const string WIFE = 'M';
 
     // Text to display for married unmarried males
-    protected const BACHELOR = 'S';
+    protected const string BACHELOR = 'S';
 
     // Text to display for married unmarried females
-    protected const SPINSTER = 'S';
+    protected const string SPINSTER = 'S';
 
     // Text to display for male children
-    protected const BOY = 'S';
+    protected const string BOY = 'S';
 
     // Text to display for female children
-    protected const GIRL = 'S';
+    protected const string GIRL = 'S';
 
     // Text to display for divorced individuals
-    protected const DIVORCE = 'D';
+    protected const string DIVORCE = 'D';
 
     // Text to display for divorced females
-    protected const DIVORCEE = 'D';
+    protected const string DIVORCEE = 'D';
 
     // Text to display for widowed males
-    protected const WIDOWER = 'W';
+    protected const string WIDOWER = 'W';
 
     // Text to display for widowed females
-    protected const WIDOW = 'W';
+    protected const string WIDOW = 'W';
 }

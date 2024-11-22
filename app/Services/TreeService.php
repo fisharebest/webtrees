@@ -50,7 +50,7 @@ use const STREAM_FILTER_READ;
 class TreeService
 {
     // The most likely surname tradition for a given language.
-    private const DEFAULT_SURNAME_TRADITIONS = [
+    private const array DEFAULT_SURNAME_TRADITIONS = [
         'es'    => 'spanish',
         'is'    => 'icelandic',
         'lt'    => 'lithuanian',

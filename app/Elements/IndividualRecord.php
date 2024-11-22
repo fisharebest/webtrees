@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class IndividualRecord extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'ADOP' => '0:M',
         'AFN'  => '0:1',
         'ALIA' => '0:M',

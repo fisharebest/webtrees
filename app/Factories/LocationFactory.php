@@ -33,7 +33,7 @@ use function preg_match;
  */
 class LocationFactory extends AbstractGedcomRecordFactory implements LocationFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Location::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Location::RECORD_TYPE . '/';
 
     /**
      * Create a Location.

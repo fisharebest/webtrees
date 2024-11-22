@@ -35,7 +35,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
     use ModuleSidebarTrait;
 
     // A list of facts that are handled by this module.
-    protected const HANDLED_FACTS = [
+    protected const array HANDLED_FACTS = [
         'AFN',
         'CHAN',
         'IDNO',

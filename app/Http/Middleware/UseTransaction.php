@@ -31,7 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 class UseTransaction implements MiddlewareInterface
 {
     // If a transaction deadlock occurs, try again.
-    private const DEADLOCK_RETRY_ATTEMPTS = 3;
+    private const int DEADLOCK_RETRY_ATTEMPTS = 3;
 
     /**
      * @param ServerRequestInterface  $request

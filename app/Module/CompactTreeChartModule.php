@@ -40,7 +40,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL = '/tree/{tree}/compact/{xref}';
+    protected const string ROUTE_URL = '/tree/{tree}/compact/{xref}';
 
     private ChartService $chart_service;
 

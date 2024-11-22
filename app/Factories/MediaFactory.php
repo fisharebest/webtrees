@@ -33,7 +33,7 @@ use function preg_match;
  */
 class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryInterface
 {
-    private const TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Media::RECORD_TYPE . '/';
+    private const string TYPE_CHECK_REGEX = '/^0 @[^@]+@ ' . Media::RECORD_TYPE . '/';
 
     /**
      * Create a individual.

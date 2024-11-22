@@ -28,10 +28,10 @@ use Fisharebest\Webtrees\I18N;
 class JalaliDate extends AbstractCalendarDate
 {
     // GEDCOM calendar escape
-    public const ESCAPE = '@#DJALALI@';
+    public const string ESCAPE = '@#DJALALI@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_TO_NUMBER = [
+    protected const array MONTH_TO_NUMBER = [
         'FARVA' => 1,
         'ORDIB' => 2,
         'KHORD' => 3,
@@ -46,7 +46,7 @@ class JalaliDate extends AbstractCalendarDate
         'ESFAN' => 12,
     ];
 
-    protected const NUMBER_TO_MONTH = [
+    protected const array NUMBER_TO_MONTH = [
         1  => 'FARVA',
         2  => 'ORDIB',
         3  => 'KHORD',

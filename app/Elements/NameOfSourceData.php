@@ -27,5 +27,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NameOfSourceData extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 90;
+    protected const int MAXIMUM_LENGTH = 90;
 }

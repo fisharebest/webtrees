@@ -26,11 +26,11 @@ use Fisharebest\Webtrees\Individual;
  */
 class CensusColumnSexF extends AbstractCensusColumn implements CensusColumnInterface
 {
-    protected const MALE = 'M';
+    protected const string MALE = 'M';
 
-    protected const FEMALE = 'F';
+    protected const string FEMALE = 'F';
 
-    protected const X = 'X';
+    protected const string X = 'X';
 
     /**
      * Generate the likely value of this census column, based on available information.

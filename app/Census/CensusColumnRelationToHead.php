@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
  */
 class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusColumnInterface
 {
-    protected const HEAD_OF_HOUSEHOLD = '-';
+    protected const string HEAD_OF_HOUSEHOLD = '-';
 
     /**
      * Generate the likely value of this census column, based on available information.

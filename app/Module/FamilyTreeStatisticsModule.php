@@ -46,7 +46,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     use ModuleBlockTrait;
 
     /** Show this number of surnames by default */
-    private const DEFAULT_NUMBER_OF_SURNAMES = '10';
+    private const string DEFAULT_NUMBER_OF_SURNAMES = '10';
 
     private ModuleService $module_service;
 

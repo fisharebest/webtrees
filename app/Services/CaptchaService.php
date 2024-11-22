@@ -35,7 +35,7 @@ use function view;
 class CaptchaService
 {
     // If the form is completed faster than this, then suspect a robot.
-    private const MINIMUM_FORM_TIME = 3.0;
+    private const float MINIMUM_FORM_TIME = 3.0;
 
     /**
      * Create the captcha

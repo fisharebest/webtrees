@@ -37,9 +37,9 @@ use function strtoupper;
  */
 class ChildLinkageStatus extends AbstractElement
 {
-    public const VALUE_CHALLENGED = 'CHALLENGED';
-    public const VALUE_DISPROVEN  = 'DISPROVEN';
-    public const VALUE_PROVEN     = 'PROVEN';
+    public const string VALUE_CHALLENGED = 'CHALLENGED';
+    public const string VALUE_DISPROVEN = 'DISPROVEN';
+    public const string VALUE_PROVEN    = 'PROVEN';
 
     /**
      * Convert a value to a canonical form.

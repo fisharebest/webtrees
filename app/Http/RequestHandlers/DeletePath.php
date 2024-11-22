@@ -41,7 +41,7 @@ use function str_ends_with;
  */
 class DeletePath implements RequestHandlerInterface
 {
-    private const PROTECTED_PATHS = [
+    private const array PROTECTED_PATHS = [
         'config.ini.php',
         'index.php',
         '.htaccess',

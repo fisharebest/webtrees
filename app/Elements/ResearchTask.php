@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class ResearchTask extends AbstractElement
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'DATE'     => '0:1',
         'NOTE'     => '0:M',
         '_WT_USER' => '0:1',

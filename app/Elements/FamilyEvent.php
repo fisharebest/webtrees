@@ -24,9 +24,9 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class FamilyEvent extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 90;
+    protected const int MAXIMUM_LENGTH = 90;
 
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TYPE'  => '0:1',
         'DATE'  => '0:1',
         'HUSB'  => '0:1',

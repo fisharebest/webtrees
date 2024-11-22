@@ -36,13 +36,13 @@ use function preg_match;
  */
 class Individual extends GedcomRecord
 {
-    public const RECORD_TYPE = 'INDI';
+    public const string RECORD_TYPE = 'INDI';
 
     // Placeholders to indicate unknown names
-    public const NOMEN_NESCIO     = '@N.N.';
-    public const PRAENOMEN_NESCIO = '@P.N.';
+    public const string NOMEN_NESCIO     = '@N.N.';
+    public const string PRAENOMEN_NESCIO = '@P.N.';
 
-    protected const ROUTE_NAME = IndividualPage::class;
+    protected const string ROUTE_NAME = IndividualPage::class;
 
     /** Used in some lists to keep track of this individual’s generation in that list */
     public int|null $generation = null;

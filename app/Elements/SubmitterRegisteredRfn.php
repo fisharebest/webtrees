@@ -26,5 +26,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class SubmitterRegisteredRfn extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 30;
+    protected const int MAXIMUM_LENGTH = 30;
 }

@@ -26,7 +26,7 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class TransmissionDate extends DateValueToday
 {
-    protected const SUBTAGS = [
+    protected const array SUBTAGS = [
         'TIME' => '1:1',
     ];
 

@@ -36,33 +36,33 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 {
     use ModuleBlockTrait;
 
-    private const SORT_STYLE_DATE = 'anniv';
-    private const SORT_STYLE_NAME = 'alpha';
+    private const string SORT_STYLE_DATE = 'anniv';
+    private const string SORT_STYLE_NAME = 'alpha';
 
-    private const LAYOUT_STYLE_LIST  = 'list';
-    private const LAYOUT_STYLE_TABLE = 'table';
+    private const string LAYOUT_STYLE_LIST  = 'list';
+    private const string LAYOUT_STYLE_TABLE = 'table';
 
     // Default values for new blocks.
-    private const DEFAULT_DAYS   = '7';
-    private const DEFAULT_FILTER = '1';
-    private const DEFAULT_SORT   = self::SORT_STYLE_NAME;
-    private const DEFAULT_STYLE  = self::LAYOUT_STYLE_TABLE;
+    private const string DEFAULT_DAYS   = '7';
+    private const string DEFAULT_FILTER = '1';
+    private const string DEFAULT_SORT   = self::SORT_STYLE_NAME;
+    private const string DEFAULT_STYLE  = self::LAYOUT_STYLE_TABLE;
 
     // Initial sorting for datatables
-    private const DATATABLES_ORDER = [
+    private const array DATATABLES_ORDER = [
         self::SORT_STYLE_NAME => [[0, 'asc']],
         self::SORT_STYLE_DATE => [[1, 'asc']],
     ];
 
     // Can show this number of days into the future.
-    private const MAX_DAYS = 30;
+    private const int MAX_DAYS = 30;
 
     // Pagination
-    private const LIMIT_LOW  = 10;
-    private const LIMIT_HIGH = 20;
+    private const int LIMIT_LOW  = 10;
+    private const int LIMIT_HIGH = 20;
 
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
-    private const ALL_EVENTS = [
+    private const array ALL_EVENTS = [
         'ADOP' => 'INDI:ADOP',
         'ANUL' => 'FAM:ANUL',
         'BAPM' => 'INDI:BAPM',
@@ -95,7 +95,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         'WILL' => 'INDI:WILL',
     ];
 
-    private const DEFAULT_EVENTS = [
+    private const array DEFAULT_EVENTS = [
         'BIRT',
         'MARR',
         'DEAT',

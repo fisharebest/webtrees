@@ -37,7 +37,7 @@ class PendingChanges implements RequestHandlerInterface
     use ViewResponseTrait;
 
     // Some servers may not have enough resources to show all the changes.
-    private const MAX_CHANGES = 1000;
+    private const int MAX_CHANGES = 1000;
 
     private PendingChangesService $pending_changes_service;
 

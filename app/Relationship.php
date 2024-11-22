@@ -37,23 +37,23 @@ class Relationship
     // The basic components of a relationship.
     // These strings are needed for compatibility with the legacy algorithm.
     // Once that has been replaced, it may be more efficient to use integers here.
-    public const SISTER   = 'sis';
-    public const BROTHER  = 'bro';
-    public const SIBLING  = 'sib';
-    public const MOTHER   = 'mot';
-    public const FATHER   = 'fat';
-    public const PARENT   = 'par';
-    public const DAUGHTER = 'dau';
-    public const SON      = 'son';
-    public const CHILD    = 'chi';
-    public const WIFE     = 'wif';
-    public const HUSBAND  = 'hus';
-    public const SPOUSE   = 'spo';
+    public const string SISTER   = 'sis';
+    public const string BROTHER  = 'bro';
+    public const string SIBLING  = 'sib';
+    public const string MOTHER   = 'mot';
+    public const string FATHER   = 'fat';
+    public const string PARENT   = 'par';
+    public const string DAUGHTER = 'dau';
+    public const string SON      = 'son';
+    public const string CHILD    = 'chi';
+    public const string WIFE     = 'wif';
+    public const string HUSBAND  = 'hus';
+    public const string SPOUSE   = 'spo';
 
-    public const SIBLINGS = ['F' => self::SISTER, 'M' => self::BROTHER, 'U' => self::SIBLING];
-    public const PARENTS  = ['F' => self::MOTHER, 'M' => self::FATHER, 'U' => self::PARENT];
-    public const CHILDREN = ['F' => self::DAUGHTER, 'M' => self::SON, 'U' => self::CHILD];
-    public const SPOUSES  = ['F' => self::WIFE, 'M' => self::HUSBAND, 'U' => self::SPOUSE];
+    public const array SIBLINGS = ['F' => self::SISTER, 'M' => self::BROTHER, 'U' => self::SIBLING];
+    public const array PARENTS  = ['F' => self::MOTHER, 'M' => self::FATHER, 'U' => self::PARENT];
+    public const array CHILDREN = ['F' => self::DAUGHTER, 'M' => self::SON, 'U' => self::CHILD];
+    public const array SPOUSES  = ['F' => self::WIFE, 'M' => self::HUSBAND, 'U' => self::SPOUSE];
 
     // Generates a name from the matched relationship.
     private Closure $callback;

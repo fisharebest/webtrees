@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class Uid extends AbstractElement
 {
-    protected const MAXIMUM_LENGTH = 36;
+    protected const int MAXIMUM_LENGTH = 36;
 
     /**
      * Create a default value for this element.
