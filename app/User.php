@@ -123,7 +123,9 @@ class User implements UserInterface
         $qrinfo = array();
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
-        $data = 'otpauth://totp/' . $this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
+	$servername = $_SERVER['SERVER_NAME'];
+	settype($servername, "string");
+        $data = 'otpauth://totp/' . $this->user_id . '?secret=' . $qrinfo['secret'] . '&issuer=' . $servername;
         $qrcode = new QRCode();
         $qrinfo['qrcode'] = $qrcode->render($data);
         return $qrinfo;
@@ -291,8 +293,11 @@ class User implements UserInterface
         $secret = DB::table('user')
              ->where('user_id', '=', $this->id())
              ->value('secret');
+	settype($secret, "string");
         $google2fa = new Google2FA();
-        if ($google2fa->verifyKey($secret, $code2fa)) {
+	$googleverifystatus = $google2fa->verifyKey($secret, $code2fa);
+	settype($googleverifystatus, "bool");
+        if ($googleverifystatus) {
             return true;
         }
         return false;
