@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 
-class FamilyListModule extends IndividualListModule
+class FamilyListModule extends AbstractIndividualListModule
 {
     public function title(): string
     {
