@@ -312,23 +312,18 @@ class GedcomRecord
         }
 
         // Remove links to missing and private records
-        $patterns = [
-            '/\n1 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(?:\n[2-9].*)*/',
-            '/\n2 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(?:\n[3-9].*)*/',
-            '/\n3 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(?:\n[4-9].*)*/',
-            '/\n4 ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@(?:\n[5-9].*)*/',
-        ];
+        $pattern =  '/\n(\d) ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/';
+        preg_match_all($pattern, $gedcom, $matches, PREG_SET_ORDER);
 
-        foreach ($patterns as $pattern) {
-            preg_match_all($pattern, $gedcom, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
+            $xref = $match[2];
+            $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
 
-            foreach ($matches as $match) {
-                $xref   = $match[1];
-                $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
-
-                if ($record === null || !$record->canShow($access_level)) {
-                    $gedcom = str_replace($match[0], '', $gedcom);
-                }
+            if ($record === null || !$record->canShow($access_level)) {
+                $level   = $match[1];
+                $next    = 1 + (int) $level;
+                $pattern = '/\n' . $level . ' ' . Gedcom::REGEX_TAG . ' @' . $xref . '@(\n[' . $next . '-9].*)*/';
+                $gedcom  = preg_replace($pattern, '', $gedcom);
             }
         }
 

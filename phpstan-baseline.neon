@@ -1111,6 +1111,12 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
+			message: '#^Method Fisharebest\\Webtrees\\GedcomRecord\:\:privatizeGedcom\(\) should return string but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/GedcomRecord.php
+
+		-
 			message: '#^Parameter \#1 \$array of function array_shift expects array, list\<string\>\|false given\.$#'
 			identifier: argument.type
 			count: 2
@@ -1149,7 +1155,7 @@ parameters:
 		-
 			message: '#^Parameter \#3 \$subject of function preg_replace expects array\<float\|int\|string\>\|string, string\|null given\.$#'
 			identifier: argument.type
-			count: 1
+			count: 2
 			path: app/GedcomRecord.php
 
 		-
