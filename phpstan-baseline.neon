@@ -8737,12 +8737,6 @@ parameters:
 			path: app/SessionDatabaseHandler.php
 
 		-
-			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/SessionDatabaseHandler.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Site\:\:getPreference\(\) should return string but returns mixed\.$#'
 			identifier: return.type
 			count: 1
