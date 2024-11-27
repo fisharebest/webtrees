@@ -73,12 +73,6 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
-			message: '#^Parameter \$suggestedValues of method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\) expects array\|\(Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput, Symfony\\Component\\Console\\Completion\\CompletionSuggestions\)\: list\<string\|Symfony\\Component\\Console\\Completion\\Suggestion\>\), Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput\)\: array\<string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/TreeExport.php
-
-		-
 			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
@@ -7791,12 +7785,6 @@ parameters:
 		-
 			message: '#^Method Fisharebest\\Webtrees\\SessionDatabaseHandler\:\:read\(\) should return string but returns mixed\.$#'
 			identifier: return.type
-			count: 1
-			path: app/SessionDatabaseHandler.php
-
-		-
-			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/SessionDatabaseHandler.php
 
