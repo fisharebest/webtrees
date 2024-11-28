@@ -1801,12 +1801,6 @@ parameters:
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
-			message: '#^Binary operation "/" between Illuminate\\Support\\Collection\|int and Illuminate\\Support\\Collection\|int results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/GedcomLoad.php
-
-		-
 			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -6613,12 +6607,6 @@ parameters:
 			path: app/Services/AdminService.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\AdminService\:\:countCommonXrefs\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Services/AdminService.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Services\\AdminService\:\:duplicateRecords\(\) should return array\<string, array\<int, array\<int, Fisharebest\\Webtrees\\GedcomRecord\>\>\> but returns array\<string, array\<list\<Fisharebest\\Webtrees\\Family\|Fisharebest\\Webtrees\\Individual\|Fisharebest\\Webtrees\\Media\|Fisharebest\\Webtrees\\Source\>\>\>\.$#'
 			identifier: return.type
 			count: 1
@@ -8161,12 +8149,6 @@ parameters:
 			path: app/Statistics/Repository/EventRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\EventRepository\:\:getEventCount\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/EventRepository.php
-
-		-
 			message: '#^Property object\{id\: string, year\: int, fact\: string, type\: string\}\:\:\$year is not writable\.$#'
 			identifier: assign.propertyReadOnly
 			count: 1
@@ -8290,18 +8272,6 @@ parameters:
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 9
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:noChildrenFamiliesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
-			identifier: argument.type
-			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -8485,81 +8455,9 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:getTotalSexQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalDeceasedQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalFamiliesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalFamsWithSourcesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalIndisWithSourcesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalIndividualsQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalLivingQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalMediaQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalNotesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalRepositoriesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:totalSourcesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
 			identifier: argument.type
 			count: 1
-			path: app/Statistics/Repository/IndividualRepository.php
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
-			identifier: argument.type
-			count: 2
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
@@ -8591,30 +8489,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Statistics/Repository/MediaRepository.php
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/MediaRepository.php
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Repository/MessageRepository.php
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, Illuminate\\Support\\Collection\|int given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Statistics/Repository/NewsRepository.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\PlaceRepository\:\:totalPlacesQuery\(\) should return int but returns Illuminate\\Support\\Collection\|int\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Statistics/Repository/PlaceRepository.php
 
 		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) expects callable\(mixed, int\|string\)\: int, Closure\(string\)\: int given\.$#'
