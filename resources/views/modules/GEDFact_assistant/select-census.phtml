@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\I18N;
       const form = select.closest('form');
 
       form.querySelector('[id$=CENS-DATE]').value = option.dataset.wtDate;
-      form.querySelector('[id$=CENS-PLAC]').value = option.dataset.wtPlace;
+      $(form.querySelector('[id$=CENS-PLAC]')).typeahead('val', option.dataset.wtPlace);
     });
   });
 </script>
