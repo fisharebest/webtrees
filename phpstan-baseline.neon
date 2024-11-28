@@ -505,6 +505,12 @@ parameters:
 			path: app/Elements/PafUid.php
 
 		-
+			message: '#^Anonymous function should return int but returns float\|int\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Fact.php
+
+		-
 			message: '#^Anonymous function should return int but returns mixed\.$#'
 			identifier: return.type
 			count: 1

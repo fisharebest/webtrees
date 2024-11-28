@@ -74,7 +74,7 @@
         "symfony/expression-language": "4.4.47",
         "symfony/polyfill-mbstring": "v1.30.0",
         "symfony/polyfill-php80": "1.30.0",
-        "tecnickcom/tcpdf": "6.7.5"
+        "tecnickcom/tcpdf": "6.7.7"
     },
     "require-dev": {
         "ext-dom": "*",
