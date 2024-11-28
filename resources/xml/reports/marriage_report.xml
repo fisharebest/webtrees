@@ -34,7 +34,7 @@
 			<if condition="$sortby=='NAME'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<TextBox bgcolor="$fill" border="1" height="12" width="200">
+			<TextBox bgcolor="$fill" border="1" height="12" width="200" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Name')" /></Text>
 			</TextBox>
 
@@ -42,20 +42,21 @@
 			<if condition="$sortby=='MARR:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<TextBox bgcolor="$fill" border="1" height="12" width="100">
+			<TextBox bgcolor="$fill" border="1" height="12" width="100" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Date')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" height="12" width="150">
+			<TextBox border="1" height="12" width="150" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Place')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" height="12" newline="1">
+			<TextBox border="1" height="12" newline="1" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Source')" /></Text>
 			</TextBox>
 		</Header>
 
 		<Body>
+			<SetVar name="urlbase" value="@base_url"/>
 			<SetVar name="printedFamilies" value="0" />
 			<List list="family" filter1="MARR:PLAC CONTAINS $marrplace" filter2="MARR:DATE GTE $marrdate1" filter3="MARR:DATE LTE $marrdate2" filter4="NAME CONTAINS $name" sortby="$sortby">
 				<SetVar name="skipFamily" value="no" />
@@ -75,21 +76,23 @@
 				<if condition="$skipFamily=='no'">
 					<SetVar name="printedFamilies" value="$printedFamilies+1" />
 
-					<TextBox height="12" width="200">
-						<Text style="text"><GetPersonName id="@HUSB" />
-							<br />   <GetPersonName id="@WIFE" />
-						</Text>
+					<TextBox height="12" width="200" pos="abs" top=".">
+						<SetVar name="id" value="@ID"/>
+						<SetVar name="url" value="$urlbase/family/$id" />
+						<Cell style="text" width="$name" url="$url" reseth="0" height="24">
+							<GetPersonName id="@HUSB" /><br />   <GetPersonName id="@WIFE" />
+						</Cell>
 					</TextBox>
 
-					<TextBox height="12" width="100">
+					<TextBox height="12" width="100" pos="abs" top=".">
 						<Text style="text"><GedcomValue tag="MARR:DATE" newline="1" /></Text>
 					</TextBox>
 
-					<TextBox height="12" width="150">
+					<TextBox height="12" width="150" pos="abs" top=".">
 						<Text style="text"><GedcomValue tag="MARR:PLAC" /></Text>
 					</TextBox>
 
-					<TextBox height="12" newline="1">
+					<TextBox height="12" newline="1" pos="abs" top=".">
 						<!-- Only with multiple sources use line feed (br) -->
 						<SetVar name="usebr" value="0"/>
 						<Text style="text">

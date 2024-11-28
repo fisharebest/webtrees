@@ -10,6 +10,7 @@
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	-->
 	<SetVar name="fonts" value="dejavusans" />
+    <SetVar name="urlbase" value="@base_url"/>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="16" style="b" />
@@ -36,35 +37,37 @@
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="$namewidth">
+			<TextBox pos="abs" bgcolor="$fill" border="1" width="$namewidth">
 				<Text style="label"><var var="I18N::translate('Name')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='DEAT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="$datewidth">
+			<TextBox pos="abs" bgcolor="$fill" border="1" width="$datewidth">
 				<Text style="label"><var var="I18N::translate('Date of death')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='DEAT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="$datewidth">
+			<TextBox pos="abs" bgcolor="$fill" border="1" width="$datewidth">
 				<Text style="label"><var var="I18N::translate('Date of burial')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='PLAC'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="$placewidth">
+			<TextBox pos="abs" bgcolor="$fill" border="1" width="$placewidth">
 				<Text style="label"><var var="I18N::translate('Place of burial')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" newline="1">
+			<TextBox pos="abs" border="1" newline="1">
 				<Text style="label"><var var="I18N::translate('Note')" /></Text>
 			</TextBox>
 		</Header>
 		<Body>
 			<List list="individual" filter1="BURI:PLAC CONTAINS $deathplace" filter2="LIKE /%\n1 BURI%/" sortby="$sortby">
-				<Cell style="text" width="$namewidth"><GetPersonName id="" />
+				<SetVar name="id" value="@ID"/>
+				<SetVar name="url" value="$urlbase/individual/$id" />
+				<Cell width="$namewidth" style="text" url="$url"><GetPersonName id="" />
 					<if condition="$adlist=='_MARNM'">
 						<RepeatTag tag="NAME:_MARNM">
 							<br /><GedcomValue tag="_MARNM" />

@@ -39,37 +39,40 @@
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="$namewidth">
+			<TextBox bgcolor="$fill" border="1" width="$namewidth" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Name')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BIRT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="$datewidth">
+			<TextBox bgcolor="$fill" border="1" width="$datewidth" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Date of birth')" /></Text>
 			</TextBox>
 			<!-- should print and sort by birth date -->
 
-			<TextBox border="1" width="$occuwidth">
+			<TextBox border="1" width="$occuwidth" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Occupation')" /></Text>
 			</TextBox>
-			<TextBox border="1" width="$occudatewidth">
+			<TextBox border="1" width="$occudatewidth" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Date')" /></Text>
 			</TextBox>
-			<TextBox border="1" width="$placewidth">
+			<TextBox border="1" width="$placewidth" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Place')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" newline="1">
+			<TextBox border="1" newline="1" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Note')" /></Text>
 			</TextBox>
 		</Header>
 		<Body>
+			<SetVar name="urlbase" value="@base_url"/>
 			<List list="individual" filter1="OCCU CONTAINS $occupation" sortby="$sortby">
 				<SetVar name="moreoccupation" value="0" />
 				<!-- Printed List counter -->
 				<SetVar name="printedoccupation" value="$printedoccupation + 1" />
-				<Cell style="text" width="$namewidth"><GetPersonName id="" />
+				<SetVar name="id" value="@ID"/>
+				<SetVar name="url" value="$urlbase/individual/$id" />
+				<Cell style="text" width="$namewidth" url="$url"><GetPersonName id="" />
 				</Cell>
 				<Cell style="text" width="$datewidth"><GedcomValue tag="BIRT:DATE" newline="1" /></Cell>
 				<RepeatTag tag="OCCU">

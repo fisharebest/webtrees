@@ -12,6 +12,7 @@
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	-->
 	<SetVar name="fonts" value="dejavusans" />
+	<SetVar name="urlbase" value="@base_url"/>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="16" style="b"/>
@@ -45,7 +46,9 @@
 
 		<Body>
 			<List list="individual" filter1="BIRT:PLAC CONTAINS $birthplace" filter2="BIRT:DATE GTE $birthdate1" filter3="BIRT:DATE LTE $birthdate2" filter4="NAME CONTAINS $name" sortby="$sortby">
-				<Cell width="200" style="text"><GetPersonName id="" /></Cell>
+				<SetVar name="id" value="@ID"/>
+				<SetVar name="url" value="$urlbase/individual/$id" />
+				<Cell width="200" style="text" url="$url"><GetPersonName id="" /></Cell>
 				<Cell width="100" style="text"><GedcomValue tag="BIRT:DATE" newline="1" /></Cell>
 				<Cell width="150" style="text"><GedcomValue tag="BIRT:PLAC" /></Cell>
 				<Cell newline="1" style="text">

@@ -62,7 +62,13 @@ class ReportHtmlImage extends ReportBaseImage
                 echo '<img src="', $this->file, '" style="width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n</div>\n";
                 break;
             default:
-                echo '<img src="', $this->file, '" style="position:absolute;', $renderer->alignRTL, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;height:', $this->height, "pt;\" alt=\"\">\n";
+                // max-height limit distorts where the height exceeds 40pt when width is set to 30pt.
+                // Such images should be cropped instead
+                $maxh = "";
+                if ($this->width <= 30) {
+                    $maxh = "max-height:40pt;";
+                }
+                echo '<img src="', $this->file, '" style="position:absolute;', $renderer->alignRTL, ':', $this->x, 'pt;top:', $this->y, 'pt;width:', $this->width, 'pt;',$maxh, ' alt="">\n';
         }
 
         $lastpicpage   = $renderer->pageNo();

@@ -34,7 +34,7 @@
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" width="200">
+			<TextBox bgcolor="$fill" border="1" width="200" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Name')" /></Text>
 			</TextBox>
 
@@ -42,50 +42,54 @@
 			<if condition="$sortby=='DEAT:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<TextBox bgcolor="$fill" border="1" width="100">
+			<TextBox bgcolor="$fill" border="1" width="100" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Date')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" width="150">
+			<TextBox border="1" width="150" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Place')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" newline="1">
+			<TextBox border="1" newline="1" pos="abs" top=".">
 			  <Text style="label"><var var="I18N::translate('Source')" /></Text>
 			</TextBox>
 		</Header>
 
 		<Body>
+			<SetVar name="urlbase" value="@base_url"/>
 			<List list="individual" filter1="DEAT:PLAC CONTAINS $deathplace" filter2="DEAT:DATE GTE $deathdate1" filter3="DEAT:DATE LTE $deathdate2" filter4="NAME CONTAINS $name" filter5="LIKE /%\n1 DEAT%/" sortby="$sortby">
-				<TextBox width="200">
-					<Text style="text"><GetPersonName id="" />
-						<if condition="$adlist=='_MARNM'">
-							<RepeatTag tag="NAME">
-								<if condition="@NAME:TYPE=='married'">
-									<br /><GedcomValue tag="NAME" />
-								</if>
+				<TextBox width="200" pos="abs" top=".">
+					<SetVar name="id" value="@ID"/>
+					<SetVar name="url" value="$urlbase/individual/$id" />
+					<Cell style="text" width="$name" url="$url"><GetPersonName id="" /></Cell>
+					<Text style="text">
+						<if condition="($adlist=='_MARNM') and ('FAMS'!='')">
+							<SetVar name="Married" value="no"/>
+							<RepeatTag tag="FAMS">
+								<SetVar name="Married" value="yes"/>
 							</RepeatTag>
-
-							<RepeatTag tag="NAME:_MARNM">
-								<br /><GedcomValue tag="_MARNM" />
-							</RepeatTag>
+							<if condition="($Married=='yes') and (@SEX=='F')">
+								<!-- note1: the latest name may be other tham the latest married name -->
+								<!-- note2: nowadays also husbands can change name at marriage -->
+								<br />   <GetPersonName id="" select="latest"/>
+							</if>
 						</if>
 						<if condition="($adlist=='HUSB') and (@SEX=='F')">
 							<RepeatTag tag="FAMS">
 								<Gedcom id="@FAMS:@HUSB">
-									<br /><GetPersonName id="" />
+									<br />   <GetPersonName id="" />
 								</Gedcom>
 							</RepeatTag>
 						</if>
 					</Text>
 				</TextBox>
-				<TextBox width="100">
+				<TextBox width="100" pos="abs" top=".">
 					<Text style="text"><GedcomValue tag="DEAT:DATE" newline="1" /></Text>
 				</TextBox>
-				<TextBox width="150">
-					<Text style="text"><GedcomValue tag="DEAT:PLAC" /></Text>
+				<TextBox width="150" pos="abs" top=".">
+					<Text style="text"><GedcomValue tag="DEAT:PLAC" truncate="28"/></Text>
 				</TextBox>
-				<TextBox newline="1">
+				<TextBox newline="1" pos="abs" top=".">
 					<!-- Only with multiple sources use line feed (br) -->
 					<SetVar name="usebr" value="0"/>
 					<Text style="text">

@@ -243,7 +243,9 @@ abstract class AbstractRenderer
         string $style,
         bool $fill,
         bool $padding,
-        bool $reseth
+        bool $reseth,
+        bool $abs_position,
+        float $top_position
     ): ReportBaseTextbox;
 
     /**

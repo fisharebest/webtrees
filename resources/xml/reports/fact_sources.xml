@@ -37,6 +37,7 @@
 	<SetVar name="printedsource" value="0" />
 	<SetVar name="moresourcespaceindi" value="$nameindi + $datebirth" />
 	<SetVar name="ignore" value="CHAN,CHIL,FAMC,FAMS,HUSB,OBJE,RESN,SEX,SOUR,TITL,WIFE,_UID,_WT_OBJE_SORT"/>
+	<SetVar name="urlbase" value="@base_url" />
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
@@ -82,7 +83,9 @@
 				<SetVar name="printedsource" value="$printedsource + 1" />
 
 				<!-- Individual Name -->
-				<Cell style="list_value" width="$nameindi"><GetPersonName id="" /></Cell>
+				<SetVar name="id" value="@ID"/>
+				<SetVar name="url" value="$urlbase/individual/$id" />
+				<Cell style="list_value" width="$nameindi" url="$url"><GetPersonName id="" /></Cell>
 				<!-- Birth date -->
 				<Cell style="list_value" width="$datebirth"><GedcomValue tag="BIRT:DATE" /></Cell>
 				<Facts ignore="$ignore">
@@ -170,6 +173,8 @@
 				<SetVar name="printedsource" value="$printedsource + 1" />
 
 				<!-- Family Name -->
+				<SetVar name="id" value="@ID"/>
+				<SetVar name="url" value="$urlbase/family/$id" />
 				<Cell style="list_value" width="$namefam"><GetPersonName id="" /></Cell>
 				<Facts ignore="$ignore">
 					<SetVar name="printfact" value="0" />

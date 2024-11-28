@@ -71,6 +71,15 @@ class ReportBaseTextbox extends ReportBaseElement
     // Resets this box last height after it’s done
     public bool $reseth;
 
+    // position of the TextBox: true=absolute or false=relative:
+    public bool $abs_position;
+
+    // Value of top position
+    public float $top_position;
+
+    // Spec position for pdf textbox
+    public bool $html_only_position;
+
     /**
      * TextBox - Element - Base
      *
@@ -86,6 +95,8 @@ class ReportBaseTextbox extends ReportBaseElement
      * @param bool   $fill
      * @param bool   $padding
      * @param bool   $reseth
+     * @param bool   $abs_position
+     * @param float  $top_position
      */
     public function __construct(
         float $width,
@@ -99,7 +110,9 @@ class ReportBaseTextbox extends ReportBaseElement
         string $style,
         bool $fill,
         bool $padding,
-        bool $reseth
+        bool $reseth,
+        bool $abs_position,
+        float $top_position
     ) {
         $this->border    = $border;
         $this->bgcolor   = $bgcolor;
@@ -113,6 +126,8 @@ class ReportBaseTextbox extends ReportBaseElement
         $this->width     = $width;
         $this->padding   = $padding;
         $this->reseth    = $reseth;
+        $this->abs_position = $abs_position;
+        $this->top_position = $top_position;
     }
 
     /**

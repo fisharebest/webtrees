@@ -24,6 +24,7 @@
 	<Style name="mini" font="$fonts" size="8" />
 	<Style name="minibold" font="$fonts" size="8" style="b" />
 	<Style name="label" font="$fonts" size="10" style="b" />
+	<Style name="xmini" font="$fonts" size="3" />
 
 	<SetVar name="height1" value="14" />
 	<SetVar name="height2" value="10" />
@@ -36,7 +37,21 @@
 	<SetVar name="widthB2" value="280" />
 	<SetVar name="widthB3" value="40" />
 	<SetVar name="widthB4" value="375" />
-	<SetVar name="leftbdp" value="$width1+$width2" />
+	<SetVar name="left23" value="$width2+$width3" />
+	<SetVar name="left234" value="$left23+$width4" />
+	<SetVar name="left2345" value="$left234+$width5" />
+	<SetVar name="leftB2" value="$width1" />
+	<SetVar name="leftB23" value="$leftB2+$widthB2" />
+	<SetVar name="leftB234" value="$leftB23+$widthB3" />
+	<SetVar name="top1" value="32" />
+	<SetVar name="top2" value="60" />
+	<SetVar name="topincr" value="54" />
+	<SetVar name="format" value="@format" />
+	<if condition="$format=='PDF'">
+		<SetVar name="top1" value="$top1+70" />
+		<SetVar name="top2" value="$top2+70" />
+	</if>
+
 
 	<if condition="$relatives=='child-family'"><SetVar name="explain" value="I18N::translate('Parents and siblings')"/></if>
 	<if condition="$relatives=='spouse-family'"><SetVar name="explain" value="I18N::translate('Spouses and children')"/></if>
@@ -49,6 +64,9 @@
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><GetPersonName id="$pid" /> — <var var="$explain"/></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
+		</Header>
+
+		<Body>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'">
@@ -70,31 +88,29 @@
 
 			<Cell border="1" height="$height1" style="label" width="$width5"> <var var="I18N::translate('Father')" /></Cell>
 			<Cell border="1" height="$height1" newline="1" style="label"> <var var="I18N::translate('Mother')" /></Cell>
-		</Header>
 
-		<Body>
 			<Relatives id="$pid" group="$relatives" sortby="$sortby">
 				<SetVar name="sex" value="@SEX" />
 				<!-- 1. Block -->
-				<TextBox height="$height1" width="$width2">
+				<TextBox height="$height1" width="$width2" pos="abs" left="0" top="." xtop="$top1">
 					<Text style="bold"><GetPersonName id="" /></Text>
 				</TextBox>
-				<TextBox height="$height1" width="$width3">
+				<TextBox height="$height1" width="$width3" pos="abs" left="$width2" top="." xtop="$top1">
 					<Text style="text"><GedcomValue tag="BIRT:DATE" truncate="20" /><br/></Text>
-					<Text style="mini"><GedcomValue tag="BIRT:PLAC" /></Text>
+					<Text style="mini"><GedcomValue tag="BIRT:PLAC" truncate="24" /></Text>
 				</TextBox>
-				<TextBox height="$height1" width="$width4">
+				<TextBox height="$height1" width="$width4" pos="abs" left="$left23" top="." xtop="$top1">
 					<Text style="text"><GedcomValue tag="DEAT:DATE" truncate="20" /><br/></Text>
-					<Text style="mini"><GedcomValue tag="DEAT:PLAC" /></Text>
+					<Text style="mini"><GedcomValue tag="DEAT:PLAC" truncate="24" /></Text>
 				</TextBox>
 				<!-- If FAMC is empty all lines will be ignored. So, don't place any newline break in here -->
 				<Gedcom id="@FAMC">
-					<TextBox height="$height1" width="$width5">
+					<TextBox height="$height1" width="$width5" pos="abs" left="$left234" top="." xtop="$top1">
 						<Gedcom id="@HUSB">
 							<Text style="text"><GetPersonName id="" /></Text>
 						</Gedcom>
 					</TextBox>
-					<TextBox height="$height1" newline="1">
+					<TextBox height="$height1" newline="1" pos="abs" left="$left2345" top="." xtop="$top1">
 						<Gedcom id="@WIFE">
 							<Text style="text"><GetPersonName id="" /></Text>
 						</Gedcom>
@@ -104,9 +120,15 @@
 				<if condition="@FAMC==''">
 					<TextBox height="2" newline="1"/>
 				</if>
+				<SetVar name="nsp" value="0"/>
 				<RepeatTag tag="FAMS">
+					<SetVar name="nsp" value="$nsp+1"/>
+					<if condition="$nsp GT 1">
+						<SetVar name="top2" value="$top2+10"/>
+						<SetVar name="top1" value="$top1+10"/>
+					</if>
 					<Gedcom id="@FAMS">
-						<TextBox height="$height2" left="$width1" width="$widthB2">
+						<TextBox height="$height2" left="$leftB2" width="$widthB2" pos="abs" top="." xtop="$top2">
 							<if condition="$sex=='M'">
 								<Text style="minibold"><var var="I18N::translate('Wife')" />: </Text>
 								<Text style="mini"><GetPersonName id="@WIFE" /> <GedcomValue tag="MARR:DATE" />
@@ -118,10 +140,10 @@
 								</Text>
 							</if>
 						</TextBox>
-						<TextBox height="$height2" width="50">
+						<TextBox height="$height2" width="50" left="$leftB23" pos="abs" top="." xtop="$top2">
 							<Text style="minibold"><var var="I18N::translate('Children')" />:</Text>
 						</TextBox>
-						<TextBox height="$height2" newline="1">
+						<TextBox height="$height2" newline="1" left="$leftB234" width="$widthB4" pos="abs" top="." xtop="$top2">
 							<SetVar name="morechildren" value="0" />
 							<RepeatTag tag="CHIL">
 								<Gedcom id="@CHIL">
@@ -137,17 +159,21 @@
 					</Gedcom>
 				</RepeatTag>
 
-				<!-- keep distance between line -->
-				<TextBox height="2" newline="1" padding="0"/>
-				<Line />
-				<TextBox height="2" newline="1" padding="0"/>
+				<TextBox height="2" pos="abs" top="." newline="1" />
+					<!--Text style="xmini"><br /></Text-->
+					<!-- keep distance between line -->
+					<Line pos="3" width="100%"/>
+				<TextBox height="2" pos="abs" top="." newline="1" />
+
+				<SetVar name="top1" value="$top1+$topincr"/>
+				<SetVar name="top2" value="$top2+$topincr"/>
 
 			</Relatives>
 			<Cell align="rightrtl" height="15" newline="1" style="label">
 				<br /><var var="I18N::translate('Total individuals')" />: <ListTotal />
 			</Cell>
 		</Body>
-		
+
 		<Footer>
 			<Cell align="rightrtl" newline="1" style="date"><Now /></Cell>
 		</Footer>

@@ -27,12 +27,13 @@
 	<Style name="date" font="$fonts" size="8"/>
 	<Style name="header2" font="$fonts" size="12" style="b" />
 
+	<SetVar name="urlbase" value="@base_url"/>
 	<if condition="$pageorient=='landscape'">
 		<!-- landscape orientation -->
 		<SetVar name="namewidth" value="270"/>
 		<SetVar name="datewidth" value="300"/>
 	</if>
-	
+
 	<if condition="$pageorient=='portrait'">
 		<!-- portrait orientation -->
 		<SetVar name="namewidth" value="210"/>
@@ -52,36 +53,39 @@
 				<Cell align="center" height="20" newline="1" style="header2"><var var="I18N::translate('Pending changes')" /></Cell>
 				<SetVar name="fill" value="" />
 				<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
-				<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
+				<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth" pos="abs" top="." >
 					<Text style="label"><var var="I18N::translate('Name')" /></Text>
 				</TextBox>
 
-				<TextBox border="1" height="12" width="$datewidth">
+				<TextBox border="1" height="12" width="$datewidth" pos="abs" top="." >
 					<Text style="label"><var var="I18N::translate('Differences')" /></Text>
 				</TextBox>
 
 				<SetVar name="fill" value="" />
 				<if condition="$sortby=='CHAN'"><SetVar name="fill" value="#AAAAAA" /></if>
-				<TextBox bgcolor="$fill" border="1" height="12" newline="1">
+				<TextBox bgcolor="$fill" border="1" height="12" newline="1" pos="abs" top="." >
 					<Text style="label"><var var="I18N::translate('Last change')" /></Text>
 				</TextBox>
 
 				<!-- Pending Changes Section Data -->
 				<List list="pending" sortby="$sortby">
-					<TextBox height="12" width="$namewidth">
-						<Text style="text"><GetPersonName id="" /></Text>
+					<SetVar name="id" value="@ID"/>
+					<TextBox height="12" width="$namewidth" pos="abs" top=".">
+						<SetVar name="url" value="$urlbase/individual/$id" />
+						<Cell style="text" width="$name" url="$url"><GetPersonName id="" /></Cell>
 					</TextBox>
-					<TextBox height="12" width="$datewidth">
+					<TextBox height="12" width="$datewidth" pos="abs" top=".">
 						<Facts ignore="CHAN" families="0" diff="true">
 							<Text style="text">
 								<var var="@fact" /> <GedcomValue tag="@fact:DATE" /><br />
 							</Text>
 						</Facts>
 					</TextBox>
-					<TextBox height="12" newline="1">
+					<TextBox height="12" newline="1" pos="abs" top=".">
 						<Text style="text"><GedcomValue tag="CHAN:DATE" /> <GedcomValue tag="CHAN:DATE:TIME" /> - <GedcomValue tag="CHAN:_WT_USER" /></Text>
 					</TextBox>
-
+                                        <!-- The cell below will force a table-like layout when pdf is chosen -->
+                                        <Cell align="center" height="2" newline="1" style="text"></Cell>
 				</List>
 				<Cell align="rightrtl" height="25" newline="1" style="label">
 					<var var="I18N::translate('Total pending changes: ')" /><ListTotal /><br />
@@ -92,33 +96,35 @@
 			<Cell align="center" height="20" newline="1" style="header2"><var var="I18N::translate('Recent changes')" /> <var var="changeRangeStart" date="1" /> - <var var="changeRangeEnd" date="1" /></Cell>
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
+			<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Name')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BIRT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" height="12" width="$datewidth">
+			<TextBox bgcolor="$fill" border="1" height="12" width="$datewidth" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Birth')" /> - <var var="I18N::translate('Death')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='CHAN'"><SetVar name="fill" value="#AAAAAA" /></if>
-			<TextBox bgcolor="$fill" border="1" height="12" newline="1">
+			<TextBox bgcolor="$fill" border="1" height="12" newline="1" pos="abs" top=".">
 				<Text style="label"><var var="I18N::translate('Last change')" /></Text>
 			</TextBox>
 
 			<!-- Recent Changes Section Data -->
 			<List list="individual" filter1="CHAN:DATE LTE $changeRangeEnd" filter2="CHAN:DATE GTE $changeRangeStart" sortby="$sortby">
-				<TextBox height="12" width="$namewidth">
-					<Text style="text"><GetPersonName id="" /></Text>
+				<SetVar name="id" value="@ID"/>
+				<TextBox height="12" width="$namewidth" pos="abs" top=".">
+					<SetVar name="url" value="$urlbase/individual/$id" />
+					<Cell style="text" width="$name" url="$url"><GetPersonName id="" /></Cell>
 				</TextBox>
 
-				<TextBox height="12" width="$datewidth">
+				<TextBox height="12" width="$datewidth" pos="abs" top=".">
 					<Text style="text"><var var="I18N::translate('Birth')" />: <GedcomValue tag="BIRT:DATE" /><br /><var var="I18N::translate('Death')" />: <GedcomValue tag="DEAT:DATE" /></Text>
 				</TextBox>
 
-				<TextBox height="12" newline="1">
+				<TextBox height="12" newline="1" pos="abs" top=".">
 					<Text style="text"><GedcomValue tag="CHAN:DATE" /> <GedcomValue tag="CHAN:DATE:TIME" /> - <GedcomValue tag="CHAN:_WT_USER" /></Text>
 				</TextBox>
 			</List>

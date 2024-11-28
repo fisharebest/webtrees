@@ -74,6 +74,7 @@ class PdfRenderer extends AbstractRenderer
      */
     public function header(): void
     {
+        $this->tcpdf->AddPage();
         foreach ($this->headerElements as $element) {
             if ($element instanceof ReportBaseElement) {
                 $element->render($this);
@@ -363,8 +364,8 @@ class PdfRenderer extends AbstractRenderer
             'UTF-8',
             self::DISK_CACHE
         );
-
-        $this->tcpdf->setMargins($this->left_margin, $this->top_margin, $this->right_margin);
+        $this->tcpdf->setPrintFooter(true);
+        $this->tcpdf->setMargins($this->left_margin, $this->top_margin, $this->right_margin); // top-margin? 55.5?  header-height?
         $this->tcpdf->setHeaderMargin($this->header_margin);
         $this->tcpdf->setFooterMargin($this->footer_margin);
         $this->tcpdf->setAutoPageBreak(true, $this->bottom_margin);
@@ -454,9 +455,11 @@ class PdfRenderer extends AbstractRenderer
         string $style,
         bool $fill,
         bool $padding,
-        bool $reseth
+        bool $reseth,
+        bool $abs_position,
+        float $top_position
     ): ReportBaseTextbox {
-        return new ReportPdfTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
+        return new ReportPdfTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth, $abs_position, $top_position);
     }
 
     /**
