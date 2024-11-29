@@ -5501,7 +5501,7 @@ msgstr "Ubah FAQ"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "Ubah Kelamin"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13136,7 +13136,7 @@ msgid "Show only females."
 msgstr "Hanya perlihatkan perempuan."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "Hanya perlihatkan orang yang kelaminnya tidak diketahui."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13951,11 +13951,11 @@ msgid "Surnames"
 msgstr "Marga"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Marga keluarga dibelokkan untuk menunjukkan status kelamin dan perkawinan seseorang."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "Marga keluarga dibelokkan untuk menunjukkan jenis kelamin seseorang."
 
 #. I18N: Location of an LDS church temple
@@ -15914,7 +15914,7 @@ msgstr "Tidak diketahui"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "Tidak diketahui"
 
@@ -16052,7 +16052,7 @@ msgstr "Gunakan sendmail untuk mengirim pesan"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "Gunakan gambar siluet ketika tidak ada gambar yang disorot untuk orang yang telah ditentukan. gambar yang digunakan khusus untuk jenis kelamin orang yang bersangkutan."
 
 #. I18N: A configuration setting
@@ -17725,7 +17725,7 @@ msgid "full circle"
 msgstr "lingkaran penuh"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "Kelamin"
 
 #. I18N: Type of location hierarchy
@@ -20985,7 +20985,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid " per gender"
+#~ msgid " per sex"
 #~ msgstr " / lelaki-perempuan"
 
 #~ msgid " per time period"
@@ -22050,7 +22050,7 @@ msgstr "…"
 #~ msgid "This message will be sent to %s"
 #~ msgstr "Pesan ini akan dikirim ke %s"
 
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
 #~ msgstr "Opsi ini mengontrol apakah iya atau tidak untuk menampilkan ikon kelamin seseorang pada grafik.<br><br>Karena jenis kelamin juga ditunjukkan oleh warna kotak, opsi ini tidak menyembunyikan jenis kelamin. Opsi hanya menghapus beberapa duplikat informasi dari kotak."
 
 #~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."

@@ -188,7 +188,7 @@ class GedcomL implements CustomTagInterface
             'INDI:CHR:_GODP'                  => new CustomElement(I18N::translate('Godparents')),
             'INDI:NAME:_RUFNAME'              => new NamePieceGiven(I18N::translate('Rufname')),
             'INDI:OBJE:_PRIM'                 => new CustomElement(I18N::translate('Highlighted image')),
-            'INDI:SEX'                        => new SexXValue(I18N::translate('Gender')),
+            'INDI:SEX'                        => new SexXValue(I18N::translate('Sex')),
             'INDI:_TODO'                      => new ResearchTask(I18N::translate('Research task')),
             'INDI:_TODO:DATA'                 => new SubmitterText(I18N::translate('The solution')),
             'INDI:_TODO:DATE'                 => new DateValueToday(I18N::translate('Creation date')),

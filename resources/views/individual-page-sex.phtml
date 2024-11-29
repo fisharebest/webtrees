@@ -27,7 +27,7 @@ if ($fact->isPendingDeletion()) {
         <button class="accordion-button collapsed gap-1" type="button" data-bs-toggle="collapse" data-bs-target="#name-content-<?= $fact->id() ?>" aria-expanded="false" aria-controls="name-content-<?= $fact->id() ?>">
             <?= view('icons/expand') ?>
             <?= view('icons/collapse') ?>
-            <span class="label"><?= I18N::translate('Gender') ?></span>
+            <span class="label"><?= I18N::translate('Sex') ?></span>
             <?= Registry::elementFactory()->make('INDI:SEX')->value($fact->value(), $tree) ?>
         </button>
     </div>
@@ -39,9 +39,9 @@ if ($fact->isPendingDeletion()) {
             <?php if ($fact->canEdit()) : ?>
                 <div class="d-flex">
                     <a class="btn btn-link ms-auto" href="<?= e(route(EditFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $fact->record()->tree()->name()])) ?>"
-                       title="<?= I18N::translate('Edit the gender') ?>">
+                       title="<?= I18N::translate('Edit the sex') ?>">
                         <?= view('icons/edit') ?>
-                        <span class="visually-hidden"><?= I18N::translate('Edit the gender') ?></span>
+                        <span class="visually-hidden"><?= I18N::translate('Edit the sex') ?></span>
                     </a>
                 </div>
             <?php endif ?>

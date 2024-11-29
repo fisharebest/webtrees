@@ -5499,7 +5499,7 @@ msgstr "Chỉnh sửa mục FAQ"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "Sửa Đổi Giới Tính"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13141,7 +13141,7 @@ msgid "Show only females."
 msgstr "Chỉ hiện nữ."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "Chỉ hiện người không rõ giới tính."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13959,11 +13959,11 @@ msgid "Surnames"
 msgstr "Họ"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Họ thay đổi để chỉ giới tính và tình trạng gia đình của người."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "Họ thay đổi để chỉ giới tính của người."
 
 #. I18N: Location of an LDS church temple
@@ -15933,7 +15933,7 @@ msgstr "Không biết"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "Không biết"
 
@@ -16071,7 +16071,7 @@ msgstr "Sử dụng sendmail để gửi tin nhắn"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "Dùng hình bóng này khi không có hình được chọn cho một cá nhân được nêu ra. Các hình được dùng này là cụ thể cho giới tính của người đang viện dẫn."
 
 #. I18N: A configuration setting
@@ -17750,7 +17750,7 @@ msgid "full circle"
 msgstr "giáp chu kỳ"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "nam/nữ"
 
 #. I18N: Type of location hierarchy
@@ -21013,7 +21013,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid " per gender"
+#~ msgid " per sex"
 #~ msgstr " /giới tính"
 
 #~ msgid " per time period"
@@ -22685,7 +22685,7 @@ msgstr "…"
 #~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
 #~ msgstr "Tùy chọn này kiểm soát có hay koh6ng có tự động dãn ra danh sách <i> Sự kiện của người thân</i>."
 
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
 #~ msgstr "Tùy chọn này kiểm soát có hay không hiển thị biểu tượng giới tính cho cá nhân ở biểu đồ.<br><br>Vì giới tính cũng được biểu thị bằng màu hộp, nên tùy chọn này không che đi giới tính. Tùy chọn này chỉ đơn giản loại bỏ một số thông tin trùng lắp trong hộp."
 
 #~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."

@@ -385,7 +385,7 @@
 								<!-- Sibling -->
 								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
-										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
+										<Text color="$tcolor" style="text"><var var="I18N::translate('Sex')"/> <var var="I18N::translateContext('unknown sex', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->
@@ -599,7 +599,7 @@
 								<!-- Unknown gender for Child -->
 								<if condition="@SEX=='U'">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
-										<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
+										<Text color="$tcolor" style="text"><var var="I18N::translate('Sex')"/> <var var="I18N::translateContext('unknown sex', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
 										<if condition="$sources=='on'">
 											<!-- print level 1 sources -->

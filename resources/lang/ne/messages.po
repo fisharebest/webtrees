@@ -5514,7 +5514,7 @@ msgstr "FAQ सम्पादन गर्नुहोस्"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "लिंग सच्याउनुहोस्"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13151,7 +13151,7 @@ msgid "Show only females."
 msgstr "महिलाहरू मात्रै देखाउनुहोस् ।"
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "लिङ्ग थाहा नभएका व्यक्तिहरूलाई मात्र देखाउनुहोस्।"
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13966,11 +13966,11 @@ msgid "Surnames"
 msgstr "थरहरू"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "उपनामहरू एक व्यक्तिको लिंग र वैवाहिक स्थितिलाई संकेत गर्नका लागि प्रभावित हुन्छन्।"
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "उपनामहरू एक व्यक्तिको लिङ्ग संकेत गर्नका लागि विलम्बित हुन्छन्।"
 
 #. I18N: Location of an LDS church temple
@@ -15935,7 +15935,7 @@ msgstr "अज्ञात"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "अज्ञात"
 
@@ -16074,7 +16074,7 @@ msgstr "सन्देशहरू पठाउन sendmail प्रयोग 
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "सिल्हूट छविहरू प्रयोग गर्नुहोस् जब त्यो व्यक्तिको लागि कुनै हाइलाइट गरिएको छवि निर्दिष्ट गरिएको छैन। प्रयोग गरिएका तस्बिरहरू प्रश्नमा व्यक्तिको लिंगको लागि विशिष्ट छन्।"
 
 #. I18N: A configuration setting
@@ -17748,7 +17748,7 @@ msgid "full circle"
 msgstr "पूर्ण सर्कल"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "लिंग"
 
 #. I18N: Type of location hierarchy

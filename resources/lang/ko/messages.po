@@ -5495,7 +5495,7 @@ msgstr "FAQ 수정"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "성별 수정"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13130,7 +13130,7 @@ msgid "Show only females."
 msgstr "여성만 표시합니다."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "성별이 알려지지 않은 인물만 표시합니다."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13945,11 +13945,11 @@ msgid "Surnames"
 msgstr "가문이름"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "가문이름은 개인의 성별과 결혼 상태를 나타내기 위해 활용됩니다."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "가문이름은 개인의 성별을 나타내기 위해 활용됩니다."
 
 #. I18N: Location of an LDS church temple
@@ -15908,7 +15908,7 @@ msgstr "알 수 없는"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "알 수 없음"
 
@@ -16046,7 +16046,7 @@ msgstr "sendmail을 사용하여 메시지 보내기"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "해당 인물에 대해 강조 표시된 이미지가 지정되지 않은 경우 실루엣 이미지를 사용하십시오. 사용 된 이미지는 해당 인물의 성별에 따라 다릅니다."
 
 #. I18N: A configuration setting
@@ -17719,7 +17719,7 @@ msgid "full circle"
 msgstr "full circle"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "성별"
 
 #. I18N: Type of location hierarchy

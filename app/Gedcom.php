@@ -736,7 +736,7 @@ class Gedcom
             'INDI:RETI:AGNC'             => new ResponsibleAgency(I18N::translate('Employer')),
             'INDI:RFN'                   => new PermanentRecordFileNumber(I18N::translate('Record file number')),
             'INDI:RIN'                   => new AutomatedRecordId(I18N::translate('Record ID number')),
-            'INDI:SEX'                   => new SexValue(I18N::translate('Gender')),
+            'INDI:SEX'                   => new SexValue(I18N::translate('Sex')),
             'INDI:SLGC'                  => new LdsChildSealing(I18N::translate('LDS child sealing')),
             'INDI:SLGC:DATE'             => new DateLdsOrd(I18N::translate('Date of LDS child sealing')),
             'INDI:SLGC:FAMC'             => new XrefFamily(I18N::translate('Parents')),

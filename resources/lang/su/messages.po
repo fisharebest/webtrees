@@ -5510,7 +5510,7 @@ msgstr ""
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr ""
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13146,7 +13146,7 @@ msgid "Show only females."
 msgstr ""
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13961,11 +13961,11 @@ msgid "Surnames"
 msgstr ""
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr ""
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr ""
 
 #. I18N: Location of an LDS church temple
@@ -15928,7 +15928,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr ""
 
@@ -16066,7 +16066,7 @@ msgstr ""
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr ""
 
 #. I18N: A configuration setting
@@ -17739,7 +17739,7 @@ msgid "full circle"
 msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr ""
 
 #. I18N: Type of location hierarchy
