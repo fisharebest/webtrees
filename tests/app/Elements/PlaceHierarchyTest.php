@@ -37,9 +37,7 @@ class PlaceHierarchyTest extends AbstractElementTestCase
 
     public function testCanonical(): void
     {
-        self::assertSame('Foo, bAr, baZ', self::$element->canonical('Foo  bAr  baZ'));
-        self::assertSame('Foo, bAr, baZ', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
-        self::assertSame('Foo, bAr, baZ', self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
         self::assertSame('Foo, Bar, Baz', self::$element->canonical(',,Foo,Bar , , Baz,  '));
+        self::assertSame('City State, Country or Territory', self::$element->canonical(' City  State,, Country or Territory,'));
     }
 }
