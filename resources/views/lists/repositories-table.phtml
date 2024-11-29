@@ -71,7 +71,7 @@ $count_sources = DB::table('sources')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $repository->lastChangeTimestamp()->timestamp() ?>">
+                <td data-sort="<?= sprintf('x%07d', $repository->lastChangeTimestamp()->timestamp()) ?>">
                     <?= view('components/datetime', ['timestamp' => $repository->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

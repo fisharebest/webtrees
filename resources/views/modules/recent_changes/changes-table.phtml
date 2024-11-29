@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -11,16 +13,17 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
+use Fisharebest\Webtrees\Timestamp;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var int                      $limit_high
- * @var int                      $limit_low
- * @var array<array<int,string>> $order
- * @var Collection<int,object>   $rows
- * @var bool                     $show_date
- * @var bool                     $show_user
+ * @var int                                                                           $limit_high
+ * @var int                                                                           $limit_low
+ * @var array<array<int,string>>                                                      $order
+ * @var Collection<int,object{record:GedcomRecord,time:Timestamp,user:UserInterface}> $rows
+ * @var bool                                                                          $show_date
+ * @var bool                                                                          $show_user
  */
 ?>
 
@@ -88,7 +91,7 @@ use Illuminate\Support\Collection;
                         <a href="<?= e($row->record->url()) ?>"><?= $row->record->fullName() ?></a>
                     </td>
 
-                    <td data-sort="<?= $row->time->timestamp() ?>" class="<?= $show_date ? '' : 'd-none' ?>">
+                    <td data-sort="<?= sprintf('x%07d', $row->time->timestamp()) ?>" class="<?= $show_date ? '' : 'd-none' ?>">
                         <?= view('components/datetime', ['timestamp' => $row->time]) ?>
                     </td>
 

@@ -223,7 +223,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Marriage date -->
-                    <td data-sort="<?= $family->getMarriageDate()->julianDay() ?>">
+                    <td data-sort="<?= sprintf('x%07d', $family->getMarriageDate()->julianDay()) ?>">
                         <?php if ($marriage_dates = $family->getAllMarriageDates()) : ?>
                             <?php foreach ($marriage_dates as $marriage_date) : ?>
                                 <div><?= $marriage_date->display($tree, null, true) ?></div>
@@ -254,7 +254,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Last change -->
-                    <td data-sort="<?= $family->lastChangeTimestamp()->timestamp() ?>">
+                    <td data-sort="<?= sprintf('x%07d', $family->lastChangeTimestamp()->timestamp()) ?>">
                         <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
                     </td>
 

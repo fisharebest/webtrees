@@ -2,13 +2,16 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
- * @var int                    $limit_high
- * @var int                    $limit_low
- * @var Collection<int,object> $yahrzeits
+ * @var int                                                                                       $limit_high
+ * @var int                                                                                       $limit_low
+ * @var Collection<int,object{individual:Individual,yahrzeit_date:Date,fact_date:Date,fact:Fact}> $yahrzeits
  */
 
 ?>
@@ -49,13 +52,13 @@ use Illuminate\Support\Collection;
                             <?php endif ?>
                         </a>
                     </td>
-                    <td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
+                    <td data-sort="<?= sprintf('x%07d', $yahrzeit->yahrzeit_date->julianDay()) ?>">
                         <?= $yahrzeit->fact_date->display($yahrzeit->individual->tree()) ?>
                     </td>
-                    <td data-sort="<?= e($yahrzeit->fact->anniv) ?>">
+                    <td data-sort="<?= sprintf('x%07d', $yahrzeit->fact->anniv) ?>">
                         <?= I18N::number($yahrzeit->fact->anniv) ?>
                     </td>
-                    <td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
+                    <td data-sort="<?= sprintf('x%07d', $yahrzeit->yahrzeit_date->julianDay()) ?>">
                         <?= $yahrzeit->yahrzeit_date->display($yahrzeit->individual->tree()) ?>
                     </td>
                 </tr>

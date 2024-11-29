@@ -224,7 +224,7 @@ $("#<?= e($table_id) ?>")
                     <!-- Birthdate -->
                     <?php $estimated_birth_date = $individual->getEstimatedBirthDate(); ?>
 
-                    <td data-sort="<?= $estimated_birth_date->julianDay() ?>">
+                    <td data-sort="<?= sprintf('x%07d', $estimated_birth_date->julianDay()) ?>">
                         <?php $birth_dates = $individual->getAllBirthDates(); ?>
 
                         <?php foreach ($birth_dates as $birth_date) : ?>
@@ -255,7 +255,7 @@ $("#<?= e($table_id) ?>")
 
                     <!-- Death date -->
                     <?php $death_dates = $individual->getAllDeathDates() ?>
-                    <td data-sort="<?= $individual->getEstimatedDeathDate()->julianDay() ?>">
+                    <td data-sort="<?= sprintf('x%07d', $individual->getEstimatedDeathDate()->julianDay()) ?>">
                         <?php foreach ($death_dates as $death_date) : ?>
                             <div><?= $death_date->display($tree, null, true) ?></div>
                         <?php endforeach ?>
@@ -284,7 +284,7 @@ $("#<?= e($table_id) ?>")
                     </td>
 
                     <!-- Last change -->
-                    <td data-sort="<?= $individual->lastChangeTimestamp()->timestamp() ?>">
+                    <td data-sort="<?= sprintf('x%07d', $individual->lastChangeTimestamp()->timestamp()) ?>">
                         <?= view('components/datetime', ['timestamp' => $individual->lastChangeTimestamp()]) ?>
                     </td>
 
@@ -339,4 +339,3 @@ $("#<?= e($table_id) ?>")
         </tfoot>
     </table>
 </div>
-

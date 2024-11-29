@@ -90,7 +90,7 @@ $count_families = DB::table('families')
                     <?= I18N::number($count_families[$submitter->xref()] ?? 0) ?>
                 </td>
 
-                <td data-sort="<?= $submitter->lastChangeTimestamp()->timestamp() ?>">
+                <td data-sort="<?= sprintf('x%07d', $submitter->lastChangeTimestamp()->timestamp()) ?>">
                     <?= view('components/datetime', ['timestamp' => $submitter->lastChangeTimestamp()]) ?>
                 </td>
             </tr>
