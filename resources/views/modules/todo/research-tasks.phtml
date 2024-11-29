@@ -44,7 +44,7 @@ use Illuminate\Support\Collection;
     <tbody>
         <?php foreach ($tasks as $task) : ?>
             <tr>
-                <td data-sort="<?= $task->date()->julianDay() ?>" class="d-none d-md-table-cell wt-side-block-optional">
+                <td data-sort="<?= sprintf('x%07d', $task->date()->julianDay()) ?>" class="d-none d-md-table-cell wt-side-block-optional">
                     <?= $task->date()->display() ?>
                 </td>
                 <td data-sort="<?= e($task->record()->sortName()) ?>">

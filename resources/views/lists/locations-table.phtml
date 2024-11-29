@@ -90,7 +90,7 @@ $count_families = DB::table('families')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $location->lastChangeTimestamp()->timestamp() ?>">
+                <td data-sort="<?= sprintf('x%07d', $location->lastChangeTimestamp()->timestamp()) ?>">
                     <?= view('components/datetime', ['timestamp' => $location->lastChangeTimestamp()]) ?>
                 </td>
             </tr>
