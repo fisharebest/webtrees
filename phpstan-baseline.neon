@@ -10633,12 +10633,6 @@ parameters:
 			path: resources/views/statistics/other/charts/custom.phtml
 
 		-
-			message: '#^PHPDoc tag @var for variable \$data has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: resources/views/statistics/other/charts/pie.phtml
-
-		-
 			message: '#^Cannot call method createServerRequest\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1

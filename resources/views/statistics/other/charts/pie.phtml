@@ -5,10 +5,10 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var array<string> $colors
- * @var array<array>  $data
- * @var string        $language
- * @var string        $title
+ * @var array<int,string>                $colors
+ * @var array<int,array{0:string,1:int}> $data
+ * @var string                           $language
+ * @var string                           $title
  */
 
 $id   = 'google-chart-' . bin2hex(random_bytes(8));

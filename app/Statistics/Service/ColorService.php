@@ -37,7 +37,7 @@ class ColorService
      * @param string $endColor   The end color
      * @param int    $steps      The number of steps to interpolate
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     public function interpolateRgb(string $startColor, string $endColor, int $steps): array
     {
