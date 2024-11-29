@@ -62,7 +62,7 @@ use Illuminate\Support\Collection;
         <?php if ($record->facts(['SEX'], false, null, true)->isEmpty()) : ?>
             <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['fact' => 'SEX', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
-                <?= I18N::translate('Edit the gender') ?>
+                <?= I18N::translate('Edit the sex') ?>
             </a>
         <?php endif ?>
 
@@ -70,7 +70,7 @@ use Illuminate\Support\Collection;
             <?php if ($fact->canEdit()) : ?>
                 <a class="dropdown-item" href="<?= e(route(EditFactPage::class, ['xref' => $record->xref(), 'fact_id' => $fact->id(), 'tree' => $record->tree()->name()])) ?>">
                     <?= view('icons/edit') ?>
-                    <?= I18N::translate('Edit the gender') ?>
+                    <?= I18N::translate('Edit the sex') ?>
                 </a>
             <?php endif ?>
         <?php endforeach ?>

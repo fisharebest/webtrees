@@ -5898,7 +5898,7 @@ msgstr "編輯常見問題"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "更改性別"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -14184,7 +14184,7 @@ msgid "Show only females."
 msgstr "僅顯示女性。"
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "僅顯示性別不知道的人。"
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -15065,12 +15065,12 @@ msgstr "姓氏"
 
 # I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "姓氏是變化的,取決個人的性別和婚姻狀況。"
 
 # I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "姓氏是變化的,取決一個人的性別。"
 
 # I18N: Location of an LDS church temple
@@ -17169,7 +17169,7 @@ msgstr "未知"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "未知"
 
@@ -17316,7 +17316,7 @@ msgstr "使用sendmail發送消息"
 # I18N: Help text for the “Use silhouettes” configuration setting
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "在已指定的個人並沒有突出顯示的圖像時，請使用輪廓圖像。 使用的圖像是個人的特定于性別問題。"
 
 # I18N: A configuration setting
@@ -19095,7 +19095,7 @@ msgid "full circle"
 msgstr "整圈"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "性別"
 
 #. I18N: Type of location hierarchy

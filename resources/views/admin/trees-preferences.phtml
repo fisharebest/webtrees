@@ -308,7 +308,7 @@ use Illuminate\Support\Collection;
         <div class="col-sm-9">
             <?= view('components/radios-inline', ['name' => 'USE_SILHOUETTE', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('USE_SILHOUETTE')]) ?>
             <div class="form-text">
-                <?= /* I18N: Help text for the “Use silhouettes” configuration setting */ I18N::translate('Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question.') ?>
+                <?= /* I18N: Help text for the “Use silhouettes” configuration setting */ I18N::translate('Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question.') ?>
             </div>
         </div>
     </fieldset>

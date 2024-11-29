@@ -84,7 +84,7 @@ class SexValue extends AbstractElement
         return [
             'M' => I18N::translate('Male'),
             'F' => I18N::translate('Female'),
-            'U' => I18N::translateContext('unknown gender', 'Unknown'),
+            'U' => I18N::translateContext('unknown sex', 'Unknown'),
         ];
     }
 }

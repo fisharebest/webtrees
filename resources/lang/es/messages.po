@@ -5520,7 +5520,7 @@ msgstr "Editar pregunta frecuente"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "Modificar sexo"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13157,7 +13157,7 @@ msgid "Show only females."
 msgstr "Mostrar sólo mujeres."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "Mostrar sólo personas de sexo desconocido."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13972,11 +13972,11 @@ msgid "Surnames"
 msgstr "Apellidos"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Los apellidos se declinan para indicar el género de una persona y el estado civil."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "﻿﻿﻿Los apellidos se declinan para indicar el género de una persona."
 
 #. I18N: Location of an LDS church temple
@@ -15941,7 +15941,7 @@ msgstr "Desconocido"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -16080,7 +16080,7 @@ msgstr "Usar sendmail para enviar mensajes"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "Se utilizará una imagen de silueta cuando no se haya especificado ninguna imagen marcada para ese individuo. Las imágenes utilizadas son específicas para el género de la persona en cuestión."
 
 #. I18N: A configuration setting
@@ -17754,7 +17754,7 @@ msgid "full circle"
 msgstr "círculo completo"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "sexo"
 
 #. I18N: Type of location hierarchy
@@ -21016,7 +21016,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid " per gender"
+#~ msgid " per sex"
 #~ msgstr " por sexo"
 
 #~ msgid " per time period"
@@ -22743,7 +22743,7 @@ msgstr "…"
 #~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
 #~ msgstr "Esta opción controla si se expande automáticamente o no la lista de <i>Eventos de parientes cercanos</i>."
 
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
 #~ msgstr "Esta opción controla si se muestra o no el icono del sexo de la persona en los diagramas.<br><br>Como el sexo también se indica mediante el color de la caja, esta opción no oculta el sexo, simplemente suprime alguna información innecesaria de la caja."
 
 #~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."

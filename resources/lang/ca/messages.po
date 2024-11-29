@@ -5519,7 +5519,7 @@ msgstr "Edita la PMF"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "Edita el gènere"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13156,7 +13156,7 @@ msgid "Show only females."
 msgstr "Mostra solament dones."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "Mostra solament persones de les que es desconeix el sexe."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13971,11 +13971,11 @@ msgid "Surnames"
 msgstr "Cognoms"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Els cognoms es flexionen per indicar el gènere de la persona i llur estat matrimonial."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "Els cognoms es flexionen per indicar el gènere de la persona."
 
 #. I18N: Location of an LDS church temple
@@ -15940,7 +15940,7 @@ msgstr "Desconegut"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "Desconegut"
 
@@ -16079,7 +16079,7 @@ msgstr "Utilitza «sendmail» per enviar missatges"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "Utilitza una silueta quan no s'ha especificat cap imatge per a una persona. Les siluetes són específiques per a cada gènere."
 
 #. I18N: A configuration setting
@@ -17753,7 +17753,7 @@ msgid "full circle"
 msgstr "tot el cercle"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "homes/dones"
 
 #. I18N: Type of location hierarchy
@@ -21015,7 +21015,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid " per gender"
+#~ msgid " per sex"
 #~ msgstr " per sexes"
 
 #~ msgid " per time period"
@@ -22802,7 +22802,7 @@ msgstr "…"
 #~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
 #~ msgstr "Aquesta opció controla si s’obre automàticament o no la llista d’<i>Esdeveniments de parents directes</i>."
 
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
 #~ msgstr "Aquesta opció controla si es mostra o no la icona del gènere (sexe) de les persones als gràfics.<br><br>Atès que el gènere també s’indica mitjançant el color de les caixes, aquesta opció no fa que s’amagui la dada, senzillament estalvia informació duplicada a la caixa."
 
 #~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."

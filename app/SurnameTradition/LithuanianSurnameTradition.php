@@ -75,7 +75,7 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
         return
             I18N::translate('Children take their father’s surname.') . ' ' .
             I18N::translate('Wives take their husband’s surname.') . ' ' .
-            I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.');
+            I18N::translate('Surnames are inflected to indicate an individual’s sex and marital status.');
     }
 
     /**

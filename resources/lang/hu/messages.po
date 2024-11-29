@@ -5519,7 +5519,7 @@ msgstr "GYIK szerkesztése"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "Nem szerkesztése"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13156,7 +13156,7 @@ msgid "Show only females."
 msgstr "Csak a nőket mutasd."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "Csak azokat a személyeket mutasd, akik neme ismeretlen."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13971,11 +13971,11 @@ msgid "Surnames"
 msgstr "Vezetéknevek"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "A vezetéknevek ragozottak a személy családi állapota és neme feltüntetése céljából."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "A vezetéknevek ragozottak a személy neme feltüntetése céljából."
 
 #. I18N: Location of an LDS church temple
@@ -15940,7 +15940,7 @@ msgstr "Ismeretlen"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -16079,7 +16079,7 @@ msgstr "Üzenet küldése sendmail használatával"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "Árnyképet használunk, ha nem áll rendelkezésre a személy fényképe. Az árnykép megfelel a kérdéses személy nemének."
 
 #. I18N: A configuration setting
@@ -17753,7 +17753,7 @@ msgid "full circle"
 msgstr "teljes körös"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "nem"
 
 #. I18N: Type of location hierarchy
@@ -21015,7 +21015,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid " per gender"
+#~ msgid " per sex"
 #~ msgstr " / személy"
 
 #~ msgid " per time period"
@@ -22760,7 +22760,7 @@ msgstr "…"
 #~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
 #~ msgstr "Ez a beállítás határozza meg, hogy a <i>Közeli hozzátartozók eseményei</i>-lista automatikusan kitárt legyen-e."
 
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
 #~ msgstr "Ez a beállítás határozza meg, hogy megjelenjen-e a személy nemének ikonja az ábrákon.<br><br>Minthogy a nemeket a keretek színe is jelzi, ez a beállítás nem rejti el a nemet. Az opció egyszerűen töröl néhány kettős információt a keretből."
 
 #~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."

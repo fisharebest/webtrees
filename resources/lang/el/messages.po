@@ -5532,7 +5532,7 @@ msgstr "Επεξεργασία συχνής ερώτησης"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "Επεξεργαστείτε το φύλο"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13169,7 +13169,7 @@ msgid "Show only females."
 msgstr "Εμφάνιση μόνο θηλέων."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "Εμφάνιση μόνο ατόμων αγνώστου φύλου."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13984,11 +13984,11 @@ msgid "Surnames"
 msgstr "Επώνυμα"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Τα επώνυμα κλίνουν για να δείξουν το φύλο και την οικογενειακή κατάσταση ενός ατόμου."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "Τα επώνυμα είναι κεκλιμένα για να δείξουν το φύλο ενός ατόμου."
 
 #. I18N: Location of an LDS church temple
@@ -15953,7 +15953,7 @@ msgstr "Άγνωστος"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
@@ -16092,7 +16092,7 @@ msgstr "Χρησιμοποιήστε το sendmail για να στείλετε 
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "Χρησιμοποιήστε εικόνες σιλουέτας όταν δεν έχει καθοριστεί καμία επισημασμένη εικόνα για αυτό το άτομο. Οι εικόνες που χρησιμοποιούνται είναι συγκεκριμένες για το φύλο του συγκεκριμένου ατόμου."
 
 #. I18N: A configuration setting
@@ -17767,7 +17767,7 @@ msgid "full circle"
 msgstr "πλήρης κύκλος"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "φύλο"
 
 #. I18N: Type of location hierarchy
@@ -21029,7 +21029,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid " per gender"
+#~ msgid " per sex"
 #~ msgstr " ανά φύλο"
 
 #~ msgid " per time period"

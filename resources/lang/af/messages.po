@@ -5515,7 +5515,7 @@ msgstr "Wysig die FAQ"
 #: resources/views/individual-page-menu.phtml:73
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
-msgid "Edit the gender"
+msgid "Edit the sex"
 msgstr "Wysig geslag"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
@@ -13152,7 +13152,7 @@ msgid "Show only females."
 msgstr "Vertoon net vroue."
 
 #: resources/views/lists/individuals-table.phtml:107
-msgid "Show only individuals for whom the gender is not known."
+msgid "Show only individuals for whom the sex is not known."
 msgstr "Vertoon slegs persone waarvan die geslag onbekend is."
 
 #: resources/views/modules/random_media/config.phtml:19
@@ -13967,11 +13967,11 @@ msgid "Surnames"
 msgstr "Vanne"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
-msgid "Surnames are inflected to indicate an individual’s gender and marital status."
+msgid "Surnames are inflected to indicate an individual’s sex and marital status."
 msgstr "Vanne word verbuig om 'n persoon se geslag en huwelikstatus aan te dui."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
-msgid "Surnames are inflected to indicate an individual’s gender."
+msgid "Surnames are inflected to indicate an individual’s sex."
 msgstr "Vanne word verbuig om 'n persoon se geslag aan te dui."
 
 #. I18N: Location of an LDS church temple
@@ -15936,7 +15936,7 @@ msgstr "Onbekende"
 #: resources/xml/reports/individual_ext_report.xml:606
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
-msgctxt "unknown gender"
+msgctxt "unknown sex"
 msgid "Unknown"
 msgstr "Onbekend"
 
@@ -16075,7 +16075,7 @@ msgstr "Gebruik sendmail om boodskappe te stuur"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
-msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
+msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr "Gebruik silhoeët beelde as geen kenmerk-beelde vir daardie persoon bestaan nie. Die beelde word gekies n.a.l.v. die geslag van die betrokke persoon."
 
 #. I18N: A configuration setting
@@ -17749,7 +17749,7 @@ msgid "full circle"
 msgstr "volledige sirkel"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "gender"
+msgid "sex"
 msgstr "geslag"
 
 #. I18N: Type of location hierarchy
@@ -21011,7 +21011,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid " per gender"
+#~ msgid " per sex"
 #~ msgstr " per geslag"
 
 #~ msgid " per time period"
@@ -22808,7 +22808,7 @@ msgstr "…"
 #~ msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
 #~ msgstr "Hierdie opsie bepaal of die <i>Gebeurtenisse van naverwante familie</i>-lys outomaties uitgebrei moet word, of nie."
 
-#~ msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box."
+#~ msgid "This option controls whether or not to show the individual’s sex icon on charts.<br><br>Since the sex is also indicated by the color of the box, this option doesn’t conceal the sex. The option simply removes some duplicate information from the box."
 #~ msgstr "Hierdie opsie bepaal of 'n persoon se geslagsikoon op diagramme vertoon moet word.<br><br>Aangesien die geslag deur die kleur van die raampie aangedui word, sal hierdie opsie nie die geslag verberg nie. Die opsie verwyder bloot oortollige inligting uit die raampie."
 
 #~ msgid "This option indicates whether the pedigree chart should be generated in landscape or portrait mode."
