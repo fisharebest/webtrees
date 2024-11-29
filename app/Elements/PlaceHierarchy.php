@@ -50,7 +50,7 @@ class PlaceHierarchy extends AbstractElement
     public function canonical(string $value): string
     {
         $value = parent::canonical($value);
-        $value = preg_replace('/[, ]+/', ', ', $value);
+        $value = preg_replace('/[, ]*,[, ]*/', ', ', $value);
 
         return trim($value, ', ');
     }
