@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -285,7 +287,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object> List of records with changes
+     * @return Collection<array-key,object{record:GedcomRecord,time:TimestampInterface,user:UserInterface}> List of records with changes
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
@@ -317,7 +319,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<array-key,object> List of records with changes
+     * @return Collection<array-key,object{record:GedcomRecord,time:TimestampInterface,user:UserInterface}> List of records with changes
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {

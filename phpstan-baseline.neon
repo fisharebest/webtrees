@@ -73,12 +73,6 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
-			message: '#^Parameter \$suggestedValues of method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\) expects array\|\(Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput, Symfony\\Component\\Console\\Completion\\CompletionSuggestions\)\: list\<string\|Symfony\\Component\\Console\\Completion\\Suggestion\>\), Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput\)\: array\<string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/TreeExport.php
-
-		-
 			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
@@ -5059,20 +5053,14 @@ parameters:
 			path: app/Module/PlacesModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$time\.$#'
-			identifier: property.notFound
-			count: 4
-			path: app/Module/RecentChangesModule.php
-
-		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
+			count: 1
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Module\\RecentChangesModule\:\:getRecentChangesFromDatabase\(\) should return Illuminate\\Support\\Collection\<\(int\|string\), object\{record\: Fisharebest\\Webtrees\\GedcomRecord, time\: Fisharebest\\Webtrees\\Contracts\\TimestampInterface, user\: Fisharebest\\Webtrees\\Contracts\\UserInterface\}\> but returns Illuminate\\Support\\Collection\<int, object\{record\: Fisharebest\\Webtrees\\GedcomRecord\|null, time\: Fisharebest\\Webtrees\\Contracts\\TimestampInterface, user\: Fisharebest\\Webtrees\\User\|null\}&stdClass\>\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Module/RecentChangesModule.php
 
@@ -5090,18 +5078,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\GedcomRecordFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Parameter \#1 of closure expects Fisharebest\\Webtrees\\GedcomRecord, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/RecentChangesModule.php
-
-		-
-			message: '#^Parameter \#2 of closure expects Fisharebest\\Webtrees\\GedcomRecord, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/RecentChangesModule.php
@@ -9817,48 +9793,6 @@ parameters:
 			path: resources/views/modules/favorites/favorites.phtml
 
 		-
-			message: '#^Access to an undefined property object\:\:\$body\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/gedcom_news/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$news_id\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/gedcom_news/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$subject\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/gedcom_news/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$updated\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/gedcom_news/list.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/gedcom_news/list.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/modules/gedcom_news/list.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/gedcom_news/list.phtml
-
-		-
 			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -10049,60 +9983,6 @@ parameters:
 			identifier: argument.type
 			count: 3
 			path: resources/views/modules/place-hierarchy/sidebar.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$time\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$user\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Cannot call method lastChangeUser\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Cannot call method userName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/modules/recent_changes/changes-list.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 1
-			path: resources/views/modules/recent_changes/changes-list.phtml
 
 		-
 			message: '#^Cannot call method getCloseRelationshipName\(\) on mixed\.$#'
@@ -10385,126 +10265,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: resources/views/modules/user-messages/user-messages.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$body\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/user_blog/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$news_id\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/user_blog/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$subject\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/user_blog/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$updated\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/user_blog/list.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/user_blog/list.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/modules/user_blog/list.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/modules/user_blog/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$fact\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$individual\.$#'
-			identifier: property.notFound
-			count: 5
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$yahrzeit_date\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Cannot access property \$anniv on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Cannot call method date\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Cannot call method display\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Cannot call method sex\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Cannot call method tree\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 3
-			path: resources/views/modules/yahrzeit/list.phtml
-
-		-
-			message: '#^Parameter \#2 \.\.\.\$args of static method Fisharebest\\Webtrees\\I18N\:\:translate\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/modules/yahrzeit/list.phtml
 
 		-
 			message: '#^Access to an undefined property object\:\:\$change_id\.$#'

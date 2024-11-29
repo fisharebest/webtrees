@@ -2,15 +2,18 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var int                    $id
- * @var int                    $limit_low
- * @var int                    $limit_high
- * @var Collection<int,object> $yahrzeits
+ * @var int                                                                                       $id
+ * @var int                                                                                       $limit_high
+ * @var int                                                                                       $limit_low
+ * @var Collection<int,object{individual:Individual,yahrzeit_date:Date,fact_date:Date,fact:Fact}> $yahrzeits
  */
 
 ?>
@@ -44,7 +47,7 @@ use Illuminate\Support\Collection;
         <div class="indent">
             <?= $yahrzeit->fact->date()->display($yahrzeit->individual->tree()) ?>,
             <?= $yahrzeit->yahrzeit_date->display($yahrzeit->individual->tree()) ?>,
-            <?= I18N::translate('%s year anniversary', $yahrzeit->fact->anniv) ?>
+            <?= I18N::translate('%s year anniversary', I18N::number($yahrzeit->fact->anniv)) ?>
         </div>
     </div>
 <?php endforeach ?>
