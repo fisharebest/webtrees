@@ -2,11 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 13:09+0000\n"
+"POT-Creation-Date: 2024-11-30 20:50+0000\n"
 "PO-Revision-Date: 2024-07-01 13:59+0000\n"
 "Last-Translator: alirjamali <alireza.jamali.mp@gmail.com>\n"
-"Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/"
-"webtrees/fa/>\n"
+"Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/webtrees/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -117,7 +116,7 @@ msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
-#: app/Http/RequestHandlers/ManageMediaData.php:371 app/MediaFile.php:326
+#: app/Http/RequestHandlers/ManageMediaData.php:370 app/MediaFile.php:326
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr "%1$s در %2$s پیکسل"
@@ -127,21 +126,21 @@ msgstr "%1$s در %2$s پیکسل"
 #. I18N: e.g. "Occupation: farmer"
 #: app/Elements/AbstractElement.php:250 app/Elements/NoteStructure.php:130
 #: app/Elements/NoteStructure.php:154 app/Elements/NoteStructure.php:166
-#: app/Exceptions/FileUploadException.php:99 app/Fact.php:570
-#: app/GedcomRecord.php:554 app/Http/RequestHandlers/CheckTree.php:418
+#: app/Exceptions/FileUploadException.php:97 app/Fact.php:570
+#: app/GedcomRecord.php:563 app/Http/RequestHandlers/CheckTree.php:418
 #: app/Http/RequestHandlers/CheckTree.php:420
 #: app/Http/RequestHandlers/CheckTree.php:444
 #: resources/views/fact-association-structure.phtml:101
 #: resources/views/fact-association-structure.phtml:105
 #: resources/views/fact-association-structure.phtml:109
-#: resources/views/fact-gedcom-fields.phtml:68
+#: resources/views/fact-gedcom-fields.phtml:74
 #: resources/views/modules/media-list/page.phtml:142
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
-#: app/Individual.php:491 app/Module/StatisticsChartModule.php:856
+#: app/Individual.php:457 app/Module/StatisticsChartModule.php:856
 #, php-format
 msgid "%1$s–%2$s"
 msgstr "%1$s – %2$s"
@@ -152,7 +151,7 @@ msgid "%1$s’s %2$s"
 msgstr "%2$s %1$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
-#: app/I18N.php:604
+#: app/I18N.php:603
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
 
@@ -167,35 +166,35 @@ msgid "%s BCE"
 msgstr "%s قبل از میلاد"
 
 #. I18N: size of file in KB
-#: app/Http/RequestHandlers/ManageMediaData.php:361 app/MediaFile.php:312
+#: app/Http/RequestHandlers/ManageMediaData.php:360 app/MediaFile.php:312
 #: app/Services/MediaFileService.php:93
 #, php-format
 msgid "%s KB"
 msgstr "%s کیلوبایت"
 
-#: app/Module/ClippingsCartModule.php:545
+#: app/Module/ClippingsCartModule.php:459
 #, php-format
 msgid "%s and her ancestors"
 msgstr "%s و اجدادش"
 
-#: app/Module/ClippingsCartModule.php:554
+#: app/Module/ClippingsCartModule.php:468
 #, php-format
 msgid "%s and his ancestors"
 msgstr "%s و اجدادش"
 
-#: app/Module/ClippingsCartModule.php:848
+#: app/Module/ClippingsCartModule.php:702
 #, php-format
 msgid "%s and the individuals that reference it."
 msgstr "%s و افرادی که به آن مرتبطند ."
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:450
+#: app/Module/ClippingsCartModule.php:385
 #, php-format
 msgid "%s and their children"
 msgstr "%s و فرزندان آنها"
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:452
+#: app/Module/ClippingsCartModule.php:387
 #, php-format
 msgid "%s and their descendants"
 msgstr "%s و فرزندان آنها"
@@ -219,7 +218,7 @@ msgstr[0] "%s فرزند"
 msgstr[1] "%s فرزند(ان)"
 
 #: app/Age.php:98 app/Elements/AgeAtEvent.php:103
-#: app/Statistics/Repository/FamilyRepository.php:351
+#: app/Statistics/Repository/FamilyRepository.php:350
 #: app/Statistics/Repository/IndividualRepository.php:979
 #, php-format
 msgid "%s day"
@@ -235,7 +234,7 @@ msgstr[1] "%s روز(روزها)"
 msgid "%s does not exist."
 msgstr "%s وجود ندارد."
 
-#: resources/views/calendar-list.phtml:25
+#: resources/views/calendar-list.phtml:26
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
@@ -267,7 +266,7 @@ msgstr[1] "%s نوه(ها)"
 
 #: app/Module/LifespansChartModule.php:272
 #: resources/views/admin/trees-unconnected.phtml:42
-#: resources/views/calendar-list.phtml:20
+#: resources/views/calendar-list.phtml:21
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -291,7 +290,7 @@ msgstr[0] "%s پیام"
 msgstr[1] "%s پیام"
 
 #: app/Age.php:94 app/Elements/AgeAtEvent.php:101
-#: app/Statistics/Repository/FamilyRepository.php:357
+#: app/Statistics/Repository/FamilyRepository.php:356
 #: app/Statistics/Repository/IndividualRepository.php:984
 #: resources/views/modules/relatives/family.phtml:196
 #, php-format
@@ -385,8 +384,9 @@ msgstr[0] "%s هفته"
 msgstr[1] "%s هفته"
 
 #: app/Age.php:90 app/Elements/AgeAtEvent.php:100
-#: app/Statistics/Repository/FamilyRepository.php:362
+#: app/Statistics/Repository/FamilyRepository.php:361
 #: app/Statistics/Repository/IndividualRepository.php:989
+#: resources/views/lists/anniversaries-list.phtml:55
 #: resources/views/modules/relatives/family.phtml:194
 #: resources/views/modules/statistics-chart/custom.phtml:141
 #: resources/views/modules/statistics-chart/custom.phtml:150
@@ -396,7 +396,7 @@ msgid_plural "%s years"
 msgstr[0] "%s سال"
 msgstr[1] "%sسال"
 
-#: app/Http/RequestHandlers/CalendarEvents.php:157
+#: app/Http/RequestHandlers/CalendarEvents.php:169
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
@@ -438,42 +438,42 @@ msgstr "%s&nbsp;پس ازمیلاد"
 msgid "%s+"
 msgstr "%s +"
 
-#: app/Module/ClippingsCartModule.php:546
+#: app/Module/ClippingsCartModule.php:460
 #, php-format
 msgid "%s, her ancestors and their families"
 msgstr "%s، اجدادش و خانواده اش"
 
-#: app/Module/ClippingsCartModule.php:543
+#: app/Module/ClippingsCartModule.php:457
 #, php-format
 msgid "%s, her parents and siblings"
 msgstr "%s،والدین و خواهر و برادران تنی اش"
 
-#: app/Module/ClippingsCartModule.php:544
+#: app/Module/ClippingsCartModule.php:458
 #, php-format
 msgid "%s, her spouses and children"
 msgstr "%s، شوهر و فرزندانش"
 
-#: app/Module/ClippingsCartModule.php:547
+#: app/Module/ClippingsCartModule.php:461
 #, php-format
 msgid "%s, her spouses and descendants"
 msgstr "%s، همسر و فرزندانش"
 
-#: app/Module/ClippingsCartModule.php:555
+#: app/Module/ClippingsCartModule.php:469
 #, php-format
 msgid "%s, his ancestors and their families"
 msgstr "%s، اجداد و خانواده اش"
 
-#: app/Module/ClippingsCartModule.php:552
+#: app/Module/ClippingsCartModule.php:466
 #, php-format
 msgid "%s, his parents and siblings"
 msgstr "%s،والدین و خواهر و برادران تنی اش"
 
-#: app/Module/ClippingsCartModule.php:553
+#: app/Module/ClippingsCartModule.php:467
 #, php-format
 msgid "%s, his spouses and children"
 msgstr "%s، همسر و فرزندانش"
 
-#: app/Module/ClippingsCartModule.php:556
+#: app/Module/ClippingsCartModule.php:470
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s، همسر و فرزندانش"
@@ -756,7 +756,7 @@ msgid "A list of changes that need to be reviewed by a moderator, and email noti
 msgstr "فهرست تغییراتی که باید توسط ناظر بررسی شود و اعلان‌های ایمیل."
 
 #. I18N: Description of the “Families” module
-#: app/Module/FamilyListModule.php:60
+#: app/Module/FamilyListModule.php:48
 msgid "A list of families."
 msgstr "فهرست خانواده ها."
 
@@ -766,7 +766,7 @@ msgid "A list of frequently asked questions and answers."
 msgstr "فهرست پرسش ها و پاسخ های متداول."
 
 #. I18N: Description of the “Individuals” module
-#: app/Module/IndividualListModule.php:105
+#: app/Module/IndividualListModule.php:48
 msgid "A list of individuals."
 msgstr "فهرست افراد."
 
@@ -1236,14 +1236,14 @@ msgstr "ادار II"
 msgid "Add"
 msgstr "افزودن"
 
-#: app/Module/ClippingsCartModule.php:455
-#: app/Module/ClippingsCartModule.php:560
-#: app/Module/ClippingsCartModule.php:670
-#: app/Module/ClippingsCartModule.php:714
-#: app/Module/ClippingsCartModule.php:758
-#: app/Module/ClippingsCartModule.php:802
-#: app/Module/ClippingsCartModule.php:851
-#: app/Module/ClippingsCartModule.php:906
+#: app/Module/ClippingsCartModule.php:390
+#: app/Module/ClippingsCartModule.php:474
+#: app/Module/ClippingsCartModule.php:564
+#: app/Module/ClippingsCartModule.php:598
+#: app/Module/ClippingsCartModule.php:632
+#: app/Module/ClippingsCartModule.php:666
+#: app/Module/ClippingsCartModule.php:705
+#: app/Module/ClippingsCartModule.php:750
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "%s را به سبد گزیده ها اضافه کنید"
@@ -1449,7 +1449,7 @@ msgstr "افزودن استایل و اسکریپت به هر صفحه."
 msgid "Add to TITLE header tag"
 msgstr "افزودن تیتر به تگ سربرگ"
 
-#: app/Module/ClippingsCartModule.php:186
+#: app/Module/ClippingsCartModule.php:165
 #: resources/views/modules/clippings/add-options.phtml:23
 msgid "Add to the clippings cart"
 msgstr "افزودن به سبد گزیده ها"
@@ -1752,18 +1752,18 @@ msgstr "نام مستعار"
 msgid "Alive"
 msgstr "زنده"
 
+#: app/Module/AbstractIndividualListModule.php:191
+#: app/Module/AbstractIndividualListModule.php:195
+#: app/Module/AbstractIndividualListModule.php:199
+#: app/Module/AbstractIndividualListModule.php:274
+#: app/Module/AbstractIndividualListModule.php:409
+#: app/Module/AbstractIndividualListModule.php:411
 #: app/Module/FrequentlyAskedQuestionsModule.php:318
-#: app/Module/IndividualListModule.php:235
-#: app/Module/IndividualListModule.php:239
-#: app/Module/IndividualListModule.php:243
-#: app/Module/IndividualListModule.php:317
-#: app/Module/IndividualListModule.php:455
-#: app/Module/IndividualListModule.php:457
 #: resources/views/calendar-page.phtml:183
 #: resources/views/lists/datatables-attributes.phtml:12
 #: resources/views/modules/faq/config.phtml:76
 #: resources/views/modules/random_media/config.phtml:22
-#: resources/views/modules/user-messages/user-messages.phtml:67
+#: resources/views/modules/user-messages/user-messages.phtml:65
 #: resources/xml/reports/ahnentafel_report.xml:7
 #: resources/xml/reports/descendancy_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:6
@@ -1783,7 +1783,7 @@ msgstr "همه"
 msgid "All facts and events"
 msgstr "همه وقایع و رویدادها"
 
-#: app/Http/RequestHandlers/RegisterAction.php:255
+#: app/Http/RequestHandlers/RegisterAction.php:254
 msgid "All fields must be completed."
 msgstr "همه فیلدها باید پر شوند."
 
@@ -1819,7 +1819,7 @@ msgid "Allow visitors to request a new user account"
 msgstr "به بازدیدکنندگان اجازه دهید تا یک حساب کاربری جدید درخواست کنند"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -1923,7 +1923,7 @@ msgid "Ancestry PID"
 msgstr "شماره PID اجدادی"
 
 #. I18N: GEDCOM tag _APID
-#: app/CustomTags/FamilyTreeMaker.php:109
+#: app/CustomTags/FamilyTreeMaker.php:110
 msgid "Ancestry.com source identifier"
 msgstr "شناسه منبع Ancestry.com"
 
@@ -1952,7 +1952,7 @@ msgstr "آنگویلا"
 #: resources/views/lists/individuals-table.phtml:169
 #: resources/views/lists/individuals-table.phtml:179
 #: resources/views/modules/share-anniversary/share.phtml:20
-#: resources/views/modules/yahrzeit/table.phtml:31
+#: resources/views/modules/yahrzeit/table.phtml:34
 msgid "Anniversary"
 msgstr "سالگرد"
 
@@ -2061,12 +2061,12 @@ msgstr "آیا مطمئن هستید که می خواهید پیوند \"%s\" ر
 msgid "Are you sure you want to delete this fact?"
 msgstr "آیا مطمئن هستید که می خواهید این واقعه را حذف کنید؟"
 
-#: resources/views/modules/user-messages/user-messages.phtml:53
 #: resources/views/modules/user-messages/user-messages.phtml:135
+#: resources/views/modules/user-messages/user-messages.phtml:149
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
 msgstr "آیا از حذف این پیام مطمئن هستید؟ بعدا قابل بازیابی نیست."
 
-#: app/Http/RequestHandlers/ManageMediaData.php:258
+#: app/Http/RequestHandlers/ManageMediaData.php:257
 #: resources/views/admin/clean-data.phtml:42
 #: resources/views/admin/trees.phtml:118
 #: resources/views/admin/users-table-options.phtml:46
@@ -2526,7 +2526,7 @@ msgstr "بت میتزوه"
 msgid "Baton Rouge, Louisiana, United States"
 msgstr "باتون روژ، لوئیزیانا، ایالات متحده"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:257
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:255
 msgid "Begins with"
 msgstr "شروع با"
 
@@ -2950,12 +2950,12 @@ msgstr "جزیره بووه"
 
 #. I18N: Name of a module/list
 #. I18N: Branches of a family tree
-#: app/Module/BranchesListModule.php:99 app/Module/BranchesListModule.php:240
+#: app/Module/BranchesListModule.php:99 app/Module/BranchesListModule.php:219
 msgid "Branches"
 msgstr "شاخه ها"
 
 #. I18N: %s is a surname
-#: app/Module/BranchesListModule.php:230
+#: app/Module/BranchesListModule.php:209
 #, php-format
 msgid "Branches of the %s family"
 msgstr "شاخه های خانواده %s"
@@ -3308,7 +3308,7 @@ msgstr "دسته بندی"
 msgid "Cause"
 msgstr "علت"
 
-#: app/CustomTags/FamilyTreeMaker.php:114 app/Gedcom.php:638
+#: app/CustomTags/FamilyTreeMaker.php:115 app/Gedcom.php:638
 msgid "Cause of death"
 msgstr "علت فوت"
 
@@ -3490,7 +3490,7 @@ msgstr "کنترل خطاها"
 msgid "Check for new version"
 msgstr "کنترل نسخه جدید"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:120
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:119
 msgid "Check for pending changes…"
 msgstr "بررسی تغییرات در انتظار…"
 
@@ -3525,7 +3525,7 @@ msgid "Child of %s"
 msgstr "فرزند ِ %s"
 
 #: app/Http/RequestHandlers/FamilyPage.php:153
-#: app/Http/RequestHandlers/IndividualPage.php:225
+#: app/Http/RequestHandlers/IndividualPage.php:224
 #: app/Module/StatisticsChartModule.php:422
 #: app/Module/StatisticsChartModule.php:714
 #: resources/views/lists/families-table.phtml:161
@@ -3684,7 +3684,7 @@ msgstr "جزیره کریسمس"
 msgid "Circumciser"
 msgstr "ختنه کننده"
 
-#: app/CustomTags/FamilyTreeMaker.php:113
+#: app/CustomTags/FamilyTreeMaker.php:114
 msgid "Circumcision"
 msgstr "ختنه"
 
@@ -3718,7 +3718,7 @@ msgstr "شهر"
 msgid "Ciudad Juárez, Mexico"
 msgstr "سیوداد خوارز، مکزیک"
 
-#: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:63
+#: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:60
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
 msgstr "ازدواج محضری"
@@ -3737,13 +3737,13 @@ msgctxt "MALE"
 msgid "Civil registrar"
 msgstr "ثبت محضری"
 
-#: app/Http/RequestHandlers/CleanDataFolder.php:100
+#: app/Http/RequestHandlers/CleanDataFolder.php:99
 #: resources/views/admin/control-panel.phtml:268
 msgid "Clean up data folder"
 msgstr "پاک کردن پوشه داده"
 
 #. I18N: Name of a module
-#: app/Module/ClippingsCartModule.php:214
+#: app/Module/ClippingsCartModule.php:188
 msgid "Clippings cart"
 msgstr "سبد گزیده ها"
 
@@ -3811,6 +3811,10 @@ msgstr "نظرات"
 #: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
 msgstr "ازدواج طبق قانون عمومی"
+
+#: app/Elements/MarriageType.php:61
+msgid "Common-law marriage"
+msgstr ""
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -3881,7 +3885,7 @@ msgstr "اطلاعات تماس"
 msgid "Contact method"
 msgstr "روش تماس"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:258
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:256
 msgid "Contains"
 msgstr "حاوی"
 
@@ -3949,7 +3953,7 @@ msgstr "ادامه"
 #: resources/views/modules/map-box/config.phtml:16
 #: resources/views/modules/openrouteservice/config.phtml:16
 #: resources/views/modules/relationships-chart/config.phtml:22
-#: resources/views/modules/sitemap/config.phtml:20
+#: resources/views/modules/sitemap/config.phtml:19
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Control panel"
@@ -4000,7 +4004,7 @@ msgstr "کپی"
 msgid "Copy all the records from %1$s into %2$s."
 msgstr "همه رکوردها را از %1$s در %2$s کپی کنید."
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:124
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:123
 msgid "Copy files…"
 msgstr "کپی فایل ها…"
 
@@ -4045,7 +4049,7 @@ msgstr "تعداد بازدیدهای هر صفحه را بشمارید"
 msgid "Country"
 msgstr "کشور"
 
-#: app/Http/RequestHandlers/ManageMediaData.php:254
+#: app/Http/RequestHandlers/ManageMediaData.php:253
 msgid "Create"
 msgstr "ایجاد"
 
@@ -4093,7 +4097,7 @@ msgstr "ایجاد یک تفویض"
 msgid "Create a submitter"
 msgstr "ایجاد یک ارسالگر"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:119
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:118
 msgid "Create a temporary folder…"
 msgstr "ایجاد یک پوشه موقت…"
 
@@ -4350,7 +4354,7 @@ msgstr "ساحل عاج"
 msgid "DKIM digital signature"
 msgstr "امضای دیجیتال DKIM"
 
-#: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
+#: app/CustomTags/FamilyTreeMaker.php:117 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
 msgstr "نشانگرهای DNA"
 
@@ -4453,7 +4457,7 @@ msgstr "نام کاربری بانک اطلاعات"
 #: app/Module/ResearchTaskModule.php:65 app/Module/ResearchTaskModule.php:69
 #: resources/views/help/date.phtml:31 resources/views/help/date.phtml:145
 #: resources/views/lists/anniversaries-table.phtml:37
-#: resources/views/modules/todo/research-tasks.phtml:29
+#: resources/views/modules/todo/research-tasks.phtml:30
 #: resources/views/pending-changes-page.phtml:52
 #: resources/xml/reports/bdm_report.xml:132
 #: resources/xml/reports/bdm_report.xml:158
@@ -4629,7 +4633,7 @@ msgstr "دامنه تاریخ برای نشان دادن اینکه یک روی�
 msgid "Date registered"
 msgstr "تاریخ ثبت نام"
 
-#: resources/views/modules/user-messages/user-messages.phtml:71
+#: resources/views/modules/user-messages/user-messages.phtml:69
 msgid "Date sent"
 msgstr "تاریخ ارسال"
 
@@ -4660,7 +4664,7 @@ msgstr "دختر ِ %s"
 msgid "Day"
 msgstr "روز"
 
-#: app/Http/RequestHandlers/CalendarEvents.php:207
+#: app/Http/RequestHandlers/CalendarEvents.php:219
 msgid "Day not set"
 msgstr "روز تعیین نشده"
 
@@ -4680,7 +4684,7 @@ msgstr "متوفی"
 #: resources/views/lists/individuals-table.phtml:125
 #: resources/views/lists/individuals-table.phtml:130
 #: resources/views/lists/individuals-table.phtml:177
-#: resources/views/modules/yahrzeit/table.phtml:29
+#: resources/views/modules/yahrzeit/table.phtml:32
 #: resources/xml/reports/ahnentafel_report.xml:457
 #: resources/xml/reports/bdm_report.xml:87
 #: resources/xml/reports/change_report.xml:102
@@ -4951,7 +4955,7 @@ msgstr "فوت همسر"
 msgid "Death of a wife"
 msgstr "فوت زن"
 
-#: app/CustomTags/FamilyTreeMaker.php:55
+#: app/CustomTags/FamilyTreeMaker.php:56
 msgid "Death of one spouse"
 msgstr "فوت یکی از همسران"
 
@@ -5034,7 +5038,7 @@ msgstr "تم پیش‌فرض"
 msgid "Definition"
 msgstr "تعریف"
 
-#: app/CustomTags/FamilyTreeMaker.php:115
+#: app/CustomTags/FamilyTreeMaker.php:116
 msgid "Degree"
 msgstr "درجه"
 
@@ -5058,7 +5062,7 @@ msgctxt "font name"
 msgid "DejaVu"
 msgstr "دژاوو"
 
-#: app/Http/RequestHandlers/ManageMediaData.php:260
+#: app/Http/RequestHandlers/ManageMediaData.php:259
 #: app/Module/FixPrimaryTag.php:114 resources/views/admin/locations.phtml:52
 #: resources/views/admin/trees-privacy.phtml:274
 #: resources/views/admin/trees.phtml:119
@@ -5077,7 +5081,7 @@ msgstr "دژاوو"
 #: resources/views/modules/stories/config.phtml:61
 #: resources/views/modules/stories/config.phtml:88
 #: resources/views/modules/stories/config.phtml:90
-#: resources/views/modules/user-messages/user-messages.phtml:63
+#: resources/views/modules/user-messages/user-messages.phtml:61
 #: resources/views/modules/user-messages/user-messages.phtml:137
 #: resources/views/modules/user_blog/list.phtml:47
 #: resources/views/record-page-menu.phtml:49
@@ -5089,7 +5093,7 @@ msgstr "حذف"
 msgid "Delete inactive users"
 msgstr "حذف کاربران غیرفعال"
 
-#: resources/views/modules/user-messages/user-messages.phtml:146
+#: resources/views/modules/user-messages/user-messages.phtml:151
 msgid "Delete selected messages"
 msgstr "حذف پیام های انتخاب شده"
 
@@ -5392,13 +5396,13 @@ msgstr "دومینیکا"
 msgid "Dominican Republic"
 msgstr "جمهوری دومینیکن"
 
-#: app/Module/ClippingsCartModule.php:196
-#: app/Module/ClippingsCartModule.php:240
+#: app/Module/ClippingsCartModule.php:175
+#: app/Module/ClippingsCartModule.php:204
 #: resources/views/modules/share-anniversary/share.phtml:27
 msgid "Download"
 msgstr "دانلود"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:122
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 #, php-format
 msgid "Download %s…"
 msgstr "دانلود %s…"
@@ -5426,14 +5430,14 @@ msgid "Duodi"
 msgstr "دودی"
 
 #: app/Http/RequestHandlers/AccountUpdate.php:93
-#: app/Http/RequestHandlers/RegisterAction.php:265
+#: app/Http/RequestHandlers/RegisterAction.php:264
 #: app/Http/RequestHandlers/UserAddAction.php:71
 #: app/Http/RequestHandlers/UserEditAction.php:148
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "یک کاربر با ایمیل مورد نظر شما قبلا ثبت نام کرده است، لطفا از یک ایمیل دیگر استفاده نمایید."
 
 #: app/Http/RequestHandlers/AccountUpdate.php:84
-#: app/Http/RequestHandlers/RegisterAction.php:260
+#: app/Http/RequestHandlers/RegisterAction.php:259
 #: app/Http/RequestHandlers/UserAddAction.php:66
 #: app/Http/RequestHandlers/UserEditAction.php:154
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
@@ -5513,13 +5517,6 @@ msgstr "ویرایش الویت ها"
 msgid "Edit the FAQ"
 msgstr "ویرایش پرسش های متداول"
 
-#: resources/views/individual-page-menu.phtml:65
-#: resources/views/individual-page-menu.phtml:73
-#: resources/views/individual-page-sex.phtml:42
-#: resources/views/individual-page-sex.phtml:44
-msgid "Edit the sex"
-msgstr "ویرایش جنسیت"
-
 #: resources/views/edit/input-addon-edit-name.phtml:14
 #: resources/views/edit/input-addon-edit-name.phtml:17
 #: resources/views/individual-page-name.phtml:79
@@ -5535,6 +5532,13 @@ msgstr "ویرایش نام"
 #: resources/views/individual-page-menu.phtml:129
 msgid "Edit the raw GEDCOM"
 msgstr "ویرایش فرمت GEDCOM خام"
+
+#: resources/views/individual-page-menu.phtml:65
+#: resources/views/individual-page-menu.phtml:73
+#: resources/views/individual-page-sex.phtml:42
+#: resources/views/individual-page-sex.phtml:44
+msgid "Edit the sex"
+msgstr "ویرایش جنسیت"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
@@ -5561,7 +5565,7 @@ msgstr "ویرایش با تمام برچسب های GEDCOM"
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:99
 #: resources/views/admin/users-edit.phtml:254
-#: resources/views/modules/recent_changes/changes-table.phtml:51
+#: resources/views/modules/recent_changes/changes-table.phtml:55
 #: resources/views/pending-changes-page.phtml:51
 msgid "Editor"
 msgstr "ویرایشگر"
@@ -5629,7 +5633,7 @@ msgstr "ایمیل"
 #: resources/views/edit-account-page.phtml:123
 #: resources/views/emails/register-notify-html.phtml:32
 #: resources/views/emails/register-notify-text.phtml:26
-#: resources/views/modules/user-messages/user-messages.phtml:72
+#: resources/views/modules/user-messages/user-messages.phtml:70
 #: resources/views/register-page.phtml:49
 #: resources/views/setup/step-5-administrator.phtml:92
 msgid "Email address"
@@ -5676,7 +5680,7 @@ msgstr "کارفرما مرد"
 msgid "Empty the clipboard"
 msgstr "خالی کردن کلیپ بورد"
 
-#: app/Module/ClippingsCartModule.php:190
+#: app/Module/ClippingsCartModule.php:169
 msgid "Empty the clippings cart"
 msgstr "خالی کردن سبد گزیده ها"
 
@@ -5835,15 +5839,15 @@ msgstr "رویدادهای اقوام نزدیک"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr "همه این نقش را دارند، از جمله بازدیدکنندگان وب سایت و موتورهای جستجو."
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:256
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:254
 msgid "Exact"
 msgstr "دقیقا"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:237
 msgid "Exact date"
 msgstr "تاریخ دقیق"
 
-#: app/Module/IndividualListModule.php:327
+#: app/Module/AbstractIndividualListModule.php:284
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
 msgstr "بجز افراد دارای \"%s\" با نام پس از تاهل"
@@ -5879,7 +5883,7 @@ msgstr "ارسال"
 msgid "Export a GEDCOM file"
 msgstr "ارسال یک فایل GEDCOM"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:114
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:113
 msgid "Export all the family trees to GEDCOM files…"
 msgstr "ارسال کلیه شجرنامه ها بصورت فایل های GEDCOM…"
 
@@ -5905,7 +5909,7 @@ msgstr "فایل های خارجی"
 msgid "External identifier"
 msgstr "شناسه خارجی"
 
-#: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/RootsMagic.php:74
 msgid "External link"
 msgstr "لینک خارجی"
 
@@ -5941,74 +5945,75 @@ msgstr "پرسش‌های متداول فهرستی از پرسش‌ها و پا
 msgid "Fact"
 msgstr "واقعه"
 
-#: app/CustomTags/FamilyTreeMaker.php:56 app/CustomTags/FamilyTreeMaker.php:75
-#: app/CustomTags/FamilyTreeMaker.php:93 app/CustomTags/FamilyTreeMaker.php:120
+#: app/CustomTags/FamilyTreeMaker.php:57 app/CustomTags/FamilyTreeMaker.php:76
+#: app/CustomTags/FamilyTreeMaker.php:94 app/CustomTags/FamilyTreeMaker.php:121
 msgid "Fact 1"
 msgstr "واقعه 1"
 
-#: app/CustomTags/FamilyTreeMaker.php:57 app/CustomTags/FamilyTreeMaker.php:76
-#: app/CustomTags/FamilyTreeMaker.php:94 app/CustomTags/FamilyTreeMaker.php:121
+#: app/CustomTags/FamilyTreeMaker.php:58 app/CustomTags/FamilyTreeMaker.php:77
+#: app/CustomTags/FamilyTreeMaker.php:95 app/CustomTags/FamilyTreeMaker.php:122
 msgid "Fact 10"
 msgstr "واقعه 10"
 
-#: app/CustomTags/FamilyTreeMaker.php:58 app/CustomTags/FamilyTreeMaker.php:77
-#: app/CustomTags/FamilyTreeMaker.php:95 app/CustomTags/FamilyTreeMaker.php:122
+#: app/CustomTags/FamilyTreeMaker.php:59 app/CustomTags/FamilyTreeMaker.php:78
+#: app/CustomTags/FamilyTreeMaker.php:96 app/CustomTags/FamilyTreeMaker.php:123
 msgid "Fact 11"
 msgstr "واقعه 11"
 
-#: app/CustomTags/FamilyTreeMaker.php:59 app/CustomTags/FamilyTreeMaker.php:78
-#: app/CustomTags/FamilyTreeMaker.php:96 app/CustomTags/FamilyTreeMaker.php:123
+#: app/CustomTags/FamilyTreeMaker.php:60 app/CustomTags/FamilyTreeMaker.php:79
+#: app/CustomTags/FamilyTreeMaker.php:97 app/CustomTags/FamilyTreeMaker.php:124
 msgid "Fact 12"
 msgstr "واقعه 12"
 
-#: app/CustomTags/FamilyTreeMaker.php:60 app/CustomTags/FamilyTreeMaker.php:79
-#: app/CustomTags/FamilyTreeMaker.php:97 app/CustomTags/FamilyTreeMaker.php:124
+#: app/CustomTags/FamilyTreeMaker.php:61 app/CustomTags/FamilyTreeMaker.php:80
+#: app/CustomTags/FamilyTreeMaker.php:98 app/CustomTags/FamilyTreeMaker.php:125
 msgid "Fact 13"
 msgstr "واقعه 13"
 
-#: app/CustomTags/FamilyTreeMaker.php:61 app/CustomTags/FamilyTreeMaker.php:80
-#: app/CustomTags/FamilyTreeMaker.php:98 app/CustomTags/FamilyTreeMaker.php:125
-msgid "Fact 2"
-msgstr "واقعه 2"
-
 #: app/CustomTags/FamilyTreeMaker.php:62 app/CustomTags/FamilyTreeMaker.php:81
 #: app/CustomTags/FamilyTreeMaker.php:99 app/CustomTags/FamilyTreeMaker.php:126
-msgid "Fact 3"
-msgstr "واقعه 3"
+msgid "Fact 2"
+msgstr "واقعه 2"
 
 #: app/CustomTags/FamilyTreeMaker.php:63 app/CustomTags/FamilyTreeMaker.php:82
 #: app/CustomTags/FamilyTreeMaker.php:100
 #: app/CustomTags/FamilyTreeMaker.php:127
-msgid "Fact 4"
-msgstr "واقعه 4"
+msgid "Fact 3"
+msgstr "واقعه 3"
 
 #: app/CustomTags/FamilyTreeMaker.php:64 app/CustomTags/FamilyTreeMaker.php:83
 #: app/CustomTags/FamilyTreeMaker.php:101
 #: app/CustomTags/FamilyTreeMaker.php:128
-msgid "Fact 5"
-msgstr "واقعه 5"
+msgid "Fact 4"
+msgstr "واقعه 4"
 
 #: app/CustomTags/FamilyTreeMaker.php:65 app/CustomTags/FamilyTreeMaker.php:84
 #: app/CustomTags/FamilyTreeMaker.php:102
 #: app/CustomTags/FamilyTreeMaker.php:129
-msgid "Fact 6"
-msgstr "واقعه 6"
+msgid "Fact 5"
+msgstr "واقعه 5"
 
 #: app/CustomTags/FamilyTreeMaker.php:66 app/CustomTags/FamilyTreeMaker.php:85
 #: app/CustomTags/FamilyTreeMaker.php:103
 #: app/CustomTags/FamilyTreeMaker.php:130
-msgid "Fact 7"
-msgstr "واقعه 7"
+msgid "Fact 6"
+msgstr "واقعه 6"
 
 #: app/CustomTags/FamilyTreeMaker.php:67 app/CustomTags/FamilyTreeMaker.php:86
 #: app/CustomTags/FamilyTreeMaker.php:104
 #: app/CustomTags/FamilyTreeMaker.php:131
-msgid "Fact 8"
-msgstr "واقعه 8"
+msgid "Fact 7"
+msgstr "واقعه 7"
 
 #: app/CustomTags/FamilyTreeMaker.php:68 app/CustomTags/FamilyTreeMaker.php:87
 #: app/CustomTags/FamilyTreeMaker.php:105
 #: app/CustomTags/FamilyTreeMaker.php:132
+msgid "Fact 8"
+msgstr "واقعه 8"
+
+#: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:88
+#: app/CustomTags/FamilyTreeMaker.php:106
+#: app/CustomTags/FamilyTreeMaker.php:133
 msgid "Fact 9"
 msgstr "واقعه 9"
 
@@ -6055,10 +6060,10 @@ msgstr "جزایر فالکلند"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
+#: app/Module/AbstractIndividualListModule.php:251
 #: app/Module/AncestorsChartModule.php:256
-#: app/Module/DescendancyChartModule.php:247 app/Module/FamilyListModule.php:49
-#: app/Module/FixSearchAndReplace.php:107
-#: app/Module/IndividualListModule.php:294 app/Module/RelativesTabModule.php:42
+#: app/Module/DescendancyChartModule.php:247 app/Module/FamilyListModule.php:42
+#: app/Module/FixSearchAndReplace.php:107 app/Module/RelativesTabModule.php:42
 #: app/Module/StatisticsChartModule.php:149
 #: app/Module/StatisticsChartModule.php:380
 #: app/Module/StatisticsChartModule.php:471
@@ -6089,16 +6094,16 @@ msgid "Families with sources"
 msgstr "خانواده های دارای منبع"
 
 #. I18N: Name of a module/report
-#: app/CustomTags/FamilyTreeMaker.php:73 app/Gedcom.php:401
+#: app/CustomTags/FamilyTreeMaker.php:74 app/Gedcom.php:401
 #: app/Http/RequestHandlers/CheckTree.php:350
 #: app/Module/FamilyGroupReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:167
 #: resources/views/edit/link-child-to-family.phtml:25
 #: resources/views/modals/link-media-to-family.phtml:23
-#: resources/views/modules/family_nav/sidebar-family.phtml:91
+#: resources/views/modules/family_nav/sidebar-family.phtml:95
 #: resources/views/modules/favorites/favorites.phtml:81
-#: resources/views/modules/random_media/slide-show.phtml:74
-#: resources/views/modules/recent_changes/changes-table.phtml:64
+#: resources/views/modules/random_media/slide-show.phtml:75
+#: resources/views/modules/recent_changes/changes-table.phtml:68
 #: resources/views/modules/statistics-chart/custom.phtml:47
 #: resources/xml/reports/family_group_report.xml:3
 #: resources/xml/reports/family_group_report.xml:6
@@ -6181,8 +6186,8 @@ msgstr "وضعیت خانواده"
 msgid "Family tree"
 msgstr "شجره نامه"
 
-#: app/Module/ClippingsCartModule.php:240
-#: app/Module/ClippingsCartModule.php:398
+#: app/Module/ClippingsCartModule.php:204
+#: app/Module/ClippingsCartModule.php:342
 msgid "Family tree clippings cart"
 msgstr "سبد گزیده های شجرنامه"
 
@@ -6200,16 +6205,16 @@ msgid "Family trees"
 msgstr "شجره نامه ها"
 
 #. I18N: %s is the spouse name
-#: app/Individual.php:932
+#: app/Individual.php:898
 #, php-format
 msgid "Family with %s"
 msgstr "خانواده %s"
 
-#: app/Individual.php:861
+#: app/Individual.php:827
 msgid "Family with adoptive parents"
 msgstr "خانواده پدر و مادر خوانده"
 
-#: app/Individual.php:862
+#: app/Individual.php:828
 msgid "Family with foster parents"
 msgstr "خانواده پدر و مادر رضاعی"
 
@@ -6218,19 +6223,19 @@ msgstr "خانواده پدر و مادر رضاعی"
 msgid "Family with husband"
 msgstr "خانواده شوهر"
 
-#: app/Individual.php:860 app/Individual.php:914
+#: app/Individual.php:826 app/Individual.php:880
 #: resources/xml/reports/individual_ext_report.xml:245
 #: resources/xml/reports/individual_report.xml:234
 msgid "Family with parents"
 msgstr "خانواده پدر و مادر"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
-#: app/Individual.php:866
+#: app/Individual.php:832
 msgid "Family with rada parents"
 msgstr "خانواده والدین رادا"
 
 #. I18N: “sealing” is a Mormon ceremony.
-#: app/Individual.php:864
+#: app/Individual.php:830
 msgid "Family with sealing parents"
 msgstr "خانواده پدر و مادر سیلینگ"
 
@@ -6299,7 +6304,7 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "فروردین"
 
-#: resources/views/search-advanced-page.phtml:63
+#: resources/views/search-advanced-page.phtml:59
 #: resources/xml/reports/bdm_report.xml:118
 #: resources/xml/reports/family_group_report.xml:467
 #: resources/xml/reports/family_group_report.xml:730
@@ -6319,13 +6324,13 @@ msgid "Father’s age"
 msgstr "سن پدر"
 
 #. I18N: A step-family. %s is an individual’s name
-#: app/Individual.php:892
+#: app/Individual.php:858
 #, php-format
 msgid "Father’s family with %s"
 msgstr "خانواده پدری با %s"
 
 #. I18N: A step-family.
-#: app/Individual.php:896
+#: app/Individual.php:862
 msgid "Father’s family with an unknown individual"
 msgstr "خانواده پدری با فرد ناشناس"
 
@@ -6409,7 +6414,7 @@ msgid "Fiji"
 msgstr "فیجی"
 
 #: app/CustomTags/FamilyTreeBuilder.php:59
-#: app/Http/RequestHandlers/ManageMediaData.php:362 app/MediaFile.php:314
+#: app/Http/RequestHandlers/ManageMediaData.php:361 app/MediaFile.php:314
 msgid "File size"
 msgstr "حجم فایل"
 
@@ -6417,8 +6422,8 @@ msgstr "حجم فایل"
 msgid "File successfully uploaded"
 msgstr "فایل با موفقیت آپلود شد"
 
-#: app/Exceptions/FileUploadException.php:99 app/Gedcom.php:505
-#: app/Gedcom.php:787 app/Http/RequestHandlers/ManageMediaData.php:344
+#: app/Gedcom.php:505 app/Gedcom.php:787
+#: app/Http/RequestHandlers/ManageMediaData.php:343
 #: resources/views/admin/gedcom-export-options.phtml:66
 #: resources/views/admin/trees-export.phtml:35
 #: resources/views/modals/media-file-fields.phtml:71
@@ -6447,9 +6452,7 @@ msgstr "فایل‌هایی از نسخه قبلی webtrees پیدا شده‌ا
 #: resources/views/admin/clean-data.phtml:22
 #, php-format
 msgid "Files marked with %s are required for proper operation and cannot be removed."
-msgstr ""
-"فایل هایی که با %s علامت‌گذاری شده‌اند برای عملکرد صحیح مورد نیاز هستند و "
-"قابل حذف نیستند."
+msgstr "فایل هایی که با %s علامت‌گذاری شده‌اند برای عملکرد صحیح مورد نیاز هستند و قابل حذف نیستند."
 
 #: resources/views/calendar-page.phtml:122
 #: resources/views/lists/datatables-attributes.phtml:34
@@ -6900,16 +6903,6 @@ msgstr "گابن"
 msgid "Gambia"
 msgstr "گامبیا"
 
-#: app/CustomTags/GedcomL.php:191 app/Gedcom.php:739
-#: resources/views/individual-page-sex.phtml:30
-#: resources/xml/reports/family_group_report.xml:844
-#: resources/xml/reports/individual_ext_report.xml:399
-#: resources/xml/reports/individual_ext_report.xml:606
-#: resources/xml/reports/individual_report.xml:388
-#: resources/xml/reports/individual_report.xml:602
-msgid "Gender"
-msgstr "جنسیت"
-
 #: resources/views/admin/control-panel.phtml:678
 msgid "Genealogy"
 msgstr "تبار شناسی"
@@ -6940,12 +6933,12 @@ msgid "Generate sitemap files for search engines."
 msgstr "تولید فایل های نقشه سایت برای موتورهای جستجو ."
 
 #. I18N: This is a report footer. %s is the name of the application.
-#: app/Report/AbstractRenderer.php:333
+#: app/Report/AbstractRenderer.php:332
 #, php-format
 msgid "Generated by %s"
 msgstr "ایجاد شده توسط %s"
 
-#: app/Module/BranchesListModule.php:513
+#: app/Module/BranchesListModule.php:492
 msgid "Generation"
 msgstr "نسل"
 
@@ -7063,6 +7056,7 @@ msgid "Given name"
 msgstr "نام کوچک"
 
 #: app/Gedcom.php:686 app/Gedcom.php:695 app/Gedcom.php:700
+#: app/Module/AbstractIndividualListModule.php:388
 #: resources/views/lists/families-table.phtml:148
 #: resources/views/lists/families-table.phtml:151
 #: resources/views/lists/given-names-table.phtml:23
@@ -7406,7 +7400,7 @@ msgstr "هشوان"
 msgid "Hide GEDCOM tags"
 msgstr "مخفی کردن برچسب های GEDCOM"
 
-#: app/Auth.php:596 app/Auth.php:609
+#: app/Auth.php:595 app/Auth.php:608
 #: app/Http/RequestHandlers/TreePreferencesPage.php:125
 #: app/Http/RequestHandlers/TreePrivacyPage.php:94
 #: resources/views/admin/trees-privacy.phtml:150
@@ -7632,10 +7626,7 @@ msgstr "اگر ریزعکس با تصویر اصلی یکسان است، دیگ�
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr ""
-"اگر این فرد رویدادهای دیگری غیر از مرگ، دفن یا سوزاندن بیش از این تعداد سال "
-"داشته‌باشد، «زنده» محسوب می‌شود. تاریخ تولد کودکان برای این منظور چنین "
-"رویدادهایی در نظر گرفته‌می شود."
+msgstr "اگر این فرد رویدادهای دیگری غیر از مرگ، دفن یا سوزاندن بیش از این تعداد سال داشته‌باشد، «زنده» محسوب می‌شود. تاریخ تولد کودکان برای این منظور چنین رویدادهایی در نظر گرفته‌می شود."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:254
@@ -7704,7 +7695,7 @@ msgstr "اگر سعی کنید از این محدودیت ها فراتر برو
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "اگر از یکی از خدمات ردیابی و تجزیه و تحلیل زیر استفاده می کنید، سایت می تواند کدهای ردیابی را به صورت خودکار اضافه کند."
 
-#: app/Http/RequestHandlers/ManageMediaData.php:369 app/MediaFile.php:328
+#: app/Http/RequestHandlers/ManageMediaData.php:368 app/MediaFile.php:328
 msgid "Image dimensions"
 msgstr "ابعاد تصویر"
 
@@ -7786,7 +7777,7 @@ msgstr "شامل نام مستعار"
 msgid "Include associates"
 msgstr "شامل همکاران"
 
-#: app/Module/IndividualListModule.php:333
+#: app/Module/AbstractIndividualListModule.php:290
 #, php-format
 msgid "Include individuals with “%s” as a married name"
 msgstr "افرادی را با \"%s\" به عنوان نام متاهل در نظر بگیرید"
@@ -7821,7 +7812,7 @@ msgid "Indianapolis, Indiana, United States"
 msgstr "ایندیاناپولیس، ایندیانا، ایالات متحده آمریکا"
 
 #. I18N: Name of a module/report
-#: app/CustomTags/FamilyTreeMaker.php:91 app/Gedcom.php:534
+#: app/CustomTags/FamilyTreeMaker.php:92 app/Gedcom.php:534
 #: app/Http/RequestHandlers/CheckTree.php:352
 #: app/Module/IndividualReportModule.php:40
 #: resources/views/admin/fix-level-0-media.phtml:39
@@ -7840,7 +7831,7 @@ msgstr "ایندیاناپولیس، ایندیانا، ایالات متحده 
 #: resources/views/modules/pedigree-chart/page.phtml:30
 #: resources/views/modules/pedigree-map/page.phtml:25
 #: resources/views/modules/random_media/slide-show.phtml:65
-#: resources/views/modules/recent_changes/changes-table.phtml:61
+#: resources/views/modules/recent_changes/changes-table.phtml:65
 #: resources/views/modules/statistics-chart/custom.phtml:31
 #: resources/views/modules/stories/config.phtml:58
 #: resources/views/modules/stories/edit.phtml:33
@@ -7895,11 +7886,11 @@ msgid "Individual who lived the longest"
 msgstr "افرادی که بیشتر از همه زیسته اند"
 
 #. I18N: Name of a module/list
+#: app/Module/AbstractIndividualListModule.php:253
 #: app/Module/AncestorsChartModule.php:255
 #: app/Module/DescendancyChartModule.php:246
 #: app/Module/FixSearchAndReplace.php:108
-#: app/Module/IndividualListModule.php:94
-#: app/Module/IndividualListModule.php:296
+#: app/Module/IndividualListModule.php:42
 #: app/Module/StatisticsChartModule.php:144
 #: app/Module/StatisticsChartModule.php:282
 #: app/Module/StatisticsChartModule.php:331
@@ -7936,11 +7927,6 @@ msgstr "افراد"
 #: resources/views/modules/statistics-chart/chart-sources.phtml:17
 msgid "Individuals with sources"
 msgstr "افراد دارای منبع"
-
-#: app/Module/IndividualListModule.php:433
-#, php-format
-msgid "Individuals with surname %s"
-msgstr "افراد دارای نام خانوادگی %s"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
@@ -8019,7 +8005,7 @@ msgstr "برچسب GEDCOM نامعتبر است."
 msgid "Invalid GEDCOM value."
 msgstr "مقدار GEDCOM نامعتبر است."
 
-#: app/Date.php:224
+#: app/Date.php:227
 msgid "Invalid date"
 msgstr "تاریخ نامعتبر است"
 
@@ -8414,8 +8400,8 @@ msgstr "شروع LDS"
 msgid "LDS spouse sealing"
 msgstr "سیلینگ همسر LDS"
 
-#: app/CustomTags/FamilyTreeMaker.php:74 app/CustomTags/FamilyTreeMaker.php:88
-#: app/CustomTags/FamilyTreeMaker.php:92 app/CustomTags/FamilyTreeMaker.php:107
+#: app/CustomTags/FamilyTreeMaker.php:75 app/CustomTags/FamilyTreeMaker.php:89
+#: app/CustomTags/FamilyTreeMaker.php:93 app/CustomTags/FamilyTreeMaker.php:108
 msgid "Label"
 msgstr "برچسب"
 
@@ -8505,7 +8491,7 @@ msgstr "لاس وگاس، نوادا، ایالات متحده"
 #: resources/views/lists/sources-table.phtml:104
 #: resources/views/lists/submitters-table.phtml:72
 #: resources/views/modules/gedcom_stats/config.phtml:33
-#: resources/views/modules/recent_changes/changes-table.phtml:48
+#: resources/views/modules/recent_changes/changes-table.phtml:52
 #: resources/xml/reports/change_report.xml:66
 #: resources/xml/reports/change_report.xml:108
 msgid "Last change"
@@ -8767,6 +8753,7 @@ msgstr "فایل های محلی"
 #: app/CustomTags/GedcomL.php:252 app/CustomTags/Legacy.php:140
 #: app/Http/RequestHandlers/CheckTree.php:353
 #: resources/views/lists/locations-table.phtml:65
+#: resources/views/modules/recent_changes/changes-table.phtml:86
 msgid "Location"
 msgstr "موقعیت"
 
@@ -9054,7 +9041,7 @@ msgid "Markdown is a simple system of formatting, used on websites such as Wikip
 msgstr "Markdown یک سیستم قالب بندی ساده است که در وب سایت هایی مانند ویکی پدیا استفاده می شود. برای ایجاد عناوین و عنوان‌های فرعی، متن پررنگ و مورب، فهرست‌ها، جداول و غیره از حروف نگارشی ساده استفاده می‌کند."
 
 #: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:467
-#: app/Module/BranchesListModule.php:457
+#: app/Module/BranchesListModule.php:436
 #: resources/views/calendar-page.phtml:192
 #: resources/views/lists/families-table.phtml:126
 #: resources/views/lists/families-table.phtml:131
@@ -9116,7 +9103,7 @@ msgstr "ازدواج"
 msgid "Marriage banns"
 msgstr "اعلان ازدواج"
 
-#: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
+#: app/CustomTags/FamilyTreeMaker.php:71 app/CustomTags/FamilyTreeMaker.php:91
 msgid "Marriage beginning status"
 msgstr "وضعیت شروع ازدواج"
 
@@ -9140,7 +9127,7 @@ msgstr "پایان دامنه تاریخ ازدواج"
 msgid "Marriage date range start"
 msgstr "شروع دامنه تاریخ ازدواج"
 
-#: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:89
+#: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
 msgid "Marriage ending status"
 msgstr "وضعیت پایان ازدواج"
 
@@ -9267,7 +9254,7 @@ msgstr "ازدواج ها"
 msgid "Marriages by century"
 msgstr "تعداد ازدواج در قرن"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
+#: app/CustomTags/FamilyTreeMaker.php:113 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -9370,7 +9357,7 @@ msgstr "مدفورد، اورگان، ایالات متحده"
 #: resources/views/admin/control-panel.phtml:799
 #: resources/views/admin/media.phtml:104
 #: resources/views/lists/media-table.phtml:79
-#: resources/views/modules/recent_changes/changes-table.phtml:67
+#: resources/views/modules/recent_changes/changes-table.phtml:71
 msgid "Media"
 msgstr "رسانه"
 
@@ -9453,7 +9440,7 @@ msgstr "موضوعات رسانه ای در هر صفحه"
 msgid "Media type"
 msgstr "نوع رسانه"
 
-#: app/CustomTags/BrothersKeeper.php:103 app/CustomTags/FamilyTreeMaker.php:133
+#: app/CustomTags/BrothersKeeper.php:103 app/CustomTags/FamilyTreeMaker.php:134
 #: app/CustomTags/Reunion.php:58
 msgid "Medical"
 msgstr "پزشکی"
@@ -9629,7 +9616,7 @@ msgstr "خاور میانه"
 msgid "Military"
 msgstr "نظامی"
 
-#: app/CustomTags/BrothersKeeper.php:105 app/CustomTags/FamilyTreeMaker.php:134
+#: app/CustomTags/BrothersKeeper.php:105 app/CustomTags/FamilyTreeMaker.php:135
 msgid "Military service"
 msgstr "خدمت سربازی"
 
@@ -9670,7 +9657,7 @@ msgstr "مدیریت ماژول"
 #: resources/views/modules/map-box/config.phtml:16
 #: resources/views/modules/openrouteservice/config.phtml:16
 #: resources/views/modules/relationships-chart/config.phtml:22
-#: resources/views/modules/sitemap/config.phtml:20
+#: resources/views/modules/sitemap/config.phtml:19
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Modules"
@@ -9853,7 +9840,7 @@ msgstr "اکثر سایت ها برای استفاده از مقدار پیش ف
 msgid "Most viewed pages"
 msgstr "پربازدیدترین صفحات"
 
-#: resources/views/search-advanced-page.phtml:77
+#: resources/views/search-advanced-page.phtml:73
 #: resources/xml/reports/bdm_report.xml:120
 #: resources/xml/reports/family_group_report.xml:474
 #: resources/xml/reports/family_group_report.xml:737
@@ -9873,13 +9860,13 @@ msgid "Mother’s age"
 msgstr "سن مادر"
 
 #. I18N: A step-family. %s is an individual’s name
-#: app/Individual.php:902
+#: app/Individual.php:868
 #, php-format
 msgid "Mother’s family with %s"
 msgstr "خانواده مادر با %s"
 
 #. I18N: A step-family.
-#: app/Individual.php:906
+#: app/Individual.php:872
 msgid "Mother’s family with an unknown individual"
 msgstr "خانواده مادر با فرد ناشناس"
 
@@ -9984,7 +9971,7 @@ msgstr "میانمار"
 #: resources/views/individual-page-name.phtml:56
 #: resources/views/modals/location-fields.phtml:11
 #: resources/views/modals/submitter-fields.phtml:11
-#: resources/views/modules/yahrzeit/table.phtml:28
+#: resources/views/modules/yahrzeit/table.phtml:31
 #: resources/xml/reports/bdm_report.xml:5
 #: resources/xml/reports/bdm_report.xml:49
 #: resources/xml/reports/birth_report.xml:5
@@ -10038,7 +10025,7 @@ msgstr "پسوند نام"
 msgid "Names"
 msgstr "نام‌ها"
 
-#: app/CustomTags/FamilyTreeMaker.php:137
+#: app/CustomTags/FamilyTreeMaker.php:138
 msgid "Namesake"
 msgstr "همنام"
 
@@ -10356,7 +10343,7 @@ msgstr "نتیجه ای یافت نشد"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
-#: resources/views/search-advanced-page.phtml:102
+#: resources/views/search-advanced-page.phtml:98
 #: resources/views/search-general-page.phtml:138
 #: resources/views/search-phonetic-page.phtml:98
 msgid "No results found."
@@ -10366,9 +10353,9 @@ msgstr "نتیجه ای یافت نشد."
 msgid "No signed-in and no anonymous users"
 msgstr "بدون ورود به سیستم و بدون کاربر ناشناس"
 
-#: app/Module/IndividualListModule.php:255
-#: app/Module/IndividualListModule.php:278
-#: app/Module/IndividualListModule.php:540
+#: app/Module/AbstractIndividualListModule.php:213
+#: app/Module/AbstractIndividualListModule.php:235
+#: app/Module/AbstractIndividualListModule.php:486
 msgid "No surname"
 msgstr "بدون نام خانوادگی"
 
@@ -10447,7 +10434,7 @@ msgid "Not living"
 msgstr "غیر زنده"
 
 #: app/CustomTags/BrothersKeeper.php:66 app/Elements/FamilyStatusText.php:71
-#: app/Module/BranchesListModule.php:459
+#: app/Module/BranchesListModule.php:438
 #: resources/views/lists/families-table.phtml:121
 msgid "Not married"
 msgstr "مجرد"
@@ -10476,7 +10463,7 @@ msgstr "توسط کاربر تایید نشده است"
 #: resources/views/modals/note-object-fields.phtml:11
 #: resources/views/modules/favorites/favorites.phtml:160
 #: resources/views/modules/notes/tab.phtml:94
-#: resources/views/modules/recent_changes/changes-table.phtml:70
+#: resources/views/modules/recent_changes/changes-table.phtml:74
 #: resources/xml/reports/cemetery_report.xml:62
 #: resources/xml/reports/family_group_report.xml:485
 #: resources/xml/reports/family_group_report.xml:749
@@ -10558,7 +10545,7 @@ msgid "Nothing found."
 msgstr "چیزی پیدا نشد."
 
 #: resources/views/modules/pedigree-map/chart.phtml:68
-#: resources/views/modules/places/tab.phtml:69
+#: resources/views/modules/places/tab.phtml:71
 msgid "Nothing to show"
 msgstr "چیزی برای نمایش وجود ندارد"
 
@@ -11001,7 +10988,7 @@ msgstr "مکان والدین"
 #: app/Gedcom.php:742 app/Http/RequestHandlers/IndividualPage.php:210
 #: resources/views/edit/reorder-families.phtml:72
 #: resources/views/modules/ancestors-chart/tree.phtml:35
-#: resources/views/modules/family_nav/sidebar-family.phtml:43
+#: resources/views/modules/family_nav/sidebar-family.phtml:47
 msgid "Parents"
 msgstr "والدین"
 
@@ -11153,7 +11140,8 @@ msgid "Phonetic type"
 msgstr "نوع آوایی"
 
 #. I18N: Type of media object
-#: app/CustomTags/FamilyTreeBuilder.php:62 app/Elements/SourceMediaType.php:94
+#: app/CustomTags/FamilyTreeBuilder.php:62
+#: app/CustomTags/FamilyTreeMaker.php:139 app/Elements/SourceMediaType.php:94
 msgid "Photo"
 msgstr "عکس"
 
@@ -11571,7 +11559,7 @@ msgstr "محدودیت های حریم خصوصی - به تمام رکوردها
 #: app/CustomTags/Legacy.php:56 app/CustomTags/Legacy.php:60
 #: app/CustomTags/Legacy.php:82 app/CustomTags/Legacy.php:117
 #: app/CustomTags/Legacy.php:124 app/CustomTags/TheNextGeneration.php:54
-#: app/GedcomRecord.php:359 app/GedcomRecord.php:465
+#: app/GedcomRecord.php:368 app/GedcomRecord.php:474
 #: app/Report/ReportParserGenerate.php:982
 #: app/Statistics/Repository/EventRepository.php:428
 msgid "Private"
@@ -11656,8 +11644,8 @@ msgid "Quintidi"
 msgstr "کوئینتیدی"
 
 #. I18N: When replying to an email, the subject becomes “RE: subject”
-#: resources/views/modules/user-messages/user-messages.phtml:115
-#: resources/views/modules/user-messages/user-messages.phtml:116
+#: resources/views/modules/user-messages/user-messages.phtml:113
+#: resources/views/modules/user-messages/user-messages.phtml:114
 msgid "RE: "
 msgstr "بازگشت: "
 
@@ -11853,8 +11841,8 @@ msgstr "رسیف، برزیل"
 #: resources/views/admin/trees-privacy.phtml:227
 #: resources/views/lists/anniversaries-table.phtml:34
 #: resources/views/modules/clippings/show.phtml:32
-#: resources/views/modules/recent_changes/changes-table.phtml:45
-#: resources/views/modules/todo/research-tasks.phtml:32
+#: resources/views/modules/recent_changes/changes-table.phtml:49
+#: resources/views/modules/todo/research-tasks.phtml:33
 msgid "Record"
 msgstr "رکورد"
 
@@ -11900,7 +11888,7 @@ msgstr "شماره مرجع"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "رجینا، ساسکاچوان، کانادا"
 
-#: app/CustomTags/Aldfaer.php:62 app/Elements/MarriageType.php:64
+#: app/CustomTags/Aldfaer.php:62 app/Elements/MarriageType.php:62
 #: resources/xml/reports/fact_sources.xml:205
 msgid "Registered partnership"
 msgstr "شراکت ثبت شده"
@@ -11952,13 +11940,13 @@ msgstr "افراد خویشاوند"
 #: app/CustomTags/GedcomL.php:121 app/CustomTags/GedcomL.php:134
 #: app/CustomTags/GedcomL.php:175 app/CustomTags/PhpGedView.php:64
 #: app/Gedcom.php:585 app/Gedcom.php:903 app/Gedcom.php:917
-#: app/Module/BranchesListModule.php:410 app/Module/BranchesListModule.php:448
+#: app/Module/BranchesListModule.php:389 app/Module/BranchesListModule.php:427
 #: resources/views/fact-association-structure.phtml:87
 msgid "Relationship"
 msgstr "نسبت"
 
-#: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:53
-#: app/CustomTags/FamilyTreeMaker.php:106 app/CustomTags/Legacy.php:61
+#: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:54
+#: app/CustomTags/FamilyTreeMaker.php:107 app/CustomTags/Legacy.php:61
 #: app/CustomTags/TheNextGeneration.php:50
 msgid "Relationship to father"
 msgstr "نسبت با پدر"
@@ -11967,8 +11955,8 @@ msgstr "نسبت با پدر"
 msgid "Relationship to me"
 msgstr "نسبت با من"
 
-#: app/CustomTags/BrothersKeeper.php:62 app/CustomTags/FamilyTreeMaker.php:54
-#: app/CustomTags/FamilyTreeMaker.php:108 app/CustomTags/Legacy.php:62
+#: app/CustomTags/BrothersKeeper.php:62 app/CustomTags/FamilyTreeMaker.php:55
+#: app/CustomTags/FamilyTreeMaker.php:109 app/CustomTags/Legacy.php:62
 #: app/CustomTags/TheNextGeneration.php:51
 msgid "Relationship to mother"
 msgstr "نسبت با مادر"
@@ -12008,7 +11996,7 @@ msgstr "مذهب"
 msgid "Religious institution"
 msgstr "نهاد مذهبی"
 
-#: app/CustomTags/Aldfaer.php:63 app/Elements/MarriageType.php:65
+#: app/CustomTags/Aldfaer.php:63 app/Elements/MarriageType.php:63
 #: resources/xml/reports/fact_sources.xml:199
 msgid "Religious marriage"
 msgstr "ازدواج مذهبی"
@@ -12086,8 +12074,8 @@ msgstr "جایگزینی با"
 msgid "Replacement text"
 msgstr "متن جایگزین"
 
-#: resources/views/modules/user-messages/user-messages.phtml:130
-#: resources/views/modules/user-messages/user-messages.phtml:131
+#: resources/views/modules/user-messages/user-messages.phtml:128
+#: resources/views/modules/user-messages/user-messages.phtml:129
 msgid "Reply"
 msgstr "پاسخ"
 
@@ -12136,7 +12124,7 @@ msgstr "مخازن"
 #: resources/views/admin/trees.phtml:242
 #: resources/views/modals/source-fields.phtml:46
 #: resources/views/modules/favorites/favorites.phtml:123
-#: resources/views/modules/recent_changes/changes-table.phtml:79
+#: resources/views/modules/recent_changes/changes-table.phtml:83
 msgid "Repository"
 msgstr "مخزن"
 
@@ -12154,7 +12142,7 @@ msgstr "جمهوری کنگو"
 msgid "Request a new password"
 msgstr "درخواست رمز عبور جدید"
 
-#: app/Http/RequestHandlers/RegisterAction.php:210
+#: app/Http/RequestHandlers/RegisterAction.php:209
 #: app/Http/RequestHandlers/RegisterPage.php:77
 #: app/Module/WelcomeBlockModule.php:109 resources/views/login-page.phtml:66
 #: resources/views/modules/login_block/sign-in.phtml:48
@@ -12169,7 +12157,7 @@ msgstr "پژوهش"
 #: app/CustomTags/GedcomL.php:136 app/CustomTags/GedcomL.php:192
 #: app/CustomTags/Legacy.php:136 app/Module/ResearchTaskModule.php:64
 #: app/Module/ResearchTaskModule.php:68
-#: resources/views/modules/todo/research-tasks.phtml:38
+#: resources/views/modules/todo/research-tasks.phtml:39
 msgid "Research task"
 msgstr "وظیفه پژوهش"
 
@@ -12293,11 +12281,11 @@ msgstr "رئونیون"
 msgid "SMTP mail server"
 msgstr "سرور SMTP پست الکترونیکی"
 
-#: app/Services/ServerCheckService.php:322
+#: app/Services/ServerCheckService.php:324
 msgid "SQLite is only suitable for small sites, testing and evaluation."
 msgstr "SQLite فقط برای سایت های کوچک، تست و ارزیابی مناسب است."
 
-#: app/Services/ServerCheckService.php:212
+#: app/Services/ServerCheckService.php:214
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "نسخه SQLite %s نصب شده است. نسخه SQLite %s یا جدیدتر مورد نیاز است."
@@ -12444,7 +12432,7 @@ msgstr "شنبه"
 msgid "Saudi Arabia"
 msgstr "عربستان سعودی"
 
-#: app/CustomTags/FamilyTreeMaker.php:72 app/CustomTags/GedcomL.php:153
+#: app/CustomTags/FamilyTreeMaker.php:73 app/CustomTags/GedcomL.php:153
 msgid "Schema"
 msgstr "طرحواره"
 
@@ -12599,7 +12587,7 @@ msgid "Select individuals by place or date"
 msgstr "افراد را بر اساس مکان یا تاریخ انتخاب کنید"
 
 #. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:135
+#: app/Module/ClippingsCartModule.php:126
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "رکوردها را از شجره نامه خود انتخاب کنید و آنها را به عنوان یک فایل GEDCOM ذخیره کنید."
 
@@ -12712,7 +12700,7 @@ msgstr "سپتامبر"
 msgid "Separated"
 msgstr "جدا از هم"
 
-#: app/CustomTags/FamilyTreeMaker.php:71
+#: app/CustomTags/FamilyTreeMaker.php:72
 msgid "Separation"
 msgstr "جدایی"
 
@@ -12819,6 +12807,16 @@ msgstr "تنظیم این مورد روی <b>بله</b> پیوندهایی را 
 #: resources/views/layouts/setup.phtml:26
 msgid "Setup wizard for webtrees"
 msgstr "ویزارد راه اندازی برای webtrees"
+
+#: app/CustomTags/GedcomL.php:191 app/Gedcom.php:739
+#: resources/views/individual-page-sex.phtml:30
+#: resources/xml/reports/family_group_report.xml:844
+#: resources/xml/reports/individual_ext_report.xml:399
+#: resources/xml/reports/individual_ext_report.xml:606
+#: resources/xml/reports/individual_report.xml:388
+#: resources/xml/reports/individual_report.xml:602
+msgid "Sex"
+msgstr ""
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -13272,11 +13270,11 @@ msgstr "نمایش رویدادهای افراد نزدیک خانواده در 
 msgid "Show the family tree"
 msgstr "نمایش شجره نامه"
 
-#: app/Module/IndividualListModule.php:342
+#: app/Module/AbstractIndividualListModule.php:299
 msgid "Show the list of individuals"
 msgstr "نمایش فهرست افراد"
 
-#: app/Module/IndividualListModule.php:348
+#: app/Module/AbstractIndividualListModule.php:305
 msgid "Show the list of surnames"
 msgstr "نمایش فهرست نام های خانوادگی"
 
@@ -13306,14 +13304,14 @@ msgstr "نمایش این بلوک برای کدام زبان"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "نمایش عکس های بند انگشتی افراد در نمودارها و گروه های خانواده."
 
-#: app/Auth.php:595 app/Auth.php:608 app/Elements/RestrictionNotice.php:96
+#: app/Auth.php:594 app/Auth.php:607 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:23
 msgid "Show to managers"
 msgstr "نمایش به مدیران"
 
-#: app/Auth.php:594 app/Auth.php:607 app/Elements/RestrictionNotice.php:99
+#: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:99
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
 #: app/Http/RequestHandlers/TreePrivacyPage.php:92
 #: resources/views/admin/trees-privacy.phtml:41
@@ -13322,7 +13320,7 @@ msgstr "نمایش به مدیران"
 msgid "Show to members"
 msgstr "نمایش به اعضا"
 
-#: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:98
+#: app/Auth.php:592 app/Auth.php:605 app/Elements/RestrictionNotice.php:98
 #: app/Http/RequestHandlers/TreePrivacyPage.php:91
 #: resources/views/admin/trees-privacy.phtml:41
 #: resources/views/admin/trees-privacy.phtml:92
@@ -13434,12 +13432,12 @@ msgid "Site verification codes do not work when webtrees is installed in a subfo
 msgstr "کدهای تأیید سایت هنگام نصب WebTrees در یک زیر پوشه کار نمی کنند."
 
 #. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
-#: app/Module/SiteMapModule.php:154
+#: app/Module/SiteMapModule.php:147
 msgid "Sitemaps"
 msgstr "نقشه سایت"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
-#: resources/views/modules/sitemap/config.phtml:25
+#: resources/views/modules/sitemap/config.phtml:24
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "نقشه سایت راهی برای وب مسترها است که صفحات موجود در وب سایت را که برای خزیدن در دسترس هستند به موتورهای جستجومعرفی کنند. همه موتورهای جستجوگر اصلی از نقشه های سایت پشتیبانی می کنند. برای اطلاعات بیشتر ، به <a href=\"https://www.sitemaps.org/ \"> www.sitemaps.org </a> مراجعه کنید."
 
@@ -13599,7 +13597,7 @@ msgstr "سوسا"
 msgid "Sosa-Stradonitz number"
 msgstr "شماره Sosa-stradonitz"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:259
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:257
 msgid "Sounds like"
 msgstr "به نظر می رسد"
 
@@ -13612,11 +13610,11 @@ msgstr "به نظر می رسد"
 #: app/Module/FactSourcesReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:168
 #: resources/views/admin/trees.phtml:234
-#: resources/views/fact-gedcom-fields.phtml:66
+#: resources/views/fact-gedcom-fields.phtml:72
 #: resources/views/modals/link-media-to-source.phtml:23
 #: resources/views/modules/favorites/favorites.phtml:109
-#: resources/views/modules/random_media/slide-show.phtml:83
-#: resources/views/modules/recent_changes/changes-table.phtml:73
+#: resources/views/modules/random_media/slide-show.phtml:84
+#: resources/views/modules/recent_changes/changes-table.phtml:77
 #: resources/views/modules/sources_tab/tab.phtml:73
 #: resources/xml/reports/bdm_report.xml:136
 #: resources/xml/reports/bdm_report.xml:162
@@ -13858,7 +13856,7 @@ msgstr "عنوان داستان"
 #: resources/views/admin/broadcast.phtml:45
 #: resources/views/admin/email-page.phtml:50
 #: resources/views/contact-page.phtml:60 resources/views/message-page.phtml:48
-#: resources/views/modules/user-messages/user-messages.phtml:70
+#: resources/views/modules/user-messages/user-messages.phtml:68
 msgid "Subject"
 msgstr "موضوع"
 
@@ -13881,7 +13879,7 @@ msgstr "ارسال شده اما هنوز پاک نشده است"
 #: app/Gedcom.php:886 app/Http/RequestHandlers/CheckTree.php:359
 #: resources/views/admin/trees.phtml:267
 #: resources/views/modals/submission-fields.phtml:16
-#: resources/views/modules/recent_changes/changes-table.phtml:76
+#: resources/views/modules/recent_changes/changes-table.phtml:80
 msgid "Submitter"
 msgstr "ارسال کننده"
 
@@ -13921,11 +13919,11 @@ msgstr "یکشنبه"
 msgid "Support and documentation can be found at %s."
 msgstr "پشتیبانی و مستندات را در %s می توان یافت."
 
-#: app/Services/ServerCheckService.php:327
+#: app/Services/ServerCheckService.php:329
 msgid "Support for PostgreSQL is experimental."
 msgstr "پشتیبانی از postgresql آزمایشی است."
 
-#: app/Services/ServerCheckService.php:332
+#: app/Services/ServerCheckService.php:334
 msgid "Support for SQL Server is experimental."
 msgstr "پشتیبانی از SQL Server آزمایشی است."
 
@@ -14196,13 +14194,7 @@ msgstr "قسمت <b> نام </b> شامل نام کامل فرد, همانطور
 
 #: resources/views/help/surname.phtml:10
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
-"قسمت <b> نام خانوادگی </b> حاوی نامی است که برای مرتب سازی و گروه‌بندی "
-"استفاده می‌‎شود، و می‌تواند با نام خانوادگیِ واقعی فرد که همیشه از قسمت <b> "
-"نام </b> گرفته می‌شود، متفاوت باشد. این قسمت می‌تواند برای مرتب‌کردن نام "
-"خانوادگی با یا بدونِ پیشوند (بروجنی / بروجنی‌پور) و گروه‌های مختلف هجی یا "
-"متمایزشده (Kowalski / Kowalska) استفاده شود. اگر فرد نیاز به ذکر بیش از یک "
-"نام خانوادگی داشته باشد، هر نام باید توسط یک کاما از بقیه جدا شود."
+msgstr "قسمت <b> نام خانوادگی </b> حاوی نامی است که برای مرتب سازی و گروه‌بندی استفاده می‌‎شود، و می‌تواند با نام خانوادگیِ واقعی فرد که همیشه از قسمت <b> نام </b> گرفته می‌شود، متفاوت باشد. این قسمت می‌تواند برای مرتب‌کردن نام خانوادگی با یا بدونِ پیشوند (بروجنی / بروجنی‌پور) و گروه‌های مختلف هجی یا متمایزشده (Kowalski / Kowalska) استفاده شود. اگر فرد نیاز به ذکر بیش از یک نام خانوادگی داشته باشد، هر نام باید توسط یک کاما از بقیه جدا شود."
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:96
 #, php-format
@@ -14218,12 +14210,12 @@ msgstr "استاندارد GEDCOM تعداد زیادی فیلد ورودی دا
 msgid "The Hague, Netherlands"
 msgstr "لاهه ، هلند"
 
-#: app/Services/ServerCheckService.php:123
+#: app/Services/ServerCheckService.php:125
 #, php-format
 msgid "The PHP extension “%s” is not installed."
 msgstr "افزونه PHP “%s”نصب نشده است."
 
-#: app/Services/ServerCheckService.php:179
+#: app/Services/ServerCheckService.php:181
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
 msgstr "عملکرد PHP “%1$s” غیر فعال است."
@@ -14233,12 +14225,12 @@ msgstr "عملکرد PHP “%1$s” غیر فعال است."
 msgid "The PHP temporary folder is missing."
 msgstr "پوشه موقت PHP از دست رفته است."
 
-#: app/Services/ServerCheckService.php:142
+#: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
 msgstr "تنظیم PHP “%1$s” غیر فعال است."
 
-#: app/Services/ServerCheckService.php:146
+#: app/Services/ServerCheckService.php:148
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
 msgstr "تنظیم PHP.INI “%1$s” فعال است."
@@ -14475,7 +14467,7 @@ msgstr "فایل رسانه ای %1$s را نمی توان به %2$ss تغییر
 msgid "The media file %1$s has been renamed to %2$s."
 msgstr "فایل رسانه ای %1$s به %2$s تغییر نام داده است."
 
-#: app/Http/RequestHandlers/CreateMediaObjectAction.php:96
+#: app/Http/RequestHandlers/CreateMediaObjectAction.php:108
 msgid "The media object has been created"
 msgstr "موضوع رسانه ای ایجاد شده است"
 
@@ -14489,14 +14481,14 @@ msgid "The message was not sent to %s."
 msgstr "پیام به %s ارسال نشد."
 
 #: app/Http/RequestHandlers/ContactAction.php:149
-#: app/Http/RequestHandlers/EmailPreferencesAction.php:100
+#: app/Http/RequestHandlers/EmailPreferencesAction.php:99
 #: app/Http/RequestHandlers/MessageAction.php:96
 msgid "The message was not sent."
 msgstr "پیام ارسال نشده است."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:78
 #: app/Http/RequestHandlers/ContactAction.php:144
-#: app/Http/RequestHandlers/EmailPreferencesAction.php:98
+#: app/Http/RequestHandlers/EmailPreferencesAction.php:97
 #: app/Http/RequestHandlers/MessageAction.php:91
 #, php-format
 msgid "The message was successfully sent to %s."
@@ -14596,7 +14588,7 @@ msgstr "تنظیمات برگزیده مربوط به ماژول “%s” حذف
 #: app/Module/MapGeoLocationGeonames.php:87
 #: app/Module/MapGeoLocationOpenRouteService.php:82
 #: app/Module/OpenRouteServiceAutocomplete.php:106
-#: app/Module/RelationshipsChartModule.php:451 app/Module/SiteMapModule.php:169
+#: app/Module/RelationshipsChartModule.php:451 app/Module/SiteMapModule.php:162
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
 msgstr "تنظیمات برگزیده مربوط به ماژول “%s” بروزآوری شده است."
@@ -14627,7 +14619,7 @@ msgstr "مخزن ایجاد شده است"
 msgid "The search menu."
 msgstr "منوی جستجو."
 
-#: app/Services/SearchService.php:1178
+#: app/Services/SearchService.php:1177
 msgid "The search returned too many results."
 msgstr "جستجو نتایج بسیار زیادی به دست آورد."
 
@@ -14639,7 +14631,7 @@ msgstr "تنظیمات سرور درست اند."
 msgid "The server could not understand this request."
 msgstr "سرور نتوانست این درخواست را درک کند."
 
-#: app/Services/ServerCheckService.php:244
+#: app/Services/ServerCheckService.php:246
 msgid "The server’s temporary folder cannot be accessed."
 msgstr "پوشه موقت سرور قابل دسترسی نیست."
 
@@ -14718,7 +14710,7 @@ msgstr "نام کاربری یا رمز عبور اشتباه است."
 msgid "The username required for authentication with the SMTP server."
 msgstr "نام کاربری مورد نیاز برای احراز هویت با سرور SMTP."
 
-#: app/Http/RequestHandlers/EmailPreferencesAction.php:92
+#: app/Http/RequestHandlers/EmailPreferencesAction.php:91
 #: app/Http/RequestHandlers/ModulesAnalyticsAction.php:45
 #: app/Http/RequestHandlers/ModulesBlocksAction.php:46
 #: app/Http/RequestHandlers/ModulesChartsAction.php:46
@@ -14771,12 +14763,12 @@ msgstr "تم ها"
 msgid "There are no facts for this individual."
 msgstr "واقعه ای برای این فرد وجود ندارد."
 
-#: app/Module/IndividualListModule.php:224
+#: app/Module/AbstractIndividualListModule.php:180
 #, php-format
 msgid "There are no individuals with the surname “%s”"
 msgstr "شخصی با نام خانوادگیِ «%s» وجود ندارد"
 
-#: app/Http/RequestHandlers/ManageMediaData.php:327
+#: app/Http/RequestHandlers/ManageMediaData.php:326
 msgid "There are no links to this media object."
 msgstr "پیوندی به این موضوع رسانه ای وجود ندارد."
 
@@ -14818,9 +14810,8 @@ msgstr[1] "تغییری در %s روز گذشته وجود نداشته است."
 msgid "There was an error checking for a new version."
 msgstr "هنگام بررسی نسخه جدید خطایی روی داد."
 
-#: app/Exceptions/FileUploadException.php:97
 #: app/Http/RequestHandlers/AddMediaFileAction.php:76
-#: app/Http/RequestHandlers/CreateMediaObjectAction.php:76
+#: app/Http/RequestHandlers/CreateMediaObjectAction.php:88
 #: app/Http/RequestHandlers/UploadMediaAction.php:131
 #: app/Services/MediaFileService.php:222
 msgid "There was an error uploading your file."
@@ -14984,9 +14975,9 @@ msgstr "این فرد هنگام مشاهده نمودارها و گزارش ه�
 #: app/Module/StatisticsChartModule.php:947
 #: app/Statistics/Repository/EventRepository.php:254
 #: app/Statistics/Repository/FamilyDatesRepository.php:107
-#: app/Statistics/Repository/FamilyRepository.php:528
-#: app/Statistics/Repository/FamilyRepository.php:849
-#: app/Statistics/Repository/FamilyRepository.php:1504
+#: app/Statistics/Repository/FamilyRepository.php:527
+#: app/Statistics/Repository/FamilyRepository.php:848
+#: app/Statistics/Repository/FamilyRepository.php:1503
 #: app/Statistics/Repository/IndividualRepository.php:1831
 #: app/Statistics/Repository/IndividualRepository.php:1856
 #: app/Statistics/Repository/PlaceRepository.php:210
@@ -15008,9 +14999,9 @@ msgstr "این اطلاعات در دسترس نیست."
 #: app/Statistics/Repository/FamilyDatesRepository.php:115
 #: app/Statistics/Repository/FamilyDatesRepository.php:386
 #: app/Statistics/Repository/FamilyRepository.php:96
-#: app/Statistics/Repository/FamilyRepository.php:483
-#: app/Statistics/Repository/FamilyRepository.php:860
-#: app/Statistics/Repository/FamilyRepository.php:1516
+#: app/Statistics/Repository/FamilyRepository.php:482
+#: app/Statistics/Repository/FamilyRepository.php:859
+#: app/Statistics/Repository/FamilyRepository.php:1515
 #: app/Statistics/Repository/IndividualRepository.php:863
 #: app/Statistics/Repository/IndividualRepository.php:1176
 #: app/Statistics/Repository/IndividualRepository.php:1196
@@ -15034,9 +15025,7 @@ msgstr "این آخرین نسخه webtrees است. هیچ ارتقای در د�
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:99
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr ""
-"اینْ نام سرور SMTP موردنظر شماست. \"localhost\" به این معنی است که سرویس پست "
-"الکترونیکی در همان رایانه وب سرور شما در حال اجرا است."
+msgstr "اینْ نام سرور SMTP موردنظر شماست. \"localhost\" به این معنی است که سرویس پست الکترونیکی در همان رایانه وب سرور شما در حال اجرا است."
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:48
@@ -15494,10 +15483,6 @@ msgstr "برای تنظیم رمز عبور جدید، این لینک را دن
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr "برای تنظیم این متن برای زبان‌های دیگر، باید به آن زبان بروید و دوباره از این صفحه بازدید کنید."
 
-#: resources/views/modules/sitemap/config.phtml:51
-msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "برای اطلاع دادن در دسترس بودن نقشه های سایت به موتور های جستجو ، می توانید از لینک های زیر استفاده کنید."
-
 #: resources/views/modules/bing-maps/config.phtml:36
 #: resources/views/modules/google-maps/config.phtml:36
 #: resources/views/modules/here-maps/config.phtml:36
@@ -15789,7 +15774,7 @@ msgstr "توئین فالز، آیداهو، ایالات متحده"
 #: resources/views/admin/site-logs.phtml:125
 #: resources/views/modules/media-list/page.phtml:59
 #: resources/views/modules/random_media/config.phtml:28
-#: resources/views/modules/recent_changes/changes-table.phtml:41
+#: resources/views/modules/recent_changes/changes-table.phtml:45
 msgid "Type"
 msgstr "نوع"
 
@@ -15853,7 +15838,7 @@ msgstr "نوع وظیفه پژوهشی"
 #: resources/views/modules/favorites/favorites.phtml:146
 #: resources/views/modules/matomo-analytics/form.phtml:20
 #: resources/views/modules/share-url/share.phtml:12
-#: resources/views/modules/sitemap/config.phtml:47
+#: resources/views/modules/sitemap/config.phtml:46
 msgid "URL"
 msgstr "آدرس لینک"
 
@@ -15933,8 +15918,8 @@ msgid "United States"
 msgstr "ایالات متحده"
 
 #. I18N: Name of a country or state
-#: app/CustomTags/FamilyTreeMaker.php:138 app/Elements/FamilyStatusText.php:73
-#: app/GedcomRecord.php:742 app/GedcomRecord.php:747
+#: app/CustomTags/FamilyTreeMaker.php:140 app/Elements/FamilyStatusText.php:73
+#: app/GedcomRecord.php:751 app/GedcomRecord.php:756
 #: app/Statistics/Google/ChartSex.php:77
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
@@ -15945,6 +15930,11 @@ msgctxt "unknown century"
 msgid "Unknown"
 msgstr "نامشخص"
 
+#: resources/views/edit-account-page.phtml:64
+msgctxt "unknown people"
+msgid "Unknown"
+msgstr "نامشخص"
+
 #: app/Elements/SexValue.php:87
 #: resources/xml/reports/family_group_report.xml:844
 #: resources/xml/reports/individual_ext_report.xml:399
@@ -15952,11 +15942,6 @@ msgstr "نامشخص"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgctxt "unknown sex"
-msgid "Unknown"
-msgstr "نامشخص"
-
-#: resources/views/edit-account-page.phtml:64
-msgctxt "unknown people"
 msgid "Unknown"
 msgstr "نامشخص"
 
@@ -15973,7 +15958,7 @@ msgstr "کد GEDCOM شناسایی نشده است"
 msgid "Unused files"
 msgstr "فایل های استفاده نشده"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:123
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 #, php-format
 msgid "Unzip %s to a temporary folder…"
 msgstr "باز کردن %s در یک پوشه موقت…"
@@ -16016,7 +16001,7 @@ msgid "Upgrade to webtrees %s."
 msgstr "ارتقا به webtrees %s ارتقا دهید."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:78
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:118
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:117
 msgid "Upgrade wizard"
 msgstr "ویزارد ارتقا"
 
@@ -16146,7 +16131,7 @@ msgstr "تایید کاربر"
 #: resources/views/login-page.phtml:35
 #: resources/views/modules/geonames/config.phtml:23
 #: resources/views/modules/login_block/sign-in.phtml:25
-#: resources/views/modules/todo/research-tasks.phtml:35
+#: resources/views/modules/todo/research-tasks.phtml:36
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:61
 #: resources/views/setup/step-5-administrator.phtml:68
@@ -16292,7 +16277,7 @@ msgstr "نمایش جدول رویدادهای رخ داده در %s"
 msgid "View this day"
 msgstr "نمایش این روز"
 
-#: app/Statistics/Repository/FamilyRepository.php:481
+#: app/Statistics/Repository/FamilyRepository.php:480
 #: resources/views/fact.phtml:110
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
@@ -16466,7 +16451,7 @@ msgid "Where a user is associated to an individual record in a family tree and h
 msgstr "جایی که کاربر به یک رکورد فردی در یک شجره نامه مرتبط است و نقش عضو، ویرایشگر یا ناظر را دارد، می توانید از دسترسی او به جزئیات دور و افراد زنده جلوگیری کنید. شما تعداد مراحل رابطه ای را که کاربر مجاز به دیدن آنهاست را مشخص می کنید."
 
 #. I18N: Label for a configuration option
-#: resources/views/modules/sitemap/config.phtml:29
+#: resources/views/modules/sitemap/config.phtml:28
 msgid "Which family trees should be included in the sitemaps"
 msgstr "کدام شچره نامه ها باید در نقشه سایت گنجانده شوند"
 
@@ -16554,7 +16539,7 @@ msgid "World"
 msgstr "جهان"
 
 #: app/CustomTags/BrothersKeeper.php:111
-#: resources/views/modules/yahrzeit/table.phtml:36
+#: resources/views/modules/yahrzeit/table.phtml:39
 msgid "Yahrzeit"
 msgstr "Yahrzeit"
 
@@ -16585,7 +16570,7 @@ msgid "You (or someone claiming to be you) has requested an account at %1$s usin
 msgstr "شما (یا شخصی که ادعا می‌کند شما هستید) با استفاده از آدرس ایمیل %2$s درخواست یک حساب در %1$s کرده‌اید."
 
 #: app/Http/RequestHandlers/ContactAction.php:122
-#: app/Http/RequestHandlers/RegisterAction.php:272
+#: app/Http/RequestHandlers/RegisterAction.php:271
 msgid "You are not allowed to send messages that contain external links."
 msgstr "شما مجاز به ارسال پیام های حاوی لینک های خارجی نیستید."
 
@@ -16601,9 +16586,7 @@ msgstr "با استفاده از لینک زیر می توانید برای یک
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:71
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr ""
-"شما می توانید ظاهر سایت را با استفاده از \"تم‌ها\" تغییر دهید. هر تم دارای "
-"سبک، طرح، طرحِ رنگ و غیره‌ی متفاوت است."
+msgstr "شما می توانید ظاهر سایت را با استفاده از \"تم‌ها\" تغییر دهید. هر تم دارای سبک، طرح، طرحِ رنگ و غیره‌ی متفاوت است."
 
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
@@ -16717,7 +16700,7 @@ msgstr "قبل از ارتقا، باید همه تغییرات معلق را ب
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:123
-#: app/Http/RequestHandlers/RegisterAction.php:272
+#: app/Http/RequestHandlers/RegisterAction.php:271
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "باید «%1$s» را از «%2$s» حذف کنید و دوباره امتحان کنید."
@@ -16769,7 +16752,7 @@ msgstr "رمز عبور شما به روز شد."
 msgid "Your registration at %s"
 msgstr "ثبت نام شما در %s"
 
-#: app/Services/ServerCheckService.php:194
+#: app/Services/ServerCheckService.php:196
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "وب سرور شما از نسخه PHP %s استفاده می کند که دیگر به روز رسانی های امنیتی را دریافت نمی کند. شما باید در اسرع وقت به نسخه بعدی ارتقا دهید."
@@ -16810,7 +16793,7 @@ msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the 
 msgstr "برچسب های _WT_OBJE_SORT توسط نسخه های قدیمی webtrees برای نشان دادن تصویر ترجیحی برای یک فرد استفاده می شد. یک گزینه جایگزین این است که تصاویر را مجدداً مرتب کنید تا تصویر مورد نظر ابتدا فهرست شود."
 
 #. I18N: Gedcom ABT dates
-#: app/Date.php:185
+#: app/Date.php:188
 #, php-format
 msgid "about %s"
 msgstr "درباره %s"
@@ -16865,7 +16848,7 @@ msgid "after"
 msgstr "پس از"
 
 #. I18N: Gedcom AFT dates
-#: app/Date.php:205
+#: app/Date.php:208
 #, php-format
 msgid "after %s"
 msgstr "بعد %s"
@@ -16881,7 +16864,7 @@ msgstr "سن"
 msgid "also known as"
 msgstr "همچنین شناخته شده به عنوان"
 
-#: app/Statistics/Repository/FamilyRepository.php:479
+#: app/Statistics/Repository/FamilyRepository.php:478
 #: app/Statistics/Repository/UserRepository.php:93
 #: resources/views/statistics/families/top10-list-age.phtml:21
 #: resources/views/statistics/families/top10-nolist-age.phtml:21
@@ -16953,13 +16936,13 @@ msgid "before"
 msgstr "پیش از"
 
 #. I18N: Gedcom BEF dates
-#: app/Date.php:201
+#: app/Date.php:204
 #, php-format
 msgid "before %s"
 msgstr "قبل %s"
 
 #. I18N: Gedcom BET-AND dates
-#: app/Date.php:217
+#: app/Date.php:220
 #, php-format
 msgid "between %s and %s"
 msgstr "بین %s و %s"
@@ -17055,7 +17038,7 @@ msgid "bullet list"
 msgstr "لیست گلوله ای"
 
 #. I18N: Gedcom CAL dates
-#: app/Date.php:189
+#: app/Date.php:192
 #, php-format
 msgid "calculated %s"
 msgstr "محاسبه شده %s"
@@ -17131,7 +17114,7 @@ msgid "child"
 msgstr "فرزند"
 
 #. I18N: Type of demographic data
-#: app/Elements/DemographicDataType.php:56
+#: app/Elements/DemographicDataType.php:55
 msgid "citizen"
 msgstr "شهروند"
 
@@ -17195,7 +17178,7 @@ msgid "create"
 msgstr "ایجاد"
 
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:59
+#: app/Elements/HierarchicalRelationship.php:58
 msgid "cultural"
 msgstr "فرهنگی"
 
@@ -17344,7 +17327,7 @@ msgid "estate name"
 msgstr "نام ملکی"
 
 #. I18N: Gedcom EST dates
-#: app/Date.php:193
+#: app/Date.php:196
 #, php-format
 msgid "estimated %s"
 msgstr "برآورد شده %s"
@@ -17749,13 +17732,13 @@ msgstr[0] "از %1$s به فاصله هر %2$s سال"
 msgstr[1] "از %1$s به فاصله هر %2$s سال"
 
 #. I18N: Gedcom FROM dates
-#: app/Date.php:209
+#: app/Date.php:212
 #, php-format
 msgid "from %s"
 msgstr "از %s"
 
 #. I18N: Gedcom FROM-TO dates
-#: app/Date.php:221
+#: app/Date.php:224
 #, php-format
 msgid "from %s to %s"
 msgstr "از %s تا %s"
@@ -17765,12 +17748,8 @@ msgstr "از %s تا %s"
 msgid "full circle"
 msgstr "چرخه کامل"
 
-#: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "sex"
-msgstr "جنسیت"
-
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:58
+#: app/Elements/HierarchicalRelationship.php:57
 msgid "geographic"
 msgstr "جغرافیایی"
 
@@ -19405,7 +19384,7 @@ msgid "himself"
 msgstr "خودش"
 
 #. I18N: Type of demographic data
-#: app/Elements/DemographicDataType.php:55
+#: app/Elements/DemographicDataType.php:54
 msgid "household"
 msgstr "خانواده"
 
@@ -19432,7 +19411,7 @@ msgid "inline note"
 msgstr "یادداشت بین خطی"
 
 #. I18N: Gedcom INT dates
-#: app/Date.php:197
+#: app/Date.php:200
 #, php-format
 msgid "interpreted %s (%s)"
 msgstr "تعریف شده %s (%s)"
@@ -19935,7 +19914,7 @@ msgid "plain text"
 msgstr "متن ساده"
 
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:56
+#: app/Elements/HierarchicalRelationship.php:55
 msgid "political"
 msgstr "سیاسی"
 
@@ -19998,7 +19977,7 @@ msgid "rejected"
 msgstr "رد شد"
 
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:57
+#: app/Elements/HierarchicalRelationship.php:56
 msgid "religious"
 msgstr "مذهبی"
 
@@ -20071,7 +20050,7 @@ msgstr "راست"
 #: resources/views/modules/map-box/config.phtml:44
 #: resources/views/modules/openrouteservice/config.phtml:44
 #: resources/views/modules/relationships-chart/config.phtml:57
-#: resources/views/modules/sitemap/config.phtml:38
+#: resources/views/modules/sitemap/config.phtml:37
 #: resources/views/modules/stories/edit.phtml:71
 #: resources/views/modules/user_blog/edit.phtml:50
 msgid "save"
@@ -20081,7 +20060,7 @@ msgstr "ذخیره"
 #: resources/views/admin/changes-log.phtml:101
 #: resources/views/admin/site-logs.phtml:92
 #: resources/views/modules/media-list/page.phtml:84
-#: resources/views/search-advanced-page.phtml:91
+#: resources/views/search-advanced-page.phtml:87
 #: resources/views/search-general-page.phtml:128
 #: resources/views/search-phonetic-page.phtml:88
 msgid "search"
@@ -20290,6 +20269,10 @@ msgstr "دختر عمو/دایی/عمه/خاله نَسَب هفتم"
 msgctxt "MALE"
 msgid "seventh cousin"
 msgstr "پسر عمو/دایی/عمه/خاله نَسَب هفتم"
+
+#: resources/views/modules/statistics-chart/custom.phtml:88
+msgid "sex"
+msgstr "جنسیت"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
@@ -20731,7 +20714,7 @@ msgid "three-quarter circle"
 msgstr "سه چهارم دایره"
 
 #. I18N: Gedcom TO dates
-#: app/Date.php:213
+#: app/Date.php:216
 #, php-format
 msgid "to %s"
 msgstr "به %s"
@@ -20961,11 +20944,11 @@ msgstr "برادر/خواهر کوچکتر"
 msgid "younger sister"
 msgstr "خواهر کوچکتر"
 
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:238
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:242
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:243
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:244
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
@@ -20999,25 +20982,25 @@ msgstr "%s حذف شده است."
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr "برچسب های \"متمایز\" (_PRIM) توسط برخی از برنامه های تبارشناسی برای نشان دادن تصویر ترجیحی برای یک فرد استفاده می شود. یک گزینه جایگزین این است که تصاویر را مجدداً مرتب کنید تا تصویر مورد نظر ابتدا فهرست شود."
 
-#: app/Individual.php:482 app/Individual.php:486 app/Note.php:101
+#: app/Individual.php:448 app/Individual.php:452 app/Note.php:101
 #: app/Report/ReportParserGenerate.php:987
 #: app/Report/ReportParserGenerate.php:1073
 msgid "…"
 msgstr "…"
 
-#: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:363
-#: app/Family.php:381 app/Individual.php:1060
-#: app/Module/IndividualListModule.php:264
-#: app/Module/IndividualListModule.php:520
+#: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:337
+#: app/Family.php:355 app/Individual.php:1026
+#: app/Module/AbstractIndividualListModule.php:221
+#: app/Module/AbstractIndividualListModule.php:470
 msgctxt "Unknown given name"
 msgid "…"
 msgstr "…"
 
-#: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:363
-#: app/Family.php:381 app/Individual.php:1059
-#: app/Module/IndividualListModule.php:249
-#: app/Module/IndividualListModule.php:272
-#: app/Module/IndividualListModule.php:536
+#: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:337
+#: app/Family.php:355 app/Individual.php:1025
+#: app/Module/AbstractIndividualListModule.php:208
+#: app/Module/AbstractIndividualListModule.php:229
+#: app/Module/AbstractIndividualListModule.php:482
 #: resources/views/lists/surnames-bullet-list.phtml:23
 #: resources/views/lists/surnames-column-list.phtml:26
 #: resources/views/lists/surnames-compact-list.phtml:23
@@ -21227,6 +21210,9 @@ msgstr "…"
 #~ msgid "Family ID prefix"
 #~ msgstr "پیشوند شناسه خانوادگی"
 
+#~ msgid "Gender"
+#~ msgstr "جنسیت"
+
 #~ msgid "Gender icon on charts"
 #~ msgstr "نمایه جنسیت در نمودارها"
 
@@ -21250,6 +21236,10 @@ msgstr "…"
 
 #~ msgid "Individual distribution"
 #~ msgstr "پراکندگی فردی"
+
+#, php-format
+#~ msgid "Individuals with surname %s"
+#~ msgstr "افراد دارای نام خانوادگی %s"
 
 #~ msgid "Installation folder"
 #~ msgstr "پوشه نصب"
@@ -21530,6 +21520,9 @@ msgstr "…"
 
 #~ msgid "This message will be sent to %s"
 #~ msgstr "این پیام فرستاده خواهد شد برای %s"
+
+#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
+#~ msgstr "برای اطلاع دادن در دسترس بودن نقشه های سایت به موتور های جستجو ، می توانید از لینک های زیر استفاده کنید."
 
 #~ msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
 #~ msgstr "جهت استفاده از یک اکانت گوگل، از تنظیمات روبرو استفاده کنید : سرور:smtp.gmail.com پورت:587, امنیت:tls, نام کاربری: *****@Gmail.com رمزعبور: رمز عبور اکانت گوگل شما"

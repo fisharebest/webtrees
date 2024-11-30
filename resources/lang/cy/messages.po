@@ -2,17 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Welsh (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 13:09+0000\n"
+"POT-Creation-Date: 2024-11-30 20:50+0000\n"
 "PO-Revision-Date: 2024-04-08 16:59+0000\n"
 "Last-Translator: Meddal <post@meddal.com>\n"
-"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
-"webtrees/cy/>\n"
+"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\n"
 "Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
-"(n==3) ? 3 :(n==6) ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\n"
 "X-Generator: Weblate 4.14.2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
@@ -120,7 +118,7 @@ msgid "%1$s × %2$s"
 msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
-#: app/Http/RequestHandlers/ManageMediaData.php:371 app/MediaFile.php:326
+#: app/Http/RequestHandlers/ManageMediaData.php:370 app/MediaFile.php:326
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr "%1$s × %2$s picsel"
@@ -130,21 +128,21 @@ msgstr "%1$s × %2$s picsel"
 #. I18N: e.g. "Occupation: farmer"
 #: app/Elements/AbstractElement.php:250 app/Elements/NoteStructure.php:130
 #: app/Elements/NoteStructure.php:154 app/Elements/NoteStructure.php:166
-#: app/Exceptions/FileUploadException.php:99 app/Fact.php:570
-#: app/GedcomRecord.php:554 app/Http/RequestHandlers/CheckTree.php:418
+#: app/Exceptions/FileUploadException.php:97 app/Fact.php:570
+#: app/GedcomRecord.php:563 app/Http/RequestHandlers/CheckTree.php:418
 #: app/Http/RequestHandlers/CheckTree.php:420
 #: app/Http/RequestHandlers/CheckTree.php:444
 #: resources/views/fact-association-structure.phtml:101
 #: resources/views/fact-association-structure.phtml:105
 #: resources/views/fact-association-structure.phtml:109
-#: resources/views/fact-gedcom-fields.phtml:68
+#: resources/views/fact-gedcom-fields.phtml:74
 #: resources/views/modules/media-list/page.phtml:142
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
-#: app/Individual.php:491 app/Module/StatisticsChartModule.php:856
+#: app/Individual.php:457 app/Module/StatisticsChartModule.php:856
 #, php-format
 msgid "%1$s–%2$s"
 msgstr "%1$s–%2$s"
@@ -155,7 +153,7 @@ msgid "%1$s’s %2$s"
 msgstr "%2$s %1$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
-#: app/I18N.php:604
+#: app/I18N.php:603
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
 
@@ -170,35 +168,35 @@ msgid "%s BCE"
 msgstr "%s BCE"
 
 #. I18N: size of file in KB
-#: app/Http/RequestHandlers/ManageMediaData.php:361 app/MediaFile.php:312
+#: app/Http/RequestHandlers/ManageMediaData.php:360 app/MediaFile.php:312
 #: app/Services/MediaFileService.php:93
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#: app/Module/ClippingsCartModule.php:545
+#: app/Module/ClippingsCartModule.php:459
 #, php-format
 msgid "%s and her ancestors"
 msgstr "%s a'i hynafiaid"
 
-#: app/Module/ClippingsCartModule.php:554
+#: app/Module/ClippingsCartModule.php:468
 #, php-format
 msgid "%s and his ancestors"
 msgstr "%s a'i hynafiaid"
 
-#: app/Module/ClippingsCartModule.php:848
+#: app/Module/ClippingsCartModule.php:702
 #, php-format
 msgid "%s and the individuals that reference it."
 msgstr "%s a'r unigolion sy'n cyfeirio ato."
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:450
+#: app/Module/ClippingsCartModule.php:385
 #, php-format
 msgid "%s and their children"
 msgstr "%s a'u plant"
 
 #. I18N: %s is a family (husband + wife)
-#: app/Module/ClippingsCartModule.php:452
+#: app/Module/ClippingsCartModule.php:387
 #, php-format
 msgid "%s and their descendants"
 msgstr "%s a'u disgynyddion"
@@ -230,7 +228,7 @@ msgstr[4] "%s phlentyn"
 msgstr[5] "%s plentyn"
 
 #: app/Age.php:98 app/Elements/AgeAtEvent.php:103
-#: app/Statistics/Repository/FamilyRepository.php:351
+#: app/Statistics/Repository/FamilyRepository.php:350
 #: app/Statistics/Repository/IndividualRepository.php:979
 #, php-format
 msgid "%s day"
@@ -250,7 +248,7 @@ msgstr[5] "%s diwrnod"
 msgid "%s does not exist."
 msgstr "Nid yw %s yn bodoli."
 
-#: resources/views/calendar-list.phtml:25
+#: resources/views/calendar-list.phtml:26
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
@@ -298,7 +296,7 @@ msgstr[5] "%s wyr/wyres"
 
 #: app/Module/LifespansChartModule.php:272
 #: resources/views/admin/trees-unconnected.phtml:42
-#: resources/views/calendar-list.phtml:20
+#: resources/views/calendar-list.phtml:21
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
@@ -334,7 +332,7 @@ msgstr[4] "%s neges"
 msgstr[5] "%s neges"
 
 #: app/Age.php:94 app/Elements/AgeAtEvent.php:101
-#: app/Statistics/Repository/FamilyRepository.php:357
+#: app/Statistics/Repository/FamilyRepository.php:356
 #: app/Statistics/Repository/IndividualRepository.php:984
 #: resources/views/modules/relatives/family.phtml:196
 #, php-format
@@ -452,8 +450,9 @@ msgstr[4] "%s wythnos"
 msgstr[5] "%s wythnos"
 
 #: app/Age.php:90 app/Elements/AgeAtEvent.php:100
-#: app/Statistics/Repository/FamilyRepository.php:362
+#: app/Statistics/Repository/FamilyRepository.php:361
 #: app/Statistics/Repository/IndividualRepository.php:989
+#: resources/views/lists/anniversaries-list.phtml:55
 #: resources/views/modules/relatives/family.phtml:194
 #: resources/views/modules/statistics-chart/custom.phtml:141
 #: resources/views/modules/statistics-chart/custom.phtml:150
@@ -467,7 +466,7 @@ msgstr[3] "%s blynedd"
 msgstr[4] "%s mlynedd"
 msgstr[5] "%s blynedd"
 
-#: app/Http/RequestHandlers/CalendarEvents.php:157
+#: app/Http/RequestHandlers/CalendarEvents.php:169
 #: resources/views/modules/yahrzeit/list.phtml:47
 #, php-format
 msgid "%s year anniversary"
@@ -509,42 +508,42 @@ msgstr "%s&nbsp;CE"
 msgid "%s+"
 msgstr "%s +"
 
-#: app/Module/ClippingsCartModule.php:546
+#: app/Module/ClippingsCartModule.php:460
 #, php-format
 msgid "%s, her ancestors and their families"
 msgstr "%s, ei chyndeidiau a'u teuluoedd"
 
-#: app/Module/ClippingsCartModule.php:543
+#: app/Module/ClippingsCartModule.php:457
 #, php-format
 msgid "%s, her parents and siblings"
 msgstr "%s, ei rhieni a'i brodyr a'i chwiorydd"
 
-#: app/Module/ClippingsCartModule.php:544
+#: app/Module/ClippingsCartModule.php:458
 #, php-format
 msgid "%s, her spouses and children"
 msgstr "%s, ei phriod a'i phlant"
 
-#: app/Module/ClippingsCartModule.php:547
+#: app/Module/ClippingsCartModule.php:461
 #, php-format
 msgid "%s, her spouses and descendants"
 msgstr "%s, ei phriod a'i disgynyddion"
 
-#: app/Module/ClippingsCartModule.php:555
+#: app/Module/ClippingsCartModule.php:469
 #, php-format
 msgid "%s, his ancestors and their families"
 msgstr "%s, ei hynafiaid a'u teuluoedd"
 
-#: app/Module/ClippingsCartModule.php:552
+#: app/Module/ClippingsCartModule.php:466
 #, php-format
 msgid "%s, his parents and siblings"
 msgstr "%s, ei rieni a'i frodyr a'i chwiorydd"
 
-#: app/Module/ClippingsCartModule.php:553
+#: app/Module/ClippingsCartModule.php:467
 #, php-format
 msgid "%s, his spouses and children"
 msgstr "%s, ei briod a'i blant"
 
-#: app/Module/ClippingsCartModule.php:556
+#: app/Module/ClippingsCartModule.php:470
 #, php-format
 msgid "%s, his spouses and descendants"
 msgstr "%s, ei briod a'i ddisgynyddion"
@@ -827,7 +826,7 @@ msgid "A list of changes that need to be reviewed by a moderator, and email noti
 msgstr "Rhestr o newidiadau y mae angen i gymedrolwr eu hadolygu, a hysbysiadau e-bost."
 
 #. I18N: Description of the “Families” module
-#: app/Module/FamilyListModule.php:60
+#: app/Module/FamilyListModule.php:48
 msgid "A list of families."
 msgstr "Rhestr o deuluoedd."
 
@@ -837,7 +836,7 @@ msgid "A list of frequently asked questions and answers."
 msgstr "Rhestr o gwestiynau ac atebion cyffredin."
 
 #. I18N: Description of the “Individuals” module
-#: app/Module/IndividualListModule.php:105
+#: app/Module/IndividualListModule.php:48
 msgid "A list of individuals."
 msgstr "Rhestr o unigolion."
 
@@ -1307,14 +1306,14 @@ msgstr "Adar II"
 msgid "Add"
 msgstr "Ychwanegu"
 
-#: app/Module/ClippingsCartModule.php:455
-#: app/Module/ClippingsCartModule.php:560
-#: app/Module/ClippingsCartModule.php:670
-#: app/Module/ClippingsCartModule.php:714
-#: app/Module/ClippingsCartModule.php:758
-#: app/Module/ClippingsCartModule.php:802
-#: app/Module/ClippingsCartModule.php:851
-#: app/Module/ClippingsCartModule.php:906
+#: app/Module/ClippingsCartModule.php:390
+#: app/Module/ClippingsCartModule.php:474
+#: app/Module/ClippingsCartModule.php:564
+#: app/Module/ClippingsCartModule.php:598
+#: app/Module/ClippingsCartModule.php:632
+#: app/Module/ClippingsCartModule.php:666
+#: app/Module/ClippingsCartModule.php:705
+#: app/Module/ClippingsCartModule.php:750
 #, php-format
 msgid "Add %s to the clippings cart"
 msgstr "Ychwanegu %s at y drol toriadau"
@@ -1520,7 +1519,7 @@ msgstr "Ychwanegu steilio a sgriptiau i bob tudalen."
 msgid "Add to TITLE header tag"
 msgstr "Ychwanegu at dag pennyn TITLE"
 
-#: app/Module/ClippingsCartModule.php:186
+#: app/Module/ClippingsCartModule.php:165
 #: resources/views/modules/clippings/add-options.phtml:23
 msgid "Add to the clippings cart"
 msgstr "Ychwanegwch at y drol toriadau"
@@ -1823,18 +1822,18 @@ msgstr "Enw Arall"
 msgid "Alive"
 msgstr "Yn fyw"
 
+#: app/Module/AbstractIndividualListModule.php:191
+#: app/Module/AbstractIndividualListModule.php:195
+#: app/Module/AbstractIndividualListModule.php:199
+#: app/Module/AbstractIndividualListModule.php:274
+#: app/Module/AbstractIndividualListModule.php:409
+#: app/Module/AbstractIndividualListModule.php:411
 #: app/Module/FrequentlyAskedQuestionsModule.php:318
-#: app/Module/IndividualListModule.php:235
-#: app/Module/IndividualListModule.php:239
-#: app/Module/IndividualListModule.php:243
-#: app/Module/IndividualListModule.php:317
-#: app/Module/IndividualListModule.php:455
-#: app/Module/IndividualListModule.php:457
 #: resources/views/calendar-page.phtml:183
 #: resources/views/lists/datatables-attributes.phtml:12
 #: resources/views/modules/faq/config.phtml:76
 #: resources/views/modules/random_media/config.phtml:22
-#: resources/views/modules/user-messages/user-messages.phtml:67
+#: resources/views/modules/user-messages/user-messages.phtml:65
 #: resources/xml/reports/ahnentafel_report.xml:7
 #: resources/xml/reports/descendancy_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:6
@@ -1854,7 +1853,7 @@ msgstr "Y Cyfan"
 msgid "All facts and events"
 msgstr "Pob ffaith a digwyddiad"
 
-#: app/Http/RequestHandlers/RegisterAction.php:255
+#: app/Http/RequestHandlers/RegisterAction.php:254
 msgid "All fields must be completed."
 msgstr "Rhaid cwblhau pob maes."
 
@@ -1890,7 +1889,7 @@ msgid "Allow visitors to request a new user account"
 msgstr "Caniatáu i ymwelwyr ofyn am gyfrif defnyddiwr newydd"
 
 #: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
-#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:60
+#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:60
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
@@ -1994,7 +1993,7 @@ msgid "Ancestry PID"
 msgstr "PID Ancestry"
 
 #. I18N: GEDCOM tag _APID
-#: app/CustomTags/FamilyTreeMaker.php:109
+#: app/CustomTags/FamilyTreeMaker.php:110
 msgid "Ancestry.com source identifier"
 msgstr "Dynodwr ffynhonnell Ancestry.com"
 
@@ -2023,7 +2022,7 @@ msgstr "Anguilla"
 #: resources/views/lists/individuals-table.phtml:169
 #: resources/views/lists/individuals-table.phtml:179
 #: resources/views/modules/share-anniversary/share.phtml:20
-#: resources/views/modules/yahrzeit/table.phtml:31
+#: resources/views/modules/yahrzeit/table.phtml:34
 msgid "Anniversary"
 msgstr "Dathliad"
 
@@ -2132,12 +2131,12 @@ msgstr "Ydych chi'n siŵr eich bod chi am ddileu'r ddolen i “%s”?"
 msgid "Are you sure you want to delete this fact?"
 msgstr "Ydych chi'n siŵr eich bod chi am ddileu'r ffaith hon?"
 
-#: resources/views/modules/user-messages/user-messages.phtml:53
 #: resources/views/modules/user-messages/user-messages.phtml:135
+#: resources/views/modules/user-messages/user-messages.phtml:149
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
 msgstr "Ydych chi'n siŵr eich bod chi am ddileu'r neges hon? Ni fydd modd ei adfer yn nes ymlaen."
 
-#: app/Http/RequestHandlers/ManageMediaData.php:258
+#: app/Http/RequestHandlers/ManageMediaData.php:257
 #: resources/views/admin/clean-data.phtml:42
 #: resources/views/admin/trees.phtml:118
 #: resources/views/admin/users-table-options.phtml:46
@@ -2597,7 +2596,7 @@ msgstr "Bat mitzvah"
 msgid "Baton Rouge, Louisiana, United States"
 msgstr "Baton Rouge, Louisiana, Unol Daleithiau"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:257
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:255
 msgid "Begins with"
 msgstr "Cychwyn gyda"
 
@@ -3021,12 +3020,12 @@ msgstr "Bouvet Island"
 
 #. I18N: Name of a module/list
 #. I18N: Branches of a family tree
-#: app/Module/BranchesListModule.php:99 app/Module/BranchesListModule.php:240
+#: app/Module/BranchesListModule.php:99 app/Module/BranchesListModule.php:219
 msgid "Branches"
 msgstr "Canghennau"
 
 #. I18N: %s is a surname
-#: app/Module/BranchesListModule.php:230
+#: app/Module/BranchesListModule.php:209
 #, php-format
 msgid "Branches of the %s family"
 msgstr "Canghennau o'r teulu %s"
@@ -3379,7 +3378,7 @@ msgstr "Categori"
 msgid "Cause"
 msgstr "Achos"
 
-#: app/CustomTags/FamilyTreeMaker.php:114 app/Gedcom.php:638
+#: app/CustomTags/FamilyTreeMaker.php:115 app/Gedcom.php:638
 msgid "Cause of death"
 msgstr "Achos marwolaeth"
 
@@ -3565,7 +3564,7 @@ msgstr "Gwiriwch am wallau"
 msgid "Check for new version"
 msgstr "Gwiriwch am fersiwn newydd"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:120
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:119
 msgid "Check for pending changes…"
 msgstr "Gwirio am newidiadau arfaethedig…"
 
@@ -3600,7 +3599,7 @@ msgid "Child of %s"
 msgstr "Plentyn %s"
 
 #: app/Http/RequestHandlers/FamilyPage.php:153
-#: app/Http/RequestHandlers/IndividualPage.php:225
+#: app/Http/RequestHandlers/IndividualPage.php:224
 #: app/Module/StatisticsChartModule.php:422
 #: app/Module/StatisticsChartModule.php:714
 #: resources/views/lists/families-table.phtml:161
@@ -3759,7 +3758,7 @@ msgstr "Christmas Island"
 msgid "Circumciser"
 msgstr "Enwaedydd"
 
-#: app/CustomTags/FamilyTreeMaker.php:113
+#: app/CustomTags/FamilyTreeMaker.php:114
 msgid "Circumcision"
 msgstr "Enwaediad"
 
@@ -3793,7 +3792,7 @@ msgstr "Dinas"
 msgid "Ciudad Juárez, Mexico"
 msgstr "Ciudad Juárez, Mecsico"
 
-#: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:63
+#: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:60
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
 msgstr "Priodas sifil"
@@ -3812,13 +3811,13 @@ msgctxt "MALE"
 msgid "Civil registrar"
 msgstr "Cofrestrydd sifil"
 
-#: app/Http/RequestHandlers/CleanDataFolder.php:100
+#: app/Http/RequestHandlers/CleanDataFolder.php:99
 #: resources/views/admin/control-panel.phtml:268
 msgid "Clean up data folder"
 msgstr "Glanhau ffolder data"
 
 #. I18N: Name of a module
-#: app/Module/ClippingsCartModule.php:214
+#: app/Module/ClippingsCartModule.php:188
 msgid "Clippings cart"
 msgstr "Cart toriadau"
 
@@ -3886,6 +3885,10 @@ msgstr "Nodiadau"
 #: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
 msgstr "Priodas cyfraith gwlad"
+
+#: app/Elements/MarriageType.php:61
+msgid "Common-law marriage"
+msgstr ""
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -3956,7 +3959,7 @@ msgstr "Manylion cyswllt"
 msgid "Contact method"
 msgstr "Dull cyswllt"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:258
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:256
 msgid "Contains"
 msgstr "Yn cynnwys"
 
@@ -4024,7 +4027,7 @@ msgstr "Parhad"
 #: resources/views/modules/map-box/config.phtml:16
 #: resources/views/modules/openrouteservice/config.phtml:16
 #: resources/views/modules/relationships-chart/config.phtml:22
-#: resources/views/modules/sitemap/config.phtml:20
+#: resources/views/modules/sitemap/config.phtml:19
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Control panel"
@@ -4075,7 +4078,7 @@ msgstr "Copïo"
 msgid "Copy all the records from %1$s into %2$s."
 msgstr "Copïo'r holl gofnodion o '%1$s' i '%2$s."
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:124
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:123
 msgid "Copy files…"
 msgstr "Copïo ffeiliau…"
 
@@ -4120,7 +4123,7 @@ msgstr "Cyfrif yr ymweliadau â phob tudalen"
 msgid "Country"
 msgstr "Gwlad"
 
-#: app/Http/RequestHandlers/ManageMediaData.php:254
+#: app/Http/RequestHandlers/ManageMediaData.php:253
 msgid "Create"
 msgstr "Creu"
 
@@ -4168,7 +4171,7 @@ msgstr "Creu cyflwyniad"
 msgid "Create a submitter"
 msgstr "Creu cyflwynydd"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:119
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:118
 msgid "Create a temporary folder…"
 msgstr "Creu ffolder dros dro…"
 
@@ -4425,7 +4428,7 @@ msgstr "Côte d’Ivoire"
 msgid "DKIM digital signature"
 msgstr "Llofnod digidol DKIM"
 
-#: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
+#: app/CustomTags/FamilyTreeMaker.php:117 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
 msgstr "Marcwyr DNA"
 
@@ -4528,7 +4531,7 @@ msgstr "Cyfrif defnyddiwr cronfa ddata"
 #: app/Module/ResearchTaskModule.php:65 app/Module/ResearchTaskModule.php:69
 #: resources/views/help/date.phtml:31 resources/views/help/date.phtml:145
 #: resources/views/lists/anniversaries-table.phtml:37
-#: resources/views/modules/todo/research-tasks.phtml:29
+#: resources/views/modules/todo/research-tasks.phtml:30
 #: resources/views/pending-changes-page.phtml:52
 #: resources/xml/reports/bdm_report.xml:132
 #: resources/xml/reports/bdm_report.xml:158
@@ -4704,7 +4707,7 @@ msgstr "Mae ystodau dyddiad yn cael eu defnyddio i nodi bod digwyddiad, fel gene
 msgid "Date registered"
 msgstr "Dyddiad cofrestru"
 
-#: resources/views/modules/user-messages/user-messages.phtml:71
+#: resources/views/modules/user-messages/user-messages.phtml:69
 msgid "Date sent"
 msgstr "Dyddiad anfon"
 
@@ -4735,7 +4738,7 @@ msgstr "Merch %s"
 msgid "Day"
 msgstr "Diwrnod"
 
-#: app/Http/RequestHandlers/CalendarEvents.php:207
+#: app/Http/RequestHandlers/CalendarEvents.php:219
 msgid "Day not set"
 msgstr "Diwrnod heb ei osod"
 
@@ -4755,7 +4758,7 @@ msgstr "Marw"
 #: resources/views/lists/individuals-table.phtml:125
 #: resources/views/lists/individuals-table.phtml:130
 #: resources/views/lists/individuals-table.phtml:177
-#: resources/views/modules/yahrzeit/table.phtml:29
+#: resources/views/modules/yahrzeit/table.phtml:32
 #: resources/xml/reports/ahnentafel_report.xml:457
 #: resources/xml/reports/bdm_report.xml:87
 #: resources/xml/reports/change_report.xml:102
@@ -5026,7 +5029,7 @@ msgstr "Marwolaeth un priod"
 msgid "Death of a wife"
 msgstr "Marwolaeth gwraig"
 
-#: app/CustomTags/FamilyTreeMaker.php:55
+#: app/CustomTags/FamilyTreeMaker.php:56
 msgid "Death of one spouse"
 msgstr "Marwolaeth un priod"
 
@@ -5109,7 +5112,7 @@ msgstr "Thema ragosodedig"
 msgid "Definition"
 msgstr "Diffiniad"
 
-#: app/CustomTags/FamilyTreeMaker.php:115
+#: app/CustomTags/FamilyTreeMaker.php:116
 msgid "Degree"
 msgstr "Gradd"
 
@@ -5133,7 +5136,7 @@ msgctxt "font name"
 msgid "DejaVu"
 msgstr "DejaVu"
 
-#: app/Http/RequestHandlers/ManageMediaData.php:260
+#: app/Http/RequestHandlers/ManageMediaData.php:259
 #: app/Module/FixPrimaryTag.php:114 resources/views/admin/locations.phtml:52
 #: resources/views/admin/trees-privacy.phtml:274
 #: resources/views/admin/trees.phtml:119
@@ -5152,7 +5155,7 @@ msgstr "DejaVu"
 #: resources/views/modules/stories/config.phtml:61
 #: resources/views/modules/stories/config.phtml:88
 #: resources/views/modules/stories/config.phtml:90
-#: resources/views/modules/user-messages/user-messages.phtml:63
+#: resources/views/modules/user-messages/user-messages.phtml:61
 #: resources/views/modules/user-messages/user-messages.phtml:137
 #: resources/views/modules/user_blog/list.phtml:47
 #: resources/views/record-page-menu.phtml:49
@@ -5164,7 +5167,7 @@ msgstr "Dileu"
 msgid "Delete inactive users"
 msgstr "Dileu defnyddwyr anweithredol"
 
-#: resources/views/modules/user-messages/user-messages.phtml:146
+#: resources/views/modules/user-messages/user-messages.phtml:151
 msgid "Delete selected messages"
 msgstr "Dileu'r negeseuon hyn"
 
@@ -5467,13 +5470,13 @@ msgstr "Dominica"
 msgid "Dominican Republic"
 msgstr "Y Weriniaeth Ddominicaidd"
 
-#: app/Module/ClippingsCartModule.php:196
-#: app/Module/ClippingsCartModule.php:240
+#: app/Module/ClippingsCartModule.php:175
+#: app/Module/ClippingsCartModule.php:204
 #: resources/views/modules/share-anniversary/share.phtml:27
 msgid "Download"
 msgstr "Llwytho i lawr"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:122
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 #, php-format
 msgid "Download %s…"
 msgstr "Llwytho %s i Lawr…"
@@ -5501,14 +5504,14 @@ msgid "Duodi"
 msgstr "Duodi"
 
 #: app/Http/RequestHandlers/AccountUpdate.php:93
-#: app/Http/RequestHandlers/RegisterAction.php:265
+#: app/Http/RequestHandlers/RegisterAction.php:264
 #: app/Http/RequestHandlers/UserAddAction.php:71
 #: app/Http/RequestHandlers/UserEditAction.php:148
 msgid "Duplicate email address. A user with that email already exists."
 msgstr "Cyfeiriad e-bost dyblyg. Mae defnyddiwr gyda'r e-bost hwnnw eisoes yn bodoli."
 
 #: app/Http/RequestHandlers/AccountUpdate.php:84
-#: app/Http/RequestHandlers/RegisterAction.php:260
+#: app/Http/RequestHandlers/RegisterAction.php:259
 #: app/Http/RequestHandlers/UserAddAction.php:66
 #: app/Http/RequestHandlers/UserEditAction.php:154
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
@@ -5588,13 +5591,6 @@ msgstr "Golygu dewisiadau"
 msgid "Edit the FAQ"
 msgstr "Golygu'r Cwestiynau Cyffredin"
 
-#: resources/views/individual-page-menu.phtml:65
-#: resources/views/individual-page-menu.phtml:73
-#: resources/views/individual-page-sex.phtml:42
-#: resources/views/individual-page-sex.phtml:44
-msgid "Edit the sex"
-msgstr "Golygu'r rhyw"
-
 #: resources/views/edit/input-addon-edit-name.phtml:14
 #: resources/views/edit/input-addon-edit-name.phtml:17
 #: resources/views/individual-page-name.phtml:79
@@ -5610,6 +5606,13 @@ msgstr "Golygu'r enw"
 #: resources/views/individual-page-menu.phtml:129
 msgid "Edit the raw GEDCOM"
 msgstr "Golygu'r GEDCOM bras"
+
+#: resources/views/individual-page-menu.phtml:65
+#: resources/views/individual-page-menu.phtml:73
+#: resources/views/individual-page-sex.phtml:42
+#: resources/views/individual-page-sex.phtml:44
+msgid "Edit the sex"
+msgstr "Golygu'r rhyw"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
@@ -5636,7 +5639,7 @@ msgstr "Golygu gyda phob tag GEDCOM"
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:99
 #: resources/views/admin/users-edit.phtml:254
-#: resources/views/modules/recent_changes/changes-table.phtml:51
+#: resources/views/modules/recent_changes/changes-table.phtml:55
 #: resources/views/pending-changes-page.phtml:51
 msgid "Editor"
 msgstr "Golygydd"
@@ -5704,7 +5707,7 @@ msgstr "E-bost"
 #: resources/views/edit-account-page.phtml:123
 #: resources/views/emails/register-notify-html.phtml:32
 #: resources/views/emails/register-notify-text.phtml:26
-#: resources/views/modules/user-messages/user-messages.phtml:72
+#: resources/views/modules/user-messages/user-messages.phtml:70
 #: resources/views/register-page.phtml:49
 #: resources/views/setup/step-5-administrator.phtml:92
 msgid "Email address"
@@ -5751,7 +5754,7 @@ msgstr "Cyflogwr"
 msgid "Empty the clipboard"
 msgstr "Gwagiwch y clipfwrdd"
 
-#: app/Module/ClippingsCartModule.php:190
+#: app/Module/ClippingsCartModule.php:169
 msgid "Empty the clippings cart"
 msgstr "Gwagwch y drol toriadau"
 
@@ -5910,15 +5913,15 @@ msgstr "Digwyddiadau perthnasau agos"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr "Mae gan bawb y rôl hon, gan gynnwys ymwelwyr â'r wefan a pheiriannau chwilio."
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:256
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:254
 msgid "Exact"
 msgstr "Union"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:237
 msgid "Exact date"
 msgstr "Union ddyddiad"
 
-#: app/Module/IndividualListModule.php:327
+#: app/Module/AbstractIndividualListModule.php:284
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
 msgstr "Eithrio unigolion sydd â “%s” fel enw priod"
@@ -5954,7 +5957,7 @@ msgstr "Allforio"
 msgid "Export a GEDCOM file"
 msgstr "Allforio ffeil GEDCOM"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:114
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:113
 msgid "Export all the family trees to GEDCOM files…"
 msgstr "Allforio'r cart achau cyfan i ffeiliau GEDCOM…"
 
@@ -5980,7 +5983,7 @@ msgstr "Ffeiliau allanol"
 msgid "External identifier"
 msgstr "Dynodwr allanol"
 
-#: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/RootsMagic.php:74
 msgid "External link"
 msgstr "Dolen Allanol"
 
@@ -6016,74 +6019,75 @@ msgstr "Mae Cwestiynau Cyffredin yn restrau o gwestiynau ac atebion, sy'n eich g
 msgid "Fact"
 msgstr "Ffaith"
 
-#: app/CustomTags/FamilyTreeMaker.php:56 app/CustomTags/FamilyTreeMaker.php:75
-#: app/CustomTags/FamilyTreeMaker.php:93 app/CustomTags/FamilyTreeMaker.php:120
+#: app/CustomTags/FamilyTreeMaker.php:57 app/CustomTags/FamilyTreeMaker.php:76
+#: app/CustomTags/FamilyTreeMaker.php:94 app/CustomTags/FamilyTreeMaker.php:121
 msgid "Fact 1"
 msgstr "Ffaith 1"
 
-#: app/CustomTags/FamilyTreeMaker.php:57 app/CustomTags/FamilyTreeMaker.php:76
-#: app/CustomTags/FamilyTreeMaker.php:94 app/CustomTags/FamilyTreeMaker.php:121
+#: app/CustomTags/FamilyTreeMaker.php:58 app/CustomTags/FamilyTreeMaker.php:77
+#: app/CustomTags/FamilyTreeMaker.php:95 app/CustomTags/FamilyTreeMaker.php:122
 msgid "Fact 10"
 msgstr "Ffaith 10"
 
-#: app/CustomTags/FamilyTreeMaker.php:58 app/CustomTags/FamilyTreeMaker.php:77
-#: app/CustomTags/FamilyTreeMaker.php:95 app/CustomTags/FamilyTreeMaker.php:122
+#: app/CustomTags/FamilyTreeMaker.php:59 app/CustomTags/FamilyTreeMaker.php:78
+#: app/CustomTags/FamilyTreeMaker.php:96 app/CustomTags/FamilyTreeMaker.php:123
 msgid "Fact 11"
 msgstr "Ffaith 11"
 
-#: app/CustomTags/FamilyTreeMaker.php:59 app/CustomTags/FamilyTreeMaker.php:78
-#: app/CustomTags/FamilyTreeMaker.php:96 app/CustomTags/FamilyTreeMaker.php:123
+#: app/CustomTags/FamilyTreeMaker.php:60 app/CustomTags/FamilyTreeMaker.php:79
+#: app/CustomTags/FamilyTreeMaker.php:97 app/CustomTags/FamilyTreeMaker.php:124
 msgid "Fact 12"
 msgstr "Ffaith 12"
 
-#: app/CustomTags/FamilyTreeMaker.php:60 app/CustomTags/FamilyTreeMaker.php:79
-#: app/CustomTags/FamilyTreeMaker.php:97 app/CustomTags/FamilyTreeMaker.php:124
+#: app/CustomTags/FamilyTreeMaker.php:61 app/CustomTags/FamilyTreeMaker.php:80
+#: app/CustomTags/FamilyTreeMaker.php:98 app/CustomTags/FamilyTreeMaker.php:125
 msgid "Fact 13"
 msgstr "Ffaith 13"
 
-#: app/CustomTags/FamilyTreeMaker.php:61 app/CustomTags/FamilyTreeMaker.php:80
-#: app/CustomTags/FamilyTreeMaker.php:98 app/CustomTags/FamilyTreeMaker.php:125
-msgid "Fact 2"
-msgstr "Ffaith 2"
-
 #: app/CustomTags/FamilyTreeMaker.php:62 app/CustomTags/FamilyTreeMaker.php:81
 #: app/CustomTags/FamilyTreeMaker.php:99 app/CustomTags/FamilyTreeMaker.php:126
-msgid "Fact 3"
-msgstr "Ffaith 3"
+msgid "Fact 2"
+msgstr "Ffaith 2"
 
 #: app/CustomTags/FamilyTreeMaker.php:63 app/CustomTags/FamilyTreeMaker.php:82
 #: app/CustomTags/FamilyTreeMaker.php:100
 #: app/CustomTags/FamilyTreeMaker.php:127
-msgid "Fact 4"
-msgstr "Ffaith 4"
+msgid "Fact 3"
+msgstr "Ffaith 3"
 
 #: app/CustomTags/FamilyTreeMaker.php:64 app/CustomTags/FamilyTreeMaker.php:83
 #: app/CustomTags/FamilyTreeMaker.php:101
 #: app/CustomTags/FamilyTreeMaker.php:128
-msgid "Fact 5"
-msgstr "Ffaith 5"
+msgid "Fact 4"
+msgstr "Ffaith 4"
 
 #: app/CustomTags/FamilyTreeMaker.php:65 app/CustomTags/FamilyTreeMaker.php:84
 #: app/CustomTags/FamilyTreeMaker.php:102
 #: app/CustomTags/FamilyTreeMaker.php:129
-msgid "Fact 6"
-msgstr "Ffaith 6"
+msgid "Fact 5"
+msgstr "Ffaith 5"
 
 #: app/CustomTags/FamilyTreeMaker.php:66 app/CustomTags/FamilyTreeMaker.php:85
 #: app/CustomTags/FamilyTreeMaker.php:103
 #: app/CustomTags/FamilyTreeMaker.php:130
-msgid "Fact 7"
-msgstr "Ffaith 7"
+msgid "Fact 6"
+msgstr "Ffaith 6"
 
 #: app/CustomTags/FamilyTreeMaker.php:67 app/CustomTags/FamilyTreeMaker.php:86
 #: app/CustomTags/FamilyTreeMaker.php:104
 #: app/CustomTags/FamilyTreeMaker.php:131
-msgid "Fact 8"
-msgstr "Ffaith 8"
+msgid "Fact 7"
+msgstr "Ffaith 7"
 
 #: app/CustomTags/FamilyTreeMaker.php:68 app/CustomTags/FamilyTreeMaker.php:87
 #: app/CustomTags/FamilyTreeMaker.php:105
 #: app/CustomTags/FamilyTreeMaker.php:132
+msgid "Fact 8"
+msgstr "Ffaith 8"
+
+#: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:88
+#: app/CustomTags/FamilyTreeMaker.php:106
+#: app/CustomTags/FamilyTreeMaker.php:133
 msgid "Fact 9"
 msgstr "Ffaith 9"
 
@@ -6130,10 +6134,10 @@ msgstr "Ynysoedd y Falklands"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
+#: app/Module/AbstractIndividualListModule.php:251
 #: app/Module/AncestorsChartModule.php:256
-#: app/Module/DescendancyChartModule.php:247 app/Module/FamilyListModule.php:49
-#: app/Module/FixSearchAndReplace.php:107
-#: app/Module/IndividualListModule.php:294 app/Module/RelativesTabModule.php:42
+#: app/Module/DescendancyChartModule.php:247 app/Module/FamilyListModule.php:42
+#: app/Module/FixSearchAndReplace.php:107 app/Module/RelativesTabModule.php:42
 #: app/Module/StatisticsChartModule.php:149
 #: app/Module/StatisticsChartModule.php:380
 #: app/Module/StatisticsChartModule.php:471
@@ -6164,16 +6168,16 @@ msgid "Families with sources"
 msgstr "Teuluoedd â ffynonellau"
 
 #. I18N: Name of a module/report
-#: app/CustomTags/FamilyTreeMaker.php:73 app/Gedcom.php:401
+#: app/CustomTags/FamilyTreeMaker.php:74 app/Gedcom.php:401
 #: app/Http/RequestHandlers/CheckTree.php:350
 #: app/Module/FamilyGroupReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:167
 #: resources/views/edit/link-child-to-family.phtml:25
 #: resources/views/modals/link-media-to-family.phtml:23
-#: resources/views/modules/family_nav/sidebar-family.phtml:91
+#: resources/views/modules/family_nav/sidebar-family.phtml:95
 #: resources/views/modules/favorites/favorites.phtml:81
-#: resources/views/modules/random_media/slide-show.phtml:74
-#: resources/views/modules/recent_changes/changes-table.phtml:64
+#: resources/views/modules/random_media/slide-show.phtml:75
+#: resources/views/modules/recent_changes/changes-table.phtml:68
 #: resources/views/modules/statistics-chart/custom.phtml:47
 #: resources/xml/reports/family_group_report.xml:3
 #: resources/xml/reports/family_group_report.xml:6
@@ -6256,8 +6260,8 @@ msgstr "Statws teulu"
 msgid "Family tree"
 msgstr "Cart achau"
 
-#: app/Module/ClippingsCartModule.php:240
-#: app/Module/ClippingsCartModule.php:398
+#: app/Module/ClippingsCartModule.php:204
+#: app/Module/ClippingsCartModule.php:342
 msgid "Family tree clippings cart"
 msgstr "Cart toriadau cart achau"
 
@@ -6275,16 +6279,16 @@ msgid "Family trees"
 msgstr "Cartau achau"
 
 #. I18N: %s is the spouse name
-#: app/Individual.php:932
+#: app/Individual.php:898
 #, php-format
 msgid "Family with %s"
 msgstr "Teulu gyda %s"
 
-#: app/Individual.php:861
+#: app/Individual.php:827
 msgid "Family with adoptive parents"
 msgstr "Teulu gyda rhieni mabwysiadol"
 
-#: app/Individual.php:862
+#: app/Individual.php:828
 msgid "Family with foster parents"
 msgstr "Teulu gyda rhieni maeth"
 
@@ -6293,19 +6297,19 @@ msgstr "Teulu gyda rhieni maeth"
 msgid "Family with husband"
 msgstr "Teulu gyda'r gŵr"
 
-#: app/Individual.php:860 app/Individual.php:914
+#: app/Individual.php:826 app/Individual.php:880
 #: resources/xml/reports/individual_ext_report.xml:245
 #: resources/xml/reports/individual_report.xml:234
 msgid "Family with parents"
 msgstr "Teulu'r rhieni"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
-#: app/Individual.php:866
+#: app/Individual.php:832
 msgid "Family with rada parents"
 msgstr "Teulu gyda rhieni rada"
 
 #. I18N: “sealing” is a Mormon ceremony.
-#: app/Individual.php:864
+#: app/Individual.php:830
 msgid "Family with sealing parents"
 msgstr "Teulu gyda rhieni selio"
 
@@ -6374,7 +6378,7 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
-#: resources/views/search-advanced-page.phtml:63
+#: resources/views/search-advanced-page.phtml:59
 #: resources/xml/reports/bdm_report.xml:118
 #: resources/xml/reports/family_group_report.xml:467
 #: resources/xml/reports/family_group_report.xml:730
@@ -6394,13 +6398,13 @@ msgid "Father’s age"
 msgstr "Oed y tad"
 
 #. I18N: A step-family. %s is an individual’s name
-#: app/Individual.php:892
+#: app/Individual.php:858
 #, php-format
 msgid "Father’s family with %s"
 msgstr "Teulu tad gyda %s"
 
 #. I18N: A step-family.
-#: app/Individual.php:896
+#: app/Individual.php:862
 msgid "Father’s family with an unknown individual"
 msgstr "Teulu tad gydag unigolyn anhysbys"
 
@@ -6484,7 +6488,7 @@ msgid "Fiji"
 msgstr "Ffiji"
 
 #: app/CustomTags/FamilyTreeBuilder.php:59
-#: app/Http/RequestHandlers/ManageMediaData.php:362 app/MediaFile.php:314
+#: app/Http/RequestHandlers/ManageMediaData.php:361 app/MediaFile.php:314
 msgid "File size"
 msgstr "Maint ffeil"
 
@@ -6492,8 +6496,8 @@ msgstr "Maint ffeil"
 msgid "File successfully uploaded"
 msgstr "Llwythwyd y ffeil yn llwyddiannus"
 
-#: app/Exceptions/FileUploadException.php:99 app/Gedcom.php:505
-#: app/Gedcom.php:787 app/Http/RequestHandlers/ManageMediaData.php:344
+#: app/Gedcom.php:505 app/Gedcom.php:787
+#: app/Http/RequestHandlers/ManageMediaData.php:343
 #: resources/views/admin/gedcom-export-options.phtml:66
 #: resources/views/admin/trees-export.phtml:35
 #: resources/views/modals/media-file-fields.phtml:71
@@ -6973,16 +6977,6 @@ msgstr "Gabon"
 msgid "Gambia"
 msgstr "Gambia"
 
-#: app/CustomTags/GedcomL.php:191 app/Gedcom.php:739
-#: resources/views/individual-page-sex.phtml:30
-#: resources/xml/reports/family_group_report.xml:844
-#: resources/xml/reports/individual_ext_report.xml:399
-#: resources/xml/reports/individual_ext_report.xml:606
-#: resources/xml/reports/individual_report.xml:388
-#: resources/xml/reports/individual_report.xml:602
-msgid "Gender"
-msgstr "Rhyw"
-
 #: resources/views/admin/control-panel.phtml:678
 msgid "Genealogy"
 msgstr "Achyddiaeth"
@@ -7013,12 +7007,12 @@ msgid "Generate sitemap files for search engines."
 msgstr "Cynhyrchu ffeiliau map safle ar gyfer peiriannau chwilio."
 
 #. I18N: This is a report footer. %s is the name of the application.
-#: app/Report/AbstractRenderer.php:333
+#: app/Report/AbstractRenderer.php:332
 #, php-format
 msgid "Generated by %s"
 msgstr "Cynhyrchwyd gan %s"
 
-#: app/Module/BranchesListModule.php:513
+#: app/Module/BranchesListModule.php:492
 msgid "Generation"
 msgstr "Cenhedlaeth"
 
@@ -7136,6 +7130,7 @@ msgid "Given name"
 msgstr "Enw"
 
 #: app/Gedcom.php:686 app/Gedcom.php:695 app/Gedcom.php:700
+#: app/Module/AbstractIndividualListModule.php:388
 #: resources/views/lists/families-table.phtml:148
 #: resources/views/lists/families-table.phtml:151
 #: resources/views/lists/given-names-table.phtml:23
@@ -7479,7 +7474,7 @@ msgstr "Heshvan"
 msgid "Hide GEDCOM tags"
 msgstr "Cuddio tagiau GEDCOM"
 
-#: app/Auth.php:596 app/Auth.php:609
+#: app/Auth.php:595 app/Auth.php:608
 #: app/Http/RequestHandlers/TreePreferencesPage.php:125
 #: app/Http/RequestHandlers/TreePrivacyPage.php:94
 #: resources/views/admin/trees-privacy.phtml:150
@@ -7774,7 +7769,7 @@ msgstr "Os fyddwch yn ceisiwch mynd dros y terfynau hyn, efallai y byddwch yn pr
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr "Os ydych chi'n defnyddio un o'r gwasanaethau tracio a dadansoddeg canlynol, gall gwefannau ychwanegu'r codau tracio'n awtomatig."
 
-#: app/Http/RequestHandlers/ManageMediaData.php:369 app/MediaFile.php:328
+#: app/Http/RequestHandlers/ManageMediaData.php:368 app/MediaFile.php:328
 msgid "Image dimensions"
 msgstr "Dimensiynau delwedd"
 
@@ -7856,7 +7851,7 @@ msgstr "Cynnwys enwau eraill"
 msgid "Include associates"
 msgstr "Cynnwys gymdeithion"
 
-#: app/Module/IndividualListModule.php:333
+#: app/Module/AbstractIndividualListModule.php:290
 #, php-format
 msgid "Include individuals with “%s” as a married name"
 msgstr "Cynnwys unigolion sydd â “%s” fel enw priod"
@@ -7891,7 +7886,7 @@ msgid "Indianapolis, Indiana, United States"
 msgstr "Indianapolis, Indiana, Unol Daleithiau"
 
 #. I18N: Name of a module/report
-#: app/CustomTags/FamilyTreeMaker.php:91 app/Gedcom.php:534
+#: app/CustomTags/FamilyTreeMaker.php:92 app/Gedcom.php:534
 #: app/Http/RequestHandlers/CheckTree.php:352
 #: app/Module/IndividualReportModule.php:40
 #: resources/views/admin/fix-level-0-media.phtml:39
@@ -7910,7 +7905,7 @@ msgstr "Indianapolis, Indiana, Unol Daleithiau"
 #: resources/views/modules/pedigree-chart/page.phtml:30
 #: resources/views/modules/pedigree-map/page.phtml:25
 #: resources/views/modules/random_media/slide-show.phtml:65
-#: resources/views/modules/recent_changes/changes-table.phtml:61
+#: resources/views/modules/recent_changes/changes-table.phtml:65
 #: resources/views/modules/statistics-chart/custom.phtml:31
 #: resources/views/modules/stories/config.phtml:58
 #: resources/views/modules/stories/edit.phtml:33
@@ -7965,11 +7960,11 @@ msgid "Individual who lived the longest"
 msgstr "Unigolyn a fu fyw hiraf"
 
 #. I18N: Name of a module/list
+#: app/Module/AbstractIndividualListModule.php:253
 #: app/Module/AncestorsChartModule.php:255
 #: app/Module/DescendancyChartModule.php:246
 #: app/Module/FixSearchAndReplace.php:108
-#: app/Module/IndividualListModule.php:94
-#: app/Module/IndividualListModule.php:296
+#: app/Module/IndividualListModule.php:42
 #: app/Module/StatisticsChartModule.php:144
 #: app/Module/StatisticsChartModule.php:282
 #: app/Module/StatisticsChartModule.php:331
@@ -8006,11 +8001,6 @@ msgstr "Unigolion"
 #: resources/views/modules/statistics-chart/chart-sources.phtml:17
 msgid "Individuals with sources"
 msgstr "Unigolion â ffynonellau"
-
-#: app/Module/IndividualListModule.php:433
-#, php-format
-msgid "Individuals with surname %s"
-msgstr "Unigolion â chyfenw %s"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
@@ -8089,7 +8079,7 @@ msgstr "Tag GEDCOM annilys."
 msgid "Invalid GEDCOM value."
 msgstr "Gwerth GEDCOM annilys."
 
-#: app/Date.php:224
+#: app/Date.php:227
 msgid "Invalid date"
 msgstr "Dyddiad annilys"
 
@@ -8484,8 +8474,8 @@ msgstr "Defod Derbyn LDS"
 msgid "LDS spouse sealing"
 msgstr "Selio priod LDS"
 
-#: app/CustomTags/FamilyTreeMaker.php:74 app/CustomTags/FamilyTreeMaker.php:88
-#: app/CustomTags/FamilyTreeMaker.php:92 app/CustomTags/FamilyTreeMaker.php:107
+#: app/CustomTags/FamilyTreeMaker.php:75 app/CustomTags/FamilyTreeMaker.php:89
+#: app/CustomTags/FamilyTreeMaker.php:93 app/CustomTags/FamilyTreeMaker.php:108
 msgid "Label"
 msgstr "Label"
 
@@ -8575,7 +8565,7 @@ msgstr "Las Vegas, Nevada, Unol Daleithiau"
 #: resources/views/lists/sources-table.phtml:104
 #: resources/views/lists/submitters-table.phtml:72
 #: resources/views/modules/gedcom_stats/config.phtml:33
-#: resources/views/modules/recent_changes/changes-table.phtml:48
+#: resources/views/modules/recent_changes/changes-table.phtml:52
 #: resources/xml/reports/change_report.xml:66
 #: resources/xml/reports/change_report.xml:108
 msgid "Last change"
@@ -8837,6 +8827,7 @@ msgstr "Ffeiliau lleol"
 #: app/CustomTags/GedcomL.php:252 app/CustomTags/Legacy.php:140
 #: app/Http/RequestHandlers/CheckTree.php:353
 #: resources/views/lists/locations-table.phtml:65
+#: resources/views/modules/recent_changes/changes-table.phtml:86
 msgid "Location"
 msgstr "Lleoliad"
 
@@ -9124,7 +9115,7 @@ msgid "Markdown is a simple system of formatting, used on websites such as Wikip
 msgstr "System syml o fformatio yw Markdown, sy'n cael ei ddefnyddio ar wefannau fel Wikipedia. Mae'n defnyddio nodau atalnodi anymwthiol i greu penawdau ac is-benawdau, testun trwm ac italig, rhestrau, tablau, ac ati."
 
 #: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:467
-#: app/Module/BranchesListModule.php:457
+#: app/Module/BranchesListModule.php:436
 #: resources/views/calendar-page.phtml:192
 #: resources/views/lists/families-table.phtml:126
 #: resources/views/lists/families-table.phtml:131
@@ -9186,7 +9177,7 @@ msgstr "Priodas"
 msgid "Marriage banns"
 msgstr "Cyhoeddiad priodas"
 
-#: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
+#: app/CustomTags/FamilyTreeMaker.php:71 app/CustomTags/FamilyTreeMaker.php:91
 msgid "Marriage beginning status"
 msgstr "Statws dechrau priodas"
 
@@ -9210,7 +9201,7 @@ msgstr "Diwedd ystod dyddiadau priodasau"
 msgid "Marriage date range start"
 msgstr "Cychwyn ystod dyddiadau priodasau"
 
-#: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:89
+#: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
 msgid "Marriage ending status"
 msgstr "Statws gorffen priodas"
 
@@ -9337,7 +9328,7 @@ msgstr "Priodasau"
 msgid "Marriages by century"
 msgstr "Priodasau yn ôl canrif"
 
-#: app/CustomTags/FamilyTreeMaker.php:112 app/CustomTags/Geneatique.php:61
+#: app/CustomTags/FamilyTreeMaker.php:113 app/CustomTags/Geneatique.php:61
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/families-table.phtml:205
 #: resources/views/lists/individuals-table.phtml:199
@@ -9440,7 +9431,7 @@ msgstr "Medford, Oregon, Unol Daleithiau"
 #: resources/views/admin/control-panel.phtml:799
 #: resources/views/admin/media.phtml:104
 #: resources/views/lists/media-table.phtml:79
-#: resources/views/modules/recent_changes/changes-table.phtml:67
+#: resources/views/modules/recent_changes/changes-table.phtml:71
 msgid "Media"
 msgstr "Cyfryngau"
 
@@ -9523,7 +9514,7 @@ msgstr "Gwrthrychau cyfryngau ar bob tudalen"
 msgid "Media type"
 msgstr "Math o gyfryngau"
 
-#: app/CustomTags/BrothersKeeper.php:103 app/CustomTags/FamilyTreeMaker.php:133
+#: app/CustomTags/BrothersKeeper.php:103 app/CustomTags/FamilyTreeMaker.php:134
 #: app/CustomTags/Reunion.php:58
 msgid "Medical"
 msgstr "Meddygaeth"
@@ -9699,7 +9690,7 @@ msgstr "Y Dwyrain Canol"
 msgid "Military"
 msgstr "Milwrol"
 
-#: app/CustomTags/BrothersKeeper.php:105 app/CustomTags/FamilyTreeMaker.php:134
+#: app/CustomTags/BrothersKeeper.php:105 app/CustomTags/FamilyTreeMaker.php:135
 msgid "Military service"
 msgstr "Gwasanaeth milwrol"
 
@@ -9740,7 +9731,7 @@ msgstr "Gweinyddu modiwl"
 #: resources/views/modules/map-box/config.phtml:16
 #: resources/views/modules/openrouteservice/config.phtml:16
 #: resources/views/modules/relationships-chart/config.phtml:22
-#: resources/views/modules/sitemap/config.phtml:20
+#: resources/views/modules/sitemap/config.phtml:19
 #: resources/views/modules/stories/config.phtml:20
 #: resources/views/modules/stories/edit.phtml:24
 msgid "Modules"
@@ -9923,7 +9914,7 @@ msgstr "Mae'r mwyafrif o wefannau wedi'u ffurfweddu i ddefnyddio'r gwerth rhagos
 msgid "Most viewed pages"
 msgstr "Tudalennau poblogaidd"
 
-#: resources/views/search-advanced-page.phtml:77
+#: resources/views/search-advanced-page.phtml:73
 #: resources/xml/reports/bdm_report.xml:120
 #: resources/xml/reports/family_group_report.xml:474
 #: resources/xml/reports/family_group_report.xml:737
@@ -9943,13 +9934,13 @@ msgid "Mother’s age"
 msgstr "Oed y fam"
 
 #. I18N: A step-family. %s is an individual’s name
-#: app/Individual.php:902
+#: app/Individual.php:868
 #, php-format
 msgid "Mother’s family with %s"
 msgstr "Teulu mam gyda %s"
 
 #. I18N: A step-family.
-#: app/Individual.php:906
+#: app/Individual.php:872
 msgid "Mother’s family with an unknown individual"
 msgstr "Teulu mam gydag unigolyn anhysbys"
 
@@ -10054,7 +10045,7 @@ msgstr "Myanmar"
 #: resources/views/individual-page-name.phtml:56
 #: resources/views/modals/location-fields.phtml:11
 #: resources/views/modals/submitter-fields.phtml:11
-#: resources/views/modules/yahrzeit/table.phtml:28
+#: resources/views/modules/yahrzeit/table.phtml:31
 #: resources/xml/reports/bdm_report.xml:5
 #: resources/xml/reports/bdm_report.xml:49
 #: resources/xml/reports/birth_report.xml:5
@@ -10108,7 +10099,7 @@ msgstr "Ôl-ddodiad enw"
 msgid "Names"
 msgstr "Enwau"
 
-#: app/CustomTags/FamilyTreeMaker.php:137
+#: app/CustomTags/FamilyTreeMaker.php:138
 msgid "Namesake"
 msgstr "Enwau perthyn"
 
@@ -10434,7 +10425,7 @@ msgstr "Heb ganfod unrhyw ganlyniadau"
 
 #: resources/views/modules/place-hierarchy/events.phtml:36
 #: resources/views/modules/place-hierarchy/events.phtml:48
-#: resources/views/search-advanced-page.phtml:102
+#: resources/views/search-advanced-page.phtml:98
 #: resources/views/search-general-page.phtml:138
 #: resources/views/search-phonetic-page.phtml:98
 msgid "No results found."
@@ -10444,9 +10435,9 @@ msgstr "Heb ganfod unrhyw ganlyniadau."
 msgid "No signed-in and no anonymous users"
 msgstr "Dim mewngofnodion a dim defnyddwyr anhysbys"
 
-#: app/Module/IndividualListModule.php:255
-#: app/Module/IndividualListModule.php:278
-#: app/Module/IndividualListModule.php:540
+#: app/Module/AbstractIndividualListModule.php:213
+#: app/Module/AbstractIndividualListModule.php:235
+#: app/Module/AbstractIndividualListModule.php:486
 msgid "No surname"
 msgstr "Dim cyfenw"
 
@@ -10525,7 +10516,7 @@ msgid "Not living"
 msgstr "Ddim yn byw"
 
 #: app/CustomTags/BrothersKeeper.php:66 app/Elements/FamilyStatusText.php:71
-#: app/Module/BranchesListModule.php:459
+#: app/Module/BranchesListModule.php:438
 #: resources/views/lists/families-table.phtml:121
 msgid "Not married"
 msgstr "Heb briod"
@@ -10554,7 +10545,7 @@ msgstr "Heb ei wirio gan y defnyddiwr"
 #: resources/views/modals/note-object-fields.phtml:11
 #: resources/views/modules/favorites/favorites.phtml:160
 #: resources/views/modules/notes/tab.phtml:94
-#: resources/views/modules/recent_changes/changes-table.phtml:70
+#: resources/views/modules/recent_changes/changes-table.phtml:74
 #: resources/xml/reports/cemetery_report.xml:62
 #: resources/xml/reports/family_group_report.xml:485
 #: resources/xml/reports/family_group_report.xml:749
@@ -10636,7 +10627,7 @@ msgid "Nothing found."
 msgstr "Heb ganfod dim."
 
 #: resources/views/modules/pedigree-map/chart.phtml:68
-#: resources/views/modules/places/tab.phtml:69
+#: resources/views/modules/places/tab.phtml:71
 msgid "Nothing to show"
 msgstr "Dim i'w ddangos"
 
@@ -11079,7 +11070,7 @@ msgstr "Lleoliad rhiant"
 #: app/Gedcom.php:742 app/Http/RequestHandlers/IndividualPage.php:210
 #: resources/views/edit/reorder-families.phtml:72
 #: resources/views/modules/ancestors-chart/tree.phtml:35
-#: resources/views/modules/family_nav/sidebar-family.phtml:43
+#: resources/views/modules/family_nav/sidebar-family.phtml:47
 msgid "Parents"
 msgstr "Rhieni"
 
@@ -11231,7 +11222,8 @@ msgid "Phonetic type"
 msgstr "Math ffonetig"
 
 #. I18N: Type of media object
-#: app/CustomTags/FamilyTreeBuilder.php:62 app/Elements/SourceMediaType.php:94
+#: app/CustomTags/FamilyTreeBuilder.php:62
+#: app/CustomTags/FamilyTreeMaker.php:139 app/Elements/SourceMediaType.php:94
 msgid "Photo"
 msgstr "Llun"
 
@@ -11649,7 +11641,7 @@ msgstr "Cyfyngiadau preifatrwydd - mae'r rhain yn berthnasol i gofnodion a ffeit
 #: app/CustomTags/Legacy.php:56 app/CustomTags/Legacy.php:60
 #: app/CustomTags/Legacy.php:82 app/CustomTags/Legacy.php:117
 #: app/CustomTags/Legacy.php:124 app/CustomTags/TheNextGeneration.php:54
-#: app/GedcomRecord.php:359 app/GedcomRecord.php:465
+#: app/GedcomRecord.php:368 app/GedcomRecord.php:474
 #: app/Report/ReportParserGenerate.php:982
 #: app/Statistics/Repository/EventRepository.php:428
 msgid "Private"
@@ -11734,8 +11726,8 @@ msgid "Quintidi"
 msgstr "Quintidi"
 
 #. I18N: When replying to an email, the subject becomes “RE: subject”
-#: resources/views/modules/user-messages/user-messages.phtml:115
-#: resources/views/modules/user-messages/user-messages.phtml:116
+#: resources/views/modules/user-messages/user-messages.phtml:113
+#: resources/views/modules/user-messages/user-messages.phtml:114
 msgid "RE: "
 msgstr "Ynghylch: "
 
@@ -11931,8 +11923,8 @@ msgstr "Recife, Brasil"
 #: resources/views/admin/trees-privacy.phtml:227
 #: resources/views/lists/anniversaries-table.phtml:34
 #: resources/views/modules/clippings/show.phtml:32
-#: resources/views/modules/recent_changes/changes-table.phtml:45
-#: resources/views/modules/todo/research-tasks.phtml:32
+#: resources/views/modules/recent_changes/changes-table.phtml:49
+#: resources/views/modules/todo/research-tasks.phtml:33
 msgid "Record"
 msgstr "Recordio"
 
@@ -11978,7 +11970,7 @@ msgstr "Rhif cyfeirnod"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Canada"
 
-#: app/CustomTags/Aldfaer.php:62 app/Elements/MarriageType.php:64
+#: app/CustomTags/Aldfaer.php:62 app/Elements/MarriageType.php:62
 #: resources/xml/reports/fact_sources.xml:205
 msgid "Registered partnership"
 msgstr "Partneriaeth gofrestredig"
@@ -12030,13 +12022,13 @@ msgstr "Unigolion cysylltiedig"
 #: app/CustomTags/GedcomL.php:121 app/CustomTags/GedcomL.php:134
 #: app/CustomTags/GedcomL.php:175 app/CustomTags/PhpGedView.php:64
 #: app/Gedcom.php:585 app/Gedcom.php:903 app/Gedcom.php:917
-#: app/Module/BranchesListModule.php:410 app/Module/BranchesListModule.php:448
+#: app/Module/BranchesListModule.php:389 app/Module/BranchesListModule.php:427
 #: resources/views/fact-association-structure.phtml:87
 msgid "Relationship"
 msgstr "Perthynas"
 
-#: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:53
-#: app/CustomTags/FamilyTreeMaker.php:106 app/CustomTags/Legacy.php:61
+#: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:54
+#: app/CustomTags/FamilyTreeMaker.php:107 app/CustomTags/Legacy.php:61
 #: app/CustomTags/TheNextGeneration.php:50
 msgid "Relationship to father"
 msgstr "Perthynas â'r tad"
@@ -12045,8 +12037,8 @@ msgstr "Perthynas â'r tad"
 msgid "Relationship to me"
 msgstr "Perthynas â mi"
 
-#: app/CustomTags/BrothersKeeper.php:62 app/CustomTags/FamilyTreeMaker.php:54
-#: app/CustomTags/FamilyTreeMaker.php:108 app/CustomTags/Legacy.php:62
+#: app/CustomTags/BrothersKeeper.php:62 app/CustomTags/FamilyTreeMaker.php:55
+#: app/CustomTags/FamilyTreeMaker.php:109 app/CustomTags/Legacy.php:62
 #: app/CustomTags/TheNextGeneration.php:51
 msgid "Relationship to mother"
 msgstr "Perthynas â'r fam"
@@ -12086,7 +12078,7 @@ msgstr "Crefydd"
 msgid "Religious institution"
 msgstr "Sefydliad crefyddol"
 
-#: app/CustomTags/Aldfaer.php:63 app/Elements/MarriageType.php:65
+#: app/CustomTags/Aldfaer.php:63 app/Elements/MarriageType.php:63
 #: resources/xml/reports/fact_sources.xml:199
 msgid "Religious marriage"
 msgstr "Priodas grefyddol"
@@ -12164,8 +12156,8 @@ msgstr "Amnewid gyda"
 msgid "Replacement text"
 msgstr "Testun newydd"
 
-#: resources/views/modules/user-messages/user-messages.phtml:130
-#: resources/views/modules/user-messages/user-messages.phtml:131
+#: resources/views/modules/user-messages/user-messages.phtml:128
+#: resources/views/modules/user-messages/user-messages.phtml:129
 msgid "Reply"
 msgstr "Ateb"
 
@@ -12214,7 +12206,7 @@ msgstr "Storfannau"
 #: resources/views/admin/trees.phtml:242
 #: resources/views/modals/source-fields.phtml:46
 #: resources/views/modules/favorites/favorites.phtml:123
-#: resources/views/modules/recent_changes/changes-table.phtml:79
+#: resources/views/modules/recent_changes/changes-table.phtml:83
 msgid "Repository"
 msgstr "Storfan"
 
@@ -12232,7 +12224,7 @@ msgstr "Gweriniaeth y Congo"
 msgid "Request a new password"
 msgstr "Gofyn am gyfrinair newydd"
 
-#: app/Http/RequestHandlers/RegisterAction.php:210
+#: app/Http/RequestHandlers/RegisterAction.php:209
 #: app/Http/RequestHandlers/RegisterPage.php:77
 #: app/Module/WelcomeBlockModule.php:109 resources/views/login-page.phtml:66
 #: resources/views/modules/login_block/sign-in.phtml:48
@@ -12247,7 +12239,7 @@ msgstr "Ymchwil"
 #: app/CustomTags/GedcomL.php:136 app/CustomTags/GedcomL.php:192
 #: app/CustomTags/Legacy.php:136 app/Module/ResearchTaskModule.php:64
 #: app/Module/ResearchTaskModule.php:68
-#: resources/views/modules/todo/research-tasks.phtml:38
+#: resources/views/modules/todo/research-tasks.phtml:39
 msgid "Research task"
 msgstr "Tasg ymchwil"
 
@@ -12371,11 +12363,11 @@ msgstr "Réunion"
 msgid "SMTP mail server"
 msgstr "Gweinydd e-bost SMTP"
 
-#: app/Services/ServerCheckService.php:322
+#: app/Services/ServerCheckService.php:324
 msgid "SQLite is only suitable for small sites, testing and evaluation."
 msgstr "Mae SQLite yn addas ar gyfer safleoedd bach, profi a gwerthuso yn unig."
 
-#: app/Services/ServerCheckService.php:212
+#: app/Services/ServerCheckService.php:214
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr "Mae fersiwn SQLite %s wedi'i osod. Mae angen fersiwn SQLite %s neu'n hwyrach."
@@ -12522,7 +12514,7 @@ msgstr "Dydd Sadwrn"
 msgid "Saudi Arabia"
 msgstr "Sawdi-Arabia"
 
-#: app/CustomTags/FamilyTreeMaker.php:72 app/CustomTags/GedcomL.php:153
+#: app/CustomTags/FamilyTreeMaker.php:73 app/CustomTags/GedcomL.php:153
 msgid "Schema"
 msgstr "Cynllun"
 
@@ -12677,7 +12669,7 @@ msgid "Select individuals by place or date"
 msgstr "Dewis unigolion yn ôl lle neu ddyddiad"
 
 #. I18N: Description of the “Clippings cart” module
-#: app/Module/ClippingsCartModule.php:135
+#: app/Module/ClippingsCartModule.php:126
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "Dewiswch gofnodion o'ch cart achau a'u cadw fel ffeil GEDCOM."
 
@@ -12790,7 +12782,7 @@ msgstr "Med"
 msgid "Separated"
 msgstr "Gwahanwyd"
 
-#: app/CustomTags/FamilyTreeMaker.php:71
+#: app/CustomTags/FamilyTreeMaker.php:72
 msgid "Separation"
 msgstr "Gwahanu"
 
@@ -12897,6 +12889,16 @@ msgstr "Bydd gosod hyn i <b>Iawn</b> yn gosod dolenni ar unigolion, ffynonellau 
 #: resources/views/layouts/setup.phtml:26
 msgid "Setup wizard for webtrees"
 msgstr "Dewin gosod webtrees"
+
+#: app/CustomTags/GedcomL.php:191 app/Gedcom.php:739
+#: resources/views/individual-page-sex.phtml:30
+#: resources/xml/reports/family_group_report.xml:844
+#: resources/xml/reports/individual_ext_report.xml:399
+#: resources/xml/reports/individual_ext_report.xml:606
+#: resources/xml/reports/individual_report.xml:388
+#: resources/xml/reports/individual_report.xml:602
+msgid "Sex"
+msgstr ""
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -13350,11 +13352,11 @@ msgstr "Dangos digwyddiadau perthnasau agos ar y dudalen unigol"
 msgid "Show the family tree"
 msgstr "Dangos y cart achau"
 
-#: app/Module/IndividualListModule.php:342
+#: app/Module/AbstractIndividualListModule.php:299
 msgid "Show the list of individuals"
 msgstr "Dangos y rhestr o unigolion"
 
-#: app/Module/IndividualListModule.php:348
+#: app/Module/AbstractIndividualListModule.php:305
 msgid "Show the list of surnames"
 msgstr "Dangos rhestr o gyfenwau"
 
@@ -13384,14 +13386,14 @@ msgstr "Dangos y bloc hwn ar gyfer pa iaith"
 msgid "Show thumbnail images in charts and family groups."
 msgstr "Dangos delweddau bach mewn siartiau a grwpiau teulu."
 
-#: app/Auth.php:595 app/Auth.php:608 app/Elements/RestrictionNotice.php:96
+#: app/Auth.php:594 app/Auth.php:607 app/Elements/RestrictionNotice.php:96
 #: app/Http/RequestHandlers/TreePreferencesPage.php:124
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:23
 msgid "Show to managers"
 msgstr "Dangos i reolwyr"
 
-#: app/Auth.php:594 app/Auth.php:607 app/Elements/RestrictionNotice.php:99
+#: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:99
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
 #: app/Http/RequestHandlers/TreePrivacyPage.php:92
 #: resources/views/admin/trees-privacy.phtml:41
@@ -13400,7 +13402,7 @@ msgstr "Dangos i reolwyr"
 msgid "Show to members"
 msgstr "Dangos i aelodau"
 
-#: app/Auth.php:593 app/Auth.php:606 app/Elements/RestrictionNotice.php:98
+#: app/Auth.php:592 app/Auth.php:605 app/Elements/RestrictionNotice.php:98
 #: app/Http/RequestHandlers/TreePrivacyPage.php:91
 #: resources/views/admin/trees-privacy.phtml:41
 #: resources/views/admin/trees-privacy.phtml:92
@@ -13512,12 +13514,12 @@ msgid "Site verification codes do not work when webtrees is installed in a subfo
 msgstr "Nid yw codau gwirio gwefan yn gweithio pan mae webtrees wedi'i osod is-ffolder."
 
 #. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
-#: app/Module/SiteMapModule.php:154
+#: app/Module/SiteMapModule.php:147
 msgid "Sitemaps"
 msgstr "Mapiau safle"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
-#: resources/views/modules/sitemap/config.phtml:25
+#: resources/views/modules/sitemap/config.phtml:24
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr "Mae mapiau gwefan yn ffordd i wefeistri ddweud wrth beiriannau chwilio am y tudalennau ar wefan sydd ar gael i'w cropian. Mae pob peiriant chwilio mawr yn cefnogi mapiau gwefan. Am ragor o wybodaeth, darllenwch <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a> ."
 
@@ -13677,7 +13679,7 @@ msgstr "Sosa"
 msgid "Sosa-Stradonitz number"
 msgstr "Rhif Sosa-Stradonitz"
 
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:259
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:257
 msgid "Sounds like"
 msgstr "Yn swnio fel"
 
@@ -13690,11 +13692,11 @@ msgstr "Yn swnio fel"
 #: app/Module/FactSourcesReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:168
 #: resources/views/admin/trees.phtml:234
-#: resources/views/fact-gedcom-fields.phtml:66
+#: resources/views/fact-gedcom-fields.phtml:72
 #: resources/views/modals/link-media-to-source.phtml:23
 #: resources/views/modules/favorites/favorites.phtml:109
-#: resources/views/modules/random_media/slide-show.phtml:83
-#: resources/views/modules/recent_changes/changes-table.phtml:73
+#: resources/views/modules/random_media/slide-show.phtml:84
+#: resources/views/modules/recent_changes/changes-table.phtml:77
 #: resources/views/modules/sources_tab/tab.phtml:73
 #: resources/xml/reports/bdm_report.xml:136
 #: resources/xml/reports/bdm_report.xml:162
@@ -13936,7 +13938,7 @@ msgstr "Teitl y stori"
 #: resources/views/admin/broadcast.phtml:45
 #: resources/views/admin/email-page.phtml:50
 #: resources/views/contact-page.phtml:60 resources/views/message-page.phtml:48
-#: resources/views/modules/user-messages/user-messages.phtml:70
+#: resources/views/modules/user-messages/user-messages.phtml:68
 msgid "Subject"
 msgstr "Pwnc"
 
@@ -13959,7 +13961,7 @@ msgstr "Wedi'i gyflwyno ond heb ei glirio eto"
 #: app/Gedcom.php:886 app/Http/RequestHandlers/CheckTree.php:359
 #: resources/views/admin/trees.phtml:267
 #: resources/views/modals/submission-fields.phtml:16
-#: resources/views/modules/recent_changes/changes-table.phtml:76
+#: resources/views/modules/recent_changes/changes-table.phtml:80
 msgid "Submitter"
 msgstr "Cyflwynydd"
 
@@ -13999,11 +14001,11 @@ msgstr "Dydd Sul"
 msgid "Support and documentation can be found at %s."
 msgstr "Mae cefnogaeth a dogfennaeth i'w gweld yn %s."
 
-#: app/Services/ServerCheckService.php:327
+#: app/Services/ServerCheckService.php:329
 msgid "Support for PostgreSQL is experimental."
 msgstr "Mae cefnogaeth i PostgreSQL yn arbrofol."
 
-#: app/Services/ServerCheckService.php:332
+#: app/Services/ServerCheckService.php:334
 msgid "Support for SQL Server is experimental."
 msgstr "Mae cefnogaeth i SQL Server yn arbrofol."
 
@@ -14290,12 +14292,12 @@ msgstr "Mae safon GEDCOM yn darparu nifer fawr o feysydd mynediad data, sy'n cae
 msgid "The Hague, Netherlands"
 msgstr "Yr Hâg, Yr Iseldiroedd"
 
-#: app/Services/ServerCheckService.php:123
+#: app/Services/ServerCheckService.php:125
 #, php-format
 msgid "The PHP extension “%s” is not installed."
 msgstr "Nid yw'r estyniad PHP “%s” wedi'i osod."
 
-#: app/Services/ServerCheckService.php:179
+#: app/Services/ServerCheckService.php:181
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
 msgstr "Mae'r swyddogaeth PHP “%1$s” wedi'i analluogi."
@@ -14305,12 +14307,12 @@ msgstr "Mae'r swyddogaeth PHP “%1$s” wedi'i analluogi."
 msgid "The PHP temporary folder is missing."
 msgstr "Mae ffolder dros dro PHP ar goll."
 
-#: app/Services/ServerCheckService.php:142
+#: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
 msgstr "Mae gosodiad PHP.INI “%1$s” wedi ei analluogi."
 
-#: app/Services/ServerCheckService.php:146
+#: app/Services/ServerCheckService.php:148
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
 msgstr "Mae'r gosodiad PHP.INI “%1$s” wedi'i alluogi."
@@ -14547,7 +14549,7 @@ msgstr "Nid oedd modd ailenwi'r ffeil cyfryngau %1$s yn %2$s."
 msgid "The media file %1$s has been renamed to %2$s."
 msgstr "Mae'r ffeil cyfryngau %1$s wedi'i ailenwi i %2$s."
 
-#: app/Http/RequestHandlers/CreateMediaObjectAction.php:96
+#: app/Http/RequestHandlers/CreateMediaObjectAction.php:108
 msgid "The media object has been created"
 msgstr "Mae'r gwrthrych cyfryngau wedi'i greu"
 
@@ -14561,14 +14563,14 @@ msgid "The message was not sent to %s."
 msgstr "Heb anfon y neges at %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:149
-#: app/Http/RequestHandlers/EmailPreferencesAction.php:100
+#: app/Http/RequestHandlers/EmailPreferencesAction.php:99
 #: app/Http/RequestHandlers/MessageAction.php:96
 msgid "The message was not sent."
 msgstr "Heb anfon y neges."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:78
 #: app/Http/RequestHandlers/ContactAction.php:144
-#: app/Http/RequestHandlers/EmailPreferencesAction.php:98
+#: app/Http/RequestHandlers/EmailPreferencesAction.php:97
 #: app/Http/RequestHandlers/MessageAction.php:91
 #, php-format
 msgid "The message was successfully sent to %s."
@@ -14668,7 +14670,7 @@ msgstr "Mae'r dewisiadau ar gyfer y modiwl “%s” wedi'u dileu."
 #: app/Module/MapGeoLocationGeonames.php:87
 #: app/Module/MapGeoLocationOpenRouteService.php:82
 #: app/Module/OpenRouteServiceAutocomplete.php:106
-#: app/Module/RelationshipsChartModule.php:451 app/Module/SiteMapModule.php:169
+#: app/Module/RelationshipsChartModule.php:451 app/Module/SiteMapModule.php:162
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
 msgstr "Mae'r dewisiadau ar gyfer y modiwl “%s” wedi'u diweddaru."
@@ -14699,7 +14701,7 @@ msgstr "Mae'r storfan wedi'i greu"
 msgid "The search menu."
 msgstr "Y ddewislen chwilio."
 
-#: app/Services/SearchService.php:1178
+#: app/Services/SearchService.php:1177
 msgid "The search returned too many results."
 msgstr "Dychwelodd y chwiliad ormod o ganlyniadau."
 
@@ -14711,7 +14713,7 @@ msgstr "Mae ffurfweddiad y gweinydd yn iawn."
 msgid "The server could not understand this request."
 msgstr "Nid oedd y gweinydd yn deall y cais hwn."
 
-#: app/Services/ServerCheckService.php:244
+#: app/Services/ServerCheckService.php:246
 msgid "The server’s temporary folder cannot be accessed."
 msgstr "Nid oes modd cael mynediad i ffolder dros dro y gweinydd."
 
@@ -14794,7 +14796,7 @@ msgstr "Mae'r enw defnyddiwr neu'r cyfrinair yn anghywir."
 msgid "The username required for authentication with the SMTP server."
 msgstr "Yr enw defnyddiwr sy'n ofynnol i'w ddilysu gyda'r gweinydd SMTP."
 
-#: app/Http/RequestHandlers/EmailPreferencesAction.php:92
+#: app/Http/RequestHandlers/EmailPreferencesAction.php:91
 #: app/Http/RequestHandlers/ModulesAnalyticsAction.php:45
 #: app/Http/RequestHandlers/ModulesBlocksAction.php:46
 #: app/Http/RequestHandlers/ModulesChartsAction.php:46
@@ -14847,12 +14849,12 @@ msgstr "Themâu"
 msgid "There are no facts for this individual."
 msgstr "Nid oes unrhyw ffeithiau i'r unigolyn hwn."
 
-#: app/Module/IndividualListModule.php:224
+#: app/Module/AbstractIndividualListModule.php:180
 #, php-format
 msgid "There are no individuals with the surname “%s”"
 msgstr "Nid oes unigolion gyda'r cyfenw “%s”"
 
-#: app/Http/RequestHandlers/ManageMediaData.php:327
+#: app/Http/RequestHandlers/ManageMediaData.php:326
 msgid "There are no links to this media object."
 msgstr "Nid oes unrhyw ddolenni â'r gwrthrych cyfryngau hwn."
 
@@ -14898,9 +14900,8 @@ msgstr[5] "Dim newidiadau o fewn y %s diwrnod diwethaf."
 msgid "There was an error checking for a new version."
 msgstr "Bu gwall wrth wirio am fersiwn newydd."
 
-#: app/Exceptions/FileUploadException.php:97
 #: app/Http/RequestHandlers/AddMediaFileAction.php:76
-#: app/Http/RequestHandlers/CreateMediaObjectAction.php:76
+#: app/Http/RequestHandlers/CreateMediaObjectAction.php:88
 #: app/Http/RequestHandlers/UploadMediaAction.php:131
 #: app/Services/MediaFileService.php:222
 msgid "There was an error uploading your file."
@@ -15068,9 +15069,9 @@ msgstr "Bydd yr unigolyn hwn yn cael ei ddewis yn ragosodedig wrth edrych ar sia
 #: app/Module/StatisticsChartModule.php:947
 #: app/Statistics/Repository/EventRepository.php:254
 #: app/Statistics/Repository/FamilyDatesRepository.php:107
-#: app/Statistics/Repository/FamilyRepository.php:528
-#: app/Statistics/Repository/FamilyRepository.php:849
-#: app/Statistics/Repository/FamilyRepository.php:1504
+#: app/Statistics/Repository/FamilyRepository.php:527
+#: app/Statistics/Repository/FamilyRepository.php:848
+#: app/Statistics/Repository/FamilyRepository.php:1503
 #: app/Statistics/Repository/IndividualRepository.php:1831
 #: app/Statistics/Repository/IndividualRepository.php:1856
 #: app/Statistics/Repository/PlaceRepository.php:210
@@ -15092,9 +15093,9 @@ msgstr "Dim gwybodaeth ar gael."
 #: app/Statistics/Repository/FamilyDatesRepository.php:115
 #: app/Statistics/Repository/FamilyDatesRepository.php:386
 #: app/Statistics/Repository/FamilyRepository.php:96
-#: app/Statistics/Repository/FamilyRepository.php:483
-#: app/Statistics/Repository/FamilyRepository.php:860
-#: app/Statistics/Repository/FamilyRepository.php:1516
+#: app/Statistics/Repository/FamilyRepository.php:482
+#: app/Statistics/Repository/FamilyRepository.php:859
+#: app/Statistics/Repository/FamilyRepository.php:1515
 #: app/Statistics/Repository/IndividualRepository.php:863
 #: app/Statistics/Repository/IndividualRepository.php:1176
 #: app/Statistics/Repository/IndividualRepository.php:1196
@@ -15580,10 +15581,6 @@ msgstr "I osod cyfrinair newydd, dilynwch y ddolen hon."
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr "I osod y testun hwn ar gyfer ieithoedd eraill, rhaid i chi newid i'r iaith honno, ac ymweld â'r dudalen hon eto."
 
-#: resources/views/modules/sitemap/config.phtml:51
-msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "I ddweud wrth beiriannau chwilio bod mapiau gwefan ar gael, gallwch ddefnyddio'r dolenni canlynol."
-
 #: resources/views/modules/bing-maps/config.phtml:36
 #: resources/views/modules/google-maps/config.phtml:36
 #: resources/views/modules/here-maps/config.phtml:36
@@ -15883,7 +15880,7 @@ msgstr "Twin Falls, Idaho, Unol Daleithiau"
 #: resources/views/admin/site-logs.phtml:125
 #: resources/views/modules/media-list/page.phtml:59
 #: resources/views/modules/random_media/config.phtml:28
-#: resources/views/modules/recent_changes/changes-table.phtml:41
+#: resources/views/modules/recent_changes/changes-table.phtml:45
 msgid "Type"
 msgstr "Math"
 
@@ -15947,7 +15944,7 @@ msgstr "Y math o dasg ymchwil"
 #: resources/views/modules/favorites/favorites.phtml:146
 #: resources/views/modules/matomo-analytics/form.phtml:20
 #: resources/views/modules/share-url/share.phtml:12
-#: resources/views/modules/sitemap/config.phtml:47
+#: resources/views/modules/sitemap/config.phtml:46
 msgid "URL"
 msgstr "URL"
 
@@ -16027,8 +16024,8 @@ msgid "United States"
 msgstr "Unol Daleithiau"
 
 #. I18N: Name of a country or state
-#: app/CustomTags/FamilyTreeMaker.php:138 app/Elements/FamilyStatusText.php:73
-#: app/GedcomRecord.php:742 app/GedcomRecord.php:747
+#: app/CustomTags/FamilyTreeMaker.php:140 app/Elements/FamilyStatusText.php:73
+#: app/GedcomRecord.php:751 app/GedcomRecord.php:756
 #: app/Statistics/Google/ChartSex.php:77
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
@@ -16039,6 +16036,11 @@ msgctxt "unknown century"
 msgid "Unknown"
 msgstr "Anhysbys"
 
+#: resources/views/edit-account-page.phtml:64
+msgctxt "unknown people"
+msgid "Unknown"
+msgstr "Anhysbys"
+
 #: app/Elements/SexValue.php:87
 #: resources/xml/reports/family_group_report.xml:844
 #: resources/xml/reports/individual_ext_report.xml:399
@@ -16046,11 +16048,6 @@ msgstr "Anhysbys"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgctxt "unknown sex"
-msgid "Unknown"
-msgstr "Anhysbys"
-
-#: resources/views/edit-account-page.phtml:64
-msgctxt "unknown people"
 msgid "Unknown"
 msgstr "Anhysbys"
 
@@ -16067,7 +16064,7 @@ msgstr "Cod GEDCOM heb ei adnabod"
 msgid "Unused files"
 msgstr "Ffeiliau heb eu defnyddio"
 
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:123
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 #, php-format
 msgid "Unzip %s to a temporary folder…"
 msgstr "Dadsipio %s i ffolder dros dro…"
@@ -16110,7 +16107,7 @@ msgid "Upgrade to webtrees %s."
 msgstr "Uwchraddio i webtrees %s."
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:78
-#: app/Http/RequestHandlers/UpgradeWizardPage.php:118
+#: app/Http/RequestHandlers/UpgradeWizardPage.php:117
 msgid "Upgrade wizard"
 msgstr "Dewin uwchraddio"
 
@@ -16244,7 +16241,7 @@ msgstr "Gwirio defnyddiwr"
 #: resources/views/login-page.phtml:35
 #: resources/views/modules/geonames/config.phtml:23
 #: resources/views/modules/login_block/sign-in.phtml:25
-#: resources/views/modules/todo/research-tasks.phtml:35
+#: resources/views/modules/todo/research-tasks.phtml:36
 #: resources/views/password-reset-page.phtml:25
 #: resources/views/register-page.phtml:61
 #: resources/views/setup/step-5-administrator.phtml:68
@@ -16390,7 +16387,7 @@ msgstr "Gweld y tabl o ddigwyddiadau sy'n digwydd yn %s"
 msgid "View this day"
 msgstr "Gweld y diwrnod hwn"
 
-#: app/Statistics/Repository/FamilyRepository.php:481
+#: app/Statistics/Repository/FamilyRepository.php:480
 #: resources/views/fact.phtml:110
 #: resources/views/statistics/families/top10-list-age.phtml:23
 #: resources/views/statistics/families/top10-nolist-age.phtml:25
@@ -16564,7 +16561,7 @@ msgid "Where a user is associated to an individual record in a family tree and h
 msgstr "Lle mae defnyddiwr yn gysylltiedig â chofnod unigol mewn cart achau a bod ganddo rôl fel aelod, golygydd, neu gymedrolwr, gallwch eu hatal rhag darllen manylion perthnasau byw pell. Chi sy'n nodi nifer y camau perthynas y mae caniatâd i'r defnyddiwr eu gweld."
 
 #. I18N: Label for a configuration option
-#: resources/views/modules/sitemap/config.phtml:29
+#: resources/views/modules/sitemap/config.phtml:28
 msgid "Which family trees should be included in the sitemaps"
 msgstr "Pa goed teulu y dylid eu cynnwys yn y mapiau gwefannau"
 
@@ -16652,7 +16649,7 @@ msgid "World"
 msgstr "Y Byd"
 
 #: app/CustomTags/BrothersKeeper.php:111
-#: resources/views/modules/yahrzeit/table.phtml:36
+#: resources/views/modules/yahrzeit/table.phtml:39
 msgid "Yahrzeit"
 msgstr "Yahrzeit"
 
@@ -16683,7 +16680,7 @@ msgid "You (or someone claiming to be you) has requested an account at %1$s usin
 msgstr "Rydych chi (neu rywun sy'n honni mai chi yw chi) wedi gofyn am gyfrif yn %1$s gan ddefnyddio'r cyfeiriad e-bost %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:122
-#: app/Http/RequestHandlers/RegisterAction.php:272
+#: app/Http/RequestHandlers/RegisterAction.php:271
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Nid oes gennych ganiatâd i anfon negeseuon sy'n cynnwys dolenni allanol."
 
@@ -16813,7 +16810,7 @@ msgstr "Dylech dderbyn neu wrthod pob newid arfaethedig cyn uwchraddio."
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:123
-#: app/Http/RequestHandlers/RegisterAction.php:272
+#: app/Http/RequestHandlers/RegisterAction.php:271
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "Dylech ddileu'r “%1$s” o “%2$s” a rhoi cynnig arall arni."
@@ -16865,7 +16862,7 @@ msgstr "Mae eich cyfrinair wedi'i ddiweddaru."
 msgid "Your registration at %s"
 msgstr "Eich cofrestriad yn %s"
 
-#: app/Services/ServerCheckService.php:194
+#: app/Services/ServerCheckService.php:196
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr "Mae eich gweinydd gwe yn defnyddio fersiwn PHP %s, nad yw bellach yn derbyn diweddariadau diogelwch. Dylech uwchraddio i fersiwn ddiweddarach cyn gynted â phosibl."
@@ -16906,7 +16903,7 @@ msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the 
 msgstr "Defnyddiwyd tagiau _WT_OBJE_SORT gan hen fersiynau o webtrees i ddangos hoff ddelwedd unigolyn. Dewis arall yw ail-drefnu'r delweddau fel bod yr un hoff yn cael ei restru gyntaf."
 
 #. I18N: Gedcom ABT dates
-#: app/Date.php:185
+#: app/Date.php:188
 #, php-format
 msgid "about %s"
 msgstr "tua %s"
@@ -16961,7 +16958,7 @@ msgid "after"
 msgstr "ar ôl"
 
 #. I18N: Gedcom AFT dates
-#: app/Date.php:205
+#: app/Date.php:208
 #, php-format
 msgid "after %s"
 msgstr "ar ôl %s"
@@ -16977,7 +16974,7 @@ msgstr "oed"
 msgid "also known as"
 msgstr "hefyd yn hysbys fel"
 
-#: app/Statistics/Repository/FamilyRepository.php:479
+#: app/Statistics/Repository/FamilyRepository.php:478
 #: app/Statistics/Repository/UserRepository.php:93
 #: resources/views/statistics/families/top10-list-age.phtml:21
 #: resources/views/statistics/families/top10-nolist-age.phtml:21
@@ -17049,13 +17046,13 @@ msgid "before"
 msgstr "cyn"
 
 #. I18N: Gedcom BEF dates
-#: app/Date.php:201
+#: app/Date.php:204
 #, php-format
 msgid "before %s"
 msgstr "cyn %s"
 
 #. I18N: Gedcom BET-AND dates
-#: app/Date.php:217
+#: app/Date.php:220
 #, php-format
 msgid "between %s and %s"
 msgstr "rhwng %s a %s"
@@ -17151,7 +17148,7 @@ msgid "bullet list"
 msgstr "rhestr bwled"
 
 #. I18N: Gedcom CAL dates
-#: app/Date.php:189
+#: app/Date.php:192
 #, php-format
 msgid "calculated %s"
 msgstr "cyfrifwyd %s"
@@ -17227,7 +17224,7 @@ msgid "child"
 msgstr "plentyn"
 
 #. I18N: Type of demographic data
-#: app/Elements/DemographicDataType.php:56
+#: app/Elements/DemographicDataType.php:55
 msgid "citizen"
 msgstr "dinesydd"
 
@@ -17291,7 +17288,7 @@ msgid "create"
 msgstr "creu"
 
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:59
+#: app/Elements/HierarchicalRelationship.php:58
 msgid "cultural"
 msgstr "diwylliannol"
 
@@ -17440,7 +17437,7 @@ msgid "estate name"
 msgstr "enw ystad"
 
 #. I18N: Gedcom EST dates
-#: app/Date.php:193
+#: app/Date.php:196
 #, php-format
 msgid "estimated %s"
 msgstr "amcangyfrifwyd %s"
@@ -17849,13 +17846,13 @@ msgstr[4] "o %1$s cyfnod o %2$s mlynedd"
 msgstr[5] "o %1$s cyfnod o %2$s blynedd"
 
 #. I18N: Gedcom FROM dates
-#: app/Date.php:209
+#: app/Date.php:212
 #, php-format
 msgid "from %s"
 msgstr "o %s"
 
 #. I18N: Gedcom FROM-TO dates
-#: app/Date.php:221
+#: app/Date.php:224
 #, php-format
 msgid "from %s to %s"
 msgstr "o %s hyd %s"
@@ -17865,12 +17862,8 @@ msgstr "o %s hyd %s"
 msgid "full circle"
 msgstr "cylch llawn"
 
-#: resources/views/modules/statistics-chart/custom.phtml:88
-msgid "sex"
-msgstr "rhyw"
-
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:58
+#: app/Elements/HierarchicalRelationship.php:57
 msgid "geographic"
 msgstr "daearyddol"
 
@@ -19505,7 +19498,7 @@ msgid "himself"
 msgstr "ei hun"
 
 #. I18N: Type of demographic data
-#: app/Elements/DemographicDataType.php:55
+#: app/Elements/DemographicDataType.php:54
 msgid "household"
 msgstr "aelwyd"
 
@@ -19532,7 +19525,7 @@ msgid "inline note"
 msgstr "nodyn mewnlin"
 
 #. I18N: Gedcom INT dates
-#: app/Date.php:197
+#: app/Date.php:200
 #, php-format
 msgid "interpreted %s (%s)"
 msgstr "dehonglwyd %s (%s)"
@@ -20039,7 +20032,7 @@ msgid "plain text"
 msgstr "testun plaen"
 
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:56
+#: app/Elements/HierarchicalRelationship.php:55
 msgid "political"
 msgstr "gwleidyddol"
 
@@ -20102,7 +20095,7 @@ msgid "rejected"
 msgstr "gwrthodwyd"
 
 #. I18N: Type of location hierarchy
-#: app/Elements/HierarchicalRelationship.php:57
+#: app/Elements/HierarchicalRelationship.php:56
 msgid "religious"
 msgstr "crefyddol"
 
@@ -20175,7 +20168,7 @@ msgstr "de"
 #: resources/views/modules/map-box/config.phtml:44
 #: resources/views/modules/openrouteservice/config.phtml:44
 #: resources/views/modules/relationships-chart/config.phtml:57
-#: resources/views/modules/sitemap/config.phtml:38
+#: resources/views/modules/sitemap/config.phtml:37
 #: resources/views/modules/stories/edit.phtml:71
 #: resources/views/modules/user_blog/edit.phtml:50
 msgid "save"
@@ -20185,7 +20178,7 @@ msgstr "cadw"
 #: resources/views/admin/changes-log.phtml:101
 #: resources/views/admin/site-logs.phtml:92
 #: resources/views/modules/media-list/page.phtml:84
-#: resources/views/search-advanced-page.phtml:91
+#: resources/views/search-advanced-page.phtml:87
 #: resources/views/search-general-page.phtml:128
 #: resources/views/search-phonetic-page.phtml:88
 msgid "search"
@@ -20394,6 +20387,10 @@ msgstr "seithfed gyfnither"
 msgctxt "MALE"
 msgid "seventh cousin"
 msgstr "seithfed cefnder"
+
+#: resources/views/modules/statistics-chart/custom.phtml:88
+msgid "sex"
+msgstr "rhyw"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
@@ -20835,7 +20832,7 @@ msgid "three-quarter circle"
 msgstr "cylch tri chwarter"
 
 #. I18N: Gedcom TO dates
-#: app/Date.php:213
+#: app/Date.php:216
 #, php-format
 msgid "to %s"
 msgstr "hyd %s"
@@ -21065,11 +21062,11 @@ msgstr "brawd neu chwaer iau"
 msgid "younger sister"
 msgstr "chwaer iau"
 
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:238
+#: app/Http/RequestHandlers/SearchAdvancedPage.php:239
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:240
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:241
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:242
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:243
-#: app/Http/RequestHandlers/SearchAdvancedPage.php:244
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
@@ -21107,25 +21104,25 @@ msgstr "Mae “%s” wedi’i ddileu."
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr "Mae tagiau “delwedd wedi'i hamlygu” (_PRIM) yn cael eu defnyddio gan rai raglenni achyddiaeth i nodi'r hoff ddelwedd ar gyfer unigolyn. Dewis arall yw ad-drefnu'r delweddau fel bod yr un sy'n cael ei ffafrio'n yn cael ei restru gyntaf."
 
-#: app/Individual.php:482 app/Individual.php:486 app/Note.php:101
+#: app/Individual.php:448 app/Individual.php:452 app/Note.php:101
 #: app/Report/ReportParserGenerate.php:987
 #: app/Report/ReportParserGenerate.php:1073
 msgid "…"
 msgstr "…"
 
-#: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:363
-#: app/Family.php:381 app/Individual.php:1060
-#: app/Module/IndividualListModule.php:264
-#: app/Module/IndividualListModule.php:520
+#: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:337
+#: app/Family.php:355 app/Individual.php:1026
+#: app/Module/AbstractIndividualListModule.php:221
+#: app/Module/AbstractIndividualListModule.php:470
 msgctxt "Unknown given name"
 msgid "…"
 msgstr "…"
 
-#: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:363
-#: app/Family.php:381 app/Individual.php:1059
-#: app/Module/IndividualListModule.php:249
-#: app/Module/IndividualListModule.php:272
-#: app/Module/IndividualListModule.php:536
+#: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:337
+#: app/Family.php:355 app/Individual.php:1025
+#: app/Module/AbstractIndividualListModule.php:208
+#: app/Module/AbstractIndividualListModule.php:229
+#: app/Module/AbstractIndividualListModule.php:482
 #: resources/views/lists/surnames-bullet-list.phtml:23
 #: resources/views/lists/surnames-column-list.phtml:26
 #: resources/views/lists/surnames-compact-list.phtml:23
@@ -21220,6 +21217,9 @@ msgstr "…"
 #~ msgid "GEDCOM sub-tag"
 #~ msgstr "Is-dag GEDCOM"
 
+#~ msgid "Gender"
+#~ msgstr "Rhyw"
+
 #~ msgid "Hide/show GEDCOM tags in the edit forms"
 #~ msgstr "Cuddio/dangos tagiau GEDCOM yn y ffurflenni golygu"
 
@@ -21231,6 +21231,10 @@ msgstr "…"
 
 #~ msgid "Include media (automatically zips files)"
 #~ msgstr "Yn cynnwys cyfryngau (yn sipio ffeiliau'n awtomatig)"
+
+#, php-format
+#~ msgid "Individuals with surname %s"
+#~ msgstr "Unigolion â chyfenw %s"
 
 #~ msgid "Joint family name"
 #~ msgstr "Enw teulu ar y cyd"
@@ -21312,6 +21316,9 @@ msgstr "…"
 
 #~ msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
 #~ msgstr "Er mwyn lleihau maint y llwytho i lawr, gallwch gywasgu'r data i ffeil .ZIP. Bydd angen i chi ddatgywasgu'r ffeil .ZIP cyn y gallwch ei defnyddio."
+
+#~ msgid "To tell search engines that sitemaps are available, you can use the following links."
+#~ msgstr "I ddweud wrth beiriannau chwilio bod mapiau gwefan ar gael, gallwch ddefnyddio'r dolenni canlynol."
 
 #~ msgid "Use full source citations"
 #~ msgstr "Defnyddio ddyfyniadau ffynhonnell lawn"
