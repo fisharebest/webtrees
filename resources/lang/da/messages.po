@@ -2724,22 +2724,22 @@ msgstr "Birmingham, Alabama, USA"
 #: resources/xml/reports/pedigree_report.xml:1379
 #: resources/xml/reports/relative_ext_report.xml:63
 msgid "Birth"
-msgstr "Født"
+msgstr "Fødsel"
 
 #: app/Elements/PedigreeLinkageType.php:80
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Født"
+msgstr "Fødsel"
 
 #: app/Elements/PedigreeLinkageType.php:70
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Født"
+msgstr "Fødsel"
 
 #: app/Elements/PedigreeLinkageType.php:90
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Født"
+msgstr "Fødsel"
 
 #: app/Statistics/Google/ChartDistribution.php:301
 msgid "Birth by country"
