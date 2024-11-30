@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-11-29 07:57+0000\n"
+"PO-Revision-Date: 2024-12-02 12:38+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
@@ -6817,7 +6817,7 @@ msgstr "Fornavn"
 
 #: app/GedcomCode/GedcomCodeRela.php:164
 msgid "Godchild"
-msgstr "Gudbarn"
+msgstr "Fadderbarn"
 
 #: app/GedcomCode/GedcomCodeRela.php:156 app/GedcomCode/GedcomCodeRela.php:162
 msgid "Goddaughter"
@@ -6834,7 +6834,7 @@ msgstr "Gudmor"
 #. I18N: gedcom tag _GODP
 #: app/GedcomCode/GedcomCodeRela.php:149 app/GedcomTag.php:1513
 msgid "Godparent"
-msgstr "Gudforeldre"
+msgstr "Fadder"
 
 #: app/GedcomCode/GedcomCodeRela.php:153 app/GedcomCode/GedcomCodeRela.php:160
 msgid "Godson"
