@@ -13,7 +13,7 @@
     "postcss-custom-properties": "14.0.4",
     "postcss-image-inliner": "7.0.1",
     "postcss-import": "16.1.0",
-    "postcss-rtlcss": "5.5.0",
+    "postcss-rtlcss": "5.5.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.81.0",
     "sass-loader": "16.0.3"
@@ -39,7 +39,7 @@
     "leaflet.markercluster": "1.5.3",
     "moment": "2.30.1",
     "pinch-zoom-element": "1.1.1",
-    "sortablejs": "1.15.3",
+    "sortablejs": "1.15.6",
     "tom-select": "2.4.1",
     "typeahead.js-bootstrap4-css": "1.0.0"
   },

@@ -48,7 +48,7 @@
 }
 
 /* Some themes set the global default to separate.  We should change this. */
-table.datatables {
+table.dataTable {
     border-collapse: collapse;
 }
 
