@@ -7055,7 +7055,7 @@ msgstr "Fornavn"
 
 #: app/Elements/RelationIsDescriptor.php:112
 msgid "Godchild"
-msgstr "Gudbarn"
+msgstr "Fadderbarn"
 
 #: app/Elements/RelationIsDescriptor.php:81
 #: app/Elements/RelationIsDescriptor.php:111
@@ -7074,12 +7074,12 @@ msgstr "Gudmor"
 
 #: app/Elements/RelationIsDescriptor.php:109
 msgid "Godparent"
-msgstr "Gudforeldre"
+msgstr "Fadder"
 
 #: app/CustomTags/GedcomL.php:187 app/CustomTags/GedcomL.php:188
 #: app/Gedcom.php:621
 msgid "Godparents"
-msgstr "Gudforeldre"
+msgstr "Faddere"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
