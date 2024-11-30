@@ -252,7 +252,7 @@ class ImageFactory implements ImageFactoryInterface
     {
         return $this->imageManager()
             ->read(input: Webtrees::ROOT_DIR . static::WATERMARK_FILE)
-            ->contain(width: $width, height: $height);
+            ->scale(width: $width, height: $height);
     }
 
     /**
@@ -260,7 +260,7 @@ class ImageFactory implements ImageFactoryInterface
      */
     public function addWatermark(ImageInterface $image, ImageInterface $watermark): ImageInterface
     {
-        return $image->place(element: $watermark, position:  'center');
+        return $image->place(element: $watermark, position: 'center');
     }
 
     /**
