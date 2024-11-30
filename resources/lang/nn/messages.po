@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-02-23 19:39+0000\n"
+"PO-Revision-Date: 2024-12-02 12:38+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nn/>\n"
@@ -7147,7 +7147,7 @@ msgstr "Førenamn"
 #: app/Elements/RelationIsDescriptor.php:112
 #: app/GedcomCode/GedcomCodeRela.php:224
 msgid "Godchild"
-msgstr "Gudbarn"
+msgstr "Fadderbarn"
 
 #: app/Elements/RelationIsDescriptor.php:81
 #: app/Elements/RelationIsDescriptor.php:111
@@ -7171,11 +7171,11 @@ msgstr "Gudmor"
 #: app/Elements/RelationIsDescriptor.php:109
 #: app/GedcomCode/GedcomCodeRela.php:205 app/GedcomTag.php:1118
 msgid "Godparent"
-msgstr "Gudforeldre"
+msgstr "Fadder"
 
 #: app/Factories/ElementFactory.php:1162
 msgid "Godparents"
-msgstr "Gudforeldre"
+msgstr "Fadrar"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
