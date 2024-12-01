@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2024-12-02 12:38+0000\n"
+"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tr/>\n"
 "Language: tr\n"
@@ -14089,15 +14089,15 @@ msgstr "“%s” modülü etkinleştirildi."
 #: admin_trees_config.php:1844
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
-"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için ayrı "
-"ayrı listelenmiştir."
+"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için "
+"ayrıca listelenmiştir."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1726
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
 "En yaygın bireysel gerçekler ve olaylar, daha kolay eklenebilmeleri için "
-"ayrı ayrı listelenmiştir."
+"ayrıca listelenmiştir."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
