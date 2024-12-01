@@ -29,7 +29,7 @@ use Illuminate\Support\Collection;
     </button>
 
     <div class="dropdown-menu dropdown-menu-end wt-page-menu-items" aria-labelledby="page-menu">
-        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(AddMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(AddMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a media file') ?>
         </a>
@@ -55,17 +55,17 @@ use Illuminate\Support\Collection;
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToIndividualModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToIndividualModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to an individual') ?>
         </a>
 
-        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToFamilyModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToFamilyModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to a family') ?>
         </a>
 
-        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToSourceModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToSourceModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to a source') ?>
         </a>

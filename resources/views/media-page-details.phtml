@@ -27,7 +27,7 @@ use Illuminate\Support\Collection;
                 <?= I18N::translate('Media file') ?>
                 <?php if ($record->canEdit() && !$media_file->isPendingDeletion()) : ?>
                     <div class="pt-2 wt-fact-edit-links">
-                        <a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-wt-href="<?= route(EditMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
+                        <a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="<?= route(EditMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
                             <?= view('icons/edit') ?>
                             <span class="visually-hidden">
                             <?= I18N::translate('Edit') ?>

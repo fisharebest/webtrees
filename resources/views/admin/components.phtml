@@ -97,8 +97,7 @@ use Illuminate\Support\Collection;
                                 <?php endforeach ?>
                             </ul>
 
-                            <div class="modal fade" id="access-level-<?= $module->name() ?>" tabindex="-1"
-                                 role="dialog">
+                            <div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" id="access-level-<?= $module->name() ?>">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -135,7 +134,7 @@ use Illuminate\Support\Collection;
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-backdrop="static"
+                            <button type="button" class="btn btn-link" data-bs-toggle="modal"
                                     data-bs-target="#access-level-<?= $module->name() ?>">
                                 <?= view('icons/edit') ?>
                                 <span class="visually-hidden"><?= I18N::translate('edit') ?></span>
