@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\I18N;
  */
 
 ?>
-<a href="#" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-wt-href="<?= e(route(HelpText::class, ['topic' => $topic])) ?>" title="<?= I18N::translate('Help') ?>">
+<a href="#" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="<?= e(route(HelpText::class, ['topic' => $topic])) ?>" title="<?= I18N::translate('Help') ?>">
     <?= view('icons/help') ?>
     <span class="visually-hidden"><?= I18N::translate('Help') ?></span>
 </a>

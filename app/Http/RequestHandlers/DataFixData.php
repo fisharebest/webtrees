@@ -98,7 +98,7 @@ class DataFixData implements RequestHandlerInterface
                     ] + $params);
 
                 // wt-ajax-modal-title
-                $col2 = '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-wt-href="' . $preview_url . '">' . view('icons/search') . I18N::translate('Preview') . '</button>';
+                $col2 = '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#wt-ajax-modal" data-wt-href="' . $preview_url . '">' . view('icons/search') . I18N::translate('Preview') . '</button>';
                 $col2 .= ' <button type="button" class="btn btn-primary" data-update-url="' . $update_url . '">' . view('icons/data-fix') . I18N::translate('Update') . '</button>';
             } else {
                 $col2 = '—';

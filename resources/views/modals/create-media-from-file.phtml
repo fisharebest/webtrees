@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\I18N;
  */
 ?>
 
-<div class="modal" id="modal-create-media-from-file">
+<div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true" id="modal-create-media-from-file">
     <form method="post" action="<?= e(route(CreateMediaObjectFromFile::class)) ?>" id="modal-create-media-from-file-form">
         <input type="hidden" name="action" value="create-media-object-from-file">
         <input type="hidden" name="tree" id="tree" value="">
