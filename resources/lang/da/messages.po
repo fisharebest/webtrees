@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-12-02 18:22+0000\n"
+"PO-Revision-Date: 2024-12-03 09:58+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -1535,7 +1535,7 @@ msgstr "Tilføj ny, og opdatér eksisterende oplysninger"
 
 #: resources/views/admin/trees-import.phtml:107
 msgid "Add spaces where long lines were wrapped"
-msgstr "Fix lange linier ved at oprette mellemrum"
+msgstr "Fix lange linjer ved at oprette mellemrum"
 
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:44
@@ -1584,18 +1584,18 @@ msgstr "Adresse"
 #: app/Gedcom.php:403 app/Gedcom.php:516 app/Gedcom.php:536 app/Gedcom.php:807
 #: app/Gedcom.php:854
 msgid "Address line 1"
-msgstr "Adresse linie 1"
+msgstr "Adresselinje 1"
 
 #: app/CustomTags/GedcomL.php:228 app/CustomTags/PersonalAncestralFile.php:68
 #: app/Gedcom.php:404 app/Gedcom.php:517 app/Gedcom.php:537 app/Gedcom.php:808
 #: app/Gedcom.php:855
 msgid "Address line 2"
-msgstr "Adresse linie 2"
+msgstr "Adresselinje 2"
 
 #: app/CustomTags/GedcomL.php:229 app/Gedcom.php:405 app/Gedcom.php:518
 #: app/Gedcom.php:538 app/Gedcom.php:809 app/Gedcom.php:856
 msgid "Address line 3"
-msgstr "Adresse linie 3"
+msgstr "Adresselinje 3"
 
 #: resources/views/admin/tags.phtml:264
 msgid "Addresses"
@@ -11058,7 +11058,7 @@ msgstr "Ikke registreret"
 
 #: resources/views/admin/control-panel.phtml:506
 msgid "Not verified by the user"
-msgstr "Ikke verficeret af bruger"
+msgstr "Ikke verificeret af bruger"
 
 #: app/CustomTags/Ancestry.php:62 app/CustomTags/Ancestry.php:65
 #: app/CustomTags/GedcomL.php:140 app/CustomTags/GedcomL.php:196
@@ -14181,7 +14181,7 @@ msgid ""
 "Site verification codes do not work when webtrees is installed in a "
 "subfolder."
 msgstr ""
-"Sidens kontrolkode viker ikke hvis webtrees er installeret i en undermappe."
+"Sidens kontrolkode virker ikke, hvis webtrees er installeret i en undermappe."
 
 #. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:147 app/Module/SiteMapModule.php:154
@@ -14301,7 +14301,7 @@ msgid ""
 "custom tags such as _MARNM and _AKA. An alternative is to create a new name "
 "record for each name."
 msgstr ""
-"I nogle slægtsprogrammer registeres alle navne i én navnepost ved brug af "
+"I nogle slægtsprogrammer registreres alle navne i én navnepost ved brug af "
 "brugerdefinerede koder såsom _MARNM og _AKA. Alternativt kan man oprette "
 "særskilte navneposter for hvert navn."
 
@@ -14550,7 +14550,7 @@ msgstr "Standard GEDCOM-koder"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
-msgstr "Start diashow ved sideindlæsning"
+msgstr "Start diasshow ved sideindlæsning"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
@@ -14798,7 +14798,7 @@ msgstr "Sydney, Australien"
 
 #: resources/views/admin/synchronize-trees.phtml:14
 msgid "Synchronize family trees with GEDCOM files"
-msgstr "Synkroniser familitræer med GEDCOM filer"
+msgstr "Synkroniser familietræer med GEDCOM-filer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
@@ -15127,14 +15127,14 @@ msgstr "Familietræet “%s” eksisterer allerede."
 #: app/Http/RequestHandlers/CreateTreeAction.php:68
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Famlietræet “%s” blev oprettet."
+msgstr "Familietræet “%s” blev oprettet."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php:60
 #: app/Http/RequestHandlers/SynchronizeTrees.php:110
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Famlietræet “%s” blev slettet."
+msgstr "Familietræet “%s” blev slettet."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:52
@@ -15861,8 +15861,8 @@ msgstr ""
 "Dette familietræ var senest opdateret den #gedcomUpdated#. Der er "
 "#totalSurnames# efternavne i familietræet. Den ældste begivenhed er "
 "#firstEventType# for #firstEventName# i #firstEventYear#. Den nyeste "
-"begivehed er #lastEventType# for #lastEventName# i #lastEventYear#."
-"<br><br>Hvis du har kommentarer eller spørgsmål så kontakt "
+"begivenhed er #lastEventType# for #lastEventName# i #lastEventYear#"
+".<br><br>Hvis du har kommentarer eller spørgsmål så kontakt "
 "#contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
