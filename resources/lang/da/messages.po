@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-12-02 12:38+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2024-12-03 09:58+0000\n"
+"Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
 "Language: da\n"
@@ -1442,7 +1442,7 @@ msgstr "Tilføj ny, og opdatér eksisterende oplysninger"
 
 #: resources/views/admin/trees-import.phtml:100
 msgid "Add spaces where long lines were wrapped"
-msgstr "Fix lange linier ved at oprette mellemrum"
+msgstr "Fix lange linjer ved at oprette mellemrum"
 
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
@@ -1496,21 +1496,21 @@ msgstr "Adresse"
 #: app/Factories/ElementFactory.php:1078 app/Factories/ElementFactory.php:1331
 #: app/Factories/ElementFactory.php:1378 app/GedcomTag.php:430
 msgid "Address line 1"
-msgstr "Adresse linie 1"
+msgstr "Adresselinje 1"
 
 #. I18N: gedcom tag ADR2
 #: app/Factories/ElementFactory.php:947 app/Factories/ElementFactory.php:1059
 #: app/Factories/ElementFactory.php:1079 app/Factories/ElementFactory.php:1332
 #: app/Factories/ElementFactory.php:1379 app/GedcomTag.php:433
 msgid "Address line 2"
-msgstr "Adresse linie 2"
+msgstr "Adresselinje 2"
 
 #. I18N: gedcom tag ADR3
 #: app/Factories/ElementFactory.php:948 app/Factories/ElementFactory.php:1060
 #: app/Factories/ElementFactory.php:1080 app/Factories/ElementFactory.php:1333
 #: app/Factories/ElementFactory.php:1380 app/GedcomTag.php:436
 msgid "Address line 3"
-msgstr "Adresse linie 3"
+msgstr "Adresselinje 3"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55 app/GedcomCode/GedcomCodeTemp.php:231
@@ -10504,7 +10504,7 @@ msgstr "Ugift"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Not verified by the user"
-msgstr "Ikke verficeret af bruger"
+msgstr "Ikke verificeret af bruger"
 
 #. I18N: gedcom tag NOTE
 #: app/Factories/ElementFactory.php:555 app/Factories/ElementFactory.php:584
@@ -13485,7 +13485,8 @@ msgstr "Kontrolkode"
 #: resources/views/modules/bing-webmaster-tools/form.phtml:18
 #: resources/views/modules/google-webmaster-tools/form.phtml:18
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "Sidens kontrolkode viker ikke hvis webtrees er installeret i en undermappe."
+msgstr ""
+"Sidens kontrolkode virker ikke, hvis webtrees er installeret i en undermappe."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:163
@@ -13831,7 +13832,7 @@ msgstr "St. Paul, Minnesota, USA"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
-msgstr "Start diashow ved sideindlæsning"
+msgstr "Start diasshow ved sideindlæsning"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
@@ -14092,7 +14093,7 @@ msgstr "Sydney, Australien"
 
 #: resources/views/admin/synchronize-trees.phtml:12
 msgid "Synchronize family trees with GEDCOM files"
-msgstr "Synkroniser familitræer med GEDCOM filer"
+msgstr "Synkroniser familietræer med GEDCOM-filer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:474
@@ -14361,14 +14362,14 @@ msgstr "Familietræet “%s” eksisterer allerede."
 #: app/Http/RequestHandlers/CreateTreeAction.php:71
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Famlietræet “%s” blev oprettet."
+msgstr "Familietræet “%s” blev oprettet."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php:65
 #: app/Http/RequestHandlers/SynchronizeTrees.php:104
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Famlietræet “%s” blev slettet."
+msgstr "Familietræet “%s” blev slettet."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:54
@@ -14974,7 +14975,13 @@ msgstr "Der er ingen billeder at vise i dette familietræ."
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Dette familietræ var senest opdateret den #gedcomUpdated#. Der er #totalSurnames# efternavne i familietræet. Den ældste begivenhed er #firstEventType# for #firstEventName# i #firstEventYear#. Den nyeste begivehed er #lastEventType# for #lastEventName# i #lastEventYear#.<br><br>Hvis du har kommentarer eller spørgsmål så kontakt #contactWebmaster#."
+msgstr ""
+"Dette familietræ var senest opdateret den #gedcomUpdated#. Der er "
+"#totalSurnames# efternavne i familietræet. Den ældste begivenhed er "
+"#firstEventType# for #firstEventName# i #firstEventYear#. Den nyeste "
+"begivenhed er #lastEventType# for #lastEventName# i #lastEventYear#"
+".<br><br>Hvis du har kommentarer eller spørgsmål så kontakt "
+"#contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:18
@@ -18013,8 +18020,8 @@ msgstr "fætter af 4. led"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "fra %1$s interval %2$s år"
-msgstr[1] "fra %1$s interval %2$s år"
+msgstr[0] "fra %1$s med %2$s års interval"
+msgstr[1] "fra %1$s med %2$s års interval"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:366
