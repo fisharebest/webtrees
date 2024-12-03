@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2023-01-03 18:22+0000\n"
-"Last-Translator: fzamin <fabio.zamin@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/webtrees/webtrees/pt_BR/>\n"
+"PO-Revision-Date: 2024-12-04 09:07+0000\n"
+"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/pt_BR/>\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5531,7 +5532,7 @@ msgstr "Alterar registro GEDCOM"
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
 msgid "Edit the sex"
-msgstr "Alterar gênero"
+msgstr "Alterar sexo"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
@@ -13126,7 +13127,7 @@ msgstr "Exibir somente mulheres."
 
 #: resources/views/lists/individuals-table.phtml:107
 msgid "Show only individuals for whom the sex is not known."
-msgstr "Exibir somente pessoas em que o gênero não é conhecido."
+msgstr "Exibir somente pessoas em que o sexo não é conhecido."
 
 #: resources/views/modules/random_media/config.phtml:19
 msgid "Show only individuals, events, or all"
@@ -13941,11 +13942,13 @@ msgstr "Sobrenomes"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
 msgid "Surnames are inflected to indicate an individual’s sex and marital status."
-msgstr "Sobrenomes são flexionados para indicar o gênero do indivíduo e seu estado civil."
+msgstr ""
+"Sobrenomes são flexionados para indicar o sexo do indivíduo e seu estado "
+"civil."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
 msgid "Surnames are inflected to indicate an individual’s sex."
-msgstr "Sobrenomes são flexionados para indicar o gênero do indivíduo."
+msgstr "Sobrenomes são flexionados para indicar o sexo do indivíduo."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:190
@@ -16043,7 +16046,9 @@ msgstr "Usar PHP sendmail para enviar mensagens"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
-msgstr "Usar imagens silhuetas quando nenhuma imagem de destaque foi especificada. As imagens usadas são específicas para o gênero da pessoa em questão."
+msgstr ""
+"Usar imagens silhuetas quando nenhuma imagem de destaque foi especificada. "
+"As imagens usadas são específicas para o sexo da pessoa em questão."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:306
@@ -20237,7 +20242,7 @@ msgstr "primo de sétimo grau"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "sex"
-msgstr "gênero"
+msgstr "sexo"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
