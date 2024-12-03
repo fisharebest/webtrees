@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-03-23 12:38+0000\n"
+"PO-Revision-Date: 2024-12-04 11:33+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fr/>\n"
@@ -3916,7 +3916,7 @@ msgstr "Commentaires"
 #. I18N: gedcom tag _COML
 #: app/Factories/ElementFactory.php:267 app/GedcomTag.php:1060
 msgid "Common law marriage"
-msgstr "Mariage légal"
+msgstr "Mariage de fait"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:87
