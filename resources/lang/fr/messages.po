@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-04-07 07:11+0000\n"
+"PO-Revision-Date: 2024-12-04 09:07+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
+"Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3808,7 +3809,7 @@ msgstr "Commentaires"
 
 #: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
-msgstr "Mariage légal"
+msgstr "Mariage de fait"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
