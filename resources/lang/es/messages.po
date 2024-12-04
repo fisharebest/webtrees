@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2023-10-04 23:38+0000\n"
-"Last-Translator: mikejpr <michael_rapp@gmx.net>\n"
+"PO-Revision-Date: 2024-12-05 18:08+0000\n"
+"Last-Translator: Hernan Javier Lopez <hernan.lopez@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
 "Language: es\n"
@@ -1987,7 +1987,7 @@ msgstr "Número ID en Ancestral File"
 
 #: app/Factories/ElementFactory.php:258
 msgid "Ancestry PID"
-msgstr "Ancestry PID"
+msgstr "ID de Ancestry"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
