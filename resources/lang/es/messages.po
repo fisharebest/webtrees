@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-09-05 17:15+0000\n"
-"Last-Translator: Franz Frese <arbor95@gmx.de>\n"
-"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
+"PO-Revision-Date: 2024-12-05 18:08+0000\n"
+"Last-Translator: Hernan Javier Lopez <hernan.lopez@gmail.com>\n"
+"Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1923,7 +1924,7 @@ msgstr "Número ID en Ancestral File"
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/Ancestry.php:64
 msgid "Ancestry PID"
-msgstr "Ancestry PID"
+msgstr "ID de Ancestry"
 
 #. I18N: GEDCOM tag _APID
 #: app/CustomTags/FamilyTreeMaker.php:110
@@ -3817,7 +3818,7 @@ msgstr "Matrimonio de hecho"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Matrimonio de hecho"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -12819,7 +12820,7 @@ msgstr "Asistente para la instalación de webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Sexo"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
