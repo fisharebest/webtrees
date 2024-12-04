@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-04 09:07+0000\n"
-"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
+"PO-Revision-Date: 2024-12-04 09:08+0000\n"
+"Last-Translator: Joao Ventura <joao@venturas.org>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/pt_BR/>\n"
 "Language: pt-BR\n"
@@ -5532,7 +5532,7 @@ msgstr "Alterar registro GEDCOM"
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
 msgid "Edit the sex"
-msgstr "Alterar sexo"
+msgstr "Alterar o sexo"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
