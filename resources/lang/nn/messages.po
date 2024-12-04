@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-04-07 07:11+0000\n"
+"PO-Revision-Date: 2024-12-04 11:33+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nn/>\n"
@@ -13533,7 +13533,7 @@ msgstr "Oppsetjingsassistent for webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Kjønn"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
