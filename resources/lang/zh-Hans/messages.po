@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-10-07 12:22+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
+"PO-Revision-Date: 2024-12-04 09:07+0000\n"
+"Last-Translator: DaPoHou <xmlf@hotmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/zh_Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -9637,13 +9638,13 @@ msgstr "地图"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "地图链接"
 
 #. I18N: Links to maps
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:661
 msgid "Map links"
-msgstr ""
+msgstr "链接到地图"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: app/Services/LeafletJsService.php:65
