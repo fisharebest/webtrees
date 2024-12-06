@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-04 11:33+0000\n"
+"PO-Revision-Date: 2024-12-07 19:08+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
@@ -5371,7 +5371,16 @@ msgstr "Brugernavnet eksisterer allerede. Vælg venligst et andet brugernavn."
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “Oneida, Idaho, USA” angive at begivenheden skete indenfor det begræsede område Oneida County. “Idaho, USA” vil angive at begivenheden fandt sted indenfor hele staten Idaho."
+msgstr ""
+"Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et "
+"sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes "
+"oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den "
+"ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. "
+"Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. "
+"Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “"
+"Nørvang, Vejle, DNK” angive at begivenheden skete indenfor det begrænsede "
+"område Nørvang herred. “Vejle, DNK” vil angive at begivenheden fandt sted "
+"indenfor hele Vejle amt."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -8882,7 +8891,7 @@ msgstr "Vielser efter århundrede"
 #: app/GedcomTag.php:1560 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 msgid "Married name"
-msgstr "Vielsesnavn"
+msgstr "Giftenavn"
 
 #: app/GedcomTag.php:1566
 msgid "Married surname"
@@ -15101,7 +15110,7 @@ msgstr "Antal mænd"
 
 #: statistics.php:215
 msgid "Total marriages"
-msgstr "Total antal vielser"
+msgstr "Vielser i alt"
 
 #: admin.php:656
 msgid "Total number of users"
@@ -19016,19 +19025,19 @@ msgstr "gift"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr "vielsesnavn"
+msgstr "giftenavn"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr "vielsesnavn"
+msgstr "giftenavn"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr "vielsesnavn"
+msgstr "giftenavn"
 
 #: app/Functions/Functions.php:876
 msgctxt "mother’s father"
