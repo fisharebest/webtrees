@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-12-04 11:33+0000\n"
+"PO-Revision-Date: 2024-12-07 19:08+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/da/>\n"
@@ -5600,7 +5600,16 @@ msgstr "Brugernavnet eksisterer allerede. Vælg venligst et andet brugernavn."
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “Oneida, Idaho, USA” angive at begivenheden skete indenfor det begræsede område Oneida County. “Idaho, USA” vil angive at begivenheden fandt sted indenfor hele staten Idaho."
+msgstr ""
+"Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et "
+"sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes "
+"oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den "
+"ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. "
+"Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. "
+"Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “"
+"Nørvang, Vejle, DNK” angive at begivenheden skete indenfor det begrænsede "
+"område Nørvang herred. “Vejle, DNK” vil angive at begivenheden fandt sted "
+"indenfor hele Vejle amt."
 
 #: resources/views/help/pending-changes.phtml:25
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -7221,7 +7230,7 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr "Google™ analytics"
+msgstr "Google™ Analytics"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
@@ -9349,7 +9358,7 @@ msgstr "Vielser efter århundrede"
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Married name"
-msgstr "Vielsesnavn"
+msgstr "Giftenavn"
 
 #: app/GedcomTag.php:1155
 msgid "Married surname"
@@ -9384,7 +9393,7 @@ msgstr "Match den præcise tekst, undtaget hvis den findes i midten af et ord."
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr "Matomo™ / Piwik™ analytics"
+msgstr "Matomo™ / Piwik™ Analytics"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -15874,7 +15883,7 @@ msgstr "Antal mænd"
 
 #: resources/views/statistics/families/total-records.phtml:24
 msgid "Total marriages"
-msgstr "Total antal vielser"
+msgstr "Vielser i alt"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
@@ -19783,19 +19792,19 @@ msgstr "gift"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:61 app/GedcomCode/GedcomCodeName.php:162
 msgid "married name"
-msgstr "vielsesnavn"
+msgstr "giftenavn"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:158
 msgctxt "FEMALE"
 msgid "married name"
-msgstr "vielsesnavn"
+msgstr "giftenavn"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:153
 msgctxt "MALE"
 msgid "married name"
-msgstr "vielsesnavn"
+msgstr "giftenavn"
 
 #: app/Functions/Functions.php:838
 msgctxt "mother’s father"
