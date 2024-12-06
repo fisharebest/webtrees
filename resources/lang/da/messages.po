@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-12-04 09:08+0000\n"
+"PO-Revision-Date: 2024-12-08 06:08+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -5708,10 +5708,10 @@ msgstr ""
 "oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den "
 "ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. "
 "Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. "
-"Stedet benævnes med den mest præcise placering for kilden. For eksempel vil "
-"“Oneida, Idaho, USA” angive at begivenheden skete indenfor det begræsede "
-"område Oneida County. “Idaho, USA” vil angive at begivenheden fandt sted "
-"indenfor hele staten Idaho."
+"Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “"
+"Nørvang, Vejle, DNK” angive at begivenheden skete indenfor det begrænsede "
+"område Nørvang herred. “Vejle, DNK” vil angive at begivenheden fandt sted "
+"indenfor hele Vejle amt."
 
 #: resources/views/help/pending-changes.phtml:27
 msgid ""
@@ -7461,7 +7461,7 @@ msgstr "Gudsøn"
 
 #: app/Module/GoogleAnalyticsModule.php:48
 msgid "Google™ analytics"
-msgstr "Google™ analytics"
+msgstr "Google™ Analytics"
 
 #: app/Module/GoogleMaps.php:86 app/Module/MapLinkGoogle.php:41
 msgid "Google™ maps"
@@ -9842,7 +9842,7 @@ msgstr "Vielser efter århundrede"
 #: resources/xml/reports/death_report.xml:10
 #: app/CustomTags/FamilyTreeMaker.php:112
 msgid "Married name"
-msgstr "Vielsesnavn"
+msgstr "Giftenavn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:329
@@ -9872,7 +9872,7 @@ msgstr "Match den præcise tekst, undtaget hvis den findes i midten af et ord."
 
 #: app/Module/MatomoAnalyticsModule.php:44
 msgid "Matomo™ / Piwik™ analytics"
-msgstr "Matomo™ / Piwik™ analytics"
+msgstr "Matomo™ / Piwik™ Analytics"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:347
@@ -16831,7 +16831,7 @@ msgstr "Antal mænd"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:19
 msgid "Total marriages"
-msgstr "Total antal vielser"
+msgstr "Vielser i alt"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
@@ -20872,7 +20872,7 @@ msgstr "gift"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:85
 msgid "married name"
-msgstr "vielsesnavn"
+msgstr "giftenavn"
 
 #: app/Services/RelationshipService.php:567
 msgctxt "mother’s father"
