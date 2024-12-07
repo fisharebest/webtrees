@@ -194,10 +194,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartUrl(Individual $individual, array $parameters = []): string
     {
+        $tree           = $individual->tree();
+        $ancestors_only = (int) $tree->getPreference('RELATIONSHIP_ANCESTORS', static::DEFAULT_ANCESTORS);
+        $max_recursion  = (int) $tree->getPreference('RELATIONSHIP_RECURSION', static::DEFAULT_RECURSION);
+
+
         return route(static::class, [
-                'xref' => $individual->xref(),
-                'tree' => $individual->tree()->name(),
-            ] + $parameters + self::DEFAULT_PARAMETERS);
+            'xref'      => $individual->xref(),
+            'tree'      => $individual->tree()->name(),
+            'ancestors' => $ancestors_only,
+            'recursion' => $max_recursion,
+        ] + $parameters);
     }
 
     /**
