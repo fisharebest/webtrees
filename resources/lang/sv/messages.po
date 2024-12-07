@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-10-16 20:45+0000\n"
+"PO-Revision-Date: 2024-12-08 06:08+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
+"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12818,7 +12819,7 @@ msgstr "Inställningsguide för webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Kön"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
