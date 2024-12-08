@@ -83,6 +83,7 @@ class SetupWizard implements RequestHandlerInterface
         'wtuser'   => '',
         'wtpass'   => '',
         'wtemail'  => '',
+        'wtsecret'  => '',
     ];
 
     private const array DEFAULT_PORTS = [
@@ -408,6 +409,7 @@ class SetupWizard implements RequestHandlerInterface
             $admin = $this->user_service->create($data['wtuser'], $data['wtname'], $data['wtemail'], $data['wtpass']);
             $admin->setPreference(UserInterface::PREF_LANGUAGE, $data['lang']);
             $admin->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
+            $admin->setPreference(UserInterface::PREF_IS_STATUS_MFA, '0');
         } else {
             $admin->setPassword($_POST['wtpass']);
         }
