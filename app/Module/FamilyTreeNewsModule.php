@@ -19,7 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
@@ -27,25 +30,21 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Class FamilyTreeNewsModule
- */
+use function redirect;
+
 class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
     private HtmlService $html_service;
 
-    /**
-     * @param HtmlService $html_service
-     */
     public function __construct(HtmlService $html_service)
     {
         $this->html_service = $html_service;
@@ -99,54 +98,27 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         return $content;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */
         return I18N::translate('News');
     }
 
-    /**
-     * Should this block load asynchronously using AJAX?
-     *
-     * Simple blocks are faster in-line, more complex ones can be loaded later.
-     *
-     * @return bool
-     */
     public function loadAjax(): bool
     {
         return false;
     }
 
-    /**
-     * Can this block be shown on the user’s home page?
-     *
-     * @return bool
-     */
     public function isUserBlock(): bool
     {
         return false;
     }
 
-    /**
-     * Can this block be shown on the tree’s home page?
-     *
-     * @return bool
-     */
     public function isTreeBlock(): bool
     {
         return true;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getEditNewsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -156,6 +128,9 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         }
 
         $news_id = Validator::queryParams($request)->integer('news_id', 0);
+
+        $timezone = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
+        $utc      = new DateTimeZone('UTC');
 
         if ($news_id !== 0) {
             $row = DB::table('news')
@@ -167,29 +142,27 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             if ($row === null) {
                 throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'news_id:' . $news_id));
             }
+
+            $body    = $row->body;
+            $subject = $row->subject;
+            $updated = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $row->updated, $utc)
+                ->setTimezone($timezone);
         } else {
-            $row = (object) [
-                'body'    => '',
-                'subject' => '',
-            ];
+            $body    = '';
+            $subject = '';
+            $updated = Registry::timestampFactory()->now(Auth::user());
         }
 
-        $title = I18N::translate('Add/edit a journal/news entry');
-
         return $this->viewResponse('modules/gedcom_news/edit', [
-            'body'    => $row->body,
+            'body'    => $body,
             'news_id' => $news_id,
-            'subject' => $row->subject,
-            'title'   => $title,
+            'subject' => $subject,
+            'title'   => $this->title(),
             'tree'    => $tree,
+            'updated' => $updated->format('Y-m-d H:i:s'),
         ]);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postEditNewsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = Validator::attributes($request)->tree();
@@ -201,24 +174,38 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $news_id = Validator::queryParams($request)->integer('news_id', 0);
         $subject = Validator::parsedBody($request)->string('subject');
         $body    = Validator::parsedBody($request)->string('body');
+        $now     = Registry::timestampFactory()->now();
 
         $subject = $this->html_service->sanitize($subject);
         $body    = $this->html_service->sanitize($body);
 
         if ($news_id !== 0) {
+            $use_current_timestamp = Validator::parsedBody($request)->boolean('use-current-timestamp', false);
+
+            if ($use_current_timestamp) {
+                $updated = $now;
+            } else {
+                $timestamp = Validator::parsedBody($request)->string('timestamp');
+                $timezone  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
+                $utc       = new DateTimeZone('UTC');
+                $updated   = DateTimeImmutable::createFromFormat('Y-m-d\\TH:i:s', $timestamp, $timezone)
+                    ->setTimezone($utc);
+            }
+
             DB::table('news')
                 ->where('news_id', '=', $news_id)
-                ->where('gedcom_id', '=', $tree->id())
+                ->where('gedcom_id', '=', $tree->id()) // Check this is our own tree - validates news_id
                 ->update([
                     'body'    => $body,
                     'subject' => $subject,
-                    'updated' => new Expression('updated'), // See issue #3208
+                    'updated' => $updated,
                 ]);
         } else {
             DB::table('news')->insert([
                 'body'      => $body,
                 'subject'   => $subject,
                 'gedcom_id' => $tree->id(),
+                'updated'   => $now,
             ]);
         }
 
@@ -227,11 +214,6 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         return redirect($url);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function postDeleteNewsAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree    = Validator::attributes($request)->tree();

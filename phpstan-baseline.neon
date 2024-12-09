@@ -73,6 +73,12 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
+			message: '#^Parameter \$suggestedValues of method Symfony\\Component\\Console\\Command\\Command\:\:addArgument\(\) expects array\|\(Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput, Symfony\\Component\\Console\\Completion\\CompletionSuggestions\)\: list\<string\|Symfony\\Component\\Console\\Completion\\Suggestion\>\), Closure\(Symfony\\Component\\Console\\Completion\\CompletionInput\)\: array\<string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/TreeExport.php
+
+		-
 			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
@@ -3655,7 +3661,25 @@ parameters:
 			path: app/Module/FamilyTreeNewsModule.php
 
 		-
+			message: '#^Access to an undefined property object\:\:\$updated\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
+			message: '#^Cannot call method setTimezone\(\) on DateTimeImmutable\|false\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
+			message: '#^Parameter \#2 \$datetime of static method DateTimeImmutable\:\:createFromFormat\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/FamilyTreeNewsModule.php
@@ -5449,7 +5473,25 @@ parameters:
 			path: app/Module/UserJournalModule.php
 
 		-
+			message: '#^Access to an undefined property object\:\:\$updated\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Module/UserJournalModule.php
+
+		-
+			message: '#^Cannot call method setTimezone\(\) on DateTimeImmutable\|false\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Module/UserJournalModule.php
+
+		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/UserJournalModule.php
+
+		-
+			message: '#^Parameter \#2 \$datetime of static method DateTimeImmutable\:\:createFromFormat\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/UserJournalModule.php
