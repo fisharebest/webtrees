@@ -18,6 +18,7 @@ use Illuminate\Support\Collection;
  * @var Collection<int,string> $warnings
  * @var string                 $wtemail
  * @var string                 $wtname
+ * @var string                 $wtsecret
  * @var string                 $wtpass
  * @var string                 $wtuser
  */
@@ -33,6 +34,7 @@ use Illuminate\Support\Collection;
     <input name="dbpass" type="hidden" value="<?= e($dbpass) ?>">
     <input name="dbname" type="hidden" value="<?= e($dbname) ?>">
     <input name="tblpfx" type="hidden" value="<?= e($tblpfx) ?>">
+    <input name="wtsecret" type="hidden" value="">
     <input name="baseurl" type="hidden" value="">
 
     <h2>
