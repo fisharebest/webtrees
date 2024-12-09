@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-08 06:08+0000\n"
+"PO-Revision-Date: 2024-12-10 20:08+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -70,7 +70,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:241
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKB blev downloadet på %2$s sekunder."
+msgstr "%1$s kB blev downloadet på %2$s sekunder."
 
 #: app/Http/RequestHandlers/CheckTree.php:278
 #, php-format
@@ -96,7 +96,7 @@ msgstr[1] "%1$s blev ekstraheret på %2$s sekunder."
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s er en %2$s men %3$s var forventet."
+msgstr "%1$s er en %2$s, men %3$s var forventet."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2435
@@ -166,14 +166,14 @@ msgstr "%j. %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s f.v.t"
+msgstr "%s f.v.t."
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:358 app/MediaFile.php:312
 #: app/Services/MediaFileService.php:92
 #, php-format
 msgid "%s KB"
-msgstr "%s KB"
+msgstr "%s kB"
 
 #: app/Module/ClippingsCartModule.php:452
 #, php-format
@@ -188,7 +188,7 @@ msgstr "%s og hans aner"
 #: app/Module/ClippingsCartModule.php:695
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s og de indvider som linker til."
+msgstr "%s og de indvider, som linker til."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:378
@@ -666,7 +666,7 @@ msgstr "En webadresse"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:119
 msgid "A chart displaying relationships between two individuals."
-msgstr "Et diagram visende relationer mellem to individer."
+msgstr "Et diagram, der viser relationer mellem to individer."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:86
@@ -851,7 +851,7 @@ msgstr "En liste over brugere og gæster der er online nu."
 #: resources/views/help/media-object.phtml:10
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
-"Et medieobjekt er en post i stamtræet, som indeholder oplysninger om en "
+"Et medieobjekt er en post i slægtstræet, som indeholder oplysninger om en "
 "mediefil. Denne information kan indeholde en titel, en meddelelse om "
 "ophavsret, en afskrift, personlige begrænsninger, osv. Mediefilen, såsom "
 "foto eller video, kan lagres lokalt (på denne webserver) eller eksternt (på "
@@ -991,7 +991,7 @@ msgstr "En rapport over vigtige begivenheder for given dato eller sted."
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
 "En rolle er ensbetydende med rettigheder som kan give adgang til se "
-"informationer, ændre konfigurationer, osv. Adgangsrettigheder er tilknyttet "
+"informationer, ændre konfigurationer osv. Adgangsrettigheder er tilknyttet "
 "roller og roller gives til brugere. Hvert stamtræ kan tildele forskellige "
 "rettigheder til hver rolle, og brugere kan have forskellige roller i hvert "
 "stamtræ."
@@ -1671,7 +1671,7 @@ msgstr "Afrika"
 #: resources/views/admin/trees-create.phtml:60
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
-"Efter oprettelse af stamtræet, vil du kunne importere data fra en GEDCOM fil."
+"Efter oprettelse af stamtræet vil du kunne importere data fra en GEDCOM-fil."
 
 #: app/Gedcom.php:543 app/Statistics/Google/ChartAge.php:132
 #: app/Statistics/Google/ChartMarriageAge.php:155
@@ -1747,7 +1747,7 @@ msgstr "Album"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:57
 msgid "Albuquerque, New Mexico, United States"
-msgstr "Albuquerque , New Mexico, United States"
+msgstr "Albuquerque, New Mexico, United States"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:169
@@ -1816,7 +1816,9 @@ msgstr "Alle poster"
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:49
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Tillad andre moduler til at redigere tekst ved hjælp af en “WYSIWYG” editor, i stedet for at bruge HTML-koder."
+msgstr ""
+"Tillad andre moduler at redigere tekst ved hjælp af en “WYSIWYG”-editor i "
+"stedet for at bruge HTML-koder."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:601
@@ -1848,11 +1850,14 @@ msgstr "Amerikansk Samoa"
 #: resources/views/modules/faq/edit.phtml:81
 msgid "An FAQ can be displayed on just one of the family trees, or on all the family trees."
 msgstr ""
-"Et FAQ-emne kan enten vises for et af stamtræerne eller for alle stamtræerne."
+"Et FAQ-emne kan enten vises for et af slægtstræerne eller for alle "
+"slægtstræer."
 
 #: resources/views/admin/site-registration.phtml:58
 msgid "An administrator must approve the new user account and select an access level before the user can sign in."
-msgstr "En administrator skal godkende den nye brugerkonto, og vælg et adgangsniveau, før brugeren kan logge ind."
+msgstr ""
+"En administrator skal godkende den nye brugerkonto og vælge et "
+"adgangsniveau, før brugeren kan logge ind."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:48
@@ -1941,7 +1946,7 @@ msgstr "Ancestry.com kilde-id"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
 msgid "Anchorage, Alaska, United States"
-msgstr "Anchorage , Alaska, United States"
+msgstr "Anchorage, Alaska, United States"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:52
@@ -3251,7 +3256,7 @@ msgstr "Kalenderkonvertering"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:74
 msgid "Calgary, Alberta, Canada"
-msgstr "Calgary , Alberta, Canada"
+msgstr "Calgary, Alberta, Canada"
 
 #: app/Gedcom.php:846 resources/views/modals/source-fields.phtml:52
 msgid "Call number"
@@ -4129,7 +4134,8 @@ msgstr "Opret dit eget diagram"
 
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "Oprette, opdatere og slette et stamtræ for hver GEDCOM fil i mappen data."
+msgstr ""
+"Oprette, opdatere og slette et stamtræ for hver GEDCOM-fil i mappen data."
 
 #. I18N: GEDCOM tag _CREA
 #: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:93
@@ -4312,7 +4318,7 @@ msgstr "Brugertilpasset"
 
 #: app/CustomTags/Gedcom7.php:104 resources/views/admin/tags.phtml:1020
 msgid "Custom GEDCOM tags"
-msgstr "Egentilpassede GEDCOM-koder"
+msgstr "Brugertilpassede GEDCOM-koder"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
@@ -5215,7 +5221,9 @@ msgstr "Detaljer"
 
 #: resources/views/admin/site-registration.phtml:57
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
-msgstr "Detaljerne for den nye bruger vil blive sendt til slægtsforskning kontakt til det tilhørende stamtræ."
+msgstr ""
+"Detaljerne for den nye bruger vil blive sendt til kontaktpersonen for det "
+"tilhørende slægtstræ."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:90
@@ -5464,7 +5472,11 @@ msgstr ""
 
 #: resources/views/help/pending-changes.phtml:27
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
-msgstr "Hver brugerkonto har mulighed for at benytte automatisk accept af ændringer. Når den er aktiveret vil enhver ændring som brugeren udfører straks blive gemt. Mange administratorer aktiverer denne mulighed for deres egen brugerkonto."
+msgstr ""
+"Hver brugerkonto har mulighed for at benytte automatisk accept af ændringer. "
+"Når den er aktiveret vil enhver ændring, som brugeren udfører, straks blive "
+"gemt. Mange administratorer aktiverer denne mulighed for deres egen "
+"brugerkonto."
 
 #: resources/views/modules/gedcom_stats/config.phtml:55
 #: resources/views/modules/gedcom_stats/statistics.phtml:167
@@ -5900,7 +5912,7 @@ msgstr "Eksporter en GEDCOM fil"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:113
 msgid "Export all the family trees to GEDCOM files…"
-msgstr "Eksporter alle træer til GEDCOM filer…"
+msgstr "Eksporter alle træer til GEDCOM-filer…"
 
 #: resources/views/admin/trees-export.phtml:60
 #: resources/views/modules/clippings/download.phtml:23
@@ -5954,7 +5966,11 @@ msgstr "FAQ"
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:28
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "FAQ er en liste med spørgsmål og svar som giver dig mulighed for at forklare hjemmesidens regler og procedurer til dine besøgende. Spørgsmålene drejer sig hovedsagelig om privatisering, copyright, brugerkonto, upassende indhold, regler for citering af kilder, osv."
+msgstr ""
+"FAQ er en liste med spørgsmål og svar, som giver dig mulighed for at "
+"forklare hjemmesidens regler og procedurer til dine besøgende. Spørgsmålene "
+"drejer sig normalt om GDPR, ophavsret, brugerkonto, upassende indhold, "
+"regler for citering af kilder, osv."
 
 #: app/CustomTags/Gedcom7.php:98 app/Gedcom.php:658
 msgid "Fact"
@@ -6584,7 +6600,7 @@ msgstr "Mappenavn på server"
 #: resources/views/emails/register-user-html.phtml:26
 #: resources/views/emails/register-user-text.phtml:20
 msgid "Follow this link to verify your email address."
-msgstr "Klik venligst på linket nedenfor for at bekræfte din e-mail-adresse."
+msgstr "Klik venligst på linket nedenfor for at bekræfte din e-mailadresse."
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -6621,7 +6637,9 @@ msgstr "Fodnoter"
 #: resources/views/admin/trees-import.phtml:129
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "Eksempel hvis GEDCOM filen indeholder %1$s og webtrees forventes at finde %2$s i medie mappen, bør du slette %3$s."
+msgstr ""
+"Eksempel hvis GEDCOM-filen indeholder %1$s, og webtrees forventes at finde "
+"%2$s i mediemappen, bør du slette %3$s."
 
 #: resources/views/help/relationship-privacy.phtml:14
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6883,12 +6901,12 @@ msgstr "GEDCOM-fil"
 #: resources/views/admin/tags.phtml:790 resources/views/admin/tags.phtml:894
 #: resources/views/admin/tags.phtml:952
 msgid "GEDCOM tag"
-msgstr "GEDCOM kode"
+msgstr "GEDCOM-kode"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:83
 #: resources/views/admin/control-panel.phtml:283
 msgid "GEDCOM tags"
-msgstr "GEDCOM koder"
+msgstr "GEDCOM-koder"
 
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:1052
@@ -6932,7 +6950,7 @@ msgstr "Kontaktperson vedr. slægtsspørgsmål"
 #. I18N: Individuals, sources, dates, places, etc.
 #: resources/views/admin/trees.phtml:162
 msgid "Genealogy data"
-msgstr "Slægtsforskning data"
+msgstr "Slægtsforskningsdata"
 
 #: resources/views/admin/trees-preferences.phtml:45
 #: resources/views/admin/trees-preferences.phtml:596
@@ -7415,7 +7433,7 @@ msgstr "Okt-Nov"
 #: resources/views/admin/tags.phtml:737 resources/views/admin/tags.phtml:791
 #: resources/views/admin/tags.phtml:895 resources/views/admin/tags.phtml:953
 msgid "Hide GEDCOM tags"
-msgstr "Skjul GEDCOM koder"
+msgstr "Skjul GEDCOM-koder"
 
 #: app/Auth.php:591 app/Auth.php:604
 #: app/Http/RequestHandlers/TreePreferencesPage.php:125
@@ -7605,7 +7623,9 @@ msgstr "Hvis en gæst på websiden ikke har specificeret et foretrukket sprog i 
 
 #: resources/views/admin/users-edit.phtml:112
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Hvis administrator opretter en brugerkonto, skal feltet afkrydses manuelt af administratoren."
+msgstr ""
+"Hvis en administrator opretter en brugerkonto, skal feltet afkrydses manuelt "
+"af administratoren."
 
 #: resources/views/help/name.phtml:24
 #, php-format
@@ -7659,7 +7679,10 @@ msgstr "Hvis du ikke selv kan løse problemet, kan du bede om hjælp på: <a hre
 
 #: resources/views/admin/trees-import.phtml:114
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr "Hvis du oprettede denne GEDCOM fil ved brug af et slægtsforskningsprogram som udeleader mellemrum til at adskille lange linjer, skal du bruge denne indstilling til at indsætte de manglende mellemrum."
+msgstr ""
+"Hvis du oprettede denne GEDCOM-fil ved brug af et slægtsforskningsprogram, "
+"som udelader mellemrum til at adskille lange linjer, skal du bruge denne "
+"indstilling til at indsætte de manglende mellemrum."
 
 #: resources/views/emails/password-request-html.phtml:28
 #: resources/views/emails/password-request-text.phtml:20
@@ -7677,7 +7700,10 @@ msgstr "Hvis du har et stort antal mediefiler, kan du samle dem i mapper og unde
 
 #: resources/views/admin/trees-import.phtml:99
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Hvis du har oprettet medieobjekter i webtrees og har redigeret din gedcom på din computer med et program der sletter medieobjekter, skal du sætte flueben her for at flette de nuværende medieobjekter med den nye GEDCOM."
+msgstr ""
+"Hvis du har oprettet medieobjekter i webtrees og har redigeret din GEDCOM-"
+"fil på din computer med et program, der sletter medieobjekter, skal du sætte "
+"flueben her for at flette de nuværende medieobjekter med den nye GEDCOM-fil."
 
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:50
@@ -7725,7 +7751,7 @@ msgstr "Import"
 
 #: app/Http/RequestHandlers/ImportGedcomPage.php:68
 msgid "Import a GEDCOM file"
-msgstr "Importer en GEDCOM fil"
+msgstr "Importer en GEDCOM-fil"
 
 #: app/Http/RequestHandlers/MapDataImportPage.php:73
 msgid "Import geographic data"
@@ -7978,7 +8004,7 @@ msgstr "Interne beskeder med e-post"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:184
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "Ugyldig GEDCOM-fil - ingen header fundet."
+msgstr "Ugyldig GEDCOM-fil – ingen header fundet."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:92
 msgid "Invalid GEDCOM file - no trailer record found."
@@ -7990,7 +8016,7 @@ msgstr "Ugyldigt GEDCOM-niveau."
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr "Ugyldig GEDCOM post"
+msgstr "Ugyldig GEDCOM-post"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
@@ -8039,7 +8065,9 @@ msgstr "Det kan tage flere minutter at downloade og installere opgraderingen. Ve
 
 #: resources/views/admin/tags.phtml:1025
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr "Det frarådes at bruge egendefinerede GEDCOM-koder. Disse kan gå tabt ved overførsel til andre slægtsprogrammer."
+msgstr ""
+"Det frarådes at bruge brugerdefinerede GEDCOM-koder. Disse kan gå tabt ved "
+"overførsel til andre slægtsprogrammer."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
@@ -8513,7 +8541,7 @@ msgstr "Seneste begivenhed"
 
 #: resources/views/admin/users.phtml:35
 msgid "Last signed in"
-msgstr "Sidst logget ind"
+msgstr "Sidst logget på"
 
 #: resources/views/modules/gedcom_stats/config.phtml:56
 #: resources/views/modules/gedcom_stats/statistics.phtml:178
@@ -8953,7 +8981,7 @@ msgstr "Manaus , Brazil"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:128
 msgid "Manhattan, New York, United States"
-msgstr "Manhattan , New York, United States"
+msgstr "Manhattan, New York, United States"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:129
@@ -9806,7 +9834,7 @@ msgstr "De fleste postservere kræver et gyldigt domænenavn."
 
 #: resources/views/admin/site-mail.phtml:82
 msgid "Most mail servers require a valid email address."
-msgstr "De fleste postservere kræver et gyldigt e-mail adresse."
+msgstr "De fleste postservere kræver et gyldigt e-mailadresse."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:183
@@ -10094,7 +10122,7 @@ msgstr "Ny Kaledonien"
 #: app/CustomTags/GedcomL.php:157 app/CustomTags/GedcomL.php:158
 #: app/CustomTags/GedcomL.php:159
 msgid "New GEDCOM tag"
-msgstr "Ny GEDCOM kode"
+msgstr "Ny GEDCOM-kode"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146
@@ -10226,11 +10254,11 @@ msgstr "Nej"
 #: app/Http/RequestHandlers/ImportGedcomAction.php:87
 #: app/Http/RequestHandlers/ImportGedcomAction.php:103
 msgid "No GEDCOM file was received."
-msgstr "GEDCOM fil ikke importeret."
+msgstr "GEDCOM-fil ikke importeret."
 
 #: resources/views/admin/trees-import.phtml:68
 msgid "No GEDCOM files found."
-msgstr "Ingen GEDCOM filer er fundet."
+msgstr "Ingen GEDCOM-filer er fundet."
 
 #: resources/views/admin/trees-preferences.phtml:119
 #: resources/views/admin/trees-preferences.phtml:122
@@ -10347,7 +10375,7 @@ msgstr "Fandt ingenting."
 
 #: app/Statistics/Repository/UserRepository.php:81
 msgid "No signed-in and no anonymous users"
-msgstr "Ingen logget ind og ingen anonyme brugere"
+msgstr "Ingen logget på og ingen anonyme brugere"
 
 #: app/Module/AbstractIndividualListModule.php:210
 #: app/Module/AbstractIndividualListModule.php:232
@@ -10516,7 +10544,9 @@ msgstr "Note til kildedata"
 
 #: resources/views/help/restriction.phtml:13
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
-msgstr "Bemærk at, hvis en brugerkonto er lænket til en post, vil den pågældende bruger altid kunne se posten."
+msgstr ""
+"Bemærk, at hvis en brugerkonto er lænket til en post, vil den pågældende "
+"bruger altid kunne se posten."
 
 #: resources/views/help/relationship-privacy.phtml:18
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
@@ -11074,7 +11104,11 @@ msgstr "Ventende ændringer"
 
 #: resources/views/help/pending-changes.phtml:22
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Ventende ændringer vises kun hvis din brugerkonto har rettighederne til at redigere. Når du logger ud vil du ikke længere kunne se dem. Desuden vises ventende ændringer kun på bestemte sider. De vises fx ikke i lister, rapporter eller søgeresultater."
+msgstr ""
+"Ventende ændringer vises kun, hvis din brugerkonto har rettighederne til at "
+"redigere. Når du logger af, vil du ikke længere kunne se dem. Desuden vises "
+"ventende ændringer kun på bestemte sider. De vises fx ikke i lister, "
+"rapporter eller søgeresultater."
 
 #: app/CustomTags/BrothersKeeper.php:67 app/CustomTags/BrothersKeeper.php:108
 msgid "Permanent number"
@@ -11107,7 +11141,7 @@ msgstr "Filippinerne"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:160
 msgid "Phoenix, Arizona, United States"
-msgstr "Phoenix , Arizona, United States"
+msgstr "Phoenix, Arizona, United States"
 
 #: app/CustomTags/Aldfaer.php:67 app/CustomTags/GedcomL.php:241
 #: app/CustomTags/PersonalAncestralFile.php:76 app/Gedcom.php:419
@@ -11196,7 +11230,7 @@ msgstr "Sted"
 #: app/Module/PlaceHierarchyListModule.php:225
 #: resources/views/place-hierarchy.phtml:18
 msgid "Place hierarchy"
-msgstr "Sted-hieraki"
+msgstr "Stedhierarki"
 
 #: app/CustomTags/PhpGedView.php:65
 msgid "Place in Hebrew"
@@ -11348,7 +11382,7 @@ msgstr "Afspil"
 
 #: app/Http/RequestHandlers/ContactAction.php:117
 msgid "Please enter a valid email address."
-msgstr "Indtast en gyldig e-mail-adresse."
+msgstr "Indtast en gyldig e-mailadresse."
 
 #: app/Http/RequestHandlers/ContactAction.php:112
 #: app/Http/RequestHandlers/PasswordResetAction.php:80
@@ -11465,15 +11499,21 @@ msgstr "Prairial"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:49
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "Forhåndsdefineret tekst, der siger, at administratoren vil vurdere en eventuel ansøgning om en brugerkonto"
+msgstr ""
+"Forhåndsdefineret tekst der siger, at administratoren vil vurdere en "
+"eventuel ansøgning om en brugerkonto"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:48
 msgid "Predefined text that states all users can request a user account"
-msgstr "Forhåndsdefineret tekst, der siger at alle besøgende kan søge om en brugerkonto"
+msgstr ""
+"Forhåndsdefineret tekst der siger, at alle besøgende kan søge om en "
+"brugerkonto"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:50
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Forhåndsdefineret tekst, der siger at kun familiemedlemmer kan søge om en brugerkonto"
+msgstr ""
+"Forhåndsdefineret tekst der siger, at kun familiemedlemmer kan søge om en "
+"brugerkonto"
 
 #: app/Http/RequestHandlers/TreePageBlockEdit.php:60
 #: app/Http/RequestHandlers/TreePreferencesPage.php:160
@@ -11553,7 +11593,9 @@ msgstr "Privatlivsrestriktioner"
 
 #: resources/views/admin/trees-privacy.phtml:222
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Privatlivsrestriktioner - disse påvirker poster og fakta der ikke indeholder et GEDCOM RESN-tag"
+msgstr ""
+"Privatlivsrestriktioner – disse påvirker poster og fakta, der ikke "
+"indeholder et GEDCOM RESN-tag"
 
 #: app/CustomTags/Legacy.php:56 app/CustomTags/Legacy.php:60
 #: app/CustomTags/Legacy.php:82 app/CustomTags/Legacy.php:117
@@ -11851,7 +11893,7 @@ msgstr "Post"
 #: app/Gedcom.php:770 app/Gedcom.php:794 app/Gedcom.php:825 app/Gedcom.php:849
 #: app/Gedcom.php:873 app/Gedcom.php:885
 msgid "Record ID number"
-msgstr "Post ID nummer"
+msgstr "Post ID-nummer"
 
 #: app/Gedcom.php:737 app/Gedcom.php:872
 msgid "Record file number"
@@ -12011,7 +12053,7 @@ msgstr "Påmindelsesdato"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
-msgstr "Hyppighed for e-mail påmindelse (i dage)"
+msgstr "Hyppighed for e-mailpåmindelse (i dage)"
 
 #: app/CustomTags/PhpGedView.php:77
 msgid "Remote server"
@@ -12037,7 +12079,7 @@ msgstr "Fjern person"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: resources/views/admin/trees-import.phtml:122
 msgid "Remove the GEDCOM media path from filenames"
-msgstr "Fjern mediestier"
+msgstr "Fjern GEDCOM-mediestien fra filnavne"
 
 #: resources/views/admin/locations.phtml:129
 msgid "Remove this location?"
@@ -12175,7 +12217,9 @@ msgstr ""
 
 #: resources/views/modules/todo/config.phtml:18
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Forskningsopgaver benytter den brugerdefinerede GEDCOM kode “_TODO”. Andre slægtsforskningsprogrammer kan muligvis ikke genkende denne kode."
+msgstr ""
+"Forskningsopgaver benytter den brugerdefinerede GEDCOM-kode “_TODO”. Andre "
+"slægtsforskningsprogrammer kan muligvis ikke genkende denne kode."
 
 #: app/CustomTags/Gedcom7.php:186 app/Gedcom.php:731
 #: resources/views/admin/tags.phtml:1004
@@ -12217,7 +12261,7 @@ msgstr "Pension"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:172
 msgid "Rexburg, Idaho, United States"
-msgstr "Rexburg , Idaho, United States"
+msgstr "Rexburg, Idaho, United States"
 
 #: app/CustomTags/Gedcom7.php:79 app/CustomTags/Gedcom7.php:91
 #: app/CustomTags/Gedcom7.php:108 app/CustomTags/Gedcom7.php:122
@@ -12282,7 +12326,7 @@ msgstr "Réunion"
 
 #: resources/views/admin/site-mail.phtml:88
 msgid "SMTP mail server"
-msgstr "SMTP postserver"
+msgstr "SMTP-postserver"
 
 #: app/Services/ServerCheckService.php:323
 msgid "SQLite is only suitable for small sites, testing and evaluation."
@@ -12403,7 +12447,7 @@ msgstr "San Marino"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:174
 msgid "San Salvador, El Salvador"
-msgstr "San Salvador , El Salvador"
+msgstr "San Salvador, El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:175
@@ -12578,7 +12622,7 @@ msgstr "Vælg"
 
 #: resources/views/admin/trees-import.phtml:36
 msgid "Select a GEDCOM file to import"
-msgstr "Vælg en GEDCOM fil"
+msgstr "Vælg en GEDCOM-fil"
 
 #: resources/views/edit/input-addon-calendar.phtml:14
 #: resources/views/edit/input-addon-calendar.phtml:17
@@ -12592,7 +12636,7 @@ msgstr "Vælg individ sorteret på enten sted eller dato"
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:125
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Udvælg poster fra dit slægtstræ og gem dem som en GEDCOM fil."
+msgstr "Udvælg poster fra dit slægtstræ og gem dem som en GEDCOM-fil."
 
 #: resources/views/modules/statistics-chart/custom.phtml:148
 msgid "Select the desired age interval"
@@ -12645,11 +12689,11 @@ msgstr "Send besked til alle brugere"
 
 #: app/Services/MessageService.php:215
 msgid "Send a message to users who have never signed in"
-msgstr "Send meddelelse til brugere, der aldrig har logget ind"
+msgstr "Send meddelelse til brugere, der aldrig har logget på"
 
 #: app/Services/MessageService.php:216
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr "Send meddelelse til brugere, der ikke har logget ind i 6 måneder"
+msgstr "Send meddelelse til brugere, der ikke har logget på i 6 måneder"
 
 #: resources/views/admin/site-mail.phtml:233
 msgid "Send a test email using these settings"
@@ -12778,7 +12822,7 @@ msgstr "Sæt som standard"
 #: resources/views/emails/verify-notify-html.phtml:41
 #: resources/views/emails/verify-notify-text.phtml:28
 msgid "Set the access level for each tree."
-msgstr "Sæt adgangsniveau for hvert anetræ."
+msgstr "Sæt adgangsniveau for hvert slægtstræ."
 
 #: app/Http/RequestHandlers/TreePageDefaultEdit.php:69
 #: resources/views/admin/control-panel.phtml:320
@@ -12793,7 +12837,7 @@ msgstr "Indstil standardblokkene for nye brugere"
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:62
 msgid "Set the privacy access level for all dead individuals."
-msgstr "Sætter niveauet mht. beskyttelse af privatlivet for alle døde personer."
+msgstr "Sætter niveauet mht. privatlivsbeskyttelse for alle afdøde personer."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:39
@@ -13529,7 +13573,10 @@ msgstr "Somalia"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:128
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Nogle slægtsprogrammer opretter GEDCOM filer som indeholder medie filnavne med hele stier. Disse stiangivelser vil ikke eksistere på web-serveren. For at lade webtrees finde filen, skal den første del af stien fjernes."
+msgstr ""
+"Nogle slægtsprogrammer opretter GEDCOM-filer, som indeholder medie filnavne "
+"med hele stier. Disse stiangivelser vil ikke eksistere på web-serveren. For "
+"at lade webtrees finde filen, skal den første del af stien fjernes."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:88
@@ -14131,7 +14178,7 @@ msgstr "Teknisk hjælp"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:195
 msgid "Tegucigalpa, Honduras"
-msgstr "Tegucigalpa , Honduras"
+msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
@@ -14202,7 +14249,7 @@ msgstr "Feltet <b>efternavn</b> indeholder et navn der bruges til sortering og g
 #: app/Http/RequestHandlers/SynchronizeTrees.php:96
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "GEDCOM filen “%s” er blevet importeret."
+msgstr "GEDCOM-filen “%s” er blevet importeret."
 
 #: resources/views/admin/tags.phtml:35
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
@@ -14216,7 +14263,7 @@ msgstr "Haag, Holland"
 #: app/Services/ServerCheckService.php:124
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr "PHP udvidelsen “%s” er ikke installeret."
+msgstr "PHP-udvidelsen “%s” er ikke installeret."
 
 #: app/Services/ServerCheckService.php:180
 #, php-format
@@ -14226,7 +14273,7 @@ msgstr "PHP-funktionen “%1$s” er deaktiveret."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Exceptions/FileUploadException.php:76
 msgid "The PHP temporary folder is missing."
-msgstr "Manglende midlertidig PHP mappe."
+msgstr "Den midlertidige PHP-mappe mangler."
 
 #: app/Services/ServerCheckService.php:143
 #, php-format
@@ -14250,7 +14297,10 @@ msgstr "Administratoren på webtrees-hjemmesiden %s har godkendt din ansøgning 
 
 #: resources/views/verify-success-page.phtml:22
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
-msgstr "Administratoren af hjemmesiden har fået besked om din anmodning om en brugerkonto. Så snart vedkommende har godkendt din konto, kan du logge dig ind med dit brugernavn og adgangskode."
+msgstr ""
+"Administratoren af hjemmesiden har fået besked om din anmodning om en "
+"brugerkonto. Så snart vedkommende har godkendt din konto, kan du logge dig "
+"på med dit brugernavn og adgangskode."
 
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:48
@@ -14518,16 +14568,22 @@ msgstr "Modulet “%s” er blevet gjort aktivt."
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:684
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "Dette er den korte liste over GEDCOM familie fakta, der vises ved siden af den komplette liste og som kan tilføjes med et enkelt klik."
+msgstr ""
+"Dette er den korte liste over GEDCOM familiefakta, der vises ved siden af "
+"den komplette liste og som kan tilføjes med et enkelt klik."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:659
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Dette er den korte liste over GEDCOM individ fakta, der vises ved siden af den komplette liste og som kan tilføjes med et enkelt klik."
+msgstr ""
+"Dette er den korte liste over GEDCOM individfakta, der vises ved siden af "
+"den komplette liste og som kan tilføjes med et enkelt klik."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr "Den nye bruger vil blive bedt om at bekræfte deres email adresse før oprettelse af kontoen."
+msgstr ""
+"Den nye bruger vil blive bedt om at bekræfte deres e-mailadresse før "
+"oprettelse af kontoen."
 
 #: resources/views/admin/tags.phtml:939
 msgid "The next version of the GEDCOM standard will add new tags and remove old ones. You can use some of the new tags now."
@@ -14717,7 +14773,7 @@ msgstr "Brugernavn eller adgangskode er forkert."
 #. I18N: Help text for the "Username" site configuration setting
 #: resources/views/admin/site-mail.phtml:141
 msgid "The username required for authentication with the SMTP server."
-msgstr "Brugernavnet til autentificere med SMTP-serveren."
+msgstr "Brugernavnet til autentificering på SMTP-serveren."
 
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:91
 #: app/Http/RequestHandlers/ModulesAnalyticsAction.php:45
@@ -14869,7 +14925,9 @@ msgstr "Denne brugerkonto er endnu ikke blevet godkendt af administrator. Vent v
 
 #: app/Http/RequestHandlers/LoginAction.php:125
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Denne brugerkonto er ikke blevet verificeret. Check venligst dine e-mails for en mail der indeholder en besked om verifikation."
+msgstr ""
+"Denne brugerkonto er ikke blevet verificeret. Check venligst dine e-mails "
+"for en besked om verifikation."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -14946,7 +15004,10 @@ msgstr "Filnavnet er uforeneligt med GEDZIP's filformat."
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:33
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Denne mappe vil bruges af webtrees til at opbevare mediefiler, GEDCOM filer, midlertidige filer osv. Disse filer kan indeholde privat data, og bør ikke være tilgængelige over internettet."
+msgstr ""
+"Denne mappe vil bruges af webtrees til at opbevare mediefiler, GEDCOM-filer, "
+"midlertidige filer osv. Disse filer kan indeholde privat data, og bør ikke "
+"være tilgængelige over internettet."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:252
@@ -14960,7 +15021,9 @@ msgstr "Udløbet. Prøv igen."
 
 #: app/Auth.php:285
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "Dette individ eksisterer ikke, eller også har du ikke rettigheder til at se det."
+msgstr ""
+"Dette individ eksisterer ikke, eller også har du ikke adgangsrettighed til "
+"at se det."
 
 #: resources/views/individual-page-pending.phtml:23
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
@@ -15144,12 +15207,18 @@ msgstr "Dette valg styrer, om alderen af barnets far og mor skal vises ved siden
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:375
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Hvis en persons fødsel eller død ikke kendes nøjagtigt kan denne indstilling bestemme om anslåede datoer skal vises for fødsel og død i stedet for at efterlade tomme felter på lister og slægtstræer."
+msgstr ""
+"Hvis en persons fødsel eller død ikke kendes nøjagtigt, kan denne "
+"indstilling bestemme om anslåede datoer skal vises for fødsel og død i "
+"stedet for at efterlade tomme felter på lister og slægtstræer."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
 msgid "This option will make it easier for users to download images."
-msgstr "Det er muligt at tilføje et link i Mediefremviseren som giver mulighed for at downloade mediet til den lokale PC.<br><br>Dette link bør måske skjules af sikkerhedsmæssige årsager."
+msgstr ""
+"Det er muligt at tilføje et link i Mediefremviseren, som giver mulighed for "
+"at downloade mediet til den lokale computer.<br><br>Dette link bør måske "
+"skjules af sikkerhedsmæssige årsager."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
@@ -15164,7 +15233,11 @@ msgstr "Denne indstilling vil vise navnet (men ingen andre oplysninger) for priv
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Dette vindue tillader dig at springe over de normale formularer og redigere direkte i data. Det er en mulighed du kun bør benytte, hvis du forstår GEDCOM-koderne. Hvis du laver en fejltagelse her, kan det være vanskeligt at rette op på din fejl."
+msgstr ""
+"Dette vindue tillader dig at springe over de normale formularer og redigere "
+"direkte i data. Det er en mulighed, du kun bør benytte, hvis du forstår "
+"GEDCOM-koderne. Hvis du laver en fejltagelse her, kan det være vanskeligt at "
+"rette op på din fejl."
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
@@ -15179,7 +15252,9 @@ msgstr[1] "Denne side er blevet vist %s gange."
 
 #: resources/views/help/pending-changes.phtml:18
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr "Denne proces giver webstedets ejer mulighed for at sikre at ny information overholder standarder og konventioner, har korrekte kildeangivelser, osv."
+msgstr ""
+"Denne proces giver webstedets ejer mulighed for at sikre, at ny information "
+"overholder standarder og konventioner, har korrekte kildeangivelser, osv."
 
 #: app/Auth.php:255 app/Auth.php:318 app/Auth.php:434 app/Auth.php:521
 #: app/Auth.php:550
@@ -15224,24 +15299,30 @@ msgstr "Denne rolle har alle tilladelser som redaktøren har, plus tilladelse ti
 
 #: resources/views/admin/users-edit.phtml:277
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr "Denne rolle har alle de rettighed til at bestemme hvilke rettigheder brugerne skal have samt rettighed til at ændre konfiguration og indstillinger for webstedets moduler."
+msgstr ""
+"Denne rolle har alle Bestyrerens rettigheder i alle slægtstræer samt "
+"rettighed til at ændre konfiguration og indstillinger for webstedet, brugere "
+"og moduler."
 
 #: resources/views/admin/users-edit.phtml:257
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Denne rolle har alle tilladelser som brugeren har, plus rettigheder til tilføje, ændre og slette data. Enhver ændring skal godkendes af en moderator med mindre brugeren har fået aktiveret rettigheden hvor ændringer accepteres automatisk."
+msgstr ""
+"Denne rolle har alle Medlemmets rettigheder plus rettigheder til tilføje, "
+"ændre og slette data. Enhver ændring skal godkendes af en Moderator, "
+"medmindre brugeren har \"Ændringer accepteres automatisk\" aktiveret."
 
 #: resources/views/admin/users-edit.phtml:271
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 msgstr ""
-"Denne rolle har alle tilladelser som moderatoren har, samt enhver ekstra "
-"rettighed der er tilladt i stamtræets konfiguration plus rettighed til at "
-"ændre indstillinger og konfiguration for stamtræet."
+"Denne rolle har alle tilladelser som Moderatoren har samt enhver ekstra "
+"rettighed, der er tilladt i slægtstræets konfiguration plus rettighed til at "
+"ændre indstillinger og konfiguration for slægtstræet."
 
 #: resources/views/admin/users-edit.phtml:249
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
 msgstr ""
-"Denne rolle har alle tilladelser, som gæsten har samt eventuelle yderligere "
-"rettigheder, der bestemmes af konfigurationen for stamtræet."
+"Denne rolle har alle tilladelser, som Gæsten har samt eventuelle yderligere "
+"rettigheder, der bestemmes af konfigurationen for slægtstræet."
 
 #: resources/views/setup/step-2-server-checks.phtml:78
 #, php-format
@@ -15268,7 +15349,7 @@ msgstr "Denne brugerkonto har ingen adgang."
 
 #: app/Http/RequestHandlers/SetupWizard.php:176
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr "Dette betyder normalt at du skal rette mappe-rettighederne til 777."
+msgstr "Dette betyder normalt, at du skal rette mappe-rettighederne til 777."
 
 #: app/Services/UpgradeService.php:308
 msgid "This website is being upgraded. Try again in a few minutes."
@@ -15308,7 +15389,9 @@ msgstr "Dette websted bruger tredjeparts tjenester til at lære om besøgende op
 #: resources/views/admin/trees-import.phtml:30
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Dette sletter al slægtsdata fra “%s” og erstatter den med data fra en anden GEDCOM."
+msgstr ""
+"Dette sletter al slægtsdata fra “%s” og erstatter den med data fra en anden "
+"GEDCOM-fil."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:279
@@ -15471,7 +15554,10 @@ msgstr "Til"
 
 #: resources/views/modules/html/config.phtml:34
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
-msgstr "For at hjælpe dig med at komme igang med denne ramme, har vi oprettet adskillige standardskabeloner. Når du vælger en af disse skabeloner vil tekstområdet indeholde en kopi som du kan ændre efter behov."
+msgstr ""
+"For at hjælpe dig med at komme igang med denne ramme, har vi oprettet "
+"adskillige standardskabeloner. Når du vælger en af disse skabeloner, vil "
+"tekstområdet indeholde en kopi, som du kan ændre efter behov."
 
 #: resources/views/admin/tags.phtml:1027
 msgid "To create new data using custom tags, you need to enable them."
@@ -15491,7 +15577,10 @@ msgstr "For at kunne vise kort skal kortudbyderen først aktiveres i kontrolpane
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:589
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "For at sikre kompatibilitet med andre slægtsforskning programmer, bør noter, tekst, og udskrifter registreres i enkel, uformateret tekst. Men formatering er ofte ønskeligt for at yde den bedste præsentation, forståelse, etc."
+msgstr ""
+"For at sikre kompatibilitet med andre slægtsforskningsprogrammer, bør noter, "
+"tekst og udskrifter registreres i enkel, uformateret tekst. Men formatering "
+"er ofte ønskeligt for at yde den bedste præsentation, forståelse, etc."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:37
@@ -15732,7 +15821,7 @@ msgstr "Trinidad og Tobago"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200
 msgid "Trujillo, Peru"
-msgstr "Trujillo , Peru"
+msgstr "Trujillo, Peru"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:275
@@ -15777,7 +15866,7 @@ msgstr "Tuxtla Gutiérrez, Mexico"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:201
 msgid "Twin Falls, Idaho, United States"
-msgstr "Twin Falls , Idaho, United States"
+msgstr "Twin Falls, Idaho, United States"
 
 #: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:97
 #: app/CustomTags/Gedcom7.php:101 app/CustomTags/Gedcom7.php:112
@@ -16009,7 +16098,8 @@ msgstr "Opdatér stednavne"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:65
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr "Opdater de højere niveau af stednavne, mens du holder de lavere niveauer ens."
+msgstr ""
+"Opdater de højere niveauer af stednavne, mens de lavere niveauer fastholdes."
 
 #. I18N: GEDCOM tag _UPD
 #: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
@@ -16165,7 +16255,7 @@ msgstr "Brugernavn"
 
 #: resources/views/forgot-password-page.phtml:23
 msgid "Username or email address"
-msgstr "Brugernavn eller e-mail adresse"
+msgstr "Brugernavn eller e-mailadresse"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:61
@@ -16192,7 +16282,7 @@ msgstr "Usbekistan"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:202
 msgid "Vancouver, British Columbia, Canada"
-msgstr "Vancouver , British Columbia, Canada"
+msgstr "Vancouver, British Columbia, Canada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:532
@@ -16337,7 +16427,7 @@ msgstr "Synlig online"
 #: resources/views/admin/users-edit.phtml:174
 #: resources/views/edit-account-page.phtml:150
 msgid "Visible to other users when online"
-msgstr "Synlig for andre brugere der er logget ind"
+msgstr "Synlig for andre brugere, der er logget på"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:95
@@ -16456,7 +16546,11 @@ msgstr "Når en post redigeres, vil brugernavn og tidsstempel blive registreret 
 
 #: resources/views/admin/users-edit.phtml:109
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Når en gæst på websiden ønsker at oprette en brugerkonto sendes en e-mail til deres e-mail adresse med en verifikationslink. Når der klikkes på denne link ved webtrees at e-mail adressen er korrekt og dermed afkrydses feltet “E-mail verificeret”."
+msgstr ""
+"Når en gæst på websiden ønsker at oprette en brugerkonto, sendes en e-mail "
+"til deres e-mailadresse med en verifikationslink. Når der klikkes på dette "
+"link, ved webtrees, at e-mailadressen er korrekt, og dermed afkrydses feltet "
+"“E-mail verificeret”."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -16469,13 +16563,17 @@ msgstr "Når du tilføjer et nyt familiemedlem, kan der automatisk blive tilføj
 
 #: resources/views/help/pending-changes.phtml:14
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Når du tilføjer, redigerer eller sletter information bliver disse ikke gemt med det samme. I stedet for opbevares de i et midlertidigt område. De nye informationer træder først i kraft når de er blevet kontrolleret og accepteret af administrator."
+msgstr ""
+"Når du tilføjer, redigerer eller sletter information, bliver ændringerne "
+"ikke gemt straks. I stedet for opbevares de i et midlertidigt område. De nye "
+"informationer træder først i kraft, når de er blevet kontrolleret og "
+"accepteret af administrator."
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
-"Hvor en bruger er tilknyttet en person i stamtræet og brugeren enten er "
-"medlem, redaktør eller moderator, kan du forhindre dem i at få adgang til "
+"Hvor en bruger er tilknyttet en person i slægtstræet og brugeren enten er "
+"Medlem, Redaktør eller Moderator, kan du forhindre dem i at få adgang til "
 "fjerne slægtninge, der stadig er levende. Du skal angive, hvor mange "
 "slægtled brugeren skal have tilladelse til at se."
 
@@ -16596,7 +16694,9 @@ msgstr "Yemen"
 #: resources/views/emails/register-user-text.phtml:18
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Du (eller nogen, der hævder at være dig) har anmodet om en brugerkonto hos %1$s ved brug af e-mail adressen %2$s."
+msgstr ""
+"Du (eller nogen, der hævder at være dig) har anmodet om en brugerkonto hos "
+"%1$s ved brug af e-mailadressen %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:122
 #: app/Http/RequestHandlers/RegisterAction.php:271
@@ -16606,7 +16706,7 @@ msgstr "Du har ikke tilladelse til at sende beskeder som indeholder eksterne lin
 #: resources/views/modules/login_block/sign-out.phtml:17
 #, php-format
 msgid "You are signed in as %s."
-msgstr "Du er logget på som %s 1."
+msgstr "Du er logget på som %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:97
 msgid "You can apply for an account using the link below."
@@ -16620,14 +16720,14 @@ msgstr "Du kan ændre udseendet af webtrees ved at benytte “Temaer”. Hvert t
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Et check i checkboks fortæller, at andre, der er aktive, kan se at nu er du også er logget på. Uden check her så kan de andre ikke se, at du er aktiv, og du kan heller ikke se hvem der er aktive."
+msgstr "Du kan vælge, om du vil fremgå af listen med brugere, der er logget på."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:29
 #: resources/views/edit/raw-gedcom-record.phtml:28
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr "Du kan hente en kopi af GEDCOM specifikationerne fra %s."
+msgstr "Du kan hente en kopi af GEDCOM-specifikationerne fra %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:66
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
@@ -16646,7 +16746,10 @@ msgstr "Du kan re-nummerere posterne i træet."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Du kan opsætte adgangsregler til en bestemt post, hændelse eller begivenhed ved at tilføje en begrænsninger. Hvis en post, hændelse eller begivenhed ikke har en begrænsning, vil standardindstillingerne blive anvendt."
+msgstr ""
+"Du kan opsætte adgangsregler til en bestemt post, hændelse eller begivenhed "
+"ved at tilføje en begrænsning. Hvis en post, hændelse eller begivenhed ikke "
+"har en begrænsning, vil standardindstillingerne blive anvendt."
 
 #: resources/views/admin/tags.phtml:39
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
@@ -16672,7 +16775,7 @@ msgstr "Du har bekræftet din anmodning om at få en konto på hjemmesiden."
 
 #: resources/views/admin/trees-import.phtml:33
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr "Du har valgt en GEDCOM med et andet navn. Er det korrekt?"
+msgstr "Du har valgt en GEDCOM-fil med et andet navn. Er det korrekt?"
 
 #: app/Http/RequestHandlers/Logout.php:52
 msgid "You have signed out."
@@ -16714,7 +16817,7 @@ msgstr "Du er nødt til at oprette et stamtræ."
 #: resources/views/emails/verify-notify-html.phtml:30
 #: resources/views/emails/verify-notify-text.phtml:23
 msgid "You need to review the account details."
-msgstr "Du bør gennemse konto detaljerne."
+msgstr "Du bør gennemse kontodetaljerne."
 
 #: resources/views/setup/step-5-administrator.phtml:51
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -16738,7 +16841,9 @@ msgstr "Du bør slette “%1$s” fra “%2$s” og prøve igen."
 
 #: resources/views/admin/users-edit.phtml:115
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Du bør ikke godkende en brugerkonto medmindre du ved at e-mail adressen er korrekt."
+msgstr ""
+"Du bør ikke godkende en brugerkonto, medmindre du ved, at e-mailadressen er "
+"korrekt."
 
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
@@ -16786,7 +16891,9 @@ msgstr "Din registrering på %s"
 #: app/Services/ServerCheckService.php:195
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr "Din server bruger PHP versionen %s og denne bliver ikke længere sikkerhedsopdateret. Du bør snarest opgradere til en nyere version."
+msgstr ""
+"Din server bruger PHP-version %s . Denne version bliver ikke længere "
+"sikkerhedsopdateret. Du bør snarest opgradere til en nyere version."
 
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:40
@@ -17600,12 +17707,12 @@ msgstr "farfars søster barn"
 #: app/Services/RelationshipService.php:1156
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "farfars søster datter"
+msgstr "farfars søsterdatter"
 
 #: app/Services/RelationshipService.php:1158
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "farfars søster søn"
+msgstr "farfars søstersøn"
 
 #: app/Services/RelationshipService.php:1166
 msgctxt "father’s mother’s brother’s child"
@@ -17630,12 +17737,12 @@ msgstr "farmors søster barn"
 #: app/Services/RelationshipService.php:1168
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "farmors søster datter"
+msgstr "farmors søsterdatter"
 
 #: app/Services/RelationshipService.php:1170
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "farmors søster søn"
+msgstr "farmors søstersøn"
 
 #: app/Services/RelationshipService.php:1178
 msgctxt "mother’s father’s brother’s child"
@@ -17660,12 +17767,12 @@ msgstr "morfars søster barn"
 #: app/Services/RelationshipService.php:1180
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "morfars søster datter"
+msgstr "morfars søsterdatter"
 
 #: app/Services/RelationshipService.php:1182
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "morfars søster søn"
+msgstr "morfars søstersøn"
 
 #: app/Services/RelationshipService.php:1190
 msgctxt "mother’s mother’s brother’s child"
@@ -17690,12 +17797,12 @@ msgstr "mormors søster barn"
 #: app/Services/RelationshipService.php:1192
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "mormors søster datter"
+msgstr "mormors søsterdatter"
 
 #: app/Services/RelationshipService.php:1194
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "mormors søster søn"
+msgstr "mormors søstersøn"
 
 #: app/Services/RelationshipService.php:2349
 msgid "fourteenth cousin"
