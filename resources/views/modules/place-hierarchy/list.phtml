@@ -20,11 +20,8 @@ use Fisharebest\Webtrees\Place;
     <?php foreach ($columns as $column) : ?>
         <ul class="col wt-page-options-value me-1 list-unstyled">
             <?php foreach ($column as $place) : ?>
-                <li>
-                    <a href="<?= e($place->url()) ?>"><?= $place->fullName() ?></a>
-                </li>
+                <li><?= $place->fullName(true) ?></li>
             <?php endforeach ?>
         </ul>
     <?php endforeach ?>
 </div>
-
