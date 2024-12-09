@@ -55,9 +55,7 @@ use Illuminate\Support\Collection;
                 (<?= I18N::plural('%s year', '%s years', $fact->anniv, I18N::number($fact->anniv)) ?>)
             <?php endif ?>
             <?php if ($fact->place()->gedcomName() !== '') : ?>
-                — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">
-                    <?= $fact->place()->shortName() ?>
-                </a>
+                — <?= $fact->place()->shortName(true) ?>
             <?php endif ?>
         </div>
     </div>

@@ -32,9 +32,7 @@ use Fisharebest\Webtrees\Fact;
         </div>
 
         <div>
-            <a href="<?= e($fact->place()->url()) ?>">
-                <?= $fact->place()->fullName() ?>
-            </a>
+            <?= $fact->place()->fullName(true) ?>
         </div>
     </div>
     <div class="d-none d-lg-block">
