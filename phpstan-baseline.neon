@@ -4395,11 +4395,23 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$updated\.$#'
 			identifier: property.notFound
+			count: 3
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
+			message: '#^Cannot call method setTimezone\(\) on DateTimeImmutable\|false\.$#'
+			identifier: method.nonObject
 			count: 2
 			path: app/Module/FamilyTreeNewsModule.php
 
 		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/FamilyTreeNewsModule.php
+
+		-
+			message: '#^Parameter \#2 \$datetime of static method DateTimeImmutable\:\:createFromFormat\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/FamilyTreeNewsModule.php
@@ -5799,7 +5811,7 @@ parameters:
 		-
 			message: '#^Parameter \#2 \$default of method Fisharebest\\Webtrees\\Tree\:\:getPreference\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
-			count: 3
+			count: 5
 			path: app/Module/RelationshipsChartModule.php
 
 		-
@@ -6255,11 +6267,23 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$updated\.$#'
 			identifier: property.notFound
+			count: 3
+			path: app/Module/UserJournalModule.php
+
+		-
+			message: '#^Cannot call method setTimezone\(\) on DateTimeImmutable\|false\.$#'
+			identifier: method.nonObject
 			count: 2
 			path: app/Module/UserJournalModule.php
 
 		-
 			message: '#^Parameter \#1 \$string of method Fisharebest\\Webtrees\\Contracts\\TimestampFactoryInterface\:\:fromString\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Module/UserJournalModule.php
+
+		-
+			message: '#^Parameter \#2 \$datetime of static method DateTimeImmutable\:\:createFromFormat\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/UserJournalModule.php

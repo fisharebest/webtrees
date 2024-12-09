@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\Tree;
  * @var string $subject
  * @var string $title
  * @var Tree   $tree
+ * @var string $updated
  */
 
 ?>
@@ -18,44 +19,60 @@ use Fisharebest\Webtrees\Tree;
 <h2><?= $title ?></h2>
 
 <form method="post">
-    <table>
-        <tr>
-            <th>
-                <label for="subject">
-                    <?= I18N::translate('Title') ?>
-                </label>
-            </th>
-        <tr>
-        <tr>
-            <td>
-                <input type="text" id="subject" name="subject" size="50" dir="auto" autofocus value="<?= e($subject) ?>">
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <label for="body">
-                    <?= I18N::translate('Content') ?>
-                </label>
-            </th>
-        </tr>
-        <tr>
-            <td>
-                <textarea id="body" name="body" class="html-edit form-control" rows="10" dir="auto"><?= e($body) ?></textarea>
-            </td>
-        </tr>
+    <div class="row mb-3">
+        <label class="col-sm-3" for="subject">
+            <?= I18N::translate('Title') ?>
+        </label>
 
-        <tr>
-            <td>
-                <button class="btn btn-primary" type="submit">
-                    <?= I18N::translate('save') ?>
-                </button>
+        <div class="col-sm-9">
+            <input type="text" id="subject" name="subject" size="50" dir="auto" autofocus value="<?= e($subject) ?>">
+        </div>
+    </div>
 
-                <a class="btn btn-secondary" href="<?= e(route(TreePage::class, ['tree' => $tree->name()])) ?>">
-                    <?= I18N::translate('cancel') ?>
-                </a>
-            </td>
-        </tr>
-    </table>
+    <div class="row mb-3">
+        <label class="col-sm-3" for="body">
+            <?= I18N::translate('Content') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <textarea id="body" name="body" class="html-edit form-control" rows="10" dir="auto"><?= e($body) ?></textarea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3" for="timestamp">
+            <?= I18N::translate('Timestamp') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="use-current-timestamp" value="0" id="update-timestamp-no" checked="checked"/>
+                <input type="datetime-local" id="timestamp" name="timestamp" value="<?= e($updated) ?>">
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="use-current-timestamp" value = "1" id="update-timestamp-yes"/>
+
+                <label class="form-check-label" for="update-timestamp-yes">
+                    <?= I18N::translate('Use current timestamp') ?>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-sm-3"></div>
+
+        <div class="col-sm-9">
+            <button class="btn btn-primary" type="submit">
+                <?= I18N::translate('save') ?>
+            </button>
+
+            <a class="btn btn-secondary" href="<?= e(route(TreePage::class, ['tree' => $tree->name()])) ?>">
+                <?= I18N::translate('cancel') ?>
+            </a>
+        </div>
+    </div>
 
     <?= csrf_field() ?>
 </form>
