@@ -56,7 +56,7 @@
         "illuminate/support": "8.83.27",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.10",
-        "league/commonmark": "2.5.3",
+        "league/commonmark": "2.6.0",
         "league/flysystem": "2.5.0",
         "league/flysystem-ziparchive": "2.3.1",
         "middlewares/client-ip": "2.0.1",
@@ -86,7 +86,7 @@
         "composer/composer": "2.8.3",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "9.6.21"
+        "phpunit/phpunit": "9.6.22"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
