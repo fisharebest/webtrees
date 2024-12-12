@@ -49,7 +49,7 @@ use Illuminate\Support\Collection;
             <?php elseif ($show_date) : ?>
                 <?= /* I18N: [a record was] Changed on <date/time> */ I18N::translate('Changed on %1$s', view('components/datetime', ['timestamp' => $row->time])) ?>
             <?php elseif ($show_user) : ?>
-                <?= /* I18N: [a record was] Changed on <date/time> */ I18N::translate('Changed by %1$s', e($row->user->userName())) ?>
+                <?= /* I18N: [a record was] Changed by <user> */ I18N::translate('Changed by %1$s', e($row->user->userName())) ?>
             <?php endif ?>
         </div>
     </div>
