@@ -7831,12 +7831,6 @@ parameters:
 			path: app/Services/GedcomImportService.php
 
 		-
-			message: '#^Strict comparison using \!\=\= between ''FILE'' and ''NOTE'' will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: app/Services/GedcomImportService.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$module_name\.$#'
 			identifier: property.notFound
 			count: 2
