@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-02 12:38+0000\n"
+"PO-Revision-Date: 2024-12-15 12:08+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
@@ -449,7 +449,7 @@ msgstr[1] "%s uker"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s år"
-msgstr[1] "%s årene"
+msgstr[1] "%s år"
 
 #: app/I18N.php:794
 #, php-format
