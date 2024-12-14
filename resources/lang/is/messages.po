@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-12-10 20:08+0000\n"
+"PO-Revision-Date: 2024-12-15 12:08+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -8977,7 +8977,11 @@ msgstr "Mörg ættfræðiforrit skilgreina sín eigin sérsniðnu GEDCOM merki o
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:619
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkimiðum og webtrees skilur flesta þeirra. Þegar óþekkjanlegir merkimiðar finnst þá gerir þessi valkostur þér kleift að velja hvort eigi að hunsa þá eða birta aðvörunarskilaboð."
+msgstr ""
+"Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkjum og webtrees "
+"skilur flest þeirra. Þegar óþekkjanleg merki finnast þá gerir þessi "
+"valkostur þér kleift að velja hvort eigi að hunsa þau eða birta "
+"aðvörunarskilaboð."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:90
@@ -14859,7 +14863,9 @@ msgstr "Þessi reikningur hefur ekki verið samþykktur. Vinsamlega bíðið eft
 
 #: app/Http/RequestHandlers/LoginAction.php:125
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Þessi reikningur hefur ekki verið staðfestur. Vinsamlega athugaðu tölvupóstinn þinn varðandi staðfestingar skilaboði."
+msgstr ""
+"Þessi reikningur hefur ekki verið staðfestur. Vinsamlega athugaðu "
+"tölvupóstinn þinn gagnvart staðfestingar skilaboði."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
