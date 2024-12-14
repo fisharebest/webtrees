@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-10-28 13:11+0000\n"
+"PO-Revision-Date: 2024-12-15 12:08+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -8701,7 +8701,11 @@ msgstr "Handrit"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1593
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkimiðum og webtrees skilur flest þeirra. Þegar óþekkjanlegir merkimiðar finnst þá gerir þessi valkostur þér kleift að velja hvort eigi að hunsa þá eða birta aðvörunar skilaboð."
+msgstr ""
+"Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkjum og webtrees "
+"skilur flest þeirra. Þegar óþekkjanleg merki finnast þá gerir þessi "
+"valkostur þér kleift að velja hvort eigi að hunsa þau eða birta "
+"aðvörunarskilaboð."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:433
@@ -14403,7 +14407,9 @@ msgstr "Þessi reikningur hefur ekki verið samþykktur. Vinsamlega bíðið eft
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Þessi reikningur hefur ekki verið staðfestur. Vinsamlega athugaðu tölvupóstinn þinn varðandi staðfestingar skilaboði."
+msgstr ""
+"Þessi reikningur hefur ekki verið staðfestur. Vinsamlega athugaðu "
+"tölvupóstinn þinn gagnvart staðfestingar skilaboði."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
