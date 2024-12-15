@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2024-12-15 12:08+0000\n"
+"PO-Revision-Date: 2024-12-16 13:08+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -5619,7 +5619,7 @@ msgstr ""
 "fyrir lögsögu staða. Til dæmis skráir Manntal manntalsatburði og kirkjubækur "
 "skráir fæðingar-, hjónabands- og andlátsatburði. <br><br> Veldu atburði sem "
 "skráðir eru af þessari heimild frá listanum yfir atburði. Dagsetninguna ætti "
-"að tilgreina á sviðssniði eins og <i> FRÁ 1900 TIL 1910 </i>. Staðarumdæmi "
+"að tilgreina á sviðssniði eins og <i> FROM 1900 TO 1910 </i>. Staðarumdæmi "
 "er nafn lægsta staðarumdæmis sem nær til allra lægri staða sem nefndir eru í "
 "þessari heimild. Til dæmis, „Oneida, Idaho, Bandaríkjunum“ væri notað sem "
 "heimildar staðarumdæmis fyrir atburði sem áttu sér stað í hinum ýmsu bæjum í "
@@ -9873,12 +9873,12 @@ msgstr "Mánuður"
 #: app/Module/StatisticsChartModule.php:281
 #: resources/views/modules/statistics-chart/custom.phtml:35
 msgid "Month of birth"
-msgstr "Fæðingamánuður"
+msgstr "Fæðingarmánuður"
 
 #: app/Module/StatisticsChartModule.php:421
 #: resources/views/modules/statistics-chart/custom.phtml:37
 msgid "Month of birth of first child in a relation"
-msgstr "Fæðingamánuður hjá fyrsta barni í sambandi"
+msgstr "Fæðingarmánuður hjá fyrsta barni í sambandi"
 
 #: app/Module/StatisticsChartModule.php:330
 #: resources/views/modules/statistics-chart/custom.phtml:36
