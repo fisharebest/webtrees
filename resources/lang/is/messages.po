@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-15 12:08+0000\n"
+"PO-Revision-Date: 2024-12-16 07:25+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -1870,7 +1870,9 @@ msgstr "Stundaglasagraf yfir forfeður og afkomendur einstaklings."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
-msgstr "Einstaklingur getur átt fleiri en eina foreldra. Til dæmis, fæðing og ættleidd."
+msgstr ""
+"Einstaklingur getur átt fleiri en eitt foreldri eða foreldra. Til dæmis, "
+"fæðing og ættleidd."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:55
@@ -5435,7 +5437,18 @@ msgstr "Tvöfalt notandaheiti. Notandi með þetta notandaheiti er þegar til st
 
 #: resources/views/help/source-events.phtml:10
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Hver heimild skráir tiltekna atburði, venjulega fyrir tiltekið tímabil og fyrir lögsögu staða. Til dæmis skráir Manntal manntalsatburði og kirkjubækur skráir fæðingar-, hjónabands- og andlátsatburði. <br><br> Veldu atburði sem skráðir eru af þessari heimild frá listanum yfir atburði. Dagsetninguna ætti að tilgreina á sviðssniði eins og <i> FRÁ 1900 TIL 1910 </i>. Staðarumdæmi er nafn lægsta staðarumdæmis sem nær til allra lægri staða sem nefndir eru í þessari heimild. Til dæmis, „Oneida, Idaho, Bandaríkjunum“ væri notað sem heimildar staðarumdæmis fyrir atburði sem áttu sér stað í hinum ýmsu bæjum í Oneida-sýslu. „Idaho, USA“ væri heimild staðarumdæmis ef atburðirnir sem skráðir voru áttu sér stað ekki aðeins í Oneida-sýslu heldur einnig í öðrum sýslum í Idaho."
+msgstr ""
+"Hver heimild skráir tiltekna atburði, venjulega fyrir tiltekið tímabil og "
+"fyrir lögsögu staða. Til dæmis skráir Manntal manntalsatburði og kirkjubækur "
+"skráir fæðingar-, hjónabands- og andlátsatburði. <br><br> Veldu atburði sem "
+"skráðir eru af þessari heimild frá listanum yfir atburði. Dagsetninguna ætti "
+"að tilgreina á sviðssniði eins og <i> FROM 1900 TO 1910 </i>. Staðarumdæmi "
+"er nafn lægsta staðarumdæmis sem nær til allra lægri staða sem nefndir eru í "
+"þessari heimild. Til dæmis, „Oneida, Idaho, Bandaríkjunum“ væri notað sem "
+"heimildar staðarumdæmis fyrir atburði sem áttu sér stað í hinum ýmsu bæjum í "
+"Oneida-sýslu. „Idaho, USA“ væri heimild staðarumdæmis ef atburðirnir sem "
+"skráðir voru áttu sér stað ekki aðeins í Oneida-sýslu heldur einnig í öðrum "
+"sýslum í Idaho."
 
 #: resources/views/help/pending-changes.phtml:27
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -9685,12 +9698,12 @@ msgstr "Mánuður"
 #: app/Module/StatisticsChartModule.php:271
 #: resources/views/modules/statistics-chart/custom.phtml:35
 msgid "Month of birth"
-msgstr "Fæðingamánuður"
+msgstr "Fæðingarmánuður"
 
 #: app/Module/StatisticsChartModule.php:411
 #: resources/views/modules/statistics-chart/custom.phtml:37
 msgid "Month of birth of first child in a relation"
-msgstr "Fæðingamánuður hjá fyrsta barni í sambandi"
+msgstr "Fæðingarmánuður hjá fyrsta barni í sambandi"
 
 #: app/Module/StatisticsChartModule.php:320
 #: resources/views/modules/statistics-chart/custom.phtml:36
