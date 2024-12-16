@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-15 12:08+0000\n"
+"PO-Revision-Date: 2024-12-17 22:08+0000\n"
 "Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
@@ -242,7 +242,7 @@ msgstr[1] "%s anonyme innloggede brukere"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s barn"
-msgstr[1] "%s barnene"
+msgstr[1] "%s barn"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:314
@@ -278,7 +278,7 @@ msgstr[1] "%s slektstrær"
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s barnebarn"
-msgstr[1] "%s barnebarnene"
+msgstr[1] "%s barnebarn"
 
 #: app/I18N.php:806
 #, php-format
