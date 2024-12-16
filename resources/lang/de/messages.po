@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-12-04 11:33+0000\n"
+"PO-Revision-Date: 2024-12-17 13:06+0000\n"
 "Last-Translator: mpwt <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/de/>\n"
@@ -11890,7 +11890,7 @@ msgstr "Regina, Saskatchewan, Kanada"
 #: app/CustomTags/Aldfaer.php:62 app/Elements/MarriageType.php:62
 #: resources/xml/reports/fact_sources.xml:205
 msgid "Registered partnership"
-msgstr "eingetragene Lebenspartnerschaft"
+msgstr "Eingetragene Lebenspartnerschaft"
 
 #: app/Elements/RelationIsDescriptor.php:123
 msgid "Registry officer"
