@@ -7687,12 +7687,6 @@ parameters:
 			path: app/Services/GedcomEditService.php
 
 		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/GedcomEditService.php
-
-		-
 			message: '#^Parameter \#2 \$pieces of function implode expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -8269,7 +8263,7 @@ parameters:
 			path: app/Services/PendingChangesService.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingChanges\(\) should return array\<array\<object\>\> but returns array\<int\|string, list\<mixed\>\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingChanges\(\) should return array\<array\<object\>\> but returns array\<list\<mixed\>\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Services/PendingChangesService.php
@@ -8839,12 +8833,6 @@ parameters:
 			path: app/Statistics/Google/ChartAge.php
 
 		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
 			message: '#^Parameter \#1 \$number of function round expects float, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -9105,12 +9093,6 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
 
@@ -9601,7 +9583,7 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:topSurnames\(\) should return array\<array\<int\>\> but returns array\<int\|string, array\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:topSurnames\(\) should return array\<array\<int\>\> but returns array\<array\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
