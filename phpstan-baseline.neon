@@ -1303,19 +1303,19 @@ parameters:
 			path: app/Http/Middleware/RequestHandler.php
 
 		-
+			message: '#^Only iterables can be unpacked, mixed given\.$#'
+			identifier: arrayUnpacking.nonIterable
+			count: 1
+			path: app/Http/Middleware/Router.php
+
+		-
 			message: '#^Parameter \#1 \$key of method Illuminate\\Support\\Collection\<\(int\|string\),Fisharebest\\Webtrees\\Tree\>\:\:get\(\) expects \(int\|string\), mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/Middleware/Router.php
 
 		-
-			message: '#^Parameter \#1 \$middleware of class Middleland\\Dispatcher constructor expects array\<array\|Closure\|Psr\\Http\\Server\\MiddlewareInterface\|string\>, non\-empty\-array given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/Middleware/Router.php
-
-		-
-			message: '#^Parameter \#2 \.\.\.\$arrays of function array_merge expects array, mixed given\.$#'
+			message: '#^Parameter \$middleware of static method Fisharebest\\Webtrees\\Http\\Dispatcher\:\:dispatch\(\) expects list\<class\-string\|Psr\\Http\\Server\\MiddlewareInterface\>, non\-empty\-array given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/Middleware/Router.php
@@ -2167,7 +2167,7 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, mixed given\.$#'
+			message: '#^Parameter \#1 \$str of function strtr expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 2
 			path: app/Http/RequestHandlers/MapDataImportAction.php
@@ -6421,6 +6421,12 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\|null\>\.$#'
 			identifier: assign.propertyType
 			count: 2
@@ -6428,12 +6434,6 @@ parameters:
 
 		-
 			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<int, Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserGenerate\:\:\$list \(array\<Fisharebest\\Webtrees\\GedcomRecord\|static\(Fisharebest\\Webtrees\\Report\\ReportParserGenerate\)\>\) does not accept array\<int\|string, Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -6878,12 +6878,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/GedcomEditService.php
-
-		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/GedcomEditService.php
@@ -7879,12 +7873,6 @@ parameters:
 			path: app/Statistics/Google/ChartAge.php
 
 		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
 			message: '#^Parameter \#1 \$num of function round expects float\|int, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -8121,12 +8109,6 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
 

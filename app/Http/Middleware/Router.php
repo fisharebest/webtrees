@@ -24,13 +24,12 @@ use Aura\Router\RouterContainer;
 use Aura\Router\Rule\Accepts;
 use Aura\Router\Rule\Allows;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Http\Dispatcher;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use Fisharebest\Webtrees\Webtrees;
-use Middleland\Dispatcher;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -43,35 +42,15 @@ use function str_contains;
 /**
  * Simple class to help migrate to a third-party routing library.
  */
-class Router implements MiddlewareInterface
+readonly class Router implements MiddlewareInterface
 {
-    private ModuleService $module_service;
-
-    private RouterContainer $router_container;
-
-    private TreeService $tree_service;
-
-    /**
-     * @param ModuleService   $module_service
-     * @param RouterContainer $router_container
-     * @param TreeService     $tree_service
-     */
     public function __construct(
-        ModuleService $module_service,
-        RouterContainer $router_container,
-        TreeService $tree_service
+        private ModuleService $module_service,
+        private RouterContainer $router_container,
+        private TreeService $tree_service
     ) {
-        $this->module_service   = $module_service;
-        $this->router_container = $router_container;
-        $this->tree_service     = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Ugly URLs store the path in a query parameter.
@@ -116,31 +95,22 @@ class Router implements MiddlewareInterface
                 }
             }
 
-            // Not found
             return $handler->handle($request);
         }
 
         // Add the route as attribute of the request
         $request = $request->withAttribute('route', $route);
 
-        // This middleware cannot run until after the routing, as it needs to know the route.
-        $post_routing_middleware = [CheckCsrf::class];
-
-        // Firstly, apply the route middleware
         $route_middleware = $route->extras['middleware'] ?? [];
 
-        // Secondly, apply any module middleware
         $module_middleware = $this->module_service->findByInterface(MiddlewareInterface::class)->all();
 
-        // Finally, run the handler using middleware
-        $handler_middleware = [RequestHandler::class];
-
-        $middleware = array_merge(
-            $post_routing_middleware,
-            $route_middleware,
-            $module_middleware,
-            $handler_middleware
-        );
+        $middleware = [
+            ...$route_middleware,
+            CheckCsrf::class,
+            ...$module_middleware,
+            RequestHandler::class,
+        ];
 
         // Add the matched attributes to the request.
         foreach ($route->attributes as $key => $value) {
@@ -163,8 +133,6 @@ class Router implements MiddlewareInterface
         // Bind the updated request into the container
         Registry::container()->set(ServerRequestInterface::class, $request);
 
-        $dispatcher = new Dispatcher($middleware, Registry::container());
-
-        return $dispatcher->dispatch($request);
+        return Dispatcher::dispatch(middleware: $middleware, request: $request);
     }
 }

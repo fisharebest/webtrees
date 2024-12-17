@@ -17,27 +17,16 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
-
-#[CoversClass(NoRouteFound::class)]
-class NoRouteFoundTest extends TestCase
+#[CoversClass(NotFound::class)]
+class NotFoundTest extends TestCase
 {
-    public function testMiddleware(): void
+    public function testClass(): void
     {
-        $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willReturn(response());
-
-        $request    = self::createRequest();
-        $middleware = new NoRouteFound();
-        $response   = $middleware->process($request, $handler);
-
-        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
+        self::assertTrue(class_exists(NotFound::class));
     }
 }

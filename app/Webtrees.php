@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Factories\TimeFactory;
 use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
+use Fisharebest\Webtrees\Http\Dispatcher;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
@@ -61,7 +62,6 @@ use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\ErrorHandler;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
-use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PublicFiles;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
 use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
@@ -73,7 +73,6 @@ use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
-use Middleland\Dispatcher;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -174,7 +173,6 @@ class Webtrees
         RegisterGedcomTags::class,
         BootModules::class,
         Router::class,
-        NoRouteFound::class,
     ];
 
     public static function new(): self
@@ -275,8 +273,6 @@ class Webtrees
 
         $request = $server_request_creator->fromGlobals();
 
-        $dispatcher = new Dispatcher(self::MIDDLEWARE, Registry::container());
-
-        return $dispatcher->dispatch($request);
+        return Dispatcher::dispatch(middleware: self::MIDDLEWARE, request: $request);
     }
 }

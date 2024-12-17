@@ -17,43 +17,29 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
-use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
 use function route;
 
-/**
- * Middleware to generate a response when no route was matched.
- */
-class NoRouteFound implements MiddlewareInterface
+class NotFound implements RequestHandlerInterface
 {
-    use ViewResponseTrait;
-
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        // Bind the request into the container.  We'll need it to generate an error page.
+        // Need the request to generate a route/error page.
         Registry::container()->set(ServerRequestInterface::class, $request);
 
         if ($request->getMethod() !== RequestMethodInterface::METHOD_GET) {
             throw new HttpNotFoundException();
         }
 
-        return redirect(route(HomePage::class));
+        return redirect(url: route(route_name: HomePage::class));
     }
 }
