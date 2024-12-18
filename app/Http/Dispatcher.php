@@ -50,8 +50,10 @@ readonly class Dispatcher
     /**
      * @param class-string|MiddlewareInterface $item
      */
-    private static function reduceMiddleware(RequestHandlerInterface $carry, string|MiddlewareInterface $item): RequestHandlerInterface
-    {
+    private static function reduceMiddleware(
+        RequestHandlerInterface $carry,
+        string|MiddlewareInterface $item,
+    ): RequestHandlerInterface {
         return new readonly class (carry: $carry, item: $item) implements RequestHandlerInterface {
             /**
              * @param class-string|MiddlewareInterface $item
@@ -66,7 +68,7 @@ readonly class Dispatcher
             {
                 $item = $this->item;
 
-                if (is_string($item)) {
+                if (is_string(value: $item)) {
                     $item = Registry::container()->get(id: $item);
                 }
 
