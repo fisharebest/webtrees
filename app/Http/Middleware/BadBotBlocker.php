@@ -97,6 +97,7 @@ class BadBotBlocker implements MiddlewareInterface
         'MegaIndex.ru',
         'MJ12bot',
         'netEstate NE',
+        'OAI-SearchBot', // Collects training data for LLMs
         'Omgilibot', // Collects training data for LLMs
         'panscient',
         'PetalBot',
