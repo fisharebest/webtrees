@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-04-08 16:59+0000\n"
+"PO-Revision-Date: 2024-12-20 09:08+0000\n"
 "Last-Translator: Chris <tronsmit@gmail.com>\n"
-"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
+"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/af/>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3808,7 +3809,7 @@ msgstr "Gemeenregtelike huwelik"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Gemeenregtelike huwelik"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:71
@@ -12780,7 +12781,7 @@ msgstr "Installeeringsghoeroe vir webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Geslag"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
