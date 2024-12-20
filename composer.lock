@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1b49ac9bccd0350c3dd451e13b79827",
+    "content-hash": "6cb84d6ae482eaab35dd18feca4cba75",
     "packages": [
         {
             "name": "aura/router",
@@ -1660,16 +1660,16 @@
         },
         {
             "name": "io-developer/php-whois",
-            "version": "4.1.10",
+            "version": "dev-fix225",
             "source": {
                 "type": "git",
-                "url": "https://github.com/io-developer/php-whois.git",
-                "reference": "ea4cf52832fe8ff56fc4937138467819aa2829c1"
+                "url": "https://github.com/fisharebest/php-whois.git",
+                "reference": "7dac372fe1843f2b800cf7892ac78deaedcd34df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/io-developer/php-whois/zipball/ea4cf52832fe8ff56fc4937138467819aa2829c1",
-                "reference": "ea4cf52832fe8ff56fc4937138467819aa2829c1",
+                "url": "https://api.github.com/repos/fisharebest/php-whois/zipball/7dac372fe1843f2b800cf7892ac78deaedcd34df",
+                "reference": "7dac372fe1843f2b800cf7892ac78deaedcd34df",
                 "shasum": ""
             },
             "require": {
@@ -1688,7 +1688,18 @@
                     "Iodev\\": "src/Iodev/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "": [
+                        "tests/"
+                    ]
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit --bootstrap tests/bootstrap.php tests"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1715,10 +1726,9 @@
                 "црщшы"
             ],
             "support": {
-                "issues": "https://github.com/io-developer/php-whois/issues",
-                "source": "https://github.com/io-developer/php-whois/tree/4.1.10"
+                "source": "https://github.com/fisharebest/php-whois/tree/fix225"
             },
-            "time": "2023-01-25T14:42:45+00:00"
+            "time": "2024-12-19T22:47:11+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -2420,10 +2430,6 @@
             ],
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev",
-                    "dev-2.x": "2.x-dev"
-                },
                 "laravel": {
                     "providers": [
                         "Carbon\\Laravel\\ServiceProvider"
@@ -2433,6 +2439,10 @@
                     "includes": [
                         "extension.neon"
                     ]
+                },
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev",
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
@@ -7815,9 +7825,18 @@
             "time": "2024-03-03T12:36:25+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "io-developer/php-whois",
+            "version": "dev-fix225",
+            "alias": "4.1.10",
+            "alias_normalized": "4.1.10.0"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "io-developer/php-whois": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
