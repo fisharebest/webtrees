@@ -1621,12 +1621,6 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
-			message: '#^Instanceof between Fisharebest\\Webtrees\\Family and Fisharebest\\Webtrees\\Family will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: app/Http/RequestHandlers/DeleteRecord.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Http\\RequestHandlers\\DeleteRecord\:\:removeLinks\(\) should return string but returns string\|null\.$#'
 			identifier: return.type
 			count: 1
@@ -7135,7 +7129,7 @@ parameters:
 			path: app/Services/IndividualFactsService.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\LinkedRecordService\:\:allLinkedRecords\(\) should return Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Family\> but returns Illuminate\\Support\\Collection\<\(int\|string\), Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Services\\LinkedRecordService\:\:allLinkedRecords\(\) should return Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\GedcomRecord\> but returns Illuminate\\Support\\Collection\<\(int\|string\), Fisharebest\\Webtrees\\GedcomRecord\|null\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Services/LinkedRecordService.php

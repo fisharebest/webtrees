@@ -43,11 +43,7 @@ use function addcslashes;
 class LinkedRecordService
 {
     /**
-     * Find all records linked to a record.
-     *
-     * @param GedcomRecord $record
-     *
-     * @return Collection<int,Family>
+     * @return Collection<int,GedcomRecord>
      */
     public function allLinkedRecords(GedcomRecord $record): Collection
     {
@@ -78,11 +74,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find families linked to a record.
-     *
-     * @param GedcomRecord $record
-     * @param string|null  $link_type
-     *
      * @return Collection<int,Family>
      */
     public function linkedFamilies(GedcomRecord $record, string|null $link_type = null): Collection
@@ -109,11 +100,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find individuals linked to a record.
-     *
-     * @param GedcomRecord $record
-     * @param string|null  $link_type
-     *
      * @return Collection<int,Individual>
      */
     public function linkedIndividuals(GedcomRecord $record, string|null $link_type = null): Collection
@@ -140,10 +126,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find locations linked to a record.
-     *
-     * @param GedcomRecord $record
-     *
      * @return Collection<int,Location>
      */
     public function linkedLocations(GedcomRecord $record): Collection
@@ -165,10 +147,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find media objects linked to a record.
-     *
-     * @param GedcomRecord $record
-     *
      * @return Collection<int,Media>
      */
     public function linkedMedia(GedcomRecord $record): Collection
@@ -189,10 +167,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find notes linked to a record.
-     *
-     * @param GedcomRecord $record
-     *
      * @return Collection<int,Note>
      */
     public function linkedNotes(GedcomRecord $record): Collection
@@ -214,10 +188,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find repositories linked to a record.
-     *
-     * @param GedcomRecord $record
-     *
      * @return Collection<int,Repository>
      */
     public function linkedRepositories(GedcomRecord $record): Collection
@@ -239,10 +209,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find sources linked to a record.
-     *
-     * @param GedcomRecord $record
-     *
      * @return Collection<int,Source>
      */
     public function linkedSources(GedcomRecord $record): Collection
@@ -263,10 +229,6 @@ class LinkedRecordService
     }
 
     /**
-     * Find submitters linked to a record.
-     *
-     * @param GedcomRecord $record
-     *
      * @return Collection<int,Repository>
      */
     public function linkedSubmitters(GedcomRecord $record): Collection
