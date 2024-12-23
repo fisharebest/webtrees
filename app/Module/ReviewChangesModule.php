@@ -125,7 +125,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                     if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE) {
                         foreach ($this->tree_service->all() as $tmp_tree) {
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
-                                I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE));
+                                I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
                                 $this->email_service->send(
                                     new SiteUser(),

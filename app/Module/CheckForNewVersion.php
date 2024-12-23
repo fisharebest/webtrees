@@ -95,7 +95,7 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
                 $old_language = I18N::languageTag();
 
                 foreach ($this->user_service->administrators() as $administrator) {
-                    I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE));
+                    I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
                     $this->email_service->send(
                         new SiteUser(),

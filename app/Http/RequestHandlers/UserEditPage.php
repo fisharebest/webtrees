@@ -109,14 +109,13 @@ class UserEditPage implements RequestHandlerInterface
             ->prepend(I18N::translate('<default theme>'), '');
 
         return $this->viewResponse('admin/users-edit', [
-            'contact_methods'  => $this->message_service->contactMethods(),
-            'default_language' => I18N::languageTag(),
-            'languages'        => $languages->all(),
-            'roles'            => $roles,
-            'trees'            => $this->tree_service->all(),
-            'theme_options'    => $theme_options,
-            'title'            => I18N::translate('Edit the user'),
-            'user'             => $user,
+            'contact_methods' => $this->message_service->contactMethods(),
+            'languages'       => $languages->all(),
+            'roles'           => $roles,
+            'trees'           => $this->tree_service->all(),
+            'theme_options'   => $theme_options,
+            'title'           => I18N::translate('Edit the user'),
+            'user'            => $user,
         ]);
     }
 }

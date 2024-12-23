@@ -94,7 +94,7 @@ class UserEditAction implements RequestHandlerInterface
 
         // We have just approved a user.  Tell them
         if ($approved && $edit_user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) !== '1') {
-            I18N::init($edit_user->getPreference(UserInterface::PREF_LANGUAGE));
+            I18N::init($edit_user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
             $base_url = Validator::attributes($request)->string('base_url');
 

@@ -98,7 +98,7 @@ class MessageService
 
         // Temporarily switch to the recipient's language
         $old_language = I18N::languageTag();
-        I18N::init($recipient->getPreference(UserInterface::PREF_LANGUAGE));
+        I18N::init($recipient->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
         $body_text = view('emails/message-user-text', [
             'sender'    => $sender,

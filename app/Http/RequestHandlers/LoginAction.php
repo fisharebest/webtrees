@@ -134,8 +134,8 @@ class LoginAction implements RequestHandlerInterface
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
 
-        Session::put('language', Auth::user()->getPreference(UserInterface::PREF_LANGUAGE));
+        Session::put('language', Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
         Session::put('theme', Auth::user()->getPreference(UserInterface::PREF_THEME));
-        I18N::init(Auth::user()->getPreference(UserInterface::PREF_LANGUAGE));
+        I18N::init(Auth::user()->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
     }
 }
