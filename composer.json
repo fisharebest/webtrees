@@ -57,7 +57,7 @@
         "guzzlehttp/guzzle": "7.9.2",
         "illuminate/database": "11.36.1",
         "illuminate/support": "11.36.1",
-        "intervention/image": "3.9.1",
+        "intervention/image": "3.10.0",
         "io-developer/php-whois": "dev-fix225 as 4.1.10",
         "league/commonmark": "2.6.0",
         "league/flysystem": "3.29.1",
@@ -65,7 +65,7 @@
         "league/flysystem-ziparchive": "3.29.0",
         "middlewares/client-ip": "2.0.1",
         "mlocati/ip-lib": "1.18.1",
-        "nesbot/carbon": "3.8.2",
+        "nesbot/carbon": "3.8.3",
         "nyholm/psr7": "1.8.2",
         "nyholm/psr7-server": "1.1.0",
         "psr/cache": "3.0.0",
@@ -79,7 +79,7 @@
         "symfony/expression-language": "7.2.0",
         "symfony/mailer": "7.2.0",
         "symfony/polyfill-mbstring": "1.31.0",
-        "tecnickcom/tcpdf": "6.7.8"
+        "tecnickcom/tcpdf": "6.8.0"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -88,7 +88,7 @@
         "ext-sqlite3": "*",
         "league/flysystem-memory": "3.29.0",
         "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "11.5.1"
+        "phpunit/phpunit": "11.5.2"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
