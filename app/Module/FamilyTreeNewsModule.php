@@ -63,12 +63,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree                 $tree
-     * @param int                  $block_id
-     * @param string               $context
      * @param array<string,string> $config
-     *
-     * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
@@ -178,38 +173,37 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
         $news_id = Validator::queryParams($request)->integer('news_id', 0);
         $subject = Validator::parsedBody($request)->string('subject');
         $body    = Validator::parsedBody($request)->string('body');
-        $now     = Registry::timestampFactory()->now();
 
         $subject = $this->html_service->sanitize($subject);
         $body    = $this->html_service->sanitize($body);
 
+        $use_current_timestamp = Validator::parsedBody($request)->boolean('use-current-timestamp', false);
+
+        if ($use_current_timestamp) {
+            $updated = Registry::timestampFactory()->now();
+        } else {
+            $timestamp = Validator::parsedBody($request)->string('timestamp');
+            $timezone  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
+            $utc       = new DateTimeZone('UTC');
+            $updated   = DateTimeImmutable::createFromFormat('Y-m-d\\TH:i:s', $timestamp, $timezone)
+                ->setTimezone($utc);
+        }
+
         if ($news_id !== 0) {
-            $use_current_timestamp = Validator::parsedBody($request)->boolean('use-current-timestamp', false);
-
-            if ($use_current_timestamp) {
-                $updated = $now;
-            } else {
-                $timestamp = Validator::parsedBody($request)->string('timestamp');
-                $timezone  = new DateTimeZone(Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'));
-                $utc       = new DateTimeZone('UTC');
-                $updated   = DateTimeImmutable::createFromFormat('Y-m-d\\TH:i:s', $timestamp, $timezone)
-                    ->setTimezone($utc);
-            }
-
             DB::table('news')
                 ->where('news_id', '=', $news_id)
                 ->where('gedcom_id', '=', $tree->id()) // Check this is our own tree - validates news_id
                 ->update([
                     'body'    => $body,
                     'subject' => $subject,
-                    'updated' => $updated,
+                    'updated' => $updated->format('Y-m-d H:i:s'),
                 ]);
         } else {
             DB::table('news')->insert([
                 'body'      => $body,
                 'subject'   => $subject,
                 'gedcom_id' => $tree->id(),
-                'updated'   => $now,
+                'updated'   => $updated->format('Y-m-d H:i:s'),
             ]);
         }
 
