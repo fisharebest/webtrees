@@ -41,14 +41,14 @@ class DB extends Manager
     private const array COLLATION_ASCII = [
         self::MYSQL      => 'ascii_bin',
         self::POSTGRES   => 'C',
-        self::SQLITE     => 'C',
+        self::SQLITE     => 'BINARY',
         self::SQL_SERVER => 'Latin1_General_Bin',
     ];
 
     private const array COLLATION_UTF8 = [
         self::MYSQL      => 'utf8mb4_unicode_ci',
         self::POSTGRES   => 'und-x-icu',
-        self::SQLITE     => 'nocase',
+        self::SQLITE     => 'NOCASE',
         self::SQL_SERVER => 'utf8_CI_AI',
     ];
 
