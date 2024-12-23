@@ -15,12 +15,11 @@ use Illuminate\Support\Collection;
 
 /**
  * @var array<string,string> $contact_methods
- * @var string               $default_language
  * @var array<string,string> $languages
  * @var array<string,string> $roles
  * @var array<string,string> $theme_options
  * @var string               $title
- * @var Collection<int,Tree>     $trees
+ * @var Collection<int,Tree> $trees
  * @var UserInterface        $user
  */
 
@@ -127,7 +126,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A configuration setting */ I18N::translate('Language') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference(UserInterface::PREF_LANGUAGE, $default_language), 'options' => $languages]) ?>
+            <?= view('components/select', ['name' => 'language', 'selected' => $user->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'), 'options' => $languages]) ?>
         </div>
     </div>
 

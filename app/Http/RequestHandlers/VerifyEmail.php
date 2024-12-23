@@ -78,7 +78,7 @@ class VerifyEmail implements RequestHandlerInterface
 
             foreach ($this->user_service->administrators() as $administrator) {
                 // switch language to administrator settings
-                I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE));
+                I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
                 $base_url = Validator::attributes($request)->string('base_url');
 

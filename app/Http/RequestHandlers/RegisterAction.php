@@ -161,7 +161,7 @@ class RegisterAction implements RequestHandlerInterface
 
         // Tell the administrators about the registration.
         foreach ($this->user_service->administrators() as $administrator) {
-            I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE));
+            I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE, 'en-US'));
 
             /* I18N: %s is a server name/URL */
             $subject = I18N::translate('New registration at %s', $base_url);
