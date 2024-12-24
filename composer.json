@@ -28,13 +28,6 @@
         "sort-packages": true,
         "process-timeout": 3600
     },
-    "repositories":
-    [
-        {
-            "type": "vcs",
-            "url": "https://github.com/fisharebest/php-whois"
-        }
-    ],
     "require": {
         "php": "8.3 - 8.4",
         "ext-ctype": "*",
@@ -58,7 +51,6 @@
         "illuminate/database": "11.36.1",
         "illuminate/support": "11.36.1",
         "intervention/image": "3.10.0",
-        "io-developer/php-whois": "dev-fix225 as 4.1.10",
         "league/commonmark": "2.6.0",
         "league/flysystem": "3.29.1",
         "league/flysystem-path-prefixing": "3.28.0",
