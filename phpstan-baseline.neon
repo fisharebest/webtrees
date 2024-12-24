@@ -1705,12 +1705,6 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
 			message: '#^Parameter \#2 \$gedcom of method Fisharebest\\Webtrees\\GedcomRecord\:\:insertMissingLevels\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -2095,26 +2089,26 @@ parameters:
 			path: app/Http/Middleware/Router.php
 
 		-
-			message: '#^Anonymous function should return Illuminate\\Database\\Query\\Builder but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Http/Middleware/UseDatabase.php
-
-		-
 			message: '#^Binary operation "\." between literal\-string&non\-falsy\-string and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
 			path: app/Http/Middleware/UseDatabase.php
 
 		-
-			message: '#^Call to function assert\(\) with false will always evaluate to false\.$#'
-			identifier: function.impossibleType
+			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
 			count: 1
 			path: app/Http/Middleware/UseDatabase.php
 
 		-
-			message: '#^Instanceof between \$this\(Fisharebest\\Webtrees\\Http\\Middleware\\UseDatabase\) and Illuminate\\Database\\Query\\Builder will always evaluate to false\.$#'
-			identifier: instanceof.alwaysFalse
+			message: '#^Instanceof between Illuminate\\Database\\Query\\Builder and Illuminate\\Database\\Query\\Builder will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: app/Http/Middleware/UseDatabase.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder\:\:where\(\) expects array\|Closure\|string, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: app/Http/Middleware/UseDatabase.php
 
@@ -5203,7 +5197,7 @@ parameters:
 			path: app/Http/RequestHandlers/ReportGenerate.php
 
 		-
-			message: '#^Parameter \#3 \$vars of class Fisharebest\\Webtrees\\Report\\ReportParserGenerate constructor expects array\<array\<string\>\>, array\<int\|string, array\<string, mixed\>\> given\.$#'
+			message: '#^Parameter \#3 \$vars of class Fisharebest\\Webtrees\\Report\\ReportParserGenerate constructor expects array\<array\<string\>\>, array\<array\<string, mixed\>\> given\.$#'
 			identifier: argument.type
 			count: 2
 			path: app/Http/RequestHandlers/ReportGenerate.php
@@ -5891,12 +5885,6 @@ parameters:
 			identifier: cast.int
 			count: 1
 			path: app/Http/RequestHandlers/TreePageBlockUpdate.php
-
-		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 18
-			path: app/Http/RequestHandlers/TreePreferencesAction.php
 
 		-
 			message: '#^Parameter \#2 \$parameters of function route expects array\<array\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
@@ -7489,13 +7477,7 @@ parameters:
 			path: app/Module/FamilyTreeStatisticsModule.php
 
 		-
-			message: '#^Parameter \#1 \$surnames of static method Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists\:\:surnameList\(\) expects array\<array\<int\>\>, array\<int\|string, array\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FamilyTreeStatisticsModule.php
-
-		-
-			message: '#^Parameter \#2 \$callback of function uksort expects callable\(int\|string, int\|string\)\: int, array\{''Fisharebest\\\\Webtrees\\\\I18N'', ''strcasecmp''\} given\.$#'
+			message: '#^Parameter \#1 \$surnames of static method Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists\:\:surnameList\(\) expects array\<array\<int\>\>, array\<array\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/FamilyTreeStatisticsModule.php
@@ -7843,12 +7825,6 @@ parameters:
 			path: app/Module/FrequentlyAskedQuestionsModule.php
 
 		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/FrequentlyAskedQuestionsModule.php
-
-		-
 			message: '#^Parameter \#2 \$parameters of function route expects array\<array\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
@@ -8018,12 +7994,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$value of function e expects Illuminate\\Contracts\\Support\\Htmlable\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/HtmlBlockModule.php
-
-		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/HtmlBlockModule.php
@@ -8723,12 +8693,6 @@ parameters:
 			identifier: nullCoalesce.property
 			count: 1
 			path: app/Module/NotesTabModule.php
-
-		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/OnThisDayModule.php
 
 		-
 			message: '#^Parameter \#2 \$pieces of function implode expects array, mixed given\.$#'
@@ -9565,12 +9529,6 @@ parameters:
 			path: app/Module/StoriesModule.php
 
 		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/StoriesModule.php
-
-		-
 			message: '#^Parameter \#2 \$parameters of function route expects array\<array\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9657,12 +9615,6 @@ parameters:
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\TimelineChartModule\:\:chart\(\) has parameter \$xrefs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: app/Module/TimelineChartModule.php
-
-		-
-			message: '#^Parameter \#1 \$array of function array_unique expects an array of values castable to string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Module/TimelineChartModule.php
 
@@ -9757,19 +9709,13 @@ parameters:
 			path: app/Module/TopSurnamesModule.php
 
 		-
-			message: '#^Parameter \#1 \$surnames of static method Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists\:\:surnameList\(\) expects array\<array\<int\>\>, array\<int\|string, array\> given\.$#'
+			message: '#^Parameter \#1 \$surnames of static method Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists\:\:surnameList\(\) expects array\<array\<int\>\>, array\<array\> given\.$#'
 			identifier: argument.type
 			count: 2
 			path: app/Module/TopSurnamesModule.php
 
 		-
-			message: '#^Parameter \#1 \$surnames of static method Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists\:\:surnameTagCloud\(\) expects array\<array\<int\>\>, array\<int\|string, array\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: '#^Parameter \#2 \$callback of function uksort expects callable\(int\|string, int\|string\)\: int, array\{''Fisharebest\\\\Webtrees\\\\I18N'', ''strcasecmp''\} given\.$#'
+			message: '#^Parameter \#1 \$surnames of static method Fisharebest\\Webtrees\\Functions\\FunctionsPrintLists\:\:surnameTagCloud\(\) expects array\<array\<int\>\>, array\<array\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Module/TopSurnamesModule.php
@@ -9797,12 +9743,6 @@ parameters:
 			identifier: nullCoalesce.property
 			count: 1
 			path: app/Module/TreesMenuModule.php
-
-		-
-			message: '#^Parameter \#2 \$array of function implode expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/UpcomingAnniversariesModule.php
 
 		-
 			message: '#^Parameter \#2 \$pieces of function implode expects array, mixed given\.$#'
@@ -12013,7 +11953,7 @@ parameters:
 			path: app/Services/PendingChangesService.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingChanges\(\) should return array\<array\<stdClass\>\> but returns array\<int\|string, list\<mixed\>\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Services\\PendingChangesService\:\:pendingChanges\(\) should return array\<array\<stdClass\>\> but returns array\<list\<mixed\>\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Services/PendingChangesService.php
@@ -12475,12 +12415,6 @@ parameters:
 			path: app/Statistics/Google/ChartAge.php
 
 		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Statistics/Google/ChartAge.php
-
-		-
 			message: '#^Parameter \#1 \$number of function round expects float, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -12789,12 +12723,6 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 1
-			path: app/Statistics/Google/ChartMarriageAge.php
-
-		-
-			message: '#^Parameter \#1 \$century of method Fisharebest\\Webtrees\\Statistics\\Service\\CenturyService\:\:centuryName\(\) expects int, int\|string given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Statistics/Google/ChartMarriageAge.php
 
@@ -13261,7 +13189,7 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:topSurnames\(\) should return array\<array\<int\>\> but returns array\<int\|string, array\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\:\:topSurnames\(\) should return array\<array\<int\>\> but returns array\<array\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php

@@ -74,13 +74,13 @@
         "symfony/expression-language": "4.4.47",
         "symfony/polyfill-mbstring": "v1.30.0",
         "symfony/polyfill-php80": "1.30.0",
-        "tecnickcom/tcpdf": "6.7.7"
+        "tecnickcom/tcpdf": "6.8.0"
     },
     "require-dev": {
         "ext-dom": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.2.24",
+        "composer/composer": "2.2.25",
         "league/flysystem-memory": "1.0.2",
         "phpunit/phpunit": "7.5.20"
     },
