@@ -88,6 +88,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
                     'url'   => $pedigree_chart->chartUrl($individual),
                     'title' => I18N::translate('Default chart'),
                     'icon'  => 'icon-pedigree',
+                    'symbol'  => 'fa-solid fa-sitemap fa-2x',
                 ];
             }
 
@@ -95,6 +96,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
                 'url'   => $individual->url(),
                 'title' => I18N::translate('My individual record'),
                 'icon'  => 'icon-indis',
+                'symbol'  => 'fa-regular fa-user fa-2x',
             ];
         }
 
@@ -102,6 +104,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
             'url'   => route(AccountEdit::class, ['tree' => $tree->name()]),
             'title' => I18N::translate('My account'),
             'icon'  => 'icon-mypage',
+            'symbol'  => 'fa-regular fa-user fa-2x',
         ];
         $content = view('modules/user_welcome/welcome', ['links' => $links]);
 
