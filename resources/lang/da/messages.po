@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-12-10 20:08+0000\n"
+"PO-Revision-Date: 2025-01-01 14:58+0000\n"
 "Last-Translator: stc4000 <sofie54@icloud.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/da/>\n"
@@ -268,8 +268,8 @@ msgstr[1] "%s familier er blevet opdateret."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "%s stamtræ"
-msgstr[1] "%s stamtræer"
+msgstr[0] "%s slægtstræ"
+msgstr[1] "%s slægtstræer"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -1065,7 +1065,7 @@ msgid ""
 msgstr ""
 "En rolle er ensbetydende med rettigheder som kan give adgang til se "
 "informationer, ændre konfigurationer osv. Adgangsrettigheder er tilknyttet "
-"roller og roller gives til brugere. Hvert stamtræ kan tildele forskellige "
+"roller og roller gives til brugere. Hvert slægtstræ kan tildele forskellige "
 "rettigheder til hver rolle, og brugere kan have forskellige roller i hvert "
 "stamtræ."
 
@@ -1234,7 +1234,7 @@ msgstr "Adgangsniveau"
 
 #: resources/views/admin/users-edit.phtml:231
 msgid "Access to family trees"
-msgstr "Adgangsregler for stamtræer"
+msgstr "Adgang til slægtstræer"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "Account approval and email verification"
@@ -1527,7 +1527,7 @@ msgstr "Tilføj flere felter"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:74
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Tilføj artikler/fortællinger til personer i stamtræet."
+msgstr "Tilføj artikler/fortællinger til personer i slægtstræet."
 
 #: resources/views/admin/map-import-form.phtml:63
 msgid "Add new, and update existing records"
@@ -1763,7 +1763,8 @@ msgid ""
 "After creating the family tree, you will be able to import data from a "
 "GEDCOM file."
 msgstr ""
-"Efter oprettelse af stamtræet vil du kunne importere data fra en GEDCOM-fil."
+"Efter oprettelse af slægtstræet vil du kunne importere data fra en GEDCOM-"
+"fil."
 
 #: app/Gedcom.php:543 app/Statistics/Google/ChartAge.php:137
 #: app/Statistics/Google/ChartMarriageAge.php:160
@@ -2136,13 +2137,13 @@ msgstr "Anvend privatlivsindstillinger"
 #: resources/views/admin/trees-preferences.phtml:732
 #: resources/views/admin/trees-privacy.phtml:298
 msgid "Apply these preferences to all family trees"
-msgstr "Anvend disse indstillinger til alle stamtræer"
+msgstr "Anvend disse indstillinger til alle slægtstræer"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:739
 #: resources/views/admin/trees-privacy.phtml:305
 msgid "Apply these preferences to new family trees"
-msgstr "Anvend disse indstillinger til nye stamtræer"
+msgstr "Anvend disse indstillinger til nye slægtstræer"
 
 #: resources/views/admin/users.phtml:37
 msgid "Approved"
@@ -4229,7 +4230,7 @@ msgstr "Opret"
 #: app/Http/RequestHandlers/CreateTreePage.php:56
 #: resources/views/admin/control-panel.phtml:315
 msgid "Create a family tree"
-msgstr "Opret et nyt stamtræ"
+msgstr "Opret et nyt slægtstræ"
 
 #: app/Elements/XrefLocation.php:60
 #: resources/views/modals/create-location.phtml:16
@@ -4300,7 +4301,7 @@ msgid ""
 "Create, update, and delete a family tree for every GEDCOM file in the data "
 "folder."
 msgstr ""
-"Oprette, opdatere og slette et stamtræ for hver GEDCOM-fil i mappen data."
+"Oprette, opdatere og slette et slægtstræ for hver GEDCOM-fil i mappen data."
 
 #. I18N: GEDCOM tag _CREA
 #: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:93
@@ -5228,7 +5229,7 @@ msgstr "Standard diagram"
 
 #: resources/views/admin/trees.phtml:129
 msgid "Default family tree"
-msgstr "Standard stamtræ"
+msgstr "Standard slægtstræ"
 
 #. I18N: A configuration setting
 #: app/Module/WelcomeBlockModule.php:102
@@ -5579,7 +5580,7 @@ msgstr "Vis %s"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:60
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Vis og administrer stamtræets favoritsider."
+msgstr "Vis og administrer slægtstræets favoritsider."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:61
@@ -6515,7 +6516,7 @@ msgstr "Familiestatus"
 #: resources/views/modules/faq/edit.phtml:74
 #: resources/views/modules/stories/config.phtml:27
 msgid "Family tree"
-msgstr "Stamtræ"
+msgstr "Slægtstræ"
 
 #: app/Module/ClippingsCartModule.php:204
 #: app/Module/ClippingsCartModule.php:342
@@ -6527,7 +6528,7 @@ msgstr "Udklipsholder"
 #: resources/views/admin/trees-create.phtml:25
 #: resources/views/admin/trees-preferences.phtml:50
 msgid "Family tree title"
-msgstr "Stamtræet navn"
+msgstr "Slægtstræet navn"
 
 #. I18N: Name of a module
 #: app/Module/TreesMenuModule.php:57 app/Module/TreesMenuModule.php:106
@@ -6535,7 +6536,7 @@ msgstr "Stamtræet navn"
 #: resources/views/admin/control-panel.phtml:336
 #: resources/views/search-trees.phtml:19
 msgid "Family trees"
-msgstr "Stamtræ"
+msgstr "Slægtstræ"
 
 #. I18N: %s is the spouse name
 #: app/Individual.php:898 app/Individual.php:932
@@ -7008,8 +7009,8 @@ msgid ""
 "For websites with more than one family tree, this option will show the list "
 "of family trees in the main menu, the search pages, etc."
 msgstr ""
-"For sider med flere stamtræer vil denne indstilling vise listen over "
-"stamtræer under hovedmenuen samt indgå i søgninger osv."
+"For sider med flere slægtstræer vil denne indstilling vise listen over "
+"slægtstræer under hovedmenuen samt indgå i søgninger osv."
 
 #: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:43
@@ -8046,8 +8047,9 @@ msgid ""
 "share media files. If they use different media folders, then their media "
 "files will be kept separate."
 msgstr ""
-"Hvis to stamtræer bruger den samme mediemappe, vil de kunne dele mediefiler. "
-"Hvis du bruger forskellige mediemapper, vil deres mediefiler være adskilt."
+"Hvis to slægtstræer bruger den samme mediemappe, vil de kunne dele "
+"mediefiler. Hvis du bruger forskellige mediemapper, vil deres mediefiler "
+"være adskilt."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:270
@@ -8202,8 +8204,8 @@ msgid ""
 "In a family tree, each record has an internal reference number (called an "
 "“XREF”) such as “F123” or “R14”."
 msgstr ""
-"I et stamtræ har hver post et intern nummersystem (kaldet en “XREF”) som fx "
-"“F123” eller “X14”."
+"I et slægtstræ har hver post et intern nummersystem (kaldet en “XREF”) som "
+"fx “F123” eller “X14”."
 
 #: resources/views/help/romanized.phtml:10
 msgid ""
@@ -9251,7 +9253,7 @@ msgstr "Link dette billede til et individ"
 
 #: resources/views/admin/users-edit.phtml:306
 msgid "Link this user to an individual in the family tree."
-msgstr "Link denne bruger til et individ i stamtræet."
+msgstr "Link denne bruger til et individ i slægtstræet."
 
 #: resources/views/chart-box.phtml:113 resources/views/chart-box.phtml:125
 #: resources/views/chart-box.phtml:126
@@ -9487,7 +9489,7 @@ msgstr "Malta"
 #: resources/views/admin/trees-renumber.phtml:19
 #: resources/views/admin/trees-unconnected.phtml:24
 msgid "Manage family trees"
-msgstr "Håndtér stamtræer"
+msgstr "Håndtér slægtstræer"
 
 #: app/Http/RequestHandlers/ManageMediaPage.php:66
 #: resources/views/admin/control-panel.phtml:807
@@ -10532,7 +10534,7 @@ msgstr "Min konto"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:58
 msgid "My family tree"
-msgstr "Mit stamtræ"
+msgstr "Mit slægtstræ"
 
 #: app/Module/ModuleThemeTrait.php:345 app/Module/UserWelcomeModule.php:103
 msgid "My individual record"
@@ -11005,7 +11007,7 @@ msgid ""
 "moderator. This option allows a user to make changes without needing a "
 "moderator."
 msgstr ""
-"Normalt skal alle ændringer i stamtræet godkendes af en moderator/"
+"Normalt skal alle ændringer i slægtstræet godkendes af en moderator/"
 "administrator. Vælges denne indstilling, er det ikke nødvendigt med denne "
 "godkendelse."
 
@@ -12860,7 +12862,7 @@ msgid ""
 "photographs, to resolve conflicting information, etc."
 msgstr ""
 "Forskningsopgaver er specielle opgaver, der er tilknyttet personer i dit "
-"stamtræ, hvor der er behov flere oplysninger. Du kan bruge dem som en "
+"slægtstræ, hvor der er behov flere oplysninger. Du kan bruge dem som en "
 "påmindelse om at kontrollere fakta med mere troværdige kilder, til at "
 "indhente dokumenter eller fotos, til at løse modsigende informationer osv."
 
@@ -13495,7 +13497,7 @@ msgstr "Sæt adgangsniveau for hvert slægtstræ."
 #: app/Http/RequestHandlers/TreePageDefaultEdit.php:69
 #: resources/views/admin/control-panel.phtml:321
 msgid "Set the default blocks for new family trees"
-msgstr "Indstil standardblokkene for nye stamtræer"
+msgstr "Indstil standardblokkene for nye slægtstræer"
 
 #: app/Http/RequestHandlers/UserPageDefaultEdit.php:68
 #: resources/views/admin/control-panel.phtml:548
@@ -13846,7 +13848,7 @@ msgstr "Vis personer som er døde inden for de sidste 100 år."
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
 msgid "Show list of family trees"
-msgstr "Vis liste over stamtræer"
+msgstr "Vis liste over slægtstræer"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:84
@@ -13990,7 +13992,7 @@ msgstr "Vis begivenheder fra nærmeste slægtninge på individers sider"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Show the family tree"
-msgstr "Vis stamtræet"
+msgstr "Vis slægtstræet"
 
 #: app/Module/AbstractIndividualListModule.php:299
 #: app/Module/IndividualListModule.php:342
@@ -14795,7 +14797,7 @@ msgstr "Sydney, Australien"
 
 #: resources/views/admin/synchronize-trees.phtml:14
 msgid "Synchronize family trees with GEDCOM files"
-msgstr "Synkroniser stamtræer med GEDCOM-filer"
+msgstr "Synkroniser slægtstræer med GEDCOM-filer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
@@ -15096,7 +15098,7 @@ msgid ""
 "The clippings cart allows you to take extracts from this family tree and "
 "download them as a GEDCOM file."
 msgstr ""
-"Udklipsholderen giver dig mulighed for at tage dele fra dette stamtræ og "
+"Udklipsholderen giver dig mulighed for at tage dele fra dette slægtstræ og "
 "samle dem til en GEDCOM-fil."
 
 #: resources/views/admin/trees-preferences.phtml:383
@@ -15114,24 +15116,24 @@ msgstr "Detaljerne for “%s” er blevet opdateret."
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:217
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "Stamtræet er eksporteret til %s."
+msgstr "Slægtstræet er eksporteret til %s."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:61
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr "Stamtræet “%s” eksisterer allerede."
+msgstr "Slægtstræet “%s” eksisterer allerede."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:68
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr "Stamtræet “%s” blev oprettet."
+msgstr "Slægtstræet “%s” blev oprettet."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php:60
 #: app/Http/RequestHandlers/SynchronizeTrees.php:110
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr "Stamtræet “%s” blev slettet."
+msgstr "Slægtstræet “%s” blev slettet."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:52
@@ -15140,17 +15142,17 @@ msgid ""
 "The family tree “%s” will be shown to visitors when they first arrive at "
 "this website."
 msgstr ""
-"Vælg det stamtræ “%s”, du ønsker at besøgende skal se, når de besøger siden "
-"for første gang."
+"Vælg det slægtstræ “%s”, du ønsker at besøgende skal se, når de besøger "
+"siden for første gang."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:247
 msgid "The family trees have been merged successfully."
-msgstr "Stamtræerne flettet uden fejl."
+msgstr "Slægtstræerne er blevet flettet uden fejl."
 
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:68
 msgid "The family trees menu."
-msgstr "Menuen til stamtræer."
+msgstr "Menuen til slægtstræer."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:84
@@ -15320,7 +15322,7 @@ msgid ""
 "your family tree."
 msgstr ""
 "Hukommelses- og CPU-tidsgrænserne afhænger af antallet af individer i dit "
-"stamtræ."
+"slægtstræ."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:83
 #, php-format
@@ -15429,18 +15431,18 @@ msgstr "Sted-hierarkiet."
 #: app/Http/RequestHandlers/TreePreferencesAction.php:171
 #: app/Http/RequestHandlers/TreePrivacyAction.php:133
 msgid "The preferences for all family trees have been updated."
-msgstr "Indstillinger for alle nye stamtræer er blevet opdateret."
+msgstr "Indstillingerne for alle nye slægtstræer er blevet opdateret."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:175
 #: app/Http/RequestHandlers/TreePrivacyAction.php:136
 msgid "The preferences for new family trees have been updated."
-msgstr "Indstillinger for nye stamtræer er blevet opdateret."
+msgstr "Indstillingerne for nye slægtstræer er blevet opdateret."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:164
 #: app/Http/RequestHandlers/TreePrivacyAction.php:126
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Indstillinger for stamtræet “%s” er blevet opdateret."
+msgstr "Indstillingerne for slægtstræet “%s” er blevet opdateret."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:72
 #, php-format
@@ -15517,7 +15519,7 @@ msgstr "Serverens tidsgrænse er overskredet."
 msgid ""
 "The size of the family tree, earliest and latest events, common names, etc."
 msgstr ""
-"Størrelse af stamtræet, tidligste og seneste begivenheder, almindeligste "
+"Størrelse af slægtstræet, tidligste og seneste begivenheder, almindeligste "
 "navne, osv."
 
 #: app/CustomTags/GedcomL.php:137 app/CustomTags/GedcomL.php:193
@@ -15555,8 +15557,8 @@ msgstr "Tidszonen er nødvendig for dato beregning, såsom at kende dags dato."
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural ""
 "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "De to stamtræer har %1$s post oprettet med den samme “XREF”."
-msgstr[1] "De to stamtræer har %1$s poster oprettet med den samme “XREF”."
+msgstr[0] "De to slægtstræer har %1$s post oprettet med den samme “XREF”."
+msgstr[1] "De to slægtstræer har %1$s poster oprettet med den samme “XREF”."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:290
 msgid "The upgrade is complete."
@@ -15675,7 +15677,7 @@ msgstr "Der er ingen afventende ændringer."
 
 #: app/Module/ResearchTaskModule.php:133
 msgid "There are no research tasks in this family tree."
-msgstr "Der er ingen forskningsopgaver for dette stamtræ."
+msgstr "Der er ingen forskningsopgaver for dette slægtstræ."
 
 #: resources/views/modules/sources_tab/tab.phtml:65
 msgid "There are no source citations for this individual."
@@ -15836,12 +15838,12 @@ msgid ""
 msgid_plural ""
 "This family tree has %s records which use the same “XREF” as another family "
 "tree."
-msgstr[0] "Stamtræet har %s post, som bruger den samme “XREF” i det andet træ."
-msgstr[1] "Stamtræet har %s poster, som bruger den samme “XREF” i det andet træ."
+msgstr[0] "Slægtstræet har %s post, som bruger den samme “XREF” i et andet træ."
+msgstr[1] "Slægtstræet har %s poster, som bruger den samme “XREF” i et andet træ."
 
 #: app/Module/SlideShowModule.php:181
 msgid "This family tree has no images to display."
-msgstr "Der er ingen billeder at vise i dette stamtræ."
+msgstr "Der er ingen billeder at vise i dette slægtstræ."
 
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:9
@@ -15854,7 +15856,7 @@ msgid ""
 "#contactWebmaster#."
 msgstr ""
 "Dette stamtræ var senest opdateret den #gedcomUpdated#. Der er "
-"#totalSurnames# efternavne i stamtræet. Den ældste begivenhed er "
+"#totalSurnames# efternavne i slægtstræet. Den ældste begivenhed er "
 "#firstEventType# for #firstEventName# i #firstEventYear#. Den nyeste "
 "begivenhed er #lastEventType# for #lastEventName# i #lastEventYear#"
 ".<br><br>Hvis du har kommentarer eller spørgsmål så kontakt "
@@ -15864,7 +15866,7 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:20
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "Dette stamtræ blev sidst opdateret %s."
+msgstr "Dette slægtstræ blev sidst opdateret %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
@@ -15885,7 +15887,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:252
 msgid "This folder will be used to store the media files for this family tree."
 msgstr ""
-"Denne mappe vil blive brugt til at opbevare mediefiler for dette stamtræ."
+"Denne mappe vil blive brugt til at opbevare mediefiler for dette slægtstræ."
 
 #: app/Http/Middleware/CheckCsrf.php:72
 msgid "This form has expired. Try again."
@@ -15994,7 +15996,7 @@ msgid ""
 "This is a link to your own record in the family tree. If this is the wrong "
 "individual, contact an administrator."
 msgstr ""
-"Dette er et link til din egen post i stamtræet. Hvis dette er en forkert "
+"Dette er et link til din egen post i slægtstræet. Hvis dette er en forkert "
 "person, skal du kontakte en administrator."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:157
@@ -16610,7 +16612,7 @@ msgid ""
 "of facts and events in the family tree’s preferences."
 msgstr ""
 "For at oprette en ny forskningsopgave skal du først tilføje "
-"“forskningsopgave” til listen over fakta og begivenheder i stamtræets "
+"“forskningsopgave” til listen over fakta og begivenheder i slægtstræets "
 "indstillinger."
 
 #: app/Services/LeafletJsService.php:63
@@ -17280,7 +17282,7 @@ msgid ""
 "specified. The images used are specific to the sex of the individual in "
 "question."
 msgstr ""
-"Brug billeder i silhuet når der ikke er specificeret et hovedbillede for "
+"Brug billeder i silhuet, når der ikke er specificeret et hovedbillede for "
 "personen. De anvendte billeder er specifikke for den pågældende persons køn."
 
 #. I18N: A configuration setting
@@ -17728,7 +17730,7 @@ msgstr ""
 #: resources/views/modules/sitemap/config.phtml:28
 #: resources/views/modules/sitemap/config.phtml:29
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Hvilke stamtræer skal inkluderes i sitemaps"
+msgstr "Hvilke slægtstræer skal inkluderes i sitemaps"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:265
@@ -17903,7 +17905,7 @@ msgid ""
 "reference numbers are not duplicated in any other family tree."
 msgstr ""
 "Du kan renummerere posterne i træet for at undgå dublerede referencer fra "
-"det andet stamtræ."
+"det andet slægtstræ."
 
 #: resources/views/admin/trees-renumber.phtml:37
 msgid "You can renumber this family tree."
@@ -18003,7 +18005,7 @@ msgstr "Du skal være godkendt bruger for at få adgang til siden."
 #: resources/views/admin/control-panel.phtml:307
 #: resources/views/admin/trees.phtml:50
 msgid "You need to create a family tree."
-msgstr "Du er nødt til at oprette et stamtræ."
+msgstr "Du er nødt til at oprette et slægtstræ."
 
 #: resources/views/emails/verify-notify-html.phtml:30
 #: resources/views/emails/verify-notify-text.phtml:23
@@ -21634,7 +21636,7 @@ msgstr "fætter af 7. led"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "sex"
-msgstr "mand/kvinde"
+msgstr "køn"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
