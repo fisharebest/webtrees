@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-16 07:25+0000\n"
+"PO-Revision-Date: 2025-01-02 16:54+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -662,37 +662,37 @@ msgstr "Veffang"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:119
 msgid "A chart displaying relationships between two individuals."
-msgstr "Graf sem birtir tengsl milli tveggja einstaklinga."
+msgstr "Tafla sem birtir tengsl milli tveggja einstaklinga."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:86
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Graf yfir forfeður og afkomendur einstaklings, sem fjölskyldubók."
+msgstr "Tafla yfir forfeður og afkomendur einstaklings, sem fjölskyldubók."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:81
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Graf af forfeðrum einstaklings, sem þjappað tré."
+msgstr "Tafla af forfeðrum einstaklings, sem þjappað tré."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:108
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Graf af forfeðrum einstaklings, sniðið sem tré."
+msgstr "Tafla af forfeðrum einstaklings, sniðið sem tré."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:102
 msgid "A chart of an individual’s ancestors."
-msgstr "Graf af forfeðrum einstaklings."
+msgstr "Tafla af forfeðrum einstaklings."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:98
 msgid "A chart of an individual’s descendants."
-msgstr "Graf af afkomendum einstaklings."
+msgstr "Tafla af afkomendum einstaklings."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:110
 msgid "A chart of individuals’ lifespans."
-msgstr "Graf yfir líftíma eintaklinga."
+msgstr "Tafla yfir líftíma eintaklinga."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
@@ -1866,7 +1866,7 @@ msgstr "Önnur leið fyrir innskráningu og útskráningu."
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:85
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Stundaglasagraf yfir forfeður og afkomendur einstaklings."
+msgstr "Stundaglasatafla yfir forfeður og afkomendur einstaklings."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents. For example, birth and adopted."
@@ -3453,18 +3453,18 @@ msgstr "Stafasett"
 #: resources/views/admin/modules.phtml:224
 #: resources/views/admin/modules.phtml:227
 msgid "Chart"
-msgstr "Graf"
+msgstr "Tafla"
 
 #: app/Module/RelationshipsChartModule.php:426
 msgid "Chart preferences"
-msgstr "Graf stillingar"
+msgstr "Töflu stillingar"
 
 #: resources/views/modules/charts/config.phtml:20
 #: resources/views/modules/statistics-chart/custom.phtml:26
 #: resources/views/modules/statistics-chart/custom.phtml:155
 #: resources/views/modules/statistics-chart/custom.phtml:157
 msgid "Chart type"
-msgstr "Gerð grafs"
+msgstr "Gerð töflu"
 
 #. I18N: Name of a module/block
 #. I18N: Name of a module
@@ -4111,7 +4111,7 @@ msgstr "Útbúa kort með því að nota %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
-msgstr "Stofna þitt eigið graf"
+msgstr "Stofna þína eigin töflu"
 
 #: resources/views/admin/synchronize-trees.phtml:20
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
@@ -5006,7 +5006,7 @@ msgstr "Decidi"
 
 #: app/Module/UserWelcomeModule.php:89 app/Module/WelcomeBlockModule.php:88
 msgid "Default chart"
-msgstr "Sjálfgefið kort"
+msgstr "Sjálfgefin tafla"
 
 #: resources/views/admin/trees.phtml:129
 msgid "Default family tree"
@@ -7502,13 +7502,13 @@ msgstr "Hong Kong"
 #: app/Module/ChartsBlockModule.php:156 app/Module/ChartsBlockModule.php:252
 #: app/Module/HourglassChartModule.php:79
 msgid "Hourglass chart"
-msgstr "Stundaglasagraf"
+msgstr "Stundaglasatafla"
 
 #. I18N: %s is an individual’s name
 #: app/Module/HourglassChartModule.php:120
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Stundaglasagraf fyrir %s"
+msgstr "Stundaglasatafla fyrir %s"
 
 #: resources/views/modules/census-assistant.phtml:112
 msgid "Household"
@@ -7841,7 +7841,7 @@ msgstr "Einstaklingur 2"
 
 #: app/Statistics/Google/ChartDistribution.php:317
 msgid "Individual distribution chart"
-msgstr "Einstaklings dreifingargraf"
+msgstr "Einstaklings dreifingartafla"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
@@ -10837,7 +10837,7 @@ msgstr "Annað"
 
 #: resources/views/admin/trees-preferences.phtml:410
 msgid "Other facts to show in charts"
-msgstr "Aðrar staðreyndir til að birta í grafi"
+msgstr "Aðrar staðreyndir til að birta í töflu"
 
 #: resources/views/admin/trees-preferences.phtml:689
 msgid "Other preferences"
@@ -11024,7 +11024,7 @@ msgstr "Ættartala"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Ættartölugraf"
+msgstr "Ættartölutafla"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:109
@@ -13928,7 +13928,7 @@ msgstr "Eftirnafn"
 
 #: app/Statistics/Google/ChartDistribution.php:295
 msgid "Surname distribution chart"
-msgstr "Dreifingargraf eftirnafna"
+msgstr "Dreifingartafla eftirnafna"
 
 #: resources/views/admin/trees-preferences.phtml:336
 msgid "Surname list style"
@@ -14253,7 +14253,7 @@ msgstr "Breytingarnar við „%s“ hefur verið hafnað."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:62
 msgid "The charts menu."
-msgstr "Valmynd grafa."
+msgstr "Valmynd taflna."
 
 #: resources/views/modules/clippings/show.phtml:21
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -15105,7 +15105,9 @@ msgstr "Þessi valkostur stjórnar því hvort birting innihalds sé sjálfvirk 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:402
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og móður við hliðina á fæðingardegi barns á grafi eða ekki."
+msgstr ""
+"Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og móður við "
+"hliðina á fæðingardegi barns í töflu eða ekki."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:375
@@ -15120,7 +15122,10 @@ msgstr "Þessi valkostur mun auðvelda notendum að hlaða niður myndum."
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða „friðhelgis“ kassa í ættartölugrafinu og á öðrum töflum hjá fólki með friðhelgi."
+msgstr ""
+"Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. "
+"Þetta þýðir að þú sérð auða „friðhelgis“ kassa í ættartölutöflunni og á "
+"öðrum töflum hjá fólki með friðhelgi."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
@@ -16644,7 +16649,7 @@ msgstr "Þú verður að endurnúmera færslurnar í einu af ættartölunum áð
 
 #: app/Module/ChartsBlockModule.php:177
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Þú verður að velja einstakling og gerð grafs í blokkarstillingunum"
+msgstr "Þú verður að velja einstakling og gerð töflu í blokkarstillingunum"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
