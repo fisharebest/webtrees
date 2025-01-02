@@ -34,7 +34,7 @@
     "jquery-colorbox": "1.6.4",
     "leaflet": "1.9.4",
     "leaflet-bing-layer": "3.3.1",
-    "leaflet-control-geocoder": "3.0.1",
+    "leaflet-control-geocoder": "3.1.0",
     "leaflet.control.layers.tree": "1.1.0",
     "leaflet.markercluster": "1.5.3",
     "moment": "2.30.1",
