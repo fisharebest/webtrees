@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 
-/**
- * Class FactSourcesReportModule
- */
 class FactSourcesReportModule extends AbstractModule implements ModuleReportInterface
 {
     use ModuleReportTrait;

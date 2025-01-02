@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Class OnThisDayModule
- */
 class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

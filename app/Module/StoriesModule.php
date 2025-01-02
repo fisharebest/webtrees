@@ -37,9 +37,6 @@ use function in_array;
 use function redirect;
 use function route;
 
-/**
- * Class StoriesModule
- */
 class StoriesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface, ModuleTabInterface
 {
     use ModuleTabTrait;

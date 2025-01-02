@@ -45,9 +45,6 @@ use function min;
 use function redirect;
 use function route;
 
-/**
- * Class MediaListModule
- */
 class MediaListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
 {
     use ModuleListTrait;

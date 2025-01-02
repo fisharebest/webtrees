@@ -40,9 +40,6 @@ use function route;
 use function strip_tags;
 use function view;
 
-/**
- * Class ShareAnniversaryModule
- */
 class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterface, RequestHandlerInterface
 {
     use ModuleShareTrait;

@@ -35,9 +35,6 @@ use function strrpos;
 use function substr;
 use function substr_count;
 
-/**
- * Class HtmlRenderer
- */
 class HtmlRenderer extends AbstractRenderer
 {
     // Cell padding

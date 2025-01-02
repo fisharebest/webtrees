@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Illuminate\Support\Collection;
 
-/**
- * Class BritishMonarchs
- */
 class BritishMonarchs extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;

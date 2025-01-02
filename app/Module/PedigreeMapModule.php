@@ -43,9 +43,6 @@ use function route;
 use function ucfirst;
 use function view;
 
-/**
- * Class PedigreeMapModule
- */
 class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

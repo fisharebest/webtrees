@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use function strip_tags;
 use function trim;
 
-/**
- * Class ReportBaseElement
- */
 class ReportBaseElement
 {
     // Special value for X or Y position, to indicate the current position.

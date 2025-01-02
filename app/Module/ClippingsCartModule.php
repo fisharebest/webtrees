@@ -75,9 +75,6 @@ use function view;
 
 use const PREG_SET_ORDER;
 
-/**
- * Class ClippingsCartModule
- */
 class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;

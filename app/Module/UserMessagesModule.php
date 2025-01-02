@@ -37,9 +37,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use function route;
 use function view;
 
-/**
- * Class UserMessagesModule
- */
 class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

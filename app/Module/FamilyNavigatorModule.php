@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
-/**
- * Class FamilyNavigatorModule
- */
 class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface
 {
     use ModuleSidebarTrait;

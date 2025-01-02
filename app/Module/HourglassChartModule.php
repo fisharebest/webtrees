@@ -35,9 +35,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 use function view;
 
-/**
- * Class HourglassChartModule
- */
 class HourglassChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

@@ -25,9 +25,6 @@ use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 
-/**
- * Class LoggedInUsersModule
- */
 class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

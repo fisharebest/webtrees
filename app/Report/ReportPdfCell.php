@@ -24,9 +24,6 @@ use function is_array;
 use function preg_match;
 use function str_replace;
 
-/**
- * Class ReportPdfCell
- */
 class ReportPdfCell extends ReportBaseCell
 {
     /**

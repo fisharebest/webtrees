@@ -31,9 +31,6 @@ use function e;
 use function str_contains;
 use function strtoupper;
 
-/**
- * Class FixPrimaryTag
- */
 class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

@@ -50,9 +50,6 @@ use function response;
 use function route;
 use function view;
 
-/**
- * Class SiteMapModule
- */
 class SiteMapModule extends AbstractModule implements ModuleConfigInterface, RequestHandlerInterface
 {
     use ModuleConfigTrait;

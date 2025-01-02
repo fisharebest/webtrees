@@ -31,9 +31,6 @@ use function preg_quote;
 use function preg_replace;
 use function view;
 
-/**
- * Class FixPlaceNames
- */
 class FixPlaceNames extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

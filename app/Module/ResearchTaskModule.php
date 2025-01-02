@@ -37,9 +37,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Class ResearchTaskModule
- */
 class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

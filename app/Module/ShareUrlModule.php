@@ -24,9 +24,6 @@ use Fisharebest\Webtrees\I18N;
 
 use function view;
 
-/**
- * Class ShareUrlModule
- */
 class ShareUrlModule extends AbstractModule implements ModuleShareInterface
 {
     use ModuleShareTrait;

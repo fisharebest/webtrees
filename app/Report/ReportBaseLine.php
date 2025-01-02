@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use function abs;
 
-/**
- * Class ReportBaseLine
- */
 class ReportBaseLine extends ReportBaseElement
 {
     // Start horizontal position, current position (default)

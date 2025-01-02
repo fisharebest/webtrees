@@ -25,9 +25,6 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 
-/**
- * Class LoginBlockModule
- */
 class LoginBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

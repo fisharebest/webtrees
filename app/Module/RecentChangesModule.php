@@ -42,9 +42,6 @@ use function view;
 
 use const EXTR_OVERWRITE;
 
-/**
- * Class RecentChangesModule
- */
 class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

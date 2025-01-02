@@ -32,9 +32,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Class FamilyBookChartModule
- */
 class FamilyBookChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

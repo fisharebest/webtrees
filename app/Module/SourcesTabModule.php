@@ -25,9 +25,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 
-/**
- * Class SourcesTabModule
- */
 class SourcesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;

@@ -25,9 +25,6 @@ use function explode;
 use function str_replace;
 use function substr_count;
 
-/**
- * Class ReportPdfFootnote
- */
 class ReportPdfFootnote extends ReportBaseFootnote
 {
     /**

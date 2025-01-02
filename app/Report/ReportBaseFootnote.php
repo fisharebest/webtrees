@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 
-/**
- * Class ReportBaseFootnote
- */
 class ReportBaseFootnote extends ReportBaseElement
 {
     // The name of the style for this element

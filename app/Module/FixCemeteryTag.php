@@ -30,9 +30,6 @@ use Illuminate\Support\Collection;
 use function preg_match;
 use function str_contains;
 
-/**
- * Class FixCemeteryTag
- */
 class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

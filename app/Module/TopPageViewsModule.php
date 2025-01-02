@@ -30,9 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function count;
 
-/**
- * Class TopPageViewsModule
- */
 class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

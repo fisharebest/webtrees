@@ -31,9 +31,6 @@ use function str_contains;
 
 use const PHP_INT_MAX;
 
-/**
- * Class FixPrimaryTag
- */
 class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

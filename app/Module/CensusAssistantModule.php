@@ -35,9 +35,6 @@ use function str_repeat;
 use function str_replace;
 use function view;
 
-/**
- * Class CensusAssistantModule
- */
 class CensusAssistantModule extends AbstractModule
 {
     /**

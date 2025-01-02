@@ -41,9 +41,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function time;
 
-/**
- * Class ReviewChangesModule
- */
 class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

@@ -24,9 +24,6 @@ use function explode;
 use function str_replace;
 use function substr_count;
 
-/**
- * Class ReportHtmlFootnote
- */
 class ReportHtmlFootnote extends ReportBaseFootnote
 {
     /**

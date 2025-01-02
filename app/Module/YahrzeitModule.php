@@ -37,9 +37,6 @@ use function view;
 
 use const EXTR_OVERWRITE;
 
-/**
- * Class YahrzeitModule
- */
 class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

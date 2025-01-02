@@ -19,9 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-/**
- * Class ReportHtmlLine
- */
 class ReportHtmlLine extends ReportBaseLine
 {
     /**

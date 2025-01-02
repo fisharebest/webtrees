@@ -38,9 +38,6 @@ use function in_array;
 use function redirect;
 use function route;
 
-/**
- * Class TimelineChartModule
- */
 class TimelineChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

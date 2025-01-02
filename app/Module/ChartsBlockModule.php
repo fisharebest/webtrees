@@ -37,9 +37,6 @@ use function view;
 
 use const EXTR_OVERWRITE;
 
-/**
- * Class ChartsBlockModule
- */
 class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

@@ -26,9 +26,6 @@ use function ksort;
 use function str_replace;
 use function trim;
 
-/**
- * Class ReportHtmlTextbox
- */
 class ReportHtmlTextbox extends ReportBaseTextbox
 {
     /**

@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
-/**
- * Class DutchPrimeMinisters
- */
 class DutchPrimeMinisters extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;

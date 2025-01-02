@@ -33,9 +33,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function route;
 
-/**
- * Class CompactTreeChartModule
- */
 class CompactTreeChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

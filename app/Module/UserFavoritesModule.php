@@ -32,9 +32,6 @@ use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Class UserFavoritesModule
- */
 class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

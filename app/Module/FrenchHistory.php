@@ -24,9 +24,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
-/**
- * Class FrenchHistory
- */
 class FrenchHistory extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;

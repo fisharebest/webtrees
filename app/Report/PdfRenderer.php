@@ -24,9 +24,6 @@ use Fisharebest\Webtrees\Webtrees;
 
 use function count;
 
-/**
- * Class PdfRenderer
- */
 class PdfRenderer extends AbstractRenderer
 {
     /**

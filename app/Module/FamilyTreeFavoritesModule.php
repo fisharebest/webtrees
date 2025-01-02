@@ -31,9 +31,6 @@ use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Class FamilyTreeFavoritesModule
- */
 class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

@@ -60,9 +60,6 @@ use function route;
 use function sort;
 use function view;
 
-/**
- * Class RelationshipsChartModule
- */
 class RelationshipsChartModule extends AbstractModule implements ModuleChartInterface, ModuleConfigInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

@@ -44,9 +44,6 @@ use function intdiv;
 use function is_numeric;
 use function sprintf;
 
-/**
- * Class StatisticsChartModule
- */
 class StatisticsChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;

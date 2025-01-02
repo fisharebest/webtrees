@@ -40,9 +40,6 @@ use function view;
 
 use const EXTR_OVERWRITE;
 
-/**
- * Class TopSurnamesModule
- */
 class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

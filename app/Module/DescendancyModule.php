@@ -31,9 +31,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use function strlen;
 use function view;
 
-/**
- * Class DescendancyModule
- */
 class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 {
     use ModuleSidebarTrait;

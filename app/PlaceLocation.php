@@ -29,9 +29,6 @@ use function trim;
 
 use const PREG_SPLIT_NO_EMPTY;
 
-/**
- * Class PlaceLocation
- */
 class PlaceLocation
 {
     // e.g. "Westminster, London, England"

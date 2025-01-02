@@ -25,9 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 
-/**
- * Class FamilyGroupReportModule
- */
 class FamilyGroupReportModule extends AbstractModule implements ModuleReportInterface
 {
     use ModuleReportTrait;

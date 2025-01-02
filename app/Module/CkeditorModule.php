@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 
-/**
- * Class CkeditorModule
- */
 class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterface, ModuleGlobalInterface
 {
     use ModuleExternalUrlTrait;

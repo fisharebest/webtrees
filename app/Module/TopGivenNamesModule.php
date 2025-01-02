@@ -27,9 +27,6 @@ use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * Class TopGivenNamesModule
- */
 class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

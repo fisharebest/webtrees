@@ -59,9 +59,6 @@ use function view;
 
 use const PHP_INT_MAX;
 
-/**
- * Class LifespansChartModule
- */
 class LifespansChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

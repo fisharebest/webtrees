@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use TCPDF;
 
-/**
- * Class TcpdfWrapper
- */
 class TcpdfWrapper extends TCPDF
 {
     /**

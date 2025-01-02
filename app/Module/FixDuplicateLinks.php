@@ -28,9 +28,6 @@ use Illuminate\Support\Collection;
 use function preg_match;
 use function preg_replace;
 
-/**
- * Class FixDuplicateLinks
- */
 class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

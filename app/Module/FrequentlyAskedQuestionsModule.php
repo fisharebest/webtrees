@@ -37,9 +37,6 @@ use function in_array;
 use function redirect;
 use function route;
 
-/**
- * Class FrequentlyAskedQuestionsModule
- */
 class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface
 {
     use ModuleConfigTrait;

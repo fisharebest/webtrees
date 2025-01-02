@@ -26,9 +26,6 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
 use Illuminate\Support\Collection;
 
-/**
- * Class AlbumModule
- */
 class AlbumModule extends MediaTabModule
 {
     /**

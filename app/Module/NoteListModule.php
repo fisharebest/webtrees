@@ -31,9 +31,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-/**
- * Class NoteListModule
- */
 class NoteListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
 {
     use ModuleListTrait;

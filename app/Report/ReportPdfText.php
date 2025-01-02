@@ -26,9 +26,6 @@ use function preg_match;
 use function str_replace;
 use function substr_count;
 
-/**
- * Class ReportPdfText
- */
 class ReportPdfText extends ReportBaseText
 {
     /**

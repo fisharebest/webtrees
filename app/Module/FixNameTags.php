@@ -33,9 +33,6 @@ use function implode;
 use function preg_match;
 use function str_replace;
 
-/**
- * Class FixNameTags
- */
 class FixNameTags extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

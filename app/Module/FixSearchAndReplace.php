@@ -44,9 +44,6 @@ use function preg_quote;
 use function preg_replace;
 use function view;
 
-/**
- * Class FixSearchAndReplace
- */
 class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

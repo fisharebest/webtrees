@@ -29,9 +29,6 @@ use Illuminate\Support\Collection;
 
 use function preg_match;
 
-/**
- * Class MediaTabModule
- */
 class MediaTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;

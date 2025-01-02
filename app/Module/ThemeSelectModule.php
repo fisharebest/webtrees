@@ -27,9 +27,6 @@ use Illuminate\Support\Str;
 
 use function view;
 
-/**
- * Class ThemeSelectModule
- */
 class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

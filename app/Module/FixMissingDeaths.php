@@ -27,9 +27,6 @@ use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
-/**
- * Class FixMissingDeaths
- */
 class FixMissingDeaths extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;

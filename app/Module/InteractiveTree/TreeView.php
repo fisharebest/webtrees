@@ -31,9 +31,6 @@ use function count;
 
 use const JSON_THROW_ON_ERROR;
 
-/**
- * Class TreeView
- */
 class TreeView
 {
     // HTML element name

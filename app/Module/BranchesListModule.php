@@ -55,9 +55,6 @@ use function strtolower;
 use function usort;
 use function view;
 
-/**
- * Class BranchesListModule
- */
 class BranchesListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
 {
     use ModuleListTrait;

@@ -27,9 +27,6 @@ use Illuminate\Support\Collection;
 
 use function preg_match;
 
-/**
- * Class NotesTabModule
- */
 class NotesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;

@@ -19,9 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-/**
- * Class ReportBaseCell
- */
 class ReportBaseCell extends ReportBaseElement
 {
     // Center or align the text. Possible values are:

@@ -66,9 +66,6 @@ use function view;
 
 use const IMG_ARC_PIE;
 
-/**
- * Class FanChartModule
- */
 class FanChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;

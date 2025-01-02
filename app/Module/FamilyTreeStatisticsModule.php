@@ -38,9 +38,6 @@ use function view;
 
 use const EXTR_OVERWRITE;
 
-/**
- * Class FamilyTreeStatisticsModule
- */
 class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

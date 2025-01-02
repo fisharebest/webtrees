@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 
-/**
- * Class ReportBaseText
- */
 class ReportBaseText extends ReportBaseElement
 {
     // Text color in HTML code

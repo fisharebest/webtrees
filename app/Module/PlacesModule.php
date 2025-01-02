@@ -30,9 +30,6 @@ use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
 
-/**
- * Class PlacesMapModule
- */
 class PlacesModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;

@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 
-/**
- * Class DescendancyReportModule
- */
 class DescendancyReportModule extends AbstractModule implements ModuleReportInterface
 {
     use ModuleReportTrait;

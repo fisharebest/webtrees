@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Illuminate\Support\Collection;
 
-/**
- * Class AustrianHistoricEvents
- */
 class AustrianHistoricEvents extends AbstractModule implements ModuleHistoricEventsInterface
 {
     use ModuleHistoricEventsTrait;

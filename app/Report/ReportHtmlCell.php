@@ -22,9 +22,6 @@ namespace Fisharebest\Webtrees\Report;
 use function str_contains;
 use function str_replace;
 
-/**
- * Class ReportHtmlCell
- */
 class ReportHtmlCell extends ReportBaseCell
 {
     /**

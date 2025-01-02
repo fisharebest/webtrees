@@ -34,9 +34,6 @@ use Illuminate\Support\Collection;
 
 use function view;
 
-/**
- * Class IndividualFactsTabModule
- */
 class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;

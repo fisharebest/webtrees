@@ -31,9 +31,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use function in_array;
 use function time;
 
-/**
- * Class HtmlBlockModule
- */
 class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

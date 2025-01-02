@@ -40,9 +40,6 @@ use function xml_set_element_handler;
 
 use const XML_OPTION_CASE_FOLDING;
 
-/**
- * Class ReportParserBase
- */
 class ReportParserBase
 {
     // The XML parser

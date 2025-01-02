@@ -49,9 +49,6 @@ use function redirect;
 use function route;
 use function view;
 
-/**
- * Class IndividualListModule
- */
 class PlaceHierarchyListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
 {
     use ModuleListTrait;

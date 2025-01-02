@@ -36,9 +36,6 @@ use function in_array;
 use function str_contains;
 use function strtolower;
 
-/**
- * Class SlideShowModule
- */
 class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;

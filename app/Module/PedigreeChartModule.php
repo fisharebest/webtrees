@@ -34,9 +34,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function route;
 use function view;
 
-/**
- * Class PedigreeChartModule
- */
 class PedigreeChartModule extends AbstractModule implements ModuleChartInterface, RequestHandlerInterface
 {
     use ModuleChartTrait;
