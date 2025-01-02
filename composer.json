@@ -56,12 +56,12 @@
         "illuminate/support": "8.83.27",
         "intervention/image": "2.7.2",
         "io-developer/php-whois": "4.1.10",
-        "league/commonmark": "2.6.0",
+        "league/commonmark": "2.6.1",
         "league/flysystem": "2.5.0",
         "league/flysystem-ziparchive": "2.3.1",
         "middlewares/client-ip": "2.0.1",
         "mlocati/ip-lib": "1.18.1",
-        "nesbot/carbon": "2.72.5",
+        "nesbot/carbon": "2.72.6",
         "nyholm/psr7": "1.8.2",
         "nyholm/psr7-server": "1.1.0",
         "oscarotero/middleland": "1.0.1",
@@ -76,14 +76,14 @@
         "symfony/mailer": "5.4.45",
         "symfony/polyfill-mbstring": "1.31.0",
         "symfony/polyfill-php80": "1.31.0",
-        "tecnickcom/tcpdf": "6.7.8"
+        "tecnickcom/tcpdf": "6.8.0"
     },
     "require-dev": {
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.8.3",
+        "composer/composer": "2.8.4",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
         "phpunit/phpunit": "9.6.22"
