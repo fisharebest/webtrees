@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-01-02 16:54+0000\n"
+"PO-Revision-Date: 2025-01-04 15:58+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -302,8 +302,8 @@ msgstr[1] "%s mánuðir"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s minnisatriði hefur verið uppfært."
-msgstr[1] "%s minnisatriði hafa verið uppfærð."
+msgstr[0] "%s glósa hefur verið uppfærð."
+msgstr[1] "%s glósur hafa verið uppfærðar."
 
 #: app/Http/RequestHandlers/CheckTree.php:314
 #: app/Http/RequestHandlers/CheckTree.php:318
@@ -6668,7 +6668,7 @@ msgstr "Snið"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:584
 msgid "Format text and notes"
-msgstr "Forsníða texta og skýringar"
+msgstr "Forsníða texta og glósur"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:94
@@ -7841,7 +7841,7 @@ msgstr "Einstaklingur 2"
 
 #: app/Statistics/Google/ChartDistribution.php:317
 msgid "Individual distribution chart"
-msgstr "Einstaklings dreifingartafla"
+msgstr "Einstaklings dreifingarkort"
 
 #: resources/views/admin/tags.phtml:1032
 msgid "Individual facts and events"
@@ -11196,7 +11196,10 @@ msgstr "Staðarheiti eru oft of löng til að passa í töflur, lista o.s.frv. H
 
 #: resources/views/help/place.phtml:14
 msgid "Place names can change over time. In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Staðarheiti geta breyst með tímanum. Í ættfræði er venja að nota núverandi nafn fyrir bæ eða land. Sögulegt nafn er hægt að sýna í heimildum, skýringum o.s.frv."
+msgstr ""
+"Staðarheiti geta breyst með tímanum. Í ættfræði er venja að nota núverandi "
+"nafn fyrir bæ eða land. Sögulegt nafn er hægt að sýna í heimildum, glósum o.s"
+".frv."
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -14843,8 +14846,8 @@ msgstr "Þessi reikningur hefur ekki verið samþykktur. Vinsamlega bíðið eft
 #: app/Http/RequestHandlers/LoginAction.php:125
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
-"Þessi reikningur hefur ekki verið staðfestur. Vinsamlega athugaðu "
-"tölvupóstinn þinn gagnvart staðfestingar skilaboði."
+"Þessi reikningur hefur ekki verið staðfestur. Vinsamlega skoðaðu "
+"tölvupóstinn þinn með staðfestingarskilaboð."
 
 #: resources/views/modules/review_changes/config.phtml:15
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -15454,7 +15457,10 @@ msgstr "Til að birta kort þá þarftu að virkja kortaveitu á stjórnborðinu
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:589
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Til að tryggja samhæfni við önnur ættfræðiforrit ættu skýringar, texti og afrit að vera skráð í einfaldan, ósniðinn texta. Hins vegar er snið oft æskilegt til að auðvelda framsetningu, skilning o.s.frv."
+msgstr ""
+"Til að tryggja samhæfni við önnur ættfræðiforrit ættu glósur, texti og afrit "
+"að vera skráð í einfaldan, ósniðinn texta. Hins vegar er snið oft æskilegt "
+"til að auðvelda framsetningu, skilning o.s.frv."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:37
