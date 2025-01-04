@@ -46,11 +46,6 @@ class PlaceRepository implements PlaceRepositoryInterface
 
     private IndividualRepositoryInterface $individual_repository;
 
-    /**
-     * @param Tree                          $tree
-     * @param CountryService                $country_service
-     * @param IndividualRepositoryInterface $individual_repository
-     */
     public function __construct(
         Tree $tree,
         CountryService $country_service,
@@ -63,9 +58,6 @@ class PlaceRepository implements PlaceRepositoryInterface
 
     /**
      * Places
-     *
-     * @param string $fact
-     * @param string $what
      *
      * @return array<int>
      */
@@ -136,8 +128,6 @@ class PlaceRepository implements PlaceRepositoryInterface
      * Renders the top 10 places list.
      *
      * @param array<int|string,int> $places
-     *
-     * @return string
      */
     private function renderTop10(array $places): string
     {
@@ -151,44 +141,24 @@ class PlaceRepository implements PlaceRepositoryInterface
         );
     }
 
-    /**
-     * A list of common birth places.
-     *
-     * @return string
-     */
     public function commonBirthPlacesList(): string
     {
         $places = $this->queryFactPlaces('BIRT', 'INDI');
         return $this->renderTop10($places);
     }
 
-    /**
-     * A list of common death places.
-     *
-     * @return string
-     */
     public function commonDeathPlacesList(): string
     {
         $places = $this->queryFactPlaces('DEAT', 'INDI');
         return $this->renderTop10($places);
     }
 
-    /**
-     * A list of common marriage places.
-     *
-     * @return string
-     */
     public function commonMarriagePlacesList(): string
     {
         $places = $this->queryFactPlaces('MARR', 'FAM');
         return $this->renderTop10($places);
     }
 
-    /**
-     * A list of common countries.
-     *
-     * @return string
-     */
     public function commonCountriesList(): string
     {
         $countries = DB::table('places')
@@ -266,11 +236,6 @@ class PlaceRepository implements PlaceRepositoryInterface
         );
     }
 
-    /**
-     * Count total places.
-     *
-     * @return int
-     */
     private function totalPlacesQuery(): int
     {
         return DB::table('places')
@@ -278,11 +243,6 @@ class PlaceRepository implements PlaceRepositoryInterface
             ->count();
     }
 
-    /**
-     * Count total places.
-     *
-     * @return string
-     */
     public function totalPlaces(): string
     {
         return I18N::number($this->totalPlacesQuery());
@@ -290,12 +250,6 @@ class PlaceRepository implements PlaceRepositoryInterface
 
     /**
      * Create a chart showing where events occurred.
-     *
-     * @param string $chart_shows
-     * @param string $chart_type
-     * @param string $surname
-     *
-     * @return string
      */
     public function chartDistribution(
         string $chart_shows = 'world',

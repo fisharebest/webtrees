@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInter
  */
 class MessageRepository implements MessageRepositoryInterface
 {
-    /**
-     * @return string
-     */
     public function totalUserMessages(): string
     {
         $total = DB::table('message')

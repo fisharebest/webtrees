@@ -19,22 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for news related statistics.
- */
 interface NewsRepositoryInterface
 {
-    /**
-     * How many blog entries exist for this user.
-     *
-     * @return string
-     */
     public function totalUserJournal(): string;
 
-    /**
-     * How many news items exist for this tree.
-     *
-     * @return string
-     */
     public function totalGedcomNews(): string;
 }

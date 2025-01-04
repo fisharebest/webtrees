@@ -19,87 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for user related statistics.
- */
 interface UserRepositoryInterface
 {
-    /**
-     * Who is currently logged in?
-     *
-     * @return string
-     */
     public function usersLoggedIn(): string;
 
-    /**
-     * Who is currently logged in?
-     *
-     * @return string
-     */
     public function usersLoggedInList(): string;
 
-    /**
-     * Returns the total number of logged in users (visible or anonymous).
-     *
-     * @return int
-     */
     public function usersLoggedInTotal(): int;
 
-    /**
-     * Returns the total number of anonymous logged in users.
-     *
-     * @return int
-     */
     public function usersLoggedInTotalAnon(): int;
 
-    /**
-     * Returns the total number of visible logged in users.
-     *
-     * @return int
-     */
     public function usersLoggedInTotalVisible(): int;
 
-    /**
-     * Get the current user's ID.
-     *
-     * @return string
-     */
     public function userId(): string;
 
-    /**
-     * Get the current user's username.
-     *
-     * @param string $visitor_text
-     *
-     * @return string
-     */
     public function userName(string $visitor_text = ''): string;
 
-    /**
-     * Get the current user's full name.
-     *
-     * @return string
-     */
     public function userFullName(): string;
 
-    /**
-     * Count the number of users.
-     *
-     * @return string
-     */
     public function totalUsers(): string;
 
-    /**
-     * Count the number of administrators.
-     *
-     * @return string
-     */
     public function totalAdmins(): string;
 
-    /**
-     * Count the number of administrators.
-     *
-     * @return string
-     */
     public function totalNonAdmins(): string;
 }

@@ -19,57 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for latest user related statistics.
- */
 interface LatestUserRepositoryInterface
 {
-    /**
-     * Get the newest registered user's ID.
-     *
-     * @return string
-     */
     public function latestUserId(): string;
 
-    /**
-     * Get the newest registered user's username.
-     *
-     * @return string
-     */
     public function latestUserName(): string;
 
-    /**
-     * Get the newest registered user's real name.
-     *
-     * @return string
-     */
     public function latestUserFullName(): string;
 
-    /**
-     * Get the date of the newest user registration.
-     *
-     * @param string|null $format
-     *
-     * @return string
-     */
     public function latestUserRegDate(string|null $format = null): string;
 
-    /**
-     * Find the timestamp of the latest user to register.
-     *
-     * @param string|null $format
-     *
-     * @return string
-     */
     public function latestUserRegTime(string|null $format = null): string;
 
-    /**
-     * Is the most recently registered user logged in right now?
-     *
-     * @param string|null $yes
-     * @param string|null $no
-     *
-     * @return string
-     */
     public function latestUserLoggedin(string|null $yes = null, string|null $no = null): string;
 }

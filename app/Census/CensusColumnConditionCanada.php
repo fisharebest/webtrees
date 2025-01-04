@@ -42,7 +42,7 @@ class CensusColumnConditionCanada extends AbstractCensusColumnCondition
     // Text to display for female children
     protected const string GIRL = 'S';
 
-    // Text to display for divorced individuals
+    // Text to display for divorced males
     protected const string DIVORCE = 'D';
 
     // Text to display for divorced females

@@ -60,21 +60,12 @@ class MediaRepository implements MediaRepositoryInterface
     private const string MEDIA_TYPE_OTHER       = 'other';
     private const string MEDIA_TYPE_UNKNOWN     = '';
 
-    /**
-     * @param ColorService $color_service
-     * @param Tree         $tree
-     */
     public function __construct(ColorService $color_service, Tree $tree)
     {
         $this->color_service = $color_service;
         $this->tree          = $tree;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return string
-     */
     public function totalMedia(string $type = self::MEDIA_TYPE_ALL): string
     {
         $query = DB::table('media_file')->where('m_file', '=', $this->tree->id());
@@ -86,164 +77,101 @@ class MediaRepository implements MediaRepositoryInterface
         return I18N::number($query->count());
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaAudio(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_AUDIO);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaBook(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_BOOK);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaCard(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_CARD);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaCertificate(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_CERTIFICATE);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaCoatOfArms(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_COAT);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaDocument(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_DOCUMENT);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaElectronic(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_ELECTRONIC);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaFiche(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_FICHE);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaFilm(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_FILM);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaMagazine(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_MAGAZINE);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaManuscript(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_MANUSCRIPT);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaMap(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_MAP);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaNewspaper(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_NEWSPAPER);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaPainting(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_PAINTING);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaPhoto(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_PHOTO);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaTombstone(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_TOMBSTONE);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaVideo(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_VIDEO);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaOther(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_OTHER);
     }
 
-    /**
-     * @return string
-     */
     public function totalMediaUnknown(): string
     {
         return $this->totalMedia(self::MEDIA_TYPE_UNKNOWN);
     }
 
-    /**
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
     public function chartMedia(string|null $color_from = null, string|null $color_to = null): string
     {
         $media = DB::table('media_file')

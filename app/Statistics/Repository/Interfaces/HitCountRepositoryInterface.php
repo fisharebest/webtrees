@@ -19,80 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for hit count related statistics.
- */
 interface HitCountRepositoryInterface
 {
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCount(string $page_parameter = ''): string;
 
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCountUser(string $page_parameter = ''): string;
 
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCountIndi(string $page_parameter = ''): string;
 
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCountFam(string $page_parameter = ''): string;
 
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCountSour(string $page_parameter = ''): string;
 
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCountRepo(string $page_parameter = ''): string;
 
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCountNote(string $page_parameter = ''): string;
 
-    /**
-     * How many times has a page been viewed.
-     *
-     * @param string $page_parameter
-     *
-     * @return string
-     */
     public function hitCountObje(string $page_parameter = ''): string;
 }

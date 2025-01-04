@@ -19,64 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for GEDCOM related statistics.
- */
 interface GedcomRepositoryInterface
 {
-    /**
-     * Get the name used for GEDCOM files and URLs.
-     *
-     * @return string
-     */
     public function gedcomFilename(): string;
 
-    /**
-     * Get the internal ID number of the tree.
-     *
-     * @return int
-     */
     public function gedcomId(): int;
 
-    /**
-     * Get the descriptive title of the tree.
-     *
-     * @return string
-     */
     public function gedcomTitle(): string;
 
-    /**
-     * Get the software originally used to create the GEDCOM file.
-     *
-     * @return string
-     */
     public function gedcomCreatedSoftware(): string;
 
-    /**
-     * Get the version of software which created the GEDCOM file.
-     *
-     * @return string
-     */
     public function gedcomCreatedVersion(): string;
 
-    /**
-     * Get the date the GEDCOM file was created.
-     *
-     * @return string
-     */
     public function gedcomDate(): string;
 
-    /**
-     * When was this tree last updated?
-     *
-     * @return string
-     */
     public function gedcomUpdated(): string;
 
-    /**
-     * What is the significant individual from this tree?
-     *
-     * @return string
-     */
     public function gedcomRootId(): string;
 }

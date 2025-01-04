@@ -35,19 +35,12 @@ class ContactRepository implements ContactRepositoryInterface
 
     private UserService $user_service;
 
-    /**
-     * @param Tree        $tree
-     * @param UserService $user_service
-     */
     public function __construct(Tree $tree, UserService $user_service)
     {
         $this->tree         = $tree;
         $this->user_service = $user_service;
     }
 
-    /**
-     * @return string
-     */
     public function contactWebmaster(): string
     {
         $user_id = (int) $this->tree->getPreference('WEBMASTER_USER_ID');
@@ -62,9 +55,6 @@ class ContactRepository implements ContactRepositoryInterface
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function contactGedcom(): string
     {
         $user_id = (int) $this->tree->getPreference('CONTACT_USER_ID');

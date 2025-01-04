@@ -40,29 +40,16 @@ class LatestUserRepository implements LatestUserRepositoryInterface
 {
     private UserService $user_service;
 
-    /**
-     * @param UserService $user_service
-     */
     public function __construct(UserService $user_service)
     {
         $this->user_service = $user_service;
     }
 
-    /**
-     * @return string
-     */
     public function latestUserId(): string
     {
         return (string) $this->latestUserQuery()->id();
     }
 
-    /**
-     * Find the newest user on the site.
-     * If no user has registered (i.e. all created by the admin), then
-     * return the current user.
-     *
-     * @return UserInterface
-     */
     private function latestUserQuery(): UserInterface
     {
         static $user;
@@ -89,27 +76,16 @@ class LatestUserRepository implements LatestUserRepositoryInterface
         return $this->user_service->find($user_id) ?? Auth::user();
     }
 
-    /**
-     * @return string
-     */
     public function latestUserName(): string
     {
         return e($this->latestUserQuery()->userName());
     }
 
-    /**
-     * @return string
-     */
     public function latestUserFullName(): string
     {
         return e($this->latestUserQuery()->realName());
     }
 
-    /**
-     * @param string|null $format
-     *
-     * @return string
-     */
     public function latestUserRegDate(string|null $format = null): string
     {
         $format ??= I18N::dateFormat();
@@ -119,11 +95,6 @@ class LatestUserRepository implements LatestUserRepositoryInterface
         return Registry::timestampFactory()->make($timestamp)->format(strtr($format, ['%' => '']));
     }
 
-    /**
-     * @param string|null $format
-     *
-     * @return string
-     */
     public function latestUserRegTime(string|null $format = null): string
     {
         $format ??= str_replace('%', '', I18N::timeFormat());
@@ -132,12 +103,6 @@ class LatestUserRepository implements LatestUserRepositoryInterface
         return date($format, (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED));
     }
 
-    /**
-     * @param string|null $yes
-     * @param string|null $no
-     *
-     * @return string
-     */
     public function latestUserLoggedin(string|null $yes = null, string|null $no = null): string
     {
         $yes ??= I18N::translate('yes');

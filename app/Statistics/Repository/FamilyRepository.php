@@ -547,12 +547,7 @@ class FamilyRepository
     }
 
     /**
-     * General query on families/children.
-     *
-     * @param int    $year1
-     * @param int    $year2
-     *
-     * @return array<object>
+     * @return array<object{f_numchil:int,total:int}>
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
@@ -573,7 +568,12 @@ class FamilyRepository
                 ->whereBetween('d_year', [$year1, $year2]);
         }
 
-        return $query->get()->all();
+        return $query->get()
+            ->map(static fn (object $row): object => (object) [
+                'f_numchil' => (int) $row->f_numchil,
+                'total'     => (int) $row->total,
+            ])
+            ->all();
     }
 
     /**
@@ -1379,13 +1379,7 @@ class FamilyRepository
     }
 
     /**
-     * General query on ages at marriage.
-     *
-     * @param string $sex "M" or "F"
-     * @param int    $year1
-     * @param int    $year2
-     *
-     * @return array<object>
+     * @return array<object{f_id:string,d_gid:string,age:int}>
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
@@ -1415,19 +1409,14 @@ class FamilyRepository
 
         return $query
             ->get()
-            ->map(static function (object $row): object {
-                $row->age = (int) $row->age;
-
-                return $row;
-            })
+            ->map(static fn (object $row): object => (object) [
+                'f_id'  => $row->f_id,
+                'd_gid' => $row->d_gid,
+                'age'   => (int) $row->age,
+            ])
             ->all();
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @return string
-     */
     public function statsMarrAge(): string
     {
         return (new ChartMarriageAge($this->century_service, $this->tree))

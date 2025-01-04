@@ -19,15 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for user message related statistics.
- */
 interface MessageRepositoryInterface
 {
-    /**
-     * How many messages in the user's inbox.
-     *
-     * @return string
-     */
     public function totalUserMessages(): string;
 }

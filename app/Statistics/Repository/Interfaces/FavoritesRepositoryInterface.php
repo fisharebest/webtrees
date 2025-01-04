@@ -19,36 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for favorites related statistics.
- */
 interface FavoritesRepositoryInterface
 {
-    /**
-     * Find the favorites for the tree.
-     *
-     * @return string
-     */
     public function gedcomFavorites(): string;
 
-    /**
-     * Find the favorites for the user.
-     *
-     * @return string
-     */
     public function userFavorites(): string;
 
-    /**
-     * Find the number of favorites for the tree.
-     *
-     * @return string
-     */
     public function totalGedcomFavorites(): string;
 
-    /**
-     * Find the number of favorites for the user.
-     *
-     * @return string
-     */
     public function totalUserFavorites(): string;
 }

@@ -44,10 +44,6 @@ class UserRepository implements UserRepositoryInterface
 
     private UserService $user_service;
 
-    /**
-     * @param Tree        $tree
-     * @param UserService $user_service
-     */
     public function __construct(Tree $tree, UserService $user_service)
     {
         $this->tree         = $tree;
@@ -58,8 +54,6 @@ class UserRepository implements UserRepositoryInterface
      * Who is currently logged in?
      *
      * @param string $type "list" or "nolist"
-     *
-     * @return string
      */
     private function usersLoggedInQuery(string $type): string
     {
@@ -134,45 +128,26 @@ class UserRepository implements UserRepositoryInterface
         return $content;
     }
 
-    /**
-     * @return string
-     */
     public function usersLoggedIn(): string
     {
         return $this->usersLoggedInQuery('nolist');
     }
 
-    /**
-     * @return string
-     */
     public function usersLoggedInList(): string
     {
         return $this->usersLoggedInQuery('list');
     }
 
-    /**
-     * Returns true if the given user is visible to others.
-     *
-     * @param UserInterface $user
-     *
-     * @return bool
-     */
     private function isUserVisible(UserInterface $user): bool
     {
         return Auth::isAdmin() || $user->getPreference(UserInterface::PREF_IS_VISIBLE_ONLINE) === '1';
     }
 
-    /**
-     * @return int
-     */
     public function usersLoggedInTotal(): int
     {
         return count($this->user_service->allLoggedIn());
     }
 
-    /**
-     * @return int
-     */
     public function usersLoggedInTotalAnon(): int
     {
         $anonymous = 0;
@@ -186,9 +161,6 @@ class UserRepository implements UserRepositoryInterface
         return $anonymous;
     }
 
-    /**
-     * @return int
-     */
     public function usersLoggedInTotalVisible(): int
     {
         $visible = 0;
@@ -202,19 +174,11 @@ class UserRepository implements UserRepositoryInterface
         return $visible;
     }
 
-    /**
-     * @return string
-     */
     public function userId(): string
     {
         return (string) Auth::id();
     }
 
-    /**
-     * @param string $visitor_text
-     *
-     * @return string
-     */
     public function userName(string $visitor_text = ''): string
     {
         if (Auth::check()) {
@@ -225,53 +189,31 @@ class UserRepository implements UserRepositoryInterface
         return e($visitor_text);
     }
 
-    /**
-     * @return string
-     */
     public function userFullName(): string
     {
         return Auth::check() ? '<bdi>' . e(Auth::user()->realName()) . '</bdi>' : '';
     }
 
-    /**
-     * Returns the user count.
-     *
-     * @return int
-     */
     private function getUserCount(): int
     {
         return count($this->user_service->all());
     }
 
-    /**
-     * Returns the administrator count.
-     *
-     * @return int
-     */
     private function getAdminCount(): int
     {
         return count($this->user_service->administrators());
     }
 
-    /**
-     * @return string
-     */
     public function totalUsers(): string
     {
         return I18N::number($this->getUserCount());
     }
 
-    /**
-     * @return string
-     */
     public function totalAdmins(): string
     {
         return I18N::number($this->getAdminCount());
     }
 
-    /**
-     * @return string
-     */
     public function totalNonAdmins(): string
     {
         return I18N::number($this->getUserCount() - $this->getAdminCount());

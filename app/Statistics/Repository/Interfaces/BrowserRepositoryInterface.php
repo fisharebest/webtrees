@@ -19,29 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for browser related statistics.
- */
 interface BrowserRepositoryInterface
 {
-    /**
-     * What is the client's date.
-     *
-     * @return string
-     */
     public function browserDate(): string;
 
-    /**
-     * What is the client's timestamp.
-     *
-     * @return string
-     */
     public function browserTime(): string;
 
-    /**
-     * What is the browser's timezone.
-     *
-     * @return string
-     */
     public function browserTimezone(): string;
 }

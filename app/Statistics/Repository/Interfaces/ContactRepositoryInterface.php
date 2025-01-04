@@ -19,22 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for contact related statistics.
- */
 interface ContactRepositoryInterface
 {
-    /**
-     * Returns a link to contact the webmaster.
-     *
-     * @return string
-     */
     public function contactWebmaster(): string;
 
-    /**
-     * Returns a link to contact the genealogy contact.
-     *
-     * @return string
-     */
     public function contactGedcom(): string;
 }

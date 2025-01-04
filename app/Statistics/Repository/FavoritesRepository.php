@@ -49,9 +49,6 @@ class FavoritesRepository implements FavoritesRepositoryInterface
         $this->module_service = $module_service;
     }
 
-    /**
-     * @return string
-     */
     public function gedcomFavorites(): string
     {
         $module = $this->module_service
@@ -65,9 +62,6 @@ class FavoritesRepository implements FavoritesRepositoryInterface
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function userFavorites(): string
     {
         $module = $this->module_service
@@ -81,9 +75,6 @@ class FavoritesRepository implements FavoritesRepositoryInterface
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function totalGedcomFavorites(): string
     {
         $count  = 0;
@@ -98,9 +89,6 @@ class FavoritesRepository implements FavoritesRepositoryInterface
         return I18N::number($count);
     }
 
-    /**
-     * @return string
-     */
     public function totalUserFavorites(): string
     {
         $count  = 0;

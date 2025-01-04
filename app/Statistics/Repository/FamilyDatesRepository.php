@@ -53,9 +53,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
 
     private Tree $tree;
 
-    /**
-     * @param Tree $tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
@@ -63,9 +60,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
 
     /**
      * Returns the first/last event record for the given event fact.
-     *
-     * @param string $fact
-     * @param string $operation
      *
      * @return object{id:string,year:int,fact:string,type:string}|null
      */
@@ -119,65 +113,41 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
         return $result;
     }
 
-    /**
-     * @return string
-     */
     public function firstBirth(): string
     {
         return $this->getFirstLastEvent(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastBirth(): string
     {
         return $this->getFirstLastEvent(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDeath(): string
     {
         return $this->getFirstLastEvent(self::EVENT_DEATH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDeath(): string
     {
         return $this->getFirstLastEvent(self::EVENT_DEATH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstMarriage(): string
     {
         return $this->getFirstLastEvent(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastMarriage(): string
     {
         return $this->getFirstLastEvent(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDivorce(): string
     {
         return $this->getFirstLastEvent(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDivorce(): string
     {
         return $this->getFirstLastEvent(self::EVENT_DIVORCE, self::SORT_MAX);
@@ -207,65 +177,41 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
             ->display();
     }
 
-    /**
-     * @return string
-     */
     public function firstBirthYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastBirthYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDeathYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_DEATH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDeathYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_DEATH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstMarriageYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastMarriageYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDivorceYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDivorceYear(): string
     {
         return $this->getFirstLastEventYear(self::EVENT_DIVORCE, self::SORT_MAX);
@@ -294,65 +240,41 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function firstBirthName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastBirthName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDeathName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_DEATH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDeathName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_DEATH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstMarriageName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastMarriageName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDivorceName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDivorceName(): string
     {
         return $this->getFirstLastEventName(self::EVENT_DIVORCE, self::SORT_MAX);
@@ -386,65 +308,41 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
         return I18N::translate('This information is private and cannot be shown.');
     }
 
-    /**
-     * @return string
-     */
     public function firstBirthPlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_BIRTH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastBirthPlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_BIRTH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDeathPlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_DEATH, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDeathPlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_DEATH, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstMarriagePlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_MARRIAGE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastMarriagePlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_MARRIAGE, self::SORT_MAX);
     }
 
-    /**
-     * @return string
-     */
     public function firstDivorcePlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_DIVORCE, self::SORT_MIN);
     }
 
-    /**
-     * @return string
-     */
     public function lastDivorcePlace(): string
     {
         return $this->getFirstLastEventPlace(self::EVENT_DIVORCE, self::SORT_MAX);

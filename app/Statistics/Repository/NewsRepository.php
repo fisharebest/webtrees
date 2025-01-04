@@ -32,17 +32,11 @@ class NewsRepository implements NewsRepositoryInterface
 {
     private Tree $tree;
 
-    /**
-     * @param Tree $tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
     }
 
-    /**
-     * @return string
-     */
     public function totalUserJournal(): string
     {
         $number = DB::table('news')
@@ -52,9 +46,6 @@ class NewsRepository implements NewsRepositoryInterface
         return I18N::number($number);
     }
 
-    /**
-     * @return string
-     */
     public function totalGedcomNews(): string
     {
         $number = DB::table('news')

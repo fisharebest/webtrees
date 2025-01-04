@@ -40,7 +40,6 @@ use function assert;
 use function count;
 use function explode;
 use function in_array;
-use function intdiv;
 use function is_numeric;
 use function sprintf;
 
@@ -527,10 +526,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis = $this->axisAll();
                         $rows   = $statistics->statsAgeQuery('DEAT');
                         foreach ($rows as $row) {
-                            foreach ($row as $age) {
-                                $years = (int) ($age / self::DAYS_IN_YEAR);
-                                $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
-                            }
+                            $years = (int) ($row->days / self::DAYS_IN_YEAR);
+                            $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
@@ -538,10 +535,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         foreach (array_keys($z_axis) as $sex) {
                             $rows = $statistics->statsAgeQuery('DEAT', $sex);
                             foreach ($rows as $row) {
-                                foreach ($row as $age) {
-                                    $years = (int) ($age / self::DAYS_IN_YEAR);
-                                    $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
-                                }
+                                $years = (int) ($row->days / self::DAYS_IN_YEAR);
+                                $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
                         break;
@@ -552,10 +547,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         foreach (array_keys($z_axis) as $boundary) {
                             $rows = $statistics->statsAgeQuery('DEAT', 'BOTH', $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                foreach ($row as $age) {
-                                    $years = (int) ($age / self::DAYS_IN_YEAR);
-                                    $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
-                                }
+                                $years = (int) ($row->days / self::DAYS_IN_YEAR);
+                                $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }

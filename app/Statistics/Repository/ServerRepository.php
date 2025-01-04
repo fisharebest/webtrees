@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterf
  */
 class ServerRepository implements ServerRepositoryInterface
 {
-    /**
-     * @return string
-     */
     public function serverDate(): string
     {
         $format = strtr(I18N::dateFormat(), ['%' => '']);
@@ -39,9 +36,6 @@ class ServerRepository implements ServerRepositoryInterface
         return Registry::timestampFactory()->now(new SiteUser())->format($format);
     }
 
-    /**
-     * @return string
-     */
     public function serverTime(): string
     {
         $format = strtr(I18N::timeFormat(), ['%' => '']);
@@ -49,17 +43,11 @@ class ServerRepository implements ServerRepositoryInterface
         return Registry::timestampFactory()->now(new SiteUser())->format($format);
     }
 
-    /**
-     * @return string
-     */
     public function serverTime24(): string
     {
         return Registry::timestampFactory()->now(new SiteUser())->format('G:i');
     }
 
-    /**
-     * @return string
-     */
     public function serverTimezone(): string
     {
         return Registry::timestampFactory()->now(new SiteUser())->format('T');

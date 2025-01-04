@@ -19,55 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for place related statistics.
- */
 interface PlaceRepositoryInterface
 {
-    /**
-     * A list of common birth places.
-     *
-     * @return string
-     */
     public function commonBirthPlacesList(): string;
 
-    /**
-     * A list of common death places.
-     *
-     * @return string
-     */
     public function commonDeathPlacesList(): string;
 
-    /**
-     * A list of common marriage places.
-     *
-     * @return string
-     */
     public function commonMarriagePlacesList(): string;
 
-    /**
-     * A list of common countries.
-     *
-     * @return string
-     */
     public function commonCountriesList(): string;
 
-    /**
-     * Count total places.
-     *
-     * @return string
-     */
     public function totalPlaces(): string;
 
-    /**
-     * Create a chart showing where events occurred.
-     *
-     * @param string $chart_shows
-     * @param string $chart_type
-     * @param string $surname
-     *
-     * @return string
-     */
     public function chartDistribution(
         string $chart_shows = 'world',
         string $chart_type = '',

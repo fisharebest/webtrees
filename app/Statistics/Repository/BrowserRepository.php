@@ -28,9 +28,6 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInter
  */
 class BrowserRepository implements BrowserRepositoryInterface
 {
-    /**
-     * @return string
-     */
     public function browserDate(): string
     {
         $format = strtr(I18N::dateFormat(), ['%' => '']);
@@ -38,9 +35,6 @@ class BrowserRepository implements BrowserRepositoryInterface
         return Registry::timestampFactory()->now()->format($format);
     }
 
-    /**
-     * @return string
-     */
     public function browserTime(): string
     {
         $format = strtr(I18N::timeFormat(), ['%' => '']);
@@ -48,9 +42,6 @@ class BrowserRepository implements BrowserRepositoryInterface
         return Registry::timestampFactory()->now()->format($format);
     }
 
-    /**
-     * @return string
-     */
     public function browserTimezone(): string
     {
         return Registry::timestampFactory()->now()->format('T');

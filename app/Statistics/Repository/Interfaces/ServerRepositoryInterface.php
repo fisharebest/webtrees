@@ -19,36 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 
-/**
- * A repository providing methods for server related statistics.
- */
 interface ServerRepositoryInterface
 {
-    /**
-     * What is the current date on the server?
-     *
-     * @return string
-     */
     public function serverDate(): string;
 
-    /**
-     * What is the current time on the server (in 12 hour clock)?
-     *
-     * @return string
-     */
     public function serverTime(): string;
 
-    /**
-     * What is the current time on the server (in 24 hour clock)?
-     *
-     * @return string
-     */
     public function serverTime24(): string;
 
-    /**
-     * What is the timezone of the server.
-     *
-     * @return string
-     */
     public function serverTimezone(): string;
 }

@@ -78,9 +78,6 @@ class GedcomRepository implements GedcomRepositoryInterface
         ];
     }
 
-    /**
-     * @return string
-     */
     public function gedcomFilename(): string
     {
         return $this->tree->name();
@@ -94,25 +91,16 @@ class GedcomRepository implements GedcomRepositoryInterface
         return $this->tree->id();
     }
 
-    /**
-     * @return string
-     */
     public function gedcomTitle(): string
     {
         return e($this->tree->title());
     }
 
-    /**
-     * @return string
-     */
     public function gedcomCreatedSoftware(): string
     {
         return $this->gedcomHead()[0];
     }
 
-    /**
-     * @return string
-     */
     public function gedcomCreatedVersion(): string
     {
         $head = $this->gedcomHead();
@@ -155,9 +143,6 @@ class GedcomRepository implements GedcomRepositoryInterface
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function gedcomUpdated(): string
     {
         $row = DB::table('change')
@@ -174,9 +159,6 @@ class GedcomRepository implements GedcomRepositoryInterface
         return Registry::timestampFactory()->fromString($row->change_time)->isoFormat('LL');
     }
 
-    /**
-     * @return string
-     */
     public function gedcomRootId(): string
     {
         return $this->tree->getPreference('PEDIGREE_ROOT_ID');
