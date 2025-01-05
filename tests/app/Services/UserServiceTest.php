@@ -74,6 +74,7 @@ class UserServiceTest extends TestCase
         $user_service = new UserService();
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->find($user1->id());
+        self::assertInstanceOf(UserInterface::class, $user2);
 
         self::assertSame($user1->id(), $user2->id());
     }
@@ -83,6 +84,7 @@ class UserServiceTest extends TestCase
         $user_service = new UserService();
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByEmail($user1->email());
+        self::assertInstanceOf(UserInterface::class, $user2);
 
         self::assertSame($user1->id(), $user2->id());
     }
@@ -92,6 +94,7 @@ class UserServiceTest extends TestCase
         $user_service = new UserService();
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByUserName($user1->userName());
+        self::assertInstanceOf(UserInterface::class, $user2);
 
         self::assertSame($user1->id(), $user2->id());
     }
@@ -102,6 +105,8 @@ class UserServiceTest extends TestCase
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByIdentifier($user1->userName());
         $user3        = $user_service->findByIdentifier($user1->email());
+        self::assertInstanceOf(UserInterface::class, $user2);
+        self::assertInstanceOf(UserInterface::class, $user3);
 
         self::assertSame($user1->id(), $user2->id());
         self::assertSame($user1->id(), $user3->id());

@@ -40,7 +40,7 @@ class MapLinkBingTest extends TestCase
 
         $html = $module->mapLink($fact);
 
-        static::assertSame('', $html);
+        self::assertSame('', $html);
     }
 
     /**

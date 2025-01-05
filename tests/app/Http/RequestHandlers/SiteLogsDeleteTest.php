@@ -41,6 +41,6 @@ class SiteLogsDeleteTest extends TestCase
         $handler  = new SiteLogsDelete($site_logs_service);
         $response = $handler->handle($request);
 
-        static::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

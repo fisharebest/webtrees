@@ -48,7 +48,7 @@ class ISO88591Test extends TestCase
             $character = chr($code_point);
             $actual    = $encoding->toUtf8($character);
 
-            static::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, dechex($code_point) . '=>' . $actual);
+            self::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, dechex($code_point) . '=>' . $actual);
         }
 
         foreach ($ranges as $range) {
@@ -58,7 +58,7 @@ class ISO88591Test extends TestCase
                 $expected  = iconv(ISO88591::NAME, UTF8::NAME, $character);
                 $expected  = $expected === '' ? UTF8::REPLACEMENT_CHARACTER : $expected;
 
-                static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+                self::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
             }
         }
     }

@@ -93,8 +93,8 @@ class ManageMediaDataTest extends TestCase
             'media_folder' => 'media/',
             'subfolders'   => 'include',
             'search'       => ['value' => ''],
-            'start'        => '0',
-            'length'       => '10',
+            'start'  => '0',
+            'length' => '10',
         ]);
         $response              = $handler->handle($request);
 

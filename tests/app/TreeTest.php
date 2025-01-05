@@ -300,15 +300,23 @@ class TreeTest extends TestCase
         $resource = $gedcom_export_service->export($tree, true);
         $original = file_get_contents(__DIR__ . '/../data/demo.ged');
         $export   = stream_get_contents($resource);
+        self::assertIsString($original);
+        self::assertIsString($export);
         fclose($resource);
 
         // The version, date and time in the HEAD record will be different.
         $original = preg_replace('/\n2 VERS .*/', '', $original, 1);
         $export   = preg_replace('/\n2 VERS .*/', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
         $original = preg_replace('/\n1 DATE .. ... ..../', '', $original, 1);
         $export   = preg_replace('/\n1 DATE .. ... ..../', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
         $original = preg_replace('/\n2 TIME ..:..:../', '', $original, 1);
         $export   = preg_replace('/\n2 TIME ..:..:../', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
 
         self::assertSame($original, $export);
     }

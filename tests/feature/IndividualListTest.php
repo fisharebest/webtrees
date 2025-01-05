@@ -53,7 +53,9 @@ class IndividualListTest extends TestCase
         $this->user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '1');
         Auth::login($this->user);
         // The default "John Doe" individual will confuse the test results...
-        Registry::individualFactory()->make('X1', $this->tree)->deleteRecord();
+        $john_doe = Registry::individualFactory()->make('X1', $this->tree);
+        $this->assertInstanceOf(Individual::class, $john_doe);
+        $john_doe->deleteRecord();
     }
 
     public function testCollationOfInitials(): void

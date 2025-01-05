@@ -58,8 +58,10 @@ class XrefFamilyTest extends TestCase
         $select_nodes = $dom->getElementsByTagName('select');
         self::assertEquals(1, $select_nodes->count());
 
-        $option_nodes = $select_nodes[0]->getElementsByTagName('option');
-        self::assertEquals(1, $option_nodes->count());
+        foreach ($select_nodes as $select_node) {
+            $option_nodes = $select_node->getElementsByTagName('option');
+            self::assertEquals(1, $option_nodes->count());
+        }
     }
 
     public function testEscape(): void

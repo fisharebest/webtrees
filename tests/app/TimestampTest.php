@@ -29,7 +29,9 @@ class TimestampTest extends TestCase
 {
     public function testJulianDay(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame(2460296, gregoriantojd(12, 17, 2023));
         self::assertSame(2460296, $timestamp->julianDay());
@@ -58,7 +60,9 @@ class TimestampTest extends TestCase
 
     public function testFormat(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('17', $timestamp->format('d'));
         self::assertSame('Sun', $timestamp->format('D'));
@@ -101,7 +105,9 @@ class TimestampTest extends TestCase
 
     public function testIsoFormat(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('12/17/2023', $timestamp->isoFormat('l'));
         self::assertSame('Dec 17, 2023', $timestamp->isoFormat('ll'));
@@ -116,15 +122,22 @@ class TimestampTest extends TestCase
 
     public function testToDateTimeString(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
     }
 
     public function testCompare(): void
     {
-        $timestamp1 = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
-        $timestamp2 = new Timestamp(mktime(16, 21, 20, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp1 = new Timestamp($time, 'UTC', 'en-US');
+
+        $time = mktime(16, 21, 20, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp2 = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame(-1, $timestamp1->compare($timestamp2));
         self::assertSame(0, $timestamp1->compare($timestamp1));
@@ -133,7 +146,9 @@ class TimestampTest extends TestCase
 
     public function testAddSeconds(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-17 16:21:20', $timestamp->addSeconds(1)->toDateTimeString());
@@ -142,7 +157,9 @@ class TimestampTest extends TestCase
 
     public function testAddMinutes(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-17 16:22:19', $timestamp->addMinutes(1)->toDateTimeString());
@@ -151,7 +168,9 @@ class TimestampTest extends TestCase
 
     public function testAddHours(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-17 17:21:19', $timestamp->addHours(1)->toDateTimeString());
@@ -160,7 +179,9 @@ class TimestampTest extends TestCase
 
     public function testAddDays(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-18 16:21:19', $timestamp->addDays(1)->toDateTimeString());
@@ -168,7 +189,9 @@ class TimestampTest extends TestCase
 
     public function testAddMonths(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2024-01-17 16:21:19', $timestamp->addMonths(1)->toDateTimeString());
@@ -176,7 +199,9 @@ class TimestampTest extends TestCase
 
     public function testAddYears(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2024-12-17 16:21:19', $timestamp->addYears(1)->toDateTimeString());
@@ -184,7 +209,9 @@ class TimestampTest extends TestCase
 
     public function testSubtractSeconds(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-17 16:21:18', $timestamp->subtractSeconds(1)->toDateTimeString());
@@ -193,7 +220,9 @@ class TimestampTest extends TestCase
 
     public function testSubtractMinutes(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-17 16:20:19', $timestamp->subtractMinutes(1)->toDateTimeString());
@@ -202,7 +231,9 @@ class TimestampTest extends TestCase
 
     public function testSubtractHours(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-17 15:21:19', $timestamp->subtractHours(1)->toDateTimeString());
@@ -211,7 +242,9 @@ class TimestampTest extends TestCase
 
     public function testSubtractDays(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-12-16 16:21:19', $timestamp->subtractDays(1)->toDateTimeString());
@@ -220,7 +253,9 @@ class TimestampTest extends TestCase
 
     public function testSubtractMonths(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2023-11-17 16:21:19', $timestamp->subtractMonths(1)->toDateTimeString());
@@ -229,7 +264,9 @@ class TimestampTest extends TestCase
 
     public function testSubtractYears(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame('2023-12-17 16:21:19', $timestamp->toDateTimeString());
         self::assertSame('2022-12-17 16:21:19', $timestamp->subtractYears(1)->toDateTimeString());
@@ -238,7 +275,9 @@ class TimestampTest extends TestCase
 
     public function testTimestamp(): void
     {
-        $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
+        $time = mktime(16, 21, 19, 12, 17, 2023);
+        self::assertIsInt($time);
+        $timestamp = new Timestamp($time, 'UTC', 'en-US');
 
         self::assertSame(1702830079, $timestamp->timestamp());
     }

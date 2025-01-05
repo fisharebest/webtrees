@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaDataTest;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -33,7 +35,7 @@ class GedcomEditServiceTest extends TestCase
     {
         $gedcom_edit_service = new GedcomEditService();
 
-        static::assertSame(
+        self::assertSame(
             '1 BIRT Y',
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -44,7 +46,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        static::assertSame(
+        self::assertSame(
             "\n1 BIRT Y\n2 ADDR England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -54,7 +56,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        static::assertSame(
+        self::assertSame(
             "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -64,7 +66,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        static::assertSame(
+        self::assertSame(
             "\n1 BIRT\n2 PLAC England\n2 SOUR @S1@\n3 PAGE 123",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -75,7 +77,7 @@ class GedcomEditServiceTest extends TestCase
         );
 
         // Missing SOUR, so ignore PAGE
-        static::assertSame(
+        self::assertSame(
             "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -85,7 +87,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        static::assertSame(
+        self::assertSame(
             "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -95,7 +97,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        static::assertSame(
+        self::assertSame(
             "\n1 BIRT\n2 PLAC England\n1 DEAT\n2 PLAC Scotland",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -122,6 +124,7 @@ class GedcomEditServiceTest extends TestCase
         self::assertSameSize($expected_new_facts, $new_facts);
         for ($i = 0; $i < count($expected_new_facts); $i++) {
             $new_fact = $new_facts->get($i);
+            self::assertInstanceOf(Fact::class, $new_fact);
             self::assertSame($expected_new_facts[$i], $new_fact->tag());
         }
     }
@@ -146,6 +149,7 @@ class GedcomEditServiceTest extends TestCase
         self::assertSameSize($expected_new_facts, $new_facts);
         for ($i = 0; $i < count($expected_new_facts); $i++) {
             $new_fact = $new_facts->get($i);
+            self::assertInstanceOf(Fact::class, $new_fact);
             self::assertSame($expected_new_facts[$i], $new_fact->tag());
         }
     }

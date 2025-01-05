@@ -90,7 +90,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Create a request and bind it into the container.
      *
-     * @param array<string>                $query
+     * @param array<string|array<string>>  $query
      * @param array<string>                $params
      * @param array<UploadedFileInterface> $files
      * @param array<string|Tree>           $attributes
@@ -103,6 +103,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         array $attributes = []
     ): ServerRequestInterface {
         $server_request_factory = Registry::container()->get(ServerRequestFactoryInterface::class);
+        self::assertInstanceOf(ServerRequestFactoryInterface::class, $server_request_factory);
 
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
 
@@ -119,7 +120,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         foreach ($attributes as $key => $value) {
             $request = $request->withAttribute($key, $value);
 
-            if ($key === 'tree') {
+            if ($key === 'tree' && $value instanceof Tree) {
                 Registry::container()->set(Tree::class, $value);
             }
         }
@@ -182,7 +183,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
-        $stream                = Registry::container()->get(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
+        $stream_factory        = Registry::container()->get(StreamFactoryInterface::class);
+        self::assertInstanceOf(StreamFactoryInterface::class, $stream_factory);
+        $stream = $stream_factory->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
@@ -204,10 +207,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $stream_factory        = Registry::container()->get(StreamFactoryInterface::class);
         $uploaded_file_factory = Registry::container()->get(UploadedFileFactoryInterface::class);
 
+        self::assertInstanceOf(StreamFactoryInterface::class, $stream_factory);
+        self::assertInstanceOf(UploadedFileFactoryInterface::class, $uploaded_file_factory);
+
         $stream      = $stream_factory->createStreamFromFile($filename);
         $size        = filesize($filename);
         $status      = UPLOAD_ERR_OK;
         $client_name = basename($filename);
+
+        $this->assertIsInt($size);
 
         return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
     }
@@ -250,14 +258,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
                     switch ($tag) {
                         case 'html':
-                            static::assertSame([], $stack);
+                            self::assertSame([], $stack);
                             break;
                         case 'head':
                         case 'body':
-                            static::assertSame(['head'], $stack);
+                            self::assertSame(['head'], $stack);
                             break;
                         case 'div':
-                            static::assertNotContains('span', $stack, $message);
+                            self::assertNotContains('span', $stack, $message);
                             break;
                     }
 
@@ -266,7 +274,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     }
 
                     if ($tag === 'script' && !$self_closing) {
-                        $html = substr($html, strpos($html, '</script>'));
+                        $offset = strpos($html, '</script>');
+                        self::assertIsInt($offset);
+                        $html = substr($html, $offset);
                     } else {
                         $html = substr($html, strlen($match[0]));
                     }
@@ -276,13 +286,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
             }
         } while ($html !== '');
 
-        static::assertSame([], $stack);
+        self::assertSame([], $stack);
     }
 
     /**
      * Workaround for removal of withConsecutive in phpunit 10.
      *
      * @param array<int,mixed> $parameters
+
+     * @return Callback
      */
     protected static function withConsecutive(array $parameters): Callback
     {

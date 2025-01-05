@@ -37,8 +37,11 @@ class CheckCsrfTest extends TestCase
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
+        $uri_factory = Registry::container()->get(UriFactoryInterface::class);
+        self::assertInstanceOf(UriFactoryInterface::class, $uri_factory);
+
         $request = self::createRequest(RequestMethodInterface::METHOD_POST)
-            ->withUri(Registry::container()->get(UriFactoryInterface::class)->createUri('https://example.com'));
+            ->withUri($uri_factory->createUri('https://example.com'));
 
         $middleware = new CheckCsrf();
         $response   = $middleware->process($request, $handler);

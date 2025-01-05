@@ -32,7 +32,7 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory  = new MarkdownFactory();
 
-        static::assertSame(
+        self::assertSame(
             '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->autolink('FOO https://example.com BAR')
         );
@@ -43,7 +43,7 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
         $tree    = $this->createMock(Tree::class);
 
-        static::assertSame(
+        self::assertSame(
             '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->autolink('FOO https://example.com BAR', $tree)
         );
@@ -53,7 +53,7 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory  = new MarkdownFactory();
 
-        static::assertSame(
+        self::assertSame(
             '<p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p>',
             $factory->autolink('<b> https://example.com </b>')
         );
@@ -63,12 +63,12 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory = new MarkdownFactory();
 
-        static::assertSame(
+        self::assertSame(
             '<p>FOO https://example.com BAR</p>',
             $factory->markdown('FOO https://example.com BAR')
         );
 
-        static::assertSame(
+        self::assertSame(
             '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->markdown('FOO <https://example.com> BAR')
         );
@@ -79,12 +79,12 @@ class MarkdownFactoryTest extends TestCase
         $tree    = $this->createMock(Tree::class);
         $factory = new MarkdownFactory();
 
-        static::assertSame(
+        self::assertSame(
             '<p>FOO https://example.com BAR</p>',
             $factory->markdown('FOO https://example.com BAR', $tree)
         );
 
-        static::assertSame(
+        self::assertSame(
             '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->markdown('FOO <https://example.com> BAR', $tree)
         );
@@ -94,7 +94,7 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory = new MarkdownFactory();
 
-        static::assertSame(
+        self::assertSame(
             '<p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p>',
             $factory->markdown('<b> <https://example.com> </b>')
         );
@@ -104,12 +104,12 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory = new MarkdownFactory();
 
-        static::assertSame(
+        self::assertSame(
             '<p>alpha<br />beta<br />gamma<br />delta</p>',
             $factory->autolink("alpha\nbeta\ngamma  \ndelta")
         );
 
-        static::assertSame(
+        self::assertSame(
             '<p>alpha<br />beta<br />gamma<br />delta</p>',
             $factory->markdown("alpha\nbeta\ngamma  \ndelta")
         );
@@ -119,12 +119,12 @@ class MarkdownFactoryTest extends TestCase
     {
         $factory = new MarkdownFactory();
 
-        static::assertSame(
+        self::assertSame(
             '<p>alpha<br />beta</p><p>gamma<br />delta</p>',
             $factory->autolink("alpha\nbeta\n\n\n\ngamma\ndelta")
         );
 
-        static::assertSame(
+        self::assertSame(
             '<p>alpha<br />beta</p><p>gamma<br />delta</p>',
             $factory->markdown("alpha\nbeta\n\n\n\ngamma\ndelta")
         );

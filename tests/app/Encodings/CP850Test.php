@@ -41,7 +41,7 @@ class CP850Test extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(CP850::NAME, UTF8::NAME, $character);
 
-            static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+            self::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
         }
     }
 }

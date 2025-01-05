@@ -44,7 +44,7 @@ class Windows1251Test extends TestCase
             $expected  = iconv(Windows1251::NAME, 'UTF-8//IGNORE', $character);
             $expected  = $expected === '' ? UTF8::REPLACEMENT_CHARACTER : $expected;
 
-            static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+            self::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
         }
     }
 }

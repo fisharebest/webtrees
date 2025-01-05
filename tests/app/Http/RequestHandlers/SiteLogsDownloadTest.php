@@ -48,8 +48,8 @@ class SiteLogsDownloadTest extends TestCase
         $handler  = new SiteLogsDownload($site_logs_service);
         $response = $handler->handle($request);
 
-        static::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        static::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));
-        static::assertSame('attachment; filename="webtrees-logs.csv"', $response->getHeaderLine('content-disposition'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));
+        self::assertSame('attachment; filename="webtrees-logs.csv"', $response->getHeaderLine('content-disposition'));
     }
 }
