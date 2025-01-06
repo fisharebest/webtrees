@@ -165,9 +165,9 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('frère adoptif', '%s du frère adoptif')->adopted()->brother(),
             Relationship::fixed('frère/sœur adoptif', '%s du frère/sœur adoptif')->adopted()->sibling(),
             // Fostered
-            Relationship::fixed('mère d’accueil', '%s de la mère d’acceuil')->fostering()->mother(),
-            Relationship::fixed('père d’accueil', '%s du père d’acceuil')->fostering()->father(),
-            Relationship::fixed('parent d’accueil', '%s du parent d’acceuil')->fostering()->parent(),
+            Relationship::fixed('mère d’accueil', '%s de la mère d’accueil')->fostering()->mother(),
+            Relationship::fixed('père d’accueil', '%s du père d’accueil')->fostering()->father(),
+            Relationship::fixed('parent d’accueil', '%s du parent d’accueil')->fostering()->parent(),
             Relationship::fixed('sœur d’accueil', '%s de la sœur d’accueil')->fostering()->sister(),
             Relationship::fixed('frère d’accueil', '%s du frère d’accueil')->fostering()->brother(),
             Relationship::fixed('frère/sœur d’accueil', '%s du frère/sœur d’accueil')->fostering()->sibling(),
