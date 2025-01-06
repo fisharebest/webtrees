@@ -42,7 +42,6 @@ use function array_diff;
 use function array_intersect;
 use function dirname;
 use function explode;
-use function ini_get;
 use function intdiv;
 use function is_float;
 use function min;
@@ -78,48 +77,19 @@ class MediaFileService
         '_DAV',
     ];
 
+    public function __construct(private PhpService $php_service)
+    {
+    }
+
     /**
      * What is the largest file a user may upload?
      */
     public function maxUploadFilesize(): string
     {
-        $sizePostMax   = $this->parseIniFileSize((string) ini_get('post_max_size'));
-        $sizeUploadMax = $this->parseIniFileSize((string) ini_get('upload_max_filesize'));
-
-        $bytes = min($sizePostMax, $sizeUploadMax);
+        $bytes = min($this->php_service->postMaxSize(), $this->php_service->uploadMaxFilesize());
         $kb    = intdiv($bytes + 1023, 1024);
 
         return I18N::translate('%s KB', I18N::number($kb));
-    }
-
-    /**
-     * Returns the given size from an ini value in bytes.
-     *
-     * @param string $size
-     *
-     * @return int
-     */
-    private function parseIniFileSize(string $size): int
-    {
-        $number = (int) $size;
-
-        $units = [
-            'g' => 1073741824,
-            'G' => 1073741824,
-            'm' => 1048576,
-            'M' => 1048576,
-            'k' => 1024,
-            'K' => 1024,
-        ];
-
-        $number *= $units[substr($size, -1)] ?? 1;
-
-        if (is_float($number)) {
-            // Probably a 32bit version of PHP, with an INI setting >= 2GB
-            return PHP_INT_MAX;
-        }
-
-        return $number;
     }
 
     /**

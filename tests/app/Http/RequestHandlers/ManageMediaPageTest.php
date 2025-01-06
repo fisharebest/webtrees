@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -31,8 +32,8 @@ class ManageMediaPageTest extends TestCase
 
     public function testIndex(): void
     {
-        $media_file_service = new MediaFileService();
-        $handler            = new ManageMediaPage($media_file_service);
+        $media_file_service = new MediaFileService(php_service: new PhpService());
+        $handler            = new ManageMediaPage(media_file_service: $media_file_service);
         $request            = self::createRequest();
         $response           = $handler->handle($request);
 

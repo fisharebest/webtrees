@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Services\PhpService;
 use Transliterator;
 
-use function extension_loaded;
 use function in_array;
 use function preg_replace;
 use function strip_tags;
@@ -36,9 +36,9 @@ class SlugFactory implements SlugFactoryInterface
 {
     private Transliterator|null $transliterator = null;
 
-    public function __construct()
+    public function __construct(private PhpService $php_service)
     {
-        if (extension_loaded('intl')) {
+        if ($this->php_service->extensionLoaded(extension: 'intl')) {
             $ids = Transliterator::listIDs();
 
             if ($ids !== false && in_array('Any-Latin', $ids, true) && in_array('Latin-ASCII', $ids, true)) {
@@ -47,11 +47,6 @@ class SlugFactory implements SlugFactoryInterface
         }
     }
 
-    /**
-     * @param GedcomRecord $record
-     *
-     * @return string
-     */
     public function make(GedcomRecord $record): string
     {
         $slug = strip_tags($record->fullName());

@@ -33,12 +33,12 @@ use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -47,11 +47,10 @@ use Throwable;
 use function e;
 use function file_get_contents;
 use function file_put_contents;
-use function ini_get;
+use function intdiv;
 use function random_bytes;
 use function realpath;
 use function redirect;
-use function substr;
 use function touch;
 use function unlink;
 use function view;
@@ -92,38 +91,17 @@ class SetupWizard implements RequestHandlerInterface
         DB::SQL_SERVER => '', // Do not use default, as it is valid to have no port number.
     ];
 
-    private MigrationService $migration_service;
-
-    private ModuleService $module_service;
-
-    private ServerCheckService $server_check_service;
-
-    private UserService $user_service;
-
-    /**
-     * @param MigrationService   $migration_service
-     * @param ModuleService      $module_service
-     * @param ServerCheckService $server_check_service
-     * @param UserService        $user_service
-     */
     public function __construct(
-        MigrationService $migration_service,
-        ModuleService $module_service,
-        ServerCheckService $server_check_service,
-        UserService $user_service
+        private MigrationService $migration_service,
+        private ModuleService $module_service,
+        private PhpService $php_service,
+        private ServerCheckService $server_check_service,
+        private UserService $user_service
     ) {
-        $this->user_service         = $user_service;
-        $this->migration_service    = $migration_service;
-        $this->module_service       = $module_service;
-        $this->server_check_service = $server_check_service;
     }
 
     /**
      * Installation wizard - check user input and proceed to the next step.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -156,9 +134,9 @@ class SetupWizard implements RequestHandlerInterface
 
         I18N::init($data['lang'], true);
 
-        $data['cpu_limit']    = $this->maxExecutionTime();
+        $data['cpu_limit']    = $this->php_service->maxExecutionTime();
         $data['locales']      = $locales;
-        $data['memory_limit'] = $this->memoryLimit();
+        $data['memory_limit'] = intdiv($this->php_service->maxExecutionTime(), 1048576);
 
         // Only show database errors after the user has chosen a driver.
         if ($step >= 4) {
@@ -195,8 +173,6 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * @param ServerRequestInterface $request
-     *
      * @return array<string,mixed>
      */
     private function userData(ServerRequestInterface $request): array
@@ -211,47 +187,7 @@ class SetupWizard implements RequestHandlerInterface
     }
 
     /**
-     * The server's memory limit
-     *
-     * @return int
-     */
-    private function maxExecutionTime(): int
-    {
-        return (int) ini_get('max_execution_time');
-    }
-
-    /**
-     * The server's memory limit (in MB).
-     *
-     * @return int
-     */
-    private function memoryLimit(): int
-    {
-        $memory_limit = ini_get('memory_limit');
-
-        $number = (int) $memory_limit;
-
-        switch (substr($memory_limit, -1)) {
-            case 'g':
-            case 'G':
-                return $number * 1024;
-            case 'm':
-            case 'M':
-                return $number;
-            case 'k':
-            case 'K':
-                return (int) ($number / 1024);
-            default:
-                return (int) ($number / 1048576);
-        }
-    }
-
-    /**
      * Check we can write to the data folder.
-     *
-     * @param string $data_dir
-     *
-     * @return bool
      */
     private function checkFolderIsWritable(string $data_dir): bool
     {
@@ -270,8 +206,6 @@ class SetupWizard implements RequestHandlerInterface
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return ResponseInterface
      */
     private function step1Language(array $data): ResponseInterface
     {
@@ -280,8 +214,6 @@ class SetupWizard implements RequestHandlerInterface
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return ResponseInterface
      */
     private function step2CheckServer(array $data): ResponseInterface
     {
@@ -290,8 +222,6 @@ class SetupWizard implements RequestHandlerInterface
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return ResponseInterface
      */
     private function step3DatabaseType(array $data): ResponseInterface
     {
@@ -304,8 +234,6 @@ class SetupWizard implements RequestHandlerInterface
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return ResponseInterface
      */
     private function step4DatabaseConnection(array $data): ResponseInterface
     {
@@ -313,13 +241,13 @@ class SetupWizard implements RequestHandlerInterface
             return $this->step3DatabaseType($data);
         }
 
+        $data['mysql_local'] = 'localhost:' . $this->php_service->iniGet(option: 'pdo_mysql.default_socket');
+
         return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
     }
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return ResponseInterface
      */
     private function step5Administrator(array $data): ResponseInterface
     {
@@ -332,6 +260,8 @@ class SetupWizard implements RequestHandlerInterface
             $data['errors']->push($ex->getMessage());
 
             // Don't jump to step 4, as the error will make it jump to step 3.
+            $data['mysql_local'] = 'localhost:' . $this->php_service->iniGet(option: 'pdo_mysql.default_socket');
+
             return $this->viewResponse('setup/step-4-database-' . $data['dbtype'], $data);
         }
 
@@ -340,8 +270,6 @@ class SetupWizard implements RequestHandlerInterface
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return ResponseInterface
      */
     private function step6Install(array $data): ResponseInterface
     {
@@ -363,14 +291,6 @@ class SetupWizard implements RequestHandlerInterface
         return redirect($data['baseurl']);
     }
 
-    /**
-     * @param string $wtname
-     * @param string $wtuser
-     * @param string $wtpass
-     * @param string $wtemail
-     *
-     * @return string
-     */
     private function checkAdminUser(string $wtname, string $wtuser, string $wtpass, string $wtemail): string
     {
         if ($wtname === '' || $wtuser === '' || $wtpass === '' || $wtemail === '') {
@@ -386,8 +306,6 @@ class SetupWizard implements RequestHandlerInterface
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return void
      */
     private function createConfigFile(array $data): void
     {
@@ -432,8 +350,6 @@ class SetupWizard implements RequestHandlerInterface
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return void
      */
     private function connectToDatabase(array $data): void
     {

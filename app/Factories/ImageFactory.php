@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Webtrees;
 use Imagick;
 use Intervention\Gif\Exceptions\NotReadableException;
@@ -44,7 +45,6 @@ use Throwable;
 
 use function addcslashes;
 use function basename;
-use function extension_loaded;
 use function get_class;
 use function implode;
 use function pathinfo;
@@ -75,6 +75,10 @@ class ImageFactory implements ImageFactoryInterface
         'image/bmp'  => 'bmp',
         'image/webp' => 'webp',
     ];
+
+    public function __construct(private PhpService $php_service)
+    {
+    }
 
     /**
      * Send the original file - either inline or as a download.
@@ -305,11 +309,11 @@ class ImageFactory implements ImageFactoryInterface
      */
     protected function imageManager(): ImageManager
     {
-        if (extension_loaded(extension: 'imagick')) {
+        if ($this->php_service->extensionLoaded(extension: 'imagick')) {
             return new ImageManager(driver: new ImagickDriver());
         }
 
-        if (extension_loaded(extension: 'gd')) {
+        if ($this->php_service->extensionLoaded(extension: 'gd')) {
             return new ImageManager(driver: new GdDriver());
         }
 

@@ -73,6 +73,7 @@ use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
+use Fisharebest\Webtrees\Services\PhpService;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -205,7 +206,7 @@ class Webtrees
         Registry::gedcomRecordFactory(new GedcomRecordFactory());
         Registry::headerFactory(new HeaderFactory());
         Registry::idFactory(new IdFactory());
-        Registry::imageFactory(new ImageFactory());
+        Registry::imageFactory(new ImageFactory(new PhpService()));
         Registry::individualFactory(new IndividualFactory());
         Registry::locationFactory(new LocationFactory());
         Registry::markdownFactory(new MarkdownFactory());
@@ -215,7 +216,7 @@ class Webtrees
         Registry::responseFactory(new ResponseFactory(new Psr17Factory(), new Psr17Factory()));
         Registry::routeFactory(new RouteFactory());
         Registry::sharedNoteFactory(new SharedNoteFactory());
-        Registry::slugFactory(new SlugFactory());
+        Registry::slugFactory(new SlugFactory(new PhpService()));
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());

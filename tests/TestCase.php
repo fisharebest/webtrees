@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use PHPUnit\Framework\Constraint\Callback;
@@ -56,8 +57,6 @@ use const UPLOAD_ERR_OK;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    public static ?object $mock_functions = null;
-
     protected static bool $uses_database = false;
 
     /**
@@ -189,7 +188,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
-        $timeout_service = new TimeoutService();
+        $timeout_service = new TimeoutService(php_service: new PhpService());
         $controller      = new GedcomLoad($gedcom_import_service, $timeout_service);
         $request         = self::createRequest()->withAttribute('tree', $tree);
 

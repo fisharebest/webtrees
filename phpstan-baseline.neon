@@ -7153,12 +7153,6 @@ parameters:
 			path: app/Services/MediaFileService.php
 
 		-
-			message: '#^Call to function is_float\(\) with int will always evaluate to false\.$#'
-			identifier: function.impossibleType
-			count: 1
-			path: app/Services/MediaFileService.php
-
-		-
 			message: '#^Cannot call method detach\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -7615,12 +7609,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: '#^Cannot cast mixed to string\.$#'
-			identifier: cast.string
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Services\\ServerCheckService\:\:serverErrors\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<int, mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -7633,19 +7621,7 @@ parameters:
 			path: app/Services/ServerCheckService.php
 
 		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
 			message: '#^Parameter \#1 \$version1 of function version_compare expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
-			message: '#^Parameter \#2 \$string of function explode expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/ServerCheckService.php
@@ -7667,12 +7643,6 @@ parameters:
 			identifier: method.nonObject
 			count: 1
 			path: app/Services/SiteLogsService.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 1
-			path: app/Services/TimeoutService.php
 
 		-
 			message: '#^Parameter \#1 \$stream of function fclose expects resource, resource\|null given\.$#'
@@ -10649,33 +10619,3 @@ parameters:
 			identifier: argument.templateType
 			count: 1
 			path: tests/app/Services/ModuleServiceTest.php
-
-		-
-			message: '#^Call to an undefined method object\:\:iniGet\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: tests/app/Services/TimeoutServiceTest.php
-
-		-
-			message: '#^Cannot call method method\(\) on object\|null\.$#'
-			identifier: method.nonObject
-			count: 3
-			path: tests/app/Services/TimeoutServiceTest.php
-
-		-
-			message: '#^Cannot call method willReturn\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 3
-			path: tests/app/Services/TimeoutServiceTest.php
-
-		-
-			message: '#^Cannot call method with\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 3
-			path: tests/app/Services/TimeoutServiceTest.php
-
-		-
-			message: '#^Parameter \#1 \$option of function ini_get expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: tests/app/Services/TimeoutServiceTest.php

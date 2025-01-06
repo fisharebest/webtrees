@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -42,18 +43,27 @@ class ControlPanelControllerTest extends TestCase
     public function testControlPanel(): void
     {
         $admin_service         = new AdminService();
-        $message_service       = new MessageService(new EmailService(), new UserService());
+        $message_service       = new MessageService(email_service: new EmailService(), user_service: new UserService());
         $module_service        = new ModuleService();
         $housekeeping_service  = new HousekeepingService();
-        $server_check_service  = new ServerCheckService();
-        $timeout_service       = new TimeoutService();
+        $server_check_service  = new ServerCheckService(php_service: new PhpService());
+        $timeout_service       = new TimeoutService(php_service: new PhpService());
         $gedcom_import_service = new GedcomImportService();
-        $tree_service          = new TreeService($gedcom_import_service);
-        $upgrade_service       = new UpgradeService($timeout_service);
+        $tree_service          = new TreeService(gedcom_import_service: $gedcom_import_service);
+        $upgrade_service       = new UpgradeService(timeout_service: $timeout_service);
         $user_service          = new UserService();
-        $handler               = new ControlPanel($admin_service, $housekeeping_service, $message_service, $module_service, $server_check_service, $tree_service, $upgrade_service, $user_service);
+        $handler               = new ControlPanel(
+            admin_service: $admin_service,
+            housekeeping_service: $housekeeping_service,
+            message_service:  $message_service,
+            module_service:  $module_service,
+            server_check_service:  $server_check_service,
+            tree_service:  $tree_service,
+            upgrade_service:  $upgrade_service,
+            user_service:  $user_service,
+        );
         $request               = self::createRequest();
-        $response              = $handler->handle($request);
+        $response              = $handler->handle(request: $request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

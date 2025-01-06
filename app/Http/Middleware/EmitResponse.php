@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Services\PhpService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -27,7 +28,6 @@ use RuntimeException;
 
 use function connection_status;
 use function fastcgi_finish_request;
-use function function_exists;
 use function header;
 use function header_remove;
 use function headers_sent;
@@ -46,12 +46,10 @@ class EmitResponse implements MiddlewareInterface
     // Stream the output in chunks.
     private const int CHUNK_SIZE = 65536;
 
-    /**
-     * @param ServerRequestInterface  $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
-     */
+    public function __construct(private PhpService $php_service)
+    {
+    }
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $handler->handle($request);
@@ -73,11 +71,6 @@ class EmitResponse implements MiddlewareInterface
         return $response;
     }
 
-    /**
-     * Remove the default PHP header.
-     *
-     * @return void
-     */
     private function removeDefaultPhpHeaders(): void
     {
         header_remove('X-Powered-By');
@@ -86,10 +79,6 @@ class EmitResponse implements MiddlewareInterface
         header_remove('Pragma');
     }
 
-    /**
-     * @return void
-     * @throws RuntimeException
-     */
     private function assertHeadersNotEmitted(): void
     {
         if (headers_sent($file, $line)) {
@@ -99,10 +88,6 @@ class EmitResponse implements MiddlewareInterface
         }
     }
 
-    /**
-     * @return void
-     * @throws RuntimeException
-     */
     private function assertBodyNotEmitted(): void
     {
         if (ob_get_level() > 0 && ob_get_length() > 0) {
@@ -113,9 +98,6 @@ class EmitResponse implements MiddlewareInterface
         }
     }
 
-    /**
-     * @param ResponseInterface $response
-     */
     private function emitStatusLine(ResponseInterface $response): void
     {
         http_response_code($response->getStatusCode());
@@ -128,9 +110,6 @@ class EmitResponse implements MiddlewareInterface
         ));
     }
 
-    /**
-     * @param ResponseInterface $response
-     */
     private function emitHeaders(ResponseInterface $response): void
     {
         foreach ($response->getHeaders() as $name => $values) {
@@ -144,11 +123,6 @@ class EmitResponse implements MiddlewareInterface
         }
     }
 
-    /**
-     * @param ResponseInterface $response
-     *
-     * @return void
-     */
     private function emitBody(ResponseInterface $response): void
     {
         $body = $response->getBody();
@@ -162,12 +136,9 @@ class EmitResponse implements MiddlewareInterface
         }
     }
 
-    /**
-     * @return void
-     */
     private function closeConnection(): void
     {
-        if (function_exists('fastcgi_finish_request')) {
+        if ($this->php_service->functionExists(function: 'fastcgi_finish_request')) {
             fastcgi_finish_request();
         }
     }

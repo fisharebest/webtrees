@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -28,7 +29,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function date;
 use function e;
-use function extension_loaded;
 use function pathinfo;
 use function strtolower;
 use function substr;
@@ -36,17 +36,16 @@ use function substr;
 use const PATHINFO_EXTENSION;
 
 /**
- * Show download forms/optiosn.
+ * Show download forms/options.
  */
 class ExportGedcomPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
+    public function __construct(private PhpService $php_service)
+    {
+    }
+
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree  = Validator::attributes($request)->tree();
@@ -73,7 +72,7 @@ class ExportGedcomPage implements RequestHandlerInterface
             'filename'           => $filename,
             'title'              => $title,
             'tree'               => $tree,
-            'zip_available'      => extension_loaded('zip'),
+            'zip_available'      => $this->php_service->extensionLoaded('zip'),
         ]);
     }
 }

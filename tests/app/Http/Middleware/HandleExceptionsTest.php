@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\PhpService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
@@ -48,7 +49,7 @@ class HandleExceptionsTest extends TestCase
         Registry::container()->set(ModuleService::class, $module_service);
 
         $request    = self::createRequest();
-        $middleware = new HandleExceptions($tree_service);
+        $middleware = new HandleExceptions(php_service: new PhpService(), tree_service: $tree_service);
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
