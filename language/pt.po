@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-10 20:08+0000\n"
-"Last-Translator: DeLinuxCo <john@delinuxco.com>\n"
+"PO-Revision-Date: 2025-01-08 18:33+0000\n"
+"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
 "Language: pt\n"
@@ -6436,7 +6436,7 @@ msgstr "Encontrar um caracter especial"
 
 #: relationship.php:132
 msgid "Find all possible relationships"
-msgstr "Encontrar todas os parentescos possíveis"
+msgstr "Encontrar todos os parentescos possíveis"
 
 #: app/Functions/FunctionsPrint.php:687 app/Module/CensusAssistantModule.php:83
 #: app/Module/CensusAssistantModule.php:88
@@ -16913,7 +16913,7 @@ msgstr "tia"
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia paterna"
 
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
@@ -16923,7 +16923,7 @@ msgstr "tia"
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia materna"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s brother’s wife"
@@ -17275,7 +17275,7 @@ msgstr "leste"
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr "editar"
+msgstr "Editar"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -20518,7 +20518,7 @@ msgstr "irmã gémea"
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio paterno"
 
 #: app/Functions/Functions.php:1134
 msgctxt "father’s sister’s husband"
@@ -20528,7 +20528,7 @@ msgstr "tio"
 #: app/Functions/Functions.php:870
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio materno"
 
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s sister’s husband"
