@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-01-08 01:17+0000\n"
+"PO-Revision-Date: 2025-01-08 18:33+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -17284,7 +17284,7 @@ msgstr "número de d’Aboville"
 #: resources/views/media-page-menu.phtml:28
 #: resources/views/record-page-menu.phtml:23
 msgid "edit"
-msgstr "editar"
+msgstr "Editar"
 
 #: app/Services/RelationshipService.php:2338
 msgid "eighth cousin"
