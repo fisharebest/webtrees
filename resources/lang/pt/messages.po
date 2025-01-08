@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-08 21:54+0000\n"
-"Last-Translator: DeLinuxCo <john@delinuxco.com>\n"
+"PO-Revision-Date: 2025-01-08 18:33+0000\n"
+"Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
 "Language: pt\n"
@@ -6467,7 +6467,7 @@ msgstr "Encontrar um caracter especial"
 
 #: app/Module/RelationshipsChartModule.php:728
 msgid "Find all possible relationships"
-msgstr "Encontrar todas os parentescos possíveis"
+msgstr "Encontrar todos os parentescos possíveis"
 
 #: app/Module/RelationshipsChartModule.php:458
 msgid "Find any relationship"
@@ -16857,7 +16857,7 @@ msgstr "tia"
 #: app/Services/RelationshipService.php:538
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia paterna"
 
 #: app/Services/RelationshipService.php:860
 msgctxt "mother’s brother’s wife"
@@ -16867,7 +16867,7 @@ msgstr "tia"
 #: app/Services/RelationshipService.php:576
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr "tia"
+msgstr "tia materna"
 
 #: app/Services/RelationshipService.php:912
 msgctxt "parent’s brother’s wife"
@@ -17247,7 +17247,7 @@ msgstr "número de d’Aboville"
 #: resources/views/media-page-menu.phtml:28
 #: resources/views/record-page-menu.phtml:23
 msgid "edit"
-msgstr "editar"
+msgstr "Editar"
 
 #: app/Services/RelationshipService.php:2337
 msgid "eighth cousin"
@@ -20719,7 +20719,7 @@ msgstr "irmã gémea"
 #: app/Services/RelationshipService.php:524
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio paterno"
 
 #: app/Services/RelationshipService.php:822
 msgctxt "father’s sister’s husband"
@@ -20729,7 +20729,7 @@ msgstr "tio"
 #: app/Services/RelationshipService.php:560
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr "tio"
+msgstr "tio materno"
 
 #: app/Services/RelationshipService.php:908
 msgctxt "mother’s sister’s husband"
