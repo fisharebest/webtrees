@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -38,43 +39,26 @@ use function e;
 use function in_array;
 use function uasort;
 
-/**
- * Edit the tree privacy.
- */
 class TreePrivacyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private TreeService $tree_service;
-
-    /**
-     * @param TreeService $tree_service
-     */
-    public function __construct(TreeService $tree_service)
+    public function __construct(private readonly TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree                 = Validator::attributes($request)->tree();
-        $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
-        $all_tags             = $this->tagsForPrivacy();
-        $privacy_constants    = $this->privacyConstants();
-        $privacy_restrictions = $this->privacyRestrictions($tree);
+        $tree  = Validator::attributes($request)->tree();
+        $title = e($tree->name()) . ' — ' . I18N::translate('Privacy');
 
         return $this->viewResponse('admin/trees-privacy', [
-            'all_tags'             => $all_tags,
+            'all_tags'             => $this->tagsForPrivacy(),
             'count_trees'          => $this->tree_service->all()->count(),
-            'privacy_constants'    => $privacy_constants,
-            'privacy_restrictions' => $privacy_restrictions,
+            'privacy_constants'    => $this->privacyConstants(),
+            'privacy_restrictions' => $this->privacyRestrictions(tree: $tree),
             'title'                => $title,
             'tree'                 => $tree,
         ]);
@@ -98,9 +82,7 @@ class TreePrivacyPage implements RequestHandlerInterface
     /**
      * The current privacy restrictions for a tree.
      *
-     * @param Tree $tree
-     *
-     * @return array<object>
+     * @return list<object{default_resn_id:int,resn:string,xref:string,record:GedcomRecord|null,label:string}>
      */
     private function privacyRestrictions(Tree $tree): array
     {
@@ -108,31 +90,36 @@ class TreePrivacyPage implements RequestHandlerInterface
             ->where('gedcom_id', '=', $tree->id())
             ->get()
             ->map(static function (object $row) use ($tree): object {
-                $row->record = null;
-                $row->label  = '';
+                $record = null;
 
                 if ($row->xref !== null) {
-                    $row->record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
+                    $record = Registry::gedcomRecordFactory()->make($row->xref, $tree);
                 }
 
+                $label = '';
+
                 if ($row->tag_type) {
-                    $row->tag_label = $row->tag_type;
+                    $label = $row->tag_type;
 
                     foreach (['', Family::RECORD_TYPE . ':', Individual::RECORD_TYPE . ':'] as $prefix) {
                         $element = Registry::elementFactory()->make($prefix . $row->tag_type);
 
                         if (!$element instanceof UnknownElement) {
-                            $row->tag_label = $element->label();
+                            $label = $element->label();
                             break;
                         }
                     }
-                } else {
-                    $row->tag_label = '';
                 }
 
-                return $row;
+                return (object) [
+                    'default_resn_id' => (int) $row->default_resn_id,
+                    'resn'            => $row->resn,
+                    'record'          => $record,
+                    'xref'            => $row->xref,
+                    'label'           => $label,
+                ];
             })
-            ->sort(static fn (object $x, object $y): int => I18N::comparator()($x->tag_label, $y->tag_label))
+            ->sort(static fn (object $x, object $y): int => I18N::comparator()($x->label, $y->label))
             ->all();
     }
 

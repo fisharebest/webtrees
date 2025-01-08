@@ -16,13 +16,20 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var array<object>                 $active
- * @var Collection<int,Tree>          $all_trees
- * @var array<string,string>          $breadcrumbs
- * @var int                           $parent_id
- * @var array<object>                 $placelist
- * @var PlaceHierarchyListModule|null $list_module
- * @var string                        $title
+ * @var array<list<object{p_place:string,tree_name:string,tree_title:string,p_id:int}>> $active
+ * @var Collection<array-key,Tree>                                                      $all_trees
+ * @var array<string,string>                                                            $breadcrumbs
+ * @var int                                                                             $parent_id
+ * @var Collection<int,object{
+ *     id:int,
+ *     key:string,
+ *     place:string,
+ *     latitude:float|null,
+ *     longitude:float|null,
+ *     child_count:int,
+ *     no_coord:int}> $placelist
+ * @var PlaceHierarchyListModule|null                                                   $list_module
+ * @var string                                                                          $title
  */
 
 ?>

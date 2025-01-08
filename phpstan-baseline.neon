@@ -2815,6 +2815,18 @@ parameters:
 			path: app/Http/RequestHandlers/TreePrivacyPage.php
 
 		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Http\\RequestHandlers\\TreePrivacyPage\:\:privacyRestrictions\(\) should return list\<object\{default_resn_id\: int, resn\: string, xref\: string, record\: Fisharebest\\Webtrees\\GedcomRecord\|null, label\: string\}\> but returns array\<int, object\{default_resn_id\: int, resn\: mixed, record\: Fisharebest\\Webtrees\\GedcomRecord\|null, xref\: mixed, label\: mixed\}&stdClass\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Http/RequestHandlers/TreePrivacyPage.php
+
+		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\GedcomRecordFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -7111,9 +7123,27 @@ parameters:
 			path: app/Services/MapDataService.php
 
 		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 4
+			count: 6
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Services\\MapDataService\:\:activePlaces\(\) should return array\<list\<object\{p_place\: string, tree_name\: string, tree_title\: string, p_id\: int\}\>\> but returns array\<string, non\-empty\-list\<object\{p_place\: mixed, tree_name\: mixed, tree_title\: mixed, p_id\: int\}&stdClass\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Services\\MapDataService\:\:getPlaceListLocation\(\) should return Illuminate\\Support\\Collection\<int, object\{id\: int, key\: string, place\: string, latitude\: float\|null, longitude\: float\|null, child_count\: int, no_coord\: int\}\> but returns Illuminate\\Support\\Collection\<int, object\{id\: int, place\: mixed, key\: lowercase\-string, latitude\: float\|null, longitude\: float\|null, child_count\: int, no_coord\: int\}&stdClass\>\.$#'
+			identifier: return.type
+			count: 1
 			path: app/Services/MapDataService.php
 
 		-
@@ -7136,6 +7166,12 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 of closure expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Parameter \#2 \$parent_place_ids of method Fisharebest\\Webtrees\\Services\\MapDataService\:\:deleteUnusedLocations\(\) expects list\<int\>, array\<int, int\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/MapDataService.php
@@ -8659,196 +8695,16 @@ parameters:
 			path: app/Webtrees.php
 
 		-
-			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: resources/views/admin/control-panel.phtml
-
-		-
-			message: '#^Left side of \|\| is always true\.$#'
-			identifier: booleanOr.leftAlwaysTrue
-			count: 1
-			path: resources/views/admin/control-panel.phtml
-
-		-
-			message: '#^Offset int does not exist on array\<string, int\>\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: resources/views/admin/control-panel.phtml
-
-		-
 			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
 			identifier: argument.type
-			count: 8
+			count: 7
 			path: resources/views/admin/control-panel.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/admin/control-panel.phtml
-
-		-
-			message: '#^Right side of \|\| is always true\.$#'
-			identifier: booleanOr.rightAlwaysTrue
-			count: 1
-			path: resources/views/admin/control-panel.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$child_count\.$#'
-			identifier: property.notFound
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$key\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$latitude\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$longitude\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$no_coord\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$place\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Argument of an invalid type object supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Cannot access offset 0 on object\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 3
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Cannot access offset mixed on object\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Cannot access property \$p_id on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Cannot access property \$tree_name on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Cannot access property \$tree_title on mixed\.$#'
-			identifier: property.nonObject
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#1 \$key of function array_key_exists expects int\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#1 \$key of method Illuminate\\Support\\Collection\<int,Fisharebest\\Webtrees\\Tree\>\:\:get\(\) expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#1 \$n of static method Fisharebest\\Webtrees\\I18N\:\:number\(\) expects float, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/admin/locations.phtml
 
 		-
 			message: '#^Parameter \#1 \$tree of method Fisharebest\\Webtrees\\Module\\PlaceHierarchyListModule\:\:listUrl\(\) expects Fisharebest\\Webtrees\\Tree, Fisharebest\\Webtrees\\Tree\|null given\.$#'
 			identifier: argument.type
 			count: 2
 			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function count expects array\|Countable, object given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of method Fisharebest\\Webtrees\\Module\\PlaceHierarchyListModule\:\:listUrl\(\) expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: resources/views/admin/locations.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$message\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/admin/trees-check.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$tag\.$#'
-			identifier: property.notFound
-			count: 6
-			path: resources/views/admin/trees-check.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 6
-			path: resources/views/admin/trees-check.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 3
-			path: resources/views/admin/trees-check.phtml
 
 		-
 			message: '#^Cannot call method name\(\) on Fisharebest\\Webtrees\\Tree\|null\.$#'
@@ -8863,104 +8719,8 @@ parameters:
 			path: resources/views/admin/trees-merge.phtml
 
 		-
-			message: '#^Access to an undefined property object\:\:\$default_resn_id\.$#'
-			identifier: property.notFound
-			count: 3
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$record\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$resn\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$tag_label\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Cannot call method fullName\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Cannot call method url\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 6
-			path: resources/views/admin/trees-privacy.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$user_id\.$#'
-			identifier: property.notFound
-			count: 5
-			path: resources/views/admin/users-table-options.phtml
-
-		-
-			message: '#^Access to an undefined property object\:\:\$user_name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: resources/views/admin/users-table-options.phtml
-
-		-
-			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/admin/users-table-options.phtml
-
-		-
-			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
-			identifier: echo.nonString
-			count: 2
-			path: resources/views/admin/users-table-options.phtml
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<string, mixed\> given\.$#'
-			identifier: argument.type
-			count: 3
-			path: resources/views/admin/users-table-options.phtml
-
-		-
-			message: '#^Argument of an invalid type list\<string\>\|false supplied for foreach, only iterables are supported\.$#'
-			identifier: foreach.nonIterable
-			count: 1
-			path: resources/views/chart-box.phtml
-
-		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
 			identifier: foreach.nonIterable
-			count: 2
-			path: resources/views/chart-box.phtml
-
-		-
-			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: resources/views/chart-box.phtml
 
@@ -9007,30 +8767,6 @@ parameters:
 			path: resources/views/chart-box.phtml
 
 		-
-			message: '#^PHPDoc tag @var for variable \$all_facts contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: resources/views/chart-box.phtml
-
-		-
-			message: '#^PHPDoc tag @var for variable \$menus contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: resources/views/chart-box.phtml
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:filter\(\) expects \(callable\(mixed, int\|string\)\: bool\)\|null, Closure\(Fisharebest\\Webtrees\\Fact\)\: bool given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/chart-box.phtml
-
-		-
-			message: '#^Parameter \#1 \$filter of method Fisharebest\\Webtrees\\GedcomRecord\:\:facts\(\) expects array\<string\>, array\<int, mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/chart-box.phtml
-
-		-
 			message: '#^Parameter \#1 \$value of function e expects BackedEnum\|float\|Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|int\|string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -9039,18 +8775,6 @@ parameters:
 		-
 			message: '#^Parameter \#1 \(mixed\) of echo cannot be converted to string\.$#'
 			identifier: echo.nonString
-			count: 1
-			path: resources/views/chart-box.phtml
-
-		-
-			message: '#^Parameter \#2 \$haystack of function in_array expects array, list\<string\>\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: resources/views/chart-box.phtml
-
-		-
-			message: '#^Parameter \#2 \$haystack of function in_array expects array, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: resources/views/chart-box.phtml
 

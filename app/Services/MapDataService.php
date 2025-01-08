@@ -45,11 +45,6 @@ class MapDataService
     // Format of CSV files
     public const string CSV_SEPARATOR = ';';
 
-    /**
-     * @param int $id
-     *
-     * @return PlaceLocation
-     */
     public function findById(int $id): PlaceLocation
     {
         $hierarchy = [];
@@ -72,9 +67,7 @@ class MapDataService
     /**
      * Which trees use a particular location?
      *
-     * @param PlaceLocation $location
-     *
-     * @return array<string,array<object>>
+     * @return array<list<object{p_place:string,tree_name:string,tree_title:string,p_id:int}>>
      */
     public function activePlaces(PlaceLocation $location): array
     {
@@ -87,7 +80,13 @@ class MapDataService
             ->where('setting_name', '=', 'title')
             ->whereIn('p_parent_id', $parents)
             ->select(['p_place', 'gedcom_name AS tree_name', 'setting_value AS tree_title', 'p_id'])
-            ->get();
+            ->get()
+            ->map(static fn (object $row): object => (object) [
+                'p_place'    => $row->p_place,
+                'tree_name'  => $row->tree_name,
+                'tree_title' => $row->tree_title,
+                'p_id'       => (int) $row->p_id,
+            ]);
 
         foreach ($rows as $row) {
             $children[mb_strtolower($row->p_place)][] = $row;
@@ -98,8 +97,6 @@ class MapDataService
 
     /**
      * Make sure that all places in the genealogy data also exist in the location data.
-     *
-     * @return void
      */
     public function importMissingLocations(): void
     {
@@ -156,11 +153,6 @@ class MapDataService
         }
     }
 
-    /**
-     * @param int $id
-     *
-     * @return void
-     */
     public function deleteRecursively(int $id): void
     {
         // Uses on-delete-cascade
@@ -170,10 +162,7 @@ class MapDataService
     }
 
     /**
-     * @param int|null   $parent_location_id
-     * @param array<int> $parent_place_ids
-     *
-     * @return void
+     * @param list<int> $parent_place_ids
      */
     public function deleteUnusedLocations(int|null $parent_location_id, array $parent_place_ids): void
     {
@@ -208,9 +197,7 @@ class MapDataService
      * Find a list of child places.
      * How many children does each child place have?  How many have co-ordinates?
      *
-     * @param int|null $parent_id
-     *
-     * @return Collection<int,object>
+     * @return Collection<int,object{id:int,key:string,place:string,latitude:float|null,longitude:float|null,child_count:int,no_coord:int}>
      */
     public function getPlaceListLocation(int|null $parent_id): Collection
     {
@@ -254,31 +241,23 @@ class MapDataService
                 new Expression('SUM(' . $expression . ') AS no_coord'),
             ])
             ->get()
-            ->map(static function (object $row): object {
-                $row->child_count = (int) $row->child_count;
-                $row->no_coord    = (int) $row->no_coord;
-                $row->key         = mb_strtolower($row->place);
-
-                return $row;
-            })
+            ->map(static fn (object $row): object => (object) [
+                'id'          => (int) $row->id,
+                'place'       => $row->place,
+                'key'         => mb_strtolower($row->place),
+                'latitude'    => $row->latitude === null ? null : (float) $row->latitude,
+                'longitude'   => $row->longitude === null ? null : (float) $row->longitude,
+                'child_count' => (int) $row->child_count,
+                'no_coord'    => (int) $row->no_coord,
+            ])
             ->sort(static fn (object $x, object $y): int => I18N::comparator()($x->place, $y->place));
     }
 
-    /**
-     * @param float $latitude
-     *
-     * @return string
-     */
     public function writeLatitude(float $latitude): string
     {
         return $this->writeDegrees($latitude, Gedcom::LATITUDE_NORTH, Gedcom::LATITUDE_SOUTH);
     }
 
-    /**
-     * @param float $longitude
-     *
-     * @return string
-     */
     public function writeLongitude(float $longitude): string
     {
         return $this->writeDegrees($longitude, Gedcom::LONGITUDE_EAST, Gedcom::LONGITUDE_WEST);
@@ -286,8 +265,6 @@ class MapDataService
 
     /**
      * Find all active places that match a location
-     *
-     * @param PlaceLocation $location
      *
      * @return array<string>
      */
@@ -314,13 +291,6 @@ class MapDataService
         return $place_ids;
     }
 
-    /**
-     * @param float  $degrees
-     * @param string $positive
-     * @param string $negative
-     *
-     * @return string
-     */
     private function writeDegrees(float $degrees, string $positive, string $negative): string
     {
         $degrees = round($degrees, 5);

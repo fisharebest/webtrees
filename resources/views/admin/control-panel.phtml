@@ -91,7 +91,7 @@ use Illuminate\Support\Collection;
  * @var Collection<int,ModuleAnalyticsInterface>       $analytics_modules_enabled
  * @var Collection<int,ModuleBlockInterface>           $block_modules_disabled
  * @var Collection<int,ModuleBlockInterface>           $block_modules_enabled
- * @var array<string,int>                              $changes
+ * @var array<int,int>                                 $changes
  * @var Collection<int,ModuleChartInterface>           $chart_modules_disabled
  * @var Collection<int,ModuleChartInterface>           $chart_modules_enabled
  * @var Collection<int,ModuleCustomInterface>          $custom_updates
@@ -99,6 +99,7 @@ use Illuminate\Support\Collection;
  * @var Collection<int,ModuleDataFixInterface>         $data_fix_modules_enabled
  * @var Collection<array-key,int>                      $families
  * @var FamilyListModule|null                          $family_list_module
+ * @var list<string>                                   $files_to_delete
  * @var Collection<int,ModuleFooterInterface>          $footer_modules_disabled
  * @var Collection<int,ModuleFooterInterface>          $footer_modules_enabled
  * @var Collection<int,ModuleHistoricEventsInterface>  $history_modules_disabled
@@ -491,7 +492,7 @@ use Illuminate\Support\Collection;
 <?php endif ?>
 
 <!-- USERS -->
-<div class="card mb-4 <?= $unapproved || $unverified ? 'card-outline-danger' : '' ?>">
+<div class="card mb-4 <?= $unapproved->isNotEmpty() || $unverified->isNotEmpty() ? 'card-outline-danger' : '' ?>">
     <div class="card-header">
         <h2 class="mb-0">
             <?= I18N::translate('Users') ?>
@@ -846,7 +847,7 @@ use Illuminate\Support\Collection;
 </div>
 
 <!-- OLD FILES -->
-<?php if (!empty($files_to_delete)) : ?>
+<?php if ($files_to_delete !== []) : ?>
     <div class="card mb-4 card-outline-danger">
         <div class="card-header">
             <h2 class="mb-0">

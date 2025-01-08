@@ -76,25 +76,10 @@ class CheckTree implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private Gedcom $gedcom;
-
-    private TimeoutService $timeout_service;
-
-    /**
-     * @param Gedcom         $gedcom
-     * @param TimeoutService $timeout_service
-     */
-    public function __construct(Gedcom $gedcom, TimeoutService $timeout_service)
+    public function __construct(private readonly Gedcom $gedcom, private readonly TimeoutService $timeout_service)
     {
-        $this->gedcom          = $gedcom;
-        $this->timeout_service = $timeout_service;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
@@ -339,11 +324,6 @@ class CheckTree implements RequestHandlerInterface
         ]);
     }
 
-    /**
-     * @param string $type
-     *
-     * @return string
-     */
     private function recordType(string $type): string
     {
         $types = [
@@ -362,12 +342,6 @@ class CheckTree implements RequestHandlerInterface
         return $types[$type] ?? e($type);
     }
 
-    /**
-     * @param Tree   $tree
-     * @param string $xref
-     *
-     * @return string
-     */
     private function recordLink(Tree $tree, string $xref): string
     {
         $url = route(GedcomRecordPage::class, ['xref' => $xref, 'tree' => $tree->name()]);
@@ -375,14 +349,6 @@ class CheckTree implements RequestHandlerInterface
         return '<a href="' . e($url) . '">' . e($xref) . '</a>';
     }
 
-    /**
-     * @param Tree   $tree
-     * @param string $xref
-     * @param string $type1
-     * @param string $type2
-     *
-     * @return string
-     */
     private function linkErrorMessage(Tree $tree, string $xref, string $type1, string $type2): string
     {
         $link  = $this->recordLink($tree, $xref);
@@ -395,15 +361,7 @@ class CheckTree implements RequestHandlerInterface
     /**
      * Format a link to a record.
      *
-     * @param Tree   $tree
-     * @param string $type
-     * @param string $xref
-     * @param int    $line_number
-     * @param string $line
-     * @param string $message
-     * @param string $tag
-     *
-     * @return object
+     * @return object{message:string,tag:string}
      */
     private function lineError(
         Tree $tree,
@@ -431,13 +389,7 @@ class CheckTree implements RequestHandlerInterface
     /**
      * Format a link to a record.
      *
-     * @param Tree   $tree
-     * @param string $type
-     * @param string $xref
-     * @param string $message
-     * @param string $tag
-     *
-     * @return object
+     * @return object{message:string,tag:string}
      */
     private function recordError(Tree $tree, string $type, string $xref, string $message, string $tag): object
     {
