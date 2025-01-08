@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-01-06 09:58+0000\n"
+"PO-Revision-Date: 2025-01-08 18:33+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/sv/>\n"
@@ -3817,7 +3817,7 @@ msgstr "Sambo"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Samvetsäktenskap"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
