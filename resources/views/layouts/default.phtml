@@ -62,9 +62,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('styles') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
-            return $module->headContent();
-        })->implode('') ?>
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->headContent())->implode('') ?>
     </head>
 
     <body class="wt-global wt-theme-<?= e(Registry::container()->get(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(basename(strtr(Validator::attributes($request)->route()->name ?? '/', ['\\' => '/']))) ?>">
@@ -137,9 +135,7 @@ use Psr\Http\Message\ServerRequestInterface;
         </main>
 
         <footer class="container-lg wt-footers d-print-none">
-            <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
-                return $module->getFooter($request);
-            })->implode('') ?>
+            <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static fn (ModuleFooterInterface $module): string => $module->getFooter($request))->implode('') ?>
         </footer>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
@@ -182,8 +178,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
         <?= View::stack('javascript') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
-            return $module->bodyContent();
-        })->implode('') ?>
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module->bodyContent())->implode('') ?>
     </body>
 </html>

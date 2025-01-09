@@ -31,9 +31,7 @@ $today                = new Date(strtoupper(date('d M Y')));
 
 $module = Registry::container()->get(ModuleService::class)
     ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-    ->first(static function (ModuleInterface $module) {
-        return $module instanceof RelationshipsChartModule;
-    });
+    ->first(static fn (ModuleInterface $module): bool => $module instanceof RelationshipsChartModule);
 ?>
 
 <?php View::push('javascript') ?>

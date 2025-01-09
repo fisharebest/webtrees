@@ -37,9 +37,7 @@ use Fisharebest\Webtrees\View;
 
         <?= View::stack('styles') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
-    return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent();
-        })->implode('') ?>
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent())->implode('') ?>
     </head>
     <body class="container-lg wt-global wt-control-panel">
         <header>
@@ -88,8 +86,6 @@ use Fisharebest\Webtrees\View;
 
         <?= View::stack('javascript') ?>
 
-        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
-    return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent();
-        })->implode('') ?>
+        <?= Registry::container()->get(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static fn (ModuleGlobalInterface $module): string => $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent())->implode('') ?>
     </body>
 </html>
