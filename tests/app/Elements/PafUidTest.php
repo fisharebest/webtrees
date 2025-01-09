@@ -40,7 +40,7 @@ class PafUidTest extends AbstractElementTestCase
     public function testCanonical(): void
     {
         self::assertSame(
-            'FEF44CA3CA7543ED9A05F00591315274D810',
+            'FEF44CA3CA7543ED9A05F005913152746CA8',
             self::$element->canonical('fef44CA3CA7543ED9A05F005913152740000'),
         );
     }
