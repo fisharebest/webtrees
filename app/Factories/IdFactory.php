@@ -25,7 +25,9 @@ use Ramsey\Uuid\Uuid;
 
 use function dechex;
 use function hexdec;
+use function sprintf;
 use function str_pad;
+use function str_split;
 use function strtoupper;
 use function substr;
 
@@ -42,7 +44,7 @@ class IdFactory implements IdFactoryInterface
     public function uuid(): string
     {
         try {
-            return strtolower(strtr(Uuid::uuid4()->toString(), ['-' => '']));
+            return strtolower(Uuid::uuid4()->toString());
         } catch (RandomSourceException) {
             // uuid4() can fail if there is insufficient entropy in the system.
             return '';
@@ -78,23 +80,22 @@ class IdFactory implements IdFactoryInterface
     }
 
     /**
-     * @param string $uid exactly 32 hex characters
-     *
-     * @return string
+     * Based on the C implementation in "GEDCOM Unique Identifiers" by Gordon Clarke, dated 2007-06-08
      */
     public function pafUidChecksum(string $uid): string
     {
         $checksum_a = 0; // a sum of the bytes
         $checksum_b = 0; // a sum of the incremental values of $checksum_a
 
+        foreach (str_split($uid, 2) as $byte) {
+            $checksum_a += hexdec($byte);
+            $checksum_b += $checksum_a;
+        }
         for ($i = 0; $i < 32; $i += 2) {
             $checksum_a += hexdec(substr($uid, $i, 2));
-            $checksum_b += $checksum_a & 0xff;
+            $checksum_b += $checksum_a;
         }
 
-        $digit1 = str_pad(dechex($checksum_a), 2, '0', STR_PAD_LEFT);
-        $digit2 = str_pad(dechex($checksum_b), 2, '0', STR_PAD_LEFT);
-
-        return strtoupper($digit1 . $digit2);
+        return sprintf('%02X%02X', $checksum_a & 0xff, $checksum_b & 0xff);
     }
 }

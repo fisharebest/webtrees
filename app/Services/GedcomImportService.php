@@ -275,10 +275,7 @@ class GedcomImportService
 
         // Add a _UID
         if ($tree->getPreference('GENERATE_UIDS') === '1' && !str_contains($gedrec, "\n1 _UID ")) {
-            $element = Registry::elementFactory()->make($type . ':_UID');
-            if (!$element instanceof UnknownElement) {
-                $gedrec .= "\n1 _UID " . $element->default($tree);
-            }
+            $gedrec .= "\n1 _UID " . Registry::idFactory()->pafUid();
         }
 
         // If the user has downloaded their GEDCOM data (containing media objects) and edited it

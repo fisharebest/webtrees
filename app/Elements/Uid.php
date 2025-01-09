@@ -19,8 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+
+use function e;
+use function preg_match;
+use function strtoupper;
 
 /**
  * UID fields
@@ -29,19 +34,31 @@ class Uid extends AbstractElement
 {
     protected const int MAXIMUM_LENGTH = 36;
 
-    /**
-     * Create a default value for this element.
-     *
-     * @param Tree $tree
-     *
-     * @return string
-     */
-    public function default(Tree $tree): string
+    public function canonical(string $value): string
     {
-        if ($tree->getPreference('GENERATE_UIDS') === '1') {
-            return Registry::idFactory()->uuid();
+        $value = strtolower(parent::canonical($value));
+
+        if (preg_match('/([0-9a-f]{8})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{12})/', $value, $match) === 1) {
+            return $match[1] . '-' . $match[2] . '-' . $match [3] . '-' . $match[4] . '-' . $match[5];
         }
 
-        return '';
+        return Registry::idFactory()->uuid();
+    }
+
+
+    public function edit(string $id, string $name, string $value, Tree $tree): string
+    {
+        return
+            '<div class="input-group mb-3">' .
+            parent::edit($id, $name, $value, $tree) .
+            '<button type="button" class="input-group-text btn btn-primary" id="create-' . e($id) . '">' .
+            I18N::translate('create') .
+            '</button>' .
+            '</div>' .
+            '<script>' .
+            'document.getElementById("create-' . e($id) . '").addEventListener("click", function(event) {' .
+            ' document.getElementById("' . e($id) . '").value="' . e(Registry::idFactory()->uuid()) . '";' .
+            '})' .
+            '</script>';
     }
 }

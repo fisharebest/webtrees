@@ -655,12 +655,6 @@ parameters:
 			path: app/Factories/HeaderFactory.php
 
 		-
-			message: '#^Parameter \#1 \$num of function dechex expects int, float\|int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Factories/IdFactory.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$i_gedcom\.$#'
 			identifier: property.notFound
 			count: 1
