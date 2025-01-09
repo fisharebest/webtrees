@@ -91,10 +91,6 @@ class IdFactory implements IdFactoryInterface
             $checksum_a += hexdec($byte);
             $checksum_b += $checksum_a;
         }
-        for ($i = 0; $i < 32; $i += 2) {
-            $checksum_a += hexdec(substr($uid, $i, 2));
-            $checksum_b += $checksum_a;
-        }
 
         return sprintf('%02X%02X', $checksum_a & 0xff, $checksum_b & 0xff);
     }
