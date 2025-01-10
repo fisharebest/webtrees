@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "98a739e645ec791709e6f94dd26909fb",
+    "content-hash": "c112089725af239974791e33a7fad3e2",
     "packages": [
         {
             "name": "aura/router",
@@ -1123,16 +1123,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v11.36.1",
+            "version": "v11.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "21868f9ac221a42d4346dc56495d11ab7e0d339a"
+                "reference": "9100b083eeb85d38d78fc1de28f7326596ab2eda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/21868f9ac221a42d4346dc56495d11ab7e0d339a",
-                "reference": "21868f9ac221a42d4346dc56495d11ab7e0d339a",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/9100b083eeb85d38d78fc1de28f7326596ab2eda",
+                "reference": "9100b083eeb85d38d78fc1de28f7326596ab2eda",
                 "shasum": ""
             },
             "require": {
@@ -1175,11 +1175,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-12-13T13:58:10+00:00"
+            "time": "2024-12-18T14:14:45+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v11.36.1",
+            "version": "v11.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -1225,7 +1225,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v11.36.1",
+            "version": "v11.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1276,7 +1276,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v11.36.1",
+            "version": "v11.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1393,7 +1393,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v11.36.1",
+            "version": "v11.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1439,16 +1439,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v11.36.1",
+            "version": "v11.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "fba1ff58e30fa280248ce3db9b18d6341c6ac339"
+                "reference": "388c916b143a104e732cbaf7e6b19cd7a4e21a1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/fba1ff58e30fa280248ce3db9b18d6341c6ac339",
-                "reference": "fba1ff58e30fa280248ce3db9b18d6341c6ac339",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/388c916b143a104e732cbaf7e6b19cd7a4e21a1e",
+                "reference": "388c916b143a104e732cbaf7e6b19cd7a4e21a1e",
                 "shasum": ""
             },
             "require": {
@@ -1472,7 +1472,7 @@
             },
             "suggest": {
                 "illuminate/filesystem": "Required to use the Composer class (^11.0).",
-                "laravel/serializable-closure": "Required to use the once function (^1.3).",
+                "laravel/serializable-closure": "Required to use the once function (^1.3|^2.0).",
                 "league/commonmark": "Required to use Str::markdown() and Stringable::markdown() (^2.6).",
                 "league/uri": "Required to use the Uri class (^7.5.1).",
                 "ramsey/uuid": "Required to use Str::uuid() (^4.7).",
@@ -1512,7 +1512,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-12-17T20:20:09+00:00"
+            "time": "2024-12-20T14:43:22+00:00"
         },
         {
             "name": "intervention/gif",
@@ -1584,16 +1584,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "3.10.1",
+            "version": "3.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "8230387f14d5727745934673ebe70fdbe161f581"
+                "reference": "1c68e5fdf443374f3580c5b920a7f177eccdab85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/8230387f14d5727745934673ebe70fdbe161f581",
-                "reference": "8230387f14d5727745934673ebe70fdbe161f581",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/1c68e5fdf443374f3580c5b920a7f177eccdab85",
+                "reference": "1c68e5fdf443374f3580c5b920a7f177eccdab85",
                 "shasum": ""
             },
             "require": {
@@ -1640,7 +1640,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/image/issues",
-                "source": "https://github.com/Intervention/image/tree/3.10.1"
+                "source": "https://github.com/Intervention/image/tree/3.10.2"
             },
             "funding": [
                 {
@@ -1656,7 +1656,7 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2024-12-27T14:53:08+00:00"
+            "time": "2025-01-04T07:31:37+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -2320,12 +2320,12 @@
             "version": "3.8.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
+                "url": "https://github.com/CarbonPHP/carbon.git",
                 "reference": "129700ed449b1f02d70272d2ac802357c8c30c58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/129700ed449b1f02d70272d2ac802357c8c30c58",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/129700ed449b1f02d70272d2ac802357c8c30c58",
                 "reference": "129700ed449b1f02d70272d2ac802357c8c30c58",
                 "shasum": ""
             },
@@ -6625,16 +6625,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "6.2.1",
+            "version": "6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "43d129d6a0f81c78bee378b46688293eb7ea3739"
+                "reference": "d4e47a769525c4dd38cea90e5dcd435ddbbc7115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/43d129d6a0f81c78bee378b46688293eb7ea3739",
-                "reference": "43d129d6a0f81c78bee378b46688293eb7ea3739",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/d4e47a769525c4dd38cea90e5dcd435ddbbc7115",
+                "reference": "d4e47a769525c4dd38cea90e5dcd435ddbbc7115",
                 "shasum": ""
             },
             "require": {
@@ -6646,6 +6646,9 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^11.4"
+            },
+            "suggest": {
+                "ext-bcmath": "For comparing BcMath\\Number objects"
             },
             "type": "library",
             "extra": {
@@ -6690,7 +6693,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/comparator/issues",
                 "security": "https://github.com/sebastianbergmann/comparator/security/policy",
-                "source": "https://github.com/sebastianbergmann/comparator/tree/6.2.1"
+                "source": "https://github.com/sebastianbergmann/comparator/tree/6.3.0"
             },
             "funding": [
                 {
@@ -6698,7 +6701,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-31T05:30:08+00:00"
+            "time": "2025-01-06T10:28:19+00:00"
         },
         {
             "name": "sebastian/complexity",
