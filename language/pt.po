@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-08 18:33+0000\n"
+"PO-Revision-Date: 2025-01-14 20:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -1703,7 +1703,7 @@ msgstr "Adoção de um filho"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr "Batizado adulto"
+msgstr "Batizado em adulto"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -2544,7 +2544,7 @@ msgstr "Batismo de um irmão"
 
 #: app/GedcomTag.php:980
 msgid "Baptism of a child"
-msgstr "Batismo de um filho"
+msgstr "Batismo de um(a) filho(a)"
 
 #: app/GedcomTag.php:978
 msgid "Baptism of a daughter"
@@ -2596,11 +2596,11 @@ msgstr "Batismo de uma meia-irmã"
 
 #: app/GedcomTag.php:1025
 msgid "Baptism of a sibling"
-msgstr "Batismo de um irmão"
+msgstr "Batismo de um irmão / uma irmã"
 
 #: app/GedcomTag.php:1023
 msgid "Baptism of a sister"
-msgstr "Batismo da irmã"
+msgstr "Batismo de uma irmã"
 
 #: app/GedcomTag.php:976
 msgid "Baptism of a son"
@@ -3437,7 +3437,8 @@ msgstr "Causa do óbito"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Cuidado! Isto poderá levar muito tempo. Seja paciente."
+msgstr ""
+"Atenção! Esta ação poderá ser demorada. Por favor aguarde com paciência."
 
 #: admin_site_upgrade.php:138
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3742,7 +3743,7 @@ msgstr "Batizado de um irmão"
 
 #: app/GedcomTag.php:1199
 msgid "Christening of a child"
-msgstr "Batizado de um filho"
+msgstr "Batizado de um(a) filho(a)"
 
 #: app/GedcomTag.php:1197
 msgid "Christening of a daughter"
@@ -3794,7 +3795,7 @@ msgstr "Batizado de uma meia-irmã"
 
 #: app/GedcomTag.php:1244
 msgid "Christening of a sibling"
-msgstr "Batizado de um irmão"
+msgstr "Batizado de um irmão / uma irmã"
 
 #: app/GedcomTag.php:1242
 msgid "Christening of a sister"
@@ -4511,7 +4512,7 @@ msgstr "Data de enterro"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr "Data do batismo"
+msgstr "Data do batizado"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
@@ -11034,7 +11035,7 @@ msgstr "Local de enterro"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr "Local do batismo"
+msgstr "Local do batizado"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
@@ -17257,7 +17258,7 @@ msgstr "falecido"
 #: app/Module/ClippingsCartModule.php:445
 #: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 msgid "download"
-msgstr "descarregar"
+msgstr "Descarregar"
 
 #: app/Module/GoogleMapsModule.php:3372
 msgid "east"
