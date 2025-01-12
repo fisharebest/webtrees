@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-04-07 07:11+0000\n"
-"Last-Translator: Zen0bi1 <tymolewski@gmail.com>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"PO-Revision-Date: 2025-01-14 20:58+0000\n"
+"Last-Translator: Damian Kantorowski <damiankantorowski.dk@gmail.com>\n"
+"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -3836,7 +3838,7 @@ msgstr "Małżeństwo zwyczajowe"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Małżeństwo niezalegalizowane"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -12840,7 +12842,7 @@ msgstr "Kreator instalacji webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Płeć"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
