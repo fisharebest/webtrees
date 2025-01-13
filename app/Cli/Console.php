@@ -30,7 +30,7 @@ use function parse_ini_file;
 final class Console extends Application
 {
     private const array COMMANDS = [
-        Commands\CompilePoFiles::class,
+        Commands\SiteSetting::class,
         Commands\TreeCreate::class,
         Commands\TreeList::class,
         Commands\UserCreate::class,
@@ -74,8 +74,6 @@ final class Console extends Application
             ca: $config['dbca'] ?? '',
             verify_certificate: (bool) ($config['dbverify'] ?? ''),
         );
-
-        DB::exec('START TRANSACTION');
 
         return $this;
     }
