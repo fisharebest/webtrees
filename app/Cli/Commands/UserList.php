@@ -28,7 +28,7 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class UserList extends Command
+final class UserList extends Command
 {
     public function __construct(private readonly UserService $user_service)
     {

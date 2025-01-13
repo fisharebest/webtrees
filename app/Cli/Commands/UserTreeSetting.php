@@ -28,15 +28,17 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class SiteSetting extends Command
+final class UserTreeSetting extends Command
 {
     protected function configure(): void
     {
         $this
-            ->setName(name: 'site-setting')
-            ->setDescription(description: 'Configure site settings')
-            ->addOption(name: 'list', shortcut: 'l', mode: InputOption::VALUE_NONE, description: 'List site settings (optionally filtered by setting name)')
-            ->addOption(name: 'delete', shortcut: 'd', mode: InputOption::VALUE_NONE, description: 'Delete a site setting')
+            ->setName(name: 'user-tree-setting')
+            ->setDescription(description: 'Configure user-tree settings')
+            ->addOption(name: 'list', shortcut: 'l', mode: InputOption::VALUE_NONE, description: 'List user-tree settings (optionally filtered by setting name)')
+            ->addOption(name: 'delete', shortcut: 'd', mode: InputOption::VALUE_NONE, description: 'Delete a user-tree setting')
+            ->addArgument(name: 'user-name', mode: InputArgument::REQUIRED, description: 'The user to update')
+            ->addArgument(name: 'tree-name', mode: InputArgument::REQUIRED, description: 'The tree to update')
             ->addArgument(name: 'setting-name', mode: InputArgument::OPTIONAL, description: 'The setting to update')
             ->addArgument(name: 'setting-value', mode: InputArgument::OPTIONAL, description: 'The new value of the setting.');
     }
@@ -47,6 +49,12 @@ final class SiteSetting extends Command
         $list   = (bool) $input->getOption(name: 'list');
         $delete = (bool) $input->getOption(name: 'delete');
 
+        /** @var string $user_name */
+        $user_name = $input->getArgument(name: 'user-name');
+
+        /** @var string $tree_name */
+        $tree_name = $input->getArgument(name: 'tree-name');
+
         /** @var string|null $setting_name */
         $setting_name = $input->getArgument(name: 'setting-name');
 
@@ -54,6 +62,26 @@ final class SiteSetting extends Command
         $setting_value = $input->getArgument(name: 'setting-value');
 
         $io = new SymfonyStyle(input: $input, output: $output);
+
+        $user_id = DB::table('user')
+            ->where(column: 'user_name', operator: '=', value: $user_name)
+            ->value(column: 'user_id');
+
+        if ($user_id === null) {
+            $io->error(message: 'User ‘' . $user_name . '’ not found.');
+
+            return Command::FAILURE;
+        }
+
+        $tree_id = DB::table('gedcom')
+            ->where(column: 'gedcom_name', operator: '=', value: $tree_name)
+            ->value(column: 'gedcom_id');
+
+        if ($tree_id === null) {
+            $io->error(message: 'Tree ‘' . $tree_name . '’ not found.');
+
+            return Command::FAILURE;
+        }
 
         if ($list) {
             if ($delete) {
@@ -72,7 +100,9 @@ final class SiteSetting extends Command
             $table->setHeaders(headers: ['Setting name', 'Setting value']);
 
             /** @var array<object{setting_name:string,setting_value:string}> $settings */
-            $settings = DB::table(table: 'site_setting')
+            $settings = DB::table(table: 'user_gedcom_setting')
+                ->where(column: 'user_id', operator: '=', value: $user_id)
+                ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                 ->orderBy(column: 'setting_name')
                 ->select(columns: ['setting_name', 'setting_value'])
                 ->get()
@@ -90,7 +120,9 @@ final class SiteSetting extends Command
         }
 
         /** @var string|null $old_setting_value */
-        $old_setting_value = DB::table('site_setting')
+        $old_setting_value = DB::table('user_gedcom_setting')
+            ->where(column: 'user_id', operator: '=', value: $user_id)
+            ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
             ->where(column: 'setting_name', operator: '=', value: $setting_name)
             ->value(column: 'setting_value');
 
@@ -108,13 +140,15 @@ final class SiteSetting extends Command
             }
 
             if ($old_setting_value === null) {
-                $io->warning(message: 'Site setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
+                $io->warning(message: 'User-tree setting ‘' . $setting_name . '’ not found.  Nothing to delete.');
             } else {
-                DB::table(table: 'site_setting')
-                    ->where(column: 'setting_name', operator: '=', value: $setting_name)
+                DB::table('user_gedcom_setting')
+                    ->where(column: 'user_id', operator: '=', value: $user_id)
+                    ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
+                    ->where('setting_name', '=', $setting_name)
                     ->delete();
 
-                $io->success(message: 'Site setting ‘' . $setting_name . '’ deleted.  Previous value was ‘' . $old_setting_value . '’.');
+                $io->success(message: 'User-tree setting ‘' . $setting_name . '’ deleted.  Previous value was ‘' . $old_setting_value . '’.');
             }
 
             return Command::SUCCESS;
@@ -129,39 +163,43 @@ final class SiteSetting extends Command
 
         if ($setting_value === null) {
             if ($old_setting_value === null) {
-                $io->info(message: 'Site setting ‘' . $setting_name . '’ is not currently set.');
+                $io->info(message: 'User-tree setting ‘' . $setting_name . '’ is not currently set.');
             } elseif ($quiet) {
                 $verbosity = $io->getVerbosity();
                 $io->setVerbosity(level: OutputInterface::VERBOSITY_NORMAL);
                 $io->writeln(messages: $old_setting_value);
                 $io->setVerbosity(level: $verbosity);
             } else {
-                $io->info(message: 'Site setting ‘' . $setting_name . '’ is currently set to ‘' . $old_setting_value . '’.');
+                $io->info(message: 'User-tree setting ‘' . $setting_name . '’ is currently set to ‘' . $old_setting_value . '’.');
             }
 
             return Command::SUCCESS;
         }
 
         if ($old_setting_value === $setting_value) {
-            $io->warning(message: 'Site setting ' . $setting_name . ' is already set to ' . $setting_value);
+            $io->warning(message: 'User-tree setting ' . $setting_name . ' is already set to ' . $setting_value);
 
             return Command::SUCCESS;
         }
 
         if ($old_setting_value === null) {
-            DB::table(table: 'site_setting')
+            DB::table(table: 'user_gedcom_setting')
                 ->insert(values: [
-                    'setting_name'  => $setting_name,
+                    'user_id' => $user_id,
+                    'gedcom_id' => $tree_id,
+                    'setting_name' => $setting_name,
                     'setting_value' => $setting_value,
                 ]);
 
-            $io->success(message: 'Site setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
+            $io->success(message: 'User-tree setting ‘' . $setting_name . '’ was created as ‘' . $setting_value . '’.');
         } else {
-            DB::table(table: 'site_setting')
+            DB::table(table: 'user_gedcom_setting')
+                ->where(column: 'user_id', operator: '=', value: $user_id)
+                ->where(column: 'gedcom_id', operator: '=', value: $tree_id)
                 ->where(column: 'setting_name', operator: '=', value: $setting_name)
                 ->update(values: ['setting_value' => $setting_value]);
 
-            $io->success(message: 'Site setting ‘' . $setting_name . '’ was changed from ‘' . $old_setting_value . '’ to ‘' . $setting_value . '’.');
+            $io->success(message: 'User-tree setting ‘' . $setting_name . '’ was changed from ‘' . $old_setting_value . '’ to ‘' . $setting_value . '’.');
         }
 
         return Command::SUCCESS;

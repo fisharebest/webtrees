@@ -30,11 +30,15 @@ use function parse_ini_file;
 final class Console extends Application
 {
     private const array COMMANDS = [
+        Commands\CompilePoFiles::class,
         Commands\SiteSetting::class,
         Commands\TreeCreate::class,
         Commands\TreeList::class,
+        Commands\TreeSetting::class,
         Commands\UserCreate::class,
         Commands\UserList::class,
+        Commands\UserSetting::class,
+        Commands\UserTreeSetting::class,
     ];
 
     public function __construct()

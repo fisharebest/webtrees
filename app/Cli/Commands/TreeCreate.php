@@ -31,7 +31,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function bin2hex;
 use function random_bytes;
 
-class TreeCreate extends Command
+final class TreeCreate extends Command
 {
     public function __construct(private readonly TreeService $tree_service)
     {

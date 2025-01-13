@@ -35,7 +35,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function addcslashes;
 use function stream_get_contents;
 
-class TreeExport extends Command
+final class TreeExport extends Command
 {
     public function __construct(
         private readonly GedcomExportService $gedcom_export_service,

@@ -31,7 +31,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function bin2hex;
 use function random_bytes;
 
-class UserCreate extends Command
+final class UserCreate extends Command
 {
     public function __construct(private readonly UserService $user_service)
     {

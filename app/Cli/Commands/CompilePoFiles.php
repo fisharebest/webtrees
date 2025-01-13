@@ -34,7 +34,7 @@ use function glob;
 use function realpath;
 use function var_export;
 
-class CompilePoFiles extends Command
+final class CompilePoFiles extends Command
 {
     private const string PO_FILE_PATTERN = Webtrees::ROOT_DIR . 'resources/lang/*/*.po';
 
