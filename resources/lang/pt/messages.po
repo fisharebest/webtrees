@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-01-08 18:33+0000\n"
+"PO-Revision-Date: 2025-01-14 20:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -1691,7 +1691,7 @@ msgstr "Pais adotivos"
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:1164 app/GedcomTag.php:569
 msgid "Adult christening"
-msgstr "Batizado adulto"
+msgstr "Batizado em adulto"
 
 #: resources/views/admin/trees-preferences.phtml:866
 msgid "Advanced fact preferences"
@@ -2562,7 +2562,7 @@ msgstr "Batismo de um irmão"
 
 #: app/Module/IndividualFactsTabModule.php:317
 msgid "Baptism of a child"
-msgstr "Batismo de um filho"
+msgstr "Batismo de um(a) filho(a)"
 
 #: app/Module/IndividualFactsTabModule.php:316
 msgid "Baptism of a daughter"
@@ -2618,11 +2618,11 @@ msgstr "Batismo de uma meia-irmã"
 
 #: app/Module/IndividualFactsTabModule.php:340
 msgid "Baptism of a sibling"
-msgstr "Batismo de um irmão"
+msgstr "Batismo de um irmão / uma irmã"
 
 #: app/Module/IndividualFactsTabModule.php:339
 msgid "Baptism of a sister"
-msgstr "Batismo da irmã"
+msgstr "Batismo de uma irmã"
 
 #: app/Module/IndividualFactsTabModule.php:315
 msgid "Baptism of a son"
@@ -3467,7 +3467,8 @@ msgstr "Causa do óbito"
 #: resources/views/admin/trees-merge.phtml:60
 #: resources/views/admin/trees-renumber.phtml:46
 msgid "Caution! This may take a long time. Be patient."
-msgstr "Cuidado! Isto poderá levar muito tempo. Seja paciente."
+msgstr ""
+"Atenção! Esta ação poderá ser demorada. Por favor aguarde com paciência."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
@@ -3762,7 +3763,7 @@ msgstr "Batizado de um irmão"
 
 #: app/Module/IndividualFactsTabModule.php:312
 msgid "Christening of a child"
-msgstr "Batizado de um filho"
+msgstr "Batizado de um(a) filho(a)"
 
 #: app/Module/IndividualFactsTabModule.php:311
 msgid "Christening of a daughter"
@@ -3816,7 +3817,7 @@ msgstr "Batizado de uma meia-irmã"
 
 #: app/Module/IndividualFactsTabModule.php:335
 msgid "Christening of a sibling"
-msgstr "Batizado de um irmão"
+msgstr "Batizado de um irmão / uma irmã"
 
 #: app/Module/IndividualFactsTabModule.php:334
 msgid "Christening of a sister"
@@ -4694,7 +4695,7 @@ msgstr "Data de enterro"
 #: app/Factories/ElementFactory.php:1161 app/GedcomTag.php:564
 #: resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr "Data do batismo"
+msgstr "Data do batizado"
 
 #: app/Factories/ElementFactory.php:1166 app/GedcomTag.php:589
 #: resources/xml/reports/missing_facts_report.xml:294
@@ -11546,7 +11547,7 @@ msgstr "Local de enterro"
 #: app/Factories/ElementFactory.php:1163 app/GedcomTag.php:566
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
-msgstr "Local do batismo"
+msgstr "Local do batizado"
 
 #: app/Factories/ElementFactory.php:1167 app/GedcomTag.php:591
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -18037,7 +18038,7 @@ msgstr "baixo"
 #: resources/views/report-setup-page.phtml:83
 #: resources/views/report-setup-page.phtml:96
 msgid "download"
-msgstr "descarregar"
+msgstr "Descarregar"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
