@@ -185,9 +185,9 @@ final class UserTreeSetting extends Command
         if ($old_setting_value === null) {
             DB::table(table: 'user_gedcom_setting')
                 ->insert(values: [
-                    'user_id' => $user_id,
-                    'gedcom_id' => $tree_id,
-                    'setting_name' => $setting_name,
+                    'user_id'       => $user_id,
+                    'gedcom_id'     => $tree_id,
+                    'setting_name'  => $setting_name,
                     'setting_value' => $setting_value,
                 ]);
 

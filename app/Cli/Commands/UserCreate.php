@@ -111,7 +111,7 @@ final class UserCreate extends Command
             $io->info(message: 'Generated password: ' . $password);
         }
 
-        $user = $this->user_service->create(user_name: $username, real_name:$realname, email: $email, password: $password);
+        $user = $this->user_service->create(user_name: $username, real_name: $realname, email: $email, password: $password);
         $user->setPreference(setting_name: UserInterface::PREF_TIME_ZONE, setting_value: $timezone);
         $user->setPreference(setting_name: UserInterface::PREF_LANGUAGE, setting_value: $language);
         $user->setPreference(setting_name: UserInterface::PREF_IS_ACCOUNT_APPROVED, setting_value: '1');

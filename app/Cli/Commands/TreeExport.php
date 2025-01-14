@@ -70,8 +70,8 @@ final class TreeExport extends Command
         $io = new SymfonyStyle(input: $input, output: $output);
 
         $tree_name = $input->getArgument(name: 'tree_name');
-        $format   = $input->getOption(name: 'format');
-        $filename = $input->getOption(name: 'filename');
+        $format    = $input->getOption(name: 'format');
+        $filename  = $input->getOption(name: 'filename');
 
         $tree = $this->tree_service->all()[$tree_name] ?? null;
 

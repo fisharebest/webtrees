@@ -19,44 +19,40 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Cli\Commands;
 
-use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Throwable;
 
-final class TreeList extends Command
+use function file_exists;
+
+final class SiteOnline extends Command
 {
-    public function __construct(private readonly TreeService $tree_service)
-    {
-        parent::__construct();
-    }
-
     protected function configure(): void
     {
         $this
-            ->setName(name: 'tree-list')
-            ->setDescription(description: 'List trees');
+            ->setName(name: 'site-online')
+            ->setDescription(description: 'Set webtrees online - enable web access.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $trees = $this->tree_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
+        $io = new SymfonyStyle(input: $input, output: $output);
 
-        $table = new Table(output: $output);
+        $file_exists = file_exists(filename: Webtrees::OFFLINE_FILE);
 
-        $table->setHeaders(headers: ['ID', 'Name', 'Title', 'Imported']);
-
-        foreach ($trees as $tree) {
-            $table->addRow(row: [
-                $tree->id(),
-                $tree->name(),
-                $tree->title(),
-                $tree->getPreference(setting_name: 'imported') ? 'Yes' : 'No',
-            ]);
+        if (!$file_exists) {
+            $io->success(message: Webtrees::OFFLINE_FILE . ' does not exist. Site is already online.');
         }
 
-        $table->render();
+        try {
+            unlink(filename: Webtrees::OFFLINE_FILE);
+            $io->success(message: Webtrees::OFFLINE_FILE . ' deleted. Site is online.');
+        } catch (Throwable $ex) {
+            $io->error(message: 'Unable to delete ' . Webtrees::OFFLINE_FILE . ' - ' . $ex->getMessage());
+        }
 
         return Command::SUCCESS;
     }

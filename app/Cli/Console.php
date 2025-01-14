@@ -31,6 +31,8 @@ final class Console extends Application
 {
     private const array COMMANDS = [
         Commands\CompilePoFiles::class,
+        Commands\SiteOffline::class,
+        Commands\SiteOnline::class,
         Commands\SiteSetting::class,
         Commands\TreeCreate::class,
         Commands\TreeList::class,
