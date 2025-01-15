@@ -43,6 +43,144 @@ parameters:
 			path: app/Cli/Commands/CompilePoFiles.php
 
 		-
+			message: '#^Cannot access offset ''dbca'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbcert'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbhost'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbkey'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbname'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbpass'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbport'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbtype'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbuser'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''dbverify'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot access offset ''tblpfx'' on array\|false\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$ca of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$certificate of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$database of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$driver of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$host of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$key of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$password of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$port of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$prefix of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$string of function rtrim expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
+			message: '#^Parameter \$username of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Cli/Commands/ConfigIni.php
+
+		-
 			message: '#^Binary operation "\." between ''A tree with the…'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1

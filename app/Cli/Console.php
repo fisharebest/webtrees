@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Console\Application;
+use Throwable;
 
 use function parse_ini_file;
 
@@ -31,6 +32,7 @@ final class Console extends Application
 {
     private const array COMMANDS = [
         Commands\CompilePoFiles::class,
+        Commands\ConfigIni::class,
         Commands\SiteOffline::class,
         Commands\SiteOnline::class,
         Commands\SiteSetting::class,
@@ -45,7 +47,7 @@ final class Console extends Application
 
     public function __construct()
     {
-        parent::__construct(Webtrees::NAME, Webtrees::VERSION);
+        parent::__construct(name: Webtrees::NAME, version: Webtrees::VERSION);
     }
 
     public function loadCommands(): self
@@ -61,25 +63,25 @@ final class Console extends Application
     {
         I18N::init(code: 'en-US', setup: true);
 
-        $config = parse_ini_file(filename: Webtrees::CONFIG_FILE);
+        try {
+            $config = parse_ini_file(filename: Webtrees::CONFIG_FILE) ?: [];
 
-        if ($config === false) {
-            return $this;
+            DB::connect(
+                driver: $config['dbtype'] ?? DB::MYSQL,
+                host: $config['dbhost'] ?? '',
+                port: $config['dbport'] ?? '',
+                database: $config['dbname'] ?? '',
+                username: $config['dbuser'] ?? '',
+                password: $config['dbpass'] ?? '',
+                prefix: $config['tblpfx'] ?? '',
+                key: $config['dbkey'] ?? '',
+                certificate: $config['dbcert'] ?? '',
+                ca: $config['dbca'] ?? '',
+                verify_certificate: (bool) ($config['dbverify'] ?? ''),
+            );
+        } catch (Throwable) {
+            // Ignore errors
         }
-
-        DB::connect(
-            driver: $config['dbtype'] ?? DB::MYSQL,
-            host: $config['dbhost'],
-            port: $config['dbport'],
-            database: $config['dbname'],
-            username: $config['dbuser'],
-            password: $config['dbpass'],
-            prefix: $config['tblpfx'],
-            key: $config['dbkey'] ?? '',
-            certificate: $config['dbcert'] ?? '',
-            ca: $config['dbca'] ?? '',
-            verify_certificate: (bool) ($config['dbverify'] ?? ''),
-        );
 
         return $this;
     }
