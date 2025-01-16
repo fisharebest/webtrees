@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-12-23 21:10+0000\n"
-"Last-Translator: Lars van Ravenzwaaij <larsvr1963@gmail.com>\n"
+"PO-Revision-Date: 2025-01-17 12:23+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
 "Language: nl\n"
@@ -6899,11 +6899,11 @@ msgstr "Fresno, California, Verenigde Staten"
 #: app/Date/AbstractCalendarDate.php:293
 #: resources/views/edit/initialize-calendar-popup.phtml:28
 msgid "Fri"
-msgstr "Vrij"
+msgstr "vrij"
 
 #: app/Date/AbstractCalendarDate.php:262
 msgid "Friday"
-msgstr "Vrijdag"
+msgstr "vr"
 
 #: app/Elements/RelationIsDescriptor.php:106
 #: app/GedcomCode/GedcomCodeRela.php:186
@@ -9803,7 +9803,7 @@ msgstr "Moldavië"
 #: app/Date/AbstractCalendarDate.php:285
 #: resources/views/edit/initialize-calendar-popup.phtml:24
 msgid "Mon"
-msgstr "Ma"
+msgstr "ma"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:317
@@ -9812,7 +9812,7 @@ msgstr "Monaco"
 
 #: app/Date/AbstractCalendarDate.php:258
 msgid "Monday"
-msgstr "Maandag"
+msgstr "maandag"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:337
@@ -12563,11 +12563,11 @@ msgstr "Sao Tome en Principe"
 #: app/Date/AbstractCalendarDate.php:295
 #: resources/views/edit/initialize-calendar-popup.phtml:29
 msgid "Sat"
-msgstr "Za"
+msgstr "za"
 
 #: app/Date/AbstractCalendarDate.php:263
 msgid "Saturday"
-msgstr "Zaterdag"
+msgstr "zaterdag"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:425
@@ -14018,11 +14018,11 @@ msgstr "Soedan"
 #: app/Date/AbstractCalendarDate.php:297
 #: resources/views/edit/initialize-calendar-popup.phtml:23
 msgid "Sun"
-msgstr "Zo"
+msgstr "zo"
 
 #: app/Date/AbstractCalendarDate.php:264
 msgid "Sunday"
-msgstr "Zondag"
+msgstr "zondag"
 
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml:156
@@ -15535,7 +15535,7 @@ msgstr ""
 #: app/Date/AbstractCalendarDate.php:291
 #: resources/views/edit/initialize-calendar-popup.phtml:27
 msgid "Thu"
-msgstr "Do"
+msgstr "do"
 
 #: app/Factories/ElementFactory.php:841
 #: resources/views/admin/webtrees1-thumbnails.phtml:39
@@ -15549,7 +15549,7 @@ msgstr "Miniatuurafbeeldingen"
 
 #: app/Date/AbstractCalendarDate.php:261
 msgid "Thursday"
-msgstr "Donderdag"
+msgstr "donderdag"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:197 app/GedcomCode/GedcomCodeTemp.php:657
@@ -15949,11 +15949,11 @@ msgstr "Trujillo, Peru"
 #: app/Date/AbstractCalendarDate.php:287
 #: resources/views/edit/initialize-calendar-popup.phtml:25
 msgid "Tue"
-msgstr "Di"
+msgstr "di"
 
 #: app/Date/AbstractCalendarDate.php:259
 msgid "Tuesday"
-msgstr "Dinsdag"
+msgstr "dinsdag"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:496
@@ -16641,11 +16641,11 @@ msgstr "Websitevoorkeuren"
 #: app/Date/AbstractCalendarDate.php:289
 #: resources/views/edit/initialize-calendar-popup.phtml:26
 msgid "Wed"
-msgstr "Wo"
+msgstr "wo"
 
 #: app/Date/AbstractCalendarDate.php:260
 msgid "Wednesday"
-msgstr "Woensdag"
+msgstr "woensdag"
 
 #. I18N: gedcom tag _WEIG
 #: app/Factories/ElementFactory.php:313 app/GedcomTag.php:1238
