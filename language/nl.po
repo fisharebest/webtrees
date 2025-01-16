@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-23 21:10+0000\n"
-"Last-Translator: Lars van Ravenzwaaij <larsvr1963@gmail.com>\n"
+"PO-Revision-Date: 2025-01-17 12:23+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
 "Language: nl\n"
@@ -6613,11 +6613,11 @@ msgstr "Fresno, California, Verenigde Staten"
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
-msgstr "Vrij"
+msgstr "vrij"
 
 #: app/Date/CalendarDate.php:355
 msgid "Friday"
-msgstr "Vrijdag"
+msgstr "vr"
 
 #: app/GedcomCode/GedcomCodeRela.php:134
 msgid "Friend"
@@ -9317,7 +9317,7 @@ msgstr "Moldavië"
 #. I18N: abbreviation for Monday
 #: app/Date/CalendarDate.php:376 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
-msgstr "Ma"
+msgstr "ma"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6812
@@ -9326,7 +9326,7 @@ msgstr "Monaco"
 
 #: app/Date/CalendarDate.php:351
 msgid "Monday"
-msgstr "Maandag"
+msgstr "maandag"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6822
@@ -11933,7 +11933,7 @@ msgstr "Sao Tome en Principe"
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
-msgstr "Za"
+msgstr "za"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "Satellite"
@@ -11941,7 +11941,7 @@ msgstr "Satelliet"
 
 #: app/Date/CalendarDate.php:356
 msgid "Saturday"
-msgstr "Zaterdag"
+msgstr "zaterdag"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6866
@@ -13376,11 +13376,11 @@ msgstr "Achtervoegsels"
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
-msgstr "Zo"
+msgstr "zo"
 
 #: app/Date/CalendarDate.php:357
 msgid "Sunday"
-msgstr "Zondag"
+msgstr "zondag"
 
 #. I18N: %s is a URL/link to the project website
 #: admin.php:617
@@ -14825,7 +14825,7 @@ msgstr "Hiermee wordt het hoogste niveau van een plaatsnaam bijgewerkt. ‘Mexic
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
-msgstr "Do"
+msgstr "do"
 
 #: addmedia.php:139 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
@@ -14841,7 +14841,7 @@ msgstr "Miniatuur om te uploaden"
 
 #: app/Date/CalendarDate.php:354
 msgid "Thursday"
-msgstr "Donderdag"
+msgstr "donderdag"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:369
@@ -15212,11 +15212,11 @@ msgstr "Trujillo, Peru"
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
-msgstr "Di"
+msgstr "di"
 
 #: app/Date/CalendarDate.php:352
 msgid "Tuesday"
-msgstr "Dinsdag"
+msgstr "dinsdag"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6902
@@ -15887,11 +15887,11 @@ msgstr "Websitevoorkeuren"
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
-msgstr "Wo"
+msgstr "wo"
 
 #: app/Date/CalendarDate.php:353
 msgid "Wednesday"
-msgstr "Woensdag"
+msgstr "woensdag"
 
 #. I18N: gedcom tag _WEIG
 #: app/GedcomTag.php:1759
