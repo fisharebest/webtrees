@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-04-03 08:11+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en_AU/>\n"
+"PO-Revision-Date: 2025-01-17 12:23+0000\n"
+"Last-Translator: RAMINCNZ <ramincnz@gmail.com>\n"
+"Language-Team: English (Australia) <https://translate.webtrees.net/projects/"
+"webtrees/webtrees/en_AU/>\n"
 "Language: en-AU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3748,7 +3749,7 @@ msgstr "Clippings cart"
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:83
 msgid "Coat of arms"
-msgstr "Coat of arms"
+msgstr "Coat of Arms"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:80
@@ -3808,11 +3809,11 @@ msgstr "Comments"
 
 #: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
-msgstr "Common law marriage"
+msgstr "Common Law Marriage"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Common-Law Marriage"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
