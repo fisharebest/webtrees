@@ -21,35 +21,20 @@ namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\DB;
 
-/**
- * Populate the user table
- */
 class SeedUserTable implements SeedInterface
 {
-    /**
-     *  Run the seeder.
-     *
-     * @return void
-     */
     public function run(): void
     {
         // Add a "default" user, to store default settings
-
-        if (DB::driverName() === DB::SQL_SERVER) {
-            DB::exec('SET IDENTITY_INSERT [' . DB::prefix() . 'user] ON');
-        }
-
-        DB::table('user')->updateOrInsert([
-            'user_id'   => -1,
-        ], [
-            'user_name' => 'DEFAULT_USER',
-            'real_name' => 'DEFAULT_USER',
-            'email'     => 'DEFAULT_USER',
-            'password'  => 'DEFAULT_USER',
-        ]);
-
-        if (DB::driverName() === DB::SQL_SERVER) {
-            DB::exec('SET IDENTITY_INSERT [' . DB::prefix() . 'user] OFF');
-        }
+        DB::identityInsert(table: 'user', callback: static function (): void {
+            DB::table(table: 'user')->updateOrInsert(attributes: [
+                'user_id' => -1,
+            ], values: [
+                'user_name' => 'DEFAULT_USER',
+                'real_name' => 'DEFAULT_USER',
+                'email'     => 'DEFAULT_USER',
+                'password'  => 'DEFAULT_USER',
+            ]);
+        });
     }
 }

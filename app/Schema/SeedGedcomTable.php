@@ -21,32 +21,17 @@ namespace Fisharebest\Webtrees\Schema;
 
 use Fisharebest\Webtrees\DB;
 
-/**
- * Populate the gedcom table
- */
 class SeedGedcomTable implements SeedInterface
 {
-    /**
-     *  Run the seeder.
-     *
-     * @return void
-     */
     public function run(): void
     {
         // Add a "default" tree, to store default settings
-
-        if (DB::driverName() === DB::SQL_SERVER) {
-            DB::exec('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] ON');
-        }
-
-        DB::table('gedcom')->updateOrInsert([
-            'gedcom_id'   => -1,
-        ], [
-            'gedcom_name'  => 'DEFAULT_TREE',
-        ]);
-
-        if (DB::driverName() === DB::SQL_SERVER) {
-            DB::exec('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] OFF');
-        }
+        DB::identityInsert(table: 'gedcom', callback: static function (): void {
+            DB::table(table: 'gedcom')->updateOrInsert(attributes: [
+                'gedcom_id' => -1,
+            ], values: [
+                'gedcom_name' => 'DEFAULT_TREE',
+            ]);
+        });
     }
 }

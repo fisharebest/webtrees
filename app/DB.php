@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -165,6 +166,24 @@ class DB extends Manager
     public static function prefix(string $identifier = ''): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
+    }
+
+    /**
+     * SQL-Server needs to be told that we are going to insert into an identity column.
+     *
+     * @param Closure(): void $callback
+     */
+    public static function identityInsert(string $table, Closure $callback): void
+    {
+        if (self::driverName() === self::SQL_SERVER) {
+            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] ON');
+        }
+
+        $callback();
+
+        if (self::driverName() === self::SQL_SERVER) {
+            self::exec('SET IDENTITY_INSERT [' . self::prefix(identifier: $table) . '] OFF');
+        }
     }
 
     public static function rollBack(): void
