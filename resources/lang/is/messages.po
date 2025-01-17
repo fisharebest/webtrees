@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2025-01-04 15:58+0000\n"
+"PO-Revision-Date: 2025-01-17 12:23+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -15878,7 +15878,7 @@ msgstr "Til að stofna nýtt rannsóknarverkefni, þá verður þú fyrst að b�
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
 "Til að tryggja samhæfni við önnur ættfræðiforrit ættu glósur, texti og afrit "
-"að vera skráð í einfaldan, ósniðinn texta. Hins vegar er snið oft æskilegt "
+"að vera skráð í einfaldan, ósniðin texta. Hins vegar er snið oft æskilegt "
 "til að auðvelda framsetningu, skilning o.s.frv."
 
 #. I18N: “Apache” is a software program.
