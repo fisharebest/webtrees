@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-12-16 21:32+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2025-01-19 23:58+0000\n"
+"Last-Translator: John-Henningsen <henningsen.teknikk@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees/nb_NO/>\n"
 "Language: nb\n"
@@ -2721,22 +2721,22 @@ msgstr "Birmingham, Alabama, USA"
 #: resources/xml/reports/pedigree_report.xml:1379
 #: resources/xml/reports/relative_ext_report.xml:63
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/Elements/PedigreeLinkageType.php:80
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/Elements/PedigreeLinkageType.php:70
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/Elements/PedigreeLinkageType.php:90
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/Statistics/Google/ChartDistribution.php:301
 msgid "Birth by country"
@@ -15091,7 +15091,10 @@ msgstr "Dette valget bestemmer om alderen til far og mor til et barn skal vises 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:375
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Dette valget bestemmer om det skal vises beregnede datoer for fødsel og død istedenfor blank i personlister og diagrammer for personer der disse datoene ikke er kjent."
+msgstr ""
+"Dette valget bestemmer om det skal vises beregnede datoer for fødsel og død "
+"istedet for blank i personlister og diagrammer for personer der disse "
+"datoene ikke er kjent."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
