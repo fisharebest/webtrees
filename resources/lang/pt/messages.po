@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-01-14 20:58+0000\n"
+"PO-Revision-Date: 2025-01-19 23:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -17504,7 +17504,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:777
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:779
 msgctxt "father’s brother’s son"
@@ -17519,7 +17519,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:821
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:825
 msgctxt "father’s sister’s son"
@@ -17534,7 +17534,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:857
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:859
 msgctxt "mother’s brother’s son"
@@ -17549,7 +17549,7 @@ msgstr "primo(a) de primeiro grau"
 #: app/Services/RelationshipService.php:907
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr "primo de primeiro grau"
+msgstr "prima de primeiro grau"
 
 #: app/Services/RelationshipService.php:911
 msgctxt "mother’s sister’s son"
