@@ -20,10 +20,17 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Tree;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+
+use function addcslashes;
+use function array_map;
+use function implode;
 
 final class TreeList extends Command
 {
@@ -36,28 +43,77 @@ final class TreeList extends Command
     {
         $this
             ->setName(name: 'tree-list')
-            ->setDescription(description: 'List trees');
+            ->setDescription(description: 'List trees')
+            ->addOption(
+                name: 'format',
+                shortcut: 'f',
+                mode: InputOption::VALUE_REQUIRED,
+                description: 'Output format (table, json, csv)',
+                default: 'table',
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $format = $input->getOption(name: 'format');
+
+        $io = new SymfonyStyle(input: $input, output: $output);
+
         $trees = $this->tree_service->all()->sort(callback: fn ($a, $b) => $a->id() <=> $b->id());
 
-        $table = new Table(output: $output);
+        $headers = ['ID', 'Name', 'Title', 'Media directory', 'Imported'];
 
-        $table->setHeaders(headers: ['ID', 'Name', 'Title', 'Imported']);
+        $rows = $trees->map(callback: static fn (Tree $tree): array => [
+            'id'              => $tree->id(),
+            'name'            => $tree->name(),
+            'title'           => $tree->title(),
+            'media_directory' => $tree->getPreference(setting_name: 'MEDIA_DIRECTORY'),
+            'imported'        => $tree->getPreference(setting_name: 'imported') ? 'yes' : 'no',
+        ])
+        ->values()
+        ->all();
 
-        foreach ($trees as $tree) {
-            $table->addRow(row: [
-                $tree->id(),
-                $tree->name(),
-                $tree->title(),
-                $tree->getPreference(setting_name: 'imported') ? 'Yes' : 'No',
-            ]);
+        switch ($format) {
+            case 'table':
+                $table = new Table(output: $output);
+                $table->setHeaders(headers: $headers);
+                $table->setRows(rows: $rows);
+                $table->render();
+                break;
+
+            case 'csv':
+                $output->writeln(messages: $this->quoteCsvRow(columns: $headers));
+
+                foreach ($rows as $row) {
+                    $output->writeln(messages: $this->quoteCsvRow(columns: $row));
+                }
+                break;
+
+            case 'json':
+                $output->writeln(messages: json_encode(value: $rows, flags: JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
+                break;
+
+            default:
+                $io->error(message: 'Invalid format: ‘' . $format . '’');
+
+                return Command::FAILURE;
         }
 
-        $table->render();
-
         return Command::SUCCESS;
+    }
+
+    /**
+     * @param array<string|int> $columns
+     */
+    private function quoteCsvRow(array $columns): string
+    {
+        $columns = array_map(callback: $this->quoteCsvValue(...), array: $columns);
+
+        return implode(separator: ',', array: $columns);
+    }
+
+    private function quoteCsvValue(string|int $value): string
+    {
+        return '"' . addcslashes(string: (string) $value, characters: '"') . '"';
     }
 }

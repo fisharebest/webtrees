@@ -217,6 +217,12 @@ parameters:
 			path: app/Cli/Commands/TreeExport.php
 
 		-
+			message: '#^Binary operation "\." between ''Invalid format\: ‘'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/Cli/Commands/TreeList.php
+
+		-
 			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 2
@@ -263,6 +269,12 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Cli/Commands/UserCreate.php
+
+		-
+			message: '#^Binary operation "\." between ''Invalid format\: ‘'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: app/Cli/Commands/UserList.php
 
 		-
 			message: '#^Parameter \#1 \$command of method Symfony\\Component\\Console\\Application\:\:add\(\) expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'
