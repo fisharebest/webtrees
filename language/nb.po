@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-17 22:08+0000\n"
-"Last-Translator: HRN65 <hogne@visitusinmaputo.com>\n"
+"PO-Revision-Date: 2025-01-19 23:58+0000\n"
+"Last-Translator: John-Henningsen <henningsen.teknikk@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
 "Language: nb\n"
@@ -2770,22 +2770,22 @@ msgstr "Birmingham, Alabama, USA"
 #: modules_v3/pedigree_report/report.xml:1368
 #: modules_v3/relative_ext_report/report.xml:56
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:50
 msgctxt "Female pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:48
 msgctxt "Male pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/GedcomCode/GedcomCodePedi.php:52
 msgctxt "Pedigree"
 msgid "Birth"
-msgstr "Fødsel"
+msgstr "Født"
 
 #: app/Stats.php:1658 statistics.php:565
 msgid "Birth by country"
@@ -14493,7 +14493,10 @@ msgstr "Dette valget bestemmer om alderen til far og mor til et barn skal vises 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1189
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Dette valget bestemmer om det skal vises beregnede datoer for fødsel og død istedenfor blank i personlister og diagrammer for personer der disse datoene ikke er kjent."
+msgstr ""
+"Dette valget bestemmer om det skal vises beregnede datoer for fødsel og død "
+"istedet for blank i personlister og diagrammer for personer der disse "
+"datoene ikke er kjent."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1303
