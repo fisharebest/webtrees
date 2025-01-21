@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-19 23:58+0000\n"
+"PO-Revision-Date: 2025-01-22 03:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -1924,7 +1924,7 @@ msgstr "Permitir aos visitantes solicitarem uma nova conta de utilizador"
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:967
 msgid "Also known as"
-msgstr "Também conhecido(a) como"
+msgstr "Também conhecida(o) por"
 
 #. I18N: gedcom tag _AKA
 #: app/GedcomTag.php:963
@@ -9040,7 +9040,7 @@ msgstr "Casamentos por século"
 #: app/GedcomTag.php:1560 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 msgid "Married name"
-msgstr "Nome de casada"
+msgstr "Nome de casada(o)"
 
 #: app/GedcomTag.php:1566
 msgid "Married surname"
@@ -16875,7 +16875,7 @@ msgstr "permitir"
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:67
 msgid "also known as"
-msgstr "também conhecido(a) por"
+msgstr "também conhecida(o) por"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:64
@@ -19393,7 +19393,7 @@ msgstr "lista"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/GedcomCode/GedcomCodeName.php:121
 msgid "maiden name"
-msgstr "nome de solteira"
+msgstr "nome de solteira(o)"
 
 #: admin_trees_config.php:469
 msgid "managers"
@@ -19421,7 +19421,7 @@ msgstr "casado"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
 msgid "married name"
-msgstr "nome de casada"
+msgstr "nome de casada(o)"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:129
