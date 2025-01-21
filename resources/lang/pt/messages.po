@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-01-19 23:58+0000\n"
+"PO-Revision-Date: 2025-01-22 03:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -1827,7 +1827,7 @@ msgstr "Permitir aos visitantes solicitarem uma nova conta de utilizador"
 #: app/CustomTags/PersonalAncestralFile.php:64
 #: app/CustomTags/PersonalAncestralFile.php:65
 msgid "Also known as"
-msgstr "Também conhecido(a) como"
+msgstr "Também conhecida(o) por"
 
 #: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
@@ -9266,7 +9266,7 @@ msgstr "Casamentos por século"
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Married name"
-msgstr "Nome de casada"
+msgstr "Nome de casada(o)"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:329
@@ -16870,7 +16870,7 @@ msgstr "idade"
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:73
 msgid "also known as"
-msgstr "também conhecido(a) por"
+msgstr "também conhecida(o) por"
 
 #: app/Statistics/Repository/FamilyRepository.php:478
 #: app/Statistics/Repository/UserRepository.php:93
@@ -19494,7 +19494,7 @@ msgstr "locais actualizados: %s, locais adicionados: %s"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:83
 msgid "maiden name"
-msgstr "nome de solteira"
+msgstr "nome de solteira(o)"
 
 #: resources/views/admin/trees-privacy.phtml:127
 msgid "managers"
@@ -19518,7 +19518,7 @@ msgstr "casado"
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:85
 msgid "married name"
-msgstr "nome de casada"
+msgstr "nome de casada(o)"
 
 #: app/Services/RelationshipService.php:567
 msgctxt "mother’s father"
