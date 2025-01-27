@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-17 12:23+0000\n"
+"PO-Revision-Date: 2025-01-28 13:58+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -1795,7 +1795,7 @@ msgstr "Aldur tengdur við andlátsár"
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146
 msgid "Agency"
-msgstr "Ábyrgðaraðili"
+msgstr "Stofnun"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6675
