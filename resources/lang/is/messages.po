@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-01-17 12:23+0000\n"
+"PO-Revision-Date: 2025-01-28 13:58+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/is/>\n"
@@ -1721,7 +1721,7 @@ msgstr "Aldur foreldra við hliðina á fæðingardegi barns"
 #: app/CustomTags/GedcomL.php:234 app/Gedcom.php:410 app/Gedcom.php:544
 #: app/Gedcom.php:835
 msgid "Agency"
-msgstr "Ábyrgðaraðili"
+msgstr "Stofnun"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:50
