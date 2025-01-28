@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-01-22 03:58+0000\n"
+"PO-Revision-Date: 2025-01-30 17:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -11176,7 +11176,7 @@ msgstr "Local em Hebraico"
 
 #: resources/views/modules/place-hierarchy/list.phtml:16
 msgid "Place list"
-msgstr "Lista de Local"
+msgstr "Lista de locais"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:574
@@ -11189,7 +11189,10 @@ msgstr "Os nomes dos lugares podem mudar ao longo do tempo. Em genealogia, é ha
 
 #: resources/views/help/place.phtml:10
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
-msgstr "Os nomes dos locais devem ser introduzidos como uma lista separada por vírgulas, começando pelo local mais pequeno e terminando no país. Por exemplo, “Westminster, Londres, Inglaterra”."
+msgstr ""
+"Os nomes dos locais devem ser introduzidos como uma lista separada por "
+"vírgulas, começando pelo local mais específico e terminando no país. Por "
+"exemplo, “Westminster, Londres, Inglaterra”."
 
 #: app/Gedcom.php:588
 msgid "Place of LDS baptism"
@@ -13014,7 +13017,7 @@ msgstr "Exibir todas as notas"
 
 #: app/Module/PlaceHierarchyListModule.php:196
 msgid "Show all places in a list"
-msgstr "Exibir lista de todos os Locais"
+msgstr "Ver lista de todos os locais"
 
 #: resources/views/modules/sources_tab/tab.phtml:26
 msgid "Show all sources"
@@ -16244,7 +16247,7 @@ msgstr "Vietnam"
 #: resources/views/modules/place-hierarchy/page.phtml:51
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr "Ver tabela de eventos a ocorrer em %s"
+msgstr "Ver tabela de eventos ocorridos em %s"
 
 #: resources/views/calendar-page.phtml:221
 msgid "View this day"
