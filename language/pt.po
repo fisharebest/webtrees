@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-22 03:58+0000\n"
+"PO-Revision-Date: 2025-01-29 19:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -10969,7 +10969,7 @@ msgstr "Local em Hebraico"
 
 #: placelist.php:46 placelist.php:68
 msgid "Place list"
-msgstr "Lista de Local"
+msgstr "Lista de locais"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1526
@@ -12706,7 +12706,7 @@ msgstr "Exibir todas as notas"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Exibir lista de todos os Locais"
+msgstr "Ver lista de todos os locais"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
