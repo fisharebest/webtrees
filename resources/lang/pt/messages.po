@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-01-22 03:58+0000\n"
+"PO-Revision-Date: 2025-01-30 17:58+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -11460,7 +11460,7 @@ msgstr "Local em Hebraico"
 
 #: resources/views/modules/place-hierarchy/list.phtml:14
 msgid "Place list"
-msgstr "Lista de Local"
+msgstr "Lista de locais"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:601
@@ -11479,7 +11479,7 @@ msgstr ""
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
 msgstr ""
 "Os nomes dos locais devem ser introduzidos como uma lista separada por "
-"vírgulas, começando pelo local mais pequeno e terminando no país. Por "
+"vírgulas, começando pelo local mais específico e terminando no país. Por "
 "exemplo, “Westminster, Londres, Inglaterra”."
 
 #. I18N: LDS = Church of Latter Day Saints.
@@ -13363,7 +13363,7 @@ msgstr "Exibir todas as notas"
 
 #: app/Module/PlaceHierarchyListModule.php:217
 msgid "Show all places in a list"
-msgstr "Exibir lista de todos os Locais"
+msgstr "Ver lista de todos os locais"
 
 #: resources/views/modules/sources_tab/tab.phtml:26
 msgid "Show all sources"
@@ -16911,7 +16911,7 @@ msgstr "Exibir"
 #: resources/views/modules/place-hierarchy/page.phtml:49
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr "Ver tabela de eventos a ocorrer em %s"
+msgstr "Ver tabela de eventos ocorridos em %s"
 
 #: resources/views/calendar-page.phtml:215
 msgid "View this day"
