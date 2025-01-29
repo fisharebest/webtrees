@@ -25,15 +25,13 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Statistics\Service\CenturyService;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Psr\Http\Message\ServerRequestInterface;
 
-#[CoversClass(CenturyService::class)]
-#[CoversClass(ColorService::class)]
 #[CoversClass(Statistics::class)]
+#[CoversClass(StatisticsData::class)]
+#[CoversClass(StatisticsData::class)]
+#[CoversClass(StatisticsFormat::class)]
 class EmbeddedVariablesTest extends TestCase
 {
     private const PLACEHOLDERS = [
@@ -110,6 +108,16 @@ class EmbeddedVariablesTest extends TestCase
         '#commonGivenMaleTable:5:5#',
         '#commonGivenMaleTotals#',
         '#commonGivenMaleTotals:5:5#',
+        '#commonGivenOther#',
+        '#commonGivenOther:5:5#',
+        '#commonGivenOtherList#',
+        '#commonGivenOtherList:5:5#',
+        '#commonGivenOtherListTotals#',
+        '#commonGivenOtherListTotals:5:5#',
+        '#commonGivenOtherTable#',
+        '#commonGivenOtherTable:5:5#',
+        '#commonGivenOtherTotals#',
+        '#commonGivenOtherTotals:5:5#',
         '#commonGivenTable#',
         '#commonGivenTable:5:5#',
         '#commonGivenTotals#',
@@ -368,12 +376,15 @@ class EmbeddedVariablesTest extends TestCase
         '#totalSexFemalesPercentage#',
         '#totalSexMales#',
         '#totalSexMalesPercentage#',
+        '#totalSexOther#',
+        '#totalSexOtherPercentage#',
         '#totalSexUnknown#',
         '#totalSexUnknownPercentage#',
         '#totalSources#',
         '#totalSourcesPercentage#',
         '#totalSurnames#',
         '#totalSurnames:Spencer#',
+        '#totalTreeNews#',
         '#totalUserFavorites#',
         '#totalUserJournal#',
         '#totalUserMessages#',
@@ -414,9 +425,6 @@ class EmbeddedVariablesTest extends TestCase
         Registry::container()->set(ServerRequestInterface::class, $request);
 
         $statistics = new Statistics(
-            new CenturyService(),
-            new ColorService(),
-            new CountryService(),
             new ModuleService(),
             $tree,
             $user_service
@@ -450,9 +458,6 @@ class EmbeddedVariablesTest extends TestCase
         Registry::container()->set(ServerRequestInterface::class, $request);
 
         $statistics = new Statistics(
-            new CenturyService(),
-            new ColorService(),
-            new CountryService(),
             new ModuleService(),
             $tree,
             $user_service

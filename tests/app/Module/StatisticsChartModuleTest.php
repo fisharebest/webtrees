@@ -31,6 +31,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(StatisticsChartModule::class)]
 #[CoversClass(Statistics::class)]
+#[CoversClass(StatisticsData::class)]
 class StatisticsChartModuleTest extends TestCase
 {
     protected static bool $uses_database = true;
@@ -173,6 +174,14 @@ class StatisticsChartModuleTest extends TestCase
         Registry::container()->set(Tree::class, $tree);
 
         $module  = new StatisticsChartModule();
+
+        $request = self::createRequest()->withAttribute('tree', $tree);
+
+        $response = $module->getCustomAction($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertNotEmpty($response->getBody()->getContents());
+
         $request = self::createRequest(RequestMethodInterface::METHOD_POST)
             ->withAttribute('tree', $tree)
             ->withParsedBody([
