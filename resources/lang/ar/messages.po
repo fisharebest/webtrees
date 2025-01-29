@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2023-02-05 14:06+0000\n"
-"Last-Translator: beedoinfosec <bader@toposint.com>\n"
-"Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
+"PO-Revision-Date: 2025-01-30 17:58+0000\n"
+"Last-Translator: abu1omar1 <abu1omar1@hotmail.com>\n"
+"Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 4.14.2\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -2911,7 +2913,7 @@ msgstr "ولادة إبن"
 
 #: app/Gedcom.php:603
 msgid "Birth parents"
-msgstr ""
+msgstr "ولادة الوالدين"
 
 #: resources/views/modules/statistics-chart/places.phtml:18
 msgid "Birth places"
@@ -3344,7 +3346,7 @@ msgstr "كندا"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "لا يوجد إذن كتابة في نفس المجلد “%s”."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3377,7 +3379,7 @@ msgstr "الفئات"
 #: app/CustomTags/GedcomL.php:144 app/CustomTags/GedcomL.php:200
 #: app/CustomTags/Legacy.php:138
 msgid "Category"
-msgstr ""
+msgstr "التصنيف"
 
 #: app/CustomTags/GedcomL.php:235 app/Gedcom.php:411 app/Gedcom.php:545
 msgid "Cause"
@@ -3423,7 +3425,7 @@ msgstr "تأريخ التعداد"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:15
 msgid "Census date and place"
-msgstr ""
+msgstr "تأريخ ومكان التعداد"
 
 #: app/Gedcom.php:614
 msgid "Census place"
@@ -3952,7 +3954,7 @@ msgstr "إتصال بخادم قاعدة بيانات"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "نوع الإتصال"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -4106,7 +4108,7 @@ msgstr "سجلات الإسم صحيحة بهيئة 'الإسم /إسم العا
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "توافق"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:145
@@ -4169,7 +4171,7 @@ msgstr "إنشاء مصدر جديد"
 #: app/Elements/XrefSubmission.php:60
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "إنشاء تقديم"
 
 #: app/Elements/XrefSubmitter.php:60
 #: resources/views/modals/create-submitter.phtml:16
@@ -4194,7 +4196,7 @@ msgstr "إضافه فرد جديد"
 #: app/Module/MapBox.php:51 app/Module/OpenStreetMap.php:41
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "إنشاء خريطة بإستخدام %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:20
 msgid "Create your own chart"
@@ -4372,7 +4374,7 @@ msgstr "كوبا"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Curaçao"
-msgstr ""
+msgstr "كوراساو"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:87
@@ -4459,7 +4461,7 @@ msgstr "بيانات"
 
 #: resources/views/modules/privacy-policy/page.phtml:71
 msgid "Data controller"
-msgstr ""
+msgstr "مراقب البيانات"
 
 #: resources/views/admin/data-fix-page.phtml:72
 #: resources/views/admin/data-fix-select.phtml:29
@@ -12903,7 +12905,7 @@ msgstr "مساعدة آلية لإعداد webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "الجنس"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -12947,11 +12949,11 @@ msgstr "شهريور"
 #: resources/views/individual-page-menu.phtml:37
 #: resources/views/individual-page.phtml:68
 msgid "Share"
-msgstr ""
+msgstr "مشاركة"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "مشاركة الرابط"
 
 #: app/Module/ShareAnniversaryModule.php:73
 msgid "Share the anniversary of an event"
@@ -12980,7 +12982,7 @@ msgstr "ملاحظات مشتركة"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:748
 msgid "Shares"
-msgstr ""
+msgstr "مشاركات"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
@@ -15092,7 +15094,7 @@ msgstr "سيتم إختيار هذا الفرد إفتراضياً عند إظه
 #: resources/views/statistics/other/charts/pie.phtml:19
 #: resources/views/statistics/other/top10-list.phtml:25
 msgid "This information is not available."
-msgstr ""
+msgstr "لا توجد بيانات كافية."
 
 #: app/Statistics/Repository/EventRepository.php:262
 #: app/Statistics/Repository/FamilyDatesRepository.php:115
@@ -15136,11 +15138,13 @@ msgstr "اسمك الحقيقي، بالشكل الذي ترغب أن يظهر �
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:120
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "هذا الرابط صالح لمدة ساعة واحدة فقط."
 
 #: resources/views/help/data-fixes.phtml:18
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
 msgstr ""
+"هذه القائمة تم إنشاؤها باستخدام بحث بسيط (ولكن سريع)، ولذلك قد يشمل سجلات لن "
+"يتم تحديثها."
 
 #: app/Auth.php:351
 msgid "This media object does not exist or you do not have permission to view it."
