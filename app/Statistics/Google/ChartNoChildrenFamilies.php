@@ -36,10 +36,6 @@ class ChartNoChildrenFamilies
 
     private CenturyService $century_service;
 
-    /**
-     * @param CenturyService $century_service
-     * @param Tree           $tree
-     */
     public function __construct(CenturyService $century_service, Tree $tree)
     {
         $this->century_service = $century_service;
@@ -47,11 +43,6 @@ class ChartNoChildrenFamilies
     }
 
     /**
-     * Returns the related database records.
-     *
-     * @param int $year1
-     * @param int $year2
-     *
      * @return array<object>
      */
     private function queryRecords(int $year1, int $year2): array
@@ -77,17 +68,8 @@ class ChartNoChildrenFamilies
         return $query->get()->all();
     }
 
-    /**
-     * Create a chart of children with no families.
-     *
-     * @param int $no_child_fam The number of families with no children
-     * @param int $year1
-     * @param int $year2
-     *
-     * @return string
-     */
     public function chartNoChildrenFamilies(
-        int $no_child_fam,
+        int $families_with_no_children,
         int $year1 = -1,
         int $year2 = -1
     ): string {
@@ -112,7 +94,7 @@ class ChartNoChildrenFamilies
         if ($total > 0) {
             $data[] = [
                 I18N::translateContext('unknown century', 'Unknown'),
-                $no_child_fam - $total,
+                $families_with_no_children - $total,
             ];
         }
 

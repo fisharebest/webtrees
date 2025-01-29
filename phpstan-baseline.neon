@@ -8143,18 +8143,6 @@ parameters:
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartFamilyLargest.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartFamilyLargest.php
-
-		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -8293,33 +8281,9 @@ parameters:
 			path: app/Statistics/Repository/FamilyDatesRepository.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$age\.$#'
-			identifier: property.notFound
-			count: 3
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$ch1\.$#'
-			identifier: property.notFound
-			count: 3
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$ch2\.$#'
-			identifier: property.notFound
-			count: 3
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
 			message: '#^Access to an undefined property object\:\:\$f_numchil\.$#'
 			identifier: property.notFound
 			count: 1
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$family\.$#'
-			identifier: property.notFound
-			count: 5
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -8391,7 +8355,13 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 11
+			count: 9
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:ageBetweenSiblingsQuery\(\) should return array\<object\{family\: string, child1\: string, child2\: string, age\: int\}\> but returns array\<int, object\{family\: mixed, child1\: mixed, child2\: mixed, age\: int\}&stdClass\>\.$#'
+			identifier: return.type
+			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -8403,13 +8373,13 @@ parameters:
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 4
+			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\IndividualFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 8
+			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-

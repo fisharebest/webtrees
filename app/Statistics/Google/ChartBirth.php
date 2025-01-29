@@ -40,11 +40,6 @@ class ChartBirth
 
     private ColorService $color_service;
 
-    /**
-     * @param CenturyService $century_service
-     * @param ColorService   $color_service
-     * @param Tree           $tree
-     */
     public function __construct(CenturyService $century_service, ColorService $color_service, Tree $tree)
     {
         $this->century_service = $century_service;
@@ -75,14 +70,6 @@ class ChartBirth
             ]);
     }
 
-    /**
-     * Create a chart of birth places.
-     *
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
     public function chartBirth(string|null $color_from = null, string|null $color_to = null): string
     {
         $color_from ??= 'ffffff';

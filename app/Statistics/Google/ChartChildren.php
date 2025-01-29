@@ -35,10 +35,6 @@ class ChartChildren
 
     private CenturyService $century_service;
 
-    /**
-     * @param CenturyService $century_service
-     * @param Tree           $tree
-     */
     public function __construct(CenturyService $century_service, Tree $tree)
     {
         $this->century_service = $century_service;
@@ -72,11 +68,6 @@ class ChartChildren
             ]);
     }
 
-    /**
-     * Creates a children per family chart.
-     *
-     * @return string
-     */
     public function chartChildren(): string
     {
         $data = [

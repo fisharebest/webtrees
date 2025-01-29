@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 
@@ -33,10 +32,7 @@ use function date;
 use function e;
 use function str_replace;
 
-/**
- * A repository providing methods for latest user related statistics.
- */
-class LatestUserRepository implements LatestUserRepositoryInterface
+class LatestUserRepository
 {
     private UserService $user_service;
 

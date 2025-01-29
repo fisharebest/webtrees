@@ -40,43 +40,12 @@ class ChartFamilyLargest
 
     private ColorService $color_service;
 
-    /**
-     * @param ColorService $color_service
-     * @param Tree         $tree
-     */
     public function __construct(ColorService $color_service, Tree $tree)
     {
         $this->tree          = $tree;
         $this->color_service = $color_service;
     }
 
-    /**
-     * Returns the related database records.
-     *
-     * @param int $total
-     *
-     * @return array<object>
-     */
-    private function queryRecords(int $total): array
-    {
-        $query = DB::table('families')
-            ->select(['f_numchil AS total', 'f_id AS id'])
-            ->where('f_file', '=', $this->tree->id())
-            ->orderBy('total', 'desc')
-            ->limit($total);
-
-        return $query->get()->all();
-    }
-
-    /**
-     * Create a chart of the largest families.
-     *
-     * @param string|null $color_from
-     * @param string|null $color_to
-     * @param int         $total
-     *
-     * @return string
-     */
     public function chartLargestFamilies(
         string|null $color_from = null,
         string|null $color_to = null,
@@ -92,7 +61,15 @@ class ChartFamilyLargest
             ],
         ];
 
-        foreach ($this->queryRecords($total) as $record) {
+        $records = DB::table('families')
+            ->select(['f_numchil AS total', 'f_id AS id'])
+            ->where('f_file', '=', $this->tree->id())
+            ->orderBy('total', 'desc')
+            ->limit($total)
+            ->get()
+            ->all();
+
+        foreach ($records as $record) {
             $family = Registry::familyFactory()->make($record->id, $this->tree);
 
             if ($family instanceof Family && $family->canShow()) {

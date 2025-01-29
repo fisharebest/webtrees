@@ -32,27 +32,14 @@ class ChartFamilyWithSources
 {
     private ColorService $color_service;
 
-    /**
-     * @param ColorService $color_service
-     */
     public function __construct(ColorService $color_service)
     {
         $this->color_service = $color_service;
     }
 
-    /**
-     * Create a chart of individuals with/without sources.
-     *
-     * @param int         $tot_fam        The total number of families
-     * @param int         $tot_fam_source The total number of families with sources
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
     public function chartFamsWithSources(
-        int $tot_fam,
-        int $tot_fam_source,
+        int $total_families,
+        int $total_families_with_sources,
         string|null $color_from = null,
         string|null $color_to = null
     ): string {
@@ -66,15 +53,15 @@ class ChartFamilyWithSources
             ],
         ];
 
-        if ($tot_fam > 0 || $tot_fam_source > 0) {
+        if ($total_families > 0 || $total_families_with_sources > 0) {
             $data[] = [
                 I18N::translate('Without sources'),
-                $tot_fam - $tot_fam_source
+                $total_families - $total_families_with_sources
             ];
 
             $data[] = [
                 I18N::translate('With sources'),
-                $tot_fam_source
+                $total_families_with_sources
             ];
         }
 

@@ -32,26 +32,16 @@ class ChartCommonGiven
 {
     private ColorService $color_service;
 
-    /**
-     * @param ColorService $color_service
-     */
     public function __construct(ColorService $color_service)
     {
         $this->color_service = $color_service;
     }
 
     /**
-     * Create a chart of common given names.
-     *
-     * @param int         $tot_indi   The total number of individuals
-     * @param array<int>  $given      The list of common given names
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
+     * @param array<int> $given
      */
     public function chartCommonGiven(
-        int $tot_indi,
+        int $total_individuals,
         array $given,
         string|null $color_from = null,
         string|null $color_to = null
@@ -77,7 +67,7 @@ class ChartCommonGiven
 
         $data[] = [
             I18N::translate('Other'),
-            $tot_indi - $tot
+            $total_individuals - $tot
         ];
 
         $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);

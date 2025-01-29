@@ -23,15 +23,11 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 
 use function view;
 
-/**
- * A repository providing methods for hit count related statistics.
- */
-class HitCountRepository implements HitCountRepositoryInterface
+class HitCountRepository
 {
     private Tree $tree;
 

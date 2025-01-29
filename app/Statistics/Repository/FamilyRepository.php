@@ -59,11 +59,6 @@ class FamilyRepository
 
     private Tree $tree;
 
-    /**
-     * @param CenturyService $century_service
-     * @param ColorService   $color_service
-     * @param Tree           $tree
-     */
     public function __construct(CenturyService $century_service, ColorService $color_service, Tree $tree)
     {
         $this->century_service = $century_service;
@@ -71,13 +66,6 @@ class FamilyRepository
         $this->tree            = $tree;
     }
 
-    /**
-     * General query on family.
-     *
-     * @param string $type
-     *
-     * @return string
-     */
     private function familyQuery(string $type): string
     {
         $row = DB::table('families')
@@ -108,41 +96,22 @@ class FamilyRepository
         }
     }
 
-    /**
-     * Find the family with the most children.
-     *
-     * @return string
-     */
     public function largestFamily(): string
     {
         return $this->familyQuery('full');
     }
 
-    /**
-     * Find the number of children in the largest family.
-     *
-     * @return string
-     */
     public function largestFamilySize(): string
     {
         return $this->familyQuery('size');
     }
 
-    /**
-     * Find the family with the most children.
-     *
-     * @return string
-     */
     public function largestFamilyName(): string
     {
         return $this->familyQuery('name');
     }
 
     /**
-     * Find the couple with the most grandchildren.
-     *
-     * @param int $total
-     *
      * @return array<array<string,int|Family>>
      */
     private function topTenGrandFamilyQuery(int $total): array
@@ -188,13 +157,6 @@ class FamilyRepository
             ->all();
     }
 
-    /**
-     * Find the couple with the most grandchildren.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topTenLargestGrandFamily(int $total = 10): string
     {
         return view('statistics/families/top10-nolist-grand', [
@@ -202,13 +164,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Find the couple with the most grandchildren.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topTenLargestGrandFamilyList(int $total = 10): string
     {
         return view('statistics/families/top10-list-grand', [
@@ -216,11 +171,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Find the families with no children.
-     *
-     * @return int
-     */
     private function noChildrenFamiliesQuery(): int
     {
         return DB::table('families')
@@ -229,23 +179,11 @@ class FamilyRepository
             ->count();
     }
 
-    /**
-     * Find the families with no children.
-     *
-     * @return string
-     */
     public function noChildrenFamilies(): string
     {
         return I18N::number($this->noChildrenFamiliesQuery());
     }
 
-    /**
-     * Find the families with no children.
-     *
-     * @param string $type
-     *
-     * @return string
-     */
     public function noChildrenFamiliesList(string $type = 'list'): string
     {
         $families = DB::table('families')
@@ -278,14 +216,6 @@ class FamilyRepository
         return $top10;
     }
 
-    /**
-     * Create a chart of children with no families.
-     *
-     * @param int $year1
-     * @param int $year2
-     *
-     * @return string
-     */
     public function chartNoChildrenFamilies(int $year1 = -1, int $year2 = -1): string
     {
         $no_child_fam = $this->noChildrenFamiliesQuery();
@@ -295,11 +225,7 @@ class FamilyRepository
     }
 
     /**
-     * Returns the ages between siblings.
-     *
-     * @param int $total The total number of records to query
-     *
-     * @return array<object>
+     * @return array<object{family:string,child1:string,child2:string,age:int}>
      */
     private function ageBetweenSiblingsQuery(int $total): array
     {
@@ -327,10 +253,16 @@ class FamilyRepository
             ->where('link1.l_type', '=', 'CHIL')
             ->where('link1.l_file', '=', $this->tree->id())
             ->distinct()
-            ->select(['link1.l_from AS family', 'link1.l_to AS ch1', 'link2.l_to AS ch2', new Expression(DB::prefix('child2.d_julianday2') . ' - ' . DB::prefix('child1.d_julianday1') . ' AS age')])
+            ->select(['link1.l_from AS family', 'link1.l_to AS child1', 'link2.l_to AS child2', new Expression(DB::prefix('child2.d_julianday2') . ' - ' . DB::prefix('child1.d_julianday1') . ' AS age')])
             ->orderBy('age', 'DESC')
             ->take($total)
             ->get()
+            ->map(static fn (object $row): object => (object) [
+                'family' => $row->family,
+                'child1' => $row->child1,
+                'child2' => $row->child2,
+                'age'    => (int) $row->age,
+            ])
             ->all();
     }
 
@@ -338,8 +270,6 @@ class FamilyRepository
      * Returns the calculated age the time of event.
      *
      * @param int $age The age from the database record
-     *
-     * @return string
      */
     private function calculateAge(int $age): string
     {
@@ -372,8 +302,8 @@ class FamilyRepository
 
         foreach ($rows as $fam) {
             $family = Registry::familyFactory()->make($fam->family, $this->tree);
-            $child1 = Registry::individualFactory()->make($fam->ch1, $this->tree);
-            $child2 = Registry::individualFactory()->make($fam->ch2, $this->tree);
+            $child1 = Registry::individualFactory()->make($fam->child1, $this->tree);
+            $child2 = Registry::individualFactory()->make($fam->child2, $this->tree);
 
             if ($family !== null && $child1 !== null && $child2 !== null && $child1->canShow() && $child2->canShow()) {
                 // ! Single array (no list)
@@ -381,7 +311,7 @@ class FamilyRepository
                     'child1' => $child1,
                     'child2' => $child2,
                     'family' => $family,
-                    'age'    => $this->calculateAge((int) $fam->age),
+                    'age'    => $this->calculateAge($fam->age),
                 ];
             }
         }
@@ -395,7 +325,7 @@ class FamilyRepository
      * @param int  $total The total number of records to query
      * @param bool $one   Include each family only once if true
      *
-     * @return array<int,array<string,Individual|Family|string>>
+     * @return array<int,array{family:Family,child1:Individual,child2:Individual,age:string}>
      * @throws Exception
      */
     private function ageBetweenSiblingsList(int $total, bool $one): array
@@ -404,14 +334,14 @@ class FamilyRepository
         $top10 = [];
         $dist  = [];
 
-        foreach ($rows as $fam) {
-            $family = Registry::familyFactory()->make($fam->family, $this->tree);
-            $child1 = Registry::individualFactory()->make($fam->ch1, $this->tree);
-            $child2 = Registry::individualFactory()->make($fam->ch2, $this->tree);
+        foreach ($rows as $row) {
+            $family = Registry::familyFactory()->make($row->family, $this->tree);
+            $child1 = Registry::individualFactory()->make($row->child1, $this->tree);
+            $child2 = Registry::individualFactory()->make($row->child2, $this->tree);
 
-            $age = $this->calculateAge((int) $fam->age);
+            $age = $this->calculateAge($row->age);
 
-            if ($one && !in_array($fam->family, $dist, true)) {
+            if ($one && !in_array($row->family, $dist, true)) {
                 if ($family !== null && $child1 !== null && $child2 !== null && $child1->canShow() && $child2->canShow()) {
                     $top10[] = [
                         'child1' => $child1,
@@ -420,7 +350,7 @@ class FamilyRepository
                         'age'    => $age,
                     ];
 
-                    $dist[] = $fam->family;
+                    $dist[] = $row->family;
                 }
             } elseif (!$one && $family !== null && $child1 !== null && $child2 !== null && $child1->canShow() && $child2->canShow()) {
                 $top10[] = [
@@ -439,15 +369,13 @@ class FamilyRepository
      * Find the ages between siblings.
      *
      * @param int $total The total number of records to query
-     *
-     * @return string
      */
     private function ageBetweenSiblingsAge(int $total): string
     {
         $rows = $this->ageBetweenSiblingsQuery($total);
 
         foreach ($rows as $fam) {
-            return $this->calculateAge((int) $fam->age);
+            return $this->calculateAge($fam->age);
         }
 
         return '';
@@ -457,9 +385,6 @@ class FamilyRepository
      * Find the ages between siblings.
      *
      * @param int $total The total number of records to query
-     *
-     * @return string
-     * @throws Exception
      */
     private function ageBetweenSiblingsName(int $total): string
     {
@@ -467,8 +392,8 @@ class FamilyRepository
 
         foreach ($rows as $fam) {
             $family = Registry::familyFactory()->make($fam->family, $this->tree);
-            $child1 = Registry::individualFactory()->make($fam->ch1, $this->tree);
-            $child2 = Registry::individualFactory()->make($fam->ch2, $this->tree);
+            $child1 = Registry::individualFactory()->make($fam->child1, $this->tree);
+            $child2 = Registry::individualFactory()->make($fam->child2, $this->tree);
 
             if ($family !== null && $child1 !== null && $child2 !== null && $child1->canShow() && $child2->canShow()) {
                 $return = '<a href="' . e($child2->url()) . '">' . $child2->fullName() . '</a> ';
@@ -485,37 +410,16 @@ class FamilyRepository
         return '';
     }
 
-    /**
-     * Find the names of siblings with the widest age gap.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topAgeBetweenSiblingsName(int $total = 10): string
     {
         return $this->ageBetweenSiblingsName($total);
     }
 
-    /**
-     * Find the widest age gap between siblings.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topAgeBetweenSiblings(int $total = 10): string
     {
         return $this->ageBetweenSiblingsAge($total);
     }
 
-    /**
-     * Find the name of siblings with the widest age gap.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topAgeBetweenSiblingsFullName(int $total = 10): string
     {
         $record = $this->ageBetweenSiblingsNoList($total);
@@ -529,14 +433,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Find the siblings with the widest age gaps.
-     *
-     * @param int    $total
-     * @param string $one
-     *
-     * @return string
-     */
     public function topAgeBetweenSiblingsList(int $total = 10, string $one = ''): string
     {
         $records = $this->ageBetweenSiblingsList($total, (bool) $one);
@@ -576,22 +472,12 @@ class FamilyRepository
             ->all();
     }
 
-    /**
-     * Genearl query on families/children.
-     *
-     * @return string
-     */
     public function statsChildren(): string
     {
         return (new ChartChildren($this->century_service, $this->tree))
             ->chartChildren();
     }
 
-    /**
-     * Count the total children.
-     *
-     * @return string
-     */
     public function totalChildren(): string
     {
         $total = (int) DB::table('families')
@@ -601,11 +487,6 @@ class FamilyRepository
         return I18N::number($total);
     }
 
-    /**
-     * Find the average number of children in families.
-     *
-     * @return string
-     */
     public function averageChildren(): string
     {
         $average = (float) DB::table('families')
@@ -616,10 +497,6 @@ class FamilyRepository
     }
 
     /**
-     * General query on families.
-     *
-     * @param int $total
-     *
      * @return array<array<string,mixed>>
      */
     private function topTenFamilyQuery(int $total): array
@@ -638,13 +515,6 @@ class FamilyRepository
             ->all();
     }
 
-    /**
-     * The the families with the most children.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topTenLargestFamily(int $total = 10): string
     {
         $records = $this->topTenFamilyQuery($total);
@@ -654,13 +524,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Find the families with the most children.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topTenLargestFamilyList(int $total = 10): string
     {
         $records = $this->topTenFamilyQuery($total);
@@ -670,15 +533,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Create a chart of the largest families.
-     *
-     * @param string|null $color_from
-     * @param string|null $color_to
-     * @param int         $total
-     *
-     * @return string
-     */
     public function chartLargestFamilies(
         string|null $color_from = null,
         string|null $color_to = null,
@@ -688,14 +542,6 @@ class FamilyRepository
             ->chartLargestFamilies($color_from, $color_to, $total);
     }
 
-    /**
-     * Find the month in the year of the birth of the first child.
-     *
-     * @param int $year1
-     * @param int $year2
-     *
-     * @return Builder
-     */
     public function monthFirstChildQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $first_child_subquery = DB::table('link')
@@ -734,14 +580,6 @@ class FamilyRepository
         return $query;
     }
 
-    /**
-     * Find the month in the year of the birth of the first child.
-     *
-     * @param int $year1
-     * @param int $year2
-     *
-     * @return Builder
-     */
     public function monthFirstChildBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->monthFirstChildQuery($year1, $year2)
@@ -754,11 +592,6 @@ class FamilyRepository
             ->groupBy(['d_month', 'i_sex']);
     }
 
-    /**
-     * Number of husbands.
-     *
-     * @return string
-     */
     public function totalMarriedMales(): string
     {
         $n = DB::table('families')
@@ -770,11 +603,6 @@ class FamilyRepository
         return I18N::number($n);
     }
 
-    /**
-     * Number of wives.
-     *
-     * @return string
-     */
     public function totalMarriedFemales(): string
     {
         $n = DB::table('families')
@@ -786,16 +614,6 @@ class FamilyRepository
         return I18N::number($n);
     }
 
-    /**
-     * General query on parents.
-     *
-     * @param string $type
-     * @param string $age_dir
-     * @param string $sex
-     * @param bool   $show_years
-     *
-     * @return string
-     */
     private function parentsQuery(string $type, string $age_dir, string $sex, bool $show_years): string
     {
         if ($sex === 'F') {
@@ -872,129 +690,61 @@ class FamilyRepository
         return $result;
     }
 
-    /**
-     * Find the youngest mother
-     *
-     * @return string
-     */
     public function youngestMother(): string
     {
         return $this->parentsQuery('full', 'ASC', 'F', false);
     }
 
-    /**
-     * Find the name of the youngest mother.
-     *
-     * @return string
-     */
     public function youngestMotherName(): string
     {
         return $this->parentsQuery('name', 'ASC', 'F', false);
     }
 
-    /**
-     * Find the age of the youngest mother.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function youngestMotherAge(string $show_years = ''): string
     {
         return $this->parentsQuery('age', 'ASC', 'F', (bool) $show_years);
     }
 
-    /**
-     * Find the oldest mother.
-     *
-     * @return string
-     */
     public function oldestMother(): string
     {
         return $this->parentsQuery('full', 'DESC', 'F', false);
     }
 
-    /**
-     * Find the name of the oldest mother.
-     *
-     * @return string
-     */
     public function oldestMotherName(): string
     {
         return $this->parentsQuery('name', 'DESC', 'F', false);
     }
 
-    /**
-     * Find the age of the oldest mother.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function oldestMotherAge(string $show_years = ''): string
     {
         return $this->parentsQuery('age', 'DESC', 'F', (bool) $show_years);
     }
 
-    /**
-     * Find the youngest father.
-     *
-     * @return string
-     */
     public function youngestFather(): string
     {
         return $this->parentsQuery('full', 'ASC', 'M', false);
     }
 
-    /**
-     * Find the name of the youngest father.
-     *
-     * @return string
-     */
     public function youngestFatherName(): string
     {
         return $this->parentsQuery('name', 'ASC', 'M', false);
     }
 
-    /**
-     * Find the age of the youngest father.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function youngestFatherAge(string $show_years = ''): string
     {
         return $this->parentsQuery('age', 'ASC', 'M', (bool) $show_years);
     }
 
-    /**
-     * Find the oldest father.
-     *
-     * @return string
-     */
     public function oldestFather(): string
     {
         return $this->parentsQuery('full', 'DESC', 'M', false);
     }
 
-    /**
-     * Find the name of the oldest father.
-     *
-     * @return string
-     */
     public function oldestFatherName(): string
     {
         return $this->parentsQuery('name', 'DESC', 'M', false);
     }
 
-    /**
-     * Find the age of the oldest father.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function oldestFatherAge(string $show_years = ''): string
     {
         return $this->parentsQuery('age', 'DESC', 'M', (bool) $show_years);
@@ -1006,8 +756,6 @@ class FamilyRepository
      * @param string $type
      * @param string $age_dir "ASC" or "DESC"
      * @param int    $total
-     *
-     * @return string
      */
     private function ageOfMarriageQuery(string $type, string $age_dir, int $total): string
     {
@@ -1164,101 +912,48 @@ class FamilyRepository
         return $top10;
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @return string
-     */
     public function topAgeOfMarriageFamily(): string
     {
         return $this->ageOfMarriageQuery('name', 'DESC', 1);
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @return string
-     */
     public function topAgeOfMarriage(): string
     {
         return $this->ageOfMarriageQuery('age', 'DESC', 1);
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topAgeOfMarriageFamilies(int $total = 10): string
     {
         return $this->ageOfMarriageQuery('nolist', 'DESC', $total);
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function topAgeOfMarriageFamiliesList(int $total = 10): string
     {
         return $this->ageOfMarriageQuery('list', 'DESC', $total);
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @return string
-     */
     public function minAgeOfMarriageFamily(): string
     {
         return $this->ageOfMarriageQuery('name', 'ASC', 1);
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @return string
-     */
     public function minAgeOfMarriage(): string
     {
         return $this->ageOfMarriageQuery('age', 'ASC', 1);
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function minAgeOfMarriageFamilies(int $total = 10): string
     {
         return $this->ageOfMarriageQuery('nolist', 'ASC', $total);
     }
 
-    /**
-     * General query on marriage ages.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function minAgeOfMarriageFamiliesList(int $total = 10): string
     {
         return $this->ageOfMarriageQuery('list', 'ASC', $total);
     }
 
     /**
-     * Find the ages between spouses.
-     *
-     * @param string $age_dir
-     * @param int    $total
-     *
-     * @return array<array<string,mixed>>
+     * @return array<array{family:Family,age:string}>
      */
     private function ageBetweenSpousesQuery(string $age_dir, int $total): array
     {
@@ -1314,13 +1009,6 @@ class FamilyRepository
             ->all();
     }
 
-    /**
-     * Find the age between husband and wife.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function ageBetweenSpousesMF(int $total = 10): string
     {
         $records = $this->ageBetweenSpousesQuery('DESC', $total);
@@ -1330,13 +1018,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Find the age between husband and wife.
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function ageBetweenSpousesMFList(int $total = 10): string
     {
         $records = $this->ageBetweenSpousesQuery('DESC', $total);
@@ -1346,13 +1027,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Find the age between wife and husband..
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function ageBetweenSpousesFM(int $total = 10): string
     {
         $records = $this->ageBetweenSpousesQuery('ASC', $total);
@@ -1362,13 +1036,6 @@ class FamilyRepository
         ]);
     }
 
-    /**
-     * Find the age between wife and husband..
-     *
-     * @param int $total
-     *
-     * @return string
-     */
     public function ageBetweenSpousesFMList(int $total = 10): string
     {
         $records = $this->ageBetweenSpousesQuery('ASC', $total);
@@ -1430,8 +1097,6 @@ class FamilyRepository
      * @param string $age_dir    "ASC" or "DESC"
      * @param string $sex        "F" or "M"
      * @param bool   $show_years
-     *
-     * @return string
      */
     private function marriageQuery(string $type, string $age_dir, string $sex, bool $show_years): string
     {
@@ -1509,142 +1174,66 @@ class FamilyRepository
         return $result;
     }
 
-    /**
-     * Find the youngest wife.
-     *
-     * @return string
-     */
     public function youngestMarriageFemale(): string
     {
         return $this->marriageQuery('full', 'ASC', 'F', false);
     }
 
-    /**
-     * Find the name of the youngest wife.
-     *
-     * @return string
-     */
     public function youngestMarriageFemaleName(): string
     {
         return $this->marriageQuery('name', 'ASC', 'F', false);
     }
 
-    /**
-     * Find the age of the youngest wife.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function youngestMarriageFemaleAge(string $show_years = ''): string
     {
         return $this->marriageQuery('age', 'ASC', 'F', (bool) $show_years);
     }
 
-    /**
-     * Find the oldest wife.
-     *
-     * @return string
-     */
     public function oldestMarriageFemale(): string
     {
         return $this->marriageQuery('full', 'DESC', 'F', false);
     }
 
-    /**
-     * Find the name of the oldest wife.
-     *
-     * @return string
-     */
     public function oldestMarriageFemaleName(): string
     {
         return $this->marriageQuery('name', 'DESC', 'F', false);
     }
 
-    /**
-     * Find the age of the oldest wife.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function oldestMarriageFemaleAge(string $show_years = ''): string
     {
         return $this->marriageQuery('age', 'DESC', 'F', (bool) $show_years);
     }
 
-    /**
-     * Find the youngest husband.
-     *
-     * @return string
-     */
     public function youngestMarriageMale(): string
     {
         return $this->marriageQuery('full', 'ASC', 'M', false);
     }
 
-    /**
-     * Find the name of the youngest husband.
-     *
-     * @return string
-     */
     public function youngestMarriageMaleName(): string
     {
         return $this->marriageQuery('name', 'ASC', 'M', false);
     }
 
-    /**
-     * Find the age of the youngest husband.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function youngestMarriageMaleAge(string $show_years = ''): string
     {
         return $this->marriageQuery('age', 'ASC', 'M', (bool) $show_years);
     }
 
-    /**
-     * Find the oldest husband.
-     *
-     * @return string
-     */
     public function oldestMarriageMale(): string
     {
         return $this->marriageQuery('full', 'DESC', 'M', false);
     }
 
-    /**
-     * Find the name of the oldest husband.
-     *
-     * @return string
-     */
     public function oldestMarriageMaleName(): string
     {
         return $this->marriageQuery('name', 'DESC', 'M', false);
     }
 
-    /**
-     * Find the age of the oldest husband.
-     *
-     * @param string $show_years
-     *
-     * @return string
-     */
     public function oldestMarriageMaleAge(string $show_years = ''): string
     {
         return $this->marriageQuery('age', 'DESC', 'M', (bool) $show_years);
     }
 
-    /**
-     * General query on marriages.
-     *
-     * @param int  $year1
-     * @param int  $year2
-     *
-     * @return Builder
-     */
     public function statsMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $query = DB::table('dates')
@@ -1660,14 +1249,6 @@ class FamilyRepository
         return $query;
     }
 
-    /**
-     * General query on marriages.
-     *
-     * @param int  $year1
-     * @param int  $year2
-     *
-     * @return Builder
-     */
     public function statsFirstMarriageQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         $query = DB::table('families')
@@ -1690,28 +1271,12 @@ class FamilyRepository
             ->orderBy('d_julianday2');
     }
 
-    /**
-     * General query on marriages.
-     *
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
     public function statsMarr(string|null $color_from = null, string|null $color_to = null): string
     {
         return (new ChartMarriage($this->century_service, $this->color_service, $this->tree))
             ->chartMarriage($color_from, $color_to);
     }
 
-    /**
-     * General divorce query.
-     *
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
     public function statsDiv(string|null $color_from = null, string|null $color_to = null): string
     {
         return (new ChartDivorce($this->century_service, $this->color_service, $this->tree))

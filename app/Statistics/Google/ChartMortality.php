@@ -32,27 +32,14 @@ class ChartMortality
 {
     private ColorService $color_service;
 
-    /**
-     * @param ColorService $color_service
-     */
     public function __construct(ColorService $color_service)
     {
         $this->color_service = $color_service;
     }
 
-    /**
-     * Create a chart showing mortality.
-     *
-     * @param int         $tot_l
-     * @param int         $tot_d
-     * @param string|null $color_living
-     * @param string|null $color_dead
-     *
-     * @return string
-     */
     public function chartMortality(
-        int $tot_l,
-        int $tot_d,
+        int $tot_living,
+        int $tot_dead,
         string|null $color_living = null,
         string|null $color_dead = null
     ): string {
@@ -66,15 +53,15 @@ class ChartMortality
             ]
         ];
 
-        if ($tot_l > 0 || $tot_d > 0) {
+        if ($tot_living > 0 || $tot_dead > 0) {
             $data[] = [
                 I18N::translate('Living'),
-                $tot_l
+                $tot_living
             ];
 
             $data[] = [
                 I18N::translate('Dead'),
-                $tot_d
+                $tot_dead
             ];
         }
 

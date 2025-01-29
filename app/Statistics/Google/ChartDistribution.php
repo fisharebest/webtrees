@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
+use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\Builder;
@@ -41,22 +41,17 @@ class ChartDistribution
 
     private CountryService $country_service;
 
-    private IndividualRepositoryInterface $individual_repository;
+    private IndividualRepository $individual_repository;
 
     /**
      * @var array<string>
      */
     private array $country_to_iso3166;
 
-    /**
-     * @param Tree                          $tree
-     * @param CountryService                $country_service
-     * @param IndividualRepositoryInterface $individual_repository
-     */
     public function __construct(
         Tree $tree,
         CountryService $country_service,
-        IndividualRepositoryInterface $individual_repository
+        IndividualRepository $individual_repository
     ) {
         $this->tree                  = $tree;
         $this->country_service       = $country_service;
@@ -67,8 +62,6 @@ class ChartDistribution
     }
 
     /**
-     * Returns the country names for each language.
-     *
      * @return array<string>
      */
     private function getIso3166Countries(): array
@@ -125,9 +118,7 @@ class ChartDistribution
     }
 
     /**
-     * @param Tree   $tree
-     *
-     * @return array<int>
+     * @return array<string,int>
      */
     private function countIndividualsByCountry(Tree $tree): array
     {
@@ -161,10 +152,7 @@ class ChartDistribution
     }
 
     /**
-     * @param Tree   $tree
-     * @param string $surname
-     *
-     * @return array<int>
+     * @return array<string,int>
      */
     private function countSurnamesByCountry(Tree $tree, string $surname): array
     {
@@ -200,10 +188,7 @@ class ChartDistribution
     }
 
     /**
-     * @param Tree   $tree
-     * @param string $fact
-     *
-     * @return array<int>
+     * @return array<string,int>
      */
     private function countFamilyEventsByCountry(Tree $tree, string $fact): array
     {
@@ -226,10 +211,7 @@ class ChartDistribution
     }
 
     /**
-     * @param Tree   $tree
-     * @param string $fact
-     *
-     * @return array<int>
+     * @return array<string,int>
      */
     private function countIndividualEventsByCountry(Tree $tree, string $fact): array
     {
@@ -252,10 +234,7 @@ class ChartDistribution
     }
 
     /**
-     * @param Builder $query
-     * @param string  $fact
-     *
-     * @return array<int>
+     * @return array<string,int>
      */
     private function filterEventPlaces(Builder $query, string $fact): array
     {
@@ -282,8 +261,6 @@ class ChartDistribution
      * @param string $chart_shows The type of chart map to show
      * @param string $chart_type  The type of chart to show
      * @param string $surname     The surname for surname based distribution chart
-     *
-     * @return string
      */
     public function chartDistribution(
         string $chart_shows = 'world',

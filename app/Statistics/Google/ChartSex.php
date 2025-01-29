@@ -26,22 +26,10 @@ use Fisharebest\Webtrees\I18N;
  */
 class ChartSex
 {
-    /**
-     * Generate a chart showing sex distribution.
-     *
-     * @param int         $tot_m         The total number of male individuals
-     * @param int         $tot_f         The total number of female individuals
-     * @param int         $tot_u         The total number of unknown individuals
-     * @param string|null $color_female
-     * @param string|null $color_male
-     * @param string|null $color_unknown
-     *
-     * @return string
-     */
     public function chartSex(
-        int $tot_m,
-        int $tot_f,
-        int $tot_u,
+        int $total_male,
+        int $total_female,
+        int $total_unknown,
         string|null $color_female = null,
         string|null $color_male = null,
         string|null $color_unknown = null
@@ -57,20 +45,20 @@ class ChartSex
             ],
         ];
 
-        if ($tot_m > 0 || $tot_f > 0 || $tot_u > 0) {
+        if ($total_male > 0 || $total_female > 0 || $total_unknown > 0) {
             $data[] = [
                 I18N::translate('Males'),
-                $tot_m
+                $total_male
             ];
 
             $data[] = [
                 I18N::translate('Females'),
-                $tot_f
+                $total_female
             ];
 
             $data[] = [
                 I18N::translate('Unknown'),
-                $tot_u
+                $total_unknown
             ];
         }
 

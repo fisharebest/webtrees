@@ -32,21 +32,6 @@ use Fisharebest\Webtrees\Statistics\Repository\FavoritesRepository;
 use Fisharebest\Webtrees\Statistics\Repository\GedcomRepository;
 use Fisharebest\Webtrees\Statistics\Repository\HitCountRepository;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\LatestUserRepository;
 use Fisharebest\Webtrees\Statistics\Repository\MediaRepository;
 use Fisharebest\Webtrees\Statistics\Repository\MessageRepository;
@@ -73,22 +58,7 @@ use function str_contains;
  * These are primarily used for embedded keywords on HTML blocks, but
  * are also used elsewhere in the code.
  */
-class Statistics implements
-    GedcomRepositoryInterface,
-    IndividualRepositoryInterface,
-    EventRepositoryInterface,
-    MediaRepositoryInterface,
-    UserRepositoryInterface,
-    ServerRepositoryInterface,
-    BrowserRepositoryInterface,
-    HitCountRepositoryInterface,
-    LatestUserRepositoryInterface,
-    FavoritesRepositoryInterface,
-    NewsRepositoryInterface,
-    MessageRepositoryInterface,
-    ContactRepositoryInterface,
-    FamilyDatesRepositoryInterface,
-    PlaceRepositoryInterface
+class Statistics
 {
     private Tree $tree;
 

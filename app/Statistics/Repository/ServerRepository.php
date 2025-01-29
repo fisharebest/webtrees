@@ -22,12 +22,8 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\SiteUser;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
 
-/**
- * A repository providing methods for server related statistics.
- */
-class ServerRepository implements ServerRepositoryInterface
+class ServerRepository
 {
     public function serverDate(): string
     {

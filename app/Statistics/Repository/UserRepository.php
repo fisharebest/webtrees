@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 
 use function count;
@@ -35,10 +34,7 @@ use function e;
 use function route;
 use function view;
 
-/**
- * A repository providing methods for user related statistics.
- */
-class UserRepository implements UserRepositoryInterface
+class UserRepository
 {
     private Tree $tree;
 

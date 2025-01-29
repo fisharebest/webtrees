@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
 
@@ -33,16 +32,10 @@ use function str_contains;
 use function strpos;
 use function substr;
 
-/**
- * A repository providing methods for GEDCOM related statistics.
- */
-class GedcomRepository implements GedcomRepositoryInterface
+class GedcomRepository
 {
     private Tree $tree;
 
-    /**
-     * @param Tree $tree
-     */
     public function __construct(Tree $tree)
     {
         $this->tree = $tree;
@@ -83,9 +76,6 @@ class GedcomRepository implements GedcomRepositoryInterface
         return $this->tree->name();
     }
 
-    /**
-     * @return int
-     */
     public function gedcomId(): int
     {
         return $this->tree->id();
@@ -120,10 +110,6 @@ class GedcomRepository implements GedcomRepositoryInterface
         return $head[1];
     }
 
-    /**
-     * @return string
-     * @throws Exception
-     */
     public function gedcomDate(): string
     {
         $head = Registry::headerFactory()->make('HEAD', $this->tree);

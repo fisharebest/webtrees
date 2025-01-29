@@ -21,15 +21,11 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ContactRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * A repository providing methods for contact related statistics.
- */
-class ContactRepository implements ContactRepositoryInterface
+class ContactRepository
 {
     private Tree $tree;
 

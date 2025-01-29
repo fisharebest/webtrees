@@ -25,17 +25,13 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\Builder;
 
 use function abs;
 use function e;
 
-/**
- * A repository providing methods for family dates related statistics (birth, death, marriage, divorce).
- */
-class FamilyDatesRepository implements FamilyDatesRepositoryInterface
+class FamilyDatesRepository
 {
     /**
      * Sorting directions.
@@ -92,8 +88,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation
-     *
-     * @return string
      */
     private function getFirstLastEvent(string $type, string $operation): string
     {
@@ -158,8 +152,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation
-     *
-     * @return string
      */
     private function getFirstLastEventYear(string $type, string $operation): string
     {
@@ -222,8 +214,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation
-     *
-     * @return string
      */
     private function getFirstLastEventName(string $type, string $operation): string
     {
@@ -285,8 +275,6 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
      *
      * @param string $type      The fact to query
      * @param string $operation The sorting operation
-     *
-     * @return string
      */
     private function getFirstLastEventPlace(string $type, string $operation): string
     {

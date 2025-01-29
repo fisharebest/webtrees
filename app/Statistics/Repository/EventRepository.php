@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\JoinClause;
 
@@ -41,10 +40,7 @@ use function e;
 use function strncmp;
 use function substr;
 
-/**
- * A repository providing methods for event related statistics.
- */
-class EventRepository implements EventRepositoryInterface
+class EventRepository
 {
     /**
      * Sorting directions.
@@ -107,9 +103,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalEvents(array $events = []): string
     {
-        return I18N::number(
-            $this->getEventCount($events)
-        );
+        return I18N::number($this->getEventCount($events));
     }
 
     public function totalEventsBirth(): string

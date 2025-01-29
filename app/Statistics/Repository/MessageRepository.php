@@ -22,12 +22,8 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MessageRepositoryInterface;
 
-/**
- * A repository providing methods for user message related statistics.
- */
-class MessageRepository implements MessageRepositoryInterface
+class MessageRepository
 {
     public function totalUserMessages(): string
     {
