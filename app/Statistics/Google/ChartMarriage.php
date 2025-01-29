@@ -41,11 +41,6 @@ class ChartMarriage
 
     private ColorService $color_service;
 
-    /**
-     * @param CenturyService $century_service
-     * @param ColorService   $color_service
-     * @param Tree           $tree
-     */
     public function __construct(CenturyService $century_service, ColorService $color_service, Tree $tree)
     {
         $this->tree            = $tree;
@@ -78,14 +73,6 @@ class ChartMarriage
             });
     }
 
-    /**
-     * General query on marriages.
-     *
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
     public function chartMarriage(?string $color_from = null, ?string $color_to = null): string
     {
         $color_from ??= 'ffffff';

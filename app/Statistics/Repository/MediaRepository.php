@@ -21,16 +21,12 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google\ChartMedia;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 
-/**
- * A repository providing methods for media type related statistics.
- */
-class MediaRepository implements MediaRepositoryInterface
+class MediaRepository
 {
     private ColorService $color_service;
 

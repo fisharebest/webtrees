@@ -38,10 +38,6 @@ class ChartCommonSurname
 
     private SurnameTraditionInterface $surname_tradition;
 
-    /**
-     * @param ColorService              $color_service
-     * @param SurnameTraditionInterface $surname_tradition
-     */
     public function __construct(ColorService $color_service, SurnameTraditionInterface $surname_tradition)
     {
         $this->surname_tradition = $surname_tradition;
@@ -99,17 +95,10 @@ class ChartCommonSurname
     }
 
     /**
-     * Create a chart of common surnames.
-     *
-     * @param int               $tot_indi     The total number of individuals
-     * @param array<array<int>> $all_surnames The list of common surnames
-     * @param string|null       $color_from
-     * @param string|null       $color_to
-     *
-     * @return string
+     * @param array<array<int>> $all_surnames
      */
     public function chartCommonSurnames(
-        int $tot_indi,
+        int $total_individuals,
         array $all_surnames,
         ?string $color_from = null,
         ?string $color_to = null
@@ -135,7 +124,7 @@ class ChartCommonSurname
 
         $data[] = [
             I18N::translate('Other'),
-            $tot_indi - $tot
+            $total_individuals - $tot
         ];
 
         $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);

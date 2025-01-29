@@ -9001,20 +9001,14 @@ parameters:
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$id\.$#'
-			identifier: property.notFound
+			message: '#^Cannot access property \$id on mixed\.$#'
+			identifier: property.nonObject
 			count: 1
 			path: app/Statistics/Google/ChartFamilyLargest.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Statistics/Google/ChartFamilyLargest.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Google\\ChartFamilyLargest\:\:queryRecords\(\) should return array\<object\> but returns array\.$#'
-			identifier: return.type
+			message: '#^Cannot access property \$total on mixed\.$#'
+			identifier: property.nonObject
 			count: 1
 			path: app/Statistics/Google/ChartFamilyLargest.php
 
@@ -9207,19 +9201,19 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$age\.$#'
 			identifier: property.notFound
-			count: 3
+			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$ch1\.$#'
+			message: '#^Access to an undefined property object\:\:\$child1\.$#'
 			identifier: property.notFound
-			count: 3
+			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$ch2\.$#'
+			message: '#^Access to an undefined property object\:\:\$child2\.$#'
 			identifier: property.notFound
-			count: 3
+			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -9231,7 +9225,7 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$family\.$#'
 			identifier: property.notFound
-			count: 5
+			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -9351,17 +9345,17 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 9
+			count: 7
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:ageBetweenSiblingsQuery\(\) should return array\<object\> but returns array\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:ageBetweenSiblingsQuery\(\) should return array\<object\{family\: string, child1\: string, child2\: string, age\: int\}\> but returns array\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:ageBetweenSpousesQuery\(\) should return array\<array\<string, mixed\>\> but returns array\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Statistics\\Repository\\FamilyRepository\:\:ageBetweenSpousesQuery\(\) should return array\<array\{family\: Fisharebest\\Webtrees\\Family, age\: string\}\> but returns array\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
@@ -9399,13 +9393,13 @@ parameters:
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\FamilyFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 4
+			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
 			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Contracts\\IndividualFactoryInterface\:\:make\(\) expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 8
+			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -9661,6 +9655,12 @@ parameters:
 			path: app/Statistics/Repository/PlaceRepository.php
 
 		-
+			message: '#^PHPDoc tag @param for parameter \$individual_repository with type Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepositoryInterface is not subtype of native type Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepository\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: app/Statistics/Repository/PlaceRepository.php
+
+		-
 			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder\:\:pluck\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9669,6 +9669,12 @@ parameters:
 		-
 			message: '#^Parameter \#2 \$subject of function preg_match expects string, mixed given\.$#'
 			identifier: argument.type
+			count: 1
+			path: app/Statistics/Repository/PlaceRepository.php
+
+		-
+			message: '#^Parameter \$individual_repository of method Fisharebest\\Webtrees\\Statistics\\Repository\\PlaceRepository\:\:__construct\(\) has invalid type Fisharebest\\Webtrees\\Statistics\\Repository\\IndividualRepositoryInterface\.$#'
+			identifier: class.notFound
 			count: 1
 			path: app/Statistics/Repository/PlaceRepository.php
 

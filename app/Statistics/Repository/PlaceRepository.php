@@ -22,8 +22,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Statistics\Google\ChartDistribution;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -38,13 +36,13 @@ use function view;
 /**
  * A repository providing methods for place related statistics.
  */
-class PlaceRepository implements PlaceRepositoryInterface
+class PlaceRepository
 {
     private Tree $tree;
 
     private CountryService $country_service;
 
-    private IndividualRepositoryInterface $individual_repository;
+    private IndividualRepository $individual_repository;
 
     /**
      * @param Tree                          $tree
@@ -54,7 +52,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     public function __construct(
         Tree $tree,
         CountryService $country_service,
-        IndividualRepositoryInterface $individual_repository
+        IndividualRepository $individual_repository
     ) {
         $this->tree                  = $tree;
         $this->country_service       = $country_service;

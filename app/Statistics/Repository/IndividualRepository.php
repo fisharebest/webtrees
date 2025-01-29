@@ -38,7 +38,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartFamilyWithSources;
 use Fisharebest\Webtrees\Statistics\Google\ChartIndividualWithSources;
 use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
 use Fisharebest\Webtrees\Statistics\Google\ChartSex;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
@@ -64,10 +63,7 @@ use function preg_match;
 use function uksort;
 use function view;
 
-/**
- * A repository providing methods for individual related statistics.
- */
-class IndividualRepository implements IndividualRepositoryInterface
+class IndividualRepository
 {
     private CenturyService $century_service;
 

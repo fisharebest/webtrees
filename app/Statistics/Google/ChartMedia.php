@@ -33,22 +33,13 @@ class ChartMedia
 {
     private ColorService $color_service;
 
-    /**
-     * @param ColorService $color_service
-     */
     public function __construct(ColorService $color_service)
     {
         $this->color_service = $color_service;
     }
 
     /**
-     * Create a chart of media types.
-     *
-     * @param array<string,int> $media      The list of media types to display
-     * @param string|null       $color_from
-     * @param string|null       $color_to
-     *
-     * @return string
+     * @param array<string,int> $media
      */
     public function chartMedia(
         array $media,

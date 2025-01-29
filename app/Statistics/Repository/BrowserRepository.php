@@ -21,12 +21,8 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface;
 
-/**
- * A repository providing methods for browser related statistics.
- */
-class BrowserRepository implements BrowserRepositoryInterface
+class BrowserRepository
 {
     /**
      * @return string

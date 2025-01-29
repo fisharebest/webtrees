@@ -21,14 +21,10 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\NewsRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
-/**
- * A repository providing methods for news related statistics.
- */
-class NewsRepository implements NewsRepositoryInterface
+class NewsRepository
 {
     private Tree $tree;
 

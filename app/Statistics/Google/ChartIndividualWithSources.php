@@ -32,27 +32,14 @@ class ChartIndividualWithSources
 {
     private ColorService $color_service;
 
-    /**
-     * @param ColorService $color_service
-     */
     public function __construct(ColorService $color_service)
     {
         $this->color_service = $color_service;
     }
 
-    /**
-     * Create a chart showing individuals with/without sources.
-     *
-     * @param int         $tot_indi        The total number of individuals
-     * @param int         $tot_indi_source The total number of individuals with sources
-     * @param string|null $color_from
-     * @param string|null $color_to
-     *
-     * @return string
-     */
     public function chartIndisWithSources(
-        int $tot_indi,
-        int $tot_indi_source,
+        int $total_individuals,
+        int $total_individuals_with_sources,
         ?string $color_from = null,
         ?string $color_to = null
     ): string {
@@ -66,15 +53,15 @@ class ChartIndividualWithSources
             ],
         ];
 
-        if ($tot_indi > 0 || $tot_indi_source > 0) {
+        if ($total_individuals > 0 || $total_individuals_with_sources > 0) {
             $data[] = [
                 I18N::translate('Without sources'),
-                $tot_indi - $tot_indi_source
+                $total_individuals - $total_individuals_with_sources
             ];
 
             $data[] = [
                 I18N::translate('With sources'),
-                $tot_indi_source
+                $total_individuals_with_sources
             ];
         }
 

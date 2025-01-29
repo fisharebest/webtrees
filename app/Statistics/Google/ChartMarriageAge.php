@@ -40,10 +40,6 @@ class ChartMarriageAge
 
     private CenturyService $century_service;
 
-    /**
-     * @param CenturyService $century_service
-     * @param Tree           $tree
-     */
     public function __construct(CenturyService $century_service, Tree $tree)
     {
         $this->tree            = $tree;
@@ -117,11 +113,6 @@ class ChartMarriageAge
             });
     }
 
-    /**
-     * General query on ages at marriage.
-     *
-     * @return string
-     */
     public function chartMarriageAge(): string
     {
         $out = [];

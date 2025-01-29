@@ -25,24 +25,16 @@ use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FavoritesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 
 use function count;
 
-/**
- * A repository providing methods for favorites related statistics.
- */
-class FavoritesRepository implements FavoritesRepositoryInterface
+class FavoritesRepository
 {
     private Tree $tree;
 
     private ModuleService $module_service;
 
-    /**
-     * @param Tree          $tree
-     * @param ModuleService $module_service
-     */
     public function __construct(Tree $tree, ModuleService $module_service)
     {
         $this->tree           = $tree;
