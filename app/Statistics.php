@@ -305,12 +305,9 @@ class Statistics
         return $this->individual_repository->totalGivennames(...$params);
     }
 
-    /**
-     * @param array<string> $events
-     */
-    public function totalEvents(array $events = []): string
+    public function totalEvents(): string
     {
-        return $this->event_repository->totalEvents($events);
+        return $this->event_repository->totalEvents();
     }
 
     public function totalEventsBirth(): string
