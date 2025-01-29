@@ -40,7 +40,6 @@ class SiteUserTest extends TestCase
         Site::setPreference('SMTP_FROM_NAME', 'email@example.com');
         Site::setPreference('SMTP_DISP_NAME', 'My site');
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('email@example.com', $user->email());
         self::assertSame('My site', $user->realName());

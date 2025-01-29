@@ -134,7 +134,7 @@ class EncodingFactoryTest extends TestCase
     /**
      * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::list
      */
-    public function testList(): void
+    public function testListedEncodingNamesCanBeCreated(): void
     {
         $factory = new EncodingFactory();
 

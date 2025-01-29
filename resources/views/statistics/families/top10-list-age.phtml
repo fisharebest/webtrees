@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<?php if ($records) : ?>
+<?php if ($records !== []) : ?>
     <ul class="list-group list-group-flush">
         <?php foreach ($records as $record) : ?>
             <?php $child1 = $record['child1']; ?>

@@ -204,9 +204,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         do {
             $controller->handle($request);
-
-            $imported = $tree->getPreference('imported');
-        } while (!$imported);
+        } while ($tree->getPreference('imported') !== '1');
 
         return $tree;
     }
@@ -251,12 +249,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
             }
 
             if (str_starts_with($html, '<')) {
-                if (preg_match('~^</([a-z]+)>~', $html, $match)) {
+                if (preg_match('~^</([a-z]+)>~', $html, $match) === 1) {
                     if ($match[1] !== array_pop($stack)) {
                         static::fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
-                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match)) {
+                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match) === 1) {
                     $tag = $match[1];
                     $self_closing = $match[2] === '/';
 

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 

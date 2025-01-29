@@ -21,17 +21,10 @@ namespace Fisharebest\Webtrees\Statistics\Service;
 
 use Fisharebest\Webtrees\I18N;
 
-/**
- * Functions for managing centuries.
- */
-class CenturyService
+final class CenturyService
 {
     /**
      * Century name, English => 21st, Polish => XXI, etc.
-     *
-     * @param int $century
-     *
-     * @return string
      */
     public function centuryName(int $century): string
     {

@@ -23,13 +23,16 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics;
+use Fisharebest\Webtrees\StatisticsData;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function array_key_exists;
+use function array_key_last;
 use function array_keys;
 use function array_map;
 use function array_merge;
@@ -40,13 +43,9 @@ use function assert;
 use function count;
 use function explode;
 use function in_array;
-use function intdiv;
 use function is_numeric;
 use function sprintf;
 
-/**
- * Class StatisticsChartModule
- */
 class StatisticsChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
@@ -88,11 +87,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         return I18N::translate('Statistics');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “StatisticsChart” module */
@@ -238,8 +232,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function postCustomChartAction(ServerRequestInterface $request): ResponseInterface
     {
+        $tree = Validator::attributes($request)->tree();
+
         $statistics = app(Statistics::class);
         assert($statistics instanceof Statistics);
+
+        $statistics_data = new StatisticsData($tree, new UserService());
 
         $x_axis_type = Validator::parsedBody($request)->integer('x-as');
         $y_axis_type = Validator::parsedBody($request)->integer('y-as');
@@ -291,16 +289,16 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsBirthQuery()->get();
-                        foreach ($rows as $row) {
-                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
+                        $rows   = $statistics_data->countEventsByMonth('BIRT', 0, 0);
+                        foreach ($rows as $month => $total) {
+                            $this->fillYData($month, 0, $total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows   = $statistics->statsBirthBySexQuery()->get();
+                        $rows   = $statistics_data->countEventsByMonthAndSex('BIRT', 0, 0);
                         foreach ($rows as $row) {
-                            $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->month, $row->sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -308,9 +306,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsBirthQuery($prev_boundary, $boundary)->get();
-                            foreach ($rows as $row) {
-                                $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
+                            $rows = $statistics_data->countEventsByMonth('BIRT', $prev_boundary, $boundary);
+                            foreach ($rows as $month => $total) {
+                                $this->fillYData($month, $boundary, $total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -340,16 +338,16 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsDeathQuery()->get();
-                        foreach ($rows as $row) {
-                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
+                        $rows   = $statistics_data->countEventsByMonth('DEAT', 0, 0);
+                        foreach ($rows as $month => $total) {
+                            $this->fillYData($month, 0, $total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows   = $statistics->statsDeathBySexQuery()->get();
+                        $rows   = $statistics_data->countEventsByMonthAndSex('DEAT', 0, 0);
                         foreach ($rows as $row) {
-                            $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->month, $row->sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -357,9 +355,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsDeathQuery($prev_boundary, $boundary)->get();
-                            foreach ($rows as $row) {
-                                $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
+                            $rows = $statistics_data->countEventsByMonth('DEAT', $prev_boundary, $boundary);
+                            foreach ($rows as $month => $total) {
+                                $this->fillYData($month, $boundary, $total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -389,9 +387,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsMarriageQuery()->get();
-                        foreach ($rows as $row) {
-                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
+                        $rows   = $statistics_data->countEventsByMonth('MARR', 0, 0);
+                        foreach ($rows as $month => $total) {
+                            $this->fillYData($month, 0, $total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -399,9 +397,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsMarriageQuery($prev_boundary, $boundary)->get();
-                            foreach ($rows as $row) {
-                                $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
+                            $rows = $statistics_data->countEventsByMonth('MARR', $prev_boundary, $boundary);
+                            foreach ($rows as $month => $total) {
+                                $this->fillYData($month, $boundary, $total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -431,16 +429,16 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->monthFirstChildQuery()->get();
-                        foreach ($rows as $row) {
-                            $this->fillYData($row->d_month, 0, $row->total, $x_axis, $z_axis, $ydata);
+                        $rows   = $statistics_data->countFirstChildrenByMonth(0, 0);
+                        foreach ($rows as $month => $total) {
+                            $this->fillYData($month, 0, $total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
-                        $rows   = $statistics->monthFirstChildBySexQuery()->get();
+                        $rows   = $statistics_data->countFirstChildrenByMonthAndSex(0, 0);
                         foreach ($rows as $row) {
-                            $this->fillYData($row->d_month, $row->i_sex, $row->total, $x_axis, $z_axis, $ydata);
+                            $this->fillYData($row->month, $row->sex, $row->total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
@@ -448,9 +446,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->monthFirstChildQuery($prev_boundary, $boundary)->get();
-                            foreach ($rows as $row) {
-                                $this->fillYData($row->d_month, $boundary, $row->total, $x_axis, $z_axis, $ydata);
+                            $rows = $statistics_data->countFirstChildrenByMonth($prev_boundary, $boundary);
+                            foreach ($rows as $month => $total) {
+                                $this->fillYData($month, $boundary, $total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -480,29 +478,19 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsFirstMarriageQuery()->get();
-                        $indi   = [];
-                        foreach ($rows as $row) {
-                            if (!in_array($row->f_husb, $indi, true) && !in_array($row->f_wife, $indi, true)) {
-                                $this->fillYData($row->month, 0, 1, $x_axis, $z_axis, $ydata);
-                            }
-                            $indi[]  = $row->f_husb;
-                            $indi[]  = $row->f_wife;
+                        $rows   = $statistics_data->countFirstMarriagesByMonth($tree, 0, 0);
+                        foreach ($rows as $month => $total) {
+                            $this->fillYData($month, 0, $total, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_TIME:
                         $boundaries_csv = Validator::parsedBody($request)->string('z-axis-boundaries-periods');
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
-                        $indi           = [];
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsFirstMarriageQuery($prev_boundary, $boundary)->get();
-                            foreach ($rows as $row) {
-                                if (!in_array($row->f_husb, $indi, true) && !in_array($row->f_wife, $indi, true)) {
-                                    $this->fillYData($row->month, $boundary, 1, $x_axis, $z_axis, $ydata);
-                                }
-                                $indi[]  = $row->f_husb;
-                                $indi[]  = $row->f_wife;
+                            $rows = $statistics_data->countFirstMarriagesByMonth($tree, $prev_boundary, $boundary);
+                            foreach ($rows as $month => $total) {
+                                $this->fillYData($month, 0, $total, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -533,23 +521,19 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 switch ($z_axis_type) {
                     case self::Z_AXIS_ALL:
                         $z_axis = $this->axisAll();
-                        $rows   = $statistics->statsAgeQuery('DEAT');
+                        $rows   = $statistics_data->statsAgeQuery('ALL', 0, 0);
                         foreach ($rows as $row) {
-                            foreach ($row as $age) {
-                                $years = (int) ($age / self::DAYS_IN_YEAR);
-                                $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
-                            }
+                            $years = (int) ($row->days / self::DAYS_IN_YEAR);
+                            $this->fillYData($years, 0, 1, $x_axis, $z_axis, $ydata);
                         }
                         break;
                     case self::Z_AXIS_SEX:
                         $z_axis = $this->axisSexes();
                         foreach (array_keys($z_axis) as $sex) {
-                            $rows = $statistics->statsAgeQuery('DEAT', $sex);
+                            $rows = $statistics_data->statsAgeQuery($sex, 0, 0);
                             foreach ($rows as $row) {
-                                foreach ($row as $age) {
-                                    $years = (int) ($age / self::DAYS_IN_YEAR);
-                                    $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
-                                }
+                                $years = (int) ($row->days / self::DAYS_IN_YEAR);
+                                $this->fillYData($years, $sex, 1, $x_axis, $z_axis, $ydata);
                             }
                         }
                         break;
@@ -558,12 +542,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                         $z_axis         = $this->axisYears($boundaries_csv);
                         $prev_boundary  = 0;
                         foreach (array_keys($z_axis) as $boundary) {
-                            $rows = $statistics->statsAgeQuery('DEAT', 'BOTH', $prev_boundary, $boundary);
+                            $rows = $statistics_data->statsAgeQuery('ALL', $prev_boundary, $boundary);
                             foreach ($rows as $row) {
-                                foreach ($row as $age) {
-                                    $years = (int) ($age / self::DAYS_IN_YEAR);
-                                    $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
-                                }
+                                $years = (int) ($row->days / self::DAYS_IN_YEAR);
+                                $this->fillYData($years, $boundary, 1, $x_axis, $z_axis, $ydata);
                             }
                             $prev_boundary = $boundary + 1;
                         }
@@ -803,13 +785,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * Convert a list of N year-boundaries into N+1 year-ranges for the z-axis.
      *
-     * @param string $boundaries_csv
-     *
      * @return array<string>
      */
     private function axisYears(string $boundaries_csv): array
     {
         $boundaries = explode(',', $boundaries_csv);
+        $boundaries = array_map(static fn (string $x): int => (int) $x, $boundaries);
 
         $axis = [];
         foreach ($boundaries as $n => $boundary) {
@@ -820,7 +801,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             }
         }
 
-        $axis[PHP_INT_MAX] = I18N::digits($boundaries[count($boundaries) - 1]) . '–';
+        $axis[PHP_INT_MAX] = I18N::digits($boundaries[array_key_last($boundaries)]) . '–';
 
         return $axis;
     }
@@ -828,17 +809,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * Create the X axis.
      *
-     * @param string $boundaries_csv
-     *
      * @return array<string>
      */
     private function axisNumbers(string $boundaries_csv): array
     {
         $boundaries = explode(',', $boundaries_csv);
-
-        $boundaries = array_map(static function (string $x): int {
-            return (int) $x;
-        }, $boundaries);
+        $boundaries = array_map(static fn (string $x): int => (int) $x, $boundaries);
 
         $axis = [];
         foreach ($boundaries as $n => $boundary) {
@@ -858,7 +834,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         }
 
         /* I18N: Label on a graph; 40+ means 40 or more */
-        $axis[PHP_INT_MAX] = I18N::translate('%s+', I18N::number($boundaries[count($boundaries) - 1]));
+        $axis[PHP_INT_MAX] = I18N::translate('%s+', I18N::number($boundaries[array_key_last($boundaries)]));
 
         return $axis;
     }
@@ -872,25 +848,14 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * @param array<string>     $x_axis
      * @param array<string>     $z_axis
      * @param array<array<int>> $ydata
-     *
-     * @return void
      */
     private function fillYData($x, $z, $value, array $x_axis, array $z_axis, array &$ydata): void
     {
         $x = $this->findAxisEntry($x, $x_axis);
         $z = $this->findAxisEntry($z, $z_axis);
 
-        if (!array_key_exists($z, $z_axis)) {
-            foreach (array_keys($z_axis) as $key) {
-                if ($value <= $key) {
-                    $z = $key;
-                    break;
-                }
-            }
-        }
-
-        // Add the value to the appropriate data point.
-        $ydata[$z][$x] = ($ydata[$z][$x] ?? 0) + $value;
+        $ydata[$z][$x] ??= 0;
+        $ydata[$z][$x] += $value;
     }
 
     /**
@@ -924,15 +889,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * Plot the data.
      *
-     * @param string            $chart_title
      * @param array<string>     $x_axis
-     * @param string            $x_axis_title
      * @param array<array<int>> $ydata
-     * @param string            $y_axis_title
      * @param array<string>     $z_axis
-     * @param int               $y_axis_type
-     *
-     * @return string
      */
     private function myPlot(
         string $chart_title,
@@ -943,7 +902,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         array $z_axis,
         int $y_axis_type
     ): string {
-        if (!count($ydata)) {
+        if ($ydata === []) {
             return I18N::translate('This information is not available.');
         }
 

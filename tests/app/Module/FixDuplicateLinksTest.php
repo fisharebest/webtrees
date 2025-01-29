@@ -91,7 +91,6 @@ class FixDuplicateLinksTest extends TestCase
     public function testRecordsToFix(): void
     {
         $records = $this->fixDuplicateLinks->recordsToFix($this->tree, []);
-        self::assertInstanceOf(Collection::class, $records);
         self::assertCount(1, $records);
 
         $records = $this->fixDuplicateLinks->recordsToFix($this->tree, ['start' => 'X1', 'end' => 'X9']);

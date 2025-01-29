@@ -25,38 +25,29 @@ use function ltrim;
 use function round;
 use function sprintf;
 
-/**
- * Functions for managing and manipulating colors.
- */
-class ColorService
+final class ColorService
 {
     /**
-     * Interpolates the number of color steps between a given start and end color.
-     *
-     * @param string $startColor The start color
-     * @param string $endColor   The end color
-     * @param int    $steps      The number of steps to interpolate
-     *
-     * @return array<string>
+     * @return array<int,string>
      */
-    public function interpolateRgb(string $startColor, string $endColor, int $steps): array
+    public function interpolateRgb(string $start_color, string $end_color, int $steps): array
     {
         if ($steps === 0) {
             return [];
         }
 
-        $s       = $this->hexToRgb($startColor);
-        $e       = $this->hexToRgb($endColor);
-        $colors  = [];
-        $factorR = ($e[0] - $s[0]) / $steps;
-        $factorG = ($e[1] - $s[1]) / $steps;
-        $factorB = ($e[2] - $s[2]) / $steps;
+        $s        = $this->hexToRgb($start_color);
+        $e        = $this->hexToRgb($end_color);
+        $colors   = [];
+        $factor_r = ($e[0] - $s[0]) / $steps;
+        $factor_g = ($e[1] - $s[1]) / $steps;
+        $factor_b = ($e[2] - $s[2]) / $steps;
 
         for ($x = 1; $x < $steps; ++$x) {
             $colors[] = $this->rgbToHex(
-                (int) round($s[0] + $factorR * $x),
-                (int) round($s[1] + $factorG * $x),
-                (int) round($s[2] + $factorB * $x)
+                (int) round($s[0] + $factor_r * $x),
+                (int) round($s[1] + $factor_g * $x),
+                (int) round($s[2] + $factor_b * $x)
             );
         }
 
@@ -65,31 +56,16 @@ class ColorService
         return $colors;
     }
 
-    /**
-     * Converts the color values to the HTML hex representation.
-     *
-     * @param int $r The red color value
-     * @param int $g The green color value
-     * @param int $b The blue color value
-     *
-     * @return string
-     */
     private function rgbToHex(int $r, int $g, int $b): string
     {
         return sprintf('#%02x%02x%02x', $r, $g, $b);
     }
 
     /**
-     * Converts the HTML color hex representation to an array of color values.
-     *
-     * @param string $hex The HTML hex color code
-     *
      * @return array<int>
      */
     private function hexToRgb(string $hex): array
     {
-        return array_map(static function (string $hex): int {
-            return (int) hexdec($hex);
-        }, str_split(ltrim($hex, '#'), 2));
+        return array_map(static fn (string $hex): int => (int) hexdec($hex), str_split(ltrim($hex, '#'), 2));
     }
 }

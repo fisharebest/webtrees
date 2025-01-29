@@ -121,14 +121,6 @@
             "@composer webtrees:phpstan",
             "@composer webtrees:test"
         ],
-        "webtrees:check": [
-            "### PHP-CODE-SNIFFER",
-            "@composer webtrees:phpcs",
-            "### PHPSTAN",
-            "@composer webtrees:phpstan",
-            "### PSALM",
-            "@composer webtrees:psalm"
-        ],
         "webtrees:phpcs": [
             "vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
             "#vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views",
@@ -140,15 +132,11 @@
         "webtrees:phpstan-baseline": [
             "vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
         ],
-        "webtrees:psalm": [
-            "@composer global require --quiet vimeo/psalm",
-            "~/.composer/vendor/bin/psalm --threads=8 --php-version=8.1"
-        ],
         "webtrees:test": [
-            "@php vendor/bin/phpunit"
+            "vendor/bin/phpunit"
         ],
         "webtrees:coverage": [
-            "vendor/bin/phpunit --coverage-html=tests/coverage"
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html=tests/coverage"
         ],
         "webtrees:lang": [
             "Fisharebest\\Webtrees\\Console\\ComposerScripts::languageFiles"
