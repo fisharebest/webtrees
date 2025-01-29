@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -34,11 +33,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
 use function abs;
-use function array_map;
-use function array_merge;
 use function e;
-use function strncmp;
-use function substr;
 
 class EventRepository
 {
@@ -67,50 +62,30 @@ class EventRepository
     }
 
     /**
-     * Returns the total number of a given list of events (with dates).
-     *
-     * @param array<string> $events The list of events to count (e.g. BIRT, DEAT, ...)
-     *
-     * @return int
+     * @param array<string> $events
      */
-    private function getEventCount(array $events): int
+    private function countEvents(array $events): int
     {
-        $query = DB::table('dates')
-            ->where('d_file', '=', $this->tree->id());
-
-        $no_types = [
-            'HEAD',
-            'CHAN',
-        ];
-
-        if ($events !== []) {
-            $types = [];
-
-            foreach ($events as $type) {
-                if (strncmp($type, '!', 1) === 0) {
-                    $no_types[] = substr($type, 1);
-                } else {
-                    $types[] = $type;
-                }
-            }
-
-            if ($types !== []) {
-                $query->whereIn('d_fact', $types);
-            }
-        }
-
-        return $query->whereNotIn('d_fact', $no_types)
+        return DB::table('dates')
+            ->where('d_file', '=', $this->tree->id())
+            ->whereIn('d_fact', $events)
             ->count();
     }
 
     /**
      * @param array<string> $events
-     *
-     * @return string
      */
-    public function totalEvents(array $events = []): string
+    private function countOtherEvents(array $events): int
     {
-        return I18N::number($this->getEventCount($events));
+        return DB::table('dates')
+            ->where('d_file', '=', $this->tree->id())
+            ->whereNotIn('d_fact', $events)
+            ->count();
+    }
+
+    public function totalEvents(): string
+    {
+        return I18N::number($this->countOtherEvents(['CHAN']));
     }
 
     /**
@@ -118,7 +93,7 @@ class EventRepository
      */
     public function totalEventsBirth(): string
     {
-        return $this->totalEvents(Gedcom::BIRTH_EVENTS);
+        return I18N::number($this->countEvents(Gedcom::BIRTH_EVENTS));
     }
 
     /**
@@ -134,7 +109,7 @@ class EventRepository
      */
     public function totalEventsDeath(): string
     {
-        return $this->totalEvents(Gedcom::DEATH_EVENTS);
+        return I18N::number($this->countEvents(Gedcom::DEATH_EVENTS));
     }
 
     /**
@@ -150,7 +125,7 @@ class EventRepository
      */
     public function totalEventsMarriage(): string
     {
-        return $this->totalEvents(Gedcom::MARRIAGE_EVENTS);
+        return I18N::number($this->countEvents(Gedcom::MARRIAGE_EVENTS));
     }
 
     /**
@@ -166,7 +141,7 @@ class EventRepository
      */
     public function totalEventsDivorce(): string
     {
-        return $this->totalEvents(Gedcom::DIVORCE_EVENTS);
+        return I18N::number($this->countEvents(Gedcom::DIVORCE_EVENTS));
     }
 
     /**
@@ -177,35 +152,17 @@ class EventRepository
         return I18N::number($this->countFamiliesWithEvents([self::EVENT_DIVORCE]));
     }
 
-    /**
-     * Returns the list of common facts used query the data.
-     *
-     * @return array<string>
-     */
-    private function getCommonFacts(): array
-    {
-        // The list of facts used to limit the query result
-        return array_merge(
-            Gedcom::BIRTH_EVENTS,
-            Gedcom::MARRIAGE_EVENTS,
-            Gedcom::DIVORCE_EVENTS,
-            Gedcom::DEATH_EVENTS
-        );
-    }
-
-    /**
-     * @return string
-     */
     public function totalEventsOther(): string
     {
-        $no_facts = array_map(
-            static function (string $fact): string {
-                return '!' . $fact;
-            },
-            $this->getCommonFacts()
+        $events = array_merge(
+            ['CHAN'],
+            Gedcom::BIRTH_EVENTS,
+            Gedcom::DEATH_EVENTS,
+            Gedcom::MARRIAGE_EVENTS,
+            Gedcom::DIVORCE_EVENTS
         );
 
-        return $this->totalEvents($no_facts);
+        return I18N::number($this->countOtherEvents($events));
     }
 
     /**
@@ -217,11 +174,18 @@ class EventRepository
      */
     private function eventQuery(string $direction): ?object
     {
+        $events = [
+            ...Gedcom::BIRTH_EVENTS,
+            ...Gedcom::DEATH_EVENTS,
+            ...Gedcom::MARRIAGE_EVENTS,
+            ...Gedcom::DIVORCE_EVENTS,
+        ];
+
+
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])
             ->where('d_file', '=', $this->tree->id())
-            ->where('d_gid', '<>', Header::RECORD_TYPE)
-            ->whereIn('d_fact', $this->getCommonFacts())
+            ->whereIn('d_fact', $events)
             ->where('d_julianday1', '<>', 0)
             ->orderBy('d_julianday1', $direction)
             ->orderBy('d_type')
