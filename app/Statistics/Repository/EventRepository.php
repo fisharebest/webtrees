@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\JoinClause;
 
 use function abs;
 use function array_map;
@@ -131,7 +132,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalBirths(): string
     {
-        return $this->totalEvents([self::EVENT_BIRTH]);
+        return I18N::number($this->countIndividualsWithEvents([self::EVENT_BIRTH]));
     }
 
     /**
@@ -147,7 +148,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalDeaths(): string
     {
-        return $this->totalEvents([self::EVENT_DEATH]);
+        return I18N::number($this->countIndividualsWithEvents([self::EVENT_DEATH]));
     }
 
     /**
@@ -163,7 +164,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalMarriages(): string
     {
-        return $this->totalEvents([self::EVENT_MARRIAGE]);
+        return I18N::number($this->countFamiliesWithEvents([self::EVENT_MARRIAGE]));
     }
 
     /**
@@ -179,7 +180,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function totalDivorces(): string
     {
-        return $this->totalEvents([self::EVENT_DIVORCE]);
+        return I18N::number($this->countFamiliesWithEvents([self::EVENT_DIVORCE]));
     }
 
     /**
@@ -442,5 +443,37 @@ class EventRepository implements EventRepositoryInterface
     public function lastEventPlace(): string
     {
         return $this->getFirstLastEventPlace(self::SORT_DESC);
+    }
+
+    /**
+     * @param array<string> $events
+     */
+    private function countFamiliesWithEvents(array $events): int
+    {
+        return DB::table('dates')
+            ->join('families', static function (JoinClause $join): void {
+                $join
+                    ->on('f_id', '=', 'd_gid')
+                    ->on('f_file', '=', 'd_file');
+            })
+            ->where('d_file', '=', $this->tree->id())
+            ->whereIn('d_fact', $events)
+            ->count();
+    }
+
+    /**
+     * @param array<string> $events
+     */
+    private function countIndividualsWithEvents(array $events): int
+    {
+        return DB::table('dates')
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('i_id', '=', 'd_gid')
+                    ->on('i_file', '=', 'd_file');
+            })
+            ->where('d_file', '=', $this->tree->id())
+            ->whereIn('d_fact', $events)
+            ->count();
     }
 }
