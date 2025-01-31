@@ -723,6 +723,8 @@
       for (let [, child] of Object.entries(provider.children)) {
         if ('bingMapsKey' in child) {
           child.layer = L.tileLayer.bing(child);
+        } else if ('wmsOptions' in child) {
+            child.layer = L.tileLayer.wms(child.url, child.wmsOptions);
         } else {
           child.layer = L.tileLayer(child.url, child);
         }
