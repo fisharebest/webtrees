@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -83,6 +84,7 @@ class AccountEdit implements RequestHandlerInterface
             });
 
         $show_delete_option = $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) !== '1';
+        $show_2fa = Site::getPreference('SHOW_2FA_OPTION') === '1';
         $timezone_ids       = DateTimeZone::listIdentifiers();
         $timezones          = array_combine($timezone_ids, $timezone_ids);
         $title              = I18N::translate('My account');
@@ -93,6 +95,7 @@ class AccountEdit implements RequestHandlerInterface
             'languages'            => $languages->all(),
             'my_individual_record' => $my_individual_record,
             'show_delete_option'   => $show_delete_option,
+            'show_2fa'             => $show_2fa,
             'timezones'            => $timezones,
             'title'                => $title,
             'tree'                 => $tree,

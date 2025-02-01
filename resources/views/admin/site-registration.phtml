@@ -71,6 +71,21 @@ use Fisharebest\Webtrees\Site;
             </div>
         </div>
     </fieldset>
+    
+    <!-- ALLOW USERS TO SET UP 2FA -->
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-3">
+            <?= /* I18N: A configuration setting */ I18N::translate('Allow user
+ to turn on or off two-factor authentication from My Account page') ?>
+        </legend>
+        <div class="col-sm-9">
+            <?= view('components/radios-inline', ['name' => 'SHOW_2FA_OPTION', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('SHOW_2FA_OPTION')]) ?>
+            <div class="form-text">
+            </div>
+        </div>
+    </fieldset>
+
+
 
     <div class="row mb-3">
         <div class="offset-sm-3 col-sm-9">
