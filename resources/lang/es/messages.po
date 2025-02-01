@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-12-05 18:08+0000\n"
+"PO-Revision-Date: 2025-02-02 18:31+0000\n"
 "Last-Translator: Hernan Javier Lopez <hernan.lopez@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -5904,7 +5904,7 @@ msgstr "Mantener privacidad para los muertos que"
 #. I18N: “External files” are stored on other computers
 #: resources/views/admin/media.phtml:45
 msgid "External files"
-msgstr "Erchivos externos"
+msgstr "Archivos externos"
 
 #: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:96
 #: app/CustomTags/Gedcom7.php:111 app/CustomTags/Gedcom7.php:129
