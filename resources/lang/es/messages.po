@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-12-05 18:08+0000\n"
+"PO-Revision-Date: 2025-02-02 18:31+0000\n"
 "Last-Translator: Hernan Javier Lopez <hernan.lopez@gmail.com>\n"
 "Language-Team: Spanish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/es/>\n"
@@ -6024,7 +6024,7 @@ msgstr "Mantener privacidad para los muertos que"
 #. I18N: “External files” are stored on other computers
 #: resources/views/admin/media.phtml:45
 msgid "External files"
-msgstr "Erchivos externos"
+msgstr "Archivos externos"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
