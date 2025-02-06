@@ -135,6 +135,7 @@ class RegisterAction implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_CONTACT_METHOD, MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL);
         $user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comments);
         $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
+        $user->setPreference(UserInterface::PREF_IS_STATUS_MFA, '0');
         $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '');
         $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, '0');

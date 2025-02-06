@@ -319,6 +319,7 @@ class UserService
             'real_name' => $real_name,
             'email'     => $email,
             'password'  => password_hash($password, PASSWORD_DEFAULT),
+            'secret'    => '',
         ]);
 
         $user_id = DB::lastInsertId();
