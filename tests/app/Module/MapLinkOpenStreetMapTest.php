@@ -24,10 +24,8 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 
 #[CoversClass(MapLinkOpenStreetMap::class)]
-#[CoversTrait(ModuleMapLinkTrait::class)]
 class MapLinkOpenStreetMapTest extends TestCase
 {
     public function testNoCoordinates(): void

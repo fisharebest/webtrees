@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageTrait;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 
 use function array_reverse;
 
@@ -39,7 +38,6 @@ use function array_reverse;
 #[CoversClass(LanguageEnglishGreatBritain::class)]
 #[CoversClass(LanguageEnglishUnitedStates::class)]
 #[CoversClass(LanguageFrench::class)]
-#[CoversTrait(ModuleLanguageTrait::class)]
 class RelationshipNamesTest extends TestCase
 {
     protected static bool $uses_database = true;
