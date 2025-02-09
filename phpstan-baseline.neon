@@ -2125,6 +2125,12 @@ parameters:
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
+			message: '#^Parameter \#4 \$sort_columns of method Fisharebest\\Webtrees\\Services\\DatatablesService\:\:handleQuery\(\) expects array\<Illuminate\\Database\\Query\\Expression\<string\>\|string\>, array\{0\: ''multimedia_file_refn'', 2\: Illuminate\\Database\\Query\\Expression\<''descriptive_title \|…''\>\} given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 1
@@ -6775,7 +6781,7 @@ parameters:
 			path: app/Services/AdminService.php
 
 		-
-			message: '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager\:\:table\(\) expects Closure\|Illuminate\\Database\\Query\\Builder\|string, Illuminate\\Database\\Query\\Expression given\.$#'
+			message: '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager\:\:table\(\) expects Closure\|Illuminate\\Database\\Query\\Builder\|string, Illuminate\\Database\\Query\\Expression\<non\-falsy\-string\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/AdminService.php
@@ -7778,6 +7784,12 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$key of method Illuminate\\Support\\Collection\<\*NEVER\*,\*NEVER\*\>\:\:containsStrict\(\) expects \(callable\(never\)\: bool\)\|int\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
+			message: '#^Parameter \#2 \$column of method Fisharebest\\Webtrees\\Services\\SearchService\:\:whereSearch\(\) expects Illuminate\\Database\\Query\\Expression\<string\>\|string, Illuminate\\Database\\Query\\Expression\<non\-falsy\-string\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/SearchService.php

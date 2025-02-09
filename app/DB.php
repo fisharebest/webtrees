@@ -224,6 +224,9 @@ class DB extends Manager
         }
     }
 
+    /**
+     * @return Expression<string>
+     */
     public static function binaryColumn(string $column, string|null $alias = null): Expression
     {
         if (self::driverName() === self::MYSQL) {
