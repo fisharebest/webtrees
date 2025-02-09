@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-02-14 01:15+0000\n"
-"Last-Translator: Purushottam Ghimire <ghimiretree@gmail.com>\n"
-"Language-Team: Nepali <https://translate.webtrees.net/projects/webtrees/webtrees/ne/>\n"
+"PO-Revision-Date: 2025-02-10 19:41+0000\n"
+"Last-Translator: Prakash Acharya <acharyap111@gmail.com>\n"
+"Language-Team: Nepali <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/ne/>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3267,7 +3268,7 @@ msgstr "क्यानाडा"
 #: app/Http/RequestHandlers/SitePreferencesAction.php:61
 #, php-format
 msgid "Cannot write to the folder “%s”."
-msgstr ""
+msgstr "\"%s\" फोल्डरमा लेख्न सकिँदैन।"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:143
@@ -3812,7 +3813,7 @@ msgstr "सामान्य कानुनी विवाह"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "सामान्य विवाह"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -3871,7 +3872,7 @@ msgstr "डाटाबेस सर्भरमा जडान"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr ""
+msgstr "जडान प्रकार"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -12814,7 +12815,7 @@ msgstr "वेबट्रीहरूको लागि विजार्ड 
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "लिङ्ग"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -14538,7 +14539,7 @@ msgstr "प्यारामिटर \"%s\" हराइरहेको छ।
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr ""
+msgstr "\"path\" प्यारामिटर गलत छ।"
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -14764,7 +14765,7 @@ msgstr "निज (व्यक्ति)का कुनै तथ्यहर�
 #: app/Module/AbstractIndividualListModule.php:180
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr ""
+msgstr "\"%s\" थर भएका कुनै पनि व्यक्ति छैनन्"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:326
 msgid "There are no links to this media object."
@@ -15148,7 +15149,7 @@ msgstr "यो पृष्ठले तपाईंलाई सामान्
 
 #: app/Http/Exceptions/HttpGoneException.php:35
 msgid "This page has been deleted."
-msgstr ""
+msgstr "यो पृष्ठ मेटाइएको छ।"
 
 #: app/Module/HitCountFooterModule.php:113
 #, php-format
@@ -17168,7 +17169,7 @@ msgstr "जारी राख्नुहोस्"
 #: app/Elements/GeneatiqueAct.php:40
 msgctxt "NOUN"
 msgid "copy"
-msgstr ""
+msgstr "प्रतिलिपि गर्नुहोस्"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:57
