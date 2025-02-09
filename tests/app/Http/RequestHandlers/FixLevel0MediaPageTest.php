@@ -23,7 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(FixLevel0MediaPageTest::class)]
+#[CoversClass(FixLevel0MediaPage::class)]
 class FixLevel0MediaPageTest extends TestCase
 {
     protected static bool $uses_database = true;

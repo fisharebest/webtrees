@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
-#[CoversClass(FixLevel0MediaDataTest::class)]
+#[CoversClass(FixLevel0MediaData::class)]
 class FixLevel0MediaDataTest extends TestCase
 {
     protected static bool $uses_database = true;
