@@ -28,7 +28,7 @@ class PhoneticTypeTest extends AbstractElementTestCase
     /**
      * Standard tests for all elements.
      */
-    public static function setupBeforeClass(): void
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 

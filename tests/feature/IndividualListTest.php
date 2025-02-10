@@ -54,7 +54,7 @@ class IndividualListTest extends TestCase
         Auth::login($this->user);
         // The default "John Doe" individual will confuse the test results...
         $john_doe = Registry::individualFactory()->make('X1', $this->tree);
-        $this->assertInstanceOf(Individual::class, $john_doe);
+        self::assertInstanceOf(Individual::class, $john_doe);
         $john_doe->deleteRecord();
     }
 
