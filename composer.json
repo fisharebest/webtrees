@@ -86,7 +86,8 @@
         "composer/composer": "2.8.5",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
-        "phpunit/phpunit": "9.6.22"
+        "phpunit/phpunit": "9.6.22",
+        "squizlabs/php_codesniffer": "3.11.3"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
@@ -121,10 +122,9 @@
             "@composer webtrees:psalm"
         ],
         "webtrees:phpcs": [
-            "@composer global require squizlabs/php_codesniffer=* --quiet",
-            "~/.composer/vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
-            "#~/.composer/vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views",
-            "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css"
+            "vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
+            "#vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views",
+            "vendor/bin/phpcs --colors --extensions=css resources/css"
         ],
         "webtrees:phpstan": [
             "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
