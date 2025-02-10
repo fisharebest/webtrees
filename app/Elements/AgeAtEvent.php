@@ -66,7 +66,7 @@ class AgeAtEvent extends AbstractElement
         $canonical = parent::canonical($value);
         $upper     = strtoupper($canonical);
 
-        if (in_array($upper, self::KEYWORDS)) {
+        if (in_array($upper, self::KEYWORDS, true)) {
             return $upper;
         }
 

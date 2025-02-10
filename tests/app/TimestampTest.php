@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use function gregoriantojd;
+use function GregorianToJD;
 use function mktime;
 
 /**
@@ -33,8 +33,8 @@ class TimestampTest extends TestCase
     {
         $timestamp = new Timestamp(mktime(16, 21, 19, 12, 17, 2023), 'UTC', 'en-US');
 
-        $this->assertSame(2460296, gregoriantojd(12, 17, 2023));
-        $this->assertSame(2460296, $timestamp->julianDay());
+        self::assertSame(2460296, GregorianToJD(12, 17, 2023));
+        self::assertSame(2460296, $timestamp->julianDay());
     }
 
     public function testDiffForHumans(): void

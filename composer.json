@@ -128,31 +128,21 @@
         ],
         "webtrees:phpstan": [
             "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze -v --memory-limit=-1",
-            "@composer install --no-dev --quiet"
+            "~/.composer/vendor/bin/phpstan analyze -v --memory-limit=-1"
         ],
         "webtrees:phpstan-baseline": [
             "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon",
-            "@composer install --no-dev --quiet"
+            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
         ],
         "webtrees:psalm": [
             "@composer global require --quiet vimeo/psalm",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/psalm --threads=8 --php-version=8.1",
-            "@composer install --no-dev --quiet"
+            "~/.composer/vendor/bin/psalm --threads=8 --php-version=8.1"
         ],
         "webtrees:test": [
-            "@composer install --quiet",
-            "@php vendor/bin/phpunit",
-            "@composer install --no-dev --quiet"
+            "@php vendor/bin/phpunit"
         ],
         "webtrees:coverage": [
-            "@composer install --dev --quiet",
-            "vendor/bin/phpunit --coverage-html=tests/coverage",
-            "@composer install --no-dev --quiet"
+            "vendor/bin/phpunit --coverage-html=tests/coverage"
         ],
         "webtrees:lang": [
             "Fisharebest\\Webtrees\\Console\\ComposerScripts::languageFiles"

@@ -43,7 +43,7 @@ abstract class AbstractViewTest extends TestCase
         foreach ($this->cartesian($data) as $datum) {
             $html = view($view, $datum);
 
-            $this->validateHTML($html);
+            $this->validateHtml($html);
         }
     }
 

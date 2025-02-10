@@ -221,6 +221,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $status      = UPLOAD_ERR_OK;
         $client_name = basename($filename);
 
+        self::assertIsInt($size);
+
         return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
     }
 
