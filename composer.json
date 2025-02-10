@@ -26,7 +26,10 @@
             "php": "7.4"
         },
         "sort-packages": true,
-        "process-timeout": 3600
+        "process-timeout": 3600,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     },
     "require": {
         "php": "7.4 - 8.4",
@@ -86,6 +89,11 @@
         "composer/composer": "2.8.5",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
+        "phpstan/extension-installer": "1.4.3",
+        "phpstan/phpstan": "2.0.4",
+        "phpstan/phpstan-deprecation-rules": "2.0.1",
+        "phpstan/phpstan-phpunit": "2.0.4",
+        "phpstan/phpstan-strict-rules": "2.0.3",
         "phpunit/phpunit": "9.6.22",
         "squizlabs/php_codesniffer": "3.11.3"
     },
@@ -127,12 +135,10 @@
             "vendor/bin/phpcs --colors --extensions=css resources/css"
         ],
         "webtrees:phpstan": [
-            "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
-            "~/.composer/vendor/bin/phpstan analyze -v --memory-limit=-1"
+            "vendor/bin/phpstan analyze -v --memory-limit=-1"
         ],
         "webtrees:phpstan-baseline": [
-            "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
-            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
+            "vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
         ],
         "webtrees:psalm": [
             "@composer global require --quiet vimeo/psalm",
