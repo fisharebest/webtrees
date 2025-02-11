@@ -5383,18 +5383,6 @@ parameters:
 			path: app/Module/ReviewChangesModule.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:filter\(\) expects \(callable\(mixed, int\)\: bool\)\|null, Closure\(Fisharebest\\Webtrees\\Fact\)\: bool given\.$#'
-			identifier: argument.type
-			count: 4
-			path: app/Module/ShareAnniversaryModule.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:mapWithKeys\(\) expects callable\(mixed, int\)\: array\<string, non\-falsy\-string\>, Closure\(Fisharebest\\Webtrees\\Fact\)\: non\-empty\-array\<string, non\-falsy\-string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/ShareAnniversaryModule.php
-
-		-
 			message: '#^Parameter \#1 \$filter of method Fisharebest\\Webtrees\\GedcomRecord\:\:facts\(\) expects array\<string\>, array given\.$#'
 			identifier: argument.type
 			count: 3
@@ -6883,12 +6871,6 @@ parameters:
 			path: app/Services/ClipboardService.php
 
 		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:map\(\) expects callable\(mixed, int\)\: Fisharebest\\Webtrees\\Fact, Closure\(string\)\: Fisharebest\\Webtrees\\Fact given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Services/ClipboardService.php
-
-		-
 			message: '#^Parameter \#1 \$gedcom of method Fisharebest\\Webtrees\\GedcomRecord\:\:createFact\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -7203,12 +7185,6 @@ parameters:
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Services\\IndividualFactsService\:\:historicFacts\(\) should return Illuminate\\Support\\Collection\<int, Fisharebest\\Webtrees\\Fact\> but returns Illuminate\\Support\\Collection\<int, mixed\>\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Services/IndividualFactsService.php
-
-		-
-			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,mixed\>\:\:filter\(\) expects \(callable\(mixed, int\)\: bool\)\|null, Closure\(Fisharebest\\Webtrees\\Fact\)\: bool given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Services/IndividualFactsService.php
 
