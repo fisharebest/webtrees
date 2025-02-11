@@ -489,7 +489,7 @@ readonly class StatisticsData
 
     public function countHits(string $page_name, string $page_parameter): int
     {
-        return DB::table('hit_counter')
+        return (int) DB::table('hit_counter')
             ->where('gedcom_id', '=', $this->tree->id())
             ->where('page_name', '=', $page_name)
             ->where('page_parameter', '=', $page_parameter)
