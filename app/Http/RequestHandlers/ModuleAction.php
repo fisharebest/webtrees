@@ -69,7 +69,7 @@ class ModuleAction implements RequestHandlerInterface
         $module = $this->module_service->findByName($module_name);
 
         if ($module === null) {
-            throw new HttpNotFoundException('Module ' . $module_name . ' does not exist');
+            throw new HttpNotFoundException('Module ' . e($module_name) . ' does not exist');
         }
 
         // We'll call a function such as Module::getFooBarAction()
@@ -82,7 +82,7 @@ class ModuleAction implements RequestHandlerInterface
         }
 
         if (!method_exists($module, $method)) {
-            throw new HttpNotFoundException('Method ' . $method . '() not found in ' . $module_name);
+            throw new HttpNotFoundException('Method ' . e($method) . '() not found in ' . e($module_name));
         }
 
         return call_user_func([$module, $method], $request);
