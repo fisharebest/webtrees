@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 use function extension_loaded;
+use function ini_get;
 use function ini_parse_quantity;
 use function sys_get_temp_dir;
 

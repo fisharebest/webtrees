@@ -31,7 +31,6 @@ class NoReplyUserTest extends TestCase
     {
         $user = new NoReplyUser();
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('no-reply@localhost', $user->email());
         self::assertSame(Webtrees::NAME, $user->realName());

@@ -13,9 +13,8 @@ use Fisharebest\Webtrees\Place;
 <?php if ($records !== []) : ?>
     <ul class="list-group list-group-flush">
         <?php foreach ($records as $record) : ?>
-            <?php $place = $record['place']; ?>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <?= $place->fullName(true) ?>
+                <?= $record['place']->fullName(true) ?>
                 <span class="badge bg-secondary rounded-pill ms-3"><?= I18N::number($record['count']) ?></span>
             </li>
         <?php endforeach; ?>

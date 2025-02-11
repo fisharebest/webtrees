@@ -47,9 +47,9 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 {
     use ModuleChartTrait;
 
-    public const int X_AXIS_INDIVIDUAL_MAP = 1;
-    public const int X_AXIS_BIRTH_MAP      = 2;
-    public const int X_AXIS_DEATH_MAP          = 3;
+    public const int X_AXIS_INDIVIDUAL_MAP        = 1;
+    public const int X_AXIS_BIRTH_MAP             = 2;
+    public const int X_AXIS_DEATH_MAP             = 3;
     public const int X_AXIS_MARRIAGE_MAP          = 4;
     public const int X_AXIS_BIRTH_MONTH           = 11;
     public const int X_AXIS_DEATH_MONTH           = 12;

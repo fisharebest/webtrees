@@ -113,16 +113,16 @@ class EncodingFactoryTest extends TestCase
         $factory->make('Not the name of a valid encoding');
     }
 
-    public function testList(): void
+    public function testListedEncodingNamesCanBeCreated(): void
     {
         $factory = new EncodingFactory();
 
         $encodings = $factory->list();
 
-        self::assertCount(13, $encodings);
-
         foreach ($encodings as $key => $value) {
-            self::assertInstanceOf(EncodingInterface::class, $factory->make($key));
+            $factory->make($key);
         }
+
+        self::assertCount(13, $encodings);
     }
 }

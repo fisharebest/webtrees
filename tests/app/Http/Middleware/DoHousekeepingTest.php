@@ -30,6 +30,8 @@ use function response;
 #[CoversClass(DoHousekeeping::class)]
 class DoHousekeepingTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testMiddleware(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);

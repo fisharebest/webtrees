@@ -46,7 +46,6 @@ class UserTest extends TestCase
     {
         $user = new User(123, 'username', 'real name', 'email');
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(123, $user->id());
         self::assertSame('email', $user->email());
         self::assertSame('real name', $user->realName());

@@ -30,7 +30,7 @@ $count_individuals = DB::table('individuals')
     ->where('l_type', '=', 'SOUR')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
     ->map(static fn ($n) => (int) $n)
     ->all();
 
@@ -42,7 +42,7 @@ $count_families = DB::table('families')
     ->where('l_type', '=', 'SOUR')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
     ->map(static fn ($n) => (int) $n)
     ->all();
 
@@ -54,7 +54,7 @@ $count_media = DB::table('media')
     ->where('l_type', '=', 'SOUR')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
     ->map(static fn ($n) => (int) $n)
     ->all();
 
@@ -67,7 +67,7 @@ $count_notes = DB::table('other')
     ->where('l_type', '=', 'SOUR')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
-    ->pluck(new Expression('COUNT(*) AS total'), 'l_to')
+    ->pluck(new Expression('COUNT(*)'), 'l_to')
     ->map(static fn ($n) => (int) $n)
     ->all();
 ?>

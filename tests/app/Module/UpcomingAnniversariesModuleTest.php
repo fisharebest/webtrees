@@ -32,7 +32,6 @@ class UpcomingAnniversariesModuleTest extends TestCase
 
         $module = new UpcomingAnniversariesModule($calendar_service);
 
-        self::assertInstanceOf(ModuleBlockInterface::class, $module);
         self::assertTrue($module->loadAjax());
         self::assertTrue($module->isTreeBlock());
         self::assertTrue($module->isUserBlock());
