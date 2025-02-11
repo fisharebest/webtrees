@@ -2377,38 +2377,8 @@ parameters:
 			path: app/Http/RequestHandlers/MergeTreesAction.php
 
 		-
-			message: '#^Binary operation "\." between ''Module '' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Binary operation "\." between string and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Http\\RequestHandlers\\ModuleAction\:\:handle\(\) should return Psr\\Http\\Message\\ResponseInterface but returns mixed\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Parameter \#1 \$haystack of function str_contains expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: '#^Parameter \#1 \$module_name of method Fisharebest\\Webtrees\\Services\\ModuleService\:\:findByName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/ModuleAction.php
 
