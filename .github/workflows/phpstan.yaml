@@ -23,10 +23,6 @@ jobs:
 
       - run: composer validate
 
-      - run: composer global config --no-plugins allow-plugins.phpstan/extension-installer true
-
-      - run: composer global require phpstan/phpstan phpstan/extension-installer phpstan/phpstan-deprecation-rules phpstan/phpstan-strict-rules phpstan/phpstan-phpunit
-
       - run: composer install --no-progress
 
-      - run: ~/.composer/vendor/bin/phpstan analyze --no-progress --level=max app index.php
+      - run: composer webtrees:phpcs
