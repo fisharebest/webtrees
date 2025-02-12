@@ -19,28 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Localization\Locale\LocaleHy;
+use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class MapLocationNominatim - use geonames to find locations
- */
-class MapGeoLocationNominatim extends AbstractModule implements ModuleMapGeoLocationInterface
+class LanguageArmenian extends AbstractModule implements ModuleLanguageInterface
 {
-    use ModuleConfigTrait;
-    use ModuleMapGeoLocationTrait;
-
-    /**
-     * Name of the map provider.
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        return /* I18N: https://nominatim.org */ I18N::translate('Nominatim');
-    }
+    use ModuleLanguageTrait;
 
     public function isEnabledByDefault(): bool
     {
         return false;
+    }
+
+    public function locale(): LocaleInterface
+    {
+        return new LocaleHy();
     }
 }

@@ -23,16 +23,11 @@ use Fisharebest\Localization\Locale\LocaleBg;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-/**
- * Class LanguageBulgarian.
- */
 class LanguageBulgarian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -73,9 +68,6 @@ class LanguageBulgarian extends AbstractModule implements ModuleLanguageInterfac
         ];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleBg();

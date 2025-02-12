@@ -30,38 +30,16 @@ use Illuminate\Database\Query\Builder;
 interface ModuleLanguageInterface extends ModuleInterface
 {
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array;
 
-    /**
-     * Default calendar used by this language.
-     *
-     * @return CalendarInterface
-     */
     public function calendar(): CalendarInterface;
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string;
 
-    /**
-     * Some languages use digraphs and trigraphs.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
     public function initialLetter(string $string): string;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface;
 
     /**

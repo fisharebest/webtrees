@@ -25,11 +25,6 @@ class BirthReportModule extends AbstractModule implements ModuleReportInterface
 {
     use ModuleReportTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         // This text also appears in the .XML file - update both together

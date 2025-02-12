@@ -53,11 +53,6 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface
     private const int LIMIT_LOW  = 10;
     private const int LIMIT_HIGH = 20;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */

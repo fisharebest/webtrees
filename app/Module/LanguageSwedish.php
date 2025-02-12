@@ -24,16 +24,11 @@ use Fisharebest\Localization\Locale\LocaleSv;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageSwedish.
- */
 class LanguageSwedish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -71,9 +66,6 @@ class LanguageSwedish extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleSv();

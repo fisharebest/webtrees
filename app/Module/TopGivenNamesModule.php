@@ -35,11 +35,6 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     private const string DEFAULT_NUMBER = '10';
     private const string DEFAULT_STYLE  = 'table';
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. Top=Most common */

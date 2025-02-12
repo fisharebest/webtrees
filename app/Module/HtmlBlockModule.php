@@ -47,11 +47,6 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $this->html_service = $html_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */

@@ -56,11 +56,6 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
         $this->user_service    = $user_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return I18N::translate('Check for new version');

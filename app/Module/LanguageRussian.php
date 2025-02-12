@@ -23,16 +23,11 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleRu;
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-/**
- * Class LanguageRussian.
- */
 class LanguageRussian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -74,9 +69,6 @@ class LanguageRussian extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleRu();

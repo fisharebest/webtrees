@@ -30,11 +30,6 @@ trait ModuleSidebarTrait
     // The default position for this sidebar.  It can be changed in the control panel.
     protected int $sidebar_order;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     abstract public function title(): string;
 
     /**

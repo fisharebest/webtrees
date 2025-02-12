@@ -88,11 +88,6 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             ->allows(RequestMethodInterface::METHOD_POST);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/chart */

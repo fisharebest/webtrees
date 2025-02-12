@@ -105,11 +105,6 @@ class RedirectLegacyUrlsModule extends AbstractModule
         return I18N::translate('Redirect old URLs from webtrees version 1.');
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module - historic/obsolete URLs. */

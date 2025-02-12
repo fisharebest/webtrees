@@ -23,16 +23,10 @@ use Fisharebest\Localization\Locale\LocaleHr;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageCroatian.
- */
 class LanguageCroatian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleHr();

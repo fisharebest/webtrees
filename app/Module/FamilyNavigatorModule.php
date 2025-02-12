@@ -26,11 +26,6 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 {
     use ModuleSidebarTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/sidebar */

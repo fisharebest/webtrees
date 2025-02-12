@@ -38,21 +38,11 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     use ModuleExternalUrlTrait;
     use ModuleGlobalTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return I18N::translate('Google™ analytics');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

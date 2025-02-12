@@ -50,11 +50,6 @@ abstract class AbstractModule implements ModuleInterface
     {
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return 'Module name goes here';
@@ -155,11 +150,6 @@ abstract class AbstractModule implements ModuleInterface
         return $this->enabled;
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return true;

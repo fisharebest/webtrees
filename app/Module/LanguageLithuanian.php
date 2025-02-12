@@ -24,16 +24,11 @@ use Fisharebest\Localization\Locale\LocaleLt;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Illuminate\Database\Query\Builder;
 
-/**
- * Class LanguageLithuanian.
- */
 class LanguageLithuanian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -74,19 +69,11 @@ class LanguageLithuanian extends AbstractModule implements ModuleLanguageInterfa
         ];
     }
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'YMD';
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleLt();

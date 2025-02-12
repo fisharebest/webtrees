@@ -39,11 +39,6 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
         return I18N::translate('Add styling and scripts to every page.');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -67,11 +62,6 @@ class CustomCssJsModule extends AbstractModule implements ModuleConfigInterface,
         ]);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. */

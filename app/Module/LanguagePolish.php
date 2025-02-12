@@ -23,16 +23,11 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocalePl;
 use Fisharebest\Webtrees\Encodings\UTF8;
 
-/**
- * Class LanguagePolish.
- */
 class LanguagePolish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -73,9 +68,6 @@ class LanguagePolish extends AbstractModule implements ModuleLanguageInterface
         ];
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocalePl();
