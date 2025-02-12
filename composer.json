@@ -26,20 +26,25 @@
             "php": "7.1.8"
         },
         "sort-packages": true,
-        "process-timeout": 3600
+        "process-timeout": 3600,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     },
     "require": {
+        "php": "7.1 - 7.4",
+        "ext-ctype": "*",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
         "ext-intl": "*",
         "ext-json": "*",
+        "ext-mbstring": "*",
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-session": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
-        "ext-zip": "*",
         "aura/router": "3.3.0",
         "doctrine/dbal": "2.13.9",
         "ezyang/htmlpurifier": "4.18.0",
@@ -78,19 +83,27 @@
     },
     "require-dev": {
         "ext-dom": "*",
+        "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "composer/composer": "2.2.25",
         "league/flysystem-memory": "1.0.2",
-        "phpunit/phpunit": "7.5.20"
+        "phpstan/extension-installer": "1.1.0",
+        "phpstan/phpstan": "1.4.10",
+        "phpstan/phpstan-deprecation-rules": "1.0.0",
+        "phpstan/phpstan-phpunit": "1.0.0",
+        "phpstan/phpstan-strict-rules": "1.1.0",
+        "phpunit/phpunit": "7.5.20",
+        "squizlabs/php_codesniffer": "3.11.3"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
         "ext-pdo_mysql": "Required to use MySQL for database storage",
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
         "ext-pdo_pgsql": "Required to use PostgreSQL for database storage",
-        "ext-pdo_sqlsvr": "Required to use SQL Server for database storage",
-        "ext-zlib": "Required to compress HTTP respnses"
+        "ext-pdo_sqlsrv": "Required to use SQL Server for database storage",
+        "ext-zip": "Required to compress downloads and use the upgrade wizard",
+        "ext-zlib": "Required to compress HTTP responses"
     },
     "scripts": {
         "webtrees:build": [
@@ -106,46 +119,22 @@
             "@composer webtrees:phpstan",
             "@composer webtrees:test"
         ],
-        "webtrees:check": [
-            "### PHP-CODE-SNIFFER",
-            "@composer webtrees:phpcs",
-            "### PHPSTAN",
-            "@composer webtrees:phpstan"
-        ],
         "webtrees:phpcs": [
-            "@composer global require squizlabs/php_codesniffer=* --quiet",
-            "~/.composer/vendor/bin/phpcs --standard=PSR12 --colors --extensions=php --exclude=Generic.Files.LineLength index.php app tests",
-            "~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css"
+            "vendor/bin/phpcs --colors --extensions=php   --standard=PSR12 --exclude=Generic.Files.LineLength index.php app tests",
+            "#vendor/bin/phpcs --colors --extensions=phtml --standard=PSR12 --exclude=Generic.Files.LineLength resources/views",
+            "vendor/bin/phpcs --colors --extensions=css resources/css"
         ],
         "webtrees:phpstan": [
-            "@composer global require --quiet phpstan/phpstan=*",
-            "@composer global require --quiet phpstan/extension-installer=*",
-            "@composer global require --quiet phpstan/phpstan-deprecation-rules=*",
-            "@composer global require --quiet phpstan/phpstan-strict-rules=*",
-            "@composer global require --quiet phpstan/phpstan-phpunit=*",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --level=max index.php app",
-            "@composer install --no-dev --quiet"
+            "vendor/bin/phpstan analyze -v --memory-limit=-1"
         ],
         "webtrees:phpstan-baseline": [
-            "@composer global require --quiet phpstan/phpstan=*",
-            "@composer global require --quiet phpstan/extension-installer=*",
-            "@composer global require --quiet phpstan/phpstan-deprecation-rules=*",
-            "@composer global require --quiet phpstan/phpstan-strict-rules=*",
-            "@composer global require --quiet phpstan/phpstan-phpunit=*",
-            "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.neon index.php app",
-            "@composer install --no-dev --quiet"
+            "vendor/bin/phpstan analyze --memory-limit=-1 --generate-baseline=phpstan-baseline.neon"
         ],
         "webtrees:test": [
-            "@composer install --quiet",
-            "@php vendor/bin/phpunit",
-            "@composer install --no-dev --quiet"
+            "vendor/bin/phpunit"
         ],
         "webtrees:coverage": [
-            "@composer install --dev --quiet",
-            "vendor/bin/phpunit --coverage-html=tests/coverage",
-            "@composer install --no-dev --quiet"
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html=tests/coverage"
         ],
         "webtrees:lang": [
             "Fisharebest\\Webtrees\\Console\\ComposerScripts::languageFiles"
@@ -155,7 +144,7 @@
         ],
         "webtrees:po": [
             "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' resources/xml/reports/*.xml",
-            "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.phtml' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=resources/lang/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
+            "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.phtml' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --output=resources/lang/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
             "find resources/xml/reports/ -name '*.xml' -exec mv {}.bak {} \\;",
             "find resources/lang -name '*.po' -exec msgmerge --no-wrap --sort-output --no-fuzzy-matching --quiet --output={} {} resources/lang/webtrees.pot \\;"
         ],
@@ -163,6 +152,13 @@
             "find resources/css -name *.png -exec pngquant --ext .png --force --skip-if-larger --speed 1 {} \\;",
             "find resources/css -name *.png -exec pngcrush -rem allb -brute -reduce {} {} \\;",
             "find resources/css -name *.png -exec optipng -o7 -zm1-9 {} \\;"
+        ],
+        "ci" : [
+            "@composer validate",
+            "@composer install --quiet",
+            "@composer webtrees:test",
+            "@composer webtrees:phpcs",
+            "@composer webtrees:phpstan"
         ]
     },
     "scripts-descriptions": {

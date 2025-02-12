@@ -1,9 +1,19 @@
 includes:
-	- phpstan-baseline.neon
+    - phpstan-baseline.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
 
 parameters:
-    ignoreErrors:
-        - '#^Call to an undefined method Illuminate\\Support\\Fluent::references\(\)\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::[a-zA-Z]+\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::[a-zA-Z]+\(\) expects array\|Closure\|string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager::table\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
+    fileExtensions:
+        - php
+        - phtml
+
+    level: max
+
+    paths:
+        - index.php
+        - app
+        - resources/views
+        - tests
+
+    dynamicConstantNames:
+        - Fisharebest\Webtrees\Webtrees::STABILITY

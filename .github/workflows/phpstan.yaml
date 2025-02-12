@@ -11,11 +11,11 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-latest']
-        php-version: ['7.4']
+        php-version: ['7.1', '7.2', '7.3', '7.4']
       fail-fast: false
 
     steps:
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@master
         with:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
@@ -24,10 +24,6 @@ jobs:
 
       - run: composer validate
 
-      - run: composer global config --no-plugins allow-plugins.phpstan/extension-installer true
-
-      - run: composer global require phpstan/phpstan phpstan/extension-installer phpstan/phpstan-deprecation-rules phpstan/phpstan-strict-rules phpstan/phpstan-phpunit
-
       - run: composer install --no-progress
 
-      - run: ~/.composer/vendor/bin/phpstan analyze --no-progress --level=max app index.php
+      - run: composer webtrees:phpstan

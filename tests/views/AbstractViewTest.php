@@ -37,7 +37,7 @@ abstract class AbstractViewTest extends TestCase
      * Check the view runs without error and generates valid HTML
      *
      * @param string $view
-     * @param array<array<string,array<string,mixed>>  $data
+     * @param array<array<string,array<string,mixed>>>  $data
      */
     protected function doTestView(string $view, array $data): void
     {
@@ -51,7 +51,7 @@ abstract class AbstractViewTest extends TestCase
     /**
      * @param array<string,array<string,mixed>> $input
      *
-     * @return array<array<string,array<string,mixed>>
+     * @return array<array<string,array<string,mixed>>>
      */
     private function cartesian(array $input): array
     {
