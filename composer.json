@@ -17,7 +17,6 @@
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php",
-            "tests/MockGlobalFunctions.php",
             "tests/app/Elements/AbstractElementTestCase.php"
         ]
     },
