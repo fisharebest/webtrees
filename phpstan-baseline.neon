@@ -1351,12 +1351,6 @@ parameters:
 			path: app/Helpers/functions.php
 
 		-
-			message: '#^Strict comparison using \=\=\= between ''\-dev'' and '''' will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
-			count: 1
-			path: app/Helpers/functions.php
-
-		-
 			message: '#^Parameter \#1 \$host of method Psr\\Http\\Message\\UriInterface\:\:withHost\(\) expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
@@ -8325,18 +8319,6 @@ parameters:
 		-
 			message: '#^Parameter \#4 \$streamFactory of class Nyholm\\Psr7Server\\ServerRequestCreator constructor expects Psr\\Http\\Message\\StreamFactoryInterface, mixed given\.$#'
 			identifier: argument.type
-			count: 1
-			path: app/Webtrees.php
-
-		-
-			message: '#^Strict comparison using \!\=\= between ''\-dev'' and '''' will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: app/Webtrees.php
-
-		-
-			message: '#^Ternary operator condition is always true\.$#'
-			identifier: ternary.alwaysTrue
 			count: 1
 			path: app/Webtrees.php
 
