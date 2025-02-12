@@ -89,6 +89,7 @@ class BadBotBlocker implements MiddlewareInterface
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
+        'ImagesiftBot',
         'internet-measurement', // Driftnet
         'IonCrawl',
         'Java', // Crawler library used by many bots
