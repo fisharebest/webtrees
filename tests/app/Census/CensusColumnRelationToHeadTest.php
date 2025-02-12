@@ -27,14 +27,18 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusColumnRelationToHeadTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     public function testNull(): void
     {
-        $individual = $this->createMock(Individual::class);
+        $individual1 = $this->createMock(Individual::class);
+        $individual2 = $this->createMock(Individual::class);
 
         $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnRelationToHead($census, '', '');
 
-        self::assertSame('-', $column->generate($individual, $individual));
+        self::assertSame('-', $column->generate($individual1, $individual1));
+        self::assertSame('', $column->generate($individual1, $individual2));
     }
 }
