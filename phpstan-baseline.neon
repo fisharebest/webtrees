@@ -8797,12 +8797,6 @@ parameters:
 			path: app/Statistics.php
 
 		-
-			message: '#^Invalid array key type Fisharebest\\Webtrees\\mixed\.$#'
-			identifier: array.invalidKey
-			count: 10
-			path: app/Statistics.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Statistics\:\:callBlock\(\) should return string but returns mixed\.$#'
 			identifier: return.type
 			count: 1
@@ -8845,7 +8839,7 @@ parameters:
 			path: app/Statistics.php
 
 		-
-			message: '#^Parameter \#1 \$value of function e expects Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|string\|null, Fisharebest\\Webtrees\\mixed given\.$#'
+			message: '#^Parameter \#1 \$value of function e expects Illuminate\\Contracts\\Support\\DeferringDisplayableValue\|Illuminate\\Contracts\\Support\\Htmlable\|string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 10
 			path: app/Statistics.php
@@ -8860,12 +8854,6 @@ parameters:
 			message: '#^Parameter \#2 \$request of method Fisharebest\\Webtrees\\Services\\UserService\:\:contactLink\(\) expects Psr\\Http\\Message\\ServerRequestInterface, mixed given\.$#'
 			identifier: argument.type
 			count: 2
-			path: app/Statistics.php
-
-		-
-			message: '#^Parameter \$key of anonymous function has invalid type Fisharebest\\Webtrees\\mixed\.$#'
-			identifier: class.notFound
-			count: 10
 			path: app/Statistics.php
 
 		-
@@ -8985,12 +8973,6 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$year\.$#'
 			identifier: property.notFound
-			count: 1
-			path: app/StatisticsData.php
-
-		-
-			message: '#^Anonymous function should return int but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: app/StatisticsData.php
 
@@ -9159,7 +9141,7 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 24
+			count: 25
 			path: app/StatisticsData.php
 
 		-
@@ -9357,12 +9339,6 @@ parameters:
 		-
 			message: '#^Parameter \#3 \$value of method Illuminate\\Database\\Query\\Builder\:\:having\(\) expects string\|null, int given\.$#'
 			identifier: argument.type
-			count: 1
-			path: app/StatisticsData.php
-
-		-
-			message: '#^Parameter \$count of anonymous function has invalid type Fisharebest\\Webtrees\\mixed\.$#'
-			identifier: class.notFound
 			count: 1
 			path: app/StatisticsData.php
 

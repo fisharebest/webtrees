@@ -525,7 +525,7 @@ class Statistics
     public function commonGiven(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi>',
             ])
             ->implode(I18N::$list_separator);
@@ -534,7 +534,7 @@ class Statistics
     public function commonGivenFemale(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi>',
             ])
             ->implode(I18N::$list_separator);
@@ -567,7 +567,7 @@ class Statistics
     public function commonGivenFemaleTotals(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('F', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
             ])
             ->implode(I18N::$list_separator);
@@ -592,7 +592,7 @@ class Statistics
     public function commonGivenMale(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi>',
             ])
             ->implode(I18N::$list_separator);
@@ -625,7 +625,7 @@ class Statistics
     public function commonGivenMaleTotals(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('M', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
             ])
             ->implode(I18N::$list_separator);
@@ -634,7 +634,7 @@ class Statistics
     public function commonGivenOther(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi>',
             ])
             ->implode(I18N::$list_separator);
@@ -667,7 +667,7 @@ class Statistics
     public function commonGivenOtherTotals(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('X', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
             ])
             ->implode(I18N::$list_separator);
@@ -684,7 +684,7 @@ class Statistics
     public function commonGivenTotals(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('ALL', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
             ])
             ->implode(I18N::$list_separator);
@@ -693,7 +693,7 @@ class Statistics
     public function commonGivenUnknown(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi>',
             ])
             ->implode(I18N::$list_separator);
@@ -726,7 +726,7 @@ class Statistics
     public function commonGivenUnknownTotals(string $threshold = '1', string $limit = '10'): string
     {
         return $this->data->commonGivenNames('U', (int) $threshold, (int) $limit)
-            ->mapWithKeys(static fn (int $value, mixed $key): array => [
+            ->mapWithKeys(static fn (int $value, $key): array => [
                 $key => '<bdi>' . e($key) . '</bdi> (' . I18N::number($value) . ')',
             ])
             ->implode(I18N::$list_separator);

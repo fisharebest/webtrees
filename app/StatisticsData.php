@@ -108,7 +108,7 @@ class StatisticsData
         $rows = $query
             ->groupBy(['n_givn'])
             ->pluck(new Expression('COUNT(DISTINCT n_id)'), 'n_givn')
-            ->map(static fn (mixed $count): int => (int) $count);
+            ->map(static fn ($count): int => (int) $count);
 
 
         $given_names = [];
