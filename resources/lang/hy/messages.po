@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: Armenian (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-12 22:03+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Armenian <https://translate.webtrees.net/projects/webtrees/webtrees/hy/>\n"
+"PO-Revision-Date: 2025-02-14 14:41+0000\n"
+"Last-Translator: Artak Gaboyan <gaboyan@mail.ru>\n"
+"Language-Team: Armenian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/hy/>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: app/Age.php:90 app/Elements/AgeAtEvent.php:100
 #: app/Statistics/Repository/FamilyRepository.php:358
@@ -22,8 +24,8 @@ msgstr ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s տարի"
+msgstr[1] "%s տարիներ"
 
 #: app/Age.php:94 app/Elements/AgeAtEvent.php:101
 #: app/Statistics/Repository/FamilyRepository.php:353
@@ -32,8 +34,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ամիս"
+msgstr[1] "%s ամիսներ"
 
 #: app/Age.php:98 app/Elements/AgeAtEvent.php:103
 #: app/Statistics/Repository/FamilyRepository.php:347
@@ -41,31 +43,31 @@ msgstr[1] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s օր"
+msgstr[1] "%s օր"
 
 #: app/Auth.php:226
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Այս ընտանիքը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
 #: app/Auth.php:255 app/Auth.php:318 app/Auth.php:434 app/Auth.php:521
 #: app/Auth.php:550
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Այս գրանցումը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
 #: app/Auth.php:285
 msgid ""
 "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Այս անձը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
 #: app/Auth.php:347
 msgid ""
 "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Այս մեդիա օբյեկտը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
 #: app/Auth.php:376 app/Auth.php:405
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Այս նշումը բազայում չկա, կամ դուք այն դիտելու իրավունք չունեք։"
 
 #: app/Auth.php:463
 msgid ""
