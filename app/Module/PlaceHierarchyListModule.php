@@ -90,11 +90,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             ->get(static::class, static::ROUTE_URL, $this);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/list */

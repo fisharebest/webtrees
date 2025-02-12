@@ -200,11 +200,6 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             ->filter(GedcomRecord::accessFilter());
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. Tasks that need further research. */

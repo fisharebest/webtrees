@@ -17,30 +17,12 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Module;
-
-use Fisharebest\Webtrees\I18N;
+namespace Fisharebest\Webtrees;
 
 /**
- * Class MapLocationNominatim - use geonames to find locations
+ * Class MockGlobalFunctions
  */
-class MapGeoLocationNominatim extends AbstractModule implements ModuleMapGeoLocationInterface
+abstract class MockGlobalFunctions
 {
-    use ModuleConfigTrait;
-    use ModuleMapGeoLocationTrait;
-
-    /**
-     * Name of the map provider.
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        return /* I18N: https://nominatim.org */ I18N::translate('Nominatim');
-    }
-
-    public function isEnabledByDefault(): bool
-    {
-        return false;
-    }
+    abstract public function iniGet(string $varname): string;
 }

@@ -26,16 +26,11 @@ use Fisharebest\Webtrees\Encodings\UTF8;
 use function mb_substr;
 use function str_starts_with;
 
-/**
- * Class LanguageNorwegianBokmal.
- */
 class LanguageNorwegianBokmal extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
@@ -73,13 +68,6 @@ class LanguageNorwegianBokmal extends AbstractModule implements ModuleLanguageIn
         ];
     }
 
-    /**
-     * Some languages use digraphs and trigraphs.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
     public function initialLetter(string $string): string
     {
         if (str_starts_with($string, 'AA')) {
@@ -89,19 +77,11 @@ class LanguageNorwegianBokmal extends AbstractModule implements ModuleLanguageIn
         return mb_substr($string, 0, 1);
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleNb();

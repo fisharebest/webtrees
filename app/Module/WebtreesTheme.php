@@ -28,11 +28,6 @@ class WebtreesTheme extends AbstractModule implements ModuleThemeInterface
 {
     use ModuleThemeTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return I18N::translate('webtrees');

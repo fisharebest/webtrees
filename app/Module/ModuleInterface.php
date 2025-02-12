@@ -63,18 +63,8 @@ interface ModuleInterface
      */
     public function isEnabled(): bool;
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string;
 
     /**

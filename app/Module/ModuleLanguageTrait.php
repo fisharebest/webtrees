@@ -31,11 +31,10 @@ use function mb_substr;
 use function normalizer_normalize;
 
 /**
- * Trait ModuleLanguageEventsTrait - default implementation of ModuleLanguageInterface.
+ * Default implementation of ModuleLanguageInterface.
  */
 trait ModuleLanguageTrait
 {
-    /** @var array<string,string> */
     private array $combining_diacritics = [
         "\u{0300}" => '',
         "\u{0301}" => '',
@@ -152,42 +151,50 @@ trait ModuleLanguageTrait
     ];
 
     /**
-     * Phone-book ordering of letters.
-     *
      * @return array<int,string>
      */
     public function alphabet(): array
     {
-        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        return [
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            'T',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+        ];
     }
 
-    /**
-     * Default calendar used by this language.
-     *
-     * @return CalendarInterface
-     */
     public function calendar(): CalendarInterface
     {
         return new GregorianCalendar();
     }
 
-    /**
-     * One of: 'DMY', 'MDY', 'YMD'.
-     *
-     * @return string
-     */
     public function dateOrder(): string
     {
         return 'DMY';
     }
 
-    /**
-     * Some languages use digraphs and trigraphs.
-     *
-     * @param string $string
-     *
-     * @return string
-     */
     public function initialLetter(string $string): string
     {
         return mb_substr($string, 0, 1);
@@ -195,18 +202,19 @@ trait ModuleLanguageTrait
 
     /**
      * Ignore diacritics on letters - unless the language considers them a different letter.
-     *
-     * @param string $text
-     *
-     * @return string
      */
     public function normalize(string $text): string
     {
         // Decompose any combined characters.
-        $text = normalizer_normalize($text, Normalizer::FORM_KD);
+        $decomposed = normalizer_normalize($text, Normalizer::FORM_KD);
+
+        if ($decomposed === false) {
+            // Invalid UTF8? INTL library not installed?
+            $decomposed = $text;
+        }
 
         // Keep any significant diacritics.
-        $text = strtr($text, $this->normalizeExceptions());
+        $text = strtr($decomposed, $this->normalizeExceptions());
 
         // Remove other diacritics.
         return strtr($text, $this->combining_diacritics);
@@ -222,11 +230,6 @@ trait ModuleLanguageTrait
         return [];
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return  $this->locale()->endonym();
@@ -242,9 +245,6 @@ trait ModuleLanguageTrait
         return I18N::translate('Language') . ' — ' . $this->title() . ' — ' . $this->locale()->languageTag();
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleEnUs();

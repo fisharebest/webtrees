@@ -108,11 +108,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         return I18N::translate('Generate sitemap files for search engines.');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;
@@ -136,11 +131,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         ]);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps */

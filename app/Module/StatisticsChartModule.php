@@ -76,11 +76,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
     private const DAYS_IN_YEAR = 365.25;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/chart */

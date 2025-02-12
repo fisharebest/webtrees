@@ -4909,86 +4909,92 @@ parameters:
 			path: app/Module/InteractiveTree/TreeView.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageAfrikaans\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageAfrikaans.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageAlbanian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageAlbanian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageArabic\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageArabic.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageArmenian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Module/LanguageArmenian.php
+
+		-
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageBasque\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageBasque.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageBosnian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageBosnian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageBulgarian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageBulgarian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageCatalan\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageCatalan.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageChineseSimplified\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageChineseSimplified.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageChineseTraditional\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageChineseTraditional.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageCroatian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageCroatian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageCzech\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageCzech.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageDanish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageDanish.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageDivehi\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageDivehi.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageDutch\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageDutch.php
 
@@ -5023,230 +5029,230 @@ parameters:
 			path: app/Module/LanguageEnglishUnitedStates.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageEnglishUnitedStates\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageEnglishUnitedStates.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageEstonian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageEstonian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageFaroese\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageFaroese.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageFarsi\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageFarsi.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageFinnish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageFinnish.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageFrench\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageFrench.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageGalician\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageGalician.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageGeorgian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageGeorgian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageGerman\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageGerman.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageGreek\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageGreek.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageHebrew\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageHebrew.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageHindi\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageHindi.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageHungarian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageHungarian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageIcelandic\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageIcelandic.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageIndonesian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageIndonesian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageItalian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageItalian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageJapanese\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageJapanese.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageJavanese\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageJavanese.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageKazhak\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageKazhak.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageKorean\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageKorean.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageKurdish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageKurdish.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageLatvian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageLatvian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageLingala\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageLingala.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageLithuanian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageLithuanian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageMalay\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageMalay.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageMaori\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageMaori.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageMarathi\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageMarathi.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageNepalese\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageNepalese.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageNorwegianBokmal\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageNorwegianBokmal.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageNorwegianNynorsk\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageNorwegianNynorsk.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageOccitan\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageOccitan.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguagePolish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguagePolish.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguagePortuguese\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguagePortuguese.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguagePortugueseBrazil\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguagePortugueseBrazil.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageRomanian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageRomanian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageRussian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageRussian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSerbian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageSerbian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSerbianLatin\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageSerbianLatin.php
 
@@ -5257,110 +5263,110 @@ parameters:
 			path: app/Module/LanguageSlovakian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Module/LanguageSlovakian.php
-
-		-
 			message: '#^Parameter \#2 \$cousins of closure expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 3
 			path: app/Module/LanguageSlovakian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSlovakian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Module/LanguageSlovakian.php
+
+		-
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSlovenian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageSlovenian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSpanish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageSpanish.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSundanese\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageSundanese.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSwahili\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageSwahili.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageSwedish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageSwedish.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageTagalog\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageTagalog.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageTamil\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageTamil.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageTatar\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageTatar.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageThai\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageThai.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageTurkish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageTurkish.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageUkranian\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageUkranian.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageUrdu\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageUrdu.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageUzbek\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageUzbek.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageVietnamese\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageVietnamese.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageWelsh\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageWelsh.php
 
 		-
-			message: '#^Parameter \#1 \$str of function strtr expects string, string\|false given\.$#'
-			identifier: argument.type
+			message: '#^Property Fisharebest\\Webtrees\\Module\\LanguageYiddish\:\:\$combining_diacritics type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: app/Module/LanguageYiddish.php
 

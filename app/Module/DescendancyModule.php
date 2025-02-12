@@ -48,11 +48,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
         $this->search_service = $search_service;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module/sidebar */

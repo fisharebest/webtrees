@@ -29,21 +29,11 @@ class USPresidents extends AbstractModule implements ModuleHistoricEventsInterfa
 {
     use ModuleHistoricEventsTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return 'United States presidents 🇺🇸';
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

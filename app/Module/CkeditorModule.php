@@ -32,11 +32,6 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
     // Location of our installation of CK editor.
     public const CKEDITOR_PATH = 'ckeditor-4.15.1-custom/';
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com */

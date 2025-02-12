@@ -22,16 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleHi;
 use Fisharebest\Localization\Locale\LocaleInterface;
 
-/**
- * Class LanguageHindi.
- */
 class LanguageHindi extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
 
-    /**
-     * @return LocaleInterface
-     */
     public function locale(): LocaleInterface
     {
         return new LocaleHi();

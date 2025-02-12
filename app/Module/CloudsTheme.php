@@ -32,11 +32,6 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
         genealogyMenu as baseGenealogyMenu;
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a theme. */

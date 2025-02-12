@@ -32,11 +32,6 @@ class FactSourcesReportModule extends AbstractModule implements ModuleReportInte
     /** @var int The default access level for this module.  It can be changed in the control panel. */
     protected int $access_level = Auth::PRIV_USER;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         // This text also appears in the .XML file - update both together

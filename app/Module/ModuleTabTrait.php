@@ -40,11 +40,6 @@ trait ModuleTabTrait
     // The default position for this tab.  It can be changed in the control panel.
     protected int $tab_order;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     abstract public function title(): string;
 
     /**

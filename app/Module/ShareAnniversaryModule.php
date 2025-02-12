@@ -63,11 +63,6 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             ->get(static::class, static::ROUTE_URL, $this);
     }
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return I18N::translate('Share the anniversary of an event');

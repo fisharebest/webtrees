@@ -29,21 +29,11 @@ class LowCountriesRulers extends AbstractModule implements ModuleHistoricEventsI
 {
     use ModuleHistoricEventsTrait;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return 'Machthebbers van de Lage Landen 🇳🇱';
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

@@ -82,11 +82,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         return I18N::translate('OpenRouteService');
     }
 
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
     public function isEnabledByDefault(): bool
     {
         return false;

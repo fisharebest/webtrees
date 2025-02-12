@@ -40,11 +40,6 @@ use function view;
  */
 class CensusAssistantModule extends AbstractModule
 {
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         /* I18N: Name of a module */

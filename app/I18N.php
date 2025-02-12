@@ -357,9 +357,6 @@ class I18N
         return self::$locale->languageTag();
     }
 
-    /**
-     * @return LocaleInterface
-     */
     public static function locale(): LocaleInterface
     {
         return self::$locale;

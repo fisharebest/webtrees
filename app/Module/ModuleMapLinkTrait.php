@@ -29,11 +29,6 @@ use function e;
  */
 trait ModuleMapLinkTrait
 {
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
     public function title(): string
     {
         return $this->providerName() . ' — ' . I18N::translate('Map link');
