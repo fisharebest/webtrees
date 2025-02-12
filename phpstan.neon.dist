@@ -1,5 +1,6 @@
 includes:
     - phpstan-baseline.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
 
 parameters:
     fileExtensions:
@@ -13,6 +14,9 @@ parameters:
         - app
         - resources/views
         - tests
+
+    dynamicConstantNames:
+        - Fisharebest\Webtrees\Webtrees::STABILITY
 
     ignoreErrors:
         - '#^Call to an undefined method PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber::with\(\)\.$#'

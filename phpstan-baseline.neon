@@ -1441,12 +1441,6 @@ parameters:
 			path: app/Helpers/functions.php
 
 		-
-			message: '#^Strict comparison using \=\=\= between ''\-dev'' and '''' will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
-			count: 1
-			path: app/Helpers/functions.php
-
-		-
 			message: '#^Parameter \#1 \$host of method Psr\\Http\\Message\\UriInterface\:\:withHost\(\) expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
@@ -9563,18 +9557,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Validator.php
-
-		-
-			message: '#^Left side of && is always true\.$#'
-			identifier: booleanAnd.leftAlwaysTrue
-			count: 1
-			path: app/Webtrees.php
-
-		-
-			message: '#^Strict comparison using \!\=\= between ''\-dev'' and '''' will always evaluate to true\.$#'
-			identifier: notIdentical.alwaysTrue
-			count: 1
-			path: app/Webtrees.php
 
 		-
 			message: '#^Parameter \#1 \$url of function parse_url expects string, mixed given\.$#'
