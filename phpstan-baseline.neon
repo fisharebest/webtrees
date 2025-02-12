@@ -8007,7 +8007,7 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 22
+			count: 23
 			path: app/StatisticsData.php
 
 		-
@@ -8036,12 +8036,6 @@ parameters:
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:countFirstMarriagesByMonth\(\) should return array\<string, int\> but returns array\<int\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/StatisticsData.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\StatisticsData\:\:countHits\(\) should return int but returns mixed\.$#'
 			identifier: return.type
 			count: 1
 			path: app/StatisticsData.php
