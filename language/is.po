@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-28 13:58+0000\n"
+"PO-Revision-Date: 2025-02-14 14:41+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -14026,7 +14026,7 @@ msgstr ""
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr "Skilaboð var ekki sent."
+msgstr "Skilaboðin voru ekki send."
 
 #: message.php:191
 #, php-format
@@ -14772,7 +14772,7 @@ msgstr "Þessi gagnahlutur er ekki tengdur við neina aðra skrá."
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
-msgstr "Þetta skilaboð var sent á meðan eftirfarandi veffang var skoðað: "
+msgstr "Þessi skilaboð voru send á meðan eftirfarandi veffang var skoðað: "
 
 #: message.php:113
 #, php-format
