@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2025-01-28 13:58+0000\n"
+"PO-Revision-Date: 2025-02-14 14:41+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -14641,7 +14641,7 @@ msgstr ""
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:92
 #: app/Http/RequestHandlers/MessageAction.php:105
 msgid "The message was not sent."
-msgstr "Skilaboð var ekki sent."
+msgstr "Skilaboðin voru ekki send."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:82
 #: app/Http/RequestHandlers/ContactAction.php:154
@@ -15385,7 +15385,7 @@ msgstr ""
 #: resources/views/emails/message-user-html.phtml:34
 #: resources/views/emails/message-user-text.phtml:24
 msgid "This message was sent while viewing the following URL: "
-msgstr "Þetta skilaboð var sent á meðan eftirfarandi veffang var skoðað: "
+msgstr "Þessi skilaboð voru send á meðan eftirfarandi veffang var skoðað: "
 
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "This must be at least six characters long. It is case-sensitive."
