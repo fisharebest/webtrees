@@ -61,8 +61,13 @@ class BadBotBlocker implements MiddlewareInterface
         'admantx',
         'Adsbot',
         'AhrefsBot',
+        'AI2Bot',
+        'Ai2Bot-Dolma',
         'Amazonbot', // Until it understands crawl-delay and noindex / nofollow
         'AntBot', // Aggressive crawler
+        'anthropic-ai',
+        'Applebot',
+        'Applebot-Extended',
         'AspiegelBot',
         'Awario', // Brand management
         'Barkrowler', // Crawler for babbar.tech
@@ -71,32 +76,53 @@ class BadBotBlocker implements MiddlewareInterface
         'CCBot', // Used to train a number of LLMs
         'CensysInspect', // Vulnerability scanner
         'ChatGPT-User', // Used by ChatGPT during operation
+        'Claude-Web',
         'ClaudeBot', // Collects training data for LLMs
+        'cohere-ai',
+        'cohere-training-data-crawler',
+        'Crawlspace',
         'DataForSeoBot', // https://dataforseo.com/dataforseo-bot
         'DotBot',
+        'Diffbot',
+        'DuckAssistBot',
         'Expanse', // Another pointless crawler
         'FacebookBot', // Collects training data for Facebook's LLM translator.
+        'facebookexternalhit',
         'fidget-spinner-bot', // Agressive crawler
         'Foregenix', // Vulnerability scanner
         'FriendlyCrawler', // Collects training data for LLMs
         'Go-http-client', // Crawler library used by many bots
         'Google-Extended', // Collects training data for Google Bard
+        'GoogleOther',
+        'GoogleOther-Image',
+        'GoogleOther-Video',
         'GPTBot', // Collects training data for ChatGPT
         'Grapeshot',
         'Honolulu-bot', // Aggressive crawer, no info available
         'ia_archiver',
+        'iaskspider/2.0',
+        'ICC-Crawler',
         'ImagesiftBot',
+        'img2dataset',
         'internet-measurement', // Driftnet
         'IonCrawl',
+        'ISSCyberRiskCrawler',
         'Java', // Crawler library used by many bots
+        'Kangaroo Bot',
         'linabot', // Aggressive crawer, no info available
         'Linguee',
         'MegaIndex.ru',
+        'Meta-ExternalAgent',
+        'Meta-ExternalFetcher',
         'MJ12bot',
         'netEstate NE',
         'OAI-SearchBot', // Collects training data for LLMs
+        'omgili',
         'Omgilibot', // Collects training data for LLMs
+        'omiglibot',
+        'PanguBot',
         'panscient',
+        'PerplexityBot',
         'PetalBot',
         'phxbot', // Badly written crawler
         'proximic',
@@ -104,15 +130,22 @@ class BadBotBlocker implements MiddlewareInterface
         'Scrapy', // Scraping tool
         'SeekportBot', // Pretends to be a search engine - but isn't
         'SemrushBot',
+        'SemrushBot-OCOB',
+        'SemrushBot-SWA',
         'serpstatbot',
         'SEOkicks',
+        'Sidetrade indexer bot',
         'SiteKiosk',
         'test-bot', // Agressive crawler
         'TinyTestBot',
+        'Timpibot',
         'Turnitin',
         'wp_is_mobile', // Nothing to do with wordpress
+        'VelenPublicWebCrawler',
+        'Webzio-Extended',
         'XoviBot',
         'YisouSpider',
+        'YouBot',
         'ZoominfoBot',
     ];
 
