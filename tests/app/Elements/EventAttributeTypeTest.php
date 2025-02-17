@@ -25,9 +25,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(EventAttributeType::class)]
 class EventAttributeTypeTest extends AbstractElementTestCase
 {
-    /**
-     * Standard tests for all elements.
-     */
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();

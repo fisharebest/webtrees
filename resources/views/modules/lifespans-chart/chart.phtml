@@ -3,14 +3,22 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Individual;
 
 /**
- * @var string        $dir
- * @var int           $end_year
- * @var array<object> $lifespans
- * @var int           $max_rows
- * @var int           $start_year
- * @var string        $subtitle
+ * @var string $dir
+ * @var int    $end_year
+ * @var array<object{
+ *      background: string,
+ *      birth_year: int,
+ *      death_year: int,
+ *      id: string,
+ *      individual: Individual,
+ *      row: int
+ *  }>         $lifespans
+ * @var int    $max_rows
+ * @var int    $start_year
+ * @var string $subtitle
  */
 
 ?>
@@ -45,4 +53,3 @@ use Fisharebest\Webtrees\Gedcom;
     </div>
     <?php endforeach ?>
 </div>
-

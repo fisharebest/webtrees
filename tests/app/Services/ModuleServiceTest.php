@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Webtrees;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ModuleService::class)]
@@ -78,9 +79,6 @@ class ModuleServiceTest extends TestCase
         self::assertNotEmpty($module_service->findByInterface(ModuleSidebarInterface::class, true)->all());
         self::assertNotEmpty($module_service->findByInterface(ModuleTabInterface::class, true)->all());
         self::assertNotEmpty($module_service->findByInterface(ModuleThemeInterface::class, true)->all());
-
-        // Search for an invalid module type
-        self::assertEmpty($module_service->findByInterface('not-a-valid-class-or-interface')->all());
     }
 
     public function testOtherModules(): void

@@ -31,7 +31,7 @@ $menus = $module_service->findByComponent(ModuleChartInterface::class, $individu
 foreach ($individual->spouseFamilies() as $family) {
     $menus->push(new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url()));
     $spouse  = $family->spouse($individual);
-    if ($spouse && $spouse->canShow()) {
+    if ($spouse instanceof Individual && $spouse->canShow()) {
         $menus->push(new Menu($spouse->fullName(), $spouse->url()));
     }
     foreach ($family->children() as $child) {
@@ -92,7 +92,7 @@ $id = Registry::idFactory()->id();
 ?>
 
 <div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-wt-chart-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
-    <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) : ?>
+    <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES') === '1') : ?>
         <div class="wt-chart-box-thumbnail float-start me-1">
             <?= $individual->displayImage(40, 50, 'crop', ['class' => 'wt-chart-box-thumbnail']) ?>
         </div>

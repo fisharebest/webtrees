@@ -104,9 +104,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /**
-     * @param Individual $individual
-     *
-     * @return array<object>
+     * @return array<object{block_id:int,title:string,story_body:string}>
      */
     private function getStoriesForIndividual(Individual $individual): array
     {

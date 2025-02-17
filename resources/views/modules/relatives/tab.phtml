@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\RelationshipService;
 use Illuminate\Support\Collection;
 
 /**
@@ -18,6 +19,7 @@ use Illuminate\Support\Collection;
  * @var int                    $fam_access_level
  * @var Individual             $individual
  * @var Collection<int,Family> $parent_families
+ * @var RelationshipService    $relationship_service
  * @var Collection<int,Family> $spouse_families
  * @var Collection<int,Family> $step_child_families
  * @var Collection<int,Family> $step_parent_families
@@ -44,44 +46,48 @@ use Illuminate\Support\Collection;
 <!-- Parents -->
 <?php foreach ($parent_families as $family) : ?>
     <?= view('modules/relatives/family', [
-        'individual'       => $individual,
-        'family'           => $family,
-        'type'             => 'FAMC',
-        'label'            => $individual->getChildFamilyLabel($family),
-        'fam_access_level' => $fam_access_level,
+        'individual'           => $individual,
+        'family'               => $family,
+        'type'                 => 'FAMC',
+        'label'                => $individual->getChildFamilyLabel($family),
+        'fam_access_level'     => $fam_access_level,
+        'relationship_service' => $relationship_service,
     ]) ?>
 <?php endforeach ?>
 
 <!-- step-parents -->
 <?php foreach ($step_parent_families as $family) : ?>
     <?= view('modules/relatives/family', [
-        'individual'       => $individual,
-        'family'           => $family,
-        'type'             => 'FAMC',
-        'label'            => $individual->getStepFamilyLabel($family),
-        'fam_access_level' => $fam_access_level,
+        'individual'           => $individual,
+        'family'               => $family,
+        'type'                 => 'FAMC',
+        'label'                => $individual->getStepFamilyLabel($family),
+        'fam_access_level'     => $fam_access_level,
+        'relationship_service' => $relationship_service,
     ]) ?>
 <?php endforeach ?>
 
 <!-- spouses -->
 <?php foreach ($spouse_families as $family) : ?>
     <?= view('modules/relatives/family', [
-        'individual'       => $individual,
-        'family'           => $family,
-        'type'             => 'FAMS',
-        'label'            => $individual->getSpouseFamilyLabel($family),
-        'fam_access_level' => $fam_access_level,
+        'individual'           => $individual,
+        'family'               => $family,
+        'type'                 => 'FAMS',
+        'label'                => $individual->getSpouseFamilyLabel($family),
+        'fam_access_level'     => $fam_access_level,
+        'relationship_service' => $relationship_service,
     ]) ?>
 <?php endforeach ?>
 
 <!-- step-children -->
 <?php foreach ($step_child_families as $family) : ?>
     <?= view('modules/relatives/family', [
-        'individual'       => $individual,
-        'family'           => $family,
-        'type'             => 'FAMS',
-        'label'            => $family->fullName(),
-        'fam_access_level' => $fam_access_level,
+        'individual'           => $individual,
+        'family'               => $family,
+        'type'                 => 'FAMS',
+        'label'                => $family->fullName(),
+        'fam_access_level'     => $fam_access_level,
+        'relationship_service' => $relationship_service,
     ]) ?>
 <?php endforeach ?>
 

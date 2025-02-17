@@ -29,9 +29,6 @@ class DefaultUserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();

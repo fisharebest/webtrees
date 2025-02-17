@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h1><?= $title ?></h1>
 
-<?php if ($xrefs > 0) : ?>
+<?php if ($tree1 !== null && $tree2 !== null && $xrefs > 0) : ?>
     <p>
         <?= I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ?>
     </p>

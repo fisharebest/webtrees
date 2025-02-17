@@ -33,7 +33,7 @@ class UploadMediaActionTest extends TestCase
     public function testResponseIsOK(): void
     {
         $media_file_service = new MediaFileService(php_service: new PhpService());
-        $handler            = new UploadMediaAction(media_file_service: $media_file_service);
+        $handler            = new UploadMediaAction($media_file_service);
         $request            = self::createRequest();
         $response           = $handler->handle($request);
 

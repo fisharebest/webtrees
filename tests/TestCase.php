@@ -59,9 +59,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     protected static bool $uses_database = false;
 
-    /**
-     * Create an SQLite in-memory database for testing
-     */
     private static function createTestDatabase(): void
     {
         DB::connect(
@@ -129,9 +126,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return $request;
     }
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -164,9 +158,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         self::createRequest();
     }
 
-    /**
-     * Things to run after every test
-     */
     protected function tearDown(): void
     {
         if (static::$uses_database) {
@@ -291,7 +282,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @param array<int,mixed> $parameters
 
-     * @return Callback
+     * @return Callback<mixed>
      */
     protected static function withConsecutive(array $parameters): Callback
     {

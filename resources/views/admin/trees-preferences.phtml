@@ -568,7 +568,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name */ I18N::translate(
                 'Show the %1$s %2$s parts of a place name.',
                 view('components/select', ['name' => 'SHOW_PEDIGREE_PLACES_SUFFIX', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX'), 'options' => ['0' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'), '1' => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last')]]),
-                view('components/select-number', ['name' => 'SHOW_PEDIGREE_PLACES', 'selected' => $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'options' => range(1, 9)])
+                view('components/select-number', ['name' => 'SHOW_PEDIGREE_PLACES', 'selected' => (int) $tree->getPreference('SHOW_PEDIGREE_PLACES'), 'options' => range(1, 9)])
             ) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Abbreviate place names” configuration setting */ I18N::translate('Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.') ?>

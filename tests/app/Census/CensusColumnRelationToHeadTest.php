@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(CensusColumnRelationToHead::class)]
@@ -33,6 +34,11 @@ class CensusColumnRelationToHeadTest extends TestCase
     {
         $individual1 = $this->createMock(Individual::class);
         $individual2 = $this->createMock(Individual::class);
+
+        $individual1->method('childFamilies')->willReturn(new Collection());
+        $individual1->method('spouseFamilies')->willReturn(new Collection());
+        $individual2->method('childFamilies')->willReturn(new Collection());
+        $individual2->method('spouseFamilies')->willReturn(new Collection());
 
         $census = $this->createMock(CensusInterface::class);
 

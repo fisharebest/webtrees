@@ -27,9 +27,6 @@ class CensusTest extends AbstractElementTestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Standard tests for all elements.
-     */
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();

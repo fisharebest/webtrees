@@ -49,7 +49,7 @@ class HandleExceptionsTest extends TestCase
         Registry::container()->set(ModuleService::class, $module_service);
 
         $request    = self::createRequest();
-        $middleware = new HandleExceptions(php_service: new PhpService(), tree_service: $tree_service);
+        $middleware = new HandleExceptions(new PhpService(), $tree_service);
         $response   = $middleware->process($request, $handler);
 
         self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());

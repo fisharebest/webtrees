@@ -73,7 +73,7 @@ class RedirectModulePhpTest extends TestCase
         $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects($this->once())
-            ->method('findByinterface')
+            ->method('findByInterface')
             ->with(PedigreeMapModule::class)
             ->willReturn(new Collection([$module]));
 

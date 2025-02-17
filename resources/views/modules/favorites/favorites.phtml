@@ -2,15 +2,22 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 
 /**
  * @var int                    $block_id
  * @var bool                   $can_edit
- * @var Collection<int,object> $favorites
+ * @var array<int,object{
+ *     favorite_id:string,
+ *     favorite_type:string,
+ *     url:string|null,
+ *     note:string|null,
+ *     title:string|null,
+ *     record:GedcomRecord|null
+ * }> $favorites
  * @var string                 $module_name
  * @var Tree                   $tree
  */

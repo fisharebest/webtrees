@@ -25,9 +25,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(FamilyTreeFavoritesModule::class)]
 class FamilyTreeFavoritesModuleTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(FamilyTreeFavoritesModule::class));

@@ -41,9 +41,6 @@ class FixDuplicateLinksTest extends TestCase
 
     protected bool $restore_session_user = false;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -58,9 +55,6 @@ class FixDuplicateLinksTest extends TestCase
         Auth::login($user);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -72,18 +66,12 @@ class FixDuplicateLinksTest extends TestCase
         unset($this->fixDuplicateLinks, $this->tree);
     }
 
-    /**
-     * Test the module returns a title and a description
-     */
     public function testModuleMetadata(): void
     {
         self::assertNotEmpty($this->fixDuplicateLinks->title());
         self::assertNotEmpty($this->fixDuplicateLinks->description());
     }
 
-    /**
-     * Test the trait's recordsToFix method
-     */
     public function testRecordsToFix(): void
     {
         $records = $this->fixDuplicateLinks->recordsToFix($this->tree, []);
@@ -96,9 +84,6 @@ class FixDuplicateLinksTest extends TestCase
         self::assertCount(0, $records);
     }
 
-    /**
-     * Test the doesRecordNeedUpdate method on a negative and positive test
-     */
     public function testDoesRecordNeedUpdate(): void
     {
         $family = $this->tree->createFamily("0 @@ FAM\n1 HUSB @X1@\n1 CHIL @X2@");
@@ -108,9 +93,6 @@ class FixDuplicateLinksTest extends TestCase
         self::assertTrue($this->fixDuplicateLinks->doesRecordNeedUpdate($family, []));
     }
 
-    /**
-     * Test the preview of the update
-     */
     public function testPreviewUpdate(): void
     {
         $family = $this->tree->createFamily("0 @@ FAM\n1 HUSB @X1@\n1 CHIL @X2@\n1 CHIL @X2@");
@@ -121,9 +103,6 @@ class FixDuplicateLinksTest extends TestCase
         );
     }
 
-    /**
-     * Test the update of the record
-     */
     public function testUpdateRecord(): void
     {
         $family = $this->tree->createFamily("0 @@ FAM\n1 HUSB @X1@\n1 CHIL @X2@\n1 CHIL @X2@");

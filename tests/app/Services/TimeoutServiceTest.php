@@ -34,7 +34,7 @@ class TimeoutServiceTest extends TestCase
 
         $now = 1500000000.0;
 
-        $timeout_service = new TimeoutService(php_service: $php_service, start_time: $now);
+        $timeout_service = new TimeoutService($php_service, $now);
 
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
@@ -46,7 +46,7 @@ class TimeoutServiceTest extends TestCase
 
         $now = 1500000000.0;
 
-        $timeout_service = new TimeoutService(php_service: $php_service, start_time: $now);
+        $timeout_service = new TimeoutService($php_service, $now);
 
         $time_factory = $this->createMock(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 60.0);
@@ -62,7 +62,7 @@ class TimeoutServiceTest extends TestCase
 
         $now = Registry::timeFactory()->now();
 
-        $timeout_service = new TimeoutService(php_service: $php_service, start_time: $now);
+        $timeout_service = new TimeoutService($php_service, $now);
 
         $time_factory = $this->createMock(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 10.0);
@@ -75,7 +75,7 @@ class TimeoutServiceTest extends TestCase
     {
         $now = Registry::timeFactory()->now();
 
-        $timeout_service = new TimeoutService(php_service: new PhpService(), start_time: $now);
+        $timeout_service = new TimeoutService(new PhpService(), $now);
 
         $time_factory = $this->createMock(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 1.4);
@@ -88,7 +88,7 @@ class TimeoutServiceTest extends TestCase
     {
         $now = Registry::timeFactory()->now();
 
-        $timeout_service = new TimeoutService(php_service: new PhpService(), start_time: $now);
+        $timeout_service = new TimeoutService(new PhpService(), $now);
 
         $time_factory = $this->createMock(TimeFactoryInterface::class);
         $time_factory->method('now')->willReturn($now + 1.6);

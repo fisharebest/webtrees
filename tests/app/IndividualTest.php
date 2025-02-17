@@ -24,9 +24,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(Individual::class)]
 class IndividualTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Individual::class));

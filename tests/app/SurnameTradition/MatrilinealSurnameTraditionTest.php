@@ -30,9 +30,6 @@ class MatrilinealSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
 
-    /**
-     * Prepare the environment for these tests
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,17 +37,11 @@ class MatrilinealSurnameTraditionTest extends TestCase
         $this->surname_tradition = new MatrilinealSurnameTradition();
     }
 
-    /**
-     * Test whether surnames are used
-     */
     public function testSurnames(): void
     {
         self::assertSame('//', $this->surname_tradition->defaultName());
     }
 
-    /**
-     * Test new child names
-     */
     public function testNewChildNames(): void
     {
         $father_fact = $this->createMock(Fact::class);
@@ -81,9 +72,6 @@ class MatrilinealSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new child names
-     */
     public function testNewChildNamesWithSpfx(): void
     {
         $father_fact = $this->createMock(Fact::class);
@@ -104,9 +92,6 @@ class MatrilinealSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new child names
-     */
     public function testNewChildNamesWithNoParentsNames(): void
     {
         self::assertSame(
@@ -115,9 +100,6 @@ class MatrilinealSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new parent names
-     */
     public function testNewParentNames(): void
     {
         $fact = $this->createMock(Fact::class);
@@ -142,9 +124,6 @@ class MatrilinealSurnameTraditionTest extends TestCase
         );
     }
 
-    /**
-     * Test new spouse names
-     */
     public function testNewSpouseNames(): void
     {
         $fact = $this->createMock(Fact::class);

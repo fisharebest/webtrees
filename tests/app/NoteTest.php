@@ -26,9 +26,6 @@ class NoteTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Note::class));

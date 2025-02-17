@@ -26,9 +26,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AbstractCensusColumn::class)]
 class CensusOfDeutschlandNL1867Test extends TestCase
 {
-    /**
-     * Test the census place and date
-     */
     public function testPlaceAndDate(): void
     {
         $census = new CensusOfDeutschlandNL1867();
@@ -37,9 +34,6 @@ class CensusOfDeutschlandNL1867Test extends TestCase
         self::assertSame('03 DEC 1867', $census->censusDate());
     }
 
-    /**
-     * Test the census columns
-     */
     public function testColumns(): void
     {
         $census  = new CensusOfDeutschlandNL1867();

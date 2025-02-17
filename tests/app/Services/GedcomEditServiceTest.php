@@ -155,7 +155,6 @@ class GedcomEditServiceTest extends TestCase
     }
 
     /**
-     * Data provider for new family facts tests
      * @return array<array<string|array<string>>>
      */
     public static function newFamilyFactsData(): array
@@ -169,7 +168,6 @@ class GedcomEditServiceTest extends TestCase
     }
 
     /**
-     * Data provider for new individual facts tests
      * @return array<array<string|array<string>>>
      */
     public static function newIndividualFactsData(): array

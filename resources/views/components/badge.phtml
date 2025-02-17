@@ -10,11 +10,13 @@ use Fisharebest\Webtrees\I18N;
  * @var int|null    $total
  */
 
+$total ??= null;
+
 ?>
 
 <span class="badge bg-<?= $context ?? 'secondary' ?>">
         <?= I18N::number($count) ?>
-    <?php if (($total ?? $count) > $count) : ?>
+    <?php if ($total !== null && $total > $count) : ?>
         / <?= I18N::number($total) ?>
     <?php endif ?>
 </span>

@@ -33,8 +33,8 @@ class AustrianPresidentsTest extends TestCase
 
         $individual = $this->createMock(Individual::class);
 
-        foreach ($module->historicEventsAll(language_tag: 'de') as $gedcom) {
-            $fact = new Fact(gedcom: $gedcom, parent: $individual, id: 'test');
+        foreach ($module->historicEventsAll('de') as $gedcom) {
+            $fact = new Fact($gedcom, $individual, 'test');
             self::assertTrue($fact->date()->isOK(), 'No date found in: ' . $gedcom);
         }
     }

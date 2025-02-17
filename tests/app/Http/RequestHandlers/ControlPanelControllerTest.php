@@ -49,12 +49,12 @@ class ControlPanelControllerTest extends TestCase
         $server_check_service  = new ServerCheckService(php_service: new PhpService());
         $timeout_service       = new TimeoutService(php_service: new PhpService());
         $gedcom_import_service = new GedcomImportService();
-        $tree_service          = new TreeService(gedcom_import_service: $gedcom_import_service);
-        $upgrade_service       = new UpgradeService(timeout_service: $timeout_service);
+        $tree_service          = new TreeService($gedcom_import_service);
+        $upgrade_service       = new UpgradeService($timeout_service);
         $user_service          = new UserService();
         $handler               = new ControlPanel(
-            admin_service: $admin_service,
-            housekeeping_service: $housekeeping_service,
+            $admin_service,
+            $housekeeping_service,
             message_service:  $message_service,
             module_service:  $module_service,
             server_check_service:  $server_check_service,
@@ -63,7 +63,7 @@ class ControlPanelControllerTest extends TestCase
             user_service:  $user_service,
         );
         $request               = self::createRequest();
-        $response              = $handler->handle(request: $request);
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

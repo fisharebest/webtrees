@@ -11,6 +11,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
+ * @var string|null                $caption
  * @var Collection<int,Repository> $repositories
  * @var Tree                       $tree
  */
@@ -30,7 +31,7 @@ $count_sources = DB::table('sources')
     ->where('l_file', '=', $tree->id())
     ->groupBy(['l_to'])
     ->pluck(new Expression('COUNT(*)'), 'l_to')
-    ->map(static fn ($n) => (int) $n)
+    ->map(static fn (string $n): int => (int) $n)
     ->all();
 ?>
 
