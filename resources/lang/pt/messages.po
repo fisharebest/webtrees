@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-01-30 17:58+0000\n"
+"PO-Revision-Date: 2025-02-18 03:17+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/pt/>\n"
@@ -3862,7 +3862,7 @@ msgstr "Data de conclusão"
 
 #: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr "Confirmação"
+msgstr "Crisma / Confirmação"
 
 #: resources/views/setup/step-3-database-type.phtml:38
 msgid "Connection to database server"
@@ -4533,7 +4533,7 @@ msgstr "Data do batizado"
 
 #: app/Gedcom.php:626 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr "Data da confirmação"
+msgstr "Data do crisma / confirmação"
 
 #: app/Gedcom.php:635
 msgid "Date of cremation"
@@ -5349,7 +5349,7 @@ msgstr "Divórcio"
 
 #: app/Gedcom.php:455
 msgid "Divorce filed"
-msgstr "Pedido de Divórcio"
+msgstr "Pedido de divórcio"
 
 #: app/Statistics/Google/ChartDivorce.php:108
 #: resources/views/modules/statistics-chart/family-totals.phtml:70
@@ -11255,7 +11255,7 @@ msgstr "Local do batizado"
 
 #: app/Gedcom.php:627 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
-msgstr "Local da confirmação"
+msgstr "Local do crisma / confirmação"
 
 #: app/Gedcom.php:636
 msgid "Place of cremation"
