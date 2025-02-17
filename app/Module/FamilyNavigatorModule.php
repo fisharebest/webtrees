@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\RelationshipService;
 
 /**
  * Class FamilyNavigatorModule
@@ -75,6 +77,9 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
      */
     public function getSidebarContent(Individual $individual): string
     {
-        return view('modules/family_nav/sidebar', ['individual' => $individual]);
+        return view('modules/family_nav/sidebar', [
+            'individual' => $individual,
+            'relationship_service' => Registry::container()->get(RelationshipService::class),
+        ]);
     }
 }

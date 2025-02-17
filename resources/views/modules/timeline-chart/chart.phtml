@@ -213,7 +213,7 @@ use Fisharebest\Webtrees\Individual;
 
                 dbox.style.top = (boxmean + bheight / 3) + "px";
             }
-            // the new X posistion moves the same as the y position
+            // the new X position moves the same as the y position
             if (textDirection === 'rtl') {
                 newx = dbox.offsetRight + Math.abs(newy - boxmean);
             } else {
@@ -284,6 +284,7 @@ use Fisharebest\Webtrees\Individual;
         <?= e($topyear) ?>
     </div>
 
+    <?php $placements = [] ?>
     <?php foreach ($indifacts as $factcount => $event) : ?>
         <?php
         $desc     = $event->value();
@@ -325,19 +326,21 @@ use Fisharebest\Webtrees\Individual;
             echo 'right: 3px;">';
         }
 
-        $col = array_search($event->record(), $individuals, true);
-        if ($col === false) {
+        if ($event->record() instanceof Family) {
             // Marriage event - use the color of the husband
             $col = array_search($event->record()->husband(), $individuals, true);
-        }
-        if ($col === false) {
-            // Marriage event - use the color of the wife
-            $col = array_search($event->record()->wife(), $individuals, true);
+
+            if ($col === false) {
+                // Marriage event - use the color of the wife
+                $col = array_search($event->record()->wife(), $individuals, true);
+            }
+        } else {
+            $col = array_search($event->record(), $individuals, true);
         }
         $col %= 6;
         echo '</td><td class="person' . $col . '">';
         if (count($individuals) > 6) {
-            // We only have six colours, so show naes if more than this number
+            // We only have six colours, so show names if more than this number
             echo $event->record()->fullName() . ' — ';
         }
         $record = $event->record();

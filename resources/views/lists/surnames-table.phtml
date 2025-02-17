@@ -45,9 +45,10 @@ use Fisharebest\Webtrees\Tree;
     </thead>
 
     <tbody>
+    <?php $n = 0 ?>
         <?php foreach ($surnames as $surn => $surns) : ?>
             <tr>
-                <td data-sort="<?= sprintf('x%07d', $n = 1 + ($n ?? 0)) ?>">
+                <td data-sort="<?= sprintf('x%07d', ++$n) ?>">
                     <!-- Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc. -->
                     <?php foreach (array_keys($surns) as $surname) : ?>
                         <?php if ($module instanceof AbstractIndividualListModule) : ?>

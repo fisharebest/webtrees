@@ -295,6 +295,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * Workaround for removal of withConsecutive in phpunit 10.
      *
      * @param array<int,mixed> $parameters
+     *
+     * @return Callback<mixed>
      */
     protected static function withConsecutive(array $parameters): Callback
     {

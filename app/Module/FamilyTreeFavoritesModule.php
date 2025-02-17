@@ -124,13 +124,21 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @param Tree $tree
      *
-     * @return array<object>
+     * @return array<int,object{
+     *      favorite_id:string,
+     *      favorite_type:string,
+     *      url:string|null,
+     *      note:string|null,
+     *      title:string|null,
+     *      record:GedcomRecord|null
+     *  }>
      */
     public function getFavorites(Tree $tree): array
     {
         return DB::table('favorite')
             ->where('gedcom_id', '=', $tree->id())
             ->whereNull('user_id')
+            ->select(['favorite_id', 'xref', 'favorite_type', 'url', 'title', 'note'])
             ->get()
             ->map(static function (object $row) use ($tree): object {
                 if ($row->xref !== null) {

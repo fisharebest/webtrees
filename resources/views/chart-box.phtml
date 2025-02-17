@@ -11,12 +11,9 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Illuminate\Support\Collection;
 
 /**
- * @var Individual|null   $individual
- * @var ModuleService     $module_service
- * @var Collection|Menu[] $menus
+ * @var Individual|null  $individual
  */
 
 if ($individual === null) {
@@ -27,14 +24,14 @@ if ($individual === null) {
 
 $module_service = app(ModuleService::class);
 
-$menus = $module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user())->map(static function (ModuleChartInterface $module) use ($individual): ?Menu {
-    return $module->chartBoxMenu($individual);
-})->filter();
+$menus = $module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user())
+    ->map(static fn (ModuleChartInterface $module): ?Menu => $module->chartBoxMenu($individual))
+    ->filter();
 
 foreach ($individual->spouseFamilies() as $family) {
     $menus->push(new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->url()));
     $spouse  = $family->spouse($individual);
-    if ($spouse && $spouse->canShow()) {
+    if ($spouse instanceof Individual && $spouse->canShow()) {
         $menus->push(new Menu($spouse->fullName(), $spouse->url()));
     }
     foreach ($family->children() as $child) {
@@ -80,7 +77,6 @@ $exclude = [
     'INDI:_WT_OBJE_SORT'
 ];
 
-/** @var Collection|Fact[] $all_facts */
 $all_facts = $individual->facts();
 foreach ($individual->spouseFamilies() as $family) {
     foreach ($family->facts() as $fact) {
@@ -88,9 +84,7 @@ foreach ($individual->spouseFamilies() as $family) {
     }
 }
 
-$all_facts = $all_facts->filter(static function (Fact $fact) use ($exclude): bool {
-    return !in_array($fact->tag(), $exclude, true);
-});
+$all_facts = $all_facts->filter(static fn (Fact $fact): bool => !in_array($fact->tag(), $exclude, true));
 
 $all_facts = Fact::sortFacts($all_facts);
 
@@ -98,7 +92,7 @@ $id = Registry::idFactory()->id();
 ?>
 
 <div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-wt-chart-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
-    <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) : ?>
+    <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES') === '1') : ?>
         <div class="wt-chart-box-thumbnail float-start me-1">
             <?= $individual->displayImage(40, 50, 'crop', ['class' => 'wt-chart-box-thumbnail']) ?>
         </div>
@@ -157,41 +151,36 @@ $id = Registry::idFactory()->id();
         <div class="wt-chart-box-fact small">
             <?php
             $opt_tags = preg_split('/\W/', $individual->tree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
-            // Show BIRT or equivalent event
+            preg_match_all('/\w+/', $individual->tree()->getPreference('CHART_BOX_TAGS'), $matches);
+            $opt_tags = array_filter($matches[0], static fn (string $tag): bool => !in_array($tag, Gedcom::BIRTH_EVENTS, true) && !in_array($tag, Gedcom::DEATH_EVENTS, true));
 
+            // Show BIRT or equivalent event
             foreach (Gedcom::BIRTH_EVENTS as $birttag) {
                 if (!in_array($birttag, $opt_tags, true)) {
                     $event = $individual->facts([$birttag])->first();
+
                     if ($event instanceof Fact) {
                         echo $event->summary();
                         break;
                     }
                 }
             }
-            // Show optional events (before death)
+
+            // Show optional events
             foreach ($opt_tags as $key => $tag) {
-                if (!in_array($tag, Gedcom::DEATH_EVENTS, true)) {
+                if (!in_array($tag, Gedcom::BIRTH_EVENTS + Gedcom::DEATH_EVENTS, true)) {
                     $event = $individual->facts([$tag])->first();
+
                     if ($event instanceof Fact) {
                         echo $event->summary();
-                        unset($opt_tags[$key]);
                     }
                 }
             }
+
             // Show DEAT or equivalent event
             foreach (Gedcom::DEATH_EVENTS as $deattag) {
                 $event = $individual->facts([$deattag])->first();
-                if ($event instanceof Fact) {
-                    echo $event->summary();
-                    if (in_array($deattag, $opt_tags, true)) {
-                        unset($opt_tags[array_search($deattag, $opt_tags, true)]);
-                    }
-                    break;
-                }
-            }
-            // Show remaining optional events (after death)
-            foreach ($opt_tags as $tag) {
-                $event = $individual->facts([$tag])->first();
+
                 if ($event instanceof Fact) {
                     echo $event->summary();
                 }

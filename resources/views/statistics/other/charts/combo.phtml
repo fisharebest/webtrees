@@ -5,9 +5,10 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var array<mixed> $chart_options
- * @var array<array> $data
- * @var string       $language
+ * @var array<int,array<string|array<string,int|bool|string>>> $chart_options
+ * @var string                                                 $chart_title
+ * @var array<array{0:string,1:float,2:float,3:float}>         $data
+ * @var string                                                 $language
  */
 
 $id   = 'google-chart-' . bin2hex(random_bytes(8));
@@ -17,7 +18,7 @@ $name = 'callback_' . bin2hex(random_bytes(12));
 <?php if (count($data) === 1) : ?>
     <?= I18N::translate('This information is not available.') ?>
 <?php else : ?>
-    <div id="<?= $id ?>" title="<?= $chart_title ?? '' ?>"></div>
+    <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
     <script>
 
     let <?= $name ?> = function () {

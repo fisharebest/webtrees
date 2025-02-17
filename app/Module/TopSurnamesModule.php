@@ -110,7 +110,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 $this->binaryColumn('n_surname'),
             ]);
 
-        /** @var array<array<int>> $top_surnames */
+        /** @var array<non-empty-array<int>> $top_surnames */
         $top_surnames = [];
 
         foreach ($query->get() as $row) {

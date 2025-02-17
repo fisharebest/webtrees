@@ -14,9 +14,7 @@ use Illuminate\Support\Collection;
  * @var bool       $spouses
  */
 
-$children = $individual->spouseFamilies()->map(static function (Family $family): Collection {
-    return $family->children();
-})->flatten();
+$children = $individual->spouseFamilies()->map(static fn (Family $family): Collection => $family->children())->flatten();
 
 ?>
 

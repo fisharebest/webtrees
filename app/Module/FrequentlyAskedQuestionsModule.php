@@ -130,7 +130,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             return redirect(route(ControlPanel::class));
         }
 
-        $faqs = $this->faqsForTree($tree);
+        $faqs = $this->faqsForTree($tree)->all();
 
         $min_block_order = (int) DB::table('block')
             ->where('module_name', '=', $this->name())
@@ -385,9 +385,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
-            ->filter(static function (object $faq): bool {
-                return $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true);
-            });
+            ->filter(static fn (object $faq): bool => $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true))
+            ->all();
 
         return $this->viewResponse('modules/faq/show', [
             'faqs'  => $faqs,
@@ -399,7 +398,14 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Collection<int,object>
+     * @return Collection<int,object{
+     *     block_id: int,
+     *     block_order: int,
+     *     gedcom_id: int,
+     *     header: string,
+     *     faqbody: string,
+     *     languages: string
+     * }>
      */
     private function faqsForTree(Tree $tree): Collection
     {

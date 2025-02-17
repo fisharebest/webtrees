@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
@@ -12,13 +13,22 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
+use stdClass;
 
 /**
  * @var int                    $block_id
  * @var string                 $context
  * @var ModuleInterface        $module
  * @var Tree                   $tree
- * @var Collection<int,object> $messages
+ * @var Collection<int,object{
+ *     message_id:string,
+ *     sender:string,
+ *     ip_address:string,
+ *     user_id:string,
+ *     subject:string,
+ *     body:string,
+ *     created:TimestampInterface
+ * }&stdClass>                 $messages
  * @var Collection<int,User>   $users
  * @var UserService            $user_service
  */

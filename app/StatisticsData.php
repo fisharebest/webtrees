@@ -1439,7 +1439,7 @@ class StatisticsData
     }
 
     /**
-     * @return array<array<string,int|Family>>
+     * @return array<array{family:Family,count:int}>
      */
     private function topTenGrandFamilyQuery(int $limit): array
     {
@@ -1629,7 +1629,7 @@ class StatisticsData
     }
 
     /**
-     * @return array<array<string,mixed>>
+     * @return array<array{family:Family,count:int}>
      */
     private function topTenFamilyQuery(int $limit): array
     {

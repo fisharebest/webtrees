@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+/**
+ * @var string $GOOGLE_WEBMASTER_ID
+ */
+
 use Fisharebest\Webtrees\I18N;
 
 ?>
@@ -12,7 +16,7 @@ use Fisharebest\Webtrees\I18N;
         <span class="visually-hidden">Google Webmaster Tools</span>
     </label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" value="<?= e($GOOGLE_WEBMASTER_ID ?? '') ?>" maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*">
+        <input type="text" class="form-control" id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" value="<?= e($GOOGLE_WEBMASTER_ID) ?>" maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*">
     </div>
 </div>
 

@@ -23,6 +23,7 @@ use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
@@ -81,10 +82,16 @@ class PendingChangesService
     }
 
     /**
-     * @param Tree $tree
-     * @param int  $n
-     *
-     * @return array<array<object>>
+     * @return array<array<object{
+     *     xref:string,
+     *     change_id:string,
+     *     old_gedcom:string|null,
+     *     new_gedcom:string|null,
+     *     change_time:TimestampInterface,
+     *     record:GedcomRecord,
+     *     user_name:string,
+     *     real_name:string
+     * }>>
      */
     public function pendingChanges(Tree $tree, int $n): array
     {
