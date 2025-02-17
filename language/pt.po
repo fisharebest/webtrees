@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-29 19:58+0000\n"
+"PO-Revision-Date: 2025-02-18 03:17+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -3989,7 +3989,7 @@ msgstr "Confirmar senha"
 #. I18N: gedcom tag CONF
 #: app/GedcomTag.php:310 modules_v3/missing_facts_report/report.xml:19
 msgid "Confirmation"
-msgstr "Confirmação"
+msgstr "Crisma / Confirmação"
 
 #: setup.php:275
 msgid "Connection to database server"
@@ -4516,7 +4516,7 @@ msgstr "Data do batizado"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
-msgstr "Data da confirmação"
+msgstr "Data do crisma / confirmação"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
@@ -5341,7 +5341,7 @@ msgstr "Divórcio"
 #. I18N: gedcom tag DIVF
 #: app/GedcomTag.php:378
 msgid "Divorce filed"
-msgstr "Pedido de Divórcio"
+msgstr "Pedido de divórcio"
 
 #: app/Stats.php:3637 statistics.php:224
 msgid "Divorces by century"
@@ -11039,7 +11039,7 @@ msgstr "Local do batizado"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr "Local da confirmação"
+msgstr "Local do crisma / confirmação"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
