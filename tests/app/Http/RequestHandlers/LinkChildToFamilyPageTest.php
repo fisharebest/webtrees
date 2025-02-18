@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LinkChildToFamilyPage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkChildToFamilyPage
  */
 class LinkChildToFamilyPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\LinkChildToFamilyPage::class));
+        self::assertTrue(class_exists(LinkChildToFamilyPage::class));
     }
 }

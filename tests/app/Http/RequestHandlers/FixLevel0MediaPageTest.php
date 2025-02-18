@@ -23,8 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test FixLevel0MediaPageTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaPageTest
  */
 class FixLevel0MediaPageTest extends TestCase

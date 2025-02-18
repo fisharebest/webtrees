@@ -25,8 +25,6 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test harness for the class SearchService
- *
  * @covers \Fisharebest\Webtrees\Services\SearchService
  */
 class SearchServiceTest extends TestCase

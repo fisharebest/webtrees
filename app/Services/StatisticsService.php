@@ -2,10 +2,10 @@
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Capsule\Manager as DB;
 
 use function strip_tags;
 

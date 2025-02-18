@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ColorGenerator
- *
  * @covers \Fisharebest\Webtrees\ColorGenerator
  */
 class ColorGeneratorTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\ColorGenerator::class));
+        self::assertTrue(class_exists(ColorGenerator::class));
     }
 }

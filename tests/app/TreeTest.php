@@ -35,15 +35,12 @@ use function preg_replace;
 use function stream_get_contents;
 
 /**
- * Test harness for the class Tree
+ * @covers \Fisharebest\Webtrees\Tree
  */
 class TreeTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -53,12 +50,6 @@ class TreeTest extends TestCase
         Registry::cache($cache_factory);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::__construct
-     * @covers \Fisharebest\Webtrees\Tree::id
-     * @covers \Fisharebest\Webtrees\Tree::name
-     * @covers \Fisharebest\Webtrees\Tree::title
-     */
     public function testConstructor(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -69,10 +60,6 @@ class TreeTest extends TestCase
         self::assertSame('title', $tree->title());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::getPreference
-     * @covers \Fisharebest\Webtrees\Tree::setPreference
-     */
     public function testTreePreferences(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -84,10 +71,6 @@ class TreeTest extends TestCase
         self::assertSame('bar', $pref);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::getUserPreference
-     * @covers \Fisharebest\Webtrees\Tree::setUserPreference
-     */
     public function testUserTreePreferences(): void
     {
         $user_service          = new UserService();
@@ -104,9 +87,6 @@ class TreeTest extends TestCase
         self::assertSame('bar', $pref);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     */
     public function testCreateInvalidIndividual(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -122,9 +102,6 @@ class TreeTest extends TestCase
         $tree->createIndividual("0 @@ FOO\n1 SEX U");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createIndividual
-     */
     public function testCreateIndividual(): void
     {
         $user_service          = new UserService();
@@ -143,9 +120,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createFamily
-     */
     public function testCreateInvalidFamily(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -161,9 +135,6 @@ class TreeTest extends TestCase
         $tree->createFamily("0 @@ FOO\n1 MARR Y");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createFamily
-     */
     public function testCreateFamily(): void
     {
         $user_service          = new UserService();
@@ -182,9 +153,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     */
     public function testCreateInvalidMediaObject(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -200,9 +168,6 @@ class TreeTest extends TestCase
         $tree->createMediaObject("0 @@ FOO\n1 MARR Y");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createMediaObject
-     */
     public function testCreateMediaObject(): void
     {
         $user_service          = new UserService();
@@ -221,9 +186,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createRecord
-     */
     public function testCreateInvalidRecord(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -239,9 +201,6 @@ class TreeTest extends TestCase
         $tree->createRecord("0 @@FOO\n1 NOTE noted");
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::createRecord
-     */
     public function testCreateRecord(): void
     {
         $user_service          = new UserService();
@@ -260,9 +219,6 @@ class TreeTest extends TestCase
         self::assertFalse($record->isPendingAddition());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::significantIndividual
-     */
     public function testSignificantIndividual(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -300,9 +256,6 @@ class TreeTest extends TestCase
         self::assertSame($record4->xref(), $tree->significantIndividual($user)->xref());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TreeService::importGedcomFile
-     */
     public function testImportAndDeleteGedcomFile(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -317,9 +270,6 @@ class TreeTest extends TestCase
         self::assertSame('', Site::getPreference('DEFAULT_GEDCOM'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Tree::hasPendingEdit
-     */
     public function testHasPendingEdits(): void
     {
         $user_service = new UserService();
@@ -337,9 +287,6 @@ class TreeTest extends TestCase
         self::assertTrue($tree->hasPendingEdit());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\GedcomExportService::export
-     */
     public function testExportGedcom(): void
     {
         $tree = $this->importTree('demo.ged');
@@ -349,15 +296,23 @@ class TreeTest extends TestCase
         $resource = $gedcom_export_service->export($tree, true);
         $original = file_get_contents(__DIR__ . '/../data/demo.ged');
         $export   = stream_get_contents($resource);
+        self::assertIsString($original);
+        self::assertIsString($export);
         fclose($resource);
 
         // The version, date and time in the HEAD record will be different.
         $original = preg_replace('/\n2 VERS .*/', '', $original, 1);
         $export   = preg_replace('/\n2 VERS .*/', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
         $original = preg_replace('/\n1 DATE .. ... ..../', '', $original, 1);
         $export   = preg_replace('/\n1 DATE .. ... ..../', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
         $original = preg_replace('/\n2 TIME ..:..:../', '', $original, 1);
         $export   = preg_replace('/\n2 TIME ..:..:../', '', $export, 1);
+        self::assertIsString($original);
+        self::assertIsString($export);
 
         self::assertSame($original, $export);
     }

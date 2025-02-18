@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Aldfaer
- *
  * @covers \Fisharebest\Webtrees\CustomTags\Aldfaer
  */
 class AldfaerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\Aldfaer::class));
+        self::assertTrue(class_exists(Aldfaer::class));
     }
 }

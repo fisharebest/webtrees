@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\ASCII;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use PHPUnit\Framework\TestCase;
@@ -28,14 +29,11 @@ use function iconv;
 use function range;
 
 /**
- * Tests for class ASCII.
+ * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
+ * @covers \Fisharebest\Webtrees\Encodings\ASCII
  */
 class ASCIITest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ASCII
-     */
     public function testToUtf8(): void
     {
         $encoding = new ASCII();
@@ -45,7 +43,7 @@ class ASCIITest extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(ASCII::NAME, UTF8::NAME, $character);
 
-            static::assertSame($expected, $actual);
+            self::assertSame($expected, $actual);
         }
 
         foreach (range(128, 255) as $code_point) {
@@ -53,7 +51,7 @@ class ASCIITest extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = UTF8::REPLACEMENT_CHARACTER;
 
-            static::assertSame($expected, $actual);
+            self::assertSame($expected, $actual);
         }
     }
 }

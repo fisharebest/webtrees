@@ -24,14 +24,11 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test harness for the class CensusColumnSurnameGivenNameInitial
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnSurnameGivenNameInitialTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testOneGivenName(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -51,10 +48,6 @@ class CensusColumnSurnameGivenNameInitialTest extends TestCase
         self::assertSame('Sixpack, Joe', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSurnameGivenNameInitial
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testMultipleGivenNames(): void
     {
         $individual = $this->createMock(Individual::class);

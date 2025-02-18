@@ -24,14 +24,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusColumnBirthDayMonthSlashYearTest
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDayMonthYear
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnBirthDayMonthYearTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDayMonthYear
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testGenerateColumn(): void
     {
         $individual = $this->createMock(Individual::class);

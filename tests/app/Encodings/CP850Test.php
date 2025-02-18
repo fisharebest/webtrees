@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\CP850;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use PHPUnit\Framework\TestCase;
@@ -27,14 +28,11 @@ use function chr;
 use function iconv;
 
 /**
- * Tests for class CP850.
+ * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
+ * @covers \Fisharebest\Webtrees\Encodings\CP850
  */
 class CP850Test extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\CP850
-     */
     public function testToUtf8(): void
     {
         $encoding = new CP850();
@@ -44,7 +42,7 @@ class CP850Test extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(CP850::NAME, UTF8::NAME, $character);
 
-            static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+            self::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
         }
     }
 }

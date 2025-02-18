@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CalendarService
- *
  * @covers \Fisharebest\Webtrees\Services\CalendarService
  */
 class CalendarServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\CalendarService::class));
+        self::assertTrue(class_exists(CalendarService::class));
     }
 }

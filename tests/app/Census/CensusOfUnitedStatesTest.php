@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfUnitedStates
+ * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates
  */
 class CensusOfUnitedStatesTest extends TestCase
 {
-    /**
-     * Test the census place
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates
-     */
     public function testPlace(): void
     {
         $census = new CensusOfUnitedStates();
@@ -38,11 +33,6 @@ class CensusOfUnitedStatesTest extends TestCase
         self::assertSame('United States', $census->censusPlace());
     }
 
-    /**
-     * Test the census language
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates
-     */
     public function testLanguage(): void
     {
         $census = new CensusOfUnitedStates();
@@ -50,11 +40,6 @@ class CensusOfUnitedStatesTest extends TestCase
         self::assertSame('en-US', $census->censusLanguage());
     }
 
-    /**
-     * Test the census dates
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates
-     */
     public function testAllDates(): void
     {
         $census = new CensusOfUnitedStates();

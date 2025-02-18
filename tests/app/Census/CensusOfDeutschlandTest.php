@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfDeutschland
+ * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
  */
 class CensusOfDeutschlandTest extends TestCase
 {
-    /**
-     * Test the census place
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
-     */
     public function testPlace(): void
     {
         $census = new CensusOfDeutschland();
@@ -38,11 +33,6 @@ class CensusOfDeutschlandTest extends TestCase
         self::assertSame('Deutschland', $census->censusPlace());
     }
 
-    /**
-     * Test the census language
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
-     */
     public function testLanguage(): void
     {
         $census = new CensusOfDeutschland();
@@ -50,11 +40,6 @@ class CensusOfDeutschlandTest extends TestCase
         self::assertSame('de', $census->censusLanguage());
     }
 
-    /**
-     * Test the census dates
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfDeutschland
-     */
     public function testAllDates(): void
     {
         $census = new CensusOfDeutschland();

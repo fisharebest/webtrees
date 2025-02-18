@@ -20,17 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * Test harness for the class FamilySearchFamilyTreeId
- *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
  * @covers \Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId
  */
 class FamilySearchFamilyTreeIdTest extends AbstractElementTestCase
 {
-    /**
-     * Standard tests for all elements.
-     */
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();

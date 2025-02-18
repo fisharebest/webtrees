@@ -34,8 +34,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the control panel
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel
  */
 class ControlPanelControllerTest extends TestCase

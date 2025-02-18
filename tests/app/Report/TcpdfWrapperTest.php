@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TcpdfWrapper
- *
  * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
  */
 class TcpdfWrapperTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\TcpdfWrapper::class));
+        self::assertTrue(class_exists(TcpdfWrapper::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class DateValueExact
- *
  * @covers \Fisharebest\Webtrees\Elements\DateValueExact
  */
 class DateValueExactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\DateValueExact::class));
+        self::assertTrue(class_exists(DateValueExact::class));
     }
 }

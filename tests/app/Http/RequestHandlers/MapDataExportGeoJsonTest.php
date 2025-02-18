@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the location export.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson
  */
 class MapDataExportGeoJsonTest extends TestCase

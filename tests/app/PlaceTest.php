@@ -20,15 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class Place
- *
  * @covers \Fisharebest\Webtrees\Place
  */
 class PlaceTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Place::class));

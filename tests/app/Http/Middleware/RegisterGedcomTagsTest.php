@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RegisterGedcomTags
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags
  */
 class RegisterGedcomTagsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags::class));
+        self::assertTrue(class_exists(RegisterGedcomTags::class));
     }
 }

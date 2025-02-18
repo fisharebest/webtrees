@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class UnconnectedPage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage
  */
 class UnconnectedPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage::class));
+        self::assertTrue(class_exists(UnconnectedPage::class));
     }
 }

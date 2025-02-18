@@ -40,23 +40,23 @@ class RedirectFamilyPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $family = $this->createStub(Family::class);
+        $family = $this->createMock(Family::class);
         $family
             ->method('url')
             ->willReturn('https://www.example.com');
 
-        $family_factory = $this->createStub(FamilyFactory::class);
+        $family_factory = $this->createMock(FamilyFactory::class);
         $family_factory
             ->expects(self::once())
             ->method('make')
@@ -67,10 +67,7 @@ class RedirectFamilyPhpTest extends TestCase
 
         $handler = new RedirectFamilyPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'famid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'famid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -80,20 +77,17 @@ class RedirectFamilyPhpTest extends TestCase
 
     public function testNoSuchRecord(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectFamilyPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'famid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'famid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -102,7 +96,7 @@ class RedirectFamilyPhpTest extends TestCase
 
     public function testMissingXrefParameter(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
 
         $handler = new RedirectFamilyPhp($tree_service);
 

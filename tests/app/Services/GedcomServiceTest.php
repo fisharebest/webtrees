@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GedcomService
- *
  * @covers \Fisharebest\Webtrees\Services\GedcomService
  */
 class GedcomServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\GedcomService::class));
+        self::assertTrue(class_exists(GedcomService::class));
     }
 }

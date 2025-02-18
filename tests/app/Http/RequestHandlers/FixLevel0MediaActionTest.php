@@ -26,8 +26,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test FixLevel0MediaActionTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaActionTest
  */
 class FixLevel0MediaActionTest extends TestCase
@@ -41,7 +39,7 @@ class FixLevel0MediaActionTest extends TestCase
         $tree                  = $tree_service->create('name', 'title');
         $handler               = new FixLevel0MediaAction($tree_service);
         $request               = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
-            'tree_id'   => $tree->id(),
+            'tree_id'   => (string) $tree->id(),
             'fact_id'   => '',
             'indi_xref' => 'X1',
             'obje_xref' => 'X2',

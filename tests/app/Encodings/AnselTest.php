@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\ANSEL;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Normalizer;
@@ -36,7 +37,9 @@ use function strlen;
 use const PREG_SPLIT_NO_EMPTY;
 
 /**
- * Tests for class ANSEL.
+ * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
+ * @covers \Fisharebest\Webtrees\Encodings\ANSEL
+ * @covers \Fisharebest\Webtrees\Encodings\UTF8
  */
 class AnselTest extends TestCase
 {
@@ -92,11 +95,6 @@ class AnselTest extends TestCase
 
     private const MULTIPART_DIACRITIC = ["\xEC", "\xFB"];
 
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     * @covers \Fisharebest\Webtrees\Encodings\UTF8::chr
-     */
     public function testPreComposedCharacters(): void
     {
         $latin_code_blocks = [
@@ -145,9 +143,12 @@ class AnselTest extends TestCase
             foreach ($codes as $code) {
                 $utf8 = UTF8::chr($code);
                 $norm = Normalizer::normalize($utf8, Normalizer::FORM_D);
+                self::assertIsString($norm);
 
                 if ($norm !== $utf8) {
                     $chars = preg_split('//u', $norm, -1, PREG_SPLIT_NO_EMPTY);
+                    self::assertIsArray($chars);
+
                     if (!ctype_alpha($chars[0])) {
                         continue;
                     }
@@ -158,16 +159,12 @@ class AnselTest extends TestCase
                         continue;
                     }
 
-                    static::assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
+                    self::assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
                 }
             }
         }
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     */
     public function testToUtf8(): void
     {
         $encoding = new ANSEL();
@@ -177,10 +174,6 @@ class AnselTest extends TestCase
         }
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     */
     public function testFromUtf8(): void
     {
         $encoding = new ANSEL();
@@ -190,10 +183,6 @@ class AnselTest extends TestCase
         }
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     */
     public function testUnprintable(): void
     {
         $encoding = new ANSEL();
@@ -204,10 +193,6 @@ class AnselTest extends TestCase
         }
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\ANSEL
-     */
     public function testMultiPartDiacritic(): void
     {
         $encoding = new ANSEL();

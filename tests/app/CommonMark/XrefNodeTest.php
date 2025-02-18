@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CommonMark;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class XrefNode
- *
  * @covers \Fisharebest\Webtrees\CommonMark\XrefNode
  */
 class XrefNodeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CommonMark\XrefNode::class));
+        self::assertTrue(class_exists(XrefNode::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FileUploadException
- *
  * @covers \Fisharebest\Webtrees\Exceptions\FileUploadException
  */
 class FileUploadExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Exceptions\FileUploadException::class));
+        self::assertTrue(class_exists(FileUploadException::class));
     }
 }

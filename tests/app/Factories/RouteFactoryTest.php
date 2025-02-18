@@ -23,8 +23,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RouteFactory
- *
  * @covers \Fisharebest\Webtrees\Factories\RouteFactory
  */
 class RouteFactoryTest extends TestCase
@@ -37,7 +35,7 @@ class RouteFactoryTest extends TestCase
 
         $url = $route_factory->route(HomePage::class, ['foo' => null, 'bar' => '']);
 
-        static::assertStringNotContainsString('foo=', $url);
-        static::assertStringContainsString('bar=', $url);
+        self::assertStringNotContainsString('foo=', $url);
+        self::assertStringContainsString('bar=', $url);
     }
 }

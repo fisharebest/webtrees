@@ -26,8 +26,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test UserEditPageTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserListData
  */
 class UserListDataTest extends TestCase

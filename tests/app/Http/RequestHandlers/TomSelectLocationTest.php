@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TomSelectLocation
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TomSelectLocation
  */
 class TomSelectLocationTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\TomSelectLocation::class));
+        self::assertTrue(class_exists(TomSelectLocation::class));
     }
 }

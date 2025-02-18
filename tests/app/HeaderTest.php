@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Header
- *
  * @covers \Fisharebest\Webtrees\Header
  */
 class HeaderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Header::class));
+        self::assertTrue(class_exists(Header::class));
     }
 }

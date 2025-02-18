@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Mime
- *
  * @covers \Fisharebest\Webtrees\Mime
  */
 class MimeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Mime::class));
+        self::assertTrue(class_exists(Mime::class));
     }
 }

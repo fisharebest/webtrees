@@ -120,15 +120,9 @@ class ModuleActionTest extends TestCase
         $handler->handle($request);
     }
 
-    /**
-     * @return ModuleInterface
-     */
     private function fooModule(): ModuleInterface
     {
         return new class () extends AbstractModule {
-            /**
-             * @return ResponseInterface
-             */
             public function getTestAction(): ResponseInterface
             {
                 return response('It works!');

@@ -27,13 +27,12 @@ use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\LanguageFrench;
 use Fisharebest\Webtrees\Module\LanguageSlovakian;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Module\ModuleLanguageTrait;
 use Fisharebest\Webtrees\Services\RelationshipService;
 
 use function array_reverse;
 
 /**
- * Test the user functions
- *
  * @covers \Fisharebest\Webtrees\Relationship
  * @covers \Fisharebest\Webtrees\Services\RelationshipService
  * @covers \Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain
@@ -74,8 +73,8 @@ class RelationshipNamesTest extends TestCase
         //
         $tree = $this->createMock(Tree::class);
 
-        $individual_factory = $this->createStub(IndividualFactory::class);
-        $family_factory     = $this->createStub(FamilyFactory::class);
+        $individual_factory = $this->createMock(IndividualFactory::class);
+        $family_factory     = $this->createMock(FamilyFactory::class);
 
         Registry::familyFactory($family_factory);
         Registry::individualFactory($individual_factory);
@@ -378,9 +377,7 @@ class RelationshipNamesTest extends TestCase
     }
 
     /**
-     * @param string                   $expected
      * @param array<Individual|Family> $nodes
-     * @param ModuleLanguageInterface  $language
      */
     private static function assertRelationship(string $expected, array $nodes, ModuleLanguageInterface $language): void
     {
@@ -396,10 +393,7 @@ class RelationshipNamesTest extends TestCase
     /**
      * Test a relationship name in both directions
      *
-     * @param string                   $fwd
-     * @param string                   $rev
      * @param array<Individual|Family> $nodes
-     * @param ModuleLanguageInterface  $language
      */
     private static function assertRelationships(string $fwd, string $rev, array $nodes, ModuleLanguageInterface $language): void
     {

@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ReviewChangesModule
- *
  * @covers \Fisharebest\Webtrees\Module\ReviewChangesModule
  */
 class ReviewChangesModuleTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(ReviewChangesModule::class));

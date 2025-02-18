@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -50,26 +51,30 @@ class RedirectRelationshipPhp implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged       = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
-        $pid1      = Validator::queryParams($request)->string('pid1', '');
-        $pid2      = Validator::queryParams($request)->string('pid2', '');
-        $ancestors = Validator::queryParams($request)->string('ancestors', '0');
-        $recursion = Validator::queryParams($request)->string('recursion', '0');
-        $tree      = $this->tree_service->all()->get($ged);
-        $module    = $this->module_service->findByInterface(RelationshipsChartModule::class)->first();
+        $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $tree = $this->tree_service->all()->get($ged);
 
-        if ($tree instanceof Tree && $module instanceof RelationshipsChartModule) {
-            $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual(Auth::user());
+        if ($tree instanceof Tree) {
+            $module = $this->module_service
+                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleChartInterface $module): bool => $module instanceof RelationshipsChartModule);
 
-            $url = $module->chartUrl($individual, [
-                'xref2'     => $pid2,
-                'ancestors' => $ancestors,
-                'recursion' => $recursion,
-            ]);
+            if ($module instanceof RelationshipsChartModule) {
+                $pid1       = Validator::queryParams($request)->string('pid1', '');
+                $user       = Auth::user();
+                $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual($user);
 
-            return Registry::responseFactory()
-                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
-                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+                $url = $module->chartUrl($individual, [
+                    'ancestors' => Validator::queryParams($request)->string('ancestors', '0'),
+                    'recursion' => Validator::queryParams($request)->string('recursion', '0'),
+                    'xref1'     => $pid1,
+                    'xref2'     => Validator::queryParams($request)->string('pid2', ''),
+                ]);
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            }
         }
 
         throw new HttpGoneException();

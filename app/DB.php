@@ -19,18 +19,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Query\Builder;
+
 /**
- * Test harness for the class Stats
- *
- * @covers \Fisharebest\Webtrees\Statistics
+ * Database abstraction
  */
-class StatsTest extends TestCase
+class DB extends Manager
 {
+    // Supported drivers
+    public const MYSQL      = 'mysql';
+    public const POSTGRES   = 'pgsql';
+    public const SQLITE     = 'sqlite';
+    public const SQL_SERVER = 'sqlsrv';
+
     /**
-     * Test that the class exists
+     * PHPSTAN can't detect the magic methods in the parent class.
      */
-    public function testClassExists(): void
+    public static function query(): Builder
     {
-        self::assertTrue(class_exists(Statistics::class));
+        return parent::connection()->query();
     }
 }

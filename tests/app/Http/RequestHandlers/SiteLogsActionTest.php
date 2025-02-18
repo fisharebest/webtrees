@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SiteLogsAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsAction
  */
 class SiteLogsActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsAction::class));
+        self::assertTrue(class_exists(SiteLogsAction::class));
     }
 }

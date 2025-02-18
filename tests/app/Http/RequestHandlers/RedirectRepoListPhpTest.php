@@ -21,7 +21,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -38,28 +40,28 @@ class RedirectRepoListPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $module = $this->createStub(RepositoryListModule::class);
+        $module = $this->createMock(RepositoryListModule::class);
         $module
             ->expects(self::once())
             ->method('listUrl')
             ->willReturn('https://www.example.com');
 
-        $module_service = $this->createStub(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects(self::once())
-            ->method('findByInterface')
-            ->with(RepositoryListModule::class)
+            ->method('findByComponent')
+            ->with(ModuleListInterface::class)
             ->willReturn(new Collection([$module]));
 
         $handler = new RedirectRepoListPhp($module_service, $tree_service);
@@ -74,19 +76,22 @@ class RedirectRepoListPhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $module_service = $this->createStub(ModuleService::class);
-        $module_service
-            ->expects(self::once())->method('findByInterface')
-            ->with(RepositoryListModule::class)
-            ->willReturn(new Collection());
+        $tree = $this->createMock(Tree::class);
+        $tree
+            ->method('name')
+            ->willReturn('tree1');
 
-        $tree = $this->createStub(Tree::class);
-
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->method('findByComponent')
+            ->with(ModuleListInterface::class, $tree, new GuestUser())
+            ->willReturn(new Collection());
 
         $handler = new RedirectRepoListPhp($module_service, $tree_service);
 
@@ -99,16 +104,9 @@ class RedirectRepoListPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module = $this->createStub(RepositoryListModule::class);
+        $module_service = $this->createMock(ModuleService::class);
 
-        $module_service = $this->createStub(ModuleService::class);
-        $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(RepositoryListModule::class)
-            ->willReturn(new Collection([$module]));
-
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')

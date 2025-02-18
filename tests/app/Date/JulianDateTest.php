@@ -22,16 +22,11 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class JulianDate
- *
  * @covers \Fisharebest\Webtrees\Date\AbstractGregorianJulianDate
  * @covers \Fisharebest\Webtrees\Date\JulianDate
  */
 class JulianDateTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(JulianDate::class));

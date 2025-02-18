@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class WebmanifestJson
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson
  */
 class WebmanifestJsonTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson::class));
+        self::assertTrue(class_exists(WebmanifestJson::class));
     }
 }

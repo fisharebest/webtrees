@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FamilyCensus
- *
  * @covers \Fisharebest\Webtrees\Elements\FamilyCensus
  */
 class FamilyCensusTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\FamilyCensus::class));
+        self::assertTrue(class_exists(FamilyCensus::class));
     }
 }

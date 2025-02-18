@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class PendingChangesService
- *
  * @covers \Fisharebest\Webtrees\Services\PendingChangesService
  */
 class PendingChangesServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\PendingChangesService::class));
+        self::assertTrue(class_exists(PendingChangesService::class));
     }
 }

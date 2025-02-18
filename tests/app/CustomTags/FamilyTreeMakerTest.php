@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FamilyTreeMaker
- *
  * @covers \Fisharebest\Webtrees\CustomTags\FamilyTreeMaker
  */
 class FamilyTreeMakerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\FamilyTreeMaker::class));
+        self::assertTrue(class_exists(FamilyTreeMaker::class));
     }
 }

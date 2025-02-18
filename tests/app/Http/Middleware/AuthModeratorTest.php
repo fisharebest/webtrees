@@ -31,8 +31,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the AuthModerator middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\AuthModerator
  */
 class AuthModeratorTest extends TestCase

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ModulesMapProvidersPage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapProvidersPage
  */
 class ModulesMapProvidersPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapProvidersPage::class));
+        self::assertTrue(class_exists(ModulesMapProvidersPage::class));
     }
 }

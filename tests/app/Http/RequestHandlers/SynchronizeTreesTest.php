@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SynchronizeTrees
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SynchronizeTrees
  */
 class SynchronizeTreesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\SynchronizeTrees::class));
+        self::assertTrue(class_exists(SynchronizeTrees::class));
     }
 }

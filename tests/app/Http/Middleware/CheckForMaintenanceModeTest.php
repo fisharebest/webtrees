@@ -26,8 +26,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the CheckForMaintenanceMode middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode
  */
 class CheckForMaintenanceModeTest extends TestCase

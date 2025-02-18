@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class IndividualFactsTabModule
- *
  * @covers \Fisharebest\Webtrees\Module\IndividualFactsTabModule
  */
 class IndividualFactsTabModuleTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(IndividualFactsTabModule::class));

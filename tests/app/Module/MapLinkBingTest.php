@@ -40,12 +40,9 @@ class MapLinkBingTest extends TestCase
 
         $html = $module->mapLink($fact);
 
-        static::assertSame('', $html);
+        self::assertSame('', $html);
     }
 
-    /**
-     * Test that the class exists
-     */
     public function testLink(): void
     {
         $module = new MapLinkBing();

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ImportGedcomAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomAction
  */
 class ImportGedcomActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ImportGedcomAction::class));
+        self::assertTrue(class_exists(ImportGedcomAction::class));
     }
 }

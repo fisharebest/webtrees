@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CleanDataFolder
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder
  */
 class CleanDataFolderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CleanDataFolder::class));
+        self::assertTrue(class_exists(CleanDataFolder::class));
     }
 }

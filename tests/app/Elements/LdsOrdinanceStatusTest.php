@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LdsOrdinanceStatus
- *
  * @covers \Fisharebest\Webtrees\Elements\LdsOrdinanceStatus
  */
 class LdsOrdinanceStatusTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\LdsOrdinanceStatus::class));
+        self::assertTrue(class_exists(LdsOrdinanceStatus::class));
     }
 }

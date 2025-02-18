@@ -33,15 +33,15 @@ class SiteLogsDeleteTest extends TestCase
     {
         $request = self::createRequest();
 
-        $query = $this->createStub(Builder::class);
+        $query = $this->createMock(Builder::class);
         $query->method('delete');
 
-        $site_logs_service = $this->createStub(SiteLogsService::class);
+        $site_logs_service = $this->createMock(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn($query);
 
         $handler  = new SiteLogsDelete($site_logs_service);
         $response = $handler->handle($request);
 
-        static::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

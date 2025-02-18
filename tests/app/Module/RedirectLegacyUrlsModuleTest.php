@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RedirectLegacyUrlsModule
- *
  * @covers \Fisharebest\Webtrees\Module\RedirectLegacyUrlsModule
  */
 class RedirectLegacyUrlsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\RedirectLegacyUrlsModule::class));
+        self::assertTrue(class_exists(RedirectLegacyUrlsModule::class));
     }
 }

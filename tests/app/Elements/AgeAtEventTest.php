@@ -22,16 +22,11 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Test harness for the class AgeAtEvent
- *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AgeAtEvent
  */
 class AgeAtEventTest extends AbstractElementTestCase
 {
-    /**
-     * Standard tests for all elements.
-     */
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
@@ -50,7 +45,7 @@ class AgeAtEventTest extends AbstractElementTestCase
 
     public function testValue(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
 
         self::assertSame('child', self::$element->value('cHiLd', $tree));
         self::assertSame('infant', self::$element->value('iNfAnT ', $tree));

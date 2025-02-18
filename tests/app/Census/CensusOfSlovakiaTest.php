@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfSlovakia
+ * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia
  */
 class CensusOfSlovakiaTest extends TestCase
 {
-    /**
-     * Test the census place
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia
-     */
     public function testPlace(): void
     {
         $census = new CensusOfSlovakia();
@@ -38,11 +33,6 @@ class CensusOfSlovakiaTest extends TestCase
         self::assertSame('Slovensko', $census->censusPlace());
     }
 
-    /**
-     * Test the census language
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia
-     */
     public function testLanguage(): void
     {
         $census = new CensusOfSlovakia();
@@ -50,11 +40,6 @@ class CensusOfSlovakiaTest extends TestCase
         self::assertSame('sk', $census->censusLanguage());
     }
 
-    /**
-     * Test the census dates
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia
-     */
     public function testAllDates(): void
     {
         $census = new CensusOfSlovakia();

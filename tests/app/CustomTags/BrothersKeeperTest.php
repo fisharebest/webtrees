@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class BrothersKeeper
- *
  * @covers \Fisharebest\Webtrees\CustomTags\BrothersKeeper
  */
 class BrothersKeeperTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\BrothersKeeper::class));
+        self::assertTrue(class_exists(BrothersKeeper::class));
     }
 }

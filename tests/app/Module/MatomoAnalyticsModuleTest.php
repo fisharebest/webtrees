@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MatomoAnalyticsModule
- *
  * @covers \Fisharebest\Webtrees\Module\MatomoAnalyticsModule
  */
 class MatomoAnalyticsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\MatomoAnalyticsModule::class));
+        self::assertTrue(class_exists(MatomoAnalyticsModule::class));
     }
 }

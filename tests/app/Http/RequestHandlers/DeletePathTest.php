@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class DeletePath
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeletePath
  */
 class DeletePathTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\DeletePath::class));
+        self::assertTrue(class_exists(DeletePath::class));
     }
 }

@@ -30,8 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the AuthAdministrator middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\AuthAdministrator
  */
 class AuthAdministratorTest extends TestCase

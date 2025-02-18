@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SearchReplacePage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchReplacePage
  */
 class SearchReplacePageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\SearchReplacePage::class));
+        self::assertTrue(class_exists(SearchReplacePage::class));
     }
 }

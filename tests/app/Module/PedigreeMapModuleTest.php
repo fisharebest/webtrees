@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class PedigreeMapModule
- *
  * @covers \Fisharebest\Webtrees\Module\PedigreeMapModule
  */
 class PedigreeMapModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\PedigreeMapModule::class));
+        self::assertTrue(class_exists(PedigreeMapModule::class));
     }
 }

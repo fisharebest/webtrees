@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SessionDatabaseHandler
- *
  * @covers \Fisharebest\Webtrees\SessionDatabaseHandler
  */
 class SessionDatabaseHandlerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\SessionDatabaseHandler::class));
+        self::assertTrue(class_exists(SessionDatabaseHandler::class));
     }
 }

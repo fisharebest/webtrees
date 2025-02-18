@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Factories;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SlugFactory
- *
  * @covers \Fisharebest\Webtrees\Factories\SlugFactory
  */
 class SlugFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Factories\SlugFactory::class));
+        self::assertTrue(class_exists(SlugFactory::class));
     }
 }

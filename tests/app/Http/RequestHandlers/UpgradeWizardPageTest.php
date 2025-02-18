@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test UpgradeController class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardPage
  */
 class UpgradeWizardPageTest extends TestCase

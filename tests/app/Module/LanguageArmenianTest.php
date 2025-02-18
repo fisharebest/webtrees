@@ -17,19 +17,17 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Statistics\Service;
+namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ColorService
- *
- * @covers \Fisharebest\Webtrees\Statistics\Service\ColorService
+ * @covers \Fisharebest\Webtrees\Module\LanguageArmenian
  */
-class ColorServiceTest extends TestCase
+class LanguageArmenianTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Statistics\Service\ColorService::class));
+        self::assertTrue(class_exists(LanguageArmenian::class));
     }
 }

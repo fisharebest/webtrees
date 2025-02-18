@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\CP437;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use PHPUnit\Framework\TestCase;
@@ -29,14 +30,11 @@ use function iconv;
 use function range;
 
 /**
- * Tests for class CP437.
+ * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
+ * @covers \Fisharebest\Webtrees\Encodings\CP437
  */
 class CP437Test extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\CP437
-     */
     public function testToUtf8(): void
     {
         $encoding = new CP437();
@@ -46,7 +44,7 @@ class CP437Test extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(CP437::NAME, UTF8::NAME, $character);
 
-            static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+            self::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
         }
     }
 }

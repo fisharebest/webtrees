@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CopyFact
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CopyFact
  */
 class CopyFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CopyFact::class));
+        self::assertTrue(class_exists(CopyFact::class));
     }
 }

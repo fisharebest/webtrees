@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CheckForNewVersion
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion
  */
 class CheckForNewVersionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion::class));
+        self::assertTrue(class_exists(CheckForNewVersion::class));
     }
 }

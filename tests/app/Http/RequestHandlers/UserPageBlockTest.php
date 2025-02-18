@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class UserPageBlock
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlock
  */
 class UserPageBlockTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlock::class));
+        self::assertTrue(class_exists(UserPageBlock::class));
     }
 }

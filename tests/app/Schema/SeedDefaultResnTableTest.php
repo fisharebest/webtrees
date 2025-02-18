@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Schema;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SeedDefaultResnTable
- *
  * @covers \Fisharebest\Webtrees\Schema\SeedDefaultResnTable
  */
 class SeedDefaultResnTableTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Schema\SeedDefaultResnTable::class));
+        self::assertTrue(class_exists(SeedDefaultResnTable::class));
     }
 }

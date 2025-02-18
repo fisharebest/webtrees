@@ -31,8 +31,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the AuthMember middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\AuthMember
  */
 class AuthMemberTest extends TestCase

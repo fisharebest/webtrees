@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Logout
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\Logout
  */
 class LogoutTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\Logout::class));
+        self::assertTrue(class_exists(Logout::class));
     }
 }

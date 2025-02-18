@@ -20,8 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * Test harness for the class Census
- *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\Census
  */
@@ -29,9 +27,6 @@ class CensusTest extends AbstractElementTestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Standard tests for all elements.
-     */
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();

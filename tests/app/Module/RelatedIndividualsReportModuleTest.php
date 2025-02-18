@@ -21,51 +21,71 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Report\AbstractRenderer;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\PdfRenderer;
+use Fisharebest\Webtrees\Report\ReportBaseCell;
+use Fisharebest\Webtrees\Report\ReportBaseElement;
+use Fisharebest\Webtrees\Report\ReportBaseFootnote;
+use Fisharebest\Webtrees\Report\ReportBaseImage;
+use Fisharebest\Webtrees\Report\ReportBaseLine;
+use Fisharebest\Webtrees\Report\ReportBaseText;
+use Fisharebest\Webtrees\Report\ReportBaseTextbox;
+use Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider;
+use Fisharebest\Webtrees\Report\ReportHtmlCell;
+use Fisharebest\Webtrees\Report\ReportHtmlFootnote;
+use Fisharebest\Webtrees\Report\ReportHtmlImage;
+use Fisharebest\Webtrees\Report\ReportHtmlLine;
+use Fisharebest\Webtrees\Report\ReportHtmlText;
+use Fisharebest\Webtrees\Report\ReportHtmlTextbox;
+use Fisharebest\Webtrees\Report\ReportParserBase;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
+use Fisharebest\Webtrees\Report\ReportPdfCell;
+use Fisharebest\Webtrees\Report\ReportPdfFootnote;
+use Fisharebest\Webtrees\Report\ReportPdfImage;
+use Fisharebest\Webtrees\Report\ReportPdfLine;
+use Fisharebest\Webtrees\Report\ReportPdfText;
+use Fisharebest\Webtrees\Report\ReportPdfTextBox;
+use Fisharebest\Webtrees\Report\TcpdfWrapper;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RelatedIndividualsReportModule
+ * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait
+ * @covers \Fisharebest\Webtrees\Module\PedigreeReportModule
+ * @covers \Fisharebest\Webtrees\Report\AbstractRenderer
+ * @covers \Fisharebest\Webtrees\Report\HtmlRenderer
+ * @covers \Fisharebest\Webtrees\Report\PdfRenderer
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseText
+ * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
+ * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
+ * @covers \Fisharebest\Webtrees\Report\ReportParserBase
+ * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
+ * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfText
+ * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
+ * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
  */
 class RelatedIndividualsReportModuleTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait
-     * @covers \Fisharebest\Webtrees\Module\PedigreeReportModule
-     * @covers \Fisharebest\Webtrees\Report\AbstractRenderer
-     * @covers \Fisharebest\Webtrees\Report\HtmlRenderer
-     * @covers \Fisharebest\Webtrees\Report\PdfRenderer
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseCell
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseElement
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseFootnote
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseImage
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseLine
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseText
-     * @covers \Fisharebest\Webtrees\Report\ReportBaseTextbox
-     * @covers \Fisharebest\Webtrees\Report\ReportExpressionLanguageProvider
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlFootnote
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlImage
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlLine
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlText
-     * @covers \Fisharebest\Webtrees\Report\ReportHtmlTextbox
-     * @covers \Fisharebest\Webtrees\Report\ReportParserBase
-     * @covers \Fisharebest\Webtrees\Report\ReportParserGenerate
-     * @covers \Fisharebest\Webtrees\Report\ReportParserSetup
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfCell
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfImage
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfLine
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfText
-     * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
-     * @covers \Fisharebest\Webtrees\Report\TcpdfWrapper
-     */
     public function testReportRunsWithoutError(): void
     {
         $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');

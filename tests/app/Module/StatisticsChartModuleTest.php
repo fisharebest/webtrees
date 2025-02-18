@@ -29,9 +29,9 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
- * Test harness for the class StatisticsChartModule
- *
  * @covers \Fisharebest\Webtrees\Module\StatisticsChartModule
+ * @covers \Fisharebest\Webtrees\Statistics
+ * @covers \Fisharebest\Webtrees\StatisticsData
  */
 class StatisticsChartModuleTest extends TestCase
 {

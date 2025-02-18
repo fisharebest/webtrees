@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class PrivacyPolicy
- *
  * @covers \Fisharebest\Webtrees\Module\PrivacyPolicy
  */
 class PrivacyPolicyTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\PrivacyPolicy::class));
+        self::assertTrue(class_exists(PrivacyPolicy::class));
     }
 }

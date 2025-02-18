@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CreateLocationAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateLocationAction
  */
 class CreateLocationActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CreateLocationAction::class));
+        self::assertTrue(class_exists(CreateLocationAction::class));
     }
 }

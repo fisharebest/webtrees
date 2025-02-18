@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LanguageEnglishGreatBritain
- *
  * @covers \Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain
  */
 class LanguageEnglishGreatBritainTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain::class));
+        self::assertTrue(class_exists(LanguageEnglishGreatBritain::class));
     }
 }

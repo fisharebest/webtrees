@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CaptchaService
- *
  * @covers \Fisharebest\Webtrees\Services\CaptchaService
  */
 class CaptchaServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\CaptchaService::class));
+        self::assertTrue(class_exists(CaptchaService::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ContentLength
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\ContentLength
  */
 class ContentLengthTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\ContentLength::class));
+        self::assertTrue(class_exists(ContentLength::class));
     }
 }

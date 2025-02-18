@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class EditRawFactPage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage
  */
 class EditRawFactPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage::class));
+        self::assertTrue(class_exists(EditRawFactPage::class));
     }
 }

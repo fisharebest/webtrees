@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class NonEvent
- *
  * @covers \Fisharebest\Webtrees\Elements\IndividualNonEvent
  */
 class IndividualNonEventTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\IndividualNonEvent::class));
+        self::assertTrue(class_exists(IndividualNonEvent::class));
     }
 }

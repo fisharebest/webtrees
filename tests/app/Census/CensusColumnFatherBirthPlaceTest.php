@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test harness for the class CensusColumnFatherBirthPlace
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlace
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnFatherBirthPlaceTest extends TestCase
 {
@@ -41,10 +42,6 @@ class CensusColumnFatherBirthPlaceTest extends TestCase
         return $placeMock;
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testSameCountry(): void
     {
         $father = $this->createMock(Individual::class);
@@ -64,10 +61,6 @@ class CensusColumnFatherBirthPlaceTest extends TestCase
         self::assertSame('London', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testDifferentCountry(): void
     {
         $father = $this->createMock(Individual::class);
@@ -87,10 +80,6 @@ class CensusColumnFatherBirthPlaceTest extends TestCase
         self::assertSame('London, England', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testPlaceNoParent(): void
     {
         $family = $this->createMock(Family::class);
@@ -107,10 +96,6 @@ class CensusColumnFatherBirthPlaceTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherBirthPlace
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testPlaceNoParentFamily(): void
     {
         $individual = $this->createMock(Individual::class);

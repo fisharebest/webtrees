@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\GedcomFilters;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GedcomEncodingFilter
- *
  * @covers \Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter
  */
 class GedcomEncodingFilterTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter::class));
+        self::assertTrue(class_exists(GedcomEncodingFilter::class));
     }
 }

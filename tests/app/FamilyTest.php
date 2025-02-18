@@ -20,15 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class Family
- *
  * @covers \Fisharebest\Webtrees\Family
  */
 class FamilyTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Family::class));

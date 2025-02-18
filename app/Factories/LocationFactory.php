@@ -21,11 +21,10 @@ namespace Fisharebest\Webtrees\Factories;
 
 use Closure;
 use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
-use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
 
 use function preg_match;
 

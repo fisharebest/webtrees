@@ -22,13 +22,10 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HtmlService
+ * @covers \Fisharebest\Webtrees\Services\HtmlService
  */
 class HtmlServiceTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Services\HtmlService::sanitize
-     */
     public function testAllowedHtml(): void
     {
         $html_service = new HtmlService();
@@ -39,9 +36,6 @@ class HtmlServiceTest extends TestCase
         self::assertSame($dirty, $clean);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\HtmlService::sanitize
-     */
     public function testDisallowedHtml(): void
     {
         $html_service = new HtmlService();

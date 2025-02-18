@@ -27,8 +27,6 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use function dirname;
 
 /**
- * Test the location import.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportAction
  */
 class MapDataImportActionTest extends TestCase

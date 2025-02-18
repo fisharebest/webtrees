@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MinimalTheme
- *
  * @covers \Fisharebest\Webtrees\Module\MinimalTheme
  */
 class MinimalThemeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\MinimalTheme::class));
+        self::assertTrue(class_exists(MinimalTheme::class));
     }
 }

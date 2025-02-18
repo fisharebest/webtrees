@@ -24,370 +24,339 @@ use Fisharebest\Webtrees\Report\RightToLeftSupport;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the RTL functions.  This is very old code, and poorly understood.
- * These tests exist to capture the existing functionality, and prevent regression during refactoring.
+ * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
  */
 class RightToLeftSupportTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testEmptyString(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '',
             RightToLeftSupport::spanLtrRtl('')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '',
             RightToLeftSupport::spanLtrRtl('')
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testStripControlCharacters(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl('foo&lrm;bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl('foo&rlm;bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\x8Ebar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\x8Fbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xADbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xAEbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xAAbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xABbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xACbar")
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl('foo&lrm;bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl('foo&rlm;bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\x8Ebar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\x8Fbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xADbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xAEbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xAAbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xABbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foobar</span>',
             RightToLeftSupport::spanLtrRtl("foo\xE2\x80\xACbar")
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testNewLinesBecomeHTMLBreaks(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo</span><br><span dir="ltr">bar</span>',
             RightToLeftSupport::spanLtrRtl("foo\nbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג</span><br><span dir="rtl">דהו</span>',
             RightToLeftSupport::spanLtrRtl("אבג\nדהו")
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo</span><br><span dir="ltr">bar</span>',
             RightToLeftSupport::spanLtrRtl("foo\nbar")
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג</span><br><span dir="rtl">דהו</span>',
             RightToLeftSupport::spanLtrRtl("אבג\nדהו")
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testLineBreaks(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo</span><br><span dir="ltr">bar</span>',
             RightToLeftSupport::spanLtrRtl('foo<br>bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג</span><br><span dir="rtl">דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג<br>דהו')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo</span><br><span dir="ltr">bar</span>',
             RightToLeftSupport::spanLtrRtl('foo<br>bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג</span><br><span dir="rtl">דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג<br>דהו')
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testHtmlEntities(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo&nbsp;bar</span>',
             RightToLeftSupport::spanLtrRtl('foo&nbsp;bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג&nbsp;דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג&nbsp;דהו')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo&bar</span>',
             RightToLeftSupport::spanLtrRtl('foo&bar')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo&nbsp;bar</span>',
             RightToLeftSupport::spanLtrRtl('foo&nbsp;bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג&nbsp;דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג&nbsp;דהו')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo&bar</span>',
             RightToLeftSupport::spanLtrRtl('foo&bar')
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testBraces(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo{{123}}bar</span>',
             RightToLeftSupport::spanLtrRtl('foo{{123}}bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo{{bar</span>',
             RightToLeftSupport::spanLtrRtl('foo{{bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג{{123}}דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג{{123}}דהו')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo{{123}}bar</span>',
             RightToLeftSupport::spanLtrRtl('foo{{123}}bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo{{bar</span>',
             RightToLeftSupport::spanLtrRtl('foo{{bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג{{123}}דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג{{123}}דהו')
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testNumbers(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo 123,456.789 bar</span>',
             RightToLeftSupport::spanLtrRtl('foo 123,456.789 bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo +123,456.789 bar</span>',
             RightToLeftSupport::spanLtrRtl('foo +123,456.789 bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo -123,456.789 bar</span>',
             RightToLeftSupport::spanLtrRtl('foo -123,456.789 bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג ‪123,456.789‬ דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג 123,456.789 דהו')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג ‪+123,456.789‬ דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג +123,456.789 דהו')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג ‪-123,456.789‬ דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג -123,456.789 דהו')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo 123,456.789 bar</span>',
             RightToLeftSupport::spanLtrRtl('foo 123,456.789 bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo +123,456.789 bar</span>',
             RightToLeftSupport::spanLtrRtl('foo +123,456.789 bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo -123,456.789 bar</span>',
             RightToLeftSupport::spanLtrRtl('foo -123,456.789 bar')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג ‪123,456.789‬ דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג 123,456.789 דהו')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג ‪+123,456.789‬ דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג +123,456.789 דהו')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג ‪-123,456.789‬ דהו</span>',
             RightToLeftSupport::spanLtrRtl('אבג -123,456.789 דהו')
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testParentheses(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo (bar)</span>',
             RightToLeftSupport::spanLtrRtl('foo (bar)')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo </span><span dir="rtl">(אבג)</span>',
             RightToLeftSupport::spanLtrRtl('foo (אבג)')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג</span><span dir="ltr"> (bar)</span>',
             RightToLeftSupport::spanLtrRtl('אבג (bar)')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג (דהו)</span>',
             RightToLeftSupport::spanLtrRtl('אבג (דהו)')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo (bar)</span>',
             RightToLeftSupport::spanLtrRtl('foo (bar)')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">foo </span><span dir="rtl">(אבג)</span>',
             RightToLeftSupport::spanLtrRtl('foo (אבג)')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג </span><span dir="ltr">(bar)</span>',
             RightToLeftSupport::spanLtrRtl('אבג (bar)')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">אבג (דהו)</span>',
             RightToLeftSupport::spanLtrRtl('אבג (דהו)')
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testUnescapedHtml(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">>foo<</span>',
             RightToLeftSupport::spanLtrRtl('>foo<')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">></span><span dir="rtl">אבג<</span>',
             RightToLeftSupport::spanLtrRtl('>אבג<')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">></span><span dir="ltr">foo<</span>',
             RightToLeftSupport::spanLtrRtl('>foo<')
         );
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">>אבג<</span>',
             RightToLeftSupport::spanLtrRtl('>אבג<')
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
-     */
     public function testBreakInNumber(): void
     {
         I18N::init('en-US', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="ltr">123</span><br><span dir="ltr">456</span>',
             RightToLeftSupport::spanLtrRtl('123<br>456')
         );
 
         I18N::init('he', true);
-        static::assertSame(
+        self::assertSame(
             '<span dir="rtl">‪123‬</span><br><span dir="rtl">‪456‬</span>',
             RightToLeftSupport::spanLtrRtl('123<br>456')
         );

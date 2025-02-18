@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TheMasterGenealogist
- *
  * @covers \Fisharebest\Webtrees\CustomTags\TheMasterGenealogist
  */
 class TheMasterGenealogistTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\TheMasterGenealogist::class));
+        self::assertTrue(class_exists(TheMasterGenealogist::class));
     }
 }

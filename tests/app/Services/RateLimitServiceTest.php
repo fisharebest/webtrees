@@ -30,13 +30,10 @@ use function range;
 use function time;
 
 /**
- * Test harness for the class RateLimitService
+ * @covers \Fisharebest\Webtrees\Services\RateLimitService
  */
 class RateLimitServiceTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     */
     public function testTooMuchHistory(): void
     {
         $rate_limit_service = new RateLimitService();
@@ -48,9 +45,6 @@ class RateLimitServiceTest extends TestCase
         $rate_limit_service->limitRateForUser($user, 1000, 30, 'rate-limit');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     */
     public function testLimitNotReached(): void
     {
         $rate_limit_service = new RateLimitService();
@@ -59,20 +53,17 @@ class RateLimitServiceTest extends TestCase
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        static::assertCount(1, explode(',', $history));
+        self::assertCount(1, explode(',', $history));
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        static::assertCount(2, explode(',', $history));
+        self::assertCount(2, explode(',', $history));
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        static::assertCount(3, explode(',', $history));
+        self::assertCount(3, explode(',', $history));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     */
     public function testOldEventsIgnored(): void
     {
         $rate_limit_service = new RateLimitService();
@@ -84,12 +75,9 @@ class RateLimitServiceTest extends TestCase
 
         $rate_limit_service->limitRateForUser($user, 5, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        static::assertCount(6, explode(',', $history));
+        self::assertCount(6, explode(',', $history));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\RateLimitService
-     */
     public function testLimitReached(): void
     {
         $rate_limit_service = new RateLimitService();

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RomanNumeralsService
- *
  * @covers \Fisharebest\Webtrees\Services\RomanNumeralsService
  */
 class RomanNumeralsServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\RomanNumeralsService::class));
+        self::assertTrue(class_exists(RomanNumeralsService::class));
     }
 }

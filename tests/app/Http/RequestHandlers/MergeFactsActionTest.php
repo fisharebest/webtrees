@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MergeFactsAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MergeFactsAction
  */
 class MergeFactsActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\MergeFactsAction::class));
+        self::assertTrue(class_exists(MergeFactsAction::class));
     }
 }

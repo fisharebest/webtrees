@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class UseTheme
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\UseTheme
  */
 class UseThemeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\UseTheme::class));
+        self::assertTrue(class_exists(UseTheme::class));
     }
 }

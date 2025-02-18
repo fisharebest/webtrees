@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MapGeoLocationGeonames
- *
  * @covers \Fisharebest\Webtrees\Module\MapGeoLocationGeonames
  */
 class MapGeoLocationGeonamesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\MapGeoLocationGeonames::class));
+        self::assertTrue(class_exists(MapGeoLocationGeonames::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class AutoCompleteFolder
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder
  */
 class AutoCompleteFolderTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder::class));
+        self::assertTrue(class_exists(AutoCompleteFolder::class));
     }
 }

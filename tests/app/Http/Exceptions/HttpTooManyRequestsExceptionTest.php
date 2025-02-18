@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HttpTooManyRequestsException
- *
  * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException
  */
 class HttpTooManyRequestsExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException::class));
+        self::assertTrue(class_exists(HttpTooManyRequestsException::class));
     }
 }

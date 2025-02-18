@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class AddChildToIndividualAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddChildToIndividualAction
  */
 class AddChildToIndividualActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AddChildToIndividualAction::class));
+        self::assertTrue(class_exists(AddChildToIndividualAction::class));
     }
 }

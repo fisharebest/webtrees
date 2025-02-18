@@ -20,17 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class Note
- *
  * @covers \Fisharebest\Webtrees\Note
  */
 class NoteTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Note::class));
@@ -38,7 +33,7 @@ class NoteTest extends TestCase
 
     public function testNoteName(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $note = new Note('X123', "0 @X123@ NOTE 1\n1 CONT\n1 CONT 2\n1 CONT 3\n1 CONT 4", null, $tree);
 
         self::assertSame('<bdi>1</bdi>', $note->fullName());
@@ -46,7 +41,7 @@ class NoteTest extends TestCase
 
     public function testNoteNameWithHtmlEntities(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $text = '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt." "a quote"';
         $note = new Note('X123', '0 @X123@ NOTE ' . $text, null, $tree);
 

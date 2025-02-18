@@ -40,23 +40,23 @@ class RedirectIndividualPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createStub(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual
             ->method('url')
             ->willReturn('https://www.example.com');
 
-        $individual_factory = $this->createStub(IndividualFactory::class);
+        $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
             ->expects(self::once())
             ->method('make')
@@ -67,10 +67,7 @@ class RedirectIndividualPhpTest extends TestCase
 
         $handler = new RedirectIndividualPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -80,20 +77,17 @@ class RedirectIndividualPhpTest extends TestCase
 
     public function testNoSuchRecord(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectIndividualPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -102,7 +96,7 @@ class RedirectIndividualPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
@@ -110,10 +104,7 @@ class RedirectIndividualPhpTest extends TestCase
 
         $handler = new RedirectIndividualPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'pid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'pid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -122,7 +113,7 @@ class RedirectIndividualPhpTest extends TestCase
 
     public function testMissingXrefParameter(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
 
         $handler = new RedirectFamilyPhp($tree_service);
 

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ReportPdfFootnote
- *
  * @covers \Fisharebest\Webtrees\Report\ReportPdfFootnote
  */
 class ReportPdfFootnoteTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportPdfFootnote::class));
+        self::assertTrue(class_exists(ReportPdfFootnote::class));
     }
 }

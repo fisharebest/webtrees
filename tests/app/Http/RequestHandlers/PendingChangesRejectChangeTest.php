@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class PendingChangesRejectChange
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectChange
  */
 class PendingChangesRejectChangeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectChange::class));
+        self::assertTrue(class_exists(PendingChangesRejectChange::class));
     }
 }

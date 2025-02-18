@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ReorderFamiliesAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesAction
  */
 class ReorderFamiliesActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesAction::class));
+        self::assertTrue(class_exists(ReorderFamiliesAction::class));
     }
 }

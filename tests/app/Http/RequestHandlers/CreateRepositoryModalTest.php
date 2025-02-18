@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CreateRepositoryModal
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal
  */
 class CreateRepositoryModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryModal::class));
+        self::assertTrue(class_exists(CreateRepositoryModal::class));
     }
 }

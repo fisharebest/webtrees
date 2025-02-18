@@ -25,8 +25,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test UserAddActionTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserAddAction
  */
 class UserAddActionTest extends TestCase

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use PHPUnit\Framework\TestCase;
@@ -30,14 +31,11 @@ use function intdiv;
 use function range;
 
 /**
- * Tests for class UTF16BE.
+ * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
+ * @covers \Fisharebest\Webtrees\Encodings\UTF16BE
  */
 class UTF16BETest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\UTF16BE
-     */
     public function testToUtf8(): void
     {
         $encoding = new UTF16BE();
@@ -47,14 +45,14 @@ class UTF16BETest extends TestCase
             $expected = iconv(UTF16BE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            static::assertSame($expected, $actual, 'U+' . dechex($code));
+            self::assertSame($expected, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0x80, 0xFF) as $code) {
             $char   = chr(intdiv($code, 256)) . chr($code % 256);
             $actual = $encoding->toUtf8($char);
 
-            static::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
+            self::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0x100, 0xD7FF) as $code) {
@@ -62,14 +60,14 @@ class UTF16BETest extends TestCase
             $expected = iconv(UTF16BE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            static::assertSame($expected, $actual, 'U+' . dechex($code));
+            self::assertSame($expected, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0xD800, 0xDFFF) as $code) {
             $char   = chr(intdiv($code, 256)) . chr($code % 256);
             $actual = $encoding->toUtf8($char);
 
-            static::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
+            self::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0xE000, 0xFFFF) as $code) {
@@ -77,7 +75,7 @@ class UTF16BETest extends TestCase
             $expected = iconv(UTF16BE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            static::assertSame($expected, $actual, 'U+' . dechex($code));
+            self::assertSame($expected, $actual, 'U+' . dechex($code));
         }
     }
 }

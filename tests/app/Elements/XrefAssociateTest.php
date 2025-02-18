@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class XrefAssociate
- *
  * @covers \Fisharebest\Webtrees\Elements\XrefAssociate
  */
 class XrefAssociateTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\XrefAssociate::class));
+        self::assertTrue(class_exists(XrefAssociate::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RootsMagic
- *
  * @covers \Fisharebest\Webtrees\CustomTags\RootsMagic
  */
 class RootsMagicTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\RootsMagic::class));
+        self::assertTrue(class_exists(RootsMagic::class));
     }
 }

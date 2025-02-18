@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class AdsTxt
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AdsTxt
  */
 class AdsTxtTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AdsTxt::class));
+        self::assertTrue(class_exists(AdsTxt::class));
     }
 }

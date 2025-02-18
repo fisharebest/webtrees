@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FindDuplicateRecords
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FindDuplicateRecords
  */
 class FindDuplicateRecordsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\FindDuplicateRecords::class));
+        self::assertTrue(class_exists(FindDuplicateRecords::class));
     }
 }

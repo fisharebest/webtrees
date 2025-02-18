@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class UpdateDatabaseSchema
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema
  */
 class UpdateDatabaseSchemaTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema::class));
+        self::assertTrue(class_exists(UpdateDatabaseSchema::class));
     }
 }

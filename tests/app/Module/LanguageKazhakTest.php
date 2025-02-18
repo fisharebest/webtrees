@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LanguageKazhak
- *
  * @covers \Fisharebest\Webtrees\Module\LanguageKazhak
  */
 class LanguageKazhakTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LanguageKazhak::class));
+        self::assertTrue(class_exists(LanguageKazhak::class));
     }
 }

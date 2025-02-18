@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MapDataDeleteUnused
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataDeleteUnused
  */
 class MapDataDeleteUnusedTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\MapDataDeleteUnused::class));
+        self::assertTrue(class_exists(MapDataDeleteUnused::class));
     }
 }

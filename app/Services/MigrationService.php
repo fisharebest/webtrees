@@ -19,12 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use Fisharebest\Webtrees\Schema\SeedDefaultResnTable;
 use Fisharebest\Webtrees\Schema\SeedGedcomTable;
 use Fisharebest\Webtrees\Schema\SeedUserTable;
 use Fisharebest\Webtrees\Site;
-use Illuminate\Database\Capsule\Manager as DB;
 use PDOException;
 
 /**

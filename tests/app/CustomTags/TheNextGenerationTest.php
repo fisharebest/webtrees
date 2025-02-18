@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TheNextGeneration
- *
  * @covers \Fisharebest\Webtrees\CustomTags\TheNextGeneration
  */
 class TheNextGenerationTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\TheNextGeneration::class));
+        self::assertTrue(class_exists(TheNextGeneration::class));
     }
 }

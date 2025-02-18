@@ -34,23 +34,23 @@ class SiteLogsDownloadTest extends TestCase
     {
         $request = self::createRequest();
 
-        $query1 = $this->createStub(Builder::class);
-        $query2 = $this->createStub(Builder::class);
-        $rows1  = $this->createStub(Collection::class);
-        $rows2  = $this->createStub(Collection::class);
+        $query1 = $this->createMock(Builder::class);
+        $query2 = $this->createMock(Builder::class);
+        $rows1  = $this->createMock(Collection::class);
+        $rows2  = $this->createMock(Collection::class);
         $query1->method('orderBy')->willReturn($query2);
         $query2->method('get')->willReturn($rows1);
         $rows1->method('map')->willReturn($rows2);
         $rows2->method('implode')->willReturn('foo,bar');
 
-        $site_logs_service = $this->createStub(SiteLogsService::class);
+        $site_logs_service = $this->createMock(SiteLogsService::class);
         $site_logs_service->method('logsQuery')->willReturn($query1);
 
         $handler  = new SiteLogsDownload($site_logs_service);
         $response = $handler->handle($request);
 
-        static::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        static::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));
-        static::assertSame('attachment; filename="webtrees-logs.csv"', $response->getHeaderLine('content-disposition'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));
+        self::assertSame('attachment; filename="webtrees-logs.csv"', $response->getHeaderLine('content-disposition'));
     }
 }

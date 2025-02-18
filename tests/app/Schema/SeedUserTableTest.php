@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Schema;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SeedUserTable
- *
  * @covers \Fisharebest\Webtrees\Schema\SeedUserTable
  */
 class SeedUserTableTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Schema\SeedUserTable::class));
+        self::assertTrue(class_exists(SeedUserTable::class));
     }
 }

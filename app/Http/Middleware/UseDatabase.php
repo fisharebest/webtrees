@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Database\Capsule\Manager as DB;
 use PDO;
 use PDOException;
 use Psr\Http\Message\ResponseInterface;

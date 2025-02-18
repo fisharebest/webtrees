@@ -23,8 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the location import.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportPage
  */
 class MapDataImportPageTest extends TestCase

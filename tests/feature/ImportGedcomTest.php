@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Services\GedcomImportService;
+
 /**
- * Test the user functions
- *
- * @coversNothing
+ * @covers \Fisharebest\Webtrees\Services\GedcomImportService;
  */
 class ImportGedcomTest extends TestCase
 {

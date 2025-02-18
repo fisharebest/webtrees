@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
-use Illuminate\Database\Capsule\Manager as DB;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\Constraint\Callback;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -58,18 +57,12 @@ use function substr;
 
 use const UPLOAD_ERR_OK;
 
-/**
- * Base class for unit tests
- */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     public static ?object $mock_functions = null;
 
     protected static bool $uses_database = false;
 
-    /**
-     * Create an SQLite in-memory database for testing
-     */
     private static function createTestDatabase(): void
     {
         $capsule = new DB();
@@ -90,13 +83,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Create a request and bind it into the container.
      *
-     * @param string                       $method
-     * @param array<string>                $query
+     * @param array<string|array<string>>  $query
      * @param array<string>                $params
      * @param array<UploadedFileInterface> $files
      * @param array<string|Tree>           $attributes
-     *
-     * @return ServerRequestInterface
      */
     protected static function createRequest(
         string $method = RequestMethodInterface::METHOD_GET,
@@ -106,6 +96,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         array $attributes = []
     ): ServerRequestInterface {
         $server_request_factory = Webtrees::make(ServerRequestFactoryInterface::class);
+        self::assertInstanceOf(ServerRequestFactoryInterface::class, $server_request_factory);
 
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
 
@@ -122,7 +113,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         foreach ($attributes as $key => $value) {
             $request = $request->withAttribute($key, $value);
 
-            if ($key === 'tree') {
+            if ($key === 'tree' && $value instanceof Tree) {
                 Webtrees::set(Tree::class, $value);
             }
         }
@@ -132,9 +123,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return $request;
     }
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -156,8 +144,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $router_container = new RouterContainer('/');
         (new WebRoutes())->load($router_container->getMap());
         Webtrees::set(RouterContainer::class, $router_container);
-        $module_service = new ModuleService();
-        Webtrees::set(ModuleService::class, $module_service);
+        Webtrees::set(ModuleService::class, new ModuleService());
 
         if (static::$uses_database) {
             self::createTestDatabase();
@@ -166,7 +153,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             (new Gedcom())->registerTags(Registry::elementFactory(), true);
 
             // Boot modules
-            $module_service->bootModules(new WebtreesTheme());
+            (new ModuleService())->bootModules(new WebtreesTheme());
 
             I18N::init('en-US');
         } else {
@@ -176,9 +163,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         self::createRequest();
     }
 
-    /**
-     * Things to run after every test
-     */
     protected function tearDown(): void
     {
         if (static::$uses_database) {
@@ -194,7 +178,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $gedcom_import_service = new GedcomImportService();
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
-        $stream                = Webtrees::make(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
+        $stream_factory        = Webtrees::make(StreamFactoryInterface::class);
+        self::assertInstanceOf(StreamFactoryInterface::class, $stream_factory);
+        $stream = $stream_factory->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
@@ -213,6 +199,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $stream_factory        = Webtrees::make(StreamFactoryInterface::class);
         $uploaded_file_factory = Webtrees::make(UploadedFileFactoryInterface::class);
+
+        self::assertInstanceOf(StreamFactoryInterface::class, $stream_factory);
+        self::assertInstanceOf(UploadedFileFactoryInterface::class, $uploaded_file_factory);
 
         $stream      = $stream_factory->createStreamFromFile($filename);
         $size        = filesize($filename);
@@ -262,14 +251,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
                     switch ($tag) {
                         case 'html':
-                            static::assertSame([], $stack);
+                            self::assertSame([], $stack);
                             break;
                         case 'head':
                         case 'body':
-                            static::assertSame(['head'], $stack);
+                            self::assertSame(['head'], $stack);
                             break;
                         case 'div':
-                            static::assertNotContains('span', $stack, $message);
+                            self::assertNotContains('span', $stack, $message);
                             break;
                     }
 
@@ -278,7 +267,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     }
 
                     if ($tag === 'script' && !$self_closing) {
-                        $html = substr($html, strpos($html, '</script>'));
+                        $offset = strpos($html, '</script>');
+                        self::assertIsInt($offset);
+                        $html = substr($html, $offset);
                     } else {
                         $html = substr($html, strlen($match[0]));
                     }
@@ -288,14 +279,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
             }
         } while ($html !== '');
 
-        static::assertSame([], $stack);
+        self::assertSame([], $stack);
     }
 
     /**
      * Workaround for removal of withConsecutive in phpunit 10.
      *
      * @param array<int,mixed> $parameters
-     *
+
      * @return Callback<mixed>
      */
     protected static function withConsecutive(array $parameters): Callback

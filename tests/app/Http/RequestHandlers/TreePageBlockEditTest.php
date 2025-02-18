@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TreePageBlockEdit
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit
  */
 class TreePageBlockEditTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit::class));
+        self::assertTrue(class_exists(TreePageBlockEdit::class));
     }
 }

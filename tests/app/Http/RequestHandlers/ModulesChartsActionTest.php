@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ModulesChartsAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsAction
  */
 class ModulesChartsActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsAction::class));
+        self::assertTrue(class_exists(ModulesChartsAction::class));
     }
 }

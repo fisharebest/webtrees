@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class EmitResponse
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\EmitResponse
  */
 class EmitResponseTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\EmitResponse::class));
+        self::assertTrue(class_exists(EmitResponse::class));
     }
 }

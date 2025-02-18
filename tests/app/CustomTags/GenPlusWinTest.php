@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GenPlusWin
- *
  * @covers \Fisharebest\Webtrees\CustomTags\GenPlusWin
  */
 class GenPlusWinTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\GenPlusWin::class));
+        self::assertTrue(class_exists(GenPlusWin::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SearchPhoneticAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticAction
  */
 class SearchPhoneticActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\SearchPhoneticAction::class));
+        self::assertTrue(class_exists(SearchPhoneticAction::class));
     }
 }

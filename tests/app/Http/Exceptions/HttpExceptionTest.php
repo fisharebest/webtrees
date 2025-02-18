@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HttpException
- *
  * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpException
  */
 class HttpExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Exceptions\HttpException::class));
+        self::assertTrue(class_exists(HttpException::class));
     }
 }

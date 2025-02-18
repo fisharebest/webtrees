@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CalendarAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CalendarAction
  */
 class CalendarActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CalendarAction::class));
+        self::assertTrue(class_exists(CalendarAction::class));
     }
 }

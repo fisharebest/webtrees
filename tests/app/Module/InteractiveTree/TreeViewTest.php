@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Module\InteractiveTree;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TreeView
- *
  * @covers \Fisharebest\Webtrees\Module\InteractiveTree\TreeView
  */
 class TreeViewTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(TreeView::class));

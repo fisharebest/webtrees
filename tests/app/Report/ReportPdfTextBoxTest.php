@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ReportPdfTextBox
- *
  * @covers \Fisharebest\Webtrees\Report\ReportPdfTextBox
  */
 class ReportPdfTextBoxTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportPdfTextBox::class));
+        self::assertTrue(class_exists(ReportPdfTextBox::class));
     }
 }

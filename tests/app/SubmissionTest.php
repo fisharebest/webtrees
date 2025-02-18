@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Submission
- *
  * @covers \Fisharebest\Webtrees\Submission
  */
 class SubmissionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Submission::class));
+        self::assertTrue(class_exists(Submission::class));
     }
 }

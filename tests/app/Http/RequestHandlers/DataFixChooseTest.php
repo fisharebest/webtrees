@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class DataFixChoose
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DataFixChoose
  */
 class DataFixChooseTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\DataFixChoose::class));
+        self::assertTrue(class_exists(DataFixChoose::class));
     }
 }

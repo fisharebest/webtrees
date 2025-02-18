@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TreePageDefaultUpdate
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultUpdate
  */
 class TreePageDefaultUpdateTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultUpdate::class));
+        self::assertTrue(class_exists(TreePageDefaultUpdate::class));
     }
 }

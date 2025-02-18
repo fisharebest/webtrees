@@ -31,8 +31,6 @@ use Illuminate\Support\Collection;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Test the HandleExceptions middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\HandleExceptions
  */
 class HandleExceptionsTest extends TestCase

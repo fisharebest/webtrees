@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Reunion
- *
  * @covers \Fisharebest\Webtrees\CustomTags\Reunion
  */
 class ReunionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\Reunion::class));
+        self::assertTrue(class_exists(Reunion::class));
     }
 }

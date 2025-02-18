@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Factories;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GedcomRecordFactory
- *
  * @covers \Fisharebest\Webtrees\Factories\GedcomRecordFactory
  */
 class GedcomRecordFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Factories\GedcomRecordFactory::class));
+        self::assertTrue(class_exists(GedcomRecordFactory::class));
     }
 }

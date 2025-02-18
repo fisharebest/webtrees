@@ -28,8 +28,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the BootModules middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\BootModules
  */
 class BootModulesTest extends TestCase

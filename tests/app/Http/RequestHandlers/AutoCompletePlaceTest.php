@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class AutoCompletePlace
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace
  */
 class AutoCompletePlaceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace::class));
+        self::assertTrue(class_exists(AutoCompletePlace::class));
     }
 }

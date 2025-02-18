@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class PdfRenderer
- *
  * @covers \Fisharebest\Webtrees\Report\PdfRenderer
  */
 class PdfRendererTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\PdfRenderer::class));
+        self::assertTrue(class_exists(PdfRenderer::class));
     }
 }

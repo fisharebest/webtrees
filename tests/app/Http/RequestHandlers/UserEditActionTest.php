@@ -28,8 +28,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test UserEditActionTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserEditAction
  */
 class UserEditActionTest extends TestCase
@@ -44,7 +42,7 @@ class UserEditActionTest extends TestCase
         $user         = $user_service->create('user', 'real', 'email', 'pass');
         $handler      = new UserEditAction($mail_service, $tree_service, $user_service);
         $request      = self::createRequest(RequestMethodInterface::METHOD_POST, [], [
-            'user_id'        => $user->id(),
+            'user_id'        => (string) $user->id(),
             'username'       => '',
             'real_name'      => '',
             'email'          => '',

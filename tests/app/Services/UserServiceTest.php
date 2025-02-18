@@ -25,15 +25,12 @@ use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 
 /**
- * Test the UserService class
+ * @covers \Fisharebest\Webtrees\Services\UserService
  */
 class UserServiceTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -43,9 +40,6 @@ class UserServiceTest extends TestCase
         Registry::cache($cache_factory);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::create
-     */
     public function testCreate(): void
     {
         $user_service = new UserService();
@@ -55,9 +49,6 @@ class UserServiceTest extends TestCase
         self::assertSame(1, $user->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::delete
-     */
     public function testDelete(): void
     {
         $user_service = new UserService();
@@ -68,9 +59,6 @@ class UserServiceTest extends TestCase
         self::assertNull($user_service->find($user_id));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::find
-     */
     public function testFindNonExistingUser(): void
     {
         $user_service = new UserService();
@@ -79,59 +67,49 @@ class UserServiceTest extends TestCase
         self::assertNull($user);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::find
-     */
     public function testFindExistingUser(): void
     {
         $user_service = new UserService();
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->find($user1->id());
+        self::assertInstanceOf(UserInterface::class, $user2);
 
         self::assertSame($user1->id(), $user2->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::findByEmail
-     */
     public function testFindUserByEmail(): void
     {
         $user_service = new UserService();
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByEmail($user1->email());
+        self::assertInstanceOf(UserInterface::class, $user2);
 
         self::assertSame($user1->id(), $user2->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::findByUserName
-     */
     public function testFindUserByUserName(): void
     {
         $user_service = new UserService();
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByUserName($user1->userName());
+        self::assertInstanceOf(UserInterface::class, $user2);
 
         self::assertSame($user1->id(), $user2->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::findByIdentifier
-     */
     public function testFindUserByIdentifier(): void
     {
         $user_service = new UserService();
         $user1        = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user2        = $user_service->findByIdentifier($user1->userName());
         $user3        = $user_service->findByIdentifier($user1->email());
+        self::assertInstanceOf(UserInterface::class, $user2);
+        self::assertInstanceOf(UserInterface::class, $user3);
 
         self::assertSame($user1->id(), $user2->id());
         self::assertSame($user1->id(), $user3->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::findByIndividual
-     */
     public function testFindUsersByIndividual(): void
     {
         $user_service = new UserService();
@@ -147,9 +125,6 @@ class UserServiceTest extends TestCase
         self::assertSame($user->id(), $users[0]->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::all
-     */
     public function testFindAllUsers(): void
     {
         $user_service = new UserService();
@@ -163,9 +138,6 @@ class UserServiceTest extends TestCase
         self::assertSame($user1->id(), $users[1]->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::administrators
-     */
     public function testFindAdministrators(): void
     {
         $user_service = new UserService();
@@ -180,9 +152,6 @@ class UserServiceTest extends TestCase
         self::assertSame($admin->id(), $users[0]->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::managers
-     */
     public function testFindManagers(): void
     {
         $user_service = new UserService();
@@ -203,9 +172,6 @@ class UserServiceTest extends TestCase
         self::assertSame($user1->id(), $users[0]->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::moderators
-     */
     public function testFindModerators(): void
     {
         $user_service = new UserService();
@@ -226,10 +192,6 @@ class UserServiceTest extends TestCase
         self::assertSame($user2->id(), $users[0]->id());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\UserService::unapproved
-     * @covers \Fisharebest\Webtrees\Services\UserService::unverified
-     */
     public function testFindUnapprovedAndUnverified(): void
     {
         $user_service = new UserService();
@@ -249,13 +211,13 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->unapproved();
 
-        self::assertSame(2, $users->count());
+        self::assertCount(2, $users);
         self::assertSame('user1', $users[0]->userName());
         self::assertSame('user3', $users[1]->userName());
 
         $users = $user_service->unverified();
 
-        self::assertSame(2, $users->count());
+        self::assertCount(2, $users);
         self::assertSame('user1', $users[0]->userName());
         self::assertSame('user2', $users[1]->userName());
     }

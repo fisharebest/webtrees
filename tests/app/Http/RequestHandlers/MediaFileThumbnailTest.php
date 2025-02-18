@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MediaFileThumbnail
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MediaFileThumbnail
  */
 class MediaFileThumbnailTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\MediaFileThumbnail::class));
+        self::assertTrue(class_exists(MediaFileThumbnail::class));
     }
 }

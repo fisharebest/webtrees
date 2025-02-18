@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Test harness for the class XrefNote
- *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AbstractXrefElement
  * @covers \Fisharebest\Webtrees\Elements\XrefNote
@@ -56,8 +54,10 @@ class XrefNoteTest extends TestCase
         $select_nodes = $dom->getElementsByTagName('select');
         self::assertEquals(1, $select_nodes->count());
 
-        $option_nodes = $select_nodes[0]->getElementsByTagName('option');
-        self::assertEquals(1, $option_nodes->count());
+        foreach ($select_nodes as $select_node) {
+            $option_nodes = $select_node->getElementsByTagName('option');
+            self::assertEquals(1, $option_nodes->count());
+        }
     }
     public function testEscape(): void
     {

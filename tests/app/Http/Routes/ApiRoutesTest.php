@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Routes;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ApiRoutes
- *
  * @covers \Fisharebest\Webtrees\Http\Routes\ApiRoutes
  */
 class ApiRoutesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Routes\ApiRoutes::class));
+        self::assertTrue(class_exists(ApiRoutes::class));
     }
 }

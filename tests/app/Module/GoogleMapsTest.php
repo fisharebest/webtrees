@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GoogleMaps
- *
  * @covers \Fisharebest\Webtrees\Module\GoogleMaps
  */
 class GoogleMapsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\GoogleMaps::class));
+        self::assertTrue(class_exists(GoogleMaps::class));
     }
 }

@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test ManageMediaPage class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage
  */
 class ManageMediaPageTest extends TestCase

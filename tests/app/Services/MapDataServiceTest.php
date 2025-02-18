@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MapDataService
- *
  * @covers \Fisharebest\Webtrees\Services\MapDataService
  */
 class MapDataServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\MapDataService::class));
+        self::assertTrue(class_exists(MapDataService::class));
     }
 }

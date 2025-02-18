@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HttpAccessDeniedException
- *
  * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException
  */
 class HttpAccessDeniedExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException::class));
+        self::assertTrue(class_exists(HttpAccessDeniedException::class));
     }
 }

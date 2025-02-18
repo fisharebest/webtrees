@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Relationship
- *
  * @covers \Fisharebest\Webtrees\Relationship
  */
 class RelationshipTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Relationship::class));
+        self::assertTrue(class_exists(Relationship::class));
     }
 }

@@ -25,14 +25,11 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test harness for the class CensusColumnOccupation
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnOccupationTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNoOccupation(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -45,10 +42,6 @@ class CensusColumnOccupationTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testOccupation(): void
     {
         $fact = $this->createMock(Fact::class);

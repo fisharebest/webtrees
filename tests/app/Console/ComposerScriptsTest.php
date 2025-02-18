@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Console;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ComposerScripts
- *
  * @covers \Fisharebest\Webtrees\Console\ComposerScripts
  */
 class ComposerScriptsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Console\ComposerScripts::class));
+        self::assertTrue(class_exists(ComposerScripts::class));
     }
 }

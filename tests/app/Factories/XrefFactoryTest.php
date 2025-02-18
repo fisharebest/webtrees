@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Factories;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class XrefFactory
- *
  * @covers \Fisharebest\Webtrees\Factories\XrefFactory
  */
 class XrefFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Factories\XrefFactory::class));
+        self::assertTrue(class_exists(XrefFactory::class));
     }
 }

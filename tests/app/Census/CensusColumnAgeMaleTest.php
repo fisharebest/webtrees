@@ -24,14 +24,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusColumnAgeMale
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnAgeMaleTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testMale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -46,10 +43,6 @@ class CensusColumnAgeMaleTest extends TestCase
         self::assertSame('32', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testFemale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -62,10 +55,6 @@ class CensusColumnAgeMaleTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testUnknownSex(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -80,10 +69,6 @@ class CensusColumnAgeMaleTest extends TestCase
         self::assertSame('32', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeMale
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testLessThanOneYear(): void
     {
         $individual = $this->createMock(Individual::class);

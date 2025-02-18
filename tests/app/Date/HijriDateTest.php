@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class \HijriDate
- *
  * @covers \Fisharebest\Webtrees\Date\HijriDate
  */
 class HijriDateTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(HijriDate::class));

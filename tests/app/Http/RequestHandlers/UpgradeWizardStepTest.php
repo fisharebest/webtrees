@@ -35,8 +35,6 @@ use Illuminate\Support\Collection;
 use Nyholm\Psr7\Factory\Psr17Factory;
 
 /**
- * Test UpgradeController class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardStep
  */
 class UpgradeWizardStepTest extends TestCase

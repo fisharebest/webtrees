@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class AddUnlinkedAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction
  */
 class AddUnlinkedActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction::class));
+        self::assertTrue(class_exists(AddUnlinkedAction::class));
     }
 }

@@ -26,14 +26,11 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test harness for the class CensusColumnChildrenLiving
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnChildrenLiving
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnChildrenLivingTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnChildrenLiving
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testMale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -47,10 +44,6 @@ class CensusColumnChildrenLivingTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnChildrenLiving
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testCountChildren(): void
     {
         // Stillborn

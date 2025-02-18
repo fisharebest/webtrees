@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfSlovakia1930
+ * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia1930
  */
 class CensusOfSlovakia1930Test extends TestCase
 {
-    /**
-     * Test the census place and date
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia1930
-     */
     public function testPlaceAndDate(): void
     {
         $census = new CensusOfSlovakia1930();
@@ -39,12 +34,6 @@ class CensusOfSlovakia1930Test extends TestCase
         self::assertSame('01 DEC 1930', $census->censusDate());
     }
 
-    /**
-     * Test the census columns
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia1930
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testColumns(): void
     {
         $census  = new CensusOfSlovakia1930();

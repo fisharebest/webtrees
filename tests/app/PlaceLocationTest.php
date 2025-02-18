@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class PlaceLocation
- *
  * @covers \Fisharebest\Webtrees\PlaceLocation
  */
 class PlaceLocationTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\PlaceLocation::class));
+        self::assertTrue(class_exists(PlaceLocation::class));
     }
 }

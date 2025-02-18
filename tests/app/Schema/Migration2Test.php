@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Schema;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Migration2
- *
  * @covers \Fisharebest\Webtrees\Schema\Migration2
  */
 class Migration2Test extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Schema\Migration2::class));
+        self::assertTrue(class_exists(Migration2::class));
     }
 }

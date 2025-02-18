@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CloudsTheme
- *
  * @covers \Fisharebest\Webtrees\Module\CloudsTheme
  */
 class CloudsThemeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\CloudsTheme::class));
+        self::assertTrue(class_exists(CloudsTheme::class));
     }
 }

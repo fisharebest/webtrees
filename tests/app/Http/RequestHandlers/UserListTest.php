@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test UserListTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserListPage
  */
 class UserListTest extends TestCase

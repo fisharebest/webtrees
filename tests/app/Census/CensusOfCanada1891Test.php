@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfCanada1891
+ * @covers \Fisharebest\Webtrees\Census\CensusOfCanada1891
  */
 class CensusOfCanada1891Test extends TestCase
 {
-    /**
-     * Test the census place and date
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada1891
-     */
     public function testPlaceAndDate(): void
     {
         $census = new CensusOfCanada1891();
@@ -39,12 +34,6 @@ class CensusOfCanada1891Test extends TestCase
         self::assertSame('06 APR 1891', $census->censusDate());
     }
 
-    /**
-     * Test the census columns
-     *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada1891
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testColumns(): void
     {
         $census  = new CensusOfCanada1891();

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\CustomTags;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ProGen
- *
  * @covers \Fisharebest\Webtrees\CustomTags\ProGen
  */
 class ProGenTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\CustomTags\ProGen::class));
+        self::assertTrue(class_exists(ProGen::class));
     }
 }

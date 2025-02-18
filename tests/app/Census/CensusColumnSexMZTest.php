@@ -23,14 +23,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusColumnSexMZ
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnSexMZTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testMale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -43,10 +40,6 @@ class CensusColumnSexMZTest extends TestCase
         self::assertSame('M', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testFeale(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -59,10 +52,6 @@ class CensusColumnSexMZTest extends TestCase
         self::assertSame('Ž', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSexMZ
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testUnknownSex(): void
     {
         $individual = $this->createMock(Individual::class);

@@ -24,19 +24,12 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 
 /**
- * Test the TreeUser class
+ * @covers \Fisharebest\Webtrees\TreeUser
  */
 class TreeUserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @covers \Fisharebest\Webtrees\TreeUser::__construct
-     * @covers \Fisharebest\Webtrees\TreeUser::id
-     * @covers \Fisharebest\Webtrees\TreeUser::email
-     * @covers \Fisharebest\Webtrees\TreeUser::realName
-     * @covers \Fisharebest\Webtrees\TreeUser::userName
-     */
     public function testConstructor(): void
     {
         $gedcom_import_service = new GedcomImportService();
@@ -50,10 +43,6 @@ class TreeUserTest extends TestCase
         self::assertSame('', $user->userName());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\TreeUser::getPreference
-     * @covers \Fisharebest\Webtrees\TreeUser::setPreference
-     */
     public function testPreferences(): void
     {
         $gedcom_import_service = new GedcomImportService();

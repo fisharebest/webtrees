@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MediaFile
- *
  * @covers \Fisharebest\Webtrees\MediaFile
  */
 class MediaFileTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\MediaFile::class));
+        self::assertTrue(class_exists(MediaFile::class));
     }
 }

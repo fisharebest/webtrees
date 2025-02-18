@@ -24,15 +24,13 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the AccountDelete request handler.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete
  */
 class AccountDeleteTest extends TestCase
 {
     public function testHandler(): void
     {
-        $user_service = $this->createStub(UserService::class);
+        $user_service = $this->createMock(UserService::class);
 
         $request = self::createRequest();
 

@@ -25,15 +25,12 @@ use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 
 /**
- * Test the user functions
+ * @covers \Fisharebest\Webtrees\User
  */
 class UserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * Things to run before every test.
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -43,13 +40,6 @@ class UserTest extends TestCase
         Registry::cache($cache_factory);
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\User::__construct
-     * @covers \Fisharebest\Webtrees\User::id
-     * @covers \Fisharebest\Webtrees\User::email
-     * @covers \Fisharebest\Webtrees\User::realName
-     * @covers \Fisharebest\Webtrees\User::userName
-     */
     public function testConstructor(): void
     {
         $user = new User(123, 'username', 'real name', 'email');
@@ -60,16 +50,6 @@ class UserTest extends TestCase
         self::assertSame('username', $user->userName());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\User::setUserName
-     * @covers \Fisharebest\Webtrees\User::userName
-     * @covers \Fisharebest\Webtrees\User::setRealName
-     * @covers \Fisharebest\Webtrees\User::realName
-     * @covers \Fisharebest\Webtrees\User::setEmail
-     * @covers \Fisharebest\Webtrees\User::email
-     * @covers \Fisharebest\Webtrees\User::setPassword
-     * @covers \Fisharebest\Webtrees\User::checkPassword
-     */
     public function testGettersAndSetters(): void
     {
         $user_service = new UserService();
@@ -94,10 +74,6 @@ class UserTest extends TestCase
         self::assertTrue($user->checkPassword('letmein'));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\User::setPreference
-     * @covers \Fisharebest\Webtrees\User::getPreference
-     */
     public function testPreferences(): void
     {
         $user_service = new UserService();

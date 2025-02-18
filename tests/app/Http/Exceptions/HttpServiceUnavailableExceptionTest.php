@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HttpServiceUnavailableException
- *
  * @covers \Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException
  */
 class HttpServiceUnavailableExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException::class));
+        self::assertTrue(class_exists(HttpServiceUnavailableException::class));
     }
 }

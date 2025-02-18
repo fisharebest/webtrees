@@ -30,8 +30,6 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test ManageMediaData class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaData
  */
 class ManageMediaDataTest extends TestCase
@@ -96,8 +94,8 @@ class ManageMediaDataTest extends TestCase
             'media_folder' => 'media/',
             'subfolders'   => 'include',
             'search'       => ['value' => ''],
-            'start'        => '0',
-            'length'       => '10',
+            'start'  => '0',
+            'length' => '10',
         ]);
         $response              = $handler->handle($request);
 

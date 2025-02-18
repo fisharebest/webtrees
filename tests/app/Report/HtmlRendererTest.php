@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HtmlRenderer
- *
  * @covers \Fisharebest\Webtrees\Report\HtmlRenderer
  */
 class HtmlRendererTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\HtmlRenderer::class));
+        self::assertTrue(class_exists(HtmlRenderer::class));
     }
 }

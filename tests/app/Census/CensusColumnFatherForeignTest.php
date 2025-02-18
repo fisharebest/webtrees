@@ -26,7 +26,8 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test harness for the class CensusColumnFatherForeign
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnFatherForeignTest extends TestCase
 {
@@ -38,10 +39,6 @@ class CensusColumnFatherForeignTest extends TestCase
         return $placeMock;
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testSameCountry(): void
     {
         $father = $this->createMock(Individual::class);
@@ -61,10 +58,6 @@ class CensusColumnFatherForeignTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testDifferentCountry(): void
     {
         $father = $this->createMock(Individual::class);
@@ -84,10 +77,6 @@ class CensusColumnFatherForeignTest extends TestCase
         self::assertSame('Y', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testPlaceNoParent(): void
     {
         $family = $this->createMock(Family::class);
@@ -104,10 +93,6 @@ class CensusColumnFatherForeignTest extends TestCase
         self::assertSame('', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnFatherForeign
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testPlaceNoParentFamily(): void
     {
         $individual = $this->createMock(Individual::class);

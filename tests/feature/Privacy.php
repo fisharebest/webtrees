@@ -24,9 +24,6 @@ use Fisharebest\Webtrees\Services\UserService;
 
 use function strip_tags;
 
-/**
- * Test the privacy logic
- */
 class Privacy extends TestCase
 {
     protected static bool $uses_database = true;
@@ -118,7 +115,6 @@ class Privacy extends TestCase
         self::assertFalse(Auth::isMember($tree, $visitor), 'visitor isMember()');
 
         Auth::logout();
-
 
         Auth::login($admin);
         self::assertTrue($queen_elizabeth->canShow(), 'admin can see living individual with RESN=none');

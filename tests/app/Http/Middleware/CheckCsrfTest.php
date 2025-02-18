@@ -29,8 +29,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the CheckCsrf middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\CheckCsrf
  */
 class CheckCsrfTest extends TestCase
@@ -40,8 +38,11 @@ class CheckCsrfTest extends TestCase
         $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
+        $uri_factory = Webtrees::make(UriFactoryInterface::class);
+        self::assertInstanceOf(UriFactoryInterface::class, $uri_factory);
+
         $request = self::createRequest(RequestMethodInterface::METHOD_POST)
-            ->withUri(Webtrees::make(UriFactoryInterface::class)->createUri('https://example.com'));
+            ->withUri($uri_factory->createUri('https://example.com'));
 
         $middleware = new CheckCsrf();
         $response   = $middleware->process($request, $handler);

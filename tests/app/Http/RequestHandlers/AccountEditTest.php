@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 
 /**
- * Test the AccountEdit request handler.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit
  */
 class AccountEditTest extends TestCase
@@ -37,9 +35,9 @@ class AccountEditTest extends TestCase
 
     public function testHandler(): void
     {
-        $user            = $this->createStub(User::class);
-        $message_service = $this->createStub(MessageService::class);
-        $module_service  = $this->createStub(ModuleService::class);
+        $user            = $this->createMock(User::class);
+        $message_service = $this->createMock(MessageService::class);
+        $module_service  = $this->createMock(ModuleService::class);
 
         $module_service->method('findByInterface')->willReturn(new Collection([]));
 

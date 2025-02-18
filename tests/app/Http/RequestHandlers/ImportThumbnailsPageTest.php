@@ -23,8 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test ImportThumbnailsData class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsPage
  */
 class ImportThumbnailsPageTest extends TestCase

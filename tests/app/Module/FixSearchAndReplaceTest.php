@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FixSearchAndReplace
- *
  * @covers \Fisharebest\Webtrees\Module\FixSearchAndReplace
  */
 class FixSearchAndReplaceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FixSearchAndReplace::class));
+        self::assertTrue(class_exists(FixSearchAndReplace::class));
     }
 }

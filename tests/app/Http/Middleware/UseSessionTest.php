@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class UseSession
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\UseSession
  */
 class UseSessionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\UseSession::class));
+        self::assertTrue(class_exists(UseSession::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class EmptyClipboard
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\EmptyClipboard
  */
 class EmptyClipboardTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\EmptyClipboard::class));
+        self::assertTrue(class_exists(EmptyClipboard::class));
     }
 }

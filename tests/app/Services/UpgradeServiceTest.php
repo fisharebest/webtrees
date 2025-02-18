@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class UpgradeService
- *
  * @covers \Fisharebest\Webtrees\Services\UpgradeService
  */
 class UpgradeServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\UpgradeService::class));
+        self::assertTrue(class_exists(UpgradeService::class));
     }
 }

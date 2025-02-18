@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LinkedRecordService
- *
  * @covers \Fisharebest\Webtrees\Services\LinkedRecordService
  */
 class LinkedRecordServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\LinkedRecordService::class));
+        self::assertTrue(class_exists(LinkedRecordService::class));
     }
 }

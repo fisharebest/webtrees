@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Router
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\Router
  */
 class RouterTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\Router::class));
+        self::assertTrue(class_exists(Router::class));
     }
 }

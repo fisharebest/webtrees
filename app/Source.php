@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
-use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * A GEDCOM source (SOUR) object.

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GoogleAnalyticsModule
- *
  * @covers \Fisharebest\Webtrees\Module\GoogleAnalyticsModule
  */
 class GoogleAnalyticsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\GoogleAnalyticsModule::class));
+        self::assertTrue(class_exists(GoogleAnalyticsModule::class));
     }
 }

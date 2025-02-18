@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class IndividualFact
- *
  * @covers \Fisharebest\Webtrees\Elements\IndividualFact
  */
 class IndividualFactTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Elements\IndividualFact::class));
+        self::assertTrue(class_exists(IndividualFact::class));
     }
 }

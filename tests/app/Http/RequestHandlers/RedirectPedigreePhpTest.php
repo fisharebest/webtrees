@@ -22,8 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -41,20 +43,20 @@ class RedirectPedigreePhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $individual = $this->createStub(Individual::class);
+        $individual = $this->createMock(Individual::class);
 
-        $individual_factory = $this->createStub(IndividualFactory::class);
+        $individual_factory = $this->createMock(IndividualFactory::class);
         $individual_factory
             ->expects(self::once())
             ->method('make')
@@ -63,25 +65,22 @@ class RedirectPedigreePhpTest extends TestCase
 
         Registry::individualFactory($individual_factory);
 
-        $module = $this->createStub(PedigreeChartModule::class);
+        $module = $this->createMock(PedigreeChartModule::class);
         $module
             ->expects(self::once())
             ->method('chartUrl')
             ->willReturn('https://www.example.com');
 
-        $module_service = $this->createStub(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects(self::once())
-            ->method('findByInterface')
-            ->with(PedigreeChartModule::class)
+            ->method('findByComponent')
+            ->with(ModuleChartInterface::class)
             ->willReturn(new Collection([$module]));
 
         $handler = new RedirectPedigreePhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -91,26 +90,26 @@ class RedirectPedigreePhpTest extends TestCase
 
     public function testModuleDisabled(): void
     {
-        $module_service = $this->createStub(ModuleService::class);
-        $module_service
-            ->expects(self::once())->method('findByInterface')
-            ->with(PedigreeChartModule::class)
-            ->willReturn(new Collection());
+        $tree = $this->createMock(Tree::class);
+        $tree
+            ->method('name')
+            ->willReturn('tree1');
 
-        $tree = $this->createStub(Tree::class);
-
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
+
+        $module_service = $this->createMock(ModuleService::class);
+        $module_service
+            ->method('findByComponent')
+            ->with(ModuleChartInterface::class, $tree, new GuestUser())
+            ->willReturn(new Collection());
 
         $handler = new RedirectPedigreePhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -119,16 +118,9 @@ class RedirectPedigreePhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $module = $this->createStub(PedigreeChartModule::class);
+        $module_service  = $this->createMock(ModuleService::class);
 
-        $module_service  = $this->createStub(ModuleService::class);
-        $module_service
-            ->expects(self::once())
-            ->method('findByInterface')
-            ->with(PedigreeChartModule::class)
-            ->willReturn(new Collection([$module]));
-
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
@@ -136,10 +128,7 @@ class RedirectPedigreePhpTest extends TestCase
 
         $handler = new RedirectPedigreePhp($module_service, $tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'rootid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'rootid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 

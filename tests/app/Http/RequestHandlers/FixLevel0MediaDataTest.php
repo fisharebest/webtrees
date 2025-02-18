@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test FixLevel0MediaDataTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaDataTest
  */
 class FixLevel0MediaDataTest extends TestCase
@@ -42,7 +40,9 @@ class FixLevel0MediaDataTest extends TestCase
         $tree_service          = new TreeService($gedcom_import_service);
         $tree                  = $tree_service->create('name', 'title');
         $handler               = new FixLevel0MediaData($datatables_service, $tree_service);
-        $request               = self::createRequest(RequestMethodInterface::METHOD_GET, ['tree_id' => $tree->id()]);
+        $request               = self::createRequest(RequestMethodInterface::METHOD_GET, [
+            'tree_id' => (string) $tree->id(),
+        ]);
         $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

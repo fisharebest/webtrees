@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HereMaps
- *
  * @covers \Fisharebest\Webtrees\Module\HereMaps
  */
 class HereMapsTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\HereMaps::class));
+        self::assertTrue(class_exists(HereMaps::class));
     }
 }

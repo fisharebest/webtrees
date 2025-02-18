@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class BingWebmasterToolsModule
- *
  * @covers \Fisharebest\Webtrees\Module\BingWebmasterToolsModule
  */
 class BingWebmasterToolsModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\BingWebmasterToolsModule::class));
+        self::assertTrue(class_exists(BingWebmasterToolsModule::class));
     }
 }

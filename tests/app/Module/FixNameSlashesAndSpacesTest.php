@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FixNameSlashesAndSpaces
- *
  * @covers \Fisharebest\Webtrees\Module\FixNameSlashesAndSpaces
  */
 class FixNameSlashesAndSpacesTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FixNameSlashesAndSpaces::class));
+        self::assertTrue(class_exists(FixNameSlashesAndSpaces::class));
     }
 }

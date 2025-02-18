@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class UseLanguage
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\UseLanguage
  */
 class UseLanguageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\UseLanguage::class));
+        self::assertTrue(class_exists(UseLanguage::class));
     }
 }

@@ -31,8 +31,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the AuthEditor middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\AuthEditor
  */
 class AuthEditorTest extends TestCase

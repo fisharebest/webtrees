@@ -23,14 +23,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusColumnNull
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnNull
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnNullTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnNull
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNull(): void
     {
         $individual = $this->createMock(Individual::class);

@@ -32,13 +32,10 @@ use Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 
 /**
- * Test harness for the class SurnameTradition
+ * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory
  */
 class SurnameTraditionFactoryTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::make
-     */
     public function testCreate(): void
     {
         $factory = new SurnameTraditionFactory();
@@ -54,11 +51,6 @@ class SurnameTraditionFactoryTest extends TestCase
         self::assertInstanceOf(SpanishSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::SPANISH));
     }
 
-    /**
-     * Test create() with invalid input
-     *
-     * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::make
-     */
     public function testCreateInvalid(): void
     {
         $factory = new SurnameTraditionFactory();
@@ -66,11 +58,6 @@ class SurnameTraditionFactoryTest extends TestCase
         self::assertInstanceOf(DefaultSurnameTradition::class, $factory->make('FOOBAR'));
     }
 
-    /**
-     * Test allDescriptions()
-     *
-     * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::list
-     */
     public function testAllDescriptions(): void
     {
         $descriptions = Registry::surnameTraditionFactory()->list();

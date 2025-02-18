@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MessageService
- *
  * @covers \Fisharebest\Webtrees\Services\MessageService
  */
 class MessageServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\MessageService::class));
+        self::assertTrue(class_exists(MessageService::class));
     }
 }

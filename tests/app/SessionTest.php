@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class Session
- *
  * @covers \Fisharebest\Webtrees\Session
  */
 class SessionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Session::class));
+        self::assertTrue(class_exists(Session::class));
     }
 }

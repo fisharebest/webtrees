@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LinkSpouseToIndividualAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualAction
  */
 class LinkSpouseToIndividualActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualAction::class));
+        self::assertTrue(class_exists(LinkSpouseToIndividualAction::class));
     }
 }

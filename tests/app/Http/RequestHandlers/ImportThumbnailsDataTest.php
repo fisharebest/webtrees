@@ -26,8 +26,6 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test ImportThumbnailsData class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsData
  */
 class ImportThumbnailsDataTest extends TestCase

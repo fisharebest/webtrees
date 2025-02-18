@@ -23,14 +23,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusColumnGivenNameInitial
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnGivenNameInitialTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testOneGivenName(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -43,10 +40,6 @@ class CensusColumnGivenNameInitialTest extends TestCase
         self::assertSame('Joe', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testMultipleGivenNames(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -59,10 +52,6 @@ class CensusColumnGivenNameInitialTest extends TestCase
         self::assertSame('Joe F', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnGivenNameInitial
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNoName(): void
     {
         $individual = $this->createMock(Individual::class);

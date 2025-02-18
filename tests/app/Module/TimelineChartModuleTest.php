@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class TimelineChartModule
- *
  * @covers \Fisharebest\Webtrees\Module\TimelineChartModule
  */
 class TimelineChartModuleTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(TimelineChartModule::class));

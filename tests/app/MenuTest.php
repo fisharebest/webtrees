@@ -20,13 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class Menu
+ * @covers \Fisharebest\Webtrees\Menu
  */
 class MenuTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Menu::__construct
-     */
     public function testConstructorDefaults(): void
     {
         $menu = new Menu('Test!');
@@ -38,9 +35,6 @@ class MenuTest extends TestCase
         self::assertSame([], $menu->getSubmenus());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Menu::__construct
-     */
     public function testConstructorNonDefaults(): void
     {
         $submenus = [new Menu('Submenu')];
@@ -53,10 +47,6 @@ class MenuTest extends TestCase
         self::assertSame($submenus, $menu->getSubmenus());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Menu::getLabel
-     * @covers \Fisharebest\Webtrees\Menu::setLabel
-     */
     public function testGetterSetterLabel(): void
     {
         $menu = new Menu('Test!');
@@ -67,10 +57,6 @@ class MenuTest extends TestCase
         self::assertSame('Label', $menu->getLabel());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Menu::getLink
-     * @covers \Fisharebest\Webtrees\Menu::setLink
-     */
     public function testGetterSetterLink(): void
     {
         $menu = new Menu('Test!');
@@ -81,10 +67,6 @@ class MenuTest extends TestCase
         self::assertSame('link.html', $menu->getLink());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Menu::getClass
-     * @covers \Fisharebest\Webtrees\Menu::setClass
-     */
     public function testGetterSetterId(): void
     {
         $menu = new Menu('Test!');
@@ -95,10 +77,6 @@ class MenuTest extends TestCase
         self::assertSame('link-class', $menu->getClass());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Menu::getAttrs
-     * @covers \Fisharebest\Webtrees\Menu::setAttrs
-     */
     public function testGetterSetterAttrs(): void
     {
         $menu = new Menu('Test!');
@@ -109,10 +87,6 @@ class MenuTest extends TestCase
         self::assertSame(['foo' => 'bar'], $menu->getAttrs());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Menu::getSubmenus
-     * @covers \Fisharebest\Webtrees\Menu::setSubmenus
-     */
     public function testGetterSetterSubmenus(): void
     {
         $menu     = new Menu('Test!');

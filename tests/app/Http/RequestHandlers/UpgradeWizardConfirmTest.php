@@ -23,8 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test UpgradeController class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardConfirm
  */
 class UpgradeWizardConfirmTest extends TestCase

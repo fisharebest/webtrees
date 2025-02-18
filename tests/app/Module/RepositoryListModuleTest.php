@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RepositoryListModule
- *
  * @covers \Fisharebest\Webtrees\Module\RepositoryListModule
  */
 class RepositoryListModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\RepositoryListModule::class));
+        self::assertTrue(class_exists(RepositoryListModule::class));
     }
 }

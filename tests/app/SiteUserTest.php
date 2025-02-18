@@ -22,18 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 
 /**
- * Test the SiteUser class
+ * @covers \Fisharebest\Webtrees\SiteUser
  */
 class SiteUserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @covers \Fisharebest\Webtrees\SiteUser::id
-     * @covers \Fisharebest\Webtrees\SiteUser::email
-     * @covers \Fisharebest\Webtrees\SiteUser::realName
-     * @covers \Fisharebest\Webtrees\SiteUser::userName
-     */
     public function testConstructor(): void
     {
         $user = new SiteUser();
@@ -46,10 +40,6 @@ class SiteUserTest extends TestCase
         self::assertSame('', $user->userName());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\SiteUser::getPreference
-     * @covers \Fisharebest\Webtrees\SiteUser::setPreference
-     */
     public function testPreferences(): void
     {
         $user = new SiteUser();

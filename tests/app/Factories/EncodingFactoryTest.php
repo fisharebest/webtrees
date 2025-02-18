@@ -35,115 +35,95 @@ use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class EncodingFactory
- *
  * @covers \Fisharebest\Webtrees\Factories\EncodingFactory
  */
 class EncodingFactoryTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testDetectUsingByteOrderMark(): void
     {
         $factory = new EncodingFactory();
 
-        static::assertInstanceOf(
+        self::assertInstanceOf(
             UTF8::class,
             $factory->detect(UTF8::BYTE_ORDER_MARK)
         );
 
-        static::assertInstanceOf(
+        self::assertInstanceOf(
             UTF16BE::class,
             $factory->detect(UTF16BE::BYTE_ORDER_MARK)
         );
 
-        static::assertInstanceOf(
+        self::assertInstanceOf(
             UTF16LE::class,
             $factory->detect(UTF16LE::BYTE_ORDER_MARK)
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testDetectUtf16UsingNullBytes(): void
     {
         $factory = new EncodingFactory();
 
-        static::assertInstanceOf(
+        self::assertInstanceOf(
             UTF16BE::class,
             $factory->detect("\x000")
         );
 
-        static::assertInstanceOf(
+        self::assertInstanceOf(
             UTF16LE::class,
             $factory->detect("0\x00")
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testDetectByCharAndVers(): void
     {
         $factory = new EncodingFactory();
 
-        static::assertInstanceOf(
+        self::assertInstanceOf(
             MacRoman::class,
             $factory->detect("0 HEAD\n1 CHAR MACINTOSH\n0 TRLR")
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
-     */
     public function testMissingCharHeader(): void
     {
         $factory = new EncodingFactory();
 
-        static::assertInstanceOf(
+        self::assertInstanceOf(
             UTF8::class,
             $factory->detect("0 HEAD\n0 TRLR")
         );
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::make
-     */
     public function testMake(): void
     {
         $factory = new EncodingFactory();
 
-        static::assertInstanceOf(UTF8::class, $factory->make(UTF8::NAME));
-        static::assertInstanceOf(UTF16BE::class, $factory->make(UTF16BE::NAME));
-        static::assertInstanceOf(UTF16LE::class, $factory->make(UTF16LE::NAME));
-        static::assertInstanceOf(ANSEL::class, $factory->make(ANSEL::NAME));
-        static::assertInstanceOf(ASCII::class, $factory->make(ASCII::NAME));
-        static::assertInstanceOf(CP437::class, $factory->make(CP437::NAME));
-        static::assertInstanceOf(CP850::class, $factory->make(CP850::NAME));
-        static::assertInstanceOf(Windows1250::class, $factory->make(Windows1250::NAME));
-        static::assertInstanceOf(Windows1251::class, $factory->make(Windows1251::NAME));
-        static::assertInstanceOf(Windows1252::class, $factory->make(Windows1252::NAME));
-        static::assertInstanceOf(MacRoman::class, $factory->make(MacRoman::NAME));
+        self::assertInstanceOf(UTF8::class, $factory->make(UTF8::NAME));
+        self::assertInstanceOf(UTF16BE::class, $factory->make(UTF16BE::NAME));
+        self::assertInstanceOf(UTF16LE::class, $factory->make(UTF16LE::NAME));
+        self::assertInstanceOf(ANSEL::class, $factory->make(ANSEL::NAME));
+        self::assertInstanceOf(ASCII::class, $factory->make(ASCII::NAME));
+        self::assertInstanceOf(CP437::class, $factory->make(CP437::NAME));
+        self::assertInstanceOf(CP850::class, $factory->make(CP850::NAME));
+        self::assertInstanceOf(Windows1250::class, $factory->make(Windows1250::NAME));
+        self::assertInstanceOf(Windows1251::class, $factory->make(Windows1251::NAME));
+        self::assertInstanceOf(Windows1252::class, $factory->make(Windows1252::NAME));
+        self::assertInstanceOf(MacRoman::class, $factory->make(MacRoman::NAME));
 
         $this->expectException(DomainException::class);
         $factory->make('Not the name of a valid encoding');
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::list
-     */
     public function testListedEncodingNamesCanBeCreated(): void
     {
         $factory = new EncodingFactory();
 
         $encodings = $factory->list();
 
-        static::assertCount(13, $encodings);
-
         foreach ($encodings as $key => $value) {
-            static::assertInstanceOf(EncodingInterface::class, $factory->make($key));
+            $factory->make($key);
         }
+
+        self::assertCount(13, $encodings);
     }
 }

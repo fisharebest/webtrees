@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FaviconIco
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\FaviconIco
  */
 class FaviconIcoTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\FaviconIco::class));
+        self::assertTrue(class_exists(FaviconIco::class));
     }
 }

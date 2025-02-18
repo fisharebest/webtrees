@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class JewishDate
- *
  * @covers \Fisharebest\Webtrees\Date\JewishDate
  */
 class JewishDateTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(JewishDate::class));

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ControlPanel
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel
  */
 class ControlPanelTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel::class));
+        self::assertTrue(class_exists(ControlPanel::class));
     }
 }

@@ -40,23 +40,23 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testRedirect(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree
             ->method('name')
             ->willReturn('tree1');
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
             ->willReturn(new Collection(['tree1' => $tree]));
 
-        $media = $this->createStub(Media::class);
+        $media = $this->createMock(Media::class);
         $media
             ->method('url')
             ->willReturn('https://www.example.com');
 
-        $media_factory = $this->createStub(MediaFactory::class);
+        $media_factory = $this->createMock(MediaFactory::class);
         $media_factory
             ->expects(self::once())
             ->method('make')
@@ -67,10 +67,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
         $handler = new RedirectMediaViewerPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'mid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $response = $handler->handle($request);
 
@@ -80,20 +77,17 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testNoSuchRecord(): void
     {
-        $tree = $this->createStub(Tree::class);
+        $tree = $this->createMock(Tree::class);
 
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
-            ->willReturn(new Collection([$tree]));
+            ->willReturn(new Collection(['tree1' => $tree]));
 
         $handler = new RedirectMediaViewerPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'mid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -102,7 +96,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testNoSuchTree(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
         $tree_service
             ->expects(self::once())
             ->method('all')
@@ -110,10 +104,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
         $handler = new RedirectMediaViewerPhp($tree_service);
 
-        $request = self::createRequest(
-            RequestMethodInterface::METHOD_GET,
-            ['ged' => 'tree1', 'mid' => 'X123']
-        );
+        $request = self::createRequest(RequestMethodInterface::METHOD_GET, ['ged' => 'tree1', 'mid' => 'X123']);
 
         $this->expectException(HttpGoneException::class);
 
@@ -122,7 +113,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testMissingTreeParameter(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
 
         $handler = new RedirectFamilyPhp($tree_service);
 
@@ -135,7 +126,7 @@ class RedirectMediaViewerPhpTest extends TestCase
 
     public function testMissingXrefParameter(): void
     {
-        $tree_service = $this->createStub(TreeService::class);
+        $tree_service = $this->createMock(TreeService::class);
 
         $handler = new RedirectFamilyPhp($tree_service);
 

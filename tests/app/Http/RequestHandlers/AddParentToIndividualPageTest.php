@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class AddParentToIndividualPage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualPage
  */
 class AddParentToIndividualPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualPage::class));
+        self::assertTrue(class_exists(AddParentToIndividualPage::class));
     }
 }

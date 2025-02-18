@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MediaTabModule
- *
  * @covers \Fisharebest\Webtrees\Module\MediaTabModule
  */
 class MediaTabModuleTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(MediaTabModule::class));

@@ -41,7 +41,7 @@ function ini_get(...$args)
 }
 
 /**
- * Test harness for the class TimeoutService
+ * @covers \Fisharebest\Webtrees\Services\TimeoutService
  */
 class TimeoutServiceTest extends TestCase
 {
@@ -59,10 +59,6 @@ class TimeoutServiceTest extends TestCase
         self::$mock_functions = null;
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     */
     public function testNoTimeOut(): void
     {
         $now = 1500000000.0;
@@ -77,10 +73,6 @@ class TimeoutServiceTest extends TestCase
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     */
     public function testTimeOutReached(): void
     {
         $now = 1500000000.0;
@@ -99,10 +91,6 @@ class TimeoutServiceTest extends TestCase
         self::assertTrue($timeout_service->isTimeNearlyUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeNearlyUp
-     */
     public function testTimeOutNotReached(): void
     {
         $now = Registry::timeFactory()->now();
@@ -121,10 +109,6 @@ class TimeoutServiceTest extends TestCase
         self::assertFalse($timeout_service->isTimeNearlyUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
-     */
     public function testTimeLimitNotReached(): void
     {
         $now = Registry::timeFactory()->now();
@@ -138,10 +122,6 @@ class TimeoutServiceTest extends TestCase
         self::assertFalse($timeout_service->isTimeLimitUp());
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::__construct
-     * @covers \Fisharebest\Webtrees\Services\TimeoutService::isTimeLimitUp
-     */
     public function testTimeLimitReached(): void
     {
         $now = Registry::timeFactory()->now();

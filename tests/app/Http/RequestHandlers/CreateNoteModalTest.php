@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CreateNoteModal
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal
  */
 class CreateNoteModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal::class));
+        self::assertTrue(class_exists(CreateNoteModal::class));
     }
 }

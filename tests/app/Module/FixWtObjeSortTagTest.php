@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FixWtObjeSortTag
- *
  * @covers \Fisharebest\Webtrees\Module\FixWtObjeSortTag
  */
 class FixWtObjeSortTagTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FixWtObjeSortTag::class));
+        self::assertTrue(class_exists(FixWtObjeSortTag::class));
     }
 }

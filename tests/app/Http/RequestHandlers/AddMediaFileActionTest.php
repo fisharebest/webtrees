@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class AddMediaFileAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileAction
  */
 class AddMediaFileActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileAction::class));
+        self::assertTrue(class_exists(AddMediaFileAction::class));
     }
 }

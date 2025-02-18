@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MapBox
- *
  * @covers \Fisharebest\Webtrees\Module\MapBox
  */
 class MapBoxTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\MapBox::class));
+        self::assertTrue(class_exists(MapBox::class));
     }
 }

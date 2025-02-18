@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ReorderNamesPage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage
  */
 class ReorderNamesPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage::class));
+        self::assertTrue(class_exists(ReorderNamesPage::class));
     }
 }

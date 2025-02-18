@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CalendarMenuModule
- *
  * @covers \Fisharebest\Webtrees\Module\CalendarMenuModule
  */
 class CalendarMenuModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\CalendarMenuModule::class));
+        self::assertTrue(class_exists(CalendarMenuModule::class));
     }
 }

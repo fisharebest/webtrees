@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class MediaPage
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MediaPage
  */
 class MediaPageTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\MediaPage::class));
+        self::assertTrue(class_exists(MediaPage::class));
     }
 }

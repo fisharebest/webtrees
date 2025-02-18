@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RightToLeftSupport
- *
  * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
  */
 class RightToLeftSupportTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\RightToLeftSupport::class));
+        self::assertTrue(class_exists(RightToLeftSupport::class));
     }
 }

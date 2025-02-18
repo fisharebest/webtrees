@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpGoneException;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -57,24 +58,29 @@ class RedirectAncestryPhp implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged         = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
-        $root_id     = Validator::queryParams($request)->string('rootid', '');
-        $generations = Validator::queryParams($request)->string('PEDIGREE_GENERATIONS', AncestorsChartModule::DEFAULT_GENERATIONS);
-        $chart_style = Validator::queryParams($request)->string('chart_style', '');
-        $tree        = $this->tree_service->all()->get($ged);
-        $module      = $this->module_service->findByInterface(AncestorsChartModule::class)->first();
+        $ged  = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $tree = $this->tree_service->all()->get($ged);
 
-        if ($tree instanceof Tree && $module instanceof AncestorsChartModule) {
-            $individual = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
+        if ($tree instanceof Tree) {
+            $module = $this->module_service
+                ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleChartInterface $module): bool => $module instanceof AncestorsChartModule);
 
-            $url = $module->chartUrl($individual, [
-                'generations' => $generations,
-                'style'       => self::CHART_STYLES[$chart_style] ?? AncestorsChartModule::DEFAULT_STYLE,
-            ]);
+            if ($module instanceof AncestorsChartModule) {
+                $xref        = Validator::queryParams($request)->string('rootid', '');
+                $generations = Validator::queryParams($request)->string('PEDIGREE_GENERATIONS', AncestorsChartModule::DEFAULT_GENERATIONS);
+                $chart_style = Validator::queryParams($request)->string('chart_style', '');
+                $individual  = Registry::individualFactory()->make($xref, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            return Registry::responseFactory()
-                ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
-                ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+                $url = $module->chartUrl($individual, [
+                    'generations' => $generations,
+                    'style'       => self::CHART_STYLES[$chart_style] ?? AncestorsChartModule::DEFAULT_STYLE,
+                ]);
+
+                return Registry::responseFactory()
+                    ->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY)
+                    ->withHeader('Link', '<' . $url . '>; rel="canonical"');
+            }
         }
 
         throw new HttpGoneException();

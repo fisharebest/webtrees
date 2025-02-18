@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LanguageNorwegianBokmal
- *
  * @covers \Fisharebest\Webtrees\Module\LanguageNorwegianBokmal
  */
 class LanguageNorwegianBokmalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\LanguageNorwegianBokmal::class));
+        self::assertTrue(class_exists(LanguageNorwegianBokmal::class));
     }
 }

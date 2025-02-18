@@ -22,15 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CompactTreeChartModule
- *
  * @covers \Fisharebest\Webtrees\Module\CompactTreeChartModule
  */
 class CompactTreeChartModuleTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(CompactTreeChartModule::class));

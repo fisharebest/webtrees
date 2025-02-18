@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class DeleteTreeAction
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction
  */
 class DeleteTreeActionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\DeleteTreeAction::class));
+        self::assertTrue(class_exists(DeleteTreeAction::class));
     }
 }

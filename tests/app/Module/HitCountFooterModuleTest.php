@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HitCountFooterModule
- *
  * @covers \Fisharebest\Webtrees\Module\HitCountFooterModule
  */
 class HitCountFooterModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\HitCountFooterModule::class));
+        self::assertTrue(class_exists(HitCountFooterModule::class));
     }
 }

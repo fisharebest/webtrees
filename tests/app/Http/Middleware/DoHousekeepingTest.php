@@ -27,8 +27,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the DoHousekeeping middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\DoHousekeeping
  */
 class DoHousekeepingTest extends TestCase

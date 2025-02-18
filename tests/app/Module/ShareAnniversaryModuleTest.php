@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ShareAnniversaryModule
- *
  * @covers \Fisharebest\Webtrees\Module\ShareAnniversaryModule
  */
 class ShareAnniversaryModuleTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\ShareAnniversaryModule::class));
+        self::assertTrue(class_exists(ShareAnniversaryModule::class));
     }
 }

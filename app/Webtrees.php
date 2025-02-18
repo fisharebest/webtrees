@@ -59,6 +59,7 @@ use Fisharebest\Webtrees\Http\Middleware\CompressResponse;
 use Fisharebest\Webtrees\Http\Middleware\ContentLength;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
+use Fisharebest\Webtrees\Http\Middleware\ErrorHandler;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
@@ -156,6 +157,7 @@ class Webtrees
     public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-5-5-1.pdf';
 
     private const MIDDLEWARE = [
+        ErrorHandler::class,
         EmitResponse::class,
         ReadConfigIni::class,
         BaseUrl::class,
@@ -183,14 +185,11 @@ class Webtrees
 
     /**
      * Initialise the application.
-     *
-     * @return void
      */
-    public function bootstrap(): void
+    public function bootstrap(): self
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
-        set_error_handler($this->phpErrorHandler());
 
         // All modern software uses UTF-8 encoding.
         mb_internal_encoding('UTF-8');
@@ -228,12 +227,12 @@ class Webtrees
         Registry::xrefFactory(new XrefFactory());
 
         stream_filter_register(GedcomEncodingFilter::class, GedcomEncodingFilter::class);
+
+        return $this;
     }
 
     /**
      * Respond to a CLI request.
-     *
-     * @return void
      */
     public function cliRequest(): void
     {
@@ -242,8 +241,6 @@ class Webtrees
 
     /**
      * Respond to an HTTP request.
-     *
-     * @return ResponseInterface
      */
     public function httpRequest(): ResponseInterface
     {
@@ -276,26 +273,6 @@ class Webtrees
         return $dispatcher->dispatch($request);
     }
 
-    /**
-     * An error handler that can be passed to set_error_handler().
-     *
-     * @return Closure(int,string,string,int):bool
-     */
-    private function phpErrorHandler(): Closure
-    {
-        return static function (int $errno, string $errstr, string $errfile, int $errline): bool {
-            // Ignore errors that are silenced with '@'
-            if ((error_reporting() & $errno) !== 0) {
-                throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
-            }
-
-            return true;
-        };
-    }
-
-    /**
-     * @return ContainerInterface
-     */
     public static function container(): ContainerInterface
     {
         return Container::getInstance();

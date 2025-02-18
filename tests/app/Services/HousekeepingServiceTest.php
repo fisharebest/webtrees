@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Services;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class HousekeepingService
- *
  * @covers \Fisharebest\Webtrees\Services\HousekeepingService
  */
 class HousekeepingServiceTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Services\HousekeepingService::class));
+        self::assertTrue(class_exists(HousekeepingService::class));
     }
 }

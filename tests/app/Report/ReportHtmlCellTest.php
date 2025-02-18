@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Report;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ReportHtmlCell
- *
  * @covers \Fisharebest\Webtrees\Report\ReportHtmlCell
  */
 class ReportHtmlCellTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Report\ReportHtmlCell::class));
+        self::assertTrue(class_exists(ReportHtmlCell::class));
     }
 }

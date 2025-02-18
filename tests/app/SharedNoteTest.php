@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SharedNote
- *
  * @covers \Fisharebest\Webtrees\SharedNote
  */
 class SharedNoteTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\SharedNote::class));
+        self::assertTrue(class_exists(SharedNote::class));
     }
 }

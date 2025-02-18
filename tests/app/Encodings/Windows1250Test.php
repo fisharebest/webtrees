@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
+use Fisharebest\Webtrees\Encodings\AbstractEncoding;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Encodings\Windows1250;
 use PHPUnit\Framework\TestCase;
@@ -29,14 +30,11 @@ use function iconv;
 use function range;
 
 /**
- * Tests for class Windows1250.
+ * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
+ * @covers \Fisharebest\Webtrees\Encodings\Windows1250
  */
 class Windows1250Test extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Encodings\AbstractEncoding
-     * @covers \Fisharebest\Webtrees\Encodings\Windows1250
-     */
     public function testToUtf8(): void
     {
         $encoding = new Windows1250();
@@ -47,7 +45,7 @@ class Windows1250Test extends TestCase
             $expected  = iconv(Windows1250::NAME, 'UTF-8//IGNORE', $character);
             $expected  = $expected === '' ? UTF8::REPLACEMENT_CHARACTER : $expected;
 
-            static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+            self::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
         }
     }
 }

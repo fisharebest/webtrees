@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
-use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
 use function array_filter;

@@ -23,14 +23,11 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusColumnSurname
+ * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
+ * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
  */
 class CensusColumnSurnameTest extends TestCase
 {
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testSurname(): void
     {
         $individual = $this->createMock(Individual::class);
@@ -43,10 +40,6 @@ class CensusColumnSurnameTest extends TestCase
         self::assertSame('Bloggs', $column->generate($individual, $individual));
     }
 
-    /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnSurname
-     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
-     */
     public function testNoName(): void
     {
         $individual = $this->createMock(Individual::class);

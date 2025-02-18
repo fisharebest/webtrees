@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Factories;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class ElementFactory
- *
  * @covers \Fisharebest\Webtrees\Factories\ElementFactory
  */
 class ElementFactoryTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Factories\ElementFactory::class));
+        self::assertTrue(class_exists(ElementFactory::class));
     }
 }

@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class LinkMediaToFamilyModal
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToFamilyModal
  */
 class LinkMediaToFamilyModalTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToFamilyModal::class));
+        self::assertTrue(class_exists(LinkMediaToFamilyModal::class));
     }
 }

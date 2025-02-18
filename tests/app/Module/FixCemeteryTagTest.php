@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FixCemeteryTag
- *
  * @covers \Fisharebest\Webtrees\Module\FixCemeteryTag
  */
 class FixCemeteryTagTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FixCemeteryTag::class));
+        self::assertTrue(class_exists(FixCemeteryTag::class));
     }
 }

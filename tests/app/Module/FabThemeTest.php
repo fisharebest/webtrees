@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class FabTheme
- *
  * @covers \Fisharebest\Webtrees\Module\FabTheme
  */
 class FabThemeTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Module\FabTheme::class));
+        self::assertTrue(class_exists(FabTheme::class));
     }
 }

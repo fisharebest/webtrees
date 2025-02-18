@@ -26,8 +26,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function response;
 
 /**
- * Test the NoRouteFound middleware.
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\NoRouteFound
  */
 class NoRouteFoundTest extends TestCase

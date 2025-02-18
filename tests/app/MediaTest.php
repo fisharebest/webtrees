@@ -20,15 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 /**
- * Test harness for the class Media
- *
  * @covers \Fisharebest\Webtrees\Media
  */
 class MediaTest extends TestCase
 {
-    /**
-     * Test that the class exists
-     */
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Media::class));

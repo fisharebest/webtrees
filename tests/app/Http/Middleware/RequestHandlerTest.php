@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RequestHandler
- *
  * @covers \Fisharebest\Webtrees\Http\Middleware\RequestHandler
  */
 class RequestHandlerTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Http\Middleware\RequestHandler::class));
+        self::assertTrue(class_exists(RequestHandler::class));
     }
 }

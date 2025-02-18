@@ -22,14 +22,12 @@ namespace Fisharebest\Webtrees\Exceptions;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class GedcomErrorException
- *
  * @covers \Fisharebest\Webtrees\Exceptions\GedcomErrorException
  */
 class GedcomErrorExceptionTest extends TestCase
 {
     public function testClass(): void
     {
-        $this->assertTrue(class_exists(\Fisharebest\Webtrees\Exceptions\GedcomErrorException::class));
+        self::assertTrue(class_exists(GedcomErrorException::class));
     }
 }

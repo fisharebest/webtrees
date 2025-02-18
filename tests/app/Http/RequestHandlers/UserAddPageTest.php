@@ -23,8 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test UserAddPageTest class.
- *
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\UserAddPage
  */
 class UserAddPageTest extends TestCase
