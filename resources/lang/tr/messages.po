@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2024-03-04 12:16+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2025-02-20 11:50+0000\n"
+"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/tr/>\n"
 "Language: tr\n"
@@ -166,7 +166,7 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s M.Ö."
+msgstr "M.Ö. %s"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:360 app/MediaFile.php:312
@@ -445,7 +445,7 @@ msgstr "%s&nbsp;M.Ö"
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;M.S."
+msgstr "M.S. &nbsp;%s"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:861
@@ -3970,7 +3970,7 @@ msgstr "Genel hukuk evliliği"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "Ortak hukuk evliliği"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -4030,7 +4030,7 @@ msgstr "Veri tabanı sunucusuna bağlantı"
 
 #: resources/views/setup/step-4-database-mysql.phtml:49
 msgid "Connection type"
-msgstr "Bağlantı tipi"
+msgstr "Bağlantı türü"
 
 #. I18N: Name of a module
 #: app/Module/ContactsFooterModule.php:55
@@ -13533,7 +13533,7 @@ msgstr "Webtrees için kurulum sihirbazı"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "Cinsiyet"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
@@ -15359,8 +15359,8 @@ msgid ""
 "The most common family facts and events are listed separately, so that they "
 "can be added more easily."
 msgstr ""
-"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için "
-"ayrıca listelenmiştir."
+"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için ayrı "
+"listelenmiştir."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:659
@@ -15369,7 +15369,7 @@ msgid ""
 "they can be added more easily."
 msgstr ""
 "En yaygın bireysel gerçekler ve olaylar, daha kolay eklenebilmeleri için "
-"ayrıca listelenmiştir."
+"ayrı listelenmiştir."
 
 #: resources/views/admin/site-registration.phtml:56
 msgid ""
@@ -15402,7 +15402,7 @@ msgstr "“%s” parametresi eksik."
 #: app/Http/RequestHandlers/AdminMediaFileDownload.php:66
 #: app/Http/RequestHandlers/AdminMediaFileThumbnail.php:66
 msgid "The parameter “path” is invalid."
-msgstr "Geçersiz parametre “path”."
+msgstr "“path” parametresi geçersiz."
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "The password needs to be at least six characters long."
@@ -15651,7 +15651,7 @@ msgstr "Bu birey için hiçbir gerçek yoktur."
 #: app/Module/IndividualListModule.php:224
 #, php-format
 msgid "There are no individuals with the surname “%s”"
-msgstr "Soyadı “%s” olan bir birey bulunmuyor"
+msgstr "“%s” soyadına sahip hiçbir birey bulunmamaktadır"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:326
 #: app/Http/RequestHandlers/ManageMediaData.php:327
@@ -18711,7 +18711,7 @@ msgstr "dosyayı dışa aktar"
 #: app/Elements/GeneatiqueAct.php:42
 msgctxt "NOUN"
 msgid "extract"
-msgstr "çıkar"
+msgstr "çıkart"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:113
 #: resources/xml/reports/fact_sources.xml:6
