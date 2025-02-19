@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2024-12-02 12:38+0000\n"
+"PO-Revision-Date: 2025-02-20 11:50+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/tr/>\n"
@@ -165,7 +165,7 @@ msgstr "%j %F %Y"
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr "%s M.Ö."
+msgstr "M.Ö. %s"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:312 app/MediaFile.php:320
@@ -421,7 +421,7 @@ msgstr "%s&nbsp;M.Ö"
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;M.S."
+msgstr "M.S. &nbsp;%s"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:866
@@ -14505,15 +14505,15 @@ msgstr "“%s” modülü etkinleştirildi."
 #: resources/views/admin/trees-preferences.phtml:779
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
-"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için "
-"ayrıca listelenmiştir."
+"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için ayrı "
+"listelenmiştir."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:725
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
 "En yaygın bireysel gerçekler ve olaylar, daha kolay eklenebilmeleri için "
-"ayrıca listelenmiştir."
+"ayrı listelenmiştir."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:861
