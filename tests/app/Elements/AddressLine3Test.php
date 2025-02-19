@@ -25,9 +25,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AddressLine3::class)]
 class AddressLine3Test extends AbstractElementTestCase
 {
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new AddressLine3('label');
     }

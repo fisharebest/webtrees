@@ -141,18 +141,18 @@ class TestCase extends \PHPUnit\Framework\TestCase
         (new WebRoutes())->load($router_container->getMap());
         Registry::container()->set(RouterContainer::class, $router_container);
 
+        I18N::init('en-US', true);
+
         if (static::$uses_database) {
             self::createTestDatabase();
+
+            I18N::init('en-US');
 
             // This is normally set in middleware.
             (new Gedcom())->registerTags(Registry::elementFactory(), true);
 
             // Boot modules
             (new ModuleService())->bootModules(new WebtreesTheme());
-
-            I18N::init('en-US');
-        } else {
-            I18N::init('en-US', true);
         }
 
         self::createRequest();

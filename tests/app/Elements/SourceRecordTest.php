@@ -25,9 +25,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(SourceRecord::class)]
 class SourceRecordTest extends AbstractElementTestCase
 {
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new SourceRecord('label');
     }

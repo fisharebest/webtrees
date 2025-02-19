@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Encodings\ANSEL;
 use Fisharebest\Webtrees\Encodings\ASCII;
 use Fisharebest\Webtrees\Encodings\CP437;
 use Fisharebest\Webtrees\Encodings\CP850;
-use Fisharebest\Webtrees\Encodings\EncodingInterface;
 use Fisharebest\Webtrees\Encodings\MacRoman;
 use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF16LE;

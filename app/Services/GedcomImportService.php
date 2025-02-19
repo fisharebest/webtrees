@@ -53,7 +53,6 @@ use function preg_match;
 use function preg_match_all;
 use function preg_replace;
 use function round;
-use function serialize;
 use function str_contains;
 use function str_replace;
 use function str_starts_with;

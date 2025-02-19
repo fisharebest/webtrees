@@ -25,9 +25,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(NamePieceSurname::class)]
 class NamePieceSurnameTest extends AbstractElementTestCase
 {
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new NamePieceSurname('label');
     }

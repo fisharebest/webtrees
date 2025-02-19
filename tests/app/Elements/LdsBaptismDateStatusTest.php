@@ -25,9 +25,9 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(LdsBaptismDateStatus::class)]
 class LdsBaptismDateStatusTest extends AbstractElementTestCase
 {
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new LdsBaptismDateStatus('label');
     }

@@ -32,7 +32,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 {
     private ServerRequestInterface $request;
 
-    private ?object $row = null;
+    private object|null $row = null;
 
     public function __construct(ServerRequestInterface $request)
     {

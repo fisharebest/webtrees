@@ -33,7 +33,6 @@ use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\TestCase;
-use Fisharebest\Webtrees\Webtrees;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(ModuleService::class)]

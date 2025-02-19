@@ -20,13 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
-
-use function array_column;
-use function array_sum;
-use function view;
 
 /**
  * Find ancestors, descendants, cousins, etc for drawing charts.

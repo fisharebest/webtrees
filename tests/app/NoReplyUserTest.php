@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(NoReplyUser::class)]

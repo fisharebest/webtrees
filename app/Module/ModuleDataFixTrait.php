@@ -57,7 +57,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<int,object>
+     * @return Collection<int,object{xref:string,type:string}>
      */
     public function recordsToFix(Tree $tree, array $params): Collection
     {
@@ -406,7 +406,7 @@ trait ModuleDataFixTrait
      * @param Tree                   $tree
      * @param string                 $type
      *
-     * @return Collection<int,object>
+     * @return Collection<int,object{xref:string,type:string}>
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {

@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 class NewZealandPrimeMinisters extends AbstractModule implements ModuleHistoricEventsInterface

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Relationship;
-use Illuminate\Database\Query\Builder;
 
 /**
  * Interface ModuleLanguageInterface - provide translation and localization.

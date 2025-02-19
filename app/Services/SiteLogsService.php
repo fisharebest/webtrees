@@ -25,7 +25,6 @@ use DateTimeZone;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\DB;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;

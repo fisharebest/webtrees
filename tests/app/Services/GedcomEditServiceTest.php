@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Http\RequestHandlers\FixLevel0MediaDataTest;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use PHPUnit\Framework\Attributes\CoversClass;

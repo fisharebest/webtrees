@@ -300,7 +300,7 @@ class Validator
             $value = null;
         }
 
-        $callback = static fn (?float $value, Closure $rule): float|null => $rule($value);
+        $callback = static fn (float|null $value, Closure $rule): float|null => $rule($value);
 
         $value = array_reduce($this->rules, $callback, $value) ?? $default;
 

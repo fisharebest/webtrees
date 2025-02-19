@@ -916,14 +916,14 @@ readonly class StatisticsData
         return $date->display();
     }
 
-    public function isUserLoggedIn(?int $user_id): bool
+    public function isUserLoggedIn(int|null $user_id): bool
     {
         return $user_id !== null && DB::table('session')
             ->where('user_id', '=', $user_id)
             ->exists();
     }
 
-    public function latestUserId(): ?int
+    public function latestUserId(): int|null
     {
         $user_id = DB::table('user')
             ->select(['user.user_id'])

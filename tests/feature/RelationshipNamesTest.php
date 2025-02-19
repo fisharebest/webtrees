@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\LanguageFrench;
 use Fisharebest\Webtrees\Module\LanguageSlovakian;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
-use Fisharebest\Webtrees\Module\ModuleLanguageTrait;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use PHPUnit\Framework\Attributes\CoversClass;
 

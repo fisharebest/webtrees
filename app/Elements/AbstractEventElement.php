@@ -27,7 +27,7 @@ use function e;
 /**
  * Events which can take "Y" to indicate that they occurred, but date/place are unknown.
  */
-class AbstractEventElement extends AbstractElement
+abstract class AbstractEventElement extends AbstractElement
 {
     /**
      * Convert a value to a canonical form.

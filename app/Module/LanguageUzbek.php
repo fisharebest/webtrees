@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
-use Fisharebest\Localization\Locale\LocalePl;
 use Fisharebest\Localization\Locale\LocaleUz;
 use Fisharebest\Webtrees\Encodings\UTF8;
 

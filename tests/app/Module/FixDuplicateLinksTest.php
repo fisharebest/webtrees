@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(FixDuplicateLinks::class)]

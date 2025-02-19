@@ -43,7 +43,6 @@ use function array_intersect;
 use function dirname;
 use function explode;
 use function intdiv;
-use function is_float;
 use function min;
 use function pathinfo;
 use function sha1;
@@ -51,11 +50,9 @@ use function sort;
 use function str_contains;
 use function strtoupper;
 use function strtr;
-use function substr;
 use function trim;
 
 use const PATHINFO_EXTENSION;
-use const PHP_INT_MAX;
 use const UPLOAD_ERR_OK;
 
 /**

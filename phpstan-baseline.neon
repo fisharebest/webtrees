@@ -1693,39 +1693,15 @@ parameters:
 			path: app/Http/RequestHandlers/DataFixUpdate.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$type\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
 			message: '#^Binary operation "\+\=" between mixed and int results in an error\.$#'
 			identifier: assignOp.invalid
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
-			message: '#^Cannot access property \$xref on object\|null\.$#'
+			message: '#^Cannot access property \$xref on object\{xref\: string, type\: string\}\|null\.$#'
 			identifier: property.nonObject
 			count: 2
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Parameter \#1 \$xref of method Fisharebest\\Webtrees\\Services\\DataFixService\:\:getRecordByType\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Parameter \#2 \$parameters of function route expects array\<array\<string\>\|bool\|int\|string\|null\>, array\<mixed\> given\.$#'
-			identifier: argument.type
-			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
 
 		-
@@ -1742,12 +1718,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#2 \$params of method Fisharebest\\Webtrees\\Module\\ModuleDataFixInterface\:\:updateRecord\(\) expects array\<string, string\>, array given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Http/RequestHandlers/DataFixUpdateAll.php
-
-		-
-			message: '#^Parameter \#3 \$type of method Fisharebest\\Webtrees\\Services\\DataFixService\:\:getRecordByType\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
@@ -2029,13 +1999,13 @@ parameters:
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: '#^Cannot access offset ''0'' on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
+			message: '#^Cannot access offset 0 on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: '#^Cannot access offset ''1'' on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
+			message: '#^Cannot access offset 1 on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
@@ -3985,12 +3955,6 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixCemeteryTag.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixCemeteryTag\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -4001,12 +3965,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/FixCemeteryTag.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixDuplicateLinks.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixDuplicateLinks\:\:familiesToFix\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4081,12 +4039,6 @@ parameters:
 			path: app/Module/FixDuplicateLinks.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixMissingDeaths.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixMissingDeaths\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -4097,12 +4049,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/FixMissingDeaths.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameSlashesAndSpaces\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4129,12 +4075,6 @@ parameters:
 			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixNameTags.php
-
-		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameTags\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
 			identifier: return.type
 			count: 1
@@ -4151,12 +4091,6 @@ parameters:
 			identifier: notIdentical.alwaysTrue
 			count: 1
 			path: app/Module/FixNameTags.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixPlaceNames.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixPlaceNames\:\:familiesToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4183,12 +4117,6 @@ parameters:
 			path: app/Module/FixPlaceNames.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixPrimaryTag.php
-
-		-
 			message: '#^Binary operation "\." between "\\n" and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
@@ -4211,12 +4139,6 @@ parameters:
 			identifier: notIdentical.alwaysTrue
 			count: 1
 			path: app/Module/FixPrimaryTag.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixSearchAndReplace.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixSearchAndReplace\:\:familiesToFix\(\) should return Illuminate\\Support\\Collection\<int, string\>\|null but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -4277,12 +4199,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Module/FixSearchAndReplace.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$xref\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Module/FixWtObjeSortTag.php
 
 		-
 			message: '#^Method Fisharebest\\Webtrees\\Module\\FixWtObjeSortTag\:\:individualsToFix\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\(int\|string\), mixed\>\.$#'
@@ -6113,24 +6029,6 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Cannot assign new offset to array\<string\>\|string\.$#'
-			identifier: offsetAssign.dimType
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Report\\ReportParserSetup\:\:reportProperties\(\) should return array\{title\: string, description\: string, inputs\: array\<array\{name\: string, type\: string, lookup\: string, options\: string, default\: string, value\: string\}\>\} but returns array\<string, array\<string\>\|string\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
-			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserSetup\:\:\$data \(array\<string, array\<string\>\|string\>\) does not accept array\<string, mixed\>\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: app/Report/ReportParserSetup.php
 
 		-
 			message: '#^Binary operation "\*" between mixed and 2 results in an error\.$#'
