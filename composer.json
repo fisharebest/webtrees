@@ -152,9 +152,7 @@
     },
     "scripts-descriptions": {
         "webtrees:build": "Create a distribution file (webtrees.zip)",
-        "webtrees:check": "Run various static analysis tools",
         "webtrees:coverage": "Generate test coverage report",
-        "webtrees:lang": "Compile the language files (messages.php)",
         "webtrees:po": "Update the language (webtrees.pot, *.po)"
     }
 }

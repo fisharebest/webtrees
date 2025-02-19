@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@master
         with:
           php-version: ${{ matrix.php-version }}
           ini-file: 'development'
