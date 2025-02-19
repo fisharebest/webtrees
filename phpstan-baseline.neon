@@ -2395,13 +2395,13 @@ parameters:
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: '#^Cannot access offset ''0'' on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
+			message: '#^Cannot access offset 0 on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: '#^Cannot access offset ''1'' on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
+			message: '#^Cannot access offset 1 on array\{0\: int\<0, max\>, 1\: int\<0, max\>, 2\: int, 3\: string, mime\: string, channels\?\: int, bits\?\: int\}\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: app/Http/RequestHandlers/ManageMediaData.php
@@ -4591,7 +4591,7 @@ parameters:
 			path: app/Module/FixCemeteryTag.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixCemeteryTag\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixCemeteryTag\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixCemeteryTag.php
@@ -4603,7 +4603,7 @@ parameters:
 			path: app/Module/FixDuplicateLinks.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixDuplicateLinks\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixDuplicateLinks\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixDuplicateLinks.php
@@ -4639,7 +4639,7 @@ parameters:
 			path: app/Module/FixMissingDeaths.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixMissingDeaths\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixMissingDeaths\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixMissingDeaths.php
@@ -4651,7 +4651,7 @@ parameters:
 			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameSlashesAndSpaces\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameSlashesAndSpaces\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixNameSlashesAndSpaces.php
@@ -4675,7 +4675,7 @@ parameters:
 			path: app/Module/FixNameTags.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameTags\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixNameTags\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixNameTags.php
@@ -4693,7 +4693,7 @@ parameters:
 			path: app/Module/FixPlaceNames.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixPlaceNames\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixPlaceNames\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixPlaceNames.php
@@ -4711,7 +4711,7 @@ parameters:
 			path: app/Module/FixPrimaryTag.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixPrimaryTag\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixPrimaryTag\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixPrimaryTag.php
@@ -4729,7 +4729,7 @@ parameters:
 			path: app/Module/FixSearchAndReplace.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixSearchAndReplace\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixSearchAndReplace\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixSearchAndReplace.php
@@ -4747,7 +4747,7 @@ parameters:
 			path: app/Module/FixWtObjeSortTag.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Module\\FixWtObjeSortTag\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
+			message: '#^Method Fisharebest\\Webtrees\\Module\\FixWtObjeSortTag\:\:mergePendingRecords\(\) should return Illuminate\\Support\\Collection&iterable\<int, object\{xref\: string, type\: string\}\> but returns Illuminate\\Support\\Collection&iterable\<int, string\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Module/FixWtObjeSortTag.php
@@ -7151,24 +7151,6 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: '#^Cannot assign new offset to array\<string\>\|string\.$#'
-			identifier: offsetAssign.dimType
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Report\\ReportParserSetup\:\:reportProperties\(\) should return array\{title\: string, description\: string, inputs\: array\<array\{name\: string, type\: string, lookup\: string, options\: string, default\: string, value\: string\}\>\} but returns array\<string, array\<string\>\|string\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Report/ReportParserSetup.php
-
-		-
-			message: '#^Property Fisharebest\\Webtrees\\Report\\ReportParserSetup\:\:\$data \(array\<string, array\<string\>\|string\>\) does not accept array\<string, mixed\>\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: app/Report/ReportParserSetup.php
 
 		-
 			message: '#^Binary operation "\*" between mixed and 2 results in an error\.$#'
@@ -10345,13 +10327,13 @@ parameters:
 			path: resources/views/modules/share-anniversary/share.phtml
 
 		-
-			message: '#^Cannot call method Format\(\) on mixed\.$#'
+			message: '#^Cannot call method date\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: resources/views/modules/sitemap/sitemap-file-xml.phtml
 
 		-
-			message: '#^Cannot call method date\(\) on mixed\.$#'
+			message: '#^Cannot call method format\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
 			path: resources/views/modules/sitemap/sitemap-file-xml.phtml

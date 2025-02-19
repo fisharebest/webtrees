@@ -25,9 +25,9 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class ApprovedSystemIdTest extends AbstractElementTestCase
 {
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new ApprovedSystemId('label');
     }

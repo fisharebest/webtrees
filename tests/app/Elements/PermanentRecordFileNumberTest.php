@@ -25,9 +25,9 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class PermanentRecordFileNumberTest extends AbstractElementTestCase
 {
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new PermanentRecordFileNumber('label');
     }

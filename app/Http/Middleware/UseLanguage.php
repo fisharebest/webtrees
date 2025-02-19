@@ -33,8 +33,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function is_string;
-
 /**
  * Middleware to select a language.
  */

@@ -1003,7 +1003,7 @@ class Statistics
 
             $examples = Collection::make($public_methods)
                 ->filter(static fn (ReflectionMethod $method): bool => !in_array($method->getName(), $exclude, true))
-                ->filter(static fn(ReflectionMethod $method): bool => $method->getReturnType() instanceof ReflectionNamedType && $method->getReturnType()->getName() === 'string')
+                ->filter(static fn (ReflectionMethod $method): bool => $method->getReturnType() instanceof ReflectionNamedType && $method->getReturnType()->getName() === 'string')
                 ->sort(static fn (ReflectionMethod $x, ReflectionMethod $y): int => $x->getName() <=> $y->getName())
                 ->map(function (ReflectionMethod $method): string {
                     $tag = $method->getName();

@@ -25,9 +25,9 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class EngagementTest extends AbstractElementTestCase
 {
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new Engagement('label');
     }

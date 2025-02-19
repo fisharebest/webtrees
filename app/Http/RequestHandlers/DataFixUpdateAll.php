@@ -102,10 +102,10 @@ class DataFixUpdateAll implements RequestHandlerInterface
     }
 
     /**
-     * @param Tree                   $tree
-     * @param ModuleDataFixInterface $module
-     * @param Collection<int,object> $rows
-     * @param array<string>          $params
+     * @param Tree                                            $tree
+     * @param ModuleDataFixInterface                          $module
+     * @param Collection<int,object{xref:string,type:string}> $rows
+     * @param array<string>                                   $params
      *
      * @return ResponseInterface
      */

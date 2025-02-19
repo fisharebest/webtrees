@@ -24,7 +24,6 @@ use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\Localization\Locale\LocaleFa;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Encodings\UTF8;
-use Illuminate\Database\Query\Builder;
 
 class LanguageFarsi extends AbstractModule implements ModuleLanguageInterface
 {

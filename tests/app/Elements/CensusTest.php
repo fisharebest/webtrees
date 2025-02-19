@@ -27,9 +27,9 @@ class CensusTest extends AbstractElementTestCase
 {
     protected static bool $uses_database = true;
 
-    public static function setUpBeforeClass(): void
+    public function setUp(): void
     {
-        parent::setUpBeforeClass();
+        parent::setUp();
 
         self::$element = new Census('label');
     }
