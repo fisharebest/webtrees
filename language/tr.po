@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-12-02 12:38+0000\n"
+"PO-Revision-Date: 2025-02-20 11:50+0000\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tr/>\n"
@@ -192,7 +192,7 @@ msgstr "%j %F %Y"
 #: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
-msgstr "%s M.Ö."
+msgstr "M.Ö. %s"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:277
@@ -492,7 +492,7 @@ msgstr "%s&nbsp;M.Ö"
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;M.S."
+msgstr "M.S. &nbsp;%s"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
@@ -3550,7 +3550,7 @@ msgstr "Değişiklikler"
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Son %s gün içindeki değişiklikler"
-msgstr[1] "Son %s günler içindeki değişiklikler"
+msgstr[1] "Son %s gün içindeki değişiklikler"
 
 #: admin_trees_manage.php:529
 msgid "Changes log"
@@ -14089,15 +14089,15 @@ msgstr "“%s” modülü etkinleştirildi."
 #: admin_trees_config.php:1844
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
-"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için "
-"ayrıca listelenmiştir."
+"En yaygın aile gerçekleri ve olayları, daha kolay eklenebilmeleri için ayrı "
+"listelenmiştir."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1726
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
 "En yaygın bireysel gerçekler ve olaylar, daha kolay eklenebilmeleri için "
-"ayrıca listelenmiştir."
+"ayrı listelenmiştir."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
@@ -15383,16 +15383,16 @@ msgstr "Tonga"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "En çok %s verilen ad"
-msgstr[1] "En çok %s verilen adlar"
+msgstr[0] "En çok verilen %s ad"
+msgstr[1] "En çok verilen %s ad"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "En çok %s soyadı"
-msgstr[1] "En çok %s soyadları"
+msgstr[0] "En yaygın %s soyadı"
+msgstr[1] "En yaygın %s soyadı"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:71
