@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-02-18 03:17+0000\n"
+"PO-Revision-Date: 2025-02-20 11:50+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
@@ -4500,7 +4500,7 @@ msgstr "Data de nascimento"
 
 #: app/GedcomTag.php:216
 msgid "Date of blessing"
-msgstr "Data da Bênção"
+msgstr "Data da bênção"
 
 #: app/GedcomTag.php:1090
 msgid "Date of brit milah"
@@ -4546,7 +4546,7 @@ msgstr "Data do registo na fonte original"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr "Data do Evento"
+msgstr "Data do evento"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
@@ -11023,7 +11023,7 @@ msgstr "Local de nascimento"
 
 #: app/GedcomTag.php:218
 msgid "Place of blessing"
-msgstr "Local da Bênção"
+msgstr "Local da bênção"
 
 #: app/GedcomTag.php:1092
 msgid "Place of brit milah"
@@ -11060,7 +11060,7 @@ msgstr "Local do noivado"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr "Local do Evento"
+msgstr "Local do evento"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
