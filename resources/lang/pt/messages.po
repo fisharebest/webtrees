@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2025-02-18 03:17+0000\n"
+"PO-Revision-Date: 2025-02-20 11:50+0000\n"
 "Last-Translator: raaspt <alberto.r.a.almeida@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/pt/>\n"
@@ -4681,7 +4681,7 @@ msgstr "Data de nascimento"
 
 #: app/Factories/ElementFactory.php:1148 app/GedcomTag.php:512
 msgid "Date of blessing"
-msgstr "Data da Bênção"
+msgstr "Data da bênção"
 
 #: app/Factories/ElementFactory.php:299 app/GedcomTag.php:1054
 msgid "Date of brit milah"
@@ -4737,7 +4737,7 @@ msgstr "Data do registo na fonte original"
 
 #: app/Factories/ElementFactory.php:1195 app/GedcomTag.php:684
 msgid "Date of event"
-msgstr "Data do Evento"
+msgstr "Data do evento"
 
 #: app/Factories/ElementFactory.php:1205 app/GedcomTag.php:713
 #: resources/xml/reports/missing_facts_report.xml:378
@@ -11533,7 +11533,7 @@ msgstr "Local de nascimento"
 
 #: app/Factories/ElementFactory.php:1149 app/GedcomTag.php:514
 msgid "Place of blessing"
-msgstr "Local da Bênção"
+msgstr "Local da bênção"
 
 #: app/Factories/ElementFactory.php:300 app/GedcomTag.php:1056
 msgid "Place of brit milah"
@@ -11575,7 +11575,7 @@ msgstr "Local do noivado"
 
 #: app/Factories/ElementFactory.php:1196 app/GedcomTag.php:686
 msgid "Place of event"
-msgstr "Local do Evento"
+msgstr "Local do evento"
 
 #: app/Factories/ElementFactory.php:1206 app/GedcomTag.php:715
 #: resources/xml/reports/missing_facts_report.xml:389
