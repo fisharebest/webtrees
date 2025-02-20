@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Armenian (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-20 11:50+0000\n"
+"PO-Revision-Date: 2025-02-20 13:39+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: Armenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/hy/>\n"
@@ -17645,7 +17645,7 @@ msgstr "Ցույց տալ ներբեռնման հղումը մեդիա դիտի�
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:283
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "Այս տարբերակը օգտվողների համար կհեշտացնի նկարներ ներբեռնելը:"
 
 #: resources/views/admin/trees-preferences.phtml:288
 #: resources/views/admin/trees-preferences.phtml:293
