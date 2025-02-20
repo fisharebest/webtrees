@@ -17650,7 +17650,7 @@ msgstr "Այս տարբերակը օգտվողների համար կհեշտաց
 #: resources/views/admin/trees-preferences.phtml:288
 #: resources/views/admin/trees-preferences.phtml:293
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Մանրապատկերների պատկերներ"
 
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
