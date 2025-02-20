@@ -94,7 +94,6 @@ class DeathReportModuleTest extends TestCase
         ];
 
         $report = new ReportParserSetup($xml);
-        self::assertIsArray($report->reportProperties());
 
         ob_start();
         new ReportParserGenerate($xml, new HtmlRenderer(), $vars, $tree, $data_filesystem);

@@ -39,7 +39,6 @@ class SiteUserTest extends TestCase
     {
         $user = new SiteUser();
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('', $user->email());
         self::assertSame('webtrees', $user->realName());

@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Individual;
 
     <!-- spouse and children -->
     <?php foreach ($individual->spouseFamilies() as $family) : ?>
-        <?= view('modules/family_nav/sidebar-family', ['individual' => $individual, 'family' => $family, 'title' => $individual->getspouseFamilyLabel($family)]) ?>
+        <?= view('modules/family_nav/sidebar-family', ['individual' => $individual, 'family' => $family, 'title' => $individual->getSpouseFamilyLabel($family)]) ?>
     <?php endforeach ?>
 
     <!-- step children -->

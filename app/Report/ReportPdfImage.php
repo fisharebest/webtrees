@@ -48,16 +48,16 @@ class ReportPdfImage extends ReportBaseImage
         } else {
             // For static position add margin
             $this->x = $renderer->addMarginX($this->x);
-            $renderer->tcpdf->SetX($curx);
+            $renderer->tcpdf->setX($curx);
         }
         if ($this->y === ReportBaseElement::CURRENT_POSITION) {
             //-- first check for a collision with the last picture
             if ($lastpicbottom !== null && $renderer->tcpdf->PageNo() === $lastpicpage && $lastpicbottom >= $renderer->tcpdf->GetY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
-                $renderer->tcpdf->SetY($lastpicbottom + 5);
+                $renderer->tcpdf->setY($lastpicbottom + 5);
             }
             $this->y = $renderer->tcpdf->GetY();
         } else {
-            $renderer->tcpdf->SetY($this->y);
+            $renderer->tcpdf->setY($this->y);
         }
         if ($renderer->tcpdf->getRTL()) {
             $renderer->tcpdf->Image(
@@ -95,7 +95,7 @@ class ReportPdfImage extends ReportBaseImage
         $lastpicbottom         = $this->y + $this->height;
         // Setup for the next line
         if ($this->line === 'N') {
-            $renderer->tcpdf->SetY($lastpicbottom);
+            $renderer->tcpdf->setY($lastpicbottom);
         }
     }
 }

@@ -164,7 +164,7 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->all();
 
-        self::assertSame(2, $users->count());
+        self::assertCount(2, $users);
         self::assertSame($user2->id(), $users[0]->id());
         self::assertSame($user1->id(), $users[1]->id());
     }
@@ -259,13 +259,13 @@ class UserServiceTest extends TestCase
 
         $users = $user_service->unapproved();
 
-        self::assertSame(2, $users->count());
+        self::assertCount(2, $users);
         self::assertSame('user1', $users[0]->userName());
         self::assertSame('user3', $users[1]->userName());
 
         $users = $user_service->unverified();
 
-        self::assertSame(2, $users->count());
+        self::assertCount(2, $users);
         self::assertSame('user1', $users[0]->userName());
         self::assertSame('user2', $users[1]->userName());
     }

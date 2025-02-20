@@ -32,7 +32,7 @@ class Dispatcher implements MiddlewareInterface, RequestHandlerInterface
     /**
      * @param MiddlewareInterface[]|string[]|array[]|Closure[] $middleware
      */
-    public function __construct(array $middleware, ContainerInterface $container = null)
+    public function __construct(array $middleware, ?ContainerInterface $container = null)
     {
         if (empty($middleware)) {
             throw new LogicException('Empty middleware queue');

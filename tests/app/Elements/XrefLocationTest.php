@@ -106,7 +106,7 @@ class XrefLocationTest extends TestCase
             ->willReturn($record);
 
 
-        Registry::LocationFactory($factory);
+        Registry::locationFactory($factory);
 
         self::assertSame('<a href="https://url">Full Name</a>', $element->value('@X123@', $tree));
     }
@@ -138,7 +138,7 @@ class XrefLocationTest extends TestCase
             ->method('make')
             ->willReturn(null);
 
-        Registry::LocationFactory($factory);
+        Registry::locationFactory($factory);
 
         self::assertSame('<span class="error">@X321@</span>', $element->value('@X321@', $tree));
     }

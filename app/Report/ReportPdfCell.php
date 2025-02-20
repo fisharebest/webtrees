@@ -65,7 +65,7 @@ class ReportPdfCell extends ReportBaseCell
                     $r = hexdec($match[1]);
                     $g = hexdec($match[2]);
                     $b = hexdec($match[3]);
-                    $renderer->tcpdf->SetFillColor($r, $g, $b);
+                    $renderer->tcpdf->setFillColor($r, $g, $b);
                 }
             } else {
                 // If no color set then don't fill
@@ -79,7 +79,7 @@ class ReportPdfCell extends ReportBaseCell
             $r = hexdec($match[1]);
             $g = hexdec($match[2]);
             $b = hexdec($match[3]);
-            $renderer->tcpdf->SetDrawColor($r, $g, $b);
+            $renderer->tcpdf->setDrawColor($r, $g, $b);
         }
 
         // Paint the text color or they might use inherited colors by the previous function
@@ -87,9 +87,9 @@ class ReportPdfCell extends ReportBaseCell
             $r = hexdec($match[1]);
             $g = hexdec($match[2]);
             $b = hexdec($match[3]);
-            $renderer->tcpdf->SetTextColor($r, $g, $b);
+            $renderer->tcpdf->setTextColor($r, $g, $b);
         } else {
-            $renderer->tcpdf->SetTextColor(0, 0, 0);
+            $renderer->tcpdf->setTextColor(0, 0, 0);
         }
 
         // If current position (left)
@@ -108,7 +108,7 @@ class ReportPdfCell extends ReportBaseCell
         if ($this->top === ReportBaseElement::CURRENT_POSITION) {
             $this->top = $renderer->tcpdf->GetY();
         } else {
-            $renderer->tcpdf->SetY($this->top);
+            $renderer->tcpdf->setY($this->top);
         }
 
         // Check the last cell height and adjust the current cell height if needed
@@ -160,7 +160,7 @@ class ReportPdfCell extends ReportBaseCell
             $renderer->tcpdf->Link($cX, $this->top, $this->width, $this->height, $this->url);
         }
         // Reset the border and the text color to black or they will be inherited
-        $renderer->tcpdf->SetDrawColor(0, 0, 0);
-        $renderer->tcpdf->SetTextColor(0, 0, 0);
+        $renderer->tcpdf->setDrawColor(0, 0, 0);
+        $renderer->tcpdf->setTextColor(0, 0, 0);
     }
 }

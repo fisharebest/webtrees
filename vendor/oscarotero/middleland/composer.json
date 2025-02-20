@@ -1,50 +1,50 @@
 {
-    "name": "oscarotero/middleland",
-    "type": "library",
-    "description": "PSR-15 middleware dispatcher",
-    "keywords": [
-        "middleware",
-        "psr-7",
-        "psr-15",
-        "http"
-    ],
-    "homepage": "https://github.com/oscarotero/dispatcher",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Oscar Otero",
-            "email": "oom@oscarotero.com",
-            "homepage": "http://oscarotero.com",
-            "role": "Developer"
-        }
-    ],
-    "support": {
-        "email": "oom@oscarotero.com",
-        "issues": "https://github.com/oscarotero/dispatcher/issues"
-    },
-    "require": {
-        "php": "^7.0|^8.0",
-        "psr/http-server-middleware": "^1.0",
-        "psr/container": "^1.0"
-    },
-    "require-dev": {
-        "laminas/laminas-diactoros": "^1.3",
-        "friendsofphp/php-cs-fixer": "^2.0",
-        "phpunit/phpunit": ">=6.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Middleland\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Middleland\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "test-coverage": "phpunit --coverage-text",
-        "cs-fix": "php-cs-fixer fix ."
+  "name": "oscarotero/middleland",
+  "type": "library",
+  "description": "PSR-15 middleware dispatcher",
+  "keywords": [
+    "middleware",
+    "psr-7",
+    "psr-15",
+    "http"
+  ],
+  "homepage": "https://github.com/oscarotero/dispatcher",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Oscar Otero",
+      "email": "oom@oscarotero.com",
+      "homepage": "http://oscarotero.com",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "email": "oom@oscarotero.com",
+    "issues": "https://github.com/oscarotero/dispatcher/issues"
+  },
+  "require": {
+    "php": "^7.1|^8.0",
+    "psr/http-server-middleware": "^1.0",
+    "psr/container": "^1.0"
+  },
+  "require-dev": {
+    "laminas/laminas-diactoros": "^1.3",
+    "friendsofphp/php-cs-fixer": "^2.0",
+    "phpunit/phpunit": "^7.0|^8.0|^9.0|^10.0|^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Middleland\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Middleland\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test-coverage": "phpunit --coverage-text",
+    "cs-fix": "php-cs-fixer fix ."
+  }
 }

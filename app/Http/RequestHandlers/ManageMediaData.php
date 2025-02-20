@@ -114,7 +114,7 @@ class ManageMediaData implements RequestHandlerInterface
             $path = $row->media_folder . $row->multimedia_file_refn;
 
             try {
-                $mime_type = Registry::filesystem()->data()->getMimeType($path) ?: Mime::DEFAULT_TYPE;
+                $mime_type = Registry::filesystem()->data()->getMimetype($path) ?: Mime::DEFAULT_TYPE;
 
                 if (str_starts_with($mime_type, 'image/')) {
                     $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
@@ -206,7 +206,7 @@ class ManageMediaData implements RequestHandlerInterface
                 $sort_columns   = [0 => 0];
 
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
-                    $mime_type = $data_filesystem->getMimeType($row[0]) ?: Mime::DEFAULT_TYPE;
+                    $mime_type = $data_filesystem->getMimetype($row[0]) ?: Mime::DEFAULT_TYPE;
 
                     if (str_starts_with($mime_type, 'image/')) {
                         $url = route(AdminMediaFileThumbnail::class, ['path' => $row[0]]);

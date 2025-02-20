@@ -38,7 +38,6 @@ class GuestUserTest extends TestCase
     {
         $user = new GuestUser();
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('GUEST_USER', $user->email());
         self::assertSame('GUEST_USER', $user->realName());
@@ -57,7 +56,6 @@ class GuestUserTest extends TestCase
     {
         $user = new GuestUser('guest@example.com', 'guest user');
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('guest@example.com', $user->email());
         self::assertSame('guest user', $user->realName());

@@ -43,7 +43,6 @@ class TreeUserTest extends TestCase
         $tree         = $tree_service->create('name', 'title');
         $user         = new TreeUser($tree);
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
         self::assertSame('', $user->email());
         self::assertSame('title', $user->realName());

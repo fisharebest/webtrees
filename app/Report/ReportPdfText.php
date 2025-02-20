@@ -62,9 +62,9 @@ class ReportPdfText extends ReportBaseText
             $r = hexdec($match[1]);
             $g = hexdec($match[2]);
             $b = hexdec($match[3]);
-            $renderer->tcpdf->SetTextColor($r, $g, $b);
+            $renderer->tcpdf->setTextColor($r, $g, $b);
         } else {
-            $renderer->tcpdf->SetTextColor(0, 0, 0);
+            $renderer->tcpdf->setTextColor(0, 0, 0);
         }
         $temptext = FunctionsRtl::spanLtrRtl($temptext);
         $temptext = str_replace(
@@ -91,7 +91,7 @@ class ReportPdfText extends ReportBaseText
             ''
         ); //change height - line break etc. - the form is mirror on rtl pages
         // Reset the text color to black or it will be inherited
-        $renderer->tcpdf->SetTextColor(0, 0, 0);
+        $renderer->tcpdf->setTextColor(0, 0, 0);
     }
 
     /**

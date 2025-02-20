@@ -63,15 +63,15 @@ class RateLimitServiceTest extends TestCase
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(1, explode(',', $history));
+        self::assertCount(1, explode(',', $history));
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(2, explode(',', $history));
+        self::assertCount(2, explode(',', $history));
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(3, explode(',', $history));
+        self::assertCount(3, explode(',', $history));
     }
 
     /**
@@ -90,7 +90,7 @@ class RateLimitServiceTest extends TestCase
 
         $rate_limit_service->limitRateForUser($user, 5, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(6, explode(',', $history));
+        self::assertCount(6, explode(',', $history));
     }
 
     /**

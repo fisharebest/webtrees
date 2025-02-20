@@ -2,16 +2,18 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
-![Testing][ico-ga]
-[![Quality Score][ico-scrutinizer]][link-scrutinizer]
 
-Simple (but powerful) [PSR-15](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md) middleware dispatcher:
+Simple (but powerful)
+[PSR-15](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-15-request-handlers.md)
+middleware dispatcher:
 
 ## Requirements
 
-* PHP 7
-* A [PSR-7 Message implementation](http://www.php-fig.org/psr/psr-7/), for example [laminas-diactoros](https://github.com/laminas/laminas-diactoros)
-* Optionally, a [PSR-11 container](https://github.com/php-fig/container) implementation to create the middleware components on demand.
+- PHP 7
+- A [PSR-7 Message implementation](http://www.php-fig.org/psr/psr-7/), for
+  example [laminas-diactoros](https://github.com/laminas/laminas-diactoros)
+- Optionally, a [PSR-11 container](https://github.com/php-fig/container)
+  implementation to create the middleware components on demand.
 
 ## Example
 
@@ -75,17 +77,22 @@ $response = $dispatcher->dispatch(new Request());
 
 ## Matchers
 
-As you can see in the example above, you can use an array of "matchers" to filter the requests that receive middlewares. You can use callables, instances of `Middleland\Matchers\MatcherInterface` or booleans, but for comodity, the string values are also used to create `Middleland\Matchers\Path` instances. The available matchers are:
+As you can see in the example above, you can use an array of "matchers" to
+filter the requests that receive middlewares. You can use callables, instances
+of `Middleland\Matchers\MatcherInterface` or booleans, but for comodity, the
+string values are also used to create `Middleland\Matchers\Path` instances. The
+available matchers are:
 
-Name | Description | Example
------|-------------|--------
-`Path` | Filter requests by base path. Use exclamation mark for negative matches | `new Path('/admin')`, `new Path('!/not-admin')`
-`Pattern` | Filter requests by path pattern. Use exclamation mark for negative matches | `new Pattern('*.png')` `new Pattern('!*.jpg')`
-`Accept` | Filter requests by Accept header. Use exclamation mark for negative matches | `new Accept('text/html')` `new Accept('!image/png')`
+| Name      | Description                                                                 | Example                                              |
+| --------- | --------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `Path`    | Filter requests by base path. Use exclamation mark for negative matches     | `new Path('/admin')`, `new Path('!/not-admin')`      |
+| `Pattern` | Filter requests by path pattern. Use exclamation mark for negative matches  | `new Pattern('*.png')` `new Pattern('!*.jpg')`       |
+| `Accept`  | Filter requests by Accept header. Use exclamation mark for negative matches | `new Accept('text/html')` `new Accept('!image/png')` |
 
 ## How to create matchers
 
-Just use a callable or an instance of the `Middleland\Matchers\MatcherInterface`. Example:
+Just use a callable or an instance of the
+`Middleland\Matchers\MatcherInterface`. Example:
 
 ```php
 use Middleland\Matchers\MatcherInterface;
@@ -108,8 +115,4 @@ The MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/oscarotero/middleland.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-ga]: https://github.com/oscarotero/middleland/workflows/testing/badge.svg
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/g/oscarotero/middleland.svg?style=flat-square
-
 [link-packagist]: https://packagist.org/packages/oscarotero/middleland
-[link-scrutinizer]: https://scrutinizer-ci.com/g/oscarotero/middleland

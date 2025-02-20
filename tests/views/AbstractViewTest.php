@@ -44,7 +44,7 @@ abstract class AbstractViewTest extends TestCase
         foreach ($this->cartesian($data) as $datum) {
             $html = view($view, $datum);
 
-            $this->validateHTML($html);
+            $this->validateHtml($html);
         }
     }
 
@@ -76,7 +76,7 @@ abstract class AbstractViewTest extends TestCase
     /**
      * @param string $html
      */
-    protected function validateHTML(string $html): void
+    protected function validateHtml(string $html): void
     {
         if (str_starts_with($html, '<!DOCTYPE html>')) {
             $xml = $html;

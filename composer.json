@@ -64,11 +64,11 @@
         "league/flysystem-cached-adapter": "1.1.0",
         "league/flysystem-ziparchive": "1.0.3",
         "middlewares/client-ip": "1.3.0",
-        "mlocati/ip-lib": "1.18.1",
-        "nesbot/carbon": "2.72.5",
+        "mlocati/ip-lib": "1.20.0",
+        "nesbot/carbon": "2.73.0",
         "nyholm/psr7": "1.6.1",
         "nyholm/psr7-server": "1.1.0",
-        "oscarotero/middleland": "1.0.1",
+        "oscarotero/middleland": "1.0.2",
         "psr/cache": "1.0.1",
         "psr/http-message": "1.0.1",
         "psr/http-server-handler": "1.0.2",
@@ -79,7 +79,7 @@
         "symfony/expression-language": "4.4.47",
         "symfony/polyfill-mbstring": "v1.30.0",
         "symfony/polyfill-php80": "1.30.0",
-        "tecnickcom/tcpdf": "6.8.0"
+        "tecnickcom/tcpdf": "6.8.2"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -139,9 +139,6 @@
         "webtrees:lang": [
             "Fisharebest\\Webtrees\\Console\\ComposerScripts::languageFiles"
         ],
-        "webtrees:missing-tests": [
-            "Fisharebest\\Webtrees\\Console\\ComposerScripts::missingTests"
-        ],
         "webtrees:po": [
             "sed -i.bak -e 's/\\(I18N::[^)]*[)]\\)/<?php echo \\1; ?>/g' resources/xml/reports/*.xml",
             "git grep -I --name-only --fixed-strings -e I18N:: -- '*.php' '*.phtml' '*.xml' | xargs xgettext --package-name=webtrees --package-version=1.0 --output=resources/lang/webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2",
@@ -163,7 +160,6 @@
     },
     "scripts-descriptions": {
         "webtrees:build": "Create a distribution file (webtrees.zip)",
-        "webtrees:check": "Run various static analysis tools",
         "webtrees:coverage": "Generate test coverage report",
         "webtrees:lang": "Compile the language files (messages.php)",
         "webtrees:po": "Update the language (webtrees.pot, *.po)"

@@ -51,7 +51,6 @@ class DefaultUserTest extends TestCase
     {
         $user = new DefaultUser();
 
-        self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(-1, $user->id());
         self::assertSame('DEFAULT_USER', $user->email());
         self::assertSame('DEFAULT_USER', $user->realName());

@@ -30,7 +30,7 @@ require_once 'path/to/iplib/ip-lib.php';
 
 ### Installation with Composer
 
-Simply run 
+Simply run
 
 ```sh
 composer require mlocati/ip-lib
@@ -77,6 +77,39 @@ echo (string) $address->getPreviousAddress();
 
 // This will print ::2
 echo (string) $address->getNextAddress();
+```
+
+### Shifting the bits of an address
+
+You can use the `shift` method to shift the address bits to the right (with positive values) or to the left (negative values):
+
+```php
+$address = \IPLib\Factory::parseAddressString('2.4.8.16');
+// This will print 1.2.4.8
+echo (string) $address->shift(1);
+// This will print 4.8.16.32
+echo (string) $address->shift(-1);
+// This will print 4.8.16.0
+echo (string) $address->shift(-8);
+
+$address = \IPLib\Factory::parseAddressString('::10');
+// This will print ::8
+echo (string) $address->shift(1);
+// This will print ::20
+echo (string) $address->shift(-1);
+// This will print ::10:0
+echo (string) $address->shift(-16);
+```
+
+### Adding two IP addresses
+
+You can calculate the sum of 2 IP addresses using the `add` method:
+
+```php
+$a = \IPLib\Factory::parseAddressString('1.2.3.4');
+$b = \IPLib\Factory::parseAddressString('10.0.0.0');
+// This will print 11.2.3.4
+echo (string) $a->add($b);
 ```
 
 ### Get the addresses at a specified offset
@@ -369,6 +402,57 @@ echo \IPLib\Factory::parseRangeString('10.0.0.0/8')->asPattern()->toString();
 ```
 
 Please remark that all the range types implement the `asPattern()` and `asSubnet()` methods.
+
+### Splitting IP ranges
+
+If you need to divide an IP address range into smaller ranges, you can use the `split` method.
+You can specify the length of the network prefix, as well as indicate whether you want to force the Subnet notation (by default, it is not).
+
+For example:
+
+```php
+$subnet = \IPLib\Factory::parseRangeString('192.168.112.203/24');
+$smallerSubnets = $subnet->split(25);
+print_r(array_map('strval', $smallerSubnets));
+/*
+ * You'll have:
+ * Array
+ * (
+ *     [0] => 192.168.112.0/25
+ *     [1] => 192.168.112.128/25
+ * )
+ */
+
+$subnet = \IPLib\Factory::parseRangeString('192.168.*.*');
+$smallerSubnets = $subnet->split(24);
+print_r(array_map('strval', $smallerSubnets));
+/*
+ * You'll have:
+ * Array
+ * (
+ *     [0] => 192.168.0.*
+ *     [1] => 192.168.1.*
+ *     [...]
+ *     [254] => 192.168.254.*
+ *     [255] => 192.168.255.*
+ * )
+ */
+
+$subnet = \IPLib\Factory::parseRangeString('192.168.*.*');
+$smallerSubnets = $subnet->split(24, true);
+print_r(array_map('strval', $smallerSubnets));
+/*
+ * You'll have:
+ * Array
+ * (
+ *     [0] => 192.168.0.0/24
+ *     [1] => 192.168.1.0/24
+ *     [...]
+ *     [254] => 192.168.254.0/24
+ *     [255] => 192.168.255.0/24
+ * )
+ */
+```
 
 ### Getting the subnet mask for IPv4 ranges
 

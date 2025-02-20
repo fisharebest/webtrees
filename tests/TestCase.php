@@ -294,13 +294,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $html = substr($html, strcspn($html, '<>'));
 
             if (str_starts_with($html, '>')) {
-                $this->fail('Unescaped > found in HTML');
+                self::fail('Unescaped > found in HTML');
             }
 
             if (str_starts_with($html, '<')) {
                 if (preg_match('~^</([a-z]+)>~', $html, $match)) {
                     if ($match[1] !== array_pop($stack)) {
-                        $this->fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
+                        self::fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
                 } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match)) {
@@ -311,14 +311,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
                     switch ($tag) {
                         case 'html':
-                            $this->assertSame([], $stack);
+                            self::assertSame([], $stack);
                             break;
                         case 'head':
                         case 'body':
-                            $this->assertSame(['head'], $stack);
+                            self::assertSame(['head'], $stack);
                             break;
                         case 'div':
-                            $this->assertNotContains('span', $stack, $message);
+                            self::assertNotContains('span', $stack, $message);
                             break;
                     }
 
@@ -332,11 +332,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         $html = substr($html, strlen($match[0]));
                     }
                 } else {
-                    $this->fail('Unrecognised tag: ' . substr($html, 0, 40));
+                    self::fail('Unrecognised tag: ' . substr($html, 0, 40));
                 }
             }
         } while ($html !== '');
 
-        $this->assertSame([], $stack);
+        self::assertSame([], $stack);
     }
 }
