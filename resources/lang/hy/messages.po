@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Armenian (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-20 13:39+0000\n"
+"PO-Revision-Date: 2025-02-20 16:40+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: Armenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/hy/>\n"
@@ -17655,11 +17655,12 @@ msgstr "Մանրապատկերների պատկերներ"
 #: resources/views/admin/trees-preferences.phtml:298
 msgid "Show thumbnail images in charts and family groups."
 msgstr ""
+"Ցույց տալ մանրապատկերների պատկերները գծապատկերներում և ընտանեկան խմբերում:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:306
 msgid "Use silhouettes"
-msgstr ""
+msgstr "Օգտագործեք ուրվանկարներ"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:311
@@ -17668,28 +17669,30 @@ msgid ""
 "specified. The images used are specific to the sex of the individual in "
 "question."
 msgstr ""
+"Օգտագործեք ուրվագիծ պատկերներ, երբ նշված անհատի համար ընդգծված պատկեր չի "
+"նշվել: Օգտագործված պատկերները հատուկ են տվյալ անհատի սեռին:"
 
 #: resources/views/admin/trees-preferences.phtml:316
 msgid "Watermarks"
-msgstr ""
+msgstr "Ջրի նշիչներ"
 
 #: resources/views/admin/trees-preferences.phtml:321
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Պատկերներ՝ առանց ջրանիշի"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.phtml:326
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Ջրի նիշերը կամընտիր են և սովորաբար ցուցադրվում են միայն այցելուներին:"
 
 #: resources/views/admin/trees-preferences.phtml:336
 msgid "Surname list style"
-msgstr ""
+msgstr "Ազգանունների ցանկի ոճը"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:348
 msgid "Maximum number of surnames on individual list"
-msgstr ""
+msgstr "Անհատական ցուցակում ազգանունների առավելագույն քանակը"
 
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:362
@@ -17699,11 +17702,15 @@ msgid ""
 "<br><br>This option determines when sub-listing of surnames will occur. To "
 "disable sub-listing completely, set this option to zero."
 msgstr ""
+"Նույն ազգանունով անհատների երկար ցուցակները կարելի է բաժանել ավելի փոքր "
+"ենթացուցակների՝ ըստ տվյալ անհատի անվան առաջին տառի:<br><br>Այս տարբերակը "
+"որոշում է, թե երբ տեղի կունենա ազգանունների ենթացանկը: Ենթացուցակը "
+"ամբողջությամբ անջատելու համար այս տարբերակը սահմանեք զրոյի:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:370
 msgid "Estimated dates for birth and death"
-msgstr ""
+msgstr "Ծննդյան և մահվան գնահատված ամսաթվերը"
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:375
@@ -17712,15 +17719,18 @@ msgid ""
 "death instead of leaving blanks on individual lists and charts for "
 "individuals whose dates are not known."
 msgstr ""
+"Այս ընտրանքը վերահսկում է՝ ցույց տալ ծննդյան և մահվան մոտավոր ամսաթվերը, թե "
+"ոչ՝ առանձին ցուցակներում և գծապատկերներում դատարկ թողնելու փոխարեն այն "
+"անհատների համար, որոնց ամսաթվերը հայտնի չեն:"
 
 #: resources/views/admin/trees-preferences.phtml:383
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "Վերջին թարմացման ամսաթիվը և ժամը"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:397
 msgid "Age of parents next to child’s birthdate"
-msgstr ""
+msgstr "Ծնողների տարիքը երեխայի ծննդյան ամսաթվի կողքին"
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:402
@@ -17728,33 +17738,37 @@ msgid ""
 "This option controls whether or not to show age of father and mother next to "
 "child’s birthdate on charts."
 msgstr ""
+"Այս ընտրանքը վերահսկում է՝ գծապատկերներում երեխայի ծննդյան ամսաթվի կողքին "
+"ցույց տալ հոր և մոր տարիքը, թե ոչ:"
 
 #: resources/views/admin/trees-preferences.phtml:410
 msgid "Other facts to show in charts"
-msgstr ""
+msgstr "Այլ փաստեր՝ ցույց տալու գծապատկերներում"
 
 #: resources/views/admin/trees-preferences.phtml:419
 msgid "Individual pages"
-msgstr ""
+msgstr "Անհատական էջեր"
 
 #: resources/views/admin/trees-preferences.phtml:424
 msgid "Show the events of close relatives on the individual page"
-msgstr ""
+msgstr "Ցույց տալ մերձավոր ազգականների իրադարձությունները անհատական էջում"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:515
 msgid "Fact icons"
-msgstr ""
+msgstr "Փաստերի պատկերակներ"
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:520
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
+"Որոշ թեմաներ կարող են պատկերակներ ցուցադրել «Փաստեր և իրադարձություններ» "
+"ներդիրում:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:528
 msgid "Automatically expand notes"
-msgstr ""
+msgstr "Ավտոմատ ընդլայնել նշումները"
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:534
@@ -17762,11 +17776,13 @@ msgid ""
 "This option controls whether or not to automatically display content of a "
 "<i>Note</i> record on the Individual page."
 msgstr ""
+"Այս ընտրանքը վերահսկում է անհատական էջում <i>Նշում</i> գրառման "
+"բովանդակությունը ինքնաբերաբար ցուցադրել, թե ոչ:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:542
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "Ավտոմատ ընդլայնել աղբյուրները"
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:548
@@ -17774,13 +17790,15 @@ msgid ""
 "This option controls whether or not to automatically display content of a "
 "<i>Source</i> record on the Individual page."
 msgstr ""
+"Այս ընտրանքը կարգավորում է անհատական էջում <i>Աղբյուր</i> գրառման "
+"բովանդակությունը ինքնաբերաբար ցուցադրել, թե ոչ:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:558
 #: resources/views/admin/trees-preferences.phtml:560
 #: resources/views/admin/trees-preferences.phtml:564
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Համառոտ տեղանուններ"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:561
@@ -17788,7 +17806,7 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:27
 msgid "first"
-msgstr ""
+msgstr "առաջին"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:561
@@ -17796,23 +17814,23 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:18
 #: resources/views/modules/media-list/pagination.phtml:55
 msgid "last"
-msgstr ""
+msgstr "վերջին"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "առաջին"
 
 #: resources/views/admin/trees-preferences.phtml:570
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "վերջին"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:569
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "Ցույց տալ տեղանունի %1$s %2$s մասերը:"
 
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:574
@@ -17822,11 +17840,15 @@ msgid ""
 "<i>village, county</i>, or the last few part of it, such as <i>region, "
 "country</i>."
 msgstr ""
+"Տեղանունները հաճախ չափազանց երկար են, որպեսզի տեղավորվեն գծապատկերներում, "
+"ցուցակներում և այլն: Դրանք կարող են կրճատվել՝ ցույց տալով անվան միայն առաջին "
+"մի քանի մասերը, օրինակ՝ <i>գյուղ, շրջան</i> կամ վերջին մի մասը, օրինակ՝ "
+"<i>տարածաշրջան, երկիր</i>:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:584
 msgid "Format text and notes"
-msgstr ""
+msgstr "Ձևաչափեք տեքստը և նշումները"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:589
@@ -17835,6 +17857,10 @@ msgid ""
 "transcripts should be recorded in simple, unformatted text. However, "
 "formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"Տոհմաբանական այլ հավելվածների հետ համատեղելիություն ապահովելու համար "
+"նշումները, տեքստը և տառադարձումները պետք է գրանցվեն պարզ, չձևաչափված տեքստով:"
+" Այնուամենայնիվ, ձևաչափումը հաճախ ցանկալի է, որպեսզի օգնի ներկայացմանը, "
+"ըմբռնմանը և այլն:"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -17843,11 +17869,15 @@ msgid ""
 "Wikipedia. It uses unobtrusive punctuation characters to create headings and "
 "sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown-ը ֆորմատավորման պարզ համակարգ է, որն օգտագործվում է այնպիսի "
+"կայքերում, ինչպիսին է Վիքիպեդիան։ Այն օգտագործում է աննկատ կետադրական նիշեր՝ "
+"վերնագրեր և ենթավերնագրեր, թավ և շեղ տեքստեր, ցուցակներ, աղյուսակներ և այլն "
+"ստեղծելու համար:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:601
 msgid "Allow users to see raw GEDCOM records"
-msgstr ""
+msgstr "Թույլ տվեք օգտվողներին տեսնել չմշակված GEDCOM գրառումները"
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:606
@@ -17856,6 +17886,9 @@ msgid ""
 "families to let users bring up another window containing the raw data taken "
 "right out of the GEDCOM file."
 msgstr ""
+"Սահմանելով սա <b>Այո</b>-ը, հղումներ կտեղադրվեն անհատների, աղբյուրների և "
+"ընտանիքների վրա, որոնք թույլ կտան օգտատերերին բացել մեկ այլ պատուհան, որը "
+"պարունակում է անմիջապես GEDCOM ֆայլից վերցված չմշակված տվյալները:"
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:619
@@ -17864,28 +17897,32 @@ msgid ""
 "understands most of them. When unrecognized tags are found, this option lets "
 "you choose whether to ignore them or display a warning message."
 msgstr ""
+"Շատ ծագումնաբանական ծրագրեր ստեղծում են GEDCOM ֆայլեր հատուկ պիտակներով, և "
+"webtrees-ը հասկանում է դրանցից շատերը: Երբ հայտնաբերվում են չճանաչված "
+"պիտակներ, այս տարբերակը թույլ է տալիս ընտրել՝ անտեսե՞լ դրանք, թե՞ ցուցադրել "
+"նախազգուշական հաղորդագրություն:"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:632
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Որոշ էջեր կարող են ցույց տալ, թե քանի անգամ են այցելել:"
 
 #. I18N: Options for editing
 #: resources/views/admin/trees-preferences.phtml:637
 msgid "Edit preferences"
-msgstr ""
+msgstr "Խմբագրել նախապատվությունները"
 
 #: resources/views/admin/trees-preferences.phtml:639
 msgid "Facts for individual records"
-msgstr ""
+msgstr "Փաստեր անհատական գրառումների համար"
 
 #: resources/views/admin/trees-preferences.phtml:644
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "Փաստեր նոր անհատների համար"
 
 #: resources/views/admin/trees-preferences.phtml:654
 msgid "Quick individual facts"
-msgstr ""
+msgstr "Արագ անհատական փաստեր"
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:659
@@ -17893,18 +17930,20 @@ msgid ""
 "The most common individual facts and events are listed separately, so that "
 "they can be added more easily."
 msgstr ""
+"Ամենատարածված անհատական փաստերն ու իրադարձությունները թվարկված են առանձին, "
+"որպեսզի դրանք ավելի հեշտ ավելացվեն:"
 
 #: resources/views/admin/trees-preferences.phtml:664
 msgid "Facts for family records"
-msgstr ""
+msgstr "Փաստեր ընտանեկան գրառումների համար"
 
 #: resources/views/admin/trees-preferences.phtml:669
 msgid "Facts for new families"
-msgstr ""
+msgstr "Փաստեր նորաստեղծ ընտանիքների համար"
 
 #: resources/views/admin/trees-preferences.phtml:679
 msgid "Quick family facts"
-msgstr ""
+msgstr "Արագ ընտանեկան փաստեր"
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:684
@@ -17912,14 +17951,16 @@ msgid ""
 "The most common family facts and events are listed separately, so that they "
 "can be added more easily."
 msgstr ""
+"Ամենատարածված ընտանեկան փաստերն ու իրադարձությունները թվարկված են առանձին, "
+"որպեսզի դրանք ավելի հեշտ ավելացվեն:"
 
 #: resources/views/admin/trees-preferences.phtml:689
 msgid "Other preferences"
-msgstr ""
+msgstr "Այլ նախասիրություններ"
 
 #: resources/views/admin/trees-preferences.phtml:694
 msgid "Surname tradition"
-msgstr ""
+msgstr "Ազգանունի ավանդույթ"
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:699
@@ -17927,13 +17968,15 @@ msgid ""
 "When you add a new family member, a default surname can be provided. This "
 "surname will depend on the local tradition."
 msgstr ""
+"Երբ դուք ավելացնում եք ընտանիքի նոր անդամ, կարող է տրվել կանխադրված ազգանուն:"
+" Այս ազգանունը կախված կլինի տեղական ավանդույթից։"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:707
 #: resources/views/edit/edit-fact.phtml:35
 #: resources/views/edit/edit-record.phtml:34
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Պահպանեք գոյություն ունեցող «վերջին փոփոխության» տեղեկատվությունը"
 
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:712
@@ -17943,23 +17986,27 @@ msgid ""
 "when making minor corrections to someone else’s data. This option controls "
 "whether this feature is selected by default."
 msgstr ""
+"Երբ գրառումը խմբագրվում է, օգտագործողը և ժամադրոշմը գրանցվում են: Երբեմն "
+"ցանկալի է պահպանել գոյություն ունեցող «վերջին փոփոխության» տեղեկատվությունը, "
+"օրինակ՝ ուրիշի տվյալների աննշան ուղղումներ կատարելիս: Այս ընտրանքը "
+"վերահսկում է, թե արդյոք այս ֆունկցիան ընտրված է լռելյայնորեն:"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:732
 #: resources/views/admin/trees-privacy.phtml:298
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Կիրառեք այս նախապատվությունները բոլոր տոհմածառերին"
 
 #. I18N: Label for checkbox
 #: resources/views/admin/trees-preferences.phtml:739
 #: resources/views/admin/trees-privacy.phtml:305
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Կիրառեք այս նախապատվությունները նոր տոհմածառերի վրա"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Show the family tree"
-msgstr ""
+msgstr "Ցույց տալ տոհմածառը"
 
 #: resources/views/admin/trees-privacy.phtml:36
 #: resources/views/admin/trees-privacy.phtml:55
@@ -17967,7 +18014,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:125
 #: resources/views/admin/trees-privacy.phtml:145
 msgid "visitors"
-msgstr ""
+msgstr "այցելուներ"
 
 #: resources/views/admin/trees-privacy.phtml:37
 #: resources/views/admin/trees-privacy.phtml:56
@@ -17975,7 +18022,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:126
 #: resources/views/admin/trees-privacy.phtml:146
 msgid "members"
-msgstr ""
+msgstr "անդամներ"
 
 #. I18N: Help text for the “Family tree” configuration setting
 #: resources/views/admin/trees-privacy.phtml:43
@@ -17983,20 +18030,23 @@ msgid ""
 "Enabling this option will force all visitors to sign in before they can view "
 "any data on the website."
 msgstr ""
+"Այս ընտրանքի ակտիվացումը բոլոր այցելուներին կստիպի մուտք գործել՝ նախքան "
+"կայքի որևէ տվյալ դիտելը:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:52
 msgid "Show dead individuals"
-msgstr ""
+msgstr "Ցույց տալ մահացած անձանց"
 
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:62
 msgid "Set the privacy access level for all dead individuals."
 msgstr ""
+"Սահմանեք գաղտնիության հասանելիության մակարդակը բոլոր մահացած անձանց համար:"
 
 #: resources/views/admin/trees-privacy.phtml:71
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "Տարիքը, երբ կարելի է ենթադրել, որ անհատը մահացել է"
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:76
@@ -18005,11 +18055,14 @@ msgid ""
 "more recent than this number of years, they are considered to be “alive”. "
 "Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
+"Եթե այս անձը մահից, թաղումից կամ դիակիզումից բացի այլ իրադարձություններ ունի "
+"այս թվից ավելի վերջին, ապա նա համարվում է «կենդանի»: Այդ նպատակով երեխաների "
+"ծննդյան տարեթվերը համարվում են նման իրադարձություններ:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:84
 msgid "Show living individuals"
-msgstr ""
+msgstr "Ցույց տալ կենդանի անհատներին"
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:94
@@ -18017,17 +18070,20 @@ msgid ""
 "If you show living individuals to visitors, all other privacy restrictions "
 "are ignored. Do this only if all the data in your tree is public."
 msgstr ""
+"Եթե այցելուներին ցույց եք տալիս կենդանի անհատներին, գաղտնիության մնացած "
+"բոլոր սահմանափակումներն անտեսվում են: Դա արեք միայն այն դեպքում, եթե ձեր "
+"ծառի բոլոր տվյալները հրապարակային են:"
 
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: resources/views/admin/trees-privacy.phtml:102
 msgid "Extend privacy to dead individuals"
-msgstr ""
+msgstr "Ընդլայնել գաղտնիությունը մահացած անձանց վրա"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/trees-privacy.phtml:108
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "ծնվել է վերջին %1$s տարում կամ մահացել վերջին %2$s տարում"
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:113
@@ -18038,15 +18094,20 @@ msgid ""
 "within a specified number of years. Leave these values empty to disable this "
 "feature."
 msgstr ""
+"Որոշ երկրներում գաղտնիության մասին օրենքները կիրառվում են ոչ միայն կենդանի "
+"անհատների, այլև վերջերս մահացածների նկատմամբ: Այս տարբերակը թույլ կտա ձեզ "
+"ընդլայնել կենդանի անհատների գաղտնիության կանոնները նրանց վրա, ովքեր ծնվել "
+"կամ մահացել են որոշակի տարիների ընթացքում: Թողեք այս արժեքները դատարկ՝ այս "
+"գործառույթն անջատելու համար:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:122
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Ցույց տալ մասնավոր անձանց անունները"
 
 #: resources/views/admin/trees-privacy.phtml:127
 msgid "managers"
-msgstr ""
+msgstr "մենեջերներ"
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:133
@@ -18056,11 +18117,15 @@ msgid ""
 "restriction has been added to their individual record. To hide a specific "
 "name, add a privacy restriction to that name record."
 msgstr ""
+"Այս տարբերակը ցույց կտա մասնավոր անձանց անունները (բայց ոչ այլ մանրամասներ): "
+"Անհատները մասնավոր են, եթե նրանք դեռ ողջ են կամ եթե գաղտնիության "
+"սահմանափակում է ավելացվել նրանց անհատական գրառումներին: Կոնկրետ անունը "
+"թաքցնելու համար ավելացրեք գաղտնիության սահմանափակում այդ անվանագրում:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:142
 msgid "Show private relationships"
-msgstr ""
+msgstr "Ցույց տալ անձնական հարաբերությունները"
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:152
@@ -18069,11 +18134,14 @@ msgid ""
 "will see empty “private” boxes on the pedigree chart and on other charts "
 "with private individuals."
 msgstr ""
+"Այս տարբերակը կպահի ընտանեկան կապերը մասնավոր գրառումներում: Սա նշանակում է, "
+"որ դուք կտեսնեք դատարկ «մասնավոր» տուփեր տոհմային աղյուսակում և այլ "
+"գծապատկերներում մասնավոր անձանց հետ:"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:156
 msgid "Privacy restrictions"
-msgstr ""
+msgstr "Գաղտնիության սահմանափակումներ"
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:158
@@ -18082,21 +18150,26 @@ msgid ""
 "restriction to it. If a record, fact, or event does not have a restriction, "
 "the following default restrictions will be used."
 msgstr ""
+"Դուք կարող եք սահմանել մուտքը որոշակի ռեկորդի, փաստի կամ իրադարձության համար՝"
+" դրան սահմանափակում ավելացնելով: Եթե գրառումը, փաստը կամ իրադարձությունը "
+"սահմանափակում չունենա, կօգտագործվեն հետևյալ լռելյայն սահմանափակումները:"
 
 #: resources/views/admin/trees-privacy.phtml:165
 #: resources/views/admin/trees-privacy.phtml:255
 msgid "All records"
-msgstr ""
+msgstr "Բոլոր գրառումները"
 
 #: resources/views/admin/trees-privacy.phtml:222
 msgid ""
 "Privacy restrictions - these apply to records and facts that do not contain "
 "a GEDCOM RESN tag"
 msgstr ""
+"Գաղտնիության սահմանափակումներ. դրանք վերաբերում են գրառումներին և փաստերին, "
+"որոնք չեն պարունակում GEDCOM RESN պիտակ"
 
 #: resources/views/admin/trees-privacy.phtml:230
 msgid "Fact or event"
-msgstr ""
+msgstr "Փաստ կամ իրադարձություն"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:238
@@ -18105,17 +18178,19 @@ msgstr ""
 #: resources/views/modules/lifespans-chart/page.phtml:75
 #: resources/views/modules/timeline-chart/page.phtml:41
 msgid "add"
-msgstr ""
+msgstr "ավելացնել"
 
 #: resources/views/admin/trees-privacy.phtml:251
 msgid "This record does not exist."
-msgstr ""
+msgstr "Այս գրառումը գոյություն չունի։"
 
 #: resources/views/admin/trees-renumber.phtml:28
 msgid ""
 "You can renumber the records in a family tree, so that these internal "
 "reference numbers are not duplicated in any other family tree."
 msgstr ""
+"Դուք կարող եք վերահամարակալել տոհմածառի գրառումները, որպեսզի այս ներքին "
+"հղման համարները չկրկնվեն որևէ այլ տոհմածառում:"
 
 #: resources/views/admin/trees-renumber.phtml:32
 #, php-format
@@ -18126,85 +18201,91 @@ msgid_plural ""
 "This family tree has %s records which use the same “XREF” as another family "
 "tree."
 msgstr[0] ""
+"Այս տոհմածառն ունի %s գրառում, որն օգտագործում է նույն «XREF»-ը որպես մեկ "
+"այլ տոհմածառ:"
 msgstr[1] ""
+"Այս տոհմածառն ունի %s գրառումներ, որոնք օգտագործում են նույն «XREF»-ը, ինչ "
+"մեկ այլ տոհմածառ:"
 
 #: resources/views/admin/trees-renumber.phtml:37
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Դուք կարող եք վերահամարակալել այս տոհմածառը:"
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include associates"
-msgstr ""
+msgstr "Ներառեք գործընկերներին"
 
 #: resources/views/admin/trees-unconnected.phtml:30
 msgid "Include aliases"
-msgstr ""
+msgstr "Ներառեք փոխանունները"
 
 #: resources/views/admin/trees-unconnected.phtml:33
 msgid "update"
-msgstr ""
+msgstr "թարմացնել"
 
 #: resources/views/admin/trees-unconnected.phtml:39
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Անհատների այս խմբերը կապված չեն %s-ի հետ:"
 
 #: resources/views/admin/trees.phtml:74
 #: resources/views/lists/datatables-attributes.phtml:33
 msgid "Calculating…"
-msgstr ""
+msgstr "Հաշվարկվում է…"
 
 #: resources/views/admin/trees.phtml:129
 msgid "Default family tree"
-msgstr ""
+msgstr "Կանխադրված տոհմածառ"
 
 #: resources/views/admin/trees.phtml:132 resources/views/admin/trees.phtml:138
 msgid "Set as default"
-msgstr ""
+msgstr "Սահմանել որպես լռելյայն"
 
 #. I18N: Individuals, sources, dates, places, etc.
 #: resources/views/admin/trees.phtml:162
 msgid "Genealogy data"
-msgstr ""
+msgstr "Ծագումնաբանության տվյալներ"
 
 #: resources/views/admin/trees.phtml:219
 msgid "Add unlinked records"
-msgstr ""
+msgstr "Ավելացրեք չկապված գրառումներ"
 
 #: resources/views/admin/trees.phtml:275
 msgid "GEDCOM file"
-msgstr ""
+msgstr "GEDCOM ֆայլ"
 
 #: resources/views/admin/trees.phtml:282
 msgid "Export"
-msgstr ""
+msgstr "Արտահանում"
 
 #: resources/views/admin/upgrade/steps.phtml:21
 msgid ""
 "It can take several minutes to download and install the upgrade. Be patient."
 msgstr ""
+"Թարմացումը ներբեռնելու և տեղադրելու համար կարող է տևել մի քանի րոպե: Եղեք "
+"համբերատար։"
 
 #: resources/views/admin/upgrade/wizard.phtml:35
 msgid ""
 "Depending on your server configuration, you may be able to upgrade "
 "automatically."
-msgstr ""
+msgstr "Կախված ձեր սերվերի կազմաձևից, դուք կարող եք ավտոմատ կերպով թարմացնել:"
 
 #: resources/views/admin/users-cleanup.phtml:45
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Օգտատիրոջ հաշիվը չափազանց երկար ժամանակ անգործուն է. "
 
 #: resources/views/admin/users-cleanup.phtml:64
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "Օգտատերը չի հաստատել 7 օրվա ընթացքում։"
 
 #: resources/views/admin/users-cleanup.phtml:66
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "Օգտատերը չի հաստատվել ադմինիստրատորի կողմից:"
 
 #: resources/views/admin/users-cleanup.phtml:75
 msgid "Nothing found to cleanup"
-msgstr ""
+msgstr "Մաքրման համար ոչինչ չի գտնվել"
 
 #: resources/views/admin/users-create.phtml:32
 #: resources/views/admin/users-edit.phtml:43
@@ -18214,7 +18295,7 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:24
 #: resources/views/register-page.phtml:37
 msgid "Real name"
-msgstr ""
+msgstr "Իրական անուն"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:48
@@ -18222,7 +18303,7 @@ msgstr ""
 #: resources/views/register-page.phtml:42
 #: resources/views/setup/step-5-administrator.phtml:61
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Սա ձեր իսկական անունն է, ինչպես կցանկանայիք, որ այն ցուցադրվի էկրանին:"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:61
@@ -18232,6 +18313,8 @@ msgid ""
 "Usernames are case-insensitive and ignore accented letters, so that “chloe”, "
 "“chloë”, and “Chloe” are considered to be the same."
 msgstr ""
+"Օգտվողի անունները մեծատառերի չափորոշիչ չեն և անտեսում են ընդգծված տառերը, "
+"ուստի «chloe», «chloë» և «Chloe» համարվում են նույնը:"
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -18240,8 +18323,8 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Օգտագործեք առնվազն %s նիշ:"
+msgstr[1] "Օգտագործեք առնվազն %s նիշ:"
 
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:74
@@ -18252,6 +18335,8 @@ msgid ""
 "Passwords must be at least 8 characters long and are case-sensitive, so that "
 "“secret” is different from “SECRET”."
 msgstr ""
+"Գաղտնաբառերը պետք է պարունակեն առնվազն 8 նիշ և ունեն մեծատառերի "
+"զգայունություն, որպեսզի «գաղտնիքը» տարբերվի «գաղտնի»ից:"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:87
@@ -18263,18 +18348,21 @@ msgid ""
 "notifications, and messages from other family members who are registered on "
 "the website."
 msgstr ""
+"Այս էլփոստի հասցեն կօգտագործվի գաղտնաբառի հիշեցումներ, կայքի ծանուցումներ և "
+"հաղորդագրություններ ուղարկելու ընտանիքի այլ անդամներից, ովքեր գրանցված են "
+"կայքում:"
 
 #: resources/views/admin/users-edit.phtml:96
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Հաշվի հաստատում և էլփոստի հաստատում"
 
 #: resources/views/admin/users-edit.phtml:102
 msgid "Email verified"
-msgstr ""
+msgstr "Էլփոստը հաստատված է"
 
 #: resources/views/admin/users-edit.phtml:106
 msgid "Approved by administrator"
-msgstr ""
+msgstr "Հաստատված է ադմինիստրատորի կողմից"
 
 #: resources/views/admin/users-edit.phtml:109
 msgid ""
@@ -18283,28 +18371,35 @@ msgid ""
 "email address is correct, and the “email verified” option is selected "
 "automatically."
 msgstr ""
+"Երբ օգտատերը գրանցվում է հաշիվ, նամակ է ուղարկվում նրա էլ. հասցեին՝ "
+"հաստատման հղումով: Երբ նրանք հետևում են այս հղմանը, մենք գիտենք, որ էլփոստի "
+"հասցեն ճիշտ է, և «էլ․ հասցեն հաստատված» տարբերակը ընտրվում է ավտոմատ կերպով։"
 
 #: resources/views/admin/users-edit.phtml:112
 msgid ""
 "If an administrator creates a user account, the verification email is not "
 "sent, and the email must be verified manually."
 msgstr ""
+"Եթե ադմինիստրատորը ստեղծում է օգտատիրոջ հաշիվ, հաստատման նամակը չի "
+"ուղարկվում, և էլփոստը պետք է ստուգվի ձեռքով:"
 
 #: resources/views/admin/users-edit.phtml:115
 msgid ""
 "You should not approve an account unless you know that the email address is "
 "correct."
-msgstr ""
+msgstr "Դուք չպետք է հաստատեք հաշիվը, եթե չգիտեք, որ էլփոստի հասցեն ճիշտ է:"
 
 #: resources/views/admin/users-edit.phtml:118
 msgid ""
 "A user will not be able to sign in until both “email verified” and “approved "
 "by administrator” are selected."
 msgstr ""
+"Օգտատերը չի կարողանա մուտք գործել, մինչև չընտրվեն և՛ «էլ․ հասցեն հաստատված» "
+"և «հաստատված է ադմինիստրատորի կողմից»։"
 
 #: resources/views/admin/users-edit.phtml:156
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "Ինքնաբերաբար ընդունել այս օգտվողի կողմից կատարված փոփոխությունները"
 
 #: resources/views/admin/users-edit.phtml:159
 msgid ""
@@ -18312,18 +18407,21 @@ msgid ""
 "moderator. This option allows a user to make changes without needing a "
 "moderator."
 msgstr ""
+"Սովորաբար, տոհմածառում կատարված ցանկացած փոփոխություն պետք է վերանայվի "
+"մոդերատորի կողմից: Այս տարբերակը թույլ է տալիս օգտվողին փոփոխություններ "
+"կատարել առանց մոդերատորի կարիքի:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:168
 #: resources/views/edit-account-page.phtml:147
 msgid "Visible online"
-msgstr ""
+msgstr "Տեսանելի է առցանց"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:174
 #: resources/views/edit-account-page.phtml:150
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "Տեսանելի է այլ օգտվողների համար, երբ առցանց"
 
 #: resources/views/admin/users-edit.phtml:177
 #: resources/views/edit-account-page.phtml:152
@@ -18331,11 +18429,13 @@ msgid ""
 "You can choose whether to appear in the list of users who are currently "
 "signed-in."
 msgstr ""
+"Դուք կարող եք ընտրել, թե արդյոք հայտնվե՞լ այս պահին մուտք գործած օգտատերերի "
+"ցանկում:"
 
 #. I18N: A configuration setting
 #: resources/views/admin/users-edit.phtml:186
 msgid "Preferred contact method"
-msgstr ""
+msgstr "Նախընտրելի շփման մեթոդ"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: resources/views/admin/users-edit.phtml:192
@@ -18344,19 +18444,22 @@ msgid ""
 "Site members can send each other messages. You can choose to how these "
 "messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Կայքի անդամները կարող են միմյանց հաղորդագրություններ ուղարկել: Դուք կարող եք "
+"ընտրել, թե ինչպես կուղարկվեն ձեզ այս հաղորդագրությունները, կամ ընտրել դրանք "
+"ընդհանրապես չստանալ:"
 
 #: resources/views/admin/users-edit.phtml:210
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Ադմինիստրատորի մեկնաբանությունները օգտատիրոջ մասին"
 
 #: resources/views/admin/users-edit.phtml:225
 #: resources/views/admin/users-edit.phtml:274
 msgid "Administrator"
-msgstr ""
+msgstr "Ադմինիստրատոր"
 
 #: resources/views/admin/users-edit.phtml:231
 msgid "Access to family trees"
-msgstr ""
+msgstr "Տոհմածառերի հասանելիություն"
 
 #: resources/views/admin/users-edit.phtml:234
 msgid ""
@@ -18365,18 +18468,26 @@ msgid ""
 "to users. Each family tree can assign different access to each role, and "
 "users can have a different role in each family tree."
 msgstr ""
+"Դերը մուտքի իրավունքների մի շարք է, որը թույլ է տալիս դիտել տվյալները, փոխել "
+"նախապատվությունները և այլն: Մուտքի իրավունքները վերագրվում են դերերին, իսկ "
+"դերերը տրամադրվում են օգտվողներին: Յուրաքանչյուր տոհմածառ կարող է տարբեր "
+"մուտք հատկացնել յուրաքանչյուր դերին, և օգտվողները կարող են ունենալ տարբեր "
+"դեր յուրաքանչյուր տոհմածառում:"
 
 #: resources/views/admin/users-edit.phtml:243
 msgid ""
 "Everybody has this role, including visitors to the website and search "
 "engines."
 msgstr ""
+"Բոլորն ունեն այս դերը, ներառյալ կայքի այցելուները և որոնման համակարգերը:"
 
 #: resources/views/admin/users-edit.phtml:249
 msgid ""
 "This role has all the permissions of the visitor role, plus any additional "
 "access granted by the family tree configuration."
 msgstr ""
+"Այս դերն ունի այցելուի դերի բոլոր թույլտվությունները, գումարած ընտանեկան "
+"ծառի կազմաձևման կողմից տրված ցանկացած լրացուցիչ մուտք:"
 
 #: resources/views/admin/users-edit.phtml:257
 msgid ""
@@ -18384,12 +18495,18 @@ msgid ""
 "change/delete data. Any changes will need to be reviewed by a moderator, "
 "unless the user has the “automatically accept changes” option enabled."
 msgstr ""
+"Այս դերն ունի անդամի դերի բոլոր թույլտվությունները, գումարած տվյալներ "
+"ավելացնելու/փոխելու/ջնջելու թույլտվությունը։ Ցանկացած փոփոխություն պետք է "
+"վերանայվի մոդերատորի կողմից, բացառությամբ այն դեպքերի, երբ օգտատերը միացված "
+"չէ «ավտոմատ ընդունել փոփոխությունները» տարբերակը:"
 
 #: resources/views/admin/users-edit.phtml:263
 msgid ""
 "This role has all the permissions of the editor role, plus permission to "
 "accept/reject changes made by other users."
 msgstr ""
+"Այս դերն ունի խմբագրի դերի բոլոր թույլտվությունները, գումարած այլ օգտվողների "
+"կողմից կատարված փոփոխություններն ընդունելու/մերժելու թույլտվությունը:"
 
 #: resources/views/admin/users-edit.phtml:271
 msgid ""
@@ -18397,6 +18514,9 @@ msgid ""
 "access granted by the family tree configuration, plus permission to change "
 "the settings/configuration of a family tree."
 msgstr ""
+"Այս դերն ունի մոդերատորի դերի բոլոր թույլտվությունները, գումարած տոհմածառի "
+"կազմաձևման կողմից տրված ցանկացած լրացուցիչ մուտք, գումարած տոհմածառի "
+"կարգավորումները/կոնֆիգուրացիաները փոխելու թույլտվություն:"
 
 #: resources/views/admin/users-edit.phtml:277
 msgid ""
@@ -18404,41 +18524,46 @@ msgid ""
 "plus permission to change the settings/configuration of the website, users, "
 "and modules."
 msgstr ""
+"Այս դերն ունի կառավարչի դերի բոլոր թույլտվությունները բոլոր տոհմածառերում, "
+"գումարած թույլտվություն փոխելու կայքի, օգտատերերի և մոդուլների "
+"կարգավորումները/կազմաձևերը:"
 
 #: resources/views/admin/users-edit.phtml:292
 #: resources/views/edit-account-page.phtml:57
 msgid "Individual record"
-msgstr ""
+msgstr "Անհատական ռեկորդ"
 
 #: resources/views/admin/users-edit.phtml:306
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Կապեք այս օգտվողին տոհմածառի անհատի հետ:"
 
 #: resources/views/admin/users-edit.phtml:336
 msgid "No"
-msgstr ""
+msgstr "Ոչ"
 
 #: resources/views/admin/users-edit.phtml:366
 msgid ""
 "You must specify an individual record before you can restrict the user to "
 "their immediate family."
 msgstr ""
+"Դուք պետք է նշեք անհատական գրառում, որպեսզի կարողանաք սահմանափակել օգտվողին "
+"իր անմիջական ընտանիքով:"
 
 #: resources/views/admin/users-table-options.phtml:39
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Դիմակահանդես, ինչպես այս օգտվողը"
 
 #: resources/views/admin/users.phtml:33
 msgid "Date registered"
-msgstr ""
+msgstr "Գրանցման ամսաթիվը"
 
 #: resources/views/admin/users.phtml:35
 msgid "Last signed in"
-msgstr ""
+msgstr "Վերջին անգամ մուտք է գործել"
 
 #: resources/views/admin/users.phtml:37
 msgid "Approved"
-msgstr ""
+msgstr "Հաստատված է"
 
 #. I18N: A button label.
 #: resources/views/branches-page.phtml:51
@@ -18455,57 +18580,57 @@ msgstr ""
 #: resources/views/report-setup-page.phtml:86
 #: resources/views/report-setup-page.phtml:91
 msgid "view"
-msgstr ""
+msgstr "դիտել"
 
 #: resources/views/calendar-list.phtml:26
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ընտանիք"
+msgstr[1] "%s ընտանիք"
 
 #: resources/views/calendar-page.phtml:109
 msgid "Show"
-msgstr ""
+msgstr "Ցույց տալ"
 
 #: resources/views/calendar-page.phtml:122
 #: resources/views/lists/datatables-attributes.phtml:34
 msgid "Filter"
-msgstr ""
+msgstr "Զտել"
 
 #: resources/views/calendar-page.phtml:124
 #: resources/views/calendar-page.phtml:138
 msgid "All individuals"
-msgstr ""
+msgstr "Բոլոր անհատները"
 
 #: resources/views/calendar-page.phtml:127
 msgid "Living individuals"
-msgstr ""
+msgstr "Կենդանի անհատներ"
 
 #: resources/views/calendar-page.phtml:130
 msgid "Recent years (&lt; 100 yrs)"
-msgstr ""
+msgstr "Վերջին տարիները (< 100 տարի)"
 
 #: resources/views/calendar-page.phtml:207
 msgid "Custom event"
-msgstr ""
+msgstr "Պատվերով միջոցառում"
 
 #: resources/views/calendar-page.phtml:221
 msgid "View this day"
-msgstr ""
+msgstr "Դիտեք այս օրը"
 
 #: resources/views/calendar-page.phtml:225
 msgid "View this month"
-msgstr ""
+msgstr "Դիտեք այս ամիս"
 
 #: resources/views/calendar-page.phtml:229
 msgid "View this year"
-msgstr ""
+msgstr "Դիտեք այս տարի"
 
 #: resources/views/chart-box.phtml:113 resources/views/chart-box.phtml:125
 #: resources/views/chart-box.phtml:126
 msgid "Links"
-msgstr ""
+msgstr "Հղումներ"
 
 #: resources/views/components/select-family.phtml:27
 #: resources/views/components/select-individual.phtml:27
@@ -18519,73 +18644,75 @@ msgstr ""
 #: resources/views/components/select-submission.phtml:27
 #: resources/views/components/select-submitter.phtml:27
 msgid "No results found"
-msgstr ""
+msgstr "Ոչ մի արդյունք չի գտնվել"
 
 #: resources/views/contact-page.phtml:43
 #: resources/views/setup/step-5-administrator.phtml:56
 msgid "Your name"
-msgstr ""
+msgstr "Ձեր անունը"
 
 #: resources/views/edit-account-page.phtml:64
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "Անհայտ"
 
 #: resources/views/edit-account-page.phtml:68
 msgid ""
 "This is a link to your own record in the family tree. If this is the wrong "
 "individual, contact an administrator."
 msgstr ""
+"Սա հղում է տոհմածառի ձեր սեփական գրառումին: Եթե սա սխալ անձնավորություն է, "
+"դիմեք ադմինիստրատորին:"
 
 #: resources/views/edit-account-page.phtml:95
 msgid "Leave the password blank if you want to keep the current password."
-msgstr ""
+msgstr "Գաղտնաբառը դատարկ թողեք, եթե ցանկանում եք պահպանել ընթացիկ գաղտնաբառը:"
 
 #: resources/views/edit-account-page.phtml:135
 msgid "Contact method"
-msgstr ""
+msgstr "Կոնտակտային մեթոդ"
 
 #: resources/views/edit-account-page.phtml:176
 msgid "Delete your account"
-msgstr ""
+msgstr "Ջնջել ձեր հաշիվը"
 
 #: resources/views/edit-blocks-page.phtml:25
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Քաշեք բլոկները՝ փոխելու իրենց դիրքը:"
 
 #: resources/views/edit-blocks-page.phtml:51
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Ավելացրեք ավելի շատ բլոկներ հետևյալ ցուցակից:"
 
 #: resources/views/edit-blocks-page.phtml:74
 #: resources/views/edit-blocks-page.phtml:75
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Վերականգնել բլոկի լռելյայն դասավորությունը"
 
 #: resources/views/edit/add-fact-row.phtml:21
 #: resources/views/edit/raw-gedcom-record.phtml:60
 #: resources/views/record-page-menu-facts.phtml:16
 msgid "Add a fact"
-msgstr ""
+msgstr "Ավելացնել փաստ"
 
 #: resources/views/edit/change-family-members.phtml:58
 #: resources/xml/reports/family_group_report.xml:774
 #: resources/xml/reports/individual_ext_report.xml:534
 #: resources/xml/reports/individual_report.xml:530
 msgid "Son"
-msgstr ""
+msgstr "Որդի"
 
 #: resources/views/edit/change-family-members.phtml:60
 #: resources/xml/reports/family_group_report.xml:809
 #: resources/xml/reports/individual_ext_report.xml:570
 #: resources/xml/reports/individual_report.xml:566
 msgid "Daughter"
-msgstr ""
+msgstr "Դուստր"
 
 #: resources/views/edit/edit-fact.phtml:52
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Խմբագրել բոլոր GEDCOM պիտակներով"
 
 #: resources/views/edit/icon-fact-copy.phtml:15
 #: resources/views/edit/icon-fact-copy.phtml:17
@@ -18593,36 +18720,36 @@ msgstr ""
 #: resources/views/individual-page-name.phtml:86
 #: resources/views/modules/share-url/share.phtml:18
 msgid "Copy"
-msgstr ""
+msgstr "Պատճենել"
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Իսկապե՞ս ուզում եք ջնջել «%s»-ի հղումը:"
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
 msgid "Unlink"
-msgstr ""
+msgstr "Չեղարկել կապը"
 
 #: resources/views/edit/input-addon-calendar.phtml:14
 #: resources/views/edit/input-addon-calendar.phtml:17
 msgid "Select a date"
-msgstr ""
+msgstr "Ընտրեք ամսաթիվ"
 
 #: resources/views/edit/input-addon-edit-name.phtml:14
 #: resources/views/edit/input-addon-edit-name.phtml:17
 #: resources/views/individual-page-name.phtml:79
 #: resources/views/individual-page-name.phtml:81
 msgid "Edit the name"
-msgstr ""
+msgstr "Խմբագրել անունը"
 
 #: resources/views/edit/input-addon-keyboard.phtml:14
 #: resources/views/edit/input-addon-keyboard.phtml:17
 #: resources/views/edit/shared-note.phtml:29
 #: resources/views/edit/shared-note.phtml:31
 msgid "Find a special character"
-msgstr ""
+msgstr "Գտեք հատուկ կերպար"
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid ""
@@ -18631,11 +18758,15 @@ msgid ""
 "and tradition. If no pedigree is specified, then a biological relationship "
 "will be assumed."
 msgstr ""
+"Երեխան կարող է ունենալ մեկից ավելի ծնողներ: Երեխայի և ծնողների "
+"հարաբերությունները կարող են լինել կենսաբանական, օրինական կամ հիմնված տեղական "
+"մշակույթի և ավանդույթի վրա: Եթե տոհմային չնշված լինի, ապա կենթադրվի "
+"կենսաբանական հարաբերություն:"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:49
 msgid "go to new individual"
-msgstr ""
+msgstr "գնալ նոր անհատի"
 
 #: resources/views/edit/raw-gedcom-fact.phtml:26
 #: resources/views/edit/raw-gedcom-record.phtml:26
@@ -18645,13 +18776,17 @@ msgid ""
 "understand the GEDCOM format. If you make a mistake here, it can be "
 "difficult to fix."
 msgstr ""
+"Այս էջը թույլ է տալիս շրջանցել սովորական ձևերը և ուղղակիորեն խմբագրել "
+"հիմքում ընկած տվյալները: Դա առաջադեմ տարբերակ է, և դուք չպետք է օգտագործեք "
+"այն, քանի դեռ չեք հասկանում GEDCOM ձևաչափը: Եթե այստեղ սխալ եք թույլ տալիս, "
+"ապա այն կարող է դժվար լինել ուղղել:"
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:29
 #: resources/views/edit/raw-gedcom-record.phtml:28
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "Դուք կարող եք ներբեռնել GEDCOM բնութագրի պատճենը %s-ից:"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-children.phtml:49
@@ -18663,37 +18798,42 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of birth"
-msgstr ""
+msgstr "տեսակավորել ըստ ծննդյան ամսաթվի"
 
 #: resources/views/edit/reorder-families.phtml:33
 #: resources/views/lists/surnames-table.phtml:39
 #: resources/views/modules/family-book-chart/page.phtml:59
 #: resources/views/modules/pedigree-chart/previous.phtml:31
 msgid "Spouses"
-msgstr ""
+msgstr "Ամուսիններ"
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid ""
 "When an individual has more than one spouse, you should sort the families in "
 "date order."
 msgstr ""
+"Երբ անհատն ունի մեկից ավելի ամուսին, դուք պետք է դասավորեք ընտանիքները ըստ "
+"ամսաթվերի:"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-families.phtml:42
 #: resources/xml/reports/marriage_report.xml:9
 msgid "sort by date of marriage"
-msgstr ""
+msgstr "տեսակավորել ըստ ամուսնության ամսաթվի"
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid ""
 "An individual can have more than one set of parents. For example, birth and "
 "adopted."
 msgstr ""
+"Անհատը կարող է ունենալ մեկից ավելի ծնողներ: Օրինակ՝ ծնունդը և որդեգրումը։"
 
 #: resources/views/edit/reorder-families.phtml:77
 msgid ""
 "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
+"Ցանկի առաջին ընտանիքը կօգտագործվի գծապատկերներում, ցուցակներում, "
+"հաշվետվություններում և այլն:"
 
 #: resources/views/emails/approve-user-html.phtml:18
 #: resources/views/emails/approve-user-text.phtml:14
@@ -18711,7 +18851,7 @@ msgstr ""
 #: resources/views/emails/register-user-text.phtml:16
 #, php-format
 msgid "Hello %s…"
-msgstr ""
+msgstr "Բարև %s…"
 
 #: resources/views/emails/approve-user-html.phtml:22
 #: resources/views/emails/approve-user-text.phtml:16
@@ -18720,18 +18860,20 @@ msgid ""
 "The administrator at the webtrees site %s has approved your application for "
 "an account. You may now sign in by accessing the following link: %s"
 msgstr ""
+"%s webtrees կայքի ադմինիստրատորը հաստատել է ձեր դիմումը հաշվի համար: Այժմ "
+"կարող եք մուտք գործել՝ մուտք գործելով հետևյալ հղումը՝ %s"
 
 #: resources/views/emails/message-copy-html.phtml:22
 #: resources/views/emails/message-copy-text.phtml:18
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "Դուք ուղարկել եք հետևյալ հաղորդագրությունը webtrees-ի օգտատիրոջը."
 
 #: resources/views/emails/message-copy-html.phtml:35
 #: resources/views/emails/message-copy-text.phtml:25
 #: resources/views/emails/message-user-html.phtml:36
 #: resources/views/emails/message-user-text.phtml:26
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "Այս հաղորդագրությունն ուղարկվել է հետևյալ URL-ը դիտելիս. "
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
@@ -18742,45 +18884,46 @@ msgstr ""
 #: resources/views/lists/surnames-tag-cloud.phtml:39
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:23
 #: resources/views/emails/message-user-text.phtml:18
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "%s-ը ձեզ ուղարկել է հետևյալ հաղորդագրությունը."
 
 #: resources/views/emails/password-request-html.phtml:20
 #: resources/views/emails/password-request-text.phtml:16
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Նոր գաղտնաբառ սահմանելու համար անցեք այս հղմանը:"
 
 #: resources/views/emails/password-request-html.phtml:28
 #: resources/views/emails/password-request-text.phtml:20
 msgid "If you did not request a new password, please ignore this message."
 msgstr ""
+"Եթե դուք չեք խնդրել նոր գաղտնաբառ, խնդրում ենք անտեսել այս հաղորդագրությունը:"
 
 #: resources/views/emails/register-notify-html.phtml:19
 #: resources/views/emails/register-notify-text.phtml:17
 #: resources/views/emails/verify-notify-html.phtml:16
 #: resources/views/emails/verify-notify-text.phtml:14
 msgid "Hello administrator…"
-msgstr ""
+msgstr "Բարև ադմինիստրատոր…"
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:24
 #: resources/views/emails/register-notify-text.phtml:20
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Հնարավոր օգտվողը գրանցվել է webtrees-ում %s-ում:"
 
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:28
 #: resources/views/modules/census-assistant.phtml:79
 #: resources/views/register-page.phtml:85
 msgid "Comments"
-msgstr ""
+msgstr "Մեկնաբանություններ"
 
 #: resources/views/emails/register-notify-html.phtml:41
 #: resources/views/emails/register-notify-text.phtml:32
@@ -18788,6 +18931,8 @@ msgid ""
 "The user has been sent an email with the information necessary to confirm "
 "the access request."
 msgstr ""
+"Օգտագործողին ուղարկվել է էլեկտրոնային նամակ՝ մուտքի հարցումը հաստատելու "
+"համար անհրաժեշտ տեղեկություններով:"
 
 #: resources/views/emails/register-notify-html.phtml:45
 #: resources/views/emails/register-notify-text.phtml:34
@@ -18796,6 +18941,9 @@ msgid ""
 "request. You can then complete the process by activating the username. The "
 "new user will not be able to sign in until you activate the account."
 msgstr ""
+"Դուք էլփոստով կտեղեկացվեք, երբ այս ապագա օգտվողը հաստատի հարցումը: Այնուհետև "
+"կարող եք ավարտել գործընթացը՝ ակտիվացնելով օգտվողի անունը: Նոր օգտվողը չի "
+"կարողանա մուտք գործել, քանի դեռ չեք ակտիվացնել հաշիվը:"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: resources/views/emails/register-user-html.phtml:22
@@ -18805,16 +18953,19 @@ msgid ""
 "You (or someone claiming to be you) has requested an account at %1$s using "
 "the email address %2$s."
 msgstr ""
+"Դուք (կամ ինչ-որ մեկը, որը պնդում է, որ դուք եք) հաշիվ եք խնդրել %1$s-ում՝ "
+"օգտագործելով %2$s էլ."
 
 #: resources/views/emails/register-user-html.phtml:26
 #: resources/views/emails/register-user-text.phtml:20
 msgid "Follow this link to verify your email address."
-msgstr ""
+msgstr "Հետևեք այս հղմանը ձեր էլ.փոստի հասցեն հաստատելու համար:"
 
 #: resources/views/emails/register-user-html.phtml:36
 #: resources/views/emails/register-user-text.phtml:24
 msgid "If you didn’t request an account, you can just delete this message."
 msgstr ""
+"Եթե դուք հաշիվ չեք խնդրել, կարող եք պարզապես ջնջել այս հաղորդագրությունը:"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:22
@@ -18824,29 +18975,30 @@ msgid ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
 "address (%3$s)."
 msgstr ""
+"Նոր օգտվողը (%1$s) հաշիվ է խնդրել (%2$s) և հաստատել էլփոստի հասցեն (%3$s):"
 
 #: resources/views/emails/verify-notify-html.phtml:30
 #: resources/views/emails/verify-notify-text.phtml:23
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Դուք պետք է վերանայեք հաշվի մանրամասները:"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:39
 #: resources/views/emails/verify-notify-text.phtml:27
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Կարգավիճակը դրեք «հաստատված»:"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
 #: resources/views/emails/verify-notify-text.phtml:28
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Սահմանեք մուտքի մակարդակը յուրաքանչյուր ծառի համար:"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:43
 #: resources/views/emails/verify-notify-text.phtml:29
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Օգտատիրոջ հաշիվը կապեք անհատի հետ:"
 
 #: resources/views/errors/database-connection.phtml:15
 msgid ""
@@ -18855,10 +19007,14 @@ msgid ""
 "href=\"index.php\">try again</a> in a few minutes or contact the website "
 "administrator."
 msgstr ""
+"Վա՜յ Վեբսերվերը չի կարողանում միանալ տվյալների բազայի սերվերին: Այն կարող է "
+"զբաղված լինել, տեխնիկական սպասարկում կամ պարզապես կոտրվել: Դուք պետք է <a "
+"href=\"index.php\">փորձեք նորից</a> մի քանի րոպեից կամ կապվեք կայքի "
+"ադմինիստրատորի հետ:"
 
 #: resources/views/errors/database-connection.phtml:22
 msgid "If you are the website administrator, you should check that:"
-msgstr ""
+msgstr "Եթե դուք կայքի ադմինիստրատորն եք, ապա պետք է ստուգեք, որ."
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:26
@@ -18866,6 +19022,8 @@ msgid ""
 "the database connection settings in the file “/data/config.ini.php” are "
 "still correct"
 msgstr ""
+"տվյալների բազայի միացման կարգավորումները «/data/config.ini.php» ֆայլում դեռ "
+"ճիշտ են"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:29
@@ -18873,23 +19031,29 @@ msgid ""
 "the folder “/data” and the file “/data/config.ini.php” have access "
 "permissions that allow the webserver to read them"
 msgstr ""
+"«/data» թղթապանակը և «/data/config.ini.php» ֆայլն ունեն մուտքի "
+"թույլտվություններ, որոնք թույլ են տալիս վեբսերվերին կարդալ դրանք:"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:32
 msgid ""
 "you can connect to the database using other applications, such as phpmyadmin"
 msgstr ""
+"դուք կարող եք միանալ տվյալների բազային՝ օգտագործելով այլ հավելվածներ, օրինակ՝"
+" phpmyadmin"
 
 #: resources/views/errors/database-connection.phtml:37
 msgid ""
 "If you cannot resolve the problem yourself, you can ask for help on the "
 "forums at <a href=\"https://webtrees.net\">webtrees.net</a>."
 msgstr ""
+"Եթե դուք ինքներդ չեք կարող լուծել խնդիրը, կարող եք օգնություն խնդրել <a href="
+"\"https://webtrees.net\">webtrees.net</a> ֆորումներում:"
 
 #: resources/views/errors/database-error.phtml:14
 #: resources/views/setup/step-6-failed.phtml:14
 msgid "An unexpected database error occurred."
-msgstr ""
+msgstr "Տվյալների բազայի անսպասելի սխալ տեղի ունեցավ:"
 
 #: resources/views/errors/database-error.phtml:22
 #: resources/views/setup/step-6-failed.phtml:22
@@ -18897,31 +19061,33 @@ msgid ""
 "The webtrees developers would be very interested to learn about this error. "
 "If you contact them, they will help you resolve the problem."
 msgstr ""
+"Webtrees-ի մշակողները շատ հետաքրքրված կլինեն իմանալ այս սխալի մասին: Եթե "
+"դիմեք նրանց, նրանք կօգնեն ձեզ լուծել խնդիրը:"
 
 #: resources/views/errors/no-tree-access.phtml:10
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Այս օգտվողի հաշիվը մուտք չունի որևէ ծառի:"
 
 #: resources/views/fact-date.phtml:117
 msgid "(on the date of death)"
-msgstr ""
+msgstr "(մահվան օրը)"
 
 #: resources/views/fact-date.phtml:123
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s մահից հետո)"
 
 #: resources/views/fact-parent-age.phtml:22
 msgid "Mother’s age"
-msgstr ""
+msgstr "մոր տարիքը"
 
 #: resources/views/fact-parent-age.phtml:32
 msgid "Father’s age"
-msgstr ""
+msgstr "Հոր տարիքը"
 
 #: resources/views/fact-parent-age.phtml:42
 msgid "Parent’s age"
-msgstr ""
+msgstr "Ծնողի տարիքը"
 
 #: resources/views/family-page-children.phtml:21
 #: resources/views/modules/ancestors-chart/tree.phtml:44
@@ -18931,14 +19097,14 @@ msgstr ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s երեխա"
+msgstr[1] "%s երեխա"
 
 #: resources/views/family-page-menu.phtml:69
 #: resources/views/individual-page-images.phtml:61
 #: resources/views/individual-page-menu.phtml:97
 msgid "Add a media object"
-msgstr ""
+msgstr "Ավելացնել մեդիա օբյեկտ"
 
 #: resources/views/family-page-menu.phtml:81
 msgid ""
@@ -18946,6 +19112,8 @@ msgid ""
 "will leave the individuals in place. Are you sure you want to delete this "
 "family?"
 msgstr ""
+"Ընտանիքը ջնջելու դեպքում բոլոր անհատները կհեռացվեն միմյանցից, սակայն "
+"անհատները կթողնեն իրենց տեղում: Իսկապե՞ս ուզում եք ջնջել այս ընտանիքը:"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
@@ -18955,7 +19123,7 @@ msgstr ""
 #: resources/views/record-page-pending.phtml:19
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "ընդունել"
 
 #: resources/views/family-page-pending.phtml:19
 #: resources/views/individual-page-pending.phtml:20
@@ -18964,7 +19132,7 @@ msgstr ""
 #: resources/views/record-page-pending.phtml:19
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "մերժել"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:19
@@ -18973,12 +19141,14 @@ msgid ""
 "This family has been deleted. You should review the deletion and then %1$s "
 "or %2$s it."
 msgstr ""
+"Այս ընտանիքը ջնջվել է: Դուք պետք է վերանայեք ջնջումը, այնուհետև %1$s կամ %2$"
+"s այն:"
 
 #: resources/views/family-page-pending.phtml:21
 msgid ""
 "This family has been deleted. The deletion will need to be reviewed by a "
 "moderator."
-msgstr ""
+msgstr "Այս ընտանիքը ջնջվել է: Ջնջումը պետք է վերանայվի մոդերատորի կողմից:"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
@@ -18988,7 +19158,7 @@ msgstr ""
 #: resources/views/record-page-pending.phtml:25
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "ընդունել"
 
 #: resources/views/family-page-pending.phtml:25
 #: resources/views/individual-page-pending.phtml:29
@@ -18997,7 +19167,7 @@ msgstr ""
 #: resources/views/record-page-pending.phtml:25
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "մերժել"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page-pending.phtml:25
@@ -19006,64 +19176,80 @@ msgid ""
 "This family has been edited. You should review the changes and then %1$s or "
 "%2$s them."
 msgstr ""
+"Այս ընտանիքը խմբագրվել է: Դուք պետք է վերանայեք փոփոխությունները, այնուհետև "
+"%1$s կամ %2$s դրանք:"
 
 #: resources/views/family-page-pending.phtml:27
 msgid ""
 "This family has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
+"Այս ընտանիքը խմբագրվել է: Փոփոխությունները պետք է վերանայվեն մոդերատորի "
+"կողմից:"
 
 #: resources/views/family-page.phtml:41
 msgid "No facts exist for this family."
-msgstr ""
+msgstr "Այս ընտանիքի համար փաստեր չկան."
 
 #: resources/views/forgot-password-page.phtml:23
 msgid "Username or email address"
-msgstr ""
+msgstr "Օգտվողի անունը կամ էլփոստի հասցեն"
 
 #: resources/views/help/data-fixes.phtml:10
 msgid ""
 "Data fixes can require lots of slow calculations, so it is not possible to "
 "create an exact list of records that need to be updated."
 msgstr ""
+"Տվյալների շտկումները կարող են պահանջել շատ դանդաղ հաշվարկներ, ուստի հնարավոր "
+"չէ թարմացվող գրառումների ճշգրիտ ցուցակ ստեղծել:"
 
 #: resources/views/help/data-fixes.phtml:14
 msgid ""
 "For example, we can quickly find individuals that do not have a death event, "
 "but it is much slower to calculate if the individual is dead."
 msgstr ""
+"Օրինակ, մենք կարող ենք արագ գտնել անհատներ, որոնց մոտ մահվան դեպք չկա, բայց "
+"շատ ավելի դանդաղ է հաշվարկել, թե արդյոք անհատը մահացել է:"
 
 #: resources/views/help/data-fixes.phtml:18
 msgid ""
 "This list is created using a simple (but fast) search, and therefore "
 "includes records that will not be updated."
 msgstr ""
+"Այս ցուցակը ստեղծվում է պարզ (բայց արագ) որոնման միջոցով և, հետևաբար, "
+"ներառում է գրառումներ, որոնք չեն թարմացվելու:"
 
 #: resources/views/help/date.phtml:24
 msgid ""
 "Dates are stored using English abbreviations and keywords. Shortcuts are "
 "available as alternatives to these abbreviations and keywords."
 msgstr ""
+"Ամսաթվերը պահվում են՝ օգտագործելով անգլերեն հապավումները և հիմնաբառերը: "
+"Դյուրանցումները հասանելի են որպես այս հապավումների և հիմնաբառերի այլընտրանք:"
 
 #: resources/views/help/date.phtml:37 resources/views/help/date.phtml:75
 #: resources/views/help/date.phtml:113
 msgid "Shortcut"
-msgstr ""
+msgstr "Դյուրանցում"
 
 #: resources/views/help/date.phtml:62
 msgid ""
 "Date ranges are used to indicate that an event, such as a birth, happened on "
 "an unknown date within a possible range."
 msgstr ""
+"Ամսաթվերի միջակայքերը օգտագործվում են ցույց տալու համար, որ իրադարձությունը, "
+"ինչպիսին ծնունդն է, տեղի է ունեցել անհայտ ամսաթվի հնարավոր տիրույթում:"
 
 #: resources/views/help/date.phtml:100
 msgid ""
 "Date periods are used to indicate that a fact, such as an occupation, "
 "continued for a period of time."
 msgstr ""
+"Ամսաթվերի ժամկետները օգտագործվում են ցույց տալու համար, որ փաստը, ինչպիսին է "
+"զբաղմունքը, շարունակվել է որոշակի ժամանակահատվածում:"
 
 #: resources/views/help/date.phtml:107
 msgid "Date period"
-msgstr ""
+msgstr "Ամսաթվի ժամկետը"
 
 #: resources/views/help/date.phtml:138
 msgid ""
@@ -19071,6 +19257,10 @@ msgid ""
 "in another calendar, add a keyword before the date. This keyword is optional "
 "if the month or year format make the date unambiguous."
 msgstr ""
+"Ենթադրվում է, որ պարզ ամսաթվերը գրված են Գրիգորյան օրացույցում: Մեկ այլ "
+"օրացույցում ամսաթիվ նշելու համար ավելացրեք հիմնաբառ ամսաթվից առաջ: Այս "
+"հիմնաբառը պարտադիր չէ, եթե ամսվա կամ տարվա ձևաչափը ամսաթիվը դարձնում է "
+"միանշանակ:"
 
 #: resources/views/help/hebrew.phtml:10
 msgid ""
@@ -19084,6 +19274,16 @@ msgid ""
 "<br><br>Although this field is labeled “Hebrew”, it is not restricted to "
 "containing only Hebrew characters."
 msgstr ""
+"Շատ մշակույթներում ընդունված է ավանդական անունն ուղղագրել ավանդական "
+"գրանշաններով, ինչպես նաև անվան հռոմեական տարբերակ, ինչպես դա գրվում կամ "
+"արտասանվում է լատինական այբուբենի վրա հիմնված լեզուներով, օրինակ՝ անգլերենով:"
+"<br><br>Եթե նախընտրում եք օգտագործել լատինական այբուբենը՝ անունը ստանդարտ "
+"անվան դաշտերում մուտքագրելու համար, ապա կարող եք օգտագործել այս դաշտը՝ նույն "
+"անունը Latin, ռուսերեն, եբրայերեն, al-չինարեն, ոչ-չինարեն, ոչ-չինարեն, ոչ-"
+"չինարեն, ոչ-չինարեն, ոչ-չինարեն, ոչ-չինարեն կամ ոչ-չինարեն աբեթ մուտքագրելու "
+"համար: Անվան երկու տարբերակները կհայտնվեն ցուցակներում և գծապատկերներում:"
+"<br><br>Չնայած այս դաշտը պիտակավորված է «եբրայերեն», այն չի սահմանափակվում "
+"միայն եբրայերեն գրանշաններով:"
 
 #: resources/views/help/media-object.phtml:10
 msgid ""
@@ -19093,6 +19293,11 @@ msgid ""
 "photo or video, can be stored locally (on this webserver) or remotely (on a "
 "different webserver)."
 msgstr ""
+"Մեդիա օբյեկտը տոհմածառի գրառում է, որը պարունակում է տեղեկատվություն մեդիա "
+"ֆայլի մասին: Այս տեղեկատվությունը կարող է ներառել վերնագիր, հեղինակային "
+"իրավունքի մասին ծանուցում, տառադարձում, գաղտնիության սահմանափակումներ և այլն:"
+" Մեդիա ֆայլը, ինչպիսին է լուսանկարը կամ տեսանյութը, կարող է պահվել տեղական ("
+"այս վեբսերվերի վրա) կամ հեռակա (այլ վեբսերվերի վրա):"
 
 #: resources/views/help/name.phtml:10
 msgid ""
@@ -19101,16 +19306,20 @@ msgid ""
 "screen. It uses standard genealogy annotations to identify different parts "
 "of the name."
 msgstr ""
+"<b>name</b> դաշտը պարունակում է անհատի լրիվ անունը, ինչպես նրանք կգրեին կամ "
+"այնպես, ինչպես գրանցվել է: Այսպես այն կցուցադրվի էկրանին։ Այն օգտագործում է "
+"ստանդարտ ծագումնաբանական ծանոթագրություններ անվանման տարբեր մասերը "
+"բացահայտելու համար:"
 
 #: resources/views/help/name.phtml:15
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Ազգանունը կցվում է շեղերով՝ <%s>Ջոն Փոլ /Սմիթ/<%s>"
 
 #: resources/views/help/name.phtml:18
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr ""
+msgstr "Եթե ազգանունն անհայտ է, օգտագործեք դատարկ շեղեր՝ <%s>Մերի //<%s>"
 
 #: resources/views/help/name.phtml:21
 #, php-format
@@ -19118,13 +19327,15 @@ msgid ""
 "If an individual has two separate surnames, both should be enclosed by "
 "slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 msgstr ""
+"Եթե անհատն ունի երկու առանձին ազգանուն, երկուսն էլ պետք է փակվեն շեղերով՝ "
+"<%s>Խոսե Անտոնիո /Գոմես/ /Իգլեսիաս/<%s>"
 
 #: resources/views/help/name.phtml:24
 #, php-format
 msgid ""
 "If an individual does not have a surname, no slashes are needed: <%s>Jón "
 "Einarsson<%s>"
-msgstr ""
+msgstr "Եթե անհատը ազգանուն չունի, ապա կտրվածքի կարիք չկա. <%s>Ջոն Էյնարսոն<%s>"
 
 #: resources/views/help/name.phtml:27
 #, php-format
@@ -19132,6 +19343,8 @@ msgid ""
 "If an individual was not known by their first given name, the preferred name "
 "should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
+"Եթե անհատը հայտնի չէ իր առաջին անունով, նախընտրելի անունը պետք է նշվի "
+"աստղանիշով՝ <%s>Ջոն Փոլ* /Սմիթ/<%s>"
 
 #: resources/views/help/name.phtml:30
 #, php-format
@@ -19140,6 +19353,8 @@ msgid ""
 "name, it should be enclosed by quotation marks. For example, <%s>John "
 "&quot;Nobby&quot; /Clark/<%s>."
 msgstr ""
+"Եթե անհատը հայտնի էր մականունով, որը նրա պաշտոնական անվան մաս չէ, այն պետք է "
+"փակցվի չակերտներով: Օրինակ՝ <%s>Ջոն &laquo;Նոբբի&raquo; /Clark/<%s>:"
 
 #: resources/views/help/pending-changes.phtml:14
 msgid ""
@@ -19147,6 +19362,10 @@ msgid ""
 "immediately. Instead, they are kept in a “pending” area. These pending "
 "changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"Երբ ավելացնում եք, խմբագրում կամ ջնջում եք տեղեկատվություն, փոփոխություններն "
+"անմիջապես չեն պահպանվում: Փոխարենը, դրանք պահվում են «սպասող» տարածքում։ Այս "
+"սպասվող փոփոխությունները պետք է վերանայվեն մոդերատորի կողմից՝ նախքան դրանք "
+"ընդունելը:"
 
 #: resources/views/help/pending-changes.phtml:18
 msgid ""
@@ -19154,6 +19373,9 @@ msgid ""
 "follows the site’s standards and conventions, has proper source "
 "attributions, etc."
 msgstr ""
+"Այս գործընթացը թույլ է տալիս կայքի սեփականատիրոջը համոզվել, որ նոր "
+"տեղեկատվությունը համապատասխանում է կայքի չափանիշներին և կոնվենցիաներին, ունի "
+"աղբյուրների համապատասխան վերագրումներ և այլն:"
 
 #: resources/views/help/pending-changes.phtml:22
 msgid ""
@@ -19162,6 +19384,11 @@ msgid ""
 "changes are only shown on certain pages. For example, they are not shown in "
 "lists, reports, or search results."
 msgstr ""
+"Սպասող փոփոխությունները ցուցադրվում են միայն այն ժամանակ, երբ ձեր հաշիվը "
+"խմբագրելու թույլտվություն ունի: Երբ դուրս գաք, դուք այլևս չեք կարողանա "
+"տեսնել դրանք: Բացի այդ, սպասվող փոփոխությունները ցուցադրվում են միայն "
+"որոշակի էջերում: Օրինակ, դրանք չեն ցուցադրվում ցուցակներում, "
+"հաշվետվություններում կամ որոնման արդյունքներում:"
 
 #: resources/views/help/pending-changes.phtml:27
 msgid ""
@@ -19169,6 +19396,10 @@ msgid ""
 "is enabled, any changes made by that user are saved immediately. Many "
 "administrators enable this for their own user account."
 msgstr ""
+"Յուրաքանչյուր օգտվողի հաշիվ ունի «ավտոմատ կերպով ընդունել փոփոխությունները» "
+"տարբերակ: Երբ սա միացված է, այդ օգտվողի կողմից կատարված ցանկացած "
+"փոփոխություն անմիջապես պահվում է: Շատ ադմինիստրատորներ դա թույլ են տալիս "
+"իրենց սեփական օգտատիրոջ հաշվի համար:"
 
 #: resources/views/help/place.phtml:10
 msgid ""
@@ -19176,6 +19407,8 @@ msgid ""
 "smallest place and ending with the country. For example, “Westminster, "
 "London, England”."
 msgstr ""
+"Տեղանունները պետք է մուտքագրվեն որպես ստորակետերով բաժանված ցուցակ՝ սկսած "
+"ամենափոքր տեղից և վերջացրած երկրով: Օրինակ՝ «Վեսթմինսթեր, Լոնդոն, Անգլիա»։"
 
 #: resources/views/help/place.phtml:14
 msgid ""
@@ -19183,6 +19416,9 @@ msgid ""
 "current name for a town or country. The historic name can be shown in "
 "sources, notes, etc."
 msgstr ""
+"Տեղանունները կարող են փոխվել ժամանակի ընթացքում: Ծագումնաբանության մեջ "
+"ընդունված է օգտագործել քաղաքի կամ երկրի ներկայիս անվանումը։ Պատմական անունը "
+"կարելի է ցույց տալ աղբյուրներում, նշումներում և այլն։"
 
 #: resources/views/help/relationship-privacy.phtml:10
 msgid ""
@@ -19191,6 +19427,10 @@ msgid ""
 "the details of distant, living relations. You specify the number of "
 "relationship steps that the user is allowed to see."
 msgstr ""
+"Եթե օգտատերը կապված է տոհմածառի առանձին գրառումների հետ և ունի անդամի, "
+"խմբագրի կամ վարողի դեր, դուք կարող եք թույլ չտալ նրան մուտք գործել հեռավոր, "
+"կենդանի հարաբերությունների մանրամասները: Դուք նշում եք հարաբերությունների "
+"քայլերի քանակը, որոնք օգտատերը կարող է տեսնել:"
 
 #: resources/views/help/relationship-privacy.phtml:14
 msgid ""
@@ -19199,24 +19439,35 @@ msgid ""
 "step-daughter (spouse, child), but not their first cousin (parent, sibling, "
 "child)."
 msgstr ""
+"Օրինակ, եթե դուք նշեք 2 ուղու երկարությունը, անհատը կկարողանա տեսնել իր "
+"թոռանը (երեխա, երեխա), մորաքրոջը (ծնող, քույր կամ քույր), խորթ դստերը ("
+"ամուսին, երեխա), բայց ոչ իր առաջին զարմիկին (ծնող, քույր կամ քույր, երեխա):"
 
 #: resources/views/help/relationship-privacy.phtml:18
 msgid ""
 "Note: longer path lengths require a lot of calculation, which can make your "
 "website run slowly for these users."
 msgstr ""
+"Նշում. ավելի երկար ճանապարհների երկարությունները պահանջում են շատ "
+"հաշվարկներ, ինչը կարող է ստիպել ձեր վեբկայքը դանդաղ աշխատել այս օգտվողների "
+"համար:"
 
 #: resources/views/help/restriction.phtml:10
 msgid ""
 "Restrictions can be added to records and/or facts. They restrict who can "
 "view the data and who can edit it."
 msgstr ""
+"Սահմանափակումները կարող են ավելացվել գրառումներին և/կամ փաստերին: Նրանք "
+"սահմանափակում են, թե ով կարող է դիտել տվյալները և ովքեր կարող են խմբագրել "
+"դրանք:"
 
 #: resources/views/help/restriction.phtml:13
 msgid ""
 "Note that if a user account is linked to a record, then that user will "
 "always be able to view that record."
 msgstr ""
+"Նկատի ունեցեք, որ եթե օգտվողի հաշիվը կապված է գրառումների հետ, ապա այդ "
+"օգտվողը միշտ կկարողանա դիտել այդ գրառումը:"
 
 #: resources/views/help/romanized.phtml:10
 msgid ""
@@ -19231,6 +19482,16 @@ msgid ""
 "containing only characters based on the Latin alphabet. This might be of use "
 "with Japanese names, where three different alphabets may occur."
 msgstr ""
+"Շատ մշակույթներում ընդունված է ավանդական անուն գրել ավանդական գրանշաններով, "
+"ինչպես նաև անվան հռոմեական տարբերակ, ինչպես դա կուղղվի կամ արտասանվի "
+"լատինական այբուբենի վրա հիմնված լեզուներով, օրինակ՝ անգլերենով:<br><br>Եթե "
+"նախընտրում եք օգտագործել ոչ լատինատառ այբուբեն, ինչպիսիք են եբրայերեն, "
+"հունարեն, ռուսերեն, չինարեն կամ արաբերեն, ապա կարող եք մուտքագրել նույն "
+"անունը ալֆա անվանման դաշտում: Անվան երկու տարբերակները կհայտնվեն "
+"ցուցակներում և գծապատկերներում:<br><br>Չնայած այս դաշտը պիտակավորված է "
+"«Ռոմանիզացված», այն չի սահմանափակվում միայն լատինատառ այբուբենի վրա հիմնված "
+"նիշեր պարունակելու համար: Սա կարող է օգտագործվել ճապոնական անունների հետ, "
+"որտեղ կարող են լինել երեք տարբեր այբուբեններ:"
 
 #: resources/views/help/source-events.phtml:10
 msgid ""
@@ -19246,6 +19507,19 @@ msgid ""
 "the source jurisdiction place if the events recorded took place not only in "
 "Oneida County but also in other counties in Idaho."
 msgstr ""
+"Յուրաքանչյուր աղբյուր գրանցում է կոնկրետ իրադարձություններ, ընդհանուր "
+"առմամբ, տվյալ ամսաթվերի և վայրի իրավասության համար: Օրինակ՝ մարդահամարը "
+"գրանցում է մարդահամարի իրադարձությունները, իսկ եկեղեցում գրանցվում են "
+"ծննդյան, ամուսնության և մահվան դեպքերը:<br><br>Ընտրեք այն "
+"իրադարձությունները, որոնք գրանցված են այս աղբյուրի կողմից տրամադրված "
+"իրադարձությունների ցանկից: Ամսաթիվը պետք է նշվի միջակայքի ձևաչափով, ինչպիսին "
+"է <i>1900-ից մինչև 1910 թվականը</i>: Տեղի իրավասությունը ամենացածր "
+"իրավասության անունն է, որն ընդգրկում է այս աղբյուրում նշված բոլոր ցածր "
+"մակարդակի վայրերը: Օրինակ՝ «Օնեիդա, Այդահո, ԱՄՆ» կօգտագործվի որպես Օնեիդա "
+"շրջանի տարբեր քաղաքներում տեղի ունեցող իրադարձությունների աղբյուրի "
+"իրավասության վայր: «Այդահո, ԱՄՆ»-ը կլիներ աղբյուրի իրավասության վայրը, եթե "
+"արձանագրված իրադարձությունները տեղի ունենային ոչ միայն Օնեիդա գավառում, այլև "
+"Այդահոյի այլ շրջաններում:"
 
 #: resources/views/help/surname.phtml:10
 msgid ""
@@ -19257,6 +19531,13 @@ msgid ""
 "be listed under more than one surname, each name should be separated by a "
 "comma."
 msgstr ""
+"<b>ազգանուն</b> դաշտը պարունակում է անուն, որն օգտագործվում է տեսակավորման և "
+"խմբավորման համար: Այն կարող է տարբերվել անհատի իրական ազգանունից, որը միշտ "
+"վերցված է <b>name</b> դաշտից: Այս դաշտը կարող է օգտագործվել ազգանունները "
+"նախածանցով կամ առանց նախածանցով (Գոգ / վան Գոգ) տեսակավորելու և ուղղագրական "
+"տատանումները կամ ճեղքերը խմբավորելու համար (Կովալսկի / Կովալսկա): Եթե անհատը "
+"պետք է ցուցակագրվի մեկից ավելի ազգանվան տակ, յուրաքանչյուր անուն պետք է "
+"բաժանվի ստորակետով:"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page-images.phtml:49
