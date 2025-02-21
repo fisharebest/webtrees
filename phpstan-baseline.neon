@@ -25,24 +25,6 @@ parameters:
 			path: app/Census/CensusColumnRelationToHead.php
 
 		-
-			message: '#^Parameter \$filename of class Fisharebest\\Localization\\Translation constructor expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/CompilePoFiles.php
-
-		-
-			message: '#^Parameter \$path of function basename expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/CompilePoFiles.php
-
-		-
-			message: '#^Parameter \$path of function dirname expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/CompilePoFiles.php
-
-		-
 			message: '#^Cannot access offset ''dbca'' on array\|false\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -109,12 +91,6 @@ parameters:
 			path: app/Cli/Commands/ConfigIni.php
 
 		-
-			message: '#^Cannot cast mixed to string\.$#'
-			identifier: cast.string
-			count: 1
-			path: app/Cli/Commands/ConfigIni.php
-
-		-
 			message: '#^Parameter \$ca of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -169,34 +145,10 @@ parameters:
 			path: app/Cli/Commands/ConfigIni.php
 
 		-
-			message: '#^Parameter \$string of function rtrim expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/ConfigIni.php
-
-		-
 			message: '#^Parameter \$username of static method Fisharebest\\Webtrees\\DB\:\:connect\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Cli/Commands/ConfigIni.php
-
-		-
-			message: '#^Binary operation "\." between ''A tree with the…'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Cli/Commands/TreeCreate.php
-
-		-
-			message: '#^Parameter \$name of method Fisharebest\\Webtrees\\Services\\TreeService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/TreeCreate.php
-
-		-
-			message: '#^Parameter \$title of method Fisharebest\\Webtrees\\Services\\TreeService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/TreeCreate.php
 
 		-
 			message: '#^Binary operation "\." between ''Tree "'' and mixed results in an error\.$#'
@@ -215,66 +167,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Cli/Commands/TreeExport.php
-
-		-
-			message: '#^Binary operation "\." between ''Invalid format\: ‘'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Cli/Commands/TreeList.php
-
-		-
-			message: '#^Binary operation "\." between ''A user with the…'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 2
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$email of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$email of method Fisharebest\\Webtrees\\Services\\UserService\:\:findByEmail\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$password of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$real_name of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$setting_value of method Fisharebest\\Webtrees\\User\:\:setPreference\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$user_name of method Fisharebest\\Webtrees\\Services\\UserService\:\:create\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Parameter \$user_name of method Fisharebest\\Webtrees\\Services\\UserService\:\:findByUserName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Cli/Commands/UserCreate.php
-
-		-
-			message: '#^Binary operation "\." between ''Invalid format\: ‘'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Cli/Commands/UserList.php
 
 		-
 			message: '#^Parameter \#1 \$command of method Symfony\\Component\\Console\\Application\:\:add\(\) expects Symfony\\Component\\Console\\Command\\Command, mixed given\.$#'

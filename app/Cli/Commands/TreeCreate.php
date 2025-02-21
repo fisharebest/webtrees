@@ -28,7 +28,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class TreeCreate extends Command
+final class TreeCreate extends AbstractCommand
 {
     public function __construct(private readonly TreeService $tree_service)
     {
@@ -48,17 +48,17 @@ final class TreeCreate extends Command
     {
         $io = new SymfonyStyle(input: $input, output: $output);
 
-        $name  = $input->getOption(name: 'name');
-        $title = $input->getOption(name: 'title');
+        $name  = $this->stringOption(input: $input, name: 'name');
+        $title = $this->stringOption(input: $input, name: 'title');
 
         $missing = false;
 
-        if ($name === null) {
+        if ($name === '') {
             $io->error(message: 'Missing required option: --name');
             $missing = true;
         }
 
-        if ($title === null) {
+        if ($title === '') {
             $io->error(message: 'Missing required option: --title');
             $missing = true;
         }
@@ -72,13 +72,13 @@ final class TreeCreate extends Command
         if ($tree !== null) {
             $io->error(message: 'A tree with the name "' . $name . '" already exists.');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
         $tree = $this->tree_service->create(name: $name, title: $title);
 
         DB::exec(sql: 'COMMIT');
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -30,7 +29,7 @@ use Throwable;
 use function file_exists;
 use function file_put_contents;
 
-final class SiteOffline extends Command
+final class SiteOffline extends AbstractCommand
 {
     protected function configure(): void
     {
@@ -42,8 +41,7 @@ final class SiteOffline extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /** @var string $message */
-        $message = $input->getArgument(name: 'message') ?? '';
+        $message = $this->stringArgument(input: $input, name: 'message');
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
@@ -55,7 +53,7 @@ final class SiteOffline extends Command
             $io->error(message: 'Failed to write file ' . Webtrees::OFFLINE_FILE);
             $io->error(message: $ex->getMessage());
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
         if ($file_exists) {
@@ -64,6 +62,6 @@ final class SiteOffline extends Command
             $io->success(message: Webtrees::OFFLINE_FILE . ' created. Site is offline.');
         }
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

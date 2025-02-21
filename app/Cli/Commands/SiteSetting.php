@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\DB;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,7 +27,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-final class SiteSetting extends Command
+final class SiteSetting extends AbstractCommand
 {
     protected function configure(): void
     {
@@ -43,9 +42,9 @@ final class SiteSetting extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $quiet  = (bool) $input->getOption(name: 'quiet');
-        $list   = (bool) $input->getOption(name: 'list');
-        $delete = (bool) $input->getOption(name: 'delete');
+        $quiet  = $this->boolOption(input: $input, name: 'quiet');
+        $list   = $this->boolOption(input: $input, name: 'list');
+        $delete = $this->boolOption(input: $input, name: 'delete');
 
         /** @var string|null $setting_name */
         $setting_name = $input->getArgument(name: 'setting-name');
@@ -59,13 +58,13 @@ final class SiteSetting extends Command
             if ($delete) {
                 $io->error(message: 'Cannot specify --list and --delete together.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
             if ($setting_value !== null) {
                 $io->error(message: 'Cannot specify --list and a new value together.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
             $table = new Table(output: $output);
@@ -86,7 +85,7 @@ final class SiteSetting extends Command
 
             $table->render();
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
         /** @var string|null $old_setting_value */
@@ -98,13 +97,13 @@ final class SiteSetting extends Command
             if ($setting_name === null) {
                 $io->error(message: 'Setting name must be specified for --delete.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
             if ($setting_value !== null) {
                 $io->error(message: 'Cannot specify --delete and a new value together.');
 
-                return Command::FAILURE;
+                return self::FAILURE;
             }
 
             if ($old_setting_value === null) {
@@ -117,14 +116,14 @@ final class SiteSetting extends Command
                 $io->success(message: 'Site setting ‘' . $setting_name . '’ deleted.  Previous value was ‘' . $old_setting_value . '’.');
             }
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
 
         if ($setting_name === null) {
             $io->error(message: 'A setting name is required, unless the --list option is used.');
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
         if ($setting_value === null) {
@@ -139,13 +138,13 @@ final class SiteSetting extends Command
                 $io->info(message: 'Site setting ‘' . $setting_name . '’ is currently set to ‘' . $old_setting_value . '’.');
             }
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
         if ($old_setting_value === $setting_value) {
             $io->warning(message: 'Site setting ' . $setting_name . ' is already set to ' . $setting_value);
 
-            return Command::SUCCESS;
+            return self::SUCCESS;
         }
 
         if ($old_setting_value === null) {
@@ -164,6 +163,6 @@ final class SiteSetting extends Command
             $io->success(message: 'Site setting ‘' . $setting_name . '’ was changed from ‘' . $old_setting_value . '’ to ‘' . $setting_value . '’.');
         }
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

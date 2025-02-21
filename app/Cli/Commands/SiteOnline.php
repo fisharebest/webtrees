@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -28,7 +27,7 @@ use Throwable;
 
 use function file_exists;
 
-final class SiteOnline extends Command
+final class SiteOnline extends AbstractCommand
 {
     protected function configure(): void
     {
@@ -54,6 +53,6 @@ final class SiteOnline extends Command
             $io->error(message: 'Unable to delete ' . Webtrees::OFFLINE_FILE . ' - ' . $ex->getMessage());
         }
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

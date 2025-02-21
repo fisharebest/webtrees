@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Localization\Translation;
 use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -31,10 +30,9 @@ use function count;
 use function dirname;
 use function file_put_contents;
 use function glob;
-use function realpath;
 use function var_export;
 
-final class CompilePoFiles extends Command
+final class CompilePoFiles extends AbstractCommand
 {
     private const string PO_FILE_PATTERN = Webtrees::ROOT_DIR . 'resources/lang/*/*.po';
 
@@ -54,13 +52,12 @@ final class CompilePoFiles extends Command
         if ($po_files === false || $po_files === []) {
             $io->error('Failed to find any PO files matching ' . self::PO_FILE_PATTERN);
 
-            return Command::FAILURE;
+            return self::FAILURE;
         }
 
         $error = false;
 
         foreach ($po_files as $po_file) {
-            $po_file      = realpath($po_file);
             $translation  = new Translation(filename: $po_file);
             $translations = $translation->asArray();
             $php_file     = dirname(path: $po_file) . '/' . basename(path: $po_file, suffix: '.po') . '.php';
@@ -75,6 +72,6 @@ final class CompilePoFiles extends Command
             }
         }
 
-        return $error ? Command::FAILURE : Command::SUCCESS;
+        return $error ? self::FAILURE : self::SUCCESS;
     }
 }

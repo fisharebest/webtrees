@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
 return array (
+  ' but the details are unknown' => ' but the details are unknown',
   '%H:%i:%s' => '%g:%i:%s %a',
   '%j %F %Y' => '%F %j, %Y',
   'Asunción, Paraguay' => 'Asuncion, Paraguay',

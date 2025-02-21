@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Cli\Commands;
 
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -32,7 +31,7 @@ use function addcslashes;
 use function array_map;
 use function implode;
 
-final class TreeList extends Command
+final class TreeList extends AbstractCommand
 {
     public function __construct(private readonly TreeService $tree_service)
     {
@@ -55,7 +54,7 @@ final class TreeList extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $format = $input->getOption(name: 'format');
+        $format = $this->stringOption(input: $input, name: 'format');
 
         $io = new SymfonyStyle(input: $input, output: $output);
 
@@ -70,8 +69,8 @@ final class TreeList extends Command
             'media_directory' => $tree->getPreference(setting_name: 'MEDIA_DIRECTORY'),
             'imported'        => $tree->getPreference(setting_name: 'imported') ? 'yes' : 'no',
         ])
-        ->values()
-        ->all();
+            ->values()
+            ->all();
 
         switch ($format) {
             case 'table':
@@ -96,10 +95,10 @@ final class TreeList extends Command
             default:
                 $io->error(message: 'Invalid format: ‘' . $format . '’');
 
-                return Command::FAILURE;
+                return self::FAILURE;
         }
 
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 
     /**
