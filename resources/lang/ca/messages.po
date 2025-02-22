@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-02-16 22:34+0000\n"
+"PO-Revision-Date: 2025-02-24 00:41+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
@@ -17478,7 +17478,7 @@ msgstr "%s primer"
 
 #: app/Services/RelationshipService.php:2324
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Services/RelationshipService.php:2288
 msgctxt "FEMALE"
@@ -17494,7 +17494,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:775
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Services/RelationshipService.php:777
 msgctxt "father’s brother’s daughter"
@@ -17509,7 +17509,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:819
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Services/RelationshipService.php:821
 msgctxt "father’s sister’s daughter"
@@ -17524,7 +17524,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:855
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Services/RelationshipService.php:857
 msgctxt "mother’s brother’s daughter"
@@ -17539,7 +17539,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:905
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Services/RelationshipService.php:907
 msgctxt "mother’s sister’s daughter"
@@ -17554,7 +17554,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:1155
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/a"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1151
 msgctxt "father’s father’s brother’s daughter"
@@ -17569,7 +17569,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1161
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1157
 msgctxt "father’s father’s sister’s daughter"
@@ -17584,7 +17584,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1167
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1163
 msgctxt "father’s mother’s brother’s daughter"
@@ -17599,7 +17599,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1173
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1169
 msgctxt "father’s mother’s sister’s daughter"
@@ -17614,7 +17614,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1179
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1175
 msgctxt "mother’s father’s brother’s daughter"
@@ -17629,7 +17629,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1185
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1181
 msgctxt "mother’s father’s sister’s daughter"
@@ -17644,7 +17644,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1191
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1187
 msgctxt "mother’s mother’s brother’s daughter"
@@ -17659,7 +17659,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1197
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Services/RelationshipService.php:1193
 msgctxt "mother’s mother’s sister’s daughter"
@@ -17859,7 +17859,7 @@ msgstr "muller del nét"
 #: app/Services/RelationshipService.php:1511
 #, php-format
 msgid "great ×%s aunt"
-msgstr "tieta %s+1a"
+msgstr "bestieta %s+1a"
 
 #: app/Services/RelationshipService.php:1444
 #: app/Services/RelationshipService.php:1463
@@ -17869,7 +17869,7 @@ msgstr "tieta %s+1a"
 #: app/Services/RelationshipService.php:1514
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "oncle/tieta %s+1 è/a"
+msgstr "besoncle/bestieta %s+1 è/a"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2055
@@ -17898,7 +17898,7 @@ msgstr "néta %s+1a"
 #: app/Services/RelationshipService.php:1955
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "avi %s+1 è"
+msgstr "besavi %s+1 è"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1893
@@ -17909,7 +17909,7 @@ msgstr "avi %s+1 è"
 #: app/Services/RelationshipService.php:1960
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "àvia %s+1a"
+msgstr "besàvia %s+1a"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1896
@@ -17920,7 +17920,7 @@ msgstr "àvia %s+1a"
 #: app/Services/RelationshipService.php:1964
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "avi/àvia %s+1è/a"
+msgstr "besavi/besàvia %s+1è/a"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:2048
@@ -18033,25 +18033,25 @@ msgstr "neboda %s+1a"
 #: app/Services/RelationshipService.php:1507
 #, php-format
 msgid "great ×%s uncle"
-msgstr "oncle %s+1è"
+msgstr "besoncle %s+1è"
 
 #: app/Services/RelationshipService.php:1449
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "oncle %s+1 è"
+msgstr "besoncle %s+1 è"
 
 #: app/Services/RelationshipService.php:1453
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "oncle %s+1 è"
+msgstr "besoncle %s+1 è"
 
 #: app/Services/RelationshipService.php:1456
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "oncle %s+1 è"
+msgstr "besoncle %s+1 è"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt"
@@ -18059,7 +18059,7 @@ msgstr "tieta 5a"
 
 #: app/Services/RelationshipService.php:1370
 msgid "great ×4 aunt/uncle"
-msgstr "tieta 5a"
+msgstr "oncle/tieta 5è/na"
 
 #: app/Services/RelationshipService.php:2003
 msgid "great ×4 grandchild"
