@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2024-05-03 17:32+0000\n"
-"Last-Translator: BernatBanyuls <bernatbanyuls@gmail.com>\n"
+"PO-Revision-Date: 2025-02-23 15:41+0000\n"
+"Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
 "Language: ca\n"
@@ -17028,7 +17028,7 @@ msgstr "%s primer"
 
 #: app/Functions/Functions.php:555
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
@@ -17044,7 +17044,7 @@ msgstr "cosí germà"
 #: app/Functions/Functions.php:1086
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Functions/Functions.php:1088
 msgctxt "father’s brother’s daughter"
@@ -17059,7 +17059,7 @@ msgstr "cosí germà"
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
@@ -17074,7 +17074,7 @@ msgstr "cosí germà"
 #: app/Functions/Functions.php:1148
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Functions/Functions.php:1150
 msgctxt "mother’s brother’s daughter"
@@ -17089,7 +17089,7 @@ msgstr "cosí germà"
 #: app/Functions/Functions.php:1198
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr "cosí/na germà/na"
+msgstr "cosí germà"
 
 #: app/Functions/Functions.php:1200
 msgctxt "mother’s sister’s daughter"
@@ -17104,7 +17104,7 @@ msgstr "cosí germà"
 #: app/Functions/Functions.php:1430
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/a"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s daughter"
@@ -17119,7 +17119,7 @@ msgstr "oncle valencià"
 #: app/Functions/Functions.php:1436
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1432
 msgctxt "father’s father’s sister’s daughter"
@@ -17134,7 +17134,7 @@ msgstr "oncle valencià"
 #: app/Functions/Functions.php:1442
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1438
 msgctxt "father’s mother’s brother’s daughter"
@@ -17149,7 +17149,7 @@ msgstr "oncle valencià"
 #: app/Functions/Functions.php:1448
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1444
 msgctxt "father’s mother’s sister’s daughter"
@@ -17164,7 +17164,7 @@ msgstr "oncle valencià"
 #: app/Functions/Functions.php:1454
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1450
 msgctxt "mother’s father’s brother’s daughter"
@@ -17179,7 +17179,7 @@ msgstr "oncle valencià"
 #: app/Functions/Functions.php:1460
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1456
 msgctxt "mother’s father’s sister’s daughter"
@@ -17194,7 +17194,7 @@ msgstr "oncle valencià"
 #: app/Functions/Functions.php:1466
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1462
 msgctxt "mother’s mother’s brother’s daughter"
@@ -17209,7 +17209,7 @@ msgstr "oncle valencià"
 #: app/Functions/Functions.php:1472
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle/tieta valencià/na"
+msgstr "oncle valencià"
 
 #: app/Functions/Functions.php:1468
 msgctxt "mother’s mother’s sister’s daughter"
@@ -17398,13 +17398,13 @@ msgstr "muller del nét"
 #: app/Functions/Functions.php:1667
 #, php-format
 msgid "great ×%s aunt"
-msgstr "tieta %s+1a"
+msgstr "bestieta %s+1a"
 
 #: app/Functions/Functions.php:1641 app/Functions/Functions.php:1656
 #: app/Functions/Functions.php:1669
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "oncle/tieta %s+1 è/a"
+msgstr "besoncle/bestieta %s+1 è/a"
 
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
@@ -17422,21 +17422,21 @@ msgstr "néta %s+1a"
 #: app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "avi %s+1 è"
+msgstr "besavi %s+1 è"
 
 #: app/Functions/Functions.php:1914 app/Functions/Functions.php:1924
 #: app/Functions/Functions.php:1934 app/Functions/Functions.php:1944
 #: app/Functions/Functions.php:1956
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "àvia %s+1a"
+msgstr "besàvia %s+1a"
 
 #: app/Functions/Functions.php:1916 app/Functions/Functions.php:1926
 #: app/Functions/Functions.php:1936 app/Functions/Functions.php:1946
 #: app/Functions/Functions.php:1958
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "avi/àvia %s+1è/a"
+msgstr "besavi/besàvia %s+1è/a"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2038 app/Functions/Functions.php:2053
@@ -17518,25 +17518,25 @@ msgstr "neboda %s+1a"
 #: app/Functions/Functions.php:1637 app/Functions/Functions.php:1665
 #, php-format
 msgid "great ×%s uncle"
-msgstr "oncle %s+1è"
+msgstr "besoncle %s+1è"
 
 #: app/Functions/Functions.php:1647
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "oncle %s+1 è"
+msgstr "besoncle %s+1 è"
 
 #: app/Functions/Functions.php:1649
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "oncle %s+1 è"
+msgstr "besoncle %s+1 è"
 
 #: app/Functions/Functions.php:1651
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "oncle %s+1 è"
+msgstr "besoncle %s+1 è"
 
 #: app/Functions/Functions.php:1579
 msgid "great ×4 aunt"
@@ -17544,7 +17544,7 @@ msgstr "tieta 5a"
 
 #: app/Functions/Functions.php:1581
 msgid "great ×4 aunt/uncle"
-msgstr "tieta 5a"
+msgstr "oncle/tieta 5è/na"
 
 #: app/Functions/Functions.php:1994
 msgid "great ×4 grandchild"
