@@ -319,6 +319,7 @@ class MediaFileService
      */
     public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
+        /** Issue #5114 - columns containing '||' get a trailing space added by MySQL.  The alias is a workaround */
         $db_folders = DB::table('media_file')
             ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
                 $join
@@ -327,7 +328,7 @@ class MediaFileService
             })
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn"))
+            ->pluck(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS value"))
             ->map(static fn (string $path): string => dirname($path) . '/');
 
         $media_roots = DB::table('gedcom')
