@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2024-04-21 21:11+0000\n"
-"Last-Translator: melizaa <meliza@amitys.com>\n"
-"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"PO-Revision-Date: 2025-02-23 08:33+0000\n"
+"Last-Translator: yigaler <yigaler@gmail.com>\n"
+"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
+"webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5531,7 +5532,7 @@ msgstr "ערוך את רשומת ה-GEDCOM הלא מעובדת"
 #: resources/views/individual-page-sex.phtml:42
 #: resources/views/individual-page-sex.phtml:44
 msgid "Edit the sex"
-msgstr ""
+msgstr "ערוך את המגדר"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
@@ -12784,7 +12785,7 @@ msgstr "אשף התקנה webtrees"
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Sex"
-msgstr ""
+msgstr "מגדר"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
