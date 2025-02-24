@@ -76,10 +76,8 @@ class StatisticsData
 
     public function averageLifespanDays(string $sex): int
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         return (int) $this->birthAndDeathQuery($sex)
-            ->select([new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
+            ->select([new Expression('AVG(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
             ->value('days');
     }
 
@@ -950,8 +948,6 @@ class StatisticsData
      */
     public function maximumAgeBetweenSiblings(int $limit): array
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         return DB::table('link AS link1')
             ->join('link AS link2', static function (JoinClause $join): void {
                 $join
@@ -976,7 +972,7 @@ class StatisticsData
             ->where('link1.l_type', '=', 'CHIL')
             ->where('link1.l_file', '=', $this->tree->id())
             ->distinct()
-            ->select(['link1.l_from AS family', 'link1.l_to AS child1', 'link2.l_to AS child2', new Expression($prefix . 'child2.d_julianday2 - ' . $prefix . 'child1.d_julianday1 AS age')])
+            ->select(['link1.l_from AS family', 'link1.l_to AS child1', 'link2.l_to AS child2', new Expression(DB::prefix('child2.d_julianday2') . ' - ' . DB::prefix('child1.d_julianday1') . ' AS age')])
             ->orderBy('age', 'DESC')
             ->take($limit)
             ->get()
@@ -1055,12 +1051,10 @@ class StatisticsData
      */
     public function statsAge(): array
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         return DB::table('individuals')
             ->select([
-                new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25 AS age'),
-                new Expression('ROUND((' . $prefix . 'death.d_year + 49) / 100, 0) AS century'),
+                new Expression('AVG(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') / 365.25 AS age'),
+                new Expression('ROUND((' . DB::prefix('death.d_year') . ' + 49) / 100, 0) AS century'),
                 'i_sex AS sex'
             ])
             ->join('dates AS birth', static function (JoinClause $join): void {
@@ -1099,8 +1093,6 @@ class StatisticsData
      */
     public function statsAgeQuery(string $sex, int $year1, int $year2): array
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $query = $this->birthAndDeathQuery($sex);
 
         if ($year1 !== 0 && $year2 !== 0) {
@@ -1111,7 +1103,7 @@ class StatisticsData
         }
 
         return $query
-            ->select([new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
+            ->select([new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
             ->orderBy('days', 'desc')
             ->get()
             ->map(static fn (object $row): object => (object) ['days' => (int) $row->days])
@@ -1149,11 +1141,9 @@ class StatisticsData
      */
     public function longlifeQuery(string $sex): ?object
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         return $this->birthAndDeathQuery($sex)
             ->orderBy('days', 'desc')
-            ->select(['individuals.*', new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
+            ->select(['individuals.*', new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
             ->take(1)
             ->get()
             ->map(fn (object $row): object => (object) [
@@ -1168,12 +1158,10 @@ class StatisticsData
      */
     public function topTenOldestQuery(string $sex, int $limit): Collection
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         return $this->birthAndDeathQuery($sex)
             ->groupBy(['i_id', 'i_file'])
             ->orderBy('days', 'desc')
-            ->select(['individuals.*', new Expression('MAX(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
+            ->select(['individuals.*', new Expression('MAX(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
             ->take($limit)
             ->get()
             ->map(fn (object $row): object => (object) [
@@ -1666,8 +1654,6 @@ class StatisticsData
 
     public function parentsQuery(string $type, string $age_dir, string $sex, bool $show_years): string
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         if ($sex === 'F') {
             $sex_field = 'WIFE';
         } else {
@@ -1700,8 +1686,8 @@ class StatisticsData
             })
             ->where('childfamily.l_file', '=', $this->tree->id())
             ->where('parentfamily.l_type', '=', $sex_field)
-            ->where('childbirth.d_julianday2', '>', new Expression($prefix . 'birth.d_julianday1'))
-            ->select(['parentfamily.l_to AS id', new Expression($prefix . 'childbirth.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age')])
+            ->where('childbirth.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
+            ->select(['parentfamily.l_to AS id', new Expression(DB::prefix('childbirth.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS age')])
             ->take(1)
             ->orderBy('age', $age_dir)
             ->get()
@@ -1751,8 +1737,6 @@ class StatisticsData
      */
     public function ageOfMarriageQuery(string $type, string $age_dir, int $limit): string
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $hrows = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
             ->join('dates AS married', static function (JoinClause $join): void {
@@ -1770,7 +1754,7 @@ class StatisticsData
             })
             ->whereColumn('married.d_julianday1', '<', 'husbdeath.d_julianday2')
             ->groupBy(['f_id'])
-            ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'husbdeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->select(['f_id AS family', new Expression('MIN(' . DB::prefix('husbdeath.d_julianday2') . ' - ' . DB::prefix('married.d_julianday1') . ') AS age')])
             ->get()
             ->all();
 
@@ -1791,7 +1775,7 @@ class StatisticsData
             })
             ->whereColumn('married.d_julianday1', '<', 'wifedeath.d_julianday2')
             ->groupBy(['f_id'])
-            ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'wifedeath.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->select(['f_id AS family', new Expression('MIN(' . DB::prefix('wifedeath.d_julianday2') . ' - ' . DB::prefix('married.d_julianday1') . ') AS age')])
             ->get()
             ->all();
 
@@ -1812,7 +1796,7 @@ class StatisticsData
             })
             ->whereColumn('married.d_julianday1', '<', 'divorced.d_julianday2')
             ->groupBy(['f_id'])
-            ->select(['f_id AS family', new Expression('MIN(' . $prefix . 'divorced.d_julianday2 - ' . $prefix . 'married.d_julianday1) AS age')])
+            ->select(['f_id AS family', new Expression('MIN(' . DB::prefix('divorced.d_julianday2') . ' - ' . DB::prefix('married.d_julianday1') . ') AS age')])
             ->get()
             ->all();
 
@@ -1911,8 +1895,6 @@ class StatisticsData
      */
     private function ageBetweenSpousesQuery(string $age_dir, int $limit): array
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $query = DB::table('families')
             ->where('f_file', '=', $this->tree->id())
             ->join('dates AS wife', static function (JoinClause $join): void {
@@ -1933,11 +1915,11 @@ class StatisticsData
         if ($age_dir === 'DESC') {
             $query
                 ->whereColumn('wife.d_julianday1', '>=', 'husb.d_julianday1')
-                ->orderBy(new Expression('MIN(' . $prefix . 'wife.d_julianday1) - MIN(' . $prefix . 'husb.d_julianday1)'), 'DESC');
+                ->orderBy(new Expression('MIN(' . DB::prefix('wife.d_julianday1') . ') - MIN(' . DB::prefix('husb.d_julianday1') . ')'), 'DESC');
         } else {
             $query
                 ->whereColumn('husb.d_julianday1', '>=', 'wife.d_julianday1')
-                ->orderBy(new Expression('MIN(' . $prefix . 'husb.d_julianday1) - MIN(' . $prefix . 'wife.d_julianday1)'), 'DESC');
+                ->orderBy(new Expression('MIN(' . DB::prefix('husb.d_julianday1') . ') - MIN(' . DB::prefix('wife.d_julianday1') . ')'), 'DESC');
         }
 
         return $query
@@ -2002,8 +1984,6 @@ class StatisticsData
      */
     public function statsMarrAgeQuery(string $sex, int $year1, int $year2): array
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $query = DB::table('dates AS married')
             ->join('families', static function (JoinClause $join): void {
                 $join
@@ -2022,7 +2002,7 @@ class StatisticsData
             ->where('married.d_fact', '=', 'MARR')
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->whereColumn('married.d_julianday1', '>', 'birth.d_julianday1')
-            ->select(['f_id', 'birth.d_gid', new Expression($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age')]);
+            ->select(['f_id', 'birth.d_gid', new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS age')]);
 
         if ($year1 !== 0 && $year2 !== 0) {
             $query->whereBetween('married.d_year', [$year1, $year2]);
@@ -2048,8 +2028,6 @@ class StatisticsData
      */
     public function marriageQuery(string $show, string $age_dir, string $sex, bool $show_years): string
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         if ($sex === 'F') {
             $sex_field = 'f_wife';
         } else {
@@ -2081,9 +2059,9 @@ class StatisticsData
                     ->where('birth.d_julianday1', '<>', 0);
             })
             ->where('f_file', '=', $this->tree->id())
-            ->where('married.d_julianday2', '>', new Expression($prefix . 'birth.d_julianday1'))
-            ->orderBy(new Expression($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1'), $age_dir)
-            ->select(['f_id AS famid', $sex_field, new Expression($prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS age'), 'i_id'])
+            ->where('married.d_julianday2', '>', new Expression(DB::prefix('birth.d_julianday1')))
+            ->orderBy(new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1')), $age_dir)
+            ->select(['f_id AS famid', $sex_field, new Expression(DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS age'), 'i_id'])
             ->take(1)
             ->get()
             ->first();

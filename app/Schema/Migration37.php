@@ -29,11 +29,6 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class Migration37 implements MigrationInterface
 {
-    /**
-     * Upgrade to the next version
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         // These tables were created by webtrees 1.x, and may not exist if we first installed webtrees 2.x
@@ -71,7 +66,7 @@ class Migration37 implements MigrationInterface
                 'descriptive_title',
             ], function (Builder $query): void {
                 // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
-                $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+                $substring_function = DB::driverName() === DB::SQLITE ? 'SUBSTR' : 'SUBSTRING';
 
                 $query->select([
                     'm_id',

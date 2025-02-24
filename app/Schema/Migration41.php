@@ -27,11 +27,6 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class Migration41 implements MigrationInterface
 {
-    /**
-     * Upgrade to the next version
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         DB::schema()->table('module', static function (Blueprint $table): void {

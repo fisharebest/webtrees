@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\DB;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use Fisharebest\Webtrees\Schema\SeedDefaultResnTable;
 use Fisharebest\Webtrees\Schema\SeedGedcomTable;
@@ -51,14 +50,6 @@ class MigrationService
             $current_version = 0;
         }
 
-        if ($current_version < $target_version) {
-            try {
-                $this->transactionalTables();
-            } catch (PDOException $ex) {
-                // There is probably nothing we can do.
-            }
-        }
-
         $updates_applied = false;
 
         // Update the schema, one version at a time.
@@ -73,38 +64,6 @@ class MigrationService
         }
 
         return $updates_applied;
-    }
-
-    /**
-     * Upgrades from older installations may have MyISAM or other non-transactional tables.
-     * These could prevent us from creating foreign key constraints.
-     *
-     * @return void
-     * @throws PDOException
-     */
-    private function transactionalTables(): void
-    {
-        $connection = DB::connection();
-
-        if ($connection->getDriverName() !== 'mysql') {
-            return;
-        }
-
-        $sql = "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'";
-
-        $bindings = [
-            $connection->getDatabaseName(),
-            mb_strlen($connection->getTablePrefix()),
-            $connection->getTablePrefix(),
-        ];
-
-        $rows = DB::connection()->select($sql, $bindings);
-
-        foreach ($rows as $row) {
-            $table = $row->TABLE_NAME ?? $row->table_name;
-            $alter_sql = 'ALTER TABLE `' . $table . '` ENGINE=InnoDB';
-            DB::connection()->statement($alter_sql);
-        }
     }
 
     /**

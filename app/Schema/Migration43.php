@@ -26,11 +26,6 @@ use Fisharebest\Webtrees\DB;
  */
 class Migration43 implements MigrationInterface
 {
-    /**
-     * Upgrade to the next version
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         // Language was previously a tree-setting.

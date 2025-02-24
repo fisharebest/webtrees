@@ -1647,14 +1647,12 @@ class Statistics
 
     public function statsMarrAge(): string
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $out = [];
 
         $male = DB::table('dates as married')
             ->select([
-                new Expression('AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25 AS age'),
-                new Expression('ROUND((' . $prefix . 'married.d_year + 49) / 100, 0) AS century'),
+                new Expression('AVG(' . DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' - 182.5) / 365.25 AS age'),
+                new Expression('ROUND((' . DB::prefix('married.d_year') . ' + 49) / 100, 0) AS century'),
                 new Expression("'M' as sex"),
             ])
             ->join('families as fam', static function (JoinClause $join): void {
@@ -1668,7 +1666,7 @@ class Statistics
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->where('married.d_file', '=', $this->tree->id())
             ->where('married.d_fact', '=', 'MARR')
-            ->where('married.d_julianday1', '>', new Expression($prefix . 'birth.d_julianday1'))
+            ->where('married.d_julianday1', '>', new Expression(DB::prefix('birth.d_julianday1')))
             ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->where('birth.d_fact', '=', 'BIRT')
             ->where('birth.d_julianday1', '<>', 0)
@@ -1676,8 +1674,8 @@ class Statistics
 
         $female = DB::table('dates as married')
             ->select([
-                new Expression('ROUND(AVG(' . $prefix . 'married.d_julianday2 - ' . $prefix . 'birth.d_julianday1 - 182.5) / 365.25, 1) AS age'),
-                new Expression('ROUND((' . $prefix . 'married.d_year + 49) / 100, 0) AS century'),
+                new Expression('ROUND(AVG(' . DB::prefix('married.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' - 182.5) / 365.25, 1) AS age'),
+                new Expression('ROUND((' . DB::prefix('married.d_year') . ' + 49) / 100, 0) AS century'),
                 new Expression("'F' as sex"),
             ])
             ->join('families as fam', static function (JoinClause $join): void {
@@ -1691,7 +1689,7 @@ class Statistics
             ->whereIn('married.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->where('married.d_file', '=', $this->tree->id())
             ->where('married.d_fact', '=', 'MARR')
-            ->where('married.d_julianday1', '>', new Expression($prefix . 'birth.d_julianday1'))
+            ->where('married.d_julianday1', '>', new Expression(DB::prefix('birth.d_julianday1')))
             ->whereIn('birth.d_type', ['@#DGREGORIAN@', '@#DJULIAN@'])
             ->where('birth.d_fact', '=', 'BIRT')
             ->where('birth.d_julianday1', '<>', 0)

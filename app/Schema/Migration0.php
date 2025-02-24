@@ -27,11 +27,6 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class Migration0 implements MigrationInterface
 {
-    /**
-     * Upgrade to the next version.
-     *
-     * @return void
-     */
     public function upgrade(): void
     {
         DB::schema()->create('gedcom', static function (Blueprint $table): void {
@@ -88,7 +83,7 @@ class Migration0 implements MigrationInterface
             $table->string('setting_value', 255);
 
             // Default constraint names are too long for MySQL.
-            $key = DB::connection()->getTablePrefix() . $table->getTable() . '_primary';
+            $key = DB::prefix($table->getTable() . '_primary');
 
             $table->primary(['user_id', 'gedcom_id', 'setting_name'], $key);
             $table->index('gedcom_id');
@@ -337,8 +332,8 @@ class Migration0 implements MigrationInterface
             $table->tinyInteger('access_level');
 
             // Default constraint names are too long for MySQL.
-            $key0 = DB::connection()->getTablePrefix() . $table->getTable() . '_primary';
-            $key1 = DB::connection()->getTablePrefix() . $table->getTable() . '_ix1';
+            $key0 = DB::prefix($table->getTable() . '_primary');
+            $key1 = DB::prefix($table->getTable() . '_ix1');
 
             $table->primary(['module_name', 'gedcom_id', 'component'], $key0);
             $table->unique(['gedcom_id', 'module_name', 'component'], $key1);
@@ -382,7 +377,7 @@ class Migration0 implements MigrationInterface
             $table->integer('page_count');
 
             // Default constraint names are too long for MySQL.
-            $key = DB::connection()->getTablePrefix() . $table->getTable() . '_primary';
+            $key = DB::prefix($table->getTable() . '_primary');
 
             $table->primary(['gedcom_id', 'page_name', 'page_parameter'], $key);
 

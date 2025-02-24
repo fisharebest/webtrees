@@ -73,6 +73,30 @@ parameters:
 			path: app/Console/ComposerScripts.php
 
 		-
+			message: '#^Constant Fisharebest\\Webtrees\\DB\:\:COLLATION_ASCII is unused\.$#'
+			identifier: classConstant.unused
+			count: 1
+			path: app/DB.php
+
+		-
+			message: '#^Constant Fisharebest\\Webtrees\\DB\:\:COLLATION_UTF8 is unused\.$#'
+			identifier: classConstant.unused
+			count: 1
+			path: app/DB.php
+
+		-
+			message: '#^Constant Fisharebest\\Webtrees\\DB\:\:DRIVER_INITIALIZATION is unused\.$#'
+			identifier: classConstant.unused
+			count: 1
+			path: app/DB.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\DB\:\:driverName\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: app/DB.php
+
+		-
 			message: '#^Cannot access offset int on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
@@ -7815,11 +7839,23 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$child_count\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Services/MapDataService.php
 
 		-
-			message: '#^Access to an undefined property object\:\:\$key\.$#'
+			message: '#^Access to an undefined property object\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$latitude\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$longitude\.$#'
 			identifier: property.notFound
 			count: 1
 			path: app/Services/MapDataService.php
@@ -7827,11 +7863,17 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$no_coord\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Services/MapDataService.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$p_id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$p_place\.$#'
 			identifier: property.notFound
 			count: 1
 			path: app/Services/MapDataService.php
@@ -7845,7 +7887,19 @@ parameters:
 		-
 			message: '#^Access to an undefined property object\:\:\$place\.$#'
 			identifier: property.notFound
-			count: 4
+			count: 5
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$tree_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$tree_title\.$#'
+			identifier: property.notFound
+			count: 1
 			path: app/Services/MapDataService.php
 
 		-
@@ -7867,13 +7921,19 @@ parameters:
 			path: app/Services/MapDataService.php
 
 		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 4
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 2
 			path: app/Services/MapDataService.php
 
 		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\MapDataService\:\:activePlaces\(\) should return array\<string, array\<object\>\> but returns array\<string, list\<mixed\>\>\.$#'
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 6
+			path: app/Services/MapDataService.php
+
+		-
+			message: '#^Method Fisharebest\\Webtrees\\Services\\MapDataService\:\:activePlaces\(\) should return array\<list\<object\{p_place\: string, tree_name\: string, tree_title\: string, p_id\: int\}\>\> but returns array\<string, non\-empty\-list\<mixed\>\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Services/MapDataService.php
@@ -7909,7 +7969,7 @@ parameters:
 			path: app/Services/MapDataService.php
 
 		-
-			message: '#^Parameter \#2 \$parent_place_ids of method Fisharebest\\Webtrees\\Services\\MapDataService\:\:deleteUnusedLocations\(\) expects array\<int\>, array given\.$#'
+			message: '#^Parameter \#2 \$parent_place_ids of method Fisharebest\\Webtrees\\Services\\MapDataService\:\:deleteUnusedLocations\(\) expects list\<int\>, array given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Services/MapDataService.php
@@ -7997,24 +8057,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Services/MediaFileService.php
-
-		-
-			message: '#^Binary operation "\." between ''ALTER TABLE `'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: app/Services/MigrationService.php
-
-		-
-			message: '#^Cannot access property \$TABLE_NAME on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Services/MigrationService.php
-
-		-
-			message: '#^Cannot access property \$table_name on mixed\.$#'
-			identifier: property.nonObject
-			count: 1
-			path: app/Services/MigrationService.php
 
 		-
 			message: '#^Access to an undefined property object\:\:\$footer_order\.$#'
@@ -8383,24 +8425,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: '#^PHPDoc tag @return has invalid value \(Closure\:Note\)\: Unexpected token "\:", expected TOKEN_HORIZONTAL_WS at offset 107 on line 4$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: '#^PHPDoc tag @return has invalid value \(Closure\:Repository\)\: Unexpected token "\:", expected TOKEN_HORIZONTAL_WS at offset 113 on line 4$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: '#^PHPDoc tag @return has invalid value \(Closure\:Source\)\: Unexpected token "\:", expected TOKEN_HORIZONTAL_WS at offset 111 on line 4$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
 			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder\:\:orWhere\(\) expects array\|Closure\|string, Illuminate\\Database\\Query\\Expression\|string given\.$#'
 			identifier: argument.type
 			count: 1
@@ -8471,30 +8495,6 @@ parameters:
 			identifier: method.nonObject
 			count: 1
 			path: app/Services/SiteLogsService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$century\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/StatisticsService.php
-
-		-
-			message: '#^Access to an undefined property object\:\:\$total\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Services/StatisticsService.php
-
-		-
-			message: '#^Cannot cast mixed to int\.$#'
-			identifier: cast.int
-			count: 2
-			path: app/Services/StatisticsService.php
-
-		-
-			message: '#^Method Fisharebest\\Webtrees\\Services\\StatisticsService\:\:countEventsByCentury\(\) should return array\<int, array\{string, int\}\> but returns array\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Services/StatisticsService.php
 
 		-
 			message: '#^Cannot cast mixed to int\.$#'
