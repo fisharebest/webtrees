@@ -32,7 +32,7 @@
         }
     },
     "require": {
-        "php": "7.4 - 8.4",
+        "php": "7.4 - 8.5",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-fileinfo": "*",
@@ -64,7 +64,7 @@
         "league/flysystem-ziparchive": "2.3.1",
         "middlewares/client-ip": "2.0.1",
         "mlocati/ip-lib": "1.20.0",
-        "nesbot/carbon": "2.72.6",
+        "nesbot/carbon": "2.73.0",
         "nyholm/psr7": "1.8.2",
         "nyholm/psr7-server": "1.1.0",
         "oscarotero/middleland": "1.0.2",
@@ -90,7 +90,7 @@
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.0.4",
+        "phpstan/phpstan": "2.1.6",
         "phpstan/phpstan-deprecation-rules": "2.0.1",
         "phpstan/phpstan-phpunit": "2.0.4",
         "phpstan/phpstan-strict-rules": "2.0.3",
