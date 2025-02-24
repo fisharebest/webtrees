@@ -163,7 +163,7 @@ class DB extends Manager
         return parent::connection()->getPdo();
     }
 
-    public static function prefix(string $identifier = ''): string
+    public static function prefix(string $identifier): string
     {
         return parent::connection()->getTablePrefix() . $identifier;
     }

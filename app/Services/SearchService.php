@@ -126,8 +126,7 @@ class SearchService
                     ->where('wife_name.n_type', '<>', '_MARNM');
             });
 
-        $prefix = DB::prefix();
-        $field  = new Expression('COALESCE(' . $prefix . "husb_name.n_full, '') || COALESCE(" . $prefix . "wife_name.n_full, '')");
+        $field  = new Expression('COALESCE(' . DB::prefix('husb_name') . ".n_full, '') || COALESCE(" . DB::prefix('wife_name') . ".n_full, '')");
 
         $this->whereTrees($query, 'f_file', $trees);
         $this->whereSearch($query, $field, $search);
