@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Armenian (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-23 08:34+0000\n"
+"PO-Revision-Date: 2025-02-27 05:46+0000\n"
 "Last-Translator: Franz Frese <arbor95@gmx.de>\n"
 "Language-Team: Armenian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/hy/>\n"
@@ -2180,171 +2180,152 @@ msgstr "դեկտ"
 #: app/Date/FrenchDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Վանդեմիաիր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Բրումեյր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Ֆրիմեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:107
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Նիվոզե"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:109
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Պլյուվիոզ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:111
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Վենտոզե"
 
 #. I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:114
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "Ջերմինալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:116
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Ֆլորեալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:118
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "Պրայրիալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:120
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "Մեսիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:122
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "Թերմիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:124
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "Ֆրուկտիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:126
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "լրացնող օրեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Վանդեմիաիր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Բրումեյր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:153
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Ֆրիմեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Նիվոզե"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Պլյուվիոզ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Վենտոզե"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "Ջերմինալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:163
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Ֆլորեալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:165
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "Մարգագետին"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:167
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "Մեսիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:169
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "Թերմիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:171
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "Ֆրուկտիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:173
@@ -2354,424 +2335,362 @@ msgstr "լրացուցիչ օրեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:196
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Վանդեմիաիր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:198
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Բրումեյր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:200
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Ֆրիմեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:202
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Նիվոզե"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:204
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Պլյուվիոզ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:206
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Վենտոզե"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:208
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "Ջերմինալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:210
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Ֆլորեալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:212
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "Մարգագետին"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:214
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "Մեսիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:216
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "Թերմիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:218
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "Ֆրուկտիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:220
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "լրացուցիչ օրեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:243
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr "Vendemiaire"
+msgstr "Վանդեմիաիր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:245
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr "Brumaire"
+msgstr "Բրումեյր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:247
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr "Frimaire"
+msgstr "Ֆրիմեր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:249
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
-msgstr "Nivose"
+msgstr "Նիվոզե"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:251
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr "Pluviose"
+msgstr "Պլյուվիոզ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:253
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr "Ventose"
+msgstr "Վենտոզե"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:255
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr "Germinal"
+msgstr "Ջերմինալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:257
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr "Floreal"
+msgstr "Ֆլորեալ"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:259
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr "Prairial"
+msgstr "Մարգագետին"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:261
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr "Messidor"
+msgstr "Մեսիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:263
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr "Thermidor"
+msgstr "Թերմիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:265
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr "Fructidor"
+msgstr "Ֆրուկտիդոր"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:267
-#, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "jours complementaires"
+msgstr "լրացուցիչ օրեր"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:301
-#, fuzzy
 msgid "Primidi"
 msgstr "Primidi"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:303
-#, fuzzy
 msgid "Duodi"
 msgstr "Duodi"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:305
-#, fuzzy
 msgid "Tridi"
 msgstr "Tridi"
 
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:307
-#, fuzzy
 msgid "Quartidi"
 msgstr "Quartidi"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:309
-#, fuzzy
 msgid "Quintidi"
 msgstr "Quintidi"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:311
-#, fuzzy
 msgid "Sextidi"
 msgstr "Sextidi"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:313
-#, fuzzy
 msgid "Septidi"
 msgstr "Septidi"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:315
-#, fuzzy
 msgid "Octidi"
 msgstr "Octidi"
 
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:317
-#, fuzzy
 msgid "Nonidi"
 msgstr "Nonidi"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:319
-#, fuzzy
 msgid "Decidi"
 msgstr "Decidi"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:97
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:99
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Safar"
 msgstr "Safar"
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:101
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi’ al-awwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:103
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
 msgstr "Rabi’ al-thani"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:105
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:107
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:109
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:111
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:113
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:115
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:117
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu al-Qi’dah"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:119
-#, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:142
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:144
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Safar"
 msgstr "Safar"
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:146
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi’ al-awwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:148
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
 msgstr "Rabi’ al-thani"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:150
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:152
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:154
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
 #. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:156
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:158
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:162
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu al-Qi’dah"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:164
-#, fuzzy
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
 #. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:187
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
 #. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:189
-#, fuzzy
 msgctxt "LOCATIVE"
 msgid "Safar"
 msgstr "Safar"
@@ -3372,7 +3291,7 @@ msgstr "Ադար"
 #: app/Date/JewishDate.php:155
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "Նիսաn"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:157
@@ -8976,7 +8895,7 @@ msgstr "Ներկապնակ"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:150
 msgid "Aqua Marine"
-msgstr "Aqua Marine"
+msgstr "Aqua Marine կապույտ"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:152
@@ -9041,7 +8960,7 @@ msgstr "Վարդագույն Պլաստիկ"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:176
 msgid "Sage"
-msgstr "Sage"
+msgstr "իմաստուն"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:178
@@ -9535,7 +9454,7 @@ msgstr "Խմբագրել ՀՏՀ-ն"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:46
 msgid "GeoNames"
-msgstr "GeoNames"
+msgstr "Աշխարհագրական անուններ"
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:57
@@ -9577,7 +9496,7 @@ msgstr "Հաշվեք յուրաքանչյուր էջի այցելություն�
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
 msgstr[0] "Այս էջը դիտվել է %s անգամ:"
-msgstr[1] "Այս էջը դիտվել է %s անգամ:"
+msgstr[1] "Էջերի դիտումների քանակը: %s."
 
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:85
@@ -9749,7 +9668,7 @@ msgstr "Քարտեզարկղ"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr "Nominatim"
+msgstr "անվանական"
 
 #. I18N: https://openrouteservice.org
 #: app/Module/MapGeoLocationOpenRouteService.php:45
@@ -10017,7 +9936,7 @@ msgstr "Երեխայի ծնունդ"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr "Powered by webtrees™"
+msgstr "սնուցվում է webtrees™"
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:47
@@ -14583,7 +14502,7 @@ msgstr "Ռասել"
 #: app/Soundex.php:608 resources/views/branches-page.phtml:42
 #: resources/views/search-phonetic-page.phtml:77
 msgid "Daitch-Mokotoff"
-msgstr "Daitch-Mokotoff"
+msgstr "Դաիչ - Մոկոտոֆ"
 
 #: app/Statistics/Google/ChartAge.php:108
 #: app/Statistics/Google/ChartMarriageAge.php:131
