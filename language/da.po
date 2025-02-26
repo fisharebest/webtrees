@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-01-14 20:58+0000\n"
-"Last-Translator: Kåre Thor Olsen <kaare@nightcall.dk>\n"
+"PO-Revision-Date: 2025-02-27 05:46+0000\n"
+"Last-Translator: Erik Bachmann <Erik@clicketyclick.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/da/>\n"
 "Language: da\n"
@@ -1127,13 +1127,13 @@ msgstr "Aba, Nigeria"
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Ābān"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr "Aban"
+msgstr "Ābān"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:158
