@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:48+0000\n"
-"PO-Revision-Date: 2025-02-23 08:33+0000\n"
+"PO-Revision-Date: 2025-03-01 16:52+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
@@ -90,8 +90,8 @@ msgstr "%1$s no té cap enllaç amb %2$s."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "S’ha extret el fitxer %1$s en %2$s segons."
-msgstr[1] "S’han extret els fitxers %1$s en %2$s segons."
+msgstr[0] "S’ha %1$s arxiu en %2$s segons."
+msgstr[1] "S'han extret %1$s arxius en %2$s segons."
 
 #: app/Http/RequestHandlers/CheckTree.php:392
 #, php-format
@@ -408,20 +408,20 @@ msgstr "%s aniversari"
 #: app/Services/RelationshipService.php:2353
 #, php-format
 msgid "%s × cousin"
-msgstr "cosí/na %sè/a"
+msgstr "cosí/na %s<sup>è/a</sup>"
 
 #: app/Services/RelationshipService.php:2317
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr "cosina %sa"
+msgstr "cosina %s<sup>a</sup>"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2280
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr "cosí %s è"
+msgstr "cosí %s<sup>è</sup>"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
@@ -700,7 +700,10 @@ msgstr "Gràfic de longevitat de les persones."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Els fills poden tenir més d’una parella de pares. La relacions entre pares i fills poden ser biològiques, legals o basades en la cultura i la tradició locals. Si no especifiqueu el pedigrí, s’assumirà una relació biològica ."
+msgstr ""
+"Els fills poden tenir més d’una parella de pares. La relacions entre pares i "
+"fills poden ser biològiques, legals o basades en la cultura i la tradició "
+"locals. Si no especifiqueu el llinatge, s’assumirà una relació biològica ."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:62
@@ -13306,7 +13309,10 @@ msgstr "Mostra «fulles», es a dir: persones vives a dia d'avui sense fills enr
 #: resources/views/lists/families-table.phtml:108
 #: resources/views/lists/individuals-table.phtml:150
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Mostra «caps de llinatge» és a dir, parelles o persones que en podríem anomenar «patriarques». Són persones sense pares enregistrats a la base de dades."
+msgstr ""
+"Mostra els «caps de llinatge» és a dir, parelles o persones que en podríem "
+"anomenar «patriarques». Són persones sense pares enregistrats a la base de "
+"dades."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml:26
