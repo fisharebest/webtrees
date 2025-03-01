@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-03-01 16:52+0000\n"
+"PO-Revision-Date: 2025-03-02 02:40+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -76,13 +76,13 @@ msgstr "%1$s %2$s té enllaços %3$s amb %4$s."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "oncle %2$sè valencià %1$s-1"
+msgstr "oncle %1$s valencià %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "nebot %2$sè valencià %1$sè"
+msgstr "nebot %1$s valencià %2$s"
 
 #: app/Controller/IndividualController.php:195 app/Date.php:332
 #: app/Functions/FunctionsPrintLists.php:1518
@@ -141,7 +141,7 @@ msgstr[1] "%1$s persones no tenen dades de l’indret de naixement: %2$s."
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s és un %2$s però s’espera un %3$s."
+msgstr "%1$s és un %2$s però cal un %3$s."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
@@ -17243,19 +17243,19 @@ msgstr "cosí 14è"
 #: app/Functions/Functions.php:641
 #, php-format
 msgid "fourth %s"
-msgstr "%s quart/a"
+msgstr "quadrinebot"
 
 #: app/Functions/Functions.php:626
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr "%s quarta"
+msgstr "quadrinebona"
 
 #: app/Functions/Functions.php:611
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr "%s quart"
+msgstr "quadrinebot"
 
 #: app/Functions/Functions.php:561
 msgid "fourth cousin"
@@ -17340,17 +17340,17 @@ msgstr "néta"
 #: app/Functions/Functions.php:1046
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "néta del marit"
+msgstr "marit de la néta"
 
 #: app/Functions/Functions.php:1068
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "néta del marit"
+msgstr "marit de la néta"
 
 #: app/Functions/Functions.php:1348
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr "néta del marit"
+msgstr "marit de la néta"
 
 #: app/Functions/Functions.php:896
 msgctxt "parent’s father"
@@ -17401,23 +17401,23 @@ msgstr "muller del nét"
 #: app/Functions/Functions.php:1667
 #, php-format
 msgid "great ×%s aunt"
-msgstr "bestieta %s+1a"
+msgstr "bestieta %s°"
 
 #: app/Functions/Functions.php:1641 app/Functions/Functions.php:1656
 #: app/Functions/Functions.php:1669
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "besoncle/bestieta %s+1 è/a"
+msgstr "besoncle/bestieta %s°"
 
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "nét/a %s+1é/a"
+msgstr "nét/a %s"
 
 #: app/Functions/Functions.php:2040 app/Functions/Functions.php:2055
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "néta %s+1a"
+msgstr "néta %s"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1912 app/Functions/Functions.php:1922
@@ -17425,399 +17425,399 @@ msgstr "néta %s+1a"
 #: app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "besavi %s+1 è"
+msgstr "besavi %sº"
 
 #: app/Functions/Functions.php:1914 app/Functions/Functions.php:1924
 #: app/Functions/Functions.php:1934 app/Functions/Functions.php:1944
 #: app/Functions/Functions.php:1956
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "besàvia %s+1a"
+msgstr "besàvia %sº"
 
 #: app/Functions/Functions.php:1916 app/Functions/Functions.php:1926
 #: app/Functions/Functions.php:1936 app/Functions/Functions.php:1946
 #: app/Functions/Functions.php:1958
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "besavi/besàvia %s+1è/a"
+msgstr "besavi/besàvia %sº"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2038 app/Functions/Functions.php:2053
 #, php-format
 msgid "great ×%s grandson"
-msgstr "nét %s+1è"
+msgstr "nét %sº"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1823 app/Functions/Functions.php:1836
 #, php-format
 msgid "great ×%s nephew"
-msgstr "nebot %s+1 è"
+msgstr "nebot %sº valencià"
 
 #: app/Functions/Functions.php:1797
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "nebot %s+1 è"
+msgstr "nebot %sº valencià"
 
 #: app/Functions/Functions.php:1799
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "nebot %s+1 è"
+msgstr "nebot %sº valencià"
 
 #: app/Functions/Functions.php:1801
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr "nebot %s+1 è"
+msgstr "nebot %sº valencià"
 
 #: app/Functions/Functions.php:1827 app/Functions/Functions.php:1840
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %s+1è/a"
+msgstr "nebot/da %sº valencià/na"
 
 #: app/Functions/Functions.php:1813
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %s+1è/a"
+msgstr "nebot/da %sº valencià/na"
 
 #: app/Functions/Functions.php:1815
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %s+1è/a"
+msgstr "nebot/da %s valencià"
 
 #: app/Functions/Functions.php:1817
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %s+1è/a"
+msgstr "nebot/da %s valencià"
 
 #: app/Functions/Functions.php:1825 app/Functions/Functions.php:1838
 #, php-format
 msgid "great ×%s niece"
-msgstr "neboda %s+1a"
+msgstr "neboda %s valencià"
 
 #: app/Functions/Functions.php:1805
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "neboda %s+1a"
+msgstr "neboda %s valenciana"
 
 #: app/Functions/Functions.php:1807
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "neboda %s+1a"
+msgstr "neboda %s valenciana"
 
 #: app/Functions/Functions.php:1809
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr "neboda %s+1a"
+msgstr "neboda %s valenciana"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1637 app/Functions/Functions.php:1665
 #, php-format
 msgid "great ×%s uncle"
-msgstr "besoncle %s+1è"
+msgstr "oncle %s"
 
 #: app/Functions/Functions.php:1647
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "besoncle %s+1 è"
+msgstr "oncle %s-1"
 
 #: app/Functions/Functions.php:1649
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "besoncle %s+1 è"
+msgstr "oncle %s-1"
 
 #: app/Functions/Functions.php:1651
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "besoncle %s+1 è"
+msgstr "oncle %s-1"
 
 #: app/Functions/Functions.php:1579
 msgid "great ×4 aunt"
-msgstr "tieta 5a"
+msgstr "tieta 5<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1581
 msgid "great ×4 aunt/uncle"
-msgstr "oncle/tieta 5è/na"
+msgstr "oncle/tieta 5<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:1994
 msgid "great ×4 grandchild"
-msgstr "nét/a 5è/a"
+msgstr "nét/a 5<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:1992
 msgid "great ×4 granddaughter"
-msgstr "néta 5a"
+msgstr "néta 5<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1870
 msgid "great ×4 grandfather"
-msgstr "avi 5è"
+msgstr "avi 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1872
 msgid "great ×4 grandmother"
-msgstr "àvia 5a"
+msgstr "àvia 5<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1874
 msgid "great ×4 grandparent"
-msgstr "avi/àvia 5è/a"
+msgstr "avi/àvia 5<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:1990
 msgid "great ×4 grandson"
-msgstr "nét 5è"
+msgstr "nét 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1737
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "nebot 5è"
+msgstr "nebot 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1739
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "nebot 5è"
+msgstr "nebot 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1741
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr "nebot 5è"
+msgstr "nebot 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1753
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "nebot/da 5è/a"
+msgstr "nebot/da 5<sup>è/a</sup>"
 
 #: app/Functions/Functions.php:1755
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "nebot/da 5è/a"
+msgstr "nebot/da 5<sup>è/a</sup>"
 
 #: app/Functions/Functions.php:1757
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr "nebot/da 5è/a"
+msgstr "nebot/da 5<sup>è/a</sup>"
 
 #: app/Functions/Functions.php:1745
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "neboda 5a"
+msgstr "neboda 5<sup>a</sup>"
 
 #: app/Functions/Functions.php:1747
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "neboda 5a"
+msgstr "neboda 5<sup>a</sup>"
 
 #: app/Functions/Functions.php:1749
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr "neboda 5a"
+msgstr "neboda 5<sup>a</sup>"
 
 #: app/Functions/Functions.php:1572
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr "oncle 5è"
+msgstr "oncle 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1574
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr "oncle 5è"
+msgstr "oncle 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1576
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr "oncle 5è"
+msgstr "oncle 5<sup>è</sup>"
 
 #: app/Functions/Functions.php:1594
 msgid "great ×5 aunt"
-msgstr "tieta 6a"
+msgstr "tieta 6<sup>a</sup>"
 
 #: app/Functions/Functions.php:1596
 msgid "great ×5 aunt/uncle"
-msgstr "oncle/tieta 6è/a"
+msgstr "oncle/tieta 6<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2004
 msgid "great ×5 grandchild"
-msgstr "nét/a 6è/a"
+msgstr "nét/a 6<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2002
 msgid "great ×5 granddaughter"
-msgstr "néta 6a"
+msgstr "néta 6<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1879
 msgid "great ×5 grandfather"
-msgstr "avi 6è"
+msgstr "avi 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1881
 msgid "great ×5 grandmother"
-msgstr "àvia 6a"
+msgstr "àvia 6<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1883
 msgid "great ×5 grandparent"
-msgstr "avi/àvia 6è/a"
+msgstr "avi/àvia 6<sup>è/enaz/sup>"
 
 #: app/Functions/Functions.php:2000
 msgid "great ×5 grandson"
-msgstr "nét 6è"
+msgstr "nét 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1764
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "nebot 6è"
+msgstr "nebot 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1766
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "nebot 6è"
+msgstr "nebot 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1768
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr "nebot 6è"
+msgstr "nebot 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1780
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "nebot/da 6è/a"
+msgstr "nebot/da 6<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:1782
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "nebot/da 6è/a"
+msgstr "nebot/da 6<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:1784
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr "nebot/da 6è/a"
+msgstr "nebot/da 6<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:1772
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "neboda 6a"
+msgstr "neboda 6<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1774
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "neboda 6a"
+msgstr "neboda 6<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1776
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr "neboda 6a"
+msgstr "neboda 6<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1587
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr "oncle 6è"
+msgstr "oncle 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1589
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr "oncle 6è"
+msgstr "oncle 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1591
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr "oncle 6è"
+msgstr "oncle 6<sup>è</sup>"
 
 #: app/Functions/Functions.php:1609
 msgid "great ×6 aunt"
-msgstr "tieta 7a"
+msgstr "tieta 7</sup>ena</sup>"
 
 #: app/Functions/Functions.php:1611
 msgid "great ×6 aunt/uncle"
-msgstr "oncle/tieta 7è/a"
+msgstr "oncle/tieta 7<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2014
 msgid "great ×6 grandchild"
-msgstr "nét/a 7è/a"
+msgstr "nét/a 7<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2012
 msgid "great ×6 granddaughter"
-msgstr "néta 7a"
+msgstr "néta 7<sup>a</sup>"
 
 #: app/Functions/Functions.php:1888
 msgid "great ×6 grandfather"
-msgstr "avi 7è"
+msgstr "avi 7<sup>è</sup>"
 
 #: app/Functions/Functions.php:1890
 msgid "great ×6 grandmother"
-msgstr "àvia 7a"
+msgstr "àvia 7<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1892
 msgid "great ×6 grandparent"
-msgstr "avi/àvia 7è/a"
+msgstr "avi/àvia 7<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2010
 msgid "great ×6 grandson"
-msgstr "nét 7è"
+msgstr "nét 7<sup>è</sup>"
 
 #: app/Functions/Functions.php:1602
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr "oncle 7è"
+msgstr "oncle 7<sup>è</sup>"
 
 #: app/Functions/Functions.php:1604
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr "oncle 7è"
+msgstr "oncle 7<sup>è</sup>"
 
 #: app/Functions/Functions.php:1606
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr "oncle 7è"
+msgstr "oncle 7<sup>è</sup>"
 
 #: app/Functions/Functions.php:1624
 msgid "great ×7 aunt"
-msgstr "tieta 8a"
+msgstr "tieta 8<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1626
 msgid "great ×7 aunt/uncle"
-msgstr "oncle/tieta 8è/a"
+msgstr "oncle/tieta 8<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2024
 msgid "great ×7 grandchild"
-msgstr "nét/a 8è/a"
+msgstr "nét/a 8<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2022
 msgid "great ×7 granddaughter"
-msgstr "néta 8a"
+msgstr "néta 8<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1897
 msgid "great ×7 grandfather"
-msgstr "avi 8è"
+msgstr "avi 8<sup>è</sup>"
 
 #: app/Functions/Functions.php:1899
 msgid "great ×7 grandmother"
-msgstr "àvia 8a"
+msgstr "àvia 8</sup>ena</sup>"
 
 #: app/Functions/Functions.php:1901
 msgid "great ×7 grandparent"
-msgstr "avi/àvia 8è/a"
+msgstr "avi/àvia 8<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2020
 msgid "great ×7 grandson"
-msgstr "nét 8è"
+msgstr "nét 8<sup>è</sup>"
 
 #: app/Functions/Functions.php:1617
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr "oncle 8è"
+msgstr "oncle 8<sup>è</sup>"
 
 #: app/Functions/Functions.php:1619
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr "ocle 8è"
+msgstr "ocle 8<sup>è</sup>"
 
 #: app/Functions/Functions.php:1621
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr "oncle 8è"
+msgstr "oncle 8<sup>è</sup>"
 
 #: app/Functions/Functions.php:1372
 msgctxt "father’s father’s brother’s wife"
