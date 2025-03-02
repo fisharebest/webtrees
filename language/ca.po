@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-03-02 02:40+0000\n"
+"PO-Revision-Date: 2025-03-03 23:41+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -380,13 +380,13 @@ msgstr[1] "S'han actualitzat %s notes."
 #: app/Functions/Functions.php:2108
 #, php-format
 msgid "%s once removed ascending"
-msgstr "oncle valencià %s"
+msgstr "oncle/tieta valencià/na (fill/a %s)"
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2111
 #, php-format
 msgid "%s once removed descending"
-msgstr "nebot valencià %s è"
+msgstr "nebot/da valencià/na (fill/a %s)"
 
 #: app/I18N.php:812
 #, php-format
@@ -419,25 +419,25 @@ msgstr[1] "S'han actualitzat %s fonts."
 #: app/Functions/Functions.php:2124
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "rebesoncle valencià %s-1è"
+msgstr "%s de 3er grau en ordre ascendent"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2127
 #, php-format
 msgid "%s three times removed descending"
-msgstr "rebesnebot valencià %s è"
+msgstr "rebesnebot valencià %s"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2116
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "besoncle valencià %s-1è"
+msgstr "%s de 2on grau en ordre ascendent"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2119
 #, php-format
 msgid "%s twice removed descending"
-msgstr "besnebot valencià %s è"
+msgstr "besnebot valencià %s"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: app/Functions/FunctionsDate.php:52 app/I18N.php:310
@@ -13392,7 +13392,7 @@ msgstr "Illes Svalbard i Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
 msgid "Swap individuals"
-msgstr "Intercanviar persones"
+msgstr "Invertir el rol"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
@@ -16463,7 +16463,7 @@ msgstr "i"
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "tieta"
+msgstr "tieta política"
 
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
@@ -16473,7 +16473,7 @@ msgstr "tieta"
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr "tieta"
+msgstr "tieta política"
 
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
@@ -16483,7 +16483,7 @@ msgstr "tieta"
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr "tieta"
+msgstr "tieta política"
 
 #: app/Functions/Functions.php:904
 msgctxt "parent’s sister"
@@ -17031,7 +17031,7 @@ msgstr "%s primer"
 
 #: app/Functions/Functions.php:555
 msgid "first cousin"
-msgstr "cosí germà"
+msgstr "cosí/na germà/na"
 
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
@@ -17243,19 +17243,19 @@ msgstr "cosí 14è"
 #: app/Functions/Functions.php:641
 #, php-format
 msgid "fourth %s"
-msgstr "quadrinebot"
+msgstr "quadri%s"
 
 #: app/Functions/Functions.php:626
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr "quadrinebona"
+msgstr "quadri%s"
 
 #: app/Functions/Functions.php:611
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr "quadrinebot"
+msgstr "quadri%s"
 
 #: app/Functions/Functions.php:561
 msgid "fourth cousin"
@@ -17401,23 +17401,23 @@ msgstr "muller del nét"
 #: app/Functions/Functions.php:1667
 #, php-format
 msgid "great ×%s aunt"
-msgstr "bestieta %s°"
+msgstr "bestieta %s<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1641 app/Functions/Functions.php:1656
 #: app/Functions/Functions.php:1669
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "besoncle/bestieta %s°"
+msgstr "besoncle/bestieta %s<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "nét/a %s"
+msgstr "besnét/a %s<sup>è/ena</sup>"
 
 #: app/Functions/Functions.php:2040 app/Functions/Functions.php:2055
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "néta %s"
+msgstr "besnéta %s<sup>ena</sup>"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1912 app/Functions/Functions.php:1922
@@ -17425,97 +17425,97 @@ msgstr "néta %s"
 #: app/Functions/Functions.php:1954
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "besavi %sº"
+msgstr "besavi %s<sup>è</sup>"
 
 #: app/Functions/Functions.php:1914 app/Functions/Functions.php:1924
 #: app/Functions/Functions.php:1934 app/Functions/Functions.php:1944
 #: app/Functions/Functions.php:1956
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "besàvia %sº"
+msgstr "besàvia %s<sup>ena</sup>"
 
 #: app/Functions/Functions.php:1916 app/Functions/Functions.php:1926
 #: app/Functions/Functions.php:1936 app/Functions/Functions.php:1946
 #: app/Functions/Functions.php:1958
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "besavi/besàvia %sº"
+msgstr "besavi/besàvia %s<sup>è/ena</sup>"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2038 app/Functions/Functions.php:2053
 #, php-format
 msgid "great ×%s grandson"
-msgstr "nét %sº"
+msgstr "besnét %s<sup>è</sup>"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1823 app/Functions/Functions.php:1836
 #, php-format
 msgid "great ×%s nephew"
-msgstr "nebot %sº valencià"
+msgstr "besnebot %s<sup>è</sup> valencià"
 
 #: app/Functions/Functions.php:1797
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "nebot %sº valencià"
+msgstr "besnebot %s<sup>è</sup> valencià"
 
 #: app/Functions/Functions.php:1799
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "nebot %sº valencià"
+msgstr "besnebot %s<sup>è</sup> valencià"
 
 #: app/Functions/Functions.php:1801
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr "nebot %sº valencià"
+msgstr "besnebot %s<sup>è</sup> valencià"
 
 #: app/Functions/Functions.php:1827 app/Functions/Functions.php:1840
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %sº valencià/na"
+msgstr "besnebot/da %s<sup>è/ena</sup> valencià/na"
 
 #: app/Functions/Functions.php:1813
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %sº valencià/na"
+msgstr "besnebot/da %s<sup>è/ena</sup> valencià/na"
 
 #: app/Functions/Functions.php:1815
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %s valencià"
+msgstr "besnebot/da %s<sup>è/ena</sup> valencià/na"
 
 #: app/Functions/Functions.php:1817
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "nebot/da %s valencià"
+msgstr "besnebot/da %s<sup>è/ena</sup> valencià/na"
 
 #: app/Functions/Functions.php:1825 app/Functions/Functions.php:1838
 #, php-format
 msgid "great ×%s niece"
-msgstr "neboda %s valencià"
+msgstr "besneboda %s valencià"
 
 #: app/Functions/Functions.php:1805
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "neboda %s valenciana"
+msgstr "besneboda %s valenciana"
 
 #: app/Functions/Functions.php:1807
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "neboda %s valenciana"
+msgstr "besneboda %s valenciana"
 
 #: app/Functions/Functions.php:1809
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr "neboda %s valenciana"
+msgstr "besneboda %s valenciana"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1637 app/Functions/Functions.php:1665
@@ -17822,7 +17822,7 @@ msgstr "oncle 8<sup>è</sup>"
 #: app/Functions/Functions.php:1372
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr "bestieta paterna"
+msgstr "bestieta política paterna"
 
 #: app/Functions/Functions.php:1104
 msgctxt "father’s father’s sister"
@@ -17832,7 +17832,7 @@ msgstr "bestieta paterna"
 #: app/Functions/Functions.php:1378
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr "bestieta paterna"
+msgstr "bestieta política paterna"
 
 #: app/Functions/Functions.php:1116
 msgctxt "father’s mother’s sister"
@@ -17917,7 +17917,7 @@ msgstr "besoncle/bestieta patern/na"
 #: app/Functions/Functions.php:1374
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr "besoncle/bestieta patern/a"
+msgstr "besoncle/bestieta polític/ca patern/a"
 
 #: app/Functions/Functions.php:1114
 msgctxt "father’s mother’s sibling"
@@ -19464,7 +19464,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1477
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1479
 msgctxt "grandfather’s brother’s grandson"
@@ -19479,7 +19479,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1489
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1491
 msgctxt "grandfather’s sibling’s grandson"
@@ -19494,7 +19494,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1483
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1485
 msgctxt "grandfather’s sister’s grandson"
@@ -19509,7 +19509,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1495
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1497
 msgctxt "grandmother’s brother’s grandson"
@@ -19524,7 +19524,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1507
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1509
 msgctxt "grandmother’s sibling’s grandson"
@@ -19539,7 +19539,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1501
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1503
 msgctxt "grandmother’s sister’s grandson"
@@ -19554,7 +19554,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1513
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1515
 msgctxt "grandparent’s brother’s grandson"
@@ -19569,7 +19569,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1525
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1527
 msgctxt "grandparent’s sibling’s grandson"
@@ -19584,7 +19584,7 @@ msgstr "cosí segon"
 #: app/Functions/Functions.php:1519
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosina segona"
 
 #: app/Functions/Functions.php:1521
 msgctxt "grandparent’s sister’s grandson"
