@@ -92,6 +92,7 @@ class BadBotBlocker implements MiddlewareInterface
         'linabot', // Aggressive crawer, no info available
         'Linguee',
         'MegaIndex.ru',
+        'meta-externalagent', // Facebook's crawler for training LLMs.
         'MJ12bot',
         'netEstate NE',
         'OAI-SearchBot', // Collects training data for LLMs
@@ -212,7 +213,7 @@ class BadBotBlocker implements MiddlewareInterface
      * @see https://www.facebook.com/peering/
      */
     private const array ROBOT_ASNS = [
-        'facebook' => ['AS32934', 'AS63293'],
+        'facebook' => ['AS32934'],
         'twitter'  => ['AS13414'],
     ];
 
