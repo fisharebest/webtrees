@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-03-03 23:41+0000\n"
+"PO-Revision-Date: 2025-03-06 10:41+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/ca/>\n"
@@ -217,7 +217,7 @@ msgstr[1] "%s usuaris anònims amb accés"
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "%s fill"
+msgstr[0] "%s fill/a"
 msgstr[1] "%s fills"
 
 #: app/Age.php:98 app/Elements/AgeAtEvent.php:103
@@ -264,8 +264,8 @@ msgstr[1] "%s arbres genealògics"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "%s nét"
-msgstr[1] "%s néts"
+msgstr[0] "%s nét/a"
+msgstr[1] "%s néts/es"
 
 #: app/Module/LifespansChartModule.php:272
 #: resources/views/admin/trees-unconnected.phtml:42
@@ -325,7 +325,7 @@ msgstr "oncle/tieta valencià/na (fill/a %s)"
 #: app/Services/RelationshipService.php:2156
 #, php-format
 msgid "%s once removed descending"
-msgstr "nebot/da valencià/na (fill/a %s)"
+msgstr "nebot/da valencià/na (fill/a de %s)"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:77
 #, php-format
@@ -365,7 +365,7 @@ msgstr "%s de 3er grau en ordre ascendent"
 #: app/Services/RelationshipService.php:2174
 #, php-format
 msgid "%s three times removed descending"
-msgstr "rebesnebot valencià %s"
+msgstr "rebesnebot/da valencià/na (besnét/a de %s)"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2160
@@ -377,7 +377,7 @@ msgstr "%s de 2on grau en ordre ascendent"
 #: app/Services/RelationshipService.php:2165
 #, php-format
 msgid "%s twice removed descending"
-msgstr "besnebot valencià %s"
+msgstr "besnebot/da valencià/na (nét/a de %s)"
 
 #: app/Elements/AgeAtEvent.php:102
 #, php-format
@@ -454,7 +454,7 @@ msgstr "%s, els seus pares i germans"
 #: app/Module/ClippingsCartModule.php:458
 #, php-format
 msgid "%s, her spouses and children"
-msgstr "%s, els seus marits i fills"
+msgstr "%s, els/les cònjuges i fills/es"
 
 #: app/Module/ClippingsCartModule.php:461
 #, php-format
@@ -474,7 +474,7 @@ msgstr "%s, els seus pares i germans"
 #: app/Module/ClippingsCartModule.php:467
 #, php-format
 msgid "%s, his spouses and children"
-msgstr "%s, les seves mullers i fills"
+msgstr "%s, els/les seves cònjuges i fills/es"
 
 #: app/Module/ClippingsCartModule.php:470
 #, php-format
@@ -1262,12 +1262,12 @@ msgstr "Afegeix un germà"
 #: resources/views/family-page-menu.phtml:54
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a child"
-msgstr "Afegeix un nou fill/a"
+msgstr "Afegeix un/a nou/va fill/a"
 
 #: app/Http/RequestHandlers/AddChildToIndividualPage.php:85
 #: resources/views/modules/relatives/tab.phtml:155
 msgid "Add a child to create a one-parent family"
-msgstr "Afegeix un fill/a per crear una família monoparental"
+msgstr "Afegeix un/a fill/a per crear una família monoparental"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:76
 #: resources/views/family-page-children.phtml:47
@@ -1579,7 +1579,7 @@ msgstr "Adopció d’un germà"
 
 #: app/Services/IndividualFactsService.php:211
 msgid "Adoption of a child"
-msgstr "Adopció d’un fill"
+msgstr "Adopció d’un/a fill/a"
 
 #: app/Services/IndividualFactsService.php:210
 msgid "Adoption of a daughter"
@@ -1589,7 +1589,7 @@ msgstr "Adopció d’una filla"
 #: app/Services/IndividualFactsService.php:303
 #: app/Services/IndividualFactsService.php:326
 msgid "Adoption of a grandchild"
-msgstr "Adopció d’un nét"
+msgstr "Adopció d’un/a nét/a"
 
 #: app/Services/IndividualFactsService.php:279
 msgid "Adoption of a granddaughter"
@@ -1723,7 +1723,7 @@ msgstr "Interval d’edat"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:397
 msgid "Age of parents next to child’s birthdate"
-msgstr "Edat dels pares a la data de naixement del fill"
+msgstr "Edat dels pares en néixer el fill/a"
 
 #: app/CustomTags/GedcomL.php:234 app/Gedcom.php:410 app/Gedcom.php:544
 #: app/Gedcom.php:835
@@ -2342,7 +2342,7 @@ msgstr "Nombre mitjà"
 #: resources/views/modules/html/template-statistics.phtml:99
 #: resources/views/modules/statistics-chart/children.phtml:17
 msgid "Average number of children per family"
-msgstr "Promig de fills per família"
+msgstr "Mitjana de fills per família"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: resources/views/admin/trees-create.phtml:48
@@ -2444,7 +2444,7 @@ msgstr "Bateig d’un germà"
 
 #: app/Services/IndividualFactsService.php:206
 msgid "Baptism of a child"
-msgstr "Bateig d’un fill"
+msgstr "Bateig d’un/a fill/a"
 
 #: app/Services/IndividualFactsService.php:205
 msgid "Baptism of a daughter"
@@ -2456,7 +2456,7 @@ msgstr "Bateig d’una filla"
 #: app/Services/IndividualFactsService.php:398
 #: app/Services/IndividualFactsService.php:416
 msgid "Baptism of a grandchild"
-msgstr "Baptisme d’un nét"
+msgstr "Baptisme d’un/a nét/a"
 
 #: app/Services/IndividualFactsService.php:274
 msgid "Baptism of a granddaughter"
@@ -2774,7 +2774,7 @@ msgstr "Naixement d’un germà"
 #: app/Module/PlacesModule.php:220 app/Services/IndividualFactsService.php:196
 #: resources/views/admin/trees-preferences.phtml:436
 msgid "Birth of a child"
-msgstr "Naixement d’un fill"
+msgstr "Naixement d’un/a fill/a"
 
 #: app/Services/IndividualFactsService.php:195
 msgid "Birth of a daughter"
@@ -3057,7 +3057,7 @@ msgstr "Enterrament d’un germà"
 
 #: app/Services/IndividualFactsService.php:339
 msgid "Burial of a child"
-msgstr "Entrerrament d’un fill"
+msgstr "Enterrament d’un/a fill/a"
 
 #: app/Services/IndividualFactsService.php:338
 msgid "Burial of a daughter"
@@ -3071,7 +3071,7 @@ msgstr "Enterrament del pare"
 #: app/Services/IndividualFactsService.php:411
 #: app/Services/IndividualFactsService.php:429
 msgid "Burial of a grandchild"
-msgstr "Enterrament d’un nét"
+msgstr "Enterrament d’un/a nét/a"
 
 #: app/Services/IndividualFactsService.php:392
 msgid "Burial of a granddaughter"
@@ -3627,7 +3627,7 @@ msgstr "Bateig d’una filla"
 #: app/Services/IndividualFactsService.php:293
 #: app/Services/IndividualFactsService.php:316
 msgid "Christening of a grandchild"
-msgstr "Bateig d’un nét"
+msgstr "Bateig d’un/a nét/a"
 
 #: app/Services/IndividualFactsService.php:269
 msgid "Christening of a granddaughter"
@@ -4170,7 +4170,7 @@ msgstr "Cremació d’un germà"
 
 #: app/Services/IndividualFactsService.php:344
 msgid "Cremation of a child"
-msgstr "Cremació d’un fill"
+msgstr "Cremació d’un/a fill/a"
 
 #: app/Services/IndividualFactsService.php:343
 msgid "Cremation of a daughter"
@@ -4182,7 +4182,7 @@ msgstr "Cremació del pare"
 
 #: app/Services/IndividualFactsService.php:434
 msgid "Cremation of a grandchild"
-msgstr "Cremació d’un nét"
+msgstr "Cremació d’un/a nét/a"
 
 #: app/Services/IndividualFactsService.php:397
 msgid "Cremation of a granddaughter"
@@ -4487,7 +4487,7 @@ msgstr "Data del bateig mormó"
 
 #: app/Gedcom.php:741
 msgid "Date of LDS child sealing"
-msgstr "Data del segellament mormó del fill"
+msgstr "Data del segellament mormó del fill/a"
 
 #: app/Gedcom.php:629
 msgid "Date of LDS confirmation"
@@ -6120,7 +6120,7 @@ msgstr "Família"
 
 #: app/Gedcom.php:660
 msgid "Family as a child"
-msgstr "Família com a fill"
+msgstr "Família com a fill/a"
 
 #: app/Gedcom.php:663
 msgid "Family as a spouse"
@@ -6695,7 +6695,7 @@ msgstr "Afillat/da"
 
 #: app/Elements/RelationIsDescriptor.php:103
 msgid "Foster child"
-msgstr "Fill adoptiu"
+msgstr "Fill/a adoptiu/va"
 
 #: app/Elements/RelationIsDescriptor.php:104
 msgid "Foster father"
@@ -8383,7 +8383,7 @@ msgstr "Bateig mormó"
 
 #: app/Gedcom.php:740
 msgid "LDS child sealing"
-msgstr "Segellament mormó del fill"
+msgstr "Segellament mormó del fill/a"
 
 #: resources/views/admin/tags.phtml:724
 msgid "LDS church"
@@ -8478,7 +8478,7 @@ msgstr "Famílies més nombroses"
 
 #: resources/views/modules/statistics-chart/children.phtml:50
 msgid "Largest number of grandchildren"
-msgstr "Més nombre de néts"
+msgstr "Major nombre de néts/es"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:125
@@ -11232,7 +11232,7 @@ msgstr "Indret del bateig mormó"
 
 #: app/Gedcom.php:743
 msgid "Place of LDS child sealing"
-msgstr "Indret del segellament mormó del fill"
+msgstr "Indret del segellament mormó del fill/a"
 
 #: app/Gedcom.php:630
 msgid "Place of LDS confirmation"
@@ -17500,7 +17500,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:775
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "cosí germà"
+msgstr "cosí/na germà/na"
 
 #: app/Services/RelationshipService.php:777
 msgctxt "father’s brother’s daughter"
@@ -17515,7 +17515,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:819
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "cosí germà"
+msgstr "cosí/na germà/na"
 
 #: app/Services/RelationshipService.php:821
 msgctxt "father’s sister’s daughter"
@@ -17530,7 +17530,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:855
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr "cosí germà"
+msgstr "cosí/na germà/na"
 
 #: app/Services/RelationshipService.php:857
 msgctxt "mother’s brother’s daughter"
@@ -17545,7 +17545,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:905
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr "cosí germà"
+msgstr "cosí/na germà/na"
 
 #: app/Services/RelationshipService.php:907
 msgctxt "mother’s sister’s daughter"
@@ -17560,7 +17560,7 @@ msgstr "cosí germà"
 #: app/Services/RelationshipService.php:1155
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1151
 msgctxt "father’s father’s brother’s daughter"
@@ -17575,7 +17575,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1161
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1157
 msgctxt "father’s father’s sister’s daughter"
@@ -17590,7 +17590,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1167
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1163
 msgctxt "father’s mother’s brother’s daughter"
@@ -17605,7 +17605,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1173
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1169
 msgctxt "father’s mother’s sister’s daughter"
@@ -17620,7 +17620,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1179
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1175
 msgctxt "mother’s father’s brother’s daughter"
@@ -17635,7 +17635,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1185
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1181
 msgctxt "mother’s father’s sister’s daughter"
@@ -17650,7 +17650,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1191
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1187
 msgctxt "mother’s mother’s brother’s daughter"
@@ -17665,7 +17665,7 @@ msgstr "oncle valencià"
 #: app/Services/RelationshipService.php:1197
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "oncle valencià"
+msgstr "oncle/tieta valencià/na"
 
 #: app/Services/RelationshipService.php:1193
 msgctxt "mother’s mother’s sister’s daughter"
@@ -17770,17 +17770,17 @@ msgstr "ves a la nova persona"
 #: app/Services/RelationshipService.php:505
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr "nét"
+msgstr "nét/a"
 
 #: app/Services/RelationshipService.php:517
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr "nét"
+msgstr "nét/a"
 
 #: app/Services/RelationshipService.php:617
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr "nét"
+msgstr "nét/a"
 
 #: app/Services/RelationshipService.php:507
 msgctxt "child’s daughter"
@@ -18849,7 +18849,7 @@ msgstr "quadravi/àvia"
 
 #: app/Services/RelationshipService.php:1985
 msgid "great-great-great-grandson"
-msgstr "qiadrinét"
+msgstr "quadrinét"
 
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
@@ -19309,17 +19309,17 @@ msgstr "germanastre"
 #: app/Services/RelationshipService.php:527
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr "germanastre"
+msgstr "germanastre/a"
 
 #: app/Services/RelationshipService.php:563
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr "germanastre"
+msgstr "germanastre/a"
 
 #: app/Services/RelationshipService.php:583
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr "germanastre"
+msgstr "germanastre/a"
 
 #: app/Services/RelationshipService.php:529
 msgctxt "father’s daughter"
@@ -19524,7 +19524,7 @@ msgstr "nom de casat/da"
 #: app/Services/RelationshipService.php:567
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr "avi patern"
+msgstr "avi matern"
 
 #: app/Services/RelationshipService.php:571
 msgctxt "mother’s mother"
@@ -19650,7 +19650,7 @@ msgstr "nebot polític"
 #: app/Services/RelationshipService.php:497
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr "nebot/neboda"
+msgstr "nebot/da"
 
 #: app/Services/RelationshipService.php:841
 msgctxt "husband’s brother’s child"
@@ -19670,12 +19670,12 @@ msgstr "nebot/da"
 #: app/Services/RelationshipService.php:601
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr "nebot/neboda"
+msgstr "nebot/da"
 
 #: app/Services/RelationshipService.php:609
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr "nebot/neboda"
+msgstr "nebot/da"
 
 #: app/Services/RelationshipService.php:1081
 msgctxt "wife’s brother’s child"
@@ -20113,7 +20113,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1210
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1202
 msgctxt "grandfather’s brother’s granddaughter"
@@ -20128,7 +20128,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1234
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1226
 msgctxt "grandfather’s sibling’s granddaughter"
@@ -20143,7 +20143,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1222
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1214
 msgctxt "grandfather’s sister’s granddaughter"
@@ -20158,7 +20158,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1246
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1238
 msgctxt "grandmother’s brother’s granddaughter"
@@ -20173,7 +20173,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1270
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1262
 msgctxt "grandmother’s sibling’s granddaughter"
@@ -20188,7 +20188,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1258
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1250
 msgctxt "grandmother’s sister’s granddaughter"
@@ -20203,7 +20203,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1282
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1274
 msgctxt "grandparent’s brother’s granddaughter"
@@ -20218,7 +20218,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1306
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1298
 msgctxt "grandparent’s sibling’s granddaughter"
@@ -20233,7 +20233,7 @@ msgstr "cosí segon"
 #: app/Services/RelationshipService.php:1294
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr "cosí segon"
+msgstr "cosí/na segon/a"
 
 #: app/Services/RelationshipService.php:1286
 msgctxt "grandparent’s sister’s granddaughter"
@@ -20529,17 +20529,17 @@ msgstr "germanastre"
 #: app/Services/RelationshipService.php:547
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr "fillastre"
+msgstr "fillastre/a"
 
 #: app/Services/RelationshipService.php:627
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr "fillastre"
+msgstr "fillastre/a"
 
 #: app/Services/RelationshipService.php:645
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr "fillastre"
+msgstr "fillastre/a"
 
 #: app/Services/RelationshipService.php:549
 msgctxt "husband’s daughter"
