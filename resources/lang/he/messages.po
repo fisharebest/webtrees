@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-12-21 12:27+0000\n"
-"Last-Translator: melizaa <meliza@amitys.com>\n"
+"PO-Revision-Date: 2025-03-06 10:41+0000\n"
+"Last-Translator: IlanAmity <amityfamily@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/he/>\n"
 "Language: he\n"
@@ -9039,7 +9039,10 @@ msgstr "מרץ"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown היא מערכת פשוטה של עיצוב, שבשימוש באתרים כמו ויקיפדיה. היא משתמשת בתווי פיסוק שאינם פולשניים כדי ליצור כותרות, כותרות משנה, טכסטים מודגשים ונטויים, רשימות, טבלאות, וכו׳."
+msgstr ""
+"Markdown היא מערכת פשוטה של עיצוב, שבשימוש באתרים כמו ויקיפדיה. היא משתמשת "
+"בתווי פיסוק שאינם פולשניים כדי ליצור כותרות, כותרות משנה, טקסטים מודגשים "
+"ונטויים, רשימות, טבלאות, וכו׳."
 
 #. I18N: gedcom tag MARR
 #: app/Factories/ElementFactory.php:1009 app/GedcomTag.php:786
