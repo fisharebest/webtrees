@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-30 20:50+0000\n"
-"PO-Revision-Date: 2025-02-24 00:41+0000\n"
-"Last-Translator: yigaler <yigaler@gmail.com>\n"
+"PO-Revision-Date: 2025-03-06 10:41+0000\n"
+"Last-Translator: IlanAmity <amityfamily@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees/he/>\n"
 "Language: he\n"
@@ -3817,7 +3817,7 @@ msgstr "ידוע בציבור"
 
 #: app/Elements/MarriageType.php:61
 msgid "Common-law marriage"
-msgstr ""
+msgstr "נישואים אזרחיים"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:76
@@ -9041,7 +9041,10 @@ msgstr "מרץ"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown היא מערכת פשוטה של עיצוב, שבשימוש באתרים כמו ויקיפדיה. היא משתמשת בתווי פיסוק שאינם פולשניים כדי ליצור כותרות, כותרות משנה, טכסטים מודגשים ונטויים, רשימות, טבלאות, וכו׳."
+msgstr ""
+"Markdown היא מערכת פשוטה של עיצוב, שבשימוש באתרים כמו ויקיפדיה. היא משתמשת "
+"בתווי פיסוק שאינם פולשניים כדי ליצור כותרות, כותרות משנה, טקסטים מודגשים "
+"ונטויים, רשימות, טבלאות, וכו׳."
 
 #: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:467
 #: app/Module/BranchesListModule.php:436
@@ -13161,7 +13164,7 @@ msgstr "הראה רק נקבות."
 
 #: resources/views/lists/individuals-table.phtml:107
 msgid "Show only individuals for whom the sex is not known."
-msgstr ""
+msgstr "הצג רק יחידים שהמין שלהם אינו ידוע."
 
 #: resources/views/modules/random_media/config.phtml:19
 msgid "Show only individuals, events, or all"
@@ -13976,11 +13979,11 @@ msgstr "שמות משפחה"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
 msgid "Surnames are inflected to indicate an individual’s sex and marital status."
-msgstr ""
+msgstr "שמות משפחה משתנים בהתאם למין ולמצב המשפחתי של האדם."
 
 #: app/SurnameTradition/PolishSurnameTradition.php:68
 msgid "Surnames are inflected to indicate an individual’s sex."
-msgstr ""
+msgstr "שמות משפחה משתנים כדי לציין את מינו של האדם."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:190
@@ -15946,7 +15949,7 @@ msgstr "לא ידוע"
 #: resources/xml/reports/individual_report.xml:602
 msgctxt "unknown sex"
 msgid "Unknown"
-msgstr ""
+msgstr "לא ידוע"
 
 #: resources/views/edit/icon-fact-delete.phtml:21
 #: resources/views/edit/icon-fact-delete.phtml:23
@@ -16080,6 +16083,8 @@ msgstr "השתמש ב-sendmail למשלוח הודעות"
 #: resources/views/admin/trees-preferences.phtml:311
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the sex of the individual in question."
 msgstr ""
+"השתמש בתמונות צלליות כאשר לא צוינה תמונת הדגשה עבור אותו אדם. התמונות "
+"הנבחרות מותאמות למינו של האדם המדובר."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:306
@@ -20275,7 +20280,7 @@ msgstr "דודן מדרגה 7"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "sex"
-msgstr ""
+msgstr "מין"
 
 #: app/Elements/NoteStructure.php:66
 msgid "shared note"
