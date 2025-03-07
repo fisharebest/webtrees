@@ -72,7 +72,7 @@ class RobotsTxt implements RequestHandlerInterface
         $trees    = $this->tree_service->all()->map(static fn (Tree $tree): string => $tree->name());
 
         $data = [
-            'bad_user_agents'  => BadBotBlocker::BAD_ROBOTS,
+            'bad_user_agents'  => [...BadBotBlocker::AI_ROBOTS, ...BadBotBlocker::BAD_ROBOTS],
             'base_url'         => $base_url,
             'base_path'        => parse_url($base_url, PHP_URL_PATH) ?? '',
             'disallowed_paths' => self::DISALLOWED_PATHS,
