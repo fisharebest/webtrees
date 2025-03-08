@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2025-03-06 10:41+0000\n"
+"PO-Revision-Date: 2025-03-09 21:41+0000\n"
 "Last-Translator: Toni Planas <toniplanasvila@gmail.com>\n"
 "Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ca/>\n"
@@ -4733,7 +4733,7 @@ msgstr "Defunció d’un/a fill/a"
 
 #: app/GedcomTag.php:1358
 msgid "Death of a daughter"
-msgstr "Defunsió d’una filla"
+msgstr "Defunció d’una filla"
 
 #: app/GedcomTag.php:1428
 msgid "Death of a father"
