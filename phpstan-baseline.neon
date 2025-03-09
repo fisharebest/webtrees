@@ -8119,6 +8119,36 @@ parameters:
 			path: app/Services/ModuleService.php
 
 		-
+			message: '#^Parameter \#1 \$fp of function fwrite expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/NetworkService.php
+
+		-
+			message: '#^Parameter \#1 \$source of function stream_get_contents expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/NetworkService.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function stream_set_timeout expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/NetworkService.php
+
+		-
+			message: '#^Parameter \#2 \$subject of function preg_match_all expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/NetworkService.php
+
+		-
+			message: '#^Variable \$stream might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: app/Services/NetworkService.php
+
+		-
 			message: '#^Binary operation "\." between mixed and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
