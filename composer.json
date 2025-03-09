@@ -90,7 +90,7 @@
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.7.0",
         "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "2.1.6",
+        "phpstan/phpstan": "2.1.8",
         "phpstan/phpstan-deprecation-rules": "2.0.1",
         "phpstan/phpstan-phpunit": "2.0.4",
         "phpstan/phpstan-strict-rules": "2.0.3",
