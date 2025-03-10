@@ -482,22 +482,6 @@ div.faq_title {
 
 /*-- Fan chart ---- */
 
-.icon-cfamily {
-    content: url(colors/images/cfamily.png);
-}
-
-.icon-edit_indi {
-    content: url(colors/images/edit_indi.png);
-}
-
-.icon-fam-list {
-    content: url(colors/images/sfamily.png);
-}
-
-.icon-indi-list {
-    content: url(colors/images/indis.png);
-}
-
 .icon-mypage {
     content: url(colors/images/mypage.png);
 }
@@ -573,16 +557,8 @@ a > .wt-icon-arrow-up:hover {
     content: url(colors/images/mypage.png);
 }
 
-.icon-patriarch {
-    content: url(colors/images/patriarch.png);
-}
-
 .icon-pedigree {
     content: url(colors/images/pedigree.png);
-}
-
-.icon-sfamily {
-    content: url(colors/images/sfamily.png);
 }
 
 .icon-user_add {

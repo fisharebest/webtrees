@@ -1132,28 +1132,8 @@ div.faq_body {
     background-size: cover;
 }
 
-.icon-cfamily {
-    content: url(clouds/images/cfamily.png);
-}
-
-.icon-childless {
-    content: url(images/childless.png);
-}
-
 .icon-children {
     content: url(images/children.png);
-}
-
-.icon-edit_indi {
-    content: url(clouds/images/edit_indi.png);
-}
-
-.icon-fam-list {
-    content: url(clouds/images/sfamily.png);
-}
-
-.icon-indi-list {
-    content: url(clouds/images/indis.png);
 }
 
 .icon-loading-small {
@@ -1398,16 +1378,8 @@ a > .wt-icon-arrow-up:hover {
     content: url(clouds/images/indis.png);
 }
 
-.icon-patriarch {
-    content: url(clouds/images/patriarch.png);
-}
-
 .icon-pedigree {
     content: url(clouds/images/pedigree.png);
-}
-
-.icon-sfamily {
-    content: url(clouds/images/sfamily.png);
 }
 
 .icon-user_add {
