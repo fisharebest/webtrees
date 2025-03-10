@@ -45,8 +45,10 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                 ?>
                 <tr class="<?= $row_class ?>">
                     <th scope="row">
-                        <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
                         <?= $relationship_service->getCloseRelationshipName($individual, $person) ?>
+                        <?php if ($individual === $person) : ?>
+                            <span class="icon-selected"><?= view('icons/user') ?></span>
+                        <?php endif ?>
                     </th>
                     <td class="border-0 p-0">
                         <?= view('chart-box', ['individual' => $person]) ?>
@@ -83,8 +85,10 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
                 <tr class="<?= $row_class ?>">
                     <th scope="row">
-                        <?= $individual === $person ? '<i class="icon-selected"></i>' : '' ?>
                         <?= $relationship_service->getCloseRelationshipName($individual, $person) ?>
+                        <?php if ($individual === $person) : ?>
+                            <span class="icon-selected"><?= view('icons/user') ?></span>
+                        <?php endif ?>
                     </th>
                     <td class="border-0 p-0">
                         <?= view('chart-box', ['individual' => $person]) ?>
@@ -179,10 +183,6 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
                 <tr class="<?= $row_class ?>">
                     <th scope="row">
-                        <?php if ($individual === $person) : ?>
-                            <i class="icon-selected"></i>
-                        <?php endif ?>
-
                         <?php if ($prev->isOK() && $next->isOK()) : ?>
                             <div class="wt-date-difference collapse small">
                                 <?php $days = $next->maximumJulianDay() - $prev->minimumJulianDay(); ?>
@@ -200,6 +200,10 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                         <?php endif ?>
 
                         <?= $relationship_service->getCloseRelationshipName($individual, $person) ?>
+
+                        <?php if ($individual === $person) : ?>
+                            <span class="icon-selected"><?= view('icons/user') ?></span>
+                        <?php endif ?>
                     </th>
                     <td class="border-0 p-0">
                         <?= view('chart-box', ['individual' => $person]) ?>

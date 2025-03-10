@@ -29,9 +29,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 
-/**
- * Class UserWelcomeModule
- */
+use function view;
+
 class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
@@ -52,11 +51,6 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         return I18N::translate('My page');
     }
 
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
     public function description(): string
     {
         /* I18N: Description of the “My page” module */
@@ -79,32 +73,35 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
         $individual = Registry::individualFactory()->make($gedcomid, $tree);
         $links      = [];
 
-        $pedigree_chart = $this->module_service->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->first(static function (ModuleInterface $module): bool {
-                return $module instanceof PedigreeChartModule;
-            });
+        $pedigree_chart = $this->module_service
+            ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+            ->first(static fn (ModuleInterface $module): bool => $module instanceof PedigreeChartModule);
 
         if ($individual instanceof Individual) {
             if ($pedigree_chart instanceof PedigreeChartModule) {
                 $links[] = [
                     'url'   => $pedigree_chart->chartUrl($individual),
                     'title' => I18N::translate('Default chart'),
-                    'icon'  => 'icon-pedigree',
+                    'class' => 'icon-pedigree',
+                    'icon'  => view('icons/pedigree-right'),
                 ];
             }
 
             $links[] = [
                 'url'   => $individual->url(),
                 'title' => I18N::translate('My individual record'),
-                'icon'  => 'icon-indis',
+                'class' => 'icon-indis',
+                'icon'  => view('icons/user'),
             ];
         }
 
         $links[] = [
             'url'   => route(AccountEdit::class, ['tree' => $tree->name()]),
             'title' => I18N::translate('My account'),
-            'icon'  => 'icon-mypage',
+            'class' => 'icon-mypage',
+            'icon'  => view('icons/account'),
         ];
+
         $content = view('modules/user_welcome/welcome', ['links' => $links]);
 
         $real_name = "\u{2068}" . e(Auth::user()->realName()) . "\u{2069}";

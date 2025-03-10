@@ -101,10 +101,9 @@ $id = Registry::idFactory()->id();
     <?php if ($individual->canShow()) : ?>
         <div class="wt-chart-box-extra d-print-none float-end ms-1">
             <div class="dropdown position-static wt-chart-box-zoom">
-                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div ><?= view('icons/zoom-in') ?></div>
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= I18N::translate('Zoom in') ?>">
+                    <div><?= view('icons/zoom-in') ?></div>
                     <div class="d-none"><?= view('icons/zoom-out') ?></div>
-                    <span class="visually-hidden"><?= I18N::translate('Links') ?></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
@@ -115,9 +114,10 @@ $id = Registry::idFactory()->id();
             </div>
 
             <div class="dropdown position-static wt-chart-box-links">
-                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="icon-pedigree" title="<?= I18N::translate('Links') ?>"></i>
-                    <span class="visually-hidden"><?= I18N::translate('Links') ?></span>
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= I18N::translate('Links') ?>">
+                    <span class="icon-pedigree">
+                        <?= view('icons/menu') ?>
+                    </span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">

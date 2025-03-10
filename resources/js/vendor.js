@@ -36,7 +36,7 @@ window.bootstrap = {
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
   // For resources/views/icons/*
-  faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
+  faAddressCard, faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
   faMinusSquare, faPlusSquare, faStar, faStickyNote, faTrashAlt, faUser
 } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -87,7 +87,7 @@ window.$ = window.jQuery = $;
 
 library.add(
   // For resources/views/icons/*
-  faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
+  faAddressCard, faBell, faCopy, faEnvelope, faFile, faFileAlt, faFileImage, faFolder, faKeyboard,
   faMap, faMinusSquare, faPlusSquare, faStar, faStickyNote, faTags, faTrashAlt, faUser
 );
 library.add(

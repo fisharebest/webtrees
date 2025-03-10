@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                 <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($spouse === $individual) : ?>
                         <?= $relationship_service->getCloseRelationshipName($individual, $spouse) ?>
-                        <i class="icon-selected"></i>
+                        <span class="icon-selected"><?= view('icons/user') ?></span>
                     <?php elseif ($spouse->childFamilies()->isNotEmpty()) : ?>
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($spouse->xref()) ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,7 +80,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                 <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($child === $individual) : ?>
                         <?= $relationship_service->getCloseRelationshipName($individual, $child) ?>
-                        <i class="icon-selected"></i>
+                        <span class="icon-selected"><?= view('icons/user') ?></span>
                     <?php elseif ($child->spouseFamilies()->isNotEmpty()) : ?>
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdown-<?= e($child->xref()) ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
