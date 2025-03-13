@@ -46,13 +46,13 @@ class SiteRegistrationAction implements RequestHandlerInterface
         $text               = Validator::parsedBody($request)->string('WELCOME_TEXT_AUTH_MODE_4');
         $allow_registration = Validator::parsedBody($request)->boolean('USE_REGISTRATION_MODULE');
         $show_caution       = Validator::parsedBody($request)->boolean('SHOW_REGISTER_CAUTION');
-	$show_2fa       = Validator::parsedBody($request)->boolean('SHOW_2FA_OPTION');
+        $show_2fa           = Validator::parsedBody($request)->boolean('SHOW_2FA_OPTION');
 
         Site::setPreference('WELCOME_TEXT_AUTH_MODE', $mode);
         Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . I18N::languageTag(), $text);
         Site::setPreference('USE_REGISTRATION_MODULE', (string) $allow_registration);
         Site::setPreference('SHOW_REGISTER_CAUTION', (string) $show_caution);
-	Site::setPreference('SHOW_2FA_OPTION', (string) $show_2fa);
+        Site::setPreference('SHOW_2FA_OPTION', (string) $show_2fa);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
