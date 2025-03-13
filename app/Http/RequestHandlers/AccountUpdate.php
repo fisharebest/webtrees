@@ -67,11 +67,11 @@ class AccountUpdate implements RequestHandlerInterface
         $language       = Validator::parsedBody($request)->string('language');
         $real_name      = Validator::parsedBody($request)->string('real_name');
         $password       = Validator::parsedBody($request)->string('password');
-	$secret         = Validator::parsedBody($request)->string('secret');
+        $secret         = Validator::parsedBody($request)->string('secret');
         $time_zone      = Validator::parsedBody($request)->string('timezone');
         $user_name      = Validator::parsedBody($request)->string('user_name');
         $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
-	$status_mfa = Validator::parsedBody($request)->boolean('status-mfa', '0');
+        $status_mfa     = Validator::parsedBody($request)->boolean('status-mfa', false);
 
         // Change the password
         if ($password !== '') {
@@ -104,7 +104,7 @@ class AccountUpdate implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_LANGUAGE, $language);
         $user->setPreference(UserInterface::PREF_TIME_ZONE, $time_zone);
         $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, (string) $visible_online);
-	$user->setPreference(UserInterface::PREF_IS_STATUS_MFA, (string) $status_mfa);
+        $user->setPreference(UserInterface::PREF_IS_STATUS_MFA, (string) $status_mfa);
 
         if ($tree instanceof Tree) {
             $default_xref = Validator::parsedBody($request)->string('default-xref');

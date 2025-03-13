@@ -96,7 +96,7 @@ class RegisterAction implements RequestHandlerInterface
         $password = Validator::parsedBody($request)->string('password');
         $realname = Validator::parsedBody($request)->string('realname');
         $username = Validator::parsedBody($request)->string('username');
-	$secret = Validator::parsedBody($request)->string('secret');
+        $secret   = Validator::parsedBody($request)->string('secret');
 
         try {
             if ($this->captcha_service->isRobot($request)) {
