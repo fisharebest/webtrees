@@ -68,7 +68,7 @@ class LoginAction implements RequestHandlerInterface
         $default_url = route(HomePage::class);
         $username    = Validator::parsedBody($request)->string('username');
         $password    = Validator::parsedBody($request)->string('password');
-	$code2fa    = Validator::parsedBody($request)->string('code2fa');
+        $code2fa     = Validator::parsedBody($request)->string('code2fa');
         $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
 
         try {
@@ -132,14 +132,13 @@ class LoginAction implements RequestHandlerInterface
         }
         if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) !== '') {
           # covers scenario where 2fa not enabled by user
-          if($code2fa != '') {
-            if (!$user->check2FAcode($code2fa)) {
+            if ($code2fa != '') {
+                if (!$user->check2FAcode($code2fa)) {
                     throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
-            }
-          }
-          else {
+                }
+            } else {
                     throw new Exception(I18N::translate('2FA code must be entered as you have 2FA authentication enabled. Please try again.'));
-          }
+            }
         }
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
