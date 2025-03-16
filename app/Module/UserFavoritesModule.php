@@ -80,6 +80,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
                 'config_url' => '',
                 'title'      => $this->title(),
                 'content'    => $content,
+                'icon'       => 'icons/favorite',
             ]);
         }
 
